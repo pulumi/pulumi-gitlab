@@ -24,9 +24,14 @@ import (
 )
 
 func TestDomain(t *testing.T) {
-	token := os.Getenv("DIGITALOCEAN_TOKEN")
+	token := os.Getenv("GITLAB_TOKEN")
 	if token == "" {
-		t.Skipf("Skipping test due to missing DIGITALOCEAN_TOKEN environment variable")
+		t.Skipf("Skipping test due to missing GITLAB_TOKEN environment variable")
+	}
+
+	baseUrl := os.Getenv("GITLAB_BASE_URL")
+	if baseUrl == "" {
+		t.Skipf("Skipping test due to missing GITLAB_BASE_URL environment variable")
 	}
 
 	cwd, err := os.Getwd()
@@ -37,22 +42,19 @@ func TestDomain(t *testing.T) {
 	var base = integration.ProgramTestOptions{
 		ExpectRefreshChanges: true,
 		Config: map[string]string{
-			"digitalocean:token": token,
+			"gitlab:config:token":   token,
+			"gitlab:config:baseUrl": baseUrl,
 		},
 	}
 
 	baseJS := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			"@pulumi/digitalocean",
+			"@pulumi/gitlab",
 		},
 	})
 
 	tests := []integration.ProgramTestOptions{
-		baseJS.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "databaseCluster")}),
-		baseJS.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "domain")}),
-		baseJS.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "droplet")}),
-		baseJS.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "floatingip")}),
-		baseJS.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "loadbalancer")}),
+		baseJS.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "label")}),
 	}
 
 	for _, ex := range tests {

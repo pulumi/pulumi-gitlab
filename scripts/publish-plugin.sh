@@ -18,7 +18,7 @@ fi
 
 go build \
    -ldflags "-X github.com/pulumi/pulumi-gitlab/pkg/version.Version=${VERSION}" \
-   -o "${WORK_PATH}/pulumi-resource-gitlab{BIN_SUFFIX}" \
+   -o "${WORK_PATH}/pulumi-resource-gitlab${BIN_SUFFIX}" \
    "${ROOT}/cmd/pulumi-resource-gitlab"
 
 # Tar up the plugin
