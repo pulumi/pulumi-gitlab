@@ -1,0 +1,3 @@
+name: label-gitlab
+description: A simple label operation on GitLab.
+runtime: nodejs
