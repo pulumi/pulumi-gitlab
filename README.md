@@ -36,6 +36,19 @@ To use from Go, use `go get` to grab the latest version of the library
 The `@pulumi/gitlab` package provides a strongly-typed means to create cloud applications that create and interact
 closely with GitLab resources.
 
+## Configuration
+
+The following configuration points are available:
+
+* token (Optional) - This is the GitLab personal access token. It must be provided but can also be sourced via `GITLAB_TOKEN`. 
+
+* base_url (Optional) - This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. https://my.gitlab.server/api/v4/. It is optional to provide this value and it can also be sourced from the GITLAB_BASE_URL environment variable. The value must end with a slash.
+
+* cacert_file (Optional) - This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
+
+* insecure (Optional) - When set to true this disables SSL verification of the connection to the GitLab instance. Defaults to `false`.
+
+
 ## Reference
 
 For detailed reference documentation, please visit [the API docs](
