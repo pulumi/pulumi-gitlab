@@ -51,7 +51,7 @@ func TestDomain(t *testing.T) {
 	})
 
 	tests := []integration.ProgramTestOptions{
-		baseJS.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "label")}),
+		baseJS.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "project")}),
 	}
 
 	for _, ex := range tests {

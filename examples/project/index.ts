@@ -17,13 +17,7 @@ import * as gitlab from "@pulumi/gitlab";
 
 const project = new gitlab.Project("example-project", {
     description: "example project created by Pulumi",
-    visibilityLevel: "private",
+    visibilityLevel: "public",
 })
 
-const example = new gitlab.Label("example", {
-     color: "#ffcc00",
-     description: "issue with failing tests",
-     project: project.name,
-});
-
-export const name = example.name
+export const projectName = project.name
