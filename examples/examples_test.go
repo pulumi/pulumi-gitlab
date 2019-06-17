@@ -41,10 +41,7 @@ func TestDomain(t *testing.T) {
 
 	var base = integration.ProgramTestOptions{
 		ExpectRefreshChanges: true,
-		Config: map[string]string{
-			"gitlab:config:token":   token,
-			"gitlab:config:baseUrl": baseUrl,
-		},
+		Config: map[string]string{},
 	}
 
 	baseJS := base.With(integration.ProgramTestOptions{
