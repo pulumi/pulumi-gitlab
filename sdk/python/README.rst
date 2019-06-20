@@ -21,13 +21,13 @@ To use from JavaScript or TypeScript in Node.js, install using either
 
 ::
 
-   $ npm install @pulumi/gitlab
+    $ npm install @pulumi/gitlab
 
 or ``yarn``:
 
 ::
 
-   $ yarn add @pulumi/gitlab
+    $ yarn add @pulumi/gitlab
 
 Python
 ~~~~~~
@@ -36,7 +36,7 @@ To use from Python, install using ``pip``:
 
 ::
 
-   $ pip install pulumi_gitlab
+    $ pip install pulumi_gitlab
 
 Go
 ~~
@@ -45,7 +45,7 @@ To use from Go, use ``go get`` to grab the latest version of the library
 
 ::
 
-   $ go get github.com/pulumi/pulumi-gitlab/sdk/go/...
+    $ go get github.com/pulumi/pulumi-gitlab/sdk/go/...
 
 Concepts
 --------
