@@ -23,6 +23,8 @@ import * as utilities from "./utilities";
  *     value: "group_variable_value",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_variable.html.markdown.
  */
 export class GroupVariable extends pulumi.CustomResource {
     /**

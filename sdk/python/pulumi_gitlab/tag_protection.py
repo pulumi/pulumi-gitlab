@@ -30,6 +30,8 @@ class TagProtection(pulumi.CustomResource):
         :param pulumi.Input[str] create_access_level: One of five levels of access to the project.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] tag: Name of the tag or wildcard.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/tag_protection.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -11,6 +11,8 @@ import (
 // This resource allows you to create and manage project clusters for your GitLab projects.
 // For further information on clusters, consult the [gitlab
 // documentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_cluster.html.markdown.
 type ProjectCluster struct {
 	s *pulumi.ResourceState
 }

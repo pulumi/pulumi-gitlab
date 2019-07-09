@@ -48,16 +48,7 @@ class User(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, can_create_group=None, email=None, is_admin=None, is_external=None, name=None, password=None, projects_limit=None, skip_confirmation=None, username=None, __name__=None, __opts__=None):
         """
-        This resource allows you to create and manage GitLab users.
-        Note your provider will need to be configured with admin-level access for this resource to work.
-        
-        ## Importing users
-        
-        You can import a user to terraform state using `terraform import <resource> <id>`.
-        The `id` must be an integer for the id of the user you want to import,
-        for example:
-        
-            terraform import gitlab_user.example 42
+        Create a User resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -71,6 +62,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[float] projects_limit: Integer, defaults to 0.  Number of projects user can create.
         :param pulumi.Input[bool] skip_confirmation: Boolean, defaults to true. Whether to skip confirmation.
         :param pulumi.Input[str] username: The username of the user.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/user.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

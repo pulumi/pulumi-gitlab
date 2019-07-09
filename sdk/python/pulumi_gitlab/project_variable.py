@@ -37,6 +37,8 @@ class ProjectVariable(pulumi.CustomResource):
         :param pulumi.Input[str] project: The name or id of the project to add the hook to.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         :param pulumi.Input[str] value: The value of the variable.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_variable.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

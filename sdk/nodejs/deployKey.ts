@@ -20,6 +20,8 @@ import * as utilities from "./utilities";
  *     title: "Example deploy key",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/deploy_key.html.markdown.
  */
 export class DeployKey extends pulumi.CustomResource {
     /**

@@ -20,6 +20,8 @@ import * as utilities from "./utilities";
  *     pushAccessLevel: "developer",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/branch_protection.html.markdown.
  */
 export class BranchProtection extends pulumi.CustomResource {
     /**

@@ -4,35 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * This resource allows you to create and manage GitLab users.
- * Note your provider will need to be configured with admin-level access for this resource to work.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- * 
- * const example = new gitlab.User("example", {
- *     canCreateGroup: false,
- *     email: "gitlab@user.create",
- *     isAdmin: true,
- *     isExternal: true,
- *     password: "superPassword",
- *     projectsLimit: 4,
- *     username: "example",
- * });
- * ```
- * 
- * ## Importing users
- * 
- * You can import a user to terraform state using `terraform import <resource> <id>`.
- * The `id` must be an integer for the id of the user you want to import,
- * for example:
- * 
- *     terraform import gitlab_user.example 42
- */
 export class User extends pulumi.CustomResource {
     /**
      * Get an existing User resource's state with the given name, ID, and optional extra

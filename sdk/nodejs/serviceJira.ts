@@ -24,6 +24,8 @@ import * as utilities from "./utilities";
  *     username: "user",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_jira.html.markdown.
  */
 export class ServiceJira extends pulumi.CustomResource {
     /**

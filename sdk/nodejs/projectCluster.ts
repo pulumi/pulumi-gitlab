@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  *     project: foo.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_cluster.html.markdown.
  */
 export class ProjectCluster extends pulumi.CustomResource {
     /**

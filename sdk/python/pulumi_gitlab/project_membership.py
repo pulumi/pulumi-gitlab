@@ -30,6 +30,8 @@ class ProjectMembership(pulumi.CustomResource):
         :param pulumi.Input[str] access_level: One of five levels of access to the project.
         :param pulumi.Input[str] project_id: The id of the project.
         :param pulumi.Input[float] user_id: The id of the user.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_membership.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

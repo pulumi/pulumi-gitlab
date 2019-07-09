@@ -8,6 +8,8 @@ import (
 )
 
 // Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/project.html.markdown.
 func LookupProject(ctx *pulumi.Context, args *GetProjectArgs) (*GetProjectResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

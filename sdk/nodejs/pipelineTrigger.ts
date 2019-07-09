@@ -18,6 +18,8 @@ import * as utilities from "./utilities";
  *     project: "12345",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/pipeline_trigger.html.markdown.
  */
 export class PipelineTrigger extends pulumi.CustomResource {
     /**

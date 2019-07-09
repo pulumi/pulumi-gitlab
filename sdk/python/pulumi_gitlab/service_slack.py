@@ -126,6 +126,8 @@ class ServiceSlack(pulumi.CustomResource):
         :param pulumi.Input[str] webhook: Webhook URL (ex.: https://hooks.slack.com/services/...)
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_slack.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

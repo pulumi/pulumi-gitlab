@@ -11,6 +11,8 @@ import (
 // This resource allows you to create and manage CI/CD variables for your GitLab groups.
 // For further information on variables, consult the [gitlab
 // documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_variable.html.markdown.
 type GroupVariable struct {
 	s *pulumi.ResourceState
 }

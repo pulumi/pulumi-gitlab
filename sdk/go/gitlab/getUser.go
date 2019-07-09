@@ -8,6 +8,8 @@ import (
 )
 
 // Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/user.html.markdown.
 func LookupUser(ctx *pulumi.Context, args *GetUserArgs) (*GetUserResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

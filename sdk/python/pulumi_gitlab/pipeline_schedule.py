@@ -47,6 +47,8 @@ class PipelineSchedule(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the pipeline schedule.
         :param pulumi.Input[str] project: The name or id of the project to add the schedule to.
         :param pulumi.Input[str] ref: The branch/tag name to be triggered.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/pipeline_schedule.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

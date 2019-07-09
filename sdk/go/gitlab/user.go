@@ -8,16 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// This resource allows you to create and manage GitLab users.
-// Note your provider will need to be configured with admin-level access for this resource to work.
-// 
-// ## Importing users
-// 
-// You can import a user to terraform state using `terraform import <resource> <id>`.
-// The `id` must be an integer for the id of the user you want to import,
-// for example:
-// 
-//     terraform import gitlab_user.example 42
 type User struct {
 	s *pulumi.ResourceState
 }

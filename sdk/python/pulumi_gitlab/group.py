@@ -55,18 +55,7 @@ class Group(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, lfs_enabled=None, name=None, parent_id=None, path=None, request_access_enabled=None, visibility_level=None, __name__=None, __opts__=None):
         """
-        This resource allows you to create and manage GitLab groups.
-        Note your provider will need to be configured with admin-level access for this resource to work.
-        
-        ## Importing groups
-        
-        You can import a group state using `terraform import <resource> <id>`.  The
-        `id` can be whatever the [details of a group][details_of_a_group] api takes for
-        its `:id` value, so for example:
-        
-            terraform import gitlab_group.example example
-        
-        [details_of_a_group]: https://docs.gitlab.com/ee/api/groups.html#details-of-a-group
+        Create a Group resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -81,6 +70,8 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public group.
                Valid values are `private`, `internal`, `public`.
                Groups are created as private by default.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

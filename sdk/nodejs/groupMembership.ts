@@ -20,6 +20,8 @@ import * as utilities from "./utilities";
  *     userId: 1337,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_membership.html.markdown.
  */
 export class GroupMembership extends pulumi.CustomResource {
     /**
