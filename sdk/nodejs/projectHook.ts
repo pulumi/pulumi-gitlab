@@ -22,6 +22,8 @@ import * as utilities from "./utilities";
  *     url: "https://example.com/hook/example",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_hook.html.markdown.
  */
 export class ProjectHook extends pulumi.CustomResource {
     /**

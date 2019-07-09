@@ -9,6 +9,8 @@ import (
 )
 
 // This resource allows you to create and manage deploy keys for your GitLab projects.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/deploy_key.html.markdown.
 type DeployKey struct {
 	s *pulumi.ResourceState
 }

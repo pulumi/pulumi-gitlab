@@ -76,6 +76,8 @@ class ProjectCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] managed: Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
         :param pulumi.Input[str] name: The name of cluster.
         :param pulumi.Input[str] project: The id of the project to add the cluster to.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_cluster.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

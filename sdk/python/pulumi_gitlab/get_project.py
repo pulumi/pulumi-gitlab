@@ -113,6 +113,8 @@ class GetProjectResult:
 async def get_project(archived=None,default_branch=None,description=None,http_url_to_repo=None,id=None,issues_enabled=None,merge_requests_enabled=None,name=None,namespace_id=None,path=None,runners_token=None,snippets_enabled=None,ssh_url_to_repo=None,visibility_level=None,web_url=None,wiki_enabled=None,opts=None):
     """
     Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/project.html.markdown.
     """
     __args__ = dict()
 

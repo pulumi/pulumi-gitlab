@@ -9,6 +9,8 @@ import (
 )
 
 // This resource allows you to add a user to an existing group.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_membership.html.markdown.
 type GroupMembership struct {
 	s *pulumi.ResourceState
 }

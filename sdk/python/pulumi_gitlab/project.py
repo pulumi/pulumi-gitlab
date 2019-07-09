@@ -110,20 +110,7 @@ class Project(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, approvals_before_merge=None, archived=None, container_registry_enabled=None, default_branch=None, description=None, issues_enabled=None, merge_method=None, merge_requests_enabled=None, name=None, namespace_id=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, path=None, shared_runners_enabled=None, shared_with_groups=None, snippets_enabled=None, tags=None, visibility_level=None, wiki_enabled=None, __name__=None, __opts__=None):
         """
-        This resource allows you to create and manage projects within your
-        GitLab group or within your user.
-        
-        
-        ## Importing projects
-        
-        You can import a project state using `terraform import <resource> <id>`.  The
-        `id` can be whatever the [get single project api][get_single_project] takes for
-        its `:id` value, so for example:
-        
-            terraform import gitlab_project.example richardc/example
-        
-        [get_single_project]: https://docs.gitlab.com/ee/api/projects.html#get-single-project
-        [group_members_permissions]: https://docs.gitlab.com/ce/user/permissions.html#group-members-permissions
+        Create a Project resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -151,6 +138,8 @@ class Project(pulumi.CustomResource):
                Valid values are `private`, `internal`, `public`.
                Repositories are created as private by default.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -9,6 +9,8 @@ import (
 )
 
 // This resource allows you to manage Jira integration.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_jira.html.markdown.
 type ServiceJira struct {
 	s *pulumi.ResourceState
 }

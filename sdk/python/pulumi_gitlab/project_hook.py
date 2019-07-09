@@ -79,6 +79,8 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[str] token: A token to present when invoking the hook.
         :param pulumi.Input[str] url: The url of the hook to invoke.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_hook.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

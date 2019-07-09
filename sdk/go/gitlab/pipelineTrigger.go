@@ -9,6 +9,8 @@ import (
 )
 
 // This resource allows you to create and manage pipeline triggers
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/pipeline_trigger.html.markdown.
 type PipelineTrigger struct {
 	s *pulumi.ResourceState
 }

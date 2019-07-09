@@ -19,6 +19,8 @@ import * as utilities from "./utilities";
  *     tag: "TagProtected",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/tag_protection.html.markdown.
  */
 export class TagProtection extends pulumi.CustomResource {
     /**

@@ -22,6 +22,8 @@ import * as utilities from "./utilities";
  *     ref: "master",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/pipeline_schedule.html.markdown.
  */
 export class PipelineSchedule extends pulumi.CustomResource {
     /**

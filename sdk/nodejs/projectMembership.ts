@@ -19,6 +19,8 @@ import * as utilities from "./utilities";
  *     userId: 1337,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_membership.html.markdown.
  */
 export class ProjectMembership extends pulumi.CustomResource {
     /**

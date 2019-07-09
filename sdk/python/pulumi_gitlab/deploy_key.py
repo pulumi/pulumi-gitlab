@@ -35,6 +35,8 @@ class DeployKey(pulumi.CustomResource):
         :param pulumi.Input[str] key: The public ssh key body.
         :param pulumi.Input[str] project: The name or id of the project to add the deploy key to.
         :param pulumi.Input[str] title: A title to describe the deploy key with.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/deploy_key.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

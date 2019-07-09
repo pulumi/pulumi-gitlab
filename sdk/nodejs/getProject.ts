@@ -17,6 +17,8 @@ import * as utilities from "./utilities";
  *     id: 30,
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/project.html.markdown.
  */
 export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     return pulumi.runtime.invoke("gitlab:index/getProject:getProject", {

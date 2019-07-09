@@ -22,6 +22,8 @@ import * as utilities from "./utilities";
  *     project: "example",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/label.html.markdown.
  */
 export class Label extends pulumi.CustomResource {
     /**

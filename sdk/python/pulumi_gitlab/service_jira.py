@@ -49,6 +49,8 @@ class ServiceJira(pulumi.CustomResource):
         :param pulumi.Input[str] project_key: The short identifier for your JIRA project, all uppercase, e.g., PROJ.
         :param pulumi.Input[str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
         :param pulumi.Input[str] username: The username of the user created to be used with GitLab/JIRA.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_jira.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

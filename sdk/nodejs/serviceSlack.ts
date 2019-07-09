@@ -25,6 +25,8 @@ import * as utilities from "./utilities";
  *     webhook: "https://webhook.com",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_slack.html.markdown.
  */
 export class ServiceSlack extends pulumi.CustomResource {
     /**

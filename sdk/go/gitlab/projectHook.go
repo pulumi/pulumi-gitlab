@@ -11,6 +11,8 @@ import (
 // This resource allows you to create and manage hooks for your GitLab projects.
 // For further information on hooks, consult the [gitlab
 // documentation](https://docs.gitlab.com/ce/user/project/integrations/webhooks.html).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_hook.html.markdown.
 type ProjectHook struct {
 	s *pulumi.ResourceState
 }

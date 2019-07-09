@@ -4,34 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * This resource allows you to create and manage projects within your
- * GitLab group or within your user.
- * 
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- * 
- * const example = new gitlab.Project("example", {
- *     description: "My awesome codebase",
- *     visibilityLevel: "public",
- * });
- * ```
- * 
- * ## Importing projects
- * 
- * You can import a project state using `terraform import <resource> <id>`.  The
- * `id` can be whatever the [get single project api][get_single_project] takes for
- * its `:id` value, so for example:
- * 
- *     terraform import gitlab_project.example richardc/example
- * 
- * [get_single_project]: https://docs.gitlab.com/ee/api/projects.html#get-single-project
- * [group_members_permissions]: https://docs.gitlab.com/ce/user/permissions.html#group-members-permissions
- */
 export class Project extends pulumi.CustomResource {
     /**
      * Get an existing Project resource's state with the given name, ID, and optional extra

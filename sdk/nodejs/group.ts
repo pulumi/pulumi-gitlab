@@ -4,37 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * This resource allows you to create and manage GitLab groups.
- * Note your provider will need to be configured with admin-level access for this resource to work.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- * 
- * const exampleGroup = new gitlab.Group("example", {
- *     description: "An example group",
- *     path: "example",
- * });
- * // Create a project in the example group
- * const exampleProject = new gitlab.Project("example", {
- *     description: "An example project",
- *     parentId: exampleGroup.id,
- * });
- * ```
- * 
- * ## Importing groups
- * 
- * You can import a group state using `terraform import <resource> <id>`.  The
- * `id` can be whatever the [details of a group][details_of_a_group] api takes for
- * its `:id` value, so for example:
- * 
- *     terraform import gitlab_group.example example
- * 
- * [details_of_a_group]: https://docs.gitlab.com/ee/api/groups.html#details-of-a-group
- */
 export class Group extends pulumi.CustomResource {
     /**
      * Get an existing Group resource's state with the given name, ID, and optional extra

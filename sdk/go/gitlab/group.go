@@ -8,18 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// This resource allows you to create and manage GitLab groups.
-// Note your provider will need to be configured with admin-level access for this resource to work.
-// 
-// ## Importing groups
-// 
-// You can import a group state using `terraform import <resource> <id>`.  The
-// `id` can be whatever the [details of a group][details_of_a_group] api takes for
-// its `:id` value, so for example:
-// 
-//     terraform import gitlab_group.example example
-// 
-// [details_of_a_group]: https://docs.gitlab.com/ee/api/groups.html#details-of-a-group
 type Group struct {
 	s *pulumi.ResourceState
 }

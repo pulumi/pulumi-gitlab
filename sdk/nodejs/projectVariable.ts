@@ -23,6 +23,8 @@ import * as utilities from "./utilities";
  *     value: "project_variable_value",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_variable.html.markdown.
  */
 export class ProjectVariable extends pulumi.CustomResource {
     /**
