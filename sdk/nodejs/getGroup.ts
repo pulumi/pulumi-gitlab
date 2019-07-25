@@ -33,12 +33,14 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/group.html.markdown.
  */
-export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
+export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> & GetGroupResult {
     args = args || {};
-    return pulumi.runtime.invoke("gitlab:index/getGroup:getGroup", {
+    const promise: Promise<GetGroupResult> = pulumi.runtime.invoke("gitlab:index/getGroup:getGroup", {
         "fullPath": args.fullPath,
         "groupId": args.groupId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
