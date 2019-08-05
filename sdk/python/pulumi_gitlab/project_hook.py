@@ -125,6 +125,10 @@ class ProjectHook(pulumi.CustomResource):
 
         __props__['wiki_page_events'] = wiki_page_events
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ProjectHook, __self__).__init__(
             'gitlab:index/projectHook:ProjectHook',
             resource_name,

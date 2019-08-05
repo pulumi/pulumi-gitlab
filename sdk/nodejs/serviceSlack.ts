@@ -212,6 +212,13 @@ export class ServiceSlack extends pulumi.CustomResource {
             inputs["wikiPageEvents"] = args ? args.wikiPageEvents : undefined;
             inputs["jobEvents"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ServiceSlack.__pulumiType, name, inputs, opts);
     }
 }

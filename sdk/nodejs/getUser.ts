@@ -20,13 +20,22 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/user.html.markdown.
  */
-export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
+export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> & GetUserResult {
     args = args || {};
-    return pulumi.runtime.invoke("gitlab:index/getUser:getUser", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetUserResult> = pulumi.runtime.invoke("gitlab:index/getUser:getUser", {
         "email": args.email,
         "userId": args.userId,
         "username": args.username,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

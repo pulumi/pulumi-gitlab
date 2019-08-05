@@ -69,6 +69,10 @@ class ProjectVariable(pulumi.CustomResource):
             raise TypeError("Missing required property 'value'")
         __props__['value'] = value
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ProjectVariable, __self__).__init__(
             'gitlab:index/projectVariable:ProjectVariable',
             resource_name,

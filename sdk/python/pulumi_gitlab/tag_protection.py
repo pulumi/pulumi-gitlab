@@ -60,6 +60,10 @@ class TagProtection(pulumi.CustomResource):
             raise TypeError("Missing required property 'tag'")
         __props__['tag'] = tag
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(TagProtection, __self__).__init__(
             'gitlab:index/tagProtection:TagProtection',
             resource_name,

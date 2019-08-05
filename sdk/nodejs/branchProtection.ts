@@ -102,6 +102,13 @@ export class BranchProtection extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["pushAccessLevel"] = args ? args.pushAccessLevel : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(BranchProtection.__pulumiType, name, inputs, opts);
     }
 }

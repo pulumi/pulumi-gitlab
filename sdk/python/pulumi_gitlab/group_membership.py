@@ -67,6 +67,10 @@ class GroupMembership(pulumi.CustomResource):
             raise TypeError("Missing required property 'user_id'")
         __props__['user_id'] = user_id
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(GroupMembership, __self__).__init__(
             'gitlab:index/groupMembership:GroupMembership',
             resource_name,

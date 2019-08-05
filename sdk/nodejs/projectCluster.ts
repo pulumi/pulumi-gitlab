@@ -162,6 +162,13 @@ export class ProjectCluster extends pulumi.CustomResource {
             inputs["platformType"] = undefined /*out*/;
             inputs["providerType"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ProjectCluster.__pulumiType, name, inputs, opts);
     }
 }

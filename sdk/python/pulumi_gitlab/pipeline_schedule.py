@@ -85,6 +85,10 @@ class PipelineSchedule(pulumi.CustomResource):
             raise TypeError("Missing required property 'ref'")
         __props__['ref'] = ref
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(PipelineSchedule, __self__).__init__(
             'gitlab:index/pipelineSchedule:PipelineSchedule',
             resource_name,
