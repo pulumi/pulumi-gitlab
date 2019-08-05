@@ -67,6 +67,10 @@ class Label(pulumi.CustomResource):
             raise TypeError("Missing required property 'project'")
         __props__['project'] = project
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Label, __self__).__init__(
             'gitlab:index/label:Label',
             resource_name,

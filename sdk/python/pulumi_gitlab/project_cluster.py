@@ -127,6 +127,10 @@ class ProjectCluster(pulumi.CustomResource):
         __props__['platform_type'] = None
         __props__['provider_type'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ProjectCluster, __self__).__init__(
             'gitlab:index/projectCluster:ProjectCluster',
             resource_name,

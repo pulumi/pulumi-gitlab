@@ -54,6 +54,10 @@ class PipelineTrigger(pulumi.CustomResource):
 
         __props__['token'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(PipelineTrigger, __self__).__init__(
             'gitlab:index/pipelineTrigger:PipelineTrigger',
             resource_name,

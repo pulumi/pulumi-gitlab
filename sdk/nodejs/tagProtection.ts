@@ -92,6 +92,13 @@ export class TagProtection extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["tag"] = args ? args.tag : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(TagProtection.__pulumiType, name, inputs, opts);
     }
 }

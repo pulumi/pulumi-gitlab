@@ -173,7 +173,15 @@ class GetUserResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_user(email=None,user_id=None,username=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_user(email=None,user_id=None,username=None,opts=None):
     """
     Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
 
@@ -184,7 +192,11 @@ async def get_user(email=None,user_id=None,username=None,opts=None):
     __args__['email'] = email
     __args__['userId'] = user_id
     __args__['username'] = username
-    __ret__ = await pulumi.runtime.invoke('gitlab:index/getUser:getUser', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gitlab:index/getUser:getUser', __args__, opts=opts).value
 
     return GetUserResult(
         avatar_url=__ret__.get('avatarUrl'),

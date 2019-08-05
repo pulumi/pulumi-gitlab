@@ -69,6 +69,10 @@ class BranchProtection(pulumi.CustomResource):
             raise TypeError("Missing required property 'push_access_level'")
         __props__['push_access_level'] = push_access_level
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(BranchProtection, __self__).__init__(
             'gitlab:index/branchProtection:BranchProtection',
             resource_name,

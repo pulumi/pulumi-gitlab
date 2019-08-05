@@ -56,7 +56,15 @@ class GetUsersResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_users(active=None,blocked=None,created_after=None,created_before=None,extern_provider=None,extern_uid=None,order_by=None,search=None,sort=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_users(active=None,blocked=None,created_after=None,created_before=None,extern_provider=None,extern_uid=None,order_by=None,search=None,sort=None,opts=None):
     """
     Provides details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
     
@@ -75,7 +83,11 @@ async def get_users(active=None,blocked=None,created_after=None,created_before=N
     __args__['orderBy'] = order_by
     __args__['search'] = search
     __args__['sort'] = sort
-    __ret__ = await pulumi.runtime.invoke('gitlab:index/getUsers:getUsers', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gitlab:index/getUsers:getUsers', __args__, opts=opts).value
 
     return GetUsersResult(
         active=__ret__.get('active'),

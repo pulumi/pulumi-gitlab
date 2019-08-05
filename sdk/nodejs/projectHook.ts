@@ -147,6 +147,13 @@ export class ProjectHook extends pulumi.CustomResource {
             inputs["url"] = args ? args.url : undefined;
             inputs["wikiPageEvents"] = args ? args.wikiPageEvents : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ProjectHook.__pulumiType, name, inputs, opts);
     }
 }

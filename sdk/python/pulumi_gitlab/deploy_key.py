@@ -67,6 +67,10 @@ class DeployKey(pulumi.CustomResource):
             raise TypeError("Missing required property 'title'")
         __props__['title'] = title
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(DeployKey, __self__).__init__(
             'gitlab:index/deployKey:DeployKey',
             resource_name,

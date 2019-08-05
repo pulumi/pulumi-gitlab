@@ -102,6 +102,13 @@ export class ProjectVariable extends pulumi.CustomResource {
             inputs["protected"] = args ? args.protected : undefined;
             inputs["value"] = args ? args.value : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ProjectVariable.__pulumiType, name, inputs, opts);
     }
 }

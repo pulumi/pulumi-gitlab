@@ -195,6 +195,13 @@ export class Project extends pulumi.CustomResource {
             inputs["sshUrlToRepo"] = undefined /*out*/;
             inputs["webUrl"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Project.__pulumiType, name, inputs, opts);
     }
 }

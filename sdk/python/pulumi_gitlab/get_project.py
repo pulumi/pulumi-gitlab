@@ -110,7 +110,15 @@ class GetProjectResult:
         Enable wiki for the project.
         """
 
-async def get_project(archived=None,default_branch=None,description=None,http_url_to_repo=None,id=None,issues_enabled=None,merge_requests_enabled=None,name=None,namespace_id=None,path=None,runners_token=None,snippets_enabled=None,ssh_url_to_repo=None,visibility_level=None,web_url=None,wiki_enabled=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_project(archived=None,default_branch=None,description=None,http_url_to_repo=None,id=None,issues_enabled=None,merge_requests_enabled=None,name=None,namespace_id=None,path=None,runners_token=None,snippets_enabled=None,ssh_url_to_repo=None,visibility_level=None,web_url=None,wiki_enabled=None,opts=None):
     """
     Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
 
@@ -134,7 +142,11 @@ async def get_project(archived=None,default_branch=None,description=None,http_ur
     __args__['visibilityLevel'] = visibility_level
     __args__['webUrl'] = web_url
     __args__['wikiEnabled'] = wiki_enabled
-    __ret__ = await pulumi.runtime.invoke('gitlab:index/getProject:getProject', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gitlab:index/getProject:getProject', __args__, opts=opts).value
 
     return GetProjectResult(
         archived=__ret__.get('archived'),

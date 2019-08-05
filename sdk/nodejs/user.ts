@@ -114,6 +114,13 @@ export class User extends pulumi.CustomResource {
             inputs["skipConfirmation"] = args ? args.skipConfirmation : undefined;
             inputs["username"] = args ? args.username : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(User.__pulumiType, name, inputs, opts);
     }
 }

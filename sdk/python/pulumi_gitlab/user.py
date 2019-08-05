@@ -104,6 +104,10 @@ class User(pulumi.CustomResource):
             raise TypeError("Missing required property 'username'")
         __props__['username'] = username
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(User, __self__).__init__(
             'gitlab:index/user:User',
             resource_name,

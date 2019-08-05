@@ -108,6 +108,10 @@ class Group(pulumi.CustomResource):
         __props__['full_path'] = None
         __props__['web_url'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Group, __self__).__init__(
             'gitlab:index/group:Group',
             resource_name,

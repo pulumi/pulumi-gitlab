@@ -194,6 +194,10 @@ class ServiceSlack(pulumi.CustomResource):
 
         __props__['job_events'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ServiceSlack, __self__).__init__(
             'gitlab:index/serviceSlack:ServiceSlack',
             resource_name,

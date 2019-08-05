@@ -117,6 +117,13 @@ export class Group extends pulumi.CustomResource {
             inputs["fullPath"] = undefined /*out*/;
             inputs["webUrl"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Group.__pulumiType, name, inputs, opts);
     }
 }
