@@ -8,10 +8,16 @@ replace (
 )
 
 require (
-	github.com/hashicorp/terraform v0.12.0
+	github.com/Nvveen/Gotty v0.0.0-20170406111628-a8b993ba6abd // indirect
+	github.com/apache/thrift v0.12.0 // indirect
+	github.com/go-ini/ini v1.31.0 // indirect
+	github.com/hashicorp/terraform v0.12.5
+	github.com/openzipkin/zipkin-go v0.1.6 // indirect
 	github.com/pkg/errors v0.8.1
-	github.com/pulumi/pulumi v0.17.23-0.20190715212628-02ffff88409f
-	github.com/pulumi/pulumi-terraform v0.18.4-0.20190716112909-08d502e9b427
+	github.com/pulumi/pulumi v0.17.28-0.20190731182900-6804d640fc7c
+	github.com/pulumi/pulumi-terraform v0.18.4-0.20190805204638-013b95b1c891
 	github.com/stretchr/testify v1.3.1-0.20190311161405-34c6fa2dc709
 	github.com/terraform-providers/terraform-provider-gitlab v0.0.0-20190612175539-be61c1d348ba
+	golang.org/x/build v0.0.0-20190314133821-5284462c4bec // indirect
+	gopkg.in/vmihailenco/msgpack.v2 v2.9.1 // indirect
 )
