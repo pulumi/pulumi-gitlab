@@ -94,7 +94,7 @@ type GetProjectResult struct {
 	MergeRequestsEnabled interface{}
 	Name interface{}
 	// The namespace (group or user) of the project. Defaults to your user.
-	// See `gitlab_group` for an example.
+	// See `.Group` for an example.
 	NamespaceId interface{}
 	// The path of the repository.
 	Path interface{}

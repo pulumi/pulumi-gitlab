@@ -82,14 +82,24 @@ class GetGroupResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetGroupResult(GetGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetGroupResult(
+            description=self.description,
+            full_name=self.full_name,
+            full_path=self.full_path,
+            group_id=self.group_id,
+            lfs_enabled=self.lfs_enabled,
+            name=self.name,
+            parent_id=self.parent_id,
+            path=self.path,
+            request_access_enabled=self.request_access_enabled,
+            visibility_level=self.visibility_level,
+            web_url=self.web_url,
+            id=self.id)
 
 def get_group(full_path=None,group_id=None,opts=None):
     """
@@ -107,7 +117,7 @@ def get_group(full_path=None,group_id=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gitlab:index/getGroup:getGroup', __args__, opts=opts).value
 
-    return GetGroupResult(
+    return AwaitableGetGroupResult(
         description=__ret__.get('description'),
         full_name=__ret__.get('fullName'),
         full_path=__ret__.get('fullPath'),

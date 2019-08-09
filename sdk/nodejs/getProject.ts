@@ -111,7 +111,7 @@ export interface GetProjectResult {
     readonly name: string;
     /**
      * The namespace (group or user) of the project. Defaults to your user.
-     * See `gitlab_group` for an example.
+     * See `gitlab..Group` for an example.
      */
     readonly namespaceId: number;
     /**

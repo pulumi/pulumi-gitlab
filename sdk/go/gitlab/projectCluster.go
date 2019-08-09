@@ -133,7 +133,7 @@ func (r *ProjectCluster) KubernetesApiUrl() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["kubernetesApiUrl"])
 }
 
-// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
 func (r *ProjectCluster) KubernetesAuthorizationType() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["kubernetesAuthorizationType"])
 }
@@ -188,7 +188,7 @@ type ProjectClusterState struct {
 	EnvironmentScope interface{}
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl interface{}
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType interface{}
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert interface{}
@@ -216,7 +216,7 @@ type ProjectClusterArgs struct {
 	EnvironmentScope interface{}
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl interface{}
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType interface{}
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert interface{}

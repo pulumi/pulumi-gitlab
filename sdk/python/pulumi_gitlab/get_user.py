@@ -172,14 +172,39 @@ class GetUserResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetUserResult(GetUserResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetUserResult(
+            avatar_url=self.avatar_url,
+            bio=self.bio,
+            can_create_group=self.can_create_group,
+            can_create_project=self.can_create_project,
+            color_scheme_id=self.color_scheme_id,
+            created_at=self.created_at,
+            current_sign_in_at=self.current_sign_in_at,
+            email=self.email,
+            extern_uid=self.extern_uid,
+            external=self.external,
+            is_admin=self.is_admin,
+            last_sign_in_at=self.last_sign_in_at,
+            linkedin=self.linkedin,
+            location=self.location,
+            name=self.name,
+            organization=self.organization,
+            projects_limit=self.projects_limit,
+            skype=self.skype,
+            state=self.state,
+            theme_id=self.theme_id,
+            twitter=self.twitter,
+            two_factor_enabled=self.two_factor_enabled,
+            user_id=self.user_id,
+            user_provider=self.user_provider,
+            username=self.username,
+            website_url=self.website_url,
+            id=self.id)
 
 def get_user(email=None,user_id=None,username=None,opts=None):
     """
@@ -198,7 +223,7 @@ def get_user(email=None,user_id=None,username=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gitlab:index/getUser:getUser', __args__, opts=opts).value
 
-    return GetUserResult(
+    return AwaitableGetUserResult(
         avatar_url=__ret__.get('avatarUrl'),
         bio=__ret__.get('bio'),
         can_create_group=__ret__.get('canCreateGroup'),

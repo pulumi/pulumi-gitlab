@@ -58,7 +58,7 @@ class ProjectHook(pulumi.CustomResource):
     """
     Invoke the hook for wiki page events.
     """
-    def __init__(__self__, resource_name, opts=None, enable_ssl_verification=None, issues_events=None, job_events=None, merge_requests_events=None, note_events=None, pipeline_events=None, project=None, push_events=None, tag_push_events=None, token=None, url=None, wiki_page_events=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, enable_ssl_verification=None, issues_events=None, job_events=None, merge_requests_events=None, note_events=None, pipeline_events=None, project=None, push_events=None, tag_push_events=None, token=None, url=None, wiki_page_events=None, __props__=None, __name__=None, __opts__=None):
         """
         This resource allows you to create and manage hooks for your GitLab projects.
         For further information on hooks, consult the [gitlab
@@ -88,54 +88,79 @@ class ProjectHook(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['enable_ssl_verification'] = enable_ssl_verification
-
-        __props__['issues_events'] = issues_events
-
-        __props__['job_events'] = job_events
-
-        __props__['merge_requests_events'] = merge_requests_events
-
-        __props__['note_events'] = note_events
-
-        __props__['pipeline_events'] = pipeline_events
-
-        if project is None:
-            raise TypeError("Missing required property 'project'")
-        __props__['project'] = project
-
-        __props__['push_events'] = push_events
-
-        __props__['tag_push_events'] = tag_push_events
-
-        __props__['token'] = token
-
-        if url is None:
-            raise TypeError("Missing required property 'url'")
-        __props__['url'] = url
-
-        __props__['wiki_page_events'] = wiki_page_events
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['enable_ssl_verification'] = enable_ssl_verification
+            __props__['issues_events'] = issues_events
+            __props__['job_events'] = job_events
+            __props__['merge_requests_events'] = merge_requests_events
+            __props__['note_events'] = note_events
+            __props__['pipeline_events'] = pipeline_events
+            if project is None:
+                raise TypeError("Missing required property 'project'")
+            __props__['project'] = project
+            __props__['push_events'] = push_events
+            __props__['tag_push_events'] = tag_push_events
+            __props__['token'] = token
+            if url is None:
+                raise TypeError("Missing required property 'url'")
+            __props__['url'] = url
+            __props__['wiki_page_events'] = wiki_page_events
         super(ProjectHook, __self__).__init__(
             'gitlab:index/projectHook:ProjectHook',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, enable_ssl_verification=None, issues_events=None, job_events=None, merge_requests_events=None, note_events=None, pipeline_events=None, project=None, push_events=None, tag_push_events=None, token=None, url=None, wiki_page_events=None):
+        """
+        Get an existing ProjectHook resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] enable_ssl_verification: Enable ssl verification when invoking
+               the hook.
+        :param pulumi.Input[bool] issues_events: Invoke the hook for issues events.
+        :param pulumi.Input[bool] job_events: Invoke the hook for job events.
+        :param pulumi.Input[bool] merge_requests_events: Invoke the hook for merge requests.
+        :param pulumi.Input[bool] note_events: Invoke the hook for notes events.
+        :param pulumi.Input[bool] pipeline_events: Invoke the hook for pipeline events.
+        :param pulumi.Input[str] project: The name or id of the project to add the hook to.
+        :param pulumi.Input[bool] push_events: Invoke the hook for push events.
+        :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
+        :param pulumi.Input[str] token: A token to present when invoking the hook.
+        :param pulumi.Input[str] url: The url of the hook to invoke.
+        :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_hook.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["enable_ssl_verification"] = enable_ssl_verification
+        __props__["issues_events"] = issues_events
+        __props__["job_events"] = job_events
+        __props__["merge_requests_events"] = merge_requests_events
+        __props__["note_events"] = note_events
+        __props__["pipeline_events"] = pipeline_events
+        __props__["project"] = project
+        __props__["push_events"] = push_events
+        __props__["tag_push_events"] = tag_push_events
+        __props__["token"] = token
+        __props__["url"] = url
+        __props__["wiki_page_events"] = wiki_page_events
+        return ProjectHook(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

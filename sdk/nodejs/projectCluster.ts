@@ -78,7 +78,7 @@ export class ProjectCluster extends pulumi.CustomResource {
      */
     public readonly kubernetesApiUrl!: pulumi.Output<string>;
     /**
-     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
      */
     public readonly kubernetesAuthorizationType!: pulumi.Output<string | undefined>;
     /**
@@ -196,7 +196,7 @@ export interface ProjectClusterState {
      */
     readonly kubernetesApiUrl?: pulumi.Input<string>;
     /**
-     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
      */
     readonly kubernetesAuthorizationType?: pulumi.Input<string>;
     /**
@@ -248,7 +248,7 @@ export interface ProjectClusterArgs {
      */
     readonly kubernetesApiUrl: pulumi.Input<string>;
     /**
-     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
      */
     readonly kubernetesAuthorizationType?: pulumi.Input<string>;
     /**
