@@ -55,14 +55,23 @@ class GetUsersResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetUsersResult(GetUsersResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetUsersResult(
+            active=self.active,
+            blocked=self.blocked,
+            created_after=self.created_after,
+            created_before=self.created_before,
+            extern_provider=self.extern_provider,
+            extern_uid=self.extern_uid,
+            order_by=self.order_by,
+            search=self.search,
+            sort=self.sort,
+            users=self.users,
+            id=self.id)
 
 def get_users(active=None,blocked=None,created_after=None,created_before=None,extern_provider=None,extern_uid=None,order_by=None,search=None,sort=None,opts=None):
     """
@@ -89,7 +98,7 @@ def get_users(active=None,blocked=None,created_after=None,created_before=None,ex
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gitlab:index/getUsers:getUsers', __args__, opts=opts).value
 
-    return GetUsersResult(
+    return AwaitableGetUsersResult(
         active=__ret__.get('active'),
         blocked=__ret__.get('blocked'),
         created_after=__ret__.get('createdAfter'),

@@ -64,7 +64,7 @@ class GetProjectResult:
         __self__.namespace_id = namespace_id
         """
         The namespace (group or user) of the project. Defaults to your user.
-        See `gitlab_group` for an example.
+        See `.Group` for an example.
         """
         if path and not isinstance(path, str):
             raise TypeError("Expected argument 'path' to be a str")
@@ -109,14 +109,28 @@ class GetProjectResult:
         """
         Enable wiki for the project.
         """
-
+class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetProjectResult(
+            archived=self.archived,
+            default_branch=self.default_branch,
+            description=self.description,
+            http_url_to_repo=self.http_url_to_repo,
+            id=self.id,
+            issues_enabled=self.issues_enabled,
+            merge_requests_enabled=self.merge_requests_enabled,
+            name=self.name,
+            namespace_id=self.namespace_id,
+            path=self.path,
+            runners_token=self.runners_token,
+            snippets_enabled=self.snippets_enabled,
+            ssh_url_to_repo=self.ssh_url_to_repo,
+            visibility_level=self.visibility_level,
+            web_url=self.web_url,
+            wiki_enabled=self.wiki_enabled)
 
 def get_project(archived=None,default_branch=None,description=None,http_url_to_repo=None,id=None,issues_enabled=None,merge_requests_enabled=None,name=None,namespace_id=None,path=None,runners_token=None,snippets_enabled=None,ssh_url_to_repo=None,visibility_level=None,web_url=None,wiki_enabled=None,opts=None):
     """
@@ -148,7 +162,7 @@ def get_project(archived=None,default_branch=None,description=None,http_url_to_r
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProject:getProject', __args__, opts=opts).value
 
-    return GetProjectResult(
+    return AwaitableGetProjectResult(
         archived=__ret__.get('archived'),
         default_branch=__ret__.get('defaultBranch'),
         description=__ret__.get('description'),

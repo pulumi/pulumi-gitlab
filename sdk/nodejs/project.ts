@@ -65,7 +65,7 @@ export class Project extends pulumi.CustomResource {
     public readonly issuesEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * Set to `ff` to create fast-forward merges
-     * Valid values are `merge`, `rebase_merge`, `ff`
+     * Valid values are `merge`, `rebaseMerge`, `ff`
      * Repositories are created with `merge` by default
      */
     public readonly mergeMethod!: pulumi.Output<string | undefined>;
@@ -79,7 +79,7 @@ export class Project extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The namespace (group or user) of the project. Defaults to your user.
-     * See `gitlab_group` for an example.
+     * See `gitlab..Group` for an example.
      */
     public readonly namespaceId!: pulumi.Output<number>;
     /**
@@ -241,7 +241,7 @@ export interface ProjectState {
     readonly issuesEnabled?: pulumi.Input<boolean>;
     /**
      * Set to `ff` to create fast-forward merges
-     * Valid values are `merge`, `rebase_merge`, `ff`
+     * Valid values are `merge`, `rebaseMerge`, `ff`
      * Repositories are created with `merge` by default
      */
     readonly mergeMethod?: pulumi.Input<string>;
@@ -255,7 +255,7 @@ export interface ProjectState {
     readonly name?: pulumi.Input<string>;
     /**
      * The namespace (group or user) of the project. Defaults to your user.
-     * See `gitlab_group` for an example.
+     * See `gitlab..Group` for an example.
      */
     readonly namespaceId?: pulumi.Input<number>;
     /**
@@ -341,7 +341,7 @@ export interface ProjectArgs {
     readonly issuesEnabled?: pulumi.Input<boolean>;
     /**
      * Set to `ff` to create fast-forward merges
-     * Valid values are `merge`, `rebase_merge`, `ff`
+     * Valid values are `merge`, `rebaseMerge`, `ff`
      * Repositories are created with `merge` by default
      */
     readonly mergeMethod?: pulumi.Input<string>;
@@ -355,7 +355,7 @@ export interface ProjectArgs {
     readonly name?: pulumi.Input<string>;
     /**
      * The namespace (group or user) of the project. Defaults to your user.
-     * See `gitlab_group` for an example.
+     * See `gitlab..Group` for an example.
      */
     readonly namespaceId?: pulumi.Input<number>;
     /**

@@ -152,7 +152,7 @@ func (r *Project) IssuesEnabled() *pulumi.BoolOutput {
 }
 
 // Set to `ff` to create fast-forward merges
-// Valid values are `merge`, `rebase_merge`, `ff`
+// Valid values are `merge`, `rebaseMerge`, `ff`
 // Repositories are created with `merge` by default
 func (r *Project) MergeMethod() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["mergeMethod"])
@@ -169,7 +169,7 @@ func (r *Project) Name() *pulumi.StringOutput {
 }
 
 // The namespace (group or user) of the project. Defaults to your user.
-// See `gitlab_group` for an example.
+// See `.Group` for an example.
 func (r *Project) NamespaceId() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["namespaceId"])
 }
@@ -255,7 +255,7 @@ type ProjectState struct {
 	// Enable issue tracking for the project.
 	IssuesEnabled interface{}
 	// Set to `ff` to create fast-forward merges
-	// Valid values are `merge`, `rebase_merge`, `ff`
+	// Valid values are `merge`, `rebaseMerge`, `ff`
 	// Repositories are created with `merge` by default
 	MergeMethod interface{}
 	// Enable merge requests for the project.
@@ -263,7 +263,7 @@ type ProjectState struct {
 	// The name of the project.
 	Name interface{}
 	// The namespace (group or user) of the project. Defaults to your user.
-	// See `gitlab_group` for an example.
+	// See `.Group` for an example.
 	NamespaceId interface{}
 	// Set to true if you want allow merges only if all discussions are resolved.
 	OnlyAllowMergeIfAllDiscussionsAreResolved interface{}
@@ -309,7 +309,7 @@ type ProjectArgs struct {
 	// Enable issue tracking for the project.
 	IssuesEnabled interface{}
 	// Set to `ff` to create fast-forward merges
-	// Valid values are `merge`, `rebase_merge`, `ff`
+	// Valid values are `merge`, `rebaseMerge`, `ff`
 	// Repositories are created with `merge` by default
 	MergeMethod interface{}
 	// Enable merge requests for the project.
@@ -317,7 +317,7 @@ type ProjectArgs struct {
 	// The name of the project.
 	Name interface{}
 	// The namespace (group or user) of the project. Defaults to your user.
-	// See `gitlab_group` for an example.
+	// See `.Group` for an example.
 	NamespaceId interface{}
 	// Set to true if you want allow merges only if all discussions are resolved.
 	OnlyAllowMergeIfAllDiscussionsAreResolved interface{}

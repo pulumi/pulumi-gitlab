@@ -18,9 +18,9 @@ import * as utilities from "./utilities";
  * 
  * const example = new gitlab.GroupVariable("example", {
  *     group: "12345",
- *     key: "group_variable_key",
+ *     key: "groupVariableKey",
  *     protected: false,
- *     value: "group_variable_value",
+ *     value: "groupVariableValue",
  * });
  * ```
  *

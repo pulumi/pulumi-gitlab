@@ -13,13 +13,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  * 
- * const awesomeProject = new gitlab.Project("awesome_project", {
+ * const awesomeProject = new gitlab.Project("awesomeProject", {
  *     description: "My awesome project.",
  *     visibilityLevel: "public",
  * });
  * const slack = new gitlab.ServiceSlack("slack", {
  *     project: awesomeProject.id,
- *     pushChannel: "push_chan",
+ *     pushChannel: "pushChan",
  *     pushEvents: true,
  *     username: "myuser",
  *     webhook: "https://webhook.com",

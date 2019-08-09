@@ -17,10 +17,10 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  * 
  * const example = new gitlab.ProjectVariable("example", {
- *     key: "project_variable_key",
+ *     key: "projectVariableKey",
  *     project: "12345",
  *     protected: false,
- *     value: "project_variable_value",
+ *     value: "projectVariableValue",
  * });
  * ```
  *

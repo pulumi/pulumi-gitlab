@@ -46,7 +46,7 @@ class User(pulumi.CustomResource):
     """
     The username of the user.
     """
-    def __init__(__self__, resource_name, opts=None, can_create_group=None, email=None, is_admin=None, is_external=None, name=None, password=None, projects_limit=None, skip_confirmation=None, username=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, can_create_group=None, email=None, is_admin=None, is_external=None, name=None, password=None, projects_limit=None, skip_confirmation=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a User resource with the given unique name, props, and options.
         
@@ -71,50 +71,72 @@ class User(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['can_create_group'] = can_create_group
-
-        if email is None:
-            raise TypeError("Missing required property 'email'")
-        __props__['email'] = email
-
-        __props__['is_admin'] = is_admin
-
-        __props__['is_external'] = is_external
-
-        __props__['name'] = name
-
-        if password is None:
-            raise TypeError("Missing required property 'password'")
-        __props__['password'] = password
-
-        __props__['projects_limit'] = projects_limit
-
-        __props__['skip_confirmation'] = skip_confirmation
-
-        if username is None:
-            raise TypeError("Missing required property 'username'")
-        __props__['username'] = username
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['can_create_group'] = can_create_group
+            if email is None:
+                raise TypeError("Missing required property 'email'")
+            __props__['email'] = email
+            __props__['is_admin'] = is_admin
+            __props__['is_external'] = is_external
+            __props__['name'] = name
+            if password is None:
+                raise TypeError("Missing required property 'password'")
+            __props__['password'] = password
+            __props__['projects_limit'] = projects_limit
+            __props__['skip_confirmation'] = skip_confirmation
+            if username is None:
+                raise TypeError("Missing required property 'username'")
+            __props__['username'] = username
         super(User, __self__).__init__(
             'gitlab:index/user:User',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, can_create_group=None, email=None, is_admin=None, is_external=None, name=None, password=None, projects_limit=None, skip_confirmation=None, username=None):
+        """
+        Get an existing User resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
+        :param pulumi.Input[str] email: The e-mail address of the user.
+        :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative priviledges
+               for the user.
+        :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
+        :param pulumi.Input[str] name: The name of the user.
+        :param pulumi.Input[str] password: The password of the user.
+        :param pulumi.Input[float] projects_limit: Integer, defaults to 0.  Number of projects user can create.
+        :param pulumi.Input[bool] skip_confirmation: Boolean, defaults to true. Whether to skip confirmation.
+        :param pulumi.Input[str] username: The username of the user.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/user.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["can_create_group"] = can_create_group
+        __props__["email"] = email
+        __props__["is_admin"] = is_admin
+        __props__["is_external"] = is_external
+        __props__["name"] = name
+        __props__["password"] = password
+        __props__["projects_limit"] = projects_limit
+        __props__["skip_confirmation"] = skip_confirmation
+        __props__["username"] = username
+        return User(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

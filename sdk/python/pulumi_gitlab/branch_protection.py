@@ -25,7 +25,7 @@ class BranchProtection(pulumi.CustomResource):
     """
     One of five levels of access to the project.
     """
-    def __init__(__self__, resource_name, opts=None, branch=None, merge_access_level=None, project=None, push_access_level=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, branch=None, merge_access_level=None, project=None, push_access_level=None, __props__=None, __name__=None, __opts__=None):
         """
         This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch. GitLab EE features to protect by group or user are not supported.
         
@@ -44,42 +44,58 @@ class BranchProtection(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if branch is None:
-            raise TypeError("Missing required property 'branch'")
-        __props__['branch'] = branch
-
-        if merge_access_level is None:
-            raise TypeError("Missing required property 'merge_access_level'")
-        __props__['merge_access_level'] = merge_access_level
-
-        if project is None:
-            raise TypeError("Missing required property 'project'")
-        __props__['project'] = project
-
-        if push_access_level is None:
-            raise TypeError("Missing required property 'push_access_level'")
-        __props__['push_access_level'] = push_access_level
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if branch is None:
+                raise TypeError("Missing required property 'branch'")
+            __props__['branch'] = branch
+            if merge_access_level is None:
+                raise TypeError("Missing required property 'merge_access_level'")
+            __props__['merge_access_level'] = merge_access_level
+            if project is None:
+                raise TypeError("Missing required property 'project'")
+            __props__['project'] = project
+            if push_access_level is None:
+                raise TypeError("Missing required property 'push_access_level'")
+            __props__['push_access_level'] = push_access_level
         super(BranchProtection, __self__).__init__(
             'gitlab:index/branchProtection:BranchProtection',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, branch=None, merge_access_level=None, project=None, push_access_level=None):
+        """
+        Get an existing BranchProtection resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] branch: Name of the branch.
+        :param pulumi.Input[str] merge_access_level: One of five levels of access to the project.
+        :param pulumi.Input[str] project: The id of the project.
+        :param pulumi.Input[str] push_access_level: One of five levels of access to the project.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/branch_protection.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["branch"] = branch
+        __props__["merge_access_level"] = merge_access_level
+        __props__["project"] = project
+        __props__["push_access_level"] = push_access_level
+        return BranchProtection(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

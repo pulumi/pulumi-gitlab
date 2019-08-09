@@ -9,7 +9,7 @@ import (
 
 // Provides details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
 // 
-// **NOTE**: Some of the available options require administrator privileges. Please visit [Gitlab API documentation][users_for_admins] for more information.
+// **NOTE**: Some of the available options require administrator privileges. Please visit [Gitlab API documentation][usersForAdmins] for more information.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/users.html.markdown.
 func LookupUsers(ctx *pulumi.Context, args *GetUsersArgs) (*GetUsersResult, error) {
@@ -58,7 +58,7 @@ type GetUsersArgs struct {
 	ExternProvider interface{}
 	// Lookup users by external UID. (Requires administrator privileges)
 	ExternUid interface{}
-	// Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
+	// Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
 	OrderBy interface{}
 	// Search users by username, name or email.
 	Search interface{}
