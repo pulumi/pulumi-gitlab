@@ -13,9 +13,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  * 
- * const example = pulumi.output(gitlab.getUser({
+ * const example = gitlab.getUser({
  *     username: "myuser",
- * }));
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/user.html.markdown.

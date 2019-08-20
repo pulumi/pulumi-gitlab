@@ -15,11 +15,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  * 
- * const example = pulumi.output(gitlab.getUsers({
+ * const example = gitlab.getUsers({
  *     createdBefore: "2019-01-01",
  *     orderBy: "name",
  *     sort: "desc",
- * }));
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/users.html.markdown.

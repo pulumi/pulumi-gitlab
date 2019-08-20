@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  * 
- * const foo = pulumi.output(gitlab.getGroup({
+ * const foo = gitlab.getGroup({
  *     groupId: 123,
- * }));
+ * });
  * ```
  * 
  * **By group's full path**
@@ -26,9 +26,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  * 
- * const foo = pulumi.output(gitlab.getGroup({
+ * const foo = gitlab.getGroup({
  *     fullPath: "foo/bar",
- * }));
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/group.html.markdown.
