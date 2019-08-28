@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetGroupResult:
@@ -104,6 +105,9 @@ class AwaitableGetGroupResult(GetGroupResult):
 def get_group(full_path=None,group_id=None,opts=None):
     """
     Provides details about a specific group in the gitlab provider.
+    
+    :param str full_path: The full path of the group.
+    :param float group_id: The ID of the group.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/group.html.markdown.
     """
@@ -112,7 +116,7 @@ def get_group(full_path=None,group_id=None,opts=None):
     __args__['fullPath'] = full_path
     __args__['groupId'] = group_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gitlab:index/getGroup:getGroup', __args__, opts=opts).value

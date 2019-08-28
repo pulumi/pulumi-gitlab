@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetUsersResult:
@@ -78,6 +79,16 @@ def get_users(active=None,blocked=None,created_after=None,created_before=None,ex
     Provides details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
     
     **NOTE**: Some of the available options require administrator privileges. Please visit [Gitlab API documentation][users_for_admins] for more information.
+    
+    :param bool active: Filter users that are active.
+    :param bool blocked: Filter users that are blocked.
+    :param str created_after: Search for users created after a specific date. (Requires administrator privileges)
+    :param str created_before: Search for users created before a specific date. (Requires administrator privileges)
+    :param str extern_provider: Lookup users by external provider. (Requires administrator privileges)
+    :param str extern_uid: Lookup users by external UID. (Requires administrator privileges)
+    :param str order_by: Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
+    :param str search: Search users by username, name or email.
+    :param str sort: Sort users' list in asc or desc order. (Requires administrator privileges)
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/users.html.markdown.
     """
@@ -93,7 +104,7 @@ def get_users(active=None,blocked=None,created_after=None,created_before=None,ex
     __args__['search'] = search
     __args__['sort'] = sort
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gitlab:index/getUsers:getUsers', __args__, opts=opts).value

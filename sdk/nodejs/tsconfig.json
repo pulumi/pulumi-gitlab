@@ -37,6 +37,9 @@
         "serviceJira.ts",
         "serviceSlack.ts",
         "tagProtection.ts",
+        "types/index.ts",
+        "types/input.ts",
+        "types/output.ts",
         "user.ts",
         "utilities.ts"
     ]

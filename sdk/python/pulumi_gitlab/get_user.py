@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetUserResult:
@@ -209,6 +210,10 @@ class AwaitableGetUserResult(GetUserResult):
 def get_user(email=None,user_id=None,username=None,opts=None):
     """
     Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
+    
+    :param str email: The e-mail address of the user. (Requires administrator privileges)
+    :param float user_id: The ID of the user.
+    :param str username: The username of the user.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/user.html.markdown.
     """
@@ -218,7 +223,7 @@ def get_user(email=None,user_id=None,username=None,opts=None):
     __args__['userId'] = user_id
     __args__['username'] = username
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gitlab:index/getUser:getUser', __args__, opts=opts).value
