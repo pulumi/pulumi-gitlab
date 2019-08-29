@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -105,7 +107,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Enable sharing the project with a list of groups (maps).
      */
-    public readonly sharedWithGroups!: pulumi.Output<{ groupAccessLevel: string, groupId: number, groupName: string }[] | undefined>;
+    public readonly sharedWithGroups!: pulumi.Output<outputs.ProjectSharedWithGroup[] | undefined>;
     /**
      * Enable snippets for the project.
      */
@@ -281,7 +283,7 @@ export interface ProjectState {
     /**
      * Enable sharing the project with a list of groups (maps).
      */
-    readonly sharedWithGroups?: pulumi.Input<pulumi.Input<{ groupAccessLevel: pulumi.Input<string>, groupId: pulumi.Input<number>, groupName?: pulumi.Input<string> }>[]>;
+    readonly sharedWithGroups?: pulumi.Input<pulumi.Input<inputs.ProjectSharedWithGroup>[]>;
     /**
      * Enable snippets for the project.
      */
@@ -377,7 +379,7 @@ export interface ProjectArgs {
     /**
      * Enable sharing the project with a list of groups (maps).
      */
-    readonly sharedWithGroups?: pulumi.Input<pulumi.Input<{ groupAccessLevel: pulumi.Input<string>, groupId: pulumi.Input<number>, groupName?: pulumi.Input<string> }>[]>;
+    readonly sharedWithGroups?: pulumi.Input<pulumi.Input<inputs.ProjectSharedWithGroup>[]>;
     /**
      * Enable snippets for the project.
      */

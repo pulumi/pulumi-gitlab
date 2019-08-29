@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetProjectResult:
@@ -135,6 +136,8 @@ class AwaitableGetProjectResult(GetProjectResult):
 def get_project(archived=None,default_branch=None,description=None,http_url_to_repo=None,id=None,issues_enabled=None,merge_requests_enabled=None,name=None,namespace_id=None,path=None,runners_token=None,snippets_enabled=None,ssh_url_to_repo=None,visibility_level=None,web_url=None,wiki_enabled=None,opts=None):
     """
     Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
+    
+    :param float id: The integer that uniquely identifies the project within the gitlab install.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/project.html.markdown.
     """
@@ -157,7 +160,7 @@ def get_project(archived=None,default_branch=None,description=None,http_url_to_r
     __args__['webUrl'] = web_url
     __args__['wikiEnabled'] = wiki_enabled
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProject:getProject', __args__, opts=opts).value

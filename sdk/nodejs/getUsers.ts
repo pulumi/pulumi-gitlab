@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -109,7 +111,7 @@ export interface GetUsersResult {
     /**
      * The list of users.
      */
-    readonly users: { avatarUrl: string, bio: string, canCreateGroup: boolean, canCreateProject: boolean, colorSchemeId: number, createdAt: string, currentSignInAt: string, email: string, externUid: string, external: boolean, id: number, isAdmin: boolean, lastSignInAt: string, linkedin: string, location: string, name: string, organization: string, projectsLimit: number, provider: string, skype: string, state: string, themeId: number, twitter: string, twoFactorEnabled: boolean, username: string, websiteUrl: string }[];
+    readonly users: outputs.GetUsersUser[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */
