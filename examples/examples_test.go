@@ -1,5 +1,3 @@
-// Copyright 2016-2018, Pulumi Corporation.(
-//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -20,10 +18,18 @@ import (
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/testing/integration"
-	"github.com/stretchr/testify/assert"
 )
 
-func TestDomain(t *testing.T) {
+func TestAccProject(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: path.Join(getCwd(t), "project"),
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func checkTestCredentials(t *testing.T) {
 	token := os.Getenv("GITLAB_TOKEN")
 	if token == "" {
 		t.Skipf("Skipping test due to missing GITLAB_TOKEN environment variable")
@@ -33,31 +39,31 @@ func TestDomain(t *testing.T) {
 	if baseUrl == "" {
 		t.Skipf("Skipping test due to missing GITLAB_BASE_URL environment variable")
 	}
+}
 
+func getCwd(t *testing.T) string {
 	cwd, err := os.Getwd()
-	if !assert.NoError(t, err) {
+	if err != nil {
 		t.FailNow()
 	}
 
-	var base = integration.ProgramTestOptions{
-		ExpectRefreshChanges: true,
-		Config: map[string]string{},
-	}
+	return cwd
+}
 
+func getBaseOptions() integration.ProgramTestOptions {
+	return integration.ProgramTestOptions{
+		ExpectRefreshChanges: true,
+	}
+}
+
+func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	checkTestCredentials(t)
+	base := getBaseOptions()
 	baseJS := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
 			"@pulumi/gitlab",
 		},
 	})
 
-	tests := []integration.ProgramTestOptions{
-		baseJS.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "project")}),
-	}
-
-	for _, ex := range tests {
-		example := ex
-		t.Run(example.Dir, func(t *testing.T) {
-			integration.ProgramTest(t, &example)
-		})
-	}
+	return baseJS
 }
