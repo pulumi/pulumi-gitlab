@@ -4,6 +4,7 @@
 // Export members:
 export * from "./branchProtection";
 export * from "./deployKey";
+export * from "./deployKeyEnable";
 export * from "./getGroup";
 export * from "./getProject";
 export * from "./getUser";
@@ -18,6 +19,8 @@ export * from "./project";
 export * from "./projectCluster";
 export * from "./projectHook";
 export * from "./projectMembership";
+export * from "./projectPushRules";
+export * from "./projectShareGroup";
 export * from "./projectVariable";
 export * from "./provider";
 export * from "./serviceJira";

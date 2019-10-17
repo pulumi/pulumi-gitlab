@@ -35,6 +35,10 @@ class Project(pulumi.CustomResource):
     URL that can be provided to `git clone` to clone the
     repository via HTTP.
     """
+    initialize_with_readme: pulumi.Output[bool]
+    """
+    Create master branch with first commit containing a README.md file.
+    """
     issues_enabled: pulumi.Output[bool]
     """
     Enable issue tracking for the project.
@@ -114,7 +118,7 @@ class Project(pulumi.CustomResource):
     """
     Enable wiki for the project.
     """
-    def __init__(__self__, resource_name, opts=None, approvals_before_merge=None, archived=None, container_registry_enabled=None, default_branch=None, description=None, issues_enabled=None, merge_method=None, merge_requests_enabled=None, name=None, namespace_id=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, path=None, shared_runners_enabled=None, shared_with_groups=None, snippets_enabled=None, tags=None, visibility_level=None, wiki_enabled=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, approvals_before_merge=None, archived=None, container_registry_enabled=None, default_branch=None, description=None, initialize_with_readme=None, issues_enabled=None, merge_method=None, merge_requests_enabled=None, name=None, namespace_id=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, path=None, shared_runners_enabled=None, shared_with_groups=None, snippets_enabled=None, tags=None, visibility_level=None, wiki_enabled=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Project resource with the given unique name, props, and options.
         
@@ -125,6 +129,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
+        :param pulumi.Input[bool] initialize_with_readme: Create master branch with first commit containing a README.md file.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
         :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
                Valid values are `merge`, `rebase_merge`, `ff`
@@ -176,6 +181,7 @@ class Project(pulumi.CustomResource):
             __props__['container_registry_enabled'] = container_registry_enabled
             __props__['default_branch'] = default_branch
             __props__['description'] = description
+            __props__['initialize_with_readme'] = initialize_with_readme
             __props__['issues_enabled'] = issues_enabled
             __props__['merge_method'] = merge_method
             __props__['merge_requests_enabled'] = merge_requests_enabled
@@ -201,7 +207,7 @@ class Project(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, approvals_before_merge=None, archived=None, container_registry_enabled=None, default_branch=None, description=None, http_url_to_repo=None, issues_enabled=None, merge_method=None, merge_requests_enabled=None, name=None, namespace_id=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, path=None, runners_token=None, shared_runners_enabled=None, shared_with_groups=None, snippets_enabled=None, ssh_url_to_repo=None, tags=None, visibility_level=None, web_url=None, wiki_enabled=None):
+    def get(resource_name, id, opts=None, approvals_before_merge=None, archived=None, container_registry_enabled=None, default_branch=None, description=None, http_url_to_repo=None, initialize_with_readme=None, issues_enabled=None, merge_method=None, merge_requests_enabled=None, name=None, namespace_id=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, path=None, runners_token=None, shared_runners_enabled=None, shared_with_groups=None, snippets_enabled=None, ssh_url_to_repo=None, tags=None, visibility_level=None, web_url=None, wiki_enabled=None):
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -216,6 +222,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of the project.
         :param pulumi.Input[str] http_url_to_repo: URL that can be provided to `git clone` to clone the
                repository via HTTP.
+        :param pulumi.Input[bool] initialize_with_readme: Create master branch with first commit containing a README.md file.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
         :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
                Valid values are `merge`, `rebase_merge`, `ff`
@@ -258,6 +265,7 @@ class Project(pulumi.CustomResource):
         __props__["default_branch"] = default_branch
         __props__["description"] = description
         __props__["http_url_to_repo"] = http_url_to_repo
+        __props__["initialize_with_readme"] = initialize_with_readme
         __props__["issues_enabled"] = issues_enabled
         __props__["merge_method"] = merge_method
         __props__["merge_requests_enabled"] = merge_requests_enabled

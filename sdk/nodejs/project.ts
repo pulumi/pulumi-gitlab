@@ -62,6 +62,10 @@ export class Project extends pulumi.CustomResource {
      */
     public /*out*/ readonly httpUrlToRepo!: pulumi.Output<string>;
     /**
+     * Create master branch with first commit containing a README.md file.
+     */
+    public readonly initializeWithReadme!: pulumi.Output<boolean | undefined>;
+    /**
      * Enable issue tracking for the project.
      */
     public readonly issuesEnabled!: pulumi.Output<boolean | undefined>;
@@ -154,6 +158,7 @@ export class Project extends pulumi.CustomResource {
             inputs["defaultBranch"] = state ? state.defaultBranch : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["httpUrlToRepo"] = state ? state.httpUrlToRepo : undefined;
+            inputs["initializeWithReadme"] = state ? state.initializeWithReadme : undefined;
             inputs["issuesEnabled"] = state ? state.issuesEnabled : undefined;
             inputs["mergeMethod"] = state ? state.mergeMethod : undefined;
             inputs["mergeRequestsEnabled"] = state ? state.mergeRequestsEnabled : undefined;
@@ -178,6 +183,7 @@ export class Project extends pulumi.CustomResource {
             inputs["containerRegistryEnabled"] = args ? args.containerRegistryEnabled : undefined;
             inputs["defaultBranch"] = args ? args.defaultBranch : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["initializeWithReadme"] = args ? args.initializeWithReadme : undefined;
             inputs["issuesEnabled"] = args ? args.issuesEnabled : undefined;
             inputs["mergeMethod"] = args ? args.mergeMethod : undefined;
             inputs["mergeRequestsEnabled"] = args ? args.mergeRequestsEnabled : undefined;
@@ -237,6 +243,10 @@ export interface ProjectState {
      * repository via HTTP.
      */
     readonly httpUrlToRepo?: pulumi.Input<string>;
+    /**
+     * Create master branch with first commit containing a README.md file.
+     */
+    readonly initializeWithReadme?: pulumi.Input<boolean>;
     /**
      * Enable issue tracking for the project.
      */
@@ -337,6 +347,10 @@ export interface ProjectArgs {
      * A description of the project.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Create master branch with first commit containing a README.md file.
+     */
+    readonly initializeWithReadme?: pulumi.Input<boolean>;
     /**
      * Enable issue tracking for the project.
      */

@@ -74,7 +74,7 @@ func (r *GroupMembership) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// Acceptable values are: guest, reporter, developer, master.
+// Acceptable values are: guest, reporter, developer, master, owner.
 func (r *GroupMembership) AccessLevel() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["accessLevel"])
 }
@@ -96,7 +96,7 @@ func (r *GroupMembership) UserId() *pulumi.IntOutput {
 
 // Input properties used for looking up and filtering GroupMembership resources.
 type GroupMembershipState struct {
-	// Acceptable values are: guest, reporter, developer, master.
+	// Acceptable values are: guest, reporter, developer, master, owner.
 	AccessLevel interface{}
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt interface{}
@@ -108,7 +108,7 @@ type GroupMembershipState struct {
 
 // The set of arguments for constructing a GroupMembership resource.
 type GroupMembershipArgs struct {
-	// Acceptable values are: guest, reporter, developer, master.
+	// Acceptable values are: guest, reporter, developer, master, owner.
 	AccessLevel interface{}
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt interface{}

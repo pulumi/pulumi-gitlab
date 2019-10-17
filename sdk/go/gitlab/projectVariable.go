@@ -31,15 +31,21 @@ func NewProjectVariable(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["environmentScope"] = nil
 		inputs["key"] = nil
+		inputs["masked"] = nil
 		inputs["project"] = nil
 		inputs["protected"] = nil
 		inputs["value"] = nil
+		inputs["variableType"] = nil
 	} else {
+		inputs["environmentScope"] = args.EnvironmentScope
 		inputs["key"] = args.Key
+		inputs["masked"] = args.Masked
 		inputs["project"] = args.Project
 		inputs["protected"] = args.Protected
 		inputs["value"] = args.Value
+		inputs["variableType"] = args.VariableType
 	}
 	s, err := ctx.RegisterResource("gitlab:index/projectVariable:ProjectVariable", name, true, inputs, opts...)
 	if err != nil {
@@ -54,10 +60,13 @@ func GetProjectVariable(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ProjectVariableState, opts ...pulumi.ResourceOpt) (*ProjectVariable, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["environmentScope"] = state.EnvironmentScope
 		inputs["key"] = state.Key
+		inputs["masked"] = state.Masked
 		inputs["project"] = state.Project
 		inputs["protected"] = state.Protected
 		inputs["value"] = state.Value
+		inputs["variableType"] = state.VariableType
 	}
 	s, err := ctx.ReadResource("gitlab:index/projectVariable:ProjectVariable", name, id, inputs, opts...)
 	if err != nil {
@@ -76,9 +85,19 @@ func (r *ProjectVariable) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// The environmentScope of the variable
+func (r *ProjectVariable) EnvironmentScope() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["environmentScope"])
+}
+
 // The name of the variable.
 func (r *ProjectVariable) Key() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["key"])
+}
+
+// If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
+func (r *ProjectVariable) Masked() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["masked"])
 }
 
 // The name or id of the project to add the hook to.
@@ -96,26 +115,43 @@ func (r *ProjectVariable) Value() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["value"])
 }
 
+// The type of a variable. Available types are: envVar (default) and file.
+func (r *ProjectVariable) VariableType() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["variableType"])
+}
+
 // Input properties used for looking up and filtering ProjectVariable resources.
 type ProjectVariableState struct {
+	// The environmentScope of the variable
+	EnvironmentScope interface{}
 	// The name of the variable.
 	Key interface{}
+	// If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
+	Masked interface{}
 	// The name or id of the project to add the hook to.
 	Project interface{}
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected interface{}
 	// The value of the variable.
 	Value interface{}
+	// The type of a variable. Available types are: envVar (default) and file.
+	VariableType interface{}
 }
 
 // The set of arguments for constructing a ProjectVariable resource.
 type ProjectVariableArgs struct {
+	// The environmentScope of the variable
+	EnvironmentScope interface{}
 	// The name of the variable.
 	Key interface{}
+	// If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
+	Masked interface{}
 	// The name or id of the project to add the hook to.
 	Project interface{}
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected interface{}
 	// The value of the variable.
 	Value interface{}
+	// The type of a variable. Available types are: envVar (default) and file.
+	VariableType interface{}
 }

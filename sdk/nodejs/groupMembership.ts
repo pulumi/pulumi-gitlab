@@ -51,7 +51,7 @@ export class GroupMembership extends pulumi.CustomResource {
     }
 
     /**
-     * Acceptable values are: guest, reporter, developer, master.
+     * Acceptable values are: guest, reporter, developer, master, owner.
      */
     public readonly accessLevel!: pulumi.Output<string>;
     /**
@@ -115,7 +115,7 @@ export class GroupMembership extends pulumi.CustomResource {
  */
 export interface GroupMembershipState {
     /**
-     * Acceptable values are: guest, reporter, developer, master.
+     * Acceptable values are: guest, reporter, developer, master, owner.
      */
     readonly accessLevel?: pulumi.Input<string>;
     /**
@@ -137,7 +137,7 @@ export interface GroupMembershipState {
  */
 export interface GroupMembershipArgs {
     /**
-     * Acceptable values are: guest, reporter, developer, master.
+     * Acceptable values are: guest, reporter, developer, master, owner.
      */
     readonly accessLevel: pulumi.Input<string>;
     /**

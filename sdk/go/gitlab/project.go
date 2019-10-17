@@ -22,6 +22,7 @@ func NewProject(ctx *pulumi.Context,
 		inputs["containerRegistryEnabled"] = nil
 		inputs["defaultBranch"] = nil
 		inputs["description"] = nil
+		inputs["initializeWithReadme"] = nil
 		inputs["issuesEnabled"] = nil
 		inputs["mergeMethod"] = nil
 		inputs["mergeRequestsEnabled"] = nil
@@ -42,6 +43,7 @@ func NewProject(ctx *pulumi.Context,
 		inputs["containerRegistryEnabled"] = args.ContainerRegistryEnabled
 		inputs["defaultBranch"] = args.DefaultBranch
 		inputs["description"] = args.Description
+		inputs["initializeWithReadme"] = args.InitializeWithReadme
 		inputs["issuesEnabled"] = args.IssuesEnabled
 		inputs["mergeMethod"] = args.MergeMethod
 		inputs["mergeRequestsEnabled"] = args.MergeRequestsEnabled
@@ -80,6 +82,7 @@ func GetProject(ctx *pulumi.Context,
 		inputs["defaultBranch"] = state.DefaultBranch
 		inputs["description"] = state.Description
 		inputs["httpUrlToRepo"] = state.HttpUrlToRepo
+		inputs["initializeWithReadme"] = state.InitializeWithReadme
 		inputs["issuesEnabled"] = state.IssuesEnabled
 		inputs["mergeMethod"] = state.MergeMethod
 		inputs["mergeRequestsEnabled"] = state.MergeRequestsEnabled
@@ -144,6 +147,11 @@ func (r *Project) Description() *pulumi.StringOutput {
 // repository via HTTP.
 func (r *Project) HttpUrlToRepo() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["httpUrlToRepo"])
+}
+
+// Create master branch with first commit containing a README.md file.
+func (r *Project) InitializeWithReadme() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["initializeWithReadme"])
 }
 
 // Enable issue tracking for the project.
@@ -252,6 +260,8 @@ type ProjectState struct {
 	// URL that can be provided to `git clone` to clone the
 	// repository via HTTP.
 	HttpUrlToRepo interface{}
+	// Create master branch with first commit containing a README.md file.
+	InitializeWithReadme interface{}
 	// Enable issue tracking for the project.
 	IssuesEnabled interface{}
 	// Set to `ff` to create fast-forward merges
@@ -306,6 +316,8 @@ type ProjectArgs struct {
 	DefaultBranch interface{}
 	// A description of the project.
 	Description interface{}
+	// Create master branch with first commit containing a README.md file.
+	InitializeWithReadme interface{}
 	// Enable issue tracking for the project.
 	IssuesEnabled interface{}
 	// Set to `ff` to create fast-forward merges
