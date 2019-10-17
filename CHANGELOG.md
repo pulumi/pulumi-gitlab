@@ -1,7 +1,10 @@
 ## HEAD (Unreleased)
-* Upgrade to v2.3.0 of the Gitlab Terraform Provider
+_(none)_
 
 ---
+
+## 1.0.0 (2019-10-17)
+* Upgrade to v2.3.0 of the Gitlab Terraform Provider
 
 ## 0.18.8 (2019-09-05)
 * Upgrade to Pulumi v1.0.0
