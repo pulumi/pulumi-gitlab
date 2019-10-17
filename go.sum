@@ -648,6 +648,8 @@ github.com/svanharmelen/jsonapi v0.0.0-20180618144545-0c0828c3f16d/go.mod h1:BST
 github.com/tarm/serial v0.0.0-20180830185346-98f6abe2eb07/go.mod h1:kDXzergiv9cbyO7IOYJZWg1U88JhDg3PB6klq9Hg2pA=
 github.com/terraform-providers/terraform-provider-gitlab v0.0.0-20190612175539-be61c1d348ba h1:q7fEPVlLjhKKyrh7KfWx4wAjqSIUZdZhFSuwL4n98jM=
 github.com/terraform-providers/terraform-provider-gitlab v0.0.0-20190612175539-be61c1d348ba/go.mod h1:7uOmAeVfOfkFocVIZFKkvSgEEE5sfLT/i23IUCm+BMU=
+github.com/terraform-providers/terraform-provider-gitlab v0.0.0-20191017095409-67c4a8550246 h1:YzIX2NdX0l+9CcZnYMkJz/KWlA8/t7Roc3KITi5Lnmg=
+github.com/terraform-providers/terraform-provider-gitlab v0.0.0-20191017095409-67c4a8550246/go.mod h1:+NdP/iw/ILjZ629gttRWOFd+Ow+GbsAW9idvn5pWFBY=
 github.com/terraform-providers/terraform-provider-openstack v1.15.0/go.mod h1:2aQ6n/BtChAl1y2S60vebhyJyZXBsuAI5G4+lHrT1Ew=
 github.com/texttheater/golang-levenshtein v0.0.0-20180516184445-d188e65d659e h1:T5PdfK/M1xyrHwynxMIVMWLS7f/qHwfslZphxtGnw7s=
 github.com/texttheater/golang-levenshtein v0.0.0-20180516184445-d188e65d659e/go.mod h1:XDKHRm5ThF8YJjx001LtgelzsoaEcvnA7lVWz9EeX3g=
@@ -673,6 +675,8 @@ github.com/vmihailenco/msgpack v4.0.4+incompatible h1:dSLoQfGFAo3F6OoNhwUmLwVgaU
 github.com/vmihailenco/msgpack v4.0.4+incompatible/go.mod h1:fy3FlTQTDXWkZ7Bh6AcGMlsjHatGryHQYUTf1ShIgkk=
 github.com/xanzy/go-gitlab v0.18.0 h1:LybNSWSIw8BK+GnxuETAhUXEzzh5rHsHjopqVkGJXRE=
 github.com/xanzy/go-gitlab v0.18.0/go.mod h1:LSfUQ9OPDnwRqulJk2HcWaAiFfCzaknyeGvjQI67MbE=
+github.com/xanzy/go-gitlab v0.20.0 h1:UE8uvZ8DAOeYTTVqwqUmwnUqeUVgXYk0Mbam6FvutrQ=
+github.com/xanzy/go-gitlab v0.20.0/go.mod h1:LSfUQ9OPDnwRqulJk2HcWaAiFfCzaknyeGvjQI67MbE=
 github.com/xanzy/ssh-agent v0.2.0/go.mod h1:0NyE30eGUDliuLEHJgYte/zncp2zdTStcOnWhgSqHD8=
 github.com/xanzy/ssh-agent v0.2.1 h1:TCbipTQL2JiiCprBWx9frJ2eJlCYT00NmctrHxVAr70=
 github.com/xanzy/ssh-agent v0.2.1/go.mod h1:mLlQY/MoOhWBj+gOGMQkOeiEvkx+8pJSI+0Bx9h2kr4=
