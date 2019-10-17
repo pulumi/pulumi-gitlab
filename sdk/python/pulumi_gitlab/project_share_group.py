@@ -9,35 +9,30 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
-class GroupMembership(pulumi.CustomResource):
+class ProjectShareGroup(pulumi.CustomResource):
     access_level: pulumi.Output[str]
     """
-    Acceptable values are: guest, reporter, developer, master, owner.
+    One of five levels of access to the project.
     """
-    expires_at: pulumi.Output[str]
-    """
-    Expiration date for the group membership. Format: `YYYY-MM-DD`
-    """
-    group_id: pulumi.Output[str]
+    group_id: pulumi.Output[float]
     """
     The id of the group.
     """
-    user_id: pulumi.Output[float]
+    project_id: pulumi.Output[str]
     """
-    The id of the user.
+    The id of the project.
     """
-    def __init__(__self__, resource_name, opts=None, access_level=None, expires_at=None, group_id=None, user_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, access_level=None, group_id=None, project_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        This resource allows you to add a user to an existing group.
+        This resource allows you to share a project with a group
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_level: Acceptable values are: guest, reporter, developer, master, owner.
-        :param pulumi.Input[str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
-        :param pulumi.Input[str] group_id: The id of the group.
-        :param pulumi.Input[float] user_id: The id of the user.
+        :param pulumi.Input[str] access_level: One of five levels of access to the project.
+        :param pulumi.Input[float] group_id: The id of the group.
+        :param pulumi.Input[str] project_id: The id of the project.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_membership.html.markdown.
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_share_group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -59,43 +54,40 @@ class GroupMembership(pulumi.CustomResource):
             if access_level is None:
                 raise TypeError("Missing required property 'access_level'")
             __props__['access_level'] = access_level
-            __props__['expires_at'] = expires_at
             if group_id is None:
                 raise TypeError("Missing required property 'group_id'")
             __props__['group_id'] = group_id
-            if user_id is None:
-                raise TypeError("Missing required property 'user_id'")
-            __props__['user_id'] = user_id
-        super(GroupMembership, __self__).__init__(
-            'gitlab:index/groupMembership:GroupMembership',
+            if project_id is None:
+                raise TypeError("Missing required property 'project_id'")
+            __props__['project_id'] = project_id
+        super(ProjectShareGroup, __self__).__init__(
+            'gitlab:index/projectShareGroup:ProjectShareGroup',
             resource_name,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, access_level=None, expires_at=None, group_id=None, user_id=None):
+    def get(resource_name, id, opts=None, access_level=None, group_id=None, project_id=None):
         """
-        Get an existing GroupMembership resource's state with the given name, id, and optional extra
+        Get an existing ProjectShareGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
         
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_level: Acceptable values are: guest, reporter, developer, master, owner.
-        :param pulumi.Input[str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
-        :param pulumi.Input[str] group_id: The id of the group.
-        :param pulumi.Input[float] user_id: The id of the user.
+        :param pulumi.Input[str] access_level: One of five levels of access to the project.
+        :param pulumi.Input[float] group_id: The id of the group.
+        :param pulumi.Input[str] project_id: The id of the project.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_membership.html.markdown.
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_share_group.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["access_level"] = access_level
-        __props__["expires_at"] = expires_at
         __props__["group_id"] = group_id
-        __props__["user_id"] = user_id
-        return GroupMembership(resource_name, opts=opts, __props__=__props__)
+        __props__["project_id"] = project_id
+        return ProjectShareGroup(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

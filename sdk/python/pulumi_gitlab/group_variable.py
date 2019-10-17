@@ -26,7 +26,11 @@ class GroupVariable(pulumi.CustomResource):
     """
     The value of the variable.
     """
-    def __init__(__self__, resource_name, opts=None, group=None, key=None, protected=None, value=None, __props__=None, __name__=None, __opts__=None):
+    variable_type: pulumi.Output[str]
+    """
+    The type of a variable. Available types are: env_var (default) and file.
+    """
+    def __init__(__self__, resource_name, opts=None, group=None, key=None, protected=None, value=None, variable_type=None, __props__=None, __name__=None, __opts__=None):
         """
         This resource allows you to create and manage CI/CD variables for your GitLab groups.
         For further information on variables, consult the [gitlab
@@ -38,6 +42,7 @@ class GroupVariable(pulumi.CustomResource):
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         :param pulumi.Input[str] value: The value of the variable.
+        :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_variable.html.markdown.
         """
@@ -68,6 +73,7 @@ class GroupVariable(pulumi.CustomResource):
             if value is None:
                 raise TypeError("Missing required property 'value'")
             __props__['value'] = value
+            __props__['variable_type'] = variable_type
         super(GroupVariable, __self__).__init__(
             'gitlab:index/groupVariable:GroupVariable',
             resource_name,
@@ -75,7 +81,7 @@ class GroupVariable(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, group=None, key=None, protected=None, value=None):
+    def get(resource_name, id, opts=None, group=None, key=None, protected=None, value=None, variable_type=None):
         """
         Get an existing GroupVariable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -87,6 +93,7 @@ class GroupVariable(pulumi.CustomResource):
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         :param pulumi.Input[str] value: The value of the variable.
+        :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_variable.html.markdown.
         """
@@ -97,6 +104,7 @@ class GroupVariable(pulumi.CustomResource):
         __props__["key"] = key
         __props__["protected"] = protected
         __props__["value"] = value
+        __props__["variable_type"] = variable_type
         return GroupVariable(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -56,9 +56,17 @@ export class ProjectVariable extends pulumi.CustomResource {
     }
 
     /**
+     * The environmentScope of the variable
+     */
+    public readonly environmentScope!: pulumi.Output<string | undefined>;
+    /**
      * The name of the variable.
      */
     public readonly key!: pulumi.Output<string>;
+    /**
+     * If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
+     */
+    public readonly masked!: pulumi.Output<boolean | undefined>;
     /**
      * The name or id of the project to add the hook to.
      */
@@ -71,6 +79,10 @@ export class ProjectVariable extends pulumi.CustomResource {
      * The value of the variable.
      */
     public readonly value!: pulumi.Output<string>;
+    /**
+     * The type of a variable. Available types are: envVar (default) and file.
+     */
+    public readonly variableType!: pulumi.Output<string | undefined>;
 
     /**
      * Create a ProjectVariable resource with the given unique name, arguments, and options.
@@ -84,10 +96,13 @@ export class ProjectVariable extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ProjectVariableState | undefined;
+            inputs["environmentScope"] = state ? state.environmentScope : undefined;
             inputs["key"] = state ? state.key : undefined;
+            inputs["masked"] = state ? state.masked : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["protected"] = state ? state.protected : undefined;
             inputs["value"] = state ? state.value : undefined;
+            inputs["variableType"] = state ? state.variableType : undefined;
         } else {
             const args = argsOrState as ProjectVariableArgs | undefined;
             if (!args || args.key === undefined) {
@@ -99,10 +114,13 @@ export class ProjectVariable extends pulumi.CustomResource {
             if (!args || args.value === undefined) {
                 throw new Error("Missing required property 'value'");
             }
+            inputs["environmentScope"] = args ? args.environmentScope : undefined;
             inputs["key"] = args ? args.key : undefined;
+            inputs["masked"] = args ? args.masked : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["protected"] = args ? args.protected : undefined;
             inputs["value"] = args ? args.value : undefined;
+            inputs["variableType"] = args ? args.variableType : undefined;
         }
         if (!opts) {
             opts = {}
@@ -120,9 +138,17 @@ export class ProjectVariable extends pulumi.CustomResource {
  */
 export interface ProjectVariableState {
     /**
+     * The environmentScope of the variable
+     */
+    readonly environmentScope?: pulumi.Input<string>;
+    /**
      * The name of the variable.
      */
     readonly key?: pulumi.Input<string>;
+    /**
+     * If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
+     */
+    readonly masked?: pulumi.Input<boolean>;
     /**
      * The name or id of the project to add the hook to.
      */
@@ -135,6 +161,10 @@ export interface ProjectVariableState {
      * The value of the variable.
      */
     readonly value?: pulumi.Input<string>;
+    /**
+     * The type of a variable. Available types are: envVar (default) and file.
+     */
+    readonly variableType?: pulumi.Input<string>;
 }
 
 /**
@@ -142,9 +172,17 @@ export interface ProjectVariableState {
  */
 export interface ProjectVariableArgs {
     /**
+     * The environmentScope of the variable
+     */
+    readonly environmentScope?: pulumi.Input<string>;
+    /**
      * The name of the variable.
      */
     readonly key: pulumi.Input<string>;
+    /**
+     * If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
+     */
+    readonly masked?: pulumi.Input<boolean>;
     /**
      * The name or id of the project to add the hook to.
      */
@@ -157,4 +195,8 @@ export interface ProjectVariableArgs {
      * The value of the variable.
      */
     readonly value: pulumi.Input<string>;
+    /**
+     * The type of a variable. Available types are: envVar (default) and file.
+     */
+    readonly variableType?: pulumi.Input<string>;
 }

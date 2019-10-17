@@ -69,6 +69,10 @@ export class GroupVariable extends pulumi.CustomResource {
      * The value of the variable.
      */
     public readonly value!: pulumi.Output<string>;
+    /**
+     * The type of a variable. Available types are: envVar (default) and file.
+     */
+    public readonly variableType!: pulumi.Output<string | undefined>;
 
     /**
      * Create a GroupVariable resource with the given unique name, arguments, and options.
@@ -86,6 +90,7 @@ export class GroupVariable extends pulumi.CustomResource {
             inputs["key"] = state ? state.key : undefined;
             inputs["protected"] = state ? state.protected : undefined;
             inputs["value"] = state ? state.value : undefined;
+            inputs["variableType"] = state ? state.variableType : undefined;
         } else {
             const args = argsOrState as GroupVariableArgs | undefined;
             if (!args || args.group === undefined) {
@@ -101,6 +106,7 @@ export class GroupVariable extends pulumi.CustomResource {
             inputs["key"] = args ? args.key : undefined;
             inputs["protected"] = args ? args.protected : undefined;
             inputs["value"] = args ? args.value : undefined;
+            inputs["variableType"] = args ? args.variableType : undefined;
         }
         if (!opts) {
             opts = {}
@@ -133,6 +139,10 @@ export interface GroupVariableState {
      * The value of the variable.
      */
     readonly value?: pulumi.Input<string>;
+    /**
+     * The type of a variable. Available types are: envVar (default) and file.
+     */
+    readonly variableType?: pulumi.Input<string>;
 }
 
 /**
@@ -155,4 +165,8 @@ export interface GroupVariableArgs {
      * The value of the variable.
      */
     readonly value: pulumi.Input<string>;
+    /**
+     * The type of a variable. Available types are: envVar (default) and file.
+     */
+    readonly variableType?: pulumi.Input<string>;
 }

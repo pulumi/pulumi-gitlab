@@ -12,6 +12,7 @@ for pkg in __all__:
 # Export this package's modules as members:
 from .branch_protection import *
 from .deploy_key import *
+from .deploy_key_enable import *
 from .group import *
 from .group_membership import *
 from .group_variable import *
@@ -22,6 +23,8 @@ from .project import *
 from .project_cluster import *
 from .project_hook import *
 from .project_membership import *
+from .project_push_rules import *
+from .project_share_group import *
 from .project_variable import *
 from .service_jira import *
 from .service_slack import *

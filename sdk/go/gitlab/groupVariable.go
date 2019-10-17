@@ -35,11 +35,13 @@ func NewGroupVariable(ctx *pulumi.Context,
 		inputs["key"] = nil
 		inputs["protected"] = nil
 		inputs["value"] = nil
+		inputs["variableType"] = nil
 	} else {
 		inputs["group"] = args.Group
 		inputs["key"] = args.Key
 		inputs["protected"] = args.Protected
 		inputs["value"] = args.Value
+		inputs["variableType"] = args.VariableType
 	}
 	s, err := ctx.RegisterResource("gitlab:index/groupVariable:GroupVariable", name, true, inputs, opts...)
 	if err != nil {
@@ -58,6 +60,7 @@ func GetGroupVariable(ctx *pulumi.Context,
 		inputs["key"] = state.Key
 		inputs["protected"] = state.Protected
 		inputs["value"] = state.Value
+		inputs["variableType"] = state.VariableType
 	}
 	s, err := ctx.ReadResource("gitlab:index/groupVariable:GroupVariable", name, id, inputs, opts...)
 	if err != nil {
@@ -96,6 +99,11 @@ func (r *GroupVariable) Value() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["value"])
 }
 
+// The type of a variable. Available types are: envVar (default) and file.
+func (r *GroupVariable) VariableType() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["variableType"])
+}
+
 // Input properties used for looking up and filtering GroupVariable resources.
 type GroupVariableState struct {
 	// The name or id of the group to add the hook to.
@@ -106,6 +114,8 @@ type GroupVariableState struct {
 	Protected interface{}
 	// The value of the variable.
 	Value interface{}
+	// The type of a variable. Available types are: envVar (default) and file.
+	VariableType interface{}
 }
 
 // The set of arguments for constructing a GroupVariable resource.
@@ -118,4 +128,6 @@ type GroupVariableArgs struct {
 	Protected interface{}
 	// The value of the variable.
 	Value interface{}
+	// The type of a variable. Available types are: envVar (default) and file.
+	VariableType interface{}
 }
