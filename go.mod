@@ -12,9 +12,9 @@ replace (
 )
 
 require (
-	github.com/hashicorp/terraform v0.12.6
+	github.com/hashicorp/terraform v0.12.7
 	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v0.17.28-0.20190731182900-6804d640fc7c
-	github.com/pulumi/pulumi-terraform v0.18.4-0.20190828172748-3f206601e7a1
+	github.com/pulumi/pulumi-terraform v0.18.4-0.20191030013051-eccdb58dc332
 	github.com/terraform-providers/terraform-provider-gitlab v0.0.0-20191017095409-67c4a8550246
 )
