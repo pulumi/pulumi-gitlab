@@ -1,7 +1,10 @@
 ## HEAD (Unreleased)
-* Add support for DotNet SDK Generation
+_(none)_
 
 ---
+
+## 1.1.0 (2019-11-15)
+* Add support for DotNet SDK Generation
 
 ## 1.0.0 (2019-10-17)
 * Upgrade to v2.3.0 of the Gitlab Terraform Provider
