@@ -47,7 +47,7 @@ namespace Pulumi.Gitlab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BranchProtection(string name, BranchProtectionArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/branchProtection:BranchProtection", name, args, MakeResourceOptions(options, ""))
+            : base("gitlab:index/branchProtection:BranchProtection", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -76,43 +76,43 @@ func GetPipelineSchedule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *PipelineSchedule) URN() *pulumi.URNOutput {
+func (r *PipelineSchedule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *PipelineSchedule) ID() *pulumi.IDOutput {
+func (r *PipelineSchedule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
-func (r *PipelineSchedule) Active() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["active"])
+func (r *PipelineSchedule) Active() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["active"])
 }
 
 // The cron (e.g. `0 1 * * *`).
-func (r *PipelineSchedule) Cron() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cron"])
+func (r *PipelineSchedule) Cron() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cron"])
 }
 
 // The timezone.
-func (r *PipelineSchedule) CronTimezone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cronTimezone"])
+func (r *PipelineSchedule) CronTimezone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cronTimezone"])
 }
 
 // The description of the pipeline schedule.
-func (r *PipelineSchedule) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *PipelineSchedule) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The name or id of the project to add the schedule to.
-func (r *PipelineSchedule) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *PipelineSchedule) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The branch/tag name to be triggered.
-func (r *PipelineSchedule) Ref() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ref"])
+func (r *PipelineSchedule) Ref() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ref"])
 }
 
 // Input properties used for looking up and filtering PipelineSchedule resources.

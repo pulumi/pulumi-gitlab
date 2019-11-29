@@ -41,7 +41,7 @@ namespace Pulumi.Gitlab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ProjectMembership(string name, ProjectMembershipArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/projectMembership:ProjectMembership", name, args, MakeResourceOptions(options, ""))
+            : base("gitlab:index/projectMembership:ProjectMembership", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

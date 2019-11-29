@@ -63,6 +63,12 @@ namespace Pulumi.Gitlab
         public Output<bool?> RequestAccessEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// The group level registration token to use during runner setup.
+        /// </summary>
+        [Output("runnersToken")]
+        public Output<string> RunnersToken { get; private set; } = null!;
+
+        /// <summary>
         /// Set to `public` to create a public group.
         /// Valid values are `private`, `internal`, `public`.
         /// Groups are created as private by default.
@@ -85,7 +91,7 @@ namespace Pulumi.Gitlab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Group(string name, GroupArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/group:Group", name, args, MakeResourceOptions(options, ""))
+            : base("gitlab:index/group:Group", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
@@ -224,6 +230,12 @@ namespace Pulumi.Gitlab
         /// </summary>
         [Input("requestAccessEnabled")]
         public Input<bool>? RequestAccessEnabled { get; set; }
+
+        /// <summary>
+        /// The group level registration token to use during runner setup.
+        /// </summary>
+        [Input("runnersToken")]
+        public Input<string>? RunnersToken { get; set; }
 
         /// <summary>
         /// Set to `public` to create a public group.

@@ -34,6 +34,7 @@ func NewUser(ctx *pulumi.Context,
 		inputs["name"] = nil
 		inputs["password"] = nil
 		inputs["projectsLimit"] = nil
+		inputs["resetPassword"] = nil
 		inputs["skipConfirmation"] = nil
 		inputs["username"] = nil
 	} else {
@@ -44,6 +45,7 @@ func NewUser(ctx *pulumi.Context,
 		inputs["name"] = args.Name
 		inputs["password"] = args.Password
 		inputs["projectsLimit"] = args.ProjectsLimit
+		inputs["resetPassword"] = args.ResetPassword
 		inputs["skipConfirmation"] = args.SkipConfirmation
 		inputs["username"] = args.Username
 	}
@@ -67,6 +69,7 @@ func GetUser(ctx *pulumi.Context,
 		inputs["name"] = state.Name
 		inputs["password"] = state.Password
 		inputs["projectsLimit"] = state.ProjectsLimit
+		inputs["resetPassword"] = state.ResetPassword
 		inputs["skipConfirmation"] = state.SkipConfirmation
 		inputs["username"] = state.Username
 	}
@@ -78,59 +81,64 @@ func GetUser(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *User) URN() *pulumi.URNOutput {
+func (r *User) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *User) ID() *pulumi.IDOutput {
+func (r *User) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Boolean, defaults to false. Whether to allow the user to create groups.
-func (r *User) CanCreateGroup() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["canCreateGroup"])
+func (r *User) CanCreateGroup() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["canCreateGroup"])
 }
 
 // The e-mail address of the user.
-func (r *User) Email() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["email"])
+func (r *User) Email() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["email"])
 }
 
 // Boolean, defaults to false.  Whether to enable administrative priviledges
 // for the user.
-func (r *User) IsAdmin() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["isAdmin"])
+func (r *User) IsAdmin() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["isAdmin"])
 }
 
 // Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
-func (r *User) IsExternal() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["isExternal"])
+func (r *User) IsExternal() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["isExternal"])
 }
 
 // The name of the user.
-func (r *User) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *User) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The password of the user.
-func (r *User) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+func (r *User) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
 }
 
 // Integer, defaults to 0.  Number of projects user can create.
-func (r *User) ProjectsLimit() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["projectsLimit"])
+func (r *User) ProjectsLimit() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["projectsLimit"])
+}
+
+// Boolean, defaults to false. Send user password reset link.
+func (r *User) ResetPassword() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["resetPassword"])
 }
 
 // Boolean, defaults to true. Whether to skip confirmation.
-func (r *User) SkipConfirmation() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["skipConfirmation"])
+func (r *User) SkipConfirmation() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["skipConfirmation"])
 }
 
 // The username of the user.
-func (r *User) Username() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["username"])
+func (r *User) Username() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["username"])
 }
 
 // Input properties used for looking up and filtering User resources.
@@ -150,6 +158,8 @@ type UserState struct {
 	Password interface{}
 	// Integer, defaults to 0.  Number of projects user can create.
 	ProjectsLimit interface{}
+	// Boolean, defaults to false. Send user password reset link.
+	ResetPassword interface{}
 	// Boolean, defaults to true. Whether to skip confirmation.
 	SkipConfirmation interface{}
 	// The username of the user.
@@ -173,6 +183,8 @@ type UserArgs struct {
 	Password interface{}
 	// Integer, defaults to 0.  Number of projects user can create.
 	ProjectsLimit interface{}
+	// Boolean, defaults to false. Send user password reset link.
+	ResetPassword interface{}
 	// Boolean, defaults to true. Whether to skip confirmation.
 	SkipConfirmation interface{}
 	// The username of the user.

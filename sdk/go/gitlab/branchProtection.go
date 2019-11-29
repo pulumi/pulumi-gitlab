@@ -68,33 +68,33 @@ func GetBranchProtection(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *BranchProtection) URN() *pulumi.URNOutput {
+func (r *BranchProtection) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *BranchProtection) ID() *pulumi.IDOutput {
+func (r *BranchProtection) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Name of the branch.
-func (r *BranchProtection) Branch() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["branch"])
+func (r *BranchProtection) Branch() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["branch"])
 }
 
 // One of five levels of access to the project.
-func (r *BranchProtection) MergeAccessLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["mergeAccessLevel"])
+func (r *BranchProtection) MergeAccessLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["mergeAccessLevel"])
 }
 
 // The id of the project.
-func (r *BranchProtection) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *BranchProtection) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // One of five levels of access to the project.
-func (r *BranchProtection) PushAccessLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["pushAccessLevel"])
+func (r *BranchProtection) PushAccessLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["pushAccessLevel"])
 }
 
 // Input properties used for looking up and filtering BranchProtection resources.

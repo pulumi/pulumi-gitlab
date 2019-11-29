@@ -118,127 +118,127 @@ func GetServiceSlack(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ServiceSlack) URN() *pulumi.URNOutput {
+func (r *ServiceSlack) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ServiceSlack) ID() *pulumi.IDOutput {
+func (r *ServiceSlack) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name of the channel to receive confidential issue events notifications.
-func (r *ServiceSlack) ConfidentialIssueChannel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["confidentialIssueChannel"])
+func (r *ServiceSlack) ConfidentialIssueChannel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["confidentialIssueChannel"])
 }
 
 // Enable notifications for confidential issues events.
-func (r *ServiceSlack) ConfidentialIssuesEvents() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["confidentialIssuesEvents"])
+func (r *ServiceSlack) ConfidentialIssuesEvents() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["confidentialIssuesEvents"])
 }
 
 // Enable notifications for confidential note events.
-func (r *ServiceSlack) ConfidentialNoteEvents() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["confidentialNoteEvents"])
+func (r *ServiceSlack) ConfidentialNoteEvents() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["confidentialNoteEvents"])
 }
 
 // The name of the channel to receive issue events notifications.
-func (r *ServiceSlack) IssueChannel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["issueChannel"])
+func (r *ServiceSlack) IssueChannel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["issueChannel"])
 }
 
 // Enable notifications for issues events.
-func (r *ServiceSlack) IssuesEvents() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["issuesEvents"])
+func (r *ServiceSlack) IssuesEvents() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["issuesEvents"])
 }
 
-func (r *ServiceSlack) JobEvents() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["jobEvents"])
+func (r *ServiceSlack) JobEvents() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["jobEvents"])
 }
 
 // The name of the channel to receive merge request events notifications.
-func (r *ServiceSlack) MergeRequestChannel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["mergeRequestChannel"])
+func (r *ServiceSlack) MergeRequestChannel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["mergeRequestChannel"])
 }
 
 // Enable notifications for merge requests events.
-func (r *ServiceSlack) MergeRequestsEvents() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["mergeRequestsEvents"])
+func (r *ServiceSlack) MergeRequestsEvents() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["mergeRequestsEvents"])
 }
 
 // The name of the channel to receive note events notifications.
-func (r *ServiceSlack) NoteChannel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["noteChannel"])
+func (r *ServiceSlack) NoteChannel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["noteChannel"])
 }
 
 // Enable notifications for note events.
-func (r *ServiceSlack) NoteEvents() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["noteEvents"])
+func (r *ServiceSlack) NoteEvents() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["noteEvents"])
 }
 
 // Send notifications for broken pipelines.
-func (r *ServiceSlack) NotifyOnlyBrokenPipelines() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["notifyOnlyBrokenPipelines"])
+func (r *ServiceSlack) NotifyOnlyBrokenPipelines() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["notifyOnlyBrokenPipelines"])
 }
 
 // Send notifications only for the default branch.
-func (r *ServiceSlack) NotifyOnlyDefaultBranch() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["notifyOnlyDefaultBranch"])
+func (r *ServiceSlack) NotifyOnlyDefaultBranch() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["notifyOnlyDefaultBranch"])
 }
 
 // The name of the channel to receive pipeline events notifications.
-func (r *ServiceSlack) PipelineChannel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["pipelineChannel"])
+func (r *ServiceSlack) PipelineChannel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["pipelineChannel"])
 }
 
 // Enable notifications for pipeline events.
-func (r *ServiceSlack) PipelineEvents() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["pipelineEvents"])
+func (r *ServiceSlack) PipelineEvents() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["pipelineEvents"])
 }
 
 // ID of the project you want to activate integration on.
-func (r *ServiceSlack) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *ServiceSlack) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The name of the channel to receive push events notifications.
-func (r *ServiceSlack) PushChannel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["pushChannel"])
+func (r *ServiceSlack) PushChannel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["pushChannel"])
 }
 
 // Enable notifications for push events.
-func (r *ServiceSlack) PushEvents() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["pushEvents"])
+func (r *ServiceSlack) PushEvents() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["pushEvents"])
 }
 
 // The name of the channel to receive tag push events notifications.
-func (r *ServiceSlack) TagPushChannel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tagPushChannel"])
+func (r *ServiceSlack) TagPushChannel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tagPushChannel"])
 }
 
 // Enable notifications for tag push events.
-func (r *ServiceSlack) TagPushEvents() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["tagPushEvents"])
+func (r *ServiceSlack) TagPushEvents() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["tagPushEvents"])
 }
 
 // Username to use.
-func (r *ServiceSlack) Username() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["username"])
+func (r *ServiceSlack) Username() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["username"])
 }
 
 // Webhook URL (ex.: https://hooks.slack.com/services/...)
-func (r *ServiceSlack) Webhook() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["webhook"])
+func (r *ServiceSlack) Webhook() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["webhook"])
 }
 
 // The name of the channel to receive wiki page events notifications.
-func (r *ServiceSlack) WikiPageChannel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["wikiPageChannel"])
+func (r *ServiceSlack) WikiPageChannel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["wikiPageChannel"])
 }
 
 // Enable notifications for wiki page events.
-func (r *ServiceSlack) WikiPageEvents() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["wikiPageEvents"])
+func (r *ServiceSlack) WikiPageEvents() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["wikiPageEvents"])
 }
 
 // Input properties used for looking up and filtering ServiceSlack resources.

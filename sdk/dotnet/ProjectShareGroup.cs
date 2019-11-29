@@ -41,7 +41,7 @@ namespace Pulumi.Gitlab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ProjectShareGroup(string name, ProjectShareGroupArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/projectShareGroup:ProjectShareGroup", name, args, MakeResourceOptions(options, ""))
+            : base("gitlab:index/projectShareGroup:ProjectShareGroup", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -15,7 +15,7 @@ namespace Pulumi.Gitlab
     public partial class GroupMembership : Pulumi.CustomResource
     {
         /// <summary>
-        /// Acceptable values are: guest, reporter, developer, master, owner.
+        /// Acceptable values are: guest, reporter, developer, maintainer, owner.
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -47,7 +47,7 @@ namespace Pulumi.Gitlab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GroupMembership(string name, GroupMembershipArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/groupMembership:GroupMembership", name, args, MakeResourceOptions(options, ""))
+            : base("gitlab:index/groupMembership:GroupMembership", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
@@ -85,7 +85,7 @@ namespace Pulumi.Gitlab
     public sealed class GroupMembershipArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Acceptable values are: guest, reporter, developer, master, owner.
+        /// Acceptable values are: guest, reporter, developer, maintainer, owner.
         /// </summary>
         [Input("accessLevel", required: true)]
         public Input<string> AccessLevel { get; set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.Gitlab
     public sealed class GroupMembershipState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Acceptable values are: guest, reporter, developer, master, owner.
+        /// Acceptable values are: guest, reporter, developer, maintainer, owner.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }

@@ -30,6 +30,7 @@ func LookupGroup(ctx *pulumi.Context, args *GetGroupArgs) (*GetGroupResult, erro
 		ParentId: outputs["parentId"],
 		Path: outputs["path"],
 		RequestAccessEnabled: outputs["requestAccessEnabled"],
+		RunnersToken: outputs["runnersToken"],
 		VisibilityLevel: outputs["visibilityLevel"],
 		WebUrl: outputs["webUrl"],
 		Id: outputs["id"],
@@ -63,6 +64,8 @@ type GetGroupResult struct {
 	Path interface{}
 	// Boolean, is request for access enabled to the group.
 	RequestAccessEnabled interface{}
+	// The group level registration token to use during runner setup.
+	RunnersToken interface{}
 	// Visibility level of the group. Possible values are `private`, `internal`, `public`.
 	VisibilityLevel interface{}
 	// Web URL of the group.

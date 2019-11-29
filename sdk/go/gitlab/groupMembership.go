@@ -65,38 +65,38 @@ func GetGroupMembership(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *GroupMembership) URN() *pulumi.URNOutput {
+func (r *GroupMembership) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *GroupMembership) ID() *pulumi.IDOutput {
+func (r *GroupMembership) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// Acceptable values are: guest, reporter, developer, master, owner.
-func (r *GroupMembership) AccessLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accessLevel"])
+// Acceptable values are: guest, reporter, developer, maintainer, owner.
+func (r *GroupMembership) AccessLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accessLevel"])
 }
 
 // Expiration date for the group membership. Format: `YYYY-MM-DD`
-func (r *GroupMembership) ExpiresAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["expiresAt"])
+func (r *GroupMembership) ExpiresAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["expiresAt"])
 }
 
 // The id of the group.
-func (r *GroupMembership) GroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["groupId"])
+func (r *GroupMembership) GroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["groupId"])
 }
 
 // The id of the user.
-func (r *GroupMembership) UserId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["userId"])
+func (r *GroupMembership) UserId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["userId"])
 }
 
 // Input properties used for looking up and filtering GroupMembership resources.
 type GroupMembershipState struct {
-	// Acceptable values are: guest, reporter, developer, master, owner.
+	// Acceptable values are: guest, reporter, developer, maintainer, owner.
 	AccessLevel interface{}
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt interface{}
@@ -108,7 +108,7 @@ type GroupMembershipState struct {
 
 // The set of arguments for constructing a GroupMembership resource.
 type GroupMembershipArgs struct {
-	// Acceptable values are: guest, reporter, developer, master, owner.
+	// Acceptable values are: guest, reporter, developer, maintainer, owner.
 	AccessLevel interface{}
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt interface{}

@@ -17,8 +17,8 @@ package gitlab
 import (
 	"unicode"
 
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
 	"github.com/pulumi/pulumi/pkg/tokens"
 	"github.com/terraform-providers/terraform-provider-gitlab/gitlab"
 )
@@ -83,26 +83,29 @@ func Provider() tfbridge.ProviderInfo {
 			"insecure":    {},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"gitlab_branch_protection":   {Tok: gitLabResource(gitLabMod, "BranchProtection")},
-			"gitlab_tag_protection":      {Tok: gitLabResource(gitLabMod, "TagProtection")},
-			"gitlab_group":               {Tok: gitLabResource(gitLabMod, "Group")},
-			"gitlab_project":             {Tok: gitLabResource(gitLabMod, "Project")},
-			"gitlab_project_push_rules":  {Tok: gitLabResource(gitLabMod, "ProjectPushRules")},
-			"gitlab_label":               {Tok: gitLabResource(gitLabMod, "Label")},
-			"gitlab_pipeline_schedule":   {Tok: gitLabResource(gitLabMod, "PipelineSchedule")},
-			"gitlab_pipeline_trigger":    {Tok: gitLabResource(gitLabMod, "PipelineTrigger")},
-			"gitlab_project_hook":        {Tok: gitLabResource(gitLabMod, "ProjectHook")},
-			"gitlab_deploy_key":          {Tok: gitLabResource(gitLabMod, "DeployKey")},
-			"gitlab_deploy_key_enable":   {Tok: gitLabResource(gitLabMod, "DeployKeyEnable")},
-			"gitlab_user":                {Tok: gitLabResource(gitLabMod, "User")},
-			"gitlab_project_membership":  {Tok: gitLabResource(gitLabMod, "ProjectMembership")},
-			"gitlab_group_membership":    {Tok: gitLabResource(gitLabMod, "GroupMembership")},
-			"gitlab_project_variable":    {Tok: gitLabResource(gitLabMod, "ProjectVariable")},
-			"gitlab_project_share_group": {Tok: gitLabResource(gitLabMod, "ProjectShareGroup")},
-			"gitlab_group_variable":      {Tok: gitLabResource(gitLabMod, "GroupVariable")},
-			"gitlab_project_cluster":     {Tok: gitLabResource(gitLabMod, "ProjectCluster")},
-			"gitlab_service_slack":       {Tok: gitLabResource(gitLabMod, "ServiceSlack")},
-			"gitlab_service_jira":        {Tok: gitLabResource(gitLabMod, "ServiceJira")},
+			"gitlab_branch_protection":          {Tok: gitLabResource(gitLabMod, "BranchProtection")},
+			"gitlab_tag_protection":             {Tok: gitLabResource(gitLabMod, "TagProtection")},
+			"gitlab_group":                      {Tok: gitLabResource(gitLabMod, "Group")},
+			"gitlab_group_label":                {Tok: gitLabResource(gitLabMod, "GroupLabel")},
+			"gitlab_group_cluster":              {Tok: gitLabResource(gitLabMod, "GroupCluster")},
+			"gitlab_project":                    {Tok: gitLabResource(gitLabMod, "Project")},
+			"gitlab_project_push_rules":         {Tok: gitLabResource(gitLabMod, "ProjectPushRules")},
+			"gitlab_label":                      {Tok: gitLabResource(gitLabMod, "Label")},
+			"gitlab_pipeline_schedule":          {Tok: gitLabResource(gitLabMod, "PipelineSchedule")},
+			"gitlab_pipeline_trigger":           {Tok: gitLabResource(gitLabMod, "PipelineTrigger")},
+			"gitlab_pipeline_schedule_variable": {Tok: gitLabResource(gitLabMod, "PipelineScheduleVariable")},
+			"gitlab_project_hook":               {Tok: gitLabResource(gitLabMod, "ProjectHook")},
+			"gitlab_deploy_key":                 {Tok: gitLabResource(gitLabMod, "DeployKey")},
+			"gitlab_deploy_key_enable":          {Tok: gitLabResource(gitLabMod, "DeployKeyEnable")},
+			"gitlab_user":                       {Tok: gitLabResource(gitLabMod, "User")},
+			"gitlab_project_membership":         {Tok: gitLabResource(gitLabMod, "ProjectMembership")},
+			"gitlab_group_membership":           {Tok: gitLabResource(gitLabMod, "GroupMembership")},
+			"gitlab_project_variable":           {Tok: gitLabResource(gitLabMod, "ProjectVariable")},
+			"gitlab_project_share_group":        {Tok: gitLabResource(gitLabMod, "ProjectShareGroup")},
+			"gitlab_group_variable":             {Tok: gitLabResource(gitLabMod, "GroupVariable")},
+			"gitlab_project_cluster":            {Tok: gitLabResource(gitLabMod, "ProjectCluster")},
+			"gitlab_service_slack":              {Tok: gitLabResource(gitLabMod, "ServiceSlack")},
+			"gitlab_service_jira":               {Tok: gitLabResource(gitLabMod, "ServiceJira")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"gitlab_group":   {Tok: gitLabDataSource(gitLabMod, "getGroup")},

@@ -37,8 +37,8 @@ build:: provider tfgen
 		rm ./bin/setup.py.bak && \
 		cd ./bin && $(PYTHON) setup.py build sdist
 	cd ${PACKDIR}/dotnet/ && \
-  	echo "${VERSION:v%=%}" >version.txt && \
-  	dotnet build /p:Version=${DOTNET_VERSION}
+		echo "${VERSION:v%=%}" >version.txt && \
+  		dotnet build /p:Version=${DOTNET_VERSION}
 
 provider::
 	go install -ldflags "-X github.com/pulumi/pulumi-gitlab/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${PROVIDER}

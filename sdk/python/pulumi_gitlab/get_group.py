@@ -13,7 +13,7 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, description=None, full_name=None, full_path=None, group_id=None, lfs_enabled=None, name=None, parent_id=None, path=None, request_access_enabled=None, visibility_level=None, web_url=None, id=None):
+    def __init__(__self__, description=None, full_name=None, full_path=None, group_id=None, lfs_enabled=None, name=None, parent_id=None, path=None, request_access_enabled=None, runners_token=None, visibility_level=None, web_url=None, id=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -65,6 +65,12 @@ class GetGroupResult:
         """
         Boolean, is request for access enabled to the group.
         """
+        if runners_token and not isinstance(runners_token, str):
+            raise TypeError("Expected argument 'runners_token' to be a str")
+        __self__.runners_token = runners_token
+        """
+        The group level registration token to use during runner setup.
+        """
         if visibility_level and not isinstance(visibility_level, str):
             raise TypeError("Expected argument 'visibility_level' to be a str")
         __self__.visibility_level = visibility_level
@@ -98,6 +104,7 @@ class AwaitableGetGroupResult(GetGroupResult):
             parent_id=self.parent_id,
             path=self.path,
             request_access_enabled=self.request_access_enabled,
+            runners_token=self.runners_token,
             visibility_level=self.visibility_level,
             web_url=self.web_url,
             id=self.id)
@@ -131,6 +138,7 @@ def get_group(full_path=None,group_id=None,opts=None):
         parent_id=__ret__.get('parentId'),
         path=__ret__.get('path'),
         request_access_enabled=__ret__.get('requestAccessEnabled'),
+        runners_token=__ret__.get('runnersToken'),
         visibility_level=__ret__.get('visibilityLevel'),
         web_url=__ret__.get('webUrl'),
         id=__ret__.get('id'))

@@ -76,58 +76,58 @@ func GetProjectPushRules(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ProjectPushRules) URN() *pulumi.URNOutput {
+func (r *ProjectPushRules) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ProjectPushRules) ID() *pulumi.IDOutput {
+func (r *ProjectPushRules) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // All commit author emails must match this regex, e.g. "@my-company.com$"
-func (r *ProjectPushRules) AuthorEmailRegex() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["authorEmailRegex"])
+func (r *ProjectPushRules) AuthorEmailRegex() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["authorEmailRegex"])
 }
 
 // All branch names must match this regex, e.g. "(feature|hotfix)\/*"
-func (r *ProjectPushRules) BranchNameRegex() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["branchNameRegex"])
+func (r *ProjectPushRules) BranchNameRegex() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["branchNameRegex"])
 }
 
 // All commit messages must match this regex, e.g. "Fixed \d+\..*"
-func (r *ProjectPushRules) CommitMessageRegex() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["commitMessageRegex"])
+func (r *ProjectPushRules) CommitMessageRegex() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["commitMessageRegex"])
 }
 
 // Deny deleting a tag
-func (r *ProjectPushRules) DenyDeleteTag() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["denyDeleteTag"])
+func (r *ProjectPushRules) DenyDeleteTag() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["denyDeleteTag"])
 }
 
 // All commited filenames must not match this regex, e.g. "(jar|exe)$"
-func (r *ProjectPushRules) FileNameRegex() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fileNameRegex"])
+func (r *ProjectPushRules) FileNameRegex() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fileNameRegex"])
 }
 
 // Maximum file size (MB)
-func (r *ProjectPushRules) MaxFileSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxFileSize"])
+func (r *ProjectPushRules) MaxFileSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxFileSize"])
 }
 
 // Restrict commits by author (email) to existing GitLab users
-func (r *ProjectPushRules) MemberCheck() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["memberCheck"])
+func (r *ProjectPushRules) MemberCheck() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["memberCheck"])
 }
 
 // GitLab will reject any files that are likely to contain secrets
-func (r *ProjectPushRules) PreventSecrets() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["preventSecrets"])
+func (r *ProjectPushRules) PreventSecrets() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["preventSecrets"])
 }
 
 // The name or id of the project to add the push rules to.
-func (r *ProjectPushRules) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *ProjectPushRules) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Input properties used for looking up and filtering ProjectPushRules resources.

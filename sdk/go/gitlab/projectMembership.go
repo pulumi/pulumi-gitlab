@@ -62,28 +62,28 @@ func GetProjectMembership(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ProjectMembership) URN() *pulumi.URNOutput {
+func (r *ProjectMembership) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ProjectMembership) ID() *pulumi.IDOutput {
+func (r *ProjectMembership) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // One of five levels of access to the project.
-func (r *ProjectMembership) AccessLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accessLevel"])
+func (r *ProjectMembership) AccessLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accessLevel"])
 }
 
 // The id of the project.
-func (r *ProjectMembership) ProjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectId"])
+func (r *ProjectMembership) ProjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectId"])
 }
 
 // The id of the user.
-func (r *ProjectMembership) UserId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["userId"])
+func (r *ProjectMembership) UserId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["userId"])
 }
 
 // Input properties used for looking up and filtering ProjectMembership resources.

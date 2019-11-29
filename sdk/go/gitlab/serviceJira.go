@@ -82,59 +82,59 @@ func GetServiceJira(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ServiceJira) URN() *pulumi.URNOutput {
+func (r *ServiceJira) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ServiceJira) ID() *pulumi.IDOutput {
+func (r *ServiceJira) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *ServiceJira) Active() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["active"])
+func (r *ServiceJira) Active() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["active"])
 }
 
-func (r *ServiceJira) CreatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdAt"])
+func (r *ServiceJira) CreatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdAt"])
 }
 
 // The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
-func (r *ServiceJira) JiraIssueTransitionId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["jiraIssueTransitionId"])
+func (r *ServiceJira) JiraIssueTransitionId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["jiraIssueTransitionId"])
 }
 
 // The password of the user created to be used with GitLab/JIRA.
-func (r *ServiceJira) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+func (r *ServiceJira) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
 }
 
 // ID of the project you want to activate integration on.
-func (r *ServiceJira) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *ServiceJira) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The short identifier for your JIRA project, all uppercase, e.g., PROJ.
-func (r *ServiceJira) ProjectKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectKey"])
+func (r *ServiceJira) ProjectKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectKey"])
 }
 
-func (r *ServiceJira) Title() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["title"])
+func (r *ServiceJira) Title() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["title"])
 }
 
-func (r *ServiceJira) UpdatedAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updatedAt"])
+func (r *ServiceJira) UpdatedAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updatedAt"])
 }
 
 // The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
-func (r *ServiceJira) Url() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["url"])
+func (r *ServiceJira) Url() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
 // The username of the user created to be used with GitLab/JIRA.
-func (r *ServiceJira) Username() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["username"])
+func (r *ServiceJira) Username() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["username"])
 }
 
 // Input properties used for looking up and filtering ServiceJira resources.

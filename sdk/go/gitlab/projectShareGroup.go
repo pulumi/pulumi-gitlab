@@ -62,28 +62,28 @@ func GetProjectShareGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ProjectShareGroup) URN() *pulumi.URNOutput {
+func (r *ProjectShareGroup) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ProjectShareGroup) ID() *pulumi.IDOutput {
+func (r *ProjectShareGroup) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // One of five levels of access to the project.
-func (r *ProjectShareGroup) AccessLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accessLevel"])
+func (r *ProjectShareGroup) AccessLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accessLevel"])
 }
 
 // The id of the group.
-func (r *ProjectShareGroup) GroupId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["groupId"])
+func (r *ProjectShareGroup) GroupId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["groupId"])
 }
 
 // The id of the project.
-func (r *ProjectShareGroup) ProjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectId"])
+func (r *ProjectShareGroup) ProjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectId"])
 }
 
 // Input properties used for looking up and filtering ProjectShareGroup resources.

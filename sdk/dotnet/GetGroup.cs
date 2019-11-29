@@ -15,7 +15,7 @@ namespace Pulumi.Gitlab
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/group.html.markdown.
         /// </summary>
         public static Task<GetGroupResult> GetGroup(GetGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("gitlab:index/getGroup:getGroup", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("gitlab:index/getGroup:getGroup", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetGroupArgs : Pulumi.ResourceArgs
@@ -74,6 +74,10 @@ namespace Pulumi.Gitlab
         /// </summary>
         public readonly bool RequestAccessEnabled;
         /// <summary>
+        /// The group level registration token to use during runner setup.
+        /// </summary>
+        public readonly string RunnersToken;
+        /// <summary>
         /// Visibility level of the group. Possible values are `private`, `internal`, `public`.
         /// </summary>
         public readonly string VisibilityLevel;
@@ -97,6 +101,7 @@ namespace Pulumi.Gitlab
             int parentId,
             string path,
             bool requestAccessEnabled,
+            string runnersToken,
             string visibilityLevel,
             string webUrl,
             string id)
@@ -110,6 +115,7 @@ namespace Pulumi.Gitlab
             ParentId = parentId;
             Path = path;
             RequestAccessEnabled = requestAccessEnabled;
+            RunnersToken = runnersToken;
             VisibilityLevel = visibilityLevel;
             WebUrl = webUrl;
             Id = id;

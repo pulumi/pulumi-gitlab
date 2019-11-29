@@ -56,6 +56,12 @@ namespace Pulumi.Gitlab
         public Output<int?> ProjectsLimit { get; private set; } = null!;
 
         /// <summary>
+        /// Boolean, defaults to false. Send user password reset link.
+        /// </summary>
+        [Output("resetPassword")]
+        public Output<bool?> ResetPassword { get; private set; } = null!;
+
+        /// <summary>
         /// Boolean, defaults to true. Whether to skip confirmation.
         /// </summary>
         [Output("skipConfirmation")]
@@ -76,7 +82,7 @@ namespace Pulumi.Gitlab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public User(string name, UserArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/user:User", name, args, MakeResourceOptions(options, ""))
+            : base("gitlab:index/user:User", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
@@ -157,6 +163,12 @@ namespace Pulumi.Gitlab
         public Input<int>? ProjectsLimit { get; set; }
 
         /// <summary>
+        /// Boolean, defaults to false. Send user password reset link.
+        /// </summary>
+        [Input("resetPassword")]
+        public Input<bool>? ResetPassword { get; set; }
+
+        /// <summary>
         /// Boolean, defaults to true. Whether to skip confirmation.
         /// </summary>
         [Input("skipConfirmation")]
@@ -217,6 +229,12 @@ namespace Pulumi.Gitlab
         /// </summary>
         [Input("projectsLimit")]
         public Input<int>? ProjectsLimit { get; set; }
+
+        /// <summary>
+        /// Boolean, defaults to false. Send user password reset link.
+        /// </summary>
+        [Input("resetPassword")]
+        public Input<bool>? ResetPassword { get; set; }
 
         /// <summary>
         /// Boolean, defaults to true. Whether to skip confirmation.

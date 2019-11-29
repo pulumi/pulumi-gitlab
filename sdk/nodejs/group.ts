@@ -69,6 +69,10 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly requestAccessEnabled!: pulumi.Output<boolean | undefined>;
     /**
+     * The group level registration token to use during runner setup.
+     */
+    public /*out*/ readonly runnersToken!: pulumi.Output<string>;
+    /**
      * Set to `public` to create a public group.
      * Valid values are `private`, `internal`, `public`.
      * Groups are created as private by default.
@@ -99,6 +103,7 @@ export class Group extends pulumi.CustomResource {
             inputs["parentId"] = state ? state.parentId : undefined;
             inputs["path"] = state ? state.path : undefined;
             inputs["requestAccessEnabled"] = state ? state.requestAccessEnabled : undefined;
+            inputs["runnersToken"] = state ? state.runnersToken : undefined;
             inputs["visibilityLevel"] = state ? state.visibilityLevel : undefined;
             inputs["webUrl"] = state ? state.webUrl : undefined;
         } else {
@@ -115,6 +120,7 @@ export class Group extends pulumi.CustomResource {
             inputs["visibilityLevel"] = args ? args.visibilityLevel : undefined;
             inputs["fullName"] = undefined /*out*/;
             inputs["fullPath"] = undefined /*out*/;
+            inputs["runnersToken"] = undefined /*out*/;
             inputs["webUrl"] = undefined /*out*/;
         }
         if (!opts) {
@@ -166,6 +172,10 @@ export interface GroupState {
      * enable users to request access to the group.
      */
     readonly requestAccessEnabled?: pulumi.Input<boolean>;
+    /**
+     * The group level registration token to use during runner setup.
+     */
+    readonly runnersToken?: pulumi.Input<string>;
     /**
      * Set to `public` to create a public group.
      * Valid values are `private`, `internal`, `public`.
