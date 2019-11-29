@@ -39,6 +39,7 @@ func NewGroup(ctx *pulumi.Context,
 	}
 	inputs["fullName"] = nil
 	inputs["fullPath"] = nil
+	inputs["runnersToken"] = nil
 	inputs["webUrl"] = nil
 	s, err := ctx.RegisterResource("gitlab:index/group:Group", name, true, inputs, opts...)
 	if err != nil {
@@ -61,6 +62,7 @@ func GetGroup(ctx *pulumi.Context,
 		inputs["parentId"] = state.ParentId
 		inputs["path"] = state.Path
 		inputs["requestAccessEnabled"] = state.RequestAccessEnabled
+		inputs["runnersToken"] = state.RunnersToken
 		inputs["visibilityLevel"] = state.VisibilityLevel
 		inputs["webUrl"] = state.WebUrl
 	}
@@ -72,67 +74,72 @@ func GetGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Group) URN() *pulumi.URNOutput {
+func (r *Group) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Group) ID() *pulumi.IDOutput {
+func (r *Group) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The description of the group.
-func (r *Group) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Group) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The full name of the group.
-func (r *Group) FullName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fullName"])
+func (r *Group) FullName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fullName"])
 }
 
 // The full path of the group.
-func (r *Group) FullPath() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fullPath"])
+func (r *Group) FullPath() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fullPath"])
 }
 
 // Boolean, defaults to true.  Whether to enable LFS
 // support for projects in this group.
-func (r *Group) LfsEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["lfsEnabled"])
+func (r *Group) LfsEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["lfsEnabled"])
 }
 
 // The name of this group.
-func (r *Group) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Group) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Integer, id of the parent group (creates a nested group).
-func (r *Group) ParentId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["parentId"])
+func (r *Group) ParentId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["parentId"])
 }
 
 // The path of the group.
-func (r *Group) Path() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["path"])
+func (r *Group) Path() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["path"])
 }
 
 // Boolean, defaults to false.  Whether to
 // enable users to request access to the group.
-func (r *Group) RequestAccessEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["requestAccessEnabled"])
+func (r *Group) RequestAccessEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["requestAccessEnabled"])
+}
+
+// The group level registration token to use during runner setup.
+func (r *Group) RunnersToken() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["runnersToken"])
 }
 
 // Set to `public` to create a public group.
 // Valid values are `private`, `internal`, `public`.
 // Groups are created as private by default.
-func (r *Group) VisibilityLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["visibilityLevel"])
+func (r *Group) VisibilityLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["visibilityLevel"])
 }
 
 // Web URL of the group.
-func (r *Group) WebUrl() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["webUrl"])
+func (r *Group) WebUrl() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["webUrl"])
 }
 
 // Input properties used for looking up and filtering Group resources.
@@ -155,6 +162,8 @@ type GroupState struct {
 	// Boolean, defaults to false.  Whether to
 	// enable users to request access to the group.
 	RequestAccessEnabled interface{}
+	// The group level registration token to use during runner setup.
+	RunnersToken interface{}
 	// Set to `public` to create a public group.
 	// Valid values are `private`, `internal`, `public`.
 	// Groups are created as private by default.

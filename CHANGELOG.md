@@ -1,5 +1,7 @@
 ## HEAD (Unreleased)
 * Upgrade to support go 1.13.x
+* Upgrade to pulumi-terraform-bridge v1.4.2
+* Upgrade to v2.4.0 of the Gitlab Terraform Provider
 
 ---
 

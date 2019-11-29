@@ -3,7 +3,7 @@
 
 using System.Collections.Immutable;
 
-namespace Pulumi.Gitlab.Config
+namespace Pulumi.Gitlab
 {
     public static class Config
     {

@@ -15,7 +15,7 @@ namespace Pulumi.Gitlab
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/project.html.markdown.
         /// </summary>
         public static Task<GetProjectResult> GetProject(GetProjectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gitlab:index/getProject:getProject", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gitlab:index/getProject:getProject", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetProjectArgs : Pulumi.ResourceArgs

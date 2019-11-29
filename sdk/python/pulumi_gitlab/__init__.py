@@ -14,10 +14,13 @@ from .branch_protection import *
 from .deploy_key import *
 from .deploy_key_enable import *
 from .group import *
+from .group_cluster import *
+from .group_label import *
 from .group_membership import *
 from .group_variable import *
 from .label import *
 from .pipeline_schedule import *
+from .pipeline_schedule_variable import *
 from .pipeline_trigger import *
 from .project import *
 from .project_cluster import *

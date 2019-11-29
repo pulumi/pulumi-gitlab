@@ -8,13 +8,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Gitlab
 {
     /// <summary>
-    /// This resource allows you to create and manage project clusters for your GitLab projects.
+    /// This resource allows you to create and manage group clusters for your GitLab groups.
     /// For further information on clusters, consult the [gitlab
-    /// documentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).
+    /// documentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).
     /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_cluster.html.markdown.
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_cluster.html.markdown.
     /// </summary>
-    public partial class ProjectCluster : Pulumi.CustomResource
+    public partial class GroupCluster : Pulumi.CustomResource
     {
         [Output("clusterType")]
         public Output<string> ClusterType { get; private set; } = null!;
@@ -41,6 +41,12 @@ namespace Pulumi.Gitlab
         public Output<string?> EnvironmentScope { get; private set; } = null!;
 
         /// <summary>
+        /// The id of the group to add the cluster to.
+        /// </summary>
+        [Output("group")]
+        public Output<string> Group { get; private set; } = null!;
+
+        /// <summary>
         /// The URL to access the Kubernetes API.
         /// </summary>
         [Output("kubernetesApiUrl")]
@@ -57,12 +63,6 @@ namespace Pulumi.Gitlab
         /// </summary>
         [Output("kubernetesCaCert")]
         public Output<string?> KubernetesCaCert { get; private set; } = null!;
-
-        /// <summary>
-        /// The unique namespace related to the project.
-        /// </summary>
-        [Output("kubernetesNamespace")]
-        public Output<string?> KubernetesNamespace { get; private set; } = null!;
 
         /// <summary>
         /// The token to authenticate against Kubernetes.
@@ -85,30 +85,24 @@ namespace Pulumi.Gitlab
         [Output("platformType")]
         public Output<string> PlatformType { get; private set; } = null!;
 
-        /// <summary>
-        /// The id of the project to add the cluster to.
-        /// </summary>
-        [Output("project")]
-        public Output<string> Project { get; private set; } = null!;
-
         [Output("providerType")]
         public Output<string> ProviderType { get; private set; } = null!;
 
 
         /// <summary>
-        /// Create a ProjectCluster resource with the given unique name, arguments, and options.
+        /// Create a GroupCluster resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ProjectCluster(string name, ProjectClusterArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/projectCluster:ProjectCluster", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+        public GroupCluster(string name, GroupClusterArgs args, CustomResourceOptions? options = null)
+            : base("gitlab:index/groupCluster:GroupCluster", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
-        private ProjectCluster(string name, Input<string> id, ProjectClusterState? state = null, CustomResourceOptions? options = null)
-            : base("gitlab:index/projectCluster:ProjectCluster", name, state, MakeResourceOptions(options, id))
+        private GroupCluster(string name, Input<string> id, GroupClusterState? state = null, CustomResourceOptions? options = null)
+            : base("gitlab:index/groupCluster:GroupCluster", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -124,7 +118,7 @@ namespace Pulumi.Gitlab
             return merged;
         }
         /// <summary>
-        /// Get an existing ProjectCluster resource's state with the given name, ID, and optional extra
+        /// Get an existing GroupCluster resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -132,13 +126,13 @@ namespace Pulumi.Gitlab
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static ProjectCluster Get(string name, Input<string> id, ProjectClusterState? state = null, CustomResourceOptions? options = null)
+        public static GroupCluster Get(string name, Input<string> id, GroupClusterState? state = null, CustomResourceOptions? options = null)
         {
-            return new ProjectCluster(name, id, state, options);
+            return new GroupCluster(name, id, state, options);
         }
     }
 
-    public sealed class ProjectClusterArgs : Pulumi.ResourceArgs
+    public sealed class GroupClusterArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The base domain of the cluster.
@@ -159,6 +153,12 @@ namespace Pulumi.Gitlab
         public Input<string>? EnvironmentScope { get; set; }
 
         /// <summary>
+        /// The id of the group to add the cluster to.
+        /// </summary>
+        [Input("group", required: true)]
+        public Input<string> Group { get; set; } = null!;
+
+        /// <summary>
         /// The URL to access the Kubernetes API.
         /// </summary>
         [Input("kubernetesApiUrl", required: true)]
@@ -175,12 +175,6 @@ namespace Pulumi.Gitlab
         /// </summary>
         [Input("kubernetesCaCert")]
         public Input<string>? KubernetesCaCert { get; set; }
-
-        /// <summary>
-        /// The unique namespace related to the project.
-        /// </summary>
-        [Input("kubernetesNamespace")]
-        public Input<string>? KubernetesNamespace { get; set; }
 
         /// <summary>
         /// The token to authenticate against Kubernetes.
@@ -200,18 +194,12 @@ namespace Pulumi.Gitlab
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The id of the project to add the cluster to.
-        /// </summary>
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
-
-        public ProjectClusterArgs()
+        public GroupClusterArgs()
         {
         }
     }
 
-    public sealed class ProjectClusterState : Pulumi.ResourceArgs
+    public sealed class GroupClusterState : Pulumi.ResourceArgs
     {
         [Input("clusterType")]
         public Input<string>? ClusterType { get; set; }
@@ -238,6 +226,12 @@ namespace Pulumi.Gitlab
         public Input<string>? EnvironmentScope { get; set; }
 
         /// <summary>
+        /// The id of the group to add the cluster to.
+        /// </summary>
+        [Input("group")]
+        public Input<string>? Group { get; set; }
+
+        /// <summary>
         /// The URL to access the Kubernetes API.
         /// </summary>
         [Input("kubernetesApiUrl")]
@@ -254,12 +248,6 @@ namespace Pulumi.Gitlab
         /// </summary>
         [Input("kubernetesCaCert")]
         public Input<string>? KubernetesCaCert { get; set; }
-
-        /// <summary>
-        /// The unique namespace related to the project.
-        /// </summary>
-        [Input("kubernetesNamespace")]
-        public Input<string>? KubernetesNamespace { get; set; }
 
         /// <summary>
         /// The token to authenticate against Kubernetes.
@@ -282,16 +270,10 @@ namespace Pulumi.Gitlab
         [Input("platformType")]
         public Input<string>? PlatformType { get; set; }
 
-        /// <summary>
-        /// The id of the project to add the cluster to.
-        /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
-
         [Input("providerType")]
         public Input<string>? ProviderType { get; set; }
 
-        public ProjectClusterState()
+        public GroupClusterState()
         {
         }
     }

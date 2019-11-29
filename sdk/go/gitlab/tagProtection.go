@@ -62,28 +62,28 @@ func GetTagProtection(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *TagProtection) URN() *pulumi.URNOutput {
+func (r *TagProtection) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *TagProtection) ID() *pulumi.IDOutput {
+func (r *TagProtection) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // One of five levels of access to the project.
-func (r *TagProtection) CreateAccessLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createAccessLevel"])
+func (r *TagProtection) CreateAccessLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createAccessLevel"])
 }
 
 // The id of the project.
-func (r *TagProtection) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *TagProtection) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Name of the tag or wildcard.
-func (r *TagProtection) Tag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tag"])
+func (r *TagProtection) Tag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tag"])
 }
 
 // Input properties used for looking up and filtering TagProtection resources.

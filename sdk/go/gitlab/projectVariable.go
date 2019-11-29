@@ -76,48 +76,48 @@ func GetProjectVariable(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ProjectVariable) URN() *pulumi.URNOutput {
+func (r *ProjectVariable) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ProjectVariable) ID() *pulumi.IDOutput {
+func (r *ProjectVariable) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The environmentScope of the variable
-func (r *ProjectVariable) EnvironmentScope() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["environmentScope"])
+func (r *ProjectVariable) EnvironmentScope() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["environmentScope"])
 }
 
 // The name of the variable.
-func (r *ProjectVariable) Key() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["key"])
+func (r *ProjectVariable) Key() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["key"])
 }
 
 // If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
-func (r *ProjectVariable) Masked() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["masked"])
+func (r *ProjectVariable) Masked() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["masked"])
 }
 
 // The name or id of the project to add the hook to.
-func (r *ProjectVariable) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *ProjectVariable) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-func (r *ProjectVariable) Protected() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["protected"])
+func (r *ProjectVariable) Protected() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["protected"])
 }
 
 // The value of the variable.
-func (r *ProjectVariable) Value() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["value"])
+func (r *ProjectVariable) Value() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["value"])
 }
 
 // The type of a variable. Available types are: envVar (default) and file.
-func (r *ProjectVariable) VariableType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["variableType"])
+func (r *ProjectVariable) VariableType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["variableType"])
 }
 
 // Input properties used for looking up and filtering ProjectVariable resources.

@@ -66,6 +66,10 @@ export class User extends pulumi.CustomResource {
      */
     public readonly projectsLimit!: pulumi.Output<number | undefined>;
     /**
+     * Boolean, defaults to false. Send user password reset link.
+     */
+    public readonly resetPassword!: pulumi.Output<boolean | undefined>;
+    /**
      * Boolean, defaults to true. Whether to skip confirmation.
      */
     public readonly skipConfirmation!: pulumi.Output<boolean | undefined>;
@@ -93,6 +97,7 @@ export class User extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["password"] = state ? state.password : undefined;
             inputs["projectsLimit"] = state ? state.projectsLimit : undefined;
+            inputs["resetPassword"] = state ? state.resetPassword : undefined;
             inputs["skipConfirmation"] = state ? state.skipConfirmation : undefined;
             inputs["username"] = state ? state.username : undefined;
         } else {
@@ -113,6 +118,7 @@ export class User extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["password"] = args ? args.password : undefined;
             inputs["projectsLimit"] = args ? args.projectsLimit : undefined;
+            inputs["resetPassword"] = args ? args.resetPassword : undefined;
             inputs["skipConfirmation"] = args ? args.skipConfirmation : undefined;
             inputs["username"] = args ? args.username : undefined;
         }
@@ -161,6 +167,10 @@ export interface UserState {
      */
     readonly projectsLimit?: pulumi.Input<number>;
     /**
+     * Boolean, defaults to false. Send user password reset link.
+     */
+    readonly resetPassword?: pulumi.Input<boolean>;
+    /**
      * Boolean, defaults to true. Whether to skip confirmation.
      */
     readonly skipConfirmation?: pulumi.Input<boolean>;
@@ -203,6 +213,10 @@ export interface UserArgs {
      * Integer, defaults to 0.  Number of projects user can create.
      */
     readonly projectsLimit?: pulumi.Input<number>;
+    /**
+     * Boolean, defaults to false. Send user password reset link.
+     */
+    readonly resetPassword?: pulumi.Input<boolean>;
     /**
      * Boolean, defaults to true. Whether to skip confirmation.
      */

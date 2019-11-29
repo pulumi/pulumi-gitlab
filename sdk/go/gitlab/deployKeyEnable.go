@@ -67,35 +67,35 @@ func GetDeployKeyEnable(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DeployKeyEnable) URN() *pulumi.URNOutput {
+func (r *DeployKeyEnable) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DeployKeyEnable) ID() *pulumi.IDOutput {
+func (r *DeployKeyEnable) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *DeployKeyEnable) CanPush() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["canPush"])
+func (r *DeployKeyEnable) CanPush() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["canPush"])
 }
 
-func (r *DeployKeyEnable) Key() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["key"])
+func (r *DeployKeyEnable) Key() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["key"])
 }
 
 // The Gitlab key id for the pre-existing deploy key
-func (r *DeployKeyEnable) KeyId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keyId"])
+func (r *DeployKeyEnable) KeyId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyId"])
 }
 
 // The name or id of the project to add the deploy key to.
-func (r *DeployKeyEnable) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *DeployKeyEnable) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
-func (r *DeployKeyEnable) Title() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["title"])
+func (r *DeployKeyEnable) Title() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["title"])
 }
 
 // Input properties used for looking up and filtering DeployKeyEnable resources.

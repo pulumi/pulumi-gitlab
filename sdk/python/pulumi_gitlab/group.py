@@ -44,6 +44,10 @@ class Group(pulumi.CustomResource):
     Boolean, defaults to false.  Whether to
     enable users to request access to the group.
     """
+    runners_token: pulumi.Output[str]
+    """
+    The group level registration token to use during runner setup.
+    """
     visibility_level: pulumi.Output[str]
     """
     Set to `public` to create a public group.
@@ -102,6 +106,7 @@ class Group(pulumi.CustomResource):
             __props__['visibility_level'] = visibility_level
             __props__['full_name'] = None
             __props__['full_path'] = None
+            __props__['runners_token'] = None
             __props__['web_url'] = None
         super(Group, __self__).__init__(
             'gitlab:index/group:Group',
@@ -110,7 +115,7 @@ class Group(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, full_name=None, full_path=None, lfs_enabled=None, name=None, parent_id=None, path=None, request_access_enabled=None, visibility_level=None, web_url=None):
+    def get(resource_name, id, opts=None, description=None, full_name=None, full_path=None, lfs_enabled=None, name=None, parent_id=None, path=None, request_access_enabled=None, runners_token=None, visibility_level=None, web_url=None):
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -128,6 +133,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] path: The path of the group.
         :param pulumi.Input[bool] request_access_enabled: Boolean, defaults to false.  Whether to
                enable users to request access to the group.
+        :param pulumi.Input[str] runners_token: The group level registration token to use during runner setup.
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public group.
                Valid values are `private`, `internal`, `public`.
                Groups are created as private by default.
@@ -146,6 +152,7 @@ class Group(pulumi.CustomResource):
         __props__["parent_id"] = parent_id
         __props__["path"] = path
         __props__["request_access_enabled"] = request_access_enabled
+        __props__["runners_token"] = runners_token
         __props__["visibility_level"] = visibility_level
         __props__["web_url"] = web_url
         return Group(resource_name, opts=opts, __props__=__props__)

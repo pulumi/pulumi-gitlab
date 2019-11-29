@@ -88,74 +88,74 @@ func GetProjectHook(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ProjectHook) URN() *pulumi.URNOutput {
+func (r *ProjectHook) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ProjectHook) ID() *pulumi.IDOutput {
+func (r *ProjectHook) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Enable ssl verification when invoking
 // the hook.
-func (r *ProjectHook) EnableSslVerification() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableSslVerification"])
+func (r *ProjectHook) EnableSslVerification() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableSslVerification"])
 }
 
 // Invoke the hook for issues events.
-func (r *ProjectHook) IssuesEvents() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["issuesEvents"])
+func (r *ProjectHook) IssuesEvents() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["issuesEvents"])
 }
 
 // Invoke the hook for job events.
-func (r *ProjectHook) JobEvents() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["jobEvents"])
+func (r *ProjectHook) JobEvents() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["jobEvents"])
 }
 
 // Invoke the hook for merge requests.
-func (r *ProjectHook) MergeRequestsEvents() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["mergeRequestsEvents"])
+func (r *ProjectHook) MergeRequestsEvents() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["mergeRequestsEvents"])
 }
 
 // Invoke the hook for notes events.
-func (r *ProjectHook) NoteEvents() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["noteEvents"])
+func (r *ProjectHook) NoteEvents() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["noteEvents"])
 }
 
 // Invoke the hook for pipeline events.
-func (r *ProjectHook) PipelineEvents() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["pipelineEvents"])
+func (r *ProjectHook) PipelineEvents() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["pipelineEvents"])
 }
 
 // The name or id of the project to add the hook to.
-func (r *ProjectHook) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *ProjectHook) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Invoke the hook for push events.
-func (r *ProjectHook) PushEvents() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["pushEvents"])
+func (r *ProjectHook) PushEvents() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["pushEvents"])
 }
 
 // Invoke the hook for tag push events.
-func (r *ProjectHook) TagPushEvents() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["tagPushEvents"])
+func (r *ProjectHook) TagPushEvents() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["tagPushEvents"])
 }
 
 // A token to present when invoking the hook.
-func (r *ProjectHook) Token() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["token"])
+func (r *ProjectHook) Token() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["token"])
 }
 
 // The url of the hook to invoke.
-func (r *ProjectHook) Url() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["url"])
+func (r *ProjectHook) Url() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
 // Invoke the hook for wiki page events.
-func (r *ProjectHook) WikiPageEvents() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["wikiPageEvents"])
+func (r *ProjectHook) WikiPageEvents() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["wikiPageEvents"])
 }
 
 // Input properties used for looking up and filtering ProjectHook resources.

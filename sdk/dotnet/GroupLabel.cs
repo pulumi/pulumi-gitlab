@@ -8,13 +8,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Gitlab
 {
     /// <summary>
-    /// This resource allows you to create and manage labels for your GitLab projects.
+    /// This resource allows you to create and manage labels for your GitLab groups.
     /// For further information on labels, consult the [gitlab
-    /// documentation](https://docs.gitlab.com/ee/user/project/labels.htm).
+    /// documentation](https://docs.gitlab.com/ee/user/group/labels.htm).
     /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/label.html.markdown.
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_label.html.markdown.
     /// </summary>
-    public partial class Label : Pulumi.CustomResource
+    public partial class GroupLabel : Pulumi.CustomResource
     {
         /// <summary>
         /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
@@ -29,32 +29,32 @@ namespace Pulumi.Gitlab
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The name or id of the group to add the label to.
+        /// </summary>
+        [Output("group")]
+        public Output<string> Group { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the label.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The name or id of the project to add the label to.
-        /// </summary>
-        [Output("project")]
-        public Output<string> Project { get; private set; } = null!;
-
 
         /// <summary>
-        /// Create a Label resource with the given unique name, arguments, and options.
+        /// Create a GroupLabel resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Label(string name, LabelArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/label:Label", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+        public GroupLabel(string name, GroupLabelArgs args, CustomResourceOptions? options = null)
+            : base("gitlab:index/groupLabel:GroupLabel", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
-        private Label(string name, Input<string> id, LabelState? state = null, CustomResourceOptions? options = null)
-            : base("gitlab:index/label:Label", name, state, MakeResourceOptions(options, id))
+        private GroupLabel(string name, Input<string> id, GroupLabelState? state = null, CustomResourceOptions? options = null)
+            : base("gitlab:index/groupLabel:GroupLabel", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -70,7 +70,7 @@ namespace Pulumi.Gitlab
             return merged;
         }
         /// <summary>
-        /// Get an existing Label resource's state with the given name, ID, and optional extra
+        /// Get an existing GroupLabel resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -78,13 +78,13 @@ namespace Pulumi.Gitlab
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static Label Get(string name, Input<string> id, LabelState? state = null, CustomResourceOptions? options = null)
+        public static GroupLabel Get(string name, Input<string> id, GroupLabelState? state = null, CustomResourceOptions? options = null)
         {
-            return new Label(name, id, state, options);
+            return new GroupLabel(name, id, state, options);
         }
     }
 
-    public sealed class LabelArgs : Pulumi.ResourceArgs
+    public sealed class GroupLabelArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
@@ -99,23 +99,23 @@ namespace Pulumi.Gitlab
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The name or id of the group to add the label to.
+        /// </summary>
+        [Input("group", required: true)]
+        public Input<string> Group { get; set; } = null!;
+
+        /// <summary>
         /// The name of the label.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The name or id of the project to add the label to.
-        /// </summary>
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
-
-        public LabelArgs()
+        public GroupLabelArgs()
         {
         }
     }
 
-    public sealed class LabelState : Pulumi.ResourceArgs
+    public sealed class GroupLabelState : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
@@ -130,18 +130,18 @@ namespace Pulumi.Gitlab
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The name or id of the group to add the label to.
+        /// </summary>
+        [Input("group")]
+        public Input<string>? Group { get; set; }
+
+        /// <summary>
         /// The name of the label.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The name or id of the project to add the label to.
-        /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
-
-        public LabelState()
+        public GroupLabelState()
         {
         }
     }

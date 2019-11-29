@@ -70,38 +70,38 @@ func GetGroupVariable(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *GroupVariable) URN() *pulumi.URNOutput {
+func (r *GroupVariable) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *GroupVariable) ID() *pulumi.IDOutput {
+func (r *GroupVariable) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name or id of the group to add the hook to.
-func (r *GroupVariable) Group() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["group"])
+func (r *GroupVariable) Group() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["group"])
 }
 
 // The name of the variable.
-func (r *GroupVariable) Key() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["key"])
+func (r *GroupVariable) Key() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["key"])
 }
 
 // If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-func (r *GroupVariable) Protected() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["protected"])
+func (r *GroupVariable) Protected() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["protected"])
 }
 
 // The value of the variable.
-func (r *GroupVariable) Value() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["value"])
+func (r *GroupVariable) Value() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["value"])
 }
 
 // The type of a variable. Available types are: envVar (default) and file.
-func (r *GroupVariable) VariableType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["variableType"])
+func (r *GroupVariable) VariableType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["variableType"])
 }
 
 // Input properties used for looking up and filtering GroupVariable resources.

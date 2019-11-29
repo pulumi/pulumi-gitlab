@@ -104,6 +104,10 @@ export interface GetGroupResult {
      */
     readonly requestAccessEnabled: boolean;
     /**
+     * The group level registration token to use during runner setup.
+     */
+    readonly runnersToken: string;
+    /**
      * Visibility level of the group. Possible values are `private`, `internal`, `public`.
      */
     readonly visibilityLevel: string;

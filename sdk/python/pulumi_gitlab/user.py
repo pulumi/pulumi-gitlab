@@ -39,6 +39,10 @@ class User(pulumi.CustomResource):
     """
     Integer, defaults to 0.  Number of projects user can create.
     """
+    reset_password: pulumi.Output[bool]
+    """
+    Boolean, defaults to false. Send user password reset link.
+    """
     skip_confirmation: pulumi.Output[bool]
     """
     Boolean, defaults to true. Whether to skip confirmation.
@@ -47,7 +51,7 @@ class User(pulumi.CustomResource):
     """
     The username of the user.
     """
-    def __init__(__self__, resource_name, opts=None, can_create_group=None, email=None, is_admin=None, is_external=None, name=None, password=None, projects_limit=None, skip_confirmation=None, username=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, can_create_group=None, email=None, is_admin=None, is_external=None, name=None, password=None, projects_limit=None, reset_password=None, skip_confirmation=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a User resource with the given unique name, props, and options.
         
@@ -61,6 +65,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the user.
         :param pulumi.Input[str] password: The password of the user.
         :param pulumi.Input[float] projects_limit: Integer, defaults to 0.  Number of projects user can create.
+        :param pulumi.Input[bool] reset_password: Boolean, defaults to false. Send user password reset link.
         :param pulumi.Input[bool] skip_confirmation: Boolean, defaults to true. Whether to skip confirmation.
         :param pulumi.Input[str] username: The username of the user.
 
@@ -94,6 +99,7 @@ class User(pulumi.CustomResource):
                 raise TypeError("Missing required property 'password'")
             __props__['password'] = password
             __props__['projects_limit'] = projects_limit
+            __props__['reset_password'] = reset_password
             __props__['skip_confirmation'] = skip_confirmation
             if username is None:
                 raise TypeError("Missing required property 'username'")
@@ -105,7 +111,7 @@ class User(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, can_create_group=None, email=None, is_admin=None, is_external=None, name=None, password=None, projects_limit=None, skip_confirmation=None, username=None):
+    def get(resource_name, id, opts=None, can_create_group=None, email=None, is_admin=None, is_external=None, name=None, password=None, projects_limit=None, reset_password=None, skip_confirmation=None, username=None):
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -121,6 +127,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the user.
         :param pulumi.Input[str] password: The password of the user.
         :param pulumi.Input[float] projects_limit: Integer, defaults to 0.  Number of projects user can create.
+        :param pulumi.Input[bool] reset_password: Boolean, defaults to false. Send user password reset link.
         :param pulumi.Input[bool] skip_confirmation: Boolean, defaults to true. Whether to skip confirmation.
         :param pulumi.Input[str] username: The username of the user.
 
@@ -136,6 +143,7 @@ class User(pulumi.CustomResource):
         __props__["name"] = name
         __props__["password"] = password
         __props__["projects_limit"] = projects_limit
+        __props__["reset_password"] = reset_password
         __props__["skip_confirmation"] = skip_confirmation
         __props__["username"] = username
         return User(resource_name, opts=opts, __props__=__props__)

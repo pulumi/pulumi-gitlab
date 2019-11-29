@@ -109,140 +109,140 @@ func GetProject(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Project) URN() *pulumi.URNOutput {
+func (r *Project) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Project) ID() *pulumi.IDOutput {
+func (r *Project) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Number of merge request approvals required for merging. Default is 0.
-func (r *Project) ApprovalsBeforeMerge() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["approvalsBeforeMerge"])
+func (r *Project) ApprovalsBeforeMerge() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["approvalsBeforeMerge"])
 }
 
 // Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
-func (r *Project) Archived() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["archived"])
+func (r *Project) Archived() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["archived"])
 }
 
 // Enable container registry for the project.
-func (r *Project) ContainerRegistryEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["containerRegistryEnabled"])
+func (r *Project) ContainerRegistryEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["containerRegistryEnabled"])
 }
 
 // The default branch for the project.
-func (r *Project) DefaultBranch() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["defaultBranch"])
+func (r *Project) DefaultBranch() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["defaultBranch"])
 }
 
 // A description of the project.
-func (r *Project) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Project) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // URL that can be provided to `git clone` to clone the
 // repository via HTTP.
-func (r *Project) HttpUrlToRepo() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["httpUrlToRepo"])
+func (r *Project) HttpUrlToRepo() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["httpUrlToRepo"])
 }
 
 // Create master branch with first commit containing a README.md file.
-func (r *Project) InitializeWithReadme() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["initializeWithReadme"])
+func (r *Project) InitializeWithReadme() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["initializeWithReadme"])
 }
 
 // Enable issue tracking for the project.
-func (r *Project) IssuesEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["issuesEnabled"])
+func (r *Project) IssuesEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["issuesEnabled"])
 }
 
 // Set to `ff` to create fast-forward merges
 // Valid values are `merge`, `rebaseMerge`, `ff`
 // Repositories are created with `merge` by default
-func (r *Project) MergeMethod() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["mergeMethod"])
+func (r *Project) MergeMethod() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["mergeMethod"])
 }
 
 // Enable merge requests for the project.
-func (r *Project) MergeRequestsEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["mergeRequestsEnabled"])
+func (r *Project) MergeRequestsEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["mergeRequestsEnabled"])
 }
 
 // The name of the project.
-func (r *Project) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Project) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The namespace (group or user) of the project. Defaults to your user.
 // See `.Group` for an example.
-func (r *Project) NamespaceId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["namespaceId"])
+func (r *Project) NamespaceId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["namespaceId"])
 }
 
 // Set to true if you want allow merges only if all discussions are resolved.
-func (r *Project) OnlyAllowMergeIfAllDiscussionsAreResolved() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["onlyAllowMergeIfAllDiscussionsAreResolved"])
+func (r *Project) OnlyAllowMergeIfAllDiscussionsAreResolved() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["onlyAllowMergeIfAllDiscussionsAreResolved"])
 }
 
 // Set to true if you want allow merges only if a pipeline succeeds.
-func (r *Project) OnlyAllowMergeIfPipelineSucceeds() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["onlyAllowMergeIfPipelineSucceeds"])
+func (r *Project) OnlyAllowMergeIfPipelineSucceeds() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["onlyAllowMergeIfPipelineSucceeds"])
 }
 
 // The path of the repository.
-func (r *Project) Path() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["path"])
+func (r *Project) Path() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["path"])
 }
 
 // Registration token to use during runner setup.
-func (r *Project) RunnersToken() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["runnersToken"])
+func (r *Project) RunnersToken() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["runnersToken"])
 }
 
 // Enable shared runners for this project.
-func (r *Project) SharedRunnersEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["sharedRunnersEnabled"])
+func (r *Project) SharedRunnersEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["sharedRunnersEnabled"])
 }
 
 // Enable sharing the project with a list of groups (maps).
-func (r *Project) SharedWithGroups() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["sharedWithGroups"])
+func (r *Project) SharedWithGroups() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["sharedWithGroups"])
 }
 
 // Enable snippets for the project.
-func (r *Project) SnippetsEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["snippetsEnabled"])
+func (r *Project) SnippetsEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["snippetsEnabled"])
 }
 
 // URL that can be provided to `git clone` to clone the
 // repository via SSH.
-func (r *Project) SshUrlToRepo() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sshUrlToRepo"])
+func (r *Project) SshUrlToRepo() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sshUrlToRepo"])
 }
 
 // Tags (topics) of the project.
-func (r *Project) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Project) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // Set to `public` to create a public project.
 // Valid values are `private`, `internal`, `public`.
 // Repositories are created as private by default.
-func (r *Project) VisibilityLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["visibilityLevel"])
+func (r *Project) VisibilityLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["visibilityLevel"])
 }
 
 // URL that can be used to find the project in a browser.
-func (r *Project) WebUrl() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["webUrl"])
+func (r *Project) WebUrl() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["webUrl"])
 }
 
 // Enable wiki for the project.
-func (r *Project) WikiEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["wikiEnabled"])
+func (r *Project) WikiEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["wikiEnabled"])
 }
 
 // Input properties used for looking up and filtering Project resources.

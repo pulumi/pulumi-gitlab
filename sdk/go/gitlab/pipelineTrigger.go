@@ -58,27 +58,27 @@ func GetPipelineTrigger(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *PipelineTrigger) URN() *pulumi.URNOutput {
+func (r *PipelineTrigger) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *PipelineTrigger) ID() *pulumi.IDOutput {
+func (r *PipelineTrigger) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The description of the pipeline trigger.
-func (r *PipelineTrigger) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *PipelineTrigger) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The name or id of the project to add the trigger to.
-func (r *PipelineTrigger) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *PipelineTrigger) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
-func (r *PipelineTrigger) Token() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["token"])
+func (r *PipelineTrigger) Token() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["token"])
 }
 
 // Input properties used for looking up and filtering PipelineTrigger resources.

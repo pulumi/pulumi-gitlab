@@ -12,7 +12,7 @@ from . import utilities, tables
 class GroupMembership(pulumi.CustomResource):
     access_level: pulumi.Output[str]
     """
-    Acceptable values are: guest, reporter, developer, master, owner.
+    Acceptable values are: guest, reporter, developer, maintainer, owner.
     """
     expires_at: pulumi.Output[str]
     """
@@ -32,7 +32,7 @@ class GroupMembership(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_level: Acceptable values are: guest, reporter, developer, master, owner.
+        :param pulumi.Input[str] access_level: Acceptable values are: guest, reporter, developer, maintainer, owner.
         :param pulumi.Input[str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[str] group_id: The id of the group.
         :param pulumi.Input[float] user_id: The id of the user.
@@ -81,7 +81,7 @@ class GroupMembership(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_level: Acceptable values are: guest, reporter, developer, master, owner.
+        :param pulumi.Input[str] access_level: Acceptable values are: guest, reporter, developer, maintainer, owner.
         :param pulumi.Input[str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[str] group_id: The id of the group.
         :param pulumi.Input[float] user_id: The id of the user.

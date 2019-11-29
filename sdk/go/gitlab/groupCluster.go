@@ -8,68 +8,66 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// This resource allows you to create and manage project clusters for your GitLab projects.
+// This resource allows you to create and manage group clusters for your GitLab groups.
 // For further information on clusters, consult the [gitlab
-// documentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).
+// documentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).
 //
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_cluster.html.markdown.
-type ProjectCluster struct {
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_cluster.html.markdown.
+type GroupCluster struct {
 	s *pulumi.ResourceState
 }
 
-// NewProjectCluster registers a new resource with the given unique name, arguments, and options.
-func NewProjectCluster(ctx *pulumi.Context,
-	name string, args *ProjectClusterArgs, opts ...pulumi.ResourceOpt) (*ProjectCluster, error) {
+// NewGroupCluster registers a new resource with the given unique name, arguments, and options.
+func NewGroupCluster(ctx *pulumi.Context,
+	name string, args *GroupClusterArgs, opts ...pulumi.ResourceOpt) (*GroupCluster, error) {
+	if args == nil || args.Group == nil {
+		return nil, errors.New("missing required argument 'Group'")
+	}
 	if args == nil || args.KubernetesApiUrl == nil {
 		return nil, errors.New("missing required argument 'KubernetesApiUrl'")
 	}
 	if args == nil || args.KubernetesToken == nil {
 		return nil, errors.New("missing required argument 'KubernetesToken'")
 	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["domain"] = nil
 		inputs["enabled"] = nil
 		inputs["environmentScope"] = nil
+		inputs["group"] = nil
 		inputs["kubernetesApiUrl"] = nil
 		inputs["kubernetesAuthorizationType"] = nil
 		inputs["kubernetesCaCert"] = nil
-		inputs["kubernetesNamespace"] = nil
 		inputs["kubernetesToken"] = nil
 		inputs["managed"] = nil
 		inputs["name"] = nil
-		inputs["project"] = nil
 	} else {
 		inputs["domain"] = args.Domain
 		inputs["enabled"] = args.Enabled
 		inputs["environmentScope"] = args.EnvironmentScope
+		inputs["group"] = args.Group
 		inputs["kubernetesApiUrl"] = args.KubernetesApiUrl
 		inputs["kubernetesAuthorizationType"] = args.KubernetesAuthorizationType
 		inputs["kubernetesCaCert"] = args.KubernetesCaCert
-		inputs["kubernetesNamespace"] = args.KubernetesNamespace
 		inputs["kubernetesToken"] = args.KubernetesToken
 		inputs["managed"] = args.Managed
 		inputs["name"] = args.Name
-		inputs["project"] = args.Project
 	}
 	inputs["clusterType"] = nil
 	inputs["createdAt"] = nil
 	inputs["platformType"] = nil
 	inputs["providerType"] = nil
-	s, err := ctx.RegisterResource("gitlab:index/projectCluster:ProjectCluster", name, true, inputs, opts...)
+	s, err := ctx.RegisterResource("gitlab:index/groupCluster:GroupCluster", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &ProjectCluster{s: s}, nil
+	return &GroupCluster{s: s}, nil
 }
 
-// GetProjectCluster gets an existing ProjectCluster resource's state with the given name, ID, and optional
+// GetGroupCluster gets an existing GroupCluster resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetProjectCluster(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *ProjectClusterState, opts ...pulumi.ResourceOpt) (*ProjectCluster, error) {
+func GetGroupCluster(ctx *pulumi.Context,
+	name string, id pulumi.ID, state *GroupClusterState, opts ...pulumi.ResourceOpt) (*GroupCluster, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["clusterType"] = state.ClusterType
@@ -77,107 +75,101 @@ func GetProjectCluster(ctx *pulumi.Context,
 		inputs["domain"] = state.Domain
 		inputs["enabled"] = state.Enabled
 		inputs["environmentScope"] = state.EnvironmentScope
+		inputs["group"] = state.Group
 		inputs["kubernetesApiUrl"] = state.KubernetesApiUrl
 		inputs["kubernetesAuthorizationType"] = state.KubernetesAuthorizationType
 		inputs["kubernetesCaCert"] = state.KubernetesCaCert
-		inputs["kubernetesNamespace"] = state.KubernetesNamespace
 		inputs["kubernetesToken"] = state.KubernetesToken
 		inputs["managed"] = state.Managed
 		inputs["name"] = state.Name
 		inputs["platformType"] = state.PlatformType
-		inputs["project"] = state.Project
 		inputs["providerType"] = state.ProviderType
 	}
-	s, err := ctx.ReadResource("gitlab:index/projectCluster:ProjectCluster", name, id, inputs, opts...)
+	s, err := ctx.ReadResource("gitlab:index/groupCluster:GroupCluster", name, id, inputs, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &ProjectCluster{s: s}, nil
+	return &GroupCluster{s: s}, nil
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ProjectCluster) URN() pulumi.URNOutput {
+func (r *GroupCluster) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ProjectCluster) ID() pulumi.IDOutput {
+func (r *GroupCluster) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *ProjectCluster) ClusterType() pulumi.StringOutput {
+func (r *GroupCluster) ClusterType() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["clusterType"])
 }
 
-func (r *ProjectCluster) CreatedAt() pulumi.StringOutput {
+func (r *GroupCluster) CreatedAt() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["createdAt"])
 }
 
 // The base domain of the cluster.
-func (r *ProjectCluster) Domain() pulumi.StringOutput {
+func (r *GroupCluster) Domain() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["domain"])
 }
 
 // Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
-func (r *ProjectCluster) Enabled() pulumi.BoolOutput {
+func (r *GroupCluster) Enabled() pulumi.BoolOutput {
 	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
 // The associated environment to the cluster. Defaults to `*`.
-func (r *ProjectCluster) EnvironmentScope() pulumi.StringOutput {
+func (r *GroupCluster) EnvironmentScope() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["environmentScope"])
 }
 
+// The id of the group to add the cluster to.
+func (r *GroupCluster) Group() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["group"])
+}
+
 // The URL to access the Kubernetes API.
-func (r *ProjectCluster) KubernetesApiUrl() pulumi.StringOutput {
+func (r *GroupCluster) KubernetesApiUrl() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["kubernetesApiUrl"])
 }
 
 // The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
-func (r *ProjectCluster) KubernetesAuthorizationType() pulumi.StringOutput {
+func (r *GroupCluster) KubernetesAuthorizationType() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["kubernetesAuthorizationType"])
 }
 
 // TLS certificate (needed if API is using a self-signed TLS certificate).
-func (r *ProjectCluster) KubernetesCaCert() pulumi.StringOutput {
+func (r *GroupCluster) KubernetesCaCert() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["kubernetesCaCert"])
 }
 
-// The unique namespace related to the project.
-func (r *ProjectCluster) KubernetesNamespace() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["kubernetesNamespace"])
-}
-
 // The token to authenticate against Kubernetes.
-func (r *ProjectCluster) KubernetesToken() pulumi.StringOutput {
+func (r *GroupCluster) KubernetesToken() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["kubernetesToken"])
 }
 
 // Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
-func (r *ProjectCluster) Managed() pulumi.BoolOutput {
+func (r *GroupCluster) Managed() pulumi.BoolOutput {
 	return (pulumi.BoolOutput)(r.s.State["managed"])
 }
 
 // The name of cluster.
-func (r *ProjectCluster) Name() pulumi.StringOutput {
+func (r *GroupCluster) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *ProjectCluster) PlatformType() pulumi.StringOutput {
+func (r *GroupCluster) PlatformType() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["platformType"])
 }
 
-// The id of the project to add the cluster to.
-func (r *ProjectCluster) Project() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["project"])
-}
-
-func (r *ProjectCluster) ProviderType() pulumi.StringOutput {
+func (r *GroupCluster) ProviderType() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["providerType"])
 }
 
-// Input properties used for looking up and filtering ProjectCluster resources.
-type ProjectClusterState struct {
+// Input properties used for looking up and filtering GroupCluster resources.
+type GroupClusterState struct {
 	ClusterType interface{}
 	CreatedAt interface{}
 	// The base domain of the cluster.
@@ -186,14 +178,14 @@ type ProjectClusterState struct {
 	Enabled interface{}
 	// The associated environment to the cluster. Defaults to `*`.
 	EnvironmentScope interface{}
+	// The id of the group to add the cluster to.
+	Group interface{}
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl interface{}
 	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType interface{}
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert interface{}
-	// The unique namespace related to the project.
-	KubernetesNamespace interface{}
 	// The token to authenticate against Kubernetes.
 	KubernetesToken interface{}
 	// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
@@ -201,33 +193,29 @@ type ProjectClusterState struct {
 	// The name of cluster.
 	Name interface{}
 	PlatformType interface{}
-	// The id of the project to add the cluster to.
-	Project interface{}
 	ProviderType interface{}
 }
 
-// The set of arguments for constructing a ProjectCluster resource.
-type ProjectClusterArgs struct {
+// The set of arguments for constructing a GroupCluster resource.
+type GroupClusterArgs struct {
 	// The base domain of the cluster.
 	Domain interface{}
 	// Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
 	Enabled interface{}
 	// The associated environment to the cluster. Defaults to `*`.
 	EnvironmentScope interface{}
+	// The id of the group to add the cluster to.
+	Group interface{}
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl interface{}
 	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType interface{}
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert interface{}
-	// The unique namespace related to the project.
-	KubernetesNamespace interface{}
 	// The token to authenticate against Kubernetes.
 	KubernetesToken interface{}
 	// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
 	Managed interface{}
 	// The name of cluster.
 	Name interface{}
-	// The id of the project to add the cluster to.
-	Project interface{}
 }

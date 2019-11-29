@@ -65,33 +65,33 @@ func GetDeployKey(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DeployKey) URN() *pulumi.URNOutput {
+func (r *DeployKey) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DeployKey) ID() *pulumi.IDOutput {
+func (r *DeployKey) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
-func (r *DeployKey) CanPush() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["canPush"])
+func (r *DeployKey) CanPush() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["canPush"])
 }
 
 // The public ssh key body.
-func (r *DeployKey) Key() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["key"])
+func (r *DeployKey) Key() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["key"])
 }
 
 // The name or id of the project to add the deploy key to.
-func (r *DeployKey) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *DeployKey) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // A title to describe the deploy key with.
-func (r *DeployKey) Title() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["title"])
+func (r *DeployKey) Title() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["title"])
 }
 
 // Input properties used for looking up and filtering DeployKey resources.

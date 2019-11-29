@@ -67,7 +67,7 @@ namespace Pulumi.Gitlab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ProjectVariable(string name, ProjectVariableArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/projectVariable:ProjectVariable", name, args, MakeResourceOptions(options, ""))
+            : base("gitlab:index/projectVariable:ProjectVariable", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
