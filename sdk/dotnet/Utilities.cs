@@ -66,7 +66,7 @@ namespace Pulumi.Gitlab
         static Utilities()
         {
             var assembly = typeof(Utilities).GetTypeInfo().Assembly;
-            using var stream = assembly.GetManifestResourceStream("Pulumi.Azure.version.txt");
+            using var stream = assembly.GetManifestResourceStream("Pulumi.Gitlab.version.txt");
             using var reader = new StreamReader(stream ?? throw new NotSupportedException("Missing embedded version.txt file"));
             version = reader.ReadToEnd().Trim();
         }
