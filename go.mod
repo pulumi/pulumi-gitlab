@@ -7,7 +7,7 @@ require (
 	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v1.6.1
 	github.com/pulumi/pulumi-terraform-bridge v1.4.3
-	github.com/terraform-providers/terraform-provider-gitlab v1.3.1-0.20191128195331-d75f8aa4b9e6
+	github.com/terraform-providers/terraform-provider-gitlab v1.3.1-0.20191205232453-d553384e53cd
 )
 
 replace (

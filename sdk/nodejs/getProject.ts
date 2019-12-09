@@ -37,10 +37,13 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
         "httpUrlToRepo": args.httpUrlToRepo,
         "id": args.id,
         "issuesEnabled": args.issuesEnabled,
+        "lfsEnabled": args.lfsEnabled,
         "mergeRequestsEnabled": args.mergeRequestsEnabled,
         "name": args.name,
         "namespaceId": args.namespaceId,
         "path": args.path,
+        "pipelinesEnabled": args.pipelinesEnabled,
+        "requestAccessEnabled": args.requestAccessEnabled,
         "runnersToken": args.runnersToken,
         "snippetsEnabled": args.snippetsEnabled,
         "sshUrlToRepo": args.sshUrlToRepo,
@@ -65,10 +68,13 @@ export interface GetProjectArgs {
      */
     readonly id: number;
     readonly issuesEnabled?: boolean;
+    readonly lfsEnabled?: boolean;
     readonly mergeRequestsEnabled?: boolean;
     readonly name?: string;
     readonly namespaceId?: number;
     readonly path?: string;
+    readonly pipelinesEnabled?: boolean;
+    readonly requestAccessEnabled?: boolean;
     readonly runnersToken?: string;
     readonly snippetsEnabled?: boolean;
     readonly sshUrlToRepo?: string;
@@ -107,6 +113,10 @@ export interface GetProjectResult {
      */
     readonly issuesEnabled: boolean;
     /**
+     * Enable LFS for the project.
+     */
+    readonly lfsEnabled: boolean;
+    /**
      * Enable merge requests for the project.
      */
     readonly mergeRequestsEnabled: boolean;
@@ -120,6 +130,14 @@ export interface GetProjectResult {
      * The path of the repository.
      */
     readonly path: string;
+    /**
+     * Enable pipelines for the project.
+     */
+    readonly pipelinesEnabled: boolean;
+    /**
+     * Allow users to request member access.
+     */
+    readonly requestAccessEnabled: boolean;
     /**
      * Registration token to use during runner setup.
      */

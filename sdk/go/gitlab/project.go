@@ -24,6 +24,7 @@ func NewProject(ctx *pulumi.Context,
 		inputs["description"] = nil
 		inputs["initializeWithReadme"] = nil
 		inputs["issuesEnabled"] = nil
+		inputs["lfsEnabled"] = nil
 		inputs["mergeMethod"] = nil
 		inputs["mergeRequestsEnabled"] = nil
 		inputs["name"] = nil
@@ -31,6 +32,8 @@ func NewProject(ctx *pulumi.Context,
 		inputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = nil
 		inputs["onlyAllowMergeIfPipelineSucceeds"] = nil
 		inputs["path"] = nil
+		inputs["pipelinesEnabled"] = nil
+		inputs["requestAccessEnabled"] = nil
 		inputs["sharedRunnersEnabled"] = nil
 		inputs["sharedWithGroups"] = nil
 		inputs["snippetsEnabled"] = nil
@@ -45,6 +48,7 @@ func NewProject(ctx *pulumi.Context,
 		inputs["description"] = args.Description
 		inputs["initializeWithReadme"] = args.InitializeWithReadme
 		inputs["issuesEnabled"] = args.IssuesEnabled
+		inputs["lfsEnabled"] = args.LfsEnabled
 		inputs["mergeMethod"] = args.MergeMethod
 		inputs["mergeRequestsEnabled"] = args.MergeRequestsEnabled
 		inputs["name"] = args.Name
@@ -52,6 +56,8 @@ func NewProject(ctx *pulumi.Context,
 		inputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = args.OnlyAllowMergeIfAllDiscussionsAreResolved
 		inputs["onlyAllowMergeIfPipelineSucceeds"] = args.OnlyAllowMergeIfPipelineSucceeds
 		inputs["path"] = args.Path
+		inputs["pipelinesEnabled"] = args.PipelinesEnabled
+		inputs["requestAccessEnabled"] = args.RequestAccessEnabled
 		inputs["sharedRunnersEnabled"] = args.SharedRunnersEnabled
 		inputs["sharedWithGroups"] = args.SharedWithGroups
 		inputs["snippetsEnabled"] = args.SnippetsEnabled
@@ -84,6 +90,7 @@ func GetProject(ctx *pulumi.Context,
 		inputs["httpUrlToRepo"] = state.HttpUrlToRepo
 		inputs["initializeWithReadme"] = state.InitializeWithReadme
 		inputs["issuesEnabled"] = state.IssuesEnabled
+		inputs["lfsEnabled"] = state.LfsEnabled
 		inputs["mergeMethod"] = state.MergeMethod
 		inputs["mergeRequestsEnabled"] = state.MergeRequestsEnabled
 		inputs["name"] = state.Name
@@ -91,6 +98,8 @@ func GetProject(ctx *pulumi.Context,
 		inputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = state.OnlyAllowMergeIfAllDiscussionsAreResolved
 		inputs["onlyAllowMergeIfPipelineSucceeds"] = state.OnlyAllowMergeIfPipelineSucceeds
 		inputs["path"] = state.Path
+		inputs["pipelinesEnabled"] = state.PipelinesEnabled
+		inputs["requestAccessEnabled"] = state.RequestAccessEnabled
 		inputs["runnersToken"] = state.RunnersToken
 		inputs["sharedRunnersEnabled"] = state.SharedRunnersEnabled
 		inputs["sharedWithGroups"] = state.SharedWithGroups
@@ -159,6 +168,11 @@ func (r *Project) IssuesEnabled() pulumi.BoolOutput {
 	return (pulumi.BoolOutput)(r.s.State["issuesEnabled"])
 }
 
+// Enable LFS for the project.
+func (r *Project) LfsEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["lfsEnabled"])
+}
+
 // Set to `ff` to create fast-forward merges
 // Valid values are `merge`, `rebaseMerge`, `ff`
 // Repositories are created with `merge` by default
@@ -195,6 +209,16 @@ func (r *Project) OnlyAllowMergeIfPipelineSucceeds() pulumi.BoolOutput {
 // The path of the repository.
 func (r *Project) Path() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["path"])
+}
+
+// Enable pipelines for the project.
+func (r *Project) PipelinesEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["pipelinesEnabled"])
+}
+
+// Allow users to request member access.
+func (r *Project) RequestAccessEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["requestAccessEnabled"])
 }
 
 // Registration token to use during runner setup.
@@ -264,6 +288,8 @@ type ProjectState struct {
 	InitializeWithReadme interface{}
 	// Enable issue tracking for the project.
 	IssuesEnabled interface{}
+	// Enable LFS for the project.
+	LfsEnabled interface{}
 	// Set to `ff` to create fast-forward merges
 	// Valid values are `merge`, `rebaseMerge`, `ff`
 	// Repositories are created with `merge` by default
@@ -281,6 +307,10 @@ type ProjectState struct {
 	OnlyAllowMergeIfPipelineSucceeds interface{}
 	// The path of the repository.
 	Path interface{}
+	// Enable pipelines for the project.
+	PipelinesEnabled interface{}
+	// Allow users to request member access.
+	RequestAccessEnabled interface{}
 	// Registration token to use during runner setup.
 	RunnersToken interface{}
 	// Enable shared runners for this project.
@@ -320,6 +350,8 @@ type ProjectArgs struct {
 	InitializeWithReadme interface{}
 	// Enable issue tracking for the project.
 	IssuesEnabled interface{}
+	// Enable LFS for the project.
+	LfsEnabled interface{}
 	// Set to `ff` to create fast-forward merges
 	// Valid values are `merge`, `rebaseMerge`, `ff`
 	// Repositories are created with `merge` by default
@@ -337,6 +369,10 @@ type ProjectArgs struct {
 	OnlyAllowMergeIfPipelineSucceeds interface{}
 	// The path of the repository.
 	Path interface{}
+	// Enable pipelines for the project.
+	PipelinesEnabled interface{}
+	// Allow users to request member access.
+	RequestAccessEnabled interface{}
 	// Enable shared runners for this project.
 	SharedRunnersEnabled interface{}
 	// Enable sharing the project with a list of groups (maps).

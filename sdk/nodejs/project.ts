@@ -70,6 +70,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly issuesEnabled!: pulumi.Output<boolean | undefined>;
     /**
+     * Enable LFS for the project.
+     */
+    public readonly lfsEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * Set to `ff` to create fast-forward merges
      * Valid values are `merge`, `rebaseMerge`, `ff`
      * Repositories are created with `merge` by default
@@ -100,6 +104,14 @@ export class Project extends pulumi.CustomResource {
      * The path of the repository.
      */
     public readonly path!: pulumi.Output<string | undefined>;
+    /**
+     * Enable pipelines for the project.
+     */
+    public readonly pipelinesEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Allow users to request member access.
+     */
+    public readonly requestAccessEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * Registration token to use during runner setup.
      */
@@ -160,6 +172,7 @@ export class Project extends pulumi.CustomResource {
             inputs["httpUrlToRepo"] = state ? state.httpUrlToRepo : undefined;
             inputs["initializeWithReadme"] = state ? state.initializeWithReadme : undefined;
             inputs["issuesEnabled"] = state ? state.issuesEnabled : undefined;
+            inputs["lfsEnabled"] = state ? state.lfsEnabled : undefined;
             inputs["mergeMethod"] = state ? state.mergeMethod : undefined;
             inputs["mergeRequestsEnabled"] = state ? state.mergeRequestsEnabled : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -167,6 +180,8 @@ export class Project extends pulumi.CustomResource {
             inputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = state ? state.onlyAllowMergeIfAllDiscussionsAreResolved : undefined;
             inputs["onlyAllowMergeIfPipelineSucceeds"] = state ? state.onlyAllowMergeIfPipelineSucceeds : undefined;
             inputs["path"] = state ? state.path : undefined;
+            inputs["pipelinesEnabled"] = state ? state.pipelinesEnabled : undefined;
+            inputs["requestAccessEnabled"] = state ? state.requestAccessEnabled : undefined;
             inputs["runnersToken"] = state ? state.runnersToken : undefined;
             inputs["sharedRunnersEnabled"] = state ? state.sharedRunnersEnabled : undefined;
             inputs["sharedWithGroups"] = state ? state.sharedWithGroups : undefined;
@@ -185,6 +200,7 @@ export class Project extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["initializeWithReadme"] = args ? args.initializeWithReadme : undefined;
             inputs["issuesEnabled"] = args ? args.issuesEnabled : undefined;
+            inputs["lfsEnabled"] = args ? args.lfsEnabled : undefined;
             inputs["mergeMethod"] = args ? args.mergeMethod : undefined;
             inputs["mergeRequestsEnabled"] = args ? args.mergeRequestsEnabled : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -192,6 +208,8 @@ export class Project extends pulumi.CustomResource {
             inputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = args ? args.onlyAllowMergeIfAllDiscussionsAreResolved : undefined;
             inputs["onlyAllowMergeIfPipelineSucceeds"] = args ? args.onlyAllowMergeIfPipelineSucceeds : undefined;
             inputs["path"] = args ? args.path : undefined;
+            inputs["pipelinesEnabled"] = args ? args.pipelinesEnabled : undefined;
+            inputs["requestAccessEnabled"] = args ? args.requestAccessEnabled : undefined;
             inputs["sharedRunnersEnabled"] = args ? args.sharedRunnersEnabled : undefined;
             inputs["sharedWithGroups"] = args ? args.sharedWithGroups : undefined;
             inputs["snippetsEnabled"] = args ? args.snippetsEnabled : undefined;
@@ -252,6 +270,10 @@ export interface ProjectState {
      */
     readonly issuesEnabled?: pulumi.Input<boolean>;
     /**
+     * Enable LFS for the project.
+     */
+    readonly lfsEnabled?: pulumi.Input<boolean>;
+    /**
      * Set to `ff` to create fast-forward merges
      * Valid values are `merge`, `rebaseMerge`, `ff`
      * Repositories are created with `merge` by default
@@ -282,6 +304,14 @@ export interface ProjectState {
      * The path of the repository.
      */
     readonly path?: pulumi.Input<string>;
+    /**
+     * Enable pipelines for the project.
+     */
+    readonly pipelinesEnabled?: pulumi.Input<boolean>;
+    /**
+     * Allow users to request member access.
+     */
+    readonly requestAccessEnabled?: pulumi.Input<boolean>;
     /**
      * Registration token to use during runner setup.
      */
@@ -356,6 +386,10 @@ export interface ProjectArgs {
      */
     readonly issuesEnabled?: pulumi.Input<boolean>;
     /**
+     * Enable LFS for the project.
+     */
+    readonly lfsEnabled?: pulumi.Input<boolean>;
+    /**
      * Set to `ff` to create fast-forward merges
      * Valid values are `merge`, `rebaseMerge`, `ff`
      * Repositories are created with `merge` by default
@@ -386,6 +420,14 @@ export interface ProjectArgs {
      * The path of the repository.
      */
     readonly path?: pulumi.Input<string>;
+    /**
+     * Enable pipelines for the project.
+     */
+    readonly pipelinesEnabled?: pulumi.Input<boolean>;
+    /**
+     * Allow users to request member access.
+     */
+    readonly requestAccessEnabled?: pulumi.Input<boolean>;
     /**
      * Enable shared runners for this project.
      */
