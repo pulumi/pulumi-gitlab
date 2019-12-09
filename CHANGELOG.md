@@ -1,5 +1,5 @@
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v2.5.0 of the Gitlab Terraform Provider
 
 ---
 
