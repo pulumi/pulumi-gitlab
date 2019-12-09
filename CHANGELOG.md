@@ -1,7 +1,10 @@
 ## HEAD (Unreleased)
-* Upgrade to v2.5.0 of the Gitlab Terraform Provider
+_(none)_
 
 ---
+
+## 1.3.0 (2019-12-09)
+* Upgrade to v2.5.0 of the Gitlab Terraform Provider
 
 ## 1.2.0 (2019-12-04)
 * Upgrade to support go 1.13.x
