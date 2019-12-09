@@ -41,6 +41,9 @@ namespace Pulumi.Gitlab
         [Input("issuesEnabled")]
         public Input<bool>? IssuesEnabled { get; set; }
 
+        [Input("lfsEnabled")]
+        public Input<bool>? LfsEnabled { get; set; }
+
         [Input("mergeRequestsEnabled")]
         public Input<bool>? MergeRequestsEnabled { get; set; }
 
@@ -52,6 +55,12 @@ namespace Pulumi.Gitlab
 
         [Input("path")]
         public Input<string>? Path { get; set; }
+
+        [Input("pipelinesEnabled")]
+        public Input<bool>? PipelinesEnabled { get; set; }
+
+        [Input("requestAccessEnabled")]
+        public Input<bool>? RequestAccessEnabled { get; set; }
 
         [Input("runnersToken")]
         public Input<string>? RunnersToken { get; set; }
@@ -105,6 +114,10 @@ namespace Pulumi.Gitlab
         /// </summary>
         public readonly bool IssuesEnabled;
         /// <summary>
+        /// Enable LFS for the project.
+        /// </summary>
+        public readonly bool LfsEnabled;
+        /// <summary>
         /// Enable merge requests for the project.
         /// </summary>
         public readonly bool MergeRequestsEnabled;
@@ -118,6 +131,14 @@ namespace Pulumi.Gitlab
         /// The path of the repository.
         /// </summary>
         public readonly string Path;
+        /// <summary>
+        /// Enable pipelines for the project.
+        /// </summary>
+        public readonly bool PipelinesEnabled;
+        /// <summary>
+        /// Allow users to request member access.
+        /// </summary>
+        public readonly bool RequestAccessEnabled;
         /// <summary>
         /// Registration token to use during runner setup.
         /// </summary>
@@ -152,10 +173,13 @@ namespace Pulumi.Gitlab
             string httpUrlToRepo,
             int id,
             bool issuesEnabled,
+            bool lfsEnabled,
             bool mergeRequestsEnabled,
             string name,
             int namespaceId,
             string path,
+            bool pipelinesEnabled,
+            bool requestAccessEnabled,
             string runnersToken,
             bool snippetsEnabled,
             string sshUrlToRepo,
@@ -169,10 +193,13 @@ namespace Pulumi.Gitlab
             HttpUrlToRepo = httpUrlToRepo;
             Id = id;
             IssuesEnabled = issuesEnabled;
+            LfsEnabled = lfsEnabled;
             MergeRequestsEnabled = mergeRequestsEnabled;
             Name = name;
             NamespaceId = namespaceId;
             Path = path;
+            PipelinesEnabled = pipelinesEnabled;
+            RequestAccessEnabled = requestAccessEnabled;
             RunnersToken = runnersToken;
             SnippetsEnabled = snippetsEnabled;
             SshUrlToRepo = sshUrlToRepo;

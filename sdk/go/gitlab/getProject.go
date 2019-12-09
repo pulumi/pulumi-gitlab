@@ -19,10 +19,13 @@ func LookupProject(ctx *pulumi.Context, args *GetProjectArgs) (*GetProjectResult
 		inputs["httpUrlToRepo"] = args.HttpUrlToRepo
 		inputs["id"] = args.Id
 		inputs["issuesEnabled"] = args.IssuesEnabled
+		inputs["lfsEnabled"] = args.LfsEnabled
 		inputs["mergeRequestsEnabled"] = args.MergeRequestsEnabled
 		inputs["name"] = args.Name
 		inputs["namespaceId"] = args.NamespaceId
 		inputs["path"] = args.Path
+		inputs["pipelinesEnabled"] = args.PipelinesEnabled
+		inputs["requestAccessEnabled"] = args.RequestAccessEnabled
 		inputs["runnersToken"] = args.RunnersToken
 		inputs["snippetsEnabled"] = args.SnippetsEnabled
 		inputs["sshUrlToRepo"] = args.SshUrlToRepo
@@ -41,10 +44,13 @@ func LookupProject(ctx *pulumi.Context, args *GetProjectArgs) (*GetProjectResult
 		HttpUrlToRepo: outputs["httpUrlToRepo"],
 		Id: outputs["id"],
 		IssuesEnabled: outputs["issuesEnabled"],
+		LfsEnabled: outputs["lfsEnabled"],
 		MergeRequestsEnabled: outputs["mergeRequestsEnabled"],
 		Name: outputs["name"],
 		NamespaceId: outputs["namespaceId"],
 		Path: outputs["path"],
+		PipelinesEnabled: outputs["pipelinesEnabled"],
+		RequestAccessEnabled: outputs["requestAccessEnabled"],
 		RunnersToken: outputs["runnersToken"],
 		SnippetsEnabled: outputs["snippetsEnabled"],
 		SshUrlToRepo: outputs["sshUrlToRepo"],
@@ -63,10 +69,13 @@ type GetProjectArgs struct {
 	// The integer that uniquely identifies the project within the gitlab install.
 	Id interface{}
 	IssuesEnabled interface{}
+	LfsEnabled interface{}
 	MergeRequestsEnabled interface{}
 	Name interface{}
 	NamespaceId interface{}
 	Path interface{}
+	PipelinesEnabled interface{}
+	RequestAccessEnabled interface{}
 	RunnersToken interface{}
 	SnippetsEnabled interface{}
 	SshUrlToRepo interface{}
@@ -90,6 +99,8 @@ type GetProjectResult struct {
 	Id interface{}
 	// Enable issue tracking for the project.
 	IssuesEnabled interface{}
+	// Enable LFS for the project.
+	LfsEnabled interface{}
 	// Enable merge requests for the project.
 	MergeRequestsEnabled interface{}
 	Name interface{}
@@ -98,6 +109,10 @@ type GetProjectResult struct {
 	NamespaceId interface{}
 	// The path of the repository.
 	Path interface{}
+	// Enable pipelines for the project.
+	PipelinesEnabled interface{}
+	// Allow users to request member access.
+	RequestAccessEnabled interface{}
 	// Registration token to use during runner setup.
 	RunnersToken interface{}
 	// Enable snippets for the project.

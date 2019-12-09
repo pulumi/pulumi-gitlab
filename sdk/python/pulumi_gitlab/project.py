@@ -43,6 +43,10 @@ class Project(pulumi.CustomResource):
     """
     Enable issue tracking for the project.
     """
+    lfs_enabled: pulumi.Output[bool]
+    """
+    Enable LFS for the project.
+    """
     merge_method: pulumi.Output[str]
     """
     Set to `ff` to create fast-forward merges
@@ -73,6 +77,14 @@ class Project(pulumi.CustomResource):
     path: pulumi.Output[str]
     """
     The path of the repository.
+    """
+    pipelines_enabled: pulumi.Output[bool]
+    """
+    Enable pipelines for the project.
+    """
+    request_access_enabled: pulumi.Output[bool]
+    """
+    Allow users to request member access.
     """
     runners_token: pulumi.Output[str]
     """
@@ -118,7 +130,7 @@ class Project(pulumi.CustomResource):
     """
     Enable wiki for the project.
     """
-    def __init__(__self__, resource_name, opts=None, approvals_before_merge=None, archived=None, container_registry_enabled=None, default_branch=None, description=None, initialize_with_readme=None, issues_enabled=None, merge_method=None, merge_requests_enabled=None, name=None, namespace_id=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, path=None, shared_runners_enabled=None, shared_with_groups=None, snippets_enabled=None, tags=None, visibility_level=None, wiki_enabled=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, approvals_before_merge=None, archived=None, container_registry_enabled=None, default_branch=None, description=None, initialize_with_readme=None, issues_enabled=None, lfs_enabled=None, merge_method=None, merge_requests_enabled=None, name=None, namespace_id=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, path=None, pipelines_enabled=None, request_access_enabled=None, shared_runners_enabled=None, shared_with_groups=None, snippets_enabled=None, tags=None, visibility_level=None, wiki_enabled=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Project resource with the given unique name, props, and options.
         
@@ -131,6 +143,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of the project.
         :param pulumi.Input[bool] initialize_with_readme: Create master branch with first commit containing a README.md file.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
+        :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
                Valid values are `merge`, `rebase_merge`, `ff`
                Repositories are created with `merge` by default
@@ -141,6 +154,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
         :param pulumi.Input[str] path: The path of the repository.
+        :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
+        :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[list] shared_with_groups: Enable sharing the project with a list of groups (maps).
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
@@ -183,6 +198,7 @@ class Project(pulumi.CustomResource):
             __props__['description'] = description
             __props__['initialize_with_readme'] = initialize_with_readme
             __props__['issues_enabled'] = issues_enabled
+            __props__['lfs_enabled'] = lfs_enabled
             __props__['merge_method'] = merge_method
             __props__['merge_requests_enabled'] = merge_requests_enabled
             __props__['name'] = name
@@ -190,6 +206,8 @@ class Project(pulumi.CustomResource):
             __props__['only_allow_merge_if_all_discussions_are_resolved'] = only_allow_merge_if_all_discussions_are_resolved
             __props__['only_allow_merge_if_pipeline_succeeds'] = only_allow_merge_if_pipeline_succeeds
             __props__['path'] = path
+            __props__['pipelines_enabled'] = pipelines_enabled
+            __props__['request_access_enabled'] = request_access_enabled
             __props__['shared_runners_enabled'] = shared_runners_enabled
             __props__['shared_with_groups'] = shared_with_groups
             __props__['snippets_enabled'] = snippets_enabled
@@ -207,7 +225,7 @@ class Project(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, approvals_before_merge=None, archived=None, container_registry_enabled=None, default_branch=None, description=None, http_url_to_repo=None, initialize_with_readme=None, issues_enabled=None, merge_method=None, merge_requests_enabled=None, name=None, namespace_id=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, path=None, runners_token=None, shared_runners_enabled=None, shared_with_groups=None, snippets_enabled=None, ssh_url_to_repo=None, tags=None, visibility_level=None, web_url=None, wiki_enabled=None):
+    def get(resource_name, id, opts=None, approvals_before_merge=None, archived=None, container_registry_enabled=None, default_branch=None, description=None, http_url_to_repo=None, initialize_with_readme=None, issues_enabled=None, lfs_enabled=None, merge_method=None, merge_requests_enabled=None, name=None, namespace_id=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, path=None, pipelines_enabled=None, request_access_enabled=None, runners_token=None, shared_runners_enabled=None, shared_with_groups=None, snippets_enabled=None, ssh_url_to_repo=None, tags=None, visibility_level=None, web_url=None, wiki_enabled=None):
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -224,6 +242,7 @@ class Project(pulumi.CustomResource):
                repository via HTTP.
         :param pulumi.Input[bool] initialize_with_readme: Create master branch with first commit containing a README.md file.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
+        :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
                Valid values are `merge`, `rebase_merge`, `ff`
                Repositories are created with `merge` by default
@@ -234,6 +253,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
         :param pulumi.Input[str] path: The path of the repository.
+        :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
+        :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[str] runners_token: Registration token to use during runner setup.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[list] shared_with_groups: Enable sharing the project with a list of groups (maps).
@@ -267,6 +288,7 @@ class Project(pulumi.CustomResource):
         __props__["http_url_to_repo"] = http_url_to_repo
         __props__["initialize_with_readme"] = initialize_with_readme
         __props__["issues_enabled"] = issues_enabled
+        __props__["lfs_enabled"] = lfs_enabled
         __props__["merge_method"] = merge_method
         __props__["merge_requests_enabled"] = merge_requests_enabled
         __props__["name"] = name
@@ -274,6 +296,8 @@ class Project(pulumi.CustomResource):
         __props__["only_allow_merge_if_all_discussions_are_resolved"] = only_allow_merge_if_all_discussions_are_resolved
         __props__["only_allow_merge_if_pipeline_succeeds"] = only_allow_merge_if_pipeline_succeeds
         __props__["path"] = path
+        __props__["pipelines_enabled"] = pipelines_enabled
+        __props__["request_access_enabled"] = request_access_enabled
         __props__["runners_token"] = runners_token
         __props__["shared_runners_enabled"] = shared_runners_enabled
         __props__["shared_with_groups"] = shared_with_groups

@@ -62,6 +62,12 @@ namespace Pulumi.Gitlab
         public Output<bool?> IssuesEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Enable LFS for the project.
+        /// </summary>
+        [Output("lfsEnabled")]
+        public Output<bool?> LfsEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Set to `ff` to create fast-forward merges
         /// Valid values are `merge`, `rebase_merge`, `ff`
         /// Repositories are created with `merge` by default
@@ -105,6 +111,18 @@ namespace Pulumi.Gitlab
         /// </summary>
         [Output("path")]
         public Output<string?> Path { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable pipelines for the project.
+        /// </summary>
+        [Output("pipelinesEnabled")]
+        public Output<bool?> PipelinesEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Allow users to request member access.
+        /// </summary>
+        [Output("requestAccessEnabled")]
+        public Output<bool?> RequestAccessEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Registration token to use during runner setup.
@@ -252,6 +270,12 @@ namespace Pulumi.Gitlab
         public Input<bool>? IssuesEnabled { get; set; }
 
         /// <summary>
+        /// Enable LFS for the project.
+        /// </summary>
+        [Input("lfsEnabled")]
+        public Input<bool>? LfsEnabled { get; set; }
+
+        /// <summary>
         /// Set to `ff` to create fast-forward merges
         /// Valid values are `merge`, `rebase_merge`, `ff`
         /// Repositories are created with `merge` by default
@@ -295,6 +319,18 @@ namespace Pulumi.Gitlab
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
+
+        /// <summary>
+        /// Enable pipelines for the project.
+        /// </summary>
+        [Input("pipelinesEnabled")]
+        public Input<bool>? PipelinesEnabled { get; set; }
+
+        /// <summary>
+        /// Allow users to request member access.
+        /// </summary>
+        [Input("requestAccessEnabled")]
+        public Input<bool>? RequestAccessEnabled { get; set; }
 
         /// <summary>
         /// Enable shared runners for this project.
@@ -403,6 +439,12 @@ namespace Pulumi.Gitlab
         public Input<bool>? IssuesEnabled { get; set; }
 
         /// <summary>
+        /// Enable LFS for the project.
+        /// </summary>
+        [Input("lfsEnabled")]
+        public Input<bool>? LfsEnabled { get; set; }
+
+        /// <summary>
         /// Set to `ff` to create fast-forward merges
         /// Valid values are `merge`, `rebase_merge`, `ff`
         /// Repositories are created with `merge` by default
@@ -446,6 +488,18 @@ namespace Pulumi.Gitlab
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
+
+        /// <summary>
+        /// Enable pipelines for the project.
+        /// </summary>
+        [Input("pipelinesEnabled")]
+        public Input<bool>? PipelinesEnabled { get; set; }
+
+        /// <summary>
+        /// Allow users to request member access.
+        /// </summary>
+        [Input("requestAccessEnabled")]
+        public Input<bool>? RequestAccessEnabled { get; set; }
 
         /// <summary>
         /// Registration token to use during runner setup.

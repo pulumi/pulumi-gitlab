@@ -13,7 +13,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, archived=None, default_branch=None, description=None, http_url_to_repo=None, id=None, issues_enabled=None, merge_requests_enabled=None, name=None, namespace_id=None, path=None, runners_token=None, snippets_enabled=None, ssh_url_to_repo=None, visibility_level=None, web_url=None, wiki_enabled=None):
+    def __init__(__self__, archived=None, default_branch=None, description=None, http_url_to_repo=None, id=None, issues_enabled=None, lfs_enabled=None, merge_requests_enabled=None, name=None, namespace_id=None, path=None, pipelines_enabled=None, request_access_enabled=None, runners_token=None, snippets_enabled=None, ssh_url_to_repo=None, visibility_level=None, web_url=None, wiki_enabled=None):
         if archived and not isinstance(archived, bool):
             raise TypeError("Expected argument 'archived' to be a bool")
         __self__.archived = archived
@@ -51,6 +51,12 @@ class GetProjectResult:
         """
         Enable issue tracking for the project.
         """
+        if lfs_enabled and not isinstance(lfs_enabled, bool):
+            raise TypeError("Expected argument 'lfs_enabled' to be a bool")
+        __self__.lfs_enabled = lfs_enabled
+        """
+        Enable LFS for the project.
+        """
         if merge_requests_enabled and not isinstance(merge_requests_enabled, bool):
             raise TypeError("Expected argument 'merge_requests_enabled' to be a bool")
         __self__.merge_requests_enabled = merge_requests_enabled
@@ -72,6 +78,18 @@ class GetProjectResult:
         __self__.path = path
         """
         The path of the repository.
+        """
+        if pipelines_enabled and not isinstance(pipelines_enabled, bool):
+            raise TypeError("Expected argument 'pipelines_enabled' to be a bool")
+        __self__.pipelines_enabled = pipelines_enabled
+        """
+        Enable pipelines for the project.
+        """
+        if request_access_enabled and not isinstance(request_access_enabled, bool):
+            raise TypeError("Expected argument 'request_access_enabled' to be a bool")
+        __self__.request_access_enabled = request_access_enabled
+        """
+        Allow users to request member access.
         """
         if runners_token and not isinstance(runners_token, str):
             raise TypeError("Expected argument 'runners_token' to be a str")
@@ -122,10 +140,13 @@ class AwaitableGetProjectResult(GetProjectResult):
             http_url_to_repo=self.http_url_to_repo,
             id=self.id,
             issues_enabled=self.issues_enabled,
+            lfs_enabled=self.lfs_enabled,
             merge_requests_enabled=self.merge_requests_enabled,
             name=self.name,
             namespace_id=self.namespace_id,
             path=self.path,
+            pipelines_enabled=self.pipelines_enabled,
+            request_access_enabled=self.request_access_enabled,
             runners_token=self.runners_token,
             snippets_enabled=self.snippets_enabled,
             ssh_url_to_repo=self.ssh_url_to_repo,
@@ -133,7 +154,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             web_url=self.web_url,
             wiki_enabled=self.wiki_enabled)
 
-def get_project(archived=None,default_branch=None,description=None,http_url_to_repo=None,id=None,issues_enabled=None,merge_requests_enabled=None,name=None,namespace_id=None,path=None,runners_token=None,snippets_enabled=None,ssh_url_to_repo=None,visibility_level=None,web_url=None,wiki_enabled=None,opts=None):
+def get_project(archived=None,default_branch=None,description=None,http_url_to_repo=None,id=None,issues_enabled=None,lfs_enabled=None,merge_requests_enabled=None,name=None,namespace_id=None,path=None,pipelines_enabled=None,request_access_enabled=None,runners_token=None,snippets_enabled=None,ssh_url_to_repo=None,visibility_level=None,web_url=None,wiki_enabled=None,opts=None):
     """
     Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
     
@@ -149,10 +170,13 @@ def get_project(archived=None,default_branch=None,description=None,http_url_to_r
     __args__['httpUrlToRepo'] = http_url_to_repo
     __args__['id'] = id
     __args__['issuesEnabled'] = issues_enabled
+    __args__['lfsEnabled'] = lfs_enabled
     __args__['mergeRequestsEnabled'] = merge_requests_enabled
     __args__['name'] = name
     __args__['namespaceId'] = namespace_id
     __args__['path'] = path
+    __args__['pipelinesEnabled'] = pipelines_enabled
+    __args__['requestAccessEnabled'] = request_access_enabled
     __args__['runnersToken'] = runners_token
     __args__['snippetsEnabled'] = snippets_enabled
     __args__['sshUrlToRepo'] = ssh_url_to_repo
@@ -172,10 +196,13 @@ def get_project(archived=None,default_branch=None,description=None,http_url_to_r
         http_url_to_repo=__ret__.get('httpUrlToRepo'),
         id=__ret__.get('id'),
         issues_enabled=__ret__.get('issuesEnabled'),
+        lfs_enabled=__ret__.get('lfsEnabled'),
         merge_requests_enabled=__ret__.get('mergeRequestsEnabled'),
         name=__ret__.get('name'),
         namespace_id=__ret__.get('namespaceId'),
         path=__ret__.get('path'),
+        pipelines_enabled=__ret__.get('pipelinesEnabled'),
+        request_access_enabled=__ret__.get('requestAccessEnabled'),
         runners_token=__ret__.get('runnersToken'),
         snippets_enabled=__ret__.get('snippetsEnabled'),
         ssh_url_to_repo=__ret__.get('sshUrlToRepo'),
