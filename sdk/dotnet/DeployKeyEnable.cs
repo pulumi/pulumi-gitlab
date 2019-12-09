@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gitlab
+namespace Pulumi.GitLab
 {
     /// <summary>
     /// This resource allows you to enable pre-existing deploy keys for your GitLab projects.

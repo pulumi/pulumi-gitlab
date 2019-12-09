@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gitlab
+namespace Pulumi.GitLab
 {
     /// <summary>
     /// The provider type for the gitlab package. By default, resources use package-wide configuration

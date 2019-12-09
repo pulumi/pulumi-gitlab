@@ -31,12 +31,12 @@ const (
 	gitLabMod = "index" // the root index.
 )
 
-// gitLabMember manufactures a type token for the Digital Ocean package and the given module and type.
+// gitLabMember manufactures a type token for the GitLab package and the given module and type.
 func gitLabMember(mod string, mem string) tokens.ModuleMember {
 	return tokens.ModuleMember(gitLabPkg + ":" + mod + ":" + mem)
 }
 
-// gitLabType manufactures a type token for the Digital Ocean package and the given module and type.
+// gitLabType manufactures a type token for the GitLab package and the given module and type.
 func gitLabType(mod string, typ string) tokens.Type {
 	return tokens.Type(gitLabMember(mod, typ))
 }
@@ -137,6 +137,9 @@ func Provider() tfbridge.ProviderInfo {
 			PackageReferences: map[string]string{
 				"Pulumi":                       "1.5.0-*",
 				"System.Collections.Immutable": "1.6.0",
+			},
+			Namespaces: map[string]string{
+				gitLabPkg: "GitLab",
 			},
 		},
 	}
