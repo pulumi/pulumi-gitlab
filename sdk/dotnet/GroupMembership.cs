@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gitlab
+namespace Pulumi.GitLab
 {
     /// <summary>
     /// This resource allows you to add a user to an existing group.
