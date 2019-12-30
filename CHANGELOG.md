@@ -1,6 +1,7 @@
 ## HEAD (Unreleased)
 * Namespace names in .NET SDK are adjusted to PascalCase
 ([#25](https://github.com/pulumi/pulumi-gitlab/pull/25)).
+* Upgrade to pulumi-terraform-bridge v1.5.2
 
 ---
 
