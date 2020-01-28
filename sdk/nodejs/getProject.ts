@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/project.html.markdown.
  */
-export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> & GetProjectResult {
+export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     if (!opts) {
         opts = {}
     }
@@ -30,7 +30,7 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetProjectResult> = pulumi.runtime.invoke("gitlab:index/getProject:getProject", {
+    return pulumi.runtime.invoke("gitlab:index/getProject:getProject", {
         "archived": args.archived,
         "defaultBranch": args.defaultBranch,
         "description": args.description,
@@ -51,8 +51,6 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
         "webUrl": args.webUrl,
         "wikiEnabled": args.wikiEnabled,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
