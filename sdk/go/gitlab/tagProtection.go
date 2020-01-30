@@ -12,7 +12,7 @@ import (
 )
 
 // This resource allows you to protect a specific tag or wildcard by an access level so that the user with less access level cannot Create the tags.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/tag_protection.html.markdown.
 type TagProtection struct {
 	pulumi.CustomResourceState
@@ -105,3 +105,4 @@ type TagProtectionArgs struct {
 func (TagProtectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tagProtectionArgs)(nil)).Elem()
 }
+

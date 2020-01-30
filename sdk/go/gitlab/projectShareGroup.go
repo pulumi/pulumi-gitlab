@@ -12,7 +12,7 @@ import (
 )
 
 // This resource allows you to share a project with a group
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_share_group.html.markdown.
 type ProjectShareGroup struct {
 	pulumi.CustomResourceState
@@ -105,3 +105,4 @@ type ProjectShareGroupArgs struct {
 func (ProjectShareGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectShareGroupArgs)(nil)).Elem()
 }
+

@@ -12,7 +12,7 @@ import (
 )
 
 // This resource allows you to create and manage pipeline triggers
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/pipeline_trigger.html.markdown.
 type PipelineTrigger struct {
 	pulumi.CustomResourceState
@@ -21,7 +21,7 @@ type PipelineTrigger struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The name or id of the project to add the trigger to.
 	Project pulumi.StringOutput `pulumi:"project"`
-	Token   pulumi.StringOutput `pulumi:"token"`
+	Token pulumi.StringOutput `pulumi:"token"`
 }
 
 // NewPipelineTrigger registers a new resource with the given unique name, arguments, and options.
@@ -62,7 +62,7 @@ type pipelineTriggerState struct {
 	Description *string `pulumi:"description"`
 	// The name or id of the project to add the trigger to.
 	Project *string `pulumi:"project"`
-	Token   *string `pulumi:"token"`
+	Token *string `pulumi:"token"`
 }
 
 type PipelineTriggerState struct {
@@ -70,7 +70,7 @@ type PipelineTriggerState struct {
 	Description pulumi.StringPtrInput
 	// The name or id of the project to add the trigger to.
 	Project pulumi.StringPtrInput
-	Token   pulumi.StringPtrInput
+	Token pulumi.StringPtrInput
 }
 
 func (PipelineTriggerState) ElementType() reflect.Type {
@@ -95,3 +95,4 @@ type PipelineTriggerArgs struct {
 func (PipelineTriggerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineTriggerArgs)(nil)).Elem()
 }
+

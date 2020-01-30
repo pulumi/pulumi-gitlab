@@ -71,7 +71,7 @@ func (i ProjectSharedWithGroupArray) ToProjectSharedWithGroupArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSharedWithGroupArrayOutput)
 }
 
-type ProjectSharedWithGroupOutput struct{ *pulumi.OutputState }
+type ProjectSharedWithGroupOutput struct { *pulumi.OutputState }
 
 func (ProjectSharedWithGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectSharedWithGroup)(nil)).Elem()
@@ -88,20 +88,20 @@ func (o ProjectSharedWithGroupOutput) ToProjectSharedWithGroupOutputWithContext(
 // Group's sharing permissions. See [group members permission][groupMembersPermissions] for more info.
 // Valid values are `guest`, `reporter`, `developer`, `master`.
 func (o ProjectSharedWithGroupOutput) GroupAccessLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v ProjectSharedWithGroup) string { return v.GroupAccessLevel }).(pulumi.StringOutput)
+	return o.ApplyT(func (v ProjectSharedWithGroup) string { return v.GroupAccessLevel }).(pulumi.StringOutput)
 }
 
 // Group id of the group you want to share the project with.
 func (o ProjectSharedWithGroupOutput) GroupId() pulumi.IntOutput {
-	return o.ApplyT(func(v ProjectSharedWithGroup) int { return v.GroupId }).(pulumi.IntOutput)
+	return o.ApplyT(func (v ProjectSharedWithGroup) int { return v.GroupId }).(pulumi.IntOutput)
 }
 
 // Group's name.
 func (o ProjectSharedWithGroupOutput) GroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProjectSharedWithGroup) *string { return v.GroupName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func (v ProjectSharedWithGroup) *string { return v.GroupName }).(pulumi.StringPtrOutput)
 }
 
-type ProjectSharedWithGroupArrayOutput struct{ *pulumi.OutputState }
+type ProjectSharedWithGroupArrayOutput struct { *pulumi.OutputState}
 
 func (ProjectSharedWithGroupArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ProjectSharedWithGroup)(nil)).Elem()
@@ -116,7 +116,7 @@ func (o ProjectSharedWithGroupArrayOutput) ToProjectSharedWithGroupArrayOutputWi
 }
 
 func (o ProjectSharedWithGroupArrayOutput) Index(i pulumi.IntInput) ProjectSharedWithGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectSharedWithGroup {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ProjectSharedWithGroup {
 		return vs[0].([]ProjectSharedWithGroup)[vs[1].(int)]
 	}).(ProjectSharedWithGroupOutput)
 }
@@ -271,7 +271,7 @@ func (i GetUsersUserArray) ToGetUsersUserArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserArrayOutput)
 }
 
-type GetUsersUserOutput struct{ *pulumi.OutputState }
+type GetUsersUserOutput struct { *pulumi.OutputState }
 
 func (GetUsersUserOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetUsersUser)(nil)).Elem()
@@ -287,135 +287,135 @@ func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context)
 
 // The avatar URL of the user.
 func (o GetUsersUserOutput) AvatarUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.AvatarUrl }).(pulumi.StringOutput)
+	return o.ApplyT(func (v GetUsersUser) string { return v.AvatarUrl }).(pulumi.StringOutput)
 }
 
 // The bio of the user.
 func (o GetUsersUserOutput) Bio() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.Bio }).(pulumi.StringOutput)
+	return o.ApplyT(func (v GetUsersUser) string { return v.Bio }).(pulumi.StringOutput)
 }
 
 // Whether the user can create groups.
 func (o GetUsersUserOutput) CanCreateGroup() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetUsersUser) bool { return v.CanCreateGroup }).(pulumi.BoolOutput)
+	return o.ApplyT(func (v GetUsersUser) bool { return v.CanCreateGroup }).(pulumi.BoolOutput)
 }
 
 // Whether the user can create projects.
 func (o GetUsersUserOutput) CanCreateProject() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetUsersUser) bool { return v.CanCreateProject }).(pulumi.BoolOutput)
+	return o.ApplyT(func (v GetUsersUser) bool { return v.CanCreateProject }).(pulumi.BoolOutput)
 }
 
 // User's color scheme ID.
 func (o GetUsersUserOutput) ColorSchemeId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetUsersUser) int { return v.ColorSchemeId }).(pulumi.IntOutput)
+	return o.ApplyT(func (v GetUsersUser) int { return v.ColorSchemeId }).(pulumi.IntOutput)
 }
 
 // Date the user was created at.
 func (o GetUsersUserOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.CreatedAt }).(pulumi.StringOutput)
+	return o.ApplyT(func (v GetUsersUser) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // Current user's sign-in date.
 func (o GetUsersUserOutput) CurrentSignInAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.CurrentSignInAt }).(pulumi.StringOutput)
+	return o.ApplyT(func (v GetUsersUser) string { return v.CurrentSignInAt }).(pulumi.StringOutput)
 }
 
 // The e-mail address of the user.
 func (o GetUsersUserOutput) Email() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.Email }).(pulumi.StringOutput)
+	return o.ApplyT(func (v GetUsersUser) string { return v.Email }).(pulumi.StringOutput)
 }
 
 // Lookup users by external UID. (Requires administrator privileges)
 func (o GetUsersUserOutput) ExternUid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.ExternUid }).(pulumi.StringOutput)
+	return o.ApplyT(func (v GetUsersUser) string { return v.ExternUid }).(pulumi.StringOutput)
 }
 
 // Whether the user is external.
 func (o GetUsersUserOutput) External() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetUsersUser) bool { return v.External }).(pulumi.BoolOutput)
+	return o.ApplyT(func (v GetUsersUser) bool { return v.External }).(pulumi.BoolOutput)
 }
 
 // The unique id assigned to the user by the gitlab server.
 func (o GetUsersUserOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetUsersUser) int { return v.Id }).(pulumi.IntOutput)
+	return o.ApplyT(func (v GetUsersUser) int { return v.Id }).(pulumi.IntOutput)
 }
 
 // Whether the user is an admin.
 func (o GetUsersUserOutput) IsAdmin() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetUsersUser) bool { return v.IsAdmin }).(pulumi.BoolOutput)
+	return o.ApplyT(func (v GetUsersUser) bool { return v.IsAdmin }).(pulumi.BoolOutput)
 }
 
 // Last user's sign-in date.
 func (o GetUsersUserOutput) LastSignInAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.LastSignInAt }).(pulumi.StringOutput)
+	return o.ApplyT(func (v GetUsersUser) string { return v.LastSignInAt }).(pulumi.StringOutput)
 }
 
 // Linkedin profile of the user.
 func (o GetUsersUserOutput) Linkedin() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.Linkedin }).(pulumi.StringOutput)
+	return o.ApplyT(func (v GetUsersUser) string { return v.Linkedin }).(pulumi.StringOutput)
 }
 
 // The location of the user.
 func (o GetUsersUserOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.Location }).(pulumi.StringOutput)
+	return o.ApplyT(func (v GetUsersUser) string { return v.Location }).(pulumi.StringOutput)
 }
 
 // The name of the user.
 func (o GetUsersUserOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func (v GetUsersUser) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The organization of the user.
 func (o GetUsersUserOutput) Organization() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.Organization }).(pulumi.StringOutput)
+	return o.ApplyT(func (v GetUsersUser) string { return v.Organization }).(pulumi.StringOutput)
 }
 
 // Number of projects the user can create.
 func (o GetUsersUserOutput) ProjectsLimit() pulumi.IntOutput {
-	return o.ApplyT(func(v GetUsersUser) int { return v.ProjectsLimit }).(pulumi.IntOutput)
+	return o.ApplyT(func (v GetUsersUser) int { return v.ProjectsLimit }).(pulumi.IntOutput)
 }
 
 // The UID provider of the user.
 func (o GetUsersUserOutput) Provider() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.Provider }).(pulumi.StringOutput)
+	return o.ApplyT(func (v GetUsersUser) string { return v.Provider }).(pulumi.StringOutput)
 }
 
 // Skype username of the user.
 func (o GetUsersUserOutput) Skype() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.Skype }).(pulumi.StringOutput)
+	return o.ApplyT(func (v GetUsersUser) string { return v.Skype }).(pulumi.StringOutput)
 }
 
 // Whether the user is active or blocked.
 func (o GetUsersUserOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.State }).(pulumi.StringOutput)
+	return o.ApplyT(func (v GetUsersUser) string { return v.State }).(pulumi.StringOutput)
 }
 
 // User's theme ID.
 func (o GetUsersUserOutput) ThemeId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetUsersUser) int { return v.ThemeId }).(pulumi.IntOutput)
+	return o.ApplyT(func (v GetUsersUser) int { return v.ThemeId }).(pulumi.IntOutput)
 }
 
 // Twitter username of the user.
 func (o GetUsersUserOutput) Twitter() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.Twitter }).(pulumi.StringOutput)
+	return o.ApplyT(func (v GetUsersUser) string { return v.Twitter }).(pulumi.StringOutput)
 }
 
 // Whether user's two factor auth is enabled.
 func (o GetUsersUserOutput) TwoFactorEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetUsersUser) bool { return v.TwoFactorEnabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func (v GetUsersUser) bool { return v.TwoFactorEnabled }).(pulumi.BoolOutput)
 }
 
 // The username of the user.
 func (o GetUsersUserOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.Username }).(pulumi.StringOutput)
+	return o.ApplyT(func (v GetUsersUser) string { return v.Username }).(pulumi.StringOutput)
 }
 
 // User's website URL.
 func (o GetUsersUserOutput) WebsiteUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.WebsiteUrl }).(pulumi.StringOutput)
+	return o.ApplyT(func (v GetUsersUser) string { return v.WebsiteUrl }).(pulumi.StringOutput)
 }
 
-type GetUsersUserArrayOutput struct{ *pulumi.OutputState }
+type GetUsersUserArrayOutput struct { *pulumi.OutputState}
 
 func (GetUsersUserArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetUsersUser)(nil)).Elem()
@@ -430,7 +430,7 @@ func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutputWithContext(ctx contex
 }
 
 func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersUser {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetUsersUser {
 		return vs[0].([]GetUsersUser)[vs[1].(int)]
 	}).(GetUsersUserOutput)
 }

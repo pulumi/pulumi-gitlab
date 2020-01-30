@@ -12,20 +12,20 @@ import (
 )
 
 // This resource allows you to enable pre-existing deploy keys for your GitLab projects.
-//
+// 
 // **the GITLAB KEY_ID for the deploy key must be known**
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/deploy_key_enable.html.markdown.
 type DeployKeyEnable struct {
 	pulumi.CustomResourceState
 
-	CanPush pulumi.BoolOutput   `pulumi:"canPush"`
-	Key     pulumi.StringOutput `pulumi:"key"`
+	CanPush pulumi.BoolOutput `pulumi:"canPush"`
+	Key pulumi.StringOutput `pulumi:"key"`
 	// The Gitlab key id for the pre-existing deploy key
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
 	// The name or id of the project to add the deploy key to.
 	Project pulumi.StringOutput `pulumi:"project"`
-	Title   pulumi.StringOutput `pulumi:"title"`
+	Title pulumi.StringOutput `pulumi:"title"`
 }
 
 // NewDeployKeyEnable registers a new resource with the given unique name, arguments, and options.
@@ -62,23 +62,23 @@ func GetDeployKeyEnable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DeployKeyEnable resources.
 type deployKeyEnableState struct {
-	CanPush *bool   `pulumi:"canPush"`
-	Key     *string `pulumi:"key"`
+	CanPush *bool `pulumi:"canPush"`
+	Key *string `pulumi:"key"`
 	// The Gitlab key id for the pre-existing deploy key
 	KeyId *string `pulumi:"keyId"`
 	// The name or id of the project to add the deploy key to.
 	Project *string `pulumi:"project"`
-	Title   *string `pulumi:"title"`
+	Title *string `pulumi:"title"`
 }
 
 type DeployKeyEnableState struct {
 	CanPush pulumi.BoolPtrInput
-	Key     pulumi.StringPtrInput
+	Key pulumi.StringPtrInput
 	// The Gitlab key id for the pre-existing deploy key
 	KeyId pulumi.StringPtrInput
 	// The name or id of the project to add the deploy key to.
 	Project pulumi.StringPtrInput
-	Title   pulumi.StringPtrInput
+	Title pulumi.StringPtrInput
 }
 
 func (DeployKeyEnableState) ElementType() reflect.Type {
@@ -86,26 +86,27 @@ func (DeployKeyEnableState) ElementType() reflect.Type {
 }
 
 type deployKeyEnableArgs struct {
-	CanPush *bool   `pulumi:"canPush"`
-	Key     *string `pulumi:"key"`
+	CanPush *bool `pulumi:"canPush"`
+	Key *string `pulumi:"key"`
 	// The Gitlab key id for the pre-existing deploy key
 	KeyId string `pulumi:"keyId"`
 	// The name or id of the project to add the deploy key to.
-	Project string  `pulumi:"project"`
-	Title   *string `pulumi:"title"`
+	Project string `pulumi:"project"`
+	Title *string `pulumi:"title"`
 }
 
 // The set of arguments for constructing a DeployKeyEnable resource.
 type DeployKeyEnableArgs struct {
 	CanPush pulumi.BoolPtrInput
-	Key     pulumi.StringPtrInput
+	Key pulumi.StringPtrInput
 	// The Gitlab key id for the pre-existing deploy key
 	KeyId pulumi.StringInput
 	// The name or id of the project to add the deploy key to.
 	Project pulumi.StringInput
-	Title   pulumi.StringPtrInput
+	Title pulumi.StringPtrInput
 }
 
 func (DeployKeyEnableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*deployKeyEnableArgs)(nil)).Elem()
 }
+

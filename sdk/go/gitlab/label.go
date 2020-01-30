@@ -14,7 +14,7 @@ import (
 // This resource allows you to create and manage labels for your GitLab projects.
 // For further information on labels, consult the [gitlab
 // documentation](https://docs.gitlab.com/ee/user/project/labels.htm).
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/label.html.markdown.
 type Label struct {
 	pulumi.CustomResourceState
@@ -114,3 +114,4 @@ type LabelArgs struct {
 func (LabelArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*labelArgs)(nil)).Elem()
 }
+

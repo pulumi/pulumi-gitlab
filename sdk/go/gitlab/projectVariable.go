@@ -14,7 +14,7 @@ import (
 // This resource allows you to create and manage CI/CD variables for your GitLab projects.
 // For further information on variables, consult the [gitlab
 // documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_variable.html.markdown.
 type ProjectVariable struct {
 	pulumi.CustomResourceState
@@ -147,3 +147,4 @@ type ProjectVariableArgs struct {
 func (ProjectVariableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectVariableArgs)(nil)).Elem()
 }
+

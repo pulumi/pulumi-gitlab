@@ -9,7 +9,7 @@ import (
 )
 
 // Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/project.html.markdown.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	var rv LookupProjectResult
@@ -22,27 +22,28 @@ func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getProject.
 type LookupProjectArgs struct {
-	Archived      *bool   `pulumi:"archived"`
+	Archived *bool `pulumi:"archived"`
 	DefaultBranch *string `pulumi:"defaultBranch"`
-	Description   *string `pulumi:"description"`
+	Description *string `pulumi:"description"`
 	HttpUrlToRepo *string `pulumi:"httpUrlToRepo"`
 	// The integer that uniquely identifies the project within the gitlab install.
-	Id                   int     `pulumi:"id"`
-	IssuesEnabled        *bool   `pulumi:"issuesEnabled"`
-	LfsEnabled           *bool   `pulumi:"lfsEnabled"`
-	MergeRequestsEnabled *bool   `pulumi:"mergeRequestsEnabled"`
-	Name                 *string `pulumi:"name"`
-	NamespaceId          *int    `pulumi:"namespaceId"`
-	Path                 *string `pulumi:"path"`
-	PipelinesEnabled     *bool   `pulumi:"pipelinesEnabled"`
-	RequestAccessEnabled *bool   `pulumi:"requestAccessEnabled"`
-	RunnersToken         *string `pulumi:"runnersToken"`
-	SnippetsEnabled      *bool   `pulumi:"snippetsEnabled"`
-	SshUrlToRepo         *string `pulumi:"sshUrlToRepo"`
-	VisibilityLevel      *string `pulumi:"visibilityLevel"`
-	WebUrl               *string `pulumi:"webUrl"`
-	WikiEnabled          *bool   `pulumi:"wikiEnabled"`
+	Id int `pulumi:"id"`
+	IssuesEnabled *bool `pulumi:"issuesEnabled"`
+	LfsEnabled *bool `pulumi:"lfsEnabled"`
+	MergeRequestsEnabled *bool `pulumi:"mergeRequestsEnabled"`
+	Name *string `pulumi:"name"`
+	NamespaceId *int `pulumi:"namespaceId"`
+	Path *string `pulumi:"path"`
+	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
+	RequestAccessEnabled *bool `pulumi:"requestAccessEnabled"`
+	RunnersToken *string `pulumi:"runnersToken"`
+	SnippetsEnabled *bool `pulumi:"snippetsEnabled"`
+	SshUrlToRepo *string `pulumi:"sshUrlToRepo"`
+	VisibilityLevel *string `pulumi:"visibilityLevel"`
+	WebUrl *string `pulumi:"webUrl"`
+	WikiEnabled *bool `pulumi:"wikiEnabled"`
 }
+
 
 // A collection of values returned by getProject.
 type LookupProjectResult struct {
@@ -62,8 +63,8 @@ type LookupProjectResult struct {
 	// Enable LFS for the project.
 	LfsEnabled bool `pulumi:"lfsEnabled"`
 	// Enable merge requests for the project.
-	MergeRequestsEnabled bool   `pulumi:"mergeRequestsEnabled"`
-	Name                 string `pulumi:"name"`
+	MergeRequestsEnabled bool `pulumi:"mergeRequestsEnabled"`
+	Name string `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
 	// See `.Group` for an example.
 	NamespaceId int `pulumi:"namespaceId"`
@@ -87,3 +88,4 @@ type LookupProjectResult struct {
 	// Enable wiki for the project.
 	WikiEnabled bool `pulumi:"wikiEnabled"`
 }
+

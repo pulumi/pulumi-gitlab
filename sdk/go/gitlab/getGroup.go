@@ -9,7 +9,7 @@ import (
 )
 
 // Provides details about a specific group in the gitlab provider.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/group.html.markdown.
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
 	var rv LookupGroupResult
@@ -28,6 +28,7 @@ type LookupGroupArgs struct {
 	GroupId *int `pulumi:"groupId"`
 }
 
+
 // A collection of values returned by getGroup.
 type LookupGroupResult struct {
 	// The description of the group.
@@ -36,7 +37,7 @@ type LookupGroupResult struct {
 	FullName string `pulumi:"fullName"`
 	// The full path of the group.
 	FullPath string `pulumi:"fullPath"`
-	GroupId  int    `pulumi:"groupId"`
+	GroupId int `pulumi:"groupId"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Boolean, is LFS enabled for projects in this group.
@@ -56,3 +57,4 @@ type LookupGroupResult struct {
 	// Web URL of the group.
 	WebUrl string `pulumi:"webUrl"`
 }
+

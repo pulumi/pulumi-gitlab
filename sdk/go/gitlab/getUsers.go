@@ -9,9 +9,9 @@ import (
 )
 
 // Provides details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
-//
+// 
 // **NOTE**: Some of the available options require administrator privileges. Please visit [Gitlab API documentation][usersForAdmins] for more information.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/users.html.markdown.
 func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
 	var rv GetUsersResult
@@ -44,20 +44,22 @@ type GetUsersArgs struct {
 	Sort *string `pulumi:"sort"`
 }
 
+
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
-	Active         *bool   `pulumi:"active"`
-	Blocked        *bool   `pulumi:"blocked"`
-	CreatedAfter   *string `pulumi:"createdAfter"`
-	CreatedBefore  *string `pulumi:"createdBefore"`
+	Active *bool `pulumi:"active"`
+	Blocked *bool `pulumi:"blocked"`
+	CreatedAfter *string `pulumi:"createdAfter"`
+	CreatedBefore *string `pulumi:"createdBefore"`
 	ExternProvider *string `pulumi:"externProvider"`
 	// The external UID of the user.
 	ExternUid *string `pulumi:"externUid"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id      string  `pulumi:"id"`
+	Id string `pulumi:"id"`
 	OrderBy *string `pulumi:"orderBy"`
-	Search  *string `pulumi:"search"`
-	Sort    *string `pulumi:"sort"`
+	Search *string `pulumi:"search"`
+	Sort *string `pulumi:"sort"`
 	// The list of users.
 	Users []GetUsersUser `pulumi:"users"`
 }
+

@@ -12,7 +12,7 @@ import (
 )
 
 // This resource allows you to create and manage variables for pipeline schedules.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/pipeline_schedule_variable.html.markdown.
 type PipelineScheduleVariable struct {
 	pulumi.CustomResourceState
@@ -118,3 +118,4 @@ type PipelineScheduleVariableArgs struct {
 func (PipelineScheduleVariableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineScheduleVariableArgs)(nil)).Elem()
 }
+

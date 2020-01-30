@@ -12,12 +12,12 @@ import (
 )
 
 // This resource allows you to manage Jira integration.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_jira.html.markdown.
 type ServiceJira struct {
 	pulumi.CustomResourceState
 
-	Active    pulumi.BoolOutput   `pulumi:"active"`
+	Active pulumi.BoolOutput `pulumi:"active"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
 	JiraIssueTransitionId pulumi.StringPtrOutput `pulumi:"jiraIssueTransitionId"`
@@ -27,8 +27,8 @@ type ServiceJira struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
 	ProjectKey pulumi.StringPtrOutput `pulumi:"projectKey"`
-	Title      pulumi.StringOutput    `pulumi:"title"`
-	UpdatedAt  pulumi.StringOutput    `pulumi:"updatedAt"`
+	Title pulumi.StringOutput `pulumi:"title"`
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// The username of the user created to be used with GitLab/JIRA.
@@ -75,7 +75,7 @@ func GetServiceJira(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceJira resources.
 type serviceJiraState struct {
-	Active    *bool   `pulumi:"active"`
+	Active *bool `pulumi:"active"`
 	CreatedAt *string `pulumi:"createdAt"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
@@ -85,8 +85,8 @@ type serviceJiraState struct {
 	Project *string `pulumi:"project"`
 	// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
 	ProjectKey *string `pulumi:"projectKey"`
-	Title      *string `pulumi:"title"`
-	UpdatedAt  *string `pulumi:"updatedAt"`
+	Title *string `pulumi:"title"`
+	UpdatedAt *string `pulumi:"updatedAt"`
 	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
 	Url *string `pulumi:"url"`
 	// The username of the user created to be used with GitLab/JIRA.
@@ -94,7 +94,7 @@ type serviceJiraState struct {
 }
 
 type ServiceJiraState struct {
-	Active    pulumi.BoolPtrInput
+	Active pulumi.BoolPtrInput
 	CreatedAt pulumi.StringPtrInput
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
 	JiraIssueTransitionId pulumi.StringPtrInput
@@ -104,8 +104,8 @@ type ServiceJiraState struct {
 	Project pulumi.StringPtrInput
 	// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
 	ProjectKey pulumi.StringPtrInput
-	Title      pulumi.StringPtrInput
-	UpdatedAt  pulumi.StringPtrInput
+	Title pulumi.StringPtrInput
+	UpdatedAt pulumi.StringPtrInput
 	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
 	Url pulumi.StringPtrInput
 	// The username of the user created to be used with GitLab/JIRA.
@@ -150,3 +150,4 @@ type ServiceJiraArgs struct {
 func (ServiceJiraArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceJiraArgs)(nil)).Elem()
 }
+

@@ -12,7 +12,7 @@ import (
 )
 
 // This resource allows you to manage Slack notifications integration.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_slack.html.markdown.
 type ServiceSlack struct {
 	pulumi.CustomResourceState
@@ -27,7 +27,7 @@ type ServiceSlack struct {
 	IssueChannel pulumi.StringPtrOutput `pulumi:"issueChannel"`
 	// Enable notifications for issues events.
 	IssuesEvents pulumi.BoolOutput `pulumi:"issuesEvents"`
-	JobEvents    pulumi.BoolOutput `pulumi:"jobEvents"`
+	JobEvents pulumi.BoolOutput `pulumi:"jobEvents"`
 	// The name of the channel to receive merge request events notifications.
 	MergeRequestChannel pulumi.StringPtrOutput `pulumi:"mergeRequestChannel"`
 	// Enable notifications for merge requests events.
@@ -108,7 +108,7 @@ type serviceSlackState struct {
 	IssueChannel *string `pulumi:"issueChannel"`
 	// Enable notifications for issues events.
 	IssuesEvents *bool `pulumi:"issuesEvents"`
-	JobEvents    *bool `pulumi:"jobEvents"`
+	JobEvents *bool `pulumi:"jobEvents"`
 	// The name of the channel to receive merge request events notifications.
 	MergeRequestChannel *string `pulumi:"mergeRequestChannel"`
 	// Enable notifications for merge requests events.
@@ -156,7 +156,7 @@ type ServiceSlackState struct {
 	IssueChannel pulumi.StringPtrInput
 	// Enable notifications for issues events.
 	IssuesEvents pulumi.BoolPtrInput
-	JobEvents    pulumi.BoolPtrInput
+	JobEvents pulumi.BoolPtrInput
 	// The name of the channel to receive merge request events notifications.
 	MergeRequestChannel pulumi.StringPtrInput
 	// Enable notifications for merge requests events.
@@ -295,3 +295,4 @@ type ServiceSlackArgs struct {
 func (ServiceSlackArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceSlackArgs)(nil)).Elem()
 }
+

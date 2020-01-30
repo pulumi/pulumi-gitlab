@@ -9,7 +9,7 @@ import (
 )
 
 // Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/user.html.markdown.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	var rv LookupUserResult
@@ -29,6 +29,7 @@ type LookupUserArgs struct {
 	// The username of the user.
 	Username *string `pulumi:"username"`
 }
+
 
 // A collection of values returned by getUser.
 type LookupUserResult struct {
@@ -78,7 +79,7 @@ type LookupUserResult struct {
 	Twitter string `pulumi:"twitter"`
 	// Whether user's two factor auth is enabled.
 	TwoFactorEnabled bool `pulumi:"twoFactorEnabled"`
-	UserId           int  `pulumi:"userId"`
+	UserId int `pulumi:"userId"`
 	// The UID provider of the user.
 	UserProvider string `pulumi:"userProvider"`
 	// The username of the user.
@@ -86,3 +87,4 @@ type LookupUserResult struct {
 	// User's website URL.
 	WebsiteUrl string `pulumi:"websiteUrl"`
 }
+

@@ -14,13 +14,13 @@ import (
 // This resource allows you to create and manage project clusters for your GitLab projects.
 // For further information on clusters, consult the [gitlab
 // documentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_cluster.html.markdown.
 type ProjectCluster struct {
 	pulumi.CustomResourceState
 
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
-	CreatedAt   pulumi.StringOutput `pulumi:"createdAt"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The base domain of the cluster.
 	Domain pulumi.StringPtrOutput `pulumi:"domain"`
 	// Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
@@ -40,10 +40,10 @@ type ProjectCluster struct {
 	// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
 	Managed pulumi.BoolPtrOutput `pulumi:"managed"`
 	// The name of cluster.
-	Name         pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
 	PlatformType pulumi.StringOutput `pulumi:"platformType"`
 	// The id of the project to add the cluster to.
-	Project      pulumi.StringOutput `pulumi:"project"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	ProviderType pulumi.StringOutput `pulumi:"providerType"`
 }
 
@@ -85,7 +85,7 @@ func GetProjectCluster(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ProjectCluster resources.
 type projectClusterState struct {
 	ClusterType *string `pulumi:"clusterType"`
-	CreatedAt   *string `pulumi:"createdAt"`
+	CreatedAt *string `pulumi:"createdAt"`
 	// The base domain of the cluster.
 	Domain *string `pulumi:"domain"`
 	// Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
@@ -105,16 +105,16 @@ type projectClusterState struct {
 	// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
 	Managed *bool `pulumi:"managed"`
 	// The name of cluster.
-	Name         *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	PlatformType *string `pulumi:"platformType"`
 	// The id of the project to add the cluster to.
-	Project      *string `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	ProviderType *string `pulumi:"providerType"`
 }
 
 type ProjectClusterState struct {
 	ClusterType pulumi.StringPtrInput
-	CreatedAt   pulumi.StringPtrInput
+	CreatedAt pulumi.StringPtrInput
 	// The base domain of the cluster.
 	Domain pulumi.StringPtrInput
 	// Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
@@ -134,10 +134,10 @@ type ProjectClusterState struct {
 	// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
 	Managed pulumi.BoolPtrInput
 	// The name of cluster.
-	Name         pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
 	PlatformType pulumi.StringPtrInput
 	// The id of the project to add the cluster to.
-	Project      pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 	ProviderType pulumi.StringPtrInput
 }
 
@@ -199,3 +199,4 @@ type ProjectClusterArgs struct {
 func (ProjectClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectClusterArgs)(nil)).Elem()
 }
+

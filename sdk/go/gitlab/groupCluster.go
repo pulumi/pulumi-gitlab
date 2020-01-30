@@ -14,13 +14,13 @@ import (
 // This resource allows you to create and manage group clusters for your GitLab groups.
 // For further information on clusters, consult the [gitlab
 // documentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).
-//
+// 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_cluster.html.markdown.
 type GroupCluster struct {
 	pulumi.CustomResourceState
 
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
-	CreatedAt   pulumi.StringOutput `pulumi:"createdAt"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The base domain of the cluster.
 	Domain pulumi.StringPtrOutput `pulumi:"domain"`
 	// Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
@@ -40,7 +40,7 @@ type GroupCluster struct {
 	// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
 	Managed pulumi.BoolPtrOutput `pulumi:"managed"`
 	// The name of cluster.
-	Name         pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
 	PlatformType pulumi.StringOutput `pulumi:"platformType"`
 	ProviderType pulumi.StringOutput `pulumi:"providerType"`
 }
@@ -83,7 +83,7 @@ func GetGroupCluster(ctx *pulumi.Context,
 // Input properties used for looking up and filtering GroupCluster resources.
 type groupClusterState struct {
 	ClusterType *string `pulumi:"clusterType"`
-	CreatedAt   *string `pulumi:"createdAt"`
+	CreatedAt *string `pulumi:"createdAt"`
 	// The base domain of the cluster.
 	Domain *string `pulumi:"domain"`
 	// Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
@@ -103,14 +103,14 @@ type groupClusterState struct {
 	// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
 	Managed *bool `pulumi:"managed"`
 	// The name of cluster.
-	Name         *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	PlatformType *string `pulumi:"platformType"`
 	ProviderType *string `pulumi:"providerType"`
 }
 
 type GroupClusterState struct {
 	ClusterType pulumi.StringPtrInput
-	CreatedAt   pulumi.StringPtrInput
+	CreatedAt pulumi.StringPtrInput
 	// The base domain of the cluster.
 	Domain pulumi.StringPtrInput
 	// Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
@@ -130,7 +130,7 @@ type GroupClusterState struct {
 	// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
 	Managed pulumi.BoolPtrInput
 	// The name of cluster.
-	Name         pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
 	PlatformType pulumi.StringPtrInput
 	ProviderType pulumi.StringPtrInput
 }
@@ -189,3 +189,4 @@ type GroupClusterArgs struct {
 func (GroupClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupClusterArgs)(nil)).Elem()
 }
+
