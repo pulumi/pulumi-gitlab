@@ -25,9 +25,9 @@ TESTPARALLELISM := 20
 # NOTE: Since the plugin is published using the nodejs style semver version
 # We set the PLUGIN_VERSION to be the same as the version we use when building
 # the provider (e.g. x.y.z-dev-... instead of x.y.zdev...)
-build:: provider tfgen
-	for LANGUAGE in "nodejs" "python" "go" "dotnet" ; do \
-		$(TFGEN) $$LANGUAGE --overlays overlays/$$LANGUAGE/ --out ${PACKDIR}/$$LANGUAGE/ || exit 3 ; \
+build:: provider
+	cd provider && for LANGUAGE in "nodejs" "python" "go" "dotnet" ; do \
+		$(TFGEN) $$LANGUAGE --overlays overlays/$$LANGUAGE/ --out ../${PACKDIR}/$$LANGUAGE/ || exit 3 ; \
 	done
 	cd ${PACKDIR}/nodejs/ && \
 		yarn install && \
@@ -45,16 +45,19 @@ build:: provider tfgen
 		echo "${VERSION:v%=%}" >version.txt && \
   		dotnet build /p:Version=${DOTNET_VERSION}
 
-provider::
-	go install -ldflags "-X github.com/pulumi/pulumi-gitlab/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${PROVIDER}
+provider:: generate_schema
+	cd provider && go install -ldflags "-X github.com/pulumi/pulumi-gitlab/pkg/version.Version=${VERSION}" ${PROJECT}/provider/cmd/${PROVIDER}
+
+generate_schema:: tfgen
+	$(TFGEN) schema --out ./provider/cmd/${PROVIDER}
 
 tfgen::
-	go install -ldflags "-X github.com/pulumi/pulumi-gitlab/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${TFGEN}
+	cd provider && go install -ldflags "-X github.com/pulumi/pulumi-gitlab/pkg/version.Version=${VERSION}" ${PROJECT}/provider/cmd/${TFGEN}
 
 lint::
 	golangci-lint run
 
-install::
+install:: provider
 	GOBIN=$(PULUMI_BIN) go install -ldflags "-X github.com/pulumi/pulumi-gitlab/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${PROVIDER}
 	[ ! -e "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)" ] || rm -rf "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)"
 	mkdir -p "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)"
@@ -64,12 +67,16 @@ install::
 		yarn install --offline --production && \
 		(yarn unlink > /dev/null 2>&1 || true) && \
 		yarn link
+	cd ${PACKDIR}/python/bin && $(PIP) install --user -e .
+	echo "Copying NuGet packages to ${PULUMI_NUGET}"
+	[ ! -e "$(PULUMI_NUGET)" ] || rm -rf "$(PULUMI_NUGET)/*"
+	find . -name '*.nupkg' -exec cp -p {} ${PULUMI_NUGET} \;
 
 test_fast::
-	$(GO_TEST_FAST) ./examples
+	cd examples && $(GO_TEST_FAST) .
 
 test_all::
-	$(GO_TEST) ./examples
+	cd examples && $(GO_TEST) .
 
 .PHONY: publish_tgz
 publish_tgz:
