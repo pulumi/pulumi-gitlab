@@ -17,6 +17,12 @@ namespace Pulumi.GitLab
     public partial class ServiceSlack : Pulumi.CustomResource
     {
         /// <summary>
+        /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
+        /// </summary>
+        [Output("branchesToBeNotified")]
+        public Output<string> BranchesToBeNotified { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the channel to receive confidential issue events notifications.
         /// </summary>
         [Output("confidentialIssueChannel")]
@@ -80,7 +86,7 @@ namespace Pulumi.GitLab
         public Output<bool> NotifyOnlyBrokenPipelines { get; private set; } = null!;
 
         /// <summary>
-        /// Send notifications only for the default branch.
+        /// DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.
         /// </summary>
         [Output("notifyOnlyDefaultBranch")]
         public Output<bool> NotifyOnlyDefaultBranch { get; private set; } = null!;
@@ -198,6 +204,12 @@ namespace Pulumi.GitLab
     public sealed class ServiceSlackArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
+        /// </summary>
+        [Input("branchesToBeNotified")]
+        public Input<string>? BranchesToBeNotified { get; set; }
+
+        /// <summary>
         /// The name of the channel to receive confidential issue events notifications.
         /// </summary>
         [Input("confidentialIssueChannel")]
@@ -258,7 +270,7 @@ namespace Pulumi.GitLab
         public Input<bool>? NotifyOnlyBrokenPipelines { get; set; }
 
         /// <summary>
-        /// Send notifications only for the default branch.
+        /// DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.
         /// </summary>
         [Input("notifyOnlyDefaultBranch")]
         public Input<bool>? NotifyOnlyDefaultBranch { get; set; }
@@ -337,6 +349,12 @@ namespace Pulumi.GitLab
     public sealed class ServiceSlackState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
+        /// </summary>
+        [Input("branchesToBeNotified")]
+        public Input<string>? BranchesToBeNotified { get; set; }
+
+        /// <summary>
         /// The name of the channel to receive confidential issue events notifications.
         /// </summary>
         [Input("confidentialIssueChannel")]
@@ -400,7 +418,7 @@ namespace Pulumi.GitLab
         public Input<bool>? NotifyOnlyBrokenPipelines { get; set; }
 
         /// <summary>
-        /// Send notifications only for the default branch.
+        /// DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.
         /// </summary>
         [Input("notifyOnlyDefaultBranch")]
         public Input<bool>? NotifyOnlyDefaultBranch { get; set; }

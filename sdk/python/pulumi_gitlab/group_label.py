@@ -30,7 +30,7 @@ class GroupLabel(pulumi.CustomResource):
         """
         This resource allows you to create and manage labels for your GitLab groups.
         For further information on labels, consult the [gitlab
-        documentation](https://docs.gitlab.com/ee/user/group/labels.htm).
+        documentation](https://docs.gitlab.com/ee/user/project/labels.html#group-labels).
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_label.html.markdown.
 

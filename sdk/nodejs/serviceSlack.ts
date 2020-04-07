@@ -58,6 +58,10 @@ export class ServiceSlack extends pulumi.CustomResource {
     }
 
     /**
+     * Branches to send notifications for. Valid options are "all", "default", "protected", and "defaultAndProtected".
+     */
+    public readonly branchesToBeNotified!: pulumi.Output<string>;
+    /**
      * The name of the channel to receive confidential issue events notifications.
      */
     public readonly confidentialIssueChannel!: pulumi.Output<string | undefined>;
@@ -99,7 +103,7 @@ export class ServiceSlack extends pulumi.CustomResource {
      */
     public readonly notifyOnlyBrokenPipelines!: pulumi.Output<boolean>;
     /**
-     * Send notifications only for the default branch.
+     * DEPRECATED: This parameter has been replaced with `branchesToBeNotified`.
      */
     public readonly notifyOnlyDefaultBranch!: pulumi.Output<boolean>;
     /**
@@ -159,6 +163,7 @@ export class ServiceSlack extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ServiceSlackState | undefined;
+            inputs["branchesToBeNotified"] = state ? state.branchesToBeNotified : undefined;
             inputs["confidentialIssueChannel"] = state ? state.confidentialIssueChannel : undefined;
             inputs["confidentialIssuesEvents"] = state ? state.confidentialIssuesEvents : undefined;
             inputs["confidentialNoteEvents"] = state ? state.confidentialNoteEvents : undefined;
@@ -190,6 +195,7 @@ export class ServiceSlack extends pulumi.CustomResource {
             if (!args || args.webhook === undefined) {
                 throw new Error("Missing required property 'webhook'");
             }
+            inputs["branchesToBeNotified"] = args ? args.branchesToBeNotified : undefined;
             inputs["confidentialIssueChannel"] = args ? args.confidentialIssueChannel : undefined;
             inputs["confidentialIssuesEvents"] = args ? args.confidentialIssuesEvents : undefined;
             inputs["confidentialNoteEvents"] = args ? args.confidentialNoteEvents : undefined;
@@ -229,6 +235,10 @@ export class ServiceSlack extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServiceSlack resources.
  */
 export interface ServiceSlackState {
+    /**
+     * Branches to send notifications for. Valid options are "all", "default", "protected", and "defaultAndProtected".
+     */
+    readonly branchesToBeNotified?: pulumi.Input<string>;
     /**
      * The name of the channel to receive confidential issue events notifications.
      */
@@ -271,7 +281,9 @@ export interface ServiceSlackState {
      */
     readonly notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
     /**
-     * Send notifications only for the default branch.
+     * DEPRECATED: This parameter has been replaced with `branchesToBeNotified`.
+     * 
+     * @deprecated use 'branches_to_be_notified' argument instead
      */
     readonly notifyOnlyDefaultBranch?: pulumi.Input<boolean>;
     /**
@@ -325,6 +337,10 @@ export interface ServiceSlackState {
  */
 export interface ServiceSlackArgs {
     /**
+     * Branches to send notifications for. Valid options are "all", "default", "protected", and "defaultAndProtected".
+     */
+    readonly branchesToBeNotified?: pulumi.Input<string>;
+    /**
      * The name of the channel to receive confidential issue events notifications.
      */
     readonly confidentialIssueChannel?: pulumi.Input<string>;
@@ -365,7 +381,9 @@ export interface ServiceSlackArgs {
      */
     readonly notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
     /**
-     * Send notifications only for the default branch.
+     * DEPRECATED: This parameter has been replaced with `branchesToBeNotified`.
+     * 
+     * @deprecated use 'branches_to_be_notified' argument instead
      */
     readonly notifyOnlyDefaultBranch?: pulumi.Input<boolean>;
     /**
