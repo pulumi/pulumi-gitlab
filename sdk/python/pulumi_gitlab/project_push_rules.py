@@ -51,7 +51,9 @@ class ProjectPushRules(pulumi.CustomResource):
         This resource allows you to create and manage push rules for your GitLab projects.
         For further information on push rules, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/push_rules/push_rules.html#push-rules).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_push_rules.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] author_email_regex: All commit author emails must match this regex, e.g. "@my-company.com$"
@@ -63,8 +65,6 @@ class ProjectPushRules(pulumi.CustomResource):
         :param pulumi.Input[bool] member_check: Restrict commits by author (email) to existing GitLab users
         :param pulumi.Input[bool] prevent_secrets: GitLab will reject any files that are likely to contain secrets
         :param pulumi.Input[str] project: The name or id of the project to add the push rules to.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_push_rules.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,7 +105,7 @@ class ProjectPushRules(pulumi.CustomResource):
         """
         Get an existing ProjectPushRules resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -118,12 +118,11 @@ class ProjectPushRules(pulumi.CustomResource):
         :param pulumi.Input[bool] member_check: Restrict commits by author (email) to existing GitLab users
         :param pulumi.Input[bool] prevent_secrets: GitLab will reject any files that are likely to contain secrets
         :param pulumi.Input[str] project: The name or id of the project to add the push rules to.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_push_rules.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["author_email_regex"] = author_email_regex
         __props__["branch_name_regex"] = branch_name_regex
         __props__["commit_message_regex"] = commit_message_regex

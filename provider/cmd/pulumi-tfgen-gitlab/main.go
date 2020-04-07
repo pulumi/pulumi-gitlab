@@ -15,12 +15,11 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
-
-	"github.com/pulumi/pulumi-gitlab"
-	"github.com/pulumi/pulumi-gitlab/pkg/version"
+	gitlab "github.com/pulumi/pulumi-gitlab/provider"
+	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfgen"
+	"github.com/pulumi/pulumi-gitlab/provider/pkg/version"
 )
 
 func main() {
-	tfbridge.Main("gitlab", version.Version, gitlab.Provider())
+	tfgen.Main("gitlab", version.Version, gitlab.Provider())
 }

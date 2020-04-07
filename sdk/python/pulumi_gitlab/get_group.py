@@ -13,7 +13,7 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, description=None, full_name=None, full_path=None, group_id=None, lfs_enabled=None, name=None, parent_id=None, path=None, request_access_enabled=None, runners_token=None, visibility_level=None, web_url=None, id=None):
+    def __init__(__self__, description=None, full_name=None, full_path=None, group_id=None, id=None, lfs_enabled=None, name=None, parent_id=None, path=None, request_access_enabled=None, runners_token=None, visibility_level=None, web_url=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -35,6 +35,12 @@ class GetGroupResult:
         if group_id and not isinstance(group_id, float):
             raise TypeError("Expected argument 'group_id' to be a float")
         __self__.group_id = group_id
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if lfs_enabled and not isinstance(lfs_enabled, bool):
             raise TypeError("Expected argument 'lfs_enabled' to be a bool")
         __self__.lfs_enabled = lfs_enabled
@@ -83,12 +89,6 @@ class GetGroupResult:
         """
         Web URL of the group.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetGroupResult(GetGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -99,6 +99,7 @@ class AwaitableGetGroupResult(GetGroupResult):
             full_name=self.full_name,
             full_path=self.full_path,
             group_id=self.group_id,
+            id=self.id,
             lfs_enabled=self.lfs_enabled,
             name=self.name,
             parent_id=self.parent_id,
@@ -106,19 +107,20 @@ class AwaitableGetGroupResult(GetGroupResult):
             request_access_enabled=self.request_access_enabled,
             runners_token=self.runners_token,
             visibility_level=self.visibility_level,
-            web_url=self.web_url,
-            id=self.id)
+            web_url=self.web_url)
 
 def get_group(full_path=None,group_id=None,opts=None):
     """
     Provides details about a specific group in the gitlab provider.
-    
-    :param str full_path: The full path of the group.
-    :param float group_id: The ID of the group.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/group.html.markdown.
+
+
+    :param str full_path: The full path of the group.
+    :param float group_id: The ID of the group.
     """
     __args__ = dict()
+
 
     __args__['fullPath'] = full_path
     __args__['groupId'] = group_id
@@ -133,6 +135,7 @@ def get_group(full_path=None,group_id=None,opts=None):
         full_name=__ret__.get('fullName'),
         full_path=__ret__.get('fullPath'),
         group_id=__ret__.get('groupId'),
+        id=__ret__.get('id'),
         lfs_enabled=__ret__.get('lfsEnabled'),
         name=__ret__.get('name'),
         parent_id=__ret__.get('parentId'),
@@ -140,5 +143,4 @@ def get_group(full_path=None,group_id=None,opts=None):
         request_access_enabled=__ret__.get('requestAccessEnabled'),
         runners_token=__ret__.get('runnersToken'),
         visibility_level=__ret__.get('visibilityLevel'),
-        web_url=__ret__.get('webUrl'),
-        id=__ret__.get('id'))
+        web_url=__ret__.get('webUrl'))

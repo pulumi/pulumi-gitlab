@@ -64,7 +64,9 @@ class ProjectHook(pulumi.CustomResource):
         This resource allows you to create and manage hooks for your GitLab projects.
         For further information on hooks, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/user/project/integrations/webhooks.html).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_hook.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enable_ssl_verification: Enable ssl verification when invoking
@@ -80,8 +82,6 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[str] token: A token to present when invoking the hook.
         :param pulumi.Input[str] url: The url of the hook to invoke.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_hook.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -127,7 +127,7 @@ class ProjectHook(pulumi.CustomResource):
         """
         Get an existing ProjectHook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -144,12 +144,11 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[str] token: A token to present when invoking the hook.
         :param pulumi.Input[str] url: The url of the hook to invoke.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_hook.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["enable_ssl_verification"] = enable_ssl_verification
         __props__["issues_events"] = issues_events
         __props__["job_events"] = job_events

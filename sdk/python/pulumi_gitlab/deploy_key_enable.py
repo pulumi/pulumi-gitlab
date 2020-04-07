@@ -24,15 +24,15 @@ class DeployKeyEnable(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, can_push=None, key=None, key_id=None, project=None, title=None, __props__=None, __name__=None, __opts__=None):
         """
         This resource allows you to enable pre-existing deploy keys for your GitLab projects.
-        
+
         **the GITLAB KEY_ID for the deploy key must be known**
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/deploy_key_enable.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_id: The Gitlab key id for the pre-existing deploy key
         :param pulumi.Input[str] project: The name or id of the project to add the deploy key to.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/deploy_key_enable.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -71,18 +71,17 @@ class DeployKeyEnable(pulumi.CustomResource):
         """
         Get an existing DeployKeyEnable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_id: The Gitlab key id for the pre-existing deploy key
         :param pulumi.Input[str] project: The name or id of the project to add the deploy key to.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/deploy_key_enable.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["can_push"] = can_push
         __props__["key"] = key
         __props__["key_id"] = key_id

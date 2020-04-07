@@ -12,18 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package gitlab
+package provider
 
 import (
 	"unicode"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
-	"github.com/pulumi/pulumi/pkg/tokens"
+	"github.com/pulumi/pulumi/sdk/go/common/tokens"
 	"github.com/terraform-providers/terraform-provider-gitlab/gitlab"
 )
 
-// all of the DigitalOcean token components used below.
+// all of the GitLab token components used below.
 const (
 	// packages:
 	gitLabPkg = "gitlab"
@@ -42,7 +42,7 @@ func gitLabType(mod string, typ string) tokens.Type {
 }
 
 // gitLabDataSource manufactures a standard resource token given a module and resource name.
-// It automatically uses the Digital Ocean package and names the file by simply lower casing the data
+// It automatically uses the GitLab package and names the file by simply lower casing the data
 // source's first character.
 func gitLabDataSource(mod string, res string) tokens.ModuleMember {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
@@ -50,7 +50,7 @@ func gitLabDataSource(mod string, res string) tokens.ModuleMember {
 }
 
 // gitLabResource manufactures a standard resource token given a module and resource name.
-// It automatically uses the DigitalOcean package and names the file by simply lower casing the resource's
+// It automatically uses the GitLab package and names the file by simply lower casing the resource's
 // first character.
 func gitLabResource(mod string, res string) tokens.Type {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
@@ -135,7 +135,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "1.7.0-preview",
+				"Pulumi":                       "1.12.1-preview",
 				"System.Collections.Immutable": "1.6.0",
 			},
 			Namespaces: map[string]string{

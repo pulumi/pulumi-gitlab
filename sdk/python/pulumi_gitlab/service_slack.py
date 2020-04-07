@@ -10,6 +10,10 @@ from typing import Union
 from . import utilities, tables
 
 class ServiceSlack(pulumi.CustomResource):
+    branches_to_be_notified: pulumi.Output[str]
+    """
+    Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
+    """
     confidential_issue_channel: pulumi.Output[str]
     """
     The name of the channel to receive confidential issue events notifications.
@@ -53,7 +57,7 @@ class ServiceSlack(pulumi.CustomResource):
     """
     notify_only_default_branch: pulumi.Output[bool]
     """
-    Send notifications only for the default branch.
+    DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.
     """
     pipeline_channel: pulumi.Output[str]
     """
@@ -99,12 +103,15 @@ class ServiceSlack(pulumi.CustomResource):
     """
     Enable notifications for wiki page events.
     """
-    def __init__(__self__, resource_name, opts=None, confidential_issue_channel=None, confidential_issues_events=None, confidential_note_events=None, issue_channel=None, issues_events=None, merge_request_channel=None, merge_requests_events=None, note_channel=None, note_events=None, notify_only_broken_pipelines=None, notify_only_default_branch=None, pipeline_channel=None, pipeline_events=None, project=None, push_channel=None, push_events=None, tag_push_channel=None, tag_push_events=None, username=None, webhook=None, wiki_page_channel=None, wiki_page_events=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, branches_to_be_notified=None, confidential_issue_channel=None, confidential_issues_events=None, confidential_note_events=None, issue_channel=None, issues_events=None, merge_request_channel=None, merge_requests_events=None, note_channel=None, note_events=None, notify_only_broken_pipelines=None, notify_only_default_branch=None, pipeline_channel=None, pipeline_events=None, project=None, push_channel=None, push_events=None, tag_push_channel=None, tag_push_events=None, username=None, webhook=None, wiki_page_channel=None, wiki_page_events=None, __props__=None, __name__=None, __opts__=None):
         """
         This resource allows you to manage Slack notifications integration.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_slack.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
@@ -115,7 +122,7 @@ class ServiceSlack(pulumi.CustomResource):
         :param pulumi.Input[str] note_channel: The name of the channel to receive note events notifications.
         :param pulumi.Input[bool] note_events: Enable notifications for note events.
         :param pulumi.Input[bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
-        :param pulumi.Input[bool] notify_only_default_branch: Send notifications only for the default branch.
+        :param pulumi.Input[bool] notify_only_default_branch: DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.
         :param pulumi.Input[str] pipeline_channel: The name of the channel to receive pipeline events notifications.
         :param pulumi.Input[bool] pipeline_events: Enable notifications for pipeline events.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
@@ -127,8 +134,6 @@ class ServiceSlack(pulumi.CustomResource):
         :param pulumi.Input[str] webhook: Webhook URL (ex.: https://hooks.slack.com/services/...)
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_slack.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -147,6 +152,7 @@ class ServiceSlack(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['branches_to_be_notified'] = branches_to_be_notified
             __props__['confidential_issue_channel'] = confidential_issue_channel
             __props__['confidential_issues_events'] = confidential_issues_events
             __props__['confidential_note_events'] = confidential_note_events
@@ -181,14 +187,15 @@ class ServiceSlack(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, confidential_issue_channel=None, confidential_issues_events=None, confidential_note_events=None, issue_channel=None, issues_events=None, job_events=None, merge_request_channel=None, merge_requests_events=None, note_channel=None, note_events=None, notify_only_broken_pipelines=None, notify_only_default_branch=None, pipeline_channel=None, pipeline_events=None, project=None, push_channel=None, push_events=None, tag_push_channel=None, tag_push_events=None, username=None, webhook=None, wiki_page_channel=None, wiki_page_events=None):
+    def get(resource_name, id, opts=None, branches_to_be_notified=None, confidential_issue_channel=None, confidential_issues_events=None, confidential_note_events=None, issue_channel=None, issues_events=None, job_events=None, merge_request_channel=None, merge_requests_events=None, note_channel=None, note_events=None, notify_only_broken_pipelines=None, notify_only_default_branch=None, pipeline_channel=None, pipeline_events=None, project=None, push_channel=None, push_events=None, tag_push_channel=None, tag_push_events=None, username=None, webhook=None, wiki_page_channel=None, wiki_page_events=None):
         """
         Get an existing ServiceSlack resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
@@ -199,7 +206,7 @@ class ServiceSlack(pulumi.CustomResource):
         :param pulumi.Input[str] note_channel: The name of the channel to receive note events notifications.
         :param pulumi.Input[bool] note_events: Enable notifications for note events.
         :param pulumi.Input[bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
-        :param pulumi.Input[bool] notify_only_default_branch: Send notifications only for the default branch.
+        :param pulumi.Input[bool] notify_only_default_branch: DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.
         :param pulumi.Input[str] pipeline_channel: The name of the channel to receive pipeline events notifications.
         :param pulumi.Input[bool] pipeline_events: Enable notifications for pipeline events.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
@@ -211,12 +218,12 @@ class ServiceSlack(pulumi.CustomResource):
         :param pulumi.Input[str] webhook: Webhook URL (ex.: https://hooks.slack.com/services/...)
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_slack.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
+        __props__["branches_to_be_notified"] = branches_to_be_notified
         __props__["confidential_issue_channel"] = confidential_issue_channel
         __props__["confidential_issues_events"] = confidential_issues_events
         __props__["confidential_note_events"] = confidential_note_events

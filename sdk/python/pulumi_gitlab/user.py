@@ -54,7 +54,6 @@ class User(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, can_create_group=None, email=None, is_admin=None, is_external=None, name=None, password=None, projects_limit=None, reset_password=None, skip_confirmation=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a User resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
@@ -68,8 +67,6 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] reset_password: Boolean, defaults to false. Send user password reset link.
         :param pulumi.Input[bool] skip_confirmation: Boolean, defaults to true. Whether to skip confirmation.
         :param pulumi.Input[str] username: The username of the user.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/user.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -115,7 +112,7 @@ class User(pulumi.CustomResource):
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -130,12 +127,11 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] reset_password: Boolean, defaults to false. Send user password reset link.
         :param pulumi.Input[bool] skip_confirmation: Boolean, defaults to true. Whether to skip confirmation.
         :param pulumi.Input[str] username: The username of the user.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/user.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["can_create_group"] = can_create_group
         __props__["email"] = email
         __props__["is_admin"] = is_admin

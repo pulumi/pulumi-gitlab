@@ -13,7 +13,7 @@ class GetUsersResult:
     """
     A collection of values returned by getUsers.
     """
-    def __init__(__self__, active=None, blocked=None, created_after=None, created_before=None, extern_provider=None, extern_uid=None, order_by=None, search=None, sort=None, users=None, id=None):
+    def __init__(__self__, active=None, blocked=None, created_after=None, created_before=None, extern_provider=None, extern_uid=None, id=None, order_by=None, search=None, sort=None, users=None):
         if active and not isinstance(active, bool):
             raise TypeError("Expected argument 'active' to be a bool")
         __self__.active = active
@@ -35,6 +35,12 @@ class GetUsersResult:
         """
         The external UID of the user.
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if order_by and not isinstance(order_by, str):
             raise TypeError("Expected argument 'order_by' to be a str")
         __self__.order_by = order_by
@@ -50,12 +56,6 @@ class GetUsersResult:
         """
         The list of users.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetUsersResult(GetUsersResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -68,18 +68,21 @@ class AwaitableGetUsersResult(GetUsersResult):
             created_before=self.created_before,
             extern_provider=self.extern_provider,
             extern_uid=self.extern_uid,
+            id=self.id,
             order_by=self.order_by,
             search=self.search,
             sort=self.sort,
-            users=self.users,
-            id=self.id)
+            users=self.users)
 
 def get_users(active=None,blocked=None,created_after=None,created_before=None,extern_provider=None,extern_uid=None,order_by=None,search=None,sort=None,opts=None):
     """
     Provides details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
-    
+
     **NOTE**: Some of the available options require administrator privileges. Please visit [Gitlab API documentation][users_for_admins] for more information.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/users.html.markdown.
+
+
     :param bool active: Filter users that are active.
     :param bool blocked: Filter users that are blocked.
     :param str created_after: Search for users created after a specific date. (Requires administrator privileges)
@@ -89,10 +92,9 @@ def get_users(active=None,blocked=None,created_after=None,created_before=None,ex
     :param str order_by: Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
     :param str search: Search users by username, name or email.
     :param str sort: Sort users' list in asc or desc order. (Requires administrator privileges)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/users.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['active'] = active
     __args__['blocked'] = blocked
@@ -116,8 +118,8 @@ def get_users(active=None,blocked=None,created_after=None,created_before=None,ex
         created_before=__ret__.get('createdBefore'),
         extern_provider=__ret__.get('externProvider'),
         extern_uid=__ret__.get('externUid'),
+        id=__ret__.get('id'),
         order_by=__ret__.get('orderBy'),
         search=__ret__.get('search'),
         sort=__ret__.get('sort'),
-        users=__ret__.get('users'),
-        id=__ret__.get('id'))
+        users=__ret__.get('users'))

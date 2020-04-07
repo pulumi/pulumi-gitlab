@@ -59,27 +59,81 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getProject.
  */
 export interface GetProjectArgs {
+    /**
+     * Whether the project is in read-only mode (archived).
+     */
     readonly archived?: boolean;
+    /**
+     * The default branch for the project.
+     */
     readonly defaultBranch?: string;
+    /**
+     * A description of the project.
+     */
     readonly description?: string;
+    /**
+     * URL that can be provided to `git clone` to clone the
+     * repository via HTTP.
+     */
     readonly httpUrlToRepo?: string;
     /**
      * The integer that uniquely identifies the project within the gitlab install.
      */
     readonly id: number;
+    /**
+     * Enable issue tracking for the project.
+     */
     readonly issuesEnabled?: boolean;
+    /**
+     * Enable LFS for the project.
+     */
     readonly lfsEnabled?: boolean;
+    /**
+     * Enable merge requests for the project.
+     */
     readonly mergeRequestsEnabled?: boolean;
     readonly name?: string;
+    /**
+     * The namespace (group or user) of the project. Defaults to your user.
+     * See `gitlab..Group` for an example.
+     */
     readonly namespaceId?: number;
+    /**
+     * The path of the repository.
+     */
     readonly path?: string;
+    /**
+     * Enable pipelines for the project.
+     */
     readonly pipelinesEnabled?: boolean;
+    /**
+     * Allow users to request member access.
+     */
     readonly requestAccessEnabled?: boolean;
+    /**
+     * Registration token to use during runner setup.
+     */
     readonly runnersToken?: string;
+    /**
+     * Enable snippets for the project.
+     */
     readonly snippetsEnabled?: boolean;
+    /**
+     * URL that can be provided to `git clone` to clone the
+     * repository via SSH.
+     */
     readonly sshUrlToRepo?: string;
+    /**
+     * Repositories are created as private by default.
+     */
     readonly visibilityLevel?: string;
+    /**
+     * URL that can be used to find the project in a browser.
+     */
     readonly webUrl?: string;
+    /**
+     * Enable wiki for the project.
+     */
     readonly wikiEnabled?: boolean;
 }
 

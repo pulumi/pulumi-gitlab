@@ -13,7 +13,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, avatar_url=None, bio=None, can_create_group=None, can_create_project=None, color_scheme_id=None, created_at=None, current_sign_in_at=None, email=None, extern_uid=None, external=None, is_admin=None, last_sign_in_at=None, linkedin=None, location=None, name=None, organization=None, projects_limit=None, skype=None, state=None, theme_id=None, twitter=None, two_factor_enabled=None, user_id=None, user_provider=None, username=None, website_url=None, id=None):
+    def __init__(__self__, avatar_url=None, bio=None, can_create_group=None, can_create_project=None, color_scheme_id=None, created_at=None, current_sign_in_at=None, email=None, extern_uid=None, external=None, id=None, is_admin=None, last_sign_in_at=None, linkedin=None, location=None, name=None, organization=None, projects_limit=None, skype=None, state=None, theme_id=None, twitter=None, two_factor_enabled=None, user_id=None, user_provider=None, username=None, website_url=None):
         if avatar_url and not isinstance(avatar_url, str):
             raise TypeError("Expected argument 'avatar_url' to be a str")
         __self__.avatar_url = avatar_url
@@ -73,6 +73,12 @@ class GetUserResult:
         __self__.external = external
         """
         Whether the user is external.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if is_admin and not isinstance(is_admin, bool):
             raise TypeError("Expected argument 'is_admin' to be a bool")
@@ -167,12 +173,6 @@ class GetUserResult:
         """
         User's website URL.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetUserResult(GetUserResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -189,6 +189,7 @@ class AwaitableGetUserResult(GetUserResult):
             email=self.email,
             extern_uid=self.extern_uid,
             external=self.external,
+            id=self.id,
             is_admin=self.is_admin,
             last_sign_in_at=self.last_sign_in_at,
             linkedin=self.linkedin,
@@ -204,20 +205,21 @@ class AwaitableGetUserResult(GetUserResult):
             user_id=self.user_id,
             user_provider=self.user_provider,
             username=self.username,
-            website_url=self.website_url,
-            id=self.id)
+            website_url=self.website_url)
 
 def get_user(email=None,user_id=None,username=None,opts=None):
     """
     Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/user.html.markdown.
+
+
     :param str email: The e-mail address of the user. (Requires administrator privileges)
     :param float user_id: The ID of the user.
     :param str username: The username of the user.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/user.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['email'] = email
     __args__['userId'] = user_id
@@ -239,6 +241,7 @@ def get_user(email=None,user_id=None,username=None,opts=None):
         email=__ret__.get('email'),
         extern_uid=__ret__.get('externUid'),
         external=__ret__.get('external'),
+        id=__ret__.get('id'),
         is_admin=__ret__.get('isAdmin'),
         last_sign_in_at=__ret__.get('lastSignInAt'),
         linkedin=__ret__.get('linkedin'),
@@ -254,5 +257,4 @@ def get_user(email=None,user_id=None,username=None,opts=None):
         user_id=__ret__.get('userId'),
         user_provider=__ret__.get('userProvider'),
         username=__ret__.get('username'),
-        website_url=__ret__.get('websiteUrl'),
-        id=__ret__.get('id'))
+        website_url=__ret__.get('websiteUrl'))
