@@ -63,7 +63,9 @@ class ProjectCluster(pulumi.CustomResource):
         This resource allows you to create and manage project clusters for your GitLab projects.
         For further information on clusters, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_cluster.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The base domain of the cluster.
@@ -77,8 +79,6 @@ class ProjectCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] managed: Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
         :param pulumi.Input[str] name: The name of cluster.
         :param pulumi.Input[str] project: The id of the project to add the cluster to.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_cluster.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -129,7 +129,7 @@ class ProjectCluster(pulumi.CustomResource):
         """
         Get an existing ProjectCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -144,12 +144,11 @@ class ProjectCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] managed: Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
         :param pulumi.Input[str] name: The name of cluster.
         :param pulumi.Input[str] project: The id of the project to add the cluster to.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_cluster.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cluster_type"] = cluster_type
         __props__["created_at"] = created_at
         __props__["domain"] = domain

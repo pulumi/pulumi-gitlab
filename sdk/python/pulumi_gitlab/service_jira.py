@@ -41,7 +41,9 @@ class ServiceJira(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, jira_issue_transition_id=None, password=None, project=None, project_key=None, url=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
         This resource allows you to manage Jira integration.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_jira.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
@@ -50,8 +52,6 @@ class ServiceJira(pulumi.CustomResource):
         :param pulumi.Input[str] project_key: The short identifier for your JIRA project, all uppercase, e.g., PROJ.
         :param pulumi.Input[str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
         :param pulumi.Input[str] username: The username of the user created to be used with GitLab/JIRA.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_jira.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,7 +99,7 @@ class ServiceJira(pulumi.CustomResource):
         """
         Get an existing ServiceJira resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -109,12 +109,11 @@ class ServiceJira(pulumi.CustomResource):
         :param pulumi.Input[str] project_key: The short identifier for your JIRA project, all uppercase, e.g., PROJ.
         :param pulumi.Input[str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
         :param pulumi.Input[str] username: The username of the user created to be used with GitLab/JIRA.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_jira.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["active"] = active
         __props__["created_at"] = created_at
         __props__["jira_issue_transition_id"] = jira_issue_transition_id

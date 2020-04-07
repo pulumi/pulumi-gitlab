@@ -61,7 +61,6 @@ class Group(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, lfs_enabled=None, name=None, parent_id=None, path=None, request_access_enabled=None, visibility_level=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Group resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the group.
@@ -75,8 +74,6 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public group.
                Valid values are `private`, `internal`, `public`.
                Groups are created as private by default.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -119,7 +116,7 @@ class Group(pulumi.CustomResource):
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -138,12 +135,11 @@ class Group(pulumi.CustomResource):
                Valid values are `private`, `internal`, `public`.
                Groups are created as private by default.
         :param pulumi.Input[str] web_url: Web URL of the group.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["full_name"] = full_name
         __props__["full_path"] = full_path

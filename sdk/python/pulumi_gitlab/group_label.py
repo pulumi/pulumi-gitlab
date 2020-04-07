@@ -31,15 +31,15 @@ class GroupLabel(pulumi.CustomResource):
         This resource allows you to create and manage labels for your GitLab groups.
         For further information on labels, consult the [gitlab
         documentation](https://docs.gitlab.com/ee/user/group/labels.htm).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_label.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         :param pulumi.Input[str] description: The description of the label.
         :param pulumi.Input[str] group: The name or id of the group to add the label to.
         :param pulumi.Input[str] name: The name of the label.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_label.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,7 +77,7 @@ class GroupLabel(pulumi.CustomResource):
         """
         Get an existing GroupLabel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -85,12 +85,11 @@ class GroupLabel(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the label.
         :param pulumi.Input[str] group: The name or id of the group to add the label to.
         :param pulumi.Input[str] name: The name of the label.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_label.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["color"] = color
         __props__["description"] = description
         __props__["group"] = group

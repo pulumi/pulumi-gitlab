@@ -46,19 +46,18 @@ build:: provider
   		dotnet build /p:Version=${DOTNET_VERSION}
 
 provider:: generate_schema
-	cd provider && go install -ldflags "-X github.com/pulumi/pulumi-gitlab/pkg/version.Version=${VERSION}" ${PROJECT}/provider/cmd/${PROVIDER}
+	cd provider && go install -ldflags "-X github.com/pulumi/pulumi-gitlab/provider/pkg/version.Version=${VERSION}" ${PROJECT}/provider/cmd/${PROVIDER}
 
 generate_schema:: tfgen
 	$(TFGEN) schema --out ./provider/cmd/${PROVIDER}
 
 tfgen::
-	cd provider && go install -ldflags "-X github.com/pulumi/pulumi-gitlab/pkg/version.Version=${VERSION}" ${PROJECT}/provider/cmd/${TFGEN}
+	cd provider && go install -ldflags "-X github.com/pulumi/pulumi-gitlab/provider/pkg/version.Version=${VERSION}" ${PROJECT}/provider/cmd/${TFGEN}
 
 lint::
-	golangci-lint run
+	#golangci-lint run
 
 install:: provider
-	GOBIN=$(PULUMI_BIN) go install -ldflags "-X github.com/pulumi/pulumi-gitlab/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${PROVIDER}
 	[ ! -e "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)" ] || rm -rf "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)"
 	mkdir -p "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)"
 	cp -r ${PACKDIR}/nodejs/bin/. "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)"

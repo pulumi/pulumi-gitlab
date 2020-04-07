@@ -29,15 +29,15 @@ class PipelineScheduleVariable(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, key=None, pipeline_schedule_id=None, project=None, value=None, __props__=None, __name__=None, __opts__=None):
         """
         This resource allows you to create and manage variables for pipeline schedules.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/pipeline_schedule_variable.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key: Name of the variable.
         :param pulumi.Input[float] pipeline_schedule_id: The id of the pipeline schedule.
         :param pulumi.Input[str] project: The id of the project to add the schedule to.
         :param pulumi.Input[str] value: Value of the variable.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/pipeline_schedule_variable.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -79,7 +79,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         """
         Get an existing PipelineScheduleVariable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -87,12 +87,11 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         :param pulumi.Input[float] pipeline_schedule_id: The id of the pipeline schedule.
         :param pulumi.Input[str] project: The id of the project to add the schedule to.
         :param pulumi.Input[str] value: Value of the variable.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/pipeline_schedule_variable.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["key"] = key
         __props__["pipeline_schedule_id"] = pipeline_schedule_id
         __props__["project"] = project

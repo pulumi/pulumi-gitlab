@@ -25,14 +25,14 @@ class ProjectMembership(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, access_level=None, project_id=None, user_id=None, __props__=None, __name__=None, __opts__=None):
         """
         This resource allows you to add a current user to an existing project with a set access level.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_membership.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: One of five levels of access to the project.
         :param pulumi.Input[str] project_id: The id of the project.
         :param pulumi.Input[float] user_id: The id of the user.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_membership.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -71,19 +71,18 @@ class ProjectMembership(pulumi.CustomResource):
         """
         Get an existing ProjectMembership resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: One of five levels of access to the project.
         :param pulumi.Input[str] project_id: The id of the project.
         :param pulumi.Input[float] user_id: The id of the user.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_membership.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["access_level"] = access_level
         __props__["project_id"] = project_id
         __props__["user_id"] = user_id

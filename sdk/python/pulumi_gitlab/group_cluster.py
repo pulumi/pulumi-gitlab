@@ -59,7 +59,9 @@ class GroupCluster(pulumi.CustomResource):
         This resource allows you to create and manage group clusters for your GitLab groups.
         For further information on clusters, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_cluster.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The base domain of the cluster.
@@ -72,8 +74,6 @@ class GroupCluster(pulumi.CustomResource):
         :param pulumi.Input[str] kubernetes_token: The token to authenticate against Kubernetes.
         :param pulumi.Input[bool] managed: Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
         :param pulumi.Input[str] name: The name of cluster.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_cluster.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -123,7 +123,7 @@ class GroupCluster(pulumi.CustomResource):
         """
         Get an existing GroupCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -137,12 +137,11 @@ class GroupCluster(pulumi.CustomResource):
         :param pulumi.Input[str] kubernetes_token: The token to authenticate against Kubernetes.
         :param pulumi.Input[bool] managed: Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
         :param pulumi.Input[str] name: The name of cluster.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_cluster.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cluster_type"] = cluster_type
         __props__["created_at"] = created_at
         __props__["domain"] = domain

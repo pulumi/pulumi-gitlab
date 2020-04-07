@@ -157,12 +157,34 @@ class AwaitableGetProjectResult(GetProjectResult):
 def get_project(archived=None,default_branch=None,description=None,http_url_to_repo=None,id=None,issues_enabled=None,lfs_enabled=None,merge_requests_enabled=None,name=None,namespace_id=None,path=None,pipelines_enabled=None,request_access_enabled=None,runners_token=None,snippets_enabled=None,ssh_url_to_repo=None,visibility_level=None,web_url=None,wiki_enabled=None,opts=None):
     """
     Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
-    
-    :param float id: The integer that uniquely identifies the project within the gitlab install.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/project.html.markdown.
+
+
+    :param bool archived: Whether the project is in read-only mode (archived).
+    :param str default_branch: The default branch for the project.
+    :param str description: A description of the project.
+    :param str http_url_to_repo: URL that can be provided to `git clone` to clone the
+           repository via HTTP.
+    :param float id: The integer that uniquely identifies the project within the gitlab install.
+    :param bool issues_enabled: Enable issue tracking for the project.
+    :param bool lfs_enabled: Enable LFS for the project.
+    :param bool merge_requests_enabled: Enable merge requests for the project.
+    :param float namespace_id: The namespace (group or user) of the project. Defaults to your user.
+           See `.Group` for an example.
+    :param str path: The path of the repository.
+    :param bool pipelines_enabled: Enable pipelines for the project.
+    :param bool request_access_enabled: Allow users to request member access.
+    :param str runners_token: Registration token to use during runner setup.
+    :param bool snippets_enabled: Enable snippets for the project.
+    :param str ssh_url_to_repo: URL that can be provided to `git clone` to clone the
+           repository via SSH.
+    :param str visibility_level: Repositories are created as private by default.
+    :param str web_url: URL that can be used to find the project in a browser.
+    :param bool wiki_enabled: Enable wiki for the project.
     """
     __args__ = dict()
+
 
     __args__['archived'] = archived
     __args__['defaultBranch'] = default_branch

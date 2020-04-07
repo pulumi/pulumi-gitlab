@@ -102,7 +102,9 @@ class ServiceSlack(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, confidential_issue_channel=None, confidential_issues_events=None, confidential_note_events=None, issue_channel=None, issues_events=None, merge_request_channel=None, merge_requests_events=None, note_channel=None, note_events=None, notify_only_broken_pipelines=None, notify_only_default_branch=None, pipeline_channel=None, pipeline_events=None, project=None, push_channel=None, push_events=None, tag_push_channel=None, tag_push_events=None, username=None, webhook=None, wiki_page_channel=None, wiki_page_events=None, __props__=None, __name__=None, __opts__=None):
         """
         This resource allows you to manage Slack notifications integration.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_slack.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
@@ -127,8 +129,6 @@ class ServiceSlack(pulumi.CustomResource):
         :param pulumi.Input[str] webhook: Webhook URL (ex.: https://hooks.slack.com/services/...)
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_slack.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -185,7 +185,7 @@ class ServiceSlack(pulumi.CustomResource):
         """
         Get an existing ServiceSlack resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -211,12 +211,11 @@ class ServiceSlack(pulumi.CustomResource):
         :param pulumi.Input[str] webhook: Webhook URL (ex.: https://hooks.slack.com/services/...)
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_slack.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["confidential_issue_channel"] = confidential_issue_channel
         __props__["confidential_issues_events"] = confidential_issues_events
         __props__["confidential_note_events"] = confidential_note_events

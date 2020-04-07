@@ -97,7 +97,7 @@ class Project(pulumi.CustomResource):
     shared_with_groups: pulumi.Output[list]
     """
     Enable sharing the project with a list of groups (maps).
-    
+
       * `groupAccessLevel` (`str`) - Group's sharing permissions. See [group members permission][group_members_permissions] for more info.
         Valid values are `guest`, `reporter`, `developer`, `master`.
       * `group_id` (`float`) - Group id of the group you want to share the project with.
@@ -133,7 +133,6 @@ class Project(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, approvals_before_merge=None, archived=None, container_registry_enabled=None, default_branch=None, description=None, initialize_with_readme=None, issues_enabled=None, lfs_enabled=None, merge_method=None, merge_requests_enabled=None, name=None, namespace_id=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, path=None, pipelines_enabled=None, request_access_enabled=None, shared_runners_enabled=None, shared_with_groups=None, snippets_enabled=None, tags=None, visibility_level=None, wiki_enabled=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Project resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
@@ -164,15 +163,13 @@ class Project(pulumi.CustomResource):
                Valid values are `private`, `internal`, `public`.
                Repositories are created as private by default.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
-        
+
         The **shared_with_groups** object supports the following:
-        
+
           * `groupAccessLevel` (`pulumi.Input[str]`) - Group's sharing permissions. See [group members permission][group_members_permissions] for more info.
             Valid values are `guest`, `reporter`, `developer`, `master`.
           * `group_id` (`pulumi.Input[float]`) - Group id of the group you want to share the project with.
           * `groupName` (`pulumi.Input[str]`) - Group's name.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -229,7 +226,7 @@ class Project(pulumi.CustomResource):
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -267,19 +264,18 @@ class Project(pulumi.CustomResource):
                Repositories are created as private by default.
         :param pulumi.Input[str] web_url: URL that can be used to find the project in a browser.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
-        
+
         The **shared_with_groups** object supports the following:
-        
+
           * `groupAccessLevel` (`pulumi.Input[str]`) - Group's sharing permissions. See [group members permission][group_members_permissions] for more info.
             Valid values are `guest`, `reporter`, `developer`, `master`.
           * `group_id` (`pulumi.Input[float]`) - Group id of the group you want to share the project with.
           * `groupName` (`pulumi.Input[str]`) - Group's name.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["approvals_before_merge"] = approvals_before_merge
         __props__["archived"] = archived
         __props__["container_registry_enabled"] = container_registry_enabled
