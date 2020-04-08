@@ -509,8 +509,8 @@ github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UV
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
 github.com/stretchr/testify v1.5.1 h1:nOGnQDM7FYENwehXlg/kFVnos3rEvtKTjRvOWSzb6H4=
 github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
-github.com/terraform-providers/terraform-provider-gitlab v1.3.1-0.20200406093704-74038f32c4d5 h1:7GVDkXfnsQSrui6FIetKbdukXwrzp3SE0sr+QrD2wHg=
-github.com/terraform-providers/terraform-provider-gitlab v1.3.1-0.20200406093704-74038f32c4d5/go.mod h1:nkSsEJbt6glCmalYd0PXlsoNzLQFN3wYuCBYLb45f2I=
+github.com/terraform-providers/terraform-provider-gitlab v1.3.1-0.20200408152602-4ac8e2b58ed7 h1:r/H3AJgqKZSzZuaQcS7uCCrIG4wqk/oWKqZrVqk/UfU=
+github.com/terraform-providers/terraform-provider-gitlab v1.3.1-0.20200408152602-4ac8e2b58ed7/go.mod h1:nkSsEJbt6glCmalYd0PXlsoNzLQFN3wYuCBYLb45f2I=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6 h1:9VTskZOIRf2vKF3UL8TuWElry5pgUpV1tFSe/e/0m/E=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6/go.mod h1:XDKHRm5ThF8YJjx001LtgelzsoaEcvnA7lVWz9EeX3g=
 github.com/tidwall/pretty v0.0.0-20190325153808-1166b9ac2b65/go.mod h1:XNkn88O1ChpSDQmQeStsy+sBenx6DDtFZJxhVysOjyk=
