@@ -17,10 +17,16 @@ import (
 type ServiceJira struct {
 	pulumi.CustomResourceState
 
-	Active    pulumi.BoolOutput   `pulumi:"active"`
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	Active pulumi.BoolOutput `pulumi:"active"`
+	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
+	CommentOnEventEnabled pulumi.BoolOutput `pulumi:"commentOnEventEnabled"`
+	// Enable notifications for commit events
+	CommitEvents pulumi.BoolOutput   `pulumi:"commitEvents"`
+	CreatedAt    pulumi.StringOutput `pulumi:"createdAt"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
 	JiraIssueTransitionId pulumi.StringPtrOutput `pulumi:"jiraIssueTransitionId"`
+	// Enable notifications for merge request events
+	MergeRequestsEvents pulumi.BoolOutput `pulumi:"mergeRequestsEvents"`
 	// The password of the user created to be used with GitLab/JIRA.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// ID of the project you want to activate integration on.
@@ -75,10 +81,16 @@ func GetServiceJira(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceJira resources.
 type serviceJiraState struct {
-	Active    *bool   `pulumi:"active"`
-	CreatedAt *string `pulumi:"createdAt"`
+	Active *bool `pulumi:"active"`
+	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
+	CommentOnEventEnabled *bool `pulumi:"commentOnEventEnabled"`
+	// Enable notifications for commit events
+	CommitEvents *bool   `pulumi:"commitEvents"`
+	CreatedAt    *string `pulumi:"createdAt"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
+	// Enable notifications for merge request events
+	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
 	// The password of the user created to be used with GitLab/JIRA.
 	Password *string `pulumi:"password"`
 	// ID of the project you want to activate integration on.
@@ -94,10 +106,16 @@ type serviceJiraState struct {
 }
 
 type ServiceJiraState struct {
-	Active    pulumi.BoolPtrInput
-	CreatedAt pulumi.StringPtrInput
+	Active pulumi.BoolPtrInput
+	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
+	CommentOnEventEnabled pulumi.BoolPtrInput
+	// Enable notifications for commit events
+	CommitEvents pulumi.BoolPtrInput
+	CreatedAt    pulumi.StringPtrInput
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
 	JiraIssueTransitionId pulumi.StringPtrInput
+	// Enable notifications for merge request events
+	MergeRequestsEvents pulumi.BoolPtrInput
 	// The password of the user created to be used with GitLab/JIRA.
 	Password pulumi.StringPtrInput
 	// ID of the project you want to activate integration on.
@@ -117,8 +135,14 @@ func (ServiceJiraState) ElementType() reflect.Type {
 }
 
 type serviceJiraArgs struct {
+	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
+	CommentOnEventEnabled *bool `pulumi:"commentOnEventEnabled"`
+	// Enable notifications for commit events
+	CommitEvents *bool `pulumi:"commitEvents"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
+	// Enable notifications for merge request events
+	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
 	// The password of the user created to be used with GitLab/JIRA.
 	Password string `pulumi:"password"`
 	// ID of the project you want to activate integration on.
@@ -133,8 +157,14 @@ type serviceJiraArgs struct {
 
 // The set of arguments for constructing a ServiceJira resource.
 type ServiceJiraArgs struct {
+	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
+	CommentOnEventEnabled pulumi.BoolPtrInput
+	// Enable notifications for commit events
+	CommitEvents pulumi.BoolPtrInput
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
 	JiraIssueTransitionId pulumi.StringPtrInput
+	// Enable notifications for merge request events
+	MergeRequestsEvents pulumi.BoolPtrInput
 	// The password of the user created to be used with GitLab/JIRA.
 	Password pulumi.StringInput
 	// ID of the project you want to activate integration on.
