@@ -11,10 +11,22 @@ from . import utilities, tables
 
 class ServiceJira(pulumi.CustomResource):
     active: pulumi.Output[bool]
+    comment_on_event_enabled: pulumi.Output[bool]
+    """
+    Enable comments inside Jira issues on each GitLab event (commit / merge request)
+    """
+    commit_events: pulumi.Output[bool]
+    """
+    Enable notifications for commit events
+    """
     created_at: pulumi.Output[str]
     jira_issue_transition_id: pulumi.Output[str]
     """
     The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+    """
+    merge_requests_events: pulumi.Output[bool]
+    """
+    Enable notifications for merge request events
     """
     password: pulumi.Output[str]
     """
@@ -38,7 +50,7 @@ class ServiceJira(pulumi.CustomResource):
     """
     The username of the user created to be used with GitLab/JIRA.
     """
-    def __init__(__self__, resource_name, opts=None, jira_issue_transition_id=None, password=None, project=None, project_key=None, url=None, username=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, comment_on_event_enabled=None, commit_events=None, jira_issue_transition_id=None, merge_requests_events=None, password=None, project=None, project_key=None, url=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
         This resource allows you to manage Jira integration.
 
@@ -46,7 +58,10 @@ class ServiceJira(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
+        :param pulumi.Input[bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+        :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[str] password: The password of the user created to be used with GitLab/JIRA.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[str] project_key: The short identifier for your JIRA project, all uppercase, e.g., PROJ.
@@ -70,7 +85,10 @@ class ServiceJira(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['comment_on_event_enabled'] = comment_on_event_enabled
+            __props__['commit_events'] = commit_events
             __props__['jira_issue_transition_id'] = jira_issue_transition_id
+            __props__['merge_requests_events'] = merge_requests_events
             if password is None:
                 raise TypeError("Missing required property 'password'")
             __props__['password'] = password
@@ -95,7 +113,7 @@ class ServiceJira(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, active=None, created_at=None, jira_issue_transition_id=None, password=None, project=None, project_key=None, title=None, updated_at=None, url=None, username=None):
+    def get(resource_name, id, opts=None, active=None, comment_on_event_enabled=None, commit_events=None, created_at=None, jira_issue_transition_id=None, merge_requests_events=None, password=None, project=None, project_key=None, title=None, updated_at=None, url=None, username=None):
         """
         Get an existing ServiceJira resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -103,7 +121,10 @@ class ServiceJira(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
+        :param pulumi.Input[bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+        :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[str] password: The password of the user created to be used with GitLab/JIRA.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[str] project_key: The short identifier for your JIRA project, all uppercase, e.g., PROJ.
@@ -115,8 +136,11 @@ class ServiceJira(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["active"] = active
+        __props__["comment_on_event_enabled"] = comment_on_event_enabled
+        __props__["commit_events"] = commit_events
         __props__["created_at"] = created_at
         __props__["jira_issue_transition_id"] = jira_issue_transition_id
+        __props__["merge_requests_events"] = merge_requests_events
         __props__["password"] = password
         __props__["project"] = project
         __props__["project_key"] = project_key

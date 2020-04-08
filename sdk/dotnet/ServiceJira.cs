@@ -19,6 +19,18 @@ namespace Pulumi.GitLab
         [Output("active")]
         public Output<bool> Active { get; private set; } = null!;
 
+        /// <summary>
+        /// Enable comments inside Jira issues on each GitLab event (commit / merge request)
+        /// </summary>
+        [Output("commentOnEventEnabled")]
+        public Output<bool> CommentOnEventEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable notifications for commit events
+        /// </summary>
+        [Output("commitEvents")]
+        public Output<bool> CommitEvents { get; private set; } = null!;
+
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
@@ -27,6 +39,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("jiraIssueTransitionId")]
         public Output<string?> JiraIssueTransitionId { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable notifications for merge request events
+        /// </summary>
+        [Output("mergeRequestsEvents")]
+        public Output<bool> MergeRequestsEvents { get; private set; } = null!;
 
         /// <summary>
         /// The password of the user created to be used with GitLab/JIRA.
@@ -111,10 +129,28 @@ namespace Pulumi.GitLab
     public sealed class ServiceJiraArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Enable comments inside Jira issues on each GitLab event (commit / merge request)
+        /// </summary>
+        [Input("commentOnEventEnabled")]
+        public Input<bool>? CommentOnEventEnabled { get; set; }
+
+        /// <summary>
+        /// Enable notifications for commit events
+        /// </summary>
+        [Input("commitEvents")]
+        public Input<bool>? CommitEvents { get; set; }
+
+        /// <summary>
         /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         /// </summary>
         [Input("jiraIssueTransitionId")]
         public Input<string>? JiraIssueTransitionId { get; set; }
+
+        /// <summary>
+        /// Enable notifications for merge request events
+        /// </summary>
+        [Input("mergeRequestsEvents")]
+        public Input<bool>? MergeRequestsEvents { get; set; }
 
         /// <summary>
         /// The password of the user created to be used with GitLab/JIRA.
@@ -156,6 +192,18 @@ namespace Pulumi.GitLab
         [Input("active")]
         public Input<bool>? Active { get; set; }
 
+        /// <summary>
+        /// Enable comments inside Jira issues on each GitLab event (commit / merge request)
+        /// </summary>
+        [Input("commentOnEventEnabled")]
+        public Input<bool>? CommentOnEventEnabled { get; set; }
+
+        /// <summary>
+        /// Enable notifications for commit events
+        /// </summary>
+        [Input("commitEvents")]
+        public Input<bool>? CommitEvents { get; set; }
+
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
@@ -164,6 +212,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("jiraIssueTransitionId")]
         public Input<string>? JiraIssueTransitionId { get; set; }
+
+        /// <summary>
+        /// Enable notifications for merge request events
+        /// </summary>
+        [Input("mergeRequestsEvents")]
+        public Input<bool>? MergeRequestsEvents { get; set; }
 
         /// <summary>
         /// The password of the user created to be used with GitLab/JIRA.

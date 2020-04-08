@@ -57,11 +57,23 @@ export class ServiceJira extends pulumi.CustomResource {
     }
 
     public /*out*/ readonly active!: pulumi.Output<boolean>;
+    /**
+     * Enable comments inside Jira issues on each GitLab event (commit / merge request)
+     */
+    public readonly commentOnEventEnabled!: pulumi.Output<boolean>;
+    /**
+     * Enable notifications for commit events
+     */
+    public readonly commitEvents!: pulumi.Output<boolean>;
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
      */
     public readonly jiraIssueTransitionId!: pulumi.Output<string | undefined>;
+    /**
+     * Enable notifications for merge request events
+     */
+    public readonly mergeRequestsEvents!: pulumi.Output<boolean>;
     /**
      * The password of the user created to be used with GitLab/JIRA.
      */
@@ -98,8 +110,11 @@ export class ServiceJira extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ServiceJiraState | undefined;
             inputs["active"] = state ? state.active : undefined;
+            inputs["commentOnEventEnabled"] = state ? state.commentOnEventEnabled : undefined;
+            inputs["commitEvents"] = state ? state.commitEvents : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["jiraIssueTransitionId"] = state ? state.jiraIssueTransitionId : undefined;
+            inputs["mergeRequestsEvents"] = state ? state.mergeRequestsEvents : undefined;
             inputs["password"] = state ? state.password : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["projectKey"] = state ? state.projectKey : undefined;
@@ -121,7 +136,10 @@ export class ServiceJira extends pulumi.CustomResource {
             if (!args || args.username === undefined) {
                 throw new Error("Missing required property 'username'");
             }
+            inputs["commentOnEventEnabled"] = args ? args.commentOnEventEnabled : undefined;
+            inputs["commitEvents"] = args ? args.commitEvents : undefined;
             inputs["jiraIssueTransitionId"] = args ? args.jiraIssueTransitionId : undefined;
+            inputs["mergeRequestsEvents"] = args ? args.mergeRequestsEvents : undefined;
             inputs["password"] = args ? args.password : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["projectKey"] = args ? args.projectKey : undefined;
@@ -148,11 +166,23 @@ export class ServiceJira extends pulumi.CustomResource {
  */
 export interface ServiceJiraState {
     readonly active?: pulumi.Input<boolean>;
+    /**
+     * Enable comments inside Jira issues on each GitLab event (commit / merge request)
+     */
+    readonly commentOnEventEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enable notifications for commit events
+     */
+    readonly commitEvents?: pulumi.Input<boolean>;
     readonly createdAt?: pulumi.Input<string>;
     /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
      */
     readonly jiraIssueTransitionId?: pulumi.Input<string>;
+    /**
+     * Enable notifications for merge request events
+     */
+    readonly mergeRequestsEvents?: pulumi.Input<boolean>;
     /**
      * The password of the user created to be used with GitLab/JIRA.
      */
@@ -182,9 +212,21 @@ export interface ServiceJiraState {
  */
 export interface ServiceJiraArgs {
     /**
+     * Enable comments inside Jira issues on each GitLab event (commit / merge request)
+     */
+    readonly commentOnEventEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enable notifications for commit events
+     */
+    readonly commitEvents?: pulumi.Input<boolean>;
+    /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
      */
     readonly jiraIssueTransitionId?: pulumi.Input<string>;
+    /**
+     * Enable notifications for merge request events
+     */
+    readonly mergeRequestsEvents?: pulumi.Input<boolean>;
     /**
      * The password of the user created to be used with GitLab/JIRA.
      */
