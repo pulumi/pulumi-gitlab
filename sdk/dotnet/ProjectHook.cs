@@ -14,6 +14,9 @@ namespace Pulumi.GitLab
     /// For further information on hooks, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ce/user/project/integrations/webhooks.html).
     /// 
+    /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_hook.html.markdown.
     /// </summary>
     public partial class ProjectHook : Pulumi.CustomResource

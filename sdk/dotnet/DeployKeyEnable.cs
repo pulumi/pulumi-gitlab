@@ -14,6 +14,8 @@ namespace Pulumi.GitLab
     /// 
     /// **the GITLAB KEY_ID for the deploy key must be known**
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/deploy_key_enable.html.markdown.
     /// </summary>
     public partial class DeployKeyEnable : Pulumi.CustomResource

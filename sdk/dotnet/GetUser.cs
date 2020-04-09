@@ -14,6 +14,8 @@ namespace Pulumi.GitLab
         /// <summary>
         /// Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/user.html.markdown.
         /// </summary>
         [Obsolete("Use GetUser.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/user.html.markdown.
         /// </summary>

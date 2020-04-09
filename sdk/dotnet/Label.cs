@@ -14,6 +14,9 @@ namespace Pulumi.GitLab
     /// For further information on labels, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ee/user/project/labels.html#project-labels).
     /// 
+    /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/label.html.markdown.
     /// </summary>
     public partial class Label : Pulumi.CustomResource

@@ -12,6 +12,8 @@ namespace Pulumi.GitLab
     /// <summary>
     /// This resource allows you to share a project with a group
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_share_group.html.markdown.
     /// </summary>
     public partial class ProjectShareGroup : Pulumi.CustomResource

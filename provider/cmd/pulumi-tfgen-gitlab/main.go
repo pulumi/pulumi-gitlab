@@ -15,9 +15,9 @@
 package main
 
 import (
-	gitlab "github.com/pulumi/pulumi-gitlab/provider"
-	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfgen"
-	"github.com/pulumi/pulumi-gitlab/provider/pkg/version"
+	gitlab "github.com/pulumi/pulumi-gitlab/provider/v2"
+	"github.com/pulumi/pulumi-gitlab/provider/v2/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfgen"
 )
 
 func main() {

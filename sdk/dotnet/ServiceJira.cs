@@ -12,6 +12,8 @@ namespace Pulumi.GitLab
     /// <summary>
     /// This resource allows you to manage Jira integration.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_jira.html.markdown.
     /// </summary>
     public partial class ServiceJira : Pulumi.CustomResource

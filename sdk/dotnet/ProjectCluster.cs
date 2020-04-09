@@ -14,6 +14,9 @@ namespace Pulumi.GitLab
     /// For further information on clusters, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).
     /// 
+    /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_cluster.html.markdown.
     /// </summary>
     public partial class ProjectCluster : Pulumi.CustomResource

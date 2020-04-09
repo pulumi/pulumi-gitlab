@@ -12,6 +12,8 @@ namespace Pulumi.GitLab
     /// <summary>
     /// This resource allows you to create and manage variables for pipeline schedules.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/pipeline_schedule_variable.html.markdown.
     /// </summary>
     public partial class PipelineScheduleVariable : Pulumi.CustomResource

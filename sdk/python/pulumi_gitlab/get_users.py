@@ -80,6 +80,8 @@ def get_users(active=None,blocked=None,created_after=None,created_before=None,ex
 
     **NOTE**: Some of the available options require administrator privileges. Please visit [Gitlab API documentation][users_for_admins] for more information.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/users.html.markdown.
 
 

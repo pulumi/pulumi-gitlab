@@ -12,6 +12,8 @@ namespace Pulumi.GitLab
     /// <summary>
     /// This resource allows you to add a current user to an existing project with a set access level.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_membership.html.markdown.
     /// </summary>
     public partial class ProjectMembership : Pulumi.CustomResource

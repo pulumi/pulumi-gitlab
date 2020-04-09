@@ -30,6 +30,9 @@ class DeployKey(pulumi.CustomResource):
         """
         This resource allows you to create and manage deploy keys for your GitLab projects.
 
+
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/deploy_key.html.markdown.
 
         :param str resource_name: The name of the resource.

@@ -8,12 +8,15 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This resource allows you to create and manage group clusters for your GitLab groups.
 // For further information on clusters, consult the [gitlab
 // documentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).
+//
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_cluster.html.markdown.
 type GroupCluster struct {

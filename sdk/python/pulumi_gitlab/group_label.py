@@ -32,6 +32,9 @@ class GroupLabel(pulumi.CustomResource):
         For further information on labels, consult the [gitlab
         documentation](https://docs.gitlab.com/ee/user/project/labels.html#group-labels).
 
+
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_label.html.markdown.
 
         :param str resource_name: The name of the resource.

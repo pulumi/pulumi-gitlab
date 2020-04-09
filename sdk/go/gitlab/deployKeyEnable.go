@@ -8,12 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This resource allows you to enable pre-existing deploy keys for your GitLab projects.
 //
 // **the GITLAB KEY_ID for the deploy key must be known**
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/deploy_key_enable.html.markdown.
 type DeployKeyEnable struct {

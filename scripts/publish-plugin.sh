@@ -17,7 +17,7 @@ if [ "$(go env GOOS)" = "windows" ]; then
 fi
 
 (cd provider && go build \
-   -ldflags "-X github.com/pulumi/pulumi-gitlab/provider/pkg/version.Version=${VERSION}" \
+   -ldflags "-X github.com/pulumi/pulumi-gitlab/provider/v2/pkg/version.Version=${VERSION}" \
    -o "${WORK_PATH}/pulumi-resource-gitlab${BIN_SUFFIX}" \
    "${ROOT}/cmd/pulumi-resource-gitlab")
 

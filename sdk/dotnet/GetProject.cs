@@ -14,6 +14,8 @@ namespace Pulumi.GitLab
         /// <summary>
         /// Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/project.html.markdown.
         /// </summary>
         [Obsolete("Use GetProject.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/project.html.markdown.
         /// </summary>

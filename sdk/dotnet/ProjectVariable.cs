@@ -14,6 +14,9 @@ namespace Pulumi.GitLab
     /// For further information on variables, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
     /// 
+    /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_variable.html.markdown.
     /// </summary>
     public partial class ProjectVariable : Pulumi.CustomResource

@@ -14,6 +14,8 @@ namespace Pulumi.GitLab
         /// <summary>
         /// Provides details about a specific group in the gitlab provider.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/group.html.markdown.
         /// </summary>
         [Obsolete("Use GetGroup.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// Provides details about a specific group in the gitlab provider.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/group.html.markdown.
         /// </summary>
