@@ -115,8 +115,6 @@ def get_group(full_path=None,group_id=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/group.html.markdown.
-
 
     :param str full_path: The full path of the group.
     :param float group_id: The ID of the group.

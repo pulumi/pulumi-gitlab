@@ -82,8 +82,6 @@ def get_users(active=None,blocked=None,created_after=None,created_before=None,ex
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/users.html.markdown.
-
 
     :param bool active: Filter users that are active.
     :param bool blocked: Filter users that are blocked.

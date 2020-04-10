@@ -213,8 +213,6 @@ def get_user(email=None,user_id=None,username=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/user.html.markdown.
-
 
     :param str email: The e-mail address of the user. (Requires administrator privileges)
     :param float user_id: The ID of the user.

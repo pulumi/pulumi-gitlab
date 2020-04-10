@@ -160,8 +160,6 @@ def get_project(archived=None,default_branch=None,description=None,http_url_to_r
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/project.html.markdown.
-
 
     :param bool archived: Whether the project is in read-only mode (archived).
     :param str default_branch: The default branch for the project.
