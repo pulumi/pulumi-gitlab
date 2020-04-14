@@ -11,8 +11,6 @@ namespace Pulumi.GitLab
 {
     /// <summary>
     /// This resource allows you to share a project with a group
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_share_group.html.markdown.
     /// </summary>
     public partial class ProjectShareGroup : Pulumi.CustomResource
     {
@@ -43,7 +41,7 @@ namespace Pulumi.GitLab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ProjectShareGroup(string name, ProjectShareGroupArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/projectShareGroup:ProjectShareGroup", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gitlab:index/projectShareGroup:ProjectShareGroup", name, args ?? new ProjectShareGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 

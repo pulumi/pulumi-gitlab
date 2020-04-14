@@ -11,8 +11,6 @@ namespace Pulumi.GitLab
 {
     /// <summary>
     /// This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch. GitLab EE features to protect by group or user are not supported.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/branch_protection.html.markdown.
     /// </summary>
     public partial class BranchProtection : Pulumi.CustomResource
     {
@@ -49,7 +47,7 @@ namespace Pulumi.GitLab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BranchProtection(string name, BranchProtectionArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/branchProtection:BranchProtection", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gitlab:index/branchProtection:BranchProtection", name, args ?? new BranchProtectionArgs(), MakeResourceOptions(options, ""))
         {
         }
 

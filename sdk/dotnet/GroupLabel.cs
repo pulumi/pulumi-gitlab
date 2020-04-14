@@ -13,8 +13,6 @@ namespace Pulumi.GitLab
     /// This resource allows you to create and manage labels for your GitLab groups.
     /// For further information on labels, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ee/user/project/labels.html#group-labels).
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_label.html.markdown.
     /// </summary>
     public partial class GroupLabel : Pulumi.CustomResource
     {
@@ -51,7 +49,7 @@ namespace Pulumi.GitLab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GroupLabel(string name, GroupLabelArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/groupLabel:GroupLabel", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gitlab:index/groupLabel:GroupLabel", name, args ?? new GroupLabelArgs(), MakeResourceOptions(options, ""))
         {
         }
 

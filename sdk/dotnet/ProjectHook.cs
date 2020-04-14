@@ -13,8 +13,6 @@ namespace Pulumi.GitLab
     /// This resource allows you to create and manage hooks for your GitLab projects.
     /// For further information on hooks, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ce/user/project/integrations/webhooks.html).
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_hook.html.markdown.
     /// </summary>
     public partial class ProjectHook : Pulumi.CustomResource
     {
@@ -100,7 +98,7 @@ namespace Pulumi.GitLab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ProjectHook(string name, ProjectHookArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/projectHook:ProjectHook", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gitlab:index/projectHook:ProjectHook", name, args ?? new ProjectHookArgs(), MakeResourceOptions(options, ""))
         {
         }
 

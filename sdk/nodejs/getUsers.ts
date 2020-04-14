@@ -13,6 +13,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -26,7 +28,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/users.html.markdown.
  */
-export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> & GetUsersResult {
+export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -35,7 +37,7 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetUsersResult> = pulumi.runtime.invoke("gitlab:index/getUsers:getUsers", {
+    return pulumi.runtime.invoke("gitlab:index/getUsers:getUsers", {
         "active": args.active,
         "blocked": args.blocked,
         "createdAfter": args.createdAfter,
@@ -46,8 +48,6 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
         "search": args.search,
         "sort": args.sort,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

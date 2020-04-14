@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.GitLab
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Provides details about a specific group in the gitlab provider.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/group.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetGroup.InvokeAsync() instead")]
-        public static Task<GetGroupResult> GetGroup(GetGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("gitlab:index/getGroup:getGroup", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetGroup
     {
         /// <summary>
         /// Provides details about a specific group in the gitlab provider.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/group.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("gitlab:index/getGroup:getGroup", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("gitlab:index/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithVersion());
     }
+
 
     public sealed class GetGroupArgs : Pulumi.InvokeArgs
     {
@@ -50,6 +41,7 @@ namespace Pulumi.GitLab
         }
     }
 
+
     [OutputType]
     public sealed class GetGroupResult
     {
@@ -66,6 +58,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string FullPath;
         public readonly int GroupId;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// Boolean, is LFS enabled for projects in this group.
         /// </summary>
@@ -98,31 +94,40 @@ namespace Pulumi.GitLab
         /// Web URL of the group.
         /// </summary>
         public readonly string WebUrl;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetGroupResult(
             string description,
+
             string fullName,
+
             string fullPath,
+
             int groupId,
+
+            string id,
+
             bool lfsEnabled,
+
             string name,
+
             int parentId,
+
             string path,
+
             bool requestAccessEnabled,
+
             string runnersToken,
+
             string visibilityLevel,
-            string webUrl,
-            string id)
+
+            string webUrl)
         {
             Description = description;
             FullName = fullName;
             FullPath = fullPath;
             GroupId = groupId;
+            Id = id;
             LfsEnabled = lfsEnabled;
             Name = name;
             ParentId = parentId;
@@ -131,7 +136,6 @@ namespace Pulumi.GitLab
             RunnersToken = runnersToken;
             VisibilityLevel = visibilityLevel;
             WebUrl = webUrl;
-            Id = id;
         }
     }
 }

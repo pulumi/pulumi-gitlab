@@ -36,7 +36,8 @@ class GroupVariable(pulumi.CustomResource):
         For further information on variables, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_variable.html.markdown.
+
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -13,8 +13,6 @@ namespace Pulumi.GitLab
     /// This resource allows you to create and manage CI/CD variables for your GitLab groups.
     /// For further information on variables, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_variable.html.markdown.
     /// </summary>
     public partial class GroupVariable : Pulumi.CustomResource
     {
@@ -57,7 +55,7 @@ namespace Pulumi.GitLab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GroupVariable(string name, GroupVariableArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/groupVariable:GroupVariable", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gitlab:index/groupVariable:GroupVariable", name, args ?? new GroupVariableArgs(), MakeResourceOptions(options, ""))
         {
         }
 

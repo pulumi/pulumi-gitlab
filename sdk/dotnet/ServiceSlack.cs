@@ -11,8 +11,6 @@ namespace Pulumi.GitLab
 {
     /// <summary>
     /// This resource allows you to manage Slack notifications integration.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_slack.html.markdown.
     /// </summary>
     public partial class ServiceSlack : Pulumi.CustomResource
     {
@@ -166,7 +164,7 @@ namespace Pulumi.GitLab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceSlack(string name, ServiceSlackArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/serviceSlack:ServiceSlack", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gitlab:index/serviceSlack:ServiceSlack", name, args ?? new ServiceSlackArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -11,8 +11,6 @@ namespace Pulumi.GitLab
 {
     /// <summary>
     /// This resource allows you to manage Jira integration.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_jira.html.markdown.
     /// </summary>
     public partial class ServiceJira : Pulumi.CustomResource
     {
@@ -91,7 +89,7 @@ namespace Pulumi.GitLab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceJira(string name, ServiceJiraArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/serviceJira:ServiceJira", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gitlab:index/serviceJira:ServiceJira", name, args ?? new ServiceJiraArgs(), MakeResourceOptions(options, ""))
         {
         }
 

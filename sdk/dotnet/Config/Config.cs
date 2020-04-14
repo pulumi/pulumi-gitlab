@@ -8,7 +8,6 @@ namespace Pulumi.GitLab
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("gitlab");
-
         /// <summary>
         /// The GitLab Base API URL
         /// </summary>
@@ -29,8 +28,5 @@ namespace Pulumi.GitLab
         /// </summary>
         public static string? Token { get; set; } = __config.Get("token") ?? Utilities.GetEnv("GITLAB_TOKEN");
 
-    }
-    namespace ConfigTypes
-    {
     }
 }

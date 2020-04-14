@@ -211,7 +211,7 @@ def get_user(email=None,user_id=None,username=None,opts=None):
     """
     Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/user.html.markdown.
+
 
 
     :param str email: The e-mail address of the user. (Requires administrator privileges)

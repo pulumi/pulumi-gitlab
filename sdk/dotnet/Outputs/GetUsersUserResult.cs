@@ -7,49 +7,11 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GitLab
+namespace Pulumi.GitLab.Outputs
 {
-    public static class GetUser
-    {
-        /// <summary>
-        /// Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
-        /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
-        /// </summary>
-        public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("gitlab:index/getUser:getUser", args ?? new GetUserArgs(), options.WithVersion());
-    }
-
-
-    public sealed class GetUserArgs : Pulumi.InvokeArgs
-    {
-        /// <summary>
-        /// The e-mail address of the user. (Requires administrator privileges)
-        /// </summary>
-        [Input("email")]
-        public string? Email { get; set; }
-
-        /// <summary>
-        /// The ID of the user.
-        /// </summary>
-        [Input("userId")]
-        public int? UserId { get; set; }
-
-        /// <summary>
-        /// The username of the user.
-        /// </summary>
-        [Input("username")]
-        public string? Username { get; set; }
-
-        public GetUserArgs()
-        {
-        }
-    }
-
 
     [OutputType]
-    public sealed class GetUserResult
+    public sealed class GetUsersUserResult
     {
         /// <summary>
         /// The avatar URL of the user.
@@ -84,7 +46,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Email;
         /// <summary>
-        /// The external UID of the user.
+        /// Lookup users by external UID. (Requires administrator privileges)
         /// </summary>
         public readonly string ExternUid;
         /// <summary>
@@ -92,9 +54,9 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool External;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The unique id assigned to the user by the gitlab server.
         /// </summary>
-        public readonly string Id;
+        public readonly int Id;
         /// <summary>
         /// Whether the user is an admin.
         /// </summary>
@@ -124,6 +86,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int ProjectsLimit;
         /// <summary>
+        /// The UID provider of the user.
+        /// </summary>
+        public readonly string Provider;
+        /// <summary>
         /// Skype username of the user.
         /// </summary>
         public readonly string Skype;
@@ -143,11 +109,6 @@ namespace Pulumi.GitLab
         /// Whether user's two factor auth is enabled.
         /// </summary>
         public readonly bool TwoFactorEnabled;
-        public readonly int UserId;
-        /// <summary>
-        /// The UID provider of the user.
-        /// </summary>
-        public readonly string UserProvider;
         /// <summary>
         /// The username of the user.
         /// </summary>
@@ -158,7 +119,7 @@ namespace Pulumi.GitLab
         public readonly string WebsiteUrl;
 
         [OutputConstructor]
-        private GetUserResult(
+        private GetUsersUserResult(
             string avatarUrl,
 
             string bio,
@@ -179,7 +140,7 @@ namespace Pulumi.GitLab
 
             bool external,
 
-            string id,
+            int id,
 
             bool isAdmin,
 
@@ -195,6 +156,8 @@ namespace Pulumi.GitLab
 
             int projectsLimit,
 
+            string provider,
+
             string skype,
 
             string state,
@@ -204,10 +167,6 @@ namespace Pulumi.GitLab
             string twitter,
 
             bool twoFactorEnabled,
-
-            int userId,
-
-            string userProvider,
 
             string username,
 
@@ -231,13 +190,12 @@ namespace Pulumi.GitLab
             Name = name;
             Organization = organization;
             ProjectsLimit = projectsLimit;
+            Provider = provider;
             Skype = skype;
             State = state;
             ThemeId = themeId;
             Twitter = twitter;
             TwoFactorEnabled = twoFactorEnabled;
-            UserId = userId;
-            UserProvider = userProvider;
             Username = username;
             WebsiteUrl = websiteUrl;
         }

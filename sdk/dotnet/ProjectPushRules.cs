@@ -13,8 +13,6 @@ namespace Pulumi.GitLab
     /// This resource allows you to create and manage push rules for your GitLab projects.
     /// For further information on push rules, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ce/push_rules/push_rules.html#push-rules).
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_push_rules.html.markdown.
     /// </summary>
     public partial class ProjectPushRules : Pulumi.CustomResource
     {
@@ -81,7 +79,7 @@ namespace Pulumi.GitLab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ProjectPushRules(string name, ProjectPushRulesArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/projectPushRules:ProjectPushRules", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gitlab:index/projectPushRules:ProjectPushRules", name, args ?? new ProjectPushRulesArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -11,8 +11,6 @@ namespace Pulumi.GitLab
 {
     /// <summary>
     /// This resource allows you to protect a specific tag or wildcard by an access level so that the user with less access level cannot Create the tags.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/tag_protection.html.markdown.
     /// </summary>
     public partial class TagProtection : Pulumi.CustomResource
     {
@@ -43,7 +41,7 @@ namespace Pulumi.GitLab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TagProtection(string name, TagProtectionArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/tagProtection:TagProtection", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gitlab:index/tagProtection:TagProtection", name, args ?? new TagProtectionArgs(), MakeResourceOptions(options, ""))
         {
         }
 

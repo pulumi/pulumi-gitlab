@@ -65,7 +65,8 @@ class ProjectHook(pulumi.CustomResource):
         For further information on hooks, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/user/project/integrations/webhooks.html).
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_hook.html.markdown.
+
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

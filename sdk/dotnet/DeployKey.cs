@@ -11,8 +11,6 @@ namespace Pulumi.GitLab
 {
     /// <summary>
     /// This resource allows you to create and manage deploy keys for your GitLab projects.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/deploy_key.html.markdown.
     /// </summary>
     public partial class DeployKey : Pulumi.CustomResource
     {
@@ -49,7 +47,7 @@ namespace Pulumi.GitLab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DeployKey(string name, DeployKeyArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/deployKey:DeployKey", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gitlab:index/deployKey:DeployKey", name, args ?? new DeployKeyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

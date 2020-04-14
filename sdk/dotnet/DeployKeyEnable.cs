@@ -13,8 +13,6 @@ namespace Pulumi.GitLab
     /// This resource allows you to enable pre-existing deploy keys for your GitLab projects.
     /// 
     /// **the GITLAB KEY_ID for the deploy key must be known**
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/deploy_key_enable.html.markdown.
     /// </summary>
     public partial class DeployKeyEnable : Pulumi.CustomResource
     {
@@ -48,7 +46,7 @@ namespace Pulumi.GitLab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DeployKeyEnable(string name, DeployKeyEnableArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/deployKeyEnable:DeployKeyEnable", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gitlab:index/deployKeyEnable:DeployKeyEnable", name, args ?? new DeployKeyEnableArgs(), MakeResourceOptions(options, ""))
         {
         }
 

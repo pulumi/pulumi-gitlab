@@ -139,7 +139,7 @@ namespace Pulumi.GitLab
         /// Enable sharing the project with a list of groups (maps).
         /// </summary>
         [Output("sharedWithGroups")]
-        public Output<ImmutableArray<Outputs.ProjectSharedWithGroups>> SharedWithGroups { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ProjectSharedWithGroup>> SharedWithGroups { get; private set; } = null!;
 
         /// <summary>
         /// Enable snippets for the project.
@@ -189,7 +189,7 @@ namespace Pulumi.GitLab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Project(string name, ProjectArgs? args = null, CustomResourceOptions? options = null)
-            : base("gitlab:index/project:Project", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gitlab:index/project:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -338,14 +338,14 @@ namespace Pulumi.GitLab
         public Input<bool>? SharedRunnersEnabled { get; set; }
 
         [Input("sharedWithGroups")]
-        private InputList<Inputs.ProjectSharedWithGroupsArgs>? _sharedWithGroups;
+        private InputList<Inputs.ProjectSharedWithGroupArgs>? _sharedWithGroups;
 
         /// <summary>
         /// Enable sharing the project with a list of groups (maps).
         /// </summary>
-        public InputList<Inputs.ProjectSharedWithGroupsArgs> SharedWithGroups
+        public InputList<Inputs.ProjectSharedWithGroupArgs> SharedWithGroups
         {
-            get => _sharedWithGroups ?? (_sharedWithGroups = new InputList<Inputs.ProjectSharedWithGroupsArgs>());
+            get => _sharedWithGroups ?? (_sharedWithGroups = new InputList<Inputs.ProjectSharedWithGroupArgs>());
             set => _sharedWithGroups = value;
         }
 
@@ -513,14 +513,14 @@ namespace Pulumi.GitLab
         public Input<bool>? SharedRunnersEnabled { get; set; }
 
         [Input("sharedWithGroups")]
-        private InputList<Inputs.ProjectSharedWithGroupsGetArgs>? _sharedWithGroups;
+        private InputList<Inputs.ProjectSharedWithGroupGetArgs>? _sharedWithGroups;
 
         /// <summary>
         /// Enable sharing the project with a list of groups (maps).
         /// </summary>
-        public InputList<Inputs.ProjectSharedWithGroupsGetArgs> SharedWithGroups
+        public InputList<Inputs.ProjectSharedWithGroupGetArgs> SharedWithGroups
         {
-            get => _sharedWithGroups ?? (_sharedWithGroups = new InputList<Inputs.ProjectSharedWithGroupsGetArgs>());
+            get => _sharedWithGroups ?? (_sharedWithGroups = new InputList<Inputs.ProjectSharedWithGroupGetArgs>());
             set => _sharedWithGroups = value;
         }
 
@@ -572,94 +572,5 @@ namespace Pulumi.GitLab
         public ProjectState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ProjectSharedWithGroupsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Group's sharing permissions. See [group members permission][group_members_permissions] for more info.
-        /// Valid values are `guest`, `reporter`, `developer`, `master`.
-        /// </summary>
-        [Input("groupAccessLevel", required: true)]
-        public Input<string> GroupAccessLevel { get; set; } = null!;
-
-        /// <summary>
-        /// Group id of the group you want to share the project with.
-        /// </summary>
-        [Input("groupId", required: true)]
-        public Input<int> GroupId { get; set; } = null!;
-
-        /// <summary>
-        /// Group's name.
-        /// </summary>
-        [Input("groupName")]
-        public Input<string>? GroupName { get; set; }
-
-        public ProjectSharedWithGroupsArgs()
-        {
-        }
-    }
-
-    public sealed class ProjectSharedWithGroupsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Group's sharing permissions. See [group members permission][group_members_permissions] for more info.
-        /// Valid values are `guest`, `reporter`, `developer`, `master`.
-        /// </summary>
-        [Input("groupAccessLevel", required: true)]
-        public Input<string> GroupAccessLevel { get; set; } = null!;
-
-        /// <summary>
-        /// Group id of the group you want to share the project with.
-        /// </summary>
-        [Input("groupId", required: true)]
-        public Input<int> GroupId { get; set; } = null!;
-
-        /// <summary>
-        /// Group's name.
-        /// </summary>
-        [Input("groupName")]
-        public Input<string>? GroupName { get; set; }
-
-        public ProjectSharedWithGroupsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ProjectSharedWithGroups
-    {
-        /// <summary>
-        /// Group's sharing permissions. See [group members permission][group_members_permissions] for more info.
-        /// Valid values are `guest`, `reporter`, `developer`, `master`.
-        /// </summary>
-        public readonly string GroupAccessLevel;
-        /// <summary>
-        /// Group id of the group you want to share the project with.
-        /// </summary>
-        public readonly int GroupId;
-        /// <summary>
-        /// Group's name.
-        /// </summary>
-        public readonly string GroupName;
-
-        [OutputConstructor]
-        private ProjectSharedWithGroups(
-            string groupAccessLevel,
-            int groupId,
-            string groupName)
-        {
-            GroupAccessLevel = groupAccessLevel;
-            GroupId = groupId;
-            GroupName = groupName;
-        }
-    }
     }
 }

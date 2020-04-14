@@ -4,8 +4,8 @@
 package config
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/go/pulumi/config"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 )
 
 // The GitLab Base API URL
@@ -14,10 +14,7 @@ func GetBaseUrl(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "GITLAB_BASE_URL").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "GITLAB_BASE_URL").(string)
 }
 
 // A file containing the ca certificate to use in case ssl certificate is not from a standard chain
@@ -36,8 +33,5 @@ func GetToken(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "GITLAB_TOKEN").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "GITLAB_TOKEN").(string)
 }

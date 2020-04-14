@@ -1,11 +1,10 @@
-
 package main
 
 import (
 	"fmt"
 	"os"
 
-	"github.com/pulumi/pulumi/sdk/go/common/util/buildutil"
+	"github.com/pulumi/pulumi/sdk/v2/go/common/util/buildutil"
 )
 
 func main() {

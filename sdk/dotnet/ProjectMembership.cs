@@ -11,8 +11,6 @@ namespace Pulumi.GitLab
 {
     /// <summary>
     /// This resource allows you to add a current user to an existing project with a set access level.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_membership.html.markdown.
     /// </summary>
     public partial class ProjectMembership : Pulumi.CustomResource
     {
@@ -43,7 +41,7 @@ namespace Pulumi.GitLab
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ProjectMembership(string name, ProjectMembershipArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/projectMembership:ProjectMembership", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gitlab:index/projectMembership:ProjectMembership", name, args ?? new ProjectMembershipArgs(), MakeResourceOptions(options, ""))
         {
         }
 

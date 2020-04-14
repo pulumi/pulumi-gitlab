@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.GitLab
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/project.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetProject.InvokeAsync() instead")]
-        public static Task<GetProjectResult> GetProject(GetProjectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gitlab:index/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetProject
     {
         /// <summary>
         /// Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/project.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gitlab:index/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gitlab:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithVersion());
     }
+
 
     public sealed class GetProjectArgs : Pulumi.InvokeArgs
     {
@@ -152,6 +143,7 @@ namespace Pulumi.GitLab
         }
     }
 
+
     [OutputType]
     public sealed class GetProjectResult
     {
@@ -235,23 +227,41 @@ namespace Pulumi.GitLab
         [OutputConstructor]
         private GetProjectResult(
             bool archived,
+
             string defaultBranch,
+
             string description,
+
             string httpUrlToRepo,
+
             int id,
+
             bool issuesEnabled,
+
             bool lfsEnabled,
+
             bool mergeRequestsEnabled,
+
             string name,
+
             int namespaceId,
+
             string path,
+
             bool pipelinesEnabled,
+
             bool requestAccessEnabled,
+
             string runnersToken,
+
             bool snippetsEnabled,
+
             string sshUrlToRepo,
+
             string visibilityLevel,
+
             string webUrl,
+
             bool wikiEnabled)
         {
             Archived = archived;
