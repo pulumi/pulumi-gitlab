@@ -1,11 +1,14 @@
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 1.4.0 (2020-04-14)
 * Namespace names in .NET SDK are adjusted to PascalCase
 ([#25](https://github.com/pulumi/pulumi-gitlab/pull/25)).
 * Upgrade to pulumi-terraform-bridge v1.8.4
 * Upgrade to pulumi v1.13.1
 * Upgrade to v2.6.0 of the Gitlab Terraform Provider
-
----
 
 ## 1.3.0 (2019-12-09)
 * Upgrade to v2.5.0 of the Gitlab Terraform Provider
