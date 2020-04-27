@@ -34,7 +34,7 @@ type LookupGroupResult struct {
 	// The full path of the group.
 	FullPath string `pulumi:"fullPath"`
 	GroupId  int    `pulumi:"groupId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Boolean, is LFS enabled for projects in this group.
 	LfsEnabled bool `pulumi:"lfsEnabled"`

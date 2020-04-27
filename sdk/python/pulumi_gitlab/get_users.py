@@ -39,7 +39,7 @@ class GetUsersResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if order_by and not isinstance(order_by, str):
             raise TypeError("Expected argument 'order_by' to be a str")

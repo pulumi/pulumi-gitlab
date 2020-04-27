@@ -49,7 +49,7 @@ type LookupUserResult struct {
 	ExternUid string `pulumi:"externUid"`
 	// Whether the user is external.
 	External bool `pulumi:"external"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Whether the user is an admin.
 	IsAdmin bool `pulumi:"isAdmin"`
