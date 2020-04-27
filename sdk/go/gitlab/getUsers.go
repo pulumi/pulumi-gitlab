@@ -50,7 +50,7 @@ type GetUsersResult struct {
 	ExternProvider *string `pulumi:"externProvider"`
 	// The external UID of the user.
 	ExternUid *string `pulumi:"externUid"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id      string  `pulumi:"id"`
 	OrderBy *string `pulumi:"orderBy"`
 	Search  *string `pulumi:"search"`
