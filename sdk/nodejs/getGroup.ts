@@ -17,9 +17,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  * 
- * const foo = gitlab.getGroup({
+ * const foo = pulumi.output(gitlab.getGroup({
  *     groupId: 123,
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/group.html.markdown.
