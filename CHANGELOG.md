@@ -1,8 +1,11 @@
 ## HEAD (Unreleased)
-* Regenerate datasource examples to be async
-* Upgrade to pulumi-terraform-bridge v2.1.0
+_(none)_
 
 ---
+
+## 2.1.0 (2020-04-28)
+* Regenerate datasource examples to be async
+* Upgrade to pulumi-terraform-bridge v2.1.0
 
 ## 2.0.0 (2020-04-17)
 * Upgrade to pulumi-terraform-bridge v2.0.0
