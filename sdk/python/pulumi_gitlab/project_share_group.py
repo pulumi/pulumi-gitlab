@@ -26,6 +26,19 @@ class ProjectShareGroup(pulumi.CustomResource):
         """
         This resource allows you to share a project with a group
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.ProjectShareGroup("test",
+            access_level="guest",
+            group_id=1337,
+            project_id="12345")
+        ```
 
 
         :param str resource_name: The name of the resource.

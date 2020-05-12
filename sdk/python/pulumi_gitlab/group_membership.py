@@ -30,6 +30,20 @@ class GroupMembership(pulumi.CustomResource):
         """
         This resource allows you to add a user to an existing group.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.GroupMembership("test",
+            access_level="guest",
+            expires_at="2020-12-31",
+            group_id="12345",
+            user_id=1337)
+        ```
 
 
         :param str resource_name: The name of the resource.

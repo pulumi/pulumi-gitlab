@@ -211,6 +211,16 @@ def get_user(email=None,user_id=None,username=None,opts=None):
     """
     Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_user(username="myuser")
+    ```
 
 
 

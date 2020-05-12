@@ -30,6 +30,20 @@ class BranchProtection(pulumi.CustomResource):
         """
         This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch. GitLab EE features to protect by group or user are not supported.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        branch_protect = gitlab.BranchProtection("branchProtect",
+            branch="BranchProtected",
+            merge_access_level="developer",
+            project="12345",
+            push_access_level="developer")
+        ```
 
 
         :param str resource_name: The name of the resource.

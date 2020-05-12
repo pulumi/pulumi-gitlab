@@ -61,6 +61,25 @@ class GroupCluster(pulumi.CustomResource):
         documentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo = gitlab.Group("foo", path="foo-path")
+        bar = gitlab.GroupCluster("bar",
+            domain="example.com",
+            enabled=True,
+            environment_scope="*",
+            group=foo.id,
+            kubernetes_api_url="https://124.124.124",
+            kubernetes_authorization_type="rbac",
+            kubernetes_ca_cert="some-cert",
+            kubernetes_token="some-token")
+        ```
 
 
         :param str resource_name: The name of the resource.

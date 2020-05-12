@@ -80,6 +80,18 @@ def get_users(active=None,blocked=None,created_after=None,created_before=None,ex
 
     **NOTE**: Some of the available options require administrator privileges. Please visit [Gitlab API documentation][users_for_admins] for more information.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_users(created_before="2019-01-01",
+        order_by="name",
+        sort="desc")
+    ```
 
 
 

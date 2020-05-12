@@ -45,6 +45,20 @@ class ProjectVariable(pulumi.CustomResource):
         documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.ProjectVariable("example",
+            key="project_variable_key",
+            project="12345",
+            protected=False,
+            value="project_variable_value")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -66,6 +66,19 @@ class ProjectHook(pulumi.CustomResource):
         documentation](https://docs.gitlab.com/ce/user/project/integrations/webhooks.html).
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.ProjectHook("example",
+            merge_requests_events=True,
+            project="example/hooked",
+            url="https://example.com/hook/example")
+        ```
 
 
         :param str resource_name: The name of the resource.

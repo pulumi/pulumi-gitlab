@@ -107,6 +107,24 @@ class ServiceSlack(pulumi.CustomResource):
         """
         This resource allows you to manage Slack notifications integration.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        slack = gitlab.ServiceSlack("slack",
+            project=awesome_project.id,
+            push_channel="push_chan",
+            push_events=True,
+            username="myuser",
+            webhook="https://webhook.com")
+        ```
 
 
         :param str resource_name: The name of the resource.
