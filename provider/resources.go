@@ -114,7 +114,6 @@ func Provider() tfbridge.ProviderInfo {
 			"gitlab_users":   {Tok: gitLabDataSource(gitLabMod, "getUsers")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			AsyncDataSources: true,
 			Dependencies: map[string]string{
 				"@pulumi/pulumi":    "^2.0.0",
 				"builtin-modules":   "3.0.0",

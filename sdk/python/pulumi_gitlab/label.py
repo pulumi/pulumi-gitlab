@@ -33,6 +33,19 @@ class Label(pulumi.CustomResource):
         documentation](https://docs.gitlab.com/ee/user/project/labels.html#project-labels).
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        fixme = gitlab.Label("fixme",
+            color="#ffcc00",
+            description="issue with failing tests",
+            project="example")
+        ```
 
 
         :param str resource_name: The name of the resource.

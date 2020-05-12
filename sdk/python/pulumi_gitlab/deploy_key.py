@@ -31,6 +31,19 @@ class DeployKey(pulumi.CustomResource):
         This resource allows you to create and manage deploy keys for your GitLab projects.
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.DeployKey("example",
+            key="ssh-rsa AAAA...",
+            project="example/deploying",
+            title="Example deploy key")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -158,6 +158,16 @@ def get_project(archived=None,default_branch=None,description=None,http_url_to_r
     """
     Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_project(id=30)
+    ```
 
 
 

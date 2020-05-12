@@ -113,6 +113,16 @@ def get_group(full_path=None,group_id=None,opts=None):
     """
     Provides details about a specific group in the gitlab provider.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    foo = gitlab.get_group(group_id=123)
+    ```
 
 
 

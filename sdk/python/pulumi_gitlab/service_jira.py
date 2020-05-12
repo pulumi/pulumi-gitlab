@@ -54,6 +54,23 @@ class ServiceJira(pulumi.CustomResource):
         """
         This resource allows you to manage Jira integration.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        jira = gitlab.ServiceJira("jira",
+            password="mypass",
+            project=awesome_project.id,
+            url="https://jira.example.com",
+            username="user")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -40,6 +40,20 @@ class PipelineSchedule(pulumi.CustomResource):
         For further information on clusters, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/user/project/pipelines/schedules.html).
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.PipelineSchedule("example",
+            cron="0 1 * * *",
+            description="Used to schedule builds",
+            project="12345",
+            ref="master")
+        ```
 
 
         :param str resource_name: The name of the resource.

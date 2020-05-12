@@ -37,6 +37,20 @@ class GroupVariable(pulumi.CustomResource):
         documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.GroupVariable("example",
+            group="12345",
+            key="group_variable_key",
+            protected=False,
+            value="group_variable_value")
+        ```
 
 
         :param str resource_name: The name of the resource.

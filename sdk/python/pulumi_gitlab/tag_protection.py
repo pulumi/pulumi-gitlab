@@ -26,6 +26,19 @@ class TagProtection(pulumi.CustomResource):
         """
         This resource allows you to protect a specific tag or wildcard by an access level so that the user with less access level cannot Create the tags.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        tag_protect = gitlab.TagProtection("tagProtect",
+            create_access_level="developer",
+            project="12345",
+            tag="TagProtected")
+        ```
 
 
         :param str resource_name: The name of the resource.

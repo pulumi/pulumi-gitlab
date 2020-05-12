@@ -23,6 +23,18 @@ class PipelineTrigger(pulumi.CustomResource):
         """
         This resource allows you to create and manage pipeline triggers
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.PipelineTrigger("example",
+            description="Used to trigger builds",
+            project="12345")
+        ```
 
 
         :param str resource_name: The name of the resource.

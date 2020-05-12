@@ -33,6 +33,19 @@ class GroupLabel(pulumi.CustomResource):
         documentation](https://docs.gitlab.com/ee/user/project/labels.html#group-labels).
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        fixme = gitlab.GroupLabel("fixme",
+            color="#ffcc00",
+            description="issue with failing tests",
+            group="example")
+        ```
 
 
         :param str resource_name: The name of the resource.

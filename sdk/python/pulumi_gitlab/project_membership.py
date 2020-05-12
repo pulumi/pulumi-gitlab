@@ -26,6 +26,19 @@ class ProjectMembership(pulumi.CustomResource):
         """
         This resource allows you to add a current user to an existing project with a set access level.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.ProjectMembership("test",
+            access_level="guest",
+            project_id="12345",
+            user_id=1337)
+        ```
 
 
         :param str resource_name: The name of the resource.
