@@ -1,5 +1,6 @@
 ## HEAD (Unreleased)
 * Upgrade to pulumi-terraform-bridge v2.3.3
+* Upgrade to v2.7.0 of the GitLab Terraform Provider
 
 ---
 
