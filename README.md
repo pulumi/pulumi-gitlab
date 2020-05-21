@@ -31,6 +31,12 @@ To use from Go, use `go get` to grab the latest version of the library
 
     $ go get github.com/pulumi/pulumi-gitlab/sdk/go/...
 
+### .NET
+
+To use from .NET, install using `dotnet add package`:
+
+    $ dotnet add package Pulumi.Gitlab
+
 ## Concepts
 
 The `@pulumi/gitlab` package provides a strongly-typed means to create cloud applications that create and interact
@@ -51,12 +57,4 @@ The following configuration points are available:
 
 ## Reference
 
-For detailed reference documentation, please visit [the API docs](
-https://pulumi.io/reference/pkg/nodejs/pulumi/gitlab/).
-
-## Updating this provider
-
-The GitLab Resource Provider for Pulumi is based on the Terraform Provider for
-GitLab. Instructions for keeping it up to date are available [here][updating].
-
-[updating]: https://github.com/pulumi/pulumi-terraform/wiki/Updating-Pulumi-Providers-Backed-By-Terraform-Providers
+For further information, please visit [the GitLab provider docs](https://www.pulumi.com/docs/intro/cloud-providers/gitlab) or for detailed reference documentation, please visit [the API docs](https://www.pulumi.com/docs/reference/pkg/gitlab).
