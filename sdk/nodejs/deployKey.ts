@@ -6,24 +6,22 @@ import * as utilities from "./utilities";
 
 /**
  * This resource allows you to create and manage deploy keys for your GitLab projects.
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
- * 
+ *
  * const example = new gitlab.DeployKey("example", {
  *     key: "ssh-rsa AAAA...",
  *     project: "example/deploying",
  *     title: "Example deploy key",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/deploy_key.html.markdown.
  */
 export class DeployKey extends pulumi.CustomResource {
     /**

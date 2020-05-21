@@ -6,17 +6,17 @@ import * as utilities from "./utilities";
 
 /**
  * This resource allows you to enable pre-existing deploy keys for your GitLab projects.
- * 
+ *
  * **the GITLAB KEY_ID for the deploy key must be known**
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
- * 
+ *
  * // A repo to host the deployment key
  * const parentProject = new gitlab.Project("parent", {});
  * // A second repo to use the deployment key from the parent project
@@ -33,8 +33,6 @@ import * as utilities from "./utilities";
  *     project: fooProject.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/deploy_key_enable.html.markdown.
  */
 export class DeployKeyEnable extends pulumi.CustomResource {
     /**

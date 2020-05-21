@@ -8,16 +8,16 @@ import * as utilities from "./utilities";
  * This resource allows you to create and manage group clusters for your GitLab groups.
  * For further information on clusters, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
- * 
+ *
  * const foo = new gitlab.Group("foo", {
  *     path: "foo-path",
  * });
@@ -32,8 +32,6 @@ import * as utilities from "./utilities";
  *     kubernetesToken: "some-token",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_cluster.html.markdown.
  */
 export class GroupCluster extends pulumi.CustomResource {
     /**

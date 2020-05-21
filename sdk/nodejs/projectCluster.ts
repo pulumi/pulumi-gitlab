@@ -10,16 +10,16 @@ import * as utilities from "./utilities";
  * This resource allows you to create and manage project clusters for your GitLab projects.
  * For further information on clusters, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
- * 
+ *
  * const foo = new gitlab.Project("foo", {});
  * const bar = new gitlab.ProjectCluster("bar", {
  *     domain: "example.com",
@@ -33,8 +33,6 @@ import * as utilities from "./utilities";
  *     project: foo.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_cluster.html.markdown.
  */
 export class ProjectCluster extends pulumi.CustomResource {
     /**

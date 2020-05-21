@@ -6,15 +6,15 @@ import * as utilities from "./utilities";
 
 /**
  * This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch. GitLab EE features to protect by group or user are not supported.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
- * 
+ *
  * const branchProtect = new gitlab.BranchProtection("BranchProtect", {
  *     branch: "BranchProtected",
  *     mergeAccessLevel: "developer",
@@ -22,8 +22,6 @@ import * as utilities from "./utilities";
  *     pushAccessLevel: "developer",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/branch_protection.html.markdown.
  */
 export class BranchProtection extends pulumi.CustomResource {
     /**

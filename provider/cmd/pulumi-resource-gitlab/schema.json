@@ -1,0 +1,3733 @@
+{
+    "name": "gitlab",
+    "description": "A Pulumi package for creating and managing GitLab resources.",
+    "keywords": [
+        "pulumi",
+        "gitlab"
+    ],
+    "homepage": "https://pulumi.io",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`gitlab` Terraform Provider](https://github.com/terraform-providers/terraform-provider-gitlab).",
+    "repository": "https://github.com/pulumi/pulumi-gitlab",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "config": {
+        "variables": {
+            "baseUrl": {
+                "type": "string",
+                "description": "The GitLab Base API URL\n",
+                "defaultInfo": {
+                    "environment": [
+                        "GITLAB_BASE_URL"
+                    ]
+                }
+            },
+            "cacertFile": {
+                "type": "string",
+                "description": "A file containing the ca certificate to use in case ssl certificate is not from a standard chain\n"
+            },
+            "insecure": {
+                "type": "boolean",
+                "description": "Disable SSL verification of API calls\n"
+            },
+            "token": {
+                "type": "string",
+                "description": "The OAuth token used to connect to GitLab.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "GITLAB_TOKEN"
+                    ]
+                }
+            }
+        },
+        "defaults": [
+            "token"
+        ]
+    },
+    "types": {
+        "gitlab:/ProjectSharedWithGroup:ProjectSharedWithGroup": {
+            "properties": {
+                "groupAccessLevel": {
+                    "type": "string",
+                    "description": "Group's sharing permissions. See [group members permission][group_members_permissions] for more info.\nValid values are `guest`, `reporter`, `developer`, `master`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "groupId": {
+                    "type": "integer",
+                    "description": "Group id of the group you want to share the project with.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "groupName": {
+                    "type": "string",
+                    "description": "Group's name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "groupAccessLevel",
+                "groupId"
+            ]
+        },
+        "gitlab:/getUsersUser:getUsersUser": {
+            "properties": {
+                "avatarUrl": {
+                    "type": "string",
+                    "description": "The avatar URL of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "bio": {
+                    "type": "string",
+                    "description": "The bio of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "canCreateGroup": {
+                    "type": "boolean",
+                    "description": "Whether the user can create groups.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "canCreateProject": {
+                    "type": "boolean",
+                    "description": "Whether the user can create projects.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "colorSchemeId": {
+                    "type": "integer",
+                    "description": "User's color scheme ID.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Date the user was created at.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "currentSignInAt": {
+                    "type": "string",
+                    "description": "Current user's sign-in date.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "email": {
+                    "type": "string",
+                    "description": "The e-mail address of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "externUid": {
+                    "type": "string",
+                    "description": "Lookup users by external UID. (Requires administrator privileges)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "external": {
+                    "type": "boolean",
+                    "description": "Whether the user is external.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The unique id assigned to the user by the gitlab server.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isAdmin": {
+                    "type": "boolean",
+                    "description": "Whether the user is an admin.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lastSignInAt": {
+                    "type": "string",
+                    "description": "Last user's sign-in date.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "linkedin": {
+                    "type": "string",
+                    "description": "Linkedin profile of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "location": {
+                    "type": "string",
+                    "description": "The location of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "organization": {
+                    "type": "string",
+                    "description": "The organization of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectsLimit": {
+                    "type": "integer",
+                    "description": "Number of projects the user can create.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "provider": {
+                    "type": "string",
+                    "description": "The UID provider of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "skype": {
+                    "type": "string",
+                    "description": "Skype username of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Whether the user is active or blocked.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "themeId": {
+                    "type": "integer",
+                    "description": "User's theme ID.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "twitter": {
+                    "type": "string",
+                    "description": "Twitter username of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "twoFactorEnabled": {
+                    "type": "boolean",
+                    "description": "Whether user's two factor auth is enabled.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "websiteUrl": {
+                    "type": "string",
+                    "description": "User's website URL.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "avatarUrl",
+                "bio",
+                "canCreateGroup",
+                "canCreateProject",
+                "colorSchemeId",
+                "createdAt",
+                "currentSignInAt",
+                "email",
+                "externUid",
+                "external",
+                "id",
+                "isAdmin",
+                "lastSignInAt",
+                "linkedin",
+                "location",
+                "name",
+                "organization",
+                "projectsLimit",
+                "provider",
+                "skype",
+                "state",
+                "themeId",
+                "twitter",
+                "twoFactorEnabled",
+                "username",
+                "websiteUrl"
+            ]
+        }
+    },
+    "provider": {
+        "description": "The provider type for the gitlab package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "inputProperties": {
+            "baseUrl": {
+                "type": "string",
+                "description": "The GitLab Base API URL\n",
+                "defaultInfo": {
+                    "environment": [
+                        "GITLAB_BASE_URL"
+                    ]
+                }
+            },
+            "cacertFile": {
+                "type": "string",
+                "description": "A file containing the ca certificate to use in case ssl certificate is not from a standard chain\n"
+            },
+            "insecure": {
+                "type": "boolean",
+                "description": "Disable SSL verification of API calls\n"
+            },
+            "token": {
+                "type": "string",
+                "description": "The OAuth token used to connect to GitLab.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "GITLAB_TOKEN"
+                    ]
+                }
+            }
+        }
+    },
+    "resources": {
+        "gitlab:index/branchProtection:BranchProtection": {
+            "description": "This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch. GitLab EE features to protect by group or user are not supported.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst branchProtect = new gitlab.BranchProtection(\"BranchProtect\", {\n    branch: \"BranchProtected\",\n    mergeAccessLevel: \"developer\",\n    project: \"12345\",\n    pushAccessLevel: \"developer\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nbranch_protect = gitlab.BranchProtection(\"branchProtect\",\n    branch=\"BranchProtected\",\n    merge_access_level=\"developer\",\n    project=\"12345\",\n    push_access_level=\"developer\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "Name of the branch.\n"
+                },
+                "mergeAccessLevel": {
+                    "type": "string",
+                    "description": "One of five levels of access to the project.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The id of the project.\n"
+                },
+                "pushAccessLevel": {
+                    "type": "string",
+                    "description": "One of five levels of access to the project.\n"
+                }
+            },
+            "required": [
+                "branch",
+                "mergeAccessLevel",
+                "project",
+                "pushAccessLevel"
+            ],
+            "inputProperties": {
+                "branch": {
+                    "type": "string",
+                    "description": "Name of the branch.\n"
+                },
+                "mergeAccessLevel": {
+                    "type": "string",
+                    "description": "One of five levels of access to the project.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The id of the project.\n"
+                },
+                "pushAccessLevel": {
+                    "type": "string",
+                    "description": "One of five levels of access to the project.\n"
+                }
+            },
+            "requiredInputs": [
+                "branch",
+                "mergeAccessLevel",
+                "project",
+                "pushAccessLevel"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering BranchProtection resources.\n",
+                "properties": {
+                    "branch": {
+                        "type": "string",
+                        "description": "Name of the branch.\n"
+                    },
+                    "mergeAccessLevel": {
+                        "type": "string",
+                        "description": "One of five levels of access to the project.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The id of the project.\n"
+                    },
+                    "pushAccessLevel": {
+                        "type": "string",
+                        "description": "One of five levels of access to the project.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/deployKey:DeployKey": {
+            "description": "This resource allows you to create and manage deploy keys for your GitLab projects.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.DeployKey(\"example\", {\n    key: \"ssh-rsa AAAA...\",\n    project: \"example/deploying\",\n    title: \"Example deploy key\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.DeployKey(\"example\",\n    key=\"ssh-rsa AAAA...\",\n    project=\"example/deploying\",\n    title=\"Example deploy key\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "canPush": {
+                    "type": "boolean",
+                    "description": "Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The public ssh key body.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name or id of the project to add the deploy key to.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "A title to describe the deploy key with.\n"
+                }
+            },
+            "required": [
+                "key",
+                "project",
+                "title"
+            ],
+            "inputProperties": {
+                "canPush": {
+                    "type": "boolean",
+                    "description": "Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The public ssh key body.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name or id of the project to add the deploy key to.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "A title to describe the deploy key with.\n"
+                }
+            },
+            "requiredInputs": [
+                "key",
+                "project",
+                "title"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DeployKey resources.\n",
+                "properties": {
+                    "canPush": {
+                        "type": "boolean",
+                        "description": "Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.\n"
+                    },
+                    "key": {
+                        "type": "string",
+                        "description": "The public ssh key body.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The name or id of the project to add the deploy key to.\n"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "A title to describe the deploy key with.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/deployKeyEnable:DeployKeyEnable": {
+            "description": "This resource allows you to enable pre-existing deploy keys for your GitLab projects.\n\n**the GITLAB KEY_ID for the deploy key must be known**\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\n// A repo to host the deployment key\nconst parentProject = new gitlab.Project(\"parent\", {});\n// A second repo to use the deployment key from the parent project\nconst fooProject = new gitlab.Project(\"foo\", {});\n// Upload a deployment key for the parent repo\nconst parentDeployKey = new gitlab.DeployKey(\"parent\", {\n    key: \"ssh-rsa AAAA...\",\n    project: parentProject.id,\n    title: \"Example deploy key\",\n});\n// Enable the deployment key on the second repo\nconst fooDeployKeyEnable = new gitlab.DeployKeyEnable(\"foo\", {\n    keyId: parentDeployKey.id,\n    project: fooProject.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\n# A repo to host the deployment key\nparent_project = gitlab.Project(\"parentProject\")\n# A second repo to use the deployment key from the parent project\nfoo_project = gitlab.Project(\"fooProject\")\n# Upload a deployment key for the parent repo\nparent_deploy_key = gitlab.DeployKey(\"parentDeployKey\",\n    key=\"ssh-rsa AAAA...\",\n    project=parent_project.id,\n    title=\"Example deploy key\")\n# Enable the deployment key on the second repo\nfoo_deploy_key_enable = gitlab.DeployKeyEnable(\"fooDeployKeyEnable\",\n    key_id=parent_deploy_key.id,\n    project=foo_project.id)\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "canPush": {
+                    "type": "boolean"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "keyId": {
+                    "type": "string",
+                    "description": "The Gitlab key id for the pre-existing deploy key\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name or id of the project to add the deploy key to.\n"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "canPush",
+                "key",
+                "keyId",
+                "project",
+                "title"
+            ],
+            "inputProperties": {
+                "canPush": {
+                    "type": "boolean"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "keyId": {
+                    "type": "string",
+                    "description": "The Gitlab key id for the pre-existing deploy key\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name or id of the project to add the deploy key to.\n"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "keyId",
+                "project"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DeployKeyEnable resources.\n",
+                "properties": {
+                    "canPush": {
+                        "type": "boolean"
+                    },
+                    "key": {
+                        "type": "string"
+                    },
+                    "keyId": {
+                        "type": "string",
+                        "description": "The Gitlab key id for the pre-existing deploy key\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The name or id of the project to add the deploy key to.\n"
+                    },
+                    "title": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/group:Group": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the group.\n"
+                },
+                "fullName": {
+                    "type": "string",
+                    "description": "The full name of the group.\n"
+                },
+                "fullPath": {
+                    "type": "string",
+                    "description": "The full path of the group.\n"
+                },
+                "lfsEnabled": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to true.  Whether to enable LFS\nsupport for projects in this group.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of this group.\n"
+                },
+                "parentId": {
+                    "type": "integer",
+                    "description": "Integer, id of the parent group (creates a nested group).\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "The path of the group.\n"
+                },
+                "requestAccessEnabled": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false.  Whether to\nenable users to request access to the group.\n"
+                },
+                "runnersToken": {
+                    "type": "string",
+                    "description": "The group level registration token to use during runner setup.\n"
+                },
+                "visibilityLevel": {
+                    "type": "string",
+                    "description": "Set to `public` to create a public group.\nValid values are `private`, `internal`, `public`.\nGroups are created as private by default.\n"
+                },
+                "webUrl": {
+                    "type": "string",
+                    "description": "Web URL of the group.\n"
+                }
+            },
+            "required": [
+                "fullName",
+                "fullPath",
+                "name",
+                "path",
+                "runnersToken",
+                "visibilityLevel",
+                "webUrl"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the group.\n"
+                },
+                "lfsEnabled": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to true.  Whether to enable LFS\nsupport for projects in this group.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of this group.\n"
+                },
+                "parentId": {
+                    "type": "integer",
+                    "description": "Integer, id of the parent group (creates a nested group).\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "The path of the group.\n"
+                },
+                "requestAccessEnabled": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false.  Whether to\nenable users to request access to the group.\n"
+                },
+                "visibilityLevel": {
+                    "type": "string",
+                    "description": "Set to `public` to create a public group.\nValid values are `private`, `internal`, `public`.\nGroups are created as private by default.\n"
+                }
+            },
+            "requiredInputs": [
+                "path"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Group resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the group.\n"
+                    },
+                    "fullName": {
+                        "type": "string",
+                        "description": "The full name of the group.\n"
+                    },
+                    "fullPath": {
+                        "type": "string",
+                        "description": "The full path of the group.\n"
+                    },
+                    "lfsEnabled": {
+                        "type": "boolean",
+                        "description": "Boolean, defaults to true.  Whether to enable LFS\nsupport for projects in this group.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of this group.\n"
+                    },
+                    "parentId": {
+                        "type": "integer",
+                        "description": "Integer, id of the parent group (creates a nested group).\n"
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "The path of the group.\n"
+                    },
+                    "requestAccessEnabled": {
+                        "type": "boolean",
+                        "description": "Boolean, defaults to false.  Whether to\nenable users to request access to the group.\n"
+                    },
+                    "runnersToken": {
+                        "type": "string",
+                        "description": "The group level registration token to use during runner setup.\n"
+                    },
+                    "visibilityLevel": {
+                        "type": "string",
+                        "description": "Set to `public` to create a public group.\nValid values are `private`, `internal`, `public`.\nGroups are created as private by default.\n"
+                    },
+                    "webUrl": {
+                        "type": "string",
+                        "description": "Web URL of the group.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/groupCluster:GroupCluster": {
+            "description": "This resource allows you to create and manage group clusters for your GitLab groups.\nFor further information on clusters, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.Group(\"foo\", {\n    path: \"foo-path\",\n});\nconst bar = new gitlab.GroupCluster(\"bar\", {\n    domain: \"example.com\",\n    enabled: true,\n    environmentScope: \"*\",\n    group: foo.id,\n    kubernetesApiUrl: \"https://124.124.124\",\n    kubernetesAuthorizationType: \"rbac\",\n    kubernetesCaCert: \"some-cert\",\n    kubernetesToken: \"some-token\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.Group(\"foo\", path=\"foo-path\")\nbar = gitlab.GroupCluster(\"bar\",\n    domain=\"example.com\",\n    enabled=True,\n    environment_scope=\"*\",\n    group=foo.id,\n    kubernetes_api_url=\"https://124.124.124\",\n    kubernetes_authorization_type=\"rbac\",\n    kubernetes_ca_cert=\"some-cert\",\n    kubernetes_token=\"some-token\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "clusterType": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "The base domain of the cluster.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.\n"
+                },
+                "environmentScope": {
+                    "type": "string",
+                    "description": "The associated environment to the cluster. Defaults to `*`.\n"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The id of the group to add the cluster to.\n"
+                },
+                "kubernetesApiUrl": {
+                    "type": "string",
+                    "description": "The URL to access the Kubernetes API.\n"
+                },
+                "kubernetesAuthorizationType": {
+                    "type": "string",
+                    "description": "The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.\n"
+                },
+                "kubernetesCaCert": {
+                    "type": "string",
+                    "description": "TLS certificate (needed if API is using a self-signed TLS certificate).\n"
+                },
+                "kubernetesToken": {
+                    "type": "string",
+                    "description": "The token to authenticate against Kubernetes.\n"
+                },
+                "managed": {
+                    "type": "boolean",
+                    "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of cluster.\n"
+                },
+                "platformType": {
+                    "type": "string"
+                },
+                "providerType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "clusterType",
+                "createdAt",
+                "group",
+                "kubernetesApiUrl",
+                "kubernetesToken",
+                "name",
+                "platformType",
+                "providerType"
+            ],
+            "inputProperties": {
+                "domain": {
+                    "type": "string",
+                    "description": "The base domain of the cluster.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.\n"
+                },
+                "environmentScope": {
+                    "type": "string",
+                    "description": "The associated environment to the cluster. Defaults to `*`.\n"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The id of the group to add the cluster to.\n"
+                },
+                "kubernetesApiUrl": {
+                    "type": "string",
+                    "description": "The URL to access the Kubernetes API.\n"
+                },
+                "kubernetesAuthorizationType": {
+                    "type": "string",
+                    "description": "The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.\n"
+                },
+                "kubernetesCaCert": {
+                    "type": "string",
+                    "description": "TLS certificate (needed if API is using a self-signed TLS certificate).\n"
+                },
+                "kubernetesToken": {
+                    "type": "string",
+                    "description": "The token to authenticate against Kubernetes.\n"
+                },
+                "managed": {
+                    "type": "boolean",
+                    "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of cluster.\n"
+                }
+            },
+            "requiredInputs": [
+                "group",
+                "kubernetesApiUrl",
+                "kubernetesToken"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupCluster resources.\n",
+                "properties": {
+                    "clusterType": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "domain": {
+                        "type": "string",
+                        "description": "The base domain of the cluster.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.\n"
+                    },
+                    "environmentScope": {
+                        "type": "string",
+                        "description": "The associated environment to the cluster. Defaults to `*`.\n"
+                    },
+                    "group": {
+                        "type": "string",
+                        "description": "The id of the group to add the cluster to.\n"
+                    },
+                    "kubernetesApiUrl": {
+                        "type": "string",
+                        "description": "The URL to access the Kubernetes API.\n"
+                    },
+                    "kubernetesAuthorizationType": {
+                        "type": "string",
+                        "description": "The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.\n"
+                    },
+                    "kubernetesCaCert": {
+                        "type": "string",
+                        "description": "TLS certificate (needed if API is using a self-signed TLS certificate).\n"
+                    },
+                    "kubernetesToken": {
+                        "type": "string",
+                        "description": "The token to authenticate against Kubernetes.\n"
+                    },
+                    "managed": {
+                        "type": "boolean",
+                        "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of cluster.\n"
+                    },
+                    "platformType": {
+                        "type": "string"
+                    },
+                    "providerType": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/groupLabel:GroupLabel": {
+            "description": "This resource allows you to create and manage labels for your GitLab groups.\nFor further information on labels, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ee/user/project/labels.html#group-labels).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst fixme = new gitlab.GroupLabel(\"fixme\", {\n    color: \"#ffcc00\",\n    description: \"issue with failing tests\",\n    group: \"example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfixme = gitlab.GroupLabel(\"fixme\",\n    color=\"#ffcc00\",\n    description=\"issue with failing tests\",\n    group=\"example\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "color": {
+                    "type": "string",
+                    "description": "The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the label.\n"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The name or id of the group to add the label to.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the label.\n"
+                }
+            },
+            "required": [
+                "color",
+                "group",
+                "name"
+            ],
+            "inputProperties": {
+                "color": {
+                    "type": "string",
+                    "description": "The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the label.\n"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The name or id of the group to add the label to.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the label.\n"
+                }
+            },
+            "requiredInputs": [
+                "color",
+                "group"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupLabel resources.\n",
+                "properties": {
+                    "color": {
+                        "type": "string",
+                        "description": "The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the label.\n"
+                    },
+                    "group": {
+                        "type": "string",
+                        "description": "The name or id of the group to add the label to.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the label.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/groupMembership:GroupMembership": {
+            "description": "This resource allows you to add a user to an existing group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.GroupMembership(\"test\", {\n    accessLevel: \"guest\",\n    expiresAt: \"2020-12-31\",\n    groupId: \"12345\",\n    userId: 1337,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.GroupMembership(\"test\",\n    access_level=\"guest\",\n    expires_at=\"2020-12-31\",\n    group_id=\"12345\",\n    user_id=1337)\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "Acceptable values are: guest, reporter, developer, maintainer, owner.\n"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "Expiration date for the group membership. Format: `YYYY-MM-DD`\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The id of the group.\n"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "The id of the user.\n"
+                }
+            },
+            "required": [
+                "accessLevel",
+                "groupId",
+                "userId"
+            ],
+            "inputProperties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "Acceptable values are: guest, reporter, developer, maintainer, owner.\n"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "Expiration date for the group membership. Format: `YYYY-MM-DD`\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The id of the group.\n"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "The id of the user.\n"
+                }
+            },
+            "requiredInputs": [
+                "accessLevel",
+                "groupId",
+                "userId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupMembership resources.\n",
+                "properties": {
+                    "accessLevel": {
+                        "type": "string",
+                        "description": "Acceptable values are: guest, reporter, developer, maintainer, owner.\n"
+                    },
+                    "expiresAt": {
+                        "type": "string",
+                        "description": "Expiration date for the group membership. Format: `YYYY-MM-DD`\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The id of the group.\n"
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "description": "The id of the user.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/groupVariable:GroupVariable": {
+            "description": "This resource allows you to create and manage CI/CD variables for your GitLab groups.\nFor further information on variables, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.GroupVariable(\"example\", {\n    group: \"12345\",\n    key: \"group_variable_key\",\n    protected: false,\n    value: \"group_variable_value\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.GroupVariable(\"example\",\n    group=\"12345\",\n    key=\"group_variable_key\",\n    protected=False,\n    value=\"group_variable_value\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "group": {
+                    "type": "string",
+                    "description": "The name or id of the group to add the hook to.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The name of the variable.\n"
+                },
+                "protected": {
+                    "type": "boolean",
+                    "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the variable.\n"
+                },
+                "variableType": {
+                    "type": "string",
+                    "description": "The type of a variable. Available types are: env_var (default) and file.\n"
+                }
+            },
+            "required": [
+                "group",
+                "key",
+                "value"
+            ],
+            "inputProperties": {
+                "group": {
+                    "type": "string",
+                    "description": "The name or id of the group to add the hook to.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The name of the variable.\n"
+                },
+                "protected": {
+                    "type": "boolean",
+                    "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the variable.\n"
+                },
+                "variableType": {
+                    "type": "string",
+                    "description": "The type of a variable. Available types are: env_var (default) and file.\n"
+                }
+            },
+            "requiredInputs": [
+                "group",
+                "key",
+                "value"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupVariable resources.\n",
+                "properties": {
+                    "group": {
+                        "type": "string",
+                        "description": "The name or id of the group to add the hook to.\n"
+                    },
+                    "key": {
+                        "type": "string",
+                        "description": "The name of the variable.\n"
+                    },
+                    "protected": {
+                        "type": "boolean",
+                        "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The value of the variable.\n"
+                    },
+                    "variableType": {
+                        "type": "string",
+                        "description": "The type of a variable. Available types are: env_var (default) and file.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/label:Label": {
+            "description": "This resource allows you to create and manage labels for your GitLab projects.\nFor further information on labels, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ee/user/project/labels.html#project-labels).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst fixme = new gitlab.Label(\"fixme\", {\n    color: \"#ffcc00\",\n    description: \"issue with failing tests\",\n    project: \"example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfixme = gitlab.Label(\"fixme\",\n    color=\"#ffcc00\",\n    description=\"issue with failing tests\",\n    project=\"example\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "color": {
+                    "type": "string",
+                    "description": "The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the label.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the label.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name or id of the project to add the label to.\n"
+                }
+            },
+            "required": [
+                "color",
+                "name",
+                "project"
+            ],
+            "inputProperties": {
+                "color": {
+                    "type": "string",
+                    "description": "The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the label.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the label.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name or id of the project to add the label to.\n"
+                }
+            },
+            "requiredInputs": [
+                "color",
+                "project"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Label resources.\n",
+                "properties": {
+                    "color": {
+                        "type": "string",
+                        "description": "The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the label.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the label.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The name or id of the project to add the label to.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/pipelineSchedule:PipelineSchedule": {
+            "description": "This resource allows you to create and manage pipeline schedules.\nFor further information on clusters, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/user/project/pipelines/schedules.html).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.PipelineSchedule(\"example\", {\n    cron: \"0 1 * * *\",\n    description: \"Used to schedule builds\",\n    project: \"12345\",\n    ref: \"master\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.PipelineSchedule(\"example\",\n    cron=\"0 1 * * *\",\n    description=\"Used to schedule builds\",\n    project=\"12345\",\n    ref=\"master\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.\n"
+                },
+                "cron": {
+                    "type": "string",
+                    "description": "The cron (e.g. `0 1 * * *`).\n"
+                },
+                "cronTimezone": {
+                    "type": "string",
+                    "description": "The timezone.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the pipeline schedule.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name or id of the project to add the schedule to.\n"
+                },
+                "ref": {
+                    "type": "string",
+                    "description": "The branch/tag name to be triggered.\n"
+                }
+            },
+            "required": [
+                "cron",
+                "description",
+                "project",
+                "ref"
+            ],
+            "inputProperties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.\n"
+                },
+                "cron": {
+                    "type": "string",
+                    "description": "The cron (e.g. `0 1 * * *`).\n"
+                },
+                "cronTimezone": {
+                    "type": "string",
+                    "description": "The timezone.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the pipeline schedule.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name or id of the project to add the schedule to.\n"
+                },
+                "ref": {
+                    "type": "string",
+                    "description": "The branch/tag name to be triggered.\n"
+                }
+            },
+            "requiredInputs": [
+                "cron",
+                "description",
+                "project",
+                "ref"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PipelineSchedule resources.\n",
+                "properties": {
+                    "active": {
+                        "type": "boolean",
+                        "description": "The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.\n"
+                    },
+                    "cron": {
+                        "type": "string",
+                        "description": "The cron (e.g. `0 1 * * *`).\n"
+                    },
+                    "cronTimezone": {
+                        "type": "string",
+                        "description": "The timezone.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the pipeline schedule.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The name or id of the project to add the schedule to.\n"
+                    },
+                    "ref": {
+                        "type": "string",
+                        "description": "The branch/tag name to be triggered.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable": {
+            "description": "This resource allows you to create and manage variables for pipeline schedules.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst examplePipelineSchedule = new gitlab.PipelineSchedule(\"examplePipelineSchedule\", {\n    project: \"12345\",\n    description: \"Used to schedule builds\",\n    ref: \"master\",\n    cron: \"0 1 * * *\",\n});\nconst examplePipelineScheduleVariable = new gitlab.PipelineScheduleVariable(\"examplePipelineScheduleVariable\", {\n    project: gitlab_pipeline_schedule.project,\n    pipelineScheduleId: gitlab_pipeline_schedule.id,\n    key: \"EXAMPLE_KEY\",\n    value: \"example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample_pipeline_schedule = gitlab.PipelineSchedule(\"examplePipelineSchedule\",\n    project=\"12345\",\n    description=\"Used to schedule builds\",\n    ref=\"master\",\n    cron=\"0 1 * * *\")\nexample_pipeline_schedule_variable = gitlab.PipelineScheduleVariable(\"examplePipelineScheduleVariable\",\n    project=gitlab_pipeline_schedule[\"project\"],\n    pipeline_schedule_id=gitlab_pipeline_schedule[\"id\"],\n    key=\"EXAMPLE_KEY\",\n    value=\"example\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Name of the variable.\n"
+                },
+                "pipelineScheduleId": {
+                    "type": "integer",
+                    "description": "The id of the pipeline schedule.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The id of the project to add the schedule to.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Value of the variable.\n"
+                }
+            },
+            "required": [
+                "key",
+                "pipelineScheduleId",
+                "project",
+                "value"
+            ],
+            "inputProperties": {
+                "key": {
+                    "type": "string",
+                    "description": "Name of the variable.\n"
+                },
+                "pipelineScheduleId": {
+                    "type": "integer",
+                    "description": "The id of the pipeline schedule.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The id of the project to add the schedule to.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Value of the variable.\n"
+                }
+            },
+            "requiredInputs": [
+                "key",
+                "pipelineScheduleId",
+                "project",
+                "value"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PipelineScheduleVariable resources.\n",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "Name of the variable.\n"
+                    },
+                    "pipelineScheduleId": {
+                        "type": "integer",
+                        "description": "The id of the pipeline schedule.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The id of the project to add the schedule to.\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "Value of the variable.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/pipelineTrigger:PipelineTrigger": {
+            "description": "This resource allows you to create and manage pipeline triggers\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.PipelineTrigger(\"example\", {\n    description: \"Used to trigger builds\",\n    project: \"12345\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.PipelineTrigger(\"example\",\n    description=\"Used to trigger builds\",\n    project=\"12345\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the pipeline trigger.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name or id of the project to add the trigger to.\n"
+                },
+                "token": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "project",
+                "token"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the pipeline trigger.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name or id of the project to add the trigger to.\n"
+                }
+            },
+            "requiredInputs": [
+                "description",
+                "project"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PipelineTrigger resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the pipeline trigger.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The name or id of the project to add the trigger to.\n"
+                    },
+                    "token": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/project:Project": {
+            "properties": {
+                "approvalsBeforeMerge": {
+                    "type": "integer",
+                    "description": "Number of merge request approvals required for merging. Default is 0.\n"
+                },
+                "archived": {
+                    "type": "boolean",
+                    "description": "Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.\n"
+                },
+                "containerRegistryEnabled": {
+                    "type": "boolean",
+                    "description": "Enable container registry for the project.\n"
+                },
+                "defaultBranch": {
+                    "type": "string",
+                    "description": "The default branch for the project.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description of the project.\n"
+                },
+                "httpUrlToRepo": {
+                    "type": "string",
+                    "description": "URL that can be provided to `git clone` to clone the\nrepository via HTTP.\n"
+                },
+                "initializeWithReadme": {
+                    "type": "boolean",
+                    "description": "Create master branch with first commit containing a README.md file.\n"
+                },
+                "issuesEnabled": {
+                    "type": "boolean",
+                    "description": "Enable issue tracking for the project.\n"
+                },
+                "lfsEnabled": {
+                    "type": "boolean",
+                    "description": "Enable LFS for the project.\n"
+                },
+                "mergeMethod": {
+                    "type": "string",
+                    "description": "Set to `ff` to create fast-forward merges\nValid values are `merge`, `rebase_merge`, `ff`\nRepositories are created with `merge` by default\n"
+                },
+                "mergeRequestsEnabled": {
+                    "type": "boolean",
+                    "description": "Enable merge requests for the project.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the project.\n"
+                },
+                "namespaceId": {
+                    "type": "integer",
+                    "description": "The namespace (group or user) of the project. Defaults to your user.\nSee `gitlab..Group` for an example.\n"
+                },
+                "onlyAllowMergeIfAllDiscussionsAreResolved": {
+                    "type": "boolean",
+                    "description": "Set to true if you want allow merges only if all discussions are resolved.\n"
+                },
+                "onlyAllowMergeIfPipelineSucceeds": {
+                    "type": "boolean",
+                    "description": "Set to true if you want allow merges only if a pipeline succeeds.\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "The path of the repository.\n"
+                },
+                "pipelinesEnabled": {
+                    "type": "boolean",
+                    "description": "Enable pipelines for the project.\n"
+                },
+                "requestAccessEnabled": {
+                    "type": "boolean",
+                    "description": "Allow users to request member access.\n"
+                },
+                "runnersToken": {
+                    "type": "string",
+                    "description": "Registration token to use during runner setup.\n"
+                },
+                "sharedRunnersEnabled": {
+                    "type": "boolean",
+                    "description": "Enable shared runners for this project.\n"
+                },
+                "sharedWithGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/gitlab:/ProjectSharedWithGroup:ProjectSharedWithGroup"
+                    },
+                    "description": "Enable sharing the project with a list of groups (maps).\n"
+                },
+                "snippetsEnabled": {
+                    "type": "boolean",
+                    "description": "Enable snippets for the project.\n"
+                },
+                "sshUrlToRepo": {
+                    "type": "string",
+                    "description": "URL that can be provided to `git clone` to clone the\nrepository via SSH.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags (topics) of the project.\n"
+                },
+                "visibilityLevel": {
+                    "type": "string",
+                    "description": "Set to `public` to create a public project.\nValid values are `private`, `internal`, `public`.\nRepositories are created as private by default.\n"
+                },
+                "webUrl": {
+                    "type": "string",
+                    "description": "URL that can be used to find the project in a browser.\n"
+                },
+                "wikiEnabled": {
+                    "type": "boolean",
+                    "description": "Enable wiki for the project.\n"
+                }
+            },
+            "required": [
+                "httpUrlToRepo",
+                "name",
+                "namespaceId",
+                "runnersToken",
+                "sharedRunnersEnabled",
+                "sshUrlToRepo",
+                "webUrl"
+            ],
+            "inputProperties": {
+                "approvalsBeforeMerge": {
+                    "type": "integer",
+                    "description": "Number of merge request approvals required for merging. Default is 0.\n"
+                },
+                "archived": {
+                    "type": "boolean",
+                    "description": "Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.\n"
+                },
+                "containerRegistryEnabled": {
+                    "type": "boolean",
+                    "description": "Enable container registry for the project.\n"
+                },
+                "defaultBranch": {
+                    "type": "string",
+                    "description": "The default branch for the project.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description of the project.\n"
+                },
+                "initializeWithReadme": {
+                    "type": "boolean",
+                    "description": "Create master branch with first commit containing a README.md file.\n"
+                },
+                "issuesEnabled": {
+                    "type": "boolean",
+                    "description": "Enable issue tracking for the project.\n"
+                },
+                "lfsEnabled": {
+                    "type": "boolean",
+                    "description": "Enable LFS for the project.\n"
+                },
+                "mergeMethod": {
+                    "type": "string",
+                    "description": "Set to `ff` to create fast-forward merges\nValid values are `merge`, `rebase_merge`, `ff`\nRepositories are created with `merge` by default\n"
+                },
+                "mergeRequestsEnabled": {
+                    "type": "boolean",
+                    "description": "Enable merge requests for the project.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the project.\n"
+                },
+                "namespaceId": {
+                    "type": "integer",
+                    "description": "The namespace (group or user) of the project. Defaults to your user.\nSee `gitlab..Group` for an example.\n"
+                },
+                "onlyAllowMergeIfAllDiscussionsAreResolved": {
+                    "type": "boolean",
+                    "description": "Set to true if you want allow merges only if all discussions are resolved.\n"
+                },
+                "onlyAllowMergeIfPipelineSucceeds": {
+                    "type": "boolean",
+                    "description": "Set to true if you want allow merges only if a pipeline succeeds.\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "The path of the repository.\n"
+                },
+                "pipelinesEnabled": {
+                    "type": "boolean",
+                    "description": "Enable pipelines for the project.\n"
+                },
+                "requestAccessEnabled": {
+                    "type": "boolean",
+                    "description": "Allow users to request member access.\n"
+                },
+                "sharedRunnersEnabled": {
+                    "type": "boolean",
+                    "description": "Enable shared runners for this project.\n"
+                },
+                "sharedWithGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/gitlab:/ProjectSharedWithGroup:ProjectSharedWithGroup"
+                    },
+                    "description": "Enable sharing the project with a list of groups (maps).\n"
+                },
+                "snippetsEnabled": {
+                    "type": "boolean",
+                    "description": "Enable snippets for the project.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags (topics) of the project.\n"
+                },
+                "visibilityLevel": {
+                    "type": "string",
+                    "description": "Set to `public` to create a public project.\nValid values are `private`, `internal`, `public`.\nRepositories are created as private by default.\n"
+                },
+                "wikiEnabled": {
+                    "type": "boolean",
+                    "description": "Enable wiki for the project.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Project resources.\n",
+                "properties": {
+                    "approvalsBeforeMerge": {
+                        "type": "integer",
+                        "description": "Number of merge request approvals required for merging. Default is 0.\n"
+                    },
+                    "archived": {
+                        "type": "boolean",
+                        "description": "Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.\n"
+                    },
+                    "containerRegistryEnabled": {
+                        "type": "boolean",
+                        "description": "Enable container registry for the project.\n"
+                    },
+                    "defaultBranch": {
+                        "type": "string",
+                        "description": "The default branch for the project.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description of the project.\n"
+                    },
+                    "httpUrlToRepo": {
+                        "type": "string",
+                        "description": "URL that can be provided to `git clone` to clone the\nrepository via HTTP.\n"
+                    },
+                    "initializeWithReadme": {
+                        "type": "boolean",
+                        "description": "Create master branch with first commit containing a README.md file.\n"
+                    },
+                    "issuesEnabled": {
+                        "type": "boolean",
+                        "description": "Enable issue tracking for the project.\n"
+                    },
+                    "lfsEnabled": {
+                        "type": "boolean",
+                        "description": "Enable LFS for the project.\n"
+                    },
+                    "mergeMethod": {
+                        "type": "string",
+                        "description": "Set to `ff` to create fast-forward merges\nValid values are `merge`, `rebase_merge`, `ff`\nRepositories are created with `merge` by default\n"
+                    },
+                    "mergeRequestsEnabled": {
+                        "type": "boolean",
+                        "description": "Enable merge requests for the project.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the project.\n"
+                    },
+                    "namespaceId": {
+                        "type": "integer",
+                        "description": "The namespace (group or user) of the project. Defaults to your user.\nSee `gitlab..Group` for an example.\n"
+                    },
+                    "onlyAllowMergeIfAllDiscussionsAreResolved": {
+                        "type": "boolean",
+                        "description": "Set to true if you want allow merges only if all discussions are resolved.\n"
+                    },
+                    "onlyAllowMergeIfPipelineSucceeds": {
+                        "type": "boolean",
+                        "description": "Set to true if you want allow merges only if a pipeline succeeds.\n"
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "The path of the repository.\n"
+                    },
+                    "pipelinesEnabled": {
+                        "type": "boolean",
+                        "description": "Enable pipelines for the project.\n"
+                    },
+                    "requestAccessEnabled": {
+                        "type": "boolean",
+                        "description": "Allow users to request member access.\n"
+                    },
+                    "runnersToken": {
+                        "type": "string",
+                        "description": "Registration token to use during runner setup.\n"
+                    },
+                    "sharedRunnersEnabled": {
+                        "type": "boolean",
+                        "description": "Enable shared runners for this project.\n"
+                    },
+                    "sharedWithGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:/ProjectSharedWithGroup:ProjectSharedWithGroup"
+                        },
+                        "description": "Enable sharing the project with a list of groups (maps).\n"
+                    },
+                    "snippetsEnabled": {
+                        "type": "boolean",
+                        "description": "Enable snippets for the project.\n"
+                    },
+                    "sshUrlToRepo": {
+                        "type": "string",
+                        "description": "URL that can be provided to `git clone` to clone the\nrepository via SSH.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags (topics) of the project.\n"
+                    },
+                    "visibilityLevel": {
+                        "type": "string",
+                        "description": "Set to `public` to create a public project.\nValid values are `private`, `internal`, `public`.\nRepositories are created as private by default.\n"
+                    },
+                    "webUrl": {
+                        "type": "string",
+                        "description": "URL that can be used to find the project in a browser.\n"
+                    },
+                    "wikiEnabled": {
+                        "type": "boolean",
+                        "description": "Enable wiki for the project.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/projectCluster:ProjectCluster": {
+            "description": "This resource allows you to create and manage project clusters for your GitLab projects.\nFor further information on clusters, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.Project(\"foo\", {});\nconst bar = new gitlab.ProjectCluster(\"bar\", {\n    domain: \"example.com\",\n    enabled: true,\n    environmentScope: \"*\",\n    kubernetesApiUrl: \"https://124.124.124\",\n    kubernetesAuthorizationType: \"rbac\",\n    kubernetesCaCert: \"some-cert\",\n    kubernetesNamespace: \"namespace\",\n    kubernetesToken: \"some-token\",\n    project: foo.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.Project(\"foo\")\nbar = gitlab.ProjectCluster(\"bar\",\n    domain=\"example.com\",\n    enabled=True,\n    environment_scope=\"*\",\n    kubernetes_api_url=\"https://124.124.124\",\n    kubernetes_authorization_type=\"rbac\",\n    kubernetes_ca_cert=\"some-cert\",\n    kubernetes_namespace=\"namespace\",\n    kubernetes_token=\"some-token\",\n    project=foo.id)\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "clusterType": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "The base domain of the cluster.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.\n"
+                },
+                "environmentScope": {
+                    "type": "string",
+                    "description": "The associated environment to the cluster. Defaults to `*`.\n"
+                },
+                "kubernetesApiUrl": {
+                    "type": "string",
+                    "description": "The URL to access the Kubernetes API.\n"
+                },
+                "kubernetesAuthorizationType": {
+                    "type": "string",
+                    "description": "The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.\n"
+                },
+                "kubernetesCaCert": {
+                    "type": "string",
+                    "description": "TLS certificate (needed if API is using a self-signed TLS certificate).\n"
+                },
+                "kubernetesNamespace": {
+                    "type": "string",
+                    "description": "The unique namespace related to the project.\n"
+                },
+                "kubernetesToken": {
+                    "type": "string",
+                    "description": "The token to authenticate against Kubernetes.\n"
+                },
+                "managed": {
+                    "type": "boolean",
+                    "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of cluster.\n"
+                },
+                "platformType": {
+                    "type": "string"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The id of the project to add the cluster to.\n"
+                },
+                "providerType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "clusterType",
+                "createdAt",
+                "kubernetesApiUrl",
+                "kubernetesToken",
+                "name",
+                "platformType",
+                "project",
+                "providerType"
+            ],
+            "inputProperties": {
+                "domain": {
+                    "type": "string",
+                    "description": "The base domain of the cluster.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.\n"
+                },
+                "environmentScope": {
+                    "type": "string",
+                    "description": "The associated environment to the cluster. Defaults to `*`.\n"
+                },
+                "kubernetesApiUrl": {
+                    "type": "string",
+                    "description": "The URL to access the Kubernetes API.\n"
+                },
+                "kubernetesAuthorizationType": {
+                    "type": "string",
+                    "description": "The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.\n"
+                },
+                "kubernetesCaCert": {
+                    "type": "string",
+                    "description": "TLS certificate (needed if API is using a self-signed TLS certificate).\n"
+                },
+                "kubernetesNamespace": {
+                    "type": "string",
+                    "description": "The unique namespace related to the project.\n"
+                },
+                "kubernetesToken": {
+                    "type": "string",
+                    "description": "The token to authenticate against Kubernetes.\n"
+                },
+                "managed": {
+                    "type": "boolean",
+                    "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of cluster.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The id of the project to add the cluster to.\n"
+                }
+            },
+            "requiredInputs": [
+                "kubernetesApiUrl",
+                "kubernetesToken",
+                "project"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ProjectCluster resources.\n",
+                "properties": {
+                    "clusterType": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "domain": {
+                        "type": "string",
+                        "description": "The base domain of the cluster.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.\n"
+                    },
+                    "environmentScope": {
+                        "type": "string",
+                        "description": "The associated environment to the cluster. Defaults to `*`.\n"
+                    },
+                    "kubernetesApiUrl": {
+                        "type": "string",
+                        "description": "The URL to access the Kubernetes API.\n"
+                    },
+                    "kubernetesAuthorizationType": {
+                        "type": "string",
+                        "description": "The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.\n"
+                    },
+                    "kubernetesCaCert": {
+                        "type": "string",
+                        "description": "TLS certificate (needed if API is using a self-signed TLS certificate).\n"
+                    },
+                    "kubernetesNamespace": {
+                        "type": "string",
+                        "description": "The unique namespace related to the project.\n"
+                    },
+                    "kubernetesToken": {
+                        "type": "string",
+                        "description": "The token to authenticate against Kubernetes.\n"
+                    },
+                    "managed": {
+                        "type": "boolean",
+                        "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of cluster.\n"
+                    },
+                    "platformType": {
+                        "type": "string"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The id of the project to add the cluster to.\n"
+                    },
+                    "providerType": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/projectHook:ProjectHook": {
+            "description": "This resource allows you to create and manage hooks for your GitLab projects.\nFor further information on hooks, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/user/project/integrations/webhooks.html).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.ProjectHook(\"example\", {\n    mergeRequestsEvents: true,\n    project: \"example/hooked\",\n    url: \"https://example.com/hook/example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.ProjectHook(\"example\",\n    merge_requests_events=True,\n    project=\"example/hooked\",\n    url=\"https://example.com/hook/example\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "enableSslVerification": {
+                    "type": "boolean",
+                    "description": "Enable ssl verification when invoking\nthe hook.\n"
+                },
+                "issuesEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for issues events.\n"
+                },
+                "jobEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for job events.\n"
+                },
+                "mergeRequestsEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for merge requests.\n"
+                },
+                "noteEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for notes events.\n"
+                },
+                "pipelineEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for pipeline events.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name or id of the project to add the hook to.\n"
+                },
+                "pushEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for push events.\n"
+                },
+                "tagPushEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for tag push events.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "A token to present when invoking the hook.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The url of the hook to invoke.\n"
+                },
+                "wikiPageEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for wiki page events.\n"
+                }
+            },
+            "required": [
+                "project",
+                "url"
+            ],
+            "inputProperties": {
+                "enableSslVerification": {
+                    "type": "boolean",
+                    "description": "Enable ssl verification when invoking\nthe hook.\n"
+                },
+                "issuesEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for issues events.\n"
+                },
+                "jobEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for job events.\n"
+                },
+                "mergeRequestsEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for merge requests.\n"
+                },
+                "noteEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for notes events.\n"
+                },
+                "pipelineEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for pipeline events.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name or id of the project to add the hook to.\n"
+                },
+                "pushEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for push events.\n"
+                },
+                "tagPushEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for tag push events.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "A token to present when invoking the hook.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The url of the hook to invoke.\n"
+                },
+                "wikiPageEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for wiki page events.\n"
+                }
+            },
+            "requiredInputs": [
+                "project",
+                "url"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ProjectHook resources.\n",
+                "properties": {
+                    "enableSslVerification": {
+                        "type": "boolean",
+                        "description": "Enable ssl verification when invoking\nthe hook.\n"
+                    },
+                    "issuesEvents": {
+                        "type": "boolean",
+                        "description": "Invoke the hook for issues events.\n"
+                    },
+                    "jobEvents": {
+                        "type": "boolean",
+                        "description": "Invoke the hook for job events.\n"
+                    },
+                    "mergeRequestsEvents": {
+                        "type": "boolean",
+                        "description": "Invoke the hook for merge requests.\n"
+                    },
+                    "noteEvents": {
+                        "type": "boolean",
+                        "description": "Invoke the hook for notes events.\n"
+                    },
+                    "pipelineEvents": {
+                        "type": "boolean",
+                        "description": "Invoke the hook for pipeline events.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The name or id of the project to add the hook to.\n"
+                    },
+                    "pushEvents": {
+                        "type": "boolean",
+                        "description": "Invoke the hook for push events.\n"
+                    },
+                    "tagPushEvents": {
+                        "type": "boolean",
+                        "description": "Invoke the hook for tag push events.\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "A token to present when invoking the hook.\n"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The url of the hook to invoke.\n"
+                    },
+                    "wikiPageEvents": {
+                        "type": "boolean",
+                        "description": "Invoke the hook for wiki page events.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/projectMembership:ProjectMembership": {
+            "description": "This resource allows you to add a current user to an existing project with a set access level.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.ProjectMembership(\"test\", {\n    accessLevel: \"guest\",\n    projectId: \"12345\",\n    userId: 1337,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.ProjectMembership(\"test\",\n    access_level=\"guest\",\n    project_id=\"12345\",\n    user_id=1337)\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "One of five levels of access to the project.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The id of the project.\n"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "The id of the user.\n"
+                }
+            },
+            "required": [
+                "accessLevel",
+                "projectId",
+                "userId"
+            ],
+            "inputProperties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "One of five levels of access to the project.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The id of the project.\n"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "The id of the user.\n"
+                }
+            },
+            "requiredInputs": [
+                "accessLevel",
+                "projectId",
+                "userId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ProjectMembership resources.\n",
+                "properties": {
+                    "accessLevel": {
+                        "type": "string",
+                        "description": "One of five levels of access to the project.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The id of the project.\n"
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "description": "The id of the user.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/projectPushRules:ProjectPushRules": {
+            "description": "This resource allows you to create and manage push rules for your GitLab projects.\nFor further information on push rules, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/push_rules/push_rules.html#push-rules).\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "authorEmailRegex": {
+                    "type": "string",
+                    "description": "All commit author emails must match this regex, e.g. \"@my-company.com$\"\n"
+                },
+                "branchNameRegex": {
+                    "type": "string",
+                    "description": "All branch names must match this regex, e.g. \"(feature|hotfix)\\/*\"\n"
+                },
+                "commitMessageRegex": {
+                    "type": "string",
+                    "description": "All commit messages must match this regex, e.g. \"Fixed \\d+\\..*\"\n"
+                },
+                "denyDeleteTag": {
+                    "type": "boolean",
+                    "description": "Deny deleting a tag\n"
+                },
+                "fileNameRegex": {
+                    "type": "string",
+                    "description": "All commited filenames must not match this regex, e.g. \"(jar|exe)$\"\n"
+                },
+                "maxFileSize": {
+                    "type": "integer",
+                    "description": "Maximum file size (MB)\n"
+                },
+                "memberCheck": {
+                    "type": "boolean",
+                    "description": "Restrict commits by author (email) to existing GitLab users\n"
+                },
+                "preventSecrets": {
+                    "type": "boolean",
+                    "description": "GitLab will reject any files that are likely to contain secrets\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name or id of the project to add the push rules to.\n"
+                }
+            },
+            "required": [
+                "project"
+            ],
+            "inputProperties": {
+                "authorEmailRegex": {
+                    "type": "string",
+                    "description": "All commit author emails must match this regex, e.g. \"@my-company.com$\"\n"
+                },
+                "branchNameRegex": {
+                    "type": "string",
+                    "description": "All branch names must match this regex, e.g. \"(feature|hotfix)\\/*\"\n"
+                },
+                "commitMessageRegex": {
+                    "type": "string",
+                    "description": "All commit messages must match this regex, e.g. \"Fixed \\d+\\..*\"\n"
+                },
+                "denyDeleteTag": {
+                    "type": "boolean",
+                    "description": "Deny deleting a tag\n"
+                },
+                "fileNameRegex": {
+                    "type": "string",
+                    "description": "All commited filenames must not match this regex, e.g. \"(jar|exe)$\"\n"
+                },
+                "maxFileSize": {
+                    "type": "integer",
+                    "description": "Maximum file size (MB)\n"
+                },
+                "memberCheck": {
+                    "type": "boolean",
+                    "description": "Restrict commits by author (email) to existing GitLab users\n"
+                },
+                "preventSecrets": {
+                    "type": "boolean",
+                    "description": "GitLab will reject any files that are likely to contain secrets\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name or id of the project to add the push rules to.\n"
+                }
+            },
+            "requiredInputs": [
+                "project"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ProjectPushRules resources.\n",
+                "properties": {
+                    "authorEmailRegex": {
+                        "type": "string",
+                        "description": "All commit author emails must match this regex, e.g. \"@my-company.com$\"\n"
+                    },
+                    "branchNameRegex": {
+                        "type": "string",
+                        "description": "All branch names must match this regex, e.g. \"(feature|hotfix)\\/*\"\n"
+                    },
+                    "commitMessageRegex": {
+                        "type": "string",
+                        "description": "All commit messages must match this regex, e.g. \"Fixed \\d+\\..*\"\n"
+                    },
+                    "denyDeleteTag": {
+                        "type": "boolean",
+                        "description": "Deny deleting a tag\n"
+                    },
+                    "fileNameRegex": {
+                        "type": "string",
+                        "description": "All commited filenames must not match this regex, e.g. \"(jar|exe)$\"\n"
+                    },
+                    "maxFileSize": {
+                        "type": "integer",
+                        "description": "Maximum file size (MB)\n"
+                    },
+                    "memberCheck": {
+                        "type": "boolean",
+                        "description": "Restrict commits by author (email) to existing GitLab users\n"
+                    },
+                    "preventSecrets": {
+                        "type": "boolean",
+                        "description": "GitLab will reject any files that are likely to contain secrets\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The name or id of the project to add the push rules to.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/projectShareGroup:ProjectShareGroup": {
+            "description": "This resource allows you to share a project with a group\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.ProjectShareGroup(\"test\", {\n    accessLevel: \"guest\",\n    groupId: 1337,\n    projectId: \"12345\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.ProjectShareGroup(\"test\",\n    access_level=\"guest\",\n    group_id=1337,\n    project_id=\"12345\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "One of five levels of access to the project.\n"
+                },
+                "groupId": {
+                    "type": "integer",
+                    "description": "The id of the group.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The id of the project.\n"
+                }
+            },
+            "required": [
+                "accessLevel",
+                "groupId",
+                "projectId"
+            ],
+            "inputProperties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "One of five levels of access to the project.\n"
+                },
+                "groupId": {
+                    "type": "integer",
+                    "description": "The id of the group.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The id of the project.\n"
+                }
+            },
+            "requiredInputs": [
+                "accessLevel",
+                "groupId",
+                "projectId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ProjectShareGroup resources.\n",
+                "properties": {
+                    "accessLevel": {
+                        "type": "string",
+                        "description": "One of five levels of access to the project.\n"
+                    },
+                    "groupId": {
+                        "type": "integer",
+                        "description": "The id of the group.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The id of the project.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/projectVariable:ProjectVariable": {
+            "description": "This resource allows you to create and manage CI/CD variables for your GitLab projects.\nFor further information on variables, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.ProjectVariable(\"example\", {\n    key: \"project_variable_key\",\n    project: \"12345\",\n    protected: false,\n    value: \"project_variable_value\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.ProjectVariable(\"example\",\n    key=\"project_variable_key\",\n    project=\"12345\",\n    protected=False,\n    value=\"project_variable_value\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "environmentScope": {
+                    "type": "string",
+                    "description": "The environment_scope of the variable\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The name of the variable.\n"
+                },
+                "masked": {
+                    "type": "boolean",
+                    "description": "If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name or id of the project to add the hook to.\n"
+                },
+                "protected": {
+                    "type": "boolean",
+                    "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the variable.\n"
+                },
+                "variableType": {
+                    "type": "string",
+                    "description": "The type of a variable. Available types are: env_var (default) and file.\n"
+                }
+            },
+            "required": [
+                "key",
+                "project",
+                "value"
+            ],
+            "inputProperties": {
+                "environmentScope": {
+                    "type": "string",
+                    "description": "The environment_scope of the variable\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The name of the variable.\n"
+                },
+                "masked": {
+                    "type": "boolean",
+                    "description": "If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name or id of the project to add the hook to.\n"
+                },
+                "protected": {
+                    "type": "boolean",
+                    "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the variable.\n"
+                },
+                "variableType": {
+                    "type": "string",
+                    "description": "The type of a variable. Available types are: env_var (default) and file.\n"
+                }
+            },
+            "requiredInputs": [
+                "key",
+                "project",
+                "value"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ProjectVariable resources.\n",
+                "properties": {
+                    "environmentScope": {
+                        "type": "string",
+                        "description": "The environment_scope of the variable\n"
+                    },
+                    "key": {
+                        "type": "string",
+                        "description": "The name of the variable.\n"
+                    },
+                    "masked": {
+                        "type": "boolean",
+                        "description": "If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The name or id of the project to add the hook to.\n"
+                    },
+                    "protected": {
+                        "type": "boolean",
+                        "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The value of the variable.\n"
+                    },
+                    "variableType": {
+                        "type": "string",
+                        "description": "The type of a variable. Available types are: env_var (default) and file.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/serviceJira:ServiceJira": {
+            "description": "This resource allows you to manage Jira integration.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst awesomeProject = new gitlab.Project(\"awesome_project\", {\n    description: \"My awesome project.\",\n    visibilityLevel: \"public\",\n});\nconst jira = new gitlab.ServiceJira(\"jira\", {\n    password: \"mypass\",\n    project: awesomeProject.id,\n    url: \"https://jira.example.com\",\n    username: \"user\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nawesome_project = gitlab.Project(\"awesomeProject\",\n    description=\"My awesome project.\",\n    visibility_level=\"public\")\njira = gitlab.ServiceJira(\"jira\",\n    password=\"mypass\",\n    project=awesome_project.id,\n    url=\"https://jira.example.com\",\n    username=\"user\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "commentOnEventEnabled": {
+                    "type": "boolean",
+                    "description": "Enable comments inside Jira issues on each GitLab event (commit / merge request)\n"
+                },
+                "commitEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for commit events\n"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "jiraIssueTransitionId": {
+                    "type": "string",
+                    "description": "The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration \u003e Issues \u003e Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.\n"
+                },
+                "mergeRequestsEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for merge request events\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password of the user created to be used with GitLab/JIRA.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "ID of the project you want to activate integration on.\n"
+                },
+                "projectKey": {
+                    "type": "string",
+                    "description": "The short identifier for your JIRA project, all uppercase, e.g., PROJ.\n"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username of the user created to be used with GitLab/JIRA.\n"
+                }
+            },
+            "required": [
+                "active",
+                "commentOnEventEnabled",
+                "commitEvents",
+                "createdAt",
+                "mergeRequestsEvents",
+                "password",
+                "project",
+                "title",
+                "updatedAt",
+                "url",
+                "username"
+            ],
+            "inputProperties": {
+                "commentOnEventEnabled": {
+                    "type": "boolean",
+                    "description": "Enable comments inside Jira issues on each GitLab event (commit / merge request)\n"
+                },
+                "commitEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for commit events\n"
+                },
+                "jiraIssueTransitionId": {
+                    "type": "string",
+                    "description": "The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration \u003e Issues \u003e Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.\n"
+                },
+                "mergeRequestsEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for merge request events\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password of the user created to be used with GitLab/JIRA.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "ID of the project you want to activate integration on.\n"
+                },
+                "projectKey": {
+                    "type": "string",
+                    "description": "The short identifier for your JIRA project, all uppercase, e.g., PROJ.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username of the user created to be used with GitLab/JIRA.\n"
+                }
+            },
+            "requiredInputs": [
+                "password",
+                "project",
+                "url",
+                "username"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ServiceJira resources.\n",
+                "properties": {
+                    "active": {
+                        "type": "boolean"
+                    },
+                    "commentOnEventEnabled": {
+                        "type": "boolean",
+                        "description": "Enable comments inside Jira issues on each GitLab event (commit / merge request)\n"
+                    },
+                    "commitEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for commit events\n"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "jiraIssueTransitionId": {
+                        "type": "string",
+                        "description": "The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration \u003e Issues \u003e Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.\n"
+                    },
+                    "mergeRequestsEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for merge request events\n"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "The password of the user created to be used with GitLab/JIRA.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "ID of the project you want to activate integration on.\n"
+                    },
+                    "projectKey": {
+                        "type": "string",
+                        "description": "The short identifier for your JIRA project, all uppercase, e.g., PROJ.\n"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username of the user created to be used with GitLab/JIRA.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/serviceSlack:ServiceSlack": {
+            "description": "This resource allows you to manage Slack notifications integration.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst awesomeProject = new gitlab.Project(\"awesome_project\", {\n    description: \"My awesome project.\",\n    visibilityLevel: \"public\",\n});\nconst slack = new gitlab.ServiceSlack(\"slack\", {\n    project: awesomeProject.id,\n    pushChannel: \"push_chan\",\n    pushEvents: true,\n    username: \"myuser\",\n    webhook: \"https://webhook.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nawesome_project = gitlab.Project(\"awesomeProject\",\n    description=\"My awesome project.\",\n    visibility_level=\"public\")\nslack = gitlab.ServiceSlack(\"slack\",\n    project=awesome_project.id,\n    push_channel=\"push_chan\",\n    push_events=True,\n    username=\"myuser\",\n    webhook=\"https://webhook.com\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "branchesToBeNotified": {
+                    "type": "string",
+                    "description": "Branches to send notifications for. Valid options are \"all\", \"default\", \"protected\", and \"default_and_protected\".\n"
+                },
+                "confidentialIssueChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive confidential issue events notifications.\n"
+                },
+                "confidentialIssuesEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for confidential issues events.\n"
+                },
+                "confidentialNoteEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for confidential note events.\n"
+                },
+                "issueChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive issue events notifications.\n"
+                },
+                "issuesEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for issues events.\n"
+                },
+                "jobEvents": {
+                    "type": "boolean"
+                },
+                "mergeRequestChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive merge request events notifications.\n"
+                },
+                "mergeRequestsEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for merge requests events.\n"
+                },
+                "noteChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive note events notifications.\n"
+                },
+                "noteEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for note events.\n"
+                },
+                "notifyOnlyBrokenPipelines": {
+                    "type": "boolean",
+                    "description": "Send notifications for broken pipelines.\n"
+                },
+                "notifyOnlyDefaultBranch": {
+                    "type": "boolean",
+                    "description": "DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.\n",
+                    "deprecationMessage": "use 'branches_to_be_notified' argument instead"
+                },
+                "pipelineChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive pipeline events notifications.\n"
+                },
+                "pipelineEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for pipeline events.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "ID of the project you want to activate integration on.\n"
+                },
+                "pushChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive push events notifications.\n"
+                },
+                "pushEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for push events.\n"
+                },
+                "tagPushChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive tag push events notifications.\n"
+                },
+                "tagPushEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for tag push events.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username to use.\n"
+                },
+                "webhook": {
+                    "type": "string",
+                    "description": "Webhook URL (ex.: https://hooks.slack.com/services/...)\n"
+                },
+                "wikiPageChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive wiki page events notifications.\n"
+                },
+                "wikiPageEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for wiki page events.\n"
+                }
+            },
+            "required": [
+                "branchesToBeNotified",
+                "confidentialIssuesEvents",
+                "confidentialNoteEvents",
+                "issuesEvents",
+                "jobEvents",
+                "mergeRequestsEvents",
+                "noteEvents",
+                "notifyOnlyBrokenPipelines",
+                "notifyOnlyDefaultBranch",
+                "pipelineEvents",
+                "project",
+                "pushEvents",
+                "tagPushEvents",
+                "webhook",
+                "wikiPageEvents"
+            ],
+            "inputProperties": {
+                "branchesToBeNotified": {
+                    "type": "string",
+                    "description": "Branches to send notifications for. Valid options are \"all\", \"default\", \"protected\", and \"default_and_protected\".\n"
+                },
+                "confidentialIssueChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive confidential issue events notifications.\n"
+                },
+                "confidentialIssuesEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for confidential issues events.\n"
+                },
+                "confidentialNoteEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for confidential note events.\n"
+                },
+                "issueChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive issue events notifications.\n"
+                },
+                "issuesEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for issues events.\n"
+                },
+                "mergeRequestChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive merge request events notifications.\n"
+                },
+                "mergeRequestsEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for merge requests events.\n"
+                },
+                "noteChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive note events notifications.\n"
+                },
+                "noteEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for note events.\n"
+                },
+                "notifyOnlyBrokenPipelines": {
+                    "type": "boolean",
+                    "description": "Send notifications for broken pipelines.\n"
+                },
+                "notifyOnlyDefaultBranch": {
+                    "type": "boolean",
+                    "description": "DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.\n",
+                    "deprecationMessage": "use 'branches_to_be_notified' argument instead"
+                },
+                "pipelineChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive pipeline events notifications.\n"
+                },
+                "pipelineEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for pipeline events.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "ID of the project you want to activate integration on.\n"
+                },
+                "pushChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive push events notifications.\n"
+                },
+                "pushEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for push events.\n"
+                },
+                "tagPushChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive tag push events notifications.\n"
+                },
+                "tagPushEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for tag push events.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username to use.\n"
+                },
+                "webhook": {
+                    "type": "string",
+                    "description": "Webhook URL (ex.: https://hooks.slack.com/services/...)\n"
+                },
+                "wikiPageChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive wiki page events notifications.\n"
+                },
+                "wikiPageEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for wiki page events.\n"
+                }
+            },
+            "requiredInputs": [
+                "project",
+                "webhook"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ServiceSlack resources.\n",
+                "properties": {
+                    "branchesToBeNotified": {
+                        "type": "string",
+                        "description": "Branches to send notifications for. Valid options are \"all\", \"default\", \"protected\", and \"default_and_protected\".\n"
+                    },
+                    "confidentialIssueChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive confidential issue events notifications.\n"
+                    },
+                    "confidentialIssuesEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for confidential issues events.\n"
+                    },
+                    "confidentialNoteEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for confidential note events.\n"
+                    },
+                    "issueChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive issue events notifications.\n"
+                    },
+                    "issuesEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for issues events.\n"
+                    },
+                    "jobEvents": {
+                        "type": "boolean"
+                    },
+                    "mergeRequestChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive merge request events notifications.\n"
+                    },
+                    "mergeRequestsEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for merge requests events.\n"
+                    },
+                    "noteChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive note events notifications.\n"
+                    },
+                    "noteEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for note events.\n"
+                    },
+                    "notifyOnlyBrokenPipelines": {
+                        "type": "boolean",
+                        "description": "Send notifications for broken pipelines.\n"
+                    },
+                    "notifyOnlyDefaultBranch": {
+                        "type": "boolean",
+                        "description": "DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.\n",
+                        "deprecationMessage": "use 'branches_to_be_notified' argument instead"
+                    },
+                    "pipelineChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive pipeline events notifications.\n"
+                    },
+                    "pipelineEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for pipeline events.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "ID of the project you want to activate integration on.\n"
+                    },
+                    "pushChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive push events notifications.\n"
+                    },
+                    "pushEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for push events.\n"
+                    },
+                    "tagPushChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive tag push events notifications.\n"
+                    },
+                    "tagPushEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for tag push events.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "Username to use.\n"
+                    },
+                    "webhook": {
+                        "type": "string",
+                        "description": "Webhook URL (ex.: https://hooks.slack.com/services/...)\n"
+                    },
+                    "wikiPageChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive wiki page events notifications.\n"
+                    },
+                    "wikiPageEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for wiki page events.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/tagProtection:TagProtection": {
+            "description": "This resource allows you to protect a specific tag or wildcard by an access level so that the user with less access level cannot Create the tags.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst tagProtect = new gitlab.TagProtection(\"TagProtect\", {\n    createAccessLevel: \"developer\",\n    project: \"12345\",\n    tag: \"TagProtected\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntag_protect = gitlab.TagProtection(\"tagProtect\",\n    create_access_level=\"developer\",\n    project=\"12345\",\n    tag=\"TagProtected\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "createAccessLevel": {
+                    "type": "string",
+                    "description": "One of five levels of access to the project.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The id of the project.\n"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "Name of the tag or wildcard.\n"
+                }
+            },
+            "required": [
+                "createAccessLevel",
+                "project",
+                "tag"
+            ],
+            "inputProperties": {
+                "createAccessLevel": {
+                    "type": "string",
+                    "description": "One of five levels of access to the project.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The id of the project.\n"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "Name of the tag or wildcard.\n"
+                }
+            },
+            "requiredInputs": [
+                "createAccessLevel",
+                "project",
+                "tag"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TagProtection resources.\n",
+                "properties": {
+                    "createAccessLevel": {
+                        "type": "string",
+                        "description": "One of five levels of access to the project.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The id of the project.\n"
+                    },
+                    "tag": {
+                        "type": "string",
+                        "description": "Name of the tag or wildcard.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/user:User": {
+            "properties": {
+                "canCreateGroup": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false. Whether to allow the user to create groups.\n"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "The e-mail address of the user.\n"
+                },
+                "isAdmin": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false.  Whether to enable administrative priviledges\nfor the user.\n"
+                },
+                "isExternal": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the user.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password of the user.\n"
+                },
+                "projectsLimit": {
+                    "type": "integer",
+                    "description": "Integer, defaults to 0.  Number of projects user can create.\n"
+                },
+                "resetPassword": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false. Send user password reset link.\n"
+                },
+                "skipConfirmation": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to true. Whether to skip confirmation.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username of the user.\n"
+                }
+            },
+            "required": [
+                "email",
+                "name",
+                "password",
+                "username"
+            ],
+            "inputProperties": {
+                "canCreateGroup": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false. Whether to allow the user to create groups.\n"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "The e-mail address of the user.\n"
+                },
+                "isAdmin": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false.  Whether to enable administrative priviledges\nfor the user.\n"
+                },
+                "isExternal": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the user.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password of the user.\n"
+                },
+                "projectsLimit": {
+                    "type": "integer",
+                    "description": "Integer, defaults to 0.  Number of projects user can create.\n"
+                },
+                "resetPassword": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false. Send user password reset link.\n"
+                },
+                "skipConfirmation": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to true. Whether to skip confirmation.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username of the user.\n"
+                }
+            },
+            "requiredInputs": [
+                "email",
+                "password",
+                "username"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering User resources.\n",
+                "properties": {
+                    "canCreateGroup": {
+                        "type": "boolean",
+                        "description": "Boolean, defaults to false. Whether to allow the user to create groups.\n"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "The e-mail address of the user.\n"
+                    },
+                    "isAdmin": {
+                        "type": "boolean",
+                        "description": "Boolean, defaults to false.  Whether to enable administrative priviledges\nfor the user.\n"
+                    },
+                    "isExternal": {
+                        "type": "boolean",
+                        "description": "Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the user.\n"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "The password of the user.\n"
+                    },
+                    "projectsLimit": {
+                        "type": "integer",
+                        "description": "Integer, defaults to 0.  Number of projects user can create.\n"
+                    },
+                    "resetPassword": {
+                        "type": "boolean",
+                        "description": "Boolean, defaults to false. Send user password reset link.\n"
+                    },
+                    "skipConfirmation": {
+                        "type": "boolean",
+                        "description": "Boolean, defaults to true. Whether to skip confirmation.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username of the user.\n"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "functions": {
+        "gitlab:index/getGroup:getGroup": {
+            "description": "Provides details about a specific group in the gitlab provider.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n**By group's ID**\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = pulumi.output(gitlab.getGroup({\n    groupId: 123,\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.get_group(group_id=123)\n```\n\n**By group's full path**\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = pulumi.output(gitlab.getGroup({\n    fullPath: \"foo/bar\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.get_group(full_path=\"foo/bar\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGroup.\n",
+                "properties": {
+                    "fullPath": {
+                        "type": "string",
+                        "description": "The full path of the group.\n"
+                    },
+                    "groupId": {
+                        "type": "integer",
+                        "description": "The ID of the group.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGroup.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the group.\n"
+                    },
+                    "fullName": {
+                        "type": "string",
+                        "description": "The full name of the group.\n"
+                    },
+                    "fullPath": {
+                        "type": "string",
+                        "description": "The full path of the group.\n"
+                    },
+                    "groupId": {
+                        "type": "integer"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "lfsEnabled": {
+                        "type": "boolean",
+                        "description": "Boolean, is LFS enabled for projects in this group.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of this group.\n"
+                    },
+                    "parentId": {
+                        "type": "integer",
+                        "description": "Integer, ID of the parent group.\n"
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "The path of the group.\n"
+                    },
+                    "requestAccessEnabled": {
+                        "type": "boolean",
+                        "description": "Boolean, is request for access enabled to the group.\n"
+                    },
+                    "runnersToken": {
+                        "type": "string",
+                        "description": "The group level registration token to use during runner setup.\n"
+                    },
+                    "visibilityLevel": {
+                        "type": "string",
+                        "description": "Visibility level of the group. Possible values are `private`, `internal`, `public`.\n"
+                    },
+                    "webUrl": {
+                        "type": "string",
+                        "description": "Web URL of the group.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "fullName",
+                    "fullPath",
+                    "groupId",
+                    "lfsEnabled",
+                    "name",
+                    "parentId",
+                    "path",
+                    "requestAccessEnabled",
+                    "runnersToken",
+                    "visibilityLevel",
+                    "webUrl",
+                    "id"
+                ]
+            }
+        },
+        "gitlab:index/getProject:getProject": {
+            "description": "Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = pulumi.output(gitlab.getProject({\n    id: 30,\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_project(id=30)\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getProject.\n",
+                "properties": {
+                    "archived": {
+                        "type": "boolean",
+                        "description": "Whether the project is in read-only mode (archived).\n"
+                    },
+                    "defaultBranch": {
+                        "type": "string",
+                        "description": "The default branch for the project.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description of the project.\n"
+                    },
+                    "httpUrlToRepo": {
+                        "type": "string",
+                        "description": "URL that can be provided to `git clone` to clone the\nrepository via HTTP.\n"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "description": "The integer that uniquely identifies the project within the gitlab install.\n"
+                    },
+                    "issuesEnabled": {
+                        "type": "boolean",
+                        "description": "Enable issue tracking for the project.\n"
+                    },
+                    "lfsEnabled": {
+                        "type": "boolean",
+                        "description": "Enable LFS for the project.\n"
+                    },
+                    "mergeRequestsEnabled": {
+                        "type": "boolean",
+                        "description": "Enable merge requests for the project.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "namespaceId": {
+                        "type": "integer",
+                        "description": "The namespace (group or user) of the project. Defaults to your user.\nSee `gitlab..Group` for an example.\n"
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "The path of the repository.\n"
+                    },
+                    "pipelinesEnabled": {
+                        "type": "boolean",
+                        "description": "Enable pipelines for the project.\n"
+                    },
+                    "requestAccessEnabled": {
+                        "type": "boolean",
+                        "description": "Allow users to request member access.\n"
+                    },
+                    "runnersToken": {
+                        "type": "string",
+                        "description": "Registration token to use during runner setup.\n"
+                    },
+                    "snippetsEnabled": {
+                        "type": "boolean",
+                        "description": "Enable snippets for the project.\n"
+                    },
+                    "sshUrlToRepo": {
+                        "type": "string",
+                        "description": "URL that can be provided to `git clone` to clone the\nrepository via SSH.\n"
+                    },
+                    "visibilityLevel": {
+                        "type": "string",
+                        "description": "Repositories are created as private by default.\n"
+                    },
+                    "webUrl": {
+                        "type": "string",
+                        "description": "URL that can be used to find the project in a browser.\n"
+                    },
+                    "wikiEnabled": {
+                        "type": "boolean",
+                        "description": "Enable wiki for the project.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getProject.\n",
+                "properties": {
+                    "archived": {
+                        "type": "boolean",
+                        "description": "Whether the project is in read-only mode (archived).\n"
+                    },
+                    "defaultBranch": {
+                        "type": "string",
+                        "description": "The default branch for the project.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description of the project.\n"
+                    },
+                    "httpUrlToRepo": {
+                        "type": "string",
+                        "description": "URL that can be provided to `git clone` to clone the\nrepository via HTTP.\n"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "description": "Integer that uniquely identifies the project within the gitlab install.\n"
+                    },
+                    "issuesEnabled": {
+                        "type": "boolean",
+                        "description": "Enable issue tracking for the project.\n"
+                    },
+                    "lfsEnabled": {
+                        "type": "boolean",
+                        "description": "Enable LFS for the project.\n"
+                    },
+                    "mergeRequestsEnabled": {
+                        "type": "boolean",
+                        "description": "Enable merge requests for the project.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "namespaceId": {
+                        "type": "integer",
+                        "description": "The namespace (group or user) of the project. Defaults to your user.\nSee `gitlab..Group` for an example.\n"
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "The path of the repository.\n"
+                    },
+                    "pipelinesEnabled": {
+                        "type": "boolean",
+                        "description": "Enable pipelines for the project.\n"
+                    },
+                    "requestAccessEnabled": {
+                        "type": "boolean",
+                        "description": "Allow users to request member access.\n"
+                    },
+                    "runnersToken": {
+                        "type": "string",
+                        "description": "Registration token to use during runner setup.\n"
+                    },
+                    "snippetsEnabled": {
+                        "type": "boolean",
+                        "description": "Enable snippets for the project.\n"
+                    },
+                    "sshUrlToRepo": {
+                        "type": "string",
+                        "description": "URL that can be provided to `git clone` to clone the\nrepository via SSH.\n"
+                    },
+                    "visibilityLevel": {
+                        "type": "string",
+                        "description": "Repositories are created as private by default.\n"
+                    },
+                    "webUrl": {
+                        "type": "string",
+                        "description": "URL that can be used to find the project in a browser.\n"
+                    },
+                    "wikiEnabled": {
+                        "type": "boolean",
+                        "description": "Enable wiki for the project.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "archived",
+                    "defaultBranch",
+                    "description",
+                    "httpUrlToRepo",
+                    "id",
+                    "issuesEnabled",
+                    "lfsEnabled",
+                    "mergeRequestsEnabled",
+                    "name",
+                    "namespaceId",
+                    "path",
+                    "pipelinesEnabled",
+                    "requestAccessEnabled",
+                    "runnersToken",
+                    "snippetsEnabled",
+                    "sshUrlToRepo",
+                    "visibilityLevel",
+                    "webUrl",
+                    "wikiEnabled"
+                ]
+            }
+        },
+        "gitlab:index/getUser:getUser": {
+            "description": "Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = pulumi.output(gitlab.getUser({\n    username: \"myuser\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_user(username=\"myuser\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getUser.\n",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "The e-mail address of the user. (Requires administrator privileges)\n"
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "description": "The ID of the user.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username of the user.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getUser.\n",
+                "properties": {
+                    "avatarUrl": {
+                        "type": "string",
+                        "description": "The avatar URL of the user.\n"
+                    },
+                    "bio": {
+                        "type": "string",
+                        "description": "The bio of the user.\n"
+                    },
+                    "canCreateGroup": {
+                        "type": "boolean",
+                        "description": "Whether the user can create groups.\n"
+                    },
+                    "canCreateProject": {
+                        "type": "boolean",
+                        "description": "Whether the user can create projects.\n"
+                    },
+                    "colorSchemeId": {
+                        "type": "integer",
+                        "description": "User's color scheme ID.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Date the user was created at.\n"
+                    },
+                    "currentSignInAt": {
+                        "type": "string",
+                        "description": "Current user's sign-in date.\n"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "The e-mail address of the user.\n"
+                    },
+                    "externUid": {
+                        "type": "string",
+                        "description": "The external UID of the user.\n"
+                    },
+                    "external": {
+                        "type": "boolean",
+                        "description": "Whether the user is external.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "isAdmin": {
+                        "type": "boolean",
+                        "description": "Whether the user is an admin.\n"
+                    },
+                    "lastSignInAt": {
+                        "type": "string",
+                        "description": "Last user's sign-in date.\n"
+                    },
+                    "linkedin": {
+                        "type": "string",
+                        "description": "Linkedin profile of the user.\n"
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "The location of the user.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the user.\n"
+                    },
+                    "organization": {
+                        "type": "string",
+                        "description": "The organization of the user.\n"
+                    },
+                    "projectsLimit": {
+                        "type": "integer",
+                        "description": "Number of projects the user can create.\n"
+                    },
+                    "skype": {
+                        "type": "string",
+                        "description": "Skype username of the user.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Whether the user is active or blocked.\n"
+                    },
+                    "themeId": {
+                        "type": "integer",
+                        "description": "User's theme ID.\n"
+                    },
+                    "twitter": {
+                        "type": "string",
+                        "description": "Twitter username of the user.\n"
+                    },
+                    "twoFactorEnabled": {
+                        "type": "boolean",
+                        "description": "Whether user's two factor auth is enabled.\n"
+                    },
+                    "userId": {
+                        "type": "integer"
+                    },
+                    "userProvider": {
+                        "type": "string",
+                        "description": "The UID provider of the user.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username of the user.\n"
+                    },
+                    "websiteUrl": {
+                        "type": "string",
+                        "description": "User's website URL.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "avatarUrl",
+                    "bio",
+                    "canCreateGroup",
+                    "canCreateProject",
+                    "colorSchemeId",
+                    "createdAt",
+                    "currentSignInAt",
+                    "email",
+                    "externUid",
+                    "external",
+                    "isAdmin",
+                    "lastSignInAt",
+                    "linkedin",
+                    "location",
+                    "name",
+                    "organization",
+                    "projectsLimit",
+                    "skype",
+                    "state",
+                    "themeId",
+                    "twitter",
+                    "twoFactorEnabled",
+                    "userId",
+                    "userProvider",
+                    "username",
+                    "websiteUrl",
+                    "id"
+                ]
+            }
+        },
+        "gitlab:index/getUsers:getUsers": {
+            "description": "Provides details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.\n\n**NOTE**: Some of the available options require administrator privileges. Please visit [Gitlab API documentation][users_for_admins] for more information.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = pulumi.output(gitlab.getUsers({\n    createdBefore: \"2019-01-01\",\n    orderBy: \"name\",\n    sort: \"desc\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_users(created_before=\"2019-01-01\",\n    order_by=\"name\",\n    sort=\"desc\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getUsers.\n",
+                "properties": {
+                    "active": {
+                        "type": "boolean",
+                        "description": "Filter users that are active.\n"
+                    },
+                    "blocked": {
+                        "type": "boolean",
+                        "description": "Filter users that are blocked.\n"
+                    },
+                    "createdAfter": {
+                        "type": "string",
+                        "description": "Search for users created after a specific date. (Requires administrator privileges)\n"
+                    },
+                    "createdBefore": {
+                        "type": "string",
+                        "description": "Search for users created before a specific date. (Requires administrator privileges)\n"
+                    },
+                    "externProvider": {
+                        "type": "string",
+                        "description": "Lookup users by external provider. (Requires administrator privileges)\n"
+                    },
+                    "externUid": {
+                        "type": "string",
+                        "description": "Lookup users by external UID. (Requires administrator privileges)\n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)\n"
+                    },
+                    "search": {
+                        "type": "string",
+                        "description": "Search users by username, name or email.\n"
+                    },
+                    "sort": {
+                        "type": "string",
+                        "description": "Sort users' list in asc or desc order. (Requires administrator privileges)\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getUsers.\n",
+                "properties": {
+                    "active": {
+                        "type": "boolean"
+                    },
+                    "blocked": {
+                        "type": "boolean"
+                    },
+                    "createdAfter": {
+                        "type": "string"
+                    },
+                    "createdBefore": {
+                        "type": "string"
+                    },
+                    "externProvider": {
+                        "type": "string"
+                    },
+                    "externUid": {
+                        "type": "string",
+                        "description": "The external UID of the user.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "search": {
+                        "type": "string"
+                    },
+                    "sort": {
+                        "type": "string"
+                    },
+                    "users": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:/getUsersUser:getUsersUser"
+                        },
+                        "description": "The list of users.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "users",
+                    "id"
+                ]
+            }
+        }
+    },
+    "language": {
+        "csharp": {
+            "namespaces": {
+                "gitlab": "GitLab"
+            },
+            "packageReferences": {
+                "Pulumi": "2.*",
+                "System.Collections.Immutable": "1.6.0"
+            }
+        },
+        "nodejs": {
+            "dependencies": {
+                "@pulumi/pulumi": "^2.0.0",
+                "builtin-modules": "3.0.0",
+                "read-package-tree": "^5.2.1",
+                "resolve": "^1.7.1"
+            },
+            "devDependencies": {
+                "@types/node": "^8.0.25"
+            },
+            "packageDescription": "A Pulumi package for creating and managing GitLab resources.",
+            "packageName": "",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "requires": {
+                "pulumi": "\u003e=2.0.0,\u003c3.0.0"
+            }
+        }
+    }
+}

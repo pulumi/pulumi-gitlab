@@ -10,9 +10,7 @@ import * as utilities from "./utilities";
  * This resource allows you to create and manage push rules for your GitLab projects.
  * For further information on push rules, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/push_rules/push_rules.html#push-rules).
- * 
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_push_rules.html.markdown.
  */
 export class ProjectPushRules extends pulumi.CustomResource {
     /**

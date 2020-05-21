@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * This resource allows you to manage Jira integration.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
- * 
+ *
  * const awesomeProject = new gitlab.Project("awesomeProject", {
  *     description: "My awesome project.",
  *     visibilityLevel: "public",
@@ -28,8 +28,6 @@ import * as utilities from "./utilities";
  *     username: "user",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_jira.html.markdown.
  */
 export class ServiceJira extends pulumi.CustomResource {
     /**

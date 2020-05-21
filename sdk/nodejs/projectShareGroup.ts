@@ -8,23 +8,21 @@ import * as utilities from "./utilities";
 
 /**
  * This resource allows you to share a project with a group
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
- * 
+ *
  * const test = new gitlab.ProjectShareGroup("test", {
  *     accessLevel: "guest",
  *     groupId: 1337,
  *     projectId: "12345",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_share_group.html.markdown.
  */
 export class ProjectShareGroup extends pulumi.CustomResource {
     /**

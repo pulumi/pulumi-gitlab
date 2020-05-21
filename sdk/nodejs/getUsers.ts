@@ -8,25 +8,23 @@ import * as utilities from "./utilities";
 
 /**
  * Provides details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
- * 
+ *
  * **NOTE**: Some of the available options require administrator privileges. Please visit [Gitlab API documentation][usersForAdmins] for more information.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
- * 
+ *
  * const example = pulumi.output(gitlab.getUsers({
  *     createdBefore: "2019-01-01",
  *     orderBy: "name",
  *     sort: "desc",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/d/users.html.markdown.
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
