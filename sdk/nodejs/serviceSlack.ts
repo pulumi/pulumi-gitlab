@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * This resource allows you to manage Slack notifications integration.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
- * 
+ *
  * const awesomeProject = new gitlab.Project("awesomeProject", {
  *     description: "My awesome project.",
  *     visibilityLevel: "public",
@@ -29,8 +29,6 @@ import * as utilities from "./utilities";
  *     webhook: "https://webhook.com",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/service_slack.html.markdown.
  */
 export class ServiceSlack extends pulumi.CustomResource {
     /**
@@ -284,7 +282,6 @@ export interface ServiceSlackState {
     readonly notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
     /**
      * DEPRECATED: This parameter has been replaced with `branchesToBeNotified`.
-     * 
      * @deprecated use 'branches_to_be_notified' argument instead
      */
     readonly notifyOnlyDefaultBranch?: pulumi.Input<boolean>;
@@ -384,7 +381,6 @@ export interface ServiceSlackArgs {
     readonly notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
     /**
      * DEPRECATED: This parameter has been replaced with `branchesToBeNotified`.
-     * 
      * @deprecated use 'branches_to_be_notified' argument instead
      */
     readonly notifyOnlyDefaultBranch?: pulumi.Input<boolean>;

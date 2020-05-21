@@ -8,24 +8,22 @@ import * as utilities from "./utilities";
  * This resource allows you to create and manage labels for your GitLab projects.
  * For further information on labels, consult the [gitlab
  * documentation](https://docs.gitlab.com/ee/user/project/labels.html#project-labels).
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
- * 
+ *
  * const fixme = new gitlab.Label("fixme", {
  *     color: "#ffcc00",
  *     description: "issue with failing tests",
  *     project: "example",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/label.html.markdown.
  */
 export class Label extends pulumi.CustomResource {
     /**

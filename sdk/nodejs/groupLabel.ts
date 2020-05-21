@@ -8,24 +8,22 @@ import * as utilities from "./utilities";
  * This resource allows you to create and manage labels for your GitLab groups.
  * For further information on labels, consult the [gitlab
  * documentation](https://docs.gitlab.com/ee/user/project/labels.html#group-labels).
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
- * 
+ *
  * const fixme = new gitlab.GroupLabel("fixme", {
  *     color: "#ffcc00",
  *     description: "issue with failing tests",
  *     group: "example",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_label.html.markdown.
  */
 export class GroupLabel extends pulumi.CustomResource {
     /**

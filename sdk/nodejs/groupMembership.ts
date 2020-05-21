@@ -6,15 +6,15 @@ import * as utilities from "./utilities";
 
 /**
  * This resource allows you to add a user to an existing group.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
- * 
+ *
  * const test = new gitlab.GroupMembership("test", {
  *     accessLevel: "guest",
  *     expiresAt: "2020-12-31",
@@ -22,8 +22,6 @@ import * as utilities from "./utilities";
  *     userId: 1337,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_membership.html.markdown.
  */
 export class GroupMembership extends pulumi.CustomResource {
     /**

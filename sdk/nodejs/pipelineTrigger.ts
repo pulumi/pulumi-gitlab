@@ -6,22 +6,20 @@ import * as utilities from "./utilities";
 
 /**
  * This resource allows you to create and manage pipeline triggers
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
- * 
+ *
  * const example = new gitlab.PipelineTrigger("example", {
  *     description: "Used to trigger builds",
  *     project: "12345",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/pipeline_trigger.html.markdown.
  */
 export class PipelineTrigger extends pulumi.CustomResource {
     /**

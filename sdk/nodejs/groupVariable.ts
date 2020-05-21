@@ -8,16 +8,16 @@ import * as utilities from "./utilities";
  * This resource allows you to create and manage CI/CD variables for your GitLab groups.
  * For further information on variables, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
- * 
+ *
  * const example = new gitlab.GroupVariable("example", {
  *     group: "12345",
  *     key: "groupVariableKey",
@@ -25,8 +25,6 @@ import * as utilities from "./utilities";
  *     value: "groupVariableValue",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/group_variable.html.markdown.
  */
 export class GroupVariable extends pulumi.CustomResource {
     /**

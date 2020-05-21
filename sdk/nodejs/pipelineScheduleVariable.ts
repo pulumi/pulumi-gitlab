@@ -6,15 +6,15 @@ import * as utilities from "./utilities";
 
 /**
  * This resource allows you to create and manage variables for pipeline schedules.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
- * 
+ *
  * const examplePipelineSchedule = new gitlab.PipelineSchedule("examplePipelineSchedule", {
  *     project: "12345",
  *     description: "Used to schedule builds",
@@ -28,8 +28,6 @@ import * as utilities from "./utilities";
  *     value: "example",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/pipeline_schedule_variable.html.markdown.
  */
 export class PipelineScheduleVariable extends pulumi.CustomResource {
     /**

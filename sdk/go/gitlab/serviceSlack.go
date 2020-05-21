@@ -38,6 +38,8 @@ type ServiceSlack struct {
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines pulumi.BoolOutput `pulumi:"notifyOnlyBrokenPipelines"`
 	// DEPRECATED: This parameter has been replaced with `branchesToBeNotified`.
+	//
+	// Deprecated: use 'branches_to_be_notified' argument instead
 	NotifyOnlyDefaultBranch pulumi.BoolOutput `pulumi:"notifyOnlyDefaultBranch"`
 	// The name of the channel to receive pipeline events notifications.
 	PipelineChannel pulumi.StringPtrOutput `pulumi:"pipelineChannel"`
@@ -121,6 +123,8 @@ type serviceSlackState struct {
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines *bool `pulumi:"notifyOnlyBrokenPipelines"`
 	// DEPRECATED: This parameter has been replaced with `branchesToBeNotified`.
+	//
+	// Deprecated: use 'branches_to_be_notified' argument instead
 	NotifyOnlyDefaultBranch *bool `pulumi:"notifyOnlyDefaultBranch"`
 	// The name of the channel to receive pipeline events notifications.
 	PipelineChannel *string `pulumi:"pipelineChannel"`
@@ -171,6 +175,8 @@ type ServiceSlackState struct {
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines pulumi.BoolPtrInput
 	// DEPRECATED: This parameter has been replaced with `branchesToBeNotified`.
+	//
+	// Deprecated: use 'branches_to_be_notified' argument instead
 	NotifyOnlyDefaultBranch pulumi.BoolPtrInput
 	// The name of the channel to receive pipeline events notifications.
 	PipelineChannel pulumi.StringPtrInput
@@ -224,6 +230,8 @@ type serviceSlackArgs struct {
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines *bool `pulumi:"notifyOnlyBrokenPipelines"`
 	// DEPRECATED: This parameter has been replaced with `branchesToBeNotified`.
+	//
+	// Deprecated: use 'branches_to_be_notified' argument instead
 	NotifyOnlyDefaultBranch *bool `pulumi:"notifyOnlyDefaultBranch"`
 	// The name of the channel to receive pipeline events notifications.
 	PipelineChannel *string `pulumi:"pipelineChannel"`
@@ -274,6 +282,8 @@ type ServiceSlackArgs struct {
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines pulumi.BoolPtrInput
 	// DEPRECATED: This parameter has been replaced with `branchesToBeNotified`.
+	//
+	// Deprecated: use 'branches_to_be_notified' argument instead
 	NotifyOnlyDefaultBranch pulumi.BoolPtrInput
 	// The name of the channel to receive pipeline events notifications.
 	PipelineChannel pulumi.StringPtrInput

@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
  * This resource allows you to create and manage pipeline schedules.
  * For further information on clusters, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/user/project/pipelines/schedules.html).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
- * 
+ *
  * const example = new gitlab.PipelineSchedule("example", {
  *     cron: "0 1 * * *",
  *     description: "Used to schedule builds",
@@ -24,8 +24,6 @@ import * as utilities from "./utilities";
  *     ref: "master",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/pipeline_schedule.html.markdown.
  */
 export class PipelineSchedule extends pulumi.CustomResource {
     /**

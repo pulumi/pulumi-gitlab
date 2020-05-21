@@ -10,16 +10,16 @@ import * as utilities from "./utilities";
  * This resource allows you to create and manage CI/CD variables for your GitLab projects.
  * For further information on variables, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
- * 
+ *
  * const example = new gitlab.ProjectVariable("example", {
  *     key: "projectVariableKey",
  *     project: "12345",
@@ -27,8 +27,6 @@ import * as utilities from "./utilities";
  *     value: "projectVariableValue",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-gitlab/blob/master/website/docs/r/project_variable.html.markdown.
  */
 export class ProjectVariable extends pulumi.CustomResource {
     /**
