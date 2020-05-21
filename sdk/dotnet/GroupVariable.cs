@@ -28,6 +28,9 @@ namespace Pulumi.GitLab
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
 
+        [Output("masked")]
+        public Output<bool?> Masked { get; private set; } = null!;
+
         /// <summary>
         /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         /// </summary>
@@ -104,6 +107,9 @@ namespace Pulumi.GitLab
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        [Input("masked")]
+        public Input<bool>? Masked { get; set; }
+
         /// <summary>
         /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         /// </summary>
@@ -140,6 +146,9 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
+
+        [Input("masked")]
+        public Input<bool>? Masked { get; set; }
 
         /// <summary>
         /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.

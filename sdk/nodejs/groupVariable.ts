@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  * const example = new gitlab.GroupVariable("example", {
  *     group: "12345",
  *     key: "groupVariableKey",
+ *     masked: false,
  *     protected: false,
  *     value: "groupVariableValue",
  * });
@@ -61,6 +62,7 @@ export class GroupVariable extends pulumi.CustomResource {
      * The name of the variable.
      */
     public readonly key!: pulumi.Output<string>;
+    public readonly masked!: pulumi.Output<boolean | undefined>;
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      */
@@ -88,6 +90,7 @@ export class GroupVariable extends pulumi.CustomResource {
             const state = argsOrState as GroupVariableState | undefined;
             inputs["group"] = state ? state.group : undefined;
             inputs["key"] = state ? state.key : undefined;
+            inputs["masked"] = state ? state.masked : undefined;
             inputs["protected"] = state ? state.protected : undefined;
             inputs["value"] = state ? state.value : undefined;
             inputs["variableType"] = state ? state.variableType : undefined;
@@ -104,6 +107,7 @@ export class GroupVariable extends pulumi.CustomResource {
             }
             inputs["group"] = args ? args.group : undefined;
             inputs["key"] = args ? args.key : undefined;
+            inputs["masked"] = args ? args.masked : undefined;
             inputs["protected"] = args ? args.protected : undefined;
             inputs["value"] = args ? args.value : undefined;
             inputs["variableType"] = args ? args.variableType : undefined;
@@ -131,6 +135,7 @@ export interface GroupVariableState {
      * The name of the variable.
      */
     readonly key?: pulumi.Input<string>;
+    readonly masked?: pulumi.Input<boolean>;
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      */
@@ -157,6 +162,7 @@ export interface GroupVariableArgs {
      * The name of the variable.
      */
     readonly key: pulumi.Input<string>;
+    readonly masked?: pulumi.Input<boolean>;
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      */

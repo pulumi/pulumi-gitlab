@@ -18,6 +18,7 @@ class GroupVariable(pulumi.CustomResource):
     """
     The name of the variable.
     """
+    masked: pulumi.Output[bool]
     protected: pulumi.Output[bool]
     """
     If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
@@ -30,7 +31,7 @@ class GroupVariable(pulumi.CustomResource):
     """
     The type of a variable. Available types are: env_var (default) and file.
     """
-    def __init__(__self__, resource_name, opts=None, group=None, key=None, protected=None, value=None, variable_type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, group=None, key=None, masked=None, protected=None, value=None, variable_type=None, __props__=None, __name__=None, __opts__=None):
         """
         This resource allows you to create and manage CI/CD variables for your GitLab groups.
         For further information on variables, consult the [gitlab
@@ -48,6 +49,7 @@ class GroupVariable(pulumi.CustomResource):
         example = gitlab.GroupVariable("example",
             group="12345",
             key="group_variable_key",
+            masked=False,
             protected=False,
             value="group_variable_value")
         ```
@@ -84,6 +86,7 @@ class GroupVariable(pulumi.CustomResource):
             if key is None:
                 raise TypeError("Missing required property 'key'")
             __props__['key'] = key
+            __props__['masked'] = masked
             __props__['protected'] = protected
             if value is None:
                 raise TypeError("Missing required property 'value'")
@@ -96,7 +99,7 @@ class GroupVariable(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, group=None, key=None, protected=None, value=None, variable_type=None):
+    def get(resource_name, id, opts=None, group=None, key=None, masked=None, protected=None, value=None, variable_type=None):
         """
         Get an existing GroupVariable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -116,6 +119,7 @@ class GroupVariable(pulumi.CustomResource):
 
         __props__["group"] = group
         __props__["key"] = key
+        __props__["masked"] = masked
         __props__["protected"] = protected
         __props__["value"] = value
         __props__["variable_type"] = variable_type

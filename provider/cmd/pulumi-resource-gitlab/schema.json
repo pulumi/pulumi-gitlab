@@ -1055,7 +1055,7 @@
             }
         },
         "gitlab:index/groupVariable:GroupVariable": {
-            "description": "This resource allows you to create and manage CI/CD variables for your GitLab groups.\nFor further information on variables, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.GroupVariable(\"example\", {\n    group: \"12345\",\n    key: \"group_variable_key\",\n    protected: false,\n    value: \"group_variable_value\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.GroupVariable(\"example\",\n    group=\"12345\",\n    key=\"group_variable_key\",\n    protected=False,\n    value=\"group_variable_value\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "This resource allows you to create and manage CI/CD variables for your GitLab groups.\nFor further information on variables, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.GroupVariable(\"example\", {\n    group: \"12345\",\n    key: \"group_variable_key\",\n    masked: false,\n    protected: false,\n    value: \"group_variable_value\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.GroupVariable(\"example\",\n    group=\"12345\",\n    key=\"group_variable_key\",\n    masked=False,\n    protected=False,\n    value=\"group_variable_value\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "group": {
                     "type": "string",
@@ -1064,6 +1064,9 @@
                 "key": {
                     "type": "string",
                     "description": "The name of the variable.\n"
+                },
+                "masked": {
+                    "type": "boolean"
                 },
                 "protected": {
                     "type": "boolean",
@@ -1091,6 +1094,9 @@
                 "key": {
                     "type": "string",
                     "description": "The name of the variable.\n"
+                },
+                "masked": {
+                    "type": "boolean"
                 },
                 "protected": {
                     "type": "boolean",
@@ -1120,6 +1126,9 @@
                     "key": {
                         "type": "string",
                         "description": "The name of the variable.\n"
+                    },
+                    "masked": {
+                        "type": "boolean"
                     },
                     "protected": {
                         "type": "boolean",

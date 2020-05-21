@@ -19,7 +19,8 @@ type GroupVariable struct {
 	// The name or id of the group to add the hook to.
 	Group pulumi.StringOutput `pulumi:"group"`
 	// The name of the variable.
-	Key pulumi.StringOutput `pulumi:"key"`
+	Key    pulumi.StringOutput  `pulumi:"key"`
+	Masked pulumi.BoolPtrOutput `pulumi:"masked"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrOutput `pulumi:"protected"`
 	// The value of the variable.
@@ -68,7 +69,8 @@ type groupVariableState struct {
 	// The name or id of the group to add the hook to.
 	Group *string `pulumi:"group"`
 	// The name of the variable.
-	Key *string `pulumi:"key"`
+	Key    *string `pulumi:"key"`
+	Masked *bool   `pulumi:"masked"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected *bool `pulumi:"protected"`
 	// The value of the variable.
@@ -81,7 +83,8 @@ type GroupVariableState struct {
 	// The name or id of the group to add the hook to.
 	Group pulumi.StringPtrInput
 	// The name of the variable.
-	Key pulumi.StringPtrInput
+	Key    pulumi.StringPtrInput
+	Masked pulumi.BoolPtrInput
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrInput
 	// The value of the variable.
@@ -98,7 +101,8 @@ type groupVariableArgs struct {
 	// The name or id of the group to add the hook to.
 	Group string `pulumi:"group"`
 	// The name of the variable.
-	Key string `pulumi:"key"`
+	Key    string `pulumi:"key"`
+	Masked *bool  `pulumi:"masked"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected *bool `pulumi:"protected"`
 	// The value of the variable.
@@ -112,7 +116,8 @@ type GroupVariableArgs struct {
 	// The name or id of the group to add the hook to.
 	Group pulumi.StringInput
 	// The name of the variable.
-	Key pulumi.StringInput
+	Key    pulumi.StringInput
+	Masked pulumi.BoolPtrInput
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrInput
 	// The value of the variable.
