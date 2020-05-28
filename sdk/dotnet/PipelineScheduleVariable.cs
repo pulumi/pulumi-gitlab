@@ -11,6 +11,37 @@ namespace Pulumi.GitLab
 {
     /// <summary>
     /// This resource allows you to create and manage variables for pipeline schedules.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var examplePipelineSchedule = new GitLab.PipelineSchedule("examplePipelineSchedule", new GitLab.PipelineScheduleArgs
+    ///         {
+    ///             Project = "12345",
+    ///             Description = "Used to schedule builds",
+    ///             Ref = "master",
+    ///             Cron = "0 1 * * *",
+    ///         });
+    ///         var examplePipelineScheduleVariable = new GitLab.PipelineScheduleVariable("examplePipelineScheduleVariable", new GitLab.PipelineScheduleVariableArgs
+    ///         {
+    ///             Project = gitlab_pipeline_schedule.Project,
+    ///             PipelineScheduleId = gitlab_pipeline_schedule.Id,
+    ///             Key = "EXAMPLE_KEY",
+    ///             Value = "example",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class PipelineScheduleVariable : Pulumi.CustomResource
     {

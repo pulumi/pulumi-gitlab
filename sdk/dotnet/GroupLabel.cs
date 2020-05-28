@@ -13,6 +13,30 @@ namespace Pulumi.GitLab
     /// This resource allows you to create and manage labels for your GitLab groups.
     /// For further information on labels, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ee/user/project/labels.html#group-labels).
+    /// 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var fixme = new GitLab.GroupLabel("fixme", new GitLab.GroupLabelArgs
+    ///         {
+    ///             Color = "#ffcc00",
+    ///             Description = "issue with failing tests",
+    ///             Group = "example",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class GroupLabel : Pulumi.CustomResource
     {

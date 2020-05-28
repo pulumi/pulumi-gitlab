@@ -11,6 +11,29 @@ namespace Pulumi.GitLab
 {
     /// <summary>
     /// This resource allows you to protect a specific tag or wildcard by an access level so that the user with less access level cannot Create the tags.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var tagProtect = new GitLab.TagProtection("tagProtect", new GitLab.TagProtectionArgs
+    ///         {
+    ///             CreateAccessLevel = "developer",
+    ///             Project = "12345",
+    ///             Tag = "TagProtected",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class TagProtection : Pulumi.CustomResource
     {

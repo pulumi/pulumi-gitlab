@@ -13,6 +13,44 @@ namespace Pulumi.GitLab
     /// This resource allows you to enable pre-existing deploy keys for your GitLab projects.
     /// 
     /// **the GITLAB KEY_ID for the deploy key must be known**
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // A repo to host the deployment key
+    ///         var parentProject = new GitLab.Project("parentProject", new GitLab.ProjectArgs
+    ///         {
+    ///         });
+    ///         // A second repo to use the deployment key from the parent project
+    ///         var fooProject = new GitLab.Project("fooProject", new GitLab.ProjectArgs
+    ///         {
+    ///         });
+    ///         // Upload a deployment key for the parent repo
+    ///         var parentDeployKey = new GitLab.DeployKey("parentDeployKey", new GitLab.DeployKeyArgs
+    ///         {
+    ///             Key = "ssh-rsa AAAA...",
+    ///             Project = parentProject.Id,
+    ///             Title = "Example deploy key",
+    ///         });
+    ///         // Enable the deployment key on the second repo
+    ///         var fooDeployKeyEnable = new GitLab.DeployKeyEnable("fooDeployKeyEnable", new GitLab.DeployKeyEnableArgs
+    ///         {
+    ///             KeyId = parentDeployKey.Id,
+    ///             Project = fooProject.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DeployKeyEnable : Pulumi.CustomResource
     {

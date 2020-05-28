@@ -11,6 +11,30 @@ namespace Pulumi.GitLab
 {
     /// <summary>
     /// This resource allows you to add a user to an existing group.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test = new GitLab.GroupMembership("test", new GitLab.GroupMembershipArgs
+    ///         {
+    ///             AccessLevel = "guest",
+    ///             ExpiresAt = "2020-12-31",
+    ///             GroupId = "12345",
+    ///             UserId = 1337,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class GroupMembership : Pulumi.CustomResource
     {

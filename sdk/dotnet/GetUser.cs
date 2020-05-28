@@ -15,6 +15,27 @@ namespace Pulumi.GitLab
         /// Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(GitLab.GetUser.InvokeAsync(new GitLab.GetUserArgs
+        ///         {
+        ///             Username = "myuser",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)

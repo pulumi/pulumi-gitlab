@@ -13,6 +13,32 @@ namespace Pulumi.GitLab
     /// This resource allows you to create and manage CI/CD variables for your GitLab groups.
     /// For further information on variables, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
+    /// 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new GitLab.GroupVariable("example", new GitLab.GroupVariableArgs
+    ///         {
+    ///             Group = "12345",
+    ///             Key = "group_variable_key",
+    ///             Masked = false,
+    ///             Protected = false,
+    ///             Value = "group_variable_value",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class GroupVariable : Pulumi.CustomResource
     {

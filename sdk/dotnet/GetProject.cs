@@ -15,6 +15,27 @@ namespace Pulumi.GitLab
         /// Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(GitLab.GetProject.InvokeAsync(new GitLab.GetProjectArgs
+        ///         {
+        ///             Id = 30,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)

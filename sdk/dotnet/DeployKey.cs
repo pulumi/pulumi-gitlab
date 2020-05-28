@@ -11,6 +11,30 @@ namespace Pulumi.GitLab
 {
     /// <summary>
     /// This resource allows you to create and manage deploy keys for your GitLab projects.
+    /// 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new GitLab.DeployKey("example", new GitLab.DeployKeyArgs
+    ///         {
+    ///             Key = "ssh-rsa AAAA...",
+    ///             Project = "example/deploying",
+    ///             Title = "Example deploy key",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DeployKey : Pulumi.CustomResource
     {

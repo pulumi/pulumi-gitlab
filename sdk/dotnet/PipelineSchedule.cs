@@ -13,6 +13,30 @@ namespace Pulumi.GitLab
     /// This resource allows you to create and manage pipeline schedules.
     /// For further information on clusters, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ce/user/project/pipelines/schedules.html).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new GitLab.PipelineSchedule("example", new GitLab.PipelineScheduleArgs
+    ///         {
+    ///             Cron = "0 1 * * *",
+    ///             Description = "Used to schedule builds",
+    ///             Project = "12345",
+    ///             Ref = "master",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class PipelineSchedule : Pulumi.CustomResource
     {
