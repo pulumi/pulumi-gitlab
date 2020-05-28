@@ -22,6 +22,16 @@ func GetCacertFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gitlab:cacertFile")
 }
 
+// File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
+func GetClientCert(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gitlab:clientCert")
+}
+
+// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
+func GetClientKey(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gitlab:clientKey")
+}
+
 // Disable SSL verification of API calls
 func GetInsecure(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "gitlab:insecure")

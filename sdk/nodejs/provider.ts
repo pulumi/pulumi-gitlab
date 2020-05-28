@@ -40,6 +40,8 @@ export class Provider extends pulumi.ProviderResource {
         {
             inputs["baseUrl"] = (args ? args.baseUrl : undefined) || utilities.getEnv("GITLAB_BASE_URL");
             inputs["cacertFile"] = args ? args.cacertFile : undefined;
+            inputs["clientCert"] = args ? args.clientCert : undefined;
+            inputs["clientKey"] = args ? args.clientKey : undefined;
             inputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
             inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("GITLAB_TOKEN");
         }
@@ -66,6 +68,14 @@ export interface ProviderArgs {
      * A file containing the ca certificate to use in case ssl certificate is not from a standard chain
      */
     readonly cacertFile?: pulumi.Input<string>;
+    /**
+     * File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
+     */
+    readonly clientCert?: pulumi.Input<string>;
+    /**
+     * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
+     */
+    readonly clientKey?: pulumi.Input<string>;
     /**
      * Disable SSL verification of API calls
      */

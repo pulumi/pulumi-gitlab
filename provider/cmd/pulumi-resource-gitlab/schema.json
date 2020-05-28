@@ -27,6 +27,14 @@
                 "type": "string",
                 "description": "A file containing the ca certificate to use in case ssl certificate is not from a standard chain\n"
             },
+            "clientCert": {
+                "type": "string",
+                "description": "File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.\n"
+            },
+            "clientKey": {
+                "type": "string",
+                "description": "File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.\n"
+            },
             "insecure": {
                 "type": "boolean",
                 "description": "Disable SSL verification of API calls\n"
@@ -365,6 +373,14 @@
             "cacertFile": {
                 "type": "string",
                 "description": "A file containing the ca certificate to use in case ssl certificate is not from a standard chain\n"
+            },
+            "clientCert": {
+                "type": "string",
+                "description": "File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.\n"
+            },
+            "clientKey": {
+                "type": "string",
+                "description": "File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.\n"
             },
             "insecure": {
                 "type": "boolean",
@@ -978,6 +994,88 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the label.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/groupLdapLink:GroupLdapLink": {
+            "description": "This resource allows you to add an LDAP link to an existing GitLab group.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "Acceptable values are: guest, reporter, developer, maintainer, owner.\n"
+                },
+                "cn": {
+                    "type": "string",
+                    "description": "The CN of the LDAP group to link with.\n"
+                },
+                "force": {
+                    "type": "boolean"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The id of the GitLab group.\n"
+                },
+                "ldapProvider": {
+                    "type": "string",
+                    "description": "The name of the LDAP provider as stored in the GitLab database.\n"
+                }
+            },
+            "required": [
+                "accessLevel",
+                "cn",
+                "groupId",
+                "ldapProvider"
+            ],
+            "inputProperties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "Acceptable values are: guest, reporter, developer, maintainer, owner.\n"
+                },
+                "cn": {
+                    "type": "string",
+                    "description": "The CN of the LDAP group to link with.\n"
+                },
+                "force": {
+                    "type": "boolean"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The id of the GitLab group.\n"
+                },
+                "ldapProvider": {
+                    "type": "string",
+                    "description": "The name of the LDAP provider as stored in the GitLab database.\n"
+                }
+            },
+            "requiredInputs": [
+                "accessLevel",
+                "cn",
+                "groupId",
+                "ldapProvider"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupLdapLink resources.\n",
+                "properties": {
+                    "accessLevel": {
+                        "type": "string",
+                        "description": "Acceptable values are: guest, reporter, developer, maintainer, owner.\n"
+                    },
+                    "cn": {
+                        "type": "string",
+                        "description": "The CN of the LDAP group to link with.\n"
+                    },
+                    "force": {
+                        "type": "boolean"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The id of the GitLab group.\n"
+                    },
+                    "ldapProvider": {
+                        "type": "string",
+                        "description": "The name of the LDAP provider as stored in the GitLab database.\n"
                     }
                 },
                 "type": "object"

@@ -42,6 +42,10 @@ type providerArgs struct {
 	BaseUrl *string `pulumi:"baseUrl"`
 	// A file containing the ca certificate to use in case ssl certificate is not from a standard chain
 	CacertFile *string `pulumi:"cacertFile"`
+	// File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
+	ClientCert *string `pulumi:"clientCert"`
+	// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
+	ClientKey *string `pulumi:"clientKey"`
 	// Disable SSL verification of API calls
 	Insecure *bool `pulumi:"insecure"`
 	// The OAuth token used to connect to GitLab.
@@ -54,6 +58,10 @@ type ProviderArgs struct {
 	BaseUrl pulumi.StringPtrInput
 	// A file containing the ca certificate to use in case ssl certificate is not from a standard chain
 	CacertFile pulumi.StringPtrInput
+	// File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
+	ClientCert pulumi.StringPtrInput
+	// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
+	ClientKey pulumi.StringPtrInput
 	// Disable SSL verification of API calls
 	Insecure pulumi.BoolPtrInput
 	// The OAuth token used to connect to GitLab.

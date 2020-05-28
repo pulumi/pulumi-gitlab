@@ -57,6 +57,18 @@ namespace Pulumi.GitLab
         public Input<string>? CacertFile { get; set; }
 
         /// <summary>
+        /// File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
+        /// </summary>
+        [Input("clientCert")]
+        public Input<string>? ClientCert { get; set; }
+
+        /// <summary>
+        /// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
+        /// </summary>
+        [Input("clientKey")]
+        public Input<string>? ClientKey { get; set; }
+
+        /// <summary>
         /// Disable SSL verification of API calls
         /// </summary>
         [Input("insecure", json: true)]

@@ -106,6 +106,7 @@ func Provider() tfbridge.ProviderInfo {
 			"gitlab_project_cluster":            {Tok: gitLabResource(gitLabMod, "ProjectCluster")},
 			"gitlab_service_slack":              {Tok: gitLabResource(gitLabMod, "ServiceSlack")},
 			"gitlab_service_jira":               {Tok: gitLabResource(gitLabMod, "ServiceJira")},
+			"gitlab_group_ldap_link":            {Tok: gitLabResource(gitLabMod, "GroupLdapLink")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"gitlab_group":   {Tok: gitLabDataSource(gitLabMod, "getGroup")},
