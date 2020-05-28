@@ -11,6 +11,29 @@ namespace Pulumi.GitLab
 {
     /// <summary>
     /// This resource allows you to add a current user to an existing project with a set access level.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test = new GitLab.ProjectMembership("test", new GitLab.ProjectMembershipArgs
+    ///         {
+    ///             AccessLevel = "guest",
+    ///             ProjectId = "12345",
+    ///             UserId = 1337,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ProjectMembership : Pulumi.CustomResource
     {

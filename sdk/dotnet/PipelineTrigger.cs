@@ -11,6 +11,28 @@ namespace Pulumi.GitLab
 {
     /// <summary>
     /// This resource allows you to create and manage pipeline triggers
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new GitLab.PipelineTrigger("example", new GitLab.PipelineTriggerArgs
+    ///         {
+    ///             Description = "Used to trigger builds",
+    ///             Project = "12345",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class PipelineTrigger : Pulumi.CustomResource
     {

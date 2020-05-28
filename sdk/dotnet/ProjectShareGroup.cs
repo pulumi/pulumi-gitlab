@@ -11,6 +11,29 @@ namespace Pulumi.GitLab
 {
     /// <summary>
     /// This resource allows you to share a project with a group
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test = new GitLab.ProjectShareGroup("test", new GitLab.ProjectShareGroupArgs
+    ///         {
+    ///             AccessLevel = "guest",
+    ///             GroupId = 1337,
+    ///             ProjectId = "12345",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ProjectShareGroup : Pulumi.CustomResource
     {

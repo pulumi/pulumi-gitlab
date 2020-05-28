@@ -13,6 +13,30 @@ namespace Pulumi.GitLab
     /// This resource allows you to create and manage labels for your GitLab projects.
     /// For further information on labels, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ee/user/project/labels.html#project-labels).
+    /// 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var fixme = new GitLab.Label("fixme", new GitLab.LabelArgs
+    ///         {
+    ///             Color = "#ffcc00",
+    ///             Description = "issue with failing tests",
+    ///             Project = "example",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Label : Pulumi.CustomResource
     {

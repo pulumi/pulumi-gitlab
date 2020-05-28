@@ -13,6 +13,31 @@ namespace Pulumi.GitLab
     /// This resource allows you to create and manage CI/CD variables for your GitLab projects.
     /// For further information on variables, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
+    /// 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new GitLab.ProjectVariable("example", new GitLab.ProjectVariableArgs
+    ///         {
+    ///             Key = "project_variable_key",
+    ///             Project = "12345",
+    ///             Protected = false,
+    ///             Value = "project_variable_value",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ProjectVariable : Pulumi.CustomResource
     {

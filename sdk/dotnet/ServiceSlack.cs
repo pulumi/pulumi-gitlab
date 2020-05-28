@@ -11,6 +11,36 @@ namespace Pulumi.GitLab
 {
     /// <summary>
     /// This resource allows you to manage Slack notifications integration.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var awesomeProject = new GitLab.Project("awesomeProject", new GitLab.ProjectArgs
+    ///         {
+    ///             Description = "My awesome project.",
+    ///             VisibilityLevel = "public",
+    ///         });
+    ///         var slack = new GitLab.ServiceSlack("slack", new GitLab.ServiceSlackArgs
+    ///         {
+    ///             Project = awesomeProject.Id,
+    ///             PushChannel = "push_chan",
+    ///             PushEvents = true,
+    ///             Username = "myuser",
+    ///             Webhook = "https://webhook.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ServiceSlack : Pulumi.CustomResource
     {
