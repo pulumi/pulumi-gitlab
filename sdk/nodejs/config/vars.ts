@@ -15,6 +15,14 @@ export let baseUrl: string | undefined = __config.get("baseUrl") || utilities.ge
  */
 export let cacertFile: string | undefined = __config.get("cacertFile");
 /**
+ * File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
+ */
+export let clientCert: string | undefined = __config.get("clientCert");
+/**
+ * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
+ */
+export let clientKey: string | undefined = __config.get("clientKey");
+/**
  * Disable SSL verification of API calls
  */
 export let insecure: boolean | undefined = __config.getObject<boolean>("insecure");

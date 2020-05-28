@@ -12,6 +12,7 @@ export * from "./getUsers";
 export * from "./group";
 export * from "./groupCluster";
 export * from "./groupLabel";
+export * from "./groupLdapLink";
 export * from "./groupMembership";
 export * from "./groupVariable";
 export * from "./label";

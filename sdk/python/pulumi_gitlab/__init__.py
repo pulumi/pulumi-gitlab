@@ -20,6 +20,7 @@ from .get_users import *
 from .group import *
 from .group_cluster import *
 from .group_label import *
+from .group_ldap_link import *
 from .group_membership import *
 from .group_variable import *
 from .label import *

@@ -10,7 +10,7 @@ from typing import Union
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, base_url=None, cacert_file=None, insecure=None, token=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, base_url=None, cacert_file=None, client_cert=None, client_key=None, insecure=None, token=None, __props__=None, __name__=None, __opts__=None):
         """
         The provider type for the gitlab package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -21,6 +21,8 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] base_url: The GitLab Base API URL
         :param pulumi.Input[str] cacert_file: A file containing the ca certificate to use in case ssl certificate is not from a standard chain
+        :param pulumi.Input[str] client_cert: File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
+        :param pulumi.Input[str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
         :param pulumi.Input[bool] insecure: Disable SSL verification of API calls
         :param pulumi.Input[str] token: The OAuth token used to connect to GitLab.
         """
@@ -45,6 +47,8 @@ class Provider(pulumi.ProviderResource):
                 base_url = utilities.get_env('GITLAB_BASE_URL')
             __props__['base_url'] = base_url
             __props__['cacert_file'] = cacert_file
+            __props__['client_cert'] = client_cert
+            __props__['client_key'] = client_key
             __props__['insecure'] = pulumi.Output.from_input(insecure).apply(json.dumps) if insecure is not None else None
             if token is None:
                 token = utilities.get_env('GITLAB_TOKEN')

@@ -25,6 +25,7 @@
         "group.ts",
         "groupCluster.ts",
         "groupLabel.ts",
+        "groupLdapLink.ts",
         "groupMembership.ts",
         "groupVariable.ts",
         "index.ts",

@@ -19,6 +19,16 @@ namespace Pulumi.GitLab
         public static string? CacertFile { get; set; } = __config.Get("cacertFile");
 
         /// <summary>
+        /// File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
+        /// </summary>
+        public static string? ClientCert { get; set; } = __config.Get("clientCert");
+
+        /// <summary>
+        /// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
+        /// </summary>
+        public static string? ClientKey { get; set; } = __config.Get("clientKey");
+
+        /// <summary>
         /// Disable SSL verification of API calls
         /// </summary>
         public static bool? Insecure { get; set; } = __config.GetBoolean("insecure");

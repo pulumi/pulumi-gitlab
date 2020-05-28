@@ -21,6 +21,16 @@ cacert_file = __config__.get('cacertFile')
 A file containing the ca certificate to use in case ssl certificate is not from a standard chain
 """
 
+client_cert = __config__.get('clientCert')
+"""
+File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
+"""
+
+client_key = __config__.get('clientKey')
+"""
+File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
+"""
+
 insecure = __config__.get('insecure')
 """
 Disable SSL verification of API calls
