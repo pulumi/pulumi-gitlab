@@ -90,6 +90,788 @@
                 "groupId"
             ]
         },
+        "gitlab:/getProjectsProject:getProjectsProject": {
+            "properties": {
+                "_links": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "approvalsBeforeMerge": {
+                    "type": "integer",
+                    "description": "The numbers of approvals needed in a merge requests.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "archived": {
+                    "type": "boolean",
+                    "description": "Limit by archived status.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "avatarUrl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ciConfigPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "containerRegistryEnabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "createdAt": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "creatorId": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "customAttributes": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        }
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "defaultBranch": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "forkedFromProject": {
+                    "$ref": "#/types/gitlab:/getProjectsProjectForkedFromProject:getProjectsProjectForkedFromProject",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "forksCount": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpUrlToRepo": {
+                    "type": "string",
+                    "description": "The HTTP clone URL of the project.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the project.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "importError": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "importStatus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "issuesEnabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "jobsEnabled": {
+                    "type": "boolean",
+                    "description": "Whether pipelines are enabled for the project.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lastActivityAt": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lfsEnabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mergeMethod": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mergeRequestsEnabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mirror": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mirrorOverwritesDivergedBranches": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mirrorTriggerBuilds": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mirrorUserId": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the project.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nameWithNamespace": {
+                    "type": "string",
+                    "description": "In `group / subgroup / project` or `user / project` format.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "namespace": {
+                    "$ref": "#/types/gitlab:/getProjectsProjectNamespace:getProjectsProjectNamespace",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "onlyAllowMergeIfAllDiscussionsAreResolved": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "onlyAllowMergeIfPipelineSucceeds": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "onlyMirrorProtectedBranches": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "openIssuesCount": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "owner": {
+                    "$ref": "#/types/gitlab:/getProjectsProjectOwner:getProjectsProjectOwner",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "path": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pathWithNamespace": {
+                    "type": "string",
+                    "description": "In `group/subgroup/project` or `user/project` format.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "permissions": {
+                    "$ref": "#/types/gitlab:/getProjectsProjectPermissions:getProjectsProjectPermissions",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "public": {
+                    "type": "boolean",
+                    "description": "Whether the project is public.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "publicBuilds": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "readmeUrl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "requestAccessEnabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resolveOutdatedDiffDiscussions": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "runnersToken": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sharedRunnersEnabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sharedWithGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/gitlab:/getProjectsProjectSharedWithGroup:getProjectsProjectSharedWithGroup"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "snippetsEnabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sshUrlToRepo": {
+                    "type": "string",
+                    "description": "The SSH clone URL of the project.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "starCount": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "statistics": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    },
+                    "description": "Include project statistics. Cannot be used with `group_id`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tagLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of the project topics (formerly called \"project tags\").\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "visibility": {
+                    "type": "string",
+                    "description": "Limit by visibility `public`, `internal`, or `private`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "webUrl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "wikiEnabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "_links",
+                "approvalsBeforeMerge",
+                "archived",
+                "avatarUrl",
+                "ciConfigPath",
+                "containerRegistryEnabled",
+                "createdAt",
+                "creatorId",
+                "customAttributes",
+                "defaultBranch",
+                "description",
+                "forkedFromProject",
+                "forksCount",
+                "httpUrlToRepo",
+                "id",
+                "importError",
+                "importStatus",
+                "issuesEnabled",
+                "jobsEnabled",
+                "lastActivityAt",
+                "lfsEnabled",
+                "mergeMethod",
+                "mergeRequestsEnabled",
+                "mirror",
+                "mirrorOverwritesDivergedBranches",
+                "mirrorTriggerBuilds",
+                "mirrorUserId",
+                "name",
+                "nameWithNamespace",
+                "namespace",
+                "onlyAllowMergeIfAllDiscussionsAreResolved",
+                "onlyAllowMergeIfPipelineSucceeds",
+                "onlyMirrorProtectedBranches",
+                "openIssuesCount",
+                "owner",
+                "path",
+                "pathWithNamespace",
+                "permissions",
+                "public",
+                "publicBuilds",
+                "readmeUrl",
+                "requestAccessEnabled",
+                "resolveOutdatedDiffDiscussions",
+                "runnersToken",
+                "sharedRunnersEnabled",
+                "sharedWithGroups",
+                "snippetsEnabled",
+                "sshUrlToRepo",
+                "starCount",
+                "statistics",
+                "tagLists",
+                "visibility",
+                "webUrl",
+                "wikiEnabled"
+            ]
+        },
+        "gitlab:/getProjectsProjectForkedFromProject:getProjectsProjectForkedFromProject": {
+            "properties": {
+                "httpUrlToRepo": {
+                    "type": "string",
+                    "description": "The HTTP clone URL of the project.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the project.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the project.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nameWithNamespace": {
+                    "type": "string",
+                    "description": "In `group / subgroup / project` or `user / project` format.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "path": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pathWithNamespace": {
+                    "type": "string",
+                    "description": "In `group/subgroup/project` or `user/project` format.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "webUrl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "httpUrlToRepo",
+                "id",
+                "name",
+                "nameWithNamespace",
+                "path",
+                "pathWithNamespace",
+                "webUrl"
+            ]
+        },
+        "gitlab:/getProjectsProjectNamespace:getProjectsProjectNamespace": {
+            "properties": {
+                "fullPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the project.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kind": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the project.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "path": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "fullPath",
+                "id",
+                "kind",
+                "name",
+                "path"
+            ]
+        },
+        "gitlab:/getProjectsProjectOwner:getProjectsProjectOwner": {
+            "properties": {
+                "avatarUrl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the project.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the project.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "state": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "websiteUrl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "avatarUrl",
+                "id",
+                "name",
+                "state",
+                "username",
+                "websiteUrl"
+            ]
+        },
+        "gitlab:/getProjectsProjectPermissions:getProjectsProjectPermissions": {
+            "properties": {
+                "groupAccess": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectAccess": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "groupAccess",
+                "projectAccess"
+            ]
+        },
+        "gitlab:/getProjectsProjectSharedWithGroup:getProjectsProjectSharedWithGroup": {
+            "properties": {
+                "groupAccessLevel": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "groupId": {
+                    "type": "integer",
+                    "description": "The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "groupName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "groupAccessLevel",
+                "groupId",
+                "groupName"
+            ]
+        },
         "gitlab:/getUsersUser:getUsersUser": {
             "properties": {
                 "avatarUrl": {
@@ -617,6 +1399,114 @@
                 "type": "object"
             }
         },
+        "gitlab:index/deployToken:DeployToken": {
+            "description": "This resource allows you to create and manage deploy token for your GitLab projects and groups.\n",
+            "properties": {
+                "expiresAt": {
+                    "type": "string"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The name or id of the group to add the deploy token to.\nEither `project` or `group` must be set.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name to describe the deploy token with.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name or id of the project to add the deploy token to.\nEither `project` or `group` must be set.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Valid values: `read_repository`, `read_registry`.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The secret token. This is only populated when creating a new deploy token.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "A username for the deploy token. Default is `gitlab+deploy-token-{n}`.\n"
+                }
+            },
+            "required": [
+                "name",
+                "scopes",
+                "token",
+                "username"
+            ],
+            "inputProperties": {
+                "expiresAt": {
+                    "type": "string"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The name or id of the group to add the deploy token to.\nEither `project` or `group` must be set.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name to describe the deploy token with.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name or id of the project to add the deploy token to.\nEither `project` or `group` must be set.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Valid values: `read_repository`, `read_registry`.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "A username for the deploy token. Default is `gitlab+deploy-token-{n}`.\n"
+                }
+            },
+            "requiredInputs": [
+                "scopes"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DeployToken resources.\n",
+                "properties": {
+                    "expiresAt": {
+                        "type": "string"
+                    },
+                    "group": {
+                        "type": "string",
+                        "description": "The name or id of the group to add the deploy token to.\nEither `project` or `group` must be set.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A name to describe the deploy token with.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The name or id of the project to add the deploy token to.\nEither `project` or `group` must be set.\n"
+                    },
+                    "scopes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Valid values: `read_repository`, `read_registry`.\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "The secret token. This is only populated when creating a new deploy token.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "A username for the deploy token. Default is `gitlab+deploy-token-{n}`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "gitlab:index/group:Group": {
             "properties": {
                 "description": {
@@ -758,7 +1648,7 @@
             }
         },
         "gitlab:index/groupCluster:GroupCluster": {
-            "description": "This resource allows you to create and manage group clusters for your GitLab groups.\nFor further information on clusters, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.Group(\"foo\", {\n    path: \"foo-path\",\n});\nconst bar = new gitlab.GroupCluster(\"bar\", {\n    domain: \"example.com\",\n    enabled: true,\n    environmentScope: \"*\",\n    group: foo.id,\n    kubernetesApiUrl: \"https://124.124.124\",\n    kubernetesAuthorizationType: \"rbac\",\n    kubernetesCaCert: \"some-cert\",\n    kubernetesToken: \"some-token\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.Group(\"foo\", path=\"foo-path\")\nbar = gitlab.GroupCluster(\"bar\",\n    domain=\"example.com\",\n    enabled=True,\n    environment_scope=\"*\",\n    group=foo.id,\n    kubernetes_api_url=\"https://124.124.124\",\n    kubernetes_authorization_type=\"rbac\",\n    kubernetes_ca_cert=\"some-cert\",\n    kubernetes_token=\"some-token\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new GitLab.Group(\"foo\", new GitLab.GroupArgs\n        {\n            Path = \"foo-path\",\n        });\n        var bar = new GitLab.GroupCluster(\"bar\", new GitLab.GroupClusterArgs\n        {\n            Domain = \"example.com\",\n            Enabled = true,\n            EnvironmentScope = \"*\",\n            Group = foo.Id,\n            KubernetesApiUrl = \"https://124.124.124\",\n            KubernetesAuthorizationType = \"rbac\",\n            KubernetesCaCert = \"some-cert\",\n            KubernetesToken = \"some-token\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "This resource allows you to create and manage group clusters for your GitLab groups.\nFor further information on clusters, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).\n\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
                 "clusterType": {
                     "type": "string"
@@ -801,6 +1691,9 @@
                 "managed": {
                     "type": "boolean",
                     "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
+                },
+                "managementProjectId": {
+                    "type": "string"
                 },
                 "name": {
                     "type": "string",
@@ -860,6 +1753,9 @@
                     "type": "boolean",
                     "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
                 },
+                "managementProjectId": {
+                    "type": "string"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of cluster.\n"
@@ -914,6 +1810,9 @@
                     "managed": {
                         "type": "boolean",
                         "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
+                    },
+                    "managementProjectId": {
+                        "type": "string"
                     },
                     "name": {
                         "type": "string",
@@ -1000,7 +1899,7 @@
             }
         },
         "gitlab:index/groupLdapLink:GroupLdapLink": {
-            "description": "This resource allows you to add an LDAP link to an existing GitLab group.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "This resource allows you to add an LDAP link to an existing GitLab group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.GroupLdapLink(\"test\", {\n    accessLevel: \"developer\",\n    cn: \"testuser\",\n    groupId: \"12345\",\n    ldapProvider: \"ldapmain\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.GroupLdapLink(\"test\",\n    access_level=\"developer\",\n    cn=\"testuser\",\n    group_id=\"12345\",\n    ldap_provider=\"ldapmain\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = new GitLab.GroupLdapLink(\"test\", new GitLab.GroupLdapLinkArgs\n        {\n            AccessLevel = \"developer\",\n            Cn = \"testuser\",\n            GroupId = \"12345\",\n            LdapProvider = \"ldapmain\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "accessLevel": {
                     "type": "string",
@@ -1153,7 +2052,7 @@
             }
         },
         "gitlab:index/groupVariable:GroupVariable": {
-            "description": "This resource allows you to create and manage CI/CD variables for your GitLab groups.\nFor further information on variables, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).\n\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "This resource allows you to create and manage CI/CD variables for your GitLab groups.\nFor further information on variables, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.GroupVariable(\"example\", {\n    group: \"12345\",\n    key: \"group_variable_key\",\n    masked: false,\n    protected: false,\n    value: \"group_variable_value\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.GroupVariable(\"example\",\n    group=\"12345\",\n    key=\"group_variable_key\",\n    masked=False,\n    protected=False,\n    value=\"group_variable_value\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.GroupVariable(\"example\", new GitLab.GroupVariableArgs\n        {\n            Group = \"12345\",\n            Key = \"group_variable_key\",\n            Masked = false,\n            Protected = false,\n            Value = \"group_variable_value\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "group": {
                     "type": "string",
@@ -1884,7 +2783,7 @@
             }
         },
         "gitlab:index/projectCluster:ProjectCluster": {
-            "description": "This resource allows you to create and manage project clusters for your GitLab projects.\nFor further information on clusters, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.Project(\"foo\", {});\nconst bar = new gitlab.ProjectCluster(\"bar\", {\n    domain: \"example.com\",\n    enabled: true,\n    environmentScope: \"*\",\n    kubernetesApiUrl: \"https://124.124.124\",\n    kubernetesAuthorizationType: \"rbac\",\n    kubernetesCaCert: \"some-cert\",\n    kubernetesNamespace: \"namespace\",\n    kubernetesToken: \"some-token\",\n    project: foo.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.Project(\"foo\")\nbar = gitlab.ProjectCluster(\"bar\",\n    domain=\"example.com\",\n    enabled=True,\n    environment_scope=\"*\",\n    kubernetes_api_url=\"https://124.124.124\",\n    kubernetes_authorization_type=\"rbac\",\n    kubernetes_ca_cert=\"some-cert\",\n    kubernetes_namespace=\"namespace\",\n    kubernetes_token=\"some-token\",\n    project=foo.id)\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new GitLab.Project(\"foo\", new GitLab.ProjectArgs\n        {\n        });\n        var bar = new GitLab.ProjectCluster(\"bar\", new GitLab.ProjectClusterArgs\n        {\n            Domain = \"example.com\",\n            Enabled = true,\n            EnvironmentScope = \"*\",\n            KubernetesApiUrl = \"https://124.124.124\",\n            KubernetesAuthorizationType = \"rbac\",\n            KubernetesCaCert = \"some-cert\",\n            KubernetesNamespace = \"namespace\",\n            KubernetesToken = \"some-token\",\n            Project = foo.Id,\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "This resource allows you to create and manage project clusters for your GitLab projects.\nFor further information on clusters, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).\n\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
                 "clusterType": {
                     "type": "string"
@@ -1927,6 +2826,9 @@
                 "managed": {
                     "type": "boolean",
                     "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
+                },
+                "managementProjectId": {
+                    "type": "string"
                 },
                 "name": {
                     "type": "string",
@@ -1990,6 +2892,9 @@
                     "type": "boolean",
                     "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
                 },
+                "managementProjectId": {
+                    "type": "string"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of cluster.\n"
@@ -2048,6 +2953,9 @@
                     "managed": {
                         "type": "boolean",
                         "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
+                    },
+                    "managementProjectId": {
+                        "type": "string"
                     },
                     "name": {
                         "type": "string",
@@ -3546,6 +4454,182 @@
                     "visibilityLevel",
                     "webUrl",
                     "wikiEnabled"
+                ]
+            }
+        },
+        "gitlab:index/getProjects:getProjects": {
+            "description": "Provides details about a list of projects in the Gitlab provider. Listing all projects and group projects with [project filtering](https://docs.gitlab.com/ee/api/projects.html#list-user-projects) or [group project filtering](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-projects) is supported.\n\n\u003e NOTE: This data source supports all available filters exposed by the `xanzy/go-gitlab` package, which might not expose all available filters exposed by the Gitlab APIs.   \n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getProjects.\n",
+                "properties": {
+                    "archived": {
+                        "type": "boolean",
+                        "description": "Limit by archived status.\n"
+                    },
+                    "groupId": {
+                        "type": "integer",
+                        "description": "The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.\n"
+                    },
+                    "includeSubgroups": {
+                        "type": "boolean",
+                        "description": "Include projects in subgroups of this group. Default is `false`. Needs `group_id`.\n"
+                    },
+                    "maxQueryablePages": {
+                        "type": "integer",
+                        "description": "Prevents overloading your Gitlab instance in case of a misconfiguration. Default is `10`.\n"
+                    },
+                    "membership": {
+                        "type": "boolean",
+                        "description": "Limit by projects that the current user is a member of.\n"
+                    },
+                    "minAccessLevel": {
+                        "type": "integer",
+                        "description": "Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `group_id`.\n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "Return projects ordered by `id`, `name`, `path`, `created_at`, `updated_at`, or `last_activity_at` fields. Default is `created_at`.\n"
+                    },
+                    "owned": {
+                        "type": "boolean",
+                        "description": "Limit by projects owned by the current user.\n"
+                    },
+                    "page": {
+                        "type": "integer"
+                    },
+                    "perPage": {
+                        "type": "integer"
+                    },
+                    "search": {
+                        "type": "string",
+                        "description": "Return list of authorized projects matching the search criteria.\n"
+                    },
+                    "simple": {
+                        "type": "boolean",
+                        "description": "Return only the ID, URL, name, and path of each project.\n"
+                    },
+                    "sort": {
+                        "type": "string",
+                        "description": "Return projects sorted in `asc` or `desc` order. Default is `desc`.\n"
+                    },
+                    "starred": {
+                        "type": "boolean",
+                        "description": "Limit by projects starred by the current user.\n"
+                    },
+                    "statistics": {
+                        "type": "boolean",
+                        "description": "Include project statistics. Cannot be used with `group_id`.\n"
+                    },
+                    "visibility": {
+                        "type": "string",
+                        "description": "Limit by visibility `public`, `internal`, or `private`.\n"
+                    },
+                    "withCustomAttributes": {
+                        "type": "boolean",
+                        "description": "Include custom attributes in response _(admins only)_.\n"
+                    },
+                    "withIssuesEnabled": {
+                        "type": "boolean",
+                        "description": "Limit by projects with issues feature enabled. Default is `false`.\n"
+                    },
+                    "withMergeRequestsEnabled": {
+                        "type": "boolean",
+                        "description": "Limit by projects with merge requests feature enabled. Default is `false`.\n"
+                    },
+                    "withProgrammingLanguage": {
+                        "type": "string",
+                        "description": "Limit by projects which use the given programming language. Cannot be used with `group_id`.\n"
+                    },
+                    "withShared": {
+                        "type": "boolean",
+                        "description": "Include projects shared to this group. Default is `true`. Needs `group_id`.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getProjects.\n",
+                "properties": {
+                    "archived": {
+                        "type": "boolean"
+                    },
+                    "groupId": {
+                        "type": "integer"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "includeSubgroups": {
+                        "type": "boolean"
+                    },
+                    "maxQueryablePages": {
+                        "type": "integer"
+                    },
+                    "membership": {
+                        "type": "boolean"
+                    },
+                    "minAccessLevel": {
+                        "type": "integer"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "owned": {
+                        "type": "boolean"
+                    },
+                    "page": {
+                        "type": "integer"
+                    },
+                    "perPage": {
+                        "type": "integer"
+                    },
+                    "projects": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:/getProjectsProject:getProjectsProject"
+                        },
+                        "description": "A list containing the projects matching the supplied arguments\n"
+                    },
+                    "search": {
+                        "type": "string"
+                    },
+                    "simple": {
+                        "type": "boolean"
+                    },
+                    "sort": {
+                        "type": "string"
+                    },
+                    "starred": {
+                        "type": "boolean"
+                    },
+                    "statistics": {
+                        "type": "boolean"
+                    },
+                    "visibility": {
+                        "type": "string",
+                        "description": "The visibility of the project.\n"
+                    },
+                    "withCustomAttributes": {
+                        "type": "boolean"
+                    },
+                    "withIssuesEnabled": {
+                        "type": "boolean"
+                    },
+                    "withMergeRequestsEnabled": {
+                        "type": "boolean"
+                    },
+                    "withProgrammingLanguage": {
+                        "type": "string"
+                    },
+                    "withShared": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projects",
+                    "id"
                 ]
             }
         },

@@ -4,6 +4,170 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as outputs from "../types/output";
 
+export interface GetProjectsProject {
+    _links: {[key: string]: string};
+    /**
+     * The numbers of approvals needed in a merge requests.
+     */
+    approvalsBeforeMerge: number;
+    /**
+     * Limit by archived status.
+     */
+    archived: boolean;
+    avatarUrl: string;
+    ciConfigPath: string;
+    containerRegistryEnabled: boolean;
+    createdAt: string;
+    creatorId: number;
+    customAttributes: {[key: string]: any}[];
+    defaultBranch: string;
+    description: string;
+    forkedFromProject: outputs.GetProjectsProjectForkedFromProject;
+    forksCount: number;
+    /**
+     * The HTTP clone URL of the project.
+     */
+    httpUrlToRepo: string;
+    /**
+     * The ID of the project.
+     */
+    id: number;
+    importError: string;
+    importStatus: string;
+    issuesEnabled: boolean;
+    /**
+     * Whether pipelines are enabled for the project.
+     */
+    jobsEnabled: boolean;
+    lastActivityAt: string;
+    lfsEnabled: boolean;
+    mergeMethod: string;
+    mergeRequestsEnabled: boolean;
+    mirror: boolean;
+    mirrorOverwritesDivergedBranches: boolean;
+    mirrorTriggerBuilds: boolean;
+    mirrorUserId: number;
+    /**
+     * The name of the project.
+     */
+    name: string;
+    /**
+     * In `group / subgroup / project` or `user / project` format.
+     */
+    nameWithNamespace: string;
+    namespace: outputs.GetProjectsProjectNamespace;
+    onlyAllowMergeIfAllDiscussionsAreResolved: boolean;
+    onlyAllowMergeIfPipelineSucceeds: boolean;
+    onlyMirrorProtectedBranches: boolean;
+    openIssuesCount: number;
+    owner: outputs.GetProjectsProjectOwner;
+    path: string;
+    /**
+     * In `group/subgroup/project` or `user/project` format.
+     */
+    pathWithNamespace: string;
+    permissions: outputs.GetProjectsProjectPermissions;
+    /**
+     * Whether the project is public.
+     */
+    public: boolean;
+    publicBuilds: boolean;
+    readmeUrl: string;
+    requestAccessEnabled: boolean;
+    resolveOutdatedDiffDiscussions: boolean;
+    runnersToken: string;
+    sharedRunnersEnabled: boolean;
+    sharedWithGroups: outputs.GetProjectsProjectSharedWithGroup[];
+    snippetsEnabled: boolean;
+    /**
+     * The SSH clone URL of the project.
+     */
+    sshUrlToRepo: string;
+    starCount: number;
+    /**
+     * Include project statistics. Cannot be used with `groupId`.
+     */
+    statistics: {[key: string]: number};
+    /**
+     * A set of the project topics (formerly called "project tags").
+     */
+    tagLists: string[];
+    /**
+     * Limit by visibility `public`, `internal`, or `private`.
+     */
+    visibility: string;
+    webUrl: string;
+    wikiEnabled: boolean;
+}
+
+export interface GetProjectsProjectForkedFromProject {
+    /**
+     * The HTTP clone URL of the project.
+     */
+    httpUrlToRepo: string;
+    /**
+     * The ID of the project.
+     */
+    id: number;
+    /**
+     * The name of the project.
+     */
+    name: string;
+    /**
+     * In `group / subgroup / project` or `user / project` format.
+     */
+    nameWithNamespace: string;
+    path: string;
+    /**
+     * In `group/subgroup/project` or `user/project` format.
+     */
+    pathWithNamespace: string;
+    webUrl: string;
+}
+
+export interface GetProjectsProjectNamespace {
+    fullPath: string;
+    /**
+     * The ID of the project.
+     */
+    id: number;
+    kind: string;
+    /**
+     * The name of the project.
+     */
+    name: string;
+    path: string;
+}
+
+export interface GetProjectsProjectOwner {
+    avatarUrl: string;
+    /**
+     * The ID of the project.
+     */
+    id: number;
+    /**
+     * The name of the project.
+     */
+    name: string;
+    state: string;
+    username: string;
+    websiteUrl: string;
+}
+
+export interface GetProjectsProjectPermissions {
+    groupAccess: {[key: string]: number};
+    projectAccess: {[key: string]: number};
+}
+
+export interface GetProjectsProjectSharedWithGroup {
+    groupAccessLevel: string;
+    /**
+     * The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
+     */
+    groupId: number;
+    groupName: string;
+}
+
 export interface GetUsersUser {
     /**
      * The avatar URL of the user.
