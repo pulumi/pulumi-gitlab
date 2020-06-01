@@ -530,8 +530,8 @@ github.com/stretchr/testify v1.5.1 h1:nOGnQDM7FYENwehXlg/kFVnos3rEvtKTjRvOWSzb6H
 github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
 github.com/terraform-providers/terraform-provider-archive v1.3.0 h1:8WzDXMwTdTd4Z7KAUjnYwopk1DgGJ/DLH0xowJ8h+/8=
 github.com/terraform-providers/terraform-provider-archive v1.3.0/go.mod h1:7oAwNW55F65KauS++/XmAnrXhLfQRTYt549eYs4zU0w=
-github.com/terraform-providers/terraform-provider-gitlab v1.3.1-0.20200528083554-6dfc090b8cbb h1:gNY2lV1cGaCN8hnl0ue1RdQ0Fc37GW3VcQtXAEUsYuE=
-github.com/terraform-providers/terraform-provider-gitlab v1.3.1-0.20200528083554-6dfc090b8cbb/go.mod h1:D0TVXXewZsx37tu+1oNLXHnxI83e+wDY/ADpYLMZOKw=
+github.com/terraform-providers/terraform-provider-gitlab v1.3.1-0.20200601144407-e0b827f38402 h1:ZyWszwOmV1Gav/N/FvhoZ8MppuP5y1CAd1FPGNnwM4g=
+github.com/terraform-providers/terraform-provider-gitlab v1.3.1-0.20200601144407-e0b827f38402/go.mod h1:mdWakdpoYxeHwci0O74wJwBvsnYsA8wpeIhu6vjp+RY=
 github.com/terraform-providers/terraform-provider-http v1.2.0 h1:pOP/SNlLjB18CydtTJJwzkZGkHYX3LWzIoQpYQuBdyw=
 github.com/terraform-providers/terraform-provider-http v1.2.0/go.mod h1:2Iot921OkLVSZr8FbIkvRN84ZV3w+oFKb7RlmPTQQAQ=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6 h1:9VTskZOIRf2vKF3UL8TuWElry5pgUpV1tFSe/e/0m/E=

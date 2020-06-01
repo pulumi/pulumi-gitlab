@@ -7,7 +7,7 @@ require (
 	github.com/pulumi/pulumi-terraform-bridge/v2 v2.4.0
 	github.com/pulumi/pulumi/pkg/v2 v2.3.0 // indirect
 	github.com/pulumi/pulumi/sdk/v2 v2.3.0
-	github.com/terraform-providers/terraform-provider-gitlab v1.3.1-0.20200528083554-6dfc090b8cbb
+	github.com/terraform-providers/terraform-provider-gitlab v1.3.1-0.20200601144407-e0b827f38402
 )
 
 replace (
