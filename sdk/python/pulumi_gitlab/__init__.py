@@ -13,8 +13,10 @@ for pkg in __all__:
 from .branch_protection import *
 from .deploy_key import *
 from .deploy_key_enable import *
+from .deploy_token import *
 from .get_group import *
 from .get_project import *
+from .get_projects import *
 from .get_user import *
 from .get_users import *
 from .group import *

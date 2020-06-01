@@ -30,6 +30,7 @@ import * as utilities from "./utilities";
  *     kubernetesCaCert: "some-cert",
  *     kubernetesNamespace: "namespace",
  *     kubernetesToken: "some-token",
+ *     managementClusterId: "123456",
  *     project: foo.id,
  * });
  * ```
@@ -99,6 +100,7 @@ export class ProjectCluster extends pulumi.CustomResource {
      * Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
      */
     public readonly managed!: pulumi.Output<boolean | undefined>;
+    public readonly managementProjectId!: pulumi.Output<string | undefined>;
     /**
      * The name of cluster.
      */
@@ -133,6 +135,7 @@ export class ProjectCluster extends pulumi.CustomResource {
             inputs["kubernetesNamespace"] = state ? state.kubernetesNamespace : undefined;
             inputs["kubernetesToken"] = state ? state.kubernetesToken : undefined;
             inputs["managed"] = state ? state.managed : undefined;
+            inputs["managementProjectId"] = state ? state.managementProjectId : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["platformType"] = state ? state.platformType : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -157,6 +160,7 @@ export class ProjectCluster extends pulumi.CustomResource {
             inputs["kubernetesNamespace"] = args ? args.kubernetesNamespace : undefined;
             inputs["kubernetesToken"] = args ? args.kubernetesToken : undefined;
             inputs["managed"] = args ? args.managed : undefined;
+            inputs["managementProjectId"] = args ? args.managementProjectId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["clusterType"] = undefined /*out*/;
@@ -217,6 +221,7 @@ export interface ProjectClusterState {
      * Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
      */
     readonly managed?: pulumi.Input<boolean>;
+    readonly managementProjectId?: pulumi.Input<string>;
     /**
      * The name of cluster.
      */
@@ -269,6 +274,7 @@ export interface ProjectClusterArgs {
      * Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
      */
     readonly managed?: pulumi.Input<boolean>;
+    readonly managementProjectId?: pulumi.Input<string>;
     /**
      * The name of cluster.
      */

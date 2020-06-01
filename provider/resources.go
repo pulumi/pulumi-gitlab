@@ -107,12 +107,14 @@ func Provider() tfbridge.ProviderInfo {
 			"gitlab_service_slack":              {Tok: gitLabResource(gitLabMod, "ServiceSlack")},
 			"gitlab_service_jira":               {Tok: gitLabResource(gitLabMod, "ServiceJira")},
 			"gitlab_group_ldap_link":            {Tok: gitLabResource(gitLabMod, "GroupLdapLink")},
+			"gitlab_deploy_token":               {Tok: gitLabResource(gitLabMod, "DeployToken")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"gitlab_group":   {Tok: gitLabDataSource(gitLabMod, "getGroup")},
-			"gitlab_project": {Tok: gitLabDataSource(gitLabMod, "getProject")},
-			"gitlab_user":    {Tok: gitLabDataSource(gitLabMod, "getUser")},
-			"gitlab_users":   {Tok: gitLabDataSource(gitLabMod, "getUsers")},
+			"gitlab_group":    {Tok: gitLabDataSource(gitLabMod, "getGroup")},
+			"gitlab_project":  {Tok: gitLabDataSource(gitLabMod, "getProject")},
+			"gitlab_user":     {Tok: gitLabDataSource(gitLabMod, "getUser")},
+			"gitlab_users":    {Tok: gitLabDataSource(gitLabMod, "getUsers")},
+			"gitlab_projects": {Tok: gitLabDataSource(gitLabMod, "getProjects")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

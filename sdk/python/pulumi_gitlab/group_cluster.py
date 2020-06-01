@@ -48,13 +48,14 @@ class GroupCluster(pulumi.CustomResource):
     """
     Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
     """
+    management_project_id: pulumi.Output[str]
     name: pulumi.Output[str]
     """
     The name of cluster.
     """
     platform_type: pulumi.Output[str]
     provider_type: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, domain=None, enabled=None, environment_scope=None, group=None, kubernetes_api_url=None, kubernetes_authorization_type=None, kubernetes_ca_cert=None, kubernetes_token=None, managed=None, name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, domain=None, enabled=None, environment_scope=None, group=None, kubernetes_api_url=None, kubernetes_authorization_type=None, kubernetes_ca_cert=None, kubernetes_token=None, managed=None, management_project_id=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
         This resource allows you to create and manage group clusters for your GitLab groups.
         For further information on clusters, consult the [gitlab
@@ -78,7 +79,8 @@ class GroupCluster(pulumi.CustomResource):
             kubernetes_api_url="https://124.124.124",
             kubernetes_authorization_type="rbac",
             kubernetes_ca_cert="some-cert",
-            kubernetes_token="some-token")
+            kubernetes_token="some-token",
+            management_cluster_id="123456")
         ```
 
 
@@ -127,6 +129,7 @@ class GroupCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'kubernetes_token'")
             __props__['kubernetes_token'] = kubernetes_token
             __props__['managed'] = managed
+            __props__['management_project_id'] = management_project_id
             __props__['name'] = name
             __props__['cluster_type'] = None
             __props__['created_at'] = None
@@ -139,7 +142,7 @@ class GroupCluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_type=None, created_at=None, domain=None, enabled=None, environment_scope=None, group=None, kubernetes_api_url=None, kubernetes_authorization_type=None, kubernetes_ca_cert=None, kubernetes_token=None, managed=None, name=None, platform_type=None, provider_type=None):
+    def get(resource_name, id, opts=None, cluster_type=None, created_at=None, domain=None, enabled=None, environment_scope=None, group=None, kubernetes_api_url=None, kubernetes_authorization_type=None, kubernetes_ca_cert=None, kubernetes_token=None, managed=None, management_project_id=None, name=None, platform_type=None, provider_type=None):
         """
         Get an existing GroupCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -173,6 +176,7 @@ class GroupCluster(pulumi.CustomResource):
         __props__["kubernetes_ca_cert"] = kubernetes_ca_cert
         __props__["kubernetes_token"] = kubernetes_token
         __props__["managed"] = managed
+        __props__["management_project_id"] = management_project_id
         __props__["name"] = name
         __props__["platform_type"] = platform_type
         __props__["provider_type"] = provider_type

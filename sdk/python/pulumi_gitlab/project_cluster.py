@@ -48,6 +48,7 @@ class ProjectCluster(pulumi.CustomResource):
     """
     Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
     """
+    management_project_id: pulumi.Output[str]
     name: pulumi.Output[str]
     """
     The name of cluster.
@@ -58,7 +59,7 @@ class ProjectCluster(pulumi.CustomResource):
     The id of the project to add the cluster to.
     """
     provider_type: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, domain=None, enabled=None, environment_scope=None, kubernetes_api_url=None, kubernetes_authorization_type=None, kubernetes_ca_cert=None, kubernetes_namespace=None, kubernetes_token=None, managed=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, domain=None, enabled=None, environment_scope=None, kubernetes_api_url=None, kubernetes_authorization_type=None, kubernetes_ca_cert=None, kubernetes_namespace=None, kubernetes_token=None, managed=None, management_project_id=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         This resource allows you to create and manage project clusters for your GitLab projects.
         For further information on clusters, consult the [gitlab
@@ -83,6 +84,7 @@ class ProjectCluster(pulumi.CustomResource):
             kubernetes_ca_cert="some-cert",
             kubernetes_namespace="namespace",
             kubernetes_token="some-token",
+            management_cluster_id="123456",
             project=foo.id)
         ```
 
@@ -131,6 +133,7 @@ class ProjectCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'kubernetes_token'")
             __props__['kubernetes_token'] = kubernetes_token
             __props__['managed'] = managed
+            __props__['management_project_id'] = management_project_id
             __props__['name'] = name
             if project is None:
                 raise TypeError("Missing required property 'project'")
@@ -146,7 +149,7 @@ class ProjectCluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_type=None, created_at=None, domain=None, enabled=None, environment_scope=None, kubernetes_api_url=None, kubernetes_authorization_type=None, kubernetes_ca_cert=None, kubernetes_namespace=None, kubernetes_token=None, managed=None, name=None, platform_type=None, project=None, provider_type=None):
+    def get(resource_name, id, opts=None, cluster_type=None, created_at=None, domain=None, enabled=None, environment_scope=None, kubernetes_api_url=None, kubernetes_authorization_type=None, kubernetes_ca_cert=None, kubernetes_namespace=None, kubernetes_token=None, managed=None, management_project_id=None, name=None, platform_type=None, project=None, provider_type=None):
         """
         Get an existing ProjectCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -181,6 +184,7 @@ class ProjectCluster(pulumi.CustomResource):
         __props__["kubernetes_namespace"] = kubernetes_namespace
         __props__["kubernetes_token"] = kubernetes_token
         __props__["managed"] = managed
+        __props__["management_project_id"] = management_project_id
         __props__["name"] = name
         __props__["platform_type"] = platform_type
         __props__["project"] = project

@@ -35,7 +35,8 @@ type GroupCluster struct {
 	// The token to authenticate against Kubernetes.
 	KubernetesToken pulumi.StringOutput `pulumi:"kubernetesToken"`
 	// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
-	Managed pulumi.BoolPtrOutput `pulumi:"managed"`
+	Managed             pulumi.BoolPtrOutput   `pulumi:"managed"`
+	ManagementProjectId pulumi.StringPtrOutput `pulumi:"managementProjectId"`
 	// The name of cluster.
 	Name         pulumi.StringOutput `pulumi:"name"`
 	PlatformType pulumi.StringOutput `pulumi:"platformType"`
@@ -98,7 +99,8 @@ type groupClusterState struct {
 	// The token to authenticate against Kubernetes.
 	KubernetesToken *string `pulumi:"kubernetesToken"`
 	// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
-	Managed *bool `pulumi:"managed"`
+	Managed             *bool   `pulumi:"managed"`
+	ManagementProjectId *string `pulumi:"managementProjectId"`
 	// The name of cluster.
 	Name         *string `pulumi:"name"`
 	PlatformType *string `pulumi:"platformType"`
@@ -125,7 +127,8 @@ type GroupClusterState struct {
 	// The token to authenticate against Kubernetes.
 	KubernetesToken pulumi.StringPtrInput
 	// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
-	Managed pulumi.BoolPtrInput
+	Managed             pulumi.BoolPtrInput
+	ManagementProjectId pulumi.StringPtrInput
 	// The name of cluster.
 	Name         pulumi.StringPtrInput
 	PlatformType pulumi.StringPtrInput
@@ -154,7 +157,8 @@ type groupClusterArgs struct {
 	// The token to authenticate against Kubernetes.
 	KubernetesToken string `pulumi:"kubernetesToken"`
 	// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
-	Managed *bool `pulumi:"managed"`
+	Managed             *bool   `pulumi:"managed"`
+	ManagementProjectId *string `pulumi:"managementProjectId"`
 	// The name of cluster.
 	Name *string `pulumi:"name"`
 }
@@ -178,7 +182,8 @@ type GroupClusterArgs struct {
 	// The token to authenticate against Kubernetes.
 	KubernetesToken pulumi.StringInput
 	// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
-	Managed pulumi.BoolPtrInput
+	Managed             pulumi.BoolPtrInput
+	ManagementProjectId pulumi.StringPtrInput
 	// The name of cluster.
 	Name pulumi.StringPtrInput
 }

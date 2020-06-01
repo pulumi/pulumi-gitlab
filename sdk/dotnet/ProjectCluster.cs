@@ -13,39 +13,6 @@ namespace Pulumi.GitLab
     /// This resource allows you to create and manage project clusters for your GitLab projects.
     /// For further information on clusters, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).
-    /// 
-    /// 
-    /// ## Example Usage
-    /// 
-    /// 
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var foo = new GitLab.Project("foo", new GitLab.ProjectArgs
-    ///         {
-    ///         });
-    ///         var bar = new GitLab.ProjectCluster("bar", new GitLab.ProjectClusterArgs
-    ///         {
-    ///             Domain = "example.com",
-    ///             Enabled = true,
-    ///             EnvironmentScope = "*",
-    ///             KubernetesApiUrl = "https://124.124.124",
-    ///             KubernetesAuthorizationType = "rbac",
-    ///             KubernetesCaCert = "some-cert",
-    ///             KubernetesNamespace = "namespace",
-    ///             KubernetesToken = "some-token",
-    ///             Project = foo.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class ProjectCluster : Pulumi.CustomResource
     {
@@ -108,6 +75,9 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("managed")]
         public Output<bool?> Managed { get; private set; } = null!;
+
+        [Output("managementProjectId")]
+        public Output<string?> ManagementProjectId { get; private set; } = null!;
 
         /// <summary>
         /// The name of cluster.
@@ -227,6 +197,9 @@ namespace Pulumi.GitLab
         [Input("managed")]
         public Input<bool>? Managed { get; set; }
 
+        [Input("managementProjectId")]
+        public Input<string>? ManagementProjectId { get; set; }
+
         /// <summary>
         /// The name of cluster.
         /// </summary>
@@ -305,6 +278,9 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("managed")]
         public Input<bool>? Managed { get; set; }
+
+        [Input("managementProjectId")]
+        public Input<string>? ManagementProjectId { get; set; }
 
         /// <summary>
         /// The name of cluster.
