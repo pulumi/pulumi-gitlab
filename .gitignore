@@ -11,3 +11,7 @@ Pulumi.*.yaml
 
 yarn.lock
 **/pulumiManifest.go
+
+ci-scripts
+**/schema.go
+**/version.txt
