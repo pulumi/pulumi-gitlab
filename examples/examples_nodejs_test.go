@@ -9,43 +9,34 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+// +build nodejs all
 
 package examples
 
 import (
-	"os"
+	"path"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
 )
 
+func TestAccProject(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: path.Join(getCwd(t), "project"),
+		})
 
-
-func checkTestCredentials(t *testing.T) {
-	token := os.Getenv("GITLAB_TOKEN")
-	if token == "" {
-		t.Skipf("Skipping test due to missing GITLAB_TOKEN environment variable")
-	}
-
-	baseUrl := os.Getenv("GITLAB_BASE_URL")
-	if baseUrl == "" {
-		t.Skipf("Skipping test due to missing GITLAB_BASE_URL environment variable")
-	}
+	integration.ProgramTest(t, &test)
 }
 
-func getCwd(t *testing.T) string {
-	cwd, err := os.Getwd()
-	if err != nil {
-		t.FailNow()
-	}
+func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	checkTestCredentials(t)
+	base := getBaseOptions()
+	baseJS := base.With(integration.ProgramTestOptions{
+		Dependencies: []string{
+			"@pulumi/gitlab",
+		},
+	})
 
-	return cwd
+	return baseJS
 }
-
-func getBaseOptions() integration.ProgramTestOptions {
-	return integration.ProgramTestOptions{
-		ExpectRefreshChanges: true,
-	}
-}
-
-
