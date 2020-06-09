@@ -166,6 +166,10 @@ export interface GetProjectsArgs {
 export interface GetProjectsResult {
     readonly archived?: boolean;
     readonly groupId?: number;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly includeSubgroups?: boolean;
     readonly maxQueryablePages?: number;
     readonly membership?: boolean;
@@ -192,8 +196,4 @@ export interface GetProjectsResult {
     readonly withMergeRequestsEnabled?: boolean;
     readonly withProgrammingLanguage?: string;
     readonly withShared?: boolean;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

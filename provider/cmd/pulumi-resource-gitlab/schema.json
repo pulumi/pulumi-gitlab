@@ -88,7 +88,16 @@
             "required": [
                 "groupAccessLevel",
                 "groupId"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "groupAccessLevel",
+                        "groupId",
+                        "groupName"
+                    ]
+                }
+            }
         },
         "gitlab:/getProjectsProject:getProjectsProject": {
             "properties": {
@@ -612,7 +621,12 @@
                 "visibility",
                 "webUrl",
                 "wikiEnabled"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "gitlab:/getProjectsProjectForkedFromProject:getProjectsProjectForkedFromProject": {
             "properties": {
@@ -687,7 +701,12 @@
                 "path",
                 "pathWithNamespace",
                 "webUrl"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "gitlab:/getProjectsProjectNamespace:getProjectsProjectNamespace": {
             "properties": {
@@ -741,7 +760,12 @@
                 "kind",
                 "name",
                 "path"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "gitlab:/getProjectsProjectOwner:getProjectsProjectOwner": {
             "properties": {
@@ -804,7 +828,12 @@
                 "state",
                 "username",
                 "websiteUrl"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "gitlab:/getProjectsProjectPermissions:getProjectsProjectPermissions": {
             "properties": {
@@ -835,7 +864,12 @@
             "required": [
                 "groupAccess",
                 "projectAccess"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "gitlab:/getProjectsProjectSharedWithGroup:getProjectsProjectSharedWithGroup": {
             "properties": {
@@ -870,7 +904,12 @@
                 "groupAccessLevel",
                 "groupId",
                 "groupName"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "gitlab:/getUsersUser:getUsersUser": {
             "properties": {
@@ -1137,7 +1176,12 @@
                 "twoFactorEnabled",
                 "username",
                 "websiteUrl"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         }
     },
     "provider": {
@@ -4911,8 +4955,10 @@
             "devDependencies": {
                 "@types/node": "^8.0.25"
             },
+            "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing GitLab resources.",
             "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-gitlab)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-gitlab` repo](https://github.com/pulumi/pulumi-gitlab/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-gitlab` repo](https://github.com/terraform-providers/terraform-provider-gitlab/issues).",
             "typescriptVersion": ""
         },
         "python": {

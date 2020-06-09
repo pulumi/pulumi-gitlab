@@ -2,15 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * This resource allows you to create and manage push rules for your GitLab projects.
  * For further information on push rules, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/push_rules/push_rules.html#push-rules).
- *
  */
 export class ProjectPushRules extends pulumi.CustomResource {
     /**
@@ -20,6 +17,7 @@ export class ProjectPushRules extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ProjectPushRulesState, opts?: pulumi.CustomResourceOptions): ProjectPushRules {
         return new ProjectPushRules(name, <any>state, { ...opts, id: id });
