@@ -101,6 +101,10 @@ export interface GetUserResult {
      */
     readonly external: boolean;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * Whether the user is an admin.
      */
     readonly isAdmin: boolean;
@@ -161,8 +165,4 @@ export interface GetUserResult {
      * User's website URL.
      */
     readonly websiteUrl: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -103,6 +103,10 @@ export interface GetUsersResult {
      * The external UID of the user.
      */
     readonly externUid?: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly orderBy?: string;
     readonly search?: string;
     readonly sort?: string;
@@ -110,8 +114,4 @@ export interface GetUsersResult {
      * The list of users.
      */
     readonly users: outputs.GetUsersUser[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

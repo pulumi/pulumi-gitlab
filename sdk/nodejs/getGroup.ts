@@ -69,6 +69,10 @@ export interface GetGroupResult {
     readonly fullPath: string;
     readonly groupId: number;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * Boolean, is LFS enabled for projects in this group.
      */
     readonly lfsEnabled: boolean;
@@ -100,8 +104,4 @@ export interface GetGroupResult {
      * Web URL of the group.
      */
     readonly webUrl: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
