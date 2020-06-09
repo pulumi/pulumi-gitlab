@@ -37,6 +37,7 @@ from .project_push_rules import *
 from .project_share_group import *
 from .project_variable import *
 from .provider import *
+from .service_github import *
 from .service_jira import *
 from .service_slack import *
 from .tag_protection import *

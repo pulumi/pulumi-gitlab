@@ -2549,6 +2549,10 @@
                     "type": "boolean",
                     "description": "Enable pipelines for the project.\n"
                 },
+                "removeSourceBranchAfterMerge": {
+                    "type": "boolean",
+                    "description": "Enable `Delete source branch` option by default for all new merge requests.\n"
+                },
                 "requestAccessEnabled": {
                     "type": "boolean",
                     "description": "Allow users to request member access.\n"
@@ -2670,6 +2674,10 @@
                     "type": "boolean",
                     "description": "Enable pipelines for the project.\n"
                 },
+                "removeSourceBranchAfterMerge": {
+                    "type": "boolean",
+                    "description": "Enable `Delete source branch` option by default for all new merge requests.\n"
+                },
                 "requestAccessEnabled": {
                     "type": "boolean",
                     "description": "Allow users to request member access.\n"
@@ -2775,6 +2783,10 @@
                     "pipelinesEnabled": {
                         "type": "boolean",
                         "description": "Enable pipelines for the project.\n"
+                    },
+                    "removeSourceBranchAfterMerge": {
+                        "type": "boolean",
+                        "description": "Enable `Delete source branch` option by default for all new merge requests.\n"
                     },
                     "requestAccessEnabled": {
                         "type": "boolean",
@@ -3531,6 +3543,102 @@
                     "variableType": {
                         "type": "string",
                         "description": "The type of a variable. Available types are: env_var (default) and file.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/serviceGithub:ServiceGithub": {
+            "description": "**NOTE**: requires either EE (self-hosted) or Silver and above (GitLab.com).\n\nThis resource manages a [GitHub integration](https://docs.gitlab.com/ee/user/project/integrations/github.html) that updates pipeline statuses on a GitHub repo's pull requests.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "ID of the project you want to activate integration on.\n"
+                },
+                "repositoryUrl": {
+                    "type": "string"
+                },
+                "staticContext": {
+                    "type": "boolean",
+                    "description": "Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub. See [Static / dynamic status check names] to learn more. \n"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "A GitHub personal access token with at least `repo:status` scope.\n"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "active",
+                "createdAt",
+                "project",
+                "repositoryUrl",
+                "title",
+                "token",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "project": {
+                    "type": "string",
+                    "description": "ID of the project you want to activate integration on.\n"
+                },
+                "repositoryUrl": {
+                    "type": "string"
+                },
+                "staticContext": {
+                    "type": "boolean",
+                    "description": "Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub. See [Static / dynamic status check names] to learn more. \n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "A GitHub personal access token with at least `repo:status` scope.\n"
+                }
+            },
+            "requiredInputs": [
+                "project",
+                "repositoryUrl",
+                "token"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ServiceGithub resources.\n",
+                "properties": {
+                    "active": {
+                        "type": "boolean"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "ID of the project you want to activate integration on.\n"
+                    },
+                    "repositoryUrl": {
+                        "type": "string"
+                    },
+                    "staticContext": {
+                        "type": "boolean",
+                        "description": "Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub. See [Static / dynamic status check names] to learn more. \n"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "A GitHub personal access token with at least `repo:status` scope.\n"
+                    },
+                    "updatedAt": {
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -4364,6 +4472,10 @@
                         "type": "boolean",
                         "description": "Enable pipelines for the project.\n"
                     },
+                    "removeSourceBranchAfterMerge": {
+                        "type": "boolean",
+                        "description": "Enable `Delete source branch` option by default for all new merge requests\n"
+                    },
                     "requestAccessEnabled": {
                         "type": "boolean",
                         "description": "Allow users to request member access.\n"
@@ -4448,6 +4560,10 @@
                         "type": "boolean",
                         "description": "Enable pipelines for the project.\n"
                     },
+                    "removeSourceBranchAfterMerge": {
+                        "type": "boolean",
+                        "description": "Enable `Delete source branch` option by default for all new merge requests\n"
+                    },
                     "requestAccessEnabled": {
                         "type": "boolean",
                         "description": "Allow users to request member access.\n"
@@ -4491,6 +4607,7 @@
                     "namespaceId",
                     "path",
                     "pipelinesEnabled",
+                    "removeSourceBranchAfterMerge",
                     "requestAccessEnabled",
                     "runnersToken",
                     "snippetsEnabled",

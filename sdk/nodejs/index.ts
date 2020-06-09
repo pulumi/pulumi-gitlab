@@ -29,6 +29,7 @@ export * from "./projectPushRules";
 export * from "./projectShareGroup";
 export * from "./projectVariable";
 export * from "./provider";
+export * from "./serviceGithub";
 export * from "./serviceJira";
 export * from "./serviceSlack";
 export * from "./tagProtection";
