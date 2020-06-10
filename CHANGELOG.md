@@ -1,7 +1,11 @@
 ## HEAD (Unreleased)
-* Upgrade to v2.10.0 of the GitLab Terraform Provider
+_(none)_
 
 ---
+
+## 2.4.0 (2020-06-10)
+* Upgrade to v2.10.0 of the GitLab Terraform Provider
+* Switch to GitHub actions for builds
 
 ## 2.3.0 (2020-06-01)
 * Upgrade to v2.9.0 of the GitLab Terraform Provider
