@@ -343,4 +343,6 @@ name: master
     branches:
     - master
     tags-ignore:
-    - '*'
+    - v*
+    - sdk/*
+    - '**'
