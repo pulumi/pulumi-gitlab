@@ -50,6 +50,8 @@ type Project struct {
 	Path pulumi.StringPtrOutput `pulumi:"path"`
 	// Enable pipelines for the project.
 	PipelinesEnabled pulumi.BoolPtrOutput `pulumi:"pipelinesEnabled"`
+	// Enable `Delete source branch` option by default for all new merge requests.
+	RemoveSourceBranchAfterMerge pulumi.BoolPtrOutput `pulumi:"removeSourceBranchAfterMerge"`
 	// Allow users to request member access.
 	RequestAccessEnabled pulumi.BoolPtrOutput `pulumi:"requestAccessEnabled"`
 	// Registration token to use during runner setup.
@@ -141,6 +143,8 @@ type projectState struct {
 	Path *string `pulumi:"path"`
 	// Enable pipelines for the project.
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
+	// Enable `Delete source branch` option by default for all new merge requests.
+	RemoveSourceBranchAfterMerge *bool `pulumi:"removeSourceBranchAfterMerge"`
 	// Allow users to request member access.
 	RequestAccessEnabled *bool `pulumi:"requestAccessEnabled"`
 	// Registration token to use during runner setup.
@@ -205,6 +209,8 @@ type ProjectState struct {
 	Path pulumi.StringPtrInput
 	// Enable pipelines for the project.
 	PipelinesEnabled pulumi.BoolPtrInput
+	// Enable `Delete source branch` option by default for all new merge requests.
+	RemoveSourceBranchAfterMerge pulumi.BoolPtrInput
 	// Allow users to request member access.
 	RequestAccessEnabled pulumi.BoolPtrInput
 	// Registration token to use during runner setup.
@@ -270,6 +276,8 @@ type projectArgs struct {
 	Path *string `pulumi:"path"`
 	// Enable pipelines for the project.
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
+	// Enable `Delete source branch` option by default for all new merge requests.
+	RemoveSourceBranchAfterMerge *bool `pulumi:"removeSourceBranchAfterMerge"`
 	// Allow users to request member access.
 	RequestAccessEnabled *bool `pulumi:"requestAccessEnabled"`
 	// Enable shared runners for this project.
@@ -325,6 +333,8 @@ type ProjectArgs struct {
 	Path pulumi.StringPtrInput
 	// Enable pipelines for the project.
 	PipelinesEnabled pulumi.BoolPtrInput
+	// Enable `Delete source branch` option by default for all new merge requests.
+	RemoveSourceBranchAfterMerge pulumi.BoolPtrInput
 	// Allow users to request member access.
 	RequestAccessEnabled pulumi.BoolPtrInput
 	// Enable shared runners for this project.

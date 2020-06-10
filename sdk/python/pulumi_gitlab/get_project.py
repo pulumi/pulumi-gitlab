@@ -13,7 +13,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, archived=None, default_branch=None, description=None, http_url_to_repo=None, id=None, issues_enabled=None, lfs_enabled=None, merge_requests_enabled=None, name=None, namespace_id=None, path=None, pipelines_enabled=None, request_access_enabled=None, runners_token=None, snippets_enabled=None, ssh_url_to_repo=None, visibility_level=None, web_url=None, wiki_enabled=None):
+    def __init__(__self__, archived=None, default_branch=None, description=None, http_url_to_repo=None, id=None, issues_enabled=None, lfs_enabled=None, merge_requests_enabled=None, name=None, namespace_id=None, path=None, pipelines_enabled=None, remove_source_branch_after_merge=None, request_access_enabled=None, runners_token=None, snippets_enabled=None, ssh_url_to_repo=None, visibility_level=None, web_url=None, wiki_enabled=None):
         if archived and not isinstance(archived, bool):
             raise TypeError("Expected argument 'archived' to be a bool")
         __self__.archived = archived
@@ -85,6 +85,12 @@ class GetProjectResult:
         """
         Enable pipelines for the project.
         """
+        if remove_source_branch_after_merge and not isinstance(remove_source_branch_after_merge, bool):
+            raise TypeError("Expected argument 'remove_source_branch_after_merge' to be a bool")
+        __self__.remove_source_branch_after_merge = remove_source_branch_after_merge
+        """
+        Enable `Delete source branch` option by default for all new merge requests
+        """
         if request_access_enabled and not isinstance(request_access_enabled, bool):
             raise TypeError("Expected argument 'request_access_enabled' to be a bool")
         __self__.request_access_enabled = request_access_enabled
@@ -146,6 +152,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             namespace_id=self.namespace_id,
             path=self.path,
             pipelines_enabled=self.pipelines_enabled,
+            remove_source_branch_after_merge=self.remove_source_branch_after_merge,
             request_access_enabled=self.request_access_enabled,
             runners_token=self.runners_token,
             snippets_enabled=self.snippets_enabled,
@@ -154,7 +161,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             web_url=self.web_url,
             wiki_enabled=self.wiki_enabled)
 
-def get_project(archived=None,default_branch=None,description=None,http_url_to_repo=None,id=None,issues_enabled=None,lfs_enabled=None,merge_requests_enabled=None,name=None,namespace_id=None,path=None,pipelines_enabled=None,request_access_enabled=None,runners_token=None,snippets_enabled=None,ssh_url_to_repo=None,visibility_level=None,web_url=None,wiki_enabled=None,opts=None):
+def get_project(archived=None,default_branch=None,description=None,http_url_to_repo=None,id=None,issues_enabled=None,lfs_enabled=None,merge_requests_enabled=None,name=None,namespace_id=None,path=None,pipelines_enabled=None,remove_source_branch_after_merge=None,request_access_enabled=None,runners_token=None,snippets_enabled=None,ssh_url_to_repo=None,visibility_level=None,web_url=None,wiki_enabled=None,opts=None):
     """
     Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
 
@@ -184,6 +191,7 @@ def get_project(archived=None,default_branch=None,description=None,http_url_to_r
            See `.Group` for an example.
     :param str path: The path of the repository.
     :param bool pipelines_enabled: Enable pipelines for the project.
+    :param bool remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests
     :param bool request_access_enabled: Allow users to request member access.
     :param str runners_token: Registration token to use during runner setup.
     :param bool snippets_enabled: Enable snippets for the project.
@@ -208,6 +216,7 @@ def get_project(archived=None,default_branch=None,description=None,http_url_to_r
     __args__['namespaceId'] = namespace_id
     __args__['path'] = path
     __args__['pipelinesEnabled'] = pipelines_enabled
+    __args__['removeSourceBranchAfterMerge'] = remove_source_branch_after_merge
     __args__['requestAccessEnabled'] = request_access_enabled
     __args__['runnersToken'] = runners_token
     __args__['snippetsEnabled'] = snippets_enabled
@@ -234,6 +243,7 @@ def get_project(archived=None,default_branch=None,description=None,http_url_to_r
         namespace_id=__ret__.get('namespaceId'),
         path=__ret__.get('path'),
         pipelines_enabled=__ret__.get('pipelinesEnabled'),
+        remove_source_branch_after_merge=__ret__.get('removeSourceBranchAfterMerge'),
         request_access_enabled=__ret__.get('requestAccessEnabled'),
         runners_token=__ret__.get('runnersToken'),
         snippets_enabled=__ret__.get('snippetsEnabled'),

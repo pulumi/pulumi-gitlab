@@ -43,6 +43,7 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
         "namespaceId": args.namespaceId,
         "path": args.path,
         "pipelinesEnabled": args.pipelinesEnabled,
+        "removeSourceBranchAfterMerge": args.removeSourceBranchAfterMerge,
         "requestAccessEnabled": args.requestAccessEnabled,
         "runnersToken": args.runnersToken,
         "snippetsEnabled": args.snippetsEnabled,
@@ -104,6 +105,10 @@ export interface GetProjectArgs {
      * Enable pipelines for the project.
      */
     readonly pipelinesEnabled?: boolean;
+    /**
+     * Enable `Delete source branch` option by default for all new merge requests
+     */
+    readonly removeSourceBranchAfterMerge?: boolean;
     /**
      * Allow users to request member access.
      */
@@ -186,6 +191,10 @@ export interface GetProjectResult {
      * Enable pipelines for the project.
      */
     readonly pipelinesEnabled: boolean;
+    /**
+     * Enable `Delete source branch` option by default for all new merge requests
+     */
+    readonly removeSourceBranchAfterMerge: boolean;
     /**
      * Allow users to request member access.
      */

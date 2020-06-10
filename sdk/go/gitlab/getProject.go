@@ -44,6 +44,8 @@ type LookupProjectArgs struct {
 	Path *string `pulumi:"path"`
 	// Enable pipelines for the project.
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
+	// Enable `Delete source branch` option by default for all new merge requests
+	RemoveSourceBranchAfterMerge *bool `pulumi:"removeSourceBranchAfterMerge"`
 	// Allow users to request member access.
 	RequestAccessEnabled *bool `pulumi:"requestAccessEnabled"`
 	// Registration token to use during runner setup.
@@ -88,6 +90,8 @@ type LookupProjectResult struct {
 	Path string `pulumi:"path"`
 	// Enable pipelines for the project.
 	PipelinesEnabled bool `pulumi:"pipelinesEnabled"`
+	// Enable `Delete source branch` option by default for all new merge requests
+	RemoveSourceBranchAfterMerge bool `pulumi:"removeSourceBranchAfterMerge"`
 	// Allow users to request member access.
 	RequestAccessEnabled bool `pulumi:"requestAccessEnabled"`
 	// Registration token to use during runner setup.
