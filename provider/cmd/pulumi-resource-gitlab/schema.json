@@ -3549,7 +3549,6 @@
             }
         },
         "gitlab:index/serviceGithub:ServiceGithub": {
-            "description": "**NOTE**: requires either EE (self-hosted) or Silver and above (GitLab.com).\n\nThis resource manages a [GitHub integration](https://docs.gitlab.com/ee/user/project/integrations/github.html) that updates pipeline statuses on a GitHub repo's pull requests.\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
                 "active": {
                     "type": "boolean"

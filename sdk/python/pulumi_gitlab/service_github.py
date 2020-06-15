@@ -29,12 +29,7 @@ class ServiceGithub(pulumi.CustomResource):
     updated_at: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, project=None, repository_url=None, static_context=None, token=None, __props__=None, __name__=None, __opts__=None):
         """
-        **NOTE**: requires either EE (self-hosted) or Silver and above (GitLab.com).
-
-        This resource manages a [GitHub integration](https://docs.gitlab.com/ee/user/project/integrations/github.html) that updates pipeline statuses on a GitHub repo's pull requests.
-
-
-
+        Create a ServiceGithub resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
