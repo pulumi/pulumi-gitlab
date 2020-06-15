@@ -82,6 +82,10 @@ class Project(pulumi.CustomResource):
     """
     Enable pipelines for the project.
     """
+    remove_source_branch_after_merge: pulumi.Output[bool]
+    """
+    Enable `Delete source branch` option by default for all new merge requests.
+    """
     request_access_enabled: pulumi.Output[bool]
     """
     Allow users to request member access.
@@ -130,7 +134,7 @@ class Project(pulumi.CustomResource):
     """
     Enable wiki for the project.
     """
-    def __init__(__self__, resource_name, opts=None, approvals_before_merge=None, archived=None, container_registry_enabled=None, default_branch=None, description=None, initialize_with_readme=None, issues_enabled=None, lfs_enabled=None, merge_method=None, merge_requests_enabled=None, name=None, namespace_id=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, path=None, pipelines_enabled=None, request_access_enabled=None, shared_runners_enabled=None, shared_with_groups=None, snippets_enabled=None, tags=None, visibility_level=None, wiki_enabled=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, approvals_before_merge=None, archived=None, container_registry_enabled=None, default_branch=None, description=None, initialize_with_readme=None, issues_enabled=None, lfs_enabled=None, merge_method=None, merge_requests_enabled=None, name=None, namespace_id=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, path=None, pipelines_enabled=None, remove_source_branch_after_merge=None, request_access_enabled=None, shared_runners_enabled=None, shared_with_groups=None, snippets_enabled=None, tags=None, visibility_level=None, wiki_enabled=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Project resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -154,6 +158,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
+        :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[list] shared_with_groups: Enable sharing the project with a list of groups (maps).
@@ -204,6 +209,7 @@ class Project(pulumi.CustomResource):
             __props__['only_allow_merge_if_pipeline_succeeds'] = only_allow_merge_if_pipeline_succeeds
             __props__['path'] = path
             __props__['pipelines_enabled'] = pipelines_enabled
+            __props__['remove_source_branch_after_merge'] = remove_source_branch_after_merge
             __props__['request_access_enabled'] = request_access_enabled
             __props__['shared_runners_enabled'] = shared_runners_enabled
             __props__['shared_with_groups'] = shared_with_groups
@@ -222,7 +228,7 @@ class Project(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, approvals_before_merge=None, archived=None, container_registry_enabled=None, default_branch=None, description=None, http_url_to_repo=None, initialize_with_readme=None, issues_enabled=None, lfs_enabled=None, merge_method=None, merge_requests_enabled=None, name=None, namespace_id=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, path=None, pipelines_enabled=None, request_access_enabled=None, runners_token=None, shared_runners_enabled=None, shared_with_groups=None, snippets_enabled=None, ssh_url_to_repo=None, tags=None, visibility_level=None, web_url=None, wiki_enabled=None):
+    def get(resource_name, id, opts=None, approvals_before_merge=None, archived=None, container_registry_enabled=None, default_branch=None, description=None, http_url_to_repo=None, initialize_with_readme=None, issues_enabled=None, lfs_enabled=None, merge_method=None, merge_requests_enabled=None, name=None, namespace_id=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, path=None, pipelines_enabled=None, remove_source_branch_after_merge=None, request_access_enabled=None, runners_token=None, shared_runners_enabled=None, shared_with_groups=None, snippets_enabled=None, ssh_url_to_repo=None, tags=None, visibility_level=None, web_url=None, wiki_enabled=None):
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -251,6 +257,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
+        :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[str] runners_token: Registration token to use during runner setup.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
@@ -293,6 +300,7 @@ class Project(pulumi.CustomResource):
         __props__["only_allow_merge_if_pipeline_succeeds"] = only_allow_merge_if_pipeline_succeeds
         __props__["path"] = path
         __props__["pipelines_enabled"] = pipelines_enabled
+        __props__["remove_source_branch_after_merge"] = remove_source_branch_after_merge
         __props__["request_access_enabled"] = request_access_enabled
         __props__["runners_token"] = runners_token
         __props__["shared_runners_enabled"] = shared_runners_enabled

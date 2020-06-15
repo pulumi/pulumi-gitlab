@@ -43,6 +43,7 @@
         "projectShareGroup.ts",
         "projectVariable.ts",
         "provider.ts",
+        "serviceGithub.ts",
         "serviceJira.ts",
         "serviceSlack.ts",
         "tagProtection.ts",

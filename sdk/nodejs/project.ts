@@ -107,6 +107,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly pipelinesEnabled!: pulumi.Output<boolean | undefined>;
     /**
+     * Enable `Delete source branch` option by default for all new merge requests.
+     */
+    public readonly removeSourceBranchAfterMerge!: pulumi.Output<boolean | undefined>;
+    /**
      * Allow users to request member access.
      */
     public readonly requestAccessEnabled!: pulumi.Output<boolean | undefined>;
@@ -179,6 +183,7 @@ export class Project extends pulumi.CustomResource {
             inputs["onlyAllowMergeIfPipelineSucceeds"] = state ? state.onlyAllowMergeIfPipelineSucceeds : undefined;
             inputs["path"] = state ? state.path : undefined;
             inputs["pipelinesEnabled"] = state ? state.pipelinesEnabled : undefined;
+            inputs["removeSourceBranchAfterMerge"] = state ? state.removeSourceBranchAfterMerge : undefined;
             inputs["requestAccessEnabled"] = state ? state.requestAccessEnabled : undefined;
             inputs["runnersToken"] = state ? state.runnersToken : undefined;
             inputs["sharedRunnersEnabled"] = state ? state.sharedRunnersEnabled : undefined;
@@ -207,6 +212,7 @@ export class Project extends pulumi.CustomResource {
             inputs["onlyAllowMergeIfPipelineSucceeds"] = args ? args.onlyAllowMergeIfPipelineSucceeds : undefined;
             inputs["path"] = args ? args.path : undefined;
             inputs["pipelinesEnabled"] = args ? args.pipelinesEnabled : undefined;
+            inputs["removeSourceBranchAfterMerge"] = args ? args.removeSourceBranchAfterMerge : undefined;
             inputs["requestAccessEnabled"] = args ? args.requestAccessEnabled : undefined;
             inputs["sharedRunnersEnabled"] = args ? args.sharedRunnersEnabled : undefined;
             inputs["sharedWithGroups"] = args ? args.sharedWithGroups : undefined;
@@ -306,6 +312,10 @@ export interface ProjectState {
      * Enable pipelines for the project.
      */
     readonly pipelinesEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enable `Delete source branch` option by default for all new merge requests.
+     */
+    readonly removeSourceBranchAfterMerge?: pulumi.Input<boolean>;
     /**
      * Allow users to request member access.
      */
@@ -422,6 +432,10 @@ export interface ProjectArgs {
      * Enable pipelines for the project.
      */
     readonly pipelinesEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enable `Delete source branch` option by default for all new merge requests.
+     */
+    readonly removeSourceBranchAfterMerge?: pulumi.Input<boolean>;
     /**
      * Allow users to request member access.
      */

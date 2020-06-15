@@ -117,6 +117,12 @@ namespace Pulumi.GitLab
         public bool? PipelinesEnabled { get; set; }
 
         /// <summary>
+        /// Enable `Delete source branch` option by default for all new merge requests
+        /// </summary>
+        [Input("removeSourceBranchAfterMerge")]
+        public bool? RemoveSourceBranchAfterMerge { get; set; }
+
+        /// <summary>
         /// Allow users to request member access.
         /// </summary>
         [Input("requestAccessEnabled")]
@@ -216,6 +222,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool PipelinesEnabled;
         /// <summary>
+        /// Enable `Delete source branch` option by default for all new merge requests
+        /// </summary>
+        public readonly bool RemoveSourceBranchAfterMerge;
+        /// <summary>
         /// Allow users to request member access.
         /// </summary>
         public readonly bool RequestAccessEnabled;
@@ -271,6 +281,8 @@ namespace Pulumi.GitLab
 
             bool pipelinesEnabled,
 
+            bool removeSourceBranchAfterMerge,
+
             bool requestAccessEnabled,
 
             string runnersToken,
@@ -297,6 +309,7 @@ namespace Pulumi.GitLab
             NamespaceId = namespaceId;
             Path = path;
             PipelinesEnabled = pipelinesEnabled;
+            RemoveSourceBranchAfterMerge = removeSourceBranchAfterMerge;
             RequestAccessEnabled = requestAccessEnabled;
             RunnersToken = runnersToken;
             SnippetsEnabled = snippetsEnabled;
