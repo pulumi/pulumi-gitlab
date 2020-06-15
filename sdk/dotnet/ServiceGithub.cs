@@ -9,11 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.GitLab
 {
-    /// <summary>
-    /// **NOTE**: requires either EE (self-hosted) or Silver and above (GitLab.com).
-    /// 
-    /// This resource manages a [GitHub integration](https://docs.gitlab.com/ee/user/project/integrations/github.html) that updates pipeline statuses on a GitHub repo's pull requests.
-    /// </summary>
     public partial class ServiceGithub : Pulumi.CustomResource
     {
         [Output("active")]
