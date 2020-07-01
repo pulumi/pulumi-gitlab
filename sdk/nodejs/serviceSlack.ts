@@ -4,30 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * This resource allows you to manage Slack notifications integration.
- *
- * ## Example Usage
- *
- *
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const awesomeProject = new gitlab.Project("awesomeProject", {
- *     description: "My awesome project.",
- *     visibilityLevel: "public",
- * });
- * const slack = new gitlab.ServiceSlack("slack", {
- *     project: awesomeProject.id,
- *     pushChannel: "pushChan",
- *     pushEvents: true,
- *     username: "myuser",
- *     webhook: "https://webhook.com",
- * });
- * ```
- */
 export class ServiceSlack extends pulumi.CustomResource {
     /**
      * Get an existing ServiceSlack resource's state with the given name, ID, and optional extra

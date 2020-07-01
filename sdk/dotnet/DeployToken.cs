@@ -12,8 +12,8 @@ namespace Pulumi.GitLab
     /// <summary>
     /// This resource allows you to create and manage deploy token for your GitLab projects and groups.
     /// 
-    /// 
-    /// ## Example Usage - Project
+    /// ## Example Usage
+    /// ### Project
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -38,8 +38,7 @@ namespace Pulumi.GitLab
     /// 
     /// }
     /// ```
-    /// 
-    /// ## Example Usage - Group
+    /// ### Group
     /// 
     /// ```csharp
     /// using Pulumi;

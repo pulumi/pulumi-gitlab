@@ -11,6 +11,32 @@ import (
 )
 
 // This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch. GitLab EE features to protect by group or user are not supported.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gitlab.NewBranchProtection(ctx, "branchProtect", &gitlab.BranchProtectionArgs{
+// 			Branch:           pulumi.String("BranchProtected"),
+// 			MergeAccessLevel: pulumi.String("developer"),
+// 			Project:          pulumi.String("12345"),
+// 			PushAccessLevel:  pulumi.String("developer"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type BranchProtection struct {
 	pulumi.CustomResourceState
 

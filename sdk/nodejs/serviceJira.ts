@@ -4,29 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * This resource allows you to manage Jira integration.
- *
- * ## Example Usage
- *
- *
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const awesomeProject = new gitlab.Project("awesomeProject", {
- *     description: "My awesome project.",
- *     visibilityLevel: "public",
- * });
- * const jira = new gitlab.ServiceJira("jira", {
- *     password: "mypass",
- *     project: awesomeProject.id,
- *     url: "https://jira.example.com",
- *     username: "user",
- * });
- * ```
- */
 export class ServiceJira extends pulumi.CustomResource {
     /**
      * Get an existing ServiceJira resource's state with the given name, ID, and optional extra

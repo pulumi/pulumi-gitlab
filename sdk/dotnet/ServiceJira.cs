@@ -9,38 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.GitLab
 {
-    /// <summary>
-    /// This resource allows you to manage Jira integration.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// 
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var awesomeProject = new GitLab.Project("awesomeProject", new GitLab.ProjectArgs
-    ///         {
-    ///             Description = "My awesome project.",
-    ///             VisibilityLevel = "public",
-    ///         });
-    ///         var jira = new GitLab.ServiceJira("jira", new GitLab.ServiceJiraArgs
-    ///         {
-    ///             Password = "mypass",
-    ///             Project = awesomeProject.Id,
-    ///             Url = "https://jira.example.com",
-    ///             Username = "user",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ServiceJira : Pulumi.CustomResource
     {
         [Output("active")]

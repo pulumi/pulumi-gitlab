@@ -9,10 +9,7 @@ import * as utilities from "./utilities";
  * For further information on hooks, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/user/project/integrations/webhooks.html).
  *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

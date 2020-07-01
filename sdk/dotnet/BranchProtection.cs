@@ -14,8 +14,6 @@ namespace Pulumi.GitLab
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;

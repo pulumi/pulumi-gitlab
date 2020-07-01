@@ -11,6 +11,31 @@ import (
 )
 
 // This resource allows you to add a current user to an existing project with a set access level.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gitlab.NewProjectMembership(ctx, "test", &gitlab.ProjectMembershipArgs{
+// 			AccessLevel: pulumi.String("guest"),
+// 			ProjectId:   pulumi.String("12345"),
+// 			UserId:      pulumi.Int(1337),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ProjectMembership struct {
 	pulumi.CustomResourceState
 

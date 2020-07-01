@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
+ * **By group's ID**
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +19,17 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(gitlab.getGroup({
  *     groupId: 123,
+ * }, { async: true }));
+ * ```
+ *
+ * **By group's full path**
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const foo = pulumi.output(gitlab.getGroup({
+ *     fullPath: "foo/bar",
  * }, { async: true }));
  * ```
  */

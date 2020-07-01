@@ -10,6 +10,69 @@ import (
 // Provides details about a list of projects in the Gitlab provider. Listing all projects and group projects with [project filtering](https://docs.gitlab.com/ee/api/projects.html#list-user-projects) or [group project filtering](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-projects) is supported.
 //
 // > NOTE: This data source supports all available filters exposed by the `xanzy/go-gitlab` package, which might not expose all available filters exposed by the Gitlab APIs.
+//
+// ## Example Usage
+// ### List projects within a group tree
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "mygroup"
+// 		mygroup, err := gitlab.LookupGroup(ctx, &gitlab.LookupGroupArgs{
+// 			FullPath: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt1 := mygroup.Id
+// 		opt2 := "name"
+// 		opt3 := true
+// 		opt4 := false
+// 		_, err = gitlab.GetProjects(ctx, &gitlab.GetProjectsArgs{
+// 			GroupId:          &opt1,
+// 			OrderBy:          &opt2,
+// 			IncludeSubgroups: &opt3,
+// 			WithShared:       &opt4,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### List projects using the search syntax
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "postgresql"
+// 		opt1 := "private"
+// 		_, err := gitlab.GetProjects(ctx, &gitlab.GetProjectsArgs{
+// 			Search:     &opt0,
+// 			Visibility: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.InvokeOption) (*GetProjectsResult, error) {
 	var rv GetProjectsResult
 	err := ctx.Invoke("gitlab:index/getProjects:getProjects", args, &rv, opts...)

@@ -8,6 +8,29 @@ import (
 )
 
 // Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gitlab.LookupProject(ctx, &gitlab.LookupProjectArgs{
+// 			Id: 30,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	var rv LookupProjectResult
 	err := ctx.Invoke("gitlab:index/getProject:getProject", args, &rv, opts...)
@@ -38,7 +61,7 @@ type LookupProjectArgs struct {
 	MergeRequestsEnabled *bool   `pulumi:"mergeRequestsEnabled"`
 	Name                 *string `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
-	// See `.Group` for an example.
+	// See `Group` for an example.
 	NamespaceId *int `pulumi:"namespaceId"`
 	// The path of the repository.
 	Path *string `pulumi:"path"`
@@ -84,7 +107,7 @@ type LookupProjectResult struct {
 	MergeRequestsEnabled bool   `pulumi:"mergeRequestsEnabled"`
 	Name                 string `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
-	// See `.Group` for an example.
+	// See `Group` for an example.
 	NamespaceId int `pulumi:"namespaceId"`
 	// The path of the repository.
 	Path string `pulumi:"path"`

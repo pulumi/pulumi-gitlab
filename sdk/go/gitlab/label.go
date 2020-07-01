@@ -13,6 +13,31 @@ import (
 // This resource allows you to create and manage labels for your GitLab projects.
 // For further information on labels, consult the [gitlab
 // documentation](https://docs.gitlab.com/ee/user/project/labels.html#project-labels).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gitlab.NewLabel(ctx, "fixme", &gitlab.LabelArgs{
+// 			Color:       pulumi.String("#ffcc00"),
+// 			Description: pulumi.String("issue with failing tests"),
+// 			Project:     pulumi.String("example"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Label struct {
 	pulumi.CustomResourceState
 

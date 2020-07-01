@@ -11,6 +11,61 @@ import (
 )
 
 // This resource allows you to create and manage deploy token for your GitLab projects and groups.
+//
+// ## Example Usage
+// ### Project
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gitlab.NewDeployToken(ctx, "example", &gitlab.DeployTokenArgs{
+// 			ExpiresAt: pulumi.String("2020-03-14T00:00:00.000Z"),
+// 			Project:   pulumi.String("example/deploying"),
+// 			Scopes: pulumi.StringArray{
+// 				pulumi.String("read_repository"),
+// 				pulumi.String("read_registry"),
+// 			},
+// 			Username: pulumi.String("example-username"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Group
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gitlab.NewDeployToken(ctx, "example", &gitlab.DeployTokenArgs{
+// 			Group: pulumi.String("example/deploying"),
+// 			Scopes: pulumi.StringArray{
+// 				pulumi.String("read_repository"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DeployToken struct {
 	pulumi.CustomResourceState
 

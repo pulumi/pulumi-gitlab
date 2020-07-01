@@ -23,8 +23,7 @@ type ProjectSharedWithGroup struct {
 // ProjectSharedWithGroupInput is an input type that accepts ProjectSharedWithGroupArgs and ProjectSharedWithGroupOutput values.
 // You can construct a concrete instance of `ProjectSharedWithGroupInput` via:
 //
-// 		 ProjectSharedWithGroupArgs{...}
-//
+//          ProjectSharedWithGroupArgs{...}
 type ProjectSharedWithGroupInput interface {
 	pulumi.Input
 
@@ -57,8 +56,7 @@ func (i ProjectSharedWithGroupArgs) ToProjectSharedWithGroupOutputWithContext(ct
 // ProjectSharedWithGroupArrayInput is an input type that accepts ProjectSharedWithGroupArray and ProjectSharedWithGroupArrayOutput values.
 // You can construct a concrete instance of `ProjectSharedWithGroupArrayInput` via:
 //
-// 		 ProjectSharedWithGroupArray{ ProjectSharedWithGroupArgs{...} }
-//
+//          ProjectSharedWithGroupArray{ ProjectSharedWithGroupArgs{...} }
 type ProjectSharedWithGroupArrayInput interface {
 	pulumi.Input
 
@@ -203,8 +201,7 @@ type GetProjectsProject struct {
 // GetProjectsProjectInput is an input type that accepts GetProjectsProjectArgs and GetProjectsProjectOutput values.
 // You can construct a concrete instance of `GetProjectsProjectInput` via:
 //
-// 		 GetProjectsProjectArgs{...}
-//
+//          GetProjectsProjectArgs{...}
 type GetProjectsProjectInput interface {
 	pulumi.Input
 
@@ -297,8 +294,7 @@ func (i GetProjectsProjectArgs) ToGetProjectsProjectOutputWithContext(ctx contex
 // GetProjectsProjectArrayInput is an input type that accepts GetProjectsProjectArray and GetProjectsProjectArrayOutput values.
 // You can construct a concrete instance of `GetProjectsProjectArrayInput` via:
 //
-// 		 GetProjectsProjectArray{ GetProjectsProjectArgs{...} }
-//
+//          GetProjectsProjectArray{ GetProjectsProjectArgs{...} }
 type GetProjectsProjectArrayInput interface {
 	pulumi.Input
 
@@ -601,8 +597,7 @@ type GetProjectsProjectForkedFromProject struct {
 // GetProjectsProjectForkedFromProjectInput is an input type that accepts GetProjectsProjectForkedFromProjectArgs and GetProjectsProjectForkedFromProjectOutput values.
 // You can construct a concrete instance of `GetProjectsProjectForkedFromProjectInput` via:
 //
-// 		 GetProjectsProjectForkedFromProjectArgs{...}
-//
+//          GetProjectsProjectForkedFromProjectArgs{...}
 type GetProjectsProjectForkedFromProjectInput interface {
 	pulumi.Input
 
@@ -697,8 +692,7 @@ type GetProjectsProjectNamespace struct {
 // GetProjectsProjectNamespaceInput is an input type that accepts GetProjectsProjectNamespaceArgs and GetProjectsProjectNamespaceOutput values.
 // You can construct a concrete instance of `GetProjectsProjectNamespaceInput` via:
 //
-// 		 GetProjectsProjectNamespaceArgs{...}
-//
+//          GetProjectsProjectNamespaceArgs{...}
 type GetProjectsProjectNamespaceInput interface {
 	pulumi.Input
 
@@ -778,8 +772,7 @@ type GetProjectsProjectOwner struct {
 // GetProjectsProjectOwnerInput is an input type that accepts GetProjectsProjectOwnerArgs and GetProjectsProjectOwnerOutput values.
 // You can construct a concrete instance of `GetProjectsProjectOwnerInput` via:
 //
-// 		 GetProjectsProjectOwnerArgs{...}
-//
+//          GetProjectsProjectOwnerArgs{...}
 type GetProjectsProjectOwnerInput interface {
 	pulumi.Input
 
@@ -858,8 +851,7 @@ type GetProjectsProjectPermissions struct {
 // GetProjectsProjectPermissionsInput is an input type that accepts GetProjectsProjectPermissionsArgs and GetProjectsProjectPermissionsOutput values.
 // You can construct a concrete instance of `GetProjectsProjectPermissionsInput` via:
 //
-// 		 GetProjectsProjectPermissionsArgs{...}
-//
+//          GetProjectsProjectPermissionsArgs{...}
 type GetProjectsProjectPermissionsInput interface {
 	pulumi.Input
 
@@ -916,8 +908,7 @@ type GetProjectsProjectSharedWithGroup struct {
 // GetProjectsProjectSharedWithGroupInput is an input type that accepts GetProjectsProjectSharedWithGroupArgs and GetProjectsProjectSharedWithGroupOutput values.
 // You can construct a concrete instance of `GetProjectsProjectSharedWithGroupInput` via:
 //
-// 		 GetProjectsProjectSharedWithGroupArgs{...}
-//
+//          GetProjectsProjectSharedWithGroupArgs{...}
 type GetProjectsProjectSharedWithGroupInput interface {
 	pulumi.Input
 
@@ -947,8 +938,7 @@ func (i GetProjectsProjectSharedWithGroupArgs) ToGetProjectsProjectSharedWithGro
 // GetProjectsProjectSharedWithGroupArrayInput is an input type that accepts GetProjectsProjectSharedWithGroupArray and GetProjectsProjectSharedWithGroupArrayOutput values.
 // You can construct a concrete instance of `GetProjectsProjectSharedWithGroupArrayInput` via:
 //
-// 		 GetProjectsProjectSharedWithGroupArray{ GetProjectsProjectSharedWithGroupArgs{...} }
-//
+//          GetProjectsProjectSharedWithGroupArray{ GetProjectsProjectSharedWithGroupArgs{...} }
 type GetProjectsProjectSharedWithGroupArrayInput interface {
 	pulumi.Input
 
@@ -1075,8 +1065,7 @@ type GetUsersUser struct {
 // GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
 // You can construct a concrete instance of `GetUsersUserInput` via:
 //
-// 		 GetUsersUserArgs{...}
-//
+//          GetUsersUserArgs{...}
 type GetUsersUserInput interface {
 	pulumi.Input
 
@@ -1154,8 +1143,7 @@ func (i GetUsersUserArgs) ToGetUsersUserOutputWithContext(ctx context.Context) G
 // GetUsersUserArrayInput is an input type that accepts GetUsersUserArray and GetUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetUsersUserArrayInput` via:
 //
-// 		 GetUsersUserArray{ GetUsersUserArgs{...} }
-//
+//          GetUsersUserArray{ GetUsersUserArgs{...} }
 type GetUsersUserArrayInput interface {
 	pulumi.Input
 

@@ -11,8 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
@@ -94,7 +92,7 @@ export interface GetProjectArgs {
     readonly name?: string;
     /**
      * The namespace (group or user) of the project. Defaults to your user.
-     * See `gitlab..Group` for an example.
+     * See `gitlab.Group` for an example.
      */
     readonly namespaceId?: number;
     /**
@@ -180,7 +178,7 @@ export interface GetProjectResult {
     readonly name: string;
     /**
      * The namespace (group or user) of the project. Defaults to your user.
-     * See `gitlab..Group` for an example.
+     * See `gitlab.Group` for an example.
      */
     readonly namespaceId: number;
     /**

@@ -87,7 +87,7 @@ export class Project extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The namespace (group or user) of the project. Defaults to your user.
-     * See `gitlab..Group` for an example.
+     * See `gitlab.Group` for an example.
      */
     public readonly namespaceId!: pulumi.Output<number>;
     /**
@@ -293,7 +293,7 @@ export interface ProjectState {
     readonly name?: pulumi.Input<string>;
     /**
      * The namespace (group or user) of the project. Defaults to your user.
-     * See `gitlab..Group` for an example.
+     * See `gitlab.Group` for an example.
      */
     readonly namespaceId?: pulumi.Input<number>;
     /**
@@ -413,7 +413,7 @@ export interface ProjectArgs {
     readonly name?: pulumi.Input<string>;
     /**
      * The namespace (group or user) of the project. Defaults to your user.
-     * See `gitlab..Group` for an example.
+     * See `gitlab.Group` for an example.
      */
     readonly namespaceId?: pulumi.Input<number>;
     /**
