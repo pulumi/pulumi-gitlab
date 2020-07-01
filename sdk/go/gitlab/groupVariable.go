@@ -13,6 +13,33 @@ import (
 // This resource allows you to create and manage CI/CD variables for your GitLab groups.
 // For further information on variables, consult the [gitlab
 // documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gitlab.NewGroupVariable(ctx, "example", &gitlab.GroupVariableArgs{
+// 			Group:     pulumi.String("12345"),
+// 			Key:       pulumi.String("group_variable_key"),
+// 			Masked:    pulumi.Bool(false),
+// 			Protected: pulumi.Bool(false),
+// 			Value:     pulumi.String("group_variable_value"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type GroupVariable struct {
 	pulumi.CustomResourceState
 

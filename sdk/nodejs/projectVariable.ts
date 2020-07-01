@@ -9,20 +9,17 @@ import * as utilities from "./utilities";
  * For further information on variables, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
  *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = new gitlab.ProjectVariable("example", {
- *     key: "projectVariableKey",
+ *     key: "project_variable_key",
  *     project: "12345",
  *     protected: false,
- *     value: "projectVariableValue",
+ *     value: "project_variable_value",
  * });
  * ```
  */

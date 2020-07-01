@@ -14,10 +14,7 @@ namespace Pulumi.GitLab
     /// For further information on hooks, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ce/user/project/integrations/webhooks.html).
     /// 
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

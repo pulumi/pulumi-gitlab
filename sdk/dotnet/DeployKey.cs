@@ -12,10 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// This resource allows you to create and manage deploy keys for your GitLab projects.
     /// 
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

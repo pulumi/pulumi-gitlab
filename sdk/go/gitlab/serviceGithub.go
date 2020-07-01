@@ -10,9 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// **NOTE**: requires either EE (self-hosted) or Silver and above (GitLab.com).
-//
-// This resource manages a [GitHub integration](https://docs.gitlab.com/ee/user/project/integrations/github.html) that updates pipeline statuses on a GitHub repo's pull requests.
 type ServiceGithub struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,31 @@ import (
 )
 
 // This resource allows you to create and manage deploy keys for your GitLab projects.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gitlab.NewDeployKey(ctx, "example", &gitlab.DeployKeyArgs{
+// 			Key:     pulumi.String("ssh-rsa AAAA..."),
+// 			Project: pulumi.String("example/deploying"),
+// 			Title:   pulumi.String("Example deploy key"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DeployKey struct {
 	pulumi.CustomResourceState
 

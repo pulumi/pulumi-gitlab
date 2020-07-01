@@ -9,10 +9,7 @@ import * as utilities from "./utilities";
  * For further information on labels, consult the [gitlab
  * documentation](https://docs.gitlab.com/ee/user/project/labels.html#project-labels).
  *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

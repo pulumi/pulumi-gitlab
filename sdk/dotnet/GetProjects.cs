@@ -18,7 +18,6 @@ namespace Pulumi.GitLab
         /// 
         /// {{% examples %}}
         /// ## Example Usage
-        /// 
         /// {{% example %}}
         /// ### List projects within a group tree
         /// 
@@ -45,7 +44,6 @@ namespace Pulumi.GitLab
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% example %}}
         /// ### List projects using the search syntax
@@ -67,7 +65,6 @@ namespace Pulumi.GitLab
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

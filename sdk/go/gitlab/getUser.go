@@ -8,6 +8,30 @@ import (
 )
 
 // Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "myuser"
+// 		_, err := gitlab.LookupUser(ctx, &gitlab.LookupUserArgs{
+// 			Username: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	var rv LookupUserResult
 	err := ctx.Invoke("gitlab:index/getUser:getUser", args, &rv, opts...)

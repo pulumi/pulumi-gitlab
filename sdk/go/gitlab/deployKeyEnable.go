@@ -13,6 +13,46 @@ import (
 // This resource allows you to enable pre-existing deploy keys for your GitLab projects.
 //
 // **the GITLAB KEY_ID for the deploy key must be known**
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		parentProject, err := gitlab.NewProject(ctx, "parentProject", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooProject, err := gitlab.NewProject(ctx, "fooProject", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		parentDeployKey, err := gitlab.NewDeployKey(ctx, "parentDeployKey", &gitlab.DeployKeyArgs{
+// 			Key:     pulumi.String("ssh-rsa AAAA..."),
+// 			Project: parentProject.ID(),
+// 			Title:   pulumi.String("Example deploy key"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = gitlab.NewDeployKeyEnable(ctx, "fooDeployKeyEnable", &gitlab.DeployKeyEnableArgs{
+// 			KeyId:   parentDeployKey.ID(),
+// 			Project: fooProject.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DeployKeyEnable struct {
 	pulumi.CustomResourceState
 

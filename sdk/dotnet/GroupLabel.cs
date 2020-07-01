@@ -14,10 +14,7 @@ namespace Pulumi.GitLab
     /// For further information on labels, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ee/user/project/labels.html#group-labels).
     /// 
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

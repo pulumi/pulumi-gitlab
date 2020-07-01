@@ -34,7 +34,6 @@ namespace Pulumi.GitLab
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -99,7 +98,7 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// The namespace (group or user) of the project. Defaults to your user.
-        /// See `gitlab..Group` for an example.
+        /// See `gitlab.Group` for an example.
         /// </summary>
         [Input("namespaceId")]
         public int? NamespaceId { get; set; }
@@ -210,7 +209,7 @@ namespace Pulumi.GitLab
         public readonly string Name;
         /// <summary>
         /// The namespace (group or user) of the project. Defaults to your user.
-        /// See `gitlab..Group` for an example.
+        /// See `gitlab.Group` for an example.
         /// </summary>
         public readonly int NamespaceId;
         /// <summary>

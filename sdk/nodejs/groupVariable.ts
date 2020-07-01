@@ -9,10 +9,7 @@ import * as utilities from "./utilities";
  * For further information on variables, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
  *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,10 +17,10 @@ import * as utilities from "./utilities";
  *
  * const example = new gitlab.GroupVariable("example", {
  *     group: "12345",
- *     key: "groupVariableKey",
+ *     key: "group_variable_key",
  *     masked: false,
  *     protected: false,
- *     value: "groupVariableValue",
+ *     value: "group_variable_value",
  * });
  * ```
  */

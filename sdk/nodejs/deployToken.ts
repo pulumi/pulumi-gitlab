@@ -7,8 +7,8 @@ import * as utilities from "./utilities";
 /**
  * This resource allows you to create and manage deploy token for your GitLab projects and groups.
  *
- *
- * ## Example Usage - Project
+ * ## Example Usage
+ * ### Project
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -18,14 +18,13 @@ import * as utilities from "./utilities";
  *     expiresAt: "2020-03-14T00:00:00.000Z",
  *     project: "example/deploying",
  *     scopes: [
- *         "readRepository",
- *         "readRegistry",
+ *         "read_repository",
+ *         "read_registry",
  *     ],
  *     username: "example-username",
  * });
  * ```
- *
- * ## Example Usage - Group
+ * ### Group
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,7 +32,7 @@ import * as utilities from "./utilities";
  *
  * const example = new gitlab.DeployToken("example", {
  *     group: "example/deploying",
- *     scopes: ["readRepository"],
+ *     scopes: ["read_repository"],
  * });
  * ```
  */

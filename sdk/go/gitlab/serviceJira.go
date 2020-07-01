@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// This resource allows you to manage Jira integration.
 type ServiceJira struct {
 	pulumi.CustomResourceState
 

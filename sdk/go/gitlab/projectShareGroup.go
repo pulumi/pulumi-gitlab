@@ -11,6 +11,31 @@ import (
 )
 
 // This resource allows you to share a project with a group
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gitlab.NewProjectShareGroup(ctx, "test", &gitlab.ProjectShareGroupArgs{
+// 			AccessLevel: pulumi.String("guest"),
+// 			GroupId:     pulumi.Int(1337),
+// 			ProjectId:   pulumi.String("12345"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ProjectShareGroup struct {
 	pulumi.CustomResourceState
 

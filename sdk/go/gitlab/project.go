@@ -40,7 +40,7 @@ type Project struct {
 	// The name of the project.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
-	// See `.Group` for an example.
+	// See `Group` for an example.
 	NamespaceId pulumi.IntOutput `pulumi:"namespaceId"`
 	// Set to true if you want allow merges only if all discussions are resolved.
 	OnlyAllowMergeIfAllDiscussionsAreResolved pulumi.BoolPtrOutput `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
@@ -133,7 +133,7 @@ type projectState struct {
 	// The name of the project.
 	Name *string `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
-	// See `.Group` for an example.
+	// See `Group` for an example.
 	NamespaceId *int `pulumi:"namespaceId"`
 	// Set to true if you want allow merges only if all discussions are resolved.
 	OnlyAllowMergeIfAllDiscussionsAreResolved *bool `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
@@ -199,7 +199,7 @@ type ProjectState struct {
 	// The name of the project.
 	Name pulumi.StringPtrInput
 	// The namespace (group or user) of the project. Defaults to your user.
-	// See `.Group` for an example.
+	// See `Group` for an example.
 	NamespaceId pulumi.IntPtrInput
 	// Set to true if you want allow merges only if all discussions are resolved.
 	OnlyAllowMergeIfAllDiscussionsAreResolved pulumi.BoolPtrInput
@@ -266,7 +266,7 @@ type projectArgs struct {
 	// The name of the project.
 	Name *string `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
-	// See `.Group` for an example.
+	// See `Group` for an example.
 	NamespaceId *int `pulumi:"namespaceId"`
 	// Set to true if you want allow merges only if all discussions are resolved.
 	OnlyAllowMergeIfAllDiscussionsAreResolved *bool `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
@@ -323,7 +323,7 @@ type ProjectArgs struct {
 	// The name of the project.
 	Name pulumi.StringPtrInput
 	// The namespace (group or user) of the project. Defaults to your user.
-	// See `.Group` for an example.
+	// See `Group` for an example.
 	NamespaceId pulumi.IntPtrInput
 	// Set to true if you want allow merges only if all discussions are resolved.
 	OnlyAllowMergeIfAllDiscussionsAreResolved pulumi.BoolPtrInput

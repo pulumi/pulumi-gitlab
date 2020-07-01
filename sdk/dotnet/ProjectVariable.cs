@@ -14,10 +14,7 @@ namespace Pulumi.GitLab
     /// For further information on variables, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
     /// 
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

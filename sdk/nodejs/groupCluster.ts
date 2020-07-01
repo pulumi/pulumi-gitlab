@@ -9,10 +9,7 @@ import * as utilities from "./utilities";
  * For further information on clusters, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).
  *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

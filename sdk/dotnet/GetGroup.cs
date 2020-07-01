@@ -55,7 +55,6 @@ namespace Pulumi.GitLab
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

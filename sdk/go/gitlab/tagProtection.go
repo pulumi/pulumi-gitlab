@@ -11,6 +11,31 @@ import (
 )
 
 // This resource allows you to protect a specific tag or wildcard by an access level so that the user with less access level cannot Create the tags.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gitlab.NewTagProtection(ctx, "tagProtect", &gitlab.TagProtectionArgs{
+// 			CreateAccessLevel: pulumi.String("developer"),
+// 			Project:           pulumi.String("12345"),
+// 			Tag:               pulumi.String("TagProtected"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type TagProtection struct {
 	pulumi.CustomResourceState
 

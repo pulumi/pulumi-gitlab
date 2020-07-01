@@ -11,6 +11,32 @@ import (
 )
 
 // This resource allows you to add a user to an existing group.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gitlab.NewGroupMembership(ctx, "test", &gitlab.GroupMembershipArgs{
+// 			AccessLevel: pulumi.String("guest"),
+// 			ExpiresAt:   pulumi.String("2020-12-31"),
+// 			GroupId:     pulumi.String("12345"),
+// 			UserId:      pulumi.Int(1337),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type GroupMembership struct {
 	pulumi.CustomResourceState
 

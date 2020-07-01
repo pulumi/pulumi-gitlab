@@ -13,6 +13,31 @@ import (
 // This resource allows you to create and manage labels for your GitLab groups.
 // For further information on labels, consult the [gitlab
 // documentation](https://docs.gitlab.com/ee/user/project/labels.html#group-labels).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gitlab.NewGroupLabel(ctx, "fixme", &gitlab.GroupLabelArgs{
+// 			Color:       pulumi.String("#ffcc00"),
+// 			Description: pulumi.String("issue with failing tests"),
+// 			Group:       pulumi.String("example"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type GroupLabel struct {
 	pulumi.CustomResourceState
 

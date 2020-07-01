@@ -7,10 +7,7 @@ import * as utilities from "./utilities";
 /**
  * This resource allows you to create and manage deploy keys for your GitLab projects.
  *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
