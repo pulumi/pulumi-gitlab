@@ -92,8 +92,6 @@ class User(pulumi.CustomResource):
             __props__['is_admin'] = is_admin
             __props__['is_external'] = is_external
             __props__['name'] = name
-            if password is None:
-                raise TypeError("Missing required property 'password'")
             __props__['password'] = password
             __props__['projects_limit'] = projects_limit
             __props__['reset_password'] = reset_password

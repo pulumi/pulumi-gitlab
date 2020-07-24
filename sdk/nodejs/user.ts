@@ -56,7 +56,7 @@ export class User extends pulumi.CustomResource {
     /**
      * The password of the user.
      */
-    public readonly password!: pulumi.Output<string>;
+    public readonly password!: pulumi.Output<string | undefined>;
     /**
      * Integer, defaults to 0.  Number of projects user can create.
      */
@@ -100,9 +100,6 @@ export class User extends pulumi.CustomResource {
             const args = argsOrState as UserArgs | undefined;
             if (!args || args.email === undefined) {
                 throw new Error("Missing required property 'email'");
-            }
-            if (!args || args.password === undefined) {
-                throw new Error("Missing required property 'password'");
             }
             if (!args || args.username === undefined) {
                 throw new Error("Missing required property 'username'");
@@ -204,7 +201,7 @@ export interface UserArgs {
     /**
      * The password of the user.
      */
-    readonly password: pulumi.Input<string>;
+    readonly password?: pulumi.Input<string>;
     /**
      * Integer, defaults to 0.  Number of projects user can create.
      */

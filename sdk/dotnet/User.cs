@@ -46,7 +46,7 @@ namespace Pulumi.GitLab
         /// The password of the user.
         /// </summary>
         [Output("password")]
-        public Output<string> Password { get; private set; } = null!;
+        public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
         /// Integer, defaults to 0.  Number of projects user can create.
@@ -152,8 +152,8 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The password of the user.
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        [Input("password")]
+        public Input<string>? Password { get; set; }
 
         /// <summary>
         /// Integer, defaults to 0.  Number of projects user can create.

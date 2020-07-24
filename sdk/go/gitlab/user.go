@@ -25,7 +25,7 @@ type User struct {
 	// The name of the user.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The password of the user.
-	Password pulumi.StringOutput `pulumi:"password"`
+	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// Integer, defaults to 0.  Number of projects user can create.
 	ProjectsLimit pulumi.IntPtrOutput `pulumi:"projectsLimit"`
 	// Boolean, defaults to false. Send user password reset link.
@@ -41,9 +41,6 @@ func NewUser(ctx *pulumi.Context,
 	name string, args *UserArgs, opts ...pulumi.ResourceOption) (*User, error) {
 	if args == nil || args.Email == nil {
 		return nil, errors.New("missing required argument 'Email'")
-	}
-	if args == nil || args.Password == nil {
-		return nil, errors.New("missing required argument 'Password'")
 	}
 	if args == nil || args.Username == nil {
 		return nil, errors.New("missing required argument 'Username'")
@@ -137,7 +134,7 @@ type userArgs struct {
 	// The name of the user.
 	Name *string `pulumi:"name"`
 	// The password of the user.
-	Password string `pulumi:"password"`
+	Password *string `pulumi:"password"`
 	// Integer, defaults to 0.  Number of projects user can create.
 	ProjectsLimit *int `pulumi:"projectsLimit"`
 	// Boolean, defaults to false. Send user password reset link.
@@ -162,7 +159,7 @@ type UserArgs struct {
 	// The name of the user.
 	Name pulumi.StringPtrInput
 	// The password of the user.
-	Password pulumi.StringInput
+	Password pulumi.StringPtrInput
 	// Integer, defaults to 0.  Number of projects user can create.
 	ProjectsLimit pulumi.IntPtrInput
 	// Boolean, defaults to false. Send user password reset link.
