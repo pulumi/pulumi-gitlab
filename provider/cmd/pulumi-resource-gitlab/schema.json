@@ -4229,7 +4229,6 @@
             "required": [
                 "email",
                 "name",
-                "password",
                 "username"
             ],
             "inputProperties": {
@@ -4276,7 +4275,6 @@
             },
             "requiredInputs": [
                 "email",
-                "password",
                 "username"
             ],
             "stateInputs": {
