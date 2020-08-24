@@ -5,28 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['GroupMembership']
 
 
 class GroupMembership(pulumi.CustomResource):
-    access_level: pulumi.Output[str]
-    """
-    Acceptable values are: guest, reporter, developer, maintainer, owner.
-    """
-    expires_at: pulumi.Output[str]
-    """
-    Expiration date for the group membership. Format: `YYYY-MM-DD`
-    """
-    group_id: pulumi.Output[str]
-    """
-    The id of the group.
-    """
-    user_id: pulumi.Output[float]
-    """
-    The id of the user.
-    """
-    def __init__(__self__, resource_name, opts=None, access_level=None, expires_at=None, group_id=None, user_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_level: Optional[pulumi.Input[str]] = None,
+                 expires_at: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[float]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         This resource allows you to add a user to an existing group.
 
@@ -61,7 +56,7 @@ class GroupMembership(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -84,13 +79,19 @@ class GroupMembership(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, access_level=None, expires_at=None, group_id=None, user_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_level: Optional[pulumi.Input[str]] = None,
+            expires_at: Optional[pulumi.Input[str]] = None,
+            group_id: Optional[pulumi.Input[str]] = None,
+            user_id: Optional[pulumi.Input[float]] = None) -> 'GroupMembership':
         """
         Get an existing GroupMembership resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: Acceptable values are: guest, reporter, developer, maintainer, owner.
         :param pulumi.Input[str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
@@ -107,8 +108,41 @@ class GroupMembership(pulumi.CustomResource):
         __props__["user_id"] = user_id
         return GroupMembership(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> str:
+        """
+        Acceptable values are: guest, reporter, developer, maintainer, owner.
+        """
+        return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[str]:
+        """
+        Expiration date for the group membership. Format: `YYYY-MM-DD`
+        """
+        return pulumi.get(self, "expires_at")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> str:
+        """
+        The id of the group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> float:
+        """
+        The id of the user.
+        """
+        return pulumi.get(self, "user_id")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

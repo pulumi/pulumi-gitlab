@@ -5,80 +5,34 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['GroupCluster']
 
 
 class GroupCluster(pulumi.CustomResource):
-    cluster_type: pulumi.Output[str]
-    created_at: pulumi.Output[str]
-    domain: pulumi.Output[str]
-    """
-    The base domain of the cluster.
-    """
-    enabled: pulumi.Output[bool]
-    """
-    Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
-    """
-    environment_scope: pulumi.Output[str]
-    """
-    The associated environment to the cluster. Defaults to `*`.
-    """
-    group: pulumi.Output[str]
-    """
-    The id of the group to add the cluster to.
-    """
-    kubernetes_api_url: pulumi.Output[str]
-    """
-    The URL to access the Kubernetes API.
-    """
-    kubernetes_authorization_type: pulumi.Output[str]
-    """
-    The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
-    """
-    kubernetes_ca_cert: pulumi.Output[str]
-    """
-    TLS certificate (needed if API is using a self-signed TLS certificate).
-    """
-    kubernetes_token: pulumi.Output[str]
-    """
-    The token to authenticate against Kubernetes.
-    """
-    managed: pulumi.Output[bool]
-    """
-    Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
-    """
-    management_project_id: pulumi.Output[str]
-    name: pulumi.Output[str]
-    """
-    The name of cluster.
-    """
-    platform_type: pulumi.Output[str]
-    provider_type: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, domain=None, enabled=None, environment_scope=None, group=None, kubernetes_api_url=None, kubernetes_authorization_type=None, kubernetes_ca_cert=None, kubernetes_token=None, managed=None, management_project_id=None, name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 environment_scope: Optional[pulumi.Input[str]] = None,
+                 group: Optional[pulumi.Input[str]] = None,
+                 kubernetes_api_url: Optional[pulumi.Input[str]] = None,
+                 kubernetes_authorization_type: Optional[pulumi.Input[str]] = None,
+                 kubernetes_ca_cert: Optional[pulumi.Input[str]] = None,
+                 kubernetes_token: Optional[pulumi.Input[str]] = None,
+                 managed: Optional[pulumi.Input[bool]] = None,
+                 management_project_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         This resource allows you to create and manage group clusters for your GitLab groups.
         For further information on clusters, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        foo = gitlab.Group("foo", path="foo-path")
-        bar = gitlab.GroupCluster("bar",
-            domain="example.com",
-            enabled=True,
-            environment_scope="*",
-            group=foo.id,
-            kubernetes_api_url="https://124.124.124",
-            kubernetes_authorization_type="rbac",
-            kubernetes_ca_cert="some-cert",
-            kubernetes_token="some-token",
-            management_cluster_id="123456")
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -104,7 +58,7 @@ class GroupCluster(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -138,13 +92,30 @@ class GroupCluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_type=None, created_at=None, domain=None, enabled=None, environment_scope=None, group=None, kubernetes_api_url=None, kubernetes_authorization_type=None, kubernetes_ca_cert=None, kubernetes_token=None, managed=None, management_project_id=None, name=None, platform_type=None, provider_type=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_type: Optional[pulumi.Input[str]] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
+            domain: Optional[pulumi.Input[str]] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
+            environment_scope: Optional[pulumi.Input[str]] = None,
+            group: Optional[pulumi.Input[str]] = None,
+            kubernetes_api_url: Optional[pulumi.Input[str]] = None,
+            kubernetes_authorization_type: Optional[pulumi.Input[str]] = None,
+            kubernetes_ca_cert: Optional[pulumi.Input[str]] = None,
+            kubernetes_token: Optional[pulumi.Input[str]] = None,
+            managed: Optional[pulumi.Input[bool]] = None,
+            management_project_id: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            platform_type: Optional[pulumi.Input[str]] = None,
+            provider_type: Optional[pulumi.Input[str]] = None) -> 'GroupCluster':
         """
         Get an existing GroupCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The base domain of the cluster.
         :param pulumi.Input[bool] enabled: Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
@@ -178,8 +149,114 @@ class GroupCluster(pulumi.CustomResource):
         __props__["provider_type"] = provider_type
         return GroupCluster(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> str:
+        return pulumi.get(self, "cluster_type")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[str]:
+        """
+        The base domain of the cluster.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="environmentScope")
+    def environment_scope(self) -> Optional[str]:
+        """
+        The associated environment to the cluster. Defaults to `*`.
+        """
+        return pulumi.get(self, "environment_scope")
+
+    @property
+    @pulumi.getter
+    def group(self) -> str:
+        """
+        The id of the group to add the cluster to.
+        """
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter(name="kubernetesApiUrl")
+    def kubernetes_api_url(self) -> str:
+        """
+        The URL to access the Kubernetes API.
+        """
+        return pulumi.get(self, "kubernetes_api_url")
+
+    @property
+    @pulumi.getter(name="kubernetesAuthorizationType")
+    def kubernetes_authorization_type(self) -> Optional[str]:
+        """
+        The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+        """
+        return pulumi.get(self, "kubernetes_authorization_type")
+
+    @property
+    @pulumi.getter(name="kubernetesCaCert")
+    def kubernetes_ca_cert(self) -> Optional[str]:
+        """
+        TLS certificate (needed if API is using a self-signed TLS certificate).
+        """
+        return pulumi.get(self, "kubernetes_ca_cert")
+
+    @property
+    @pulumi.getter(name="kubernetesToken")
+    def kubernetes_token(self) -> str:
+        """
+        The token to authenticate against Kubernetes.
+        """
+        return pulumi.get(self, "kubernetes_token")
+
+    @property
+    @pulumi.getter
+    def managed(self) -> Optional[bool]:
+        """
+        Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
+        """
+        return pulumi.get(self, "managed")
+
+    @property
+    @pulumi.getter(name="managementProjectId")
+    def management_project_id(self) -> Optional[str]:
+        return pulumi.get(self, "management_project_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of cluster.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="platformType")
+    def platform_type(self) -> str:
+        return pulumi.get(self, "platform_type")
+
+    @property
+    @pulumi.getter(name="providerType")
+    def provider_type(self) -> str:
+        return pulumi.get(self, "provider_type")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

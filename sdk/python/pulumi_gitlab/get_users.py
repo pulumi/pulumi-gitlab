@@ -5,9 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetUsersResult',
+    'AwaitableGetUsersResult',
+    'get_users',
+]
+
+@pulumi.output_type
 class GetUsersResult:
     """
     A collection of values returned by getUsers.
@@ -15,46 +23,103 @@ class GetUsersResult:
     def __init__(__self__, active=None, blocked=None, created_after=None, created_before=None, extern_provider=None, extern_uid=None, id=None, order_by=None, search=None, sort=None, users=None):
         if active and not isinstance(active, bool):
             raise TypeError("Expected argument 'active' to be a bool")
-        __self__.active = active
+        pulumi.set(__self__, "active", active)
         if blocked and not isinstance(blocked, bool):
             raise TypeError("Expected argument 'blocked' to be a bool")
-        __self__.blocked = blocked
+        pulumi.set(__self__, "blocked", blocked)
         if created_after and not isinstance(created_after, str):
             raise TypeError("Expected argument 'created_after' to be a str")
-        __self__.created_after = created_after
+        pulumi.set(__self__, "created_after", created_after)
         if created_before and not isinstance(created_before, str):
             raise TypeError("Expected argument 'created_before' to be a str")
-        __self__.created_before = created_before
+        pulumi.set(__self__, "created_before", created_before)
         if extern_provider and not isinstance(extern_provider, str):
             raise TypeError("Expected argument 'extern_provider' to be a str")
-        __self__.extern_provider = extern_provider
+        pulumi.set(__self__, "extern_provider", extern_provider)
         if extern_uid and not isinstance(extern_uid, str):
             raise TypeError("Expected argument 'extern_uid' to be a str")
-        __self__.extern_uid = extern_uid
+        pulumi.set(__self__, "extern_uid", extern_uid)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if order_by and not isinstance(order_by, str):
+            raise TypeError("Expected argument 'order_by' to be a str")
+        pulumi.set(__self__, "order_by", order_by)
+        if search and not isinstance(search, str):
+            raise TypeError("Expected argument 'search' to be a str")
+        pulumi.set(__self__, "search", search)
+        if sort and not isinstance(sort, str):
+            raise TypeError("Expected argument 'sort' to be a str")
+        pulumi.set(__self__, "sort", sort)
+        if users and not isinstance(users, list):
+            raise TypeError("Expected argument 'users' to be a list")
+        pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[bool]:
+        return pulumi.get(self, "active")
+
+    @property
+    @pulumi.getter
+    def blocked(self) -> Optional[bool]:
+        return pulumi.get(self, "blocked")
+
+    @property
+    @pulumi.getter(name="createdAfter")
+    def created_after(self) -> Optional[str]:
+        return pulumi.get(self, "created_after")
+
+    @property
+    @pulumi.getter(name="createdBefore")
+    def created_before(self) -> Optional[str]:
+        return pulumi.get(self, "created_before")
+
+    @property
+    @pulumi.getter(name="externProvider")
+    def extern_provider(self) -> Optional[str]:
+        return pulumi.get(self, "extern_provider")
+
+    @property
+    @pulumi.getter(name="externUid")
+    def extern_uid(self) -> Optional[str]:
         """
         The external UID of the user.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "extern_uid")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if order_by and not isinstance(order_by, str):
-            raise TypeError("Expected argument 'order_by' to be a str")
-        __self__.order_by = order_by
-        if search and not isinstance(search, str):
-            raise TypeError("Expected argument 'search' to be a str")
-        __self__.search = search
-        if sort and not isinstance(sort, str):
-            raise TypeError("Expected argument 'sort' to be a str")
-        __self__.sort = sort
-        if users and not isinstance(users, list):
-            raise TypeError("Expected argument 'users' to be a list")
-        __self__.users = users
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="orderBy")
+    def order_by(self) -> Optional[str]:
+        return pulumi.get(self, "order_by")
+
+    @property
+    @pulumi.getter
+    def search(self) -> Optional[str]:
+        return pulumi.get(self, "search")
+
+    @property
+    @pulumi.getter
+    def sort(self) -> Optional[str]:
+        return pulumi.get(self, "sort")
+
+    @property
+    @pulumi.getter
+    def users(self) -> List['outputs.GetUsersUserResult']:
         """
         The list of users.
         """
+        return pulumi.get(self, "users")
+
+
 class AwaitableGetUsersResult(GetUsersResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -73,7 +138,17 @@ class AwaitableGetUsersResult(GetUsersResult):
             sort=self.sort,
             users=self.users)
 
-def get_users(active=None,blocked=None,created_after=None,created_before=None,extern_provider=None,extern_uid=None,order_by=None,search=None,sort=None,opts=None):
+
+def get_users(active: Optional[bool] = None,
+              blocked: Optional[bool] = None,
+              created_after: Optional[str] = None,
+              created_before: Optional[str] = None,
+              extern_provider: Optional[str] = None,
+              extern_uid: Optional[str] = None,
+              order_by: Optional[str] = None,
+              search: Optional[str] = None,
+              sort: Optional[str] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
     Provides details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
 
@@ -102,8 +177,6 @@ def get_users(active=None,blocked=None,created_after=None,created_before=None,ex
     :param str sort: Sort users' list in asc or desc order. (Requires administrator privileges)
     """
     __args__ = dict()
-
-
     __args__['active'] = active
     __args__['blocked'] = blocked
     __args__['createdAfter'] = created_after
@@ -116,18 +189,18 @@ def get_users(active=None,blocked=None,created_after=None,created_before=None,ex
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gitlab:index/getUsers:getUsers', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gitlab:index/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult).value
 
     return AwaitableGetUsersResult(
-        active=__ret__.get('active'),
-        blocked=__ret__.get('blocked'),
-        created_after=__ret__.get('createdAfter'),
-        created_before=__ret__.get('createdBefore'),
-        extern_provider=__ret__.get('externProvider'),
-        extern_uid=__ret__.get('externUid'),
-        id=__ret__.get('id'),
-        order_by=__ret__.get('orderBy'),
-        search=__ret__.get('search'),
-        sort=__ret__.get('sort'),
-        users=__ret__.get('users'))
+        active=__ret__.active,
+        blocked=__ret__.blocked,
+        created_after=__ret__.created_after,
+        created_before=__ret__.created_before,
+        extern_provider=__ret__.extern_provider,
+        extern_uid=__ret__.extern_uid,
+        id=__ret__.id,
+        order_by=__ret__.order_by,
+        search=__ret__.search,
+        sort=__ret__.sort,
+        users=__ret__.users)

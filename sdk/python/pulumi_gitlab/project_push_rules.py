@@ -5,48 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['ProjectPushRules']
 
 
 class ProjectPushRules(pulumi.CustomResource):
-    author_email_regex: pulumi.Output[str]
-    """
-    All commit author emails must match this regex, e.g. "@my-company.com$"
-    """
-    branch_name_regex: pulumi.Output[str]
-    """
-    All branch names must match this regex, e.g. "(feature|hotfix)\/*"
-    """
-    commit_message_regex: pulumi.Output[str]
-    """
-    All commit messages must match this regex, e.g. "Fixed \d+\..*"
-    """
-    deny_delete_tag: pulumi.Output[bool]
-    """
-    Deny deleting a tag
-    """
-    file_name_regex: pulumi.Output[str]
-    """
-    All commited filenames must not match this regex, e.g. "(jar|exe)$"
-    """
-    max_file_size: pulumi.Output[float]
-    """
-    Maximum file size (MB)
-    """
-    member_check: pulumi.Output[bool]
-    """
-    Restrict commits by author (email) to existing GitLab users
-    """
-    prevent_secrets: pulumi.Output[bool]
-    """
-    GitLab will reject any files that are likely to contain secrets
-    """
-    project: pulumi.Output[str]
-    """
-    The name or id of the project to add the push rules to.
-    """
-    def __init__(__self__, resource_name, opts=None, author_email_regex=None, branch_name_regex=None, commit_message_regex=None, deny_delete_tag=None, file_name_regex=None, max_file_size=None, member_check=None, prevent_secrets=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 author_email_regex: Optional[pulumi.Input[str]] = None,
+                 branch_name_regex: Optional[pulumi.Input[str]] = None,
+                 commit_message_regex: Optional[pulumi.Input[str]] = None,
+                 deny_delete_tag: Optional[pulumi.Input[bool]] = None,
+                 file_name_regex: Optional[pulumi.Input[str]] = None,
+                 max_file_size: Optional[pulumi.Input[float]] = None,
+                 member_check: Optional[pulumi.Input[bool]] = None,
+                 prevent_secrets: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         This resource allows you to create and manage push rules for your GitLab projects.
         For further information on push rules, consult the [gitlab
@@ -75,7 +55,7 @@ class ProjectPushRules(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -99,13 +79,24 @@ class ProjectPushRules(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, author_email_regex=None, branch_name_regex=None, commit_message_regex=None, deny_delete_tag=None, file_name_regex=None, max_file_size=None, member_check=None, prevent_secrets=None, project=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            author_email_regex: Optional[pulumi.Input[str]] = None,
+            branch_name_regex: Optional[pulumi.Input[str]] = None,
+            commit_message_regex: Optional[pulumi.Input[str]] = None,
+            deny_delete_tag: Optional[pulumi.Input[bool]] = None,
+            file_name_regex: Optional[pulumi.Input[str]] = None,
+            max_file_size: Optional[pulumi.Input[float]] = None,
+            member_check: Optional[pulumi.Input[bool]] = None,
+            prevent_secrets: Optional[pulumi.Input[bool]] = None,
+            project: Optional[pulumi.Input[str]] = None) -> 'ProjectPushRules':
         """
         Get an existing ProjectPushRules resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] author_email_regex: All commit author emails must match this regex, e.g. "@my-company.com$"
         :param pulumi.Input[str] branch_name_regex: All branch names must match this regex, e.g. "(feature|hotfix)\/*"
@@ -132,8 +123,81 @@ class ProjectPushRules(pulumi.CustomResource):
         __props__["project"] = project
         return ProjectPushRules(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="authorEmailRegex")
+    def author_email_regex(self) -> Optional[str]:
+        """
+        All commit author emails must match this regex, e.g. "@my-company.com$"
+        """
+        return pulumi.get(self, "author_email_regex")
+
+    @property
+    @pulumi.getter(name="branchNameRegex")
+    def branch_name_regex(self) -> Optional[str]:
+        """
+        All branch names must match this regex, e.g. "(feature|hotfix)\/*"
+        """
+        return pulumi.get(self, "branch_name_regex")
+
+    @property
+    @pulumi.getter(name="commitMessageRegex")
+    def commit_message_regex(self) -> Optional[str]:
+        """
+        All commit messages must match this regex, e.g. "Fixed \d+\..*"
+        """
+        return pulumi.get(self, "commit_message_regex")
+
+    @property
+    @pulumi.getter(name="denyDeleteTag")
+    def deny_delete_tag(self) -> Optional[bool]:
+        """
+        Deny deleting a tag
+        """
+        return pulumi.get(self, "deny_delete_tag")
+
+    @property
+    @pulumi.getter(name="fileNameRegex")
+    def file_name_regex(self) -> Optional[str]:
+        """
+        All commited filenames must not match this regex, e.g. "(jar|exe)$"
+        """
+        return pulumi.get(self, "file_name_regex")
+
+    @property
+    @pulumi.getter(name="maxFileSize")
+    def max_file_size(self) -> Optional[float]:
+        """
+        Maximum file size (MB)
+        """
+        return pulumi.get(self, "max_file_size")
+
+    @property
+    @pulumi.getter(name="memberCheck")
+    def member_check(self) -> Optional[bool]:
+        """
+        Restrict commits by author (email) to existing GitLab users
+        """
+        return pulumi.get(self, "member_check")
+
+    @property
+    @pulumi.getter(name="preventSecrets")
+    def prevent_secrets(self) -> Optional[bool]:
+        """
+        GitLab will reject any files that are likely to contain secrets
+        """
+        return pulumi.get(self, "prevent_secrets")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The name or id of the project to add the push rules to.
+        """
+        return pulumi.get(self, "project")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

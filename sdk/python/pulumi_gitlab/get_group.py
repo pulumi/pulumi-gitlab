@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetGroupResult',
+    'AwaitableGetGroupResult',
+    'get_group',
+]
+
+@pulumi.output_type
 class GetGroupResult:
     """
     A collection of values returned by getGroup.
@@ -15,79 +22,146 @@ class GetGroupResult:
     def __init__(__self__, description=None, full_name=None, full_path=None, group_id=None, id=None, lfs_enabled=None, name=None, parent_id=None, path=None, request_access_enabled=None, runners_token=None, visibility_level=None, web_url=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        pulumi.set(__self__, "description", description)
+        if full_name and not isinstance(full_name, str):
+            raise TypeError("Expected argument 'full_name' to be a str")
+        pulumi.set(__self__, "full_name", full_name)
+        if full_path and not isinstance(full_path, str):
+            raise TypeError("Expected argument 'full_path' to be a str")
+        pulumi.set(__self__, "full_path", full_path)
+        if group_id and not isinstance(group_id, float):
+            raise TypeError("Expected argument 'group_id' to be a float")
+        pulumi.set(__self__, "group_id", group_id)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if lfs_enabled and not isinstance(lfs_enabled, bool):
+            raise TypeError("Expected argument 'lfs_enabled' to be a bool")
+        pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if parent_id and not isinstance(parent_id, float):
+            raise TypeError("Expected argument 'parent_id' to be a float")
+        pulumi.set(__self__, "parent_id", parent_id)
+        if path and not isinstance(path, str):
+            raise TypeError("Expected argument 'path' to be a str")
+        pulumi.set(__self__, "path", path)
+        if request_access_enabled and not isinstance(request_access_enabled, bool):
+            raise TypeError("Expected argument 'request_access_enabled' to be a bool")
+        pulumi.set(__self__, "request_access_enabled", request_access_enabled)
+        if runners_token and not isinstance(runners_token, str):
+            raise TypeError("Expected argument 'runners_token' to be a str")
+        pulumi.set(__self__, "runners_token", runners_token)
+        if visibility_level and not isinstance(visibility_level, str):
+            raise TypeError("Expected argument 'visibility_level' to be a str")
+        pulumi.set(__self__, "visibility_level", visibility_level)
+        if web_url and not isinstance(web_url, str):
+            raise TypeError("Expected argument 'web_url' to be a str")
+        pulumi.set(__self__, "web_url", web_url)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
         """
         The description of the group.
         """
-        if full_name and not isinstance(full_name, str):
-            raise TypeError("Expected argument 'full_name' to be a str")
-        __self__.full_name = full_name
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> str:
         """
         The full name of the group.
         """
-        if full_path and not isinstance(full_path, str):
-            raise TypeError("Expected argument 'full_path' to be a str")
-        __self__.full_path = full_path
+        return pulumi.get(self, "full_name")
+
+    @property
+    @pulumi.getter(name="fullPath")
+    def full_path(self) -> str:
         """
         The full path of the group.
         """
-        if group_id and not isinstance(group_id, float):
-            raise TypeError("Expected argument 'group_id' to be a float")
-        __self__.group_id = group_id
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "full_path")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> float:
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if lfs_enabled and not isinstance(lfs_enabled, bool):
-            raise TypeError("Expected argument 'lfs_enabled' to be a bool")
-        __self__.lfs_enabled = lfs_enabled
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lfsEnabled")
+    def lfs_enabled(self) -> bool:
         """
         Boolean, is LFS enabled for projects in this group.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "lfs_enabled")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
         """
         The name of this group.
         """
-        if parent_id and not isinstance(parent_id, float):
-            raise TypeError("Expected argument 'parent_id' to be a float")
-        __self__.parent_id = parent_id
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> float:
         """
         Integer, ID of the parent group.
         """
-        if path and not isinstance(path, str):
-            raise TypeError("Expected argument 'path' to be a str")
-        __self__.path = path
+        return pulumi.get(self, "parent_id")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
         """
         The path of the group.
         """
-        if request_access_enabled and not isinstance(request_access_enabled, bool):
-            raise TypeError("Expected argument 'request_access_enabled' to be a bool")
-        __self__.request_access_enabled = request_access_enabled
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="requestAccessEnabled")
+    def request_access_enabled(self) -> bool:
         """
         Boolean, is request for access enabled to the group.
         """
-        if runners_token and not isinstance(runners_token, str):
-            raise TypeError("Expected argument 'runners_token' to be a str")
-        __self__.runners_token = runners_token
+        return pulumi.get(self, "request_access_enabled")
+
+    @property
+    @pulumi.getter(name="runnersToken")
+    def runners_token(self) -> str:
         """
         The group level registration token to use during runner setup.
         """
-        if visibility_level and not isinstance(visibility_level, str):
-            raise TypeError("Expected argument 'visibility_level' to be a str")
-        __self__.visibility_level = visibility_level
+        return pulumi.get(self, "runners_token")
+
+    @property
+    @pulumi.getter(name="visibilityLevel")
+    def visibility_level(self) -> str:
         """
         Visibility level of the group. Possible values are `private`, `internal`, `public`.
         """
-        if web_url and not isinstance(web_url, str):
-            raise TypeError("Expected argument 'web_url' to be a str")
-        __self__.web_url = web_url
+        return pulumi.get(self, "visibility_level")
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> str:
         """
         Web URL of the group.
         """
+        return pulumi.get(self, "web_url")
+
+
 class AwaitableGetGroupResult(GetGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -108,7 +182,10 @@ class AwaitableGetGroupResult(GetGroupResult):
             visibility_level=self.visibility_level,
             web_url=self.web_url)
 
-def get_group(full_path=None,group_id=None,opts=None):
+
+def get_group(full_path: Optional[str] = None,
+              group_id: Optional[float] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
     Provides details about a specific group in the gitlab provider.
 
@@ -137,27 +214,25 @@ def get_group(full_path=None,group_id=None,opts=None):
     :param float group_id: The ID of the group.
     """
     __args__ = dict()
-
-
     __args__['fullPath'] = full_path
     __args__['groupId'] = group_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('gitlab:index/getGroup:getGroup', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('gitlab:index/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult).value
 
     return AwaitableGetGroupResult(
-        description=__ret__.get('description'),
-        full_name=__ret__.get('fullName'),
-        full_path=__ret__.get('fullPath'),
-        group_id=__ret__.get('groupId'),
-        id=__ret__.get('id'),
-        lfs_enabled=__ret__.get('lfsEnabled'),
-        name=__ret__.get('name'),
-        parent_id=__ret__.get('parentId'),
-        path=__ret__.get('path'),
-        request_access_enabled=__ret__.get('requestAccessEnabled'),
-        runners_token=__ret__.get('runnersToken'),
-        visibility_level=__ret__.get('visibilityLevel'),
-        web_url=__ret__.get('webUrl'))
+        description=__ret__.description,
+        full_name=__ret__.full_name,
+        full_path=__ret__.full_path,
+        group_id=__ret__.group_id,
+        id=__ret__.id,
+        lfs_enabled=__ret__.lfs_enabled,
+        name=__ret__.name,
+        parent_id=__ret__.parent_id,
+        path=__ret__.path,
+        request_access_enabled=__ret__.request_access_enabled,
+        runners_token=__ret__.runners_token,
+        visibility_level=__ret__.visibility_level,
+        web_url=__ret__.web_url)

@@ -5,21 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['PipelineTrigger']
 
 
 class PipelineTrigger(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    The description of the pipeline trigger.
-    """
-    project: pulumi.Output[str]
-    """
-    The name or id of the project to add the trigger to.
-    """
-    token: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, description=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         This resource allows you to create and manage pipeline triggers
 
@@ -50,7 +50,7 @@ class PipelineTrigger(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -70,13 +70,18 @@ class PipelineTrigger(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, project=None, token=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            token: Optional[pulumi.Input[str]] = None) -> 'PipelineTrigger':
         """
         Get an existing PipelineTrigger resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the pipeline trigger.
         :param pulumi.Input[str] project: The name or id of the project to add the trigger to.
@@ -90,8 +95,30 @@ class PipelineTrigger(pulumi.CustomResource):
         __props__["token"] = token
         return PipelineTrigger(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the pipeline trigger.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The name or id of the project to add the trigger to.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def token(self) -> str:
+        return pulumi.get(self, "token")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

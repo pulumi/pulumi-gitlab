@@ -5,60 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Group']
 
 
 class Group(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    The description of the group.
-    """
-    full_name: pulumi.Output[str]
-    """
-    The full name of the group.
-    """
-    full_path: pulumi.Output[str]
-    """
-    The full path of the group.
-    """
-    lfs_enabled: pulumi.Output[bool]
-    """
-    Boolean, defaults to true.  Whether to enable LFS
-    support for projects in this group.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of this group.
-    """
-    parent_id: pulumi.Output[float]
-    """
-    Integer, id of the parent group (creates a nested group).
-    """
-    path: pulumi.Output[str]
-    """
-    The path of the group.
-    """
-    request_access_enabled: pulumi.Output[bool]
-    """
-    Boolean, defaults to false.  Whether to
-    enable users to request access to the group.
-    """
-    runners_token: pulumi.Output[str]
-    """
-    The group level registration token to use during runner setup.
-    """
-    visibility_level: pulumi.Output[str]
-    """
-    Set to `public` to create a public group.
-    Valid values are `private`, `internal`, `public`.
-    Groups are created as private by default.
-    """
-    web_url: pulumi.Output[str]
-    """
-    Web URL of the group.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, lfs_enabled=None, name=None, parent_id=None, path=None, request_access_enabled=None, visibility_level=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 lfs_enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parent_id: Optional[pulumi.Input[float]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 request_access_enabled: Optional[pulumi.Input[bool]] = None,
+                 visibility_level: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a Group resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -86,7 +52,7 @@ class Group(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -112,13 +78,26 @@ class Group(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, full_name=None, full_path=None, lfs_enabled=None, name=None, parent_id=None, path=None, request_access_enabled=None, runners_token=None, visibility_level=None, web_url=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            full_name: Optional[pulumi.Input[str]] = None,
+            full_path: Optional[pulumi.Input[str]] = None,
+            lfs_enabled: Optional[pulumi.Input[bool]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            parent_id: Optional[pulumi.Input[float]] = None,
+            path: Optional[pulumi.Input[str]] = None,
+            request_access_enabled: Optional[pulumi.Input[bool]] = None,
+            runners_token: Optional[pulumi.Input[str]] = None,
+            visibility_level: Optional[pulumi.Input[str]] = None,
+            web_url: Optional[pulumi.Input[str]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the group.
         :param pulumi.Input[str] full_name: The full name of the group.
@@ -153,8 +132,101 @@ class Group(pulumi.CustomResource):
         __props__["web_url"] = web_url
         return Group(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the group.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> str:
+        """
+        The full name of the group.
+        """
+        return pulumi.get(self, "full_name")
+
+    @property
+    @pulumi.getter(name="fullPath")
+    def full_path(self) -> str:
+        """
+        The full path of the group.
+        """
+        return pulumi.get(self, "full_path")
+
+    @property
+    @pulumi.getter(name="lfsEnabled")
+    def lfs_enabled(self) -> Optional[bool]:
+        """
+        Boolean, defaults to true.  Whether to enable LFS
+        support for projects in this group.
+        """
+        return pulumi.get(self, "lfs_enabled")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of this group.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> Optional[float]:
+        """
+        Integer, id of the parent group (creates a nested group).
+        """
+        return pulumi.get(self, "parent_id")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The path of the group.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="requestAccessEnabled")
+    def request_access_enabled(self) -> Optional[bool]:
+        """
+        Boolean, defaults to false.  Whether to
+        enable users to request access to the group.
+        """
+        return pulumi.get(self, "request_access_enabled")
+
+    @property
+    @pulumi.getter(name="runnersToken")
+    def runners_token(self) -> str:
+        """
+        The group level registration token to use during runner setup.
+        """
+        return pulumi.get(self, "runners_token")
+
+    @property
+    @pulumi.getter(name="visibilityLevel")
+    def visibility_level(self) -> str:
+        """
+        Set to `public` to create a public group.
+        Valid values are `private`, `internal`, `public`.
+        Groups are created as private by default.
+        """
+        return pulumi.get(self, "visibility_level")
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> str:
+        """
+        Web URL of the group.
+        """
+        return pulumi.get(self, "web_url")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

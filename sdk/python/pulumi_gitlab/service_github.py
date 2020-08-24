@@ -5,29 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['ServiceGithub']
 
 
 class ServiceGithub(pulumi.CustomResource):
-    active: pulumi.Output[bool]
-    created_at: pulumi.Output[str]
-    project: pulumi.Output[str]
-    """
-    ID of the project you want to activate integration on.
-    """
-    repository_url: pulumi.Output[str]
-    static_context: pulumi.Output[bool]
-    """
-    Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub. See [Static / dynamic status check names] to learn more.
-    """
-    title: pulumi.Output[str]
-    token: pulumi.Output[str]
-    """
-    A GitHub personal access token with at least `repo:status` scope.
-    """
-    updated_at: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, project=None, repository_url=None, static_context=None, token=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 repository_url: Optional[pulumi.Input[str]] = None,
+                 static_context: Optional[pulumi.Input[bool]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a ServiceGithub resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -47,7 +41,7 @@ class ServiceGithub(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -74,13 +68,23 @@ class ServiceGithub(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, active=None, created_at=None, project=None, repository_url=None, static_context=None, title=None, token=None, updated_at=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active: Optional[pulumi.Input[bool]] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            repository_url: Optional[pulumi.Input[str]] = None,
+            static_context: Optional[pulumi.Input[bool]] = None,
+            title: Optional[pulumi.Input[str]] = None,
+            token: Optional[pulumi.Input[str]] = None,
+            updated_at: Optional[pulumi.Input[str]] = None) -> 'ServiceGithub':
         """
         Get an existing ServiceGithub resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[bool] static_context: Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub. See [Static / dynamic status check names] to learn more.
@@ -100,8 +104,58 @@ class ServiceGithub(pulumi.CustomResource):
         __props__["updated_at"] = updated_at
         return ServiceGithub(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def active(self) -> bool:
+        return pulumi.get(self, "active")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        ID of the project you want to activate integration on.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="repositoryUrl")
+    def repository_url(self) -> str:
+        return pulumi.get(self, "repository_url")
+
+    @property
+    @pulumi.getter(name="staticContext")
+    def static_context(self) -> Optional[bool]:
+        """
+        Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub. See [Static / dynamic status check names] to learn more.
+        """
+        return pulumi.get(self, "static_context")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def token(self) -> str:
+        """
+        A GitHub personal access token with at least `repo:status` scope.
+        """
+        return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
+        return pulumi.get(self, "updated_at")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

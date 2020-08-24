@@ -35,3 +35,10 @@ from .service_jira import *
 from .service_slack import *
 from .tag_protection import *
 from .user import *
+from ._inputs import *
+from . import outputs
+
+# Make subpackages available:
+from . import (
+    config,
+)

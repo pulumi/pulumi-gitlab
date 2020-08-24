@@ -34,8 +34,8 @@ import (
 // 			return err
 // 		}
 // 		_, err = gitlab.NewPipelineScheduleVariable(ctx, "examplePipelineScheduleVariable", &gitlab.PipelineScheduleVariableArgs{
-// 			Project:            pulumi.String(gitlab_pipeline_schedule.Project),
-// 			PipelineScheduleId: pulumi.String(gitlab_pipeline_schedule.Id),
+// 			Project:            pulumi.Any(gitlab_pipeline_schedule.Project),
+// 			PipelineScheduleId: pulumi.Any(gitlab_pipeline_schedule.Id),
 // 			Key:                pulumi.String("EXAMPLE_KEY"),
 // 			Value:              pulumi.String("example"),
 // 		})
