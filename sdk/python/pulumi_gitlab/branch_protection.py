@@ -5,28 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['BranchProtection']
 
 
 class BranchProtection(pulumi.CustomResource):
-    branch: pulumi.Output[str]
-    """
-    Name of the branch.
-    """
-    merge_access_level: pulumi.Output[str]
-    """
-    One of five levels of access to the project.
-    """
-    project: pulumi.Output[str]
-    """
-    The id of the project.
-    """
-    push_access_level: pulumi.Output[str]
-    """
-    One of five levels of access to the project.
-    """
-    def __init__(__self__, resource_name, opts=None, branch=None, merge_access_level=None, project=None, push_access_level=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 branch: Optional[pulumi.Input[str]] = None,
+                 merge_access_level: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 push_access_level: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch. GitLab EE features to protect by group or user are not supported.
 
@@ -61,7 +56,7 @@ class BranchProtection(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -86,13 +81,19 @@ class BranchProtection(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, branch=None, merge_access_level=None, project=None, push_access_level=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            branch: Optional[pulumi.Input[str]] = None,
+            merge_access_level: Optional[pulumi.Input[str]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            push_access_level: Optional[pulumi.Input[str]] = None) -> 'BranchProtection':
         """
         Get an existing BranchProtection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] branch: Name of the branch.
         :param pulumi.Input[str] merge_access_level: One of five levels of access to the project.
@@ -109,8 +110,41 @@ class BranchProtection(pulumi.CustomResource):
         __props__["push_access_level"] = push_access_level
         return BranchProtection(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def branch(self) -> str:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="mergeAccessLevel")
+    def merge_access_level(self) -> str:
+        """
+        One of five levels of access to the project.
+        """
+        return pulumi.get(self, "merge_access_level")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The id of the project.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pushAccessLevel")
+    def push_access_level(self) -> str:
+        """
+        One of five levels of access to the project.
+        """
+        return pulumi.get(self, "push_access_level")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

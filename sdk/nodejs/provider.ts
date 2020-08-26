@@ -35,12 +35,14 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        inputs["baseUrl"] = (args ? args.baseUrl : undefined) || utilities.getEnv("GITLAB_BASE_URL");
-        inputs["cacertFile"] = args ? args.cacertFile : undefined;
-        inputs["clientCert"] = args ? args.clientCert : undefined;
-        inputs["clientKey"] = args ? args.clientKey : undefined;
-        inputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
-        inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("GITLAB_TOKEN");
+        {
+            inputs["baseUrl"] = (args ? args.baseUrl : undefined) || utilities.getEnv("GITLAB_BASE_URL");
+            inputs["cacertFile"] = args ? args.cacertFile : undefined;
+            inputs["clientCert"] = args ? args.clientCert : undefined;
+            inputs["clientKey"] = args ? args.clientKey : undefined;
+            inputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
+            inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("GITLAB_TOKEN");
+        }
         if (!opts) {
             opts = {}
         }

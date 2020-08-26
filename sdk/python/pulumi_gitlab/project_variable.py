@@ -5,40 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['ProjectVariable']
 
 
 class ProjectVariable(pulumi.CustomResource):
-    environment_scope: pulumi.Output[str]
-    """
-    The environment_scope of the variable
-    """
-    key: pulumi.Output[str]
-    """
-    The name of the variable.
-    """
-    masked: pulumi.Output[bool]
-    """
-    If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
-    """
-    project: pulumi.Output[str]
-    """
-    The name or id of the project to add the hook to.
-    """
-    protected: pulumi.Output[bool]
-    """
-    If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-    """
-    value: pulumi.Output[str]
-    """
-    The value of the variable.
-    """
-    variable_type: pulumi.Output[str]
-    """
-    The type of a variable. Available types are: env_var (default) and file.
-    """
-    def __init__(__self__, resource_name, opts=None, environment_scope=None, key=None, masked=None, project=None, protected=None, value=None, variable_type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 environment_scope: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 masked: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 protected: Optional[pulumi.Input[bool]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 variable_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         This resource allows you to create and manage CI/CD variables for your GitLab projects.
         For further information on variables, consult the [gitlab
@@ -78,7 +64,7 @@ class ProjectVariable(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -104,13 +90,22 @@ class ProjectVariable(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, environment_scope=None, key=None, masked=None, project=None, protected=None, value=None, variable_type=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            environment_scope: Optional[pulumi.Input[str]] = None,
+            key: Optional[pulumi.Input[str]] = None,
+            masked: Optional[pulumi.Input[bool]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            protected: Optional[pulumi.Input[bool]] = None,
+            value: Optional[pulumi.Input[str]] = None,
+            variable_type: Optional[pulumi.Input[str]] = None) -> 'ProjectVariable':
         """
         Get an existing ProjectVariable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] environment_scope: The environment_scope of the variable
         :param pulumi.Input[str] key: The name of the variable.
@@ -133,8 +128,65 @@ class ProjectVariable(pulumi.CustomResource):
         __props__["variable_type"] = variable_type
         return ProjectVariable(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="environmentScope")
+    def environment_scope(self) -> Optional[str]:
+        """
+        The environment_scope of the variable
+        """
+        return pulumi.get(self, "environment_scope")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The name of the variable.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def masked(self) -> Optional[bool]:
+        """
+        If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
+        """
+        return pulumi.get(self, "masked")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The name or id of the project to add the hook to.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def protected(self) -> Optional[bool]:
+        """
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        """
+        return pulumi.get(self, "protected")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the variable.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="variableType")
+    def variable_type(self) -> Optional[str]:
+        """
+        The type of a variable. Available types are: env_var (default) and file.
+        """
+        return pulumi.get(self, "variable_type")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

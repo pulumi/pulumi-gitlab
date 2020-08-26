@@ -5,24 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['ProjectShareGroup']
 
 
 class ProjectShareGroup(pulumi.CustomResource):
-    access_level: pulumi.Output[str]
-    """
-    One of five levels of access to the project.
-    """
-    group_id: pulumi.Output[float]
-    """
-    The id of the group.
-    """
-    project_id: pulumi.Output[str]
-    """
-    The id of the project.
-    """
-    def __init__(__self__, resource_name, opts=None, access_level=None, group_id=None, project_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_level: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[float]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         This resource allows you to share a project with a group
 
@@ -55,7 +53,7 @@ class ProjectShareGroup(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -77,13 +75,18 @@ class ProjectShareGroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, access_level=None, group_id=None, project_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_level: Optional[pulumi.Input[str]] = None,
+            group_id: Optional[pulumi.Input[float]] = None,
+            project_id: Optional[pulumi.Input[str]] = None) -> 'ProjectShareGroup':
         """
         Get an existing ProjectShareGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: One of five levels of access to the project.
         :param pulumi.Input[float] group_id: The id of the group.
@@ -98,8 +101,33 @@ class ProjectShareGroup(pulumi.CustomResource):
         __props__["project_id"] = project_id
         return ProjectShareGroup(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> str:
+        """
+        One of five levels of access to the project.
+        """
+        return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> float:
+        """
+        The id of the group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        The id of the project.
+        """
+        return pulumi.get(self, "project_id")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

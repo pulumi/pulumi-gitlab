@@ -5,105 +5,42 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['ServiceSlack']
 
 
 class ServiceSlack(pulumi.CustomResource):
-    branches_to_be_notified: pulumi.Output[str]
-    """
-    Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
-    """
-    confidential_issue_channel: pulumi.Output[str]
-    """
-    The name of the channel to receive confidential issue events notifications.
-    """
-    confidential_issues_events: pulumi.Output[bool]
-    """
-    Enable notifications for confidential issues events.
-    """
-    confidential_note_events: pulumi.Output[bool]
-    """
-    Enable notifications for confidential note events.
-    """
-    issue_channel: pulumi.Output[str]
-    """
-    The name of the channel to receive issue events notifications.
-    """
-    issues_events: pulumi.Output[bool]
-    """
-    Enable notifications for issues events.
-    """
-    job_events: pulumi.Output[bool]
-    merge_request_channel: pulumi.Output[str]
-    """
-    The name of the channel to receive merge request events notifications.
-    """
-    merge_requests_events: pulumi.Output[bool]
-    """
-    Enable notifications for merge requests events.
-    """
-    note_channel: pulumi.Output[str]
-    """
-    The name of the channel to receive note events notifications.
-    """
-    note_events: pulumi.Output[bool]
-    """
-    Enable notifications for note events.
-    """
-    notify_only_broken_pipelines: pulumi.Output[bool]
-    """
-    Send notifications for broken pipelines.
-    """
-    notify_only_default_branch: pulumi.Output[bool]
-    """
-    DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.
-    """
-    pipeline_channel: pulumi.Output[str]
-    """
-    The name of the channel to receive pipeline events notifications.
-    """
-    pipeline_events: pulumi.Output[bool]
-    """
-    Enable notifications for pipeline events.
-    """
-    project: pulumi.Output[str]
-    """
-    ID of the project you want to activate integration on.
-    """
-    push_channel: pulumi.Output[str]
-    """
-    The name of the channel to receive push events notifications.
-    """
-    push_events: pulumi.Output[bool]
-    """
-    Enable notifications for push events.
-    """
-    tag_push_channel: pulumi.Output[str]
-    """
-    The name of the channel to receive tag push events notifications.
-    """
-    tag_push_events: pulumi.Output[bool]
-    """
-    Enable notifications for tag push events.
-    """
-    username: pulumi.Output[str]
-    """
-    Username to use.
-    """
-    webhook: pulumi.Output[str]
-    """
-    Webhook URL (ex.: https://hooks.slack.com/services/...)
-    """
-    wiki_page_channel: pulumi.Output[str]
-    """
-    The name of the channel to receive wiki page events notifications.
-    """
-    wiki_page_events: pulumi.Output[bool]
-    """
-    Enable notifications for wiki page events.
-    """
-    def __init__(__self__, resource_name, opts=None, branches_to_be_notified=None, confidential_issue_channel=None, confidential_issues_events=None, confidential_note_events=None, issue_channel=None, issues_events=None, merge_request_channel=None, merge_requests_events=None, note_channel=None, note_events=None, notify_only_broken_pipelines=None, notify_only_default_branch=None, pipeline_channel=None, pipeline_events=None, project=None, push_channel=None, push_events=None, tag_push_channel=None, tag_push_events=None, username=None, webhook=None, wiki_page_channel=None, wiki_page_events=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 branches_to_be_notified: Optional[pulumi.Input[str]] = None,
+                 confidential_issue_channel: Optional[pulumi.Input[str]] = None,
+                 confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+                 confidential_note_events: Optional[pulumi.Input[bool]] = None,
+                 issue_channel: Optional[pulumi.Input[str]] = None,
+                 issues_events: Optional[pulumi.Input[bool]] = None,
+                 merge_request_channel: Optional[pulumi.Input[str]] = None,
+                 merge_requests_events: Optional[pulumi.Input[bool]] = None,
+                 note_channel: Optional[pulumi.Input[str]] = None,
+                 note_events: Optional[pulumi.Input[bool]] = None,
+                 notify_only_broken_pipelines: Optional[pulumi.Input[bool]] = None,
+                 notify_only_default_branch: Optional[pulumi.Input[bool]] = None,
+                 pipeline_channel: Optional[pulumi.Input[str]] = None,
+                 pipeline_events: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 push_channel: Optional[pulumi.Input[str]] = None,
+                 push_events: Optional[pulumi.Input[bool]] = None,
+                 tag_push_channel: Optional[pulumi.Input[str]] = None,
+                 tag_push_events: Optional[pulumi.Input[bool]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 webhook: Optional[pulumi.Input[str]] = None,
+                 wiki_page_channel: Optional[pulumi.Input[str]] = None,
+                 wiki_page_events: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a ServiceSlack resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -143,7 +80,7 @@ class ServiceSlack(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -187,13 +124,39 @@ class ServiceSlack(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, branches_to_be_notified=None, confidential_issue_channel=None, confidential_issues_events=None, confidential_note_events=None, issue_channel=None, issues_events=None, job_events=None, merge_request_channel=None, merge_requests_events=None, note_channel=None, note_events=None, notify_only_broken_pipelines=None, notify_only_default_branch=None, pipeline_channel=None, pipeline_events=None, project=None, push_channel=None, push_events=None, tag_push_channel=None, tag_push_events=None, username=None, webhook=None, wiki_page_channel=None, wiki_page_events=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            branches_to_be_notified: Optional[pulumi.Input[str]] = None,
+            confidential_issue_channel: Optional[pulumi.Input[str]] = None,
+            confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+            confidential_note_events: Optional[pulumi.Input[bool]] = None,
+            issue_channel: Optional[pulumi.Input[str]] = None,
+            issues_events: Optional[pulumi.Input[bool]] = None,
+            job_events: Optional[pulumi.Input[bool]] = None,
+            merge_request_channel: Optional[pulumi.Input[str]] = None,
+            merge_requests_events: Optional[pulumi.Input[bool]] = None,
+            note_channel: Optional[pulumi.Input[str]] = None,
+            note_events: Optional[pulumi.Input[bool]] = None,
+            notify_only_broken_pipelines: Optional[pulumi.Input[bool]] = None,
+            notify_only_default_branch: Optional[pulumi.Input[bool]] = None,
+            pipeline_channel: Optional[pulumi.Input[str]] = None,
+            pipeline_events: Optional[pulumi.Input[bool]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            push_channel: Optional[pulumi.Input[str]] = None,
+            push_events: Optional[pulumi.Input[bool]] = None,
+            tag_push_channel: Optional[pulumi.Input[str]] = None,
+            tag_push_events: Optional[pulumi.Input[bool]] = None,
+            username: Optional[pulumi.Input[str]] = None,
+            webhook: Optional[pulumi.Input[str]] = None,
+            wiki_page_channel: Optional[pulumi.Input[str]] = None,
+            wiki_page_events: Optional[pulumi.Input[bool]] = None) -> 'ServiceSlack':
         """
         Get an existing ServiceSlack resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
@@ -249,8 +212,198 @@ class ServiceSlack(pulumi.CustomResource):
         __props__["wiki_page_events"] = wiki_page_events
         return ServiceSlack(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="branchesToBeNotified")
+    def branches_to_be_notified(self) -> str:
+        """
+        Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
+        """
+        return pulumi.get(self, "branches_to_be_notified")
+
+    @property
+    @pulumi.getter(name="confidentialIssueChannel")
+    def confidential_issue_channel(self) -> Optional[str]:
+        """
+        The name of the channel to receive confidential issue events notifications.
+        """
+        return pulumi.get(self, "confidential_issue_channel")
+
+    @property
+    @pulumi.getter(name="confidentialIssuesEvents")
+    def confidential_issues_events(self) -> bool:
+        """
+        Enable notifications for confidential issues events.
+        """
+        return pulumi.get(self, "confidential_issues_events")
+
+    @property
+    @pulumi.getter(name="confidentialNoteEvents")
+    def confidential_note_events(self) -> bool:
+        """
+        Enable notifications for confidential note events.
+        """
+        return pulumi.get(self, "confidential_note_events")
+
+    @property
+    @pulumi.getter(name="issueChannel")
+    def issue_channel(self) -> Optional[str]:
+        """
+        The name of the channel to receive issue events notifications.
+        """
+        return pulumi.get(self, "issue_channel")
+
+    @property
+    @pulumi.getter(name="issuesEvents")
+    def issues_events(self) -> bool:
+        """
+        Enable notifications for issues events.
+        """
+        return pulumi.get(self, "issues_events")
+
+    @property
+    @pulumi.getter(name="jobEvents")
+    def job_events(self) -> bool:
+        return pulumi.get(self, "job_events")
+
+    @property
+    @pulumi.getter(name="mergeRequestChannel")
+    def merge_request_channel(self) -> Optional[str]:
+        """
+        The name of the channel to receive merge request events notifications.
+        """
+        return pulumi.get(self, "merge_request_channel")
+
+    @property
+    @pulumi.getter(name="mergeRequestsEvents")
+    def merge_requests_events(self) -> bool:
+        """
+        Enable notifications for merge requests events.
+        """
+        return pulumi.get(self, "merge_requests_events")
+
+    @property
+    @pulumi.getter(name="noteChannel")
+    def note_channel(self) -> Optional[str]:
+        """
+        The name of the channel to receive note events notifications.
+        """
+        return pulumi.get(self, "note_channel")
+
+    @property
+    @pulumi.getter(name="noteEvents")
+    def note_events(self) -> bool:
+        """
+        Enable notifications for note events.
+        """
+        return pulumi.get(self, "note_events")
+
+    @property
+    @pulumi.getter(name="notifyOnlyBrokenPipelines")
+    def notify_only_broken_pipelines(self) -> bool:
+        """
+        Send notifications for broken pipelines.
+        """
+        return pulumi.get(self, "notify_only_broken_pipelines")
+
+    @property
+    @pulumi.getter(name="notifyOnlyDefaultBranch")
+    def notify_only_default_branch(self) -> bool:
+        """
+        DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.
+        """
+        return pulumi.get(self, "notify_only_default_branch")
+
+    @property
+    @pulumi.getter(name="pipelineChannel")
+    def pipeline_channel(self) -> Optional[str]:
+        """
+        The name of the channel to receive pipeline events notifications.
+        """
+        return pulumi.get(self, "pipeline_channel")
+
+    @property
+    @pulumi.getter(name="pipelineEvents")
+    def pipeline_events(self) -> bool:
+        """
+        Enable notifications for pipeline events.
+        """
+        return pulumi.get(self, "pipeline_events")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        ID of the project you want to activate integration on.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pushChannel")
+    def push_channel(self) -> Optional[str]:
+        """
+        The name of the channel to receive push events notifications.
+        """
+        return pulumi.get(self, "push_channel")
+
+    @property
+    @pulumi.getter(name="pushEvents")
+    def push_events(self) -> bool:
+        """
+        Enable notifications for push events.
+        """
+        return pulumi.get(self, "push_events")
+
+    @property
+    @pulumi.getter(name="tagPushChannel")
+    def tag_push_channel(self) -> Optional[str]:
+        """
+        The name of the channel to receive tag push events notifications.
+        """
+        return pulumi.get(self, "tag_push_channel")
+
+    @property
+    @pulumi.getter(name="tagPushEvents")
+    def tag_push_events(self) -> bool:
+        """
+        Enable notifications for tag push events.
+        """
+        return pulumi.get(self, "tag_push_events")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        Username to use.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter
+    def webhook(self) -> str:
+        """
+        Webhook URL (ex.: https://hooks.slack.com/services/...)
+        """
+        return pulumi.get(self, "webhook")
+
+    @property
+    @pulumi.getter(name="wikiPageChannel")
+    def wiki_page_channel(self) -> Optional[str]:
+        """
+        The name of the channel to receive wiki page events notifications.
+        """
+        return pulumi.get(self, "wiki_page_channel")
+
+    @property
+    @pulumi.getter(name="wikiPageEvents")
+    def wiki_page_events(self) -> bool:
+        """
+        Enable notifications for wiki page events.
+        """
+        return pulumi.get(self, "wiki_page_events")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

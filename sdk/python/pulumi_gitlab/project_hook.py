@@ -5,61 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['ProjectHook']
 
 
 class ProjectHook(pulumi.CustomResource):
-    enable_ssl_verification: pulumi.Output[bool]
-    """
-    Enable ssl verification when invoking
-    the hook.
-    """
-    issues_events: pulumi.Output[bool]
-    """
-    Invoke the hook for issues events.
-    """
-    job_events: pulumi.Output[bool]
-    """
-    Invoke the hook for job events.
-    """
-    merge_requests_events: pulumi.Output[bool]
-    """
-    Invoke the hook for merge requests.
-    """
-    note_events: pulumi.Output[bool]
-    """
-    Invoke the hook for notes events.
-    """
-    pipeline_events: pulumi.Output[bool]
-    """
-    Invoke the hook for pipeline events.
-    """
-    project: pulumi.Output[str]
-    """
-    The name or id of the project to add the hook to.
-    """
-    push_events: pulumi.Output[bool]
-    """
-    Invoke the hook for push events.
-    """
-    tag_push_events: pulumi.Output[bool]
-    """
-    Invoke the hook for tag push events.
-    """
-    token: pulumi.Output[str]
-    """
-    A token to present when invoking the hook.
-    """
-    url: pulumi.Output[str]
-    """
-    The url of the hook to invoke.
-    """
-    wiki_page_events: pulumi.Output[bool]
-    """
-    Invoke the hook for wiki page events.
-    """
-    def __init__(__self__, resource_name, opts=None, enable_ssl_verification=None, issues_events=None, job_events=None, merge_requests_events=None, note_events=None, pipeline_events=None, project=None, push_events=None, tag_push_events=None, token=None, url=None, wiki_page_events=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
+                 issues_events: Optional[pulumi.Input[bool]] = None,
+                 job_events: Optional[pulumi.Input[bool]] = None,
+                 merge_requests_events: Optional[pulumi.Input[bool]] = None,
+                 note_events: Optional[pulumi.Input[bool]] = None,
+                 pipeline_events: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 push_events: Optional[pulumi.Input[bool]] = None,
+                 tag_push_events: Optional[pulumi.Input[bool]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
+                 wiki_page_events: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         This resource allows you to create and manage hooks for your GitLab projects.
         For further information on hooks, consult the [gitlab
@@ -104,7 +74,7 @@ class ProjectHook(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -133,13 +103,27 @@ class ProjectHook(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, enable_ssl_verification=None, issues_events=None, job_events=None, merge_requests_events=None, note_events=None, pipeline_events=None, project=None, push_events=None, tag_push_events=None, token=None, url=None, wiki_page_events=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
+            issues_events: Optional[pulumi.Input[bool]] = None,
+            job_events: Optional[pulumi.Input[bool]] = None,
+            merge_requests_events: Optional[pulumi.Input[bool]] = None,
+            note_events: Optional[pulumi.Input[bool]] = None,
+            pipeline_events: Optional[pulumi.Input[bool]] = None,
+            project: Optional[pulumi.Input[str]] = None,
+            push_events: Optional[pulumi.Input[bool]] = None,
+            tag_push_events: Optional[pulumi.Input[bool]] = None,
+            token: Optional[pulumi.Input[str]] = None,
+            url: Optional[pulumi.Input[str]] = None,
+            wiki_page_events: Optional[pulumi.Input[bool]] = None) -> 'ProjectHook':
         """
         Get an existing ProjectHook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enable_ssl_verification: Enable ssl verification when invoking
                the hook.
@@ -173,8 +157,106 @@ class ProjectHook(pulumi.CustomResource):
         __props__["wiki_page_events"] = wiki_page_events
         return ProjectHook(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="enableSslVerification")
+    def enable_ssl_verification(self) -> Optional[bool]:
+        """
+        Enable ssl verification when invoking
+        the hook.
+        """
+        return pulumi.get(self, "enable_ssl_verification")
+
+    @property
+    @pulumi.getter(name="issuesEvents")
+    def issues_events(self) -> Optional[bool]:
+        """
+        Invoke the hook for issues events.
+        """
+        return pulumi.get(self, "issues_events")
+
+    @property
+    @pulumi.getter(name="jobEvents")
+    def job_events(self) -> Optional[bool]:
+        """
+        Invoke the hook for job events.
+        """
+        return pulumi.get(self, "job_events")
+
+    @property
+    @pulumi.getter(name="mergeRequestsEvents")
+    def merge_requests_events(self) -> Optional[bool]:
+        """
+        Invoke the hook for merge requests.
+        """
+        return pulumi.get(self, "merge_requests_events")
+
+    @property
+    @pulumi.getter(name="noteEvents")
+    def note_events(self) -> Optional[bool]:
+        """
+        Invoke the hook for notes events.
+        """
+        return pulumi.get(self, "note_events")
+
+    @property
+    @pulumi.getter(name="pipelineEvents")
+    def pipeline_events(self) -> Optional[bool]:
+        """
+        Invoke the hook for pipeline events.
+        """
+        return pulumi.get(self, "pipeline_events")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The name or id of the project to add the hook to.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pushEvents")
+    def push_events(self) -> Optional[bool]:
+        """
+        Invoke the hook for push events.
+        """
+        return pulumi.get(self, "push_events")
+
+    @property
+    @pulumi.getter(name="tagPushEvents")
+    def tag_push_events(self) -> Optional[bool]:
+        """
+        Invoke the hook for tag push events.
+        """
+        return pulumi.get(self, "tag_push_events")
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[str]:
+        """
+        A token to present when invoking the hook.
+        """
+        return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The url of the hook to invoke.
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="wikiPageEvents")
+    def wiki_page_events(self) -> Optional[bool]:
+        """
+        Invoke the hook for wiki page events.
+        """
+        return pulumi.get(self, "wiki_page_events")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
