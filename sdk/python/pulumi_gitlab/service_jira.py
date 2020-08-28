@@ -13,7 +13,7 @@ __all__ = ['ServiceJira']
 
 class ServiceJira(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment_on_event_enabled: Optional[pulumi.Input[bool]] = None,
                  commit_events: Optional[pulumi.Input[bool]] = None,
@@ -140,12 +140,12 @@ class ServiceJira(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def active(self) -> bool:
+    def active(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "active")
 
     @property
     @pulumi.getter(name="commentOnEventEnabled")
-    def comment_on_event_enabled(self) -> bool:
+    def comment_on_event_enabled(self) -> pulumi.Output[bool]:
         """
         Enable comments inside Jira issues on each GitLab event (commit / merge request)
         """
@@ -153,7 +153,7 @@ class ServiceJira(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="commitEvents")
-    def commit_events(self) -> bool:
+    def commit_events(self) -> pulumi.Output[bool]:
         """
         Enable notifications for commit events
         """
@@ -161,12 +161,12 @@ class ServiceJira(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    def created_at(self) -> pulumi.Output[str]:
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="jiraIssueTransitionId")
-    def jira_issue_transition_id(self) -> Optional[str]:
+    def jira_issue_transition_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         """
@@ -174,7 +174,7 @@ class ServiceJira(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mergeRequestsEvents")
-    def merge_requests_events(self) -> bool:
+    def merge_requests_events(self) -> pulumi.Output[bool]:
         """
         Enable notifications for merge request events
         """
@@ -182,7 +182,7 @@ class ServiceJira(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> str:
+    def password(self) -> pulumi.Output[str]:
         """
         The password of the user created to be used with GitLab/JIRA.
         """
@@ -190,7 +190,7 @@ class ServiceJira(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         ID of the project you want to activate integration on.
         """
@@ -198,7 +198,7 @@ class ServiceJira(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectKey")
-    def project_key(self) -> Optional[str]:
+    def project_key(self) -> pulumi.Output[Optional[str]]:
         """
         The short identifier for your JIRA project, all uppercase, e.g., PROJ.
         """
@@ -206,17 +206,17 @@ class ServiceJira(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def title(self) -> str:
+    def title(self) -> pulumi.Output[str]:
         return pulumi.get(self, "title")
 
     @property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> str:
+    def updated_at(self) -> pulumi.Output[str]:
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
         """
@@ -224,7 +224,7 @@ class ServiceJira(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def username(self) -> str:
+    def username(self) -> pulumi.Output[str]:
         """
         The username of the user created to be used with GitLab/JIRA.
         """

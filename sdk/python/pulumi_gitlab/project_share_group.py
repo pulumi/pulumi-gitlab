@@ -13,7 +13,7 @@ __all__ = ['ProjectShareGroup']
 
 class ProjectShareGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[float]] = None,
@@ -103,7 +103,7 @@ class ProjectShareGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> str:
+    def access_level(self) -> pulumi.Output[str]:
         """
         One of five levels of access to the project.
         """
@@ -111,7 +111,7 @@ class ProjectShareGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> float:
+    def group_id(self) -> pulumi.Output[float]:
         """
         The id of the group.
         """
@@ -119,7 +119,7 @@ class ProjectShareGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         """
         The id of the project.
         """

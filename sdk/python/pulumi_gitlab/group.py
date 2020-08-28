@@ -13,7 +13,7 @@ __all__ = ['Group']
 
 class Group(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
@@ -134,7 +134,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the group.
         """
@@ -142,7 +142,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fullName")
-    def full_name(self) -> str:
+    def full_name(self) -> pulumi.Output[str]:
         """
         The full name of the group.
         """
@@ -150,7 +150,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fullPath")
-    def full_path(self) -> str:
+    def full_path(self) -> pulumi.Output[str]:
         """
         The full path of the group.
         """
@@ -158,7 +158,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lfsEnabled")
-    def lfs_enabled(self) -> Optional[bool]:
+    def lfs_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean, defaults to true.  Whether to enable LFS
         support for projects in this group.
@@ -167,7 +167,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of this group.
         """
@@ -175,7 +175,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="parentId")
-    def parent_id(self) -> Optional[float]:
+    def parent_id(self) -> pulumi.Output[Optional[float]]:
         """
         Integer, id of the parent group (creates a nested group).
         """
@@ -183,7 +183,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def path(self) -> str:
+    def path(self) -> pulumi.Output[str]:
         """
         The path of the group.
         """
@@ -191,7 +191,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requestAccessEnabled")
-    def request_access_enabled(self) -> Optional[bool]:
+    def request_access_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean, defaults to false.  Whether to
         enable users to request access to the group.
@@ -200,7 +200,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runnersToken")
-    def runners_token(self) -> str:
+    def runners_token(self) -> pulumi.Output[str]:
         """
         The group level registration token to use during runner setup.
         """
@@ -208,7 +208,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="visibilityLevel")
-    def visibility_level(self) -> str:
+    def visibility_level(self) -> pulumi.Output[str]:
         """
         Set to `public` to create a public group.
         Valid values are `private`, `internal`, `public`.
@@ -218,7 +218,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="webUrl")
-    def web_url(self) -> str:
+    def web_url(self) -> pulumi.Output[str]:
         """
         Web URL of the group.
         """

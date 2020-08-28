@@ -13,7 +13,7 @@ __all__ = ['User']
 
 class User(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  can_create_group: Optional[pulumi.Input[bool]] = None,
                  email: Optional[pulumi.Input[str]] = None,
@@ -132,7 +132,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="canCreateGroup")
-    def can_create_group(self) -> Optional[bool]:
+    def can_create_group(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean, defaults to false. Whether to allow the user to create groups.
         """
@@ -140,7 +140,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def email(self) -> str:
+    def email(self) -> pulumi.Output[str]:
         """
         The e-mail address of the user.
         """
@@ -148,7 +148,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isAdmin")
-    def is_admin(self) -> Optional[bool]:
+    def is_admin(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean, defaults to false.  Whether to enable administrative priviledges
         for the user.
@@ -157,7 +157,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isExternal")
-    def is_external(self) -> Optional[bool]:
+    def is_external(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         """
@@ -165,7 +165,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the user.
         """
@@ -173,7 +173,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> Optional[str]:
+    def password(self) -> pulumi.Output[Optional[str]]:
         """
         The password of the user.
         """
@@ -181,7 +181,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectsLimit")
-    def projects_limit(self) -> Optional[float]:
+    def projects_limit(self) -> pulumi.Output[Optional[float]]:
         """
         Integer, defaults to 0.  Number of projects user can create.
         """
@@ -189,7 +189,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resetPassword")
-    def reset_password(self) -> Optional[bool]:
+    def reset_password(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean, defaults to false. Send user password reset link.
         """
@@ -197,7 +197,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="skipConfirmation")
-    def skip_confirmation(self) -> Optional[bool]:
+    def skip_confirmation(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean, defaults to true. Whether to skip confirmation.
         """
@@ -205,7 +205,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def username(self) -> str:
+    def username(self) -> pulumi.Output[str]:
         """
         The username of the user.
         """

@@ -13,7 +13,7 @@ __all__ = ['PipelineScheduleVariable']
 
 class PipelineScheduleVariable(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  pipeline_schedule_id: Optional[pulumi.Input[float]] = None,
@@ -117,7 +117,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> pulumi.Output[str]:
         """
         Name of the variable.
         """
@@ -125,7 +125,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pipelineScheduleId")
-    def pipeline_schedule_id(self) -> float:
+    def pipeline_schedule_id(self) -> pulumi.Output[float]:
         """
         The id of the pipeline schedule.
         """
@@ -133,7 +133,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The id of the project to add the schedule to.
         """
@@ -141,7 +141,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> pulumi.Output[str]:
         """
         Value of the variable.
         """

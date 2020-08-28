@@ -13,7 +13,7 @@ __all__ = ['TagProtection']
 
 class TagProtection(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_access_level: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -103,7 +103,7 @@ class TagProtection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createAccessLevel")
-    def create_access_level(self) -> str:
+    def create_access_level(self) -> pulumi.Output[str]:
         """
         One of five levels of access to the project.
         """
@@ -111,7 +111,7 @@ class TagProtection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The id of the project.
         """
@@ -119,7 +119,7 @@ class TagProtection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tag(self) -> str:
+    def tag(self) -> pulumi.Output[str]:
         """
         Name of the tag or wildcard.
         """

@@ -13,7 +13,7 @@ __all__ = ['ProjectHook']
 
 class ProjectHook(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
@@ -159,7 +159,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableSslVerification")
-    def enable_ssl_verification(self) -> Optional[bool]:
+    def enable_ssl_verification(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable ssl verification when invoking
         the hook.
@@ -168,7 +168,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="issuesEvents")
-    def issues_events(self) -> Optional[bool]:
+    def issues_events(self) -> pulumi.Output[Optional[bool]]:
         """
         Invoke the hook for issues events.
         """
@@ -176,7 +176,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="jobEvents")
-    def job_events(self) -> Optional[bool]:
+    def job_events(self) -> pulumi.Output[Optional[bool]]:
         """
         Invoke the hook for job events.
         """
@@ -184,7 +184,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mergeRequestsEvents")
-    def merge_requests_events(self) -> Optional[bool]:
+    def merge_requests_events(self) -> pulumi.Output[Optional[bool]]:
         """
         Invoke the hook for merge requests.
         """
@@ -192,7 +192,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="noteEvents")
-    def note_events(self) -> Optional[bool]:
+    def note_events(self) -> pulumi.Output[Optional[bool]]:
         """
         Invoke the hook for notes events.
         """
@@ -200,7 +200,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pipelineEvents")
-    def pipeline_events(self) -> Optional[bool]:
+    def pipeline_events(self) -> pulumi.Output[Optional[bool]]:
         """
         Invoke the hook for pipeline events.
         """
@@ -208,7 +208,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The name or id of the project to add the hook to.
         """
@@ -216,7 +216,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pushEvents")
-    def push_events(self) -> Optional[bool]:
+    def push_events(self) -> pulumi.Output[Optional[bool]]:
         """
         Invoke the hook for push events.
         """
@@ -224,7 +224,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> Optional[bool]:
+    def tag_push_events(self) -> pulumi.Output[Optional[bool]]:
         """
         Invoke the hook for tag push events.
         """
@@ -232,7 +232,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def token(self) -> Optional[str]:
+    def token(self) -> pulumi.Output[Optional[str]]:
         """
         A token to present when invoking the hook.
         """
@@ -240,7 +240,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         The url of the hook to invoke.
         """
@@ -248,7 +248,7 @@ class ProjectHook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="wikiPageEvents")
-    def wiki_page_events(self) -> Optional[bool]:
+    def wiki_page_events(self) -> pulumi.Output[Optional[bool]]:
         """
         Invoke the hook for wiki page events.
         """

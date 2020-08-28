@@ -13,7 +13,7 @@ __all__ = ['BranchProtection']
 
 class BranchProtection(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch: Optional[pulumi.Input[str]] = None,
                  merge_access_level: Optional[pulumi.Input[str]] = None,
@@ -112,7 +112,7 @@ class BranchProtection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def branch(self) -> str:
+    def branch(self) -> pulumi.Output[str]:
         """
         Name of the branch.
         """
@@ -120,7 +120,7 @@ class BranchProtection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mergeAccessLevel")
-    def merge_access_level(self) -> str:
+    def merge_access_level(self) -> pulumi.Output[str]:
         """
         One of five levels of access to the project.
         """
@@ -128,7 +128,7 @@ class BranchProtection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The id of the project.
         """
@@ -136,7 +136,7 @@ class BranchProtection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pushAccessLevel")
-    def push_access_level(self) -> str:
+    def push_access_level(self) -> pulumi.Output[str]:
         """
         One of five levels of access to the project.
         """

@@ -13,7 +13,7 @@ __all__ = ['DeployKey']
 
 class DeployKey(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  can_push: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -109,7 +109,7 @@ class DeployKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="canPush")
-    def can_push(self) -> Optional[bool]:
+    def can_push(self) -> pulumi.Output[Optional[bool]]:
         """
         Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
         """
@@ -117,7 +117,7 @@ class DeployKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> pulumi.Output[str]:
         """
         The public ssh key body.
         """
@@ -125,7 +125,7 @@ class DeployKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The name or id of the project to add the deploy key to.
         """
@@ -133,7 +133,7 @@ class DeployKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def title(self) -> str:
+    def title(self) -> pulumi.Output[str]:
         """
         A title to describe the deploy key with.
         """

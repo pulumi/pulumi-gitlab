@@ -13,7 +13,7 @@ __all__ = ['ServiceGithub']
 
 class ServiceGithub(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repository_url: Optional[pulumi.Input[str]] = None,
@@ -106,17 +106,17 @@ class ServiceGithub(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def active(self) -> bool:
+    def active(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "active")
 
     @property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    def created_at(self) -> pulumi.Output[str]:
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         ID of the project you want to activate integration on.
         """
@@ -124,12 +124,12 @@ class ServiceGithub(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="repositoryUrl")
-    def repository_url(self) -> str:
+    def repository_url(self) -> pulumi.Output[str]:
         return pulumi.get(self, "repository_url")
 
     @property
     @pulumi.getter(name="staticContext")
-    def static_context(self) -> Optional[bool]:
+    def static_context(self) -> pulumi.Output[Optional[bool]]:
         """
         Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub. See [Static / dynamic status check names] to learn more.
         """
@@ -137,12 +137,12 @@ class ServiceGithub(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def title(self) -> str:
+    def title(self) -> pulumi.Output[str]:
         return pulumi.get(self, "title")
 
     @property
     @pulumi.getter
-    def token(self) -> str:
+    def token(self) -> pulumi.Output[str]:
         """
         A GitHub personal access token with at least `repo:status` scope.
         """
@@ -150,7 +150,7 @@ class ServiceGithub(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> str:
+    def updated_at(self) -> pulumi.Output[str]:
         return pulumi.get(self, "updated_at")
 
     def translate_output_property(self, prop):

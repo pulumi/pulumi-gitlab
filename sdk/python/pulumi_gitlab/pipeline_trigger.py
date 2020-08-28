@@ -13,7 +13,7 @@ __all__ = ['PipelineTrigger']
 
 class PipelineTrigger(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -97,7 +97,7 @@ class PipelineTrigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         The description of the pipeline trigger.
         """
@@ -105,7 +105,7 @@ class PipelineTrigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The name or id of the project to add the trigger to.
         """
@@ -113,7 +113,7 @@ class PipelineTrigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def token(self) -> str:
+    def token(self) -> pulumi.Output[str]:
         return pulumi.get(self, "token")
 
     def translate_output_property(self, prop):

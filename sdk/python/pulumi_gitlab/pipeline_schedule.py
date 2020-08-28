@@ -13,7 +13,7 @@ __all__ = ['PipelineSchedule']
 
 class PipelineSchedule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  cron: Optional[pulumi.Input[str]] = None,
@@ -126,7 +126,7 @@ class PipelineSchedule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def active(self) -> Optional[bool]:
+    def active(self) -> pulumi.Output[Optional[bool]]:
         """
         The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
         """
@@ -134,7 +134,7 @@ class PipelineSchedule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cron(self) -> str:
+    def cron(self) -> pulumi.Output[str]:
         """
         The cron (e.g. `0 1 * * *`).
         """
@@ -142,7 +142,7 @@ class PipelineSchedule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cronTimezone")
-    def cron_timezone(self) -> Optional[str]:
+    def cron_timezone(self) -> pulumi.Output[Optional[str]]:
         """
         The timezone.
         """
@@ -150,7 +150,7 @@ class PipelineSchedule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         The description of the pipeline schedule.
         """
@@ -158,7 +158,7 @@ class PipelineSchedule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The name or id of the project to add the schedule to.
         """
@@ -166,7 +166,7 @@ class PipelineSchedule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ref(self) -> str:
+    def ref(self) -> pulumi.Output[str]:
         """
         The branch/tag name to be triggered.
         """

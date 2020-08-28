@@ -13,7 +13,7 @@ __all__ = ['DeployToken']
 
 class DeployToken(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
@@ -138,12 +138,12 @@ class DeployToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[str]:
+    def expires_at(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "expires_at")
 
     @property
     @pulumi.getter
-    def group(self) -> Optional[str]:
+    def group(self) -> pulumi.Output[Optional[str]]:
         """
         The name or id of the group to add the deploy token to.
         Either `project` or `group` must be set.
@@ -152,7 +152,7 @@ class DeployToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A name to describe the deploy token with.
         """
@@ -160,7 +160,7 @@ class DeployToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> Optional[str]:
+    def project(self) -> pulumi.Output[Optional[str]]:
         """
         The name or id of the project to add the deploy token to.
         Either `project` or `group` must be set.
@@ -169,7 +169,7 @@ class DeployToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def scopes(self) -> List[str]:
+    def scopes(self) -> pulumi.Output[List[str]]:
         """
         Valid values: `read_repository`, `read_registry`.
         """
@@ -177,7 +177,7 @@ class DeployToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def token(self) -> str:
+    def token(self) -> pulumi.Output[str]:
         """
         The secret token. This is only populated when creating a new deploy token.
         """
@@ -185,7 +185,7 @@ class DeployToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def username(self) -> str:
+    def username(self) -> pulumi.Output[str]:
         """
         A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
         """

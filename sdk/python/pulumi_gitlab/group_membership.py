@@ -13,7 +13,7 @@ __all__ = ['GroupMembership']
 
 class GroupMembership(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[str]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
@@ -110,7 +110,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> str:
+    def access_level(self) -> pulumi.Output[str]:
         """
         Acceptable values are: guest, reporter, developer, maintainer, owner.
         """
@@ -118,7 +118,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[str]:
+    def expires_at(self) -> pulumi.Output[Optional[str]]:
         """
         Expiration date for the group membership. Format: `YYYY-MM-DD`
         """
@@ -126,7 +126,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> str:
+    def group_id(self) -> pulumi.Output[str]:
         """
         The id of the group.
         """
@@ -134,7 +134,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> float:
+    def user_id(self) -> pulumi.Output[float]:
         """
         The id of the user.
         """

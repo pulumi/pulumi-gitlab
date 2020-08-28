@@ -13,7 +13,7 @@ __all__ = ['ProjectVariable']
 
 class ProjectVariable(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  environment_scope: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -130,7 +130,7 @@ class ProjectVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="environmentScope")
-    def environment_scope(self) -> Optional[str]:
+    def environment_scope(self) -> pulumi.Output[Optional[str]]:
         """
         The environment_scope of the variable
         """
@@ -138,7 +138,7 @@ class ProjectVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> pulumi.Output[str]:
         """
         The name of the variable.
         """
@@ -146,7 +146,7 @@ class ProjectVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def masked(self) -> Optional[bool]:
+    def masked(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
         """
@@ -154,7 +154,7 @@ class ProjectVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The name or id of the project to add the hook to.
         """
@@ -162,7 +162,7 @@ class ProjectVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def protected(self) -> Optional[bool]:
+    def protected(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         """
@@ -170,7 +170,7 @@ class ProjectVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> pulumi.Output[str]:
         """
         The value of the variable.
         """
@@ -178,7 +178,7 @@ class ProjectVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="variableType")
-    def variable_type(self) -> Optional[str]:
+    def variable_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of a variable. Available types are: env_var (default) and file.
         """
