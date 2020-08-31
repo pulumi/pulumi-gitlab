@@ -13,7 +13,7 @@ __all__ = ['GroupLdapLink']
 
 class GroupLdapLink(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[str]] = None,
                  cn: Optional[pulumi.Input[str]] = None,
@@ -116,7 +116,7 @@ class GroupLdapLink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> str:
+    def access_level(self) -> pulumi.Output[str]:
         """
         Acceptable values are: guest, reporter, developer, maintainer, owner.
         """
@@ -124,7 +124,7 @@ class GroupLdapLink(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cn(self) -> str:
+    def cn(self) -> pulumi.Output[str]:
         """
         The CN of the LDAP group to link with.
         """
@@ -132,12 +132,12 @@ class GroupLdapLink(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def force(self) -> Optional[bool]:
+    def force(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "force")
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> str:
+    def group_id(self) -> pulumi.Output[str]:
         """
         The id of the GitLab group.
         """
@@ -145,7 +145,7 @@ class GroupLdapLink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ldapProvider")
-    def ldap_provider(self) -> str:
+    def ldap_provider(self) -> pulumi.Output[str]:
         """
         The name of the LDAP provider as stored in the GitLab database.
         """

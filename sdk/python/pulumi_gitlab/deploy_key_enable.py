@@ -13,7 +13,7 @@ __all__ = ['DeployKeyEnable']
 
 class DeployKeyEnable(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  can_push: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -118,17 +118,17 @@ class DeployKeyEnable(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="canPush")
-    def can_push(self) -> bool:
+    def can_push(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "can_push")
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> pulumi.Output[str]:
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter(name="keyId")
-    def key_id(self) -> str:
+    def key_id(self) -> pulumi.Output[str]:
         """
         The Gitlab key id for the pre-existing deploy key
         """
@@ -136,7 +136,7 @@ class DeployKeyEnable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The name or id of the project to add the deploy key to.
         """
@@ -144,7 +144,7 @@ class DeployKeyEnable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def title(self) -> str:
+    def title(self) -> pulumi.Output[str]:
         return pulumi.get(self, "title")
 
     def translate_output_property(self, prop):

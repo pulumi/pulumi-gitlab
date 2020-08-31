@@ -13,7 +13,7 @@ __all__ = ['ProjectPushRules']
 
 class ProjectPushRules(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  author_email_regex: Optional[pulumi.Input[str]] = None,
                  branch_name_regex: Optional[pulumi.Input[str]] = None,
@@ -125,7 +125,7 @@ class ProjectPushRules(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorEmailRegex")
-    def author_email_regex(self) -> Optional[str]:
+    def author_email_regex(self) -> pulumi.Output[Optional[str]]:
         """
         All commit author emails must match this regex, e.g. "@my-company.com$"
         """
@@ -133,7 +133,7 @@ class ProjectPushRules(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="branchNameRegex")
-    def branch_name_regex(self) -> Optional[str]:
+    def branch_name_regex(self) -> pulumi.Output[Optional[str]]:
         """
         All branch names must match this regex, e.g. "(feature|hotfix)\/*"
         """
@@ -141,7 +141,7 @@ class ProjectPushRules(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="commitMessageRegex")
-    def commit_message_regex(self) -> Optional[str]:
+    def commit_message_regex(self) -> pulumi.Output[Optional[str]]:
         """
         All commit messages must match this regex, e.g. "Fixed \d+\..*"
         """
@@ -149,7 +149,7 @@ class ProjectPushRules(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="denyDeleteTag")
-    def deny_delete_tag(self) -> Optional[bool]:
+    def deny_delete_tag(self) -> pulumi.Output[Optional[bool]]:
         """
         Deny deleting a tag
         """
@@ -157,7 +157,7 @@ class ProjectPushRules(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fileNameRegex")
-    def file_name_regex(self) -> Optional[str]:
+    def file_name_regex(self) -> pulumi.Output[Optional[str]]:
         """
         All commited filenames must not match this regex, e.g. "(jar|exe)$"
         """
@@ -165,7 +165,7 @@ class ProjectPushRules(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxFileSize")
-    def max_file_size(self) -> Optional[float]:
+    def max_file_size(self) -> pulumi.Output[Optional[float]]:
         """
         Maximum file size (MB)
         """
@@ -173,7 +173,7 @@ class ProjectPushRules(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memberCheck")
-    def member_check(self) -> Optional[bool]:
+    def member_check(self) -> pulumi.Output[Optional[bool]]:
         """
         Restrict commits by author (email) to existing GitLab users
         """
@@ -181,7 +181,7 @@ class ProjectPushRules(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="preventSecrets")
-    def prevent_secrets(self) -> Optional[bool]:
+    def prevent_secrets(self) -> pulumi.Output[Optional[bool]]:
         """
         GitLab will reject any files that are likely to contain secrets
         """
@@ -189,7 +189,7 @@ class ProjectPushRules(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         The name or id of the project to add the push rules to.
         """

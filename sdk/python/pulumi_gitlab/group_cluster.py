@@ -13,7 +13,7 @@ __all__ = ['GroupCluster']
 
 class GroupCluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -151,17 +151,17 @@ class GroupCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterType")
-    def cluster_type(self) -> str:
+    def cluster_type(self) -> pulumi.Output[str]:
         return pulumi.get(self, "cluster_type")
 
     @property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> str:
+    def created_at(self) -> pulumi.Output[str]:
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
-    def domain(self) -> Optional[str]:
+    def domain(self) -> pulumi.Output[Optional[str]]:
         """
         The base domain of the cluster.
         """
@@ -169,7 +169,7 @@ class GroupCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
         """
@@ -177,7 +177,7 @@ class GroupCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="environmentScope")
-    def environment_scope(self) -> Optional[str]:
+    def environment_scope(self) -> pulumi.Output[Optional[str]]:
         """
         The associated environment to the cluster. Defaults to `*`.
         """
@@ -185,7 +185,7 @@ class GroupCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def group(self) -> str:
+    def group(self) -> pulumi.Output[str]:
         """
         The id of the group to add the cluster to.
         """
@@ -193,7 +193,7 @@ class GroupCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kubernetesApiUrl")
-    def kubernetes_api_url(self) -> str:
+    def kubernetes_api_url(self) -> pulumi.Output[str]:
         """
         The URL to access the Kubernetes API.
         """
@@ -201,7 +201,7 @@ class GroupCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kubernetesAuthorizationType")
-    def kubernetes_authorization_type(self) -> Optional[str]:
+    def kubernetes_authorization_type(self) -> pulumi.Output[Optional[str]]:
         """
         The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
         """
@@ -209,7 +209,7 @@ class GroupCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kubernetesCaCert")
-    def kubernetes_ca_cert(self) -> Optional[str]:
+    def kubernetes_ca_cert(self) -> pulumi.Output[Optional[str]]:
         """
         TLS certificate (needed if API is using a self-signed TLS certificate).
         """
@@ -217,7 +217,7 @@ class GroupCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kubernetesToken")
-    def kubernetes_token(self) -> str:
+    def kubernetes_token(self) -> pulumi.Output[str]:
         """
         The token to authenticate against Kubernetes.
         """
@@ -225,7 +225,7 @@ class GroupCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def managed(self) -> Optional[bool]:
+    def managed(self) -> pulumi.Output[Optional[bool]]:
         """
         Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
         """
@@ -233,12 +233,12 @@ class GroupCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="managementProjectId")
-    def management_project_id(self) -> Optional[str]:
+    def management_project_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "management_project_id")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of cluster.
         """
@@ -246,12 +246,12 @@ class GroupCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="platformType")
-    def platform_type(self) -> str:
+    def platform_type(self) -> pulumi.Output[str]:
         return pulumi.get(self, "platform_type")
 
     @property
     @pulumi.getter(name="providerType")
-    def provider_type(self) -> str:
+    def provider_type(self) -> pulumi.Output[str]:
         return pulumi.get(self, "provider_type")
 
     def translate_output_property(self, prop):

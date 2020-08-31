@@ -13,7 +13,7 @@ __all__ = ['ServiceSlack']
 
 class ServiceSlack(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branches_to_be_notified: Optional[pulumi.Input[str]] = None,
                  confidential_issue_channel: Optional[pulumi.Input[str]] = None,
@@ -214,7 +214,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="branchesToBeNotified")
-    def branches_to_be_notified(self) -> str:
+    def branches_to_be_notified(self) -> pulumi.Output[str]:
         """
         Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
         """
@@ -222,7 +222,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="confidentialIssueChannel")
-    def confidential_issue_channel(self) -> Optional[str]:
+    def confidential_issue_channel(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the channel to receive confidential issue events notifications.
         """
@@ -230,7 +230,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="confidentialIssuesEvents")
-    def confidential_issues_events(self) -> bool:
+    def confidential_issues_events(self) -> pulumi.Output[bool]:
         """
         Enable notifications for confidential issues events.
         """
@@ -238,7 +238,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="confidentialNoteEvents")
-    def confidential_note_events(self) -> bool:
+    def confidential_note_events(self) -> pulumi.Output[bool]:
         """
         Enable notifications for confidential note events.
         """
@@ -246,7 +246,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="issueChannel")
-    def issue_channel(self) -> Optional[str]:
+    def issue_channel(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the channel to receive issue events notifications.
         """
@@ -254,7 +254,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="issuesEvents")
-    def issues_events(self) -> bool:
+    def issues_events(self) -> pulumi.Output[bool]:
         """
         Enable notifications for issues events.
         """
@@ -262,12 +262,12 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="jobEvents")
-    def job_events(self) -> bool:
+    def job_events(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "job_events")
 
     @property
     @pulumi.getter(name="mergeRequestChannel")
-    def merge_request_channel(self) -> Optional[str]:
+    def merge_request_channel(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the channel to receive merge request events notifications.
         """
@@ -275,7 +275,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mergeRequestsEvents")
-    def merge_requests_events(self) -> bool:
+    def merge_requests_events(self) -> pulumi.Output[bool]:
         """
         Enable notifications for merge requests events.
         """
@@ -283,7 +283,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="noteChannel")
-    def note_channel(self) -> Optional[str]:
+    def note_channel(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the channel to receive note events notifications.
         """
@@ -291,7 +291,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="noteEvents")
-    def note_events(self) -> bool:
+    def note_events(self) -> pulumi.Output[bool]:
         """
         Enable notifications for note events.
         """
@@ -299,7 +299,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notifyOnlyBrokenPipelines")
-    def notify_only_broken_pipelines(self) -> bool:
+    def notify_only_broken_pipelines(self) -> pulumi.Output[bool]:
         """
         Send notifications for broken pipelines.
         """
@@ -307,7 +307,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notifyOnlyDefaultBranch")
-    def notify_only_default_branch(self) -> bool:
+    def notify_only_default_branch(self) -> pulumi.Output[bool]:
         """
         DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.
         """
@@ -315,7 +315,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pipelineChannel")
-    def pipeline_channel(self) -> Optional[str]:
+    def pipeline_channel(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the channel to receive pipeline events notifications.
         """
@@ -323,7 +323,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pipelineEvents")
-    def pipeline_events(self) -> bool:
+    def pipeline_events(self) -> pulumi.Output[bool]:
         """
         Enable notifications for pipeline events.
         """
@@ -331,7 +331,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> pulumi.Output[str]:
         """
         ID of the project you want to activate integration on.
         """
@@ -339,7 +339,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pushChannel")
-    def push_channel(self) -> Optional[str]:
+    def push_channel(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the channel to receive push events notifications.
         """
@@ -347,7 +347,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pushEvents")
-    def push_events(self) -> bool:
+    def push_events(self) -> pulumi.Output[bool]:
         """
         Enable notifications for push events.
         """
@@ -355,7 +355,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tagPushChannel")
-    def tag_push_channel(self) -> Optional[str]:
+    def tag_push_channel(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the channel to receive tag push events notifications.
         """
@@ -363,7 +363,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> bool:
+    def tag_push_events(self) -> pulumi.Output[bool]:
         """
         Enable notifications for tag push events.
         """
@@ -371,7 +371,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def username(self) -> Optional[str]:
+    def username(self) -> pulumi.Output[Optional[str]]:
         """
         Username to use.
         """
@@ -379,7 +379,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def webhook(self) -> str:
+    def webhook(self) -> pulumi.Output[str]:
         """
         Webhook URL (ex.: https://hooks.slack.com/services/...)
         """
@@ -387,7 +387,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="wikiPageChannel")
-    def wiki_page_channel(self) -> Optional[str]:
+    def wiki_page_channel(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the channel to receive wiki page events notifications.
         """
@@ -395,7 +395,7 @@ class ServiceSlack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="wikiPageEvents")
-    def wiki_page_events(self) -> bool:
+    def wiki_page_events(self) -> pulumi.Output[bool]:
         """
         Enable notifications for wiki page events.
         """

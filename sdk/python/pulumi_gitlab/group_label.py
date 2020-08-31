@@ -13,7 +13,7 @@ __all__ = ['GroupLabel']
 
 class GroupLabel(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  color: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -109,7 +109,7 @@ class GroupLabel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def color(self) -> str:
+    def color(self) -> pulumi.Output[str]:
         """
         The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         """
@@ -117,7 +117,7 @@ class GroupLabel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the label.
         """
@@ -125,7 +125,7 @@ class GroupLabel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def group(self) -> str:
+    def group(self) -> pulumi.Output[str]:
         """
         The name or id of the group to add the label to.
         """
@@ -133,7 +133,7 @@ class GroupLabel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the label.
         """

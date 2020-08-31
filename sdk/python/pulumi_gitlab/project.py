@@ -15,7 +15,7 @@ __all__ = ['Project']
 
 class Project(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  approvals_before_merge: Optional[pulumi.Input[float]] = None,
                  archived: Optional[pulumi.Input[bool]] = None,
@@ -240,7 +240,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="approvalsBeforeMerge")
-    def approvals_before_merge(self) -> Optional[float]:
+    def approvals_before_merge(self) -> pulumi.Output[Optional[float]]:
         """
         Number of merge request approvals required for merging. Default is 0.
         """
@@ -248,7 +248,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def archived(self) -> Optional[bool]:
+    def archived(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         """
@@ -256,7 +256,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerRegistryEnabled")
-    def container_registry_enabled(self) -> Optional[bool]:
+    def container_registry_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable container registry for the project.
         """
@@ -264,7 +264,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultBranch")
-    def default_branch(self) -> Optional[str]:
+    def default_branch(self) -> pulumi.Output[Optional[str]]:
         """
         The default branch for the project.
         """
@@ -272,7 +272,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description of the project.
         """
@@ -280,7 +280,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpUrlToRepo")
-    def http_url_to_repo(self) -> str:
+    def http_url_to_repo(self) -> pulumi.Output[str]:
         """
         URL that can be provided to `git clone` to clone the
         repository via HTTP.
@@ -289,7 +289,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="initializeWithReadme")
-    def initialize_with_readme(self) -> Optional[bool]:
+    def initialize_with_readme(self) -> pulumi.Output[Optional[bool]]:
         """
         Create master branch with first commit containing a README.md file.
         """
@@ -297,7 +297,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="issuesEnabled")
-    def issues_enabled(self) -> Optional[bool]:
+    def issues_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable issue tracking for the project.
         """
@@ -305,7 +305,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lfsEnabled")
-    def lfs_enabled(self) -> Optional[bool]:
+    def lfs_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable LFS for the project.
         """
@@ -313,7 +313,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mergeMethod")
-    def merge_method(self) -> Optional[str]:
+    def merge_method(self) -> pulumi.Output[Optional[str]]:
         """
         Set to `ff` to create fast-forward merges
         Valid values are `merge`, `rebase_merge`, `ff`
@@ -323,7 +323,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mergeRequestsEnabled")
-    def merge_requests_enabled(self) -> Optional[bool]:
+    def merge_requests_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable merge requests for the project.
         """
@@ -331,7 +331,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the project.
         """
@@ -339,7 +339,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> float:
+    def namespace_id(self) -> pulumi.Output[float]:
         """
         The namespace (group or user) of the project. Defaults to your user.
         See `Group` for an example.
@@ -348,7 +348,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="onlyAllowMergeIfAllDiscussionsAreResolved")
-    def only_allow_merge_if_all_discussions_are_resolved(self) -> Optional[bool]:
+    def only_allow_merge_if_all_discussions_are_resolved(self) -> pulumi.Output[Optional[bool]]:
         """
         Set to true if you want allow merges only if all discussions are resolved.
         """
@@ -356,7 +356,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="onlyAllowMergeIfPipelineSucceeds")
-    def only_allow_merge_if_pipeline_succeeds(self) -> Optional[bool]:
+    def only_allow_merge_if_pipeline_succeeds(self) -> pulumi.Output[Optional[bool]]:
         """
         Set to true if you want allow merges only if a pipeline succeeds.
         """
@@ -364,7 +364,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def path(self) -> Optional[str]:
+    def path(self) -> pulumi.Output[Optional[str]]:
         """
         The path of the repository.
         """
@@ -372,7 +372,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pipelinesEnabled")
-    def pipelines_enabled(self) -> Optional[bool]:
+    def pipelines_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable pipelines for the project.
         """
@@ -380,7 +380,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="removeSourceBranchAfterMerge")
-    def remove_source_branch_after_merge(self) -> Optional[bool]:
+    def remove_source_branch_after_merge(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable `Delete source branch` option by default for all new merge requests.
         """
@@ -388,7 +388,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requestAccessEnabled")
-    def request_access_enabled(self) -> Optional[bool]:
+    def request_access_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Allow users to request member access.
         """
@@ -396,7 +396,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runnersToken")
-    def runners_token(self) -> str:
+    def runners_token(self) -> pulumi.Output[str]:
         """
         Registration token to use during runner setup.
         """
@@ -404,7 +404,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sharedRunnersEnabled")
-    def shared_runners_enabled(self) -> bool:
+    def shared_runners_enabled(self) -> pulumi.Output[bool]:
         """
         Enable shared runners for this project.
         """
@@ -412,7 +412,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sharedWithGroups")
-    def shared_with_groups(self) -> Optional[List['outputs.ProjectSharedWithGroup']]:
+    def shared_with_groups(self) -> pulumi.Output[Optional[List['outputs.ProjectSharedWithGroup']]]:
         """
         Enable sharing the project with a list of groups (maps).
         """
@@ -420,7 +420,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snippetsEnabled")
-    def snippets_enabled(self) -> Optional[bool]:
+    def snippets_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable snippets for the project.
         """
@@ -428,7 +428,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sshUrlToRepo")
-    def ssh_url_to_repo(self) -> str:
+    def ssh_url_to_repo(self) -> pulumi.Output[str]:
         """
         URL that can be provided to `git clone` to clone the
         repository via SSH.
@@ -437,7 +437,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Tags (topics) of the project.
         """
@@ -445,7 +445,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="visibilityLevel")
-    def visibility_level(self) -> Optional[str]:
+    def visibility_level(self) -> pulumi.Output[Optional[str]]:
         """
         Set to `public` to create a public project.
         Valid values are `private`, `internal`, `public`.
@@ -455,7 +455,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="webUrl")
-    def web_url(self) -> str:
+    def web_url(self) -> pulumi.Output[str]:
         """
         URL that can be used to find the project in a browser.
         """
@@ -463,7 +463,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="wikiEnabled")
-    def wiki_enabled(self) -> Optional[bool]:
+    def wiki_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable wiki for the project.
         """

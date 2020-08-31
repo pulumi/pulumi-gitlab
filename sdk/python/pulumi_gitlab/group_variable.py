@@ -13,7 +13,7 @@ __all__ = ['GroupVariable']
 
 class GroupVariable(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -123,7 +123,7 @@ class GroupVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def group(self) -> str:
+    def group(self) -> pulumi.Output[str]:
         """
         The name or id of the group to add the hook to.
         """
@@ -131,7 +131,7 @@ class GroupVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> pulumi.Output[str]:
         """
         The name of the variable.
         """
@@ -139,12 +139,12 @@ class GroupVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def masked(self) -> Optional[bool]:
+    def masked(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "masked")
 
     @property
     @pulumi.getter
-    def protected(self) -> Optional[bool]:
+    def protected(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         """
@@ -152,7 +152,7 @@ class GroupVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> pulumi.Output[str]:
         """
         The value of the variable.
         """
@@ -160,7 +160,7 @@ class GroupVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="variableType")
-    def variable_type(self) -> Optional[str]:
+    def variable_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of a variable. Available types are: env_var (default) and file.
         """
