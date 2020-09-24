@@ -1,7 +1,10 @@
 ## HEAD (Unreleased)
 * Upgrade to pulumi-terraform-bridge v2.8.0
 * Upgrade to Pulumi v2.10.0
-* Upgrade to v3.0.0 of the GitLab Terraform Provider
+* Upgrade to v3.0.0 of the GitLab Terraform Provider  
+  **PLEASE NOTE:**  
+  * `gitlab.projectPushRules` has been removed - push rules can be speficied as part of `pushRules` in `gitlab.Project`  
+  * `gitlab.Project` `sharedWithGroups` attribute has been replaced by the resource `gitlab.ProjectShareGroup`  
 
 ---
 
