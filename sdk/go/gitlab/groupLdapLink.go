@@ -10,6 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # gitlab\_group\_ldap\_link
+//
 // This resource allows you to add an LDAP link to an existing GitLab group.
 //
 // ## Example Usage

@@ -23,6 +23,8 @@ class PipelineScheduleVariable(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        ## # gitlab\_pipeline\_schedule\_variable
+
         This resource allows you to create and manage variables for pipeline schedules.
 
         ## Example Usage

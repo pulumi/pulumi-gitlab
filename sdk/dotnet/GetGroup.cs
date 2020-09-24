@@ -12,6 +12,8 @@ namespace Pulumi.GitLab
     public static class GetGroup
     {
         /// <summary>
+        /// ## # gitlab\_group
+        /// 
         /// Provides details about a specific group in the gitlab provider.
         /// 
         /// {{% examples %}}

@@ -10,6 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # gitlab\_project_membership
+//
 // This resource allows you to add a current user to an existing project with a set access level.
 //
 // ## Example Usage

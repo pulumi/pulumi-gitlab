@@ -13,8 +13,13 @@ import (
 type Group struct {
 	pulumi.CustomResourceState
 
+	// Boolean, defaults to false.  Default to Auto
+	// DevOps pipeline for all projects within this group.
+	AutoDevopsEnabled pulumi.BoolPtrOutput `pulumi:"autoDevopsEnabled"`
 	// The description of the group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Boolean, defaults to false.  Disable email notifications
+	EmailsDisabled pulumi.BoolPtrOutput `pulumi:"emailsDisabled"`
 	// The full name of the group.
 	FullName pulumi.StringOutput `pulumi:"fullName"`
 	// The full path of the group.
@@ -22,20 +27,39 @@ type Group struct {
 	// Boolean, defaults to true.  Whether to enable LFS
 	// support for projects in this group.
 	LfsEnabled pulumi.BoolPtrOutput `pulumi:"lfsEnabled"`
+	// Boolean, defaults to false.  Disable the capability
+	// of a group from getting mentioned
+	MentionsDisabled pulumi.BoolPtrOutput `pulumi:"mentionsDisabled"`
 	// The name of this group.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Integer, id of the parent group (creates a nested group).
 	ParentId pulumi.IntPtrOutput `pulumi:"parentId"`
 	// The path of the group.
 	Path pulumi.StringOutput `pulumi:"path"`
+	// , defaults to Maintainer.
+	// Determine if developers can create projects
+	// in the group. Can be noone (No one), maintainer (Maintainers),
+	// or developer (Developers + Maintainers).
+	ProjectCreationLevel pulumi.StringPtrOutput `pulumi:"projectCreationLevel"`
 	// Boolean, defaults to false.  Whether to
 	// enable users to request access to the group.
 	RequestAccessEnabled pulumi.BoolPtrOutput `pulumi:"requestAccessEnabled"`
+	// Boolean, defaults to false.
+	// equire all users in this group to setup Two-factor authentication.
+	RequireTwoFactorAuthentication pulumi.BoolPtrOutput `pulumi:"requireTwoFactorAuthentication"`
 	// The group level registration token to use during runner setup.
 	RunnersToken pulumi.StringOutput `pulumi:"runnersToken"`
-	// Set to `public` to create a public group.
-	// Valid values are `private`, `internal`, `public`.
-	// Groups are created as private by default.
+	// Boolean, defaults to false.  Prevent sharing
+	// a project with another group within this group.
+	ShareWithGroupLock pulumi.BoolPtrOutput `pulumi:"shareWithGroupLock"`
+	// , defaults to Owner.
+	// Allowed to create subgroups.
+	// Can be owner (Owners), or maintainer (Maintainers).
+	SubgroupCreationLevel pulumi.StringPtrOutput `pulumi:"subgroupCreationLevel"`
+	// Int, defaults to 48.
+	// Time before Two-factor authentication is enforced (in hours).
+	TwoFactorGracePeriod pulumi.IntPtrOutput `pulumi:"twoFactorGracePeriod"`
+	// The group's visibility. Can be `private`, `internal`, or `public`.
 	VisibilityLevel pulumi.StringOutput `pulumi:"visibilityLevel"`
 	// Web URL of the group.
 	WebUrl pulumi.StringOutput `pulumi:"webUrl"`
@@ -72,8 +96,13 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
+	// Boolean, defaults to false.  Default to Auto
+	// DevOps pipeline for all projects within this group.
+	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
 	// The description of the group.
 	Description *string `pulumi:"description"`
+	// Boolean, defaults to false.  Disable email notifications
+	EmailsDisabled *bool `pulumi:"emailsDisabled"`
 	// The full name of the group.
 	FullName *string `pulumi:"fullName"`
 	// The full path of the group.
@@ -81,28 +110,52 @@ type groupState struct {
 	// Boolean, defaults to true.  Whether to enable LFS
 	// support for projects in this group.
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
+	// Boolean, defaults to false.  Disable the capability
+	// of a group from getting mentioned
+	MentionsDisabled *bool `pulumi:"mentionsDisabled"`
 	// The name of this group.
 	Name *string `pulumi:"name"`
 	// Integer, id of the parent group (creates a nested group).
 	ParentId *int `pulumi:"parentId"`
 	// The path of the group.
 	Path *string `pulumi:"path"`
+	// , defaults to Maintainer.
+	// Determine if developers can create projects
+	// in the group. Can be noone (No one), maintainer (Maintainers),
+	// or developer (Developers + Maintainers).
+	ProjectCreationLevel *string `pulumi:"projectCreationLevel"`
 	// Boolean, defaults to false.  Whether to
 	// enable users to request access to the group.
 	RequestAccessEnabled *bool `pulumi:"requestAccessEnabled"`
+	// Boolean, defaults to false.
+	// equire all users in this group to setup Two-factor authentication.
+	RequireTwoFactorAuthentication *bool `pulumi:"requireTwoFactorAuthentication"`
 	// The group level registration token to use during runner setup.
 	RunnersToken *string `pulumi:"runnersToken"`
-	// Set to `public` to create a public group.
-	// Valid values are `private`, `internal`, `public`.
-	// Groups are created as private by default.
+	// Boolean, defaults to false.  Prevent sharing
+	// a project with another group within this group.
+	ShareWithGroupLock *bool `pulumi:"shareWithGroupLock"`
+	// , defaults to Owner.
+	// Allowed to create subgroups.
+	// Can be owner (Owners), or maintainer (Maintainers).
+	SubgroupCreationLevel *string `pulumi:"subgroupCreationLevel"`
+	// Int, defaults to 48.
+	// Time before Two-factor authentication is enforced (in hours).
+	TwoFactorGracePeriod *int `pulumi:"twoFactorGracePeriod"`
+	// The group's visibility. Can be `private`, `internal`, or `public`.
 	VisibilityLevel *string `pulumi:"visibilityLevel"`
 	// Web URL of the group.
 	WebUrl *string `pulumi:"webUrl"`
 }
 
 type GroupState struct {
+	// Boolean, defaults to false.  Default to Auto
+	// DevOps pipeline for all projects within this group.
+	AutoDevopsEnabled pulumi.BoolPtrInput
 	// The description of the group.
 	Description pulumi.StringPtrInput
+	// Boolean, defaults to false.  Disable email notifications
+	EmailsDisabled pulumi.BoolPtrInput
 	// The full name of the group.
 	FullName pulumi.StringPtrInput
 	// The full path of the group.
@@ -110,20 +163,39 @@ type GroupState struct {
 	// Boolean, defaults to true.  Whether to enable LFS
 	// support for projects in this group.
 	LfsEnabled pulumi.BoolPtrInput
+	// Boolean, defaults to false.  Disable the capability
+	// of a group from getting mentioned
+	MentionsDisabled pulumi.BoolPtrInput
 	// The name of this group.
 	Name pulumi.StringPtrInput
 	// Integer, id of the parent group (creates a nested group).
 	ParentId pulumi.IntPtrInput
 	// The path of the group.
 	Path pulumi.StringPtrInput
+	// , defaults to Maintainer.
+	// Determine if developers can create projects
+	// in the group. Can be noone (No one), maintainer (Maintainers),
+	// or developer (Developers + Maintainers).
+	ProjectCreationLevel pulumi.StringPtrInput
 	// Boolean, defaults to false.  Whether to
 	// enable users to request access to the group.
 	RequestAccessEnabled pulumi.BoolPtrInput
+	// Boolean, defaults to false.
+	// equire all users in this group to setup Two-factor authentication.
+	RequireTwoFactorAuthentication pulumi.BoolPtrInput
 	// The group level registration token to use during runner setup.
 	RunnersToken pulumi.StringPtrInput
-	// Set to `public` to create a public group.
-	// Valid values are `private`, `internal`, `public`.
-	// Groups are created as private by default.
+	// Boolean, defaults to false.  Prevent sharing
+	// a project with another group within this group.
+	ShareWithGroupLock pulumi.BoolPtrInput
+	// , defaults to Owner.
+	// Allowed to create subgroups.
+	// Can be owner (Owners), or maintainer (Maintainers).
+	SubgroupCreationLevel pulumi.StringPtrInput
+	// Int, defaults to 48.
+	// Time before Two-factor authentication is enforced (in hours).
+	TwoFactorGracePeriod pulumi.IntPtrInput
+	// The group's visibility. Can be `private`, `internal`, or `public`.
 	VisibilityLevel pulumi.StringPtrInput
 	// Web URL of the group.
 	WebUrl pulumi.StringPtrInput
@@ -134,45 +206,93 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
+	// Boolean, defaults to false.  Default to Auto
+	// DevOps pipeline for all projects within this group.
+	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
 	// The description of the group.
 	Description *string `pulumi:"description"`
+	// Boolean, defaults to false.  Disable email notifications
+	EmailsDisabled *bool `pulumi:"emailsDisabled"`
 	// Boolean, defaults to true.  Whether to enable LFS
 	// support for projects in this group.
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
+	// Boolean, defaults to false.  Disable the capability
+	// of a group from getting mentioned
+	MentionsDisabled *bool `pulumi:"mentionsDisabled"`
 	// The name of this group.
 	Name *string `pulumi:"name"`
 	// Integer, id of the parent group (creates a nested group).
 	ParentId *int `pulumi:"parentId"`
 	// The path of the group.
 	Path string `pulumi:"path"`
+	// , defaults to Maintainer.
+	// Determine if developers can create projects
+	// in the group. Can be noone (No one), maintainer (Maintainers),
+	// or developer (Developers + Maintainers).
+	ProjectCreationLevel *string `pulumi:"projectCreationLevel"`
 	// Boolean, defaults to false.  Whether to
 	// enable users to request access to the group.
 	RequestAccessEnabled *bool `pulumi:"requestAccessEnabled"`
-	// Set to `public` to create a public group.
-	// Valid values are `private`, `internal`, `public`.
-	// Groups are created as private by default.
+	// Boolean, defaults to false.
+	// equire all users in this group to setup Two-factor authentication.
+	RequireTwoFactorAuthentication *bool `pulumi:"requireTwoFactorAuthentication"`
+	// Boolean, defaults to false.  Prevent sharing
+	// a project with another group within this group.
+	ShareWithGroupLock *bool `pulumi:"shareWithGroupLock"`
+	// , defaults to Owner.
+	// Allowed to create subgroups.
+	// Can be owner (Owners), or maintainer (Maintainers).
+	SubgroupCreationLevel *string `pulumi:"subgroupCreationLevel"`
+	// Int, defaults to 48.
+	// Time before Two-factor authentication is enforced (in hours).
+	TwoFactorGracePeriod *int `pulumi:"twoFactorGracePeriod"`
+	// The group's visibility. Can be `private`, `internal`, or `public`.
 	VisibilityLevel *string `pulumi:"visibilityLevel"`
 }
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
+	// Boolean, defaults to false.  Default to Auto
+	// DevOps pipeline for all projects within this group.
+	AutoDevopsEnabled pulumi.BoolPtrInput
 	// The description of the group.
 	Description pulumi.StringPtrInput
+	// Boolean, defaults to false.  Disable email notifications
+	EmailsDisabled pulumi.BoolPtrInput
 	// Boolean, defaults to true.  Whether to enable LFS
 	// support for projects in this group.
 	LfsEnabled pulumi.BoolPtrInput
+	// Boolean, defaults to false.  Disable the capability
+	// of a group from getting mentioned
+	MentionsDisabled pulumi.BoolPtrInput
 	// The name of this group.
 	Name pulumi.StringPtrInput
 	// Integer, id of the parent group (creates a nested group).
 	ParentId pulumi.IntPtrInput
 	// The path of the group.
 	Path pulumi.StringInput
+	// , defaults to Maintainer.
+	// Determine if developers can create projects
+	// in the group. Can be noone (No one), maintainer (Maintainers),
+	// or developer (Developers + Maintainers).
+	ProjectCreationLevel pulumi.StringPtrInput
 	// Boolean, defaults to false.  Whether to
 	// enable users to request access to the group.
 	RequestAccessEnabled pulumi.BoolPtrInput
-	// Set to `public` to create a public group.
-	// Valid values are `private`, `internal`, `public`.
-	// Groups are created as private by default.
+	// Boolean, defaults to false.
+	// equire all users in this group to setup Two-factor authentication.
+	RequireTwoFactorAuthentication pulumi.BoolPtrInput
+	// Boolean, defaults to false.  Prevent sharing
+	// a project with another group within this group.
+	ShareWithGroupLock pulumi.BoolPtrInput
+	// , defaults to Owner.
+	// Allowed to create subgroups.
+	// Can be owner (Owners), or maintainer (Maintainers).
+	SubgroupCreationLevel pulumi.StringPtrInput
+	// Int, defaults to 48.
+	// Time before Two-factor authentication is enforced (in hours).
+	TwoFactorGracePeriod pulumi.IntPtrInput
+	// The group's visibility. Can be `private`, `internal`, or `public`.
 	VisibilityLevel pulumi.StringPtrInput
 }
 

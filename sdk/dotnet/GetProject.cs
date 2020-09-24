@@ -12,6 +12,8 @@ namespace Pulumi.GitLab
     public static class GetProject
     {
         /// <summary>
+        /// ## # gitlab\_project
+        /// 
         /// Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
         /// 
         /// {{% examples %}}
@@ -45,124 +47,10 @@ namespace Pulumi.GitLab
     public sealed class GetProjectArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether the project is in read-only mode (archived).
-        /// </summary>
-        [Input("archived")]
-        public bool? Archived { get; set; }
-
-        /// <summary>
-        /// The default branch for the project.
-        /// </summary>
-        [Input("defaultBranch")]
-        public string? DefaultBranch { get; set; }
-
-        /// <summary>
-        /// A description of the project.
-        /// </summary>
-        [Input("description")]
-        public string? Description { get; set; }
-
-        /// <summary>
-        /// URL that can be provided to `git clone` to clone the
-        /// repository via HTTP.
-        /// </summary>
-        [Input("httpUrlToRepo")]
-        public string? HttpUrlToRepo { get; set; }
-
-        /// <summary>
         /// The integer that uniquely identifies the project within the gitlab install.
         /// </summary>
         [Input("id", required: true)]
         public int Id { get; set; }
-
-        /// <summary>
-        /// Enable issue tracking for the project.
-        /// </summary>
-        [Input("issuesEnabled")]
-        public bool? IssuesEnabled { get; set; }
-
-        /// <summary>
-        /// Enable LFS for the project.
-        /// </summary>
-        [Input("lfsEnabled")]
-        public bool? LfsEnabled { get; set; }
-
-        /// <summary>
-        /// Enable merge requests for the project.
-        /// </summary>
-        [Input("mergeRequestsEnabled")]
-        public bool? MergeRequestsEnabled { get; set; }
-
-        [Input("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
-        /// The namespace (group or user) of the project. Defaults to your user.
-        /// See `gitlab.Group` for an example.
-        /// </summary>
-        [Input("namespaceId")]
-        public int? NamespaceId { get; set; }
-
-        /// <summary>
-        /// The path of the repository.
-        /// </summary>
-        [Input("path")]
-        public string? Path { get; set; }
-
-        /// <summary>
-        /// Enable pipelines for the project.
-        /// </summary>
-        [Input("pipelinesEnabled")]
-        public bool? PipelinesEnabled { get; set; }
-
-        /// <summary>
-        /// Enable `Delete source branch` option by default for all new merge requests
-        /// </summary>
-        [Input("removeSourceBranchAfterMerge")]
-        public bool? RemoveSourceBranchAfterMerge { get; set; }
-
-        /// <summary>
-        /// Allow users to request member access.
-        /// </summary>
-        [Input("requestAccessEnabled")]
-        public bool? RequestAccessEnabled { get; set; }
-
-        /// <summary>
-        /// Registration token to use during runner setup.
-        /// </summary>
-        [Input("runnersToken")]
-        public string? RunnersToken { get; set; }
-
-        /// <summary>
-        /// Enable snippets for the project.
-        /// </summary>
-        [Input("snippetsEnabled")]
-        public bool? SnippetsEnabled { get; set; }
-
-        /// <summary>
-        /// URL that can be provided to `git clone` to clone the
-        /// repository via SSH.
-        /// </summary>
-        [Input("sshUrlToRepo")]
-        public string? SshUrlToRepo { get; set; }
-
-        /// <summary>
-        /// Repositories are created as private by default.
-        /// </summary>
-        [Input("visibilityLevel")]
-        public string? VisibilityLevel { get; set; }
-
-        /// <summary>
-        /// URL that can be used to find the project in a browser.
-        /// </summary>
-        [Input("webUrl")]
-        public string? WebUrl { get; set; }
-
-        /// <summary>
-        /// Enable wiki for the project.
-        /// </summary>
-        [Input("wikiEnabled")]
-        public bool? WikiEnabled { get; set; }
 
         public GetProjectArgs()
         {
@@ -217,9 +105,14 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Path;
         /// <summary>
+        /// The path of the repository with namespace.
+        /// </summary>
+        public readonly string PathWithNamespace;
+        /// <summary>
         /// Enable pipelines for the project.
         /// </summary>
         public readonly bool PipelinesEnabled;
+        public readonly Outputs.GetProjectPushRulesResult PushRules;
         /// <summary>
         /// Enable `Delete source branch` option by default for all new merge requests
         /// </summary>
@@ -278,7 +171,11 @@ namespace Pulumi.GitLab
 
             string path,
 
+            string pathWithNamespace,
+
             bool pipelinesEnabled,
+
+            Outputs.GetProjectPushRulesResult pushRules,
 
             bool removeSourceBranchAfterMerge,
 
@@ -307,7 +204,9 @@ namespace Pulumi.GitLab
             Name = name;
             NamespaceId = namespaceId;
             Path = path;
+            PathWithNamespace = pathWithNamespace;
             PipelinesEnabled = pipelinesEnabled;
+            PushRules = pushRules;
             RemoveSourceBranchAfterMerge = removeSourceBranchAfterMerge;
             RequestAccessEnabled = requestAccessEnabled;
             RunnersToken = runnersToken;

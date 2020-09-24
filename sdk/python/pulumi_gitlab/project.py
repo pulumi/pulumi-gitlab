@@ -22,6 +22,8 @@ class Project(pulumi.CustomResource):
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 group_with_project_templates_id: Optional[pulumi.Input[float]] = None,
+                 import_url: Optional[pulumi.Input[str]] = None,
                  initialize_with_readme: Optional[pulumi.Input[bool]] = None,
                  issues_enabled: Optional[pulumi.Input[bool]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
@@ -31,14 +33,18 @@ class Project(pulumi.CustomResource):
                  namespace_id: Optional[pulumi.Input[float]] = None,
                  only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
                  only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[bool]] = None,
+                 packages_enabled: Optional[pulumi.Input[bool]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  pipelines_enabled: Optional[pulumi.Input[bool]] = None,
+                 push_rules: Optional[pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']]] = None,
                  remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
-                 shared_with_groups: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ProjectSharedWithGroupArgs']]]]] = None,
                  snippets_enabled: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 template_name: Optional[pulumi.Input[str]] = None,
+                 template_project_id: Optional[pulumi.Input[float]] = None,
+                 use_custom_template: Optional[pulumi.Input[bool]] = None,
                  visibility_level: Optional[pulumi.Input[str]] = None,
                  wiki_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
@@ -53,6 +59,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
+        :param pulumi.Input[float] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        :param pulumi.Input[str] import_url: Git URL to a repository to be imported.
         :param pulumi.Input[bool] initialize_with_readme: Create master branch with first commit containing a README.md file.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
@@ -65,14 +73,18 @@ class Project(pulumi.CustomResource):
                See `Group` for an example.
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
+        :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
+        :param pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']] push_rules: Push rules for the project (documented below).
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ProjectSharedWithGroupArgs']]]] shared_with_groups: Enable sharing the project with a list of groups (maps).
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
         :param pulumi.Input[List[pulumi.Input[str]]] tags: Tags (topics) of the project.
+        :param pulumi.Input[str] template_name: When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        :param pulumi.Input[float] template_project_id: When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public project.
                Valid values are `private`, `internal`, `public`.
                Repositories are created as private by default.
@@ -100,6 +112,8 @@ class Project(pulumi.CustomResource):
             __props__['container_registry_enabled'] = container_registry_enabled
             __props__['default_branch'] = default_branch
             __props__['description'] = description
+            __props__['group_with_project_templates_id'] = group_with_project_templates_id
+            __props__['import_url'] = import_url
             __props__['initialize_with_readme'] = initialize_with_readme
             __props__['issues_enabled'] = issues_enabled
             __props__['lfs_enabled'] = lfs_enabled
@@ -109,17 +123,22 @@ class Project(pulumi.CustomResource):
             __props__['namespace_id'] = namespace_id
             __props__['only_allow_merge_if_all_discussions_are_resolved'] = only_allow_merge_if_all_discussions_are_resolved
             __props__['only_allow_merge_if_pipeline_succeeds'] = only_allow_merge_if_pipeline_succeeds
+            __props__['packages_enabled'] = packages_enabled
             __props__['path'] = path
             __props__['pipelines_enabled'] = pipelines_enabled
+            __props__['push_rules'] = push_rules
             __props__['remove_source_branch_after_merge'] = remove_source_branch_after_merge
             __props__['request_access_enabled'] = request_access_enabled
             __props__['shared_runners_enabled'] = shared_runners_enabled
-            __props__['shared_with_groups'] = shared_with_groups
             __props__['snippets_enabled'] = snippets_enabled
             __props__['tags'] = tags
+            __props__['template_name'] = template_name
+            __props__['template_project_id'] = template_project_id
+            __props__['use_custom_template'] = use_custom_template
             __props__['visibility_level'] = visibility_level
             __props__['wiki_enabled'] = wiki_enabled
             __props__['http_url_to_repo'] = None
+            __props__['path_with_namespace'] = None
             __props__['runners_token'] = None
             __props__['ssh_url_to_repo'] = None
             __props__['web_url'] = None
@@ -138,7 +157,9 @@ class Project(pulumi.CustomResource):
             container_registry_enabled: Optional[pulumi.Input[bool]] = None,
             default_branch: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            group_with_project_templates_id: Optional[pulumi.Input[float]] = None,
             http_url_to_repo: Optional[pulumi.Input[str]] = None,
+            import_url: Optional[pulumi.Input[str]] = None,
             initialize_with_readme: Optional[pulumi.Input[bool]] = None,
             issues_enabled: Optional[pulumi.Input[bool]] = None,
             lfs_enabled: Optional[pulumi.Input[bool]] = None,
@@ -148,16 +169,21 @@ class Project(pulumi.CustomResource):
             namespace_id: Optional[pulumi.Input[float]] = None,
             only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
             only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[bool]] = None,
+            packages_enabled: Optional[pulumi.Input[bool]] = None,
             path: Optional[pulumi.Input[str]] = None,
+            path_with_namespace: Optional[pulumi.Input[str]] = None,
             pipelines_enabled: Optional[pulumi.Input[bool]] = None,
+            push_rules: Optional[pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']]] = None,
             remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
             request_access_enabled: Optional[pulumi.Input[bool]] = None,
             runners_token: Optional[pulumi.Input[str]] = None,
             shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
-            shared_with_groups: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ProjectSharedWithGroupArgs']]]]] = None,
             snippets_enabled: Optional[pulumi.Input[bool]] = None,
             ssh_url_to_repo: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            template_name: Optional[pulumi.Input[str]] = None,
+            template_project_id: Optional[pulumi.Input[float]] = None,
+            use_custom_template: Optional[pulumi.Input[bool]] = None,
             visibility_level: Optional[pulumi.Input[str]] = None,
             web_url: Optional[pulumi.Input[str]] = None,
             wiki_enabled: Optional[pulumi.Input[bool]] = None) -> 'Project':
@@ -173,8 +199,10 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
+        :param pulumi.Input[float] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
         :param pulumi.Input[str] http_url_to_repo: URL that can be provided to `git clone` to clone the
                repository via HTTP.
+        :param pulumi.Input[str] import_url: Git URL to a repository to be imported.
         :param pulumi.Input[bool] initialize_with_readme: Create master branch with first commit containing a README.md file.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
@@ -187,17 +215,22 @@ class Project(pulumi.CustomResource):
                See `Group` for an example.
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
+        :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[str] path: The path of the repository.
+        :param pulumi.Input[str] path_with_namespace: The path of the repository with namespace.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
+        :param pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']] push_rules: Push rules for the project (documented below).
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[str] runners_token: Registration token to use during runner setup.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ProjectSharedWithGroupArgs']]]] shared_with_groups: Enable sharing the project with a list of groups (maps).
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
         :param pulumi.Input[str] ssh_url_to_repo: URL that can be provided to `git clone` to clone the
                repository via SSH.
         :param pulumi.Input[List[pulumi.Input[str]]] tags: Tags (topics) of the project.
+        :param pulumi.Input[str] template_name: When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        :param pulumi.Input[float] template_project_id: When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public project.
                Valid values are `private`, `internal`, `public`.
                Repositories are created as private by default.
@@ -213,7 +246,9 @@ class Project(pulumi.CustomResource):
         __props__["container_registry_enabled"] = container_registry_enabled
         __props__["default_branch"] = default_branch
         __props__["description"] = description
+        __props__["group_with_project_templates_id"] = group_with_project_templates_id
         __props__["http_url_to_repo"] = http_url_to_repo
+        __props__["import_url"] = import_url
         __props__["initialize_with_readme"] = initialize_with_readme
         __props__["issues_enabled"] = issues_enabled
         __props__["lfs_enabled"] = lfs_enabled
@@ -223,16 +258,21 @@ class Project(pulumi.CustomResource):
         __props__["namespace_id"] = namespace_id
         __props__["only_allow_merge_if_all_discussions_are_resolved"] = only_allow_merge_if_all_discussions_are_resolved
         __props__["only_allow_merge_if_pipeline_succeeds"] = only_allow_merge_if_pipeline_succeeds
+        __props__["packages_enabled"] = packages_enabled
         __props__["path"] = path
+        __props__["path_with_namespace"] = path_with_namespace
         __props__["pipelines_enabled"] = pipelines_enabled
+        __props__["push_rules"] = push_rules
         __props__["remove_source_branch_after_merge"] = remove_source_branch_after_merge
         __props__["request_access_enabled"] = request_access_enabled
         __props__["runners_token"] = runners_token
         __props__["shared_runners_enabled"] = shared_runners_enabled
-        __props__["shared_with_groups"] = shared_with_groups
         __props__["snippets_enabled"] = snippets_enabled
         __props__["ssh_url_to_repo"] = ssh_url_to_repo
         __props__["tags"] = tags
+        __props__["template_name"] = template_name
+        __props__["template_project_id"] = template_project_id
+        __props__["use_custom_template"] = use_custom_template
         __props__["visibility_level"] = visibility_level
         __props__["web_url"] = web_url
         __props__["wiki_enabled"] = wiki_enabled
@@ -279,6 +319,14 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="groupWithProjectTemplatesId")
+    def group_with_project_templates_id(self) -> pulumi.Output[Optional[float]]:
+        """
+        For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        """
+        return pulumi.get(self, "group_with_project_templates_id")
+
+    @property
     @pulumi.getter(name="httpUrlToRepo")
     def http_url_to_repo(self) -> pulumi.Output[str]:
         """
@@ -286,6 +334,14 @@ class Project(pulumi.CustomResource):
         repository via HTTP.
         """
         return pulumi.get(self, "http_url_to_repo")
+
+    @property
+    @pulumi.getter(name="importUrl")
+    def import_url(self) -> pulumi.Output[Optional[str]]:
+        """
+        Git URL to a repository to be imported.
+        """
+        return pulumi.get(self, "import_url")
 
     @property
     @pulumi.getter(name="initializeWithReadme")
@@ -363,6 +419,14 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "only_allow_merge_if_pipeline_succeeds")
 
     @property
+    @pulumi.getter(name="packagesEnabled")
+    def packages_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable packages repository for the project.
+        """
+        return pulumi.get(self, "packages_enabled")
+
+    @property
     @pulumi.getter
     def path(self) -> pulumi.Output[Optional[str]]:
         """
@@ -371,12 +435,28 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "path")
 
     @property
+    @pulumi.getter(name="pathWithNamespace")
+    def path_with_namespace(self) -> pulumi.Output[str]:
+        """
+        The path of the repository with namespace.
+        """
+        return pulumi.get(self, "path_with_namespace")
+
+    @property
     @pulumi.getter(name="pipelinesEnabled")
     def pipelines_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable pipelines for the project.
         """
         return pulumi.get(self, "pipelines_enabled")
+
+    @property
+    @pulumi.getter(name="pushRules")
+    def push_rules(self) -> pulumi.Output['outputs.ProjectPushRules']:
+        """
+        Push rules for the project (documented below).
+        """
+        return pulumi.get(self, "push_rules")
 
     @property
     @pulumi.getter(name="removeSourceBranchAfterMerge")
@@ -411,14 +491,6 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "shared_runners_enabled")
 
     @property
-    @pulumi.getter(name="sharedWithGroups")
-    def shared_with_groups(self) -> pulumi.Output[Optional[List['outputs.ProjectSharedWithGroup']]]:
-        """
-        Enable sharing the project with a list of groups (maps).
-        """
-        return pulumi.get(self, "shared_with_groups")
-
-    @property
     @pulumi.getter(name="snippetsEnabled")
     def snippets_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -442,6 +514,30 @@ class Project(pulumi.CustomResource):
         Tags (topics) of the project.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="templateName")
+    def template_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        """
+        return pulumi.get(self, "template_name")
+
+    @property
+    @pulumi.getter(name="templateProjectId")
+    def template_project_id(self) -> pulumi.Output[Optional[float]]:
+        """
+        When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        """
+        return pulumi.get(self, "template_project_id")
+
+    @property
+    @pulumi.getter(name="useCustomTemplate")
+    def use_custom_template(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        """
+        return pulumi.get(self, "use_custom_template")
 
     @property
     @pulumi.getter(name="visibilityLevel")

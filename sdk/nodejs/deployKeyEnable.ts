@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## # gitlab\_deploy\_key\_enable
+ *
  * This resource allows you to enable pre-existing deploy keys for your GitLab projects.
  *
  * **the GITLAB KEY_ID for the deploy key must be known**

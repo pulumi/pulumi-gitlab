@@ -69,6 +69,7 @@ namespace Pulumi.GitLab.Outputs
         public readonly bool OnlyMirrorProtectedBranches;
         public readonly int OpenIssuesCount;
         public readonly Outputs.GetProjectsProjectOwnerResult Owner;
+        public readonly bool PackagesEnabled;
         public readonly string Path;
         /// <summary>
         /// In `group/subgroup/project` or `user/project` format.
@@ -179,6 +180,8 @@ namespace Pulumi.GitLab.Outputs
 
             Outputs.GetProjectsProjectOwnerResult owner,
 
+            bool packagesEnabled,
+
             string path,
 
             string pathWithNamespace,
@@ -252,6 +255,7 @@ namespace Pulumi.GitLab.Outputs
             OnlyMirrorProtectedBranches = onlyMirrorProtectedBranches;
             OpenIssuesCount = openIssuesCount;
             Owner = owner;
+            PackagesEnabled = packagesEnabled;
             Path = path;
             PathWithNamespace = pathWithNamespace;
             Permissions = permissions;

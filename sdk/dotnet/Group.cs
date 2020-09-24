@@ -12,10 +12,23 @@ namespace Pulumi.GitLab
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>
+        /// Boolean, defaults to false.  Default to Auto
+        /// DevOps pipeline for all projects within this group.
+        /// </summary>
+        [Output("autoDevopsEnabled")]
+        public Output<bool?> AutoDevopsEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the group.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Boolean, defaults to false.  Disable email notifications
+        /// </summary>
+        [Output("emailsDisabled")]
+        public Output<bool?> EmailsDisabled { get; private set; } = null!;
 
         /// <summary>
         /// The full name of the group.
@@ -37,6 +50,13 @@ namespace Pulumi.GitLab
         public Output<bool?> LfsEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Boolean, defaults to false.  Disable the capability
+        /// of a group from getting mentioned
+        /// </summary>
+        [Output("mentionsDisabled")]
+        public Output<bool?> MentionsDisabled { get; private set; } = null!;
+
+        /// <summary>
         /// The name of this group.
         /// </summary>
         [Output("name")]
@@ -55,11 +75,27 @@ namespace Pulumi.GitLab
         public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
+        /// , defaults to Maintainer.
+        /// Determine if developers can create projects
+        /// in the group. Can be noone (No one), maintainer (Maintainers),
+        /// or developer (Developers + Maintainers).
+        /// </summary>
+        [Output("projectCreationLevel")]
+        public Output<string?> ProjectCreationLevel { get; private set; } = null!;
+
+        /// <summary>
         /// Boolean, defaults to false.  Whether to
         /// enable users to request access to the group.
         /// </summary>
         [Output("requestAccessEnabled")]
         public Output<bool?> RequestAccessEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Boolean, defaults to false.
+        /// equire all users in this group to setup Two-factor authentication.
+        /// </summary>
+        [Output("requireTwoFactorAuthentication")]
+        public Output<bool?> RequireTwoFactorAuthentication { get; private set; } = null!;
 
         /// <summary>
         /// The group level registration token to use during runner setup.
@@ -68,9 +104,29 @@ namespace Pulumi.GitLab
         public Output<string> RunnersToken { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `public` to create a public group.
-        /// Valid values are `private`, `internal`, `public`.
-        /// Groups are created as private by default.
+        /// Boolean, defaults to false.  Prevent sharing
+        /// a project with another group within this group.
+        /// </summary>
+        [Output("shareWithGroupLock")]
+        public Output<bool?> ShareWithGroupLock { get; private set; } = null!;
+
+        /// <summary>
+        /// , defaults to Owner.
+        /// Allowed to create subgroups.
+        /// Can be owner (Owners), or maintainer (Maintainers).
+        /// </summary>
+        [Output("subgroupCreationLevel")]
+        public Output<string?> SubgroupCreationLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// Int, defaults to 48.
+        /// Time before Two-factor authentication is enforced (in hours).
+        /// </summary>
+        [Output("twoFactorGracePeriod")]
+        public Output<int?> TwoFactorGracePeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// The group's visibility. Can be `private`, `internal`, or `public`.
         /// </summary>
         [Output("visibilityLevel")]
         public Output<string> VisibilityLevel { get; private set; } = null!;
@@ -128,10 +184,23 @@ namespace Pulumi.GitLab
     public sealed class GroupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Boolean, defaults to false.  Default to Auto
+        /// DevOps pipeline for all projects within this group.
+        /// </summary>
+        [Input("autoDevopsEnabled")]
+        public Input<bool>? AutoDevopsEnabled { get; set; }
+
+        /// <summary>
         /// The description of the group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Boolean, defaults to false.  Disable email notifications
+        /// </summary>
+        [Input("emailsDisabled")]
+        public Input<bool>? EmailsDisabled { get; set; }
 
         /// <summary>
         /// Boolean, defaults to true.  Whether to enable LFS
@@ -139,6 +208,13 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("lfsEnabled")]
         public Input<bool>? LfsEnabled { get; set; }
+
+        /// <summary>
+        /// Boolean, defaults to false.  Disable the capability
+        /// of a group from getting mentioned
+        /// </summary>
+        [Input("mentionsDisabled")]
+        public Input<bool>? MentionsDisabled { get; set; }
 
         /// <summary>
         /// The name of this group.
@@ -159,6 +235,15 @@ namespace Pulumi.GitLab
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
+        /// , defaults to Maintainer.
+        /// Determine if developers can create projects
+        /// in the group. Can be noone (No one), maintainer (Maintainers),
+        /// or developer (Developers + Maintainers).
+        /// </summary>
+        [Input("projectCreationLevel")]
+        public Input<string>? ProjectCreationLevel { get; set; }
+
+        /// <summary>
         /// Boolean, defaults to false.  Whether to
         /// enable users to request access to the group.
         /// </summary>
@@ -166,9 +251,36 @@ namespace Pulumi.GitLab
         public Input<bool>? RequestAccessEnabled { get; set; }
 
         /// <summary>
-        /// Set to `public` to create a public group.
-        /// Valid values are `private`, `internal`, `public`.
-        /// Groups are created as private by default.
+        /// Boolean, defaults to false.
+        /// equire all users in this group to setup Two-factor authentication.
+        /// </summary>
+        [Input("requireTwoFactorAuthentication")]
+        public Input<bool>? RequireTwoFactorAuthentication { get; set; }
+
+        /// <summary>
+        /// Boolean, defaults to false.  Prevent sharing
+        /// a project with another group within this group.
+        /// </summary>
+        [Input("shareWithGroupLock")]
+        public Input<bool>? ShareWithGroupLock { get; set; }
+
+        /// <summary>
+        /// , defaults to Owner.
+        /// Allowed to create subgroups.
+        /// Can be owner (Owners), or maintainer (Maintainers).
+        /// </summary>
+        [Input("subgroupCreationLevel")]
+        public Input<string>? SubgroupCreationLevel { get; set; }
+
+        /// <summary>
+        /// Int, defaults to 48.
+        /// Time before Two-factor authentication is enforced (in hours).
+        /// </summary>
+        [Input("twoFactorGracePeriod")]
+        public Input<int>? TwoFactorGracePeriod { get; set; }
+
+        /// <summary>
+        /// The group's visibility. Can be `private`, `internal`, or `public`.
         /// </summary>
         [Input("visibilityLevel")]
         public Input<string>? VisibilityLevel { get; set; }
@@ -181,10 +293,23 @@ namespace Pulumi.GitLab
     public sealed class GroupState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Boolean, defaults to false.  Default to Auto
+        /// DevOps pipeline for all projects within this group.
+        /// </summary>
+        [Input("autoDevopsEnabled")]
+        public Input<bool>? AutoDevopsEnabled { get; set; }
+
+        /// <summary>
         /// The description of the group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Boolean, defaults to false.  Disable email notifications
+        /// </summary>
+        [Input("emailsDisabled")]
+        public Input<bool>? EmailsDisabled { get; set; }
 
         /// <summary>
         /// The full name of the group.
@@ -206,6 +331,13 @@ namespace Pulumi.GitLab
         public Input<bool>? LfsEnabled { get; set; }
 
         /// <summary>
+        /// Boolean, defaults to false.  Disable the capability
+        /// of a group from getting mentioned
+        /// </summary>
+        [Input("mentionsDisabled")]
+        public Input<bool>? MentionsDisabled { get; set; }
+
+        /// <summary>
         /// The name of this group.
         /// </summary>
         [Input("name")]
@@ -224,11 +356,27 @@ namespace Pulumi.GitLab
         public Input<string>? Path { get; set; }
 
         /// <summary>
+        /// , defaults to Maintainer.
+        /// Determine if developers can create projects
+        /// in the group. Can be noone (No one), maintainer (Maintainers),
+        /// or developer (Developers + Maintainers).
+        /// </summary>
+        [Input("projectCreationLevel")]
+        public Input<string>? ProjectCreationLevel { get; set; }
+
+        /// <summary>
         /// Boolean, defaults to false.  Whether to
         /// enable users to request access to the group.
         /// </summary>
         [Input("requestAccessEnabled")]
         public Input<bool>? RequestAccessEnabled { get; set; }
+
+        /// <summary>
+        /// Boolean, defaults to false.
+        /// equire all users in this group to setup Two-factor authentication.
+        /// </summary>
+        [Input("requireTwoFactorAuthentication")]
+        public Input<bool>? RequireTwoFactorAuthentication { get; set; }
 
         /// <summary>
         /// The group level registration token to use during runner setup.
@@ -237,9 +385,29 @@ namespace Pulumi.GitLab
         public Input<string>? RunnersToken { get; set; }
 
         /// <summary>
-        /// Set to `public` to create a public group.
-        /// Valid values are `private`, `internal`, `public`.
-        /// Groups are created as private by default.
+        /// Boolean, defaults to false.  Prevent sharing
+        /// a project with another group within this group.
+        /// </summary>
+        [Input("shareWithGroupLock")]
+        public Input<bool>? ShareWithGroupLock { get; set; }
+
+        /// <summary>
+        /// , defaults to Owner.
+        /// Allowed to create subgroups.
+        /// Can be owner (Owners), or maintainer (Maintainers).
+        /// </summary>
+        [Input("subgroupCreationLevel")]
+        public Input<string>? SubgroupCreationLevel { get; set; }
+
+        /// <summary>
+        /// Int, defaults to 48.
+        /// Time before Two-factor authentication is enforced (in hours).
+        /// </summary>
+        [Input("twoFactorGracePeriod")]
+        public Input<int>? TwoFactorGracePeriod { get; set; }
+
+        /// <summary>
+        /// The group's visibility. Can be `private`, `internal`, or `public`.
         /// </summary>
         [Input("visibilityLevel")]
         public Input<string>? VisibilityLevel { get; set; }

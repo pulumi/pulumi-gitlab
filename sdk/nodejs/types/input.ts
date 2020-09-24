@@ -5,18 +5,49 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
-export interface ProjectSharedWithGroup {
+export interface ProjectPushRules {
     /**
-     * Group's sharing permissions. See [group members permission][groupMembersPermissions] for more info.
-     * Valid values are `guest`, `reporter`, `developer`, `master`.
+     * All commit author emails must match this regex, e.g. `@my-company.com$`.
      */
-    groupAccessLevel: pulumi.Input<string>;
+    authorEmailRegex?: pulumi.Input<string>;
     /**
-     * Group id of the group you want to share the project with.
+     * All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
      */
-    groupId: pulumi.Input<number>;
+    branchNameRegex?: pulumi.Input<string>;
     /**
-     * Group's name.
+     * Users can only push commits to this repository that were committed with one of their own verified emails.
      */
-    groupName?: pulumi.Input<string>;
+    commitCommitterCheck?: pulumi.Input<boolean>;
+    /**
+     * No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+     */
+    commitMessageNegativeRegex?: pulumi.Input<string>;
+    /**
+     * All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+     */
+    commitMessageRegex?: pulumi.Input<string>;
+    /**
+     * Deny deleting a tag.
+     */
+    denyDeleteTag?: pulumi.Input<boolean>;
+    /**
+     * All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+     */
+    fileNameRegex?: pulumi.Input<string>;
+    /**
+     * Maximum file size (MB).
+     */
+    maxFileSize?: pulumi.Input<number>;
+    /**
+     * Restrict commits by author (email) to existing GitLab users.
+     */
+    memberCheck?: pulumi.Input<boolean>;
+    /**
+     * GitLab will reject any files that are likely to contain secrets.
+     */
+    preventSecrets?: pulumi.Input<boolean>;
+    /**
+     * Reject commit when it’s not signed through GPG.
+     */
+    rejectUnsignedCommits?: pulumi.Input<boolean>;
 }

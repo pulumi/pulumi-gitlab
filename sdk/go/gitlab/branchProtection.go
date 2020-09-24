@@ -10,6 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # gitlab\_branch_protection
+//
 // This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch. GitLab EE features to protect by group or user are not supported.
 //
 // ## Example Usage
@@ -42,6 +44,8 @@ type BranchProtection struct {
 
 	// Name of the branch.
 	Branch pulumi.StringOutput `pulumi:"branch"`
+	// Bool, defaults to false. Can be set to true to require code owner approval before merging.
+	CodeOwnerApprovalRequired pulumi.BoolPtrOutput `pulumi:"codeOwnerApprovalRequired"`
 	// One of five levels of access to the project.
 	MergeAccessLevel pulumi.StringOutput `pulumi:"mergeAccessLevel"`
 	// The id of the project.
@@ -92,6 +96,8 @@ func GetBranchProtection(ctx *pulumi.Context,
 type branchProtectionState struct {
 	// Name of the branch.
 	Branch *string `pulumi:"branch"`
+	// Bool, defaults to false. Can be set to true to require code owner approval before merging.
+	CodeOwnerApprovalRequired *bool `pulumi:"codeOwnerApprovalRequired"`
 	// One of five levels of access to the project.
 	MergeAccessLevel *string `pulumi:"mergeAccessLevel"`
 	// The id of the project.
@@ -103,6 +109,8 @@ type branchProtectionState struct {
 type BranchProtectionState struct {
 	// Name of the branch.
 	Branch pulumi.StringPtrInput
+	// Bool, defaults to false. Can be set to true to require code owner approval before merging.
+	CodeOwnerApprovalRequired pulumi.BoolPtrInput
 	// One of five levels of access to the project.
 	MergeAccessLevel pulumi.StringPtrInput
 	// The id of the project.
@@ -118,6 +126,8 @@ func (BranchProtectionState) ElementType() reflect.Type {
 type branchProtectionArgs struct {
 	// Name of the branch.
 	Branch string `pulumi:"branch"`
+	// Bool, defaults to false. Can be set to true to require code owner approval before merging.
+	CodeOwnerApprovalRequired *bool `pulumi:"codeOwnerApprovalRequired"`
 	// One of five levels of access to the project.
 	MergeAccessLevel string `pulumi:"mergeAccessLevel"`
 	// The id of the project.
@@ -130,6 +140,8 @@ type branchProtectionArgs struct {
 type BranchProtectionArgs struct {
 	// Name of the branch.
 	Branch pulumi.StringInput
+	// Bool, defaults to false. Can be set to true to require code owner approval before merging.
+	CodeOwnerApprovalRequired pulumi.BoolPtrInput
 	// One of five levels of access to the project.
 	MergeAccessLevel pulumi.StringInput
 	// The id of the project.

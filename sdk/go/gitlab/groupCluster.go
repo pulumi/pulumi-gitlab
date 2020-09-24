@@ -10,9 +10,48 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # gitlab\_group\_cluster
+//
 // This resource allows you to create and manage group clusters for your GitLab groups.
 // For further information on clusters, consult the [gitlab
 // documentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foo, err := gitlab.NewGroup(ctx, "foo", &gitlab.GroupArgs{
+// 			Path: pulumi.String("foo-path"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = gitlab.NewGroupCluster(ctx, "bar", &gitlab.GroupClusterArgs{
+// 			Domain:                      pulumi.String("example.com"),
+// 			Enabled:                     pulumi.Bool(true),
+// 			EnvironmentScope:            pulumi.String("*"),
+// 			Group:                       foo.ID(),
+// 			KubernetesApiUrl:            pulumi.String("https://124.124.124"),
+// 			KubernetesAuthorizationType: pulumi.String("rbac"),
+// 			KubernetesCaCert:            pulumi.String("some-cert"),
+// 			KubernetesToken:             pulumi.String("some-token"),
+// 			ManagementProjectId:         pulumi.String("123456"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type GroupCluster struct {
 	pulumi.CustomResourceState
 
@@ -35,7 +74,8 @@ type GroupCluster struct {
 	// The token to authenticate against Kubernetes.
 	KubernetesToken pulumi.StringOutput `pulumi:"kubernetesToken"`
 	// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
-	Managed             pulumi.BoolPtrOutput   `pulumi:"managed"`
+	Managed pulumi.BoolPtrOutput `pulumi:"managed"`
+	// The ID of the management project for the cluster.
 	ManagementProjectId pulumi.StringPtrOutput `pulumi:"managementProjectId"`
 	// The name of cluster.
 	Name         pulumi.StringOutput `pulumi:"name"`
@@ -99,7 +139,8 @@ type groupClusterState struct {
 	// The token to authenticate against Kubernetes.
 	KubernetesToken *string `pulumi:"kubernetesToken"`
 	// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
-	Managed             *bool   `pulumi:"managed"`
+	Managed *bool `pulumi:"managed"`
+	// The ID of the management project for the cluster.
 	ManagementProjectId *string `pulumi:"managementProjectId"`
 	// The name of cluster.
 	Name         *string `pulumi:"name"`
@@ -127,7 +168,8 @@ type GroupClusterState struct {
 	// The token to authenticate against Kubernetes.
 	KubernetesToken pulumi.StringPtrInput
 	// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
-	Managed             pulumi.BoolPtrInput
+	Managed pulumi.BoolPtrInput
+	// The ID of the management project for the cluster.
 	ManagementProjectId pulumi.StringPtrInput
 	// The name of cluster.
 	Name         pulumi.StringPtrInput
@@ -157,7 +199,8 @@ type groupClusterArgs struct {
 	// The token to authenticate against Kubernetes.
 	KubernetesToken string `pulumi:"kubernetesToken"`
 	// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
-	Managed             *bool   `pulumi:"managed"`
+	Managed *bool `pulumi:"managed"`
+	// The ID of the management project for the cluster.
 	ManagementProjectId *string `pulumi:"managementProjectId"`
 	// The name of cluster.
 	Name *string `pulumi:"name"`
@@ -182,7 +225,8 @@ type GroupClusterArgs struct {
 	// The token to authenticate against Kubernetes.
 	KubernetesToken pulumi.StringInput
 	// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
-	Managed             pulumi.BoolPtrInput
+	Managed pulumi.BoolPtrInput
+	// The ID of the management project for the cluster.
 	ManagementProjectId pulumi.StringPtrInput
 	// The name of cluster.
 	Name pulumi.StringPtrInput

@@ -5,6 +5,88 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface GetGroupMembershipMember {
+    /**
+     * Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     */
+    accessLevel: string;
+    /**
+     * The avatar URL of the user.
+     */
+    avatarUrl: string;
+    /**
+     * Expiration date for the group membership.
+     */
+    expiresAt: string;
+    /**
+     * The unique id assigned to the user by the gitlab server.
+     */
+    id: number;
+    /**
+     * The name of the user.
+     */
+    name: string;
+    /**
+     * Whether the user is active or blocked.
+     */
+    state: string;
+    /**
+     * The username of the user.
+     */
+    username: string;
+    /**
+     * User's website URL.
+     */
+    webUrl: string;
+}
+
+export interface GetProjectPushRules {
+    /**
+     * All commit author emails must match this regex, e.g. `@my-company.com$`.
+     */
+    authorEmailRegex: string;
+    /**
+     * All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+     */
+    branchNameRegex: string;
+    /**
+     * Users can only push commits to this repository that were committed with one of their own verified emails.
+     */
+    commitCommitterCheck: boolean;
+    /**
+     * No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+     */
+    commitMessageNegativeRegex: string;
+    /**
+     * All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+     */
+    commitMessageRegex: string;
+    /**
+     * Deny deleting a tag.
+     */
+    denyDeleteTag: boolean;
+    /**
+     * All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+     */
+    fileNameRegex: string;
+    /**
+     * Maximum file size (MB).
+     */
+    maxFileSize: number;
+    /**
+     * Restrict commits by author (email) to existing GitLab users.
+     */
+    memberCheck: boolean;
+    /**
+     * GitLab will reject any files that are likely to contain secrets.
+     */
+    preventSecrets: boolean;
+    /**
+     * Reject commit when it’s not signed through GPG.
+     */
+    rejectUnsignedCommits: boolean;
+}
+
 export interface GetProjectsProject {
     _links: {[key: string]: string};
     /**
@@ -62,6 +144,7 @@ export interface GetProjectsProject {
     onlyMirrorProtectedBranches: boolean;
     openIssuesCount: number;
     owner: outputs.GetProjectsProjectOwner;
+    packagesEnabled: boolean;
     path: string;
     /**
      * In `group/subgroup/project` or `user/project` format.
@@ -276,18 +359,49 @@ export interface GetUsersUser {
     websiteUrl: string;
 }
 
-export interface ProjectSharedWithGroup {
+export interface ProjectPushRules {
     /**
-     * Group's sharing permissions. See [group members permission][groupMembersPermissions] for more info.
-     * Valid values are `guest`, `reporter`, `developer`, `master`.
+     * All commit author emails must match this regex, e.g. `@my-company.com$`.
      */
-    groupAccessLevel: string;
+    authorEmailRegex?: string;
     /**
-     * Group id of the group you want to share the project with.
+     * All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
      */
-    groupId: number;
+    branchNameRegex?: string;
     /**
-     * Group's name.
+     * Users can only push commits to this repository that were committed with one of their own verified emails.
      */
-    groupName: string;
+    commitCommitterCheck?: boolean;
+    /**
+     * No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+     */
+    commitMessageNegativeRegex?: string;
+    /**
+     * All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+     */
+    commitMessageRegex?: string;
+    /**
+     * Deny deleting a tag.
+     */
+    denyDeleteTag?: boolean;
+    /**
+     * All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+     */
+    fileNameRegex?: string;
+    /**
+     * Maximum file size (MB).
+     */
+    maxFileSize?: number;
+    /**
+     * Restrict commits by author (email) to existing GitLab users.
+     */
+    memberCheck?: boolean;
+    /**
+     * GitLab will reject any files that are likely to contain secrets.
+     */
+    preventSecrets?: boolean;
+    /**
+     * Reject commit when it’s not signed through GPG.
+     */
+    rejectUnsignedCommits?: boolean;
 }

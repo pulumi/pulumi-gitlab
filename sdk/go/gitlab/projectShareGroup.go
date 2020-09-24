@@ -10,6 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # gitlab\_project\_share\_group
+//
 // This resource allows you to share a project with a group
 //
 // ## Example Usage

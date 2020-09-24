@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
+    /// ## # gitlab\_branch_protection
+    /// 
     /// This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch. GitLab EE features to protect by group or user are not supported.
     /// 
     /// ## Example Usage
@@ -41,6 +43,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("branch")]
         public Output<string> Branch { get; private set; } = null!;
+
+        /// <summary>
+        /// Bool, defaults to false. Can be set to true to require code owner approval before merging.
+        /// </summary>
+        [Output("codeOwnerApprovalRequired")]
+        public Output<bool?> CodeOwnerApprovalRequired { get; private set; } = null!;
 
         /// <summary>
         /// One of five levels of access to the project.
@@ -113,6 +121,12 @@ namespace Pulumi.GitLab
         public Input<string> Branch { get; set; } = null!;
 
         /// <summary>
+        /// Bool, defaults to false. Can be set to true to require code owner approval before merging.
+        /// </summary>
+        [Input("codeOwnerApprovalRequired")]
+        public Input<bool>? CodeOwnerApprovalRequired { get; set; }
+
+        /// <summary>
         /// One of five levels of access to the project.
         /// </summary>
         [Input("mergeAccessLevel", required: true)]
@@ -142,6 +156,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("branch")]
         public Input<string>? Branch { get; set; }
+
+        /// <summary>
+        /// Bool, defaults to false. Can be set to true to require code owner approval before merging.
+        /// </summary>
+        [Input("codeOwnerApprovalRequired")]
+        public Input<bool>? CodeOwnerApprovalRequired { get; set; }
 
         /// <summary>
         /// One of five levels of access to the project.

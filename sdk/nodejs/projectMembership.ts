@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## # gitlab\_project_membership
+ *
  * This resource allows you to add a current user to an existing project with a set access level.
  *
  * ## Example Usage

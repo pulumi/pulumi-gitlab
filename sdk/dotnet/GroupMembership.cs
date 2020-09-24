@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
+    /// ## # gitlab\_group_membership
+    /// 
     /// This resource allows you to add a user to an existing group.
     /// 
     /// ## Example Usage

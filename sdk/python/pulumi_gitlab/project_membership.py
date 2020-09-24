@@ -22,6 +22,8 @@ class ProjectMembership(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        ## # gitlab\_project_membership
+
         This resource allows you to add a current user to an existing project with a set access level.
 
         ## Example Usage

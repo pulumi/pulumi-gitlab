@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## # gitlab\_project\_cluster
+ *
  * This resource allows you to create and manage project clusters for your GitLab projects.
  * For further information on clusters, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).
@@ -25,7 +27,7 @@ import * as utilities from "./utilities";
  *     kubernetesCaCert: "some-cert",
  *     kubernetesNamespace: "namespace",
  *     kubernetesToken: "some-token",
- *     managementClusterId: "123456",
+ *     managementProjectId: "123456",
  *     project: foo.id,
  * });
  * ```
@@ -96,6 +98,9 @@ export class ProjectCluster extends pulumi.CustomResource {
      * Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
      */
     public readonly managed!: pulumi.Output<boolean | undefined>;
+    /**
+     * The ID of the management project for the cluster.
+     */
     public readonly managementProjectId!: pulumi.Output<string | undefined>;
     /**
      * The name of cluster.
@@ -217,6 +222,9 @@ export interface ProjectClusterState {
      * Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
      */
     readonly managed?: pulumi.Input<boolean>;
+    /**
+     * The ID of the management project for the cluster.
+     */
     readonly managementProjectId?: pulumi.Input<string>;
     /**
      * The name of cluster.
@@ -270,6 +278,9 @@ export interface ProjectClusterArgs {
      * Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
      */
     readonly managed?: pulumi.Input<boolean>;
+    /**
+     * The ID of the management project for the cluster.
+     */
     readonly managementProjectId?: pulumi.Input<string>;
     /**
      * The name of cluster.

@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## # gitlab\_group\_ldap\_link
+ *
  * This resource allows you to add an LDAP link to an existing GitLab group.
  *
  * ## Example Usage

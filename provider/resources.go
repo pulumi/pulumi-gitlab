@@ -17,10 +17,10 @@ package provider
 import (
 	"unicode"
 
+	"github.com/gitlabhq/terraform-provider-gitlab/gitlab"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
-	"github.com/terraform-providers/terraform-provider-gitlab/gitlab"
 )
 
 // all of the GitLab token components used below.
@@ -67,6 +67,7 @@ func Provider() tfbridge.ProviderInfo {
 		Keywords:    []string{"pulumi", "gitlab"},
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
+		GitHubOrg:   "gitlabhq",
 		Repository:  "https://github.com/pulumi/pulumi-gitlab",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"token": {
@@ -89,7 +90,6 @@ func Provider() tfbridge.ProviderInfo {
 			"gitlab_group_label":                {Tok: gitLabResource(gitLabMod, "GroupLabel")},
 			"gitlab_group_cluster":              {Tok: gitLabResource(gitLabMod, "GroupCluster")},
 			"gitlab_project":                    {Tok: gitLabResource(gitLabMod, "Project")},
-			"gitlab_project_push_rules":         {Tok: gitLabResource(gitLabMod, "ProjectPushRules")},
 			"gitlab_label":                      {Tok: gitLabResource(gitLabMod, "Label")},
 			"gitlab_pipeline_schedule":          {Tok: gitLabResource(gitLabMod, "PipelineSchedule")},
 			"gitlab_pipeline_trigger":           {Tok: gitLabResource(gitLabMod, "PipelineTrigger")},
@@ -109,13 +109,18 @@ func Provider() tfbridge.ProviderInfo {
 			"gitlab_service_github":             {Tok: gitLabResource(gitLabMod, "ServiceGithub")},
 			"gitlab_group_ldap_link":            {Tok: gitLabResource(gitLabMod, "GroupLdapLink")},
 			"gitlab_deploy_token":               {Tok: gitLabResource(gitLabMod, "DeployToken")},
+			"gitlab_instance_cluster":           {Tok: gitLabResource(gitLabMod, "InstanceCluster")},
+			"gitlab_project_level_mr_approvals": {Tok: gitLabResource(gitLabMod, "ProjectLevelMrApprovals")},
+			"gitlab_project_mirror":             {Tok: gitLabResource(gitLabMod, "ProjectMirror")},
+			"gitlab_service_pipelines_email":    {Tok: gitLabResource(gitLabMod, "ServicePipelinesEmail")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"gitlab_group":    {Tok: gitLabDataSource(gitLabMod, "getGroup")},
-			"gitlab_project":  {Tok: gitLabDataSource(gitLabMod, "getProject")},
-			"gitlab_user":     {Tok: gitLabDataSource(gitLabMod, "getUser")},
-			"gitlab_users":    {Tok: gitLabDataSource(gitLabMod, "getUsers")},
-			"gitlab_projects": {Tok: gitLabDataSource(gitLabMod, "getProjects")},
+			"gitlab_group":            {Tok: gitLabDataSource(gitLabMod, "getGroup")},
+			"gitlab_project":          {Tok: gitLabDataSource(gitLabMod, "getProject")},
+			"gitlab_user":             {Tok: gitLabDataSource(gitLabMod, "getUser")},
+			"gitlab_users":            {Tok: gitLabDataSource(gitLabMod, "getUsers")},
+			"gitlab_projects":         {Tok: gitLabDataSource(gitLabMod, "getProjects")},
+			"gitlab_group_membership": {Tok: gitLabDataSource(gitLabMod, "getGroupMembership")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

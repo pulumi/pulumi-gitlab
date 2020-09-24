@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
+    /// ## # gitlab\_group\_ldap\_link
+    /// 
     /// This resource allows you to add an LDAP link to an existing GitLab group.
     /// 
     /// ## Example Usage

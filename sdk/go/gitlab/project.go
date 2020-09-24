@@ -22,9 +22,13 @@ type Project struct {
 	DefaultBranch pulumi.StringPtrOutput `pulumi:"defaultBranch"`
 	// A description of the project.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires useCustomTemplate to be true (enterprise edition).
+	GroupWithProjectTemplatesId pulumi.IntPtrOutput `pulumi:"groupWithProjectTemplatesId"`
 	// URL that can be provided to `git clone` to clone the
 	// repository via HTTP.
 	HttpUrlToRepo pulumi.StringOutput `pulumi:"httpUrlToRepo"`
+	// Git URL to a repository to be imported.
+	ImportUrl pulumi.StringPtrOutput `pulumi:"importUrl"`
 	// Create master branch with first commit containing a README.md file.
 	InitializeWithReadme pulumi.BoolPtrOutput `pulumi:"initializeWithReadme"`
 	// Enable issue tracking for the project.
@@ -46,10 +50,16 @@ type Project struct {
 	OnlyAllowMergeIfAllDiscussionsAreResolved pulumi.BoolPtrOutput `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
 	// Set to true if you want allow merges only if a pipeline succeeds.
 	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolPtrOutput `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
+	// Enable packages repository for the project.
+	PackagesEnabled pulumi.BoolPtrOutput `pulumi:"packagesEnabled"`
 	// The path of the repository.
 	Path pulumi.StringPtrOutput `pulumi:"path"`
+	// The path of the repository with namespace.
+	PathWithNamespace pulumi.StringOutput `pulumi:"pathWithNamespace"`
 	// Enable pipelines for the project.
 	PipelinesEnabled pulumi.BoolPtrOutput `pulumi:"pipelinesEnabled"`
+	// Push rules for the project (documented below).
+	PushRules ProjectPushRulesOutput `pulumi:"pushRules"`
 	// Enable `Delete source branch` option by default for all new merge requests.
 	RemoveSourceBranchAfterMerge pulumi.BoolPtrOutput `pulumi:"removeSourceBranchAfterMerge"`
 	// Allow users to request member access.
@@ -58,8 +68,6 @@ type Project struct {
 	RunnersToken pulumi.StringOutput `pulumi:"runnersToken"`
 	// Enable shared runners for this project.
 	SharedRunnersEnabled pulumi.BoolOutput `pulumi:"sharedRunnersEnabled"`
-	// Enable sharing the project with a list of groups (maps).
-	SharedWithGroups ProjectSharedWithGroupArrayOutput `pulumi:"sharedWithGroups"`
 	// Enable snippets for the project.
 	SnippetsEnabled pulumi.BoolPtrOutput `pulumi:"snippetsEnabled"`
 	// URL that can be provided to `git clone` to clone the
@@ -67,6 +75,12 @@ type Project struct {
 	SshUrlToRepo pulumi.StringOutput `pulumi:"sshUrlToRepo"`
 	// Tags (topics) of the project.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
+	TemplateName pulumi.StringPtrOutput `pulumi:"templateName"`
+	// When used with use_custom_template, project ID of a custom project template. This is preferable to using templateName since templateName may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
+	TemplateProjectId pulumi.IntPtrOutput `pulumi:"templateProjectId"`
+	// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+	UseCustomTemplate pulumi.BoolPtrOutput `pulumi:"useCustomTemplate"`
 	// Set to `public` to create a public project.
 	// Valid values are `private`, `internal`, `public`.
 	// Repositories are created as private by default.
@@ -115,9 +129,13 @@ type projectState struct {
 	DefaultBranch *string `pulumi:"defaultBranch"`
 	// A description of the project.
 	Description *string `pulumi:"description"`
+	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires useCustomTemplate to be true (enterprise edition).
+	GroupWithProjectTemplatesId *int `pulumi:"groupWithProjectTemplatesId"`
 	// URL that can be provided to `git clone` to clone the
 	// repository via HTTP.
 	HttpUrlToRepo *string `pulumi:"httpUrlToRepo"`
+	// Git URL to a repository to be imported.
+	ImportUrl *string `pulumi:"importUrl"`
 	// Create master branch with first commit containing a README.md file.
 	InitializeWithReadme *bool `pulumi:"initializeWithReadme"`
 	// Enable issue tracking for the project.
@@ -139,10 +157,16 @@ type projectState struct {
 	OnlyAllowMergeIfAllDiscussionsAreResolved *bool `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
 	// Set to true if you want allow merges only if a pipeline succeeds.
 	OnlyAllowMergeIfPipelineSucceeds *bool `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
+	// Enable packages repository for the project.
+	PackagesEnabled *bool `pulumi:"packagesEnabled"`
 	// The path of the repository.
 	Path *string `pulumi:"path"`
+	// The path of the repository with namespace.
+	PathWithNamespace *string `pulumi:"pathWithNamespace"`
 	// Enable pipelines for the project.
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
+	// Push rules for the project (documented below).
+	PushRules *ProjectPushRules `pulumi:"pushRules"`
 	// Enable `Delete source branch` option by default for all new merge requests.
 	RemoveSourceBranchAfterMerge *bool `pulumi:"removeSourceBranchAfterMerge"`
 	// Allow users to request member access.
@@ -151,8 +175,6 @@ type projectState struct {
 	RunnersToken *string `pulumi:"runnersToken"`
 	// Enable shared runners for this project.
 	SharedRunnersEnabled *bool `pulumi:"sharedRunnersEnabled"`
-	// Enable sharing the project with a list of groups (maps).
-	SharedWithGroups []ProjectSharedWithGroup `pulumi:"sharedWithGroups"`
 	// Enable snippets for the project.
 	SnippetsEnabled *bool `pulumi:"snippetsEnabled"`
 	// URL that can be provided to `git clone` to clone the
@@ -160,6 +182,12 @@ type projectState struct {
 	SshUrlToRepo *string `pulumi:"sshUrlToRepo"`
 	// Tags (topics) of the project.
 	Tags []string `pulumi:"tags"`
+	// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
+	TemplateName *string `pulumi:"templateName"`
+	// When used with use_custom_template, project ID of a custom project template. This is preferable to using templateName since templateName may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
+	TemplateProjectId *int `pulumi:"templateProjectId"`
+	// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+	UseCustomTemplate *bool `pulumi:"useCustomTemplate"`
 	// Set to `public` to create a public project.
 	// Valid values are `private`, `internal`, `public`.
 	// Repositories are created as private by default.
@@ -181,9 +209,13 @@ type ProjectState struct {
 	DefaultBranch pulumi.StringPtrInput
 	// A description of the project.
 	Description pulumi.StringPtrInput
+	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires useCustomTemplate to be true (enterprise edition).
+	GroupWithProjectTemplatesId pulumi.IntPtrInput
 	// URL that can be provided to `git clone` to clone the
 	// repository via HTTP.
 	HttpUrlToRepo pulumi.StringPtrInput
+	// Git URL to a repository to be imported.
+	ImportUrl pulumi.StringPtrInput
 	// Create master branch with first commit containing a README.md file.
 	InitializeWithReadme pulumi.BoolPtrInput
 	// Enable issue tracking for the project.
@@ -205,10 +237,16 @@ type ProjectState struct {
 	OnlyAllowMergeIfAllDiscussionsAreResolved pulumi.BoolPtrInput
 	// Set to true if you want allow merges only if a pipeline succeeds.
 	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolPtrInput
+	// Enable packages repository for the project.
+	PackagesEnabled pulumi.BoolPtrInput
 	// The path of the repository.
 	Path pulumi.StringPtrInput
+	// The path of the repository with namespace.
+	PathWithNamespace pulumi.StringPtrInput
 	// Enable pipelines for the project.
 	PipelinesEnabled pulumi.BoolPtrInput
+	// Push rules for the project (documented below).
+	PushRules ProjectPushRulesPtrInput
 	// Enable `Delete source branch` option by default for all new merge requests.
 	RemoveSourceBranchAfterMerge pulumi.BoolPtrInput
 	// Allow users to request member access.
@@ -217,8 +255,6 @@ type ProjectState struct {
 	RunnersToken pulumi.StringPtrInput
 	// Enable shared runners for this project.
 	SharedRunnersEnabled pulumi.BoolPtrInput
-	// Enable sharing the project with a list of groups (maps).
-	SharedWithGroups ProjectSharedWithGroupArrayInput
 	// Enable snippets for the project.
 	SnippetsEnabled pulumi.BoolPtrInput
 	// URL that can be provided to `git clone` to clone the
@@ -226,6 +262,12 @@ type ProjectState struct {
 	SshUrlToRepo pulumi.StringPtrInput
 	// Tags (topics) of the project.
 	Tags pulumi.StringArrayInput
+	// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
+	TemplateName pulumi.StringPtrInput
+	// When used with use_custom_template, project ID of a custom project template. This is preferable to using templateName since templateName may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
+	TemplateProjectId pulumi.IntPtrInput
+	// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+	UseCustomTemplate pulumi.BoolPtrInput
 	// Set to `public` to create a public project.
 	// Valid values are `private`, `internal`, `public`.
 	// Repositories are created as private by default.
@@ -251,6 +293,10 @@ type projectArgs struct {
 	DefaultBranch *string `pulumi:"defaultBranch"`
 	// A description of the project.
 	Description *string `pulumi:"description"`
+	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires useCustomTemplate to be true (enterprise edition).
+	GroupWithProjectTemplatesId *int `pulumi:"groupWithProjectTemplatesId"`
+	// Git URL to a repository to be imported.
+	ImportUrl *string `pulumi:"importUrl"`
 	// Create master branch with first commit containing a README.md file.
 	InitializeWithReadme *bool `pulumi:"initializeWithReadme"`
 	// Enable issue tracking for the project.
@@ -272,22 +318,30 @@ type projectArgs struct {
 	OnlyAllowMergeIfAllDiscussionsAreResolved *bool `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
 	// Set to true if you want allow merges only if a pipeline succeeds.
 	OnlyAllowMergeIfPipelineSucceeds *bool `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
+	// Enable packages repository for the project.
+	PackagesEnabled *bool `pulumi:"packagesEnabled"`
 	// The path of the repository.
 	Path *string `pulumi:"path"`
 	// Enable pipelines for the project.
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
+	// Push rules for the project (documented below).
+	PushRules *ProjectPushRules `pulumi:"pushRules"`
 	// Enable `Delete source branch` option by default for all new merge requests.
 	RemoveSourceBranchAfterMerge *bool `pulumi:"removeSourceBranchAfterMerge"`
 	// Allow users to request member access.
 	RequestAccessEnabled *bool `pulumi:"requestAccessEnabled"`
 	// Enable shared runners for this project.
 	SharedRunnersEnabled *bool `pulumi:"sharedRunnersEnabled"`
-	// Enable sharing the project with a list of groups (maps).
-	SharedWithGroups []ProjectSharedWithGroup `pulumi:"sharedWithGroups"`
 	// Enable snippets for the project.
 	SnippetsEnabled *bool `pulumi:"snippetsEnabled"`
 	// Tags (topics) of the project.
 	Tags []string `pulumi:"tags"`
+	// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
+	TemplateName *string `pulumi:"templateName"`
+	// When used with use_custom_template, project ID of a custom project template. This is preferable to using templateName since templateName may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
+	TemplateProjectId *int `pulumi:"templateProjectId"`
+	// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+	UseCustomTemplate *bool `pulumi:"useCustomTemplate"`
 	// Set to `public` to create a public project.
 	// Valid values are `private`, `internal`, `public`.
 	// Repositories are created as private by default.
@@ -308,6 +362,10 @@ type ProjectArgs struct {
 	DefaultBranch pulumi.StringPtrInput
 	// A description of the project.
 	Description pulumi.StringPtrInput
+	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires useCustomTemplate to be true (enterprise edition).
+	GroupWithProjectTemplatesId pulumi.IntPtrInput
+	// Git URL to a repository to be imported.
+	ImportUrl pulumi.StringPtrInput
 	// Create master branch with first commit containing a README.md file.
 	InitializeWithReadme pulumi.BoolPtrInput
 	// Enable issue tracking for the project.
@@ -329,22 +387,30 @@ type ProjectArgs struct {
 	OnlyAllowMergeIfAllDiscussionsAreResolved pulumi.BoolPtrInput
 	// Set to true if you want allow merges only if a pipeline succeeds.
 	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolPtrInput
+	// Enable packages repository for the project.
+	PackagesEnabled pulumi.BoolPtrInput
 	// The path of the repository.
 	Path pulumi.StringPtrInput
 	// Enable pipelines for the project.
 	PipelinesEnabled pulumi.BoolPtrInput
+	// Push rules for the project (documented below).
+	PushRules ProjectPushRulesPtrInput
 	// Enable `Delete source branch` option by default for all new merge requests.
 	RemoveSourceBranchAfterMerge pulumi.BoolPtrInput
 	// Allow users to request member access.
 	RequestAccessEnabled pulumi.BoolPtrInput
 	// Enable shared runners for this project.
 	SharedRunnersEnabled pulumi.BoolPtrInput
-	// Enable sharing the project with a list of groups (maps).
-	SharedWithGroups ProjectSharedWithGroupArrayInput
 	// Enable snippets for the project.
 	SnippetsEnabled pulumi.BoolPtrInput
 	// Tags (topics) of the project.
 	Tags pulumi.StringArrayInput
+	// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
+	TemplateName pulumi.StringPtrInput
+	// When used with use_custom_template, project ID of a custom project template. This is preferable to using templateName since templateName may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
+	TemplateProjectId pulumi.IntPtrInput
+	// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+	UseCustomTemplate pulumi.BoolPtrInput
 	// Set to `public` to create a public project.
 	// Valid values are `private`, `internal`, `public`.
 	// Repositories are created as private by default.

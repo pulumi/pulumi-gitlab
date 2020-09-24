@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
+    /// ## # gitlab\_project\_share\_group
+    /// 
     /// This resource allows you to share a project with a group
     /// 
     /// ## Example Usage

@@ -42,11 +42,23 @@ namespace Pulumi.GitLab
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        /// </summary>
+        [Output("groupWithProjectTemplatesId")]
+        public Output<int?> GroupWithProjectTemplatesId { get; private set; } = null!;
+
+        /// <summary>
         /// URL that can be provided to `git clone` to clone the
         /// repository via HTTP.
         /// </summary>
         [Output("httpUrlToRepo")]
         public Output<string> HttpUrlToRepo { get; private set; } = null!;
+
+        /// <summary>
+        /// Git URL to a repository to be imported.
+        /// </summary>
+        [Output("importUrl")]
+        public Output<string?> ImportUrl { get; private set; } = null!;
 
         /// <summary>
         /// Create master branch with first commit containing a README.md file.
@@ -106,16 +118,34 @@ namespace Pulumi.GitLab
         public Output<bool?> OnlyAllowMergeIfPipelineSucceeds { get; private set; } = null!;
 
         /// <summary>
+        /// Enable packages repository for the project.
+        /// </summary>
+        [Output("packagesEnabled")]
+        public Output<bool?> PackagesEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// The path of the repository.
         /// </summary>
         [Output("path")]
         public Output<string?> Path { get; private set; } = null!;
 
         /// <summary>
+        /// The path of the repository with namespace.
+        /// </summary>
+        [Output("pathWithNamespace")]
+        public Output<string> PathWithNamespace { get; private set; } = null!;
+
+        /// <summary>
         /// Enable pipelines for the project.
         /// </summary>
         [Output("pipelinesEnabled")]
         public Output<bool?> PipelinesEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Push rules for the project (documented below).
+        /// </summary>
+        [Output("pushRules")]
+        public Output<Outputs.ProjectPushRules> PushRules { get; private set; } = null!;
 
         /// <summary>
         /// Enable `Delete source branch` option by default for all new merge requests.
@@ -142,12 +172,6 @@ namespace Pulumi.GitLab
         public Output<bool> SharedRunnersEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Enable sharing the project with a list of groups (maps).
-        /// </summary>
-        [Output("sharedWithGroups")]
-        public Output<ImmutableArray<Outputs.ProjectSharedWithGroup>> SharedWithGroups { get; private set; } = null!;
-
-        /// <summary>
         /// Enable snippets for the project.
         /// </summary>
         [Output("snippetsEnabled")]
@@ -165,6 +189,24 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        /// </summary>
+        [Output("templateName")]
+        public Output<string?> TemplateName { get; private set; } = null!;
+
+        /// <summary>
+        /// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        /// </summary>
+        [Output("templateProjectId")]
+        public Output<int?> TemplateProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        /// </summary>
+        [Output("useCustomTemplate")]
+        public Output<bool?> UseCustomTemplate { get; private set; } = null!;
 
         /// <summary>
         /// Set to `public` to create a public project.
@@ -263,6 +305,18 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        /// </summary>
+        [Input("groupWithProjectTemplatesId")]
+        public Input<int>? GroupWithProjectTemplatesId { get; set; }
+
+        /// <summary>
+        /// Git URL to a repository to be imported.
+        /// </summary>
+        [Input("importUrl")]
+        public Input<string>? ImportUrl { get; set; }
+
+        /// <summary>
         /// Create master branch with first commit containing a README.md file.
         /// </summary>
         [Input("initializeWithReadme")]
@@ -320,6 +374,12 @@ namespace Pulumi.GitLab
         public Input<bool>? OnlyAllowMergeIfPipelineSucceeds { get; set; }
 
         /// <summary>
+        /// Enable packages repository for the project.
+        /// </summary>
+        [Input("packagesEnabled")]
+        public Input<bool>? PackagesEnabled { get; set; }
+
+        /// <summary>
         /// The path of the repository.
         /// </summary>
         [Input("path")]
@@ -330,6 +390,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("pipelinesEnabled")]
         public Input<bool>? PipelinesEnabled { get; set; }
+
+        /// <summary>
+        /// Push rules for the project (documented below).
+        /// </summary>
+        [Input("pushRules")]
+        public Input<Inputs.ProjectPushRulesArgs>? PushRules { get; set; }
 
         /// <summary>
         /// Enable `Delete source branch` option by default for all new merge requests.
@@ -349,18 +415,6 @@ namespace Pulumi.GitLab
         [Input("sharedRunnersEnabled")]
         public Input<bool>? SharedRunnersEnabled { get; set; }
 
-        [Input("sharedWithGroups")]
-        private InputList<Inputs.ProjectSharedWithGroupArgs>? _sharedWithGroups;
-
-        /// <summary>
-        /// Enable sharing the project with a list of groups (maps).
-        /// </summary>
-        public InputList<Inputs.ProjectSharedWithGroupArgs> SharedWithGroups
-        {
-            get => _sharedWithGroups ?? (_sharedWithGroups = new InputList<Inputs.ProjectSharedWithGroupArgs>());
-            set => _sharedWithGroups = value;
-        }
-
         /// <summary>
         /// Enable snippets for the project.
         /// </summary>
@@ -378,6 +432,24 @@ namespace Pulumi.GitLab
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        /// </summary>
+        [Input("templateName")]
+        public Input<string>? TemplateName { get; set; }
+
+        /// <summary>
+        /// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        /// </summary>
+        [Input("templateProjectId")]
+        public Input<int>? TemplateProjectId { get; set; }
+
+        /// <summary>
+        /// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        /// </summary>
+        [Input("useCustomTemplate")]
+        public Input<bool>? UseCustomTemplate { get; set; }
 
         /// <summary>
         /// Set to `public` to create a public project.
@@ -431,11 +503,23 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        /// </summary>
+        [Input("groupWithProjectTemplatesId")]
+        public Input<int>? GroupWithProjectTemplatesId { get; set; }
+
+        /// <summary>
         /// URL that can be provided to `git clone` to clone the
         /// repository via HTTP.
         /// </summary>
         [Input("httpUrlToRepo")]
         public Input<string>? HttpUrlToRepo { get; set; }
+
+        /// <summary>
+        /// Git URL to a repository to be imported.
+        /// </summary>
+        [Input("importUrl")]
+        public Input<string>? ImportUrl { get; set; }
 
         /// <summary>
         /// Create master branch with first commit containing a README.md file.
@@ -495,16 +579,34 @@ namespace Pulumi.GitLab
         public Input<bool>? OnlyAllowMergeIfPipelineSucceeds { get; set; }
 
         /// <summary>
+        /// Enable packages repository for the project.
+        /// </summary>
+        [Input("packagesEnabled")]
+        public Input<bool>? PackagesEnabled { get; set; }
+
+        /// <summary>
         /// The path of the repository.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
+        /// The path of the repository with namespace.
+        /// </summary>
+        [Input("pathWithNamespace")]
+        public Input<string>? PathWithNamespace { get; set; }
+
+        /// <summary>
         /// Enable pipelines for the project.
         /// </summary>
         [Input("pipelinesEnabled")]
         public Input<bool>? PipelinesEnabled { get; set; }
+
+        /// <summary>
+        /// Push rules for the project (documented below).
+        /// </summary>
+        [Input("pushRules")]
+        public Input<Inputs.ProjectPushRulesGetArgs>? PushRules { get; set; }
 
         /// <summary>
         /// Enable `Delete source branch` option by default for all new merge requests.
@@ -530,18 +632,6 @@ namespace Pulumi.GitLab
         [Input("sharedRunnersEnabled")]
         public Input<bool>? SharedRunnersEnabled { get; set; }
 
-        [Input("sharedWithGroups")]
-        private InputList<Inputs.ProjectSharedWithGroupGetArgs>? _sharedWithGroups;
-
-        /// <summary>
-        /// Enable sharing the project with a list of groups (maps).
-        /// </summary>
-        public InputList<Inputs.ProjectSharedWithGroupGetArgs> SharedWithGroups
-        {
-            get => _sharedWithGroups ?? (_sharedWithGroups = new InputList<Inputs.ProjectSharedWithGroupGetArgs>());
-            set => _sharedWithGroups = value;
-        }
-
         /// <summary>
         /// Enable snippets for the project.
         /// </summary>
@@ -566,6 +656,24 @@ namespace Pulumi.GitLab
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        /// </summary>
+        [Input("templateName")]
+        public Input<string>? TemplateName { get; set; }
+
+        /// <summary>
+        /// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        /// </summary>
+        [Input("templateProjectId")]
+        public Input<int>? TemplateProjectId { get; set; }
+
+        /// <summary>
+        /// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        /// </summary>
+        [Input("useCustomTemplate")]
+        public Input<bool>? UseCustomTemplate { get; set; }
 
         /// <summary>
         /// Set to `public` to create a public project.
