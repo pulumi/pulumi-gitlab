@@ -15,8 +15,8 @@
 package main
 
 import (
-	gitlab "github.com/pulumi/pulumi-gitlab/provider/v2"
-	"github.com/pulumi/pulumi-gitlab/provider/v2/pkg/version"
+	gitlab "github.com/pulumi/pulumi-gitlab/provider/v3"
+	"github.com/pulumi/pulumi-gitlab/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfgen"
 )
 
