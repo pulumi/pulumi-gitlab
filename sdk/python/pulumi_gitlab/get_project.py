@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
 
 __all__ = [
     'GetProjectResult',
@@ -19,7 +20,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, archived=None, default_branch=None, description=None, http_url_to_repo=None, id=None, issues_enabled=None, lfs_enabled=None, merge_requests_enabled=None, name=None, namespace_id=None, path=None, pipelines_enabled=None, remove_source_branch_after_merge=None, request_access_enabled=None, runners_token=None, snippets_enabled=None, ssh_url_to_repo=None, visibility_level=None, web_url=None, wiki_enabled=None):
+    def __init__(__self__, archived=None, default_branch=None, description=None, http_url_to_repo=None, id=None, issues_enabled=None, lfs_enabled=None, merge_requests_enabled=None, name=None, namespace_id=None, path=None, path_with_namespace=None, pipelines_enabled=None, push_rules=None, remove_source_branch_after_merge=None, request_access_enabled=None, runners_token=None, snippets_enabled=None, ssh_url_to_repo=None, visibility_level=None, web_url=None, wiki_enabled=None):
         if archived and not isinstance(archived, bool):
             raise TypeError("Expected argument 'archived' to be a bool")
         pulumi.set(__self__, "archived", archived)
@@ -53,9 +54,15 @@ class GetProjectResult:
         if path and not isinstance(path, str):
             raise TypeError("Expected argument 'path' to be a str")
         pulumi.set(__self__, "path", path)
+        if path_with_namespace and not isinstance(path_with_namespace, str):
+            raise TypeError("Expected argument 'path_with_namespace' to be a str")
+        pulumi.set(__self__, "path_with_namespace", path_with_namespace)
         if pipelines_enabled and not isinstance(pipelines_enabled, bool):
             raise TypeError("Expected argument 'pipelines_enabled' to be a bool")
         pulumi.set(__self__, "pipelines_enabled", pipelines_enabled)
+        if push_rules and not isinstance(push_rules, dict):
+            raise TypeError("Expected argument 'push_rules' to be a dict")
+        pulumi.set(__self__, "push_rules", push_rules)
         if remove_source_branch_after_merge and not isinstance(remove_source_branch_after_merge, bool):
             raise TypeError("Expected argument 'remove_source_branch_after_merge' to be a bool")
         pulumi.set(__self__, "remove_source_branch_after_merge", remove_source_branch_after_merge)
@@ -169,12 +176,25 @@ class GetProjectResult:
         return pulumi.get(self, "path")
 
     @property
+    @pulumi.getter(name="pathWithNamespace")
+    def path_with_namespace(self) -> str:
+        """
+        The path of the repository with namespace.
+        """
+        return pulumi.get(self, "path_with_namespace")
+
+    @property
     @pulumi.getter(name="pipelinesEnabled")
     def pipelines_enabled(self) -> bool:
         """
         Enable pipelines for the project.
         """
         return pulumi.get(self, "pipelines_enabled")
+
+    @property
+    @pulumi.getter(name="pushRules")
+    def push_rules(self) -> 'outputs.GetProjectPushRulesResult':
+        return pulumi.get(self, "push_rules")
 
     @property
     @pulumi.getter(name="removeSourceBranchAfterMerge")
@@ -259,7 +279,9 @@ class AwaitableGetProjectResult(GetProjectResult):
             name=self.name,
             namespace_id=self.namespace_id,
             path=self.path,
+            path_with_namespace=self.path_with_namespace,
             pipelines_enabled=self.pipelines_enabled,
+            push_rules=self.push_rules,
             remove_source_branch_after_merge=self.remove_source_branch_after_merge,
             request_access_enabled=self.request_access_enabled,
             runners_token=self.runners_token,
@@ -270,28 +292,11 @@ class AwaitableGetProjectResult(GetProjectResult):
             wiki_enabled=self.wiki_enabled)
 
 
-def get_project(archived: Optional[bool] = None,
-                default_branch: Optional[str] = None,
-                description: Optional[str] = None,
-                http_url_to_repo: Optional[str] = None,
-                id: Optional[float] = None,
-                issues_enabled: Optional[bool] = None,
-                lfs_enabled: Optional[bool] = None,
-                merge_requests_enabled: Optional[bool] = None,
-                name: Optional[str] = None,
-                namespace_id: Optional[float] = None,
-                path: Optional[str] = None,
-                pipelines_enabled: Optional[bool] = None,
-                remove_source_branch_after_merge: Optional[bool] = None,
-                request_access_enabled: Optional[bool] = None,
-                runners_token: Optional[str] = None,
-                snippets_enabled: Optional[bool] = None,
-                ssh_url_to_repo: Optional[str] = None,
-                visibility_level: Optional[str] = None,
-                web_url: Optional[str] = None,
-                wiki_enabled: Optional[bool] = None,
+def get_project(id: Optional[float] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
+    ## # gitlab\_project
+
     Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
 
     ## Example Usage
@@ -304,50 +309,10 @@ def get_project(archived: Optional[bool] = None,
     ```
 
 
-    :param bool archived: Whether the project is in read-only mode (archived).
-    :param str default_branch: The default branch for the project.
-    :param str description: A description of the project.
-    :param str http_url_to_repo: URL that can be provided to `git clone` to clone the
-           repository via HTTP.
     :param float id: The integer that uniquely identifies the project within the gitlab install.
-    :param bool issues_enabled: Enable issue tracking for the project.
-    :param bool lfs_enabled: Enable LFS for the project.
-    :param bool merge_requests_enabled: Enable merge requests for the project.
-    :param float namespace_id: The namespace (group or user) of the project. Defaults to your user.
-           See `Group` for an example.
-    :param str path: The path of the repository.
-    :param bool pipelines_enabled: Enable pipelines for the project.
-    :param bool remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests
-    :param bool request_access_enabled: Allow users to request member access.
-    :param str runners_token: Registration token to use during runner setup.
-    :param bool snippets_enabled: Enable snippets for the project.
-    :param str ssh_url_to_repo: URL that can be provided to `git clone` to clone the
-           repository via SSH.
-    :param str visibility_level: Repositories are created as private by default.
-    :param str web_url: URL that can be used to find the project in a browser.
-    :param bool wiki_enabled: Enable wiki for the project.
     """
     __args__ = dict()
-    __args__['archived'] = archived
-    __args__['defaultBranch'] = default_branch
-    __args__['description'] = description
-    __args__['httpUrlToRepo'] = http_url_to_repo
     __args__['id'] = id
-    __args__['issuesEnabled'] = issues_enabled
-    __args__['lfsEnabled'] = lfs_enabled
-    __args__['mergeRequestsEnabled'] = merge_requests_enabled
-    __args__['name'] = name
-    __args__['namespaceId'] = namespace_id
-    __args__['path'] = path
-    __args__['pipelinesEnabled'] = pipelines_enabled
-    __args__['removeSourceBranchAfterMerge'] = remove_source_branch_after_merge
-    __args__['requestAccessEnabled'] = request_access_enabled
-    __args__['runnersToken'] = runners_token
-    __args__['snippetsEnabled'] = snippets_enabled
-    __args__['sshUrlToRepo'] = ssh_url_to_repo
-    __args__['visibilityLevel'] = visibility_level
-    __args__['webUrl'] = web_url
-    __args__['wikiEnabled'] = wiki_enabled
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -366,7 +331,9 @@ def get_project(archived: Optional[bool] = None,
         name=__ret__.name,
         namespace_id=__ret__.namespace_id,
         path=__ret__.path,
+        path_with_namespace=__ret__.path_with_namespace,
         pipelines_enabled=__ret__.pipelines_enabled,
+        push_rules=__ret__.push_rules,
         remove_source_branch_after_merge=__ret__.remove_source_branch_after_merge,
         request_access_enabled=__ret__.request_access_enabled,
         runners_token=__ret__.runners_token,

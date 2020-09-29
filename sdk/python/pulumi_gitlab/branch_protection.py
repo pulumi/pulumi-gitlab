@@ -16,6 +16,7 @@ class BranchProtection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch: Optional[pulumi.Input[str]] = None,
+                 code_owner_approval_required: Optional[pulumi.Input[bool]] = None,
                  merge_access_level: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  push_access_level: Optional[pulumi.Input[str]] = None,
@@ -23,6 +24,8 @@ class BranchProtection(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        ## # gitlab\_branch_protection
+
         This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch. GitLab EE features to protect by group or user are not supported.
 
         ## Example Usage
@@ -41,6 +44,7 @@ class BranchProtection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] branch: Name of the branch.
+        :param pulumi.Input[bool] code_owner_approval_required: Bool, defaults to false. Can be set to true to require code owner approval before merging.
         :param pulumi.Input[str] merge_access_level: One of five levels of access to the project.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] push_access_level: One of five levels of access to the project.
@@ -65,6 +69,7 @@ class BranchProtection(pulumi.CustomResource):
             if branch is None:
                 raise TypeError("Missing required property 'branch'")
             __props__['branch'] = branch
+            __props__['code_owner_approval_required'] = code_owner_approval_required
             if merge_access_level is None:
                 raise TypeError("Missing required property 'merge_access_level'")
             __props__['merge_access_level'] = merge_access_level
@@ -85,6 +90,7 @@ class BranchProtection(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             branch: Optional[pulumi.Input[str]] = None,
+            code_owner_approval_required: Optional[pulumi.Input[bool]] = None,
             merge_access_level: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             push_access_level: Optional[pulumi.Input[str]] = None) -> 'BranchProtection':
@@ -96,6 +102,7 @@ class BranchProtection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] branch: Name of the branch.
+        :param pulumi.Input[bool] code_owner_approval_required: Bool, defaults to false. Can be set to true to require code owner approval before merging.
         :param pulumi.Input[str] merge_access_level: One of five levels of access to the project.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] push_access_level: One of five levels of access to the project.
@@ -105,6 +112,7 @@ class BranchProtection(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["branch"] = branch
+        __props__["code_owner_approval_required"] = code_owner_approval_required
         __props__["merge_access_level"] = merge_access_level
         __props__["project"] = project
         __props__["push_access_level"] = push_access_level
@@ -117,6 +125,14 @@ class BranchProtection(pulumi.CustomResource):
         Name of the branch.
         """
         return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="codeOwnerApprovalRequired")
+    def code_owner_approval_required(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Bool, defaults to false. Can be set to true to require code owner approval before merging.
+        """
+        return pulumi.get(self, "code_owner_approval_required")
 
     @property
     @pulumi.getter(name="mergeAccessLevel")

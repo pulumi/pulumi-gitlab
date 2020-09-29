@@ -356,6 +356,8 @@ def get_user(email: Optional[str] = None,
              username: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
+    ## # gitlab\_user
+
     Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
 
     ## Example Usage

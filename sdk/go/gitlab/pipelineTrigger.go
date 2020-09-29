@@ -10,6 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # gitlab\_pipeline\_trigger
+//
 // This resource allows you to create and manage pipeline triggers
 //
 // ## Example Usage

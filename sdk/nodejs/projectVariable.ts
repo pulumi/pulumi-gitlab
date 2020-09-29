@@ -5,9 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## # gitlab\_project\_variable
+ *
  * This resource allows you to create and manage CI/CD variables for your GitLab projects.
  * For further information on variables, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
+ *
+ * > **Important:** If your GitLab version is older than 13.4, you may see nondeterministic behavior
+ * when updating or deleting `gitlab.ProjectVariable` resources with non-unique keys, for example if
+ * there is another variable with the same key and different environment scope. See
+ * [this GitLab issue](https://gitlab.com/gitlab-org/gitlab/-/issues/9912).
  *
  * ## Example Usage
  *
@@ -52,7 +59,7 @@ export class ProjectVariable extends pulumi.CustomResource {
     }
 
     /**
-     * The environmentScope of the variable
+     * The environmentScope of the variable. Defaults to `*`.
      */
     public readonly environmentScope!: pulumi.Output<string | undefined>;
     /**
@@ -134,7 +141,7 @@ export class ProjectVariable extends pulumi.CustomResource {
  */
 export interface ProjectVariableState {
     /**
-     * The environmentScope of the variable
+     * The environmentScope of the variable. Defaults to `*`.
      */
     readonly environmentScope?: pulumi.Input<string>;
     /**
@@ -168,7 +175,7 @@ export interface ProjectVariableState {
  */
 export interface ProjectVariableArgs {
     /**
-     * The environmentScope of the variable
+     * The environmentScope of the variable. Defaults to `*`.
      */
     readonly environmentScope?: pulumi.Input<string>;
     /**

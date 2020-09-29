@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## # gitlab\_deploy\_key
+ *
  * This resource allows you to create and manage deploy keys for your GitLab projects.
  *
  * ## Example Usage

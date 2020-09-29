@@ -187,6 +187,8 @@ def get_group(full_path: Optional[str] = None,
               group_id: Optional[float] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
+    ## # gitlab\_group
+
     Provides details about a specific group in the gitlab provider.
 
     ## Example Usage

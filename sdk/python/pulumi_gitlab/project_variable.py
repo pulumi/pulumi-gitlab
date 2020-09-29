@@ -26,9 +26,16 @@ class ProjectVariable(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        ## # gitlab\_project\_variable
+
         This resource allows you to create and manage CI/CD variables for your GitLab projects.
         For further information on variables, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
+
+        > **Important:** If your GitLab version is older than 13.4, you may see nondeterministic behavior
+        when updating or deleting `ProjectVariable` resources with non-unique keys, for example if
+        there is another variable with the same key and different environment scope. See
+        [this GitLab issue](https://gitlab.com/gitlab-org/gitlab/-/issues/9912).
 
         ## Example Usage
 
@@ -45,7 +52,7 @@ class ProjectVariable(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] environment_scope: The environment_scope of the variable
+        :param pulumi.Input[str] environment_scope: The environment_scope of the variable. Defaults to `*`.
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
         :param pulumi.Input[str] project: The name or id of the project to add the hook to.
@@ -107,7 +114,7 @@ class ProjectVariable(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] environment_scope: The environment_scope of the variable
+        :param pulumi.Input[str] environment_scope: The environment_scope of the variable. Defaults to `*`.
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
         :param pulumi.Input[str] project: The name or id of the project to add the hook to.
@@ -132,7 +139,7 @@ class ProjectVariable(pulumi.CustomResource):
     @pulumi.getter(name="environmentScope")
     def environment_scope(self) -> pulumi.Output[Optional[str]]:
         """
-        The environment_scope of the variable
+        The environment_scope of the variable. Defaults to `*`.
         """
         return pulumi.get(self, "environment_scope")
 

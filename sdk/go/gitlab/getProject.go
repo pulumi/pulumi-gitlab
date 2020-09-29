@@ -7,6 +7,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # gitlab\_project
+//
 // Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
 //
 // ## Example Usage
@@ -42,48 +44,8 @@ func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getProject.
 type LookupProjectArgs struct {
-	// Whether the project is in read-only mode (archived).
-	Archived *bool `pulumi:"archived"`
-	// The default branch for the project.
-	DefaultBranch *string `pulumi:"defaultBranch"`
-	// A description of the project.
-	Description *string `pulumi:"description"`
-	// URL that can be provided to `git clone` to clone the
-	// repository via HTTP.
-	HttpUrlToRepo *string `pulumi:"httpUrlToRepo"`
 	// The integer that uniquely identifies the project within the gitlab install.
 	Id int `pulumi:"id"`
-	// Enable issue tracking for the project.
-	IssuesEnabled *bool `pulumi:"issuesEnabled"`
-	// Enable LFS for the project.
-	LfsEnabled *bool `pulumi:"lfsEnabled"`
-	// Enable merge requests for the project.
-	MergeRequestsEnabled *bool   `pulumi:"mergeRequestsEnabled"`
-	Name                 *string `pulumi:"name"`
-	// The namespace (group or user) of the project. Defaults to your user.
-	// See `Group` for an example.
-	NamespaceId *int `pulumi:"namespaceId"`
-	// The path of the repository.
-	Path *string `pulumi:"path"`
-	// Enable pipelines for the project.
-	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
-	// Enable `Delete source branch` option by default for all new merge requests
-	RemoveSourceBranchAfterMerge *bool `pulumi:"removeSourceBranchAfterMerge"`
-	// Allow users to request member access.
-	RequestAccessEnabled *bool `pulumi:"requestAccessEnabled"`
-	// Registration token to use during runner setup.
-	RunnersToken *string `pulumi:"runnersToken"`
-	// Enable snippets for the project.
-	SnippetsEnabled *bool `pulumi:"snippetsEnabled"`
-	// URL that can be provided to `git clone` to clone the
-	// repository via SSH.
-	SshUrlToRepo *string `pulumi:"sshUrlToRepo"`
-	// Repositories are created as private by default.
-	VisibilityLevel *string `pulumi:"visibilityLevel"`
-	// URL that can be used to find the project in a browser.
-	WebUrl *string `pulumi:"webUrl"`
-	// Enable wiki for the project.
-	WikiEnabled *bool `pulumi:"wikiEnabled"`
 }
 
 // A collection of values returned by getProject.
@@ -111,8 +73,11 @@ type LookupProjectResult struct {
 	NamespaceId int `pulumi:"namespaceId"`
 	// The path of the repository.
 	Path string `pulumi:"path"`
+	// The path of the repository with namespace.
+	PathWithNamespace string `pulumi:"pathWithNamespace"`
 	// Enable pipelines for the project.
-	PipelinesEnabled bool `pulumi:"pipelinesEnabled"`
+	PipelinesEnabled bool                `pulumi:"pipelinesEnabled"`
+	PushRules        GetProjectPushRules `pulumi:"pushRules"`
 	// Enable `Delete source branch` option by default for all new merge requests
 	RemoveSourceBranchAfterMerge bool `pulumi:"removeSourceBranchAfterMerge"`
 	// Allow users to request member access.

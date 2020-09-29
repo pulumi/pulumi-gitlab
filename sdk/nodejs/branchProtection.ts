@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## # gitlab\_branch_protection
+ *
  * This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch. GitLab EE features to protect by group or user are not supported.
  *
  * ## Example Usage
@@ -54,6 +56,10 @@ export class BranchProtection extends pulumi.CustomResource {
      */
     public readonly branch!: pulumi.Output<string>;
     /**
+     * Bool, defaults to false. Can be set to true to require code owner approval before merging.
+     */
+    public readonly codeOwnerApprovalRequired!: pulumi.Output<boolean | undefined>;
+    /**
      * One of five levels of access to the project.
      */
     public readonly mergeAccessLevel!: pulumi.Output<string>;
@@ -79,6 +85,7 @@ export class BranchProtection extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as BranchProtectionState | undefined;
             inputs["branch"] = state ? state.branch : undefined;
+            inputs["codeOwnerApprovalRequired"] = state ? state.codeOwnerApprovalRequired : undefined;
             inputs["mergeAccessLevel"] = state ? state.mergeAccessLevel : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["pushAccessLevel"] = state ? state.pushAccessLevel : undefined;
@@ -97,6 +104,7 @@ export class BranchProtection extends pulumi.CustomResource {
                 throw new Error("Missing required property 'pushAccessLevel'");
             }
             inputs["branch"] = args ? args.branch : undefined;
+            inputs["codeOwnerApprovalRequired"] = args ? args.codeOwnerApprovalRequired : undefined;
             inputs["mergeAccessLevel"] = args ? args.mergeAccessLevel : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["pushAccessLevel"] = args ? args.pushAccessLevel : undefined;
@@ -121,6 +129,10 @@ export interface BranchProtectionState {
      */
     readonly branch?: pulumi.Input<string>;
     /**
+     * Bool, defaults to false. Can be set to true to require code owner approval before merging.
+     */
+    readonly codeOwnerApprovalRequired?: pulumi.Input<boolean>;
+    /**
      * One of five levels of access to the project.
      */
     readonly mergeAccessLevel?: pulumi.Input<string>;
@@ -142,6 +154,10 @@ export interface BranchProtectionArgs {
      * Name of the branch.
      */
     readonly branch: pulumi.Input<string>;
+    /**
+     * Bool, defaults to false. Can be set to true to require code owner approval before merging.
+     */
+    readonly codeOwnerApprovalRequired?: pulumi.Input<boolean>;
     /**
      * One of five levels of access to the project.
      */

@@ -55,10 +55,18 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires useCustomTemplate to be true (enterprise edition).
+     */
+    public readonly groupWithProjectTemplatesId!: pulumi.Output<number | undefined>;
+    /**
      * URL that can be provided to `git clone` to clone the
      * repository via HTTP.
      */
     public /*out*/ readonly httpUrlToRepo!: pulumi.Output<string>;
+    /**
+     * Git URL to a repository to be imported.
+     */
+    public readonly importUrl!: pulumi.Output<string | undefined>;
     /**
      * Create master branch with first commit containing a README.md file.
      */
@@ -99,13 +107,25 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly onlyAllowMergeIfPipelineSucceeds!: pulumi.Output<boolean | undefined>;
     /**
+     * Enable packages repository for the project.
+     */
+    public readonly packagesEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The path of the repository.
      */
     public readonly path!: pulumi.Output<string | undefined>;
     /**
+     * The path of the repository with namespace.
+     */
+    public /*out*/ readonly pathWithNamespace!: pulumi.Output<string>;
+    /**
      * Enable pipelines for the project.
      */
     public readonly pipelinesEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Push rules for the project (documented below).
+     */
+    public readonly pushRules!: pulumi.Output<outputs.ProjectPushRules>;
     /**
      * Enable `Delete source branch` option by default for all new merge requests.
      */
@@ -123,10 +143,6 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly sharedRunnersEnabled!: pulumi.Output<boolean>;
     /**
-     * Enable sharing the project with a list of groups (maps).
-     */
-    public readonly sharedWithGroups!: pulumi.Output<outputs.ProjectSharedWithGroup[] | undefined>;
-    /**
      * Enable snippets for the project.
      */
     public readonly snippetsEnabled!: pulumi.Output<boolean | undefined>;
@@ -139,6 +155,18 @@ export class Project extends pulumi.CustomResource {
      * Tags (topics) of the project.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
+     * When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
+     */
+    public readonly templateName!: pulumi.Output<string | undefined>;
+    /**
+     * When used with use_custom_template, project ID of a custom project template. This is preferable to using templateName since templateName may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
+     */
+    public readonly templateProjectId!: pulumi.Output<number | undefined>;
+    /**
+     * Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+     */
+    public readonly useCustomTemplate!: pulumi.Output<boolean | undefined>;
     /**
      * Set to `public` to create a public project.
      * Valid values are `private`, `internal`, `public`.
@@ -171,7 +199,9 @@ export class Project extends pulumi.CustomResource {
             inputs["containerRegistryEnabled"] = state ? state.containerRegistryEnabled : undefined;
             inputs["defaultBranch"] = state ? state.defaultBranch : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["groupWithProjectTemplatesId"] = state ? state.groupWithProjectTemplatesId : undefined;
             inputs["httpUrlToRepo"] = state ? state.httpUrlToRepo : undefined;
+            inputs["importUrl"] = state ? state.importUrl : undefined;
             inputs["initializeWithReadme"] = state ? state.initializeWithReadme : undefined;
             inputs["issuesEnabled"] = state ? state.issuesEnabled : undefined;
             inputs["lfsEnabled"] = state ? state.lfsEnabled : undefined;
@@ -181,16 +211,21 @@ export class Project extends pulumi.CustomResource {
             inputs["namespaceId"] = state ? state.namespaceId : undefined;
             inputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = state ? state.onlyAllowMergeIfAllDiscussionsAreResolved : undefined;
             inputs["onlyAllowMergeIfPipelineSucceeds"] = state ? state.onlyAllowMergeIfPipelineSucceeds : undefined;
+            inputs["packagesEnabled"] = state ? state.packagesEnabled : undefined;
             inputs["path"] = state ? state.path : undefined;
+            inputs["pathWithNamespace"] = state ? state.pathWithNamespace : undefined;
             inputs["pipelinesEnabled"] = state ? state.pipelinesEnabled : undefined;
+            inputs["pushRules"] = state ? state.pushRules : undefined;
             inputs["removeSourceBranchAfterMerge"] = state ? state.removeSourceBranchAfterMerge : undefined;
             inputs["requestAccessEnabled"] = state ? state.requestAccessEnabled : undefined;
             inputs["runnersToken"] = state ? state.runnersToken : undefined;
             inputs["sharedRunnersEnabled"] = state ? state.sharedRunnersEnabled : undefined;
-            inputs["sharedWithGroups"] = state ? state.sharedWithGroups : undefined;
             inputs["snippetsEnabled"] = state ? state.snippetsEnabled : undefined;
             inputs["sshUrlToRepo"] = state ? state.sshUrlToRepo : undefined;
             inputs["tags"] = state ? state.tags : undefined;
+            inputs["templateName"] = state ? state.templateName : undefined;
+            inputs["templateProjectId"] = state ? state.templateProjectId : undefined;
+            inputs["useCustomTemplate"] = state ? state.useCustomTemplate : undefined;
             inputs["visibilityLevel"] = state ? state.visibilityLevel : undefined;
             inputs["webUrl"] = state ? state.webUrl : undefined;
             inputs["wikiEnabled"] = state ? state.wikiEnabled : undefined;
@@ -201,6 +236,8 @@ export class Project extends pulumi.CustomResource {
             inputs["containerRegistryEnabled"] = args ? args.containerRegistryEnabled : undefined;
             inputs["defaultBranch"] = args ? args.defaultBranch : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["groupWithProjectTemplatesId"] = args ? args.groupWithProjectTemplatesId : undefined;
+            inputs["importUrl"] = args ? args.importUrl : undefined;
             inputs["initializeWithReadme"] = args ? args.initializeWithReadme : undefined;
             inputs["issuesEnabled"] = args ? args.issuesEnabled : undefined;
             inputs["lfsEnabled"] = args ? args.lfsEnabled : undefined;
@@ -210,17 +247,22 @@ export class Project extends pulumi.CustomResource {
             inputs["namespaceId"] = args ? args.namespaceId : undefined;
             inputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = args ? args.onlyAllowMergeIfAllDiscussionsAreResolved : undefined;
             inputs["onlyAllowMergeIfPipelineSucceeds"] = args ? args.onlyAllowMergeIfPipelineSucceeds : undefined;
+            inputs["packagesEnabled"] = args ? args.packagesEnabled : undefined;
             inputs["path"] = args ? args.path : undefined;
             inputs["pipelinesEnabled"] = args ? args.pipelinesEnabled : undefined;
+            inputs["pushRules"] = args ? args.pushRules : undefined;
             inputs["removeSourceBranchAfterMerge"] = args ? args.removeSourceBranchAfterMerge : undefined;
             inputs["requestAccessEnabled"] = args ? args.requestAccessEnabled : undefined;
             inputs["sharedRunnersEnabled"] = args ? args.sharedRunnersEnabled : undefined;
-            inputs["sharedWithGroups"] = args ? args.sharedWithGroups : undefined;
             inputs["snippetsEnabled"] = args ? args.snippetsEnabled : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["templateName"] = args ? args.templateName : undefined;
+            inputs["templateProjectId"] = args ? args.templateProjectId : undefined;
+            inputs["useCustomTemplate"] = args ? args.useCustomTemplate : undefined;
             inputs["visibilityLevel"] = args ? args.visibilityLevel : undefined;
             inputs["wikiEnabled"] = args ? args.wikiEnabled : undefined;
             inputs["httpUrlToRepo"] = undefined /*out*/;
+            inputs["pathWithNamespace"] = undefined /*out*/;
             inputs["runnersToken"] = undefined /*out*/;
             inputs["sshUrlToRepo"] = undefined /*out*/;
             inputs["webUrl"] = undefined /*out*/;
@@ -261,10 +303,18 @@ export interface ProjectState {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires useCustomTemplate to be true (enterprise edition).
+     */
+    readonly groupWithProjectTemplatesId?: pulumi.Input<number>;
+    /**
      * URL that can be provided to `git clone` to clone the
      * repository via HTTP.
      */
     readonly httpUrlToRepo?: pulumi.Input<string>;
+    /**
+     * Git URL to a repository to be imported.
+     */
+    readonly importUrl?: pulumi.Input<string>;
     /**
      * Create master branch with first commit containing a README.md file.
      */
@@ -305,13 +355,25 @@ export interface ProjectState {
      */
     readonly onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean>;
     /**
+     * Enable packages repository for the project.
+     */
+    readonly packagesEnabled?: pulumi.Input<boolean>;
+    /**
      * The path of the repository.
      */
     readonly path?: pulumi.Input<string>;
     /**
+     * The path of the repository with namespace.
+     */
+    readonly pathWithNamespace?: pulumi.Input<string>;
+    /**
      * Enable pipelines for the project.
      */
     readonly pipelinesEnabled?: pulumi.Input<boolean>;
+    /**
+     * Push rules for the project (documented below).
+     */
+    readonly pushRules?: pulumi.Input<inputs.ProjectPushRules>;
     /**
      * Enable `Delete source branch` option by default for all new merge requests.
      */
@@ -329,10 +391,6 @@ export interface ProjectState {
      */
     readonly sharedRunnersEnabled?: pulumi.Input<boolean>;
     /**
-     * Enable sharing the project with a list of groups (maps).
-     */
-    readonly sharedWithGroups?: pulumi.Input<pulumi.Input<inputs.ProjectSharedWithGroup>[]>;
-    /**
      * Enable snippets for the project.
      */
     readonly snippetsEnabled?: pulumi.Input<boolean>;
@@ -345,6 +403,18 @@ export interface ProjectState {
      * Tags (topics) of the project.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
+     */
+    readonly templateName?: pulumi.Input<string>;
+    /**
+     * When used with use_custom_template, project ID of a custom project template. This is preferable to using templateName since templateName may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
+     */
+    readonly templateProjectId?: pulumi.Input<number>;
+    /**
+     * Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+     */
+    readonly useCustomTemplate?: pulumi.Input<boolean>;
     /**
      * Set to `public` to create a public project.
      * Valid values are `private`, `internal`, `public`.
@@ -386,6 +456,14 @@ export interface ProjectArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires useCustomTemplate to be true (enterprise edition).
+     */
+    readonly groupWithProjectTemplatesId?: pulumi.Input<number>;
+    /**
+     * Git URL to a repository to be imported.
+     */
+    readonly importUrl?: pulumi.Input<string>;
+    /**
      * Create master branch with first commit containing a README.md file.
      */
     readonly initializeWithReadme?: pulumi.Input<boolean>;
@@ -425,6 +503,10 @@ export interface ProjectArgs {
      */
     readonly onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean>;
     /**
+     * Enable packages repository for the project.
+     */
+    readonly packagesEnabled?: pulumi.Input<boolean>;
+    /**
      * The path of the repository.
      */
     readonly path?: pulumi.Input<string>;
@@ -432,6 +514,10 @@ export interface ProjectArgs {
      * Enable pipelines for the project.
      */
     readonly pipelinesEnabled?: pulumi.Input<boolean>;
+    /**
+     * Push rules for the project (documented below).
+     */
+    readonly pushRules?: pulumi.Input<inputs.ProjectPushRules>;
     /**
      * Enable `Delete source branch` option by default for all new merge requests.
      */
@@ -445,10 +531,6 @@ export interface ProjectArgs {
      */
     readonly sharedRunnersEnabled?: pulumi.Input<boolean>;
     /**
-     * Enable sharing the project with a list of groups (maps).
-     */
-    readonly sharedWithGroups?: pulumi.Input<pulumi.Input<inputs.ProjectSharedWithGroup>[]>;
-    /**
      * Enable snippets for the project.
      */
     readonly snippetsEnabled?: pulumi.Input<boolean>;
@@ -456,6 +538,18 @@ export interface ProjectArgs {
      * Tags (topics) of the project.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
+     */
+    readonly templateName?: pulumi.Input<string>;
+    /**
+     * When used with use_custom_template, project ID of a custom project template. This is preferable to using templateName since templateName may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
+     */
+    readonly templateProjectId?: pulumi.Input<number>;
+    /**
+     * Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+     */
+    readonly useCustomTemplate?: pulumi.Input<boolean>;
     /**
      * Set to `public` to create a public project.
      * Valid values are `private`, `internal`, `public`.

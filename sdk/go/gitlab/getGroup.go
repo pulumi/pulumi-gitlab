@@ -7,6 +7,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # gitlab\_group
+//
 // Provides details about a specific group in the gitlab provider.
 //
 // ## Example Usage

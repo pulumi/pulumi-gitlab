@@ -21,6 +21,8 @@ class PipelineTrigger(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        ## # gitlab\_pipeline\_trigger
+
         This resource allows you to create and manage pipeline triggers
 
         ## Example Usage

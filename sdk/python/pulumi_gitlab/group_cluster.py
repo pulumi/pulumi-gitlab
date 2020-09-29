@@ -30,9 +30,30 @@ class GroupCluster(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        ## # gitlab\_group\_cluster
+
         This resource allows you to create and manage group clusters for your GitLab groups.
         For further information on clusters, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo = gitlab.Group("foo", path="foo-path")
+        bar = gitlab.GroupCluster("bar",
+            domain="example.com",
+            enabled=True,
+            environment_scope="*",
+            group=foo.id,
+            kubernetes_api_url="https://124.124.124",
+            kubernetes_authorization_type="rbac",
+            kubernetes_ca_cert="some-cert",
+            kubernetes_token="some-token",
+            management_project_id="123456")
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -45,6 +66,7 @@ class GroupCluster(pulumi.CustomResource):
         :param pulumi.Input[str] kubernetes_ca_cert: TLS certificate (needed if API is using a self-signed TLS certificate).
         :param pulumi.Input[str] kubernetes_token: The token to authenticate against Kubernetes.
         :param pulumi.Input[bool] managed: Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
+        :param pulumi.Input[str] management_project_id: The ID of the management project for the cluster.
         :param pulumi.Input[str] name: The name of cluster.
         """
         if __name__ is not None:
@@ -126,6 +148,7 @@ class GroupCluster(pulumi.CustomResource):
         :param pulumi.Input[str] kubernetes_ca_cert: TLS certificate (needed if API is using a self-signed TLS certificate).
         :param pulumi.Input[str] kubernetes_token: The token to authenticate against Kubernetes.
         :param pulumi.Input[bool] managed: Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
+        :param pulumi.Input[str] management_project_id: The ID of the management project for the cluster.
         :param pulumi.Input[str] name: The name of cluster.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -234,6 +257,9 @@ class GroupCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="managementProjectId")
     def management_project_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the management project for the cluster.
+        """
         return pulumi.get(self, "management_project_id")
 
     @property

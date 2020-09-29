@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * ## # gitlab\_group
+ *
  * Provides details about a specific group in the gitlab provider.
  *
  * ## Example Usage

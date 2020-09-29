@@ -10,9 +10,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # gitlab\_project\_variable
+//
 // This resource allows you to create and manage CI/CD variables for your GitLab projects.
 // For further information on variables, consult the [gitlab
 // documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
+//
+// > **Important:** If your GitLab version is older than 13.4, you may see nondeterministic behavior
+// when updating or deleting `ProjectVariable` resources with non-unique keys, for example if
+// there is another variable with the same key and different environment scope. See
+// [this GitLab issue](https://gitlab.com/gitlab-org/gitlab/-/issues/9912).
 //
 // ## Example Usage
 //
@@ -42,7 +49,7 @@ import (
 type ProjectVariable struct {
 	pulumi.CustomResourceState
 
-	// The environmentScope of the variable
+	// The environmentScope of the variable. Defaults to `*`.
 	EnvironmentScope pulumi.StringPtrOutput `pulumi:"environmentScope"`
 	// The name of the variable.
 	Key pulumi.StringOutput `pulumi:"key"`
@@ -95,7 +102,7 @@ func GetProjectVariable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectVariable resources.
 type projectVariableState struct {
-	// The environmentScope of the variable
+	// The environmentScope of the variable. Defaults to `*`.
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The name of the variable.
 	Key *string `pulumi:"key"`
@@ -112,7 +119,7 @@ type projectVariableState struct {
 }
 
 type ProjectVariableState struct {
-	// The environmentScope of the variable
+	// The environmentScope of the variable. Defaults to `*`.
 	EnvironmentScope pulumi.StringPtrInput
 	// The name of the variable.
 	Key pulumi.StringPtrInput
@@ -133,7 +140,7 @@ func (ProjectVariableState) ElementType() reflect.Type {
 }
 
 type projectVariableArgs struct {
-	// The environmentScope of the variable
+	// The environmentScope of the variable. Defaults to `*`.
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
@@ -151,7 +158,7 @@ type projectVariableArgs struct {
 
 // The set of arguments for constructing a ProjectVariable resource.
 type ProjectVariableArgs struct {
-	// The environmentScope of the variable
+	// The environmentScope of the variable. Defaults to `*`.
 	EnvironmentScope pulumi.StringPtrInput
 	// The name of the variable.
 	Key pulumi.StringInput

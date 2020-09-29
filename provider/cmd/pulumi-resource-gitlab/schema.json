@@ -7,7 +7,7 @@
     ],
     "homepage": "https://pulumi.io",
     "license": "Apache-2.0",
-    "attribution": "This Pulumi package is based on the [`gitlab` Terraform Provider](https://github.com/terraform-providers/terraform-provider-gitlab).",
+    "attribution": "This Pulumi package is based on the [`gitlab` Terraform Provider](https://github.com/gitlabhq/terraform-provider-gitlab).",
     "repository": "https://github.com/pulumi/pulumi-gitlab",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
@@ -54,29 +54,178 @@
         ]
     },
     "types": {
-        "gitlab:/ProjectSharedWithGroup:ProjectSharedWithGroup": {
+        "gitlab:/ProjectPushRules:ProjectPushRules": {
             "properties": {
-                "groupAccessLevel": {
+                "authorEmailRegex": {
                     "type": "string",
-                    "description": "Group's sharing permissions. See [group members permission][group_members_permissions] for more info.\nValid values are `guest`, `reporter`, `developer`, `master`.\n",
+                    "description": "All commit author emails must match this regex, e.g. `@my-company.com$`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
                         }
                     }
                 },
-                "groupId": {
+                "branchNameRegex": {
+                    "type": "string",
+                    "description": "All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "commitCommitterCheck": {
+                    "type": "boolean",
+                    "description": "Users can only push commits to this repository that were committed with one of their own verified emails.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "commitMessageNegativeRegex": {
+                    "type": "string",
+                    "description": "No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "commitMessageRegex": {
+                    "type": "string",
+                    "description": "All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "denyDeleteTag": {
+                    "type": "boolean",
+                    "description": "Deny deleting a tag.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fileNameRegex": {
+                    "type": "string",
+                    "description": "All commited filenames must not match this regex, e.g. `(jar|exe)$`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxFileSize": {
                     "type": "integer",
-                    "description": "Group id of the group you want to share the project with.\n",
+                    "description": "Maximum file size (MB).\n",
                     "language": {
                         "python": {
                             "mapCase": false
                         }
                     }
                 },
-                "groupName": {
+                "memberCheck": {
+                    "type": "boolean",
+                    "description": "Restrict commits by author (email) to existing GitLab users.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "preventSecrets": {
+                    "type": "boolean",
+                    "description": "GitLab will reject any files that are likely to contain secrets.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rejectUnsignedCommits": {
+                    "type": "boolean",
+                    "description": "Reject commit when it’s not signed through GPG.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "gitlab:/getGroupMembershipMember:getGroupMembershipMember": {
+            "properties": {
+                "accessLevel": {
                     "type": "string",
-                    "description": "Group's name.\n",
+                    "description": "Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "avatarUrl": {
+                    "type": "string",
+                    "description": "The avatar URL of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "Expiration date for the group membership.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The unique id assigned to the user by the gitlab server.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Whether the user is active or blocked.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "webUrl": {
+                    "type": "string",
+                    "description": "User's website URL.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -86,16 +235,140 @@
             },
             "type": "object",
             "required": [
-                "groupAccessLevel",
-                "groupId"
+                "accessLevel",
+                "avatarUrl",
+                "expiresAt",
+                "id",
+                "name",
+                "state",
+                "username",
+                "webUrl"
             ],
             "language": {
                 "nodejs": {
-                    "requiredOutputs": [
-                        "groupAccessLevel",
-                        "groupId",
-                        "groupName"
-                    ]
+                    "requiredInputs": []
+                }
+            }
+        },
+        "gitlab:/getProjectPushRules:getProjectPushRules": {
+            "properties": {
+                "authorEmailRegex": {
+                    "type": "string",
+                    "description": "All commit author emails must match this regex, e.g. `@my-company.com$`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "branchNameRegex": {
+                    "type": "string",
+                    "description": "All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "commitCommitterCheck": {
+                    "type": "boolean",
+                    "description": "Users can only push commits to this repository that were committed with one of their own verified emails.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "commitMessageNegativeRegex": {
+                    "type": "string",
+                    "description": "No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "commitMessageRegex": {
+                    "type": "string",
+                    "description": "All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "denyDeleteTag": {
+                    "type": "boolean",
+                    "description": "Deny deleting a tag.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fileNameRegex": {
+                    "type": "string",
+                    "description": "All commited filenames must not match this regex, e.g. `(jar|exe)$`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxFileSize": {
+                    "type": "integer",
+                    "description": "Maximum file size (MB).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "memberCheck": {
+                    "type": "boolean",
+                    "description": "Restrict commits by author (email) to existing GitLab users.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "preventSecrets": {
+                    "type": "boolean",
+                    "description": "GitLab will reject any files that are likely to contain secrets.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rejectUnsignedCommits": {
+                    "type": "boolean",
+                    "description": "Reject commit when it’s not signed through GPG.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "authorEmailRegex",
+                "branchNameRegex",
+                "commitCommitterCheck",
+                "commitMessageNegativeRegex",
+                "commitMessageRegex",
+                "denyDeleteTag",
+                "fileNameRegex",
+                "maxFileSize",
+                "memberCheck",
+                "preventSecrets",
+                "rejectUnsignedCommits"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
                 }
             }
         },
@@ -397,6 +670,14 @@
                         }
                     }
                 },
+                "packagesEnabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "path": {
                     "type": "string",
                     "language": {
@@ -602,6 +883,7 @@
                 "onlyMirrorProtectedBranches",
                 "openIssuesCount",
                 "owner",
+                "packagesEnabled",
                 "path",
                 "pathWithNamespace",
                 "permissions",
@@ -1225,11 +1507,15 @@
     },
     "resources": {
         "gitlab:index/branchProtection:BranchProtection": {
-            "description": "This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch. GitLab EE features to protect by group or user are not supported.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst branchProtect = new gitlab.BranchProtection(\"BranchProtect\", {\n    branch: \"BranchProtected\",\n    mergeAccessLevel: \"developer\",\n    project: \"12345\",\n    pushAccessLevel: \"developer\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nbranch_protect = gitlab.BranchProtection(\"branchProtect\",\n    branch=\"BranchProtected\",\n    merge_access_level=\"developer\",\n    project=\"12345\",\n    push_access_level=\"developer\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var branchProtect = new GitLab.BranchProtection(\"branchProtect\", new GitLab.BranchProtectionArgs\n        {\n            Branch = \"BranchProtected\",\n            MergeAccessLevel = \"developer\",\n            Project = \"12345\",\n            PushAccessLevel = \"developer\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewBranchProtection(ctx, \"branchProtect\", \u0026gitlab.BranchProtectionArgs{\n\t\t\tBranch:           pulumi.String(\"BranchProtected\"),\n\t\t\tMergeAccessLevel: pulumi.String(\"developer\"),\n\t\t\tProject:          pulumi.String(\"12345\"),\n\t\t\tPushAccessLevel:  pulumi.String(\"developer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_branch_protection\n\nThis resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch. GitLab EE features to protect by group or user are not supported.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst branchProtect = new gitlab.BranchProtection(\"BranchProtect\", {\n    branch: \"BranchProtected\",\n    mergeAccessLevel: \"developer\",\n    project: \"12345\",\n    pushAccessLevel: \"developer\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nbranch_protect = gitlab.BranchProtection(\"branchProtect\",\n    branch=\"BranchProtected\",\n    merge_access_level=\"developer\",\n    project=\"12345\",\n    push_access_level=\"developer\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var branchProtect = new GitLab.BranchProtection(\"branchProtect\", new GitLab.BranchProtectionArgs\n        {\n            Branch = \"BranchProtected\",\n            MergeAccessLevel = \"developer\",\n            Project = \"12345\",\n            PushAccessLevel = \"developer\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewBranchProtection(ctx, \"branchProtect\", \u0026gitlab.BranchProtectionArgs{\n\t\t\tBranch:           pulumi.String(\"BranchProtected\"),\n\t\t\tMergeAccessLevel: pulumi.String(\"developer\"),\n\t\t\tProject:          pulumi.String(\"12345\"),\n\t\t\tPushAccessLevel:  pulumi.String(\"developer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "branch": {
                     "type": "string",
                     "description": "Name of the branch.\n"
+                },
+                "codeOwnerApprovalRequired": {
+                    "type": "boolean",
+                    "description": "Bool, defaults to false. Can be set to true to require code owner approval before merging.\n"
                 },
                 "mergeAccessLevel": {
                     "type": "string",
@@ -1254,6 +1540,10 @@
                 "branch": {
                     "type": "string",
                     "description": "Name of the branch.\n"
+                },
+                "codeOwnerApprovalRequired": {
+                    "type": "boolean",
+                    "description": "Bool, defaults to false. Can be set to true to require code owner approval before merging.\n"
                 },
                 "mergeAccessLevel": {
                     "type": "string",
@@ -1281,6 +1571,10 @@
                         "type": "string",
                         "description": "Name of the branch.\n"
                     },
+                    "codeOwnerApprovalRequired": {
+                        "type": "boolean",
+                        "description": "Bool, defaults to false. Can be set to true to require code owner approval before merging.\n"
+                    },
                     "mergeAccessLevel": {
                         "type": "string",
                         "description": "One of five levels of access to the project.\n"
@@ -1298,7 +1592,7 @@
             }
         },
         "gitlab:index/deployKey:DeployKey": {
-            "description": "This resource allows you to create and manage deploy keys for your GitLab projects.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.DeployKey(\"example\", {\n    key: \"ssh-rsa AAAA...\",\n    project: \"example/deploying\",\n    title: \"Example deploy key\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.DeployKey(\"example\",\n    key=\"ssh-rsa AAAA...\",\n    project=\"example/deploying\",\n    title=\"Example deploy key\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.DeployKey(\"example\", new GitLab.DeployKeyArgs\n        {\n            Key = \"ssh-rsa AAAA...\",\n            Project = \"example/deploying\",\n            Title = \"Example deploy key\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewDeployKey(ctx, \"example\", \u0026gitlab.DeployKeyArgs{\n\t\t\tKey:     pulumi.String(\"ssh-rsa AAAA...\"),\n\t\t\tProject: pulumi.String(\"example/deploying\"),\n\t\t\tTitle:   pulumi.String(\"Example deploy key\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_deploy\\_key\n\nThis resource allows you to create and manage deploy keys for your GitLab projects.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.DeployKey(\"example\", {\n    key: \"ssh-rsa AAAA...\",\n    project: \"example/deploying\",\n    title: \"Example deploy key\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.DeployKey(\"example\",\n    key=\"ssh-rsa AAAA...\",\n    project=\"example/deploying\",\n    title=\"Example deploy key\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.DeployKey(\"example\", new GitLab.DeployKeyArgs\n        {\n            Key = \"ssh-rsa AAAA...\",\n            Project = \"example/deploying\",\n            Title = \"Example deploy key\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewDeployKey(ctx, \"example\", \u0026gitlab.DeployKeyArgs{\n\t\t\tKey:     pulumi.String(\"ssh-rsa AAAA...\"),\n\t\t\tProject: pulumi.String(\"example/deploying\"),\n\t\t\tTitle:   pulumi.String(\"Example deploy key\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "canPush": {
                     "type": "boolean",
@@ -1369,7 +1663,7 @@
             }
         },
         "gitlab:index/deployKeyEnable:DeployKeyEnable": {
-            "description": "This resource allows you to enable pre-existing deploy keys for your GitLab projects.\n\n**the GITLAB KEY_ID for the deploy key must be known**\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\n// A repo to host the deployment key\nconst parentProject = new gitlab.Project(\"parent\", {});\n// A second repo to use the deployment key from the parent project\nconst fooProject = new gitlab.Project(\"foo\", {});\n// Upload a deployment key for the parent repo\nconst parentDeployKey = new gitlab.DeployKey(\"parent\", {\n    key: \"ssh-rsa AAAA...\",\n    project: parentProject.id,\n    title: \"Example deploy key\",\n});\n// Enable the deployment key on the second repo\nconst fooDeployKeyEnable = new gitlab.DeployKeyEnable(\"foo\", {\n    keyId: parentDeployKey.id,\n    project: fooProject.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\n# A repo to host the deployment key\nparent_project = gitlab.Project(\"parentProject\")\n# A second repo to use the deployment key from the parent project\nfoo_project = gitlab.Project(\"fooProject\")\n# Upload a deployment key for the parent repo\nparent_deploy_key = gitlab.DeployKey(\"parentDeployKey\",\n    key=\"ssh-rsa AAAA...\",\n    project=parent_project.id,\n    title=\"Example deploy key\")\n# Enable the deployment key on the second repo\nfoo_deploy_key_enable = gitlab.DeployKeyEnable(\"fooDeployKeyEnable\",\n    key_id=parent_deploy_key.id,\n    project=foo_project.id)\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // A repo to host the deployment key\n        var parentProject = new GitLab.Project(\"parentProject\", new GitLab.ProjectArgs\n        {\n        });\n        // A second repo to use the deployment key from the parent project\n        var fooProject = new GitLab.Project(\"fooProject\", new GitLab.ProjectArgs\n        {\n        });\n        // Upload a deployment key for the parent repo\n        var parentDeployKey = new GitLab.DeployKey(\"parentDeployKey\", new GitLab.DeployKeyArgs\n        {\n            Key = \"ssh-rsa AAAA...\",\n            Project = parentProject.Id,\n            Title = \"Example deploy key\",\n        });\n        // Enable the deployment key on the second repo\n        var fooDeployKeyEnable = new GitLab.DeployKeyEnable(\"fooDeployKeyEnable\", new GitLab.DeployKeyEnableArgs\n        {\n            KeyId = parentDeployKey.Id,\n            Project = fooProject.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tparentProject, err := gitlab.NewProject(ctx, \"parentProject\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tfooProject, err := gitlab.NewProject(ctx, \"fooProject\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tparentDeployKey, err := gitlab.NewDeployKey(ctx, \"parentDeployKey\", \u0026gitlab.DeployKeyArgs{\n\t\t\tKey:     pulumi.String(\"ssh-rsa AAAA...\"),\n\t\t\tProject: parentProject.ID(),\n\t\t\tTitle:   pulumi.String(\"Example deploy key\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewDeployKeyEnable(ctx, \"fooDeployKeyEnable\", \u0026gitlab.DeployKeyEnableArgs{\n\t\t\tKeyId:   parentDeployKey.ID(),\n\t\t\tProject: fooProject.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_deploy\\_key\\_enable\n\nThis resource allows you to enable pre-existing deploy keys for your GitLab projects.\n\n**the GITLAB KEY_ID for the deploy key must be known**\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\n// A repo to host the deployment key\nconst parentProject = new gitlab.Project(\"parent\", {});\n// A second repo to use the deployment key from the parent project\nconst fooProject = new gitlab.Project(\"foo\", {});\n// Upload a deployment key for the parent repo\nconst parentDeployKey = new gitlab.DeployKey(\"parent\", {\n    key: \"ssh-rsa AAAA...\",\n    project: parentProject.id,\n    title: \"Example deploy key\",\n});\n// Enable the deployment key on the second repo\nconst fooDeployKeyEnable = new gitlab.DeployKeyEnable(\"foo\", {\n    keyId: parentDeployKey.id,\n    project: fooProject.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\n# A repo to host the deployment key\nparent_project = gitlab.Project(\"parentProject\")\n# A second repo to use the deployment key from the parent project\nfoo_project = gitlab.Project(\"fooProject\")\n# Upload a deployment key for the parent repo\nparent_deploy_key = gitlab.DeployKey(\"parentDeployKey\",\n    key=\"ssh-rsa AAAA...\",\n    project=parent_project.id,\n    title=\"Example deploy key\")\n# Enable the deployment key on the second repo\nfoo_deploy_key_enable = gitlab.DeployKeyEnable(\"fooDeployKeyEnable\",\n    key_id=parent_deploy_key.id,\n    project=foo_project.id)\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // A repo to host the deployment key\n        var parentProject = new GitLab.Project(\"parentProject\", new GitLab.ProjectArgs\n        {\n        });\n        // A second repo to use the deployment key from the parent project\n        var fooProject = new GitLab.Project(\"fooProject\", new GitLab.ProjectArgs\n        {\n        });\n        // Upload a deployment key for the parent repo\n        var parentDeployKey = new GitLab.DeployKey(\"parentDeployKey\", new GitLab.DeployKeyArgs\n        {\n            Key = \"ssh-rsa AAAA...\",\n            Project = parentProject.Id,\n            Title = \"Example deploy key\",\n        });\n        // Enable the deployment key on the second repo\n        var fooDeployKeyEnable = new GitLab.DeployKeyEnable(\"fooDeployKeyEnable\", new GitLab.DeployKeyEnableArgs\n        {\n            KeyId = parentDeployKey.Id,\n            Project = fooProject.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tparentProject, err := gitlab.NewProject(ctx, \"parentProject\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tfooProject, err := gitlab.NewProject(ctx, \"fooProject\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tparentDeployKey, err := gitlab.NewDeployKey(ctx, \"parentDeployKey\", \u0026gitlab.DeployKeyArgs{\n\t\t\tKey:     pulumi.String(\"ssh-rsa AAAA...\"),\n\t\t\tProject: parentProject.ID(),\n\t\t\tTitle:   pulumi.String(\"Example deploy key\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewDeployKeyEnable(ctx, \"fooDeployKeyEnable\", \u0026gitlab.DeployKeyEnableArgs{\n\t\t\tKeyId:   parentDeployKey.ID(),\n\t\t\tProject: fooProject.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "canPush": {
                     "type": "boolean"
@@ -1444,7 +1738,7 @@
             }
         },
         "gitlab:index/deployToken:DeployToken": {
-            "description": "This resource allows you to create and manage deploy token for your GitLab projects and groups.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Project\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.DeployToken(\"example\", {\n    expiresAt: \"2020-03-14T00:00:00.000Z\",\n    project: \"example/deploying\",\n    scopes: [\n        \"read_repository\",\n        \"read_registry\",\n    ],\n    username: \"example-username\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.DeployToken(\"example\",\n    expires_at=\"2020-03-14T00:00:00.000Z\",\n    project=\"example/deploying\",\n    scopes=[\n        \"read_repository\",\n        \"read_registry\",\n    ],\n    username=\"example-username\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.DeployToken(\"example\", new GitLab.DeployTokenArgs\n        {\n            ExpiresAt = \"2020-03-14T00:00:00.000Z\",\n            Project = \"example/deploying\",\n            Scopes = \n            {\n                \"read_repository\",\n                \"read_registry\",\n            },\n            Username = \"example-username\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewDeployToken(ctx, \"example\", \u0026gitlab.DeployTokenArgs{\n\t\t\tExpiresAt: pulumi.String(\"2020-03-14T00:00:00.000Z\"),\n\t\t\tProject:   pulumi.String(\"example/deploying\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"read_repository\"),\n\t\t\t\tpulumi.String(\"read_registry\"),\n\t\t\t},\n\t\t\tUsername: pulumi.String(\"example-username\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n{{% /example %}}\n{{% example %}}\n### Group\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.DeployToken(\"example\", {\n    group: \"example/deploying\",\n    scopes: [\"read_repository\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.DeployToken(\"example\",\n    group=\"example/deploying\",\n    scopes=[\"read_repository\"])\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.DeployToken(\"example\", new GitLab.DeployTokenArgs\n        {\n            Group = \"example/deploying\",\n            Scopes = \n            {\n                \"read_repository\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewDeployToken(ctx, \"example\", \u0026gitlab.DeployTokenArgs{\n\t\t\tGroup: pulumi.String(\"example/deploying\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"read_repository\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_deploy\\_token\n\nThis resource allows you to create and manage deploy token for your GitLab projects and groups.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Project\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.DeployToken(\"example\", {\n    expiresAt: \"2020-03-14T00:00:00.000Z\",\n    project: \"example/deploying\",\n    scopes: [\n        \"read_repository\",\n        \"read_registry\",\n    ],\n    username: \"example-username\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.DeployToken(\"example\",\n    expires_at=\"2020-03-14T00:00:00.000Z\",\n    project=\"example/deploying\",\n    scopes=[\n        \"read_repository\",\n        \"read_registry\",\n    ],\n    username=\"example-username\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.DeployToken(\"example\", new GitLab.DeployTokenArgs\n        {\n            ExpiresAt = \"2020-03-14T00:00:00.000Z\",\n            Project = \"example/deploying\",\n            Scopes = \n            {\n                \"read_repository\",\n                \"read_registry\",\n            },\n            Username = \"example-username\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewDeployToken(ctx, \"example\", \u0026gitlab.DeployTokenArgs{\n\t\t\tExpiresAt: pulumi.String(\"2020-03-14T00:00:00.000Z\"),\n\t\t\tProject:   pulumi.String(\"example/deploying\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"read_repository\"),\n\t\t\t\tpulumi.String(\"read_registry\"),\n\t\t\t},\n\t\t\tUsername: pulumi.String(\"example-username\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n{{% /example %}}\n{{% example %}}\n### Group\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.DeployToken(\"example\", {\n    group: \"example/deploying\",\n    scopes: [\"read_repository\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.DeployToken(\"example\",\n    group=\"example/deploying\",\n    scopes=[\"read_repository\"])\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.DeployToken(\"example\", new GitLab.DeployTokenArgs\n        {\n            Group = \"example/deploying\",\n            Scopes = \n            {\n                \"read_repository\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewDeployToken(ctx, \"example\", \u0026gitlab.DeployTokenArgs{\n\t\t\tGroup: pulumi.String(\"example/deploying\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"read_repository\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "expiresAt": {
                     "type": "string"
@@ -1553,9 +1847,17 @@
         },
         "gitlab:index/group:Group": {
             "properties": {
+                "autoDevopsEnabled": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false.  Default to Auto\nDevOps pipeline for all projects within this group.\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "The description of the group.\n"
+                },
+                "emailsDisabled": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false.  Disable email notifications\n"
                 },
                 "fullName": {
                     "type": "string",
@@ -1569,6 +1871,10 @@
                     "type": "boolean",
                     "description": "Boolean, defaults to true.  Whether to enable LFS\nsupport for projects in this group.\n"
                 },
+                "mentionsDisabled": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false.  Disable the capability\nof a group from getting mentioned\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of this group.\n"
@@ -1581,17 +1887,37 @@
                     "type": "string",
                     "description": "The path of the group.\n"
                 },
+                "projectCreationLevel": {
+                    "type": "string",
+                    "description": ", defaults to Maintainer.\nDetermine if developers can create projects\nin the group. Can be noone (No one), maintainer (Maintainers),\nor developer (Developers + Maintainers).\n"
+                },
                 "requestAccessEnabled": {
                     "type": "boolean",
                     "description": "Boolean, defaults to false.  Whether to\nenable users to request access to the group.\n"
+                },
+                "requireTwoFactorAuthentication": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false.\nequire all users in this group to setup Two-factor authentication.\n"
                 },
                 "runnersToken": {
                     "type": "string",
                     "description": "The group level registration token to use during runner setup.\n"
                 },
+                "shareWithGroupLock": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false.  Prevent sharing\na project with another group within this group.\n"
+                },
+                "subgroupCreationLevel": {
+                    "type": "string",
+                    "description": ", defaults to Owner.\nAllowed to create subgroups.\nCan be owner (Owners), or maintainer (Maintainers).\n"
+                },
+                "twoFactorGracePeriod": {
+                    "type": "integer",
+                    "description": "Int, defaults to 48.\nTime before Two-factor authentication is enforced (in hours).\n"
+                },
                 "visibilityLevel": {
                     "type": "string",
-                    "description": "Set to `public` to create a public group.\nValid values are `private`, `internal`, `public`.\nGroups are created as private by default.\n"
+                    "description": "The group's visibility. Can be `private`, `internal`, or `public`.\n"
                 },
                 "webUrl": {
                     "type": "string",
@@ -1608,13 +1934,25 @@
                 "webUrl"
             ],
             "inputProperties": {
+                "autoDevopsEnabled": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false.  Default to Auto\nDevOps pipeline for all projects within this group.\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "The description of the group.\n"
                 },
+                "emailsDisabled": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false.  Disable email notifications\n"
+                },
                 "lfsEnabled": {
                     "type": "boolean",
                     "description": "Boolean, defaults to true.  Whether to enable LFS\nsupport for projects in this group.\n"
+                },
+                "mentionsDisabled": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false.  Disable the capability\nof a group from getting mentioned\n"
                 },
                 "name": {
                     "type": "string",
@@ -1628,13 +1966,33 @@
                     "type": "string",
                     "description": "The path of the group.\n"
                 },
+                "projectCreationLevel": {
+                    "type": "string",
+                    "description": ", defaults to Maintainer.\nDetermine if developers can create projects\nin the group. Can be noone (No one), maintainer (Maintainers),\nor developer (Developers + Maintainers).\n"
+                },
                 "requestAccessEnabled": {
                     "type": "boolean",
                     "description": "Boolean, defaults to false.  Whether to\nenable users to request access to the group.\n"
                 },
+                "requireTwoFactorAuthentication": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false.\nequire all users in this group to setup Two-factor authentication.\n"
+                },
+                "shareWithGroupLock": {
+                    "type": "boolean",
+                    "description": "Boolean, defaults to false.  Prevent sharing\na project with another group within this group.\n"
+                },
+                "subgroupCreationLevel": {
+                    "type": "string",
+                    "description": ", defaults to Owner.\nAllowed to create subgroups.\nCan be owner (Owners), or maintainer (Maintainers).\n"
+                },
+                "twoFactorGracePeriod": {
+                    "type": "integer",
+                    "description": "Int, defaults to 48.\nTime before Two-factor authentication is enforced (in hours).\n"
+                },
                 "visibilityLevel": {
                     "type": "string",
-                    "description": "Set to `public` to create a public group.\nValid values are `private`, `internal`, `public`.\nGroups are created as private by default.\n"
+                    "description": "The group's visibility. Can be `private`, `internal`, or `public`.\n"
                 }
             },
             "requiredInputs": [
@@ -1643,9 +2001,17 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Group resources.\n",
                 "properties": {
+                    "autoDevopsEnabled": {
+                        "type": "boolean",
+                        "description": "Boolean, defaults to false.  Default to Auto\nDevOps pipeline for all projects within this group.\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "The description of the group.\n"
+                    },
+                    "emailsDisabled": {
+                        "type": "boolean",
+                        "description": "Boolean, defaults to false.  Disable email notifications\n"
                     },
                     "fullName": {
                         "type": "string",
@@ -1659,6 +2025,10 @@
                         "type": "boolean",
                         "description": "Boolean, defaults to true.  Whether to enable LFS\nsupport for projects in this group.\n"
                     },
+                    "mentionsDisabled": {
+                        "type": "boolean",
+                        "description": "Boolean, defaults to false.  Disable the capability\nof a group from getting mentioned\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of this group.\n"
@@ -1671,17 +2041,37 @@
                         "type": "string",
                         "description": "The path of the group.\n"
                     },
+                    "projectCreationLevel": {
+                        "type": "string",
+                        "description": ", defaults to Maintainer.\nDetermine if developers can create projects\nin the group. Can be noone (No one), maintainer (Maintainers),\nor developer (Developers + Maintainers).\n"
+                    },
                     "requestAccessEnabled": {
                         "type": "boolean",
                         "description": "Boolean, defaults to false.  Whether to\nenable users to request access to the group.\n"
+                    },
+                    "requireTwoFactorAuthentication": {
+                        "type": "boolean",
+                        "description": "Boolean, defaults to false.\nequire all users in this group to setup Two-factor authentication.\n"
                     },
                     "runnersToken": {
                         "type": "string",
                         "description": "The group level registration token to use during runner setup.\n"
                     },
+                    "shareWithGroupLock": {
+                        "type": "boolean",
+                        "description": "Boolean, defaults to false.  Prevent sharing\na project with another group within this group.\n"
+                    },
+                    "subgroupCreationLevel": {
+                        "type": "string",
+                        "description": ", defaults to Owner.\nAllowed to create subgroups.\nCan be owner (Owners), or maintainer (Maintainers).\n"
+                    },
+                    "twoFactorGracePeriod": {
+                        "type": "integer",
+                        "description": "Int, defaults to 48.\nTime before Two-factor authentication is enforced (in hours).\n"
+                    },
                     "visibilityLevel": {
                         "type": "string",
-                        "description": "Set to `public` to create a public group.\nValid values are `private`, `internal`, `public`.\nGroups are created as private by default.\n"
+                        "description": "The group's visibility. Can be `private`, `internal`, or `public`.\n"
                     },
                     "webUrl": {
                         "type": "string",
@@ -1692,7 +2082,7 @@
             }
         },
         "gitlab:index/groupCluster:GroupCluster": {
-            "description": "This resource allows you to create and manage group clusters for your GitLab groups.\nFor further information on clusters, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.Group(\"foo\", {\n    path: \"foo-path\",\n});\nconst bar = new gitlab.GroupCluster(\"bar\", {\n    domain: \"example.com\",\n    enabled: true,\n    environmentScope: \"*\",\n    group: foo.id,\n    kubernetesApiUrl: \"https://124.124.124\",\n    kubernetesAuthorizationType: \"rbac\",\n    kubernetesCaCert: \"some-cert\",\n    kubernetesToken: \"some-token\",\n    managementClusterId: \"123456\",\n});\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_group\\_cluster\n\nThis resource allows you to create and manage group clusters for your GitLab groups.\nFor further information on clusters, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.Group(\"foo\", {\n    path: \"foo-path\",\n});\nconst bar = new gitlab.GroupCluster(\"bar\", {\n    domain: \"example.com\",\n    enabled: true,\n    environmentScope: \"*\",\n    group: foo.id,\n    kubernetesApiUrl: \"https://124.124.124\",\n    kubernetesAuthorizationType: \"rbac\",\n    kubernetesCaCert: \"some-cert\",\n    kubernetesToken: \"some-token\",\n    managementProjectId: \"123456\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.Group(\"foo\", path=\"foo-path\")\nbar = gitlab.GroupCluster(\"bar\",\n    domain=\"example.com\",\n    enabled=True,\n    environment_scope=\"*\",\n    group=foo.id,\n    kubernetes_api_url=\"https://124.124.124\",\n    kubernetes_authorization_type=\"rbac\",\n    kubernetes_ca_cert=\"some-cert\",\n    kubernetes_token=\"some-token\",\n    management_project_id=\"123456\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new GitLab.Group(\"foo\", new GitLab.GroupArgs\n        {\n            Path = \"foo-path\",\n        });\n        var bar = new GitLab.GroupCluster(\"bar\", new GitLab.GroupClusterArgs\n        {\n            Domain = \"example.com\",\n            Enabled = true,\n            EnvironmentScope = \"*\",\n            Group = foo.Id,\n            KubernetesApiUrl = \"https://124.124.124\",\n            KubernetesAuthorizationType = \"rbac\",\n            KubernetesCaCert = \"some-cert\",\n            KubernetesToken = \"some-token\",\n            ManagementProjectId = \"123456\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := gitlab.NewGroup(ctx, \"foo\", \u0026gitlab.GroupArgs{\n\t\t\tPath: pulumi.String(\"foo-path\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupCluster(ctx, \"bar\", \u0026gitlab.GroupClusterArgs{\n\t\t\tDomain:                      pulumi.String(\"example.com\"),\n\t\t\tEnabled:                     pulumi.Bool(true),\n\t\t\tEnvironmentScope:            pulumi.String(\"*\"),\n\t\t\tGroup:                       foo.ID(),\n\t\t\tKubernetesApiUrl:            pulumi.String(\"https://124.124.124\"),\n\t\t\tKubernetesAuthorizationType: pulumi.String(\"rbac\"),\n\t\t\tKubernetesCaCert:            pulumi.String(\"some-cert\"),\n\t\t\tKubernetesToken:             pulumi.String(\"some-token\"),\n\t\t\tManagementProjectId:         pulumi.String(\"123456\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "clusterType": {
                     "type": "string"
@@ -1737,7 +2127,8 @@
                     "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
                 },
                 "managementProjectId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID of the management project for the cluster.\n"
                 },
                 "name": {
                     "type": "string",
@@ -1798,7 +2189,8 @@
                     "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
                 },
                 "managementProjectId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID of the management project for the cluster.\n"
                 },
                 "name": {
                     "type": "string",
@@ -1856,7 +2248,8 @@
                         "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
                     },
                     "managementProjectId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The ID of the management project for the cluster.\n"
                     },
                     "name": {
                         "type": "string",
@@ -1873,7 +2266,7 @@
             }
         },
         "gitlab:index/groupLabel:GroupLabel": {
-            "description": "This resource allows you to create and manage labels for your GitLab groups.\nFor further information on labels, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ee/user/project/labels.html#group-labels).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst fixme = new gitlab.GroupLabel(\"fixme\", {\n    color: \"#ffcc00\",\n    description: \"issue with failing tests\",\n    group: \"example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfixme = gitlab.GroupLabel(\"fixme\",\n    color=\"#ffcc00\",\n    description=\"issue with failing tests\",\n    group=\"example\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var fixme = new GitLab.GroupLabel(\"fixme\", new GitLab.GroupLabelArgs\n        {\n            Color = \"#ffcc00\",\n            Description = \"issue with failing tests\",\n            Group = \"example\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGroupLabel(ctx, \"fixme\", \u0026gitlab.GroupLabelArgs{\n\t\t\tColor:       pulumi.String(\"#ffcc00\"),\n\t\t\tDescription: pulumi.String(\"issue with failing tests\"),\n\t\t\tGroup:       pulumi.String(\"example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_group\\_label\n\nThis resource allows you to create and manage labels for your GitLab groups.\nFor further information on labels, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ee/user/project/labels.html#group-labels).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst fixme = new gitlab.GroupLabel(\"fixme\", {\n    color: \"#ffcc00\",\n    description: \"issue with failing tests\",\n    group: \"example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfixme = gitlab.GroupLabel(\"fixme\",\n    color=\"#ffcc00\",\n    description=\"issue with failing tests\",\n    group=\"example\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var fixme = new GitLab.GroupLabel(\"fixme\", new GitLab.GroupLabelArgs\n        {\n            Color = \"#ffcc00\",\n            Description = \"issue with failing tests\",\n            Group = \"example\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGroupLabel(ctx, \"fixme\", \u0026gitlab.GroupLabelArgs{\n\t\t\tColor:       pulumi.String(\"#ffcc00\"),\n\t\t\tDescription: pulumi.String(\"issue with failing tests\"),\n\t\t\tGroup:       pulumi.String(\"example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "color": {
                     "type": "string",
@@ -1943,7 +2336,7 @@
             }
         },
         "gitlab:index/groupLdapLink:GroupLdapLink": {
-            "description": "This resource allows you to add an LDAP link to an existing GitLab group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.GroupLdapLink(\"test\", {\n    accessLevel: \"developer\",\n    cn: \"testuser\",\n    groupId: \"12345\",\n    ldapProvider: \"ldapmain\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.GroupLdapLink(\"test\",\n    access_level=\"developer\",\n    cn=\"testuser\",\n    group_id=\"12345\",\n    ldap_provider=\"ldapmain\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = new GitLab.GroupLdapLink(\"test\", new GitLab.GroupLdapLinkArgs\n        {\n            AccessLevel = \"developer\",\n            Cn = \"testuser\",\n            GroupId = \"12345\",\n            LdapProvider = \"ldapmain\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGroupLdapLink(ctx, \"test\", \u0026gitlab.GroupLdapLinkArgs{\n\t\t\tAccessLevel:  pulumi.String(\"developer\"),\n\t\t\tCn:           pulumi.String(\"testuser\"),\n\t\t\tGroupId:      pulumi.String(\"12345\"),\n\t\t\tLdapProvider: pulumi.String(\"ldapmain\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_group\\_ldap\\_link\n\nThis resource allows you to add an LDAP link to an existing GitLab group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.GroupLdapLink(\"test\", {\n    accessLevel: \"developer\",\n    cn: \"testuser\",\n    groupId: \"12345\",\n    ldapProvider: \"ldapmain\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.GroupLdapLink(\"test\",\n    access_level=\"developer\",\n    cn=\"testuser\",\n    group_id=\"12345\",\n    ldap_provider=\"ldapmain\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = new GitLab.GroupLdapLink(\"test\", new GitLab.GroupLdapLinkArgs\n        {\n            AccessLevel = \"developer\",\n            Cn = \"testuser\",\n            GroupId = \"12345\",\n            LdapProvider = \"ldapmain\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGroupLdapLink(ctx, \"test\", \u0026gitlab.GroupLdapLinkArgs{\n\t\t\tAccessLevel:  pulumi.String(\"developer\"),\n\t\t\tCn:           pulumi.String(\"testuser\"),\n\t\t\tGroupId:      pulumi.String(\"12345\"),\n\t\t\tLdapProvider: pulumi.String(\"ldapmain\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "accessLevel": {
                     "type": "string",
@@ -2025,7 +2418,7 @@
             }
         },
         "gitlab:index/groupMembership:GroupMembership": {
-            "description": "This resource allows you to add a user to an existing group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.GroupMembership(\"test\", {\n    accessLevel: \"guest\",\n    expiresAt: \"2020-12-31\",\n    groupId: \"12345\",\n    userId: 1337,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.GroupMembership(\"test\",\n    access_level=\"guest\",\n    expires_at=\"2020-12-31\",\n    group_id=\"12345\",\n    user_id=1337)\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = new GitLab.GroupMembership(\"test\", new GitLab.GroupMembershipArgs\n        {\n            AccessLevel = \"guest\",\n            ExpiresAt = \"2020-12-31\",\n            GroupId = \"12345\",\n            UserId = 1337,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGroupMembership(ctx, \"test\", \u0026gitlab.GroupMembershipArgs{\n\t\t\tAccessLevel: pulumi.String(\"guest\"),\n\t\t\tExpiresAt:   pulumi.String(\"2020-12-31\"),\n\t\t\tGroupId:     pulumi.String(\"12345\"),\n\t\t\tUserId:      pulumi.Int(1337),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_group_membership\n\nThis resource allows you to add a user to an existing group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.GroupMembership(\"test\", {\n    accessLevel: \"guest\",\n    expiresAt: \"2020-12-31\",\n    groupId: \"12345\",\n    userId: 1337,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.GroupMembership(\"test\",\n    access_level=\"guest\",\n    expires_at=\"2020-12-31\",\n    group_id=\"12345\",\n    user_id=1337)\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = new GitLab.GroupMembership(\"test\", new GitLab.GroupMembershipArgs\n        {\n            AccessLevel = \"guest\",\n            ExpiresAt = \"2020-12-31\",\n            GroupId = \"12345\",\n            UserId = 1337,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGroupMembership(ctx, \"test\", \u0026gitlab.GroupMembershipArgs{\n\t\t\tAccessLevel: pulumi.String(\"guest\"),\n\t\t\tExpiresAt:   pulumi.String(\"2020-12-31\"),\n\t\t\tGroupId:     pulumi.String(\"12345\"),\n\t\t\tUserId:      pulumi.Int(1337),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "accessLevel": {
                     "type": "string",
@@ -2096,7 +2489,7 @@
             }
         },
         "gitlab:index/groupVariable:GroupVariable": {
-            "description": "This resource allows you to create and manage CI/CD variables for your GitLab groups.\nFor further information on variables, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.GroupVariable(\"example\", {\n    group: \"12345\",\n    key: \"group_variable_key\",\n    masked: false,\n    protected: false,\n    value: \"group_variable_value\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.GroupVariable(\"example\",\n    group=\"12345\",\n    key=\"group_variable_key\",\n    masked=False,\n    protected=False,\n    value=\"group_variable_value\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.GroupVariable(\"example\", new GitLab.GroupVariableArgs\n        {\n            Group = \"12345\",\n            Key = \"group_variable_key\",\n            Masked = false,\n            Protected = false,\n            Value = \"group_variable_value\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGroupVariable(ctx, \"example\", \u0026gitlab.GroupVariableArgs{\n\t\t\tGroup:     pulumi.String(\"12345\"),\n\t\t\tKey:       pulumi.String(\"group_variable_key\"),\n\t\t\tMasked:    pulumi.Bool(false),\n\t\t\tProtected: pulumi.Bool(false),\n\t\t\tValue:     pulumi.String(\"group_variable_value\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_group\\_variable\n\nThis resource allows you to create and manage CI/CD variables for your GitLab groups.\nFor further information on variables, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.GroupVariable(\"example\", {\n    group: \"12345\",\n    key: \"group_variable_key\",\n    masked: false,\n    protected: false,\n    value: \"group_variable_value\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.GroupVariable(\"example\",\n    group=\"12345\",\n    key=\"group_variable_key\",\n    masked=False,\n    protected=False,\n    value=\"group_variable_value\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.GroupVariable(\"example\", new GitLab.GroupVariableArgs\n        {\n            Group = \"12345\",\n            Key = \"group_variable_key\",\n            Masked = false,\n            Protected = false,\n            Value = \"group_variable_value\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGroupVariable(ctx, \"example\", \u0026gitlab.GroupVariableArgs{\n\t\t\tGroup:     pulumi.String(\"12345\"),\n\t\t\tKey:       pulumi.String(\"group_variable_key\"),\n\t\t\tMasked:    pulumi.Bool(false),\n\t\t\tProtected: pulumi.Bool(false),\n\t\t\tValue:     pulumi.String(\"group_variable_value\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "group": {
                     "type": "string",
@@ -2187,8 +2580,190 @@
                 "type": "object"
             }
         },
+        "gitlab:index/instanceCluster:InstanceCluster": {
+            "description": "## # gitlab\\_instance\\_cluster\n\nThis resource allows you to create and manage instance clusters for your GitLab instances.\nFor further information on clusters, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ee/user/instance/clusters/).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst bar = new gitlab.InstanceCluster(\"bar\", {\n    domain: \"example.com\",\n    enabled: true,\n    environmentScope: \"*\",\n    kubernetesApiUrl: \"https://124.124.124\",\n    kubernetesAuthorizationType: \"rbac\",\n    kubernetesCaCert: \"some-cert\",\n    kubernetesNamespace: \"namespace\",\n    kubernetesToken: \"some-token\",\n    managementProjectId: \"123456\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nbar = gitlab.InstanceCluster(\"bar\",\n    domain=\"example.com\",\n    enabled=True,\n    environment_scope=\"*\",\n    kubernetes_api_url=\"https://124.124.124\",\n    kubernetes_authorization_type=\"rbac\",\n    kubernetes_ca_cert=\"some-cert\",\n    kubernetes_namespace=\"namespace\",\n    kubernetes_token=\"some-token\",\n    management_project_id=\"123456\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bar = new GitLab.InstanceCluster(\"bar\", new GitLab.InstanceClusterArgs\n        {\n            Domain = \"example.com\",\n            Enabled = true,\n            EnvironmentScope = \"*\",\n            KubernetesApiUrl = \"https://124.124.124\",\n            KubernetesAuthorizationType = \"rbac\",\n            KubernetesCaCert = \"some-cert\",\n            KubernetesNamespace = \"namespace\",\n            KubernetesToken = \"some-token\",\n            ManagementProjectId = \"123456\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewInstanceCluster(ctx, \"bar\", \u0026gitlab.InstanceClusterArgs{\n\t\t\tDomain:                      pulumi.String(\"example.com\"),\n\t\t\tEnabled:                     pulumi.Bool(true),\n\t\t\tEnvironmentScope:            pulumi.String(\"*\"),\n\t\t\tKubernetesApiUrl:            pulumi.String(\"https://124.124.124\"),\n\t\t\tKubernetesAuthorizationType: pulumi.String(\"rbac\"),\n\t\t\tKubernetesCaCert:            pulumi.String(\"some-cert\"),\n\t\t\tKubernetesNamespace:         pulumi.String(\"namespace\"),\n\t\t\tKubernetesToken:             pulumi.String(\"some-token\"),\n\t\t\tManagementProjectId:         pulumi.String(\"123456\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "clusterType": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "The base domain of the cluster.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.\n"
+                },
+                "environmentScope": {
+                    "type": "string",
+                    "description": "The associated environment to the cluster. Defaults to `*`.\n"
+                },
+                "kubernetesApiUrl": {
+                    "type": "string",
+                    "description": "The URL to access the Kubernetes API.\n"
+                },
+                "kubernetesAuthorizationType": {
+                    "type": "string",
+                    "description": "The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.\n"
+                },
+                "kubernetesCaCert": {
+                    "type": "string",
+                    "description": "TLS certificate (needed if API is using a self-signed TLS certificate).\n"
+                },
+                "kubernetesNamespace": {
+                    "type": "string",
+                    "description": "The unique namespace related to the instance.\n"
+                },
+                "kubernetesToken": {
+                    "type": "string",
+                    "description": "The token to authenticate against Kubernetes. This attribute cannot be read.\n"
+                },
+                "managed": {
+                    "type": "boolean",
+                    "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
+                },
+                "managementProjectId": {
+                    "type": "string",
+                    "description": "The ID of the management project for the cluster.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of cluster.\n"
+                },
+                "platformType": {
+                    "type": "string"
+                },
+                "providerType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "clusterType",
+                "createdAt",
+                "kubernetesApiUrl",
+                "kubernetesToken",
+                "name",
+                "platformType",
+                "providerType"
+            ],
+            "inputProperties": {
+                "domain": {
+                    "type": "string",
+                    "description": "The base domain of the cluster.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.\n"
+                },
+                "environmentScope": {
+                    "type": "string",
+                    "description": "The associated environment to the cluster. Defaults to `*`.\n"
+                },
+                "kubernetesApiUrl": {
+                    "type": "string",
+                    "description": "The URL to access the Kubernetes API.\n"
+                },
+                "kubernetesAuthorizationType": {
+                    "type": "string",
+                    "description": "The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.\n"
+                },
+                "kubernetesCaCert": {
+                    "type": "string",
+                    "description": "TLS certificate (needed if API is using a self-signed TLS certificate).\n"
+                },
+                "kubernetesNamespace": {
+                    "type": "string",
+                    "description": "The unique namespace related to the instance.\n"
+                },
+                "kubernetesToken": {
+                    "type": "string",
+                    "description": "The token to authenticate against Kubernetes. This attribute cannot be read.\n"
+                },
+                "managed": {
+                    "type": "boolean",
+                    "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
+                },
+                "managementProjectId": {
+                    "type": "string",
+                    "description": "The ID of the management project for the cluster.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of cluster.\n"
+                }
+            },
+            "requiredInputs": [
+                "kubernetesApiUrl",
+                "kubernetesToken"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering InstanceCluster resources.\n",
+                "properties": {
+                    "clusterType": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "domain": {
+                        "type": "string",
+                        "description": "The base domain of the cluster.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.\n"
+                    },
+                    "environmentScope": {
+                        "type": "string",
+                        "description": "The associated environment to the cluster. Defaults to `*`.\n"
+                    },
+                    "kubernetesApiUrl": {
+                        "type": "string",
+                        "description": "The URL to access the Kubernetes API.\n"
+                    },
+                    "kubernetesAuthorizationType": {
+                        "type": "string",
+                        "description": "The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.\n"
+                    },
+                    "kubernetesCaCert": {
+                        "type": "string",
+                        "description": "TLS certificate (needed if API is using a self-signed TLS certificate).\n"
+                    },
+                    "kubernetesNamespace": {
+                        "type": "string",
+                        "description": "The unique namespace related to the instance.\n"
+                    },
+                    "kubernetesToken": {
+                        "type": "string",
+                        "description": "The token to authenticate against Kubernetes. This attribute cannot be read.\n"
+                    },
+                    "managed": {
+                        "type": "boolean",
+                        "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
+                    },
+                    "managementProjectId": {
+                        "type": "string",
+                        "description": "The ID of the management project for the cluster.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of cluster.\n"
+                    },
+                    "platformType": {
+                        "type": "string"
+                    },
+                    "providerType": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "gitlab:index/label:Label": {
-            "description": "This resource allows you to create and manage labels for your GitLab projects.\nFor further information on labels, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ee/user/project/labels.html#project-labels).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst fixme = new gitlab.Label(\"fixme\", {\n    color: \"#ffcc00\",\n    description: \"issue with failing tests\",\n    project: \"example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfixme = gitlab.Label(\"fixme\",\n    color=\"#ffcc00\",\n    description=\"issue with failing tests\",\n    project=\"example\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var fixme = new GitLab.Label(\"fixme\", new GitLab.LabelArgs\n        {\n            Color = \"#ffcc00\",\n            Description = \"issue with failing tests\",\n            Project = \"example\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewLabel(ctx, \"fixme\", \u0026gitlab.LabelArgs{\n\t\t\tColor:       pulumi.String(\"#ffcc00\"),\n\t\t\tDescription: pulumi.String(\"issue with failing tests\"),\n\t\t\tProject:     pulumi.String(\"example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_label\n\nThis resource allows you to create and manage labels for your GitLab projects.\nFor further information on labels, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ee/user/project/labels.html#project-labels).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst fixme = new gitlab.Label(\"fixme\", {\n    color: \"#ffcc00\",\n    description: \"issue with failing tests\",\n    project: \"example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfixme = gitlab.Label(\"fixme\",\n    color=\"#ffcc00\",\n    description=\"issue with failing tests\",\n    project=\"example\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var fixme = new GitLab.Label(\"fixme\", new GitLab.LabelArgs\n        {\n            Color = \"#ffcc00\",\n            Description = \"issue with failing tests\",\n            Project = \"example\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewLabel(ctx, \"fixme\", \u0026gitlab.LabelArgs{\n\t\t\tColor:       pulumi.String(\"#ffcc00\"),\n\t\t\tDescription: pulumi.String(\"issue with failing tests\"),\n\t\t\tProject:     pulumi.String(\"example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "color": {
                     "type": "string",
@@ -2258,7 +2833,7 @@
             }
         },
         "gitlab:index/pipelineSchedule:PipelineSchedule": {
-            "description": "This resource allows you to create and manage pipeline schedules.\nFor further information on clusters, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/user/project/pipelines/schedules.html).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.PipelineSchedule(\"example\", {\n    cron: \"0 1 * * *\",\n    description: \"Used to schedule builds\",\n    project: \"12345\",\n    ref: \"master\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.PipelineSchedule(\"example\",\n    cron=\"0 1 * * *\",\n    description=\"Used to schedule builds\",\n    project=\"12345\",\n    ref=\"master\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.PipelineSchedule(\"example\", new GitLab.PipelineScheduleArgs\n        {\n            Cron = \"0 1 * * *\",\n            Description = \"Used to schedule builds\",\n            Project = \"12345\",\n            Ref = \"master\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewPipelineSchedule(ctx, \"example\", \u0026gitlab.PipelineScheduleArgs{\n\t\t\tCron:        pulumi.String(\"0 1 * * *\"),\n\t\t\tDescription: pulumi.String(\"Used to schedule builds\"),\n\t\t\tProject:     pulumi.String(\"12345\"),\n\t\t\tRef:         pulumi.String(\"master\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_pipeline\\_schedule\n\nThis resource allows you to create and manage pipeline schedules.\nFor further information on clusters, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/user/project/pipelines/schedules.html).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.PipelineSchedule(\"example\", {\n    cron: \"0 1 * * *\",\n    description: \"Used to schedule builds\",\n    project: \"12345\",\n    ref: \"master\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.PipelineSchedule(\"example\",\n    cron=\"0 1 * * *\",\n    description=\"Used to schedule builds\",\n    project=\"12345\",\n    ref=\"master\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.PipelineSchedule(\"example\", new GitLab.PipelineScheduleArgs\n        {\n            Cron = \"0 1 * * *\",\n            Description = \"Used to schedule builds\",\n            Project = \"12345\",\n            Ref = \"master\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewPipelineSchedule(ctx, \"example\", \u0026gitlab.PipelineScheduleArgs{\n\t\t\tCron:        pulumi.String(\"0 1 * * *\"),\n\t\t\tDescription: pulumi.String(\"Used to schedule builds\"),\n\t\t\tProject:     pulumi.String(\"12345\"),\n\t\t\tRef:         pulumi.String(\"master\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "active": {
                     "type": "boolean",
@@ -2355,7 +2930,7 @@
             }
         },
         "gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable": {
-            "description": "This resource allows you to create and manage variables for pipeline schedules.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst examplePipelineSchedule = new gitlab.PipelineSchedule(\"examplePipelineSchedule\", {\n    project: \"12345\",\n    description: \"Used to schedule builds\",\n    ref: \"master\",\n    cron: \"0 1 * * *\",\n});\nconst examplePipelineScheduleVariable = new gitlab.PipelineScheduleVariable(\"examplePipelineScheduleVariable\", {\n    project: gitlab_pipeline_schedule.project,\n    pipelineScheduleId: gitlab_pipeline_schedule.id,\n    key: \"EXAMPLE_KEY\",\n    value: \"example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample_pipeline_schedule = gitlab.PipelineSchedule(\"examplePipelineSchedule\",\n    project=\"12345\",\n    description=\"Used to schedule builds\",\n    ref=\"master\",\n    cron=\"0 1 * * *\")\nexample_pipeline_schedule_variable = gitlab.PipelineScheduleVariable(\"examplePipelineScheduleVariable\",\n    project=gitlab_pipeline_schedule[\"project\"],\n    pipeline_schedule_id=gitlab_pipeline_schedule[\"id\"],\n    key=\"EXAMPLE_KEY\",\n    value=\"example\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var examplePipelineSchedule = new GitLab.PipelineSchedule(\"examplePipelineSchedule\", new GitLab.PipelineScheduleArgs\n        {\n            Project = \"12345\",\n            Description = \"Used to schedule builds\",\n            Ref = \"master\",\n            Cron = \"0 1 * * *\",\n        });\n        var examplePipelineScheduleVariable = new GitLab.PipelineScheduleVariable(\"examplePipelineScheduleVariable\", new GitLab.PipelineScheduleVariableArgs\n        {\n            Project = gitlab_pipeline_schedule.Project,\n            PipelineScheduleId = gitlab_pipeline_schedule.Id,\n            Key = \"EXAMPLE_KEY\",\n            Value = \"example\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewPipelineSchedule(ctx, \"examplePipelineSchedule\", \u0026gitlab.PipelineScheduleArgs{\n\t\t\tProject:     pulumi.String(\"12345\"),\n\t\t\tDescription: pulumi.String(\"Used to schedule builds\"),\n\t\t\tRef:         pulumi.String(\"master\"),\n\t\t\tCron:        pulumi.String(\"0 1 * * *\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewPipelineScheduleVariable(ctx, \"examplePipelineScheduleVariable\", \u0026gitlab.PipelineScheduleVariableArgs{\n\t\t\tProject:            pulumi.Any(gitlab_pipeline_schedule.Project),\n\t\t\tPipelineScheduleId: pulumi.Any(gitlab_pipeline_schedule.Id),\n\t\t\tKey:                pulumi.String(\"EXAMPLE_KEY\"),\n\t\t\tValue:              pulumi.String(\"example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_pipeline\\_schedule\\_variable\n\nThis resource allows you to create and manage variables for pipeline schedules.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst examplePipelineSchedule = new gitlab.PipelineSchedule(\"examplePipelineSchedule\", {\n    project: \"12345\",\n    description: \"Used to schedule builds\",\n    ref: \"master\",\n    cron: \"0 1 * * *\",\n});\nconst examplePipelineScheduleVariable = new gitlab.PipelineScheduleVariable(\"examplePipelineScheduleVariable\", {\n    project: gitlab_pipeline_schedule.project,\n    pipelineScheduleId: gitlab_pipeline_schedule.id,\n    key: \"EXAMPLE_KEY\",\n    value: \"example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample_pipeline_schedule = gitlab.PipelineSchedule(\"examplePipelineSchedule\",\n    project=\"12345\",\n    description=\"Used to schedule builds\",\n    ref=\"master\",\n    cron=\"0 1 * * *\")\nexample_pipeline_schedule_variable = gitlab.PipelineScheduleVariable(\"examplePipelineScheduleVariable\",\n    project=gitlab_pipeline_schedule[\"project\"],\n    pipeline_schedule_id=gitlab_pipeline_schedule[\"id\"],\n    key=\"EXAMPLE_KEY\",\n    value=\"example\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var examplePipelineSchedule = new GitLab.PipelineSchedule(\"examplePipelineSchedule\", new GitLab.PipelineScheduleArgs\n        {\n            Project = \"12345\",\n            Description = \"Used to schedule builds\",\n            Ref = \"master\",\n            Cron = \"0 1 * * *\",\n        });\n        var examplePipelineScheduleVariable = new GitLab.PipelineScheduleVariable(\"examplePipelineScheduleVariable\", new GitLab.PipelineScheduleVariableArgs\n        {\n            Project = gitlab_pipeline_schedule.Project,\n            PipelineScheduleId = gitlab_pipeline_schedule.Id,\n            Key = \"EXAMPLE_KEY\",\n            Value = \"example\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewPipelineSchedule(ctx, \"examplePipelineSchedule\", \u0026gitlab.PipelineScheduleArgs{\n\t\t\tProject:     pulumi.String(\"12345\"),\n\t\t\tDescription: pulumi.String(\"Used to schedule builds\"),\n\t\t\tRef:         pulumi.String(\"master\"),\n\t\t\tCron:        pulumi.String(\"0 1 * * *\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewPipelineScheduleVariable(ctx, \"examplePipelineScheduleVariable\", \u0026gitlab.PipelineScheduleVariableArgs{\n\t\t\tProject:            pulumi.Any(gitlab_pipeline_schedule.Project),\n\t\t\tPipelineScheduleId: pulumi.Any(gitlab_pipeline_schedule.Id),\n\t\t\tKey:                pulumi.String(\"EXAMPLE_KEY\"),\n\t\t\tValue:              pulumi.String(\"example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "key": {
                     "type": "string",
@@ -2428,7 +3003,7 @@
             }
         },
         "gitlab:index/pipelineTrigger:PipelineTrigger": {
-            "description": "This resource allows you to create and manage pipeline triggers\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.PipelineTrigger(\"example\", {\n    description: \"Used to trigger builds\",\n    project: \"12345\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.PipelineTrigger(\"example\",\n    description=\"Used to trigger builds\",\n    project=\"12345\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.PipelineTrigger(\"example\", new GitLab.PipelineTriggerArgs\n        {\n            Description = \"Used to trigger builds\",\n            Project = \"12345\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewPipelineTrigger(ctx, \"example\", \u0026gitlab.PipelineTriggerArgs{\n\t\t\tDescription: pulumi.String(\"Used to trigger builds\"),\n\t\t\tProject:     pulumi.String(\"12345\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_pipeline\\_trigger\n\nThis resource allows you to create and manage pipeline triggers\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.PipelineTrigger(\"example\", {\n    description: \"Used to trigger builds\",\n    project: \"12345\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.PipelineTrigger(\"example\",\n    description=\"Used to trigger builds\",\n    project=\"12345\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.PipelineTrigger(\"example\", new GitLab.PipelineTriggerArgs\n        {\n            Description = \"Used to trigger builds\",\n            Project = \"12345\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewPipelineTrigger(ctx, \"example\", \u0026gitlab.PipelineTriggerArgs{\n\t\t\tDescription: pulumi.String(\"Used to trigger builds\"),\n\t\t\tProject:     pulumi.String(\"12345\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "description": {
                     "type": "string",
@@ -2501,9 +3076,17 @@
                     "type": "string",
                     "description": "A description of the project.\n"
                 },
+                "groupWithProjectTemplatesId": {
+                    "type": "integer",
+                    "description": "For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).\n"
+                },
                 "httpUrlToRepo": {
                     "type": "string",
                     "description": "URL that can be provided to `git clone` to clone the\nrepository via HTTP.\n"
+                },
+                "importUrl": {
+                    "type": "string",
+                    "description": "Git URL to a repository to be imported.\n"
                 },
                 "initializeWithReadme": {
                     "type": "boolean",
@@ -2541,13 +3124,25 @@
                     "type": "boolean",
                     "description": "Set to true if you want allow merges only if a pipeline succeeds.\n"
                 },
+                "packagesEnabled": {
+                    "type": "boolean",
+                    "description": "Enable packages repository for the project.\n"
+                },
                 "path": {
                     "type": "string",
                     "description": "The path of the repository.\n"
                 },
+                "pathWithNamespace": {
+                    "type": "string",
+                    "description": "The path of the repository with namespace.\n"
+                },
                 "pipelinesEnabled": {
                     "type": "boolean",
                     "description": "Enable pipelines for the project.\n"
+                },
+                "pushRules": {
+                    "$ref": "#/types/gitlab:/ProjectPushRules:ProjectPushRules",
+                    "description": "Push rules for the project (documented below).\n"
                 },
                 "removeSourceBranchAfterMerge": {
                     "type": "boolean",
@@ -2565,13 +3160,6 @@
                     "type": "boolean",
                     "description": "Enable shared runners for this project.\n"
                 },
-                "sharedWithGroups": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/gitlab:/ProjectSharedWithGroup:ProjectSharedWithGroup"
-                    },
-                    "description": "Enable sharing the project with a list of groups (maps).\n"
-                },
                 "snippetsEnabled": {
                     "type": "boolean",
                     "description": "Enable snippets for the project.\n"
@@ -2586,6 +3174,18 @@
                         "type": "string"
                     },
                     "description": "Tags (topics) of the project.\n"
+                },
+                "templateName": {
+                    "type": "string",
+                    "description": "When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.\n"
+                },
+                "templateProjectId": {
+                    "type": "integer",
+                    "description": "When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.\n"
+                },
+                "useCustomTemplate": {
+                    "type": "boolean",
+                    "description": "Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).\n"
                 },
                 "visibilityLevel": {
                     "type": "string",
@@ -2604,6 +3204,8 @@
                 "httpUrlToRepo",
                 "name",
                 "namespaceId",
+                "pathWithNamespace",
+                "pushRules",
                 "runnersToken",
                 "sharedRunnersEnabled",
                 "sshUrlToRepo",
@@ -2630,6 +3232,14 @@
                     "type": "string",
                     "description": "A description of the project.\n"
                 },
+                "groupWithProjectTemplatesId": {
+                    "type": "integer",
+                    "description": "For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).\n"
+                },
+                "importUrl": {
+                    "type": "string",
+                    "description": "Git URL to a repository to be imported.\n"
+                },
                 "initializeWithReadme": {
                     "type": "boolean",
                     "description": "Create master branch with first commit containing a README.md file.\n"
@@ -2666,6 +3276,10 @@
                     "type": "boolean",
                     "description": "Set to true if you want allow merges only if a pipeline succeeds.\n"
                 },
+                "packagesEnabled": {
+                    "type": "boolean",
+                    "description": "Enable packages repository for the project.\n"
+                },
                 "path": {
                     "type": "string",
                     "description": "The path of the repository.\n"
@@ -2673,6 +3287,10 @@
                 "pipelinesEnabled": {
                     "type": "boolean",
                     "description": "Enable pipelines for the project.\n"
+                },
+                "pushRules": {
+                    "$ref": "#/types/gitlab:/ProjectPushRules:ProjectPushRules",
+                    "description": "Push rules for the project (documented below).\n"
                 },
                 "removeSourceBranchAfterMerge": {
                     "type": "boolean",
@@ -2686,13 +3304,6 @@
                     "type": "boolean",
                     "description": "Enable shared runners for this project.\n"
                 },
-                "sharedWithGroups": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/gitlab:/ProjectSharedWithGroup:ProjectSharedWithGroup"
-                    },
-                    "description": "Enable sharing the project with a list of groups (maps).\n"
-                },
                 "snippetsEnabled": {
                     "type": "boolean",
                     "description": "Enable snippets for the project.\n"
@@ -2703,6 +3314,18 @@
                         "type": "string"
                     },
                     "description": "Tags (topics) of the project.\n"
+                },
+                "templateName": {
+                    "type": "string",
+                    "description": "When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.\n"
+                },
+                "templateProjectId": {
+                    "type": "integer",
+                    "description": "When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.\n"
+                },
+                "useCustomTemplate": {
+                    "type": "boolean",
+                    "description": "Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).\n"
                 },
                 "visibilityLevel": {
                     "type": "string",
@@ -2736,9 +3359,17 @@
                         "type": "string",
                         "description": "A description of the project.\n"
                     },
+                    "groupWithProjectTemplatesId": {
+                        "type": "integer",
+                        "description": "For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).\n"
+                    },
                     "httpUrlToRepo": {
                         "type": "string",
                         "description": "URL that can be provided to `git clone` to clone the\nrepository via HTTP.\n"
+                    },
+                    "importUrl": {
+                        "type": "string",
+                        "description": "Git URL to a repository to be imported.\n"
                     },
                     "initializeWithReadme": {
                         "type": "boolean",
@@ -2776,13 +3407,25 @@
                         "type": "boolean",
                         "description": "Set to true if you want allow merges only if a pipeline succeeds.\n"
                     },
+                    "packagesEnabled": {
+                        "type": "boolean",
+                        "description": "Enable packages repository for the project.\n"
+                    },
                     "path": {
                         "type": "string",
                         "description": "The path of the repository.\n"
                     },
+                    "pathWithNamespace": {
+                        "type": "string",
+                        "description": "The path of the repository with namespace.\n"
+                    },
                     "pipelinesEnabled": {
                         "type": "boolean",
                         "description": "Enable pipelines for the project.\n"
+                    },
+                    "pushRules": {
+                        "$ref": "#/types/gitlab:/ProjectPushRules:ProjectPushRules",
+                        "description": "Push rules for the project (documented below).\n"
                     },
                     "removeSourceBranchAfterMerge": {
                         "type": "boolean",
@@ -2800,13 +3443,6 @@
                         "type": "boolean",
                         "description": "Enable shared runners for this project.\n"
                     },
-                    "sharedWithGroups": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/gitlab:/ProjectSharedWithGroup:ProjectSharedWithGroup"
-                        },
-                        "description": "Enable sharing the project with a list of groups (maps).\n"
-                    },
                     "snippetsEnabled": {
                         "type": "boolean",
                         "description": "Enable snippets for the project.\n"
@@ -2821,6 +3457,18 @@
                             "type": "string"
                         },
                         "description": "Tags (topics) of the project.\n"
+                    },
+                    "templateName": {
+                        "type": "string",
+                        "description": "When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.\n"
+                    },
+                    "templateProjectId": {
+                        "type": "integer",
+                        "description": "When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.\n"
+                    },
+                    "useCustomTemplate": {
+                        "type": "boolean",
+                        "description": "Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).\n"
                     },
                     "visibilityLevel": {
                         "type": "string",
@@ -2839,7 +3487,7 @@
             }
         },
         "gitlab:index/projectCluster:ProjectCluster": {
-            "description": "This resource allows you to create and manage project clusters for your GitLab projects.\nFor further information on clusters, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.Project(\"foo\", {});\nconst bar = new gitlab.ProjectCluster(\"bar\", {\n    domain: \"example.com\",\n    enabled: true,\n    environmentScope: \"*\",\n    kubernetesApiUrl: \"https://124.124.124\",\n    kubernetesAuthorizationType: \"rbac\",\n    kubernetesCaCert: \"some-cert\",\n    kubernetesNamespace: \"namespace\",\n    kubernetesToken: \"some-token\",\n    managementClusterId: \"123456\",\n    project: foo.id,\n});\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_project\\_cluster\n\nThis resource allows you to create and manage project clusters for your GitLab projects.\nFor further information on clusters, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.Project(\"foo\", {});\nconst bar = new gitlab.ProjectCluster(\"bar\", {\n    domain: \"example.com\",\n    enabled: true,\n    environmentScope: \"*\",\n    kubernetesApiUrl: \"https://124.124.124\",\n    kubernetesAuthorizationType: \"rbac\",\n    kubernetesCaCert: \"some-cert\",\n    kubernetesNamespace: \"namespace\",\n    kubernetesToken: \"some-token\",\n    managementProjectId: \"123456\",\n    project: foo.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.Project(\"foo\")\nbar = gitlab.ProjectCluster(\"bar\",\n    domain=\"example.com\",\n    enabled=True,\n    environment_scope=\"*\",\n    kubernetes_api_url=\"https://124.124.124\",\n    kubernetes_authorization_type=\"rbac\",\n    kubernetes_ca_cert=\"some-cert\",\n    kubernetes_namespace=\"namespace\",\n    kubernetes_token=\"some-token\",\n    management_project_id=\"123456\",\n    project=foo.id)\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new GitLab.Project(\"foo\", new GitLab.ProjectArgs\n        {\n        });\n        var bar = new GitLab.ProjectCluster(\"bar\", new GitLab.ProjectClusterArgs\n        {\n            Domain = \"example.com\",\n            Enabled = true,\n            EnvironmentScope = \"*\",\n            KubernetesApiUrl = \"https://124.124.124\",\n            KubernetesAuthorizationType = \"rbac\",\n            KubernetesCaCert = \"some-cert\",\n            KubernetesNamespace = \"namespace\",\n            KubernetesToken = \"some-token\",\n            ManagementProjectId = \"123456\",\n            Project = foo.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := gitlab.NewProject(ctx, \"foo\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectCluster(ctx, \"bar\", \u0026gitlab.ProjectClusterArgs{\n\t\t\tDomain:                      pulumi.String(\"example.com\"),\n\t\t\tEnabled:                     pulumi.Bool(true),\n\t\t\tEnvironmentScope:            pulumi.String(\"*\"),\n\t\t\tKubernetesApiUrl:            pulumi.String(\"https://124.124.124\"),\n\t\t\tKubernetesAuthorizationType: pulumi.String(\"rbac\"),\n\t\t\tKubernetesCaCert:            pulumi.String(\"some-cert\"),\n\t\t\tKubernetesNamespace:         pulumi.String(\"namespace\"),\n\t\t\tKubernetesToken:             pulumi.String(\"some-token\"),\n\t\t\tManagementProjectId:         pulumi.String(\"123456\"),\n\t\t\tProject:                     foo.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "clusterType": {
                     "type": "string"
@@ -2884,7 +3532,8 @@
                     "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
                 },
                 "managementProjectId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID of the management project for the cluster.\n"
                 },
                 "name": {
                     "type": "string",
@@ -2949,7 +3598,8 @@
                     "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
                 },
                 "managementProjectId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID of the management project for the cluster.\n"
                 },
                 "name": {
                     "type": "string",
@@ -3011,7 +3661,8 @@
                         "description": "Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.\n"
                     },
                     "managementProjectId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The ID of the management project for the cluster.\n"
                     },
                     "name": {
                         "type": "string",
@@ -3032,7 +3683,7 @@
             }
         },
         "gitlab:index/projectHook:ProjectHook": {
-            "description": "This resource allows you to create and manage hooks for your GitLab projects.\nFor further information on hooks, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/user/project/integrations/webhooks.html).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.ProjectHook(\"example\", {\n    mergeRequestsEvents: true,\n    project: \"example/hooked\",\n    url: \"https://example.com/hook/example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.ProjectHook(\"example\",\n    merge_requests_events=True,\n    project=\"example/hooked\",\n    url=\"https://example.com/hook/example\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.ProjectHook(\"example\", new GitLab.ProjectHookArgs\n        {\n            MergeRequestsEvents = true,\n            Project = \"example/hooked\",\n            Url = \"https://example.com/hook/example\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewProjectHook(ctx, \"example\", \u0026gitlab.ProjectHookArgs{\n\t\t\tMergeRequestsEvents: pulumi.Bool(true),\n\t\t\tProject:             pulumi.String(\"example/hooked\"),\n\t\t\tUrl:                 pulumi.String(\"https://example.com/hook/example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_project\\_hook\n\nThis resource allows you to create and manage hooks for your GitLab projects.\nFor further information on hooks, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/user/project/integrations/webhooks.html).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.ProjectHook(\"example\", {\n    mergeRequestsEvents: true,\n    project: \"example/hooked\",\n    url: \"https://example.com/hook/example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.ProjectHook(\"example\",\n    merge_requests_events=True,\n    project=\"example/hooked\",\n    url=\"https://example.com/hook/example\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.ProjectHook(\"example\", new GitLab.ProjectHookArgs\n        {\n            MergeRequestsEvents = true,\n            Project = \"example/hooked\",\n            Url = \"https://example.com/hook/example\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewProjectHook(ctx, \"example\", \u0026gitlab.ProjectHookArgs{\n\t\t\tMergeRequestsEvents: pulumi.Bool(true),\n\t\t\tProject:             pulumi.String(\"example/hooked\"),\n\t\t\tUrl:                 pulumi.String(\"https://example.com/hook/example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "enableSslVerification": {
                     "type": "boolean",
@@ -3196,8 +3847,86 @@
                 "type": "object"
             }
         },
+        "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals": {
+            "properties": {
+                "disableOverridingApproversPerMergeRequest": {
+                    "type": "boolean",
+                    "description": "By default, users are able to edit the approval rules in merge requests. If set to true,\nthe approval rules for all new merge requests will be determined by the default approval rules. Default is `false`.\n"
+                },
+                "mergeRequestsAuthorApproval": {
+                    "type": "boolean",
+                    "description": "Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors\nalso need to be included in the approvers list in order to be able to approve their merge request. Default is `false`.\n"
+                },
+                "mergeRequestsDisableCommittersApproval": {
+                    "type": "boolean",
+                    "description": "Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.\n"
+                },
+                "projectId": {
+                    "type": "integer",
+                    "description": "The ID of the project to change MR approval configuration.\n"
+                },
+                "resetApprovalsOnPush": {
+                    "type": "boolean",
+                    "description": "Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.\n"
+                }
+            },
+            "required": [
+                "projectId"
+            ],
+            "inputProperties": {
+                "disableOverridingApproversPerMergeRequest": {
+                    "type": "boolean",
+                    "description": "By default, users are able to edit the approval rules in merge requests. If set to true,\nthe approval rules for all new merge requests will be determined by the default approval rules. Default is `false`.\n"
+                },
+                "mergeRequestsAuthorApproval": {
+                    "type": "boolean",
+                    "description": "Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors\nalso need to be included in the approvers list in order to be able to approve their merge request. Default is `false`.\n"
+                },
+                "mergeRequestsDisableCommittersApproval": {
+                    "type": "boolean",
+                    "description": "Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.\n"
+                },
+                "projectId": {
+                    "type": "integer",
+                    "description": "The ID of the project to change MR approval configuration.\n"
+                },
+                "resetApprovalsOnPush": {
+                    "type": "boolean",
+                    "description": "Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.\n"
+                }
+            },
+            "requiredInputs": [
+                "projectId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ProjectLevelMrApprovals resources.\n",
+                "properties": {
+                    "disableOverridingApproversPerMergeRequest": {
+                        "type": "boolean",
+                        "description": "By default, users are able to edit the approval rules in merge requests. If set to true,\nthe approval rules for all new merge requests will be determined by the default approval rules. Default is `false`.\n"
+                    },
+                    "mergeRequestsAuthorApproval": {
+                        "type": "boolean",
+                        "description": "Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors\nalso need to be included in the approvers list in order to be able to approve their merge request. Default is `false`.\n"
+                    },
+                    "mergeRequestsDisableCommittersApproval": {
+                        "type": "boolean",
+                        "description": "Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.\n"
+                    },
+                    "projectId": {
+                        "type": "integer",
+                        "description": "The ID of the project to change MR approval configuration.\n"
+                    },
+                    "resetApprovalsOnPush": {
+                        "type": "boolean",
+                        "description": "Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "gitlab:index/projectMembership:ProjectMembership": {
-            "description": "This resource allows you to add a current user to an existing project with a set access level.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.ProjectMembership(\"test\", {\n    accessLevel: \"guest\",\n    projectId: \"12345\",\n    userId: 1337,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.ProjectMembership(\"test\",\n    access_level=\"guest\",\n    project_id=\"12345\",\n    user_id=1337)\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = new GitLab.ProjectMembership(\"test\", new GitLab.ProjectMembershipArgs\n        {\n            AccessLevel = \"guest\",\n            ProjectId = \"12345\",\n            UserId = 1337,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewProjectMembership(ctx, \"test\", \u0026gitlab.ProjectMembershipArgs{\n\t\t\tAccessLevel: pulumi.String(\"guest\"),\n\t\t\tProjectId:   pulumi.String(\"12345\"),\n\t\t\tUserId:      pulumi.Int(1337),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_project_membership\n\nThis resource allows you to add a current user to an existing project with a set access level.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.ProjectMembership(\"test\", {\n    accessLevel: \"guest\",\n    projectId: \"12345\",\n    userId: 1337,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.ProjectMembership(\"test\",\n    access_level=\"guest\",\n    project_id=\"12345\",\n    user_id=1337)\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = new GitLab.ProjectMembership(\"test\", new GitLab.ProjectMembershipArgs\n        {\n            AccessLevel = \"guest\",\n            ProjectId = \"12345\",\n            UserId = 1337,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewProjectMembership(ctx, \"test\", \u0026gitlab.ProjectMembershipArgs{\n\t\t\tAccessLevel: pulumi.String(\"guest\"),\n\t\t\tProjectId:   pulumi.String(\"12345\"),\n\t\t\tUserId:      pulumi.Int(1337),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "accessLevel": {
                     "type": "string",
@@ -3255,135 +3984,96 @@
                 "type": "object"
             }
         },
-        "gitlab:index/projectPushRules:ProjectPushRules": {
-            "description": "This resource allows you to create and manage push rules for your GitLab projects.\nFor further information on push rules, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/push_rules/push_rules.html#push-rules).\n",
+        "gitlab:index/projectMirror:ProjectMirror": {
+            "description": "## # gitlab\\_project_mirror\n\nThis resource allows you to add a mirror target for the repository, all changes will be synced to the remote target.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.ProjectMirror(\"foo\", {\n    project: \"1\",\n    url: \"https://username:password@github.com/org/repository.git\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.ProjectMirror(\"foo\",\n    project=\"1\",\n    url=\"https://username:password@github.com/org/repository.git\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new GitLab.ProjectMirror(\"foo\", new GitLab.ProjectMirrorArgs\n        {\n            Project = \"1\",\n            Url = \"https://username:password@github.com/org/repository.git\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewProjectMirror(ctx, \"foo\", \u0026gitlab.ProjectMirrorArgs{\n\t\t\tProject: pulumi.String(\"1\"),\n\t\t\tUrl:     pulumi.String(\"https://username:password@github.com/org/repository.git\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
-                "authorEmailRegex": {
-                    "type": "string",
-                    "description": "All commit author emails must match this regex, e.g. \"@my-company.com$\"\n"
-                },
-                "branchNameRegex": {
-                    "type": "string",
-                    "description": "All branch names must match this regex, e.g. \"(feature|hotfix)\\/*\"\n"
-                },
-                "commitMessageRegex": {
-                    "type": "string",
-                    "description": "All commit messages must match this regex, e.g. \"Fixed \\d+\\..*\"\n"
-                },
-                "denyDeleteTag": {
+                "enabled": {
                     "type": "boolean",
-                    "description": "Deny deleting a tag\n"
+                    "description": "Determines if the mirror is enabled.\n"
                 },
-                "fileNameRegex": {
-                    "type": "string",
-                    "description": "All commited filenames must not match this regex, e.g. \"(jar|exe)$\"\n"
-                },
-                "maxFileSize": {
-                    "type": "integer",
-                    "description": "Maximum file size (MB)\n"
-                },
-                "memberCheck": {
+                "keepDivergentRefs": {
                     "type": "boolean",
-                    "description": "Restrict commits by author (email) to existing GitLab users\n"
+                    "description": "Determines if divergent refs are skipped.\n"
                 },
-                "preventSecrets": {
+                "mirrorId": {
+                    "type": "integer"
+                },
+                "onlyProtectedBranches": {
                     "type": "boolean",
-                    "description": "GitLab will reject any files that are likely to contain secrets\n"
+                    "description": "Determines if only protected branches are mirrored.\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name or id of the project to add the push rules to.\n"
+                    "description": "The id of the project.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL of the remote repository to be mirrored.\n"
                 }
             },
             "required": [
-                "project"
+                "mirrorId",
+                "project",
+                "url"
             ],
             "inputProperties": {
-                "authorEmailRegex": {
-                    "type": "string",
-                    "description": "All commit author emails must match this regex, e.g. \"@my-company.com$\"\n"
-                },
-                "branchNameRegex": {
-                    "type": "string",
-                    "description": "All branch names must match this regex, e.g. \"(feature|hotfix)\\/*\"\n"
-                },
-                "commitMessageRegex": {
-                    "type": "string",
-                    "description": "All commit messages must match this regex, e.g. \"Fixed \\d+\\..*\"\n"
-                },
-                "denyDeleteTag": {
+                "enabled": {
                     "type": "boolean",
-                    "description": "Deny deleting a tag\n"
+                    "description": "Determines if the mirror is enabled.\n"
                 },
-                "fileNameRegex": {
-                    "type": "string",
-                    "description": "All commited filenames must not match this regex, e.g. \"(jar|exe)$\"\n"
-                },
-                "maxFileSize": {
-                    "type": "integer",
-                    "description": "Maximum file size (MB)\n"
-                },
-                "memberCheck": {
+                "keepDivergentRefs": {
                     "type": "boolean",
-                    "description": "Restrict commits by author (email) to existing GitLab users\n"
+                    "description": "Determines if divergent refs are skipped.\n"
                 },
-                "preventSecrets": {
+                "onlyProtectedBranches": {
                     "type": "boolean",
-                    "description": "GitLab will reject any files that are likely to contain secrets\n"
+                    "description": "Determines if only protected branches are mirrored.\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name or id of the project to add the push rules to.\n"
+                    "description": "The id of the project.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL of the remote repository to be mirrored.\n"
                 }
             },
             "requiredInputs": [
-                "project"
+                "project",
+                "url"
             ],
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering ProjectPushRules resources.\n",
+                "description": "Input properties used for looking up and filtering ProjectMirror resources.\n",
                 "properties": {
-                    "authorEmailRegex": {
-                        "type": "string",
-                        "description": "All commit author emails must match this regex, e.g. \"@my-company.com$\"\n"
-                    },
-                    "branchNameRegex": {
-                        "type": "string",
-                        "description": "All branch names must match this regex, e.g. \"(feature|hotfix)\\/*\"\n"
-                    },
-                    "commitMessageRegex": {
-                        "type": "string",
-                        "description": "All commit messages must match this regex, e.g. \"Fixed \\d+\\..*\"\n"
-                    },
-                    "denyDeleteTag": {
+                    "enabled": {
                         "type": "boolean",
-                        "description": "Deny deleting a tag\n"
+                        "description": "Determines if the mirror is enabled.\n"
                     },
-                    "fileNameRegex": {
-                        "type": "string",
-                        "description": "All commited filenames must not match this regex, e.g. \"(jar|exe)$\"\n"
-                    },
-                    "maxFileSize": {
-                        "type": "integer",
-                        "description": "Maximum file size (MB)\n"
-                    },
-                    "memberCheck": {
+                    "keepDivergentRefs": {
                         "type": "boolean",
-                        "description": "Restrict commits by author (email) to existing GitLab users\n"
+                        "description": "Determines if divergent refs are skipped.\n"
                     },
-                    "preventSecrets": {
+                    "mirrorId": {
+                        "type": "integer"
+                    },
+                    "onlyProtectedBranches": {
                         "type": "boolean",
-                        "description": "GitLab will reject any files that are likely to contain secrets\n"
+                        "description": "Determines if only protected branches are mirrored.\n"
                     },
                     "project": {
                         "type": "string",
-                        "description": "The name or id of the project to add the push rules to.\n"
+                        "description": "The id of the project.\n"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The URL of the remote repository to be mirrored.\n"
                     }
                 },
                 "type": "object"
             }
         },
         "gitlab:index/projectShareGroup:ProjectShareGroup": {
-            "description": "This resource allows you to share a project with a group\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.ProjectShareGroup(\"test\", {\n    accessLevel: \"guest\",\n    groupId: 1337,\n    projectId: \"12345\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.ProjectShareGroup(\"test\",\n    access_level=\"guest\",\n    group_id=1337,\n    project_id=\"12345\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = new GitLab.ProjectShareGroup(\"test\", new GitLab.ProjectShareGroupArgs\n        {\n            AccessLevel = \"guest\",\n            GroupId = 1337,\n            ProjectId = \"12345\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewProjectShareGroup(ctx, \"test\", \u0026gitlab.ProjectShareGroupArgs{\n\t\t\tAccessLevel: pulumi.String(\"guest\"),\n\t\t\tGroupId:     pulumi.Int(1337),\n\t\t\tProjectId:   pulumi.String(\"12345\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_project\\_share\\_group\n\nThis resource allows you to share a project with a group\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.ProjectShareGroup(\"test\", {\n    accessLevel: \"guest\",\n    groupId: 1337,\n    projectId: \"12345\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.ProjectShareGroup(\"test\",\n    access_level=\"guest\",\n    group_id=1337,\n    project_id=\"12345\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = new GitLab.ProjectShareGroup(\"test\", new GitLab.ProjectShareGroupArgs\n        {\n            AccessLevel = \"guest\",\n            GroupId = 1337,\n            ProjectId = \"12345\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewProjectShareGroup(ctx, \"test\", \u0026gitlab.ProjectShareGroupArgs{\n\t\t\tAccessLevel: pulumi.String(\"guest\"),\n\t\t\tGroupId:     pulumi.Int(1337),\n\t\t\tProjectId:   pulumi.String(\"12345\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "accessLevel": {
                     "type": "string",
@@ -3442,11 +4132,11 @@
             }
         },
         "gitlab:index/projectVariable:ProjectVariable": {
-            "description": "This resource allows you to create and manage CI/CD variables for your GitLab projects.\nFor further information on variables, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.ProjectVariable(\"example\", {\n    key: \"project_variable_key\",\n    project: \"12345\",\n    protected: false,\n    value: \"project_variable_value\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.ProjectVariable(\"example\",\n    key=\"project_variable_key\",\n    project=\"12345\",\n    protected=False,\n    value=\"project_variable_value\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.ProjectVariable(\"example\", new GitLab.ProjectVariableArgs\n        {\n            Key = \"project_variable_key\",\n            Project = \"12345\",\n            Protected = false,\n            Value = \"project_variable_value\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewProjectVariable(ctx, \"example\", \u0026gitlab.ProjectVariableArgs{\n\t\t\tKey:       pulumi.String(\"project_variable_key\"),\n\t\t\tProject:   pulumi.String(\"12345\"),\n\t\t\tProtected: pulumi.Bool(false),\n\t\t\tValue:     pulumi.String(\"project_variable_value\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_project\\_variable\n\nThis resource allows you to create and manage CI/CD variables for your GitLab projects.\nFor further information on variables, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).\n\n\u003e **Important:** If your GitLab version is older than 13.4, you may see nondeterministic behavior\nwhen updating or deleting `gitlab.ProjectVariable` resources with non-unique keys, for example if\nthere is another variable with the same key and different environment scope. See\n[this GitLab issue](https://gitlab.com/gitlab-org/gitlab/-/issues/9912).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.ProjectVariable(\"example\", {\n    key: \"project_variable_key\",\n    project: \"12345\",\n    protected: false,\n    value: \"project_variable_value\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.ProjectVariable(\"example\",\n    key=\"project_variable_key\",\n    project=\"12345\",\n    protected=False,\n    value=\"project_variable_value\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.ProjectVariable(\"example\", new GitLab.ProjectVariableArgs\n        {\n            Key = \"project_variable_key\",\n            Project = \"12345\",\n            Protected = false,\n            Value = \"project_variable_value\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewProjectVariable(ctx, \"example\", \u0026gitlab.ProjectVariableArgs{\n\t\t\tKey:       pulumi.String(\"project_variable_key\"),\n\t\t\tProject:   pulumi.String(\"12345\"),\n\t\t\tProtected: pulumi.Bool(false),\n\t\t\tValue:     pulumi.String(\"project_variable_value\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "environmentScope": {
                     "type": "string",
-                    "description": "The environment_scope of the variable\n"
+                    "description": "The environment_scope of the variable. Defaults to `*`.\n"
                 },
                 "key": {
                     "type": "string",
@@ -3481,7 +4171,7 @@
             "inputProperties": {
                 "environmentScope": {
                     "type": "string",
-                    "description": "The environment_scope of the variable\n"
+                    "description": "The environment_scope of the variable. Defaults to `*`.\n"
                 },
                 "key": {
                     "type": "string",
@@ -3518,7 +4208,7 @@
                 "properties": {
                     "environmentScope": {
                         "type": "string",
-                        "description": "The environment_scope of the variable\n"
+                        "description": "The environment_scope of the variable. Defaults to `*`.\n"
                     },
                     "key": {
                         "type": "string",
@@ -3801,6 +4491,83 @@
                     "username": {
                         "type": "string",
                         "description": "The username of the user created to be used with GitLab/JIRA.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/servicePipelinesEmail:ServicePipelinesEmail": {
+            "properties": {
+                "branchesToBeNotified": {
+                    "type": "string",
+                    "description": "Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`\n"
+                },
+                "notifyOnlyBrokenPipelines": {
+                    "type": "boolean",
+                    "description": "Notify only broken pipelines. Default is true.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "ID of the project you want to activate integration on.\n"
+                },
+                "recipients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": ") email addresses where notifications are sent.\n"
+                }
+            },
+            "required": [
+                "project",
+                "recipients"
+            ],
+            "inputProperties": {
+                "branchesToBeNotified": {
+                    "type": "string",
+                    "description": "Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`\n"
+                },
+                "notifyOnlyBrokenPipelines": {
+                    "type": "boolean",
+                    "description": "Notify only broken pipelines. Default is true.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "ID of the project you want to activate integration on.\n"
+                },
+                "recipients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": ") email addresses where notifications are sent.\n"
+                }
+            },
+            "requiredInputs": [
+                "project",
+                "recipients"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ServicePipelinesEmail resources.\n",
+                "properties": {
+                    "branchesToBeNotified": {
+                        "type": "string",
+                        "description": "Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`\n"
+                    },
+                    "notifyOnlyBrokenPipelines": {
+                        "type": "boolean",
+                        "description": "Notify only broken pipelines. Default is true.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "ID of the project you want to activate integration on.\n"
+                    },
+                    "recipients": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": ") email addresses where notifications are sent.\n"
                     }
                 },
                 "type": "object"
@@ -4125,7 +4892,7 @@
             }
         },
         "gitlab:index/tagProtection:TagProtection": {
-            "description": "This resource allows you to protect a specific tag or wildcard by an access level so that the user with less access level cannot Create the tags.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst tagProtect = new gitlab.TagProtection(\"TagProtect\", {\n    createAccessLevel: \"developer\",\n    project: \"12345\",\n    tag: \"TagProtected\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntag_protect = gitlab.TagProtection(\"tagProtect\",\n    create_access_level=\"developer\",\n    project=\"12345\",\n    tag=\"TagProtected\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var tagProtect = new GitLab.TagProtection(\"tagProtect\", new GitLab.TagProtectionArgs\n        {\n            CreateAccessLevel = \"developer\",\n            Project = \"12345\",\n            Tag = \"TagProtected\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewTagProtection(ctx, \"tagProtect\", \u0026gitlab.TagProtectionArgs{\n\t\t\tCreateAccessLevel: pulumi.String(\"developer\"),\n\t\t\tProject:           pulumi.String(\"12345\"),\n\t\t\tTag:               pulumi.String(\"TagProtected\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_tag\\_protection\n\nThis resource allows you to protect a specific tag or wildcard by an access level so that the user with less access level cannot Create the tags.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst tagProtect = new gitlab.TagProtection(\"TagProtect\", {\n    createAccessLevel: \"developer\",\n    project: \"12345\",\n    tag: \"TagProtected\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntag_protect = gitlab.TagProtection(\"tagProtect\",\n    create_access_level=\"developer\",\n    project=\"12345\",\n    tag=\"TagProtected\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var tagProtect = new GitLab.TagProtection(\"tagProtect\", new GitLab.TagProtectionArgs\n        {\n            CreateAccessLevel = \"developer\",\n            Project = \"12345\",\n            Tag = \"TagProtected\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewTagProtection(ctx, \"tagProtect\", \u0026gitlab.TagProtectionArgs{\n\t\t\tCreateAccessLevel: pulumi.String(\"developer\"),\n\t\t\tProject:           pulumi.String(\"12345\"),\n\t\t\tTag:               pulumi.String(\"TagProtected\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "createAccessLevel": {
                     "type": "string",
@@ -4327,7 +5094,7 @@
     },
     "functions": {
         "gitlab:index/getGroup:getGroup": {
-            "description": "Provides details about a specific group in the gitlab provider.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n**By group's ID**\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = pulumi.output(gitlab.getGroup({\n    groupId: 123,\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.get_group(group_id=123)\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(GitLab.GetGroup.InvokeAsync(new GitLab.GetGroupArgs\n        {\n            GroupId = 123,\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := 123\n\t\t_, err := gitlab.LookupGroup(ctx, \u0026gitlab.LookupGroupArgs{\n\t\t\tGroupId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n**By group's full path**\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = pulumi.output(gitlab.getGroup({\n    fullPath: \"foo/bar\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.get_group(full_path=\"foo/bar\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(GitLab.GetGroup.InvokeAsync(new GitLab.GetGroupArgs\n        {\n            FullPath = \"foo/bar\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"foo/bar\"\n\t\t_, err := gitlab.LookupGroup(ctx, \u0026gitlab.LookupGroupArgs{\n\t\t\tFullPath: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_group\n\nProvides details about a specific group in the gitlab provider.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n**By group's ID**\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = pulumi.output(gitlab.getGroup({\n    groupId: 123,\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.get_group(group_id=123)\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(GitLab.GetGroup.InvokeAsync(new GitLab.GetGroupArgs\n        {\n            GroupId = 123,\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := 123\n\t\t_, err := gitlab.LookupGroup(ctx, \u0026gitlab.LookupGroupArgs{\n\t\t\tGroupId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n**By group's full path**\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = pulumi.output(gitlab.getGroup({\n    fullPath: \"foo/bar\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.get_group(full_path=\"foo/bar\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(GitLab.GetGroup.InvokeAsync(new GitLab.GetGroupArgs\n        {\n            FullPath = \"foo/bar\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"foo/bar\"\n\t\t_, err := gitlab.LookupGroup(ctx, \u0026gitlab.LookupGroupArgs{\n\t\t\tFullPath: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getGroup.\n",
                 "properties": {
@@ -4415,89 +5182,69 @@
                 ]
             }
         },
+        "gitlab:index/getGroupMembership:getGroupMembership": {
+            "description": "## # gitlab\\_group\\_membership\n\nProvides details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n**By group's ID**\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = pulumi.output(gitlab.getGroupMembership({\n    groupId: 123,\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_group_membership(group_id=123)\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(GitLab.GetGroupMembership.InvokeAsync(new GitLab.GetGroupMembershipArgs\n        {\n            GroupId = 123,\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := 123\n\t\t_, err := gitlab.LookupGroupMembership(ctx, \u0026gitlab.LookupGroupMembershipArgs{\n\t\t\tGroupId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n**By group's full path**\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = pulumi.output(gitlab.getGroupMembership({\n    fullPath: \"foo/bar\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_group_membership(full_path=\"foo/bar\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(GitLab.GetGroupMembership.InvokeAsync(new GitLab.GetGroupMembershipArgs\n        {\n            FullPath = \"foo/bar\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"foo/bar\"\n\t\t_, err := gitlab.LookupGroupMembership(ctx, \u0026gitlab.LookupGroupMembershipArgs{\n\t\t\tFullPath: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGroupMembership.\n",
+                "properties": {
+                    "accessLevel": {
+                        "type": "string",
+                        "description": "Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.\n"
+                    },
+                    "fullPath": {
+                        "type": "string",
+                        "description": "The full path of the group.\n"
+                    },
+                    "groupId": {
+                        "type": "integer",
+                        "description": "The ID of the group.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGroupMembership.\n",
+                "properties": {
+                    "accessLevel": {
+                        "type": "string",
+                        "description": "One of five levels of access to the group.\n"
+                    },
+                    "fullPath": {
+                        "type": "string"
+                    },
+                    "groupId": {
+                        "type": "integer"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "members": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:/getGroupMembershipMember:getGroupMembershipMember"
+                        },
+                        "description": "The list of group members.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accessLevel",
+                    "fullPath",
+                    "groupId",
+                    "members",
+                    "id"
+                ]
+            }
+        },
         "gitlab:index/getProject:getProject": {
-            "description": "Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = pulumi.output(gitlab.getProject({\n    id: 30,\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_project(id=30)\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(GitLab.GetProject.InvokeAsync(new GitLab.GetProjectArgs\n        {\n            Id = 30,\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.LookupProject(ctx, \u0026gitlab.LookupProjectArgs{\n\t\t\tId: 30,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_project\n\nProvides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = pulumi.output(gitlab.getProject({\n    id: 30,\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_project(id=30)\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(GitLab.GetProject.InvokeAsync(new GitLab.GetProjectArgs\n        {\n            Id = 30,\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.LookupProject(ctx, \u0026gitlab.LookupProjectArgs{\n\t\t\tId: 30,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getProject.\n",
                 "properties": {
-                    "archived": {
-                        "type": "boolean",
-                        "description": "Whether the project is in read-only mode (archived).\n"
-                    },
-                    "defaultBranch": {
-                        "type": "string",
-                        "description": "The default branch for the project.\n"
-                    },
-                    "description": {
-                        "type": "string",
-                        "description": "A description of the project.\n"
-                    },
-                    "httpUrlToRepo": {
-                        "type": "string",
-                        "description": "URL that can be provided to `git clone` to clone the\nrepository via HTTP.\n"
-                    },
                     "id": {
                         "type": "integer",
                         "description": "The integer that uniquely identifies the project within the gitlab install.\n"
-                    },
-                    "issuesEnabled": {
-                        "type": "boolean",
-                        "description": "Enable issue tracking for the project.\n"
-                    },
-                    "lfsEnabled": {
-                        "type": "boolean",
-                        "description": "Enable LFS for the project.\n"
-                    },
-                    "mergeRequestsEnabled": {
-                        "type": "boolean",
-                        "description": "Enable merge requests for the project.\n"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "namespaceId": {
-                        "type": "integer",
-                        "description": "The namespace (group or user) of the project. Defaults to your user.\nSee `gitlab.Group` for an example.\n"
-                    },
-                    "path": {
-                        "type": "string",
-                        "description": "The path of the repository.\n"
-                    },
-                    "pipelinesEnabled": {
-                        "type": "boolean",
-                        "description": "Enable pipelines for the project.\n"
-                    },
-                    "removeSourceBranchAfterMerge": {
-                        "type": "boolean",
-                        "description": "Enable `Delete source branch` option by default for all new merge requests\n"
-                    },
-                    "requestAccessEnabled": {
-                        "type": "boolean",
-                        "description": "Allow users to request member access.\n"
-                    },
-                    "runnersToken": {
-                        "type": "string",
-                        "description": "Registration token to use during runner setup.\n"
-                    },
-                    "snippetsEnabled": {
-                        "type": "boolean",
-                        "description": "Enable snippets for the project.\n"
-                    },
-                    "sshUrlToRepo": {
-                        "type": "string",
-                        "description": "URL that can be provided to `git clone` to clone the\nrepository via SSH.\n"
-                    },
-                    "visibilityLevel": {
-                        "type": "string",
-                        "description": "Repositories are created as private by default.\n"
-                    },
-                    "webUrl": {
-                        "type": "string",
-                        "description": "URL that can be used to find the project in a browser.\n"
-                    },
-                    "wikiEnabled": {
-                        "type": "boolean",
-                        "description": "Enable wiki for the project.\n"
                     }
                 },
                 "type": "object",
@@ -4551,9 +5298,16 @@
                         "type": "string",
                         "description": "The path of the repository.\n"
                     },
+                    "pathWithNamespace": {
+                        "type": "string",
+                        "description": "The path of the repository with namespace.\n"
+                    },
                     "pipelinesEnabled": {
                         "type": "boolean",
                         "description": "Enable pipelines for the project.\n"
+                    },
+                    "pushRules": {
+                        "$ref": "#/types/gitlab:/getProjectPushRules:getProjectPushRules"
                     },
                     "removeSourceBranchAfterMerge": {
                         "type": "boolean",
@@ -4601,7 +5355,9 @@
                     "name",
                     "namespaceId",
                     "path",
+                    "pathWithNamespace",
                     "pipelinesEnabled",
+                    "pushRules",
                     "removeSourceBranchAfterMerge",
                     "requestAccessEnabled",
                     "runnersToken",
@@ -4614,7 +5370,7 @@
             }
         },
         "gitlab:index/getProjects:getProjects": {
-            "description": "Provides details about a list of projects in the Gitlab provider. Listing all projects and group projects with [project filtering](https://docs.gitlab.com/ee/api/projects.html#list-user-projects) or [group project filtering](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-projects) is supported.\n\n\u003e NOTE: This data source supports all available filters exposed by the `xanzy/go-gitlab` package, which might not expose all available filters exposed by the Gitlab APIs.   \n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### List projects within a group tree\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst mygroup = gitlab.getGroup({\n    fullPath: \"mygroup\",\n});\nconst groupProjects = mygroup.then(mygroup =\u003e gitlab.getProjects({\n    groupId: mygroup.id,\n    orderBy: \"name\",\n    includeSubgroups: true,\n    withShared: false,\n}));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nmygroup = gitlab.get_group(full_path=\"mygroup\")\ngroup_projects = gitlab.get_projects(group_id=mygroup.id,\n    order_by=\"name\",\n    include_subgroups=True,\n    with_shared=False)\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mygroup = Output.Create(GitLab.GetGroup.InvokeAsync(new GitLab.GetGroupArgs\n        {\n            FullPath = \"mygroup\",\n        }));\n        var groupProjects = mygroup.Apply(mygroup =\u003e Output.Create(GitLab.GetProjects.InvokeAsync(new GitLab.GetProjectsArgs\n        {\n            GroupId = mygroup.Id,\n            OrderBy = \"name\",\n            IncludeSubgroups = true,\n            WithShared = false,\n        })));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"mygroup\"\n\t\tmygroup, err := gitlab.LookupGroup(ctx, \u0026gitlab.LookupGroupArgs{\n\t\t\tFullPath: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\topt1 := mygroup.Id\n\t\topt2 := \"name\"\n\t\topt3 := true\n\t\topt4 := false\n\t\t_, err = gitlab.GetProjects(ctx, \u0026gitlab.GetProjectsArgs{\n\t\t\tGroupId:          \u0026opt1,\n\t\t\tOrderBy:          \u0026opt2,\n\t\t\tIncludeSubgroups: \u0026opt3,\n\t\t\tWithShared:       \u0026opt4,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### List projects using the search syntax\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst projects = pulumi.output(gitlab.getProjects({\n    search: \"postgresql\",\n    visibility: \"private\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nprojects = gitlab.get_projects(search=\"postgresql\",\n    visibility=\"private\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var projects = Output.Create(GitLab.GetProjects.InvokeAsync(new GitLab.GetProjectsArgs\n        {\n            Search = \"postgresql\",\n            Visibility = \"private\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"postgresql\"\n\t\topt1 := \"private\"\n\t\t_, err := gitlab.GetProjects(ctx, \u0026gitlab.GetProjectsArgs{\n\t\t\tSearch:     \u0026opt0,\n\t\t\tVisibility: \u0026opt1,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_projects\n\nProvides details about a list of projects in the Gitlab provider. Listing all projects and group projects with [project filtering](https://docs.gitlab.com/ee/api/projects.html#list-user-projects) or [group project filtering](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-projects) is supported.\n\n\u003e NOTE: This data source supports all available filters exposed by the `xanzy/go-gitlab` package, which might not expose all available filters exposed by the Gitlab APIs.   \n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### List projects within a group tree\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst mygroup = gitlab.getGroup({\n    fullPath: \"mygroup\",\n});\nconst groupProjects = mygroup.then(mygroup =\u003e gitlab.getProjects({\n    groupId: mygroup.id,\n    orderBy: \"name\",\n    includeSubgroups: true,\n    withShared: false,\n}));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nmygroup = gitlab.get_group(full_path=\"mygroup\")\ngroup_projects = gitlab.get_projects(group_id=mygroup.id,\n    order_by=\"name\",\n    include_subgroups=True,\n    with_shared=False)\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mygroup = Output.Create(GitLab.GetGroup.InvokeAsync(new GitLab.GetGroupArgs\n        {\n            FullPath = \"mygroup\",\n        }));\n        var groupProjects = mygroup.Apply(mygroup =\u003e Output.Create(GitLab.GetProjects.InvokeAsync(new GitLab.GetProjectsArgs\n        {\n            GroupId = mygroup.Id,\n            OrderBy = \"name\",\n            IncludeSubgroups = true,\n            WithShared = false,\n        })));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"mygroup\"\n\t\tmygroup, err := gitlab.LookupGroup(ctx, \u0026gitlab.LookupGroupArgs{\n\t\t\tFullPath: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\topt1 := mygroup.Id\n\t\topt2 := \"name\"\n\t\topt3 := true\n\t\topt4 := false\n\t\t_, err = gitlab.GetProjects(ctx, \u0026gitlab.GetProjectsArgs{\n\t\t\tGroupId:          \u0026opt1,\n\t\t\tOrderBy:          \u0026opt2,\n\t\t\tIncludeSubgroups: \u0026opt3,\n\t\t\tWithShared:       \u0026opt4,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### List projects using the search syntax\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst projects = pulumi.output(gitlab.getProjects({\n    search: \"postgresql\",\n    visibility: \"private\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nprojects = gitlab.get_projects(search=\"postgresql\",\n    visibility=\"private\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var projects = Output.Create(GitLab.GetProjects.InvokeAsync(new GitLab.GetProjectsArgs\n        {\n            Search = \"postgresql\",\n            Visibility = \"private\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"postgresql\"\n\t\topt1 := \"private\"\n\t\t_, err := gitlab.GetProjects(ctx, \u0026gitlab.GetProjectsArgs{\n\t\t\tSearch:     \u0026opt0,\n\t\t\tVisibility: \u0026opt1,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getProjects.\n",
                 "properties": {
@@ -4790,7 +5546,7 @@
             }
         },
         "gitlab:index/getUser:getUser": {
-            "description": "Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = pulumi.output(gitlab.getUser({\n    username: \"myuser\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_user(username=\"myuser\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(GitLab.GetUser.InvokeAsync(new GitLab.GetUserArgs\n        {\n            Username = \"myuser\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"myuser\"\n\t\t_, err := gitlab.LookupUser(ctx, \u0026gitlab.LookupUserArgs{\n\t\t\tUsername: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_user\n\nProvides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = pulumi.output(gitlab.getUser({\n    username: \"myuser\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_user(username=\"myuser\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(GitLab.GetUser.InvokeAsync(new GitLab.GetUserArgs\n        {\n            Username = \"myuser\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"myuser\"\n\t\t_, err := gitlab.LookupUser(ctx, \u0026gitlab.LookupUserArgs{\n\t\t\tUsername: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getUser.\n",
                 "properties": {
@@ -4953,7 +5709,7 @@
             }
         },
         "gitlab:index/getUsers:getUsers": {
-            "description": "Provides details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.\n\n**NOTE**: Some of the available options require administrator privileges. Please visit [Gitlab API documentation][users_for_admins] for more information.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = pulumi.output(gitlab.getUsers({\n    createdBefore: \"2019-01-01\",\n    orderBy: \"name\",\n    sort: \"desc\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_users(created_before=\"2019-01-01\",\n    order_by=\"name\",\n    sort=\"desc\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(GitLab.GetUsers.InvokeAsync(new GitLab.GetUsersArgs\n        {\n            CreatedBefore = \"2019-01-01\",\n            OrderBy = \"name\",\n            Sort = \"desc\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"2019-01-01\"\n\t\topt1 := \"name\"\n\t\topt2 := \"desc\"\n\t\t_, err := gitlab.GetUsers(ctx, \u0026gitlab.GetUsersArgs{\n\t\t\tCreatedBefore: \u0026opt0,\n\t\t\tOrderBy:       \u0026opt1,\n\t\t\tSort:          \u0026opt2,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # gitlab\\_users\n\nProvides details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.\n\n**NOTE**: Some of the available options require administrator privileges. Please visit [Gitlab API documentation][users_for_admins] for more information.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = pulumi.output(gitlab.getUsers({\n    createdBefore: \"2019-01-01\",\n    orderBy: \"name\",\n    sort: \"desc\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_users(created_before=\"2019-01-01\",\n    order_by=\"name\",\n    sort=\"desc\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(GitLab.GetUsers.InvokeAsync(new GitLab.GetUsersArgs\n        {\n            CreatedBefore = \"2019-01-01\",\n            OrderBy = \"name\",\n            Sort = \"desc\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v2/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"2019-01-01\"\n\t\topt1 := \"name\"\n\t\topt2 := \"desc\"\n\t\t_, err := gitlab.GetUsers(ctx, \u0026gitlab.GetUsersArgs{\n\t\t\tCreatedBefore: \u0026opt0,\n\t\t\tOrderBy:       \u0026opt1,\n\t\t\tSort:          \u0026opt2,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getUsers.\n",
                 "properties": {
@@ -5070,11 +5826,11 @@
             "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing GitLab resources.",
             "packageName": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-gitlab)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-gitlab` repo](https://github.com/pulumi/pulumi-gitlab/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-gitlab` repo](https://github.com/terraform-providers/terraform-provider-gitlab/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/gitlabhq/terraform-provider-gitlab)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-gitlab` repo](https://github.com/pulumi/pulumi-gitlab/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`gitlabhq/terraform-provider-gitlab` repo](https://github.com/gitlabhq/terraform-provider-gitlab/issues).",
             "typescriptVersion": ""
         },
         "python": {
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-gitlab)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-gitlab` repo](https://github.com/pulumi/pulumi-gitlab/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-gitlab` repo](https://github.com/terraform-providers/terraform-provider-gitlab/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/gitlabhq/terraform-provider-gitlab)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-gitlab` repo](https://github.com/pulumi/pulumi-gitlab/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`gitlabhq/terraform-provider-gitlab` repo](https://github.com/gitlabhq/terraform-provider-gitlab/issues).",
             "requires": {
                 "pulumi": "\u003e=2.9.0,\u003c3.0.0"
             },

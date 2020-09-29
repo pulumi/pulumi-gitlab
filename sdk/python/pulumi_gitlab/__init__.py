@@ -8,6 +8,7 @@ from .deploy_key import *
 from .deploy_key_enable import *
 from .deploy_token import *
 from .get_group import *
+from .get_group_membership import *
 from .get_project import *
 from .get_projects import *
 from .get_user import *
@@ -18,6 +19,7 @@ from .group_label import *
 from .group_ldap_link import *
 from .group_membership import *
 from .group_variable import *
+from .instance_cluster import *
 from .label import *
 from .pipeline_schedule import *
 from .pipeline_schedule_variable import *
@@ -25,13 +27,15 @@ from .pipeline_trigger import *
 from .project import *
 from .project_cluster import *
 from .project_hook import *
+from .project_level_mr_approvals import *
 from .project_membership import *
-from .project_push_rules import *
+from .project_mirror import *
 from .project_share_group import *
 from .project_variable import *
 from .provider import *
 from .service_github import *
 from .service_jira import *
+from .service_pipelines_email import *
 from .service_slack import *
 from .tag_protection import *
 from .user import *

@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * ## # gitlab\_user
+ *
  * Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
  *
  * ## Example Usage

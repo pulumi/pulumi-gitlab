@@ -10,6 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # gitlab\_group\_variable
+//
 // This resource allows you to create and manage CI/CD variables for your GitLab groups.
 // For further information on variables, consult the [gitlab
 // documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).

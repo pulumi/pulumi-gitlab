@@ -23,6 +23,8 @@ class GroupMembership(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        ## # gitlab\_group_membership
+
         This resource allows you to add a user to an existing group.
 
         ## Example Usage

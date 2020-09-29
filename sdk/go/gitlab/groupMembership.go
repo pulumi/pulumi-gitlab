@@ -10,6 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # gitlab\_group_membership
+//
 // This resource allows you to add a user to an existing group.
 //
 // ## Example Usage

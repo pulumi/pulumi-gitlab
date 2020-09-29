@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
+    /// ## # gitlab\_deploy\_token
+    /// 
     /// This resource allows you to create and manage deploy token for your GitLab projects and groups.
     /// 
     /// ## Example Usage

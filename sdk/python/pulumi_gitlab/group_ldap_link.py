@@ -24,6 +24,8 @@ class GroupLdapLink(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        ## # gitlab\_group\_ldap\_link
+
         This resource allows you to add an LDAP link to an existing GitLab group.
 
         ## Example Usage

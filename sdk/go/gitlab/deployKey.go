@@ -10,6 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## # gitlab\_deploy\_key
+//
 // This resource allows you to create and manage deploy keys for your GitLab projects.
 //
 // ## Example Usage

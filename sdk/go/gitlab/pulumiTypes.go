@@ -10,122 +10,627 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-type ProjectSharedWithGroup struct {
-	// Group's sharing permissions. See [group members permission][groupMembersPermissions] for more info.
-	// Valid values are `guest`, `reporter`, `developer`, `master`.
-	GroupAccessLevel string `pulumi:"groupAccessLevel"`
-	// Group id of the group you want to share the project with.
-	GroupId int `pulumi:"groupId"`
-	// Group's name.
-	GroupName *string `pulumi:"groupName"`
+type ProjectPushRules struct {
+	// All commit author emails must match this regex, e.g. `@my-company.com$`.
+	AuthorEmailRegex *string `pulumi:"authorEmailRegex"`
+	// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+	BranchNameRegex *string `pulumi:"branchNameRegex"`
+	// Users can only push commits to this repository that were committed with one of their own verified emails.
+	CommitCommitterCheck *bool `pulumi:"commitCommitterCheck"`
+	// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+	CommitMessageNegativeRegex *string `pulumi:"commitMessageNegativeRegex"`
+	// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+	CommitMessageRegex *string `pulumi:"commitMessageRegex"`
+	// Deny deleting a tag.
+	DenyDeleteTag *bool `pulumi:"denyDeleteTag"`
+	// All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+	FileNameRegex *string `pulumi:"fileNameRegex"`
+	// Maximum file size (MB).
+	MaxFileSize *int `pulumi:"maxFileSize"`
+	// Restrict commits by author (email) to existing GitLab users.
+	MemberCheck *bool `pulumi:"memberCheck"`
+	// GitLab will reject any files that are likely to contain secrets.
+	PreventSecrets *bool `pulumi:"preventSecrets"`
+	// Reject commit when it’s not signed through GPG.
+	RejectUnsignedCommits *bool `pulumi:"rejectUnsignedCommits"`
 }
 
-// ProjectSharedWithGroupInput is an input type that accepts ProjectSharedWithGroupArgs and ProjectSharedWithGroupOutput values.
-// You can construct a concrete instance of `ProjectSharedWithGroupInput` via:
+// ProjectPushRulesInput is an input type that accepts ProjectPushRulesArgs and ProjectPushRulesOutput values.
+// You can construct a concrete instance of `ProjectPushRulesInput` via:
 //
-//          ProjectSharedWithGroupArgs{...}
-type ProjectSharedWithGroupInput interface {
+//          ProjectPushRulesArgs{...}
+type ProjectPushRulesInput interface {
 	pulumi.Input
 
-	ToProjectSharedWithGroupOutput() ProjectSharedWithGroupOutput
-	ToProjectSharedWithGroupOutputWithContext(context.Context) ProjectSharedWithGroupOutput
+	ToProjectPushRulesOutput() ProjectPushRulesOutput
+	ToProjectPushRulesOutputWithContext(context.Context) ProjectPushRulesOutput
 }
 
-type ProjectSharedWithGroupArgs struct {
-	// Group's sharing permissions. See [group members permission][groupMembersPermissions] for more info.
-	// Valid values are `guest`, `reporter`, `developer`, `master`.
-	GroupAccessLevel pulumi.StringInput `pulumi:"groupAccessLevel"`
-	// Group id of the group you want to share the project with.
-	GroupId pulumi.IntInput `pulumi:"groupId"`
-	// Group's name.
-	GroupName pulumi.StringPtrInput `pulumi:"groupName"`
+type ProjectPushRulesArgs struct {
+	// All commit author emails must match this regex, e.g. `@my-company.com$`.
+	AuthorEmailRegex pulumi.StringPtrInput `pulumi:"authorEmailRegex"`
+	// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+	BranchNameRegex pulumi.StringPtrInput `pulumi:"branchNameRegex"`
+	// Users can only push commits to this repository that were committed with one of their own verified emails.
+	CommitCommitterCheck pulumi.BoolPtrInput `pulumi:"commitCommitterCheck"`
+	// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+	CommitMessageNegativeRegex pulumi.StringPtrInput `pulumi:"commitMessageNegativeRegex"`
+	// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+	CommitMessageRegex pulumi.StringPtrInput `pulumi:"commitMessageRegex"`
+	// Deny deleting a tag.
+	DenyDeleteTag pulumi.BoolPtrInput `pulumi:"denyDeleteTag"`
+	// All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+	FileNameRegex pulumi.StringPtrInput `pulumi:"fileNameRegex"`
+	// Maximum file size (MB).
+	MaxFileSize pulumi.IntPtrInput `pulumi:"maxFileSize"`
+	// Restrict commits by author (email) to existing GitLab users.
+	MemberCheck pulumi.BoolPtrInput `pulumi:"memberCheck"`
+	// GitLab will reject any files that are likely to contain secrets.
+	PreventSecrets pulumi.BoolPtrInput `pulumi:"preventSecrets"`
+	// Reject commit when it’s not signed through GPG.
+	RejectUnsignedCommits pulumi.BoolPtrInput `pulumi:"rejectUnsignedCommits"`
 }
 
-func (ProjectSharedWithGroupArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectSharedWithGroup)(nil)).Elem()
+func (ProjectPushRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectPushRules)(nil)).Elem()
 }
 
-func (i ProjectSharedWithGroupArgs) ToProjectSharedWithGroupOutput() ProjectSharedWithGroupOutput {
-	return i.ToProjectSharedWithGroupOutputWithContext(context.Background())
+func (i ProjectPushRulesArgs) ToProjectPushRulesOutput() ProjectPushRulesOutput {
+	return i.ToProjectPushRulesOutputWithContext(context.Background())
 }
 
-func (i ProjectSharedWithGroupArgs) ToProjectSharedWithGroupOutputWithContext(ctx context.Context) ProjectSharedWithGroupOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectSharedWithGroupOutput)
+func (i ProjectPushRulesArgs) ToProjectPushRulesOutputWithContext(ctx context.Context) ProjectPushRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectPushRulesOutput)
 }
 
-// ProjectSharedWithGroupArrayInput is an input type that accepts ProjectSharedWithGroupArray and ProjectSharedWithGroupArrayOutput values.
-// You can construct a concrete instance of `ProjectSharedWithGroupArrayInput` via:
+func (i ProjectPushRulesArgs) ToProjectPushRulesPtrOutput() ProjectPushRulesPtrOutput {
+	return i.ToProjectPushRulesPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectPushRulesArgs) ToProjectPushRulesPtrOutputWithContext(ctx context.Context) ProjectPushRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectPushRulesOutput).ToProjectPushRulesPtrOutputWithContext(ctx)
+}
+
+// ProjectPushRulesPtrInput is an input type that accepts ProjectPushRulesArgs, ProjectPushRulesPtr and ProjectPushRulesPtrOutput values.
+// You can construct a concrete instance of `ProjectPushRulesPtrInput` via:
 //
-//          ProjectSharedWithGroupArray{ ProjectSharedWithGroupArgs{...} }
-type ProjectSharedWithGroupArrayInput interface {
+//          ProjectPushRulesArgs{...}
+//
+//  or:
+//
+//          nil
+type ProjectPushRulesPtrInput interface {
 	pulumi.Input
 
-	ToProjectSharedWithGroupArrayOutput() ProjectSharedWithGroupArrayOutput
-	ToProjectSharedWithGroupArrayOutputWithContext(context.Context) ProjectSharedWithGroupArrayOutput
+	ToProjectPushRulesPtrOutput() ProjectPushRulesPtrOutput
+	ToProjectPushRulesPtrOutputWithContext(context.Context) ProjectPushRulesPtrOutput
 }
 
-type ProjectSharedWithGroupArray []ProjectSharedWithGroupInput
+type projectPushRulesPtrType ProjectPushRulesArgs
 
-func (ProjectSharedWithGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectSharedWithGroup)(nil)).Elem()
+func ProjectPushRulesPtr(v *ProjectPushRulesArgs) ProjectPushRulesPtrInput {
+	return (*projectPushRulesPtrType)(v)
 }
 
-func (i ProjectSharedWithGroupArray) ToProjectSharedWithGroupArrayOutput() ProjectSharedWithGroupArrayOutput {
-	return i.ToProjectSharedWithGroupArrayOutputWithContext(context.Background())
+func (*projectPushRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectPushRules)(nil)).Elem()
 }
 
-func (i ProjectSharedWithGroupArray) ToProjectSharedWithGroupArrayOutputWithContext(ctx context.Context) ProjectSharedWithGroupArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectSharedWithGroupArrayOutput)
+func (i *projectPushRulesPtrType) ToProjectPushRulesPtrOutput() ProjectPushRulesPtrOutput {
+	return i.ToProjectPushRulesPtrOutputWithContext(context.Background())
 }
 
-type ProjectSharedWithGroupOutput struct{ *pulumi.OutputState }
-
-func (ProjectSharedWithGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectSharedWithGroup)(nil)).Elem()
+func (i *projectPushRulesPtrType) ToProjectPushRulesPtrOutputWithContext(ctx context.Context) ProjectPushRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectPushRulesPtrOutput)
 }
 
-func (o ProjectSharedWithGroupOutput) ToProjectSharedWithGroupOutput() ProjectSharedWithGroupOutput {
+type ProjectPushRulesOutput struct{ *pulumi.OutputState }
+
+func (ProjectPushRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectPushRules)(nil)).Elem()
+}
+
+func (o ProjectPushRulesOutput) ToProjectPushRulesOutput() ProjectPushRulesOutput {
 	return o
 }
 
-func (o ProjectSharedWithGroupOutput) ToProjectSharedWithGroupOutputWithContext(ctx context.Context) ProjectSharedWithGroupOutput {
+func (o ProjectPushRulesOutput) ToProjectPushRulesOutputWithContext(ctx context.Context) ProjectPushRulesOutput {
 	return o
 }
 
-// Group's sharing permissions. See [group members permission][groupMembersPermissions] for more info.
-// Valid values are `guest`, `reporter`, `developer`, `master`.
-func (o ProjectSharedWithGroupOutput) GroupAccessLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v ProjectSharedWithGroup) string { return v.GroupAccessLevel }).(pulumi.StringOutput)
+func (o ProjectPushRulesOutput) ToProjectPushRulesPtrOutput() ProjectPushRulesPtrOutput {
+	return o.ToProjectPushRulesPtrOutputWithContext(context.Background())
 }
 
-// Group id of the group you want to share the project with.
-func (o ProjectSharedWithGroupOutput) GroupId() pulumi.IntOutput {
-	return o.ApplyT(func(v ProjectSharedWithGroup) int { return v.GroupId }).(pulumi.IntOutput)
+func (o ProjectPushRulesOutput) ToProjectPushRulesPtrOutputWithContext(ctx context.Context) ProjectPushRulesPtrOutput {
+	return o.ApplyT(func(v ProjectPushRules) *ProjectPushRules {
+		return &v
+	}).(ProjectPushRulesPtrOutput)
 }
 
-// Group's name.
-func (o ProjectSharedWithGroupOutput) GroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProjectSharedWithGroup) *string { return v.GroupName }).(pulumi.StringPtrOutput)
+// All commit author emails must match this regex, e.g. `@my-company.com$`.
+func (o ProjectPushRulesOutput) AuthorEmailRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectPushRules) *string { return v.AuthorEmailRegex }).(pulumi.StringPtrOutput)
 }
 
-type ProjectSharedWithGroupArrayOutput struct{ *pulumi.OutputState }
-
-func (ProjectSharedWithGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectSharedWithGroup)(nil)).Elem()
+// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+func (o ProjectPushRulesOutput) BranchNameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectPushRules) *string { return v.BranchNameRegex }).(pulumi.StringPtrOutput)
 }
 
-func (o ProjectSharedWithGroupArrayOutput) ToProjectSharedWithGroupArrayOutput() ProjectSharedWithGroupArrayOutput {
+// Users can only push commits to this repository that were committed with one of their own verified emails.
+func (o ProjectPushRulesOutput) CommitCommitterCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectPushRules) *bool { return v.CommitCommitterCheck }).(pulumi.BoolPtrOutput)
+}
+
+// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+func (o ProjectPushRulesOutput) CommitMessageNegativeRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectPushRules) *string { return v.CommitMessageNegativeRegex }).(pulumi.StringPtrOutput)
+}
+
+// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+func (o ProjectPushRulesOutput) CommitMessageRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectPushRules) *string { return v.CommitMessageRegex }).(pulumi.StringPtrOutput)
+}
+
+// Deny deleting a tag.
+func (o ProjectPushRulesOutput) DenyDeleteTag() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectPushRules) *bool { return v.DenyDeleteTag }).(pulumi.BoolPtrOutput)
+}
+
+// All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+func (o ProjectPushRulesOutput) FileNameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectPushRules) *string { return v.FileNameRegex }).(pulumi.StringPtrOutput)
+}
+
+// Maximum file size (MB).
+func (o ProjectPushRulesOutput) MaxFileSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectPushRules) *int { return v.MaxFileSize }).(pulumi.IntPtrOutput)
+}
+
+// Restrict commits by author (email) to existing GitLab users.
+func (o ProjectPushRulesOutput) MemberCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectPushRules) *bool { return v.MemberCheck }).(pulumi.BoolPtrOutput)
+}
+
+// GitLab will reject any files that are likely to contain secrets.
+func (o ProjectPushRulesOutput) PreventSecrets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectPushRules) *bool { return v.PreventSecrets }).(pulumi.BoolPtrOutput)
+}
+
+// Reject commit when it’s not signed through GPG.
+func (o ProjectPushRulesOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectPushRules) *bool { return v.RejectUnsignedCommits }).(pulumi.BoolPtrOutput)
+}
+
+type ProjectPushRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectPushRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectPushRules)(nil)).Elem()
+}
+
+func (o ProjectPushRulesPtrOutput) ToProjectPushRulesPtrOutput() ProjectPushRulesPtrOutput {
 	return o
 }
 
-func (o ProjectSharedWithGroupArrayOutput) ToProjectSharedWithGroupArrayOutputWithContext(ctx context.Context) ProjectSharedWithGroupArrayOutput {
+func (o ProjectPushRulesPtrOutput) ToProjectPushRulesPtrOutputWithContext(ctx context.Context) ProjectPushRulesPtrOutput {
 	return o
 }
 
-func (o ProjectSharedWithGroupArrayOutput) Index(i pulumi.IntInput) ProjectSharedWithGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectSharedWithGroup {
-		return vs[0].([]ProjectSharedWithGroup)[vs[1].(int)]
-	}).(ProjectSharedWithGroupOutput)
+func (o ProjectPushRulesPtrOutput) Elem() ProjectPushRulesOutput {
+	return o.ApplyT(func(v *ProjectPushRules) ProjectPushRules { return *v }).(ProjectPushRulesOutput)
+}
+
+// All commit author emails must match this regex, e.g. `@my-company.com$`.
+func (o ProjectPushRulesPtrOutput) AuthorEmailRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRules) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorEmailRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+func (o ProjectPushRulesPtrOutput) BranchNameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRules) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BranchNameRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// Users can only push commits to this repository that were committed with one of their own verified emails.
+func (o ProjectPushRulesPtrOutput) CommitCommitterCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRules) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CommitCommitterCheck
+	}).(pulumi.BoolPtrOutput)
+}
+
+// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+func (o ProjectPushRulesPtrOutput) CommitMessageNegativeRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRules) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommitMessageNegativeRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+func (o ProjectPushRulesPtrOutput) CommitMessageRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRules) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommitMessageRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deny deleting a tag.
+func (o ProjectPushRulesPtrOutput) DenyDeleteTag() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRules) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DenyDeleteTag
+	}).(pulumi.BoolPtrOutput)
+}
+
+// All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+func (o ProjectPushRulesPtrOutput) FileNameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRules) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileNameRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum file size (MB).
+func (o ProjectPushRulesPtrOutput) MaxFileSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRules) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxFileSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Restrict commits by author (email) to existing GitLab users.
+func (o ProjectPushRulesPtrOutput) MemberCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRules) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MemberCheck
+	}).(pulumi.BoolPtrOutput)
+}
+
+// GitLab will reject any files that are likely to contain secrets.
+func (o ProjectPushRulesPtrOutput) PreventSecrets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRules) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreventSecrets
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Reject commit when it’s not signed through GPG.
+func (o ProjectPushRulesPtrOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectPushRules) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RejectUnsignedCommits
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetGroupMembershipMember struct {
+	// Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+	AccessLevel string `pulumi:"accessLevel"`
+	// The avatar URL of the user.
+	AvatarUrl string `pulumi:"avatarUrl"`
+	// Expiration date for the group membership.
+	ExpiresAt string `pulumi:"expiresAt"`
+	// The unique id assigned to the user by the gitlab server.
+	Id int `pulumi:"id"`
+	// The name of the user.
+	Name string `pulumi:"name"`
+	// Whether the user is active or blocked.
+	State string `pulumi:"state"`
+	// The username of the user.
+	Username string `pulumi:"username"`
+	// User's website URL.
+	WebUrl string `pulumi:"webUrl"`
+}
+
+// GetGroupMembershipMemberInput is an input type that accepts GetGroupMembershipMemberArgs and GetGroupMembershipMemberOutput values.
+// You can construct a concrete instance of `GetGroupMembershipMemberInput` via:
+//
+//          GetGroupMembershipMemberArgs{...}
+type GetGroupMembershipMemberInput interface {
+	pulumi.Input
+
+	ToGetGroupMembershipMemberOutput() GetGroupMembershipMemberOutput
+	ToGetGroupMembershipMemberOutputWithContext(context.Context) GetGroupMembershipMemberOutput
+}
+
+type GetGroupMembershipMemberArgs struct {
+	// Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
+	// The avatar URL of the user.
+	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
+	// Expiration date for the group membership.
+	ExpiresAt pulumi.StringInput `pulumi:"expiresAt"`
+	// The unique id assigned to the user by the gitlab server.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The name of the user.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Whether the user is active or blocked.
+	State pulumi.StringInput `pulumi:"state"`
+	// The username of the user.
+	Username pulumi.StringInput `pulumi:"username"`
+	// User's website URL.
+	WebUrl pulumi.StringInput `pulumi:"webUrl"`
+}
+
+func (GetGroupMembershipMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupMembershipMember)(nil)).Elem()
+}
+
+func (i GetGroupMembershipMemberArgs) ToGetGroupMembershipMemberOutput() GetGroupMembershipMemberOutput {
+	return i.ToGetGroupMembershipMemberOutputWithContext(context.Background())
+}
+
+func (i GetGroupMembershipMemberArgs) ToGetGroupMembershipMemberOutputWithContext(ctx context.Context) GetGroupMembershipMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipMemberOutput)
+}
+
+// GetGroupMembershipMemberArrayInput is an input type that accepts GetGroupMembershipMemberArray and GetGroupMembershipMemberArrayOutput values.
+// You can construct a concrete instance of `GetGroupMembershipMemberArrayInput` via:
+//
+//          GetGroupMembershipMemberArray{ GetGroupMembershipMemberArgs{...} }
+type GetGroupMembershipMemberArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupMembershipMemberArrayOutput() GetGroupMembershipMemberArrayOutput
+	ToGetGroupMembershipMemberArrayOutputWithContext(context.Context) GetGroupMembershipMemberArrayOutput
+}
+
+type GetGroupMembershipMemberArray []GetGroupMembershipMemberInput
+
+func (GetGroupMembershipMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupMembershipMember)(nil)).Elem()
+}
+
+func (i GetGroupMembershipMemberArray) ToGetGroupMembershipMemberArrayOutput() GetGroupMembershipMemberArrayOutput {
+	return i.ToGetGroupMembershipMemberArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupMembershipMemberArray) ToGetGroupMembershipMemberArrayOutputWithContext(ctx context.Context) GetGroupMembershipMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipMemberArrayOutput)
+}
+
+type GetGroupMembershipMemberOutput struct{ *pulumi.OutputState }
+
+func (GetGroupMembershipMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupMembershipMember)(nil)).Elem()
+}
+
+func (o GetGroupMembershipMemberOutput) ToGetGroupMembershipMemberOutput() GetGroupMembershipMemberOutput {
+	return o
+}
+
+func (o GetGroupMembershipMemberOutput) ToGetGroupMembershipMemberOutputWithContext(ctx context.Context) GetGroupMembershipMemberOutput {
+	return o
+}
+
+// Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+func (o GetGroupMembershipMemberOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMembershipMember) string { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+// The avatar URL of the user.
+func (o GetGroupMembershipMemberOutput) AvatarUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMembershipMember) string { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+// Expiration date for the group membership.
+func (o GetGroupMembershipMemberOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMembershipMember) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+// The unique id assigned to the user by the gitlab server.
+func (o GetGroupMembershipMemberOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupMembershipMember) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The name of the user.
+func (o GetGroupMembershipMemberOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMembershipMember) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether the user is active or blocked.
+func (o GetGroupMembershipMemberOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMembershipMember) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The username of the user.
+func (o GetGroupMembershipMemberOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMembershipMember) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// User's website URL.
+func (o GetGroupMembershipMemberOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMembershipMember) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+type GetGroupMembershipMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupMembershipMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupMembershipMember)(nil)).Elem()
+}
+
+func (o GetGroupMembershipMemberArrayOutput) ToGetGroupMembershipMemberArrayOutput() GetGroupMembershipMemberArrayOutput {
+	return o
+}
+
+func (o GetGroupMembershipMemberArrayOutput) ToGetGroupMembershipMemberArrayOutputWithContext(ctx context.Context) GetGroupMembershipMemberArrayOutput {
+	return o
+}
+
+func (o GetGroupMembershipMemberArrayOutput) Index(i pulumi.IntInput) GetGroupMembershipMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupMembershipMember {
+		return vs[0].([]GetGroupMembershipMember)[vs[1].(int)]
+	}).(GetGroupMembershipMemberOutput)
+}
+
+type GetProjectPushRules struct {
+	// All commit author emails must match this regex, e.g. `@my-company.com$`.
+	AuthorEmailRegex string `pulumi:"authorEmailRegex"`
+	// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+	BranchNameRegex string `pulumi:"branchNameRegex"`
+	// Users can only push commits to this repository that were committed with one of their own verified emails.
+	CommitCommitterCheck bool `pulumi:"commitCommitterCheck"`
+	// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+	CommitMessageNegativeRegex string `pulumi:"commitMessageNegativeRegex"`
+	// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+	CommitMessageRegex string `pulumi:"commitMessageRegex"`
+	// Deny deleting a tag.
+	DenyDeleteTag bool `pulumi:"denyDeleteTag"`
+	// All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+	FileNameRegex string `pulumi:"fileNameRegex"`
+	// Maximum file size (MB).
+	MaxFileSize int `pulumi:"maxFileSize"`
+	// Restrict commits by author (email) to existing GitLab users.
+	MemberCheck bool `pulumi:"memberCheck"`
+	// GitLab will reject any files that are likely to contain secrets.
+	PreventSecrets bool `pulumi:"preventSecrets"`
+	// Reject commit when it’s not signed through GPG.
+	RejectUnsignedCommits bool `pulumi:"rejectUnsignedCommits"`
+}
+
+// GetProjectPushRulesInput is an input type that accepts GetProjectPushRulesArgs and GetProjectPushRulesOutput values.
+// You can construct a concrete instance of `GetProjectPushRulesInput` via:
+//
+//          GetProjectPushRulesArgs{...}
+type GetProjectPushRulesInput interface {
+	pulumi.Input
+
+	ToGetProjectPushRulesOutput() GetProjectPushRulesOutput
+	ToGetProjectPushRulesOutputWithContext(context.Context) GetProjectPushRulesOutput
+}
+
+type GetProjectPushRulesArgs struct {
+	// All commit author emails must match this regex, e.g. `@my-company.com$`.
+	AuthorEmailRegex pulumi.StringInput `pulumi:"authorEmailRegex"`
+	// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+	BranchNameRegex pulumi.StringInput `pulumi:"branchNameRegex"`
+	// Users can only push commits to this repository that were committed with one of their own verified emails.
+	CommitCommitterCheck pulumi.BoolInput `pulumi:"commitCommitterCheck"`
+	// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+	CommitMessageNegativeRegex pulumi.StringInput `pulumi:"commitMessageNegativeRegex"`
+	// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+	CommitMessageRegex pulumi.StringInput `pulumi:"commitMessageRegex"`
+	// Deny deleting a tag.
+	DenyDeleteTag pulumi.BoolInput `pulumi:"denyDeleteTag"`
+	// All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+	FileNameRegex pulumi.StringInput `pulumi:"fileNameRegex"`
+	// Maximum file size (MB).
+	MaxFileSize pulumi.IntInput `pulumi:"maxFileSize"`
+	// Restrict commits by author (email) to existing GitLab users.
+	MemberCheck pulumi.BoolInput `pulumi:"memberCheck"`
+	// GitLab will reject any files that are likely to contain secrets.
+	PreventSecrets pulumi.BoolInput `pulumi:"preventSecrets"`
+	// Reject commit when it’s not signed through GPG.
+	RejectUnsignedCommits pulumi.BoolInput `pulumi:"rejectUnsignedCommits"`
+}
+
+func (GetProjectPushRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectPushRules)(nil)).Elem()
+}
+
+func (i GetProjectPushRulesArgs) ToGetProjectPushRulesOutput() GetProjectPushRulesOutput {
+	return i.ToGetProjectPushRulesOutputWithContext(context.Background())
+}
+
+func (i GetProjectPushRulesArgs) ToGetProjectPushRulesOutputWithContext(ctx context.Context) GetProjectPushRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectPushRulesOutput)
+}
+
+type GetProjectPushRulesOutput struct{ *pulumi.OutputState }
+
+func (GetProjectPushRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectPushRules)(nil)).Elem()
+}
+
+func (o GetProjectPushRulesOutput) ToGetProjectPushRulesOutput() GetProjectPushRulesOutput {
+	return o
+}
+
+func (o GetProjectPushRulesOutput) ToGetProjectPushRulesOutputWithContext(ctx context.Context) GetProjectPushRulesOutput {
+	return o
+}
+
+// All commit author emails must match this regex, e.g. `@my-company.com$`.
+func (o GetProjectPushRulesOutput) AuthorEmailRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectPushRules) string { return v.AuthorEmailRegex }).(pulumi.StringOutput)
+}
+
+// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+func (o GetProjectPushRulesOutput) BranchNameRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectPushRules) string { return v.BranchNameRegex }).(pulumi.StringOutput)
+}
+
+// Users can only push commits to this repository that were committed with one of their own verified emails.
+func (o GetProjectPushRulesOutput) CommitCommitterCheck() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectPushRules) bool { return v.CommitCommitterCheck }).(pulumi.BoolOutput)
+}
+
+// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+func (o GetProjectPushRulesOutput) CommitMessageNegativeRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectPushRules) string { return v.CommitMessageNegativeRegex }).(pulumi.StringOutput)
+}
+
+// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+func (o GetProjectPushRulesOutput) CommitMessageRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectPushRules) string { return v.CommitMessageRegex }).(pulumi.StringOutput)
+}
+
+// Deny deleting a tag.
+func (o GetProjectPushRulesOutput) DenyDeleteTag() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectPushRules) bool { return v.DenyDeleteTag }).(pulumi.BoolOutput)
+}
+
+// All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+func (o GetProjectPushRulesOutput) FileNameRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectPushRules) string { return v.FileNameRegex }).(pulumi.StringOutput)
+}
+
+// Maximum file size (MB).
+func (o GetProjectPushRulesOutput) MaxFileSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectPushRules) int { return v.MaxFileSize }).(pulumi.IntOutput)
+}
+
+// Restrict commits by author (email) to existing GitLab users.
+func (o GetProjectPushRulesOutput) MemberCheck() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectPushRules) bool { return v.MemberCheck }).(pulumi.BoolOutput)
+}
+
+// GitLab will reject any files that are likely to contain secrets.
+func (o GetProjectPushRulesOutput) PreventSecrets() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectPushRules) bool { return v.PreventSecrets }).(pulumi.BoolOutput)
+}
+
+// Reject commit when it’s not signed through GPG.
+func (o GetProjectPushRulesOutput) RejectUnsignedCommits() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectPushRules) bool { return v.RejectUnsignedCommits }).(pulumi.BoolOutput)
 }
 
 type GetProjectsProject struct {
@@ -171,6 +676,7 @@ type GetProjectsProject struct {
 	OnlyMirrorProtectedBranches               bool                        `pulumi:"onlyMirrorProtectedBranches"`
 	OpenIssuesCount                           int                         `pulumi:"openIssuesCount"`
 	Owner                                     GetProjectsProjectOwner     `pulumi:"owner"`
+	PackagesEnabled                           bool                        `pulumi:"packagesEnabled"`
 	Path                                      string                      `pulumi:"path"`
 	// In `group/subgroup/project` or `user/project` format.
 	PathWithNamespace string                        `pulumi:"pathWithNamespace"`
@@ -252,6 +758,7 @@ type GetProjectsProjectArgs struct {
 	OnlyMirrorProtectedBranches               pulumi.BoolInput                 `pulumi:"onlyMirrorProtectedBranches"`
 	OpenIssuesCount                           pulumi.IntInput                  `pulumi:"openIssuesCount"`
 	Owner                                     GetProjectsProjectOwnerInput     `pulumi:"owner"`
+	PackagesEnabled                           pulumi.BoolInput                 `pulumi:"packagesEnabled"`
 	Path                                      pulumi.StringInput               `pulumi:"path"`
 	// In `group/subgroup/project` or `user/project` format.
 	PathWithNamespace pulumi.StringInput                 `pulumi:"pathWithNamespace"`
@@ -475,6 +982,10 @@ func (o GetProjectsProjectOutput) OpenIssuesCount() pulumi.IntOutput {
 
 func (o GetProjectsProjectOutput) Owner() GetProjectsProjectOwnerOutput {
 	return o.ApplyT(func(v GetProjectsProject) GetProjectsProjectOwner { return v.Owner }).(GetProjectsProjectOwnerOutput)
+}
+
+func (o GetProjectsProjectOutput) PackagesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectsProject) bool { return v.PackagesEnabled }).(pulumi.BoolOutput)
 }
 
 func (o GetProjectsProjectOutput) Path() pulumi.StringOutput {
@@ -1330,8 +1841,11 @@ func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
 }
 
 func init() {
-	pulumi.RegisterOutputType(ProjectSharedWithGroupOutput{})
-	pulumi.RegisterOutputType(ProjectSharedWithGroupArrayOutput{})
+	pulumi.RegisterOutputType(ProjectPushRulesOutput{})
+	pulumi.RegisterOutputType(ProjectPushRulesPtrOutput{})
+	pulumi.RegisterOutputType(GetGroupMembershipMemberOutput{})
+	pulumi.RegisterOutputType(GetGroupMembershipMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectPushRulesOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectForkedFromProjectOutput{})

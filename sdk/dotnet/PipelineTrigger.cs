@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
+    /// ## # gitlab\_pipeline\_trigger
+    /// 
     /// This resource allows you to create and manage pipeline triggers
     /// 
     /// ## Example Usage

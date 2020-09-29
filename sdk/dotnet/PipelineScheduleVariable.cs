@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
+    /// ## # gitlab\_pipeline\_schedule\_variable
+    /// 
     /// This resource allows you to create and manage variables for pipeline schedules.
     /// 
     /// ## Example Usage
