@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -32,8 +32,8 @@ class GetUserResult:
         if can_create_project and not isinstance(can_create_project, bool):
             raise TypeError("Expected argument 'can_create_project' to be a bool")
         pulumi.set(__self__, "can_create_project", can_create_project)
-        if color_scheme_id and not isinstance(color_scheme_id, float):
-            raise TypeError("Expected argument 'color_scheme_id' to be a float")
+        if color_scheme_id and not isinstance(color_scheme_id, int):
+            raise TypeError("Expected argument 'color_scheme_id' to be a int")
         pulumi.set(__self__, "color_scheme_id", color_scheme_id)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
@@ -71,8 +71,8 @@ class GetUserResult:
         if organization and not isinstance(organization, str):
             raise TypeError("Expected argument 'organization' to be a str")
         pulumi.set(__self__, "organization", organization)
-        if projects_limit and not isinstance(projects_limit, float):
-            raise TypeError("Expected argument 'projects_limit' to be a float")
+        if projects_limit and not isinstance(projects_limit, int):
+            raise TypeError("Expected argument 'projects_limit' to be a int")
         pulumi.set(__self__, "projects_limit", projects_limit)
         if skype and not isinstance(skype, str):
             raise TypeError("Expected argument 'skype' to be a str")
@@ -80,8 +80,8 @@ class GetUserResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
-        if theme_id and not isinstance(theme_id, float):
-            raise TypeError("Expected argument 'theme_id' to be a float")
+        if theme_id and not isinstance(theme_id, int):
+            raise TypeError("Expected argument 'theme_id' to be a int")
         pulumi.set(__self__, "theme_id", theme_id)
         if twitter and not isinstance(twitter, str):
             raise TypeError("Expected argument 'twitter' to be a str")
@@ -89,8 +89,8 @@ class GetUserResult:
         if two_factor_enabled and not isinstance(two_factor_enabled, bool):
             raise TypeError("Expected argument 'two_factor_enabled' to be a bool")
         pulumi.set(__self__, "two_factor_enabled", two_factor_enabled)
-        if user_id and not isinstance(user_id, float):
-            raise TypeError("Expected argument 'user_id' to be a float")
+        if user_id and not isinstance(user_id, int):
+            raise TypeError("Expected argument 'user_id' to be a int")
         pulumi.set(__self__, "user_id", user_id)
         if user_provider and not isinstance(user_provider, str):
             raise TypeError("Expected argument 'user_provider' to be a str")
@@ -136,7 +136,7 @@ class GetUserResult:
 
     @property
     @pulumi.getter(name="colorSchemeId")
-    def color_scheme_id(self) -> float:
+    def color_scheme_id(self) -> int:
         """
         User's color scheme ID.
         """
@@ -240,7 +240,7 @@ class GetUserResult:
 
     @property
     @pulumi.getter(name="projectsLimit")
-    def projects_limit(self) -> float:
+    def projects_limit(self) -> int:
         """
         Number of projects the user can create.
         """
@@ -264,7 +264,7 @@ class GetUserResult:
 
     @property
     @pulumi.getter(name="themeId")
-    def theme_id(self) -> float:
+    def theme_id(self) -> int:
         """
         User's theme ID.
         """
@@ -288,7 +288,7 @@ class GetUserResult:
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> float:
+    def user_id(self) -> int:
         return pulumi.get(self, "user_id")
 
     @property
@@ -352,7 +352,7 @@ class AwaitableGetUserResult(GetUserResult):
 
 
 def get_user(email: Optional[str] = None,
-             user_id: Optional[float] = None,
+             user_id: Optional[int] = None,
              username: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
@@ -371,7 +371,7 @@ def get_user(email: Optional[str] = None,
 
 
     :param str email: The e-mail address of the user. (Requires administrator privileges)
-    :param float user_id: The ID of the user.
+    :param int user_id: The ID of the user.
     :param str username: The username of the user.
     """
     __args__ = dict()

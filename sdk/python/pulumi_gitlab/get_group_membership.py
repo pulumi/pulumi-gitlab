@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -27,8 +27,8 @@ class GetGroupMembershipResult:
         if full_path and not isinstance(full_path, str):
             raise TypeError("Expected argument 'full_path' to be a str")
         pulumi.set(__self__, "full_path", full_path)
-        if group_id and not isinstance(group_id, float):
-            raise TypeError("Expected argument 'group_id' to be a float")
+        if group_id and not isinstance(group_id, int):
+            raise TypeError("Expected argument 'group_id' to be a int")
         pulumi.set(__self__, "group_id", group_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -52,7 +52,7 @@ class GetGroupMembershipResult:
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> float:
+    def group_id(self) -> int:
         return pulumi.get(self, "group_id")
 
     @property
@@ -65,7 +65,7 @@ class GetGroupMembershipResult:
 
     @property
     @pulumi.getter
-    def members(self) -> List['outputs.GetGroupMembershipMemberResult']:
+    def members(self) -> Sequence['outputs.GetGroupMembershipMemberResult']:
         """
         The list of group members.
         """
@@ -87,7 +87,7 @@ class AwaitableGetGroupMembershipResult(GetGroupMembershipResult):
 
 def get_group_membership(access_level: Optional[str] = None,
                          full_path: Optional[str] = None,
-                         group_id: Optional[float] = None,
+                         group_id: Optional[int] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupMembershipResult:
     """
     ## # gitlab\_group\_membership
@@ -117,7 +117,7 @@ def get_group_membership(access_level: Optional[str] = None,
 
     :param str access_level: Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
     :param str full_path: The full path of the group.
-    :param float group_id: The ID of the group.
+    :param int group_id: The ID of the group.
     """
     __args__ = dict()
     __args__['accessLevel'] = access_level

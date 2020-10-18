@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -33,8 +33,8 @@ class GetProjectResult:
         if http_url_to_repo and not isinstance(http_url_to_repo, str):
             raise TypeError("Expected argument 'http_url_to_repo' to be a str")
         pulumi.set(__self__, "http_url_to_repo", http_url_to_repo)
-        if id and not isinstance(id, float):
-            raise TypeError("Expected argument 'id' to be a float")
+        if id and not isinstance(id, int):
+            raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
         if issues_enabled and not isinstance(issues_enabled, bool):
             raise TypeError("Expected argument 'issues_enabled' to be a bool")
@@ -48,8 +48,8 @@ class GetProjectResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if namespace_id and not isinstance(namespace_id, float):
-            raise TypeError("Expected argument 'namespace_id' to be a float")
+        if namespace_id and not isinstance(namespace_id, int):
+            raise TypeError("Expected argument 'namespace_id' to be a int")
         pulumi.set(__self__, "namespace_id", namespace_id)
         if path and not isinstance(path, str):
             raise TypeError("Expected argument 'path' to be a str")
@@ -123,7 +123,7 @@ class GetProjectResult:
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         """
         Integer that uniquely identifies the project within the gitlab install.
         """
@@ -160,7 +160,7 @@ class GetProjectResult:
 
     @property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> float:
+    def namespace_id(self) -> int:
         """
         The namespace (group or user) of the project. Defaults to your user.
         See `Group` for an example.
@@ -292,7 +292,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             wiki_enabled=self.wiki_enabled)
 
 
-def get_project(id: Optional[float] = None,
+def get_project(id: Optional[int] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
     ## # gitlab\_project
@@ -309,7 +309,7 @@ def get_project(id: Optional[float] = None,
     ```
 
 
-    :param float id: The integer that uniquely identifies the project within the gitlab install.
+    :param int id: The integer that uniquely identifies the project within the gitlab install.
     """
     __args__ = dict()
     __args__['id'] = id

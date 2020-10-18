@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Group']
@@ -21,14 +21,14 @@ class Group(pulumi.CustomResource):
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
                  mentions_disabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent_id: Optional[pulumi.Input[float]] = None,
+                 parent_id: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  project_creation_level: Optional[pulumi.Input[str]] = None,
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
                  share_with_group_lock: Optional[pulumi.Input[bool]] = None,
                  subgroup_creation_level: Optional[pulumi.Input[str]] = None,
-                 two_factor_grace_period: Optional[pulumi.Input[float]] = None,
+                 two_factor_grace_period: Optional[pulumi.Input[int]] = None,
                  visibility_level: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -46,7 +46,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[bool] mentions_disabled: Boolean, defaults to false.  Disable the capability
                of a group from getting mentioned
         :param pulumi.Input[str] name: The name of this group.
-        :param pulumi.Input[float] parent_id: Integer, id of the parent group (creates a nested group).
+        :param pulumi.Input[int] parent_id: Integer, id of the parent group (creates a nested group).
         :param pulumi.Input[str] path: The path of the group.
         :param pulumi.Input[str] project_creation_level: , defaults to Maintainer.
                Determine if developers can create projects
@@ -61,7 +61,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] subgroup_creation_level: , defaults to Owner.
                Allowed to create subgroups.
                Can be owner (Owners), or maintainer (Maintainers).
-        :param pulumi.Input[float] two_factor_grace_period: Int, defaults to 48.
+        :param pulumi.Input[int] two_factor_grace_period: Int, defaults to 48.
                Time before Two-factor authentication is enforced (in hours).
         :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
         """
@@ -121,7 +121,7 @@ class Group(pulumi.CustomResource):
             lfs_enabled: Optional[pulumi.Input[bool]] = None,
             mentions_disabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            parent_id: Optional[pulumi.Input[float]] = None,
+            parent_id: Optional[pulumi.Input[int]] = None,
             path: Optional[pulumi.Input[str]] = None,
             project_creation_level: Optional[pulumi.Input[str]] = None,
             request_access_enabled: Optional[pulumi.Input[bool]] = None,
@@ -129,7 +129,7 @@ class Group(pulumi.CustomResource):
             runners_token: Optional[pulumi.Input[str]] = None,
             share_with_group_lock: Optional[pulumi.Input[bool]] = None,
             subgroup_creation_level: Optional[pulumi.Input[str]] = None,
-            two_factor_grace_period: Optional[pulumi.Input[float]] = None,
+            two_factor_grace_period: Optional[pulumi.Input[int]] = None,
             visibility_level: Optional[pulumi.Input[str]] = None,
             web_url: Optional[pulumi.Input[str]] = None) -> 'Group':
         """
@@ -150,7 +150,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[bool] mentions_disabled: Boolean, defaults to false.  Disable the capability
                of a group from getting mentioned
         :param pulumi.Input[str] name: The name of this group.
-        :param pulumi.Input[float] parent_id: Integer, id of the parent group (creates a nested group).
+        :param pulumi.Input[int] parent_id: Integer, id of the parent group (creates a nested group).
         :param pulumi.Input[str] path: The path of the group.
         :param pulumi.Input[str] project_creation_level: , defaults to Maintainer.
                Determine if developers can create projects
@@ -166,7 +166,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] subgroup_creation_level: , defaults to Owner.
                Allowed to create subgroups.
                Can be owner (Owners), or maintainer (Maintainers).
-        :param pulumi.Input[float] two_factor_grace_period: Int, defaults to 48.
+        :param pulumi.Input[int] two_factor_grace_period: Int, defaults to 48.
                Time before Two-factor authentication is enforced (in hours).
         :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
         :param pulumi.Input[str] web_url: Web URL of the group.
@@ -265,7 +265,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="parentId")
-    def parent_id(self) -> pulumi.Output[Optional[float]]:
+    def parent_id(self) -> pulumi.Output[Optional[int]]:
         """
         Integer, id of the parent group (creates a nested group).
         """
@@ -337,7 +337,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="twoFactorGracePeriod")
-    def two_factor_grace_period(self) -> pulumi.Output[Optional[float]]:
+    def two_factor_grace_period(self) -> pulumi.Output[Optional[int]]:
         """
         Int, defaults to 48.
         Time before Two-factor authentication is enforced (in hours).

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -32,7 +32,7 @@ class ProjectPushRules(dict):
                  commit_message_regex: Optional[str] = None,
                  deny_delete_tag: Optional[bool] = None,
                  file_name_regex: Optional[str] = None,
-                 max_file_size: Optional[float] = None,
+                 max_file_size: Optional[int] = None,
                  member_check: Optional[bool] = None,
                  prevent_secrets: Optional[bool] = None,
                  reject_unsigned_commits: Optional[bool] = None):
@@ -44,7 +44,7 @@ class ProjectPushRules(dict):
         :param str commit_message_regex: All commit messages must match this regex, e.g. `Fixed \d+\..*`.
         :param bool deny_delete_tag: Deny deleting a tag.
         :param str file_name_regex: All commited filenames must not match this regex, e.g. `(jar|exe)$`.
-        :param float max_file_size: Maximum file size (MB).
+        :param int max_file_size: Maximum file size (MB).
         :param bool member_check: Restrict commits by author (email) to existing GitLab users.
         :param bool prevent_secrets: GitLab will reject any files that are likely to contain secrets.
         :param bool reject_unsigned_commits: Reject commit when it’s not signed through GPG.
@@ -130,7 +130,7 @@ class ProjectPushRules(dict):
 
     @property
     @pulumi.getter(name="maxFileSize")
-    def max_file_size(self) -> Optional[float]:
+    def max_file_size(self) -> Optional[int]:
         """
         Maximum file size (MB).
         """
@@ -170,7 +170,7 @@ class GetGroupMembershipMemberResult(dict):
                  access_level: str,
                  avatar_url: str,
                  expires_at: str,
-                 id: float,
+                 id: int,
                  name: str,
                  state: str,
                  username: str,
@@ -179,7 +179,7 @@ class GetGroupMembershipMemberResult(dict):
         :param str access_level: Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         :param str avatar_url: The avatar URL of the user.
         :param str expires_at: Expiration date for the group membership.
-        :param float id: The unique id assigned to the user by the gitlab server.
+        :param int id: The unique id assigned to the user by the gitlab server.
         :param str name: The name of the user.
         :param str state: Whether the user is active or blocked.
         :param str username: The username of the user.
@@ -220,7 +220,7 @@ class GetGroupMembershipMemberResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         """
         The unique id assigned to the user by the gitlab server.
         """
@@ -269,7 +269,7 @@ class GetProjectPushRulesResult(dict):
                  commit_message_regex: str,
                  deny_delete_tag: bool,
                  file_name_regex: str,
-                 max_file_size: float,
+                 max_file_size: int,
                  member_check: bool,
                  prevent_secrets: bool,
                  reject_unsigned_commits: bool):
@@ -281,7 +281,7 @@ class GetProjectPushRulesResult(dict):
         :param str commit_message_regex: All commit messages must match this regex, e.g. `Fixed \d+\..*`.
         :param bool deny_delete_tag: Deny deleting a tag.
         :param str file_name_regex: All commited filenames must not match this regex, e.g. `(jar|exe)$`.
-        :param float max_file_size: Maximum file size (MB).
+        :param int max_file_size: Maximum file size (MB).
         :param bool member_check: Restrict commits by author (email) to existing GitLab users.
         :param bool prevent_secrets: GitLab will reject any files that are likely to contain secrets.
         :param bool reject_unsigned_commits: Reject commit when it’s not signed through GPG.
@@ -356,7 +356,7 @@ class GetProjectPushRulesResult(dict):
 
     @property
     @pulumi.getter(name="maxFileSize")
-    def max_file_size(self) -> float:
+    def max_file_size(self) -> int:
         """
         Maximum file size (MB).
         """
@@ -391,20 +391,20 @@ class GetProjectPushRulesResult(dict):
 class GetProjectsProjectResult(dict):
     def __init__(__self__, *,
                  _links: Mapping[str, str],
-                 approvals_before_merge: float,
+                 approvals_before_merge: int,
                  archived: bool,
                  avatar_url: str,
                  ci_config_path: str,
                  container_registry_enabled: bool,
                  created_at: str,
-                 creator_id: float,
-                 custom_attributes: List[Mapping[str, Any]],
+                 creator_id: int,
+                 custom_attributes: Sequence[Mapping[str, Any]],
                  default_branch: str,
                  description: str,
                  forked_from_project: 'outputs.GetProjectsProjectForkedFromProjectResult',
-                 forks_count: float,
+                 forks_count: int,
                  http_url_to_repo: str,
-                 id: float,
+                 id: int,
                  import_error: str,
                  import_status: str,
                  issues_enabled: bool,
@@ -416,14 +416,14 @@ class GetProjectsProjectResult(dict):
                  mirror: bool,
                  mirror_overwrites_diverged_branches: bool,
                  mirror_trigger_builds: bool,
-                 mirror_user_id: float,
+                 mirror_user_id: int,
                  name: str,
                  name_with_namespace: str,
                  namespace: 'outputs.GetProjectsProjectNamespaceResult',
                  only_allow_merge_if_all_discussions_are_resolved: bool,
                  only_allow_merge_if_pipeline_succeeds: bool,
                  only_mirror_protected_branches: bool,
-                 open_issues_count: float,
+                 open_issues_count: int,
                  owner: 'outputs.GetProjectsProjectOwnerResult',
                  packages_enabled: bool,
                  path: str,
@@ -436,28 +436,28 @@ class GetProjectsProjectResult(dict):
                  resolve_outdated_diff_discussions: bool,
                  runners_token: str,
                  shared_runners_enabled: bool,
-                 shared_with_groups: List['outputs.GetProjectsProjectSharedWithGroupResult'],
+                 shared_with_groups: Sequence['outputs.GetProjectsProjectSharedWithGroupResult'],
                  snippets_enabled: bool,
                  ssh_url_to_repo: str,
-                 star_count: float,
-                 statistics: Mapping[str, float],
-                 tag_lists: List[str],
+                 star_count: int,
+                 statistics: Mapping[str, int],
+                 tag_lists: Sequence[str],
                  visibility: str,
                  web_url: str,
                  wiki_enabled: bool):
         """
-        :param float approvals_before_merge: The numbers of approvals needed in a merge requests.
+        :param int approvals_before_merge: The numbers of approvals needed in a merge requests.
         :param bool archived: Limit by archived status.
         :param str http_url_to_repo: The HTTP clone URL of the project.
-        :param float id: The ID of the project.
+        :param int id: The ID of the project.
         :param bool jobs_enabled: Whether pipelines are enabled for the project.
         :param str name: The name of the project.
         :param str name_with_namespace: In `group / subgroup / project` or `user / project` format.
         :param str path_with_namespace: In `group/subgroup/project` or `user/project` format.
         :param bool public: Whether the project is public.
         :param str ssh_url_to_repo: The SSH clone URL of the project.
-        :param Mapping[str, float] statistics: Include project statistics. Cannot be used with `group_id`.
-        :param List[str] tag_lists: A set of the project topics (formerly called "project tags").
+        :param Mapping[str, int] statistics: Include project statistics. Cannot be used with `group_id`.
+        :param Sequence[str] tag_lists: A set of the project topics (formerly called "project tags").
         :param str visibility: Limit by visibility `public`, `internal`, or `private`.
         """
         pulumi.set(__self__, "_links", _links)
@@ -523,7 +523,7 @@ class GetProjectsProjectResult(dict):
 
     @property
     @pulumi.getter(name="approvalsBeforeMerge")
-    def approvals_before_merge(self) -> float:
+    def approvals_before_merge(self) -> int:
         """
         The numbers of approvals needed in a merge requests.
         """
@@ -559,12 +559,12 @@ class GetProjectsProjectResult(dict):
 
     @property
     @pulumi.getter(name="creatorId")
-    def creator_id(self) -> float:
+    def creator_id(self) -> int:
         return pulumi.get(self, "creator_id")
 
     @property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> List[Mapping[str, Any]]:
+    def custom_attributes(self) -> Sequence[Mapping[str, Any]]:
         return pulumi.get(self, "custom_attributes")
 
     @property
@@ -584,7 +584,7 @@ class GetProjectsProjectResult(dict):
 
     @property
     @pulumi.getter(name="forksCount")
-    def forks_count(self) -> float:
+    def forks_count(self) -> int:
         return pulumi.get(self, "forks_count")
 
     @property
@@ -597,7 +597,7 @@ class GetProjectsProjectResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         """
         The ID of the project.
         """
@@ -663,7 +663,7 @@ class GetProjectsProjectResult(dict):
 
     @property
     @pulumi.getter(name="mirrorUserId")
-    def mirror_user_id(self) -> float:
+    def mirror_user_id(self) -> int:
         return pulumi.get(self, "mirror_user_id")
 
     @property
@@ -704,7 +704,7 @@ class GetProjectsProjectResult(dict):
 
     @property
     @pulumi.getter(name="openIssuesCount")
-    def open_issues_count(self) -> float:
+    def open_issues_count(self) -> int:
         return pulumi.get(self, "open_issues_count")
 
     @property
@@ -775,7 +775,7 @@ class GetProjectsProjectResult(dict):
 
     @property
     @pulumi.getter(name="sharedWithGroups")
-    def shared_with_groups(self) -> List['outputs.GetProjectsProjectSharedWithGroupResult']:
+    def shared_with_groups(self) -> Sequence['outputs.GetProjectsProjectSharedWithGroupResult']:
         return pulumi.get(self, "shared_with_groups")
 
     @property
@@ -793,12 +793,12 @@ class GetProjectsProjectResult(dict):
 
     @property
     @pulumi.getter(name="starCount")
-    def star_count(self) -> float:
+    def star_count(self) -> int:
         return pulumi.get(self, "star_count")
 
     @property
     @pulumi.getter
-    def statistics(self) -> Mapping[str, float]:
+    def statistics(self) -> Mapping[str, int]:
         """
         Include project statistics. Cannot be used with `group_id`.
         """
@@ -806,7 +806,7 @@ class GetProjectsProjectResult(dict):
 
     @property
     @pulumi.getter(name="tagLists")
-    def tag_lists(self) -> List[str]:
+    def tag_lists(self) -> Sequence[str]:
         """
         A set of the project topics (formerly called "project tags").
         """
@@ -835,7 +835,7 @@ class GetProjectsProjectResult(dict):
 class GetProjectsProjectForkedFromProjectResult(dict):
     def __init__(__self__, *,
                  http_url_to_repo: str,
-                 id: float,
+                 id: int,
                  name: str,
                  name_with_namespace: str,
                  path: str,
@@ -843,7 +843,7 @@ class GetProjectsProjectForkedFromProjectResult(dict):
                  web_url: str):
         """
         :param str http_url_to_repo: The HTTP clone URL of the project.
-        :param float id: The ID of the project.
+        :param int id: The ID of the project.
         :param str name: The name of the project.
         :param str name_with_namespace: In `group / subgroup / project` or `user / project` format.
         :param str path_with_namespace: In `group/subgroup/project` or `user/project` format.
@@ -866,7 +866,7 @@ class GetProjectsProjectForkedFromProjectResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         """
         The ID of the project.
         """
@@ -911,12 +911,12 @@ class GetProjectsProjectForkedFromProjectResult(dict):
 class GetProjectsProjectNamespaceResult(dict):
     def __init__(__self__, *,
                  full_path: str,
-                 id: float,
+                 id: int,
                  kind: str,
                  name: str,
                  path: str):
         """
-        :param float id: The ID of the project.
+        :param int id: The ID of the project.
         :param str name: The name of the project.
         """
         pulumi.set(__self__, "full_path", full_path)
@@ -932,7 +932,7 @@ class GetProjectsProjectNamespaceResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         """
         The ID of the project.
         """
@@ -961,13 +961,13 @@ class GetProjectsProjectNamespaceResult(dict):
 class GetProjectsProjectOwnerResult(dict):
     def __init__(__self__, *,
                  avatar_url: str,
-                 id: float,
+                 id: int,
                  name: str,
                  state: str,
                  username: str,
                  website_url: str):
         """
-        :param float id: The ID of the project.
+        :param int id: The ID of the project.
         :param str name: The name of the project.
         """
         pulumi.set(__self__, "avatar_url", avatar_url)
@@ -984,7 +984,7 @@ class GetProjectsProjectOwnerResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         """
         The ID of the project.
         """
@@ -1017,19 +1017,19 @@ class GetProjectsProjectOwnerResult(dict):
 @pulumi.output_type
 class GetProjectsProjectPermissionsResult(dict):
     def __init__(__self__, *,
-                 group_access: Mapping[str, float],
-                 project_access: Mapping[str, float]):
+                 group_access: Mapping[str, int],
+                 project_access: Mapping[str, int]):
         pulumi.set(__self__, "group_access", group_access)
         pulumi.set(__self__, "project_access", project_access)
 
     @property
     @pulumi.getter(name="groupAccess")
-    def group_access(self) -> Mapping[str, float]:
+    def group_access(self) -> Mapping[str, int]:
         return pulumi.get(self, "group_access")
 
     @property
     @pulumi.getter(name="projectAccess")
-    def project_access(self) -> Mapping[str, float]:
+    def project_access(self) -> Mapping[str, int]:
         return pulumi.get(self, "project_access")
 
 
@@ -1037,10 +1037,10 @@ class GetProjectsProjectPermissionsResult(dict):
 class GetProjectsProjectSharedWithGroupResult(dict):
     def __init__(__self__, *,
                  group_access_level: str,
-                 group_id: float,
+                 group_id: int,
                  group_name: str):
         """
-        :param float group_id: The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
+        :param int group_id: The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
         """
         pulumi.set(__self__, "group_access_level", group_access_level)
         pulumi.set(__self__, "group_id", group_id)
@@ -1053,7 +1053,7 @@ class GetProjectsProjectSharedWithGroupResult(dict):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> float:
+    def group_id(self) -> int:
         """
         The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
         """
@@ -1072,24 +1072,24 @@ class GetUsersUserResult(dict):
                  bio: str,
                  can_create_group: bool,
                  can_create_project: bool,
-                 color_scheme_id: float,
+                 color_scheme_id: int,
                  created_at: str,
                  current_sign_in_at: str,
                  email: str,
                  extern_uid: str,
                  external: bool,
-                 id: float,
+                 id: int,
                  is_admin: bool,
                  last_sign_in_at: str,
                  linkedin: str,
                  location: str,
                  name: str,
                  organization: str,
-                 projects_limit: float,
+                 projects_limit: int,
                  provider: str,
                  skype: str,
                  state: str,
-                 theme_id: float,
+                 theme_id: int,
                  twitter: str,
                  two_factor_enabled: bool,
                  username: str,
@@ -1099,24 +1099,24 @@ class GetUsersUserResult(dict):
         :param str bio: The bio of the user.
         :param bool can_create_group: Whether the user can create groups.
         :param bool can_create_project: Whether the user can create projects.
-        :param float color_scheme_id: User's color scheme ID.
+        :param int color_scheme_id: User's color scheme ID.
         :param str created_at: Date the user was created at.
         :param str current_sign_in_at: Current user's sign-in date.
         :param str email: The e-mail address of the user.
         :param str extern_uid: Lookup users by external UID. (Requires administrator privileges)
         :param bool external: Whether the user is external.
-        :param float id: The unique id assigned to the user by the gitlab server.
+        :param int id: The unique id assigned to the user by the gitlab server.
         :param bool is_admin: Whether the user is an admin.
         :param str last_sign_in_at: Last user's sign-in date.
         :param str linkedin: Linkedin profile of the user.
         :param str location: The location of the user.
         :param str name: The name of the user.
         :param str organization: The organization of the user.
-        :param float projects_limit: Number of projects the user can create.
+        :param int projects_limit: Number of projects the user can create.
         :param str provider: The UID provider of the user.
         :param str skype: Skype username of the user.
         :param str state: Whether the user is active or blocked.
-        :param float theme_id: User's theme ID.
+        :param int theme_id: User's theme ID.
         :param str twitter: Twitter username of the user.
         :param bool two_factor_enabled: Whether user's two factor auth is enabled.
         :param str username: The username of the user.
@@ -1183,7 +1183,7 @@ class GetUsersUserResult(dict):
 
     @property
     @pulumi.getter(name="colorSchemeId")
-    def color_scheme_id(self) -> float:
+    def color_scheme_id(self) -> int:
         """
         User's color scheme ID.
         """
@@ -1231,7 +1231,7 @@ class GetUsersUserResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         """
         The unique id assigned to the user by the gitlab server.
         """
@@ -1287,7 +1287,7 @@ class GetUsersUserResult(dict):
 
     @property
     @pulumi.getter(name="projectsLimit")
-    def projects_limit(self) -> float:
+    def projects_limit(self) -> int:
         """
         Number of projects the user can create.
         """
@@ -1319,7 +1319,7 @@ class GetUsersUserResult(dict):
 
     @property
     @pulumi.getter(name="themeId")
-    def theme_id(self) -> float:
+    def theme_id(self) -> int:
         """
         User's theme ID.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['ServicePipelinesEmail']
@@ -18,7 +18,7 @@ class ServicePipelinesEmail(pulumi.CustomResource):
                  branches_to_be_notified: Optional[pulumi.Input[str]] = None,
                  notify_only_broken_pipelines: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recipients: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -29,7 +29,7 @@ class ServicePipelinesEmail(pulumi.CustomResource):
         :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
         :param pulumi.Input[bool] notify_only_broken_pipelines: Notify only broken pipelines. Default is true.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[List[pulumi.Input[str]]] recipients: ) email addresses where notifications are sent.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] recipients: ) email addresses where notifications are sent.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -69,7 +69,7 @@ class ServicePipelinesEmail(pulumi.CustomResource):
             branches_to_be_notified: Optional[pulumi.Input[str]] = None,
             notify_only_broken_pipelines: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            recipients: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'ServicePipelinesEmail':
+            recipients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ServicePipelinesEmail':
         """
         Get an existing ServicePipelinesEmail resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -80,7 +80,7 @@ class ServicePipelinesEmail(pulumi.CustomResource):
         :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
         :param pulumi.Input[bool] notify_only_broken_pipelines: Notify only broken pipelines. Default is true.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[List[pulumi.Input[str]]] recipients: ) email addresses where notifications are sent.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] recipients: ) email addresses where notifications are sent.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -118,7 +118,7 @@ class ServicePipelinesEmail(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def recipients(self) -> pulumi.Output[List[str]]:
+    def recipients(self) -> pulumi.Output[Sequence[str]]:
         """
         ) email addresses where notifications are sent.
         """

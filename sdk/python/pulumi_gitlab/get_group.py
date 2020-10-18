@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -29,8 +29,8 @@ class GetGroupResult:
         if full_path and not isinstance(full_path, str):
             raise TypeError("Expected argument 'full_path' to be a str")
         pulumi.set(__self__, "full_path", full_path)
-        if group_id and not isinstance(group_id, float):
-            raise TypeError("Expected argument 'group_id' to be a float")
+        if group_id and not isinstance(group_id, int):
+            raise TypeError("Expected argument 'group_id' to be a int")
         pulumi.set(__self__, "group_id", group_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -41,8 +41,8 @@ class GetGroupResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if parent_id and not isinstance(parent_id, float):
-            raise TypeError("Expected argument 'parent_id' to be a float")
+        if parent_id and not isinstance(parent_id, int):
+            raise TypeError("Expected argument 'parent_id' to be a int")
         pulumi.set(__self__, "parent_id", parent_id)
         if path and not isinstance(path, str):
             raise TypeError("Expected argument 'path' to be a str")
@@ -86,7 +86,7 @@ class GetGroupResult:
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> float:
+    def group_id(self) -> int:
         return pulumi.get(self, "group_id")
 
     @property
@@ -115,7 +115,7 @@ class GetGroupResult:
 
     @property
     @pulumi.getter(name="parentId")
-    def parent_id(self) -> float:
+    def parent_id(self) -> int:
         """
         Integer, ID of the parent group.
         """
@@ -184,7 +184,7 @@ class AwaitableGetGroupResult(GetGroupResult):
 
 
 def get_group(full_path: Optional[str] = None,
-              group_id: Optional[float] = None,
+              group_id: Optional[int] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
     ## # gitlab\_group
@@ -213,7 +213,7 @@ def get_group(full_path: Optional[str] = None,
 
 
     :param str full_path: The full path of the group.
-    :param float group_id: The ID of the group.
+    :param int group_id: The ID of the group.
     """
     __args__ = dict()
     __args__['fullPath'] = full_path
