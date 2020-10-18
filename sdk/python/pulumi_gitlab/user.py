@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['User']
@@ -21,7 +21,7 @@ class User(pulumi.CustomResource):
                  is_external: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 projects_limit: Optional[pulumi.Input[float]] = None,
+                 projects_limit: Optional[pulumi.Input[int]] = None,
                  reset_password: Optional[pulumi.Input[bool]] = None,
                  skip_confirmation: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -39,7 +39,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
         :param pulumi.Input[str] password: The password of the user.
-        :param pulumi.Input[float] projects_limit: Integer, defaults to 0.  Number of projects user can create.
+        :param pulumi.Input[int] projects_limit: Integer, defaults to 0.  Number of projects user can create.
         :param pulumi.Input[bool] reset_password: Boolean, defaults to false. Send user password reset link.
         :param pulumi.Input[bool] skip_confirmation: Boolean, defaults to true. Whether to skip confirmation.
         :param pulumi.Input[str] username: The username of the user.
@@ -91,7 +91,7 @@ class User(pulumi.CustomResource):
             is_external: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
-            projects_limit: Optional[pulumi.Input[float]] = None,
+            projects_limit: Optional[pulumi.Input[int]] = None,
             reset_password: Optional[pulumi.Input[bool]] = None,
             skip_confirmation: Optional[pulumi.Input[bool]] = None,
             username: Optional[pulumi.Input[str]] = None) -> 'User':
@@ -109,7 +109,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
         :param pulumi.Input[str] password: The password of the user.
-        :param pulumi.Input[float] projects_limit: Integer, defaults to 0.  Number of projects user can create.
+        :param pulumi.Input[int] projects_limit: Integer, defaults to 0.  Number of projects user can create.
         :param pulumi.Input[bool] reset_password: Boolean, defaults to false. Send user password reset link.
         :param pulumi.Input[bool] skip_confirmation: Boolean, defaults to true. Whether to skip confirmation.
         :param pulumi.Input[str] username: The username of the user.
@@ -181,7 +181,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectsLimit")
-    def projects_limit(self) -> pulumi.Output[Optional[float]]:
+    def projects_limit(self) -> pulumi.Output[Optional[int]]:
         """
         Integer, defaults to 0.  Number of projects user can create.
         """

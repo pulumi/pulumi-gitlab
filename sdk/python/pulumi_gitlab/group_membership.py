@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['GroupMembership']
@@ -18,7 +18,7 @@ class GroupMembership(pulumi.CustomResource):
                  access_level: Optional[pulumi.Input[str]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 user_id: Optional[pulumi.Input[float]] = None,
+                 user_id: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -45,7 +45,7 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.Input[str] access_level: Acceptable values are: guest, reporter, developer, maintainer, owner.
         :param pulumi.Input[str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[str] group_id: The id of the group.
-        :param pulumi.Input[float] user_id: The id of the user.
+        :param pulumi.Input[int] user_id: The id of the user.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,7 +87,7 @@ class GroupMembership(pulumi.CustomResource):
             access_level: Optional[pulumi.Input[str]] = None,
             expires_at: Optional[pulumi.Input[str]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
-            user_id: Optional[pulumi.Input[float]] = None) -> 'GroupMembership':
+            user_id: Optional[pulumi.Input[int]] = None) -> 'GroupMembership':
         """
         Get an existing GroupMembership resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -98,7 +98,7 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.Input[str] access_level: Acceptable values are: guest, reporter, developer, maintainer, owner.
         :param pulumi.Input[str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[str] group_id: The id of the group.
-        :param pulumi.Input[float] user_id: The id of the user.
+        :param pulumi.Input[int] user_id: The id of the user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -136,7 +136,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> pulumi.Output[float]:
+    def user_id(self) -> pulumi.Output[int]:
         """
         The id of the user.
         """

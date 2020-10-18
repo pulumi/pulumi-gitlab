@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -113,7 +113,7 @@ class GetUsersResult:
 
     @property
     @pulumi.getter
-    def users(self) -> List['outputs.GetUsersUserResult']:
+    def users(self) -> Sequence['outputs.GetUsersUserResult']:
         """
         The list of users.
         """

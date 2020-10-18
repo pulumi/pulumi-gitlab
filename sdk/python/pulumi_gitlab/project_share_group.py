@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['ProjectShareGroup']
@@ -16,7 +16,7 @@ class ProjectShareGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[str]] = None,
-                 group_id: Optional[pulumi.Input[float]] = None,
+                 group_id: Optional[pulumi.Input[int]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -41,7 +41,7 @@ class ProjectShareGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: One of five levels of access to the project.
-        :param pulumi.Input[float] group_id: The id of the group.
+        :param pulumi.Input[int] group_id: The id of the group.
         :param pulumi.Input[str] project_id: The id of the project.
         """
         if __name__ is not None:
@@ -81,7 +81,7 @@ class ProjectShareGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_level: Optional[pulumi.Input[str]] = None,
-            group_id: Optional[pulumi.Input[float]] = None,
+            group_id: Optional[pulumi.Input[int]] = None,
             project_id: Optional[pulumi.Input[str]] = None) -> 'ProjectShareGroup':
         """
         Get an existing ProjectShareGroup resource's state with the given name, id, and optional extra
@@ -91,7 +91,7 @@ class ProjectShareGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: One of five levels of access to the project.
-        :param pulumi.Input[float] group_id: The id of the group.
+        :param pulumi.Input[int] group_id: The id of the group.
         :param pulumi.Input[str] project_id: The id of the project.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -113,7 +113,7 @@ class ProjectShareGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> pulumi.Output[float]:
+    def group_id(self) -> pulumi.Output[int]:
         """
         The id of the group.
         """

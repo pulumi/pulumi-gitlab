@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['ProjectLevelMrApprovals']
@@ -18,7 +18,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
                  disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[bool]] = None,
                  merge_requests_author_approval: Optional[pulumi.Input[bool]] = None,
                  merge_requests_disable_committers_approval: Optional[pulumi.Input[bool]] = None,
-                 project_id: Optional[pulumi.Input[float]] = None,
+                 project_id: Optional[pulumi.Input[int]] = None,
                  reset_approvals_on_push: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
                  __name__=None,
@@ -32,7 +32,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
         :param pulumi.Input[bool] merge_requests_author_approval: Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
                also need to be included in the approvers list in order to be able to approve their merge request. Default is `false`.
         :param pulumi.Input[bool] merge_requests_disable_committers_approval: Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
-        :param pulumi.Input[float] project_id: The ID of the project to change MR approval configuration.
+        :param pulumi.Input[int] project_id: The ID of the project to change MR approval configuration.
         :param pulumi.Input[bool] reset_approvals_on_push: Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
         """
         if __name__ is not None:
@@ -72,7 +72,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
             disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[bool]] = None,
             merge_requests_author_approval: Optional[pulumi.Input[bool]] = None,
             merge_requests_disable_committers_approval: Optional[pulumi.Input[bool]] = None,
-            project_id: Optional[pulumi.Input[float]] = None,
+            project_id: Optional[pulumi.Input[int]] = None,
             reset_approvals_on_push: Optional[pulumi.Input[bool]] = None) -> 'ProjectLevelMrApprovals':
         """
         Get an existing ProjectLevelMrApprovals resource's state with the given name, id, and optional extra
@@ -86,7 +86,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
         :param pulumi.Input[bool] merge_requests_author_approval: Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
                also need to be included in the approvers list in order to be able to approve their merge request. Default is `false`.
         :param pulumi.Input[bool] merge_requests_disable_committers_approval: Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
-        :param pulumi.Input[float] project_id: The ID of the project to change MR approval configuration.
+        :param pulumi.Input[int] project_id: The ID of the project to change MR approval configuration.
         :param pulumi.Input[bool] reset_approvals_on_push: Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -128,7 +128,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Output[float]:
+    def project_id(self) -> pulumi.Output[int]:
         """
         The ID of the project to change MR approval configuration.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['ProjectMembership']
@@ -17,7 +17,7 @@ class ProjectMembership(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 user_id: Optional[pulumi.Input[float]] = None,
+                 user_id: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -42,7 +42,7 @@ class ProjectMembership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: One of five levels of access to the project.
         :param pulumi.Input[str] project_id: The id of the project.
-        :param pulumi.Input[float] user_id: The id of the user.
+        :param pulumi.Input[int] user_id: The id of the user.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -82,7 +82,7 @@ class ProjectMembership(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_level: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            user_id: Optional[pulumi.Input[float]] = None) -> 'ProjectMembership':
+            user_id: Optional[pulumi.Input[int]] = None) -> 'ProjectMembership':
         """
         Get an existing ProjectMembership resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -92,7 +92,7 @@ class ProjectMembership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: One of five levels of access to the project.
         :param pulumi.Input[str] project_id: The id of the project.
-        :param pulumi.Input[float] user_id: The id of the user.
+        :param pulumi.Input[int] user_id: The id of the user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -121,7 +121,7 @@ class ProjectMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> pulumi.Output[float]:
+    def user_id(self) -> pulumi.Output[int]:
         """
         The id of the user.
         """

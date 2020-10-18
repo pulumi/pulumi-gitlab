@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -24,8 +24,8 @@ class GetProjectsResult:
         if archived and not isinstance(archived, bool):
             raise TypeError("Expected argument 'archived' to be a bool")
         pulumi.set(__self__, "archived", archived)
-        if group_id and not isinstance(group_id, float):
-            raise TypeError("Expected argument 'group_id' to be a float")
+        if group_id and not isinstance(group_id, int):
+            raise TypeError("Expected argument 'group_id' to be a int")
         pulumi.set(__self__, "group_id", group_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -33,14 +33,14 @@ class GetProjectsResult:
         if include_subgroups and not isinstance(include_subgroups, bool):
             raise TypeError("Expected argument 'include_subgroups' to be a bool")
         pulumi.set(__self__, "include_subgroups", include_subgroups)
-        if max_queryable_pages and not isinstance(max_queryable_pages, float):
-            raise TypeError("Expected argument 'max_queryable_pages' to be a float")
+        if max_queryable_pages and not isinstance(max_queryable_pages, int):
+            raise TypeError("Expected argument 'max_queryable_pages' to be a int")
         pulumi.set(__self__, "max_queryable_pages", max_queryable_pages)
         if membership and not isinstance(membership, bool):
             raise TypeError("Expected argument 'membership' to be a bool")
         pulumi.set(__self__, "membership", membership)
-        if min_access_level and not isinstance(min_access_level, float):
-            raise TypeError("Expected argument 'min_access_level' to be a float")
+        if min_access_level and not isinstance(min_access_level, int):
+            raise TypeError("Expected argument 'min_access_level' to be a int")
         pulumi.set(__self__, "min_access_level", min_access_level)
         if order_by and not isinstance(order_by, str):
             raise TypeError("Expected argument 'order_by' to be a str")
@@ -48,11 +48,11 @@ class GetProjectsResult:
         if owned and not isinstance(owned, bool):
             raise TypeError("Expected argument 'owned' to be a bool")
         pulumi.set(__self__, "owned", owned)
-        if page and not isinstance(page, float):
-            raise TypeError("Expected argument 'page' to be a float")
+        if page and not isinstance(page, int):
+            raise TypeError("Expected argument 'page' to be a int")
         pulumi.set(__self__, "page", page)
-        if per_page and not isinstance(per_page, float):
-            raise TypeError("Expected argument 'per_page' to be a float")
+        if per_page and not isinstance(per_page, int):
+            raise TypeError("Expected argument 'per_page' to be a int")
         pulumi.set(__self__, "per_page", per_page)
         if projects and not isinstance(projects, list):
             raise TypeError("Expected argument 'projects' to be a list")
@@ -98,7 +98,7 @@ class GetProjectsResult:
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[float]:
+    def group_id(self) -> Optional[int]:
         return pulumi.get(self, "group_id")
 
     @property
@@ -116,7 +116,7 @@ class GetProjectsResult:
 
     @property
     @pulumi.getter(name="maxQueryablePages")
-    def max_queryable_pages(self) -> Optional[float]:
+    def max_queryable_pages(self) -> Optional[int]:
         return pulumi.get(self, "max_queryable_pages")
 
     @property
@@ -126,7 +126,7 @@ class GetProjectsResult:
 
     @property
     @pulumi.getter(name="minAccessLevel")
-    def min_access_level(self) -> Optional[float]:
+    def min_access_level(self) -> Optional[int]:
         return pulumi.get(self, "min_access_level")
 
     @property
@@ -141,17 +141,17 @@ class GetProjectsResult:
 
     @property
     @pulumi.getter
-    def page(self) -> Optional[float]:
+    def page(self) -> Optional[int]:
         return pulumi.get(self, "page")
 
     @property
     @pulumi.getter(name="perPage")
-    def per_page(self) -> Optional[float]:
+    def per_page(self) -> Optional[int]:
         return pulumi.get(self, "per_page")
 
     @property
     @pulumi.getter
-    def projects(self) -> List['outputs.GetProjectsProjectResult']:
+    def projects(self) -> Sequence['outputs.GetProjectsProjectResult']:
         """
         A list containing the projects matching the supplied arguments
         """
@@ -248,15 +248,15 @@ class AwaitableGetProjectsResult(GetProjectsResult):
 
 
 def get_projects(archived: Optional[bool] = None,
-                 group_id: Optional[float] = None,
+                 group_id: Optional[int] = None,
                  include_subgroups: Optional[bool] = None,
-                 max_queryable_pages: Optional[float] = None,
+                 max_queryable_pages: Optional[int] = None,
                  membership: Optional[bool] = None,
-                 min_access_level: Optional[float] = None,
+                 min_access_level: Optional[int] = None,
                  order_by: Optional[str] = None,
                  owned: Optional[bool] = None,
-                 page: Optional[float] = None,
-                 per_page: Optional[float] = None,
+                 page: Optional[int] = None,
+                 per_page: Optional[int] = None,
                  search: Optional[str] = None,
                  simple: Optional[bool] = None,
                  sort: Optional[str] = None,
@@ -301,11 +301,11 @@ def get_projects(archived: Optional[bool] = None,
 
 
     :param bool archived: Limit by archived status.
-    :param float group_id: The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
+    :param int group_id: The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
     :param bool include_subgroups: Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
-    :param float max_queryable_pages: Prevents overloading your Gitlab instance in case of a misconfiguration. Default is `10`.
+    :param int max_queryable_pages: Prevents overloading your Gitlab instance in case of a misconfiguration. Default is `10`.
     :param bool membership: Limit by projects that the current user is a member of.
-    :param float min_access_level: Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `group_id`.
+    :param int min_access_level: Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `group_id`.
     :param str order_by: Return projects ordered by `id`, `name`, `path`, `created_at`, `updated_at`, or `last_activity_at` fields. Default is `created_at`.
     :param bool owned: Limit by projects owned by the current user.
     :param str search: Return list of authorized projects matching the search criteria.

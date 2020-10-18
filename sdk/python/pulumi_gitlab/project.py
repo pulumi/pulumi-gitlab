@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,12 +17,12 @@ class Project(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approvals_before_merge: Optional[pulumi.Input[float]] = None,
+                 approvals_before_merge: Optional[pulumi.Input[int]] = None,
                  archived: Optional[pulumi.Input[bool]] = None,
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 group_with_project_templates_id: Optional[pulumi.Input[float]] = None,
+                 group_with_project_templates_id: Optional[pulumi.Input[int]] = None,
                  import_url: Optional[pulumi.Input[str]] = None,
                  initialize_with_readme: Optional[pulumi.Input[bool]] = None,
                  issues_enabled: Optional[pulumi.Input[bool]] = None,
@@ -30,7 +30,7 @@ class Project(pulumi.CustomResource):
                  merge_method: Optional[pulumi.Input[str]] = None,
                  merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 namespace_id: Optional[pulumi.Input[float]] = None,
+                 namespace_id: Optional[pulumi.Input[int]] = None,
                  only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
                  only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[bool]] = None,
                  packages_enabled: Optional[pulumi.Input[bool]] = None,
@@ -41,9 +41,9 @@ class Project(pulumi.CustomResource):
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
                  snippets_enabled: Optional[pulumi.Input[bool]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
-                 template_project_id: Optional[pulumi.Input[float]] = None,
+                 template_project_id: Optional[pulumi.Input[int]] = None,
                  use_custom_template: Optional[pulumi.Input[bool]] = None,
                  visibility_level: Optional[pulumi.Input[str]] = None,
                  wiki_enabled: Optional[pulumi.Input[bool]] = None,
@@ -54,12 +54,12 @@ class Project(pulumi.CustomResource):
         Create a Project resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
+        :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
-        :param pulumi.Input[float] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
         :param pulumi.Input[str] import_url: Git URL to a repository to be imported.
         :param pulumi.Input[bool] initialize_with_readme: Create master branch with first commit containing a README.md file.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
@@ -69,7 +69,7 @@ class Project(pulumi.CustomResource):
                Repositories are created with `merge` by default
         :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
         :param pulumi.Input[str] name: The name of the project.
-        :param pulumi.Input[float] namespace_id: The namespace (group or user) of the project. Defaults to your user.
+        :param pulumi.Input[int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
                See `Group` for an example.
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
@@ -81,9 +81,9 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: Tags (topics) of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags (topics) of the project.
         :param pulumi.Input[str] template_name: When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
-        :param pulumi.Input[float] template_project_id: When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        :param pulumi.Input[int] template_project_id: When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
         :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public project.
                Valid values are `private`, `internal`, `public`.
@@ -152,12 +152,12 @@ class Project(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            approvals_before_merge: Optional[pulumi.Input[float]] = None,
+            approvals_before_merge: Optional[pulumi.Input[int]] = None,
             archived: Optional[pulumi.Input[bool]] = None,
             container_registry_enabled: Optional[pulumi.Input[bool]] = None,
             default_branch: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            group_with_project_templates_id: Optional[pulumi.Input[float]] = None,
+            group_with_project_templates_id: Optional[pulumi.Input[int]] = None,
             http_url_to_repo: Optional[pulumi.Input[str]] = None,
             import_url: Optional[pulumi.Input[str]] = None,
             initialize_with_readme: Optional[pulumi.Input[bool]] = None,
@@ -166,7 +166,7 @@ class Project(pulumi.CustomResource):
             merge_method: Optional[pulumi.Input[str]] = None,
             merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            namespace_id: Optional[pulumi.Input[float]] = None,
+            namespace_id: Optional[pulumi.Input[int]] = None,
             only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
             only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[bool]] = None,
             packages_enabled: Optional[pulumi.Input[bool]] = None,
@@ -180,9 +180,9 @@ class Project(pulumi.CustomResource):
             shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
             snippets_enabled: Optional[pulumi.Input[bool]] = None,
             ssh_url_to_repo: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template_name: Optional[pulumi.Input[str]] = None,
-            template_project_id: Optional[pulumi.Input[float]] = None,
+            template_project_id: Optional[pulumi.Input[int]] = None,
             use_custom_template: Optional[pulumi.Input[bool]] = None,
             visibility_level: Optional[pulumi.Input[str]] = None,
             web_url: Optional[pulumi.Input[str]] = None,
@@ -194,12 +194,12 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
+        :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
-        :param pulumi.Input[float] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
         :param pulumi.Input[str] http_url_to_repo: URL that can be provided to `git clone` to clone the
                repository via HTTP.
         :param pulumi.Input[str] import_url: Git URL to a repository to be imported.
@@ -211,7 +211,7 @@ class Project(pulumi.CustomResource):
                Repositories are created with `merge` by default
         :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
         :param pulumi.Input[str] name: The name of the project.
-        :param pulumi.Input[float] namespace_id: The namespace (group or user) of the project. Defaults to your user.
+        :param pulumi.Input[int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
                See `Group` for an example.
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
@@ -227,9 +227,9 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
         :param pulumi.Input[str] ssh_url_to_repo: URL that can be provided to `git clone` to clone the
                repository via SSH.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: Tags (topics) of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags (topics) of the project.
         :param pulumi.Input[str] template_name: When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
-        :param pulumi.Input[float] template_project_id: When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        :param pulumi.Input[int] template_project_id: When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
         :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public project.
                Valid values are `private`, `internal`, `public`.
@@ -280,7 +280,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="approvalsBeforeMerge")
-    def approvals_before_merge(self) -> pulumi.Output[Optional[float]]:
+    def approvals_before_merge(self) -> pulumi.Output[Optional[int]]:
         """
         Number of merge request approvals required for merging. Default is 0.
         """
@@ -320,7 +320,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupWithProjectTemplatesId")
-    def group_with_project_templates_id(self) -> pulumi.Output[Optional[float]]:
+    def group_with_project_templates_id(self) -> pulumi.Output[Optional[int]]:
         """
         For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
         """
@@ -395,7 +395,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> pulumi.Output[float]:
+    def namespace_id(self) -> pulumi.Output[int]:
         """
         The namespace (group or user) of the project. Defaults to your user.
         See `Group` for an example.
@@ -509,7 +509,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Tags (topics) of the project.
         """
@@ -525,7 +525,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateProjectId")
-    def template_project_id(self) -> pulumi.Output[Optional[float]]:
+    def template_project_id(self) -> pulumi.Output[Optional[int]]:
         """
         When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
         """

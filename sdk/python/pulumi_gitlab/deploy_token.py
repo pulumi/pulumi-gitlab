@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['DeployToken']
@@ -19,7 +19,7 @@ class DeployToken(pulumi.CustomResource):
                  group: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 scopes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -63,7 +63,7 @@ class DeployToken(pulumi.CustomResource):
         :param pulumi.Input[str] name: A name to describe the deploy token with.
         :param pulumi.Input[str] project: The name or id of the project to add the deploy token to.
                Either `project` or `group` must be set.
-        :param pulumi.Input[List[pulumi.Input[str]]] scopes: Valid values: `read_repository`, `read_registry`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Valid values: `read_repository`, `read_registry`.
         :param pulumi.Input[str] username: A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
         """
         if __name__ is not None:
@@ -106,7 +106,7 @@ class DeployToken(pulumi.CustomResource):
             group: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            scopes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             token: Optional[pulumi.Input[str]] = None,
             username: Optional[pulumi.Input[str]] = None) -> 'DeployToken':
         """
@@ -121,7 +121,7 @@ class DeployToken(pulumi.CustomResource):
         :param pulumi.Input[str] name: A name to describe the deploy token with.
         :param pulumi.Input[str] project: The name or id of the project to add the deploy token to.
                Either `project` or `group` must be set.
-        :param pulumi.Input[List[pulumi.Input[str]]] scopes: Valid values: `read_repository`, `read_registry`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Valid values: `read_repository`, `read_registry`.
         :param pulumi.Input[str] token: The secret token. This is only populated when creating a new deploy token.
         :param pulumi.Input[str] username: A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
         """
@@ -171,7 +171,7 @@ class DeployToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def scopes(self) -> pulumi.Output[List[str]]:
+    def scopes(self) -> pulumi.Output[Sequence[str]]:
         """
         Valid values: `read_repository`, `read_registry`.
         """

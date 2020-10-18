@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -22,7 +22,7 @@ class ProjectPushRulesArgs:
                  commit_message_regex: Optional[pulumi.Input[str]] = None,
                  deny_delete_tag: Optional[pulumi.Input[bool]] = None,
                  file_name_regex: Optional[pulumi.Input[str]] = None,
-                 max_file_size: Optional[pulumi.Input[float]] = None,
+                 max_file_size: Optional[pulumi.Input[int]] = None,
                  member_check: Optional[pulumi.Input[bool]] = None,
                  prevent_secrets: Optional[pulumi.Input[bool]] = None,
                  reject_unsigned_commits: Optional[pulumi.Input[bool]] = None):
@@ -34,7 +34,7 @@ class ProjectPushRulesArgs:
         :param pulumi.Input[str] commit_message_regex: All commit messages must match this regex, e.g. `Fixed \d+\..*`.
         :param pulumi.Input[bool] deny_delete_tag: Deny deleting a tag.
         :param pulumi.Input[str] file_name_regex: All commited filenames must not match this regex, e.g. `(jar|exe)$`.
-        :param pulumi.Input[float] max_file_size: Maximum file size (MB).
+        :param pulumi.Input[int] max_file_size: Maximum file size (MB).
         :param pulumi.Input[bool] member_check: Restrict commits by author (email) to existing GitLab users.
         :param pulumi.Input[bool] prevent_secrets: GitLab will reject any files that are likely to contain secrets.
         :param pulumi.Input[bool] reject_unsigned_commits: Reject commit when it’s not signed through GPG.
@@ -148,14 +148,14 @@ class ProjectPushRulesArgs:
 
     @property
     @pulumi.getter(name="maxFileSize")
-    def max_file_size(self) -> Optional[pulumi.Input[float]]:
+    def max_file_size(self) -> Optional[pulumi.Input[int]]:
         """
         Maximum file size (MB).
         """
         return pulumi.get(self, "max_file_size")
 
     @max_file_size.setter
-    def max_file_size(self, value: Optional[pulumi.Input[float]]):
+    def max_file_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_file_size", value)
 
     @property

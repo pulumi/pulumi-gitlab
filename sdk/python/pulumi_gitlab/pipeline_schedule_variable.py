@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['PipelineScheduleVariable']
@@ -16,7 +16,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key: Optional[pulumi.Input[str]] = None,
-                 pipeline_schedule_id: Optional[pulumi.Input[float]] = None,
+                 pipeline_schedule_id: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -48,7 +48,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key: Name of the variable.
-        :param pulumi.Input[float] pipeline_schedule_id: The id of the pipeline schedule.
+        :param pulumi.Input[int] pipeline_schedule_id: The id of the pipeline schedule.
         :param pulumi.Input[str] project: The id of the project to add the schedule to.
         :param pulumi.Input[str] value: Value of the variable.
         """
@@ -92,7 +92,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             key: Optional[pulumi.Input[str]] = None,
-            pipeline_schedule_id: Optional[pulumi.Input[float]] = None,
+            pipeline_schedule_id: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             value: Optional[pulumi.Input[str]] = None) -> 'PipelineScheduleVariable':
         """
@@ -103,7 +103,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key: Name of the variable.
-        :param pulumi.Input[float] pipeline_schedule_id: The id of the pipeline schedule.
+        :param pulumi.Input[int] pipeline_schedule_id: The id of the pipeline schedule.
         :param pulumi.Input[str] project: The id of the project to add the schedule to.
         :param pulumi.Input[str] value: Value of the variable.
         """
@@ -127,7 +127,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pipelineScheduleId")
-    def pipeline_schedule_id(self) -> pulumi.Output[float]:
+    def pipeline_schedule_id(self) -> pulumi.Output[int]:
         """
         The id of the pipeline schedule.
         """

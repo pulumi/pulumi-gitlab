@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['ProjectMirror']
@@ -86,7 +86,7 @@ class ProjectMirror(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             keep_divergent_refs: Optional[pulumi.Input[bool]] = None,
-            mirror_id: Optional[pulumi.Input[float]] = None,
+            mirror_id: Optional[pulumi.Input[int]] = None,
             only_protected_branches: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'ProjectMirror':
@@ -133,7 +133,7 @@ class ProjectMirror(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mirrorId")
-    def mirror_id(self) -> pulumi.Output[float]:
+    def mirror_id(self) -> pulumi.Output[int]:
         return pulumi.get(self, "mirror_id")
 
     @property
