@@ -1,5 +1,5 @@
 ## HEAD (Unreleased)
-_(none)_
+* Improving the accuracy of previews leading to a more accurate understanding of what will actually change rather than assuming all output properties will change
 
 ---
 
