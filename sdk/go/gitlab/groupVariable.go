@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -41,6 +42,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// GitLab group variables can be imported using an id made up of `groupid:variablename`, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key
 // ```
 type GroupVariable struct {
 	pulumi.CustomResourceState
@@ -157,4 +166,43 @@ type GroupVariableArgs struct {
 
 func (GroupVariableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupVariableArgs)(nil)).Elem()
+}
+
+type GroupVariableInput interface {
+	pulumi.Input
+
+	ToGroupVariableOutput() GroupVariableOutput
+	ToGroupVariableOutputWithContext(ctx context.Context) GroupVariableOutput
+}
+
+func (GroupVariable) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupVariable)(nil)).Elem()
+}
+
+func (i GroupVariable) ToGroupVariableOutput() GroupVariableOutput {
+	return i.ToGroupVariableOutputWithContext(context.Background())
+}
+
+func (i GroupVariable) ToGroupVariableOutputWithContext(ctx context.Context) GroupVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupVariableOutput)
+}
+
+type GroupVariableOutput struct {
+	*pulumi.OutputState
+}
+
+func (GroupVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupVariableOutput)(nil)).Elem()
+}
+
+func (o GroupVariableOutput) ToGroupVariableOutput() GroupVariableOutput {
+	return o
+}
+
+func (o GroupVariableOutput) ToGroupVariableOutputWithContext(ctx context.Context) GroupVariableOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GroupVariableOutput{})
 }

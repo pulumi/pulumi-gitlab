@@ -45,6 +45,14 @@ class GroupVariable(pulumi.CustomResource):
             value="group_variable_value")
         ```
 
+        ## Import
+
+        GitLab group variables can be imported using an id made up of `groupid:variablename`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group: The name or id of the group to add the hook to.

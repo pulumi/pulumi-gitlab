@@ -41,6 +41,14 @@ class GroupLdapLink(pulumi.CustomResource):
             ldap_provider="ldapmain")
         ```
 
+        ## Import
+
+        GitLab group ldap links can be imported using an id made up of `ldap_provider:cn`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test "ldapmain:testuser"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: Acceptable values are: guest, reporter, developer, maintainer, owner.

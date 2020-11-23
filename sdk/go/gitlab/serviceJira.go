@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -175,4 +176,43 @@ type ServiceJiraArgs struct {
 
 func (ServiceJiraArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceJiraArgs)(nil)).Elem()
+}
+
+type ServiceJiraInput interface {
+	pulumi.Input
+
+	ToServiceJiraOutput() ServiceJiraOutput
+	ToServiceJiraOutputWithContext(ctx context.Context) ServiceJiraOutput
+}
+
+func (ServiceJira) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceJira)(nil)).Elem()
+}
+
+func (i ServiceJira) ToServiceJiraOutput() ServiceJiraOutput {
+	return i.ToServiceJiraOutputWithContext(context.Background())
+}
+
+func (i ServiceJira) ToServiceJiraOutputWithContext(ctx context.Context) ServiceJiraOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceJiraOutput)
+}
+
+type ServiceJiraOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceJiraOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceJiraOutput)(nil)).Elem()
+}
+
+func (o ServiceJiraOutput) ToServiceJiraOutput() ServiceJiraOutput {
+	return o
+}
+
+func (o ServiceJiraOutput) ToServiceJiraOutputWithContext(ctx context.Context) ServiceJiraOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServiceJiraOutput{})
 }

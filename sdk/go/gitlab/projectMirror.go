@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -36,6 +37,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/projectMirror:ProjectMirror foo "12345:1337"
 // ```
 type ProjectMirror struct {
 	pulumi.CustomResourceState
@@ -147,4 +156,43 @@ type ProjectMirrorArgs struct {
 
 func (ProjectMirrorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectMirrorArgs)(nil)).Elem()
+}
+
+type ProjectMirrorInput interface {
+	pulumi.Input
+
+	ToProjectMirrorOutput() ProjectMirrorOutput
+	ToProjectMirrorOutputWithContext(ctx context.Context) ProjectMirrorOutput
+}
+
+func (ProjectMirror) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectMirror)(nil)).Elem()
+}
+
+func (i ProjectMirror) ToProjectMirrorOutput() ProjectMirrorOutput {
+	return i.ToProjectMirrorOutputWithContext(context.Background())
+}
+
+func (i ProjectMirror) ToProjectMirrorOutputWithContext(ctx context.Context) ProjectMirrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectMirrorOutput)
+}
+
+type ProjectMirrorOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectMirrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectMirrorOutput)(nil)).Elem()
+}
+
+func (o ProjectMirrorOutput) ToProjectMirrorOutput() ProjectMirrorOutput {
+	return o
+}
+
+func (o ProjectMirrorOutput) ToProjectMirrorOutputWithContext(ctx context.Context) ProjectMirrorOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectMirrorOutput{})
 }

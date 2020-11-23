@@ -51,6 +51,14 @@ class DeployKeyEnable(pulumi.CustomResource):
             project=foo_project.id)
         ```
 
+        ## Import
+
+        GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_id: The Gitlab key id for the pre-existing deploy key

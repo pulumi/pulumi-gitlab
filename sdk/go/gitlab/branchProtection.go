@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -152,4 +153,43 @@ type BranchProtectionArgs struct {
 
 func (BranchProtectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*branchProtectionArgs)(nil)).Elem()
+}
+
+type BranchProtectionInput interface {
+	pulumi.Input
+
+	ToBranchProtectionOutput() BranchProtectionOutput
+	ToBranchProtectionOutputWithContext(ctx context.Context) BranchProtectionOutput
+}
+
+func (BranchProtection) ElementType() reflect.Type {
+	return reflect.TypeOf((*BranchProtection)(nil)).Elem()
+}
+
+func (i BranchProtection) ToBranchProtectionOutput() BranchProtectionOutput {
+	return i.ToBranchProtectionOutputWithContext(context.Background())
+}
+
+func (i BranchProtection) ToBranchProtectionOutputWithContext(ctx context.Context) BranchProtectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BranchProtectionOutput)
+}
+
+type BranchProtectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (BranchProtectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BranchProtectionOutput)(nil)).Elem()
+}
+
+func (o BranchProtectionOutput) ToBranchProtectionOutput() BranchProtectionOutput {
+	return o
+}
+
+func (o BranchProtectionOutput) ToBranchProtectionOutputWithContext(ctx context.Context) BranchProtectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BranchProtectionOutput{})
 }

@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -50,6 +51,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/projectCluster:ProjectCluster bar 123:321
 // ```
 type ProjectCluster struct {
 	pulumi.CustomResourceState
@@ -243,4 +252,43 @@ type ProjectClusterArgs struct {
 
 func (ProjectClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectClusterArgs)(nil)).Elem()
+}
+
+type ProjectClusterInput interface {
+	pulumi.Input
+
+	ToProjectClusterOutput() ProjectClusterOutput
+	ToProjectClusterOutputWithContext(ctx context.Context) ProjectClusterOutput
+}
+
+func (ProjectCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectCluster)(nil)).Elem()
+}
+
+func (i ProjectCluster) ToProjectClusterOutput() ProjectClusterOutput {
+	return i.ToProjectClusterOutputWithContext(context.Background())
+}
+
+func (i ProjectCluster) ToProjectClusterOutputWithContext(ctx context.Context) ProjectClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectClusterOutput)
+}
+
+type ProjectClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectClusterOutput)(nil)).Elem()
+}
+
+func (o ProjectClusterOutput) ToProjectClusterOutput() ProjectClusterOutput {
+	return o
+}
+
+func (o ProjectClusterOutput) ToProjectClusterOutputWithContext(ctx context.Context) ProjectClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectClusterOutput{})
 }

@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -51,6 +52,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/groupCluster:GroupCluster bar 123:321
 // ```
 type GroupCluster struct {
 	pulumi.CustomResourceState
@@ -234,4 +243,43 @@ type GroupClusterArgs struct {
 
 func (GroupClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupClusterArgs)(nil)).Elem()
+}
+
+type GroupClusterInput interface {
+	pulumi.Input
+
+	ToGroupClusterOutput() GroupClusterOutput
+	ToGroupClusterOutputWithContext(ctx context.Context) GroupClusterOutput
+}
+
+func (GroupCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupCluster)(nil)).Elem()
+}
+
+func (i GroupCluster) ToGroupClusterOutput() GroupClusterOutput {
+	return i.ToGroupClusterOutputWithContext(context.Background())
+}
+
+func (i GroupCluster) ToGroupClusterOutputWithContext(ctx context.Context) GroupClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupClusterOutput)
+}
+
+type GroupClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (GroupClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupClusterOutput)(nil)).Elem()
+}
+
+func (o GroupClusterOutput) ToGroupClusterOutput() GroupClusterOutput {
+	return o
+}
+
+func (o GroupClusterOutput) ToGroupClusterOutputWithContext(ctx context.Context) GroupClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GroupClusterOutput{})
 }

@@ -25,6 +25,14 @@ import * as utilities from "./utilities";
  *     value: "group_variable_value",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * GitLab group variables can be imported using an id made up of `groupid:variablename`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key
+ * ```
  */
 export class GroupVariable extends pulumi.CustomResource {
     /**

@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -37,6 +38,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/deployKey:DeployKey test 1:3
 // ```
 type DeployKey struct {
 	pulumi.CustomResourceState
@@ -138,4 +147,43 @@ type DeployKeyArgs struct {
 
 func (DeployKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*deployKeyArgs)(nil)).Elem()
+}
+
+type DeployKeyInput interface {
+	pulumi.Input
+
+	ToDeployKeyOutput() DeployKeyOutput
+	ToDeployKeyOutputWithContext(ctx context.Context) DeployKeyOutput
+}
+
+func (DeployKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployKey)(nil)).Elem()
+}
+
+func (i DeployKey) ToDeployKeyOutput() DeployKeyOutput {
+	return i.ToDeployKeyOutputWithContext(context.Background())
+}
+
+func (i DeployKey) ToDeployKeyOutputWithContext(ctx context.Context) DeployKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployKeyOutput)
+}
+
+type DeployKeyOutput struct {
+	*pulumi.OutputState
+}
+
+func (DeployKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployKeyOutput)(nil)).Elem()
+}
+
+func (o DeployKeyOutput) ToDeployKeyOutput() DeployKeyOutput {
+	return o
+}
+
+func (o DeployKeyOutput) ToDeployKeyOutputWithContext(ctx context.Context) DeployKeyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DeployKeyOutput{})
 }

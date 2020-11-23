@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -310,4 +311,43 @@ type ServiceSlackArgs struct {
 
 func (ServiceSlackArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceSlackArgs)(nil)).Elem()
+}
+
+type ServiceSlackInput interface {
+	pulumi.Input
+
+	ToServiceSlackOutput() ServiceSlackOutput
+	ToServiceSlackOutputWithContext(ctx context.Context) ServiceSlackOutput
+}
+
+func (ServiceSlack) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceSlack)(nil)).Elem()
+}
+
+func (i ServiceSlack) ToServiceSlackOutput() ServiceSlackOutput {
+	return i.ToServiceSlackOutputWithContext(context.Background())
+}
+
+func (i ServiceSlack) ToServiceSlackOutputWithContext(ctx context.Context) ServiceSlackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSlackOutput)
+}
+
+type ServiceSlackOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceSlackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceSlackOutput)(nil)).Elem()
+}
+
+func (o ServiceSlackOutput) ToServiceSlackOutput() ServiceSlackOutput {
+	return o
+}
+
+func (o ServiceSlackOutput) ToServiceSlackOutputWithContext(ctx context.Context) ServiceSlackOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServiceSlackOutput{})
 }

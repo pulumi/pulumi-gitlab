@@ -23,6 +23,14 @@ import * as utilities from "./utilities";
  *     group: "example",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/groupLabel:GroupLabel example 12345:fixme
+ * ```
  */
 export class GroupLabel extends pulumi.CustomResource {
     /**

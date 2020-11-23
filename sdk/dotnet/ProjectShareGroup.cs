@@ -34,6 +34,14 @@ namespace Pulumi.GitLab
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gitlab:index/projectShareGroup:ProjectShareGroup test 12345:1337
+    /// ```
     /// </summary>
     public partial class ProjectShareGroup : Pulumi.CustomResource
     {

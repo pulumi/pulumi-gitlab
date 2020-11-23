@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -117,4 +118,43 @@ type ServiceGithubArgs struct {
 
 func (ServiceGithubArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceGithubArgs)(nil)).Elem()
+}
+
+type ServiceGithubInput interface {
+	pulumi.Input
+
+	ToServiceGithubOutput() ServiceGithubOutput
+	ToServiceGithubOutputWithContext(ctx context.Context) ServiceGithubOutput
+}
+
+func (ServiceGithub) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceGithub)(nil)).Elem()
+}
+
+func (i ServiceGithub) ToServiceGithubOutput() ServiceGithubOutput {
+	return i.ToServiceGithubOutputWithContext(context.Background())
+}
+
+func (i ServiceGithub) ToServiceGithubOutputWithContext(ctx context.Context) ServiceGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceGithubOutput)
+}
+
+type ServiceGithubOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceGithubOutput)(nil)).Elem()
+}
+
+func (o ServiceGithubOutput) ToServiceGithubOutput() ServiceGithubOutput {
+	return o
+}
+
+func (o ServiceGithubOutput) ToServiceGithubOutputWithContext(ctx context.Context) ServiceGithubOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServiceGithubOutput{})
 }

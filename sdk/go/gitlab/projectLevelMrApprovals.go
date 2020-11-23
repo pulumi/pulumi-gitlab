@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -124,4 +125,43 @@ type ProjectLevelMrApprovalsArgs struct {
 
 func (ProjectLevelMrApprovalsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectLevelMrApprovalsArgs)(nil)).Elem()
+}
+
+type ProjectLevelMrApprovalsInput interface {
+	pulumi.Input
+
+	ToProjectLevelMrApprovalsOutput() ProjectLevelMrApprovalsOutput
+	ToProjectLevelMrApprovalsOutputWithContext(ctx context.Context) ProjectLevelMrApprovalsOutput
+}
+
+func (ProjectLevelMrApprovals) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectLevelMrApprovals)(nil)).Elem()
+}
+
+func (i ProjectLevelMrApprovals) ToProjectLevelMrApprovalsOutput() ProjectLevelMrApprovalsOutput {
+	return i.ToProjectLevelMrApprovalsOutputWithContext(context.Background())
+}
+
+func (i ProjectLevelMrApprovals) ToProjectLevelMrApprovalsOutputWithContext(ctx context.Context) ProjectLevelMrApprovalsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectLevelMrApprovalsOutput)
+}
+
+type ProjectLevelMrApprovalsOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectLevelMrApprovalsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectLevelMrApprovalsOutput)(nil)).Elem()
+}
+
+func (o ProjectLevelMrApprovalsOutput) ToProjectLevelMrApprovalsOutput() ProjectLevelMrApprovalsOutput {
+	return o
+}
+
+func (o ProjectLevelMrApprovalsOutput) ToProjectLevelMrApprovalsOutputWithContext(ctx context.Context) ProjectLevelMrApprovalsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectLevelMrApprovalsOutput{})
 }
