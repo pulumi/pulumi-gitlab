@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -193,4 +194,43 @@ type DeployTokenArgs struct {
 
 func (DeployTokenArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*deployTokenArgs)(nil)).Elem()
+}
+
+type DeployTokenInput interface {
+	pulumi.Input
+
+	ToDeployTokenOutput() DeployTokenOutput
+	ToDeployTokenOutputWithContext(ctx context.Context) DeployTokenOutput
+}
+
+func (DeployToken) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployToken)(nil)).Elem()
+}
+
+func (i DeployToken) ToDeployTokenOutput() DeployTokenOutput {
+	return i.ToDeployTokenOutputWithContext(context.Background())
+}
+
+func (i DeployToken) ToDeployTokenOutputWithContext(ctx context.Context) DeployTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployTokenOutput)
+}
+
+type DeployTokenOutput struct {
+	*pulumi.OutputState
+}
+
+func (DeployTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployTokenOutput)(nil)).Elem()
+}
+
+func (o DeployTokenOutput) ToDeployTokenOutput() DeployTokenOutput {
+	return o
+}
+
+func (o DeployTokenOutput) ToDeployTokenOutputWithContext(ctx context.Context) DeployTokenOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DeployTokenOutput{})
 }

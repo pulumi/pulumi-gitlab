@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -39,6 +40,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/groupLabel:GroupLabel example 12345:fixme
 // ```
 type GroupLabel struct {
 	pulumi.CustomResourceState
@@ -137,4 +146,43 @@ type GroupLabelArgs struct {
 
 func (GroupLabelArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupLabelArgs)(nil)).Elem()
+}
+
+type GroupLabelInput interface {
+	pulumi.Input
+
+	ToGroupLabelOutput() GroupLabelOutput
+	ToGroupLabelOutputWithContext(ctx context.Context) GroupLabelOutput
+}
+
+func (GroupLabel) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupLabel)(nil)).Elem()
+}
+
+func (i GroupLabel) ToGroupLabelOutput() GroupLabelOutput {
+	return i.ToGroupLabelOutputWithContext(context.Background())
+}
+
+func (i GroupLabel) ToGroupLabelOutputWithContext(ctx context.Context) GroupLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupLabelOutput)
+}
+
+type GroupLabelOutput struct {
+	*pulumi.OutputState
+}
+
+func (GroupLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupLabelOutput)(nil)).Elem()
+}
+
+func (o GroupLabelOutput) ToGroupLabelOutput() GroupLabelOutput {
+	return o
+}
+
+func (o GroupLabelOutput) ToGroupLabelOutputWithContext(ctx context.Context) GroupLabelOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GroupLabelOutput{})
 }

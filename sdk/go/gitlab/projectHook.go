@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -222,4 +223,43 @@ type ProjectHookArgs struct {
 
 func (ProjectHookArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectHookArgs)(nil)).Elem()
+}
+
+type ProjectHookInput interface {
+	pulumi.Input
+
+	ToProjectHookOutput() ProjectHookOutput
+	ToProjectHookOutputWithContext(ctx context.Context) ProjectHookOutput
+}
+
+func (ProjectHook) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectHook)(nil)).Elem()
+}
+
+func (i ProjectHook) ToProjectHookOutput() ProjectHookOutput {
+	return i.ToProjectHookOutputWithContext(context.Background())
+}
+
+func (i ProjectHook) ToProjectHookOutputWithContext(ctx context.Context) ProjectHookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectHookOutput)
+}
+
+type ProjectHookOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectHookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectHookOutput)(nil)).Elem()
+}
+
+func (o ProjectHookOutput) ToProjectHookOutput() ProjectHookOutput {
+	return o
+}
+
+func (o ProjectHookOutput) ToProjectHookOutputWithContext(ctx context.Context) ProjectHookOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectHookOutput{})
 }

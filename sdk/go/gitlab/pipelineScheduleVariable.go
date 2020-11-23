@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -151,4 +152,43 @@ type PipelineScheduleVariableArgs struct {
 
 func (PipelineScheduleVariableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineScheduleVariableArgs)(nil)).Elem()
+}
+
+type PipelineScheduleVariableInput interface {
+	pulumi.Input
+
+	ToPipelineScheduleVariableOutput() PipelineScheduleVariableOutput
+	ToPipelineScheduleVariableOutputWithContext(ctx context.Context) PipelineScheduleVariableOutput
+}
+
+func (PipelineScheduleVariable) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScheduleVariable)(nil)).Elem()
+}
+
+func (i PipelineScheduleVariable) ToPipelineScheduleVariableOutput() PipelineScheduleVariableOutput {
+	return i.ToPipelineScheduleVariableOutputWithContext(context.Background())
+}
+
+func (i PipelineScheduleVariable) ToPipelineScheduleVariableOutputWithContext(ctx context.Context) PipelineScheduleVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScheduleVariableOutput)
+}
+
+type PipelineScheduleVariableOutput struct {
+	*pulumi.OutputState
+}
+
+func (PipelineScheduleVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScheduleVariableOutput)(nil)).Elem()
+}
+
+func (o PipelineScheduleVariableOutput) ToPipelineScheduleVariableOutput() PipelineScheduleVariableOutput {
+	return o
+}
+
+func (o PipelineScheduleVariableOutput) ToPipelineScheduleVariableOutputWithContext(ctx context.Context) PipelineScheduleVariableOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PipelineScheduleVariableOutput{})
 }

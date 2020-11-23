@@ -38,6 +38,14 @@ class ProjectMembership(pulumi.CustomResource):
             user_id=1337)
         ```
 
+        ## Import
+
+        GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/projectMembership:ProjectMembership test "12345:1337"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: One of five levels of access to the project.

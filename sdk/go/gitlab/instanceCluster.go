@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -45,6 +46,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// GitLab instance clusters can be imported using a `clusterid`, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/instanceCluster:InstanceCluster bar 123
 // ```
 type InstanceCluster struct {
 	pulumi.CustomResourceState
@@ -225,4 +234,43 @@ type InstanceClusterArgs struct {
 
 func (InstanceClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceClusterArgs)(nil)).Elem()
+}
+
+type InstanceClusterInput interface {
+	pulumi.Input
+
+	ToInstanceClusterOutput() InstanceClusterOutput
+	ToInstanceClusterOutputWithContext(ctx context.Context) InstanceClusterOutput
+}
+
+func (InstanceCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCluster)(nil)).Elem()
+}
+
+func (i InstanceCluster) ToInstanceClusterOutput() InstanceClusterOutput {
+	return i.ToInstanceClusterOutputWithContext(context.Background())
+}
+
+func (i InstanceCluster) ToInstanceClusterOutputWithContext(ctx context.Context) InstanceClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterOutput)
+}
+
+type InstanceClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceClusterOutput)(nil)).Elem()
+}
+
+func (o InstanceClusterOutput) ToInstanceClusterOutput() InstanceClusterOutput {
+	return o
+}
+
+func (o InstanceClusterOutput) ToInstanceClusterOutputWithContext(ctx context.Context) InstanceClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceClusterOutput{})
 }

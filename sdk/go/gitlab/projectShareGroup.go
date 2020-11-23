@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -37,6 +38,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/projectShareGroup:ProjectShareGroup test 12345:1337
 // ```
 type ProjectShareGroup struct {
 	pulumi.CustomResourceState
@@ -128,4 +137,43 @@ type ProjectShareGroupArgs struct {
 
 func (ProjectShareGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectShareGroupArgs)(nil)).Elem()
+}
+
+type ProjectShareGroupInput interface {
+	pulumi.Input
+
+	ToProjectShareGroupOutput() ProjectShareGroupOutput
+	ToProjectShareGroupOutputWithContext(ctx context.Context) ProjectShareGroupOutput
+}
+
+func (ProjectShareGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectShareGroup)(nil)).Elem()
+}
+
+func (i ProjectShareGroup) ToProjectShareGroupOutput() ProjectShareGroupOutput {
+	return i.ToProjectShareGroupOutputWithContext(context.Background())
+}
+
+func (i ProjectShareGroup) ToProjectShareGroupOutputWithContext(ctx context.Context) ProjectShareGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectShareGroupOutput)
+}
+
+type ProjectShareGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectShareGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectShareGroupOutput)(nil)).Elem()
+}
+
+func (o ProjectShareGroupOutput) ToProjectShareGroupOutput() ProjectShareGroupOutput {
+	return o
+}
+
+func (o ProjectShareGroupOutput) ToProjectShareGroupOutputWithContext(ctx context.Context) ProjectShareGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectShareGroupOutput{})
 }

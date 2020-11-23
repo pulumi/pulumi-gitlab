@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -45,6 +46,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/projectVariable:ProjectVariable example '12345:project_variable_key:*'
 // ```
 type ProjectVariable struct {
 	pulumi.CustomResourceState
@@ -176,4 +185,43 @@ type ProjectVariableArgs struct {
 
 func (ProjectVariableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectVariableArgs)(nil)).Elem()
+}
+
+type ProjectVariableInput interface {
+	pulumi.Input
+
+	ToProjectVariableOutput() ProjectVariableOutput
+	ToProjectVariableOutputWithContext(ctx context.Context) ProjectVariableOutput
+}
+
+func (ProjectVariable) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectVariable)(nil)).Elem()
+}
+
+func (i ProjectVariable) ToProjectVariableOutput() ProjectVariableOutput {
+	return i.ToProjectVariableOutputWithContext(context.Background())
+}
+
+func (i ProjectVariable) ToProjectVariableOutputWithContext(ctx context.Context) ProjectVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectVariableOutput)
+}
+
+type ProjectVariableOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectVariableOutput)(nil)).Elem()
+}
+
+func (o ProjectVariableOutput) ToProjectVariableOutput() ProjectVariableOutput {
+	return o
+}
+
+func (o ProjectVariableOutput) ToProjectVariableOutputWithContext(ctx context.Context) ProjectVariableOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectVariableOutput{})
 }

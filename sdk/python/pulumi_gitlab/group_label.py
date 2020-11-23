@@ -41,6 +41,14 @@ class GroupLabel(pulumi.CustomResource):
             group="example")
         ```
 
+        ## Import
+
+        Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/groupLabel:GroupLabel example 12345:fixme
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).

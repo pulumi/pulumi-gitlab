@@ -29,6 +29,14 @@ import * as utilities from "./utilities";
  *     value: "project_variable_value",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/projectVariable:ProjectVariable example '12345:project_variable_key:*'
+ * ```
  */
 export class ProjectVariable extends pulumi.CustomResource {
     /**

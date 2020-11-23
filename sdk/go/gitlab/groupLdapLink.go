@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -38,6 +39,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// GitLab group ldap links can be imported using an id made up of `ldap_provider:cn`, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test "ldapmain:testuser"
 // ```
 type GroupLdapLink struct {
 	pulumi.CustomResourceState
@@ -147,4 +156,43 @@ type GroupLdapLinkArgs struct {
 
 func (GroupLdapLinkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupLdapLinkArgs)(nil)).Elem()
+}
+
+type GroupLdapLinkInput interface {
+	pulumi.Input
+
+	ToGroupLdapLinkOutput() GroupLdapLinkOutput
+	ToGroupLdapLinkOutputWithContext(ctx context.Context) GroupLdapLinkOutput
+}
+
+func (GroupLdapLink) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupLdapLink)(nil)).Elem()
+}
+
+func (i GroupLdapLink) ToGroupLdapLinkOutput() GroupLdapLinkOutput {
+	return i.ToGroupLdapLinkOutputWithContext(context.Background())
+}
+
+func (i GroupLdapLink) ToGroupLdapLinkOutputWithContext(ctx context.Context) GroupLdapLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupLdapLinkOutput)
+}
+
+type GroupLdapLinkOutput struct {
+	*pulumi.OutputState
+}
+
+func (GroupLdapLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupLdapLinkOutput)(nil)).Elem()
+}
+
+func (o GroupLdapLinkOutput) ToGroupLdapLinkOutput() GroupLdapLinkOutput {
+	return o
+}
+
+func (o GroupLdapLinkOutput) ToGroupLdapLinkOutputWithContext(ctx context.Context) GroupLdapLinkOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GroupLdapLinkOutput{})
 }

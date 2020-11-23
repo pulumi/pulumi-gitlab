@@ -57,6 +57,14 @@ class ProjectCluster(pulumi.CustomResource):
             project=foo.id)
         ```
 
+        ## Import
+
+        GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/projectCluster:ProjectCluster bar 123:321
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The base domain of the cluster.

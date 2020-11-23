@@ -98,7 +98,7 @@ class ServiceSlack(pulumi.CustomResource):
             __props__['note_events'] = note_events
             __props__['notify_only_broken_pipelines'] = notify_only_broken_pipelines
             if notify_only_default_branch is not None:
-                warnings.warn("use 'branches_to_be_notified' argument instead", DeprecationWarning)
+                warnings.warn("""use 'branches_to_be_notified' argument instead""", DeprecationWarning)
                 pulumi.log.warn("notify_only_default_branch is deprecated: use 'branches_to_be_notified' argument instead")
             __props__['notify_only_default_branch'] = notify_only_default_branch
             __props__['pipeline_channel'] = pipeline_channel

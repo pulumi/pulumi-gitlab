@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -137,4 +138,43 @@ type LabelArgs struct {
 
 func (LabelArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*labelArgs)(nil)).Elem()
+}
+
+type LabelInput interface {
+	pulumi.Input
+
+	ToLabelOutput() LabelOutput
+	ToLabelOutputWithContext(ctx context.Context) LabelOutput
+}
+
+func (Label) ElementType() reflect.Type {
+	return reflect.TypeOf((*Label)(nil)).Elem()
+}
+
+func (i Label) ToLabelOutput() LabelOutput {
+	return i.ToLabelOutputWithContext(context.Background())
+}
+
+func (i Label) ToLabelOutputWithContext(ctx context.Context) LabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelOutput)
+}
+
+type LabelOutput struct {
+	*pulumi.OutputState
+}
+
+func (LabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LabelOutput)(nil)).Elem()
+}
+
+func (o LabelOutput) ToLabelOutput() LabelOutput {
+	return o
+}
+
+func (o LabelOutput) ToLabelOutputWithContext(ctx context.Context) LabelOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LabelOutput{})
 }

@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -37,6 +38,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/projectMembership:ProjectMembership test "12345:1337"
 // ```
 type ProjectMembership struct {
 	pulumi.CustomResourceState
@@ -128,4 +137,43 @@ type ProjectMembershipArgs struct {
 
 func (ProjectMembershipArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectMembershipArgs)(nil)).Elem()
+}
+
+type ProjectMembershipInput interface {
+	pulumi.Input
+
+	ToProjectMembershipOutput() ProjectMembershipOutput
+	ToProjectMembershipOutputWithContext(ctx context.Context) ProjectMembershipOutput
+}
+
+func (ProjectMembership) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectMembership)(nil)).Elem()
+}
+
+func (i ProjectMembership) ToProjectMembershipOutput() ProjectMembershipOutput {
+	return i.ToProjectMembershipOutputWithContext(context.Background())
+}
+
+func (i ProjectMembership) ToProjectMembershipOutputWithContext(ctx context.Context) ProjectMembershipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectMembershipOutput)
+}
+
+type ProjectMembershipOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectMembershipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectMembershipOutput)(nil)).Elem()
+}
+
+func (o ProjectMembershipOutput) ToProjectMembershipOutput() ProjectMembershipOutput {
+	return o
+}
+
+func (o ProjectMembershipOutput) ToProjectMembershipOutputWithContext(ctx context.Context) ProjectMembershipOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectMembershipOutput{})
 }

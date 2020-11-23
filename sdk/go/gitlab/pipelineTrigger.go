@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -117,4 +118,43 @@ type PipelineTriggerArgs struct {
 
 func (PipelineTriggerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineTriggerArgs)(nil)).Elem()
+}
+
+type PipelineTriggerInput interface {
+	pulumi.Input
+
+	ToPipelineTriggerOutput() PipelineTriggerOutput
+	ToPipelineTriggerOutputWithContext(ctx context.Context) PipelineTriggerOutput
+}
+
+func (PipelineTrigger) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineTrigger)(nil)).Elem()
+}
+
+func (i PipelineTrigger) ToPipelineTriggerOutput() PipelineTriggerOutput {
+	return i.ToPipelineTriggerOutputWithContext(context.Background())
+}
+
+func (i PipelineTrigger) ToPipelineTriggerOutputWithContext(ctx context.Context) PipelineTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineTriggerOutput)
+}
+
+type PipelineTriggerOutput struct {
+	*pulumi.OutputState
+}
+
+func (PipelineTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineTriggerOutput)(nil)).Elem()
+}
+
+func (o PipelineTriggerOutput) ToPipelineTriggerOutput() PipelineTriggerOutput {
+	return o
+}
+
+func (o PipelineTriggerOutput) ToPipelineTriggerOutputWithContext(ctx context.Context) PipelineTriggerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PipelineTriggerOutput{})
 }

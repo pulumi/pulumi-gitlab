@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -107,4 +108,43 @@ type ServicePipelinesEmailArgs struct {
 
 func (ServicePipelinesEmailArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePipelinesEmailArgs)(nil)).Elem()
+}
+
+type ServicePipelinesEmailInput interface {
+	pulumi.Input
+
+	ToServicePipelinesEmailOutput() ServicePipelinesEmailOutput
+	ToServicePipelinesEmailOutputWithContext(ctx context.Context) ServicePipelinesEmailOutput
+}
+
+func (ServicePipelinesEmail) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePipelinesEmail)(nil)).Elem()
+}
+
+func (i ServicePipelinesEmail) ToServicePipelinesEmailOutput() ServicePipelinesEmailOutput {
+	return i.ToServicePipelinesEmailOutputWithContext(context.Background())
+}
+
+func (i ServicePipelinesEmail) ToServicePipelinesEmailOutputWithContext(ctx context.Context) ServicePipelinesEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePipelinesEmailOutput)
+}
+
+type ServicePipelinesEmailOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServicePipelinesEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePipelinesEmailOutput)(nil)).Elem()
+}
+
+func (o ServicePipelinesEmailOutput) ToServicePipelinesEmailOutput() ServicePipelinesEmailOutput {
+	return o
+}
+
+func (o ServicePipelinesEmailOutput) ToServicePipelinesEmailOutputWithContext(ctx context.Context) ServicePipelinesEmailOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServicePipelinesEmailOutput{})
 }

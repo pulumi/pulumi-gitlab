@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -164,4 +165,43 @@ type PipelineScheduleArgs struct {
 
 func (PipelineScheduleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineScheduleArgs)(nil)).Elem()
+}
+
+type PipelineScheduleInput interface {
+	pulumi.Input
+
+	ToPipelineScheduleOutput() PipelineScheduleOutput
+	ToPipelineScheduleOutputWithContext(ctx context.Context) PipelineScheduleOutput
+}
+
+func (PipelineSchedule) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineSchedule)(nil)).Elem()
+}
+
+func (i PipelineSchedule) ToPipelineScheduleOutput() PipelineScheduleOutput {
+	return i.ToPipelineScheduleOutputWithContext(context.Background())
+}
+
+func (i PipelineSchedule) ToPipelineScheduleOutputWithContext(ctx context.Context) PipelineScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScheduleOutput)
+}
+
+type PipelineScheduleOutput struct {
+	*pulumi.OutputState
+}
+
+func (PipelineScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScheduleOutput)(nil)).Elem()
+}
+
+func (o PipelineScheduleOutput) ToPipelineScheduleOutput() PipelineScheduleOutput {
+	return o
+}
+
+func (o PipelineScheduleOutput) ToPipelineScheduleOutputWithContext(ctx context.Context) PipelineScheduleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PipelineScheduleOutput{})
 }

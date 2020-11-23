@@ -32,6 +32,14 @@ import * as utilities from "./utilities";
  *     managementProjectId: "123456",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/groupCluster:GroupCluster bar 123:321
+ * ```
  */
 export class GroupCluster extends pulumi.CustomResource {
     /**

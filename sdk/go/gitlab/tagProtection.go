@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -128,4 +129,43 @@ type TagProtectionArgs struct {
 
 func (TagProtectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tagProtectionArgs)(nil)).Elem()
+}
+
+type TagProtectionInput interface {
+	pulumi.Input
+
+	ToTagProtectionOutput() TagProtectionOutput
+	ToTagProtectionOutputWithContext(ctx context.Context) TagProtectionOutput
+}
+
+func (TagProtection) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagProtection)(nil)).Elem()
+}
+
+func (i TagProtection) ToTagProtectionOutput() TagProtectionOutput {
+	return i.ToTagProtectionOutputWithContext(context.Background())
+}
+
+func (i TagProtection) ToTagProtectionOutputWithContext(ctx context.Context) TagProtectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagProtectionOutput)
+}
+
+type TagProtectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (TagProtectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagProtectionOutput)(nil)).Elem()
+}
+
+func (o TagProtectionOutput) ToTagProtectionOutput() TagProtectionOutput {
+	return o
+}
+
+func (o TagProtectionOutput) ToTagProtectionOutputWithContext(ctx context.Context) TagProtectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TagProtectionOutput{})
 }

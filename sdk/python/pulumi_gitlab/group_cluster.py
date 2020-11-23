@@ -55,6 +55,14 @@ class GroupCluster(pulumi.CustomResource):
             management_project_id="123456")
         ```
 
+        ## Import
+
+        GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/groupCluster:GroupCluster bar 123:321
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The base domain of the cluster.
