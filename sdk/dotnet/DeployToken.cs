@@ -65,6 +65,9 @@ namespace Pulumi.GitLab
     /// </summary>
     public partial class DeployToken : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Time the token will expire it, RFC3339 format.
+        /// </summary>
         [Output("expiresAt")]
         public Output<string?> ExpiresAt { get; private set; } = null!;
 
@@ -152,6 +155,9 @@ namespace Pulumi.GitLab
 
     public sealed class DeployTokenArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Time the token will expire it, RFC3339 format.
+        /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
 
@@ -200,6 +206,9 @@ namespace Pulumi.GitLab
 
     public sealed class DeployTokenState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Time the token will expire it, RFC3339 format.
+        /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
 
