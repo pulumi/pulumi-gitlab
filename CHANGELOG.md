@@ -1,8 +1,11 @@
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v2.13.2  
-  * This adds support for import specific examples in documentation
+_(none)_
 
 ---
+
+## 3.2.2 (2020-11-24)
+* Upgrade to pulumi-terraform-bridge v2.13.2  
+  * This adds support for import specific examples in documentation
 
 ## 3.2.1 (2020-11-09)
 * Upgrade to pulumi-terraform-bridge v2.12.1
