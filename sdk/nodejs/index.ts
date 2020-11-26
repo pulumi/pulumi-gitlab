@@ -24,6 +24,7 @@ export * from "./pipelineSchedule";
 export * from "./pipelineScheduleVariable";
 export * from "./pipelineTrigger";
 export * from "./project";
+export * from "./projectApprovalRule";
 export * from "./projectCluster";
 export * from "./projectHook";
 export * from "./projectLevelMrApprovals";

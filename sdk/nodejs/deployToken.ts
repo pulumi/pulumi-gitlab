@@ -66,6 +66,9 @@ export class DeployToken extends pulumi.CustomResource {
         return obj['__pulumiType'] === DeployToken.__pulumiType;
     }
 
+    /**
+     * Time the token will expire it, RFC3339 format.
+     */
     public readonly expiresAt!: pulumi.Output<string | undefined>;
     /**
      * The name or id of the group to add the deploy token to.
@@ -141,6 +144,9 @@ export class DeployToken extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DeployToken resources.
  */
 export interface DeployTokenState {
+    /**
+     * Time the token will expire it, RFC3339 format.
+     */
     readonly expiresAt?: pulumi.Input<string>;
     /**
      * The name or id of the group to add the deploy token to.
@@ -174,6 +180,9 @@ export interface DeployTokenState {
  * The set of arguments for constructing a DeployToken resource.
  */
 export interface DeployTokenArgs {
+    /**
+     * Time the token will expire it, RFC3339 format.
+     */
     readonly expiresAt?: pulumi.Input<string>;
     /**
      * The name or id of the group to add the deploy token to.

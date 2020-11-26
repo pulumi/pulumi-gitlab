@@ -114,6 +114,7 @@ func Provider() tfbridge.ProviderInfo {
 			"gitlab_project_level_mr_approvals": {Tok: gitLabResource(gitLabMod, "ProjectLevelMrApprovals")},
 			"gitlab_project_mirror":             {Tok: gitLabResource(gitLabMod, "ProjectMirror")},
 			"gitlab_service_pipelines_email":    {Tok: gitLabResource(gitLabMod, "ServicePipelinesEmail")},
+			"gitlab_project_approval_rule":      {Tok: gitLabResource(gitLabMod, "ProjectApprovalRule")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"gitlab_group":            {Tok: gitLabDataSource(gitLabMod, "getGroup")},

@@ -38,6 +38,7 @@
         "pipelineScheduleVariable.ts",
         "pipelineTrigger.ts",
         "project.ts",
+        "projectApprovalRule.ts",
         "projectCluster.ts",
         "projectHook.ts",
         "projectLevelMrApprovals.ts",

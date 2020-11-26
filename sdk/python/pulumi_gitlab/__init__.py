@@ -25,6 +25,7 @@ from .pipeline_schedule import *
 from .pipeline_schedule_variable import *
 from .pipeline_trigger import *
 from .project import *
+from .project_approval_rule import *
 from .project_cluster import *
 from .project_hook import *
 from .project_level_mr_approvals import *

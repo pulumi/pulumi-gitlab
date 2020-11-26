@@ -185,6 +185,8 @@ github.com/gedex/inflector v0.0.0-20170307190818-16278e9db813/go.mod h1:P+oSoE9y
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
 github.com/gitlabhq/terraform-provider-gitlab v1.3.1-0.20201016154636-6bb15569ddf4 h1:MzAxINu3DM5XQDqhQPwvK59dLUeRN23kI8WrfLJGQMA=
 github.com/gitlabhq/terraform-provider-gitlab v1.3.1-0.20201016154636-6bb15569ddf4/go.mod h1:5JzHzcdGQSheD86aGozsGahUtWvYO+S9rx3Dmlphcjw=
+github.com/gitlabhq/terraform-provider-gitlab v1.3.1-0.20201120133630-90f30c5f05d6 h1:rhTc8xHBG5Nr1C2v/lRHELoCwSV55K9IgXRtayznv2I=
+github.com/gitlabhq/terraform-provider-gitlab v1.3.1-0.20201120133630-90f30c5f05d6/go.mod h1:5JzHzcdGQSheD86aGozsGahUtWvYO+S9rx3Dmlphcjw=
 github.com/gliderlabs/ssh v0.2.2 h1:6zsha5zo/TWhRhwqCD3+EarCAgZ2yN28ipRnGPnwkI0=
 github.com/gliderlabs/ssh v0.2.2/go.mod h1:U7qILu1NlMHj9FlMhZLlkCdDnU1DBEAqr0aevW3Awn0=
 github.com/go-git/gcfg v1.5.0 h1:Q5ViNfGF8zFgyJWPqYwA7qGFoMTEiBmdlkcfRmpIMa4=
