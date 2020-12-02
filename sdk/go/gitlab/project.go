@@ -53,6 +53,10 @@ type Project struct {
 	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolPtrOutput `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
 	// Enable packages repository for the project.
 	PackagesEnabled pulumi.BoolPtrOutput `pulumi:"packagesEnabled"`
+	// Enable pages access control
+	// Valid values are `disabled`, `private`, `enabled`, `public`.
+	// `private` is the default.
+	PagesAccessLevel pulumi.StringPtrOutput `pulumi:"pagesAccessLevel"`
 	// The path of the repository.
 	Path pulumi.StringPtrOutput `pulumi:"path"`
 	// The path of the repository with namespace.
@@ -160,6 +164,10 @@ type projectState struct {
 	OnlyAllowMergeIfPipelineSucceeds *bool `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
 	// Enable packages repository for the project.
 	PackagesEnabled *bool `pulumi:"packagesEnabled"`
+	// Enable pages access control
+	// Valid values are `disabled`, `private`, `enabled`, `public`.
+	// `private` is the default.
+	PagesAccessLevel *string `pulumi:"pagesAccessLevel"`
 	// The path of the repository.
 	Path *string `pulumi:"path"`
 	// The path of the repository with namespace.
@@ -240,6 +248,10 @@ type ProjectState struct {
 	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolPtrInput
 	// Enable packages repository for the project.
 	PackagesEnabled pulumi.BoolPtrInput
+	// Enable pages access control
+	// Valid values are `disabled`, `private`, `enabled`, `public`.
+	// `private` is the default.
+	PagesAccessLevel pulumi.StringPtrInput
 	// The path of the repository.
 	Path pulumi.StringPtrInput
 	// The path of the repository with namespace.
@@ -321,6 +333,10 @@ type projectArgs struct {
 	OnlyAllowMergeIfPipelineSucceeds *bool `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
 	// Enable packages repository for the project.
 	PackagesEnabled *bool `pulumi:"packagesEnabled"`
+	// Enable pages access control
+	// Valid values are `disabled`, `private`, `enabled`, `public`.
+	// `private` is the default.
+	PagesAccessLevel *string `pulumi:"pagesAccessLevel"`
 	// The path of the repository.
 	Path *string `pulumi:"path"`
 	// Enable pipelines for the project.
@@ -390,6 +406,10 @@ type ProjectArgs struct {
 	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolPtrInput
 	// Enable packages repository for the project.
 	PackagesEnabled pulumi.BoolPtrInput
+	// Enable pages access control
+	// Valid values are `disabled`, `private`, `enabled`, `public`.
+	// `private` is the default.
+	PagesAccessLevel pulumi.StringPtrInput
 	// The path of the repository.
 	Path pulumi.StringPtrInput
 	// Enable pipelines for the project.

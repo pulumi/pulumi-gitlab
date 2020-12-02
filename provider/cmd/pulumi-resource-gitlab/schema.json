@@ -2765,6 +2765,87 @@
                 "type": "object"
             }
         },
+        "gitlab:index/instanceVariable:InstanceVariable": {
+            "description": "This resource allows you to create and manage CI/CD variables for your GitLab instance.\nFor further information on variables, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.InstanceVariable(\"example\", {\n    key: \"instance_variable_key\",\n    masked: false,\n    protected: false,\n    value: \"instance_variable_value\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.InstanceVariable(\"example\",\n    key=\"instance_variable_key\",\n    masked=False,\n    protected=False,\n    value=\"instance_variable_value\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.InstanceVariable(\"example\", new GitLab.InstanceVariableArgs\n        {\n            Key = \"instance_variable_key\",\n            Masked = false,\n            Protected = false,\n            Value = \"instance_variable_value\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewInstanceVariable(ctx, \"example\", \u0026gitlab.InstanceVariableArgs{\n\t\t\tKey:       pulumi.String(\"instance_variable_key\"),\n\t\t\tMasked:    pulumi.Bool(false),\n\t\t\tProtected: pulumi.Bool(false),\n\t\t\tValue:     pulumi.String(\"instance_variable_value\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGitLab instance variables can be imported using an id made up of `variablename`, e.g. console\n\n```sh\n $ pulumi import gitlab:index/instanceVariable:InstanceVariable example instance_variable_key\n```\n\n ",
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "The name of the variable.\n"
+                },
+                "masked": {
+                    "type": "boolean",
+                    "description": "If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.\n"
+                },
+                "protected": {
+                    "type": "boolean",
+                    "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the variable.\n"
+                },
+                "variableType": {
+                    "type": "string",
+                    "description": "The type of a variable. Available types are: env_var (default) and file.\n"
+                }
+            },
+            "required": [
+                "key",
+                "value"
+            ],
+            "inputProperties": {
+                "key": {
+                    "type": "string",
+                    "description": "The name of the variable.\n"
+                },
+                "masked": {
+                    "type": "boolean",
+                    "description": "If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.\n"
+                },
+                "protected": {
+                    "type": "boolean",
+                    "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the variable.\n"
+                },
+                "variableType": {
+                    "type": "string",
+                    "description": "The type of a variable. Available types are: env_var (default) and file.\n"
+                }
+            },
+            "requiredInputs": [
+                "key",
+                "value"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering InstanceVariable resources.\n",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "The name of the variable.\n"
+                    },
+                    "masked": {
+                        "type": "boolean",
+                        "description": "If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.\n"
+                    },
+                    "protected": {
+                        "type": "boolean",
+                        "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The value of the variable.\n"
+                    },
+                    "variableType": {
+                        "type": "string",
+                        "description": "The type of a variable. Available types are: env_var (default) and file.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "gitlab:index/label:Label": {
             "description": "## # gitlab\\_label\n\nThis resource allows you to create and manage labels for your GitLab projects.\nFor further information on labels, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ee/user/project/labels.html#project-labels).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst fixme = new gitlab.Label(\"fixme\", {\n    color: \"#ffcc00\",\n    description: \"issue with failing tests\",\n    project: \"example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfixme = gitlab.Label(\"fixme\",\n    color=\"#ffcc00\",\n    description=\"issue with failing tests\",\n    project=\"example\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var fixme = new GitLab.Label(\"fixme\", new GitLab.LabelArgs\n        {\n            Color = \"#ffcc00\",\n            Description = \"issue with failing tests\",\n            Project = \"example\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewLabel(ctx, \"fixme\", \u0026gitlab.LabelArgs{\n\t\t\tColor:       pulumi.String(\"#ffcc00\"),\n\t\t\tDescription: pulumi.String(\"issue with failing tests\"),\n\t\t\tProject:     pulumi.String(\"example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
@@ -3131,6 +3212,10 @@
                     "type": "boolean",
                     "description": "Enable packages repository for the project.\n"
                 },
+                "pagesAccessLevel": {
+                    "type": "string",
+                    "description": "Enable pages access control\nValid values are `disabled`, `private`, `enabled`, `public`.\n`private` is the default.\n"
+                },
                 "path": {
                     "type": "string",
                     "description": "The path of the repository.\n"
@@ -3283,6 +3368,10 @@
                     "type": "boolean",
                     "description": "Enable packages repository for the project.\n"
                 },
+                "pagesAccessLevel": {
+                    "type": "string",
+                    "description": "Enable pages access control\nValid values are `disabled`, `private`, `enabled`, `public`.\n`private` is the default.\n"
+                },
                 "path": {
                     "type": "string",
                     "description": "The path of the repository.\n"
@@ -3413,6 +3502,10 @@
                     "packagesEnabled": {
                         "type": "boolean",
                         "description": "Enable packages repository for the project.\n"
+                    },
+                    "pagesAccessLevel": {
+                        "type": "string",
+                        "description": "Enable pages access control\nValid values are `disabled`, `private`, `enabled`, `public`.\n`private` is the default.\n"
                     },
                     "path": {
                         "type": "string",

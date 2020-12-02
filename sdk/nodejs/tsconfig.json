@@ -33,6 +33,7 @@
         "groupVariable.ts",
         "index.ts",
         "instanceCluster.ts",
+        "instanceVariable.ts",
         "label.ts",
         "pipelineSchedule.ts",
         "pipelineScheduleVariable.ts",

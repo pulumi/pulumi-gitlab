@@ -124,6 +124,14 @@ namespace Pulumi.GitLab
         public Output<bool?> PackagesEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Enable pages access control
+        /// Valid values are `disabled`, `private`, `enabled`, `public`.
+        /// `private` is the default.
+        /// </summary>
+        [Output("pagesAccessLevel")]
+        public Output<string?> PagesAccessLevel { get; private set; } = null!;
+
+        /// <summary>
         /// The path of the repository.
         /// </summary>
         [Output("path")]
@@ -380,6 +388,14 @@ namespace Pulumi.GitLab
         public Input<bool>? PackagesEnabled { get; set; }
 
         /// <summary>
+        /// Enable pages access control
+        /// Valid values are `disabled`, `private`, `enabled`, `public`.
+        /// `private` is the default.
+        /// </summary>
+        [Input("pagesAccessLevel")]
+        public Input<string>? PagesAccessLevel { get; set; }
+
+        /// <summary>
         /// The path of the repository.
         /// </summary>
         [Input("path")]
@@ -583,6 +599,14 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("packagesEnabled")]
         public Input<bool>? PackagesEnabled { get; set; }
+
+        /// <summary>
+        /// Enable pages access control
+        /// Valid values are `disabled`, `private`, `enabled`, `public`.
+        /// `private` is the default.
+        /// </summary>
+        [Input("pagesAccessLevel")]
+        public Input<string>? PagesAccessLevel { get; set; }
 
         /// <summary>
         /// The path of the repository.

@@ -19,6 +19,7 @@ export * from "./groupLdapLink";
 export * from "./groupMembership";
 export * from "./groupVariable";
 export * from "./instanceCluster";
+export * from "./instanceVariable";
 export * from "./label";
 export * from "./pipelineSchedule";
 export * from "./pipelineScheduleVariable";
