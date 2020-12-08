@@ -1,7 +1,10 @@
 ## HEAD (Unreleased)
-* Upgrade to v3.3.0 of the GitLab Terraform Provider
+_(none)_
 
 ---
+
+## 3.4.0 (2020-12-08)
+* Upgrade to v3.3.0 of the GitLab Terraform Provider
 
 ## 3.3.0 (2020-11-26)
 * Upgrade to v3.2.0 of the GitLab Terraform Provider  
