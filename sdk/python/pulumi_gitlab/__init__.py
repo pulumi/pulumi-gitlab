@@ -20,6 +20,7 @@ from .group_ldap_link import *
 from .group_membership import *
 from .group_variable import *
 from .instance_cluster import *
+from .instance_variable import *
 from .label import *
 from .pipeline_schedule import *
 from .pipeline_schedule_variable import *

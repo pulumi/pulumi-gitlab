@@ -110,6 +110,12 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly packagesEnabled!: pulumi.Output<boolean | undefined>;
     /**
+     * Enable pages access control
+     * Valid values are `disabled`, `private`, `enabled`, `public`.
+     * `private` is the default.
+     */
+    public readonly pagesAccessLevel!: pulumi.Output<string | undefined>;
+    /**
      * The path of the repository.
      */
     public readonly path!: pulumi.Output<string | undefined>;
@@ -211,6 +217,7 @@ export class Project extends pulumi.CustomResource {
             inputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = state ? state.onlyAllowMergeIfAllDiscussionsAreResolved : undefined;
             inputs["onlyAllowMergeIfPipelineSucceeds"] = state ? state.onlyAllowMergeIfPipelineSucceeds : undefined;
             inputs["packagesEnabled"] = state ? state.packagesEnabled : undefined;
+            inputs["pagesAccessLevel"] = state ? state.pagesAccessLevel : undefined;
             inputs["path"] = state ? state.path : undefined;
             inputs["pathWithNamespace"] = state ? state.pathWithNamespace : undefined;
             inputs["pipelinesEnabled"] = state ? state.pipelinesEnabled : undefined;
@@ -247,6 +254,7 @@ export class Project extends pulumi.CustomResource {
             inputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = args ? args.onlyAllowMergeIfAllDiscussionsAreResolved : undefined;
             inputs["onlyAllowMergeIfPipelineSucceeds"] = args ? args.onlyAllowMergeIfPipelineSucceeds : undefined;
             inputs["packagesEnabled"] = args ? args.packagesEnabled : undefined;
+            inputs["pagesAccessLevel"] = args ? args.pagesAccessLevel : undefined;
             inputs["path"] = args ? args.path : undefined;
             inputs["pipelinesEnabled"] = args ? args.pipelinesEnabled : undefined;
             inputs["pushRules"] = args ? args.pushRules : undefined;
@@ -357,6 +365,12 @@ export interface ProjectState {
      * Enable packages repository for the project.
      */
     readonly packagesEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enable pages access control
+     * Valid values are `disabled`, `private`, `enabled`, `public`.
+     * `private` is the default.
+     */
+    readonly pagesAccessLevel?: pulumi.Input<string>;
     /**
      * The path of the repository.
      */
@@ -505,6 +519,12 @@ export interface ProjectArgs {
      * Enable packages repository for the project.
      */
     readonly packagesEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enable pages access control
+     * Valid values are `disabled`, `private`, `enabled`, `public`.
+     * `private` is the default.
+     */
+    readonly pagesAccessLevel?: pulumi.Input<string>;
     /**
      * The path of the repository.
      */

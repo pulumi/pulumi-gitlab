@@ -34,6 +34,7 @@ class Project(pulumi.CustomResource):
                  only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
                  only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[bool]] = None,
                  packages_enabled: Optional[pulumi.Input[bool]] = None,
+                 pages_access_level: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  pipelines_enabled: Optional[pulumi.Input[bool]] = None,
                  push_rules: Optional[pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']]] = None,
@@ -74,6 +75,9 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
+        :param pulumi.Input[str] pages_access_level: Enable pages access control
+               Valid values are `disabled`, `private`, `enabled`, `public`.
+               `private` is the default.
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
         :param pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']] push_rules: Push rules for the project (documented below).
@@ -124,6 +128,7 @@ class Project(pulumi.CustomResource):
             __props__['only_allow_merge_if_all_discussions_are_resolved'] = only_allow_merge_if_all_discussions_are_resolved
             __props__['only_allow_merge_if_pipeline_succeeds'] = only_allow_merge_if_pipeline_succeeds
             __props__['packages_enabled'] = packages_enabled
+            __props__['pages_access_level'] = pages_access_level
             __props__['path'] = path
             __props__['pipelines_enabled'] = pipelines_enabled
             __props__['push_rules'] = push_rules
@@ -170,6 +175,7 @@ class Project(pulumi.CustomResource):
             only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
             only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[bool]] = None,
             packages_enabled: Optional[pulumi.Input[bool]] = None,
+            pages_access_level: Optional[pulumi.Input[str]] = None,
             path: Optional[pulumi.Input[str]] = None,
             path_with_namespace: Optional[pulumi.Input[str]] = None,
             pipelines_enabled: Optional[pulumi.Input[bool]] = None,
@@ -216,6 +222,9 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
+        :param pulumi.Input[str] pages_access_level: Enable pages access control
+               Valid values are `disabled`, `private`, `enabled`, `public`.
+               `private` is the default.
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[str] path_with_namespace: The path of the repository with namespace.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
@@ -259,6 +268,7 @@ class Project(pulumi.CustomResource):
         __props__["only_allow_merge_if_all_discussions_are_resolved"] = only_allow_merge_if_all_discussions_are_resolved
         __props__["only_allow_merge_if_pipeline_succeeds"] = only_allow_merge_if_pipeline_succeeds
         __props__["packages_enabled"] = packages_enabled
+        __props__["pages_access_level"] = pages_access_level
         __props__["path"] = path
         __props__["path_with_namespace"] = path_with_namespace
         __props__["pipelines_enabled"] = pipelines_enabled
@@ -425,6 +435,16 @@ class Project(pulumi.CustomResource):
         Enable packages repository for the project.
         """
         return pulumi.get(self, "packages_enabled")
+
+    @property
+    @pulumi.getter(name="pagesAccessLevel")
+    def pages_access_level(self) -> pulumi.Output[Optional[str]]:
+        """
+        Enable pages access control
+        Valid values are `disabled`, `private`, `enabled`, `public`.
+        `private` is the default.
+        """
+        return pulumi.get(self, "pages_access_level")
 
     @property
     @pulumi.getter

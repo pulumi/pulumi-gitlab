@@ -1,5 +1,5 @@
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v3.3.0 of the GitLab Terraform Provider
 
 ---
 
