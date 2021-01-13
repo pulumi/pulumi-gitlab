@@ -80,13 +80,13 @@ export class TagProtection extends pulumi.CustomResource {
             inputs["tag"] = state ? state.tag : undefined;
         } else {
             const args = argsOrState as TagProtectionArgs | undefined;
-            if (!args || args.createAccessLevel === undefined) {
+            if ((!args || args.createAccessLevel === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'createAccessLevel'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
-            if (!args || args.tag === undefined) {
+            if ((!args || args.tag === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'tag'");
             }
             inputs["createAccessLevel"] = args ? args.createAccessLevel : undefined;

@@ -73,11 +73,11 @@ class GroupLabel(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if color is None:
+            if color is None and not opts.urn:
                 raise TypeError("Missing required property 'color'")
             __props__['color'] = color
             __props__['description'] = description
-            if group is None:
+            if group is None and not opts.urn:
                 raise TypeError("Missing required property 'group'")
             __props__['group'] = group
             __props__['name'] = name

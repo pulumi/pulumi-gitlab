@@ -72,13 +72,13 @@ class DeployKey(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['can_push'] = can_push
-            if key is None:
+            if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__['key'] = key
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            if title is None:
+            if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__['title'] = title
         super(DeployKey, __self__).__init__(

@@ -97,13 +97,13 @@ class ServiceSlack(pulumi.CustomResource):
             __props__['note_channel'] = note_channel
             __props__['note_events'] = note_events
             __props__['notify_only_broken_pipelines'] = notify_only_broken_pipelines
-            if notify_only_default_branch is not None:
+            if notify_only_default_branch is not None and not opts.urn:
                 warnings.warn("""use 'branches_to_be_notified' argument instead""", DeprecationWarning)
                 pulumi.log.warn("notify_only_default_branch is deprecated: use 'branches_to_be_notified' argument instead")
             __props__['notify_only_default_branch'] = notify_only_default_branch
             __props__['pipeline_channel'] = pipeline_channel
             __props__['pipeline_events'] = pipeline_events
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['push_channel'] = push_channel
@@ -111,7 +111,7 @@ class ServiceSlack(pulumi.CustomResource):
             __props__['tag_push_channel'] = tag_push_channel
             __props__['tag_push_events'] = tag_push_events
             __props__['username'] = username
-            if webhook is None:
+            if webhook is None and not opts.urn:
                 raise TypeError("Missing required property 'webhook'")
             __props__['webhook'] = webhook
             __props__['wiki_page_channel'] = wiki_page_channel

@@ -41,20 +41,21 @@ type ServiceJira struct {
 // NewServiceJira registers a new resource with the given unique name, arguments, and options.
 func NewServiceJira(ctx *pulumi.Context,
 	name string, args *ServiceJiraArgs, opts ...pulumi.ResourceOption) (*ServiceJira, error) {
-	if args == nil || args.Password == nil {
-		return nil, errors.New("missing required argument 'Password'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.Url == nil {
-		return nil, errors.New("missing required argument 'Url'")
-	}
-	if args == nil || args.Username == nil {
-		return nil, errors.New("missing required argument 'Username'")
-	}
 	if args == nil {
-		args = &ServiceJiraArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Password == nil {
+		return nil, errors.New("invalid value for required argument 'Password'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Url == nil {
+		return nil, errors.New("invalid value for required argument 'Url'")
+	}
+	if args.Username == nil {
+		return nil, errors.New("invalid value for required argument 'Username'")
 	}
 	var resource ServiceJira
 	err := ctx.RegisterResource("gitlab:index/serviceJira:ServiceJira", name, args, &resource, opts...)

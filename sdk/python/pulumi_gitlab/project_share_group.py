@@ -69,13 +69,13 @@ class ProjectShareGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if access_level is None:
+            if access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'access_level'")
             __props__['access_level'] = access_level
-            if group_id is None:
+            if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__['group_id'] = group_id
-            if project_id is None:
+            if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
         super(ProjectShareGroup, __self__).__init__(

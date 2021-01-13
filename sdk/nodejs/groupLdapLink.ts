@@ -96,16 +96,16 @@ export class GroupLdapLink extends pulumi.CustomResource {
             inputs["ldapProvider"] = state ? state.ldapProvider : undefined;
         } else {
             const args = argsOrState as GroupLdapLinkArgs | undefined;
-            if (!args || args.accessLevel === undefined) {
+            if ((!args || args.accessLevel === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accessLevel'");
             }
-            if (!args || args.cn === undefined) {
+            if ((!args || args.cn === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cn'");
             }
-            if (!args || args.groupId === undefined) {
+            if ((!args || args.groupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if (!args || args.ldapProvider === undefined) {
+            if ((!args || args.ldapProvider === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ldapProvider'");
             }
             inputs["accessLevel"] = args ? args.accessLevel : undefined;

@@ -154,7 +154,7 @@ export class Group extends pulumi.CustomResource {
             inputs["webUrl"] = state ? state.webUrl : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if (!args || args.path === undefined) {
+            if ((!args || args.path === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'path'");
             }
             inputs["autoDevopsEnabled"] = args ? args.autoDevopsEnabled : undefined;

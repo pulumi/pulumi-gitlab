@@ -86,12 +86,12 @@ class ProjectApprovalRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if approvals_required is None:
+            if approvals_required is None and not opts.urn:
                 raise TypeError("Missing required property 'approvals_required'")
             __props__['approvals_required'] = approvals_required
             __props__['group_ids'] = group_ids
             __props__['name'] = name
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['user_ids'] = user_ids

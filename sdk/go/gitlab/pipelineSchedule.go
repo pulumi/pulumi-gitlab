@@ -62,20 +62,21 @@ type PipelineSchedule struct {
 // NewPipelineSchedule registers a new resource with the given unique name, arguments, and options.
 func NewPipelineSchedule(ctx *pulumi.Context,
 	name string, args *PipelineScheduleArgs, opts ...pulumi.ResourceOption) (*PipelineSchedule, error) {
-	if args == nil || args.Cron == nil {
-		return nil, errors.New("missing required argument 'Cron'")
-	}
-	if args == nil || args.Description == nil {
-		return nil, errors.New("missing required argument 'Description'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.Ref == nil {
-		return nil, errors.New("missing required argument 'Ref'")
-	}
 	if args == nil {
-		args = &PipelineScheduleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Cron == nil {
+		return nil, errors.New("invalid value for required argument 'Cron'")
+	}
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Ref == nil {
+		return nil, errors.New("invalid value for required argument 'Ref'")
 	}
 	var resource PipelineSchedule
 	err := ctx.RegisterResource("gitlab:index/pipelineSchedule:PipelineSchedule", name, args, &resource, opts...)

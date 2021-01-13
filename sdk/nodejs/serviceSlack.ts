@@ -166,10 +166,10 @@ export class ServiceSlack extends pulumi.CustomResource {
             inputs["wikiPageEvents"] = state ? state.wikiPageEvents : undefined;
         } else {
             const args = argsOrState as ServiceSlackArgs | undefined;
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
-            if (!args || args.webhook === undefined) {
+            if ((!args || args.webhook === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'webhook'");
             }
             inputs["branchesToBeNotified"] = args ? args.branchesToBeNotified : undefined;

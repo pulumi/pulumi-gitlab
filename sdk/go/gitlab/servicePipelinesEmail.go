@@ -27,14 +27,15 @@ type ServicePipelinesEmail struct {
 // NewServicePipelinesEmail registers a new resource with the given unique name, arguments, and options.
 func NewServicePipelinesEmail(ctx *pulumi.Context,
 	name string, args *ServicePipelinesEmailArgs, opts ...pulumi.ResourceOption) (*ServicePipelinesEmail, error) {
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.Recipients == nil {
-		return nil, errors.New("missing required argument 'Recipients'")
-	}
 	if args == nil {
-		args = &ServicePipelinesEmailArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Recipients == nil {
+		return nil, errors.New("invalid value for required argument 'Recipients'")
 	}
 	var resource ServicePipelinesEmail
 	err := ctx.RegisterResource("gitlab:index/servicePipelinesEmail:ServicePipelinesEmail", name, args, &resource, opts...)

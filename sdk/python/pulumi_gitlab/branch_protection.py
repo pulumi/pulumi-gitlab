@@ -66,17 +66,17 @@ class BranchProtection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if branch is None:
+            if branch is None and not opts.urn:
                 raise TypeError("Missing required property 'branch'")
             __props__['branch'] = branch
             __props__['code_owner_approval_required'] = code_owner_approval_required
-            if merge_access_level is None:
+            if merge_access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'merge_access_level'")
             __props__['merge_access_level'] = merge_access_level
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            if push_access_level is None:
+            if push_access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'push_access_level'")
             __props__['push_access_level'] = push_access_level
         super(BranchProtection, __self__).__init__(

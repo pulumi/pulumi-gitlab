@@ -62,17 +62,17 @@ class ServiceJira(pulumi.CustomResource):
             __props__['commit_events'] = commit_events
             __props__['jira_issue_transition_id'] = jira_issue_transition_id
             __props__['merge_requests_events'] = merge_requests_events
-            if password is None:
+            if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
             __props__['password'] = password
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['project_key'] = project_key
-            if url is None:
+            if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__['url'] = url
-            if username is None:
+            if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__['username'] = username
             __props__['active'] = None

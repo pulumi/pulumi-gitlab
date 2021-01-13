@@ -87,10 +87,10 @@ export class Label extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as LabelArgs | undefined;
-            if (!args || args.color === undefined) {
+            if ((!args || args.color === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'color'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["color"] = args ? args.color : undefined;

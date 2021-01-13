@@ -118,7 +118,7 @@ export class DeployToken extends pulumi.CustomResource {
             inputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as DeployTokenArgs | undefined;
-            if (!args || args.scopes === undefined) {
+            if ((!args || args.scopes === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'scopes'");
             }
             inputs["expiresAt"] = args ? args.expiresAt : undefined;

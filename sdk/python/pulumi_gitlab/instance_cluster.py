@@ -96,13 +96,13 @@ class InstanceCluster(pulumi.CustomResource):
             __props__['domain'] = domain
             __props__['enabled'] = enabled
             __props__['environment_scope'] = environment_scope
-            if kubernetes_api_url is None:
+            if kubernetes_api_url is None and not opts.urn:
                 raise TypeError("Missing required property 'kubernetes_api_url'")
             __props__['kubernetes_api_url'] = kubernetes_api_url
             __props__['kubernetes_authorization_type'] = kubernetes_authorization_type
             __props__['kubernetes_ca_cert'] = kubernetes_ca_cert
             __props__['kubernetes_namespace'] = kubernetes_namespace
-            if kubernetes_token is None:
+            if kubernetes_token is None and not opts.urn:
                 raise TypeError("Missing required property 'kubernetes_token'")
             __props__['kubernetes_token'] = kubernetes_token
             __props__['managed'] = managed

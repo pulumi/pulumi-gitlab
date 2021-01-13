@@ -55,7 +55,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
             __props__['disable_overriding_approvers_per_merge_request'] = disable_overriding_approvers_per_merge_request
             __props__['merge_requests_author_approval'] = merge_requests_author_approval
             __props__['merge_requests_disable_committers_approval'] = merge_requests_disable_committers_approval
-            if project_id is None:
+            if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
             __props__['reset_approvals_on_push'] = reset_approvals_on_push

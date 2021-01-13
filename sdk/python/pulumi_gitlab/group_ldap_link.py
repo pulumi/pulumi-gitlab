@@ -73,17 +73,17 @@ class GroupLdapLink(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if access_level is None:
+            if access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'access_level'")
             __props__['access_level'] = access_level
-            if cn is None:
+            if cn is None and not opts.urn:
                 raise TypeError("Missing required property 'cn'")
             __props__['cn'] = cn
             __props__['force'] = force
-            if group_id is None:
+            if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__['group_id'] = group_id
-            if ldap_provider is None:
+            if ldap_provider is None and not opts.urn:
                 raise TypeError("Missing required property 'ldap_provider'")
             __props__['ldap_provider'] = ldap_provider
         super(GroupLdapLink, __self__).__init__(

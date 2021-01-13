@@ -89,14 +89,15 @@ type InstanceCluster struct {
 // NewInstanceCluster registers a new resource with the given unique name, arguments, and options.
 func NewInstanceCluster(ctx *pulumi.Context,
 	name string, args *InstanceClusterArgs, opts ...pulumi.ResourceOption) (*InstanceCluster, error) {
-	if args == nil || args.KubernetesApiUrl == nil {
-		return nil, errors.New("missing required argument 'KubernetesApiUrl'")
-	}
-	if args == nil || args.KubernetesToken == nil {
-		return nil, errors.New("missing required argument 'KubernetesToken'")
-	}
 	if args == nil {
-		args = &InstanceClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.KubernetesApiUrl == nil {
+		return nil, errors.New("invalid value for required argument 'KubernetesApiUrl'")
+	}
+	if args.KubernetesToken == nil {
+		return nil, errors.New("invalid value for required argument 'KubernetesToken'")
 	}
 	var resource InstanceCluster
 	err := ctx.RegisterResource("gitlab:index/instanceCluster:InstanceCluster", name, args, &resource, opts...)

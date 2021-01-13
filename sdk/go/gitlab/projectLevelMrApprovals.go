@@ -31,11 +31,12 @@ type ProjectLevelMrApprovals struct {
 // NewProjectLevelMrApprovals registers a new resource with the given unique name, arguments, and options.
 func NewProjectLevelMrApprovals(ctx *pulumi.Context,
 	name string, args *ProjectLevelMrApprovalsArgs, opts ...pulumi.ResourceOption) (*ProjectLevelMrApprovals, error) {
-	if args == nil || args.ProjectId == nil {
-		return nil, errors.New("missing required argument 'ProjectId'")
-	}
 	if args == nil {
-		args = &ProjectLevelMrApprovalsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
 	var resource ProjectLevelMrApprovals
 	err := ctx.RegisterResource("gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals", name, args, &resource, opts...)

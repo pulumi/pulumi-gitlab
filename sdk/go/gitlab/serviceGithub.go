@@ -30,17 +30,18 @@ type ServiceGithub struct {
 // NewServiceGithub registers a new resource with the given unique name, arguments, and options.
 func NewServiceGithub(ctx *pulumi.Context,
 	name string, args *ServiceGithubArgs, opts ...pulumi.ResourceOption) (*ServiceGithub, error) {
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.RepositoryUrl == nil {
-		return nil, errors.New("missing required argument 'RepositoryUrl'")
-	}
-	if args == nil || args.Token == nil {
-		return nil, errors.New("missing required argument 'Token'")
-	}
 	if args == nil {
-		args = &ServiceGithubArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.RepositoryUrl == nil {
+		return nil, errors.New("invalid value for required argument 'RepositoryUrl'")
+	}
+	if args.Token == nil {
+		return nil, errors.New("invalid value for required argument 'Token'")
 	}
 	var resource ServiceGithub
 	err := ctx.RegisterResource("gitlab:index/serviceGithub:ServiceGithub", name, args, &resource, opts...)

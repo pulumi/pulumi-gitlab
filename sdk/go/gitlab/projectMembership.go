@@ -61,17 +61,18 @@ type ProjectMembership struct {
 // NewProjectMembership registers a new resource with the given unique name, arguments, and options.
 func NewProjectMembership(ctx *pulumi.Context,
 	name string, args *ProjectMembershipArgs, opts ...pulumi.ResourceOption) (*ProjectMembership, error) {
-	if args == nil || args.AccessLevel == nil {
-		return nil, errors.New("missing required argument 'AccessLevel'")
-	}
-	if args == nil || args.ProjectId == nil {
-		return nil, errors.New("missing required argument 'ProjectId'")
-	}
-	if args == nil || args.UserId == nil {
-		return nil, errors.New("missing required argument 'UserId'")
-	}
 	if args == nil {
-		args = &ProjectMembershipArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccessLevel == nil {
+		return nil, errors.New("invalid value for required argument 'AccessLevel'")
+	}
+	if args.ProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	}
+	if args.UserId == nil {
+		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
 	var resource ProjectMembership
 	err := ctx.RegisterResource("gitlab:index/projectMembership:ProjectMembership", name, args, &resource, opts...)

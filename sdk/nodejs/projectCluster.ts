@@ -151,13 +151,13 @@ export class ProjectCluster extends pulumi.CustomResource {
             inputs["providerType"] = state ? state.providerType : undefined;
         } else {
             const args = argsOrState as ProjectClusterArgs | undefined;
-            if (!args || args.kubernetesApiUrl === undefined) {
+            if ((!args || args.kubernetesApiUrl === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'kubernetesApiUrl'");
             }
-            if (!args || args.kubernetesToken === undefined) {
+            if ((!args || args.kubernetesToken === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'kubernetesToken'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["domain"] = args ? args.domain : undefined;

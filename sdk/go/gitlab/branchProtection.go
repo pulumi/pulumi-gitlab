@@ -58,20 +58,21 @@ type BranchProtection struct {
 // NewBranchProtection registers a new resource with the given unique name, arguments, and options.
 func NewBranchProtection(ctx *pulumi.Context,
 	name string, args *BranchProtectionArgs, opts ...pulumi.ResourceOption) (*BranchProtection, error) {
-	if args == nil || args.Branch == nil {
-		return nil, errors.New("missing required argument 'Branch'")
-	}
-	if args == nil || args.MergeAccessLevel == nil {
-		return nil, errors.New("missing required argument 'MergeAccessLevel'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.PushAccessLevel == nil {
-		return nil, errors.New("missing required argument 'PushAccessLevel'")
-	}
 	if args == nil {
-		args = &BranchProtectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Branch == nil {
+		return nil, errors.New("invalid value for required argument 'Branch'")
+	}
+	if args.MergeAccessLevel == nil {
+		return nil, errors.New("invalid value for required argument 'MergeAccessLevel'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.PushAccessLevel == nil {
+		return nil, errors.New("invalid value for required argument 'PushAccessLevel'")
 	}
 	var resource BranchProtection
 	err := ctx.RegisterResource("gitlab:index/branchProtection:BranchProtection", name, args, &resource, opts...)

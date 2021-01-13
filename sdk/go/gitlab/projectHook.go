@@ -74,14 +74,15 @@ type ProjectHook struct {
 // NewProjectHook registers a new resource with the given unique name, arguments, and options.
 func NewProjectHook(ctx *pulumi.Context,
 	name string, args *ProjectHookArgs, opts ...pulumi.ResourceOption) (*ProjectHook, error) {
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.Url == nil {
-		return nil, errors.New("missing required argument 'Url'")
-	}
 	if args == nil {
-		args = &ProjectHookArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Url == nil {
+		return nil, errors.New("invalid value for required argument 'Url'")
 	}
 	var resource ProjectHook
 	err := ctx.RegisterResource("gitlab:index/projectHook:ProjectHook", name, args, &resource, opts...)

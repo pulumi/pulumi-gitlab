@@ -57,14 +57,15 @@ type Label struct {
 // NewLabel registers a new resource with the given unique name, arguments, and options.
 func NewLabel(ctx *pulumi.Context,
 	name string, args *LabelArgs, opts ...pulumi.ResourceOption) (*Label, error) {
-	if args == nil || args.Color == nil {
-		return nil, errors.New("missing required argument 'Color'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &LabelArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Color == nil {
+		return nil, errors.New("invalid value for required argument 'Color'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Label
 	err := ctx.RegisterResource("gitlab:index/label:Label", name, args, &resource, opts...)

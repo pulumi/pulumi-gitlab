@@ -128,10 +128,10 @@ export class ProjectHook extends pulumi.CustomResource {
             inputs["wikiPageEvents"] = state ? state.wikiPageEvents : undefined;
         } else {
             const args = argsOrState as ProjectHookArgs | undefined;
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
-            if (!args || args.url === undefined) {
+            if ((!args || args.url === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'url'");
             }
             inputs["enableSslVerification"] = args ? args.enableSslVerification : undefined;

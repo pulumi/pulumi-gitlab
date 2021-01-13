@@ -50,10 +50,10 @@ class ServicePipelinesEmail(pulumi.CustomResource):
 
             __props__['branches_to_be_notified'] = branches_to_be_notified
             __props__['notify_only_broken_pipelines'] = notify_only_broken_pipelines
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            if recipients is None:
+            if recipients is None and not opts.urn:
                 raise TypeError("Missing required property 'recipients'")
             __props__['recipients'] = recipients
         super(ServicePipelinesEmail, __self__).__init__(

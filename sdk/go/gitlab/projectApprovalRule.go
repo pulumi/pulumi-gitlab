@@ -44,14 +44,15 @@ type ProjectApprovalRule struct {
 // NewProjectApprovalRule registers a new resource with the given unique name, arguments, and options.
 func NewProjectApprovalRule(ctx *pulumi.Context,
 	name string, args *ProjectApprovalRuleArgs, opts ...pulumi.ResourceOption) (*ProjectApprovalRule, error) {
-	if args == nil || args.ApprovalsRequired == nil {
-		return nil, errors.New("missing required argument 'ApprovalsRequired'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &ProjectApprovalRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApprovalsRequired == nil {
+		return nil, errors.New("invalid value for required argument 'ApprovalsRequired'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource ProjectApprovalRule
 	err := ctx.RegisterResource("gitlab:index/projectApprovalRule:ProjectApprovalRule", name, args, &resource, opts...)

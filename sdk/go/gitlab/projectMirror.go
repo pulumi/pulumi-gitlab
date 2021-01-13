@@ -65,14 +65,15 @@ type ProjectMirror struct {
 // NewProjectMirror registers a new resource with the given unique name, arguments, and options.
 func NewProjectMirror(ctx *pulumi.Context,
 	name string, args *ProjectMirrorArgs, opts ...pulumi.ResourceOption) (*ProjectMirror, error) {
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.Url == nil {
-		return nil, errors.New("missing required argument 'Url'")
-	}
 	if args == nil {
-		args = &ProjectMirrorArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Url == nil {
+		return nil, errors.New("invalid value for required argument 'Url'")
 	}
 	var resource ProjectMirror
 	err := ctx.RegisterResource("gitlab:index/projectMirror:ProjectMirror", name, args, &resource, opts...)

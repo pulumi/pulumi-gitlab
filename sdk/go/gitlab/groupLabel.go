@@ -65,14 +65,15 @@ type GroupLabel struct {
 // NewGroupLabel registers a new resource with the given unique name, arguments, and options.
 func NewGroupLabel(ctx *pulumi.Context,
 	name string, args *GroupLabelArgs, opts ...pulumi.ResourceOption) (*GroupLabel, error) {
-	if args == nil || args.Color == nil {
-		return nil, errors.New("missing required argument 'Color'")
-	}
-	if args == nil || args.Group == nil {
-		return nil, errors.New("missing required argument 'Group'")
-	}
 	if args == nil {
-		args = &GroupLabelArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Color == nil {
+		return nil, errors.New("invalid value for required argument 'Color'")
+	}
+	if args.Group == nil {
+		return nil, errors.New("invalid value for required argument 'Group'")
 	}
 	var resource GroupLabel
 	err := ctx.RegisterResource("gitlab:index/groupLabel:GroupLabel", name, args, &resource, opts...)
