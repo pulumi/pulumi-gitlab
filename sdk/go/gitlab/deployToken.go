@@ -93,11 +93,12 @@ type DeployToken struct {
 // NewDeployToken registers a new resource with the given unique name, arguments, and options.
 func NewDeployToken(ctx *pulumi.Context,
 	name string, args *DeployTokenArgs, opts ...pulumi.ResourceOption) (*DeployToken, error) {
-	if args == nil || args.Scopes == nil {
-		return nil, errors.New("missing required argument 'Scopes'")
-	}
 	if args == nil {
-		args = &DeployTokenArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Scopes == nil {
+		return nil, errors.New("invalid value for required argument 'Scopes'")
 	}
 	var resource DeployToken
 	err := ctx.RegisterResource("gitlab:index/deployToken:DeployToken", name, args, &resource, opts...)

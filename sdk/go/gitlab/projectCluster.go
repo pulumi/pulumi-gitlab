@@ -96,17 +96,18 @@ type ProjectCluster struct {
 // NewProjectCluster registers a new resource with the given unique name, arguments, and options.
 func NewProjectCluster(ctx *pulumi.Context,
 	name string, args *ProjectClusterArgs, opts ...pulumi.ResourceOption) (*ProjectCluster, error) {
-	if args == nil || args.KubernetesApiUrl == nil {
-		return nil, errors.New("missing required argument 'KubernetesApiUrl'")
-	}
-	if args == nil || args.KubernetesToken == nil {
-		return nil, errors.New("missing required argument 'KubernetesToken'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &ProjectClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.KubernetesApiUrl == nil {
+		return nil, errors.New("invalid value for required argument 'KubernetesApiUrl'")
+	}
+	if args.KubernetesToken == nil {
+		return nil, errors.New("invalid value for required argument 'KubernetesToken'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource ProjectCluster
 	err := ctx.RegisterResource("gitlab:index/projectCluster:ProjectCluster", name, args, &resource, opts...)

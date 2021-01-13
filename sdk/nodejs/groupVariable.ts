@@ -104,13 +104,13 @@ export class GroupVariable extends pulumi.CustomResource {
             inputs["variableType"] = state ? state.variableType : undefined;
         } else {
             const args = argsOrState as GroupVariableArgs | undefined;
-            if (!args || args.group === undefined) {
+            if ((!args || args.group === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'group'");
             }
-            if (!args || args.key === undefined) {
+            if ((!args || args.key === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'key'");
             }
-            if (!args || args.value === undefined) {
+            if ((!args || args.value === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'value'");
             }
             inputs["group"] = args ? args.group : undefined;

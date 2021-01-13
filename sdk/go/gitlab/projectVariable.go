@@ -77,17 +77,18 @@ type ProjectVariable struct {
 // NewProjectVariable registers a new resource with the given unique name, arguments, and options.
 func NewProjectVariable(ctx *pulumi.Context,
 	name string, args *ProjectVariableArgs, opts ...pulumi.ResourceOption) (*ProjectVariable, error) {
-	if args == nil || args.Key == nil {
-		return nil, errors.New("missing required argument 'Key'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.Value == nil {
-		return nil, errors.New("missing required argument 'Value'")
-	}
 	if args == nil {
-		args = &ProjectVariableArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Key == nil {
+		return nil, errors.New("invalid value for required argument 'Key'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Value == nil {
+		return nil, errors.New("invalid value for required argument 'Value'")
 	}
 	var resource ProjectVariable
 	err := ctx.RegisterResource("gitlab:index/projectVariable:ProjectVariable", name, args, &resource, opts...)

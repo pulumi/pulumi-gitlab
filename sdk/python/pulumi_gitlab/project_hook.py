@@ -88,13 +88,13 @@ class ProjectHook(pulumi.CustomResource):
             __props__['merge_requests_events'] = merge_requests_events
             __props__['note_events'] = note_events
             __props__['pipeline_events'] = pipeline_events
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['push_events'] = push_events
             __props__['tag_push_events'] = tag_push_events
             __props__['token'] = token
-            if url is None:
+            if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__['url'] = url
             __props__['wiki_page_events'] = wiki_page_events

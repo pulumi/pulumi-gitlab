@@ -71,17 +71,17 @@ class PipelineSchedule(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['active'] = active
-            if cron is None:
+            if cron is None and not opts.urn:
                 raise TypeError("Missing required property 'cron'")
             __props__['cron'] = cron
             __props__['cron_timezone'] = cron_timezone
-            if description is None:
+            if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__['description'] = description
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            if ref is None:
+            if ref is None and not opts.urn:
                 raise TypeError("Missing required property 'ref'")
             __props__['ref'] = ref
         super(PipelineSchedule, __self__).__init__(

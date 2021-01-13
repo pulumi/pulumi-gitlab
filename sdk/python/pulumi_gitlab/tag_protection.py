@@ -61,13 +61,13 @@ class TagProtection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if create_access_level is None:
+            if create_access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'create_access_level'")
             __props__['create_access_level'] = create_access_level
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            if tag is None:
+            if tag is None and not opts.urn:
                 raise TypeError("Missing required property 'tag'")
             __props__['tag'] = tag
         super(TagProtection, __self__).__init__(

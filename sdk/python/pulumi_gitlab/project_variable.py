@@ -86,15 +86,15 @@ class ProjectVariable(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['environment_scope'] = environment_scope
-            if key is None:
+            if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__['key'] = key
             __props__['masked'] = masked
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['protected'] = protected
-            if value is None:
+            if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__['value'] = value
             __props__['variable_type'] = variable_type

@@ -91,16 +91,16 @@ export class BranchProtection extends pulumi.CustomResource {
             inputs["pushAccessLevel"] = state ? state.pushAccessLevel : undefined;
         } else {
             const args = argsOrState as BranchProtectionArgs | undefined;
-            if (!args || args.branch === undefined) {
+            if ((!args || args.branch === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'branch'");
             }
-            if (!args || args.mergeAccessLevel === undefined) {
+            if ((!args || args.mergeAccessLevel === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'mergeAccessLevel'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
-            if (!args || args.pushAccessLevel === undefined) {
+            if ((!args || args.pushAccessLevel === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'pushAccessLevel'");
             }
             inputs["branch"] = args ? args.branch : undefined;

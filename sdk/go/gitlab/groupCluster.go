@@ -95,17 +95,18 @@ type GroupCluster struct {
 // NewGroupCluster registers a new resource with the given unique name, arguments, and options.
 func NewGroupCluster(ctx *pulumi.Context,
 	name string, args *GroupClusterArgs, opts ...pulumi.ResourceOption) (*GroupCluster, error) {
-	if args == nil || args.Group == nil {
-		return nil, errors.New("missing required argument 'Group'")
-	}
-	if args == nil || args.KubernetesApiUrl == nil {
-		return nil, errors.New("missing required argument 'KubernetesApiUrl'")
-	}
-	if args == nil || args.KubernetesToken == nil {
-		return nil, errors.New("missing required argument 'KubernetesToken'")
-	}
 	if args == nil {
-		args = &GroupClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Group == nil {
+		return nil, errors.New("invalid value for required argument 'Group'")
+	}
+	if args.KubernetesApiUrl == nil {
+		return nil, errors.New("invalid value for required argument 'KubernetesApiUrl'")
+	}
+	if args.KubernetesToken == nil {
+		return nil, errors.New("invalid value for required argument 'KubernetesToken'")
 	}
 	var resource GroupCluster
 	err := ctx.RegisterResource("gitlab:index/groupCluster:GroupCluster", name, args, &resource, opts...)

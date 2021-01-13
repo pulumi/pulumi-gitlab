@@ -47,14 +47,14 @@ class ServiceGithub(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            if repository_url is None:
+            if repository_url is None and not opts.urn:
                 raise TypeError("Missing required property 'repository_url'")
             __props__['repository_url'] = repository_url
             __props__['static_context'] = static_context
-            if token is None:
+            if token is None and not opts.urn:
                 raise TypeError("Missing required property 'token'")
             __props__['token'] = token
             __props__['active'] = None

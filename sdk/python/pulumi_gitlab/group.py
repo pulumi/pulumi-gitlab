@@ -89,7 +89,7 @@ class Group(pulumi.CustomResource):
             __props__['mentions_disabled'] = mentions_disabled
             __props__['name'] = name
             __props__['parent_id'] = parent_id
-            if path is None:
+            if path is None and not opts.urn:
                 raise TypeError("Missing required property 'path'")
             __props__['path'] = path
             __props__['project_creation_level'] = project_creation_level

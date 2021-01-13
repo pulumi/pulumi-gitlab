@@ -65,20 +65,21 @@ type GroupLdapLink struct {
 // NewGroupLdapLink registers a new resource with the given unique name, arguments, and options.
 func NewGroupLdapLink(ctx *pulumi.Context,
 	name string, args *GroupLdapLinkArgs, opts ...pulumi.ResourceOption) (*GroupLdapLink, error) {
-	if args == nil || args.AccessLevel == nil {
-		return nil, errors.New("missing required argument 'AccessLevel'")
-	}
-	if args == nil || args.Cn == nil {
-		return nil, errors.New("missing required argument 'Cn'")
-	}
-	if args == nil || args.GroupId == nil {
-		return nil, errors.New("missing required argument 'GroupId'")
-	}
-	if args == nil || args.LdapProvider == nil {
-		return nil, errors.New("missing required argument 'LdapProvider'")
-	}
 	if args == nil {
-		args = &GroupLdapLinkArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccessLevel == nil {
+		return nil, errors.New("invalid value for required argument 'AccessLevel'")
+	}
+	if args.Cn == nil {
+		return nil, errors.New("invalid value for required argument 'Cn'")
+	}
+	if args.GroupId == nil {
+		return nil, errors.New("invalid value for required argument 'GroupId'")
+	}
+	if args.LdapProvider == nil {
+		return nil, errors.New("invalid value for required argument 'LdapProvider'")
 	}
 	var resource GroupLdapLink
 	err := ctx.RegisterResource("gitlab:index/groupLdapLink:GroupLdapLink", name, args, &resource, opts...)

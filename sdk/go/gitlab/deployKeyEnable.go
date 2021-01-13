@@ -79,14 +79,15 @@ type DeployKeyEnable struct {
 // NewDeployKeyEnable registers a new resource with the given unique name, arguments, and options.
 func NewDeployKeyEnable(ctx *pulumi.Context,
 	name string, args *DeployKeyEnableArgs, opts ...pulumi.ResourceOption) (*DeployKeyEnable, error) {
-	if args == nil || args.KeyId == nil {
-		return nil, errors.New("missing required argument 'KeyId'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &DeployKeyEnableArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.KeyId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyId'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource DeployKeyEnable
 	err := ctx.RegisterResource("gitlab:index/deployKeyEnable:DeployKeyEnable", name, args, &resource, opts...)

@@ -65,20 +65,21 @@ type PipelineScheduleVariable struct {
 // NewPipelineScheduleVariable registers a new resource with the given unique name, arguments, and options.
 func NewPipelineScheduleVariable(ctx *pulumi.Context,
 	name string, args *PipelineScheduleVariableArgs, opts ...pulumi.ResourceOption) (*PipelineScheduleVariable, error) {
-	if args == nil || args.Key == nil {
-		return nil, errors.New("missing required argument 'Key'")
-	}
-	if args == nil || args.PipelineScheduleId == nil {
-		return nil, errors.New("missing required argument 'PipelineScheduleId'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.Value == nil {
-		return nil, errors.New("missing required argument 'Value'")
-	}
 	if args == nil {
-		args = &PipelineScheduleVariableArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Key == nil {
+		return nil, errors.New("invalid value for required argument 'Key'")
+	}
+	if args.PipelineScheduleId == nil {
+		return nil, errors.New("invalid value for required argument 'PipelineScheduleId'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Value == nil {
+		return nil, errors.New("invalid value for required argument 'Value'")
 	}
 	var resource PipelineScheduleVariable
 	err := ctx.RegisterResource("gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable", name, args, &resource, opts...)

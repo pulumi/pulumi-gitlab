@@ -101,10 +101,10 @@ export class DeployKeyEnable extends pulumi.CustomResource {
             inputs["title"] = state ? state.title : undefined;
         } else {
             const args = argsOrState as DeployKeyEnableArgs | undefined;
-            if (!args || args.keyId === undefined) {
+            if ((!args || args.keyId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'keyId'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["canPush"] = args ? args.canPush : undefined;

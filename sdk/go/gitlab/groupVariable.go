@@ -70,17 +70,18 @@ type GroupVariable struct {
 // NewGroupVariable registers a new resource with the given unique name, arguments, and options.
 func NewGroupVariable(ctx *pulumi.Context,
 	name string, args *GroupVariableArgs, opts ...pulumi.ResourceOption) (*GroupVariable, error) {
-	if args == nil || args.Group == nil {
-		return nil, errors.New("missing required argument 'Group'")
-	}
-	if args == nil || args.Key == nil {
-		return nil, errors.New("missing required argument 'Key'")
-	}
-	if args == nil || args.Value == nil {
-		return nil, errors.New("missing required argument 'Value'")
-	}
 	if args == nil {
-		args = &GroupVariableArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Group == nil {
+		return nil, errors.New("invalid value for required argument 'Group'")
+	}
+	if args.Key == nil {
+		return nil, errors.New("invalid value for required argument 'Key'")
+	}
+	if args.Value == nil {
+		return nil, errors.New("invalid value for required argument 'Value'")
 	}
 	var resource GroupVariable
 	err := ctx.RegisterResource("gitlab:index/groupVariable:GroupVariable", name, args, &resource, opts...)

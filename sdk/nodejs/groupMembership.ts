@@ -94,13 +94,13 @@ export class GroupMembership extends pulumi.CustomResource {
             inputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as GroupMembershipArgs | undefined;
-            if (!args || args.accessLevel === undefined) {
+            if ((!args || args.accessLevel === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accessLevel'");
             }
-            if (!args || args.groupId === undefined) {
+            if ((!args || args.groupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if (!args || args.userId === undefined) {
+            if ((!args || args.userId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'userId'");
             }
             inputs["accessLevel"] = args ? args.accessLevel : undefined;

@@ -63,17 +63,18 @@ type DeployKey struct {
 // NewDeployKey registers a new resource with the given unique name, arguments, and options.
 func NewDeployKey(ctx *pulumi.Context,
 	name string, args *DeployKeyArgs, opts ...pulumi.ResourceOption) (*DeployKey, error) {
-	if args == nil || args.Key == nil {
-		return nil, errors.New("missing required argument 'Key'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.Title == nil {
-		return nil, errors.New("missing required argument 'Title'")
-	}
 	if args == nil {
-		args = &DeployKeyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Key == nil {
+		return nil, errors.New("invalid value for required argument 'Key'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Title == nil {
+		return nil, errors.New("invalid value for required argument 'Title'")
 	}
 	var resource DeployKey
 	err := ctx.RegisterResource("gitlab:index/deployKey:DeployKey", name, args, &resource, opts...)

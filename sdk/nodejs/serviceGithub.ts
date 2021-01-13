@@ -72,13 +72,13 @@ export class ServiceGithub extends pulumi.CustomResource {
             inputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ServiceGithubArgs | undefined;
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
-            if (!args || args.repositoryUrl === undefined) {
+            if ((!args || args.repositoryUrl === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'repositoryUrl'");
             }
-            if (!args || args.token === undefined) {
+            if ((!args || args.token === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'token'");
             }
             inputs["project"] = args ? args.project : undefined;

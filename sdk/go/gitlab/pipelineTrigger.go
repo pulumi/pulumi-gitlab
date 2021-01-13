@@ -51,14 +51,15 @@ type PipelineTrigger struct {
 // NewPipelineTrigger registers a new resource with the given unique name, arguments, and options.
 func NewPipelineTrigger(ctx *pulumi.Context,
 	name string, args *PipelineTriggerArgs, opts ...pulumi.ResourceOption) (*PipelineTrigger, error) {
-	if args == nil || args.Description == nil {
-		return nil, errors.New("missing required argument 'Description'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &PipelineTriggerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource PipelineTrigger
 	err := ctx.RegisterResource("gitlab:index/pipelineTrigger:PipelineTrigger", name, args, &resource, opts...)

@@ -64,17 +64,18 @@ type GroupMembership struct {
 // NewGroupMembership registers a new resource with the given unique name, arguments, and options.
 func NewGroupMembership(ctx *pulumi.Context,
 	name string, args *GroupMembershipArgs, opts ...pulumi.ResourceOption) (*GroupMembership, error) {
-	if args == nil || args.AccessLevel == nil {
-		return nil, errors.New("missing required argument 'AccessLevel'")
-	}
-	if args == nil || args.GroupId == nil {
-		return nil, errors.New("missing required argument 'GroupId'")
-	}
-	if args == nil || args.UserId == nil {
-		return nil, errors.New("missing required argument 'UserId'")
-	}
 	if args == nil {
-		args = &GroupMembershipArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccessLevel == nil {
+		return nil, errors.New("invalid value for required argument 'AccessLevel'")
+	}
+	if args.GroupId == nil {
+		return nil, errors.New("invalid value for required argument 'GroupId'")
+	}
+	if args.UserId == nil {
+		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
 	var resource GroupMembership
 	err := ctx.RegisterResource("gitlab:index/groupMembership:GroupMembership", name, args, &resource, opts...)

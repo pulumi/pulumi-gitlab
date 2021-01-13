@@ -112,10 +112,10 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
             inputs["userIds"] = state ? state.userIds : undefined;
         } else {
             const args = argsOrState as ProjectApprovalRuleArgs | undefined;
-            if (!args || args.approvalsRequired === undefined) {
+            if ((!args || args.approvalsRequired === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'approvalsRequired'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["approvalsRequired"] = args ? args.approvalsRequired : undefined;

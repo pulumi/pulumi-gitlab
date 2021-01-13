@@ -66,14 +66,15 @@ type InstanceVariable struct {
 // NewInstanceVariable registers a new resource with the given unique name, arguments, and options.
 func NewInstanceVariable(ctx *pulumi.Context,
 	name string, args *InstanceVariableArgs, opts ...pulumi.ResourceOption) (*InstanceVariable, error) {
-	if args == nil || args.Key == nil {
-		return nil, errors.New("missing required argument 'Key'")
-	}
-	if args == nil || args.Value == nil {
-		return nil, errors.New("missing required argument 'Value'")
-	}
 	if args == nil {
-		args = &InstanceVariableArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Key == nil {
+		return nil, errors.New("invalid value for required argument 'Key'")
+	}
+	if args.Value == nil {
+		return nil, errors.New("invalid value for required argument 'Value'")
 	}
 	var resource InstanceVariable
 	err := ctx.RegisterResource("gitlab:index/instanceVariable:InstanceVariable", name, args, &resource, opts...)

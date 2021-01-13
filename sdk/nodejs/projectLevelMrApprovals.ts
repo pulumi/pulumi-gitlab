@@ -74,7 +74,7 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
             inputs["resetApprovalsOnPush"] = state ? state.resetApprovalsOnPush : undefined;
         } else {
             const args = argsOrState as ProjectLevelMrApprovalsArgs | undefined;
-            if (!args || args.projectId === undefined) {
+            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["disableOverridingApproversPerMergeRequest"] = args ? args.disableOverridingApproversPerMergeRequest : undefined;

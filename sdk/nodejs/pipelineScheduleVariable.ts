@@ -92,16 +92,16 @@ export class PipelineScheduleVariable extends pulumi.CustomResource {
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as PipelineScheduleVariableArgs | undefined;
-            if (!args || args.key === undefined) {
+            if ((!args || args.key === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'key'");
             }
-            if (!args || args.pipelineScheduleId === undefined) {
+            if ((!args || args.pipelineScheduleId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'pipelineScheduleId'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
-            if (!args || args.value === undefined) {
+            if ((!args || args.value === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'value'");
             }
             inputs["key"] = args ? args.key : undefined;

@@ -53,17 +53,18 @@ type TagProtection struct {
 // NewTagProtection registers a new resource with the given unique name, arguments, and options.
 func NewTagProtection(ctx *pulumi.Context,
 	name string, args *TagProtectionArgs, opts ...pulumi.ResourceOption) (*TagProtection, error) {
-	if args == nil || args.CreateAccessLevel == nil {
-		return nil, errors.New("missing required argument 'CreateAccessLevel'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.Tag == nil {
-		return nil, errors.New("missing required argument 'Tag'")
-	}
 	if args == nil {
-		args = &TagProtectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CreateAccessLevel == nil {
+		return nil, errors.New("invalid value for required argument 'CreateAccessLevel'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Tag == nil {
+		return nil, errors.New("invalid value for required argument 'Tag'")
 	}
 	var resource TagProtection
 	err := ctx.RegisterResource("gitlab:index/tagProtection:TagProtection", name, args, &resource, opts...)

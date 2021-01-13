@@ -98,16 +98,16 @@ export class PipelineSchedule extends pulumi.CustomResource {
             inputs["ref"] = state ? state.ref : undefined;
         } else {
             const args = argsOrState as PipelineScheduleArgs | undefined;
-            if (!args || args.cron === undefined) {
+            if ((!args || args.cron === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cron'");
             }
-            if (!args || args.description === undefined) {
+            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'description'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
-            if (!args || args.ref === undefined) {
+            if ((!args || args.ref === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ref'");
             }
             inputs["active"] = args ? args.active : undefined;

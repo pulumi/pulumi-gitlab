@@ -68,14 +68,15 @@ type ServiceSlack struct {
 // NewServiceSlack registers a new resource with the given unique name, arguments, and options.
 func NewServiceSlack(ctx *pulumi.Context,
 	name string, args *ServiceSlackArgs, opts ...pulumi.ResourceOption) (*ServiceSlack, error) {
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
-	if args == nil || args.Webhook == nil {
-		return nil, errors.New("missing required argument 'Webhook'")
-	}
 	if args == nil {
-		args = &ServiceSlackArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Webhook == nil {
+		return nil, errors.New("invalid value for required argument 'Webhook'")
 	}
 	var resource ServiceSlack
 	err := ctx.RegisterResource("gitlab:index/serviceSlack:ServiceSlack", name, args, &resource, opts...)

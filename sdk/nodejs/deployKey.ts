@@ -93,13 +93,13 @@ export class DeployKey extends pulumi.CustomResource {
             inputs["title"] = state ? state.title : undefined;
         } else {
             const args = argsOrState as DeployKeyArgs | undefined;
-            if (!args || args.key === undefined) {
+            if ((!args || args.key === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'key'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
-            if (!args || args.title === undefined) {
+            if ((!args || args.title === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'title'");
             }
             inputs["canPush"] = args ? args.canPush : undefined;

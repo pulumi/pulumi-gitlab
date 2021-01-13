@@ -88,7 +88,7 @@ class DeployToken(pulumi.CustomResource):
             __props__['group'] = group
             __props__['name'] = name
             __props__['project'] = project
-            if scopes is None:
+            if scopes is None and not opts.urn:
                 raise TypeError("Missing required property 'scopes'")
             __props__['scopes'] = scopes
             __props__['username'] = username

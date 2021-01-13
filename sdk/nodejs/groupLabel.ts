@@ -95,10 +95,10 @@ export class GroupLabel extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as GroupLabelArgs | undefined;
-            if (!args || args.color === undefined) {
+            if ((!args || args.color === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'color'");
             }
-            if (!args || args.group === undefined) {
+            if ((!args || args.group === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'group'");
             }
             inputs["color"] = args ? args.color : undefined;

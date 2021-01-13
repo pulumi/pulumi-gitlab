@@ -67,10 +67,10 @@ export class ServicePipelinesEmail extends pulumi.CustomResource {
             inputs["recipients"] = state ? state.recipients : undefined;
         } else {
             const args = argsOrState as ServicePipelinesEmailArgs | undefined;
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
-            if (!args || args.recipients === undefined) {
+            if ((!args || args.recipients === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'recipients'");
             }
             inputs["branchesToBeNotified"] = args ? args.branchesToBeNotified : undefined;

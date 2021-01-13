@@ -88,13 +88,13 @@ export class ProjectShareGroup extends pulumi.CustomResource {
             inputs["projectId"] = state ? state.projectId : undefined;
         } else {
             const args = argsOrState as ProjectShareGroupArgs | undefined;
-            if (!args || args.accessLevel === undefined) {
+            if ((!args || args.accessLevel === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accessLevel'");
             }
-            if (!args || args.groupId === undefined) {
+            if ((!args || args.groupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if (!args || args.projectId === undefined) {
+            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["accessLevel"] = args ? args.accessLevel : undefined;

@@ -75,10 +75,10 @@ class ProjectMirror(pulumi.CustomResource):
             __props__['enabled'] = enabled
             __props__['keep_divergent_refs'] = keep_divergent_refs
             __props__['only_protected_branches'] = only_protected_branches
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            if url is None:
+            if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__['url'] = url
             __props__['mirror_id'] = None

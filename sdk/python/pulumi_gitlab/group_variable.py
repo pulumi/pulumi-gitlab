@@ -78,15 +78,15 @@ class GroupVariable(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if group is None:
+            if group is None and not opts.urn:
                 raise TypeError("Missing required property 'group'")
             __props__['group'] = group
-            if key is None:
+            if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__['key'] = key
             __props__['masked'] = masked
             __props__['protected'] = protected
-            if value is None:
+            if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__['value'] = value
             __props__['variable_type'] = variable_type

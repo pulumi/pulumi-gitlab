@@ -83,10 +83,10 @@ class DeployKeyEnable(pulumi.CustomResource):
 
             __props__['can_push'] = can_push
             __props__['key'] = key
-            if key_id is None:
+            if key_id is None and not opts.urn:
                 raise TypeError("Missing required property 'key_id'")
             __props__['key_id'] = key_id
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['title'] = title

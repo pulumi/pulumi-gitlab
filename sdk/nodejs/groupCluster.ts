@@ -147,13 +147,13 @@ export class GroupCluster extends pulumi.CustomResource {
             inputs["providerType"] = state ? state.providerType : undefined;
         } else {
             const args = argsOrState as GroupClusterArgs | undefined;
-            if (!args || args.group === undefined) {
+            if ((!args || args.group === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'group'");
             }
-            if (!args || args.kubernetesApiUrl === undefined) {
+            if ((!args || args.kubernetesApiUrl === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'kubernetesApiUrl'");
             }
-            if (!args || args.kubernetesToken === undefined) {
+            if ((!args || args.kubernetesToken === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'kubernetesToken'");
             }
             inputs["domain"] = args ? args.domain : undefined;

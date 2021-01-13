@@ -62,7 +62,7 @@ class User(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['can_create_group'] = can_create_group
-            if email is None:
+            if email is None and not opts.urn:
                 raise TypeError("Missing required property 'email'")
             __props__['email'] = email
             __props__['is_admin'] = is_admin
@@ -72,7 +72,7 @@ class User(pulumi.CustomResource):
             __props__['projects_limit'] = projects_limit
             __props__['reset_password'] = reset_password
             __props__['skip_confirmation'] = skip_confirmation
-            if username is None:
+            if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__['username'] = username
         super(User, __self__).__init__(
