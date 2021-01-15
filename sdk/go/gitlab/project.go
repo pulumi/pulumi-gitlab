@@ -42,6 +42,11 @@ type Project struct {
 	MergeMethod pulumi.StringPtrOutput `pulumi:"mergeMethod"`
 	// Enable merge requests for the project.
 	MergeRequestsEnabled pulumi.BoolPtrOutput `pulumi:"mergeRequestsEnabled"`
+	// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
+	// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+	Mirror pulumi.BoolPtrOutput `pulumi:"mirror"`
+	// Pull mirroring triggers builds. Default is `false`.
+	MirrorTriggerBuilds pulumi.BoolPtrOutput `pulumi:"mirrorTriggerBuilds"`
 	// The name of the project.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
@@ -154,6 +159,11 @@ type projectState struct {
 	MergeMethod *string `pulumi:"mergeMethod"`
 	// Enable merge requests for the project.
 	MergeRequestsEnabled *bool `pulumi:"mergeRequestsEnabled"`
+	// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
+	// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+	Mirror *bool `pulumi:"mirror"`
+	// Pull mirroring triggers builds. Default is `false`.
+	MirrorTriggerBuilds *bool `pulumi:"mirrorTriggerBuilds"`
 	// The name of the project.
 	Name *string `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
@@ -238,6 +248,11 @@ type ProjectState struct {
 	MergeMethod pulumi.StringPtrInput
 	// Enable merge requests for the project.
 	MergeRequestsEnabled pulumi.BoolPtrInput
+	// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
+	// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+	Mirror pulumi.BoolPtrInput
+	// Pull mirroring triggers builds. Default is `false`.
+	MirrorTriggerBuilds pulumi.BoolPtrInput
 	// The name of the project.
 	Name pulumi.StringPtrInput
 	// The namespace (group or user) of the project. Defaults to your user.
@@ -323,6 +338,11 @@ type projectArgs struct {
 	MergeMethod *string `pulumi:"mergeMethod"`
 	// Enable merge requests for the project.
 	MergeRequestsEnabled *bool `pulumi:"mergeRequestsEnabled"`
+	// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
+	// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+	Mirror *bool `pulumi:"mirror"`
+	// Pull mirroring triggers builds. Default is `false`.
+	MirrorTriggerBuilds *bool `pulumi:"mirrorTriggerBuilds"`
 	// The name of the project.
 	Name *string `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
@@ -396,6 +416,11 @@ type ProjectArgs struct {
 	MergeMethod pulumi.StringPtrInput
 	// Enable merge requests for the project.
 	MergeRequestsEnabled pulumi.BoolPtrInput
+	// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
+	// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+	Mirror pulumi.BoolPtrInput
+	// Pull mirroring triggers builds. Default is `false`.
+	MirrorTriggerBuilds pulumi.BoolPtrInput
 	// The name of the project.
 	Name pulumi.StringPtrInput
 	// The namespace (group or user) of the project. Defaults to your user.

@@ -20,6 +20,7 @@ export * from "./groupCluster";
 export * from "./groupLabel";
 export * from "./groupLdapLink";
 export * from "./groupMembership";
+export * from "./groupShareGroup";
 export * from "./groupVariable";
 export * from "./instanceCluster";
 export * from "./instanceVariable";
@@ -63,6 +64,7 @@ import { GroupCluster } from "./groupCluster";
 import { GroupLabel } from "./groupLabel";
 import { GroupLdapLink } from "./groupLdapLink";
 import { GroupMembership } from "./groupMembership";
+import { GroupShareGroup } from "./groupShareGroup";
 import { GroupVariable } from "./groupVariable";
 import { InstanceCluster } from "./instanceCluster";
 import { InstanceVariable } from "./instanceVariable";
@@ -108,6 +110,8 @@ const _module = {
                 return new GroupLdapLink(name, <any>undefined, { urn })
             case "gitlab:index/groupMembership:GroupMembership":
                 return new GroupMembership(name, <any>undefined, { urn })
+            case "gitlab:index/groupShareGroup:GroupShareGroup":
+                return new GroupShareGroup(name, <any>undefined, { urn })
             case "gitlab:index/groupVariable:GroupVariable":
                 return new GroupVariable(name, <any>undefined, { urn })
             case "gitlab:index/instanceCluster:InstanceCluster":
@@ -166,6 +170,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/groupCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupLabel", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupLdapLink", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupMembership", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupShareGroup", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupVariable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/instanceCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/instanceVariable", _module)

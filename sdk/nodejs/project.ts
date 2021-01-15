@@ -89,6 +89,15 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly mergeRequestsEnabled!: pulumi.Output<boolean | undefined>;
     /**
+     * Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
+     * consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+     */
+    public readonly mirror!: pulumi.Output<boolean | undefined>;
+    /**
+     * Pull mirroring triggers builds. Default is `false`.
+     */
+    public readonly mirrorTriggerBuilds!: pulumi.Output<boolean | undefined>;
+    /**
      * The name of the project.
      */
     public readonly name!: pulumi.Output<string>;
@@ -212,6 +221,8 @@ export class Project extends pulumi.CustomResource {
             inputs["lfsEnabled"] = state ? state.lfsEnabled : undefined;
             inputs["mergeMethod"] = state ? state.mergeMethod : undefined;
             inputs["mergeRequestsEnabled"] = state ? state.mergeRequestsEnabled : undefined;
+            inputs["mirror"] = state ? state.mirror : undefined;
+            inputs["mirrorTriggerBuilds"] = state ? state.mirrorTriggerBuilds : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["namespaceId"] = state ? state.namespaceId : undefined;
             inputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = state ? state.onlyAllowMergeIfAllDiscussionsAreResolved : undefined;
@@ -249,6 +260,8 @@ export class Project extends pulumi.CustomResource {
             inputs["lfsEnabled"] = args ? args.lfsEnabled : undefined;
             inputs["mergeMethod"] = args ? args.mergeMethod : undefined;
             inputs["mergeRequestsEnabled"] = args ? args.mergeRequestsEnabled : undefined;
+            inputs["mirror"] = args ? args.mirror : undefined;
+            inputs["mirrorTriggerBuilds"] = args ? args.mirrorTriggerBuilds : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namespaceId"] = args ? args.namespaceId : undefined;
             inputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = args ? args.onlyAllowMergeIfAllDiscussionsAreResolved : undefined;
@@ -344,6 +357,15 @@ export interface ProjectState {
      * Enable merge requests for the project.
      */
     readonly mergeRequestsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
+     * consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+     */
+    readonly mirror?: pulumi.Input<boolean>;
+    /**
+     * Pull mirroring triggers builds. Default is `false`.
+     */
+    readonly mirrorTriggerBuilds?: pulumi.Input<boolean>;
     /**
      * The name of the project.
      */
@@ -498,6 +520,15 @@ export interface ProjectArgs {
      * Enable merge requests for the project.
      */
     readonly mergeRequestsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
+     * consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+     */
+    readonly mirror?: pulumi.Input<boolean>;
+    /**
+     * Pull mirroring triggers builds. Default is `false`.
+     */
+    readonly mirrorTriggerBuilds?: pulumi.Input<boolean>;
     /**
      * The name of the project.
      */

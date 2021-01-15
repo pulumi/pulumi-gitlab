@@ -93,6 +93,19 @@ namespace Pulumi.GitLab
         public Output<bool?> MergeRequestsEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
+        /// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+        /// </summary>
+        [Output("mirror")]
+        public Output<bool?> Mirror { get; private set; } = null!;
+
+        /// <summary>
+        /// Pull mirroring triggers builds. Default is `false`.
+        /// </summary>
+        [Output("mirrorTriggerBuilds")]
+        public Output<bool?> MirrorTriggerBuilds { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the project.
         /// </summary>
         [Output("name")]
@@ -357,6 +370,19 @@ namespace Pulumi.GitLab
         public Input<bool>? MergeRequestsEnabled { get; set; }
 
         /// <summary>
+        /// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
+        /// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+        /// </summary>
+        [Input("mirror")]
+        public Input<bool>? Mirror { get; set; }
+
+        /// <summary>
+        /// Pull mirroring triggers builds. Default is `false`.
+        /// </summary>
+        [Input("mirrorTriggerBuilds")]
+        public Input<bool>? MirrorTriggerBuilds { get; set; }
+
+        /// <summary>
         /// The name of the project.
         /// </summary>
         [Input("name")]
@@ -568,6 +594,19 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mergeRequestsEnabled")]
         public Input<bool>? MergeRequestsEnabled { get; set; }
+
+        /// <summary>
+        /// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
+        /// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+        /// </summary>
+        [Input("mirror")]
+        public Input<bool>? Mirror { get; set; }
+
+        /// <summary>
+        /// Pull mirroring triggers builds. Default is `false`.
+        /// </summary>
+        [Input("mirrorTriggerBuilds")]
+        public Input<bool>? MirrorTriggerBuilds { get; set; }
 
         /// <summary>
         /// The name of the project.
