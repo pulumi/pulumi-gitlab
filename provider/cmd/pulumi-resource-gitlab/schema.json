@@ -2491,6 +2491,77 @@
                 "type": "object"
             }
         },
+        "gitlab:index/groupShareGroup:GroupShareGroup": {
+            "description": "## # gitlab\\_group\\_share\\_group\n\nThis resource allows you to share a group with another group\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.GroupShareGroup(\"test\", {\n    groupId: gitlab_group.foo.id,\n    shareGroupId: gitlab_group.bar.id,\n    groupAccess: \"guest\",\n    expiresAt: \"2099-01-01\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.GroupShareGroup(\"test\",\n    group_id=gitlab_group[\"foo\"][\"id\"],\n    share_group_id=gitlab_group[\"bar\"][\"id\"],\n    group_access=\"guest\",\n    expires_at=\"2099-01-01\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = new GitLab.GroupShareGroup(\"test\", new GitLab.GroupShareGroupArgs\n        {\n            GroupId = gitlab_group.Foo.Id,\n            ShareGroupId = gitlab_group.Bar.Id,\n            GroupAccess = \"guest\",\n            ExpiresAt = \"2099-01-01\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGroupShareGroup(ctx, \"test\", \u0026gitlab.GroupShareGroupArgs{\n\t\t\tGroupId:      pulumi.Any(gitlab_group.Foo.Id),\n\t\t\tShareGroupId: pulumi.Any(gitlab_group.Bar.Id),\n\t\t\tGroupAccess:  pulumi.String(\"guest\"),\n\t\t\tExpiresAt:    pulumi.String(\"2099-01-01\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.\n\n```sh\n $ pulumi import gitlab:index/groupShareGroup:GroupShareGroup test 12345:1337\n```\n\n ",
+            "properties": {
+                "expiresAt": {
+                    "type": "string",
+                    "description": "Share expiration date. Format: `YYYY-MM-DD`\n"
+                },
+                "groupAccess": {
+                    "type": "string",
+                    "description": "One of five levels of access to the group.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The id of the main group.\n"
+                },
+                "shareGroupId": {
+                    "type": "integer",
+                    "description": "The id of an additional group which will be shared with the main group.\n"
+                }
+            },
+            "required": [
+                "groupAccess",
+                "groupId",
+                "shareGroupId"
+            ],
+            "inputProperties": {
+                "expiresAt": {
+                    "type": "string",
+                    "description": "Share expiration date. Format: `YYYY-MM-DD`\n"
+                },
+                "groupAccess": {
+                    "type": "string",
+                    "description": "One of five levels of access to the group.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The id of the main group.\n"
+                },
+                "shareGroupId": {
+                    "type": "integer",
+                    "description": "The id of an additional group which will be shared with the main group.\n"
+                }
+            },
+            "requiredInputs": [
+                "groupAccess",
+                "groupId",
+                "shareGroupId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupShareGroup resources.\n",
+                "properties": {
+                    "expiresAt": {
+                        "type": "string",
+                        "description": "Share expiration date. Format: `YYYY-MM-DD`\n"
+                    },
+                    "groupAccess": {
+                        "type": "string",
+                        "description": "One of five levels of access to the group.\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The id of the main group.\n"
+                    },
+                    "shareGroupId": {
+                        "type": "integer",
+                        "description": "The id of an additional group which will be shared with the main group.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "gitlab:index/groupVariable:GroupVariable": {
             "description": "## # gitlab\\_group\\_variable\n\nThis resource allows you to create and manage CI/CD variables for your GitLab groups.\nFor further information on variables, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.GroupVariable(\"example\", {\n    group: \"12345\",\n    key: \"group_variable_key\",\n    masked: false,\n    protected: false,\n    value: \"group_variable_value\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.GroupVariable(\"example\",\n    group=\"12345\",\n    key=\"group_variable_key\",\n    masked=False,\n    protected=False,\n    value=\"group_variable_value\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.GroupVariable(\"example\", new GitLab.GroupVariableArgs\n        {\n            Group = \"12345\",\n            Key = \"group_variable_key\",\n            Masked = false,\n            Protected = false,\n            Value = \"group_variable_value\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGroupVariable(ctx, \"example\", \u0026gitlab.GroupVariableArgs{\n\t\t\tGroup:     pulumi.String(\"12345\"),\n\t\t\tKey:       pulumi.String(\"group_variable_key\"),\n\t\t\tMasked:    pulumi.Bool(false),\n\t\t\tProtected: pulumi.Bool(false),\n\t\t\tValue:     pulumi.String(\"group_variable_value\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGitLab group variables can be imported using an id made up of `groupid:variablename`, e.g.\n\n```sh\n $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key\n```\n\n ",
             "properties": {
@@ -3192,6 +3263,14 @@
                     "type": "boolean",
                     "description": "Enable merge requests for the project.\n"
                 },
+                "mirror": {
+                    "type": "boolean",
+                    "description": "Enables pull mirroring in a project. Default is `false`. For further information on mirroring,\nconsult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).\n"
+                },
+                "mirrorTriggerBuilds": {
+                    "type": "boolean",
+                    "description": "Pull mirroring triggers builds. Default is `false`.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the project.\n"
@@ -3348,6 +3427,14 @@
                     "type": "boolean",
                     "description": "Enable merge requests for the project.\n"
                 },
+                "mirror": {
+                    "type": "boolean",
+                    "description": "Enables pull mirroring in a project. Default is `false`. For further information on mirroring,\nconsult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).\n"
+                },
+                "mirrorTriggerBuilds": {
+                    "type": "boolean",
+                    "description": "Pull mirroring triggers builds. Default is `false`.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the project.\n"
@@ -3482,6 +3569,14 @@
                     "mergeRequestsEnabled": {
                         "type": "boolean",
                         "description": "Enable merge requests for the project.\n"
+                    },
+                    "mirror": {
+                        "type": "boolean",
+                        "description": "Enables pull mirroring in a project. Default is `false`. For further information on mirroring,\nconsult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).\n"
+                    },
+                    "mirrorTriggerBuilds": {
+                        "type": "boolean",
+                        "description": "Pull mirroring triggers builds. Default is `false`.\n"
                     },
                     "name": {
                         "type": "string",
@@ -4181,7 +4276,7 @@
             }
         },
         "gitlab:index/projectMirror:ProjectMirror": {
-            "description": "## # gitlab\\_project_mirror\n\nThis resource allows you to add a mirror target for the repository, all changes will be synced to the remote target.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.ProjectMirror(\"foo\", {\n    project: \"1\",\n    url: \"https://username:password@github.com/org/repository.git\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.ProjectMirror(\"foo\",\n    project=\"1\",\n    url=\"https://username:password@github.com/org/repository.git\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new GitLab.ProjectMirror(\"foo\", new GitLab.ProjectMirrorArgs\n        {\n            Project = \"1\",\n            Url = \"https://username:password@github.com/org/repository.git\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewProjectMirror(ctx, \"foo\", \u0026gitlab.ProjectMirrorArgs{\n\t\t\tProject: pulumi.String(\"1\"),\n\t\t\tUrl:     pulumi.String(\"https://username:password@github.com/org/repository.git\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.\n\n```sh\n $ pulumi import gitlab:index/projectMirror:ProjectMirror foo \"12345:1337\"\n```\n\n ",
+            "description": "## # gitlab\\_project_mirror\n\nThis resource allows you to add a mirror target for the repository, all changes will be synced to the remote target.\n\n\u003e This is for *pushing* changes to a remote repository. *Pull Mirroring* can be configured using a combination of the \n`import_url`, `mirror`, and `mirror_trigger_builds` properties on the `gitlab.Project` resource.\n\nFor further information on mirroring, consult the \n[gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.ProjectMirror(\"foo\", {\n    project: \"1\",\n    url: \"https://username:password@github.com/org/repository.git\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.ProjectMirror(\"foo\",\n    project=\"1\",\n    url=\"https://username:password@github.com/org/repository.git\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new GitLab.ProjectMirror(\"foo\", new GitLab.ProjectMirrorArgs\n        {\n            Project = \"1\",\n            Url = \"https://username:password@github.com/org/repository.git\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewProjectMirror(ctx, \"foo\", \u0026gitlab.ProjectMirrorArgs{\n\t\t\tProject: pulumi.String(\"1\"),\n\t\t\tUrl:     pulumi.String(\"https://username:password@github.com/org/repository.git\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.\n\n```sh\n $ pulumi import gitlab:index/projectMirror:ProjectMirror foo \"12345:1337\"\n```\n\n ",
             "properties": {
                 "enabled": {
                     "type": "boolean",

@@ -18,6 +18,7 @@ from .group_cluster import *
 from .group_label import *
 from .group_ldap_link import *
 from .group_membership import *
+from .group_share_group import *
 from .group_variable import *
 from .instance_cluster import *
 from .instance_variable import *
@@ -79,6 +80,8 @@ def _register_module():
                 return GroupLdapLink(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gitlab:index/groupMembership:GroupMembership":
                 return GroupMembership(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gitlab:index/groupShareGroup:GroupShareGroup":
+                return GroupShareGroup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gitlab:index/groupVariable:GroupVariable":
                 return GroupVariable(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gitlab:index/instanceCluster:InstanceCluster":
@@ -137,6 +140,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("gitlab", "index/groupLabel", _module_instance)
     pulumi.runtime.register_resource_module("gitlab", "index/groupLdapLink", _module_instance)
     pulumi.runtime.register_resource_module("gitlab", "index/groupMembership", _module_instance)
+    pulumi.runtime.register_resource_module("gitlab", "index/groupShareGroup", _module_instance)
     pulumi.runtime.register_resource_module("gitlab", "index/groupVariable", _module_instance)
     pulumi.runtime.register_resource_module("gitlab", "index/instanceCluster", _module_instance)
     pulumi.runtime.register_resource_module("gitlab", "index/instanceVariable", _module_instance)

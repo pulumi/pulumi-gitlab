@@ -29,6 +29,8 @@ class Project(pulumi.CustomResource):
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_method: Optional[pulumi.Input[str]] = None,
                  merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
+                 mirror: Optional[pulumi.Input[bool]] = None,
+                 mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[int]] = None,
                  only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
@@ -69,6 +71,9 @@ class Project(pulumi.CustomResource):
                Valid values are `merge`, `rebase_merge`, `ff`
                Repositories are created with `merge` by default
         :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
+        :param pulumi.Input[bool] mirror: Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
+               consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+        :param pulumi.Input[bool] mirror_trigger_builds: Pull mirroring triggers builds. Default is `false`.
         :param pulumi.Input[str] name: The name of the project.
         :param pulumi.Input[int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
                See `Group` for an example.
@@ -123,6 +128,8 @@ class Project(pulumi.CustomResource):
             __props__['lfs_enabled'] = lfs_enabled
             __props__['merge_method'] = merge_method
             __props__['merge_requests_enabled'] = merge_requests_enabled
+            __props__['mirror'] = mirror
+            __props__['mirror_trigger_builds'] = mirror_trigger_builds
             __props__['name'] = name
             __props__['namespace_id'] = namespace_id
             __props__['only_allow_merge_if_all_discussions_are_resolved'] = only_allow_merge_if_all_discussions_are_resolved
@@ -170,6 +177,8 @@ class Project(pulumi.CustomResource):
             lfs_enabled: Optional[pulumi.Input[bool]] = None,
             merge_method: Optional[pulumi.Input[str]] = None,
             merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
+            mirror: Optional[pulumi.Input[bool]] = None,
+            mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             namespace_id: Optional[pulumi.Input[int]] = None,
             only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
@@ -216,6 +225,9 @@ class Project(pulumi.CustomResource):
                Valid values are `merge`, `rebase_merge`, `ff`
                Repositories are created with `merge` by default
         :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
+        :param pulumi.Input[bool] mirror: Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
+               consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+        :param pulumi.Input[bool] mirror_trigger_builds: Pull mirroring triggers builds. Default is `false`.
         :param pulumi.Input[str] name: The name of the project.
         :param pulumi.Input[int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
                See `Group` for an example.
@@ -263,6 +275,8 @@ class Project(pulumi.CustomResource):
         __props__["lfs_enabled"] = lfs_enabled
         __props__["merge_method"] = merge_method
         __props__["merge_requests_enabled"] = merge_requests_enabled
+        __props__["mirror"] = mirror
+        __props__["mirror_trigger_builds"] = mirror_trigger_builds
         __props__["name"] = name
         __props__["namespace_id"] = namespace_id
         __props__["only_allow_merge_if_all_discussions_are_resolved"] = only_allow_merge_if_all_discussions_are_resolved
@@ -394,6 +408,23 @@ class Project(pulumi.CustomResource):
         Enable merge requests for the project.
         """
         return pulumi.get(self, "merge_requests_enabled")
+
+    @property
+    @pulumi.getter
+    def mirror(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
+        consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+        """
+        return pulumi.get(self, "mirror")
+
+    @property
+    @pulumi.getter(name="mirrorTriggerBuilds")
+    def mirror_trigger_builds(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Pull mirroring triggers builds. Default is `false`.
+        """
+        return pulumi.get(self, "mirror_trigger_builds")
 
     @property
     @pulumi.getter

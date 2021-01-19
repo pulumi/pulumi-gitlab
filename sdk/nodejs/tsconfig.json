@@ -30,6 +30,7 @@
         "groupLabel.ts",
         "groupLdapLink.ts",
         "groupMembership.ts",
+        "groupShareGroup.ts",
         "groupVariable.ts",
         "index.ts",
         "instanceCluster.ts",

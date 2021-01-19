@@ -14,6 +14,12 @@ namespace Pulumi.GitLab
     /// 
     /// This resource allows you to add a mirror target for the repository, all changes will be synced to the remote target.
     /// 
+    /// &gt; This is for *pushing* changes to a remote repository. *Pull Mirroring* can be configured using a combination of the
+    /// `import_url`, `mirror`, and `mirror_trigger_builds` properties on the `gitlab.Project` resource.
+    /// 
+    /// For further information on mirroring, consult the
+    /// [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
