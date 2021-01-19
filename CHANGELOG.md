@@ -1,7 +1,10 @@
 ## HEAD (Unreleased)
-* Upgrade to v3.4.0 of the GitLab Terraform Provider
+_(none)_
 
 ---
+
+## 3.5.0 (2021-01-19)
+* Upgrade to v3.4.0 of the GitLab Terraform Provider
 
 ## 3.4.1 (2021-01-13)
 * Upgrade to pulumi-terraform-bridge v2.17.0
