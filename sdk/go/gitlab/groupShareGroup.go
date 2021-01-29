@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -158,15 +158,15 @@ type GroupShareGroupInput interface {
 	ToGroupShareGroupOutputWithContext(ctx context.Context) GroupShareGroupOutput
 }
 
-func (GroupShareGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupShareGroup)(nil)).Elem()
+func (*GroupShareGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupShareGroup)(nil))
 }
 
-func (i GroupShareGroup) ToGroupShareGroupOutput() GroupShareGroupOutput {
+func (i *GroupShareGroup) ToGroupShareGroupOutput() GroupShareGroupOutput {
 	return i.ToGroupShareGroupOutputWithContext(context.Background())
 }
 
-func (i GroupShareGroup) ToGroupShareGroupOutputWithContext(ctx context.Context) GroupShareGroupOutput {
+func (i *GroupShareGroup) ToGroupShareGroupOutputWithContext(ctx context.Context) GroupShareGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupShareGroupOutput)
 }
 
@@ -175,7 +175,7 @@ type GroupShareGroupOutput struct {
 }
 
 func (GroupShareGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupShareGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*GroupShareGroup)(nil))
 }
 
 func (o GroupShareGroupOutput) ToGroupShareGroupOutput() GroupShareGroupOutput {

@@ -23,7 +23,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -253,15 +253,15 @@ type GroupClusterInput interface {
 	ToGroupClusterOutputWithContext(ctx context.Context) GroupClusterOutput
 }
 
-func (GroupCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupCluster)(nil)).Elem()
+func (*GroupCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupCluster)(nil))
 }
 
-func (i GroupCluster) ToGroupClusterOutput() GroupClusterOutput {
+func (i *GroupCluster) ToGroupClusterOutput() GroupClusterOutput {
 	return i.ToGroupClusterOutputWithContext(context.Background())
 }
 
-func (i GroupCluster) ToGroupClusterOutputWithContext(ctx context.Context) GroupClusterOutput {
+func (i *GroupCluster) ToGroupClusterOutputWithContext(ctx context.Context) GroupClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupClusterOutput)
 }
 
@@ -270,7 +270,7 @@ type GroupClusterOutput struct {
 }
 
 func (GroupClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupClusterOutput)(nil)).Elem()
+	return reflect.TypeOf((*GroupCluster)(nil))
 }
 
 func (o GroupClusterOutput) ToGroupClusterOutput() GroupClusterOutput {

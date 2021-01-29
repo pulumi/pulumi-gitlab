@@ -23,7 +23,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -175,15 +175,15 @@ type PipelineScheduleInput interface {
 	ToPipelineScheduleOutputWithContext(ctx context.Context) PipelineScheduleOutput
 }
 
-func (PipelineSchedule) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineSchedule)(nil)).Elem()
+func (*PipelineSchedule) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineSchedule)(nil))
 }
 
-func (i PipelineSchedule) ToPipelineScheduleOutput() PipelineScheduleOutput {
+func (i *PipelineSchedule) ToPipelineScheduleOutput() PipelineScheduleOutput {
 	return i.ToPipelineScheduleOutputWithContext(context.Background())
 }
 
-func (i PipelineSchedule) ToPipelineScheduleOutputWithContext(ctx context.Context) PipelineScheduleOutput {
+func (i *PipelineSchedule) ToPipelineScheduleOutputWithContext(ctx context.Context) PipelineScheduleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineScheduleOutput)
 }
 
@@ -192,7 +192,7 @@ type PipelineScheduleOutput struct {
 }
 
 func (PipelineScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineScheduleOutput)(nil)).Elem()
+	return reflect.TypeOf((*PipelineSchedule)(nil))
 }
 
 func (o PipelineScheduleOutput) ToPipelineScheduleOutput() PipelineScheduleOutput {

@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -162,15 +162,15 @@ type PipelineScheduleVariableInput interface {
 	ToPipelineScheduleVariableOutputWithContext(ctx context.Context) PipelineScheduleVariableOutput
 }
 
-func (PipelineScheduleVariable) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineScheduleVariable)(nil)).Elem()
+func (*PipelineScheduleVariable) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScheduleVariable)(nil))
 }
 
-func (i PipelineScheduleVariable) ToPipelineScheduleVariableOutput() PipelineScheduleVariableOutput {
+func (i *PipelineScheduleVariable) ToPipelineScheduleVariableOutput() PipelineScheduleVariableOutput {
 	return i.ToPipelineScheduleVariableOutputWithContext(context.Background())
 }
 
-func (i PipelineScheduleVariable) ToPipelineScheduleVariableOutputWithContext(ctx context.Context) PipelineScheduleVariableOutput {
+func (i *PipelineScheduleVariable) ToPipelineScheduleVariableOutputWithContext(ctx context.Context) PipelineScheduleVariableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineScheduleVariableOutput)
 }
 
@@ -179,7 +179,7 @@ type PipelineScheduleVariableOutput struct {
 }
 
 func (PipelineScheduleVariableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineScheduleVariableOutput)(nil)).Elem()
+	return reflect.TypeOf((*PipelineScheduleVariable)(nil))
 }
 
 func (o PipelineScheduleVariableOutput) ToPipelineScheduleVariableOutput() PipelineScheduleVariableOutput {

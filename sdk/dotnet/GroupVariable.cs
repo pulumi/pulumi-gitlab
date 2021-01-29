@@ -47,6 +47,7 @@ namespace Pulumi.GitLab
     ///  $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/groupVariable:GroupVariable")]
     public partial class GroupVariable : Pulumi.CustomResource
     {
         /// <summary>

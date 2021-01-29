@@ -44,6 +44,7 @@ namespace Pulumi.GitLab
     ///  $ pulumi import gitlab:index/instanceVariable:InstanceVariable example instance_variable_key
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/instanceVariable:InstanceVariable")]
     public partial class InstanceVariable : Pulumi.CustomResource
     {
         /// <summary>

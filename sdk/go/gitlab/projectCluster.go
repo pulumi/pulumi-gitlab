@@ -23,7 +23,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -262,15 +262,15 @@ type ProjectClusterInput interface {
 	ToProjectClusterOutputWithContext(ctx context.Context) ProjectClusterOutput
 }
 
-func (ProjectCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectCluster)(nil)).Elem()
+func (*ProjectCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectCluster)(nil))
 }
 
-func (i ProjectCluster) ToProjectClusterOutput() ProjectClusterOutput {
+func (i *ProjectCluster) ToProjectClusterOutput() ProjectClusterOutput {
 	return i.ToProjectClusterOutputWithContext(context.Background())
 }
 
-func (i ProjectCluster) ToProjectClusterOutputWithContext(ctx context.Context) ProjectClusterOutput {
+func (i *ProjectCluster) ToProjectClusterOutputWithContext(ctx context.Context) ProjectClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectClusterOutput)
 }
 
@@ -279,7 +279,7 @@ type ProjectClusterOutput struct {
 }
 
 func (ProjectClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectClusterOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProjectCluster)(nil))
 }
 
 func (o ProjectClusterOutput) ToProjectClusterOutput() ProjectClusterOutput {

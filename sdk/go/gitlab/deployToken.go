@@ -22,7 +22,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -50,7 +50,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -209,15 +209,15 @@ type DeployTokenInput interface {
 	ToDeployTokenOutputWithContext(ctx context.Context) DeployTokenOutput
 }
 
-func (DeployToken) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeployToken)(nil)).Elem()
+func (*DeployToken) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployToken)(nil))
 }
 
-func (i DeployToken) ToDeployTokenOutput() DeployTokenOutput {
+func (i *DeployToken) ToDeployTokenOutput() DeployTokenOutput {
 	return i.ToDeployTokenOutputWithContext(context.Background())
 }
 
-func (i DeployToken) ToDeployTokenOutputWithContext(ctx context.Context) DeployTokenOutput {
+func (i *DeployToken) ToDeployTokenOutputWithContext(ctx context.Context) DeployTokenOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeployTokenOutput)
 }
 
@@ -226,7 +226,7 @@ type DeployTokenOutput struct {
 }
 
 func (DeployTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeployTokenOutput)(nil)).Elem()
+	return reflect.TypeOf((*DeployToken)(nil))
 }
 
 func (o DeployTokenOutput) ToDeployTokenOutput() DeployTokenOutput {

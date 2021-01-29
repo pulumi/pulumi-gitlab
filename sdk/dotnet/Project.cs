@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.GitLab
 {
+    [GitLabResourceType("gitlab:index/project:Project")]
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>

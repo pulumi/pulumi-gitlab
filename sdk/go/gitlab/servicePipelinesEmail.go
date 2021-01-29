@@ -118,15 +118,15 @@ type ServicePipelinesEmailInput interface {
 	ToServicePipelinesEmailOutputWithContext(ctx context.Context) ServicePipelinesEmailOutput
 }
 
-func (ServicePipelinesEmail) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePipelinesEmail)(nil)).Elem()
+func (*ServicePipelinesEmail) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePipelinesEmail)(nil))
 }
 
-func (i ServicePipelinesEmail) ToServicePipelinesEmailOutput() ServicePipelinesEmailOutput {
+func (i *ServicePipelinesEmail) ToServicePipelinesEmailOutput() ServicePipelinesEmailOutput {
 	return i.ToServicePipelinesEmailOutputWithContext(context.Background())
 }
 
-func (i ServicePipelinesEmail) ToServicePipelinesEmailOutputWithContext(ctx context.Context) ServicePipelinesEmailOutput {
+func (i *ServicePipelinesEmail) ToServicePipelinesEmailOutputWithContext(ctx context.Context) ServicePipelinesEmailOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePipelinesEmailOutput)
 }
 
@@ -135,7 +135,7 @@ type ServicePipelinesEmailOutput struct {
 }
 
 func (ServicePipelinesEmailOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePipelinesEmailOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServicePipelinesEmail)(nil))
 }
 
 func (o ServicePipelinesEmailOutput) ToServicePipelinesEmailOutput() ServicePipelinesEmailOutput {

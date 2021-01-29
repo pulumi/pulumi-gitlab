@@ -45,6 +45,7 @@ namespace Pulumi.GitLab
     ///  $ pulumi import gitlab:index/groupLabel:GroupLabel example 12345:fixme
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/groupLabel:GroupLabel")]
     public partial class GroupLabel : Pulumi.CustomResource
     {
         /// <summary>

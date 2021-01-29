@@ -23,7 +23,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -156,15 +156,15 @@ type GroupLabelInput interface {
 	ToGroupLabelOutputWithContext(ctx context.Context) GroupLabelOutput
 }
 
-func (GroupLabel) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupLabel)(nil)).Elem()
+func (*GroupLabel) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupLabel)(nil))
 }
 
-func (i GroupLabel) ToGroupLabelOutput() GroupLabelOutput {
+func (i *GroupLabel) ToGroupLabelOutput() GroupLabelOutput {
 	return i.ToGroupLabelOutputWithContext(context.Background())
 }
 
-func (i GroupLabel) ToGroupLabelOutputWithContext(ctx context.Context) GroupLabelOutput {
+func (i *GroupLabel) ToGroupLabelOutputWithContext(ctx context.Context) GroupLabelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupLabelOutput)
 }
 
@@ -173,7 +173,7 @@ type GroupLabelOutput struct {
 }
 
 func (GroupLabelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupLabelOutput)(nil)).Elem()
+	return reflect.TypeOf((*GroupLabel)(nil))
 }
 
 func (o GroupLabelOutput) ToGroupLabelOutput() GroupLabelOutput {

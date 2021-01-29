@@ -27,7 +27,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -172,15 +172,15 @@ type ProjectMirrorInput interface {
 	ToProjectMirrorOutputWithContext(ctx context.Context) ProjectMirrorOutput
 }
 
-func (ProjectMirror) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectMirror)(nil)).Elem()
+func (*ProjectMirror) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectMirror)(nil))
 }
 
-func (i ProjectMirror) ToProjectMirrorOutput() ProjectMirrorOutput {
+func (i *ProjectMirror) ToProjectMirrorOutput() ProjectMirrorOutput {
 	return i.ToProjectMirrorOutputWithContext(context.Background())
 }
 
-func (i ProjectMirror) ToProjectMirrorOutputWithContext(ctx context.Context) ProjectMirrorOutput {
+func (i *ProjectMirror) ToProjectMirrorOutputWithContext(ctx context.Context) ProjectMirrorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMirrorOutput)
 }
 
@@ -189,7 +189,7 @@ type ProjectMirrorOutput struct {
 }
 
 func (ProjectMirrorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectMirrorOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProjectMirror)(nil))
 }
 
 func (o ProjectMirrorOutput) ToProjectMirrorOutput() ProjectMirrorOutput {

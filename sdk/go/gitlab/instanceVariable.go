@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -165,15 +165,15 @@ type InstanceVariableInput interface {
 	ToInstanceVariableOutputWithContext(ctx context.Context) InstanceVariableOutput
 }
 
-func (InstanceVariable) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceVariable)(nil)).Elem()
+func (*InstanceVariable) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceVariable)(nil))
 }
 
-func (i InstanceVariable) ToInstanceVariableOutput() InstanceVariableOutput {
+func (i *InstanceVariable) ToInstanceVariableOutput() InstanceVariableOutput {
 	return i.ToInstanceVariableOutputWithContext(context.Background())
 }
 
-func (i InstanceVariable) ToInstanceVariableOutputWithContext(ctx context.Context) InstanceVariableOutput {
+func (i *InstanceVariable) ToInstanceVariableOutputWithContext(ctx context.Context) InstanceVariableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceVariableOutput)
 }
 
@@ -182,7 +182,7 @@ type InstanceVariableOutput struct {
 }
 
 func (InstanceVariableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceVariableOutput)(nil)).Elem()
+	return reflect.TypeOf((*InstanceVariable)(nil))
 }
 
 func (o InstanceVariableOutput) ToInstanceVariableOutput() InstanceVariableOutput {

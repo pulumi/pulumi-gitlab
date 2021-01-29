@@ -143,15 +143,15 @@ type ProjectApprovalRuleInput interface {
 	ToProjectApprovalRuleOutputWithContext(ctx context.Context) ProjectApprovalRuleOutput
 }
 
-func (ProjectApprovalRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectApprovalRule)(nil)).Elem()
+func (*ProjectApprovalRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectApprovalRule)(nil))
 }
 
-func (i ProjectApprovalRule) ToProjectApprovalRuleOutput() ProjectApprovalRuleOutput {
+func (i *ProjectApprovalRule) ToProjectApprovalRuleOutput() ProjectApprovalRuleOutput {
 	return i.ToProjectApprovalRuleOutputWithContext(context.Background())
 }
 
-func (i ProjectApprovalRule) ToProjectApprovalRuleOutputWithContext(ctx context.Context) ProjectApprovalRuleOutput {
+func (i *ProjectApprovalRule) ToProjectApprovalRuleOutputWithContext(ctx context.Context) ProjectApprovalRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectApprovalRuleOutput)
 }
 
@@ -160,7 +160,7 @@ type ProjectApprovalRuleOutput struct {
 }
 
 func (ProjectApprovalRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectApprovalRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProjectApprovalRule)(nil))
 }
 
 func (o ProjectApprovalRuleOutput) ToProjectApprovalRuleOutput() ProjectApprovalRuleOutput {

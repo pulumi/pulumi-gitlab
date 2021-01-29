@@ -36,6 +36,7 @@ namespace Pulumi.GitLab
     /// }
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/branchProtection:BranchProtection")]
     public partial class BranchProtection : Pulumi.CustomResource
     {
         /// <summary>

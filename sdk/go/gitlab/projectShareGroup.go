@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -147,15 +147,15 @@ type ProjectShareGroupInput interface {
 	ToProjectShareGroupOutputWithContext(ctx context.Context) ProjectShareGroupOutput
 }
 
-func (ProjectShareGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectShareGroup)(nil)).Elem()
+func (*ProjectShareGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectShareGroup)(nil))
 }
 
-func (i ProjectShareGroup) ToProjectShareGroupOutput() ProjectShareGroupOutput {
+func (i *ProjectShareGroup) ToProjectShareGroupOutput() ProjectShareGroupOutput {
 	return i.ToProjectShareGroupOutputWithContext(context.Background())
 }
 
-func (i ProjectShareGroup) ToProjectShareGroupOutputWithContext(ctx context.Context) ProjectShareGroupOutput {
+func (i *ProjectShareGroup) ToProjectShareGroupOutputWithContext(ctx context.Context) ProjectShareGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectShareGroupOutput)
 }
 
@@ -164,7 +164,7 @@ type ProjectShareGroupOutput struct {
 }
 
 func (ProjectShareGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectShareGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProjectShareGroup)(nil))
 }
 
 func (o ProjectShareGroupOutput) ToProjectShareGroupOutput() ProjectShareGroupOutput {

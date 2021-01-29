@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -128,15 +128,15 @@ type PipelineTriggerInput interface {
 	ToPipelineTriggerOutputWithContext(ctx context.Context) PipelineTriggerOutput
 }
 
-func (PipelineTrigger) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineTrigger)(nil)).Elem()
+func (*PipelineTrigger) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineTrigger)(nil))
 }
 
-func (i PipelineTrigger) ToPipelineTriggerOutput() PipelineTriggerOutput {
+func (i *PipelineTrigger) ToPipelineTriggerOutput() PipelineTriggerOutput {
 	return i.ToPipelineTriggerOutputWithContext(context.Background())
 }
 
-func (i PipelineTrigger) ToPipelineTriggerOutputWithContext(ctx context.Context) PipelineTriggerOutput {
+func (i *PipelineTrigger) ToPipelineTriggerOutputWithContext(ctx context.Context) PipelineTriggerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineTriggerOutput)
 }
 
@@ -145,7 +145,7 @@ type PipelineTriggerOutput struct {
 }
 
 func (PipelineTriggerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineTriggerOutput)(nil)).Elem()
+	return reflect.TypeOf((*PipelineTrigger)(nil))
 }
 
 func (o PipelineTriggerOutput) ToPipelineTriggerOutput() PipelineTriggerOutput {

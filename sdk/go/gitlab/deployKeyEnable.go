@@ -23,7 +23,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -166,15 +166,15 @@ type DeployKeyEnableInput interface {
 	ToDeployKeyEnableOutputWithContext(ctx context.Context) DeployKeyEnableOutput
 }
 
-func (DeployKeyEnable) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeployKeyEnable)(nil)).Elem()
+func (*DeployKeyEnable) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployKeyEnable)(nil))
 }
 
-func (i DeployKeyEnable) ToDeployKeyEnableOutput() DeployKeyEnableOutput {
+func (i *DeployKeyEnable) ToDeployKeyEnableOutput() DeployKeyEnableOutput {
 	return i.ToDeployKeyEnableOutputWithContext(context.Background())
 }
 
-func (i DeployKeyEnable) ToDeployKeyEnableOutputWithContext(ctx context.Context) DeployKeyEnableOutput {
+func (i *DeployKeyEnable) ToDeployKeyEnableOutputWithContext(ctx context.Context) DeployKeyEnableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeployKeyEnableOutput)
 }
 
@@ -183,7 +183,7 @@ type DeployKeyEnableOutput struct {
 }
 
 func (DeployKeyEnableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeployKeyEnableOutput)(nil)).Elem()
+	return reflect.TypeOf((*DeployKeyEnable)(nil))
 }
 
 func (o DeployKeyEnableOutput) ToDeployKeyEnableOutput() DeployKeyEnableOutput {

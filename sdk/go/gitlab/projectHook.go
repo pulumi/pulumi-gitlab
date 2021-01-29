@@ -23,7 +23,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -233,15 +233,15 @@ type ProjectHookInput interface {
 	ToProjectHookOutputWithContext(ctx context.Context) ProjectHookOutput
 }
 
-func (ProjectHook) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectHook)(nil)).Elem()
+func (*ProjectHook) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectHook)(nil))
 }
 
-func (i ProjectHook) ToProjectHookOutput() ProjectHookOutput {
+func (i *ProjectHook) ToProjectHookOutput() ProjectHookOutput {
 	return i.ToProjectHookOutputWithContext(context.Background())
 }
 
-func (i ProjectHook) ToProjectHookOutputWithContext(ctx context.Context) ProjectHookOutput {
+func (i *ProjectHook) ToProjectHookOutputWithContext(ctx context.Context) ProjectHookOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectHookOutput)
 }
 
@@ -250,7 +250,7 @@ type ProjectHookOutput struct {
 }
 
 func (ProjectHookOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectHookOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProjectHook)(nil))
 }
 
 func (o ProjectHookOutput) ToProjectHookOutput() ProjectHookOutput {

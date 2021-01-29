@@ -23,7 +23,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -244,15 +244,15 @@ type InstanceClusterInput interface {
 	ToInstanceClusterOutputWithContext(ctx context.Context) InstanceClusterOutput
 }
 
-func (InstanceCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceCluster)(nil)).Elem()
+func (*InstanceCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCluster)(nil))
 }
 
-func (i InstanceCluster) ToInstanceClusterOutput() InstanceClusterOutput {
+func (i *InstanceCluster) ToInstanceClusterOutput() InstanceClusterOutput {
 	return i.ToInstanceClusterOutputWithContext(context.Background())
 }
 
-func (i InstanceCluster) ToInstanceClusterOutputWithContext(ctx context.Context) InstanceClusterOutput {
+func (i *InstanceCluster) ToInstanceClusterOutputWithContext(ctx context.Context) InstanceClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterOutput)
 }
 
@@ -261,7 +261,7 @@ type InstanceClusterOutput struct {
 }
 
 func (InstanceClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceClusterOutput)(nil)).Elem()
+	return reflect.TypeOf((*InstanceCluster)(nil))
 }
 
 func (o InstanceClusterOutput) ToInstanceClusterOutput() InstanceClusterOutput {

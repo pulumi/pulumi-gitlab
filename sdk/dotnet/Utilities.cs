@@ -77,4 +77,11 @@ namespace Pulumi.GitLab
             }
         }
     }
+
+    internal sealed class GitLabResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    {
+        public GitLabResourceTypeAttribute(string type) : base(type, Utilities.Version)
+        {
+        }
+    }
 }

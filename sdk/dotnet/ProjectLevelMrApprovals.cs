@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.GitLab
 {
+    [GitLabResourceType("gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals")]
     public partial class ProjectLevelMrApprovals : Pulumi.CustomResource
     {
         /// <summary>

@@ -44,6 +44,7 @@ namespace Pulumi.GitLab
     ///  $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test "ldapmain:testuser"
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/groupLdapLink:GroupLdapLink")]
     public partial class GroupLdapLink : Pulumi.CustomResource
     {
         /// <summary>
