@@ -28,7 +28,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -195,15 +195,15 @@ type ProjectVariableInput interface {
 	ToProjectVariableOutputWithContext(ctx context.Context) ProjectVariableOutput
 }
 
-func (ProjectVariable) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectVariable)(nil)).Elem()
+func (*ProjectVariable) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectVariable)(nil))
 }
 
-func (i ProjectVariable) ToProjectVariableOutput() ProjectVariableOutput {
+func (i *ProjectVariable) ToProjectVariableOutput() ProjectVariableOutput {
 	return i.ToProjectVariableOutputWithContext(context.Background())
 }
 
-func (i ProjectVariable) ToProjectVariableOutputWithContext(ctx context.Context) ProjectVariableOutput {
+func (i *ProjectVariable) ToProjectVariableOutputWithContext(ctx context.Context) ProjectVariableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectVariableOutput)
 }
 
@@ -212,7 +212,7 @@ type ProjectVariableOutput struct {
 }
 
 func (ProjectVariableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectVariableOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProjectVariable)(nil))
 }
 
 func (o ProjectVariableOutput) ToProjectVariableOutput() ProjectVariableOutput {

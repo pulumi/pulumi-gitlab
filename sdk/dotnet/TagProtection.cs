@@ -35,6 +35,7 @@ namespace Pulumi.GitLab
     /// }
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/tagProtection:TagProtection")]
     public partial class TagProtection : Pulumi.CustomResource
     {
         /// <summary>

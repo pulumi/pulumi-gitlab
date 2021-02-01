@@ -48,6 +48,7 @@ namespace Pulumi.GitLab
     ///  $ pulumi import gitlab:index/projectMirror:ProjectMirror foo "12345:1337"
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/projectMirror:ProjectMirror")]
     public partial class ProjectMirror : Pulumi.CustomResource
     {
         /// <summary>

@@ -51,6 +51,7 @@ namespace Pulumi.GitLab
     ///  $ pulumi import gitlab:index/projectVariable:ProjectVariable example '12345:project_variable_key:*'
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/projectVariable:ProjectVariable")]
     public partial class ProjectVariable : Pulumi.CustomResource
     {
         /// <summary>

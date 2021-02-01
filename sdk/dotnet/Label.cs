@@ -37,6 +37,7 @@ namespace Pulumi.GitLab
     /// }
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/label:Label")]
     public partial class Label : Pulumi.CustomResource
     {
         /// <summary>

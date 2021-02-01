@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -166,15 +166,15 @@ type GroupLdapLinkInput interface {
 	ToGroupLdapLinkOutputWithContext(ctx context.Context) GroupLdapLinkOutput
 }
 
-func (GroupLdapLink) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupLdapLink)(nil)).Elem()
+func (*GroupLdapLink) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupLdapLink)(nil))
 }
 
-func (i GroupLdapLink) ToGroupLdapLinkOutput() GroupLdapLinkOutput {
+func (i *GroupLdapLink) ToGroupLdapLinkOutput() GroupLdapLinkOutput {
 	return i.ToGroupLdapLinkOutputWithContext(context.Background())
 }
 
-func (i GroupLdapLink) ToGroupLdapLinkOutputWithContext(ctx context.Context) GroupLdapLinkOutput {
+func (i *GroupLdapLink) ToGroupLdapLinkOutputWithContext(ctx context.Context) GroupLdapLinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupLdapLinkOutput)
 }
 
@@ -183,7 +183,7 @@ type GroupLdapLinkOutput struct {
 }
 
 func (GroupLdapLinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupLdapLinkOutput)(nil)).Elem()
+	return reflect.TypeOf((*GroupLdapLink)(nil))
 }
 
 func (o GroupLdapLinkOutput) ToGroupLdapLinkOutput() GroupLdapLinkOutput {

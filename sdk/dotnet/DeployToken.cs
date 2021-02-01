@@ -63,6 +63,7 @@ namespace Pulumi.GitLab
     /// }
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/deployToken:DeployToken")]
     public partial class DeployToken : Pulumi.CustomResource
     {
         /// <summary>

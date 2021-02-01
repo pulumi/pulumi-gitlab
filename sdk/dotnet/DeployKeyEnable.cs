@@ -60,6 +60,7 @@ namespace Pulumi.GitLab
     ///  $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/deployKeyEnable:DeployKeyEnable")]
     public partial class DeployKeyEnable : Pulumi.CustomResource
     {
         [Output("canPush")]

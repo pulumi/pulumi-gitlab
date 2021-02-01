@@ -128,15 +128,15 @@ type ServiceGithubInput interface {
 	ToServiceGithubOutputWithContext(ctx context.Context) ServiceGithubOutput
 }
 
-func (ServiceGithub) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceGithub)(nil)).Elem()
+func (*ServiceGithub) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceGithub)(nil))
 }
 
-func (i ServiceGithub) ToServiceGithubOutput() ServiceGithubOutput {
+func (i *ServiceGithub) ToServiceGithubOutput() ServiceGithubOutput {
 	return i.ToServiceGithubOutputWithContext(context.Background())
 }
 
-func (i ServiceGithub) ToServiceGithubOutputWithContext(ctx context.Context) ServiceGithubOutput {
+func (i *ServiceGithub) ToServiceGithubOutputWithContext(ctx context.Context) ServiceGithubOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceGithubOutput)
 }
 
@@ -145,7 +145,7 @@ type ServiceGithubOutput struct {
 }
 
 func (ServiceGithubOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceGithubOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServiceGithub)(nil))
 }
 
 func (o ServiceGithubOutput) ToServiceGithubOutput() ServiceGithubOutput {

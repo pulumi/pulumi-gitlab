@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -139,15 +139,15 @@ type TagProtectionInput interface {
 	ToTagProtectionOutputWithContext(ctx context.Context) TagProtectionOutput
 }
 
-func (TagProtection) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagProtection)(nil)).Elem()
+func (*TagProtection) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagProtection)(nil))
 }
 
-func (i TagProtection) ToTagProtectionOutput() TagProtectionOutput {
+func (i *TagProtection) ToTagProtectionOutput() TagProtectionOutput {
 	return i.ToTagProtectionOutputWithContext(context.Background())
 }
 
-func (i TagProtection) ToTagProtectionOutputWithContext(ctx context.Context) TagProtectionOutput {
+func (i *TagProtection) ToTagProtectionOutputWithContext(ctx context.Context) TagProtectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagProtectionOutput)
 }
 
@@ -156,7 +156,7 @@ type TagProtectionOutput struct {
 }
 
 func (TagProtectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagProtectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*TagProtection)(nil))
 }
 
 func (o TagProtectionOutput) ToTagProtectionOutput() TagProtectionOutput {

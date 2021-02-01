@@ -43,6 +43,7 @@ namespace Pulumi.GitLab
     ///  $ pulumi import gitlab:index/deployKey:DeployKey test 1:3
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/deployKey:DeployKey")]
     public partial class DeployKey : Pulumi.CustomResource
     {
         /// <summary>

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.GitLab
 {
+    [GitLabResourceType("gitlab:index/servicePipelinesEmail:ServicePipelinesEmail")]
     public partial class ServicePipelinesEmail : Pulumi.CustomResource
     {
         /// <summary>

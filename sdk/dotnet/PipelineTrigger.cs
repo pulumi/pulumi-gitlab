@@ -34,6 +34,7 @@ namespace Pulumi.GitLab
     /// }
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/pipelineTrigger:PipelineTrigger")]
     public partial class PipelineTrigger : Pulumi.CustomResource
     {
         /// <summary>

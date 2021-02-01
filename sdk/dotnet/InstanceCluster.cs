@@ -51,6 +51,7 @@ namespace Pulumi.GitLab
     ///  $ pulumi import gitlab:index/instanceCluster:InstanceCluster bar 123
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/instanceCluster:InstanceCluster")]
     public partial class InstanceCluster : Pulumi.CustomResource
     {
         [Output("clusterType")]

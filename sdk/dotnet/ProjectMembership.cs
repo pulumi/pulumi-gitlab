@@ -43,6 +43,7 @@ namespace Pulumi.GitLab
     ///  $ pulumi import gitlab:index/projectMembership:ProjectMembership test "12345:1337"
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/projectMembership:ProjectMembership")]
     public partial class ProjectMembership : Pulumi.CustomResource
     {
         /// <summary>

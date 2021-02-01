@@ -44,6 +44,7 @@ namespace Pulumi.GitLab
     ///  $ pulumi import gitlab:index/groupShareGroup:GroupShareGroup test 12345:1337
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/groupShareGroup:GroupShareGroup")]
     public partial class GroupShareGroup : Pulumi.CustomResource
     {
         /// <summary>

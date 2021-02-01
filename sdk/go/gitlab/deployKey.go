@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -157,15 +157,15 @@ type DeployKeyInput interface {
 	ToDeployKeyOutputWithContext(ctx context.Context) DeployKeyOutput
 }
 
-func (DeployKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeployKey)(nil)).Elem()
+func (*DeployKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployKey)(nil))
 }
 
-func (i DeployKey) ToDeployKeyOutput() DeployKeyOutput {
+func (i *DeployKey) ToDeployKeyOutput() DeployKeyOutput {
 	return i.ToDeployKeyOutputWithContext(context.Background())
 }
 
-func (i DeployKey) ToDeployKeyOutputWithContext(ctx context.Context) DeployKeyOutput {
+func (i *DeployKey) ToDeployKeyOutputWithContext(ctx context.Context) DeployKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeployKeyOutput)
 }
 
@@ -174,7 +174,7 @@ type DeployKeyOutput struct {
 }
 
 func (DeployKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeployKeyOutput)(nil)).Elem()
+	return reflect.TypeOf((*DeployKey)(nil))
 }
 
 func (o DeployKeyOutput) ToDeployKeyOutput() DeployKeyOutput {

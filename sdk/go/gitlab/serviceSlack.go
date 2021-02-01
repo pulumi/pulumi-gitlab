@@ -321,15 +321,15 @@ type ServiceSlackInput interface {
 	ToServiceSlackOutputWithContext(ctx context.Context) ServiceSlackOutput
 }
 
-func (ServiceSlack) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceSlack)(nil)).Elem()
+func (*ServiceSlack) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceSlack)(nil))
 }
 
-func (i ServiceSlack) ToServiceSlackOutput() ServiceSlackOutput {
+func (i *ServiceSlack) ToServiceSlackOutput() ServiceSlackOutput {
 	return i.ToServiceSlackOutputWithContext(context.Background())
 }
 
-func (i ServiceSlack) ToServiceSlackOutputWithContext(ctx context.Context) ServiceSlackOutput {
+func (i *ServiceSlack) ToServiceSlackOutputWithContext(ctx context.Context) ServiceSlackOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceSlackOutput)
 }
 
@@ -338,7 +338,7 @@ type ServiceSlackOutput struct {
 }
 
 func (ServiceSlackOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceSlackOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServiceSlack)(nil))
 }
 
 func (o ServiceSlackOutput) ToServiceSlackOutput() ServiceSlackOutput {

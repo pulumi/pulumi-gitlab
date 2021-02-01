@@ -43,6 +43,7 @@ namespace Pulumi.GitLab
     ///  $ pulumi import gitlab:index/projectShareGroup:ProjectShareGroup test 12345:1337
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/projectShareGroup:ProjectShareGroup")]
     public partial class ProjectShareGroup : Pulumi.CustomResource
     {
         /// <summary>

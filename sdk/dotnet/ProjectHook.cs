@@ -37,6 +37,7 @@ namespace Pulumi.GitLab
     /// }
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/projectHook:ProjectHook")]
     public partial class ProjectHook : Pulumi.CustomResource
     {
         /// <summary>

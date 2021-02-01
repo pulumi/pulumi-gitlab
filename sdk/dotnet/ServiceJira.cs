@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.GitLab
 {
+    [GitLabResourceType("gitlab:index/serviceJira:ServiceJira")]
     public partial class ServiceJira : Pulumi.CustomResource
     {
         [Output("active")]

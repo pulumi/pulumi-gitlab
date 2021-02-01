@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -147,15 +147,15 @@ type ProjectMembershipInput interface {
 	ToProjectMembershipOutputWithContext(ctx context.Context) ProjectMembershipOutput
 }
 
-func (ProjectMembership) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectMembership)(nil)).Elem()
+func (*ProjectMembership) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectMembership)(nil))
 }
 
-func (i ProjectMembership) ToProjectMembershipOutput() ProjectMembershipOutput {
+func (i *ProjectMembership) ToProjectMembershipOutput() ProjectMembershipOutput {
 	return i.ToProjectMembershipOutputWithContext(context.Background())
 }
 
-func (i ProjectMembership) ToProjectMembershipOutputWithContext(ctx context.Context) ProjectMembershipOutput {
+func (i *ProjectMembership) ToProjectMembershipOutputWithContext(ctx context.Context) ProjectMembershipOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMembershipOutput)
 }
 
@@ -164,7 +164,7 @@ type ProjectMembershipOutput struct {
 }
 
 func (ProjectMembershipOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectMembershipOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProjectMembership)(nil))
 }
 
 func (o ProjectMembershipOutput) ToProjectMembershipOutput() ProjectMembershipOutput {

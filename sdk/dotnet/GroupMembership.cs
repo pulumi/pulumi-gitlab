@@ -44,6 +44,7 @@ namespace Pulumi.GitLab
     ///  $ pulumi import gitlab:index/groupMembership:GroupMembership test "12345:1337"
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/groupMembership:GroupMembership")]
     public partial class GroupMembership : Pulumi.CustomResource
     {
         /// <summary>

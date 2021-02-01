@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.GitLab
 {
+    [GitLabResourceType("gitlab:index/serviceSlack:ServiceSlack")]
     public partial class ServiceSlack : Pulumi.CustomResource
     {
         /// <summary>

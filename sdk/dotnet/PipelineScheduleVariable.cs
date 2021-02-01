@@ -43,6 +43,7 @@ namespace Pulumi.GitLab
     /// }
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable")]
     public partial class PipelineScheduleVariable : Pulumi.CustomResource
     {
         /// <summary>

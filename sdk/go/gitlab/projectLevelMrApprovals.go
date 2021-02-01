@@ -135,15 +135,15 @@ type ProjectLevelMrApprovalsInput interface {
 	ToProjectLevelMrApprovalsOutputWithContext(ctx context.Context) ProjectLevelMrApprovalsOutput
 }
 
-func (ProjectLevelMrApprovals) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectLevelMrApprovals)(nil)).Elem()
+func (*ProjectLevelMrApprovals) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectLevelMrApprovals)(nil))
 }
 
-func (i ProjectLevelMrApprovals) ToProjectLevelMrApprovalsOutput() ProjectLevelMrApprovalsOutput {
+func (i *ProjectLevelMrApprovals) ToProjectLevelMrApprovalsOutput() ProjectLevelMrApprovalsOutput {
 	return i.ToProjectLevelMrApprovalsOutputWithContext(context.Background())
 }
 
-func (i ProjectLevelMrApprovals) ToProjectLevelMrApprovalsOutputWithContext(ctx context.Context) ProjectLevelMrApprovalsOutput {
+func (i *ProjectLevelMrApprovals) ToProjectLevelMrApprovalsOutputWithContext(ctx context.Context) ProjectLevelMrApprovalsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectLevelMrApprovalsOutput)
 }
 
@@ -152,7 +152,7 @@ type ProjectLevelMrApprovalsOutput struct {
 }
 
 func (ProjectLevelMrApprovalsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectLevelMrApprovalsOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProjectLevelMrApprovals)(nil))
 }
 
 func (o ProjectLevelMrApprovalsOutput) ToProjectLevelMrApprovalsOutput() ProjectLevelMrApprovalsOutput {

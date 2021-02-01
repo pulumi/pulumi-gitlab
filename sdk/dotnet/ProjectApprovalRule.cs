@@ -65,6 +65,7 @@ namespace Pulumi.GitLab
     ///  $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"
     /// ```
     /// </summary>
+    [GitLabResourceType("gitlab:index/projectApprovalRule:ProjectApprovalRule")]
     public partial class ProjectApprovalRule : Pulumi.CustomResource
     {
         /// <summary>

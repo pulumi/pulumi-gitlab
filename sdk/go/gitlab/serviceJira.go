@@ -186,15 +186,15 @@ type ServiceJiraInput interface {
 	ToServiceJiraOutputWithContext(ctx context.Context) ServiceJiraOutput
 }
 
-func (ServiceJira) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceJira)(nil)).Elem()
+func (*ServiceJira) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceJira)(nil))
 }
 
-func (i ServiceJira) ToServiceJiraOutput() ServiceJiraOutput {
+func (i *ServiceJira) ToServiceJiraOutput() ServiceJiraOutput {
 	return i.ToServiceJiraOutputWithContext(context.Background())
 }
 
-func (i ServiceJira) ToServiceJiraOutputWithContext(ctx context.Context) ServiceJiraOutput {
+func (i *ServiceJira) ToServiceJiraOutputWithContext(ctx context.Context) ServiceJiraOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceJiraOutput)
 }
 
@@ -203,7 +203,7 @@ type ServiceJiraOutput struct {
 }
 
 func (ServiceJiraOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceJiraOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServiceJira)(nil))
 }
 
 func (o ServiceJiraOutput) ToServiceJiraOutput() ServiceJiraOutput {
