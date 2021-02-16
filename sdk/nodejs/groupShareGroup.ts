@@ -86,7 +86,8 @@ export class GroupShareGroup extends pulumi.CustomResource {
     constructor(name: string, args: GroupShareGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupShareGroupArgs | GroupShareGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GroupShareGroupState | undefined;
             inputs["expiresAt"] = state ? state.expiresAt : undefined;
             inputs["groupAccess"] = state ? state.groupAccess : undefined;
@@ -94,13 +95,13 @@ export class GroupShareGroup extends pulumi.CustomResource {
             inputs["shareGroupId"] = state ? state.shareGroupId : undefined;
         } else {
             const args = argsOrState as GroupShareGroupArgs | undefined;
-            if ((!args || args.groupAccess === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.groupAccess === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupAccess'");
             }
-            if ((!args || args.groupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.shareGroupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.shareGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'shareGroupId'");
             }
             inputs["expiresAt"] = args ? args.expiresAt : undefined;
@@ -108,12 +109,8 @@ export class GroupShareGroup extends pulumi.CustomResource {
             inputs["groupId"] = args ? args.groupId : undefined;
             inputs["shareGroupId"] = args ? args.shareGroupId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GroupShareGroup.__pulumiType, name, inputs, opts);
     }

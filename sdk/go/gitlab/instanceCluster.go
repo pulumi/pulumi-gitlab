@@ -23,7 +23,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -256,6 +256,85 @@ func (i *InstanceCluster) ToInstanceClusterOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterOutput)
 }
 
+func (i *InstanceCluster) ToInstanceClusterPtrOutput() InstanceClusterPtrOutput {
+	return i.ToInstanceClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *InstanceCluster) ToInstanceClusterPtrOutputWithContext(ctx context.Context) InstanceClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterPtrOutput)
+}
+
+type InstanceClusterPtrInput interface {
+	pulumi.Input
+
+	ToInstanceClusterPtrOutput() InstanceClusterPtrOutput
+	ToInstanceClusterPtrOutputWithContext(ctx context.Context) InstanceClusterPtrOutput
+}
+
+type instanceClusterPtrType InstanceClusterArgs
+
+func (*instanceClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceCluster)(nil))
+}
+
+func (i *instanceClusterPtrType) ToInstanceClusterPtrOutput() InstanceClusterPtrOutput {
+	return i.ToInstanceClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceClusterPtrType) ToInstanceClusterPtrOutputWithContext(ctx context.Context) InstanceClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterPtrOutput)
+}
+
+// InstanceClusterArrayInput is an input type that accepts InstanceClusterArray and InstanceClusterArrayOutput values.
+// You can construct a concrete instance of `InstanceClusterArrayInput` via:
+//
+//          InstanceClusterArray{ InstanceClusterArgs{...} }
+type InstanceClusterArrayInput interface {
+	pulumi.Input
+
+	ToInstanceClusterArrayOutput() InstanceClusterArrayOutput
+	ToInstanceClusterArrayOutputWithContext(context.Context) InstanceClusterArrayOutput
+}
+
+type InstanceClusterArray []InstanceClusterInput
+
+func (InstanceClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*InstanceCluster)(nil))
+}
+
+func (i InstanceClusterArray) ToInstanceClusterArrayOutput() InstanceClusterArrayOutput {
+	return i.ToInstanceClusterArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceClusterArray) ToInstanceClusterArrayOutputWithContext(ctx context.Context) InstanceClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterArrayOutput)
+}
+
+// InstanceClusterMapInput is an input type that accepts InstanceClusterMap and InstanceClusterMapOutput values.
+// You can construct a concrete instance of `InstanceClusterMapInput` via:
+//
+//          InstanceClusterMap{ "key": InstanceClusterArgs{...} }
+type InstanceClusterMapInput interface {
+	pulumi.Input
+
+	ToInstanceClusterMapOutput() InstanceClusterMapOutput
+	ToInstanceClusterMapOutputWithContext(context.Context) InstanceClusterMapOutput
+}
+
+type InstanceClusterMap map[string]InstanceClusterInput
+
+func (InstanceClusterMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*InstanceCluster)(nil))
+}
+
+func (i InstanceClusterMap) ToInstanceClusterMapOutput() InstanceClusterMapOutput {
+	return i.ToInstanceClusterMapOutputWithContext(context.Background())
+}
+
+func (i InstanceClusterMap) ToInstanceClusterMapOutputWithContext(ctx context.Context) InstanceClusterMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterMapOutput)
+}
+
 type InstanceClusterOutput struct {
 	*pulumi.OutputState
 }
@@ -272,6 +351,75 @@ func (o InstanceClusterOutput) ToInstanceClusterOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o InstanceClusterOutput) ToInstanceClusterPtrOutput() InstanceClusterPtrOutput {
+	return o.ToInstanceClusterPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceClusterOutput) ToInstanceClusterPtrOutputWithContext(ctx context.Context) InstanceClusterPtrOutput {
+	return o.ApplyT(func(v InstanceCluster) *InstanceCluster {
+		return &v
+	}).(InstanceClusterPtrOutput)
+}
+
+type InstanceClusterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceCluster)(nil))
+}
+
+func (o InstanceClusterPtrOutput) ToInstanceClusterPtrOutput() InstanceClusterPtrOutput {
+	return o
+}
+
+func (o InstanceClusterPtrOutput) ToInstanceClusterPtrOutputWithContext(ctx context.Context) InstanceClusterPtrOutput {
+	return o
+}
+
+type InstanceClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceCluster)(nil))
+}
+
+func (o InstanceClusterArrayOutput) ToInstanceClusterArrayOutput() InstanceClusterArrayOutput {
+	return o
+}
+
+func (o InstanceClusterArrayOutput) ToInstanceClusterArrayOutputWithContext(ctx context.Context) InstanceClusterArrayOutput {
+	return o
+}
+
+func (o InstanceClusterArrayOutput) Index(i pulumi.IntInput) InstanceClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceCluster {
+		return vs[0].([]InstanceCluster)[vs[1].(int)]
+	}).(InstanceClusterOutput)
+}
+
+type InstanceClusterMapOutput struct{ *pulumi.OutputState }
+
+func (InstanceClusterMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InstanceCluster)(nil))
+}
+
+func (o InstanceClusterMapOutput) ToInstanceClusterMapOutput() InstanceClusterMapOutput {
+	return o
+}
+
+func (o InstanceClusterMapOutput) ToInstanceClusterMapOutputWithContext(ctx context.Context) InstanceClusterMapOutput {
+	return o
+}
+
+func (o InstanceClusterMapOutput) MapIndex(k pulumi.StringInput) InstanceClusterOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InstanceCluster {
+		return vs[0].(map[string]InstanceCluster)[vs[1].(string)]
+	}).(InstanceClusterOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(InstanceClusterOutput{})
+	pulumi.RegisterOutputType(InstanceClusterPtrOutput{})
+	pulumi.RegisterOutputType(InstanceClusterArrayOutput{})
+	pulumi.RegisterOutputType(InstanceClusterMapOutput{})
 }

@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -151,6 +151,85 @@ func (i *TagProtection) ToTagProtectionOutputWithContext(ctx context.Context) Ta
 	return pulumi.ToOutputWithContext(ctx, i).(TagProtectionOutput)
 }
 
+func (i *TagProtection) ToTagProtectionPtrOutput() TagProtectionPtrOutput {
+	return i.ToTagProtectionPtrOutputWithContext(context.Background())
+}
+
+func (i *TagProtection) ToTagProtectionPtrOutputWithContext(ctx context.Context) TagProtectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagProtectionPtrOutput)
+}
+
+type TagProtectionPtrInput interface {
+	pulumi.Input
+
+	ToTagProtectionPtrOutput() TagProtectionPtrOutput
+	ToTagProtectionPtrOutputWithContext(ctx context.Context) TagProtectionPtrOutput
+}
+
+type tagProtectionPtrType TagProtectionArgs
+
+func (*tagProtectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagProtection)(nil))
+}
+
+func (i *tagProtectionPtrType) ToTagProtectionPtrOutput() TagProtectionPtrOutput {
+	return i.ToTagProtectionPtrOutputWithContext(context.Background())
+}
+
+func (i *tagProtectionPtrType) ToTagProtectionPtrOutputWithContext(ctx context.Context) TagProtectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagProtectionPtrOutput)
+}
+
+// TagProtectionArrayInput is an input type that accepts TagProtectionArray and TagProtectionArrayOutput values.
+// You can construct a concrete instance of `TagProtectionArrayInput` via:
+//
+//          TagProtectionArray{ TagProtectionArgs{...} }
+type TagProtectionArrayInput interface {
+	pulumi.Input
+
+	ToTagProtectionArrayOutput() TagProtectionArrayOutput
+	ToTagProtectionArrayOutputWithContext(context.Context) TagProtectionArrayOutput
+}
+
+type TagProtectionArray []TagProtectionInput
+
+func (TagProtectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TagProtection)(nil))
+}
+
+func (i TagProtectionArray) ToTagProtectionArrayOutput() TagProtectionArrayOutput {
+	return i.ToTagProtectionArrayOutputWithContext(context.Background())
+}
+
+func (i TagProtectionArray) ToTagProtectionArrayOutputWithContext(ctx context.Context) TagProtectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagProtectionArrayOutput)
+}
+
+// TagProtectionMapInput is an input type that accepts TagProtectionMap and TagProtectionMapOutput values.
+// You can construct a concrete instance of `TagProtectionMapInput` via:
+//
+//          TagProtectionMap{ "key": TagProtectionArgs{...} }
+type TagProtectionMapInput interface {
+	pulumi.Input
+
+	ToTagProtectionMapOutput() TagProtectionMapOutput
+	ToTagProtectionMapOutputWithContext(context.Context) TagProtectionMapOutput
+}
+
+type TagProtectionMap map[string]TagProtectionInput
+
+func (TagProtectionMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TagProtection)(nil))
+}
+
+func (i TagProtectionMap) ToTagProtectionMapOutput() TagProtectionMapOutput {
+	return i.ToTagProtectionMapOutputWithContext(context.Background())
+}
+
+func (i TagProtectionMap) ToTagProtectionMapOutputWithContext(ctx context.Context) TagProtectionMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagProtectionMapOutput)
+}
+
 type TagProtectionOutput struct {
 	*pulumi.OutputState
 }
@@ -167,6 +246,75 @@ func (o TagProtectionOutput) ToTagProtectionOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o TagProtectionOutput) ToTagProtectionPtrOutput() TagProtectionPtrOutput {
+	return o.ToTagProtectionPtrOutputWithContext(context.Background())
+}
+
+func (o TagProtectionOutput) ToTagProtectionPtrOutputWithContext(ctx context.Context) TagProtectionPtrOutput {
+	return o.ApplyT(func(v TagProtection) *TagProtection {
+		return &v
+	}).(TagProtectionPtrOutput)
+}
+
+type TagProtectionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TagProtectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagProtection)(nil))
+}
+
+func (o TagProtectionPtrOutput) ToTagProtectionPtrOutput() TagProtectionPtrOutput {
+	return o
+}
+
+func (o TagProtectionPtrOutput) ToTagProtectionPtrOutputWithContext(ctx context.Context) TagProtectionPtrOutput {
+	return o
+}
+
+type TagProtectionArrayOutput struct{ *pulumi.OutputState }
+
+func (TagProtectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TagProtection)(nil))
+}
+
+func (o TagProtectionArrayOutput) ToTagProtectionArrayOutput() TagProtectionArrayOutput {
+	return o
+}
+
+func (o TagProtectionArrayOutput) ToTagProtectionArrayOutputWithContext(ctx context.Context) TagProtectionArrayOutput {
+	return o
+}
+
+func (o TagProtectionArrayOutput) Index(i pulumi.IntInput) TagProtectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TagProtection {
+		return vs[0].([]TagProtection)[vs[1].(int)]
+	}).(TagProtectionOutput)
+}
+
+type TagProtectionMapOutput struct{ *pulumi.OutputState }
+
+func (TagProtectionMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TagProtection)(nil))
+}
+
+func (o TagProtectionMapOutput) ToTagProtectionMapOutput() TagProtectionMapOutput {
+	return o
+}
+
+func (o TagProtectionMapOutput) ToTagProtectionMapOutputWithContext(ctx context.Context) TagProtectionMapOutput {
+	return o
+}
+
+func (o TagProtectionMapOutput) MapIndex(k pulumi.StringInput) TagProtectionOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TagProtection {
+		return vs[0].(map[string]TagProtection)[vs[1].(string)]
+	}).(TagProtectionOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TagProtectionOutput{})
+	pulumi.RegisterOutputType(TagProtectionPtrOutput{})
+	pulumi.RegisterOutputType(TagProtectionArrayOutput{})
+	pulumi.RegisterOutputType(TagProtectionMapOutput{})
 }

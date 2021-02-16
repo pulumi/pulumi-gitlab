@@ -56,15 +56,13 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if base_url is None:
-                base_url = _utilities.get_env('GITLAB_BASE_URL')
             __props__['base_url'] = base_url
             __props__['cacert_file'] = cacert_file
             __props__['client_cert'] = client_cert
             __props__['client_key'] = client_key
             __props__['insecure'] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
-            if token is None:
-                token = _utilities.get_env('GITLAB_TOKEN')
+            if token is None and not opts.urn:
+                raise TypeError("Missing required property 'token'")
             __props__['token'] = token
         super(Provider, __self__).__init__(
             'gitlab',

@@ -65,7 +65,8 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
     constructor(name: string, args: ProjectLevelMrApprovalsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectLevelMrApprovalsArgs | ProjectLevelMrApprovalsState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectLevelMrApprovalsState | undefined;
             inputs["disableOverridingApproversPerMergeRequest"] = state ? state.disableOverridingApproversPerMergeRequest : undefined;
             inputs["mergeRequestsAuthorApproval"] = state ? state.mergeRequestsAuthorApproval : undefined;
@@ -74,7 +75,7 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
             inputs["resetApprovalsOnPush"] = state ? state.resetApprovalsOnPush : undefined;
         } else {
             const args = argsOrState as ProjectLevelMrApprovalsArgs | undefined;
-            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["disableOverridingApproversPerMergeRequest"] = args ? args.disableOverridingApproversPerMergeRequest : undefined;
@@ -83,12 +84,8 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["resetApprovalsOnPush"] = args ? args.resetApprovalsOnPush : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ProjectLevelMrApprovals.__pulumiType, name, inputs, opts);
     }

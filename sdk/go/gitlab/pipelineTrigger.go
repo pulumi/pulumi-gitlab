@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -140,6 +140,85 @@ func (i *PipelineTrigger) ToPipelineTriggerOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineTriggerOutput)
 }
 
+func (i *PipelineTrigger) ToPipelineTriggerPtrOutput() PipelineTriggerPtrOutput {
+	return i.ToPipelineTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *PipelineTrigger) ToPipelineTriggerPtrOutputWithContext(ctx context.Context) PipelineTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineTriggerPtrOutput)
+}
+
+type PipelineTriggerPtrInput interface {
+	pulumi.Input
+
+	ToPipelineTriggerPtrOutput() PipelineTriggerPtrOutput
+	ToPipelineTriggerPtrOutputWithContext(ctx context.Context) PipelineTriggerPtrOutput
+}
+
+type pipelineTriggerPtrType PipelineTriggerArgs
+
+func (*pipelineTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineTrigger)(nil))
+}
+
+func (i *pipelineTriggerPtrType) ToPipelineTriggerPtrOutput() PipelineTriggerPtrOutput {
+	return i.ToPipelineTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineTriggerPtrType) ToPipelineTriggerPtrOutputWithContext(ctx context.Context) PipelineTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineTriggerPtrOutput)
+}
+
+// PipelineTriggerArrayInput is an input type that accepts PipelineTriggerArray and PipelineTriggerArrayOutput values.
+// You can construct a concrete instance of `PipelineTriggerArrayInput` via:
+//
+//          PipelineTriggerArray{ PipelineTriggerArgs{...} }
+type PipelineTriggerArrayInput interface {
+	pulumi.Input
+
+	ToPipelineTriggerArrayOutput() PipelineTriggerArrayOutput
+	ToPipelineTriggerArrayOutputWithContext(context.Context) PipelineTriggerArrayOutput
+}
+
+type PipelineTriggerArray []PipelineTriggerInput
+
+func (PipelineTriggerArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*PipelineTrigger)(nil))
+}
+
+func (i PipelineTriggerArray) ToPipelineTriggerArrayOutput() PipelineTriggerArrayOutput {
+	return i.ToPipelineTriggerArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineTriggerArray) ToPipelineTriggerArrayOutputWithContext(ctx context.Context) PipelineTriggerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineTriggerArrayOutput)
+}
+
+// PipelineTriggerMapInput is an input type that accepts PipelineTriggerMap and PipelineTriggerMapOutput values.
+// You can construct a concrete instance of `PipelineTriggerMapInput` via:
+//
+//          PipelineTriggerMap{ "key": PipelineTriggerArgs{...} }
+type PipelineTriggerMapInput interface {
+	pulumi.Input
+
+	ToPipelineTriggerMapOutput() PipelineTriggerMapOutput
+	ToPipelineTriggerMapOutputWithContext(context.Context) PipelineTriggerMapOutput
+}
+
+type PipelineTriggerMap map[string]PipelineTriggerInput
+
+func (PipelineTriggerMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*PipelineTrigger)(nil))
+}
+
+func (i PipelineTriggerMap) ToPipelineTriggerMapOutput() PipelineTriggerMapOutput {
+	return i.ToPipelineTriggerMapOutputWithContext(context.Background())
+}
+
+func (i PipelineTriggerMap) ToPipelineTriggerMapOutputWithContext(ctx context.Context) PipelineTriggerMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineTriggerMapOutput)
+}
+
 type PipelineTriggerOutput struct {
 	*pulumi.OutputState
 }
@@ -156,6 +235,75 @@ func (o PipelineTriggerOutput) ToPipelineTriggerOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o PipelineTriggerOutput) ToPipelineTriggerPtrOutput() PipelineTriggerPtrOutput {
+	return o.ToPipelineTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineTriggerOutput) ToPipelineTriggerPtrOutputWithContext(ctx context.Context) PipelineTriggerPtrOutput {
+	return o.ApplyT(func(v PipelineTrigger) *PipelineTrigger {
+		return &v
+	}).(PipelineTriggerPtrOutput)
+}
+
+type PipelineTriggerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PipelineTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineTrigger)(nil))
+}
+
+func (o PipelineTriggerPtrOutput) ToPipelineTriggerPtrOutput() PipelineTriggerPtrOutput {
+	return o
+}
+
+func (o PipelineTriggerPtrOutput) ToPipelineTriggerPtrOutputWithContext(ctx context.Context) PipelineTriggerPtrOutput {
+	return o
+}
+
+type PipelineTriggerArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineTriggerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineTrigger)(nil))
+}
+
+func (o PipelineTriggerArrayOutput) ToPipelineTriggerArrayOutput() PipelineTriggerArrayOutput {
+	return o
+}
+
+func (o PipelineTriggerArrayOutput) ToPipelineTriggerArrayOutputWithContext(ctx context.Context) PipelineTriggerArrayOutput {
+	return o
+}
+
+func (o PipelineTriggerArrayOutput) Index(i pulumi.IntInput) PipelineTriggerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineTrigger {
+		return vs[0].([]PipelineTrigger)[vs[1].(int)]
+	}).(PipelineTriggerOutput)
+}
+
+type PipelineTriggerMapOutput struct{ *pulumi.OutputState }
+
+func (PipelineTriggerMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PipelineTrigger)(nil))
+}
+
+func (o PipelineTriggerMapOutput) ToPipelineTriggerMapOutput() PipelineTriggerMapOutput {
+	return o
+}
+
+func (o PipelineTriggerMapOutput) ToPipelineTriggerMapOutputWithContext(ctx context.Context) PipelineTriggerMapOutput {
+	return o
+}
+
+func (o PipelineTriggerMapOutput) MapIndex(k pulumi.StringInput) PipelineTriggerOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PipelineTrigger {
+		return vs[0].(map[string]PipelineTrigger)[vs[1].(string)]
+	}).(PipelineTriggerOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(PipelineTriggerOutput{})
+	pulumi.RegisterOutputType(PipelineTriggerPtrOutput{})
+	pulumi.RegisterOutputType(PipelineTriggerArrayOutput{})
+	pulumi.RegisterOutputType(PipelineTriggerMapOutput{})
 }

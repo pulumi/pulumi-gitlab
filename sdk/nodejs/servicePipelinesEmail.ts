@@ -59,7 +59,8 @@ export class ServicePipelinesEmail extends pulumi.CustomResource {
     constructor(name: string, args: ServicePipelinesEmailArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServicePipelinesEmailArgs | ServicePipelinesEmailState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ServicePipelinesEmailState | undefined;
             inputs["branchesToBeNotified"] = state ? state.branchesToBeNotified : undefined;
             inputs["notifyOnlyBrokenPipelines"] = state ? state.notifyOnlyBrokenPipelines : undefined;
@@ -67,10 +68,10 @@ export class ServicePipelinesEmail extends pulumi.CustomResource {
             inputs["recipients"] = state ? state.recipients : undefined;
         } else {
             const args = argsOrState as ServicePipelinesEmailArgs | undefined;
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.recipients === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.recipients === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'recipients'");
             }
             inputs["branchesToBeNotified"] = args ? args.branchesToBeNotified : undefined;
@@ -78,12 +79,8 @@ export class ServicePipelinesEmail extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["recipients"] = args ? args.recipients : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ServicePipelinesEmail.__pulumiType, name, inputs, opts);
     }

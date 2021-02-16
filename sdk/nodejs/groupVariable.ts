@@ -94,7 +94,8 @@ export class GroupVariable extends pulumi.CustomResource {
     constructor(name: string, args: GroupVariableArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupVariableArgs | GroupVariableState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GroupVariableState | undefined;
             inputs["group"] = state ? state.group : undefined;
             inputs["key"] = state ? state.key : undefined;
@@ -104,13 +105,13 @@ export class GroupVariable extends pulumi.CustomResource {
             inputs["variableType"] = state ? state.variableType : undefined;
         } else {
             const args = argsOrState as GroupVariableArgs | undefined;
-            if ((!args || args.group === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.group === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            if ((!args || args.key === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.key === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.value === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
             inputs["group"] = args ? args.group : undefined;
@@ -120,12 +121,8 @@ export class GroupVariable extends pulumi.CustomResource {
             inputs["value"] = args ? args.value : undefined;
             inputs["variableType"] = args ? args.variableType : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GroupVariable.__pulumiType, name, inputs, opts);
     }

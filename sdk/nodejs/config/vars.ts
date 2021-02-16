@@ -9,7 +9,7 @@ let __config = new pulumi.Config("gitlab");
 /**
  * The GitLab Base API URL
  */
-export let baseUrl: string | undefined = __config.get("baseUrl") || utilities.getEnv("GITLAB_BASE_URL");
+export let baseUrl: string | undefined = __config.get("baseUrl");
 /**
  * A file containing the ca certificate to use in case ssl certificate is not from a standard chain
  */
@@ -29,4 +29,4 @@ export let insecure: boolean | undefined = __config.getObject<boolean>("insecure
 /**
  * The OAuth token used to connect to GitLab.
  */
-export let token: string | undefined = __config.get("token") || utilities.getEnv("GITLAB_TOKEN");
+export let token: string | undefined = __config.get("token");

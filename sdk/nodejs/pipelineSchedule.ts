@@ -88,7 +88,8 @@ export class PipelineSchedule extends pulumi.CustomResource {
     constructor(name: string, args: PipelineScheduleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PipelineScheduleArgs | PipelineScheduleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PipelineScheduleState | undefined;
             inputs["active"] = state ? state.active : undefined;
             inputs["cron"] = state ? state.cron : undefined;
@@ -98,16 +99,16 @@ export class PipelineSchedule extends pulumi.CustomResource {
             inputs["ref"] = state ? state.ref : undefined;
         } else {
             const args = argsOrState as PipelineScheduleArgs | undefined;
-            if ((!args || args.cron === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cron === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cron'");
             }
-            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.ref === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ref === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ref'");
             }
             inputs["active"] = args ? args.active : undefined;
@@ -117,12 +118,8 @@ export class PipelineSchedule extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["ref"] = args ? args.ref : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(PipelineSchedule.__pulumiType, name, inputs, opts);
     }

@@ -23,7 +23,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -168,6 +168,85 @@ func (i *GroupLabel) ToGroupLabelOutputWithContext(ctx context.Context) GroupLab
 	return pulumi.ToOutputWithContext(ctx, i).(GroupLabelOutput)
 }
 
+func (i *GroupLabel) ToGroupLabelPtrOutput() GroupLabelPtrOutput {
+	return i.ToGroupLabelPtrOutputWithContext(context.Background())
+}
+
+func (i *GroupLabel) ToGroupLabelPtrOutputWithContext(ctx context.Context) GroupLabelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupLabelPtrOutput)
+}
+
+type GroupLabelPtrInput interface {
+	pulumi.Input
+
+	ToGroupLabelPtrOutput() GroupLabelPtrOutput
+	ToGroupLabelPtrOutputWithContext(ctx context.Context) GroupLabelPtrOutput
+}
+
+type groupLabelPtrType GroupLabelArgs
+
+func (*groupLabelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupLabel)(nil))
+}
+
+func (i *groupLabelPtrType) ToGroupLabelPtrOutput() GroupLabelPtrOutput {
+	return i.ToGroupLabelPtrOutputWithContext(context.Background())
+}
+
+func (i *groupLabelPtrType) ToGroupLabelPtrOutputWithContext(ctx context.Context) GroupLabelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupLabelPtrOutput)
+}
+
+// GroupLabelArrayInput is an input type that accepts GroupLabelArray and GroupLabelArrayOutput values.
+// You can construct a concrete instance of `GroupLabelArrayInput` via:
+//
+//          GroupLabelArray{ GroupLabelArgs{...} }
+type GroupLabelArrayInput interface {
+	pulumi.Input
+
+	ToGroupLabelArrayOutput() GroupLabelArrayOutput
+	ToGroupLabelArrayOutputWithContext(context.Context) GroupLabelArrayOutput
+}
+
+type GroupLabelArray []GroupLabelInput
+
+func (GroupLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*GroupLabel)(nil))
+}
+
+func (i GroupLabelArray) ToGroupLabelArrayOutput() GroupLabelArrayOutput {
+	return i.ToGroupLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GroupLabelArray) ToGroupLabelArrayOutputWithContext(ctx context.Context) GroupLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupLabelArrayOutput)
+}
+
+// GroupLabelMapInput is an input type that accepts GroupLabelMap and GroupLabelMapOutput values.
+// You can construct a concrete instance of `GroupLabelMapInput` via:
+//
+//          GroupLabelMap{ "key": GroupLabelArgs{...} }
+type GroupLabelMapInput interface {
+	pulumi.Input
+
+	ToGroupLabelMapOutput() GroupLabelMapOutput
+	ToGroupLabelMapOutputWithContext(context.Context) GroupLabelMapOutput
+}
+
+type GroupLabelMap map[string]GroupLabelInput
+
+func (GroupLabelMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*GroupLabel)(nil))
+}
+
+func (i GroupLabelMap) ToGroupLabelMapOutput() GroupLabelMapOutput {
+	return i.ToGroupLabelMapOutputWithContext(context.Background())
+}
+
+func (i GroupLabelMap) ToGroupLabelMapOutputWithContext(ctx context.Context) GroupLabelMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupLabelMapOutput)
+}
+
 type GroupLabelOutput struct {
 	*pulumi.OutputState
 }
@@ -184,6 +263,75 @@ func (o GroupLabelOutput) ToGroupLabelOutputWithContext(ctx context.Context) Gro
 	return o
 }
 
+func (o GroupLabelOutput) ToGroupLabelPtrOutput() GroupLabelPtrOutput {
+	return o.ToGroupLabelPtrOutputWithContext(context.Background())
+}
+
+func (o GroupLabelOutput) ToGroupLabelPtrOutputWithContext(ctx context.Context) GroupLabelPtrOutput {
+	return o.ApplyT(func(v GroupLabel) *GroupLabel {
+		return &v
+	}).(GroupLabelPtrOutput)
+}
+
+type GroupLabelPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GroupLabelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupLabel)(nil))
+}
+
+func (o GroupLabelPtrOutput) ToGroupLabelPtrOutput() GroupLabelPtrOutput {
+	return o
+}
+
+func (o GroupLabelPtrOutput) ToGroupLabelPtrOutputWithContext(ctx context.Context) GroupLabelPtrOutput {
+	return o
+}
+
+type GroupLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GroupLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupLabel)(nil))
+}
+
+func (o GroupLabelArrayOutput) ToGroupLabelArrayOutput() GroupLabelArrayOutput {
+	return o
+}
+
+func (o GroupLabelArrayOutput) ToGroupLabelArrayOutputWithContext(ctx context.Context) GroupLabelArrayOutput {
+	return o
+}
+
+func (o GroupLabelArrayOutput) Index(i pulumi.IntInput) GroupLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupLabel {
+		return vs[0].([]GroupLabel)[vs[1].(int)]
+	}).(GroupLabelOutput)
+}
+
+type GroupLabelMapOutput struct{ *pulumi.OutputState }
+
+func (GroupLabelMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GroupLabel)(nil))
+}
+
+func (o GroupLabelMapOutput) ToGroupLabelMapOutput() GroupLabelMapOutput {
+	return o
+}
+
+func (o GroupLabelMapOutput) ToGroupLabelMapOutputWithContext(ctx context.Context) GroupLabelMapOutput {
+	return o
+}
+
+func (o GroupLabelMapOutput) MapIndex(k pulumi.StringInput) GroupLabelOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GroupLabel {
+		return vs[0].(map[string]GroupLabel)[vs[1].(string)]
+	}).(GroupLabelOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GroupLabelOutput{})
+	pulumi.RegisterOutputType(GroupLabelPtrOutput{})
+	pulumi.RegisterOutputType(GroupLabelArrayOutput{})
+	pulumi.RegisterOutputType(GroupLabelMapOutput{})
 }

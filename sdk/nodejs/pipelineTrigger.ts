@@ -69,29 +69,26 @@ export class PipelineTrigger extends pulumi.CustomResource {
     constructor(name: string, args: PipelineTriggerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PipelineTriggerArgs | PipelineTriggerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PipelineTriggerState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["token"] = state ? state.token : undefined;
         } else {
             const args = argsOrState as PipelineTriggerArgs | undefined;
-            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["token"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(PipelineTrigger.__pulumiType, name, inputs, opts);
     }

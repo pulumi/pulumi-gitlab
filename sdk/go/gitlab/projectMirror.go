@@ -27,7 +27,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -184,6 +184,85 @@ func (i *ProjectMirror) ToProjectMirrorOutputWithContext(ctx context.Context) Pr
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMirrorOutput)
 }
 
+func (i *ProjectMirror) ToProjectMirrorPtrOutput() ProjectMirrorPtrOutput {
+	return i.ToProjectMirrorPtrOutputWithContext(context.Background())
+}
+
+func (i *ProjectMirror) ToProjectMirrorPtrOutputWithContext(ctx context.Context) ProjectMirrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectMirrorPtrOutput)
+}
+
+type ProjectMirrorPtrInput interface {
+	pulumi.Input
+
+	ToProjectMirrorPtrOutput() ProjectMirrorPtrOutput
+	ToProjectMirrorPtrOutputWithContext(ctx context.Context) ProjectMirrorPtrOutput
+}
+
+type projectMirrorPtrType ProjectMirrorArgs
+
+func (*projectMirrorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectMirror)(nil))
+}
+
+func (i *projectMirrorPtrType) ToProjectMirrorPtrOutput() ProjectMirrorPtrOutput {
+	return i.ToProjectMirrorPtrOutputWithContext(context.Background())
+}
+
+func (i *projectMirrorPtrType) ToProjectMirrorPtrOutputWithContext(ctx context.Context) ProjectMirrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectMirrorPtrOutput)
+}
+
+// ProjectMirrorArrayInput is an input type that accepts ProjectMirrorArray and ProjectMirrorArrayOutput values.
+// You can construct a concrete instance of `ProjectMirrorArrayInput` via:
+//
+//          ProjectMirrorArray{ ProjectMirrorArgs{...} }
+type ProjectMirrorArrayInput interface {
+	pulumi.Input
+
+	ToProjectMirrorArrayOutput() ProjectMirrorArrayOutput
+	ToProjectMirrorArrayOutputWithContext(context.Context) ProjectMirrorArrayOutput
+}
+
+type ProjectMirrorArray []ProjectMirrorInput
+
+func (ProjectMirrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ProjectMirror)(nil))
+}
+
+func (i ProjectMirrorArray) ToProjectMirrorArrayOutput() ProjectMirrorArrayOutput {
+	return i.ToProjectMirrorArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectMirrorArray) ToProjectMirrorArrayOutputWithContext(ctx context.Context) ProjectMirrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectMirrorArrayOutput)
+}
+
+// ProjectMirrorMapInput is an input type that accepts ProjectMirrorMap and ProjectMirrorMapOutput values.
+// You can construct a concrete instance of `ProjectMirrorMapInput` via:
+//
+//          ProjectMirrorMap{ "key": ProjectMirrorArgs{...} }
+type ProjectMirrorMapInput interface {
+	pulumi.Input
+
+	ToProjectMirrorMapOutput() ProjectMirrorMapOutput
+	ToProjectMirrorMapOutputWithContext(context.Context) ProjectMirrorMapOutput
+}
+
+type ProjectMirrorMap map[string]ProjectMirrorInput
+
+func (ProjectMirrorMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ProjectMirror)(nil))
+}
+
+func (i ProjectMirrorMap) ToProjectMirrorMapOutput() ProjectMirrorMapOutput {
+	return i.ToProjectMirrorMapOutputWithContext(context.Background())
+}
+
+func (i ProjectMirrorMap) ToProjectMirrorMapOutputWithContext(ctx context.Context) ProjectMirrorMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectMirrorMapOutput)
+}
+
 type ProjectMirrorOutput struct {
 	*pulumi.OutputState
 }
@@ -200,6 +279,75 @@ func (o ProjectMirrorOutput) ToProjectMirrorOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o ProjectMirrorOutput) ToProjectMirrorPtrOutput() ProjectMirrorPtrOutput {
+	return o.ToProjectMirrorPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectMirrorOutput) ToProjectMirrorPtrOutputWithContext(ctx context.Context) ProjectMirrorPtrOutput {
+	return o.ApplyT(func(v ProjectMirror) *ProjectMirror {
+		return &v
+	}).(ProjectMirrorPtrOutput)
+}
+
+type ProjectMirrorPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectMirrorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectMirror)(nil))
+}
+
+func (o ProjectMirrorPtrOutput) ToProjectMirrorPtrOutput() ProjectMirrorPtrOutput {
+	return o
+}
+
+func (o ProjectMirrorPtrOutput) ToProjectMirrorPtrOutputWithContext(ctx context.Context) ProjectMirrorPtrOutput {
+	return o
+}
+
+type ProjectMirrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectMirrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectMirror)(nil))
+}
+
+func (o ProjectMirrorArrayOutput) ToProjectMirrorArrayOutput() ProjectMirrorArrayOutput {
+	return o
+}
+
+func (o ProjectMirrorArrayOutput) ToProjectMirrorArrayOutputWithContext(ctx context.Context) ProjectMirrorArrayOutput {
+	return o
+}
+
+func (o ProjectMirrorArrayOutput) Index(i pulumi.IntInput) ProjectMirrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectMirror {
+		return vs[0].([]ProjectMirror)[vs[1].(int)]
+	}).(ProjectMirrorOutput)
+}
+
+type ProjectMirrorMapOutput struct{ *pulumi.OutputState }
+
+func (ProjectMirrorMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ProjectMirror)(nil))
+}
+
+func (o ProjectMirrorMapOutput) ToProjectMirrorMapOutput() ProjectMirrorMapOutput {
+	return o
+}
+
+func (o ProjectMirrorMapOutput) ToProjectMirrorMapOutputWithContext(ctx context.Context) ProjectMirrorMapOutput {
+	return o
+}
+
+func (o ProjectMirrorMapOutput) MapIndex(k pulumi.StringInput) ProjectMirrorOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectMirror {
+		return vs[0].(map[string]ProjectMirror)[vs[1].(string)]
+	}).(ProjectMirrorOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProjectMirrorOutput{})
+	pulumi.RegisterOutputType(ProjectMirrorPtrOutput{})
+	pulumi.RegisterOutputType(ProjectMirrorArrayOutput{})
+	pulumi.RegisterOutputType(ProjectMirrorMapOutput{})
 }

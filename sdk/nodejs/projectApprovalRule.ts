@@ -103,7 +103,8 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
     constructor(name: string, args: ProjectApprovalRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectApprovalRuleArgs | ProjectApprovalRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectApprovalRuleState | undefined;
             inputs["approvalsRequired"] = state ? state.approvalsRequired : undefined;
             inputs["groupIds"] = state ? state.groupIds : undefined;
@@ -112,10 +113,10 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
             inputs["userIds"] = state ? state.userIds : undefined;
         } else {
             const args = argsOrState as ProjectApprovalRuleArgs | undefined;
-            if ((!args || args.approvalsRequired === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.approvalsRequired === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'approvalsRequired'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["approvalsRequired"] = args ? args.approvalsRequired : undefined;
@@ -124,12 +125,8 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["userIds"] = args ? args.userIds : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ProjectApprovalRule.__pulumiType, name, inputs, opts);
     }

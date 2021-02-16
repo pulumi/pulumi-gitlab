@@ -11,7 +11,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The GitLab Base API URL
         /// </summary>
-        public static string? BaseUrl { get; set; } = __config.Get("baseUrl") ?? Utilities.GetEnv("GITLAB_BASE_URL");
+        public static string? BaseUrl { get; set; } = __config.Get("baseUrl");
 
         /// <summary>
         /// A file containing the ca certificate to use in case ssl certificate is not from a standard chain
@@ -36,7 +36,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The OAuth token used to connect to GitLab.
         /// </summary>
-        public static string? Token { get; set; } = __config.Get("token") ?? Utilities.GetEnv("GITLAB_TOKEN");
+        public static string? Token { get; set; } = __config.Get("token");
 
     }
 }

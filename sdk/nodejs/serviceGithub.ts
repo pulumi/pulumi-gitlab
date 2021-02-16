@@ -60,7 +60,8 @@ export class ServiceGithub extends pulumi.CustomResource {
     constructor(name: string, args: ServiceGithubArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceGithubArgs | ServiceGithubState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ServiceGithubState | undefined;
             inputs["active"] = state ? state.active : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
@@ -72,13 +73,13 @@ export class ServiceGithub extends pulumi.CustomResource {
             inputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ServiceGithubArgs | undefined;
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.repositoryUrl === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.repositoryUrl === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'repositoryUrl'");
             }
-            if ((!args || args.token === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.token === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'token'");
             }
             inputs["project"] = args ? args.project : undefined;
@@ -90,12 +91,8 @@ export class ServiceGithub extends pulumi.CustomResource {
             inputs["title"] = undefined /*out*/;
             inputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ServiceGithub.__pulumiType, name, inputs, opts);
     }

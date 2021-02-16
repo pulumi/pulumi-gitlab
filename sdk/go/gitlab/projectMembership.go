@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -159,6 +159,85 @@ func (i *ProjectMembership) ToProjectMembershipOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMembershipOutput)
 }
 
+func (i *ProjectMembership) ToProjectMembershipPtrOutput() ProjectMembershipPtrOutput {
+	return i.ToProjectMembershipPtrOutputWithContext(context.Background())
+}
+
+func (i *ProjectMembership) ToProjectMembershipPtrOutputWithContext(ctx context.Context) ProjectMembershipPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectMembershipPtrOutput)
+}
+
+type ProjectMembershipPtrInput interface {
+	pulumi.Input
+
+	ToProjectMembershipPtrOutput() ProjectMembershipPtrOutput
+	ToProjectMembershipPtrOutputWithContext(ctx context.Context) ProjectMembershipPtrOutput
+}
+
+type projectMembershipPtrType ProjectMembershipArgs
+
+func (*projectMembershipPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectMembership)(nil))
+}
+
+func (i *projectMembershipPtrType) ToProjectMembershipPtrOutput() ProjectMembershipPtrOutput {
+	return i.ToProjectMembershipPtrOutputWithContext(context.Background())
+}
+
+func (i *projectMembershipPtrType) ToProjectMembershipPtrOutputWithContext(ctx context.Context) ProjectMembershipPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectMembershipPtrOutput)
+}
+
+// ProjectMembershipArrayInput is an input type that accepts ProjectMembershipArray and ProjectMembershipArrayOutput values.
+// You can construct a concrete instance of `ProjectMembershipArrayInput` via:
+//
+//          ProjectMembershipArray{ ProjectMembershipArgs{...} }
+type ProjectMembershipArrayInput interface {
+	pulumi.Input
+
+	ToProjectMembershipArrayOutput() ProjectMembershipArrayOutput
+	ToProjectMembershipArrayOutputWithContext(context.Context) ProjectMembershipArrayOutput
+}
+
+type ProjectMembershipArray []ProjectMembershipInput
+
+func (ProjectMembershipArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ProjectMembership)(nil))
+}
+
+func (i ProjectMembershipArray) ToProjectMembershipArrayOutput() ProjectMembershipArrayOutput {
+	return i.ToProjectMembershipArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectMembershipArray) ToProjectMembershipArrayOutputWithContext(ctx context.Context) ProjectMembershipArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectMembershipArrayOutput)
+}
+
+// ProjectMembershipMapInput is an input type that accepts ProjectMembershipMap and ProjectMembershipMapOutput values.
+// You can construct a concrete instance of `ProjectMembershipMapInput` via:
+//
+//          ProjectMembershipMap{ "key": ProjectMembershipArgs{...} }
+type ProjectMembershipMapInput interface {
+	pulumi.Input
+
+	ToProjectMembershipMapOutput() ProjectMembershipMapOutput
+	ToProjectMembershipMapOutputWithContext(context.Context) ProjectMembershipMapOutput
+}
+
+type ProjectMembershipMap map[string]ProjectMembershipInput
+
+func (ProjectMembershipMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ProjectMembership)(nil))
+}
+
+func (i ProjectMembershipMap) ToProjectMembershipMapOutput() ProjectMembershipMapOutput {
+	return i.ToProjectMembershipMapOutputWithContext(context.Background())
+}
+
+func (i ProjectMembershipMap) ToProjectMembershipMapOutputWithContext(ctx context.Context) ProjectMembershipMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectMembershipMapOutput)
+}
+
 type ProjectMembershipOutput struct {
 	*pulumi.OutputState
 }
@@ -175,6 +254,75 @@ func (o ProjectMembershipOutput) ToProjectMembershipOutputWithContext(ctx contex
 	return o
 }
 
+func (o ProjectMembershipOutput) ToProjectMembershipPtrOutput() ProjectMembershipPtrOutput {
+	return o.ToProjectMembershipPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectMembershipOutput) ToProjectMembershipPtrOutputWithContext(ctx context.Context) ProjectMembershipPtrOutput {
+	return o.ApplyT(func(v ProjectMembership) *ProjectMembership {
+		return &v
+	}).(ProjectMembershipPtrOutput)
+}
+
+type ProjectMembershipPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectMembershipPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectMembership)(nil))
+}
+
+func (o ProjectMembershipPtrOutput) ToProjectMembershipPtrOutput() ProjectMembershipPtrOutput {
+	return o
+}
+
+func (o ProjectMembershipPtrOutput) ToProjectMembershipPtrOutputWithContext(ctx context.Context) ProjectMembershipPtrOutput {
+	return o
+}
+
+type ProjectMembershipArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectMembershipArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectMembership)(nil))
+}
+
+func (o ProjectMembershipArrayOutput) ToProjectMembershipArrayOutput() ProjectMembershipArrayOutput {
+	return o
+}
+
+func (o ProjectMembershipArrayOutput) ToProjectMembershipArrayOutputWithContext(ctx context.Context) ProjectMembershipArrayOutput {
+	return o
+}
+
+func (o ProjectMembershipArrayOutput) Index(i pulumi.IntInput) ProjectMembershipOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectMembership {
+		return vs[0].([]ProjectMembership)[vs[1].(int)]
+	}).(ProjectMembershipOutput)
+}
+
+type ProjectMembershipMapOutput struct{ *pulumi.OutputState }
+
+func (ProjectMembershipMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ProjectMembership)(nil))
+}
+
+func (o ProjectMembershipMapOutput) ToProjectMembershipMapOutput() ProjectMembershipMapOutput {
+	return o
+}
+
+func (o ProjectMembershipMapOutput) ToProjectMembershipMapOutputWithContext(ctx context.Context) ProjectMembershipMapOutput {
+	return o
+}
+
+func (o ProjectMembershipMapOutput) MapIndex(k pulumi.StringInput) ProjectMembershipOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectMembership {
+		return vs[0].(map[string]ProjectMembership)[vs[1].(string)]
+	}).(ProjectMembershipOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProjectMembershipOutput{})
+	pulumi.RegisterOutputType(ProjectMembershipPtrOutput{})
+	pulumi.RegisterOutputType(ProjectMembershipArrayOutput{})
+	pulumi.RegisterOutputType(ProjectMembershipMapOutput{})
 }

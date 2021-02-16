@@ -23,7 +23,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -265,6 +265,85 @@ func (i *GroupCluster) ToGroupClusterOutputWithContext(ctx context.Context) Grou
 	return pulumi.ToOutputWithContext(ctx, i).(GroupClusterOutput)
 }
 
+func (i *GroupCluster) ToGroupClusterPtrOutput() GroupClusterPtrOutput {
+	return i.ToGroupClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *GroupCluster) ToGroupClusterPtrOutputWithContext(ctx context.Context) GroupClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupClusterPtrOutput)
+}
+
+type GroupClusterPtrInput interface {
+	pulumi.Input
+
+	ToGroupClusterPtrOutput() GroupClusterPtrOutput
+	ToGroupClusterPtrOutputWithContext(ctx context.Context) GroupClusterPtrOutput
+}
+
+type groupClusterPtrType GroupClusterArgs
+
+func (*groupClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupCluster)(nil))
+}
+
+func (i *groupClusterPtrType) ToGroupClusterPtrOutput() GroupClusterPtrOutput {
+	return i.ToGroupClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *groupClusterPtrType) ToGroupClusterPtrOutputWithContext(ctx context.Context) GroupClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupClusterPtrOutput)
+}
+
+// GroupClusterArrayInput is an input type that accepts GroupClusterArray and GroupClusterArrayOutput values.
+// You can construct a concrete instance of `GroupClusterArrayInput` via:
+//
+//          GroupClusterArray{ GroupClusterArgs{...} }
+type GroupClusterArrayInput interface {
+	pulumi.Input
+
+	ToGroupClusterArrayOutput() GroupClusterArrayOutput
+	ToGroupClusterArrayOutputWithContext(context.Context) GroupClusterArrayOutput
+}
+
+type GroupClusterArray []GroupClusterInput
+
+func (GroupClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*GroupCluster)(nil))
+}
+
+func (i GroupClusterArray) ToGroupClusterArrayOutput() GroupClusterArrayOutput {
+	return i.ToGroupClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GroupClusterArray) ToGroupClusterArrayOutputWithContext(ctx context.Context) GroupClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupClusterArrayOutput)
+}
+
+// GroupClusterMapInput is an input type that accepts GroupClusterMap and GroupClusterMapOutput values.
+// You can construct a concrete instance of `GroupClusterMapInput` via:
+//
+//          GroupClusterMap{ "key": GroupClusterArgs{...} }
+type GroupClusterMapInput interface {
+	pulumi.Input
+
+	ToGroupClusterMapOutput() GroupClusterMapOutput
+	ToGroupClusterMapOutputWithContext(context.Context) GroupClusterMapOutput
+}
+
+type GroupClusterMap map[string]GroupClusterInput
+
+func (GroupClusterMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*GroupCluster)(nil))
+}
+
+func (i GroupClusterMap) ToGroupClusterMapOutput() GroupClusterMapOutput {
+	return i.ToGroupClusterMapOutputWithContext(context.Background())
+}
+
+func (i GroupClusterMap) ToGroupClusterMapOutputWithContext(ctx context.Context) GroupClusterMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupClusterMapOutput)
+}
+
 type GroupClusterOutput struct {
 	*pulumi.OutputState
 }
@@ -281,6 +360,75 @@ func (o GroupClusterOutput) ToGroupClusterOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o GroupClusterOutput) ToGroupClusterPtrOutput() GroupClusterPtrOutput {
+	return o.ToGroupClusterPtrOutputWithContext(context.Background())
+}
+
+func (o GroupClusterOutput) ToGroupClusterPtrOutputWithContext(ctx context.Context) GroupClusterPtrOutput {
+	return o.ApplyT(func(v GroupCluster) *GroupCluster {
+		return &v
+	}).(GroupClusterPtrOutput)
+}
+
+type GroupClusterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GroupClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupCluster)(nil))
+}
+
+func (o GroupClusterPtrOutput) ToGroupClusterPtrOutput() GroupClusterPtrOutput {
+	return o
+}
+
+func (o GroupClusterPtrOutput) ToGroupClusterPtrOutputWithContext(ctx context.Context) GroupClusterPtrOutput {
+	return o
+}
+
+type GroupClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GroupClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupCluster)(nil))
+}
+
+func (o GroupClusterArrayOutput) ToGroupClusterArrayOutput() GroupClusterArrayOutput {
+	return o
+}
+
+func (o GroupClusterArrayOutput) ToGroupClusterArrayOutputWithContext(ctx context.Context) GroupClusterArrayOutput {
+	return o
+}
+
+func (o GroupClusterArrayOutput) Index(i pulumi.IntInput) GroupClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupCluster {
+		return vs[0].([]GroupCluster)[vs[1].(int)]
+	}).(GroupClusterOutput)
+}
+
+type GroupClusterMapOutput struct{ *pulumi.OutputState }
+
+func (GroupClusterMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GroupCluster)(nil))
+}
+
+func (o GroupClusterMapOutput) ToGroupClusterMapOutput() GroupClusterMapOutput {
+	return o
+}
+
+func (o GroupClusterMapOutput) ToGroupClusterMapOutputWithContext(ctx context.Context) GroupClusterMapOutput {
+	return o
+}
+
+func (o GroupClusterMapOutput) MapIndex(k pulumi.StringInput) GroupClusterOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GroupCluster {
+		return vs[0].(map[string]GroupCluster)[vs[1].(string)]
+	}).(GroupClusterOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GroupClusterOutput{})
+	pulumi.RegisterOutputType(GroupClusterPtrOutput{})
+	pulumi.RegisterOutputType(GroupClusterArrayOutput{})
+	pulumi.RegisterOutputType(GroupClusterMapOutput{})
 }

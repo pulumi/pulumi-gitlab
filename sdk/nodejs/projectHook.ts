@@ -112,7 +112,8 @@ export class ProjectHook extends pulumi.CustomResource {
     constructor(name: string, args: ProjectHookArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectHookArgs | ProjectHookState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectHookState | undefined;
             inputs["enableSslVerification"] = state ? state.enableSslVerification : undefined;
             inputs["issuesEvents"] = state ? state.issuesEvents : undefined;
@@ -128,10 +129,10 @@ export class ProjectHook extends pulumi.CustomResource {
             inputs["wikiPageEvents"] = state ? state.wikiPageEvents : undefined;
         } else {
             const args = argsOrState as ProjectHookArgs | undefined;
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.url === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
             inputs["enableSslVerification"] = args ? args.enableSslVerification : undefined;
@@ -147,12 +148,8 @@ export class ProjectHook extends pulumi.CustomResource {
             inputs["url"] = args ? args.url : undefined;
             inputs["wikiPageEvents"] = args ? args.wikiPageEvents : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ProjectHook.__pulumiType, name, inputs, opts);
     }

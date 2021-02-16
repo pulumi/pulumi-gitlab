@@ -81,32 +81,29 @@ export class ProjectShareGroup extends pulumi.CustomResource {
     constructor(name: string, args: ProjectShareGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectShareGroupArgs | ProjectShareGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectShareGroupState | undefined;
             inputs["accessLevel"] = state ? state.accessLevel : undefined;
             inputs["groupId"] = state ? state.groupId : undefined;
             inputs["projectId"] = state ? state.projectId : undefined;
         } else {
             const args = argsOrState as ProjectShareGroupArgs | undefined;
-            if ((!args || args.accessLevel === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accessLevel === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessLevel'");
             }
-            if ((!args || args.groupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["accessLevel"] = args ? args.accessLevel : undefined;
             inputs["groupId"] = args ? args.groupId : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ProjectShareGroup.__pulumiType, name, inputs, opts);
     }

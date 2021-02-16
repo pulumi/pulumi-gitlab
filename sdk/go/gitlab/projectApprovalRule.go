@@ -155,6 +155,85 @@ func (i *ProjectApprovalRule) ToProjectApprovalRuleOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectApprovalRuleOutput)
 }
 
+func (i *ProjectApprovalRule) ToProjectApprovalRulePtrOutput() ProjectApprovalRulePtrOutput {
+	return i.ToProjectApprovalRulePtrOutputWithContext(context.Background())
+}
+
+func (i *ProjectApprovalRule) ToProjectApprovalRulePtrOutputWithContext(ctx context.Context) ProjectApprovalRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectApprovalRulePtrOutput)
+}
+
+type ProjectApprovalRulePtrInput interface {
+	pulumi.Input
+
+	ToProjectApprovalRulePtrOutput() ProjectApprovalRulePtrOutput
+	ToProjectApprovalRulePtrOutputWithContext(ctx context.Context) ProjectApprovalRulePtrOutput
+}
+
+type projectApprovalRulePtrType ProjectApprovalRuleArgs
+
+func (*projectApprovalRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectApprovalRule)(nil))
+}
+
+func (i *projectApprovalRulePtrType) ToProjectApprovalRulePtrOutput() ProjectApprovalRulePtrOutput {
+	return i.ToProjectApprovalRulePtrOutputWithContext(context.Background())
+}
+
+func (i *projectApprovalRulePtrType) ToProjectApprovalRulePtrOutputWithContext(ctx context.Context) ProjectApprovalRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectApprovalRulePtrOutput)
+}
+
+// ProjectApprovalRuleArrayInput is an input type that accepts ProjectApprovalRuleArray and ProjectApprovalRuleArrayOutput values.
+// You can construct a concrete instance of `ProjectApprovalRuleArrayInput` via:
+//
+//          ProjectApprovalRuleArray{ ProjectApprovalRuleArgs{...} }
+type ProjectApprovalRuleArrayInput interface {
+	pulumi.Input
+
+	ToProjectApprovalRuleArrayOutput() ProjectApprovalRuleArrayOutput
+	ToProjectApprovalRuleArrayOutputWithContext(context.Context) ProjectApprovalRuleArrayOutput
+}
+
+type ProjectApprovalRuleArray []ProjectApprovalRuleInput
+
+func (ProjectApprovalRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ProjectApprovalRule)(nil))
+}
+
+func (i ProjectApprovalRuleArray) ToProjectApprovalRuleArrayOutput() ProjectApprovalRuleArrayOutput {
+	return i.ToProjectApprovalRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectApprovalRuleArray) ToProjectApprovalRuleArrayOutputWithContext(ctx context.Context) ProjectApprovalRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectApprovalRuleArrayOutput)
+}
+
+// ProjectApprovalRuleMapInput is an input type that accepts ProjectApprovalRuleMap and ProjectApprovalRuleMapOutput values.
+// You can construct a concrete instance of `ProjectApprovalRuleMapInput` via:
+//
+//          ProjectApprovalRuleMap{ "key": ProjectApprovalRuleArgs{...} }
+type ProjectApprovalRuleMapInput interface {
+	pulumi.Input
+
+	ToProjectApprovalRuleMapOutput() ProjectApprovalRuleMapOutput
+	ToProjectApprovalRuleMapOutputWithContext(context.Context) ProjectApprovalRuleMapOutput
+}
+
+type ProjectApprovalRuleMap map[string]ProjectApprovalRuleInput
+
+func (ProjectApprovalRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ProjectApprovalRule)(nil))
+}
+
+func (i ProjectApprovalRuleMap) ToProjectApprovalRuleMapOutput() ProjectApprovalRuleMapOutput {
+	return i.ToProjectApprovalRuleMapOutputWithContext(context.Background())
+}
+
+func (i ProjectApprovalRuleMap) ToProjectApprovalRuleMapOutputWithContext(ctx context.Context) ProjectApprovalRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectApprovalRuleMapOutput)
+}
+
 type ProjectApprovalRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -171,6 +250,75 @@ func (o ProjectApprovalRuleOutput) ToProjectApprovalRuleOutputWithContext(ctx co
 	return o
 }
 
+func (o ProjectApprovalRuleOutput) ToProjectApprovalRulePtrOutput() ProjectApprovalRulePtrOutput {
+	return o.ToProjectApprovalRulePtrOutputWithContext(context.Background())
+}
+
+func (o ProjectApprovalRuleOutput) ToProjectApprovalRulePtrOutputWithContext(ctx context.Context) ProjectApprovalRulePtrOutput {
+	return o.ApplyT(func(v ProjectApprovalRule) *ProjectApprovalRule {
+		return &v
+	}).(ProjectApprovalRulePtrOutput)
+}
+
+type ProjectApprovalRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectApprovalRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectApprovalRule)(nil))
+}
+
+func (o ProjectApprovalRulePtrOutput) ToProjectApprovalRulePtrOutput() ProjectApprovalRulePtrOutput {
+	return o
+}
+
+func (o ProjectApprovalRulePtrOutput) ToProjectApprovalRulePtrOutputWithContext(ctx context.Context) ProjectApprovalRulePtrOutput {
+	return o
+}
+
+type ProjectApprovalRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectApprovalRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectApprovalRule)(nil))
+}
+
+func (o ProjectApprovalRuleArrayOutput) ToProjectApprovalRuleArrayOutput() ProjectApprovalRuleArrayOutput {
+	return o
+}
+
+func (o ProjectApprovalRuleArrayOutput) ToProjectApprovalRuleArrayOutputWithContext(ctx context.Context) ProjectApprovalRuleArrayOutput {
+	return o
+}
+
+func (o ProjectApprovalRuleArrayOutput) Index(i pulumi.IntInput) ProjectApprovalRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectApprovalRule {
+		return vs[0].([]ProjectApprovalRule)[vs[1].(int)]
+	}).(ProjectApprovalRuleOutput)
+}
+
+type ProjectApprovalRuleMapOutput struct{ *pulumi.OutputState }
+
+func (ProjectApprovalRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ProjectApprovalRule)(nil))
+}
+
+func (o ProjectApprovalRuleMapOutput) ToProjectApprovalRuleMapOutput() ProjectApprovalRuleMapOutput {
+	return o
+}
+
+func (o ProjectApprovalRuleMapOutput) ToProjectApprovalRuleMapOutputWithContext(ctx context.Context) ProjectApprovalRuleMapOutput {
+	return o
+}
+
+func (o ProjectApprovalRuleMapOutput) MapIndex(k pulumi.StringInput) ProjectApprovalRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectApprovalRule {
+		return vs[0].(map[string]ProjectApprovalRule)[vs[1].(string)]
+	}).(ProjectApprovalRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProjectApprovalRuleOutput{})
+	pulumi.RegisterOutputType(ProjectApprovalRulePtrOutput{})
+	pulumi.RegisterOutputType(ProjectApprovalRuleArrayOutput{})
+	pulumi.RegisterOutputType(ProjectApprovalRuleMapOutput{})
 }

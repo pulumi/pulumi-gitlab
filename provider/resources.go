@@ -74,16 +74,6 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:   "gitlabhq",
 		Repository:  "https://github.com/pulumi/pulumi-gitlab",
 		Config: map[string]*tfbridge.SchemaInfo{
-			"token": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"GITLAB_TOKEN"},
-				},
-			},
-			"base_url": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"GITLAB_BASE_URL"},
-				},
-			},
 			"cacert_file": {},
 			"insecure":    {},
 		},

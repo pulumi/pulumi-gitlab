@@ -85,7 +85,8 @@ export class DeployKey extends pulumi.CustomResource {
     constructor(name: string, args: DeployKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DeployKeyArgs | DeployKeyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DeployKeyState | undefined;
             inputs["canPush"] = state ? state.canPush : undefined;
             inputs["key"] = state ? state.key : undefined;
@@ -93,13 +94,13 @@ export class DeployKey extends pulumi.CustomResource {
             inputs["title"] = state ? state.title : undefined;
         } else {
             const args = argsOrState as DeployKeyArgs | undefined;
-            if ((!args || args.key === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.key === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.title === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
             inputs["canPush"] = args ? args.canPush : undefined;
@@ -107,12 +108,8 @@ export class DeployKey extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["title"] = args ? args.title : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DeployKey.__pulumiType, name, inputs, opts);
     }

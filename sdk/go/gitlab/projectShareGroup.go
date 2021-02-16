@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -159,6 +159,85 @@ func (i *ProjectShareGroup) ToProjectShareGroupOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectShareGroupOutput)
 }
 
+func (i *ProjectShareGroup) ToProjectShareGroupPtrOutput() ProjectShareGroupPtrOutput {
+	return i.ToProjectShareGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *ProjectShareGroup) ToProjectShareGroupPtrOutputWithContext(ctx context.Context) ProjectShareGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectShareGroupPtrOutput)
+}
+
+type ProjectShareGroupPtrInput interface {
+	pulumi.Input
+
+	ToProjectShareGroupPtrOutput() ProjectShareGroupPtrOutput
+	ToProjectShareGroupPtrOutputWithContext(ctx context.Context) ProjectShareGroupPtrOutput
+}
+
+type projectShareGroupPtrType ProjectShareGroupArgs
+
+func (*projectShareGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectShareGroup)(nil))
+}
+
+func (i *projectShareGroupPtrType) ToProjectShareGroupPtrOutput() ProjectShareGroupPtrOutput {
+	return i.ToProjectShareGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *projectShareGroupPtrType) ToProjectShareGroupPtrOutputWithContext(ctx context.Context) ProjectShareGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectShareGroupPtrOutput)
+}
+
+// ProjectShareGroupArrayInput is an input type that accepts ProjectShareGroupArray and ProjectShareGroupArrayOutput values.
+// You can construct a concrete instance of `ProjectShareGroupArrayInput` via:
+//
+//          ProjectShareGroupArray{ ProjectShareGroupArgs{...} }
+type ProjectShareGroupArrayInput interface {
+	pulumi.Input
+
+	ToProjectShareGroupArrayOutput() ProjectShareGroupArrayOutput
+	ToProjectShareGroupArrayOutputWithContext(context.Context) ProjectShareGroupArrayOutput
+}
+
+type ProjectShareGroupArray []ProjectShareGroupInput
+
+func (ProjectShareGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ProjectShareGroup)(nil))
+}
+
+func (i ProjectShareGroupArray) ToProjectShareGroupArrayOutput() ProjectShareGroupArrayOutput {
+	return i.ToProjectShareGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectShareGroupArray) ToProjectShareGroupArrayOutputWithContext(ctx context.Context) ProjectShareGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectShareGroupArrayOutput)
+}
+
+// ProjectShareGroupMapInput is an input type that accepts ProjectShareGroupMap and ProjectShareGroupMapOutput values.
+// You can construct a concrete instance of `ProjectShareGroupMapInput` via:
+//
+//          ProjectShareGroupMap{ "key": ProjectShareGroupArgs{...} }
+type ProjectShareGroupMapInput interface {
+	pulumi.Input
+
+	ToProjectShareGroupMapOutput() ProjectShareGroupMapOutput
+	ToProjectShareGroupMapOutputWithContext(context.Context) ProjectShareGroupMapOutput
+}
+
+type ProjectShareGroupMap map[string]ProjectShareGroupInput
+
+func (ProjectShareGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ProjectShareGroup)(nil))
+}
+
+func (i ProjectShareGroupMap) ToProjectShareGroupMapOutput() ProjectShareGroupMapOutput {
+	return i.ToProjectShareGroupMapOutputWithContext(context.Background())
+}
+
+func (i ProjectShareGroupMap) ToProjectShareGroupMapOutputWithContext(ctx context.Context) ProjectShareGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectShareGroupMapOutput)
+}
+
 type ProjectShareGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -175,6 +254,75 @@ func (o ProjectShareGroupOutput) ToProjectShareGroupOutputWithContext(ctx contex
 	return o
 }
 
+func (o ProjectShareGroupOutput) ToProjectShareGroupPtrOutput() ProjectShareGroupPtrOutput {
+	return o.ToProjectShareGroupPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectShareGroupOutput) ToProjectShareGroupPtrOutputWithContext(ctx context.Context) ProjectShareGroupPtrOutput {
+	return o.ApplyT(func(v ProjectShareGroup) *ProjectShareGroup {
+		return &v
+	}).(ProjectShareGroupPtrOutput)
+}
+
+type ProjectShareGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectShareGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectShareGroup)(nil))
+}
+
+func (o ProjectShareGroupPtrOutput) ToProjectShareGroupPtrOutput() ProjectShareGroupPtrOutput {
+	return o
+}
+
+func (o ProjectShareGroupPtrOutput) ToProjectShareGroupPtrOutputWithContext(ctx context.Context) ProjectShareGroupPtrOutput {
+	return o
+}
+
+type ProjectShareGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectShareGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectShareGroup)(nil))
+}
+
+func (o ProjectShareGroupArrayOutput) ToProjectShareGroupArrayOutput() ProjectShareGroupArrayOutput {
+	return o
+}
+
+func (o ProjectShareGroupArrayOutput) ToProjectShareGroupArrayOutputWithContext(ctx context.Context) ProjectShareGroupArrayOutput {
+	return o
+}
+
+func (o ProjectShareGroupArrayOutput) Index(i pulumi.IntInput) ProjectShareGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectShareGroup {
+		return vs[0].([]ProjectShareGroup)[vs[1].(int)]
+	}).(ProjectShareGroupOutput)
+}
+
+type ProjectShareGroupMapOutput struct{ *pulumi.OutputState }
+
+func (ProjectShareGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ProjectShareGroup)(nil))
+}
+
+func (o ProjectShareGroupMapOutput) ToProjectShareGroupMapOutput() ProjectShareGroupMapOutput {
+	return o
+}
+
+func (o ProjectShareGroupMapOutput) ToProjectShareGroupMapOutputWithContext(ctx context.Context) ProjectShareGroupMapOutput {
+	return o
+}
+
+func (o ProjectShareGroupMapOutput) MapIndex(k pulumi.StringInput) ProjectShareGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectShareGroup {
+		return vs[0].(map[string]ProjectShareGroup)[vs[1].(string)]
+	}).(ProjectShareGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProjectShareGroupOutput{})
+	pulumi.RegisterOutputType(ProjectShareGroupPtrOutput{})
+	pulumi.RegisterOutputType(ProjectShareGroupArrayOutput{})
+	pulumi.RegisterOutputType(ProjectShareGroupMapOutput{})
 }

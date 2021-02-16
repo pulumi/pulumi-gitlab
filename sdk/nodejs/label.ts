@@ -79,7 +79,8 @@ export class Label extends pulumi.CustomResource {
     constructor(name: string, args: LabelArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LabelArgs | LabelState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as LabelState | undefined;
             inputs["color"] = state ? state.color : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -87,10 +88,10 @@ export class Label extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as LabelArgs | undefined;
-            if ((!args || args.color === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.color === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'color'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["color"] = args ? args.color : undefined;
@@ -98,12 +99,8 @@ export class Label extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Label.__pulumiType, name, inputs, opts);
     }

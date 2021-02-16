@@ -19,7 +19,7 @@ __all__ = [
 
 __config__ = pulumi.Config('gitlab')
 
-base_url = __config__.get('baseUrl') or _utilities.get_env('GITLAB_BASE_URL')
+base_url = __config__.get('baseUrl')
 """
 The GitLab Base API URL
 """
@@ -44,7 +44,7 @@ insecure = __config__.get('insecure')
 Disable SSL verification of API calls
 """
 
-token = __config__.get('token') or _utilities.get_env('GITLAB_TOKEN')
+token = __config__.get('token')
 """
 The OAuth token used to connect to GitLab.
 """
