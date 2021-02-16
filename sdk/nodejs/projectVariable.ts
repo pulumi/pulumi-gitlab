@@ -105,7 +105,8 @@ export class ProjectVariable extends pulumi.CustomResource {
     constructor(name: string, args: ProjectVariableArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectVariableArgs | ProjectVariableState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectVariableState | undefined;
             inputs["environmentScope"] = state ? state.environmentScope : undefined;
             inputs["key"] = state ? state.key : undefined;
@@ -116,13 +117,13 @@ export class ProjectVariable extends pulumi.CustomResource {
             inputs["variableType"] = state ? state.variableType : undefined;
         } else {
             const args = argsOrState as ProjectVariableArgs | undefined;
-            if ((!args || args.key === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.key === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.value === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
             inputs["environmentScope"] = args ? args.environmentScope : undefined;
@@ -133,12 +134,8 @@ export class ProjectVariable extends pulumi.CustomResource {
             inputs["value"] = args ? args.value : undefined;
             inputs["variableType"] = args ? args.variableType : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ProjectVariable.__pulumiType, name, inputs, opts);
     }

@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -177,6 +177,85 @@ func (i *InstanceVariable) ToInstanceVariableOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceVariableOutput)
 }
 
+func (i *InstanceVariable) ToInstanceVariablePtrOutput() InstanceVariablePtrOutput {
+	return i.ToInstanceVariablePtrOutputWithContext(context.Background())
+}
+
+func (i *InstanceVariable) ToInstanceVariablePtrOutputWithContext(ctx context.Context) InstanceVariablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVariablePtrOutput)
+}
+
+type InstanceVariablePtrInput interface {
+	pulumi.Input
+
+	ToInstanceVariablePtrOutput() InstanceVariablePtrOutput
+	ToInstanceVariablePtrOutputWithContext(ctx context.Context) InstanceVariablePtrOutput
+}
+
+type instanceVariablePtrType InstanceVariableArgs
+
+func (*instanceVariablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceVariable)(nil))
+}
+
+func (i *instanceVariablePtrType) ToInstanceVariablePtrOutput() InstanceVariablePtrOutput {
+	return i.ToInstanceVariablePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceVariablePtrType) ToInstanceVariablePtrOutputWithContext(ctx context.Context) InstanceVariablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVariablePtrOutput)
+}
+
+// InstanceVariableArrayInput is an input type that accepts InstanceVariableArray and InstanceVariableArrayOutput values.
+// You can construct a concrete instance of `InstanceVariableArrayInput` via:
+//
+//          InstanceVariableArray{ InstanceVariableArgs{...} }
+type InstanceVariableArrayInput interface {
+	pulumi.Input
+
+	ToInstanceVariableArrayOutput() InstanceVariableArrayOutput
+	ToInstanceVariableArrayOutputWithContext(context.Context) InstanceVariableArrayOutput
+}
+
+type InstanceVariableArray []InstanceVariableInput
+
+func (InstanceVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*InstanceVariable)(nil))
+}
+
+func (i InstanceVariableArray) ToInstanceVariableArrayOutput() InstanceVariableArrayOutput {
+	return i.ToInstanceVariableArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceVariableArray) ToInstanceVariableArrayOutputWithContext(ctx context.Context) InstanceVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVariableArrayOutput)
+}
+
+// InstanceVariableMapInput is an input type that accepts InstanceVariableMap and InstanceVariableMapOutput values.
+// You can construct a concrete instance of `InstanceVariableMapInput` via:
+//
+//          InstanceVariableMap{ "key": InstanceVariableArgs{...} }
+type InstanceVariableMapInput interface {
+	pulumi.Input
+
+	ToInstanceVariableMapOutput() InstanceVariableMapOutput
+	ToInstanceVariableMapOutputWithContext(context.Context) InstanceVariableMapOutput
+}
+
+type InstanceVariableMap map[string]InstanceVariableInput
+
+func (InstanceVariableMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*InstanceVariable)(nil))
+}
+
+func (i InstanceVariableMap) ToInstanceVariableMapOutput() InstanceVariableMapOutput {
+	return i.ToInstanceVariableMapOutputWithContext(context.Background())
+}
+
+func (i InstanceVariableMap) ToInstanceVariableMapOutputWithContext(ctx context.Context) InstanceVariableMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceVariableMapOutput)
+}
+
 type InstanceVariableOutput struct {
 	*pulumi.OutputState
 }
@@ -193,6 +272,75 @@ func (o InstanceVariableOutput) ToInstanceVariableOutputWithContext(ctx context.
 	return o
 }
 
+func (o InstanceVariableOutput) ToInstanceVariablePtrOutput() InstanceVariablePtrOutput {
+	return o.ToInstanceVariablePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceVariableOutput) ToInstanceVariablePtrOutputWithContext(ctx context.Context) InstanceVariablePtrOutput {
+	return o.ApplyT(func(v InstanceVariable) *InstanceVariable {
+		return &v
+	}).(InstanceVariablePtrOutput)
+}
+
+type InstanceVariablePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceVariablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceVariable)(nil))
+}
+
+func (o InstanceVariablePtrOutput) ToInstanceVariablePtrOutput() InstanceVariablePtrOutput {
+	return o
+}
+
+func (o InstanceVariablePtrOutput) ToInstanceVariablePtrOutputWithContext(ctx context.Context) InstanceVariablePtrOutput {
+	return o
+}
+
+type InstanceVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceVariable)(nil))
+}
+
+func (o InstanceVariableArrayOutput) ToInstanceVariableArrayOutput() InstanceVariableArrayOutput {
+	return o
+}
+
+func (o InstanceVariableArrayOutput) ToInstanceVariableArrayOutputWithContext(ctx context.Context) InstanceVariableArrayOutput {
+	return o
+}
+
+func (o InstanceVariableArrayOutput) Index(i pulumi.IntInput) InstanceVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceVariable {
+		return vs[0].([]InstanceVariable)[vs[1].(int)]
+	}).(InstanceVariableOutput)
+}
+
+type InstanceVariableMapOutput struct{ *pulumi.OutputState }
+
+func (InstanceVariableMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InstanceVariable)(nil))
+}
+
+func (o InstanceVariableMapOutput) ToInstanceVariableMapOutput() InstanceVariableMapOutput {
+	return o
+}
+
+func (o InstanceVariableMapOutput) ToInstanceVariableMapOutputWithContext(ctx context.Context) InstanceVariableMapOutput {
+	return o
+}
+
+func (o InstanceVariableMapOutput) MapIndex(k pulumi.StringInput) InstanceVariableOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InstanceVariable {
+		return vs[0].(map[string]InstanceVariable)[vs[1].(string)]
+	}).(InstanceVariableOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(InstanceVariableOutput{})
+	pulumi.RegisterOutputType(InstanceVariablePtrOutput{})
+	pulumi.RegisterOutputType(InstanceVariableArrayOutput{})
+	pulumi.RegisterOutputType(InstanceVariableMapOutput{})
 }

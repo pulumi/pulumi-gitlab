@@ -10,11 +10,7 @@ import (
 
 // The GitLab Base API URL
 func GetBaseUrl(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "gitlab:baseUrl")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "GITLAB_BASE_URL").(string)
+	return config.Get(ctx, "gitlab:baseUrl")
 }
 
 // A file containing the ca certificate to use in case ssl certificate is not from a standard chain
@@ -39,9 +35,5 @@ func GetInsecure(ctx *pulumi.Context) bool {
 
 // The OAuth token used to connect to GitLab.
 func GetToken(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "gitlab:token")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "GITLAB_TOKEN").(string)
+	return config.Get(ctx, "gitlab:token")
 }

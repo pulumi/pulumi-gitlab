@@ -333,6 +333,85 @@ func (i *ServiceSlack) ToServiceSlackOutputWithContext(ctx context.Context) Serv
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceSlackOutput)
 }
 
+func (i *ServiceSlack) ToServiceSlackPtrOutput() ServiceSlackPtrOutput {
+	return i.ToServiceSlackPtrOutputWithContext(context.Background())
+}
+
+func (i *ServiceSlack) ToServiceSlackPtrOutputWithContext(ctx context.Context) ServiceSlackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSlackPtrOutput)
+}
+
+type ServiceSlackPtrInput interface {
+	pulumi.Input
+
+	ToServiceSlackPtrOutput() ServiceSlackPtrOutput
+	ToServiceSlackPtrOutputWithContext(ctx context.Context) ServiceSlackPtrOutput
+}
+
+type serviceSlackPtrType ServiceSlackArgs
+
+func (*serviceSlackPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceSlack)(nil))
+}
+
+func (i *serviceSlackPtrType) ToServiceSlackPtrOutput() ServiceSlackPtrOutput {
+	return i.ToServiceSlackPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceSlackPtrType) ToServiceSlackPtrOutputWithContext(ctx context.Context) ServiceSlackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSlackPtrOutput)
+}
+
+// ServiceSlackArrayInput is an input type that accepts ServiceSlackArray and ServiceSlackArrayOutput values.
+// You can construct a concrete instance of `ServiceSlackArrayInput` via:
+//
+//          ServiceSlackArray{ ServiceSlackArgs{...} }
+type ServiceSlackArrayInput interface {
+	pulumi.Input
+
+	ToServiceSlackArrayOutput() ServiceSlackArrayOutput
+	ToServiceSlackArrayOutputWithContext(context.Context) ServiceSlackArrayOutput
+}
+
+type ServiceSlackArray []ServiceSlackInput
+
+func (ServiceSlackArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ServiceSlack)(nil))
+}
+
+func (i ServiceSlackArray) ToServiceSlackArrayOutput() ServiceSlackArrayOutput {
+	return i.ToServiceSlackArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceSlackArray) ToServiceSlackArrayOutputWithContext(ctx context.Context) ServiceSlackArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSlackArrayOutput)
+}
+
+// ServiceSlackMapInput is an input type that accepts ServiceSlackMap and ServiceSlackMapOutput values.
+// You can construct a concrete instance of `ServiceSlackMapInput` via:
+//
+//          ServiceSlackMap{ "key": ServiceSlackArgs{...} }
+type ServiceSlackMapInput interface {
+	pulumi.Input
+
+	ToServiceSlackMapOutput() ServiceSlackMapOutput
+	ToServiceSlackMapOutputWithContext(context.Context) ServiceSlackMapOutput
+}
+
+type ServiceSlackMap map[string]ServiceSlackInput
+
+func (ServiceSlackMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ServiceSlack)(nil))
+}
+
+func (i ServiceSlackMap) ToServiceSlackMapOutput() ServiceSlackMapOutput {
+	return i.ToServiceSlackMapOutputWithContext(context.Background())
+}
+
+func (i ServiceSlackMap) ToServiceSlackMapOutputWithContext(ctx context.Context) ServiceSlackMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSlackMapOutput)
+}
+
 type ServiceSlackOutput struct {
 	*pulumi.OutputState
 }
@@ -349,6 +428,75 @@ func (o ServiceSlackOutput) ToServiceSlackOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ServiceSlackOutput) ToServiceSlackPtrOutput() ServiceSlackPtrOutput {
+	return o.ToServiceSlackPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceSlackOutput) ToServiceSlackPtrOutputWithContext(ctx context.Context) ServiceSlackPtrOutput {
+	return o.ApplyT(func(v ServiceSlack) *ServiceSlack {
+		return &v
+	}).(ServiceSlackPtrOutput)
+}
+
+type ServiceSlackPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceSlackPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceSlack)(nil))
+}
+
+func (o ServiceSlackPtrOutput) ToServiceSlackPtrOutput() ServiceSlackPtrOutput {
+	return o
+}
+
+func (o ServiceSlackPtrOutput) ToServiceSlackPtrOutputWithContext(ctx context.Context) ServiceSlackPtrOutput {
+	return o
+}
+
+type ServiceSlackArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceSlackArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceSlack)(nil))
+}
+
+func (o ServiceSlackArrayOutput) ToServiceSlackArrayOutput() ServiceSlackArrayOutput {
+	return o
+}
+
+func (o ServiceSlackArrayOutput) ToServiceSlackArrayOutputWithContext(ctx context.Context) ServiceSlackArrayOutput {
+	return o
+}
+
+func (o ServiceSlackArrayOutput) Index(i pulumi.IntInput) ServiceSlackOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceSlack {
+		return vs[0].([]ServiceSlack)[vs[1].(int)]
+	}).(ServiceSlackOutput)
+}
+
+type ServiceSlackMapOutput struct{ *pulumi.OutputState }
+
+func (ServiceSlackMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ServiceSlack)(nil))
+}
+
+func (o ServiceSlackMapOutput) ToServiceSlackMapOutput() ServiceSlackMapOutput {
+	return o
+}
+
+func (o ServiceSlackMapOutput) ToServiceSlackMapOutputWithContext(ctx context.Context) ServiceSlackMapOutput {
+	return o
+}
+
+func (o ServiceSlackMapOutput) MapIndex(k pulumi.StringInput) ServiceSlackOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServiceSlack {
+		return vs[0].(map[string]ServiceSlack)[vs[1].(string)]
+	}).(ServiceSlackOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServiceSlackOutput{})
+	pulumi.RegisterOutputType(ServiceSlackPtrOutput{})
+	pulumi.RegisterOutputType(ServiceSlackArrayOutput{})
+	pulumi.RegisterOutputType(ServiceSlackMapOutput{})
 }

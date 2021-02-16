@@ -140,6 +140,85 @@ func (i *ServiceGithub) ToServiceGithubOutputWithContext(ctx context.Context) Se
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceGithubOutput)
 }
 
+func (i *ServiceGithub) ToServiceGithubPtrOutput() ServiceGithubPtrOutput {
+	return i.ToServiceGithubPtrOutputWithContext(context.Background())
+}
+
+func (i *ServiceGithub) ToServiceGithubPtrOutputWithContext(ctx context.Context) ServiceGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceGithubPtrOutput)
+}
+
+type ServiceGithubPtrInput interface {
+	pulumi.Input
+
+	ToServiceGithubPtrOutput() ServiceGithubPtrOutput
+	ToServiceGithubPtrOutputWithContext(ctx context.Context) ServiceGithubPtrOutput
+}
+
+type serviceGithubPtrType ServiceGithubArgs
+
+func (*serviceGithubPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceGithub)(nil))
+}
+
+func (i *serviceGithubPtrType) ToServiceGithubPtrOutput() ServiceGithubPtrOutput {
+	return i.ToServiceGithubPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceGithubPtrType) ToServiceGithubPtrOutputWithContext(ctx context.Context) ServiceGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceGithubPtrOutput)
+}
+
+// ServiceGithubArrayInput is an input type that accepts ServiceGithubArray and ServiceGithubArrayOutput values.
+// You can construct a concrete instance of `ServiceGithubArrayInput` via:
+//
+//          ServiceGithubArray{ ServiceGithubArgs{...} }
+type ServiceGithubArrayInput interface {
+	pulumi.Input
+
+	ToServiceGithubArrayOutput() ServiceGithubArrayOutput
+	ToServiceGithubArrayOutputWithContext(context.Context) ServiceGithubArrayOutput
+}
+
+type ServiceGithubArray []ServiceGithubInput
+
+func (ServiceGithubArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ServiceGithub)(nil))
+}
+
+func (i ServiceGithubArray) ToServiceGithubArrayOutput() ServiceGithubArrayOutput {
+	return i.ToServiceGithubArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceGithubArray) ToServiceGithubArrayOutputWithContext(ctx context.Context) ServiceGithubArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceGithubArrayOutput)
+}
+
+// ServiceGithubMapInput is an input type that accepts ServiceGithubMap and ServiceGithubMapOutput values.
+// You can construct a concrete instance of `ServiceGithubMapInput` via:
+//
+//          ServiceGithubMap{ "key": ServiceGithubArgs{...} }
+type ServiceGithubMapInput interface {
+	pulumi.Input
+
+	ToServiceGithubMapOutput() ServiceGithubMapOutput
+	ToServiceGithubMapOutputWithContext(context.Context) ServiceGithubMapOutput
+}
+
+type ServiceGithubMap map[string]ServiceGithubInput
+
+func (ServiceGithubMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ServiceGithub)(nil))
+}
+
+func (i ServiceGithubMap) ToServiceGithubMapOutput() ServiceGithubMapOutput {
+	return i.ToServiceGithubMapOutputWithContext(context.Background())
+}
+
+func (i ServiceGithubMap) ToServiceGithubMapOutputWithContext(ctx context.Context) ServiceGithubMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceGithubMapOutput)
+}
+
 type ServiceGithubOutput struct {
 	*pulumi.OutputState
 }
@@ -156,6 +235,75 @@ func (o ServiceGithubOutput) ToServiceGithubOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o ServiceGithubOutput) ToServiceGithubPtrOutput() ServiceGithubPtrOutput {
+	return o.ToServiceGithubPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceGithubOutput) ToServiceGithubPtrOutputWithContext(ctx context.Context) ServiceGithubPtrOutput {
+	return o.ApplyT(func(v ServiceGithub) *ServiceGithub {
+		return &v
+	}).(ServiceGithubPtrOutput)
+}
+
+type ServiceGithubPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceGithubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceGithub)(nil))
+}
+
+func (o ServiceGithubPtrOutput) ToServiceGithubPtrOutput() ServiceGithubPtrOutput {
+	return o
+}
+
+func (o ServiceGithubPtrOutput) ToServiceGithubPtrOutputWithContext(ctx context.Context) ServiceGithubPtrOutput {
+	return o
+}
+
+type ServiceGithubArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceGithubArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceGithub)(nil))
+}
+
+func (o ServiceGithubArrayOutput) ToServiceGithubArrayOutput() ServiceGithubArrayOutput {
+	return o
+}
+
+func (o ServiceGithubArrayOutput) ToServiceGithubArrayOutputWithContext(ctx context.Context) ServiceGithubArrayOutput {
+	return o
+}
+
+func (o ServiceGithubArrayOutput) Index(i pulumi.IntInput) ServiceGithubOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceGithub {
+		return vs[0].([]ServiceGithub)[vs[1].(int)]
+	}).(ServiceGithubOutput)
+}
+
+type ServiceGithubMapOutput struct{ *pulumi.OutputState }
+
+func (ServiceGithubMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ServiceGithub)(nil))
+}
+
+func (o ServiceGithubMapOutput) ToServiceGithubMapOutput() ServiceGithubMapOutput {
+	return o
+}
+
+func (o ServiceGithubMapOutput) ToServiceGithubMapOutputWithContext(ctx context.Context) ServiceGithubMapOutput {
+	return o
+}
+
+func (o ServiceGithubMapOutput) MapIndex(k pulumi.StringInput) ServiceGithubOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServiceGithub {
+		return vs[0].(map[string]ServiceGithub)[vs[1].(string)]
+	}).(ServiceGithubOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServiceGithubOutput{})
+	pulumi.RegisterOutputType(ServiceGithubPtrOutput{})
+	pulumi.RegisterOutputType(ServiceGithubArrayOutput{})
+	pulumi.RegisterOutputType(ServiceGithubMapOutput{})
 }

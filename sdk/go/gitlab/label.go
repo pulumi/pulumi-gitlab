@@ -23,7 +23,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -160,6 +160,85 @@ func (i *Label) ToLabelOutputWithContext(ctx context.Context) LabelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LabelOutput)
 }
 
+func (i *Label) ToLabelPtrOutput() LabelPtrOutput {
+	return i.ToLabelPtrOutputWithContext(context.Background())
+}
+
+func (i *Label) ToLabelPtrOutputWithContext(ctx context.Context) LabelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelPtrOutput)
+}
+
+type LabelPtrInput interface {
+	pulumi.Input
+
+	ToLabelPtrOutput() LabelPtrOutput
+	ToLabelPtrOutputWithContext(ctx context.Context) LabelPtrOutput
+}
+
+type labelPtrType LabelArgs
+
+func (*labelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Label)(nil))
+}
+
+func (i *labelPtrType) ToLabelPtrOutput() LabelPtrOutput {
+	return i.ToLabelPtrOutputWithContext(context.Background())
+}
+
+func (i *labelPtrType) ToLabelPtrOutputWithContext(ctx context.Context) LabelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelPtrOutput)
+}
+
+// LabelArrayInput is an input type that accepts LabelArray and LabelArrayOutput values.
+// You can construct a concrete instance of `LabelArrayInput` via:
+//
+//          LabelArray{ LabelArgs{...} }
+type LabelArrayInput interface {
+	pulumi.Input
+
+	ToLabelArrayOutput() LabelArrayOutput
+	ToLabelArrayOutputWithContext(context.Context) LabelArrayOutput
+}
+
+type LabelArray []LabelInput
+
+func (LabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Label)(nil))
+}
+
+func (i LabelArray) ToLabelArrayOutput() LabelArrayOutput {
+	return i.ToLabelArrayOutputWithContext(context.Background())
+}
+
+func (i LabelArray) ToLabelArrayOutputWithContext(ctx context.Context) LabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelArrayOutput)
+}
+
+// LabelMapInput is an input type that accepts LabelMap and LabelMapOutput values.
+// You can construct a concrete instance of `LabelMapInput` via:
+//
+//          LabelMap{ "key": LabelArgs{...} }
+type LabelMapInput interface {
+	pulumi.Input
+
+	ToLabelMapOutput() LabelMapOutput
+	ToLabelMapOutputWithContext(context.Context) LabelMapOutput
+}
+
+type LabelMap map[string]LabelInput
+
+func (LabelMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Label)(nil))
+}
+
+func (i LabelMap) ToLabelMapOutput() LabelMapOutput {
+	return i.ToLabelMapOutputWithContext(context.Background())
+}
+
+func (i LabelMap) ToLabelMapOutputWithContext(ctx context.Context) LabelMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelMapOutput)
+}
+
 type LabelOutput struct {
 	*pulumi.OutputState
 }
@@ -176,6 +255,75 @@ func (o LabelOutput) ToLabelOutputWithContext(ctx context.Context) LabelOutput {
 	return o
 }
 
+func (o LabelOutput) ToLabelPtrOutput() LabelPtrOutput {
+	return o.ToLabelPtrOutputWithContext(context.Background())
+}
+
+func (o LabelOutput) ToLabelPtrOutputWithContext(ctx context.Context) LabelPtrOutput {
+	return o.ApplyT(func(v Label) *Label {
+		return &v
+	}).(LabelPtrOutput)
+}
+
+type LabelPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LabelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Label)(nil))
+}
+
+func (o LabelPtrOutput) ToLabelPtrOutput() LabelPtrOutput {
+	return o
+}
+
+func (o LabelPtrOutput) ToLabelPtrOutputWithContext(ctx context.Context) LabelPtrOutput {
+	return o
+}
+
+type LabelArrayOutput struct{ *pulumi.OutputState }
+
+func (LabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Label)(nil))
+}
+
+func (o LabelArrayOutput) ToLabelArrayOutput() LabelArrayOutput {
+	return o
+}
+
+func (o LabelArrayOutput) ToLabelArrayOutputWithContext(ctx context.Context) LabelArrayOutput {
+	return o
+}
+
+func (o LabelArrayOutput) Index(i pulumi.IntInput) LabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Label {
+		return vs[0].([]Label)[vs[1].(int)]
+	}).(LabelOutput)
+}
+
+type LabelMapOutput struct{ *pulumi.OutputState }
+
+func (LabelMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Label)(nil))
+}
+
+func (o LabelMapOutput) ToLabelMapOutput() LabelMapOutput {
+	return o
+}
+
+func (o LabelMapOutput) ToLabelMapOutputWithContext(ctx context.Context) LabelMapOutput {
+	return o
+}
+
+func (o LabelMapOutput) MapIndex(k pulumi.StringInput) LabelOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Label {
+		return vs[0].(map[string]Label)[vs[1].(string)]
+	}).(LabelOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(LabelOutput{})
+	pulumi.RegisterOutputType(LabelPtrOutput{})
+	pulumi.RegisterOutputType(LabelArrayOutput{})
+	pulumi.RegisterOutputType(LabelMapOutput{})
 }

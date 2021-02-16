@@ -23,7 +23,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -245,6 +245,85 @@ func (i *ProjectHook) ToProjectHookOutputWithContext(ctx context.Context) Projec
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectHookOutput)
 }
 
+func (i *ProjectHook) ToProjectHookPtrOutput() ProjectHookPtrOutput {
+	return i.ToProjectHookPtrOutputWithContext(context.Background())
+}
+
+func (i *ProjectHook) ToProjectHookPtrOutputWithContext(ctx context.Context) ProjectHookPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectHookPtrOutput)
+}
+
+type ProjectHookPtrInput interface {
+	pulumi.Input
+
+	ToProjectHookPtrOutput() ProjectHookPtrOutput
+	ToProjectHookPtrOutputWithContext(ctx context.Context) ProjectHookPtrOutput
+}
+
+type projectHookPtrType ProjectHookArgs
+
+func (*projectHookPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectHook)(nil))
+}
+
+func (i *projectHookPtrType) ToProjectHookPtrOutput() ProjectHookPtrOutput {
+	return i.ToProjectHookPtrOutputWithContext(context.Background())
+}
+
+func (i *projectHookPtrType) ToProjectHookPtrOutputWithContext(ctx context.Context) ProjectHookPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectHookPtrOutput)
+}
+
+// ProjectHookArrayInput is an input type that accepts ProjectHookArray and ProjectHookArrayOutput values.
+// You can construct a concrete instance of `ProjectHookArrayInput` via:
+//
+//          ProjectHookArray{ ProjectHookArgs{...} }
+type ProjectHookArrayInput interface {
+	pulumi.Input
+
+	ToProjectHookArrayOutput() ProjectHookArrayOutput
+	ToProjectHookArrayOutputWithContext(context.Context) ProjectHookArrayOutput
+}
+
+type ProjectHookArray []ProjectHookInput
+
+func (ProjectHookArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ProjectHook)(nil))
+}
+
+func (i ProjectHookArray) ToProjectHookArrayOutput() ProjectHookArrayOutput {
+	return i.ToProjectHookArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectHookArray) ToProjectHookArrayOutputWithContext(ctx context.Context) ProjectHookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectHookArrayOutput)
+}
+
+// ProjectHookMapInput is an input type that accepts ProjectHookMap and ProjectHookMapOutput values.
+// You can construct a concrete instance of `ProjectHookMapInput` via:
+//
+//          ProjectHookMap{ "key": ProjectHookArgs{...} }
+type ProjectHookMapInput interface {
+	pulumi.Input
+
+	ToProjectHookMapOutput() ProjectHookMapOutput
+	ToProjectHookMapOutputWithContext(context.Context) ProjectHookMapOutput
+}
+
+type ProjectHookMap map[string]ProjectHookInput
+
+func (ProjectHookMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ProjectHook)(nil))
+}
+
+func (i ProjectHookMap) ToProjectHookMapOutput() ProjectHookMapOutput {
+	return i.ToProjectHookMapOutputWithContext(context.Background())
+}
+
+func (i ProjectHookMap) ToProjectHookMapOutputWithContext(ctx context.Context) ProjectHookMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectHookMapOutput)
+}
+
 type ProjectHookOutput struct {
 	*pulumi.OutputState
 }
@@ -261,6 +340,75 @@ func (o ProjectHookOutput) ToProjectHookOutputWithContext(ctx context.Context) P
 	return o
 }
 
+func (o ProjectHookOutput) ToProjectHookPtrOutput() ProjectHookPtrOutput {
+	return o.ToProjectHookPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectHookOutput) ToProjectHookPtrOutputWithContext(ctx context.Context) ProjectHookPtrOutput {
+	return o.ApplyT(func(v ProjectHook) *ProjectHook {
+		return &v
+	}).(ProjectHookPtrOutput)
+}
+
+type ProjectHookPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectHookPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectHook)(nil))
+}
+
+func (o ProjectHookPtrOutput) ToProjectHookPtrOutput() ProjectHookPtrOutput {
+	return o
+}
+
+func (o ProjectHookPtrOutput) ToProjectHookPtrOutputWithContext(ctx context.Context) ProjectHookPtrOutput {
+	return o
+}
+
+type ProjectHookArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectHookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectHook)(nil))
+}
+
+func (o ProjectHookArrayOutput) ToProjectHookArrayOutput() ProjectHookArrayOutput {
+	return o
+}
+
+func (o ProjectHookArrayOutput) ToProjectHookArrayOutputWithContext(ctx context.Context) ProjectHookArrayOutput {
+	return o
+}
+
+func (o ProjectHookArrayOutput) Index(i pulumi.IntInput) ProjectHookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectHook {
+		return vs[0].([]ProjectHook)[vs[1].(int)]
+	}).(ProjectHookOutput)
+}
+
+type ProjectHookMapOutput struct{ *pulumi.OutputState }
+
+func (ProjectHookMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ProjectHook)(nil))
+}
+
+func (o ProjectHookMapOutput) ToProjectHookMapOutput() ProjectHookMapOutput {
+	return o
+}
+
+func (o ProjectHookMapOutput) ToProjectHookMapOutputWithContext(ctx context.Context) ProjectHookMapOutput {
+	return o
+}
+
+func (o ProjectHookMapOutput) MapIndex(k pulumi.StringInput) ProjectHookOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectHook {
+		return vs[0].(map[string]ProjectHook)[vs[1].(string)]
+	}).(ProjectHookOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProjectHookOutput{})
+	pulumi.RegisterOutputType(ProjectHookPtrOutput{})
+	pulumi.RegisterOutputType(ProjectHookArrayOutput{})
+	pulumi.RegisterOutputType(ProjectHookMapOutput{})
 }

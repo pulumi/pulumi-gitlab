@@ -33,22 +33,22 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
+        opts = opts || {};
         {
-            inputs["baseUrl"] = (args ? args.baseUrl : undefined) || utilities.getEnv("GITLAB_BASE_URL");
+            if ((!args || args.token === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'token'");
+            }
+            inputs["baseUrl"] = args ? args.baseUrl : undefined;
             inputs["cacertFile"] = args ? args.cacertFile : undefined;
             inputs["clientCert"] = args ? args.clientCert : undefined;
             inputs["clientKey"] = args ? args.clientKey : undefined;
             inputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
-            inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("GITLAB_TOKEN");
+            inputs["token"] = args ? args.token : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Provider.__pulumiType, name, inputs, opts);
     }
@@ -81,5 +81,5 @@ export interface ProviderArgs {
     /**
      * The OAuth token used to connect to GitLab.
      */
-    readonly token?: pulumi.Input<string>;
+    readonly token: pulumi.Input<string>;
 }

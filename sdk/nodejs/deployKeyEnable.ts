@@ -92,7 +92,8 @@ export class DeployKeyEnable extends pulumi.CustomResource {
     constructor(name: string, args: DeployKeyEnableArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DeployKeyEnableArgs | DeployKeyEnableState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DeployKeyEnableState | undefined;
             inputs["canPush"] = state ? state.canPush : undefined;
             inputs["key"] = state ? state.key : undefined;
@@ -101,10 +102,10 @@ export class DeployKeyEnable extends pulumi.CustomResource {
             inputs["title"] = state ? state.title : undefined;
         } else {
             const args = argsOrState as DeployKeyEnableArgs | undefined;
-            if ((!args || args.keyId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.keyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyId'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["canPush"] = args ? args.canPush : undefined;
@@ -113,12 +114,8 @@ export class DeployKeyEnable extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["title"] = args ? args.title : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DeployKeyEnable.__pulumiType, name, inputs, opts);
     }

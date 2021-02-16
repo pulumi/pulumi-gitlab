@@ -131,7 +131,8 @@ export class ProjectCluster extends pulumi.CustomResource {
     constructor(name: string, args: ProjectClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectClusterArgs | ProjectClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectClusterState | undefined;
             inputs["clusterType"] = state ? state.clusterType : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
@@ -151,13 +152,13 @@ export class ProjectCluster extends pulumi.CustomResource {
             inputs["providerType"] = state ? state.providerType : undefined;
         } else {
             const args = argsOrState as ProjectClusterArgs | undefined;
-            if ((!args || args.kubernetesApiUrl === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.kubernetesApiUrl === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'kubernetesApiUrl'");
             }
-            if ((!args || args.kubernetesToken === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.kubernetesToken === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'kubernetesToken'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["domain"] = args ? args.domain : undefined;
@@ -177,12 +178,8 @@ export class ProjectCluster extends pulumi.CustomResource {
             inputs["platformType"] = undefined /*out*/;
             inputs["providerType"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ProjectCluster.__pulumiType, name, inputs, opts);
     }

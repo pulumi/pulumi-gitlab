@@ -22,7 +22,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -50,7 +50,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -221,6 +221,85 @@ func (i *DeployToken) ToDeployTokenOutputWithContext(ctx context.Context) Deploy
 	return pulumi.ToOutputWithContext(ctx, i).(DeployTokenOutput)
 }
 
+func (i *DeployToken) ToDeployTokenPtrOutput() DeployTokenPtrOutput {
+	return i.ToDeployTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *DeployToken) ToDeployTokenPtrOutputWithContext(ctx context.Context) DeployTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployTokenPtrOutput)
+}
+
+type DeployTokenPtrInput interface {
+	pulumi.Input
+
+	ToDeployTokenPtrOutput() DeployTokenPtrOutput
+	ToDeployTokenPtrOutputWithContext(ctx context.Context) DeployTokenPtrOutput
+}
+
+type deployTokenPtrType DeployTokenArgs
+
+func (*deployTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployToken)(nil))
+}
+
+func (i *deployTokenPtrType) ToDeployTokenPtrOutput() DeployTokenPtrOutput {
+	return i.ToDeployTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *deployTokenPtrType) ToDeployTokenPtrOutputWithContext(ctx context.Context) DeployTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployTokenPtrOutput)
+}
+
+// DeployTokenArrayInput is an input type that accepts DeployTokenArray and DeployTokenArrayOutput values.
+// You can construct a concrete instance of `DeployTokenArrayInput` via:
+//
+//          DeployTokenArray{ DeployTokenArgs{...} }
+type DeployTokenArrayInput interface {
+	pulumi.Input
+
+	ToDeployTokenArrayOutput() DeployTokenArrayOutput
+	ToDeployTokenArrayOutputWithContext(context.Context) DeployTokenArrayOutput
+}
+
+type DeployTokenArray []DeployTokenInput
+
+func (DeployTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DeployToken)(nil))
+}
+
+func (i DeployTokenArray) ToDeployTokenArrayOutput() DeployTokenArrayOutput {
+	return i.ToDeployTokenArrayOutputWithContext(context.Background())
+}
+
+func (i DeployTokenArray) ToDeployTokenArrayOutputWithContext(ctx context.Context) DeployTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployTokenArrayOutput)
+}
+
+// DeployTokenMapInput is an input type that accepts DeployTokenMap and DeployTokenMapOutput values.
+// You can construct a concrete instance of `DeployTokenMapInput` via:
+//
+//          DeployTokenMap{ "key": DeployTokenArgs{...} }
+type DeployTokenMapInput interface {
+	pulumi.Input
+
+	ToDeployTokenMapOutput() DeployTokenMapOutput
+	ToDeployTokenMapOutputWithContext(context.Context) DeployTokenMapOutput
+}
+
+type DeployTokenMap map[string]DeployTokenInput
+
+func (DeployTokenMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DeployToken)(nil))
+}
+
+func (i DeployTokenMap) ToDeployTokenMapOutput() DeployTokenMapOutput {
+	return i.ToDeployTokenMapOutputWithContext(context.Background())
+}
+
+func (i DeployTokenMap) ToDeployTokenMapOutputWithContext(ctx context.Context) DeployTokenMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployTokenMapOutput)
+}
+
 type DeployTokenOutput struct {
 	*pulumi.OutputState
 }
@@ -237,6 +316,75 @@ func (o DeployTokenOutput) ToDeployTokenOutputWithContext(ctx context.Context) D
 	return o
 }
 
+func (o DeployTokenOutput) ToDeployTokenPtrOutput() DeployTokenPtrOutput {
+	return o.ToDeployTokenPtrOutputWithContext(context.Background())
+}
+
+func (o DeployTokenOutput) ToDeployTokenPtrOutputWithContext(ctx context.Context) DeployTokenPtrOutput {
+	return o.ApplyT(func(v DeployToken) *DeployToken {
+		return &v
+	}).(DeployTokenPtrOutput)
+}
+
+type DeployTokenPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DeployTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployToken)(nil))
+}
+
+func (o DeployTokenPtrOutput) ToDeployTokenPtrOutput() DeployTokenPtrOutput {
+	return o
+}
+
+func (o DeployTokenPtrOutput) ToDeployTokenPtrOutputWithContext(ctx context.Context) DeployTokenPtrOutput {
+	return o
+}
+
+type DeployTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (DeployTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeployToken)(nil))
+}
+
+func (o DeployTokenArrayOutput) ToDeployTokenArrayOutput() DeployTokenArrayOutput {
+	return o
+}
+
+func (o DeployTokenArrayOutput) ToDeployTokenArrayOutputWithContext(ctx context.Context) DeployTokenArrayOutput {
+	return o
+}
+
+func (o DeployTokenArrayOutput) Index(i pulumi.IntInput) DeployTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeployToken {
+		return vs[0].([]DeployToken)[vs[1].(int)]
+	}).(DeployTokenOutput)
+}
+
+type DeployTokenMapOutput struct{ *pulumi.OutputState }
+
+func (DeployTokenMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeployToken)(nil))
+}
+
+func (o DeployTokenMapOutput) ToDeployTokenMapOutput() DeployTokenMapOutput {
+	return o
+}
+
+func (o DeployTokenMapOutput) ToDeployTokenMapOutputWithContext(ctx context.Context) DeployTokenMapOutput {
+	return o
+}
+
+func (o DeployTokenMapOutput) MapIndex(k pulumi.StringInput) DeployTokenOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeployToken {
+		return vs[0].(map[string]DeployToken)[vs[1].(string)]
+	}).(DeployTokenOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DeployTokenOutput{})
+	pulumi.RegisterOutputType(DeployTokenPtrOutput{})
+	pulumi.RegisterOutputType(DeployTokenArrayOutput{})
+	pulumi.RegisterOutputType(DeployTokenMapOutput{})
 }

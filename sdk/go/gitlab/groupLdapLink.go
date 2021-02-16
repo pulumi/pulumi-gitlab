@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -178,6 +178,85 @@ func (i *GroupLdapLink) ToGroupLdapLinkOutputWithContext(ctx context.Context) Gr
 	return pulumi.ToOutputWithContext(ctx, i).(GroupLdapLinkOutput)
 }
 
+func (i *GroupLdapLink) ToGroupLdapLinkPtrOutput() GroupLdapLinkPtrOutput {
+	return i.ToGroupLdapLinkPtrOutputWithContext(context.Background())
+}
+
+func (i *GroupLdapLink) ToGroupLdapLinkPtrOutputWithContext(ctx context.Context) GroupLdapLinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupLdapLinkPtrOutput)
+}
+
+type GroupLdapLinkPtrInput interface {
+	pulumi.Input
+
+	ToGroupLdapLinkPtrOutput() GroupLdapLinkPtrOutput
+	ToGroupLdapLinkPtrOutputWithContext(ctx context.Context) GroupLdapLinkPtrOutput
+}
+
+type groupLdapLinkPtrType GroupLdapLinkArgs
+
+func (*groupLdapLinkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupLdapLink)(nil))
+}
+
+func (i *groupLdapLinkPtrType) ToGroupLdapLinkPtrOutput() GroupLdapLinkPtrOutput {
+	return i.ToGroupLdapLinkPtrOutputWithContext(context.Background())
+}
+
+func (i *groupLdapLinkPtrType) ToGroupLdapLinkPtrOutputWithContext(ctx context.Context) GroupLdapLinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupLdapLinkPtrOutput)
+}
+
+// GroupLdapLinkArrayInput is an input type that accepts GroupLdapLinkArray and GroupLdapLinkArrayOutput values.
+// You can construct a concrete instance of `GroupLdapLinkArrayInput` via:
+//
+//          GroupLdapLinkArray{ GroupLdapLinkArgs{...} }
+type GroupLdapLinkArrayInput interface {
+	pulumi.Input
+
+	ToGroupLdapLinkArrayOutput() GroupLdapLinkArrayOutput
+	ToGroupLdapLinkArrayOutputWithContext(context.Context) GroupLdapLinkArrayOutput
+}
+
+type GroupLdapLinkArray []GroupLdapLinkInput
+
+func (GroupLdapLinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*GroupLdapLink)(nil))
+}
+
+func (i GroupLdapLinkArray) ToGroupLdapLinkArrayOutput() GroupLdapLinkArrayOutput {
+	return i.ToGroupLdapLinkArrayOutputWithContext(context.Background())
+}
+
+func (i GroupLdapLinkArray) ToGroupLdapLinkArrayOutputWithContext(ctx context.Context) GroupLdapLinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupLdapLinkArrayOutput)
+}
+
+// GroupLdapLinkMapInput is an input type that accepts GroupLdapLinkMap and GroupLdapLinkMapOutput values.
+// You can construct a concrete instance of `GroupLdapLinkMapInput` via:
+//
+//          GroupLdapLinkMap{ "key": GroupLdapLinkArgs{...} }
+type GroupLdapLinkMapInput interface {
+	pulumi.Input
+
+	ToGroupLdapLinkMapOutput() GroupLdapLinkMapOutput
+	ToGroupLdapLinkMapOutputWithContext(context.Context) GroupLdapLinkMapOutput
+}
+
+type GroupLdapLinkMap map[string]GroupLdapLinkInput
+
+func (GroupLdapLinkMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*GroupLdapLink)(nil))
+}
+
+func (i GroupLdapLinkMap) ToGroupLdapLinkMapOutput() GroupLdapLinkMapOutput {
+	return i.ToGroupLdapLinkMapOutputWithContext(context.Background())
+}
+
+func (i GroupLdapLinkMap) ToGroupLdapLinkMapOutputWithContext(ctx context.Context) GroupLdapLinkMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupLdapLinkMapOutput)
+}
+
 type GroupLdapLinkOutput struct {
 	*pulumi.OutputState
 }
@@ -194,6 +273,75 @@ func (o GroupLdapLinkOutput) ToGroupLdapLinkOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o GroupLdapLinkOutput) ToGroupLdapLinkPtrOutput() GroupLdapLinkPtrOutput {
+	return o.ToGroupLdapLinkPtrOutputWithContext(context.Background())
+}
+
+func (o GroupLdapLinkOutput) ToGroupLdapLinkPtrOutputWithContext(ctx context.Context) GroupLdapLinkPtrOutput {
+	return o.ApplyT(func(v GroupLdapLink) *GroupLdapLink {
+		return &v
+	}).(GroupLdapLinkPtrOutput)
+}
+
+type GroupLdapLinkPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GroupLdapLinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupLdapLink)(nil))
+}
+
+func (o GroupLdapLinkPtrOutput) ToGroupLdapLinkPtrOutput() GroupLdapLinkPtrOutput {
+	return o
+}
+
+func (o GroupLdapLinkPtrOutput) ToGroupLdapLinkPtrOutputWithContext(ctx context.Context) GroupLdapLinkPtrOutput {
+	return o
+}
+
+type GroupLdapLinkArrayOutput struct{ *pulumi.OutputState }
+
+func (GroupLdapLinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupLdapLink)(nil))
+}
+
+func (o GroupLdapLinkArrayOutput) ToGroupLdapLinkArrayOutput() GroupLdapLinkArrayOutput {
+	return o
+}
+
+func (o GroupLdapLinkArrayOutput) ToGroupLdapLinkArrayOutputWithContext(ctx context.Context) GroupLdapLinkArrayOutput {
+	return o
+}
+
+func (o GroupLdapLinkArrayOutput) Index(i pulumi.IntInput) GroupLdapLinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupLdapLink {
+		return vs[0].([]GroupLdapLink)[vs[1].(int)]
+	}).(GroupLdapLinkOutput)
+}
+
+type GroupLdapLinkMapOutput struct{ *pulumi.OutputState }
+
+func (GroupLdapLinkMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GroupLdapLink)(nil))
+}
+
+func (o GroupLdapLinkMapOutput) ToGroupLdapLinkMapOutput() GroupLdapLinkMapOutput {
+	return o
+}
+
+func (o GroupLdapLinkMapOutput) ToGroupLdapLinkMapOutputWithContext(ctx context.Context) GroupLdapLinkMapOutput {
+	return o
+}
+
+func (o GroupLdapLinkMapOutput) MapIndex(k pulumi.StringInput) GroupLdapLinkOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GroupLdapLink {
+		return vs[0].(map[string]GroupLdapLink)[vs[1].(string)]
+	}).(GroupLdapLinkOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GroupLdapLinkOutput{})
+	pulumi.RegisterOutputType(GroupLdapLinkPtrOutput{})
+	pulumi.RegisterOutputType(GroupLdapLinkArrayOutput{})
+	pulumi.RegisterOutputType(GroupLdapLinkMapOutput{})
 }

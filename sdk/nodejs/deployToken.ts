@@ -107,7 +107,8 @@ export class DeployToken extends pulumi.CustomResource {
     constructor(name: string, args: DeployTokenArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DeployTokenArgs | DeployTokenState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DeployTokenState | undefined;
             inputs["expiresAt"] = state ? state.expiresAt : undefined;
             inputs["group"] = state ? state.group : undefined;
@@ -118,7 +119,7 @@ export class DeployToken extends pulumi.CustomResource {
             inputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as DeployTokenArgs | undefined;
-            if ((!args || args.scopes === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.scopes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scopes'");
             }
             inputs["expiresAt"] = args ? args.expiresAt : undefined;
@@ -129,12 +130,8 @@ export class DeployToken extends pulumi.CustomResource {
             inputs["username"] = args ? args.username : undefined;
             inputs["token"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DeployToken.__pulumiType, name, inputs, opts);
     }

@@ -198,6 +198,85 @@ func (i *ServiceJira) ToServiceJiraOutputWithContext(ctx context.Context) Servic
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceJiraOutput)
 }
 
+func (i *ServiceJira) ToServiceJiraPtrOutput() ServiceJiraPtrOutput {
+	return i.ToServiceJiraPtrOutputWithContext(context.Background())
+}
+
+func (i *ServiceJira) ToServiceJiraPtrOutputWithContext(ctx context.Context) ServiceJiraPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceJiraPtrOutput)
+}
+
+type ServiceJiraPtrInput interface {
+	pulumi.Input
+
+	ToServiceJiraPtrOutput() ServiceJiraPtrOutput
+	ToServiceJiraPtrOutputWithContext(ctx context.Context) ServiceJiraPtrOutput
+}
+
+type serviceJiraPtrType ServiceJiraArgs
+
+func (*serviceJiraPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceJira)(nil))
+}
+
+func (i *serviceJiraPtrType) ToServiceJiraPtrOutput() ServiceJiraPtrOutput {
+	return i.ToServiceJiraPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceJiraPtrType) ToServiceJiraPtrOutputWithContext(ctx context.Context) ServiceJiraPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceJiraPtrOutput)
+}
+
+// ServiceJiraArrayInput is an input type that accepts ServiceJiraArray and ServiceJiraArrayOutput values.
+// You can construct a concrete instance of `ServiceJiraArrayInput` via:
+//
+//          ServiceJiraArray{ ServiceJiraArgs{...} }
+type ServiceJiraArrayInput interface {
+	pulumi.Input
+
+	ToServiceJiraArrayOutput() ServiceJiraArrayOutput
+	ToServiceJiraArrayOutputWithContext(context.Context) ServiceJiraArrayOutput
+}
+
+type ServiceJiraArray []ServiceJiraInput
+
+func (ServiceJiraArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ServiceJira)(nil))
+}
+
+func (i ServiceJiraArray) ToServiceJiraArrayOutput() ServiceJiraArrayOutput {
+	return i.ToServiceJiraArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceJiraArray) ToServiceJiraArrayOutputWithContext(ctx context.Context) ServiceJiraArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceJiraArrayOutput)
+}
+
+// ServiceJiraMapInput is an input type that accepts ServiceJiraMap and ServiceJiraMapOutput values.
+// You can construct a concrete instance of `ServiceJiraMapInput` via:
+//
+//          ServiceJiraMap{ "key": ServiceJiraArgs{...} }
+type ServiceJiraMapInput interface {
+	pulumi.Input
+
+	ToServiceJiraMapOutput() ServiceJiraMapOutput
+	ToServiceJiraMapOutputWithContext(context.Context) ServiceJiraMapOutput
+}
+
+type ServiceJiraMap map[string]ServiceJiraInput
+
+func (ServiceJiraMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ServiceJira)(nil))
+}
+
+func (i ServiceJiraMap) ToServiceJiraMapOutput() ServiceJiraMapOutput {
+	return i.ToServiceJiraMapOutputWithContext(context.Background())
+}
+
+func (i ServiceJiraMap) ToServiceJiraMapOutputWithContext(ctx context.Context) ServiceJiraMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceJiraMapOutput)
+}
+
 type ServiceJiraOutput struct {
 	*pulumi.OutputState
 }
@@ -214,6 +293,75 @@ func (o ServiceJiraOutput) ToServiceJiraOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o ServiceJiraOutput) ToServiceJiraPtrOutput() ServiceJiraPtrOutput {
+	return o.ToServiceJiraPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceJiraOutput) ToServiceJiraPtrOutputWithContext(ctx context.Context) ServiceJiraPtrOutput {
+	return o.ApplyT(func(v ServiceJira) *ServiceJira {
+		return &v
+	}).(ServiceJiraPtrOutput)
+}
+
+type ServiceJiraPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceJiraPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceJira)(nil))
+}
+
+func (o ServiceJiraPtrOutput) ToServiceJiraPtrOutput() ServiceJiraPtrOutput {
+	return o
+}
+
+func (o ServiceJiraPtrOutput) ToServiceJiraPtrOutputWithContext(ctx context.Context) ServiceJiraPtrOutput {
+	return o
+}
+
+type ServiceJiraArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceJiraArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceJira)(nil))
+}
+
+func (o ServiceJiraArrayOutput) ToServiceJiraArrayOutput() ServiceJiraArrayOutput {
+	return o
+}
+
+func (o ServiceJiraArrayOutput) ToServiceJiraArrayOutputWithContext(ctx context.Context) ServiceJiraArrayOutput {
+	return o
+}
+
+func (o ServiceJiraArrayOutput) Index(i pulumi.IntInput) ServiceJiraOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceJira {
+		return vs[0].([]ServiceJira)[vs[1].(int)]
+	}).(ServiceJiraOutput)
+}
+
+type ServiceJiraMapOutput struct{ *pulumi.OutputState }
+
+func (ServiceJiraMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ServiceJira)(nil))
+}
+
+func (o ServiceJiraMapOutput) ToServiceJiraMapOutput() ServiceJiraMapOutput {
+	return o
+}
+
+func (o ServiceJiraMapOutput) ToServiceJiraMapOutputWithContext(ctx context.Context) ServiceJiraMapOutput {
+	return o
+}
+
+func (o ServiceJiraMapOutput) MapIndex(k pulumi.StringInput) ServiceJiraOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServiceJira {
+		return vs[0].(map[string]ServiceJira)[vs[1].(string)]
+	}).(ServiceJiraOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServiceJiraOutput{})
+	pulumi.RegisterOutputType(ServiceJiraPtrOutput{})
+	pulumi.RegisterOutputType(ServiceJiraArrayOutput{})
+	pulumi.RegisterOutputType(ServiceJiraMapOutput{})
 }

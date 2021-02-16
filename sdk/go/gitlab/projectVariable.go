@@ -28,7 +28,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -207,6 +207,85 @@ func (i *ProjectVariable) ToProjectVariableOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectVariableOutput)
 }
 
+func (i *ProjectVariable) ToProjectVariablePtrOutput() ProjectVariablePtrOutput {
+	return i.ToProjectVariablePtrOutputWithContext(context.Background())
+}
+
+func (i *ProjectVariable) ToProjectVariablePtrOutputWithContext(ctx context.Context) ProjectVariablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectVariablePtrOutput)
+}
+
+type ProjectVariablePtrInput interface {
+	pulumi.Input
+
+	ToProjectVariablePtrOutput() ProjectVariablePtrOutput
+	ToProjectVariablePtrOutputWithContext(ctx context.Context) ProjectVariablePtrOutput
+}
+
+type projectVariablePtrType ProjectVariableArgs
+
+func (*projectVariablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectVariable)(nil))
+}
+
+func (i *projectVariablePtrType) ToProjectVariablePtrOutput() ProjectVariablePtrOutput {
+	return i.ToProjectVariablePtrOutputWithContext(context.Background())
+}
+
+func (i *projectVariablePtrType) ToProjectVariablePtrOutputWithContext(ctx context.Context) ProjectVariablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectVariablePtrOutput)
+}
+
+// ProjectVariableArrayInput is an input type that accepts ProjectVariableArray and ProjectVariableArrayOutput values.
+// You can construct a concrete instance of `ProjectVariableArrayInput` via:
+//
+//          ProjectVariableArray{ ProjectVariableArgs{...} }
+type ProjectVariableArrayInput interface {
+	pulumi.Input
+
+	ToProjectVariableArrayOutput() ProjectVariableArrayOutput
+	ToProjectVariableArrayOutputWithContext(context.Context) ProjectVariableArrayOutput
+}
+
+type ProjectVariableArray []ProjectVariableInput
+
+func (ProjectVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ProjectVariable)(nil))
+}
+
+func (i ProjectVariableArray) ToProjectVariableArrayOutput() ProjectVariableArrayOutput {
+	return i.ToProjectVariableArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectVariableArray) ToProjectVariableArrayOutputWithContext(ctx context.Context) ProjectVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectVariableArrayOutput)
+}
+
+// ProjectVariableMapInput is an input type that accepts ProjectVariableMap and ProjectVariableMapOutput values.
+// You can construct a concrete instance of `ProjectVariableMapInput` via:
+//
+//          ProjectVariableMap{ "key": ProjectVariableArgs{...} }
+type ProjectVariableMapInput interface {
+	pulumi.Input
+
+	ToProjectVariableMapOutput() ProjectVariableMapOutput
+	ToProjectVariableMapOutputWithContext(context.Context) ProjectVariableMapOutput
+}
+
+type ProjectVariableMap map[string]ProjectVariableInput
+
+func (ProjectVariableMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ProjectVariable)(nil))
+}
+
+func (i ProjectVariableMap) ToProjectVariableMapOutput() ProjectVariableMapOutput {
+	return i.ToProjectVariableMapOutputWithContext(context.Background())
+}
+
+func (i ProjectVariableMap) ToProjectVariableMapOutputWithContext(ctx context.Context) ProjectVariableMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectVariableMapOutput)
+}
+
 type ProjectVariableOutput struct {
 	*pulumi.OutputState
 }
@@ -223,6 +302,75 @@ func (o ProjectVariableOutput) ToProjectVariableOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ProjectVariableOutput) ToProjectVariablePtrOutput() ProjectVariablePtrOutput {
+	return o.ToProjectVariablePtrOutputWithContext(context.Background())
+}
+
+func (o ProjectVariableOutput) ToProjectVariablePtrOutputWithContext(ctx context.Context) ProjectVariablePtrOutput {
+	return o.ApplyT(func(v ProjectVariable) *ProjectVariable {
+		return &v
+	}).(ProjectVariablePtrOutput)
+}
+
+type ProjectVariablePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectVariablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectVariable)(nil))
+}
+
+func (o ProjectVariablePtrOutput) ToProjectVariablePtrOutput() ProjectVariablePtrOutput {
+	return o
+}
+
+func (o ProjectVariablePtrOutput) ToProjectVariablePtrOutputWithContext(ctx context.Context) ProjectVariablePtrOutput {
+	return o
+}
+
+type ProjectVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectVariable)(nil))
+}
+
+func (o ProjectVariableArrayOutput) ToProjectVariableArrayOutput() ProjectVariableArrayOutput {
+	return o
+}
+
+func (o ProjectVariableArrayOutput) ToProjectVariableArrayOutputWithContext(ctx context.Context) ProjectVariableArrayOutput {
+	return o
+}
+
+func (o ProjectVariableArrayOutput) Index(i pulumi.IntInput) ProjectVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectVariable {
+		return vs[0].([]ProjectVariable)[vs[1].(int)]
+	}).(ProjectVariableOutput)
+}
+
+type ProjectVariableMapOutput struct{ *pulumi.OutputState }
+
+func (ProjectVariableMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ProjectVariable)(nil))
+}
+
+func (o ProjectVariableMapOutput) ToProjectVariableMapOutput() ProjectVariableMapOutput {
+	return o
+}
+
+func (o ProjectVariableMapOutput) ToProjectVariableMapOutputWithContext(ctx context.Context) ProjectVariableMapOutput {
+	return o
+}
+
+func (o ProjectVariableMapOutput) MapIndex(k pulumi.StringInput) ProjectVariableOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectVariable {
+		return vs[0].(map[string]ProjectVariable)[vs[1].(string)]
+	}).(ProjectVariableOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProjectVariableOutput{})
+	pulumi.RegisterOutputType(ProjectVariablePtrOutput{})
+	pulumi.RegisterOutputType(ProjectVariableArrayOutput{})
+	pulumi.RegisterOutputType(ProjectVariableMapOutput{})
 }

@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -174,6 +174,85 @@ func (i *PipelineScheduleVariable) ToPipelineScheduleVariableOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineScheduleVariableOutput)
 }
 
+func (i *PipelineScheduleVariable) ToPipelineScheduleVariablePtrOutput() PipelineScheduleVariablePtrOutput {
+	return i.ToPipelineScheduleVariablePtrOutputWithContext(context.Background())
+}
+
+func (i *PipelineScheduleVariable) ToPipelineScheduleVariablePtrOutputWithContext(ctx context.Context) PipelineScheduleVariablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScheduleVariablePtrOutput)
+}
+
+type PipelineScheduleVariablePtrInput interface {
+	pulumi.Input
+
+	ToPipelineScheduleVariablePtrOutput() PipelineScheduleVariablePtrOutput
+	ToPipelineScheduleVariablePtrOutputWithContext(ctx context.Context) PipelineScheduleVariablePtrOutput
+}
+
+type pipelineScheduleVariablePtrType PipelineScheduleVariableArgs
+
+func (*pipelineScheduleVariablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineScheduleVariable)(nil))
+}
+
+func (i *pipelineScheduleVariablePtrType) ToPipelineScheduleVariablePtrOutput() PipelineScheduleVariablePtrOutput {
+	return i.ToPipelineScheduleVariablePtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineScheduleVariablePtrType) ToPipelineScheduleVariablePtrOutputWithContext(ctx context.Context) PipelineScheduleVariablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScheduleVariablePtrOutput)
+}
+
+// PipelineScheduleVariableArrayInput is an input type that accepts PipelineScheduleVariableArray and PipelineScheduleVariableArrayOutput values.
+// You can construct a concrete instance of `PipelineScheduleVariableArrayInput` via:
+//
+//          PipelineScheduleVariableArray{ PipelineScheduleVariableArgs{...} }
+type PipelineScheduleVariableArrayInput interface {
+	pulumi.Input
+
+	ToPipelineScheduleVariableArrayOutput() PipelineScheduleVariableArrayOutput
+	ToPipelineScheduleVariableArrayOutputWithContext(context.Context) PipelineScheduleVariableArrayOutput
+}
+
+type PipelineScheduleVariableArray []PipelineScheduleVariableInput
+
+func (PipelineScheduleVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*PipelineScheduleVariable)(nil))
+}
+
+func (i PipelineScheduleVariableArray) ToPipelineScheduleVariableArrayOutput() PipelineScheduleVariableArrayOutput {
+	return i.ToPipelineScheduleVariableArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineScheduleVariableArray) ToPipelineScheduleVariableArrayOutputWithContext(ctx context.Context) PipelineScheduleVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScheduleVariableArrayOutput)
+}
+
+// PipelineScheduleVariableMapInput is an input type that accepts PipelineScheduleVariableMap and PipelineScheduleVariableMapOutput values.
+// You can construct a concrete instance of `PipelineScheduleVariableMapInput` via:
+//
+//          PipelineScheduleVariableMap{ "key": PipelineScheduleVariableArgs{...} }
+type PipelineScheduleVariableMapInput interface {
+	pulumi.Input
+
+	ToPipelineScheduleVariableMapOutput() PipelineScheduleVariableMapOutput
+	ToPipelineScheduleVariableMapOutputWithContext(context.Context) PipelineScheduleVariableMapOutput
+}
+
+type PipelineScheduleVariableMap map[string]PipelineScheduleVariableInput
+
+func (PipelineScheduleVariableMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*PipelineScheduleVariable)(nil))
+}
+
+func (i PipelineScheduleVariableMap) ToPipelineScheduleVariableMapOutput() PipelineScheduleVariableMapOutput {
+	return i.ToPipelineScheduleVariableMapOutputWithContext(context.Background())
+}
+
+func (i PipelineScheduleVariableMap) ToPipelineScheduleVariableMapOutputWithContext(ctx context.Context) PipelineScheduleVariableMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScheduleVariableMapOutput)
+}
+
 type PipelineScheduleVariableOutput struct {
 	*pulumi.OutputState
 }
@@ -190,6 +269,75 @@ func (o PipelineScheduleVariableOutput) ToPipelineScheduleVariableOutputWithCont
 	return o
 }
 
+func (o PipelineScheduleVariableOutput) ToPipelineScheduleVariablePtrOutput() PipelineScheduleVariablePtrOutput {
+	return o.ToPipelineScheduleVariablePtrOutputWithContext(context.Background())
+}
+
+func (o PipelineScheduleVariableOutput) ToPipelineScheduleVariablePtrOutputWithContext(ctx context.Context) PipelineScheduleVariablePtrOutput {
+	return o.ApplyT(func(v PipelineScheduleVariable) *PipelineScheduleVariable {
+		return &v
+	}).(PipelineScheduleVariablePtrOutput)
+}
+
+type PipelineScheduleVariablePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PipelineScheduleVariablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineScheduleVariable)(nil))
+}
+
+func (o PipelineScheduleVariablePtrOutput) ToPipelineScheduleVariablePtrOutput() PipelineScheduleVariablePtrOutput {
+	return o
+}
+
+func (o PipelineScheduleVariablePtrOutput) ToPipelineScheduleVariablePtrOutputWithContext(ctx context.Context) PipelineScheduleVariablePtrOutput {
+	return o
+}
+
+type PipelineScheduleVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineScheduleVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineScheduleVariable)(nil))
+}
+
+func (o PipelineScheduleVariableArrayOutput) ToPipelineScheduleVariableArrayOutput() PipelineScheduleVariableArrayOutput {
+	return o
+}
+
+func (o PipelineScheduleVariableArrayOutput) ToPipelineScheduleVariableArrayOutputWithContext(ctx context.Context) PipelineScheduleVariableArrayOutput {
+	return o
+}
+
+func (o PipelineScheduleVariableArrayOutput) Index(i pulumi.IntInput) PipelineScheduleVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineScheduleVariable {
+		return vs[0].([]PipelineScheduleVariable)[vs[1].(int)]
+	}).(PipelineScheduleVariableOutput)
+}
+
+type PipelineScheduleVariableMapOutput struct{ *pulumi.OutputState }
+
+func (PipelineScheduleVariableMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PipelineScheduleVariable)(nil))
+}
+
+func (o PipelineScheduleVariableMapOutput) ToPipelineScheduleVariableMapOutput() PipelineScheduleVariableMapOutput {
+	return o
+}
+
+func (o PipelineScheduleVariableMapOutput) ToPipelineScheduleVariableMapOutputWithContext(ctx context.Context) PipelineScheduleVariableMapOutput {
+	return o
+}
+
+func (o PipelineScheduleVariableMapOutput) MapIndex(k pulumi.StringInput) PipelineScheduleVariableOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PipelineScheduleVariable {
+		return vs[0].(map[string]PipelineScheduleVariable)[vs[1].(string)]
+	}).(PipelineScheduleVariableOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(PipelineScheduleVariableOutput{})
+	pulumi.RegisterOutputType(PipelineScheduleVariablePtrOutput{})
+	pulumi.RegisterOutputType(PipelineScheduleVariableArrayOutput{})
+	pulumi.RegisterOutputType(PipelineScheduleVariableMapOutput{})
 }

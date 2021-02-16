@@ -87,7 +87,8 @@ export class GroupLdapLink extends pulumi.CustomResource {
     constructor(name: string, args: GroupLdapLinkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupLdapLinkArgs | GroupLdapLinkState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GroupLdapLinkState | undefined;
             inputs["accessLevel"] = state ? state.accessLevel : undefined;
             inputs["cn"] = state ? state.cn : undefined;
@@ -96,16 +97,16 @@ export class GroupLdapLink extends pulumi.CustomResource {
             inputs["ldapProvider"] = state ? state.ldapProvider : undefined;
         } else {
             const args = argsOrState as GroupLdapLinkArgs | undefined;
-            if ((!args || args.accessLevel === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accessLevel === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessLevel'");
             }
-            if ((!args || args.cn === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cn === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cn'");
             }
-            if ((!args || args.groupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.ldapProvider === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ldapProvider === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ldapProvider'");
             }
             inputs["accessLevel"] = args ? args.accessLevel : undefined;
@@ -114,12 +115,8 @@ export class GroupLdapLink extends pulumi.CustomResource {
             inputs["groupId"] = args ? args.groupId : undefined;
             inputs["ldapProvider"] = args ? args.ldapProvider : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GroupLdapLink.__pulumiType, name, inputs, opts);
     }

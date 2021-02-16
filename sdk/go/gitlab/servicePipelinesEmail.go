@@ -130,6 +130,85 @@ func (i *ServicePipelinesEmail) ToServicePipelinesEmailOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePipelinesEmailOutput)
 }
 
+func (i *ServicePipelinesEmail) ToServicePipelinesEmailPtrOutput() ServicePipelinesEmailPtrOutput {
+	return i.ToServicePipelinesEmailPtrOutputWithContext(context.Background())
+}
+
+func (i *ServicePipelinesEmail) ToServicePipelinesEmailPtrOutputWithContext(ctx context.Context) ServicePipelinesEmailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePipelinesEmailPtrOutput)
+}
+
+type ServicePipelinesEmailPtrInput interface {
+	pulumi.Input
+
+	ToServicePipelinesEmailPtrOutput() ServicePipelinesEmailPtrOutput
+	ToServicePipelinesEmailPtrOutputWithContext(ctx context.Context) ServicePipelinesEmailPtrOutput
+}
+
+type servicePipelinesEmailPtrType ServicePipelinesEmailArgs
+
+func (*servicePipelinesEmailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePipelinesEmail)(nil))
+}
+
+func (i *servicePipelinesEmailPtrType) ToServicePipelinesEmailPtrOutput() ServicePipelinesEmailPtrOutput {
+	return i.ToServicePipelinesEmailPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePipelinesEmailPtrType) ToServicePipelinesEmailPtrOutputWithContext(ctx context.Context) ServicePipelinesEmailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePipelinesEmailPtrOutput)
+}
+
+// ServicePipelinesEmailArrayInput is an input type that accepts ServicePipelinesEmailArray and ServicePipelinesEmailArrayOutput values.
+// You can construct a concrete instance of `ServicePipelinesEmailArrayInput` via:
+//
+//          ServicePipelinesEmailArray{ ServicePipelinesEmailArgs{...} }
+type ServicePipelinesEmailArrayInput interface {
+	pulumi.Input
+
+	ToServicePipelinesEmailArrayOutput() ServicePipelinesEmailArrayOutput
+	ToServicePipelinesEmailArrayOutputWithContext(context.Context) ServicePipelinesEmailArrayOutput
+}
+
+type ServicePipelinesEmailArray []ServicePipelinesEmailInput
+
+func (ServicePipelinesEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ServicePipelinesEmail)(nil))
+}
+
+func (i ServicePipelinesEmailArray) ToServicePipelinesEmailArrayOutput() ServicePipelinesEmailArrayOutput {
+	return i.ToServicePipelinesEmailArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePipelinesEmailArray) ToServicePipelinesEmailArrayOutputWithContext(ctx context.Context) ServicePipelinesEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePipelinesEmailArrayOutput)
+}
+
+// ServicePipelinesEmailMapInput is an input type that accepts ServicePipelinesEmailMap and ServicePipelinesEmailMapOutput values.
+// You can construct a concrete instance of `ServicePipelinesEmailMapInput` via:
+//
+//          ServicePipelinesEmailMap{ "key": ServicePipelinesEmailArgs{...} }
+type ServicePipelinesEmailMapInput interface {
+	pulumi.Input
+
+	ToServicePipelinesEmailMapOutput() ServicePipelinesEmailMapOutput
+	ToServicePipelinesEmailMapOutputWithContext(context.Context) ServicePipelinesEmailMapOutput
+}
+
+type ServicePipelinesEmailMap map[string]ServicePipelinesEmailInput
+
+func (ServicePipelinesEmailMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ServicePipelinesEmail)(nil))
+}
+
+func (i ServicePipelinesEmailMap) ToServicePipelinesEmailMapOutput() ServicePipelinesEmailMapOutput {
+	return i.ToServicePipelinesEmailMapOutputWithContext(context.Background())
+}
+
+func (i ServicePipelinesEmailMap) ToServicePipelinesEmailMapOutputWithContext(ctx context.Context) ServicePipelinesEmailMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePipelinesEmailMapOutput)
+}
+
 type ServicePipelinesEmailOutput struct {
 	*pulumi.OutputState
 }
@@ -146,6 +225,75 @@ func (o ServicePipelinesEmailOutput) ToServicePipelinesEmailOutputWithContext(ct
 	return o
 }
 
+func (o ServicePipelinesEmailOutput) ToServicePipelinesEmailPtrOutput() ServicePipelinesEmailPtrOutput {
+	return o.ToServicePipelinesEmailPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePipelinesEmailOutput) ToServicePipelinesEmailPtrOutputWithContext(ctx context.Context) ServicePipelinesEmailPtrOutput {
+	return o.ApplyT(func(v ServicePipelinesEmail) *ServicePipelinesEmail {
+		return &v
+	}).(ServicePipelinesEmailPtrOutput)
+}
+
+type ServicePipelinesEmailPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServicePipelinesEmailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePipelinesEmail)(nil))
+}
+
+func (o ServicePipelinesEmailPtrOutput) ToServicePipelinesEmailPtrOutput() ServicePipelinesEmailPtrOutput {
+	return o
+}
+
+func (o ServicePipelinesEmailPtrOutput) ToServicePipelinesEmailPtrOutputWithContext(ctx context.Context) ServicePipelinesEmailPtrOutput {
+	return o
+}
+
+type ServicePipelinesEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePipelinesEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePipelinesEmail)(nil))
+}
+
+func (o ServicePipelinesEmailArrayOutput) ToServicePipelinesEmailArrayOutput() ServicePipelinesEmailArrayOutput {
+	return o
+}
+
+func (o ServicePipelinesEmailArrayOutput) ToServicePipelinesEmailArrayOutputWithContext(ctx context.Context) ServicePipelinesEmailArrayOutput {
+	return o
+}
+
+func (o ServicePipelinesEmailArrayOutput) Index(i pulumi.IntInput) ServicePipelinesEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePipelinesEmail {
+		return vs[0].([]ServicePipelinesEmail)[vs[1].(int)]
+	}).(ServicePipelinesEmailOutput)
+}
+
+type ServicePipelinesEmailMapOutput struct{ *pulumi.OutputState }
+
+func (ServicePipelinesEmailMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ServicePipelinesEmail)(nil))
+}
+
+func (o ServicePipelinesEmailMapOutput) ToServicePipelinesEmailMapOutput() ServicePipelinesEmailMapOutput {
+	return o
+}
+
+func (o ServicePipelinesEmailMapOutput) ToServicePipelinesEmailMapOutputWithContext(ctx context.Context) ServicePipelinesEmailMapOutput {
+	return o
+}
+
+func (o ServicePipelinesEmailMapOutput) MapIndex(k pulumi.StringInput) ServicePipelinesEmailOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServicePipelinesEmail {
+		return vs[0].(map[string]ServicePipelinesEmail)[vs[1].(string)]
+	}).(ServicePipelinesEmailOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServicePipelinesEmailOutput{})
+	pulumi.RegisterOutputType(ServicePipelinesEmailPtrOutput{})
+	pulumi.RegisterOutputType(ServicePipelinesEmailArrayOutput{})
+	pulumi.RegisterOutputType(ServicePipelinesEmailMapOutput{})
 }

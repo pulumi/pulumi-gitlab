@@ -90,7 +90,8 @@ export class InstanceVariable extends pulumi.CustomResource {
     constructor(name: string, args: InstanceVariableArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceVariableArgs | InstanceVariableState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceVariableState | undefined;
             inputs["key"] = state ? state.key : undefined;
             inputs["masked"] = state ? state.masked : undefined;
@@ -99,10 +100,10 @@ export class InstanceVariable extends pulumi.CustomResource {
             inputs["variableType"] = state ? state.variableType : undefined;
         } else {
             const args = argsOrState as InstanceVariableArgs | undefined;
-            if ((!args || args.key === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.key === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.value === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
             inputs["key"] = args ? args.key : undefined;
@@ -111,12 +112,8 @@ export class InstanceVariable extends pulumi.CustomResource {
             inputs["value"] = args ? args.value : undefined;
             inputs["variableType"] = args ? args.variableType : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InstanceVariable.__pulumiType, name, inputs, opts);
     }

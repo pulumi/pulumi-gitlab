@@ -87,7 +87,8 @@ export class GroupLabel extends pulumi.CustomResource {
     constructor(name: string, args: GroupLabelArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupLabelArgs | GroupLabelState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GroupLabelState | undefined;
             inputs["color"] = state ? state.color : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -95,10 +96,10 @@ export class GroupLabel extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as GroupLabelArgs | undefined;
-            if ((!args || args.color === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.color === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'color'");
             }
-            if ((!args || args.group === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.group === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
             inputs["color"] = args ? args.color : undefined;
@@ -106,12 +107,8 @@ export class GroupLabel extends pulumi.CustomResource {
             inputs["group"] = args ? args.group : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GroupLabel.__pulumiType, name, inputs, opts);
     }

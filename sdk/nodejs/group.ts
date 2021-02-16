@@ -131,7 +131,8 @@ export class Group extends pulumi.CustomResource {
     constructor(name: string, args: GroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GroupState | undefined;
             inputs["autoDevopsEnabled"] = state ? state.autoDevopsEnabled : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -154,7 +155,7 @@ export class Group extends pulumi.CustomResource {
             inputs["webUrl"] = state ? state.webUrl : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if ((!args || args.path === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.path === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
             inputs["autoDevopsEnabled"] = args ? args.autoDevopsEnabled : undefined;
@@ -177,12 +178,8 @@ export class Group extends pulumi.CustomResource {
             inputs["runnersToken"] = undefined /*out*/;
             inputs["webUrl"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Group.__pulumiType, name, inputs, opts);
     }

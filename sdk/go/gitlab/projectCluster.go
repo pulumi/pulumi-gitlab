@@ -23,7 +23,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -274,6 +274,85 @@ func (i *ProjectCluster) ToProjectClusterOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectClusterOutput)
 }
 
+func (i *ProjectCluster) ToProjectClusterPtrOutput() ProjectClusterPtrOutput {
+	return i.ToProjectClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *ProjectCluster) ToProjectClusterPtrOutputWithContext(ctx context.Context) ProjectClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectClusterPtrOutput)
+}
+
+type ProjectClusterPtrInput interface {
+	pulumi.Input
+
+	ToProjectClusterPtrOutput() ProjectClusterPtrOutput
+	ToProjectClusterPtrOutputWithContext(ctx context.Context) ProjectClusterPtrOutput
+}
+
+type projectClusterPtrType ProjectClusterArgs
+
+func (*projectClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectCluster)(nil))
+}
+
+func (i *projectClusterPtrType) ToProjectClusterPtrOutput() ProjectClusterPtrOutput {
+	return i.ToProjectClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *projectClusterPtrType) ToProjectClusterPtrOutputWithContext(ctx context.Context) ProjectClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectClusterPtrOutput)
+}
+
+// ProjectClusterArrayInput is an input type that accepts ProjectClusterArray and ProjectClusterArrayOutput values.
+// You can construct a concrete instance of `ProjectClusterArrayInput` via:
+//
+//          ProjectClusterArray{ ProjectClusterArgs{...} }
+type ProjectClusterArrayInput interface {
+	pulumi.Input
+
+	ToProjectClusterArrayOutput() ProjectClusterArrayOutput
+	ToProjectClusterArrayOutputWithContext(context.Context) ProjectClusterArrayOutput
+}
+
+type ProjectClusterArray []ProjectClusterInput
+
+func (ProjectClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ProjectCluster)(nil))
+}
+
+func (i ProjectClusterArray) ToProjectClusterArrayOutput() ProjectClusterArrayOutput {
+	return i.ToProjectClusterArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectClusterArray) ToProjectClusterArrayOutputWithContext(ctx context.Context) ProjectClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectClusterArrayOutput)
+}
+
+// ProjectClusterMapInput is an input type that accepts ProjectClusterMap and ProjectClusterMapOutput values.
+// You can construct a concrete instance of `ProjectClusterMapInput` via:
+//
+//          ProjectClusterMap{ "key": ProjectClusterArgs{...} }
+type ProjectClusterMapInput interface {
+	pulumi.Input
+
+	ToProjectClusterMapOutput() ProjectClusterMapOutput
+	ToProjectClusterMapOutputWithContext(context.Context) ProjectClusterMapOutput
+}
+
+type ProjectClusterMap map[string]ProjectClusterInput
+
+func (ProjectClusterMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ProjectCluster)(nil))
+}
+
+func (i ProjectClusterMap) ToProjectClusterMapOutput() ProjectClusterMapOutput {
+	return i.ToProjectClusterMapOutputWithContext(context.Background())
+}
+
+func (i ProjectClusterMap) ToProjectClusterMapOutputWithContext(ctx context.Context) ProjectClusterMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectClusterMapOutput)
+}
+
 type ProjectClusterOutput struct {
 	*pulumi.OutputState
 }
@@ -290,6 +369,75 @@ func (o ProjectClusterOutput) ToProjectClusterOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ProjectClusterOutput) ToProjectClusterPtrOutput() ProjectClusterPtrOutput {
+	return o.ToProjectClusterPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectClusterOutput) ToProjectClusterPtrOutputWithContext(ctx context.Context) ProjectClusterPtrOutput {
+	return o.ApplyT(func(v ProjectCluster) *ProjectCluster {
+		return &v
+	}).(ProjectClusterPtrOutput)
+}
+
+type ProjectClusterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectCluster)(nil))
+}
+
+func (o ProjectClusterPtrOutput) ToProjectClusterPtrOutput() ProjectClusterPtrOutput {
+	return o
+}
+
+func (o ProjectClusterPtrOutput) ToProjectClusterPtrOutputWithContext(ctx context.Context) ProjectClusterPtrOutput {
+	return o
+}
+
+type ProjectClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectCluster)(nil))
+}
+
+func (o ProjectClusterArrayOutput) ToProjectClusterArrayOutput() ProjectClusterArrayOutput {
+	return o
+}
+
+func (o ProjectClusterArrayOutput) ToProjectClusterArrayOutputWithContext(ctx context.Context) ProjectClusterArrayOutput {
+	return o
+}
+
+func (o ProjectClusterArrayOutput) Index(i pulumi.IntInput) ProjectClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectCluster {
+		return vs[0].([]ProjectCluster)[vs[1].(int)]
+	}).(ProjectClusterOutput)
+}
+
+type ProjectClusterMapOutput struct{ *pulumi.OutputState }
+
+func (ProjectClusterMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ProjectCluster)(nil))
+}
+
+func (o ProjectClusterMapOutput) ToProjectClusterMapOutput() ProjectClusterMapOutput {
+	return o
+}
+
+func (o ProjectClusterMapOutput) ToProjectClusterMapOutputWithContext(ctx context.Context) ProjectClusterMapOutput {
+	return o
+}
+
+func (o ProjectClusterMapOutput) MapIndex(k pulumi.StringInput) ProjectClusterOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectCluster {
+		return vs[0].(map[string]ProjectCluster)[vs[1].(string)]
+	}).(ProjectClusterOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProjectClusterOutput{})
+	pulumi.RegisterOutputType(ProjectClusterPtrOutput{})
+	pulumi.RegisterOutputType(ProjectClusterArrayOutput{})
+	pulumi.RegisterOutputType(ProjectClusterMapOutput{})
 }

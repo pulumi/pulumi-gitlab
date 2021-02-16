@@ -81,32 +81,29 @@ export class ProjectMembership extends pulumi.CustomResource {
     constructor(name: string, args: ProjectMembershipArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectMembershipArgs | ProjectMembershipState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectMembershipState | undefined;
             inputs["accessLevel"] = state ? state.accessLevel : undefined;
             inputs["projectId"] = state ? state.projectId : undefined;
             inputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as ProjectMembershipArgs | undefined;
-            if ((!args || args.accessLevel === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accessLevel === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessLevel'");
             }
-            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.userId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.userId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
             inputs["accessLevel"] = args ? args.accessLevel : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["userId"] = args ? args.userId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ProjectMembership.__pulumiType, name, inputs, opts);
     }

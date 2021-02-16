@@ -82,7 +82,8 @@ export class BranchProtection extends pulumi.CustomResource {
     constructor(name: string, args: BranchProtectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BranchProtectionArgs | BranchProtectionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BranchProtectionState | undefined;
             inputs["branch"] = state ? state.branch : undefined;
             inputs["codeOwnerApprovalRequired"] = state ? state.codeOwnerApprovalRequired : undefined;
@@ -91,16 +92,16 @@ export class BranchProtection extends pulumi.CustomResource {
             inputs["pushAccessLevel"] = state ? state.pushAccessLevel : undefined;
         } else {
             const args = argsOrState as BranchProtectionArgs | undefined;
-            if ((!args || args.branch === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.branch === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'branch'");
             }
-            if ((!args || args.mergeAccessLevel === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.mergeAccessLevel === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'mergeAccessLevel'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.pushAccessLevel === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.pushAccessLevel === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pushAccessLevel'");
             }
             inputs["branch"] = args ? args.branch : undefined;
@@ -109,12 +110,8 @@ export class BranchProtection extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["pushAccessLevel"] = args ? args.pushAccessLevel : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BranchProtection.__pulumiType, name, inputs, opts);
     }

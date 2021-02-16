@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab/"
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -170,6 +170,85 @@ func (i *GroupShareGroup) ToGroupShareGroupOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GroupShareGroupOutput)
 }
 
+func (i *GroupShareGroup) ToGroupShareGroupPtrOutput() GroupShareGroupPtrOutput {
+	return i.ToGroupShareGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *GroupShareGroup) ToGroupShareGroupPtrOutputWithContext(ctx context.Context) GroupShareGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupShareGroupPtrOutput)
+}
+
+type GroupShareGroupPtrInput interface {
+	pulumi.Input
+
+	ToGroupShareGroupPtrOutput() GroupShareGroupPtrOutput
+	ToGroupShareGroupPtrOutputWithContext(ctx context.Context) GroupShareGroupPtrOutput
+}
+
+type groupShareGroupPtrType GroupShareGroupArgs
+
+func (*groupShareGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupShareGroup)(nil))
+}
+
+func (i *groupShareGroupPtrType) ToGroupShareGroupPtrOutput() GroupShareGroupPtrOutput {
+	return i.ToGroupShareGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *groupShareGroupPtrType) ToGroupShareGroupPtrOutputWithContext(ctx context.Context) GroupShareGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupShareGroupPtrOutput)
+}
+
+// GroupShareGroupArrayInput is an input type that accepts GroupShareGroupArray and GroupShareGroupArrayOutput values.
+// You can construct a concrete instance of `GroupShareGroupArrayInput` via:
+//
+//          GroupShareGroupArray{ GroupShareGroupArgs{...} }
+type GroupShareGroupArrayInput interface {
+	pulumi.Input
+
+	ToGroupShareGroupArrayOutput() GroupShareGroupArrayOutput
+	ToGroupShareGroupArrayOutputWithContext(context.Context) GroupShareGroupArrayOutput
+}
+
+type GroupShareGroupArray []GroupShareGroupInput
+
+func (GroupShareGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*GroupShareGroup)(nil))
+}
+
+func (i GroupShareGroupArray) ToGroupShareGroupArrayOutput() GroupShareGroupArrayOutput {
+	return i.ToGroupShareGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GroupShareGroupArray) ToGroupShareGroupArrayOutputWithContext(ctx context.Context) GroupShareGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupShareGroupArrayOutput)
+}
+
+// GroupShareGroupMapInput is an input type that accepts GroupShareGroupMap and GroupShareGroupMapOutput values.
+// You can construct a concrete instance of `GroupShareGroupMapInput` via:
+//
+//          GroupShareGroupMap{ "key": GroupShareGroupArgs{...} }
+type GroupShareGroupMapInput interface {
+	pulumi.Input
+
+	ToGroupShareGroupMapOutput() GroupShareGroupMapOutput
+	ToGroupShareGroupMapOutputWithContext(context.Context) GroupShareGroupMapOutput
+}
+
+type GroupShareGroupMap map[string]GroupShareGroupInput
+
+func (GroupShareGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*GroupShareGroup)(nil))
+}
+
+func (i GroupShareGroupMap) ToGroupShareGroupMapOutput() GroupShareGroupMapOutput {
+	return i.ToGroupShareGroupMapOutputWithContext(context.Background())
+}
+
+func (i GroupShareGroupMap) ToGroupShareGroupMapOutputWithContext(ctx context.Context) GroupShareGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupShareGroupMapOutput)
+}
+
 type GroupShareGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -186,6 +265,75 @@ func (o GroupShareGroupOutput) ToGroupShareGroupOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o GroupShareGroupOutput) ToGroupShareGroupPtrOutput() GroupShareGroupPtrOutput {
+	return o.ToGroupShareGroupPtrOutputWithContext(context.Background())
+}
+
+func (o GroupShareGroupOutput) ToGroupShareGroupPtrOutputWithContext(ctx context.Context) GroupShareGroupPtrOutput {
+	return o.ApplyT(func(v GroupShareGroup) *GroupShareGroup {
+		return &v
+	}).(GroupShareGroupPtrOutput)
+}
+
+type GroupShareGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GroupShareGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupShareGroup)(nil))
+}
+
+func (o GroupShareGroupPtrOutput) ToGroupShareGroupPtrOutput() GroupShareGroupPtrOutput {
+	return o
+}
+
+func (o GroupShareGroupPtrOutput) ToGroupShareGroupPtrOutputWithContext(ctx context.Context) GroupShareGroupPtrOutput {
+	return o
+}
+
+type GroupShareGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GroupShareGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupShareGroup)(nil))
+}
+
+func (o GroupShareGroupArrayOutput) ToGroupShareGroupArrayOutput() GroupShareGroupArrayOutput {
+	return o
+}
+
+func (o GroupShareGroupArrayOutput) ToGroupShareGroupArrayOutputWithContext(ctx context.Context) GroupShareGroupArrayOutput {
+	return o
+}
+
+func (o GroupShareGroupArrayOutput) Index(i pulumi.IntInput) GroupShareGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupShareGroup {
+		return vs[0].([]GroupShareGroup)[vs[1].(int)]
+	}).(GroupShareGroupOutput)
+}
+
+type GroupShareGroupMapOutput struct{ *pulumi.OutputState }
+
+func (GroupShareGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GroupShareGroup)(nil))
+}
+
+func (o GroupShareGroupMapOutput) ToGroupShareGroupMapOutput() GroupShareGroupMapOutput {
+	return o
+}
+
+func (o GroupShareGroupMapOutput) ToGroupShareGroupMapOutputWithContext(ctx context.Context) GroupShareGroupMapOutput {
+	return o
+}
+
+func (o GroupShareGroupMapOutput) MapIndex(k pulumi.StringInput) GroupShareGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GroupShareGroup {
+		return vs[0].(map[string]GroupShareGroup)[vs[1].(string)]
+	}).(GroupShareGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GroupShareGroupOutput{})
+	pulumi.RegisterOutputType(GroupShareGroupPtrOutput{})
+	pulumi.RegisterOutputType(GroupShareGroupArrayOutput{})
+	pulumi.RegisterOutputType(GroupShareGroupMapOutput{})
 }
