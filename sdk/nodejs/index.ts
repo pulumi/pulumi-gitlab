@@ -31,6 +31,7 @@ export * from "./pipelineTrigger";
 export * from "./project";
 export * from "./projectApprovalRule";
 export * from "./projectCluster";
+export * from "./projectFreezePeriod";
 export * from "./projectHook";
 export * from "./projectLevelMrApprovals";
 export * from "./projectMembership";
@@ -75,6 +76,7 @@ import { PipelineTrigger } from "./pipelineTrigger";
 import { Project } from "./project";
 import { ProjectApprovalRule } from "./projectApprovalRule";
 import { ProjectCluster } from "./projectCluster";
+import { ProjectFreezePeriod } from "./projectFreezePeriod";
 import { ProjectHook } from "./projectHook";
 import { ProjectLevelMrApprovals } from "./projectLevelMrApprovals";
 import { ProjectMembership } from "./projectMembership";
@@ -132,6 +134,8 @@ const _module = {
                 return new ProjectApprovalRule(name, <any>undefined, { urn })
             case "gitlab:index/projectCluster:ProjectCluster":
                 return new ProjectCluster(name, <any>undefined, { urn })
+            case "gitlab:index/projectFreezePeriod:ProjectFreezePeriod":
+                return new ProjectFreezePeriod(name, <any>undefined, { urn })
             case "gitlab:index/projectHook:ProjectHook":
                 return new ProjectHook(name, <any>undefined, { urn })
             case "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals":
@@ -181,6 +185,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/pipelineTrigger", _module
 pulumi.runtime.registerResourceModule("gitlab", "index/project", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectApprovalRule", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCluster", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectFreezePeriod", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectLevelMrApprovals", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMembership", _module)

@@ -67,7 +67,7 @@ export class DeployToken extends pulumi.CustomResource {
     }
 
     /**
-     * Time the token will expire it, RFC3339 format.
+     * Time the token will expire it, RFC3339 format. Will not expire per default.
      */
     public readonly expiresAt!: pulumi.Output<string | undefined>;
     /**
@@ -142,7 +142,7 @@ export class DeployToken extends pulumi.CustomResource {
  */
 export interface DeployTokenState {
     /**
-     * Time the token will expire it, RFC3339 format.
+     * Time the token will expire it, RFC3339 format. Will not expire per default.
      */
     readonly expiresAt?: pulumi.Input<string>;
     /**
@@ -178,7 +178,7 @@ export interface DeployTokenState {
  */
 export interface DeployTokenArgs {
     /**
-     * Time the token will expire it, RFC3339 format.
+     * Time the token will expire it, RFC3339 format. Will not expire per default.
      */
     readonly expiresAt?: pulumi.Input<string>;
     /**

@@ -44,8 +44,13 @@ import (
 type ProjectHook struct {
 	pulumi.CustomResourceState
 
-	// Enable ssl verification when invoking
-	// the hook.
+	// Invoke the hook for confidential issues events.
+	ConfidentialIssuesEvents pulumi.BoolPtrOutput `pulumi:"confidentialIssuesEvents"`
+	// Invoke the hook for confidential notes events.
+	ConfidentialNoteEvents pulumi.BoolPtrOutput `pulumi:"confidentialNoteEvents"`
+	// Invoke the hook for deployment events.
+	DeploymentEvents pulumi.BoolPtrOutput `pulumi:"deploymentEvents"`
+	// Enable ssl verification when invoking the hook.
 	EnableSslVerification pulumi.BoolPtrOutput `pulumi:"enableSslVerification"`
 	// Invoke the hook for issues events.
 	IssuesEvents pulumi.BoolPtrOutput `pulumi:"issuesEvents"`
@@ -61,6 +66,8 @@ type ProjectHook struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Invoke the hook for push events.
 	PushEvents pulumi.BoolPtrOutput `pulumi:"pushEvents"`
+	// Invoke the hook for push events on matching branches only.
+	PushEventsBranchFilter pulumi.StringPtrOutput `pulumi:"pushEventsBranchFilter"`
 	// Invoke the hook for tag push events.
 	TagPushEvents pulumi.BoolPtrOutput `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook.
@@ -106,8 +113,13 @@ func GetProjectHook(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectHook resources.
 type projectHookState struct {
-	// Enable ssl verification when invoking
-	// the hook.
+	// Invoke the hook for confidential issues events.
+	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
+	// Invoke the hook for confidential notes events.
+	ConfidentialNoteEvents *bool `pulumi:"confidentialNoteEvents"`
+	// Invoke the hook for deployment events.
+	DeploymentEvents *bool `pulumi:"deploymentEvents"`
+	// Enable ssl verification when invoking the hook.
 	EnableSslVerification *bool `pulumi:"enableSslVerification"`
 	// Invoke the hook for issues events.
 	IssuesEvents *bool `pulumi:"issuesEvents"`
@@ -123,6 +135,8 @@ type projectHookState struct {
 	Project *string `pulumi:"project"`
 	// Invoke the hook for push events.
 	PushEvents *bool `pulumi:"pushEvents"`
+	// Invoke the hook for push events on matching branches only.
+	PushEventsBranchFilter *string `pulumi:"pushEventsBranchFilter"`
 	// Invoke the hook for tag push events.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook.
@@ -134,8 +148,13 @@ type projectHookState struct {
 }
 
 type ProjectHookState struct {
-	// Enable ssl verification when invoking
-	// the hook.
+	// Invoke the hook for confidential issues events.
+	ConfidentialIssuesEvents pulumi.BoolPtrInput
+	// Invoke the hook for confidential notes events.
+	ConfidentialNoteEvents pulumi.BoolPtrInput
+	// Invoke the hook for deployment events.
+	DeploymentEvents pulumi.BoolPtrInput
+	// Enable ssl verification when invoking the hook.
 	EnableSslVerification pulumi.BoolPtrInput
 	// Invoke the hook for issues events.
 	IssuesEvents pulumi.BoolPtrInput
@@ -151,6 +170,8 @@ type ProjectHookState struct {
 	Project pulumi.StringPtrInput
 	// Invoke the hook for push events.
 	PushEvents pulumi.BoolPtrInput
+	// Invoke the hook for push events on matching branches only.
+	PushEventsBranchFilter pulumi.StringPtrInput
 	// Invoke the hook for tag push events.
 	TagPushEvents pulumi.BoolPtrInput
 	// A token to present when invoking the hook.
@@ -166,8 +187,13 @@ func (ProjectHookState) ElementType() reflect.Type {
 }
 
 type projectHookArgs struct {
-	// Enable ssl verification when invoking
-	// the hook.
+	// Invoke the hook for confidential issues events.
+	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
+	// Invoke the hook for confidential notes events.
+	ConfidentialNoteEvents *bool `pulumi:"confidentialNoteEvents"`
+	// Invoke the hook for deployment events.
+	DeploymentEvents *bool `pulumi:"deploymentEvents"`
+	// Enable ssl verification when invoking the hook.
 	EnableSslVerification *bool `pulumi:"enableSslVerification"`
 	// Invoke the hook for issues events.
 	IssuesEvents *bool `pulumi:"issuesEvents"`
@@ -183,6 +209,8 @@ type projectHookArgs struct {
 	Project string `pulumi:"project"`
 	// Invoke the hook for push events.
 	PushEvents *bool `pulumi:"pushEvents"`
+	// Invoke the hook for push events on matching branches only.
+	PushEventsBranchFilter *string `pulumi:"pushEventsBranchFilter"`
 	// Invoke the hook for tag push events.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook.
@@ -195,8 +223,13 @@ type projectHookArgs struct {
 
 // The set of arguments for constructing a ProjectHook resource.
 type ProjectHookArgs struct {
-	// Enable ssl verification when invoking
-	// the hook.
+	// Invoke the hook for confidential issues events.
+	ConfidentialIssuesEvents pulumi.BoolPtrInput
+	// Invoke the hook for confidential notes events.
+	ConfidentialNoteEvents pulumi.BoolPtrInput
+	// Invoke the hook for deployment events.
+	DeploymentEvents pulumi.BoolPtrInput
+	// Enable ssl verification when invoking the hook.
 	EnableSslVerification pulumi.BoolPtrInput
 	// Invoke the hook for issues events.
 	IssuesEvents pulumi.BoolPtrInput
@@ -212,6 +245,8 @@ type ProjectHookArgs struct {
 	Project pulumi.StringInput
 	// Invoke the hook for push events.
 	PushEvents pulumi.BoolPtrInput
+	// Invoke the hook for push events on matching branches only.
+	PushEventsBranchFilter pulumi.StringPtrInput
 	// Invoke the hook for tag push events.
 	TagPushEvents pulumi.BoolPtrInput
 	// A token to present when invoking the hook.

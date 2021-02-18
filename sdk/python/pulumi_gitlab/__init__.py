@@ -29,6 +29,7 @@ from .pipeline_trigger import *
 from .project import *
 from .project_approval_rule import *
 from .project_cluster import *
+from .project_freeze_period import *
 from .project_hook import *
 from .project_level_mr_approvals import *
 from .project_membership import *
@@ -102,6 +103,8 @@ def _register_module():
                 return ProjectApprovalRule(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gitlab:index/projectCluster:ProjectCluster":
                 return ProjectCluster(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gitlab:index/projectFreezePeriod:ProjectFreezePeriod":
+                return ProjectFreezePeriod(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gitlab:index/projectHook:ProjectHook":
                 return ProjectHook(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals":
@@ -151,6 +154,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("gitlab", "index/project", _module_instance)
     pulumi.runtime.register_resource_module("gitlab", "index/projectApprovalRule", _module_instance)
     pulumi.runtime.register_resource_module("gitlab", "index/projectCluster", _module_instance)
+    pulumi.runtime.register_resource_module("gitlab", "index/projectFreezePeriod", _module_instance)
     pulumi.runtime.register_resource_module("gitlab", "index/projectHook", _module_instance)
     pulumi.runtime.register_resource_module("gitlab", "index/projectLevelMrApprovals", _module_instance)
     pulumi.runtime.register_resource_module("gitlab", "index/projectMembership", _module_instance)

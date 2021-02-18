@@ -33,8 +33,8 @@ class GetProjectResult:
         if http_url_to_repo and not isinstance(http_url_to_repo, str):
             raise TypeError("Expected argument 'http_url_to_repo' to be a str")
         pulumi.set(__self__, "http_url_to_repo", http_url_to_repo)
-        if id and not isinstance(id, int):
-            raise TypeError("Expected argument 'id' to be a int")
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if issues_enabled and not isinstance(issues_enabled, bool):
             raise TypeError("Expected argument 'issues_enabled' to be a bool")
@@ -123,7 +123,7 @@ class GetProjectResult:
 
     @property
     @pulumi.getter
-    def id(self) -> int:
+    def id(self) -> str:
         """
         Integer that uniquely identifies the project within the gitlab install.
         """
@@ -292,7 +292,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             wiki_enabled=self.wiki_enabled)
 
 
-def get_project(id: Optional[int] = None,
+def get_project(id: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
     ## # gitlab\_project
@@ -305,11 +305,18 @@ def get_project(id: Optional[int] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_project(id=30)
+    example = gitlab.get_project(id="30")
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_project(id="foo/bar/baz")
     ```
 
 
-    :param int id: The integer that uniquely identifies the project within the gitlab install.
+    :param str id: The integer or path with namespace that uniquely identifies the project within the gitlab install.
     """
     __args__ = dict()
     __args__['id'] = id
