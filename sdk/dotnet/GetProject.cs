@@ -30,7 +30,24 @@ namespace Pulumi.GitLab
         ///     {
         ///         var example = Output.Create(GitLab.GetProject.InvokeAsync(new GitLab.GetProjectArgs
         ///         {
-        ///             Id = 30,
+        ///             Id = "30",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(GitLab.GetProject.InvokeAsync(new GitLab.GetProjectArgs
+        ///         {
+        ///             Id = "foo/bar/baz",
         ///         }));
         ///     }
         /// 
@@ -47,10 +64,10 @@ namespace Pulumi.GitLab
     public sealed class GetProjectArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The integer that uniquely identifies the project within the gitlab install.
+        /// The integer or path with namespace that uniquely identifies the project within the gitlab install.
         /// </summary>
         [Input("id", required: true)]
-        public int Id { get; set; }
+        public string Id { get; set; } = null!;
 
         public GetProjectArgs()
         {
@@ -81,7 +98,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// Integer that uniquely identifies the project within the gitlab install.
         /// </summary>
-        public readonly int Id;
+        public readonly string Id;
         /// <summary>
         /// Enable issue tracking for the project.
         /// </summary>
@@ -157,7 +174,7 @@ namespace Pulumi.GitLab
 
             string httpUrlToRepo,
 
-            int id,
+            string id,
 
             bool issuesEnabled,
 

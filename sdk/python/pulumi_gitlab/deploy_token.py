@@ -58,7 +58,7 @@ class DeployToken(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] expires_at: Time the token will expire it, RFC3339 format.
+        :param pulumi.Input[str] expires_at: Time the token will expire it, RFC3339 format. Will not expire per default.
         :param pulumi.Input[str] group: The name or id of the group to add the deploy token to.
                Either `project` or `group` must be set.
         :param pulumi.Input[str] name: A name to describe the deploy token with.
@@ -117,7 +117,7 @@ class DeployToken(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] expires_at: Time the token will expire it, RFC3339 format.
+        :param pulumi.Input[str] expires_at: Time the token will expire it, RFC3339 format. Will not expire per default.
         :param pulumi.Input[str] group: The name or id of the group to add the deploy token to.
                Either `project` or `group` must be set.
         :param pulumi.Input[str] name: A name to describe the deploy token with.
@@ -144,7 +144,7 @@ class DeployToken(pulumi.CustomResource):
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> pulumi.Output[Optional[str]]:
         """
-        Time the token will expire it, RFC3339 format.
+        Time the token will expire it, RFC3339 format. Will not expire per default.
         """
         return pulumi.get(self, "expires_at")
 

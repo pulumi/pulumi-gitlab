@@ -24,7 +24,28 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := gitlab.LookupProject(ctx, &gitlab.LookupProjectArgs{
-// 			Id: 30,
+// 			Id: "30",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v3/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gitlab.LookupProject(ctx, &gitlab.LookupProjectArgs{
+// 			Id: "foo/bar/baz",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -44,8 +65,8 @@ func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getProject.
 type LookupProjectArgs struct {
-	// The integer that uniquely identifies the project within the gitlab install.
-	Id int `pulumi:"id"`
+	// The integer or path with namespace that uniquely identifies the project within the gitlab install.
+	Id string `pulumi:"id"`
 }
 
 // A collection of values returned by getProject.
@@ -60,7 +81,7 @@ type LookupProjectResult struct {
 	// repository via HTTP.
 	HttpUrlToRepo string `pulumi:"httpUrlToRepo"`
 	// Integer that uniquely identifies the project within the gitlab install.
-	Id int `pulumi:"id"`
+	Id string `pulumi:"id"`
 	// Enable issue tracking for the project.
 	IssuesEnabled bool `pulumi:"issuesEnabled"`
 	// Enable LFS for the project.

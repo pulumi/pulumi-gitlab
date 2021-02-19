@@ -45,6 +45,8 @@ type Project struct {
 	// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
 	// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
 	Mirror pulumi.BoolPtrOutput `pulumi:"mirror"`
+	// Pull mirror overwrites diverged branches.
+	MirrorOverwritesDivergedBranches pulumi.BoolPtrOutput `pulumi:"mirrorOverwritesDivergedBranches"`
 	// Pull mirroring triggers builds. Default is `false`.
 	MirrorTriggerBuilds pulumi.BoolPtrOutput `pulumi:"mirrorTriggerBuilds"`
 	// The name of the project.
@@ -56,6 +58,8 @@ type Project struct {
 	OnlyAllowMergeIfAllDiscussionsAreResolved pulumi.BoolPtrOutput `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
 	// Set to true if you want allow merges only if a pipeline succeeds.
 	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolPtrOutput `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
+	// Only mirror protected branches.
+	OnlyMirrorProtectedBranches pulumi.BoolPtrOutput `pulumi:"onlyMirrorProtectedBranches"`
 	// Enable packages repository for the project.
 	PackagesEnabled pulumi.BoolPtrOutput `pulumi:"packagesEnabled"`
 	// Enable pages access control
@@ -162,6 +166,8 @@ type projectState struct {
 	// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
 	// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
 	Mirror *bool `pulumi:"mirror"`
+	// Pull mirror overwrites diverged branches.
+	MirrorOverwritesDivergedBranches *bool `pulumi:"mirrorOverwritesDivergedBranches"`
 	// Pull mirroring triggers builds. Default is `false`.
 	MirrorTriggerBuilds *bool `pulumi:"mirrorTriggerBuilds"`
 	// The name of the project.
@@ -173,6 +179,8 @@ type projectState struct {
 	OnlyAllowMergeIfAllDiscussionsAreResolved *bool `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
 	// Set to true if you want allow merges only if a pipeline succeeds.
 	OnlyAllowMergeIfPipelineSucceeds *bool `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
+	// Only mirror protected branches.
+	OnlyMirrorProtectedBranches *bool `pulumi:"onlyMirrorProtectedBranches"`
 	// Enable packages repository for the project.
 	PackagesEnabled *bool `pulumi:"packagesEnabled"`
 	// Enable pages access control
@@ -251,6 +259,8 @@ type ProjectState struct {
 	// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
 	// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
 	Mirror pulumi.BoolPtrInput
+	// Pull mirror overwrites diverged branches.
+	MirrorOverwritesDivergedBranches pulumi.BoolPtrInput
 	// Pull mirroring triggers builds. Default is `false`.
 	MirrorTriggerBuilds pulumi.BoolPtrInput
 	// The name of the project.
@@ -262,6 +272,8 @@ type ProjectState struct {
 	OnlyAllowMergeIfAllDiscussionsAreResolved pulumi.BoolPtrInput
 	// Set to true if you want allow merges only if a pipeline succeeds.
 	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolPtrInput
+	// Only mirror protected branches.
+	OnlyMirrorProtectedBranches pulumi.BoolPtrInput
 	// Enable packages repository for the project.
 	PackagesEnabled pulumi.BoolPtrInput
 	// Enable pages access control
@@ -341,6 +353,8 @@ type projectArgs struct {
 	// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
 	// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
 	Mirror *bool `pulumi:"mirror"`
+	// Pull mirror overwrites diverged branches.
+	MirrorOverwritesDivergedBranches *bool `pulumi:"mirrorOverwritesDivergedBranches"`
 	// Pull mirroring triggers builds. Default is `false`.
 	MirrorTriggerBuilds *bool `pulumi:"mirrorTriggerBuilds"`
 	// The name of the project.
@@ -352,6 +366,8 @@ type projectArgs struct {
 	OnlyAllowMergeIfAllDiscussionsAreResolved *bool `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
 	// Set to true if you want allow merges only if a pipeline succeeds.
 	OnlyAllowMergeIfPipelineSucceeds *bool `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
+	// Only mirror protected branches.
+	OnlyMirrorProtectedBranches *bool `pulumi:"onlyMirrorProtectedBranches"`
 	// Enable packages repository for the project.
 	PackagesEnabled *bool `pulumi:"packagesEnabled"`
 	// Enable pages access control
@@ -419,6 +435,8 @@ type ProjectArgs struct {
 	// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
 	// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
 	Mirror pulumi.BoolPtrInput
+	// Pull mirror overwrites diverged branches.
+	MirrorOverwritesDivergedBranches pulumi.BoolPtrInput
 	// Pull mirroring triggers builds. Default is `false`.
 	MirrorTriggerBuilds pulumi.BoolPtrInput
 	// The name of the project.
@@ -430,6 +448,8 @@ type ProjectArgs struct {
 	OnlyAllowMergeIfAllDiscussionsAreResolved pulumi.BoolPtrInput
 	// Set to true if you want allow merges only if a pipeline succeeds.
 	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolPtrInput
+	// Only mirror protected branches.
+	OnlyMirrorProtectedBranches pulumi.BoolPtrInput
 	// Enable packages repository for the project.
 	PackagesEnabled pulumi.BoolPtrInput
 	// Enable pages access control

@@ -72,7 +72,7 @@ import (
 type DeployToken struct {
 	pulumi.CustomResourceState
 
-	// Time the token will expire it, RFC3339 format.
+	// Time the token will expire it, RFC3339 format. Will not expire per default.
 	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
 	// The name or id of the group to add the deploy token to.
 	// Either `project` or `group` must be set.
@@ -122,7 +122,7 @@ func GetDeployToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DeployToken resources.
 type deployTokenState struct {
-	// Time the token will expire it, RFC3339 format.
+	// Time the token will expire it, RFC3339 format. Will not expire per default.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The name or id of the group to add the deploy token to.
 	// Either `project` or `group` must be set.
@@ -141,7 +141,7 @@ type deployTokenState struct {
 }
 
 type DeployTokenState struct {
-	// Time the token will expire it, RFC3339 format.
+	// Time the token will expire it, RFC3339 format. Will not expire per default.
 	ExpiresAt pulumi.StringPtrInput
 	// The name or id of the group to add the deploy token to.
 	// Either `project` or `group` must be set.
@@ -164,7 +164,7 @@ func (DeployTokenState) ElementType() reflect.Type {
 }
 
 type deployTokenArgs struct {
-	// Time the token will expire it, RFC3339 format.
+	// Time the token will expire it, RFC3339 format. Will not expire per default.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The name or id of the group to add the deploy token to.
 	// Either `project` or `group` must be set.
@@ -182,7 +182,7 @@ type deployTokenArgs struct {
 
 // The set of arguments for constructing a DeployToken resource.
 type DeployTokenArgs struct {
-	// Time the token will expire it, RFC3339 format.
+	// Time the token will expire it, RFC3339 format. Will not expire per default.
 	ExpiresAt pulumi.StringPtrInput
 	// The name or id of the group to add the deploy token to.
 	// Either `project` or `group` must be set.

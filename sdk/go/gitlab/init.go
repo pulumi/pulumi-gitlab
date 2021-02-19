@@ -60,6 +60,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewProjectApprovalRule(ctx, name, nil, pulumi.URN_(urn))
 	case "gitlab:index/projectCluster:ProjectCluster":
 		r, err = NewProjectCluster(ctx, name, nil, pulumi.URN_(urn))
+	case "gitlab:index/projectFreezePeriod:ProjectFreezePeriod":
+		r, err = NewProjectFreezePeriod(ctx, name, nil, pulumi.URN_(urn))
 	case "gitlab:index/projectHook:ProjectHook":
 		r, err = NewProjectHook(ctx, name, nil, pulumi.URN_(urn))
 	case "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals":
@@ -210,6 +212,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectFreezePeriod",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

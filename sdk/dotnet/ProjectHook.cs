@@ -41,8 +41,25 @@ namespace Pulumi.GitLab
     public partial class ProjectHook : Pulumi.CustomResource
     {
         /// <summary>
-        /// Enable ssl verification when invoking
-        /// the hook.
+        /// Invoke the hook for confidential issues events.
+        /// </summary>
+        [Output("confidentialIssuesEvents")]
+        public Output<bool?> ConfidentialIssuesEvents { get; private set; } = null!;
+
+        /// <summary>
+        /// Invoke the hook for confidential notes events.
+        /// </summary>
+        [Output("confidentialNoteEvents")]
+        public Output<bool?> ConfidentialNoteEvents { get; private set; } = null!;
+
+        /// <summary>
+        /// Invoke the hook for deployment events.
+        /// </summary>
+        [Output("deploymentEvents")]
+        public Output<bool?> DeploymentEvents { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable ssl verification when invoking the hook.
         /// </summary>
         [Output("enableSslVerification")]
         public Output<bool?> EnableSslVerification { get; private set; } = null!;
@@ -88,6 +105,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("pushEvents")]
         public Output<bool?> PushEvents { get; private set; } = null!;
+
+        /// <summary>
+        /// Invoke the hook for push events on matching branches only.
+        /// </summary>
+        [Output("pushEventsBranchFilter")]
+        public Output<string?> PushEventsBranchFilter { get; private set; } = null!;
 
         /// <summary>
         /// Invoke the hook for tag push events.
@@ -160,8 +183,25 @@ namespace Pulumi.GitLab
     public sealed class ProjectHookArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable ssl verification when invoking
-        /// the hook.
+        /// Invoke the hook for confidential issues events.
+        /// </summary>
+        [Input("confidentialIssuesEvents")]
+        public Input<bool>? ConfidentialIssuesEvents { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for confidential notes events.
+        /// </summary>
+        [Input("confidentialNoteEvents")]
+        public Input<bool>? ConfidentialNoteEvents { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for deployment events.
+        /// </summary>
+        [Input("deploymentEvents")]
+        public Input<bool>? DeploymentEvents { get; set; }
+
+        /// <summary>
+        /// Enable ssl verification when invoking the hook.
         /// </summary>
         [Input("enableSslVerification")]
         public Input<bool>? EnableSslVerification { get; set; }
@@ -209,6 +249,12 @@ namespace Pulumi.GitLab
         public Input<bool>? PushEvents { get; set; }
 
         /// <summary>
+        /// Invoke the hook for push events on matching branches only.
+        /// </summary>
+        [Input("pushEventsBranchFilter")]
+        public Input<string>? PushEventsBranchFilter { get; set; }
+
+        /// <summary>
         /// Invoke the hook for tag push events.
         /// </summary>
         [Input("tagPushEvents")]
@@ -240,8 +286,25 @@ namespace Pulumi.GitLab
     public sealed class ProjectHookState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable ssl verification when invoking
-        /// the hook.
+        /// Invoke the hook for confidential issues events.
+        /// </summary>
+        [Input("confidentialIssuesEvents")]
+        public Input<bool>? ConfidentialIssuesEvents { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for confidential notes events.
+        /// </summary>
+        [Input("confidentialNoteEvents")]
+        public Input<bool>? ConfidentialNoteEvents { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for deployment events.
+        /// </summary>
+        [Input("deploymentEvents")]
+        public Input<bool>? DeploymentEvents { get; set; }
+
+        /// <summary>
+        /// Enable ssl verification when invoking the hook.
         /// </summary>
         [Input("enableSslVerification")]
         public Input<bool>? EnableSslVerification { get; set; }
@@ -287,6 +350,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("pushEvents")]
         public Input<bool>? PushEvents { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for push events on matching branches only.
+        /// </summary>
+        [Input("pushEventsBranchFilter")]
+        public Input<string>? PushEventsBranchFilter { get; set; }
 
         /// <summary>
         /// Invoke the hook for tag push events.

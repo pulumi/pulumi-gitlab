@@ -30,11 +30,13 @@ class Project(pulumi.CustomResource):
                  merge_method: Optional[pulumi.Input[str]] = None,
                  merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
                  mirror: Optional[pulumi.Input[bool]] = None,
+                 mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[int]] = None,
                  only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
                  only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[bool]] = None,
+                 only_mirror_protected_branches: Optional[pulumi.Input[bool]] = None,
                  packages_enabled: Optional[pulumi.Input[bool]] = None,
                  pages_access_level: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
@@ -73,12 +75,14 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
         :param pulumi.Input[bool] mirror: Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
                consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+        :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Pull mirror overwrites diverged branches.
         :param pulumi.Input[bool] mirror_trigger_builds: Pull mirroring triggers builds. Default is `false`.
         :param pulumi.Input[str] name: The name of the project.
         :param pulumi.Input[int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
                See `Group` for an example.
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
+        :param pulumi.Input[bool] only_mirror_protected_branches: Only mirror protected branches.
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[str] pages_access_level: Enable pages access control
                Valid values are `disabled`, `private`, `enabled`, `public`.
@@ -129,11 +133,13 @@ class Project(pulumi.CustomResource):
             __props__['merge_method'] = merge_method
             __props__['merge_requests_enabled'] = merge_requests_enabled
             __props__['mirror'] = mirror
+            __props__['mirror_overwrites_diverged_branches'] = mirror_overwrites_diverged_branches
             __props__['mirror_trigger_builds'] = mirror_trigger_builds
             __props__['name'] = name
             __props__['namespace_id'] = namespace_id
             __props__['only_allow_merge_if_all_discussions_are_resolved'] = only_allow_merge_if_all_discussions_are_resolved
             __props__['only_allow_merge_if_pipeline_succeeds'] = only_allow_merge_if_pipeline_succeeds
+            __props__['only_mirror_protected_branches'] = only_mirror_protected_branches
             __props__['packages_enabled'] = packages_enabled
             __props__['pages_access_level'] = pages_access_level
             __props__['path'] = path
@@ -178,11 +184,13 @@ class Project(pulumi.CustomResource):
             merge_method: Optional[pulumi.Input[str]] = None,
             merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
             mirror: Optional[pulumi.Input[bool]] = None,
+            mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
             mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             namespace_id: Optional[pulumi.Input[int]] = None,
             only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
             only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[bool]] = None,
+            only_mirror_protected_branches: Optional[pulumi.Input[bool]] = None,
             packages_enabled: Optional[pulumi.Input[bool]] = None,
             pages_access_level: Optional[pulumi.Input[str]] = None,
             path: Optional[pulumi.Input[str]] = None,
@@ -227,12 +235,14 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
         :param pulumi.Input[bool] mirror: Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
                consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+        :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Pull mirror overwrites diverged branches.
         :param pulumi.Input[bool] mirror_trigger_builds: Pull mirroring triggers builds. Default is `false`.
         :param pulumi.Input[str] name: The name of the project.
         :param pulumi.Input[int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
                See `Group` for an example.
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
+        :param pulumi.Input[bool] only_mirror_protected_branches: Only mirror protected branches.
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[str] pages_access_level: Enable pages access control
                Valid values are `disabled`, `private`, `enabled`, `public`.
@@ -276,11 +286,13 @@ class Project(pulumi.CustomResource):
         __props__["merge_method"] = merge_method
         __props__["merge_requests_enabled"] = merge_requests_enabled
         __props__["mirror"] = mirror
+        __props__["mirror_overwrites_diverged_branches"] = mirror_overwrites_diverged_branches
         __props__["mirror_trigger_builds"] = mirror_trigger_builds
         __props__["name"] = name
         __props__["namespace_id"] = namespace_id
         __props__["only_allow_merge_if_all_discussions_are_resolved"] = only_allow_merge_if_all_discussions_are_resolved
         __props__["only_allow_merge_if_pipeline_succeeds"] = only_allow_merge_if_pipeline_succeeds
+        __props__["only_mirror_protected_branches"] = only_mirror_protected_branches
         __props__["packages_enabled"] = packages_enabled
         __props__["pages_access_level"] = pages_access_level
         __props__["path"] = path
@@ -419,6 +431,14 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "mirror")
 
     @property
+    @pulumi.getter(name="mirrorOverwritesDivergedBranches")
+    def mirror_overwrites_diverged_branches(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Pull mirror overwrites diverged branches.
+        """
+        return pulumi.get(self, "mirror_overwrites_diverged_branches")
+
+    @property
     @pulumi.getter(name="mirrorTriggerBuilds")
     def mirror_trigger_builds(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -458,6 +478,14 @@ class Project(pulumi.CustomResource):
         Set to true if you want allow merges only if a pipeline succeeds.
         """
         return pulumi.get(self, "only_allow_merge_if_pipeline_succeeds")
+
+    @property
+    @pulumi.getter(name="onlyMirrorProtectedBranches")
+    def only_mirror_protected_branches(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Only mirror protected branches.
+        """
+        return pulumi.get(self, "only_mirror_protected_branches")
 
     @property
     @pulumi.getter(name="packagesEnabled")

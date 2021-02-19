@@ -42,6 +42,7 @@
         "project.ts",
         "projectApprovalRule.ts",
         "projectCluster.ts",
+        "projectFreezePeriod.ts",
         "projectHook.ts",
         "projectLevelMrApprovals.ts",
         "projectMembership.ts",

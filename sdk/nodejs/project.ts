@@ -94,6 +94,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly mirror!: pulumi.Output<boolean | undefined>;
     /**
+     * Pull mirror overwrites diverged branches.
+     */
+    public readonly mirrorOverwritesDivergedBranches!: pulumi.Output<boolean | undefined>;
+    /**
      * Pull mirroring triggers builds. Default is `false`.
      */
     public readonly mirrorTriggerBuilds!: pulumi.Output<boolean | undefined>;
@@ -114,6 +118,10 @@ export class Project extends pulumi.CustomResource {
      * Set to true if you want allow merges only if a pipeline succeeds.
      */
     public readonly onlyAllowMergeIfPipelineSucceeds!: pulumi.Output<boolean | undefined>;
+    /**
+     * Only mirror protected branches.
+     */
+    public readonly onlyMirrorProtectedBranches!: pulumi.Output<boolean | undefined>;
     /**
      * Enable packages repository for the project.
      */
@@ -223,11 +231,13 @@ export class Project extends pulumi.CustomResource {
             inputs["mergeMethod"] = state ? state.mergeMethod : undefined;
             inputs["mergeRequestsEnabled"] = state ? state.mergeRequestsEnabled : undefined;
             inputs["mirror"] = state ? state.mirror : undefined;
+            inputs["mirrorOverwritesDivergedBranches"] = state ? state.mirrorOverwritesDivergedBranches : undefined;
             inputs["mirrorTriggerBuilds"] = state ? state.mirrorTriggerBuilds : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["namespaceId"] = state ? state.namespaceId : undefined;
             inputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = state ? state.onlyAllowMergeIfAllDiscussionsAreResolved : undefined;
             inputs["onlyAllowMergeIfPipelineSucceeds"] = state ? state.onlyAllowMergeIfPipelineSucceeds : undefined;
+            inputs["onlyMirrorProtectedBranches"] = state ? state.onlyMirrorProtectedBranches : undefined;
             inputs["packagesEnabled"] = state ? state.packagesEnabled : undefined;
             inputs["pagesAccessLevel"] = state ? state.pagesAccessLevel : undefined;
             inputs["path"] = state ? state.path : undefined;
@@ -262,11 +272,13 @@ export class Project extends pulumi.CustomResource {
             inputs["mergeMethod"] = args ? args.mergeMethod : undefined;
             inputs["mergeRequestsEnabled"] = args ? args.mergeRequestsEnabled : undefined;
             inputs["mirror"] = args ? args.mirror : undefined;
+            inputs["mirrorOverwritesDivergedBranches"] = args ? args.mirrorOverwritesDivergedBranches : undefined;
             inputs["mirrorTriggerBuilds"] = args ? args.mirrorTriggerBuilds : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namespaceId"] = args ? args.namespaceId : undefined;
             inputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = args ? args.onlyAllowMergeIfAllDiscussionsAreResolved : undefined;
             inputs["onlyAllowMergeIfPipelineSucceeds"] = args ? args.onlyAllowMergeIfPipelineSucceeds : undefined;
+            inputs["onlyMirrorProtectedBranches"] = args ? args.onlyMirrorProtectedBranches : undefined;
             inputs["packagesEnabled"] = args ? args.packagesEnabled : undefined;
             inputs["pagesAccessLevel"] = args ? args.pagesAccessLevel : undefined;
             inputs["path"] = args ? args.path : undefined;
@@ -360,6 +372,10 @@ export interface ProjectState {
      */
     readonly mirror?: pulumi.Input<boolean>;
     /**
+     * Pull mirror overwrites diverged branches.
+     */
+    readonly mirrorOverwritesDivergedBranches?: pulumi.Input<boolean>;
+    /**
      * Pull mirroring triggers builds. Default is `false`.
      */
     readonly mirrorTriggerBuilds?: pulumi.Input<boolean>;
@@ -380,6 +396,10 @@ export interface ProjectState {
      * Set to true if you want allow merges only if a pipeline succeeds.
      */
     readonly onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean>;
+    /**
+     * Only mirror protected branches.
+     */
+    readonly onlyMirrorProtectedBranches?: pulumi.Input<boolean>;
     /**
      * Enable packages repository for the project.
      */
@@ -523,6 +543,10 @@ export interface ProjectArgs {
      */
     readonly mirror?: pulumi.Input<boolean>;
     /**
+     * Pull mirror overwrites diverged branches.
+     */
+    readonly mirrorOverwritesDivergedBranches?: pulumi.Input<boolean>;
+    /**
      * Pull mirroring triggers builds. Default is `false`.
      */
     readonly mirrorTriggerBuilds?: pulumi.Input<boolean>;
@@ -543,6 +567,10 @@ export interface ProjectArgs {
      * Set to true if you want allow merges only if a pipeline succeeds.
      */
     readonly onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean>;
+    /**
+     * Only mirror protected branches.
+     */
+    readonly onlyMirrorProtectedBranches?: pulumi.Input<boolean>;
     /**
      * Enable packages repository for the project.
      */

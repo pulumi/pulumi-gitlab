@@ -101,6 +101,12 @@ namespace Pulumi.GitLab
         public Output<bool?> Mirror { get; private set; } = null!;
 
         /// <summary>
+        /// Pull mirror overwrites diverged branches.
+        /// </summary>
+        [Output("mirrorOverwritesDivergedBranches")]
+        public Output<bool?> MirrorOverwritesDivergedBranches { get; private set; } = null!;
+
+        /// <summary>
         /// Pull mirroring triggers builds. Default is `false`.
         /// </summary>
         [Output("mirrorTriggerBuilds")]
@@ -130,6 +136,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("onlyAllowMergeIfPipelineSucceeds")]
         public Output<bool?> OnlyAllowMergeIfPipelineSucceeds { get; private set; } = null!;
+
+        /// <summary>
+        /// Only mirror protected branches.
+        /// </summary>
+        [Output("onlyMirrorProtectedBranches")]
+        public Output<bool?> OnlyMirrorProtectedBranches { get; private set; } = null!;
 
         /// <summary>
         /// Enable packages repository for the project.
@@ -378,6 +390,12 @@ namespace Pulumi.GitLab
         public Input<bool>? Mirror { get; set; }
 
         /// <summary>
+        /// Pull mirror overwrites diverged branches.
+        /// </summary>
+        [Input("mirrorOverwritesDivergedBranches")]
+        public Input<bool>? MirrorOverwritesDivergedBranches { get; set; }
+
+        /// <summary>
         /// Pull mirroring triggers builds. Default is `false`.
         /// </summary>
         [Input("mirrorTriggerBuilds")]
@@ -407,6 +425,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("onlyAllowMergeIfPipelineSucceeds")]
         public Input<bool>? OnlyAllowMergeIfPipelineSucceeds { get; set; }
+
+        /// <summary>
+        /// Only mirror protected branches.
+        /// </summary>
+        [Input("onlyMirrorProtectedBranches")]
+        public Input<bool>? OnlyMirrorProtectedBranches { get; set; }
 
         /// <summary>
         /// Enable packages repository for the project.
@@ -604,6 +628,12 @@ namespace Pulumi.GitLab
         public Input<bool>? Mirror { get; set; }
 
         /// <summary>
+        /// Pull mirror overwrites diverged branches.
+        /// </summary>
+        [Input("mirrorOverwritesDivergedBranches")]
+        public Input<bool>? MirrorOverwritesDivergedBranches { get; set; }
+
+        /// <summary>
         /// Pull mirroring triggers builds. Default is `false`.
         /// </summary>
         [Input("mirrorTriggerBuilds")]
@@ -633,6 +663,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("onlyAllowMergeIfPipelineSucceeds")]
         public Input<bool>? OnlyAllowMergeIfPipelineSucceeds { get; set; }
+
+        /// <summary>
+        /// Only mirror protected branches.
+        /// </summary>
+        [Input("onlyMirrorProtectedBranches")]
+        public Input<bool>? OnlyMirrorProtectedBranches { get; set; }
 
         /// <summary>
         /// Enable packages repository for the project.

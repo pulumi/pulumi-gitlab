@@ -53,8 +53,19 @@ export class ProjectHook extends pulumi.CustomResource {
     }
 
     /**
-     * Enable ssl verification when invoking
-     * the hook.
+     * Invoke the hook for confidential issues events.
+     */
+    public readonly confidentialIssuesEvents!: pulumi.Output<boolean | undefined>;
+    /**
+     * Invoke the hook for confidential notes events.
+     */
+    public readonly confidentialNoteEvents!: pulumi.Output<boolean | undefined>;
+    /**
+     * Invoke the hook for deployment events.
+     */
+    public readonly deploymentEvents!: pulumi.Output<boolean | undefined>;
+    /**
+     * Enable ssl verification when invoking the hook.
      */
     public readonly enableSslVerification!: pulumi.Output<boolean | undefined>;
     /**
@@ -86,6 +97,10 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     public readonly pushEvents!: pulumi.Output<boolean | undefined>;
     /**
+     * Invoke the hook for push events on matching branches only.
+     */
+    public readonly pushEventsBranchFilter!: pulumi.Output<string | undefined>;
+    /**
      * Invoke the hook for tag push events.
      */
     public readonly tagPushEvents!: pulumi.Output<boolean | undefined>;
@@ -115,6 +130,9 @@ export class ProjectHook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectHookState | undefined;
+            inputs["confidentialIssuesEvents"] = state ? state.confidentialIssuesEvents : undefined;
+            inputs["confidentialNoteEvents"] = state ? state.confidentialNoteEvents : undefined;
+            inputs["deploymentEvents"] = state ? state.deploymentEvents : undefined;
             inputs["enableSslVerification"] = state ? state.enableSslVerification : undefined;
             inputs["issuesEvents"] = state ? state.issuesEvents : undefined;
             inputs["jobEvents"] = state ? state.jobEvents : undefined;
@@ -123,6 +141,7 @@ export class ProjectHook extends pulumi.CustomResource {
             inputs["pipelineEvents"] = state ? state.pipelineEvents : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["pushEvents"] = state ? state.pushEvents : undefined;
+            inputs["pushEventsBranchFilter"] = state ? state.pushEventsBranchFilter : undefined;
             inputs["tagPushEvents"] = state ? state.tagPushEvents : undefined;
             inputs["token"] = state ? state.token : undefined;
             inputs["url"] = state ? state.url : undefined;
@@ -135,6 +154,9 @@ export class ProjectHook extends pulumi.CustomResource {
             if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
+            inputs["confidentialIssuesEvents"] = args ? args.confidentialIssuesEvents : undefined;
+            inputs["confidentialNoteEvents"] = args ? args.confidentialNoteEvents : undefined;
+            inputs["deploymentEvents"] = args ? args.deploymentEvents : undefined;
             inputs["enableSslVerification"] = args ? args.enableSslVerification : undefined;
             inputs["issuesEvents"] = args ? args.issuesEvents : undefined;
             inputs["jobEvents"] = args ? args.jobEvents : undefined;
@@ -143,6 +165,7 @@ export class ProjectHook extends pulumi.CustomResource {
             inputs["pipelineEvents"] = args ? args.pipelineEvents : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["pushEvents"] = args ? args.pushEvents : undefined;
+            inputs["pushEventsBranchFilter"] = args ? args.pushEventsBranchFilter : undefined;
             inputs["tagPushEvents"] = args ? args.tagPushEvents : undefined;
             inputs["token"] = args ? args.token : undefined;
             inputs["url"] = args ? args.url : undefined;
@@ -160,8 +183,19 @@ export class ProjectHook extends pulumi.CustomResource {
  */
 export interface ProjectHookState {
     /**
-     * Enable ssl verification when invoking
-     * the hook.
+     * Invoke the hook for confidential issues events.
+     */
+    readonly confidentialIssuesEvents?: pulumi.Input<boolean>;
+    /**
+     * Invoke the hook for confidential notes events.
+     */
+    readonly confidentialNoteEvents?: pulumi.Input<boolean>;
+    /**
+     * Invoke the hook for deployment events.
+     */
+    readonly deploymentEvents?: pulumi.Input<boolean>;
+    /**
+     * Enable ssl verification when invoking the hook.
      */
     readonly enableSslVerification?: pulumi.Input<boolean>;
     /**
@@ -193,6 +227,10 @@ export interface ProjectHookState {
      */
     readonly pushEvents?: pulumi.Input<boolean>;
     /**
+     * Invoke the hook for push events on matching branches only.
+     */
+    readonly pushEventsBranchFilter?: pulumi.Input<string>;
+    /**
      * Invoke the hook for tag push events.
      */
     readonly tagPushEvents?: pulumi.Input<boolean>;
@@ -215,8 +253,19 @@ export interface ProjectHookState {
  */
 export interface ProjectHookArgs {
     /**
-     * Enable ssl verification when invoking
-     * the hook.
+     * Invoke the hook for confidential issues events.
+     */
+    readonly confidentialIssuesEvents?: pulumi.Input<boolean>;
+    /**
+     * Invoke the hook for confidential notes events.
+     */
+    readonly confidentialNoteEvents?: pulumi.Input<boolean>;
+    /**
+     * Invoke the hook for deployment events.
+     */
+    readonly deploymentEvents?: pulumi.Input<boolean>;
+    /**
+     * Enable ssl verification when invoking the hook.
      */
     readonly enableSslVerification?: pulumi.Input<boolean>;
     /**
@@ -247,6 +296,10 @@ export interface ProjectHookArgs {
      * Invoke the hook for push events.
      */
     readonly pushEvents?: pulumi.Input<boolean>;
+    /**
+     * Invoke the hook for push events on matching branches only.
+     */
+    readonly pushEventsBranchFilter?: pulumi.Input<string>;
     /**
      * Invoke the hook for tag push events.
      */
