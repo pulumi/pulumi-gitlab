@@ -1,8 +1,11 @@
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v2.21.0
-* Release macOS arm64 binary
+_(none)_
 
 ---
+
+## 3.8.0 (2021-03-15)
+* Upgrade to pulumi-terraform-bridge v2.21.0
+* Release macOS arm64 binary
 
 ## 3.7.0 (2021-02-19)
 * Upgrade to v3.5.0 of the GitLab Terraform Provider
