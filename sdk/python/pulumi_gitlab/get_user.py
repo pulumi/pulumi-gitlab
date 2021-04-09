@@ -19,7 +19,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, avatar_url=None, bio=None, can_create_group=None, can_create_project=None, color_scheme_id=None, created_at=None, current_sign_in_at=None, email=None, extern_uid=None, external=None, id=None, is_admin=None, last_sign_in_at=None, linkedin=None, location=None, name=None, organization=None, projects_limit=None, skype=None, state=None, theme_id=None, twitter=None, two_factor_enabled=None, user_id=None, user_provider=None, username=None, website_url=None):
+    def __init__(__self__, avatar_url=None, bio=None, can_create_group=None, can_create_project=None, color_scheme_id=None, created_at=None, current_sign_in_at=None, email=None, extern_uid=None, external=None, id=None, is_admin=None, last_sign_in_at=None, linkedin=None, location=None, name=None, note=None, organization=None, projects_limit=None, skype=None, state=None, theme_id=None, twitter=None, two_factor_enabled=None, user_id=None, user_provider=None, username=None, website_url=None):
         if avatar_url and not isinstance(avatar_url, str):
             raise TypeError("Expected argument 'avatar_url' to be a str")
         pulumi.set(__self__, "avatar_url", avatar_url)
@@ -68,6 +68,9 @@ class GetUserResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if note and not isinstance(note, str):
+            raise TypeError("Expected argument 'note' to be a str")
+        pulumi.set(__self__, "note", note)
         if organization and not isinstance(organization, str):
             raise TypeError("Expected argument 'organization' to be a str")
         pulumi.set(__self__, "organization", organization)
@@ -232,6 +235,11 @@ class GetUserResult:
 
     @property
     @pulumi.getter
+    def note(self) -> str:
+        return pulumi.get(self, "note")
+
+    @property
+    @pulumi.getter
     def organization(self) -> str:
         """
         The organization of the user.
@@ -338,6 +346,7 @@ class AwaitableGetUserResult(GetUserResult):
             linkedin=self.linkedin,
             location=self.location,
             name=self.name,
+            note=self.note,
             organization=self.organization,
             projects_limit=self.projects_limit,
             skype=self.skype,
@@ -401,6 +410,7 @@ def get_user(email: Optional[str] = None,
         linkedin=__ret__.linkedin,
         location=__ret__.location,
         name=__ret__.name,
+        note=__ret__.note,
         organization=__ret__.organization,
         projects_limit=__ret__.projects_limit,
         skype=__ret__.skype,

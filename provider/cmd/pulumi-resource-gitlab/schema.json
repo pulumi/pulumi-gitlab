@@ -5389,6 +5389,10 @@
                     "type": "string",
                     "description": "The name of the user.\n"
                 },
+                "note": {
+                    "type": "string",
+                    "description": "The note associated to the user.\n"
+                },
                 "password": {
                     "type": "string",
                     "description": "The password of the user.\n"
@@ -5435,6 +5439,10 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the user.\n"
+                },
+                "note": {
+                    "type": "string",
+                    "description": "The note associated to the user.\n"
                 },
                 "password": {
                     "type": "string",
@@ -5483,6 +5491,10 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the user.\n"
+                    },
+                    "note": {
+                        "type": "string",
+                        "description": "The note associated to the user.\n"
                     },
                     "password": {
                         "type": "string",
@@ -6049,6 +6061,9 @@
                         "type": "string",
                         "description": "The name of the user.\n"
                     },
+                    "note": {
+                        "type": "string"
+                    },
                     "organization": {
                         "type": "string",
                         "description": "The organization of the user.\n"
@@ -6110,6 +6125,7 @@
                     "linkedin",
                     "location",
                     "name",
+                    "note",
                     "organization",
                     "projectsLimit",
                     "skype",

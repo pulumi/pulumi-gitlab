@@ -123,6 +123,7 @@ export interface GetUserResult {
      * The name of the user.
      */
     readonly name: string;
+    readonly note: string;
     /**
      * The organization of the user.
      */

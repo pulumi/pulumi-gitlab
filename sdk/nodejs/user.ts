@@ -54,6 +54,10 @@ export class User extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The note associated to the user.
+     */
+    public readonly note!: pulumi.Output<string | undefined>;
+    /**
      * The password of the user.
      */
     public readonly password!: pulumi.Output<string | undefined>;
@@ -92,6 +96,7 @@ export class User extends pulumi.CustomResource {
             inputs["isAdmin"] = state ? state.isAdmin : undefined;
             inputs["isExternal"] = state ? state.isExternal : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["note"] = state ? state.note : undefined;
             inputs["password"] = state ? state.password : undefined;
             inputs["projectsLimit"] = state ? state.projectsLimit : undefined;
             inputs["resetPassword"] = state ? state.resetPassword : undefined;
@@ -110,6 +115,7 @@ export class User extends pulumi.CustomResource {
             inputs["isAdmin"] = args ? args.isAdmin : undefined;
             inputs["isExternal"] = args ? args.isExternal : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["note"] = args ? args.note : undefined;
             inputs["password"] = args ? args.password : undefined;
             inputs["projectsLimit"] = args ? args.projectsLimit : undefined;
             inputs["resetPassword"] = args ? args.resetPassword : undefined;
@@ -148,6 +154,10 @@ export interface UserState {
      * The name of the user.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The note associated to the user.
+     */
+    readonly note?: pulumi.Input<string>;
     /**
      * The password of the user.
      */
@@ -195,6 +205,10 @@ export interface UserArgs {
      * The name of the user.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The note associated to the user.
+     */
+    readonly note?: pulumi.Input<string>;
     /**
      * The password of the user.
      */

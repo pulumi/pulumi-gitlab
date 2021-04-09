@@ -25,6 +25,8 @@ type User struct {
 	IsExternal pulumi.BoolPtrOutput `pulumi:"isExternal"`
 	// The name of the user.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The note associated to the user.
+	Note pulumi.StringPtrOutput `pulumi:"note"`
 	// The password of the user.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// Integer, defaults to 0.  Number of projects user can create.
@@ -83,6 +85,8 @@ type userState struct {
 	IsExternal *bool `pulumi:"isExternal"`
 	// The name of the user.
 	Name *string `pulumi:"name"`
+	// The note associated to the user.
+	Note *string `pulumi:"note"`
 	// The password of the user.
 	Password *string `pulumi:"password"`
 	// Integer, defaults to 0.  Number of projects user can create.
@@ -107,6 +111,8 @@ type UserState struct {
 	IsExternal pulumi.BoolPtrInput
 	// The name of the user.
 	Name pulumi.StringPtrInput
+	// The note associated to the user.
+	Note pulumi.StringPtrInput
 	// The password of the user.
 	Password pulumi.StringPtrInput
 	// Integer, defaults to 0.  Number of projects user can create.
@@ -135,6 +141,8 @@ type userArgs struct {
 	IsExternal *bool `pulumi:"isExternal"`
 	// The name of the user.
 	Name *string `pulumi:"name"`
+	// The note associated to the user.
+	Note *string `pulumi:"note"`
 	// The password of the user.
 	Password *string `pulumi:"password"`
 	// Integer, defaults to 0.  Number of projects user can create.
@@ -160,6 +168,8 @@ type UserArgs struct {
 	IsExternal pulumi.BoolPtrInput
 	// The name of the user.
 	Name pulumi.StringPtrInput
+	// The note associated to the user.
+	Note pulumi.StringPtrInput
 	// The password of the user.
 	Password pulumi.StringPtrInput
 	// Integer, defaults to 0.  Number of projects user can create.
