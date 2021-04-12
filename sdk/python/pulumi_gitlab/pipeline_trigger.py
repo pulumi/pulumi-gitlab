@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['PipelineTrigger']
+__all__ = ['PipelineTriggerArgs', 'PipelineTrigger']
+
+@pulumi.input_type
+class PipelineTriggerArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[str],
+                 project: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a PipelineTrigger resource.
+        :param pulumi.Input[str] description: The description of the pipeline trigger.
+        :param pulumi.Input[str] project: The name or id of the project to add the trigger to.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[str]:
+        """
+        The description of the pipeline trigger.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The name or id of the project to add the trigger to.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
 
 class PipelineTrigger(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -41,6 +79,48 @@ class PipelineTrigger(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the pipeline trigger.
         :param pulumi.Input[str] project: The name or id of the project to add the trigger to.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: PipelineTriggerArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # gitlab\_pipeline\_trigger
+
+        This resource allows you to create and manage pipeline triggers
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.PipelineTrigger("example",
+            description="Used to trigger builds",
+            project="12345")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param PipelineTriggerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(PipelineTriggerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

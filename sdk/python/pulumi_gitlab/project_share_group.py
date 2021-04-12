@@ -5,13 +5,66 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ProjectShareGroup']
+__all__ = ['ProjectShareGroupArgs', 'ProjectShareGroup']
+
+@pulumi.input_type
+class ProjectShareGroupArgs:
+    def __init__(__self__, *,
+                 access_level: pulumi.Input[str],
+                 group_id: pulumi.Input[int],
+                 project_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a ProjectShareGroup resource.
+        :param pulumi.Input[str] access_level: One of five levels of access to the project.
+        :param pulumi.Input[int] group_id: The id of the group.
+        :param pulumi.Input[str] project_id: The id of the project.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> pulumi.Input[str]:
+        """
+        One of five levels of access to the project.
+        """
+        return pulumi.get(self, "access_level")
+
+    @access_level.setter
+    def access_level(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[int]:
+        """
+        The id of the group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        """
+        The id of the project.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
 
 
 class ProjectShareGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -52,6 +105,58 @@ class ProjectShareGroup(pulumi.CustomResource):
         :param pulumi.Input[int] group_id: The id of the group.
         :param pulumi.Input[str] project_id: The id of the project.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ProjectShareGroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # gitlab\_project\_share\_group
+
+        This resource allows you to share a project with a group
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.ProjectShareGroup("test",
+            access_level="guest",
+            group_id=1337,
+            project_id="12345")
+        ```
+
+        ## Import
+
+        GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/projectShareGroup:ProjectShareGroup test 12345:1337
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ProjectShareGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectShareGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_level: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[int]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

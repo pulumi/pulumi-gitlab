@@ -5,13 +5,82 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['GroupMembership']
+__all__ = ['GroupMembershipArgs', 'GroupMembership']
+
+@pulumi.input_type
+class GroupMembershipArgs:
+    def __init__(__self__, *,
+                 access_level: pulumi.Input[str],
+                 group_id: pulumi.Input[str],
+                 user_id: pulumi.Input[int],
+                 expires_at: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a GroupMembership resource.
+        :param pulumi.Input[str] access_level: Acceptable values are: guest, reporter, developer, maintainer, owner.
+        :param pulumi.Input[str] group_id: The id of the group.
+        :param pulumi.Input[int] user_id: The id of the user.
+        :param pulumi.Input[str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "user_id", user_id)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> pulumi.Input[str]:
+        """
+        Acceptable values are: guest, reporter, developer, maintainer, owner.
+        """
+        return pulumi.get(self, "access_level")
+
+    @access_level.setter
+    def access_level(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[str]:
+        """
+        The id of the group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> pulumi.Input[int]:
+        """
+        The id of the user.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "user_id", value)
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Expiration date for the group membership. Format: `YYYY-MM-DD`
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires_at", value)
 
 
 class GroupMembership(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -55,6 +124,60 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.Input[str] group_id: The id of the group.
         :param pulumi.Input[int] user_id: The id of the user.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: GroupMembershipArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # gitlab\_group_membership
+
+        This resource allows you to add a user to an existing group.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.GroupMembership("test",
+            access_level="guest",
+            expires_at="2020-12-31",
+            group_id="12345",
+            user_id=1337)
+        ```
+
+        ## Import
+
+        GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/groupMembership:GroupMembership test "12345:1337"
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param GroupMembershipArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GroupMembershipArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_level: Optional[pulumi.Input[str]] = None,
+                 expires_at: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

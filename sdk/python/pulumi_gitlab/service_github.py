@@ -5,13 +5,78 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ServiceGithub']
+__all__ = ['ServiceGithubArgs', 'ServiceGithub']
+
+@pulumi.input_type
+class ServiceGithubArgs:
+    def __init__(__self__, *,
+                 project: pulumi.Input[str],
+                 repository_url: pulumi.Input[str],
+                 token: pulumi.Input[str],
+                 static_context: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a ServiceGithub resource.
+        :param pulumi.Input[str] project: ID of the project you want to activate integration on.
+        :param pulumi.Input[str] token: A GitHub personal access token with at least `repo:status` scope.
+        :param pulumi.Input[bool] static_context: Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub. See [Static / dynamic status check names] to learn more.
+        """
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "repository_url", repository_url)
+        pulumi.set(__self__, "token", token)
+        if static_context is not None:
+            pulumi.set(__self__, "static_context", static_context)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        ID of the project you want to activate integration on.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="repositoryUrl")
+    def repository_url(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "repository_url")
+
+    @repository_url.setter
+    def repository_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repository_url", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> pulumi.Input[str]:
+        """
+        A GitHub personal access token with at least `repo:status` scope.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token", value)
+
+    @property
+    @pulumi.getter(name="staticContext")
+    def static_context(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub. See [Static / dynamic status check names] to learn more.
+        """
+        return pulumi.get(self, "static_context")
+
+    @static_context.setter
+    def static_context(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "static_context", value)
 
 
 class ServiceGithub(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -30,6 +95,36 @@ class ServiceGithub(pulumi.CustomResource):
         :param pulumi.Input[bool] static_context: Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub. See [Static / dynamic status check names] to learn more.
         :param pulumi.Input[str] token: A GitHub personal access token with at least `repo:status` scope.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ServiceGithubArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a ServiceGithub resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param ServiceGithubArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ServiceGithubArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 repository_url: Optional[pulumi.Input[str]] = None,
+                 static_context: Optional[pulumi.Input[bool]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

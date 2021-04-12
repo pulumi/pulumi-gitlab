@@ -5,13 +5,82 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['GroupShareGroup']
+__all__ = ['GroupShareGroupArgs', 'GroupShareGroup']
+
+@pulumi.input_type
+class GroupShareGroupArgs:
+    def __init__(__self__, *,
+                 group_access: pulumi.Input[str],
+                 group_id: pulumi.Input[str],
+                 share_group_id: pulumi.Input[int],
+                 expires_at: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a GroupShareGroup resource.
+        :param pulumi.Input[str] group_access: One of five levels of access to the group.
+        :param pulumi.Input[str] group_id: The id of the main group.
+        :param pulumi.Input[int] share_group_id: The id of an additional group which will be shared with the main group.
+        :param pulumi.Input[str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
+        """
+        pulumi.set(__self__, "group_access", group_access)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "share_group_id", share_group_id)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
+
+    @property
+    @pulumi.getter(name="groupAccess")
+    def group_access(self) -> pulumi.Input[str]:
+        """
+        One of five levels of access to the group.
+        """
+        return pulumi.get(self, "group_access")
+
+    @group_access.setter
+    def group_access(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_access", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[str]:
+        """
+        The id of the main group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="shareGroupId")
+    def share_group_id(self) -> pulumi.Input[int]:
+        """
+        The id of an additional group which will be shared with the main group.
+        """
+        return pulumi.get(self, "share_group_id")
+
+    @share_group_id.setter
+    def share_group_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "share_group_id", value)
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Share expiration date. Format: `YYYY-MM-DD`
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires_at", value)
 
 
 class GroupShareGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -55,6 +124,60 @@ class GroupShareGroup(pulumi.CustomResource):
         :param pulumi.Input[str] group_id: The id of the main group.
         :param pulumi.Input[int] share_group_id: The id of an additional group which will be shared with the main group.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: GroupShareGroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # gitlab\_group\_share\_group
+
+        This resource allows you to share a group with another group
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.GroupShareGroup("test",
+            group_id=gitlab_group["foo"]["id"],
+            share_group_id=gitlab_group["bar"]["id"],
+            group_access="guest",
+            expires_at="2099-01-01")
+        ```
+
+        ## Import
+
+        GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/groupShareGroup:GroupShareGroup test 12345:1337
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param GroupShareGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GroupShareGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 expires_at: Optional[pulumi.Input[str]] = None,
+                 group_access: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 share_group_id: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
