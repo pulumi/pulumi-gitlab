@@ -20,6 +20,7 @@ class User(pulumi.CustomResource):
                  is_admin: Optional[pulumi.Input[bool]] = None,
                  is_external: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 note: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  projects_limit: Optional[pulumi.Input[int]] = None,
                  reset_password: Optional[pulumi.Input[bool]] = None,
@@ -38,6 +39,7 @@ class User(pulumi.CustomResource):
                for the user.
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
+        :param pulumi.Input[str] note: The note associated to the user.
         :param pulumi.Input[str] password: The password of the user.
         :param pulumi.Input[int] projects_limit: Integer, defaults to 0.  Number of projects user can create.
         :param pulumi.Input[bool] reset_password: Boolean, defaults to false. Send user password reset link.
@@ -68,6 +70,7 @@ class User(pulumi.CustomResource):
             __props__['is_admin'] = is_admin
             __props__['is_external'] = is_external
             __props__['name'] = name
+            __props__['note'] = note
             __props__['password'] = password
             __props__['projects_limit'] = projects_limit
             __props__['reset_password'] = reset_password
@@ -90,6 +93,7 @@ class User(pulumi.CustomResource):
             is_admin: Optional[pulumi.Input[bool]] = None,
             is_external: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            note: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             projects_limit: Optional[pulumi.Input[int]] = None,
             reset_password: Optional[pulumi.Input[bool]] = None,
@@ -108,6 +112,7 @@ class User(pulumi.CustomResource):
                for the user.
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
+        :param pulumi.Input[str] note: The note associated to the user.
         :param pulumi.Input[str] password: The password of the user.
         :param pulumi.Input[int] projects_limit: Integer, defaults to 0.  Number of projects user can create.
         :param pulumi.Input[bool] reset_password: Boolean, defaults to false. Send user password reset link.
@@ -123,6 +128,7 @@ class User(pulumi.CustomResource):
         __props__["is_admin"] = is_admin
         __props__["is_external"] = is_external
         __props__["name"] = name
+        __props__["note"] = note
         __props__["password"] = password
         __props__["projects_limit"] = projects_limit
         __props__["reset_password"] = reset_password
@@ -170,6 +176,14 @@ class User(pulumi.CustomResource):
         The name of the user.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def note(self) -> pulumi.Output[Optional[str]]:
+        """
+        The note associated to the user.
+        """
+        return pulumi.get(self, "note")
 
     @property
     @pulumi.getter

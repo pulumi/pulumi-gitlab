@@ -44,6 +44,12 @@ namespace Pulumi.GitLab
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The note associated to the user.
+        /// </summary>
+        [Output("note")]
+        public Output<string?> Note { get; private set; } = null!;
+
+        /// <summary>
         /// The password of the user.
         /// </summary>
         [Output("password")]
@@ -151,6 +157,12 @@ namespace Pulumi.GitLab
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The note associated to the user.
+        /// </summary>
+        [Input("note")]
+        public Input<string>? Note { get; set; }
+
+        /// <summary>
         /// The password of the user.
         /// </summary>
         [Input("password")]
@@ -217,6 +229,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The note associated to the user.
+        /// </summary>
+        [Input("note")]
+        public Input<string>? Note { get; set; }
 
         /// <summary>
         /// The password of the user.

@@ -137,6 +137,7 @@ namespace Pulumi.GitLab
         /// The name of the user.
         /// </summary>
         public readonly string Name;
+        public readonly string Note;
         /// <summary>
         /// The organization of the user.
         /// </summary>
@@ -213,6 +214,8 @@ namespace Pulumi.GitLab
 
             string name,
 
+            string note,
+
             string organization,
 
             int projectsLimit,
@@ -251,6 +254,7 @@ namespace Pulumi.GitLab
             Linkedin = linkedin;
             Location = location;
             Name = name;
+            Note = note;
             Organization = organization;
             ProjectsLimit = projectsLimit;
             Skype = skype;

@@ -87,6 +87,7 @@ type LookupUserResult struct {
 	Location string `pulumi:"location"`
 	// The name of the user.
 	Name string `pulumi:"name"`
+	Note string `pulumi:"note"`
 	// The organization of the user.
 	Organization string `pulumi:"organization"`
 	// Number of projects the user can create.
