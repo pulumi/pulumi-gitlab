@@ -5,13 +5,87 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['DeployKeyEnable']
+__all__ = ['DeployKeyEnableArgs', 'DeployKeyEnable']
+
+@pulumi.input_type
+class DeployKeyEnableArgs:
+    def __init__(__self__, *,
+                 key_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 can_push: Optional[pulumi.Input[bool]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a DeployKeyEnable resource.
+        :param pulumi.Input[str] key_id: The Gitlab key id for the pre-existing deploy key
+        :param pulumi.Input[str] project: The name or id of the project to add the deploy key to.
+        """
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "project", project)
+        if can_push is not None:
+            pulumi.set(__self__, "can_push", can_push)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> pulumi.Input[str]:
+        """
+        The Gitlab key id for the pre-existing deploy key
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The name or id of the project to add the deploy key to.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="canPush")
+    def can_push(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "can_push")
+
+    @can_push.setter
+    def can_push(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "can_push", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
 
 
 class DeployKeyEnable(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -64,6 +138,71 @@ class DeployKeyEnable(pulumi.CustomResource):
         :param pulumi.Input[str] key_id: The Gitlab key id for the pre-existing deploy key
         :param pulumi.Input[str] project: The name or id of the project to add the deploy key to.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DeployKeyEnableArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # gitlab\_deploy\_key\_enable
+
+        This resource allows you to enable pre-existing deploy keys for your GitLab projects.
+
+        **the GITLAB KEY_ID for the deploy key must be known**
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # A repo to host the deployment key
+        parent_project = gitlab.Project("parentProject")
+        # A second repo to use the deployment key from the parent project
+        foo_project = gitlab.Project("fooProject")
+        # Upload a deployment key for the parent repo
+        parent_deploy_key = gitlab.DeployKey("parentDeployKey",
+            key="ssh-rsa AAAA...",
+            project=parent_project.id,
+            title="Example deploy key")
+        # Enable the deployment key on the second repo
+        foo_deploy_key_enable = gitlab.DeployKeyEnable("fooDeployKeyEnable",
+            key_id=parent_deploy_key.id,
+            project=foo_project.id)
+        ```
+
+        ## Import
+
+        GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DeployKeyEnableArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DeployKeyEnableArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 can_push: Optional[pulumi.Input[bool]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

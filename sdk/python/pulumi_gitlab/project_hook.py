@@ -5,13 +5,275 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ProjectHook']
+__all__ = ['ProjectHookArgs', 'ProjectHook']
+
+@pulumi.input_type
+class ProjectHookArgs:
+    def __init__(__self__, *,
+                 project: pulumi.Input[str],
+                 url: pulumi.Input[str],
+                 confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+                 confidential_note_events: Optional[pulumi.Input[bool]] = None,
+                 deployment_events: Optional[pulumi.Input[bool]] = None,
+                 enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
+                 issues_events: Optional[pulumi.Input[bool]] = None,
+                 job_events: Optional[pulumi.Input[bool]] = None,
+                 merge_requests_events: Optional[pulumi.Input[bool]] = None,
+                 note_events: Optional[pulumi.Input[bool]] = None,
+                 pipeline_events: Optional[pulumi.Input[bool]] = None,
+                 push_events: Optional[pulumi.Input[bool]] = None,
+                 push_events_branch_filter: Optional[pulumi.Input[str]] = None,
+                 tag_push_events: Optional[pulumi.Input[bool]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 wiki_page_events: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a ProjectHook resource.
+        :param pulumi.Input[str] project: The name or id of the project to add the hook to.
+        :param pulumi.Input[str] url: The url of the hook to invoke.
+        :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
+        :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential notes events.
+        :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
+        :param pulumi.Input[bool] enable_ssl_verification: Enable ssl verification when invoking the hook.
+        :param pulumi.Input[bool] issues_events: Invoke the hook for issues events.
+        :param pulumi.Input[bool] job_events: Invoke the hook for job events.
+        :param pulumi.Input[bool] merge_requests_events: Invoke the hook for merge requests.
+        :param pulumi.Input[bool] note_events: Invoke the hook for notes events.
+        :param pulumi.Input[bool] pipeline_events: Invoke the hook for pipeline events.
+        :param pulumi.Input[bool] push_events: Invoke the hook for push events.
+        :param pulumi.Input[str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
+        :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
+        :param pulumi.Input[str] token: A token to present when invoking the hook.
+        :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
+        """
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "url", url)
+        if confidential_issues_events is not None:
+            pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
+        if confidential_note_events is not None:
+            pulumi.set(__self__, "confidential_note_events", confidential_note_events)
+        if deployment_events is not None:
+            pulumi.set(__self__, "deployment_events", deployment_events)
+        if enable_ssl_verification is not None:
+            pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
+        if issues_events is not None:
+            pulumi.set(__self__, "issues_events", issues_events)
+        if job_events is not None:
+            pulumi.set(__self__, "job_events", job_events)
+        if merge_requests_events is not None:
+            pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+        if note_events is not None:
+            pulumi.set(__self__, "note_events", note_events)
+        if pipeline_events is not None:
+            pulumi.set(__self__, "pipeline_events", pipeline_events)
+        if push_events is not None:
+            pulumi.set(__self__, "push_events", push_events)
+        if push_events_branch_filter is not None:
+            pulumi.set(__self__, "push_events_branch_filter", push_events_branch_filter)
+        if tag_push_events is not None:
+            pulumi.set(__self__, "tag_push_events", tag_push_events)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if wiki_page_events is not None:
+            pulumi.set(__self__, "wiki_page_events", wiki_page_events)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The name or id of the project to add the hook to.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        """
+        The url of the hook to invoke.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="confidentialIssuesEvents")
+    def confidential_issues_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Invoke the hook for confidential issues events.
+        """
+        return pulumi.get(self, "confidential_issues_events")
+
+    @confidential_issues_events.setter
+    def confidential_issues_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "confidential_issues_events", value)
+
+    @property
+    @pulumi.getter(name="confidentialNoteEvents")
+    def confidential_note_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Invoke the hook for confidential notes events.
+        """
+        return pulumi.get(self, "confidential_note_events")
+
+    @confidential_note_events.setter
+    def confidential_note_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "confidential_note_events", value)
+
+    @property
+    @pulumi.getter(name="deploymentEvents")
+    def deployment_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Invoke the hook for deployment events.
+        """
+        return pulumi.get(self, "deployment_events")
+
+    @deployment_events.setter
+    def deployment_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deployment_events", value)
+
+    @property
+    @pulumi.getter(name="enableSslVerification")
+    def enable_ssl_verification(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable ssl verification when invoking the hook.
+        """
+        return pulumi.get(self, "enable_ssl_verification")
+
+    @enable_ssl_verification.setter
+    def enable_ssl_verification(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ssl_verification", value)
+
+    @property
+    @pulumi.getter(name="issuesEvents")
+    def issues_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Invoke the hook for issues events.
+        """
+        return pulumi.get(self, "issues_events")
+
+    @issues_events.setter
+    def issues_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "issues_events", value)
+
+    @property
+    @pulumi.getter(name="jobEvents")
+    def job_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Invoke the hook for job events.
+        """
+        return pulumi.get(self, "job_events")
+
+    @job_events.setter
+    def job_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "job_events", value)
+
+    @property
+    @pulumi.getter(name="mergeRequestsEvents")
+    def merge_requests_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Invoke the hook for merge requests.
+        """
+        return pulumi.get(self, "merge_requests_events")
+
+    @merge_requests_events.setter
+    def merge_requests_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "merge_requests_events", value)
+
+    @property
+    @pulumi.getter(name="noteEvents")
+    def note_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Invoke the hook for notes events.
+        """
+        return pulumi.get(self, "note_events")
+
+    @note_events.setter
+    def note_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "note_events", value)
+
+    @property
+    @pulumi.getter(name="pipelineEvents")
+    def pipeline_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Invoke the hook for pipeline events.
+        """
+        return pulumi.get(self, "pipeline_events")
+
+    @pipeline_events.setter
+    def pipeline_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pipeline_events", value)
+
+    @property
+    @pulumi.getter(name="pushEvents")
+    def push_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Invoke the hook for push events.
+        """
+        return pulumi.get(self, "push_events")
+
+    @push_events.setter
+    def push_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "push_events", value)
+
+    @property
+    @pulumi.getter(name="pushEventsBranchFilter")
+    def push_events_branch_filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Invoke the hook for push events on matching branches only.
+        """
+        return pulumi.get(self, "push_events_branch_filter")
+
+    @push_events_branch_filter.setter
+    def push_events_branch_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "push_events_branch_filter", value)
+
+    @property
+    @pulumi.getter(name="tagPushEvents")
+    def tag_push_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Invoke the hook for tag push events.
+        """
+        return pulumi.get(self, "tag_push_events")
+
+    @tag_push_events.setter
+    def tag_push_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "tag_push_events", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        A token to present when invoking the hook.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token", value)
+
+    @property
+    @pulumi.getter(name="wikiPageEvents")
+    def wiki_page_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Invoke the hook for wiki page events.
+        """
+        return pulumi.get(self, "wiki_page_events")
+
+    @wiki_page_events.setter
+    def wiki_page_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wiki_page_events", value)
 
 
 class ProjectHook(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -72,6 +334,65 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[str] url: The url of the hook to invoke.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ProjectHookArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # gitlab\_project\_hook
+
+        This resource allows you to create and manage hooks for your GitLab projects.
+        For further information on hooks, consult the [gitlab
+        documentation](https://docs.gitlab.com/ce/user/project/integrations/webhooks.html).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.ProjectHook("example",
+            merge_requests_events=True,
+            project="example/hooked",
+            url="https://example.com/hook/example")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ProjectHookArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectHookArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 confidential_issues_events: Optional[pulumi.Input[bool]] = None,
+                 confidential_note_events: Optional[pulumi.Input[bool]] = None,
+                 deployment_events: Optional[pulumi.Input[bool]] = None,
+                 enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
+                 issues_events: Optional[pulumi.Input[bool]] = None,
+                 job_events: Optional[pulumi.Input[bool]] = None,
+                 merge_requests_events: Optional[pulumi.Input[bool]] = None,
+                 note_events: Optional[pulumi.Input[bool]] = None,
+                 pipeline_events: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 push_events: Optional[pulumi.Input[bool]] = None,
+                 push_events_branch_filter: Optional[pulumi.Input[str]] = None,
+                 tag_push_events: Optional[pulumi.Input[bool]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
+                 wiki_page_events: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

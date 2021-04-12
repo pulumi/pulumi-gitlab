@@ -5,13 +5,93 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['GroupLdapLink']
+__all__ = ['GroupLdapLinkArgs', 'GroupLdapLink']
+
+@pulumi.input_type
+class GroupLdapLinkArgs:
+    def __init__(__self__, *,
+                 access_level: pulumi.Input[str],
+                 cn: pulumi.Input[str],
+                 group_id: pulumi.Input[str],
+                 ldap_provider: pulumi.Input[str],
+                 force: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a GroupLdapLink resource.
+        :param pulumi.Input[str] access_level: Acceptable values are: guest, reporter, developer, maintainer, owner.
+        :param pulumi.Input[str] cn: The CN of the LDAP group to link with.
+        :param pulumi.Input[str] group_id: The id of the GitLab group.
+        :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "cn", cn)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "ldap_provider", ldap_provider)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> pulumi.Input[str]:
+        """
+        Acceptable values are: guest, reporter, developer, maintainer, owner.
+        """
+        return pulumi.get(self, "access_level")
+
+    @access_level.setter
+    def access_level(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter
+    def cn(self) -> pulumi.Input[str]:
+        """
+        The CN of the LDAP group to link with.
+        """
+        return pulumi.get(self, "cn")
+
+    @cn.setter
+    def cn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cn", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[str]:
+        """
+        The id of the GitLab group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="ldapProvider")
+    def ldap_provider(self) -> pulumi.Input[str]:
+        """
+        The name of the LDAP provider as stored in the GitLab database.
+        """
+        return pulumi.get(self, "ldap_provider")
+
+    @ldap_provider.setter
+    def ldap_provider(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ldap_provider", value)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force", value)
 
 
 class GroupLdapLink(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -56,6 +136,61 @@ class GroupLdapLink(pulumi.CustomResource):
         :param pulumi.Input[str] group_id: The id of the GitLab group.
         :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: GroupLdapLinkArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # gitlab\_group\_ldap\_link
+
+        This resource allows you to add an LDAP link to an existing GitLab group.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.GroupLdapLink("test",
+            access_level="developer",
+            cn="testuser",
+            group_id="12345",
+            ldap_provider="ldapmain")
+        ```
+
+        ## Import
+
+        GitLab group ldap links can be imported using an id made up of `ldap_provider:cn`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test "ldapmain:testuser"
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param GroupLdapLinkArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GroupLdapLinkArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_level: Optional[pulumi.Input[str]] = None,
+                 cn: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 ldap_provider: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

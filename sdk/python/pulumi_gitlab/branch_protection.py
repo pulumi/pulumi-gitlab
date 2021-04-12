@@ -5,13 +5,97 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['BranchProtection']
+__all__ = ['BranchProtectionArgs', 'BranchProtection']
+
+@pulumi.input_type
+class BranchProtectionArgs:
+    def __init__(__self__, *,
+                 branch: pulumi.Input[str],
+                 merge_access_level: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 push_access_level: pulumi.Input[str],
+                 code_owner_approval_required: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a BranchProtection resource.
+        :param pulumi.Input[str] branch: Name of the branch.
+        :param pulumi.Input[str] merge_access_level: One of five levels of access to the project.
+        :param pulumi.Input[str] project: The id of the project.
+        :param pulumi.Input[str] push_access_level: One of five levels of access to the project.
+        :param pulumi.Input[bool] code_owner_approval_required: Bool, defaults to false. Can be set to true to require code owner approval before merging.
+        """
+        pulumi.set(__self__, "branch", branch)
+        pulumi.set(__self__, "merge_access_level", merge_access_level)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "push_access_level", push_access_level)
+        if code_owner_approval_required is not None:
+            pulumi.set(__self__, "code_owner_approval_required", code_owner_approval_required)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> pulumi.Input[str]:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: pulumi.Input[str]):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="mergeAccessLevel")
+    def merge_access_level(self) -> pulumi.Input[str]:
+        """
+        One of five levels of access to the project.
+        """
+        return pulumi.get(self, "merge_access_level")
+
+    @merge_access_level.setter
+    def merge_access_level(self, value: pulumi.Input[str]):
+        pulumi.set(self, "merge_access_level", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The id of the project.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pushAccessLevel")
+    def push_access_level(self) -> pulumi.Input[str]:
+        """
+        One of five levels of access to the project.
+        """
+        return pulumi.get(self, "push_access_level")
+
+    @push_access_level.setter
+    def push_access_level(self, value: pulumi.Input[str]):
+        pulumi.set(self, "push_access_level", value)
+
+    @property
+    @pulumi.getter(name="codeOwnerApprovalRequired")
+    def code_owner_approval_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Bool, defaults to false. Can be set to true to require code owner approval before merging.
+        """
+        return pulumi.get(self, "code_owner_approval_required")
+
+    @code_owner_approval_required.setter
+    def code_owner_approval_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "code_owner_approval_required", value)
 
 
 class BranchProtection(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -49,6 +133,53 @@ class BranchProtection(pulumi.CustomResource):
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] push_access_level: One of five levels of access to the project.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: BranchProtectionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # gitlab\_branch_protection
+
+        This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch. GitLab EE features to protect by group or user are not supported.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        branch_protect = gitlab.BranchProtection("branchProtect",
+            branch="BranchProtected",
+            merge_access_level="developer",
+            project="12345",
+            push_access_level="developer")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param BranchProtectionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(BranchProtectionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 branch: Optional[pulumi.Input[str]] = None,
+                 code_owner_approval_required: Optional[pulumi.Input[bool]] = None,
+                 merge_access_level: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 push_access_level: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

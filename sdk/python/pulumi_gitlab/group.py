@@ -5,13 +5,284 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Group']
+__all__ = ['GroupArgs', 'Group']
+
+@pulumi.input_type
+class GroupArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[str],
+                 auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 emails_disabled: Optional[pulumi.Input[bool]] = None,
+                 lfs_enabled: Optional[pulumi.Input[bool]] = None,
+                 mentions_disabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parent_id: Optional[pulumi.Input[int]] = None,
+                 project_creation_level: Optional[pulumi.Input[str]] = None,
+                 request_access_enabled: Optional[pulumi.Input[bool]] = None,
+                 require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
+                 share_with_group_lock: Optional[pulumi.Input[bool]] = None,
+                 subgroup_creation_level: Optional[pulumi.Input[str]] = None,
+                 two_factor_grace_period: Optional[pulumi.Input[int]] = None,
+                 visibility_level: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Group resource.
+        :param pulumi.Input[str] path: The path of the group.
+        :param pulumi.Input[bool] auto_devops_enabled: Boolean, defaults to false.  Default to Auto
+               DevOps pipeline for all projects within this group.
+        :param pulumi.Input[str] description: The description of the group.
+        :param pulumi.Input[bool] emails_disabled: Boolean, defaults to false.  Disable email notifications
+        :param pulumi.Input[bool] lfs_enabled: Boolean, defaults to true.  Whether to enable LFS
+               support for projects in this group.
+        :param pulumi.Input[bool] mentions_disabled: Boolean, defaults to false.  Disable the capability
+               of a group from getting mentioned
+        :param pulumi.Input[str] name: The name of this group.
+        :param pulumi.Input[int] parent_id: Integer, id of the parent group (creates a nested group).
+        :param pulumi.Input[str] project_creation_level: , defaults to Maintainer.
+               Determine if developers can create projects
+               in the group. Can be noone (No one), maintainer (Maintainers),
+               or developer (Developers + Maintainers).
+        :param pulumi.Input[bool] request_access_enabled: Boolean, defaults to false.  Whether to
+               enable users to request access to the group.
+        :param pulumi.Input[bool] require_two_factor_authentication: Boolean, defaults to false.
+               equire all users in this group to setup Two-factor authentication.
+        :param pulumi.Input[bool] share_with_group_lock: Boolean, defaults to false.  Prevent sharing
+               a project with another group within this group.
+        :param pulumi.Input[str] subgroup_creation_level: , defaults to Owner.
+               Allowed to create subgroups.
+               Can be owner (Owners), or maintainer (Maintainers).
+        :param pulumi.Input[int] two_factor_grace_period: Int, defaults to 48.
+               Time before Two-factor authentication is enforced (in hours).
+        :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
+        """
+        pulumi.set(__self__, "path", path)
+        if auto_devops_enabled is not None:
+            pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if emails_disabled is not None:
+            pulumi.set(__self__, "emails_disabled", emails_disabled)
+        if lfs_enabled is not None:
+            pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        if mentions_disabled is not None:
+            pulumi.set(__self__, "mentions_disabled", mentions_disabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent_id is not None:
+            pulumi.set(__self__, "parent_id", parent_id)
+        if project_creation_level is not None:
+            pulumi.set(__self__, "project_creation_level", project_creation_level)
+        if request_access_enabled is not None:
+            pulumi.set(__self__, "request_access_enabled", request_access_enabled)
+        if require_two_factor_authentication is not None:
+            pulumi.set(__self__, "require_two_factor_authentication", require_two_factor_authentication)
+        if share_with_group_lock is not None:
+            pulumi.set(__self__, "share_with_group_lock", share_with_group_lock)
+        if subgroup_creation_level is not None:
+            pulumi.set(__self__, "subgroup_creation_level", subgroup_creation_level)
+        if two_factor_grace_period is not None:
+            pulumi.set(__self__, "two_factor_grace_period", two_factor_grace_period)
+        if visibility_level is not None:
+            pulumi.set(__self__, "visibility_level", visibility_level)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        """
+        The path of the group.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="autoDevopsEnabled")
+    def auto_devops_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean, defaults to false.  Default to Auto
+        DevOps pipeline for all projects within this group.
+        """
+        return pulumi.get(self, "auto_devops_enabled")
+
+    @auto_devops_enabled.setter
+    def auto_devops_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_devops_enabled", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the group.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="emailsDisabled")
+    def emails_disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean, defaults to false.  Disable email notifications
+        """
+        return pulumi.get(self, "emails_disabled")
+
+    @emails_disabled.setter
+    def emails_disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "emails_disabled", value)
+
+    @property
+    @pulumi.getter(name="lfsEnabled")
+    def lfs_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean, defaults to true.  Whether to enable LFS
+        support for projects in this group.
+        """
+        return pulumi.get(self, "lfs_enabled")
+
+    @lfs_enabled.setter
+    def lfs_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "lfs_enabled", value)
+
+    @property
+    @pulumi.getter(name="mentionsDisabled")
+    def mentions_disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean, defaults to false.  Disable the capability
+        of a group from getting mentioned
+        """
+        return pulumi.get(self, "mentions_disabled")
+
+    @mentions_disabled.setter
+    def mentions_disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mentions_disabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of this group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Integer, id of the parent group (creates a nested group).
+        """
+        return pulumi.get(self, "parent_id")
+
+    @parent_id.setter
+    def parent_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "parent_id", value)
+
+    @property
+    @pulumi.getter(name="projectCreationLevel")
+    def project_creation_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        , defaults to Maintainer.
+        Determine if developers can create projects
+        in the group. Can be noone (No one), maintainer (Maintainers),
+        or developer (Developers + Maintainers).
+        """
+        return pulumi.get(self, "project_creation_level")
+
+    @project_creation_level.setter
+    def project_creation_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_creation_level", value)
+
+    @property
+    @pulumi.getter(name="requestAccessEnabled")
+    def request_access_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean, defaults to false.  Whether to
+        enable users to request access to the group.
+        """
+        return pulumi.get(self, "request_access_enabled")
+
+    @request_access_enabled.setter
+    def request_access_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "request_access_enabled", value)
+
+    @property
+    @pulumi.getter(name="requireTwoFactorAuthentication")
+    def require_two_factor_authentication(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean, defaults to false.
+        equire all users in this group to setup Two-factor authentication.
+        """
+        return pulumi.get(self, "require_two_factor_authentication")
+
+    @require_two_factor_authentication.setter
+    def require_two_factor_authentication(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_two_factor_authentication", value)
+
+    @property
+    @pulumi.getter(name="shareWithGroupLock")
+    def share_with_group_lock(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean, defaults to false.  Prevent sharing
+        a project with another group within this group.
+        """
+        return pulumi.get(self, "share_with_group_lock")
+
+    @share_with_group_lock.setter
+    def share_with_group_lock(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "share_with_group_lock", value)
+
+    @property
+    @pulumi.getter(name="subgroupCreationLevel")
+    def subgroup_creation_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        , defaults to Owner.
+        Allowed to create subgroups.
+        Can be owner (Owners), or maintainer (Maintainers).
+        """
+        return pulumi.get(self, "subgroup_creation_level")
+
+    @subgroup_creation_level.setter
+    def subgroup_creation_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subgroup_creation_level", value)
+
+    @property
+    @pulumi.getter(name="twoFactorGracePeriod")
+    def two_factor_grace_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Int, defaults to 48.
+        Time before Two-factor authentication is enforced (in hours).
+        """
+        return pulumi.get(self, "two_factor_grace_period")
+
+    @two_factor_grace_period.setter
+    def two_factor_grace_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "two_factor_grace_period", value)
+
+    @property
+    @pulumi.getter(name="visibilityLevel")
+    def visibility_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The group's visibility. Can be `private`, `internal`, or `public`.
+        """
+        return pulumi.get(self, "visibility_level")
+
+    @visibility_level.setter
+    def visibility_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visibility_level", value)
 
 
 class Group(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -65,6 +336,47 @@ class Group(pulumi.CustomResource):
                Time before Two-factor authentication is enforced (in hours).
         :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: GroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a Group resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param GroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 emails_disabled: Optional[pulumi.Input[bool]] = None,
+                 lfs_enabled: Optional[pulumi.Input[bool]] = None,
+                 mentions_disabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parent_id: Optional[pulumi.Input[int]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 project_creation_level: Optional[pulumi.Input[str]] = None,
+                 request_access_enabled: Optional[pulumi.Input[bool]] = None,
+                 require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
+                 share_with_group_lock: Optional[pulumi.Input[bool]] = None,
+                 subgroup_creation_level: Optional[pulumi.Input[str]] = None,
+                 two_factor_grace_period: Optional[pulumi.Input[int]] = None,
+                 visibility_level: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,99 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ProjectMirror']
+__all__ = ['ProjectMirrorArgs', 'ProjectMirror']
+
+@pulumi.input_type
+class ProjectMirrorArgs:
+    def __init__(__self__, *,
+                 project: pulumi.Input[str],
+                 url: pulumi.Input[str],
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 keep_divergent_refs: Optional[pulumi.Input[bool]] = None,
+                 only_protected_branches: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a ProjectMirror resource.
+        :param pulumi.Input[str] project: The id of the project.
+        :param pulumi.Input[str] url: The URL of the remote repository to be mirrored.
+        :param pulumi.Input[bool] enabled: Determines if the mirror is enabled.
+        :param pulumi.Input[bool] keep_divergent_refs: Determines if divergent refs are skipped.
+        :param pulumi.Input[bool] only_protected_branches: Determines if only protected branches are mirrored.
+        """
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "url", url)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if keep_divergent_refs is not None:
+            pulumi.set(__self__, "keep_divergent_refs", keep_divergent_refs)
+        if only_protected_branches is not None:
+            pulumi.set(__self__, "only_protected_branches", only_protected_branches)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The id of the project.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        """
+        The URL of the remote repository to be mirrored.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines if the mirror is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="keepDivergentRefs")
+    def keep_divergent_refs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines if divergent refs are skipped.
+        """
+        return pulumi.get(self, "keep_divergent_refs")
+
+    @keep_divergent_refs.setter
+    def keep_divergent_refs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "keep_divergent_refs", value)
+
+    @property
+    @pulumi.getter(name="onlyProtectedBranches")
+    def only_protected_branches(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines if only protected branches are mirrored.
+        """
+        return pulumi.get(self, "only_protected_branches")
+
+    @only_protected_branches.setter
+    def only_protected_branches(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "only_protected_branches", value)
 
 
 class ProjectMirror(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -61,6 +147,65 @@ class ProjectMirror(pulumi.CustomResource):
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] url: The URL of the remote repository to be mirrored.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ProjectMirrorArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # gitlab\_project_mirror
+
+        This resource allows you to add a mirror target for the repository, all changes will be synced to the remote target.
+
+        > This is for *pushing* changes to a remote repository. *Pull Mirroring* can be configured using a combination of the
+        `import_url`, `mirror`, and `mirror_trigger_builds` properties on the `Project` resource.
+
+        For further information on mirroring, consult the
+        [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo = gitlab.ProjectMirror("foo",
+            project="1",
+            url="https://username:password@github.com/org/repository.git")
+        ```
+
+        ## Import
+
+        GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/projectMirror:ProjectMirror foo "12345:1337"
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ProjectMirrorArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectMirrorArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 keep_divergent_refs: Optional[pulumi.Input[bool]] = None,
+                 only_protected_branches: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

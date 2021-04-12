@@ -5,13 +5,81 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['PipelineScheduleVariable']
+__all__ = ['PipelineScheduleVariableArgs', 'PipelineScheduleVariable']
+
+@pulumi.input_type
+class PipelineScheduleVariableArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 pipeline_schedule_id: pulumi.Input[int],
+                 project: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a PipelineScheduleVariable resource.
+        :param pulumi.Input[str] key: Name of the variable.
+        :param pulumi.Input[int] pipeline_schedule_id: The id of the pipeline schedule.
+        :param pulumi.Input[str] project: The id of the project to add the schedule to.
+        :param pulumi.Input[str] value: Value of the variable.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "pipeline_schedule_id", pipeline_schedule_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        Name of the variable.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter(name="pipelineScheduleId")
+    def pipeline_schedule_id(self) -> pulumi.Input[int]:
+        """
+        The id of the pipeline schedule.
+        """
+        return pulumi.get(self, "pipeline_schedule_id")
+
+    @pipeline_schedule_id.setter
+    def pipeline_schedule_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "pipeline_schedule_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The id of the project to add the schedule to.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Value of the variable.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
 
 class PipelineScheduleVariable(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -52,6 +120,57 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         :param pulumi.Input[str] project: The id of the project to add the schedule to.
         :param pulumi.Input[str] value: Value of the variable.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: PipelineScheduleVariableArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # gitlab\_pipeline\_schedule\_variable
+
+        This resource allows you to create and manage variables for pipeline schedules.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example_pipeline_schedule = gitlab.PipelineSchedule("examplePipelineSchedule",
+            project="12345",
+            description="Used to schedule builds",
+            ref="master",
+            cron="0 1 * * *")
+        example_pipeline_schedule_variable = gitlab.PipelineScheduleVariable("examplePipelineScheduleVariable",
+            project=gitlab_pipeline_schedule["project"],
+            pipeline_schedule_id=gitlab_pipeline_schedule["id"],
+            key="EXAMPLE_KEY",
+            value="example")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param PipelineScheduleVariableArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(PipelineScheduleVariableArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 pipeline_schedule_id: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

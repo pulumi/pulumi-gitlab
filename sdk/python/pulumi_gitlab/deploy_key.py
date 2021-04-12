@@ -5,13 +5,82 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['DeployKey']
+__all__ = ['DeployKeyArgs', 'DeployKey']
+
+@pulumi.input_type
+class DeployKeyArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 can_push: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a DeployKey resource.
+        :param pulumi.Input[str] key: The public ssh key body.
+        :param pulumi.Input[str] project: The name or id of the project to add the deploy key to.
+        :param pulumi.Input[str] title: A title to describe the deploy key with.
+        :param pulumi.Input[bool] can_push: Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "title", title)
+        if can_push is not None:
+            pulumi.set(__self__, "can_push", can_push)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The public ssh key body.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The name or id of the project to add the deploy key to.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        A title to describe the deploy key with.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter(name="canPush")
+    def can_push(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+        """
+        return pulumi.get(self, "can_push")
+
+    @can_push.setter
+    def can_push(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "can_push", value)
 
 
 class DeployKey(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -54,6 +123,59 @@ class DeployKey(pulumi.CustomResource):
         :param pulumi.Input[str] project: The name or id of the project to add the deploy key to.
         :param pulumi.Input[str] title: A title to describe the deploy key with.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DeployKeyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## # gitlab\_deploy\_key
+
+        This resource allows you to create and manage deploy keys for your GitLab projects.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.DeployKey("example",
+            key="ssh-rsa AAAA...",
+            project="example/deploying",
+            title="Example deploy key")
+        ```
+
+        ## Import
+
+        GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/deployKey:DeployKey test 1:3
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DeployKeyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DeployKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 can_push: Optional[pulumi.Input[bool]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

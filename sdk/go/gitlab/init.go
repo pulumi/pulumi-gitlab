@@ -21,75 +21,76 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gitlab:index/branchProtection:BranchProtection":
-		r, err = NewBranchProtection(ctx, name, nil, pulumi.URN_(urn))
+		r = &BranchProtection{}
 	case "gitlab:index/deployKey:DeployKey":
-		r, err = NewDeployKey(ctx, name, nil, pulumi.URN_(urn))
+		r = &DeployKey{}
 	case "gitlab:index/deployKeyEnable:DeployKeyEnable":
-		r, err = NewDeployKeyEnable(ctx, name, nil, pulumi.URN_(urn))
+		r = &DeployKeyEnable{}
 	case "gitlab:index/deployToken:DeployToken":
-		r, err = NewDeployToken(ctx, name, nil, pulumi.URN_(urn))
+		r = &DeployToken{}
 	case "gitlab:index/group:Group":
-		r, err = NewGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &Group{}
 	case "gitlab:index/groupCluster:GroupCluster":
-		r, err = NewGroupCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &GroupCluster{}
 	case "gitlab:index/groupLabel:GroupLabel":
-		r, err = NewGroupLabel(ctx, name, nil, pulumi.URN_(urn))
+		r = &GroupLabel{}
 	case "gitlab:index/groupLdapLink:GroupLdapLink":
-		r, err = NewGroupLdapLink(ctx, name, nil, pulumi.URN_(urn))
+		r = &GroupLdapLink{}
 	case "gitlab:index/groupMembership:GroupMembership":
-		r, err = NewGroupMembership(ctx, name, nil, pulumi.URN_(urn))
+		r = &GroupMembership{}
 	case "gitlab:index/groupShareGroup:GroupShareGroup":
-		r, err = NewGroupShareGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &GroupShareGroup{}
 	case "gitlab:index/groupVariable:GroupVariable":
-		r, err = NewGroupVariable(ctx, name, nil, pulumi.URN_(urn))
+		r = &GroupVariable{}
 	case "gitlab:index/instanceCluster:InstanceCluster":
-		r, err = NewInstanceCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceCluster{}
 	case "gitlab:index/instanceVariable:InstanceVariable":
-		r, err = NewInstanceVariable(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceVariable{}
 	case "gitlab:index/label:Label":
-		r, err = NewLabel(ctx, name, nil, pulumi.URN_(urn))
+		r = &Label{}
 	case "gitlab:index/pipelineSchedule:PipelineSchedule":
-		r, err = NewPipelineSchedule(ctx, name, nil, pulumi.URN_(urn))
+		r = &PipelineSchedule{}
 	case "gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable":
-		r, err = NewPipelineScheduleVariable(ctx, name, nil, pulumi.URN_(urn))
+		r = &PipelineScheduleVariable{}
 	case "gitlab:index/pipelineTrigger:PipelineTrigger":
-		r, err = NewPipelineTrigger(ctx, name, nil, pulumi.URN_(urn))
+		r = &PipelineTrigger{}
 	case "gitlab:index/project:Project":
-		r, err = NewProject(ctx, name, nil, pulumi.URN_(urn))
+		r = &Project{}
 	case "gitlab:index/projectApprovalRule:ProjectApprovalRule":
-		r, err = NewProjectApprovalRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectApprovalRule{}
 	case "gitlab:index/projectCluster:ProjectCluster":
-		r, err = NewProjectCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectCluster{}
 	case "gitlab:index/projectFreezePeriod:ProjectFreezePeriod":
-		r, err = NewProjectFreezePeriod(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectFreezePeriod{}
 	case "gitlab:index/projectHook:ProjectHook":
-		r, err = NewProjectHook(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectHook{}
 	case "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals":
-		r, err = NewProjectLevelMrApprovals(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectLevelMrApprovals{}
 	case "gitlab:index/projectMembership:ProjectMembership":
-		r, err = NewProjectMembership(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectMembership{}
 	case "gitlab:index/projectMirror:ProjectMirror":
-		r, err = NewProjectMirror(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectMirror{}
 	case "gitlab:index/projectShareGroup:ProjectShareGroup":
-		r, err = NewProjectShareGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectShareGroup{}
 	case "gitlab:index/projectVariable:ProjectVariable":
-		r, err = NewProjectVariable(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectVariable{}
 	case "gitlab:index/serviceGithub:ServiceGithub":
-		r, err = NewServiceGithub(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceGithub{}
 	case "gitlab:index/serviceJira:ServiceJira":
-		r, err = NewServiceJira(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceJira{}
 	case "gitlab:index/servicePipelinesEmail:ServicePipelinesEmail":
-		r, err = NewServicePipelinesEmail(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServicePipelinesEmail{}
 	case "gitlab:index/serviceSlack:ServiceSlack":
-		r, err = NewServiceSlack(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceSlack{}
 	case "gitlab:index/tagProtection:TagProtection":
-		r, err = NewTagProtection(ctx, name, nil, pulumi.URN_(urn))
+		r = &TagProtection{}
 	case "gitlab:index/user:User":
-		r, err = NewUser(ctx, name, nil, pulumi.URN_(urn))
+		r = &User{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 
@@ -106,7 +107,9 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 		return nil, fmt.Errorf("unknown provider type: %s", typ)
 	}
 
-	return NewProvider(ctx, name, nil, pulumi.URN_(urn))
+	r := &Provider{}
+	err := ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
+	return r, err
 }
 
 func init() {
