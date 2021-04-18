@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['GroupLdapLinkArgs', 'GroupLdapLink']
 
@@ -88,6 +88,90 @@ class GroupLdapLinkArgs:
     @force.setter
     def force(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force", value)
+
+
+@pulumi.input_type
+class _GroupLdapLinkState:
+    def __init__(__self__, *,
+                 access_level: Optional[pulumi.Input[str]] = None,
+                 cn: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 ldap_provider: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering GroupLdapLink resources.
+        :param pulumi.Input[str] access_level: Acceptable values are: guest, reporter, developer, maintainer, owner.
+        :param pulumi.Input[str] cn: The CN of the LDAP group to link with.
+        :param pulumi.Input[str] group_id: The id of the GitLab group.
+        :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if cn is not None:
+            pulumi.set(__self__, "cn", cn)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if ldap_provider is not None:
+            pulumi.set(__self__, "ldap_provider", ldap_provider)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Acceptable values are: guest, reporter, developer, maintainer, owner.
+        """
+        return pulumi.get(self, "access_level")
+
+    @access_level.setter
+    def access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter
+    def cn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CN of the LDAP group to link with.
+        """
+        return pulumi.get(self, "cn")
+
+    @cn.setter
+    def cn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cn", value)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the GitLab group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="ldapProvider")
+    def ldap_provider(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the LDAP provider as stored in the GitLab database.
+        """
+        return pulumi.get(self, "ldap_provider")
+
+    @ldap_provider.setter
+    def ldap_provider(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ldap_provider", value)
 
 
 class GroupLdapLink(pulumi.CustomResource):
@@ -206,21 +290,21 @@ class GroupLdapLink(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GroupLdapLinkArgs.__new__(GroupLdapLinkArgs)
 
             if access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'access_level'")
-            __props__['access_level'] = access_level
+            __props__.__dict__["access_level"] = access_level
             if cn is None and not opts.urn:
                 raise TypeError("Missing required property 'cn'")
-            __props__['cn'] = cn
-            __props__['force'] = force
+            __props__.__dict__["cn"] = cn
+            __props__.__dict__["force"] = force
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
-            __props__['group_id'] = group_id
+            __props__.__dict__["group_id"] = group_id
             if ldap_provider is None and not opts.urn:
                 raise TypeError("Missing required property 'ldap_provider'")
-            __props__['ldap_provider'] = ldap_provider
+            __props__.__dict__["ldap_provider"] = ldap_provider
         super(GroupLdapLink, __self__).__init__(
             'gitlab:index/groupLdapLink:GroupLdapLink',
             resource_name,
@@ -250,13 +334,13 @@ class GroupLdapLink(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _GroupLdapLinkState.__new__(_GroupLdapLinkState)
 
-        __props__["access_level"] = access_level
-        __props__["cn"] = cn
-        __props__["force"] = force
-        __props__["group_id"] = group_id
-        __props__["ldap_provider"] = ldap_provider
+        __props__.__dict__["access_level"] = access_level
+        __props__.__dict__["cn"] = cn
+        __props__.__dict__["force"] = force
+        __props__.__dict__["group_id"] = group_id
+        __props__.__dict__["ldap_provider"] = ldap_provider
         return GroupLdapLink(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -295,10 +379,4 @@ class GroupLdapLink(pulumi.CustomResource):
         The name of the LDAP provider as stored in the GitLab database.
         """
         return pulumi.get(self, "ldap_provider")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

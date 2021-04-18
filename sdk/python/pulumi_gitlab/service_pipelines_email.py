@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ServicePipelinesEmailArgs', 'ServicePipelinesEmail']
 
@@ -80,6 +80,78 @@ class ServicePipelinesEmailArgs:
         pulumi.set(self, "notify_only_broken_pipelines", value)
 
 
+@pulumi.input_type
+class _ServicePipelinesEmailState:
+    def __init__(__self__, *,
+                 branches_to_be_notified: Optional[pulumi.Input[str]] = None,
+                 notify_only_broken_pipelines: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering ServicePipelinesEmail resources.
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        :param pulumi.Input[bool] notify_only_broken_pipelines: Notify only broken pipelines. Default is true.
+        :param pulumi.Input[str] project: ID of the project you want to activate integration on.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] recipients: ) email addresses where notifications are sent.
+        """
+        if branches_to_be_notified is not None:
+            pulumi.set(__self__, "branches_to_be_notified", branches_to_be_notified)
+        if notify_only_broken_pipelines is not None:
+            pulumi.set(__self__, "notify_only_broken_pipelines", notify_only_broken_pipelines)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if recipients is not None:
+            pulumi.set(__self__, "recipients", recipients)
+
+    @property
+    @pulumi.getter(name="branchesToBeNotified")
+    def branches_to_be_notified(self) -> Optional[pulumi.Input[str]]:
+        """
+        Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        """
+        return pulumi.get(self, "branches_to_be_notified")
+
+    @branches_to_be_notified.setter
+    def branches_to_be_notified(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branches_to_be_notified", value)
+
+    @property
+    @pulumi.getter(name="notifyOnlyBrokenPipelines")
+    def notify_only_broken_pipelines(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Notify only broken pipelines. Default is true.
+        """
+        return pulumi.get(self, "notify_only_broken_pipelines")
+
+    @notify_only_broken_pipelines.setter
+    def notify_only_broken_pipelines(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "notify_only_broken_pipelines", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the project you want to activate integration on.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def recipients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        ) email addresses where notifications are sent.
+        """
+        return pulumi.get(self, "recipients")
+
+    @recipients.setter
+    def recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "recipients", value)
+
+
 class ServicePipelinesEmail(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -146,16 +218,16 @@ class ServicePipelinesEmail(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ServicePipelinesEmailArgs.__new__(ServicePipelinesEmailArgs)
 
-            __props__['branches_to_be_notified'] = branches_to_be_notified
-            __props__['notify_only_broken_pipelines'] = notify_only_broken_pipelines
+            __props__.__dict__["branches_to_be_notified"] = branches_to_be_notified
+            __props__.__dict__["notify_only_broken_pipelines"] = notify_only_broken_pipelines
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
             if recipients is None and not opts.urn:
                 raise TypeError("Missing required property 'recipients'")
-            __props__['recipients'] = recipients
+            __props__.__dict__["recipients"] = recipients
         super(ServicePipelinesEmail, __self__).__init__(
             'gitlab:index/servicePipelinesEmail:ServicePipelinesEmail',
             resource_name,
@@ -184,12 +256,12 @@ class ServicePipelinesEmail(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ServicePipelinesEmailState.__new__(_ServicePipelinesEmailState)
 
-        __props__["branches_to_be_notified"] = branches_to_be_notified
-        __props__["notify_only_broken_pipelines"] = notify_only_broken_pipelines
-        __props__["project"] = project
-        __props__["recipients"] = recipients
+        __props__.__dict__["branches_to_be_notified"] = branches_to_be_notified
+        __props__.__dict__["notify_only_broken_pipelines"] = notify_only_broken_pipelines
+        __props__.__dict__["project"] = project
+        __props__.__dict__["recipients"] = recipients
         return ServicePipelinesEmail(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -223,10 +295,4 @@ class ServicePipelinesEmail(pulumi.CustomResource):
         ) email addresses where notifications are sent.
         """
         return pulumi.get(self, "recipients")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

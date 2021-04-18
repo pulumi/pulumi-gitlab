@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['PipelineScheduleVariableArgs', 'PipelineScheduleVariable']
 
@@ -75,6 +75,78 @@ class PipelineScheduleVariableArgs:
 
     @value.setter
     def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class _PipelineScheduleVariableState:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 pipeline_schedule_id: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering PipelineScheduleVariable resources.
+        :param pulumi.Input[str] key: Name of the variable.
+        :param pulumi.Input[int] pipeline_schedule_id: The id of the pipeline schedule.
+        :param pulumi.Input[str] project: The id of the project to add the schedule to.
+        :param pulumi.Input[str] value: Value of the variable.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if pipeline_schedule_id is not None:
+            pulumi.set(__self__, "pipeline_schedule_id", pipeline_schedule_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the variable.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter(name="pipelineScheduleId")
+    def pipeline_schedule_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The id of the pipeline schedule.
+        """
+        return pulumi.get(self, "pipeline_schedule_id")
+
+    @pipeline_schedule_id.setter
+    def pipeline_schedule_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "pipeline_schedule_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the project to add the schedule to.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value of the variable.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
 
@@ -186,20 +258,20 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = PipelineScheduleVariableArgs.__new__(PipelineScheduleVariableArgs)
 
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
-            __props__['key'] = key
+            __props__.__dict__["key"] = key
             if pipeline_schedule_id is None and not opts.urn:
                 raise TypeError("Missing required property 'pipeline_schedule_id'")
-            __props__['pipeline_schedule_id'] = pipeline_schedule_id
+            __props__.__dict__["pipeline_schedule_id"] = pipeline_schedule_id
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
-            __props__['value'] = value
+            __props__.__dict__["value"] = value
         super(PipelineScheduleVariable, __self__).__init__(
             'gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable',
             resource_name,
@@ -228,12 +300,12 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _PipelineScheduleVariableState.__new__(_PipelineScheduleVariableState)
 
-        __props__["key"] = key
-        __props__["pipeline_schedule_id"] = pipeline_schedule_id
-        __props__["project"] = project
-        __props__["value"] = value
+        __props__.__dict__["key"] = key
+        __props__.__dict__["pipeline_schedule_id"] = pipeline_schedule_id
+        __props__.__dict__["project"] = project
+        __props__.__dict__["value"] = value
         return PipelineScheduleVariable(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -267,10 +339,4 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         Value of the variable.
         """
         return pulumi.get(self, "value")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

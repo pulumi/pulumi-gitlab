@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['InstanceVariableArgs', 'InstanceVariable']
 
@@ -82,6 +82,94 @@ class InstanceVariableArgs:
     @protected.setter
     def protected(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "protected", value)
+
+    @property
+    @pulumi.getter(name="variableType")
+    def variable_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of a variable. Available types are: env_var (default) and file.
+        """
+        return pulumi.get(self, "variable_type")
+
+    @variable_type.setter
+    def variable_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "variable_type", value)
+
+
+@pulumi.input_type
+class _InstanceVariableState:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 masked: Optional[pulumi.Input[bool]] = None,
+                 protected: Optional[pulumi.Input[bool]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 variable_type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering InstanceVariable resources.
+        :param pulumi.Input[str] key: The name of the variable.
+        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        :param pulumi.Input[str] value: The value of the variable.
+        :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if masked is not None:
+            pulumi.set(__self__, "masked", masked)
+        if protected is not None:
+            pulumi.set(__self__, "protected", protected)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if variable_type is not None:
+            pulumi.set(__self__, "variable_type", variable_type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the variable.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def masked(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+        """
+        return pulumi.get(self, "masked")
+
+    @masked.setter
+    def masked(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "masked", value)
+
+    @property
+    @pulumi.getter
+    def protected(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        """
+        return pulumi.get(self, "protected")
+
+    @protected.setter
+    def protected(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "protected", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the variable.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter(name="variableType")
@@ -213,17 +301,17 @@ class InstanceVariable(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceVariableArgs.__new__(InstanceVariableArgs)
 
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
-            __props__['key'] = key
-            __props__['masked'] = masked
-            __props__['protected'] = protected
+            __props__.__dict__["key"] = key
+            __props__.__dict__["masked"] = masked
+            __props__.__dict__["protected"] = protected
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
-            __props__['value'] = value
-            __props__['variable_type'] = variable_type
+            __props__.__dict__["value"] = value
+            __props__.__dict__["variable_type"] = variable_type
         super(InstanceVariable, __self__).__init__(
             'gitlab:index/instanceVariable:InstanceVariable',
             resource_name,
@@ -254,13 +342,13 @@ class InstanceVariable(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceVariableState.__new__(_InstanceVariableState)
 
-        __props__["key"] = key
-        __props__["masked"] = masked
-        __props__["protected"] = protected
-        __props__["value"] = value
-        __props__["variable_type"] = variable_type
+        __props__.__dict__["key"] = key
+        __props__.__dict__["masked"] = masked
+        __props__.__dict__["protected"] = protected
+        __props__.__dict__["value"] = value
+        __props__.__dict__["variable_type"] = variable_type
         return InstanceVariable(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -302,10 +390,4 @@ class InstanceVariable(pulumi.CustomResource):
         The type of a variable. Available types are: env_var (default) and file.
         """
         return pulumi.get(self, "variable_type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['TagProtectionArgs', 'TagProtection']
 
@@ -60,6 +60,62 @@ class TagProtectionArgs:
 
     @tag.setter
     def tag(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tag", value)
+
+
+@pulumi.input_type
+class _TagProtectionState:
+    def __init__(__self__, *,
+                 create_access_level: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 tag: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering TagProtection resources.
+        :param pulumi.Input[str] create_access_level: One of five levels of access to the project.
+        :param pulumi.Input[str] project: The id of the project.
+        :param pulumi.Input[str] tag: Name of the tag or wildcard.
+        """
+        if create_access_level is not None:
+            pulumi.set(__self__, "create_access_level", create_access_level)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter(name="createAccessLevel")
+    def create_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        One of five levels of access to the project.
+        """
+        return pulumi.get(self, "create_access_level")
+
+    @create_access_level.setter
+    def create_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_access_level", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the project.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the tag or wildcard.
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tag", value)
 
 
@@ -156,17 +212,17 @@ class TagProtection(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TagProtectionArgs.__new__(TagProtectionArgs)
 
             if create_access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'create_access_level'")
-            __props__['create_access_level'] = create_access_level
+            __props__.__dict__["create_access_level"] = create_access_level
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
             if tag is None and not opts.urn:
                 raise TypeError("Missing required property 'tag'")
-            __props__['tag'] = tag
+            __props__.__dict__["tag"] = tag
         super(TagProtection, __self__).__init__(
             'gitlab:index/tagProtection:TagProtection',
             resource_name,
@@ -193,11 +249,11 @@ class TagProtection(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _TagProtectionState.__new__(_TagProtectionState)
 
-        __props__["create_access_level"] = create_access_level
-        __props__["project"] = project
-        __props__["tag"] = tag
+        __props__.__dict__["create_access_level"] = create_access_level
+        __props__.__dict__["project"] = project
+        __props__.__dict__["tag"] = tag
         return TagProtection(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -223,10 +279,4 @@ class TagProtection(pulumi.CustomResource):
         Name of the tag or wildcard.
         """
         return pulumi.get(self, "tag")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

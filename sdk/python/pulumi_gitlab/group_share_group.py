@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['GroupShareGroupArgs', 'GroupShareGroup']
 
@@ -77,6 +77,78 @@ class GroupShareGroupArgs:
     @expires_at.setter
     def expires_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "expires_at", value)
+
+
+@pulumi.input_type
+class _GroupShareGroupState:
+    def __init__(__self__, *,
+                 expires_at: Optional[pulumi.Input[str]] = None,
+                 group_access: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 share_group_id: Optional[pulumi.Input[int]] = None):
+        """
+        Input properties used for looking up and filtering GroupShareGroup resources.
+        :param pulumi.Input[str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
+        :param pulumi.Input[str] group_access: One of five levels of access to the group.
+        :param pulumi.Input[str] group_id: The id of the main group.
+        :param pulumi.Input[int] share_group_id: The id of an additional group which will be shared with the main group.
+        """
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
+        if group_access is not None:
+            pulumi.set(__self__, "group_access", group_access)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if share_group_id is not None:
+            pulumi.set(__self__, "share_group_id", share_group_id)
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Share expiration date. Format: `YYYY-MM-DD`
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires_at", value)
+
+    @property
+    @pulumi.getter(name="groupAccess")
+    def group_access(self) -> Optional[pulumi.Input[str]]:
+        """
+        One of five levels of access to the group.
+        """
+        return pulumi.get(self, "group_access")
+
+    @group_access.setter
+    def group_access(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_access", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the main group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="shareGroupId")
+    def share_group_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The id of an additional group which will be shared with the main group.
+        """
+        return pulumi.get(self, "share_group_id")
+
+    @share_group_id.setter
+    def share_group_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "share_group_id", value)
 
 
 class GroupShareGroup(pulumi.CustomResource):
@@ -193,18 +265,18 @@ class GroupShareGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GroupShareGroupArgs.__new__(GroupShareGroupArgs)
 
-            __props__['expires_at'] = expires_at
+            __props__.__dict__["expires_at"] = expires_at
             if group_access is None and not opts.urn:
                 raise TypeError("Missing required property 'group_access'")
-            __props__['group_access'] = group_access
+            __props__.__dict__["group_access"] = group_access
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
-            __props__['group_id'] = group_id
+            __props__.__dict__["group_id"] = group_id
             if share_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'share_group_id'")
-            __props__['share_group_id'] = share_group_id
+            __props__.__dict__["share_group_id"] = share_group_id
         super(GroupShareGroup, __self__).__init__(
             'gitlab:index/groupShareGroup:GroupShareGroup',
             resource_name,
@@ -233,12 +305,12 @@ class GroupShareGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _GroupShareGroupState.__new__(_GroupShareGroupState)
 
-        __props__["expires_at"] = expires_at
-        __props__["group_access"] = group_access
-        __props__["group_id"] = group_id
-        __props__["share_group_id"] = share_group_id
+        __props__.__dict__["expires_at"] = expires_at
+        __props__.__dict__["group_access"] = group_access
+        __props__.__dict__["group_id"] = group_id
+        __props__.__dict__["share_group_id"] = share_group_id
         return GroupShareGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -272,10 +344,4 @@ class GroupShareGroup(pulumi.CustomResource):
         The id of an additional group which will be shared with the main group.
         """
         return pulumi.get(self, "share_group_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['DeployKeyArgs', 'DeployKey']
 
@@ -77,6 +77,78 @@ class DeployKeyArgs:
     @can_push.setter
     def can_push(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "can_push", value)
+
+
+@pulumi.input_type
+class _DeployKeyState:
+    def __init__(__self__, *,
+                 can_push: Optional[pulumi.Input[bool]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering DeployKey resources.
+        :param pulumi.Input[bool] can_push: Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+        :param pulumi.Input[str] key: The public ssh key body.
+        :param pulumi.Input[str] project: The name or id of the project to add the deploy key to.
+        :param pulumi.Input[str] title: A title to describe the deploy key with.
+        """
+        if can_push is not None:
+            pulumi.set(__self__, "can_push", can_push)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="canPush")
+    def can_push(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+        """
+        return pulumi.get(self, "can_push")
+
+    @can_push.setter
+    def can_push(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "can_push", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public ssh key body.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name or id of the project to add the deploy key to.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        A title to describe the deploy key with.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
 
 
 class DeployKey(pulumi.CustomResource):
@@ -191,18 +263,18 @@ class DeployKey(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DeployKeyArgs.__new__(DeployKeyArgs)
 
-            __props__['can_push'] = can_push
+            __props__.__dict__["can_push"] = can_push
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
-            __props__['key'] = key
+            __props__.__dict__["key"] = key
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
-            __props__['title'] = title
+            __props__.__dict__["title"] = title
         super(DeployKey, __self__).__init__(
             'gitlab:index/deployKey:DeployKey',
             resource_name,
@@ -231,12 +303,12 @@ class DeployKey(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DeployKeyState.__new__(_DeployKeyState)
 
-        __props__["can_push"] = can_push
-        __props__["key"] = key
-        __props__["project"] = project
-        __props__["title"] = title
+        __props__.__dict__["can_push"] = can_push
+        __props__.__dict__["key"] = key
+        __props__.__dict__["project"] = project
+        __props__.__dict__["title"] = title
         return DeployKey(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -270,10 +342,4 @@ class DeployKey(pulumi.CustomResource):
         A title to describe the deploy key with.
         """
         return pulumi.get(self, "title")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
