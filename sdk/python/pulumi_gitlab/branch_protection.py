@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['BranchProtectionArgs', 'BranchProtection']
 
@@ -92,6 +92,94 @@ class BranchProtectionArgs:
     @code_owner_approval_required.setter
     def code_owner_approval_required(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "code_owner_approval_required", value)
+
+
+@pulumi.input_type
+class _BranchProtectionState:
+    def __init__(__self__, *,
+                 branch: Optional[pulumi.Input[str]] = None,
+                 code_owner_approval_required: Optional[pulumi.Input[bool]] = None,
+                 merge_access_level: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 push_access_level: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering BranchProtection resources.
+        :param pulumi.Input[str] branch: Name of the branch.
+        :param pulumi.Input[bool] code_owner_approval_required: Bool, defaults to false. Can be set to true to require code owner approval before merging.
+        :param pulumi.Input[str] merge_access_level: One of five levels of access to the project.
+        :param pulumi.Input[str] project: The id of the project.
+        :param pulumi.Input[str] push_access_level: One of five levels of access to the project.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if code_owner_approval_required is not None:
+            pulumi.set(__self__, "code_owner_approval_required", code_owner_approval_required)
+        if merge_access_level is not None:
+            pulumi.set(__self__, "merge_access_level", merge_access_level)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if push_access_level is not None:
+            pulumi.set(__self__, "push_access_level", push_access_level)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="codeOwnerApprovalRequired")
+    def code_owner_approval_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Bool, defaults to false. Can be set to true to require code owner approval before merging.
+        """
+        return pulumi.get(self, "code_owner_approval_required")
+
+    @code_owner_approval_required.setter
+    def code_owner_approval_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "code_owner_approval_required", value)
+
+    @property
+    @pulumi.getter(name="mergeAccessLevel")
+    def merge_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        One of five levels of access to the project.
+        """
+        return pulumi.get(self, "merge_access_level")
+
+    @merge_access_level.setter
+    def merge_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "merge_access_level", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the project.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pushAccessLevel")
+    def push_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        One of five levels of access to the project.
+        """
+        return pulumi.get(self, "push_access_level")
+
+    @push_access_level.setter
+    def push_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "push_access_level", value)
 
 
 class BranchProtection(pulumi.CustomResource):
@@ -195,21 +283,21 @@ class BranchProtection(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BranchProtectionArgs.__new__(BranchProtectionArgs)
 
             if branch is None and not opts.urn:
                 raise TypeError("Missing required property 'branch'")
-            __props__['branch'] = branch
-            __props__['code_owner_approval_required'] = code_owner_approval_required
+            __props__.__dict__["branch"] = branch
+            __props__.__dict__["code_owner_approval_required"] = code_owner_approval_required
             if merge_access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'merge_access_level'")
-            __props__['merge_access_level'] = merge_access_level
+            __props__.__dict__["merge_access_level"] = merge_access_level
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
             if push_access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'push_access_level'")
-            __props__['push_access_level'] = push_access_level
+            __props__.__dict__["push_access_level"] = push_access_level
         super(BranchProtection, __self__).__init__(
             'gitlab:index/branchProtection:BranchProtection',
             resource_name,
@@ -240,13 +328,13 @@ class BranchProtection(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _BranchProtectionState.__new__(_BranchProtectionState)
 
-        __props__["branch"] = branch
-        __props__["code_owner_approval_required"] = code_owner_approval_required
-        __props__["merge_access_level"] = merge_access_level
-        __props__["project"] = project
-        __props__["push_access_level"] = push_access_level
+        __props__.__dict__["branch"] = branch
+        __props__.__dict__["code_owner_approval_required"] = code_owner_approval_required
+        __props__.__dict__["merge_access_level"] = merge_access_level
+        __props__.__dict__["project"] = project
+        __props__.__dict__["push_access_level"] = push_access_level
         return BranchProtection(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -288,10 +376,4 @@ class BranchProtection(pulumi.CustomResource):
         One of five levels of access to the project.
         """
         return pulumi.get(self, "push_access_level")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

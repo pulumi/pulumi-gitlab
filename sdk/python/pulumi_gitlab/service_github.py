@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ServiceGithubArgs', 'ServiceGithub']
 
@@ -75,6 +75,122 @@ class ServiceGithubArgs:
         pulumi.set(self, "static_context", value)
 
 
+@pulumi.input_type
+class _ServiceGithubState:
+    def __init__(__self__, *,
+                 active: Optional[pulumi.Input[bool]] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 repository_url: Optional[pulumi.Input[str]] = None,
+                 static_context: Optional[pulumi.Input[bool]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ServiceGithub resources.
+        :param pulumi.Input[str] project: ID of the project you want to activate integration on.
+        :param pulumi.Input[bool] static_context: Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub. See [Static / dynamic status check names] to learn more.
+        :param pulumi.Input[str] token: A GitHub personal access token with at least `repo:status` scope.
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if repository_url is not None:
+            pulumi.set(__self__, "repository_url", repository_url)
+        if static_context is not None:
+            pulumi.set(__self__, "static_context", static_context)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "active", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the project you want to activate integration on.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="repositoryUrl")
+    def repository_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "repository_url")
+
+    @repository_url.setter
+    def repository_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository_url", value)
+
+    @property
+    @pulumi.getter(name="staticContext")
+    def static_context(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub. See [Static / dynamic status check names] to learn more.
+        """
+        return pulumi.get(self, "static_context")
+
+    @static_context.setter
+    def static_context(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "static_context", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        A GitHub personal access token with at least `repo:status` scope.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
+
+
 class ServiceGithub(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -140,22 +256,22 @@ class ServiceGithub(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ServiceGithubArgs.__new__(ServiceGithubArgs)
 
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
             if repository_url is None and not opts.urn:
                 raise TypeError("Missing required property 'repository_url'")
-            __props__['repository_url'] = repository_url
-            __props__['static_context'] = static_context
+            __props__.__dict__["repository_url"] = repository_url
+            __props__.__dict__["static_context"] = static_context
             if token is None and not opts.urn:
                 raise TypeError("Missing required property 'token'")
-            __props__['token'] = token
-            __props__['active'] = None
-            __props__['created_at'] = None
-            __props__['title'] = None
-            __props__['updated_at'] = None
+            __props__.__dict__["token"] = token
+            __props__.__dict__["active"] = None
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["title"] = None
+            __props__.__dict__["updated_at"] = None
         super(ServiceGithub, __self__).__init__(
             'gitlab:index/serviceGithub:ServiceGithub',
             resource_name,
@@ -187,16 +303,16 @@ class ServiceGithub(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ServiceGithubState.__new__(_ServiceGithubState)
 
-        __props__["active"] = active
-        __props__["created_at"] = created_at
-        __props__["project"] = project
-        __props__["repository_url"] = repository_url
-        __props__["static_context"] = static_context
-        __props__["title"] = title
-        __props__["token"] = token
-        __props__["updated_at"] = updated_at
+        __props__.__dict__["active"] = active
+        __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["project"] = project
+        __props__.__dict__["repository_url"] = repository_url
+        __props__.__dict__["static_context"] = static_context
+        __props__.__dict__["title"] = title
+        __props__.__dict__["token"] = token
+        __props__.__dict__["updated_at"] = updated_at
         return ServiceGithub(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -247,10 +363,4 @@ class ServiceGithub(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
         return pulumi.get(self, "updated_at")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

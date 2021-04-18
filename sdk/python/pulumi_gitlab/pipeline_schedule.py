@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['PipelineScheduleArgs', 'PipelineSchedule']
 
@@ -108,6 +108,110 @@ class PipelineScheduleArgs:
     @cron_timezone.setter
     def cron_timezone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cron_timezone", value)
+
+
+@pulumi.input_type
+class _PipelineScheduleState:
+    def __init__(__self__, *,
+                 active: Optional[pulumi.Input[bool]] = None,
+                 cron: Optional[pulumi.Input[str]] = None,
+                 cron_timezone: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 ref: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering PipelineSchedule resources.
+        :param pulumi.Input[bool] active: The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
+        :param pulumi.Input[str] cron: The cron (e.g. `0 1 * * *`).
+        :param pulumi.Input[str] cron_timezone: The timezone.
+        :param pulumi.Input[str] description: The description of the pipeline schedule.
+        :param pulumi.Input[str] project: The name or id of the project to add the schedule to.
+        :param pulumi.Input[str] ref: The branch/tag name to be triggered.
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+        if cron is not None:
+            pulumi.set(__self__, "cron", cron)
+        if cron_timezone is not None:
+            pulumi.set(__self__, "cron_timezone", cron_timezone)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
+        """
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "active", value)
+
+    @property
+    @pulumi.getter
+    def cron(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cron (e.g. `0 1 * * *`).
+        """
+        return pulumi.get(self, "cron")
+
+    @cron.setter
+    def cron(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cron", value)
+
+    @property
+    @pulumi.getter(name="cronTimezone")
+    def cron_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The timezone.
+        """
+        return pulumi.get(self, "cron_timezone")
+
+    @cron_timezone.setter
+    def cron_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cron_timezone", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the pipeline schedule.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name or id of the project to add the schedule to.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        The branch/tag name to be triggered.
+        """
+        return pulumi.get(self, "ref")
+
+    @ref.setter
+    def ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ref", value)
 
 
 class PipelineSchedule(pulumi.CustomResource):
@@ -218,22 +322,22 @@ class PipelineSchedule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = PipelineScheduleArgs.__new__(PipelineScheduleArgs)
 
-            __props__['active'] = active
+            __props__.__dict__["active"] = active
             if cron is None and not opts.urn:
                 raise TypeError("Missing required property 'cron'")
-            __props__['cron'] = cron
-            __props__['cron_timezone'] = cron_timezone
+            __props__.__dict__["cron"] = cron
+            __props__.__dict__["cron_timezone"] = cron_timezone
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
             if ref is None and not opts.urn:
                 raise TypeError("Missing required property 'ref'")
-            __props__['ref'] = ref
+            __props__.__dict__["ref"] = ref
         super(PipelineSchedule, __self__).__init__(
             'gitlab:index/pipelineSchedule:PipelineSchedule',
             resource_name,
@@ -266,14 +370,14 @@ class PipelineSchedule(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _PipelineScheduleState.__new__(_PipelineScheduleState)
 
-        __props__["active"] = active
-        __props__["cron"] = cron
-        __props__["cron_timezone"] = cron_timezone
-        __props__["description"] = description
-        __props__["project"] = project
-        __props__["ref"] = ref
+        __props__.__dict__["active"] = active
+        __props__.__dict__["cron"] = cron
+        __props__.__dict__["cron_timezone"] = cron_timezone
+        __props__.__dict__["description"] = description
+        __props__.__dict__["project"] = project
+        __props__.__dict__["ref"] = ref
         return PipelineSchedule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -323,10 +427,4 @@ class PipelineSchedule(pulumi.CustomResource):
         The branch/tag name to be triggered.
         """
         return pulumi.get(self, "ref")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

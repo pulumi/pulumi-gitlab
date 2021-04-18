@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 
 __all__ = [
@@ -24,6 +24,43 @@ __all__ = [
 
 @pulumi.output_type
 class ProjectPushRules(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorEmailRegex":
+            suggest = "author_email_regex"
+        elif key == "branchNameRegex":
+            suggest = "branch_name_regex"
+        elif key == "commitCommitterCheck":
+            suggest = "commit_committer_check"
+        elif key == "commitMessageNegativeRegex":
+            suggest = "commit_message_negative_regex"
+        elif key == "commitMessageRegex":
+            suggest = "commit_message_regex"
+        elif key == "denyDeleteTag":
+            suggest = "deny_delete_tag"
+        elif key == "fileNameRegex":
+            suggest = "file_name_regex"
+        elif key == "maxFileSize":
+            suggest = "max_file_size"
+        elif key == "memberCheck":
+            suggest = "member_check"
+        elif key == "preventSecrets":
+            suggest = "prevent_secrets"
+        elif key == "rejectUnsignedCommits":
+            suggest = "reject_unsigned_commits"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProjectPushRules. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProjectPushRules.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProjectPushRules.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  author_email_regex: Optional[str] = None,
                  branch_name_regex: Optional[str] = None,
@@ -159,9 +196,6 @@ class ProjectPushRules(dict):
         Reject commit when it’s not signed through GPG.
         """
         return pulumi.get(self, "reject_unsigned_commits")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

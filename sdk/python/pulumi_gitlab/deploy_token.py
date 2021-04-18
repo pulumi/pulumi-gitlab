@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['DeployTokenArgs', 'DeployToken']
 
@@ -103,6 +103,130 @@ class DeployTokenArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class _DeployTokenState:
+    def __init__(__self__, *,
+                 expires_at: Optional[pulumi.Input[str]] = None,
+                 group: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering DeployToken resources.
+        :param pulumi.Input[str] expires_at: Time the token will expire it, RFC3339 format. Will not expire per default.
+        :param pulumi.Input[str] group: The name or id of the group to add the deploy token to.
+               Either `project` or `group` must be set.
+        :param pulumi.Input[str] name: A name to describe the deploy token with.
+        :param pulumi.Input[str] project: The name or id of the project to add the deploy token to.
+               Either `project` or `group` must be set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Valid values: `read_repository`, `read_registry`.
+        :param pulumi.Input[str] token: The secret token. This is only populated when creating a new deploy token.
+        :param pulumi.Input[str] username: A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
+        """
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time the token will expire it, RFC3339 format. Will not expire per default.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires_at", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name or id of the group to add the deploy token to.
+        Either `project` or `group` must be set.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A name to describe the deploy token with.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name or id of the project to add the deploy token to.
+        Either `project` or `group` must be set.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Valid values: `read_repository`, `read_registry`.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "scopes", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The secret token. This is only populated when creating a new deploy token.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token", value)
 
     @property
     @pulumi.getter
@@ -251,17 +375,17 @@ class DeployToken(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DeployTokenArgs.__new__(DeployTokenArgs)
 
-            __props__['expires_at'] = expires_at
-            __props__['group'] = group
-            __props__['name'] = name
-            __props__['project'] = project
+            __props__.__dict__["expires_at"] = expires_at
+            __props__.__dict__["group"] = group
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
             if scopes is None and not opts.urn:
                 raise TypeError("Missing required property 'scopes'")
-            __props__['scopes'] = scopes
-            __props__['username'] = username
-            __props__['token'] = None
+            __props__.__dict__["scopes"] = scopes
+            __props__.__dict__["username"] = username
+            __props__.__dict__["token"] = None
         super(DeployToken, __self__).__init__(
             'gitlab:index/deployToken:DeployToken',
             resource_name,
@@ -298,15 +422,15 @@ class DeployToken(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DeployTokenState.__new__(_DeployTokenState)
 
-        __props__["expires_at"] = expires_at
-        __props__["group"] = group
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["scopes"] = scopes
-        __props__["token"] = token
-        __props__["username"] = username
+        __props__.__dict__["expires_at"] = expires_at
+        __props__.__dict__["group"] = group
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["scopes"] = scopes
+        __props__.__dict__["token"] = token
+        __props__.__dict__["username"] = username
         return DeployToken(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -366,10 +490,4 @@ class DeployToken(pulumi.CustomResource):
         A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
         """
         return pulumi.get(self, "username")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

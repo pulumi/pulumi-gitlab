@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ProjectShareGroupArgs', 'ProjectShareGroup']
 
@@ -60,6 +60,62 @@ class ProjectShareGroupArgs:
 
     @project_id.setter
     def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+
+@pulumi.input_type
+class _ProjectShareGroupState:
+    def __init__(__self__, *,
+                 access_level: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[int]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ProjectShareGroup resources.
+        :param pulumi.Input[str] access_level: One of five levels of access to the project.
+        :param pulumi.Input[int] group_id: The id of the group.
+        :param pulumi.Input[str] project_id: The id of the project.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        One of five levels of access to the project.
+        """
+        return pulumi.get(self, "access_level")
+
+    @access_level.setter
+    def access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The id of the group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the project.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id", value)
 
 
@@ -172,17 +228,17 @@ class ProjectShareGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProjectShareGroupArgs.__new__(ProjectShareGroupArgs)
 
             if access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'access_level'")
-            __props__['access_level'] = access_level
+            __props__.__dict__["access_level"] = access_level
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
-            __props__['group_id'] = group_id
+            __props__.__dict__["group_id"] = group_id
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
-            __props__['project_id'] = project_id
+            __props__.__dict__["project_id"] = project_id
         super(ProjectShareGroup, __self__).__init__(
             'gitlab:index/projectShareGroup:ProjectShareGroup',
             resource_name,
@@ -209,11 +265,11 @@ class ProjectShareGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ProjectShareGroupState.__new__(_ProjectShareGroupState)
 
-        __props__["access_level"] = access_level
-        __props__["group_id"] = group_id
-        __props__["project_id"] = project_id
+        __props__.__dict__["access_level"] = access_level
+        __props__.__dict__["group_id"] = group_id
+        __props__.__dict__["project_id"] = project_id
         return ProjectShareGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -239,10 +295,4 @@ class ProjectShareGroup(pulumi.CustomResource):
         The id of the project.
         """
         return pulumi.get(self, "project_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

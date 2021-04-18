@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ProjectApprovalRuleArgs', 'ProjectApprovalRule']
 
@@ -82,6 +82,94 @@ class ProjectApprovalRuleArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="userIds")
+    def user_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of specific User IDs to add to the list of approvers.
+        """
+        return pulumi.get(self, "user_ids")
+
+    @user_ids.setter
+    def user_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "user_ids", value)
+
+
+@pulumi.input_type
+class _ProjectApprovalRuleState:
+    def __init__(__self__, *,
+                 approvals_required: Optional[pulumi.Input[int]] = None,
+                 group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
+        """
+        Input properties used for looking up and filtering ProjectApprovalRule resources.
+        :param pulumi.Input[int] approvals_required: The number of approvals required for this rule.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] group_ids: A list of group IDs who's members can approve of the merge request
+        :param pulumi.Input[str] name: The name of the approval rule.
+        :param pulumi.Input[str] project: The name or id of the project to add the approval rules.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] user_ids: A list of specific User IDs to add to the list of approvers.
+        """
+        if approvals_required is not None:
+            pulumi.set(__self__, "approvals_required", approvals_required)
+        if group_ids is not None:
+            pulumi.set(__self__, "group_ids", group_ids)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if user_ids is not None:
+            pulumi.set(__self__, "user_ids", user_ids)
+
+    @property
+    @pulumi.getter(name="approvalsRequired")
+    def approvals_required(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of approvals required for this rule.
+        """
+        return pulumi.get(self, "approvals_required")
+
+    @approvals_required.setter
+    def approvals_required(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "approvals_required", value)
+
+    @property
+    @pulumi.getter(name="groupIds")
+    def group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of group IDs who's members can approve of the merge request
+        """
+        return pulumi.get(self, "group_ids")
+
+    @group_ids.setter
+    def group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "group_ids", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the approval rule.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name or id of the project to add the approval rules.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="userIds")
@@ -237,17 +325,17 @@ class ProjectApprovalRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProjectApprovalRuleArgs.__new__(ProjectApprovalRuleArgs)
 
             if approvals_required is None and not opts.urn:
                 raise TypeError("Missing required property 'approvals_required'")
-            __props__['approvals_required'] = approvals_required
-            __props__['group_ids'] = group_ids
-            __props__['name'] = name
+            __props__.__dict__["approvals_required"] = approvals_required
+            __props__.__dict__["group_ids"] = group_ids
+            __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
-            __props__['user_ids'] = user_ids
+            __props__.__dict__["project"] = project
+            __props__.__dict__["user_ids"] = user_ids
         super(ProjectApprovalRule, __self__).__init__(
             'gitlab:index/projectApprovalRule:ProjectApprovalRule',
             resource_name,
@@ -278,13 +366,13 @@ class ProjectApprovalRule(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ProjectApprovalRuleState.__new__(_ProjectApprovalRuleState)
 
-        __props__["approvals_required"] = approvals_required
-        __props__["group_ids"] = group_ids
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["user_ids"] = user_ids
+        __props__.__dict__["approvals_required"] = approvals_required
+        __props__.__dict__["group_ids"] = group_ids
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["user_ids"] = user_ids
         return ProjectApprovalRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -326,10 +414,4 @@ class ProjectApprovalRule(pulumi.CustomResource):
         A list of specific User IDs to add to the list of approvers.
         """
         return pulumi.get(self, "user_ids")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

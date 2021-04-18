@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -596,6 +596,674 @@ class ProjectArgs:
         pulumi.set(self, "wiki_enabled", value)
 
 
+@pulumi.input_type
+class _ProjectState:
+    def __init__(__self__, *,
+                 approvals_before_merge: Optional[pulumi.Input[int]] = None,
+                 archived: Optional[pulumi.Input[bool]] = None,
+                 container_registry_enabled: Optional[pulumi.Input[bool]] = None,
+                 default_branch: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 group_with_project_templates_id: Optional[pulumi.Input[int]] = None,
+                 http_url_to_repo: Optional[pulumi.Input[str]] = None,
+                 import_url: Optional[pulumi.Input[str]] = None,
+                 initialize_with_readme: Optional[pulumi.Input[bool]] = None,
+                 issues_enabled: Optional[pulumi.Input[bool]] = None,
+                 lfs_enabled: Optional[pulumi.Input[bool]] = None,
+                 merge_method: Optional[pulumi.Input[str]] = None,
+                 merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
+                 mirror: Optional[pulumi.Input[bool]] = None,
+                 mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
+                 mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[int]] = None,
+                 only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
+                 only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[bool]] = None,
+                 only_mirror_protected_branches: Optional[pulumi.Input[bool]] = None,
+                 packages_enabled: Optional[pulumi.Input[bool]] = None,
+                 pages_access_level: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 path_with_namespace: Optional[pulumi.Input[str]] = None,
+                 pipelines_enabled: Optional[pulumi.Input[bool]] = None,
+                 push_rules: Optional[pulumi.Input['ProjectPushRulesArgs']] = None,
+                 remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
+                 request_access_enabled: Optional[pulumi.Input[bool]] = None,
+                 runners_token: Optional[pulumi.Input[str]] = None,
+                 shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
+                 snippets_enabled: Optional[pulumi.Input[bool]] = None,
+                 ssh_url_to_repo: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 template_name: Optional[pulumi.Input[str]] = None,
+                 template_project_id: Optional[pulumi.Input[int]] = None,
+                 use_custom_template: Optional[pulumi.Input[bool]] = None,
+                 visibility_level: Optional[pulumi.Input[str]] = None,
+                 web_url: Optional[pulumi.Input[str]] = None,
+                 wiki_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Input properties used for looking up and filtering Project resources.
+        :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
+        :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
+        :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
+        :param pulumi.Input[str] default_branch: The default branch for the project.
+        :param pulumi.Input[str] description: A description of the project.
+        :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        :param pulumi.Input[str] http_url_to_repo: URL that can be provided to `git clone` to clone the
+               repository via HTTP.
+        :param pulumi.Input[str] import_url: Git URL to a repository to be imported.
+        :param pulumi.Input[bool] initialize_with_readme: Create master branch with first commit containing a README.md file.
+        :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
+        :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
+        :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
+               Valid values are `merge`, `rebase_merge`, `ff`
+               Repositories are created with `merge` by default
+        :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
+        :param pulumi.Input[bool] mirror: Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
+               consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+        :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Pull mirror overwrites diverged branches.
+        :param pulumi.Input[bool] mirror_trigger_builds: Pull mirroring triggers builds. Default is `false`.
+        :param pulumi.Input[str] name: The name of the project.
+        :param pulumi.Input[int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
+               See `Group` for an example.
+        :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
+        :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
+        :param pulumi.Input[bool] only_mirror_protected_branches: Only mirror protected branches.
+        :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
+        :param pulumi.Input[str] pages_access_level: Enable pages access control
+               Valid values are `disabled`, `private`, `enabled`, `public`.
+               `private` is the default.
+        :param pulumi.Input[str] path: The path of the repository.
+        :param pulumi.Input[str] path_with_namespace: The path of the repository with namespace.
+        :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
+        :param pulumi.Input['ProjectPushRulesArgs'] push_rules: Push rules for the project (documented below).
+        :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
+        :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
+        :param pulumi.Input[str] runners_token: Registration token to use during runner setup.
+        :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
+        :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
+        :param pulumi.Input[str] ssh_url_to_repo: URL that can be provided to `git clone` to clone the
+               repository via SSH.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags (topics) of the project.
+        :param pulumi.Input[str] template_name: When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        :param pulumi.Input[int] template_project_id: When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        :param pulumi.Input[str] visibility_level: Set to `public` to create a public project.
+               Valid values are `private`, `internal`, `public`.
+               Repositories are created as private by default.
+        :param pulumi.Input[str] web_url: URL that can be used to find the project in a browser.
+        :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
+        """
+        if approvals_before_merge is not None:
+            pulumi.set(__self__, "approvals_before_merge", approvals_before_merge)
+        if archived is not None:
+            pulumi.set(__self__, "archived", archived)
+        if container_registry_enabled is not None:
+            pulumi.set(__self__, "container_registry_enabled", container_registry_enabled)
+        if default_branch is not None:
+            pulumi.set(__self__, "default_branch", default_branch)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if group_with_project_templates_id is not None:
+            pulumi.set(__self__, "group_with_project_templates_id", group_with_project_templates_id)
+        if http_url_to_repo is not None:
+            pulumi.set(__self__, "http_url_to_repo", http_url_to_repo)
+        if import_url is not None:
+            pulumi.set(__self__, "import_url", import_url)
+        if initialize_with_readme is not None:
+            pulumi.set(__self__, "initialize_with_readme", initialize_with_readme)
+        if issues_enabled is not None:
+            pulumi.set(__self__, "issues_enabled", issues_enabled)
+        if lfs_enabled is not None:
+            pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        if merge_method is not None:
+            pulumi.set(__self__, "merge_method", merge_method)
+        if merge_requests_enabled is not None:
+            pulumi.set(__self__, "merge_requests_enabled", merge_requests_enabled)
+        if mirror is not None:
+            pulumi.set(__self__, "mirror", mirror)
+        if mirror_overwrites_diverged_branches is not None:
+            pulumi.set(__self__, "mirror_overwrites_diverged_branches", mirror_overwrites_diverged_branches)
+        if mirror_trigger_builds is not None:
+            pulumi.set(__self__, "mirror_trigger_builds", mirror_trigger_builds)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace_id is not None:
+            pulumi.set(__self__, "namespace_id", namespace_id)
+        if only_allow_merge_if_all_discussions_are_resolved is not None:
+            pulumi.set(__self__, "only_allow_merge_if_all_discussions_are_resolved", only_allow_merge_if_all_discussions_are_resolved)
+        if only_allow_merge_if_pipeline_succeeds is not None:
+            pulumi.set(__self__, "only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
+        if only_mirror_protected_branches is not None:
+            pulumi.set(__self__, "only_mirror_protected_branches", only_mirror_protected_branches)
+        if packages_enabled is not None:
+            pulumi.set(__self__, "packages_enabled", packages_enabled)
+        if pages_access_level is not None:
+            pulumi.set(__self__, "pages_access_level", pages_access_level)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if path_with_namespace is not None:
+            pulumi.set(__self__, "path_with_namespace", path_with_namespace)
+        if pipelines_enabled is not None:
+            pulumi.set(__self__, "pipelines_enabled", pipelines_enabled)
+        if push_rules is not None:
+            pulumi.set(__self__, "push_rules", push_rules)
+        if remove_source_branch_after_merge is not None:
+            pulumi.set(__self__, "remove_source_branch_after_merge", remove_source_branch_after_merge)
+        if request_access_enabled is not None:
+            pulumi.set(__self__, "request_access_enabled", request_access_enabled)
+        if runners_token is not None:
+            pulumi.set(__self__, "runners_token", runners_token)
+        if shared_runners_enabled is not None:
+            pulumi.set(__self__, "shared_runners_enabled", shared_runners_enabled)
+        if snippets_enabled is not None:
+            pulumi.set(__self__, "snippets_enabled", snippets_enabled)
+        if ssh_url_to_repo is not None:
+            pulumi.set(__self__, "ssh_url_to_repo", ssh_url_to_repo)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if template_name is not None:
+            pulumi.set(__self__, "template_name", template_name)
+        if template_project_id is not None:
+            pulumi.set(__self__, "template_project_id", template_project_id)
+        if use_custom_template is not None:
+            pulumi.set(__self__, "use_custom_template", use_custom_template)
+        if visibility_level is not None:
+            pulumi.set(__self__, "visibility_level", visibility_level)
+        if web_url is not None:
+            pulumi.set(__self__, "web_url", web_url)
+        if wiki_enabled is not None:
+            pulumi.set(__self__, "wiki_enabled", wiki_enabled)
+
+    @property
+    @pulumi.getter(name="approvalsBeforeMerge")
+    def approvals_before_merge(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of merge request approvals required for merging. Default is 0.
+        """
+        return pulumi.get(self, "approvals_before_merge")
+
+    @approvals_before_merge.setter
+    def approvals_before_merge(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "approvals_before_merge", value)
+
+    @property
+    @pulumi.getter
+    def archived(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
+        """
+        return pulumi.get(self, "archived")
+
+    @archived.setter
+    def archived(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "archived", value)
+
+    @property
+    @pulumi.getter(name="containerRegistryEnabled")
+    def container_registry_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable container registry for the project.
+        """
+        return pulumi.get(self, "container_registry_enabled")
+
+    @container_registry_enabled.setter
+    def container_registry_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "container_registry_enabled", value)
+
+    @property
+    @pulumi.getter(name="defaultBranch")
+    def default_branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default branch for the project.
+        """
+        return pulumi.get(self, "default_branch")
+
+    @default_branch.setter
+    def default_branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_branch", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the project.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="groupWithProjectTemplatesId")
+    def group_with_project_templates_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        """
+        return pulumi.get(self, "group_with_project_templates_id")
+
+    @group_with_project_templates_id.setter
+    def group_with_project_templates_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "group_with_project_templates_id", value)
+
+    @property
+    @pulumi.getter(name="httpUrlToRepo")
+    def http_url_to_repo(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL that can be provided to `git clone` to clone the
+        repository via HTTP.
+        """
+        return pulumi.get(self, "http_url_to_repo")
+
+    @http_url_to_repo.setter
+    def http_url_to_repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_url_to_repo", value)
+
+    @property
+    @pulumi.getter(name="importUrl")
+    def import_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Git URL to a repository to be imported.
+        """
+        return pulumi.get(self, "import_url")
+
+    @import_url.setter
+    def import_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "import_url", value)
+
+    @property
+    @pulumi.getter(name="initializeWithReadme")
+    def initialize_with_readme(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Create master branch with first commit containing a README.md file.
+        """
+        return pulumi.get(self, "initialize_with_readme")
+
+    @initialize_with_readme.setter
+    def initialize_with_readme(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "initialize_with_readme", value)
+
+    @property
+    @pulumi.getter(name="issuesEnabled")
+    def issues_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable issue tracking for the project.
+        """
+        return pulumi.get(self, "issues_enabled")
+
+    @issues_enabled.setter
+    def issues_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "issues_enabled", value)
+
+    @property
+    @pulumi.getter(name="lfsEnabled")
+    def lfs_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable LFS for the project.
+        """
+        return pulumi.get(self, "lfs_enabled")
+
+    @lfs_enabled.setter
+    def lfs_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "lfs_enabled", value)
+
+    @property
+    @pulumi.getter(name="mergeMethod")
+    def merge_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set to `ff` to create fast-forward merges
+        Valid values are `merge`, `rebase_merge`, `ff`
+        Repositories are created with `merge` by default
+        """
+        return pulumi.get(self, "merge_method")
+
+    @merge_method.setter
+    def merge_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "merge_method", value)
+
+    @property
+    @pulumi.getter(name="mergeRequestsEnabled")
+    def merge_requests_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable merge requests for the project.
+        """
+        return pulumi.get(self, "merge_requests_enabled")
+
+    @merge_requests_enabled.setter
+    def merge_requests_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "merge_requests_enabled", value)
+
+    @property
+    @pulumi.getter
+    def mirror(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
+        consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+        """
+        return pulumi.get(self, "mirror")
+
+    @mirror.setter
+    def mirror(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mirror", value)
+
+    @property
+    @pulumi.getter(name="mirrorOverwritesDivergedBranches")
+    def mirror_overwrites_diverged_branches(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Pull mirror overwrites diverged branches.
+        """
+        return pulumi.get(self, "mirror_overwrites_diverged_branches")
+
+    @mirror_overwrites_diverged_branches.setter
+    def mirror_overwrites_diverged_branches(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mirror_overwrites_diverged_branches", value)
+
+    @property
+    @pulumi.getter(name="mirrorTriggerBuilds")
+    def mirror_trigger_builds(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Pull mirroring triggers builds. Default is `false`.
+        """
+        return pulumi.get(self, "mirror_trigger_builds")
+
+    @mirror_trigger_builds.setter
+    def mirror_trigger_builds(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mirror_trigger_builds", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the project.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The namespace (group or user) of the project. Defaults to your user.
+        See `Group` for an example.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @namespace_id.setter
+    def namespace_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "namespace_id", value)
+
+    @property
+    @pulumi.getter(name="onlyAllowMergeIfAllDiscussionsAreResolved")
+    def only_allow_merge_if_all_discussions_are_resolved(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true if you want allow merges only if all discussions are resolved.
+        """
+        return pulumi.get(self, "only_allow_merge_if_all_discussions_are_resolved")
+
+    @only_allow_merge_if_all_discussions_are_resolved.setter
+    def only_allow_merge_if_all_discussions_are_resolved(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "only_allow_merge_if_all_discussions_are_resolved", value)
+
+    @property
+    @pulumi.getter(name="onlyAllowMergeIfPipelineSucceeds")
+    def only_allow_merge_if_pipeline_succeeds(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true if you want allow merges only if a pipeline succeeds.
+        """
+        return pulumi.get(self, "only_allow_merge_if_pipeline_succeeds")
+
+    @only_allow_merge_if_pipeline_succeeds.setter
+    def only_allow_merge_if_pipeline_succeeds(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "only_allow_merge_if_pipeline_succeeds", value)
+
+    @property
+    @pulumi.getter(name="onlyMirrorProtectedBranches")
+    def only_mirror_protected_branches(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Only mirror protected branches.
+        """
+        return pulumi.get(self, "only_mirror_protected_branches")
+
+    @only_mirror_protected_branches.setter
+    def only_mirror_protected_branches(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "only_mirror_protected_branches", value)
+
+    @property
+    @pulumi.getter(name="packagesEnabled")
+    def packages_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable packages repository for the project.
+        """
+        return pulumi.get(self, "packages_enabled")
+
+    @packages_enabled.setter
+    def packages_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "packages_enabled", value)
+
+    @property
+    @pulumi.getter(name="pagesAccessLevel")
+    def pages_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable pages access control
+        Valid values are `disabled`, `private`, `enabled`, `public`.
+        `private` is the default.
+        """
+        return pulumi.get(self, "pages_access_level")
+
+    @pages_access_level.setter
+    def pages_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pages_access_level", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of the repository.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="pathWithNamespace")
+    def path_with_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of the repository with namespace.
+        """
+        return pulumi.get(self, "path_with_namespace")
+
+    @path_with_namespace.setter
+    def path_with_namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path_with_namespace", value)
+
+    @property
+    @pulumi.getter(name="pipelinesEnabled")
+    def pipelines_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable pipelines for the project.
+        """
+        return pulumi.get(self, "pipelines_enabled")
+
+    @pipelines_enabled.setter
+    def pipelines_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pipelines_enabled", value)
+
+    @property
+    @pulumi.getter(name="pushRules")
+    def push_rules(self) -> Optional[pulumi.Input['ProjectPushRulesArgs']]:
+        """
+        Push rules for the project (documented below).
+        """
+        return pulumi.get(self, "push_rules")
+
+    @push_rules.setter
+    def push_rules(self, value: Optional[pulumi.Input['ProjectPushRulesArgs']]):
+        pulumi.set(self, "push_rules", value)
+
+    @property
+    @pulumi.getter(name="removeSourceBranchAfterMerge")
+    def remove_source_branch_after_merge(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable `Delete source branch` option by default for all new merge requests.
+        """
+        return pulumi.get(self, "remove_source_branch_after_merge")
+
+    @remove_source_branch_after_merge.setter
+    def remove_source_branch_after_merge(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "remove_source_branch_after_merge", value)
+
+    @property
+    @pulumi.getter(name="requestAccessEnabled")
+    def request_access_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow users to request member access.
+        """
+        return pulumi.get(self, "request_access_enabled")
+
+    @request_access_enabled.setter
+    def request_access_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "request_access_enabled", value)
+
+    @property
+    @pulumi.getter(name="runnersToken")
+    def runners_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        Registration token to use during runner setup.
+        """
+        return pulumi.get(self, "runners_token")
+
+    @runners_token.setter
+    def runners_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "runners_token", value)
+
+    @property
+    @pulumi.getter(name="sharedRunnersEnabled")
+    def shared_runners_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable shared runners for this project.
+        """
+        return pulumi.get(self, "shared_runners_enabled")
+
+    @shared_runners_enabled.setter
+    def shared_runners_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "shared_runners_enabled", value)
+
+    @property
+    @pulumi.getter(name="snippetsEnabled")
+    def snippets_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable snippets for the project.
+        """
+        return pulumi.get(self, "snippets_enabled")
+
+    @snippets_enabled.setter
+    def snippets_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "snippets_enabled", value)
+
+    @property
+    @pulumi.getter(name="sshUrlToRepo")
+    def ssh_url_to_repo(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL that can be provided to `git clone` to clone the
+        repository via SSH.
+        """
+        return pulumi.get(self, "ssh_url_to_repo")
+
+    @ssh_url_to_repo.setter
+    def ssh_url_to_repo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssh_url_to_repo", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags (topics) of the project.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="templateName")
+    def template_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        """
+        return pulumi.get(self, "template_name")
+
+    @template_name.setter
+    def template_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_name", value)
+
+    @property
+    @pulumi.getter(name="templateProjectId")
+    def template_project_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        """
+        return pulumi.get(self, "template_project_id")
+
+    @template_project_id.setter
+    def template_project_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "template_project_id", value)
+
+    @property
+    @pulumi.getter(name="useCustomTemplate")
+    def use_custom_template(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        """
+        return pulumi.get(self, "use_custom_template")
+
+    @use_custom_template.setter
+    def use_custom_template(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_custom_template", value)
+
+    @property
+    @pulumi.getter(name="visibilityLevel")
+    def visibility_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set to `public` to create a public project.
+        Valid values are `private`, `internal`, `public`.
+        Repositories are created as private by default.
+        """
+        return pulumi.get(self, "visibility_level")
+
+    @visibility_level.setter
+    def visibility_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visibility_level", value)
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL that can be used to find the project in a browser.
+        """
+        return pulumi.get(self, "web_url")
+
+    @web_url.setter
+    def web_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "web_url", value)
+
+    @property
+    @pulumi.getter(name="wikiEnabled")
+    def wiki_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable wiki for the project.
+        """
+        return pulumi.get(self, "wiki_enabled")
+
+    @wiki_enabled.setter
+    def wiki_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wiki_enabled", value)
+
+
 class Project(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -763,48 +1431,48 @@ class Project(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProjectArgs.__new__(ProjectArgs)
 
-            __props__['approvals_before_merge'] = approvals_before_merge
-            __props__['archived'] = archived
-            __props__['container_registry_enabled'] = container_registry_enabled
-            __props__['default_branch'] = default_branch
-            __props__['description'] = description
-            __props__['group_with_project_templates_id'] = group_with_project_templates_id
-            __props__['import_url'] = import_url
-            __props__['initialize_with_readme'] = initialize_with_readme
-            __props__['issues_enabled'] = issues_enabled
-            __props__['lfs_enabled'] = lfs_enabled
-            __props__['merge_method'] = merge_method
-            __props__['merge_requests_enabled'] = merge_requests_enabled
-            __props__['mirror'] = mirror
-            __props__['mirror_overwrites_diverged_branches'] = mirror_overwrites_diverged_branches
-            __props__['mirror_trigger_builds'] = mirror_trigger_builds
-            __props__['name'] = name
-            __props__['namespace_id'] = namespace_id
-            __props__['only_allow_merge_if_all_discussions_are_resolved'] = only_allow_merge_if_all_discussions_are_resolved
-            __props__['only_allow_merge_if_pipeline_succeeds'] = only_allow_merge_if_pipeline_succeeds
-            __props__['only_mirror_protected_branches'] = only_mirror_protected_branches
-            __props__['packages_enabled'] = packages_enabled
-            __props__['pages_access_level'] = pages_access_level
-            __props__['path'] = path
-            __props__['pipelines_enabled'] = pipelines_enabled
-            __props__['push_rules'] = push_rules
-            __props__['remove_source_branch_after_merge'] = remove_source_branch_after_merge
-            __props__['request_access_enabled'] = request_access_enabled
-            __props__['shared_runners_enabled'] = shared_runners_enabled
-            __props__['snippets_enabled'] = snippets_enabled
-            __props__['tags'] = tags
-            __props__['template_name'] = template_name
-            __props__['template_project_id'] = template_project_id
-            __props__['use_custom_template'] = use_custom_template
-            __props__['visibility_level'] = visibility_level
-            __props__['wiki_enabled'] = wiki_enabled
-            __props__['http_url_to_repo'] = None
-            __props__['path_with_namespace'] = None
-            __props__['runners_token'] = None
-            __props__['ssh_url_to_repo'] = None
-            __props__['web_url'] = None
+            __props__.__dict__["approvals_before_merge"] = approvals_before_merge
+            __props__.__dict__["archived"] = archived
+            __props__.__dict__["container_registry_enabled"] = container_registry_enabled
+            __props__.__dict__["default_branch"] = default_branch
+            __props__.__dict__["description"] = description
+            __props__.__dict__["group_with_project_templates_id"] = group_with_project_templates_id
+            __props__.__dict__["import_url"] = import_url
+            __props__.__dict__["initialize_with_readme"] = initialize_with_readme
+            __props__.__dict__["issues_enabled"] = issues_enabled
+            __props__.__dict__["lfs_enabled"] = lfs_enabled
+            __props__.__dict__["merge_method"] = merge_method
+            __props__.__dict__["merge_requests_enabled"] = merge_requests_enabled
+            __props__.__dict__["mirror"] = mirror
+            __props__.__dict__["mirror_overwrites_diverged_branches"] = mirror_overwrites_diverged_branches
+            __props__.__dict__["mirror_trigger_builds"] = mirror_trigger_builds
+            __props__.__dict__["name"] = name
+            __props__.__dict__["namespace_id"] = namespace_id
+            __props__.__dict__["only_allow_merge_if_all_discussions_are_resolved"] = only_allow_merge_if_all_discussions_are_resolved
+            __props__.__dict__["only_allow_merge_if_pipeline_succeeds"] = only_allow_merge_if_pipeline_succeeds
+            __props__.__dict__["only_mirror_protected_branches"] = only_mirror_protected_branches
+            __props__.__dict__["packages_enabled"] = packages_enabled
+            __props__.__dict__["pages_access_level"] = pages_access_level
+            __props__.__dict__["path"] = path
+            __props__.__dict__["pipelines_enabled"] = pipelines_enabled
+            __props__.__dict__["push_rules"] = push_rules
+            __props__.__dict__["remove_source_branch_after_merge"] = remove_source_branch_after_merge
+            __props__.__dict__["request_access_enabled"] = request_access_enabled
+            __props__.__dict__["shared_runners_enabled"] = shared_runners_enabled
+            __props__.__dict__["snippets_enabled"] = snippets_enabled
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["template_name"] = template_name
+            __props__.__dict__["template_project_id"] = template_project_id
+            __props__.__dict__["use_custom_template"] = use_custom_template
+            __props__.__dict__["visibility_level"] = visibility_level
+            __props__.__dict__["wiki_enabled"] = wiki_enabled
+            __props__.__dict__["http_url_to_repo"] = None
+            __props__.__dict__["path_with_namespace"] = None
+            __props__.__dict__["runners_token"] = None
+            __props__.__dict__["ssh_url_to_repo"] = None
+            __props__.__dict__["web_url"] = None
         super(Project, __self__).__init__(
             'gitlab:index/project:Project',
             resource_name,
@@ -915,48 +1583,48 @@ class Project(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ProjectState.__new__(_ProjectState)
 
-        __props__["approvals_before_merge"] = approvals_before_merge
-        __props__["archived"] = archived
-        __props__["container_registry_enabled"] = container_registry_enabled
-        __props__["default_branch"] = default_branch
-        __props__["description"] = description
-        __props__["group_with_project_templates_id"] = group_with_project_templates_id
-        __props__["http_url_to_repo"] = http_url_to_repo
-        __props__["import_url"] = import_url
-        __props__["initialize_with_readme"] = initialize_with_readme
-        __props__["issues_enabled"] = issues_enabled
-        __props__["lfs_enabled"] = lfs_enabled
-        __props__["merge_method"] = merge_method
-        __props__["merge_requests_enabled"] = merge_requests_enabled
-        __props__["mirror"] = mirror
-        __props__["mirror_overwrites_diverged_branches"] = mirror_overwrites_diverged_branches
-        __props__["mirror_trigger_builds"] = mirror_trigger_builds
-        __props__["name"] = name
-        __props__["namespace_id"] = namespace_id
-        __props__["only_allow_merge_if_all_discussions_are_resolved"] = only_allow_merge_if_all_discussions_are_resolved
-        __props__["only_allow_merge_if_pipeline_succeeds"] = only_allow_merge_if_pipeline_succeeds
-        __props__["only_mirror_protected_branches"] = only_mirror_protected_branches
-        __props__["packages_enabled"] = packages_enabled
-        __props__["pages_access_level"] = pages_access_level
-        __props__["path"] = path
-        __props__["path_with_namespace"] = path_with_namespace
-        __props__["pipelines_enabled"] = pipelines_enabled
-        __props__["push_rules"] = push_rules
-        __props__["remove_source_branch_after_merge"] = remove_source_branch_after_merge
-        __props__["request_access_enabled"] = request_access_enabled
-        __props__["runners_token"] = runners_token
-        __props__["shared_runners_enabled"] = shared_runners_enabled
-        __props__["snippets_enabled"] = snippets_enabled
-        __props__["ssh_url_to_repo"] = ssh_url_to_repo
-        __props__["tags"] = tags
-        __props__["template_name"] = template_name
-        __props__["template_project_id"] = template_project_id
-        __props__["use_custom_template"] = use_custom_template
-        __props__["visibility_level"] = visibility_level
-        __props__["web_url"] = web_url
-        __props__["wiki_enabled"] = wiki_enabled
+        __props__.__dict__["approvals_before_merge"] = approvals_before_merge
+        __props__.__dict__["archived"] = archived
+        __props__.__dict__["container_registry_enabled"] = container_registry_enabled
+        __props__.__dict__["default_branch"] = default_branch
+        __props__.__dict__["description"] = description
+        __props__.__dict__["group_with_project_templates_id"] = group_with_project_templates_id
+        __props__.__dict__["http_url_to_repo"] = http_url_to_repo
+        __props__.__dict__["import_url"] = import_url
+        __props__.__dict__["initialize_with_readme"] = initialize_with_readme
+        __props__.__dict__["issues_enabled"] = issues_enabled
+        __props__.__dict__["lfs_enabled"] = lfs_enabled
+        __props__.__dict__["merge_method"] = merge_method
+        __props__.__dict__["merge_requests_enabled"] = merge_requests_enabled
+        __props__.__dict__["mirror"] = mirror
+        __props__.__dict__["mirror_overwrites_diverged_branches"] = mirror_overwrites_diverged_branches
+        __props__.__dict__["mirror_trigger_builds"] = mirror_trigger_builds
+        __props__.__dict__["name"] = name
+        __props__.__dict__["namespace_id"] = namespace_id
+        __props__.__dict__["only_allow_merge_if_all_discussions_are_resolved"] = only_allow_merge_if_all_discussions_are_resolved
+        __props__.__dict__["only_allow_merge_if_pipeline_succeeds"] = only_allow_merge_if_pipeline_succeeds
+        __props__.__dict__["only_mirror_protected_branches"] = only_mirror_protected_branches
+        __props__.__dict__["packages_enabled"] = packages_enabled
+        __props__.__dict__["pages_access_level"] = pages_access_level
+        __props__.__dict__["path"] = path
+        __props__.__dict__["path_with_namespace"] = path_with_namespace
+        __props__.__dict__["pipelines_enabled"] = pipelines_enabled
+        __props__.__dict__["push_rules"] = push_rules
+        __props__.__dict__["remove_source_branch_after_merge"] = remove_source_branch_after_merge
+        __props__.__dict__["request_access_enabled"] = request_access_enabled
+        __props__.__dict__["runners_token"] = runners_token
+        __props__.__dict__["shared_runners_enabled"] = shared_runners_enabled
+        __props__.__dict__["snippets_enabled"] = snippets_enabled
+        __props__.__dict__["ssh_url_to_repo"] = ssh_url_to_repo
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["template_name"] = template_name
+        __props__.__dict__["template_project_id"] = template_project_id
+        __props__.__dict__["use_custom_template"] = use_custom_template
+        __props__.__dict__["visibility_level"] = visibility_level
+        __props__.__dict__["web_url"] = web_url
+        __props__.__dict__["wiki_enabled"] = wiki_enabled
         return Project(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1288,10 +1956,4 @@ class Project(pulumi.CustomResource):
         Enable wiki for the project.
         """
         return pulumi.get(self, "wiki_enabled")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
