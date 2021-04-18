@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-gitlab/provider/v4
 
-go 1.16
+go 1.14
 
 require (
 	github.com/gitlabhq/terraform-provider-gitlab v1.3.1-0.20210308105515-620964c9a7f6
