@@ -5,8 +5,9 @@ go 1.14
 require (
 	github.com/gitlabhq/terraform-provider-gitlab v1.3.1-0.20210308105515-620964c9a7f6
 	github.com/hashicorp/terraform-plugin-sdk v1.16.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.0.0-beta.1
-	github.com/pulumi/pulumi/sdk/v3 v3.0.0-beta.2
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.0.0
+	github.com/pulumi/pulumi/pkg/v3 v3.0.0
+	github.com/pulumi/pulumi/sdk/v3 v3.0.0
 )
 
 replace (
