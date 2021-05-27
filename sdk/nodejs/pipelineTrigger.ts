@@ -101,12 +101,12 @@ export interface PipelineTriggerState {
     /**
      * The description of the pipeline trigger.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name or id of the project to add the trigger to.
      */
-    readonly project?: pulumi.Input<string>;
-    readonly token?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
 }
 
 /**
@@ -116,9 +116,9 @@ export interface PipelineTriggerArgs {
     /**
      * The description of the pipeline trigger.
      */
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * The name or id of the project to add the trigger to.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

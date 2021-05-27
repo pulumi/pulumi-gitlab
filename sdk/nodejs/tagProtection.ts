@@ -108,15 +108,15 @@ export interface TagProtectionState {
     /**
      * One of five levels of access to the project.
      */
-    readonly createAccessLevel?: pulumi.Input<string>;
+    createAccessLevel?: pulumi.Input<string>;
     /**
      * The id of the project.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Name of the tag or wildcard.
      */
-    readonly tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string>;
 }
 
 /**
@@ -126,13 +126,13 @@ export interface TagProtectionArgs {
     /**
      * One of five levels of access to the project.
      */
-    readonly createAccessLevel: pulumi.Input<string>;
+    createAccessLevel: pulumi.Input<string>;
     /**
      * The id of the project.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Name of the tag or wildcard.
      */
-    readonly tag: pulumi.Input<string>;
+    tag: pulumi.Input<string>;
 }

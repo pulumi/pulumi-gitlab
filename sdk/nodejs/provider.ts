@@ -25,6 +25,26 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * The GitLab Base API URL
+     */
+    public readonly baseUrl!: pulumi.Output<string | undefined>;
+    /**
+     * A file containing the ca certificate to use in case ssl certificate is not from a standard chain
+     */
+    public readonly cacertFile!: pulumi.Output<string | undefined>;
+    /**
+     * File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
+     */
+    public readonly clientCert!: pulumi.Output<string | undefined>;
+    /**
+     * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
+     */
+    public readonly clientKey!: pulumi.Output<string | undefined>;
+    /**
+     * The OAuth token used to connect to GitLab.
+     */
+    public readonly token!: pulumi.Output<string>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -61,25 +81,25 @@ export interface ProviderArgs {
     /**
      * The GitLab Base API URL
      */
-    readonly baseUrl?: pulumi.Input<string>;
+    baseUrl?: pulumi.Input<string>;
     /**
      * A file containing the ca certificate to use in case ssl certificate is not from a standard chain
      */
-    readonly cacertFile?: pulumi.Input<string>;
+    cacertFile?: pulumi.Input<string>;
     /**
      * File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
      */
-    readonly clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string>;
     /**
      * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
      */
-    readonly clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string>;
     /**
      * Disable SSL verification of API calls
      */
-    readonly insecure?: pulumi.Input<boolean>;
+    insecure?: pulumi.Input<boolean>;
     /**
      * The OAuth token used to connect to GitLab.
      */
-    readonly token: pulumi.Input<string>;
+    token: pulumi.Input<string>;
 }

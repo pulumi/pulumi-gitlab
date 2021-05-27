@@ -38,7 +38,7 @@ import * as utilities from "./utilities";
  * const projects = pulumi.output(gitlab.getProjects({
  *     search: "postgresql",
  *     visibility: "private",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
@@ -82,81 +82,81 @@ export interface GetProjectsArgs {
     /**
      * Limit by archived status.
      */
-    readonly archived?: boolean;
+    archived?: boolean;
     /**
      * The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
      */
-    readonly groupId?: number;
+    groupId?: number;
     /**
      * Include projects in subgroups of this group. Default is `false`. Needs `groupId`.
      */
-    readonly includeSubgroups?: boolean;
+    includeSubgroups?: boolean;
     /**
      * Prevents overloading your Gitlab instance in case of a misconfiguration. Default is `10`.
      */
-    readonly maxQueryablePages?: number;
+    maxQueryablePages?: number;
     /**
      * Limit by projects that the current user is a member of.
      */
-    readonly membership?: boolean;
+    membership?: boolean;
     /**
      * Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `groupId`.
      */
-    readonly minAccessLevel?: number;
+    minAccessLevel?: number;
     /**
      * Return projects ordered by `id`, `name`, `path`, `createdAt`, `updatedAt`, or `lastActivityAt` fields. Default is `createdAt`.
      */
-    readonly orderBy?: string;
+    orderBy?: string;
     /**
      * Limit by projects owned by the current user.
      */
-    readonly owned?: boolean;
-    readonly page?: number;
-    readonly perPage?: number;
+    owned?: boolean;
+    page?: number;
+    perPage?: number;
     /**
      * Return list of authorized projects matching the search criteria.
      */
-    readonly search?: string;
+    search?: string;
     /**
      * Return only the ID, URL, name, and path of each project.
      */
-    readonly simple?: boolean;
+    simple?: boolean;
     /**
      * Return projects sorted in `asc` or `desc` order. Default is `desc`.
      */
-    readonly sort?: string;
+    sort?: string;
     /**
      * Limit by projects starred by the current user.
      */
-    readonly starred?: boolean;
+    starred?: boolean;
     /**
      * Include project statistics. Cannot be used with `groupId`.
      */
-    readonly statistics?: boolean;
+    statistics?: boolean;
     /**
      * Limit by visibility `public`, `internal`, or `private`.
      */
-    readonly visibility?: string;
+    visibility?: string;
     /**
      * Include custom attributes in response _(admins only)_.
      */
-    readonly withCustomAttributes?: boolean;
+    withCustomAttributes?: boolean;
     /**
      * Limit by projects with issues feature enabled. Default is `false`.
      */
-    readonly withIssuesEnabled?: boolean;
+    withIssuesEnabled?: boolean;
     /**
      * Limit by projects with merge requests feature enabled. Default is `false`.
      */
-    readonly withMergeRequestsEnabled?: boolean;
+    withMergeRequestsEnabled?: boolean;
     /**
      * Limit by projects which use the given programming language. Cannot be used with `groupId`.
      */
-    readonly withProgrammingLanguage?: string;
+    withProgrammingLanguage?: string;
     /**
      * Include projects shared to this group. Default is `true`. Needs `groupId`.
      */
-    readonly withShared?: boolean;
+    withShared?: boolean;
 }
 
 /**

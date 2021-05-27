@@ -99,24 +99,24 @@ export interface ProjectLevelMrApprovalsState {
      * By default, users are able to edit the approval rules in merge requests. If set to true,
      * the approval rules for all new merge requests will be determined by the default approval rules. Default is `false`.
      */
-    readonly disableOverridingApproversPerMergeRequest?: pulumi.Input<boolean>;
+    disableOverridingApproversPerMergeRequest?: pulumi.Input<boolean>;
     /**
      * Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
      * also need to be included in the approvers list in order to be able to approve their merge request. Default is `false`.
      */
-    readonly mergeRequestsAuthorApproval?: pulumi.Input<boolean>;
+    mergeRequestsAuthorApproval?: pulumi.Input<boolean>;
     /**
      * Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
      */
-    readonly mergeRequestsDisableCommittersApproval?: pulumi.Input<boolean>;
+    mergeRequestsDisableCommittersApproval?: pulumi.Input<boolean>;
     /**
      * The ID of the project to change MR approval configuration.
      */
-    readonly projectId?: pulumi.Input<number>;
+    projectId?: pulumi.Input<number>;
     /**
      * Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      */
-    readonly resetApprovalsOnPush?: pulumi.Input<boolean>;
+    resetApprovalsOnPush?: pulumi.Input<boolean>;
 }
 
 /**
@@ -127,22 +127,22 @@ export interface ProjectLevelMrApprovalsArgs {
      * By default, users are able to edit the approval rules in merge requests. If set to true,
      * the approval rules for all new merge requests will be determined by the default approval rules. Default is `false`.
      */
-    readonly disableOverridingApproversPerMergeRequest?: pulumi.Input<boolean>;
+    disableOverridingApproversPerMergeRequest?: pulumi.Input<boolean>;
     /**
      * Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
      * also need to be included in the approvers list in order to be able to approve their merge request. Default is `false`.
      */
-    readonly mergeRequestsAuthorApproval?: pulumi.Input<boolean>;
+    mergeRequestsAuthorApproval?: pulumi.Input<boolean>;
     /**
      * Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
      */
-    readonly mergeRequestsDisableCommittersApproval?: pulumi.Input<boolean>;
+    mergeRequestsDisableCommittersApproval?: pulumi.Input<boolean>;
     /**
      * The ID of the project to change MR approval configuration.
      */
-    readonly projectId: pulumi.Input<number>;
+    projectId: pulumi.Input<number>;
     /**
      * Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      */
-    readonly resetApprovalsOnPush?: pulumi.Input<boolean>;
+    resetApprovalsOnPush?: pulumi.Input<boolean>;
 }

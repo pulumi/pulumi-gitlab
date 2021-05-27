@@ -124,19 +124,19 @@ export interface PipelineScheduleVariableState {
     /**
      * Name of the variable.
      */
-    readonly key?: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
     /**
      * The id of the pipeline schedule.
      */
-    readonly pipelineScheduleId?: pulumi.Input<number>;
+    pipelineScheduleId?: pulumi.Input<number>;
     /**
      * The id of the project to add the schedule to.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Value of the variable.
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 /**
@@ -146,17 +146,17 @@ export interface PipelineScheduleVariableArgs {
     /**
      * Name of the variable.
      */
-    readonly key: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * The id of the pipeline schedule.
      */
-    readonly pipelineScheduleId: pulumi.Input<number>;
+    pipelineScheduleId: pulumi.Input<number>;
     /**
      * The id of the project to add the schedule to.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Value of the variable.
      */
-    readonly value: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }

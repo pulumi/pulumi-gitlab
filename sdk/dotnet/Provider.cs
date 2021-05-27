@@ -19,6 +19,37 @@ namespace Pulumi.GitLab
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
+        /// The GitLab Base API URL
+        /// </summary>
+        [Output("baseUrl")]
+        public Output<string?> BaseUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// A file containing the ca certificate to use in case ssl certificate is not from a standard chain
+        /// </summary>
+        [Output("cacertFile")]
+        public Output<string?> CacertFile { get; private set; } = null!;
+
+        /// <summary>
+        /// File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
+        /// </summary>
+        [Output("clientCert")]
+        public Output<string?> ClientCert { get; private set; } = null!;
+
+        /// <summary>
+        /// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
+        /// </summary>
+        [Output("clientKey")]
+        public Output<string?> ClientKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The OAuth token used to connect to GitLab.
+        /// </summary>
+        [Output("token")]
+        public Output<string> Token { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///

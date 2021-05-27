@@ -133,24 +133,24 @@ export interface ProjectMirrorState {
     /**
      * Determines if the mirror is enabled.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Determines if divergent refs are skipped.
      */
-    readonly keepDivergentRefs?: pulumi.Input<boolean>;
-    readonly mirrorId?: pulumi.Input<number>;
+    keepDivergentRefs?: pulumi.Input<boolean>;
+    mirrorId?: pulumi.Input<number>;
     /**
      * Determines if only protected branches are mirrored.
      */
-    readonly onlyProtectedBranches?: pulumi.Input<boolean>;
+    onlyProtectedBranches?: pulumi.Input<boolean>;
     /**
      * The id of the project.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The URL of the remote repository to be mirrored.
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
 }
 
 /**
@@ -160,21 +160,21 @@ export interface ProjectMirrorArgs {
     /**
      * Determines if the mirror is enabled.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Determines if divergent refs are skipped.
      */
-    readonly keepDivergentRefs?: pulumi.Input<boolean>;
+    keepDivergentRefs?: pulumi.Input<boolean>;
     /**
      * Determines if only protected branches are mirrored.
      */
-    readonly onlyProtectedBranches?: pulumi.Input<boolean>;
+    onlyProtectedBranches?: pulumi.Input<boolean>;
     /**
      * The id of the project.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The URL of the remote repository to be mirrored.
      */
-    readonly url: pulumi.Input<string>;
+    url: pulumi.Input<string>;
 }

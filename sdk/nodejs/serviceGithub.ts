@@ -102,23 +102,23 @@ export class ServiceGithub extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServiceGithub resources.
  */
 export interface ServiceGithubState {
-    readonly active?: pulumi.Input<boolean>;
-    readonly createdAt?: pulumi.Input<string>;
+    active?: pulumi.Input<boolean>;
+    createdAt?: pulumi.Input<string>;
     /**
      * ID of the project you want to activate integration on.
      */
-    readonly project?: pulumi.Input<string>;
-    readonly repositoryUrl?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    repositoryUrl?: pulumi.Input<string>;
     /**
      * Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub. See [Static / dynamic status check names] to learn more.
      */
-    readonly staticContext?: pulumi.Input<boolean>;
-    readonly title?: pulumi.Input<string>;
+    staticContext?: pulumi.Input<boolean>;
+    title?: pulumi.Input<string>;
     /**
      * A GitHub personal access token with at least `repo:status` scope.
      */
-    readonly token?: pulumi.Input<string>;
-    readonly updatedAt?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 /**
@@ -128,14 +128,14 @@ export interface ServiceGithubArgs {
     /**
      * ID of the project you want to activate integration on.
      */
-    readonly project: pulumi.Input<string>;
-    readonly repositoryUrl: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    repositoryUrl: pulumi.Input<string>;
     /**
      * Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub. See [Static / dynamic status check names] to learn more.
      */
-    readonly staticContext?: pulumi.Input<boolean>;
+    staticContext?: pulumi.Input<boolean>;
     /**
      * A GitHub personal access token with at least `repo:status` scope.
      */
-    readonly token: pulumi.Input<string>;
+    token: pulumi.Input<string>;
 }

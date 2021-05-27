@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *     createdBefore: "2019-01-01",
  *     orderBy: "name",
  *     sort: "desc",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
@@ -54,39 +54,39 @@ export interface GetUsersArgs {
     /**
      * Filter users that are active.
      */
-    readonly active?: boolean;
+    active?: boolean;
     /**
      * Filter users that are blocked.
      */
-    readonly blocked?: boolean;
+    blocked?: boolean;
     /**
      * Search for users created after a specific date. (Requires administrator privileges)
      */
-    readonly createdAfter?: string;
+    createdAfter?: string;
     /**
      * Search for users created before a specific date. (Requires administrator privileges)
      */
-    readonly createdBefore?: string;
+    createdBefore?: string;
     /**
      * Lookup users by external provider. (Requires administrator privileges)
      */
-    readonly externProvider?: string;
+    externProvider?: string;
     /**
      * Lookup users by external UID. (Requires administrator privileges)
      */
-    readonly externUid?: string;
+    externUid?: string;
     /**
      * Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
      */
-    readonly orderBy?: string;
+    orderBy?: string;
     /**
      * Search users by username, name or email.
      */
-    readonly search?: string;
+    search?: string;
     /**
      * Sort users' list in asc or desc order. (Requires administrator privileges)
      */
-    readonly sort?: string;
+    sort?: string;
 }
 
 /**

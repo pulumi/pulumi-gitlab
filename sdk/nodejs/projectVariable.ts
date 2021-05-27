@@ -148,31 +148,31 @@ export interface ProjectVariableState {
     /**
      * The environmentScope of the variable. Defaults to `*`.
      */
-    readonly environmentScope?: pulumi.Input<string>;
+    environmentScope?: pulumi.Input<string>;
     /**
      * The name of the variable.
      */
-    readonly key?: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
     /**
      * If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
      */
-    readonly masked?: pulumi.Input<boolean>;
+    masked?: pulumi.Input<boolean>;
     /**
      * The name or id of the project to add the hook to.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      */
-    readonly protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean>;
     /**
      * The value of the variable.
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
     /**
      * The type of a variable. Available types are: envVar (default) and file.
      */
-    readonly variableType?: pulumi.Input<string>;
+    variableType?: pulumi.Input<string>;
 }
 
 /**
@@ -182,29 +182,29 @@ export interface ProjectVariableArgs {
     /**
      * The environmentScope of the variable. Defaults to `*`.
      */
-    readonly environmentScope?: pulumi.Input<string>;
+    environmentScope?: pulumi.Input<string>;
     /**
      * The name of the variable.
      */
-    readonly key: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
      */
-    readonly masked?: pulumi.Input<boolean>;
+    masked?: pulumi.Input<boolean>;
     /**
      * The name or id of the project to add the hook to.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      */
-    readonly protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean>;
     /**
      * The value of the variable.
      */
-    readonly value: pulumi.Input<string>;
+    value: pulumi.Input<string>;
     /**
      * The type of a variable. Available types are: envVar (default) and file.
      */
-    readonly variableType?: pulumi.Input<string>;
+    variableType?: pulumi.Input<string>;
 }

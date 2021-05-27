@@ -314,173 +314,173 @@ export interface ProjectState {
     /**
      * Number of merge request approvals required for merging. Default is 0.
      */
-    readonly approvalsBeforeMerge?: pulumi.Input<number>;
+    approvalsBeforeMerge?: pulumi.Input<number>;
     /**
      * Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
      */
-    readonly archived?: pulumi.Input<boolean>;
+    archived?: pulumi.Input<boolean>;
     /**
      * Enable container registry for the project.
      */
-    readonly containerRegistryEnabled?: pulumi.Input<boolean>;
+    containerRegistryEnabled?: pulumi.Input<boolean>;
     /**
      * The default branch for the project.
      */
-    readonly defaultBranch?: pulumi.Input<string>;
+    defaultBranch?: pulumi.Input<string>;
     /**
      * A description of the project.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires useCustomTemplate to be true (enterprise edition).
      */
-    readonly groupWithProjectTemplatesId?: pulumi.Input<number>;
+    groupWithProjectTemplatesId?: pulumi.Input<number>;
     /**
      * URL that can be provided to `git clone` to clone the
      * repository via HTTP.
      */
-    readonly httpUrlToRepo?: pulumi.Input<string>;
+    httpUrlToRepo?: pulumi.Input<string>;
     /**
      * Git URL to a repository to be imported.
      */
-    readonly importUrl?: pulumi.Input<string>;
+    importUrl?: pulumi.Input<string>;
     /**
      * Create master branch with first commit containing a README.md file.
      */
-    readonly initializeWithReadme?: pulumi.Input<boolean>;
+    initializeWithReadme?: pulumi.Input<boolean>;
     /**
      * Enable issue tracking for the project.
      */
-    readonly issuesEnabled?: pulumi.Input<boolean>;
+    issuesEnabled?: pulumi.Input<boolean>;
     /**
      * Enable LFS for the project.
      */
-    readonly lfsEnabled?: pulumi.Input<boolean>;
+    lfsEnabled?: pulumi.Input<boolean>;
     /**
      * Set to `ff` to create fast-forward merges
      * Valid values are `merge`, `rebaseMerge`, `ff`
      * Repositories are created with `merge` by default
      */
-    readonly mergeMethod?: pulumi.Input<string>;
+    mergeMethod?: pulumi.Input<string>;
     /**
      * Enable merge requests for the project.
      */
-    readonly mergeRequestsEnabled?: pulumi.Input<boolean>;
+    mergeRequestsEnabled?: pulumi.Input<boolean>;
     /**
      * Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
      * consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
      */
-    readonly mirror?: pulumi.Input<boolean>;
+    mirror?: pulumi.Input<boolean>;
     /**
      * Pull mirror overwrites diverged branches.
      */
-    readonly mirrorOverwritesDivergedBranches?: pulumi.Input<boolean>;
+    mirrorOverwritesDivergedBranches?: pulumi.Input<boolean>;
     /**
      * Pull mirroring triggers builds. Default is `false`.
      */
-    readonly mirrorTriggerBuilds?: pulumi.Input<boolean>;
+    mirrorTriggerBuilds?: pulumi.Input<boolean>;
     /**
      * The name of the project.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespace (group or user) of the project. Defaults to your user.
      * See `gitlab.Group` for an example.
      */
-    readonly namespaceId?: pulumi.Input<number>;
+    namespaceId?: pulumi.Input<number>;
     /**
      * Set to true if you want allow merges only if all discussions are resolved.
      */
-    readonly onlyAllowMergeIfAllDiscussionsAreResolved?: pulumi.Input<boolean>;
+    onlyAllowMergeIfAllDiscussionsAreResolved?: pulumi.Input<boolean>;
     /**
      * Set to true if you want allow merges only if a pipeline succeeds.
      */
-    readonly onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean>;
+    onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean>;
     /**
      * Only mirror protected branches.
      */
-    readonly onlyMirrorProtectedBranches?: pulumi.Input<boolean>;
+    onlyMirrorProtectedBranches?: pulumi.Input<boolean>;
     /**
      * Enable packages repository for the project.
      */
-    readonly packagesEnabled?: pulumi.Input<boolean>;
+    packagesEnabled?: pulumi.Input<boolean>;
     /**
      * Enable pages access control
      * Valid values are `disabled`, `private`, `enabled`, `public`.
      * `private` is the default.
      */
-    readonly pagesAccessLevel?: pulumi.Input<string>;
+    pagesAccessLevel?: pulumi.Input<string>;
     /**
      * The path of the repository.
      */
-    readonly path?: pulumi.Input<string>;
+    path?: pulumi.Input<string>;
     /**
      * The path of the repository with namespace.
      */
-    readonly pathWithNamespace?: pulumi.Input<string>;
+    pathWithNamespace?: pulumi.Input<string>;
     /**
      * Enable pipelines for the project.
      */
-    readonly pipelinesEnabled?: pulumi.Input<boolean>;
+    pipelinesEnabled?: pulumi.Input<boolean>;
     /**
      * Push rules for the project (documented below).
      */
-    readonly pushRules?: pulumi.Input<inputs.ProjectPushRules>;
+    pushRules?: pulumi.Input<inputs.ProjectPushRules>;
     /**
      * Enable `Delete source branch` option by default for all new merge requests.
      */
-    readonly removeSourceBranchAfterMerge?: pulumi.Input<boolean>;
+    removeSourceBranchAfterMerge?: pulumi.Input<boolean>;
     /**
      * Allow users to request member access.
      */
-    readonly requestAccessEnabled?: pulumi.Input<boolean>;
+    requestAccessEnabled?: pulumi.Input<boolean>;
     /**
      * Registration token to use during runner setup.
      */
-    readonly runnersToken?: pulumi.Input<string>;
+    runnersToken?: pulumi.Input<string>;
     /**
      * Enable shared runners for this project.
      */
-    readonly sharedRunnersEnabled?: pulumi.Input<boolean>;
+    sharedRunnersEnabled?: pulumi.Input<boolean>;
     /**
      * Enable snippets for the project.
      */
-    readonly snippetsEnabled?: pulumi.Input<boolean>;
+    snippetsEnabled?: pulumi.Input<boolean>;
     /**
      * URL that can be provided to `git clone` to clone the
      * repository via SSH.
      */
-    readonly sshUrlToRepo?: pulumi.Input<string>;
+    sshUrlToRepo?: pulumi.Input<string>;
     /**
      * Tags (topics) of the project.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
      */
-    readonly templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string>;
     /**
      * When used with use_custom_template, project ID of a custom project template. This is preferable to using templateName since templateName may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
      */
-    readonly templateProjectId?: pulumi.Input<number>;
+    templateProjectId?: pulumi.Input<number>;
     /**
      * Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
      */
-    readonly useCustomTemplate?: pulumi.Input<boolean>;
+    useCustomTemplate?: pulumi.Input<boolean>;
     /**
      * Set to `public` to create a public project.
      * Valid values are `private`, `internal`, `public`.
      * Repositories are created as private by default.
      */
-    readonly visibilityLevel?: pulumi.Input<string>;
+    visibilityLevel?: pulumi.Input<string>;
     /**
      * URL that can be used to find the project in a browser.
      */
-    readonly webUrl?: pulumi.Input<string>;
+    webUrl?: pulumi.Input<string>;
     /**
      * Enable wiki for the project.
      */
-    readonly wikiEnabled?: pulumi.Input<boolean>;
+    wikiEnabled?: pulumi.Input<boolean>;
 }
 
 /**
@@ -490,149 +490,149 @@ export interface ProjectArgs {
     /**
      * Number of merge request approvals required for merging. Default is 0.
      */
-    readonly approvalsBeforeMerge?: pulumi.Input<number>;
+    approvalsBeforeMerge?: pulumi.Input<number>;
     /**
      * Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
      */
-    readonly archived?: pulumi.Input<boolean>;
+    archived?: pulumi.Input<boolean>;
     /**
      * Enable container registry for the project.
      */
-    readonly containerRegistryEnabled?: pulumi.Input<boolean>;
+    containerRegistryEnabled?: pulumi.Input<boolean>;
     /**
      * The default branch for the project.
      */
-    readonly defaultBranch?: pulumi.Input<string>;
+    defaultBranch?: pulumi.Input<string>;
     /**
      * A description of the project.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires useCustomTemplate to be true (enterprise edition).
      */
-    readonly groupWithProjectTemplatesId?: pulumi.Input<number>;
+    groupWithProjectTemplatesId?: pulumi.Input<number>;
     /**
      * Git URL to a repository to be imported.
      */
-    readonly importUrl?: pulumi.Input<string>;
+    importUrl?: pulumi.Input<string>;
     /**
      * Create master branch with first commit containing a README.md file.
      */
-    readonly initializeWithReadme?: pulumi.Input<boolean>;
+    initializeWithReadme?: pulumi.Input<boolean>;
     /**
      * Enable issue tracking for the project.
      */
-    readonly issuesEnabled?: pulumi.Input<boolean>;
+    issuesEnabled?: pulumi.Input<boolean>;
     /**
      * Enable LFS for the project.
      */
-    readonly lfsEnabled?: pulumi.Input<boolean>;
+    lfsEnabled?: pulumi.Input<boolean>;
     /**
      * Set to `ff` to create fast-forward merges
      * Valid values are `merge`, `rebaseMerge`, `ff`
      * Repositories are created with `merge` by default
      */
-    readonly mergeMethod?: pulumi.Input<string>;
+    mergeMethod?: pulumi.Input<string>;
     /**
      * Enable merge requests for the project.
      */
-    readonly mergeRequestsEnabled?: pulumi.Input<boolean>;
+    mergeRequestsEnabled?: pulumi.Input<boolean>;
     /**
      * Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
      * consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
      */
-    readonly mirror?: pulumi.Input<boolean>;
+    mirror?: pulumi.Input<boolean>;
     /**
      * Pull mirror overwrites diverged branches.
      */
-    readonly mirrorOverwritesDivergedBranches?: pulumi.Input<boolean>;
+    mirrorOverwritesDivergedBranches?: pulumi.Input<boolean>;
     /**
      * Pull mirroring triggers builds. Default is `false`.
      */
-    readonly mirrorTriggerBuilds?: pulumi.Input<boolean>;
+    mirrorTriggerBuilds?: pulumi.Input<boolean>;
     /**
      * The name of the project.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespace (group or user) of the project. Defaults to your user.
      * See `gitlab.Group` for an example.
      */
-    readonly namespaceId?: pulumi.Input<number>;
+    namespaceId?: pulumi.Input<number>;
     /**
      * Set to true if you want allow merges only if all discussions are resolved.
      */
-    readonly onlyAllowMergeIfAllDiscussionsAreResolved?: pulumi.Input<boolean>;
+    onlyAllowMergeIfAllDiscussionsAreResolved?: pulumi.Input<boolean>;
     /**
      * Set to true if you want allow merges only if a pipeline succeeds.
      */
-    readonly onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean>;
+    onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean>;
     /**
      * Only mirror protected branches.
      */
-    readonly onlyMirrorProtectedBranches?: pulumi.Input<boolean>;
+    onlyMirrorProtectedBranches?: pulumi.Input<boolean>;
     /**
      * Enable packages repository for the project.
      */
-    readonly packagesEnabled?: pulumi.Input<boolean>;
+    packagesEnabled?: pulumi.Input<boolean>;
     /**
      * Enable pages access control
      * Valid values are `disabled`, `private`, `enabled`, `public`.
      * `private` is the default.
      */
-    readonly pagesAccessLevel?: pulumi.Input<string>;
+    pagesAccessLevel?: pulumi.Input<string>;
     /**
      * The path of the repository.
      */
-    readonly path?: pulumi.Input<string>;
+    path?: pulumi.Input<string>;
     /**
      * Enable pipelines for the project.
      */
-    readonly pipelinesEnabled?: pulumi.Input<boolean>;
+    pipelinesEnabled?: pulumi.Input<boolean>;
     /**
      * Push rules for the project (documented below).
      */
-    readonly pushRules?: pulumi.Input<inputs.ProjectPushRules>;
+    pushRules?: pulumi.Input<inputs.ProjectPushRules>;
     /**
      * Enable `Delete source branch` option by default for all new merge requests.
      */
-    readonly removeSourceBranchAfterMerge?: pulumi.Input<boolean>;
+    removeSourceBranchAfterMerge?: pulumi.Input<boolean>;
     /**
      * Allow users to request member access.
      */
-    readonly requestAccessEnabled?: pulumi.Input<boolean>;
+    requestAccessEnabled?: pulumi.Input<boolean>;
     /**
      * Enable shared runners for this project.
      */
-    readonly sharedRunnersEnabled?: pulumi.Input<boolean>;
+    sharedRunnersEnabled?: pulumi.Input<boolean>;
     /**
      * Enable snippets for the project.
      */
-    readonly snippetsEnabled?: pulumi.Input<boolean>;
+    snippetsEnabled?: pulumi.Input<boolean>;
     /**
      * Tags (topics) of the project.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
      */
-    readonly templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string>;
     /**
      * When used with use_custom_template, project ID of a custom project template. This is preferable to using templateName since templateName may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
      */
-    readonly templateProjectId?: pulumi.Input<number>;
+    templateProjectId?: pulumi.Input<number>;
     /**
      * Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
      */
-    readonly useCustomTemplate?: pulumi.Input<boolean>;
+    useCustomTemplate?: pulumi.Input<boolean>;
     /**
      * Set to `public` to create a public project.
      * Valid values are `private`, `internal`, `public`.
      * Repositories are created as private by default.
      */
-    readonly visibilityLevel?: pulumi.Input<string>;
+    visibilityLevel?: pulumi.Input<string>;
     /**
      * Enable wiki for the project.
      */
-    readonly wikiEnabled?: pulumi.Input<boolean>;
+    wikiEnabled?: pulumi.Input<boolean>;
 }

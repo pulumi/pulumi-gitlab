@@ -193,90 +193,90 @@ export interface GroupState {
      * Boolean, defaults to false.  Default to Auto
      * DevOps pipeline for all projects within this group.
      */
-    readonly autoDevopsEnabled?: pulumi.Input<boolean>;
+    autoDevopsEnabled?: pulumi.Input<boolean>;
     /**
      * The description of the group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Boolean, defaults to false.  Disable email notifications
      */
-    readonly emailsDisabled?: pulumi.Input<boolean>;
+    emailsDisabled?: pulumi.Input<boolean>;
     /**
      * The full name of the group.
      */
-    readonly fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string>;
     /**
      * The full path of the group.
      */
-    readonly fullPath?: pulumi.Input<string>;
+    fullPath?: pulumi.Input<string>;
     /**
      * Boolean, defaults to true.  Whether to enable LFS
      * support for projects in this group.
      */
-    readonly lfsEnabled?: pulumi.Input<boolean>;
+    lfsEnabled?: pulumi.Input<boolean>;
     /**
      * Boolean, defaults to false.  Disable the capability
      * of a group from getting mentioned
      */
-    readonly mentionsDisabled?: pulumi.Input<boolean>;
+    mentionsDisabled?: pulumi.Input<boolean>;
     /**
      * The name of this group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Integer, id of the parent group (creates a nested group).
      */
-    readonly parentId?: pulumi.Input<number>;
+    parentId?: pulumi.Input<number>;
     /**
      * The path of the group.
      */
-    readonly path?: pulumi.Input<string>;
+    path?: pulumi.Input<string>;
     /**
      * , defaults to Maintainer.
      * Determine if developers can create projects
      * in the group. Can be noone (No one), maintainer (Maintainers),
      * or developer (Developers + Maintainers).
      */
-    readonly projectCreationLevel?: pulumi.Input<string>;
+    projectCreationLevel?: pulumi.Input<string>;
     /**
      * Boolean, defaults to false.  Whether to
      * enable users to request access to the group.
      */
-    readonly requestAccessEnabled?: pulumi.Input<boolean>;
+    requestAccessEnabled?: pulumi.Input<boolean>;
     /**
      * Boolean, defaults to false.
      * equire all users in this group to setup Two-factor authentication.
      */
-    readonly requireTwoFactorAuthentication?: pulumi.Input<boolean>;
+    requireTwoFactorAuthentication?: pulumi.Input<boolean>;
     /**
      * The group level registration token to use during runner setup.
      */
-    readonly runnersToken?: pulumi.Input<string>;
+    runnersToken?: pulumi.Input<string>;
     /**
      * Boolean, defaults to false.  Prevent sharing
      * a project with another group within this group.
      */
-    readonly shareWithGroupLock?: pulumi.Input<boolean>;
+    shareWithGroupLock?: pulumi.Input<boolean>;
     /**
      * , defaults to Owner.
      * Allowed to create subgroups.
      * Can be owner (Owners), or maintainer (Maintainers).
      */
-    readonly subgroupCreationLevel?: pulumi.Input<string>;
+    subgroupCreationLevel?: pulumi.Input<string>;
     /**
      * Int, defaults to 48.
      * Time before Two-factor authentication is enforced (in hours).
      */
-    readonly twoFactorGracePeriod?: pulumi.Input<number>;
+    twoFactorGracePeriod?: pulumi.Input<number>;
     /**
      * The group's visibility. Can be `private`, `internal`, or `public`.
      */
-    readonly visibilityLevel?: pulumi.Input<string>;
+    visibilityLevel?: pulumi.Input<string>;
     /**
      * Web URL of the group.
      */
-    readonly webUrl?: pulumi.Input<string>;
+    webUrl?: pulumi.Input<string>;
 }
 
 /**
@@ -287,72 +287,72 @@ export interface GroupArgs {
      * Boolean, defaults to false.  Default to Auto
      * DevOps pipeline for all projects within this group.
      */
-    readonly autoDevopsEnabled?: pulumi.Input<boolean>;
+    autoDevopsEnabled?: pulumi.Input<boolean>;
     /**
      * The description of the group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Boolean, defaults to false.  Disable email notifications
      */
-    readonly emailsDisabled?: pulumi.Input<boolean>;
+    emailsDisabled?: pulumi.Input<boolean>;
     /**
      * Boolean, defaults to true.  Whether to enable LFS
      * support for projects in this group.
      */
-    readonly lfsEnabled?: pulumi.Input<boolean>;
+    lfsEnabled?: pulumi.Input<boolean>;
     /**
      * Boolean, defaults to false.  Disable the capability
      * of a group from getting mentioned
      */
-    readonly mentionsDisabled?: pulumi.Input<boolean>;
+    mentionsDisabled?: pulumi.Input<boolean>;
     /**
      * The name of this group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Integer, id of the parent group (creates a nested group).
      */
-    readonly parentId?: pulumi.Input<number>;
+    parentId?: pulumi.Input<number>;
     /**
      * The path of the group.
      */
-    readonly path: pulumi.Input<string>;
+    path: pulumi.Input<string>;
     /**
      * , defaults to Maintainer.
      * Determine if developers can create projects
      * in the group. Can be noone (No one), maintainer (Maintainers),
      * or developer (Developers + Maintainers).
      */
-    readonly projectCreationLevel?: pulumi.Input<string>;
+    projectCreationLevel?: pulumi.Input<string>;
     /**
      * Boolean, defaults to false.  Whether to
      * enable users to request access to the group.
      */
-    readonly requestAccessEnabled?: pulumi.Input<boolean>;
+    requestAccessEnabled?: pulumi.Input<boolean>;
     /**
      * Boolean, defaults to false.
      * equire all users in this group to setup Two-factor authentication.
      */
-    readonly requireTwoFactorAuthentication?: pulumi.Input<boolean>;
+    requireTwoFactorAuthentication?: pulumi.Input<boolean>;
     /**
      * Boolean, defaults to false.  Prevent sharing
      * a project with another group within this group.
      */
-    readonly shareWithGroupLock?: pulumi.Input<boolean>;
+    shareWithGroupLock?: pulumi.Input<boolean>;
     /**
      * , defaults to Owner.
      * Allowed to create subgroups.
      * Can be owner (Owners), or maintainer (Maintainers).
      */
-    readonly subgroupCreationLevel?: pulumi.Input<string>;
+    subgroupCreationLevel?: pulumi.Input<string>;
     /**
      * Int, defaults to 48.
      * Time before Two-factor authentication is enforced (in hours).
      */
-    readonly twoFactorGracePeriod?: pulumi.Input<number>;
+    twoFactorGracePeriod?: pulumi.Input<number>;
     /**
      * The group's visibility. Can be `private`, `internal`, or `public`.
      */
-    readonly visibilityLevel?: pulumi.Input<string>;
+    visibilityLevel?: pulumi.Input<string>;
 }

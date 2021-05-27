@@ -126,23 +126,23 @@ export interface InstanceVariableState {
     /**
      * The name of the variable.
      */
-    readonly key?: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
     /**
      * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
      */
-    readonly masked?: pulumi.Input<boolean>;
+    masked?: pulumi.Input<boolean>;
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      */
-    readonly protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean>;
     /**
      * The value of the variable.
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
     /**
      * The type of a variable. Available types are: envVar (default) and file.
      */
-    readonly variableType?: pulumi.Input<string>;
+    variableType?: pulumi.Input<string>;
 }
 
 /**
@@ -152,21 +152,21 @@ export interface InstanceVariableArgs {
     /**
      * The name of the variable.
      */
-    readonly key: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
      */
-    readonly masked?: pulumi.Input<boolean>;
+    masked?: pulumi.Input<boolean>;
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      */
-    readonly protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean>;
     /**
      * The value of the variable.
      */
-    readonly value: pulumi.Input<string>;
+    value: pulumi.Input<string>;
     /**
      * The type of a variable. Available types are: envVar (default) and file.
      */
-    readonly variableType?: pulumi.Input<string>;
+    variableType?: pulumi.Input<string>;
 }

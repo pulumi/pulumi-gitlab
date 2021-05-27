@@ -123,19 +123,19 @@ export interface GroupShareGroupState {
     /**
      * Share expiration date. Format: `YYYY-MM-DD`
      */
-    readonly expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string>;
     /**
      * One of five levels of access to the group.
      */
-    readonly groupAccess?: pulumi.Input<string>;
+    groupAccess?: pulumi.Input<string>;
     /**
      * The id of the main group.
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * The id of an additional group which will be shared with the main group.
      */
-    readonly shareGroupId?: pulumi.Input<number>;
+    shareGroupId?: pulumi.Input<number>;
 }
 
 /**
@@ -145,17 +145,17 @@ export interface GroupShareGroupArgs {
     /**
      * Share expiration date. Format: `YYYY-MM-DD`
      */
-    readonly expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string>;
     /**
      * One of five levels of access to the group.
      */
-    readonly groupAccess: pulumi.Input<string>;
+    groupAccess: pulumi.Input<string>;
     /**
      * The id of the main group.
      */
-    readonly groupId: pulumi.Input<string>;
+    groupId: pulumi.Input<string>;
     /**
      * The id of an additional group which will be shared with the main group.
      */
-    readonly shareGroupId: pulumi.Input<number>;
+    shareGroupId: pulumi.Input<number>;
 }

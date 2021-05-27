@@ -178,54 +178,54 @@ export class InstanceCluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceCluster resources.
  */
 export interface InstanceClusterState {
-    readonly clusterType?: pulumi.Input<string>;
-    readonly createdAt?: pulumi.Input<string>;
+    clusterType?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * The base domain of the cluster.
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The associated environment to the cluster. Defaults to `*`.
      */
-    readonly environmentScope?: pulumi.Input<string>;
+    environmentScope?: pulumi.Input<string>;
     /**
      * The URL to access the Kubernetes API.
      */
-    readonly kubernetesApiUrl?: pulumi.Input<string>;
+    kubernetesApiUrl?: pulumi.Input<string>;
     /**
      * The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
      */
-    readonly kubernetesAuthorizationType?: pulumi.Input<string>;
+    kubernetesAuthorizationType?: pulumi.Input<string>;
     /**
      * TLS certificate (needed if API is using a self-signed TLS certificate).
      */
-    readonly kubernetesCaCert?: pulumi.Input<string>;
+    kubernetesCaCert?: pulumi.Input<string>;
     /**
      * The unique namespace related to the instance.
      */
-    readonly kubernetesNamespace?: pulumi.Input<string>;
+    kubernetesNamespace?: pulumi.Input<string>;
     /**
      * The token to authenticate against Kubernetes. This attribute cannot be read.
      */
-    readonly kubernetesToken?: pulumi.Input<string>;
+    kubernetesToken?: pulumi.Input<string>;
     /**
      * Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
      */
-    readonly managed?: pulumi.Input<boolean>;
+    managed?: pulumi.Input<boolean>;
     /**
      * The ID of the management project for the cluster.
      */
-    readonly managementProjectId?: pulumi.Input<string>;
+    managementProjectId?: pulumi.Input<string>;
     /**
      * The name of cluster.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly platformType?: pulumi.Input<string>;
-    readonly providerType?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    platformType?: pulumi.Input<string>;
+    providerType?: pulumi.Input<string>;
 }
 
 /**
@@ -235,45 +235,45 @@ export interface InstanceClusterArgs {
     /**
      * The base domain of the cluster.
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The associated environment to the cluster. Defaults to `*`.
      */
-    readonly environmentScope?: pulumi.Input<string>;
+    environmentScope?: pulumi.Input<string>;
     /**
      * The URL to access the Kubernetes API.
      */
-    readonly kubernetesApiUrl: pulumi.Input<string>;
+    kubernetesApiUrl: pulumi.Input<string>;
     /**
      * The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
      */
-    readonly kubernetesAuthorizationType?: pulumi.Input<string>;
+    kubernetesAuthorizationType?: pulumi.Input<string>;
     /**
      * TLS certificate (needed if API is using a self-signed TLS certificate).
      */
-    readonly kubernetesCaCert?: pulumi.Input<string>;
+    kubernetesCaCert?: pulumi.Input<string>;
     /**
      * The unique namespace related to the instance.
      */
-    readonly kubernetesNamespace?: pulumi.Input<string>;
+    kubernetesNamespace?: pulumi.Input<string>;
     /**
      * The token to authenticate against Kubernetes. This attribute cannot be read.
      */
-    readonly kubernetesToken: pulumi.Input<string>;
+    kubernetesToken: pulumi.Input<string>;
     /**
      * Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
      */
-    readonly managed?: pulumi.Input<boolean>;
+    managed?: pulumi.Input<boolean>;
     /**
      * The ID of the management project for the cluster.
      */
-    readonly managementProjectId?: pulumi.Input<string>;
+    managementProjectId?: pulumi.Input<string>;
     /**
      * The name of cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

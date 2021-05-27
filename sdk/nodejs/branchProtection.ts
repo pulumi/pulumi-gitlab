@@ -124,23 +124,23 @@ export interface BranchProtectionState {
     /**
      * Name of the branch.
      */
-    readonly branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string>;
     /**
      * Bool, defaults to false. Can be set to true to require code owner approval before merging.
      */
-    readonly codeOwnerApprovalRequired?: pulumi.Input<boolean>;
+    codeOwnerApprovalRequired?: pulumi.Input<boolean>;
     /**
      * One of five levels of access to the project.
      */
-    readonly mergeAccessLevel?: pulumi.Input<string>;
+    mergeAccessLevel?: pulumi.Input<string>;
     /**
      * The id of the project.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * One of five levels of access to the project.
      */
-    readonly pushAccessLevel?: pulumi.Input<string>;
+    pushAccessLevel?: pulumi.Input<string>;
 }
 
 /**
@@ -150,21 +150,21 @@ export interface BranchProtectionArgs {
     /**
      * Name of the branch.
      */
-    readonly branch: pulumi.Input<string>;
+    branch: pulumi.Input<string>;
     /**
      * Bool, defaults to false. Can be set to true to require code owner approval before merging.
      */
-    readonly codeOwnerApprovalRequired?: pulumi.Input<boolean>;
+    codeOwnerApprovalRequired?: pulumi.Input<boolean>;
     /**
      * One of five levels of access to the project.
      */
-    readonly mergeAccessLevel: pulumi.Input<string>;
+    mergeAccessLevel: pulumi.Input<string>;
     /**
      * The id of the project.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * One of five levels of access to the project.
      */
-    readonly pushAccessLevel: pulumi.Input<string>;
+    pushAccessLevel: pulumi.Input<string>;
 }
