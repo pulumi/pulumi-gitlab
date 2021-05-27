@@ -139,23 +139,23 @@ export interface ProjectApprovalRuleState {
     /**
      * The number of approvals required for this rule.
      */
-    readonly approvalsRequired?: pulumi.Input<number>;
+    approvalsRequired?: pulumi.Input<number>;
     /**
      * A list of group IDs who's members can approve of the merge request
      */
-    readonly groupIds?: pulumi.Input<pulumi.Input<number>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The name of the approval rule.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name or id of the project to add the approval rules.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A list of specific User IDs to add to the list of approvers.
      */
-    readonly userIds?: pulumi.Input<pulumi.Input<number>[]>;
+    userIds?: pulumi.Input<pulumi.Input<number>[]>;
 }
 
 /**
@@ -165,21 +165,21 @@ export interface ProjectApprovalRuleArgs {
     /**
      * The number of approvals required for this rule.
      */
-    readonly approvalsRequired: pulumi.Input<number>;
+    approvalsRequired: pulumi.Input<number>;
     /**
      * A list of group IDs who's members can approve of the merge request
      */
-    readonly groupIds?: pulumi.Input<pulumi.Input<number>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The name of the approval rule.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name or id of the project to add the approval rules.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * A list of specific User IDs to add to the list of approvers.
      */
-    readonly userIds?: pulumi.Input<pulumi.Input<number>[]>;
+    userIds?: pulumi.Input<pulumi.Input<number>[]>;
 }

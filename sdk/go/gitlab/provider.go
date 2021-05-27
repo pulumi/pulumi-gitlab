@@ -17,6 +17,17 @@ import (
 // [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 type Provider struct {
 	pulumi.ProviderResourceState
+
+	// The GitLab Base API URL
+	BaseUrl pulumi.StringPtrOutput `pulumi:"baseUrl"`
+	// A file containing the ca certificate to use in case ssl certificate is not from a standard chain
+	CacertFile pulumi.StringPtrOutput `pulumi:"cacertFile"`
+	// File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
+	ClientCert pulumi.StringPtrOutput `pulumi:"clientCert"`
+	// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
+	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
+	// The OAuth token used to connect to GitLab.
+	Token pulumi.StringOutput `pulumi:"token"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.

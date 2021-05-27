@@ -212,98 +212,98 @@ export interface ServiceSlackState {
     /**
      * Branches to send notifications for. Valid options are "all", "default", "protected", and "defaultAndProtected".
      */
-    readonly branchesToBeNotified?: pulumi.Input<string>;
+    branchesToBeNotified?: pulumi.Input<string>;
     /**
      * The name of the channel to receive confidential issue events notifications.
      */
-    readonly confidentialIssueChannel?: pulumi.Input<string>;
+    confidentialIssueChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for confidential issues events.
      */
-    readonly confidentialIssuesEvents?: pulumi.Input<boolean>;
+    confidentialIssuesEvents?: pulumi.Input<boolean>;
     /**
      * Enable notifications for confidential note events.
      */
-    readonly confidentialNoteEvents?: pulumi.Input<boolean>;
+    confidentialNoteEvents?: pulumi.Input<boolean>;
     /**
      * The name of the channel to receive issue events notifications.
      */
-    readonly issueChannel?: pulumi.Input<string>;
+    issueChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for issues events.
      */
-    readonly issuesEvents?: pulumi.Input<boolean>;
-    readonly jobEvents?: pulumi.Input<boolean>;
+    issuesEvents?: pulumi.Input<boolean>;
+    jobEvents?: pulumi.Input<boolean>;
     /**
      * The name of the channel to receive merge request events notifications.
      */
-    readonly mergeRequestChannel?: pulumi.Input<string>;
+    mergeRequestChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for merge requests events.
      */
-    readonly mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean>;
     /**
      * The name of the channel to receive note events notifications.
      */
-    readonly noteChannel?: pulumi.Input<string>;
+    noteChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for note events.
      */
-    readonly noteEvents?: pulumi.Input<boolean>;
+    noteEvents?: pulumi.Input<boolean>;
     /**
      * Send notifications for broken pipelines.
      */
-    readonly notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
+    notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
     /**
      * DEPRECATED: This parameter has been replaced with `branchesToBeNotified`.
      *
      * @deprecated use 'branches_to_be_notified' argument instead
      */
-    readonly notifyOnlyDefaultBranch?: pulumi.Input<boolean>;
+    notifyOnlyDefaultBranch?: pulumi.Input<boolean>;
     /**
      * The name of the channel to receive pipeline events notifications.
      */
-    readonly pipelineChannel?: pulumi.Input<string>;
+    pipelineChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for pipeline events.
      */
-    readonly pipelineEvents?: pulumi.Input<boolean>;
+    pipelineEvents?: pulumi.Input<boolean>;
     /**
      * ID of the project you want to activate integration on.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The name of the channel to receive push events notifications.
      */
-    readonly pushChannel?: pulumi.Input<string>;
+    pushChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for push events.
      */
-    readonly pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean>;
     /**
      * The name of the channel to receive tag push events notifications.
      */
-    readonly tagPushChannel?: pulumi.Input<string>;
+    tagPushChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for tag push events.
      */
-    readonly tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean>;
     /**
      * Username to use.
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
     /**
      * Webhook URL (ex.: https://hooks.slack.com/services/...)
      */
-    readonly webhook?: pulumi.Input<string>;
+    webhook?: pulumi.Input<string>;
     /**
      * The name of the channel to receive wiki page events notifications.
      */
-    readonly wikiPageChannel?: pulumi.Input<string>;
+    wikiPageChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for wiki page events.
      */
-    readonly wikiPageEvents?: pulumi.Input<boolean>;
+    wikiPageEvents?: pulumi.Input<boolean>;
 }
 
 /**
@@ -313,95 +313,95 @@ export interface ServiceSlackArgs {
     /**
      * Branches to send notifications for. Valid options are "all", "default", "protected", and "defaultAndProtected".
      */
-    readonly branchesToBeNotified?: pulumi.Input<string>;
+    branchesToBeNotified?: pulumi.Input<string>;
     /**
      * The name of the channel to receive confidential issue events notifications.
      */
-    readonly confidentialIssueChannel?: pulumi.Input<string>;
+    confidentialIssueChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for confidential issues events.
      */
-    readonly confidentialIssuesEvents?: pulumi.Input<boolean>;
+    confidentialIssuesEvents?: pulumi.Input<boolean>;
     /**
      * Enable notifications for confidential note events.
      */
-    readonly confidentialNoteEvents?: pulumi.Input<boolean>;
+    confidentialNoteEvents?: pulumi.Input<boolean>;
     /**
      * The name of the channel to receive issue events notifications.
      */
-    readonly issueChannel?: pulumi.Input<string>;
+    issueChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for issues events.
      */
-    readonly issuesEvents?: pulumi.Input<boolean>;
+    issuesEvents?: pulumi.Input<boolean>;
     /**
      * The name of the channel to receive merge request events notifications.
      */
-    readonly mergeRequestChannel?: pulumi.Input<string>;
+    mergeRequestChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for merge requests events.
      */
-    readonly mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean>;
     /**
      * The name of the channel to receive note events notifications.
      */
-    readonly noteChannel?: pulumi.Input<string>;
+    noteChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for note events.
      */
-    readonly noteEvents?: pulumi.Input<boolean>;
+    noteEvents?: pulumi.Input<boolean>;
     /**
      * Send notifications for broken pipelines.
      */
-    readonly notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
+    notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
     /**
      * DEPRECATED: This parameter has been replaced with `branchesToBeNotified`.
      *
      * @deprecated use 'branches_to_be_notified' argument instead
      */
-    readonly notifyOnlyDefaultBranch?: pulumi.Input<boolean>;
+    notifyOnlyDefaultBranch?: pulumi.Input<boolean>;
     /**
      * The name of the channel to receive pipeline events notifications.
      */
-    readonly pipelineChannel?: pulumi.Input<string>;
+    pipelineChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for pipeline events.
      */
-    readonly pipelineEvents?: pulumi.Input<boolean>;
+    pipelineEvents?: pulumi.Input<boolean>;
     /**
      * ID of the project you want to activate integration on.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The name of the channel to receive push events notifications.
      */
-    readonly pushChannel?: pulumi.Input<string>;
+    pushChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for push events.
      */
-    readonly pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean>;
     /**
      * The name of the channel to receive tag push events notifications.
      */
-    readonly tagPushChannel?: pulumi.Input<string>;
+    tagPushChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for tag push events.
      */
-    readonly tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean>;
     /**
      * Username to use.
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
     /**
      * Webhook URL (ex.: https://hooks.slack.com/services/...)
      */
-    readonly webhook: pulumi.Input<string>;
+    webhook: pulumi.Input<string>;
     /**
      * The name of the channel to receive wiki page events notifications.
      */
-    readonly wikiPageChannel?: pulumi.Input<string>;
+    wikiPageChannel?: pulumi.Input<string>;
     /**
      * Enable notifications for wiki page events.
      */
-    readonly wikiPageEvents?: pulumi.Input<boolean>;
+    wikiPageEvents?: pulumi.Input<boolean>;
 }

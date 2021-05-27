@@ -116,15 +116,15 @@ export interface ProjectShareGroupState {
     /**
      * One of five levels of access to the project.
      */
-    readonly accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string>;
     /**
      * The id of the group.
      */
-    readonly groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number>;
     /**
      * The id of the project.
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
 }
 
 /**
@@ -134,13 +134,13 @@ export interface ProjectShareGroupArgs {
     /**
      * One of five levels of access to the project.
      */
-    readonly accessLevel: pulumi.Input<string>;
+    accessLevel: pulumi.Input<string>;
     /**
      * The id of the group.
      */
-    readonly groupId: pulumi.Input<number>;
+    groupId: pulumi.Input<number>;
     /**
      * The id of the project.
      */
-    readonly projectId: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
 }

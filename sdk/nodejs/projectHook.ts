@@ -185,67 +185,67 @@ export interface ProjectHookState {
     /**
      * Invoke the hook for confidential issues events.
      */
-    readonly confidentialIssuesEvents?: pulumi.Input<boolean>;
+    confidentialIssuesEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for confidential notes events.
      */
-    readonly confidentialNoteEvents?: pulumi.Input<boolean>;
+    confidentialNoteEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for deployment events.
      */
-    readonly deploymentEvents?: pulumi.Input<boolean>;
+    deploymentEvents?: pulumi.Input<boolean>;
     /**
      * Enable ssl verification when invoking the hook.
      */
-    readonly enableSslVerification?: pulumi.Input<boolean>;
+    enableSslVerification?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for issues events.
      */
-    readonly issuesEvents?: pulumi.Input<boolean>;
+    issuesEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for job events.
      */
-    readonly jobEvents?: pulumi.Input<boolean>;
+    jobEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for merge requests.
      */
-    readonly mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for notes events.
      */
-    readonly noteEvents?: pulumi.Input<boolean>;
+    noteEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for pipeline events.
      */
-    readonly pipelineEvents?: pulumi.Input<boolean>;
+    pipelineEvents?: pulumi.Input<boolean>;
     /**
      * The name or id of the project to add the hook to.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Invoke the hook for push events.
      */
-    readonly pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for push events on matching branches only.
      */
-    readonly pushEventsBranchFilter?: pulumi.Input<string>;
+    pushEventsBranchFilter?: pulumi.Input<string>;
     /**
      * Invoke the hook for tag push events.
      */
-    readonly tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean>;
     /**
      * A token to present when invoking the hook.
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
     /**
      * The url of the hook to invoke.
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
     /**
      * Invoke the hook for wiki page events.
      */
-    readonly wikiPageEvents?: pulumi.Input<boolean>;
+    wikiPageEvents?: pulumi.Input<boolean>;
 }
 
 /**
@@ -255,65 +255,65 @@ export interface ProjectHookArgs {
     /**
      * Invoke the hook for confidential issues events.
      */
-    readonly confidentialIssuesEvents?: pulumi.Input<boolean>;
+    confidentialIssuesEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for confidential notes events.
      */
-    readonly confidentialNoteEvents?: pulumi.Input<boolean>;
+    confidentialNoteEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for deployment events.
      */
-    readonly deploymentEvents?: pulumi.Input<boolean>;
+    deploymentEvents?: pulumi.Input<boolean>;
     /**
      * Enable ssl verification when invoking the hook.
      */
-    readonly enableSslVerification?: pulumi.Input<boolean>;
+    enableSslVerification?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for issues events.
      */
-    readonly issuesEvents?: pulumi.Input<boolean>;
+    issuesEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for job events.
      */
-    readonly jobEvents?: pulumi.Input<boolean>;
+    jobEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for merge requests.
      */
-    readonly mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for notes events.
      */
-    readonly noteEvents?: pulumi.Input<boolean>;
+    noteEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for pipeline events.
      */
-    readonly pipelineEvents?: pulumi.Input<boolean>;
+    pipelineEvents?: pulumi.Input<boolean>;
     /**
      * The name or id of the project to add the hook to.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Invoke the hook for push events.
      */
-    readonly pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for push events on matching branches only.
      */
-    readonly pushEventsBranchFilter?: pulumi.Input<string>;
+    pushEventsBranchFilter?: pulumi.Input<string>;
     /**
      * Invoke the hook for tag push events.
      */
-    readonly tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean>;
     /**
      * A token to present when invoking the hook.
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
     /**
      * The url of the hook to invoke.
      */
-    readonly url: pulumi.Input<string>;
+    url: pulumi.Input<string>;
     /**
      * Invoke the hook for wiki page events.
      */
-    readonly wikiPageEvents?: pulumi.Input<boolean>;
+    wikiPageEvents?: pulumi.Input<boolean>;
 }

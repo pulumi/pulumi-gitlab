@@ -122,19 +122,19 @@ export interface DeployKeyState {
     /**
      * Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
      */
-    readonly canPush?: pulumi.Input<boolean>;
+    canPush?: pulumi.Input<boolean>;
     /**
      * The public ssh key body.
      */
-    readonly key?: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
     /**
      * The name or id of the project to add the deploy key to.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A title to describe the deploy key with.
      */
-    readonly title?: pulumi.Input<string>;
+    title?: pulumi.Input<string>;
 }
 
 /**
@@ -144,17 +144,17 @@ export interface DeployKeyArgs {
     /**
      * Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
      */
-    readonly canPush?: pulumi.Input<boolean>;
+    canPush?: pulumi.Input<boolean>;
     /**
      * The public ssh key body.
      */
-    readonly key: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * The name or id of the project to add the deploy key to.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * A title to describe the deploy key with.
      */
-    readonly title: pulumi.Input<string>;
+    title: pulumi.Input<string>;
 }

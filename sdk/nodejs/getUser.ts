@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const example = pulumi.output(gitlab.getUser({
  *     username: "myuser",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
@@ -44,15 +44,15 @@ export interface GetUserArgs {
     /**
      * The e-mail address of the user. (Requires administrator privileges)
      */
-    readonly email?: string;
+    email?: string;
     /**
      * The ID of the user.
      */
-    readonly userId?: number;
+    userId?: number;
     /**
      * The username of the user.
      */
-    readonly username?: string;
+    username?: string;
 }
 
 /**

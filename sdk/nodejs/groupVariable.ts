@@ -135,24 +135,24 @@ export interface GroupVariableState {
     /**
      * The name or id of the group to add the hook to.
      */
-    readonly group?: pulumi.Input<string>;
+    group?: pulumi.Input<string>;
     /**
      * The name of the variable.
      */
-    readonly key?: pulumi.Input<string>;
-    readonly masked?: pulumi.Input<boolean>;
+    key?: pulumi.Input<string>;
+    masked?: pulumi.Input<boolean>;
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      */
-    readonly protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean>;
     /**
      * The value of the variable.
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
     /**
      * The type of a variable. Available types are: envVar (default) and file.
      */
-    readonly variableType?: pulumi.Input<string>;
+    variableType?: pulumi.Input<string>;
 }
 
 /**
@@ -162,22 +162,22 @@ export interface GroupVariableArgs {
     /**
      * The name or id of the group to add the hook to.
      */
-    readonly group: pulumi.Input<string>;
+    group: pulumi.Input<string>;
     /**
      * The name of the variable.
      */
-    readonly key: pulumi.Input<string>;
-    readonly masked?: pulumi.Input<boolean>;
+    key: pulumi.Input<string>;
+    masked?: pulumi.Input<boolean>;
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      */
-    readonly protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean>;
     /**
      * The value of the variable.
      */
-    readonly value: pulumi.Input<string>;
+    value: pulumi.Input<string>;
     /**
      * The type of a variable. Available types are: envVar (default) and file.
      */
-    readonly variableType?: pulumi.Input<string>;
+    variableType?: pulumi.Input<string>;
 }

@@ -136,48 +136,48 @@ export interface UserState {
     /**
      * Boolean, defaults to false. Whether to allow the user to create groups.
      */
-    readonly canCreateGroup?: pulumi.Input<boolean>;
+    canCreateGroup?: pulumi.Input<boolean>;
     /**
      * The e-mail address of the user.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * Boolean, defaults to false.  Whether to enable administrative priviledges
      * for the user.
      */
-    readonly isAdmin?: pulumi.Input<boolean>;
+    isAdmin?: pulumi.Input<boolean>;
     /**
      * Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
      */
-    readonly isExternal?: pulumi.Input<boolean>;
+    isExternal?: pulumi.Input<boolean>;
     /**
      * The name of the user.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The note associated to the user.
      */
-    readonly note?: pulumi.Input<string>;
+    note?: pulumi.Input<string>;
     /**
      * The password of the user.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Integer, defaults to 0.  Number of projects user can create.
      */
-    readonly projectsLimit?: pulumi.Input<number>;
+    projectsLimit?: pulumi.Input<number>;
     /**
      * Boolean, defaults to false. Send user password reset link.
      */
-    readonly resetPassword?: pulumi.Input<boolean>;
+    resetPassword?: pulumi.Input<boolean>;
     /**
      * Boolean, defaults to true. Whether to skip confirmation.
      */
-    readonly skipConfirmation?: pulumi.Input<boolean>;
+    skipConfirmation?: pulumi.Input<boolean>;
     /**
      * The username of the user.
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }
 
 /**
@@ -187,46 +187,46 @@ export interface UserArgs {
     /**
      * Boolean, defaults to false. Whether to allow the user to create groups.
      */
-    readonly canCreateGroup?: pulumi.Input<boolean>;
+    canCreateGroup?: pulumi.Input<boolean>;
     /**
      * The e-mail address of the user.
      */
-    readonly email: pulumi.Input<string>;
+    email: pulumi.Input<string>;
     /**
      * Boolean, defaults to false.  Whether to enable administrative priviledges
      * for the user.
      */
-    readonly isAdmin?: pulumi.Input<boolean>;
+    isAdmin?: pulumi.Input<boolean>;
     /**
      * Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
      */
-    readonly isExternal?: pulumi.Input<boolean>;
+    isExternal?: pulumi.Input<boolean>;
     /**
      * The name of the user.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The note associated to the user.
      */
-    readonly note?: pulumi.Input<string>;
+    note?: pulumi.Input<string>;
     /**
      * The password of the user.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Integer, defaults to 0.  Number of projects user can create.
      */
-    readonly projectsLimit?: pulumi.Input<number>;
+    projectsLimit?: pulumi.Input<number>;
     /**
      * Boolean, defaults to false. Send user password reset link.
      */
-    readonly resetPassword?: pulumi.Input<boolean>;
+    resetPassword?: pulumi.Input<boolean>;
     /**
      * Boolean, defaults to true. Whether to skip confirmation.
      */
-    readonly skipConfirmation?: pulumi.Input<boolean>;
+    skipConfirmation?: pulumi.Input<boolean>;
     /**
      * The username of the user.
      */
-    readonly username: pulumi.Input<string>;
+    username: pulumi.Input<string>;
 }

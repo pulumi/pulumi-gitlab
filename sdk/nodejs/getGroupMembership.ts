@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *
  * const example = pulumi.output(gitlab.getGroupMembership({
  *     groupId: 123,
- * }, { async: true }));
+ * }));
  * ```
  *
  * **By group's full path**
@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  *
  * const example = pulumi.output(gitlab.getGroupMembership({
  *     fullPath: "foo/bar",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getGroupMembership(args?: GetGroupMembershipArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupMembershipResult> {
@@ -57,15 +57,15 @@ export interface GetGroupMembershipArgs {
     /**
      * Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
      */
-    readonly accessLevel?: string;
+    accessLevel?: string;
     /**
      * The full path of the group.
      */
-    readonly fullPath?: string;
+    fullPath?: string;
     /**
      * The ID of the group.
      */
-    readonly groupId?: number;
+    groupId?: number;
 }
 
 /**

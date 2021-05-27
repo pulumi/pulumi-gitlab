@@ -121,19 +121,19 @@ export interface GroupLabelState {
     /**
      * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
      */
-    readonly color?: pulumi.Input<string>;
+    color?: pulumi.Input<string>;
     /**
      * The description of the label.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name or id of the group to add the label to.
      */
-    readonly group?: pulumi.Input<string>;
+    group?: pulumi.Input<string>;
     /**
      * The name of the label.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -143,17 +143,17 @@ export interface GroupLabelArgs {
     /**
      * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
      */
-    readonly color: pulumi.Input<string>;
+    color: pulumi.Input<string>;
     /**
      * The description of the label.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name or id of the group to add the label to.
      */
-    readonly group: pulumi.Input<string>;
+    group: pulumi.Input<string>;
     /**
      * The name of the label.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

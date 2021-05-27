@@ -123,19 +123,19 @@ export interface GroupMembershipState {
     /**
      * Acceptable values are: guest, reporter, developer, maintainer, owner.
      */
-    readonly accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string>;
     /**
      * Expiration date for the group membership. Format: `YYYY-MM-DD`
      */
-    readonly expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string>;
     /**
      * The id of the group.
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * The id of the user.
      */
-    readonly userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number>;
 }
 
 /**
@@ -145,17 +145,17 @@ export interface GroupMembershipArgs {
     /**
      * Acceptable values are: guest, reporter, developer, maintainer, owner.
      */
-    readonly accessLevel: pulumi.Input<string>;
+    accessLevel: pulumi.Input<string>;
     /**
      * Expiration date for the group membership. Format: `YYYY-MM-DD`
      */
-    readonly expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string>;
     /**
      * The id of the group.
      */
-    readonly groupId: pulumi.Input<string>;
+    groupId: pulumi.Input<string>;
     /**
      * The id of the user.
      */
-    readonly userId: pulumi.Input<number>;
+    userId: pulumi.Input<number>;
 }

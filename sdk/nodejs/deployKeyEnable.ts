@@ -125,32 +125,32 @@ export class DeployKeyEnable extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DeployKeyEnable resources.
  */
 export interface DeployKeyEnableState {
-    readonly canPush?: pulumi.Input<boolean>;
-    readonly key?: pulumi.Input<string>;
+    canPush?: pulumi.Input<boolean>;
+    key?: pulumi.Input<string>;
     /**
      * The Gitlab key id for the pre-existing deploy key
      */
-    readonly keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string>;
     /**
      * The name or id of the project to add the deploy key to.
      */
-    readonly project?: pulumi.Input<string>;
-    readonly title?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
+    title?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a DeployKeyEnable resource.
  */
 export interface DeployKeyEnableArgs {
-    readonly canPush?: pulumi.Input<boolean>;
-    readonly key?: pulumi.Input<string>;
+    canPush?: pulumi.Input<boolean>;
+    key?: pulumi.Input<string>;
     /**
      * The Gitlab key id for the pre-existing deploy key
      */
-    readonly keyId: pulumi.Input<string>;
+    keyId: pulumi.Input<string>;
     /**
      * The name or id of the project to add the deploy key to.
      */
-    readonly project: pulumi.Input<string>;
-    readonly title?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    title?: pulumi.Input<string>;
 }

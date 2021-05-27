@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(gitlab.getGroup({
  *     groupId: 123,
- * }, { async: true }));
+ * }));
  * ```
  *
  * **By group's full path**
@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(gitlab.getGroup({
  *     fullPath: "foo/bar",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
@@ -56,11 +56,11 @@ export interface GetGroupArgs {
     /**
      * The full path of the group.
      */
-    readonly fullPath?: string;
+    fullPath?: string;
     /**
      * The ID of the group.
      */
-    readonly groupId?: number;
+    groupId?: number;
 }
 
 /**

@@ -132,27 +132,27 @@ export interface PipelineScheduleState {
     /**
      * The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
      */
-    readonly active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean>;
     /**
      * The cron (e.g. `0 1 * * *`).
      */
-    readonly cron?: pulumi.Input<string>;
+    cron?: pulumi.Input<string>;
     /**
      * The timezone.
      */
-    readonly cronTimezone?: pulumi.Input<string>;
+    cronTimezone?: pulumi.Input<string>;
     /**
      * The description of the pipeline schedule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name or id of the project to add the schedule to.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The branch/tag name to be triggered.
      */
-    readonly ref?: pulumi.Input<string>;
+    ref?: pulumi.Input<string>;
 }
 
 /**
@@ -162,25 +162,25 @@ export interface PipelineScheduleArgs {
     /**
      * The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
      */
-    readonly active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean>;
     /**
      * The cron (e.g. `0 1 * * *`).
      */
-    readonly cron: pulumi.Input<string>;
+    cron: pulumi.Input<string>;
     /**
      * The timezone.
      */
-    readonly cronTimezone?: pulumi.Input<string>;
+    cronTimezone?: pulumi.Input<string>;
     /**
      * The description of the pipeline schedule.
      */
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * The name or id of the project to add the schedule to.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The branch/tag name to be triggered.
      */
-    readonly ref: pulumi.Input<string>;
+    ref: pulumi.Input<string>;
 }

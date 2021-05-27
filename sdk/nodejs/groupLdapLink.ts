@@ -129,20 +129,20 @@ export interface GroupLdapLinkState {
     /**
      * Acceptable values are: guest, reporter, developer, maintainer, owner.
      */
-    readonly accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string>;
     /**
      * The CN of the LDAP group to link with.
      */
-    readonly cn?: pulumi.Input<string>;
-    readonly force?: pulumi.Input<boolean>;
+    cn?: pulumi.Input<string>;
+    force?: pulumi.Input<boolean>;
     /**
      * The id of the GitLab group.
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * The name of the LDAP provider as stored in the GitLab database.
      */
-    readonly ldapProvider?: pulumi.Input<string>;
+    ldapProvider?: pulumi.Input<string>;
 }
 
 /**
@@ -152,18 +152,18 @@ export interface GroupLdapLinkArgs {
     /**
      * Acceptable values are: guest, reporter, developer, maintainer, owner.
      */
-    readonly accessLevel: pulumi.Input<string>;
+    accessLevel: pulumi.Input<string>;
     /**
      * The CN of the LDAP group to link with.
      */
-    readonly cn: pulumi.Input<string>;
-    readonly force?: pulumi.Input<boolean>;
+    cn: pulumi.Input<string>;
+    force?: pulumi.Input<boolean>;
     /**
      * The id of the GitLab group.
      */
-    readonly groupId: pulumi.Input<string>;
+    groupId: pulumi.Input<string>;
     /**
      * The name of the LDAP provider as stored in the GitLab database.
      */
-    readonly ldapProvider: pulumi.Input<string>;
+    ldapProvider: pulumi.Input<string>;
 }

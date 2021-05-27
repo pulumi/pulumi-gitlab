@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const example = pulumi.output(gitlab.getProject({
  *     id: "30",
- * }, { async: true }));
+ * }));
  * ```
  *
  * ```typescript
@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *
  * const example = pulumi.output(gitlab.getProject({
  *     id: "foo/bar/baz",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
@@ -50,7 +50,7 @@ export interface GetProjectArgs {
     /**
      * The integer or path with namespace that uniquely identifies the project within the gitlab install.
      */
-    readonly id: string;
+    id: string;
 }
 
 /**

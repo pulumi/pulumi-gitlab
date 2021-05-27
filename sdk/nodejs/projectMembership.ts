@@ -116,15 +116,15 @@ export interface ProjectMembershipState {
     /**
      * One of five levels of access to the project.
      */
-    readonly accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string>;
     /**
      * The id of the project.
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * The id of the user.
      */
-    readonly userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number>;
 }
 
 /**
@@ -134,13 +134,13 @@ export interface ProjectMembershipArgs {
     /**
      * One of five levels of access to the project.
      */
-    readonly accessLevel: pulumi.Input<string>;
+    accessLevel: pulumi.Input<string>;
     /**
      * The id of the project.
      */
-    readonly projectId: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
     /**
      * The id of the user.
      */
-    readonly userId: pulumi.Input<number>;
+    userId: pulumi.Input<number>;
 }

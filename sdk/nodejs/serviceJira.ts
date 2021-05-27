@@ -138,46 +138,46 @@ export class ServiceJira extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServiceJira resources.
  */
 export interface ServiceJiraState {
-    readonly active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean>;
     /**
      * Enable comments inside Jira issues on each GitLab event (commit / merge request)
      */
-    readonly commentOnEventEnabled?: pulumi.Input<boolean>;
+    commentOnEventEnabled?: pulumi.Input<boolean>;
     /**
      * Enable notifications for commit events
      */
-    readonly commitEvents?: pulumi.Input<boolean>;
-    readonly createdAt?: pulumi.Input<string>;
+    commitEvents?: pulumi.Input<boolean>;
+    createdAt?: pulumi.Input<string>;
     /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
      */
-    readonly jiraIssueTransitionId?: pulumi.Input<string>;
+    jiraIssueTransitionId?: pulumi.Input<string>;
     /**
      * Enable notifications for merge request events
      */
-    readonly mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean>;
     /**
      * The password of the user created to be used with GitLab/JIRA.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * ID of the project you want to activate integration on.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The short identifier for your JIRA project, all uppercase, e.g., PROJ.
      */
-    readonly projectKey?: pulumi.Input<string>;
-    readonly title?: pulumi.Input<string>;
-    readonly updatedAt?: pulumi.Input<string>;
+    projectKey?: pulumi.Input<string>;
+    title?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
     /**
      * The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
     /**
      * The username of the user created to be used with GitLab/JIRA.
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }
 
 /**
@@ -187,37 +187,37 @@ export interface ServiceJiraArgs {
     /**
      * Enable comments inside Jira issues on each GitLab event (commit / merge request)
      */
-    readonly commentOnEventEnabled?: pulumi.Input<boolean>;
+    commentOnEventEnabled?: pulumi.Input<boolean>;
     /**
      * Enable notifications for commit events
      */
-    readonly commitEvents?: pulumi.Input<boolean>;
+    commitEvents?: pulumi.Input<boolean>;
     /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
      */
-    readonly jiraIssueTransitionId?: pulumi.Input<string>;
+    jiraIssueTransitionId?: pulumi.Input<string>;
     /**
      * Enable notifications for merge request events
      */
-    readonly mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean>;
     /**
      * The password of the user created to be used with GitLab/JIRA.
      */
-    readonly password: pulumi.Input<string>;
+    password: pulumi.Input<string>;
     /**
      * ID of the project you want to activate integration on.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The short identifier for your JIRA project, all uppercase, e.g., PROJ.
      */
-    readonly projectKey?: pulumi.Input<string>;
+    projectKey?: pulumi.Input<string>;
     /**
      * The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
      */
-    readonly url: pulumi.Input<string>;
+    url: pulumi.Input<string>;
     /**
      * The username of the user created to be used with GitLab/JIRA.
      */
-    readonly username: pulumi.Input<string>;
+    username: pulumi.Input<string>;
 }

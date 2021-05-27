@@ -144,33 +144,33 @@ export interface DeployTokenState {
     /**
      * Time the token will expire it, RFC3339 format. Will not expire per default.
      */
-    readonly expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string>;
     /**
      * The name or id of the group to add the deploy token to.
      * Either `project` or `group` must be set.
      */
-    readonly group?: pulumi.Input<string>;
+    group?: pulumi.Input<string>;
     /**
      * A name to describe the deploy token with.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name or id of the project to add the deploy token to.
      * Either `project` or `group` must be set.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Valid values: `readRepository`, `readRegistry`.
      */
-    readonly scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The secret token. This is only populated when creating a new deploy token.
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
     /**
      * A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }
 
 /**
@@ -180,27 +180,27 @@ export interface DeployTokenArgs {
     /**
      * Time the token will expire it, RFC3339 format. Will not expire per default.
      */
-    readonly expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string>;
     /**
      * The name or id of the group to add the deploy token to.
      * Either `project` or `group` must be set.
      */
-    readonly group?: pulumi.Input<string>;
+    group?: pulumi.Input<string>;
     /**
      * A name to describe the deploy token with.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name or id of the project to add the deploy token to.
      * Either `project` or `group` must be set.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Valid values: `readRepository`, `readRegistry`.
      */
-    readonly scopes: pulumi.Input<pulumi.Input<string>[]>;
+    scopes: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }

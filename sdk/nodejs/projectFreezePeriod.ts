@@ -123,19 +123,19 @@ export interface ProjectFreezePeriodState {
     /**
      * The timezone.
      */
-    readonly cronTimezone?: pulumi.Input<string>;
+    cronTimezone?: pulumi.Input<string>;
     /**
      * End of the Freeze Period in cron format (e.g. `0 2 * * *`).
      */
-    readonly freezeEnd?: pulumi.Input<string>;
+    freezeEnd?: pulumi.Input<string>;
     /**
      * Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
      */
-    readonly freezeStart?: pulumi.Input<string>;
+    freezeStart?: pulumi.Input<string>;
     /**
      * The id of the project to add the schedule to.
      */
-    readonly projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
 }
 
 /**
@@ -145,17 +145,17 @@ export interface ProjectFreezePeriodArgs {
     /**
      * The timezone.
      */
-    readonly cronTimezone?: pulumi.Input<string>;
+    cronTimezone?: pulumi.Input<string>;
     /**
      * End of the Freeze Period in cron format (e.g. `0 2 * * *`).
      */
-    readonly freezeEnd: pulumi.Input<string>;
+    freezeEnd: pulumi.Input<string>;
     /**
      * Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
      */
-    readonly freezeStart: pulumi.Input<string>;
+    freezeStart: pulumi.Input<string>;
     /**
      * The id of the project to add the schedule to.
      */
-    readonly projectId: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
 }

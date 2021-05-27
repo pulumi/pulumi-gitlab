@@ -199,3 +199,43 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter(name="baseUrl")
+    def base_url(self) -> pulumi.Output[Optional[str]]:
+        """
+        The GitLab Base API URL
+        """
+        return pulumi.get(self, "base_url")
+
+    @property
+    @pulumi.getter(name="cacertFile")
+    def cacert_file(self) -> pulumi.Output[Optional[str]]:
+        """
+        A file containing the ca certificate to use in case ssl certificate is not from a standard chain
+        """
+        return pulumi.get(self, "cacert_file")
+
+    @property
+    @pulumi.getter(name="clientCert")
+    def client_cert(self) -> pulumi.Output[Optional[str]]:
+        """
+        File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
+        """
+        return pulumi.get(self, "client_cert")
+
+    @property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
+        """
+        return pulumi.get(self, "client_key")
+
+    @property
+    @pulumi.getter
+    def token(self) -> pulumi.Output[str]:
+        """
+        The OAuth token used to connect to GitLab.
+        """
+        return pulumi.get(self, "token")
+

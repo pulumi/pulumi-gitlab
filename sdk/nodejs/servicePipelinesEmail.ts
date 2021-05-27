@@ -93,19 +93,19 @@ export interface ServicePipelinesEmailState {
     /**
      * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
      */
-    readonly branchesToBeNotified?: pulumi.Input<string>;
+    branchesToBeNotified?: pulumi.Input<string>;
     /**
      * Notify only broken pipelines. Default is true.
      */
-    readonly notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
+    notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
     /**
      * ID of the project you want to activate integration on.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * ) email addresses where notifications are sent.
      */
-    readonly recipients?: pulumi.Input<pulumi.Input<string>[]>;
+    recipients?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -115,17 +115,17 @@ export interface ServicePipelinesEmailArgs {
     /**
      * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
      */
-    readonly branchesToBeNotified?: pulumi.Input<string>;
+    branchesToBeNotified?: pulumi.Input<string>;
     /**
      * Notify only broken pipelines. Default is true.
      */
-    readonly notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
+    notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
     /**
      * ID of the project you want to activate integration on.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * ) email addresses where notifications are sent.
      */
-    readonly recipients: pulumi.Input<pulumi.Input<string>[]>;
+    recipients: pulumi.Input<pulumi.Input<string>[]>;
 }
