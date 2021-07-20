@@ -42,6 +42,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// GitLab pipeline schedules can be imported using an id made up of `{project_id}:{pipeline_schedule_id}`, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/pipelineSchedule:PipelineSchedule test 1:3
+// ```
 type PipelineSchedule struct {
 	pulumi.CustomResourceState
 

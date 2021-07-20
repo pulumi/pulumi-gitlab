@@ -124,6 +124,14 @@ class PipelineTrigger(pulumi.CustomResource):
             project="12345")
         ```
 
+        ## Import
+
+        GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/pipelineTrigger:PipelineTrigger test 1:3
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the pipeline trigger.
@@ -149,6 +157,14 @@ class PipelineTrigger(pulumi.CustomResource):
         example = gitlab.PipelineTrigger("example",
             description="Used to trigger builds",
             project="12345")
+        ```
+
+        ## Import
+
+        GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/pipelineTrigger:PipelineTrigger test 1:3
         ```
 
         :param str resource_name: The name of the resource.

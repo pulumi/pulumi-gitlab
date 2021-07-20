@@ -205,7 +205,39 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
                  reset_approvals_on_push: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a ProjectLevelMrApprovals resource with the given unique name, props, and options.
+        ## # gitlab\_project\_level\_mr\_approvals
+
+        This resource allows you to configure project-level MR approvals. for your GitLab projects.
+        For further information on merge request approvals, consult the [GitLab API
+        documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo_project = gitlab.Project("fooProject", description="My example project")
+        foo_project_level_mr_approvals = gitlab.ProjectLevelMrApprovals("fooProjectLevelMrApprovals",
+            project_id=foo_project.id,
+            reset_approvals_on_push=True,
+            disable_overriding_approvers_per_merge_request=False,
+            merge_requests_author_approval=False,
+            merge_requests_disable_committers_approval=True)
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `<resource> <project_id>`.
+        ```
+
+         For example
+
+        ```sh
+         $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 53
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disable_overriding_approvers_per_merge_request: By default, users are able to edit the approval rules in merge requests. If set to true,
@@ -223,7 +255,39 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
                  args: ProjectLevelMrApprovalsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ProjectLevelMrApprovals resource with the given unique name, props, and options.
+        ## # gitlab\_project\_level\_mr\_approvals
+
+        This resource allows you to configure project-level MR approvals. for your GitLab projects.
+        For further information on merge request approvals, consult the [GitLab API
+        documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo_project = gitlab.Project("fooProject", description="My example project")
+        foo_project_level_mr_approvals = gitlab.ProjectLevelMrApprovals("fooProjectLevelMrApprovals",
+            project_id=foo_project.id,
+            reset_approvals_on_push=True,
+            disable_overriding_approvers_per_merge_request=False,
+            merge_requests_author_approval=False,
+            merge_requests_disable_committers_approval=True)
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `<resource> <project_id>`.
+        ```
+
+         For example
+
+        ```sh
+         $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 53
+        ```
+
         :param str resource_name: The name of the resource.
         :param ProjectLevelMrApprovalsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

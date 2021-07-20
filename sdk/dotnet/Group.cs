@@ -9,6 +9,52 @@ using Pulumi.Serialization;
 
 namespace Pulumi.GitLab
 {
+    /// <summary>
+    /// ## # gitlab\_group
+    /// 
+    /// This resource allows you to create and manage GitLab groups.
+    /// Note your provider will need to be configured with admin-level access for this resource to work.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleGroup = new GitLab.Group("exampleGroup", new GitLab.GroupArgs
+    ///         {
+    ///             Path = "example",
+    ///             Description = "An example group",
+    ///         });
+    ///         // Create a project in the example group
+    ///         var exampleProject = new GitLab.Project("exampleProject", new GitLab.ProjectArgs
+    ///         {
+    ///             Description = "An example project",
+    ///             NamespaceId = exampleGroup.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import gitlab:index/group:Group You can import a group state using `&lt;resource&gt; &lt;id&gt;`. The
+    /// ```
+    /// 
+    ///  `id` can be whatever the [details of a group][details_of_a_group] api takes for its `:id` value, so for example
+    /// 
+    /// ```sh
+    ///  $ pulumi import gitlab:index/group:Group example example
+    /// ```
+    /// 
+    ///  [details_of_a_group]https://docs.gitlab.com/ee/api/groups.html#details-of-a-group
+    /// </summary>
     [GitLabResourceType("gitlab:index/group:Group")]
     public partial class Group : Pulumi.CustomResource
     {

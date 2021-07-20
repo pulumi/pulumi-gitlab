@@ -35,6 +35,14 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		_, err = gitlab.NewProjectMembership(ctx, "example", &gitlab.ProjectMembershipArgs{
+// 			AccessLevel: pulumi.String("guest"),
+// 			ProjectId:   pulumi.String("67890"),
+// 			UserId:      pulumi.Int(1234),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
 // 		return nil
 // 	})
 // }

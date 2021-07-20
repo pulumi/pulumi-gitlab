@@ -9,6 +9,52 @@ using Pulumi.Serialization;
 
 namespace Pulumi.GitLab
 {
+    /// <summary>
+    /// ## # gitlab\_user
+    /// 
+    /// This resource allows you to create and manage GitLab users.
+    /// Note your provider will need to be configured with admin-level access for this resource to work.
+    /// 
+    /// &gt; **Note:** You must specify either `password` or `reset_password`.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new GitLab.User("example", new GitLab.UserArgs
+    ///         {
+    ///             CanCreateGroup = false,
+    ///             Email = "gitlab@user.create",
+    ///             IsAdmin = true,
+    ///             IsExternal = true,
+    ///             Password = "superPassword",
+    ///             ProjectsLimit = 4,
+    ///             ResetPassword = false,
+    ///             Username = "example",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import gitlab:index/user:User You can import a user to terraform state using `&lt;resource&gt; &lt;id&gt;`.
+    /// ```
+    /// 
+    ///  The `id` must be an integer for the id of the user you want to import, for example
+    /// 
+    /// ```sh
+    ///  $ pulumi import gitlab:index/user:User example 42
+    /// ```
+    /// </summary>
     [GitLabResourceType("gitlab:index/user:User")]
     public partial class User : Pulumi.CustomResource
     {

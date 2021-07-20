@@ -41,6 +41,7 @@
         "pipelineTrigger.ts",
         "project.ts",
         "projectApprovalRule.ts",
+        "projectBadge.ts",
         "projectCluster.ts",
         "projectFreezePeriod.ts",
         "projectHook.ts",

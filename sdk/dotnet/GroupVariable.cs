@@ -62,6 +62,9 @@ namespace Pulumi.GitLab
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
 
+        /// <summary>
+        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        /// </summary>
         [Output("masked")]
         public Output<bool?> Masked { get; private set; } = null!;
 
@@ -141,6 +144,9 @@ namespace Pulumi.GitLab
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        /// </summary>
         [Input("masked")]
         public Input<bool>? Masked { get; set; }
 
@@ -181,6 +187,9 @@ namespace Pulumi.GitLab
         [Input("key")]
         public Input<string>? Key { get; set; }
 
+        /// <summary>
+        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        /// </summary>
         [Input("masked")]
         public Input<bool>? Masked { get; set; }
 

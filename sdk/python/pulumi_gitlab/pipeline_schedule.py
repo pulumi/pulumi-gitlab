@@ -246,6 +246,14 @@ class PipelineSchedule(pulumi.CustomResource):
             ref="master")
         ```
 
+        ## Import
+
+        GitLab pipeline schedules can be imported using an id made up of `{project_id}:{pipeline_schedule_id}`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/pipelineSchedule:PipelineSchedule test 1:3
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
@@ -279,6 +287,14 @@ class PipelineSchedule(pulumi.CustomResource):
             description="Used to schedule builds",
             project="12345",
             ref="master")
+        ```
+
+        ## Import
+
+        GitLab pipeline schedules can be imported using an id made up of `{project_id}:{pipeline_schedule_id}`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/pipelineSchedule:PipelineSchedule test 1:3
         ```
 
         :param str resource_name: The name of the resource.

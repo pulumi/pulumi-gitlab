@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## # gitlab\_instance\_variable
+//
 // This resource allows you to create and manage CI/CD variables for your GitLab instance.
 // For further information on variables, consult the [gitlab
 // documentation](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html).

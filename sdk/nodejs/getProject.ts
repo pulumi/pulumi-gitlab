@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 /**
  * ## # gitlab\_project
  *
- * Provides details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
+ * Provide details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
  *
  * ## Example Usage
  *

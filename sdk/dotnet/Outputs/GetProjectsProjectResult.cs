@@ -23,6 +23,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool Archived;
         public readonly string AvatarUrl;
+        public readonly string BuildCoverageRegex;
         public readonly string CiConfigPath;
         public readonly bool ContainerRegistryEnabled;
         public readonly string CreatedAt;
@@ -117,6 +118,8 @@ namespace Pulumi.GitLab.Outputs
             bool archived,
 
             string avatarUrl,
+
+            string buildCoverageRegex,
 
             string ciConfigPath,
 
@@ -224,6 +227,7 @@ namespace Pulumi.GitLab.Outputs
             ApprovalsBeforeMerge = approvalsBeforeMerge;
             Archived = archived;
             AvatarUrl = avatarUrl;
+            BuildCoverageRegex = buildCoverageRegex;
             CiConfigPath = ciConfigPath;
             ContainerRegistryEnabled = containerRegistryEnabled;
             CreatedAt = createdAt;

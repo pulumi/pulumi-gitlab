@@ -10,6 +10,242 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type BranchProtectionAllowedToMerge struct {
+	AccessLevel            *string `pulumi:"accessLevel"`
+	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
+	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+	GroupId *int `pulumi:"groupId"`
+	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+	UserId *int `pulumi:"userId"`
+}
+
+// BranchProtectionAllowedToMergeInput is an input type that accepts BranchProtectionAllowedToMergeArgs and BranchProtectionAllowedToMergeOutput values.
+// You can construct a concrete instance of `BranchProtectionAllowedToMergeInput` via:
+//
+//          BranchProtectionAllowedToMergeArgs{...}
+type BranchProtectionAllowedToMergeInput interface {
+	pulumi.Input
+
+	ToBranchProtectionAllowedToMergeOutput() BranchProtectionAllowedToMergeOutput
+	ToBranchProtectionAllowedToMergeOutputWithContext(context.Context) BranchProtectionAllowedToMergeOutput
+}
+
+type BranchProtectionAllowedToMergeArgs struct {
+	AccessLevel            pulumi.StringPtrInput `pulumi:"accessLevel"`
+	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
+	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+	UserId pulumi.IntPtrInput `pulumi:"userId"`
+}
+
+func (BranchProtectionAllowedToMergeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BranchProtectionAllowedToMerge)(nil)).Elem()
+}
+
+func (i BranchProtectionAllowedToMergeArgs) ToBranchProtectionAllowedToMergeOutput() BranchProtectionAllowedToMergeOutput {
+	return i.ToBranchProtectionAllowedToMergeOutputWithContext(context.Background())
+}
+
+func (i BranchProtectionAllowedToMergeArgs) ToBranchProtectionAllowedToMergeOutputWithContext(ctx context.Context) BranchProtectionAllowedToMergeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BranchProtectionAllowedToMergeOutput)
+}
+
+// BranchProtectionAllowedToMergeArrayInput is an input type that accepts BranchProtectionAllowedToMergeArray and BranchProtectionAllowedToMergeArrayOutput values.
+// You can construct a concrete instance of `BranchProtectionAllowedToMergeArrayInput` via:
+//
+//          BranchProtectionAllowedToMergeArray{ BranchProtectionAllowedToMergeArgs{...} }
+type BranchProtectionAllowedToMergeArrayInput interface {
+	pulumi.Input
+
+	ToBranchProtectionAllowedToMergeArrayOutput() BranchProtectionAllowedToMergeArrayOutput
+	ToBranchProtectionAllowedToMergeArrayOutputWithContext(context.Context) BranchProtectionAllowedToMergeArrayOutput
+}
+
+type BranchProtectionAllowedToMergeArray []BranchProtectionAllowedToMergeInput
+
+func (BranchProtectionAllowedToMergeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BranchProtectionAllowedToMerge)(nil)).Elem()
+}
+
+func (i BranchProtectionAllowedToMergeArray) ToBranchProtectionAllowedToMergeArrayOutput() BranchProtectionAllowedToMergeArrayOutput {
+	return i.ToBranchProtectionAllowedToMergeArrayOutputWithContext(context.Background())
+}
+
+func (i BranchProtectionAllowedToMergeArray) ToBranchProtectionAllowedToMergeArrayOutputWithContext(ctx context.Context) BranchProtectionAllowedToMergeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BranchProtectionAllowedToMergeArrayOutput)
+}
+
+type BranchProtectionAllowedToMergeOutput struct{ *pulumi.OutputState }
+
+func (BranchProtectionAllowedToMergeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BranchProtectionAllowedToMerge)(nil)).Elem()
+}
+
+func (o BranchProtectionAllowedToMergeOutput) ToBranchProtectionAllowedToMergeOutput() BranchProtectionAllowedToMergeOutput {
+	return o
+}
+
+func (o BranchProtectionAllowedToMergeOutput) ToBranchProtectionAllowedToMergeOutputWithContext(ctx context.Context) BranchProtectionAllowedToMergeOutput {
+	return o
+}
+
+func (o BranchProtectionAllowedToMergeOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BranchProtectionAllowedToMerge) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+func (o BranchProtectionAllowedToMergeOutput) AccessLevelDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BranchProtectionAllowedToMerge) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
+}
+
+// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+func (o BranchProtectionAllowedToMergeOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BranchProtectionAllowedToMerge) *int { return v.GroupId }).(pulumi.IntPtrOutput)
+}
+
+// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+func (o BranchProtectionAllowedToMergeOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BranchProtectionAllowedToMerge) *int { return v.UserId }).(pulumi.IntPtrOutput)
+}
+
+type BranchProtectionAllowedToMergeArrayOutput struct{ *pulumi.OutputState }
+
+func (BranchProtectionAllowedToMergeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BranchProtectionAllowedToMerge)(nil)).Elem()
+}
+
+func (o BranchProtectionAllowedToMergeArrayOutput) ToBranchProtectionAllowedToMergeArrayOutput() BranchProtectionAllowedToMergeArrayOutput {
+	return o
+}
+
+func (o BranchProtectionAllowedToMergeArrayOutput) ToBranchProtectionAllowedToMergeArrayOutputWithContext(ctx context.Context) BranchProtectionAllowedToMergeArrayOutput {
+	return o
+}
+
+func (o BranchProtectionAllowedToMergeArrayOutput) Index(i pulumi.IntInput) BranchProtectionAllowedToMergeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BranchProtectionAllowedToMerge {
+		return vs[0].([]BranchProtectionAllowedToMerge)[vs[1].(int)]
+	}).(BranchProtectionAllowedToMergeOutput)
+}
+
+type BranchProtectionAllowedToPush struct {
+	AccessLevel            *string `pulumi:"accessLevel"`
+	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
+	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+	GroupId *int `pulumi:"groupId"`
+	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+	UserId *int `pulumi:"userId"`
+}
+
+// BranchProtectionAllowedToPushInput is an input type that accepts BranchProtectionAllowedToPushArgs and BranchProtectionAllowedToPushOutput values.
+// You can construct a concrete instance of `BranchProtectionAllowedToPushInput` via:
+//
+//          BranchProtectionAllowedToPushArgs{...}
+type BranchProtectionAllowedToPushInput interface {
+	pulumi.Input
+
+	ToBranchProtectionAllowedToPushOutput() BranchProtectionAllowedToPushOutput
+	ToBranchProtectionAllowedToPushOutputWithContext(context.Context) BranchProtectionAllowedToPushOutput
+}
+
+type BranchProtectionAllowedToPushArgs struct {
+	AccessLevel            pulumi.StringPtrInput `pulumi:"accessLevel"`
+	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
+	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+	UserId pulumi.IntPtrInput `pulumi:"userId"`
+}
+
+func (BranchProtectionAllowedToPushArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BranchProtectionAllowedToPush)(nil)).Elem()
+}
+
+func (i BranchProtectionAllowedToPushArgs) ToBranchProtectionAllowedToPushOutput() BranchProtectionAllowedToPushOutput {
+	return i.ToBranchProtectionAllowedToPushOutputWithContext(context.Background())
+}
+
+func (i BranchProtectionAllowedToPushArgs) ToBranchProtectionAllowedToPushOutputWithContext(ctx context.Context) BranchProtectionAllowedToPushOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BranchProtectionAllowedToPushOutput)
+}
+
+// BranchProtectionAllowedToPushArrayInput is an input type that accepts BranchProtectionAllowedToPushArray and BranchProtectionAllowedToPushArrayOutput values.
+// You can construct a concrete instance of `BranchProtectionAllowedToPushArrayInput` via:
+//
+//          BranchProtectionAllowedToPushArray{ BranchProtectionAllowedToPushArgs{...} }
+type BranchProtectionAllowedToPushArrayInput interface {
+	pulumi.Input
+
+	ToBranchProtectionAllowedToPushArrayOutput() BranchProtectionAllowedToPushArrayOutput
+	ToBranchProtectionAllowedToPushArrayOutputWithContext(context.Context) BranchProtectionAllowedToPushArrayOutput
+}
+
+type BranchProtectionAllowedToPushArray []BranchProtectionAllowedToPushInput
+
+func (BranchProtectionAllowedToPushArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BranchProtectionAllowedToPush)(nil)).Elem()
+}
+
+func (i BranchProtectionAllowedToPushArray) ToBranchProtectionAllowedToPushArrayOutput() BranchProtectionAllowedToPushArrayOutput {
+	return i.ToBranchProtectionAllowedToPushArrayOutputWithContext(context.Background())
+}
+
+func (i BranchProtectionAllowedToPushArray) ToBranchProtectionAllowedToPushArrayOutputWithContext(ctx context.Context) BranchProtectionAllowedToPushArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BranchProtectionAllowedToPushArrayOutput)
+}
+
+type BranchProtectionAllowedToPushOutput struct{ *pulumi.OutputState }
+
+func (BranchProtectionAllowedToPushOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BranchProtectionAllowedToPush)(nil)).Elem()
+}
+
+func (o BranchProtectionAllowedToPushOutput) ToBranchProtectionAllowedToPushOutput() BranchProtectionAllowedToPushOutput {
+	return o
+}
+
+func (o BranchProtectionAllowedToPushOutput) ToBranchProtectionAllowedToPushOutputWithContext(ctx context.Context) BranchProtectionAllowedToPushOutput {
+	return o
+}
+
+func (o BranchProtectionAllowedToPushOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BranchProtectionAllowedToPush) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+func (o BranchProtectionAllowedToPushOutput) AccessLevelDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BranchProtectionAllowedToPush) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
+}
+
+// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+func (o BranchProtectionAllowedToPushOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BranchProtectionAllowedToPush) *int { return v.GroupId }).(pulumi.IntPtrOutput)
+}
+
+// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+func (o BranchProtectionAllowedToPushOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BranchProtectionAllowedToPush) *int { return v.UserId }).(pulumi.IntPtrOutput)
+}
+
+type BranchProtectionAllowedToPushArrayOutput struct{ *pulumi.OutputState }
+
+func (BranchProtectionAllowedToPushArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BranchProtectionAllowedToPush)(nil)).Elem()
+}
+
+func (o BranchProtectionAllowedToPushArrayOutput) ToBranchProtectionAllowedToPushArrayOutput() BranchProtectionAllowedToPushArrayOutput {
+	return o
+}
+
+func (o BranchProtectionAllowedToPushArrayOutput) ToBranchProtectionAllowedToPushArrayOutputWithContext(ctx context.Context) BranchProtectionAllowedToPushArrayOutput {
+	return o
+}
+
+func (o BranchProtectionAllowedToPushArrayOutput) Index(i pulumi.IntInput) BranchProtectionAllowedToPushOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BranchProtectionAllowedToPush {
+		return vs[0].([]BranchProtectionAllowedToPush)[vs[1].(int)]
+	}).(BranchProtectionAllowedToPushOutput)
+}
+
 type ProjectPushRules struct {
 	// All commit author emails must match this regex, e.g. `@my-company.com$`.
 	AuthorEmailRegex *string `pulumi:"authorEmailRegex"`
@@ -332,7 +568,7 @@ func (o ProjectPushRulesPtrOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput 
 }
 
 type GetGroupMembershipMember struct {
-	// Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+	// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel string `pulumi:"accessLevel"`
 	// The avatar URL of the user.
 	AvatarUrl string `pulumi:"avatarUrl"`
@@ -362,7 +598,7 @@ type GetGroupMembershipMemberInput interface {
 }
 
 type GetGroupMembershipMemberArgs struct {
-	// Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+	// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
 	// The avatar URL of the user.
 	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
@@ -431,7 +667,7 @@ func (o GetGroupMembershipMemberOutput) ToGetGroupMembershipMemberOutputWithCont
 	return o
 }
 
-// Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 func (o GetGroupMembershipMemberOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMembershipMember) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
@@ -640,6 +876,7 @@ type GetProjectsProject struct {
 	// Limit by archived status.
 	Archived                 bool                                `pulumi:"archived"`
 	AvatarUrl                string                              `pulumi:"avatarUrl"`
+	BuildCoverageRegex       string                              `pulumi:"buildCoverageRegex"`
 	CiConfigPath             string                              `pulumi:"ciConfigPath"`
 	ContainerRegistryEnabled bool                                `pulumi:"containerRegistryEnabled"`
 	CreatedAt                string                              `pulumi:"createdAt"`
@@ -722,6 +959,7 @@ type GetProjectsProjectArgs struct {
 	// Limit by archived status.
 	Archived                 pulumi.BoolInput                         `pulumi:"archived"`
 	AvatarUrl                pulumi.StringInput                       `pulumi:"avatarUrl"`
+	BuildCoverageRegex       pulumi.StringInput                       `pulumi:"buildCoverageRegex"`
 	CiConfigPath             pulumi.StringInput                       `pulumi:"ciConfigPath"`
 	ContainerRegistryEnabled pulumi.BoolInput                         `pulumi:"containerRegistryEnabled"`
 	CreatedAt                pulumi.StringInput                       `pulumi:"createdAt"`
@@ -853,6 +1091,10 @@ func (o GetProjectsProjectOutput) Archived() pulumi.BoolOutput {
 
 func (o GetProjectsProjectOutput) AvatarUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectOutput) BuildCoverageRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.BuildCoverageRegex }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) CiConfigPath() pulumi.StringOutput {
@@ -1545,7 +1787,7 @@ type GetUsersUser struct {
 	IsAdmin bool `pulumi:"isAdmin"`
 	// Last user's sign-in date.
 	LastSignInAt string `pulumi:"lastSignInAt"`
-	// Linkedin profile of the user.
+	// LinkedIn profile of the user.
 	Linkedin string `pulumi:"linkedin"`
 	// The location of the user.
 	Location string `pulumi:"location"`
@@ -1565,7 +1807,7 @@ type GetUsersUser struct {
 	ThemeId int `pulumi:"themeId"`
 	// Twitter username of the user.
 	Twitter string `pulumi:"twitter"`
-	// Whether user's two factor auth is enabled.
+	// Whether user's two-factor auth is enabled.
 	TwoFactorEnabled bool `pulumi:"twoFactorEnabled"`
 	// The username of the user.
 	Username string `pulumi:"username"`
@@ -1611,7 +1853,7 @@ type GetUsersUserArgs struct {
 	IsAdmin pulumi.BoolInput `pulumi:"isAdmin"`
 	// Last user's sign-in date.
 	LastSignInAt pulumi.StringInput `pulumi:"lastSignInAt"`
-	// Linkedin profile of the user.
+	// LinkedIn profile of the user.
 	Linkedin pulumi.StringInput `pulumi:"linkedin"`
 	// The location of the user.
 	Location pulumi.StringInput `pulumi:"location"`
@@ -1631,7 +1873,7 @@ type GetUsersUserArgs struct {
 	ThemeId pulumi.IntInput `pulumi:"themeId"`
 	// Twitter username of the user.
 	Twitter pulumi.StringInput `pulumi:"twitter"`
-	// Whether user's two factor auth is enabled.
+	// Whether user's two-factor auth is enabled.
 	TwoFactorEnabled pulumi.BoolInput `pulumi:"twoFactorEnabled"`
 	// The username of the user.
 	Username pulumi.StringInput `pulumi:"username"`
@@ -1755,7 +1997,7 @@ func (o GetUsersUserOutput) LastSignInAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.LastSignInAt }).(pulumi.StringOutput)
 }
 
-// Linkedin profile of the user.
+// LinkedIn profile of the user.
 func (o GetUsersUserOutput) Linkedin() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Linkedin }).(pulumi.StringOutput)
 }
@@ -1805,7 +2047,7 @@ func (o GetUsersUserOutput) Twitter() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Twitter }).(pulumi.StringOutput)
 }
 
-// Whether user's two factor auth is enabled.
+// Whether user's two-factor auth is enabled.
 func (o GetUsersUserOutput) TwoFactorEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUsersUser) bool { return v.TwoFactorEnabled }).(pulumi.BoolOutput)
 }
@@ -1841,6 +2083,10 @@ func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(BranchProtectionAllowedToMergeOutput{})
+	pulumi.RegisterOutputType(BranchProtectionAllowedToMergeArrayOutput{})
+	pulumi.RegisterOutputType(BranchProtectionAllowedToPushOutput{})
+	pulumi.RegisterOutputType(BranchProtectionAllowedToPushArrayOutput{})
 	pulumi.RegisterOutputType(ProjectPushRulesOutput{})
 	pulumi.RegisterOutputType(ProjectPushRulesPtrOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipMemberOutput{})

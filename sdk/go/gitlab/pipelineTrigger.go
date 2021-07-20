@@ -38,6 +38,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/pipelineTrigger:PipelineTrigger test 1:3
+// ```
 type PipelineTrigger struct {
 	pulumi.CustomResourceState
 

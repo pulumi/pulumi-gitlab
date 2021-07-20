@@ -20,6 +20,11 @@ import * as utilities from "./utilities";
  *     projectId: "12345",
  *     userId: 1337,
  * });
+ * const example = new gitlab.ProjectMembership("example", {
+ *     accessLevel: "guest",
+ *     projectId: "67890",
+ *     userId: 1234,
+ * });
  * ```
  *
  * ## Import

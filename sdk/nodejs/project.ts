@@ -5,6 +5,46 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * ## # gitlab\_project
+ *
+ * This resource allows you to create and manage projects within your GitLab group or within your user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = new gitlab.Project("example", {
+ *     description: "My awesome codebase",
+ *     visibilityLevel: "public",
+ * });
+ * // Project with custom push rules
+ * const example_two = new gitlab.Project("example-two", {
+ *     pushRules: {
+ *         authorEmailRegex: "@example\\.com$",
+ *         commitCommitterCheck: true,
+ *         memberCheck: true,
+ *         preventSecrets: true,
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
+ * ```
+ *
+ *  `id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/project:Project example richardc/example
+ * ```
+ *
+ *  [get_single_project]https://docs.gitlab.com/ee/api/projects.html#get-single-project [group_members_permissions]https://docs.gitlab.com/ce/user/permissions.html#group-members-permissions
+ */
 export class Project extends pulumi.CustomResource {
     /**
      * Get an existing Project resource's state with the given name, ID, and optional extra
@@ -42,13 +82,21 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly archived!: pulumi.Output<boolean | undefined>;
     /**
+     * Test coverage parsing for the project.
+     */
+    public readonly buildCoverageRegex!: pulumi.Output<string | undefined>;
+    /**
+     * Custom Path to CI config file.
+     */
+    public readonly ciConfigPath!: pulumi.Output<string | undefined>;
+    /**
      * Enable container registry for the project.
      */
     public readonly containerRegistryEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * The default branch for the project.
      */
-    public readonly defaultBranch!: pulumi.Output<string | undefined>;
+    public readonly defaultBranch!: pulumi.Output<string>;
     /**
      * A description of the project.
      */
@@ -67,7 +115,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly importUrl!: pulumi.Output<string | undefined>;
     /**
-     * Create master branch with first commit containing a README.md file.
+     * Create main branch with first commit containing a README.md file.
      */
     public readonly initializeWithReadme!: pulumi.Output<boolean | undefined>;
     /**
@@ -219,6 +267,8 @@ export class Project extends pulumi.CustomResource {
             const state = argsOrState as ProjectState | undefined;
             inputs["approvalsBeforeMerge"] = state ? state.approvalsBeforeMerge : undefined;
             inputs["archived"] = state ? state.archived : undefined;
+            inputs["buildCoverageRegex"] = state ? state.buildCoverageRegex : undefined;
+            inputs["ciConfigPath"] = state ? state.ciConfigPath : undefined;
             inputs["containerRegistryEnabled"] = state ? state.containerRegistryEnabled : undefined;
             inputs["defaultBranch"] = state ? state.defaultBranch : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -261,6 +311,8 @@ export class Project extends pulumi.CustomResource {
             const args = argsOrState as ProjectArgs | undefined;
             inputs["approvalsBeforeMerge"] = args ? args.approvalsBeforeMerge : undefined;
             inputs["archived"] = args ? args.archived : undefined;
+            inputs["buildCoverageRegex"] = args ? args.buildCoverageRegex : undefined;
+            inputs["ciConfigPath"] = args ? args.ciConfigPath : undefined;
             inputs["containerRegistryEnabled"] = args ? args.containerRegistryEnabled : undefined;
             inputs["defaultBranch"] = args ? args.defaultBranch : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -320,6 +372,14 @@ export interface ProjectState {
      */
     archived?: pulumi.Input<boolean>;
     /**
+     * Test coverage parsing for the project.
+     */
+    buildCoverageRegex?: pulumi.Input<string>;
+    /**
+     * Custom Path to CI config file.
+     */
+    ciConfigPath?: pulumi.Input<string>;
+    /**
      * Enable container registry for the project.
      */
     containerRegistryEnabled?: pulumi.Input<boolean>;
@@ -345,7 +405,7 @@ export interface ProjectState {
      */
     importUrl?: pulumi.Input<string>;
     /**
-     * Create master branch with first commit containing a README.md file.
+     * Create main branch with first commit containing a README.md file.
      */
     initializeWithReadme?: pulumi.Input<boolean>;
     /**
@@ -496,6 +556,14 @@ export interface ProjectArgs {
      */
     archived?: pulumi.Input<boolean>;
     /**
+     * Test coverage parsing for the project.
+     */
+    buildCoverageRegex?: pulumi.Input<string>;
+    /**
+     * Custom Path to CI config file.
+     */
+    ciConfigPath?: pulumi.Input<string>;
+    /**
      * Enable container registry for the project.
      */
     containerRegistryEnabled?: pulumi.Input<boolean>;
@@ -516,7 +584,7 @@ export interface ProjectArgs {
      */
     importUrl?: pulumi.Input<string>;
     /**
-     * Create master branch with first commit containing a README.md file.
+     * Create main branch with first commit containing a README.md file.
      */
     initializeWithReadme?: pulumi.Input<boolean>;
     /**

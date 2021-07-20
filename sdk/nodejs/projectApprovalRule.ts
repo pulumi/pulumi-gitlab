@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * projects. For further information on approval rules, consult the [gitlab
  * documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
  *
- * > This feature requires a GitLab Starter account or above.
+ * > This feature requires GitLab Premium.
  *
  * ## Example Usage
  *
@@ -28,11 +28,28 @@ import * as utilities from "./utilities";
  *         500,
  *     ],
  * });
- * const example_two = new gitlab.ProjectApprovalRule("example-two", {
- *     approvalsRequired: 1,
- *     groupIds: [52],
- *     project: "5",
- *     userIds: [],
+ * ```
+ * ### With Protected Branch IDs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const exampleBranchProtection = new gitlab.BranchProtection("exampleBranchProtection", {
+ *     project: 5,
+ *     branch: "release/*",
+ *     pushAccessLevel: "maintainer",
+ *     mergeAccessLevel: "developer",
+ * });
+ * const exampleProjectApprovalRule = new gitlab.ProjectApprovalRule("exampleProjectApprovalRule", {
+ *     project: 5,
+ *     approvalsRequired: 3,
+ *     userIds: [
+ *         50,
+ *         500,
+ *     ],
+ *     groupIds: [51],
+ *     protectedBranchIds: [exampleBranchProtection.branchProtectionId],
  * });
  * ```
  *
@@ -77,7 +94,7 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
      */
     public readonly approvalsRequired!: pulumi.Output<number>;
     /**
-     * A list of group IDs who's members can approve of the merge request
+     * A list of group IDs whose members can approve of the merge request.
      */
     public readonly groupIds!: pulumi.Output<number[] | undefined>;
     /**
@@ -88,6 +105,10 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
      * The name or id of the project to add the approval rules.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * A list of protected branch IDs (not branch names) for which the rule applies.
+     */
+    public readonly protectedBranchIds!: pulumi.Output<number[] | undefined>;
     /**
      * A list of specific User IDs to add to the list of approvers.
      */
@@ -110,6 +131,7 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
             inputs["groupIds"] = state ? state.groupIds : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["protectedBranchIds"] = state ? state.protectedBranchIds : undefined;
             inputs["userIds"] = state ? state.userIds : undefined;
         } else {
             const args = argsOrState as ProjectApprovalRuleArgs | undefined;
@@ -123,6 +145,7 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
             inputs["groupIds"] = args ? args.groupIds : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["protectedBranchIds"] = args ? args.protectedBranchIds : undefined;
             inputs["userIds"] = args ? args.userIds : undefined;
         }
         if (!opts.version) {
@@ -141,7 +164,7 @@ export interface ProjectApprovalRuleState {
      */
     approvalsRequired?: pulumi.Input<number>;
     /**
-     * A list of group IDs who's members can approve of the merge request
+     * A list of group IDs whose members can approve of the merge request.
      */
     groupIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
@@ -152,6 +175,10 @@ export interface ProjectApprovalRuleState {
      * The name or id of the project to add the approval rules.
      */
     project?: pulumi.Input<string>;
+    /**
+     * A list of protected branch IDs (not branch names) for which the rule applies.
+     */
+    protectedBranchIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * A list of specific User IDs to add to the list of approvers.
      */
@@ -167,7 +194,7 @@ export interface ProjectApprovalRuleArgs {
      */
     approvalsRequired: pulumi.Input<number>;
     /**
-     * A list of group IDs who's members can approve of the merge request
+     * A list of group IDs whose members can approve of the merge request.
      */
     groupIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
@@ -178,6 +205,10 @@ export interface ProjectApprovalRuleArgs {
      * The name or id of the project to add the approval rules.
      */
     project: pulumi.Input<string>;
+    /**
+     * A list of protected branch IDs (not branch names) for which the rule applies.
+     */
+    protectedBranchIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * A list of specific User IDs to add to the list of approvers.
      */

@@ -30,6 +30,12 @@ namespace Pulumi.GitLab
     ///             ProjectId = "12345",
     ///             UserId = 1337,
     ///         });
+    ///         var example = new GitLab.ProjectMembership("example", new GitLab.ProjectMembershipArgs
+    ///         {
+    ///             AccessLevel = "guest",
+    ///             ProjectId = "67890",
+    ///             UserId = 1234,
+    ///         });
     ///     }
     /// 
     /// }

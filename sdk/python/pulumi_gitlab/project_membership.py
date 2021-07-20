@@ -143,6 +143,10 @@ class ProjectMembership(pulumi.CustomResource):
             access_level="guest",
             project_id="12345",
             user_id=1337)
+        example = gitlab.ProjectMembership("example",
+            access_level="guest",
+            project_id="67890",
+            user_id=1234)
         ```
 
         ## Import
@@ -180,6 +184,10 @@ class ProjectMembership(pulumi.CustomResource):
             access_level="guest",
             project_id="12345",
             user_id=1337)
+        example = gitlab.ProjectMembership("example",
+            access_level="guest",
+            project_id="67890",
+            user_id=1234)
         ```
 
         ## Import

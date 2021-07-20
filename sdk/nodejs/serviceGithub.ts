@@ -4,6 +4,40 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## # gitlab\_service\_github
+ *
+ * **NOTE**: requires either EE (self-hosted) or Silver and above (GitLab.com).
+ *
+ * This resource manages a [GitHub integration](https://docs.gitlab.com/ee/user/project/integrations/github.html) that updates pipeline statuses on a GitHub repo's pull requests.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const awesomeProject = new gitlab.Project("awesomeProject", {
+ *     description: "My awesome project.",
+ *     visibilityLevel: "public",
+ * });
+ * const github = new gitlab.ServiceGithub("github", {
+ *     project: awesomeProject.id,
+ *     token: "REDACTED",
+ *     repositoryUrl: "https://github.com/gitlabhq/terraform-provider-gitlab",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a service_github state using `<resource> <project_id>`
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/serviceGithub:ServiceGithub github 1
+ * ```
+ */
 export class ServiceGithub extends pulumi.CustomResource {
     /**
      * Get an existing ServiceGithub resource's state with the given name, ID, and optional extra

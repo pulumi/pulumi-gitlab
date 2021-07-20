@@ -8,11 +8,10 @@ import * as utilities from "./utilities";
 /**
  * ## # gitlab\_group\_membership
  *
- * Provides details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
+ * Provide details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
  *
  * ## Example Usage
- *
- * **By group's ID**
+ * ### By group's ID
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,8 +21,7 @@ import * as utilities from "./utilities";
  *     groupId: 123,
  * }));
  * ```
- *
- * **By group's full path**
+ * ### By group's full path
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -55,7 +53,7 @@ export function getGroupMembership(args?: GetGroupMembershipArgs, opts?: pulumi.
  */
 export interface GetGroupMembershipArgs {
     /**
-     * Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     * Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
      */
     accessLevel?: string;
     /**

@@ -17,6 +17,8 @@ class ProjectArgs:
     def __init__(__self__, *,
                  approvals_before_merge: Optional[pulumi.Input[int]] = None,
                  archived: Optional[pulumi.Input[bool]] = None,
+                 build_coverage_regex: Optional[pulumi.Input[str]] = None,
+                 ci_config_path: Optional[pulumi.Input[str]] = None,
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -54,12 +56,14 @@ class ProjectArgs:
         The set of arguments for constructing a Project resource.
         :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
+        :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
+        :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
         :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
         :param pulumi.Input[str] import_url: Git URL to a repository to be imported.
-        :param pulumi.Input[bool] initialize_with_readme: Create master branch with first commit containing a README.md file.
+        :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
@@ -100,6 +104,10 @@ class ProjectArgs:
             pulumi.set(__self__, "approvals_before_merge", approvals_before_merge)
         if archived is not None:
             pulumi.set(__self__, "archived", archived)
+        if build_coverage_regex is not None:
+            pulumi.set(__self__, "build_coverage_regex", build_coverage_regex)
+        if ci_config_path is not None:
+            pulumi.set(__self__, "ci_config_path", ci_config_path)
         if container_registry_enabled is not None:
             pulumi.set(__self__, "container_registry_enabled", container_registry_enabled)
         if default_branch is not None:
@@ -192,6 +200,30 @@ class ProjectArgs:
         pulumi.set(self, "archived", value)
 
     @property
+    @pulumi.getter(name="buildCoverageRegex")
+    def build_coverage_regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        Test coverage parsing for the project.
+        """
+        return pulumi.get(self, "build_coverage_regex")
+
+    @build_coverage_regex.setter
+    def build_coverage_regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "build_coverage_regex", value)
+
+    @property
+    @pulumi.getter(name="ciConfigPath")
+    def ci_config_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom Path to CI config file.
+        """
+        return pulumi.get(self, "ci_config_path")
+
+    @ci_config_path.setter
+    def ci_config_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ci_config_path", value)
+
+    @property
     @pulumi.getter(name="containerRegistryEnabled")
     def container_registry_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -255,7 +287,7 @@ class ProjectArgs:
     @pulumi.getter(name="initializeWithReadme")
     def initialize_with_readme(self) -> Optional[pulumi.Input[bool]]:
         """
-        Create master branch with first commit containing a README.md file.
+        Create main branch with first commit containing a README.md file.
         """
         return pulumi.get(self, "initialize_with_readme")
 
@@ -601,6 +633,8 @@ class _ProjectState:
     def __init__(__self__, *,
                  approvals_before_merge: Optional[pulumi.Input[int]] = None,
                  archived: Optional[pulumi.Input[bool]] = None,
+                 build_coverage_regex: Optional[pulumi.Input[str]] = None,
+                 ci_config_path: Optional[pulumi.Input[str]] = None,
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -643,6 +677,8 @@ class _ProjectState:
         Input properties used for looking up and filtering Project resources.
         :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
+        :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
+        :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
@@ -650,7 +686,7 @@ class _ProjectState:
         :param pulumi.Input[str] http_url_to_repo: URL that can be provided to `git clone` to clone the
                repository via HTTP.
         :param pulumi.Input[str] import_url: Git URL to a repository to be imported.
-        :param pulumi.Input[bool] initialize_with_readme: Create master branch with first commit containing a README.md file.
+        :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
@@ -696,6 +732,10 @@ class _ProjectState:
             pulumi.set(__self__, "approvals_before_merge", approvals_before_merge)
         if archived is not None:
             pulumi.set(__self__, "archived", archived)
+        if build_coverage_regex is not None:
+            pulumi.set(__self__, "build_coverage_regex", build_coverage_regex)
+        if ci_config_path is not None:
+            pulumi.set(__self__, "ci_config_path", ci_config_path)
         if container_registry_enabled is not None:
             pulumi.set(__self__, "container_registry_enabled", container_registry_enabled)
         if default_branch is not None:
@@ -798,6 +838,30 @@ class _ProjectState:
         pulumi.set(self, "archived", value)
 
     @property
+    @pulumi.getter(name="buildCoverageRegex")
+    def build_coverage_regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        Test coverage parsing for the project.
+        """
+        return pulumi.get(self, "build_coverage_regex")
+
+    @build_coverage_regex.setter
+    def build_coverage_regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "build_coverage_regex", value)
+
+    @property
+    @pulumi.getter(name="ciConfigPath")
+    def ci_config_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom Path to CI config file.
+        """
+        return pulumi.get(self, "ci_config_path")
+
+    @ci_config_path.setter
+    def ci_config_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ci_config_path", value)
+
+    @property
     @pulumi.getter(name="containerRegistryEnabled")
     def container_registry_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -874,7 +938,7 @@ class _ProjectState:
     @pulumi.getter(name="initializeWithReadme")
     def initialize_with_readme(self) -> Optional[pulumi.Input[bool]]:
         """
-        Create master branch with first commit containing a README.md file.
+        Create main branch with first commit containing a README.md file.
         """
         return pulumi.get(self, "initialize_with_readme")
 
@@ -1271,6 +1335,8 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  approvals_before_merge: Optional[pulumi.Input[int]] = None,
                  archived: Optional[pulumi.Input[bool]] = None,
+                 build_coverage_regex: Optional[pulumi.Input[str]] = None,
+                 ci_config_path: Optional[pulumi.Input[str]] = None,
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1306,17 +1372,54 @@ class Project(pulumi.CustomResource):
                  wiki_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a Project resource with the given unique name, props, and options.
+        ## # gitlab\_project
+
+        This resource allows you to create and manage projects within your GitLab group or within your user.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.Project("example",
+            description="My awesome codebase",
+            visibility_level="public")
+        # Project with custom push rules
+        example_two = gitlab.Project("example-two", push_rules=gitlab.ProjectPushRulesArgs(
+            author_email_regex="@example\\.com$",
+            commit_committer_check=True,
+            member_check=True,
+            prevent_secrets=True,
+        ))
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
+        ```
+
+         `id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
+
+        ```sh
+         $ pulumi import gitlab:index/project:Project example richardc/example
+        ```
+
+         [get_single_project]https://docs.gitlab.com/ee/api/projects.html#get-single-project [group_members_permissions]https://docs.gitlab.com/ce/user/permissions.html#group-members-permissions
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
+        :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
+        :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
         :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
         :param pulumi.Input[str] import_url: Git URL to a repository to be imported.
-        :param pulumi.Input[bool] initialize_with_readme: Create master branch with first commit containing a README.md file.
+        :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
@@ -1360,7 +1463,42 @@ class Project(pulumi.CustomResource):
                  args: Optional[ProjectArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Project resource with the given unique name, props, and options.
+        ## # gitlab\_project
+
+        This resource allows you to create and manage projects within your GitLab group or within your user.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.Project("example",
+            description="My awesome codebase",
+            visibility_level="public")
+        # Project with custom push rules
+        example_two = gitlab.Project("example-two", push_rules=gitlab.ProjectPushRulesArgs(
+            author_email_regex="@example\\.com$",
+            commit_committer_check=True,
+            member_check=True,
+            prevent_secrets=True,
+        ))
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
+        ```
+
+         `id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
+
+        ```sh
+         $ pulumi import gitlab:index/project:Project example richardc/example
+        ```
+
+         [get_single_project]https://docs.gitlab.com/ee/api/projects.html#get-single-project [group_members_permissions]https://docs.gitlab.com/ce/user/permissions.html#group-members-permissions
+
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1378,6 +1516,8 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  approvals_before_merge: Optional[pulumi.Input[int]] = None,
                  archived: Optional[pulumi.Input[bool]] = None,
+                 build_coverage_regex: Optional[pulumi.Input[str]] = None,
+                 ci_config_path: Optional[pulumi.Input[str]] = None,
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1425,6 +1565,8 @@ class Project(pulumi.CustomResource):
 
             __props__.__dict__["approvals_before_merge"] = approvals_before_merge
             __props__.__dict__["archived"] = archived
+            __props__.__dict__["build_coverage_regex"] = build_coverage_regex
+            __props__.__dict__["ci_config_path"] = ci_config_path
             __props__.__dict__["container_registry_enabled"] = container_registry_enabled
             __props__.__dict__["default_branch"] = default_branch
             __props__.__dict__["description"] = description
@@ -1475,6 +1617,8 @@ class Project(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             approvals_before_merge: Optional[pulumi.Input[int]] = None,
             archived: Optional[pulumi.Input[bool]] = None,
+            build_coverage_regex: Optional[pulumi.Input[str]] = None,
+            ci_config_path: Optional[pulumi.Input[str]] = None,
             container_registry_enabled: Optional[pulumi.Input[bool]] = None,
             default_branch: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1522,6 +1666,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
+        :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
+        :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
@@ -1529,7 +1675,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] http_url_to_repo: URL that can be provided to `git clone` to clone the
                repository via HTTP.
         :param pulumi.Input[str] import_url: Git URL to a repository to be imported.
-        :param pulumi.Input[bool] initialize_with_readme: Create master branch with first commit containing a README.md file.
+        :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
@@ -1577,6 +1723,8 @@ class Project(pulumi.CustomResource):
 
         __props__.__dict__["approvals_before_merge"] = approvals_before_merge
         __props__.__dict__["archived"] = archived
+        __props__.__dict__["build_coverage_regex"] = build_coverage_regex
+        __props__.__dict__["ci_config_path"] = ci_config_path
         __props__.__dict__["container_registry_enabled"] = container_registry_enabled
         __props__.__dict__["default_branch"] = default_branch
         __props__.__dict__["description"] = description
@@ -1634,6 +1782,22 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "archived")
 
     @property
+    @pulumi.getter(name="buildCoverageRegex")
+    def build_coverage_regex(self) -> pulumi.Output[Optional[str]]:
+        """
+        Test coverage parsing for the project.
+        """
+        return pulumi.get(self, "build_coverage_regex")
+
+    @property
+    @pulumi.getter(name="ciConfigPath")
+    def ci_config_path(self) -> pulumi.Output[Optional[str]]:
+        """
+        Custom Path to CI config file.
+        """
+        return pulumi.get(self, "ci_config_path")
+
+    @property
     @pulumi.getter(name="containerRegistryEnabled")
     def container_registry_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1643,7 +1807,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultBranch")
-    def default_branch(self) -> pulumi.Output[Optional[str]]:
+    def default_branch(self) -> pulumi.Output[str]:
         """
         The default branch for the project.
         """
@@ -1686,7 +1850,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="initializeWithReadme")
     def initialize_with_readme(self) -> pulumi.Output[Optional[bool]]:
         """
-        Create master branch with first commit containing a README.md file.
+        Create main branch with first commit containing a README.md file.
         """
         return pulumi.get(self, "initialize_with_readme")
 

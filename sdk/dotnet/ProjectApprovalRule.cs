@@ -16,7 +16,7 @@ namespace Pulumi.GitLab
     /// projects. For further information on approval rules, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
     /// 
-    /// &gt; This feature requires a GitLab Starter account or above.
+    /// &gt; This feature requires GitLab Premium.
     /// 
     /// ## Example Usage
     /// 
@@ -42,15 +42,44 @@ namespace Pulumi.GitLab
     ///                 500,
     ///             },
     ///         });
-    ///         var example_two = new GitLab.ProjectApprovalRule("example-two", new GitLab.ProjectApprovalRuleArgs
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### With Protected Branch IDs
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleBranchProtection = new GitLab.BranchProtection("exampleBranchProtection", new GitLab.BranchProtectionArgs
     ///         {
-    ///             ApprovalsRequired = 1,
+    ///             Project = "5",
+    ///             Branch = "release/*",
+    ///             PushAccessLevel = "maintainer",
+    ///             MergeAccessLevel = "developer",
+    ///         });
+    ///         var exampleProjectApprovalRule = new GitLab.ProjectApprovalRule("exampleProjectApprovalRule", new GitLab.ProjectApprovalRuleArgs
+    ///         {
+    ///             Project = "5",
+    ///             ApprovalsRequired = 3,
+    ///             UserIds = 
+    ///             {
+    ///                 50,
+    ///                 500,
+    ///             },
     ///             GroupIds = 
     ///             {
-    ///                 52,
+    ///                 51,
     ///             },
-    ///             Project = "5",
-    ///             UserIds = {},
+    ///             ProtectedBranchIds = 
+    ///             {
+    ///                 exampleBranchProtection.BranchProtectionId,
+    ///             },
     ///         });
     ///     }
     /// 
@@ -75,7 +104,7 @@ namespace Pulumi.GitLab
         public Output<int> ApprovalsRequired { get; private set; } = null!;
 
         /// <summary>
-        /// A list of group IDs who's members can approve of the merge request
+        /// A list of group IDs whose members can approve of the merge request.
         /// </summary>
         [Output("groupIds")]
         public Output<ImmutableArray<int>> GroupIds { get; private set; } = null!;
@@ -91,6 +120,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of protected branch IDs (not branch names) for which the rule applies.
+        /// </summary>
+        [Output("protectedBranchIds")]
+        public Output<ImmutableArray<int>> ProtectedBranchIds { get; private set; } = null!;
 
         /// <summary>
         /// A list of specific User IDs to add to the list of approvers.
@@ -154,7 +189,7 @@ namespace Pulumi.GitLab
         private InputList<int>? _groupIds;
 
         /// <summary>
-        /// A list of group IDs who's members can approve of the merge request
+        /// A list of group IDs whose members can approve of the merge request.
         /// </summary>
         public InputList<int> GroupIds
         {
@@ -173,6 +208,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
+
+        [Input("protectedBranchIds")]
+        private InputList<int>? _protectedBranchIds;
+
+        /// <summary>
+        /// A list of protected branch IDs (not branch names) for which the rule applies.
+        /// </summary>
+        public InputList<int> ProtectedBranchIds
+        {
+            get => _protectedBranchIds ?? (_protectedBranchIds = new InputList<int>());
+            set => _protectedBranchIds = value;
+        }
 
         [Input("userIds")]
         private InputList<int>? _userIds;
@@ -203,7 +250,7 @@ namespace Pulumi.GitLab
         private InputList<int>? _groupIds;
 
         /// <summary>
-        /// A list of group IDs who's members can approve of the merge request
+        /// A list of group IDs whose members can approve of the merge request.
         /// </summary>
         public InputList<int> GroupIds
         {
@@ -222,6 +269,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("protectedBranchIds")]
+        private InputList<int>? _protectedBranchIds;
+
+        /// <summary>
+        /// A list of protected branch IDs (not branch names) for which the rule applies.
+        /// </summary>
+        public InputList<int> ProtectedBranchIds
+        {
+            get => _protectedBranchIds ?? (_protectedBranchIds = new InputList<int>());
+            set => _protectedBranchIds = value;
+        }
 
         [Input("userIds")]
         private InputList<int>? _userIds;

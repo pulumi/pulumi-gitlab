@@ -4,6 +4,41 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## # gitlab\_project\_level\_mr\_approvals
+ *
+ * This resource allows you to configure project-level MR approvals. for your GitLab projects.
+ * For further information on merge request approvals, consult the [GitLab API
+ * documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const fooProject = new gitlab.Project("fooProject", {description: "My example project"});
+ * const fooProjectLevelMrApprovals = new gitlab.ProjectLevelMrApprovals("fooProjectLevelMrApprovals", {
+ *     projectId: fooProject.id,
+ *     resetApprovalsOnPush: true,
+ *     disableOverridingApproversPerMergeRequest: false,
+ *     mergeRequestsAuthorApproval: false,
+ *     mergeRequestsDisableCommittersApproval: true,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `<resource> <project_id>`.
+ * ```
+ *
+ *  For example
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 53
+ * ```
+ */
 export class ProjectLevelMrApprovals extends pulumi.CustomResource {
     /**
      * Get an existing ProjectLevelMrApprovals resource's state with the given name, ID, and optional extra

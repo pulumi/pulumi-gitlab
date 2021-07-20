@@ -9,6 +9,56 @@ using Pulumi.Serialization;
 
 namespace Pulumi.GitLab
 {
+    /// <summary>
+    /// ## # gitlab\_project
+    /// 
+    /// This resource allows you to create and manage projects within your GitLab group or within your user.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new GitLab.Project("example", new GitLab.ProjectArgs
+    ///         {
+    ///             Description = "My awesome codebase",
+    ///             VisibilityLevel = "public",
+    ///         });
+    ///         // Project with custom push rules
+    ///         var example_two = new GitLab.Project("example-two", new GitLab.ProjectArgs
+    ///         {
+    ///             PushRules = new GitLab.Inputs.ProjectPushRulesArgs
+    ///             {
+    ///                 AuthorEmailRegex = "@example\\.com$",
+    ///                 CommitCommitterCheck = true,
+    ///                 MemberCheck = true,
+    ///                 PreventSecrets = true,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import gitlab:index/project:Project You can import a project state using `&lt;resource&gt; &lt;id&gt;`. The
+    /// ```
+    /// 
+    ///  `id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
+    /// 
+    /// ```sh
+    ///  $ pulumi import gitlab:index/project:Project example richardc/example
+    /// ```
+    /// 
+    ///  [get_single_project]https://docs.gitlab.com/ee/api/projects.html#get-single-project [group_members_permissions]https://docs.gitlab.com/ce/user/permissions.html#group-members-permissions
+    /// </summary>
     [GitLabResourceType("gitlab:index/project:Project")]
     public partial class Project : Pulumi.CustomResource
     {
@@ -25,6 +75,18 @@ namespace Pulumi.GitLab
         public Output<bool?> Archived { get; private set; } = null!;
 
         /// <summary>
+        /// Test coverage parsing for the project.
+        /// </summary>
+        [Output("buildCoverageRegex")]
+        public Output<string?> BuildCoverageRegex { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom Path to CI config file.
+        /// </summary>
+        [Output("ciConfigPath")]
+        public Output<string?> CiConfigPath { get; private set; } = null!;
+
+        /// <summary>
         /// Enable container registry for the project.
         /// </summary>
         [Output("containerRegistryEnabled")]
@@ -34,7 +96,7 @@ namespace Pulumi.GitLab
         /// The default branch for the project.
         /// </summary>
         [Output("defaultBranch")]
-        public Output<string?> DefaultBranch { get; private set; } = null!;
+        public Output<string> DefaultBranch { get; private set; } = null!;
 
         /// <summary>
         /// A description of the project.
@@ -62,7 +124,7 @@ namespace Pulumi.GitLab
         public Output<string?> ImportUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Create master branch with first commit containing a README.md file.
+        /// Create main branch with first commit containing a README.md file.
         /// </summary>
         [Output("initializeWithReadme")]
         public Output<bool?> InitializeWithReadme { get; private set; } = null!;
@@ -321,6 +383,18 @@ namespace Pulumi.GitLab
         public Input<bool>? Archived { get; set; }
 
         /// <summary>
+        /// Test coverage parsing for the project.
+        /// </summary>
+        [Input("buildCoverageRegex")]
+        public Input<string>? BuildCoverageRegex { get; set; }
+
+        /// <summary>
+        /// Custom Path to CI config file.
+        /// </summary>
+        [Input("ciConfigPath")]
+        public Input<string>? CiConfigPath { get; set; }
+
+        /// <summary>
         /// Enable container registry for the project.
         /// </summary>
         [Input("containerRegistryEnabled")]
@@ -351,7 +425,7 @@ namespace Pulumi.GitLab
         public Input<string>? ImportUrl { get; set; }
 
         /// <summary>
-        /// Create master branch with first commit containing a README.md file.
+        /// Create main branch with first commit containing a README.md file.
         /// </summary>
         [Input("initializeWithReadme")]
         public Input<bool>? InitializeWithReadme { get; set; }
@@ -552,6 +626,18 @@ namespace Pulumi.GitLab
         public Input<bool>? Archived { get; set; }
 
         /// <summary>
+        /// Test coverage parsing for the project.
+        /// </summary>
+        [Input("buildCoverageRegex")]
+        public Input<string>? BuildCoverageRegex { get; set; }
+
+        /// <summary>
+        /// Custom Path to CI config file.
+        /// </summary>
+        [Input("ciConfigPath")]
+        public Input<string>? CiConfigPath { get; set; }
+
+        /// <summary>
         /// Enable container registry for the project.
         /// </summary>
         [Input("containerRegistryEnabled")]
@@ -589,7 +675,7 @@ namespace Pulumi.GitLab
         public Input<string>? ImportUrl { get; set; }
 
         /// <summary>
-        /// Create master branch with first commit containing a README.md file.
+        /// Create main branch with first commit containing a README.md file.
         /// </summary>
         [Input("initializeWithReadme")]
         public Input<bool>? InitializeWithReadme { get; set; }

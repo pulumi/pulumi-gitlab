@@ -11,6 +11,55 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## # gitlab\_group
+//
+// This resource allows you to create and manage GitLab groups.
+// Note your provider will need to be configured with admin-level access for this resource to work.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleGroup, err := gitlab.NewGroup(ctx, "exampleGroup", &gitlab.GroupArgs{
+// 			Path:        pulumi.String("example"),
+// 			Description: pulumi.String("An example group"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
+// 			Description: pulumi.String("An example project"),
+// 			NamespaceId: exampleGroup.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
+// ```
+//
+//  `id` can be whatever the [details of a group][details_of_a_group] api takes for its `:id` value, so for example
+//
+// ```sh
+//  $ pulumi import gitlab:index/group:Group example example
+// ```
+//
+//  [details_of_a_group]https://docs.gitlab.com/ee/api/groups.html#details-of-a-group
 type Group struct {
 	pulumi.CustomResourceState
 

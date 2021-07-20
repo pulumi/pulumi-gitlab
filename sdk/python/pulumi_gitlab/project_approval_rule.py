@@ -17,13 +17,15 @@ class ProjectApprovalRuleArgs:
                  project: pulumi.Input[str],
                  group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         The set of arguments for constructing a ProjectApprovalRule resource.
         :param pulumi.Input[int] approvals_required: The number of approvals required for this rule.
         :param pulumi.Input[str] project: The name or id of the project to add the approval rules.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] group_ids: A list of group IDs who's members can approve of the merge request
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] group_ids: A list of group IDs whose members can approve of the merge request.
         :param pulumi.Input[str] name: The name of the approval rule.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] protected_branch_ids: A list of protected branch IDs (not branch names) for which the rule applies.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] user_ids: A list of specific User IDs to add to the list of approvers.
         """
         pulumi.set(__self__, "approvals_required", approvals_required)
@@ -32,6 +34,8 @@ class ProjectApprovalRuleArgs:
             pulumi.set(__self__, "group_ids", group_ids)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if protected_branch_ids is not None:
+            pulumi.set(__self__, "protected_branch_ids", protected_branch_ids)
         if user_ids is not None:
             pulumi.set(__self__, "user_ids", user_ids)
 
@@ -63,7 +67,7 @@ class ProjectApprovalRuleArgs:
     @pulumi.getter(name="groupIds")
     def group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
-        A list of group IDs who's members can approve of the merge request
+        A list of group IDs whose members can approve of the merge request.
         """
         return pulumi.get(self, "group_ids")
 
@@ -82,6 +86,18 @@ class ProjectApprovalRuleArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="protectedBranchIds")
+    def protected_branch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of protected branch IDs (not branch names) for which the rule applies.
+        """
+        return pulumi.get(self, "protected_branch_ids")
+
+    @protected_branch_ids.setter
+    def protected_branch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "protected_branch_ids", value)
 
     @property
     @pulumi.getter(name="userIds")
@@ -103,13 +119,15 @@ class _ProjectApprovalRuleState:
                  group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         Input properties used for looking up and filtering ProjectApprovalRule resources.
         :param pulumi.Input[int] approvals_required: The number of approvals required for this rule.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] group_ids: A list of group IDs who's members can approve of the merge request
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] group_ids: A list of group IDs whose members can approve of the merge request.
         :param pulumi.Input[str] name: The name of the approval rule.
         :param pulumi.Input[str] project: The name or id of the project to add the approval rules.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] protected_branch_ids: A list of protected branch IDs (not branch names) for which the rule applies.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] user_ids: A list of specific User IDs to add to the list of approvers.
         """
         if approvals_required is not None:
@@ -120,6 +138,8 @@ class _ProjectApprovalRuleState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if protected_branch_ids is not None:
+            pulumi.set(__self__, "protected_branch_ids", protected_branch_ids)
         if user_ids is not None:
             pulumi.set(__self__, "user_ids", user_ids)
 
@@ -139,7 +159,7 @@ class _ProjectApprovalRuleState:
     @pulumi.getter(name="groupIds")
     def group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
-        A list of group IDs who's members can approve of the merge request
+        A list of group IDs whose members can approve of the merge request.
         """
         return pulumi.get(self, "group_ids")
 
@@ -172,6 +192,18 @@ class _ProjectApprovalRuleState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="protectedBranchIds")
+    def protected_branch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        A list of protected branch IDs (not branch names) for which the rule applies.
+        """
+        return pulumi.get(self, "protected_branch_ids")
+
+    @protected_branch_ids.setter
+    def protected_branch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "protected_branch_ids", value)
+
+    @property
     @pulumi.getter(name="userIds")
     def user_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
@@ -193,6 +225,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
                  group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
         """
@@ -202,7 +235,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
         projects. For further information on approval rules, consult the [gitlab
         documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
 
-        > This feature requires a GitLab Starter account or above.
+        > This feature requires GitLab Premium.
 
         ## Example Usage
 
@@ -218,11 +251,27 @@ class ProjectApprovalRule(pulumi.CustomResource):
                 50,
                 500,
             ])
-        example_two = gitlab.ProjectApprovalRule("example-two",
-            approvals_required=1,
-            group_ids=[52],
+        ```
+        ### With Protected Branch IDs
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example_branch_protection = gitlab.BranchProtection("exampleBranchProtection",
             project="5",
-            user_ids=[])
+            branch="release/*",
+            push_access_level="maintainer",
+            merge_access_level="developer")
+        example_project_approval_rule = gitlab.ProjectApprovalRule("exampleProjectApprovalRule",
+            project="5",
+            approvals_required=3,
+            user_ids=[
+                50,
+                500,
+            ],
+            group_ids=[51],
+            protected_branch_ids=[example_branch_protection.branch_protection_id])
         ```
 
         ## Import
@@ -236,9 +285,10 @@ class ProjectApprovalRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] approvals_required: The number of approvals required for this rule.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] group_ids: A list of group IDs who's members can approve of the merge request
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] group_ids: A list of group IDs whose members can approve of the merge request.
         :param pulumi.Input[str] name: The name of the approval rule.
         :param pulumi.Input[str] project: The name or id of the project to add the approval rules.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] protected_branch_ids: A list of protected branch IDs (not branch names) for which the rule applies.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] user_ids: A list of specific User IDs to add to the list of approvers.
         """
         ...
@@ -254,7 +304,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
         projects. For further information on approval rules, consult the [gitlab
         documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
 
-        > This feature requires a GitLab Starter account or above.
+        > This feature requires GitLab Premium.
 
         ## Example Usage
 
@@ -270,11 +320,27 @@ class ProjectApprovalRule(pulumi.CustomResource):
                 50,
                 500,
             ])
-        example_two = gitlab.ProjectApprovalRule("example-two",
-            approvals_required=1,
-            group_ids=[52],
+        ```
+        ### With Protected Branch IDs
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example_branch_protection = gitlab.BranchProtection("exampleBranchProtection",
             project="5",
-            user_ids=[])
+            branch="release/*",
+            push_access_level="maintainer",
+            merge_access_level="developer")
+        example_project_approval_rule = gitlab.ProjectApprovalRule("exampleProjectApprovalRule",
+            project="5",
+            approvals_required=3,
+            user_ids=[
+                50,
+                500,
+            ],
+            group_ids=[51],
+            protected_branch_ids=[example_branch_protection.branch_protection_id])
         ```
 
         ## Import
@@ -304,6 +370,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
                  group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
         if opts is None:
@@ -325,6 +392,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["protected_branch_ids"] = protected_branch_ids
             __props__.__dict__["user_ids"] = user_ids
         super(ProjectApprovalRule, __self__).__init__(
             'gitlab:index/projectApprovalRule:ProjectApprovalRule',
@@ -340,6 +408,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
             group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None) -> 'ProjectApprovalRule':
         """
         Get an existing ProjectApprovalRule resource's state with the given name, id, and optional extra
@@ -349,9 +418,10 @@ class ProjectApprovalRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] approvals_required: The number of approvals required for this rule.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] group_ids: A list of group IDs who's members can approve of the merge request
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] group_ids: A list of group IDs whose members can approve of the merge request.
         :param pulumi.Input[str] name: The name of the approval rule.
         :param pulumi.Input[str] project: The name or id of the project to add the approval rules.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] protected_branch_ids: A list of protected branch IDs (not branch names) for which the rule applies.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] user_ids: A list of specific User IDs to add to the list of approvers.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -362,6 +432,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
         __props__.__dict__["group_ids"] = group_ids
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["protected_branch_ids"] = protected_branch_ids
         __props__.__dict__["user_ids"] = user_ids
         return ProjectApprovalRule(resource_name, opts=opts, __props__=__props__)
 
@@ -377,7 +448,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
     @pulumi.getter(name="groupIds")
     def group_ids(self) -> pulumi.Output[Optional[Sequence[int]]]:
         """
-        A list of group IDs who's members can approve of the merge request
+        A list of group IDs whose members can approve of the merge request.
         """
         return pulumi.get(self, "group_ids")
 
@@ -396,6 +467,14 @@ class ProjectApprovalRule(pulumi.CustomResource):
         The name or id of the project to add the approval rules.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="protectedBranchIds")
+    def protected_branch_ids(self) -> pulumi.Output[Optional[Sequence[int]]]:
+        """
+        A list of protected branch IDs (not branch names) for which the rule applies.
+        """
+        return pulumi.get(self, "protected_branch_ids")
 
     @property
     @pulumi.getter(name="userIds")

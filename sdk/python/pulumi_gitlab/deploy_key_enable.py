@@ -176,7 +176,7 @@ class DeployKeyEnable(pulumi.CustomResource):
 
         This resource allows you to enable pre-existing deploy keys for your GitLab projects.
 
-        **the GITLAB KEY_ID for the deploy key must be known**
+        > **NOTE**: the GITLAB KEY_ID for the deploy key must be known
 
         ## Example Usage
 
@@ -223,7 +223,7 @@ class DeployKeyEnable(pulumi.CustomResource):
 
         This resource allows you to enable pre-existing deploy keys for your GitLab projects.
 
-        **the GITLAB KEY_ID for the deploy key must be known**
+        > **NOTE**: the GITLAB KEY_ID for the deploy key must be known
 
         ## Example Usage
 

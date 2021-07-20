@@ -28,9 +28,16 @@ namespace Pulumi.GitLab
     ///     {
     ///         var fixme = new GitLab.Label("fixme", new GitLab.LabelArgs
     ///         {
-    ///             Color = "#ffcc00",
-    ///             Description = "issue with failing tests",
     ///             Project = "example",
+    ///             Description = "issue with failing tests",
+    ///             Color = "#ffcc00",
+    ///         });
+    ///         // Scoped label
+    ///         var devopsCreate = new GitLab.Label("devopsCreate", new GitLab.LabelArgs
+    ///         {
+    ///             Project = gitlab_project.Example.Id,
+    ///             Description = "issue for creating infrastructure resources",
+    ///             Color = "#ffa500",
     ///         });
     ///     }
     /// 

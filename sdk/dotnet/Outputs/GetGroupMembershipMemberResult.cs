@@ -14,7 +14,7 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetGroupMembershipMemberResult
     {
         /// <summary>
-        /// Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        /// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         /// </summary>
         public readonly string AccessLevel;
         /// <summary>

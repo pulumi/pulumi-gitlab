@@ -189,11 +189,10 @@ def get_group(full_path: Optional[str] = None,
     """
     ## # gitlab\_group
 
-    Provides details about a specific group in the gitlab provider.
+    Provide details about a specific group in the gitlab provider.
 
     ## Example Usage
-
-    **By group's ID**
+    ### By group's ID
 
     ```python
     import pulumi
@@ -201,8 +200,7 @@ def get_group(full_path: Optional[str] = None,
 
     foo = gitlab.get_group(group_id=123)
     ```
-
-    **By group's full path**
+    ### By group's full path
 
     ```python
     import pulumi
