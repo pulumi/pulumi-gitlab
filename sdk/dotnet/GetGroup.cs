@@ -14,13 +14,12 @@ namespace Pulumi.GitLab
         /// <summary>
         /// ## # gitlab\_group
         /// 
-        /// Provides details about a specific group in the gitlab provider.
+        /// Provide details about a specific group in the gitlab provider.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
-        /// 
-        /// **By group's ID**
+        /// ### By group's ID
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -38,8 +37,9 @@ namespace Pulumi.GitLab
         /// 
         /// }
         /// ```
-        /// 
-        /// **By group's full path**
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### By group's full path
         /// 
         /// ```csharp
         /// using Pulumi;

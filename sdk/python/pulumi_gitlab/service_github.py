@@ -202,7 +202,37 @@ class ServiceGithub(pulumi.CustomResource):
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ServiceGithub resource with the given unique name, props, and options.
+        ## # gitlab\_service\_github
+
+        **NOTE**: requires either EE (self-hosted) or Silver and above (GitLab.com).
+
+        This resource manages a [GitHub integration](https://docs.gitlab.com/ee/user/project/integrations/github.html) that updates pipeline statuses on a GitHub repo's pull requests.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        github = gitlab.ServiceGithub("github",
+            project=awesome_project.id,
+            token="REDACTED",
+            repository_url="https://github.com/gitlabhq/terraform-provider-gitlab")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a service_github state using `<resource> <project_id>`
+        ```
+
+        ```sh
+         $ pulumi import gitlab:index/serviceGithub:ServiceGithub github 1
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
@@ -216,7 +246,37 @@ class ServiceGithub(pulumi.CustomResource):
                  args: ServiceGithubArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ServiceGithub resource with the given unique name, props, and options.
+        ## # gitlab\_service\_github
+
+        **NOTE**: requires either EE (self-hosted) or Silver and above (GitLab.com).
+
+        This resource manages a [GitHub integration](https://docs.gitlab.com/ee/user/project/integrations/github.html) that updates pipeline statuses on a GitHub repo's pull requests.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        github = gitlab.ServiceGithub("github",
+            project=awesome_project.id,
+            token="REDACTED",
+            repository_url="https://github.com/gitlabhq/terraform-provider-gitlab")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a service_github state using `<resource> <project_id>`
+        ```
+
+        ```sh
+         $ pulumi import gitlab:index/serviceGithub:ServiceGithub github 1
+        ```
+
         :param str resource_name: The name of the resource.
         :param ServiceGithubArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

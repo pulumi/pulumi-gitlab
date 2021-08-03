@@ -70,6 +70,9 @@ export class GroupVariable extends pulumi.CustomResource {
      * The name of the variable.
      */
     public readonly key!: pulumi.Output<string>;
+    /**
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     */
     public readonly masked!: pulumi.Output<boolean | undefined>;
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
@@ -140,6 +143,9 @@ export interface GroupVariableState {
      * The name of the variable.
      */
     key?: pulumi.Input<string>;
+    /**
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     */
     masked?: pulumi.Input<boolean>;
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
@@ -167,6 +173,9 @@ export interface GroupVariableArgs {
      * The name of the variable.
      */
     key: pulumi.Input<string>;
+    /**
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     */
     masked?: pulumi.Input<boolean>;
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.

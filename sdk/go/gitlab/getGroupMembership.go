@@ -9,11 +9,10 @@ import (
 
 // ## # gitlab\_group\_membership
 //
-// Provides details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
+// Provide details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
 //
 // ## Example Usage
-//
-// **By group's ID**
+// ### By group's ID
 //
 // ```go
 // package main
@@ -36,8 +35,7 @@ import (
 // 	})
 // }
 // ```
-//
-// **By group's full path**
+// ### By group's full path
 //
 // ```go
 // package main
@@ -71,7 +69,7 @@ func LookupGroupMembership(ctx *pulumi.Context, args *LookupGroupMembershipArgs,
 
 // A collection of arguments for invoking getGroupMembership.
 type LookupGroupMembershipArgs struct {
-	// Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+	// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// The full path of the group.
 	FullPath *string `pulumi:"fullPath"`

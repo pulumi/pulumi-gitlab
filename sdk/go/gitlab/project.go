@@ -10,6 +10,60 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## # gitlab\_project
+//
+// This resource allows you to create and manage projects within your GitLab group or within your user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gitlab.NewProject(ctx, "example", &gitlab.ProjectArgs{
+// 			Description:     pulumi.String("My awesome codebase"),
+// 			VisibilityLevel: pulumi.String("public"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = gitlab.NewProject(ctx, "example_two", &gitlab.ProjectArgs{
+// 			PushRules: &gitlab.ProjectPushRulesArgs{
+// 				AuthorEmailRegex:     pulumi.String(fmt.Sprintf("%v%v", "@example\\.com", "$")),
+// 				CommitCommitterCheck: pulumi.Bool(true),
+// 				MemberCheck:          pulumi.Bool(true),
+// 				PreventSecrets:       pulumi.Bool(true),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
+// ```
+//
+//  `id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
+//
+// ```sh
+//  $ pulumi import gitlab:index/project:Project example richardc/example
+// ```
+//
+//  [get_single_project]https://docs.gitlab.com/ee/api/projects.html#get-single-project [group_members_permissions]https://docs.gitlab.com/ce/user/permissions.html#group-members-permissions
 type Project struct {
 	pulumi.CustomResourceState
 
@@ -17,10 +71,14 @@ type Project struct {
 	ApprovalsBeforeMerge pulumi.IntPtrOutput `pulumi:"approvalsBeforeMerge"`
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
 	Archived pulumi.BoolPtrOutput `pulumi:"archived"`
+	// Test coverage parsing for the project.
+	BuildCoverageRegex pulumi.StringPtrOutput `pulumi:"buildCoverageRegex"`
+	// Custom Path to CI config file.
+	CiConfigPath pulumi.StringPtrOutput `pulumi:"ciConfigPath"`
 	// Enable container registry for the project.
 	ContainerRegistryEnabled pulumi.BoolPtrOutput `pulumi:"containerRegistryEnabled"`
 	// The default branch for the project.
-	DefaultBranch pulumi.StringPtrOutput `pulumi:"defaultBranch"`
+	DefaultBranch pulumi.StringOutput `pulumi:"defaultBranch"`
 	// A description of the project.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires useCustomTemplate to be true (enterprise edition).
@@ -30,7 +88,7 @@ type Project struct {
 	HttpUrlToRepo pulumi.StringOutput `pulumi:"httpUrlToRepo"`
 	// Git URL to a repository to be imported.
 	ImportUrl pulumi.StringPtrOutput `pulumi:"importUrl"`
-	// Create master branch with first commit containing a README.md file.
+	// Create main branch with first commit containing a README.md file.
 	InitializeWithReadme pulumi.BoolPtrOutput `pulumi:"initializeWithReadme"`
 	// Enable issue tracking for the project.
 	IssuesEnabled pulumi.BoolPtrOutput `pulumi:"issuesEnabled"`
@@ -138,6 +196,10 @@ type projectState struct {
 	ApprovalsBeforeMerge *int `pulumi:"approvalsBeforeMerge"`
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
 	Archived *bool `pulumi:"archived"`
+	// Test coverage parsing for the project.
+	BuildCoverageRegex *string `pulumi:"buildCoverageRegex"`
+	// Custom Path to CI config file.
+	CiConfigPath *string `pulumi:"ciConfigPath"`
 	// Enable container registry for the project.
 	ContainerRegistryEnabled *bool `pulumi:"containerRegistryEnabled"`
 	// The default branch for the project.
@@ -151,7 +213,7 @@ type projectState struct {
 	HttpUrlToRepo *string `pulumi:"httpUrlToRepo"`
 	// Git URL to a repository to be imported.
 	ImportUrl *string `pulumi:"importUrl"`
-	// Create master branch with first commit containing a README.md file.
+	// Create main branch with first commit containing a README.md file.
 	InitializeWithReadme *bool `pulumi:"initializeWithReadme"`
 	// Enable issue tracking for the project.
 	IssuesEnabled *bool `pulumi:"issuesEnabled"`
@@ -231,6 +293,10 @@ type ProjectState struct {
 	ApprovalsBeforeMerge pulumi.IntPtrInput
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
 	Archived pulumi.BoolPtrInput
+	// Test coverage parsing for the project.
+	BuildCoverageRegex pulumi.StringPtrInput
+	// Custom Path to CI config file.
+	CiConfigPath pulumi.StringPtrInput
 	// Enable container registry for the project.
 	ContainerRegistryEnabled pulumi.BoolPtrInput
 	// The default branch for the project.
@@ -244,7 +310,7 @@ type ProjectState struct {
 	HttpUrlToRepo pulumi.StringPtrInput
 	// Git URL to a repository to be imported.
 	ImportUrl pulumi.StringPtrInput
-	// Create master branch with first commit containing a README.md file.
+	// Create main branch with first commit containing a README.md file.
 	InitializeWithReadme pulumi.BoolPtrInput
 	// Enable issue tracking for the project.
 	IssuesEnabled pulumi.BoolPtrInput
@@ -328,6 +394,10 @@ type projectArgs struct {
 	ApprovalsBeforeMerge *int `pulumi:"approvalsBeforeMerge"`
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
 	Archived *bool `pulumi:"archived"`
+	// Test coverage parsing for the project.
+	BuildCoverageRegex *string `pulumi:"buildCoverageRegex"`
+	// Custom Path to CI config file.
+	CiConfigPath *string `pulumi:"ciConfigPath"`
 	// Enable container registry for the project.
 	ContainerRegistryEnabled *bool `pulumi:"containerRegistryEnabled"`
 	// The default branch for the project.
@@ -338,7 +408,7 @@ type projectArgs struct {
 	GroupWithProjectTemplatesId *int `pulumi:"groupWithProjectTemplatesId"`
 	// Git URL to a repository to be imported.
 	ImportUrl *string `pulumi:"importUrl"`
-	// Create master branch with first commit containing a README.md file.
+	// Create main branch with first commit containing a README.md file.
 	InitializeWithReadme *bool `pulumi:"initializeWithReadme"`
 	// Enable issue tracking for the project.
 	IssuesEnabled *bool `pulumi:"issuesEnabled"`
@@ -410,6 +480,10 @@ type ProjectArgs struct {
 	ApprovalsBeforeMerge pulumi.IntPtrInput
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
 	Archived pulumi.BoolPtrInput
+	// Test coverage parsing for the project.
+	BuildCoverageRegex pulumi.StringPtrInput
+	// Custom Path to CI config file.
+	CiConfigPath pulumi.StringPtrInput
 	// Enable container registry for the project.
 	ContainerRegistryEnabled pulumi.BoolPtrInput
 	// The default branch for the project.
@@ -420,7 +494,7 @@ type ProjectArgs struct {
 	GroupWithProjectTemplatesId pulumi.IntPtrInput
 	// Git URL to a repository to be imported.
 	ImportUrl pulumi.StringPtrInput
-	// Create master branch with first commit containing a README.md file.
+	// Create main branch with first commit containing a README.md file.
 	InitializeWithReadme pulumi.BoolPtrInput
 	// Enable issue tracking for the project.
 	IssuesEnabled pulumi.BoolPtrInput

@@ -9,9 +9,9 @@ import (
 
 // ## # gitlab\_users
 //
-// Provides details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
+// Provide details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
 //
-// **NOTE**: Some of the available options require administrator privileges. Please visit [Gitlab API documentation][usersForAdmins] for more information.
+// **NOTE**: Some available options require administrator privileges. Please visit [Gitlab API documentation][usersForAdmins] for more information.
 //
 // ## Example Usage
 //
@@ -32,6 +32,13 @@ import (
 // 			CreatedBefore: &opt0,
 // 			OrderBy:       &opt1,
 // 			Sort:          &opt2,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt3 := "username"
+// 		_, err = gitlab.GetUsers(ctx, &gitlab.GetUsersArgs{
+// 			Search: &opt3,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -17,7 +17,7 @@ import (
 // projects. For further information on approval rules, consult the [gitlab
 // documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
 //
-// > This feature requires a GitLab Starter account or above.
+// > This feature requires GitLab Premium.
 //
 // ## Import
 //
@@ -31,12 +31,14 @@ type ProjectApprovalRule struct {
 
 	// The number of approvals required for this rule.
 	ApprovalsRequired pulumi.IntOutput `pulumi:"approvalsRequired"`
-	// A list of group IDs who's members can approve of the merge request
+	// A list of group IDs whose members can approve of the merge request.
 	GroupIds pulumi.IntArrayOutput `pulumi:"groupIds"`
 	// The name of the approval rule.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name or id of the project to add the approval rules.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// A list of protected branch IDs (not branch names) for which the rule applies.
+	ProtectedBranchIds pulumi.IntArrayOutput `pulumi:"protectedBranchIds"`
 	// A list of specific User IDs to add to the list of approvers.
 	UserIds pulumi.IntArrayOutput `pulumi:"userIds"`
 }
@@ -78,12 +80,14 @@ func GetProjectApprovalRule(ctx *pulumi.Context,
 type projectApprovalRuleState struct {
 	// The number of approvals required for this rule.
 	ApprovalsRequired *int `pulumi:"approvalsRequired"`
-	// A list of group IDs who's members can approve of the merge request
+	// A list of group IDs whose members can approve of the merge request.
 	GroupIds []int `pulumi:"groupIds"`
 	// The name of the approval rule.
 	Name *string `pulumi:"name"`
 	// The name or id of the project to add the approval rules.
 	Project *string `pulumi:"project"`
+	// A list of protected branch IDs (not branch names) for which the rule applies.
+	ProtectedBranchIds []int `pulumi:"protectedBranchIds"`
 	// A list of specific User IDs to add to the list of approvers.
 	UserIds []int `pulumi:"userIds"`
 }
@@ -91,12 +95,14 @@ type projectApprovalRuleState struct {
 type ProjectApprovalRuleState struct {
 	// The number of approvals required for this rule.
 	ApprovalsRequired pulumi.IntPtrInput
-	// A list of group IDs who's members can approve of the merge request
+	// A list of group IDs whose members can approve of the merge request.
 	GroupIds pulumi.IntArrayInput
 	// The name of the approval rule.
 	Name pulumi.StringPtrInput
 	// The name or id of the project to add the approval rules.
 	Project pulumi.StringPtrInput
+	// A list of protected branch IDs (not branch names) for which the rule applies.
+	ProtectedBranchIds pulumi.IntArrayInput
 	// A list of specific User IDs to add to the list of approvers.
 	UserIds pulumi.IntArrayInput
 }
@@ -108,12 +114,14 @@ func (ProjectApprovalRuleState) ElementType() reflect.Type {
 type projectApprovalRuleArgs struct {
 	// The number of approvals required for this rule.
 	ApprovalsRequired int `pulumi:"approvalsRequired"`
-	// A list of group IDs who's members can approve of the merge request
+	// A list of group IDs whose members can approve of the merge request.
 	GroupIds []int `pulumi:"groupIds"`
 	// The name of the approval rule.
 	Name *string `pulumi:"name"`
 	// The name or id of the project to add the approval rules.
 	Project string `pulumi:"project"`
+	// A list of protected branch IDs (not branch names) for which the rule applies.
+	ProtectedBranchIds []int `pulumi:"protectedBranchIds"`
 	// A list of specific User IDs to add to the list of approvers.
 	UserIds []int `pulumi:"userIds"`
 }
@@ -122,12 +130,14 @@ type projectApprovalRuleArgs struct {
 type ProjectApprovalRuleArgs struct {
 	// The number of approvals required for this rule.
 	ApprovalsRequired pulumi.IntInput
-	// A list of group IDs who's members can approve of the merge request
+	// A list of group IDs whose members can approve of the merge request.
 	GroupIds pulumi.IntArrayInput
 	// The name of the approval rule.
 	Name pulumi.StringPtrInput
 	// The name or id of the project to add the approval rules.
 	Project pulumi.StringInput
+	// A list of protected branch IDs (not branch names) for which the rule applies.
+	ProtectedBranchIds pulumi.IntArrayInput
 	// A list of specific User IDs to add to the list of approvers.
 	UserIds pulumi.IntArrayInput
 }

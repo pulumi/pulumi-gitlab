@@ -11,6 +11,54 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## # gitlab\_user
+//
+// This resource allows you to create and manage GitLab users.
+// Note your provider will need to be configured with admin-level access for this resource to work.
+//
+// > **Note:** You must specify either `password` or `resetPassword`.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gitlab.NewUser(ctx, "example", &gitlab.UserArgs{
+// 			CanCreateGroup: pulumi.Bool(false),
+// 			Email:          pulumi.String("gitlab@user.create"),
+// 			IsAdmin:        pulumi.Bool(true),
+// 			IsExternal:     pulumi.Bool(true),
+// 			Password:       pulumi.String("superPassword"),
+// 			ProjectsLimit:  pulumi.Int(4),
+// 			ResetPassword:  pulumi.Bool(false),
+// 			Username:       pulumi.String("example"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import gitlab:index/user:User You can import a user to terraform state using `<resource> <id>`.
+// ```
+//
+//  The `id` must be an integer for the id of the user you want to import, for example
+//
+// ```sh
+//  $ pulumi import gitlab:index/user:User example 42
+// ```
 type User struct {
 	pulumi.CustomResourceState
 

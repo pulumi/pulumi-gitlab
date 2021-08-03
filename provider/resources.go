@@ -111,6 +111,7 @@ func Provider() tfbridge.ProviderInfo {
 			"gitlab_instance_variable":          {Tok: gitLabResource(gitLabMod, "InstanceVariable")},
 			"gitlab_group_share_group":          {Tok: gitLabResource(gitLabMod, "GroupShareGroup")},
 			"gitlab_project_freeze_period":      {Tok: gitLabResource(gitLabMod, "ProjectFreezePeriod")},
+			"gitlab_project_badge":              {Tok: gitLabResource(gitLabMod, "ProjectBadge")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"gitlab_group":            {Tok: gitLabDataSource(gitLabMod, "getGroup")},
@@ -147,8 +148,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "3.*",
-				"System.Collections.Immutable": "1.6.0",
+				"Pulumi": "3.*",
 			},
 			Namespaces: map[string]string{
 				gitLabPkg: "GitLab",

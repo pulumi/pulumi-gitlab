@@ -10,6 +10,8 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'BranchProtectionAllowedToMerge',
+    'BranchProtectionAllowedToPush',
     'ProjectPushRules',
     'GetGroupMembershipMemberResult',
     'GetProjectPushRulesResult',
@@ -21,6 +23,146 @@ __all__ = [
     'GetProjectsProjectSharedWithGroupResult',
     'GetUsersUserResult',
 ]
+
+@pulumi.output_type
+class BranchProtectionAllowedToMerge(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+        elif key == "accessLevelDescription":
+            suggest = "access_level_description"
+        elif key == "groupId":
+            suggest = "group_id"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BranchProtectionAllowedToMerge. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BranchProtectionAllowedToMerge.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BranchProtectionAllowedToMerge.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_level: Optional[str] = None,
+                 access_level_description: Optional[str] = None,
+                 group_id: Optional[int] = None,
+                 user_id: Optional[int] = None):
+        """
+        :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_level_description is not None:
+            pulumi.set(__self__, "access_level_description", access_level_description)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[str]:
+        return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> Optional[str]:
+        return pulumi.get(self, "access_level_description")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class BranchProtectionAllowedToPush(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+        elif key == "accessLevelDescription":
+            suggest = "access_level_description"
+        elif key == "groupId":
+            suggest = "group_id"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BranchProtectionAllowedToPush. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BranchProtectionAllowedToPush.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BranchProtectionAllowedToPush.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_level: Optional[str] = None,
+                 access_level_description: Optional[str] = None,
+                 group_id: Optional[int] = None,
+                 user_id: Optional[int] = None):
+        """
+        :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_level_description is not None:
+            pulumi.set(__self__, "access_level_description", access_level_description)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[str]:
+        return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> Optional[str]:
+        return pulumi.get(self, "access_level_description")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
+        return pulumi.get(self, "user_id")
+
 
 @pulumi.output_type
 class ProjectPushRules(dict):
@@ -210,7 +352,7 @@ class GetGroupMembershipMemberResult(dict):
                  username: str,
                  web_url: str):
         """
-        :param str access_level: Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        :param str access_level: Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         :param str avatar_url: The avatar URL of the user.
         :param str expires_at: Expiration date for the group membership.
         :param int id: The unique id assigned to the user by the gitlab server.
@@ -232,7 +374,7 @@ class GetGroupMembershipMemberResult(dict):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> str:
         """
-        Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         """
         return pulumi.get(self, "access_level")
 
@@ -428,6 +570,7 @@ class GetProjectsProjectResult(dict):
                  approvals_before_merge: int,
                  archived: bool,
                  avatar_url: str,
+                 build_coverage_regex: str,
                  ci_config_path: str,
                  container_registry_enabled: bool,
                  created_at: str,
@@ -498,6 +641,7 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "approvals_before_merge", approvals_before_merge)
         pulumi.set(__self__, "archived", archived)
         pulumi.set(__self__, "avatar_url", avatar_url)
+        pulumi.set(__self__, "build_coverage_regex", build_coverage_regex)
         pulumi.set(__self__, "ci_config_path", ci_config_path)
         pulumi.set(__self__, "container_registry_enabled", container_registry_enabled)
         pulumi.set(__self__, "created_at", created_at)
@@ -575,6 +719,11 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="avatarUrl")
     def avatar_url(self) -> str:
         return pulumi.get(self, "avatar_url")
+
+    @property
+    @pulumi.getter(name="buildCoverageRegex")
+    def build_coverage_regex(self) -> str:
+        return pulumi.get(self, "build_coverage_regex")
 
     @property
     @pulumi.getter(name="ciConfigPath")
@@ -1142,7 +1291,7 @@ class GetUsersUserResult(dict):
         :param int id: The unique id assigned to the user by the gitlab server.
         :param bool is_admin: Whether the user is an admin.
         :param str last_sign_in_at: Last user's sign-in date.
-        :param str linkedin: Linkedin profile of the user.
+        :param str linkedin: LinkedIn profile of the user.
         :param str location: The location of the user.
         :param str name: The name of the user.
         :param str organization: The organization of the user.
@@ -1152,7 +1301,7 @@ class GetUsersUserResult(dict):
         :param str state: Whether the user is active or blocked.
         :param int theme_id: User's theme ID.
         :param str twitter: Twitter username of the user.
-        :param bool two_factor_enabled: Whether user's two factor auth is enabled.
+        :param bool two_factor_enabled: Whether user's two-factor auth is enabled.
         :param str username: The username of the user.
         :param str website_url: User's website URL.
         """
@@ -1291,7 +1440,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter
     def linkedin(self) -> str:
         """
-        Linkedin profile of the user.
+        LinkedIn profile of the user.
         """
         return pulumi.get(self, "linkedin")
 
@@ -1371,7 +1520,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter(name="twoFactorEnabled")
     def two_factor_enabled(self) -> bool:
         """
-        Whether user's two factor auth is enabled.
+        Whether user's two-factor auth is enabled.
         """
         return pulumi.get(self, "two_factor_enabled")
 

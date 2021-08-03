@@ -30,6 +30,7 @@ from .pipeline_schedule_variable import *
 from .pipeline_trigger import *
 from .project import *
 from .project_approval_rule import *
+from .project_badge import *
 from .project_cluster import *
 from .project_freeze_period import *
 from .project_hook import *
@@ -207,6 +208,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectApprovalRule:ProjectApprovalRule": "ProjectApprovalRule"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectBadge",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectBadge:ProjectBadge": "ProjectBadge"
   }
  },
  {

@@ -152,9 +152,9 @@ def get_users(active: Optional[bool] = None,
     """
     ## # gitlab\_users
 
-    Provides details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
+    Provide details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
 
-    **NOTE**: Some of the available options require administrator privileges. Please visit [Gitlab API documentation][users_for_admins] for more information.
+    **NOTE**: Some available options require administrator privileges. Please visit [Gitlab API documentation][users_for_admins] for more information.
 
     ## Example Usage
 
@@ -165,6 +165,7 @@ def get_users(active: Optional[bool] = None,
     example = gitlab.get_users(created_before="2019-01-01",
         order_by="name",
         sort="desc")
+    example_two = gitlab.get_users(search="username")
     ```
 
 

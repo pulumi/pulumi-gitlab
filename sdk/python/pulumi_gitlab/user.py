@@ -398,7 +398,42 @@ class User(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a User resource with the given unique name, props, and options.
+        ## # gitlab\_user
+
+        This resource allows you to create and manage GitLab users.
+        Note your provider will need to be configured with admin-level access for this resource to work.
+
+        > **Note:** You must specify either `password` or `reset_password`.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.User("example",
+            can_create_group=False,
+            email="gitlab@user.create",
+            is_admin=True,
+            is_external=True,
+            password="superPassword",
+            projects_limit=4,
+            reset_password=False,
+            username="example")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import gitlab:index/user:User You can import a user to terraform state using `<resource> <id>`.
+        ```
+
+         The `id` must be an integer for the id of the user you want to import, for example
+
+        ```sh
+         $ pulumi import gitlab:index/user:User example 42
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
@@ -421,7 +456,42 @@ class User(pulumi.CustomResource):
                  args: UserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a User resource with the given unique name, props, and options.
+        ## # gitlab\_user
+
+        This resource allows you to create and manage GitLab users.
+        Note your provider will need to be configured with admin-level access for this resource to work.
+
+        > **Note:** You must specify either `password` or `reset_password`.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.User("example",
+            can_create_group=False,
+            email="gitlab@user.create",
+            is_admin=True,
+            is_external=True,
+            password="superPassword",
+            projects_limit=4,
+            reset_password=False,
+            username="example")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import gitlab:index/user:User You can import a user to terraform state using `<resource> <id>`.
+        ```
+
+         The `id` must be an integer for the id of the user you want to import, for example
+
+        ```sh
+         $ pulumi import gitlab:index/user:User example 42
+        ```
+
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

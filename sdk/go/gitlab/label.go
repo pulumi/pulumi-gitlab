@@ -30,9 +30,17 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := gitlab.NewLabel(ctx, "fixme", &gitlab.LabelArgs{
-// 			Color:       pulumi.String("#ffcc00"),
-// 			Description: pulumi.String("issue with failing tests"),
 // 			Project:     pulumi.String("example"),
+// 			Description: pulumi.String("issue with failing tests"),
+// 			Color:       pulumi.String("#ffcc00"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = gitlab.NewLabel(ctx, "devopsCreate", &gitlab.LabelArgs{
+// 			Project:     pulumi.Any(gitlab_project.Example.Id),
+// 			Description: pulumi.String("issue for creating infrastructure resources"),
+// 			Color:       pulumi.String("#ffa500"),
 // 		})
 // 		if err != nil {
 // 			return err

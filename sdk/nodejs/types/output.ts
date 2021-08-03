@@ -4,9 +4,35 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface BranchProtectionAllowedToMerge {
+    accessLevel: string;
+    accessLevelDescription: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
+    groupId?: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
+    userId?: number;
+}
+
+export interface BranchProtectionAllowedToPush {
+    accessLevel: string;
+    accessLevelDescription: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
+    groupId?: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
+    userId?: number;
+}
+
 export interface GetGroupMembershipMember {
     /**
-     * Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     * Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
      */
     accessLevel: string;
     /**
@@ -97,6 +123,7 @@ export interface GetProjectsProject {
      */
     archived: boolean;
     avatarUrl: string;
+    buildCoverageRegex: string;
     ciConfigPath: string;
     containerRegistryEnabled: boolean;
     createdAt: string;
@@ -305,7 +332,7 @@ export interface GetUsersUser {
      */
     lastSignInAt: string;
     /**
-     * Linkedin profile of the user.
+     * LinkedIn profile of the user.
      */
     linkedin: string;
     /**
@@ -345,7 +372,7 @@ export interface GetUsersUser {
      */
     twitter: string;
     /**
-     * Whether user's two factor auth is enabled.
+     * Whether user's two-factor auth is enabled.
      */
     twoFactorEnabled: boolean;
     /**

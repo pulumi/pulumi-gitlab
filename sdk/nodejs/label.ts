@@ -18,9 +18,15 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const fixme = new gitlab.Label("fixme", {
- *     color: "#ffcc00",
- *     description: "issue with failing tests",
  *     project: "example",
+ *     description: "issue with failing tests",
+ *     color: "#ffcc00",
+ * });
+ * // Scoped label
+ * const devopsCreate = new gitlab.Label("devopsCreate", {
+ *     project: gitlab_project.example.id,
+ *     description: "issue for creating infrastructure resources",
+ *     color: "#ffa500",
  * });
  * ```
  */

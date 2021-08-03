@@ -14,13 +14,12 @@ namespace Pulumi.GitLab
         /// <summary>
         /// ## # gitlab\_group\_membership
         /// 
-        /// Provides details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
+        /// Provide details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
-        /// 
-        /// **By group's ID**
+        /// ### By group's ID
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -38,8 +37,9 @@ namespace Pulumi.GitLab
         /// 
         /// }
         /// ```
-        /// 
-        /// **By group's full path**
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### By group's full path
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -68,7 +68,7 @@ namespace Pulumi.GitLab
     public sealed class GetGroupMembershipArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        /// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         /// </summary>
         [Input("accessLevel")]
         public string? AccessLevel { get; set; }

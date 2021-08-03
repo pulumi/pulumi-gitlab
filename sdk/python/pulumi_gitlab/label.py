@@ -176,9 +176,14 @@ class Label(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         fixme = gitlab.Label("fixme",
-            color="#ffcc00",
+            project="example",
             description="issue with failing tests",
-            project="example")
+            color="#ffcc00")
+        # Scoped label
+        devops_create = gitlab.Label("devopsCreate",
+            project=gitlab_project["example"]["id"],
+            description="issue for creating infrastructure resources",
+            color="#ffa500")
         ```
 
         :param str resource_name: The name of the resource.
@@ -208,9 +213,14 @@ class Label(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         fixme = gitlab.Label("fixme",
-            color="#ffcc00",
+            project="example",
             description="issue with failing tests",
-            project="example")
+            color="#ffcc00")
+        # Scoped label
+        devops_create = gitlab.Label("devopsCreate",
+            project=gitlab_project["example"]["id"],
+            description="issue for creating infrastructure resources",
+            color="#ffa500")
         ```
 
         :param str resource_name: The name of the resource.

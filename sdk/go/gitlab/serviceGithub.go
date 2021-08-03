@@ -11,6 +11,53 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## # gitlab\_service\_github
+//
+// **NOTE**: requires either EE (self-hosted) or Silver and above (GitLab.com).
+//
+// This resource manages a [GitHub integration](https://docs.gitlab.com/ee/user/project/integrations/github.html) that updates pipeline statuses on a GitHub repo's pull requests.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		awesomeProject, err := gitlab.NewProject(ctx, "awesomeProject", &gitlab.ProjectArgs{
+// 			Description:     pulumi.String("My awesome project."),
+// 			VisibilityLevel: pulumi.String("public"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = gitlab.NewServiceGithub(ctx, "github", &gitlab.ServiceGithubArgs{
+// 			Project:       awesomeProject.ID(),
+// 			Token:         pulumi.String("REDACTED"),
+// 			RepositoryUrl: pulumi.String("https://github.com/gitlabhq/terraform-provider-gitlab"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a service_github state using `<resource> <project_id>`
+// ```
+//
+// ```sh
+//  $ pulumi import gitlab:index/serviceGithub:ServiceGithub github 1
+// ```
 type ServiceGithub struct {
 	pulumi.CustomResourceState
 

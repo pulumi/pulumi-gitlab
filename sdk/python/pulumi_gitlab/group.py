@@ -639,7 +639,40 @@ class Group(pulumi.CustomResource):
                  visibility_level: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Group resource with the given unique name, props, and options.
+        ## # gitlab\_group
+
+        This resource allows you to create and manage GitLab groups.
+        Note your provider will need to be configured with admin-level access for this resource to work.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example_group = gitlab.Group("exampleGroup",
+            path="example",
+            description="An example group")
+        # Create a project in the example group
+        example_project = gitlab.Project("exampleProject",
+            description="An example project",
+            namespace_id=example_group.id)
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
+        ```
+
+         `id` can be whatever the [details of a group][details_of_a_group] api takes for its `:id` value, so for example
+
+        ```sh
+         $ pulumi import gitlab:index/group:Group example example
+        ```
+
+         [details_of_a_group]https://docs.gitlab.com/ee/api/groups.html#details-of-a-group
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_devops_enabled: Boolean, defaults to false.  Default to Auto
@@ -677,7 +710,40 @@ class Group(pulumi.CustomResource):
                  args: GroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Group resource with the given unique name, props, and options.
+        ## # gitlab\_group
+
+        This resource allows you to create and manage GitLab groups.
+        Note your provider will need to be configured with admin-level access for this resource to work.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example_group = gitlab.Group("exampleGroup",
+            path="example",
+            description="An example group")
+        # Create a project in the example group
+        example_project = gitlab.Project("exampleProject",
+            description="An example project",
+            namespace_id=example_group.id)
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
+        ```
+
+         `id` can be whatever the [details of a group][details_of_a_group] api takes for its `:id` value, so for example
+
+        ```sh
+         $ pulumi import gitlab:index/group:Group example example
+        ```
+
+         [details_of_a_group]https://docs.gitlab.com/ee/api/groups.html#details-of-a-group
+
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

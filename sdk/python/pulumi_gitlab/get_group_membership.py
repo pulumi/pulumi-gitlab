@@ -92,11 +92,10 @@ def get_group_membership(access_level: Optional[str] = None,
     """
     ## # gitlab\_group\_membership
 
-    Provides details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
+    Provide details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
 
     ## Example Usage
-
-    **By group's ID**
+    ### By group's ID
 
     ```python
     import pulumi
@@ -104,8 +103,7 @@ def get_group_membership(access_level: Optional[str] = None,
 
     example = gitlab.get_group_membership(group_id=123)
     ```
-
-    **By group's full path**
+    ### By group's full path
 
     ```python
     import pulumi
@@ -115,7 +113,7 @@ def get_group_membership(access_level: Optional[str] = None,
     ```
 
 
-    :param str access_level: Only return members with the desidered access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+    :param str access_level: Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
     :param str full_path: The full path of the group.
     :param int group_id: The ID of the group.
     """

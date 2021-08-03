@@ -4,6 +4,32 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface BranchProtectionAllowedToMerge {
+    accessLevel?: pulumi.Input<string>;
+    accessLevelDescription?: pulumi.Input<string>;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
+    groupId?: pulumi.Input<number>;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
+    userId?: pulumi.Input<number>;
+}
+
+export interface BranchProtectionAllowedToPush {
+    accessLevel?: pulumi.Input<string>;
+    accessLevelDescription?: pulumi.Input<string>;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
+    groupId?: pulumi.Input<number>;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
+    userId?: pulumi.Input<number>;
+}
+
 export interface ProjectPushRules {
     /**
      * All commit author emails must match this regex, e.g. `@my-company.com$`.

@@ -66,7 +66,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string LastSignInAt;
         /// <summary>
-        /// Linkedin profile of the user.
+        /// LinkedIn profile of the user.
         /// </summary>
         public readonly string Linkedin;
         /// <summary>
@@ -106,7 +106,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string Twitter;
         /// <summary>
-        /// Whether user's two factor auth is enabled.
+        /// Whether user's two-factor auth is enabled.
         /// </summary>
         public readonly bool TwoFactorEnabled;
         /// <summary>

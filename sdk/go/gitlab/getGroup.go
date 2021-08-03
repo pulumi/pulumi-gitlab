@@ -9,11 +9,10 @@ import (
 
 // ## # gitlab\_group
 //
-// Provides details about a specific group in the gitlab provider.
+// Provide details about a specific group in the gitlab provider.
 //
 // ## Example Usage
-//
-// **By group's ID**
+// ### By group's ID
 //
 // ```go
 // package main
@@ -36,8 +35,7 @@ import (
 // 	})
 // }
 // ```
-//
-// **By group's full path**
+// ### By group's full path
 //
 // ```go
 // package main
