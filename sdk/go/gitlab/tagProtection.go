@@ -194,7 +194,7 @@ type TagProtectionArrayInput interface {
 type TagProtectionArray []TagProtectionInput
 
 func (TagProtectionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TagProtection)(nil))
+	return reflect.TypeOf((*[]*TagProtection)(nil)).Elem()
 }
 
 func (i TagProtectionArray) ToTagProtectionArrayOutput() TagProtectionArrayOutput {
@@ -219,7 +219,7 @@ type TagProtectionMapInput interface {
 type TagProtectionMap map[string]TagProtectionInput
 
 func (TagProtectionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TagProtection)(nil))
+	return reflect.TypeOf((*map[string]*TagProtection)(nil)).Elem()
 }
 
 func (i TagProtectionMap) ToTagProtectionMapOutput() TagProtectionMapOutput {
@@ -230,9 +230,7 @@ func (i TagProtectionMap) ToTagProtectionMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(TagProtectionMapOutput)
 }
 
-type TagProtectionOutput struct {
-	*pulumi.OutputState
-}
+type TagProtectionOutput struct{ *pulumi.OutputState }
 
 func (TagProtectionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TagProtection)(nil))
@@ -251,14 +249,12 @@ func (o TagProtectionOutput) ToTagProtectionPtrOutput() TagProtectionPtrOutput {
 }
 
 func (o TagProtectionOutput) ToTagProtectionPtrOutputWithContext(ctx context.Context) TagProtectionPtrOutput {
-	return o.ApplyT(func(v TagProtection) *TagProtection {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagProtection) *TagProtection {
 		return &v
 	}).(TagProtectionPtrOutput)
 }
 
-type TagProtectionPtrOutput struct {
-	*pulumi.OutputState
-}
+type TagProtectionPtrOutput struct{ *pulumi.OutputState }
 
 func (TagProtectionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TagProtection)(nil))
@@ -270,6 +266,16 @@ func (o TagProtectionPtrOutput) ToTagProtectionPtrOutput() TagProtectionPtrOutpu
 
 func (o TagProtectionPtrOutput) ToTagProtectionPtrOutputWithContext(ctx context.Context) TagProtectionPtrOutput {
 	return o
+}
+
+func (o TagProtectionPtrOutput) Elem() TagProtectionOutput {
+	return o.ApplyT(func(v *TagProtection) TagProtection {
+		if v != nil {
+			return *v
+		}
+		var ret TagProtection
+		return ret
+	}).(TagProtectionOutput)
 }
 
 type TagProtectionArrayOutput struct{ *pulumi.OutputState }
@@ -313,6 +319,10 @@ func (o TagProtectionMapOutput) MapIndex(k pulumi.StringInput) TagProtectionOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TagProtectionInput)(nil)).Elem(), &TagProtection{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagProtectionPtrInput)(nil)).Elem(), &TagProtection{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagProtectionArrayInput)(nil)).Elem(), TagProtectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagProtectionMapInput)(nil)).Elem(), TagProtectionMap{})
 	pulumi.RegisterOutputType(TagProtectionOutput{})
 	pulumi.RegisterOutputType(TagProtectionPtrOutput{})
 	pulumi.RegisterOutputType(TagProtectionArrayOutput{})

@@ -117,3 +117,49 @@ export interface GetUsersResult {
      */
     readonly users: outputs.GetUsersUser[];
 }
+
+export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
+    return pulumi.output(args).apply(a => getUsers(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getUsers.
+ */
+export interface GetUsersOutputArgs {
+    /**
+     * Filter users that are active.
+     */
+    active?: pulumi.Input<boolean>;
+    /**
+     * Filter users that are blocked.
+     */
+    blocked?: pulumi.Input<boolean>;
+    /**
+     * Search for users created after a specific date. (Requires administrator privileges)
+     */
+    createdAfter?: pulumi.Input<string>;
+    /**
+     * Search for users created before a specific date. (Requires administrator privileges)
+     */
+    createdBefore?: pulumi.Input<string>;
+    /**
+     * Lookup users by external provider. (Requires administrator privileges)
+     */
+    externProvider?: pulumi.Input<string>;
+    /**
+     * Lookup users by external UID. (Requires administrator privileges)
+     */
+    externUid?: pulumi.Input<string>;
+    /**
+     * Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
+     */
+    orderBy?: pulumi.Input<string>;
+    /**
+     * Search users by username, name or email.
+     */
+    search?: pulumi.Input<string>;
+    /**
+     * Sort users' list in asc or desc order. (Requires administrator privileges)
+     */
+    sort?: pulumi.Input<string>;
+}

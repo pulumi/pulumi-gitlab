@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GitLab
 {
@@ -41,6 +42,37 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("gitlab:index/getUser:getUser", args ?? new GetUserArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # gitlab\_user
+        /// 
+        /// Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(GitLab.GetUser.InvokeAsync(new GitLab.GetUserArgs
+        ///         {
+        ///             Username = "myuser",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetUserResult> Invoke(GetUserInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetUserResult>("gitlab:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithVersion());
     }
 
 
@@ -65,6 +97,31 @@ namespace Pulumi.GitLab
         public string? Username { get; set; }
 
         public GetUserArgs()
+        {
+        }
+    }
+
+    public sealed class GetUserInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The e-mail address of the user. (Requires administrator privileges)
+        /// </summary>
+        [Input("email")]
+        public Input<string>? Email { get; set; }
+
+        /// <summary>
+        /// The ID of the user.
+        /// </summary>
+        [Input("userId")]
+        public Input<int>? UserId { get; set; }
+
+        /// <summary>
+        /// The username of the user.
+        /// </summary>
+        [Input("username")]
+        public Input<string>? Username { get; set; }
+
+        public GetUserInvokeArgs()
         {
         }
     }

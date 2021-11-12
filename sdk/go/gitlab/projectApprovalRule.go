@@ -19,6 +19,79 @@ import (
 //
 // > This feature requires GitLab Premium.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gitlab.NewProjectApprovalRule(ctx, "example_one", &gitlab.ProjectApprovalRuleArgs{
+// 			ApprovalsRequired: pulumi.Int(3),
+// 			GroupIds: pulumi.IntArray{
+// 				pulumi.Int(51),
+// 			},
+// 			Project: pulumi.String("5"),
+// 			UserIds: pulumi.IntArray{
+// 				pulumi.Int(50),
+// 				pulumi.Int(500),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### With Protected Branch IDs
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleBranchProtection, err := gitlab.NewBranchProtection(ctx, "exampleBranchProtection", &gitlab.BranchProtectionArgs{
+// 			Project:          pulumi.String("5"),
+// 			Branch:           pulumi.String("release/*"),
+// 			PushAccessLevel:  pulumi.String("maintainer"),
+// 			MergeAccessLevel: pulumi.String("developer"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = gitlab.NewProjectApprovalRule(ctx, "exampleProjectApprovalRule", &gitlab.ProjectApprovalRuleArgs{
+// 			Project:           pulumi.String("5"),
+// 			ApprovalsRequired: pulumi.Int(3),
+// 			UserIds: pulumi.IntArray{
+// 				pulumi.Int(50),
+// 				pulumi.Int(500),
+// 			},
+// 			GroupIds: pulumi.IntArray{
+// 				pulumi.Int(51),
+// 			},
+// 			ProtectedBranchIds: pulumi.IntArray{
+// 				exampleBranchProtection.BranchProtectionId,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // GitLab project approval rules can be imported using an id consisting of `project-id:rule-id`, e.g.
@@ -208,7 +281,7 @@ type ProjectApprovalRuleArrayInput interface {
 type ProjectApprovalRuleArray []ProjectApprovalRuleInput
 
 func (ProjectApprovalRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ProjectApprovalRule)(nil))
+	return reflect.TypeOf((*[]*ProjectApprovalRule)(nil)).Elem()
 }
 
 func (i ProjectApprovalRuleArray) ToProjectApprovalRuleArrayOutput() ProjectApprovalRuleArrayOutput {
@@ -233,7 +306,7 @@ type ProjectApprovalRuleMapInput interface {
 type ProjectApprovalRuleMap map[string]ProjectApprovalRuleInput
 
 func (ProjectApprovalRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ProjectApprovalRule)(nil))
+	return reflect.TypeOf((*map[string]*ProjectApprovalRule)(nil)).Elem()
 }
 
 func (i ProjectApprovalRuleMap) ToProjectApprovalRuleMapOutput() ProjectApprovalRuleMapOutput {
@@ -244,9 +317,7 @@ func (i ProjectApprovalRuleMap) ToProjectApprovalRuleMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectApprovalRuleMapOutput)
 }
 
-type ProjectApprovalRuleOutput struct {
-	*pulumi.OutputState
-}
+type ProjectApprovalRuleOutput struct{ *pulumi.OutputState }
 
 func (ProjectApprovalRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectApprovalRule)(nil))
@@ -265,14 +336,12 @@ func (o ProjectApprovalRuleOutput) ToProjectApprovalRulePtrOutput() ProjectAppro
 }
 
 func (o ProjectApprovalRuleOutput) ToProjectApprovalRulePtrOutputWithContext(ctx context.Context) ProjectApprovalRulePtrOutput {
-	return o.ApplyT(func(v ProjectApprovalRule) *ProjectApprovalRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectApprovalRule) *ProjectApprovalRule {
 		return &v
 	}).(ProjectApprovalRulePtrOutput)
 }
 
-type ProjectApprovalRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectApprovalRulePtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectApprovalRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProjectApprovalRule)(nil))
@@ -284,6 +353,16 @@ func (o ProjectApprovalRulePtrOutput) ToProjectApprovalRulePtrOutput() ProjectAp
 
 func (o ProjectApprovalRulePtrOutput) ToProjectApprovalRulePtrOutputWithContext(ctx context.Context) ProjectApprovalRulePtrOutput {
 	return o
+}
+
+func (o ProjectApprovalRulePtrOutput) Elem() ProjectApprovalRuleOutput {
+	return o.ApplyT(func(v *ProjectApprovalRule) ProjectApprovalRule {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectApprovalRule
+		return ret
+	}).(ProjectApprovalRuleOutput)
 }
 
 type ProjectApprovalRuleArrayOutput struct{ *pulumi.OutputState }
@@ -327,6 +406,10 @@ func (o ProjectApprovalRuleMapOutput) MapIndex(k pulumi.StringInput) ProjectAppr
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectApprovalRuleInput)(nil)).Elem(), &ProjectApprovalRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectApprovalRulePtrInput)(nil)).Elem(), &ProjectApprovalRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectApprovalRuleArrayInput)(nil)).Elem(), ProjectApprovalRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectApprovalRuleMapInput)(nil)).Elem(), ProjectApprovalRuleMap{})
 	pulumi.RegisterOutputType(ProjectApprovalRuleOutput{})
 	pulumi.RegisterOutputType(ProjectApprovalRulePtrOutput{})
 	pulumi.RegisterOutputType(ProjectApprovalRuleArrayOutput{})

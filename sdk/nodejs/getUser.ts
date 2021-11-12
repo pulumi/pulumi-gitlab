@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -165,4 +164,26 @@ export interface GetUserResult {
      * User's website URL.
      */
     readonly websiteUrl: string;
+}
+
+export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
+    return pulumi.output(args).apply(a => getUser(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getUser.
+ */
+export interface GetUserOutputArgs {
+    /**
+     * The e-mail address of the user. (Requires administrator privileges)
+     */
+    email?: pulumi.Input<string>;
+    /**
+     * The ID of the user.
+     */
+    userId?: pulumi.Input<number>;
+    /**
+     * The username of the user.
+     */
+    username?: pulumi.Input<string>;
 }

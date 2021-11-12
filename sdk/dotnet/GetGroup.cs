@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GitLab
 {
@@ -62,6 +63,58 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("gitlab:index/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # gitlab\_group
+        /// 
+        /// Provide details about a specific group in the gitlab provider.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// ### By group's ID
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(GitLab.GetGroup.InvokeAsync(new GitLab.GetGroupArgs
+        ///         {
+        ///             GroupId = 123,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### By group's full path
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(GitLab.GetGroup.InvokeAsync(new GitLab.GetGroupArgs
+        ///         {
+        ///             FullPath = "foo/bar",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGroupResult>("gitlab:index/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithVersion());
     }
 
 
@@ -80,6 +133,25 @@ namespace Pulumi.GitLab
         public int? GroupId { get; set; }
 
         public GetGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetGroupInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The full path of the group.
+        /// </summary>
+        [Input("fullPath")]
+        public Input<string>? FullPath { get; set; }
+
+        /// <summary>
+        /// The ID of the group.
+        /// </summary>
+        [Input("groupId")]
+        public Input<int>? GroupId { get; set; }
+
+        public GetGroupInvokeArgs()
         {
         }
     }

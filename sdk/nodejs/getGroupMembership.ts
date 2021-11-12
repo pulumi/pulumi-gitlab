@@ -85,3 +85,25 @@ export interface GetGroupMembershipResult {
      */
     readonly members: outputs.GetGroupMembershipMember[];
 }
+
+export function getGroupMembershipOutput(args?: GetGroupMembershipOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupMembershipResult> {
+    return pulumi.output(args).apply(a => getGroupMembership(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGroupMembership.
+ */
+export interface GetGroupMembershipOutputArgs {
+    /**
+     * Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     */
+    accessLevel?: pulumi.Input<string>;
+    /**
+     * The full path of the group.
+     */
+    fullPath?: pulumi.Input<string>;
+    /**
+     * The ID of the group.
+     */
+    groupId?: pulumi.Input<number>;
+}

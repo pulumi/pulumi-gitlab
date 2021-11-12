@@ -213,7 +213,7 @@ type GroupShareGroupArrayInput interface {
 type GroupShareGroupArray []GroupShareGroupInput
 
 func (GroupShareGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*GroupShareGroup)(nil))
+	return reflect.TypeOf((*[]*GroupShareGroup)(nil)).Elem()
 }
 
 func (i GroupShareGroupArray) ToGroupShareGroupArrayOutput() GroupShareGroupArrayOutput {
@@ -238,7 +238,7 @@ type GroupShareGroupMapInput interface {
 type GroupShareGroupMap map[string]GroupShareGroupInput
 
 func (GroupShareGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*GroupShareGroup)(nil))
+	return reflect.TypeOf((*map[string]*GroupShareGroup)(nil)).Elem()
 }
 
 func (i GroupShareGroupMap) ToGroupShareGroupMapOutput() GroupShareGroupMapOutput {
@@ -249,9 +249,7 @@ func (i GroupShareGroupMap) ToGroupShareGroupMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GroupShareGroupMapOutput)
 }
 
-type GroupShareGroupOutput struct {
-	*pulumi.OutputState
-}
+type GroupShareGroupOutput struct{ *pulumi.OutputState }
 
 func (GroupShareGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GroupShareGroup)(nil))
@@ -270,14 +268,12 @@ func (o GroupShareGroupOutput) ToGroupShareGroupPtrOutput() GroupShareGroupPtrOu
 }
 
 func (o GroupShareGroupOutput) ToGroupShareGroupPtrOutputWithContext(ctx context.Context) GroupShareGroupPtrOutput {
-	return o.ApplyT(func(v GroupShareGroup) *GroupShareGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupShareGroup) *GroupShareGroup {
 		return &v
 	}).(GroupShareGroupPtrOutput)
 }
 
-type GroupShareGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type GroupShareGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (GroupShareGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**GroupShareGroup)(nil))
@@ -289,6 +285,16 @@ func (o GroupShareGroupPtrOutput) ToGroupShareGroupPtrOutput() GroupShareGroupPt
 
 func (o GroupShareGroupPtrOutput) ToGroupShareGroupPtrOutputWithContext(ctx context.Context) GroupShareGroupPtrOutput {
 	return o
+}
+
+func (o GroupShareGroupPtrOutput) Elem() GroupShareGroupOutput {
+	return o.ApplyT(func(v *GroupShareGroup) GroupShareGroup {
+		if v != nil {
+			return *v
+		}
+		var ret GroupShareGroup
+		return ret
+	}).(GroupShareGroupOutput)
 }
 
 type GroupShareGroupArrayOutput struct{ *pulumi.OutputState }
@@ -332,6 +338,10 @@ func (o GroupShareGroupMapOutput) MapIndex(k pulumi.StringInput) GroupShareGroup
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupShareGroupInput)(nil)).Elem(), &GroupShareGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupShareGroupPtrInput)(nil)).Elem(), &GroupShareGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupShareGroupArrayInput)(nil)).Elem(), GroupShareGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupShareGroupMapInput)(nil)).Elem(), GroupShareGroupMap{})
 	pulumi.RegisterOutputType(GroupShareGroupOutput{})
 	pulumi.RegisterOutputType(GroupShareGroupPtrOutput{})
 	pulumi.RegisterOutputType(GroupShareGroupArrayOutput{})

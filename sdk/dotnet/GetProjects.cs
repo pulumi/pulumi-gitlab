@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GitLab
 {
@@ -72,6 +73,68 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Task<GetProjectsResult> InvokeAsync(GetProjectsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("gitlab:index/getProjects:getProjects", args ?? new GetProjectsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # gitlab\_projects
+        /// 
+        /// Provide details about a list of projects in the Gitlab provider. Listing all projects and group projects with [project filtering](https://docs.gitlab.com/ee/api/projects.html#list-user-projects) or [group project filtering](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-projects) is supported.
+        /// 
+        /// &gt; **NOTE**: This data source supports all available filters exposed by the `xanzy/go-gitlab` package, which might not expose all available filters exposed by the Gitlab APIs.  
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// ### List projects within a group tree
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var mygroup = Output.Create(GitLab.GetGroup.InvokeAsync(new GitLab.GetGroupArgs
+        ///         {
+        ///             FullPath = "mygroup",
+        ///         }));
+        ///         var groupProjects = mygroup.Apply(mygroup =&gt; Output.Create(GitLab.GetProjects.InvokeAsync(new GitLab.GetProjectsArgs
+        ///         {
+        ///             GroupId = mygroup.Id,
+        ///             OrderBy = "name",
+        ///             IncludeSubgroups = true,
+        ///             WithShared = false,
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### List projects using the search syntax
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var projects = Output.Create(GitLab.GetProjects.InvokeAsync(new GitLab.GetProjectsArgs
+        ///         {
+        ///             Search = "postgresql",
+        ///             Visibility = "private",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetProjectsResult> Invoke(GetProjectsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("gitlab:index/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -198,6 +261,133 @@ namespace Pulumi.GitLab
         public bool? WithShared { get; set; }
 
         public GetProjectsArgs()
+        {
+        }
+    }
+
+    public sealed class GetProjectsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Limit by archived status.
+        /// </summary>
+        [Input("archived")]
+        public Input<bool>? Archived { get; set; }
+
+        /// <summary>
+        /// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
+        /// </summary>
+        [Input("groupId")]
+        public Input<int>? GroupId { get; set; }
+
+        /// <summary>
+        /// Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
+        /// </summary>
+        [Input("includeSubgroups")]
+        public Input<bool>? IncludeSubgroups { get; set; }
+
+        /// <summary>
+        /// Prevents overloading your Gitlab instance in case of a misconfiguration. Default is `10`.
+        /// </summary>
+        [Input("maxQueryablePages")]
+        public Input<int>? MaxQueryablePages { get; set; }
+
+        /// <summary>
+        /// Limit by projects that the current user is a member of.
+        /// </summary>
+        [Input("membership")]
+        public Input<bool>? Membership { get; set; }
+
+        /// <summary>
+        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `group_id`.
+        /// </summary>
+        [Input("minAccessLevel")]
+        public Input<int>? MinAccessLevel { get; set; }
+
+        /// <summary>
+        /// Return projects ordered by `id`, `name`, `path`, `created_at`, `updated_at`, or `last_activity_at` fields. Default is `created_at`.
+        /// </summary>
+        [Input("orderBy")]
+        public Input<string>? OrderBy { get; set; }
+
+        /// <summary>
+        /// Limit by projects owned by the current user.
+        /// </summary>
+        [Input("owned")]
+        public Input<bool>? Owned { get; set; }
+
+        [Input("page")]
+        public Input<int>? Page { get; set; }
+
+        [Input("perPage")]
+        public Input<int>? PerPage { get; set; }
+
+        /// <summary>
+        /// Return list of authorized projects matching the search criteria.
+        /// </summary>
+        [Input("search")]
+        public Input<string>? Search { get; set; }
+
+        /// <summary>
+        /// Return only the ID, URL, name, and path of each project.
+        /// </summary>
+        [Input("simple")]
+        public Input<bool>? Simple { get; set; }
+
+        /// <summary>
+        /// Return projects sorted in `asc` or `desc` order. Default is `desc`.
+        /// </summary>
+        [Input("sort")]
+        public Input<string>? Sort { get; set; }
+
+        /// <summary>
+        /// Limit by projects starred by the current user.
+        /// </summary>
+        [Input("starred")]
+        public Input<bool>? Starred { get; set; }
+
+        /// <summary>
+        /// Include project statistics. Cannot be used with `group_id`.
+        /// </summary>
+        [Input("statistics")]
+        public Input<bool>? Statistics { get; set; }
+
+        /// <summary>
+        /// Limit by visibility `public`, `internal`, or `private`.
+        /// </summary>
+        [Input("visibility")]
+        public Input<string>? Visibility { get; set; }
+
+        /// <summary>
+        /// Include custom attributes in response _(admins only)_.
+        /// </summary>
+        [Input("withCustomAttributes")]
+        public Input<bool>? WithCustomAttributes { get; set; }
+
+        /// <summary>
+        /// Limit by projects with issues feature enabled. Default is `false`.
+        /// </summary>
+        [Input("withIssuesEnabled")]
+        public Input<bool>? WithIssuesEnabled { get; set; }
+
+        /// <summary>
+        /// Limit by projects with merge requests feature enabled. Default is `false`.
+        /// </summary>
+        [Input("withMergeRequestsEnabled")]
+        public Input<bool>? WithMergeRequestsEnabled { get; set; }
+
+        /// <summary>
+        /// Limit by projects which use the given programming language. Cannot be used with `group_id`.
+        /// </summary>
+        [Input("withProgrammingLanguage")]
+        public Input<string>? WithProgrammingLanguage { get; set; }
+
+        /// <summary>
+        /// Include projects shared to this group. Default is `true`. Needs `group_id`.
+        /// </summary>
+        [Input("withShared")]
+        public Input<bool>? WithShared { get; set; }
+
+        public GetProjectsInvokeArgs()
         {
         }
     }

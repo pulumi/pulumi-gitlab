@@ -250,7 +250,7 @@ type ProjectVariableArrayInput interface {
 type ProjectVariableArray []ProjectVariableInput
 
 func (ProjectVariableArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ProjectVariable)(nil))
+	return reflect.TypeOf((*[]*ProjectVariable)(nil)).Elem()
 }
 
 func (i ProjectVariableArray) ToProjectVariableArrayOutput() ProjectVariableArrayOutput {
@@ -275,7 +275,7 @@ type ProjectVariableMapInput interface {
 type ProjectVariableMap map[string]ProjectVariableInput
 
 func (ProjectVariableMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ProjectVariable)(nil))
+	return reflect.TypeOf((*map[string]*ProjectVariable)(nil)).Elem()
 }
 
 func (i ProjectVariableMap) ToProjectVariableMapOutput() ProjectVariableMapOutput {
@@ -286,9 +286,7 @@ func (i ProjectVariableMap) ToProjectVariableMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectVariableMapOutput)
 }
 
-type ProjectVariableOutput struct {
-	*pulumi.OutputState
-}
+type ProjectVariableOutput struct{ *pulumi.OutputState }
 
 func (ProjectVariableOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectVariable)(nil))
@@ -307,14 +305,12 @@ func (o ProjectVariableOutput) ToProjectVariablePtrOutput() ProjectVariablePtrOu
 }
 
 func (o ProjectVariableOutput) ToProjectVariablePtrOutputWithContext(ctx context.Context) ProjectVariablePtrOutput {
-	return o.ApplyT(func(v ProjectVariable) *ProjectVariable {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectVariable) *ProjectVariable {
 		return &v
 	}).(ProjectVariablePtrOutput)
 }
 
-type ProjectVariablePtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectVariablePtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectVariablePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProjectVariable)(nil))
@@ -326,6 +322,16 @@ func (o ProjectVariablePtrOutput) ToProjectVariablePtrOutput() ProjectVariablePt
 
 func (o ProjectVariablePtrOutput) ToProjectVariablePtrOutputWithContext(ctx context.Context) ProjectVariablePtrOutput {
 	return o
+}
+
+func (o ProjectVariablePtrOutput) Elem() ProjectVariableOutput {
+	return o.ApplyT(func(v *ProjectVariable) ProjectVariable {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectVariable
+		return ret
+	}).(ProjectVariableOutput)
 }
 
 type ProjectVariableArrayOutput struct{ *pulumi.OutputState }
@@ -369,6 +375,10 @@ func (o ProjectVariableMapOutput) MapIndex(k pulumi.StringInput) ProjectVariable
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectVariableInput)(nil)).Elem(), &ProjectVariable{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectVariablePtrInput)(nil)).Elem(), &ProjectVariable{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectVariableArrayInput)(nil)).Elem(), ProjectVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectVariableMapInput)(nil)).Elem(), ProjectVariableMap{})
 	pulumi.RegisterOutputType(ProjectVariableOutput{})
 	pulumi.RegisterOutputType(ProjectVariablePtrOutput{})
 	pulumi.RegisterOutputType(ProjectVariableArrayOutput{})

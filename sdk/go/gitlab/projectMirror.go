@@ -227,7 +227,7 @@ type ProjectMirrorArrayInput interface {
 type ProjectMirrorArray []ProjectMirrorInput
 
 func (ProjectMirrorArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ProjectMirror)(nil))
+	return reflect.TypeOf((*[]*ProjectMirror)(nil)).Elem()
 }
 
 func (i ProjectMirrorArray) ToProjectMirrorArrayOutput() ProjectMirrorArrayOutput {
@@ -252,7 +252,7 @@ type ProjectMirrorMapInput interface {
 type ProjectMirrorMap map[string]ProjectMirrorInput
 
 func (ProjectMirrorMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ProjectMirror)(nil))
+	return reflect.TypeOf((*map[string]*ProjectMirror)(nil)).Elem()
 }
 
 func (i ProjectMirrorMap) ToProjectMirrorMapOutput() ProjectMirrorMapOutput {
@@ -263,9 +263,7 @@ func (i ProjectMirrorMap) ToProjectMirrorMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMirrorMapOutput)
 }
 
-type ProjectMirrorOutput struct {
-	*pulumi.OutputState
-}
+type ProjectMirrorOutput struct{ *pulumi.OutputState }
 
 func (ProjectMirrorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectMirror)(nil))
@@ -284,14 +282,12 @@ func (o ProjectMirrorOutput) ToProjectMirrorPtrOutput() ProjectMirrorPtrOutput {
 }
 
 func (o ProjectMirrorOutput) ToProjectMirrorPtrOutputWithContext(ctx context.Context) ProjectMirrorPtrOutput {
-	return o.ApplyT(func(v ProjectMirror) *ProjectMirror {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectMirror) *ProjectMirror {
 		return &v
 	}).(ProjectMirrorPtrOutput)
 }
 
-type ProjectMirrorPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectMirrorPtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectMirrorPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProjectMirror)(nil))
@@ -303,6 +299,16 @@ func (o ProjectMirrorPtrOutput) ToProjectMirrorPtrOutput() ProjectMirrorPtrOutpu
 
 func (o ProjectMirrorPtrOutput) ToProjectMirrorPtrOutputWithContext(ctx context.Context) ProjectMirrorPtrOutput {
 	return o
+}
+
+func (o ProjectMirrorPtrOutput) Elem() ProjectMirrorOutput {
+	return o.ApplyT(func(v *ProjectMirror) ProjectMirror {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectMirror
+		return ret
+	}).(ProjectMirrorOutput)
 }
 
 type ProjectMirrorArrayOutput struct{ *pulumi.OutputState }
@@ -346,6 +352,10 @@ func (o ProjectMirrorMapOutput) MapIndex(k pulumi.StringInput) ProjectMirrorOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMirrorInput)(nil)).Elem(), &ProjectMirror{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMirrorPtrInput)(nil)).Elem(), &ProjectMirror{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMirrorArrayInput)(nil)).Elem(), ProjectMirrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMirrorMapInput)(nil)).Elem(), ProjectMirrorMap{})
 	pulumi.RegisterOutputType(ProjectMirrorOutput{})
 	pulumi.RegisterOutputType(ProjectMirrorPtrOutput{})
 	pulumi.RegisterOutputType(ProjectMirrorArrayOutput{})

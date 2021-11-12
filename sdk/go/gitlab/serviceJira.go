@@ -241,7 +241,7 @@ type ServiceJiraArrayInput interface {
 type ServiceJiraArray []ServiceJiraInput
 
 func (ServiceJiraArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ServiceJira)(nil))
+	return reflect.TypeOf((*[]*ServiceJira)(nil)).Elem()
 }
 
 func (i ServiceJiraArray) ToServiceJiraArrayOutput() ServiceJiraArrayOutput {
@@ -266,7 +266,7 @@ type ServiceJiraMapInput interface {
 type ServiceJiraMap map[string]ServiceJiraInput
 
 func (ServiceJiraMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ServiceJira)(nil))
+	return reflect.TypeOf((*map[string]*ServiceJira)(nil)).Elem()
 }
 
 func (i ServiceJiraMap) ToServiceJiraMapOutput() ServiceJiraMapOutput {
@@ -277,9 +277,7 @@ func (i ServiceJiraMap) ToServiceJiraMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceJiraMapOutput)
 }
 
-type ServiceJiraOutput struct {
-	*pulumi.OutputState
-}
+type ServiceJiraOutput struct{ *pulumi.OutputState }
 
 func (ServiceJiraOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceJira)(nil))
@@ -298,14 +296,12 @@ func (o ServiceJiraOutput) ToServiceJiraPtrOutput() ServiceJiraPtrOutput {
 }
 
 func (o ServiceJiraOutput) ToServiceJiraPtrOutputWithContext(ctx context.Context) ServiceJiraPtrOutput {
-	return o.ApplyT(func(v ServiceJira) *ServiceJira {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceJira) *ServiceJira {
 		return &v
 	}).(ServiceJiraPtrOutput)
 }
 
-type ServiceJiraPtrOutput struct {
-	*pulumi.OutputState
-}
+type ServiceJiraPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceJiraPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceJira)(nil))
@@ -317,6 +313,16 @@ func (o ServiceJiraPtrOutput) ToServiceJiraPtrOutput() ServiceJiraPtrOutput {
 
 func (o ServiceJiraPtrOutput) ToServiceJiraPtrOutputWithContext(ctx context.Context) ServiceJiraPtrOutput {
 	return o
+}
+
+func (o ServiceJiraPtrOutput) Elem() ServiceJiraOutput {
+	return o.ApplyT(func(v *ServiceJira) ServiceJira {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceJira
+		return ret
+	}).(ServiceJiraOutput)
 }
 
 type ServiceJiraArrayOutput struct{ *pulumi.OutputState }
@@ -360,6 +366,10 @@ func (o ServiceJiraMapOutput) MapIndex(k pulumi.StringInput) ServiceJiraOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceJiraInput)(nil)).Elem(), &ServiceJira{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceJiraPtrInput)(nil)).Elem(), &ServiceJira{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceJiraArrayInput)(nil)).Elem(), ServiceJiraArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceJiraMapInput)(nil)).Elem(), ServiceJiraMap{})
 	pulumi.RegisterOutputType(ServiceJiraOutput{})
 	pulumi.RegisterOutputType(ServiceJiraPtrOutput{})
 	pulumi.RegisterOutputType(ServiceJiraArrayOutput{})

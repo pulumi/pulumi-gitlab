@@ -13,6 +13,7 @@ __all__ = [
     'GetGroupMembershipResult',
     'AwaitableGetGroupMembershipResult',
     'get_group_membership',
+    'get_group_membership_output',
 ]
 
 @pulumi.output_type
@@ -133,3 +134,39 @@ def get_group_membership(access_level: Optional[str] = None,
         group_id=__ret__.group_id,
         id=__ret__.id,
         members=__ret__.members)
+
+
+@_utilities.lift_output_func(get_group_membership)
+def get_group_membership_output(access_level: Optional[pulumi.Input[Optional[str]]] = None,
+                                full_path: Optional[pulumi.Input[Optional[str]]] = None,
+                                group_id: Optional[pulumi.Input[Optional[int]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupMembershipResult]:
+    """
+    ## # gitlab\_group\_membership
+
+    Provide details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
+
+    ## Example Usage
+    ### By group's ID
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_group_membership(group_id=123)
+    ```
+    ### By group's full path
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_group_membership(full_path="foo/bar")
+    ```
+
+
+    :param str access_level: Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+    :param str full_path: The full path of the group.
+    :param int group_id: The ID of the group.
+    """
+    ...

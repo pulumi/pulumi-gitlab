@@ -3,6 +3,7 @@
 **/bin/
 **/obj/
 Pulumi.*.yaml
+.DS_Store
 
 **/command-output/
 

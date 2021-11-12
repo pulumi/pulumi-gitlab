@@ -4,6 +4,9 @@
 package gitlab
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +27,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "myuser"
-// 		_, err := gitlab.LookupUser(ctx, &gitlab.LookupUserArgs{
+// 		_, err := gitlab.LookupUser(ctx, &GetUserArgs{
 // 			Username: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -109,4 +112,184 @@ type LookupUserResult struct {
 	Username string `pulumi:"username"`
 	// User's website URL.
 	WebsiteUrl string `pulumi:"websiteUrl"`
+}
+
+func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pulumi.InvokeOption) LookupUserResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupUserResult, error) {
+			args := v.(LookupUserArgs)
+			r, err := LookupUser(ctx, &args, opts...)
+			return *r, err
+		}).(LookupUserResultOutput)
+}
+
+// A collection of arguments for invoking getUser.
+type LookupUserOutputArgs struct {
+	// The e-mail address of the user. (Requires administrator privileges)
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// The ID of the user.
+	UserId pulumi.IntPtrInput `pulumi:"userId"`
+	// The username of the user.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (LookupUserOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupUserArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getUser.
+type LookupUserResultOutput struct{ *pulumi.OutputState }
+
+func (LookupUserResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupUserResult)(nil)).Elem()
+}
+
+func (o LookupUserResultOutput) ToLookupUserResultOutput() LookupUserResultOutput {
+	return o
+}
+
+func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.Context) LookupUserResultOutput {
+	return o
+}
+
+// The avatar URL of the user.
+func (o LookupUserResultOutput) AvatarUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+// The bio of the user.
+func (o LookupUserResultOutput) Bio() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Bio }).(pulumi.StringOutput)
+}
+
+// Whether the user can create groups.
+func (o LookupUserResultOutput) CanCreateGroup() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.CanCreateGroup }).(pulumi.BoolOutput)
+}
+
+// Whether the user can create projects.
+func (o LookupUserResultOutput) CanCreateProject() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.CanCreateProject }).(pulumi.BoolOutput)
+}
+
+// User's color scheme ID.
+func (o LookupUserResultOutput) ColorSchemeId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupUserResult) int { return v.ColorSchemeId }).(pulumi.IntOutput)
+}
+
+// Date the user was created at.
+func (o LookupUserResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Current user's sign-in date.
+func (o LookupUserResultOutput) CurrentSignInAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.CurrentSignInAt }).(pulumi.StringOutput)
+}
+
+// The e-mail address of the user.
+func (o LookupUserResultOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The external UID of the user.
+func (o LookupUserResultOutput) ExternUid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.ExternUid }).(pulumi.StringOutput)
+}
+
+// Whether the user is external.
+func (o LookupUserResultOutput) External() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.External }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupUserResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether the user is an admin.
+func (o LookupUserResultOutput) IsAdmin() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.IsAdmin }).(pulumi.BoolOutput)
+}
+
+// Last user's sign-in date.
+func (o LookupUserResultOutput) LastSignInAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.LastSignInAt }).(pulumi.StringOutput)
+}
+
+// Linkedin profile of the user.
+func (o LookupUserResultOutput) Linkedin() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Linkedin }).(pulumi.StringOutput)
+}
+
+// The location of the user.
+func (o LookupUserResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the user.
+func (o LookupUserResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupUserResultOutput) Note() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Note }).(pulumi.StringOutput)
+}
+
+// The organization of the user.
+func (o LookupUserResultOutput) Organization() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Organization }).(pulumi.StringOutput)
+}
+
+// Number of projects the user can create.
+func (o LookupUserResultOutput) ProjectsLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupUserResult) int { return v.ProjectsLimit }).(pulumi.IntOutput)
+}
+
+// Skype username of the user.
+func (o LookupUserResultOutput) Skype() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Skype }).(pulumi.StringOutput)
+}
+
+// Whether the user is active or blocked.
+func (o LookupUserResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// User's theme ID.
+func (o LookupUserResultOutput) ThemeId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupUserResult) int { return v.ThemeId }).(pulumi.IntOutput)
+}
+
+// Twitter username of the user.
+func (o LookupUserResultOutput) Twitter() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Twitter }).(pulumi.StringOutput)
+}
+
+// Whether user's two factor auth is enabled.
+func (o LookupUserResultOutput) TwoFactorEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.TwoFactorEnabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupUserResultOutput) UserId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupUserResult) int { return v.UserId }).(pulumi.IntOutput)
+}
+
+// The UID provider of the user.
+func (o LookupUserResultOutput) UserProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.UserProvider }).(pulumi.StringOutput)
+}
+
+// The username of the user.
+func (o LookupUserResultOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// User's website URL.
+func (o LookupUserResultOutput) WebsiteUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.WebsiteUrl }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupUserResultOutput{})
 }

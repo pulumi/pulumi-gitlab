@@ -230,7 +230,7 @@ type ServiceGithubArrayInput interface {
 type ServiceGithubArray []ServiceGithubInput
 
 func (ServiceGithubArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ServiceGithub)(nil))
+	return reflect.TypeOf((*[]*ServiceGithub)(nil)).Elem()
 }
 
 func (i ServiceGithubArray) ToServiceGithubArrayOutput() ServiceGithubArrayOutput {
@@ -255,7 +255,7 @@ type ServiceGithubMapInput interface {
 type ServiceGithubMap map[string]ServiceGithubInput
 
 func (ServiceGithubMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ServiceGithub)(nil))
+	return reflect.TypeOf((*map[string]*ServiceGithub)(nil)).Elem()
 }
 
 func (i ServiceGithubMap) ToServiceGithubMapOutput() ServiceGithubMapOutput {
@@ -266,9 +266,7 @@ func (i ServiceGithubMap) ToServiceGithubMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceGithubMapOutput)
 }
 
-type ServiceGithubOutput struct {
-	*pulumi.OutputState
-}
+type ServiceGithubOutput struct{ *pulumi.OutputState }
 
 func (ServiceGithubOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceGithub)(nil))
@@ -287,14 +285,12 @@ func (o ServiceGithubOutput) ToServiceGithubPtrOutput() ServiceGithubPtrOutput {
 }
 
 func (o ServiceGithubOutput) ToServiceGithubPtrOutputWithContext(ctx context.Context) ServiceGithubPtrOutput {
-	return o.ApplyT(func(v ServiceGithub) *ServiceGithub {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceGithub) *ServiceGithub {
 		return &v
 	}).(ServiceGithubPtrOutput)
 }
 
-type ServiceGithubPtrOutput struct {
-	*pulumi.OutputState
-}
+type ServiceGithubPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceGithubPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceGithub)(nil))
@@ -306,6 +302,16 @@ func (o ServiceGithubPtrOutput) ToServiceGithubPtrOutput() ServiceGithubPtrOutpu
 
 func (o ServiceGithubPtrOutput) ToServiceGithubPtrOutputWithContext(ctx context.Context) ServiceGithubPtrOutput {
 	return o
+}
+
+func (o ServiceGithubPtrOutput) Elem() ServiceGithubOutput {
+	return o.ApplyT(func(v *ServiceGithub) ServiceGithub {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceGithub
+		return ret
+	}).(ServiceGithubOutput)
 }
 
 type ServiceGithubArrayOutput struct{ *pulumi.OutputState }
@@ -349,6 +355,10 @@ func (o ServiceGithubMapOutput) MapIndex(k pulumi.StringInput) ServiceGithubOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceGithubInput)(nil)).Elem(), &ServiceGithub{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceGithubPtrInput)(nil)).Elem(), &ServiceGithub{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceGithubArrayInput)(nil)).Elem(), ServiceGithubArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceGithubMapInput)(nil)).Elem(), ServiceGithubMap{})
 	pulumi.RegisterOutputType(ServiceGithubOutput{})
 	pulumi.RegisterOutputType(ServiceGithubPtrOutput{})
 	pulumi.RegisterOutputType(ServiceGithubArrayOutput{})

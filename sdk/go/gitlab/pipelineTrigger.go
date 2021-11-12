@@ -191,7 +191,7 @@ type PipelineTriggerArrayInput interface {
 type PipelineTriggerArray []PipelineTriggerInput
 
 func (PipelineTriggerArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*PipelineTrigger)(nil))
+	return reflect.TypeOf((*[]*PipelineTrigger)(nil)).Elem()
 }
 
 func (i PipelineTriggerArray) ToPipelineTriggerArrayOutput() PipelineTriggerArrayOutput {
@@ -216,7 +216,7 @@ type PipelineTriggerMapInput interface {
 type PipelineTriggerMap map[string]PipelineTriggerInput
 
 func (PipelineTriggerMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*PipelineTrigger)(nil))
+	return reflect.TypeOf((*map[string]*PipelineTrigger)(nil)).Elem()
 }
 
 func (i PipelineTriggerMap) ToPipelineTriggerMapOutput() PipelineTriggerMapOutput {
@@ -227,9 +227,7 @@ func (i PipelineTriggerMap) ToPipelineTriggerMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineTriggerMapOutput)
 }
 
-type PipelineTriggerOutput struct {
-	*pulumi.OutputState
-}
+type PipelineTriggerOutput struct{ *pulumi.OutputState }
 
 func (PipelineTriggerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PipelineTrigger)(nil))
@@ -248,14 +246,12 @@ func (o PipelineTriggerOutput) ToPipelineTriggerPtrOutput() PipelineTriggerPtrOu
 }
 
 func (o PipelineTriggerOutput) ToPipelineTriggerPtrOutputWithContext(ctx context.Context) PipelineTriggerPtrOutput {
-	return o.ApplyT(func(v PipelineTrigger) *PipelineTrigger {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineTrigger) *PipelineTrigger {
 		return &v
 	}).(PipelineTriggerPtrOutput)
 }
 
-type PipelineTriggerPtrOutput struct {
-	*pulumi.OutputState
-}
+type PipelineTriggerPtrOutput struct{ *pulumi.OutputState }
 
 func (PipelineTriggerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PipelineTrigger)(nil))
@@ -267,6 +263,16 @@ func (o PipelineTriggerPtrOutput) ToPipelineTriggerPtrOutput() PipelineTriggerPt
 
 func (o PipelineTriggerPtrOutput) ToPipelineTriggerPtrOutputWithContext(ctx context.Context) PipelineTriggerPtrOutput {
 	return o
+}
+
+func (o PipelineTriggerPtrOutput) Elem() PipelineTriggerOutput {
+	return o.ApplyT(func(v *PipelineTrigger) PipelineTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineTrigger
+		return ret
+	}).(PipelineTriggerOutput)
 }
 
 type PipelineTriggerArrayOutput struct{ *pulumi.OutputState }
@@ -310,6 +316,10 @@ func (o PipelineTriggerMapOutput) MapIndex(k pulumi.StringInput) PipelineTrigger
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineTriggerInput)(nil)).Elem(), &PipelineTrigger{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineTriggerPtrInput)(nil)).Elem(), &PipelineTrigger{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineTriggerArrayInput)(nil)).Elem(), PipelineTriggerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineTriggerMapInput)(nil)).Elem(), PipelineTriggerMap{})
 	pulumi.RegisterOutputType(PipelineTriggerOutput{})
 	pulumi.RegisterOutputType(PipelineTriggerPtrOutput{})
 	pulumi.RegisterOutputType(PipelineTriggerArrayOutput{})

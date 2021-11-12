@@ -4,6 +4,9 @@
 package gitlab
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,7 +31,7 @@ import (
 // 		opt0 := "2019-01-01"
 // 		opt1 := "name"
 // 		opt2 := "desc"
-// 		_, err := gitlab.GetUsers(ctx, &gitlab.GetUsersArgs{
+// 		_, err := gitlab.GetUsers(ctx, &GetUsersArgs{
 // 			CreatedBefore: &opt0,
 // 			OrderBy:       &opt1,
 // 			Sort:          &opt2,
@@ -37,7 +40,7 @@ import (
 // 			return err
 // 		}
 // 		opt3 := "username"
-// 		_, err = gitlab.GetUsers(ctx, &gitlab.GetUsersArgs{
+// 		_, err = gitlab.GetUsers(ctx, &GetUsersArgs{
 // 			Search: &opt3,
 // 		}, nil)
 // 		if err != nil {
@@ -94,4 +97,105 @@ type GetUsersResult struct {
 	Sort    *string `pulumi:"sort"`
 	// The list of users.
 	Users []GetUsersUser `pulumi:"users"`
+}
+
+func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi.InvokeOption) GetUsersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetUsersResult, error) {
+			args := v.(GetUsersArgs)
+			r, err := GetUsers(ctx, &args, opts...)
+			return *r, err
+		}).(GetUsersResultOutput)
+}
+
+// A collection of arguments for invoking getUsers.
+type GetUsersOutputArgs struct {
+	// Filter users that are active.
+	Active pulumi.BoolPtrInput `pulumi:"active"`
+	// Filter users that are blocked.
+	Blocked pulumi.BoolPtrInput `pulumi:"blocked"`
+	// Search for users created after a specific date. (Requires administrator privileges)
+	CreatedAfter pulumi.StringPtrInput `pulumi:"createdAfter"`
+	// Search for users created before a specific date. (Requires administrator privileges)
+	CreatedBefore pulumi.StringPtrInput `pulumi:"createdBefore"`
+	// Lookup users by external provider. (Requires administrator privileges)
+	ExternProvider pulumi.StringPtrInput `pulumi:"externProvider"`
+	// Lookup users by external UID. (Requires administrator privileges)
+	ExternUid pulumi.StringPtrInput `pulumi:"externUid"`
+	// Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
+	// Search users by username, name or email.
+	Search pulumi.StringPtrInput `pulumi:"search"`
+	// Sort users' list in asc or desc order. (Requires administrator privileges)
+	Sort pulumi.StringPtrInput `pulumi:"sort"`
+}
+
+func (GetUsersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getUsers.
+type GetUsersResultOutput struct{ *pulumi.OutputState }
+
+func (GetUsersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersResult)(nil)).Elem()
+}
+
+func (o GetUsersResultOutput) ToGetUsersResultOutput() GetUsersResultOutput {
+	return o
+}
+
+func (o GetUsersResultOutput) ToGetUsersResultOutputWithContext(ctx context.Context) GetUsersResultOutput {
+	return o
+}
+
+func (o GetUsersResultOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *bool { return v.Active }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetUsersResultOutput) Blocked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *bool { return v.Blocked }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetUsersResultOutput) CreatedAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.CreatedAfter }).(pulumi.StringPtrOutput)
+}
+
+func (o GetUsersResultOutput) CreatedBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.CreatedBefore }).(pulumi.StringPtrOutput)
+}
+
+func (o GetUsersResultOutput) ExternProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.ExternProvider }).(pulumi.StringPtrOutput)
+}
+
+// The external UID of the user.
+func (o GetUsersResultOutput) ExternUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.ExternUid }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetUsersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetUsersResultOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetUsersResultOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.Search }).(pulumi.StringPtrOutput)
+}
+
+func (o GetUsersResultOutput) Sort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.Sort }).(pulumi.StringPtrOutput)
+}
+
+// The list of users.
+func (o GetUsersResultOutput) Users() GetUsersUserArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []GetUsersUser { return v.Users }).(GetUsersUserArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetUsersResultOutput{})
 }

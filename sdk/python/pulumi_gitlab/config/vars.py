@@ -8,44 +8,51 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = [
-    'base_url',
-    'cacert_file',
-    'client_cert',
-    'client_key',
-    'insecure',
-    'token',
-]
+import types
 
 __config__ = pulumi.Config('gitlab')
 
-base_url = __config__.get('baseUrl')
-"""
-The GitLab Base API URL
-"""
 
-cacert_file = __config__.get('cacertFile')
-"""
-A file containing the ca certificate to use in case ssl certificate is not from a standard chain
-"""
+class _ExportableConfig(types.ModuleType):
+    @property
+    def base_url(self) -> Optional[str]:
+        """
+        The GitLab Base API URL
+        """
+        return __config__.get('baseUrl')
 
-client_cert = __config__.get('clientCert')
-"""
-File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
-"""
+    @property
+    def cacert_file(self) -> Optional[str]:
+        """
+        A file containing the ca certificate to use in case ssl certificate is not from a standard chain
+        """
+        return __config__.get('cacertFile')
 
-client_key = __config__.get('clientKey')
-"""
-File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
-"""
+    @property
+    def client_cert(self) -> Optional[str]:
+        """
+        File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
+        """
+        return __config__.get('clientCert')
 
-insecure = __config__.get('insecure')
-"""
-Disable SSL verification of API calls
-"""
+    @property
+    def client_key(self) -> Optional[str]:
+        """
+        File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
+        """
+        return __config__.get('clientKey')
 
-token = __config__.get('token')
-"""
-The OAuth token used to connect to GitLab.
-"""
+    @property
+    def insecure(self) -> Optional[bool]:
+        """
+        Disable SSL verification of API calls
+        """
+        return __config__.get_bool('insecure')
+
+    @property
+    def token(self) -> Optional[str]:
+        """
+        The OAuth token used to connect to GitLab.
+        """
+        return __config__.get('token')
 

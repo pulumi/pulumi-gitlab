@@ -12,6 +12,7 @@ __all__ = [
     'GetGroupResult',
     'AwaitableGetGroupResult',
     'get_group',
+    'get_group_output',
 ]
 
 @pulumi.output_type
@@ -236,3 +237,37 @@ def get_group(full_path: Optional[str] = None,
         runners_token=__ret__.runners_token,
         visibility_level=__ret__.visibility_level,
         web_url=__ret__.web_url)
+
+
+@_utilities.lift_output_func(get_group)
+def get_group_output(full_path: Optional[pulumi.Input[Optional[str]]] = None,
+                     group_id: Optional[pulumi.Input[Optional[int]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
+    """
+    ## # gitlab\_group
+
+    Provide details about a specific group in the gitlab provider.
+
+    ## Example Usage
+    ### By group's ID
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    foo = gitlab.get_group(group_id=123)
+    ```
+    ### By group's full path
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    foo = gitlab.get_group(full_path="foo/bar")
+    ```
+
+
+    :param str full_path: The full path of the group.
+    :param int group_id: The ID of the group.
+    """
+    ...

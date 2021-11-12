@@ -13,6 +13,7 @@ __all__ = [
     'GetProjectResult',
     'AwaitableGetProjectResult',
     'get_project',
+    'get_project_output',
 ]
 
 @pulumi.output_type
@@ -349,3 +350,33 @@ def get_project(id: Optional[str] = None,
         visibility_level=__ret__.visibility_level,
         web_url=__ret__.web_url,
         wiki_enabled=__ret__.wiki_enabled)
+
+
+@_utilities.lift_output_func(get_project)
+def get_project_output(id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
+    """
+    ## # gitlab\_project
+
+    Provide details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_project(id="30")
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_project(id="foo/bar/baz")
+    ```
+
+
+    :param str id: The integer or path with namespace that uniquely identifies the project within the gitlab install.
+    """
+    ...

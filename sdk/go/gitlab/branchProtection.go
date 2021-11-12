@@ -30,19 +30,19 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := gitlab.NewBranchProtection(ctx, "branchProtect", &gitlab.BranchProtectionArgs{
-// 			AllowedToMerges: gitlab.BranchProtectionAllowedToMergeArray{
-// 				&gitlab.BranchProtectionAllowedToMergeArgs{
+// 			AllowedToMerges: BranchProtectionAllowedToMergeArray{
+// 				&BranchProtectionAllowedToMergeArgs{
 // 					UserId: pulumi.Int(15),
 // 				},
-// 				&gitlab.BranchProtectionAllowedToMergeArgs{
+// 				&BranchProtectionAllowedToMergeArgs{
 // 					UserId: pulumi.Int(37),
 // 				},
 // 			},
-// 			AllowedToPushes: gitlab.BranchProtectionAllowedToPushArray{
-// 				&gitlab.BranchProtectionAllowedToPushArgs{
+// 			AllowedToPushes: BranchProtectionAllowedToPushArray{
+// 				&BranchProtectionAllowedToPushArgs{
 // 					UserId: pulumi.Int(5),
 // 				},
-// 				&gitlab.BranchProtectionAllowedToPushArgs{
+// 				&BranchProtectionAllowedToPushArgs{
 // 					UserId: pulumi.Int(521),
 // 				},
 // 			},
@@ -261,7 +261,7 @@ type BranchProtectionArrayInput interface {
 type BranchProtectionArray []BranchProtectionInput
 
 func (BranchProtectionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*BranchProtection)(nil))
+	return reflect.TypeOf((*[]*BranchProtection)(nil)).Elem()
 }
 
 func (i BranchProtectionArray) ToBranchProtectionArrayOutput() BranchProtectionArrayOutput {
@@ -286,7 +286,7 @@ type BranchProtectionMapInput interface {
 type BranchProtectionMap map[string]BranchProtectionInput
 
 func (BranchProtectionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*BranchProtection)(nil))
+	return reflect.TypeOf((*map[string]*BranchProtection)(nil)).Elem()
 }
 
 func (i BranchProtectionMap) ToBranchProtectionMapOutput() BranchProtectionMapOutput {
@@ -297,9 +297,7 @@ func (i BranchProtectionMap) ToBranchProtectionMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(BranchProtectionMapOutput)
 }
 
-type BranchProtectionOutput struct {
-	*pulumi.OutputState
-}
+type BranchProtectionOutput struct{ *pulumi.OutputState }
 
 func (BranchProtectionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BranchProtection)(nil))
@@ -318,14 +316,12 @@ func (o BranchProtectionOutput) ToBranchProtectionPtrOutput() BranchProtectionPt
 }
 
 func (o BranchProtectionOutput) ToBranchProtectionPtrOutputWithContext(ctx context.Context) BranchProtectionPtrOutput {
-	return o.ApplyT(func(v BranchProtection) *BranchProtection {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BranchProtection) *BranchProtection {
 		return &v
 	}).(BranchProtectionPtrOutput)
 }
 
-type BranchProtectionPtrOutput struct {
-	*pulumi.OutputState
-}
+type BranchProtectionPtrOutput struct{ *pulumi.OutputState }
 
 func (BranchProtectionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BranchProtection)(nil))
@@ -337,6 +333,16 @@ func (o BranchProtectionPtrOutput) ToBranchProtectionPtrOutput() BranchProtectio
 
 func (o BranchProtectionPtrOutput) ToBranchProtectionPtrOutputWithContext(ctx context.Context) BranchProtectionPtrOutput {
 	return o
+}
+
+func (o BranchProtectionPtrOutput) Elem() BranchProtectionOutput {
+	return o.ApplyT(func(v *BranchProtection) BranchProtection {
+		if v != nil {
+			return *v
+		}
+		var ret BranchProtection
+		return ret
+	}).(BranchProtectionOutput)
 }
 
 type BranchProtectionArrayOutput struct{ *pulumi.OutputState }
@@ -380,6 +386,10 @@ func (o BranchProtectionMapOutput) MapIndex(k pulumi.StringInput) BranchProtecti
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionInput)(nil)).Elem(), &BranchProtection{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionPtrInput)(nil)).Elem(), &BranchProtection{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionArrayInput)(nil)).Elem(), BranchProtectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionMapInput)(nil)).Elem(), BranchProtectionMap{})
 	pulumi.RegisterOutputType(BranchProtectionOutput{})
 	pulumi.RegisterOutputType(BranchProtectionPtrOutput{})
 	pulumi.RegisterOutputType(BranchProtectionArrayOutput{})

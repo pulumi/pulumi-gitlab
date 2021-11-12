@@ -212,7 +212,7 @@ type DeployKeyArrayInput interface {
 type DeployKeyArray []DeployKeyInput
 
 func (DeployKeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DeployKey)(nil))
+	return reflect.TypeOf((*[]*DeployKey)(nil)).Elem()
 }
 
 func (i DeployKeyArray) ToDeployKeyArrayOutput() DeployKeyArrayOutput {
@@ -237,7 +237,7 @@ type DeployKeyMapInput interface {
 type DeployKeyMap map[string]DeployKeyInput
 
 func (DeployKeyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DeployKey)(nil))
+	return reflect.TypeOf((*map[string]*DeployKey)(nil)).Elem()
 }
 
 func (i DeployKeyMap) ToDeployKeyMapOutput() DeployKeyMapOutput {
@@ -248,9 +248,7 @@ func (i DeployKeyMap) ToDeployKeyMapOutputWithContext(ctx context.Context) Deplo
 	return pulumi.ToOutputWithContext(ctx, i).(DeployKeyMapOutput)
 }
 
-type DeployKeyOutput struct {
-	*pulumi.OutputState
-}
+type DeployKeyOutput struct{ *pulumi.OutputState }
 
 func (DeployKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DeployKey)(nil))
@@ -269,14 +267,12 @@ func (o DeployKeyOutput) ToDeployKeyPtrOutput() DeployKeyPtrOutput {
 }
 
 func (o DeployKeyOutput) ToDeployKeyPtrOutputWithContext(ctx context.Context) DeployKeyPtrOutput {
-	return o.ApplyT(func(v DeployKey) *DeployKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeployKey) *DeployKey {
 		return &v
 	}).(DeployKeyPtrOutput)
 }
 
-type DeployKeyPtrOutput struct {
-	*pulumi.OutputState
-}
+type DeployKeyPtrOutput struct{ *pulumi.OutputState }
 
 func (DeployKeyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DeployKey)(nil))
@@ -288,6 +284,16 @@ func (o DeployKeyPtrOutput) ToDeployKeyPtrOutput() DeployKeyPtrOutput {
 
 func (o DeployKeyPtrOutput) ToDeployKeyPtrOutputWithContext(ctx context.Context) DeployKeyPtrOutput {
 	return o
+}
+
+func (o DeployKeyPtrOutput) Elem() DeployKeyOutput {
+	return o.ApplyT(func(v *DeployKey) DeployKey {
+		if v != nil {
+			return *v
+		}
+		var ret DeployKey
+		return ret
+	}).(DeployKeyOutput)
 }
 
 type DeployKeyArrayOutput struct{ *pulumi.OutputState }
@@ -331,6 +337,10 @@ func (o DeployKeyMapOutput) MapIndex(k pulumi.StringInput) DeployKeyOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployKeyInput)(nil)).Elem(), &DeployKey{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployKeyPtrInput)(nil)).Elem(), &DeployKey{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployKeyArrayInput)(nil)).Elem(), DeployKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployKeyMapInput)(nil)).Elem(), DeployKeyMap{})
 	pulumi.RegisterOutputType(DeployKeyOutput{})
 	pulumi.RegisterOutputType(DeployKeyPtrOutput{})
 	pulumi.RegisterOutputType(DeployKeyArrayOutput{})
