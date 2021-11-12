@@ -323,7 +323,7 @@ type ProjectHookArrayInput interface {
 type ProjectHookArray []ProjectHookInput
 
 func (ProjectHookArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ProjectHook)(nil))
+	return reflect.TypeOf((*[]*ProjectHook)(nil)).Elem()
 }
 
 func (i ProjectHookArray) ToProjectHookArrayOutput() ProjectHookArrayOutput {
@@ -348,7 +348,7 @@ type ProjectHookMapInput interface {
 type ProjectHookMap map[string]ProjectHookInput
 
 func (ProjectHookMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ProjectHook)(nil))
+	return reflect.TypeOf((*map[string]*ProjectHook)(nil)).Elem()
 }
 
 func (i ProjectHookMap) ToProjectHookMapOutput() ProjectHookMapOutput {
@@ -359,9 +359,7 @@ func (i ProjectHookMap) ToProjectHookMapOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectHookMapOutput)
 }
 
-type ProjectHookOutput struct {
-	*pulumi.OutputState
-}
+type ProjectHookOutput struct{ *pulumi.OutputState }
 
 func (ProjectHookOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectHook)(nil))
@@ -380,14 +378,12 @@ func (o ProjectHookOutput) ToProjectHookPtrOutput() ProjectHookPtrOutput {
 }
 
 func (o ProjectHookOutput) ToProjectHookPtrOutputWithContext(ctx context.Context) ProjectHookPtrOutput {
-	return o.ApplyT(func(v ProjectHook) *ProjectHook {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectHook) *ProjectHook {
 		return &v
 	}).(ProjectHookPtrOutput)
 }
 
-type ProjectHookPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectHookPtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectHookPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProjectHook)(nil))
@@ -399,6 +395,16 @@ func (o ProjectHookPtrOutput) ToProjectHookPtrOutput() ProjectHookPtrOutput {
 
 func (o ProjectHookPtrOutput) ToProjectHookPtrOutputWithContext(ctx context.Context) ProjectHookPtrOutput {
 	return o
+}
+
+func (o ProjectHookPtrOutput) Elem() ProjectHookOutput {
+	return o.ApplyT(func(v *ProjectHook) ProjectHook {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectHook
+		return ret
+	}).(ProjectHookOutput)
 }
 
 type ProjectHookArrayOutput struct{ *pulumi.OutputState }
@@ -442,6 +448,10 @@ func (o ProjectHookMapOutput) MapIndex(k pulumi.StringInput) ProjectHookOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectHookInput)(nil)).Elem(), &ProjectHook{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectHookPtrInput)(nil)).Elem(), &ProjectHook{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectHookArrayInput)(nil)).Elem(), ProjectHookArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectHookMapInput)(nil)).Elem(), ProjectHookMap{})
 	pulumi.RegisterOutputType(ProjectHookOutput{})
 	pulumi.RegisterOutputType(ProjectHookPtrOutput{})
 	pulumi.RegisterOutputType(ProjectHookArrayOutput{})

@@ -76,3 +76,4 @@ export interface ProjectPushRules {
      */
     rejectUnsignedCommits?: pulumi.Input<boolean>;
 }
+

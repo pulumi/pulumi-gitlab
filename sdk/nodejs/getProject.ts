@@ -143,3 +143,17 @@ export interface GetProjectResult {
      */
     readonly wikiEnabled: boolean;
 }
+
+export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
+    return pulumi.output(args).apply(a => getProject(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProject.
+ */
+export interface GetProjectOutputArgs {
+    /**
+     * The integer or path with namespace that uniquely identifies the project within the gitlab install.
+     */
+    id: pulumi.Input<string>;
+}

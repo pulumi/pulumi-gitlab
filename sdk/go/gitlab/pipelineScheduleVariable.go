@@ -217,7 +217,7 @@ type PipelineScheduleVariableArrayInput interface {
 type PipelineScheduleVariableArray []PipelineScheduleVariableInput
 
 func (PipelineScheduleVariableArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*PipelineScheduleVariable)(nil))
+	return reflect.TypeOf((*[]*PipelineScheduleVariable)(nil)).Elem()
 }
 
 func (i PipelineScheduleVariableArray) ToPipelineScheduleVariableArrayOutput() PipelineScheduleVariableArrayOutput {
@@ -242,7 +242,7 @@ type PipelineScheduleVariableMapInput interface {
 type PipelineScheduleVariableMap map[string]PipelineScheduleVariableInput
 
 func (PipelineScheduleVariableMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*PipelineScheduleVariable)(nil))
+	return reflect.TypeOf((*map[string]*PipelineScheduleVariable)(nil)).Elem()
 }
 
 func (i PipelineScheduleVariableMap) ToPipelineScheduleVariableMapOutput() PipelineScheduleVariableMapOutput {
@@ -253,9 +253,7 @@ func (i PipelineScheduleVariableMap) ToPipelineScheduleVariableMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineScheduleVariableMapOutput)
 }
 
-type PipelineScheduleVariableOutput struct {
-	*pulumi.OutputState
-}
+type PipelineScheduleVariableOutput struct{ *pulumi.OutputState }
 
 func (PipelineScheduleVariableOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PipelineScheduleVariable)(nil))
@@ -274,14 +272,12 @@ func (o PipelineScheduleVariableOutput) ToPipelineScheduleVariablePtrOutput() Pi
 }
 
 func (o PipelineScheduleVariableOutput) ToPipelineScheduleVariablePtrOutputWithContext(ctx context.Context) PipelineScheduleVariablePtrOutput {
-	return o.ApplyT(func(v PipelineScheduleVariable) *PipelineScheduleVariable {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineScheduleVariable) *PipelineScheduleVariable {
 		return &v
 	}).(PipelineScheduleVariablePtrOutput)
 }
 
-type PipelineScheduleVariablePtrOutput struct {
-	*pulumi.OutputState
-}
+type PipelineScheduleVariablePtrOutput struct{ *pulumi.OutputState }
 
 func (PipelineScheduleVariablePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PipelineScheduleVariable)(nil))
@@ -293,6 +289,16 @@ func (o PipelineScheduleVariablePtrOutput) ToPipelineScheduleVariablePtrOutput()
 
 func (o PipelineScheduleVariablePtrOutput) ToPipelineScheduleVariablePtrOutputWithContext(ctx context.Context) PipelineScheduleVariablePtrOutput {
 	return o
+}
+
+func (o PipelineScheduleVariablePtrOutput) Elem() PipelineScheduleVariableOutput {
+	return o.ApplyT(func(v *PipelineScheduleVariable) PipelineScheduleVariable {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineScheduleVariable
+		return ret
+	}).(PipelineScheduleVariableOutput)
 }
 
 type PipelineScheduleVariableArrayOutput struct{ *pulumi.OutputState }
@@ -336,6 +342,10 @@ func (o PipelineScheduleVariableMapOutput) MapIndex(k pulumi.StringInput) Pipeli
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScheduleVariableInput)(nil)).Elem(), &PipelineScheduleVariable{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScheduleVariablePtrInput)(nil)).Elem(), &PipelineScheduleVariable{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScheduleVariableArrayInput)(nil)).Elem(), PipelineScheduleVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScheduleVariableMapInput)(nil)).Elem(), PipelineScheduleVariableMap{})
 	pulumi.RegisterOutputType(PipelineScheduleVariableOutput{})
 	pulumi.RegisterOutputType(PipelineScheduleVariablePtrOutput{})
 	pulumi.RegisterOutputType(PipelineScheduleVariableArrayOutput{})

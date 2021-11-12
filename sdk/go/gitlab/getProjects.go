@@ -4,6 +4,9 @@
 package gitlab
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +30,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "mygroup"
-// 		mygroup, err := gitlab.LookupGroup(ctx, &gitlab.LookupGroupArgs{
+// 		mygroup, err := gitlab.LookupGroup(ctx, &GetGroupArgs{
 // 			FullPath: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -37,7 +40,7 @@ import (
 // 		opt2 := "name"
 // 		opt3 := true
 // 		opt4 := false
-// 		_, err = gitlab.GetProjects(ctx, &gitlab.GetProjectsArgs{
+// 		_, err = gitlab.GetProjects(ctx, &GetProjectsArgs{
 // 			GroupId:          &opt1,
 // 			OrderBy:          &opt2,
 // 			IncludeSubgroups: &opt3,
@@ -64,7 +67,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "postgresql"
 // 		opt1 := "private"
-// 		_, err := gitlab.GetProjects(ctx, &gitlab.GetProjectsArgs{
+// 		_, err := gitlab.GetProjects(ctx, &GetProjectsArgs{
 // 			Search:     &opt0,
 // 			Visibility: &opt1,
 // 		}, nil)
@@ -156,4 +159,175 @@ type GetProjectsResult struct {
 	WithMergeRequestsEnabled *bool   `pulumi:"withMergeRequestsEnabled"`
 	WithProgrammingLanguage  *string `pulumi:"withProgrammingLanguage"`
 	WithShared               *bool   `pulumi:"withShared"`
+}
+
+func GetProjectsOutput(ctx *pulumi.Context, args GetProjectsOutputArgs, opts ...pulumi.InvokeOption) GetProjectsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetProjectsResult, error) {
+			args := v.(GetProjectsArgs)
+			r, err := GetProjects(ctx, &args, opts...)
+			return *r, err
+		}).(GetProjectsResultOutput)
+}
+
+// A collection of arguments for invoking getProjects.
+type GetProjectsOutputArgs struct {
+	// Limit by archived status.
+	Archived pulumi.BoolPtrInput `pulumi:"archived"`
+	// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
+	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// Include projects in subgroups of this group. Default is `false`. Needs `groupId`.
+	IncludeSubgroups pulumi.BoolPtrInput `pulumi:"includeSubgroups"`
+	// Prevents overloading your Gitlab instance in case of a misconfiguration. Default is `10`.
+	MaxQueryablePages pulumi.IntPtrInput `pulumi:"maxQueryablePages"`
+	// Limit by projects that the current user is a member of.
+	Membership pulumi.BoolPtrInput `pulumi:"membership"`
+	// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `groupId`.
+	MinAccessLevel pulumi.IntPtrInput `pulumi:"minAccessLevel"`
+	// Return projects ordered by `id`, `name`, `path`, `createdAt`, `updatedAt`, or `lastActivityAt` fields. Default is `createdAt`.
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
+	// Limit by projects owned by the current user.
+	Owned   pulumi.BoolPtrInput `pulumi:"owned"`
+	Page    pulumi.IntPtrInput  `pulumi:"page"`
+	PerPage pulumi.IntPtrInput  `pulumi:"perPage"`
+	// Return list of authorized projects matching the search criteria.
+	Search pulumi.StringPtrInput `pulumi:"search"`
+	// Return only the ID, URL, name, and path of each project.
+	Simple pulumi.BoolPtrInput `pulumi:"simple"`
+	// Return projects sorted in `asc` or `desc` order. Default is `desc`.
+	Sort pulumi.StringPtrInput `pulumi:"sort"`
+	// Limit by projects starred by the current user.
+	Starred pulumi.BoolPtrInput `pulumi:"starred"`
+	// Include project statistics. Cannot be used with `groupId`.
+	Statistics pulumi.BoolPtrInput `pulumi:"statistics"`
+	// Limit by visibility `public`, `internal`, or `private`.
+	Visibility pulumi.StringPtrInput `pulumi:"visibility"`
+	// Include custom attributes in response _(admins only)_.
+	WithCustomAttributes pulumi.BoolPtrInput `pulumi:"withCustomAttributes"`
+	// Limit by projects with issues feature enabled. Default is `false`.
+	WithIssuesEnabled pulumi.BoolPtrInput `pulumi:"withIssuesEnabled"`
+	// Limit by projects with merge requests feature enabled. Default is `false`.
+	WithMergeRequestsEnabled pulumi.BoolPtrInput `pulumi:"withMergeRequestsEnabled"`
+	// Limit by projects which use the given programming language. Cannot be used with `groupId`.
+	WithProgrammingLanguage pulumi.StringPtrInput `pulumi:"withProgrammingLanguage"`
+	// Include projects shared to this group. Default is `true`. Needs `groupId`.
+	WithShared pulumi.BoolPtrInput `pulumi:"withShared"`
+}
+
+func (GetProjectsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getProjects.
+type GetProjectsResultOutput struct{ *pulumi.OutputState }
+
+func (GetProjectsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsResult)(nil)).Elem()
+}
+
+func (o GetProjectsResultOutput) ToGetProjectsResultOutput() GetProjectsResultOutput {
+	return o
+}
+
+func (o GetProjectsResultOutput) ToGetProjectsResultOutputWithContext(ctx context.Context) GetProjectsResultOutput {
+	return o
+}
+
+func (o GetProjectsResultOutput) Archived() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *bool { return v.Archived }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetProjectsResultOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *int { return v.GroupId }).(pulumi.IntPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetProjectsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsResultOutput) IncludeSubgroups() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *bool { return v.IncludeSubgroups }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetProjectsResultOutput) MaxQueryablePages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *int { return v.MaxQueryablePages }).(pulumi.IntPtrOutput)
+}
+
+func (o GetProjectsResultOutput) Membership() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *bool { return v.Membership }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetProjectsResultOutput) MinAccessLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *int { return v.MinAccessLevel }).(pulumi.IntPtrOutput)
+}
+
+func (o GetProjectsResultOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProjectsResultOutput) Owned() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *bool { return v.Owned }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetProjectsResultOutput) Page() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *int { return v.Page }).(pulumi.IntPtrOutput)
+}
+
+func (o GetProjectsResultOutput) PerPage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *int { return v.PerPage }).(pulumi.IntPtrOutput)
+}
+
+// A list containing the projects matching the supplied arguments
+func (o GetProjectsResultOutput) Projects() GetProjectsProjectArrayOutput {
+	return o.ApplyT(func(v GetProjectsResult) []GetProjectsProject { return v.Projects }).(GetProjectsProjectArrayOutput)
+}
+
+func (o GetProjectsResultOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *string { return v.Search }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProjectsResultOutput) Simple() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *bool { return v.Simple }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetProjectsResultOutput) Sort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *string { return v.Sort }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProjectsResultOutput) Starred() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *bool { return v.Starred }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetProjectsResultOutput) Statistics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *bool { return v.Statistics }).(pulumi.BoolPtrOutput)
+}
+
+// The visibility of the project.
+func (o GetProjectsResultOutput) Visibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *string { return v.Visibility }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProjectsResultOutput) WithCustomAttributes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *bool { return v.WithCustomAttributes }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetProjectsResultOutput) WithIssuesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *bool { return v.WithIssuesEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetProjectsResultOutput) WithMergeRequestsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *bool { return v.WithMergeRequestsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetProjectsResultOutput) WithProgrammingLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *string { return v.WithProgrammingLanguage }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProjectsResultOutput) WithShared() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *bool { return v.WithShared }).(pulumi.BoolPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetProjectsResultOutput{})
 }

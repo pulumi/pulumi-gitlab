@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -114,4 +113,22 @@ export interface GetGroupResult {
      * Web URL of the group.
      */
     readonly webUrl: string;
+}
+
+export function getGroupOutput(args?: GetGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
+    return pulumi.output(args).apply(a => getGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGroup.
+ */
+export interface GetGroupOutputArgs {
+    /**
+     * The full path of the group.
+     */
+    fullPath?: pulumi.Input<string>;
+    /**
+     * The ID of the group.
+     */
+    groupId?: pulumi.Input<number>;
 }

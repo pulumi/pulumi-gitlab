@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GitLab
 {
@@ -58,6 +59,54 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gitlab:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # gitlab\_project
+        /// 
+        /// Provide details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(GitLab.GetProject.InvokeAsync(new GitLab.GetProjectArgs
+        ///         {
+        ///             Id = "30",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(GitLab.GetProject.InvokeAsync(new GitLab.GetProjectArgs
+        ///         {
+        ///             Id = "foo/bar/baz",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProjectResult>("gitlab:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithVersion());
     }
 
 
@@ -70,6 +119,19 @@ namespace Pulumi.GitLab
         public string Id { get; set; } = null!;
 
         public GetProjectArgs()
+        {
+        }
+    }
+
+    public sealed class GetProjectInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The integer or path with namespace that uniquely identifies the project within the gitlab install.
+        /// </summary>
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
+
+        public GetProjectInvokeArgs()
         {
         }
     }

@@ -173,7 +173,7 @@ type ServicePipelinesEmailArrayInput interface {
 type ServicePipelinesEmailArray []ServicePipelinesEmailInput
 
 func (ServicePipelinesEmailArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ServicePipelinesEmail)(nil))
+	return reflect.TypeOf((*[]*ServicePipelinesEmail)(nil)).Elem()
 }
 
 func (i ServicePipelinesEmailArray) ToServicePipelinesEmailArrayOutput() ServicePipelinesEmailArrayOutput {
@@ -198,7 +198,7 @@ type ServicePipelinesEmailMapInput interface {
 type ServicePipelinesEmailMap map[string]ServicePipelinesEmailInput
 
 func (ServicePipelinesEmailMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ServicePipelinesEmail)(nil))
+	return reflect.TypeOf((*map[string]*ServicePipelinesEmail)(nil)).Elem()
 }
 
 func (i ServicePipelinesEmailMap) ToServicePipelinesEmailMapOutput() ServicePipelinesEmailMapOutput {
@@ -209,9 +209,7 @@ func (i ServicePipelinesEmailMap) ToServicePipelinesEmailMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePipelinesEmailMapOutput)
 }
 
-type ServicePipelinesEmailOutput struct {
-	*pulumi.OutputState
-}
+type ServicePipelinesEmailOutput struct{ *pulumi.OutputState }
 
 func (ServicePipelinesEmailOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServicePipelinesEmail)(nil))
@@ -230,14 +228,12 @@ func (o ServicePipelinesEmailOutput) ToServicePipelinesEmailPtrOutput() ServiceP
 }
 
 func (o ServicePipelinesEmailOutput) ToServicePipelinesEmailPtrOutputWithContext(ctx context.Context) ServicePipelinesEmailPtrOutput {
-	return o.ApplyT(func(v ServicePipelinesEmail) *ServicePipelinesEmail {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePipelinesEmail) *ServicePipelinesEmail {
 		return &v
 	}).(ServicePipelinesEmailPtrOutput)
 }
 
-type ServicePipelinesEmailPtrOutput struct {
-	*pulumi.OutputState
-}
+type ServicePipelinesEmailPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePipelinesEmailPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServicePipelinesEmail)(nil))
@@ -249,6 +245,16 @@ func (o ServicePipelinesEmailPtrOutput) ToServicePipelinesEmailPtrOutput() Servi
 
 func (o ServicePipelinesEmailPtrOutput) ToServicePipelinesEmailPtrOutputWithContext(ctx context.Context) ServicePipelinesEmailPtrOutput {
 	return o
+}
+
+func (o ServicePipelinesEmailPtrOutput) Elem() ServicePipelinesEmailOutput {
+	return o.ApplyT(func(v *ServicePipelinesEmail) ServicePipelinesEmail {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePipelinesEmail
+		return ret
+	}).(ServicePipelinesEmailOutput)
 }
 
 type ServicePipelinesEmailArrayOutput struct{ *pulumi.OutputState }
@@ -292,6 +298,10 @@ func (o ServicePipelinesEmailMapOutput) MapIndex(k pulumi.StringInput) ServicePi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePipelinesEmailInput)(nil)).Elem(), &ServicePipelinesEmail{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePipelinesEmailPtrInput)(nil)).Elem(), &ServicePipelinesEmail{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePipelinesEmailArrayInput)(nil)).Elem(), ServicePipelinesEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePipelinesEmailMapInput)(nil)).Elem(), ServicePipelinesEmailMap{})
 	pulumi.RegisterOutputType(ServicePipelinesEmailOutput{})
 	pulumi.RegisterOutputType(ServicePipelinesEmailPtrOutput{})
 	pulumi.RegisterOutputType(ServicePipelinesEmailArrayOutput{})

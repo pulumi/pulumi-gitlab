@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.GitLab
 {
@@ -49,6 +50,45 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("gitlab:index/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # gitlab\_users
+        /// 
+        /// Provide details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
+        /// 
+        /// **NOTE**: Some available options require administrator privileges. Please visit [Gitlab API documentation][users_for_admins] for more information.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(GitLab.GetUsers.InvokeAsync(new GitLab.GetUsersArgs
+        ///         {
+        ///             CreatedBefore = "2019-01-01",
+        ///             OrderBy = "name",
+        ///             Sort = "desc",
+        ///         }));
+        ///         var example_two = Output.Create(GitLab.GetUsers.InvokeAsync(new GitLab.GetUsersArgs
+        ///         {
+        ///             Search = "username",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetUsersResult>("gitlab:index/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -109,6 +149,67 @@ namespace Pulumi.GitLab
         public string? Sort { get; set; }
 
         public GetUsersArgs()
+        {
+        }
+    }
+
+    public sealed class GetUsersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Filter users that are active.
+        /// </summary>
+        [Input("active")]
+        public Input<bool>? Active { get; set; }
+
+        /// <summary>
+        /// Filter users that are blocked.
+        /// </summary>
+        [Input("blocked")]
+        public Input<bool>? Blocked { get; set; }
+
+        /// <summary>
+        /// Search for users created after a specific date. (Requires administrator privileges)
+        /// </summary>
+        [Input("createdAfter")]
+        public Input<string>? CreatedAfter { get; set; }
+
+        /// <summary>
+        /// Search for users created before a specific date. (Requires administrator privileges)
+        /// </summary>
+        [Input("createdBefore")]
+        public Input<string>? CreatedBefore { get; set; }
+
+        /// <summary>
+        /// Lookup users by external provider. (Requires administrator privileges)
+        /// </summary>
+        [Input("externProvider")]
+        public Input<string>? ExternProvider { get; set; }
+
+        /// <summary>
+        /// Lookup users by external UID. (Requires administrator privileges)
+        /// </summary>
+        [Input("externUid")]
+        public Input<string>? ExternUid { get; set; }
+
+        /// <summary>
+        /// Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
+        /// </summary>
+        [Input("orderBy")]
+        public Input<string>? OrderBy { get; set; }
+
+        /// <summary>
+        /// Search users by username, name or email.
+        /// </summary>
+        [Input("search")]
+        public Input<string>? Search { get; set; }
+
+        /// <summary>
+        /// Sort users' list in asc or desc order. (Requires administrator privileges)
+        /// </summary>
+        [Input("sort")]
+        public Input<string>? Sort { get; set; }
+
+        public GetUsersInvokeArgs()
         {
         }
     }

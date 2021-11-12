@@ -222,7 +222,7 @@ type InstanceVariableArrayInput interface {
 type InstanceVariableArray []InstanceVariableInput
 
 func (InstanceVariableArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*InstanceVariable)(nil))
+	return reflect.TypeOf((*[]*InstanceVariable)(nil)).Elem()
 }
 
 func (i InstanceVariableArray) ToInstanceVariableArrayOutput() InstanceVariableArrayOutput {
@@ -247,7 +247,7 @@ type InstanceVariableMapInput interface {
 type InstanceVariableMap map[string]InstanceVariableInput
 
 func (InstanceVariableMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*InstanceVariable)(nil))
+	return reflect.TypeOf((*map[string]*InstanceVariable)(nil)).Elem()
 }
 
 func (i InstanceVariableMap) ToInstanceVariableMapOutput() InstanceVariableMapOutput {
@@ -258,9 +258,7 @@ func (i InstanceVariableMap) ToInstanceVariableMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceVariableMapOutput)
 }
 
-type InstanceVariableOutput struct {
-	*pulumi.OutputState
-}
+type InstanceVariableOutput struct{ *pulumi.OutputState }
 
 func (InstanceVariableOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceVariable)(nil))
@@ -279,14 +277,12 @@ func (o InstanceVariableOutput) ToInstanceVariablePtrOutput() InstanceVariablePt
 }
 
 func (o InstanceVariableOutput) ToInstanceVariablePtrOutputWithContext(ctx context.Context) InstanceVariablePtrOutput {
-	return o.ApplyT(func(v InstanceVariable) *InstanceVariable {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceVariable) *InstanceVariable {
 		return &v
 	}).(InstanceVariablePtrOutput)
 }
 
-type InstanceVariablePtrOutput struct {
-	*pulumi.OutputState
-}
+type InstanceVariablePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceVariablePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceVariable)(nil))
@@ -298,6 +294,16 @@ func (o InstanceVariablePtrOutput) ToInstanceVariablePtrOutput() InstanceVariabl
 
 func (o InstanceVariablePtrOutput) ToInstanceVariablePtrOutputWithContext(ctx context.Context) InstanceVariablePtrOutput {
 	return o
+}
+
+func (o InstanceVariablePtrOutput) Elem() InstanceVariableOutput {
+	return o.ApplyT(func(v *InstanceVariable) InstanceVariable {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceVariable
+		return ret
+	}).(InstanceVariableOutput)
 }
 
 type InstanceVariableArrayOutput struct{ *pulumi.OutputState }
@@ -341,6 +347,10 @@ func (o InstanceVariableMapOutput) MapIndex(k pulumi.StringInput) InstanceVariab
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVariableInput)(nil)).Elem(), &InstanceVariable{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVariablePtrInput)(nil)).Elem(), &InstanceVariable{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVariableArrayInput)(nil)).Elem(), InstanceVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVariableMapInput)(nil)).Elem(), InstanceVariableMap{})
 	pulumi.RegisterOutputType(InstanceVariableOutput{})
 	pulumi.RegisterOutputType(InstanceVariablePtrOutput{})
 	pulumi.RegisterOutputType(InstanceVariableArrayOutput{})

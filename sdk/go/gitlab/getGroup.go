@@ -4,6 +4,9 @@
 package gitlab
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +28,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := 123
-// 		_, err := gitlab.LookupGroup(ctx, &gitlab.LookupGroupArgs{
+// 		_, err := gitlab.LookupGroup(ctx, &GetGroupArgs{
 // 			GroupId: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -48,7 +51,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "foo/bar"
-// 		_, err := gitlab.LookupGroup(ctx, &gitlab.LookupGroupArgs{
+// 		_, err := gitlab.LookupGroup(ctx, &GetGroupArgs{
 // 			FullPath: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -102,4 +105,108 @@ type LookupGroupResult struct {
 	VisibilityLevel string `pulumi:"visibilityLevel"`
 	// Web URL of the group.
 	WebUrl string `pulumi:"webUrl"`
+}
+
+func LookupGroupOutput(ctx *pulumi.Context, args LookupGroupOutputArgs, opts ...pulumi.InvokeOption) LookupGroupResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupGroupResult, error) {
+			args := v.(LookupGroupArgs)
+			r, err := LookupGroup(ctx, &args, opts...)
+			return *r, err
+		}).(LookupGroupResultOutput)
+}
+
+// A collection of arguments for invoking getGroup.
+type LookupGroupOutputArgs struct {
+	// The full path of the group.
+	FullPath pulumi.StringPtrInput `pulumi:"fullPath"`
+	// The ID of the group.
+	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+}
+
+func (LookupGroupOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGroupArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getGroup.
+type LookupGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGroupResult)(nil)).Elem()
+}
+
+func (o LookupGroupResultOutput) ToLookupGroupResultOutput() LookupGroupResultOutput {
+	return o
+}
+
+func (o LookupGroupResultOutput) ToLookupGroupResultOutputWithContext(ctx context.Context) LookupGroupResultOutput {
+	return o
+}
+
+// The description of the group.
+func (o LookupGroupResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The full name of the group.
+func (o LookupGroupResultOutput) FullName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.FullName }).(pulumi.StringOutput)
+}
+
+// The full path of the group.
+func (o LookupGroupResultOutput) FullPath() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.FullPath }).(pulumi.StringOutput)
+}
+
+func (o LookupGroupResultOutput) GroupId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupGroupResult) int { return v.GroupId }).(pulumi.IntOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Boolean, is LFS enabled for projects in this group.
+func (o LookupGroupResultOutput) LfsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.LfsEnabled }).(pulumi.BoolOutput)
+}
+
+// The name of this group.
+func (o LookupGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Integer, ID of the parent group.
+func (o LookupGroupResultOutput) ParentId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupGroupResult) int { return v.ParentId }).(pulumi.IntOutput)
+}
+
+// The path of the group.
+func (o LookupGroupResultOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Boolean, is request for access enabled to the group.
+func (o LookupGroupResultOutput) RequestAccessEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.RequestAccessEnabled }).(pulumi.BoolOutput)
+}
+
+// The group level registration token to use during runner setup.
+func (o LookupGroupResultOutput) RunnersToken() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.RunnersToken }).(pulumi.StringOutput)
+}
+
+// Visibility level of the group. Possible values are `private`, `internal`, `public`.
+func (o LookupGroupResultOutput) VisibilityLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.VisibilityLevel }).(pulumi.StringOutput)
+}
+
+// Web URL of the group.
+func (o LookupGroupResultOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupGroupResultOutput{})
 }

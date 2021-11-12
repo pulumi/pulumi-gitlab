@@ -196,3 +196,91 @@ export interface GetProjectsResult {
     readonly withProgrammingLanguage?: string;
     readonly withShared?: boolean;
 }
+
+export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
+    return pulumi.output(args).apply(a => getProjects(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProjects.
+ */
+export interface GetProjectsOutputArgs {
+    /**
+     * Limit by archived status.
+     */
+    archived?: pulumi.Input<boolean>;
+    /**
+     * The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
+     */
+    groupId?: pulumi.Input<number>;
+    /**
+     * Include projects in subgroups of this group. Default is `false`. Needs `groupId`.
+     */
+    includeSubgroups?: pulumi.Input<boolean>;
+    /**
+     * Prevents overloading your Gitlab instance in case of a misconfiguration. Default is `10`.
+     */
+    maxQueryablePages?: pulumi.Input<number>;
+    /**
+     * Limit by projects that the current user is a member of.
+     */
+    membership?: pulumi.Input<boolean>;
+    /**
+     * Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `groupId`.
+     */
+    minAccessLevel?: pulumi.Input<number>;
+    /**
+     * Return projects ordered by `id`, `name`, `path`, `createdAt`, `updatedAt`, or `lastActivityAt` fields. Default is `createdAt`.
+     */
+    orderBy?: pulumi.Input<string>;
+    /**
+     * Limit by projects owned by the current user.
+     */
+    owned?: pulumi.Input<boolean>;
+    page?: pulumi.Input<number>;
+    perPage?: pulumi.Input<number>;
+    /**
+     * Return list of authorized projects matching the search criteria.
+     */
+    search?: pulumi.Input<string>;
+    /**
+     * Return only the ID, URL, name, and path of each project.
+     */
+    simple?: pulumi.Input<boolean>;
+    /**
+     * Return projects sorted in `asc` or `desc` order. Default is `desc`.
+     */
+    sort?: pulumi.Input<string>;
+    /**
+     * Limit by projects starred by the current user.
+     */
+    starred?: pulumi.Input<boolean>;
+    /**
+     * Include project statistics. Cannot be used with `groupId`.
+     */
+    statistics?: pulumi.Input<boolean>;
+    /**
+     * Limit by visibility `public`, `internal`, or `private`.
+     */
+    visibility?: pulumi.Input<string>;
+    /**
+     * Include custom attributes in response _(admins only)_.
+     */
+    withCustomAttributes?: pulumi.Input<boolean>;
+    /**
+     * Limit by projects with issues feature enabled. Default is `false`.
+     */
+    withIssuesEnabled?: pulumi.Input<boolean>;
+    /**
+     * Limit by projects with merge requests feature enabled. Default is `false`.
+     */
+    withMergeRequestsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Limit by projects which use the given programming language. Cannot be used with `groupId`.
+     */
+    withProgrammingLanguage?: pulumi.Input<string>;
+    /**
+     * Include projects shared to this group. Default is `true`. Needs `groupId`.
+     */
+    withShared?: pulumi.Input<boolean>;
+}

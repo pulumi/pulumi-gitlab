@@ -213,7 +213,7 @@ type ProjectFreezePeriodArrayInput interface {
 type ProjectFreezePeriodArray []ProjectFreezePeriodInput
 
 func (ProjectFreezePeriodArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ProjectFreezePeriod)(nil))
+	return reflect.TypeOf((*[]*ProjectFreezePeriod)(nil)).Elem()
 }
 
 func (i ProjectFreezePeriodArray) ToProjectFreezePeriodArrayOutput() ProjectFreezePeriodArrayOutput {
@@ -238,7 +238,7 @@ type ProjectFreezePeriodMapInput interface {
 type ProjectFreezePeriodMap map[string]ProjectFreezePeriodInput
 
 func (ProjectFreezePeriodMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ProjectFreezePeriod)(nil))
+	return reflect.TypeOf((*map[string]*ProjectFreezePeriod)(nil)).Elem()
 }
 
 func (i ProjectFreezePeriodMap) ToProjectFreezePeriodMapOutput() ProjectFreezePeriodMapOutput {
@@ -249,9 +249,7 @@ func (i ProjectFreezePeriodMap) ToProjectFreezePeriodMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFreezePeriodMapOutput)
 }
 
-type ProjectFreezePeriodOutput struct {
-	*pulumi.OutputState
-}
+type ProjectFreezePeriodOutput struct{ *pulumi.OutputState }
 
 func (ProjectFreezePeriodOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectFreezePeriod)(nil))
@@ -270,14 +268,12 @@ func (o ProjectFreezePeriodOutput) ToProjectFreezePeriodPtrOutput() ProjectFreez
 }
 
 func (o ProjectFreezePeriodOutput) ToProjectFreezePeriodPtrOutputWithContext(ctx context.Context) ProjectFreezePeriodPtrOutput {
-	return o.ApplyT(func(v ProjectFreezePeriod) *ProjectFreezePeriod {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectFreezePeriod) *ProjectFreezePeriod {
 		return &v
 	}).(ProjectFreezePeriodPtrOutput)
 }
 
-type ProjectFreezePeriodPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectFreezePeriodPtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectFreezePeriodPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProjectFreezePeriod)(nil))
@@ -289,6 +285,16 @@ func (o ProjectFreezePeriodPtrOutput) ToProjectFreezePeriodPtrOutput() ProjectFr
 
 func (o ProjectFreezePeriodPtrOutput) ToProjectFreezePeriodPtrOutputWithContext(ctx context.Context) ProjectFreezePeriodPtrOutput {
 	return o
+}
+
+func (o ProjectFreezePeriodPtrOutput) Elem() ProjectFreezePeriodOutput {
+	return o.ApplyT(func(v *ProjectFreezePeriod) ProjectFreezePeriod {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectFreezePeriod
+		return ret
+	}).(ProjectFreezePeriodOutput)
 }
 
 type ProjectFreezePeriodArrayOutput struct{ *pulumi.OutputState }
@@ -332,6 +338,10 @@ func (o ProjectFreezePeriodMapOutput) MapIndex(k pulumi.StringInput) ProjectFree
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFreezePeriodInput)(nil)).Elem(), &ProjectFreezePeriod{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFreezePeriodPtrInput)(nil)).Elem(), &ProjectFreezePeriod{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFreezePeriodArrayInput)(nil)).Elem(), ProjectFreezePeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFreezePeriodMapInput)(nil)).Elem(), ProjectFreezePeriodMap{})
 	pulumi.RegisterOutputType(ProjectFreezePeriodOutput{})
 	pulumi.RegisterOutputType(ProjectFreezePeriodPtrOutput{})
 	pulumi.RegisterOutputType(ProjectFreezePeriodArrayOutput{})

@@ -236,7 +236,7 @@ type GroupVariableArrayInput interface {
 type GroupVariableArray []GroupVariableInput
 
 func (GroupVariableArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*GroupVariable)(nil))
+	return reflect.TypeOf((*[]*GroupVariable)(nil)).Elem()
 }
 
 func (i GroupVariableArray) ToGroupVariableArrayOutput() GroupVariableArrayOutput {
@@ -261,7 +261,7 @@ type GroupVariableMapInput interface {
 type GroupVariableMap map[string]GroupVariableInput
 
 func (GroupVariableMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*GroupVariable)(nil))
+	return reflect.TypeOf((*map[string]*GroupVariable)(nil)).Elem()
 }
 
 func (i GroupVariableMap) ToGroupVariableMapOutput() GroupVariableMapOutput {
@@ -272,9 +272,7 @@ func (i GroupVariableMap) ToGroupVariableMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GroupVariableMapOutput)
 }
 
-type GroupVariableOutput struct {
-	*pulumi.OutputState
-}
+type GroupVariableOutput struct{ *pulumi.OutputState }
 
 func (GroupVariableOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GroupVariable)(nil))
@@ -293,14 +291,12 @@ func (o GroupVariableOutput) ToGroupVariablePtrOutput() GroupVariablePtrOutput {
 }
 
 func (o GroupVariableOutput) ToGroupVariablePtrOutputWithContext(ctx context.Context) GroupVariablePtrOutput {
-	return o.ApplyT(func(v GroupVariable) *GroupVariable {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupVariable) *GroupVariable {
 		return &v
 	}).(GroupVariablePtrOutput)
 }
 
-type GroupVariablePtrOutput struct {
-	*pulumi.OutputState
-}
+type GroupVariablePtrOutput struct{ *pulumi.OutputState }
 
 func (GroupVariablePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**GroupVariable)(nil))
@@ -312,6 +308,16 @@ func (o GroupVariablePtrOutput) ToGroupVariablePtrOutput() GroupVariablePtrOutpu
 
 func (o GroupVariablePtrOutput) ToGroupVariablePtrOutputWithContext(ctx context.Context) GroupVariablePtrOutput {
 	return o
+}
+
+func (o GroupVariablePtrOutput) Elem() GroupVariableOutput {
+	return o.ApplyT(func(v *GroupVariable) GroupVariable {
+		if v != nil {
+			return *v
+		}
+		var ret GroupVariable
+		return ret
+	}).(GroupVariableOutput)
 }
 
 type GroupVariableArrayOutput struct{ *pulumi.OutputState }
@@ -355,6 +361,10 @@ func (o GroupVariableMapOutput) MapIndex(k pulumi.StringInput) GroupVariableOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupVariableInput)(nil)).Elem(), &GroupVariable{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupVariablePtrInput)(nil)).Elem(), &GroupVariable{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupVariableArrayInput)(nil)).Elem(), GroupVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupVariableMapInput)(nil)).Elem(), GroupVariableMap{})
 	pulumi.RegisterOutputType(GroupVariableOutput{})
 	pulumi.RegisterOutputType(GroupVariablePtrOutput{})
 	pulumi.RegisterOutputType(GroupVariableArrayOutput{})

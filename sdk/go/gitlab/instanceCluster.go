@@ -299,7 +299,7 @@ type InstanceClusterArrayInput interface {
 type InstanceClusterArray []InstanceClusterInput
 
 func (InstanceClusterArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*InstanceCluster)(nil))
+	return reflect.TypeOf((*[]*InstanceCluster)(nil)).Elem()
 }
 
 func (i InstanceClusterArray) ToInstanceClusterArrayOutput() InstanceClusterArrayOutput {
@@ -324,7 +324,7 @@ type InstanceClusterMapInput interface {
 type InstanceClusterMap map[string]InstanceClusterInput
 
 func (InstanceClusterMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*InstanceCluster)(nil))
+	return reflect.TypeOf((*map[string]*InstanceCluster)(nil)).Elem()
 }
 
 func (i InstanceClusterMap) ToInstanceClusterMapOutput() InstanceClusterMapOutput {
@@ -335,9 +335,7 @@ func (i InstanceClusterMap) ToInstanceClusterMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterMapOutput)
 }
 
-type InstanceClusterOutput struct {
-	*pulumi.OutputState
-}
+type InstanceClusterOutput struct{ *pulumi.OutputState }
 
 func (InstanceClusterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceCluster)(nil))
@@ -356,14 +354,12 @@ func (o InstanceClusterOutput) ToInstanceClusterPtrOutput() InstanceClusterPtrOu
 }
 
 func (o InstanceClusterOutput) ToInstanceClusterPtrOutputWithContext(ctx context.Context) InstanceClusterPtrOutput {
-	return o.ApplyT(func(v InstanceCluster) *InstanceCluster {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceCluster) *InstanceCluster {
 		return &v
 	}).(InstanceClusterPtrOutput)
 }
 
-type InstanceClusterPtrOutput struct {
-	*pulumi.OutputState
-}
+type InstanceClusterPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceClusterPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceCluster)(nil))
@@ -375,6 +371,16 @@ func (o InstanceClusterPtrOutput) ToInstanceClusterPtrOutput() InstanceClusterPt
 
 func (o InstanceClusterPtrOutput) ToInstanceClusterPtrOutputWithContext(ctx context.Context) InstanceClusterPtrOutput {
 	return o
+}
+
+func (o InstanceClusterPtrOutput) Elem() InstanceClusterOutput {
+	return o.ApplyT(func(v *InstanceCluster) InstanceCluster {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceCluster
+		return ret
+	}).(InstanceClusterOutput)
 }
 
 type InstanceClusterArrayOutput struct{ *pulumi.OutputState }
@@ -418,6 +424,10 @@ func (o InstanceClusterMapOutput) MapIndex(k pulumi.StringInput) InstanceCluster
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClusterInput)(nil)).Elem(), &InstanceCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClusterPtrInput)(nil)).Elem(), &InstanceCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClusterArrayInput)(nil)).Elem(), InstanceClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClusterMapInput)(nil)).Elem(), InstanceClusterMap{})
 	pulumi.RegisterOutputType(InstanceClusterOutput{})
 	pulumi.RegisterOutputType(InstanceClusterPtrOutput{})
 	pulumi.RegisterOutputType(InstanceClusterArrayOutput{})

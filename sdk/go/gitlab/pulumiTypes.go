@@ -379,7 +379,7 @@ func (o ProjectPushRulesOutput) ToProjectPushRulesPtrOutput() ProjectPushRulesPt
 }
 
 func (o ProjectPushRulesOutput) ToProjectPushRulesPtrOutputWithContext(ctx context.Context) ProjectPushRulesPtrOutput {
-	return o.ApplyT(func(v ProjectPushRules) *ProjectPushRules {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectPushRules) *ProjectPushRules {
 		return &v
 	}).(ProjectPushRulesPtrOutput)
 }
@@ -454,7 +454,13 @@ func (o ProjectPushRulesPtrOutput) ToProjectPushRulesPtrOutputWithContext(ctx co
 }
 
 func (o ProjectPushRulesPtrOutput) Elem() ProjectPushRulesOutput {
-	return o.ApplyT(func(v *ProjectPushRules) ProjectPushRules { return *v }).(ProjectPushRulesOutput)
+	return o.ApplyT(func(v *ProjectPushRules) ProjectPushRules {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectPushRules
+		return ret
+	}).(ProjectPushRulesOutput)
 }
 
 // All commit author emails must match this regex, e.g. `@my-company.com$`.
@@ -2083,6 +2089,25 @@ func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToMergeInput)(nil)).Elem(), BranchProtectionAllowedToMergeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToMergeArrayInput)(nil)).Elem(), BranchProtectionAllowedToMergeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToPushInput)(nil)).Elem(), BranchProtectionAllowedToPushArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToPushArrayInput)(nil)).Elem(), BranchProtectionAllowedToPushArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPushRulesInput)(nil)).Elem(), ProjectPushRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPushRulesPtrInput)(nil)).Elem(), ProjectPushRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberInput)(nil)).Elem(), GetGroupMembershipMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberArrayInput)(nil)).Elem(), GetGroupMembershipMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectPushRulesInput)(nil)).Elem(), GetProjectPushRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectInput)(nil)).Elem(), GetProjectsProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectArrayInput)(nil)).Elem(), GetProjectsProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectForkedFromProjectInput)(nil)).Elem(), GetProjectsProjectForkedFromProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectNamespaceInput)(nil)).Elem(), GetProjectsProjectNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectOwnerInput)(nil)).Elem(), GetProjectsProjectOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectPermissionsInput)(nil)).Elem(), GetProjectsProjectPermissionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectSharedWithGroupInput)(nil)).Elem(), GetProjectsProjectSharedWithGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectSharedWithGroupArrayInput)(nil)).Elem(), GetProjectsProjectSharedWithGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
 	pulumi.RegisterOutputType(BranchProtectionAllowedToMergeOutput{})
 	pulumi.RegisterOutputType(BranchProtectionAllowedToMergeArrayOutput{})
 	pulumi.RegisterOutputType(BranchProtectionAllowedToPushOutput{})
