@@ -74,6 +74,10 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
+     * Set to true if you want to treat skipped pipelines as if they finished with success.
+     */
+    public readonly allowMergeOnSkippedPipeline!: pulumi.Output<boolean | undefined>;
+    /**
      * Number of merge request approvals required for merging. Default is 0.
      */
     public readonly approvalsBeforeMerge!: pulumi.Output<number | undefined>;
@@ -217,6 +221,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly snippetsEnabled!: pulumi.Output<boolean | undefined>;
     /**
+     * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+     */
+    public readonly squashOption!: pulumi.Output<string | undefined>;
+    /**
      * URL that can be provided to `git clone` to clone the
      * repository via SSH.
      */
@@ -265,6 +273,7 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
+            inputs["allowMergeOnSkippedPipeline"] = state ? state.allowMergeOnSkippedPipeline : undefined;
             inputs["approvalsBeforeMerge"] = state ? state.approvalsBeforeMerge : undefined;
             inputs["archived"] = state ? state.archived : undefined;
             inputs["buildCoverageRegex"] = state ? state.buildCoverageRegex : undefined;
@@ -299,6 +308,7 @@ export class Project extends pulumi.CustomResource {
             inputs["runnersToken"] = state ? state.runnersToken : undefined;
             inputs["sharedRunnersEnabled"] = state ? state.sharedRunnersEnabled : undefined;
             inputs["snippetsEnabled"] = state ? state.snippetsEnabled : undefined;
+            inputs["squashOption"] = state ? state.squashOption : undefined;
             inputs["sshUrlToRepo"] = state ? state.sshUrlToRepo : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["templateName"] = state ? state.templateName : undefined;
@@ -309,6 +319,7 @@ export class Project extends pulumi.CustomResource {
             inputs["wikiEnabled"] = state ? state.wikiEnabled : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
+            inputs["allowMergeOnSkippedPipeline"] = args ? args.allowMergeOnSkippedPipeline : undefined;
             inputs["approvalsBeforeMerge"] = args ? args.approvalsBeforeMerge : undefined;
             inputs["archived"] = args ? args.archived : undefined;
             inputs["buildCoverageRegex"] = args ? args.buildCoverageRegex : undefined;
@@ -340,6 +351,7 @@ export class Project extends pulumi.CustomResource {
             inputs["requestAccessEnabled"] = args ? args.requestAccessEnabled : undefined;
             inputs["sharedRunnersEnabled"] = args ? args.sharedRunnersEnabled : undefined;
             inputs["snippetsEnabled"] = args ? args.snippetsEnabled : undefined;
+            inputs["squashOption"] = args ? args.squashOption : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["templateName"] = args ? args.templateName : undefined;
             inputs["templateProjectId"] = args ? args.templateProjectId : undefined;
@@ -363,6 +375,10 @@ export class Project extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Project resources.
  */
 export interface ProjectState {
+    /**
+     * Set to true if you want to treat skipped pipelines as if they finished with success.
+     */
+    allowMergeOnSkippedPipeline?: pulumi.Input<boolean>;
     /**
      * Number of merge request approvals required for merging. Default is 0.
      */
@@ -507,6 +523,10 @@ export interface ProjectState {
      */
     snippetsEnabled?: pulumi.Input<boolean>;
     /**
+     * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+     */
+    squashOption?: pulumi.Input<string>;
+    /**
      * URL that can be provided to `git clone` to clone the
      * repository via SSH.
      */
@@ -547,6 +567,10 @@ export interface ProjectState {
  * The set of arguments for constructing a Project resource.
  */
 export interface ProjectArgs {
+    /**
+     * Set to true if you want to treat skipped pipelines as if they finished with success.
+     */
+    allowMergeOnSkippedPipeline?: pulumi.Input<boolean>;
     /**
      * Number of merge request approvals required for merging. Default is 0.
      */
@@ -677,6 +701,10 @@ export interface ProjectArgs {
      * Enable snippets for the project.
      */
     snippetsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+     */
+    squashOption?: pulumi.Input<string>;
     /**
      * Tags (topics) of the project.
      */

@@ -65,6 +65,10 @@ export interface GetGroupArgs {
  */
 export interface GetGroupResult {
     /**
+     * Whether developers and maintainers can push to the applicable default branch.
+     */
+    readonly defaultBranchProtection: number;
+    /**
      * The description of the group.
      */
     readonly description: string;

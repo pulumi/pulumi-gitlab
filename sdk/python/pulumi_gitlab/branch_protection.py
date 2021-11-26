@@ -266,7 +266,7 @@ class BranchProtection(pulumi.CustomResource):
 
         This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch.
 
-        > The `allowed_to_push`, `allowed_to_merge` and `code_owner_approval_required` arguments require a GitLab Premium account or above.
+        > The `allowed_to_push`, `allowed_to_merge` and `code_owner_approval_required` arguments require a GitLab Premium account or above.  Please refer to [Gitlab API documentation](https://docs.gitlab.com/ee/api/protected_branches.html) for further information.
 
         ## Example Usage
 
@@ -300,7 +300,7 @@ class BranchProtection(pulumi.CustomResource):
 
         ## Import
 
-        GitLab project freeze periods can be imported using an id made up of `project_id:branch`, e.g.
+        Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"
@@ -325,7 +325,7 @@ class BranchProtection(pulumi.CustomResource):
 
         This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch.
 
-        > The `allowed_to_push`, `allowed_to_merge` and `code_owner_approval_required` arguments require a GitLab Premium account or above.
+        > The `allowed_to_push`, `allowed_to_merge` and `code_owner_approval_required` arguments require a GitLab Premium account or above.  Please refer to [Gitlab API documentation](https://docs.gitlab.com/ee/api/protected_branches.html) for further information.
 
         ## Example Usage
 
@@ -359,7 +359,7 @@ class BranchProtection(pulumi.CustomResource):
 
         ## Import
 
-        GitLab project freeze periods can be imported using an id made up of `project_id:branch`, e.g.
+        Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"

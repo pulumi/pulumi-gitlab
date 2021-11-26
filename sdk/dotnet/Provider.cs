@@ -43,7 +43,7 @@ namespace Pulumi.GitLab
         public Output<string?> ClientKey { get; private set; } = null!;
 
         /// <summary>
-        /// The OAuth token used to connect to GitLab.
+        /// The OAuth2 token or project/personal access token used to connect to GitLab.
         /// </summary>
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
@@ -107,7 +107,7 @@ namespace Pulumi.GitLab
         public Input<bool>? Insecure { get; set; }
 
         /// <summary>
-        /// The OAuth token used to connect to GitLab.
+        /// The OAuth2 token or project/personal access token used to connect to GitLab.
         /// </summary>
         [Input("token", required: true)]
         public Input<string> Token { get; set; } = null!;

@@ -63,7 +63,7 @@ Object.defineProperty(exports, "insecure", {
 });
 
 /**
- * The OAuth token used to connect to GitLab.
+ * The OAuth2 token or project/personal access token used to connect to GitLab.
  */
 export declare const token: string | undefined;
 Object.defineProperty(exports, "token", {

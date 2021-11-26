@@ -13,9 +13,7 @@ import (
 
 // ## # gitlab\_project\_approval\_rule
 //
-// This resource allows you to create and manage multiple approval rules for your GitLab
-// projects. For further information on approval rules, consult the [gitlab
-// documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
+// This resource allows you to create and manage multiple approval rules for your GitLab projects. For further information on approval rules, consult the [gitlab documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
 //
 // > This feature requires GitLab Premium.
 //
@@ -61,7 +59,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleBranchProtection, err := gitlab.NewBranchProtection(ctx, "exampleBranchProtection", &gitlab.BranchProtectionArgs{
+// 		example, err := gitlab.NewBranchProtection(ctx, "example", &gitlab.BranchProtectionArgs{
 // 			Project:          pulumi.String("5"),
 // 			Branch:           pulumi.String("release/*"),
 // 			PushAccessLevel:  pulumi.String("maintainer"),
@@ -70,7 +68,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = gitlab.NewProjectApprovalRule(ctx, "exampleProjectApprovalRule", &gitlab.ProjectApprovalRuleArgs{
+// 		_, err = gitlab.NewProjectApprovalRule(ctx, "example_two", &gitlab.ProjectApprovalRuleArgs{
 // 			Project:           pulumi.String("5"),
 // 			ApprovalsRequired: pulumi.Int(3),
 // 			UserIds: pulumi.IntArray{
@@ -81,7 +79,7 @@ import (
 // 				pulumi.Int(51),
 // 			},
 // 			ProtectedBranchIds: pulumi.IntArray{
-// 				exampleBranchProtection.BranchProtectionId,
+// 				example.BranchProtectionId,
 // 			},
 // 		})
 // 		if err != nil {
@@ -94,7 +92,7 @@ import (
 //
 // ## Import
 //
-// GitLab project approval rules can be imported using an id consisting of `project-id:rule-id`, e.g.
+// GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
 //
 // ```sh
 //  $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"

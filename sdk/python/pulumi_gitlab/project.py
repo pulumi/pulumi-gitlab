@@ -15,6 +15,7 @@ __all__ = ['ProjectArgs', 'Project']
 @pulumi.input_type
 class ProjectArgs:
     def __init__(__self__, *,
+                 allow_merge_on_skipped_pipeline: Optional[pulumi.Input[bool]] = None,
                  approvals_before_merge: Optional[pulumi.Input[int]] = None,
                  archived: Optional[pulumi.Input[bool]] = None,
                  build_coverage_regex: Optional[pulumi.Input[str]] = None,
@@ -46,6 +47,7 @@ class ProjectArgs:
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
                  snippets_enabled: Optional[pulumi.Input[bool]] = None,
+                 squash_option: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  template_project_id: Optional[pulumi.Input[int]] = None,
@@ -54,6 +56,7 @@ class ProjectArgs:
                  wiki_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Project resource.
+        :param pulumi.Input[bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
@@ -91,6 +94,7 @@ class ProjectArgs:
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
+        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags (topics) of the project.
         :param pulumi.Input[str] template_name: When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         :param pulumi.Input[int] template_project_id: When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
@@ -100,6 +104,8 @@ class ProjectArgs:
                Repositories are created as private by default.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
         """
+        if allow_merge_on_skipped_pipeline is not None:
+            pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
         if approvals_before_merge is not None:
             pulumi.set(__self__, "approvals_before_merge", approvals_before_merge)
         if archived is not None:
@@ -162,6 +168,8 @@ class ProjectArgs:
             pulumi.set(__self__, "shared_runners_enabled", shared_runners_enabled)
         if snippets_enabled is not None:
             pulumi.set(__self__, "snippets_enabled", snippets_enabled)
+        if squash_option is not None:
+            pulumi.set(__self__, "squash_option", squash_option)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if template_name is not None:
@@ -174,6 +182,18 @@ class ProjectArgs:
             pulumi.set(__self__, "visibility_level", visibility_level)
         if wiki_enabled is not None:
             pulumi.set(__self__, "wiki_enabled", wiki_enabled)
+
+    @property
+    @pulumi.getter(name="allowMergeOnSkippedPipeline")
+    def allow_merge_on_skipped_pipeline(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true if you want to treat skipped pipelines as if they finished with success.
+        """
+        return pulumi.get(self, "allow_merge_on_skipped_pipeline")
+
+    @allow_merge_on_skipped_pipeline.setter
+    def allow_merge_on_skipped_pipeline(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_merge_on_skipped_pipeline", value)
 
     @property
     @pulumi.getter(name="approvalsBeforeMerge")
@@ -554,6 +574,18 @@ class ProjectArgs:
         pulumi.set(self, "snippets_enabled", value)
 
     @property
+    @pulumi.getter(name="squashOption")
+    def squash_option(self) -> Optional[pulumi.Input[str]]:
+        """
+        Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        """
+        return pulumi.get(self, "squash_option")
+
+    @squash_option.setter
+    def squash_option(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "squash_option", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -631,6 +663,7 @@ class ProjectArgs:
 @pulumi.input_type
 class _ProjectState:
     def __init__(__self__, *,
+                 allow_merge_on_skipped_pipeline: Optional[pulumi.Input[bool]] = None,
                  approvals_before_merge: Optional[pulumi.Input[int]] = None,
                  archived: Optional[pulumi.Input[bool]] = None,
                  build_coverage_regex: Optional[pulumi.Input[str]] = None,
@@ -665,6 +698,7 @@ class _ProjectState:
                  runners_token: Optional[pulumi.Input[str]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
                  snippets_enabled: Optional[pulumi.Input[bool]] = None,
+                 squash_option: Optional[pulumi.Input[str]] = None,
                  ssh_url_to_repo: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
@@ -675,6 +709,7 @@ class _ProjectState:
                  wiki_enabled: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+        :param pulumi.Input[bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
@@ -716,6 +751,7 @@ class _ProjectState:
         :param pulumi.Input[str] runners_token: Registration token to use during runner setup.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
+        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
         :param pulumi.Input[str] ssh_url_to_repo: URL that can be provided to `git clone` to clone the
                repository via SSH.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags (topics) of the project.
@@ -728,6 +764,8 @@ class _ProjectState:
         :param pulumi.Input[str] web_url: URL that can be used to find the project in a browser.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
         """
+        if allow_merge_on_skipped_pipeline is not None:
+            pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
         if approvals_before_merge is not None:
             pulumi.set(__self__, "approvals_before_merge", approvals_before_merge)
         if archived is not None:
@@ -796,6 +834,8 @@ class _ProjectState:
             pulumi.set(__self__, "shared_runners_enabled", shared_runners_enabled)
         if snippets_enabled is not None:
             pulumi.set(__self__, "snippets_enabled", snippets_enabled)
+        if squash_option is not None:
+            pulumi.set(__self__, "squash_option", squash_option)
         if ssh_url_to_repo is not None:
             pulumi.set(__self__, "ssh_url_to_repo", ssh_url_to_repo)
         if tags is not None:
@@ -812,6 +852,18 @@ class _ProjectState:
             pulumi.set(__self__, "web_url", web_url)
         if wiki_enabled is not None:
             pulumi.set(__self__, "wiki_enabled", wiki_enabled)
+
+    @property
+    @pulumi.getter(name="allowMergeOnSkippedPipeline")
+    def allow_merge_on_skipped_pipeline(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true if you want to treat skipped pipelines as if they finished with success.
+        """
+        return pulumi.get(self, "allow_merge_on_skipped_pipeline")
+
+    @allow_merge_on_skipped_pipeline.setter
+    def allow_merge_on_skipped_pipeline(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_merge_on_skipped_pipeline", value)
 
     @property
     @pulumi.getter(name="approvalsBeforeMerge")
@@ -1229,6 +1281,18 @@ class _ProjectState:
         pulumi.set(self, "snippets_enabled", value)
 
     @property
+    @pulumi.getter(name="squashOption")
+    def squash_option(self) -> Optional[pulumi.Input[str]]:
+        """
+        Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        """
+        return pulumi.get(self, "squash_option")
+
+    @squash_option.setter
+    def squash_option(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "squash_option", value)
+
+    @property
     @pulumi.getter(name="sshUrlToRepo")
     def ssh_url_to_repo(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1333,6 +1397,7 @@ class Project(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_merge_on_skipped_pipeline: Optional[pulumi.Input[bool]] = None,
                  approvals_before_merge: Optional[pulumi.Input[int]] = None,
                  archived: Optional[pulumi.Input[bool]] = None,
                  build_coverage_regex: Optional[pulumi.Input[str]] = None,
@@ -1364,6 +1429,7 @@ class Project(pulumi.CustomResource):
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
                  snippets_enabled: Optional[pulumi.Input[bool]] = None,
+                 squash_option: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  template_project_id: Optional[pulumi.Input[int]] = None,
@@ -1410,6 +1476,7 @@ class Project(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
@@ -1447,6 +1514,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
+        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags (topics) of the project.
         :param pulumi.Input[str] template_name: When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         :param pulumi.Input[int] template_project_id: When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
@@ -1514,6 +1582,7 @@ class Project(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_merge_on_skipped_pipeline: Optional[pulumi.Input[bool]] = None,
                  approvals_before_merge: Optional[pulumi.Input[int]] = None,
                  archived: Optional[pulumi.Input[bool]] = None,
                  build_coverage_regex: Optional[pulumi.Input[str]] = None,
@@ -1545,6 +1614,7 @@ class Project(pulumi.CustomResource):
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
                  snippets_enabled: Optional[pulumi.Input[bool]] = None,
+                 squash_option: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  template_project_id: Optional[pulumi.Input[int]] = None,
@@ -1563,6 +1633,7 @@ class Project(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProjectArgs.__new__(ProjectArgs)
 
+            __props__.__dict__["allow_merge_on_skipped_pipeline"] = allow_merge_on_skipped_pipeline
             __props__.__dict__["approvals_before_merge"] = approvals_before_merge
             __props__.__dict__["archived"] = archived
             __props__.__dict__["build_coverage_regex"] = build_coverage_regex
@@ -1594,6 +1665,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["request_access_enabled"] = request_access_enabled
             __props__.__dict__["shared_runners_enabled"] = shared_runners_enabled
             __props__.__dict__["snippets_enabled"] = snippets_enabled
+            __props__.__dict__["squash_option"] = squash_option
             __props__.__dict__["tags"] = tags
             __props__.__dict__["template_name"] = template_name
             __props__.__dict__["template_project_id"] = template_project_id
@@ -1615,6 +1687,7 @@ class Project(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allow_merge_on_skipped_pipeline: Optional[pulumi.Input[bool]] = None,
             approvals_before_merge: Optional[pulumi.Input[int]] = None,
             archived: Optional[pulumi.Input[bool]] = None,
             build_coverage_regex: Optional[pulumi.Input[str]] = None,
@@ -1649,6 +1722,7 @@ class Project(pulumi.CustomResource):
             runners_token: Optional[pulumi.Input[str]] = None,
             shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
             snippets_enabled: Optional[pulumi.Input[bool]] = None,
+            squash_option: Optional[pulumi.Input[str]] = None,
             ssh_url_to_repo: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template_name: Optional[pulumi.Input[str]] = None,
@@ -1664,6 +1738,7 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
@@ -1705,6 +1780,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] runners_token: Registration token to use during runner setup.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
+        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
         :param pulumi.Input[str] ssh_url_to_repo: URL that can be provided to `git clone` to clone the
                repository via SSH.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags (topics) of the project.
@@ -1721,6 +1797,7 @@ class Project(pulumi.CustomResource):
 
         __props__ = _ProjectState.__new__(_ProjectState)
 
+        __props__.__dict__["allow_merge_on_skipped_pipeline"] = allow_merge_on_skipped_pipeline
         __props__.__dict__["approvals_before_merge"] = approvals_before_merge
         __props__.__dict__["archived"] = archived
         __props__.__dict__["build_coverage_regex"] = build_coverage_regex
@@ -1755,6 +1832,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["runners_token"] = runners_token
         __props__.__dict__["shared_runners_enabled"] = shared_runners_enabled
         __props__.__dict__["snippets_enabled"] = snippets_enabled
+        __props__.__dict__["squash_option"] = squash_option
         __props__.__dict__["ssh_url_to_repo"] = ssh_url_to_repo
         __props__.__dict__["tags"] = tags
         __props__.__dict__["template_name"] = template_name
@@ -1764,6 +1842,14 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["web_url"] = web_url
         __props__.__dict__["wiki_enabled"] = wiki_enabled
         return Project(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allowMergeOnSkippedPipeline")
+    def allow_merge_on_skipped_pipeline(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Set to true if you want to treat skipped pipelines as if they finished with success.
+        """
+        return pulumi.get(self, "allow_merge_on_skipped_pipeline")
 
     @property
     @pulumi.getter(name="approvalsBeforeMerge")
@@ -2043,6 +2129,14 @@ class Project(pulumi.CustomResource):
         Enable snippets for the project.
         """
         return pulumi.get(self, "snippets_enabled")
+
+    @property
+    @pulumi.getter(name="squashOption")
+    def squash_option(self) -> pulumi.Output[Optional[str]]:
+        """
+        Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        """
+        return pulumi.get(self, "squash_option")
 
     @property
     @pulumi.getter(name="sshUrlToRepo")

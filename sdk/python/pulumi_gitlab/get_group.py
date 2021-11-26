@@ -20,7 +20,10 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, description=None, full_name=None, full_path=None, group_id=None, id=None, lfs_enabled=None, name=None, parent_id=None, path=None, request_access_enabled=None, runners_token=None, visibility_level=None, web_url=None):
+    def __init__(__self__, default_branch_protection=None, description=None, full_name=None, full_path=None, group_id=None, id=None, lfs_enabled=None, name=None, parent_id=None, path=None, request_access_enabled=None, runners_token=None, visibility_level=None, web_url=None):
+        if default_branch_protection and not isinstance(default_branch_protection, int):
+            raise TypeError("Expected argument 'default_branch_protection' to be a int")
+        pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -60,6 +63,14 @@ class GetGroupResult:
         if web_url and not isinstance(web_url, str):
             raise TypeError("Expected argument 'web_url' to be a str")
         pulumi.set(__self__, "web_url", web_url)
+
+    @property
+    @pulumi.getter(name="defaultBranchProtection")
+    def default_branch_protection(self) -> int:
+        """
+        Whether developers and maintainers can push to the applicable default branch.
+        """
+        return pulumi.get(self, "default_branch_protection")
 
     @property
     @pulumi.getter
@@ -169,6 +180,7 @@ class AwaitableGetGroupResult(GetGroupResult):
         if False:
             yield self
         return GetGroupResult(
+            default_branch_protection=self.default_branch_protection,
             description=self.description,
             full_name=self.full_name,
             full_path=self.full_path,
@@ -224,6 +236,7 @@ def get_group(full_path: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult).value
 
     return AwaitableGetGroupResult(
+        default_branch_protection=__ret__.default_branch_protection,
         description=__ret__.description,
         full_name=__ret__.full_name,
         full_path=__ret__.full_path,

@@ -13,37 +13,9 @@ import (
 
 // ## # gitlab\_deploy\_token
 //
-// This resource allows you to create and manage deploy token for your GitLab projects and groups.
+// This resource allows you to create and manage deploy token for your GitLab projects and groups. Please refer to [Gitlab documentation](https://docs.gitlab.com/ee/user/project/deploy_tokens/) for further information.
 //
 // ## Example Usage
-// ### Project
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewDeployToken(ctx, "example", &gitlab.DeployTokenArgs{
-// 			ExpiresAt: pulumi.String("2020-03-14T00:00:00.000Z"),
-// 			Project:   pulumi.String("example/deploying"),
-// 			Scopes: pulumi.StringArray{
-// 				pulumi.String("read_repository"),
-// 				pulumi.String("read_registry"),
-// 			},
-// 			Username: pulumi.String("example-username"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 // ### Group
 //
 // ```go

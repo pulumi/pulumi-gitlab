@@ -17,7 +17,7 @@ namespace Pulumi.GitLab
         /// 
         /// Provide details about a list of projects in the Gitlab provider. Listing all projects and group projects with [project filtering](https://docs.gitlab.com/ee/api/projects.html#list-user-projects) or [group project filtering](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-projects) is supported.
         /// 
-        /// &gt; **NOTE**: This data source supports all available filters exposed by the `xanzy/go-gitlab` package, which might not expose all available filters exposed by the Gitlab APIs.  
+        /// &gt; **NOTE**: This data source supports all available filters exposed by the `xanzy/go-gitlab` package, which might not expose all available filters exposed by the Gitlab APIs.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -79,7 +79,7 @@ namespace Pulumi.GitLab
         /// 
         /// Provide details about a list of projects in the Gitlab provider. Listing all projects and group projects with [project filtering](https://docs.gitlab.com/ee/api/projects.html#list-user-projects) or [group project filtering](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-projects) is supported.
         /// 
-        /// &gt; **NOTE**: This data source supports all available filters exposed by the `xanzy/go-gitlab` package, which might not expose all available filters exposed by the Gitlab APIs.  
+        /// &gt; **NOTE**: This data source supports all available filters exposed by the `xanzy/go-gitlab` package, which might not expose all available filters exposed by the Gitlab APIs.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

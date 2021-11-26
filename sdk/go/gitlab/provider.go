@@ -26,7 +26,7 @@ type Provider struct {
 	ClientCert pulumi.StringPtrOutput `pulumi:"clientCert"`
 	// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
 	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
-	// The OAuth token used to connect to GitLab.
+	// The OAuth2 token or project/personal access token used to connect to GitLab.
 	Token pulumi.StringOutput `pulumi:"token"`
 }
 
@@ -59,7 +59,7 @@ type providerArgs struct {
 	ClientKey *string `pulumi:"clientKey"`
 	// Disable SSL verification of API calls
 	Insecure *bool `pulumi:"insecure"`
-	// The OAuth token used to connect to GitLab.
+	// The OAuth2 token or project/personal access token used to connect to GitLab.
 	Token string `pulumi:"token"`
 }
 
@@ -75,7 +75,7 @@ type ProviderArgs struct {
 	ClientKey pulumi.StringPtrInput
 	// Disable SSL verification of API calls
 	Insecure pulumi.BoolPtrInput
-	// The OAuth token used to connect to GitLab.
+	// The OAuth2 token or project/personal access token used to connect to GitLab.
 	Token pulumi.StringInput
 }
 

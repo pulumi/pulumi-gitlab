@@ -214,7 +214,7 @@ class GetUserResult:
     @pulumi.getter
     def linkedin(self) -> str:
         """
-        Linkedin profile of the user.
+        LinkedIn profile of the user.
         """
         return pulumi.get(self, "linkedin")
 
@@ -291,7 +291,7 @@ class GetUserResult:
     @pulumi.getter(name="twoFactorEnabled")
     def two_factor_enabled(self) -> bool:
         """
-        Whether user's two factor auth is enabled.
+        Whether user's two-factor auth is enabled.
         """
         return pulumi.get(self, "two_factor_enabled")
 
@@ -368,7 +368,7 @@ def get_user(email: Optional[str] = None,
     """
     ## # gitlab\_user
 
-    Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
+    Provide details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
 
     ## Example Usage
 
@@ -433,7 +433,7 @@ def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
     """
     ## # gitlab\_user
 
-    Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
+    Provide details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
 
     ## Example Usage
 

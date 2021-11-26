@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-gitlab/provider/v4
 go 1.16
 
 require (
-	github.com/gitlabhq/terraform-provider-gitlab v1.3.1-0.20210720003513-89de4bd5e56d
+	github.com/gitlabhq/terraform-provider-gitlab v1.3.1-0.20211115082505-76764869680c
 	github.com/hashicorp/terraform-plugin-sdk v1.16.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.11.0
 	github.com/pulumi/pulumi/sdk/v3 v3.17.0

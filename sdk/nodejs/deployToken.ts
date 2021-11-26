@@ -7,25 +7,9 @@ import * as utilities from "./utilities";
 /**
  * ## # gitlab\_deploy\_token
  *
- * This resource allows you to create and manage deploy token for your GitLab projects and groups.
+ * This resource allows you to create and manage deploy token for your GitLab projects and groups. Please refer to [Gitlab documentation](https://docs.gitlab.com/ee/user/project/deploy_tokens/) for further information.
  *
  * ## Example Usage
- * ### Project
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = new gitlab.DeployToken("example", {
- *     expiresAt: "2020-03-14T00:00:00.000Z",
- *     project: "example/deploying",
- *     scopes: [
- *         "read_repository",
- *         "read_registry",
- *     ],
- *     username: "example-username",
- * });
- * ```
  * ### Group
  *
  * ```typescript

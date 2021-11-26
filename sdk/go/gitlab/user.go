@@ -16,7 +16,7 @@ import (
 // This resource allows you to create and manage GitLab users.
 // Note your provider will need to be configured with admin-level access for this resource to work.
 //
-// > **Note:** You must specify either `password` or `resetPassword`.
+// > You must specify either `password` or `resetPassword`.
 //
 // ## Example Usage
 //
@@ -66,7 +66,7 @@ type User struct {
 	CanCreateGroup pulumi.BoolPtrOutput `pulumi:"canCreateGroup"`
 	// The e-mail address of the user.
 	Email pulumi.StringOutput `pulumi:"email"`
-	// Boolean, defaults to false.  Whether to enable administrative priviledges
+	// Boolean, defaults to false.  Whether to enable administrative privileges
 	// for the user.
 	IsAdmin pulumi.BoolPtrOutput `pulumi:"isAdmin"`
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
@@ -126,7 +126,7 @@ type userState struct {
 	CanCreateGroup *bool `pulumi:"canCreateGroup"`
 	// The e-mail address of the user.
 	Email *string `pulumi:"email"`
-	// Boolean, defaults to false.  Whether to enable administrative priviledges
+	// Boolean, defaults to false.  Whether to enable administrative privileges
 	// for the user.
 	IsAdmin *bool `pulumi:"isAdmin"`
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
@@ -152,7 +152,7 @@ type UserState struct {
 	CanCreateGroup pulumi.BoolPtrInput
 	// The e-mail address of the user.
 	Email pulumi.StringPtrInput
-	// Boolean, defaults to false.  Whether to enable administrative priviledges
+	// Boolean, defaults to false.  Whether to enable administrative privileges
 	// for the user.
 	IsAdmin pulumi.BoolPtrInput
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
@@ -182,7 +182,7 @@ type userArgs struct {
 	CanCreateGroup *bool `pulumi:"canCreateGroup"`
 	// The e-mail address of the user.
 	Email string `pulumi:"email"`
-	// Boolean, defaults to false.  Whether to enable administrative priviledges
+	// Boolean, defaults to false.  Whether to enable administrative privileges
 	// for the user.
 	IsAdmin *bool `pulumi:"isAdmin"`
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
@@ -209,7 +209,7 @@ type UserArgs struct {
 	CanCreateGroup pulumi.BoolPtrInput
 	// The e-mail address of the user.
 	Email pulumi.StringInput
-	// Boolean, defaults to false.  Whether to enable administrative priviledges
+	// Boolean, defaults to false.  Whether to enable administrative privileges
 	// for the user.
 	IsAdmin pulumi.BoolPtrInput
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.

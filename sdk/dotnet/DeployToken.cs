@@ -12,34 +12,9 @@ namespace Pulumi.GitLab
     /// <summary>
     /// ## # gitlab\_deploy\_token
     /// 
-    /// This resource allows you to create and manage deploy token for your GitLab projects and groups.
+    /// This resource allows you to create and manage deploy token for your GitLab projects and groups. Please refer to [Gitlab documentation](https://docs.gitlab.com/ee/user/project/deploy_tokens/) for further information.
     /// 
     /// ## Example Usage
-    /// ### Project
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new GitLab.DeployToken("example", new GitLab.DeployTokenArgs
-    ///         {
-    ///             ExpiresAt = "2020-03-14T00:00:00.000Z",
-    ///             Project = "example/deploying",
-    ///             Scopes = 
-    ///             {
-    ///                 "read_repository",
-    ///                 "read_registry",
-    ///             },
-    ///             Username = "example-username",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// ### Group
     /// 
     /// ```csharp

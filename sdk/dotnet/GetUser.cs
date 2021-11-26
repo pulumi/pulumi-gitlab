@@ -15,7 +15,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// ## # gitlab\_user
         /// 
-        /// Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
+        /// Provide details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -46,7 +46,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// ## # gitlab\_user
         /// 
-        /// Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
+        /// Provide details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -183,7 +183,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string LastSignInAt;
         /// <summary>
-        /// Linkedin profile of the user.
+        /// LinkedIn profile of the user.
         /// </summary>
         public readonly string Linkedin;
         /// <summary>
@@ -220,7 +220,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Twitter;
         /// <summary>
-        /// Whether user's two factor auth is enabled.
+        /// Whether user's two-factor auth is enabled.
         /// </summary>
         public readonly bool TwoFactorEnabled;
         public readonly int UserId;

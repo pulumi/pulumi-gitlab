@@ -12,9 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// ## # gitlab\_project\_approval\_rule
     /// 
-    /// This resource allows you to create and manage multiple approval rules for your GitLab
-    /// projects. For further information on approval rules, consult the [gitlab
-    /// documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
+    /// This resource allows you to create and manage multiple approval rules for your GitLab projects. For further information on approval rules, consult the [gitlab documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
     /// 
     /// &gt; This feature requires GitLab Premium.
     /// 
@@ -56,14 +54,14 @@ namespace Pulumi.GitLab
     /// {
     ///     public MyStack()
     ///     {
-    ///         var exampleBranchProtection = new GitLab.BranchProtection("exampleBranchProtection", new GitLab.BranchProtectionArgs
+    ///         var example = new GitLab.BranchProtection("example", new GitLab.BranchProtectionArgs
     ///         {
     ///             Project = "5",
     ///             Branch = "release/*",
     ///             PushAccessLevel = "maintainer",
     ///             MergeAccessLevel = "developer",
     ///         });
-    ///         var exampleProjectApprovalRule = new GitLab.ProjectApprovalRule("exampleProjectApprovalRule", new GitLab.ProjectApprovalRuleArgs
+    ///         var example_two = new GitLab.ProjectApprovalRule("example-two", new GitLab.ProjectApprovalRuleArgs
     ///         {
     ///             Project = "5",
     ///             ApprovalsRequired = 3,
@@ -78,7 +76,7 @@ namespace Pulumi.GitLab
     ///             },
     ///             ProtectedBranchIds = 
     ///             {
-    ///                 exampleBranchProtection.BranchProtectionId,
+    ///                 example.BranchProtectionId,
     ///             },
     ///         });
     ///     }
@@ -88,7 +86,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// GitLab project approval rules can be imported using an id consisting of `project-id:rule-id`, e.g.
+    /// GitLab project approval rules can be imported using a key composed of `&lt;project-id&gt;:&lt;rule-id&gt;`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"

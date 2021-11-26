@@ -80,6 +80,8 @@ type LookupGroupArgs struct {
 
 // A collection of values returned by getGroup.
 type LookupGroupResult struct {
+	// Whether developers and maintainers can push to the applicable default branch.
+	DefaultBranchProtection int `pulumi:"defaultBranchProtection"`
 	// The description of the group.
 	Description string `pulumi:"description"`
 	// The full name of the group.
@@ -141,6 +143,11 @@ func (o LookupGroupResultOutput) ToLookupGroupResultOutput() LookupGroupResultOu
 
 func (o LookupGroupResultOutput) ToLookupGroupResultOutputWithContext(ctx context.Context) LookupGroupResultOutput {
 	return o
+}
+
+// Whether developers and maintainers can push to the applicable default branch.
+func (o LookupGroupResultOutput) DefaultBranchProtection() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupGroupResult) int { return v.DefaultBranchProtection }).(pulumi.IntOutput)
 }
 
 // The description of the group.

@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  *
  * This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch.
  *
- * > The `allowedToPush`, `allowedToMerge` and `codeOwnerApprovalRequired` arguments require a GitLab Premium account or above.
+ * > The `allowedToPush`, `allowedToMerge` and `codeOwnerApprovalRequired` arguments require a GitLab Premium account or above.  Please refer to [Gitlab API documentation](https://docs.gitlab.com/ee/api/protected_branches.html) for further information.
  *
  * ## Example Usage
  *
@@ -42,10 +42,33 @@ import * as utilities from "./utilities";
  *     pushAccessLevel: "developer",
  * });
  * ```
+ * ### Example using dynamic block
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const main = new gitlab.BranchProtection("main", {
+ *     project: "12345",
+ *     branch: "main",
+ *     pushAccessLevel: "maintainer",
+ *     mergeAccessLevel: "maintainer",
+ *     dynamic: [{
+ *         forEach: [
+ *             50,
+ *             55,
+ *             60,
+ *         ],
+ *         content: [{
+ *             userId: allowed_to_push.value,
+ *         }],
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
- * GitLab project freeze periods can be imported using an id made up of `project_id:branch`, e.g.
+ * Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"

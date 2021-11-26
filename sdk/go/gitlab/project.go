@@ -67,6 +67,8 @@ import (
 type Project struct {
 	pulumi.CustomResourceState
 
+	// Set to true if you want to treat skipped pipelines as if they finished with success.
+	AllowMergeOnSkippedPipeline pulumi.BoolPtrOutput `pulumi:"allowMergeOnSkippedPipeline"`
 	// Number of merge request approvals required for merging. Default is 0.
 	ApprovalsBeforeMerge pulumi.IntPtrOutput `pulumi:"approvalsBeforeMerge"`
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
@@ -142,6 +144,8 @@ type Project struct {
 	SharedRunnersEnabled pulumi.BoolOutput `pulumi:"sharedRunnersEnabled"`
 	// Enable snippets for the project.
 	SnippetsEnabled pulumi.BoolPtrOutput `pulumi:"snippetsEnabled"`
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+	SquashOption pulumi.StringPtrOutput `pulumi:"squashOption"`
 	// URL that can be provided to `git clone` to clone the
 	// repository via SSH.
 	SshUrlToRepo pulumi.StringOutput `pulumi:"sshUrlToRepo"`
@@ -192,6 +196,8 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
+	// Set to true if you want to treat skipped pipelines as if they finished with success.
+	AllowMergeOnSkippedPipeline *bool `pulumi:"allowMergeOnSkippedPipeline"`
 	// Number of merge request approvals required for merging. Default is 0.
 	ApprovalsBeforeMerge *int `pulumi:"approvalsBeforeMerge"`
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
@@ -267,6 +273,8 @@ type projectState struct {
 	SharedRunnersEnabled *bool `pulumi:"sharedRunnersEnabled"`
 	// Enable snippets for the project.
 	SnippetsEnabled *bool `pulumi:"snippetsEnabled"`
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+	SquashOption *string `pulumi:"squashOption"`
 	// URL that can be provided to `git clone` to clone the
 	// repository via SSH.
 	SshUrlToRepo *string `pulumi:"sshUrlToRepo"`
@@ -289,6 +297,8 @@ type projectState struct {
 }
 
 type ProjectState struct {
+	// Set to true if you want to treat skipped pipelines as if they finished with success.
+	AllowMergeOnSkippedPipeline pulumi.BoolPtrInput
 	// Number of merge request approvals required for merging. Default is 0.
 	ApprovalsBeforeMerge pulumi.IntPtrInput
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
@@ -364,6 +374,8 @@ type ProjectState struct {
 	SharedRunnersEnabled pulumi.BoolPtrInput
 	// Enable snippets for the project.
 	SnippetsEnabled pulumi.BoolPtrInput
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+	SquashOption pulumi.StringPtrInput
 	// URL that can be provided to `git clone` to clone the
 	// repository via SSH.
 	SshUrlToRepo pulumi.StringPtrInput
@@ -390,6 +402,8 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
+	// Set to true if you want to treat skipped pipelines as if they finished with success.
+	AllowMergeOnSkippedPipeline *bool `pulumi:"allowMergeOnSkippedPipeline"`
 	// Number of merge request approvals required for merging. Default is 0.
 	ApprovalsBeforeMerge *int `pulumi:"approvalsBeforeMerge"`
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
@@ -458,6 +472,8 @@ type projectArgs struct {
 	SharedRunnersEnabled *bool `pulumi:"sharedRunnersEnabled"`
 	// Enable snippets for the project.
 	SnippetsEnabled *bool `pulumi:"snippetsEnabled"`
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+	SquashOption *string `pulumi:"squashOption"`
 	// Tags (topics) of the project.
 	Tags []string `pulumi:"tags"`
 	// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
@@ -476,6 +492,8 @@ type projectArgs struct {
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
+	// Set to true if you want to treat skipped pipelines as if they finished with success.
+	AllowMergeOnSkippedPipeline pulumi.BoolPtrInput
 	// Number of merge request approvals required for merging. Default is 0.
 	ApprovalsBeforeMerge pulumi.IntPtrInput
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
@@ -544,6 +562,8 @@ type ProjectArgs struct {
 	SharedRunnersEnabled pulumi.BoolPtrInput
 	// Enable snippets for the project.
 	SnippetsEnabled pulumi.BoolPtrInput
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+	SquashOption pulumi.StringPtrInput
 	// Tags (topics) of the project.
 	Tags pulumi.StringArrayInput
 	// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.

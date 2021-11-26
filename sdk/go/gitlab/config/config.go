@@ -33,7 +33,7 @@ func GetInsecure(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "gitlab:insecure")
 }
 
-// The OAuth token used to connect to GitLab.
+// The OAuth2 token or project/personal access token used to connect to GitLab.
 func GetToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gitlab:token")
 }

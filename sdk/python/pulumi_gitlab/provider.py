@@ -21,7 +21,7 @@ class ProviderArgs:
                  insecure: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[str] token: The OAuth token used to connect to GitLab.
+        :param pulumi.Input[str] token: The OAuth2 token or project/personal access token used to connect to GitLab.
         :param pulumi.Input[str] base_url: The GitLab Base API URL
         :param pulumi.Input[str] cacert_file: A file containing the ca certificate to use in case ssl certificate is not from a standard chain
         :param pulumi.Input[str] client_cert: File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
@@ -44,7 +44,7 @@ class ProviderArgs:
     @pulumi.getter
     def token(self) -> pulumi.Input[str]:
         """
-        The OAuth token used to connect to GitLab.
+        The OAuth2 token or project/personal access token used to connect to GitLab.
         """
         return pulumi.get(self, "token")
 
@@ -138,7 +138,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] client_cert: File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
         :param pulumi.Input[str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
         :param pulumi.Input[bool] insecure: Disable SSL verification of API calls
-        :param pulumi.Input[str] token: The OAuth token used to connect to GitLab.
+        :param pulumi.Input[str] token: The OAuth2 token or project/personal access token used to connect to GitLab.
         """
         ...
     @overload
@@ -235,7 +235,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def token(self) -> pulumi.Output[str]:
         """
-        The OAuth token used to connect to GitLab.
+        The OAuth2 token or project/personal access token used to connect to GitLab.
         """
         return pulumi.get(self, "token")
 

@@ -66,6 +66,11 @@ type Group struct {
 	// Boolean, defaults to false.  Default to Auto
 	// DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled pulumi.BoolPtrOutput `pulumi:"autoDevopsEnabled"`
+	// (Optional) Int, defaults to 2.
+	// Whether developers and maintainers can push to the applicable default branch.
+	// 0 no protection, 1 partial protection, 2 full protection
+	// https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+	DefaultBranchProtection pulumi.IntPtrOutput `pulumi:"defaultBranchProtection"`
 	// The description of the group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Boolean, defaults to false.  Disable email notifications
@@ -150,6 +155,11 @@ type groupState struct {
 	// Boolean, defaults to false.  Default to Auto
 	// DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
+	// (Optional) Int, defaults to 2.
+	// Whether developers and maintainers can push to the applicable default branch.
+	// 0 no protection, 1 partial protection, 2 full protection
+	// https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
 	// The description of the group.
 	Description *string `pulumi:"description"`
 	// Boolean, defaults to false.  Disable email notifications
@@ -203,6 +213,11 @@ type GroupState struct {
 	// Boolean, defaults to false.  Default to Auto
 	// DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled pulumi.BoolPtrInput
+	// (Optional) Int, defaults to 2.
+	// Whether developers and maintainers can push to the applicable default branch.
+	// 0 no protection, 1 partial protection, 2 full protection
+	// https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+	DefaultBranchProtection pulumi.IntPtrInput
 	// The description of the group.
 	Description pulumi.StringPtrInput
 	// Boolean, defaults to false.  Disable email notifications
@@ -260,6 +275,11 @@ type groupArgs struct {
 	// Boolean, defaults to false.  Default to Auto
 	// DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
+	// (Optional) Int, defaults to 2.
+	// Whether developers and maintainers can push to the applicable default branch.
+	// 0 no protection, 1 partial protection, 2 full protection
+	// https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
 	// The description of the group.
 	Description *string `pulumi:"description"`
 	// Boolean, defaults to false.  Disable email notifications
@@ -306,6 +326,11 @@ type GroupArgs struct {
 	// Boolean, defaults to false.  Default to Auto
 	// DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled pulumi.BoolPtrInput
+	// (Optional) Int, defaults to 2.
+	// Whether developers and maintainers can push to the applicable default branch.
+	// 0 no protection, 1 partial protection, 2 full protection
+	// https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+	DefaultBranchProtection pulumi.IntPtrInput
 	// The description of the group.
 	Description pulumi.StringPtrInput
 	// Boolean, defaults to false.  Disable email notifications
