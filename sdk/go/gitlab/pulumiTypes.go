@@ -876,7 +876,8 @@ func (o GetProjectPushRulesOutput) RejectUnsignedCommits() pulumi.BoolOutput {
 }
 
 type GetProjectsProject struct {
-	_links map[string]string `pulumi:"_links"`
+	_links                      map[string]string `pulumi:"_links"`
+	AllowMergeOnSkippedPipeline bool              `pulumi:"allowMergeOnSkippedPipeline"`
 	// The numbers of approvals needed in a merge requests.
 	ApprovalsBeforeMerge int `pulumi:"approvalsBeforeMerge"`
 	// Limit by archived status.
@@ -959,7 +960,8 @@ type GetProjectsProjectInput interface {
 }
 
 type GetProjectsProjectArgs struct {
-	_links pulumi.StringMapInput `pulumi:"_links"`
+	_links                      pulumi.StringMapInput `pulumi:"_links"`
+	AllowMergeOnSkippedPipeline pulumi.BoolInput      `pulumi:"allowMergeOnSkippedPipeline"`
 	// The numbers of approvals needed in a merge requests.
 	ApprovalsBeforeMerge pulumi.IntInput `pulumi:"approvalsBeforeMerge"`
 	// Limit by archived status.
@@ -1083,6 +1085,10 @@ func (o GetProjectsProjectOutput) ToGetProjectsProjectOutputWithContext(ctx cont
 
 func (o GetProjectsProjectOutput) _links() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetProjectsProject) map[string]string { return v._links }).(pulumi.StringMapOutput)
+}
+
+func (o GetProjectsProjectOutput) AllowMergeOnSkippedPipeline() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectsProject) bool { return v.AllowMergeOnSkippedPipeline }).(pulumi.BoolOutput)
 }
 
 // The numbers of approvals needed in a merge requests.

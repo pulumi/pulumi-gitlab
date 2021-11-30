@@ -567,6 +567,7 @@ class GetProjectPushRulesResult(dict):
 class GetProjectsProjectResult(dict):
     def __init__(__self__, *,
                  _links: Mapping[str, str],
+                 allow_merge_on_skipped_pipeline: bool,
                  approvals_before_merge: int,
                  archived: bool,
                  avatar_url: str,
@@ -638,6 +639,7 @@ class GetProjectsProjectResult(dict):
         :param str visibility: Limit by visibility `public`, `internal`, or `private`.
         """
         pulumi.set(__self__, "_links", _links)
+        pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
         pulumi.set(__self__, "approvals_before_merge", approvals_before_merge)
         pulumi.set(__self__, "archived", archived)
         pulumi.set(__self__, "avatar_url", avatar_url)
@@ -698,6 +700,11 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter
     def _links(self) -> Mapping[str, str]:
         return pulumi.get(self, "_links")
+
+    @property
+    @pulumi.getter(name="allowMergeOnSkippedPipeline")
+    def allow_merge_on_skipped_pipeline(self) -> bool:
+        return pulumi.get(self, "allow_merge_on_skipped_pipeline")
 
     @property
     @pulumi.getter(name="approvalsBeforeMerge")

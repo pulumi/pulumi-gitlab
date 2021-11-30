@@ -52,7 +52,7 @@ class _ExportableConfig(types.ModuleType):
     @property
     def token(self) -> Optional[str]:
         """
-        The OAuth token used to connect to GitLab.
+        The OAuth2 token or project/personal access token used to connect to GitLab.
         """
         return __config__.get('token')
 

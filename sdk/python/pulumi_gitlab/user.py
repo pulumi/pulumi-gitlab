@@ -29,7 +29,7 @@ class UserArgs:
         :param pulumi.Input[str] email: The e-mail address of the user.
         :param pulumi.Input[str] username: The username of the user.
         :param pulumi.Input[bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
-        :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative priviledges
+        :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
                for the user.
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
@@ -100,7 +100,7 @@ class UserArgs:
     @pulumi.getter(name="isAdmin")
     def is_admin(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to false.  Whether to enable administrative priviledges
+        Boolean, defaults to false.  Whether to enable administrative privileges
         for the user.
         """
         return pulumi.get(self, "is_admin")
@@ -212,7 +212,7 @@ class _UserState:
         Input properties used for looking up and filtering User resources.
         :param pulumi.Input[bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
         :param pulumi.Input[str] email: The e-mail address of the user.
-        :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative priviledges
+        :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
                for the user.
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
@@ -274,7 +274,7 @@ class _UserState:
     @pulumi.getter(name="isAdmin")
     def is_admin(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to false.  Whether to enable administrative priviledges
+        Boolean, defaults to false.  Whether to enable administrative privileges
         for the user.
         """
         return pulumi.get(self, "is_admin")
@@ -403,7 +403,7 @@ class User(pulumi.CustomResource):
         This resource allows you to create and manage GitLab users.
         Note your provider will need to be configured with admin-level access for this resource to work.
 
-        > **Note:** You must specify either `password` or `reset_password`.
+        > You must specify either `password` or `reset_password`.
 
         ## Example Usage
 
@@ -438,7 +438,7 @@ class User(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
         :param pulumi.Input[str] email: The e-mail address of the user.
-        :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative priviledges
+        :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
                for the user.
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
@@ -461,7 +461,7 @@ class User(pulumi.CustomResource):
         This resource allows you to create and manage GitLab users.
         Note your provider will need to be configured with admin-level access for this resource to work.
 
-        > **Note:** You must specify either `password` or `reset_password`.
+        > You must specify either `password` or `reset_password`.
 
         ## Example Usage
 
@@ -575,7 +575,7 @@ class User(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
         :param pulumi.Input[str] email: The e-mail address of the user.
-        :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative priviledges
+        :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
                for the user.
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
@@ -623,7 +623,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="isAdmin")
     def is_admin(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean, defaults to false.  Whether to enable administrative priviledges
+        Boolean, defaults to false.  Whether to enable administrative privileges
         for the user.
         """
         return pulumi.get(self, "is_admin")

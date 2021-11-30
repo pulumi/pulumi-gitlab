@@ -14,6 +14,7 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetProjectsProjectResult
     {
         public readonly ImmutableDictionary<string, string> _links;
+        public readonly bool AllowMergeOnSkippedPipeline;
         /// <summary>
         /// The numbers of approvals needed in a merge requests.
         /// </summary>
@@ -112,6 +113,8 @@ namespace Pulumi.GitLab.Outputs
         [OutputConstructor]
         private GetProjectsProjectResult(
             ImmutableDictionary<string, string> _links,
+
+            bool allowMergeOnSkippedPipeline,
 
             int approvalsBeforeMerge,
 
@@ -224,6 +227,7 @@ namespace Pulumi.GitLab.Outputs
             bool wikiEnabled)
         {
             this._links = _links;
+            AllowMergeOnSkippedPipeline = allowMergeOnSkippedPipeline;
             ApprovalsBeforeMerge = approvalsBeforeMerge;
             Archived = archived;
             AvatarUrl = avatarUrl;

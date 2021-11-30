@@ -256,24 +256,9 @@ class DeployToken(pulumi.CustomResource):
         """
         ## # gitlab\_deploy\_token
 
-        This resource allows you to create and manage deploy token for your GitLab projects and groups.
+        This resource allows you to create and manage deploy token for your GitLab projects and groups. Please refer to [Gitlab documentation](https://docs.gitlab.com/ee/user/project/deploy_tokens/) for further information.
 
         ## Example Usage
-        ### Project
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.DeployToken("example",
-            expires_at="2020-03-14T00:00:00.000Z",
-            project="example/deploying",
-            scopes=[
-                "read_repository",
-                "read_registry",
-            ],
-            username="example-username")
-        ```
         ### Group
 
         ```python
@@ -305,24 +290,9 @@ class DeployToken(pulumi.CustomResource):
         """
         ## # gitlab\_deploy\_token
 
-        This resource allows you to create and manage deploy token for your GitLab projects and groups.
+        This resource allows you to create and manage deploy token for your GitLab projects and groups. Please refer to [Gitlab documentation](https://docs.gitlab.com/ee/user/project/deploy_tokens/) for further information.
 
         ## Example Usage
-        ### Project
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.DeployToken("example",
-            expires_at="2020-03-14T00:00:00.000Z",
-            project="example/deploying",
-            scopes=[
-                "read_repository",
-                "read_registry",
-            ],
-            username="example-username")
-        ```
         ### Group
 
         ```python

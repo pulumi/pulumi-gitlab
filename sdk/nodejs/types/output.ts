@@ -114,6 +114,7 @@ export interface GetProjectPushRules {
 
 export interface GetProjectsProject {
     _links: {[key: string]: string};
+    allowMergeOnSkippedPipeline: boolean;
     /**
      * The numbers of approvals needed in a merge requests.
      */

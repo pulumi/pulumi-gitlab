@@ -12,7 +12,7 @@ import (
 
 // ## # gitlab\_user
 //
-// Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
+// Provide details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
 //
 // ## Example Usage
 //
@@ -84,7 +84,7 @@ type LookupUserResult struct {
 	IsAdmin bool `pulumi:"isAdmin"`
 	// Last user's sign-in date.
 	LastSignInAt string `pulumi:"lastSignInAt"`
-	// Linkedin profile of the user.
+	// LinkedIn profile of the user.
 	Linkedin string `pulumi:"linkedin"`
 	// The location of the user.
 	Location string `pulumi:"location"`
@@ -103,7 +103,7 @@ type LookupUserResult struct {
 	ThemeId int `pulumi:"themeId"`
 	// Twitter username of the user.
 	Twitter string `pulumi:"twitter"`
-	// Whether user's two factor auth is enabled.
+	// Whether user's two-factor auth is enabled.
 	TwoFactorEnabled bool `pulumi:"twoFactorEnabled"`
 	UserId           int  `pulumi:"userId"`
 	// The UID provider of the user.
@@ -217,7 +217,7 @@ func (o LookupUserResultOutput) LastSignInAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.LastSignInAt }).(pulumi.StringOutput)
 }
 
-// Linkedin profile of the user.
+// LinkedIn profile of the user.
 func (o LookupUserResultOutput) Linkedin() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Linkedin }).(pulumi.StringOutput)
 }
@@ -266,7 +266,7 @@ func (o LookupUserResultOutput) Twitter() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Twitter }).(pulumi.StringOutput)
 }
 
-// Whether user's two factor auth is enabled.
+// Whether user's two-factor auth is enabled.
 func (o LookupUserResultOutput) TwoFactorEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupUserResult) bool { return v.TwoFactorEnabled }).(pulumi.BoolOutput)
 }

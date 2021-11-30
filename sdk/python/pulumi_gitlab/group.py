@@ -15,6 +15,7 @@ class GroupArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[str],
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
+                 default_branch_protection: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_disabled: Optional[pulumi.Input[bool]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
@@ -33,6 +34,10 @@ class GroupArgs:
         :param pulumi.Input[str] path: The path of the group.
         :param pulumi.Input[bool] auto_devops_enabled: Boolean, defaults to false.  Default to Auto
                DevOps pipeline for all projects within this group.
+        :param pulumi.Input[int] default_branch_protection: (Optional) Int, defaults to 2.
+               Whether developers and maintainers can push to the applicable default branch.
+               0 no protection, 1 partial protection, 2 full protection
+               https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
         :param pulumi.Input[str] description: The description of the group.
         :param pulumi.Input[bool] emails_disabled: Boolean, defaults to false.  Disable email notifications
         :param pulumi.Input[bool] lfs_enabled: Boolean, defaults to true.  Whether to enable LFS
@@ -61,6 +66,8 @@ class GroupArgs:
         pulumi.set(__self__, "path", path)
         if auto_devops_enabled is not None:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
+        if default_branch_protection is not None:
+            pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if emails_disabled is not None:
@@ -112,6 +119,21 @@ class GroupArgs:
     @auto_devops_enabled.setter
     def auto_devops_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_devops_enabled", value)
+
+    @property
+    @pulumi.getter(name="defaultBranchProtection")
+    def default_branch_protection(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Optional) Int, defaults to 2.
+        Whether developers and maintainers can push to the applicable default branch.
+        0 no protection, 1 partial protection, 2 full protection
+        https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+        """
+        return pulumi.get(self, "default_branch_protection")
+
+    @default_branch_protection.setter
+    def default_branch_protection(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_branch_protection", value)
 
     @property
     @pulumi.getter
@@ -285,6 +307,7 @@ class GroupArgs:
 class _GroupState:
     def __init__(__self__, *,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
+                 default_branch_protection: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_disabled: Optional[pulumi.Input[bool]] = None,
                  full_name: Optional[pulumi.Input[str]] = None,
@@ -307,6 +330,10 @@ class _GroupState:
         Input properties used for looking up and filtering Group resources.
         :param pulumi.Input[bool] auto_devops_enabled: Boolean, defaults to false.  Default to Auto
                DevOps pipeline for all projects within this group.
+        :param pulumi.Input[int] default_branch_protection: (Optional) Int, defaults to 2.
+               Whether developers and maintainers can push to the applicable default branch.
+               0 no protection, 1 partial protection, 2 full protection
+               https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
         :param pulumi.Input[str] description: The description of the group.
         :param pulumi.Input[bool] emails_disabled: Boolean, defaults to false.  Disable email notifications
         :param pulumi.Input[str] full_name: The full name of the group.
@@ -339,6 +366,8 @@ class _GroupState:
         """
         if auto_devops_enabled is not None:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
+        if default_branch_protection is not None:
+            pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if emails_disabled is not None:
@@ -388,6 +417,21 @@ class _GroupState:
     @auto_devops_enabled.setter
     def auto_devops_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_devops_enabled", value)
+
+    @property
+    @pulumi.getter(name="defaultBranchProtection")
+    def default_branch_protection(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Optional) Int, defaults to 2.
+        Whether developers and maintainers can push to the applicable default branch.
+        0 no protection, 1 partial protection, 2 full protection
+        https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+        """
+        return pulumi.get(self, "default_branch_protection")
+
+    @default_branch_protection.setter
+    def default_branch_protection(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_branch_protection", value)
 
     @property
     @pulumi.getter
@@ -623,6 +667,7 @@ class Group(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
+                 default_branch_protection: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_disabled: Optional[pulumi.Input[bool]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
@@ -677,6 +722,10 @@ class Group(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_devops_enabled: Boolean, defaults to false.  Default to Auto
                DevOps pipeline for all projects within this group.
+        :param pulumi.Input[int] default_branch_protection: (Optional) Int, defaults to 2.
+               Whether developers and maintainers can push to the applicable default branch.
+               0 no protection, 1 partial protection, 2 full protection
+               https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
         :param pulumi.Input[str] description: The description of the group.
         :param pulumi.Input[bool] emails_disabled: Boolean, defaults to false.  Disable email notifications
         :param pulumi.Input[bool] lfs_enabled: Boolean, defaults to true.  Whether to enable LFS
@@ -760,6 +809,7 @@ class Group(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
+                 default_branch_protection: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_disabled: Optional[pulumi.Input[bool]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
@@ -787,6 +837,7 @@ class Group(pulumi.CustomResource):
             __props__ = GroupArgs.__new__(GroupArgs)
 
             __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
+            __props__.__dict__["default_branch_protection"] = default_branch_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["emails_disabled"] = emails_disabled
             __props__.__dict__["lfs_enabled"] = lfs_enabled
@@ -818,6 +869,7 @@ class Group(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
+            default_branch_protection: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             emails_disabled: Optional[pulumi.Input[bool]] = None,
             full_name: Optional[pulumi.Input[str]] = None,
@@ -845,6 +897,10 @@ class Group(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_devops_enabled: Boolean, defaults to false.  Default to Auto
                DevOps pipeline for all projects within this group.
+        :param pulumi.Input[int] default_branch_protection: (Optional) Int, defaults to 2.
+               Whether developers and maintainers can push to the applicable default branch.
+               0 no protection, 1 partial protection, 2 full protection
+               https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
         :param pulumi.Input[str] description: The description of the group.
         :param pulumi.Input[bool] emails_disabled: Boolean, defaults to false.  Disable email notifications
         :param pulumi.Input[str] full_name: The full name of the group.
@@ -880,6 +936,7 @@ class Group(pulumi.CustomResource):
         __props__ = _GroupState.__new__(_GroupState)
 
         __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
+        __props__.__dict__["default_branch_protection"] = default_branch_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["emails_disabled"] = emails_disabled
         __props__.__dict__["full_name"] = full_name
@@ -908,6 +965,17 @@ class Group(pulumi.CustomResource):
         DevOps pipeline for all projects within this group.
         """
         return pulumi.get(self, "auto_devops_enabled")
+
+    @property
+    @pulumi.getter(name="defaultBranchProtection")
+    def default_branch_protection(self) -> pulumi.Output[Optional[int]]:
+        """
+        (Optional) Int, defaults to 2.
+        Whether developers and maintainers can push to the applicable default branch.
+        0 no protection, 1 partial protection, 2 full protection
+        https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+        """
+        return pulumi.get(self, "default_branch_protection")
 
     @property
     @pulumi.getter

@@ -75,6 +75,13 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly autoDevopsEnabled!: pulumi.Output<boolean | undefined>;
     /**
+     * (Optional) Int, defaults to 2.
+     * Whether developers and maintainers can push to the applicable default branch.
+     * 0 no protection, 1 partial protection, 2 full protection
+     * https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+     */
+    public readonly defaultBranchProtection!: pulumi.Output<number | undefined>;
+    /**
      * The description of the group.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -172,6 +179,7 @@ export class Group extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
             inputs["autoDevopsEnabled"] = state ? state.autoDevopsEnabled : undefined;
+            inputs["defaultBranchProtection"] = state ? state.defaultBranchProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["emailsDisabled"] = state ? state.emailsDisabled : undefined;
             inputs["fullName"] = state ? state.fullName : undefined;
@@ -196,6 +204,7 @@ export class Group extends pulumi.CustomResource {
                 throw new Error("Missing required property 'path'");
             }
             inputs["autoDevopsEnabled"] = args ? args.autoDevopsEnabled : undefined;
+            inputs["defaultBranchProtection"] = args ? args.defaultBranchProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["emailsDisabled"] = args ? args.emailsDisabled : undefined;
             inputs["lfsEnabled"] = args ? args.lfsEnabled : undefined;
@@ -231,6 +240,13 @@ export interface GroupState {
      * DevOps pipeline for all projects within this group.
      */
     autoDevopsEnabled?: pulumi.Input<boolean>;
+    /**
+     * (Optional) Int, defaults to 2.
+     * Whether developers and maintainers can push to the applicable default branch.
+     * 0 no protection, 1 partial protection, 2 full protection
+     * https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+     */
+    defaultBranchProtection?: pulumi.Input<number>;
     /**
      * The description of the group.
      */
@@ -325,6 +341,13 @@ export interface GroupArgs {
      * DevOps pipeline for all projects within this group.
      */
     autoDevopsEnabled?: pulumi.Input<boolean>;
+    /**
+     * (Optional) Int, defaults to 2.
+     * Whether developers and maintainers can push to the applicable default branch.
+     * 0 no protection, 1 partial protection, 2 full protection
+     * https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+     */
+    defaultBranchProtection?: pulumi.Input<number>;
     /**
      * The description of the group.
      */

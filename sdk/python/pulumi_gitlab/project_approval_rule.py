@@ -231,9 +231,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
         """
         ## # gitlab\_project\_approval\_rule
 
-        This resource allows you to create and manage multiple approval rules for your GitLab
-        projects. For further information on approval rules, consult the [gitlab
-        documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
+        This resource allows you to create and manage multiple approval rules for your GitLab projects. For further information on approval rules, consult the [gitlab documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
 
         > This feature requires GitLab Premium.
 
@@ -258,12 +256,12 @@ class ProjectApprovalRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        example_branch_protection = gitlab.BranchProtection("exampleBranchProtection",
+        example = gitlab.BranchProtection("example",
             project="5",
             branch="release/*",
             push_access_level="maintainer",
             merge_access_level="developer")
-        example_project_approval_rule = gitlab.ProjectApprovalRule("exampleProjectApprovalRule",
+        example_two = gitlab.ProjectApprovalRule("example-two",
             project="5",
             approvals_required=3,
             user_ids=[
@@ -271,12 +269,12 @@ class ProjectApprovalRule(pulumi.CustomResource):
                 500,
             ],
             group_ids=[51],
-            protected_branch_ids=[example_branch_protection.branch_protection_id])
+            protected_branch_ids=[example.branch_protection_id])
         ```
 
         ## Import
 
-        GitLab project approval rules can be imported using an id consisting of `project-id:rule-id`, e.g.
+        GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"
@@ -300,9 +298,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
         """
         ## # gitlab\_project\_approval\_rule
 
-        This resource allows you to create and manage multiple approval rules for your GitLab
-        projects. For further information on approval rules, consult the [gitlab
-        documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
+        This resource allows you to create and manage multiple approval rules for your GitLab projects. For further information on approval rules, consult the [gitlab documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
 
         > This feature requires GitLab Premium.
 
@@ -327,12 +323,12 @@ class ProjectApprovalRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        example_branch_protection = gitlab.BranchProtection("exampleBranchProtection",
+        example = gitlab.BranchProtection("example",
             project="5",
             branch="release/*",
             push_access_level="maintainer",
             merge_access_level="developer")
-        example_project_approval_rule = gitlab.ProjectApprovalRule("exampleProjectApprovalRule",
+        example_two = gitlab.ProjectApprovalRule("example-two",
             project="5",
             approvals_required=3,
             user_ids=[
@@ -340,12 +336,12 @@ class ProjectApprovalRule(pulumi.CustomResource):
                 500,
             ],
             group_ids=[51],
-            protected_branch_ids=[example_branch_protection.branch_protection_id])
+            protected_branch_ids=[example.branch_protection_id])
         ```
 
         ## Import
 
-        GitLab project approval rules can be imported using an id consisting of `project-id:rule-id`, e.g.
+        GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"

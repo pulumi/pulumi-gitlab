@@ -161,6 +161,10 @@ namespace Pulumi.GitLab
     public sealed class GetGroupResult
     {
         /// <summary>
+        /// Whether developers and maintainers can push to the applicable default branch.
+        /// </summary>
+        public readonly int DefaultBranchProtection;
+        /// <summary>
         /// The description of the group.
         /// </summary>
         public readonly string Description;
@@ -212,6 +216,8 @@ namespace Pulumi.GitLab
 
         [OutputConstructor]
         private GetGroupResult(
+            int defaultBranchProtection,
+
             string description,
 
             string fullName,
@@ -238,6 +244,7 @@ namespace Pulumi.GitLab
 
             string webUrl)
         {
+            DefaultBranchProtection = defaultBranchProtection;
             Description = description;
             FullName = fullName;
             FullPath = fullPath;

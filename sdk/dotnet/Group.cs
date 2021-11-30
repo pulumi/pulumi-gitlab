@@ -66,6 +66,15 @@ namespace Pulumi.GitLab
         public Output<bool?> AutoDevopsEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional) Int, defaults to 2.
+        /// Whether developers and maintainers can push to the applicable default branch.
+        /// 0 no protection, 1 partial protection, 2 full protection
+        /// https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+        /// </summary>
+        [Output("defaultBranchProtection")]
+        public Output<int?> DefaultBranchProtection { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the group.
         /// </summary>
         [Output("description")]
@@ -238,6 +247,15 @@ namespace Pulumi.GitLab
         public Input<bool>? AutoDevopsEnabled { get; set; }
 
         /// <summary>
+        /// (Optional) Int, defaults to 2.
+        /// Whether developers and maintainers can push to the applicable default branch.
+        /// 0 no protection, 1 partial protection, 2 full protection
+        /// https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+        /// </summary>
+        [Input("defaultBranchProtection")]
+        public Input<int>? DefaultBranchProtection { get; set; }
+
+        /// <summary>
         /// The description of the group.
         /// </summary>
         [Input("description")]
@@ -345,6 +363,15 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("autoDevopsEnabled")]
         public Input<bool>? AutoDevopsEnabled { get; set; }
+
+        /// <summary>
+        /// (Optional) Int, defaults to 2.
+        /// Whether developers and maintainers can push to the applicable default branch.
+        /// 0 no protection, 1 partial protection, 2 full protection
+        /// https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+        /// </summary>
+        [Input("defaultBranchProtection")]
+        public Input<int>? DefaultBranchProtection { get; set; }
 
         /// <summary>
         /// The description of the group.

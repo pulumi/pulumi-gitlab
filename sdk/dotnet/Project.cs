@@ -63,6 +63,12 @@ namespace Pulumi.GitLab
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>
+        /// Set to true if you want to treat skipped pipelines as if they finished with success.
+        /// </summary>
+        [Output("allowMergeOnSkippedPipeline")]
+        public Output<bool?> AllowMergeOnSkippedPipeline { get; private set; } = null!;
+
+        /// <summary>
         /// Number of merge request approvals required for merging. Default is 0.
         /// </summary>
         [Output("approvalsBeforeMerge")]
@@ -274,6 +280,12 @@ namespace Pulumi.GitLab
         public Output<bool?> SnippetsEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        /// </summary>
+        [Output("squashOption")]
+        public Output<string?> SquashOption { get; private set; } = null!;
+
+        /// <summary>
         /// URL that can be provided to `git clone` to clone the
         /// repository via SSH.
         /// </summary>
@@ -370,6 +382,12 @@ namespace Pulumi.GitLab
 
     public sealed class ProjectArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Set to true if you want to treat skipped pipelines as if they finished with success.
+        /// </summary>
+        [Input("allowMergeOnSkippedPipeline")]
+        public Input<bool>? AllowMergeOnSkippedPipeline { get; set; }
+
         /// <summary>
         /// Number of merge request approvals required for merging. Default is 0.
         /// </summary>
@@ -562,6 +580,12 @@ namespace Pulumi.GitLab
         [Input("snippetsEnabled")]
         public Input<bool>? SnippetsEnabled { get; set; }
 
+        /// <summary>
+        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        /// </summary>
+        [Input("squashOption")]
+        public Input<string>? SquashOption { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -613,6 +637,12 @@ namespace Pulumi.GitLab
 
     public sealed class ProjectState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Set to true if you want to treat skipped pipelines as if they finished with success.
+        /// </summary>
+        [Input("allowMergeOnSkippedPipeline")]
+        public Input<bool>? AllowMergeOnSkippedPipeline { get; set; }
+
         /// <summary>
         /// Number of merge request approvals required for merging. Default is 0.
         /// </summary>
@@ -823,6 +853,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("snippetsEnabled")]
         public Input<bool>? SnippetsEnabled { get; set; }
+
+        /// <summary>
+        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        /// </summary>
+        [Input("squashOption")]
+        public Input<string>? SquashOption { get; set; }
 
         /// <summary>
         /// URL that can be provided to `git clone` to clone the

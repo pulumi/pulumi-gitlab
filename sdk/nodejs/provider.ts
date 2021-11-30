@@ -42,7 +42,7 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly clientKey!: pulumi.Output<string | undefined>;
     /**
-     * The OAuth token used to connect to GitLab.
+     * The OAuth2 token or project/personal access token used to connect to GitLab.
      */
     public readonly token!: pulumi.Output<string>;
 
@@ -99,7 +99,7 @@ export interface ProviderArgs {
      */
     insecure?: pulumi.Input<boolean>;
     /**
-     * The OAuth token used to connect to GitLab.
+     * The OAuth2 token or project/personal access token used to connect to GitLab.
      */
     token: pulumi.Input<string>;
 }

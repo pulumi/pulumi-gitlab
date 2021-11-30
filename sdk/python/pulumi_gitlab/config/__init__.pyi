@@ -35,6 +35,6 @@ Disable SSL verification of API calls
 
 token: Optional[str]
 """
-The OAuth token used to connect to GitLab.
+The OAuth2 token or project/personal access token used to connect to GitLab.
 """
 

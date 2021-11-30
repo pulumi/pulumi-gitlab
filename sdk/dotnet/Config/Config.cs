@@ -84,7 +84,7 @@ namespace Pulumi.GitLab
 
         private static readonly __Value<string?> _token = new __Value<string?>(() => __config.Get("token"));
         /// <summary>
-        /// The OAuth token used to connect to GitLab.
+        /// The OAuth2 token or project/personal access token used to connect to GitLab.
         /// </summary>
         public static string? Token
         {

@@ -15,7 +15,7 @@ namespace Pulumi.GitLab
     /// This resource allows you to create and manage GitLab users.
     /// Note your provider will need to be configured with admin-level access for this resource to work.
     /// 
-    /// &gt; **Note:** You must specify either `password` or `reset_password`.
+    /// &gt; You must specify either `password` or `reset_password`.
     /// 
     /// ## Example Usage
     /// 
@@ -71,7 +71,7 @@ namespace Pulumi.GitLab
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean, defaults to false.  Whether to enable administrative priviledges
+        /// Boolean, defaults to false.  Whether to enable administrative privileges
         /// for the user.
         /// </summary>
         [Output("isAdmin")]
@@ -184,7 +184,7 @@ namespace Pulumi.GitLab
         public Input<string> Email { get; set; } = null!;
 
         /// <summary>
-        /// Boolean, defaults to false.  Whether to enable administrative priviledges
+        /// Boolean, defaults to false.  Whether to enable administrative privileges
         /// for the user.
         /// </summary>
         [Input("isAdmin")]
@@ -258,7 +258,7 @@ namespace Pulumi.GitLab
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to false.  Whether to enable administrative priviledges
+        /// Boolean, defaults to false.  Whether to enable administrative privileges
         /// for the user.
         /// </summary>
         [Input("isAdmin")]

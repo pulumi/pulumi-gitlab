@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## # gitlab\_user
  *
- * Provides details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
+ * Provide details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
  *
  * ## Example Usage
  *
@@ -111,7 +111,7 @@ export interface GetUserResult {
      */
     readonly lastSignInAt: string;
     /**
-     * Linkedin profile of the user.
+     * LinkedIn profile of the user.
      */
     readonly linkedin: string;
     /**
@@ -148,7 +148,7 @@ export interface GetUserResult {
      */
     readonly twitter: string;
     /**
-     * Whether user's two factor auth is enabled.
+     * Whether user's two-factor auth is enabled.
      */
     readonly twoFactorEnabled: boolean;
     readonly userId: number;
