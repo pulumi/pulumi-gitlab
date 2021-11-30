@@ -1,7 +1,10 @@
 ## HEAD (Unreleased)
-* Upgrade to v3.8.0 of the GitLab Terraform Provider
+_(none)_
 
 ---
+
+## 4.4.0 (2021-11-30)
+* Upgrade to v3.8.0 of the GitLab Terraform Provider
 
 ## 4.3.0 (2021-11-12)
 * Upgrade to terraform-bridge 3.11.0
