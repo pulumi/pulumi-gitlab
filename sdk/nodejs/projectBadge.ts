@@ -93,15 +93,15 @@ export class ProjectBadge extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectBadgeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectBadgeArgs | ProjectBadgeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectBadgeState | undefined;
-            inputs["imageUrl"] = state ? state.imageUrl : undefined;
-            inputs["linkUrl"] = state ? state.linkUrl : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["renderedImageUrl"] = state ? state.renderedImageUrl : undefined;
-            inputs["renderedLinkUrl"] = state ? state.renderedLinkUrl : undefined;
+            resourceInputs["imageUrl"] = state ? state.imageUrl : undefined;
+            resourceInputs["linkUrl"] = state ? state.linkUrl : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["renderedImageUrl"] = state ? state.renderedImageUrl : undefined;
+            resourceInputs["renderedLinkUrl"] = state ? state.renderedLinkUrl : undefined;
         } else {
             const args = argsOrState as ProjectBadgeArgs | undefined;
             if ((!args || args.imageUrl === undefined) && !opts.urn) {
@@ -113,16 +113,14 @@ export class ProjectBadge extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["imageUrl"] = args ? args.imageUrl : undefined;
-            inputs["linkUrl"] = args ? args.linkUrl : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["renderedImageUrl"] = undefined /*out*/;
-            inputs["renderedLinkUrl"] = undefined /*out*/;
+            resourceInputs["imageUrl"] = args ? args.imageUrl : undefined;
+            resourceInputs["linkUrl"] = args ? args.linkUrl : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["renderedImageUrl"] = undefined /*out*/;
+            resourceInputs["renderedLinkUrl"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ProjectBadge.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ProjectBadge.__pulumiType, name, resourceInputs, opts);
     }
 }
 

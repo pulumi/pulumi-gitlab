@@ -85,14 +85,14 @@ export class GroupMembership extends pulumi.CustomResource {
      */
     constructor(name: string, args: GroupMembershipArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupMembershipArgs | GroupMembershipState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupMembershipState | undefined;
-            inputs["accessLevel"] = state ? state.accessLevel : undefined;
-            inputs["expiresAt"] = state ? state.expiresAt : undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
+            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as GroupMembershipArgs | undefined;
             if ((!args || args.accessLevel === undefined) && !opts.urn) {
@@ -104,15 +104,13 @@ export class GroupMembership extends pulumi.CustomResource {
             if ((!args || args.userId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            inputs["accessLevel"] = args ? args.accessLevel : undefined;
-            inputs["expiresAt"] = args ? args.expiresAt : undefined;
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
+            resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GroupMembership.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GroupMembership.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -157,7 +157,7 @@ type GroupLabelInput interface {
 }
 
 func (*GroupLabel) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupLabel)(nil))
+	return reflect.TypeOf((**GroupLabel)(nil)).Elem()
 }
 
 func (i *GroupLabel) ToGroupLabelOutput() GroupLabelOutput {
@@ -166,35 +166,6 @@ func (i *GroupLabel) ToGroupLabelOutput() GroupLabelOutput {
 
 func (i *GroupLabel) ToGroupLabelOutputWithContext(ctx context.Context) GroupLabelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupLabelOutput)
-}
-
-func (i *GroupLabel) ToGroupLabelPtrOutput() GroupLabelPtrOutput {
-	return i.ToGroupLabelPtrOutputWithContext(context.Background())
-}
-
-func (i *GroupLabel) ToGroupLabelPtrOutputWithContext(ctx context.Context) GroupLabelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupLabelPtrOutput)
-}
-
-type GroupLabelPtrInput interface {
-	pulumi.Input
-
-	ToGroupLabelPtrOutput() GroupLabelPtrOutput
-	ToGroupLabelPtrOutputWithContext(ctx context.Context) GroupLabelPtrOutput
-}
-
-type groupLabelPtrType GroupLabelArgs
-
-func (*groupLabelPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GroupLabel)(nil))
-}
-
-func (i *groupLabelPtrType) ToGroupLabelPtrOutput() GroupLabelPtrOutput {
-	return i.ToGroupLabelPtrOutputWithContext(context.Background())
-}
-
-func (i *groupLabelPtrType) ToGroupLabelPtrOutputWithContext(ctx context.Context) GroupLabelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupLabelPtrOutput)
 }
 
 // GroupLabelArrayInput is an input type that accepts GroupLabelArray and GroupLabelArrayOutput values.
@@ -250,7 +221,7 @@ func (i GroupLabelMap) ToGroupLabelMapOutputWithContext(ctx context.Context) Gro
 type GroupLabelOutput struct{ *pulumi.OutputState }
 
 func (GroupLabelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupLabel)(nil))
+	return reflect.TypeOf((**GroupLabel)(nil)).Elem()
 }
 
 func (o GroupLabelOutput) ToGroupLabelOutput() GroupLabelOutput {
@@ -261,44 +232,10 @@ func (o GroupLabelOutput) ToGroupLabelOutputWithContext(ctx context.Context) Gro
 	return o
 }
 
-func (o GroupLabelOutput) ToGroupLabelPtrOutput() GroupLabelPtrOutput {
-	return o.ToGroupLabelPtrOutputWithContext(context.Background())
-}
-
-func (o GroupLabelOutput) ToGroupLabelPtrOutputWithContext(ctx context.Context) GroupLabelPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupLabel) *GroupLabel {
-		return &v
-	}).(GroupLabelPtrOutput)
-}
-
-type GroupLabelPtrOutput struct{ *pulumi.OutputState }
-
-func (GroupLabelPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GroupLabel)(nil))
-}
-
-func (o GroupLabelPtrOutput) ToGroupLabelPtrOutput() GroupLabelPtrOutput {
-	return o
-}
-
-func (o GroupLabelPtrOutput) ToGroupLabelPtrOutputWithContext(ctx context.Context) GroupLabelPtrOutput {
-	return o
-}
-
-func (o GroupLabelPtrOutput) Elem() GroupLabelOutput {
-	return o.ApplyT(func(v *GroupLabel) GroupLabel {
-		if v != nil {
-			return *v
-		}
-		var ret GroupLabel
-		return ret
-	}).(GroupLabelOutput)
-}
-
 type GroupLabelArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupLabelArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GroupLabel)(nil))
+	return reflect.TypeOf((*[]*GroupLabel)(nil)).Elem()
 }
 
 func (o GroupLabelArrayOutput) ToGroupLabelArrayOutput() GroupLabelArrayOutput {
@@ -310,15 +247,15 @@ func (o GroupLabelArrayOutput) ToGroupLabelArrayOutputWithContext(ctx context.Co
 }
 
 func (o GroupLabelArrayOutput) Index(i pulumi.IntInput) GroupLabelOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupLabel {
-		return vs[0].([]GroupLabel)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupLabel {
+		return vs[0].([]*GroupLabel)[vs[1].(int)]
 	}).(GroupLabelOutput)
 }
 
 type GroupLabelMapOutput struct{ *pulumi.OutputState }
 
 func (GroupLabelMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GroupLabel)(nil))
+	return reflect.TypeOf((*map[string]*GroupLabel)(nil)).Elem()
 }
 
 func (o GroupLabelMapOutput) ToGroupLabelMapOutput() GroupLabelMapOutput {
@@ -330,18 +267,16 @@ func (o GroupLabelMapOutput) ToGroupLabelMapOutputWithContext(ctx context.Contex
 }
 
 func (o GroupLabelMapOutput) MapIndex(k pulumi.StringInput) GroupLabelOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GroupLabel {
-		return vs[0].(map[string]GroupLabel)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GroupLabel {
+		return vs[0].(map[string]*GroupLabel)[vs[1].(string)]
 	}).(GroupLabelOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupLabelInput)(nil)).Elem(), &GroupLabel{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GroupLabelPtrInput)(nil)).Elem(), &GroupLabel{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupLabelArrayInput)(nil)).Elem(), GroupLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupLabelMapInput)(nil)).Elem(), GroupLabelMap{})
 	pulumi.RegisterOutputType(GroupLabelOutput{})
-	pulumi.RegisterOutputType(GroupLabelPtrOutput{})
 	pulumi.RegisterOutputType(GroupLabelArrayOutput{})
 	pulumi.RegisterOutputType(GroupLabelMapOutput{})
 }

@@ -121,16 +121,16 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectApprovalRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectApprovalRuleArgs | ProjectApprovalRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectApprovalRuleState | undefined;
-            inputs["approvalsRequired"] = state ? state.approvalsRequired : undefined;
-            inputs["groupIds"] = state ? state.groupIds : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["protectedBranchIds"] = state ? state.protectedBranchIds : undefined;
-            inputs["userIds"] = state ? state.userIds : undefined;
+            resourceInputs["approvalsRequired"] = state ? state.approvalsRequired : undefined;
+            resourceInputs["groupIds"] = state ? state.groupIds : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["protectedBranchIds"] = state ? state.protectedBranchIds : undefined;
+            resourceInputs["userIds"] = state ? state.userIds : undefined;
         } else {
             const args = argsOrState as ProjectApprovalRuleArgs | undefined;
             if ((!args || args.approvalsRequired === undefined) && !opts.urn) {
@@ -139,17 +139,15 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["approvalsRequired"] = args ? args.approvalsRequired : undefined;
-            inputs["groupIds"] = args ? args.groupIds : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["protectedBranchIds"] = args ? args.protectedBranchIds : undefined;
-            inputs["userIds"] = args ? args.userIds : undefined;
+            resourceInputs["approvalsRequired"] = args ? args.approvalsRequired : undefined;
+            resourceInputs["groupIds"] = args ? args.groupIds : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["protectedBranchIds"] = args ? args.protectedBranchIds : undefined;
+            resourceInputs["userIds"] = args ? args.userIds : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ProjectApprovalRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ProjectApprovalRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

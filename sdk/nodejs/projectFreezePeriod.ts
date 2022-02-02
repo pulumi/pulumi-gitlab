@@ -85,14 +85,14 @@ export class ProjectFreezePeriod extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectFreezePeriodArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectFreezePeriodArgs | ProjectFreezePeriodState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectFreezePeriodState | undefined;
-            inputs["cronTimezone"] = state ? state.cronTimezone : undefined;
-            inputs["freezeEnd"] = state ? state.freezeEnd : undefined;
-            inputs["freezeStart"] = state ? state.freezeStart : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["cronTimezone"] = state ? state.cronTimezone : undefined;
+            resourceInputs["freezeEnd"] = state ? state.freezeEnd : undefined;
+            resourceInputs["freezeStart"] = state ? state.freezeStart : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
         } else {
             const args = argsOrState as ProjectFreezePeriodArgs | undefined;
             if ((!args || args.freezeEnd === undefined) && !opts.urn) {
@@ -104,15 +104,13 @@ export class ProjectFreezePeriod extends pulumi.CustomResource {
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            inputs["cronTimezone"] = args ? args.cronTimezone : undefined;
-            inputs["freezeEnd"] = args ? args.freezeEnd : undefined;
-            inputs["freezeStart"] = args ? args.freezeStart : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["cronTimezone"] = args ? args.cronTimezone : undefined;
+            resourceInputs["freezeEnd"] = args ? args.freezeEnd : undefined;
+            resourceInputs["freezeStart"] = args ? args.freezeStart : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ProjectFreezePeriod.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ProjectFreezePeriod.__pulumiType, name, resourceInputs, opts);
     }
 }
 

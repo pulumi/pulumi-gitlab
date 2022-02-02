@@ -90,34 +90,32 @@ export class DeployToken extends pulumi.CustomResource {
      */
     constructor(name: string, args: DeployTokenArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DeployTokenArgs | DeployTokenState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DeployTokenState | undefined;
-            inputs["expiresAt"] = state ? state.expiresAt : undefined;
-            inputs["group"] = state ? state.group : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["scopes"] = state ? state.scopes : undefined;
-            inputs["token"] = state ? state.token : undefined;
-            inputs["username"] = state ? state.username : undefined;
+            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
+            resourceInputs["group"] = state ? state.group : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["scopes"] = state ? state.scopes : undefined;
+            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as DeployTokenArgs | undefined;
             if ((!args || args.scopes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scopes'");
             }
-            inputs["expiresAt"] = args ? args.expiresAt : undefined;
-            inputs["group"] = args ? args.group : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["scopes"] = args ? args.scopes : undefined;
-            inputs["username"] = args ? args.username : undefined;
-            inputs["token"] = undefined /*out*/;
+            resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
+            resourceInputs["group"] = args ? args.group : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["scopes"] = args ? args.scopes : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["token"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DeployToken.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DeployToken.__pulumiType, name, resourceInputs, opts);
     }
 }
 

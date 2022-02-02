@@ -124,25 +124,25 @@ export class InstanceCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceClusterArgs | InstanceClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceClusterState | undefined;
-            inputs["clusterType"] = state ? state.clusterType : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["environmentScope"] = state ? state.environmentScope : undefined;
-            inputs["kubernetesApiUrl"] = state ? state.kubernetesApiUrl : undefined;
-            inputs["kubernetesAuthorizationType"] = state ? state.kubernetesAuthorizationType : undefined;
-            inputs["kubernetesCaCert"] = state ? state.kubernetesCaCert : undefined;
-            inputs["kubernetesNamespace"] = state ? state.kubernetesNamespace : undefined;
-            inputs["kubernetesToken"] = state ? state.kubernetesToken : undefined;
-            inputs["managed"] = state ? state.managed : undefined;
-            inputs["managementProjectId"] = state ? state.managementProjectId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["platformType"] = state ? state.platformType : undefined;
-            inputs["providerType"] = state ? state.providerType : undefined;
+            resourceInputs["clusterType"] = state ? state.clusterType : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["environmentScope"] = state ? state.environmentScope : undefined;
+            resourceInputs["kubernetesApiUrl"] = state ? state.kubernetesApiUrl : undefined;
+            resourceInputs["kubernetesAuthorizationType"] = state ? state.kubernetesAuthorizationType : undefined;
+            resourceInputs["kubernetesCaCert"] = state ? state.kubernetesCaCert : undefined;
+            resourceInputs["kubernetesNamespace"] = state ? state.kubernetesNamespace : undefined;
+            resourceInputs["kubernetesToken"] = state ? state.kubernetesToken : undefined;
+            resourceInputs["managed"] = state ? state.managed : undefined;
+            resourceInputs["managementProjectId"] = state ? state.managementProjectId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["platformType"] = state ? state.platformType : undefined;
+            resourceInputs["providerType"] = state ? state.providerType : undefined;
         } else {
             const args = argsOrState as InstanceClusterArgs | undefined;
             if ((!args || args.kubernetesApiUrl === undefined) && !opts.urn) {
@@ -151,26 +151,24 @@ export class InstanceCluster extends pulumi.CustomResource {
             if ((!args || args.kubernetesToken === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'kubernetesToken'");
             }
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["environmentScope"] = args ? args.environmentScope : undefined;
-            inputs["kubernetesApiUrl"] = args ? args.kubernetesApiUrl : undefined;
-            inputs["kubernetesAuthorizationType"] = args ? args.kubernetesAuthorizationType : undefined;
-            inputs["kubernetesCaCert"] = args ? args.kubernetesCaCert : undefined;
-            inputs["kubernetesNamespace"] = args ? args.kubernetesNamespace : undefined;
-            inputs["kubernetesToken"] = args ? args.kubernetesToken : undefined;
-            inputs["managed"] = args ? args.managed : undefined;
-            inputs["managementProjectId"] = args ? args.managementProjectId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["clusterType"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["platformType"] = undefined /*out*/;
-            inputs["providerType"] = undefined /*out*/;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["environmentScope"] = args ? args.environmentScope : undefined;
+            resourceInputs["kubernetesApiUrl"] = args ? args.kubernetesApiUrl : undefined;
+            resourceInputs["kubernetesAuthorizationType"] = args ? args.kubernetesAuthorizationType : undefined;
+            resourceInputs["kubernetesCaCert"] = args ? args.kubernetesCaCert : undefined;
+            resourceInputs["kubernetesNamespace"] = args ? args.kubernetesNamespace : undefined;
+            resourceInputs["kubernetesToken"] = args ? args.kubernetesToken : undefined;
+            resourceInputs["managed"] = args ? args.managed : undefined;
+            resourceInputs["managementProjectId"] = args ? args.managementProjectId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["clusterType"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["platformType"] = undefined /*out*/;
+            resourceInputs["providerType"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(InstanceCluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(InstanceCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

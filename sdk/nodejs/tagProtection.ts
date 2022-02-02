@@ -72,13 +72,13 @@ export class TagProtection extends pulumi.CustomResource {
      */
     constructor(name: string, args: TagProtectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TagProtectionArgs | TagProtectionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagProtectionState | undefined;
-            inputs["createAccessLevel"] = state ? state.createAccessLevel : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["tag"] = state ? state.tag : undefined;
+            resourceInputs["createAccessLevel"] = state ? state.createAccessLevel : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["tag"] = state ? state.tag : undefined;
         } else {
             const args = argsOrState as TagProtectionArgs | undefined;
             if ((!args || args.createAccessLevel === undefined) && !opts.urn) {
@@ -90,14 +90,12 @@ export class TagProtection extends pulumi.CustomResource {
             if ((!args || args.tag === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tag'");
             }
-            inputs["createAccessLevel"] = args ? args.createAccessLevel : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["tag"] = args ? args.tag : undefined;
+            resourceInputs["createAccessLevel"] = args ? args.createAccessLevel : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["tag"] = args ? args.tag : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TagProtection.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TagProtection.__pulumiType, name, resourceInputs, opts);
     }
 }
 

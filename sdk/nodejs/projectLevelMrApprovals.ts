@@ -98,30 +98,28 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectLevelMrApprovalsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectLevelMrApprovalsArgs | ProjectLevelMrApprovalsState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectLevelMrApprovalsState | undefined;
-            inputs["disableOverridingApproversPerMergeRequest"] = state ? state.disableOverridingApproversPerMergeRequest : undefined;
-            inputs["mergeRequestsAuthorApproval"] = state ? state.mergeRequestsAuthorApproval : undefined;
-            inputs["mergeRequestsDisableCommittersApproval"] = state ? state.mergeRequestsDisableCommittersApproval : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["resetApprovalsOnPush"] = state ? state.resetApprovalsOnPush : undefined;
+            resourceInputs["disableOverridingApproversPerMergeRequest"] = state ? state.disableOverridingApproversPerMergeRequest : undefined;
+            resourceInputs["mergeRequestsAuthorApproval"] = state ? state.mergeRequestsAuthorApproval : undefined;
+            resourceInputs["mergeRequestsDisableCommittersApproval"] = state ? state.mergeRequestsDisableCommittersApproval : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["resetApprovalsOnPush"] = state ? state.resetApprovalsOnPush : undefined;
         } else {
             const args = argsOrState as ProjectLevelMrApprovalsArgs | undefined;
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            inputs["disableOverridingApproversPerMergeRequest"] = args ? args.disableOverridingApproversPerMergeRequest : undefined;
-            inputs["mergeRequestsAuthorApproval"] = args ? args.mergeRequestsAuthorApproval : undefined;
-            inputs["mergeRequestsDisableCommittersApproval"] = args ? args.mergeRequestsDisableCommittersApproval : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["resetApprovalsOnPush"] = args ? args.resetApprovalsOnPush : undefined;
+            resourceInputs["disableOverridingApproversPerMergeRequest"] = args ? args.disableOverridingApproversPerMergeRequest : undefined;
+            resourceInputs["mergeRequestsAuthorApproval"] = args ? args.mergeRequestsAuthorApproval : undefined;
+            resourceInputs["mergeRequestsDisableCommittersApproval"] = args ? args.mergeRequestsDisableCommittersApproval : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["resetApprovalsOnPush"] = args ? args.resetApprovalsOnPush : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ProjectLevelMrApprovals.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ProjectLevelMrApprovals.__pulumiType, name, resourceInputs, opts);
     }
 }
 

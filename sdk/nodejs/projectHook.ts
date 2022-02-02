@@ -126,26 +126,26 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectHookArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectHookArgs | ProjectHookState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectHookState | undefined;
-            inputs["confidentialIssuesEvents"] = state ? state.confidentialIssuesEvents : undefined;
-            inputs["confidentialNoteEvents"] = state ? state.confidentialNoteEvents : undefined;
-            inputs["deploymentEvents"] = state ? state.deploymentEvents : undefined;
-            inputs["enableSslVerification"] = state ? state.enableSslVerification : undefined;
-            inputs["issuesEvents"] = state ? state.issuesEvents : undefined;
-            inputs["jobEvents"] = state ? state.jobEvents : undefined;
-            inputs["mergeRequestsEvents"] = state ? state.mergeRequestsEvents : undefined;
-            inputs["noteEvents"] = state ? state.noteEvents : undefined;
-            inputs["pipelineEvents"] = state ? state.pipelineEvents : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["pushEvents"] = state ? state.pushEvents : undefined;
-            inputs["pushEventsBranchFilter"] = state ? state.pushEventsBranchFilter : undefined;
-            inputs["tagPushEvents"] = state ? state.tagPushEvents : undefined;
-            inputs["token"] = state ? state.token : undefined;
-            inputs["url"] = state ? state.url : undefined;
-            inputs["wikiPageEvents"] = state ? state.wikiPageEvents : undefined;
+            resourceInputs["confidentialIssuesEvents"] = state ? state.confidentialIssuesEvents : undefined;
+            resourceInputs["confidentialNoteEvents"] = state ? state.confidentialNoteEvents : undefined;
+            resourceInputs["deploymentEvents"] = state ? state.deploymentEvents : undefined;
+            resourceInputs["enableSslVerification"] = state ? state.enableSslVerification : undefined;
+            resourceInputs["issuesEvents"] = state ? state.issuesEvents : undefined;
+            resourceInputs["jobEvents"] = state ? state.jobEvents : undefined;
+            resourceInputs["mergeRequestsEvents"] = state ? state.mergeRequestsEvents : undefined;
+            resourceInputs["noteEvents"] = state ? state.noteEvents : undefined;
+            resourceInputs["pipelineEvents"] = state ? state.pipelineEvents : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pushEvents"] = state ? state.pushEvents : undefined;
+            resourceInputs["pushEventsBranchFilter"] = state ? state.pushEventsBranchFilter : undefined;
+            resourceInputs["tagPushEvents"] = state ? state.tagPushEvents : undefined;
+            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["wikiPageEvents"] = state ? state.wikiPageEvents : undefined;
         } else {
             const args = argsOrState as ProjectHookArgs | undefined;
             if ((!args || args.project === undefined) && !opts.urn) {
@@ -154,27 +154,25 @@ export class ProjectHook extends pulumi.CustomResource {
             if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            inputs["confidentialIssuesEvents"] = args ? args.confidentialIssuesEvents : undefined;
-            inputs["confidentialNoteEvents"] = args ? args.confidentialNoteEvents : undefined;
-            inputs["deploymentEvents"] = args ? args.deploymentEvents : undefined;
-            inputs["enableSslVerification"] = args ? args.enableSslVerification : undefined;
-            inputs["issuesEvents"] = args ? args.issuesEvents : undefined;
-            inputs["jobEvents"] = args ? args.jobEvents : undefined;
-            inputs["mergeRequestsEvents"] = args ? args.mergeRequestsEvents : undefined;
-            inputs["noteEvents"] = args ? args.noteEvents : undefined;
-            inputs["pipelineEvents"] = args ? args.pipelineEvents : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["pushEvents"] = args ? args.pushEvents : undefined;
-            inputs["pushEventsBranchFilter"] = args ? args.pushEventsBranchFilter : undefined;
-            inputs["tagPushEvents"] = args ? args.tagPushEvents : undefined;
-            inputs["token"] = args ? args.token : undefined;
-            inputs["url"] = args ? args.url : undefined;
-            inputs["wikiPageEvents"] = args ? args.wikiPageEvents : undefined;
+            resourceInputs["confidentialIssuesEvents"] = args ? args.confidentialIssuesEvents : undefined;
+            resourceInputs["confidentialNoteEvents"] = args ? args.confidentialNoteEvents : undefined;
+            resourceInputs["deploymentEvents"] = args ? args.deploymentEvents : undefined;
+            resourceInputs["enableSslVerification"] = args ? args.enableSslVerification : undefined;
+            resourceInputs["issuesEvents"] = args ? args.issuesEvents : undefined;
+            resourceInputs["jobEvents"] = args ? args.jobEvents : undefined;
+            resourceInputs["mergeRequestsEvents"] = args ? args.mergeRequestsEvents : undefined;
+            resourceInputs["noteEvents"] = args ? args.noteEvents : undefined;
+            resourceInputs["pipelineEvents"] = args ? args.pipelineEvents : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pushEvents"] = args ? args.pushEvents : undefined;
+            resourceInputs["pushEventsBranchFilter"] = args ? args.pushEventsBranchFilter : undefined;
+            resourceInputs["tagPushEvents"] = args ? args.tagPushEvents : undefined;
+            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["wikiPageEvents"] = args ? args.wikiPageEvents : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ProjectHook.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ProjectHook.__pulumiType, name, resourceInputs, opts);
     }
 }
 

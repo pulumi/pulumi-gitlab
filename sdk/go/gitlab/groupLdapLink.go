@@ -167,7 +167,7 @@ type GroupLdapLinkInput interface {
 }
 
 func (*GroupLdapLink) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupLdapLink)(nil))
+	return reflect.TypeOf((**GroupLdapLink)(nil)).Elem()
 }
 
 func (i *GroupLdapLink) ToGroupLdapLinkOutput() GroupLdapLinkOutput {
@@ -176,35 +176,6 @@ func (i *GroupLdapLink) ToGroupLdapLinkOutput() GroupLdapLinkOutput {
 
 func (i *GroupLdapLink) ToGroupLdapLinkOutputWithContext(ctx context.Context) GroupLdapLinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupLdapLinkOutput)
-}
-
-func (i *GroupLdapLink) ToGroupLdapLinkPtrOutput() GroupLdapLinkPtrOutput {
-	return i.ToGroupLdapLinkPtrOutputWithContext(context.Background())
-}
-
-func (i *GroupLdapLink) ToGroupLdapLinkPtrOutputWithContext(ctx context.Context) GroupLdapLinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupLdapLinkPtrOutput)
-}
-
-type GroupLdapLinkPtrInput interface {
-	pulumi.Input
-
-	ToGroupLdapLinkPtrOutput() GroupLdapLinkPtrOutput
-	ToGroupLdapLinkPtrOutputWithContext(ctx context.Context) GroupLdapLinkPtrOutput
-}
-
-type groupLdapLinkPtrType GroupLdapLinkArgs
-
-func (*groupLdapLinkPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GroupLdapLink)(nil))
-}
-
-func (i *groupLdapLinkPtrType) ToGroupLdapLinkPtrOutput() GroupLdapLinkPtrOutput {
-	return i.ToGroupLdapLinkPtrOutputWithContext(context.Background())
-}
-
-func (i *groupLdapLinkPtrType) ToGroupLdapLinkPtrOutputWithContext(ctx context.Context) GroupLdapLinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupLdapLinkPtrOutput)
 }
 
 // GroupLdapLinkArrayInput is an input type that accepts GroupLdapLinkArray and GroupLdapLinkArrayOutput values.
@@ -260,7 +231,7 @@ func (i GroupLdapLinkMap) ToGroupLdapLinkMapOutputWithContext(ctx context.Contex
 type GroupLdapLinkOutput struct{ *pulumi.OutputState }
 
 func (GroupLdapLinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupLdapLink)(nil))
+	return reflect.TypeOf((**GroupLdapLink)(nil)).Elem()
 }
 
 func (o GroupLdapLinkOutput) ToGroupLdapLinkOutput() GroupLdapLinkOutput {
@@ -271,44 +242,10 @@ func (o GroupLdapLinkOutput) ToGroupLdapLinkOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o GroupLdapLinkOutput) ToGroupLdapLinkPtrOutput() GroupLdapLinkPtrOutput {
-	return o.ToGroupLdapLinkPtrOutputWithContext(context.Background())
-}
-
-func (o GroupLdapLinkOutput) ToGroupLdapLinkPtrOutputWithContext(ctx context.Context) GroupLdapLinkPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupLdapLink) *GroupLdapLink {
-		return &v
-	}).(GroupLdapLinkPtrOutput)
-}
-
-type GroupLdapLinkPtrOutput struct{ *pulumi.OutputState }
-
-func (GroupLdapLinkPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GroupLdapLink)(nil))
-}
-
-func (o GroupLdapLinkPtrOutput) ToGroupLdapLinkPtrOutput() GroupLdapLinkPtrOutput {
-	return o
-}
-
-func (o GroupLdapLinkPtrOutput) ToGroupLdapLinkPtrOutputWithContext(ctx context.Context) GroupLdapLinkPtrOutput {
-	return o
-}
-
-func (o GroupLdapLinkPtrOutput) Elem() GroupLdapLinkOutput {
-	return o.ApplyT(func(v *GroupLdapLink) GroupLdapLink {
-		if v != nil {
-			return *v
-		}
-		var ret GroupLdapLink
-		return ret
-	}).(GroupLdapLinkOutput)
-}
-
 type GroupLdapLinkArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupLdapLinkArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GroupLdapLink)(nil))
+	return reflect.TypeOf((*[]*GroupLdapLink)(nil)).Elem()
 }
 
 func (o GroupLdapLinkArrayOutput) ToGroupLdapLinkArrayOutput() GroupLdapLinkArrayOutput {
@@ -320,15 +257,15 @@ func (o GroupLdapLinkArrayOutput) ToGroupLdapLinkArrayOutputWithContext(ctx cont
 }
 
 func (o GroupLdapLinkArrayOutput) Index(i pulumi.IntInput) GroupLdapLinkOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupLdapLink {
-		return vs[0].([]GroupLdapLink)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupLdapLink {
+		return vs[0].([]*GroupLdapLink)[vs[1].(int)]
 	}).(GroupLdapLinkOutput)
 }
 
 type GroupLdapLinkMapOutput struct{ *pulumi.OutputState }
 
 func (GroupLdapLinkMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GroupLdapLink)(nil))
+	return reflect.TypeOf((*map[string]*GroupLdapLink)(nil)).Elem()
 }
 
 func (o GroupLdapLinkMapOutput) ToGroupLdapLinkMapOutput() GroupLdapLinkMapOutput {
@@ -340,18 +277,16 @@ func (o GroupLdapLinkMapOutput) ToGroupLdapLinkMapOutputWithContext(ctx context.
 }
 
 func (o GroupLdapLinkMapOutput) MapIndex(k pulumi.StringInput) GroupLdapLinkOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GroupLdapLink {
-		return vs[0].(map[string]GroupLdapLink)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GroupLdapLink {
+		return vs[0].(map[string]*GroupLdapLink)[vs[1].(string)]
 	}).(GroupLdapLinkOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupLdapLinkInput)(nil)).Elem(), &GroupLdapLink{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GroupLdapLinkPtrInput)(nil)).Elem(), &GroupLdapLink{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupLdapLinkArrayInput)(nil)).Elem(), GroupLdapLinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupLdapLinkMapInput)(nil)).Elem(), GroupLdapLinkMap{})
 	pulumi.RegisterOutputType(GroupLdapLinkOutput{})
-	pulumi.RegisterOutputType(GroupLdapLinkPtrOutput{})
 	pulumi.RegisterOutputType(GroupLdapLinkArrayOutput{})
 	pulumi.RegisterOutputType(GroupLdapLinkMapOutput{})
 }

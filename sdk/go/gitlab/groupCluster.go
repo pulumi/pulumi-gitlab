@@ -254,7 +254,7 @@ type GroupClusterInput interface {
 }
 
 func (*GroupCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupCluster)(nil))
+	return reflect.TypeOf((**GroupCluster)(nil)).Elem()
 }
 
 func (i *GroupCluster) ToGroupClusterOutput() GroupClusterOutput {
@@ -263,35 +263,6 @@ func (i *GroupCluster) ToGroupClusterOutput() GroupClusterOutput {
 
 func (i *GroupCluster) ToGroupClusterOutputWithContext(ctx context.Context) GroupClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupClusterOutput)
-}
-
-func (i *GroupCluster) ToGroupClusterPtrOutput() GroupClusterPtrOutput {
-	return i.ToGroupClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *GroupCluster) ToGroupClusterPtrOutputWithContext(ctx context.Context) GroupClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupClusterPtrOutput)
-}
-
-type GroupClusterPtrInput interface {
-	pulumi.Input
-
-	ToGroupClusterPtrOutput() GroupClusterPtrOutput
-	ToGroupClusterPtrOutputWithContext(ctx context.Context) GroupClusterPtrOutput
-}
-
-type groupClusterPtrType GroupClusterArgs
-
-func (*groupClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GroupCluster)(nil))
-}
-
-func (i *groupClusterPtrType) ToGroupClusterPtrOutput() GroupClusterPtrOutput {
-	return i.ToGroupClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *groupClusterPtrType) ToGroupClusterPtrOutputWithContext(ctx context.Context) GroupClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupClusterPtrOutput)
 }
 
 // GroupClusterArrayInput is an input type that accepts GroupClusterArray and GroupClusterArrayOutput values.
@@ -347,7 +318,7 @@ func (i GroupClusterMap) ToGroupClusterMapOutputWithContext(ctx context.Context)
 type GroupClusterOutput struct{ *pulumi.OutputState }
 
 func (GroupClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupCluster)(nil))
+	return reflect.TypeOf((**GroupCluster)(nil)).Elem()
 }
 
 func (o GroupClusterOutput) ToGroupClusterOutput() GroupClusterOutput {
@@ -358,44 +329,10 @@ func (o GroupClusterOutput) ToGroupClusterOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o GroupClusterOutput) ToGroupClusterPtrOutput() GroupClusterPtrOutput {
-	return o.ToGroupClusterPtrOutputWithContext(context.Background())
-}
-
-func (o GroupClusterOutput) ToGroupClusterPtrOutputWithContext(ctx context.Context) GroupClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupCluster) *GroupCluster {
-		return &v
-	}).(GroupClusterPtrOutput)
-}
-
-type GroupClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (GroupClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GroupCluster)(nil))
-}
-
-func (o GroupClusterPtrOutput) ToGroupClusterPtrOutput() GroupClusterPtrOutput {
-	return o
-}
-
-func (o GroupClusterPtrOutput) ToGroupClusterPtrOutputWithContext(ctx context.Context) GroupClusterPtrOutput {
-	return o
-}
-
-func (o GroupClusterPtrOutput) Elem() GroupClusterOutput {
-	return o.ApplyT(func(v *GroupCluster) GroupCluster {
-		if v != nil {
-			return *v
-		}
-		var ret GroupCluster
-		return ret
-	}).(GroupClusterOutput)
-}
-
 type GroupClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GroupCluster)(nil))
+	return reflect.TypeOf((*[]*GroupCluster)(nil)).Elem()
 }
 
 func (o GroupClusterArrayOutput) ToGroupClusterArrayOutput() GroupClusterArrayOutput {
@@ -407,15 +344,15 @@ func (o GroupClusterArrayOutput) ToGroupClusterArrayOutputWithContext(ctx contex
 }
 
 func (o GroupClusterArrayOutput) Index(i pulumi.IntInput) GroupClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupCluster {
-		return vs[0].([]GroupCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupCluster {
+		return vs[0].([]*GroupCluster)[vs[1].(int)]
 	}).(GroupClusterOutput)
 }
 
 type GroupClusterMapOutput struct{ *pulumi.OutputState }
 
 func (GroupClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GroupCluster)(nil))
+	return reflect.TypeOf((*map[string]*GroupCluster)(nil)).Elem()
 }
 
 func (o GroupClusterMapOutput) ToGroupClusterMapOutput() GroupClusterMapOutput {
@@ -427,18 +364,16 @@ func (o GroupClusterMapOutput) ToGroupClusterMapOutputWithContext(ctx context.Co
 }
 
 func (o GroupClusterMapOutput) MapIndex(k pulumi.StringInput) GroupClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GroupCluster {
-		return vs[0].(map[string]GroupCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GroupCluster {
+		return vs[0].(map[string]*GroupCluster)[vs[1].(string)]
 	}).(GroupClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupClusterInput)(nil)).Elem(), &GroupCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GroupClusterPtrInput)(nil)).Elem(), &GroupCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupClusterArrayInput)(nil)).Elem(), GroupClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupClusterMapInput)(nil)).Elem(), GroupClusterMap{})
 	pulumi.RegisterOutputType(GroupClusterOutput{})
-	pulumi.RegisterOutputType(GroupClusterPtrOutput{})
 	pulumi.RegisterOutputType(GroupClusterArrayOutput{})
 	pulumi.RegisterOutputType(GroupClusterMapOutput{})
 }

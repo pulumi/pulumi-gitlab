@@ -148,7 +148,7 @@ type ProjectShareGroupInput interface {
 }
 
 func (*ProjectShareGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectShareGroup)(nil))
+	return reflect.TypeOf((**ProjectShareGroup)(nil)).Elem()
 }
 
 func (i *ProjectShareGroup) ToProjectShareGroupOutput() ProjectShareGroupOutput {
@@ -157,35 +157,6 @@ func (i *ProjectShareGroup) ToProjectShareGroupOutput() ProjectShareGroupOutput 
 
 func (i *ProjectShareGroup) ToProjectShareGroupOutputWithContext(ctx context.Context) ProjectShareGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectShareGroupOutput)
-}
-
-func (i *ProjectShareGroup) ToProjectShareGroupPtrOutput() ProjectShareGroupPtrOutput {
-	return i.ToProjectShareGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *ProjectShareGroup) ToProjectShareGroupPtrOutputWithContext(ctx context.Context) ProjectShareGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectShareGroupPtrOutput)
-}
-
-type ProjectShareGroupPtrInput interface {
-	pulumi.Input
-
-	ToProjectShareGroupPtrOutput() ProjectShareGroupPtrOutput
-	ToProjectShareGroupPtrOutputWithContext(ctx context.Context) ProjectShareGroupPtrOutput
-}
-
-type projectShareGroupPtrType ProjectShareGroupArgs
-
-func (*projectShareGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectShareGroup)(nil))
-}
-
-func (i *projectShareGroupPtrType) ToProjectShareGroupPtrOutput() ProjectShareGroupPtrOutput {
-	return i.ToProjectShareGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *projectShareGroupPtrType) ToProjectShareGroupPtrOutputWithContext(ctx context.Context) ProjectShareGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectShareGroupPtrOutput)
 }
 
 // ProjectShareGroupArrayInput is an input type that accepts ProjectShareGroupArray and ProjectShareGroupArrayOutput values.
@@ -241,7 +212,7 @@ func (i ProjectShareGroupMap) ToProjectShareGroupMapOutputWithContext(ctx contex
 type ProjectShareGroupOutput struct{ *pulumi.OutputState }
 
 func (ProjectShareGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectShareGroup)(nil))
+	return reflect.TypeOf((**ProjectShareGroup)(nil)).Elem()
 }
 
 func (o ProjectShareGroupOutput) ToProjectShareGroupOutput() ProjectShareGroupOutput {
@@ -252,44 +223,10 @@ func (o ProjectShareGroupOutput) ToProjectShareGroupOutputWithContext(ctx contex
 	return o
 }
 
-func (o ProjectShareGroupOutput) ToProjectShareGroupPtrOutput() ProjectShareGroupPtrOutput {
-	return o.ToProjectShareGroupPtrOutputWithContext(context.Background())
-}
-
-func (o ProjectShareGroupOutput) ToProjectShareGroupPtrOutputWithContext(ctx context.Context) ProjectShareGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectShareGroup) *ProjectShareGroup {
-		return &v
-	}).(ProjectShareGroupPtrOutput)
-}
-
-type ProjectShareGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (ProjectShareGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectShareGroup)(nil))
-}
-
-func (o ProjectShareGroupPtrOutput) ToProjectShareGroupPtrOutput() ProjectShareGroupPtrOutput {
-	return o
-}
-
-func (o ProjectShareGroupPtrOutput) ToProjectShareGroupPtrOutputWithContext(ctx context.Context) ProjectShareGroupPtrOutput {
-	return o
-}
-
-func (o ProjectShareGroupPtrOutput) Elem() ProjectShareGroupOutput {
-	return o.ApplyT(func(v *ProjectShareGroup) ProjectShareGroup {
-		if v != nil {
-			return *v
-		}
-		var ret ProjectShareGroup
-		return ret
-	}).(ProjectShareGroupOutput)
-}
-
 type ProjectShareGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectShareGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectShareGroup)(nil))
+	return reflect.TypeOf((*[]*ProjectShareGroup)(nil)).Elem()
 }
 
 func (o ProjectShareGroupArrayOutput) ToProjectShareGroupArrayOutput() ProjectShareGroupArrayOutput {
@@ -301,15 +238,15 @@ func (o ProjectShareGroupArrayOutput) ToProjectShareGroupArrayOutputWithContext(
 }
 
 func (o ProjectShareGroupArrayOutput) Index(i pulumi.IntInput) ProjectShareGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectShareGroup {
-		return vs[0].([]ProjectShareGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectShareGroup {
+		return vs[0].([]*ProjectShareGroup)[vs[1].(int)]
 	}).(ProjectShareGroupOutput)
 }
 
 type ProjectShareGroupMapOutput struct{ *pulumi.OutputState }
 
 func (ProjectShareGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ProjectShareGroup)(nil))
+	return reflect.TypeOf((*map[string]*ProjectShareGroup)(nil)).Elem()
 }
 
 func (o ProjectShareGroupMapOutput) ToProjectShareGroupMapOutput() ProjectShareGroupMapOutput {
@@ -321,18 +258,16 @@ func (o ProjectShareGroupMapOutput) ToProjectShareGroupMapOutputWithContext(ctx 
 }
 
 func (o ProjectShareGroupMapOutput) MapIndex(k pulumi.StringInput) ProjectShareGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectShareGroup {
-		return vs[0].(map[string]ProjectShareGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ProjectShareGroup {
+		return vs[0].(map[string]*ProjectShareGroup)[vs[1].(string)]
 	}).(ProjectShareGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectShareGroupInput)(nil)).Elem(), &ProjectShareGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectShareGroupPtrInput)(nil)).Elem(), &ProjectShareGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectShareGroupArrayInput)(nil)).Elem(), ProjectShareGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectShareGroupMapInput)(nil)).Elem(), ProjectShareGroupMap{})
 	pulumi.RegisterOutputType(ProjectShareGroupOutput{})
-	pulumi.RegisterOutputType(ProjectShareGroupPtrOutput{})
 	pulumi.RegisterOutputType(ProjectShareGroupArrayOutput{})
 	pulumi.RegisterOutputType(ProjectShareGroupMapOutput{})
 }

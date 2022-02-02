@@ -83,14 +83,14 @@ export class PipelineScheduleVariable extends pulumi.CustomResource {
      */
     constructor(name: string, args: PipelineScheduleVariableArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PipelineScheduleVariableArgs | PipelineScheduleVariableState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PipelineScheduleVariableState | undefined;
-            inputs["key"] = state ? state.key : undefined;
-            inputs["pipelineScheduleId"] = state ? state.pipelineScheduleId : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["value"] = state ? state.value : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["pipelineScheduleId"] = state ? state.pipelineScheduleId : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as PipelineScheduleVariableArgs | undefined;
             if ((!args || args.key === undefined) && !opts.urn) {
@@ -105,15 +105,13 @@ export class PipelineScheduleVariable extends pulumi.CustomResource {
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            inputs["key"] = args ? args.key : undefined;
-            inputs["pipelineScheduleId"] = args ? args.pipelineScheduleId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["value"] = args ? args.value : undefined;
+            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["pipelineScheduleId"] = args ? args.pipelineScheduleId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(PipelineScheduleVariable.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(PipelineScheduleVariable.__pulumiType, name, resourceInputs, opts);
     }
 }
 

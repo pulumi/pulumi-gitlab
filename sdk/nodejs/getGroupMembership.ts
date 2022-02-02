@@ -38,9 +38,7 @@ export function getGroupMembership(args?: GetGroupMembershipArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gitlab:index/getGroupMembership:getGroupMembership", {
         "accessLevel": args.accessLevel,
         "fullPath": args.fullPath,

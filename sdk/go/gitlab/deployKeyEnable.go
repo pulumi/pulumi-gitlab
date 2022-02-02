@@ -167,7 +167,7 @@ type DeployKeyEnableInput interface {
 }
 
 func (*DeployKeyEnable) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeployKeyEnable)(nil))
+	return reflect.TypeOf((**DeployKeyEnable)(nil)).Elem()
 }
 
 func (i *DeployKeyEnable) ToDeployKeyEnableOutput() DeployKeyEnableOutput {
@@ -176,35 +176,6 @@ func (i *DeployKeyEnable) ToDeployKeyEnableOutput() DeployKeyEnableOutput {
 
 func (i *DeployKeyEnable) ToDeployKeyEnableOutputWithContext(ctx context.Context) DeployKeyEnableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeployKeyEnableOutput)
-}
-
-func (i *DeployKeyEnable) ToDeployKeyEnablePtrOutput() DeployKeyEnablePtrOutput {
-	return i.ToDeployKeyEnablePtrOutputWithContext(context.Background())
-}
-
-func (i *DeployKeyEnable) ToDeployKeyEnablePtrOutputWithContext(ctx context.Context) DeployKeyEnablePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeployKeyEnablePtrOutput)
-}
-
-type DeployKeyEnablePtrInput interface {
-	pulumi.Input
-
-	ToDeployKeyEnablePtrOutput() DeployKeyEnablePtrOutput
-	ToDeployKeyEnablePtrOutputWithContext(ctx context.Context) DeployKeyEnablePtrOutput
-}
-
-type deployKeyEnablePtrType DeployKeyEnableArgs
-
-func (*deployKeyEnablePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeployKeyEnable)(nil))
-}
-
-func (i *deployKeyEnablePtrType) ToDeployKeyEnablePtrOutput() DeployKeyEnablePtrOutput {
-	return i.ToDeployKeyEnablePtrOutputWithContext(context.Background())
-}
-
-func (i *deployKeyEnablePtrType) ToDeployKeyEnablePtrOutputWithContext(ctx context.Context) DeployKeyEnablePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeployKeyEnablePtrOutput)
 }
 
 // DeployKeyEnableArrayInput is an input type that accepts DeployKeyEnableArray and DeployKeyEnableArrayOutput values.
@@ -260,7 +231,7 @@ func (i DeployKeyEnableMap) ToDeployKeyEnableMapOutputWithContext(ctx context.Co
 type DeployKeyEnableOutput struct{ *pulumi.OutputState }
 
 func (DeployKeyEnableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeployKeyEnable)(nil))
+	return reflect.TypeOf((**DeployKeyEnable)(nil)).Elem()
 }
 
 func (o DeployKeyEnableOutput) ToDeployKeyEnableOutput() DeployKeyEnableOutput {
@@ -271,44 +242,10 @@ func (o DeployKeyEnableOutput) ToDeployKeyEnableOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DeployKeyEnableOutput) ToDeployKeyEnablePtrOutput() DeployKeyEnablePtrOutput {
-	return o.ToDeployKeyEnablePtrOutputWithContext(context.Background())
-}
-
-func (o DeployKeyEnableOutput) ToDeployKeyEnablePtrOutputWithContext(ctx context.Context) DeployKeyEnablePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeployKeyEnable) *DeployKeyEnable {
-		return &v
-	}).(DeployKeyEnablePtrOutput)
-}
-
-type DeployKeyEnablePtrOutput struct{ *pulumi.OutputState }
-
-func (DeployKeyEnablePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeployKeyEnable)(nil))
-}
-
-func (o DeployKeyEnablePtrOutput) ToDeployKeyEnablePtrOutput() DeployKeyEnablePtrOutput {
-	return o
-}
-
-func (o DeployKeyEnablePtrOutput) ToDeployKeyEnablePtrOutputWithContext(ctx context.Context) DeployKeyEnablePtrOutput {
-	return o
-}
-
-func (o DeployKeyEnablePtrOutput) Elem() DeployKeyEnableOutput {
-	return o.ApplyT(func(v *DeployKeyEnable) DeployKeyEnable {
-		if v != nil {
-			return *v
-		}
-		var ret DeployKeyEnable
-		return ret
-	}).(DeployKeyEnableOutput)
-}
-
 type DeployKeyEnableArrayOutput struct{ *pulumi.OutputState }
 
 func (DeployKeyEnableArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DeployKeyEnable)(nil))
+	return reflect.TypeOf((*[]*DeployKeyEnable)(nil)).Elem()
 }
 
 func (o DeployKeyEnableArrayOutput) ToDeployKeyEnableArrayOutput() DeployKeyEnableArrayOutput {
@@ -320,15 +257,15 @@ func (o DeployKeyEnableArrayOutput) ToDeployKeyEnableArrayOutputWithContext(ctx 
 }
 
 func (o DeployKeyEnableArrayOutput) Index(i pulumi.IntInput) DeployKeyEnableOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeployKeyEnable {
-		return vs[0].([]DeployKeyEnable)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DeployKeyEnable {
+		return vs[0].([]*DeployKeyEnable)[vs[1].(int)]
 	}).(DeployKeyEnableOutput)
 }
 
 type DeployKeyEnableMapOutput struct{ *pulumi.OutputState }
 
 func (DeployKeyEnableMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DeployKeyEnable)(nil))
+	return reflect.TypeOf((*map[string]*DeployKeyEnable)(nil)).Elem()
 }
 
 func (o DeployKeyEnableMapOutput) ToDeployKeyEnableMapOutput() DeployKeyEnableMapOutput {
@@ -340,18 +277,16 @@ func (o DeployKeyEnableMapOutput) ToDeployKeyEnableMapOutputWithContext(ctx cont
 }
 
 func (o DeployKeyEnableMapOutput) MapIndex(k pulumi.StringInput) DeployKeyEnableOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeployKeyEnable {
-		return vs[0].(map[string]DeployKeyEnable)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DeployKeyEnable {
+		return vs[0].(map[string]*DeployKeyEnable)[vs[1].(string)]
 	}).(DeployKeyEnableOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeployKeyEnableInput)(nil)).Elem(), &DeployKeyEnable{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeployKeyEnablePtrInput)(nil)).Elem(), &DeployKeyEnable{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeployKeyEnableArrayInput)(nil)).Elem(), DeployKeyEnableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeployKeyEnableMapInput)(nil)).Elem(), DeployKeyEnableMap{})
 	pulumi.RegisterOutputType(DeployKeyEnableOutput{})
-	pulumi.RegisterOutputType(DeployKeyEnablePtrOutput{})
 	pulumi.RegisterOutputType(DeployKeyEnableArrayOutput{})
 	pulumi.RegisterOutputType(DeployKeyEnableMapOutput{})
 }

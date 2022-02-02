@@ -26,9 +26,7 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gitlab:index/getUser:getUser", {
         "email": args.email,
         "userId": args.userId,
