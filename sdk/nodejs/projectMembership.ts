@@ -85,13 +85,13 @@ export class ProjectMembership extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectMembershipArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectMembershipArgs | ProjectMembershipState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectMembershipState | undefined;
-            inputs["accessLevel"] = state ? state.accessLevel : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as ProjectMembershipArgs | undefined;
             if ((!args || args.accessLevel === undefined) && !opts.urn) {
@@ -103,14 +103,12 @@ export class ProjectMembership extends pulumi.CustomResource {
             if ((!args || args.userId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            inputs["accessLevel"] = args ? args.accessLevel : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ProjectMembership.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ProjectMembership.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -93,18 +93,18 @@ export class ServiceGithub extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceGithubArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceGithubArgs | ServiceGithubState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceGithubState | undefined;
-            inputs["active"] = state ? state.active : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["repositoryUrl"] = state ? state.repositoryUrl : undefined;
-            inputs["staticContext"] = state ? state.staticContext : undefined;
-            inputs["title"] = state ? state.title : undefined;
-            inputs["token"] = state ? state.token : undefined;
-            inputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["active"] = state ? state.active : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["repositoryUrl"] = state ? state.repositoryUrl : undefined;
+            resourceInputs["staticContext"] = state ? state.staticContext : undefined;
+            resourceInputs["title"] = state ? state.title : undefined;
+            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ServiceGithubArgs | undefined;
             if ((!args || args.project === undefined) && !opts.urn) {
@@ -116,19 +116,17 @@ export class ServiceGithub extends pulumi.CustomResource {
             if ((!args || args.token === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'token'");
             }
-            inputs["project"] = args ? args.project : undefined;
-            inputs["repositoryUrl"] = args ? args.repositoryUrl : undefined;
-            inputs["staticContext"] = args ? args.staticContext : undefined;
-            inputs["token"] = args ? args.token : undefined;
-            inputs["active"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["title"] = undefined /*out*/;
-            inputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["repositoryUrl"] = args ? args.repositoryUrl : undefined;
+            resourceInputs["staticContext"] = args ? args.staticContext : undefined;
+            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["active"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["title"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServiceGithub.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServiceGithub.__pulumiType, name, resourceInputs, opts);
     }
 }
 

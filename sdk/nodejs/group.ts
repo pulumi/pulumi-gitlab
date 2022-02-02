@@ -174,60 +174,58 @@ export class Group extends pulumi.CustomResource {
      */
     constructor(name: string, args: GroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            inputs["autoDevopsEnabled"] = state ? state.autoDevopsEnabled : undefined;
-            inputs["defaultBranchProtection"] = state ? state.defaultBranchProtection : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["emailsDisabled"] = state ? state.emailsDisabled : undefined;
-            inputs["fullName"] = state ? state.fullName : undefined;
-            inputs["fullPath"] = state ? state.fullPath : undefined;
-            inputs["lfsEnabled"] = state ? state.lfsEnabled : undefined;
-            inputs["mentionsDisabled"] = state ? state.mentionsDisabled : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parentId"] = state ? state.parentId : undefined;
-            inputs["path"] = state ? state.path : undefined;
-            inputs["projectCreationLevel"] = state ? state.projectCreationLevel : undefined;
-            inputs["requestAccessEnabled"] = state ? state.requestAccessEnabled : undefined;
-            inputs["requireTwoFactorAuthentication"] = state ? state.requireTwoFactorAuthentication : undefined;
-            inputs["runnersToken"] = state ? state.runnersToken : undefined;
-            inputs["shareWithGroupLock"] = state ? state.shareWithGroupLock : undefined;
-            inputs["subgroupCreationLevel"] = state ? state.subgroupCreationLevel : undefined;
-            inputs["twoFactorGracePeriod"] = state ? state.twoFactorGracePeriod : undefined;
-            inputs["visibilityLevel"] = state ? state.visibilityLevel : undefined;
-            inputs["webUrl"] = state ? state.webUrl : undefined;
+            resourceInputs["autoDevopsEnabled"] = state ? state.autoDevopsEnabled : undefined;
+            resourceInputs["defaultBranchProtection"] = state ? state.defaultBranchProtection : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["emailsDisabled"] = state ? state.emailsDisabled : undefined;
+            resourceInputs["fullName"] = state ? state.fullName : undefined;
+            resourceInputs["fullPath"] = state ? state.fullPath : undefined;
+            resourceInputs["lfsEnabled"] = state ? state.lfsEnabled : undefined;
+            resourceInputs["mentionsDisabled"] = state ? state.mentionsDisabled : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parentId"] = state ? state.parentId : undefined;
+            resourceInputs["path"] = state ? state.path : undefined;
+            resourceInputs["projectCreationLevel"] = state ? state.projectCreationLevel : undefined;
+            resourceInputs["requestAccessEnabled"] = state ? state.requestAccessEnabled : undefined;
+            resourceInputs["requireTwoFactorAuthentication"] = state ? state.requireTwoFactorAuthentication : undefined;
+            resourceInputs["runnersToken"] = state ? state.runnersToken : undefined;
+            resourceInputs["shareWithGroupLock"] = state ? state.shareWithGroupLock : undefined;
+            resourceInputs["subgroupCreationLevel"] = state ? state.subgroupCreationLevel : undefined;
+            resourceInputs["twoFactorGracePeriod"] = state ? state.twoFactorGracePeriod : undefined;
+            resourceInputs["visibilityLevel"] = state ? state.visibilityLevel : undefined;
+            resourceInputs["webUrl"] = state ? state.webUrl : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
             if ((!args || args.path === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
-            inputs["autoDevopsEnabled"] = args ? args.autoDevopsEnabled : undefined;
-            inputs["defaultBranchProtection"] = args ? args.defaultBranchProtection : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["emailsDisabled"] = args ? args.emailsDisabled : undefined;
-            inputs["lfsEnabled"] = args ? args.lfsEnabled : undefined;
-            inputs["mentionsDisabled"] = args ? args.mentionsDisabled : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["parentId"] = args ? args.parentId : undefined;
-            inputs["path"] = args ? args.path : undefined;
-            inputs["projectCreationLevel"] = args ? args.projectCreationLevel : undefined;
-            inputs["requestAccessEnabled"] = args ? args.requestAccessEnabled : undefined;
-            inputs["requireTwoFactorAuthentication"] = args ? args.requireTwoFactorAuthentication : undefined;
-            inputs["shareWithGroupLock"] = args ? args.shareWithGroupLock : undefined;
-            inputs["subgroupCreationLevel"] = args ? args.subgroupCreationLevel : undefined;
-            inputs["twoFactorGracePeriod"] = args ? args.twoFactorGracePeriod : undefined;
-            inputs["visibilityLevel"] = args ? args.visibilityLevel : undefined;
-            inputs["fullName"] = undefined /*out*/;
-            inputs["fullPath"] = undefined /*out*/;
-            inputs["runnersToken"] = undefined /*out*/;
-            inputs["webUrl"] = undefined /*out*/;
+            resourceInputs["autoDevopsEnabled"] = args ? args.autoDevopsEnabled : undefined;
+            resourceInputs["defaultBranchProtection"] = args ? args.defaultBranchProtection : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["emailsDisabled"] = args ? args.emailsDisabled : undefined;
+            resourceInputs["lfsEnabled"] = args ? args.lfsEnabled : undefined;
+            resourceInputs["mentionsDisabled"] = args ? args.mentionsDisabled : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parentId"] = args ? args.parentId : undefined;
+            resourceInputs["path"] = args ? args.path : undefined;
+            resourceInputs["projectCreationLevel"] = args ? args.projectCreationLevel : undefined;
+            resourceInputs["requestAccessEnabled"] = args ? args.requestAccessEnabled : undefined;
+            resourceInputs["requireTwoFactorAuthentication"] = args ? args.requireTwoFactorAuthentication : undefined;
+            resourceInputs["shareWithGroupLock"] = args ? args.shareWithGroupLock : undefined;
+            resourceInputs["subgroupCreationLevel"] = args ? args.subgroupCreationLevel : undefined;
+            resourceInputs["twoFactorGracePeriod"] = args ? args.twoFactorGracePeriod : undefined;
+            resourceInputs["visibilityLevel"] = args ? args.visibilityLevel : undefined;
+            resourceInputs["fullName"] = undefined /*out*/;
+            resourceInputs["fullPath"] = undefined /*out*/;
+            resourceInputs["runnersToken"] = undefined /*out*/;
+            resourceInputs["webUrl"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Group.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Group.__pulumiType, name, resourceInputs, opts);
     }
 }
 

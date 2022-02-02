@@ -85,14 +85,14 @@ export class GroupShareGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: GroupShareGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupShareGroupArgs | GroupShareGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupShareGroupState | undefined;
-            inputs["expiresAt"] = state ? state.expiresAt : undefined;
-            inputs["groupAccess"] = state ? state.groupAccess : undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["shareGroupId"] = state ? state.shareGroupId : undefined;
+            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
+            resourceInputs["groupAccess"] = state ? state.groupAccess : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["shareGroupId"] = state ? state.shareGroupId : undefined;
         } else {
             const args = argsOrState as GroupShareGroupArgs | undefined;
             if ((!args || args.groupAccess === undefined) && !opts.urn) {
@@ -104,15 +104,13 @@ export class GroupShareGroup extends pulumi.CustomResource {
             if ((!args || args.shareGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'shareGroupId'");
             }
-            inputs["expiresAt"] = args ? args.expiresAt : undefined;
-            inputs["groupAccess"] = args ? args.groupAccess : undefined;
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["shareGroupId"] = args ? args.shareGroupId : undefined;
+            resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
+            resourceInputs["groupAccess"] = args ? args.groupAccess : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["shareGroupId"] = args ? args.shareGroupId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GroupShareGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GroupShareGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

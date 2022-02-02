@@ -94,16 +94,16 @@ export class ProjectMirror extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectMirrorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectMirrorArgs | ProjectMirrorState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectMirrorState | undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["keepDivergentRefs"] = state ? state.keepDivergentRefs : undefined;
-            inputs["mirrorId"] = state ? state.mirrorId : undefined;
-            inputs["onlyProtectedBranches"] = state ? state.onlyProtectedBranches : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["url"] = state ? state.url : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["keepDivergentRefs"] = state ? state.keepDivergentRefs : undefined;
+            resourceInputs["mirrorId"] = state ? state.mirrorId : undefined;
+            resourceInputs["onlyProtectedBranches"] = state ? state.onlyProtectedBranches : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as ProjectMirrorArgs | undefined;
             if ((!args || args.project === undefined) && !opts.urn) {
@@ -112,17 +112,15 @@ export class ProjectMirror extends pulumi.CustomResource {
             if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["keepDivergentRefs"] = args ? args.keepDivergentRefs : undefined;
-            inputs["onlyProtectedBranches"] = args ? args.onlyProtectedBranches : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["url"] = args ? args.url : undefined;
-            inputs["mirrorId"] = undefined /*out*/;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["keepDivergentRefs"] = args ? args.keepDivergentRefs : undefined;
+            resourceInputs["onlyProtectedBranches"] = args ? args.onlyProtectedBranches : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["mirrorId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ProjectMirror.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ProjectMirror.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -138,18 +138,18 @@ export class BranchProtection extends pulumi.CustomResource {
      */
     constructor(name: string, args: BranchProtectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BranchProtectionArgs | BranchProtectionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BranchProtectionState | undefined;
-            inputs["allowedToMerges"] = state ? state.allowedToMerges : undefined;
-            inputs["allowedToPushes"] = state ? state.allowedToPushes : undefined;
-            inputs["branch"] = state ? state.branch : undefined;
-            inputs["branchProtectionId"] = state ? state.branchProtectionId : undefined;
-            inputs["codeOwnerApprovalRequired"] = state ? state.codeOwnerApprovalRequired : undefined;
-            inputs["mergeAccessLevel"] = state ? state.mergeAccessLevel : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["pushAccessLevel"] = state ? state.pushAccessLevel : undefined;
+            resourceInputs["allowedToMerges"] = state ? state.allowedToMerges : undefined;
+            resourceInputs["allowedToPushes"] = state ? state.allowedToPushes : undefined;
+            resourceInputs["branch"] = state ? state.branch : undefined;
+            resourceInputs["branchProtectionId"] = state ? state.branchProtectionId : undefined;
+            resourceInputs["codeOwnerApprovalRequired"] = state ? state.codeOwnerApprovalRequired : undefined;
+            resourceInputs["mergeAccessLevel"] = state ? state.mergeAccessLevel : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pushAccessLevel"] = state ? state.pushAccessLevel : undefined;
         } else {
             const args = argsOrState as BranchProtectionArgs | undefined;
             if ((!args || args.branch === undefined) && !opts.urn) {
@@ -164,19 +164,17 @@ export class BranchProtection extends pulumi.CustomResource {
             if ((!args || args.pushAccessLevel === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pushAccessLevel'");
             }
-            inputs["allowedToMerges"] = args ? args.allowedToMerges : undefined;
-            inputs["allowedToPushes"] = args ? args.allowedToPushes : undefined;
-            inputs["branch"] = args ? args.branch : undefined;
-            inputs["codeOwnerApprovalRequired"] = args ? args.codeOwnerApprovalRequired : undefined;
-            inputs["mergeAccessLevel"] = args ? args.mergeAccessLevel : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["pushAccessLevel"] = args ? args.pushAccessLevel : undefined;
-            inputs["branchProtectionId"] = undefined /*out*/;
+            resourceInputs["allowedToMerges"] = args ? args.allowedToMerges : undefined;
+            resourceInputs["allowedToPushes"] = args ? args.allowedToPushes : undefined;
+            resourceInputs["branch"] = args ? args.branch : undefined;
+            resourceInputs["codeOwnerApprovalRequired"] = args ? args.codeOwnerApprovalRequired : undefined;
+            resourceInputs["mergeAccessLevel"] = args ? args.mergeAccessLevel : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pushAccessLevel"] = args ? args.pushAccessLevel : undefined;
+            resourceInputs["branchProtectionId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(BranchProtection.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(BranchProtection.__pulumiType, name, resourceInputs, opts);
     }
 }
 

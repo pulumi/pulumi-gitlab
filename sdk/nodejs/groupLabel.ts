@@ -86,14 +86,14 @@ export class GroupLabel extends pulumi.CustomResource {
      */
     constructor(name: string, args: GroupLabelArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupLabelArgs | GroupLabelState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupLabelState | undefined;
-            inputs["color"] = state ? state.color : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["group"] = state ? state.group : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["color"] = state ? state.color : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["group"] = state ? state.group : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as GroupLabelArgs | undefined;
             if ((!args || args.color === undefined) && !opts.urn) {
@@ -102,15 +102,13 @@ export class GroupLabel extends pulumi.CustomResource {
             if ((!args || args.group === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            inputs["color"] = args ? args.color : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["group"] = args ? args.group : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["color"] = args ? args.color : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["group"] = args ? args.group : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GroupLabel.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GroupLabel.__pulumiType, name, resourceInputs, opts);
     }
 }
 

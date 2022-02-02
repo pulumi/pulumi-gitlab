@@ -82,23 +82,23 @@ export class ServiceJira extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceJiraArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceJiraArgs | ServiceJiraState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceJiraState | undefined;
-            inputs["active"] = state ? state.active : undefined;
-            inputs["commentOnEventEnabled"] = state ? state.commentOnEventEnabled : undefined;
-            inputs["commitEvents"] = state ? state.commitEvents : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["jiraIssueTransitionId"] = state ? state.jiraIssueTransitionId : undefined;
-            inputs["mergeRequestsEvents"] = state ? state.mergeRequestsEvents : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["projectKey"] = state ? state.projectKey : undefined;
-            inputs["title"] = state ? state.title : undefined;
-            inputs["updatedAt"] = state ? state.updatedAt : undefined;
-            inputs["url"] = state ? state.url : undefined;
-            inputs["username"] = state ? state.username : undefined;
+            resourceInputs["active"] = state ? state.active : undefined;
+            resourceInputs["commentOnEventEnabled"] = state ? state.commentOnEventEnabled : undefined;
+            resourceInputs["commitEvents"] = state ? state.commitEvents : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["jiraIssueTransitionId"] = state ? state.jiraIssueTransitionId : undefined;
+            resourceInputs["mergeRequestsEvents"] = state ? state.mergeRequestsEvents : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["projectKey"] = state ? state.projectKey : undefined;
+            resourceInputs["title"] = state ? state.title : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as ServiceJiraArgs | undefined;
             if ((!args || args.password === undefined) && !opts.urn) {
@@ -113,24 +113,22 @@ export class ServiceJira extends pulumi.CustomResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            inputs["commentOnEventEnabled"] = args ? args.commentOnEventEnabled : undefined;
-            inputs["commitEvents"] = args ? args.commitEvents : undefined;
-            inputs["jiraIssueTransitionId"] = args ? args.jiraIssueTransitionId : undefined;
-            inputs["mergeRequestsEvents"] = args ? args.mergeRequestsEvents : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["projectKey"] = args ? args.projectKey : undefined;
-            inputs["url"] = args ? args.url : undefined;
-            inputs["username"] = args ? args.username : undefined;
-            inputs["active"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["title"] = undefined /*out*/;
-            inputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["commentOnEventEnabled"] = args ? args.commentOnEventEnabled : undefined;
+            resourceInputs["commitEvents"] = args ? args.commitEvents : undefined;
+            resourceInputs["jiraIssueTransitionId"] = args ? args.jiraIssueTransitionId : undefined;
+            resourceInputs["mergeRequestsEvents"] = args ? args.mergeRequestsEvents : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["projectKey"] = args ? args.projectKey : undefined;
+            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["active"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["title"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServiceJira.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServiceJira.__pulumiType, name, resourceInputs, opts);
     }
 }
 

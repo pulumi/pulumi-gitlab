@@ -137,34 +137,34 @@ export class ServiceSlack extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceSlackArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceSlackArgs | ServiceSlackState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceSlackState | undefined;
-            inputs["branchesToBeNotified"] = state ? state.branchesToBeNotified : undefined;
-            inputs["confidentialIssueChannel"] = state ? state.confidentialIssueChannel : undefined;
-            inputs["confidentialIssuesEvents"] = state ? state.confidentialIssuesEvents : undefined;
-            inputs["confidentialNoteEvents"] = state ? state.confidentialNoteEvents : undefined;
-            inputs["issueChannel"] = state ? state.issueChannel : undefined;
-            inputs["issuesEvents"] = state ? state.issuesEvents : undefined;
-            inputs["jobEvents"] = state ? state.jobEvents : undefined;
-            inputs["mergeRequestChannel"] = state ? state.mergeRequestChannel : undefined;
-            inputs["mergeRequestsEvents"] = state ? state.mergeRequestsEvents : undefined;
-            inputs["noteChannel"] = state ? state.noteChannel : undefined;
-            inputs["noteEvents"] = state ? state.noteEvents : undefined;
-            inputs["notifyOnlyBrokenPipelines"] = state ? state.notifyOnlyBrokenPipelines : undefined;
-            inputs["notifyOnlyDefaultBranch"] = state ? state.notifyOnlyDefaultBranch : undefined;
-            inputs["pipelineChannel"] = state ? state.pipelineChannel : undefined;
-            inputs["pipelineEvents"] = state ? state.pipelineEvents : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["pushChannel"] = state ? state.pushChannel : undefined;
-            inputs["pushEvents"] = state ? state.pushEvents : undefined;
-            inputs["tagPushChannel"] = state ? state.tagPushChannel : undefined;
-            inputs["tagPushEvents"] = state ? state.tagPushEvents : undefined;
-            inputs["username"] = state ? state.username : undefined;
-            inputs["webhook"] = state ? state.webhook : undefined;
-            inputs["wikiPageChannel"] = state ? state.wikiPageChannel : undefined;
-            inputs["wikiPageEvents"] = state ? state.wikiPageEvents : undefined;
+            resourceInputs["branchesToBeNotified"] = state ? state.branchesToBeNotified : undefined;
+            resourceInputs["confidentialIssueChannel"] = state ? state.confidentialIssueChannel : undefined;
+            resourceInputs["confidentialIssuesEvents"] = state ? state.confidentialIssuesEvents : undefined;
+            resourceInputs["confidentialNoteEvents"] = state ? state.confidentialNoteEvents : undefined;
+            resourceInputs["issueChannel"] = state ? state.issueChannel : undefined;
+            resourceInputs["issuesEvents"] = state ? state.issuesEvents : undefined;
+            resourceInputs["jobEvents"] = state ? state.jobEvents : undefined;
+            resourceInputs["mergeRequestChannel"] = state ? state.mergeRequestChannel : undefined;
+            resourceInputs["mergeRequestsEvents"] = state ? state.mergeRequestsEvents : undefined;
+            resourceInputs["noteChannel"] = state ? state.noteChannel : undefined;
+            resourceInputs["noteEvents"] = state ? state.noteEvents : undefined;
+            resourceInputs["notifyOnlyBrokenPipelines"] = state ? state.notifyOnlyBrokenPipelines : undefined;
+            resourceInputs["notifyOnlyDefaultBranch"] = state ? state.notifyOnlyDefaultBranch : undefined;
+            resourceInputs["pipelineChannel"] = state ? state.pipelineChannel : undefined;
+            resourceInputs["pipelineEvents"] = state ? state.pipelineEvents : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pushChannel"] = state ? state.pushChannel : undefined;
+            resourceInputs["pushEvents"] = state ? state.pushEvents : undefined;
+            resourceInputs["tagPushChannel"] = state ? state.tagPushChannel : undefined;
+            resourceInputs["tagPushEvents"] = state ? state.tagPushEvents : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["webhook"] = state ? state.webhook : undefined;
+            resourceInputs["wikiPageChannel"] = state ? state.wikiPageChannel : undefined;
+            resourceInputs["wikiPageEvents"] = state ? state.wikiPageEvents : undefined;
         } else {
             const args = argsOrState as ServiceSlackArgs | undefined;
             if ((!args || args.project === undefined) && !opts.urn) {
@@ -173,35 +173,33 @@ export class ServiceSlack extends pulumi.CustomResource {
             if ((!args || args.webhook === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'webhook'");
             }
-            inputs["branchesToBeNotified"] = args ? args.branchesToBeNotified : undefined;
-            inputs["confidentialIssueChannel"] = args ? args.confidentialIssueChannel : undefined;
-            inputs["confidentialIssuesEvents"] = args ? args.confidentialIssuesEvents : undefined;
-            inputs["confidentialNoteEvents"] = args ? args.confidentialNoteEvents : undefined;
-            inputs["issueChannel"] = args ? args.issueChannel : undefined;
-            inputs["issuesEvents"] = args ? args.issuesEvents : undefined;
-            inputs["mergeRequestChannel"] = args ? args.mergeRequestChannel : undefined;
-            inputs["mergeRequestsEvents"] = args ? args.mergeRequestsEvents : undefined;
-            inputs["noteChannel"] = args ? args.noteChannel : undefined;
-            inputs["noteEvents"] = args ? args.noteEvents : undefined;
-            inputs["notifyOnlyBrokenPipelines"] = args ? args.notifyOnlyBrokenPipelines : undefined;
-            inputs["notifyOnlyDefaultBranch"] = args ? args.notifyOnlyDefaultBranch : undefined;
-            inputs["pipelineChannel"] = args ? args.pipelineChannel : undefined;
-            inputs["pipelineEvents"] = args ? args.pipelineEvents : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["pushChannel"] = args ? args.pushChannel : undefined;
-            inputs["pushEvents"] = args ? args.pushEvents : undefined;
-            inputs["tagPushChannel"] = args ? args.tagPushChannel : undefined;
-            inputs["tagPushEvents"] = args ? args.tagPushEvents : undefined;
-            inputs["username"] = args ? args.username : undefined;
-            inputs["webhook"] = args ? args.webhook : undefined;
-            inputs["wikiPageChannel"] = args ? args.wikiPageChannel : undefined;
-            inputs["wikiPageEvents"] = args ? args.wikiPageEvents : undefined;
-            inputs["jobEvents"] = undefined /*out*/;
+            resourceInputs["branchesToBeNotified"] = args ? args.branchesToBeNotified : undefined;
+            resourceInputs["confidentialIssueChannel"] = args ? args.confidentialIssueChannel : undefined;
+            resourceInputs["confidentialIssuesEvents"] = args ? args.confidentialIssuesEvents : undefined;
+            resourceInputs["confidentialNoteEvents"] = args ? args.confidentialNoteEvents : undefined;
+            resourceInputs["issueChannel"] = args ? args.issueChannel : undefined;
+            resourceInputs["issuesEvents"] = args ? args.issuesEvents : undefined;
+            resourceInputs["mergeRequestChannel"] = args ? args.mergeRequestChannel : undefined;
+            resourceInputs["mergeRequestsEvents"] = args ? args.mergeRequestsEvents : undefined;
+            resourceInputs["noteChannel"] = args ? args.noteChannel : undefined;
+            resourceInputs["noteEvents"] = args ? args.noteEvents : undefined;
+            resourceInputs["notifyOnlyBrokenPipelines"] = args ? args.notifyOnlyBrokenPipelines : undefined;
+            resourceInputs["notifyOnlyDefaultBranch"] = args ? args.notifyOnlyDefaultBranch : undefined;
+            resourceInputs["pipelineChannel"] = args ? args.pipelineChannel : undefined;
+            resourceInputs["pipelineEvents"] = args ? args.pipelineEvents : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pushChannel"] = args ? args.pushChannel : undefined;
+            resourceInputs["pushEvents"] = args ? args.pushEvents : undefined;
+            resourceInputs["tagPushChannel"] = args ? args.tagPushChannel : undefined;
+            resourceInputs["tagPushEvents"] = args ? args.tagPushEvents : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["webhook"] = args ? args.webhook : undefined;
+            resourceInputs["wikiPageChannel"] = args ? args.wikiPageChannel : undefined;
+            resourceInputs["wikiPageEvents"] = args ? args.wikiPageEvents : undefined;
+            resourceInputs["jobEvents"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServiceSlack.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServiceSlack.__pulumiType, name, resourceInputs, opts);
     }
 }
 

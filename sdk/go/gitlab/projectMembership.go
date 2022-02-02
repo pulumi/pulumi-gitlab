@@ -156,7 +156,7 @@ type ProjectMembershipInput interface {
 }
 
 func (*ProjectMembership) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectMembership)(nil))
+	return reflect.TypeOf((**ProjectMembership)(nil)).Elem()
 }
 
 func (i *ProjectMembership) ToProjectMembershipOutput() ProjectMembershipOutput {
@@ -165,35 +165,6 @@ func (i *ProjectMembership) ToProjectMembershipOutput() ProjectMembershipOutput 
 
 func (i *ProjectMembership) ToProjectMembershipOutputWithContext(ctx context.Context) ProjectMembershipOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMembershipOutput)
-}
-
-func (i *ProjectMembership) ToProjectMembershipPtrOutput() ProjectMembershipPtrOutput {
-	return i.ToProjectMembershipPtrOutputWithContext(context.Background())
-}
-
-func (i *ProjectMembership) ToProjectMembershipPtrOutputWithContext(ctx context.Context) ProjectMembershipPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectMembershipPtrOutput)
-}
-
-type ProjectMembershipPtrInput interface {
-	pulumi.Input
-
-	ToProjectMembershipPtrOutput() ProjectMembershipPtrOutput
-	ToProjectMembershipPtrOutputWithContext(ctx context.Context) ProjectMembershipPtrOutput
-}
-
-type projectMembershipPtrType ProjectMembershipArgs
-
-func (*projectMembershipPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectMembership)(nil))
-}
-
-func (i *projectMembershipPtrType) ToProjectMembershipPtrOutput() ProjectMembershipPtrOutput {
-	return i.ToProjectMembershipPtrOutputWithContext(context.Background())
-}
-
-func (i *projectMembershipPtrType) ToProjectMembershipPtrOutputWithContext(ctx context.Context) ProjectMembershipPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectMembershipPtrOutput)
 }
 
 // ProjectMembershipArrayInput is an input type that accepts ProjectMembershipArray and ProjectMembershipArrayOutput values.
@@ -249,7 +220,7 @@ func (i ProjectMembershipMap) ToProjectMembershipMapOutputWithContext(ctx contex
 type ProjectMembershipOutput struct{ *pulumi.OutputState }
 
 func (ProjectMembershipOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectMembership)(nil))
+	return reflect.TypeOf((**ProjectMembership)(nil)).Elem()
 }
 
 func (o ProjectMembershipOutput) ToProjectMembershipOutput() ProjectMembershipOutput {
@@ -260,44 +231,10 @@ func (o ProjectMembershipOutput) ToProjectMembershipOutputWithContext(ctx contex
 	return o
 }
 
-func (o ProjectMembershipOutput) ToProjectMembershipPtrOutput() ProjectMembershipPtrOutput {
-	return o.ToProjectMembershipPtrOutputWithContext(context.Background())
-}
-
-func (o ProjectMembershipOutput) ToProjectMembershipPtrOutputWithContext(ctx context.Context) ProjectMembershipPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectMembership) *ProjectMembership {
-		return &v
-	}).(ProjectMembershipPtrOutput)
-}
-
-type ProjectMembershipPtrOutput struct{ *pulumi.OutputState }
-
-func (ProjectMembershipPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectMembership)(nil))
-}
-
-func (o ProjectMembershipPtrOutput) ToProjectMembershipPtrOutput() ProjectMembershipPtrOutput {
-	return o
-}
-
-func (o ProjectMembershipPtrOutput) ToProjectMembershipPtrOutputWithContext(ctx context.Context) ProjectMembershipPtrOutput {
-	return o
-}
-
-func (o ProjectMembershipPtrOutput) Elem() ProjectMembershipOutput {
-	return o.ApplyT(func(v *ProjectMembership) ProjectMembership {
-		if v != nil {
-			return *v
-		}
-		var ret ProjectMembership
-		return ret
-	}).(ProjectMembershipOutput)
-}
-
 type ProjectMembershipArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectMembershipArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectMembership)(nil))
+	return reflect.TypeOf((*[]*ProjectMembership)(nil)).Elem()
 }
 
 func (o ProjectMembershipArrayOutput) ToProjectMembershipArrayOutput() ProjectMembershipArrayOutput {
@@ -309,15 +246,15 @@ func (o ProjectMembershipArrayOutput) ToProjectMembershipArrayOutputWithContext(
 }
 
 func (o ProjectMembershipArrayOutput) Index(i pulumi.IntInput) ProjectMembershipOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectMembership {
-		return vs[0].([]ProjectMembership)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectMembership {
+		return vs[0].([]*ProjectMembership)[vs[1].(int)]
 	}).(ProjectMembershipOutput)
 }
 
 type ProjectMembershipMapOutput struct{ *pulumi.OutputState }
 
 func (ProjectMembershipMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ProjectMembership)(nil))
+	return reflect.TypeOf((*map[string]*ProjectMembership)(nil)).Elem()
 }
 
 func (o ProjectMembershipMapOutput) ToProjectMembershipMapOutput() ProjectMembershipMapOutput {
@@ -329,18 +266,16 @@ func (o ProjectMembershipMapOutput) ToProjectMembershipMapOutputWithContext(ctx 
 }
 
 func (o ProjectMembershipMapOutput) MapIndex(k pulumi.StringInput) ProjectMembershipOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectMembership {
-		return vs[0].(map[string]ProjectMembership)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ProjectMembership {
+		return vs[0].(map[string]*ProjectMembership)[vs[1].(string)]
 	}).(ProjectMembershipOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMembershipInput)(nil)).Elem(), &ProjectMembership{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMembershipPtrInput)(nil)).Elem(), &ProjectMembership{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMembershipArrayInput)(nil)).Elem(), ProjectMembershipArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMembershipMapInput)(nil)).Elem(), ProjectMembershipMap{})
 	pulumi.RegisterOutputType(ProjectMembershipOutput{})
-	pulumi.RegisterOutputType(ProjectMembershipPtrOutput{})
 	pulumi.RegisterOutputType(ProjectMembershipArrayOutput{})
 	pulumi.RegisterOutputType(ProjectMembershipMapOutput{})
 }

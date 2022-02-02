@@ -182,7 +182,7 @@ type DeployTokenInput interface {
 }
 
 func (*DeployToken) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeployToken)(nil))
+	return reflect.TypeOf((**DeployToken)(nil)).Elem()
 }
 
 func (i *DeployToken) ToDeployTokenOutput() DeployTokenOutput {
@@ -191,35 +191,6 @@ func (i *DeployToken) ToDeployTokenOutput() DeployTokenOutput {
 
 func (i *DeployToken) ToDeployTokenOutputWithContext(ctx context.Context) DeployTokenOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeployTokenOutput)
-}
-
-func (i *DeployToken) ToDeployTokenPtrOutput() DeployTokenPtrOutput {
-	return i.ToDeployTokenPtrOutputWithContext(context.Background())
-}
-
-func (i *DeployToken) ToDeployTokenPtrOutputWithContext(ctx context.Context) DeployTokenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeployTokenPtrOutput)
-}
-
-type DeployTokenPtrInput interface {
-	pulumi.Input
-
-	ToDeployTokenPtrOutput() DeployTokenPtrOutput
-	ToDeployTokenPtrOutputWithContext(ctx context.Context) DeployTokenPtrOutput
-}
-
-type deployTokenPtrType DeployTokenArgs
-
-func (*deployTokenPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeployToken)(nil))
-}
-
-func (i *deployTokenPtrType) ToDeployTokenPtrOutput() DeployTokenPtrOutput {
-	return i.ToDeployTokenPtrOutputWithContext(context.Background())
-}
-
-func (i *deployTokenPtrType) ToDeployTokenPtrOutputWithContext(ctx context.Context) DeployTokenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeployTokenPtrOutput)
 }
 
 // DeployTokenArrayInput is an input type that accepts DeployTokenArray and DeployTokenArrayOutput values.
@@ -275,7 +246,7 @@ func (i DeployTokenMap) ToDeployTokenMapOutputWithContext(ctx context.Context) D
 type DeployTokenOutput struct{ *pulumi.OutputState }
 
 func (DeployTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeployToken)(nil))
+	return reflect.TypeOf((**DeployToken)(nil)).Elem()
 }
 
 func (o DeployTokenOutput) ToDeployTokenOutput() DeployTokenOutput {
@@ -286,44 +257,10 @@ func (o DeployTokenOutput) ToDeployTokenOutputWithContext(ctx context.Context) D
 	return o
 }
 
-func (o DeployTokenOutput) ToDeployTokenPtrOutput() DeployTokenPtrOutput {
-	return o.ToDeployTokenPtrOutputWithContext(context.Background())
-}
-
-func (o DeployTokenOutput) ToDeployTokenPtrOutputWithContext(ctx context.Context) DeployTokenPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeployToken) *DeployToken {
-		return &v
-	}).(DeployTokenPtrOutput)
-}
-
-type DeployTokenPtrOutput struct{ *pulumi.OutputState }
-
-func (DeployTokenPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeployToken)(nil))
-}
-
-func (o DeployTokenPtrOutput) ToDeployTokenPtrOutput() DeployTokenPtrOutput {
-	return o
-}
-
-func (o DeployTokenPtrOutput) ToDeployTokenPtrOutputWithContext(ctx context.Context) DeployTokenPtrOutput {
-	return o
-}
-
-func (o DeployTokenPtrOutput) Elem() DeployTokenOutput {
-	return o.ApplyT(func(v *DeployToken) DeployToken {
-		if v != nil {
-			return *v
-		}
-		var ret DeployToken
-		return ret
-	}).(DeployTokenOutput)
-}
-
 type DeployTokenArrayOutput struct{ *pulumi.OutputState }
 
 func (DeployTokenArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DeployToken)(nil))
+	return reflect.TypeOf((*[]*DeployToken)(nil)).Elem()
 }
 
 func (o DeployTokenArrayOutput) ToDeployTokenArrayOutput() DeployTokenArrayOutput {
@@ -335,15 +272,15 @@ func (o DeployTokenArrayOutput) ToDeployTokenArrayOutputWithContext(ctx context.
 }
 
 func (o DeployTokenArrayOutput) Index(i pulumi.IntInput) DeployTokenOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeployToken {
-		return vs[0].([]DeployToken)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DeployToken {
+		return vs[0].([]*DeployToken)[vs[1].(int)]
 	}).(DeployTokenOutput)
 }
 
 type DeployTokenMapOutput struct{ *pulumi.OutputState }
 
 func (DeployTokenMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DeployToken)(nil))
+	return reflect.TypeOf((*map[string]*DeployToken)(nil)).Elem()
 }
 
 func (o DeployTokenMapOutput) ToDeployTokenMapOutput() DeployTokenMapOutput {
@@ -355,18 +292,16 @@ func (o DeployTokenMapOutput) ToDeployTokenMapOutputWithContext(ctx context.Cont
 }
 
 func (o DeployTokenMapOutput) MapIndex(k pulumi.StringInput) DeployTokenOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeployToken {
-		return vs[0].(map[string]DeployToken)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DeployToken {
+		return vs[0].(map[string]*DeployToken)[vs[1].(string)]
 	}).(DeployTokenOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeployTokenInput)(nil)).Elem(), &DeployToken{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeployTokenPtrInput)(nil)).Elem(), &DeployToken{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeployTokenArrayInput)(nil)).Elem(), DeployTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeployTokenMapInput)(nil)).Elem(), DeployTokenMap{})
 	pulumi.RegisterOutputType(DeployTokenOutput{})
-	pulumi.RegisterOutputType(DeployTokenPtrOutput{})
 	pulumi.RegisterOutputType(DeployTokenArrayOutput{})
 	pulumi.RegisterOutputType(DeployTokenMapOutput{})
 }

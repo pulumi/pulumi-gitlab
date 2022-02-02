@@ -29,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewProjectApprovalRule(ctx, "example_one", &gitlab.ProjectApprovalRuleArgs{
+// 		_, err := gitlab.NewProjectApprovalRule(ctx, "example-one", &gitlab.ProjectApprovalRuleArgs{
 // 			ApprovalsRequired: pulumi.Int(3),
 // 			GroupIds: pulumi.IntArray{
 // 				pulumi.Int(51),
@@ -68,7 +68,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = gitlab.NewProjectApprovalRule(ctx, "example_two", &gitlab.ProjectApprovalRuleArgs{
+// 		_, err = gitlab.NewProjectApprovalRule(ctx, "example-two", &gitlab.ProjectApprovalRuleArgs{
 // 			Project:           pulumi.String("5"),
 // 			ApprovalsRequired: pulumi.Int(3),
 // 			UserIds: pulumi.IntArray{
@@ -225,7 +225,7 @@ type ProjectApprovalRuleInput interface {
 }
 
 func (*ProjectApprovalRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectApprovalRule)(nil))
+	return reflect.TypeOf((**ProjectApprovalRule)(nil)).Elem()
 }
 
 func (i *ProjectApprovalRule) ToProjectApprovalRuleOutput() ProjectApprovalRuleOutput {
@@ -234,35 +234,6 @@ func (i *ProjectApprovalRule) ToProjectApprovalRuleOutput() ProjectApprovalRuleO
 
 func (i *ProjectApprovalRule) ToProjectApprovalRuleOutputWithContext(ctx context.Context) ProjectApprovalRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectApprovalRuleOutput)
-}
-
-func (i *ProjectApprovalRule) ToProjectApprovalRulePtrOutput() ProjectApprovalRulePtrOutput {
-	return i.ToProjectApprovalRulePtrOutputWithContext(context.Background())
-}
-
-func (i *ProjectApprovalRule) ToProjectApprovalRulePtrOutputWithContext(ctx context.Context) ProjectApprovalRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectApprovalRulePtrOutput)
-}
-
-type ProjectApprovalRulePtrInput interface {
-	pulumi.Input
-
-	ToProjectApprovalRulePtrOutput() ProjectApprovalRulePtrOutput
-	ToProjectApprovalRulePtrOutputWithContext(ctx context.Context) ProjectApprovalRulePtrOutput
-}
-
-type projectApprovalRulePtrType ProjectApprovalRuleArgs
-
-func (*projectApprovalRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectApprovalRule)(nil))
-}
-
-func (i *projectApprovalRulePtrType) ToProjectApprovalRulePtrOutput() ProjectApprovalRulePtrOutput {
-	return i.ToProjectApprovalRulePtrOutputWithContext(context.Background())
-}
-
-func (i *projectApprovalRulePtrType) ToProjectApprovalRulePtrOutputWithContext(ctx context.Context) ProjectApprovalRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectApprovalRulePtrOutput)
 }
 
 // ProjectApprovalRuleArrayInput is an input type that accepts ProjectApprovalRuleArray and ProjectApprovalRuleArrayOutput values.
@@ -318,7 +289,7 @@ func (i ProjectApprovalRuleMap) ToProjectApprovalRuleMapOutputWithContext(ctx co
 type ProjectApprovalRuleOutput struct{ *pulumi.OutputState }
 
 func (ProjectApprovalRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectApprovalRule)(nil))
+	return reflect.TypeOf((**ProjectApprovalRule)(nil)).Elem()
 }
 
 func (o ProjectApprovalRuleOutput) ToProjectApprovalRuleOutput() ProjectApprovalRuleOutput {
@@ -329,44 +300,10 @@ func (o ProjectApprovalRuleOutput) ToProjectApprovalRuleOutputWithContext(ctx co
 	return o
 }
 
-func (o ProjectApprovalRuleOutput) ToProjectApprovalRulePtrOutput() ProjectApprovalRulePtrOutput {
-	return o.ToProjectApprovalRulePtrOutputWithContext(context.Background())
-}
-
-func (o ProjectApprovalRuleOutput) ToProjectApprovalRulePtrOutputWithContext(ctx context.Context) ProjectApprovalRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectApprovalRule) *ProjectApprovalRule {
-		return &v
-	}).(ProjectApprovalRulePtrOutput)
-}
-
-type ProjectApprovalRulePtrOutput struct{ *pulumi.OutputState }
-
-func (ProjectApprovalRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectApprovalRule)(nil))
-}
-
-func (o ProjectApprovalRulePtrOutput) ToProjectApprovalRulePtrOutput() ProjectApprovalRulePtrOutput {
-	return o
-}
-
-func (o ProjectApprovalRulePtrOutput) ToProjectApprovalRulePtrOutputWithContext(ctx context.Context) ProjectApprovalRulePtrOutput {
-	return o
-}
-
-func (o ProjectApprovalRulePtrOutput) Elem() ProjectApprovalRuleOutput {
-	return o.ApplyT(func(v *ProjectApprovalRule) ProjectApprovalRule {
-		if v != nil {
-			return *v
-		}
-		var ret ProjectApprovalRule
-		return ret
-	}).(ProjectApprovalRuleOutput)
-}
-
 type ProjectApprovalRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectApprovalRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectApprovalRule)(nil))
+	return reflect.TypeOf((*[]*ProjectApprovalRule)(nil)).Elem()
 }
 
 func (o ProjectApprovalRuleArrayOutput) ToProjectApprovalRuleArrayOutput() ProjectApprovalRuleArrayOutput {
@@ -378,15 +315,15 @@ func (o ProjectApprovalRuleArrayOutput) ToProjectApprovalRuleArrayOutputWithCont
 }
 
 func (o ProjectApprovalRuleArrayOutput) Index(i pulumi.IntInput) ProjectApprovalRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectApprovalRule {
-		return vs[0].([]ProjectApprovalRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectApprovalRule {
+		return vs[0].([]*ProjectApprovalRule)[vs[1].(int)]
 	}).(ProjectApprovalRuleOutput)
 }
 
 type ProjectApprovalRuleMapOutput struct{ *pulumi.OutputState }
 
 func (ProjectApprovalRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ProjectApprovalRule)(nil))
+	return reflect.TypeOf((*map[string]*ProjectApprovalRule)(nil)).Elem()
 }
 
 func (o ProjectApprovalRuleMapOutput) ToProjectApprovalRuleMapOutput() ProjectApprovalRuleMapOutput {
@@ -398,18 +335,16 @@ func (o ProjectApprovalRuleMapOutput) ToProjectApprovalRuleMapOutputWithContext(
 }
 
 func (o ProjectApprovalRuleMapOutput) MapIndex(k pulumi.StringInput) ProjectApprovalRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectApprovalRule {
-		return vs[0].(map[string]ProjectApprovalRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ProjectApprovalRule {
+		return vs[0].(map[string]*ProjectApprovalRule)[vs[1].(string)]
 	}).(ProjectApprovalRuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectApprovalRuleInput)(nil)).Elem(), &ProjectApprovalRule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectApprovalRulePtrInput)(nil)).Elem(), &ProjectApprovalRule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectApprovalRuleArrayInput)(nil)).Elem(), ProjectApprovalRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectApprovalRuleMapInput)(nil)).Elem(), ProjectApprovalRuleMap{})
 	pulumi.RegisterOutputType(ProjectApprovalRuleOutput{})
-	pulumi.RegisterOutputType(ProjectApprovalRulePtrOutput{})
 	pulumi.RegisterOutputType(ProjectApprovalRuleArrayOutput{})
 	pulumi.RegisterOutputType(ProjectApprovalRuleMapOutput{})
 }

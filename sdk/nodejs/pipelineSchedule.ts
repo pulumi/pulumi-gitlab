@@ -95,16 +95,16 @@ export class PipelineSchedule extends pulumi.CustomResource {
      */
     constructor(name: string, args: PipelineScheduleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PipelineScheduleArgs | PipelineScheduleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PipelineScheduleState | undefined;
-            inputs["active"] = state ? state.active : undefined;
-            inputs["cron"] = state ? state.cron : undefined;
-            inputs["cronTimezone"] = state ? state.cronTimezone : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["ref"] = state ? state.ref : undefined;
+            resourceInputs["active"] = state ? state.active : undefined;
+            resourceInputs["cron"] = state ? state.cron : undefined;
+            resourceInputs["cronTimezone"] = state ? state.cronTimezone : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["ref"] = state ? state.ref : undefined;
         } else {
             const args = argsOrState as PipelineScheduleArgs | undefined;
             if ((!args || args.cron === undefined) && !opts.urn) {
@@ -119,17 +119,15 @@ export class PipelineSchedule extends pulumi.CustomResource {
             if ((!args || args.ref === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ref'");
             }
-            inputs["active"] = args ? args.active : undefined;
-            inputs["cron"] = args ? args.cron : undefined;
-            inputs["cronTimezone"] = args ? args.cronTimezone : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["ref"] = args ? args.ref : undefined;
+            resourceInputs["active"] = args ? args.active : undefined;
+            resourceInputs["cron"] = args ? args.cron : undefined;
+            resourceInputs["cronTimezone"] = args ? args.cronTimezone : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["ref"] = args ? args.ref : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(PipelineSchedule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(PipelineSchedule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -91,15 +91,15 @@ export class InstanceVariable extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceVariableArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceVariableArgs | InstanceVariableState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceVariableState | undefined;
-            inputs["key"] = state ? state.key : undefined;
-            inputs["masked"] = state ? state.masked : undefined;
-            inputs["protected"] = state ? state.protected : undefined;
-            inputs["value"] = state ? state.value : undefined;
-            inputs["variableType"] = state ? state.variableType : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["masked"] = state ? state.masked : undefined;
+            resourceInputs["protected"] = state ? state.protected : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["variableType"] = state ? state.variableType : undefined;
         } else {
             const args = argsOrState as InstanceVariableArgs | undefined;
             if ((!args || args.key === undefined) && !opts.urn) {
@@ -108,16 +108,14 @@ export class InstanceVariable extends pulumi.CustomResource {
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            inputs["key"] = args ? args.key : undefined;
-            inputs["masked"] = args ? args.masked : undefined;
-            inputs["protected"] = args ? args.protected : undefined;
-            inputs["value"] = args ? args.value : undefined;
-            inputs["variableType"] = args ? args.variableType : undefined;
+            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["masked"] = args ? args.masked : undefined;
+            resourceInputs["protected"] = args ? args.protected : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["variableType"] = args ? args.variableType : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(InstanceVariable.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(InstanceVariable.__pulumiType, name, resourceInputs, opts);
     }
 }
 

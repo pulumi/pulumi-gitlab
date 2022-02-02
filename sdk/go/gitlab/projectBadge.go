@@ -168,7 +168,7 @@ type ProjectBadgeInput interface {
 }
 
 func (*ProjectBadge) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectBadge)(nil))
+	return reflect.TypeOf((**ProjectBadge)(nil)).Elem()
 }
 
 func (i *ProjectBadge) ToProjectBadgeOutput() ProjectBadgeOutput {
@@ -177,35 +177,6 @@ func (i *ProjectBadge) ToProjectBadgeOutput() ProjectBadgeOutput {
 
 func (i *ProjectBadge) ToProjectBadgeOutputWithContext(ctx context.Context) ProjectBadgeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectBadgeOutput)
-}
-
-func (i *ProjectBadge) ToProjectBadgePtrOutput() ProjectBadgePtrOutput {
-	return i.ToProjectBadgePtrOutputWithContext(context.Background())
-}
-
-func (i *ProjectBadge) ToProjectBadgePtrOutputWithContext(ctx context.Context) ProjectBadgePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectBadgePtrOutput)
-}
-
-type ProjectBadgePtrInput interface {
-	pulumi.Input
-
-	ToProjectBadgePtrOutput() ProjectBadgePtrOutput
-	ToProjectBadgePtrOutputWithContext(ctx context.Context) ProjectBadgePtrOutput
-}
-
-type projectBadgePtrType ProjectBadgeArgs
-
-func (*projectBadgePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectBadge)(nil))
-}
-
-func (i *projectBadgePtrType) ToProjectBadgePtrOutput() ProjectBadgePtrOutput {
-	return i.ToProjectBadgePtrOutputWithContext(context.Background())
-}
-
-func (i *projectBadgePtrType) ToProjectBadgePtrOutputWithContext(ctx context.Context) ProjectBadgePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectBadgePtrOutput)
 }
 
 // ProjectBadgeArrayInput is an input type that accepts ProjectBadgeArray and ProjectBadgeArrayOutput values.
@@ -261,7 +232,7 @@ func (i ProjectBadgeMap) ToProjectBadgeMapOutputWithContext(ctx context.Context)
 type ProjectBadgeOutput struct{ *pulumi.OutputState }
 
 func (ProjectBadgeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectBadge)(nil))
+	return reflect.TypeOf((**ProjectBadge)(nil)).Elem()
 }
 
 func (o ProjectBadgeOutput) ToProjectBadgeOutput() ProjectBadgeOutput {
@@ -272,44 +243,10 @@ func (o ProjectBadgeOutput) ToProjectBadgeOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ProjectBadgeOutput) ToProjectBadgePtrOutput() ProjectBadgePtrOutput {
-	return o.ToProjectBadgePtrOutputWithContext(context.Background())
-}
-
-func (o ProjectBadgeOutput) ToProjectBadgePtrOutputWithContext(ctx context.Context) ProjectBadgePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectBadge) *ProjectBadge {
-		return &v
-	}).(ProjectBadgePtrOutput)
-}
-
-type ProjectBadgePtrOutput struct{ *pulumi.OutputState }
-
-func (ProjectBadgePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectBadge)(nil))
-}
-
-func (o ProjectBadgePtrOutput) ToProjectBadgePtrOutput() ProjectBadgePtrOutput {
-	return o
-}
-
-func (o ProjectBadgePtrOutput) ToProjectBadgePtrOutputWithContext(ctx context.Context) ProjectBadgePtrOutput {
-	return o
-}
-
-func (o ProjectBadgePtrOutput) Elem() ProjectBadgeOutput {
-	return o.ApplyT(func(v *ProjectBadge) ProjectBadge {
-		if v != nil {
-			return *v
-		}
-		var ret ProjectBadge
-		return ret
-	}).(ProjectBadgeOutput)
-}
-
 type ProjectBadgeArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectBadgeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectBadge)(nil))
+	return reflect.TypeOf((*[]*ProjectBadge)(nil)).Elem()
 }
 
 func (o ProjectBadgeArrayOutput) ToProjectBadgeArrayOutput() ProjectBadgeArrayOutput {
@@ -321,15 +258,15 @@ func (o ProjectBadgeArrayOutput) ToProjectBadgeArrayOutputWithContext(ctx contex
 }
 
 func (o ProjectBadgeArrayOutput) Index(i pulumi.IntInput) ProjectBadgeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectBadge {
-		return vs[0].([]ProjectBadge)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectBadge {
+		return vs[0].([]*ProjectBadge)[vs[1].(int)]
 	}).(ProjectBadgeOutput)
 }
 
 type ProjectBadgeMapOutput struct{ *pulumi.OutputState }
 
 func (ProjectBadgeMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ProjectBadge)(nil))
+	return reflect.TypeOf((*map[string]*ProjectBadge)(nil)).Elem()
 }
 
 func (o ProjectBadgeMapOutput) ToProjectBadgeMapOutput() ProjectBadgeMapOutput {
@@ -341,18 +278,16 @@ func (o ProjectBadgeMapOutput) ToProjectBadgeMapOutputWithContext(ctx context.Co
 }
 
 func (o ProjectBadgeMapOutput) MapIndex(k pulumi.StringInput) ProjectBadgeOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectBadge {
-		return vs[0].(map[string]ProjectBadge)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ProjectBadge {
+		return vs[0].(map[string]*ProjectBadge)[vs[1].(string)]
 	}).(ProjectBadgeOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectBadgeInput)(nil)).Elem(), &ProjectBadge{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectBadgePtrInput)(nil)).Elem(), &ProjectBadge{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectBadgeArrayInput)(nil)).Elem(), ProjectBadgeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectBadgeMapInput)(nil)).Elem(), ProjectBadgeMap{})
 	pulumi.RegisterOutputType(ProjectBadgeOutput{})
-	pulumi.RegisterOutputType(ProjectBadgePtrOutput{})
 	pulumi.RegisterOutputType(ProjectBadgeArrayOutput{})
 	pulumi.RegisterOutputType(ProjectBadgeMapOutput{})
 }

@@ -104,17 +104,17 @@ export class ProjectVariable extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectVariableArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectVariableArgs | ProjectVariableState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectVariableState | undefined;
-            inputs["environmentScope"] = state ? state.environmentScope : undefined;
-            inputs["key"] = state ? state.key : undefined;
-            inputs["masked"] = state ? state.masked : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["protected"] = state ? state.protected : undefined;
-            inputs["value"] = state ? state.value : undefined;
-            inputs["variableType"] = state ? state.variableType : undefined;
+            resourceInputs["environmentScope"] = state ? state.environmentScope : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["masked"] = state ? state.masked : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["protected"] = state ? state.protected : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["variableType"] = state ? state.variableType : undefined;
         } else {
             const args = argsOrState as ProjectVariableArgs | undefined;
             if ((!args || args.key === undefined) && !opts.urn) {
@@ -126,18 +126,16 @@ export class ProjectVariable extends pulumi.CustomResource {
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            inputs["environmentScope"] = args ? args.environmentScope : undefined;
-            inputs["key"] = args ? args.key : undefined;
-            inputs["masked"] = args ? args.masked : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["protected"] = args ? args.protected : undefined;
-            inputs["value"] = args ? args.value : undefined;
-            inputs["variableType"] = args ? args.variableType : undefined;
+            resourceInputs["environmentScope"] = args ? args.environmentScope : undefined;
+            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["masked"] = args ? args.masked : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["protected"] = args ? args.protected : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["variableType"] = args ? args.variableType : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ProjectVariable.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ProjectVariable.__pulumiType, name, resourceInputs, opts);
     }
 }
 

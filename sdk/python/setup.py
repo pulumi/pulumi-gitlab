@@ -55,6 +55,7 @@ setup(name='pulumi_gitlab',
       package_data={
           'pulumi_gitlab': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

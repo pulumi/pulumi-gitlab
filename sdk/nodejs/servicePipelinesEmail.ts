@@ -58,14 +58,14 @@ export class ServicePipelinesEmail extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServicePipelinesEmailArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServicePipelinesEmailArgs | ServicePipelinesEmailState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePipelinesEmailState | undefined;
-            inputs["branchesToBeNotified"] = state ? state.branchesToBeNotified : undefined;
-            inputs["notifyOnlyBrokenPipelines"] = state ? state.notifyOnlyBrokenPipelines : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["recipients"] = state ? state.recipients : undefined;
+            resourceInputs["branchesToBeNotified"] = state ? state.branchesToBeNotified : undefined;
+            resourceInputs["notifyOnlyBrokenPipelines"] = state ? state.notifyOnlyBrokenPipelines : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["recipients"] = state ? state.recipients : undefined;
         } else {
             const args = argsOrState as ServicePipelinesEmailArgs | undefined;
             if ((!args || args.project === undefined) && !opts.urn) {
@@ -74,15 +74,13 @@ export class ServicePipelinesEmail extends pulumi.CustomResource {
             if ((!args || args.recipients === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'recipients'");
             }
-            inputs["branchesToBeNotified"] = args ? args.branchesToBeNotified : undefined;
-            inputs["notifyOnlyBrokenPipelines"] = args ? args.notifyOnlyBrokenPipelines : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["recipients"] = args ? args.recipients : undefined;
+            resourceInputs["branchesToBeNotified"] = args ? args.branchesToBeNotified : undefined;
+            resourceInputs["notifyOnlyBrokenPipelines"] = args ? args.notifyOnlyBrokenPipelines : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["recipients"] = args ? args.recipients : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServicePipelinesEmail.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServicePipelinesEmail.__pulumiType, name, resourceInputs, opts);
     }
 }
 

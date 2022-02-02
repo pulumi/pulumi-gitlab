@@ -157,7 +157,7 @@ type LabelInput interface {
 }
 
 func (*Label) ElementType() reflect.Type {
-	return reflect.TypeOf((*Label)(nil))
+	return reflect.TypeOf((**Label)(nil)).Elem()
 }
 
 func (i *Label) ToLabelOutput() LabelOutput {
@@ -166,35 +166,6 @@ func (i *Label) ToLabelOutput() LabelOutput {
 
 func (i *Label) ToLabelOutputWithContext(ctx context.Context) LabelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LabelOutput)
-}
-
-func (i *Label) ToLabelPtrOutput() LabelPtrOutput {
-	return i.ToLabelPtrOutputWithContext(context.Background())
-}
-
-func (i *Label) ToLabelPtrOutputWithContext(ctx context.Context) LabelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LabelPtrOutput)
-}
-
-type LabelPtrInput interface {
-	pulumi.Input
-
-	ToLabelPtrOutput() LabelPtrOutput
-	ToLabelPtrOutputWithContext(ctx context.Context) LabelPtrOutput
-}
-
-type labelPtrType LabelArgs
-
-func (*labelPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Label)(nil))
-}
-
-func (i *labelPtrType) ToLabelPtrOutput() LabelPtrOutput {
-	return i.ToLabelPtrOutputWithContext(context.Background())
-}
-
-func (i *labelPtrType) ToLabelPtrOutputWithContext(ctx context.Context) LabelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LabelPtrOutput)
 }
 
 // LabelArrayInput is an input type that accepts LabelArray and LabelArrayOutput values.
@@ -250,7 +221,7 @@ func (i LabelMap) ToLabelMapOutputWithContext(ctx context.Context) LabelMapOutpu
 type LabelOutput struct{ *pulumi.OutputState }
 
 func (LabelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Label)(nil))
+	return reflect.TypeOf((**Label)(nil)).Elem()
 }
 
 func (o LabelOutput) ToLabelOutput() LabelOutput {
@@ -261,44 +232,10 @@ func (o LabelOutput) ToLabelOutputWithContext(ctx context.Context) LabelOutput {
 	return o
 }
 
-func (o LabelOutput) ToLabelPtrOutput() LabelPtrOutput {
-	return o.ToLabelPtrOutputWithContext(context.Background())
-}
-
-func (o LabelOutput) ToLabelPtrOutputWithContext(ctx context.Context) LabelPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Label) *Label {
-		return &v
-	}).(LabelPtrOutput)
-}
-
-type LabelPtrOutput struct{ *pulumi.OutputState }
-
-func (LabelPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Label)(nil))
-}
-
-func (o LabelPtrOutput) ToLabelPtrOutput() LabelPtrOutput {
-	return o
-}
-
-func (o LabelPtrOutput) ToLabelPtrOutputWithContext(ctx context.Context) LabelPtrOutput {
-	return o
-}
-
-func (o LabelPtrOutput) Elem() LabelOutput {
-	return o.ApplyT(func(v *Label) Label {
-		if v != nil {
-			return *v
-		}
-		var ret Label
-		return ret
-	}).(LabelOutput)
-}
-
 type LabelArrayOutput struct{ *pulumi.OutputState }
 
 func (LabelArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Label)(nil))
+	return reflect.TypeOf((*[]*Label)(nil)).Elem()
 }
 
 func (o LabelArrayOutput) ToLabelArrayOutput() LabelArrayOutput {
@@ -310,15 +247,15 @@ func (o LabelArrayOutput) ToLabelArrayOutputWithContext(ctx context.Context) Lab
 }
 
 func (o LabelArrayOutput) Index(i pulumi.IntInput) LabelOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Label {
-		return vs[0].([]Label)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Label {
+		return vs[0].([]*Label)[vs[1].(int)]
 	}).(LabelOutput)
 }
 
 type LabelMapOutput struct{ *pulumi.OutputState }
 
 func (LabelMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Label)(nil))
+	return reflect.TypeOf((*map[string]*Label)(nil)).Elem()
 }
 
 func (o LabelMapOutput) ToLabelMapOutput() LabelMapOutput {
@@ -330,18 +267,16 @@ func (o LabelMapOutput) ToLabelMapOutputWithContext(ctx context.Context) LabelMa
 }
 
 func (o LabelMapOutput) MapIndex(k pulumi.StringInput) LabelOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Label {
-		return vs[0].(map[string]Label)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Label {
+		return vs[0].(map[string]*Label)[vs[1].(string)]
 	}).(LabelOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LabelInput)(nil)).Elem(), &Label{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LabelPtrInput)(nil)).Elem(), &Label{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LabelArrayInput)(nil)).Elem(), LabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LabelMapInput)(nil)).Elem(), LabelMap{})
 	pulumi.RegisterOutputType(LabelOutput{})
-	pulumi.RegisterOutputType(LabelPtrOutput{})
 	pulumi.RegisterOutputType(LabelArrayOutput{})
 	pulumi.RegisterOutputType(LabelMapOutput{})
 }

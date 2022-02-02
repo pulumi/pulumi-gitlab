@@ -185,7 +185,7 @@ type ProjectLevelMrApprovalsInput interface {
 }
 
 func (*ProjectLevelMrApprovals) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectLevelMrApprovals)(nil))
+	return reflect.TypeOf((**ProjectLevelMrApprovals)(nil)).Elem()
 }
 
 func (i *ProjectLevelMrApprovals) ToProjectLevelMrApprovalsOutput() ProjectLevelMrApprovalsOutput {
@@ -194,35 +194,6 @@ func (i *ProjectLevelMrApprovals) ToProjectLevelMrApprovalsOutput() ProjectLevel
 
 func (i *ProjectLevelMrApprovals) ToProjectLevelMrApprovalsOutputWithContext(ctx context.Context) ProjectLevelMrApprovalsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectLevelMrApprovalsOutput)
-}
-
-func (i *ProjectLevelMrApprovals) ToProjectLevelMrApprovalsPtrOutput() ProjectLevelMrApprovalsPtrOutput {
-	return i.ToProjectLevelMrApprovalsPtrOutputWithContext(context.Background())
-}
-
-func (i *ProjectLevelMrApprovals) ToProjectLevelMrApprovalsPtrOutputWithContext(ctx context.Context) ProjectLevelMrApprovalsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectLevelMrApprovalsPtrOutput)
-}
-
-type ProjectLevelMrApprovalsPtrInput interface {
-	pulumi.Input
-
-	ToProjectLevelMrApprovalsPtrOutput() ProjectLevelMrApprovalsPtrOutput
-	ToProjectLevelMrApprovalsPtrOutputWithContext(ctx context.Context) ProjectLevelMrApprovalsPtrOutput
-}
-
-type projectLevelMrApprovalsPtrType ProjectLevelMrApprovalsArgs
-
-func (*projectLevelMrApprovalsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectLevelMrApprovals)(nil))
-}
-
-func (i *projectLevelMrApprovalsPtrType) ToProjectLevelMrApprovalsPtrOutput() ProjectLevelMrApprovalsPtrOutput {
-	return i.ToProjectLevelMrApprovalsPtrOutputWithContext(context.Background())
-}
-
-func (i *projectLevelMrApprovalsPtrType) ToProjectLevelMrApprovalsPtrOutputWithContext(ctx context.Context) ProjectLevelMrApprovalsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectLevelMrApprovalsPtrOutput)
 }
 
 // ProjectLevelMrApprovalsArrayInput is an input type that accepts ProjectLevelMrApprovalsArray and ProjectLevelMrApprovalsArrayOutput values.
@@ -278,7 +249,7 @@ func (i ProjectLevelMrApprovalsMap) ToProjectLevelMrApprovalsMapOutputWithContex
 type ProjectLevelMrApprovalsOutput struct{ *pulumi.OutputState }
 
 func (ProjectLevelMrApprovalsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectLevelMrApprovals)(nil))
+	return reflect.TypeOf((**ProjectLevelMrApprovals)(nil)).Elem()
 }
 
 func (o ProjectLevelMrApprovalsOutput) ToProjectLevelMrApprovalsOutput() ProjectLevelMrApprovalsOutput {
@@ -289,44 +260,10 @@ func (o ProjectLevelMrApprovalsOutput) ToProjectLevelMrApprovalsOutputWithContex
 	return o
 }
 
-func (o ProjectLevelMrApprovalsOutput) ToProjectLevelMrApprovalsPtrOutput() ProjectLevelMrApprovalsPtrOutput {
-	return o.ToProjectLevelMrApprovalsPtrOutputWithContext(context.Background())
-}
-
-func (o ProjectLevelMrApprovalsOutput) ToProjectLevelMrApprovalsPtrOutputWithContext(ctx context.Context) ProjectLevelMrApprovalsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectLevelMrApprovals) *ProjectLevelMrApprovals {
-		return &v
-	}).(ProjectLevelMrApprovalsPtrOutput)
-}
-
-type ProjectLevelMrApprovalsPtrOutput struct{ *pulumi.OutputState }
-
-func (ProjectLevelMrApprovalsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectLevelMrApprovals)(nil))
-}
-
-func (o ProjectLevelMrApprovalsPtrOutput) ToProjectLevelMrApprovalsPtrOutput() ProjectLevelMrApprovalsPtrOutput {
-	return o
-}
-
-func (o ProjectLevelMrApprovalsPtrOutput) ToProjectLevelMrApprovalsPtrOutputWithContext(ctx context.Context) ProjectLevelMrApprovalsPtrOutput {
-	return o
-}
-
-func (o ProjectLevelMrApprovalsPtrOutput) Elem() ProjectLevelMrApprovalsOutput {
-	return o.ApplyT(func(v *ProjectLevelMrApprovals) ProjectLevelMrApprovals {
-		if v != nil {
-			return *v
-		}
-		var ret ProjectLevelMrApprovals
-		return ret
-	}).(ProjectLevelMrApprovalsOutput)
-}
-
 type ProjectLevelMrApprovalsArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectLevelMrApprovalsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectLevelMrApprovals)(nil))
+	return reflect.TypeOf((*[]*ProjectLevelMrApprovals)(nil)).Elem()
 }
 
 func (o ProjectLevelMrApprovalsArrayOutput) ToProjectLevelMrApprovalsArrayOutput() ProjectLevelMrApprovalsArrayOutput {
@@ -338,15 +275,15 @@ func (o ProjectLevelMrApprovalsArrayOutput) ToProjectLevelMrApprovalsArrayOutput
 }
 
 func (o ProjectLevelMrApprovalsArrayOutput) Index(i pulumi.IntInput) ProjectLevelMrApprovalsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectLevelMrApprovals {
-		return vs[0].([]ProjectLevelMrApprovals)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectLevelMrApprovals {
+		return vs[0].([]*ProjectLevelMrApprovals)[vs[1].(int)]
 	}).(ProjectLevelMrApprovalsOutput)
 }
 
 type ProjectLevelMrApprovalsMapOutput struct{ *pulumi.OutputState }
 
 func (ProjectLevelMrApprovalsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ProjectLevelMrApprovals)(nil))
+	return reflect.TypeOf((*map[string]*ProjectLevelMrApprovals)(nil)).Elem()
 }
 
 func (o ProjectLevelMrApprovalsMapOutput) ToProjectLevelMrApprovalsMapOutput() ProjectLevelMrApprovalsMapOutput {
@@ -358,18 +295,16 @@ func (o ProjectLevelMrApprovalsMapOutput) ToProjectLevelMrApprovalsMapOutputWith
 }
 
 func (o ProjectLevelMrApprovalsMapOutput) MapIndex(k pulumi.StringInput) ProjectLevelMrApprovalsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectLevelMrApprovals {
-		return vs[0].(map[string]ProjectLevelMrApprovals)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ProjectLevelMrApprovals {
+		return vs[0].(map[string]*ProjectLevelMrApprovals)[vs[1].(string)]
 	}).(ProjectLevelMrApprovalsOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectLevelMrApprovalsInput)(nil)).Elem(), &ProjectLevelMrApprovals{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectLevelMrApprovalsPtrInput)(nil)).Elem(), &ProjectLevelMrApprovals{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectLevelMrApprovalsArrayInput)(nil)).Elem(), ProjectLevelMrApprovalsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectLevelMrApprovalsMapInput)(nil)).Elem(), ProjectLevelMrApprovalsMap{})
 	pulumi.RegisterOutputType(ProjectLevelMrApprovalsOutput{})
-	pulumi.RegisterOutputType(ProjectLevelMrApprovalsPtrOutput{})
 	pulumi.RegisterOutputType(ProjectLevelMrApprovalsArrayOutput{})
 	pulumi.RegisterOutputType(ProjectLevelMrApprovalsMapOutput{})
 }
