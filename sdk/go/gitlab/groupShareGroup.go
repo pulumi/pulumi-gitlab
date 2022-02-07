@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_group\_share\_group
-//
 // This resource allows you to share a group with another group
 //
 // ## Example Usage
@@ -43,7 +41,7 @@ import (
 //
 // ## Import
 //
-// GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
+// # GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
 //
 // ```sh
 //  $ pulumi import gitlab:index/groupShareGroup:GroupShareGroup test 12345:1337
@@ -53,7 +51,7 @@ type GroupShareGroup struct {
 
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
-	// One of five levels of access to the group.
+	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
 	GroupAccess pulumi.StringOutput `pulumi:"groupAccess"`
 	// The id of the main group.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
@@ -101,7 +99,7 @@ func GetGroupShareGroup(ctx *pulumi.Context,
 type groupShareGroupState struct {
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
-	// One of five levels of access to the group.
+	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
 	GroupAccess *string `pulumi:"groupAccess"`
 	// The id of the main group.
 	GroupId *string `pulumi:"groupId"`
@@ -112,7 +110,7 @@ type groupShareGroupState struct {
 type GroupShareGroupState struct {
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
-	// One of five levels of access to the group.
+	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
 	GroupAccess pulumi.StringPtrInput
 	// The id of the main group.
 	GroupId pulumi.StringPtrInput
@@ -127,7 +125,7 @@ func (GroupShareGroupState) ElementType() reflect.Type {
 type groupShareGroupArgs struct {
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
-	// One of five levels of access to the group.
+	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
 	GroupAccess string `pulumi:"groupAccess"`
 	// The id of the main group.
 	GroupId string `pulumi:"groupId"`
@@ -139,7 +137,7 @@ type groupShareGroupArgs struct {
 type GroupShareGroupArgs struct {
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
-	// One of five levels of access to the group.
+	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
 	GroupAccess pulumi.StringInput
 	// The id of the main group.
 	GroupId pulumi.StringInput

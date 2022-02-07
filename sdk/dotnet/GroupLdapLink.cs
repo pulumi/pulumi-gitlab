@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_group\_ldap\_link
-    /// 
     /// This resource allows you to add an LDAP link to an existing GitLab group.
     /// 
     /// ## Example Usage
@@ -26,8 +24,8 @@ namespace Pulumi.GitLab
     ///     {
     ///         var test = new GitLab.GroupLdapLink("test", new GitLab.GroupLdapLinkArgs
     ///         {
-    ///             AccessLevel = "developer",
     ///             Cn = "testuser",
+    ///             GroupAccess = "developer",
     ///             GroupId = "12345",
     ///             LdapProvider = "ldapmain",
     ///         });
@@ -38,7 +36,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// GitLab group ldap links can be imported using an id made up of `ldap_provider:cn`, e.g.
+    /// # GitLab group ldap links can be imported using an id made up of `ldap_provider:cn`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test "ldapmain:testuser"
@@ -48,10 +46,10 @@ namespace Pulumi.GitLab
     public partial class GroupLdapLink : Pulumi.CustomResource
     {
         /// <summary>
-        /// Acceptable values are: guest, reporter, developer, maintainer, owner.
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Output("accessLevel")]
-        public Output<string> AccessLevel { get; private set; } = null!;
+        public Output<string?> AccessLevel { get; private set; } = null!;
 
         /// <summary>
         /// The CN of the LDAP group to link with.
@@ -59,8 +57,17 @@ namespace Pulumi.GitLab
         [Output("cn")]
         public Output<string> Cn { get; private set; } = null!;
 
+        /// <summary>
+        /// If true, then delete and replace an existing LDAP link if one exists.
+        /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
+
+        /// <summary>
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        /// </summary>
+        [Output("groupAccess")]
+        public Output<string?> GroupAccess { get; private set; } = null!;
 
         /// <summary>
         /// The id of the GitLab group.
@@ -121,10 +128,10 @@ namespace Pulumi.GitLab
     public sealed class GroupLdapLinkArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Acceptable values are: guest, reporter, developer, maintainer, owner.
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
-        [Input("accessLevel", required: true)]
-        public Input<string> AccessLevel { get; set; } = null!;
+        [Input("accessLevel")]
+        public Input<string>? AccessLevel { get; set; }
 
         /// <summary>
         /// The CN of the LDAP group to link with.
@@ -132,8 +139,17 @@ namespace Pulumi.GitLab
         [Input("cn", required: true)]
         public Input<string> Cn { get; set; } = null!;
 
+        /// <summary>
+        /// If true, then delete and replace an existing LDAP link if one exists.
+        /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
+
+        /// <summary>
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        /// </summary>
+        [Input("groupAccess")]
+        public Input<string>? GroupAccess { get; set; }
 
         /// <summary>
         /// The id of the GitLab group.
@@ -155,7 +171,7 @@ namespace Pulumi.GitLab
     public sealed class GroupLdapLinkState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Acceptable values are: guest, reporter, developer, maintainer, owner.
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -166,8 +182,17 @@ namespace Pulumi.GitLab
         [Input("cn")]
         public Input<string>? Cn { get; set; }
 
+        /// <summary>
+        /// If true, then delete and replace an existing LDAP link if one exists.
+        /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
+
+        /// <summary>
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        /// </summary>
+        [Input("groupAccess")]
+        public Input<string>? GroupAccess { get; set; }
 
         /// <summary>
         /// The id of the GitLab group.

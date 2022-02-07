@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_project\_variable
- *
  * This resource allows you to create and manage CI/CD variables for your GitLab projects.
  * For further information on variables, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
@@ -32,7 +30,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.
+ * # GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/projectVariable:ProjectVariable example '12345:project_variable_key:*'
@@ -79,7 +77,7 @@ export class ProjectVariable extends pulumi.CustomResource {
      */
     public readonly masked!: pulumi.Output<boolean | undefined>;
     /**
-     * The name or id of the project to add the hook to.
+     * The name or id of the project.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -156,7 +154,7 @@ export interface ProjectVariableState {
      */
     masked?: pulumi.Input<boolean>;
     /**
-     * The name or id of the project to add the hook to.
+     * The name or id of the project.
      */
     project?: pulumi.Input<string>;
     /**
@@ -190,7 +188,7 @@ export interface ProjectVariableArgs {
      */
     masked?: pulumi.Input<boolean>;
     /**
-     * The name or id of the project to add the hook to.
+     * The name or id of the project.
      */
     project: pulumi.Input<string>;
     /**

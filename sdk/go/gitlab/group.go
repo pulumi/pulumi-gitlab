@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_group
-//
 // This resource allows you to create and manage GitLab groups.
 // Note your provider will need to be configured with admin-level access for this resource to work.
 //
@@ -50,26 +48,20 @@ import (
 // ## Import
 //
 // ```sh
-//  $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
+//  $ pulumi import gitlab:index/group:Group # You can import a group state using `<resource> <id>`. The
 // ```
 //
-//  `id` can be whatever the [details of a group][details_of_a_group] api takes for its `:id` value, so for example
+// # `id` can be whatever the [details of a group][details_of_a_group] api takes for # its `:id` value, so for example
 //
 // ```sh
 //  $ pulumi import gitlab:index/group:Group example example
 // ```
-//
-//  [details_of_a_group]https://docs.gitlab.com/ee/api/groups.html#details-of-a-group
 type Group struct {
 	pulumi.CustomResourceState
 
 	// Boolean, defaults to false.  Default to Auto
-	// DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled pulumi.BoolPtrOutput `pulumi:"autoDevopsEnabled"`
-	// (Optional) Int, defaults to 2.
-	// Whether developers and maintainers can push to the applicable default branch.
-	// 0 no protection, 1 partial protection, 2 full protection
-	// https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+	// Int, defaults to 2.
 	DefaultBranchProtection pulumi.IntPtrOutput `pulumi:"defaultBranchProtection"`
 	// The description of the group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -80,10 +72,8 @@ type Group struct {
 	// The full path of the group.
 	FullPath pulumi.StringOutput `pulumi:"fullPath"`
 	// Boolean, defaults to true.  Whether to enable LFS
-	// support for projects in this group.
 	LfsEnabled pulumi.BoolPtrOutput `pulumi:"lfsEnabled"`
 	// Boolean, defaults to false.  Disable the capability
-	// of a group from getting mentioned
 	MentionsDisabled pulumi.BoolPtrOutput `pulumi:"mentionsDisabled"`
 	// The name of this group.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -92,27 +82,18 @@ type Group struct {
 	// The path of the group.
 	Path pulumi.StringOutput `pulumi:"path"`
 	// , defaults to Maintainer.
-	// Determine if developers can create projects
-	// in the group. Can be noone (No one), maintainer (Maintainers),
-	// or developer (Developers + Maintainers).
 	ProjectCreationLevel pulumi.StringPtrOutput `pulumi:"projectCreationLevel"`
 	// Boolean, defaults to false.  Whether to
-	// enable users to request access to the group.
 	RequestAccessEnabled pulumi.BoolPtrOutput `pulumi:"requestAccessEnabled"`
 	// Boolean, defaults to false.
-	// equire all users in this group to setup Two-factor authentication.
 	RequireTwoFactorAuthentication pulumi.BoolPtrOutput `pulumi:"requireTwoFactorAuthentication"`
 	// The group level registration token to use during runner setup.
 	RunnersToken pulumi.StringOutput `pulumi:"runnersToken"`
 	// Boolean, defaults to false.  Prevent sharing
-	// a project with another group within this group.
 	ShareWithGroupLock pulumi.BoolPtrOutput `pulumi:"shareWithGroupLock"`
 	// , defaults to Owner.
-	// Allowed to create subgroups.
-	// Can be owner (Owners), or maintainer (Maintainers).
 	SubgroupCreationLevel pulumi.StringPtrOutput `pulumi:"subgroupCreationLevel"`
 	// Int, defaults to 48.
-	// Time before Two-factor authentication is enforced (in hours).
 	TwoFactorGracePeriod pulumi.IntPtrOutput `pulumi:"twoFactorGracePeriod"`
 	// The group's visibility. Can be `private`, `internal`, or `public`.
 	VisibilityLevel pulumi.StringOutput `pulumi:"visibilityLevel"`
@@ -153,12 +134,8 @@ func GetGroup(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
 	// Boolean, defaults to false.  Default to Auto
-	// DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
-	// (Optional) Int, defaults to 2.
-	// Whether developers and maintainers can push to the applicable default branch.
-	// 0 no protection, 1 partial protection, 2 full protection
-	// https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+	// Int, defaults to 2.
 	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
 	// The description of the group.
 	Description *string `pulumi:"description"`
@@ -169,10 +146,8 @@ type groupState struct {
 	// The full path of the group.
 	FullPath *string `pulumi:"fullPath"`
 	// Boolean, defaults to true.  Whether to enable LFS
-	// support for projects in this group.
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
 	// Boolean, defaults to false.  Disable the capability
-	// of a group from getting mentioned
 	MentionsDisabled *bool `pulumi:"mentionsDisabled"`
 	// The name of this group.
 	Name *string `pulumi:"name"`
@@ -181,27 +156,18 @@ type groupState struct {
 	// The path of the group.
 	Path *string `pulumi:"path"`
 	// , defaults to Maintainer.
-	// Determine if developers can create projects
-	// in the group. Can be noone (No one), maintainer (Maintainers),
-	// or developer (Developers + Maintainers).
 	ProjectCreationLevel *string `pulumi:"projectCreationLevel"`
 	// Boolean, defaults to false.  Whether to
-	// enable users to request access to the group.
 	RequestAccessEnabled *bool `pulumi:"requestAccessEnabled"`
 	// Boolean, defaults to false.
-	// equire all users in this group to setup Two-factor authentication.
 	RequireTwoFactorAuthentication *bool `pulumi:"requireTwoFactorAuthentication"`
 	// The group level registration token to use during runner setup.
 	RunnersToken *string `pulumi:"runnersToken"`
 	// Boolean, defaults to false.  Prevent sharing
-	// a project with another group within this group.
 	ShareWithGroupLock *bool `pulumi:"shareWithGroupLock"`
 	// , defaults to Owner.
-	// Allowed to create subgroups.
-	// Can be owner (Owners), or maintainer (Maintainers).
 	SubgroupCreationLevel *string `pulumi:"subgroupCreationLevel"`
 	// Int, defaults to 48.
-	// Time before Two-factor authentication is enforced (in hours).
 	TwoFactorGracePeriod *int `pulumi:"twoFactorGracePeriod"`
 	// The group's visibility. Can be `private`, `internal`, or `public`.
 	VisibilityLevel *string `pulumi:"visibilityLevel"`
@@ -211,12 +177,8 @@ type groupState struct {
 
 type GroupState struct {
 	// Boolean, defaults to false.  Default to Auto
-	// DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled pulumi.BoolPtrInput
-	// (Optional) Int, defaults to 2.
-	// Whether developers and maintainers can push to the applicable default branch.
-	// 0 no protection, 1 partial protection, 2 full protection
-	// https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+	// Int, defaults to 2.
 	DefaultBranchProtection pulumi.IntPtrInput
 	// The description of the group.
 	Description pulumi.StringPtrInput
@@ -227,10 +189,8 @@ type GroupState struct {
 	// The full path of the group.
 	FullPath pulumi.StringPtrInput
 	// Boolean, defaults to true.  Whether to enable LFS
-	// support for projects in this group.
 	LfsEnabled pulumi.BoolPtrInput
 	// Boolean, defaults to false.  Disable the capability
-	// of a group from getting mentioned
 	MentionsDisabled pulumi.BoolPtrInput
 	// The name of this group.
 	Name pulumi.StringPtrInput
@@ -239,27 +199,18 @@ type GroupState struct {
 	// The path of the group.
 	Path pulumi.StringPtrInput
 	// , defaults to Maintainer.
-	// Determine if developers can create projects
-	// in the group. Can be noone (No one), maintainer (Maintainers),
-	// or developer (Developers + Maintainers).
 	ProjectCreationLevel pulumi.StringPtrInput
 	// Boolean, defaults to false.  Whether to
-	// enable users to request access to the group.
 	RequestAccessEnabled pulumi.BoolPtrInput
 	// Boolean, defaults to false.
-	// equire all users in this group to setup Two-factor authentication.
 	RequireTwoFactorAuthentication pulumi.BoolPtrInput
 	// The group level registration token to use during runner setup.
 	RunnersToken pulumi.StringPtrInput
 	// Boolean, defaults to false.  Prevent sharing
-	// a project with another group within this group.
 	ShareWithGroupLock pulumi.BoolPtrInput
 	// , defaults to Owner.
-	// Allowed to create subgroups.
-	// Can be owner (Owners), or maintainer (Maintainers).
 	SubgroupCreationLevel pulumi.StringPtrInput
 	// Int, defaults to 48.
-	// Time before Two-factor authentication is enforced (in hours).
 	TwoFactorGracePeriod pulumi.IntPtrInput
 	// The group's visibility. Can be `private`, `internal`, or `public`.
 	VisibilityLevel pulumi.StringPtrInput
@@ -273,22 +224,16 @@ func (GroupState) ElementType() reflect.Type {
 
 type groupArgs struct {
 	// Boolean, defaults to false.  Default to Auto
-	// DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
-	// (Optional) Int, defaults to 2.
-	// Whether developers and maintainers can push to the applicable default branch.
-	// 0 no protection, 1 partial protection, 2 full protection
-	// https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+	// Int, defaults to 2.
 	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
 	// The description of the group.
 	Description *string `pulumi:"description"`
 	// Boolean, defaults to false.  Disable email notifications
 	EmailsDisabled *bool `pulumi:"emailsDisabled"`
 	// Boolean, defaults to true.  Whether to enable LFS
-	// support for projects in this group.
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
 	// Boolean, defaults to false.  Disable the capability
-	// of a group from getting mentioned
 	MentionsDisabled *bool `pulumi:"mentionsDisabled"`
 	// The name of this group.
 	Name *string `pulumi:"name"`
@@ -297,25 +242,16 @@ type groupArgs struct {
 	// The path of the group.
 	Path string `pulumi:"path"`
 	// , defaults to Maintainer.
-	// Determine if developers can create projects
-	// in the group. Can be noone (No one), maintainer (Maintainers),
-	// or developer (Developers + Maintainers).
 	ProjectCreationLevel *string `pulumi:"projectCreationLevel"`
 	// Boolean, defaults to false.  Whether to
-	// enable users to request access to the group.
 	RequestAccessEnabled *bool `pulumi:"requestAccessEnabled"`
 	// Boolean, defaults to false.
-	// equire all users in this group to setup Two-factor authentication.
 	RequireTwoFactorAuthentication *bool `pulumi:"requireTwoFactorAuthentication"`
 	// Boolean, defaults to false.  Prevent sharing
-	// a project with another group within this group.
 	ShareWithGroupLock *bool `pulumi:"shareWithGroupLock"`
 	// , defaults to Owner.
-	// Allowed to create subgroups.
-	// Can be owner (Owners), or maintainer (Maintainers).
 	SubgroupCreationLevel *string `pulumi:"subgroupCreationLevel"`
 	// Int, defaults to 48.
-	// Time before Two-factor authentication is enforced (in hours).
 	TwoFactorGracePeriod *int `pulumi:"twoFactorGracePeriod"`
 	// The group's visibility. Can be `private`, `internal`, or `public`.
 	VisibilityLevel *string `pulumi:"visibilityLevel"`
@@ -324,22 +260,16 @@ type groupArgs struct {
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
 	// Boolean, defaults to false.  Default to Auto
-	// DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled pulumi.BoolPtrInput
-	// (Optional) Int, defaults to 2.
-	// Whether developers and maintainers can push to the applicable default branch.
-	// 0 no protection, 1 partial protection, 2 full protection
-	// https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+	// Int, defaults to 2.
 	DefaultBranchProtection pulumi.IntPtrInput
 	// The description of the group.
 	Description pulumi.StringPtrInput
 	// Boolean, defaults to false.  Disable email notifications
 	EmailsDisabled pulumi.BoolPtrInput
 	// Boolean, defaults to true.  Whether to enable LFS
-	// support for projects in this group.
 	LfsEnabled pulumi.BoolPtrInput
 	// Boolean, defaults to false.  Disable the capability
-	// of a group from getting mentioned
 	MentionsDisabled pulumi.BoolPtrInput
 	// The name of this group.
 	Name pulumi.StringPtrInput
@@ -348,25 +278,16 @@ type GroupArgs struct {
 	// The path of the group.
 	Path pulumi.StringInput
 	// , defaults to Maintainer.
-	// Determine if developers can create projects
-	// in the group. Can be noone (No one), maintainer (Maintainers),
-	// or developer (Developers + Maintainers).
 	ProjectCreationLevel pulumi.StringPtrInput
 	// Boolean, defaults to false.  Whether to
-	// enable users to request access to the group.
 	RequestAccessEnabled pulumi.BoolPtrInput
 	// Boolean, defaults to false.
-	// equire all users in this group to setup Two-factor authentication.
 	RequireTwoFactorAuthentication pulumi.BoolPtrInput
 	// Boolean, defaults to false.  Prevent sharing
-	// a project with another group within this group.
 	ShareWithGroupLock pulumi.BoolPtrInput
 	// , defaults to Owner.
-	// Allowed to create subgroups.
-	// Can be owner (Owners), or maintainer (Maintainers).
 	SubgroupCreationLevel pulumi.StringPtrInput
 	// Int, defaults to 48.
-	// Time before Two-factor authentication is enforced (in hours).
 	TwoFactorGracePeriod pulumi.IntPtrInput
 	// The group's visibility. Can be `private`, `internal`, or `public`.
 	VisibilityLevel pulumi.StringPtrInput

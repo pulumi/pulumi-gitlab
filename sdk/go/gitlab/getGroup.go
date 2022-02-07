@@ -10,35 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_group
-//
 // Provide details about a specific group in the gitlab provider.
 //
+// > **Note**: exactly one of groupId or fullPath must be provided.
+//
 // ## Example Usage
-// ### By group's ID
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := 123
-// 		_, err := gitlab.LookupGroup(ctx, &GetGroupArgs{
-// 			GroupId: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### By group's full path
 //
 // ```go
 // package main
@@ -88,7 +64,8 @@ type LookupGroupResult struct {
 	FullName string `pulumi:"fullName"`
 	// The full path of the group.
 	FullPath string `pulumi:"fullPath"`
-	GroupId  int    `pulumi:"groupId"`
+	// The ID of the group.
+	GroupId int `pulumi:"groupId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Boolean, is LFS enabled for projects in this group.
@@ -165,6 +142,7 @@ func (o LookupGroupResultOutput) FullPath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.FullPath }).(pulumi.StringOutput)
 }
 
+// The ID of the group.
 func (o LookupGroupResultOutput) GroupId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupGroupResult) int { return v.GroupId }).(pulumi.IntOutput)
 }

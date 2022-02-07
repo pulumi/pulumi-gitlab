@@ -12,11 +12,15 @@ from .deploy_token import *
 from .get_group import *
 from .get_group_membership import *
 from .get_project import *
+from .get_project_protected_branch import *
+from .get_project_protected_branches import *
 from .get_projects import *
 from .get_user import *
 from .get_users import *
 from .group import *
+from .group_badge import *
 from .group_cluster import *
+from .group_custom_attribute import *
 from .group_label import *
 from .group_ldap_link import *
 from .group_membership import *
@@ -25,13 +29,16 @@ from .group_variable import *
 from .instance_cluster import *
 from .instance_variable import *
 from .label import *
+from .managed_license import *
 from .pipeline_schedule import *
 from .pipeline_schedule_variable import *
 from .pipeline_trigger import *
 from .project import *
+from .project_access_token import *
 from .project_approval_rule import *
 from .project_badge import *
 from .project_cluster import *
+from .project_custom_attribute import *
 from .project_freeze_period import *
 from .project_hook import *
 from .project_level_mr_approvals import *
@@ -40,12 +47,15 @@ from .project_mirror import *
 from .project_share_group import *
 from .project_variable import *
 from .provider import *
+from .repository_file import *
 from .service_github import *
 from .service_jira import *
+from .service_microsoft_teams import *
 from .service_pipelines_email import *
 from .service_slack import *
 from .tag_protection import *
 from .user import *
+from .user_custom_attribute import *
 from ._inputs import *
 from . import outputs
 
@@ -101,10 +111,26 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/groupBadge",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupBadge:GroupBadge": "GroupBadge"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/groupCluster",
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/groupCluster:GroupCluster": "GroupCluster"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/groupCustomAttribute",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupCustomAttribute:GroupCustomAttribute": "GroupCustomAttribute"
   }
  },
  {
@@ -173,6 +199,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/managedLicense",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/managedLicense:ManagedLicense": "ManagedLicense"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/pipelineSchedule",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -205,6 +239,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectAccessToken",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectAccessToken:ProjectAccessToken": "ProjectAccessToken"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectApprovalRule",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -225,6 +267,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectCluster:ProjectCluster": "ProjectCluster"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectCustomAttribute",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectCustomAttribute:ProjectCustomAttribute": "ProjectCustomAttribute"
   }
  },
  {
@@ -285,6 +335,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/repositoryFile",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/repositoryFile:RepositoryFile": "RepositoryFile"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/serviceGithub",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -297,6 +355,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/serviceJira:ServiceJira": "ServiceJira"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/serviceMicrosoftTeams",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams": "ServiceMicrosoftTeams"
   }
  },
  {
@@ -329,6 +395,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/user:User": "User"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/userCustomAttribute",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/userCustomAttribute:UserCustomAttribute": "UserCustomAttribute"
   }
  }
 ]

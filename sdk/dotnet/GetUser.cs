@@ -12,63 +12,17 @@ namespace Pulumi.GitLab
     public static class GetUser
     {
         /// <summary>
-        /// ## # gitlab\_user
-        /// 
         /// Provide details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
         /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(GitLab.GetUser.InvokeAsync(new GitLab.GetUserArgs
-        ///         {
-        ///             Username = "myuser",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &gt; Some attributes might not be returned depending on if you're an admin or not. Please refer to [Gitlab documentation](https://docs.gitlab.com/ce/api/users.html#single-user) for more details.
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("gitlab:index/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # gitlab\_user
-        /// 
         /// Provide details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
         /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(GitLab.GetUser.InvokeAsync(new GitLab.GetUserArgs
-        ///         {
-        ///             Username = "myuser",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &gt; Some attributes might not be returned depending on if you're an admin or not. Please refer to [Gitlab documentation](https://docs.gitlab.com/ce/api/users.html#single-user) for more details.
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetUserResult>("gitlab:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
@@ -78,7 +32,7 @@ namespace Pulumi.GitLab
     public sealed class GetUserArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The e-mail address of the user. (Requires administrator privileges)
+        /// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
         /// </summary>
         [Input("email")]
         public string? Email { get; set; }
@@ -103,7 +57,7 @@ namespace Pulumi.GitLab
     public sealed class GetUserInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The e-mail address of the user. (Requires administrator privileges)
+        /// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
@@ -158,7 +112,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string CurrentSignInAt;
         /// <summary>
-        /// The e-mail address of the user.
+        /// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
         /// </summary>
         public readonly string Email;
         /// <summary>
@@ -193,6 +147,9 @@ namespace Pulumi.GitLab
         /// The name of the user.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Admin notes for this user.
+        /// </summary>
         public readonly string Note;
         /// <summary>
         /// The organization of the user.
@@ -222,6 +179,9 @@ namespace Pulumi.GitLab
         /// Whether user's two-factor auth is enabled.
         /// </summary>
         public readonly bool TwoFactorEnabled;
+        /// <summary>
+        /// The ID of the user.
+        /// </summary>
         public readonly int UserId;
         /// <summary>
         /// The UID provider of the user.

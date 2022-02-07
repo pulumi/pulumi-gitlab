@@ -10,35 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_group\_membership
-//
 // Provide details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
 //
+// > **Note**: exactly one of groupId or fullPath must be provided.
+//
 // ## Example Usage
-// ### By group's ID
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := 123
-// 		_, err := gitlab.LookupGroupMembership(ctx, &GetGroupMembershipArgs{
-// 			GroupId: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### By group's full path
 //
 // ```go
 // package main
@@ -82,10 +58,12 @@ type LookupGroupMembershipArgs struct {
 
 // A collection of values returned by getGroupMembership.
 type LookupGroupMembershipResult struct {
-	// One of five levels of access to the group.
+	// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel string `pulumi:"accessLevel"`
-	FullPath    string `pulumi:"fullPath"`
-	GroupId     int    `pulumi:"groupId"`
+	// The full path of the group.
+	FullPath string `pulumi:"fullPath"`
+	// The ID of the group.
+	GroupId int `pulumi:"groupId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The list of group members.
@@ -130,15 +108,17 @@ func (o LookupGroupMembershipResultOutput) ToLookupGroupMembershipResultOutputWi
 	return o
 }
 
-// One of five levels of access to the group.
+// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 func (o LookupGroupMembershipResultOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupMembershipResult) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
 
+// The full path of the group.
 func (o LookupGroupMembershipResultOutput) FullPath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupMembershipResult) string { return v.FullPath }).(pulumi.StringOutput)
 }
 
+// The ID of the group.
 func (o LookupGroupMembershipResultOutput) GroupId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupGroupMembershipResult) int { return v.GroupId }).(pulumi.IntOutput)
 }

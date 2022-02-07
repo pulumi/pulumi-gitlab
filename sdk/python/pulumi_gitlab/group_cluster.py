@@ -211,6 +211,8 @@ class _GroupClusterState:
                  provider_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GroupCluster resources.
+        :param pulumi.Input[str] cluster_type: Cluster type.
+        :param pulumi.Input[str] created_at: Create time.
         :param pulumi.Input[str] domain: The base domain of the cluster.
         :param pulumi.Input[bool] enabled: Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
         :param pulumi.Input[str] environment_scope: The associated environment to the cluster. Defaults to `*`.
@@ -222,6 +224,8 @@ class _GroupClusterState:
         :param pulumi.Input[bool] managed: Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
         :param pulumi.Input[str] management_project_id: The ID of the management project for the cluster.
         :param pulumi.Input[str] name: The name of cluster.
+        :param pulumi.Input[str] platform_type: Platform type.
+        :param pulumi.Input[str] provider_type: Provider type.
         """
         if cluster_type is not None:
             pulumi.set(__self__, "cluster_type", cluster_type)
@@ -257,6 +261,9 @@ class _GroupClusterState:
     @property
     @pulumi.getter(name="clusterType")
     def cluster_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster type.
+        """
         return pulumi.get(self, "cluster_type")
 
     @cluster_type.setter
@@ -266,6 +273,9 @@ class _GroupClusterState:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Create time.
+        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -407,6 +417,9 @@ class _GroupClusterState:
     @property
     @pulumi.getter(name="platformType")
     def platform_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Platform type.
+        """
         return pulumi.get(self, "platform_type")
 
     @platform_type.setter
@@ -416,6 +429,9 @@ class _GroupClusterState:
     @property
     @pulumi.getter(name="providerType")
     def provider_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provider type.
+        """
         return pulumi.get(self, "provider_type")
 
     @provider_type.setter
@@ -441,8 +457,6 @@ class GroupCluster(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # gitlab\_group\_cluster
-
         This resource allows you to create and manage group clusters for your GitLab groups.
         For further information on clusters, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).
@@ -455,20 +469,20 @@ class GroupCluster(pulumi.CustomResource):
 
         foo = gitlab.Group("foo", path="foo-path")
         bar = gitlab.GroupCluster("bar",
+            group=foo.id,
             domain="example.com",
             enabled=True,
-            environment_scope="*",
-            group=foo.id,
             kubernetes_api_url="https://124.124.124",
-            kubernetes_authorization_type="rbac",
-            kubernetes_ca_cert="some-cert",
             kubernetes_token="some-token",
+            kubernetes_ca_cert="some-cert",
+            kubernetes_authorization_type="rbac",
+            environment_scope="*",
             management_project_id="123456")
         ```
 
         ## Import
 
-        GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
+        # GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/groupCluster:GroupCluster bar 123:321
@@ -495,8 +509,6 @@ class GroupCluster(pulumi.CustomResource):
                  args: GroupClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # gitlab\_group\_cluster
-
         This resource allows you to create and manage group clusters for your GitLab groups.
         For further information on clusters, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).
@@ -509,20 +521,20 @@ class GroupCluster(pulumi.CustomResource):
 
         foo = gitlab.Group("foo", path="foo-path")
         bar = gitlab.GroupCluster("bar",
+            group=foo.id,
             domain="example.com",
             enabled=True,
-            environment_scope="*",
-            group=foo.id,
             kubernetes_api_url="https://124.124.124",
-            kubernetes_authorization_type="rbac",
-            kubernetes_ca_cert="some-cert",
             kubernetes_token="some-token",
+            kubernetes_ca_cert="some-cert",
+            kubernetes_authorization_type="rbac",
+            environment_scope="*",
             management_project_id="123456")
         ```
 
         ## Import
 
-        GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
+        # GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/groupCluster:GroupCluster bar 123:321
@@ -619,6 +631,8 @@ class GroupCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] cluster_type: Cluster type.
+        :param pulumi.Input[str] created_at: Create time.
         :param pulumi.Input[str] domain: The base domain of the cluster.
         :param pulumi.Input[bool] enabled: Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
         :param pulumi.Input[str] environment_scope: The associated environment to the cluster. Defaults to `*`.
@@ -630,6 +644,8 @@ class GroupCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] managed: Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
         :param pulumi.Input[str] management_project_id: The ID of the management project for the cluster.
         :param pulumi.Input[str] name: The name of cluster.
+        :param pulumi.Input[str] platform_type: Platform type.
+        :param pulumi.Input[str] provider_type: Provider type.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -655,11 +671,17 @@ class GroupCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="clusterType")
     def cluster_type(self) -> pulumi.Output[str]:
+        """
+        Cluster type.
+        """
         return pulumi.get(self, "cluster_type")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
+        """
+        Create time.
+        """
         return pulumi.get(self, "created_at")
 
     @property
@@ -753,10 +775,16 @@ class GroupCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="platformType")
     def platform_type(self) -> pulumi.Output[str]:
+        """
+        Platform type.
+        """
         return pulumi.get(self, "platform_type")
 
     @property
     @pulumi.getter(name="providerType")
     def provider_type(self) -> pulumi.Output[str]:
+        """
+        Provider type.
+        """
         return pulumi.get(self, "provider_type")
 

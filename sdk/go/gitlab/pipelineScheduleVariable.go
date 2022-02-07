@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_pipeline\_schedule\_variable
-//
 // This resource allows you to create and manage variables for pipeline schedules.
 //
 // ## Example Usage
@@ -48,6 +46,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// # Pipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey
 // ```
 type PipelineScheduleVariable struct {
 	pulumi.CustomResourceState

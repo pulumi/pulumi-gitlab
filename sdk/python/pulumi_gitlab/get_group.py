@@ -99,6 +99,9 @@ class GetGroupResult:
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> int:
+        """
+        The ID of the group.
+        """
         return pulumi.get(self, "group_id")
 
     @property
@@ -200,20 +203,11 @@ def get_group(full_path: Optional[str] = None,
               group_id: Optional[int] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
-    ## # gitlab\_group
-
     Provide details about a specific group in the gitlab provider.
 
+    > **Note**: exactly one of group_id or full_path must be provided.
+
     ## Example Usage
-    ### By group's ID
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    foo = gitlab.get_group(group_id=123)
-    ```
-    ### By group's full path
 
     ```python
     import pulumi
@@ -257,20 +251,11 @@ def get_group_output(full_path: Optional[pulumi.Input[Optional[str]]] = None,
                      group_id: Optional[pulumi.Input[Optional[int]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
     """
-    ## # gitlab\_group
-
     Provide details about a specific group in the gitlab provider.
 
+    > **Note**: exactly one of group_id or full_path must be provided.
+
     ## Example Usage
-    ### By group's ID
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    foo = gitlab.get_group(group_id=123)
-    ```
-    ### By group's full path
 
     ```python
     import pulumi

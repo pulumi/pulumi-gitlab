@@ -10,33 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_user
-//
 // Provide details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "myuser"
-// 		_, err := gitlab.LookupUser(ctx, &GetUserArgs{
-// 			Username: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
+// > Some attributes might not be returned depending on if you're an admin or not. Please refer to [Gitlab documentation](https://docs.gitlab.com/ce/api/users.html#single-user) for more details.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	var rv LookupUserResult
 	err := ctx.Invoke("gitlab:index/getUser:getUser", args, &rv, opts...)
@@ -48,7 +24,7 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
-	// The e-mail address of the user. (Requires administrator privileges)
+	// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
 	Email *string `pulumi:"email"`
 	// The ID of the user.
 	UserId *int `pulumi:"userId"`
@@ -72,7 +48,7 @@ type LookupUserResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// Current user's sign-in date.
 	CurrentSignInAt string `pulumi:"currentSignInAt"`
-	// The e-mail address of the user.
+	// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
 	Email string `pulumi:"email"`
 	// The external UID of the user.
 	ExternUid string `pulumi:"externUid"`
@@ -90,6 +66,7 @@ type LookupUserResult struct {
 	Location string `pulumi:"location"`
 	// The name of the user.
 	Name string `pulumi:"name"`
+	// Admin notes for this user.
 	Note string `pulumi:"note"`
 	// The organization of the user.
 	Organization string `pulumi:"organization"`
@@ -105,7 +82,8 @@ type LookupUserResult struct {
 	Twitter string `pulumi:"twitter"`
 	// Whether user's two-factor auth is enabled.
 	TwoFactorEnabled bool `pulumi:"twoFactorEnabled"`
-	UserId           int  `pulumi:"userId"`
+	// The ID of the user.
+	UserId int `pulumi:"userId"`
 	// The UID provider of the user.
 	UserProvider string `pulumi:"userProvider"`
 	// The username of the user.
@@ -125,7 +103,7 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getUser.
 type LookupUserOutputArgs struct {
-	// The e-mail address of the user. (Requires administrator privileges)
+	// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
 	Email pulumi.StringPtrInput `pulumi:"email"`
 	// The ID of the user.
 	UserId pulumi.IntPtrInput `pulumi:"userId"`
@@ -187,7 +165,7 @@ func (o LookupUserResultOutput) CurrentSignInAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.CurrentSignInAt }).(pulumi.StringOutput)
 }
 
-// The e-mail address of the user.
+// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
 func (o LookupUserResultOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -232,6 +210,7 @@ func (o LookupUserResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Admin notes for this user.
 func (o LookupUserResultOutput) Note() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Note }).(pulumi.StringOutput)
 }
@@ -271,6 +250,7 @@ func (o LookupUserResultOutput) TwoFactorEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupUserResult) bool { return v.TwoFactorEnabled }).(pulumi.BoolOutput)
 }
 
+// The ID of the user.
 func (o LookupUserResultOutput) UserId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupUserResult) int { return v.UserId }).(pulumi.IntOutput)
 }

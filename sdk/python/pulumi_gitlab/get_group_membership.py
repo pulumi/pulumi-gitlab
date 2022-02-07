@@ -42,18 +42,24 @@ class GetGroupMembershipResult:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> str:
         """
-        One of five levels of access to the group.
+        Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         """
         return pulumi.get(self, "access_level")
 
     @property
     @pulumi.getter(name="fullPath")
     def full_path(self) -> str:
+        """
+        The full path of the group.
+        """
         return pulumi.get(self, "full_path")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> int:
+        """
+        The ID of the group.
+        """
         return pulumi.get(self, "group_id")
 
     @property
@@ -91,20 +97,11 @@ def get_group_membership(access_level: Optional[str] = None,
                          group_id: Optional[int] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupMembershipResult:
     """
-    ## # gitlab\_group\_membership
-
     Provide details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
 
+    > **Note**: exactly one of group_id or full_path must be provided.
+
     ## Example Usage
-    ### By group's ID
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_group_membership(group_id=123)
-    ```
-    ### By group's full path
 
     ```python
     import pulumi
@@ -142,20 +139,11 @@ def get_group_membership_output(access_level: Optional[pulumi.Input[Optional[str
                                 group_id: Optional[pulumi.Input[Optional[int]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupMembershipResult]:
     """
-    ## # gitlab\_group\_membership
-
     Provide details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
 
+    > **Note**: exactly one of group_id or full_path must be provided.
+
     ## Example Usage
-    ### By group's ID
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_group_membership(group_id=123)
-    ```
-    ### By group's full path
 
     ```python
     import pulumi

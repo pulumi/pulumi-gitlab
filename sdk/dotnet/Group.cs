@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_group
-    /// 
     /// This resource allows you to create and manage GitLab groups.
     /// Note your provider will need to be configured with admin-level access for this resource to work.
     /// 
@@ -44,32 +42,26 @@ namespace Pulumi.GitLab
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/group:Group You can import a group state using `&lt;resource&gt; &lt;id&gt;`. The
+    ///  $ pulumi import gitlab:index/group:Group # You can import a group state using `&lt;resource&gt; &lt;id&gt;`. The
     /// ```
     /// 
-    ///  `id` can be whatever the [details of a group][details_of_a_group] api takes for its `:id` value, so for example
+    /// # `id` can be whatever the [details of a group][details_of_a_group] api takes for # its `:id` value, so for example
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/group:Group example example
     /// ```
-    /// 
-    ///  [details_of_a_group]https://docs.gitlab.com/ee/api/groups.html#details-of-a-group
     /// </summary>
     [GitLabResourceType("gitlab:index/group:Group")]
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>
         /// Boolean, defaults to false.  Default to Auto
-        /// DevOps pipeline for all projects within this group.
         /// </summary>
         [Output("autoDevopsEnabled")]
         public Output<bool?> AutoDevopsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Int, defaults to 2.
-        /// Whether developers and maintainers can push to the applicable default branch.
-        /// 0 no protection, 1 partial protection, 2 full protection
-        /// https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+        /// Int, defaults to 2.
         /// </summary>
         [Output("defaultBranchProtection")]
         public Output<int?> DefaultBranchProtection { get; private set; } = null!;
@@ -100,14 +92,12 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Boolean, defaults to true.  Whether to enable LFS
-        /// support for projects in this group.
         /// </summary>
         [Output("lfsEnabled")]
         public Output<bool?> LfsEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Boolean, defaults to false.  Disable the capability
-        /// of a group from getting mentioned
         /// </summary>
         [Output("mentionsDisabled")]
         public Output<bool?> MentionsDisabled { get; private set; } = null!;
@@ -132,23 +122,18 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// , defaults to Maintainer.
-        /// Determine if developers can create projects
-        /// in the group. Can be noone (No one), maintainer (Maintainers),
-        /// or developer (Developers + Maintainers).
         /// </summary>
         [Output("projectCreationLevel")]
         public Output<string?> ProjectCreationLevel { get; private set; } = null!;
 
         /// <summary>
         /// Boolean, defaults to false.  Whether to
-        /// enable users to request access to the group.
         /// </summary>
         [Output("requestAccessEnabled")]
         public Output<bool?> RequestAccessEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Boolean, defaults to false.
-        /// equire all users in this group to setup Two-factor authentication.
         /// </summary>
         [Output("requireTwoFactorAuthentication")]
         public Output<bool?> RequireTwoFactorAuthentication { get; private set; } = null!;
@@ -161,22 +146,18 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Boolean, defaults to false.  Prevent sharing
-        /// a project with another group within this group.
         /// </summary>
         [Output("shareWithGroupLock")]
         public Output<bool?> ShareWithGroupLock { get; private set; } = null!;
 
         /// <summary>
         /// , defaults to Owner.
-        /// Allowed to create subgroups.
-        /// Can be owner (Owners), or maintainer (Maintainers).
         /// </summary>
         [Output("subgroupCreationLevel")]
         public Output<string?> SubgroupCreationLevel { get; private set; } = null!;
 
         /// <summary>
         /// Int, defaults to 48.
-        /// Time before Two-factor authentication is enforced (in hours).
         /// </summary>
         [Output("twoFactorGracePeriod")]
         public Output<int?> TwoFactorGracePeriod { get; private set; } = null!;
@@ -241,16 +222,12 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// Boolean, defaults to false.  Default to Auto
-        /// DevOps pipeline for all projects within this group.
         /// </summary>
         [Input("autoDevopsEnabled")]
         public Input<bool>? AutoDevopsEnabled { get; set; }
 
         /// <summary>
-        /// (Optional) Int, defaults to 2.
-        /// Whether developers and maintainers can push to the applicable default branch.
-        /// 0 no protection, 1 partial protection, 2 full protection
-        /// https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+        /// Int, defaults to 2.
         /// </summary>
         [Input("defaultBranchProtection")]
         public Input<int>? DefaultBranchProtection { get; set; }
@@ -269,14 +246,12 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Boolean, defaults to true.  Whether to enable LFS
-        /// support for projects in this group.
         /// </summary>
         [Input("lfsEnabled")]
         public Input<bool>? LfsEnabled { get; set; }
 
         /// <summary>
         /// Boolean, defaults to false.  Disable the capability
-        /// of a group from getting mentioned
         /// </summary>
         [Input("mentionsDisabled")]
         public Input<bool>? MentionsDisabled { get; set; }
@@ -301,45 +276,36 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// , defaults to Maintainer.
-        /// Determine if developers can create projects
-        /// in the group. Can be noone (No one), maintainer (Maintainers),
-        /// or developer (Developers + Maintainers).
         /// </summary>
         [Input("projectCreationLevel")]
         public Input<string>? ProjectCreationLevel { get; set; }
 
         /// <summary>
         /// Boolean, defaults to false.  Whether to
-        /// enable users to request access to the group.
         /// </summary>
         [Input("requestAccessEnabled")]
         public Input<bool>? RequestAccessEnabled { get; set; }
 
         /// <summary>
         /// Boolean, defaults to false.
-        /// equire all users in this group to setup Two-factor authentication.
         /// </summary>
         [Input("requireTwoFactorAuthentication")]
         public Input<bool>? RequireTwoFactorAuthentication { get; set; }
 
         /// <summary>
         /// Boolean, defaults to false.  Prevent sharing
-        /// a project with another group within this group.
         /// </summary>
         [Input("shareWithGroupLock")]
         public Input<bool>? ShareWithGroupLock { get; set; }
 
         /// <summary>
         /// , defaults to Owner.
-        /// Allowed to create subgroups.
-        /// Can be owner (Owners), or maintainer (Maintainers).
         /// </summary>
         [Input("subgroupCreationLevel")]
         public Input<string>? SubgroupCreationLevel { get; set; }
 
         /// <summary>
         /// Int, defaults to 48.
-        /// Time before Two-factor authentication is enforced (in hours).
         /// </summary>
         [Input("twoFactorGracePeriod")]
         public Input<int>? TwoFactorGracePeriod { get; set; }
@@ -359,16 +325,12 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// Boolean, defaults to false.  Default to Auto
-        /// DevOps pipeline for all projects within this group.
         /// </summary>
         [Input("autoDevopsEnabled")]
         public Input<bool>? AutoDevopsEnabled { get; set; }
 
         /// <summary>
-        /// (Optional) Int, defaults to 2.
-        /// Whether developers and maintainers can push to the applicable default branch.
-        /// 0 no protection, 1 partial protection, 2 full protection
-        /// https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+        /// Int, defaults to 2.
         /// </summary>
         [Input("defaultBranchProtection")]
         public Input<int>? DefaultBranchProtection { get; set; }
@@ -399,14 +361,12 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Boolean, defaults to true.  Whether to enable LFS
-        /// support for projects in this group.
         /// </summary>
         [Input("lfsEnabled")]
         public Input<bool>? LfsEnabled { get; set; }
 
         /// <summary>
         /// Boolean, defaults to false.  Disable the capability
-        /// of a group from getting mentioned
         /// </summary>
         [Input("mentionsDisabled")]
         public Input<bool>? MentionsDisabled { get; set; }
@@ -431,23 +391,18 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// , defaults to Maintainer.
-        /// Determine if developers can create projects
-        /// in the group. Can be noone (No one), maintainer (Maintainers),
-        /// or developer (Developers + Maintainers).
         /// </summary>
         [Input("projectCreationLevel")]
         public Input<string>? ProjectCreationLevel { get; set; }
 
         /// <summary>
         /// Boolean, defaults to false.  Whether to
-        /// enable users to request access to the group.
         /// </summary>
         [Input("requestAccessEnabled")]
         public Input<bool>? RequestAccessEnabled { get; set; }
 
         /// <summary>
         /// Boolean, defaults to false.
-        /// equire all users in this group to setup Two-factor authentication.
         /// </summary>
         [Input("requireTwoFactorAuthentication")]
         public Input<bool>? RequireTwoFactorAuthentication { get; set; }
@@ -460,22 +415,18 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Boolean, defaults to false.  Prevent sharing
-        /// a project with another group within this group.
         /// </summary>
         [Input("shareWithGroupLock")]
         public Input<bool>? ShareWithGroupLock { get; set; }
 
         /// <summary>
         /// , defaults to Owner.
-        /// Allowed to create subgroups.
-        /// Can be owner (Owners), or maintainer (Maintainers).
         /// </summary>
         [Input("subgroupCreationLevel")]
         public Input<string>? SubgroupCreationLevel { get; set; }
 
         /// <summary>
         /// Int, defaults to 48.
-        /// Time before Two-factor authentication is enforced (in hours).
         /// </summary>
         [Input("twoFactorGracePeriod")]
         public Input<int>? TwoFactorGracePeriod { get; set; }

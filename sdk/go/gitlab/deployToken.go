@@ -11,50 +11,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_deploy\_token
-//
 // This resource allows you to create and manage deploy token for your GitLab projects and groups. Please refer to [Gitlab documentation](https://docs.gitlab.com/ee/user/project/deploy_tokens/) for further information.
-//
-// ## Example Usage
-// ### Group
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewDeployToken(ctx, "example", &gitlab.DeployTokenArgs{
-// 			Group: pulumi.String("example/deploying"),
-// 			Scopes: pulumi.StringArray{
-// 				pulumi.String("read_repository"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type DeployToken struct {
 	pulumi.CustomResourceState
 
 	// Time the token will expire it, RFC3339 format. Will not expire per default.
 	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
 	// The name or id of the group to add the deploy token to.
-	// Either `project` or `group` must be set.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
 	// A name to describe the deploy token with.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name or id of the project to add the deploy token to.
-	// Either `project` or `group` must be set.
 	Project pulumi.StringPtrOutput `pulumi:"project"`
-	// Valid values: `readRepository`, `readRegistry`.
+	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// The secret token. This is only populated when creating a new deploy token.
 	Token pulumi.StringOutput `pulumi:"token"`
@@ -97,14 +66,12 @@ type deployTokenState struct {
 	// Time the token will expire it, RFC3339 format. Will not expire per default.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The name or id of the group to add the deploy token to.
-	// Either `project` or `group` must be set.
 	Group *string `pulumi:"group"`
 	// A name to describe the deploy token with.
 	Name *string `pulumi:"name"`
 	// The name or id of the project to add the deploy token to.
-	// Either `project` or `group` must be set.
 	Project *string `pulumi:"project"`
-	// Valid values: `readRepository`, `readRegistry`.
+	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
 	Scopes []string `pulumi:"scopes"`
 	// The secret token. This is only populated when creating a new deploy token.
 	Token *string `pulumi:"token"`
@@ -116,14 +83,12 @@ type DeployTokenState struct {
 	// Time the token will expire it, RFC3339 format. Will not expire per default.
 	ExpiresAt pulumi.StringPtrInput
 	// The name or id of the group to add the deploy token to.
-	// Either `project` or `group` must be set.
 	Group pulumi.StringPtrInput
 	// A name to describe the deploy token with.
 	Name pulumi.StringPtrInput
 	// The name or id of the project to add the deploy token to.
-	// Either `project` or `group` must be set.
 	Project pulumi.StringPtrInput
-	// Valid values: `readRepository`, `readRegistry`.
+	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
 	Scopes pulumi.StringArrayInput
 	// The secret token. This is only populated when creating a new deploy token.
 	Token pulumi.StringPtrInput
@@ -139,14 +104,12 @@ type deployTokenArgs struct {
 	// Time the token will expire it, RFC3339 format. Will not expire per default.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The name or id of the group to add the deploy token to.
-	// Either `project` or `group` must be set.
 	Group *string `pulumi:"group"`
 	// A name to describe the deploy token with.
 	Name *string `pulumi:"name"`
 	// The name or id of the project to add the deploy token to.
-	// Either `project` or `group` must be set.
 	Project *string `pulumi:"project"`
-	// Valid values: `readRepository`, `readRegistry`.
+	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
 	Scopes []string `pulumi:"scopes"`
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username *string `pulumi:"username"`
@@ -157,14 +120,12 @@ type DeployTokenArgs struct {
 	// Time the token will expire it, RFC3339 format. Will not expire per default.
 	ExpiresAt pulumi.StringPtrInput
 	// The name or id of the group to add the deploy token to.
-	// Either `project` or `group` must be set.
 	Group pulumi.StringPtrInput
 	// A name to describe the deploy token with.
 	Name pulumi.StringPtrInput
 	// The name or id of the project to add the deploy token to.
-	// Either `project` or `group` must be set.
 	Project pulumi.StringPtrInput
-	// Valid values: `readRepository`, `readRegistry`.
+	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
 	Scopes pulumi.StringArrayInput
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username pulumi.StringPtrInput

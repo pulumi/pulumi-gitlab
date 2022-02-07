@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_project_mirror
- *
  * This resource allows you to add a mirror target for the repository, all changes will be synced to the remote target.
  *
  * > This is for *pushing* changes to a remote repository. *Pull Mirroring* can be configured using a combination of the
@@ -29,7 +27,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
+ * # GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/projectMirror:ProjectMirror foo "12345:1337"
@@ -71,6 +69,9 @@ export class ProjectMirror extends pulumi.CustomResource {
      * Determines if divergent refs are skipped.
      */
     public readonly keepDivergentRefs!: pulumi.Output<boolean | undefined>;
+    /**
+     * Mirror ID.
+     */
     public /*out*/ readonly mirrorId!: pulumi.Output<number>;
     /**
      * Determines if only protected branches are mirrored.
@@ -136,6 +137,9 @@ export interface ProjectMirrorState {
      * Determines if divergent refs are skipped.
      */
     keepDivergentRefs?: pulumi.Input<boolean>;
+    /**
+     * Mirror ID.
+     */
     mirrorId?: pulumi.Input<number>;
     /**
      * Determines if only protected branches are mirrored.

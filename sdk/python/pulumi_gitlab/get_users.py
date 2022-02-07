@@ -59,33 +59,48 @@ class GetUsersResult:
     @property
     @pulumi.getter
     def active(self) -> Optional[bool]:
+        """
+        Filter users that are active.
+        """
         return pulumi.get(self, "active")
 
     @property
     @pulumi.getter
     def blocked(self) -> Optional[bool]:
+        """
+        Filter users that are blocked.
+        """
         return pulumi.get(self, "blocked")
 
     @property
     @pulumi.getter(name="createdAfter")
     def created_after(self) -> Optional[str]:
+        """
+        Search for users created after a specific date. (Requires administrator privileges)
+        """
         return pulumi.get(self, "created_after")
 
     @property
     @pulumi.getter(name="createdBefore")
     def created_before(self) -> Optional[str]:
+        """
+        Search for users created before a specific date. (Requires administrator privileges)
+        """
         return pulumi.get(self, "created_before")
 
     @property
     @pulumi.getter(name="externProvider")
     def extern_provider(self) -> Optional[str]:
+        """
+        Lookup users by external provider. (Requires administrator privileges)
+        """
         return pulumi.get(self, "extern_provider")
 
     @property
     @pulumi.getter(name="externUid")
     def extern_uid(self) -> Optional[str]:
         """
-        The external UID of the user.
+        Lookup users by external UID. (Requires administrator privileges)
         """
         return pulumi.get(self, "extern_uid")
 
@@ -100,16 +115,25 @@ class GetUsersResult:
     @property
     @pulumi.getter(name="orderBy")
     def order_by(self) -> Optional[str]:
+        """
+        Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
+        """
         return pulumi.get(self, "order_by")
 
     @property
     @pulumi.getter
     def search(self) -> Optional[str]:
+        """
+        Search users by username, name or email.
+        """
         return pulumi.get(self, "search")
 
     @property
     @pulumi.getter
     def sort(self) -> Optional[str]:
+        """
+        Sort users' list in asc or desc order. (Requires administrator privileges)
+        """
         return pulumi.get(self, "sort")
 
     @property
@@ -151,8 +175,6 @@ def get_users(active: Optional[bool] = None,
               sort: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
-    ## # gitlab\_users
-
     Provide details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
 
     **NOTE**: Some available options require administrator privileges. Please visit [Gitlab API documentation][users_for_admins] for more information.
@@ -222,8 +244,6 @@ def get_users_output(active: Optional[pulumi.Input[Optional[bool]]] = None,
                      sort: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
     """
-    ## # gitlab\_users
-
     Provide details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
 
     **NOTE**: Some available options require administrator privileges. Please visit [Gitlab API documentation][users_for_admins] for more information.

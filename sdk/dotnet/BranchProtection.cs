@@ -10,60 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_branch\_protection
-    /// 
     /// This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch.
     /// 
     /// &gt; The `allowed_to_push`, `allowed_to_merge` and `code_owner_approval_required` arguments require a GitLab Premium account or above.  Please refer to [Gitlab API documentation](https://docs.gitlab.com/ee/api/protected_branches.html) for further information.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var branchProtect = new GitLab.BranchProtection("branchProtect", new GitLab.BranchProtectionArgs
-    ///         {
-    ///             AllowedToMerges = 
-    ///             {
-    ///                 new GitLab.Inputs.BranchProtectionAllowedToMergeArgs
-    ///                 {
-    ///                     UserId = 15,
-    ///                 },
-    ///                 new GitLab.Inputs.BranchProtectionAllowedToMergeArgs
-    ///                 {
-    ///                     UserId = 37,
-    ///                 },
-    ///             },
-    ///             AllowedToPushes = 
-    ///             {
-    ///                 new GitLab.Inputs.BranchProtectionAllowedToPushArgs
-    ///                 {
-    ///                     UserId = 5,
-    ///                 },
-    ///                 new GitLab.Inputs.BranchProtectionAllowedToPushArgs
-    ///                 {
-    ///                     UserId = 521,
-    ///                 },
-    ///             },
-    ///             Branch = "BranchProtected",
-    ///             CodeOwnerApprovalRequired = true,
-    ///             MergeAccessLevel = "developer",
-    ///             Project = "12345",
-    ///             PushAccessLevel = "developer",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// Gitlab protected branches can be imported with a key composed of `&lt;project_id&gt;:&lt;branch&gt;`, e.g.
+    /// # Gitlab protected branches can be imported with a key composed of `&lt;project_id&gt;:&lt;branch&gt;`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"
@@ -72,9 +25,15 @@ namespace Pulumi.GitLab
     [GitLabResourceType("gitlab:index/branchProtection:BranchProtection")]
     public partial class BranchProtection : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Defines permissions for action.
+        /// </summary>
         [Output("allowedToMerges")]
         public Output<ImmutableArray<Outputs.BranchProtectionAllowedToMerge>> AllowedToMerges { get; private set; } = null!;
 
+        /// <summary>
+        /// Defines permissions for action.
+        /// </summary>
         [Output("allowedToPushes")]
         public Output<ImmutableArray<Outputs.BranchProtectionAllowedToPush>> AllowedToPushes { get; private set; } = null!;
 
@@ -91,13 +50,13 @@ namespace Pulumi.GitLab
         public Output<int> BranchProtectionId { get; private set; } = null!;
 
         /// <summary>
-        /// Bool, defaults to false. Can be set to true to require code owner approval before merging.
+        /// Can be set to true to require code owner approval before merging.
         /// </summary>
         [Output("codeOwnerApprovalRequired")]
         public Output<bool?> CodeOwnerApprovalRequired { get; private set; } = null!;
 
         /// <summary>
-        /// One of five levels of access to the project. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        /// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
         [Output("mergeAccessLevel")]
         public Output<string> MergeAccessLevel { get; private set; } = null!;
@@ -109,7 +68,7 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// One of five levels of access to the project. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        /// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
         [Output("pushAccessLevel")]
         public Output<string> PushAccessLevel { get; private set; } = null!;
@@ -162,6 +121,10 @@ namespace Pulumi.GitLab
     {
         [Input("allowedToMerges")]
         private InputList<Inputs.BranchProtectionAllowedToMergeArgs>? _allowedToMerges;
+
+        /// <summary>
+        /// Defines permissions for action.
+        /// </summary>
         public InputList<Inputs.BranchProtectionAllowedToMergeArgs> AllowedToMerges
         {
             get => _allowedToMerges ?? (_allowedToMerges = new InputList<Inputs.BranchProtectionAllowedToMergeArgs>());
@@ -170,6 +133,10 @@ namespace Pulumi.GitLab
 
         [Input("allowedToPushes")]
         private InputList<Inputs.BranchProtectionAllowedToPushArgs>? _allowedToPushes;
+
+        /// <summary>
+        /// Defines permissions for action.
+        /// </summary>
         public InputList<Inputs.BranchProtectionAllowedToPushArgs> AllowedToPushes
         {
             get => _allowedToPushes ?? (_allowedToPushes = new InputList<Inputs.BranchProtectionAllowedToPushArgs>());
@@ -183,13 +150,13 @@ namespace Pulumi.GitLab
         public Input<string> Branch { get; set; } = null!;
 
         /// <summary>
-        /// Bool, defaults to false. Can be set to true to require code owner approval before merging.
+        /// Can be set to true to require code owner approval before merging.
         /// </summary>
         [Input("codeOwnerApprovalRequired")]
         public Input<bool>? CodeOwnerApprovalRequired { get; set; }
 
         /// <summary>
-        /// One of five levels of access to the project. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        /// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
         [Input("mergeAccessLevel", required: true)]
         public Input<string> MergeAccessLevel { get; set; } = null!;
@@ -201,7 +168,7 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// One of five levels of access to the project. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        /// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
         [Input("pushAccessLevel", required: true)]
         public Input<string> PushAccessLevel { get; set; } = null!;
@@ -215,6 +182,10 @@ namespace Pulumi.GitLab
     {
         [Input("allowedToMerges")]
         private InputList<Inputs.BranchProtectionAllowedToMergeGetArgs>? _allowedToMerges;
+
+        /// <summary>
+        /// Defines permissions for action.
+        /// </summary>
         public InputList<Inputs.BranchProtectionAllowedToMergeGetArgs> AllowedToMerges
         {
             get => _allowedToMerges ?? (_allowedToMerges = new InputList<Inputs.BranchProtectionAllowedToMergeGetArgs>());
@@ -223,6 +194,10 @@ namespace Pulumi.GitLab
 
         [Input("allowedToPushes")]
         private InputList<Inputs.BranchProtectionAllowedToPushGetArgs>? _allowedToPushes;
+
+        /// <summary>
+        /// Defines permissions for action.
+        /// </summary>
         public InputList<Inputs.BranchProtectionAllowedToPushGetArgs> AllowedToPushes
         {
             get => _allowedToPushes ?? (_allowedToPushes = new InputList<Inputs.BranchProtectionAllowedToPushGetArgs>());
@@ -242,13 +217,13 @@ namespace Pulumi.GitLab
         public Input<int>? BranchProtectionId { get; set; }
 
         /// <summary>
-        /// Bool, defaults to false. Can be set to true to require code owner approval before merging.
+        /// Can be set to true to require code owner approval before merging.
         /// </summary>
         [Input("codeOwnerApprovalRequired")]
         public Input<bool>? CodeOwnerApprovalRequired { get; set; }
 
         /// <summary>
-        /// One of five levels of access to the project. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        /// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
         [Input("mergeAccessLevel")]
         public Input<string>? MergeAccessLevel { get; set; }
@@ -260,7 +235,7 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// One of five levels of access to the project. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        /// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
         [Input("pushAccessLevel")]
         public Input<string>? PushAccessLevel { get; set; }

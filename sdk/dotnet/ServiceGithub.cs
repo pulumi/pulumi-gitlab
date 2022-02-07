@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_service\_github
-    /// 
     /// **NOTE**: requires either EE (self-hosted) or Silver and above (GitLab.com).
     /// 
     /// This resource manages a [GitHub integration](https://docs.gitlab.com/ee/user/project/integrations/github.html) that updates pipeline statuses on a GitHub repo's pull requests.
@@ -45,7 +43,7 @@ namespace Pulumi.GitLab
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a service_github state using `&lt;resource&gt; &lt;project_id&gt;`
+    ///  $ pulumi import gitlab:index/serviceGithub:ServiceGithub # You can import a service_github state using `&lt;resource&gt; &lt;project_id&gt;`
     /// ```
     /// 
     /// ```sh
@@ -55,9 +53,15 @@ namespace Pulumi.GitLab
     [GitLabResourceType("gitlab:index/serviceGithub:ServiceGithub")]
     public partial class ServiceGithub : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Whether the integration is active.
+        /// </summary>
         [Output("active")]
         public Output<bool> Active { get; private set; } = null!;
 
+        /// <summary>
+        /// Create time.
+        /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
@@ -67,15 +71,21 @@ namespace Pulumi.GitLab
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
+        /// </summary>
         [Output("repositoryUrl")]
         public Output<string> RepositoryUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub. See [Static / dynamic status check names] to learn more.
+        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         /// </summary>
         [Output("staticContext")]
         public Output<bool?> StaticContext { get; private set; } = null!;
 
+        /// <summary>
+        /// Title.
+        /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
 
@@ -85,6 +95,9 @@ namespace Pulumi.GitLab
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
 
+        /// <summary>
+        /// Update time.
+        /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
 
@@ -140,11 +153,14 @@ namespace Pulumi.GitLab
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
+        /// </summary>
         [Input("repositoryUrl", required: true)]
         public Input<string> RepositoryUrl { get; set; } = null!;
 
         /// <summary>
-        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub. See [Static / dynamic status check names] to learn more.
+        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         /// </summary>
         [Input("staticContext")]
         public Input<bool>? StaticContext { get; set; }
@@ -162,9 +178,15 @@ namespace Pulumi.GitLab
 
     public sealed class ServiceGithubState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the integration is active.
+        /// </summary>
         [Input("active")]
         public Input<bool>? Active { get; set; }
 
+        /// <summary>
+        /// Create time.
+        /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
@@ -174,15 +196,21 @@ namespace Pulumi.GitLab
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
+        /// </summary>
         [Input("repositoryUrl")]
         public Input<string>? RepositoryUrl { get; set; }
 
         /// <summary>
-        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub. See [Static / dynamic status check names] to learn more.
+        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         /// </summary>
         [Input("staticContext")]
         public Input<bool>? StaticContext { get; set; }
 
+        /// <summary>
+        /// Title.
+        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 
@@ -192,6 +220,9 @@ namespace Pulumi.GitLab
         [Input("token")]
         public Input<string>? Token { get; set; }
 
+        /// <summary>
+        /// Update time.
+        /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 

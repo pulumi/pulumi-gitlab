@@ -10,10 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_project\_badge
-    /// 
     /// This resource allows you to create and manage badges for your GitLab projects.
-    /// For further information on hooks, consult the [gitlab
+    /// For further information consult the [gitlab
     /// documentation](https://docs.gitlab.com/ce/user/project/badges.html).
     /// 
     /// ## Example Usage
@@ -42,9 +40,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// GitLab project badges can be imported using an id made up of `{project_id}:{badge_id}`,
-    /// 
-    /// e.g. bash
+    /// # GitLab project badges can be imported using an id made up of `{project_id}:{badge_id}`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectBadge:ProjectBadge foo 1:3

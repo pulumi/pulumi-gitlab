@@ -12,34 +12,13 @@ namespace Pulumi.GitLab
     public static class GetGroup
     {
         /// <summary>
-        /// ## # gitlab\_group
-        /// 
         /// Provide details about a specific group in the gitlab provider.
+        /// 
+        /// &gt; **Note**: exactly one of group_id or full_path must be provided.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
-        /// ### By group's ID
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var foo = Output.Create(GitLab.GetGroup.InvokeAsync(new GitLab.GetGroupArgs
-        ///         {
-        ///             GroupId = 123,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
-        /// ### By group's full path
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -64,34 +43,13 @@ namespace Pulumi.GitLab
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("gitlab:index/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # gitlab\_group
-        /// 
         /// Provide details about a specific group in the gitlab provider.
+        /// 
+        /// &gt; **Note**: exactly one of group_id or full_path must be provided.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
-        /// ### By group's ID
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var foo = Output.Create(GitLab.GetGroup.InvokeAsync(new GitLab.GetGroupArgs
-        ///         {
-        ///             GroupId = 123,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
-        /// ### By group's full path
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -175,6 +133,9 @@ namespace Pulumi.GitLab
         /// The full path of the group.
         /// </summary>
         public readonly string FullPath;
+        /// <summary>
+        /// The ID of the group.
+        /// </summary>
         public readonly int GroupId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

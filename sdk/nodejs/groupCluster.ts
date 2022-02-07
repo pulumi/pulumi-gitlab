@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_group\_cluster
- *
  * This resource allows you to create and manage group clusters for your GitLab groups.
  * For further information on clusters, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).
@@ -17,25 +15,23 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const foo = new gitlab.Group("foo", {
- *     path: "foo-path",
- * });
+ * const foo = new gitlab.Group("foo", {path: "foo-path"});
  * const bar = new gitlab.GroupCluster("bar", {
+ *     group: foo.id,
  *     domain: "example.com",
  *     enabled: true,
- *     environmentScope: "*",
- *     group: foo.id,
  *     kubernetesApiUrl: "https://124.124.124",
- *     kubernetesAuthorizationType: "rbac",
- *     kubernetesCaCert: "some-cert",
  *     kubernetesToken: "some-token",
+ *     kubernetesCaCert: "some-cert",
+ *     kubernetesAuthorizationType: "rbac",
+ *     environmentScope: "*",
  *     managementProjectId: "123456",
  * });
  * ```
  *
  * ## Import
  *
- * GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
+ * # GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/groupCluster:GroupCluster bar 123:321
@@ -69,7 +65,13 @@ export class GroupCluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === GroupCluster.__pulumiType;
     }
 
+    /**
+     * Cluster type.
+     */
     public /*out*/ readonly clusterType!: pulumi.Output<string>;
+    /**
+     * Create time.
+     */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The base domain of the cluster.
@@ -115,7 +117,13 @@ export class GroupCluster extends pulumi.CustomResource {
      * The name of cluster.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Platform type.
+     */
     public /*out*/ readonly platformType!: pulumi.Output<string>;
+    /**
+     * Provider type.
+     */
     public /*out*/ readonly providerType!: pulumi.Output<string>;
 
     /**
@@ -182,7 +190,13 @@ export class GroupCluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GroupCluster resources.
  */
 export interface GroupClusterState {
+    /**
+     * Cluster type.
+     */
     clusterType?: pulumi.Input<string>;
+    /**
+     * Create time.
+     */
     createdAt?: pulumi.Input<string>;
     /**
      * The base domain of the cluster.
@@ -228,7 +242,13 @@ export interface GroupClusterState {
      * The name of cluster.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Platform type.
+     */
     platformType?: pulumi.Input<string>;
+    /**
+     * Provider type.
+     */
     providerType?: pulumi.Input<string>;
 }
 

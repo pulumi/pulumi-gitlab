@@ -11,6 +11,50 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource manages a [Pipelines email integration](https://docs.gitlab.com/ee/user/project/integrations/overview.html#integrations-listing) that emails the pipeline status to a list of recipients.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		awesomeProject, err := gitlab.NewProject(ctx, "awesomeProject", &gitlab.ProjectArgs{
+// 			Description:     pulumi.String("My awesome project."),
+// 			VisibilityLevel: pulumi.String("public"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = gitlab.NewServicePipelinesEmail(ctx, "email", &gitlab.ServicePipelinesEmailArgs{
+// 			Project: awesomeProject.ID(),
+// 			Recipients: pulumi.StringArray{
+// 				pulumi.String("gitlab@user.create"),
+// 			},
+// 			NotifyOnlyBrokenPipelines: pulumi.Bool(true),
+// 			BranchesToBeNotified:      pulumi.String("all"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// # You can import a gitlab_service_pipelines_email state using the project ID, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/servicePipelinesEmail:ServicePipelinesEmail email 1
+// ```
 type ServicePipelinesEmail struct {
 	pulumi.CustomResourceState
 

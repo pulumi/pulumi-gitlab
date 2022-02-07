@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab.ProjectFreezePeriod
- *
  * This resource allows you to create and manage freeze periods. For further information on freeze periods, consult the [gitlab documentation](https://docs.gitlab.com/ee/api/freeze_periods.html#create-a-freeze-period).
  *
  * ## Example Usage
@@ -25,7 +23,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * GitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, e.g.
+ * # GitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/projectFreezePeriod:ProjectFreezePeriod schedule "12345:1337"

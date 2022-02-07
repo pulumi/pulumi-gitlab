@@ -15,13 +15,10 @@ namespace Pulumi.GitLab.Outputs
     {
         public readonly string FullPath;
         /// <summary>
-        /// The ID of the project.
+        /// The ID of this resource.
         /// </summary>
         public readonly int Id;
         public readonly string Kind;
-        /// <summary>
-        /// The name of the project.
-        /// </summary>
         public readonly string Name;
         public readonly string Path;
 

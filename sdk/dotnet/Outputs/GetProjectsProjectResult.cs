@@ -15,9 +15,6 @@ namespace Pulumi.GitLab.Outputs
     {
         public readonly ImmutableDictionary<string, string> _links;
         public readonly bool AllowMergeOnSkippedPipeline;
-        /// <summary>
-        /// The numbers of approvals needed in a merge requests.
-        /// </summary>
         public readonly int ApprovalsBeforeMerge;
         /// <summary>
         /// Limit by archived status.
@@ -32,22 +29,16 @@ namespace Pulumi.GitLab.Outputs
         public readonly ImmutableArray<ImmutableDictionary<string, object>> CustomAttributes;
         public readonly string DefaultBranch;
         public readonly string Description;
-        public readonly Outputs.GetProjectsProjectForkedFromProjectResult ForkedFromProject;
+        public readonly ImmutableArray<Outputs.GetProjectsProjectForkedFromProjectResult> ForkedFromProjects;
         public readonly int ForksCount;
-        /// <summary>
-        /// The HTTP clone URL of the project.
-        /// </summary>
         public readonly string HttpUrlToRepo;
         /// <summary>
-        /// The ID of the project.
+        /// The ID of this resource.
         /// </summary>
         public readonly int Id;
         public readonly string ImportError;
         public readonly string ImportStatus;
         public readonly bool IssuesEnabled;
-        /// <summary>
-        /// Whether pipelines are enabled for the project.
-        /// </summary>
         public readonly bool JobsEnabled;
         public readonly string LastActivityAt;
         public readonly bool LfsEnabled;
@@ -57,30 +48,18 @@ namespace Pulumi.GitLab.Outputs
         public readonly bool MirrorOverwritesDivergedBranches;
         public readonly bool MirrorTriggerBuilds;
         public readonly int MirrorUserId;
-        /// <summary>
-        /// The name of the project.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// In `group / subgroup / project` or `user / project` format.
-        /// </summary>
         public readonly string NameWithNamespace;
-        public readonly Outputs.GetProjectsProjectNamespaceResult Namespace;
+        public readonly ImmutableArray<Outputs.GetProjectsProjectNamespaceResult> Namespaces;
         public readonly bool OnlyAllowMergeIfAllDiscussionsAreResolved;
         public readonly bool OnlyAllowMergeIfPipelineSucceeds;
         public readonly bool OnlyMirrorProtectedBranches;
         public readonly int OpenIssuesCount;
-        public readonly Outputs.GetProjectsProjectOwnerResult Owner;
+        public readonly ImmutableArray<Outputs.GetProjectsProjectOwnerResult> Owners;
         public readonly bool PackagesEnabled;
         public readonly string Path;
-        /// <summary>
-        /// In `group/subgroup/project` or `user/project` format.
-        /// </summary>
         public readonly string PathWithNamespace;
-        public readonly Outputs.GetProjectsProjectPermissionsResult Permissions;
-        /// <summary>
-        /// Whether the project is public.
-        /// </summary>
+        public readonly ImmutableArray<Outputs.GetProjectsProjectPermissionResult> Permissions;
         public readonly bool Public;
         public readonly bool PublicBuilds;
         public readonly string ReadmeUrl;
@@ -90,18 +69,12 @@ namespace Pulumi.GitLab.Outputs
         public readonly bool SharedRunnersEnabled;
         public readonly ImmutableArray<Outputs.GetProjectsProjectSharedWithGroupResult> SharedWithGroups;
         public readonly bool SnippetsEnabled;
-        /// <summary>
-        /// The SSH clone URL of the project.
-        /// </summary>
         public readonly string SshUrlToRepo;
         public readonly int StarCount;
         /// <summary>
         /// Include project statistics. Cannot be used with `group_id`.
         /// </summary>
         public readonly ImmutableDictionary<string, int> Statistics;
-        /// <summary>
-        /// A set of the project topics (formerly called "project tags").
-        /// </summary>
         public readonly ImmutableArray<string> TagLists;
         /// <summary>
         /// Limit by visibility `public`, `internal`, or `private`.
@@ -138,7 +111,7 @@ namespace Pulumi.GitLab.Outputs
 
             string description,
 
-            Outputs.GetProjectsProjectForkedFromProjectResult forkedFromProject,
+            ImmutableArray<Outputs.GetProjectsProjectForkedFromProjectResult> forkedFromProjects,
 
             int forksCount,
 
@@ -174,7 +147,7 @@ namespace Pulumi.GitLab.Outputs
 
             string nameWithNamespace,
 
-            Outputs.GetProjectsProjectNamespaceResult @namespace,
+            ImmutableArray<Outputs.GetProjectsProjectNamespaceResult> namespaces,
 
             bool onlyAllowMergeIfAllDiscussionsAreResolved,
 
@@ -184,7 +157,7 @@ namespace Pulumi.GitLab.Outputs
 
             int openIssuesCount,
 
-            Outputs.GetProjectsProjectOwnerResult owner,
+            ImmutableArray<Outputs.GetProjectsProjectOwnerResult> owners,
 
             bool packagesEnabled,
 
@@ -192,7 +165,7 @@ namespace Pulumi.GitLab.Outputs
 
             string pathWithNamespace,
 
-            Outputs.GetProjectsProjectPermissionsResult permissions,
+            ImmutableArray<Outputs.GetProjectsProjectPermissionResult> permissions,
 
             bool @public,
 
@@ -239,7 +212,7 @@ namespace Pulumi.GitLab.Outputs
             CustomAttributes = customAttributes;
             DefaultBranch = defaultBranch;
             Description = description;
-            ForkedFromProject = forkedFromProject;
+            ForkedFromProjects = forkedFromProjects;
             ForksCount = forksCount;
             HttpUrlToRepo = httpUrlToRepo;
             Id = id;
@@ -257,12 +230,12 @@ namespace Pulumi.GitLab.Outputs
             MirrorUserId = mirrorUserId;
             Name = name;
             NameWithNamespace = nameWithNamespace;
-            Namespace = @namespace;
+            Namespaces = namespaces;
             OnlyAllowMergeIfAllDiscussionsAreResolved = onlyAllowMergeIfAllDiscussionsAreResolved;
             OnlyAllowMergeIfPipelineSucceeds = onlyAllowMergeIfPipelineSucceeds;
             OnlyMirrorProtectedBranches = onlyMirrorProtectedBranches;
             OpenIssuesCount = openIssuesCount;
-            Owner = owner;
+            Owners = owners;
             PackagesEnabled = packagesEnabled;
             Path = path;
             PathWithNamespace = pathWithNamespace;

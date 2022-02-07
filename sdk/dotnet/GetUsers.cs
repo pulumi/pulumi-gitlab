@@ -12,8 +12,6 @@ namespace Pulumi.GitLab
     public static class GetUsers
     {
         /// <summary>
-        /// ## # gitlab\_users
-        /// 
         /// Provide details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
         /// 
         /// **NOTE**: Some available options require administrator privileges. Please visit [Gitlab API documentation][users_for_admins] for more information.
@@ -51,8 +49,6 @@ namespace Pulumi.GitLab
             => Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("gitlab:index/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # gitlab\_users
-        /// 
         /// Provide details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
         /// 
         /// **NOTE**: Some available options require administrator privileges. Please visit [Gitlab API documentation][users_for_admins] for more information.
@@ -217,21 +213,45 @@ namespace Pulumi.GitLab
     [OutputType]
     public sealed class GetUsersResult
     {
+        /// <summary>
+        /// Filter users that are active.
+        /// </summary>
         public readonly bool? Active;
+        /// <summary>
+        /// Filter users that are blocked.
+        /// </summary>
         public readonly bool? Blocked;
+        /// <summary>
+        /// Search for users created after a specific date. (Requires administrator privileges)
+        /// </summary>
         public readonly string? CreatedAfter;
+        /// <summary>
+        /// Search for users created before a specific date. (Requires administrator privileges)
+        /// </summary>
         public readonly string? CreatedBefore;
+        /// <summary>
+        /// Lookup users by external provider. (Requires administrator privileges)
+        /// </summary>
         public readonly string? ExternProvider;
         /// <summary>
-        /// The external UID of the user.
+        /// Lookup users by external UID. (Requires administrator privileges)
         /// </summary>
         public readonly string? ExternUid;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
+        /// </summary>
         public readonly string? OrderBy;
+        /// <summary>
+        /// Search users by username, name or email.
+        /// </summary>
         public readonly string? Search;
+        /// <summary>
+        /// Sort users' list in asc or desc order. (Requires administrator privileges)
+        /// </summary>
         public readonly string? Sort;
         /// <summary>
         /// The list of users.

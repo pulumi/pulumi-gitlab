@@ -12,11 +12,15 @@ export * from "./deployToken";
 export * from "./getGroup";
 export * from "./getGroupMembership";
 export * from "./getProject";
+export * from "./getProjectProtectedBranch";
+export * from "./getProjectProtectedBranches";
 export * from "./getProjects";
 export * from "./getUser";
 export * from "./getUsers";
 export * from "./group";
+export * from "./groupBadge";
 export * from "./groupCluster";
+export * from "./groupCustomAttribute";
 export * from "./groupLabel";
 export * from "./groupLdapLink";
 export * from "./groupMembership";
@@ -25,13 +29,16 @@ export * from "./groupVariable";
 export * from "./instanceCluster";
 export * from "./instanceVariable";
 export * from "./label";
+export * from "./managedLicense";
 export * from "./pipelineSchedule";
 export * from "./pipelineScheduleVariable";
 export * from "./pipelineTrigger";
 export * from "./project";
+export * from "./projectAccessToken";
 export * from "./projectApprovalRule";
 export * from "./projectBadge";
 export * from "./projectCluster";
+export * from "./projectCustomAttribute";
 export * from "./projectFreezePeriod";
 export * from "./projectHook";
 export * from "./projectLevelMrApprovals";
@@ -40,12 +47,15 @@ export * from "./projectMirror";
 export * from "./projectShareGroup";
 export * from "./projectVariable";
 export * from "./provider";
+export * from "./repositoryFile";
 export * from "./serviceGithub";
 export * from "./serviceJira";
+export * from "./serviceMicrosoftTeams";
 export * from "./servicePipelinesEmail";
 export * from "./serviceSlack";
 export * from "./tagProtection";
 export * from "./user";
+export * from "./userCustomAttribute";
 
 // Export sub-modules:
 import * as config from "./config";
@@ -62,7 +72,9 @@ import { DeployKey } from "./deployKey";
 import { DeployKeyEnable } from "./deployKeyEnable";
 import { DeployToken } from "./deployToken";
 import { Group } from "./group";
+import { GroupBadge } from "./groupBadge";
 import { GroupCluster } from "./groupCluster";
+import { GroupCustomAttribute } from "./groupCustomAttribute";
 import { GroupLabel } from "./groupLabel";
 import { GroupLdapLink } from "./groupLdapLink";
 import { GroupMembership } from "./groupMembership";
@@ -71,13 +83,16 @@ import { GroupVariable } from "./groupVariable";
 import { InstanceCluster } from "./instanceCluster";
 import { InstanceVariable } from "./instanceVariable";
 import { Label } from "./label";
+import { ManagedLicense } from "./managedLicense";
 import { PipelineSchedule } from "./pipelineSchedule";
 import { PipelineScheduleVariable } from "./pipelineScheduleVariable";
 import { PipelineTrigger } from "./pipelineTrigger";
 import { Project } from "./project";
+import { ProjectAccessToken } from "./projectAccessToken";
 import { ProjectApprovalRule } from "./projectApprovalRule";
 import { ProjectBadge } from "./projectBadge";
 import { ProjectCluster } from "./projectCluster";
+import { ProjectCustomAttribute } from "./projectCustomAttribute";
 import { ProjectFreezePeriod } from "./projectFreezePeriod";
 import { ProjectHook } from "./projectHook";
 import { ProjectLevelMrApprovals } from "./projectLevelMrApprovals";
@@ -85,12 +100,15 @@ import { ProjectMembership } from "./projectMembership";
 import { ProjectMirror } from "./projectMirror";
 import { ProjectShareGroup } from "./projectShareGroup";
 import { ProjectVariable } from "./projectVariable";
+import { RepositoryFile } from "./repositoryFile";
 import { ServiceGithub } from "./serviceGithub";
 import { ServiceJira } from "./serviceJira";
+import { ServiceMicrosoftTeams } from "./serviceMicrosoftTeams";
 import { ServicePipelinesEmail } from "./servicePipelinesEmail";
 import { ServiceSlack } from "./serviceSlack";
 import { TagProtection } from "./tagProtection";
 import { User } from "./user";
+import { UserCustomAttribute } from "./userCustomAttribute";
 
 const _module = {
     version: utilities.getVersion(),
@@ -106,8 +124,12 @@ const _module = {
                 return new DeployToken(name, <any>undefined, { urn })
             case "gitlab:index/group:Group":
                 return new Group(name, <any>undefined, { urn })
+            case "gitlab:index/groupBadge:GroupBadge":
+                return new GroupBadge(name, <any>undefined, { urn })
             case "gitlab:index/groupCluster:GroupCluster":
                 return new GroupCluster(name, <any>undefined, { urn })
+            case "gitlab:index/groupCustomAttribute:GroupCustomAttribute":
+                return new GroupCustomAttribute(name, <any>undefined, { urn })
             case "gitlab:index/groupLabel:GroupLabel":
                 return new GroupLabel(name, <any>undefined, { urn })
             case "gitlab:index/groupLdapLink:GroupLdapLink":
@@ -124,6 +146,8 @@ const _module = {
                 return new InstanceVariable(name, <any>undefined, { urn })
             case "gitlab:index/label:Label":
                 return new Label(name, <any>undefined, { urn })
+            case "gitlab:index/managedLicense:ManagedLicense":
+                return new ManagedLicense(name, <any>undefined, { urn })
             case "gitlab:index/pipelineSchedule:PipelineSchedule":
                 return new PipelineSchedule(name, <any>undefined, { urn })
             case "gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable":
@@ -132,12 +156,16 @@ const _module = {
                 return new PipelineTrigger(name, <any>undefined, { urn })
             case "gitlab:index/project:Project":
                 return new Project(name, <any>undefined, { urn })
+            case "gitlab:index/projectAccessToken:ProjectAccessToken":
+                return new ProjectAccessToken(name, <any>undefined, { urn })
             case "gitlab:index/projectApprovalRule:ProjectApprovalRule":
                 return new ProjectApprovalRule(name, <any>undefined, { urn })
             case "gitlab:index/projectBadge:ProjectBadge":
                 return new ProjectBadge(name, <any>undefined, { urn })
             case "gitlab:index/projectCluster:ProjectCluster":
                 return new ProjectCluster(name, <any>undefined, { urn })
+            case "gitlab:index/projectCustomAttribute:ProjectCustomAttribute":
+                return new ProjectCustomAttribute(name, <any>undefined, { urn })
             case "gitlab:index/projectFreezePeriod:ProjectFreezePeriod":
                 return new ProjectFreezePeriod(name, <any>undefined, { urn })
             case "gitlab:index/projectHook:ProjectHook":
@@ -152,10 +180,14 @@ const _module = {
                 return new ProjectShareGroup(name, <any>undefined, { urn })
             case "gitlab:index/projectVariable:ProjectVariable":
                 return new ProjectVariable(name, <any>undefined, { urn })
+            case "gitlab:index/repositoryFile:RepositoryFile":
+                return new RepositoryFile(name, <any>undefined, { urn })
             case "gitlab:index/serviceGithub:ServiceGithub":
                 return new ServiceGithub(name, <any>undefined, { urn })
             case "gitlab:index/serviceJira:ServiceJira":
                 return new ServiceJira(name, <any>undefined, { urn })
+            case "gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams":
+                return new ServiceMicrosoftTeams(name, <any>undefined, { urn })
             case "gitlab:index/servicePipelinesEmail:ServicePipelinesEmail":
                 return new ServicePipelinesEmail(name, <any>undefined, { urn })
             case "gitlab:index/serviceSlack:ServiceSlack":
@@ -164,6 +196,8 @@ const _module = {
                 return new TagProtection(name, <any>undefined, { urn })
             case "gitlab:index/user:User":
                 return new User(name, <any>undefined, { urn })
+            case "gitlab:index/userCustomAttribute:UserCustomAttribute":
+                return new UserCustomAttribute(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -174,7 +208,9 @@ pulumi.runtime.registerResourceModule("gitlab", "index/deployKey", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/deployKeyEnable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/deployToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/group", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupBadge", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupCluster", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupCustomAttribute", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupLabel", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupLdapLink", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupMembership", _module)
@@ -183,13 +219,16 @@ pulumi.runtime.registerResourceModule("gitlab", "index/groupVariable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/instanceCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/instanceVariable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/label", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/managedLicense", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/pipelineSchedule", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/pipelineScheduleVariable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/pipelineTrigger", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/project", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectAccessToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectApprovalRule", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectBadge", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCluster", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectCustomAttribute", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectFreezePeriod", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectLevelMrApprovals", _module)
@@ -197,12 +236,15 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectMembership", _modu
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMirror", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectShareGroup", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectVariable", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/repositoryFile", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/serviceGithub", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/serviceJira", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/serviceMicrosoftTeams", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/servicePipelinesEmail", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/serviceSlack", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/tagProtection", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/user", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/userCustomAttribute", _module)
 
 import { Provider } from "./provider";
 

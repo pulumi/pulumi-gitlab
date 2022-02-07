@@ -12,34 +12,13 @@ namespace Pulumi.GitLab
     public static class GetGroupMembership
     {
         /// <summary>
-        /// ## # gitlab\_group\_membership
-        /// 
         /// Provide details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
+        /// 
+        /// &gt; **Note**: exactly one of group_id or full_path must be provided.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
-        /// ### By group's ID
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(GitLab.GetGroupMembership.InvokeAsync(new GitLab.GetGroupMembershipArgs
-        ///         {
-        ///             GroupId = 123,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
-        /// ### By group's full path
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -64,34 +43,13 @@ namespace Pulumi.GitLab
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupMembershipResult>("gitlab:index/getGroupMembership:getGroupMembership", args ?? new GetGroupMembershipArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # gitlab\_group\_membership
-        /// 
         /// Provide details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
+        /// 
+        /// &gt; **Note**: exactly one of group_id or full_path must be provided.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
-        /// ### By group's ID
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(GitLab.GetGroupMembership.InvokeAsync(new GitLab.GetGroupMembershipArgs
-        ///         {
-        ///             GroupId = 123,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
-        /// ### By group's full path
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -172,10 +130,16 @@ namespace Pulumi.GitLab
     public sealed class GetGroupMembershipResult
     {
         /// <summary>
-        /// One of five levels of access to the group.
+        /// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         /// </summary>
         public readonly string AccessLevel;
+        /// <summary>
+        /// The full path of the group.
+        /// </summary>
         public readonly string FullPath;
+        /// <summary>
+        /// The ID of the group.
+        /// </summary>
         public readonly int GroupId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

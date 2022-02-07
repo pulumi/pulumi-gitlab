@@ -30,7 +30,6 @@ class UserArgs:
         :param pulumi.Input[str] username: The username of the user.
         :param pulumi.Input[bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
         :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
-               for the user.
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
         :param pulumi.Input[str] note: The note associated to the user.
@@ -101,7 +100,6 @@ class UserArgs:
     def is_admin(self) -> Optional[pulumi.Input[bool]]:
         """
         Boolean, defaults to false.  Whether to enable administrative privileges
-        for the user.
         """
         return pulumi.get(self, "is_admin")
 
@@ -213,7 +211,6 @@ class _UserState:
         :param pulumi.Input[bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
         :param pulumi.Input[str] email: The e-mail address of the user.
         :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
-               for the user.
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
         :param pulumi.Input[str] note: The note associated to the user.
@@ -275,7 +272,6 @@ class _UserState:
     def is_admin(self) -> Optional[pulumi.Input[bool]]:
         """
         Boolean, defaults to false.  Whether to enable administrative privileges
-        for the user.
         """
         return pulumi.get(self, "is_admin")
 
@@ -398,8 +394,6 @@ class User(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # gitlab\_user
-
         This resource allows you to create and manage GitLab users.
         Note your provider will need to be configured with admin-level access for this resource to work.
 
@@ -425,10 +419,10 @@ class User(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import gitlab:index/user:User You can import a user to terraform state using `<resource> <id>`.
+         $ pulumi import gitlab:index/user:User # You can import a user to terraform state using `<resource> <id>`.
         ```
 
-         The `id` must be an integer for the id of the user you want to import, for example
+        # The `id` must be an integer for the id of the user you want to import, # for example
 
         ```sh
          $ pulumi import gitlab:index/user:User example 42
@@ -439,7 +433,6 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
         :param pulumi.Input[str] email: The e-mail address of the user.
         :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
-               for the user.
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
         :param pulumi.Input[str] note: The note associated to the user.
@@ -456,8 +449,6 @@ class User(pulumi.CustomResource):
                  args: UserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # gitlab\_user
-
         This resource allows you to create and manage GitLab users.
         Note your provider will need to be configured with admin-level access for this resource to work.
 
@@ -483,10 +474,10 @@ class User(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import gitlab:index/user:User You can import a user to terraform state using `<resource> <id>`.
+         $ pulumi import gitlab:index/user:User # You can import a user to terraform state using `<resource> <id>`.
         ```
 
-         The `id` must be an integer for the id of the user you want to import, for example
+        # The `id` must be an integer for the id of the user you want to import, # for example
 
         ```sh
          $ pulumi import gitlab:index/user:User example 42
@@ -576,7 +567,6 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
         :param pulumi.Input[str] email: The e-mail address of the user.
         :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
-               for the user.
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
         :param pulumi.Input[str] note: The note associated to the user.
@@ -624,7 +614,6 @@ class User(pulumi.CustomResource):
     def is_admin(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean, defaults to false.  Whether to enable administrative privileges
-        for the user.
         """
         return pulumi.get(self, "is_admin")
 

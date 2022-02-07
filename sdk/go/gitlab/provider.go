@@ -18,15 +18,22 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// The GitLab Base API URL
+	// This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
+	// Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
+	// the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
 	BaseUrl pulumi.StringPtrOutput `pulumi:"baseUrl"`
-	// A file containing the ca certificate to use in case ssl certificate is not from a standard chain
+	// This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab
+	// CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
 	CacertFile pulumi.StringPtrOutput `pulumi:"cacertFile"`
 	// File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
 	ClientCert pulumi.StringPtrOutput `pulumi:"clientCert"`
-	// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
+	// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
+	// `client_cert` is set.
 	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
-	// The OAuth2 token or project/personal access token used to connect to GitLab.
+	// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
+	// used in this provider for authentication (using Bearer authorization token). See
+	// https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
+	// variable.
 	Token pulumi.StringOutput `pulumi:"token"`
 }
 
@@ -49,33 +56,57 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// The GitLab Base API URL
+	// This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
+	// Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
+	// the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
 	BaseUrl *string `pulumi:"baseUrl"`
-	// A file containing the ca certificate to use in case ssl certificate is not from a standard chain
+	// This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab
+	// CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
 	CacertFile *string `pulumi:"cacertFile"`
 	// File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
 	ClientCert *string `pulumi:"clientCert"`
-	// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
+	// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
+	// `client_cert` is set.
 	ClientKey *string `pulumi:"clientKey"`
-	// Disable SSL verification of API calls
+	// (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
+	// configuration is correct and the GitLab API is reachable. Turn it off, to skip this check. This may be useful if the
+	// GitLab instance does not yet exist and is created within the same terraform module. This is an experimental feature and
+	// may change in the future. Please make sure to always keep backups of your state.
+	EarlyAuthCheck *bool `pulumi:"earlyAuthCheck"`
+	// When set to true this disables SSL verification of the connection to the GitLab instance.
 	Insecure *bool `pulumi:"insecure"`
-	// The OAuth2 token or project/personal access token used to connect to GitLab.
+	// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
+	// used in this provider for authentication (using Bearer authorization token). See
+	// https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
+	// variable.
 	Token string `pulumi:"token"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// The GitLab Base API URL
+	// This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
+	// Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
+	// the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
 	BaseUrl pulumi.StringPtrInput
-	// A file containing the ca certificate to use in case ssl certificate is not from a standard chain
+	// This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab
+	// CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
 	CacertFile pulumi.StringPtrInput
 	// File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
 	ClientCert pulumi.StringPtrInput
-	// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
+	// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
+	// `client_cert` is set.
 	ClientKey pulumi.StringPtrInput
-	// Disable SSL verification of API calls
+	// (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
+	// configuration is correct and the GitLab API is reachable. Turn it off, to skip this check. This may be useful if the
+	// GitLab instance does not yet exist and is created within the same terraform module. This is an experimental feature and
+	// may change in the future. Please make sure to always keep backups of your state.
+	EarlyAuthCheck pulumi.BoolPtrInput
+	// When set to true this disables SSL verification of the connection to the GitLab instance.
 	Insecure pulumi.BoolPtrInput
-	// The OAuth2 token or project/personal access token used to connect to GitLab.
+	// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
+	// used in this provider for authentication (using Bearer authorization token). See
+	// https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
+	// variable.
 	Token pulumi.StringInput
 }
 

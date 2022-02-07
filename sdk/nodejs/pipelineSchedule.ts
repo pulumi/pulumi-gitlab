@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_pipeline\_schedule
- *
  * This resource allows you to create and manage pipeline schedules.
  * For further information on clusters, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/user/project/pipelines/schedules.html).
@@ -27,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * GitLab pipeline schedules can be imported using an id made up of `{project_id}:{pipeline_schedule_id}`, e.g.
+ * # GitLab pipeline schedules can be imported using an id made up of `{project_id}:{pipeline_schedule_id}`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/pipelineSchedule:PipelineSchedule test 1:3

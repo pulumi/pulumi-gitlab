@@ -161,10 +161,8 @@ class ProjectBadge(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # gitlab\_project\_badge
-
         This resource allows you to create and manage badges for your GitLab projects.
-        For further information on hooks, consult the [gitlab
+        For further information consult the [gitlab
         documentation](https://docs.gitlab.com/ce/user/project/badges.html).
 
         ## Example Usage
@@ -182,9 +180,7 @@ class ProjectBadge(pulumi.CustomResource):
 
         ## Import
 
-        GitLab project badges can be imported using an id made up of `{project_id}:{badge_id}`,
-
-        e.g. bash
+        # GitLab project badges can be imported using an id made up of `{project_id}:{badge_id}`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/projectBadge:ProjectBadge foo 1:3
@@ -203,10 +199,8 @@ class ProjectBadge(pulumi.CustomResource):
                  args: ProjectBadgeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # gitlab\_project\_badge
-
         This resource allows you to create and manage badges for your GitLab projects.
-        For further information on hooks, consult the [gitlab
+        For further information consult the [gitlab
         documentation](https://docs.gitlab.com/ce/user/project/badges.html).
 
         ## Example Usage
@@ -224,9 +218,7 @@ class ProjectBadge(pulumi.CustomResource):
 
         ## Import
 
-        GitLab project badges can be imported using an id made up of `{project_id}:{badge_id}`,
-
-        e.g. bash
+        # GitLab project badges can be imported using an id made up of `{project_id}:{badge_id}`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/projectBadge:ProjectBadge foo 1:3

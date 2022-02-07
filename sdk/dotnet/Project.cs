@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_project
-    /// 
     /// This resource allows you to create and manage projects within your GitLab group or within your user.
     /// 
     /// ## Example Usage
@@ -48,16 +46,14 @@ namespace Pulumi.GitLab
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/project:Project You can import a project state using `&lt;resource&gt; &lt;id&gt;`. The
+    ///  $ pulumi import gitlab:index/project:Project # You can import a project state using `&lt;resource&gt; &lt;id&gt;`. The
     /// ```
     /// 
-    ///  `id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
+    /// # `id` can be whatever the [get single project api][get_single_project] takes for # its `:id` value, so for example
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/project:Project example richardc/example
     /// ```
-    /// 
-    ///  [get_single_project]https://docs.gitlab.com/ee/api/projects.html#get-single-project [group_members_permissions]https://docs.gitlab.com/ce/user/permissions.html#group-members-permissions
     /// </summary>
     [GitLabResourceType("gitlab:index/project:Project")]
     public partial class Project : Pulumi.CustomResource
@@ -73,6 +69,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("approvalsBeforeMerge")]
         public Output<int?> ApprovalsBeforeMerge { get; private set; } = null!;
+
+        /// <summary>
+        /// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
+        /// </summary>
+        [Output("archiveOnDestroy")]
+        public Output<bool?> ArchiveOnDestroy { get; private set; } = null!;
 
         /// <summary>
         /// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
@@ -111,14 +113,13 @@ namespace Pulumi.GitLab
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         /// </summary>
         [Output("groupWithProjectTemplatesId")]
         public Output<int?> GroupWithProjectTemplatesId { get; private set; } = null!;
 
         /// <summary>
         /// URL that can be provided to `git clone` to clone the
-        /// repository via HTTP.
         /// </summary>
         [Output("httpUrlToRepo")]
         public Output<string> HttpUrlToRepo { get; private set; } = null!;
@@ -142,6 +143,12 @@ namespace Pulumi.GitLab
         public Output<bool?> IssuesEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Sets the template for new issues in the project.
+        /// </summary>
+        [Output("issuesTemplate")]
+        public Output<string?> IssuesTemplate { get; private set; } = null!;
+
+        /// <summary>
         /// Enable LFS for the project.
         /// </summary>
         [Output("lfsEnabled")]
@@ -149,8 +156,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Set to `ff` to create fast-forward merges
-        /// Valid values are `merge`, `rebase_merge`, `ff`
-        /// Repositories are created with `merge` by default
         /// </summary>
         [Output("mergeMethod")]
         public Output<string?> MergeMethod { get; private set; } = null!;
@@ -162,20 +167,25 @@ namespace Pulumi.GitLab
         public Output<bool?> MergeRequestsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
-        /// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+        /// Sets the template for new merge requests in the project.
+        /// </summary>
+        [Output("mergeRequestsTemplate")]
+        public Output<string?> MergeRequestsTemplate { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable project pull mirror.
         /// </summary>
         [Output("mirror")]
         public Output<bool?> Mirror { get; private set; } = null!;
 
         /// <summary>
-        /// Pull mirror overwrites diverged branches.
+        /// Enable overwrite diverged branches for a mirrored project.
         /// </summary>
         [Output("mirrorOverwritesDivergedBranches")]
         public Output<bool?> MirrorOverwritesDivergedBranches { get; private set; } = null!;
 
         /// <summary>
-        /// Pull mirroring triggers builds. Default is `false`.
+        /// Enable trigger builds on pushes for a mirrored project.
         /// </summary>
         [Output("mirrorTriggerBuilds")]
         public Output<bool?> MirrorTriggerBuilds { get; private set; } = null!;
@@ -188,7 +198,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// The namespace (group or user) of the project. Defaults to your user.
-        /// See `gitlab.Group` for an example.
         /// </summary>
         [Output("namespaceId")]
         public Output<int> NamespaceId { get; private set; } = null!;
@@ -206,7 +215,7 @@ namespace Pulumi.GitLab
         public Output<bool?> OnlyAllowMergeIfPipelineSucceeds { get; private set; } = null!;
 
         /// <summary>
-        /// Only mirror protected branches.
+        /// Enable only mirror protected branches for a mirrored project.
         /// </summary>
         [Output("onlyMirrorProtectedBranches")]
         public Output<bool?> OnlyMirrorProtectedBranches { get; private set; } = null!;
@@ -219,8 +228,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Enable pages access control
-        /// Valid values are `disabled`, `private`, `enabled`, `public`.
-        /// `private` is the default.
         /// </summary>
         [Output("pagesAccessLevel")]
         public Output<string?> PagesAccessLevel { get; private set; } = null!;
@@ -244,7 +251,7 @@ namespace Pulumi.GitLab
         public Output<bool?> PipelinesEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Push rules for the project (documented below).
+        /// Push rules for the project.
         /// </summary>
         [Output("pushRules")]
         public Output<Outputs.ProjectPushRules> PushRules { get; private set; } = null!;
@@ -287,7 +294,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// URL that can be provided to `git clone` to clone the
-        /// repository via SSH.
         /// </summary>
         [Output("sshUrlToRepo")]
         public Output<string> SshUrlToRepo { get; private set; } = null!;
@@ -299,27 +305,25 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        /// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         /// </summary>
         [Output("templateName")]
         public Output<string?> TemplateName { get; private set; } = null!;
 
         /// <summary>
-        /// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        /// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
         /// </summary>
         [Output("templateProjectId")]
         public Output<int?> TemplateProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        /// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
         /// </summary>
         [Output("useCustomTemplate")]
         public Output<bool?> UseCustomTemplate { get; private set; } = null!;
 
         /// <summary>
         /// Set to `public` to create a public project.
-        /// Valid values are `private`, `internal`, `public`.
-        /// Repositories are created as private by default.
         /// </summary>
         [Output("visibilityLevel")]
         public Output<string?> VisibilityLevel { get; private set; } = null!;
@@ -395,6 +399,12 @@ namespace Pulumi.GitLab
         public Input<int>? ApprovalsBeforeMerge { get; set; }
 
         /// <summary>
+        /// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
+        /// </summary>
+        [Input("archiveOnDestroy")]
+        public Input<bool>? ArchiveOnDestroy { get; set; }
+
+        /// <summary>
         /// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         /// </summary>
         [Input("archived")]
@@ -431,7 +441,7 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         /// </summary>
         [Input("groupWithProjectTemplatesId")]
         public Input<int>? GroupWithProjectTemplatesId { get; set; }
@@ -455,6 +465,12 @@ namespace Pulumi.GitLab
         public Input<bool>? IssuesEnabled { get; set; }
 
         /// <summary>
+        /// Sets the template for new issues in the project.
+        /// </summary>
+        [Input("issuesTemplate")]
+        public Input<string>? IssuesTemplate { get; set; }
+
+        /// <summary>
         /// Enable LFS for the project.
         /// </summary>
         [Input("lfsEnabled")]
@@ -462,8 +478,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Set to `ff` to create fast-forward merges
-        /// Valid values are `merge`, `rebase_merge`, `ff`
-        /// Repositories are created with `merge` by default
         /// </summary>
         [Input("mergeMethod")]
         public Input<string>? MergeMethod { get; set; }
@@ -475,20 +489,25 @@ namespace Pulumi.GitLab
         public Input<bool>? MergeRequestsEnabled { get; set; }
 
         /// <summary>
-        /// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
-        /// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+        /// Sets the template for new merge requests in the project.
+        /// </summary>
+        [Input("mergeRequestsTemplate")]
+        public Input<string>? MergeRequestsTemplate { get; set; }
+
+        /// <summary>
+        /// Enable project pull mirror.
         /// </summary>
         [Input("mirror")]
         public Input<bool>? Mirror { get; set; }
 
         /// <summary>
-        /// Pull mirror overwrites diverged branches.
+        /// Enable overwrite diverged branches for a mirrored project.
         /// </summary>
         [Input("mirrorOverwritesDivergedBranches")]
         public Input<bool>? MirrorOverwritesDivergedBranches { get; set; }
 
         /// <summary>
-        /// Pull mirroring triggers builds. Default is `false`.
+        /// Enable trigger builds on pushes for a mirrored project.
         /// </summary>
         [Input("mirrorTriggerBuilds")]
         public Input<bool>? MirrorTriggerBuilds { get; set; }
@@ -501,7 +520,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// The namespace (group or user) of the project. Defaults to your user.
-        /// See `gitlab.Group` for an example.
         /// </summary>
         [Input("namespaceId")]
         public Input<int>? NamespaceId { get; set; }
@@ -519,7 +537,7 @@ namespace Pulumi.GitLab
         public Input<bool>? OnlyAllowMergeIfPipelineSucceeds { get; set; }
 
         /// <summary>
-        /// Only mirror protected branches.
+        /// Enable only mirror protected branches for a mirrored project.
         /// </summary>
         [Input("onlyMirrorProtectedBranches")]
         public Input<bool>? OnlyMirrorProtectedBranches { get; set; }
@@ -532,8 +550,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Enable pages access control
-        /// Valid values are `disabled`, `private`, `enabled`, `public`.
-        /// `private` is the default.
         /// </summary>
         [Input("pagesAccessLevel")]
         public Input<string>? PagesAccessLevel { get; set; }
@@ -551,7 +567,7 @@ namespace Pulumi.GitLab
         public Input<bool>? PipelinesEnabled { get; set; }
 
         /// <summary>
-        /// Push rules for the project (documented below).
+        /// Push rules for the project.
         /// </summary>
         [Input("pushRules")]
         public Input<Inputs.ProjectPushRulesArgs>? PushRules { get; set; }
@@ -599,27 +615,25 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        /// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         /// </summary>
         [Input("templateName")]
         public Input<string>? TemplateName { get; set; }
 
         /// <summary>
-        /// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        /// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
         /// </summary>
         [Input("templateProjectId")]
         public Input<int>? TemplateProjectId { get; set; }
 
         /// <summary>
-        /// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        /// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
         /// </summary>
         [Input("useCustomTemplate")]
         public Input<bool>? UseCustomTemplate { get; set; }
 
         /// <summary>
         /// Set to `public` to create a public project.
-        /// Valid values are `private`, `internal`, `public`.
-        /// Repositories are created as private by default.
         /// </summary>
         [Input("visibilityLevel")]
         public Input<string>? VisibilityLevel { get; set; }
@@ -648,6 +662,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("approvalsBeforeMerge")]
         public Input<int>? ApprovalsBeforeMerge { get; set; }
+
+        /// <summary>
+        /// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
+        /// </summary>
+        [Input("archiveOnDestroy")]
+        public Input<bool>? ArchiveOnDestroy { get; set; }
 
         /// <summary>
         /// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
@@ -686,14 +706,13 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         /// </summary>
         [Input("groupWithProjectTemplatesId")]
         public Input<int>? GroupWithProjectTemplatesId { get; set; }
 
         /// <summary>
         /// URL that can be provided to `git clone` to clone the
-        /// repository via HTTP.
         /// </summary>
         [Input("httpUrlToRepo")]
         public Input<string>? HttpUrlToRepo { get; set; }
@@ -717,6 +736,12 @@ namespace Pulumi.GitLab
         public Input<bool>? IssuesEnabled { get; set; }
 
         /// <summary>
+        /// Sets the template for new issues in the project.
+        /// </summary>
+        [Input("issuesTemplate")]
+        public Input<string>? IssuesTemplate { get; set; }
+
+        /// <summary>
         /// Enable LFS for the project.
         /// </summary>
         [Input("lfsEnabled")]
@@ -724,8 +749,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Set to `ff` to create fast-forward merges
-        /// Valid values are `merge`, `rebase_merge`, `ff`
-        /// Repositories are created with `merge` by default
         /// </summary>
         [Input("mergeMethod")]
         public Input<string>? MergeMethod { get; set; }
@@ -737,20 +760,25 @@ namespace Pulumi.GitLab
         public Input<bool>? MergeRequestsEnabled { get; set; }
 
         /// <summary>
-        /// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
-        /// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+        /// Sets the template for new merge requests in the project.
+        /// </summary>
+        [Input("mergeRequestsTemplate")]
+        public Input<string>? MergeRequestsTemplate { get; set; }
+
+        /// <summary>
+        /// Enable project pull mirror.
         /// </summary>
         [Input("mirror")]
         public Input<bool>? Mirror { get; set; }
 
         /// <summary>
-        /// Pull mirror overwrites diverged branches.
+        /// Enable overwrite diverged branches for a mirrored project.
         /// </summary>
         [Input("mirrorOverwritesDivergedBranches")]
         public Input<bool>? MirrorOverwritesDivergedBranches { get; set; }
 
         /// <summary>
-        /// Pull mirroring triggers builds. Default is `false`.
+        /// Enable trigger builds on pushes for a mirrored project.
         /// </summary>
         [Input("mirrorTriggerBuilds")]
         public Input<bool>? MirrorTriggerBuilds { get; set; }
@@ -763,7 +791,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// The namespace (group or user) of the project. Defaults to your user.
-        /// See `gitlab.Group` for an example.
         /// </summary>
         [Input("namespaceId")]
         public Input<int>? NamespaceId { get; set; }
@@ -781,7 +808,7 @@ namespace Pulumi.GitLab
         public Input<bool>? OnlyAllowMergeIfPipelineSucceeds { get; set; }
 
         /// <summary>
-        /// Only mirror protected branches.
+        /// Enable only mirror protected branches for a mirrored project.
         /// </summary>
         [Input("onlyMirrorProtectedBranches")]
         public Input<bool>? OnlyMirrorProtectedBranches { get; set; }
@@ -794,8 +821,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Enable pages access control
-        /// Valid values are `disabled`, `private`, `enabled`, `public`.
-        /// `private` is the default.
         /// </summary>
         [Input("pagesAccessLevel")]
         public Input<string>? PagesAccessLevel { get; set; }
@@ -819,7 +844,7 @@ namespace Pulumi.GitLab
         public Input<bool>? PipelinesEnabled { get; set; }
 
         /// <summary>
-        /// Push rules for the project (documented below).
+        /// Push rules for the project.
         /// </summary>
         [Input("pushRules")]
         public Input<Inputs.ProjectPushRulesGetArgs>? PushRules { get; set; }
@@ -862,7 +887,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// URL that can be provided to `git clone` to clone the
-        /// repository via SSH.
         /// </summary>
         [Input("sshUrlToRepo")]
         public Input<string>? SshUrlToRepo { get; set; }
@@ -880,27 +904,25 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        /// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         /// </summary>
         [Input("templateName")]
         public Input<string>? TemplateName { get; set; }
 
         /// <summary>
-        /// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        /// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
         /// </summary>
         [Input("templateProjectId")]
         public Input<int>? TemplateProjectId { get; set; }
 
         /// <summary>
-        /// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        /// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
         /// </summary>
         [Input("useCustomTemplate")]
         public Input<bool>? UseCustomTemplate { get; set; }
 
         /// <summary>
         /// Set to `public` to create a public project.
-        /// Valid values are `private`, `internal`, `public`.
-        /// Repositories are created as private by default.
         /// </summary>
         [Input("visibilityLevel")]
         public Input<string>? VisibilityLevel { get; set; }

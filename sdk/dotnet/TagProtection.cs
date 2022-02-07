@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_tag\_protection
-    /// 
     /// This resource allows you to protect a specific tag or wildcard by an access level so that the user with less access level cannot Create the tags.
     /// 
     /// ## Example Usage
@@ -34,12 +32,20 @@ namespace Pulumi.GitLab
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// # Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gitlab:index/tagProtection:TagProtection example 123456789:v1.0.0
+    /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/tagProtection:TagProtection")]
     public partial class TagProtection : Pulumi.CustomResource
     {
         /// <summary>
-        /// One of five levels of access to the project.
+        /// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
         [Output("createAccessLevel")]
         public Output<string> CreateAccessLevel { get; private set; } = null!;
@@ -103,7 +109,7 @@ namespace Pulumi.GitLab
     public sealed class TagProtectionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// One of five levels of access to the project.
+        /// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
         [Input("createAccessLevel", required: true)]
         public Input<string> CreateAccessLevel { get; set; } = null!;
@@ -128,7 +134,7 @@ namespace Pulumi.GitLab
     public sealed class TagProtectionState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// One of five levels of access to the project.
+        /// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
         [Input("createAccessLevel")]
         public Input<string>? CreateAccessLevel { get; set; }

@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_project_mirror
-    /// 
     /// This resource allows you to add a mirror target for the repository, all changes will be synced to the remote target.
     /// 
     /// &gt; This is for *pushing* changes to a remote repository. *Pull Mirroring* can be configured using a combination of the
@@ -42,7 +40,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
+    /// # GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectMirror:ProjectMirror foo "12345:1337"
@@ -63,6 +61,9 @@ namespace Pulumi.GitLab
         [Output("keepDivergentRefs")]
         public Output<bool?> KeepDivergentRefs { get; private set; } = null!;
 
+        /// <summary>
+        /// Mirror ID.
+        /// </summary>
         [Output("mirrorId")]
         public Output<int> MirrorId { get; private set; } = null!;
 
@@ -179,6 +180,9 @@ namespace Pulumi.GitLab
         [Input("keepDivergentRefs")]
         public Input<bool>? KeepDivergentRefs { get; set; }
 
+        /// <summary>
+        /// Mirror ID.
+        /// </summary>
         [Input("mirrorId")]
         public Input<int>? MirrorId { get; set; }
 

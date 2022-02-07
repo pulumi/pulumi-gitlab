@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_user
- *
  * This resource allows you to create and manage GitLab users.
  * Note your provider will need to be configured with admin-level access for this resource to work.
  *
@@ -33,10 +31,10 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import gitlab:index/user:User You can import a user to terraform state using `<resource> <id>`.
+ *  $ pulumi import gitlab:index/user:User # You can import a user to terraform state using `<resource> <id>`.
  * ```
  *
- *  The `id` must be an integer for the id of the user you want to import, for example
+ * # The `id` must be an integer for the id of the user you want to import, # for example
  *
  * ```sh
  *  $ pulumi import gitlab:index/user:User example 42
@@ -80,7 +78,6 @@ export class User extends pulumi.CustomResource {
     public readonly email!: pulumi.Output<string>;
     /**
      * Boolean, defaults to false.  Whether to enable administrative privileges
-     * for the user.
      */
     public readonly isAdmin!: pulumi.Output<boolean | undefined>;
     /**
@@ -179,7 +176,6 @@ export interface UserState {
     email?: pulumi.Input<string>;
     /**
      * Boolean, defaults to false.  Whether to enable administrative privileges
-     * for the user.
      */
     isAdmin?: pulumi.Input<boolean>;
     /**
@@ -230,7 +226,6 @@ export interface UserArgs {
     email: pulumi.Input<string>;
     /**
      * Boolean, defaults to false.  Whether to enable administrative privileges
-     * for the user.
      */
     isAdmin?: pulumi.Input<boolean>;
     /**

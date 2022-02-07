@@ -6,14 +6,13 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_projects
- *
  * Provide details about a list of projects in the Gitlab provider. Listing all projects and group projects with [project filtering](https://docs.gitlab.com/ee/api/projects.html#list-user-projects) or [group project filtering](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-projects) is supported.
  *
  * > **NOTE**: This data source supports all available filters exposed by the `xanzy/go-gitlab` package, which might not expose all available filters exposed by the Gitlab APIs.
  *
+ * > **NOTE**: The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
+ *
  * ## Example Usage
- * ### List projects within a group tree
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,17 +27,10 @@ import * as utilities from "./utilities";
  *     includeSubgroups: true,
  *     withShared: false,
  * }));
- * ```
- * ### List projects using the search syntax
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const projects = pulumi.output(gitlab.getProjects({
+ * const projects = gitlab.getProjects({
  *     search: "postgresql",
  *     visibility: "private",
- * }));
+ * });
  * ```
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
@@ -90,7 +82,7 @@ export interface GetProjectsArgs {
      */
     includeSubgroups?: boolean;
     /**
-     * Prevents overloading your Gitlab instance in case of a misconfiguration. Default is `10`.
+     * The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
      */
     maxQueryablePages?: number;
     /**
@@ -109,7 +101,13 @@ export interface GetProjectsArgs {
      * Limit by projects owned by the current user.
      */
     owned?: boolean;
+    /**
+     * The first page to begin the query on.
+     */
     page?: number;
+    /**
+     * The number of results to return per page.
+     */
     perPage?: number;
     /**
      * Return list of authorized projects matching the search criteria.
@@ -136,7 +134,7 @@ export interface GetProjectsArgs {
      */
     visibility?: string;
     /**
-     * Include custom attributes in response _(admins only)_.
+     * Include custom attributes in response *(admins only)*.
      */
     withCustomAttributes?: boolean;
     /**
@@ -161,37 +159,97 @@ export interface GetProjectsArgs {
  * A collection of values returned by getProjects.
  */
 export interface GetProjectsResult {
+    /**
+     * Limit by archived status.
+     */
     readonly archived?: boolean;
+    /**
+     * The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
+     */
     readonly groupId?: number;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Include projects in subgroups of this group. Default is `false`. Needs `groupId`.
+     */
     readonly includeSubgroups?: boolean;
+    /**
+     * The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+     */
     readonly maxQueryablePages?: number;
+    /**
+     * Limit by projects that the current user is a member of.
+     */
     readonly membership?: boolean;
+    /**
+     * Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `groupId`.
+     */
     readonly minAccessLevel?: number;
+    /**
+     * Return projects ordered by `id`, `name`, `path`, `createdAt`, `updatedAt`, or `lastActivityAt` fields. Default is `createdAt`.
+     */
     readonly orderBy?: string;
+    /**
+     * Limit by projects owned by the current user.
+     */
     readonly owned?: boolean;
+    /**
+     * The first page to begin the query on.
+     */
     readonly page?: number;
+    /**
+     * The number of results to return per page.
+     */
     readonly perPage?: number;
     /**
      * A list containing the projects matching the supplied arguments
      */
     readonly projects: outputs.GetProjectsProject[];
+    /**
+     * Return list of authorized projects matching the search criteria.
+     */
     readonly search?: string;
+    /**
+     * Return only the ID, URL, name, and path of each project.
+     */
     readonly simple?: boolean;
+    /**
+     * Return projects sorted in `asc` or `desc` order. Default is `desc`.
+     */
     readonly sort?: string;
+    /**
+     * Limit by projects starred by the current user.
+     */
     readonly starred?: boolean;
+    /**
+     * Include project statistics. Cannot be used with `groupId`.
+     */
     readonly statistics?: boolean;
     /**
-     * The visibility of the project.
+     * Limit by visibility `public`, `internal`, or `private`.
      */
     readonly visibility?: string;
+    /**
+     * Include custom attributes in response *(admins only)*.
+     */
     readonly withCustomAttributes?: boolean;
+    /**
+     * Limit by projects with issues feature enabled. Default is `false`.
+     */
     readonly withIssuesEnabled?: boolean;
+    /**
+     * Limit by projects with merge requests feature enabled. Default is `false`.
+     */
     readonly withMergeRequestsEnabled?: boolean;
+    /**
+     * Limit by projects which use the given programming language. Cannot be used with `groupId`.
+     */
     readonly withProgrammingLanguage?: string;
+    /**
+     * Include projects shared to this group. Default is `true`. Needs `groupId`.
+     */
     readonly withShared?: boolean;
 }
 
@@ -216,7 +274,7 @@ export interface GetProjectsOutputArgs {
      */
     includeSubgroups?: pulumi.Input<boolean>;
     /**
-     * Prevents overloading your Gitlab instance in case of a misconfiguration. Default is `10`.
+     * The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
      */
     maxQueryablePages?: pulumi.Input<number>;
     /**
@@ -235,7 +293,13 @@ export interface GetProjectsOutputArgs {
      * Limit by projects owned by the current user.
      */
     owned?: pulumi.Input<boolean>;
+    /**
+     * The first page to begin the query on.
+     */
     page?: pulumi.Input<number>;
+    /**
+     * The number of results to return per page.
+     */
     perPage?: pulumi.Input<number>;
     /**
      * Return list of authorized projects matching the search criteria.
@@ -262,7 +326,7 @@ export interface GetProjectsOutputArgs {
      */
     visibility?: pulumi.Input<string>;
     /**
-     * Include custom attributes in response _(admins only)_.
+     * Include custom attributes in response *(admins only)*.
      */
     withCustomAttributes?: pulumi.Input<boolean>;
     /**

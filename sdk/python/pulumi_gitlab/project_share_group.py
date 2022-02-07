@@ -13,30 +13,26 @@ __all__ = ['ProjectShareGroupArgs', 'ProjectShareGroup']
 @pulumi.input_type
 class ProjectShareGroupArgs:
     def __init__(__self__, *,
-                 access_level: pulumi.Input[str],
                  group_id: pulumi.Input[int],
-                 project_id: pulumi.Input[str]):
+                 project_id: pulumi.Input[str],
+                 access_level: Optional[pulumi.Input[str]] = None,
+                 group_access: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ProjectShareGroup resource.
-        :param pulumi.Input[str] access_level: One of five levels of access to the project.
         :param pulumi.Input[int] group_id: The id of the group.
         :param pulumi.Input[str] project_id: The id of the project.
+        :param pulumi.Input[str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        :param pulumi.Input[str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
         """
-        pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "project_id", project_id)
-
-    @property
-    @pulumi.getter(name="accessLevel")
-    def access_level(self) -> pulumi.Input[str]:
-        """
-        One of five levels of access to the project.
-        """
-        return pulumi.get(self, "access_level")
-
-    @access_level.setter
-    def access_level(self, value: pulumi.Input[str]):
-        pulumi.set(self, "access_level", value)
+        if access_level is not None:
+            warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
+            pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if group_access is not None:
+            pulumi.set(__self__, "group_access", group_access)
 
     @property
     @pulumi.getter(name="groupId")
@@ -62,21 +58,52 @@ class ProjectShareGroupArgs:
     def project_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_id", value)
 
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        """
+        return pulumi.get(self, "access_level")
+
+    @access_level.setter
+    def access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter(name="groupAccess")
+    def group_access(self) -> Optional[pulumi.Input[str]]:
+        """
+        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        """
+        return pulumi.get(self, "group_access")
+
+    @group_access.setter
+    def group_access(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_access", value)
+
 
 @pulumi.input_type
 class _ProjectShareGroupState:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None,
+                 group_access: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
                  project_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ProjectShareGroup resources.
-        :param pulumi.Input[str] access_level: One of five levels of access to the project.
+        :param pulumi.Input[str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        :param pulumi.Input[str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
         :param pulumi.Input[int] group_id: The id of the group.
         :param pulumi.Input[str] project_id: The id of the project.
         """
         if access_level is not None:
+            warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
+            pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
+        if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if group_access is not None:
+            pulumi.set(__self__, "group_access", group_access)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if project_id is not None:
@@ -86,13 +113,25 @@ class _ProjectShareGroupState:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[str]]:
         """
-        One of five levels of access to the project.
+        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
     def access_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter(name="groupAccess")
+    def group_access(self) -> Optional[pulumi.Input[str]]:
+        """
+        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        """
+        return pulumi.get(self, "group_access")
+
+    @group_access.setter
+    def group_access(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_access", value)
 
     @property
     @pulumi.getter(name="groupId")
@@ -125,12 +164,11 @@ class ProjectShareGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[str]] = None,
+                 group_access: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # gitlab\_project\_share\_group
-
         This resource allows you to share a project with a group
 
         ## Example Usage
@@ -140,14 +178,14 @@ class ProjectShareGroup(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         test = gitlab.ProjectShareGroup("test",
-            access_level="guest",
+            group_access="guest",
             group_id=1337,
             project_id="12345")
         ```
 
         ## Import
 
-        GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
+        # GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/projectShareGroup:ProjectShareGroup test 12345:1337
@@ -155,7 +193,8 @@ class ProjectShareGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_level: One of five levels of access to the project.
+        :param pulumi.Input[str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        :param pulumi.Input[str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
         :param pulumi.Input[int] group_id: The id of the group.
         :param pulumi.Input[str] project_id: The id of the project.
         """
@@ -166,8 +205,6 @@ class ProjectShareGroup(pulumi.CustomResource):
                  args: ProjectShareGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # gitlab\_project\_share\_group
-
         This resource allows you to share a project with a group
 
         ## Example Usage
@@ -177,14 +214,14 @@ class ProjectShareGroup(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         test = gitlab.ProjectShareGroup("test",
-            access_level="guest",
+            group_access="guest",
             group_id=1337,
             project_id="12345")
         ```
 
         ## Import
 
-        GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
+        # GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/projectShareGroup:ProjectShareGroup test 12345:1337
@@ -206,6 +243,7 @@ class ProjectShareGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[str]] = None,
+                 group_access: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -220,9 +258,11 @@ class ProjectShareGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProjectShareGroupArgs.__new__(ProjectShareGroupArgs)
 
-            if access_level is None and not opts.urn:
-                raise TypeError("Missing required property 'access_level'")
+            if access_level is not None and not opts.urn:
+                warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
+                pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
             __props__.__dict__["access_level"] = access_level
+            __props__.__dict__["group_access"] = group_access
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
@@ -240,6 +280,7 @@ class ProjectShareGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_level: Optional[pulumi.Input[str]] = None,
+            group_access: Optional[pulumi.Input[str]] = None,
             group_id: Optional[pulumi.Input[int]] = None,
             project_id: Optional[pulumi.Input[str]] = None) -> 'ProjectShareGroup':
         """
@@ -249,7 +290,8 @@ class ProjectShareGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_level: One of five levels of access to the project.
+        :param pulumi.Input[str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        :param pulumi.Input[str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
         :param pulumi.Input[int] group_id: The id of the group.
         :param pulumi.Input[str] project_id: The id of the project.
         """
@@ -258,17 +300,26 @@ class ProjectShareGroup(pulumi.CustomResource):
         __props__ = _ProjectShareGroupState.__new__(_ProjectShareGroupState)
 
         __props__.__dict__["access_level"] = access_level
+        __props__.__dict__["group_access"] = group_access
         __props__.__dict__["group_id"] = group_id
         __props__.__dict__["project_id"] = project_id
         return ProjectShareGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> pulumi.Output[str]:
+    def access_level(self) -> pulumi.Output[Optional[str]]:
         """
-        One of five levels of access to the project.
+        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
         """
         return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter(name="groupAccess")
+    def group_access(self) -> pulumi.Output[Optional[str]]:
+        """
+        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        """
+        return pulumi.get(self, "group_access")
 
     @property
     @pulumi.getter(name="groupId")

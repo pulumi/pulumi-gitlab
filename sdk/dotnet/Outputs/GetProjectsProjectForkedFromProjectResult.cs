@@ -13,26 +13,14 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetProjectsProjectForkedFromProjectResult
     {
-        /// <summary>
-        /// The HTTP clone URL of the project.
-        /// </summary>
         public readonly string HttpUrlToRepo;
         /// <summary>
-        /// The ID of the project.
+        /// The ID of this resource.
         /// </summary>
         public readonly int Id;
-        /// <summary>
-        /// The name of the project.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// In `group / subgroup / project` or `user / project` format.
-        /// </summary>
         public readonly string NameWithNamespace;
         public readonly string Path;
-        /// <summary>
-        /// In `group/subgroup/project` or `user/project` format.
-        /// </summary>
         public readonly string PathWithNamespace;
         public readonly string WebUrl;
 

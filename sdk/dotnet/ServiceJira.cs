@@ -9,9 +9,50 @@ using Pulumi.Serialization;
 
 namespace Pulumi.GitLab
 {
+    /// <summary>
+    /// This resource allows you to manage Jira integration.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var awesomeProject = new GitLab.Project("awesomeProject", new GitLab.ProjectArgs
+    ///         {
+    ///             Description = "My awesome project.",
+    ///             VisibilityLevel = "public",
+    ///         });
+    ///         var jira = new GitLab.ServiceJira("jira", new GitLab.ServiceJiraArgs
+    ///         {
+    ///             Project = awesomeProject.Id,
+    ///             Url = "https://jira.example.com",
+    ///             Username = "user",
+    ///             Password = "mypass",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// # You can import a service_jira state using the project ID, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gitlab:index/serviceJira:ServiceJira jira 1
+    /// ```
+    /// </summary>
     [GitLabResourceType("gitlab:index/serviceJira:ServiceJira")]
     public partial class ServiceJira : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Whether the integration is active.
+        /// </summary>
         [Output("active")]
         public Output<bool> Active { get; private set; } = null!;
 
@@ -27,8 +68,17 @@ namespace Pulumi.GitLab
         [Output("commitEvents")]
         public Output<bool> CommitEvents { get; private set; } = null!;
 
+        /// <summary>
+        /// Create time.
+        /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable notifications for issues events.
+        /// </summary>
+        [Output("issuesEvents")]
+        public Output<bool> IssuesEvents { get; private set; } = null!;
 
         /// <summary>
         /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
@@ -37,16 +87,34 @@ namespace Pulumi.GitLab
         public Output<string?> JiraIssueTransitionId { get; private set; } = null!;
 
         /// <summary>
+        /// Enable notifications for job events.
+        /// </summary>
+        [Output("jobEvents")]
+        public Output<bool> JobEvents { get; private set; } = null!;
+
+        /// <summary>
         /// Enable notifications for merge request events
         /// </summary>
         [Output("mergeRequestsEvents")]
         public Output<bool> MergeRequestsEvents { get; private set; } = null!;
 
         /// <summary>
+        /// Enable notifications for note events.
+        /// </summary>
+        [Output("noteEvents")]
+        public Output<bool> NoteEvents { get; private set; } = null!;
+
+        /// <summary>
         /// The password of the user created to be used with GitLab/JIRA.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable notifications for pipeline events.
+        /// </summary>
+        [Output("pipelineEvents")]
+        public Output<bool> PipelineEvents { get; private set; } = null!;
 
         /// <summary>
         /// ID of the project you want to activate integration on.
@@ -60,9 +128,27 @@ namespace Pulumi.GitLab
         [Output("projectKey")]
         public Output<string?> ProjectKey { get; private set; } = null!;
 
+        /// <summary>
+        /// Enable notifications for push events.
+        /// </summary>
+        [Output("pushEvents")]
+        public Output<bool> PushEvents { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable notifications for tag_push events.
+        /// </summary>
+        [Output("tagPushEvents")]
+        public Output<bool> TagPushEvents { get; private set; } = null!;
+
+        /// <summary>
+        /// Title.
+        /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
 
+        /// <summary>
+        /// Update time.
+        /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
 
@@ -137,10 +223,22 @@ namespace Pulumi.GitLab
         public Input<bool>? CommitEvents { get; set; }
 
         /// <summary>
+        /// Enable notifications for issues events.
+        /// </summary>
+        [Input("issuesEvents")]
+        public Input<bool>? IssuesEvents { get; set; }
+
+        /// <summary>
         /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         /// </summary>
         [Input("jiraIssueTransitionId")]
         public Input<string>? JiraIssueTransitionId { get; set; }
+
+        /// <summary>
+        /// Enable notifications for job events.
+        /// </summary>
+        [Input("jobEvents")]
+        public Input<bool>? JobEvents { get; set; }
 
         /// <summary>
         /// Enable notifications for merge request events
@@ -149,10 +247,22 @@ namespace Pulumi.GitLab
         public Input<bool>? MergeRequestsEvents { get; set; }
 
         /// <summary>
+        /// Enable notifications for note events.
+        /// </summary>
+        [Input("noteEvents")]
+        public Input<bool>? NoteEvents { get; set; }
+
+        /// <summary>
         /// The password of the user created to be used with GitLab/JIRA.
         /// </summary>
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;
+
+        /// <summary>
+        /// Enable notifications for pipeline events.
+        /// </summary>
+        [Input("pipelineEvents")]
+        public Input<bool>? PipelineEvents { get; set; }
 
         /// <summary>
         /// ID of the project you want to activate integration on.
@@ -165,6 +275,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }
+
+        /// <summary>
+        /// Enable notifications for push events.
+        /// </summary>
+        [Input("pushEvents")]
+        public Input<bool>? PushEvents { get; set; }
+
+        /// <summary>
+        /// Enable notifications for tag_push events.
+        /// </summary>
+        [Input("tagPushEvents")]
+        public Input<bool>? TagPushEvents { get; set; }
 
         /// <summary>
         /// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
@@ -185,6 +307,9 @@ namespace Pulumi.GitLab
 
     public sealed class ServiceJiraState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the integration is active.
+        /// </summary>
         [Input("active")]
         public Input<bool>? Active { get; set; }
 
@@ -200,8 +325,17 @@ namespace Pulumi.GitLab
         [Input("commitEvents")]
         public Input<bool>? CommitEvents { get; set; }
 
+        /// <summary>
+        /// Create time.
+        /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Enable notifications for issues events.
+        /// </summary>
+        [Input("issuesEvents")]
+        public Input<bool>? IssuesEvents { get; set; }
 
         /// <summary>
         /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
@@ -210,16 +344,34 @@ namespace Pulumi.GitLab
         public Input<string>? JiraIssueTransitionId { get; set; }
 
         /// <summary>
+        /// Enable notifications for job events.
+        /// </summary>
+        [Input("jobEvents")]
+        public Input<bool>? JobEvents { get; set; }
+
+        /// <summary>
         /// Enable notifications for merge request events
         /// </summary>
         [Input("mergeRequestsEvents")]
         public Input<bool>? MergeRequestsEvents { get; set; }
 
         /// <summary>
+        /// Enable notifications for note events.
+        /// </summary>
+        [Input("noteEvents")]
+        public Input<bool>? NoteEvents { get; set; }
+
+        /// <summary>
         /// The password of the user created to be used with GitLab/JIRA.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// Enable notifications for pipeline events.
+        /// </summary>
+        [Input("pipelineEvents")]
+        public Input<bool>? PipelineEvents { get; set; }
 
         /// <summary>
         /// ID of the project you want to activate integration on.
@@ -233,9 +385,27 @@ namespace Pulumi.GitLab
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }
 
+        /// <summary>
+        /// Enable notifications for push events.
+        /// </summary>
+        [Input("pushEvents")]
+        public Input<bool>? PushEvents { get; set; }
+
+        /// <summary>
+        /// Enable notifications for tag_push events.
+        /// </summary>
+        [Input("tagPushEvents")]
+        public Input<bool>? TagPushEvents { get; set; }
+
+        /// <summary>
+        /// Title.
+        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 
+        /// <summary>
+        /// Update time.
+        /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 

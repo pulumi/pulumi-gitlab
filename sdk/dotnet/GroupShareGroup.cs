@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_group\_share\_group
-    /// 
     /// This resource allows you to share a group with another group
     /// 
     /// ## Example Usage
@@ -38,7 +36,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
+    /// # GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/groupShareGroup:GroupShareGroup test 12345:1337
@@ -54,7 +52,7 @@ namespace Pulumi.GitLab
         public Output<string?> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
-        /// One of five levels of access to the group.
+        /// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Output("groupAccess")]
         public Output<string> GroupAccess { get; private set; } = null!;
@@ -124,7 +122,7 @@ namespace Pulumi.GitLab
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
-        /// One of five levels of access to the group.
+        /// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Input("groupAccess", required: true)]
         public Input<string> GroupAccess { get; set; } = null!;
@@ -155,7 +153,7 @@ namespace Pulumi.GitLab
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
-        /// One of five levels of access to the group.
+        /// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Input("groupAccess")]
         public Input<string>? GroupAccess { get; set; }

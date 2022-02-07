@@ -5,27 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_group
- *
  * Provide details about a specific group in the gitlab provider.
  *
+ * > **Note**: exactly one of groupId or fullPath must be provided.
+ *
  * ## Example Usage
- * ### By group's ID
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const foo = pulumi.output(gitlab.getGroup({
- *     groupId: 123,
- * }));
- * ```
- * ### By group's full path
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
+ * // By group's full path
  * const foo = pulumi.output(gitlab.getGroup({
  *     fullPath: "foo/bar",
  * }));
@@ -78,6 +68,9 @@ export interface GetGroupResult {
      * The full path of the group.
      */
     readonly fullPath: string;
+    /**
+     * The ID of the group.
+     */
     readonly groupId: number;
     /**
      * The provider-assigned unique ID for this managed resource.

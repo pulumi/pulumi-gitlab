@@ -8,7 +8,9 @@ declare var exports: any;
 const __config = new pulumi.Config("gitlab");
 
 /**
- * The GitLab Base API URL
+ * This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
+ * Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
+ * the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
  */
 export declare const baseUrl: string | undefined;
 Object.defineProperty(exports, "baseUrl", {
@@ -19,7 +21,8 @@ Object.defineProperty(exports, "baseUrl", {
 });
 
 /**
- * A file containing the ca certificate to use in case ssl certificate is not from a standard chain
+ * This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab
+ * CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
  */
 export declare const cacertFile: string | undefined;
 Object.defineProperty(exports, "cacertFile", {
@@ -41,7 +44,8 @@ Object.defineProperty(exports, "clientCert", {
 });
 
 /**
- * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
+ * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
+ * `client_cert` is set.
  */
 export declare const clientKey: string | undefined;
 Object.defineProperty(exports, "clientKey", {
@@ -52,7 +56,21 @@ Object.defineProperty(exports, "clientKey", {
 });
 
 /**
- * Disable SSL verification of API calls
+ * (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
+ * configuration is correct and the GitLab API is reachable. Turn it off, to skip this check. This may be useful if the
+ * GitLab instance does not yet exist and is created within the same terraform module. This is an experimental feature and
+ * may change in the future. Please make sure to always keep backups of your state.
+ */
+export declare const earlyAuthCheck: boolean | undefined;
+Object.defineProperty(exports, "earlyAuthCheck", {
+    get() {
+        return __config.getObject<boolean>("earlyAuthCheck");
+    },
+    enumerable: true,
+});
+
+/**
+ * When set to true this disables SSL verification of the connection to the GitLab instance.
  */
 export declare const insecure: boolean | undefined;
 Object.defineProperty(exports, "insecure", {
@@ -63,7 +81,10 @@ Object.defineProperty(exports, "insecure", {
 });
 
 /**
- * The OAuth2 token or project/personal access token used to connect to GitLab.
+ * The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
+ * used in this provider for authentication (using Bearer authorization token). See
+ * https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
+ * variable.
  */
 export declare const token: string | undefined;
 Object.defineProperty(exports, "token", {

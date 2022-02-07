@@ -61,8 +61,8 @@ class GetProjectResult:
         if pipelines_enabled and not isinstance(pipelines_enabled, bool):
             raise TypeError("Expected argument 'pipelines_enabled' to be a bool")
         pulumi.set(__self__, "pipelines_enabled", pipelines_enabled)
-        if push_rules and not isinstance(push_rules, dict):
-            raise TypeError("Expected argument 'push_rules' to be a dict")
+        if push_rules and not isinstance(push_rules, list):
+            raise TypeError("Expected argument 'push_rules' to be a list")
         pulumi.set(__self__, "push_rules", push_rules)
         if remove_source_branch_after_merge and not isinstance(remove_source_branch_after_merge, bool):
             raise TypeError("Expected argument 'remove_source_branch_after_merge' to be a bool")
@@ -118,7 +118,6 @@ class GetProjectResult:
     def http_url_to_repo(self) -> str:
         """
         URL that can be provided to `git clone` to clone the
-        repository via HTTP.
         """
         return pulumi.get(self, "http_url_to_repo")
 
@@ -126,7 +125,7 @@ class GetProjectResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        Integer that uniquely identifies the project within the gitlab install.
+        The integer or path with namespace that uniquely identifies the project within the gitlab install.
         """
         return pulumi.get(self, "id")
 
@@ -157,6 +156,9 @@ class GetProjectResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the project.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -164,7 +166,6 @@ class GetProjectResult:
     def namespace_id(self) -> int:
         """
         The namespace (group or user) of the project. Defaults to your user.
-        See `Group` for an example.
         """
         return pulumi.get(self, "namespace_id")
 
@@ -194,7 +195,10 @@ class GetProjectResult:
 
     @property
     @pulumi.getter(name="pushRules")
-    def push_rules(self) -> 'outputs.GetProjectPushRulesResult':
+    def push_rules(self) -> Sequence['outputs.GetProjectPushRuleResult']:
+        """
+        Push rules for the project.
+        """
         return pulumi.get(self, "push_rules")
 
     @property
@@ -234,7 +238,6 @@ class GetProjectResult:
     def ssh_url_to_repo(self) -> str:
         """
         URL that can be provided to `git clone` to clone the
-        repository via SSH.
         """
         return pulumi.get(self, "ssh_url_to_repo")
 
@@ -294,20 +297,12 @@ class AwaitableGetProjectResult(GetProjectResult):
 
 
 def get_project(id: Optional[str] = None,
+                path_with_namespace: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
-    ## # gitlab\_project
-
     Provide details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
 
     ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_project(id="30")
-    ```
 
     ```python
     import pulumi
@@ -318,9 +313,11 @@ def get_project(id: Optional[str] = None,
 
 
     :param str id: The integer or path with namespace that uniquely identifies the project within the gitlab install.
+    :param str path_with_namespace: The path of the repository with namespace.
     """
     __args__ = dict()
     __args__['id'] = id
+    __args__['pathWithNamespace'] = path_with_namespace
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -353,21 +350,13 @@ def get_project(id: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_project)
-def get_project_output(id: Optional[pulumi.Input[str]] = None,
+def get_project_output(id: Optional[pulumi.Input[Optional[str]]] = None,
+                       path_with_namespace: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
     """
-    ## # gitlab\_project
-
     Provide details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
 
     ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_project(id="30")
-    ```
 
     ```python
     import pulumi
@@ -378,5 +367,6 @@ def get_project_output(id: Optional[pulumi.Input[str]] = None,
 
 
     :param str id: The integer or path with namespace that uniquely identifies the project within the gitlab install.
+    :param str path_with_namespace: The path of the repository with namespace.
     """
     ...

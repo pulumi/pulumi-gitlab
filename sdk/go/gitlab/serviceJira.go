@@ -11,27 +11,85 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to manage Jira integration.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		awesomeProject, err := gitlab.NewProject(ctx, "awesomeProject", &gitlab.ProjectArgs{
+// 			Description:     pulumi.String("My awesome project."),
+// 			VisibilityLevel: pulumi.String("public"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = gitlab.NewServiceJira(ctx, "jira", &gitlab.ServiceJiraArgs{
+// 			Project:  awesomeProject.ID(),
+// 			Url:      pulumi.String("https://jira.example.com"),
+// 			Username: pulumi.String("user"),
+// 			Password: pulumi.String("mypass"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// # You can import a service_jira state using the project ID, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/serviceJira:ServiceJira jira 1
+// ```
 type ServiceJira struct {
 	pulumi.CustomResourceState
 
+	// Whether the integration is active.
 	Active pulumi.BoolOutput `pulumi:"active"`
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
 	CommentOnEventEnabled pulumi.BoolOutput `pulumi:"commentOnEventEnabled"`
 	// Enable notifications for commit events
-	CommitEvents pulumi.BoolOutput   `pulumi:"commitEvents"`
-	CreatedAt    pulumi.StringOutput `pulumi:"createdAt"`
+	CommitEvents pulumi.BoolOutput `pulumi:"commitEvents"`
+	// Create time.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Enable notifications for issues events.
+	IssuesEvents pulumi.BoolOutput `pulumi:"issuesEvents"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
 	JiraIssueTransitionId pulumi.StringPtrOutput `pulumi:"jiraIssueTransitionId"`
+	// Enable notifications for job events.
+	JobEvents pulumi.BoolOutput `pulumi:"jobEvents"`
 	// Enable notifications for merge request events
 	MergeRequestsEvents pulumi.BoolOutput `pulumi:"mergeRequestsEvents"`
+	// Enable notifications for note events.
+	NoteEvents pulumi.BoolOutput `pulumi:"noteEvents"`
 	// The password of the user created to be used with GitLab/JIRA.
 	Password pulumi.StringOutput `pulumi:"password"`
+	// Enable notifications for pipeline events.
+	PipelineEvents pulumi.BoolOutput `pulumi:"pipelineEvents"`
 	// ID of the project you want to activate integration on.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
 	ProjectKey pulumi.StringPtrOutput `pulumi:"projectKey"`
-	Title      pulumi.StringOutput    `pulumi:"title"`
-	UpdatedAt  pulumi.StringOutput    `pulumi:"updatedAt"`
+	// Enable notifications for push events.
+	PushEvents pulumi.BoolOutput `pulumi:"pushEvents"`
+	// Enable notifications for tagPush events.
+	TagPushEvents pulumi.BoolOutput `pulumi:"tagPushEvents"`
+	// Title.
+	Title pulumi.StringOutput `pulumi:"title"`
+	// Update time.
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// The username of the user created to be used with GitLab/JIRA.
@@ -79,24 +137,40 @@ func GetServiceJira(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceJira resources.
 type serviceJiraState struct {
+	// Whether the integration is active.
 	Active *bool `pulumi:"active"`
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
 	CommentOnEventEnabled *bool `pulumi:"commentOnEventEnabled"`
 	// Enable notifications for commit events
-	CommitEvents *bool   `pulumi:"commitEvents"`
-	CreatedAt    *string `pulumi:"createdAt"`
+	CommitEvents *bool `pulumi:"commitEvents"`
+	// Create time.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Enable notifications for issues events.
+	IssuesEvents *bool `pulumi:"issuesEvents"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
+	// Enable notifications for job events.
+	JobEvents *bool `pulumi:"jobEvents"`
 	// Enable notifications for merge request events
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
+	// Enable notifications for note events.
+	NoteEvents *bool `pulumi:"noteEvents"`
 	// The password of the user created to be used with GitLab/JIRA.
 	Password *string `pulumi:"password"`
+	// Enable notifications for pipeline events.
+	PipelineEvents *bool `pulumi:"pipelineEvents"`
 	// ID of the project you want to activate integration on.
 	Project *string `pulumi:"project"`
 	// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
 	ProjectKey *string `pulumi:"projectKey"`
-	Title      *string `pulumi:"title"`
-	UpdatedAt  *string `pulumi:"updatedAt"`
+	// Enable notifications for push events.
+	PushEvents *bool `pulumi:"pushEvents"`
+	// Enable notifications for tagPush events.
+	TagPushEvents *bool `pulumi:"tagPushEvents"`
+	// Title.
+	Title *string `pulumi:"title"`
+	// Update time.
+	UpdatedAt *string `pulumi:"updatedAt"`
 	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
 	Url *string `pulumi:"url"`
 	// The username of the user created to be used with GitLab/JIRA.
@@ -104,24 +178,40 @@ type serviceJiraState struct {
 }
 
 type ServiceJiraState struct {
+	// Whether the integration is active.
 	Active pulumi.BoolPtrInput
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
 	CommentOnEventEnabled pulumi.BoolPtrInput
 	// Enable notifications for commit events
 	CommitEvents pulumi.BoolPtrInput
-	CreatedAt    pulumi.StringPtrInput
+	// Create time.
+	CreatedAt pulumi.StringPtrInput
+	// Enable notifications for issues events.
+	IssuesEvents pulumi.BoolPtrInput
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
 	JiraIssueTransitionId pulumi.StringPtrInput
+	// Enable notifications for job events.
+	JobEvents pulumi.BoolPtrInput
 	// Enable notifications for merge request events
 	MergeRequestsEvents pulumi.BoolPtrInput
+	// Enable notifications for note events.
+	NoteEvents pulumi.BoolPtrInput
 	// The password of the user created to be used with GitLab/JIRA.
 	Password pulumi.StringPtrInput
+	// Enable notifications for pipeline events.
+	PipelineEvents pulumi.BoolPtrInput
 	// ID of the project you want to activate integration on.
 	Project pulumi.StringPtrInput
 	// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
 	ProjectKey pulumi.StringPtrInput
-	Title      pulumi.StringPtrInput
-	UpdatedAt  pulumi.StringPtrInput
+	// Enable notifications for push events.
+	PushEvents pulumi.BoolPtrInput
+	// Enable notifications for tagPush events.
+	TagPushEvents pulumi.BoolPtrInput
+	// Title.
+	Title pulumi.StringPtrInput
+	// Update time.
+	UpdatedAt pulumi.StringPtrInput
 	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
 	Url pulumi.StringPtrInput
 	// The username of the user created to be used with GitLab/JIRA.
@@ -137,16 +227,28 @@ type serviceJiraArgs struct {
 	CommentOnEventEnabled *bool `pulumi:"commentOnEventEnabled"`
 	// Enable notifications for commit events
 	CommitEvents *bool `pulumi:"commitEvents"`
+	// Enable notifications for issues events.
+	IssuesEvents *bool `pulumi:"issuesEvents"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
+	// Enable notifications for job events.
+	JobEvents *bool `pulumi:"jobEvents"`
 	// Enable notifications for merge request events
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
+	// Enable notifications for note events.
+	NoteEvents *bool `pulumi:"noteEvents"`
 	// The password of the user created to be used with GitLab/JIRA.
 	Password string `pulumi:"password"`
+	// Enable notifications for pipeline events.
+	PipelineEvents *bool `pulumi:"pipelineEvents"`
 	// ID of the project you want to activate integration on.
 	Project string `pulumi:"project"`
 	// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
 	ProjectKey *string `pulumi:"projectKey"`
+	// Enable notifications for push events.
+	PushEvents *bool `pulumi:"pushEvents"`
+	// Enable notifications for tagPush events.
+	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
 	Url string `pulumi:"url"`
 	// The username of the user created to be used with GitLab/JIRA.
@@ -159,16 +261,28 @@ type ServiceJiraArgs struct {
 	CommentOnEventEnabled pulumi.BoolPtrInput
 	// Enable notifications for commit events
 	CommitEvents pulumi.BoolPtrInput
+	// Enable notifications for issues events.
+	IssuesEvents pulumi.BoolPtrInput
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
 	JiraIssueTransitionId pulumi.StringPtrInput
+	// Enable notifications for job events.
+	JobEvents pulumi.BoolPtrInput
 	// Enable notifications for merge request events
 	MergeRequestsEvents pulumi.BoolPtrInput
+	// Enable notifications for note events.
+	NoteEvents pulumi.BoolPtrInput
 	// The password of the user created to be used with GitLab/JIRA.
 	Password pulumi.StringInput
+	// Enable notifications for pipeline events.
+	PipelineEvents pulumi.BoolPtrInput
 	// ID of the project you want to activate integration on.
 	Project pulumi.StringInput
 	// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
 	ProjectKey pulumi.StringPtrInput
+	// Enable notifications for push events.
+	PushEvents pulumi.BoolPtrInput
+	// Enable notifications for tagPush events.
+	TagPushEvents pulumi.BoolPtrInput
 	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
 	Url pulumi.StringInput
 	// The username of the user created to be used with GitLab/JIRA.

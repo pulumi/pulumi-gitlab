@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_project\_cluster
- *
  * This resource allows you to create and manage project clusters for your GitLab projects.
  * For further information on clusters, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).
@@ -19,22 +17,22 @@ import * as utilities from "./utilities";
  *
  * const foo = new gitlab.Project("foo", {});
  * const bar = new gitlab.ProjectCluster("bar", {
+ *     project: foo.id,
  *     domain: "example.com",
  *     enabled: true,
- *     environmentScope: "*",
  *     kubernetesApiUrl: "https://124.124.124",
- *     kubernetesAuthorizationType: "rbac",
+ *     kubernetesToken: "some-token",
  *     kubernetesCaCert: "some-cert",
  *     kubernetesNamespace: "namespace",
- *     kubernetesToken: "some-token",
+ *     kubernetesAuthorizationType: "rbac",
+ *     environmentScope: "*",
  *     managementProjectId: "123456",
- *     project: foo.id,
  * });
  * ```
  *
  * ## Import
  *
- * GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
+ * # GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/projectCluster:ProjectCluster bar 123:321
@@ -68,7 +66,13 @@ export class ProjectCluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === ProjectCluster.__pulumiType;
     }
 
+    /**
+     * Cluster type.
+     */
     public /*out*/ readonly clusterType!: pulumi.Output<string>;
+    /**
+     * Create time.
+     */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The base domain of the cluster.
@@ -114,11 +118,17 @@ export class ProjectCluster extends pulumi.CustomResource {
      * The name of cluster.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Platform type.
+     */
     public /*out*/ readonly platformType!: pulumi.Output<string>;
     /**
      * The id of the project to add the cluster to.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Provider type.
+     */
     public /*out*/ readonly providerType!: pulumi.Output<string>;
 
     /**
@@ -187,7 +197,13 @@ export class ProjectCluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProjectCluster resources.
  */
 export interface ProjectClusterState {
+    /**
+     * Cluster type.
+     */
     clusterType?: pulumi.Input<string>;
+    /**
+     * Create time.
+     */
     createdAt?: pulumi.Input<string>;
     /**
      * The base domain of the cluster.
@@ -233,11 +249,17 @@ export interface ProjectClusterState {
      * The name of cluster.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Platform type.
+     */
     platformType?: pulumi.Input<string>;
     /**
      * The id of the project to add the cluster to.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Provider type.
+     */
     providerType?: pulumi.Input<string>;
 }
 

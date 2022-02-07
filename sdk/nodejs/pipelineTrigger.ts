@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_pipeline\_trigger
- *
  * This resource allows you to create and manage pipeline triggers
  *
  * ## Example Usage
@@ -23,7 +21,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
+ * # GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/pipelineTrigger:PipelineTrigger test 1:3
@@ -65,6 +63,9 @@ export class PipelineTrigger extends pulumi.CustomResource {
      * The name or id of the project to add the trigger to.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The pipeline trigger token.
+     */
     public /*out*/ readonly token!: pulumi.Output<string>;
 
     /**
@@ -112,6 +113,9 @@ export interface PipelineTriggerState {
      * The name or id of the project to add the trigger to.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The pipeline trigger token.
+     */
     token?: pulumi.Input<string>;
 }
 

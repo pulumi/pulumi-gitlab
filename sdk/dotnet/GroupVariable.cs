@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_group\_variable
-    /// 
     /// This resource allows you to create and manage CI/CD variables for your GitLab groups.
     /// For further information on variables, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
@@ -28,6 +26,7 @@ namespace Pulumi.GitLab
     ///     {
     ///         var example = new GitLab.GroupVariable("example", new GitLab.GroupVariableArgs
     ///         {
+    ///             EnvironmentScope = "*",
     ///             Group = "12345",
     ///             Key = "group_variable_key",
     ///             Masked = false,
@@ -41,17 +40,23 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// GitLab group variables can be imported using an id made up of `groupid:variablename`, e.g.
+    /// # GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key
+    ///  $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key:*
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/groupVariable:GroupVariable")]
     public partial class GroupVariable : Pulumi.CustomResource
     {
         /// <summary>
-        /// The name or id of the group to add the hook to.
+        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+        /// </summary>
+        [Output("environmentScope")]
+        public Output<string?> EnvironmentScope { get; private set; } = null!;
+
+        /// <summary>
+        /// The name or id of the group.
         /// </summary>
         [Output("group")]
         public Output<string> Group { get; private set; } = null!;
@@ -133,7 +138,13 @@ namespace Pulumi.GitLab
     public sealed class GroupVariableArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name or id of the group to add the hook to.
+        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+        /// </summary>
+        [Input("environmentScope")]
+        public Input<string>? EnvironmentScope { get; set; }
+
+        /// <summary>
+        /// The name or id of the group.
         /// </summary>
         [Input("group", required: true)]
         public Input<string> Group { get; set; } = null!;
@@ -176,7 +187,13 @@ namespace Pulumi.GitLab
     public sealed class GroupVariableState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name or id of the group to add the hook to.
+        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+        /// </summary>
+        [Input("environmentScope")]
+        public Input<string>? EnvironmentScope { get; set; }
+
+        /// <summary>
+        /// The name or id of the group.
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }

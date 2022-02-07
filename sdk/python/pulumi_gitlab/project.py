@@ -17,6 +17,7 @@ class ProjectArgs:
     def __init__(__self__, *,
                  allow_merge_on_skipped_pipeline: Optional[pulumi.Input[bool]] = None,
                  approvals_before_merge: Optional[pulumi.Input[int]] = None,
+                 archive_on_destroy: Optional[pulumi.Input[bool]] = None,
                  archived: Optional[pulumi.Input[bool]] = None,
                  build_coverage_regex: Optional[pulumi.Input[str]] = None,
                  ci_config_path: Optional[pulumi.Input[str]] = None,
@@ -27,9 +28,11 @@ class ProjectArgs:
                  import_url: Optional[pulumi.Input[str]] = None,
                  initialize_with_readme: Optional[pulumi.Input[bool]] = None,
                  issues_enabled: Optional[pulumi.Input[bool]] = None,
+                 issues_template: Optional[pulumi.Input[str]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_method: Optional[pulumi.Input[str]] = None,
                  merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
+                 merge_requests_template: Optional[pulumi.Input[str]] = None,
                  mirror: Optional[pulumi.Input[bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
@@ -58,56 +61,53 @@ class ProjectArgs:
         The set of arguments for constructing a Project resource.
         :param pulumi.Input[bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
+        :param pulumi.Input[bool] archive_on_destroy: Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
-        :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         :param pulumi.Input[str] import_url: Git URL to a repository to be imported.
         :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
+        :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
-               Valid values are `merge`, `rebase_merge`, `ff`
-               Repositories are created with `merge` by default
         :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
-        :param pulumi.Input[bool] mirror: Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
-               consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
-        :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Pull mirror overwrites diverged branches.
-        :param pulumi.Input[bool] mirror_trigger_builds: Pull mirroring triggers builds. Default is `false`.
+        :param pulumi.Input[str] merge_requests_template: Sets the template for new merge requests in the project.
+        :param pulumi.Input[bool] mirror: Enable project pull mirror.
+        :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
+        :param pulumi.Input[bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
         :param pulumi.Input[str] name: The name of the project.
         :param pulumi.Input[int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
-               See `Group` for an example.
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
-        :param pulumi.Input[bool] only_mirror_protected_branches: Only mirror protected branches.
+        :param pulumi.Input[bool] only_mirror_protected_branches: Enable only mirror protected branches for a mirrored project.
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[str] pages_access_level: Enable pages access control
-               Valid values are `disabled`, `private`, `enabled`, `public`.
-               `private` is the default.
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
-        :param pulumi.Input['ProjectPushRulesArgs'] push_rules: Push rules for the project (documented below).
+        :param pulumi.Input['ProjectPushRulesArgs'] push_rules: Push rules for the project.
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
         :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags (topics) of the project.
-        :param pulumi.Input[str] template_name: When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
-        :param pulumi.Input[int] template_project_id: When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
-        :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        :param pulumi.Input[str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        :param pulumi.Input[int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public project.
-               Valid values are `private`, `internal`, `public`.
-               Repositories are created as private by default.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
         """
         if allow_merge_on_skipped_pipeline is not None:
             pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
         if approvals_before_merge is not None:
             pulumi.set(__self__, "approvals_before_merge", approvals_before_merge)
+        if archive_on_destroy is not None:
+            pulumi.set(__self__, "archive_on_destroy", archive_on_destroy)
         if archived is not None:
             pulumi.set(__self__, "archived", archived)
         if build_coverage_regex is not None:
@@ -128,12 +128,16 @@ class ProjectArgs:
             pulumi.set(__self__, "initialize_with_readme", initialize_with_readme)
         if issues_enabled is not None:
             pulumi.set(__self__, "issues_enabled", issues_enabled)
+        if issues_template is not None:
+            pulumi.set(__self__, "issues_template", issues_template)
         if lfs_enabled is not None:
             pulumi.set(__self__, "lfs_enabled", lfs_enabled)
         if merge_method is not None:
             pulumi.set(__self__, "merge_method", merge_method)
         if merge_requests_enabled is not None:
             pulumi.set(__self__, "merge_requests_enabled", merge_requests_enabled)
+        if merge_requests_template is not None:
+            pulumi.set(__self__, "merge_requests_template", merge_requests_template)
         if mirror is not None:
             pulumi.set(__self__, "mirror", mirror)
         if mirror_overwrites_diverged_branches is not None:
@@ -206,6 +210,18 @@ class ProjectArgs:
     @approvals_before_merge.setter
     def approvals_before_merge(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "approvals_before_merge", value)
+
+    @property
+    @pulumi.getter(name="archiveOnDestroy")
+    def archive_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
+        """
+        return pulumi.get(self, "archive_on_destroy")
+
+    @archive_on_destroy.setter
+    def archive_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "archive_on_destroy", value)
 
     @property
     @pulumi.getter
@@ -283,7 +299,7 @@ class ProjectArgs:
     @pulumi.getter(name="groupWithProjectTemplatesId")
     def group_with_project_templates_id(self) -> Optional[pulumi.Input[int]]:
         """
-        For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         """
         return pulumi.get(self, "group_with_project_templates_id")
 
@@ -328,6 +344,18 @@ class ProjectArgs:
         pulumi.set(self, "issues_enabled", value)
 
     @property
+    @pulumi.getter(name="issuesTemplate")
+    def issues_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sets the template for new issues in the project.
+        """
+        return pulumi.get(self, "issues_template")
+
+    @issues_template.setter
+    def issues_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issues_template", value)
+
+    @property
     @pulumi.getter(name="lfsEnabled")
     def lfs_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -344,8 +372,6 @@ class ProjectArgs:
     def merge_method(self) -> Optional[pulumi.Input[str]]:
         """
         Set to `ff` to create fast-forward merges
-        Valid values are `merge`, `rebase_merge`, `ff`
-        Repositories are created with `merge` by default
         """
         return pulumi.get(self, "merge_method")
 
@@ -366,11 +392,22 @@ class ProjectArgs:
         pulumi.set(self, "merge_requests_enabled", value)
 
     @property
+    @pulumi.getter(name="mergeRequestsTemplate")
+    def merge_requests_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sets the template for new merge requests in the project.
+        """
+        return pulumi.get(self, "merge_requests_template")
+
+    @merge_requests_template.setter
+    def merge_requests_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "merge_requests_template", value)
+
+    @property
     @pulumi.getter
     def mirror(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
-        consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+        Enable project pull mirror.
         """
         return pulumi.get(self, "mirror")
 
@@ -382,7 +419,7 @@ class ProjectArgs:
     @pulumi.getter(name="mirrorOverwritesDivergedBranches")
     def mirror_overwrites_diverged_branches(self) -> Optional[pulumi.Input[bool]]:
         """
-        Pull mirror overwrites diverged branches.
+        Enable overwrite diverged branches for a mirrored project.
         """
         return pulumi.get(self, "mirror_overwrites_diverged_branches")
 
@@ -394,7 +431,7 @@ class ProjectArgs:
     @pulumi.getter(name="mirrorTriggerBuilds")
     def mirror_trigger_builds(self) -> Optional[pulumi.Input[bool]]:
         """
-        Pull mirroring triggers builds. Default is `false`.
+        Enable trigger builds on pushes for a mirrored project.
         """
         return pulumi.get(self, "mirror_trigger_builds")
 
@@ -419,7 +456,6 @@ class ProjectArgs:
     def namespace_id(self) -> Optional[pulumi.Input[int]]:
         """
         The namespace (group or user) of the project. Defaults to your user.
-        See `Group` for an example.
         """
         return pulumi.get(self, "namespace_id")
 
@@ -455,7 +491,7 @@ class ProjectArgs:
     @pulumi.getter(name="onlyMirrorProtectedBranches")
     def only_mirror_protected_branches(self) -> Optional[pulumi.Input[bool]]:
         """
-        Only mirror protected branches.
+        Enable only mirror protected branches for a mirrored project.
         """
         return pulumi.get(self, "only_mirror_protected_branches")
 
@@ -480,8 +516,6 @@ class ProjectArgs:
     def pages_access_level(self) -> Optional[pulumi.Input[str]]:
         """
         Enable pages access control
-        Valid values are `disabled`, `private`, `enabled`, `public`.
-        `private` is the default.
         """
         return pulumi.get(self, "pages_access_level")
 
@@ -517,7 +551,7 @@ class ProjectArgs:
     @pulumi.getter(name="pushRules")
     def push_rules(self) -> Optional[pulumi.Input['ProjectPushRulesArgs']]:
         """
-        Push rules for the project (documented below).
+        Push rules for the project.
         """
         return pulumi.get(self, "push_rules")
 
@@ -601,7 +635,7 @@ class ProjectArgs:
     @pulumi.getter(name="templateName")
     def template_name(self) -> Optional[pulumi.Input[str]]:
         """
-        When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         """
         return pulumi.get(self, "template_name")
 
@@ -613,7 +647,7 @@ class ProjectArgs:
     @pulumi.getter(name="templateProjectId")
     def template_project_id(self) -> Optional[pulumi.Input[int]]:
         """
-        When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
         """
         return pulumi.get(self, "template_project_id")
 
@@ -625,7 +659,7 @@ class ProjectArgs:
     @pulumi.getter(name="useCustomTemplate")
     def use_custom_template(self) -> Optional[pulumi.Input[bool]]:
         """
-        Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
         """
         return pulumi.get(self, "use_custom_template")
 
@@ -638,8 +672,6 @@ class ProjectArgs:
     def visibility_level(self) -> Optional[pulumi.Input[str]]:
         """
         Set to `public` to create a public project.
-        Valid values are `private`, `internal`, `public`.
-        Repositories are created as private by default.
         """
         return pulumi.get(self, "visibility_level")
 
@@ -665,6 +697,7 @@ class _ProjectState:
     def __init__(__self__, *,
                  allow_merge_on_skipped_pipeline: Optional[pulumi.Input[bool]] = None,
                  approvals_before_merge: Optional[pulumi.Input[int]] = None,
+                 archive_on_destroy: Optional[pulumi.Input[bool]] = None,
                  archived: Optional[pulumi.Input[bool]] = None,
                  build_coverage_regex: Optional[pulumi.Input[str]] = None,
                  ci_config_path: Optional[pulumi.Input[str]] = None,
@@ -676,9 +709,11 @@ class _ProjectState:
                  import_url: Optional[pulumi.Input[str]] = None,
                  initialize_with_readme: Optional[pulumi.Input[bool]] = None,
                  issues_enabled: Optional[pulumi.Input[bool]] = None,
+                 issues_template: Optional[pulumi.Input[str]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_method: Optional[pulumi.Input[str]] = None,
                  merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
+                 merge_requests_template: Optional[pulumi.Input[str]] = None,
                  mirror: Optional[pulumi.Input[bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
@@ -711,41 +746,37 @@ class _ProjectState:
         Input properties used for looking up and filtering Project resources.
         :param pulumi.Input[bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
+        :param pulumi.Input[bool] archive_on_destroy: Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
-        :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         :param pulumi.Input[str] http_url_to_repo: URL that can be provided to `git clone` to clone the
-               repository via HTTP.
         :param pulumi.Input[str] import_url: Git URL to a repository to be imported.
         :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
+        :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
-               Valid values are `merge`, `rebase_merge`, `ff`
-               Repositories are created with `merge` by default
         :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
-        :param pulumi.Input[bool] mirror: Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
-               consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
-        :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Pull mirror overwrites diverged branches.
-        :param pulumi.Input[bool] mirror_trigger_builds: Pull mirroring triggers builds. Default is `false`.
+        :param pulumi.Input[str] merge_requests_template: Sets the template for new merge requests in the project.
+        :param pulumi.Input[bool] mirror: Enable project pull mirror.
+        :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
+        :param pulumi.Input[bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
         :param pulumi.Input[str] name: The name of the project.
         :param pulumi.Input[int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
-               See `Group` for an example.
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
-        :param pulumi.Input[bool] only_mirror_protected_branches: Only mirror protected branches.
+        :param pulumi.Input[bool] only_mirror_protected_branches: Enable only mirror protected branches for a mirrored project.
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[str] pages_access_level: Enable pages access control
-               Valid values are `disabled`, `private`, `enabled`, `public`.
-               `private` is the default.
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[str] path_with_namespace: The path of the repository with namespace.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
-        :param pulumi.Input['ProjectPushRulesArgs'] push_rules: Push rules for the project (documented below).
+        :param pulumi.Input['ProjectPushRulesArgs'] push_rules: Push rules for the project.
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[str] runners_token: Registration token to use during runner setup.
@@ -753,14 +784,11 @@ class _ProjectState:
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
         :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
         :param pulumi.Input[str] ssh_url_to_repo: URL that can be provided to `git clone` to clone the
-               repository via SSH.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags (topics) of the project.
-        :param pulumi.Input[str] template_name: When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
-        :param pulumi.Input[int] template_project_id: When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
-        :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        :param pulumi.Input[str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        :param pulumi.Input[int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public project.
-               Valid values are `private`, `internal`, `public`.
-               Repositories are created as private by default.
         :param pulumi.Input[str] web_url: URL that can be used to find the project in a browser.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
         """
@@ -768,6 +796,8 @@ class _ProjectState:
             pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
         if approvals_before_merge is not None:
             pulumi.set(__self__, "approvals_before_merge", approvals_before_merge)
+        if archive_on_destroy is not None:
+            pulumi.set(__self__, "archive_on_destroy", archive_on_destroy)
         if archived is not None:
             pulumi.set(__self__, "archived", archived)
         if build_coverage_regex is not None:
@@ -790,12 +820,16 @@ class _ProjectState:
             pulumi.set(__self__, "initialize_with_readme", initialize_with_readme)
         if issues_enabled is not None:
             pulumi.set(__self__, "issues_enabled", issues_enabled)
+        if issues_template is not None:
+            pulumi.set(__self__, "issues_template", issues_template)
         if lfs_enabled is not None:
             pulumi.set(__self__, "lfs_enabled", lfs_enabled)
         if merge_method is not None:
             pulumi.set(__self__, "merge_method", merge_method)
         if merge_requests_enabled is not None:
             pulumi.set(__self__, "merge_requests_enabled", merge_requests_enabled)
+        if merge_requests_template is not None:
+            pulumi.set(__self__, "merge_requests_template", merge_requests_template)
         if mirror is not None:
             pulumi.set(__self__, "mirror", mirror)
         if mirror_overwrites_diverged_branches is not None:
@@ -878,6 +912,18 @@ class _ProjectState:
         pulumi.set(self, "approvals_before_merge", value)
 
     @property
+    @pulumi.getter(name="archiveOnDestroy")
+    def archive_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
+        """
+        return pulumi.get(self, "archive_on_destroy")
+
+    @archive_on_destroy.setter
+    def archive_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "archive_on_destroy", value)
+
+    @property
     @pulumi.getter
     def archived(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -953,7 +999,7 @@ class _ProjectState:
     @pulumi.getter(name="groupWithProjectTemplatesId")
     def group_with_project_templates_id(self) -> Optional[pulumi.Input[int]]:
         """
-        For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         """
         return pulumi.get(self, "group_with_project_templates_id")
 
@@ -966,7 +1012,6 @@ class _ProjectState:
     def http_url_to_repo(self) -> Optional[pulumi.Input[str]]:
         """
         URL that can be provided to `git clone` to clone the
-        repository via HTTP.
         """
         return pulumi.get(self, "http_url_to_repo")
 
@@ -1011,6 +1056,18 @@ class _ProjectState:
         pulumi.set(self, "issues_enabled", value)
 
     @property
+    @pulumi.getter(name="issuesTemplate")
+    def issues_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sets the template for new issues in the project.
+        """
+        return pulumi.get(self, "issues_template")
+
+    @issues_template.setter
+    def issues_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issues_template", value)
+
+    @property
     @pulumi.getter(name="lfsEnabled")
     def lfs_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1027,8 +1084,6 @@ class _ProjectState:
     def merge_method(self) -> Optional[pulumi.Input[str]]:
         """
         Set to `ff` to create fast-forward merges
-        Valid values are `merge`, `rebase_merge`, `ff`
-        Repositories are created with `merge` by default
         """
         return pulumi.get(self, "merge_method")
 
@@ -1049,11 +1104,22 @@ class _ProjectState:
         pulumi.set(self, "merge_requests_enabled", value)
 
     @property
+    @pulumi.getter(name="mergeRequestsTemplate")
+    def merge_requests_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sets the template for new merge requests in the project.
+        """
+        return pulumi.get(self, "merge_requests_template")
+
+    @merge_requests_template.setter
+    def merge_requests_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "merge_requests_template", value)
+
+    @property
     @pulumi.getter
     def mirror(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
-        consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+        Enable project pull mirror.
         """
         return pulumi.get(self, "mirror")
 
@@ -1065,7 +1131,7 @@ class _ProjectState:
     @pulumi.getter(name="mirrorOverwritesDivergedBranches")
     def mirror_overwrites_diverged_branches(self) -> Optional[pulumi.Input[bool]]:
         """
-        Pull mirror overwrites diverged branches.
+        Enable overwrite diverged branches for a mirrored project.
         """
         return pulumi.get(self, "mirror_overwrites_diverged_branches")
 
@@ -1077,7 +1143,7 @@ class _ProjectState:
     @pulumi.getter(name="mirrorTriggerBuilds")
     def mirror_trigger_builds(self) -> Optional[pulumi.Input[bool]]:
         """
-        Pull mirroring triggers builds. Default is `false`.
+        Enable trigger builds on pushes for a mirrored project.
         """
         return pulumi.get(self, "mirror_trigger_builds")
 
@@ -1102,7 +1168,6 @@ class _ProjectState:
     def namespace_id(self) -> Optional[pulumi.Input[int]]:
         """
         The namespace (group or user) of the project. Defaults to your user.
-        See `Group` for an example.
         """
         return pulumi.get(self, "namespace_id")
 
@@ -1138,7 +1203,7 @@ class _ProjectState:
     @pulumi.getter(name="onlyMirrorProtectedBranches")
     def only_mirror_protected_branches(self) -> Optional[pulumi.Input[bool]]:
         """
-        Only mirror protected branches.
+        Enable only mirror protected branches for a mirrored project.
         """
         return pulumi.get(self, "only_mirror_protected_branches")
 
@@ -1163,8 +1228,6 @@ class _ProjectState:
     def pages_access_level(self) -> Optional[pulumi.Input[str]]:
         """
         Enable pages access control
-        Valid values are `disabled`, `private`, `enabled`, `public`.
-        `private` is the default.
         """
         return pulumi.get(self, "pages_access_level")
 
@@ -1212,7 +1275,7 @@ class _ProjectState:
     @pulumi.getter(name="pushRules")
     def push_rules(self) -> Optional[pulumi.Input['ProjectPushRulesArgs']]:
         """
-        Push rules for the project (documented below).
+        Push rules for the project.
         """
         return pulumi.get(self, "push_rules")
 
@@ -1297,7 +1360,6 @@ class _ProjectState:
     def ssh_url_to_repo(self) -> Optional[pulumi.Input[str]]:
         """
         URL that can be provided to `git clone` to clone the
-        repository via SSH.
         """
         return pulumi.get(self, "ssh_url_to_repo")
 
@@ -1321,7 +1383,7 @@ class _ProjectState:
     @pulumi.getter(name="templateName")
     def template_name(self) -> Optional[pulumi.Input[str]]:
         """
-        When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         """
         return pulumi.get(self, "template_name")
 
@@ -1333,7 +1395,7 @@ class _ProjectState:
     @pulumi.getter(name="templateProjectId")
     def template_project_id(self) -> Optional[pulumi.Input[int]]:
         """
-        When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
         """
         return pulumi.get(self, "template_project_id")
 
@@ -1345,7 +1407,7 @@ class _ProjectState:
     @pulumi.getter(name="useCustomTemplate")
     def use_custom_template(self) -> Optional[pulumi.Input[bool]]:
         """
-        Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
         """
         return pulumi.get(self, "use_custom_template")
 
@@ -1358,8 +1420,6 @@ class _ProjectState:
     def visibility_level(self) -> Optional[pulumi.Input[str]]:
         """
         Set to `public` to create a public project.
-        Valid values are `private`, `internal`, `public`.
-        Repositories are created as private by default.
         """
         return pulumi.get(self, "visibility_level")
 
@@ -1399,6 +1459,7 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_merge_on_skipped_pipeline: Optional[pulumi.Input[bool]] = None,
                  approvals_before_merge: Optional[pulumi.Input[int]] = None,
+                 archive_on_destroy: Optional[pulumi.Input[bool]] = None,
                  archived: Optional[pulumi.Input[bool]] = None,
                  build_coverage_regex: Optional[pulumi.Input[str]] = None,
                  ci_config_path: Optional[pulumi.Input[str]] = None,
@@ -1409,9 +1470,11 @@ class Project(pulumi.CustomResource):
                  import_url: Optional[pulumi.Input[str]] = None,
                  initialize_with_readme: Optional[pulumi.Input[bool]] = None,
                  issues_enabled: Optional[pulumi.Input[bool]] = None,
+                 issues_template: Optional[pulumi.Input[str]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_method: Optional[pulumi.Input[str]] = None,
                  merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
+                 merge_requests_template: Optional[pulumi.Input[str]] = None,
                  mirror: Optional[pulumi.Input[bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
@@ -1438,8 +1501,6 @@ class Project(pulumi.CustomResource):
                  wiki_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        ## # gitlab\_project
-
         This resource allows you to create and manage projects within your GitLab group or within your user.
 
         ## Example Usage
@@ -1463,65 +1524,58 @@ class Project(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
+         $ pulumi import gitlab:index/project:Project # You can import a project state using `<resource> <id>`. The
         ```
 
-         `id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
+        # `id` can be whatever the [get single project api][get_single_project] takes for # its `:id` value, so for example
 
         ```sh
          $ pulumi import gitlab:index/project:Project example richardc/example
         ```
 
-         [get_single_project]https://docs.gitlab.com/ee/api/projects.html#get-single-project [group_members_permissions]https://docs.gitlab.com/ce/user/permissions.html#group-members-permissions
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
+        :param pulumi.Input[bool] archive_on_destroy: Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
-        :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         :param pulumi.Input[str] import_url: Git URL to a repository to be imported.
         :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
+        :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
-               Valid values are `merge`, `rebase_merge`, `ff`
-               Repositories are created with `merge` by default
         :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
-        :param pulumi.Input[bool] mirror: Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
-               consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
-        :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Pull mirror overwrites diverged branches.
-        :param pulumi.Input[bool] mirror_trigger_builds: Pull mirroring triggers builds. Default is `false`.
+        :param pulumi.Input[str] merge_requests_template: Sets the template for new merge requests in the project.
+        :param pulumi.Input[bool] mirror: Enable project pull mirror.
+        :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
+        :param pulumi.Input[bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
         :param pulumi.Input[str] name: The name of the project.
         :param pulumi.Input[int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
-               See `Group` for an example.
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
-        :param pulumi.Input[bool] only_mirror_protected_branches: Only mirror protected branches.
+        :param pulumi.Input[bool] only_mirror_protected_branches: Enable only mirror protected branches for a mirrored project.
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[str] pages_access_level: Enable pages access control
-               Valid values are `disabled`, `private`, `enabled`, `public`.
-               `private` is the default.
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
-        :param pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']] push_rules: Push rules for the project (documented below).
+        :param pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']] push_rules: Push rules for the project.
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
         :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags (topics) of the project.
-        :param pulumi.Input[str] template_name: When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
-        :param pulumi.Input[int] template_project_id: When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
-        :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        :param pulumi.Input[str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        :param pulumi.Input[int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public project.
-               Valid values are `private`, `internal`, `public`.
-               Repositories are created as private by default.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
         """
         ...
@@ -1531,8 +1585,6 @@ class Project(pulumi.CustomResource):
                  args: Optional[ProjectArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # gitlab\_project
-
         This resource allows you to create and manage projects within your GitLab group or within your user.
 
         ## Example Usage
@@ -1556,16 +1608,14 @@ class Project(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
+         $ pulumi import gitlab:index/project:Project # You can import a project state using `<resource> <id>`. The
         ```
 
-         `id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
+        # `id` can be whatever the [get single project api][get_single_project] takes for # its `:id` value, so for example
 
         ```sh
          $ pulumi import gitlab:index/project:Project example richardc/example
         ```
-
-         [get_single_project]https://docs.gitlab.com/ee/api/projects.html#get-single-project [group_members_permissions]https://docs.gitlab.com/ce/user/permissions.html#group-members-permissions
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.
@@ -1584,6 +1634,7 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_merge_on_skipped_pipeline: Optional[pulumi.Input[bool]] = None,
                  approvals_before_merge: Optional[pulumi.Input[int]] = None,
+                 archive_on_destroy: Optional[pulumi.Input[bool]] = None,
                  archived: Optional[pulumi.Input[bool]] = None,
                  build_coverage_regex: Optional[pulumi.Input[str]] = None,
                  ci_config_path: Optional[pulumi.Input[str]] = None,
@@ -1594,9 +1645,11 @@ class Project(pulumi.CustomResource):
                  import_url: Optional[pulumi.Input[str]] = None,
                  initialize_with_readme: Optional[pulumi.Input[bool]] = None,
                  issues_enabled: Optional[pulumi.Input[bool]] = None,
+                 issues_template: Optional[pulumi.Input[str]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_method: Optional[pulumi.Input[str]] = None,
                  merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
+                 merge_requests_template: Optional[pulumi.Input[str]] = None,
                  mirror: Optional[pulumi.Input[bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
@@ -1635,6 +1688,7 @@ class Project(pulumi.CustomResource):
 
             __props__.__dict__["allow_merge_on_skipped_pipeline"] = allow_merge_on_skipped_pipeline
             __props__.__dict__["approvals_before_merge"] = approvals_before_merge
+            __props__.__dict__["archive_on_destroy"] = archive_on_destroy
             __props__.__dict__["archived"] = archived
             __props__.__dict__["build_coverage_regex"] = build_coverage_regex
             __props__.__dict__["ci_config_path"] = ci_config_path
@@ -1645,9 +1699,11 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["import_url"] = import_url
             __props__.__dict__["initialize_with_readme"] = initialize_with_readme
             __props__.__dict__["issues_enabled"] = issues_enabled
+            __props__.__dict__["issues_template"] = issues_template
             __props__.__dict__["lfs_enabled"] = lfs_enabled
             __props__.__dict__["merge_method"] = merge_method
             __props__.__dict__["merge_requests_enabled"] = merge_requests_enabled
+            __props__.__dict__["merge_requests_template"] = merge_requests_template
             __props__.__dict__["mirror"] = mirror
             __props__.__dict__["mirror_overwrites_diverged_branches"] = mirror_overwrites_diverged_branches
             __props__.__dict__["mirror_trigger_builds"] = mirror_trigger_builds
@@ -1689,6 +1745,7 @@ class Project(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_merge_on_skipped_pipeline: Optional[pulumi.Input[bool]] = None,
             approvals_before_merge: Optional[pulumi.Input[int]] = None,
+            archive_on_destroy: Optional[pulumi.Input[bool]] = None,
             archived: Optional[pulumi.Input[bool]] = None,
             build_coverage_regex: Optional[pulumi.Input[str]] = None,
             ci_config_path: Optional[pulumi.Input[str]] = None,
@@ -1700,9 +1757,11 @@ class Project(pulumi.CustomResource):
             import_url: Optional[pulumi.Input[str]] = None,
             initialize_with_readme: Optional[pulumi.Input[bool]] = None,
             issues_enabled: Optional[pulumi.Input[bool]] = None,
+            issues_template: Optional[pulumi.Input[str]] = None,
             lfs_enabled: Optional[pulumi.Input[bool]] = None,
             merge_method: Optional[pulumi.Input[str]] = None,
             merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
+            merge_requests_template: Optional[pulumi.Input[str]] = None,
             mirror: Optional[pulumi.Input[bool]] = None,
             mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
             mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
@@ -1740,41 +1799,37 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
+        :param pulumi.Input[bool] archive_on_destroy: Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
-        :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         :param pulumi.Input[str] http_url_to_repo: URL that can be provided to `git clone` to clone the
-               repository via HTTP.
         :param pulumi.Input[str] import_url: Git URL to a repository to be imported.
         :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
+        :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
-               Valid values are `merge`, `rebase_merge`, `ff`
-               Repositories are created with `merge` by default
         :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
-        :param pulumi.Input[bool] mirror: Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
-               consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
-        :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Pull mirror overwrites diverged branches.
-        :param pulumi.Input[bool] mirror_trigger_builds: Pull mirroring triggers builds. Default is `false`.
+        :param pulumi.Input[str] merge_requests_template: Sets the template for new merge requests in the project.
+        :param pulumi.Input[bool] mirror: Enable project pull mirror.
+        :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
+        :param pulumi.Input[bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
         :param pulumi.Input[str] name: The name of the project.
         :param pulumi.Input[int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
-               See `Group` for an example.
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
-        :param pulumi.Input[bool] only_mirror_protected_branches: Only mirror protected branches.
+        :param pulumi.Input[bool] only_mirror_protected_branches: Enable only mirror protected branches for a mirrored project.
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[str] pages_access_level: Enable pages access control
-               Valid values are `disabled`, `private`, `enabled`, `public`.
-               `private` is the default.
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[str] path_with_namespace: The path of the repository with namespace.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
-        :param pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']] push_rules: Push rules for the project (documented below).
+        :param pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']] push_rules: Push rules for the project.
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[str] runners_token: Registration token to use during runner setup.
@@ -1782,14 +1837,11 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
         :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
         :param pulumi.Input[str] ssh_url_to_repo: URL that can be provided to `git clone` to clone the
-               repository via SSH.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags (topics) of the project.
-        :param pulumi.Input[str] template_name: When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
-        :param pulumi.Input[int] template_project_id: When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
-        :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        :param pulumi.Input[str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        :param pulumi.Input[int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public project.
-               Valid values are `private`, `internal`, `public`.
-               Repositories are created as private by default.
         :param pulumi.Input[str] web_url: URL that can be used to find the project in a browser.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
         """
@@ -1799,6 +1851,7 @@ class Project(pulumi.CustomResource):
 
         __props__.__dict__["allow_merge_on_skipped_pipeline"] = allow_merge_on_skipped_pipeline
         __props__.__dict__["approvals_before_merge"] = approvals_before_merge
+        __props__.__dict__["archive_on_destroy"] = archive_on_destroy
         __props__.__dict__["archived"] = archived
         __props__.__dict__["build_coverage_regex"] = build_coverage_regex
         __props__.__dict__["ci_config_path"] = ci_config_path
@@ -1810,9 +1863,11 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["import_url"] = import_url
         __props__.__dict__["initialize_with_readme"] = initialize_with_readme
         __props__.__dict__["issues_enabled"] = issues_enabled
+        __props__.__dict__["issues_template"] = issues_template
         __props__.__dict__["lfs_enabled"] = lfs_enabled
         __props__.__dict__["merge_method"] = merge_method
         __props__.__dict__["merge_requests_enabled"] = merge_requests_enabled
+        __props__.__dict__["merge_requests_template"] = merge_requests_template
         __props__.__dict__["mirror"] = mirror
         __props__.__dict__["mirror_overwrites_diverged_branches"] = mirror_overwrites_diverged_branches
         __props__.__dict__["mirror_trigger_builds"] = mirror_trigger_builds
@@ -1858,6 +1913,14 @@ class Project(pulumi.CustomResource):
         Number of merge request approvals required for merging. Default is 0.
         """
         return pulumi.get(self, "approvals_before_merge")
+
+    @property
+    @pulumi.getter(name="archiveOnDestroy")
+    def archive_on_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
+        """
+        return pulumi.get(self, "archive_on_destroy")
 
     @property
     @pulumi.getter
@@ -1911,7 +1974,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="groupWithProjectTemplatesId")
     def group_with_project_templates_id(self) -> pulumi.Output[Optional[int]]:
         """
-        For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         """
         return pulumi.get(self, "group_with_project_templates_id")
 
@@ -1920,7 +1983,6 @@ class Project(pulumi.CustomResource):
     def http_url_to_repo(self) -> pulumi.Output[str]:
         """
         URL that can be provided to `git clone` to clone the
-        repository via HTTP.
         """
         return pulumi.get(self, "http_url_to_repo")
 
@@ -1949,6 +2011,14 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "issues_enabled")
 
     @property
+    @pulumi.getter(name="issuesTemplate")
+    def issues_template(self) -> pulumi.Output[Optional[str]]:
+        """
+        Sets the template for new issues in the project.
+        """
+        return pulumi.get(self, "issues_template")
+
+    @property
     @pulumi.getter(name="lfsEnabled")
     def lfs_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1961,8 +2031,6 @@ class Project(pulumi.CustomResource):
     def merge_method(self) -> pulumi.Output[Optional[str]]:
         """
         Set to `ff` to create fast-forward merges
-        Valid values are `merge`, `rebase_merge`, `ff`
-        Repositories are created with `merge` by default
         """
         return pulumi.get(self, "merge_method")
 
@@ -1975,11 +2043,18 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "merge_requests_enabled")
 
     @property
+    @pulumi.getter(name="mergeRequestsTemplate")
+    def merge_requests_template(self) -> pulumi.Output[Optional[str]]:
+        """
+        Sets the template for new merge requests in the project.
+        """
+        return pulumi.get(self, "merge_requests_template")
+
+    @property
     @pulumi.getter
     def mirror(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
-        consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+        Enable project pull mirror.
         """
         return pulumi.get(self, "mirror")
 
@@ -1987,7 +2062,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="mirrorOverwritesDivergedBranches")
     def mirror_overwrites_diverged_branches(self) -> pulumi.Output[Optional[bool]]:
         """
-        Pull mirror overwrites diverged branches.
+        Enable overwrite diverged branches for a mirrored project.
         """
         return pulumi.get(self, "mirror_overwrites_diverged_branches")
 
@@ -1995,7 +2070,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="mirrorTriggerBuilds")
     def mirror_trigger_builds(self) -> pulumi.Output[Optional[bool]]:
         """
-        Pull mirroring triggers builds. Default is `false`.
+        Enable trigger builds on pushes for a mirrored project.
         """
         return pulumi.get(self, "mirror_trigger_builds")
 
@@ -2012,7 +2087,6 @@ class Project(pulumi.CustomResource):
     def namespace_id(self) -> pulumi.Output[int]:
         """
         The namespace (group or user) of the project. Defaults to your user.
-        See `Group` for an example.
         """
         return pulumi.get(self, "namespace_id")
 
@@ -2036,7 +2110,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="onlyMirrorProtectedBranches")
     def only_mirror_protected_branches(self) -> pulumi.Output[Optional[bool]]:
         """
-        Only mirror protected branches.
+        Enable only mirror protected branches for a mirrored project.
         """
         return pulumi.get(self, "only_mirror_protected_branches")
 
@@ -2053,8 +2127,6 @@ class Project(pulumi.CustomResource):
     def pages_access_level(self) -> pulumi.Output[Optional[str]]:
         """
         Enable pages access control
-        Valid values are `disabled`, `private`, `enabled`, `public`.
-        `private` is the default.
         """
         return pulumi.get(self, "pages_access_level")
 
@@ -2086,7 +2158,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="pushRules")
     def push_rules(self) -> pulumi.Output['outputs.ProjectPushRules']:
         """
-        Push rules for the project (documented below).
+        Push rules for the project.
         """
         return pulumi.get(self, "push_rules")
 
@@ -2143,7 +2215,6 @@ class Project(pulumi.CustomResource):
     def ssh_url_to_repo(self) -> pulumi.Output[str]:
         """
         URL that can be provided to `git clone` to clone the
-        repository via SSH.
         """
         return pulumi.get(self, "ssh_url_to_repo")
 
@@ -2159,7 +2230,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="templateName")
     def template_name(self) -> pulumi.Output[Optional[str]]:
         """
-        When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         """
         return pulumi.get(self, "template_name")
 
@@ -2167,7 +2238,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="templateProjectId")
     def template_project_id(self) -> pulumi.Output[Optional[int]]:
         """
-        When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
         """
         return pulumi.get(self, "template_project_id")
 
@@ -2175,7 +2246,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="useCustomTemplate")
     def use_custom_template(self) -> pulumi.Output[Optional[bool]]:
         """
-        Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
         """
         return pulumi.get(self, "use_custom_template")
 
@@ -2184,8 +2255,6 @@ class Project(pulumi.CustomResource):
     def visibility_level(self) -> pulumi.Output[Optional[str]]:
         """
         Set to `public` to create a public project.
-        Valid values are `private`, `internal`, `public`.
-        Repositories are created as private by default.
         """
         return pulumi.get(self, "visibility_level")
 

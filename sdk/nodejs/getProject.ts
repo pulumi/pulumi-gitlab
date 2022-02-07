@@ -6,20 +6,9 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_project
- *
  * Provide details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = pulumi.output(gitlab.getProject({
- *     id: "30",
- * }));
- * ```
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,7 +19,8 @@ import * as utilities from "./utilities";
  * }));
  * ```
  */
-export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
+export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
+    args = args || {};
     if (!opts) {
         opts = {}
     }
@@ -38,6 +28,7 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gitlab:index/getProject:getProject", {
         "id": args.id,
+        "pathWithNamespace": args.pathWithNamespace,
     }, opts);
 }
 
@@ -48,7 +39,11 @@ export interface GetProjectArgs {
     /**
      * The integer or path with namespace that uniquely identifies the project within the gitlab install.
      */
-    id: string;
+    id?: string;
+    /**
+     * The path of the repository with namespace.
+     */
+    pathWithNamespace?: string;
 }
 
 /**
@@ -69,11 +64,10 @@ export interface GetProjectResult {
     readonly description: string;
     /**
      * URL that can be provided to `git clone` to clone the
-     * repository via HTTP.
      */
     readonly httpUrlToRepo: string;
     /**
-     * Integer that uniquely identifies the project within the gitlab install.
+     * The integer or path with namespace that uniquely identifies the project within the gitlab install.
      */
     readonly id: string;
     /**
@@ -88,10 +82,12 @@ export interface GetProjectResult {
      * Enable merge requests for the project.
      */
     readonly mergeRequestsEnabled: boolean;
+    /**
+     * The name of the project.
+     */
     readonly name: string;
     /**
      * The namespace (group or user) of the project. Defaults to your user.
-     * See `gitlab.Group` for an example.
      */
     readonly namespaceId: number;
     /**
@@ -106,7 +102,10 @@ export interface GetProjectResult {
      * Enable pipelines for the project.
      */
     readonly pipelinesEnabled: boolean;
-    readonly pushRules: outputs.GetProjectPushRules;
+    /**
+     * Push rules for the project.
+     */
+    readonly pushRules: outputs.GetProjectPushRule[];
     /**
      * Enable `Delete source branch` option by default for all new merge requests
      */
@@ -125,7 +124,6 @@ export interface GetProjectResult {
     readonly snippetsEnabled: boolean;
     /**
      * URL that can be provided to `git clone` to clone the
-     * repository via SSH.
      */
     readonly sshUrlToRepo: string;
     /**
@@ -142,7 +140,7 @@ export interface GetProjectResult {
     readonly wikiEnabled: boolean;
 }
 
-export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
+export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
     return pulumi.output(args).apply(a => getProject(a, opts))
 }
 
@@ -153,5 +151,9 @@ export interface GetProjectOutputArgs {
     /**
      * The integer or path with namespace that uniquely identifies the project within the gitlab install.
      */
-    id: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    /**
+     * The path of the repository with namespace.
+     */
+    pathWithNamespace?: pulumi.Input<string>;
 }

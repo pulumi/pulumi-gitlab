@@ -5,7 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
 export interface BranchProtectionAllowedToMerge {
+    /**
+     * Level of access.
+     */
     accessLevel?: pulumi.Input<string>;
+    /**
+     * Readable description of level of access.
+     */
     accessLevelDescription?: pulumi.Input<string>;
     /**
      * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
@@ -18,7 +24,13 @@ export interface BranchProtectionAllowedToMerge {
 }
 
 export interface BranchProtectionAllowedToPush {
+    /**
+     * Level of access.
+     */
     accessLevel?: pulumi.Input<string>;
+    /**
+     * Readable description of level of access.
+     */
     accessLevelDescription?: pulumi.Input<string>;
     /**
      * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
@@ -76,4 +88,3 @@ export interface ProjectPushRules {
      */
     rejectUnsignedCommits?: pulumi.Input<boolean>;
 }
-

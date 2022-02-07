@@ -16,14 +16,16 @@ class GroupVariableArgs:
                  group: pulumi.Input[str],
                  key: pulumi.Input[str],
                  value: pulumi.Input[str],
+                 environment_scope: Optional[pulumi.Input[str]] = None,
                  masked: Optional[pulumi.Input[bool]] = None,
                  protected: Optional[pulumi.Input[bool]] = None,
                  variable_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GroupVariable resource.
-        :param pulumi.Input[str] group: The name or id of the group to add the hook to.
+        :param pulumi.Input[str] group: The name or id of the group.
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[str] value: The value of the variable.
+        :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
@@ -31,6 +33,8 @@ class GroupVariableArgs:
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
+        if environment_scope is not None:
+            pulumi.set(__self__, "environment_scope", environment_scope)
         if masked is not None:
             pulumi.set(__self__, "masked", masked)
         if protected is not None:
@@ -42,7 +46,7 @@ class GroupVariableArgs:
     @pulumi.getter
     def group(self) -> pulumi.Input[str]:
         """
-        The name or id of the group to add the hook to.
+        The name or id of the group.
         """
         return pulumi.get(self, "group")
 
@@ -73,6 +77,18 @@ class GroupVariableArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="environmentScope")
+    def environment_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+        """
+        return pulumi.get(self, "environment_scope")
+
+    @environment_scope.setter
+    def environment_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment_scope", value)
 
     @property
     @pulumi.getter
@@ -114,6 +130,7 @@ class GroupVariableArgs:
 @pulumi.input_type
 class _GroupVariableState:
     def __init__(__self__, *,
+                 environment_scope: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  masked: Optional[pulumi.Input[bool]] = None,
@@ -122,13 +139,16 @@ class _GroupVariableState:
                  variable_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GroupVariable resources.
-        :param pulumi.Input[str] group: The name or id of the group to add the hook to.
+        :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+        :param pulumi.Input[str] group: The name or id of the group.
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
         """
+        if environment_scope is not None:
+            pulumi.set(__self__, "environment_scope", environment_scope)
         if group is not None:
             pulumi.set(__self__, "group", group)
         if key is not None:
@@ -143,10 +163,22 @@ class _GroupVariableState:
             pulumi.set(__self__, "variable_type", variable_type)
 
     @property
+    @pulumi.getter(name="environmentScope")
+    def environment_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+        """
+        return pulumi.get(self, "environment_scope")
+
+    @environment_scope.setter
+    def environment_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment_scope", value)
+
+    @property
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[str]]:
         """
-        The name or id of the group to add the hook to.
+        The name or id of the group.
         """
         return pulumi.get(self, "group")
 
@@ -220,6 +252,7 @@ class GroupVariable(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 environment_scope: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  masked: Optional[pulumi.Input[bool]] = None,
@@ -228,8 +261,6 @@ class GroupVariable(pulumi.CustomResource):
                  variable_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # gitlab\_group\_variable
-
         This resource allows you to create and manage CI/CD variables for your GitLab groups.
         For further information on variables, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
@@ -241,6 +272,7 @@ class GroupVariable(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.GroupVariable("example",
+            environment_scope="*",
             group="12345",
             key="group_variable_key",
             masked=False,
@@ -250,15 +282,16 @@ class GroupVariable(pulumi.CustomResource):
 
         ## Import
 
-        GitLab group variables can be imported using an id made up of `groupid:variablename`, e.g.
+        # GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key
+         $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key:*
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] group: The name or id of the group to add the hook to.
+        :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+        :param pulumi.Input[str] group: The name or id of the group.
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
@@ -272,8 +305,6 @@ class GroupVariable(pulumi.CustomResource):
                  args: GroupVariableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # gitlab\_group\_variable
-
         This resource allows you to create and manage CI/CD variables for your GitLab groups.
         For further information on variables, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
@@ -285,6 +316,7 @@ class GroupVariable(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.GroupVariable("example",
+            environment_scope="*",
             group="12345",
             key="group_variable_key",
             masked=False,
@@ -294,10 +326,10 @@ class GroupVariable(pulumi.CustomResource):
 
         ## Import
 
-        GitLab group variables can be imported using an id made up of `groupid:variablename`, e.g.
+        # GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key
+         $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key:*
         ```
 
         :param str resource_name: The name of the resource.
@@ -315,6 +347,7 @@ class GroupVariable(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 environment_scope: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  masked: Optional[pulumi.Input[bool]] = None,
@@ -333,6 +366,7 @@ class GroupVariable(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupVariableArgs.__new__(GroupVariableArgs)
 
+            __props__.__dict__["environment_scope"] = environment_scope
             if group is None and not opts.urn:
                 raise TypeError("Missing required property 'group'")
             __props__.__dict__["group"] = group
@@ -355,6 +389,7 @@ class GroupVariable(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            environment_scope: Optional[pulumi.Input[str]] = None,
             group: Optional[pulumi.Input[str]] = None,
             key: Optional[pulumi.Input[str]] = None,
             masked: Optional[pulumi.Input[bool]] = None,
@@ -368,7 +403,8 @@ class GroupVariable(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] group: The name or id of the group to add the hook to.
+        :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+        :param pulumi.Input[str] group: The name or id of the group.
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
@@ -379,6 +415,7 @@ class GroupVariable(pulumi.CustomResource):
 
         __props__ = _GroupVariableState.__new__(_GroupVariableState)
 
+        __props__.__dict__["environment_scope"] = environment_scope
         __props__.__dict__["group"] = group
         __props__.__dict__["key"] = key
         __props__.__dict__["masked"] = masked
@@ -388,10 +425,18 @@ class GroupVariable(pulumi.CustomResource):
         return GroupVariable(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="environmentScope")
+    def environment_scope(self) -> pulumi.Output[Optional[str]]:
+        """
+        The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+        """
+        return pulumi.get(self, "environment_scope")
+
+    @property
     @pulumi.getter
     def group(self) -> pulumi.Output[str]:
         """
-        The name or id of the group to add the hook to.
+        The name or id of the group.
         """
         return pulumi.get(self, "group")
 

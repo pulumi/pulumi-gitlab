@@ -12,30 +12,11 @@ namespace Pulumi.GitLab
     public static class GetProject
     {
         /// <summary>
-        /// ## # gitlab\_project
-        /// 
         /// Provide details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(GitLab.GetProject.InvokeAsync(new GitLab.GetProjectArgs
-        ///         {
-        ///             Id = "30",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -56,34 +37,15 @@ namespace Pulumi.GitLab
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)
+        public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gitlab:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # gitlab\_project
-        /// 
         /// Provide details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(GitLab.GetProject.InvokeAsync(new GitLab.GetProjectArgs
-        ///         {
-        ///             Id = "30",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -104,7 +66,7 @@ namespace Pulumi.GitLab
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetProjectResult>("gitlab:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
     }
 
@@ -114,8 +76,14 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The integer or path with namespace that uniquely identifies the project within the gitlab install.
         /// </summary>
-        [Input("id", required: true)]
-        public string Id { get; set; } = null!;
+        [Input("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// The path of the repository with namespace.
+        /// </summary>
+        [Input("pathWithNamespace")]
+        public string? PathWithNamespace { get; set; }
 
         public GetProjectArgs()
         {
@@ -127,8 +95,14 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The integer or path with namespace that uniquely identifies the project within the gitlab install.
         /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// The path of the repository with namespace.
+        /// </summary>
+        [Input("pathWithNamespace")]
+        public Input<string>? PathWithNamespace { get; set; }
 
         public GetProjectInvokeArgs()
         {
@@ -153,11 +127,10 @@ namespace Pulumi.GitLab
         public readonly string Description;
         /// <summary>
         /// URL that can be provided to `git clone` to clone the
-        /// repository via HTTP.
         /// </summary>
         public readonly string HttpUrlToRepo;
         /// <summary>
-        /// Integer that uniquely identifies the project within the gitlab install.
+        /// The integer or path with namespace that uniquely identifies the project within the gitlab install.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -172,10 +145,12 @@ namespace Pulumi.GitLab
         /// Enable merge requests for the project.
         /// </summary>
         public readonly bool MergeRequestsEnabled;
+        /// <summary>
+        /// The name of the project.
+        /// </summary>
         public readonly string Name;
         /// <summary>
         /// The namespace (group or user) of the project. Defaults to your user.
-        /// See `gitlab.Group` for an example.
         /// </summary>
         public readonly int NamespaceId;
         /// <summary>
@@ -190,7 +165,10 @@ namespace Pulumi.GitLab
         /// Enable pipelines for the project.
         /// </summary>
         public readonly bool PipelinesEnabled;
-        public readonly Outputs.GetProjectPushRulesResult PushRules;
+        /// <summary>
+        /// Push rules for the project.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetProjectPushRuleResult> PushRules;
         /// <summary>
         /// Enable `Delete source branch` option by default for all new merge requests
         /// </summary>
@@ -209,7 +187,6 @@ namespace Pulumi.GitLab
         public readonly bool SnippetsEnabled;
         /// <summary>
         /// URL that can be provided to `git clone` to clone the
-        /// repository via SSH.
         /// </summary>
         public readonly string SshUrlToRepo;
         /// <summary>
@@ -253,7 +230,7 @@ namespace Pulumi.GitLab
 
             bool pipelinesEnabled,
 
-            Outputs.GetProjectPushRulesResult pushRules,
+            ImmutableArray<Outputs.GetProjectPushRuleResult> pushRules,
 
             bool removeSourceBranchAfterMerge,
 

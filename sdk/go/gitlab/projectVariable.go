@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_project\_variable
-//
 // This resource allows you to create and manage CI/CD variables for your GitLab projects.
 // For further information on variables, consult the [gitlab
 // documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
@@ -50,7 +48,7 @@ import (
 //
 // ## Import
 //
-// GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.
+// # GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.
 //
 // ```sh
 //  $ pulumi import gitlab:index/projectVariable:ProjectVariable example '12345:project_variable_key:*'
@@ -64,7 +62,7 @@ type ProjectVariable struct {
 	Key pulumi.StringOutput `pulumi:"key"`
 	// If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
 	Masked pulumi.BoolPtrOutput `pulumi:"masked"`
-	// The name or id of the project to add the hook to.
+	// The name or id of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrOutput `pulumi:"protected"`
@@ -118,7 +116,7 @@ type projectVariableState struct {
 	Key *string `pulumi:"key"`
 	// If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
 	Masked *bool `pulumi:"masked"`
-	// The name or id of the project to add the hook to.
+	// The name or id of the project.
 	Project *string `pulumi:"project"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected *bool `pulumi:"protected"`
@@ -135,7 +133,7 @@ type ProjectVariableState struct {
 	Key pulumi.StringPtrInput
 	// If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
 	Masked pulumi.BoolPtrInput
-	// The name or id of the project to add the hook to.
+	// The name or id of the project.
 	Project pulumi.StringPtrInput
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrInput
@@ -156,7 +154,7 @@ type projectVariableArgs struct {
 	Key string `pulumi:"key"`
 	// If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
 	Masked *bool `pulumi:"masked"`
-	// The name or id of the project to add the hook to.
+	// The name or id of the project.
 	Project string `pulumi:"project"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected *bool `pulumi:"protected"`
@@ -174,7 +172,7 @@ type ProjectVariableArgs struct {
 	Key pulumi.StringInput
 	// If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
 	Masked pulumi.BoolPtrInput
-	// The name or id of the project to add the hook to.
+	// The name or id of the project.
 	Project pulumi.StringInput
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrInput

@@ -109,6 +109,7 @@ class _ProjectMirrorState:
         Input properties used for looking up and filtering ProjectMirror resources.
         :param pulumi.Input[bool] enabled: Determines if the mirror is enabled.
         :param pulumi.Input[bool] keep_divergent_refs: Determines if divergent refs are skipped.
+        :param pulumi.Input[int] mirror_id: Mirror ID.
         :param pulumi.Input[bool] only_protected_branches: Determines if only protected branches are mirrored.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] url: The URL of the remote repository to be mirrored.
@@ -153,6 +154,9 @@ class _ProjectMirrorState:
     @property
     @pulumi.getter(name="mirrorId")
     def mirror_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Mirror ID.
+        """
         return pulumi.get(self, "mirror_id")
 
     @mirror_id.setter
@@ -208,8 +212,6 @@ class ProjectMirror(pulumi.CustomResource):
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # gitlab\_project_mirror
-
         This resource allows you to add a mirror target for the repository, all changes will be synced to the remote target.
 
         > This is for *pushing* changes to a remote repository. *Pull Mirroring* can be configured using a combination of the
@@ -231,7 +233,7 @@ class ProjectMirror(pulumi.CustomResource):
 
         ## Import
 
-        GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
+        # GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/projectMirror:ProjectMirror foo "12345:1337"
@@ -252,8 +254,6 @@ class ProjectMirror(pulumi.CustomResource):
                  args: ProjectMirrorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # gitlab\_project_mirror
-
         This resource allows you to add a mirror target for the repository, all changes will be synced to the remote target.
 
         > This is for *pushing* changes to a remote repository. *Pull Mirroring* can be configured using a combination of the
@@ -275,7 +275,7 @@ class ProjectMirror(pulumi.CustomResource):
 
         ## Import
 
-        GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
+        # GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/projectMirror:ProjectMirror foo "12345:1337"
@@ -348,6 +348,7 @@ class ProjectMirror(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Determines if the mirror is enabled.
         :param pulumi.Input[bool] keep_divergent_refs: Determines if divergent refs are skipped.
+        :param pulumi.Input[int] mirror_id: Mirror ID.
         :param pulumi.Input[bool] only_protected_branches: Determines if only protected branches are mirrored.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] url: The URL of the remote repository to be mirrored.
@@ -383,6 +384,9 @@ class ProjectMirror(pulumi.CustomResource):
     @property
     @pulumi.getter(name="mirrorId")
     def mirror_id(self) -> pulumi.Output[int]:
+        """
+        Mirror ID.
+        """
         return pulumi.get(self, "mirror_id")
 
     @property

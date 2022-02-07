@@ -228,6 +228,8 @@ class _ProjectClusterState:
                  provider_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ProjectCluster resources.
+        :param pulumi.Input[str] cluster_type: Cluster type.
+        :param pulumi.Input[str] created_at: Create time.
         :param pulumi.Input[str] domain: The base domain of the cluster.
         :param pulumi.Input[bool] enabled: Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
         :param pulumi.Input[str] environment_scope: The associated environment to the cluster. Defaults to `*`.
@@ -239,7 +241,9 @@ class _ProjectClusterState:
         :param pulumi.Input[bool] managed: Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
         :param pulumi.Input[str] management_project_id: The ID of the management project for the cluster.
         :param pulumi.Input[str] name: The name of cluster.
+        :param pulumi.Input[str] platform_type: Platform type.
         :param pulumi.Input[str] project: The id of the project to add the cluster to.
+        :param pulumi.Input[str] provider_type: Provider type.
         """
         if cluster_type is not None:
             pulumi.set(__self__, "cluster_type", cluster_type)
@@ -277,6 +281,9 @@ class _ProjectClusterState:
     @property
     @pulumi.getter(name="clusterType")
     def cluster_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster type.
+        """
         return pulumi.get(self, "cluster_type")
 
     @cluster_type.setter
@@ -286,6 +293,9 @@ class _ProjectClusterState:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Create time.
+        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -427,6 +437,9 @@ class _ProjectClusterState:
     @property
     @pulumi.getter(name="platformType")
     def platform_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Platform type.
+        """
         return pulumi.get(self, "platform_type")
 
     @platform_type.setter
@@ -448,6 +461,9 @@ class _ProjectClusterState:
     @property
     @pulumi.getter(name="providerType")
     def provider_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provider type.
+        """
         return pulumi.get(self, "provider_type")
 
     @provider_type.setter
@@ -474,8 +490,6 @@ class ProjectCluster(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # gitlab\_project\_cluster
-
         This resource allows you to create and manage project clusters for your GitLab projects.
         For further information on clusters, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).
@@ -488,21 +502,21 @@ class ProjectCluster(pulumi.CustomResource):
 
         foo = gitlab.Project("foo")
         bar = gitlab.ProjectCluster("bar",
+            project=foo.id,
             domain="example.com",
             enabled=True,
-            environment_scope="*",
             kubernetes_api_url="https://124.124.124",
-            kubernetes_authorization_type="rbac",
+            kubernetes_token="some-token",
             kubernetes_ca_cert="some-cert",
             kubernetes_namespace="namespace",
-            kubernetes_token="some-token",
-            management_project_id="123456",
-            project=foo.id)
+            kubernetes_authorization_type="rbac",
+            environment_scope="*",
+            management_project_id="123456")
         ```
 
         ## Import
 
-        GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
+        # GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/projectCluster:ProjectCluster bar 123:321
@@ -530,8 +544,6 @@ class ProjectCluster(pulumi.CustomResource):
                  args: ProjectClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # gitlab\_project\_cluster
-
         This resource allows you to create and manage project clusters for your GitLab projects.
         For further information on clusters, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).
@@ -544,21 +556,21 @@ class ProjectCluster(pulumi.CustomResource):
 
         foo = gitlab.Project("foo")
         bar = gitlab.ProjectCluster("bar",
+            project=foo.id,
             domain="example.com",
             enabled=True,
-            environment_scope="*",
             kubernetes_api_url="https://124.124.124",
-            kubernetes_authorization_type="rbac",
+            kubernetes_token="some-token",
             kubernetes_ca_cert="some-cert",
             kubernetes_namespace="namespace",
-            kubernetes_token="some-token",
-            management_project_id="123456",
-            project=foo.id)
+            kubernetes_authorization_type="rbac",
+            environment_scope="*",
+            management_project_id="123456")
         ```
 
         ## Import
 
-        GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
+        # GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/projectCluster:ProjectCluster bar 123:321
@@ -658,6 +670,8 @@ class ProjectCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] cluster_type: Cluster type.
+        :param pulumi.Input[str] created_at: Create time.
         :param pulumi.Input[str] domain: The base domain of the cluster.
         :param pulumi.Input[bool] enabled: Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
         :param pulumi.Input[str] environment_scope: The associated environment to the cluster. Defaults to `*`.
@@ -669,7 +683,9 @@ class ProjectCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] managed: Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
         :param pulumi.Input[str] management_project_id: The ID of the management project for the cluster.
         :param pulumi.Input[str] name: The name of cluster.
+        :param pulumi.Input[str] platform_type: Platform type.
         :param pulumi.Input[str] project: The id of the project to add the cluster to.
+        :param pulumi.Input[str] provider_type: Provider type.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -696,11 +712,17 @@ class ProjectCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="clusterType")
     def cluster_type(self) -> pulumi.Output[str]:
+        """
+        Cluster type.
+        """
         return pulumi.get(self, "cluster_type")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
+        """
+        Create time.
+        """
         return pulumi.get(self, "created_at")
 
     @property
@@ -794,6 +816,9 @@ class ProjectCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="platformType")
     def platform_type(self) -> pulumi.Output[str]:
+        """
+        Platform type.
+        """
         return pulumi.get(self, "platform_type")
 
     @property
@@ -807,5 +832,8 @@ class ProjectCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="providerType")
     def provider_type(self) -> pulumi.Output[str]:
+        """
+        Provider type.
+        """
         return pulumi.get(self, "provider_type")
 

@@ -15,12 +15,9 @@ namespace Pulumi.GitLab.Outputs
     {
         public readonly string AvatarUrl;
         /// <summary>
-        /// The ID of the project.
+        /// The ID of this resource.
         /// </summary>
         public readonly int Id;
-        /// <summary>
-        /// The name of the project.
-        /// </summary>
         public readonly string Name;
         public readonly string State;
         public readonly string Username;

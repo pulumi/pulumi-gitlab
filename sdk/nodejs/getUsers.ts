@@ -6,8 +6,6 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_users
- *
  * Provide details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
  *
  * **NOTE**: Some available options require administrator privileges. Please visit [Gitlab API documentation][usersForAdmins] for more information.
@@ -94,21 +92,45 @@ export interface GetUsersArgs {
  * A collection of values returned by getUsers.
  */
 export interface GetUsersResult {
+    /**
+     * Filter users that are active.
+     */
     readonly active?: boolean;
+    /**
+     * Filter users that are blocked.
+     */
     readonly blocked?: boolean;
+    /**
+     * Search for users created after a specific date. (Requires administrator privileges)
+     */
     readonly createdAfter?: string;
+    /**
+     * Search for users created before a specific date. (Requires administrator privileges)
+     */
     readonly createdBefore?: string;
+    /**
+     * Lookup users by external provider. (Requires administrator privileges)
+     */
     readonly externProvider?: string;
     /**
-     * The external UID of the user.
+     * Lookup users by external UID. (Requires administrator privileges)
      */
     readonly externUid?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
+     */
     readonly orderBy?: string;
+    /**
+     * Search users by username, name or email.
+     */
     readonly search?: string;
+    /**
+     * Sort users' list in asc or desc order. (Requires administrator privileges)
+     */
     readonly sort?: string;
     /**
      * The list of users.

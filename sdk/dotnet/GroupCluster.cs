@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_group\_cluster
-    /// 
     /// This resource allows you to create and manage group clusters for your GitLab groups.
     /// For further information on clusters, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).
@@ -32,14 +30,14 @@ namespace Pulumi.GitLab
     ///         });
     ///         var bar = new GitLab.GroupCluster("bar", new GitLab.GroupClusterArgs
     ///         {
+    ///             Group = foo.Id,
     ///             Domain = "example.com",
     ///             Enabled = true,
-    ///             EnvironmentScope = "*",
-    ///             Group = foo.Id,
     ///             KubernetesApiUrl = "https://124.124.124",
-    ///             KubernetesAuthorizationType = "rbac",
-    ///             KubernetesCaCert = "some-cert",
     ///             KubernetesToken = "some-token",
+    ///             KubernetesCaCert = "some-cert",
+    ///             KubernetesAuthorizationType = "rbac",
+    ///             EnvironmentScope = "*",
     ///             ManagementProjectId = "123456",
     ///         });
     ///     }
@@ -49,7 +47,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
+    /// # GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/groupCluster:GroupCluster bar 123:321
@@ -58,9 +56,15 @@ namespace Pulumi.GitLab
     [GitLabResourceType("gitlab:index/groupCluster:GroupCluster")]
     public partial class GroupCluster : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Cluster type.
+        /// </summary>
         [Output("clusterType")]
         public Output<string> ClusterType { get; private set; } = null!;
 
+        /// <summary>
+        /// Create time.
+        /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
@@ -130,9 +134,15 @@ namespace Pulumi.GitLab
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Platform type.
+        /// </summary>
         [Output("platformType")]
         public Output<string> PlatformType { get; private set; } = null!;
 
+        /// <summary>
+        /// Provider type.
+        /// </summary>
         [Output("providerType")]
         public Output<string> ProviderType { get; private set; } = null!;
 
@@ -255,9 +265,15 @@ namespace Pulumi.GitLab
 
     public sealed class GroupClusterState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Cluster type.
+        /// </summary>
         [Input("clusterType")]
         public Input<string>? ClusterType { get; set; }
 
+        /// <summary>
+        /// Create time.
+        /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
@@ -327,9 +343,15 @@ namespace Pulumi.GitLab
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Platform type.
+        /// </summary>
         [Input("platformType")]
         public Input<string>? PlatformType { get; set; }
 
+        /// <summary>
+        /// Provider type.
+        /// </summary>
         [Input("providerType")]
         public Input<string>? ProviderType { get; set; }
 

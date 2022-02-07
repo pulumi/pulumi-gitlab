@@ -95,11 +95,17 @@ class GetProjectsResult:
     @property
     @pulumi.getter
     def archived(self) -> Optional[bool]:
+        """
+        Limit by archived status.
+        """
         return pulumi.get(self, "archived")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[int]:
+        """
+        The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
+        """
         return pulumi.get(self, "group_id")
 
     @property
@@ -113,41 +119,65 @@ class GetProjectsResult:
     @property
     @pulumi.getter(name="includeSubgroups")
     def include_subgroups(self) -> Optional[bool]:
+        """
+        Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
+        """
         return pulumi.get(self, "include_subgroups")
 
     @property
     @pulumi.getter(name="maxQueryablePages")
     def max_queryable_pages(self) -> Optional[int]:
+        """
+        The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+        """
         return pulumi.get(self, "max_queryable_pages")
 
     @property
     @pulumi.getter
     def membership(self) -> Optional[bool]:
+        """
+        Limit by projects that the current user is a member of.
+        """
         return pulumi.get(self, "membership")
 
     @property
     @pulumi.getter(name="minAccessLevel")
     def min_access_level(self) -> Optional[int]:
+        """
+        Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `group_id`.
+        """
         return pulumi.get(self, "min_access_level")
 
     @property
     @pulumi.getter(name="orderBy")
     def order_by(self) -> Optional[str]:
+        """
+        Return projects ordered by `id`, `name`, `path`, `created_at`, `updated_at`, or `last_activity_at` fields. Default is `created_at`.
+        """
         return pulumi.get(self, "order_by")
 
     @property
     @pulumi.getter
     def owned(self) -> Optional[bool]:
+        """
+        Limit by projects owned by the current user.
+        """
         return pulumi.get(self, "owned")
 
     @property
     @pulumi.getter
     def page(self) -> Optional[int]:
+        """
+        The first page to begin the query on.
+        """
         return pulumi.get(self, "page")
 
     @property
     @pulumi.getter(name="perPage")
     def per_page(self) -> Optional[int]:
+        """
+        The number of results to return per page.
+        """
         return pulumi.get(self, "per_page")
 
     @property
@@ -161,59 +191,89 @@ class GetProjectsResult:
     @property
     @pulumi.getter
     def search(self) -> Optional[str]:
+        """
+        Return list of authorized projects matching the search criteria.
+        """
         return pulumi.get(self, "search")
 
     @property
     @pulumi.getter
     def simple(self) -> Optional[bool]:
+        """
+        Return only the ID, URL, name, and path of each project.
+        """
         return pulumi.get(self, "simple")
 
     @property
     @pulumi.getter
     def sort(self) -> Optional[str]:
+        """
+        Return projects sorted in `asc` or `desc` order. Default is `desc`.
+        """
         return pulumi.get(self, "sort")
 
     @property
     @pulumi.getter
     def starred(self) -> Optional[bool]:
+        """
+        Limit by projects starred by the current user.
+        """
         return pulumi.get(self, "starred")
 
     @property
     @pulumi.getter
     def statistics(self) -> Optional[bool]:
+        """
+        Include project statistics. Cannot be used with `group_id`.
+        """
         return pulumi.get(self, "statistics")
 
     @property
     @pulumi.getter
     def visibility(self) -> Optional[str]:
         """
-        The visibility of the project.
+        Limit by visibility `public`, `internal`, or `private`.
         """
         return pulumi.get(self, "visibility")
 
     @property
     @pulumi.getter(name="withCustomAttributes")
     def with_custom_attributes(self) -> Optional[bool]:
+        """
+        Include custom attributes in response *(admins only)*.
+        """
         return pulumi.get(self, "with_custom_attributes")
 
     @property
     @pulumi.getter(name="withIssuesEnabled")
     def with_issues_enabled(self) -> Optional[bool]:
+        """
+        Limit by projects with issues feature enabled. Default is `false`.
+        """
         return pulumi.get(self, "with_issues_enabled")
 
     @property
     @pulumi.getter(name="withMergeRequestsEnabled")
     def with_merge_requests_enabled(self) -> Optional[bool]:
+        """
+        Limit by projects with merge requests feature enabled. Default is `false`.
+        """
         return pulumi.get(self, "with_merge_requests_enabled")
 
     @property
     @pulumi.getter(name="withProgrammingLanguage")
     def with_programming_language(self) -> Optional[str]:
+        """
+        Limit by projects which use the given programming language. Cannot be used with `group_id`.
+        """
         return pulumi.get(self, "with_programming_language")
 
     @property
     @pulumi.getter(name="withShared")
     def with_shared(self) -> Optional[bool]:
+        """
+        Include projects shared to this group. Default is `true`. Needs `group_id`.
+        """
         return pulumi.get(self, "with_shared")
 
 
@@ -271,14 +331,13 @@ def get_projects(archived: Optional[bool] = None,
                  with_shared: Optional[bool] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectsResult:
     """
-    ## # gitlab\_projects
-
     Provide details about a list of projects in the Gitlab provider. Listing all projects and group projects with [project filtering](https://docs.gitlab.com/ee/api/projects.html#list-user-projects) or [group project filtering](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-projects) is supported.
 
     > **NOTE**: This data source supports all available filters exposed by the `xanzy/go-gitlab` package, which might not expose all available filters exposed by the Gitlab APIs.
 
+    > **NOTE**: The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
+
     ## Example Usage
-    ### List projects within a group tree
 
     ```python
     import pulumi
@@ -289,13 +348,6 @@ def get_projects(archived: Optional[bool] = None,
         order_by="name",
         include_subgroups=True,
         with_shared=False)
-    ```
-    ### List projects using the search syntax
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
     projects = gitlab.get_projects(search="postgresql",
         visibility="private")
     ```
@@ -304,18 +356,20 @@ def get_projects(archived: Optional[bool] = None,
     :param bool archived: Limit by archived status.
     :param int group_id: The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
     :param bool include_subgroups: Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
-    :param int max_queryable_pages: Prevents overloading your Gitlab instance in case of a misconfiguration. Default is `10`.
+    :param int max_queryable_pages: The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
     :param bool membership: Limit by projects that the current user is a member of.
     :param int min_access_level: Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `group_id`.
     :param str order_by: Return projects ordered by `id`, `name`, `path`, `created_at`, `updated_at`, or `last_activity_at` fields. Default is `created_at`.
     :param bool owned: Limit by projects owned by the current user.
+    :param int page: The first page to begin the query on.
+    :param int per_page: The number of results to return per page.
     :param str search: Return list of authorized projects matching the search criteria.
     :param bool simple: Return only the ID, URL, name, and path of each project.
     :param str sort: Return projects sorted in `asc` or `desc` order. Default is `desc`.
     :param bool starred: Limit by projects starred by the current user.
     :param bool statistics: Include project statistics. Cannot be used with `group_id`.
     :param str visibility: Limit by visibility `public`, `internal`, or `private`.
-    :param bool with_custom_attributes: Include custom attributes in response _(admins only)_.
+    :param bool with_custom_attributes: Include custom attributes in response *(admins only)*.
     :param bool with_issues_enabled: Limit by projects with issues feature enabled. Default is `false`.
     :param bool with_merge_requests_enabled: Limit by projects with merge requests feature enabled. Default is `false`.
     :param str with_programming_language: Limit by projects which use the given programming language. Cannot be used with `group_id`.
@@ -399,14 +453,13 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
                         with_shared: Optional[pulumi.Input[Optional[bool]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectsResult]:
     """
-    ## # gitlab\_projects
-
     Provide details about a list of projects in the Gitlab provider. Listing all projects and group projects with [project filtering](https://docs.gitlab.com/ee/api/projects.html#list-user-projects) or [group project filtering](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-projects) is supported.
 
     > **NOTE**: This data source supports all available filters exposed by the `xanzy/go-gitlab` package, which might not expose all available filters exposed by the Gitlab APIs.
 
+    > **NOTE**: The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
+
     ## Example Usage
-    ### List projects within a group tree
 
     ```python
     import pulumi
@@ -417,13 +470,6 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
         order_by="name",
         include_subgroups=True,
         with_shared=False)
-    ```
-    ### List projects using the search syntax
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
     projects = gitlab.get_projects(search="postgresql",
         visibility="private")
     ```
@@ -432,18 +478,20 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
     :param bool archived: Limit by archived status.
     :param int group_id: The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
     :param bool include_subgroups: Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
-    :param int max_queryable_pages: Prevents overloading your Gitlab instance in case of a misconfiguration. Default is `10`.
+    :param int max_queryable_pages: The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
     :param bool membership: Limit by projects that the current user is a member of.
     :param int min_access_level: Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `group_id`.
     :param str order_by: Return projects ordered by `id`, `name`, `path`, `created_at`, `updated_at`, or `last_activity_at` fields. Default is `created_at`.
     :param bool owned: Limit by projects owned by the current user.
+    :param int page: The first page to begin the query on.
+    :param int per_page: The number of results to return per page.
     :param str search: Return list of authorized projects matching the search criteria.
     :param bool simple: Return only the ID, URL, name, and path of each project.
     :param str sort: Return projects sorted in `asc` or `desc` order. Default is `desc`.
     :param bool starred: Limit by projects starred by the current user.
     :param bool statistics: Include project statistics. Cannot be used with `group_id`.
     :param str visibility: Limit by visibility `public`, `internal`, or `private`.
-    :param bool with_custom_attributes: Include custom attributes in response _(admins only)_.
+    :param bool with_custom_attributes: Include custom attributes in response *(admins only)*.
     :param bool with_issues_enabled: Limit by projects with issues feature enabled. Default is `false`.
     :param bool with_merge_requests_enabled: Limit by projects with merge requests feature enabled. Default is `false`.
     :param str with_programming_language: Limit by projects which use the given programming language. Cannot be used with `group_id`.

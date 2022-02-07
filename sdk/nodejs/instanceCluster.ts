@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_instance\_cluster
- *
  * This resource allows you to create and manage instance clusters for your GitLab instances.
  * For further information on clusters, consult the [gitlab
  * documentation](https://docs.gitlab.com/ee/user/instance/clusters/).
@@ -32,7 +30,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * GitLab instance clusters can be imported using a `clusterid`, e.g.
+ * # GitLab instance clusters can be imported using a `clusterid`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/instanceCluster:InstanceCluster bar 123
@@ -66,7 +64,13 @@ export class InstanceCluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceCluster.__pulumiType;
     }
 
+    /**
+     * Cluster type.
+     */
     public /*out*/ readonly clusterType!: pulumi.Output<string>;
+    /**
+     * Create time.
+     */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The base domain of the cluster.
@@ -112,7 +116,13 @@ export class InstanceCluster extends pulumi.CustomResource {
      * The name of cluster.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Platform type.
+     */
     public /*out*/ readonly platformType!: pulumi.Output<string>;
+    /**
+     * Provider type.
+     */
     public /*out*/ readonly providerType!: pulumi.Output<string>;
 
     /**
@@ -176,7 +186,13 @@ export class InstanceCluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceCluster resources.
  */
 export interface InstanceClusterState {
+    /**
+     * Cluster type.
+     */
     clusterType?: pulumi.Input<string>;
+    /**
+     * Create time.
+     */
     createdAt?: pulumi.Input<string>;
     /**
      * The base domain of the cluster.
@@ -222,7 +238,13 @@ export interface InstanceClusterState {
      * The name of cluster.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Platform type.
+     */
     platformType?: pulumi.Input<string>;
+    /**
+     * Provider type.
+     */
     providerType?: pulumi.Input<string>;
 }
 

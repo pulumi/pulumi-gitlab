@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_group\_variable
-//
 // This resource allows you to create and manage CI/CD variables for your GitLab groups.
 // For further information on variables, consult the [gitlab
 // documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
@@ -30,11 +28,12 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := gitlab.NewGroupVariable(ctx, "example", &gitlab.GroupVariableArgs{
-// 			Group:     pulumi.String("12345"),
-// 			Key:       pulumi.String("group_variable_key"),
-// 			Masked:    pulumi.Bool(false),
-// 			Protected: pulumi.Bool(false),
-// 			Value:     pulumi.String("group_variable_value"),
+// 			EnvironmentScope: pulumi.String("*"),
+// 			Group:            pulumi.String("12345"),
+// 			Key:              pulumi.String("group_variable_key"),
+// 			Masked:           pulumi.Bool(false),
+// 			Protected:        pulumi.Bool(false),
+// 			Value:            pulumi.String("group_variable_value"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -46,15 +45,17 @@ import (
 //
 // ## Import
 //
-// GitLab group variables can be imported using an id made up of `groupid:variablename`, e.g.
+// # GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key
+//  $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key:*
 // ```
 type GroupVariable struct {
 	pulumi.CustomResourceState
 
-	// The name or id of the group to add the hook to.
+	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+	EnvironmentScope pulumi.StringPtrOutput `pulumi:"environmentScope"`
+	// The name or id of the group.
 	Group pulumi.StringOutput `pulumi:"group"`
 	// The name of the variable.
 	Key pulumi.StringOutput `pulumi:"key"`
@@ -106,7 +107,9 @@ func GetGroupVariable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupVariable resources.
 type groupVariableState struct {
-	// The name or id of the group to add the hook to.
+	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+	EnvironmentScope *string `pulumi:"environmentScope"`
+	// The name or id of the group.
 	Group *string `pulumi:"group"`
 	// The name of the variable.
 	Key *string `pulumi:"key"`
@@ -121,7 +124,9 @@ type groupVariableState struct {
 }
 
 type GroupVariableState struct {
-	// The name or id of the group to add the hook to.
+	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+	EnvironmentScope pulumi.StringPtrInput
+	// The name or id of the group.
 	Group pulumi.StringPtrInput
 	// The name of the variable.
 	Key pulumi.StringPtrInput
@@ -140,7 +145,9 @@ func (GroupVariableState) ElementType() reflect.Type {
 }
 
 type groupVariableArgs struct {
-	// The name or id of the group to add the hook to.
+	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+	EnvironmentScope *string `pulumi:"environmentScope"`
+	// The name or id of the group.
 	Group string `pulumi:"group"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
@@ -156,7 +163,9 @@ type groupVariableArgs struct {
 
 // The set of arguments for constructing a GroupVariable resource.
 type GroupVariableArgs struct {
-	// The name or id of the group to add the hook to.
+	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+	EnvironmentScope pulumi.StringPtrInput
+	// The name or id of the group.
 	Group pulumi.StringInput
 	// The name of the variable.
 	Key pulumi.StringInput

@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_group_membership
- *
  * This resource allows you to add a user to an existing group.
  *
  * ## Example Usage
@@ -25,7 +23,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
+ * # GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/groupMembership:GroupMembership test "12345:1337"
@@ -60,7 +58,7 @@ export class GroupMembership extends pulumi.CustomResource {
     }
 
     /**
-     * Acceptable values are: guest, reporter, developer, maintainer, owner.
+     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
      */
     public readonly accessLevel!: pulumi.Output<string>;
     /**
@@ -119,7 +117,7 @@ export class GroupMembership extends pulumi.CustomResource {
  */
 export interface GroupMembershipState {
     /**
-     * Acceptable values are: guest, reporter, developer, maintainer, owner.
+     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -141,7 +139,7 @@ export interface GroupMembershipState {
  */
 export interface GroupMembershipArgs {
     /**
-     * Acceptable values are: guest, reporter, developer, maintainer, owner.
+     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
      */
     accessLevel: pulumi.Input<string>;
     /**

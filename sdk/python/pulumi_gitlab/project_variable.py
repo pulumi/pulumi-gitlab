@@ -23,7 +23,7 @@ class ProjectVariableArgs:
         """
         The set of arguments for constructing a ProjectVariable resource.
         :param pulumi.Input[str] key: The name of the variable.
-        :param pulumi.Input[str] project: The name or id of the project to add the hook to.
+        :param pulumi.Input[str] project: The name or id of the project.
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] environment_scope: The environment_scope of the variable. Defaults to `*`.
         :param pulumi.Input[bool] masked: If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
@@ -58,7 +58,7 @@ class ProjectVariableArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        The name or id of the project to add the hook to.
+        The name or id of the project.
         """
         return pulumi.get(self, "project")
 
@@ -142,7 +142,7 @@ class _ProjectVariableState:
         :param pulumi.Input[str] environment_scope: The environment_scope of the variable. Defaults to `*`.
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
-        :param pulumi.Input[str] project: The name or id of the project to add the hook to.
+        :param pulumi.Input[str] project: The name or id of the project.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
@@ -202,7 +202,7 @@ class _ProjectVariableState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The name or id of the project to add the hook to.
+        The name or id of the project.
         """
         return pulumi.get(self, "project")
 
@@ -261,8 +261,6 @@ class ProjectVariable(pulumi.CustomResource):
                  variable_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # gitlab\_project\_variable
-
         This resource allows you to create and manage CI/CD variables for your GitLab projects.
         For further information on variables, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
@@ -287,7 +285,7 @@ class ProjectVariable(pulumi.CustomResource):
 
         ## Import
 
-        GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.
+        # GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/projectVariable:ProjectVariable example '12345:project_variable_key:*'
@@ -298,7 +296,7 @@ class ProjectVariable(pulumi.CustomResource):
         :param pulumi.Input[str] environment_scope: The environment_scope of the variable. Defaults to `*`.
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
-        :param pulumi.Input[str] project: The name or id of the project to add the hook to.
+        :param pulumi.Input[str] project: The name or id of the project.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
@@ -310,8 +308,6 @@ class ProjectVariable(pulumi.CustomResource):
                  args: ProjectVariableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # gitlab\_project\_variable
-
         This resource allows you to create and manage CI/CD variables for your GitLab projects.
         For further information on variables, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
@@ -336,7 +332,7 @@ class ProjectVariable(pulumi.CustomResource):
 
         ## Import
 
-        GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.
+        # GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/projectVariable:ProjectVariable example '12345:project_variable_key:*'
@@ -416,7 +412,7 @@ class ProjectVariable(pulumi.CustomResource):
         :param pulumi.Input[str] environment_scope: The environment_scope of the variable. Defaults to `*`.
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
-        :param pulumi.Input[str] project: The name or id of the project to add the hook to.
+        :param pulumi.Input[str] project: The name or id of the project.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
@@ -462,7 +458,7 @@ class ProjectVariable(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The name or id of the project to add the hook to.
+        The name or id of the project.
         """
         return pulumi.get(self, "project")
 
