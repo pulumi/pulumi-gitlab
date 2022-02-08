@@ -29,7 +29,7 @@ namespace Pulumi.GitLab.Outputs
         public readonly ImmutableArray<ImmutableDictionary<string, object>> CustomAttributes;
         public readonly string DefaultBranch;
         public readonly string Description;
-        public readonly ImmutableArray<Outputs.GetProjectsProjectForkedFromProjectResult> ForkedFromProjects;
+        public readonly Outputs.GetProjectsProjectForkedFromProjectResult ForkedFromProject;
         public readonly int ForksCount;
         public readonly string HttpUrlToRepo;
         /// <summary>
@@ -50,16 +50,16 @@ namespace Pulumi.GitLab.Outputs
         public readonly int MirrorUserId;
         public readonly string Name;
         public readonly string NameWithNamespace;
-        public readonly ImmutableArray<Outputs.GetProjectsProjectNamespaceResult> Namespaces;
+        public readonly Outputs.GetProjectsProjectNamespaceResult Namespace;
         public readonly bool OnlyAllowMergeIfAllDiscussionsAreResolved;
         public readonly bool OnlyAllowMergeIfPipelineSucceeds;
         public readonly bool OnlyMirrorProtectedBranches;
         public readonly int OpenIssuesCount;
-        public readonly ImmutableArray<Outputs.GetProjectsProjectOwnerResult> Owners;
+        public readonly Outputs.GetProjectsProjectOwnerResult Owner;
         public readonly bool PackagesEnabled;
         public readonly string Path;
         public readonly string PathWithNamespace;
-        public readonly ImmutableArray<Outputs.GetProjectsProjectPermissionResult> Permissions;
+        public readonly Outputs.GetProjectsProjectPermissionsResult Permissions;
         public readonly bool Public;
         public readonly bool PublicBuilds;
         public readonly string ReadmeUrl;
@@ -111,7 +111,7 @@ namespace Pulumi.GitLab.Outputs
 
             string description,
 
-            ImmutableArray<Outputs.GetProjectsProjectForkedFromProjectResult> forkedFromProjects,
+            Outputs.GetProjectsProjectForkedFromProjectResult forkedFromProject,
 
             int forksCount,
 
@@ -147,7 +147,7 @@ namespace Pulumi.GitLab.Outputs
 
             string nameWithNamespace,
 
-            ImmutableArray<Outputs.GetProjectsProjectNamespaceResult> namespaces,
+            Outputs.GetProjectsProjectNamespaceResult @namespace,
 
             bool onlyAllowMergeIfAllDiscussionsAreResolved,
 
@@ -157,7 +157,7 @@ namespace Pulumi.GitLab.Outputs
 
             int openIssuesCount,
 
-            ImmutableArray<Outputs.GetProjectsProjectOwnerResult> owners,
+            Outputs.GetProjectsProjectOwnerResult owner,
 
             bool packagesEnabled,
 
@@ -165,7 +165,7 @@ namespace Pulumi.GitLab.Outputs
 
             string pathWithNamespace,
 
-            ImmutableArray<Outputs.GetProjectsProjectPermissionResult> permissions,
+            Outputs.GetProjectsProjectPermissionsResult permissions,
 
             bool @public,
 
@@ -212,7 +212,7 @@ namespace Pulumi.GitLab.Outputs
             CustomAttributes = customAttributes;
             DefaultBranch = defaultBranch;
             Description = description;
-            ForkedFromProjects = forkedFromProjects;
+            ForkedFromProject = forkedFromProject;
             ForksCount = forksCount;
             HttpUrlToRepo = httpUrlToRepo;
             Id = id;
@@ -230,12 +230,12 @@ namespace Pulumi.GitLab.Outputs
             MirrorUserId = mirrorUserId;
             Name = name;
             NameWithNamespace = nameWithNamespace;
-            Namespaces = namespaces;
+            Namespace = @namespace;
             OnlyAllowMergeIfAllDiscussionsAreResolved = onlyAllowMergeIfAllDiscussionsAreResolved;
             OnlyAllowMergeIfPipelineSucceeds = onlyAllowMergeIfPipelineSucceeds;
             OnlyMirrorProtectedBranches = onlyMirrorProtectedBranches;
             OpenIssuesCount = openIssuesCount;
-            Owners = owners;
+            Owner = owner;
             PackagesEnabled = packagesEnabled;
             Path = path;
             PathWithNamespace = pathWithNamespace;

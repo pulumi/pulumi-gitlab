@@ -61,8 +61,8 @@ class GetProjectResult:
         if pipelines_enabled and not isinstance(pipelines_enabled, bool):
             raise TypeError("Expected argument 'pipelines_enabled' to be a bool")
         pulumi.set(__self__, "pipelines_enabled", pipelines_enabled)
-        if push_rules and not isinstance(push_rules, list):
-            raise TypeError("Expected argument 'push_rules' to be a list")
+        if push_rules and not isinstance(push_rules, dict):
+            raise TypeError("Expected argument 'push_rules' to be a dict")
         pulumi.set(__self__, "push_rules", push_rules)
         if remove_source_branch_after_merge and not isinstance(remove_source_branch_after_merge, bool):
             raise TypeError("Expected argument 'remove_source_branch_after_merge' to be a bool")
@@ -195,7 +195,7 @@ class GetProjectResult:
 
     @property
     @pulumi.getter(name="pushRules")
-    def push_rules(self) -> Sequence['outputs.GetProjectPushRuleResult']:
+    def push_rules(self) -> 'outputs.GetProjectPushRulesResult':
         """
         Push rules for the project.
         """

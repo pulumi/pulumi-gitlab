@@ -81,7 +81,7 @@ type LookupProjectResult struct {
 	// Enable pipelines for the project.
 	PipelinesEnabled bool `pulumi:"pipelinesEnabled"`
 	// Push rules for the project.
-	PushRules []GetProjectPushRule `pulumi:"pushRules"`
+	PushRules GetProjectPushRules `pulumi:"pushRules"`
 	// Enable `Delete source branch` option by default for all new merge requests
 	RemoveSourceBranchAfterMerge bool `pulumi:"removeSourceBranchAfterMerge"`
 	// Allow users to request member access.
@@ -202,8 +202,8 @@ func (o LookupProjectResultOutput) PipelinesEnabled() pulumi.BoolOutput {
 }
 
 // Push rules for the project.
-func (o LookupProjectResultOutput) PushRules() GetProjectPushRuleArrayOutput {
-	return o.ApplyT(func(v LookupProjectResult) []GetProjectPushRule { return v.PushRules }).(GetProjectPushRuleArrayOutput)
+func (o LookupProjectResultOutput) PushRules() GetProjectPushRulesOutput {
+	return o.ApplyT(func(v LookupProjectResult) GetProjectPushRules { return v.PushRules }).(GetProjectPushRulesOutput)
 }
 
 // Enable `Delete source branch` option by default for all new merge requests

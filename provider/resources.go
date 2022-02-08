@@ -121,11 +121,45 @@ func Provider() tfbridge.ProviderInfo {
 			"gitlab_user_custom_attribute":      {Tok: gitLabResource(gitLabMod, "UserCustomAttribute")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"gitlab_group":                      {Tok: gitLabDataSource(gitLabMod, "getGroup")},
-			"gitlab_project":                    {Tok: gitLabDataSource(gitLabMod, "getProject")},
-			"gitlab_user":                       {Tok: gitLabDataSource(gitLabMod, "getUser")},
-			"gitlab_users":                      {Tok: gitLabDataSource(gitLabMod, "getUsers")},
-			"gitlab_projects":                   {Tok: gitLabDataSource(gitLabMod, "getProjects")},
+			"gitlab_group": {Tok: gitLabDataSource(gitLabMod, "getGroup")},
+			"gitlab_project": {
+				Tok: gitLabDataSource(gitLabMod, "getProject"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"push_rules": {
+						Name:        "pushRules",
+						MaxItemsOne: tfbridge.True(),
+					},
+				},
+			},
+			"gitlab_user":  {Tok: gitLabDataSource(gitLabMod, "getUser")},
+			"gitlab_users": {Tok: gitLabDataSource(gitLabMod, "getUsers")},
+			"gitlab_projects": {
+				Tok: gitLabDataSource(gitLabMod, "getProjects"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"projects": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"permissions": {
+									Name:        "permissions",
+									MaxItemsOne: tfbridge.True(),
+								},
+								"namespace": {
+									Name:        "namespace",
+									MaxItemsOne: tfbridge.True(),
+								},
+								"forked_from_project": {
+									Name:        "forkedFromProject",
+									MaxItemsOne: tfbridge.True(),
+								},
+								"owner": {
+									Name:        "owner",
+									MaxItemsOne: tfbridge.True(),
+								},
+							},
+						},
+					},
+				},
+			},
 			"gitlab_group_membership":           {Tok: gitLabDataSource(gitLabMod, "getGroupMembership")},
 			"gitlab_project_protected_branch":   {Tok: gitLabDataSource(gitLabMod, "getProjectProtectedBranch")},
 			"gitlab_project_protected_branches": {Tok: gitLabDataSource(gitLabMod, "getProjectProtectedBranches")},

@@ -99,7 +99,7 @@ export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
     userId: number;
 }
 
-export interface GetProjectPushRule {
+export interface GetProjectPushRules {
     authorEmailRegex: string;
     branchNameRegex: string;
     commitCommitterCheck: boolean;
@@ -130,7 +130,7 @@ export interface GetProjectsProject {
     customAttributes: {[key: string]: any}[];
     defaultBranch: string;
     description: string;
-    forkedFromProjects: outputs.GetProjectsProjectForkedFromProject[];
+    forkedFromProject: outputs.GetProjectsProjectForkedFromProject;
     forksCount: number;
     httpUrlToRepo: string;
     /**
@@ -151,16 +151,16 @@ export interface GetProjectsProject {
     mirrorUserId: number;
     name: string;
     nameWithNamespace: string;
-    namespaces: outputs.GetProjectsProjectNamespace[];
+    namespace: outputs.GetProjectsProjectNamespace;
     onlyAllowMergeIfAllDiscussionsAreResolved: boolean;
     onlyAllowMergeIfPipelineSucceeds: boolean;
     onlyMirrorProtectedBranches: boolean;
     openIssuesCount: number;
-    owners: outputs.GetProjectsProjectOwner[];
+    owner: outputs.GetProjectsProjectOwner;
     packagesEnabled: boolean;
     path: string;
     pathWithNamespace: string;
-    permissions: outputs.GetProjectsProjectPermission[];
+    permissions: outputs.GetProjectsProjectPermissions;
     public: boolean;
     publicBuilds: boolean;
     readmeUrl: string;
@@ -221,7 +221,7 @@ export interface GetProjectsProjectOwner {
     websiteUrl: string;
 }
 
-export interface GetProjectsProjectPermission {
+export interface GetProjectsProjectPermissions {
     groupAccess: {[key: string]: number};
     projectAccess: {[key: string]: number};
 }

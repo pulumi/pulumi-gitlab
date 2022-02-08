@@ -19,12 +19,12 @@ __all__ = [
     'GetProjectProtectedBranchesProtectedBranchResult',
     'GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult',
     'GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult',
-    'GetProjectPushRuleResult',
+    'GetProjectPushRulesResult',
     'GetProjectsProjectResult',
     'GetProjectsProjectForkedFromProjectResult',
     'GetProjectsProjectNamespaceResult',
     'GetProjectsProjectOwnerResult',
-    'GetProjectsProjectPermissionResult',
+    'GetProjectsProjectPermissionsResult',
     'GetProjectsProjectSharedWithGroupResult',
     'GetUsersUserResult',
 ]
@@ -618,7 +618,7 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult(dict):
 
 
 @pulumi.output_type
-class GetProjectPushRuleResult(dict):
+class GetProjectPushRulesResult(dict):
     def __init__(__self__, *,
                  author_email_regex: str,
                  branch_name_regex: str,
@@ -715,7 +715,7 @@ class GetProjectsProjectResult(dict):
                  custom_attributes: Sequence[Mapping[str, Any]],
                  default_branch: str,
                  description: str,
-                 forked_from_projects: Sequence['outputs.GetProjectsProjectForkedFromProjectResult'],
+                 forked_from_project: 'outputs.GetProjectsProjectForkedFromProjectResult',
                  forks_count: int,
                  http_url_to_repo: str,
                  id: int,
@@ -733,16 +733,16 @@ class GetProjectsProjectResult(dict):
                  mirror_user_id: int,
                  name: str,
                  name_with_namespace: str,
-                 namespaces: Sequence['outputs.GetProjectsProjectNamespaceResult'],
+                 namespace: 'outputs.GetProjectsProjectNamespaceResult',
                  only_allow_merge_if_all_discussions_are_resolved: bool,
                  only_allow_merge_if_pipeline_succeeds: bool,
                  only_mirror_protected_branches: bool,
                  open_issues_count: int,
-                 owners: Sequence['outputs.GetProjectsProjectOwnerResult'],
+                 owner: 'outputs.GetProjectsProjectOwnerResult',
                  packages_enabled: bool,
                  path: str,
                  path_with_namespace: str,
-                 permissions: Sequence['outputs.GetProjectsProjectPermissionResult'],
+                 permissions: 'outputs.GetProjectsProjectPermissionsResult',
                  public: bool,
                  public_builds: bool,
                  readme_url: str,
@@ -778,7 +778,7 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "custom_attributes", custom_attributes)
         pulumi.set(__self__, "default_branch", default_branch)
         pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "forked_from_projects", forked_from_projects)
+        pulumi.set(__self__, "forked_from_project", forked_from_project)
         pulumi.set(__self__, "forks_count", forks_count)
         pulumi.set(__self__, "http_url_to_repo", http_url_to_repo)
         pulumi.set(__self__, "id", id)
@@ -796,12 +796,12 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "mirror_user_id", mirror_user_id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "name_with_namespace", name_with_namespace)
-        pulumi.set(__self__, "namespaces", namespaces)
+        pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "only_allow_merge_if_all_discussions_are_resolved", only_allow_merge_if_all_discussions_are_resolved)
         pulumi.set(__self__, "only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
         pulumi.set(__self__, "only_mirror_protected_branches", only_mirror_protected_branches)
         pulumi.set(__self__, "open_issues_count", open_issues_count)
-        pulumi.set(__self__, "owners", owners)
+        pulumi.set(__self__, "owner", owner)
         pulumi.set(__self__, "packages_enabled", packages_enabled)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "path_with_namespace", path_with_namespace)
@@ -892,9 +892,9 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "description")
 
     @property
-    @pulumi.getter(name="forkedFromProjects")
-    def forked_from_projects(self) -> Sequence['outputs.GetProjectsProjectForkedFromProjectResult']:
-        return pulumi.get(self, "forked_from_projects")
+    @pulumi.getter(name="forkedFromProject")
+    def forked_from_project(self) -> 'outputs.GetProjectsProjectForkedFromProjectResult':
+        return pulumi.get(self, "forked_from_project")
 
     @property
     @pulumi.getter(name="forksCount")
@@ -986,8 +986,8 @@ class GetProjectsProjectResult(dict):
 
     @property
     @pulumi.getter
-    def namespaces(self) -> Sequence['outputs.GetProjectsProjectNamespaceResult']:
-        return pulumi.get(self, "namespaces")
+    def namespace(self) -> 'outputs.GetProjectsProjectNamespaceResult':
+        return pulumi.get(self, "namespace")
 
     @property
     @pulumi.getter(name="onlyAllowMergeIfAllDiscussionsAreResolved")
@@ -1011,8 +1011,8 @@ class GetProjectsProjectResult(dict):
 
     @property
     @pulumi.getter
-    def owners(self) -> Sequence['outputs.GetProjectsProjectOwnerResult']:
-        return pulumi.get(self, "owners")
+    def owner(self) -> 'outputs.GetProjectsProjectOwnerResult':
+        return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter(name="packagesEnabled")
@@ -1031,7 +1031,7 @@ class GetProjectsProjectResult(dict):
 
     @property
     @pulumi.getter
-    def permissions(self) -> Sequence['outputs.GetProjectsProjectPermissionResult']:
+    def permissions(self) -> 'outputs.GetProjectsProjectPermissionsResult':
         return pulumi.get(self, "permissions")
 
     @property
@@ -1281,7 +1281,7 @@ class GetProjectsProjectOwnerResult(dict):
 
 
 @pulumi.output_type
-class GetProjectsProjectPermissionResult(dict):
+class GetProjectsProjectPermissionsResult(dict):
     def __init__(__self__, *,
                  group_access: Mapping[str, int],
                  project_access: Mapping[str, int]):

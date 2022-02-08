@@ -168,7 +168,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// Push rules for the project.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetProjectPushRuleResult> PushRules;
+        public readonly Outputs.GetProjectPushRulesResult PushRules;
         /// <summary>
         /// Enable `Delete source branch` option by default for all new merge requests
         /// </summary>
@@ -230,7 +230,7 @@ namespace Pulumi.GitLab
 
             bool pipelinesEnabled,
 
-            ImmutableArray<Outputs.GetProjectPushRuleResult> pushRules,
+            Outputs.GetProjectPushRulesResult pushRules,
 
             bool removeSourceBranchAfterMerge,
 

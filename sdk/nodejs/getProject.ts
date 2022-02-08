@@ -105,7 +105,7 @@ export interface GetProjectResult {
     /**
      * Push rules for the project.
      */
-    readonly pushRules: outputs.GetProjectPushRule[];
+    readonly pushRules: outputs.GetProjectPushRules;
     /**
      * Enable `Delete source branch` option by default for all new merge requests
      */

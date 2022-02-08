@@ -601,7 +601,7 @@
                 }
             }
         },
-        "gitlab:index/getProjectPushRule:getProjectPushRule": {
+        "gitlab:index/getProjectPushRules:getProjectPushRules": {
             "properties": {
                 "authorEmailRegex": {
                     "type": "string",
@@ -828,11 +828,8 @@
                         }
                     }
                 },
-                "forkedFromProjects": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/gitlab:index/getProjectsProjectForkedFromProject:getProjectsProjectForkedFromProject"
-                    },
+                "forkedFromProject": {
+                    "$ref": "#/types/gitlab:index/getProjectsProjectForkedFromProject:getProjectsProjectForkedFromProject",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -976,11 +973,8 @@
                         }
                     }
                 },
-                "namespaces": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/gitlab:index/getProjectsProjectNamespace:getProjectsProjectNamespace"
-                    },
+                "namespace": {
+                    "$ref": "#/types/gitlab:index/getProjectsProjectNamespace:getProjectsProjectNamespace",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1019,11 +1013,8 @@
                         }
                     }
                 },
-                "owners": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/gitlab:index/getProjectsProjectOwner:getProjectsProjectOwner"
-                    },
+                "owner": {
+                    "$ref": "#/types/gitlab:index/getProjectsProjectOwner:getProjectsProjectOwner",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1055,10 +1046,7 @@
                     }
                 },
                 "permissions": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/gitlab:index/getProjectsProjectPermission:getProjectsProjectPermission"
-                    },
+                    "$ref": "#/types/gitlab:index/getProjectsProjectPermissions:getProjectsProjectPermissions",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1220,7 +1208,7 @@
                 "customAttributes",
                 "defaultBranch",
                 "description",
-                "forkedFromProjects",
+                "forkedFromProject",
                 "forksCount",
                 "httpUrlToRepo",
                 "id",
@@ -1238,12 +1226,12 @@
                 "mirrorUserId",
                 "name",
                 "nameWithNamespace",
-                "namespaces",
+                "namespace",
                 "onlyAllowMergeIfAllDiscussionsAreResolved",
                 "onlyAllowMergeIfPipelineSucceeds",
                 "onlyMirrorProtectedBranches",
                 "openIssuesCount",
-                "owners",
+                "owner",
                 "packagesEnabled",
                 "path",
                 "pathWithNamespace",
@@ -1472,7 +1460,7 @@
                 }
             }
         },
-        "gitlab:index/getProjectsProjectPermission:getProjectsProjectPermission": {
+        "gitlab:index/getProjectsProjectPermissions:getProjectsProjectPermissions": {
             "properties": {
                 "groupAccess": {
                     "type": "object",
@@ -7330,10 +7318,7 @@
                         "description": "Enable pipelines for the project.\n"
                     },
                     "pushRules": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/gitlab:index/getProjectPushRule:getProjectPushRule"
-                        },
+                        "$ref": "#/types/gitlab:index/getProjectPushRules:getProjectPushRules",
                         "description": "Push rules for the project.\n"
                     },
                     "removeSourceBranchAfterMerge": {
