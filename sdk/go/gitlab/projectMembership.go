@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_project_membership
-//
 // This resource allows you to add a current user to an existing project with a set access level.
 //
 // ## Example Usage
@@ -50,7 +48,7 @@ import (
 //
 // ## Import
 //
-// GitLab project membership can be imported using an id made up of `project_id:user_id`, e.g.
+// # GitLab project membership can be imported using an id made up of `project_id:user_id`, e.g.
 //
 // ```sh
 //  $ pulumi import gitlab:index/projectMembership:ProjectMembership test "12345:1337"
@@ -58,7 +56,7 @@ import (
 type ProjectMembership struct {
 	pulumi.CustomResourceState
 
-	// One of five levels of access to the project.
+	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
 	// The id of the project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
@@ -104,7 +102,7 @@ func GetProjectMembership(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectMembership resources.
 type projectMembershipState struct {
-	// One of five levels of access to the project.
+	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
 	AccessLevel *string `pulumi:"accessLevel"`
 	// The id of the project.
 	ProjectId *string `pulumi:"projectId"`
@@ -113,7 +111,7 @@ type projectMembershipState struct {
 }
 
 type ProjectMembershipState struct {
-	// One of five levels of access to the project.
+	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
 	AccessLevel pulumi.StringPtrInput
 	// The id of the project.
 	ProjectId pulumi.StringPtrInput
@@ -126,7 +124,7 @@ func (ProjectMembershipState) ElementType() reflect.Type {
 }
 
 type projectMembershipArgs struct {
-	// One of five levels of access to the project.
+	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
 	AccessLevel string `pulumi:"accessLevel"`
 	// The id of the project.
 	ProjectId string `pulumi:"projectId"`
@@ -136,7 +134,7 @@ type projectMembershipArgs struct {
 
 // The set of arguments for constructing a ProjectMembership resource.
 type ProjectMembershipArgs struct {
-	// One of five levels of access to the project.
+	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
 	AccessLevel pulumi.StringInput
 	// The id of the project.
 	ProjectId pulumi.StringInput

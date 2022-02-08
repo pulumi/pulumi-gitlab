@@ -34,7 +34,9 @@ namespace Pulumi.GitLab
 
         private static readonly __Value<string?> _baseUrl = new __Value<string?>(() => __config.Get("baseUrl"));
         /// <summary>
-        /// The GitLab Base API URL
+        /// This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
+        /// Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
+        /// the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
         /// </summary>
         public static string? BaseUrl
         {
@@ -44,7 +46,8 @@ namespace Pulumi.GitLab
 
         private static readonly __Value<string?> _cacertFile = new __Value<string?>(() => __config.Get("cacertFile"));
         /// <summary>
-        /// A file containing the ca certificate to use in case ssl certificate is not from a standard chain
+        /// This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab
+        /// CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
         /// </summary>
         public static string? CacertFile
         {
@@ -64,7 +67,8 @@ namespace Pulumi.GitLab
 
         private static readonly __Value<string?> _clientKey = new __Value<string?>(() => __config.Get("clientKey"));
         /// <summary>
-        /// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data.
+        /// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
+        /// `client_cert` is set.
         /// </summary>
         public static string? ClientKey
         {
@@ -72,9 +76,22 @@ namespace Pulumi.GitLab
             set => _clientKey.Set(value);
         }
 
+        private static readonly __Value<bool?> _earlyAuthCheck = new __Value<bool?>(() => __config.GetBoolean("earlyAuthCheck"));
+        /// <summary>
+        /// (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
+        /// configuration is correct and the GitLab API is reachable. Turn it off, to skip this check. This may be useful if the
+        /// GitLab instance does not yet exist and is created within the same terraform module. This is an experimental feature and
+        /// may change in the future. Please make sure to always keep backups of your state.
+        /// </summary>
+        public static bool? EarlyAuthCheck
+        {
+            get => _earlyAuthCheck.Get();
+            set => _earlyAuthCheck.Set(value);
+        }
+
         private static readonly __Value<bool?> _insecure = new __Value<bool?>(() => __config.GetBoolean("insecure"));
         /// <summary>
-        /// Disable SSL verification of API calls
+        /// When set to true this disables SSL verification of the connection to the GitLab instance.
         /// </summary>
         public static bool? Insecure
         {
@@ -84,7 +101,10 @@ namespace Pulumi.GitLab
 
         private static readonly __Value<string?> _token = new __Value<string?>(() => __config.Get("token"));
         /// <summary>
-        /// The OAuth2 token or project/personal access token used to connect to GitLab.
+        /// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
+        /// used in this provider for authentication (using Bearer authorization token). See
+        /// https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
+        /// variable.
         /// </summary>
         public static string? Token
         {

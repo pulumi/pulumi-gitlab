@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_group_membership
-//
 // This resource allows you to add a user to an existing group.
 //
 // ## Example Usage
@@ -43,7 +41,7 @@ import (
 //
 // ## Import
 //
-// GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
+// # GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
 //
 // ```sh
 //  $ pulumi import gitlab:index/groupMembership:GroupMembership test "12345:1337"
@@ -51,7 +49,7 @@ import (
 type GroupMembership struct {
 	pulumi.CustomResourceState
 
-	// Acceptable values are: guest, reporter, developer, maintainer, owner.
+	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
@@ -99,7 +97,7 @@ func GetGroupMembership(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupMembership resources.
 type groupMembershipState struct {
-	// Acceptable values are: guest, reporter, developer, maintainer, owner.
+	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
@@ -110,7 +108,7 @@ type groupMembershipState struct {
 }
 
 type GroupMembershipState struct {
-	// Acceptable values are: guest, reporter, developer, maintainer, owner.
+	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
 	AccessLevel pulumi.StringPtrInput
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
@@ -125,7 +123,7 @@ func (GroupMembershipState) ElementType() reflect.Type {
 }
 
 type groupMembershipArgs struct {
-	// Acceptable values are: guest, reporter, developer, maintainer, owner.
+	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
 	AccessLevel string `pulumi:"accessLevel"`
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
@@ -137,7 +135,7 @@ type groupMembershipArgs struct {
 
 // The set of arguments for constructing a GroupMembership resource.
 type GroupMembershipArgs struct {
-	// Acceptable values are: guest, reporter, developer, maintainer, owner.
+	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
 	AccessLevel pulumi.StringInput
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput

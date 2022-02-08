@@ -9,6 +9,47 @@ using Pulumi.Serialization;
 
 namespace Pulumi.GitLab
 {
+    /// <summary>
+    /// This resource manages a [Pipelines email integration](https://docs.gitlab.com/ee/user/project/integrations/overview.html#integrations-listing) that emails the pipeline status to a list of recipients.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var awesomeProject = new GitLab.Project("awesomeProject", new GitLab.ProjectArgs
+    ///         {
+    ///             Description = "My awesome project.",
+    ///             VisibilityLevel = "public",
+    ///         });
+    ///         var email = new GitLab.ServicePipelinesEmail("email", new GitLab.ServicePipelinesEmailArgs
+    ///         {
+    ///             Project = awesomeProject.Id,
+    ///             Recipients = 
+    ///             {
+    ///                 "gitlab@user.create",
+    ///             },
+    ///             NotifyOnlyBrokenPipelines = true,
+    ///             BranchesToBeNotified = "all",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// # You can import a gitlab_service_pipelines_email state using the project ID, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gitlab:index/servicePipelinesEmail:ServicePipelinesEmail email 1
+    /// ```
+    /// </summary>
     [GitLabResourceType("gitlab:index/servicePipelinesEmail:ServicePipelinesEmail")]
     public partial class ServicePipelinesEmail : Pulumi.CustomResource
     {

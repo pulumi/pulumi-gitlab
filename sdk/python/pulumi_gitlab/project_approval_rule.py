@@ -229,52 +229,13 @@ class ProjectApprovalRule(pulumi.CustomResource):
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
         """
-        ## # gitlab\_project\_approval\_rule
-
         This resource allows you to create and manage multiple approval rules for your GitLab projects. For further information on approval rules, consult the [gitlab documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
 
         > This feature requires GitLab Premium.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example_one = gitlab.ProjectApprovalRule("example-one",
-            approvals_required=3,
-            group_ids=[51],
-            project="5",
-            user_ids=[
-                50,
-                500,
-            ])
-        ```
-        ### With Protected Branch IDs
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.BranchProtection("example",
-            project="5",
-            branch="release/*",
-            push_access_level="maintainer",
-            merge_access_level="developer")
-        example_two = gitlab.ProjectApprovalRule("example-two",
-            project="5",
-            approvals_required=3,
-            user_ids=[
-                50,
-                500,
-            ],
-            group_ids=[51],
-            protected_branch_ids=[example.branch_protection_id])
-        ```
-
         ## Import
 
-        GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
+        # GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"
@@ -296,52 +257,13 @@ class ProjectApprovalRule(pulumi.CustomResource):
                  args: ProjectApprovalRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # gitlab\_project\_approval\_rule
-
         This resource allows you to create and manage multiple approval rules for your GitLab projects. For further information on approval rules, consult the [gitlab documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
 
         > This feature requires GitLab Premium.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example_one = gitlab.ProjectApprovalRule("example-one",
-            approvals_required=3,
-            group_ids=[51],
-            project="5",
-            user_ids=[
-                50,
-                500,
-            ])
-        ```
-        ### With Protected Branch IDs
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.BranchProtection("example",
-            project="5",
-            branch="release/*",
-            push_access_level="maintainer",
-            merge_access_level="developer")
-        example_two = gitlab.ProjectApprovalRule("example-two",
-            project="5",
-            approvals_required=3,
-            user_ids=[
-                50,
-                500,
-            ],
-            group_ids=[51],
-            protected_branch_ids=[example.branch_protection_id])
-        ```
-
         ## Import
 
-        GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
+        # GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"

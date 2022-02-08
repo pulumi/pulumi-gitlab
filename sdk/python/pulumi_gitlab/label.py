@@ -163,8 +163,6 @@ class Label(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # gitlab\_label
-
         This resource allows you to create and manage labels for your GitLab projects.
         For further information on labels, consult the [gitlab
         documentation](https://docs.gitlab.com/ee/user/project/labels.html#project-labels).
@@ -200,8 +198,6 @@ class Label(pulumi.CustomResource):
                  args: LabelArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # gitlab\_label
-
         This resource allows you to create and manage labels for your GitLab projects.
         For further information on labels, consult the [gitlab
         documentation](https://docs.gitlab.com/ee/user/project/labels.html#project-labels).

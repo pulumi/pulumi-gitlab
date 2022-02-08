@@ -5,22 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_deploy\_token
- *
  * This resource allows you to create and manage deploy token for your GitLab projects and groups. Please refer to [Gitlab documentation](https://docs.gitlab.com/ee/user/project/deploy_tokens/) for further information.
- *
- * ## Example Usage
- * ### Group
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = new gitlab.DeployToken("example", {
- *     group: "example/deploying",
- *     scopes: ["read_repository"],
- * });
- * ```
  */
 export class DeployToken extends pulumi.CustomResource {
     /**
@@ -56,7 +41,6 @@ export class DeployToken extends pulumi.CustomResource {
     public readonly expiresAt!: pulumi.Output<string | undefined>;
     /**
      * The name or id of the group to add the deploy token to.
-     * Either `project` or `group` must be set.
      */
     public readonly group!: pulumi.Output<string | undefined>;
     /**
@@ -65,11 +49,10 @@ export class DeployToken extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The name or id of the project to add the deploy token to.
-     * Either `project` or `group` must be set.
      */
     public readonly project!: pulumi.Output<string | undefined>;
     /**
-     * Valid values: `readRepository`, `readRegistry`.
+     * Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
@@ -129,7 +112,6 @@ export interface DeployTokenState {
     expiresAt?: pulumi.Input<string>;
     /**
      * The name or id of the group to add the deploy token to.
-     * Either `project` or `group` must be set.
      */
     group?: pulumi.Input<string>;
     /**
@@ -138,11 +120,10 @@ export interface DeployTokenState {
     name?: pulumi.Input<string>;
     /**
      * The name or id of the project to add the deploy token to.
-     * Either `project` or `group` must be set.
      */
     project?: pulumi.Input<string>;
     /**
-     * Valid values: `readRepository`, `readRegistry`.
+     * Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -165,7 +146,6 @@ export interface DeployTokenArgs {
     expiresAt?: pulumi.Input<string>;
     /**
      * The name or id of the group to add the deploy token to.
-     * Either `project` or `group` must be set.
      */
     group?: pulumi.Input<string>;
     /**
@@ -174,11 +154,10 @@ export interface DeployTokenArgs {
     name?: pulumi.Input<string>;
     /**
      * The name or id of the project to add the deploy token to.
-     * Either `project` or `group` must be set.
      */
     project?: pulumi.Input<string>;
     /**
-     * Valid values: `readRepository`, `readRegistry`.
+     * Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
     /**

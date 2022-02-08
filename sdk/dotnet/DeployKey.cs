@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_deploy\_key
-    /// 
     /// This resource allows you to create and manage [deploy keys](https://docs.gitlab.com/ee/user/project/deploy_keys/) for your GitLab projects.
     /// 
     /// ## Example Usage
@@ -37,7 +35,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+    /// # GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/deployKey:DeployKey test 1:3

@@ -17,33 +17,15 @@ namespace Pulumi.GitLab.Outputs
         /// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         /// </summary>
         public readonly string AccessLevel;
-        /// <summary>
-        /// The avatar URL of the user.
-        /// </summary>
         public readonly string AvatarUrl;
-        /// <summary>
-        /// Expiration date for the group membership.
-        /// </summary>
         public readonly string ExpiresAt;
         /// <summary>
-        /// The unique id assigned to the user by the gitlab server.
+        /// The ID of this resource.
         /// </summary>
         public readonly int Id;
-        /// <summary>
-        /// The name of the user.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Whether the user is active or blocked.
-        /// </summary>
         public readonly string State;
-        /// <summary>
-        /// The username of the user.
-        /// </summary>
         public readonly string Username;
-        /// <summary>
-        /// User's website URL.
-        /// </summary>
         public readonly string WebUrl;
 
         [OutputConstructor]

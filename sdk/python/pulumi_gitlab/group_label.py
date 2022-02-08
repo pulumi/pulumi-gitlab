@@ -163,8 +163,6 @@ class GroupLabel(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # gitlab\_group\_label
-
         This resource allows you to create and manage labels for your GitLab groups.
         For further information on labels, consult the [gitlab
         documentation](https://docs.gitlab.com/ee/user/project/labels.html#group-labels).
@@ -183,7 +181,7 @@ class GroupLabel(pulumi.CustomResource):
 
         ## Import
 
-        Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
+        # Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/groupLabel:GroupLabel example 12345:fixme
@@ -203,8 +201,6 @@ class GroupLabel(pulumi.CustomResource):
                  args: GroupLabelArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # gitlab\_group\_label
-
         This resource allows you to create and manage labels for your GitLab groups.
         For further information on labels, consult the [gitlab
         documentation](https://docs.gitlab.com/ee/user/project/labels.html#group-labels).
@@ -223,7 +219,7 @@ class GroupLabel(pulumi.CustomResource):
 
         ## Import
 
-        Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
+        # Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/groupLabel:GroupLabel example 12345:fixme

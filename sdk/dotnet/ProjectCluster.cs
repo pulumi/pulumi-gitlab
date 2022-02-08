@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_project\_cluster
-    /// 
     /// This resource allows you to create and manage project clusters for your GitLab projects.
     /// For further information on clusters, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).
@@ -31,16 +29,16 @@ namespace Pulumi.GitLab
     ///         });
     ///         var bar = new GitLab.ProjectCluster("bar", new GitLab.ProjectClusterArgs
     ///         {
+    ///             Project = foo.Id,
     ///             Domain = "example.com",
     ///             Enabled = true,
-    ///             EnvironmentScope = "*",
     ///             KubernetesApiUrl = "https://124.124.124",
-    ///             KubernetesAuthorizationType = "rbac",
+    ///             KubernetesToken = "some-token",
     ///             KubernetesCaCert = "some-cert",
     ///             KubernetesNamespace = "namespace",
-    ///             KubernetesToken = "some-token",
+    ///             KubernetesAuthorizationType = "rbac",
+    ///             EnvironmentScope = "*",
     ///             ManagementProjectId = "123456",
-    ///             Project = foo.Id,
     ///         });
     ///     }
     /// 
@@ -49,7 +47,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
+    /// # GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectCluster:ProjectCluster bar 123:321
@@ -58,9 +56,15 @@ namespace Pulumi.GitLab
     [GitLabResourceType("gitlab:index/projectCluster:ProjectCluster")]
     public partial class ProjectCluster : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Cluster type.
+        /// </summary>
         [Output("clusterType")]
         public Output<string> ClusterType { get; private set; } = null!;
 
+        /// <summary>
+        /// Create time.
+        /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
@@ -130,6 +134,9 @@ namespace Pulumi.GitLab
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Platform type.
+        /// </summary>
         [Output("platformType")]
         public Output<string> PlatformType { get; private set; } = null!;
 
@@ -139,6 +146,9 @@ namespace Pulumi.GitLab
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Provider type.
+        /// </summary>
         [Output("providerType")]
         public Output<string> ProviderType { get; private set; } = null!;
 
@@ -267,9 +277,15 @@ namespace Pulumi.GitLab
 
     public sealed class ProjectClusterState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Cluster type.
+        /// </summary>
         [Input("clusterType")]
         public Input<string>? ClusterType { get; set; }
 
+        /// <summary>
+        /// Create time.
+        /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
@@ -339,6 +355,9 @@ namespace Pulumi.GitLab
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Platform type.
+        /// </summary>
         [Input("platformType")]
         public Input<string>? PlatformType { get; set; }
 
@@ -348,6 +367,9 @@ namespace Pulumi.GitLab
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Provider type.
+        /// </summary>
         [Input("providerType")]
         public Input<string>? ProviderType { get; set; }
 

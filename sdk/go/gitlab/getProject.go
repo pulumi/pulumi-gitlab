@@ -10,8 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_project
-//
 // Provide details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
 //
 // ## Example Usage
@@ -26,29 +24,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "foo/bar/baz"
 // 		_, err := gitlab.LookupProject(ctx, &GetProjectArgs{
-// 			Id: "30",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.LookupProject(ctx, &GetProjectArgs{
-// 			Id: "foo/bar/baz",
+// 			Id: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -69,7 +47,9 @@ func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.
 // A collection of arguments for invoking getProject.
 type LookupProjectArgs struct {
 	// The integer or path with namespace that uniquely identifies the project within the gitlab install.
-	Id string `pulumi:"id"`
+	Id *string `pulumi:"id"`
+	// The path of the repository with namespace.
+	PathWithNamespace *string `pulumi:"pathWithNamespace"`
 }
 
 // A collection of values returned by getProject.
@@ -81,27 +61,27 @@ type LookupProjectResult struct {
 	// A description of the project.
 	Description string `pulumi:"description"`
 	// URL that can be provided to `git clone` to clone the
-	// repository via HTTP.
 	HttpUrlToRepo string `pulumi:"httpUrlToRepo"`
-	// Integer that uniquely identifies the project within the gitlab install.
+	// The integer or path with namespace that uniquely identifies the project within the gitlab install.
 	Id string `pulumi:"id"`
 	// Enable issue tracking for the project.
 	IssuesEnabled bool `pulumi:"issuesEnabled"`
 	// Enable LFS for the project.
 	LfsEnabled bool `pulumi:"lfsEnabled"`
 	// Enable merge requests for the project.
-	MergeRequestsEnabled bool   `pulumi:"mergeRequestsEnabled"`
-	Name                 string `pulumi:"name"`
+	MergeRequestsEnabled bool `pulumi:"mergeRequestsEnabled"`
+	// The name of the project.
+	Name string `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
-	// See `Group` for an example.
 	NamespaceId int `pulumi:"namespaceId"`
 	// The path of the repository.
 	Path string `pulumi:"path"`
 	// The path of the repository with namespace.
 	PathWithNamespace string `pulumi:"pathWithNamespace"`
 	// Enable pipelines for the project.
-	PipelinesEnabled bool                `pulumi:"pipelinesEnabled"`
-	PushRules        GetProjectPushRules `pulumi:"pushRules"`
+	PipelinesEnabled bool `pulumi:"pipelinesEnabled"`
+	// Push rules for the project.
+	PushRules GetProjectPushRules `pulumi:"pushRules"`
 	// Enable `Delete source branch` option by default for all new merge requests
 	RemoveSourceBranchAfterMerge bool `pulumi:"removeSourceBranchAfterMerge"`
 	// Allow users to request member access.
@@ -111,7 +91,6 @@ type LookupProjectResult struct {
 	// Enable snippets for the project.
 	SnippetsEnabled bool `pulumi:"snippetsEnabled"`
 	// URL that can be provided to `git clone` to clone the
-	// repository via SSH.
 	SshUrlToRepo string `pulumi:"sshUrlToRepo"`
 	// Repositories are created as private by default.
 	VisibilityLevel string `pulumi:"visibilityLevel"`
@@ -133,7 +112,9 @@ func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts
 // A collection of arguments for invoking getProject.
 type LookupProjectOutputArgs struct {
 	// The integer or path with namespace that uniquely identifies the project within the gitlab install.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The path of the repository with namespace.
+	PathWithNamespace pulumi.StringPtrInput `pulumi:"pathWithNamespace"`
 }
 
 func (LookupProjectOutputArgs) ElementType() reflect.Type {
@@ -171,12 +152,11 @@ func (o LookupProjectResultOutput) Description() pulumi.StringOutput {
 }
 
 // URL that can be provided to `git clone` to clone the
-// repository via HTTP.
 func (o LookupProjectResultOutput) HttpUrlToRepo() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.HttpUrlToRepo }).(pulumi.StringOutput)
 }
 
-// Integer that uniquely identifies the project within the gitlab install.
+// The integer or path with namespace that uniquely identifies the project within the gitlab install.
 func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -196,12 +176,12 @@ func (o LookupProjectResultOutput) MergeRequestsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.MergeRequestsEnabled }).(pulumi.BoolOutput)
 }
 
+// The name of the project.
 func (o LookupProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The namespace (group or user) of the project. Defaults to your user.
-// See `Group` for an example.
 func (o LookupProjectResultOutput) NamespaceId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupProjectResult) int { return v.NamespaceId }).(pulumi.IntOutput)
 }
@@ -221,6 +201,7 @@ func (o LookupProjectResultOutput) PipelinesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.PipelinesEnabled }).(pulumi.BoolOutput)
 }
 
+// Push rules for the project.
 func (o LookupProjectResultOutput) PushRules() GetProjectPushRulesOutput {
 	return o.ApplyT(func(v LookupProjectResult) GetProjectPushRules { return v.PushRules }).(GetProjectPushRulesOutput)
 }
@@ -246,7 +227,6 @@ func (o LookupProjectResultOutput) SnippetsEnabled() pulumi.BoolOutput {
 }
 
 // URL that can be provided to `git clone` to clone the
-// repository via SSH.
 func (o LookupProjectResultOutput) SshUrlToRepo() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.SshUrlToRepo }).(pulumi.StringOutput)
 }

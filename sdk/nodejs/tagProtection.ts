@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_tag\_protection
- *
  * This resource allows you to protect a specific tag or wildcard by an access level so that the user with less access level cannot Create the tags.
  *
  * ## Example Usage
@@ -20,6 +18,14 @@ import * as utilities from "./utilities";
  *     project: "12345",
  *     tag: "TagProtected",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * # Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/tagProtection:TagProtection example 123456789:v1.0.0
  * ```
  */
 export class TagProtection extends pulumi.CustomResource {
@@ -51,7 +57,7 @@ export class TagProtection extends pulumi.CustomResource {
     }
 
     /**
-     * One of five levels of access to the project.
+     * Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
      */
     public readonly createAccessLevel!: pulumi.Output<string>;
     /**
@@ -104,7 +110,7 @@ export class TagProtection extends pulumi.CustomResource {
  */
 export interface TagProtectionState {
     /**
-     * One of five levels of access to the project.
+     * Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
      */
     createAccessLevel?: pulumi.Input<string>;
     /**
@@ -122,7 +128,7 @@ export interface TagProtectionState {
  */
 export interface TagProtectionArgs {
     /**
-     * One of five levels of access to the project.
+     * Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
      */
     createAccessLevel: pulumi.Input<string>;
     /**

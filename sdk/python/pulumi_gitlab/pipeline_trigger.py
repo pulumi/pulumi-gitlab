@@ -58,6 +58,7 @@ class _PipelineTriggerState:
         Input properties used for looking up and filtering PipelineTrigger resources.
         :param pulumi.Input[str] description: The description of the pipeline trigger.
         :param pulumi.Input[str] project: The name or id of the project to add the trigger to.
+        :param pulumi.Input[str] token: The pipeline trigger token.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -93,6 +94,9 @@ class _PipelineTriggerState:
     @property
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The pipeline trigger token.
+        """
         return pulumi.get(self, "token")
 
     @token.setter
@@ -109,8 +113,6 @@ class PipelineTrigger(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # gitlab\_pipeline\_trigger
-
         This resource allows you to create and manage pipeline triggers
 
         ## Example Usage
@@ -126,7 +128,7 @@ class PipelineTrigger(pulumi.CustomResource):
 
         ## Import
 
-        GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
+        # GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/pipelineTrigger:PipelineTrigger test 1:3
@@ -144,8 +146,6 @@ class PipelineTrigger(pulumi.CustomResource):
                  args: PipelineTriggerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # gitlab\_pipeline\_trigger
-
         This resource allows you to create and manage pipeline triggers
 
         ## Example Usage
@@ -161,7 +161,7 @@ class PipelineTrigger(pulumi.CustomResource):
 
         ## Import
 
-        GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
+        # GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/pipelineTrigger:PipelineTrigger test 1:3
@@ -225,6 +225,7 @@ class PipelineTrigger(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the pipeline trigger.
         :param pulumi.Input[str] project: The name or id of the project to add the trigger to.
+        :param pulumi.Input[str] token: The pipeline trigger token.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -254,5 +255,8 @@ class PipelineTrigger(pulumi.CustomResource):
     @property
     @pulumi.getter
     def token(self) -> pulumi.Output[str]:
+        """
+        The pipeline trigger token.
+        """
         return pulumi.get(self, "token")
 

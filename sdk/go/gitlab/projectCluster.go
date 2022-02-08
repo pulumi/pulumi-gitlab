@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_project\_cluster
-//
 // This resource allows you to create and manage project clusters for your GitLab projects.
 // For further information on clusters, consult the [gitlab
 // documentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).
@@ -34,16 +32,16 @@ import (
 // 			return err
 // 		}
 // 		_, err = gitlab.NewProjectCluster(ctx, "bar", &gitlab.ProjectClusterArgs{
+// 			Project:                     foo.ID(),
 // 			Domain:                      pulumi.String("example.com"),
 // 			Enabled:                     pulumi.Bool(true),
-// 			EnvironmentScope:            pulumi.String("*"),
 // 			KubernetesApiUrl:            pulumi.String("https://124.124.124"),
-// 			KubernetesAuthorizationType: pulumi.String("rbac"),
+// 			KubernetesToken:             pulumi.String("some-token"),
 // 			KubernetesCaCert:            pulumi.String("some-cert"),
 // 			KubernetesNamespace:         pulumi.String("namespace"),
-// 			KubernetesToken:             pulumi.String("some-token"),
+// 			KubernetesAuthorizationType: pulumi.String("rbac"),
+// 			EnvironmentScope:            pulumi.String("*"),
 // 			ManagementProjectId:         pulumi.String("123456"),
-// 			Project:                     foo.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -55,7 +53,7 @@ import (
 //
 // ## Import
 //
-// GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
+// # GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
 //
 // ```sh
 //  $ pulumi import gitlab:index/projectCluster:ProjectCluster bar 123:321
@@ -63,8 +61,10 @@ import (
 type ProjectCluster struct {
 	pulumi.CustomResourceState
 
+	// Cluster type.
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
-	CreatedAt   pulumi.StringOutput `pulumi:"createdAt"`
+	// Create time.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The base domain of the cluster.
 	Domain pulumi.StringPtrOutput `pulumi:"domain"`
 	// Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
@@ -86,10 +86,12 @@ type ProjectCluster struct {
 	// The ID of the management project for the cluster.
 	ManagementProjectId pulumi.StringPtrOutput `pulumi:"managementProjectId"`
 	// The name of cluster.
-	Name         pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Platform type.
 	PlatformType pulumi.StringOutput `pulumi:"platformType"`
 	// The id of the project to add the cluster to.
-	Project      pulumi.StringOutput `pulumi:"project"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Provider type.
 	ProviderType pulumi.StringOutput `pulumi:"providerType"`
 }
 
@@ -131,8 +133,10 @@ func GetProjectCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectCluster resources.
 type projectClusterState struct {
+	// Cluster type.
 	ClusterType *string `pulumi:"clusterType"`
-	CreatedAt   *string `pulumi:"createdAt"`
+	// Create time.
+	CreatedAt *string `pulumi:"createdAt"`
 	// The base domain of the cluster.
 	Domain *string `pulumi:"domain"`
 	// Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
@@ -154,16 +158,20 @@ type projectClusterState struct {
 	// The ID of the management project for the cluster.
 	ManagementProjectId *string `pulumi:"managementProjectId"`
 	// The name of cluster.
-	Name         *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Platform type.
 	PlatformType *string `pulumi:"platformType"`
 	// The id of the project to add the cluster to.
-	Project      *string `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// Provider type.
 	ProviderType *string `pulumi:"providerType"`
 }
 
 type ProjectClusterState struct {
+	// Cluster type.
 	ClusterType pulumi.StringPtrInput
-	CreatedAt   pulumi.StringPtrInput
+	// Create time.
+	CreatedAt pulumi.StringPtrInput
 	// The base domain of the cluster.
 	Domain pulumi.StringPtrInput
 	// Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
@@ -185,10 +193,12 @@ type ProjectClusterState struct {
 	// The ID of the management project for the cluster.
 	ManagementProjectId pulumi.StringPtrInput
 	// The name of cluster.
-	Name         pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Platform type.
 	PlatformType pulumi.StringPtrInput
 	// The id of the project to add the cluster to.
-	Project      pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Provider type.
 	ProviderType pulumi.StringPtrInput
 }
 

@@ -10,33 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_deploy\_token
-    /// 
     /// This resource allows you to create and manage deploy token for your GitLab projects and groups. Please refer to [Gitlab documentation](https://docs.gitlab.com/ee/user/project/deploy_tokens/) for further information.
-    /// 
-    /// ## Example Usage
-    /// ### Group
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new GitLab.DeployToken("example", new GitLab.DeployTokenArgs
-    ///         {
-    ///             Group = "example/deploying",
-    ///             Scopes = 
-    ///             {
-    ///                 "read_repository",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/deployToken:DeployToken")]
     public partial class DeployToken : Pulumi.CustomResource
@@ -49,7 +23,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// The name or id of the group to add the deploy token to.
-        /// Either `project` or `group` must be set.
         /// </summary>
         [Output("group")]
         public Output<string?> Group { get; private set; } = null!;
@@ -62,13 +35,12 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// The name or id of the project to add the deploy token to.
-        /// Either `project` or `group` must be set.
         /// </summary>
         [Output("project")]
         public Output<string?> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values: `read_repository`, `read_registry`.
+        /// Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
@@ -139,7 +111,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// The name or id of the group to add the deploy token to.
-        /// Either `project` or `group` must be set.
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
@@ -152,7 +123,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// The name or id of the project to add the deploy token to.
-        /// Either `project` or `group` must be set.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -161,7 +131,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Valid values: `read_repository`, `read_registry`.
+        /// Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -190,7 +160,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// The name or id of the group to add the deploy token to.
-        /// Either `project` or `group` must be set.
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
@@ -203,7 +172,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// The name or id of the project to add the deploy token to.
-        /// Either `project` or `group` must be set.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -212,7 +180,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Valid values: `read_repository`, `read_registry`.
+        /// Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
         /// </summary>
         public InputList<string> Scopes
         {

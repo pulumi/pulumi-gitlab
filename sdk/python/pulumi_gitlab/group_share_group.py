@@ -19,7 +19,7 @@ class GroupShareGroupArgs:
                  expires_at: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GroupShareGroup resource.
-        :param pulumi.Input[str] group_access: One of five levels of access to the group.
+        :param pulumi.Input[str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] group_id: The id of the main group.
         :param pulumi.Input[int] share_group_id: The id of an additional group which will be shared with the main group.
         :param pulumi.Input[str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
@@ -34,7 +34,7 @@ class GroupShareGroupArgs:
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> pulumi.Input[str]:
         """
-        One of five levels of access to the group.
+        The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         """
         return pulumi.get(self, "group_access")
 
@@ -89,7 +89,7 @@ class _GroupShareGroupState:
         """
         Input properties used for looking up and filtering GroupShareGroup resources.
         :param pulumi.Input[str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
-        :param pulumi.Input[str] group_access: One of five levels of access to the group.
+        :param pulumi.Input[str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] group_id: The id of the main group.
         :param pulumi.Input[int] share_group_id: The id of an additional group which will be shared with the main group.
         """
@@ -118,7 +118,7 @@ class _GroupShareGroupState:
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> Optional[pulumi.Input[str]]:
         """
-        One of five levels of access to the group.
+        The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         """
         return pulumi.get(self, "group_access")
 
@@ -162,8 +162,6 @@ class GroupShareGroup(pulumi.CustomResource):
                  share_group_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        ## # gitlab\_group\_share\_group
-
         This resource allows you to share a group with another group
 
         ## Example Usage
@@ -181,7 +179,7 @@ class GroupShareGroup(pulumi.CustomResource):
 
         ## Import
 
-        GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
+        # GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/groupShareGroup:GroupShareGroup test 12345:1337
@@ -190,7 +188,7 @@ class GroupShareGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
-        :param pulumi.Input[str] group_access: One of five levels of access to the group.
+        :param pulumi.Input[str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] group_id: The id of the main group.
         :param pulumi.Input[int] share_group_id: The id of an additional group which will be shared with the main group.
         """
@@ -201,8 +199,6 @@ class GroupShareGroup(pulumi.CustomResource):
                  args: GroupShareGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # gitlab\_group\_share\_group
-
         This resource allows you to share a group with another group
 
         ## Example Usage
@@ -220,7 +216,7 @@ class GroupShareGroup(pulumi.CustomResource):
 
         ## Import
 
-        GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
+        # GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/groupShareGroup:GroupShareGroup test 12345:1337
@@ -289,7 +285,7 @@ class GroupShareGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
-        :param pulumi.Input[str] group_access: One of five levels of access to the group.
+        :param pulumi.Input[str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] group_id: The id of the main group.
         :param pulumi.Input[int] share_group_id: The id of an additional group which will be shared with the main group.
         """
@@ -315,7 +311,7 @@ class GroupShareGroup(pulumi.CustomResource):
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> pulumi.Output[str]:
         """
-        One of five levels of access to the group.
+        The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         """
         return pulumi.get(self, "group_access")
 

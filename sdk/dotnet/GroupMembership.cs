@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_group_membership
-    /// 
     /// This resource allows you to add a user to an existing group.
     /// 
     /// ## Example Usage
@@ -38,7 +36,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
+    /// # GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/groupMembership:GroupMembership test "12345:1337"
@@ -48,7 +46,7 @@ namespace Pulumi.GitLab
     public partial class GroupMembership : Pulumi.CustomResource
     {
         /// <summary>
-        /// Acceptable values are: guest, reporter, developer, maintainer, owner.
+        /// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -118,7 +116,7 @@ namespace Pulumi.GitLab
     public sealed class GroupMembershipArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Acceptable values are: guest, reporter, developer, maintainer, owner.
+        /// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
         /// </summary>
         [Input("accessLevel", required: true)]
         public Input<string> AccessLevel { get; set; } = null!;
@@ -149,7 +147,7 @@ namespace Pulumi.GitLab
     public sealed class GroupMembershipState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Acceptable values are: guest, reporter, developer, maintainer, owner.
+        /// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }

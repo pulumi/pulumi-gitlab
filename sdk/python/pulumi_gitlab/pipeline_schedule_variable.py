@@ -161,8 +161,6 @@ class PipelineScheduleVariable(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # gitlab\_pipeline\_schedule\_variable
-
         This resource allows you to create and manage variables for pipeline schedules.
 
         ## Example Usage
@@ -183,6 +181,14 @@ class PipelineScheduleVariable(pulumi.CustomResource):
             value="example")
         ```
 
+        ## Import
+
+        # Pipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key: Name of the variable.
@@ -197,8 +203,6 @@ class PipelineScheduleVariable(pulumi.CustomResource):
                  args: PipelineScheduleVariableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # gitlab\_pipeline\_schedule\_variable
-
         This resource allows you to create and manage variables for pipeline schedules.
 
         ## Example Usage
@@ -217,6 +221,14 @@ class PipelineScheduleVariable(pulumi.CustomResource):
             pipeline_schedule_id=gitlab_pipeline_schedule["id"],
             key="EXAMPLE_KEY",
             value="example")
+        ```
+
+        ## Import
+
+        # Pipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey
         ```
 
         :param str resource_name: The name of the resource.

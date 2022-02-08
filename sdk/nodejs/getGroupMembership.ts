@@ -6,27 +6,17 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_group\_membership
- *
  * Provide details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
  *
+ * > **Note**: exactly one of groupId or fullPath must be provided.
+ *
  * ## Example Usage
- * ### By group's ID
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const example = pulumi.output(gitlab.getGroupMembership({
- *     groupId: 123,
- * }));
- * ```
- * ### By group's full path
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
+ * // By group's full path
  * const example = pulumi.output(gitlab.getGroupMembership({
  *     fullPath: "foo/bar",
  * }));
@@ -69,10 +59,16 @@ export interface GetGroupMembershipArgs {
  */
 export interface GetGroupMembershipResult {
     /**
-     * One of five levels of access to the group.
+     * Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
      */
     readonly accessLevel: string;
+    /**
+     * The full path of the group.
+     */
     readonly fullPath: string;
+    /**
+     * The ID of the group.
+     */
     readonly groupId: number;
     /**
      * The provider-assigned unique ID for this managed resource.

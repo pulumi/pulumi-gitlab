@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_pipeline\_trigger
-//
 // This resource allows you to create and manage pipeline triggers
 //
 // ## Example Usage
@@ -41,7 +39,7 @@ import (
 //
 // ## Import
 //
-// GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
+// # GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
 //
 // ```sh
 //  $ pulumi import gitlab:index/pipelineTrigger:PipelineTrigger test 1:3
@@ -53,7 +51,8 @@ type PipelineTrigger struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The name or id of the project to add the trigger to.
 	Project pulumi.StringOutput `pulumi:"project"`
-	Token   pulumi.StringOutput `pulumi:"token"`
+	// The pipeline trigger token.
+	Token pulumi.StringOutput `pulumi:"token"`
 }
 
 // NewPipelineTrigger registers a new resource with the given unique name, arguments, and options.
@@ -95,7 +94,8 @@ type pipelineTriggerState struct {
 	Description *string `pulumi:"description"`
 	// The name or id of the project to add the trigger to.
 	Project *string `pulumi:"project"`
-	Token   *string `pulumi:"token"`
+	// The pipeline trigger token.
+	Token *string `pulumi:"token"`
 }
 
 type PipelineTriggerState struct {
@@ -103,7 +103,8 @@ type PipelineTriggerState struct {
 	Description pulumi.StringPtrInput
 	// The name or id of the project to add the trigger to.
 	Project pulumi.StringPtrInput
-	Token   pulumi.StringPtrInput
+	// The pipeline trigger token.
+	Token pulumi.StringPtrInput
 }
 
 func (PipelineTriggerState) ElementType() reflect.Type {

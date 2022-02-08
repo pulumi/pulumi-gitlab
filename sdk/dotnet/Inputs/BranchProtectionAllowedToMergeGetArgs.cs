@@ -12,9 +12,15 @@ namespace Pulumi.GitLab.Inputs
 
     public sealed class BranchProtectionAllowedToMergeGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Level of access.
+        /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
 
+        /// <summary>
+        /// Readable description of level of access.
+        /// </summary>
         [Input("accessLevelDescription")]
         public Input<string>? AccessLevelDescription { get; set; }
 

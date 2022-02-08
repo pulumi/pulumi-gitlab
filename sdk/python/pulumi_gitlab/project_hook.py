@@ -559,8 +559,6 @@ class ProjectHook(pulumi.CustomResource):
                  wiki_page_events: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        ## # gitlab\_project\_hook
-
         This resource allows you to create and manage hooks for your GitLab projects.
         For further information on hooks, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/user/project/integrations/webhooks.html).
@@ -603,8 +601,6 @@ class ProjectHook(pulumi.CustomResource):
                  args: ProjectHookArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # gitlab\_project\_hook
-
         This resource allows you to create and manage hooks for your GitLab projects.
         For further information on hooks, consult the [gitlab
         documentation](https://docs.gitlab.com/ce/user/project/integrations/webhooks.html).

@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_user
-    /// 
     /// This resource allows you to create and manage GitLab users.
     /// Note your provider will need to be configured with admin-level access for this resource to work.
     /// 
@@ -46,10 +44,10 @@ namespace Pulumi.GitLab
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/user:User You can import a user to terraform state using `&lt;resource&gt; &lt;id&gt;`.
+    ///  $ pulumi import gitlab:index/user:User # You can import a user to terraform state using `&lt;resource&gt; &lt;id&gt;`.
     /// ```
     /// 
-    ///  The `id` must be an integer for the id of the user you want to import, for example
+    /// # The `id` must be an integer for the id of the user you want to import, # for example
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/user:User example 42
@@ -72,7 +70,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Boolean, defaults to false.  Whether to enable administrative privileges
-        /// for the user.
         /// </summary>
         [Output("isAdmin")]
         public Output<bool?> IsAdmin { get; private set; } = null!;
@@ -185,7 +182,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Boolean, defaults to false.  Whether to enable administrative privileges
-        /// for the user.
         /// </summary>
         [Input("isAdmin")]
         public Input<bool>? IsAdmin { get; set; }
@@ -259,7 +255,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Boolean, defaults to false.  Whether to enable administrative privileges
-        /// for the user.
         /// </summary>
         [Input("isAdmin")]
         public Input<bool>? IsAdmin { get; set; }

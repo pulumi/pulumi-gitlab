@@ -10,8 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_project
-//
 // This resource allows you to create and manage projects within your GitLab group or within your user.
 //
 // ## Example Usage
@@ -54,16 +52,14 @@ import (
 // ## Import
 //
 // ```sh
-//  $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
+//  $ pulumi import gitlab:index/project:Project # You can import a project state using `<resource> <id>`. The
 // ```
 //
-//  `id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
+// # `id` can be whatever the [get single project api][get_single_project] takes for # its `:id` value, so for example
 //
 // ```sh
 //  $ pulumi import gitlab:index/project:Project example richardc/example
 // ```
-//
-//  [get_single_project]https://docs.gitlab.com/ee/api/projects.html#get-single-project [group_members_permissions]https://docs.gitlab.com/ce/user/permissions.html#group-members-permissions
 type Project struct {
 	pulumi.CustomResourceState
 
@@ -71,6 +67,8 @@ type Project struct {
 	AllowMergeOnSkippedPipeline pulumi.BoolPtrOutput `pulumi:"allowMergeOnSkippedPipeline"`
 	// Number of merge request approvals required for merging. Default is 0.
 	ApprovalsBeforeMerge pulumi.IntPtrOutput `pulumi:"approvalsBeforeMerge"`
+	// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
+	ArchiveOnDestroy pulumi.BoolPtrOutput `pulumi:"archiveOnDestroy"`
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
 	Archived pulumi.BoolPtrOutput `pulumi:"archived"`
 	// Test coverage parsing for the project.
@@ -83,10 +81,9 @@ type Project struct {
 	DefaultBranch pulumi.StringOutput `pulumi:"defaultBranch"`
 	// A description of the project.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires useCustomTemplate to be true (enterprise edition).
+	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
 	GroupWithProjectTemplatesId pulumi.IntPtrOutput `pulumi:"groupWithProjectTemplatesId"`
 	// URL that can be provided to `git clone` to clone the
-	// repository via HTTP.
 	HttpUrlToRepo pulumi.StringOutput `pulumi:"httpUrlToRepo"`
 	// Git URL to a repository to be imported.
 	ImportUrl pulumi.StringPtrOutput `pulumi:"importUrl"`
@@ -94,37 +91,35 @@ type Project struct {
 	InitializeWithReadme pulumi.BoolPtrOutput `pulumi:"initializeWithReadme"`
 	// Enable issue tracking for the project.
 	IssuesEnabled pulumi.BoolPtrOutput `pulumi:"issuesEnabled"`
+	// Sets the template for new issues in the project.
+	IssuesTemplate pulumi.StringPtrOutput `pulumi:"issuesTemplate"`
 	// Enable LFS for the project.
 	LfsEnabled pulumi.BoolPtrOutput `pulumi:"lfsEnabled"`
 	// Set to `ff` to create fast-forward merges
-	// Valid values are `merge`, `rebaseMerge`, `ff`
-	// Repositories are created with `merge` by default
 	MergeMethod pulumi.StringPtrOutput `pulumi:"mergeMethod"`
 	// Enable merge requests for the project.
 	MergeRequestsEnabled pulumi.BoolPtrOutput `pulumi:"mergeRequestsEnabled"`
-	// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
-	// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+	// Sets the template for new merge requests in the project.
+	MergeRequestsTemplate pulumi.StringPtrOutput `pulumi:"mergeRequestsTemplate"`
+	// Enable project pull mirror.
 	Mirror pulumi.BoolPtrOutput `pulumi:"mirror"`
-	// Pull mirror overwrites diverged branches.
+	// Enable overwrite diverged branches for a mirrored project.
 	MirrorOverwritesDivergedBranches pulumi.BoolPtrOutput `pulumi:"mirrorOverwritesDivergedBranches"`
-	// Pull mirroring triggers builds. Default is `false`.
+	// Enable trigger builds on pushes for a mirrored project.
 	MirrorTriggerBuilds pulumi.BoolPtrOutput `pulumi:"mirrorTriggerBuilds"`
 	// The name of the project.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
-	// See `Group` for an example.
 	NamespaceId pulumi.IntOutput `pulumi:"namespaceId"`
 	// Set to true if you want allow merges only if all discussions are resolved.
 	OnlyAllowMergeIfAllDiscussionsAreResolved pulumi.BoolPtrOutput `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
 	// Set to true if you want allow merges only if a pipeline succeeds.
 	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolPtrOutput `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
-	// Only mirror protected branches.
+	// Enable only mirror protected branches for a mirrored project.
 	OnlyMirrorProtectedBranches pulumi.BoolPtrOutput `pulumi:"onlyMirrorProtectedBranches"`
 	// Enable packages repository for the project.
 	PackagesEnabled pulumi.BoolPtrOutput `pulumi:"packagesEnabled"`
 	// Enable pages access control
-	// Valid values are `disabled`, `private`, `enabled`, `public`.
-	// `private` is the default.
 	PagesAccessLevel pulumi.StringPtrOutput `pulumi:"pagesAccessLevel"`
 	// The path of the repository.
 	Path pulumi.StringPtrOutput `pulumi:"path"`
@@ -132,7 +127,7 @@ type Project struct {
 	PathWithNamespace pulumi.StringOutput `pulumi:"pathWithNamespace"`
 	// Enable pipelines for the project.
 	PipelinesEnabled pulumi.BoolPtrOutput `pulumi:"pipelinesEnabled"`
-	// Push rules for the project (documented below).
+	// Push rules for the project.
 	PushRules ProjectPushRulesOutput `pulumi:"pushRules"`
 	// Enable `Delete source branch` option by default for all new merge requests.
 	RemoveSourceBranchAfterMerge pulumi.BoolPtrOutput `pulumi:"removeSourceBranchAfterMerge"`
@@ -147,19 +142,16 @@ type Project struct {
 	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
 	SquashOption pulumi.StringPtrOutput `pulumi:"squashOption"`
 	// URL that can be provided to `git clone` to clone the
-	// repository via SSH.
 	SshUrlToRepo pulumi.StringOutput `pulumi:"sshUrlToRepo"`
 	// Tags (topics) of the project.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
+	// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
 	TemplateName pulumi.StringPtrOutput `pulumi:"templateName"`
-	// When used with use_custom_template, project ID of a custom project template. This is preferable to using templateName since templateName may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
+	// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
 	TemplateProjectId pulumi.IntPtrOutput `pulumi:"templateProjectId"`
-	// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
 	UseCustomTemplate pulumi.BoolPtrOutput `pulumi:"useCustomTemplate"`
 	// Set to `public` to create a public project.
-	// Valid values are `private`, `internal`, `public`.
-	// Repositories are created as private by default.
 	VisibilityLevel pulumi.StringPtrOutput `pulumi:"visibilityLevel"`
 	// URL that can be used to find the project in a browser.
 	WebUrl pulumi.StringOutput `pulumi:"webUrl"`
@@ -200,6 +192,8 @@ type projectState struct {
 	AllowMergeOnSkippedPipeline *bool `pulumi:"allowMergeOnSkippedPipeline"`
 	// Number of merge request approvals required for merging. Default is 0.
 	ApprovalsBeforeMerge *int `pulumi:"approvalsBeforeMerge"`
+	// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
+	ArchiveOnDestroy *bool `pulumi:"archiveOnDestroy"`
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
 	Archived *bool `pulumi:"archived"`
 	// Test coverage parsing for the project.
@@ -212,10 +206,9 @@ type projectState struct {
 	DefaultBranch *string `pulumi:"defaultBranch"`
 	// A description of the project.
 	Description *string `pulumi:"description"`
-	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires useCustomTemplate to be true (enterprise edition).
+	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
 	GroupWithProjectTemplatesId *int `pulumi:"groupWithProjectTemplatesId"`
 	// URL that can be provided to `git clone` to clone the
-	// repository via HTTP.
 	HttpUrlToRepo *string `pulumi:"httpUrlToRepo"`
 	// Git URL to a repository to be imported.
 	ImportUrl *string `pulumi:"importUrl"`
@@ -223,37 +216,35 @@ type projectState struct {
 	InitializeWithReadme *bool `pulumi:"initializeWithReadme"`
 	// Enable issue tracking for the project.
 	IssuesEnabled *bool `pulumi:"issuesEnabled"`
+	// Sets the template for new issues in the project.
+	IssuesTemplate *string `pulumi:"issuesTemplate"`
 	// Enable LFS for the project.
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
 	// Set to `ff` to create fast-forward merges
-	// Valid values are `merge`, `rebaseMerge`, `ff`
-	// Repositories are created with `merge` by default
 	MergeMethod *string `pulumi:"mergeMethod"`
 	// Enable merge requests for the project.
 	MergeRequestsEnabled *bool `pulumi:"mergeRequestsEnabled"`
-	// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
-	// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+	// Sets the template for new merge requests in the project.
+	MergeRequestsTemplate *string `pulumi:"mergeRequestsTemplate"`
+	// Enable project pull mirror.
 	Mirror *bool `pulumi:"mirror"`
-	// Pull mirror overwrites diverged branches.
+	// Enable overwrite diverged branches for a mirrored project.
 	MirrorOverwritesDivergedBranches *bool `pulumi:"mirrorOverwritesDivergedBranches"`
-	// Pull mirroring triggers builds. Default is `false`.
+	// Enable trigger builds on pushes for a mirrored project.
 	MirrorTriggerBuilds *bool `pulumi:"mirrorTriggerBuilds"`
 	// The name of the project.
 	Name *string `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
-	// See `Group` for an example.
 	NamespaceId *int `pulumi:"namespaceId"`
 	// Set to true if you want allow merges only if all discussions are resolved.
 	OnlyAllowMergeIfAllDiscussionsAreResolved *bool `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
 	// Set to true if you want allow merges only if a pipeline succeeds.
 	OnlyAllowMergeIfPipelineSucceeds *bool `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
-	// Only mirror protected branches.
+	// Enable only mirror protected branches for a mirrored project.
 	OnlyMirrorProtectedBranches *bool `pulumi:"onlyMirrorProtectedBranches"`
 	// Enable packages repository for the project.
 	PackagesEnabled *bool `pulumi:"packagesEnabled"`
 	// Enable pages access control
-	// Valid values are `disabled`, `private`, `enabled`, `public`.
-	// `private` is the default.
 	PagesAccessLevel *string `pulumi:"pagesAccessLevel"`
 	// The path of the repository.
 	Path *string `pulumi:"path"`
@@ -261,7 +252,7 @@ type projectState struct {
 	PathWithNamespace *string `pulumi:"pathWithNamespace"`
 	// Enable pipelines for the project.
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
-	// Push rules for the project (documented below).
+	// Push rules for the project.
 	PushRules *ProjectPushRules `pulumi:"pushRules"`
 	// Enable `Delete source branch` option by default for all new merge requests.
 	RemoveSourceBranchAfterMerge *bool `pulumi:"removeSourceBranchAfterMerge"`
@@ -276,19 +267,16 @@ type projectState struct {
 	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
 	SquashOption *string `pulumi:"squashOption"`
 	// URL that can be provided to `git clone` to clone the
-	// repository via SSH.
 	SshUrlToRepo *string `pulumi:"sshUrlToRepo"`
 	// Tags (topics) of the project.
 	Tags []string `pulumi:"tags"`
-	// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
+	// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
 	TemplateName *string `pulumi:"templateName"`
-	// When used with use_custom_template, project ID of a custom project template. This is preferable to using templateName since templateName may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
+	// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
 	TemplateProjectId *int `pulumi:"templateProjectId"`
-	// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
 	UseCustomTemplate *bool `pulumi:"useCustomTemplate"`
 	// Set to `public` to create a public project.
-	// Valid values are `private`, `internal`, `public`.
-	// Repositories are created as private by default.
 	VisibilityLevel *string `pulumi:"visibilityLevel"`
 	// URL that can be used to find the project in a browser.
 	WebUrl *string `pulumi:"webUrl"`
@@ -301,6 +289,8 @@ type ProjectState struct {
 	AllowMergeOnSkippedPipeline pulumi.BoolPtrInput
 	// Number of merge request approvals required for merging. Default is 0.
 	ApprovalsBeforeMerge pulumi.IntPtrInput
+	// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
+	ArchiveOnDestroy pulumi.BoolPtrInput
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
 	Archived pulumi.BoolPtrInput
 	// Test coverage parsing for the project.
@@ -313,10 +303,9 @@ type ProjectState struct {
 	DefaultBranch pulumi.StringPtrInput
 	// A description of the project.
 	Description pulumi.StringPtrInput
-	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires useCustomTemplate to be true (enterprise edition).
+	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
 	GroupWithProjectTemplatesId pulumi.IntPtrInput
 	// URL that can be provided to `git clone` to clone the
-	// repository via HTTP.
 	HttpUrlToRepo pulumi.StringPtrInput
 	// Git URL to a repository to be imported.
 	ImportUrl pulumi.StringPtrInput
@@ -324,37 +313,35 @@ type ProjectState struct {
 	InitializeWithReadme pulumi.BoolPtrInput
 	// Enable issue tracking for the project.
 	IssuesEnabled pulumi.BoolPtrInput
+	// Sets the template for new issues in the project.
+	IssuesTemplate pulumi.StringPtrInput
 	// Enable LFS for the project.
 	LfsEnabled pulumi.BoolPtrInput
 	// Set to `ff` to create fast-forward merges
-	// Valid values are `merge`, `rebaseMerge`, `ff`
-	// Repositories are created with `merge` by default
 	MergeMethod pulumi.StringPtrInput
 	// Enable merge requests for the project.
 	MergeRequestsEnabled pulumi.BoolPtrInput
-	// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
-	// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+	// Sets the template for new merge requests in the project.
+	MergeRequestsTemplate pulumi.StringPtrInput
+	// Enable project pull mirror.
 	Mirror pulumi.BoolPtrInput
-	// Pull mirror overwrites diverged branches.
+	// Enable overwrite diverged branches for a mirrored project.
 	MirrorOverwritesDivergedBranches pulumi.BoolPtrInput
-	// Pull mirroring triggers builds. Default is `false`.
+	// Enable trigger builds on pushes for a mirrored project.
 	MirrorTriggerBuilds pulumi.BoolPtrInput
 	// The name of the project.
 	Name pulumi.StringPtrInput
 	// The namespace (group or user) of the project. Defaults to your user.
-	// See `Group` for an example.
 	NamespaceId pulumi.IntPtrInput
 	// Set to true if you want allow merges only if all discussions are resolved.
 	OnlyAllowMergeIfAllDiscussionsAreResolved pulumi.BoolPtrInput
 	// Set to true if you want allow merges only if a pipeline succeeds.
 	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolPtrInput
-	// Only mirror protected branches.
+	// Enable only mirror protected branches for a mirrored project.
 	OnlyMirrorProtectedBranches pulumi.BoolPtrInput
 	// Enable packages repository for the project.
 	PackagesEnabled pulumi.BoolPtrInput
 	// Enable pages access control
-	// Valid values are `disabled`, `private`, `enabled`, `public`.
-	// `private` is the default.
 	PagesAccessLevel pulumi.StringPtrInput
 	// The path of the repository.
 	Path pulumi.StringPtrInput
@@ -362,7 +349,7 @@ type ProjectState struct {
 	PathWithNamespace pulumi.StringPtrInput
 	// Enable pipelines for the project.
 	PipelinesEnabled pulumi.BoolPtrInput
-	// Push rules for the project (documented below).
+	// Push rules for the project.
 	PushRules ProjectPushRulesPtrInput
 	// Enable `Delete source branch` option by default for all new merge requests.
 	RemoveSourceBranchAfterMerge pulumi.BoolPtrInput
@@ -377,19 +364,16 @@ type ProjectState struct {
 	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
 	SquashOption pulumi.StringPtrInput
 	// URL that can be provided to `git clone` to clone the
-	// repository via SSH.
 	SshUrlToRepo pulumi.StringPtrInput
 	// Tags (topics) of the project.
 	Tags pulumi.StringArrayInput
-	// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
+	// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
 	TemplateName pulumi.StringPtrInput
-	// When used with use_custom_template, project ID of a custom project template. This is preferable to using templateName since templateName may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
+	// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
 	TemplateProjectId pulumi.IntPtrInput
-	// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
 	UseCustomTemplate pulumi.BoolPtrInput
 	// Set to `public` to create a public project.
-	// Valid values are `private`, `internal`, `public`.
-	// Repositories are created as private by default.
 	VisibilityLevel pulumi.StringPtrInput
 	// URL that can be used to find the project in a browser.
 	WebUrl pulumi.StringPtrInput
@@ -406,6 +390,8 @@ type projectArgs struct {
 	AllowMergeOnSkippedPipeline *bool `pulumi:"allowMergeOnSkippedPipeline"`
 	// Number of merge request approvals required for merging. Default is 0.
 	ApprovalsBeforeMerge *int `pulumi:"approvalsBeforeMerge"`
+	// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
+	ArchiveOnDestroy *bool `pulumi:"archiveOnDestroy"`
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
 	Archived *bool `pulumi:"archived"`
 	// Test coverage parsing for the project.
@@ -418,7 +404,7 @@ type projectArgs struct {
 	DefaultBranch *string `pulumi:"defaultBranch"`
 	// A description of the project.
 	Description *string `pulumi:"description"`
-	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires useCustomTemplate to be true (enterprise edition).
+	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
 	GroupWithProjectTemplatesId *int `pulumi:"groupWithProjectTemplatesId"`
 	// Git URL to a repository to be imported.
 	ImportUrl *string `pulumi:"importUrl"`
@@ -426,43 +412,41 @@ type projectArgs struct {
 	InitializeWithReadme *bool `pulumi:"initializeWithReadme"`
 	// Enable issue tracking for the project.
 	IssuesEnabled *bool `pulumi:"issuesEnabled"`
+	// Sets the template for new issues in the project.
+	IssuesTemplate *string `pulumi:"issuesTemplate"`
 	// Enable LFS for the project.
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
 	// Set to `ff` to create fast-forward merges
-	// Valid values are `merge`, `rebaseMerge`, `ff`
-	// Repositories are created with `merge` by default
 	MergeMethod *string `pulumi:"mergeMethod"`
 	// Enable merge requests for the project.
 	MergeRequestsEnabled *bool `pulumi:"mergeRequestsEnabled"`
-	// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
-	// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+	// Sets the template for new merge requests in the project.
+	MergeRequestsTemplate *string `pulumi:"mergeRequestsTemplate"`
+	// Enable project pull mirror.
 	Mirror *bool `pulumi:"mirror"`
-	// Pull mirror overwrites diverged branches.
+	// Enable overwrite diverged branches for a mirrored project.
 	MirrorOverwritesDivergedBranches *bool `pulumi:"mirrorOverwritesDivergedBranches"`
-	// Pull mirroring triggers builds. Default is `false`.
+	// Enable trigger builds on pushes for a mirrored project.
 	MirrorTriggerBuilds *bool `pulumi:"mirrorTriggerBuilds"`
 	// The name of the project.
 	Name *string `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
-	// See `Group` for an example.
 	NamespaceId *int `pulumi:"namespaceId"`
 	// Set to true if you want allow merges only if all discussions are resolved.
 	OnlyAllowMergeIfAllDiscussionsAreResolved *bool `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
 	// Set to true if you want allow merges only if a pipeline succeeds.
 	OnlyAllowMergeIfPipelineSucceeds *bool `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
-	// Only mirror protected branches.
+	// Enable only mirror protected branches for a mirrored project.
 	OnlyMirrorProtectedBranches *bool `pulumi:"onlyMirrorProtectedBranches"`
 	// Enable packages repository for the project.
 	PackagesEnabled *bool `pulumi:"packagesEnabled"`
 	// Enable pages access control
-	// Valid values are `disabled`, `private`, `enabled`, `public`.
-	// `private` is the default.
 	PagesAccessLevel *string `pulumi:"pagesAccessLevel"`
 	// The path of the repository.
 	Path *string `pulumi:"path"`
 	// Enable pipelines for the project.
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
-	// Push rules for the project (documented below).
+	// Push rules for the project.
 	PushRules *ProjectPushRules `pulumi:"pushRules"`
 	// Enable `Delete source branch` option by default for all new merge requests.
 	RemoveSourceBranchAfterMerge *bool `pulumi:"removeSourceBranchAfterMerge"`
@@ -476,15 +460,13 @@ type projectArgs struct {
 	SquashOption *string `pulumi:"squashOption"`
 	// Tags (topics) of the project.
 	Tags []string `pulumi:"tags"`
-	// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
+	// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
 	TemplateName *string `pulumi:"templateName"`
-	// When used with use_custom_template, project ID of a custom project template. This is preferable to using templateName since templateName may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
+	// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
 	TemplateProjectId *int `pulumi:"templateProjectId"`
-	// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
 	UseCustomTemplate *bool `pulumi:"useCustomTemplate"`
 	// Set to `public` to create a public project.
-	// Valid values are `private`, `internal`, `public`.
-	// Repositories are created as private by default.
 	VisibilityLevel *string `pulumi:"visibilityLevel"`
 	// Enable wiki for the project.
 	WikiEnabled *bool `pulumi:"wikiEnabled"`
@@ -496,6 +478,8 @@ type ProjectArgs struct {
 	AllowMergeOnSkippedPipeline pulumi.BoolPtrInput
 	// Number of merge request approvals required for merging. Default is 0.
 	ApprovalsBeforeMerge pulumi.IntPtrInput
+	// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
+	ArchiveOnDestroy pulumi.BoolPtrInput
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
 	Archived pulumi.BoolPtrInput
 	// Test coverage parsing for the project.
@@ -508,7 +492,7 @@ type ProjectArgs struct {
 	DefaultBranch pulumi.StringPtrInput
 	// A description of the project.
 	Description pulumi.StringPtrInput
-	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires useCustomTemplate to be true (enterprise edition).
+	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
 	GroupWithProjectTemplatesId pulumi.IntPtrInput
 	// Git URL to a repository to be imported.
 	ImportUrl pulumi.StringPtrInput
@@ -516,43 +500,41 @@ type ProjectArgs struct {
 	InitializeWithReadme pulumi.BoolPtrInput
 	// Enable issue tracking for the project.
 	IssuesEnabled pulumi.BoolPtrInput
+	// Sets the template for new issues in the project.
+	IssuesTemplate pulumi.StringPtrInput
 	// Enable LFS for the project.
 	LfsEnabled pulumi.BoolPtrInput
 	// Set to `ff` to create fast-forward merges
-	// Valid values are `merge`, `rebaseMerge`, `ff`
-	// Repositories are created with `merge` by default
 	MergeMethod pulumi.StringPtrInput
 	// Enable merge requests for the project.
 	MergeRequestsEnabled pulumi.BoolPtrInput
-	// Enables pull mirroring in a project. Default is `false`. For further information on mirroring,
-	// consult the [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+	// Sets the template for new merge requests in the project.
+	MergeRequestsTemplate pulumi.StringPtrInput
+	// Enable project pull mirror.
 	Mirror pulumi.BoolPtrInput
-	// Pull mirror overwrites diverged branches.
+	// Enable overwrite diverged branches for a mirrored project.
 	MirrorOverwritesDivergedBranches pulumi.BoolPtrInput
-	// Pull mirroring triggers builds. Default is `false`.
+	// Enable trigger builds on pushes for a mirrored project.
 	MirrorTriggerBuilds pulumi.BoolPtrInput
 	// The name of the project.
 	Name pulumi.StringPtrInput
 	// The namespace (group or user) of the project. Defaults to your user.
-	// See `Group` for an example.
 	NamespaceId pulumi.IntPtrInput
 	// Set to true if you want allow merges only if all discussions are resolved.
 	OnlyAllowMergeIfAllDiscussionsAreResolved pulumi.BoolPtrInput
 	// Set to true if you want allow merges only if a pipeline succeeds.
 	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolPtrInput
-	// Only mirror protected branches.
+	// Enable only mirror protected branches for a mirrored project.
 	OnlyMirrorProtectedBranches pulumi.BoolPtrInput
 	// Enable packages repository for the project.
 	PackagesEnabled pulumi.BoolPtrInput
 	// Enable pages access control
-	// Valid values are `disabled`, `private`, `enabled`, `public`.
-	// `private` is the default.
 	PagesAccessLevel pulumi.StringPtrInput
 	// The path of the repository.
 	Path pulumi.StringPtrInput
 	// Enable pipelines for the project.
 	PipelinesEnabled pulumi.BoolPtrInput
-	// Push rules for the project (documented below).
+	// Push rules for the project.
 	PushRules ProjectPushRulesPtrInput
 	// Enable `Delete source branch` option by default for all new merge requests.
 	RemoveSourceBranchAfterMerge pulumi.BoolPtrInput
@@ -566,15 +548,13 @@ type ProjectArgs struct {
 	SquashOption pulumi.StringPtrInput
 	// Tags (topics) of the project.
 	Tags pulumi.StringArrayInput
-	// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
+	// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
 	TemplateName pulumi.StringPtrInput
-	// When used with use_custom_template, project ID of a custom project template. This is preferable to using templateName since templateName may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
+	// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`.
 	TemplateProjectId pulumi.IntPtrInput
-	// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
 	UseCustomTemplate pulumi.BoolPtrInput
 	// Set to `public` to create a public project.
-	// Valid values are `private`, `internal`, `public`.
-	// Repositories are created as private by default.
 	VisibilityLevel pulumi.StringPtrInput
 	// Enable wiki for the project.
 	WikiEnabled pulumi.BoolPtrInput

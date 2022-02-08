@@ -22,6 +22,8 @@ class BranchProtectionAllowedToMergeArgs:
                  group_id: Optional[pulumi.Input[int]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
         """
+        :param pulumi.Input[str] access_level: Level of access.
+        :param pulumi.Input[str] access_level_description: Readable description of level of access.
         :param pulumi.Input[int] group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param pulumi.Input[int] user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
@@ -37,6 +39,9 @@ class BranchProtectionAllowedToMergeArgs:
     @property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Level of access.
+        """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
@@ -46,6 +51,9 @@ class BranchProtectionAllowedToMergeArgs:
     @property
     @pulumi.getter(name="accessLevelDescription")
     def access_level_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Readable description of level of access.
+        """
         return pulumi.get(self, "access_level_description")
 
     @access_level_description.setter
@@ -85,6 +93,8 @@ class BranchProtectionAllowedToPushArgs:
                  group_id: Optional[pulumi.Input[int]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
         """
+        :param pulumi.Input[str] access_level: Level of access.
+        :param pulumi.Input[str] access_level_description: Readable description of level of access.
         :param pulumi.Input[int] group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param pulumi.Input[int] user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
@@ -100,6 +110,9 @@ class BranchProtectionAllowedToPushArgs:
     @property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Level of access.
+        """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
@@ -109,6 +122,9 @@ class BranchProtectionAllowedToPushArgs:
     @property
     @pulumi.getter(name="accessLevelDescription")
     def access_level_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Readable description of level of access.
+        """
         return pulumi.get(self, "access_level_description")
 
     @access_level_description.setter

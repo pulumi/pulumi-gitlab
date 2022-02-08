@@ -166,7 +166,7 @@ class GetUserResult:
     @pulumi.getter
     def email(self) -> str:
         """
-        The e-mail address of the user.
+        The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
         """
         return pulumi.get(self, "email")
 
@@ -237,6 +237,9 @@ class GetUserResult:
     @property
     @pulumi.getter
     def note(self) -> str:
+        """
+        Admin notes for this user.
+        """
         return pulumi.get(self, "note")
 
     @property
@@ -298,6 +301,9 @@ class GetUserResult:
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> int:
+        """
+        The ID of the user.
+        """
         return pulumi.get(self, "user_id")
 
     @property
@@ -366,21 +372,12 @@ def get_user(email: Optional[str] = None,
              username: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
-    ## # gitlab\_user
-
     Provide details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_user(username="myuser")
-    ```
+    > Some attributes might not be returned depending on if you're an admin or not. Please refer to [Gitlab documentation](https://docs.gitlab.com/ce/api/users.html#single-user) for more details.
 
 
-    :param str email: The e-mail address of the user. (Requires administrator privileges)
+    :param str email: The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
     :param int user_id: The ID of the user.
     :param str username: The username of the user.
     """
@@ -431,21 +428,12 @@ def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
                     username: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
     """
-    ## # gitlab\_user
-
     Provide details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gitlab as gitlab
-
-    example = gitlab.get_user(username="myuser")
-    ```
+    > Some attributes might not be returned depending on if you're an admin or not. Please refer to [Gitlab documentation](https://docs.gitlab.com/ce/api/users.html#single-user) for more details.
 
 
-    :param str email: The e-mail address of the user. (Requires administrator privileges)
+    :param str email: The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
     :param int user_id: The ID of the user.
     :param str username: The username of the user.
     """

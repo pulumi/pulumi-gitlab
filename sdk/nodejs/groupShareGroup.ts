@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_group\_share\_group
- *
  * This resource allows you to share a group with another group
  *
  * ## Example Usage
@@ -25,7 +23,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
+ * # GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/groupShareGroup:GroupShareGroup test 12345:1337
@@ -64,7 +62,7 @@ export class GroupShareGroup extends pulumi.CustomResource {
      */
     public readonly expiresAt!: pulumi.Output<string | undefined>;
     /**
-     * One of five levels of access to the group.
+     * The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
      */
     public readonly groupAccess!: pulumi.Output<string>;
     /**
@@ -123,7 +121,7 @@ export interface GroupShareGroupState {
      */
     expiresAt?: pulumi.Input<string>;
     /**
-     * One of five levels of access to the group.
+     * The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
      */
     groupAccess?: pulumi.Input<string>;
     /**
@@ -145,7 +143,7 @@ export interface GroupShareGroupArgs {
      */
     expiresAt?: pulumi.Input<string>;
     /**
-     * One of five levels of access to the group.
+     * The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
      */
     groupAccess: pulumi.Input<string>;
     /**

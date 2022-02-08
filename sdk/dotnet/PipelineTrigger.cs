@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_pipeline\_trigger
-    /// 
     /// This resource allows you to create and manage pipeline triggers
     /// 
     /// ## Example Usage
@@ -36,7 +34,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
+    /// # GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/pipelineTrigger:PipelineTrigger test 1:3
@@ -57,6 +55,9 @@ namespace Pulumi.GitLab
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The pipeline trigger token.
+        /// </summary>
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
 
@@ -137,6 +138,9 @@ namespace Pulumi.GitLab
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The pipeline trigger token.
+        /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }
 

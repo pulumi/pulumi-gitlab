@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_group\_variable
- *
  * This resource allows you to create and manage CI/CD variables for your GitLab groups.
  * For further information on variables, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
@@ -18,6 +16,7 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = new gitlab.GroupVariable("example", {
+ *     environmentScope: "*",
  *     group: "12345",
  *     key: "group_variable_key",
  *     masked: false,
@@ -28,10 +27,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * GitLab group variables can be imported using an id made up of `groupid:variablename`, e.g.
+ * # GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key
+ *  $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key:*
  * ```
  */
 export class GroupVariable extends pulumi.CustomResource {
@@ -63,7 +62,11 @@ export class GroupVariable extends pulumi.CustomResource {
     }
 
     /**
-     * The name or id of the group to add the hook to.
+     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+     */
+    public readonly environmentScope!: pulumi.Output<string | undefined>;
+    /**
+     * The name or id of the group.
      */
     public readonly group!: pulumi.Output<string>;
     /**
@@ -100,6 +103,7 @@ export class GroupVariable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupVariableState | undefined;
+            resourceInputs["environmentScope"] = state ? state.environmentScope : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
             resourceInputs["key"] = state ? state.key : undefined;
             resourceInputs["masked"] = state ? state.masked : undefined;
@@ -117,6 +121,7 @@ export class GroupVariable extends pulumi.CustomResource {
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
+            resourceInputs["environmentScope"] = args ? args.environmentScope : undefined;
             resourceInputs["group"] = args ? args.group : undefined;
             resourceInputs["key"] = args ? args.key : undefined;
             resourceInputs["masked"] = args ? args.masked : undefined;
@@ -134,7 +139,11 @@ export class GroupVariable extends pulumi.CustomResource {
  */
 export interface GroupVariableState {
     /**
-     * The name or id of the group to add the hook to.
+     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+     */
+    environmentScope?: pulumi.Input<string>;
+    /**
+     * The name or id of the group.
      */
     group?: pulumi.Input<string>;
     /**
@@ -164,7 +173,11 @@ export interface GroupVariableState {
  */
 export interface GroupVariableArgs {
     /**
-     * The name or id of the group to add the hook to.
+     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+     */
+    environmentScope?: pulumi.Input<string>;
+    /**
+     * The name or id of the group.
      */
     group: pulumi.Input<string>;
     /**

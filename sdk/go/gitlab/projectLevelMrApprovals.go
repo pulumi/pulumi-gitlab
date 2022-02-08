@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_project\_level\_mr\_approvals
-//
 // This resource allows you to configure project-level MR approvals. for your GitLab projects.
 // For further information on merge request approvals, consult the [GitLab API documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
 //
@@ -52,22 +50,20 @@ import (
 // ## Import
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `<resource> <project_id>:<approval_rule_id>`.
+//  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals # You can import an approval configuration state using `<resource> <project_id>`.
 // ```
 //
-//  For example
+// # # For example
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234:53
+//  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
 // ```
 type ProjectLevelMrApprovals struct {
 	pulumi.CustomResourceState
 
 	// By default, users are able to edit the approval rules in merge requests. If set to true,
-	// the approval rules for all new merge requests will be determined by the default approval rules. Default is `false`.
 	DisableOverridingApproversPerMergeRequest pulumi.BoolPtrOutput `pulumi:"disableOverridingApproversPerMergeRequest"`
 	// Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
-	// also need to be included in the approvers list in order to be able to approve their merge request. Default is `false`.
 	MergeRequestsAuthorApproval pulumi.BoolPtrOutput `pulumi:"mergeRequestsAuthorApproval"`
 	// Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
 	MergeRequestsDisableCommittersApproval pulumi.BoolPtrOutput `pulumi:"mergeRequestsDisableCommittersApproval"`
@@ -110,10 +106,8 @@ func GetProjectLevelMrApprovals(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ProjectLevelMrApprovals resources.
 type projectLevelMrApprovalsState struct {
 	// By default, users are able to edit the approval rules in merge requests. If set to true,
-	// the approval rules for all new merge requests will be determined by the default approval rules. Default is `false`.
 	DisableOverridingApproversPerMergeRequest *bool `pulumi:"disableOverridingApproversPerMergeRequest"`
 	// Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
-	// also need to be included in the approvers list in order to be able to approve their merge request. Default is `false`.
 	MergeRequestsAuthorApproval *bool `pulumi:"mergeRequestsAuthorApproval"`
 	// Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
 	MergeRequestsDisableCommittersApproval *bool `pulumi:"mergeRequestsDisableCommittersApproval"`
@@ -125,10 +119,8 @@ type projectLevelMrApprovalsState struct {
 
 type ProjectLevelMrApprovalsState struct {
 	// By default, users are able to edit the approval rules in merge requests. If set to true,
-	// the approval rules for all new merge requests will be determined by the default approval rules. Default is `false`.
 	DisableOverridingApproversPerMergeRequest pulumi.BoolPtrInput
 	// Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
-	// also need to be included in the approvers list in order to be able to approve their merge request. Default is `false`.
 	MergeRequestsAuthorApproval pulumi.BoolPtrInput
 	// Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
 	MergeRequestsDisableCommittersApproval pulumi.BoolPtrInput
@@ -144,10 +136,8 @@ func (ProjectLevelMrApprovalsState) ElementType() reflect.Type {
 
 type projectLevelMrApprovalsArgs struct {
 	// By default, users are able to edit the approval rules in merge requests. If set to true,
-	// the approval rules for all new merge requests will be determined by the default approval rules. Default is `false`.
 	DisableOverridingApproversPerMergeRequest *bool `pulumi:"disableOverridingApproversPerMergeRequest"`
 	// Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
-	// also need to be included in the approvers list in order to be able to approve their merge request. Default is `false`.
 	MergeRequestsAuthorApproval *bool `pulumi:"mergeRequestsAuthorApproval"`
 	// Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
 	MergeRequestsDisableCommittersApproval *bool `pulumi:"mergeRequestsDisableCommittersApproval"`
@@ -160,10 +150,8 @@ type projectLevelMrApprovalsArgs struct {
 // The set of arguments for constructing a ProjectLevelMrApprovals resource.
 type ProjectLevelMrApprovalsArgs struct {
 	// By default, users are able to edit the approval rules in merge requests. If set to true,
-	// the approval rules for all new merge requests will be determined by the default approval rules. Default is `false`.
 	DisableOverridingApproversPerMergeRequest pulumi.BoolPtrInput
 	// Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
-	// also need to be included in the approvers list in order to be able to approve their merge request. Default is `false`.
 	MergeRequestsAuthorApproval pulumi.BoolPtrInput
 	// Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
 	MergeRequestsDisableCommittersApproval pulumi.BoolPtrInput

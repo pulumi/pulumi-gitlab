@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_deploy\_key\_enable
- *
  * This resource allows you to enable pre-existing deploy keys for your GitLab projects.
  *
  * > **NOTE**: the GITLAB KEY_ID for the deploy key must be known
@@ -18,25 +16,25 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * // A repo to host the deployment key
- * const parentProject = new gitlab.Project("parent", {});
+ * const parentProject = new gitlab.Project("parentProject", {});
  * // A second repo to use the deployment key from the parent project
- * const fooProject = new gitlab.Project("foo", {});
+ * const fooProject = new gitlab.Project("fooProject", {});
  * // Upload a deployment key for the parent repo
- * const parentDeployKey = new gitlab.DeployKey("parent", {
- *     key: "ssh-rsa AAAA...",
+ * const parentDeployKey = new gitlab.DeployKey("parentDeployKey", {
  *     project: parentProject.id,
  *     title: "Example deploy key",
+ *     key: "ssh-rsa AAAA...",
  * });
  * // Enable the deployment key on the second repo
- * const fooDeployKeyEnable = new gitlab.DeployKeyEnable("foo", {
- *     keyId: parentDeployKey.id,
+ * const fooDeployKeyEnable = new gitlab.DeployKeyEnable("fooDeployKeyEnable", {
  *     project: fooProject.id,
+ *     keyId: parentDeployKey.id,
  * });
  * ```
  *
  * ## Import
  *
- * GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+ * # GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
@@ -70,7 +68,13 @@ export class DeployKeyEnable extends pulumi.CustomResource {
         return obj['__pulumiType'] === DeployKeyEnable.__pulumiType;
     }
 
+    /**
+     * Can deploy key push to the project’s repository.
+     */
     public readonly canPush!: pulumi.Output<boolean>;
+    /**
+     * Deploy key.
+     */
     public readonly key!: pulumi.Output<string>;
     /**
      * The Gitlab key id for the pre-existing deploy key
@@ -80,6 +84,9 @@ export class DeployKeyEnable extends pulumi.CustomResource {
      * The name or id of the project to add the deploy key to.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Deploy key's title.
+     */
     public readonly title!: pulumi.Output<string>;
 
     /**
@@ -123,7 +130,13 @@ export class DeployKeyEnable extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DeployKeyEnable resources.
  */
 export interface DeployKeyEnableState {
+    /**
+     * Can deploy key push to the project’s repository.
+     */
     canPush?: pulumi.Input<boolean>;
+    /**
+     * Deploy key.
+     */
     key?: pulumi.Input<string>;
     /**
      * The Gitlab key id for the pre-existing deploy key
@@ -133,6 +146,9 @@ export interface DeployKeyEnableState {
      * The name or id of the project to add the deploy key to.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Deploy key's title.
+     */
     title?: pulumi.Input<string>;
 }
 
@@ -140,7 +156,13 @@ export interface DeployKeyEnableState {
  * The set of arguments for constructing a DeployKeyEnable resource.
  */
 export interface DeployKeyEnableArgs {
+    /**
+     * Can deploy key push to the project’s repository.
+     */
     canPush?: pulumi.Input<boolean>;
+    /**
+     * Deploy key.
+     */
     key?: pulumi.Input<string>;
     /**
      * The Gitlab key id for the pre-existing deploy key
@@ -150,5 +172,8 @@ export interface DeployKeyEnableArgs {
      * The name or id of the project to add the deploy key to.
      */
     project: pulumi.Input<string>;
+    /**
+     * Deploy key's title.
+     */
     title?: pulumi.Input<string>;
 }

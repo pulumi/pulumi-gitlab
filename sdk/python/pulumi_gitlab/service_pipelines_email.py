@@ -163,7 +163,32 @@ class ServicePipelinesEmail(pulumi.CustomResource):
                  recipients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a ServicePipelinesEmail resource with the given unique name, props, and options.
+        This resource manages a [Pipelines email integration](https://docs.gitlab.com/ee/user/project/integrations/overview.html#integrations-listing) that emails the pipeline status to a list of recipients.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        email = gitlab.ServicePipelinesEmail("email",
+            project=awesome_project.id,
+            recipients=["gitlab@user.create"],
+            notify_only_broken_pipelines=True,
+            branches_to_be_notified="all")
+        ```
+
+        ## Import
+
+        # You can import a gitlab_service_pipelines_email state using the project ID, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/servicePipelinesEmail:ServicePipelinesEmail email 1
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
@@ -178,7 +203,32 @@ class ServicePipelinesEmail(pulumi.CustomResource):
                  args: ServicePipelinesEmailArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ServicePipelinesEmail resource with the given unique name, props, and options.
+        This resource manages a [Pipelines email integration](https://docs.gitlab.com/ee/user/project/integrations/overview.html#integrations-listing) that emails the pipeline status to a list of recipients.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        email = gitlab.ServicePipelinesEmail("email",
+            project=awesome_project.id,
+            recipients=["gitlab@user.create"],
+            notify_only_broken_pipelines=True,
+            branches_to_be_notified="all")
+        ```
+
+        ## Import
+
+        # You can import a gitlab_service_pipelines_email state using the project ID, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/servicePipelinesEmail:ServicePipelinesEmail email 1
+        ```
+
         :param str resource_name: The name of the resource.
         :param ServicePipelinesEmailArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

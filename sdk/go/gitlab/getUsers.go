@@ -10,8 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_users
-//
 // Provide details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
 //
 // **NOTE**: Some available options require administrator privileges. Please visit [Gitlab API documentation][usersForAdmins] for more information.
@@ -83,18 +81,26 @@ type GetUsersArgs struct {
 
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
-	Active         *bool   `pulumi:"active"`
-	Blocked        *bool   `pulumi:"blocked"`
-	CreatedAfter   *string `pulumi:"createdAfter"`
-	CreatedBefore  *string `pulumi:"createdBefore"`
+	// Filter users that are active.
+	Active *bool `pulumi:"active"`
+	// Filter users that are blocked.
+	Blocked *bool `pulumi:"blocked"`
+	// Search for users created after a specific date. (Requires administrator privileges)
+	CreatedAfter *string `pulumi:"createdAfter"`
+	// Search for users created before a specific date. (Requires administrator privileges)
+	CreatedBefore *string `pulumi:"createdBefore"`
+	// Lookup users by external provider. (Requires administrator privileges)
 	ExternProvider *string `pulumi:"externProvider"`
-	// The external UID of the user.
+	// Lookup users by external UID. (Requires administrator privileges)
 	ExternUid *string `pulumi:"externUid"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
 	OrderBy *string `pulumi:"orderBy"`
-	Search  *string `pulumi:"search"`
-	Sort    *string `pulumi:"sort"`
+	// Search users by username, name or email.
+	Search *string `pulumi:"search"`
+	// Sort users' list in asc or desc order. (Requires administrator privileges)
+	Sort *string `pulumi:"sort"`
 	// The list of users.
 	Users []GetUsersUser `pulumi:"users"`
 }
@@ -149,27 +155,32 @@ func (o GetUsersResultOutput) ToGetUsersResultOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Filter users that are active.
 func (o GetUsersResultOutput) Active() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *bool { return v.Active }).(pulumi.BoolPtrOutput)
 }
 
+// Filter users that are blocked.
 func (o GetUsersResultOutput) Blocked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *bool { return v.Blocked }).(pulumi.BoolPtrOutput)
 }
 
+// Search for users created after a specific date. (Requires administrator privileges)
 func (o GetUsersResultOutput) CreatedAfter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.CreatedAfter }).(pulumi.StringPtrOutput)
 }
 
+// Search for users created before a specific date. (Requires administrator privileges)
 func (o GetUsersResultOutput) CreatedBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.CreatedBefore }).(pulumi.StringPtrOutput)
 }
 
+// Lookup users by external provider. (Requires administrator privileges)
 func (o GetUsersResultOutput) ExternProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.ExternProvider }).(pulumi.StringPtrOutput)
 }
 
-// The external UID of the user.
+// Lookup users by external UID. (Requires administrator privileges)
 func (o GetUsersResultOutput) ExternUid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.ExternUid }).(pulumi.StringPtrOutput)
 }
@@ -179,14 +190,17 @@ func (o GetUsersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
 func (o GetUsersResultOutput) OrderBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
+// Search users by username, name or email.
 func (o GetUsersResultOutput) Search() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.Search }).(pulumi.StringPtrOutput)
 }
 
+// Sort users' list in asc or desc order. (Requires administrator privileges)
 func (o GetUsersResultOutput) Sort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.Sort }).(pulumi.StringPtrOutput)
 }

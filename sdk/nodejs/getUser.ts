@@ -5,20 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_user
- *
  * Provide details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const example = pulumi.output(gitlab.getUser({
- *     username: "myuser",
- * }));
- * ```
+ * > Some attributes might not be returned depending on if you're an admin or not. Please refer to [Gitlab documentation](https://docs.gitlab.com/ce/api/users.html#single-user) for more details.
  */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     args = args || {};
@@ -39,7 +28,7 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
  */
 export interface GetUserArgs {
     /**
-     * The e-mail address of the user. (Requires administrator privileges)
+     * The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
      */
     email?: string;
     /**
@@ -85,7 +74,7 @@ export interface GetUserResult {
      */
     readonly currentSignInAt: string;
     /**
-     * The e-mail address of the user.
+     * The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
      */
     readonly email: string;
     /**
@@ -120,6 +109,9 @@ export interface GetUserResult {
      * The name of the user.
      */
     readonly name: string;
+    /**
+     * Admin notes for this user.
+     */
     readonly note: string;
     /**
      * The organization of the user.
@@ -149,6 +141,9 @@ export interface GetUserResult {
      * Whether user's two-factor auth is enabled.
      */
     readonly twoFactorEnabled: boolean;
+    /**
+     * The ID of the user.
+     */
     readonly userId: number;
     /**
      * The UID provider of the user.
@@ -173,7 +168,7 @@ export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetUserOutputArgs {
     /**
-     * The e-mail address of the user. (Requires administrator privileges)
+     * The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
      */
     email?: pulumi.Input<string>;
     /**

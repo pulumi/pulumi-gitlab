@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_instance\_cluster
-    /// 
     /// This resource allows you to create and manage instance clusters for your GitLab instances.
     /// For further information on clusters, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ee/user/instance/clusters/).
@@ -45,7 +43,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// GitLab instance clusters can be imported using a `clusterid`, e.g.
+    /// # GitLab instance clusters can be imported using a `clusterid`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/instanceCluster:InstanceCluster bar 123
@@ -54,9 +52,15 @@ namespace Pulumi.GitLab
     [GitLabResourceType("gitlab:index/instanceCluster:InstanceCluster")]
     public partial class InstanceCluster : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Cluster type.
+        /// </summary>
         [Output("clusterType")]
         public Output<string> ClusterType { get; private set; } = null!;
 
+        /// <summary>
+        /// Create time.
+        /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
@@ -126,9 +130,15 @@ namespace Pulumi.GitLab
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Platform type.
+        /// </summary>
         [Output("platformType")]
         public Output<string> PlatformType { get; private set; } = null!;
 
+        /// <summary>
+        /// Provider type.
+        /// </summary>
         [Output("providerType")]
         public Output<string> ProviderType { get; private set; } = null!;
 
@@ -251,9 +261,15 @@ namespace Pulumi.GitLab
 
     public sealed class InstanceClusterState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Cluster type.
+        /// </summary>
         [Input("clusterType")]
         public Input<string>? ClusterType { get; set; }
 
+        /// <summary>
+        /// Create time.
+        /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
@@ -323,9 +339,15 @@ namespace Pulumi.GitLab
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Platform type.
+        /// </summary>
         [Input("platformType")]
         public Input<string>? PlatformType { get; set; }
 
+        /// <summary>
+        /// Provider type.
+        /// </summary>
         [Input("providerType")]
         public Input<string>? ProviderType { get; set; }
 

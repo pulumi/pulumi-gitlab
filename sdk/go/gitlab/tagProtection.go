@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_tag\_protection
-//
 // This resource allows you to protect a specific tag or wildcard by an access level so that the user with less access level cannot Create the tags.
 //
 // ## Example Usage
@@ -39,10 +37,18 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// # Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/tagProtection:TagProtection example 123456789:v1.0.0
+// ```
 type TagProtection struct {
 	pulumi.CustomResourceState
 
-	// One of five levels of access to the project.
+	// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
 	CreateAccessLevel pulumi.StringOutput `pulumi:"createAccessLevel"`
 	// The id of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -88,7 +94,7 @@ func GetTagProtection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TagProtection resources.
 type tagProtectionState struct {
-	// One of five levels of access to the project.
+	// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
 	CreateAccessLevel *string `pulumi:"createAccessLevel"`
 	// The id of the project.
 	Project *string `pulumi:"project"`
@@ -97,7 +103,7 @@ type tagProtectionState struct {
 }
 
 type TagProtectionState struct {
-	// One of five levels of access to the project.
+	// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
 	CreateAccessLevel pulumi.StringPtrInput
 	// The id of the project.
 	Project pulumi.StringPtrInput
@@ -110,7 +116,7 @@ func (TagProtectionState) ElementType() reflect.Type {
 }
 
 type tagProtectionArgs struct {
-	// One of five levels of access to the project.
+	// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
 	CreateAccessLevel string `pulumi:"createAccessLevel"`
 	// The id of the project.
 	Project string `pulumi:"project"`
@@ -120,7 +126,7 @@ type tagProtectionArgs struct {
 
 // The set of arguments for constructing a TagProtection resource.
 type TagProtectionArgs struct {
-	// One of five levels of access to the project.
+	// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
 	CreateAccessLevel pulumi.StringInput
 	// The id of the project.
 	Project pulumi.StringInput

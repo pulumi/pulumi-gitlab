@@ -6,8 +6,6 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_branch\_protection
- *
  * This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch.
  *
  * > The `allowedToPush`, `allowedToMerge` and `codeOwnerApprovalRequired` arguments require a GitLab Premium account or above.  Please refer to [Gitlab API documentation](https://docs.gitlab.com/ee/api/protected_branches.html) for further information.
@@ -18,15 +16,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const branchProtect = new gitlab.BranchProtection("BranchProtect", {
- *     allowedToMerges: [
- *         {
- *             userId: 15,
- *         },
- *         {
- *             userId: 37,
- *         },
- *     ],
+ * const branchProtect = new gitlab.BranchProtection("branchProtect", {
+ *     project: "12345",
+ *     branch: "BranchProtected",
+ *     pushAccessLevel: "developer",
+ *     mergeAccessLevel: "developer",
+ *     codeOwnerApprovalRequired: true,
  *     allowedToPushes: [
  *         {
  *             userId: 5,
@@ -35,19 +30,16 @@ import * as utilities from "./utilities";
  *             userId: 521,
  *         },
  *     ],
- *     branch: "BranchProtected",
- *     codeOwnerApprovalRequired: true,
- *     mergeAccessLevel: "developer",
- *     project: "12345",
- *     pushAccessLevel: "developer",
+ *     allowedToMerges: [
+ *         {
+ *             userId: 15,
+ *         },
+ *         {
+ *             userId: 37,
+ *         },
+ *     ],
  * });
- * ```
- * ### Example using dynamic block
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
+ * // Example using dynamic block
  * const main = new gitlab.BranchProtection("main", {
  *     project: "12345",
  *     branch: "main",
@@ -68,7 +60,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.
+ * # Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"
@@ -102,7 +94,13 @@ export class BranchProtection extends pulumi.CustomResource {
         return obj['__pulumiType'] === BranchProtection.__pulumiType;
     }
 
+    /**
+     * Defines permissions for action.
+     */
     public readonly allowedToMerges!: pulumi.Output<outputs.BranchProtectionAllowedToMerge[] | undefined>;
+    /**
+     * Defines permissions for action.
+     */
     public readonly allowedToPushes!: pulumi.Output<outputs.BranchProtectionAllowedToPush[] | undefined>;
     /**
      * Name of the branch.
@@ -113,11 +111,11 @@ export class BranchProtection extends pulumi.CustomResource {
      */
     public /*out*/ readonly branchProtectionId!: pulumi.Output<number>;
     /**
-     * Bool, defaults to false. Can be set to true to require code owner approval before merging.
+     * Can be set to true to require code owner approval before merging.
      */
     public readonly codeOwnerApprovalRequired!: pulumi.Output<boolean | undefined>;
     /**
-     * One of five levels of access to the project. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
      */
     public readonly mergeAccessLevel!: pulumi.Output<string>;
     /**
@@ -125,7 +123,7 @@ export class BranchProtection extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * One of five levels of access to the project. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
      */
     public readonly pushAccessLevel!: pulumi.Output<string>;
 
@@ -182,7 +180,13 @@ export class BranchProtection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BranchProtection resources.
  */
 export interface BranchProtectionState {
+    /**
+     * Defines permissions for action.
+     */
     allowedToMerges?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToMerge>[]>;
+    /**
+     * Defines permissions for action.
+     */
     allowedToPushes?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToPush>[]>;
     /**
      * Name of the branch.
@@ -193,11 +197,11 @@ export interface BranchProtectionState {
      */
     branchProtectionId?: pulumi.Input<number>;
     /**
-     * Bool, defaults to false. Can be set to true to require code owner approval before merging.
+     * Can be set to true to require code owner approval before merging.
      */
     codeOwnerApprovalRequired?: pulumi.Input<boolean>;
     /**
-     * One of five levels of access to the project. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
      */
     mergeAccessLevel?: pulumi.Input<string>;
     /**
@@ -205,7 +209,7 @@ export interface BranchProtectionState {
      */
     project?: pulumi.Input<string>;
     /**
-     * One of five levels of access to the project. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
      */
     pushAccessLevel?: pulumi.Input<string>;
 }
@@ -214,18 +218,24 @@ export interface BranchProtectionState {
  * The set of arguments for constructing a BranchProtection resource.
  */
 export interface BranchProtectionArgs {
+    /**
+     * Defines permissions for action.
+     */
     allowedToMerges?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToMerge>[]>;
+    /**
+     * Defines permissions for action.
+     */
     allowedToPushes?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToPush>[]>;
     /**
      * Name of the branch.
      */
     branch: pulumi.Input<string>;
     /**
-     * Bool, defaults to false. Can be set to true to require code owner approval before merging.
+     * Can be set to true to require code owner approval before merging.
      */
     codeOwnerApprovalRequired?: pulumi.Input<boolean>;
     /**
-     * One of five levels of access to the project. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
      */
     mergeAccessLevel: pulumi.Input<string>;
     /**
@@ -233,7 +243,7 @@ export interface BranchProtectionArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * One of five levels of access to the project. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
      */
     pushAccessLevel: pulumi.Input<string>;
 }

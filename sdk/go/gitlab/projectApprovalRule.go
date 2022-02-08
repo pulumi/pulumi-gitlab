@@ -11,88 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_project\_approval\_rule
-//
 // This resource allows you to create and manage multiple approval rules for your GitLab projects. For further information on approval rules, consult the [gitlab documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
 //
 // > This feature requires GitLab Premium.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewProjectApprovalRule(ctx, "example-one", &gitlab.ProjectApprovalRuleArgs{
-// 			ApprovalsRequired: pulumi.Int(3),
-// 			GroupIds: pulumi.IntArray{
-// 				pulumi.Int(51),
-// 			},
-// 			Project: pulumi.String("5"),
-// 			UserIds: pulumi.IntArray{
-// 				pulumi.Int(50),
-// 				pulumi.Int(500),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### With Protected Branch IDs
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := gitlab.NewBranchProtection(ctx, "example", &gitlab.BranchProtectionArgs{
-// 			Project:          pulumi.String("5"),
-// 			Branch:           pulumi.String("release/*"),
-// 			PushAccessLevel:  pulumi.String("maintainer"),
-// 			MergeAccessLevel: pulumi.String("developer"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewProjectApprovalRule(ctx, "example-two", &gitlab.ProjectApprovalRuleArgs{
-// 			Project:           pulumi.String("5"),
-// 			ApprovalsRequired: pulumi.Int(3),
-// 			UserIds: pulumi.IntArray{
-// 				pulumi.Int(50),
-// 				pulumi.Int(500),
-// 			},
-// 			GroupIds: pulumi.IntArray{
-// 				pulumi.Int(51),
-// 			},
-// 			ProtectedBranchIds: pulumi.IntArray{
-// 				example.BranchProtectionId,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
-// GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
+// # GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
 //
 // ```sh
 //  $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"

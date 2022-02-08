@@ -20,10 +20,9 @@ import (
 	"unicode"
 
 	"github.com/gitlabhq/terraform-provider-gitlab/gitlab"
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-gitlab/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
@@ -63,7 +62,7 @@ func gitLabResource(mod string, res string) tokens.Type {
 
 // Provider returns additional overlaid schema and metadata associated with the GitLab package.
 func Provider() tfbridge.ProviderInfo {
-	p := shimv1.NewProvider(gitlab.Provider().(*schema.Provider))
+	p := shimv2.NewProvider(gitlab.Provider())
 	prov := tfbridge.ProviderInfo{
 		P:           p,
 		Name:        "gitlab",
@@ -112,14 +111,58 @@ func Provider() tfbridge.ProviderInfo {
 			"gitlab_group_share_group":          {Tok: gitLabResource(gitLabMod, "GroupShareGroup")},
 			"gitlab_project_freeze_period":      {Tok: gitLabResource(gitLabMod, "ProjectFreezePeriod")},
 			"gitlab_project_badge":              {Tok: gitLabResource(gitLabMod, "ProjectBadge")},
+			"gitlab_group_badge":                {Tok: gitLabResource(gitLabMod, "GroupBadge")},
+			"gitlab_group_custom_attribute":     {Tok: gitLabResource(gitLabMod, "GroupCustomAttribute")},
+			"gitlab_managed_license":            {Tok: gitLabResource(gitLabMod, "ManagedLicense")},
+			"gitlab_project_access_token":       {Tok: gitLabResource(gitLabMod, "ProjectAccessToken")},
+			"gitlab_project_custom_attribute":   {Tok: gitLabResource(gitLabMod, "ProjectCustomAttribute")},
+			"gitlab_repository_file":            {Tok: gitLabResource(gitLabMod, "RepositoryFile")},
+			"gitlab_service_microsoft_teams":    {Tok: gitLabResource(gitLabMod, "ServiceMicrosoftTeams")},
+			"gitlab_user_custom_attribute":      {Tok: gitLabResource(gitLabMod, "UserCustomAttribute")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"gitlab_group":            {Tok: gitLabDataSource(gitLabMod, "getGroup")},
-			"gitlab_project":          {Tok: gitLabDataSource(gitLabMod, "getProject")},
-			"gitlab_user":             {Tok: gitLabDataSource(gitLabMod, "getUser")},
-			"gitlab_users":            {Tok: gitLabDataSource(gitLabMod, "getUsers")},
-			"gitlab_projects":         {Tok: gitLabDataSource(gitLabMod, "getProjects")},
-			"gitlab_group_membership": {Tok: gitLabDataSource(gitLabMod, "getGroupMembership")},
+			"gitlab_group": {Tok: gitLabDataSource(gitLabMod, "getGroup")},
+			"gitlab_project": {
+				Tok: gitLabDataSource(gitLabMod, "getProject"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"push_rules": {
+						Name:        "pushRules",
+						MaxItemsOne: tfbridge.True(),
+					},
+				},
+			},
+			"gitlab_user":  {Tok: gitLabDataSource(gitLabMod, "getUser")},
+			"gitlab_users": {Tok: gitLabDataSource(gitLabMod, "getUsers")},
+			"gitlab_projects": {
+				Tok: gitLabDataSource(gitLabMod, "getProjects"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"projects": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"permissions": {
+									Name:        "permissions",
+									MaxItemsOne: tfbridge.True(),
+								},
+								"namespace": {
+									Name:        "namespace",
+									MaxItemsOne: tfbridge.True(),
+								},
+								"forked_from_project": {
+									Name:        "forkedFromProject",
+									MaxItemsOne: tfbridge.True(),
+								},
+								"owner": {
+									Name:        "owner",
+									MaxItemsOne: tfbridge.True(),
+								},
+							},
+						},
+					},
+				},
+			},
+			"gitlab_group_membership":           {Tok: gitLabDataSource(gitLabMod, "getGroupMembership")},
+			"gitlab_project_protected_branch":   {Tok: gitLabDataSource(gitLabMod, "getProjectProtectedBranch")},
+			"gitlab_project_protected_branches": {Tok: gitLabDataSource(gitLabMod, "getProjectProtectedBranches")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

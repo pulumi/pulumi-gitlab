@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_project\_level\_mr\_approvals
-    /// 
     /// This resource allows you to configure project-level MR approvals. for your GitLab projects.
     /// For further information on merge request approvals, consult the [GitLab API documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
     /// 
@@ -45,13 +43,13 @@ namespace Pulumi.GitLab
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `&lt;resource&gt; &lt;project_id&gt;:&lt;approval_rule_id&gt;`.
+    ///  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals # You can import an approval configuration state using `&lt;resource&gt; &lt;project_id&gt;`.
     /// ```
     /// 
-    ///  For example
+    /// # # For example
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234:53
+    ///  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals")]
@@ -59,14 +57,12 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// By default, users are able to edit the approval rules in merge requests. If set to true,
-        /// the approval rules for all new merge requests will be determined by the default approval rules. Default is `false`.
         /// </summary>
         [Output("disableOverridingApproversPerMergeRequest")]
         public Output<bool?> DisableOverridingApproversPerMergeRequest { get; private set; } = null!;
 
         /// <summary>
         /// Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
-        /// also need to be included in the approvers list in order to be able to approve their merge request. Default is `false`.
         /// </summary>
         [Output("mergeRequestsAuthorApproval")]
         public Output<bool?> MergeRequestsAuthorApproval { get; private set; } = null!;
@@ -137,14 +133,12 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// By default, users are able to edit the approval rules in merge requests. If set to true,
-        /// the approval rules for all new merge requests will be determined by the default approval rules. Default is `false`.
         /// </summary>
         [Input("disableOverridingApproversPerMergeRequest")]
         public Input<bool>? DisableOverridingApproversPerMergeRequest { get; set; }
 
         /// <summary>
         /// Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
-        /// also need to be included in the approvers list in order to be able to approve their merge request. Default is `false`.
         /// </summary>
         [Input("mergeRequestsAuthorApproval")]
         public Input<bool>? MergeRequestsAuthorApproval { get; set; }
@@ -176,14 +170,12 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// By default, users are able to edit the approval rules in merge requests. If set to true,
-        /// the approval rules for all new merge requests will be determined by the default approval rules. Default is `false`.
         /// </summary>
         [Input("disableOverridingApproversPerMergeRequest")]
         public Input<bool>? DisableOverridingApproversPerMergeRequest { get; set; }
 
         /// <summary>
         /// Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
-        /// also need to be included in the approvers list in order to be able to approve their merge request. Default is `false`.
         /// </summary>
         [Input("mergeRequestsAuthorApproval")]
         public Input<bool>? MergeRequestsAuthorApproval { get; set; }

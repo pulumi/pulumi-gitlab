@@ -30,8 +30,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DeployToken{}
 	case "gitlab:index/group:Group":
 		r = &Group{}
+	case "gitlab:index/groupBadge:GroupBadge":
+		r = &GroupBadge{}
 	case "gitlab:index/groupCluster:GroupCluster":
 		r = &GroupCluster{}
+	case "gitlab:index/groupCustomAttribute:GroupCustomAttribute":
+		r = &GroupCustomAttribute{}
 	case "gitlab:index/groupLabel:GroupLabel":
 		r = &GroupLabel{}
 	case "gitlab:index/groupLdapLink:GroupLdapLink":
@@ -48,6 +52,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceVariable{}
 	case "gitlab:index/label:Label":
 		r = &Label{}
+	case "gitlab:index/managedLicense:ManagedLicense":
+		r = &ManagedLicense{}
 	case "gitlab:index/pipelineSchedule:PipelineSchedule":
 		r = &PipelineSchedule{}
 	case "gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable":
@@ -56,12 +62,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PipelineTrigger{}
 	case "gitlab:index/project:Project":
 		r = &Project{}
+	case "gitlab:index/projectAccessToken:ProjectAccessToken":
+		r = &ProjectAccessToken{}
 	case "gitlab:index/projectApprovalRule:ProjectApprovalRule":
 		r = &ProjectApprovalRule{}
 	case "gitlab:index/projectBadge:ProjectBadge":
 		r = &ProjectBadge{}
 	case "gitlab:index/projectCluster:ProjectCluster":
 		r = &ProjectCluster{}
+	case "gitlab:index/projectCustomAttribute:ProjectCustomAttribute":
+		r = &ProjectCustomAttribute{}
 	case "gitlab:index/projectFreezePeriod:ProjectFreezePeriod":
 		r = &ProjectFreezePeriod{}
 	case "gitlab:index/projectHook:ProjectHook":
@@ -76,10 +86,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectShareGroup{}
 	case "gitlab:index/projectVariable:ProjectVariable":
 		r = &ProjectVariable{}
+	case "gitlab:index/repositoryFile:RepositoryFile":
+		r = &RepositoryFile{}
 	case "gitlab:index/serviceGithub:ServiceGithub":
 		r = &ServiceGithub{}
 	case "gitlab:index/serviceJira:ServiceJira":
 		r = &ServiceJira{}
+	case "gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams":
+		r = &ServiceMicrosoftTeams{}
 	case "gitlab:index/servicePipelinesEmail:ServicePipelinesEmail":
 		r = &ServicePipelinesEmail{}
 	case "gitlab:index/serviceSlack:ServiceSlack":
@@ -88,6 +102,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TagProtection{}
 	case "gitlab:index/user:User":
 		r = &User{}
+	case "gitlab:index/userCustomAttribute:UserCustomAttribute":
+		r = &UserCustomAttribute{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -146,7 +162,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/groupBadge",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/groupCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/groupCustomAttribute",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -191,6 +217,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/managedLicense",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/pipelineSchedule",
 		&module{version},
 	)
@@ -211,6 +242,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectAccessToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectApprovalRule",
 		&module{version},
 	)
@@ -222,6 +258,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectCustomAttribute",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -261,12 +302,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/repositoryFile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/serviceGithub",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/serviceJira",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/serviceMicrosoftTeams",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -287,6 +338,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/user",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/userCustomAttribute",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

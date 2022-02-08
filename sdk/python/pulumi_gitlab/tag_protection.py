@@ -18,7 +18,7 @@ class TagProtectionArgs:
                  tag: pulumi.Input[str]):
         """
         The set of arguments for constructing a TagProtection resource.
-        :param pulumi.Input[str] create_access_level: One of five levels of access to the project.
+        :param pulumi.Input[str] create_access_level: Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] tag: Name of the tag or wildcard.
         """
@@ -30,7 +30,7 @@ class TagProtectionArgs:
     @pulumi.getter(name="createAccessLevel")
     def create_access_level(self) -> pulumi.Input[str]:
         """
-        One of five levels of access to the project.
+        Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
         """
         return pulumi.get(self, "create_access_level")
 
@@ -71,7 +71,7 @@ class _TagProtectionState:
                  tag: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TagProtection resources.
-        :param pulumi.Input[str] create_access_level: One of five levels of access to the project.
+        :param pulumi.Input[str] create_access_level: Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] tag: Name of the tag or wildcard.
         """
@@ -86,7 +86,7 @@ class _TagProtectionState:
     @pulumi.getter(name="createAccessLevel")
     def create_access_level(self) -> Optional[pulumi.Input[str]]:
         """
-        One of five levels of access to the project.
+        Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
         """
         return pulumi.get(self, "create_access_level")
 
@@ -129,8 +129,6 @@ class TagProtection(pulumi.CustomResource):
                  tag: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # gitlab\_tag\_protection
-
         This resource allows you to protect a specific tag or wildcard by an access level so that the user with less access level cannot Create the tags.
 
         ## Example Usage
@@ -145,9 +143,17 @@ class TagProtection(pulumi.CustomResource):
             tag="TagProtected")
         ```
 
+        ## Import
+
+        # Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/tagProtection:TagProtection example 123456789:v1.0.0
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_access_level: One of five levels of access to the project.
+        :param pulumi.Input[str] create_access_level: Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] tag: Name of the tag or wildcard.
         """
@@ -158,8 +164,6 @@ class TagProtection(pulumi.CustomResource):
                  args: TagProtectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # gitlab\_tag\_protection
-
         This resource allows you to protect a specific tag or wildcard by an access level so that the user with less access level cannot Create the tags.
 
         ## Example Usage
@@ -172,6 +176,14 @@ class TagProtection(pulumi.CustomResource):
             create_access_level="developer",
             project="12345",
             tag="TagProtected")
+        ```
+
+        ## Import
+
+        # Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/tagProtection:TagProtection example 123456789:v1.0.0
         ```
 
         :param str resource_name: The name of the resource.
@@ -233,7 +245,7 @@ class TagProtection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_access_level: One of five levels of access to the project.
+        :param pulumi.Input[str] create_access_level: Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] tag: Name of the tag or wildcard.
         """
@@ -250,7 +262,7 @@ class TagProtection(pulumi.CustomResource):
     @pulumi.getter(name="createAccessLevel")
     def create_access_level(self) -> pulumi.Output[str]:
         """
-        One of five levels of access to the project.
+        Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
         """
         return pulumi.get(self, "create_access_level")
 

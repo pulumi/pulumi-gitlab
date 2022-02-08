@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_project\_hook
- *
  * This resource allows you to create and manage hooks for your GitLab projects.
  * For further information on hooks, consult the [gitlab
  * documentation](https://docs.gitlab.com/ce/user/project/integrations/webhooks.html).

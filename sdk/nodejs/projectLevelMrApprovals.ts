@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_project\_level\_mr\_approvals
- *
  * This resource allows you to configure project-level MR approvals. for your GitLab projects.
  * For further information on merge request approvals, consult the [GitLab API documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
  *
@@ -29,13 +27,13 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `<resource> <project_id>:<approval_rule_id>`.
+ *  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals # You can import an approval configuration state using `<resource> <project_id>`.
  * ```
  *
- *  For example
+ * # # For example
  *
  * ```sh
- *  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234:53
+ *  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
  * ```
  */
 export class ProjectLevelMrApprovals extends pulumi.CustomResource {
@@ -68,12 +66,10 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
 
     /**
      * By default, users are able to edit the approval rules in merge requests. If set to true,
-     * the approval rules for all new merge requests will be determined by the default approval rules. Default is `false`.
      */
     public readonly disableOverridingApproversPerMergeRequest!: pulumi.Output<boolean | undefined>;
     /**
      * Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
-     * also need to be included in the approvers list in order to be able to approve their merge request. Default is `false`.
      */
     public readonly mergeRequestsAuthorApproval!: pulumi.Output<boolean | undefined>;
     /**
@@ -129,12 +125,10 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
 export interface ProjectLevelMrApprovalsState {
     /**
      * By default, users are able to edit the approval rules in merge requests. If set to true,
-     * the approval rules for all new merge requests will be determined by the default approval rules. Default is `false`.
      */
     disableOverridingApproversPerMergeRequest?: pulumi.Input<boolean>;
     /**
      * Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
-     * also need to be included in the approvers list in order to be able to approve their merge request. Default is `false`.
      */
     mergeRequestsAuthorApproval?: pulumi.Input<boolean>;
     /**
@@ -157,12 +151,10 @@ export interface ProjectLevelMrApprovalsState {
 export interface ProjectLevelMrApprovalsArgs {
     /**
      * By default, users are able to edit the approval rules in merge requests. If set to true,
-     * the approval rules for all new merge requests will be determined by the default approval rules. Default is `false`.
      */
     disableOverridingApproversPerMergeRequest?: pulumi.Input<boolean>;
     /**
      * Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
-     * also need to be included in the approvers list in order to be able to approve their merge request. Default is `false`.
      */
     mergeRequestsAuthorApproval?: pulumi.Input<boolean>;
     /**

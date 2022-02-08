@@ -18,7 +18,7 @@ class ProjectMembershipArgs:
                  user_id: pulumi.Input[int]):
         """
         The set of arguments for constructing a ProjectMembership resource.
-        :param pulumi.Input[str] access_level: One of five levels of access to the project.
+        :param pulumi.Input[str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
         :param pulumi.Input[str] project_id: The id of the project.
         :param pulumi.Input[int] user_id: The id of the user.
         """
@@ -30,7 +30,7 @@ class ProjectMembershipArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Input[str]:
         """
-        One of five levels of access to the project.
+        The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
         """
         return pulumi.get(self, "access_level")
 
@@ -71,7 +71,7 @@ class _ProjectMembershipState:
                  user_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering ProjectMembership resources.
-        :param pulumi.Input[str] access_level: One of five levels of access to the project.
+        :param pulumi.Input[str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
         :param pulumi.Input[str] project_id: The id of the project.
         :param pulumi.Input[int] user_id: The id of the user.
         """
@@ -86,7 +86,7 @@ class _ProjectMembershipState:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[str]]:
         """
-        One of five levels of access to the project.
+        The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
         """
         return pulumi.get(self, "access_level")
 
@@ -129,8 +129,6 @@ class ProjectMembership(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        ## # gitlab\_project_membership
-
         This resource allows you to add a current user to an existing project with a set access level.
 
         ## Example Usage
@@ -151,7 +149,7 @@ class ProjectMembership(pulumi.CustomResource):
 
         ## Import
 
-        GitLab project membership can be imported using an id made up of `project_id:user_id`, e.g.
+        # GitLab project membership can be imported using an id made up of `project_id:user_id`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/projectMembership:ProjectMembership test "12345:1337"
@@ -159,7 +157,7 @@ class ProjectMembership(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_level: One of five levels of access to the project.
+        :param pulumi.Input[str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
         :param pulumi.Input[str] project_id: The id of the project.
         :param pulumi.Input[int] user_id: The id of the user.
         """
@@ -170,8 +168,6 @@ class ProjectMembership(pulumi.CustomResource):
                  args: ProjectMembershipArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # gitlab\_project_membership
-
         This resource allows you to add a current user to an existing project with a set access level.
 
         ## Example Usage
@@ -192,7 +188,7 @@ class ProjectMembership(pulumi.CustomResource):
 
         ## Import
 
-        GitLab project membership can be imported using an id made up of `project_id:user_id`, e.g.
+        # GitLab project membership can be imported using an id made up of `project_id:user_id`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/projectMembership:ProjectMembership test "12345:1337"
@@ -257,7 +253,7 @@ class ProjectMembership(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_level: One of five levels of access to the project.
+        :param pulumi.Input[str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
         :param pulumi.Input[str] project_id: The id of the project.
         :param pulumi.Input[int] user_id: The id of the user.
         """
@@ -274,7 +270,7 @@ class ProjectMembership(pulumi.CustomResource):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Output[str]:
         """
-        One of five levels of access to the project.
+        The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
         """
         return pulumi.get(self, "access_level")
 

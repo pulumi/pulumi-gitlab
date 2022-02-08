@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # gitlab\_project\_share\_group
- *
  * This resource allows you to share a project with a group
  *
  * ## Example Usage
@@ -16,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const test = new gitlab.ProjectShareGroup("test", {
- *     accessLevel: "guest",
+ *     groupAccess: "guest",
  *     groupId: 1337,
  *     projectId: "12345",
  * });
@@ -24,7 +22,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
+ * # GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/projectShareGroup:ProjectShareGroup test 12345:1337
@@ -59,9 +57,15 @@ export class ProjectShareGroup extends pulumi.CustomResource {
     }
 
     /**
-     * One of five levels of access to the project.
+     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+     *
+     * @deprecated Use `group_access` instead of the `access_level` attribute.
      */
-    public readonly accessLevel!: pulumi.Output<string>;
+    public readonly accessLevel!: pulumi.Output<string | undefined>;
+    /**
+     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+     */
+    public readonly groupAccess!: pulumi.Output<string | undefined>;
     /**
      * The id of the group.
      */
@@ -85,13 +89,11 @@ export class ProjectShareGroup extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ProjectShareGroupState | undefined;
             resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
+            resourceInputs["groupAccess"] = state ? state.groupAccess : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
         } else {
             const args = argsOrState as ProjectShareGroupArgs | undefined;
-            if ((!args || args.accessLevel === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accessLevel'");
-            }
             if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
@@ -99,6 +101,7 @@ export class ProjectShareGroup extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectId'");
             }
             resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
+            resourceInputs["groupAccess"] = args ? args.groupAccess : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
         }
@@ -112,9 +115,15 @@ export class ProjectShareGroup extends pulumi.CustomResource {
  */
 export interface ProjectShareGroupState {
     /**
-     * One of five levels of access to the project.
+     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+     *
+     * @deprecated Use `group_access` instead of the `access_level` attribute.
      */
     accessLevel?: pulumi.Input<string>;
+    /**
+     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+     */
+    groupAccess?: pulumi.Input<string>;
     /**
      * The id of the group.
      */
@@ -130,9 +139,15 @@ export interface ProjectShareGroupState {
  */
 export interface ProjectShareGroupArgs {
     /**
-     * One of five levels of access to the project.
+     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+     *
+     * @deprecated Use `group_access` instead of the `access_level` attribute.
      */
-    accessLevel: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string>;
+    /**
+     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+     */
+    groupAccess?: pulumi.Input<string>;
     /**
      * The id of the group.
      */

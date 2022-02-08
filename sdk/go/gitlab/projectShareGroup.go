@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_project\_share\_group
-//
 // This resource allows you to share a project with a group
 //
 // ## Example Usage
@@ -28,7 +26,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := gitlab.NewProjectShareGroup(ctx, "test", &gitlab.ProjectShareGroupArgs{
-// 			AccessLevel: pulumi.String("guest"),
+// 			GroupAccess: pulumi.String("guest"),
 // 			GroupId:     pulumi.Int(1337),
 // 			ProjectId:   pulumi.String("12345"),
 // 		})
@@ -42,7 +40,7 @@ import (
 //
 // ## Import
 //
-// GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
+// # GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
 //
 // ```sh
 //  $ pulumi import gitlab:index/projectShareGroup:ProjectShareGroup test 12345:1337
@@ -50,8 +48,12 @@ import (
 type ProjectShareGroup struct {
 	pulumi.CustomResourceState
 
-	// One of five levels of access to the project.
-	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
+	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+	//
+	// Deprecated: Use `group_access` instead of the `access_level` attribute.
+	AccessLevel pulumi.StringPtrOutput `pulumi:"accessLevel"`
+	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+	GroupAccess pulumi.StringPtrOutput `pulumi:"groupAccess"`
 	// The id of the group.
 	GroupId pulumi.IntOutput `pulumi:"groupId"`
 	// The id of the project.
@@ -65,9 +67,6 @@ func NewProjectShareGroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccessLevel == nil {
-		return nil, errors.New("invalid value for required argument 'AccessLevel'")
-	}
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
@@ -96,8 +95,12 @@ func GetProjectShareGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectShareGroup resources.
 type projectShareGroupState struct {
-	// One of five levels of access to the project.
+	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+	//
+	// Deprecated: Use `group_access` instead of the `access_level` attribute.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+	GroupAccess *string `pulumi:"groupAccess"`
 	// The id of the group.
 	GroupId *int `pulumi:"groupId"`
 	// The id of the project.
@@ -105,8 +108,12 @@ type projectShareGroupState struct {
 }
 
 type ProjectShareGroupState struct {
-	// One of five levels of access to the project.
+	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+	//
+	// Deprecated: Use `group_access` instead of the `access_level` attribute.
 	AccessLevel pulumi.StringPtrInput
+	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+	GroupAccess pulumi.StringPtrInput
 	// The id of the group.
 	GroupId pulumi.IntPtrInput
 	// The id of the project.
@@ -118,8 +125,12 @@ func (ProjectShareGroupState) ElementType() reflect.Type {
 }
 
 type projectShareGroupArgs struct {
-	// One of five levels of access to the project.
-	AccessLevel string `pulumi:"accessLevel"`
+	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+	//
+	// Deprecated: Use `group_access` instead of the `access_level` attribute.
+	AccessLevel *string `pulumi:"accessLevel"`
+	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+	GroupAccess *string `pulumi:"groupAccess"`
 	// The id of the group.
 	GroupId int `pulumi:"groupId"`
 	// The id of the project.
@@ -128,8 +139,12 @@ type projectShareGroupArgs struct {
 
 // The set of arguments for constructing a ProjectShareGroup resource.
 type ProjectShareGroupArgs struct {
-	// One of five levels of access to the project.
-	AccessLevel pulumi.StringInput
+	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+	//
+	// Deprecated: Use `group_access` instead of the `access_level` attribute.
+	AccessLevel pulumi.StringPtrInput
+	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+	GroupAccess pulumi.StringPtrInput
 	// The id of the group.
 	GroupId pulumi.IntInput
 	// The id of the project.

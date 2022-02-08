@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_deploy\_key\_enable
-    /// 
     /// This resource allows you to enable pre-existing deploy keys for your GitLab projects.
     /// 
     /// &gt; **NOTE**: the GITLAB KEY_ID for the deploy key must be known
@@ -37,15 +35,15 @@ namespace Pulumi.GitLab
     ///         // Upload a deployment key for the parent repo
     ///         var parentDeployKey = new GitLab.DeployKey("parentDeployKey", new GitLab.DeployKeyArgs
     ///         {
-    ///             Key = "ssh-rsa AAAA...",
     ///             Project = parentProject.Id,
     ///             Title = "Example deploy key",
+    ///             Key = "ssh-rsa AAAA...",
     ///         });
     ///         // Enable the deployment key on the second repo
     ///         var fooDeployKeyEnable = new GitLab.DeployKeyEnable("fooDeployKeyEnable", new GitLab.DeployKeyEnableArgs
     ///         {
-    ///             KeyId = parentDeployKey.Id,
     ///             Project = fooProject.Id,
+    ///             KeyId = parentDeployKey.Id,
     ///         });
     ///     }
     /// 
@@ -54,7 +52,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+    /// # GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
@@ -63,9 +61,15 @@ namespace Pulumi.GitLab
     [GitLabResourceType("gitlab:index/deployKeyEnable:DeployKeyEnable")]
     public partial class DeployKeyEnable : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Can deploy key push to the project’s repository.
+        /// </summary>
         [Output("canPush")]
         public Output<bool> CanPush { get; private set; } = null!;
 
+        /// <summary>
+        /// Deploy key.
+        /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
 
@@ -81,6 +85,9 @@ namespace Pulumi.GitLab
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Deploy key's title.
+        /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
 
@@ -130,9 +137,15 @@ namespace Pulumi.GitLab
 
     public sealed class DeployKeyEnableArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Can deploy key push to the project’s repository.
+        /// </summary>
         [Input("canPush")]
         public Input<bool>? CanPush { get; set; }
 
+        /// <summary>
+        /// Deploy key.
+        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
@@ -148,6 +161,9 @@ namespace Pulumi.GitLab
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Deploy key's title.
+        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 
@@ -158,9 +174,15 @@ namespace Pulumi.GitLab
 
     public sealed class DeployKeyEnableState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Can deploy key push to the project’s repository.
+        /// </summary>
         [Input("canPush")]
         public Input<bool>? CanPush { get; set; }
 
+        /// <summary>
+        /// Deploy key.
+        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
@@ -176,6 +198,9 @@ namespace Pulumi.GitLab
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Deploy key's title.
+        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 

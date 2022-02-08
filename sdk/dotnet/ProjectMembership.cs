@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_project_membership
-    /// 
     /// This resource allows you to add a current user to an existing project with a set access level.
     /// 
     /// ## Example Usage
@@ -43,7 +41,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// GitLab project membership can be imported using an id made up of `project_id:user_id`, e.g.
+    /// # GitLab project membership can be imported using an id made up of `project_id:user_id`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectMembership:ProjectMembership test "12345:1337"
@@ -53,7 +51,7 @@ namespace Pulumi.GitLab
     public partial class ProjectMembership : Pulumi.CustomResource
     {
         /// <summary>
-        /// One of five levels of access to the project.
+        /// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -117,7 +115,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectMembershipArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// One of five levels of access to the project.
+        /// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
         /// </summary>
         [Input("accessLevel", required: true)]
         public Input<string> AccessLevel { get; set; } = null!;
@@ -142,7 +140,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectMembershipState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// One of five levels of access to the project.
+        /// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }

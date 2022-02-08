@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # gitlab\_deploy\_key\_enable
-//
 // This resource allows you to enable pre-existing deploy keys for your GitLab projects.
 //
 // > **NOTE**: the GITLAB KEY_ID for the deploy key must be known
@@ -38,16 +36,16 @@ import (
 // 			return err
 // 		}
 // 		parentDeployKey, err := gitlab.NewDeployKey(ctx, "parentDeployKey", &gitlab.DeployKeyArgs{
-// 			Key:     pulumi.String("ssh-rsa AAAA..."),
 // 			Project: parentProject.ID(),
 // 			Title:   pulumi.String("Example deploy key"),
+// 			Key:     pulumi.String("ssh-rsa AAAA..."),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = gitlab.NewDeployKeyEnable(ctx, "fooDeployKeyEnable", &gitlab.DeployKeyEnableArgs{
-// 			KeyId:   parentDeployKey.ID(),
 // 			Project: fooProject.ID(),
+// 			KeyId:   parentDeployKey.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -59,7 +57,7 @@ import (
 //
 // ## Import
 //
-// GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+// # GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
 //
 // ```sh
 //  $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
@@ -67,13 +65,16 @@ import (
 type DeployKeyEnable struct {
 	pulumi.CustomResourceState
 
-	CanPush pulumi.BoolOutput   `pulumi:"canPush"`
-	Key     pulumi.StringOutput `pulumi:"key"`
+	// Can deploy key push to the project’s repository.
+	CanPush pulumi.BoolOutput `pulumi:"canPush"`
+	// Deploy key.
+	Key pulumi.StringOutput `pulumi:"key"`
 	// The Gitlab key id for the pre-existing deploy key
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
 	// The name or id of the project to add the deploy key to.
 	Project pulumi.StringOutput `pulumi:"project"`
-	Title   pulumi.StringOutput `pulumi:"title"`
+	// Deploy key's title.
+	Title pulumi.StringOutput `pulumi:"title"`
 }
 
 // NewDeployKeyEnable registers a new resource with the given unique name, arguments, and options.
@@ -111,23 +112,29 @@ func GetDeployKeyEnable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DeployKeyEnable resources.
 type deployKeyEnableState struct {
-	CanPush *bool   `pulumi:"canPush"`
-	Key     *string `pulumi:"key"`
+	// Can deploy key push to the project’s repository.
+	CanPush *bool `pulumi:"canPush"`
+	// Deploy key.
+	Key *string `pulumi:"key"`
 	// The Gitlab key id for the pre-existing deploy key
 	KeyId *string `pulumi:"keyId"`
 	// The name or id of the project to add the deploy key to.
 	Project *string `pulumi:"project"`
-	Title   *string `pulumi:"title"`
+	// Deploy key's title.
+	Title *string `pulumi:"title"`
 }
 
 type DeployKeyEnableState struct {
+	// Can deploy key push to the project’s repository.
 	CanPush pulumi.BoolPtrInput
-	Key     pulumi.StringPtrInput
+	// Deploy key.
+	Key pulumi.StringPtrInput
 	// The Gitlab key id for the pre-existing deploy key
 	KeyId pulumi.StringPtrInput
 	// The name or id of the project to add the deploy key to.
 	Project pulumi.StringPtrInput
-	Title   pulumi.StringPtrInput
+	// Deploy key's title.
+	Title pulumi.StringPtrInput
 }
 
 func (DeployKeyEnableState) ElementType() reflect.Type {
@@ -135,24 +142,30 @@ func (DeployKeyEnableState) ElementType() reflect.Type {
 }
 
 type deployKeyEnableArgs struct {
-	CanPush *bool   `pulumi:"canPush"`
-	Key     *string `pulumi:"key"`
+	// Can deploy key push to the project’s repository.
+	CanPush *bool `pulumi:"canPush"`
+	// Deploy key.
+	Key *string `pulumi:"key"`
 	// The Gitlab key id for the pre-existing deploy key
 	KeyId string `pulumi:"keyId"`
 	// The name or id of the project to add the deploy key to.
-	Project string  `pulumi:"project"`
-	Title   *string `pulumi:"title"`
+	Project string `pulumi:"project"`
+	// Deploy key's title.
+	Title *string `pulumi:"title"`
 }
 
 // The set of arguments for constructing a DeployKeyEnable resource.
 type DeployKeyEnableArgs struct {
+	// Can deploy key push to the project’s repository.
 	CanPush pulumi.BoolPtrInput
-	Key     pulumi.StringPtrInput
+	// Deploy key.
+	Key pulumi.StringPtrInput
 	// The Gitlab key id for the pre-existing deploy key
 	KeyId pulumi.StringInput
 	// The name or id of the project to add the deploy key to.
 	Project pulumi.StringInput
-	Title   pulumi.StringPtrInput
+	// Deploy key's title.
+	Title pulumi.StringPtrInput
 }
 
 func (DeployKeyEnableArgs) ElementType() reflect.Type {

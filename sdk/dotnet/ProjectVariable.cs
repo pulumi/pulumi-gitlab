@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## # gitlab\_project\_variable
-    /// 
     /// This resource allows you to create and manage CI/CD variables for your GitLab projects.
     /// For further information on variables, consult the [gitlab
     /// documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
@@ -45,7 +43,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.
+    /// # GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectVariable:ProjectVariable example '12345:project_variable_key:*'
@@ -73,7 +71,7 @@ namespace Pulumi.GitLab
         public Output<bool?> Masked { get; private set; } = null!;
 
         /// <summary>
-        /// The name or id of the project to add the hook to.
+        /// The name or id of the project.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -161,7 +159,7 @@ namespace Pulumi.GitLab
         public Input<bool>? Masked { get; set; }
 
         /// <summary>
-        /// The name or id of the project to add the hook to.
+        /// The name or id of the project.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -210,7 +208,7 @@ namespace Pulumi.GitLab
         public Input<bool>? Masked { get; set; }
 
         /// <summary>
-        /// The name or id of the project to add the hook to.
+        /// The name or id of the project.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

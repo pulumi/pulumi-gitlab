@@ -40,7 +40,7 @@ class ServiceSlackArgs:
         The set of arguments for constructing a ServiceSlack resource.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[str] webhook: Webhook URL (ex.: https://hooks.slack.com/services/...)
-        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
@@ -51,7 +51,7 @@ class ServiceSlackArgs:
         :param pulumi.Input[str] note_channel: The name of the channel to receive note events notifications.
         :param pulumi.Input[bool] note_events: Enable notifications for note events.
         :param pulumi.Input[bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
-        :param pulumi.Input[bool] notify_only_default_branch: DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.
+        :param pulumi.Input[bool] notify_only_default_branch: This parameter has been replaced with `branches_to_be_notified`.
         :param pulumi.Input[str] pipeline_channel: The name of the channel to receive pipeline events notifications.
         :param pulumi.Input[bool] pipeline_events: Enable notifications for pipeline events.
         :param pulumi.Input[str] push_channel: The name of the channel to receive push events notifications.
@@ -138,7 +138,7 @@ class ServiceSlackArgs:
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> Optional[pulumi.Input[str]]:
         """
-        Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
+        Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         """
         return pulumi.get(self, "branches_to_be_notified")
 
@@ -270,7 +270,7 @@ class ServiceSlackArgs:
     @pulumi.getter(name="notifyOnlyDefaultBranch")
     def notify_only_default_branch(self) -> Optional[pulumi.Input[bool]]:
         """
-        DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.
+        This parameter has been replaced with `branches_to_be_notified`.
         """
         return pulumi.get(self, "notify_only_default_branch")
 
@@ -416,18 +416,19 @@ class _ServiceSlackState:
                  wiki_page_events: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering ServiceSlack resources.
-        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[str] issue_channel: The name of the channel to receive issue events notifications.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
+        :param pulumi.Input[bool] job_events: Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
         :param pulumi.Input[str] merge_request_channel: The name of the channel to receive merge request events notifications.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge requests events.
         :param pulumi.Input[str] note_channel: The name of the channel to receive note events notifications.
         :param pulumi.Input[bool] note_events: Enable notifications for note events.
         :param pulumi.Input[bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
-        :param pulumi.Input[bool] notify_only_default_branch: DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.
+        :param pulumi.Input[bool] notify_only_default_branch: This parameter has been replaced with `branches_to_be_notified`.
         :param pulumi.Input[str] pipeline_channel: The name of the channel to receive pipeline events notifications.
         :param pulumi.Input[bool] pipeline_events: Enable notifications for pipeline events.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
@@ -496,7 +497,7 @@ class _ServiceSlackState:
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> Optional[pulumi.Input[str]]:
         """
-        Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
+        Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         """
         return pulumi.get(self, "branches_to_be_notified")
 
@@ -567,6 +568,9 @@ class _ServiceSlackState:
     @property
     @pulumi.getter(name="jobEvents")
     def job_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+        """
         return pulumi.get(self, "job_events")
 
     @job_events.setter
@@ -637,7 +641,7 @@ class _ServiceSlackState:
     @pulumi.getter(name="notifyOnlyDefaultBranch")
     def notify_only_default_branch(self) -> Optional[pulumi.Input[bool]]:
         """
-        DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.
+        This parameter has been replaced with `branches_to_be_notified`.
         """
         return pulumi.get(self, "notify_only_default_branch")
 
@@ -808,10 +812,36 @@ class ServiceSlack(pulumi.CustomResource):
                  wiki_page_events: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a ServiceSlack resource with the given unique name, props, and options.
+        This resource allows you to manage Slack notifications integration.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        slack = gitlab.ServiceSlack("slack",
+            project=awesome_project.id,
+            webhook="https://webhook.com",
+            username="myuser",
+            push_events=True,
+            push_channel="push_chan")
+        ```
+
+        ## Import
+
+        # You can import a gitlab_service_slack.slack state using the project ID, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/serviceSlack:ServiceSlack email 1
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
@@ -822,7 +852,7 @@ class ServiceSlack(pulumi.CustomResource):
         :param pulumi.Input[str] note_channel: The name of the channel to receive note events notifications.
         :param pulumi.Input[bool] note_events: Enable notifications for note events.
         :param pulumi.Input[bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
-        :param pulumi.Input[bool] notify_only_default_branch: DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.
+        :param pulumi.Input[bool] notify_only_default_branch: This parameter has been replaced with `branches_to_be_notified`.
         :param pulumi.Input[str] pipeline_channel: The name of the channel to receive pipeline events notifications.
         :param pulumi.Input[bool] pipeline_events: Enable notifications for pipeline events.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
@@ -842,7 +872,33 @@ class ServiceSlack(pulumi.CustomResource):
                  args: ServiceSlackArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ServiceSlack resource with the given unique name, props, and options.
+        This resource allows you to manage Slack notifications integration.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesomeProject",
+            description="My awesome project.",
+            visibility_level="public")
+        slack = gitlab.ServiceSlack("slack",
+            project=awesome_project.id,
+            webhook="https://webhook.com",
+            username="myuser",
+            push_events=True,
+            push_channel="push_chan")
+        ```
+
+        ## Import
+
+        # You can import a gitlab_service_slack.slack state using the project ID, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/serviceSlack:ServiceSlack email 1
+        ```
+
         :param str resource_name: The name of the resource.
         :param ServiceSlackArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -965,18 +1021,19 @@ class ServiceSlack(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[str] issue_channel: The name of the channel to receive issue events notifications.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
+        :param pulumi.Input[bool] job_events: Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
         :param pulumi.Input[str] merge_request_channel: The name of the channel to receive merge request events notifications.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge requests events.
         :param pulumi.Input[str] note_channel: The name of the channel to receive note events notifications.
         :param pulumi.Input[bool] note_events: Enable notifications for note events.
         :param pulumi.Input[bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
-        :param pulumi.Input[bool] notify_only_default_branch: DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.
+        :param pulumi.Input[bool] notify_only_default_branch: This parameter has been replaced with `branches_to_be_notified`.
         :param pulumi.Input[str] pipeline_channel: The name of the channel to receive pipeline events notifications.
         :param pulumi.Input[bool] pipeline_events: Enable notifications for pipeline events.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
@@ -1023,7 +1080,7 @@ class ServiceSlack(pulumi.CustomResource):
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> pulumi.Output[str]:
         """
-        Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
+        Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         """
         return pulumi.get(self, "branches_to_be_notified")
 
@@ -1070,6 +1127,9 @@ class ServiceSlack(pulumi.CustomResource):
     @property
     @pulumi.getter(name="jobEvents")
     def job_events(self) -> pulumi.Output[bool]:
+        """
+        Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+        """
         return pulumi.get(self, "job_events")
 
     @property
@@ -1116,7 +1176,7 @@ class ServiceSlack(pulumi.CustomResource):
     @pulumi.getter(name="notifyOnlyDefaultBranch")
     def notify_only_default_branch(self) -> pulumi.Output[bool]:
         """
-        DEPRECATED: This parameter has been replaced with `branches_to_be_notified`.
+        This parameter has been replaced with `branches_to_be_notified`.
         """
         return pulumi.get(self, "notify_only_default_branch")
 

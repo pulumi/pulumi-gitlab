@@ -4,6 +4,36 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * This resource allows you to manage Slack notifications integration.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const awesomeProject = new gitlab.Project("awesomeProject", {
+ *     description: "My awesome project.",
+ *     visibilityLevel: "public",
+ * });
+ * const slack = new gitlab.ServiceSlack("slack", {
+ *     project: awesomeProject.id,
+ *     webhook: "https://webhook.com",
+ *     username: "myuser",
+ *     pushEvents: true,
+ *     pushChannel: "push_chan",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * # You can import a gitlab_service_slack.slack state using the project ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/serviceSlack:ServiceSlack email 1
+ * ```
+ */
 export class ServiceSlack extends pulumi.CustomResource {
     /**
      * Get an existing ServiceSlack resource's state with the given name, ID, and optional extra
@@ -33,7 +63,7 @@ export class ServiceSlack extends pulumi.CustomResource {
     }
 
     /**
-     * Branches to send notifications for. Valid options are "all", "default", "protected", and "defaultAndProtected".
+     * Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
      */
     public readonly branchesToBeNotified!: pulumi.Output<string>;
     /**
@@ -56,6 +86,9 @@ export class ServiceSlack extends pulumi.CustomResource {
      * Enable notifications for issues events.
      */
     public readonly issuesEvents!: pulumi.Output<boolean>;
+    /**
+     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+     */
     public /*out*/ readonly jobEvents!: pulumi.Output<boolean>;
     /**
      * The name of the channel to receive merge request events notifications.
@@ -78,7 +111,7 @@ export class ServiceSlack extends pulumi.CustomResource {
      */
     public readonly notifyOnlyBrokenPipelines!: pulumi.Output<boolean>;
     /**
-     * DEPRECATED: This parameter has been replaced with `branchesToBeNotified`.
+     * This parameter has been replaced with `branchesToBeNotified`.
      *
      * @deprecated use 'branches_to_be_notified' argument instead
      */
@@ -208,7 +241,7 @@ export class ServiceSlack extends pulumi.CustomResource {
  */
 export interface ServiceSlackState {
     /**
-     * Branches to send notifications for. Valid options are "all", "default", "protected", and "defaultAndProtected".
+     * Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
      */
     branchesToBeNotified?: pulumi.Input<string>;
     /**
@@ -231,6 +264,9 @@ export interface ServiceSlackState {
      * Enable notifications for issues events.
      */
     issuesEvents?: pulumi.Input<boolean>;
+    /**
+     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+     */
     jobEvents?: pulumi.Input<boolean>;
     /**
      * The name of the channel to receive merge request events notifications.
@@ -253,7 +289,7 @@ export interface ServiceSlackState {
      */
     notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
     /**
-     * DEPRECATED: This parameter has been replaced with `branchesToBeNotified`.
+     * This parameter has been replaced with `branchesToBeNotified`.
      *
      * @deprecated use 'branches_to_be_notified' argument instead
      */
@@ -309,7 +345,7 @@ export interface ServiceSlackState {
  */
 export interface ServiceSlackArgs {
     /**
-     * Branches to send notifications for. Valid options are "all", "default", "protected", and "defaultAndProtected".
+     * Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
      */
     branchesToBeNotified?: pulumi.Input<string>;
     /**
@@ -353,7 +389,7 @@ export interface ServiceSlackArgs {
      */
     notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
     /**
-     * DEPRECATED: This parameter has been replaced with `branchesToBeNotified`.
+     * This parameter has been replaced with `branchesToBeNotified`.
      *
      * @deprecated use 'branches_to_be_notified' argument instead
      */
