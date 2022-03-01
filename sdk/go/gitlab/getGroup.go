@@ -26,9 +26,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "foo/bar"
 // 		_, err := gitlab.LookupGroup(ctx, &GetGroupArgs{
-// 			FullPath: &opt0,
+// 			FullPath: pulumi.StringRef("foo/bar"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

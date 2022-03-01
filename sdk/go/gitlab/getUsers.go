@@ -26,20 +26,16 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "2019-01-01"
-// 		opt1 := "name"
-// 		opt2 := "desc"
 // 		_, err := gitlab.GetUsers(ctx, &GetUsersArgs{
-// 			CreatedBefore: &opt0,
-// 			OrderBy:       &opt1,
-// 			Sort:          &opt2,
+// 			CreatedBefore: pulumi.StringRef("2019-01-01"),
+// 			OrderBy:       pulumi.StringRef("name"),
+// 			Sort:          pulumi.StringRef("desc"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt3 := "username"
 // 		_, err = gitlab.GetUsers(ctx, &GetUsersArgs{
-// 			Search: &opt3,
+// 			Search: pulumi.StringRef("username"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

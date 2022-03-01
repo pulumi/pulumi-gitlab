@@ -28,31 +28,24 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "mygroup"
 // 		mygroup, err := gitlab.LookupGroup(ctx, &GetGroupArgs{
-// 			FullPath: &opt0,
+// 			FullPath: pulumi.StringRef("mygroup"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := mygroup.Id
-// 		opt2 := "name"
-// 		opt3 := true
-// 		opt4 := false
 // 		_, err = gitlab.GetProjects(ctx, &GetProjectsArgs{
-// 			GroupId:          &opt1,
-// 			OrderBy:          &opt2,
-// 			IncludeSubgroups: &opt3,
-// 			WithShared:       &opt4,
+// 			GroupId:          pulumi.IntRef(mygroup.Id),
+// 			OrderBy:          pulumi.StringRef("name"),
+// 			IncludeSubgroups: pulumi.BoolRef(true),
+// 			WithShared:       pulumi.BoolRef(false),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt5 := "postgresql"
-// 		opt6 := "private"
 // 		_, err = gitlab.GetProjects(ctx, &GetProjectsArgs{
-// 			Search:     &opt5,
-// 			Visibility: &opt6,
+// 			Search:     pulumi.StringRef("postgresql"),
+// 			Visibility: pulumi.StringRef("private"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
