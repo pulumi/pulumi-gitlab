@@ -23,7 +23,8 @@ class UserArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  projects_limit: Optional[pulumi.Input[int]] = None,
                  reset_password: Optional[pulumi.Input[bool]] = None,
-                 skip_confirmation: Optional[pulumi.Input[bool]] = None):
+                 skip_confirmation: Optional[pulumi.Input[bool]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a User resource.
         :param pulumi.Input[str] email: The e-mail address of the user.
@@ -37,6 +38,7 @@ class UserArgs:
         :param pulumi.Input[int] projects_limit: Integer, defaults to 0.  Number of projects user can create.
         :param pulumi.Input[bool] reset_password: Boolean, defaults to false. Send user password reset link.
         :param pulumi.Input[bool] skip_confirmation: Boolean, defaults to true. Whether to skip confirmation.
+        :param pulumi.Input[str] state: String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "username", username)
@@ -58,6 +60,8 @@ class UserArgs:
             pulumi.set(__self__, "reset_password", reset_password)
         if skip_confirmation is not None:
             pulumi.set(__self__, "skip_confirmation", skip_confirmation)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -191,6 +195,18 @@ class UserArgs:
     def skip_confirmation(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "skip_confirmation", value)
 
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
 
 @pulumi.input_type
 class _UserState:
@@ -205,6 +221,7 @@ class _UserState:
                  projects_limit: Optional[pulumi.Input[int]] = None,
                  reset_password: Optional[pulumi.Input[bool]] = None,
                  skip_confirmation: Optional[pulumi.Input[bool]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering User resources.
@@ -218,6 +235,7 @@ class _UserState:
         :param pulumi.Input[int] projects_limit: Integer, defaults to 0.  Number of projects user can create.
         :param pulumi.Input[bool] reset_password: Boolean, defaults to false. Send user password reset link.
         :param pulumi.Input[bool] skip_confirmation: Boolean, defaults to true. Whether to skip confirmation.
+        :param pulumi.Input[str] state: String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
         :param pulumi.Input[str] username: The username of the user.
         """
         if can_create_group is not None:
@@ -240,6 +258,8 @@ class _UserState:
             pulumi.set(__self__, "reset_password", reset_password)
         if skip_confirmation is not None:
             pulumi.set(__self__, "skip_confirmation", skip_confirmation)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -365,6 +385,18 @@ class _UserState:
 
     @property
     @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
         The username of the user.
@@ -391,6 +423,7 @@ class User(pulumi.CustomResource):
                  projects_limit: Optional[pulumi.Input[int]] = None,
                  reset_password: Optional[pulumi.Input[bool]] = None,
                  skip_confirmation: Optional[pulumi.Input[bool]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -440,6 +473,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[int] projects_limit: Integer, defaults to 0.  Number of projects user can create.
         :param pulumi.Input[bool] reset_password: Boolean, defaults to false. Send user password reset link.
         :param pulumi.Input[bool] skip_confirmation: Boolean, defaults to true. Whether to skip confirmation.
+        :param pulumi.Input[str] state: String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
         :param pulumi.Input[str] username: The username of the user.
         """
         ...
@@ -508,6 +542,7 @@ class User(pulumi.CustomResource):
                  projects_limit: Optional[pulumi.Input[int]] = None,
                  reset_password: Optional[pulumi.Input[bool]] = None,
                  skip_confirmation: Optional[pulumi.Input[bool]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -533,6 +568,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["projects_limit"] = projects_limit
             __props__.__dict__["reset_password"] = reset_password
             __props__.__dict__["skip_confirmation"] = skip_confirmation
+            __props__.__dict__["state"] = state
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
@@ -556,6 +592,7 @@ class User(pulumi.CustomResource):
             projects_limit: Optional[pulumi.Input[int]] = None,
             reset_password: Optional[pulumi.Input[bool]] = None,
             skip_confirmation: Optional[pulumi.Input[bool]] = None,
+            state: Optional[pulumi.Input[str]] = None,
             username: Optional[pulumi.Input[str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
@@ -574,6 +611,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[int] projects_limit: Integer, defaults to 0.  Number of projects user can create.
         :param pulumi.Input[bool] reset_password: Boolean, defaults to false. Send user password reset link.
         :param pulumi.Input[bool] skip_confirmation: Boolean, defaults to true. Whether to skip confirmation.
+        :param pulumi.Input[str] state: String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
         :param pulumi.Input[str] username: The username of the user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -590,6 +628,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["projects_limit"] = projects_limit
         __props__.__dict__["reset_password"] = reset_password
         __props__.__dict__["skip_confirmation"] = skip_confirmation
+        __props__.__dict__["state"] = state
         __props__.__dict__["username"] = username
         return User(resource_name, opts=opts, __props__=__props__)
 
@@ -672,6 +711,14 @@ class User(pulumi.CustomResource):
         Boolean, defaults to true. Whether to skip confirmation.
         """
         return pulumi.get(self, "skip_confirmation")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[Optional[str]]:
+        """
+        String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
+        """
+        return pulumi.get(self, "state")
 
     @property
     @pulumi.getter

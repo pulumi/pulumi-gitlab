@@ -80,6 +80,8 @@ type User struct {
 	ResetPassword pulumi.BoolPtrOutput `pulumi:"resetPassword"`
 	// Boolean, defaults to true. Whether to skip confirmation.
 	SkipConfirmation pulumi.BoolPtrOutput `pulumi:"skipConfirmation"`
+	// String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
+	State pulumi.StringPtrOutput `pulumi:"state"`
 	// The username of the user.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
@@ -139,6 +141,8 @@ type userState struct {
 	ResetPassword *bool `pulumi:"resetPassword"`
 	// Boolean, defaults to true. Whether to skip confirmation.
 	SkipConfirmation *bool `pulumi:"skipConfirmation"`
+	// String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
+	State *string `pulumi:"state"`
 	// The username of the user.
 	Username *string `pulumi:"username"`
 }
@@ -164,6 +168,8 @@ type UserState struct {
 	ResetPassword pulumi.BoolPtrInput
 	// Boolean, defaults to true. Whether to skip confirmation.
 	SkipConfirmation pulumi.BoolPtrInput
+	// String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
+	State pulumi.StringPtrInput
 	// The username of the user.
 	Username pulumi.StringPtrInput
 }
@@ -193,6 +199,8 @@ type userArgs struct {
 	ResetPassword *bool `pulumi:"resetPassword"`
 	// Boolean, defaults to true. Whether to skip confirmation.
 	SkipConfirmation *bool `pulumi:"skipConfirmation"`
+	// String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
+	State *string `pulumi:"state"`
 	// The username of the user.
 	Username string `pulumi:"username"`
 }
@@ -219,6 +227,8 @@ type UserArgs struct {
 	ResetPassword pulumi.BoolPtrInput
 	// Boolean, defaults to true. Whether to skip confirmation.
 	SkipConfirmation pulumi.BoolPtrInput
+	// String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
+	State pulumi.StringPtrInput
 	// The username of the user.
 	Username pulumi.StringInput
 }

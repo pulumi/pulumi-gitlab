@@ -68,7 +68,7 @@ namespace Pulumi.GitLab
         public Output<bool?> MergeRequestsAuthorApproval { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
+        /// Set to `true` if you want to prevent approval of merge requests by merge request committers.
         /// </summary>
         [Output("mergeRequestsDisableCommittersApproval")]
         public Output<bool?> MergeRequestsDisableCommittersApproval { get; private set; } = null!;
@@ -78,6 +78,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("projectId")]
         public Output<int> ProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// Set to `true` if you want to require authentication when approving a merge request.
+        /// </summary>
+        [Output("requirePasswordToApprove")]
+        public Output<bool?> RequirePasswordToApprove { get; private set; } = null!;
 
         /// <summary>
         /// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
@@ -144,7 +150,7 @@ namespace Pulumi.GitLab
         public Input<bool>? MergeRequestsAuthorApproval { get; set; }
 
         /// <summary>
-        /// Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
+        /// Set to `true` if you want to prevent approval of merge requests by merge request committers.
         /// </summary>
         [Input("mergeRequestsDisableCommittersApproval")]
         public Input<bool>? MergeRequestsDisableCommittersApproval { get; set; }
@@ -154,6 +160,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("projectId", required: true)]
         public Input<int> ProjectId { get; set; } = null!;
+
+        /// <summary>
+        /// Set to `true` if you want to require authentication when approving a merge request.
+        /// </summary>
+        [Input("requirePasswordToApprove")]
+        public Input<bool>? RequirePasswordToApprove { get; set; }
 
         /// <summary>
         /// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
@@ -181,7 +193,7 @@ namespace Pulumi.GitLab
         public Input<bool>? MergeRequestsAuthorApproval { get; set; }
 
         /// <summary>
-        /// Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
+        /// Set to `true` if you want to prevent approval of merge requests by merge request committers.
         /// </summary>
         [Input("mergeRequestsDisableCommittersApproval")]
         public Input<bool>? MergeRequestsDisableCommittersApproval { get; set; }
@@ -191,6 +203,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("projectId")]
         public Input<int>? ProjectId { get; set; }
+
+        /// <summary>
+        /// Set to `true` if you want to require authentication when approving a merge request.
+        /// </summary>
+        [Input("requirePasswordToApprove")]
+        public Input<bool>? RequirePasswordToApprove { get; set; }
 
         /// <summary>
         /// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.

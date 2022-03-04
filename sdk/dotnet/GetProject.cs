@@ -142,9 +142,17 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool LfsEnabled;
         /// <summary>
+        /// Enable or disable merge pipelines.
+        /// </summary>
+        public readonly bool MergePipelinesEnabled;
+        /// <summary>
         /// Enable merge requests for the project.
         /// </summary>
         public readonly bool MergeRequestsEnabled;
+        /// <summary>
+        /// Enable or disable merge trains.
+        /// </summary>
+        public readonly bool MergeTrainsEnabled;
         /// <summary>
         /// The name of the project.
         /// </summary>
@@ -165,6 +173,10 @@ namespace Pulumi.GitLab
         /// Enable pipelines for the project.
         /// </summary>
         public readonly bool PipelinesEnabled;
+        /// <summary>
+        /// Show link to create/view merge request when pushing from the command line
+        /// </summary>
+        public readonly bool PrintingMergeRequestLinkEnabled;
         /// <summary>
         /// Push rules for the project.
         /// </summary>
@@ -218,7 +230,11 @@ namespace Pulumi.GitLab
 
             bool lfsEnabled,
 
+            bool mergePipelinesEnabled,
+
             bool mergeRequestsEnabled,
+
+            bool mergeTrainsEnabled,
 
             string name,
 
@@ -229,6 +245,8 @@ namespace Pulumi.GitLab
             string pathWithNamespace,
 
             bool pipelinesEnabled,
+
+            bool printingMergeRequestLinkEnabled,
 
             Outputs.GetProjectPushRulesResult pushRules,
 
@@ -255,12 +273,15 @@ namespace Pulumi.GitLab
             Id = id;
             IssuesEnabled = issuesEnabled;
             LfsEnabled = lfsEnabled;
+            MergePipelinesEnabled = mergePipelinesEnabled;
             MergeRequestsEnabled = mergeRequestsEnabled;
+            MergeTrainsEnabled = mergeTrainsEnabled;
             Name = name;
             NamespaceId = namespaceId;
             Path = path;
             PathWithNamespace = pathWithNamespace;
             PipelinesEnabled = pipelinesEnabled;
+            PrintingMergeRequestLinkEnabled = printingMergeRequestLinkEnabled;
             PushRules = pushRules;
             RemoveSourceBranchAfterMerge = removeSourceBranchAfterMerge;
             RequestAccessEnabled = requestAccessEnabled;

@@ -58,6 +58,8 @@ type ServiceJira struct {
 
 	// Whether the integration is active.
 	Active pulumi.BoolOutput `pulumi:"active"`
+	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+	ApiUrl pulumi.StringOutput `pulumi:"apiUrl"`
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
 	CommentOnEventEnabled pulumi.BoolOutput `pulumi:"commentOnEventEnabled"`
 	// Enable notifications for commit events
@@ -139,6 +141,8 @@ func GetServiceJira(ctx *pulumi.Context,
 type serviceJiraState struct {
 	// Whether the integration is active.
 	Active *bool `pulumi:"active"`
+	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+	ApiUrl *string `pulumi:"apiUrl"`
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
 	CommentOnEventEnabled *bool `pulumi:"commentOnEventEnabled"`
 	// Enable notifications for commit events
@@ -180,6 +184,8 @@ type serviceJiraState struct {
 type ServiceJiraState struct {
 	// Whether the integration is active.
 	Active pulumi.BoolPtrInput
+	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+	ApiUrl pulumi.StringPtrInput
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
 	CommentOnEventEnabled pulumi.BoolPtrInput
 	// Enable notifications for commit events
@@ -223,6 +229,8 @@ func (ServiceJiraState) ElementType() reflect.Type {
 }
 
 type serviceJiraArgs struct {
+	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+	ApiUrl *string `pulumi:"apiUrl"`
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
 	CommentOnEventEnabled *bool `pulumi:"commentOnEventEnabled"`
 	// Enable notifications for commit events
@@ -257,6 +265,8 @@ type serviceJiraArgs struct {
 
 // The set of arguments for constructing a ServiceJira resource.
 type ServiceJiraArgs struct {
+	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+	ApiUrl pulumi.StringPtrInput
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
 	CommentOnEventEnabled pulumi.BoolPtrInput
 	// Enable notifications for commit events

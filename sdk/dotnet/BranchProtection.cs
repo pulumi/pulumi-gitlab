@@ -26,6 +26,12 @@ namespace Pulumi.GitLab
     public partial class BranchProtection : Pulumi.CustomResource
     {
         /// <summary>
+        /// Can be set to true to allow users with push access to force push.
+        /// </summary>
+        [Output("allowForcePush")]
+        public Output<bool?> AllowForcePush { get; private set; } = null!;
+
+        /// <summary>
         /// Defines permissions for action.
         /// </summary>
         [Output("allowedToMerges")]
@@ -119,6 +125,12 @@ namespace Pulumi.GitLab
 
     public sealed class BranchProtectionArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Can be set to true to allow users with push access to force push.
+        /// </summary>
+        [Input("allowForcePush")]
+        public Input<bool>? AllowForcePush { get; set; }
+
         [Input("allowedToMerges")]
         private InputList<Inputs.BranchProtectionAllowedToMergeArgs>? _allowedToMerges;
 
@@ -180,6 +192,12 @@ namespace Pulumi.GitLab
 
     public sealed class BranchProtectionState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Can be set to true to allow users with push access to force push.
+        /// </summary>
+        [Input("allowForcePush")]
+        public Input<bool>? AllowForcePush { get; set; }
+
         [Input("allowedToMerges")]
         private InputList<Inputs.BranchProtectionAllowedToMergeGetArgs>? _allowedToMerges;
 

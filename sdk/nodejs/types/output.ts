@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface BranchCommit {
+    authorEmail: string;
+    authorName: string;
+    authoredDate: string;
+    committedDate: string;
+    committerEmail: string;
+    committerName: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    message: string;
+    parentIds: string[];
+    shortId: string;
+    title: string;
+}
+
 export interface BranchProtectionAllowedToMerge {
     /**
      * Level of access.
@@ -40,6 +57,23 @@ export interface BranchProtectionAllowedToPush {
      * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
      */
     userId?: number;
+}
+
+export interface GetBranchCommit {
+    authorEmail: string;
+    authorName: string;
+    authoredDate: string;
+    committedDate: string;
+    committerEmail: string;
+    committerName: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    message: string;
+    parentIds: string[];
+    shortId: string;
+    title: string;
 }
 
 export interface GetGroupMembershipMember {
@@ -124,6 +158,7 @@ export interface GetProjectsProject {
     avatarUrl: string;
     buildCoverageRegex: string;
     ciConfigPath: string;
+    ciForwardDeploymentEnabled: boolean;
     containerRegistryEnabled: boolean;
     createdAt: string;
     creatorId: number;
@@ -144,7 +179,9 @@ export interface GetProjectsProject {
     lastActivityAt: string;
     lfsEnabled: boolean;
     mergeMethod: string;
+    mergePipelinesEnabled: boolean;
     mergeRequestsEnabled: boolean;
+    mergeTrainsEnabled: boolean;
     mirror: boolean;
     mirrorOverwritesDivergedBranches: boolean;
     mirrorTriggerBuilds: boolean;

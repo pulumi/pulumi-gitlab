@@ -5,10 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export * from "./branch";
 export * from "./branchProtection";
 export * from "./deployKey";
 export * from "./deployKeyEnable";
 export * from "./deployToken";
+export * from "./getBranch";
 export * from "./getGroup";
 export * from "./getGroupMembership";
 export * from "./getProject";
@@ -18,6 +20,7 @@ export * from "./getProjects";
 export * from "./getUser";
 export * from "./getUsers";
 export * from "./group";
+export * from "./groupAccessToken";
 export * from "./groupBadge";
 export * from "./groupCluster";
 export * from "./groupCustomAttribute";
@@ -54,8 +57,10 @@ export * from "./serviceMicrosoftTeams";
 export * from "./servicePipelinesEmail";
 export * from "./serviceSlack";
 export * from "./tagProtection";
+export * from "./topic";
 export * from "./user";
 export * from "./userCustomAttribute";
+export * from "./userSshKey";
 
 // Export sub-modules:
 import * as config from "./config";
@@ -67,11 +72,13 @@ export {
 };
 
 // Import resources to register:
+import { Branch } from "./branch";
 import { BranchProtection } from "./branchProtection";
 import { DeployKey } from "./deployKey";
 import { DeployKeyEnable } from "./deployKeyEnable";
 import { DeployToken } from "./deployToken";
 import { Group } from "./group";
+import { GroupAccessToken } from "./groupAccessToken";
 import { GroupBadge } from "./groupBadge";
 import { GroupCluster } from "./groupCluster";
 import { GroupCustomAttribute } from "./groupCustomAttribute";
@@ -107,13 +114,17 @@ import { ServiceMicrosoftTeams } from "./serviceMicrosoftTeams";
 import { ServicePipelinesEmail } from "./servicePipelinesEmail";
 import { ServiceSlack } from "./serviceSlack";
 import { TagProtection } from "./tagProtection";
+import { Topic } from "./topic";
 import { User } from "./user";
 import { UserCustomAttribute } from "./userCustomAttribute";
+import { UserSshKey } from "./userSshKey";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gitlab:index/branch:Branch":
+                return new Branch(name, <any>undefined, { urn })
             case "gitlab:index/branchProtection:BranchProtection":
                 return new BranchProtection(name, <any>undefined, { urn })
             case "gitlab:index/deployKey:DeployKey":
@@ -124,6 +135,8 @@ const _module = {
                 return new DeployToken(name, <any>undefined, { urn })
             case "gitlab:index/group:Group":
                 return new Group(name, <any>undefined, { urn })
+            case "gitlab:index/groupAccessToken:GroupAccessToken":
+                return new GroupAccessToken(name, <any>undefined, { urn })
             case "gitlab:index/groupBadge:GroupBadge":
                 return new GroupBadge(name, <any>undefined, { urn })
             case "gitlab:index/groupCluster:GroupCluster":
@@ -194,20 +207,26 @@ const _module = {
                 return new ServiceSlack(name, <any>undefined, { urn })
             case "gitlab:index/tagProtection:TagProtection":
                 return new TagProtection(name, <any>undefined, { urn })
+            case "gitlab:index/topic:Topic":
+                return new Topic(name, <any>undefined, { urn })
             case "gitlab:index/user:User":
                 return new User(name, <any>undefined, { urn })
             case "gitlab:index/userCustomAttribute:UserCustomAttribute":
                 return new UserCustomAttribute(name, <any>undefined, { urn })
+            case "gitlab:index/userSshKey:UserSshKey":
+                return new UserSshKey(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
+pulumi.runtime.registerResourceModule("gitlab", "index/branch", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/branchProtection", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/deployKey", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/deployKeyEnable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/deployToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/group", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupAccessToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupBadge", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupCustomAttribute", _module)
@@ -243,8 +262,10 @@ pulumi.runtime.registerResourceModule("gitlab", "index/serviceMicrosoftTeams", _
 pulumi.runtime.registerResourceModule("gitlab", "index/servicePipelinesEmail", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/serviceSlack", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/tagProtection", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/topic", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/user", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userCustomAttribute", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/userSshKey", _module)
 
 import { Provider } from "./provider";
 

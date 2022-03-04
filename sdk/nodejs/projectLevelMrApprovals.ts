@@ -73,13 +73,17 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
      */
     public readonly mergeRequestsAuthorApproval!: pulumi.Output<boolean | undefined>;
     /**
-     * Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
+     * Set to `true` if you want to prevent approval of merge requests by merge request committers.
      */
     public readonly mergeRequestsDisableCommittersApproval!: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the project to change MR approval configuration.
      */
     public readonly projectId!: pulumi.Output<number>;
+    /**
+     * Set to `true` if you want to require authentication when approving a merge request.
+     */
+    public readonly requirePasswordToApprove!: pulumi.Output<boolean | undefined>;
     /**
      * Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      */
@@ -102,6 +106,7 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
             resourceInputs["mergeRequestsAuthorApproval"] = state ? state.mergeRequestsAuthorApproval : undefined;
             resourceInputs["mergeRequestsDisableCommittersApproval"] = state ? state.mergeRequestsDisableCommittersApproval : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["requirePasswordToApprove"] = state ? state.requirePasswordToApprove : undefined;
             resourceInputs["resetApprovalsOnPush"] = state ? state.resetApprovalsOnPush : undefined;
         } else {
             const args = argsOrState as ProjectLevelMrApprovalsArgs | undefined;
@@ -112,6 +117,7 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
             resourceInputs["mergeRequestsAuthorApproval"] = args ? args.mergeRequestsAuthorApproval : undefined;
             resourceInputs["mergeRequestsDisableCommittersApproval"] = args ? args.mergeRequestsDisableCommittersApproval : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["requirePasswordToApprove"] = args ? args.requirePasswordToApprove : undefined;
             resourceInputs["resetApprovalsOnPush"] = args ? args.resetApprovalsOnPush : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -132,13 +138,17 @@ export interface ProjectLevelMrApprovalsState {
      */
     mergeRequestsAuthorApproval?: pulumi.Input<boolean>;
     /**
-     * Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
+     * Set to `true` if you want to prevent approval of merge requests by merge request committers.
      */
     mergeRequestsDisableCommittersApproval?: pulumi.Input<boolean>;
     /**
      * The ID of the project to change MR approval configuration.
      */
     projectId?: pulumi.Input<number>;
+    /**
+     * Set to `true` if you want to require authentication when approving a merge request.
+     */
+    requirePasswordToApprove?: pulumi.Input<boolean>;
     /**
      * Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      */
@@ -158,13 +168,17 @@ export interface ProjectLevelMrApprovalsArgs {
      */
     mergeRequestsAuthorApproval?: pulumi.Input<boolean>;
     /**
-     * Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
+     * Set to `true` if you want to prevent approval of merge requests by merge request committers.
      */
     mergeRequestsDisableCommittersApproval?: pulumi.Input<boolean>;
     /**
      * The ID of the project to change MR approval configuration.
      */
     projectId: pulumi.Input<number>;
+    /**
+     * Set to `true` if you want to require authentication when approving a merge request.
+     */
+    requirePasswordToApprove?: pulumi.Input<boolean>;
     /**
      * Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      */

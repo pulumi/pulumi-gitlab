@@ -117,6 +117,12 @@ namespace Pulumi.GitLab
         public Output<bool?> SkipConfirmation { get; private set; } = null!;
 
         /// <summary>
+        /// String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
+        /// </summary>
+        [Output("state")]
+        public Output<string?> State { get; private set; } = null!;
+
+        /// <summary>
         /// The username of the user.
         /// </summary>
         [Output("username")]
@@ -229,6 +235,12 @@ namespace Pulumi.GitLab
         public Input<bool>? SkipConfirmation { get; set; }
 
         /// <summary>
+        /// String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        /// <summary>
         /// The username of the user.
         /// </summary>
         [Input("username", required: true)]
@@ -300,6 +312,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("skipConfirmation")]
         public Input<bool>? SkipConfirmation { get; set; }
+
+        /// <summary>
+        /// String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         /// <summary>
         /// The username of the user.

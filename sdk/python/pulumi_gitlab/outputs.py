@@ -10,9 +10,11 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'BranchCommit',
     'BranchProtectionAllowedToMerge',
     'BranchProtectionAllowedToPush',
     'ProjectPushRules',
+    'GetBranchCommitResult',
     'GetGroupMembershipMemberResult',
     'GetProjectProtectedBranchMergeAccessLevelResult',
     'GetProjectProtectedBranchPushAccessLevelResult',
@@ -28,6 +30,136 @@ __all__ = [
     'GetProjectsProjectSharedWithGroupResult',
     'GetUsersUserResult',
 ]
+
+@pulumi.output_type
+class BranchCommit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorEmail":
+            suggest = "author_email"
+        elif key == "authorName":
+            suggest = "author_name"
+        elif key == "authoredDate":
+            suggest = "authored_date"
+        elif key == "committedDate":
+            suggest = "committed_date"
+        elif key == "committerEmail":
+            suggest = "committer_email"
+        elif key == "committerName":
+            suggest = "committer_name"
+        elif key == "parentIds":
+            suggest = "parent_ids"
+        elif key == "shortId":
+            suggest = "short_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BranchCommit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BranchCommit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BranchCommit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 author_email: Optional[str] = None,
+                 author_name: Optional[str] = None,
+                 authored_date: Optional[str] = None,
+                 committed_date: Optional[str] = None,
+                 committer_email: Optional[str] = None,
+                 committer_name: Optional[str] = None,
+                 id: Optional[str] = None,
+                 message: Optional[str] = None,
+                 parent_ids: Optional[Sequence[str]] = None,
+                 short_id: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str id: The ID of this resource.
+        """
+        if author_email is not None:
+            pulumi.set(__self__, "author_email", author_email)
+        if author_name is not None:
+            pulumi.set(__self__, "author_name", author_name)
+        if authored_date is not None:
+            pulumi.set(__self__, "authored_date", authored_date)
+        if committed_date is not None:
+            pulumi.set(__self__, "committed_date", committed_date)
+        if committer_email is not None:
+            pulumi.set(__self__, "committer_email", committer_email)
+        if committer_name is not None:
+            pulumi.set(__self__, "committer_name", committer_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if parent_ids is not None:
+            pulumi.set(__self__, "parent_ids", parent_ids)
+        if short_id is not None:
+            pulumi.set(__self__, "short_id", short_id)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="authorEmail")
+    def author_email(self) -> Optional[str]:
+        return pulumi.get(self, "author_email")
+
+    @property
+    @pulumi.getter(name="authorName")
+    def author_name(self) -> Optional[str]:
+        return pulumi.get(self, "author_name")
+
+    @property
+    @pulumi.getter(name="authoredDate")
+    def authored_date(self) -> Optional[str]:
+        return pulumi.get(self, "authored_date")
+
+    @property
+    @pulumi.getter(name="committedDate")
+    def committed_date(self) -> Optional[str]:
+        return pulumi.get(self, "committed_date")
+
+    @property
+    @pulumi.getter(name="committerEmail")
+    def committer_email(self) -> Optional[str]:
+        return pulumi.get(self, "committer_email")
+
+    @property
+    @pulumi.getter(name="committerName")
+    def committer_name(self) -> Optional[str]:
+        return pulumi.get(self, "committer_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter(name="parentIds")
+    def parent_ids(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "parent_ids")
+
+    @property
+    @pulumi.getter(name="shortId")
+    def short_id(self) -> Optional[str]:
+        return pulumi.get(self, "short_id")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        return pulumi.get(self, "title")
+
 
 @pulumi.output_type
 class BranchProtectionAllowedToMerge(dict):
@@ -359,6 +491,94 @@ class ProjectPushRules(dict):
         Reject commit when it’s not signed through GPG.
         """
         return pulumi.get(self, "reject_unsigned_commits")
+
+
+@pulumi.output_type
+class GetBranchCommitResult(dict):
+    def __init__(__self__, *,
+                 author_email: str,
+                 author_name: str,
+                 authored_date: str,
+                 committed_date: str,
+                 committer_email: str,
+                 committer_name: str,
+                 id: str,
+                 message: str,
+                 parent_ids: Sequence[str],
+                 short_id: str,
+                 title: str):
+        """
+        :param str id: The ID of this resource.
+        """
+        pulumi.set(__self__, "author_email", author_email)
+        pulumi.set(__self__, "author_name", author_name)
+        pulumi.set(__self__, "authored_date", authored_date)
+        pulumi.set(__self__, "committed_date", committed_date)
+        pulumi.set(__self__, "committer_email", committer_email)
+        pulumi.set(__self__, "committer_name", committer_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "parent_ids", parent_ids)
+        pulumi.set(__self__, "short_id", short_id)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="authorEmail")
+    def author_email(self) -> str:
+        return pulumi.get(self, "author_email")
+
+    @property
+    @pulumi.getter(name="authorName")
+    def author_name(self) -> str:
+        return pulumi.get(self, "author_name")
+
+    @property
+    @pulumi.getter(name="authoredDate")
+    def authored_date(self) -> str:
+        return pulumi.get(self, "authored_date")
+
+    @property
+    @pulumi.getter(name="committedDate")
+    def committed_date(self) -> str:
+        return pulumi.get(self, "committed_date")
+
+    @property
+    @pulumi.getter(name="committerEmail")
+    def committer_email(self) -> str:
+        return pulumi.get(self, "committer_email")
+
+    @property
+    @pulumi.getter(name="committerName")
+    def committer_name(self) -> str:
+        return pulumi.get(self, "committer_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter(name="parentIds")
+    def parent_ids(self) -> Sequence[str]:
+        return pulumi.get(self, "parent_ids")
+
+    @property
+    @pulumi.getter(name="shortId")
+    def short_id(self) -> str:
+        return pulumi.get(self, "short_id")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
 
 
 @pulumi.output_type
@@ -709,6 +929,7 @@ class GetProjectsProjectResult(dict):
                  avatar_url: str,
                  build_coverage_regex: str,
                  ci_config_path: str,
+                 ci_forward_deployment_enabled: bool,
                  container_registry_enabled: bool,
                  created_at: str,
                  creator_id: int,
@@ -726,7 +947,9 @@ class GetProjectsProjectResult(dict):
                  last_activity_at: str,
                  lfs_enabled: bool,
                  merge_method: str,
+                 merge_pipelines_enabled: bool,
                  merge_requests_enabled: bool,
+                 merge_trains_enabled: bool,
                  mirror: bool,
                  mirror_overwrites_diverged_branches: bool,
                  mirror_trigger_builds: bool,
@@ -772,6 +995,7 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "avatar_url", avatar_url)
         pulumi.set(__self__, "build_coverage_regex", build_coverage_regex)
         pulumi.set(__self__, "ci_config_path", ci_config_path)
+        pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
         pulumi.set(__self__, "container_registry_enabled", container_registry_enabled)
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "creator_id", creator_id)
@@ -789,7 +1013,9 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "last_activity_at", last_activity_at)
         pulumi.set(__self__, "lfs_enabled", lfs_enabled)
         pulumi.set(__self__, "merge_method", merge_method)
+        pulumi.set(__self__, "merge_pipelines_enabled", merge_pipelines_enabled)
         pulumi.set(__self__, "merge_requests_enabled", merge_requests_enabled)
+        pulumi.set(__self__, "merge_trains_enabled", merge_trains_enabled)
         pulumi.set(__self__, "mirror", mirror)
         pulumi.set(__self__, "mirror_overwrites_diverged_branches", mirror_overwrites_diverged_branches)
         pulumi.set(__self__, "mirror_trigger_builds", mirror_trigger_builds)
@@ -860,6 +1086,11 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="ciConfigPath")
     def ci_config_path(self) -> str:
         return pulumi.get(self, "ci_config_path")
+
+    @property
+    @pulumi.getter(name="ciForwardDeploymentEnabled")
+    def ci_forward_deployment_enabled(self) -> bool:
+        return pulumi.get(self, "ci_forward_deployment_enabled")
 
     @property
     @pulumi.getter(name="containerRegistryEnabled")
@@ -950,9 +1181,19 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "merge_method")
 
     @property
+    @pulumi.getter(name="mergePipelinesEnabled")
+    def merge_pipelines_enabled(self) -> bool:
+        return pulumi.get(self, "merge_pipelines_enabled")
+
+    @property
     @pulumi.getter(name="mergeRequestsEnabled")
     def merge_requests_enabled(self) -> bool:
         return pulumi.get(self, "merge_requests_enabled")
+
+    @property
+    @pulumi.getter(name="mergeTrainsEnabled")
+    def merge_trains_enabled(self) -> bool:
+        return pulumi.get(self, "merge_trains_enabled")
 
     @property
     @pulumi.getter

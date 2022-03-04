@@ -94,6 +94,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly ciConfigPath!: pulumi.Output<string | undefined>;
     /**
+     * When a new deployment job starts, skip older deployment jobs that are still pending.
+     */
+    public readonly ciForwardDeploymentEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * Enable container registry for the project.
      */
     public readonly containerRegistryEnabled!: pulumi.Output<boolean | undefined>;
@@ -138,6 +142,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly mergeMethod!: pulumi.Output<string | undefined>;
     /**
+     * Enable or disable merge pipelines.
+     */
+    public readonly mergePipelinesEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * Enable merge requests for the project.
      */
     public readonly mergeRequestsEnabled!: pulumi.Output<boolean | undefined>;
@@ -145,6 +153,10 @@ export class Project extends pulumi.CustomResource {
      * Sets the template for new merge requests in the project.
      */
     public readonly mergeRequestsTemplate!: pulumi.Output<string | undefined>;
+    /**
+     * Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
+     */
+    public readonly mergeTrainsEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * Enable project pull mirror.
      */
@@ -198,6 +210,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly pipelinesEnabled!: pulumi.Output<boolean | undefined>;
     /**
+     * Show link to create/view merge request when pushing from the command line
+     */
+    public readonly printingMergeRequestLinkEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * Push rules for the project.
      */
     public readonly pushRules!: pulumi.Output<outputs.ProjectPushRules>;
@@ -222,7 +238,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly snippetsEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+     * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
      */
     public readonly squashOption!: pulumi.Output<string | undefined>;
     /**
@@ -277,6 +293,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["archived"] = state ? state.archived : undefined;
             resourceInputs["buildCoverageRegex"] = state ? state.buildCoverageRegex : undefined;
             resourceInputs["ciConfigPath"] = state ? state.ciConfigPath : undefined;
+            resourceInputs["ciForwardDeploymentEnabled"] = state ? state.ciForwardDeploymentEnabled : undefined;
             resourceInputs["containerRegistryEnabled"] = state ? state.containerRegistryEnabled : undefined;
             resourceInputs["defaultBranch"] = state ? state.defaultBranch : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -288,8 +305,10 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["issuesTemplate"] = state ? state.issuesTemplate : undefined;
             resourceInputs["lfsEnabled"] = state ? state.lfsEnabled : undefined;
             resourceInputs["mergeMethod"] = state ? state.mergeMethod : undefined;
+            resourceInputs["mergePipelinesEnabled"] = state ? state.mergePipelinesEnabled : undefined;
             resourceInputs["mergeRequestsEnabled"] = state ? state.mergeRequestsEnabled : undefined;
             resourceInputs["mergeRequestsTemplate"] = state ? state.mergeRequestsTemplate : undefined;
+            resourceInputs["mergeTrainsEnabled"] = state ? state.mergeTrainsEnabled : undefined;
             resourceInputs["mirror"] = state ? state.mirror : undefined;
             resourceInputs["mirrorOverwritesDivergedBranches"] = state ? state.mirrorOverwritesDivergedBranches : undefined;
             resourceInputs["mirrorTriggerBuilds"] = state ? state.mirrorTriggerBuilds : undefined;
@@ -303,6 +322,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["path"] = state ? state.path : undefined;
             resourceInputs["pathWithNamespace"] = state ? state.pathWithNamespace : undefined;
             resourceInputs["pipelinesEnabled"] = state ? state.pipelinesEnabled : undefined;
+            resourceInputs["printingMergeRequestLinkEnabled"] = state ? state.printingMergeRequestLinkEnabled : undefined;
             resourceInputs["pushRules"] = state ? state.pushRules : undefined;
             resourceInputs["removeSourceBranchAfterMerge"] = state ? state.removeSourceBranchAfterMerge : undefined;
             resourceInputs["requestAccessEnabled"] = state ? state.requestAccessEnabled : undefined;
@@ -326,6 +346,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["archived"] = args ? args.archived : undefined;
             resourceInputs["buildCoverageRegex"] = args ? args.buildCoverageRegex : undefined;
             resourceInputs["ciConfigPath"] = args ? args.ciConfigPath : undefined;
+            resourceInputs["ciForwardDeploymentEnabled"] = args ? args.ciForwardDeploymentEnabled : undefined;
             resourceInputs["containerRegistryEnabled"] = args ? args.containerRegistryEnabled : undefined;
             resourceInputs["defaultBranch"] = args ? args.defaultBranch : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -336,8 +357,10 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["issuesTemplate"] = args ? args.issuesTemplate : undefined;
             resourceInputs["lfsEnabled"] = args ? args.lfsEnabled : undefined;
             resourceInputs["mergeMethod"] = args ? args.mergeMethod : undefined;
+            resourceInputs["mergePipelinesEnabled"] = args ? args.mergePipelinesEnabled : undefined;
             resourceInputs["mergeRequestsEnabled"] = args ? args.mergeRequestsEnabled : undefined;
             resourceInputs["mergeRequestsTemplate"] = args ? args.mergeRequestsTemplate : undefined;
+            resourceInputs["mergeTrainsEnabled"] = args ? args.mergeTrainsEnabled : undefined;
             resourceInputs["mirror"] = args ? args.mirror : undefined;
             resourceInputs["mirrorOverwritesDivergedBranches"] = args ? args.mirrorOverwritesDivergedBranches : undefined;
             resourceInputs["mirrorTriggerBuilds"] = args ? args.mirrorTriggerBuilds : undefined;
@@ -350,6 +373,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["pagesAccessLevel"] = args ? args.pagesAccessLevel : undefined;
             resourceInputs["path"] = args ? args.path : undefined;
             resourceInputs["pipelinesEnabled"] = args ? args.pipelinesEnabled : undefined;
+            resourceInputs["printingMergeRequestLinkEnabled"] = args ? args.printingMergeRequestLinkEnabled : undefined;
             resourceInputs["pushRules"] = args ? args.pushRules : undefined;
             resourceInputs["removeSourceBranchAfterMerge"] = args ? args.removeSourceBranchAfterMerge : undefined;
             resourceInputs["requestAccessEnabled"] = args ? args.requestAccessEnabled : undefined;
@@ -402,6 +426,10 @@ export interface ProjectState {
      */
     ciConfigPath?: pulumi.Input<string>;
     /**
+     * When a new deployment job starts, skip older deployment jobs that are still pending.
+     */
+    ciForwardDeploymentEnabled?: pulumi.Input<boolean>;
+    /**
      * Enable container registry for the project.
      */
     containerRegistryEnabled?: pulumi.Input<boolean>;
@@ -446,6 +474,10 @@ export interface ProjectState {
      */
     mergeMethod?: pulumi.Input<string>;
     /**
+     * Enable or disable merge pipelines.
+     */
+    mergePipelinesEnabled?: pulumi.Input<boolean>;
+    /**
      * Enable merge requests for the project.
      */
     mergeRequestsEnabled?: pulumi.Input<boolean>;
@@ -453,6 +485,10 @@ export interface ProjectState {
      * Sets the template for new merge requests in the project.
      */
     mergeRequestsTemplate?: pulumi.Input<string>;
+    /**
+     * Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
+     */
+    mergeTrainsEnabled?: pulumi.Input<boolean>;
     /**
      * Enable project pull mirror.
      */
@@ -506,6 +542,10 @@ export interface ProjectState {
      */
     pipelinesEnabled?: pulumi.Input<boolean>;
     /**
+     * Show link to create/view merge request when pushing from the command line
+     */
+    printingMergeRequestLinkEnabled?: pulumi.Input<boolean>;
+    /**
      * Push rules for the project.
      */
     pushRules?: pulumi.Input<inputs.ProjectPushRules>;
@@ -530,7 +570,7 @@ export interface ProjectState {
      */
     snippetsEnabled?: pulumi.Input<boolean>;
     /**
-     * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+     * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
      */
     squashOption?: pulumi.Input<string>;
     /**
@@ -596,6 +636,10 @@ export interface ProjectArgs {
      */
     ciConfigPath?: pulumi.Input<string>;
     /**
+     * When a new deployment job starts, skip older deployment jobs that are still pending.
+     */
+    ciForwardDeploymentEnabled?: pulumi.Input<boolean>;
+    /**
      * Enable container registry for the project.
      */
     containerRegistryEnabled?: pulumi.Input<boolean>;
@@ -636,6 +680,10 @@ export interface ProjectArgs {
      */
     mergeMethod?: pulumi.Input<string>;
     /**
+     * Enable or disable merge pipelines.
+     */
+    mergePipelinesEnabled?: pulumi.Input<boolean>;
+    /**
      * Enable merge requests for the project.
      */
     mergeRequestsEnabled?: pulumi.Input<boolean>;
@@ -643,6 +691,10 @@ export interface ProjectArgs {
      * Sets the template for new merge requests in the project.
      */
     mergeRequestsTemplate?: pulumi.Input<string>;
+    /**
+     * Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
+     */
+    mergeTrainsEnabled?: pulumi.Input<boolean>;
     /**
      * Enable project pull mirror.
      */
@@ -692,6 +744,10 @@ export interface ProjectArgs {
      */
     pipelinesEnabled?: pulumi.Input<boolean>;
     /**
+     * Show link to create/view merge request when pushing from the command line
+     */
+    printingMergeRequestLinkEnabled?: pulumi.Input<boolean>;
+    /**
      * Push rules for the project.
      */
     pushRules?: pulumi.Input<inputs.ProjectPushRules>;
@@ -712,7 +768,7 @@ export interface ProjectArgs {
      */
     snippetsEnabled?: pulumi.Input<boolean>;
     /**
-     * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+     * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
      */
     squashOption?: pulumi.Input<string>;
     /**

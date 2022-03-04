@@ -48,6 +48,120 @@
         ]
     },
     "types": {
+        "gitlab:index/BranchCommit:BranchCommit": {
+            "properties": {
+                "authorEmail": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "authorName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "authoredDate": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "committedDate": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "committerEmail": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "committerName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "parentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "shortId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "title": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "authorEmail",
+                        "authorName",
+                        "authoredDate",
+                        "committedDate",
+                        "committerEmail",
+                        "committerName",
+                        "id",
+                        "message",
+                        "parentIds",
+                        "shortId",
+                        "title"
+                    ]
+                }
+            }
+        },
         "gitlab:index/BranchProtectionAllowedToMerge:BranchProtectionAllowedToMerge": {
             "properties": {
                 "accessLevel": {
@@ -249,6 +363,121 @@
                 }
             },
             "type": "object"
+        },
+        "gitlab:index/getBranchCommit:getBranchCommit": {
+            "properties": {
+                "authorEmail": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "authorName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "authoredDate": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "committedDate": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "committerEmail": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "committerName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "parentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "shortId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "title": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "authorEmail",
+                "authorName",
+                "authoredDate",
+                "committedDate",
+                "committerEmail",
+                "committerName",
+                "id",
+                "message",
+                "parentIds",
+                "shortId",
+                "title"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "gitlab:index/getGroupMembershipMember:getGroupMembershipMember": {
             "properties": {
@@ -774,6 +1003,14 @@
                         }
                     }
                 },
+                "ciForwardDeploymentEnabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "containerRegistryEnabled": {
                     "type": "boolean",
                     "language": {
@@ -917,7 +1154,23 @@
                         }
                     }
                 },
+                "mergePipelinesEnabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "mergeRequestsEnabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mergeTrainsEnabled": {
                     "type": "boolean",
                     "language": {
                         "python": {
@@ -1202,6 +1455,7 @@
                 "avatarUrl",
                 "buildCoverageRegex",
                 "ciConfigPath",
+                "ciForwardDeploymentEnabled",
                 "containerRegistryEnabled",
                 "createdAt",
                 "creatorId",
@@ -1219,7 +1473,9 @@
                 "lastActivityAt",
                 "lfsEnabled",
                 "mergeMethod",
+                "mergePipelinesEnabled",
                 "mergeRequestsEnabled",
+                "mergeTrainsEnabled",
                 "mirror",
                 "mirrorOverwritesDivergedBranches",
                 "mirrorTriggerBuilds",
@@ -1855,9 +2111,149 @@
         ]
     },
     "resources": {
-        "gitlab:index/branchProtection:BranchProtection": {
-            "description": "This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch.\n\n\u003e The `allowed_to_push`, `allowed_to_merge` and `code_owner_approval_required` arguments require a GitLab Premium account or above.  Please refer to [Gitlab API documentation](https://docs.gitlab.com/ee/api/protected_branches.html) for further information.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst branchProtect = new gitlab.BranchProtection(\"branchProtect\", {\n    project: \"12345\",\n    branch: \"BranchProtected\",\n    pushAccessLevel: \"developer\",\n    mergeAccessLevel: \"developer\",\n    codeOwnerApprovalRequired: true,\n    allowedToPushes: [\n        {\n            userId: 5,\n        },\n        {\n            userId: 521,\n        },\n    ],\n    allowedToMerges: [\n        {\n            userId: 15,\n        },\n        {\n            userId: 37,\n        },\n    ],\n});\n// Example using dynamic block\nconst main = new gitlab.BranchProtection(\"main\", {\n    project: \"12345\",\n    branch: \"main\",\n    pushAccessLevel: \"maintainer\",\n    mergeAccessLevel: \"maintainer\",\n    dynamic: [{\n        forEach: [\n            50,\n            55,\n            60,\n        ],\n        content: [{\n            userId: allowed_to_push.value,\n        }],\n    }],\n});\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n# Gitlab protected branches can be imported with a key composed of `\u003cproject_id\u003e:\u003cbranch\u003e`, e.g.\n\n```sh\n $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect \"12345:main\"\n```\n\n ",
+        "gitlab:index/branch:Branch": {
+            "description": "This resource allows you to create and manage GitLab branches.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\n// Create a project for the branch to use\nconst exampleProject = new gitlab.Project(\"exampleProject\", {\n    description: \"An example project\",\n    namespaceId: gitlab_group.example.id,\n});\nconst exampleBranch = new gitlab.Branch(\"exampleBranch\", {\n    ref: \"main\",\n    project: exampleProject.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\n# Create a project for the branch to use\nexample_project = gitlab.Project(\"exampleProject\",\n    description=\"An example project\",\n    namespace_id=gitlab_group[\"example\"][\"id\"])\nexample_branch = gitlab.Branch(\"exampleBranch\",\n    ref=\"main\",\n    project=example_project.id)\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a project for the branch to use\n        var exampleProject = new GitLab.Project(\"exampleProject\", new GitLab.ProjectArgs\n        {\n            Description = \"An example project\",\n            NamespaceId = gitlab_group.Example.Id,\n        });\n        var exampleBranch = new GitLab.Branch(\"exampleBranch\", new GitLab.BranchArgs\n        {\n            Ref = \"main\",\n            Project = exampleProject.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleProject, err := gitlab.NewProject(ctx, \"exampleProject\", \u0026gitlab.ProjectArgs{\n\t\t\tDescription: pulumi.String(\"An example project\"),\n\t\t\tNamespaceId: pulumi.Any(gitlab_group.Example.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewBranch(ctx, \"exampleBranch\", \u0026gitlab.BranchArgs{\n\t\t\tRef:     pulumi.String(\"main\"),\n\t\t\tProject: exampleProject.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n# Gitlab protected branches can be imported with a key composed of `\u003cproject_id\u003e:\u003cbranch_name\u003e`, e.g.\n\n```sh\n $ pulumi import gitlab:index/branch:Branch example \"12345:develop\"\n```\n\n ",
             "properties": {
+                "canPush": {
+                    "type": "boolean",
+                    "description": "Bool, true if you can push to the branch.\n"
+                },
+                "commits": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/gitlab:index/BranchCommit:BranchCommit"
+                    },
+                    "description": "The commit associated with the branch ref.\n"
+                },
+                "default": {
+                    "type": "boolean",
+                    "description": "Bool, true if branch is the default branch for the project.\n"
+                },
+                "developerCanMerge": {
+                    "type": "boolean",
+                    "description": "Bool, true if developer level access allows to merge branch.\n"
+                },
+                "developerCanPush": {
+                    "type": "boolean",
+                    "description": "Bool, true if developer level access allows git push.\n"
+                },
+                "merged": {
+                    "type": "boolean",
+                    "description": "Bool, true if the branch has been merged into it's parent.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name for this branch.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The ID or full path of the project which the branch is created against.\n"
+                },
+                "protected": {
+                    "type": "boolean",
+                    "description": "Bool, true if branch has branch protection.\n"
+                },
+                "ref": {
+                    "type": "string",
+                    "description": "The ref which the branch is created from.\n"
+                },
+                "webUrl": {
+                    "type": "string",
+                    "description": "The url of the created branch (https).\n"
+                }
+            },
+            "required": [
+                "canPush",
+                "commits",
+                "default",
+                "developerCanMerge",
+                "developerCanPush",
+                "merged",
+                "name",
+                "project",
+                "protected",
+                "ref",
+                "webUrl"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name for this branch.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The ID or full path of the project which the branch is created against.\n"
+                },
+                "ref": {
+                    "type": "string",
+                    "description": "The ref which the branch is created from.\n"
+                }
+            },
+            "requiredInputs": [
+                "project",
+                "ref"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Branch resources.\n",
+                "properties": {
+                    "canPush": {
+                        "type": "boolean",
+                        "description": "Bool, true if you can push to the branch.\n"
+                    },
+                    "commits": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/BranchCommit:BranchCommit"
+                        },
+                        "description": "The commit associated with the branch ref.\n"
+                    },
+                    "default": {
+                        "type": "boolean",
+                        "description": "Bool, true if branch is the default branch for the project.\n"
+                    },
+                    "developerCanMerge": {
+                        "type": "boolean",
+                        "description": "Bool, true if developer level access allows to merge branch.\n"
+                    },
+                    "developerCanPush": {
+                        "type": "boolean",
+                        "description": "Bool, true if developer level access allows git push.\n"
+                    },
+                    "merged": {
+                        "type": "boolean",
+                        "description": "Bool, true if the branch has been merged into it's parent.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name for this branch.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The ID or full path of the project which the branch is created against.\n"
+                    },
+                    "protected": {
+                        "type": "boolean",
+                        "description": "Bool, true if branch has branch protection.\n"
+                    },
+                    "ref": {
+                        "type": "string",
+                        "description": "The ref which the branch is created from.\n"
+                    },
+                    "webUrl": {
+                        "type": "string",
+                        "description": "The url of the created branch (https).\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/branchProtection:BranchProtection": {
+            "description": "This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch.\n\n\u003e The `allowed_to_push`, `allowed_to_merge` and `code_owner_approval_required` arguments require a GitLab Premium account or above.  Please refer to [Gitlab API documentation](https://docs.gitlab.com/ee/api/protected_branches.html) for further information.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst branchProtect = new gitlab.BranchProtection(\"branchProtect\", {\n    project: \"12345\",\n    branch: \"BranchProtected\",\n    pushAccessLevel: \"developer\",\n    mergeAccessLevel: \"developer\",\n    allowForcePush: true,\n    codeOwnerApprovalRequired: true,\n    allowedToPushes: [\n        {\n            userId: 5,\n        },\n        {\n            userId: 521,\n        },\n    ],\n    allowedToMerges: [\n        {\n            userId: 15,\n        },\n        {\n            userId: 37,\n        },\n    ],\n});\n// Example using dynamic block\nconst main = new gitlab.BranchProtection(\"main\", {\n    project: \"12345\",\n    branch: \"main\",\n    pushAccessLevel: \"maintainer\",\n    mergeAccessLevel: \"maintainer\",\n    dynamic: [{\n        forEach: [\n            50,\n            55,\n            60,\n        ],\n        content: [{\n            userId: allowed_to_push.value,\n        }],\n    }],\n});\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n# Gitlab protected branches can be imported with a key composed of `\u003cproject_id\u003e:\u003cbranch\u003e`, e.g.\n\n```sh\n $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect \"12345:main\"\n```\n\n ",
+            "properties": {
+                "allowForcePush": {
+                    "type": "boolean",
+                    "description": "Can be set to true to allow users with push access to force push.\n"
+                },
                 "allowedToMerges": {
                     "type": "array",
                     "items": {
@@ -1905,6 +2301,10 @@
                 "pushAccessLevel"
             ],
             "inputProperties": {
+                "allowForcePush": {
+                    "type": "boolean",
+                    "description": "Can be set to true to allow users with push access to force push.\n"
+                },
                 "allowedToMerges": {
                     "type": "array",
                     "items": {
@@ -1949,6 +2349,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering BranchProtection resources.\n",
                 "properties": {
+                    "allowForcePush": {
+                        "type": "boolean",
+                        "description": "Can be set to true to allow users with push access to force push.\n"
+                    },
                     "allowedToMerges": {
                         "type": "array",
                         "items": {
@@ -2506,6 +2910,142 @@
                 "type": "object"
             }
         },
+        "gitlab:index/groupAccessToken:GroupAccessToken": {
+            "description": "This resource allows you to create and manage Group Access Token for your GitLab Groups. (Introduced in GitLab 14.7)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst exampleGroupAccessToken = new gitlab.GroupAccessToken(\"exampleGroupAccessToken\", {\n    group: \"25\",\n    expiresAt: \"2020-03-14\",\n    accessLevel: \"developer\",\n    scopes: [\"api\"],\n});\nconst exampleGroupVariable = new gitlab.GroupVariable(\"exampleGroupVariable\", {\n    group: \"25\",\n    key: \"gat\",\n    value: exampleGroupAccessToken.token,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample_group_access_token = gitlab.GroupAccessToken(\"exampleGroupAccessToken\",\n    group=\"25\",\n    expires_at=\"2020-03-14\",\n    access_level=\"developer\",\n    scopes=[\"api\"])\nexample_group_variable = gitlab.GroupVariable(\"exampleGroupVariable\",\n    group=\"25\",\n    key=\"gat\",\n    value=example_group_access_token.token)\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleGroupAccessToken = new GitLab.GroupAccessToken(\"exampleGroupAccessToken\", new GitLab.GroupAccessTokenArgs\n        {\n            Group = \"25\",\n            ExpiresAt = \"2020-03-14\",\n            AccessLevel = \"developer\",\n            Scopes = \n            {\n                \"api\",\n            },\n        });\n        var exampleGroupVariable = new GitLab.GroupVariable(\"exampleGroupVariable\", new GitLab.GroupVariableArgs\n        {\n            Group = \"25\",\n            Key = \"gat\",\n            Value = exampleGroupAccessToken.Token,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleGroupAccessToken, err := gitlab.NewGroupAccessToken(ctx, \"exampleGroupAccessToken\", \u0026gitlab.GroupAccessTokenArgs{\n\t\t\tGroup:       pulumi.String(\"25\"),\n\t\t\tExpiresAt:   pulumi.String(\"2020-03-14\"),\n\t\t\tAccessLevel: pulumi.String(\"developer\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupVariable(ctx, \"exampleGroupVariable\", \u0026gitlab.GroupVariableArgs{\n\t\t\tGroup: pulumi.String(\"25\"),\n\t\t\tKey:   pulumi.String(\"gat\"),\n\t\t\tValue: exampleGroupAccessToken.Token,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n# A GitLab Group Access Token can be imported using a key composed of `\u003cgroup-id\u003e:\u003ctoken-id\u003e`, e.g.\n\n```sh\n $ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example \"12345:1\"\n```\n\n # ATTENTIONthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API. ",
+            "properties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`.\n"
+                },
+                "active": {
+                    "type": "boolean",
+                    "description": "True if the token is active.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Time the token has been created, RFC3339 format.\n"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.\n"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The ID or path of the group to add the group access token to.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the group access token.\n"
+                },
+                "revoked": {
+                    "type": "boolean",
+                    "description": "True if the token is revoked.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.\n"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "The user id associated to the token.\n"
+                }
+            },
+            "required": [
+                "active",
+                "createdAt",
+                "group",
+                "name",
+                "revoked",
+                "scopes",
+                "token",
+                "userId"
+            ],
+            "inputProperties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`.\n"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.\n"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The ID or path of the group to add the group access token to.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the group access token.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.\n"
+                }
+            },
+            "requiredInputs": [
+                "group",
+                "scopes"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupAccessToken resources.\n",
+                "properties": {
+                    "accessLevel": {
+                        "type": "string",
+                        "description": "The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`.\n"
+                    },
+                    "active": {
+                        "type": "boolean",
+                        "description": "True if the token is active.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Time the token has been created, RFC3339 format.\n"
+                    },
+                    "expiresAt": {
+                        "type": "string",
+                        "description": "The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.\n"
+                    },
+                    "group": {
+                        "type": "string",
+                        "description": "The ID or path of the group to add the group access token to.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the group access token.\n"
+                    },
+                    "revoked": {
+                        "type": "boolean",
+                        "description": "True if the token is revoked.\n"
+                    },
+                    "scopes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.\n"
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "description": "The user id associated to the token.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "gitlab:index/groupBadge:GroupBadge": {
             "description": "This resource allows you to create and manage badges for your GitLab groups.\nFor further information, consult the [gitlab\ndocumentation](https://docs.gitlab.com/ee/user/project/badges.html#group-badges).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.Group(\"foo\", {});\nconst example = new gitlab.GroupBadge(\"example\", {\n    group: foo.id,\n    linkUrl: \"https://example.com/badge-123\",\n    imageUrl: \"https://example.com/badge-123.svg\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.Group(\"foo\")\nexample = gitlab.GroupBadge(\"example\",\n    group=foo.id,\n    link_url=\"https://example.com/badge-123\",\n    image_url=\"https://example.com/badge-123.svg\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new GitLab.Group(\"foo\", new GitLab.GroupArgs\n        {\n        });\n        var example = new GitLab.GroupBadge(\"example\", new GitLab.GroupBadgeArgs\n        {\n            Group = foo.Id,\n            LinkUrl = \"https://example.com/badge-123\",\n            ImageUrl = \"https://example.com/badge-123.svg\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := gitlab.NewGroup(ctx, \"foo\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupBadge(ctx, \"example\", \u0026gitlab.GroupBadgeArgs{\n\t\t\tGroup:    foo.ID(),\n\t\t\tLinkUrl:  pulumi.String(\"https://example.com/badge-123\"),\n\t\t\tImageUrl: pulumi.String(\"https://example.com/badge-123.svg\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n# GitLab group badges can be imported using an id made up of `{group_id}:{badge_id}`, e.g.\n\n```sh\n $ pulumi import gitlab:index/groupBadge:GroupBadge foo 1:3\n```\n\n ",
             "properties": {
@@ -2905,7 +3445,7 @@
             }
         },
         "gitlab:index/groupLdapLink:GroupLdapLink": {
-            "description": "This resource allows you to add an LDAP link to an existing GitLab group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.GroupLdapLink(\"test\", {\n    cn: \"testuser\",\n    groupAccess: \"developer\",\n    groupId: \"12345\",\n    ldapProvider: \"ldapmain\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.GroupLdapLink(\"test\",\n    cn=\"testuser\",\n    group_access=\"developer\",\n    group_id=\"12345\",\n    ldap_provider=\"ldapmain\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = new GitLab.GroupLdapLink(\"test\", new GitLab.GroupLdapLinkArgs\n        {\n            Cn = \"testuser\",\n            GroupAccess = \"developer\",\n            GroupId = \"12345\",\n            LdapProvider = \"ldapmain\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGroupLdapLink(ctx, \"test\", \u0026gitlab.GroupLdapLinkArgs{\n\t\t\tCn:           pulumi.String(\"testuser\"),\n\t\t\tGroupAccess:  pulumi.String(\"developer\"),\n\t\t\tGroupId:      pulumi.String(\"12345\"),\n\t\t\tLdapProvider: pulumi.String(\"ldapmain\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n# GitLab group ldap links can be imported using an id made up of `ldap_provider:cn`, e.g.\n\n```sh\n $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test \"ldapmain:testuser\"\n```\n\n ",
+            "description": "This resource allows you to add an LDAP link to an existing GitLab group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.GroupLdapLink(\"test\", {\n    cn: \"testuser\",\n    groupAccess: \"developer\",\n    groupId: \"12345\",\n    ldapProvider: \"ldapmain\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.GroupLdapLink(\"test\",\n    cn=\"testuser\",\n    group_access=\"developer\",\n    group_id=\"12345\",\n    ldap_provider=\"ldapmain\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = new GitLab.GroupLdapLink(\"test\", new GitLab.GroupLdapLinkArgs\n        {\n            Cn = \"testuser\",\n            GroupAccess = \"developer\",\n            GroupId = \"12345\",\n            LdapProvider = \"ldapmain\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGroupLdapLink(ctx, \"test\", \u0026gitlab.GroupLdapLinkArgs{\n\t\t\tCn:           pulumi.String(\"testuser\"),\n\t\t\tGroupAccess:  pulumi.String(\"developer\"),\n\t\t\tGroupId:      pulumi.String(\"12345\"),\n\t\t\tLdapProvider: pulumi.String(\"ldapmain\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n# GitLab group ldap links can be imported using an id made up of `group_id:ldap_provider:cn`, e.g.\n\n```sh\n $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test \"12345:ldapmain:testuser\"\n```\n\n ",
             "properties": {
                 "accessLevel": {
                     "type": "string",
@@ -3901,6 +4441,10 @@
                     "type": "string",
                     "description": "Custom Path to CI config file.\n"
                 },
+                "ciForwardDeploymentEnabled": {
+                    "type": "boolean",
+                    "description": "When a new deployment job starts, skip older deployment jobs that are still pending.\n"
+                },
                 "containerRegistryEnabled": {
                     "type": "boolean",
                     "description": "Enable container registry for the project.\n"
@@ -3945,6 +4489,10 @@
                     "type": "string",
                     "description": "Set to `ff` to create fast-forward merges\n"
                 },
+                "mergePipelinesEnabled": {
+                    "type": "boolean",
+                    "description": "Enable or disable merge pipelines.\n"
+                },
                 "mergeRequestsEnabled": {
                     "type": "boolean",
                     "description": "Enable merge requests for the project.\n"
@@ -3952,6 +4500,10 @@
                 "mergeRequestsTemplate": {
                     "type": "string",
                     "description": "Sets the template for new merge requests in the project.\n"
+                },
+                "mergeTrainsEnabled": {
+                    "type": "boolean",
+                    "description": "Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.\n"
                 },
                 "mirror": {
                     "type": "boolean",
@@ -4005,6 +4557,10 @@
                     "type": "boolean",
                     "description": "Enable pipelines for the project.\n"
                 },
+                "printingMergeRequestLinkEnabled": {
+                    "type": "boolean",
+                    "description": "Show link to create/view merge request when pushing from the command line\n"
+                },
                 "pushRules": {
                     "$ref": "#/types/gitlab:index/ProjectPushRules:ProjectPushRules",
                     "description": "Push rules for the project.\n"
@@ -4031,7 +4587,7 @@
                 },
                 "squashOption": {
                     "type": "string",
-                    "description": "Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.\n"
+                    "description": "Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab \u003e= 14.1]\n"
                 },
                 "sshUrlToRepo": {
                     "type": "string",
@@ -4106,6 +4662,10 @@
                     "type": "string",
                     "description": "Custom Path to CI config file.\n"
                 },
+                "ciForwardDeploymentEnabled": {
+                    "type": "boolean",
+                    "description": "When a new deployment job starts, skip older deployment jobs that are still pending.\n"
+                },
                 "containerRegistryEnabled": {
                     "type": "boolean",
                     "description": "Enable container registry for the project.\n"
@@ -4146,6 +4706,10 @@
                     "type": "string",
                     "description": "Set to `ff` to create fast-forward merges\n"
                 },
+                "mergePipelinesEnabled": {
+                    "type": "boolean",
+                    "description": "Enable or disable merge pipelines.\n"
+                },
                 "mergeRequestsEnabled": {
                     "type": "boolean",
                     "description": "Enable merge requests for the project.\n"
@@ -4153,6 +4717,10 @@
                 "mergeRequestsTemplate": {
                     "type": "string",
                     "description": "Sets the template for new merge requests in the project.\n"
+                },
+                "mergeTrainsEnabled": {
+                    "type": "boolean",
+                    "description": "Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.\n"
                 },
                 "mirror": {
                     "type": "boolean",
@@ -4202,6 +4770,10 @@
                     "type": "boolean",
                     "description": "Enable pipelines for the project.\n"
                 },
+                "printingMergeRequestLinkEnabled": {
+                    "type": "boolean",
+                    "description": "Show link to create/view merge request when pushing from the command line\n"
+                },
                 "pushRules": {
                     "$ref": "#/types/gitlab:index/ProjectPushRules:ProjectPushRules",
                     "description": "Push rules for the project.\n"
@@ -4224,7 +4796,7 @@
                 },
                 "squashOption": {
                     "type": "string",
-                    "description": "Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.\n"
+                    "description": "Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab \u003e= 14.1]\n"
                 },
                 "tags": {
                     "type": "array",
@@ -4281,6 +4853,10 @@
                         "type": "string",
                         "description": "Custom Path to CI config file.\n"
                     },
+                    "ciForwardDeploymentEnabled": {
+                        "type": "boolean",
+                        "description": "When a new deployment job starts, skip older deployment jobs that are still pending.\n"
+                    },
                     "containerRegistryEnabled": {
                         "type": "boolean",
                         "description": "Enable container registry for the project.\n"
@@ -4325,6 +4901,10 @@
                         "type": "string",
                         "description": "Set to `ff` to create fast-forward merges\n"
                     },
+                    "mergePipelinesEnabled": {
+                        "type": "boolean",
+                        "description": "Enable or disable merge pipelines.\n"
+                    },
                     "mergeRequestsEnabled": {
                         "type": "boolean",
                         "description": "Enable merge requests for the project.\n"
@@ -4332,6 +4912,10 @@
                     "mergeRequestsTemplate": {
                         "type": "string",
                         "description": "Sets the template for new merge requests in the project.\n"
+                    },
+                    "mergeTrainsEnabled": {
+                        "type": "boolean",
+                        "description": "Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.\n"
                     },
                     "mirror": {
                         "type": "boolean",
@@ -4385,6 +4969,10 @@
                         "type": "boolean",
                         "description": "Enable pipelines for the project.\n"
                     },
+                    "printingMergeRequestLinkEnabled": {
+                        "type": "boolean",
+                        "description": "Show link to create/view merge request when pushing from the command line\n"
+                    },
                     "pushRules": {
                         "$ref": "#/types/gitlab:index/ProjectPushRules:ProjectPushRules",
                         "description": "Push rules for the project.\n"
@@ -4411,7 +4999,7 @@
                     },
                     "squashOption": {
                         "type": "string",
-                        "description": "Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.\n"
+                        "description": "Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab \u003e= 14.1]\n"
                     },
                     "sshUrlToRepo": {
                         "type": "string",
@@ -5159,6 +5747,10 @@
                     "type": "string",
                     "description": "Invoke the hook for push events on matching branches only.\n"
                 },
+                "releasesEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for releases events.\n"
+                },
                 "tagPushEvents": {
                     "type": "boolean",
                     "description": "Invoke the hook for tag push events.\n"
@@ -5228,6 +5820,10 @@
                 "pushEventsBranchFilter": {
                     "type": "string",
                     "description": "Invoke the hook for push events on matching branches only.\n"
+                },
+                "releasesEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for releases events.\n"
                 },
                 "tagPushEvents": {
                     "type": "boolean",
@@ -5301,6 +5897,10 @@
                         "type": "string",
                         "description": "Invoke the hook for push events on matching branches only.\n"
                     },
+                    "releasesEvents": {
+                        "type": "boolean",
+                        "description": "Invoke the hook for releases events.\n"
+                    },
                     "tagPushEvents": {
                         "type": "boolean",
                         "description": "Invoke the hook for tag push events.\n"
@@ -5334,11 +5934,15 @@
                 },
                 "mergeRequestsDisableCommittersApproval": {
                     "type": "boolean",
-                    "description": "Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.\n"
+                    "description": "Set to `true` if you want to prevent approval of merge requests by merge request committers.\n"
                 },
                 "projectId": {
                     "type": "integer",
                     "description": "The ID of the project to change MR approval configuration.\n"
+                },
+                "requirePasswordToApprove": {
+                    "type": "boolean",
+                    "description": "Set to `true` if you want to require authentication when approving a merge request.\n"
                 },
                 "resetApprovalsOnPush": {
                     "type": "boolean",
@@ -5359,11 +5963,15 @@
                 },
                 "mergeRequestsDisableCommittersApproval": {
                     "type": "boolean",
-                    "description": "Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.\n"
+                    "description": "Set to `true` if you want to prevent approval of merge requests by merge request committers.\n"
                 },
                 "projectId": {
                     "type": "integer",
                     "description": "The ID of the project to change MR approval configuration.\n"
+                },
+                "requirePasswordToApprove": {
+                    "type": "boolean",
+                    "description": "Set to `true` if you want to require authentication when approving a merge request.\n"
                 },
                 "resetApprovalsOnPush": {
                     "type": "boolean",
@@ -5386,11 +5994,15 @@
                     },
                     "mergeRequestsDisableCommittersApproval": {
                         "type": "boolean",
-                        "description": "Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.\n"
+                        "description": "Set to `true` if you want to prevent approval of merge requests by merge request committers.\n"
                     },
                     "projectId": {
                         "type": "integer",
                         "description": "The ID of the project to change MR approval configuration.\n"
+                    },
+                    "requirePasswordToApprove": {
+                        "type": "boolean",
+                        "description": "Set to `true` if you want to require authentication when approving a merge request.\n"
                     },
                     "resetApprovalsOnPush": {
                         "type": "boolean",
@@ -5974,6 +6586,10 @@
                     "type": "boolean",
                     "description": "Whether the integration is active.\n"
                 },
+                "apiUrl": {
+                    "type": "string",
+                    "description": "The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.\n"
+                },
                 "commentOnEventEnabled": {
                     "type": "boolean",
                     "description": "Enable comments inside Jira issues on each GitLab event (commit / merge request)\n"
@@ -6049,6 +6665,7 @@
             },
             "required": [
                 "active",
+                "apiUrl",
                 "commentOnEventEnabled",
                 "commitEvents",
                 "createdAt",
@@ -6067,6 +6684,10 @@
                 "username"
             ],
             "inputProperties": {
+                "apiUrl": {
+                    "type": "string",
+                    "description": "The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.\n"
+                },
                 "commentOnEventEnabled": {
                     "type": "boolean",
                     "description": "Enable comments inside Jira issues on each GitLab event (commit / merge request)\n"
@@ -6140,6 +6761,10 @@
                     "active": {
                         "type": "boolean",
                         "description": "Whether the integration is active.\n"
+                    },
+                    "apiUrl": {
+                        "type": "string",
+                        "description": "The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.\n"
                     },
                     "commentOnEventEnabled": {
                         "type": "boolean",
@@ -6879,6 +7504,62 @@
                 "type": "object"
             }
         },
+        "gitlab:index/topic:Topic": {
+            "description": "This resource allows you to create and manage topics that are then assignable to projects. Topics are the successors for project tags. Aside from avoiding terminology collisions with Git tags, they are more descriptive and better searchable.  \n\nFor assigning topics, use the project resource.\n\n\u003e Deleting a resource doesn't delete the corresponding topic as the GitLab API doesn't support deleting topics yet. You can set soft_destroy to true if you want the topics description to be emptied instead.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst functionalProgramming = new gitlab.Topic(\"functional_programming\", {\n    description: \"In computer science, functional programming is a programming paradigm where programs are constructed by applying and composing functions.\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfunctional_programming = gitlab.Topic(\"functionalProgramming\", description=\"In computer science, functional programming is a programming paradigm where programs are constructed by applying and composing functions.\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var functionalProgramming = new GitLab.Topic(\"functionalProgramming\", new GitLab.TopicArgs\n        {\n            Description = \"In computer science, functional programming is a programming paradigm where programs are constructed by applying and composing functions.\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewTopic(ctx, \"functionalProgramming\", \u0026gitlab.TopicArgs{\n\t\t\tDescription: pulumi.String(\"In computer science, functional programming is a programming paradigm where programs are constructed by applying and composing functions.\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import gitlab:index/topic:Topic # You can import a topic to terraform state using `\u003cresource\u003e \u003cid\u003e`.\n```\n\n # The `id` must be an integer for the id of the topic you want to import, # for example\n\n```sh\n $ pulumi import gitlab:index/topic:Topic functional_programming 1\n```\n\n ",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "A text describing the topic\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The topic's name\n"
+                },
+                "softDestroy": {
+                    "type": "boolean",
+                    "description": "Empty the topics fields instead of deleting it\n"
+                }
+            },
+            "required": [
+                "name",
+                "softDestroy"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "A text describing the topic\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The topic's name\n"
+                },
+                "softDestroy": {
+                    "type": "boolean",
+                    "description": "Empty the topics fields instead of deleting it\n"
+                }
+            },
+            "requiredInputs": [
+                "softDestroy"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Topic resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "A text describing the topic\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The topic's name\n"
+                    },
+                    "softDestroy": {
+                        "type": "boolean",
+                        "description": "Empty the topics fields instead of deleting it\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "gitlab:index/user:User": {
             "description": "This resource allows you to create and manage GitLab users.\nNote your provider will need to be configured with admin-level access for this resource to work.\n\n\u003e You must specify either `password` or `reset_password`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.User(\"example\", {\n    canCreateGroup: false,\n    email: \"gitlab@user.create\",\n    isAdmin: true,\n    isExternal: true,\n    password: \"superPassword\",\n    projectsLimit: 4,\n    resetPassword: false,\n    username: \"example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.User(\"example\",\n    can_create_group=False,\n    email=\"gitlab@user.create\",\n    is_admin=True,\n    is_external=True,\n    password=\"superPassword\",\n    projects_limit=4,\n    reset_password=False,\n    username=\"example\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new GitLab.User(\"example\", new GitLab.UserArgs\n        {\n            CanCreateGroup = false,\n            Email = \"gitlab@user.create\",\n            IsAdmin = true,\n            IsExternal = true,\n            Password = \"superPassword\",\n            ProjectsLimit = 4,\n            ResetPassword = false,\n            Username = \"example\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewUser(ctx, \"example\", \u0026gitlab.UserArgs{\n\t\t\tCanCreateGroup: pulumi.Bool(false),\n\t\t\tEmail:          pulumi.String(\"gitlab@user.create\"),\n\t\t\tIsAdmin:        pulumi.Bool(true),\n\t\t\tIsExternal:     pulumi.Bool(true),\n\t\t\tPassword:       pulumi.String(\"superPassword\"),\n\t\t\tProjectsLimit:  pulumi.Int(4),\n\t\t\tResetPassword:  pulumi.Bool(false),\n\t\t\tUsername:       pulumi.String(\"example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import gitlab:index/user:User # You can import a user to terraform state using `\u003cresource\u003e \u003cid\u003e`.\n```\n\n # The `id` must be an integer for the id of the user you want to import, # for example\n\n```sh\n $ pulumi import gitlab:index/user:User example 42\n```\n\n ",
             "properties": {
@@ -6921,6 +7602,10 @@
                 "skipConfirmation": {
                     "type": "boolean",
                     "description": "Boolean, defaults to true. Whether to skip confirmation.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.\n"
                 },
                 "username": {
                     "type": "string",
@@ -6973,6 +7658,10 @@
                     "type": "boolean",
                     "description": "Boolean, defaults to true. Whether to skip confirmation.\n"
                 },
+                "state": {
+                    "type": "string",
+                    "description": "String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.\n"
+                },
                 "username": {
                     "type": "string",
                     "description": "The username of the user.\n"
@@ -7024,6 +7713,10 @@
                     "skipConfirmation": {
                         "type": "boolean",
                         "description": "Boolean, defaults to true. Whether to skip confirmation.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.\n"
                     },
                     "username": {
                         "type": "string",
@@ -7091,9 +7784,185 @@
                 },
                 "type": "object"
             }
+        },
+        "gitlab:index/userSshKey:UserSshKey": {
+            "description": "This resource allows to manage GitLab user SSH keys.\n\n**Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/users.html#single-ssh-key)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst exampleUser = gitlab.getUser({\n    username: \"example-user\",\n});\nconst exampleUserSshKey = new gitlab.UserSshKey(\"exampleUserSshKey\", {\n    userId: data.gitlab_user.id,\n    title: \"example-key\",\n    key: \"ssh-rsa AAAA...\",\n    expiresAt: \"2016-01-21T00:00:00.000Z\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample_user = gitlab.get_user(username=\"example-user\")\nexample_user_ssh_key = gitlab.UserSshKey(\"exampleUserSshKey\",\n    user_id=data[\"gitlab_user\"][\"id\"],\n    title=\"example-key\",\n    key=\"ssh-rsa AAAA...\",\n    expires_at=\"2016-01-21T00:00:00.000Z\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleUser = Output.Create(GitLab.GetUser.InvokeAsync(new GitLab.GetUserArgs\n        {\n            Username = \"example-user\",\n        }));\n        var exampleUserSshKey = new GitLab.UserSshKey(\"exampleUserSshKey\", new GitLab.UserSshKeyArgs\n        {\n            UserId = data.Gitlab_user.Id,\n            Title = \"example-key\",\n            Key = \"ssh-rsa AAAA...\",\n            ExpiresAt = \"2016-01-21T00:00:00.000Z\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"example-user\"\n\t\t_, err := gitlab.LookupUser(ctx, \u0026GetUserArgs{\n\t\t\tUsername: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewUserSshKey(ctx, \"exampleUserSshKey\", \u0026gitlab.UserSshKeyArgs{\n\t\t\tUserId:    pulumi.Any(data.Gitlab_user.Id),\n\t\t\tTitle:     pulumi.String(\"example-key\"),\n\t\t\tKey:       pulumi.String(\"ssh-rsa AAAA...\"),\n\t\t\tExpiresAt: pulumi.String(\"2016-01-21T00:00:00.000Z\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n# You can import a user ssh key using an id made up of `{user-id}:{key}`, e.g.\n\n```sh\n $ pulumi import gitlab:index/userSshKey:UserSshKey example 42:1\n```\n\n ",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The time when this key was created in GitLab.\n"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.\n"
+                },
+                "keyId": {
+                    "type": "integer",
+                    "description": "The ID of the ssh key.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the ssh key.\n"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "The ID of the user to add the ssh key to.\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "key",
+                "keyId",
+                "title",
+                "userId"
+            ],
+            "inputProperties": {
+                "expiresAt": {
+                    "type": "string",
+                    "description": "The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the ssh key.\n"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "The ID of the user to add the ssh key to.\n"
+                }
+            },
+            "requiredInputs": [
+                "key",
+                "title",
+                "userId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UserSshKey resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The time when this key was created in GitLab.\n"
+                    },
+                    "expiresAt": {
+                        "type": "string",
+                        "description": "The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)\n"
+                    },
+                    "key": {
+                        "type": "string",
+                        "description": "The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.\n"
+                    },
+                    "keyId": {
+                        "type": "integer",
+                        "description": "The ID of the ssh key.\n"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "The title of the ssh key.\n"
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "description": "The ID of the user to add the ssh key to.\n"
+                    }
+                },
+                "type": "object"
+            }
         }
     },
     "functions": {
+        "gitlab:index/getBranch:getBranch": {
+            "description": "Provide details about a gitlab project branch\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\n// By project full path\nconst foo = pulumi.output(gitlab.getBranch({\n    name: \"example\",\n    project: \"foo/bar\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.get_branch(name=\"example\",\n    project=\"foo/bar\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(GitLab.GetBranch.InvokeAsync(new GitLab.GetBranchArgs\n        {\n            Name = \"example\",\n            Project = \"foo/bar\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.LookupBranch(ctx, \u0026GetBranchArgs{\n\t\t\tName:    \"example\",\n\t\t\tProject: \"foo/bar\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getBranch.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the branch.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The full path or id of the project.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "project"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getBranch.\n",
+                "properties": {
+                    "canPush": {
+                        "type": "boolean",
+                        "description": "Bool, true if you can push to the branch.\n"
+                    },
+                    "commits": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/getBranchCommit:getBranchCommit"
+                        },
+                        "description": "The commit associated with the branch ref.\n"
+                    },
+                    "default": {
+                        "type": "boolean",
+                        "description": "Bool, true if branch is the default branch for the project.\n"
+                    },
+                    "developerCanMerge": {
+                        "type": "boolean",
+                        "description": "Bool, true if developer level access allows to merge branch.\n"
+                    },
+                    "developerCanPush": {
+                        "type": "boolean",
+                        "description": "Bool, true if developer level access allows git push.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "merged": {
+                        "type": "boolean",
+                        "description": "Bool, true if the branch has been merged into it's parent.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the branch.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The full path or id of the project.\n"
+                    },
+                    "protected": {
+                        "type": "boolean",
+                        "description": "Bool, true if branch has branch protection.\n"
+                    },
+                    "webUrl": {
+                        "type": "string",
+                        "description": "The url of the created branch (https.)\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "canPush",
+                    "commits",
+                    "default",
+                    "developerCanMerge",
+                    "developerCanPush",
+                    "merged",
+                    "name",
+                    "project",
+                    "protected",
+                    "webUrl",
+                    "id"
+                ]
+            }
+        },
         "gitlab:index/getGroup:getGroup": {
             "description": "Provide details about a specific group in the gitlab provider.\n\n\u003e **Note**: exactly one of group_id or full_path must be provided.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\n// By group's full path\nconst foo = pulumi.output(gitlab.getGroup({\n    fullPath: \"foo/bar\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.get_group(full_path=\"foo/bar\")\n```\n```csharp\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(GitLab.GetGroup.InvokeAsync(new GitLab.GetGroupArgs\n        {\n            FullPath = \"foo/bar\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"foo/bar\"\n\t\t_, err := gitlab.LookupGroup(ctx, \u0026GetGroupArgs{\n\t\t\tFullPath: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -7293,9 +8162,17 @@
                         "type": "boolean",
                         "description": "Enable LFS for the project.\n"
                     },
+                    "mergePipelinesEnabled": {
+                        "type": "boolean",
+                        "description": "Enable or disable merge pipelines.\n"
+                    },
                     "mergeRequestsEnabled": {
                         "type": "boolean",
                         "description": "Enable merge requests for the project.\n"
+                    },
+                    "mergeTrainsEnabled": {
+                        "type": "boolean",
+                        "description": "Enable or disable merge trains.\n"
                     },
                     "name": {
                         "type": "string",
@@ -7316,6 +8193,10 @@
                     "pipelinesEnabled": {
                         "type": "boolean",
                         "description": "Enable pipelines for the project.\n"
+                    },
+                    "printingMergeRequestLinkEnabled": {
+                        "type": "boolean",
+                        "description": "Show link to create/view merge request when pushing from the command line\n"
                     },
                     "pushRules": {
                         "$ref": "#/types/gitlab:index/getProjectPushRules:getProjectPushRules",
@@ -7363,12 +8244,15 @@
                     "id",
                     "issuesEnabled",
                     "lfsEnabled",
+                    "mergePipelinesEnabled",
                     "mergeRequestsEnabled",
+                    "mergeTrainsEnabled",
                     "name",
                     "namespaceId",
                     "path",
                     "pathWithNamespace",
                     "pipelinesEnabled",
+                    "printingMergeRequestLinkEnabled",
                     "pushRules",
                     "removeSourceBranchAfterMerge",
                     "requestAccessEnabled",

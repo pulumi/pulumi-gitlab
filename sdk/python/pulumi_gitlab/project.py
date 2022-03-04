@@ -21,6 +21,7 @@ class ProjectArgs:
                  archived: Optional[pulumi.Input[bool]] = None,
                  build_coverage_regex: Optional[pulumi.Input[str]] = None,
                  ci_config_path: Optional[pulumi.Input[str]] = None,
+                 ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -31,8 +32,10 @@ class ProjectArgs:
                  issues_template: Optional[pulumi.Input[str]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_method: Optional[pulumi.Input[str]] = None,
+                 merge_pipelines_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_requests_template: Optional[pulumi.Input[str]] = None,
+                 merge_trains_enabled: Optional[pulumi.Input[bool]] = None,
                  mirror: Optional[pulumi.Input[bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
@@ -45,6 +48,7 @@ class ProjectArgs:
                  pages_access_level: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  pipelines_enabled: Optional[pulumi.Input[bool]] = None,
+                 printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
                  push_rules: Optional[pulumi.Input['ProjectPushRulesArgs']] = None,
                  remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
@@ -65,6 +69,7 @@ class ProjectArgs:
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
+        :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
@@ -75,8 +80,10 @@ class ProjectArgs:
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
+        :param pulumi.Input[bool] merge_pipelines_enabled: Enable or disable merge pipelines.
         :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
         :param pulumi.Input[str] merge_requests_template: Sets the template for new merge requests in the project.
+        :param pulumi.Input[bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[bool] mirror: Enable project pull mirror.
         :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
         :param pulumi.Input[bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
@@ -89,12 +96,13 @@ class ProjectArgs:
         :param pulumi.Input[str] pages_access_level: Enable pages access control
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
+        :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input['ProjectPushRulesArgs'] push_rules: Push rules for the project.
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
-        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags (topics) of the project.
         :param pulumi.Input[str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         :param pulumi.Input[int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
@@ -114,6 +122,8 @@ class ProjectArgs:
             pulumi.set(__self__, "build_coverage_regex", build_coverage_regex)
         if ci_config_path is not None:
             pulumi.set(__self__, "ci_config_path", ci_config_path)
+        if ci_forward_deployment_enabled is not None:
+            pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
         if container_registry_enabled is not None:
             pulumi.set(__self__, "container_registry_enabled", container_registry_enabled)
         if default_branch is not None:
@@ -134,10 +144,14 @@ class ProjectArgs:
             pulumi.set(__self__, "lfs_enabled", lfs_enabled)
         if merge_method is not None:
             pulumi.set(__self__, "merge_method", merge_method)
+        if merge_pipelines_enabled is not None:
+            pulumi.set(__self__, "merge_pipelines_enabled", merge_pipelines_enabled)
         if merge_requests_enabled is not None:
             pulumi.set(__self__, "merge_requests_enabled", merge_requests_enabled)
         if merge_requests_template is not None:
             pulumi.set(__self__, "merge_requests_template", merge_requests_template)
+        if merge_trains_enabled is not None:
+            pulumi.set(__self__, "merge_trains_enabled", merge_trains_enabled)
         if mirror is not None:
             pulumi.set(__self__, "mirror", mirror)
         if mirror_overwrites_diverged_branches is not None:
@@ -162,6 +176,8 @@ class ProjectArgs:
             pulumi.set(__self__, "path", path)
         if pipelines_enabled is not None:
             pulumi.set(__self__, "pipelines_enabled", pipelines_enabled)
+        if printing_merge_request_link_enabled is not None:
+            pulumi.set(__self__, "printing_merge_request_link_enabled", printing_merge_request_link_enabled)
         if push_rules is not None:
             pulumi.set(__self__, "push_rules", push_rules)
         if remove_source_branch_after_merge is not None:
@@ -258,6 +274,18 @@ class ProjectArgs:
     @ci_config_path.setter
     def ci_config_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ci_config_path", value)
+
+    @property
+    @pulumi.getter(name="ciForwardDeploymentEnabled")
+    def ci_forward_deployment_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When a new deployment job starts, skip older deployment jobs that are still pending.
+        """
+        return pulumi.get(self, "ci_forward_deployment_enabled")
+
+    @ci_forward_deployment_enabled.setter
+    def ci_forward_deployment_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ci_forward_deployment_enabled", value)
 
     @property
     @pulumi.getter(name="containerRegistryEnabled")
@@ -380,6 +408,18 @@ class ProjectArgs:
         pulumi.set(self, "merge_method", value)
 
     @property
+    @pulumi.getter(name="mergePipelinesEnabled")
+    def merge_pipelines_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable merge pipelines.
+        """
+        return pulumi.get(self, "merge_pipelines_enabled")
+
+    @merge_pipelines_enabled.setter
+    def merge_pipelines_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "merge_pipelines_enabled", value)
+
+    @property
     @pulumi.getter(name="mergeRequestsEnabled")
     def merge_requests_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -402,6 +442,18 @@ class ProjectArgs:
     @merge_requests_template.setter
     def merge_requests_template(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "merge_requests_template", value)
+
+    @property
+    @pulumi.getter(name="mergeTrainsEnabled")
+    def merge_trains_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+        """
+        return pulumi.get(self, "merge_trains_enabled")
+
+    @merge_trains_enabled.setter
+    def merge_trains_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "merge_trains_enabled", value)
 
     @property
     @pulumi.getter
@@ -548,6 +600,18 @@ class ProjectArgs:
         pulumi.set(self, "pipelines_enabled", value)
 
     @property
+    @pulumi.getter(name="printingMergeRequestLinkEnabled")
+    def printing_merge_request_link_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Show link to create/view merge request when pushing from the command line
+        """
+        return pulumi.get(self, "printing_merge_request_link_enabled")
+
+    @printing_merge_request_link_enabled.setter
+    def printing_merge_request_link_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "printing_merge_request_link_enabled", value)
+
+    @property
     @pulumi.getter(name="pushRules")
     def push_rules(self) -> Optional[pulumi.Input['ProjectPushRulesArgs']]:
         """
@@ -611,7 +675,7 @@ class ProjectArgs:
     @pulumi.getter(name="squashOption")
     def squash_option(self) -> Optional[pulumi.Input[str]]:
         """
-        Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
         """
         return pulumi.get(self, "squash_option")
 
@@ -701,6 +765,7 @@ class _ProjectState:
                  archived: Optional[pulumi.Input[bool]] = None,
                  build_coverage_regex: Optional[pulumi.Input[str]] = None,
                  ci_config_path: Optional[pulumi.Input[str]] = None,
+                 ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -712,8 +777,10 @@ class _ProjectState:
                  issues_template: Optional[pulumi.Input[str]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_method: Optional[pulumi.Input[str]] = None,
+                 merge_pipelines_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_requests_template: Optional[pulumi.Input[str]] = None,
+                 merge_trains_enabled: Optional[pulumi.Input[bool]] = None,
                  mirror: Optional[pulumi.Input[bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
@@ -727,6 +794,7 @@ class _ProjectState:
                  path: Optional[pulumi.Input[str]] = None,
                  path_with_namespace: Optional[pulumi.Input[str]] = None,
                  pipelines_enabled: Optional[pulumi.Input[bool]] = None,
+                 printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
                  push_rules: Optional[pulumi.Input['ProjectPushRulesArgs']] = None,
                  remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
@@ -750,6 +818,7 @@ class _ProjectState:
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
+        :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
@@ -761,8 +830,10 @@ class _ProjectState:
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
+        :param pulumi.Input[bool] merge_pipelines_enabled: Enable or disable merge pipelines.
         :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
         :param pulumi.Input[str] merge_requests_template: Sets the template for new merge requests in the project.
+        :param pulumi.Input[bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[bool] mirror: Enable project pull mirror.
         :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
         :param pulumi.Input[bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
@@ -776,13 +847,14 @@ class _ProjectState:
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[str] path_with_namespace: The path of the repository with namespace.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
+        :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input['ProjectPushRulesArgs'] push_rules: Push rules for the project.
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[str] runners_token: Registration token to use during runner setup.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
-        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
         :param pulumi.Input[str] ssh_url_to_repo: URL that can be provided to `git clone` to clone the
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags (topics) of the project.
         :param pulumi.Input[str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
@@ -804,6 +876,8 @@ class _ProjectState:
             pulumi.set(__self__, "build_coverage_regex", build_coverage_regex)
         if ci_config_path is not None:
             pulumi.set(__self__, "ci_config_path", ci_config_path)
+        if ci_forward_deployment_enabled is not None:
+            pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
         if container_registry_enabled is not None:
             pulumi.set(__self__, "container_registry_enabled", container_registry_enabled)
         if default_branch is not None:
@@ -826,10 +900,14 @@ class _ProjectState:
             pulumi.set(__self__, "lfs_enabled", lfs_enabled)
         if merge_method is not None:
             pulumi.set(__self__, "merge_method", merge_method)
+        if merge_pipelines_enabled is not None:
+            pulumi.set(__self__, "merge_pipelines_enabled", merge_pipelines_enabled)
         if merge_requests_enabled is not None:
             pulumi.set(__self__, "merge_requests_enabled", merge_requests_enabled)
         if merge_requests_template is not None:
             pulumi.set(__self__, "merge_requests_template", merge_requests_template)
+        if merge_trains_enabled is not None:
+            pulumi.set(__self__, "merge_trains_enabled", merge_trains_enabled)
         if mirror is not None:
             pulumi.set(__self__, "mirror", mirror)
         if mirror_overwrites_diverged_branches is not None:
@@ -856,6 +934,8 @@ class _ProjectState:
             pulumi.set(__self__, "path_with_namespace", path_with_namespace)
         if pipelines_enabled is not None:
             pulumi.set(__self__, "pipelines_enabled", pipelines_enabled)
+        if printing_merge_request_link_enabled is not None:
+            pulumi.set(__self__, "printing_merge_request_link_enabled", printing_merge_request_link_enabled)
         if push_rules is not None:
             pulumi.set(__self__, "push_rules", push_rules)
         if remove_source_branch_after_merge is not None:
@@ -958,6 +1038,18 @@ class _ProjectState:
     @ci_config_path.setter
     def ci_config_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ci_config_path", value)
+
+    @property
+    @pulumi.getter(name="ciForwardDeploymentEnabled")
+    def ci_forward_deployment_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When a new deployment job starts, skip older deployment jobs that are still pending.
+        """
+        return pulumi.get(self, "ci_forward_deployment_enabled")
+
+    @ci_forward_deployment_enabled.setter
+    def ci_forward_deployment_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ci_forward_deployment_enabled", value)
 
     @property
     @pulumi.getter(name="containerRegistryEnabled")
@@ -1092,6 +1184,18 @@ class _ProjectState:
         pulumi.set(self, "merge_method", value)
 
     @property
+    @pulumi.getter(name="mergePipelinesEnabled")
+    def merge_pipelines_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable merge pipelines.
+        """
+        return pulumi.get(self, "merge_pipelines_enabled")
+
+    @merge_pipelines_enabled.setter
+    def merge_pipelines_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "merge_pipelines_enabled", value)
+
+    @property
     @pulumi.getter(name="mergeRequestsEnabled")
     def merge_requests_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1114,6 +1218,18 @@ class _ProjectState:
     @merge_requests_template.setter
     def merge_requests_template(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "merge_requests_template", value)
+
+    @property
+    @pulumi.getter(name="mergeTrainsEnabled")
+    def merge_trains_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+        """
+        return pulumi.get(self, "merge_trains_enabled")
+
+    @merge_trains_enabled.setter
+    def merge_trains_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "merge_trains_enabled", value)
 
     @property
     @pulumi.getter
@@ -1272,6 +1388,18 @@ class _ProjectState:
         pulumi.set(self, "pipelines_enabled", value)
 
     @property
+    @pulumi.getter(name="printingMergeRequestLinkEnabled")
+    def printing_merge_request_link_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Show link to create/view merge request when pushing from the command line
+        """
+        return pulumi.get(self, "printing_merge_request_link_enabled")
+
+    @printing_merge_request_link_enabled.setter
+    def printing_merge_request_link_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "printing_merge_request_link_enabled", value)
+
+    @property
     @pulumi.getter(name="pushRules")
     def push_rules(self) -> Optional[pulumi.Input['ProjectPushRulesArgs']]:
         """
@@ -1347,7 +1475,7 @@ class _ProjectState:
     @pulumi.getter(name="squashOption")
     def squash_option(self) -> Optional[pulumi.Input[str]]:
         """
-        Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
         """
         return pulumi.get(self, "squash_option")
 
@@ -1463,6 +1591,7 @@ class Project(pulumi.CustomResource):
                  archived: Optional[pulumi.Input[bool]] = None,
                  build_coverage_regex: Optional[pulumi.Input[str]] = None,
                  ci_config_path: Optional[pulumi.Input[str]] = None,
+                 ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1473,8 +1602,10 @@ class Project(pulumi.CustomResource):
                  issues_template: Optional[pulumi.Input[str]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_method: Optional[pulumi.Input[str]] = None,
+                 merge_pipelines_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_requests_template: Optional[pulumi.Input[str]] = None,
+                 merge_trains_enabled: Optional[pulumi.Input[bool]] = None,
                  mirror: Optional[pulumi.Input[bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
@@ -1487,6 +1618,7 @@ class Project(pulumi.CustomResource):
                  pages_access_level: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  pipelines_enabled: Optional[pulumi.Input[bool]] = None,
+                 printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
                  push_rules: Optional[pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']]] = None,
                  remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
@@ -1541,6 +1673,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
+        :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
@@ -1551,8 +1684,10 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
+        :param pulumi.Input[bool] merge_pipelines_enabled: Enable or disable merge pipelines.
         :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
         :param pulumi.Input[str] merge_requests_template: Sets the template for new merge requests in the project.
+        :param pulumi.Input[bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[bool] mirror: Enable project pull mirror.
         :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
         :param pulumi.Input[bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
@@ -1565,12 +1700,13 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] pages_access_level: Enable pages access control
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
+        :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']] push_rules: Push rules for the project.
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
-        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags (topics) of the project.
         :param pulumi.Input[str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         :param pulumi.Input[int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
@@ -1638,6 +1774,7 @@ class Project(pulumi.CustomResource):
                  archived: Optional[pulumi.Input[bool]] = None,
                  build_coverage_regex: Optional[pulumi.Input[str]] = None,
                  ci_config_path: Optional[pulumi.Input[str]] = None,
+                 ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1648,8 +1785,10 @@ class Project(pulumi.CustomResource):
                  issues_template: Optional[pulumi.Input[str]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_method: Optional[pulumi.Input[str]] = None,
+                 merge_pipelines_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_requests_template: Optional[pulumi.Input[str]] = None,
+                 merge_trains_enabled: Optional[pulumi.Input[bool]] = None,
                  mirror: Optional[pulumi.Input[bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
@@ -1662,6 +1801,7 @@ class Project(pulumi.CustomResource):
                  pages_access_level: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  pipelines_enabled: Optional[pulumi.Input[bool]] = None,
+                 printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
                  push_rules: Optional[pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']]] = None,
                  remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
@@ -1692,6 +1832,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["archived"] = archived
             __props__.__dict__["build_coverage_regex"] = build_coverage_regex
             __props__.__dict__["ci_config_path"] = ci_config_path
+            __props__.__dict__["ci_forward_deployment_enabled"] = ci_forward_deployment_enabled
             __props__.__dict__["container_registry_enabled"] = container_registry_enabled
             __props__.__dict__["default_branch"] = default_branch
             __props__.__dict__["description"] = description
@@ -1702,8 +1843,10 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["issues_template"] = issues_template
             __props__.__dict__["lfs_enabled"] = lfs_enabled
             __props__.__dict__["merge_method"] = merge_method
+            __props__.__dict__["merge_pipelines_enabled"] = merge_pipelines_enabled
             __props__.__dict__["merge_requests_enabled"] = merge_requests_enabled
             __props__.__dict__["merge_requests_template"] = merge_requests_template
+            __props__.__dict__["merge_trains_enabled"] = merge_trains_enabled
             __props__.__dict__["mirror"] = mirror
             __props__.__dict__["mirror_overwrites_diverged_branches"] = mirror_overwrites_diverged_branches
             __props__.__dict__["mirror_trigger_builds"] = mirror_trigger_builds
@@ -1716,6 +1859,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["pages_access_level"] = pages_access_level
             __props__.__dict__["path"] = path
             __props__.__dict__["pipelines_enabled"] = pipelines_enabled
+            __props__.__dict__["printing_merge_request_link_enabled"] = printing_merge_request_link_enabled
             __props__.__dict__["push_rules"] = push_rules
             __props__.__dict__["remove_source_branch_after_merge"] = remove_source_branch_after_merge
             __props__.__dict__["request_access_enabled"] = request_access_enabled
@@ -1749,6 +1893,7 @@ class Project(pulumi.CustomResource):
             archived: Optional[pulumi.Input[bool]] = None,
             build_coverage_regex: Optional[pulumi.Input[str]] = None,
             ci_config_path: Optional[pulumi.Input[str]] = None,
+            ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
             container_registry_enabled: Optional[pulumi.Input[bool]] = None,
             default_branch: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1760,8 +1905,10 @@ class Project(pulumi.CustomResource):
             issues_template: Optional[pulumi.Input[str]] = None,
             lfs_enabled: Optional[pulumi.Input[bool]] = None,
             merge_method: Optional[pulumi.Input[str]] = None,
+            merge_pipelines_enabled: Optional[pulumi.Input[bool]] = None,
             merge_requests_enabled: Optional[pulumi.Input[bool]] = None,
             merge_requests_template: Optional[pulumi.Input[str]] = None,
+            merge_trains_enabled: Optional[pulumi.Input[bool]] = None,
             mirror: Optional[pulumi.Input[bool]] = None,
             mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
             mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
@@ -1775,6 +1922,7 @@ class Project(pulumi.CustomResource):
             path: Optional[pulumi.Input[str]] = None,
             path_with_namespace: Optional[pulumi.Input[str]] = None,
             pipelines_enabled: Optional[pulumi.Input[bool]] = None,
+            printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
             push_rules: Optional[pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']]] = None,
             remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
             request_access_enabled: Optional[pulumi.Input[bool]] = None,
@@ -1803,6 +1951,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
+        :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
@@ -1814,8 +1963,10 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
+        :param pulumi.Input[bool] merge_pipelines_enabled: Enable or disable merge pipelines.
         :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
         :param pulumi.Input[str] merge_requests_template: Sets the template for new merge requests in the project.
+        :param pulumi.Input[bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[bool] mirror: Enable project pull mirror.
         :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
         :param pulumi.Input[bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
@@ -1829,13 +1980,14 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[str] path_with_namespace: The path of the repository with namespace.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
+        :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']] push_rules: Push rules for the project.
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[str] runners_token: Registration token to use during runner setup.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
-        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
         :param pulumi.Input[str] ssh_url_to_repo: URL that can be provided to `git clone` to clone the
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags (topics) of the project.
         :param pulumi.Input[str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
@@ -1855,6 +2007,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["archived"] = archived
         __props__.__dict__["build_coverage_regex"] = build_coverage_regex
         __props__.__dict__["ci_config_path"] = ci_config_path
+        __props__.__dict__["ci_forward_deployment_enabled"] = ci_forward_deployment_enabled
         __props__.__dict__["container_registry_enabled"] = container_registry_enabled
         __props__.__dict__["default_branch"] = default_branch
         __props__.__dict__["description"] = description
@@ -1866,8 +2019,10 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["issues_template"] = issues_template
         __props__.__dict__["lfs_enabled"] = lfs_enabled
         __props__.__dict__["merge_method"] = merge_method
+        __props__.__dict__["merge_pipelines_enabled"] = merge_pipelines_enabled
         __props__.__dict__["merge_requests_enabled"] = merge_requests_enabled
         __props__.__dict__["merge_requests_template"] = merge_requests_template
+        __props__.__dict__["merge_trains_enabled"] = merge_trains_enabled
         __props__.__dict__["mirror"] = mirror
         __props__.__dict__["mirror_overwrites_diverged_branches"] = mirror_overwrites_diverged_branches
         __props__.__dict__["mirror_trigger_builds"] = mirror_trigger_builds
@@ -1881,6 +2036,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["path"] = path
         __props__.__dict__["path_with_namespace"] = path_with_namespace
         __props__.__dict__["pipelines_enabled"] = pipelines_enabled
+        __props__.__dict__["printing_merge_request_link_enabled"] = printing_merge_request_link_enabled
         __props__.__dict__["push_rules"] = push_rules
         __props__.__dict__["remove_source_branch_after_merge"] = remove_source_branch_after_merge
         __props__.__dict__["request_access_enabled"] = request_access_enabled
@@ -1945,6 +2101,14 @@ class Project(pulumi.CustomResource):
         Custom Path to CI config file.
         """
         return pulumi.get(self, "ci_config_path")
+
+    @property
+    @pulumi.getter(name="ciForwardDeploymentEnabled")
+    def ci_forward_deployment_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When a new deployment job starts, skip older deployment jobs that are still pending.
+        """
+        return pulumi.get(self, "ci_forward_deployment_enabled")
 
     @property
     @pulumi.getter(name="containerRegistryEnabled")
@@ -2035,6 +2199,14 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "merge_method")
 
     @property
+    @pulumi.getter(name="mergePipelinesEnabled")
+    def merge_pipelines_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable or disable merge pipelines.
+        """
+        return pulumi.get(self, "merge_pipelines_enabled")
+
+    @property
     @pulumi.getter(name="mergeRequestsEnabled")
     def merge_requests_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -2049,6 +2221,14 @@ class Project(pulumi.CustomResource):
         Sets the template for new merge requests in the project.
         """
         return pulumi.get(self, "merge_requests_template")
+
+    @property
+    @pulumi.getter(name="mergeTrainsEnabled")
+    def merge_trains_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+        """
+        return pulumi.get(self, "merge_trains_enabled")
 
     @property
     @pulumi.getter
@@ -2155,6 +2335,14 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "pipelines_enabled")
 
     @property
+    @pulumi.getter(name="printingMergeRequestLinkEnabled")
+    def printing_merge_request_link_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Show link to create/view merge request when pushing from the command line
+        """
+        return pulumi.get(self, "printing_merge_request_link_enabled")
+
+    @property
     @pulumi.getter(name="pushRules")
     def push_rules(self) -> pulumi.Output['outputs.ProjectPushRules']:
         """
@@ -2206,7 +2394,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="squashOption")
     def squash_option(self) -> pulumi.Output[Optional[str]]:
         """
-        Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
         """
         return pulumi.get(self, "squash_option")
 

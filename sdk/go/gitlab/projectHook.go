@@ -66,6 +66,8 @@ type ProjectHook struct {
 	PushEvents pulumi.BoolPtrOutput `pulumi:"pushEvents"`
 	// Invoke the hook for push events on matching branches only.
 	PushEventsBranchFilter pulumi.StringPtrOutput `pulumi:"pushEventsBranchFilter"`
+	// Invoke the hook for releases events.
+	ReleasesEvents pulumi.BoolPtrOutput `pulumi:"releasesEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents pulumi.BoolPtrOutput `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook.
@@ -135,6 +137,8 @@ type projectHookState struct {
 	PushEvents *bool `pulumi:"pushEvents"`
 	// Invoke the hook for push events on matching branches only.
 	PushEventsBranchFilter *string `pulumi:"pushEventsBranchFilter"`
+	// Invoke the hook for releases events.
+	ReleasesEvents *bool `pulumi:"releasesEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook.
@@ -170,6 +174,8 @@ type ProjectHookState struct {
 	PushEvents pulumi.BoolPtrInput
 	// Invoke the hook for push events on matching branches only.
 	PushEventsBranchFilter pulumi.StringPtrInput
+	// Invoke the hook for releases events.
+	ReleasesEvents pulumi.BoolPtrInput
 	// Invoke the hook for tag push events.
 	TagPushEvents pulumi.BoolPtrInput
 	// A token to present when invoking the hook.
@@ -209,6 +215,8 @@ type projectHookArgs struct {
 	PushEvents *bool `pulumi:"pushEvents"`
 	// Invoke the hook for push events on matching branches only.
 	PushEventsBranchFilter *string `pulumi:"pushEventsBranchFilter"`
+	// Invoke the hook for releases events.
+	ReleasesEvents *bool `pulumi:"releasesEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook.
@@ -245,6 +253,8 @@ type ProjectHookArgs struct {
 	PushEvents pulumi.BoolPtrInput
 	// Invoke the hook for push events on matching branches only.
 	PushEventsBranchFilter pulumi.StringPtrInput
+	// Invoke the hook for releases events.
+	ReleasesEvents pulumi.BoolPtrInput
 	// Invoke the hook for tag push events.
 	TagPushEvents pulumi.BoolPtrInput
 	// A token to present when invoking the hook.

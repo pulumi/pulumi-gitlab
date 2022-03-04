@@ -75,6 +75,8 @@ type Project struct {
 	BuildCoverageRegex pulumi.StringPtrOutput `pulumi:"buildCoverageRegex"`
 	// Custom Path to CI config file.
 	CiConfigPath pulumi.StringPtrOutput `pulumi:"ciConfigPath"`
+	// When a new deployment job starts, skip older deployment jobs that are still pending.
+	CiForwardDeploymentEnabled pulumi.BoolPtrOutput `pulumi:"ciForwardDeploymentEnabled"`
 	// Enable container registry for the project.
 	ContainerRegistryEnabled pulumi.BoolPtrOutput `pulumi:"containerRegistryEnabled"`
 	// The default branch for the project.
@@ -97,10 +99,14 @@ type Project struct {
 	LfsEnabled pulumi.BoolPtrOutput `pulumi:"lfsEnabled"`
 	// Set to `ff` to create fast-forward merges
 	MergeMethod pulumi.StringPtrOutput `pulumi:"mergeMethod"`
+	// Enable or disable merge pipelines.
+	MergePipelinesEnabled pulumi.BoolPtrOutput `pulumi:"mergePipelinesEnabled"`
 	// Enable merge requests for the project.
 	MergeRequestsEnabled pulumi.BoolPtrOutput `pulumi:"mergeRequestsEnabled"`
 	// Sets the template for new merge requests in the project.
 	MergeRequestsTemplate pulumi.StringPtrOutput `pulumi:"mergeRequestsTemplate"`
+	// Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
+	MergeTrainsEnabled pulumi.BoolPtrOutput `pulumi:"mergeTrainsEnabled"`
 	// Enable project pull mirror.
 	Mirror pulumi.BoolPtrOutput `pulumi:"mirror"`
 	// Enable overwrite diverged branches for a mirrored project.
@@ -127,6 +133,8 @@ type Project struct {
 	PathWithNamespace pulumi.StringOutput `pulumi:"pathWithNamespace"`
 	// Enable pipelines for the project.
 	PipelinesEnabled pulumi.BoolPtrOutput `pulumi:"pipelinesEnabled"`
+	// Show link to create/view merge request when pushing from the command line
+	PrintingMergeRequestLinkEnabled pulumi.BoolPtrOutput `pulumi:"printingMergeRequestLinkEnabled"`
 	// Push rules for the project.
 	PushRules ProjectPushRulesOutput `pulumi:"pushRules"`
 	// Enable `Delete source branch` option by default for all new merge requests.
@@ -139,7 +147,7 @@ type Project struct {
 	SharedRunnersEnabled pulumi.BoolOutput `pulumi:"sharedRunnersEnabled"`
 	// Enable snippets for the project.
 	SnippetsEnabled pulumi.BoolPtrOutput `pulumi:"snippetsEnabled"`
-	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
 	SquashOption pulumi.StringPtrOutput `pulumi:"squashOption"`
 	// URL that can be provided to `git clone` to clone the
 	SshUrlToRepo pulumi.StringOutput `pulumi:"sshUrlToRepo"`
@@ -200,6 +208,8 @@ type projectState struct {
 	BuildCoverageRegex *string `pulumi:"buildCoverageRegex"`
 	// Custom Path to CI config file.
 	CiConfigPath *string `pulumi:"ciConfigPath"`
+	// When a new deployment job starts, skip older deployment jobs that are still pending.
+	CiForwardDeploymentEnabled *bool `pulumi:"ciForwardDeploymentEnabled"`
 	// Enable container registry for the project.
 	ContainerRegistryEnabled *bool `pulumi:"containerRegistryEnabled"`
 	// The default branch for the project.
@@ -222,10 +232,14 @@ type projectState struct {
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
 	// Set to `ff` to create fast-forward merges
 	MergeMethod *string `pulumi:"mergeMethod"`
+	// Enable or disable merge pipelines.
+	MergePipelinesEnabled *bool `pulumi:"mergePipelinesEnabled"`
 	// Enable merge requests for the project.
 	MergeRequestsEnabled *bool `pulumi:"mergeRequestsEnabled"`
 	// Sets the template for new merge requests in the project.
 	MergeRequestsTemplate *string `pulumi:"mergeRequestsTemplate"`
+	// Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
+	MergeTrainsEnabled *bool `pulumi:"mergeTrainsEnabled"`
 	// Enable project pull mirror.
 	Mirror *bool `pulumi:"mirror"`
 	// Enable overwrite diverged branches for a mirrored project.
@@ -252,6 +266,8 @@ type projectState struct {
 	PathWithNamespace *string `pulumi:"pathWithNamespace"`
 	// Enable pipelines for the project.
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
+	// Show link to create/view merge request when pushing from the command line
+	PrintingMergeRequestLinkEnabled *bool `pulumi:"printingMergeRequestLinkEnabled"`
 	// Push rules for the project.
 	PushRules *ProjectPushRules `pulumi:"pushRules"`
 	// Enable `Delete source branch` option by default for all new merge requests.
@@ -264,7 +280,7 @@ type projectState struct {
 	SharedRunnersEnabled *bool `pulumi:"sharedRunnersEnabled"`
 	// Enable snippets for the project.
 	SnippetsEnabled *bool `pulumi:"snippetsEnabled"`
-	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
 	SquashOption *string `pulumi:"squashOption"`
 	// URL that can be provided to `git clone` to clone the
 	SshUrlToRepo *string `pulumi:"sshUrlToRepo"`
@@ -297,6 +313,8 @@ type ProjectState struct {
 	BuildCoverageRegex pulumi.StringPtrInput
 	// Custom Path to CI config file.
 	CiConfigPath pulumi.StringPtrInput
+	// When a new deployment job starts, skip older deployment jobs that are still pending.
+	CiForwardDeploymentEnabled pulumi.BoolPtrInput
 	// Enable container registry for the project.
 	ContainerRegistryEnabled pulumi.BoolPtrInput
 	// The default branch for the project.
@@ -319,10 +337,14 @@ type ProjectState struct {
 	LfsEnabled pulumi.BoolPtrInput
 	// Set to `ff` to create fast-forward merges
 	MergeMethod pulumi.StringPtrInput
+	// Enable or disable merge pipelines.
+	MergePipelinesEnabled pulumi.BoolPtrInput
 	// Enable merge requests for the project.
 	MergeRequestsEnabled pulumi.BoolPtrInput
 	// Sets the template for new merge requests in the project.
 	MergeRequestsTemplate pulumi.StringPtrInput
+	// Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
+	MergeTrainsEnabled pulumi.BoolPtrInput
 	// Enable project pull mirror.
 	Mirror pulumi.BoolPtrInput
 	// Enable overwrite diverged branches for a mirrored project.
@@ -349,6 +371,8 @@ type ProjectState struct {
 	PathWithNamespace pulumi.StringPtrInput
 	// Enable pipelines for the project.
 	PipelinesEnabled pulumi.BoolPtrInput
+	// Show link to create/view merge request when pushing from the command line
+	PrintingMergeRequestLinkEnabled pulumi.BoolPtrInput
 	// Push rules for the project.
 	PushRules ProjectPushRulesPtrInput
 	// Enable `Delete source branch` option by default for all new merge requests.
@@ -361,7 +385,7 @@ type ProjectState struct {
 	SharedRunnersEnabled pulumi.BoolPtrInput
 	// Enable snippets for the project.
 	SnippetsEnabled pulumi.BoolPtrInput
-	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
 	SquashOption pulumi.StringPtrInput
 	// URL that can be provided to `git clone` to clone the
 	SshUrlToRepo pulumi.StringPtrInput
@@ -398,6 +422,8 @@ type projectArgs struct {
 	BuildCoverageRegex *string `pulumi:"buildCoverageRegex"`
 	// Custom Path to CI config file.
 	CiConfigPath *string `pulumi:"ciConfigPath"`
+	// When a new deployment job starts, skip older deployment jobs that are still pending.
+	CiForwardDeploymentEnabled *bool `pulumi:"ciForwardDeploymentEnabled"`
 	// Enable container registry for the project.
 	ContainerRegistryEnabled *bool `pulumi:"containerRegistryEnabled"`
 	// The default branch for the project.
@@ -418,10 +444,14 @@ type projectArgs struct {
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
 	// Set to `ff` to create fast-forward merges
 	MergeMethod *string `pulumi:"mergeMethod"`
+	// Enable or disable merge pipelines.
+	MergePipelinesEnabled *bool `pulumi:"mergePipelinesEnabled"`
 	// Enable merge requests for the project.
 	MergeRequestsEnabled *bool `pulumi:"mergeRequestsEnabled"`
 	// Sets the template for new merge requests in the project.
 	MergeRequestsTemplate *string `pulumi:"mergeRequestsTemplate"`
+	// Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
+	MergeTrainsEnabled *bool `pulumi:"mergeTrainsEnabled"`
 	// Enable project pull mirror.
 	Mirror *bool `pulumi:"mirror"`
 	// Enable overwrite diverged branches for a mirrored project.
@@ -446,6 +476,8 @@ type projectArgs struct {
 	Path *string `pulumi:"path"`
 	// Enable pipelines for the project.
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
+	// Show link to create/view merge request when pushing from the command line
+	PrintingMergeRequestLinkEnabled *bool `pulumi:"printingMergeRequestLinkEnabled"`
 	// Push rules for the project.
 	PushRules *ProjectPushRules `pulumi:"pushRules"`
 	// Enable `Delete source branch` option by default for all new merge requests.
@@ -456,7 +488,7 @@ type projectArgs struct {
 	SharedRunnersEnabled *bool `pulumi:"sharedRunnersEnabled"`
 	// Enable snippets for the project.
 	SnippetsEnabled *bool `pulumi:"snippetsEnabled"`
-	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
 	SquashOption *string `pulumi:"squashOption"`
 	// Tags (topics) of the project.
 	Tags []string `pulumi:"tags"`
@@ -486,6 +518,8 @@ type ProjectArgs struct {
 	BuildCoverageRegex pulumi.StringPtrInput
 	// Custom Path to CI config file.
 	CiConfigPath pulumi.StringPtrInput
+	// When a new deployment job starts, skip older deployment jobs that are still pending.
+	CiForwardDeploymentEnabled pulumi.BoolPtrInput
 	// Enable container registry for the project.
 	ContainerRegistryEnabled pulumi.BoolPtrInput
 	// The default branch for the project.
@@ -506,10 +540,14 @@ type ProjectArgs struct {
 	LfsEnabled pulumi.BoolPtrInput
 	// Set to `ff` to create fast-forward merges
 	MergeMethod pulumi.StringPtrInput
+	// Enable or disable merge pipelines.
+	MergePipelinesEnabled pulumi.BoolPtrInput
 	// Enable merge requests for the project.
 	MergeRequestsEnabled pulumi.BoolPtrInput
 	// Sets the template for new merge requests in the project.
 	MergeRequestsTemplate pulumi.StringPtrInput
+	// Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
+	MergeTrainsEnabled pulumi.BoolPtrInput
 	// Enable project pull mirror.
 	Mirror pulumi.BoolPtrInput
 	// Enable overwrite diverged branches for a mirrored project.
@@ -534,6 +572,8 @@ type ProjectArgs struct {
 	Path pulumi.StringPtrInput
 	// Enable pipelines for the project.
 	PipelinesEnabled pulumi.BoolPtrInput
+	// Show link to create/view merge request when pushing from the command line
+	PrintingMergeRequestLinkEnabled pulumi.BoolPtrInput
 	// Push rules for the project.
 	PushRules ProjectPushRulesPtrInput
 	// Enable `Delete source branch` option by default for all new merge requests.
@@ -544,7 +584,7 @@ type ProjectArgs struct {
 	SharedRunnersEnabled pulumi.BoolPtrInput
 	// Enable snippets for the project.
 	SnippetsEnabled pulumi.BoolPtrInput
-	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
 	SquashOption pulumi.StringPtrInput
 	// Tags (topics) of the project.
 	Tags pulumi.StringArrayInput

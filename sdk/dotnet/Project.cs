@@ -95,6 +95,12 @@ namespace Pulumi.GitLab
         public Output<string?> CiConfigPath { get; private set; } = null!;
 
         /// <summary>
+        /// When a new deployment job starts, skip older deployment jobs that are still pending.
+        /// </summary>
+        [Output("ciForwardDeploymentEnabled")]
+        public Output<bool?> CiForwardDeploymentEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Enable container registry for the project.
         /// </summary>
         [Output("containerRegistryEnabled")]
@@ -161,6 +167,12 @@ namespace Pulumi.GitLab
         public Output<string?> MergeMethod { get; private set; } = null!;
 
         /// <summary>
+        /// Enable or disable merge pipelines.
+        /// </summary>
+        [Output("mergePipelinesEnabled")]
+        public Output<bool?> MergePipelinesEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Enable merge requests for the project.
         /// </summary>
         [Output("mergeRequestsEnabled")]
@@ -171,6 +183,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("mergeRequestsTemplate")]
         public Output<string?> MergeRequestsTemplate { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+        /// </summary>
+        [Output("mergeTrainsEnabled")]
+        public Output<bool?> MergeTrainsEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Enable project pull mirror.
@@ -251,6 +269,12 @@ namespace Pulumi.GitLab
         public Output<bool?> PipelinesEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Show link to create/view merge request when pushing from the command line
+        /// </summary>
+        [Output("printingMergeRequestLinkEnabled")]
+        public Output<bool?> PrintingMergeRequestLinkEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Push rules for the project.
         /// </summary>
         [Output("pushRules")]
@@ -287,7 +311,7 @@ namespace Pulumi.GitLab
         public Output<bool?> SnippetsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
         /// </summary>
         [Output("squashOption")]
         public Output<string?> SquashOption { get; private set; } = null!;
@@ -423,6 +447,12 @@ namespace Pulumi.GitLab
         public Input<string>? CiConfigPath { get; set; }
 
         /// <summary>
+        /// When a new deployment job starts, skip older deployment jobs that are still pending.
+        /// </summary>
+        [Input("ciForwardDeploymentEnabled")]
+        public Input<bool>? CiForwardDeploymentEnabled { get; set; }
+
+        /// <summary>
         /// Enable container registry for the project.
         /// </summary>
         [Input("containerRegistryEnabled")]
@@ -483,6 +513,12 @@ namespace Pulumi.GitLab
         public Input<string>? MergeMethod { get; set; }
 
         /// <summary>
+        /// Enable or disable merge pipelines.
+        /// </summary>
+        [Input("mergePipelinesEnabled")]
+        public Input<bool>? MergePipelinesEnabled { get; set; }
+
+        /// <summary>
         /// Enable merge requests for the project.
         /// </summary>
         [Input("mergeRequestsEnabled")]
@@ -493,6 +529,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mergeRequestsTemplate")]
         public Input<string>? MergeRequestsTemplate { get; set; }
+
+        /// <summary>
+        /// Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+        /// </summary>
+        [Input("mergeTrainsEnabled")]
+        public Input<bool>? MergeTrainsEnabled { get; set; }
 
         /// <summary>
         /// Enable project pull mirror.
@@ -567,6 +609,12 @@ namespace Pulumi.GitLab
         public Input<bool>? PipelinesEnabled { get; set; }
 
         /// <summary>
+        /// Show link to create/view merge request when pushing from the command line
+        /// </summary>
+        [Input("printingMergeRequestLinkEnabled")]
+        public Input<bool>? PrintingMergeRequestLinkEnabled { get; set; }
+
+        /// <summary>
         /// Push rules for the project.
         /// </summary>
         [Input("pushRules")]
@@ -597,7 +645,7 @@ namespace Pulumi.GitLab
         public Input<bool>? SnippetsEnabled { get; set; }
 
         /// <summary>
-        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
         /// </summary>
         [Input("squashOption")]
         public Input<string>? SquashOption { get; set; }
@@ -688,6 +736,12 @@ namespace Pulumi.GitLab
         public Input<string>? CiConfigPath { get; set; }
 
         /// <summary>
+        /// When a new deployment job starts, skip older deployment jobs that are still pending.
+        /// </summary>
+        [Input("ciForwardDeploymentEnabled")]
+        public Input<bool>? CiForwardDeploymentEnabled { get; set; }
+
+        /// <summary>
         /// Enable container registry for the project.
         /// </summary>
         [Input("containerRegistryEnabled")]
@@ -754,6 +808,12 @@ namespace Pulumi.GitLab
         public Input<string>? MergeMethod { get; set; }
 
         /// <summary>
+        /// Enable or disable merge pipelines.
+        /// </summary>
+        [Input("mergePipelinesEnabled")]
+        public Input<bool>? MergePipelinesEnabled { get; set; }
+
+        /// <summary>
         /// Enable merge requests for the project.
         /// </summary>
         [Input("mergeRequestsEnabled")]
@@ -764,6 +824,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mergeRequestsTemplate")]
         public Input<string>? MergeRequestsTemplate { get; set; }
+
+        /// <summary>
+        /// Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+        /// </summary>
+        [Input("mergeTrainsEnabled")]
+        public Input<bool>? MergeTrainsEnabled { get; set; }
 
         /// <summary>
         /// Enable project pull mirror.
@@ -844,6 +910,12 @@ namespace Pulumi.GitLab
         public Input<bool>? PipelinesEnabled { get; set; }
 
         /// <summary>
+        /// Show link to create/view merge request when pushing from the command line
+        /// </summary>
+        [Input("printingMergeRequestLinkEnabled")]
+        public Input<bool>? PrintingMergeRequestLinkEnabled { get; set; }
+
+        /// <summary>
         /// Push rules for the project.
         /// </summary>
         [Input("pushRules")]
@@ -880,7 +952,7 @@ namespace Pulumi.GitLab
         public Input<bool>? SnippetsEnabled { get; set; }
 
         /// <summary>
-        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
         /// </summary>
         [Input("squashOption")]
         public Input<string>? SquashOption { get; set; }

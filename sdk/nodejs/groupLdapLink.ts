@@ -23,10 +23,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # GitLab group ldap links can be imported using an id made up of `ldap_provider:cn`, e.g.
+ * # GitLab group ldap links can be imported using an id made up of `group_id:ldap_provider:cn`, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test "ldapmain:testuser"
+ *  $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test "12345:ldapmain:testuser"
  * ```
  */
 export class GroupLdapLink extends pulumi.CustomResource {

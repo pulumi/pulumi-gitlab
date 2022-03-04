@@ -26,6 +26,7 @@ class ProjectHookArgs:
                  pipeline_events: Optional[pulumi.Input[bool]] = None,
                  push_events: Optional[pulumi.Input[bool]] = None,
                  push_events_branch_filter: Optional[pulumi.Input[str]] = None,
+                 releases_events: Optional[pulumi.Input[bool]] = None,
                  tag_push_events: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  wiki_page_events: Optional[pulumi.Input[bool]] = None):
@@ -44,6 +45,7 @@ class ProjectHookArgs:
         :param pulumi.Input[bool] pipeline_events: Invoke the hook for pipeline events.
         :param pulumi.Input[bool] push_events: Invoke the hook for push events.
         :param pulumi.Input[str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
+        :param pulumi.Input[bool] releases_events: Invoke the hook for releases events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
         :param pulumi.Input[str] token: A token to present when invoking the hook.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
@@ -72,6 +74,8 @@ class ProjectHookArgs:
             pulumi.set(__self__, "push_events", push_events)
         if push_events_branch_filter is not None:
             pulumi.set(__self__, "push_events_branch_filter", push_events_branch_filter)
+        if releases_events is not None:
+            pulumi.set(__self__, "releases_events", releases_events)
         if tag_push_events is not None:
             pulumi.set(__self__, "tag_push_events", tag_push_events)
         if token is not None:
@@ -236,6 +240,18 @@ class ProjectHookArgs:
         pulumi.set(self, "push_events_branch_filter", value)
 
     @property
+    @pulumi.getter(name="releasesEvents")
+    def releases_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Invoke the hook for releases events.
+        """
+        return pulumi.get(self, "releases_events")
+
+    @releases_events.setter
+    def releases_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "releases_events", value)
+
+    @property
     @pulumi.getter(name="tagPushEvents")
     def tag_push_events(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -287,6 +303,7 @@ class _ProjectHookState:
                  project: Optional[pulumi.Input[str]] = None,
                  push_events: Optional[pulumi.Input[bool]] = None,
                  push_events_branch_filter: Optional[pulumi.Input[str]] = None,
+                 releases_events: Optional[pulumi.Input[bool]] = None,
                  tag_push_events: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -305,6 +322,7 @@ class _ProjectHookState:
         :param pulumi.Input[str] project: The name or id of the project to add the hook to.
         :param pulumi.Input[bool] push_events: Invoke the hook for push events.
         :param pulumi.Input[str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
+        :param pulumi.Input[bool] releases_events: Invoke the hook for releases events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
         :param pulumi.Input[str] token: A token to present when invoking the hook.
         :param pulumi.Input[str] url: The url of the hook to invoke.
@@ -334,6 +352,8 @@ class _ProjectHookState:
             pulumi.set(__self__, "push_events", push_events)
         if push_events_branch_filter is not None:
             pulumi.set(__self__, "push_events_branch_filter", push_events_branch_filter)
+        if releases_events is not None:
+            pulumi.set(__self__, "releases_events", releases_events)
         if tag_push_events is not None:
             pulumi.set(__self__, "tag_push_events", tag_push_events)
         if token is not None:
@@ -488,6 +508,18 @@ class _ProjectHookState:
         pulumi.set(self, "push_events_branch_filter", value)
 
     @property
+    @pulumi.getter(name="releasesEvents")
+    def releases_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Invoke the hook for releases events.
+        """
+        return pulumi.get(self, "releases_events")
+
+    @releases_events.setter
+    def releases_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "releases_events", value)
+
+    @property
     @pulumi.getter(name="tagPushEvents")
     def tag_push_events(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -553,6 +585,7 @@ class ProjectHook(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  push_events: Optional[pulumi.Input[bool]] = None,
                  push_events_branch_filter: Optional[pulumi.Input[str]] = None,
+                 releases_events: Optional[pulumi.Input[bool]] = None,
                  tag_push_events: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -589,6 +622,7 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[str] project: The name or id of the project to add the hook to.
         :param pulumi.Input[bool] push_events: Invoke the hook for push events.
         :param pulumi.Input[str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
+        :param pulumi.Input[bool] releases_events: Invoke the hook for releases events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
         :param pulumi.Input[str] token: A token to present when invoking the hook.
         :param pulumi.Input[str] url: The url of the hook to invoke.
@@ -644,6 +678,7 @@ class ProjectHook(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  push_events: Optional[pulumi.Input[bool]] = None,
                  push_events_branch_filter: Optional[pulumi.Input[str]] = None,
+                 releases_events: Optional[pulumi.Input[bool]] = None,
                  tag_push_events: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -674,6 +709,7 @@ class ProjectHook(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["push_events"] = push_events
             __props__.__dict__["push_events_branch_filter"] = push_events_branch_filter
+            __props__.__dict__["releases_events"] = releases_events
             __props__.__dict__["tag_push_events"] = tag_push_events
             __props__.__dict__["token"] = token
             if url is None and not opts.urn:
@@ -702,6 +738,7 @@ class ProjectHook(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             push_events: Optional[pulumi.Input[bool]] = None,
             push_events_branch_filter: Optional[pulumi.Input[str]] = None,
+            releases_events: Optional[pulumi.Input[bool]] = None,
             tag_push_events: Optional[pulumi.Input[bool]] = None,
             token: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
@@ -725,6 +762,7 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[str] project: The name or id of the project to add the hook to.
         :param pulumi.Input[bool] push_events: Invoke the hook for push events.
         :param pulumi.Input[str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
+        :param pulumi.Input[bool] releases_events: Invoke the hook for releases events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
         :param pulumi.Input[str] token: A token to present when invoking the hook.
         :param pulumi.Input[str] url: The url of the hook to invoke.
@@ -746,6 +784,7 @@ class ProjectHook(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["push_events"] = push_events
         __props__.__dict__["push_events_branch_filter"] = push_events_branch_filter
+        __props__.__dict__["releases_events"] = releases_events
         __props__.__dict__["tag_push_events"] = tag_push_events
         __props__.__dict__["token"] = token
         __props__.__dict__["url"] = url
@@ -847,6 +886,14 @@ class ProjectHook(pulumi.CustomResource):
         Invoke the hook for push events on matching branches only.
         """
         return pulumi.get(self, "push_events_branch_filter")
+
+    @property
+    @pulumi.getter(name="releasesEvents")
+    def releases_events(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Invoke the hook for releases events.
+        """
+        return pulumi.get(self, "releases_events")
 
     @property
     @pulumi.getter(name="tagPushEvents")
