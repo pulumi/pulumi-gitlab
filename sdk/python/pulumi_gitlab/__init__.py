@@ -5,10 +5,12 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .branch import *
 from .branch_protection import *
 from .deploy_key import *
 from .deploy_key_enable import *
 from .deploy_token import *
+from .get_branch import *
 from .get_group import *
 from .get_group_membership import *
 from .get_project import *
@@ -18,6 +20,7 @@ from .get_projects import *
 from .get_user import *
 from .get_users import *
 from .group import *
+from .group_access_token import *
 from .group_badge import *
 from .group_cluster import *
 from .group_custom_attribute import *
@@ -54,8 +57,10 @@ from .service_microsoft_teams import *
 from .service_pipelines_email import *
 from .service_slack import *
 from .tag_protection import *
+from .topic import *
 from .user import *
 from .user_custom_attribute import *
+from .user_ssh_key import *
 from ._inputs import *
 from . import outputs
 
@@ -69,6 +74,14 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "gitlab",
+  "mod": "index/branch",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/branch:Branch": "Branch"
+  }
+ },
  {
   "pkg": "gitlab",
   "mod": "index/branchProtection",
@@ -107,6 +120,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/group:Group": "Group"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/groupAccessToken",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupAccessToken:GroupAccessToken": "GroupAccessToken"
   }
  },
  {
@@ -391,6 +412,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/topic",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/topic:Topic": "Topic"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/user",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -403,6 +432,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/userCustomAttribute:UserCustomAttribute": "UserCustomAttribute"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/userSshKey",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/userSshKey:UserSshKey": "UserSshKey"
   }
  }
 ]

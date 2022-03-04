@@ -19,6 +19,7 @@ class BranchProtectionArgs:
                  merge_access_level: pulumi.Input[str],
                  project: pulumi.Input[str],
                  push_access_level: pulumi.Input[str],
+                 allow_force_push: Optional[pulumi.Input[bool]] = None,
                  allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]]] = None,
                  allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]]] = None,
                  code_owner_approval_required: Optional[pulumi.Input[bool]] = None):
@@ -28,6 +29,7 @@ class BranchProtectionArgs:
         :param pulumi.Input[str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+        :param pulumi.Input[bool] allow_force_push: Can be set to true to allow users with push access to force push.
         :param pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]] allowed_to_merges: Defines permissions for action.
         :param pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]] allowed_to_pushes: Defines permissions for action.
         :param pulumi.Input[bool] code_owner_approval_required: Can be set to true to require code owner approval before merging.
@@ -36,6 +38,8 @@ class BranchProtectionArgs:
         pulumi.set(__self__, "merge_access_level", merge_access_level)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "push_access_level", push_access_level)
+        if allow_force_push is not None:
+            pulumi.set(__self__, "allow_force_push", allow_force_push)
         if allowed_to_merges is not None:
             pulumi.set(__self__, "allowed_to_merges", allowed_to_merges)
         if allowed_to_pushes is not None:
@@ -92,6 +96,18 @@ class BranchProtectionArgs:
         pulumi.set(self, "push_access_level", value)
 
     @property
+    @pulumi.getter(name="allowForcePush")
+    def allow_force_push(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Can be set to true to allow users with push access to force push.
+        """
+        return pulumi.get(self, "allow_force_push")
+
+    @allow_force_push.setter
+    def allow_force_push(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_force_push", value)
+
+    @property
     @pulumi.getter(name="allowedToMerges")
     def allowed_to_merges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]]]:
         """
@@ -131,6 +147,7 @@ class BranchProtectionArgs:
 @pulumi.input_type
 class _BranchProtectionState:
     def __init__(__self__, *,
+                 allow_force_push: Optional[pulumi.Input[bool]] = None,
                  allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]]] = None,
                  allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]]] = None,
                  branch: Optional[pulumi.Input[str]] = None,
@@ -141,6 +158,7 @@ class _BranchProtectionState:
                  push_access_level: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering BranchProtection resources.
+        :param pulumi.Input[bool] allow_force_push: Can be set to true to allow users with push access to force push.
         :param pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]] allowed_to_merges: Defines permissions for action.
         :param pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]] allowed_to_pushes: Defines permissions for action.
         :param pulumi.Input[str] branch: Name of the branch.
@@ -150,6 +168,8 @@ class _BranchProtectionState:
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
         """
+        if allow_force_push is not None:
+            pulumi.set(__self__, "allow_force_push", allow_force_push)
         if allowed_to_merges is not None:
             pulumi.set(__self__, "allowed_to_merges", allowed_to_merges)
         if allowed_to_pushes is not None:
@@ -166,6 +186,18 @@ class _BranchProtectionState:
             pulumi.set(__self__, "project", project)
         if push_access_level is not None:
             pulumi.set(__self__, "push_access_level", push_access_level)
+
+    @property
+    @pulumi.getter(name="allowForcePush")
+    def allow_force_push(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Can be set to true to allow users with push access to force push.
+        """
+        return pulumi.get(self, "allow_force_push")
+
+    @allow_force_push.setter
+    def allow_force_push(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_force_push", value)
 
     @property
     @pulumi.getter(name="allowedToMerges")
@@ -269,6 +301,7 @@ class BranchProtection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_force_push: Optional[pulumi.Input[bool]] = None,
                  allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToMergeArgs']]]]] = None,
                  allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToPushArgs']]]]] = None,
                  branch: Optional[pulumi.Input[str]] = None,
@@ -292,6 +325,7 @@ class BranchProtection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_force_push: Can be set to true to allow users with push access to force push.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToMergeArgs']]]] allowed_to_merges: Defines permissions for action.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToPushArgs']]]] allowed_to_pushes: Defines permissions for action.
         :param pulumi.Input[str] branch: Name of the branch.
@@ -334,6 +368,7 @@ class BranchProtection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_force_push: Optional[pulumi.Input[bool]] = None,
                  allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToMergeArgs']]]]] = None,
                  allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToPushArgs']]]]] = None,
                  branch: Optional[pulumi.Input[str]] = None,
@@ -353,6 +388,7 @@ class BranchProtection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BranchProtectionArgs.__new__(BranchProtectionArgs)
 
+            __props__.__dict__["allow_force_push"] = allow_force_push
             __props__.__dict__["allowed_to_merges"] = allowed_to_merges
             __props__.__dict__["allowed_to_pushes"] = allowed_to_pushes
             if branch is None and not opts.urn:
@@ -379,6 +415,7 @@ class BranchProtection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allow_force_push: Optional[pulumi.Input[bool]] = None,
             allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToMergeArgs']]]]] = None,
             allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToPushArgs']]]]] = None,
             branch: Optional[pulumi.Input[str]] = None,
@@ -394,6 +431,7 @@ class BranchProtection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_force_push: Can be set to true to allow users with push access to force push.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToMergeArgs']]]] allowed_to_merges: Defines permissions for action.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToPushArgs']]]] allowed_to_pushes: Defines permissions for action.
         :param pulumi.Input[str] branch: Name of the branch.
@@ -407,6 +445,7 @@ class BranchProtection(pulumi.CustomResource):
 
         __props__ = _BranchProtectionState.__new__(_BranchProtectionState)
 
+        __props__.__dict__["allow_force_push"] = allow_force_push
         __props__.__dict__["allowed_to_merges"] = allowed_to_merges
         __props__.__dict__["allowed_to_pushes"] = allowed_to_pushes
         __props__.__dict__["branch"] = branch
@@ -416,6 +455,14 @@ class BranchProtection(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["push_access_level"] = push_access_level
         return BranchProtection(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allowForcePush")
+    def allow_force_push(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Can be set to true to allow users with push access to force push.
+        """
+        return pulumi.get(self, "allow_force_push")
 
     @property
     @pulumi.getter(name="allowedToMerges")

@@ -65,10 +65,12 @@ type ProjectLevelMrApprovals struct {
 	DisableOverridingApproversPerMergeRequest pulumi.BoolPtrOutput `pulumi:"disableOverridingApproversPerMergeRequest"`
 	// Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
 	MergeRequestsAuthorApproval pulumi.BoolPtrOutput `pulumi:"mergeRequestsAuthorApproval"`
-	// Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
+	// Set to `true` if you want to prevent approval of merge requests by merge request committers.
 	MergeRequestsDisableCommittersApproval pulumi.BoolPtrOutput `pulumi:"mergeRequestsDisableCommittersApproval"`
 	// The ID of the project to change MR approval configuration.
 	ProjectId pulumi.IntOutput `pulumi:"projectId"`
+	// Set to `true` if you want to require authentication when approving a merge request.
+	RequirePasswordToApprove pulumi.BoolPtrOutput `pulumi:"requirePasswordToApprove"`
 	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
 	ResetApprovalsOnPush pulumi.BoolPtrOutput `pulumi:"resetApprovalsOnPush"`
 }
@@ -109,10 +111,12 @@ type projectLevelMrApprovalsState struct {
 	DisableOverridingApproversPerMergeRequest *bool `pulumi:"disableOverridingApproversPerMergeRequest"`
 	// Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
 	MergeRequestsAuthorApproval *bool `pulumi:"mergeRequestsAuthorApproval"`
-	// Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
+	// Set to `true` if you want to prevent approval of merge requests by merge request committers.
 	MergeRequestsDisableCommittersApproval *bool `pulumi:"mergeRequestsDisableCommittersApproval"`
 	// The ID of the project to change MR approval configuration.
 	ProjectId *int `pulumi:"projectId"`
+	// Set to `true` if you want to require authentication when approving a merge request.
+	RequirePasswordToApprove *bool `pulumi:"requirePasswordToApprove"`
 	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
 	ResetApprovalsOnPush *bool `pulumi:"resetApprovalsOnPush"`
 }
@@ -122,10 +126,12 @@ type ProjectLevelMrApprovalsState struct {
 	DisableOverridingApproversPerMergeRequest pulumi.BoolPtrInput
 	// Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
 	MergeRequestsAuthorApproval pulumi.BoolPtrInput
-	// Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
+	// Set to `true` if you want to prevent approval of merge requests by merge request committers.
 	MergeRequestsDisableCommittersApproval pulumi.BoolPtrInput
 	// The ID of the project to change MR approval configuration.
 	ProjectId pulumi.IntPtrInput
+	// Set to `true` if you want to require authentication when approving a merge request.
+	RequirePasswordToApprove pulumi.BoolPtrInput
 	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
 	ResetApprovalsOnPush pulumi.BoolPtrInput
 }
@@ -139,10 +145,12 @@ type projectLevelMrApprovalsArgs struct {
 	DisableOverridingApproversPerMergeRequest *bool `pulumi:"disableOverridingApproversPerMergeRequest"`
 	// Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
 	MergeRequestsAuthorApproval *bool `pulumi:"mergeRequestsAuthorApproval"`
-	// Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
+	// Set to `true` if you want to prevent approval of merge requests by merge request committers.
 	MergeRequestsDisableCommittersApproval *bool `pulumi:"mergeRequestsDisableCommittersApproval"`
 	// The ID of the project to change MR approval configuration.
 	ProjectId int `pulumi:"projectId"`
+	// Set to `true` if you want to require authentication when approving a merge request.
+	RequirePasswordToApprove *bool `pulumi:"requirePasswordToApprove"`
 	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
 	ResetApprovalsOnPush *bool `pulumi:"resetApprovalsOnPush"`
 }
@@ -153,10 +161,12 @@ type ProjectLevelMrApprovalsArgs struct {
 	DisableOverridingApproversPerMergeRequest pulumi.BoolPtrInput
 	// Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
 	MergeRequestsAuthorApproval pulumi.BoolPtrInput
-	// Set to `true` if you want to prevent approval of merge requests by merge request committers. Default is `false`.
+	// Set to `true` if you want to prevent approval of merge requests by merge request committers.
 	MergeRequestsDisableCommittersApproval pulumi.BoolPtrInput
 	// The ID of the project to change MR approval configuration.
 	ProjectId pulumi.IntInput
+	// Set to `true` if you want to require authentication when approving a merge request.
+	RequirePasswordToApprove pulumi.BoolPtrInput
 	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
 	ResetApprovalsOnPush pulumi.BoolPtrInput
 }

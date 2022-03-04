@@ -109,6 +109,10 @@ export class User extends pulumi.CustomResource {
      */
     public readonly skipConfirmation!: pulumi.Output<boolean | undefined>;
     /**
+     * String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
+     */
+    public readonly state!: pulumi.Output<string | undefined>;
+    /**
      * The username of the user.
      */
     public readonly username!: pulumi.Output<string>;
@@ -136,6 +140,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["projectsLimit"] = state ? state.projectsLimit : undefined;
             resourceInputs["resetPassword"] = state ? state.resetPassword : undefined;
             resourceInputs["skipConfirmation"] = state ? state.skipConfirmation : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
@@ -155,6 +160,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["projectsLimit"] = args ? args.projectsLimit : undefined;
             resourceInputs["resetPassword"] = args ? args.resetPassword : undefined;
             resourceInputs["skipConfirmation"] = args ? args.skipConfirmation : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -207,6 +213,10 @@ export interface UserState {
      */
     skipConfirmation?: pulumi.Input<boolean>;
     /**
+     * String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
+     */
+    state?: pulumi.Input<string>;
+    /**
      * The username of the user.
      */
     username?: pulumi.Input<string>;
@@ -256,6 +266,10 @@ export interface UserArgs {
      * Boolean, defaults to true. Whether to skip confirmation.
      */
     skipConfirmation?: pulumi.Input<boolean>;
+    /**
+     * String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
+     */
+    state?: pulumi.Input<string>;
     /**
      * The username of the user.
      */

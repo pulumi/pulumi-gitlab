@@ -17,6 +17,7 @@ class ServiceJiraArgs:
                  project: pulumi.Input[str],
                  url: pulumi.Input[str],
                  username: pulumi.Input[str],
+                 api_url: Optional[pulumi.Input[str]] = None,
                  comment_on_event_enabled: Optional[pulumi.Input[bool]] = None,
                  commit_events: Optional[pulumi.Input[bool]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
@@ -34,6 +35,7 @@ class ServiceJiraArgs:
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
         :param pulumi.Input[str] username: The username of the user created to be used with GitLab/JIRA.
+        :param pulumi.Input[str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
         :param pulumi.Input[bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
         :param pulumi.Input[bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
@@ -50,6 +52,8 @@ class ServiceJiraArgs:
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "url", url)
         pulumi.set(__self__, "username", username)
+        if api_url is not None:
+            pulumi.set(__self__, "api_url", api_url)
         if comment_on_event_enabled is not None:
             pulumi.set(__self__, "comment_on_event_enabled", comment_on_event_enabled)
         if commit_events is not None:
@@ -120,6 +124,18 @@ class ServiceJiraArgs:
     @username.setter
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="apiUrl")
+    def api_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        """
+        return pulumi.get(self, "api_url")
+
+    @api_url.setter
+    def api_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_url", value)
 
     @property
     @pulumi.getter(name="commentOnEventEnabled")
@@ -258,6 +274,7 @@ class ServiceJiraArgs:
 class _ServiceJiraState:
     def __init__(__self__, *,
                  active: Optional[pulumi.Input[bool]] = None,
+                 api_url: Optional[pulumi.Input[str]] = None,
                  comment_on_event_enabled: Optional[pulumi.Input[bool]] = None,
                  commit_events: Optional[pulumi.Input[bool]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
@@ -279,6 +296,7 @@ class _ServiceJiraState:
         """
         Input properties used for looking up and filtering ServiceJira resources.
         :param pulumi.Input[bool] active: Whether the integration is active.
+        :param pulumi.Input[str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
         :param pulumi.Input[bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
         :param pulumi.Input[bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[str] created_at: Create time.
@@ -300,6 +318,8 @@ class _ServiceJiraState:
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
+        if api_url is not None:
+            pulumi.set(__self__, "api_url", api_url)
         if comment_on_event_enabled is not None:
             pulumi.set(__self__, "comment_on_event_enabled", comment_on_event_enabled)
         if commit_events is not None:
@@ -348,6 +368,18 @@ class _ServiceJiraState:
     @active.setter
     def active(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "active", value)
+
+    @property
+    @pulumi.getter(name="apiUrl")
+    def api_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        """
+        return pulumi.get(self, "api_url")
+
+    @api_url.setter
+    def api_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_url", value)
 
     @property
     @pulumi.getter(name="commentOnEventEnabled")
@@ -571,6 +603,7 @@ class ServiceJira(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_url: Optional[pulumi.Input[str]] = None,
                  comment_on_event_enabled: Optional[pulumi.Input[bool]] = None,
                  commit_events: Optional[pulumi.Input[bool]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
@@ -616,6 +649,7 @@ class ServiceJira(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
         :param pulumi.Input[bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
         :param pulumi.Input[bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
@@ -680,6 +714,7 @@ class ServiceJira(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_url: Optional[pulumi.Input[str]] = None,
                  comment_on_event_enabled: Optional[pulumi.Input[bool]] = None,
                  commit_events: Optional[pulumi.Input[bool]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
@@ -707,6 +742,7 @@ class ServiceJira(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceJiraArgs.__new__(ServiceJiraArgs)
 
+            __props__.__dict__["api_url"] = api_url
             __props__.__dict__["comment_on_event_enabled"] = comment_on_event_enabled
             __props__.__dict__["commit_events"] = commit_events
             __props__.__dict__["issues_events"] = issues_events
@@ -745,6 +781,7 @@ class ServiceJira(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             active: Optional[pulumi.Input[bool]] = None,
+            api_url: Optional[pulumi.Input[str]] = None,
             comment_on_event_enabled: Optional[pulumi.Input[bool]] = None,
             commit_events: Optional[pulumi.Input[bool]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
@@ -771,6 +808,7 @@ class ServiceJira(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Whether the integration is active.
+        :param pulumi.Input[str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
         :param pulumi.Input[bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
         :param pulumi.Input[bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[str] created_at: Create time.
@@ -795,6 +833,7 @@ class ServiceJira(pulumi.CustomResource):
         __props__ = _ServiceJiraState.__new__(_ServiceJiraState)
 
         __props__.__dict__["active"] = active
+        __props__.__dict__["api_url"] = api_url
         __props__.__dict__["comment_on_event_enabled"] = comment_on_event_enabled
         __props__.__dict__["commit_events"] = commit_events
         __props__.__dict__["created_at"] = created_at
@@ -822,6 +861,14 @@ class ServiceJira(pulumi.CustomResource):
         Whether the integration is active.
         """
         return pulumi.get(self, "active")
+
+    @property
+    @pulumi.getter(name="apiUrl")
+    def api_url(self) -> pulumi.Output[str]:
+        """
+        The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        """
+        return pulumi.get(self, "api_url")
 
     @property
     @pulumi.getter(name="commentOnEventEnabled")

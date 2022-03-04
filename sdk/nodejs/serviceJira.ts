@@ -66,6 +66,10 @@ export class ServiceJira extends pulumi.CustomResource {
      */
     public /*out*/ readonly active!: pulumi.Output<boolean>;
     /**
+     * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+     */
+    public readonly apiUrl!: pulumi.Output<string>;
+    /**
      * Enable comments inside Jira issues on each GitLab event (commit / merge request)
      */
     public readonly commentOnEventEnabled!: pulumi.Output<boolean>;
@@ -152,6 +156,7 @@ export class ServiceJira extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ServiceJiraState | undefined;
             resourceInputs["active"] = state ? state.active : undefined;
+            resourceInputs["apiUrl"] = state ? state.apiUrl : undefined;
             resourceInputs["commentOnEventEnabled"] = state ? state.commentOnEventEnabled : undefined;
             resourceInputs["commitEvents"] = state ? state.commitEvents : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
@@ -184,6 +189,7 @@ export class ServiceJira extends pulumi.CustomResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
+            resourceInputs["apiUrl"] = args ? args.apiUrl : undefined;
             resourceInputs["commentOnEventEnabled"] = args ? args.commentOnEventEnabled : undefined;
             resourceInputs["commitEvents"] = args ? args.commitEvents : undefined;
             resourceInputs["issuesEvents"] = args ? args.issuesEvents : undefined;
@@ -217,6 +223,10 @@ export interface ServiceJiraState {
      * Whether the integration is active.
      */
     active?: pulumi.Input<boolean>;
+    /**
+     * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+     */
+    apiUrl?: pulumi.Input<string>;
     /**
      * Enable comments inside Jira issues on each GitLab event (commit / merge request)
      */
@@ -295,6 +305,10 @@ export interface ServiceJiraState {
  * The set of arguments for constructing a ServiceJira resource.
  */
 export interface ServiceJiraArgs {
+    /**
+     * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+     */
+    apiUrl?: pulumi.Input<string>;
     /**
      * Enable comments inside Jira issues on each GitLab event (commit / merge request)
      */

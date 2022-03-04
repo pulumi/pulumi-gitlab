@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  *     branch: "BranchProtected",
  *     pushAccessLevel: "developer",
  *     mergeAccessLevel: "developer",
+ *     allowForcePush: true,
  *     codeOwnerApprovalRequired: true,
  *     allowedToPushes: [
  *         {
@@ -95,6 +96,10 @@ export class BranchProtection extends pulumi.CustomResource {
     }
 
     /**
+     * Can be set to true to allow users with push access to force push.
+     */
+    public readonly allowForcePush!: pulumi.Output<boolean | undefined>;
+    /**
      * Defines permissions for action.
      */
     public readonly allowedToMerges!: pulumi.Output<outputs.BranchProtectionAllowedToMerge[] | undefined>;
@@ -140,6 +145,7 @@ export class BranchProtection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BranchProtectionState | undefined;
+            resourceInputs["allowForcePush"] = state ? state.allowForcePush : undefined;
             resourceInputs["allowedToMerges"] = state ? state.allowedToMerges : undefined;
             resourceInputs["allowedToPushes"] = state ? state.allowedToPushes : undefined;
             resourceInputs["branch"] = state ? state.branch : undefined;
@@ -162,6 +168,7 @@ export class BranchProtection extends pulumi.CustomResource {
             if ((!args || args.pushAccessLevel === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pushAccessLevel'");
             }
+            resourceInputs["allowForcePush"] = args ? args.allowForcePush : undefined;
             resourceInputs["allowedToMerges"] = args ? args.allowedToMerges : undefined;
             resourceInputs["allowedToPushes"] = args ? args.allowedToPushes : undefined;
             resourceInputs["branch"] = args ? args.branch : undefined;
@@ -180,6 +187,10 @@ export class BranchProtection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BranchProtection resources.
  */
 export interface BranchProtectionState {
+    /**
+     * Can be set to true to allow users with push access to force push.
+     */
+    allowForcePush?: pulumi.Input<boolean>;
     /**
      * Defines permissions for action.
      */
@@ -218,6 +229,10 @@ export interface BranchProtectionState {
  * The set of arguments for constructing a BranchProtection resource.
  */
 export interface BranchProtectionArgs {
+    /**
+     * Can be set to true to allow users with push access to force push.
+     */
+    allowForcePush?: pulumi.Input<boolean>;
     /**
      * Defines permissions for action.
      */

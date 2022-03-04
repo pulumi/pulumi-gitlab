@@ -25,6 +25,8 @@ import (
 type BranchProtection struct {
 	pulumi.CustomResourceState
 
+	// Can be set to true to allow users with push access to force push.
+	AllowForcePush pulumi.BoolPtrOutput `pulumi:"allowForcePush"`
 	// Defines permissions for action.
 	AllowedToMerges BranchProtectionAllowedToMergeArrayOutput `pulumi:"allowedToMerges"`
 	// Defines permissions for action.
@@ -84,6 +86,8 @@ func GetBranchProtection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BranchProtection resources.
 type branchProtectionState struct {
+	// Can be set to true to allow users with push access to force push.
+	AllowForcePush *bool `pulumi:"allowForcePush"`
 	// Defines permissions for action.
 	AllowedToMerges []BranchProtectionAllowedToMerge `pulumi:"allowedToMerges"`
 	// Defines permissions for action.
@@ -103,6 +107,8 @@ type branchProtectionState struct {
 }
 
 type BranchProtectionState struct {
+	// Can be set to true to allow users with push access to force push.
+	AllowForcePush pulumi.BoolPtrInput
 	// Defines permissions for action.
 	AllowedToMerges BranchProtectionAllowedToMergeArrayInput
 	// Defines permissions for action.
@@ -126,6 +132,8 @@ func (BranchProtectionState) ElementType() reflect.Type {
 }
 
 type branchProtectionArgs struct {
+	// Can be set to true to allow users with push access to force push.
+	AllowForcePush *bool `pulumi:"allowForcePush"`
 	// Defines permissions for action.
 	AllowedToMerges []BranchProtectionAllowedToMerge `pulumi:"allowedToMerges"`
 	// Defines permissions for action.
@@ -144,6 +152,8 @@ type branchProtectionArgs struct {
 
 // The set of arguments for constructing a BranchProtection resource.
 type BranchProtectionArgs struct {
+	// Can be set to true to allow users with push access to force push.
+	AllowForcePush pulumi.BoolPtrInput
 	// Defines permissions for action.
 	AllowedToMerges BranchProtectionAllowedToMergeArrayInput
 	// Defines permissions for action.

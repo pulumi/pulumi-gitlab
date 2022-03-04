@@ -68,8 +68,12 @@ type LookupProjectResult struct {
 	IssuesEnabled bool `pulumi:"issuesEnabled"`
 	// Enable LFS for the project.
 	LfsEnabled bool `pulumi:"lfsEnabled"`
+	// Enable or disable merge pipelines.
+	MergePipelinesEnabled bool `pulumi:"mergePipelinesEnabled"`
 	// Enable merge requests for the project.
 	MergeRequestsEnabled bool `pulumi:"mergeRequestsEnabled"`
+	// Enable or disable merge trains.
+	MergeTrainsEnabled bool `pulumi:"mergeTrainsEnabled"`
 	// The name of the project.
 	Name string `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
@@ -80,6 +84,8 @@ type LookupProjectResult struct {
 	PathWithNamespace string `pulumi:"pathWithNamespace"`
 	// Enable pipelines for the project.
 	PipelinesEnabled bool `pulumi:"pipelinesEnabled"`
+	// Show link to create/view merge request when pushing from the command line
+	PrintingMergeRequestLinkEnabled bool `pulumi:"printingMergeRequestLinkEnabled"`
 	// Push rules for the project.
 	PushRules GetProjectPushRules `pulumi:"pushRules"`
 	// Enable `Delete source branch` option by default for all new merge requests
@@ -171,9 +177,19 @@ func (o LookupProjectResultOutput) LfsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.LfsEnabled }).(pulumi.BoolOutput)
 }
 
+// Enable or disable merge pipelines.
+func (o LookupProjectResultOutput) MergePipelinesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.MergePipelinesEnabled }).(pulumi.BoolOutput)
+}
+
 // Enable merge requests for the project.
 func (o LookupProjectResultOutput) MergeRequestsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.MergeRequestsEnabled }).(pulumi.BoolOutput)
+}
+
+// Enable or disable merge trains.
+func (o LookupProjectResultOutput) MergeTrainsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.MergeTrainsEnabled }).(pulumi.BoolOutput)
 }
 
 // The name of the project.
@@ -199,6 +215,11 @@ func (o LookupProjectResultOutput) PathWithNamespace() pulumi.StringOutput {
 // Enable pipelines for the project.
 func (o LookupProjectResultOutput) PipelinesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.PipelinesEnabled }).(pulumi.BoolOutput)
+}
+
+// Show link to create/view merge request when pushing from the command line
+func (o LookupProjectResultOutput) PrintingMergeRequestLinkEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.PrintingMergeRequestLinkEnabled }).(pulumi.BoolOutput)
 }
 
 // Push rules for the project.

@@ -13,12 +13,14 @@
         "strict": true
     },
     "files": [
+        "branch.ts",
         "branchProtection.ts",
         "config/index.ts",
         "config/vars.ts",
         "deployKey.ts",
         "deployKeyEnable.ts",
         "deployToken.ts",
+        "getBranch.ts",
         "getGroup.ts",
         "getGroupMembership.ts",
         "getProject.ts",
@@ -28,6 +30,7 @@
         "getUser.ts",
         "getUsers.ts",
         "group.ts",
+        "groupAccessToken.ts",
         "groupBadge.ts",
         "groupCluster.ts",
         "groupCustomAttribute.ts",
@@ -65,11 +68,13 @@
         "servicePipelinesEmail.ts",
         "serviceSlack.ts",
         "tagProtection.ts",
+        "topic.ts",
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
         "user.ts",
         "userCustomAttribute.ts",
+        "userSshKey.ts",
         "utilities.ts"
     ]
 }

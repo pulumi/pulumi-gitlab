@@ -79,9 +79,17 @@ export interface GetProjectResult {
      */
     readonly lfsEnabled: boolean;
     /**
+     * Enable or disable merge pipelines.
+     */
+    readonly mergePipelinesEnabled: boolean;
+    /**
      * Enable merge requests for the project.
      */
     readonly mergeRequestsEnabled: boolean;
+    /**
+     * Enable or disable merge trains.
+     */
+    readonly mergeTrainsEnabled: boolean;
     /**
      * The name of the project.
      */
@@ -102,6 +110,10 @@ export interface GetProjectResult {
      * Enable pipelines for the project.
      */
     readonly pipelinesEnabled: boolean;
+    /**
+     * Show link to create/view merge request when pushing from the command line
+     */
+    readonly printingMergeRequestLinkEnabled: boolean;
     /**
      * Push rules for the project.
      */

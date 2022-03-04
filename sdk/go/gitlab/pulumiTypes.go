@@ -10,6 +10,163 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type BranchCommit struct {
+	AuthorEmail    *string `pulumi:"authorEmail"`
+	AuthorName     *string `pulumi:"authorName"`
+	AuthoredDate   *string `pulumi:"authoredDate"`
+	CommittedDate  *string `pulumi:"committedDate"`
+	CommitterEmail *string `pulumi:"committerEmail"`
+	CommitterName  *string `pulumi:"committerName"`
+	// The ID of this resource.
+	Id        *string  `pulumi:"id"`
+	Message   *string  `pulumi:"message"`
+	ParentIds []string `pulumi:"parentIds"`
+	ShortId   *string  `pulumi:"shortId"`
+	Title     *string  `pulumi:"title"`
+}
+
+// BranchCommitInput is an input type that accepts BranchCommitArgs and BranchCommitOutput values.
+// You can construct a concrete instance of `BranchCommitInput` via:
+//
+//          BranchCommitArgs{...}
+type BranchCommitInput interface {
+	pulumi.Input
+
+	ToBranchCommitOutput() BranchCommitOutput
+	ToBranchCommitOutputWithContext(context.Context) BranchCommitOutput
+}
+
+type BranchCommitArgs struct {
+	AuthorEmail    pulumi.StringPtrInput `pulumi:"authorEmail"`
+	AuthorName     pulumi.StringPtrInput `pulumi:"authorName"`
+	AuthoredDate   pulumi.StringPtrInput `pulumi:"authoredDate"`
+	CommittedDate  pulumi.StringPtrInput `pulumi:"committedDate"`
+	CommitterEmail pulumi.StringPtrInput `pulumi:"committerEmail"`
+	CommitterName  pulumi.StringPtrInput `pulumi:"committerName"`
+	// The ID of this resource.
+	Id        pulumi.StringPtrInput   `pulumi:"id"`
+	Message   pulumi.StringPtrInput   `pulumi:"message"`
+	ParentIds pulumi.StringArrayInput `pulumi:"parentIds"`
+	ShortId   pulumi.StringPtrInput   `pulumi:"shortId"`
+	Title     pulumi.StringPtrInput   `pulumi:"title"`
+}
+
+func (BranchCommitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BranchCommit)(nil)).Elem()
+}
+
+func (i BranchCommitArgs) ToBranchCommitOutput() BranchCommitOutput {
+	return i.ToBranchCommitOutputWithContext(context.Background())
+}
+
+func (i BranchCommitArgs) ToBranchCommitOutputWithContext(ctx context.Context) BranchCommitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BranchCommitOutput)
+}
+
+// BranchCommitArrayInput is an input type that accepts BranchCommitArray and BranchCommitArrayOutput values.
+// You can construct a concrete instance of `BranchCommitArrayInput` via:
+//
+//          BranchCommitArray{ BranchCommitArgs{...} }
+type BranchCommitArrayInput interface {
+	pulumi.Input
+
+	ToBranchCommitArrayOutput() BranchCommitArrayOutput
+	ToBranchCommitArrayOutputWithContext(context.Context) BranchCommitArrayOutput
+}
+
+type BranchCommitArray []BranchCommitInput
+
+func (BranchCommitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BranchCommit)(nil)).Elem()
+}
+
+func (i BranchCommitArray) ToBranchCommitArrayOutput() BranchCommitArrayOutput {
+	return i.ToBranchCommitArrayOutputWithContext(context.Background())
+}
+
+func (i BranchCommitArray) ToBranchCommitArrayOutputWithContext(ctx context.Context) BranchCommitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BranchCommitArrayOutput)
+}
+
+type BranchCommitOutput struct{ *pulumi.OutputState }
+
+func (BranchCommitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BranchCommit)(nil)).Elem()
+}
+
+func (o BranchCommitOutput) ToBranchCommitOutput() BranchCommitOutput {
+	return o
+}
+
+func (o BranchCommitOutput) ToBranchCommitOutputWithContext(ctx context.Context) BranchCommitOutput {
+	return o
+}
+
+func (o BranchCommitOutput) AuthorEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BranchCommit) *string { return v.AuthorEmail }).(pulumi.StringPtrOutput)
+}
+
+func (o BranchCommitOutput) AuthorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BranchCommit) *string { return v.AuthorName }).(pulumi.StringPtrOutput)
+}
+
+func (o BranchCommitOutput) AuthoredDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BranchCommit) *string { return v.AuthoredDate }).(pulumi.StringPtrOutput)
+}
+
+func (o BranchCommitOutput) CommittedDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BranchCommit) *string { return v.CommittedDate }).(pulumi.StringPtrOutput)
+}
+
+func (o BranchCommitOutput) CommitterEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BranchCommit) *string { return v.CommitterEmail }).(pulumi.StringPtrOutput)
+}
+
+func (o BranchCommitOutput) CommitterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BranchCommit) *string { return v.CommitterName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of this resource.
+func (o BranchCommitOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BranchCommit) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o BranchCommitOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BranchCommit) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o BranchCommitOutput) ParentIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BranchCommit) []string { return v.ParentIds }).(pulumi.StringArrayOutput)
+}
+
+func (o BranchCommitOutput) ShortId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BranchCommit) *string { return v.ShortId }).(pulumi.StringPtrOutput)
+}
+
+func (o BranchCommitOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BranchCommit) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type BranchCommitArrayOutput struct{ *pulumi.OutputState }
+
+func (BranchCommitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BranchCommit)(nil)).Elem()
+}
+
+func (o BranchCommitArrayOutput) ToBranchCommitArrayOutput() BranchCommitArrayOutput {
+	return o
+}
+
+func (o BranchCommitArrayOutput) ToBranchCommitArrayOutputWithContext(ctx context.Context) BranchCommitArrayOutput {
+	return o
+}
+
+func (o BranchCommitArrayOutput) Index(i pulumi.IntInput) BranchCommitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BranchCommit {
+		return vs[0].([]BranchCommit)[vs[1].(int)]
+	}).(BranchCommitOutput)
+}
+
 type BranchProtectionAllowedToMerge struct {
 	// Level of access.
 	AccessLevel *string `pulumi:"accessLevel"`
@@ -583,6 +740,163 @@ func (o ProjectPushRulesPtrOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput 
 		}
 		return v.RejectUnsignedCommits
 	}).(pulumi.BoolPtrOutput)
+}
+
+type GetBranchCommit struct {
+	AuthorEmail    string `pulumi:"authorEmail"`
+	AuthorName     string `pulumi:"authorName"`
+	AuthoredDate   string `pulumi:"authoredDate"`
+	CommittedDate  string `pulumi:"committedDate"`
+	CommitterEmail string `pulumi:"committerEmail"`
+	CommitterName  string `pulumi:"committerName"`
+	// The ID of this resource.
+	Id        string   `pulumi:"id"`
+	Message   string   `pulumi:"message"`
+	ParentIds []string `pulumi:"parentIds"`
+	ShortId   string   `pulumi:"shortId"`
+	Title     string   `pulumi:"title"`
+}
+
+// GetBranchCommitInput is an input type that accepts GetBranchCommitArgs and GetBranchCommitOutput values.
+// You can construct a concrete instance of `GetBranchCommitInput` via:
+//
+//          GetBranchCommitArgs{...}
+type GetBranchCommitInput interface {
+	pulumi.Input
+
+	ToGetBranchCommitOutput() GetBranchCommitOutput
+	ToGetBranchCommitOutputWithContext(context.Context) GetBranchCommitOutput
+}
+
+type GetBranchCommitArgs struct {
+	AuthorEmail    pulumi.StringInput `pulumi:"authorEmail"`
+	AuthorName     pulumi.StringInput `pulumi:"authorName"`
+	AuthoredDate   pulumi.StringInput `pulumi:"authoredDate"`
+	CommittedDate  pulumi.StringInput `pulumi:"committedDate"`
+	CommitterEmail pulumi.StringInput `pulumi:"committerEmail"`
+	CommitterName  pulumi.StringInput `pulumi:"committerName"`
+	// The ID of this resource.
+	Id        pulumi.StringInput      `pulumi:"id"`
+	Message   pulumi.StringInput      `pulumi:"message"`
+	ParentIds pulumi.StringArrayInput `pulumi:"parentIds"`
+	ShortId   pulumi.StringInput      `pulumi:"shortId"`
+	Title     pulumi.StringInput      `pulumi:"title"`
+}
+
+func (GetBranchCommitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBranchCommit)(nil)).Elem()
+}
+
+func (i GetBranchCommitArgs) ToGetBranchCommitOutput() GetBranchCommitOutput {
+	return i.ToGetBranchCommitOutputWithContext(context.Background())
+}
+
+func (i GetBranchCommitArgs) ToGetBranchCommitOutputWithContext(ctx context.Context) GetBranchCommitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBranchCommitOutput)
+}
+
+// GetBranchCommitArrayInput is an input type that accepts GetBranchCommitArray and GetBranchCommitArrayOutput values.
+// You can construct a concrete instance of `GetBranchCommitArrayInput` via:
+//
+//          GetBranchCommitArray{ GetBranchCommitArgs{...} }
+type GetBranchCommitArrayInput interface {
+	pulumi.Input
+
+	ToGetBranchCommitArrayOutput() GetBranchCommitArrayOutput
+	ToGetBranchCommitArrayOutputWithContext(context.Context) GetBranchCommitArrayOutput
+}
+
+type GetBranchCommitArray []GetBranchCommitInput
+
+func (GetBranchCommitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBranchCommit)(nil)).Elem()
+}
+
+func (i GetBranchCommitArray) ToGetBranchCommitArrayOutput() GetBranchCommitArrayOutput {
+	return i.ToGetBranchCommitArrayOutputWithContext(context.Background())
+}
+
+func (i GetBranchCommitArray) ToGetBranchCommitArrayOutputWithContext(ctx context.Context) GetBranchCommitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBranchCommitArrayOutput)
+}
+
+type GetBranchCommitOutput struct{ *pulumi.OutputState }
+
+func (GetBranchCommitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBranchCommit)(nil)).Elem()
+}
+
+func (o GetBranchCommitOutput) ToGetBranchCommitOutput() GetBranchCommitOutput {
+	return o
+}
+
+func (o GetBranchCommitOutput) ToGetBranchCommitOutputWithContext(ctx context.Context) GetBranchCommitOutput {
+	return o
+}
+
+func (o GetBranchCommitOutput) AuthorEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBranchCommit) string { return v.AuthorEmail }).(pulumi.StringOutput)
+}
+
+func (o GetBranchCommitOutput) AuthorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBranchCommit) string { return v.AuthorName }).(pulumi.StringOutput)
+}
+
+func (o GetBranchCommitOutput) AuthoredDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBranchCommit) string { return v.AuthoredDate }).(pulumi.StringOutput)
+}
+
+func (o GetBranchCommitOutput) CommittedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBranchCommit) string { return v.CommittedDate }).(pulumi.StringOutput)
+}
+
+func (o GetBranchCommitOutput) CommitterEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBranchCommit) string { return v.CommitterEmail }).(pulumi.StringOutput)
+}
+
+func (o GetBranchCommitOutput) CommitterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBranchCommit) string { return v.CommitterName }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o GetBranchCommitOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBranchCommit) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetBranchCommitOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBranchCommit) string { return v.Message }).(pulumi.StringOutput)
+}
+
+func (o GetBranchCommitOutput) ParentIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBranchCommit) []string { return v.ParentIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBranchCommitOutput) ShortId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBranchCommit) string { return v.ShortId }).(pulumi.StringOutput)
+}
+
+func (o GetBranchCommitOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBranchCommit) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type GetBranchCommitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBranchCommitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBranchCommit)(nil)).Elem()
+}
+
+func (o GetBranchCommitArrayOutput) ToGetBranchCommitArrayOutput() GetBranchCommitArrayOutput {
+	return o
+}
+
+func (o GetBranchCommitArrayOutput) ToGetBranchCommitArrayOutputWithContext(ctx context.Context) GetBranchCommitArrayOutput {
+	return o
+}
+
+func (o GetBranchCommitArrayOutput) Index(i pulumi.IntInput) GetBranchCommitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBranchCommit {
+		return vs[0].([]GetBranchCommit)[vs[1].(int)]
+	}).(GetBranchCommitOutput)
 }
 
 type GetGroupMembershipMember struct {
@@ -1424,19 +1738,20 @@ type GetProjectsProject struct {
 	AllowMergeOnSkippedPipeline bool              `pulumi:"allowMergeOnSkippedPipeline"`
 	ApprovalsBeforeMerge        int               `pulumi:"approvalsBeforeMerge"`
 	// Limit by archived status.
-	Archived                 bool                                `pulumi:"archived"`
-	AvatarUrl                string                              `pulumi:"avatarUrl"`
-	BuildCoverageRegex       string                              `pulumi:"buildCoverageRegex"`
-	CiConfigPath             string                              `pulumi:"ciConfigPath"`
-	ContainerRegistryEnabled bool                                `pulumi:"containerRegistryEnabled"`
-	CreatedAt                string                              `pulumi:"createdAt"`
-	CreatorId                int                                 `pulumi:"creatorId"`
-	CustomAttributes         []map[string]interface{}            `pulumi:"customAttributes"`
-	DefaultBranch            string                              `pulumi:"defaultBranch"`
-	Description              string                              `pulumi:"description"`
-	ForkedFromProject        GetProjectsProjectForkedFromProject `pulumi:"forkedFromProject"`
-	ForksCount               int                                 `pulumi:"forksCount"`
-	HttpUrlToRepo            string                              `pulumi:"httpUrlToRepo"`
+	Archived                   bool                                `pulumi:"archived"`
+	AvatarUrl                  string                              `pulumi:"avatarUrl"`
+	BuildCoverageRegex         string                              `pulumi:"buildCoverageRegex"`
+	CiConfigPath               string                              `pulumi:"ciConfigPath"`
+	CiForwardDeploymentEnabled bool                                `pulumi:"ciForwardDeploymentEnabled"`
+	ContainerRegistryEnabled   bool                                `pulumi:"containerRegistryEnabled"`
+	CreatedAt                  string                              `pulumi:"createdAt"`
+	CreatorId                  int                                 `pulumi:"creatorId"`
+	CustomAttributes           []map[string]interface{}            `pulumi:"customAttributes"`
+	DefaultBranch              string                              `pulumi:"defaultBranch"`
+	Description                string                              `pulumi:"description"`
+	ForkedFromProject          GetProjectsProjectForkedFromProject `pulumi:"forkedFromProject"`
+	ForksCount                 int                                 `pulumi:"forksCount"`
+	HttpUrlToRepo              string                              `pulumi:"httpUrlToRepo"`
 	// The ID of this resource.
 	Id                                        int                                 `pulumi:"id"`
 	ImportError                               string                              `pulumi:"importError"`
@@ -1446,7 +1761,9 @@ type GetProjectsProject struct {
 	LastActivityAt                            string                              `pulumi:"lastActivityAt"`
 	LfsEnabled                                bool                                `pulumi:"lfsEnabled"`
 	MergeMethod                               string                              `pulumi:"mergeMethod"`
+	MergePipelinesEnabled                     bool                                `pulumi:"mergePipelinesEnabled"`
 	MergeRequestsEnabled                      bool                                `pulumi:"mergeRequestsEnabled"`
+	MergeTrainsEnabled                        bool                                `pulumi:"mergeTrainsEnabled"`
 	Mirror                                    bool                                `pulumi:"mirror"`
 	MirrorOverwritesDivergedBranches          bool                                `pulumi:"mirrorOverwritesDivergedBranches"`
 	MirrorTriggerBuilds                       bool                                `pulumi:"mirrorTriggerBuilds"`
@@ -1499,19 +1816,20 @@ type GetProjectsProjectArgs struct {
 	AllowMergeOnSkippedPipeline pulumi.BoolInput      `pulumi:"allowMergeOnSkippedPipeline"`
 	ApprovalsBeforeMerge        pulumi.IntInput       `pulumi:"approvalsBeforeMerge"`
 	// Limit by archived status.
-	Archived                 pulumi.BoolInput                         `pulumi:"archived"`
-	AvatarUrl                pulumi.StringInput                       `pulumi:"avatarUrl"`
-	BuildCoverageRegex       pulumi.StringInput                       `pulumi:"buildCoverageRegex"`
-	CiConfigPath             pulumi.StringInput                       `pulumi:"ciConfigPath"`
-	ContainerRegistryEnabled pulumi.BoolInput                         `pulumi:"containerRegistryEnabled"`
-	CreatedAt                pulumi.StringInput                       `pulumi:"createdAt"`
-	CreatorId                pulumi.IntInput                          `pulumi:"creatorId"`
-	CustomAttributes         pulumi.MapArrayInput                     `pulumi:"customAttributes"`
-	DefaultBranch            pulumi.StringInput                       `pulumi:"defaultBranch"`
-	Description              pulumi.StringInput                       `pulumi:"description"`
-	ForkedFromProject        GetProjectsProjectForkedFromProjectInput `pulumi:"forkedFromProject"`
-	ForksCount               pulumi.IntInput                          `pulumi:"forksCount"`
-	HttpUrlToRepo            pulumi.StringInput                       `pulumi:"httpUrlToRepo"`
+	Archived                   pulumi.BoolInput                         `pulumi:"archived"`
+	AvatarUrl                  pulumi.StringInput                       `pulumi:"avatarUrl"`
+	BuildCoverageRegex         pulumi.StringInput                       `pulumi:"buildCoverageRegex"`
+	CiConfigPath               pulumi.StringInput                       `pulumi:"ciConfigPath"`
+	CiForwardDeploymentEnabled pulumi.BoolInput                         `pulumi:"ciForwardDeploymentEnabled"`
+	ContainerRegistryEnabled   pulumi.BoolInput                         `pulumi:"containerRegistryEnabled"`
+	CreatedAt                  pulumi.StringInput                       `pulumi:"createdAt"`
+	CreatorId                  pulumi.IntInput                          `pulumi:"creatorId"`
+	CustomAttributes           pulumi.MapArrayInput                     `pulumi:"customAttributes"`
+	DefaultBranch              pulumi.StringInput                       `pulumi:"defaultBranch"`
+	Description                pulumi.StringInput                       `pulumi:"description"`
+	ForkedFromProject          GetProjectsProjectForkedFromProjectInput `pulumi:"forkedFromProject"`
+	ForksCount                 pulumi.IntInput                          `pulumi:"forksCount"`
+	HttpUrlToRepo              pulumi.StringInput                       `pulumi:"httpUrlToRepo"`
 	// The ID of this resource.
 	Id                                        pulumi.IntInput                             `pulumi:"id"`
 	ImportError                               pulumi.StringInput                          `pulumi:"importError"`
@@ -1521,7 +1839,9 @@ type GetProjectsProjectArgs struct {
 	LastActivityAt                            pulumi.StringInput                          `pulumi:"lastActivityAt"`
 	LfsEnabled                                pulumi.BoolInput                            `pulumi:"lfsEnabled"`
 	MergeMethod                               pulumi.StringInput                          `pulumi:"mergeMethod"`
+	MergePipelinesEnabled                     pulumi.BoolInput                            `pulumi:"mergePipelinesEnabled"`
 	MergeRequestsEnabled                      pulumi.BoolInput                            `pulumi:"mergeRequestsEnabled"`
+	MergeTrainsEnabled                        pulumi.BoolInput                            `pulumi:"mergeTrainsEnabled"`
 	Mirror                                    pulumi.BoolInput                            `pulumi:"mirror"`
 	MirrorOverwritesDivergedBranches          pulumi.BoolInput                            `pulumi:"mirrorOverwritesDivergedBranches"`
 	MirrorTriggerBuilds                       pulumi.BoolInput                            `pulumi:"mirrorTriggerBuilds"`
@@ -1638,6 +1958,10 @@ func (o GetProjectsProjectOutput) CiConfigPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.CiConfigPath }).(pulumi.StringOutput)
 }
 
+func (o GetProjectsProjectOutput) CiForwardDeploymentEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectsProject) bool { return v.CiForwardDeploymentEnabled }).(pulumi.BoolOutput)
+}
+
 func (o GetProjectsProjectOutput) ContainerRegistryEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.ContainerRegistryEnabled }).(pulumi.BoolOutput)
 }
@@ -1707,8 +2031,16 @@ func (o GetProjectsProjectOutput) MergeMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.MergeMethod }).(pulumi.StringOutput)
 }
 
+func (o GetProjectsProjectOutput) MergePipelinesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectsProject) bool { return v.MergePipelinesEnabled }).(pulumi.BoolOutput)
+}
+
 func (o GetProjectsProjectOutput) MergeRequestsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.MergeRequestsEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectsProjectOutput) MergeTrainsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectsProject) bool { return v.MergeTrainsEnabled }).(pulumi.BoolOutput)
 }
 
 func (o GetProjectsProjectOutput) Mirror() pulumi.BoolOutput {
@@ -2522,12 +2854,16 @@ func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BranchCommitInput)(nil)).Elem(), BranchCommitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BranchCommitArrayInput)(nil)).Elem(), BranchCommitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToMergeInput)(nil)).Elem(), BranchProtectionAllowedToMergeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToMergeArrayInput)(nil)).Elem(), BranchProtectionAllowedToMergeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToPushInput)(nil)).Elem(), BranchProtectionAllowedToPushArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToPushArrayInput)(nil)).Elem(), BranchProtectionAllowedToPushArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPushRulesInput)(nil)).Elem(), ProjectPushRulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPushRulesPtrInput)(nil)).Elem(), ProjectPushRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBranchCommitInput)(nil)).Elem(), GetBranchCommitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBranchCommitArrayInput)(nil)).Elem(), GetBranchCommitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberInput)(nil)).Elem(), GetGroupMembershipMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberArrayInput)(nil)).Elem(), GetGroupMembershipMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedBranchMergeAccessLevelInput)(nil)).Elem(), GetProjectProtectedBranchMergeAccessLevelArgs{})
@@ -2551,12 +2887,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectSharedWithGroupArrayInput)(nil)).Elem(), GetProjectsProjectSharedWithGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
+	pulumi.RegisterOutputType(BranchCommitOutput{})
+	pulumi.RegisterOutputType(BranchCommitArrayOutput{})
 	pulumi.RegisterOutputType(BranchProtectionAllowedToMergeOutput{})
 	pulumi.RegisterOutputType(BranchProtectionAllowedToMergeArrayOutput{})
 	pulumi.RegisterOutputType(BranchProtectionAllowedToPushOutput{})
 	pulumi.RegisterOutputType(BranchProtectionAllowedToPushArrayOutput{})
 	pulumi.RegisterOutputType(ProjectPushRulesOutput{})
 	pulumi.RegisterOutputType(ProjectPushRulesPtrOutput{})
+	pulumi.RegisterOutputType(GetBranchCommitOutput{})
+	pulumi.RegisterOutputType(GetBranchCommitArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipMemberOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectProtectedBranchMergeAccessLevelOutput{})

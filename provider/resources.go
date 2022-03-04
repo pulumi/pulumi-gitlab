@@ -19,7 +19,7 @@ import (
 	"path/filepath"
 	"unicode"
 
-	"github.com/gitlabhq/terraform-provider-gitlab/gitlab"
+	gitlabShim "github.com/gitlabhq/terraform-provider-gitlab/shim"
 	"github.com/pulumi/pulumi-gitlab/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -62,7 +62,7 @@ func gitLabResource(mod string, res string) tokens.Type {
 
 // Provider returns additional overlaid schema and metadata associated with the GitLab package.
 func Provider() tfbridge.ProviderInfo {
-	p := shimv2.NewProvider(gitlab.Provider())
+	p := shimv2.NewProvider(gitlabShim.NewProvider())
 	prov := tfbridge.ProviderInfo{
 		P:           p,
 		Name:        "gitlab",
@@ -119,6 +119,10 @@ func Provider() tfbridge.ProviderInfo {
 			"gitlab_repository_file":            {Tok: gitLabResource(gitLabMod, "RepositoryFile")},
 			"gitlab_service_microsoft_teams":    {Tok: gitLabResource(gitLabMod, "ServiceMicrosoftTeams")},
 			"gitlab_user_custom_attribute":      {Tok: gitLabResource(gitLabMod, "UserCustomAttribute")},
+			"gitlab_branch":                     {Tok: gitLabResource(gitLabMod, "Branch")},
+			"gitlab_group_access_token":         {Tok: gitLabResource(gitLabMod, "GroupAccessToken")},
+			"gitlab_topic":                      {Tok: gitLabResource(gitLabMod, "Topic")},
+			"gitlab_user_sshkey":                {Tok: gitLabResource(gitLabMod, "UserSshKey")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"gitlab_group": {Tok: gitLabDataSource(gitLabMod, "getGroup")},
@@ -163,6 +167,7 @@ func Provider() tfbridge.ProviderInfo {
 			"gitlab_group_membership":           {Tok: gitLabDataSource(gitLabMod, "getGroupMembership")},
 			"gitlab_project_protected_branch":   {Tok: gitLabDataSource(gitLabMod, "getProjectProtectedBranch")},
 			"gitlab_project_protected_branches": {Tok: gitLabDataSource(gitLabMod, "getProjectProtectedBranches")},
+			"gitlab_branch":                     {Tok: gitLabDataSource(gitLabMod, "getBranch")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

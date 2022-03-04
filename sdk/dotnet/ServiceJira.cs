@@ -57,6 +57,12 @@ namespace Pulumi.GitLab
         public Output<bool> Active { get; private set; } = null!;
 
         /// <summary>
+        /// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        /// </summary>
+        [Output("apiUrl")]
+        public Output<string> ApiUrl { get; private set; } = null!;
+
+        /// <summary>
         /// Enable comments inside Jira issues on each GitLab event (commit / merge request)
         /// </summary>
         [Output("commentOnEventEnabled")]
@@ -211,6 +217,12 @@ namespace Pulumi.GitLab
     public sealed class ServiceJiraArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        /// </summary>
+        [Input("apiUrl")]
+        public Input<string>? ApiUrl { get; set; }
+
+        /// <summary>
         /// Enable comments inside Jira issues on each GitLab event (commit / merge request)
         /// </summary>
         [Input("commentOnEventEnabled")]
@@ -312,6 +324,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("active")]
         public Input<bool>? Active { get; set; }
+
+        /// <summary>
+        /// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        /// </summary>
+        [Input("apiUrl")]
+        public Input<string>? ApiUrl { get; set; }
 
         /// <summary>
         /// Enable comments inside Jira issues on each GitLab event (commit / merge request)

@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface BranchCommit {
+    authorEmail?: pulumi.Input<string>;
+    authorName?: pulumi.Input<string>;
+    authoredDate?: pulumi.Input<string>;
+    committedDate?: pulumi.Input<string>;
+    committerEmail?: pulumi.Input<string>;
+    committerName?: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
+    id?: pulumi.Input<string>;
+    message?: pulumi.Input<string>;
+    parentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    shortId?: pulumi.Input<string>;
+    title?: pulumi.Input<string>;
+}
+
 export interface BranchProtectionAllowedToMerge {
     /**
      * Level of access.

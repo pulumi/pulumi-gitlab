@@ -23,6 +23,7 @@ namespace Pulumi.GitLab.Outputs
         public readonly string AvatarUrl;
         public readonly string BuildCoverageRegex;
         public readonly string CiConfigPath;
+        public readonly bool CiForwardDeploymentEnabled;
         public readonly bool ContainerRegistryEnabled;
         public readonly string CreatedAt;
         public readonly int CreatorId;
@@ -43,7 +44,9 @@ namespace Pulumi.GitLab.Outputs
         public readonly string LastActivityAt;
         public readonly bool LfsEnabled;
         public readonly string MergeMethod;
+        public readonly bool MergePipelinesEnabled;
         public readonly bool MergeRequestsEnabled;
+        public readonly bool MergeTrainsEnabled;
         public readonly bool Mirror;
         public readonly bool MirrorOverwritesDivergedBranches;
         public readonly bool MirrorTriggerBuilds;
@@ -99,6 +102,8 @@ namespace Pulumi.GitLab.Outputs
 
             string ciConfigPath,
 
+            bool ciForwardDeploymentEnabled,
+
             bool containerRegistryEnabled,
 
             string createdAt,
@@ -133,7 +138,11 @@ namespace Pulumi.GitLab.Outputs
 
             string mergeMethod,
 
+            bool mergePipelinesEnabled,
+
             bool mergeRequestsEnabled,
+
+            bool mergeTrainsEnabled,
 
             bool mirror,
 
@@ -206,6 +215,7 @@ namespace Pulumi.GitLab.Outputs
             AvatarUrl = avatarUrl;
             BuildCoverageRegex = buildCoverageRegex;
             CiConfigPath = ciConfigPath;
+            CiForwardDeploymentEnabled = ciForwardDeploymentEnabled;
             ContainerRegistryEnabled = containerRegistryEnabled;
             CreatedAt = createdAt;
             CreatorId = creatorId;
@@ -223,7 +233,9 @@ namespace Pulumi.GitLab.Outputs
             LastActivityAt = lastActivityAt;
             LfsEnabled = lfsEnabled;
             MergeMethod = mergeMethod;
+            MergePipelinesEnabled = mergePipelinesEnabled;
             MergeRequestsEnabled = mergeRequestsEnabled;
+            MergeTrainsEnabled = mergeTrainsEnabled;
             Mirror = mirror;
             MirrorOverwritesDivergedBranches = mirrorOverwritesDivergedBranches;
             MirrorTriggerBuilds = mirrorTriggerBuilds;

@@ -20,6 +20,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gitlab:index/branch:Branch":
+		r = &Branch{}
 	case "gitlab:index/branchProtection:BranchProtection":
 		r = &BranchProtection{}
 	case "gitlab:index/deployKey:DeployKey":
@@ -30,6 +32,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DeployToken{}
 	case "gitlab:index/group:Group":
 		r = &Group{}
+	case "gitlab:index/groupAccessToken:GroupAccessToken":
+		r = &GroupAccessToken{}
 	case "gitlab:index/groupBadge:GroupBadge":
 		r = &GroupBadge{}
 	case "gitlab:index/groupCluster:GroupCluster":
@@ -100,10 +104,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceSlack{}
 	case "gitlab:index/tagProtection:TagProtection":
 		r = &TagProtection{}
+	case "gitlab:index/topic:Topic":
+		r = &Topic{}
 	case "gitlab:index/user:User":
 		r = &User{}
 	case "gitlab:index/userCustomAttribute:UserCustomAttribute":
 		r = &UserCustomAttribute{}
+	case "gitlab:index/userSshKey:UserSshKey":
+		r = &UserSshKey{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -137,6 +145,11 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/branch",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/branchProtection",
 		&module{version},
 	)
@@ -158,6 +171,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/group",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/groupAccessToken",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -337,12 +355,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/topic",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/user",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/userCustomAttribute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/userSshKey",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

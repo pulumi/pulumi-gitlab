@@ -21,7 +21,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, archived=None, default_branch=None, description=None, http_url_to_repo=None, id=None, issues_enabled=None, lfs_enabled=None, merge_requests_enabled=None, name=None, namespace_id=None, path=None, path_with_namespace=None, pipelines_enabled=None, push_rules=None, remove_source_branch_after_merge=None, request_access_enabled=None, runners_token=None, snippets_enabled=None, ssh_url_to_repo=None, visibility_level=None, web_url=None, wiki_enabled=None):
+    def __init__(__self__, archived=None, default_branch=None, description=None, http_url_to_repo=None, id=None, issues_enabled=None, lfs_enabled=None, merge_pipelines_enabled=None, merge_requests_enabled=None, merge_trains_enabled=None, name=None, namespace_id=None, path=None, path_with_namespace=None, pipelines_enabled=None, printing_merge_request_link_enabled=None, push_rules=None, remove_source_branch_after_merge=None, request_access_enabled=None, runners_token=None, snippets_enabled=None, ssh_url_to_repo=None, visibility_level=None, web_url=None, wiki_enabled=None):
         if archived and not isinstance(archived, bool):
             raise TypeError("Expected argument 'archived' to be a bool")
         pulumi.set(__self__, "archived", archived)
@@ -43,9 +43,15 @@ class GetProjectResult:
         if lfs_enabled and not isinstance(lfs_enabled, bool):
             raise TypeError("Expected argument 'lfs_enabled' to be a bool")
         pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        if merge_pipelines_enabled and not isinstance(merge_pipelines_enabled, bool):
+            raise TypeError("Expected argument 'merge_pipelines_enabled' to be a bool")
+        pulumi.set(__self__, "merge_pipelines_enabled", merge_pipelines_enabled)
         if merge_requests_enabled and not isinstance(merge_requests_enabled, bool):
             raise TypeError("Expected argument 'merge_requests_enabled' to be a bool")
         pulumi.set(__self__, "merge_requests_enabled", merge_requests_enabled)
+        if merge_trains_enabled and not isinstance(merge_trains_enabled, bool):
+            raise TypeError("Expected argument 'merge_trains_enabled' to be a bool")
+        pulumi.set(__self__, "merge_trains_enabled", merge_trains_enabled)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -61,6 +67,9 @@ class GetProjectResult:
         if pipelines_enabled and not isinstance(pipelines_enabled, bool):
             raise TypeError("Expected argument 'pipelines_enabled' to be a bool")
         pulumi.set(__self__, "pipelines_enabled", pipelines_enabled)
+        if printing_merge_request_link_enabled and not isinstance(printing_merge_request_link_enabled, bool):
+            raise TypeError("Expected argument 'printing_merge_request_link_enabled' to be a bool")
+        pulumi.set(__self__, "printing_merge_request_link_enabled", printing_merge_request_link_enabled)
         if push_rules and not isinstance(push_rules, dict):
             raise TypeError("Expected argument 'push_rules' to be a dict")
         pulumi.set(__self__, "push_rules", push_rules)
@@ -146,12 +155,28 @@ class GetProjectResult:
         return pulumi.get(self, "lfs_enabled")
 
     @property
+    @pulumi.getter(name="mergePipelinesEnabled")
+    def merge_pipelines_enabled(self) -> bool:
+        """
+        Enable or disable merge pipelines.
+        """
+        return pulumi.get(self, "merge_pipelines_enabled")
+
+    @property
     @pulumi.getter(name="mergeRequestsEnabled")
     def merge_requests_enabled(self) -> bool:
         """
         Enable merge requests for the project.
         """
         return pulumi.get(self, "merge_requests_enabled")
+
+    @property
+    @pulumi.getter(name="mergeTrainsEnabled")
+    def merge_trains_enabled(self) -> bool:
+        """
+        Enable or disable merge trains.
+        """
+        return pulumi.get(self, "merge_trains_enabled")
 
     @property
     @pulumi.getter
@@ -192,6 +217,14 @@ class GetProjectResult:
         Enable pipelines for the project.
         """
         return pulumi.get(self, "pipelines_enabled")
+
+    @property
+    @pulumi.getter(name="printingMergeRequestLinkEnabled")
+    def printing_merge_request_link_enabled(self) -> bool:
+        """
+        Show link to create/view merge request when pushing from the command line
+        """
+        return pulumi.get(self, "printing_merge_request_link_enabled")
 
     @property
     @pulumi.getter(name="pushRules")
@@ -279,12 +312,15 @@ class AwaitableGetProjectResult(GetProjectResult):
             id=self.id,
             issues_enabled=self.issues_enabled,
             lfs_enabled=self.lfs_enabled,
+            merge_pipelines_enabled=self.merge_pipelines_enabled,
             merge_requests_enabled=self.merge_requests_enabled,
+            merge_trains_enabled=self.merge_trains_enabled,
             name=self.name,
             namespace_id=self.namespace_id,
             path=self.path,
             path_with_namespace=self.path_with_namespace,
             pipelines_enabled=self.pipelines_enabled,
+            printing_merge_request_link_enabled=self.printing_merge_request_link_enabled,
             push_rules=self.push_rules,
             remove_source_branch_after_merge=self.remove_source_branch_after_merge,
             request_access_enabled=self.request_access_enabled,
@@ -332,12 +368,15 @@ def get_project(id: Optional[str] = None,
         id=__ret__.id,
         issues_enabled=__ret__.issues_enabled,
         lfs_enabled=__ret__.lfs_enabled,
+        merge_pipelines_enabled=__ret__.merge_pipelines_enabled,
         merge_requests_enabled=__ret__.merge_requests_enabled,
+        merge_trains_enabled=__ret__.merge_trains_enabled,
         name=__ret__.name,
         namespace_id=__ret__.namespace_id,
         path=__ret__.path,
         path_with_namespace=__ret__.path_with_namespace,
         pipelines_enabled=__ret__.pipelines_enabled,
+        printing_merge_request_link_enabled=__ret__.printing_merge_request_link_enabled,
         push_rules=__ret__.push_rules,
         remove_source_branch_after_merge=__ret__.remove_source_branch_after_merge,
         request_access_enabled=__ret__.request_access_enabled,

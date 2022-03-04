@@ -111,6 +111,12 @@ namespace Pulumi.GitLab
         public Output<string?> PushEventsBranchFilter { get; private set; } = null!;
 
         /// <summary>
+        /// Invoke the hook for releases events.
+        /// </summary>
+        [Output("releasesEvents")]
+        public Output<bool?> ReleasesEvents { get; private set; } = null!;
+
+        /// <summary>
         /// Invoke the hook for tag push events.
         /// </summary>
         [Output("tagPushEvents")]
@@ -253,6 +259,12 @@ namespace Pulumi.GitLab
         public Input<string>? PushEventsBranchFilter { get; set; }
 
         /// <summary>
+        /// Invoke the hook for releases events.
+        /// </summary>
+        [Input("releasesEvents")]
+        public Input<bool>? ReleasesEvents { get; set; }
+
+        /// <summary>
         /// Invoke the hook for tag push events.
         /// </summary>
         [Input("tagPushEvents")]
@@ -354,6 +366,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("pushEventsBranchFilter")]
         public Input<string>? PushEventsBranchFilter { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for releases events.
+        /// </summary>
+        [Input("releasesEvents")]
+        public Input<bool>? ReleasesEvents { get; set; }
 
         /// <summary>
         /// Invoke the hook for tag push events.

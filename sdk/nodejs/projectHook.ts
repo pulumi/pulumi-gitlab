@@ -99,6 +99,10 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     public readonly pushEventsBranchFilter!: pulumi.Output<string | undefined>;
     /**
+     * Invoke the hook for releases events.
+     */
+    public readonly releasesEvents!: pulumi.Output<boolean | undefined>;
+    /**
      * Invoke the hook for tag push events.
      */
     public readonly tagPushEvents!: pulumi.Output<boolean | undefined>;
@@ -140,6 +144,7 @@ export class ProjectHook extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pushEvents"] = state ? state.pushEvents : undefined;
             resourceInputs["pushEventsBranchFilter"] = state ? state.pushEventsBranchFilter : undefined;
+            resourceInputs["releasesEvents"] = state ? state.releasesEvents : undefined;
             resourceInputs["tagPushEvents"] = state ? state.tagPushEvents : undefined;
             resourceInputs["token"] = state ? state.token : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
@@ -164,6 +169,7 @@ export class ProjectHook extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["pushEvents"] = args ? args.pushEvents : undefined;
             resourceInputs["pushEventsBranchFilter"] = args ? args.pushEventsBranchFilter : undefined;
+            resourceInputs["releasesEvents"] = args ? args.releasesEvents : undefined;
             resourceInputs["tagPushEvents"] = args ? args.tagPushEvents : undefined;
             resourceInputs["token"] = args ? args.token : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
@@ -226,6 +232,10 @@ export interface ProjectHookState {
      * Invoke the hook for push events on matching branches only.
      */
     pushEventsBranchFilter?: pulumi.Input<string>;
+    /**
+     * Invoke the hook for releases events.
+     */
+    releasesEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for tag push events.
      */
@@ -296,6 +306,10 @@ export interface ProjectHookArgs {
      * Invoke the hook for push events on matching branches only.
      */
     pushEventsBranchFilter?: pulumi.Input<string>;
+    /**
+     * Invoke the hook for releases events.
+     */
+    releasesEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for tag push events.
      */
