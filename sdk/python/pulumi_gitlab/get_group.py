@@ -20,7 +20,7 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, default_branch_protection=None, description=None, full_name=None, full_path=None, group_id=None, id=None, lfs_enabled=None, name=None, parent_id=None, path=None, request_access_enabled=None, runners_token=None, visibility_level=None, web_url=None):
+    def __init__(__self__, default_branch_protection=None, description=None, full_name=None, full_path=None, group_id=None, id=None, lfs_enabled=None, name=None, parent_id=None, path=None, prevent_forking_outside_group=None, request_access_enabled=None, runners_token=None, visibility_level=None, web_url=None):
         if default_branch_protection and not isinstance(default_branch_protection, int):
             raise TypeError("Expected argument 'default_branch_protection' to be a int")
         pulumi.set(__self__, "default_branch_protection", default_branch_protection)
@@ -51,6 +51,9 @@ class GetGroupResult:
         if path and not isinstance(path, str):
             raise TypeError("Expected argument 'path' to be a str")
         pulumi.set(__self__, "path", path)
+        if prevent_forking_outside_group and not isinstance(prevent_forking_outside_group, bool):
+            raise TypeError("Expected argument 'prevent_forking_outside_group' to be a bool")
+        pulumi.set(__self__, "prevent_forking_outside_group", prevent_forking_outside_group)
         if request_access_enabled and not isinstance(request_access_enabled, bool):
             raise TypeError("Expected argument 'request_access_enabled' to be a bool")
         pulumi.set(__self__, "request_access_enabled", request_access_enabled)
@@ -145,6 +148,14 @@ class GetGroupResult:
         return pulumi.get(self, "path")
 
     @property
+    @pulumi.getter(name="preventForkingOutsideGroup")
+    def prevent_forking_outside_group(self) -> bool:
+        """
+        When enabled, users can not fork projects from this group to external namespaces.
+        """
+        return pulumi.get(self, "prevent_forking_outside_group")
+
+    @property
     @pulumi.getter(name="requestAccessEnabled")
     def request_access_enabled(self) -> bool:
         """
@@ -193,6 +204,7 @@ class AwaitableGetGroupResult(GetGroupResult):
             name=self.name,
             parent_id=self.parent_id,
             path=self.path,
+            prevent_forking_outside_group=self.prevent_forking_outside_group,
             request_access_enabled=self.request_access_enabled,
             runners_token=self.runners_token,
             visibility_level=self.visibility_level,
@@ -203,9 +215,9 @@ def get_group(full_path: Optional[str] = None,
               group_id: Optional[int] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
-    Provide details about a specific group in the gitlab provider.
+    The `Group` data source allows details of a group to be retrieved by its id or full path.
 
-    > **Note**: exactly one of group_id or full_path must be provided.
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
 
     ## Example Usage
 
@@ -240,6 +252,7 @@ def get_group(full_path: Optional[str] = None,
         name=__ret__.name,
         parent_id=__ret__.parent_id,
         path=__ret__.path,
+        prevent_forking_outside_group=__ret__.prevent_forking_outside_group,
         request_access_enabled=__ret__.request_access_enabled,
         runners_token=__ret__.runners_token,
         visibility_level=__ret__.visibility_level,
@@ -251,9 +264,9 @@ def get_group_output(full_path: Optional[pulumi.Input[Optional[str]]] = None,
                      group_id: Optional[pulumi.Input[Optional[int]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
     """
-    Provide details about a specific group in the gitlab provider.
+    The `Group` data source allows details of a group to be retrieved by its id or full path.
 
-    > **Note**: exactly one of group_id or full_path must be provided.
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
 
     ## Example Usage
 

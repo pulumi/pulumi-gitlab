@@ -12,11 +12,13 @@ namespace Pulumi.GitLab
     public static class GetProjects
     {
         /// <summary>
-        /// Provide details about a list of projects in the Gitlab provider. Listing all projects and group projects with [project filtering](https://docs.gitlab.com/ee/api/projects.html#list-user-projects) or [group project filtering](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-projects) is supported.
+        /// The `gitlab.getProjects` data source allows details of multiple projects to be retrieved. Optionally filtered by the set attributes.
         /// 
-        /// &gt; **NOTE**: This data source supports all available filters exposed by the `xanzy/go-gitlab` package, which might not expose all available filters exposed by the Gitlab APIs.
+        /// &gt; This data source supports all available filters exposed by the xanzy/go-gitlab package, which might not expose all available filters exposed by the Gitlab APIs.
         /// 
-        /// &gt; **NOTE**: The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
+        /// &gt; The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -57,11 +59,13 @@ namespace Pulumi.GitLab
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("gitlab:index/getProjects:getProjects", args ?? new GetProjectsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provide details about a list of projects in the Gitlab provider. Listing all projects and group projects with [project filtering](https://docs.gitlab.com/ee/api/projects.html#list-user-projects) or [group project filtering](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-projects) is supported.
+        /// The `gitlab.getProjects` data source allows details of multiple projects to be retrieved. Optionally filtered by the set attributes.
         /// 
-        /// &gt; **NOTE**: This data source supports all available filters exposed by the `xanzy/go-gitlab` package, which might not expose all available filters exposed by the Gitlab APIs.
+        /// &gt; This data source supports all available filters exposed by the xanzy/go-gitlab package, which might not expose all available filters exposed by the Gitlab APIs.
         /// 
-        /// &gt; **NOTE**: The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
+        /// &gt; The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
         /// 
         /// {{% examples %}}
         /// ## Example Usage

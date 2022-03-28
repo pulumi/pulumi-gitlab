@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to create and manage pipeline triggers
+    /// The `gitlab.PipelineTrigger` resource allows to manage the lifecycle of a pipeline trigger.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_triggers.html)
     /// 
     /// ## Example Usage
     /// 

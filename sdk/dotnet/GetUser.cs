@@ -12,17 +12,21 @@ namespace Pulumi.GitLab
     public static class GetUser
     {
         /// <summary>
-        /// Provide details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
+        /// The `gitlab.User` data source allows details of a user to be retrieved by either the user ID, username or email address.
         /// 
-        /// &gt; Some attributes might not be returned depending on if you're an admin or not. Please refer to [Gitlab documentation](https://docs.gitlab.com/ce/api/users.html#single-user) for more details.
+        /// &gt; Some attributes might not be returned depending on if you're an admin or not.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("gitlab:index/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provide details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
+        /// The `gitlab.User` data source allows details of a user to be retrieved by either the user ID, username or email address.
         /// 
-        /// &gt; Some attributes might not be returned depending on if you're an admin or not. Please refer to [Gitlab documentation](https://docs.gitlab.com/ce/api/users.html#single-user) for more details.
+        /// &gt; Some attributes might not be returned depending on if you're an admin or not.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetUserResult>("gitlab:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());

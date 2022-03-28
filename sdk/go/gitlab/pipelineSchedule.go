@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to create and manage pipeline schedules.
-// For further information on clusters, consult the [gitlab
-// documentation](https://docs.gitlab.com/ce/user/project/pipelines/schedules.html).
+// The `PipelineSchedule` resource allows to manage the lifecycle of a scheduled pipeline.
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
 //
 // ## Example Usage
 //

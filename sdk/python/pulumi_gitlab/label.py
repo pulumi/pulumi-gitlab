@@ -163,9 +163,9 @@ class Label(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to create and manage labels for your GitLab projects.
-        For further information on labels, consult the [gitlab
-        documentation](https://docs.gitlab.com/ee/user/project/labels.html#project-labels).
+        The `Label` resource allows to manage the lifecycle of a project label.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
 
         ## Example Usage
 
@@ -198,9 +198,9 @@ class Label(pulumi.CustomResource):
                  args: LabelArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to create and manage labels for your GitLab projects.
-        For further information on labels, consult the [gitlab
-        documentation](https://docs.gitlab.com/ee/user/project/labels.html#project-labels).
+        The `Label` resource allows to manage the lifecycle of a project label.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
 
         ## Example Usage
 

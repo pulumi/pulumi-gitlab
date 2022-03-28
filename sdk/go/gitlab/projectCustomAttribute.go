@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to set custom attributes for a project.
+// The `ProjectCustomAttribute` resource allows to manage custom attributes for a project.
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
 //
 // ## Example Usage
 //

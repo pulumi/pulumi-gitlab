@@ -246,7 +246,9 @@ class DeployToken(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to create and manage deploy token for your GitLab projects and groups. Please refer to [Gitlab documentation](https://docs.gitlab.com/ee/user/project/deploy_tokens/) for further information.
+        The `DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_tokens.html)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -264,7 +266,9 @@ class DeployToken(pulumi.CustomResource):
                  args: DeployTokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to create and manage deploy token for your GitLab projects and groups. Please refer to [Gitlab documentation](https://docs.gitlab.com/ee/user/project/deploy_tokens/) for further information.
+        The `DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_tokens.html)
 
         :param str resource_name: The name of the resource.
         :param DeployTokenArgs args: The arguments to use to populate this resource's properties.

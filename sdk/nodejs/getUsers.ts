@@ -6,9 +6,13 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Provide details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
+ * The `gitlab.getUsers` data source allows details of multiple users to be retrieved given some optional filter criteria.
  *
- * **NOTE**: Some available options require administrator privileges. Please visit [Gitlab API documentation][usersForAdmins] for more information.
+ * > Some attributes might not be returned depending on if you're an admin or not.
+ *
+ * > Some available options require administrator privileges.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users.html#list-users)
  *
  * ## Example Usage
  *

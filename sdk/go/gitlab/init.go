@@ -80,6 +80,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectFreezePeriod{}
 	case "gitlab:index/projectHook:ProjectHook":
 		r = &ProjectHook{}
+	case "gitlab:index/projectIssue:ProjectIssue":
+		r = &ProjectIssue{}
 	case "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals":
 		r = &ProjectLevelMrApprovals{}
 	case "gitlab:index/projectMembership:ProjectMembership":
@@ -88,6 +90,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectMirror{}
 	case "gitlab:index/projectShareGroup:ProjectShareGroup":
 		r = &ProjectShareGroup{}
+	case "gitlab:index/projectTag:ProjectTag":
+		r = &ProjectTag{}
 	case "gitlab:index/projectVariable:ProjectVariable":
 		r = &ProjectVariable{}
 	case "gitlab:index/repositoryFile:RepositoryFile":
@@ -295,6 +299,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectIssue",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectLevelMrApprovals",
 		&module{version},
 	)
@@ -311,6 +320,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectShareGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectTag",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

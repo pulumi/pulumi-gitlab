@@ -11,9 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// **NOTE**: requires either EE (self-hosted) or Silver and above (GitLab.com).
+// The `ServiceGithub` resource allows to manage the lifecycle of a project integration with GitHub.
 //
-// This resource manages a [GitHub integration](https://docs.gitlab.com/ee/user/project/integrations/github.html) that updates pipeline statuses on a GitHub repo's pull requests.
+// > This resource requires a GitLab Enterprise instance.
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#github)
 //
 // ## Example Usage
 //

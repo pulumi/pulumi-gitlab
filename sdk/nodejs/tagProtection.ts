@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows you to protect a specific tag or wildcard by an access level so that the user with less access level cannot Create the tags.
+ * The `gitlab.TagProtection` resource allows to manage the lifecycle of a tag protection.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html)
  *
  * ## Example Usage
  *

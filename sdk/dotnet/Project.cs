@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to create and manage projects within your GitLab group or within your user.
+    /// The `gitlab.Project` resource allows to manage the lifecycle of a project.
+    /// 
+    /// A project can either be created in a group or user namespace.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/projects.html)
     /// 
     /// ## Example Usage
     /// 

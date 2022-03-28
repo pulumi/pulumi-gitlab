@@ -10,7 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides details about all protected branches in a given project.
+// The `gitlabProtectedBranches` data source allows details of the protected branches of a given project.
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
 //
 // ## Example Usage
 //

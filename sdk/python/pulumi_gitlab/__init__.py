@@ -14,8 +14,11 @@ from .get_branch import *
 from .get_group import *
 from .get_group_membership import *
 from .get_project import *
+from .get_project_issue import *
+from .get_project_issues import *
 from .get_project_protected_branch import *
 from .get_project_protected_branches import *
+from .get_project_tag import *
 from .get_projects import *
 from .get_user import *
 from .get_users import *
@@ -44,10 +47,12 @@ from .project_cluster import *
 from .project_custom_attribute import *
 from .project_freeze_period import *
 from .project_hook import *
+from .project_issue import *
 from .project_level_mr_approvals import *
 from .project_membership import *
 from .project_mirror import *
 from .project_share_group import *
+from .project_tag import *
 from .project_variable import *
 from .provider import *
 from .repository_file import *
@@ -316,6 +321,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectIssue",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIssue:ProjectIssue": "ProjectIssue"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectLevelMrApprovals",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -344,6 +357,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectShareGroup:ProjectShareGroup": "ProjectShareGroup"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectTag",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectTag:ProjectTag": "ProjectTag"
   }
  },
  {

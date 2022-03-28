@@ -5,7 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows you to add a user to an existing group.
+ * The `gitlab.GroupMembership` resource allows to manage the lifecycle of a users group membersip.
+ *
+ * > If a group should grant membership to another group use the `gitlab.GroupShareGroup` resource instead.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
  *
  * ## Example Usage
  *

@@ -168,7 +168,9 @@ def get_branch(name: Optional[str] = None,
                project: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBranchResult:
     """
-    Provide details about a gitlab project branch
+    The `Branch` data source allows details of a repository branch to be retrieved by its name and project.
+
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
 
     ## Example Usage
 
@@ -212,7 +214,9 @@ def get_branch_output(name: Optional[pulumi.Input[str]] = None,
                       project: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBranchResult]:
     """
-    Provide details about a gitlab project branch
+    The `Branch` data source allows details of a repository branch to be retrieved by its name and project.
+
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
 
     ## Example Usage
 

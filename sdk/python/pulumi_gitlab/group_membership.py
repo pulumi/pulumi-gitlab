@@ -162,7 +162,11 @@ class GroupMembership(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        This resource allows you to add a user to an existing group.
+        The `GroupMembership` resource allows to manage the lifecycle of a users group membersip.
+
+        > If a group should grant membership to another group use the `GroupShareGroup` resource instead.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
 
         ## Example Usage
 
@@ -199,7 +203,11 @@ class GroupMembership(pulumi.CustomResource):
                  args: GroupMembershipArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to add a user to an existing group.
+        The `GroupMembership` resource allows to manage the lifecycle of a users group membersip.
+
+        > If a group should grant membership to another group use the `GroupShareGroup` resource instead.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
 
         ## Example Usage
 

@@ -6,7 +6,9 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Provides details about all protected branches in a given project.
+ * The `gitlabProtectedBranches` data source allows details of the protected branches of a given project.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
  *
  * ## Example Usage
  *

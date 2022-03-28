@@ -13,15 +13,23 @@ __all__ = [
     'BranchCommit',
     'BranchProtectionAllowedToMerge',
     'BranchProtectionAllowedToPush',
+    'ProjectIssueTaskCompletionStatus',
     'ProjectPushRules',
+    'ProjectTagCommit',
+    'ProjectTagRelease',
     'GetBranchCommitResult',
     'GetGroupMembershipMemberResult',
+    'GetProjectIssueTaskCompletionStatusResult',
+    'GetProjectIssuesIssueResult',
+    'GetProjectIssuesIssueTaskCompletionStatusResult',
     'GetProjectProtectedBranchMergeAccessLevelResult',
     'GetProjectProtectedBranchPushAccessLevelResult',
     'GetProjectProtectedBranchesProtectedBranchResult',
     'GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult',
     'GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult',
     'GetProjectPushRulesResult',
+    'GetProjectTagCommitResult',
+    'GetProjectTagReleaseResult',
     'GetProjectsProjectResult',
     'GetProjectsProjectForkedFromProjectResult',
     'GetProjectsProjectNamespaceResult',
@@ -318,6 +326,54 @@ class BranchProtectionAllowedToPush(dict):
 
 
 @pulumi.output_type
+class ProjectIssueTaskCompletionStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "completedCount":
+            suggest = "completed_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProjectIssueTaskCompletionStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProjectIssueTaskCompletionStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProjectIssueTaskCompletionStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 completed_count: Optional[int] = None,
+                 count: Optional[int] = None):
+        """
+        :param int completed_count: The number of tasks that are completed.
+        :param int count: The number of tasks.
+        """
+        if completed_count is not None:
+            pulumi.set(__self__, "completed_count", completed_count)
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+
+    @property
+    @pulumi.getter(name="completedCount")
+    def completed_count(self) -> Optional[int]:
+        """
+        The number of tasks that are completed.
+        """
+        return pulumi.get(self, "completed_count")
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[int]:
+        """
+        The number of tasks.
+        """
+        return pulumi.get(self, "count")
+
+
+@pulumi.output_type
 class ProjectPushRules(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -494,6 +550,178 @@ class ProjectPushRules(dict):
 
 
 @pulumi.output_type
+class ProjectTagCommit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorEmail":
+            suggest = "author_email"
+        elif key == "authorName":
+            suggest = "author_name"
+        elif key == "authoredDate":
+            suggest = "authored_date"
+        elif key == "committedDate":
+            suggest = "committed_date"
+        elif key == "committerEmail":
+            suggest = "committer_email"
+        elif key == "committerName":
+            suggest = "committer_name"
+        elif key == "parentIds":
+            suggest = "parent_ids"
+        elif key == "shortId":
+            suggest = "short_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProjectTagCommit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProjectTagCommit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProjectTagCommit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 author_email: Optional[str] = None,
+                 author_name: Optional[str] = None,
+                 authored_date: Optional[str] = None,
+                 committed_date: Optional[str] = None,
+                 committer_email: Optional[str] = None,
+                 committer_name: Optional[str] = None,
+                 id: Optional[str] = None,
+                 message: Optional[str] = None,
+                 parent_ids: Optional[Sequence[str]] = None,
+                 short_id: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str id: The ID of this resource.
+        :param str message: Creates annotated tag.
+        """
+        if author_email is not None:
+            pulumi.set(__self__, "author_email", author_email)
+        if author_name is not None:
+            pulumi.set(__self__, "author_name", author_name)
+        if authored_date is not None:
+            pulumi.set(__self__, "authored_date", authored_date)
+        if committed_date is not None:
+            pulumi.set(__self__, "committed_date", committed_date)
+        if committer_email is not None:
+            pulumi.set(__self__, "committer_email", committer_email)
+        if committer_name is not None:
+            pulumi.set(__self__, "committer_name", committer_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if parent_ids is not None:
+            pulumi.set(__self__, "parent_ids", parent_ids)
+        if short_id is not None:
+            pulumi.set(__self__, "short_id", short_id)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="authorEmail")
+    def author_email(self) -> Optional[str]:
+        return pulumi.get(self, "author_email")
+
+    @property
+    @pulumi.getter(name="authorName")
+    def author_name(self) -> Optional[str]:
+        return pulumi.get(self, "author_name")
+
+    @property
+    @pulumi.getter(name="authoredDate")
+    def authored_date(self) -> Optional[str]:
+        return pulumi.get(self, "authored_date")
+
+    @property
+    @pulumi.getter(name="committedDate")
+    def committed_date(self) -> Optional[str]:
+        return pulumi.get(self, "committed_date")
+
+    @property
+    @pulumi.getter(name="committerEmail")
+    def committer_email(self) -> Optional[str]:
+        return pulumi.get(self, "committer_email")
+
+    @property
+    @pulumi.getter(name="committerName")
+    def committer_name(self) -> Optional[str]:
+        return pulumi.get(self, "committer_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        Creates annotated tag.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter(name="parentIds")
+    def parent_ids(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "parent_ids")
+
+    @property
+    @pulumi.getter(name="shortId")
+    def short_id(self) -> Optional[str]:
+        return pulumi.get(self, "short_id")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class ProjectTagRelease(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagName":
+            suggest = "tag_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProjectTagRelease. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProjectTagRelease.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProjectTagRelease.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 tag_name: Optional[str] = None):
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if tag_name is not None:
+            pulumi.set(__self__, "tag_name", tag_name)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="tagName")
+    def tag_name(self) -> Optional[str]:
+        return pulumi.get(self, "tag_name")
+
+
+@pulumi.output_type
 class GetBranchCommitResult(dict):
     def __init__(__self__, *,
                  author_email: str,
@@ -650,6 +878,352 @@ class GetGroupMembershipMemberResult(dict):
     @pulumi.getter(name="webUrl")
     def web_url(self) -> str:
         return pulumi.get(self, "web_url")
+
+
+@pulumi.output_type
+class GetProjectIssueTaskCompletionStatusResult(dict):
+    def __init__(__self__, *,
+                 completed_count: int,
+                 count: int):
+        pulumi.set(__self__, "completed_count", completed_count)
+        pulumi.set(__self__, "count", count)
+
+    @property
+    @pulumi.getter(name="completedCount")
+    def completed_count(self) -> int:
+        return pulumi.get(self, "completed_count")
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        return pulumi.get(self, "count")
+
+
+@pulumi.output_type
+class GetProjectIssuesIssueResult(dict):
+    def __init__(__self__, *,
+                 assignee_ids: Sequence[int],
+                 author_id: int,
+                 closed_at: str,
+                 closed_by_user_id: int,
+                 confidential: bool,
+                 created_at: str,
+                 description: str,
+                 discussion_locked: bool,
+                 discussion_to_resolve: str,
+                 downvotes: int,
+                 due_date: str,
+                 epic_id: int,
+                 epic_issue_id: int,
+                 external_id: str,
+                 human_time_estimate: str,
+                 human_total_time_spent: str,
+                 iid: int,
+                 issue_id: int,
+                 issue_link_id: int,
+                 issue_type: str,
+                 labels: Sequence[str],
+                 links: Mapping[str, str],
+                 merge_request_to_resolve_discussions_of: int,
+                 merge_requests_count: int,
+                 milestone_id: int,
+                 moved_to_id: int,
+                 project: str,
+                 references: Mapping[str, str],
+                 state: str,
+                 subscribed: bool,
+                 task_completion_statuses: Sequence['outputs.GetProjectIssuesIssueTaskCompletionStatusResult'],
+                 time_estimate: int,
+                 title: str,
+                 total_time_spent: int,
+                 updated_at: str,
+                 upvotes: int,
+                 user_notes_count: int,
+                 web_url: str,
+                 weight: int):
+        """
+        :param int author_id: Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
+        :param bool confidential: Filter confidential or public issues.
+        :param str due_date: Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
+        :param str issue_type: Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
+        :param Sequence[str] labels: Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
+        :param str project: The name or id of the project.
+        :param int weight: Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
+        """
+        pulumi.set(__self__, "assignee_ids", assignee_ids)
+        pulumi.set(__self__, "author_id", author_id)
+        pulumi.set(__self__, "closed_at", closed_at)
+        pulumi.set(__self__, "closed_by_user_id", closed_by_user_id)
+        pulumi.set(__self__, "confidential", confidential)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "discussion_locked", discussion_locked)
+        pulumi.set(__self__, "discussion_to_resolve", discussion_to_resolve)
+        pulumi.set(__self__, "downvotes", downvotes)
+        pulumi.set(__self__, "due_date", due_date)
+        pulumi.set(__self__, "epic_id", epic_id)
+        pulumi.set(__self__, "epic_issue_id", epic_issue_id)
+        pulumi.set(__self__, "external_id", external_id)
+        pulumi.set(__self__, "human_time_estimate", human_time_estimate)
+        pulumi.set(__self__, "human_total_time_spent", human_total_time_spent)
+        pulumi.set(__self__, "iid", iid)
+        pulumi.set(__self__, "issue_id", issue_id)
+        pulumi.set(__self__, "issue_link_id", issue_link_id)
+        pulumi.set(__self__, "issue_type", issue_type)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "links", links)
+        pulumi.set(__self__, "merge_request_to_resolve_discussions_of", merge_request_to_resolve_discussions_of)
+        pulumi.set(__self__, "merge_requests_count", merge_requests_count)
+        pulumi.set(__self__, "milestone_id", milestone_id)
+        pulumi.set(__self__, "moved_to_id", moved_to_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "references", references)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "subscribed", subscribed)
+        pulumi.set(__self__, "task_completion_statuses", task_completion_statuses)
+        pulumi.set(__self__, "time_estimate", time_estimate)
+        pulumi.set(__self__, "title", title)
+        pulumi.set(__self__, "total_time_spent", total_time_spent)
+        pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "upvotes", upvotes)
+        pulumi.set(__self__, "user_notes_count", user_notes_count)
+        pulumi.set(__self__, "web_url", web_url)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="assigneeIds")
+    def assignee_ids(self) -> Sequence[int]:
+        return pulumi.get(self, "assignee_ids")
+
+    @property
+    @pulumi.getter(name="authorId")
+    def author_id(self) -> int:
+        """
+        Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
+        """
+        return pulumi.get(self, "author_id")
+
+    @property
+    @pulumi.getter(name="closedAt")
+    def closed_at(self) -> str:
+        return pulumi.get(self, "closed_at")
+
+    @property
+    @pulumi.getter(name="closedByUserId")
+    def closed_by_user_id(self) -> int:
+        return pulumi.get(self, "closed_by_user_id")
+
+    @property
+    @pulumi.getter
+    def confidential(self) -> bool:
+        """
+        Filter confidential or public issues.
+        """
+        return pulumi.get(self, "confidential")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="discussionLocked")
+    def discussion_locked(self) -> bool:
+        return pulumi.get(self, "discussion_locked")
+
+    @property
+    @pulumi.getter(name="discussionToResolve")
+    def discussion_to_resolve(self) -> str:
+        return pulumi.get(self, "discussion_to_resolve")
+
+    @property
+    @pulumi.getter
+    def downvotes(self) -> int:
+        return pulumi.get(self, "downvotes")
+
+    @property
+    @pulumi.getter(name="dueDate")
+    def due_date(self) -> str:
+        """
+        Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
+        """
+        return pulumi.get(self, "due_date")
+
+    @property
+    @pulumi.getter(name="epicId")
+    def epic_id(self) -> int:
+        return pulumi.get(self, "epic_id")
+
+    @property
+    @pulumi.getter(name="epicIssueId")
+    def epic_issue_id(self) -> int:
+        return pulumi.get(self, "epic_issue_id")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> str:
+        return pulumi.get(self, "external_id")
+
+    @property
+    @pulumi.getter(name="humanTimeEstimate")
+    def human_time_estimate(self) -> str:
+        return pulumi.get(self, "human_time_estimate")
+
+    @property
+    @pulumi.getter(name="humanTotalTimeSpent")
+    def human_total_time_spent(self) -> str:
+        return pulumi.get(self, "human_total_time_spent")
+
+    @property
+    @pulumi.getter
+    def iid(self) -> int:
+        return pulumi.get(self, "iid")
+
+    @property
+    @pulumi.getter(name="issueId")
+    def issue_id(self) -> int:
+        return pulumi.get(self, "issue_id")
+
+    @property
+    @pulumi.getter(name="issueLinkId")
+    def issue_link_id(self) -> int:
+        return pulumi.get(self, "issue_link_id")
+
+    @property
+    @pulumi.getter(name="issueType")
+    def issue_type(self) -> str:
+        """
+        Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
+        """
+        return pulumi.get(self, "issue_type")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Sequence[str]:
+        """
+        Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def links(self) -> Mapping[str, str]:
+        return pulumi.get(self, "links")
+
+    @property
+    @pulumi.getter(name="mergeRequestToResolveDiscussionsOf")
+    def merge_request_to_resolve_discussions_of(self) -> int:
+        return pulumi.get(self, "merge_request_to_resolve_discussions_of")
+
+    @property
+    @pulumi.getter(name="mergeRequestsCount")
+    def merge_requests_count(self) -> int:
+        return pulumi.get(self, "merge_requests_count")
+
+    @property
+    @pulumi.getter(name="milestoneId")
+    def milestone_id(self) -> int:
+        return pulumi.get(self, "milestone_id")
+
+    @property
+    @pulumi.getter(name="movedToId")
+    def moved_to_id(self) -> int:
+        return pulumi.get(self, "moved_to_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The name or id of the project.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def references(self) -> Mapping[str, str]:
+        return pulumi.get(self, "references")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def subscribed(self) -> bool:
+        return pulumi.get(self, "subscribed")
+
+    @property
+    @pulumi.getter(name="taskCompletionStatuses")
+    def task_completion_statuses(self) -> Sequence['outputs.GetProjectIssuesIssueTaskCompletionStatusResult']:
+        return pulumi.get(self, "task_completion_statuses")
+
+    @property
+    @pulumi.getter(name="timeEstimate")
+    def time_estimate(self) -> int:
+        return pulumi.get(self, "time_estimate")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter(name="totalTimeSpent")
+    def total_time_spent(self) -> int:
+        return pulumi.get(self, "total_time_spent")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter
+    def upvotes(self) -> int:
+        return pulumi.get(self, "upvotes")
+
+    @property
+    @pulumi.getter(name="userNotesCount")
+    def user_notes_count(self) -> int:
+        return pulumi.get(self, "user_notes_count")
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> str:
+        return pulumi.get(self, "web_url")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> int:
+        """
+        Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GetProjectIssuesIssueTaskCompletionStatusResult(dict):
+    def __init__(__self__, *,
+                 completed_count: int,
+                 count: int):
+        pulumi.set(__self__, "completed_count", completed_count)
+        pulumi.set(__self__, "count", count)
+
+    @property
+    @pulumi.getter(name="completedCount")
+    def completed_count(self) -> int:
+        return pulumi.get(self, "completed_count")
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        return pulumi.get(self, "count")
 
 
 @pulumi.output_type
@@ -917,6 +1491,117 @@ class GetProjectPushRulesResult(dict):
     @pulumi.getter(name="rejectUnsignedCommits")
     def reject_unsigned_commits(self) -> bool:
         return pulumi.get(self, "reject_unsigned_commits")
+
+
+@pulumi.output_type
+class GetProjectTagCommitResult(dict):
+    def __init__(__self__, *,
+                 author_email: str,
+                 author_name: str,
+                 authored_date: str,
+                 committed_date: str,
+                 committer_email: str,
+                 committer_name: str,
+                 id: str,
+                 message: str,
+                 parent_ids: Sequence[str],
+                 short_id: str,
+                 title: str):
+        """
+        :param str id: The ID of this resource.
+        :param str message: Creates annotated tag.
+        """
+        pulumi.set(__self__, "author_email", author_email)
+        pulumi.set(__self__, "author_name", author_name)
+        pulumi.set(__self__, "authored_date", authored_date)
+        pulumi.set(__self__, "committed_date", committed_date)
+        pulumi.set(__self__, "committer_email", committer_email)
+        pulumi.set(__self__, "committer_name", committer_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "parent_ids", parent_ids)
+        pulumi.set(__self__, "short_id", short_id)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="authorEmail")
+    def author_email(self) -> str:
+        return pulumi.get(self, "author_email")
+
+    @property
+    @pulumi.getter(name="authorName")
+    def author_name(self) -> str:
+        return pulumi.get(self, "author_name")
+
+    @property
+    @pulumi.getter(name="authoredDate")
+    def authored_date(self) -> str:
+        return pulumi.get(self, "authored_date")
+
+    @property
+    @pulumi.getter(name="committedDate")
+    def committed_date(self) -> str:
+        return pulumi.get(self, "committed_date")
+
+    @property
+    @pulumi.getter(name="committerEmail")
+    def committer_email(self) -> str:
+        return pulumi.get(self, "committer_email")
+
+    @property
+    @pulumi.getter(name="committerName")
+    def committer_name(self) -> str:
+        return pulumi.get(self, "committer_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        Creates annotated tag.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter(name="parentIds")
+    def parent_ids(self) -> Sequence[str]:
+        return pulumi.get(self, "parent_ids")
+
+    @property
+    @pulumi.getter(name="shortId")
+    def short_id(self) -> str:
+        return pulumi.get(self, "short_id")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class GetProjectTagReleaseResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 tag_name: str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "tag_name", tag_name)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="tagName")
+    def tag_name(self) -> str:
+        return pulumi.get(self, "tag_name")
 
 
 @pulumi.output_type

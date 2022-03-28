@@ -508,7 +508,9 @@ class ServiceMicrosoftTeams(pulumi.CustomResource):
                  wiki_page_events: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        This resource allows you to manage Microsoft Teams integration.
+        The `ServiceMicrosoftTeams` resource allows to manage the lifecycle of a project integration with Microsoft Teams.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#microsoft-teams)
 
         ## Example Usage
 
@@ -556,7 +558,9 @@ class ServiceMicrosoftTeams(pulumi.CustomResource):
                  args: ServiceMicrosoftTeamsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to manage Microsoft Teams integration.
+        The `ServiceMicrosoftTeams` resource allows to manage the lifecycle of a project integration with Microsoft Teams.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#microsoft-teams)
 
         ## Example Usage
 

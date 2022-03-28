@@ -121,6 +121,12 @@ namespace Pulumi.GitLab
         public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
+        /// When enabled, users can not fork projects from this group to external namespaces.
+        /// </summary>
+        [Output("preventForkingOutsideGroup")]
+        public Output<bool?> PreventForkingOutsideGroup { get; private set; } = null!;
+
+        /// <summary>
         /// , defaults to Maintainer.
         /// </summary>
         [Output("projectCreationLevel")]
@@ -275,6 +281,12 @@ namespace Pulumi.GitLab
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
+        /// When enabled, users can not fork projects from this group to external namespaces.
+        /// </summary>
+        [Input("preventForkingOutsideGroup")]
+        public Input<bool>? PreventForkingOutsideGroup { get; set; }
+
+        /// <summary>
         /// , defaults to Maintainer.
         /// </summary>
         [Input("projectCreationLevel")]
@@ -388,6 +400,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
+
+        /// <summary>
+        /// When enabled, users can not fork projects from this group to external namespaces.
+        /// </summary>
+        [Input("preventForkingOutsideGroup")]
+        public Input<bool>? PreventForkingOutsideGroup { get; set; }
 
         /// <summary>
         /// , defaults to Maintainer.

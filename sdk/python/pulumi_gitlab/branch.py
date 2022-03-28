@@ -260,7 +260,9 @@ class Branch(pulumi.CustomResource):
                  ref: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to create and manage GitLab branches.
+        The `Branch` resource allows to manage the lifecycle of a repository branch.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html)
 
         ## Example Usage
 
@@ -298,7 +300,9 @@ class Branch(pulumi.CustomResource):
                  args: BranchArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to create and manage GitLab branches.
+        The `Branch` resource allows to manage the lifecycle of a repository branch.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html)
 
         ## Example Usage
 

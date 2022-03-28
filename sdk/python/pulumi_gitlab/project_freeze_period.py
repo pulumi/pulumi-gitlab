@@ -162,7 +162,9 @@ class ProjectFreezePeriod(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to create and manage freeze periods. For further information on freeze periods, consult the [gitlab documentation](https://docs.gitlab.com/ee/api/freeze_periods.html#create-a-freeze-period).
+        The `ProjectFreezePeriod` resource allows to manage the lifecycle of a freeze period for a project.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/freeze_periods.html)
 
         ## Example Usage
 
@@ -199,7 +201,9 @@ class ProjectFreezePeriod(pulumi.CustomResource):
                  args: ProjectFreezePeriodArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to create and manage freeze periods. For further information on freeze periods, consult the [gitlab documentation](https://docs.gitlab.com/ee/api/freeze_periods.html#create-a-freeze-period).
+        The `ProjectFreezePeriod` resource allows to manage the lifecycle of a freeze period for a project.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/freeze_periods.html)
 
         ## Example Usage
 

@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to create and manage hooks for your GitLab projects.
-    /// For further information on hooks, consult the [gitlab
-    /// documentation](https://docs.gitlab.com/ce/user/project/integrations/webhooks.html).
+    /// The `gitlab.ProjectHook` resource allows to manage the lifecycle of a project hook.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#hooks)
     /// 
     /// ## Example Usage
     /// 

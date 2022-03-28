@@ -10,9 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provide details about a specific group in the gitlab provider.
+// The `Group` data source allows details of a group to be retrieved by its id or full path.
 //
-// > **Note**: exactly one of groupId or fullPath must be provided.
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
 //
 // ## Example Usage
 //
@@ -76,6 +76,8 @@ type LookupGroupResult struct {
 	ParentId int `pulumi:"parentId"`
 	// The path of the group.
 	Path string `pulumi:"path"`
+	// When enabled, users can not fork projects from this group to external namespaces.
+	PreventForkingOutsideGroup bool `pulumi:"preventForkingOutsideGroup"`
 	// Boolean, is request for access enabled to the group.
 	RequestAccessEnabled bool `pulumi:"requestAccessEnabled"`
 	// The group level registration token to use during runner setup.
@@ -170,6 +172,11 @@ func (o LookupGroupResultOutput) ParentId() pulumi.IntOutput {
 // The path of the group.
 func (o LookupGroupResultOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// When enabled, users can not fork projects from this group to external namespaces.
+func (o LookupGroupResultOutput) PreventForkingOutsideGroup() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.PreventForkingOutsideGroup }).(pulumi.BoolOutput)
 }
 
 // Boolean, is request for access enabled to the group.

@@ -490,9 +490,11 @@ class ProjectCluster(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to create and manage project clusters for your GitLab projects.
-        For further information on clusters, consult the [gitlab
-        documentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).
+        The `ProjectCluster` resource allows to manage the lifecycle of a project cluster.
+
+        > This is deprecated GitLab feature since 14.5
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_clusters.html)
 
         ## Example Usage
 
@@ -544,9 +546,11 @@ class ProjectCluster(pulumi.CustomResource):
                  args: ProjectClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to create and manage project clusters for your GitLab projects.
-        For further information on clusters, consult the [gitlab
-        documentation](https://docs.gitlab.com/ce/user/project/clusters/index.html).
+        The `ProjectCluster` resource allows to manage the lifecycle of a project cluster.
+
+        > This is deprecated GitLab feature since 14.5
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_clusters.html)
 
         ## Example Usage
 

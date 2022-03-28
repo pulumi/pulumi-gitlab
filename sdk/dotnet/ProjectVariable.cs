@@ -10,14 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to create and manage CI/CD variables for your GitLab projects.
-    /// For further information on variables, consult the [gitlab
-    /// documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
+    /// The `gitlab.ProjectVariable` resource allows to manage the lifecycle of a CI/CD variable for a project.
     /// 
-    /// &gt; **Important:** If your GitLab version is older than 13.4, you may see nondeterministic behavior
-    /// when updating or deleting `gitlab.ProjectVariable` resources with non-unique keys, for example if
-    /// there is another variable with the same key and different environment scope. See
-    /// [this GitLab issue](https://gitlab.com/gitlab-org/gitlab/-/issues/9912).
+    /// &gt; **Important:** If your GitLab version is older than 13.4, you may see nondeterministic behavior when updating or deleting gitlab.ProjectVariable resources with non-unique keys, for example if there is another variable with the same key and different environment scope. See [this GitLab issue](https://gitlab.com/gitlab-org/gitlab/-/issues/9912).
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
     /// 
     /// ## Example Usage
     /// 

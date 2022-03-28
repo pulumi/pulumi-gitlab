@@ -12,9 +12,13 @@ namespace Pulumi.GitLab
     public static class GetUsers
     {
         /// <summary>
-        /// Provide details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
+        /// The `gitlab.getUsers` data source allows details of multiple users to be retrieved given some optional filter criteria.
         /// 
-        /// **NOTE**: Some available options require administrator privileges. Please visit [Gitlab API documentation][users_for_admins] for more information.
+        /// &gt; Some attributes might not be returned depending on if you're an admin or not.
+        /// 
+        /// &gt; Some available options require administrator privileges.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users.html#list-users)
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -49,9 +53,13 @@ namespace Pulumi.GitLab
             => Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("gitlab:index/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provide details about a list of users in the gitlab provider. The results include id, username, email, name and more about the requested users. Users can also be sorted and filtered using several options.
+        /// The `gitlab.getUsers` data source allows details of multiple users to be retrieved given some optional filter criteria.
         /// 
-        /// **NOTE**: Some available options require administrator privileges. Please visit [Gitlab API documentation][users_for_admins] for more information.
+        /// &gt; Some attributes might not be returned depending on if you're an admin or not.
+        /// 
+        /// &gt; Some available options require administrator privileges.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users.html#list-users)
         /// 
         /// {{% examples %}}
         /// ## Example Usage

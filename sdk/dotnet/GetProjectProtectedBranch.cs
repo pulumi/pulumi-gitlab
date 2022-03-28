@@ -12,7 +12,9 @@ namespace Pulumi.GitLab
     public static class GetProjectProtectedBranch
     {
         /// <summary>
-        /// Provides details about a specific protected branch in a given project.
+        /// The `gitlab_protected_branch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -42,7 +44,9 @@ namespace Pulumi.GitLab
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectProtectedBranchResult>("gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch", args ?? new GetProjectProtectedBranchArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides details about a specific protected branch in a given project.
+        /// The `gitlab_protected_branch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
         /// 
         /// {{% examples %}}
         /// ## Example Usage

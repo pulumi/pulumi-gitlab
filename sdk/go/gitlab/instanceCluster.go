@@ -11,9 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to create and manage instance clusters for your GitLab instances.
-// For further information on clusters, consult the [gitlab
-// documentation](https://docs.gitlab.com/ee/user/instance/clusters/).
+// The `InstanceCluster` resource allows to manage the lifecycle of an instance cluster.
+//
+// > This is deprecated GitLab feature since 14.5
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_clusters.html)
 //
 // ## Example Usage
 //

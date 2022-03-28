@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to manage Jira integration.
+    /// The `gitlab.ServiceJira` resource allows to manage the lifecycle of a project integration with Jira.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
     /// 
     /// ## Example Usage
     /// 

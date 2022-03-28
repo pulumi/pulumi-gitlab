@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to create and manage labels for your GitLab groups.
-    /// For further information on labels, consult the [gitlab
-    /// documentation](https://docs.gitlab.com/ee/user/project/labels.html#group-labels).
+    /// The `gitlab.GroupLabel` resource allows to manage the lifecycle of labels within a group.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/labels.html#group-labels)
     /// 
     /// ## Example Usage
     /// 

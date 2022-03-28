@@ -10,9 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provide details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
+// The `GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
 //
-// > **Note**: exactly one of groupId or fullPath must be provided.
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
 //
 // ## Example Usage
 //

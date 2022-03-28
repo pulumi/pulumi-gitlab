@@ -162,7 +162,11 @@ class DeployKey(pulumi.CustomResource):
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to create and manage [deploy keys](https://docs.gitlab.com/ee/user/project/deploy_keys/) for your GitLab projects.
+        The `DeployKey` resource allows to manage the lifecycle of a deploy key.
+
+        > To enable an already existing deploy key for another project use the `gitlab_project_deploy_key` resource.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html)
 
         ## Example Usage
 
@@ -198,7 +202,11 @@ class DeployKey(pulumi.CustomResource):
                  args: DeployKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to create and manage [deploy keys](https://docs.gitlab.com/ee/user/project/deploy_keys/) for your GitLab projects.
+        The `DeployKey` resource allows to manage the lifecycle of a deploy key.
+
+        > To enable an already existing deploy key for another project use the `gitlab_project_deploy_key` resource.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html)
 
         ## Example Usage
 

@@ -276,7 +276,11 @@ class GroupAccessToken(pulumi.CustomResource):
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        This resource allows you to create and manage Group Access Token for your GitLab Groups. (Introduced in GitLab 14.7)
+        The `gitlab_group_access`token resource allows to manage the lifecycle of a group access token.
+
+        > Group Access Token were introduced in GitLab 14.7
+
+        **Upstream API**: [GitLab REST API](https://docs.gitlab.com/ee/api/group_access_tokens.html)
 
         ## Example Usage
 
@@ -320,7 +324,11 @@ class GroupAccessToken(pulumi.CustomResource):
                  args: GroupAccessTokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to create and manage Group Access Token for your GitLab Groups. (Introduced in GitLab 14.7)
+        The `gitlab_group_access`token resource allows to manage the lifecycle of a group access token.
+
+        > Group Access Token were introduced in GitLab 14.7
+
+        **Upstream API**: [GitLab REST API](https://docs.gitlab.com/ee/api/group_access_tokens.html)
 
         ## Example Usage
 

@@ -10,7 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provide details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
+// The `Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
 //
 // ## Example Usage
 //

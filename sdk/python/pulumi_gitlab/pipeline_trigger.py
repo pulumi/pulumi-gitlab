@@ -113,7 +113,9 @@ class PipelineTrigger(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to create and manage pipeline triggers
+        The `PipelineTrigger` resource allows to manage the lifecycle of a pipeline trigger.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_triggers.html)
 
         ## Example Usage
 
@@ -146,7 +148,9 @@ class PipelineTrigger(pulumi.CustomResource):
                  args: PipelineTriggerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to create and manage pipeline triggers
+        The `PipelineTrigger` resource allows to manage the lifecycle of a pipeline trigger.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_triggers.html)
 
         ## Example Usage
 

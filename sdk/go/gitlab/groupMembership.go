@@ -11,7 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to add a user to an existing group.
+// The `GroupMembership` resource allows to manage the lifecycle of a users group membersip.
+//
+// > If a group should grant membership to another group use the `GroupShareGroup` resource instead.
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
 //
 // ## Example Usage
 //

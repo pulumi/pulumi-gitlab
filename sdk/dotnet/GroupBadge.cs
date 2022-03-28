@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to create and manage badges for your GitLab groups.
-    /// For further information, consult the [gitlab
-    /// documentation](https://docs.gitlab.com/ee/user/project/badges.html#group-badges).
+    /// The `gitlab.GroupBadge` resource allows to mange the lifecycle of group badges.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#group-badges)
     /// 
     /// ## Example Usage
     /// 

@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to share a project with a group
+    /// The `gitlab.ProjectShareGroup` resource allows to manage the lifecycle of project shared with a group.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#share-project-with-group)
     /// 
     /// ## Example Usage
     /// 

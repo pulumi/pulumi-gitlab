@@ -230,8 +230,11 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
                  reset_approvals_on_push: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        This resource allows you to configure project-level MR approvals. for your GitLab projects.
-        For further information on merge request approvals, consult the [GitLab API documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
+        The `gitlab_project_level_mr_approval_rule` resource allows to manage the lifecycle of a Merge Request-level approval rule.
+
+        > This resource requires a GitLab Enterprise instance.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#merge-request-level-mr-approvals)
 
         ## Example Usage
 
@@ -276,8 +279,11 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
                  args: ProjectLevelMrApprovalsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to configure project-level MR approvals. for your GitLab projects.
-        For further information on merge request approvals, consult the [GitLab API documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
+        The `gitlab_project_level_mr_approval_rule` resource allows to manage the lifecycle of a Merge Request-level approval rule.
+
+        > This resource requires a GitLab Enterprise instance.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#merge-request-level-mr-approvals)
 
         ## Example Usage
 

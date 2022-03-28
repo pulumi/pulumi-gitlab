@@ -59,6 +59,17 @@ export interface BranchProtectionAllowedToPush {
     userId?: pulumi.Input<number>;
 }
 
+export interface ProjectIssueTaskCompletionStatus {
+    /**
+     * The number of tasks that are completed.
+     */
+    completedCount?: pulumi.Input<number>;
+    /**
+     * The number of tasks.
+     */
+    count?: pulumi.Input<number>;
+}
+
 export interface ProjectPushRules {
     /**
      * All commit author emails must match this regex, e.g. `@my-company.com$`.
@@ -104,4 +115,29 @@ export interface ProjectPushRules {
      * Reject commit when it’s not signed through GPG.
      */
     rejectUnsignedCommits?: pulumi.Input<boolean>;
+}
+
+export interface ProjectTagCommit {
+    authorEmail?: pulumi.Input<string>;
+    authorName?: pulumi.Input<string>;
+    authoredDate?: pulumi.Input<string>;
+    committedDate?: pulumi.Input<string>;
+    committerEmail?: pulumi.Input<string>;
+    committerName?: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Creates annotated tag.
+     */
+    message?: pulumi.Input<string>;
+    parentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    shortId?: pulumi.Input<string>;
+    title?: pulumi.Input<string>;
+}
+
+export interface ProjectTagRelease {
+    description?: pulumi.Input<string>;
+    tagName?: pulumi.Input<string>;
 }

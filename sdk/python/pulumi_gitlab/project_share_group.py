@@ -169,7 +169,9 @@ class ProjectShareGroup(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to share a project with a group
+        The `ProjectShareGroup` resource allows to manage the lifecycle of project shared with a group.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#share-project-with-group)
 
         ## Example Usage
 
@@ -205,7 +207,9 @@ class ProjectShareGroup(pulumi.CustomResource):
                  args: ProjectShareGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to share a project with a group
+        The `ProjectShareGroup` resource allows to manage the lifecycle of project shared with a group.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#share-project-with-group)
 
         ## Example Usage
 

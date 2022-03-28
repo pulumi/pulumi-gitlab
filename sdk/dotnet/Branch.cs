@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to create and manage GitLab branches.
+    /// The `gitlab.Branch` resource allows to manage the lifecycle of a repository branch.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html)
     /// 
     /// ## Example Usage
     /// 

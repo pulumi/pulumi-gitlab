@@ -336,7 +336,9 @@ def get_project(id: Optional[str] = None,
                 path_with_namespace: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
-    Provide details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
+    The `Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
+
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
 
     ## Example Usage
 
@@ -393,7 +395,9 @@ def get_project_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                        path_with_namespace: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
     """
-    Provide details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
+    The `Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
+
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
 
     ## Example Usage
 

@@ -227,9 +227,9 @@ class PipelineSchedule(pulumi.CustomResource):
                  ref: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to create and manage pipeline schedules.
-        For further information on clusters, consult the [gitlab
-        documentation](https://docs.gitlab.com/ce/user/project/pipelines/schedules.html).
+        The `PipelineSchedule` resource allows to manage the lifecycle of a scheduled pipeline.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
 
         ## Example Usage
 
@@ -268,9 +268,9 @@ class PipelineSchedule(pulumi.CustomResource):
                  args: PipelineScheduleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to create and manage pipeline schedules.
-        For further information on clusters, consult the [gitlab
-        documentation](https://docs.gitlab.com/ce/user/project/pipelines/schedules.html).
+        The `PipelineSchedule` resource allows to manage the lifecycle of a scheduled pipeline.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
 
         ## Example Usage
 

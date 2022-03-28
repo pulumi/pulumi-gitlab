@@ -11,7 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to add a current user to an existing project with a set access level.
+// The `ProjectMembership` resource allows to manage the lifecycle of a users project membersip.
+//
+// > If a project should grant membership to an entire group use the `ProjectShareGroup` resource instead.
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
 //
 // ## Example Usage
 //

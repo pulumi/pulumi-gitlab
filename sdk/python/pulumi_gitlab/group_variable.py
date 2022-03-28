@@ -261,9 +261,9 @@ class GroupVariable(pulumi.CustomResource):
                  variable_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to create and manage CI/CD variables for your GitLab groups.
-        For further information on variables, consult the [gitlab
-        documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
+        The `GroupVariable` resource allows to manage the lifecycle of a CI/CD variable for a group.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
 
         ## Example Usage
 
@@ -305,9 +305,9 @@ class GroupVariable(pulumi.CustomResource):
                  args: GroupVariableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to create and manage CI/CD variables for your GitLab groups.
-        For further information on variables, consult the [gitlab
-        documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
+        The `GroupVariable` resource allows to manage the lifecycle of a CI/CD variable for a group.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
 
         ## Example Usage
 
