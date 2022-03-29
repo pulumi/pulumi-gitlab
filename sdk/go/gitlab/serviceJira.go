@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to manage Jira integration.
+// The `ServiceJira` resource allows to manage the lifecycle of a project integration with Jira.
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
 //
 // ## Example Usage
 //

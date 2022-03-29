@@ -162,7 +162,9 @@ class GroupShareGroup(pulumi.CustomResource):
                  share_group_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        This resource allows you to share a group with another group
+        The `GroupShareGroup` resource allows to manage the lifecycle of group shared with another group.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#share-groups-with-groups)
 
         ## Example Usage
 
@@ -199,7 +201,9 @@ class GroupShareGroup(pulumi.CustomResource):
                  args: GroupShareGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to share a group with another group
+        The `GroupShareGroup` resource allows to manage the lifecycle of group shared with another group.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#share-groups-with-groups)
 
         ## Example Usage
 

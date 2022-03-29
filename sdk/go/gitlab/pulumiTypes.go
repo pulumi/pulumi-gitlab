@@ -415,6 +415,162 @@ func (o BranchProtectionAllowedToPushArrayOutput) Index(i pulumi.IntInput) Branc
 	}).(BranchProtectionAllowedToPushOutput)
 }
 
+type ProjectIssueTaskCompletionStatus struct {
+	// The number of tasks that are completed.
+	CompletedCount *int `pulumi:"completedCount"`
+	// The number of tasks.
+	Count *int `pulumi:"count"`
+}
+
+// ProjectIssueTaskCompletionStatusInput is an input type that accepts ProjectIssueTaskCompletionStatusArgs and ProjectIssueTaskCompletionStatusOutput values.
+// You can construct a concrete instance of `ProjectIssueTaskCompletionStatusInput` via:
+//
+//          ProjectIssueTaskCompletionStatusArgs{...}
+type ProjectIssueTaskCompletionStatusInput interface {
+	pulumi.Input
+
+	ToProjectIssueTaskCompletionStatusOutput() ProjectIssueTaskCompletionStatusOutput
+	ToProjectIssueTaskCompletionStatusOutputWithContext(context.Context) ProjectIssueTaskCompletionStatusOutput
+}
+
+type ProjectIssueTaskCompletionStatusArgs struct {
+	// The number of tasks that are completed.
+	CompletedCount pulumi.IntPtrInput `pulumi:"completedCount"`
+	// The number of tasks.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+}
+
+func (ProjectIssueTaskCompletionStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectIssueTaskCompletionStatus)(nil)).Elem()
+}
+
+func (i ProjectIssueTaskCompletionStatusArgs) ToProjectIssueTaskCompletionStatusOutput() ProjectIssueTaskCompletionStatusOutput {
+	return i.ToProjectIssueTaskCompletionStatusOutputWithContext(context.Background())
+}
+
+func (i ProjectIssueTaskCompletionStatusArgs) ToProjectIssueTaskCompletionStatusOutputWithContext(ctx context.Context) ProjectIssueTaskCompletionStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectIssueTaskCompletionStatusOutput)
+}
+
+func (i ProjectIssueTaskCompletionStatusArgs) ToProjectIssueTaskCompletionStatusPtrOutput() ProjectIssueTaskCompletionStatusPtrOutput {
+	return i.ToProjectIssueTaskCompletionStatusPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectIssueTaskCompletionStatusArgs) ToProjectIssueTaskCompletionStatusPtrOutputWithContext(ctx context.Context) ProjectIssueTaskCompletionStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectIssueTaskCompletionStatusOutput).ToProjectIssueTaskCompletionStatusPtrOutputWithContext(ctx)
+}
+
+// ProjectIssueTaskCompletionStatusPtrInput is an input type that accepts ProjectIssueTaskCompletionStatusArgs, ProjectIssueTaskCompletionStatusPtr and ProjectIssueTaskCompletionStatusPtrOutput values.
+// You can construct a concrete instance of `ProjectIssueTaskCompletionStatusPtrInput` via:
+//
+//          ProjectIssueTaskCompletionStatusArgs{...}
+//
+//  or:
+//
+//          nil
+type ProjectIssueTaskCompletionStatusPtrInput interface {
+	pulumi.Input
+
+	ToProjectIssueTaskCompletionStatusPtrOutput() ProjectIssueTaskCompletionStatusPtrOutput
+	ToProjectIssueTaskCompletionStatusPtrOutputWithContext(context.Context) ProjectIssueTaskCompletionStatusPtrOutput
+}
+
+type projectIssueTaskCompletionStatusPtrType ProjectIssueTaskCompletionStatusArgs
+
+func ProjectIssueTaskCompletionStatusPtr(v *ProjectIssueTaskCompletionStatusArgs) ProjectIssueTaskCompletionStatusPtrInput {
+	return (*projectIssueTaskCompletionStatusPtrType)(v)
+}
+
+func (*projectIssueTaskCompletionStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectIssueTaskCompletionStatus)(nil)).Elem()
+}
+
+func (i *projectIssueTaskCompletionStatusPtrType) ToProjectIssueTaskCompletionStatusPtrOutput() ProjectIssueTaskCompletionStatusPtrOutput {
+	return i.ToProjectIssueTaskCompletionStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *projectIssueTaskCompletionStatusPtrType) ToProjectIssueTaskCompletionStatusPtrOutputWithContext(ctx context.Context) ProjectIssueTaskCompletionStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectIssueTaskCompletionStatusPtrOutput)
+}
+
+type ProjectIssueTaskCompletionStatusOutput struct{ *pulumi.OutputState }
+
+func (ProjectIssueTaskCompletionStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectIssueTaskCompletionStatus)(nil)).Elem()
+}
+
+func (o ProjectIssueTaskCompletionStatusOutput) ToProjectIssueTaskCompletionStatusOutput() ProjectIssueTaskCompletionStatusOutput {
+	return o
+}
+
+func (o ProjectIssueTaskCompletionStatusOutput) ToProjectIssueTaskCompletionStatusOutputWithContext(ctx context.Context) ProjectIssueTaskCompletionStatusOutput {
+	return o
+}
+
+func (o ProjectIssueTaskCompletionStatusOutput) ToProjectIssueTaskCompletionStatusPtrOutput() ProjectIssueTaskCompletionStatusPtrOutput {
+	return o.ToProjectIssueTaskCompletionStatusPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectIssueTaskCompletionStatusOutput) ToProjectIssueTaskCompletionStatusPtrOutputWithContext(ctx context.Context) ProjectIssueTaskCompletionStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectIssueTaskCompletionStatus) *ProjectIssueTaskCompletionStatus {
+		return &v
+	}).(ProjectIssueTaskCompletionStatusPtrOutput)
+}
+
+// The number of tasks that are completed.
+func (o ProjectIssueTaskCompletionStatusOutput) CompletedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectIssueTaskCompletionStatus) *int { return v.CompletedCount }).(pulumi.IntPtrOutput)
+}
+
+// The number of tasks.
+func (o ProjectIssueTaskCompletionStatusOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectIssueTaskCompletionStatus) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+type ProjectIssueTaskCompletionStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectIssueTaskCompletionStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectIssueTaskCompletionStatus)(nil)).Elem()
+}
+
+func (o ProjectIssueTaskCompletionStatusPtrOutput) ToProjectIssueTaskCompletionStatusPtrOutput() ProjectIssueTaskCompletionStatusPtrOutput {
+	return o
+}
+
+func (o ProjectIssueTaskCompletionStatusPtrOutput) ToProjectIssueTaskCompletionStatusPtrOutputWithContext(ctx context.Context) ProjectIssueTaskCompletionStatusPtrOutput {
+	return o
+}
+
+func (o ProjectIssueTaskCompletionStatusPtrOutput) Elem() ProjectIssueTaskCompletionStatusOutput {
+	return o.ApplyT(func(v *ProjectIssueTaskCompletionStatus) ProjectIssueTaskCompletionStatus {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectIssueTaskCompletionStatus
+		return ret
+	}).(ProjectIssueTaskCompletionStatusOutput)
+}
+
+// The number of tasks that are completed.
+func (o ProjectIssueTaskCompletionStatusPtrOutput) CompletedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectIssueTaskCompletionStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CompletedCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of tasks.
+func (o ProjectIssueTaskCompletionStatusPtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectIssueTaskCompletionStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
 type ProjectPushRules struct {
 	// All commit author emails must match this regex, e.g. `@my-company.com$`.
 	AuthorEmailRegex *string `pulumi:"authorEmailRegex"`
@@ -742,6 +898,266 @@ func (o ProjectPushRulesPtrOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ProjectTagCommit struct {
+	AuthorEmail    *string `pulumi:"authorEmail"`
+	AuthorName     *string `pulumi:"authorName"`
+	AuthoredDate   *string `pulumi:"authoredDate"`
+	CommittedDate  *string `pulumi:"committedDate"`
+	CommitterEmail *string `pulumi:"committerEmail"`
+	CommitterName  *string `pulumi:"committerName"`
+	// The ID of this resource.
+	Id *string `pulumi:"id"`
+	// Creates annotated tag.
+	Message   *string  `pulumi:"message"`
+	ParentIds []string `pulumi:"parentIds"`
+	ShortId   *string  `pulumi:"shortId"`
+	Title     *string  `pulumi:"title"`
+}
+
+// ProjectTagCommitInput is an input type that accepts ProjectTagCommitArgs and ProjectTagCommitOutput values.
+// You can construct a concrete instance of `ProjectTagCommitInput` via:
+//
+//          ProjectTagCommitArgs{...}
+type ProjectTagCommitInput interface {
+	pulumi.Input
+
+	ToProjectTagCommitOutput() ProjectTagCommitOutput
+	ToProjectTagCommitOutputWithContext(context.Context) ProjectTagCommitOutput
+}
+
+type ProjectTagCommitArgs struct {
+	AuthorEmail    pulumi.StringPtrInput `pulumi:"authorEmail"`
+	AuthorName     pulumi.StringPtrInput `pulumi:"authorName"`
+	AuthoredDate   pulumi.StringPtrInput `pulumi:"authoredDate"`
+	CommittedDate  pulumi.StringPtrInput `pulumi:"committedDate"`
+	CommitterEmail pulumi.StringPtrInput `pulumi:"committerEmail"`
+	CommitterName  pulumi.StringPtrInput `pulumi:"committerName"`
+	// The ID of this resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Creates annotated tag.
+	Message   pulumi.StringPtrInput   `pulumi:"message"`
+	ParentIds pulumi.StringArrayInput `pulumi:"parentIds"`
+	ShortId   pulumi.StringPtrInput   `pulumi:"shortId"`
+	Title     pulumi.StringPtrInput   `pulumi:"title"`
+}
+
+func (ProjectTagCommitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectTagCommit)(nil)).Elem()
+}
+
+func (i ProjectTagCommitArgs) ToProjectTagCommitOutput() ProjectTagCommitOutput {
+	return i.ToProjectTagCommitOutputWithContext(context.Background())
+}
+
+func (i ProjectTagCommitArgs) ToProjectTagCommitOutputWithContext(ctx context.Context) ProjectTagCommitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectTagCommitOutput)
+}
+
+// ProjectTagCommitArrayInput is an input type that accepts ProjectTagCommitArray and ProjectTagCommitArrayOutput values.
+// You can construct a concrete instance of `ProjectTagCommitArrayInput` via:
+//
+//          ProjectTagCommitArray{ ProjectTagCommitArgs{...} }
+type ProjectTagCommitArrayInput interface {
+	pulumi.Input
+
+	ToProjectTagCommitArrayOutput() ProjectTagCommitArrayOutput
+	ToProjectTagCommitArrayOutputWithContext(context.Context) ProjectTagCommitArrayOutput
+}
+
+type ProjectTagCommitArray []ProjectTagCommitInput
+
+func (ProjectTagCommitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectTagCommit)(nil)).Elem()
+}
+
+func (i ProjectTagCommitArray) ToProjectTagCommitArrayOutput() ProjectTagCommitArrayOutput {
+	return i.ToProjectTagCommitArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectTagCommitArray) ToProjectTagCommitArrayOutputWithContext(ctx context.Context) ProjectTagCommitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectTagCommitArrayOutput)
+}
+
+type ProjectTagCommitOutput struct{ *pulumi.OutputState }
+
+func (ProjectTagCommitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectTagCommit)(nil)).Elem()
+}
+
+func (o ProjectTagCommitOutput) ToProjectTagCommitOutput() ProjectTagCommitOutput {
+	return o
+}
+
+func (o ProjectTagCommitOutput) ToProjectTagCommitOutputWithContext(ctx context.Context) ProjectTagCommitOutput {
+	return o
+}
+
+func (o ProjectTagCommitOutput) AuthorEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectTagCommit) *string { return v.AuthorEmail }).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectTagCommitOutput) AuthorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectTagCommit) *string { return v.AuthorName }).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectTagCommitOutput) AuthoredDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectTagCommit) *string { return v.AuthoredDate }).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectTagCommitOutput) CommittedDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectTagCommit) *string { return v.CommittedDate }).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectTagCommitOutput) CommitterEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectTagCommit) *string { return v.CommitterEmail }).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectTagCommitOutput) CommitterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectTagCommit) *string { return v.CommitterName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of this resource.
+func (o ProjectTagCommitOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectTagCommit) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Creates annotated tag.
+func (o ProjectTagCommitOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectTagCommit) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectTagCommitOutput) ParentIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectTagCommit) []string { return v.ParentIds }).(pulumi.StringArrayOutput)
+}
+
+func (o ProjectTagCommitOutput) ShortId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectTagCommit) *string { return v.ShortId }).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectTagCommitOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectTagCommit) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type ProjectTagCommitArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectTagCommitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectTagCommit)(nil)).Elem()
+}
+
+func (o ProjectTagCommitArrayOutput) ToProjectTagCommitArrayOutput() ProjectTagCommitArrayOutput {
+	return o
+}
+
+func (o ProjectTagCommitArrayOutput) ToProjectTagCommitArrayOutputWithContext(ctx context.Context) ProjectTagCommitArrayOutput {
+	return o
+}
+
+func (o ProjectTagCommitArrayOutput) Index(i pulumi.IntInput) ProjectTagCommitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectTagCommit {
+		return vs[0].([]ProjectTagCommit)[vs[1].(int)]
+	}).(ProjectTagCommitOutput)
+}
+
+type ProjectTagRelease struct {
+	Description *string `pulumi:"description"`
+	TagName     *string `pulumi:"tagName"`
+}
+
+// ProjectTagReleaseInput is an input type that accepts ProjectTagReleaseArgs and ProjectTagReleaseOutput values.
+// You can construct a concrete instance of `ProjectTagReleaseInput` via:
+//
+//          ProjectTagReleaseArgs{...}
+type ProjectTagReleaseInput interface {
+	pulumi.Input
+
+	ToProjectTagReleaseOutput() ProjectTagReleaseOutput
+	ToProjectTagReleaseOutputWithContext(context.Context) ProjectTagReleaseOutput
+}
+
+type ProjectTagReleaseArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	TagName     pulumi.StringPtrInput `pulumi:"tagName"`
+}
+
+func (ProjectTagReleaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectTagRelease)(nil)).Elem()
+}
+
+func (i ProjectTagReleaseArgs) ToProjectTagReleaseOutput() ProjectTagReleaseOutput {
+	return i.ToProjectTagReleaseOutputWithContext(context.Background())
+}
+
+func (i ProjectTagReleaseArgs) ToProjectTagReleaseOutputWithContext(ctx context.Context) ProjectTagReleaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectTagReleaseOutput)
+}
+
+// ProjectTagReleaseArrayInput is an input type that accepts ProjectTagReleaseArray and ProjectTagReleaseArrayOutput values.
+// You can construct a concrete instance of `ProjectTagReleaseArrayInput` via:
+//
+//          ProjectTagReleaseArray{ ProjectTagReleaseArgs{...} }
+type ProjectTagReleaseArrayInput interface {
+	pulumi.Input
+
+	ToProjectTagReleaseArrayOutput() ProjectTagReleaseArrayOutput
+	ToProjectTagReleaseArrayOutputWithContext(context.Context) ProjectTagReleaseArrayOutput
+}
+
+type ProjectTagReleaseArray []ProjectTagReleaseInput
+
+func (ProjectTagReleaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectTagRelease)(nil)).Elem()
+}
+
+func (i ProjectTagReleaseArray) ToProjectTagReleaseArrayOutput() ProjectTagReleaseArrayOutput {
+	return i.ToProjectTagReleaseArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectTagReleaseArray) ToProjectTagReleaseArrayOutputWithContext(ctx context.Context) ProjectTagReleaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectTagReleaseArrayOutput)
+}
+
+type ProjectTagReleaseOutput struct{ *pulumi.OutputState }
+
+func (ProjectTagReleaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectTagRelease)(nil)).Elem()
+}
+
+func (o ProjectTagReleaseOutput) ToProjectTagReleaseOutput() ProjectTagReleaseOutput {
+	return o
+}
+
+func (o ProjectTagReleaseOutput) ToProjectTagReleaseOutputWithContext(ctx context.Context) ProjectTagReleaseOutput {
+	return o
+}
+
+func (o ProjectTagReleaseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectTagRelease) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectTagReleaseOutput) TagName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectTagRelease) *string { return v.TagName }).(pulumi.StringPtrOutput)
+}
+
+type ProjectTagReleaseArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectTagReleaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectTagRelease)(nil)).Elem()
+}
+
+func (o ProjectTagReleaseArrayOutput) ToProjectTagReleaseArrayOutput() ProjectTagReleaseArrayOutput {
+	return o
+}
+
+func (o ProjectTagReleaseArrayOutput) ToProjectTagReleaseArrayOutputWithContext(ctx context.Context) ProjectTagReleaseArrayOutput {
+	return o
+}
+
+func (o ProjectTagReleaseArrayOutput) Index(i pulumi.IntInput) ProjectTagReleaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectTagRelease {
+		return vs[0].([]ProjectTagRelease)[vs[1].(int)]
+	}).(ProjectTagReleaseOutput)
+}
+
 type GetBranchCommit struct {
 	AuthorEmail    string `pulumi:"authorEmail"`
 	AuthorName     string `pulumi:"authorName"`
@@ -1039,6 +1455,551 @@ func (o GetGroupMembershipMemberArrayOutput) Index(i pulumi.IntInput) GetGroupMe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupMembershipMember {
 		return vs[0].([]GetGroupMembershipMember)[vs[1].(int)]
 	}).(GetGroupMembershipMemberOutput)
+}
+
+type GetProjectIssueTaskCompletionStatus struct {
+	CompletedCount int `pulumi:"completedCount"`
+	Count          int `pulumi:"count"`
+}
+
+// GetProjectIssueTaskCompletionStatusInput is an input type that accepts GetProjectIssueTaskCompletionStatusArgs and GetProjectIssueTaskCompletionStatusOutput values.
+// You can construct a concrete instance of `GetProjectIssueTaskCompletionStatusInput` via:
+//
+//          GetProjectIssueTaskCompletionStatusArgs{...}
+type GetProjectIssueTaskCompletionStatusInput interface {
+	pulumi.Input
+
+	ToGetProjectIssueTaskCompletionStatusOutput() GetProjectIssueTaskCompletionStatusOutput
+	ToGetProjectIssueTaskCompletionStatusOutputWithContext(context.Context) GetProjectIssueTaskCompletionStatusOutput
+}
+
+type GetProjectIssueTaskCompletionStatusArgs struct {
+	CompletedCount pulumi.IntInput `pulumi:"completedCount"`
+	Count          pulumi.IntInput `pulumi:"count"`
+}
+
+func (GetProjectIssueTaskCompletionStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectIssueTaskCompletionStatus)(nil)).Elem()
+}
+
+func (i GetProjectIssueTaskCompletionStatusArgs) ToGetProjectIssueTaskCompletionStatusOutput() GetProjectIssueTaskCompletionStatusOutput {
+	return i.ToGetProjectIssueTaskCompletionStatusOutputWithContext(context.Background())
+}
+
+func (i GetProjectIssueTaskCompletionStatusArgs) ToGetProjectIssueTaskCompletionStatusOutputWithContext(ctx context.Context) GetProjectIssueTaskCompletionStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectIssueTaskCompletionStatusOutput)
+}
+
+// GetProjectIssueTaskCompletionStatusArrayInput is an input type that accepts GetProjectIssueTaskCompletionStatusArray and GetProjectIssueTaskCompletionStatusArrayOutput values.
+// You can construct a concrete instance of `GetProjectIssueTaskCompletionStatusArrayInput` via:
+//
+//          GetProjectIssueTaskCompletionStatusArray{ GetProjectIssueTaskCompletionStatusArgs{...} }
+type GetProjectIssueTaskCompletionStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectIssueTaskCompletionStatusArrayOutput() GetProjectIssueTaskCompletionStatusArrayOutput
+	ToGetProjectIssueTaskCompletionStatusArrayOutputWithContext(context.Context) GetProjectIssueTaskCompletionStatusArrayOutput
+}
+
+type GetProjectIssueTaskCompletionStatusArray []GetProjectIssueTaskCompletionStatusInput
+
+func (GetProjectIssueTaskCompletionStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectIssueTaskCompletionStatus)(nil)).Elem()
+}
+
+func (i GetProjectIssueTaskCompletionStatusArray) ToGetProjectIssueTaskCompletionStatusArrayOutput() GetProjectIssueTaskCompletionStatusArrayOutput {
+	return i.ToGetProjectIssueTaskCompletionStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectIssueTaskCompletionStatusArray) ToGetProjectIssueTaskCompletionStatusArrayOutputWithContext(ctx context.Context) GetProjectIssueTaskCompletionStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectIssueTaskCompletionStatusArrayOutput)
+}
+
+type GetProjectIssueTaskCompletionStatusOutput struct{ *pulumi.OutputState }
+
+func (GetProjectIssueTaskCompletionStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectIssueTaskCompletionStatus)(nil)).Elem()
+}
+
+func (o GetProjectIssueTaskCompletionStatusOutput) ToGetProjectIssueTaskCompletionStatusOutput() GetProjectIssueTaskCompletionStatusOutput {
+	return o
+}
+
+func (o GetProjectIssueTaskCompletionStatusOutput) ToGetProjectIssueTaskCompletionStatusOutputWithContext(ctx context.Context) GetProjectIssueTaskCompletionStatusOutput {
+	return o
+}
+
+func (o GetProjectIssueTaskCompletionStatusOutput) CompletedCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssueTaskCompletionStatus) int { return v.CompletedCount }).(pulumi.IntOutput)
+}
+
+func (o GetProjectIssueTaskCompletionStatusOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssueTaskCompletionStatus) int { return v.Count }).(pulumi.IntOutput)
+}
+
+type GetProjectIssueTaskCompletionStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectIssueTaskCompletionStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectIssueTaskCompletionStatus)(nil)).Elem()
+}
+
+func (o GetProjectIssueTaskCompletionStatusArrayOutput) ToGetProjectIssueTaskCompletionStatusArrayOutput() GetProjectIssueTaskCompletionStatusArrayOutput {
+	return o
+}
+
+func (o GetProjectIssueTaskCompletionStatusArrayOutput) ToGetProjectIssueTaskCompletionStatusArrayOutputWithContext(ctx context.Context) GetProjectIssueTaskCompletionStatusArrayOutput {
+	return o
+}
+
+func (o GetProjectIssueTaskCompletionStatusArrayOutput) Index(i pulumi.IntInput) GetProjectIssueTaskCompletionStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectIssueTaskCompletionStatus {
+		return vs[0].([]GetProjectIssueTaskCompletionStatus)[vs[1].(int)]
+	}).(GetProjectIssueTaskCompletionStatusOutput)
+}
+
+type GetProjectIssuesIssue struct {
+	AssigneeIds []int `pulumi:"assigneeIds"`
+	// Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
+	AuthorId       int    `pulumi:"authorId"`
+	ClosedAt       string `pulumi:"closedAt"`
+	ClosedByUserId int    `pulumi:"closedByUserId"`
+	// Filter confidential or public issues.
+	Confidential        bool   `pulumi:"confidential"`
+	CreatedAt           string `pulumi:"createdAt"`
+	Description         string `pulumi:"description"`
+	DiscussionLocked    bool   `pulumi:"discussionLocked"`
+	DiscussionToResolve string `pulumi:"discussionToResolve"`
+	Downvotes           int    `pulumi:"downvotes"`
+	// Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
+	DueDate             string `pulumi:"dueDate"`
+	EpicId              int    `pulumi:"epicId"`
+	EpicIssueId         int    `pulumi:"epicIssueId"`
+	ExternalId          string `pulumi:"externalId"`
+	HumanTimeEstimate   string `pulumi:"humanTimeEstimate"`
+	HumanTotalTimeSpent string `pulumi:"humanTotalTimeSpent"`
+	Iid                 int    `pulumi:"iid"`
+	IssueId             int    `pulumi:"issueId"`
+	IssueLinkId         int    `pulumi:"issueLinkId"`
+	// Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
+	IssueType string `pulumi:"issueType"`
+	// Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
+	Labels                             []string          `pulumi:"labels"`
+	Links                              map[string]string `pulumi:"links"`
+	MergeRequestToResolveDiscussionsOf int               `pulumi:"mergeRequestToResolveDiscussionsOf"`
+	MergeRequestsCount                 int               `pulumi:"mergeRequestsCount"`
+	MilestoneId                        int               `pulumi:"milestoneId"`
+	MovedToId                          int               `pulumi:"movedToId"`
+	// The name or id of the project.
+	Project                string                                      `pulumi:"project"`
+	References             map[string]string                           `pulumi:"references"`
+	State                  string                                      `pulumi:"state"`
+	Subscribed             bool                                        `pulumi:"subscribed"`
+	TaskCompletionStatuses []GetProjectIssuesIssueTaskCompletionStatus `pulumi:"taskCompletionStatuses"`
+	TimeEstimate           int                                         `pulumi:"timeEstimate"`
+	Title                  string                                      `pulumi:"title"`
+	TotalTimeSpent         int                                         `pulumi:"totalTimeSpent"`
+	UpdatedAt              string                                      `pulumi:"updatedAt"`
+	Upvotes                int                                         `pulumi:"upvotes"`
+	UserNotesCount         int                                         `pulumi:"userNotesCount"`
+	WebUrl                 string                                      `pulumi:"webUrl"`
+	// Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
+	Weight int `pulumi:"weight"`
+}
+
+// GetProjectIssuesIssueInput is an input type that accepts GetProjectIssuesIssueArgs and GetProjectIssuesIssueOutput values.
+// You can construct a concrete instance of `GetProjectIssuesIssueInput` via:
+//
+//          GetProjectIssuesIssueArgs{...}
+type GetProjectIssuesIssueInput interface {
+	pulumi.Input
+
+	ToGetProjectIssuesIssueOutput() GetProjectIssuesIssueOutput
+	ToGetProjectIssuesIssueOutputWithContext(context.Context) GetProjectIssuesIssueOutput
+}
+
+type GetProjectIssuesIssueArgs struct {
+	AssigneeIds pulumi.IntArrayInput `pulumi:"assigneeIds"`
+	// Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
+	AuthorId       pulumi.IntInput    `pulumi:"authorId"`
+	ClosedAt       pulumi.StringInput `pulumi:"closedAt"`
+	ClosedByUserId pulumi.IntInput    `pulumi:"closedByUserId"`
+	// Filter confidential or public issues.
+	Confidential        pulumi.BoolInput   `pulumi:"confidential"`
+	CreatedAt           pulumi.StringInput `pulumi:"createdAt"`
+	Description         pulumi.StringInput `pulumi:"description"`
+	DiscussionLocked    pulumi.BoolInput   `pulumi:"discussionLocked"`
+	DiscussionToResolve pulumi.StringInput `pulumi:"discussionToResolve"`
+	Downvotes           pulumi.IntInput    `pulumi:"downvotes"`
+	// Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
+	DueDate             pulumi.StringInput `pulumi:"dueDate"`
+	EpicId              pulumi.IntInput    `pulumi:"epicId"`
+	EpicIssueId         pulumi.IntInput    `pulumi:"epicIssueId"`
+	ExternalId          pulumi.StringInput `pulumi:"externalId"`
+	HumanTimeEstimate   pulumi.StringInput `pulumi:"humanTimeEstimate"`
+	HumanTotalTimeSpent pulumi.StringInput `pulumi:"humanTotalTimeSpent"`
+	Iid                 pulumi.IntInput    `pulumi:"iid"`
+	IssueId             pulumi.IntInput    `pulumi:"issueId"`
+	IssueLinkId         pulumi.IntInput    `pulumi:"issueLinkId"`
+	// Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
+	IssueType pulumi.StringInput `pulumi:"issueType"`
+	// Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
+	Labels                             pulumi.StringArrayInput `pulumi:"labels"`
+	Links                              pulumi.StringMapInput   `pulumi:"links"`
+	MergeRequestToResolveDiscussionsOf pulumi.IntInput         `pulumi:"mergeRequestToResolveDiscussionsOf"`
+	MergeRequestsCount                 pulumi.IntInput         `pulumi:"mergeRequestsCount"`
+	MilestoneId                        pulumi.IntInput         `pulumi:"milestoneId"`
+	MovedToId                          pulumi.IntInput         `pulumi:"movedToId"`
+	// The name or id of the project.
+	Project                pulumi.StringInput                                  `pulumi:"project"`
+	References             pulumi.StringMapInput                               `pulumi:"references"`
+	State                  pulumi.StringInput                                  `pulumi:"state"`
+	Subscribed             pulumi.BoolInput                                    `pulumi:"subscribed"`
+	TaskCompletionStatuses GetProjectIssuesIssueTaskCompletionStatusArrayInput `pulumi:"taskCompletionStatuses"`
+	TimeEstimate           pulumi.IntInput                                     `pulumi:"timeEstimate"`
+	Title                  pulumi.StringInput                                  `pulumi:"title"`
+	TotalTimeSpent         pulumi.IntInput                                     `pulumi:"totalTimeSpent"`
+	UpdatedAt              pulumi.StringInput                                  `pulumi:"updatedAt"`
+	Upvotes                pulumi.IntInput                                     `pulumi:"upvotes"`
+	UserNotesCount         pulumi.IntInput                                     `pulumi:"userNotesCount"`
+	WebUrl                 pulumi.StringInput                                  `pulumi:"webUrl"`
+	// Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (GetProjectIssuesIssueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectIssuesIssue)(nil)).Elem()
+}
+
+func (i GetProjectIssuesIssueArgs) ToGetProjectIssuesIssueOutput() GetProjectIssuesIssueOutput {
+	return i.ToGetProjectIssuesIssueOutputWithContext(context.Background())
+}
+
+func (i GetProjectIssuesIssueArgs) ToGetProjectIssuesIssueOutputWithContext(ctx context.Context) GetProjectIssuesIssueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectIssuesIssueOutput)
+}
+
+// GetProjectIssuesIssueArrayInput is an input type that accepts GetProjectIssuesIssueArray and GetProjectIssuesIssueArrayOutput values.
+// You can construct a concrete instance of `GetProjectIssuesIssueArrayInput` via:
+//
+//          GetProjectIssuesIssueArray{ GetProjectIssuesIssueArgs{...} }
+type GetProjectIssuesIssueArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectIssuesIssueArrayOutput() GetProjectIssuesIssueArrayOutput
+	ToGetProjectIssuesIssueArrayOutputWithContext(context.Context) GetProjectIssuesIssueArrayOutput
+}
+
+type GetProjectIssuesIssueArray []GetProjectIssuesIssueInput
+
+func (GetProjectIssuesIssueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectIssuesIssue)(nil)).Elem()
+}
+
+func (i GetProjectIssuesIssueArray) ToGetProjectIssuesIssueArrayOutput() GetProjectIssuesIssueArrayOutput {
+	return i.ToGetProjectIssuesIssueArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectIssuesIssueArray) ToGetProjectIssuesIssueArrayOutputWithContext(ctx context.Context) GetProjectIssuesIssueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectIssuesIssueArrayOutput)
+}
+
+type GetProjectIssuesIssueOutput struct{ *pulumi.OutputState }
+
+func (GetProjectIssuesIssueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectIssuesIssue)(nil)).Elem()
+}
+
+func (o GetProjectIssuesIssueOutput) ToGetProjectIssuesIssueOutput() GetProjectIssuesIssueOutput {
+	return o
+}
+
+func (o GetProjectIssuesIssueOutput) ToGetProjectIssuesIssueOutputWithContext(ctx context.Context) GetProjectIssuesIssueOutput {
+	return o
+}
+
+func (o GetProjectIssuesIssueOutput) AssigneeIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) []int { return v.AssigneeIds }).(pulumi.IntArrayOutput)
+}
+
+// Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
+func (o GetProjectIssuesIssueOutput) AuthorId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.AuthorId }).(pulumi.IntOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) ClosedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) string { return v.ClosedAt }).(pulumi.StringOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) ClosedByUserId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.ClosedByUserId }).(pulumi.IntOutput)
+}
+
+// Filter confidential or public issues.
+func (o GetProjectIssuesIssueOutput) Confidential() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) bool { return v.Confidential }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) DiscussionLocked() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) bool { return v.DiscussionLocked }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) DiscussionToResolve() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) string { return v.DiscussionToResolve }).(pulumi.StringOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) Downvotes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.Downvotes }).(pulumi.IntOutput)
+}
+
+// Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
+func (o GetProjectIssuesIssueOutput) DueDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) string { return v.DueDate }).(pulumi.StringOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) EpicId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.EpicId }).(pulumi.IntOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) EpicIssueId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.EpicIssueId }).(pulumi.IntOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) HumanTimeEstimate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) string { return v.HumanTimeEstimate }).(pulumi.StringOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) HumanTotalTimeSpent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) string { return v.HumanTotalTimeSpent }).(pulumi.StringOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) Iid() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.Iid }).(pulumi.IntOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) IssueId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.IssueId }).(pulumi.IntOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) IssueLinkId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.IssueLinkId }).(pulumi.IntOutput)
+}
+
+// Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
+func (o GetProjectIssuesIssueOutput) IssueType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) string { return v.IssueType }).(pulumi.StringOutput)
+}
+
+// Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
+func (o GetProjectIssuesIssueOutput) Labels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) []string { return v.Labels }).(pulumi.StringArrayOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) Links() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) map[string]string { return v.Links }).(pulumi.StringMapOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) MergeRequestToResolveDiscussionsOf() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.MergeRequestToResolveDiscussionsOf }).(pulumi.IntOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) MergeRequestsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.MergeRequestsCount }).(pulumi.IntOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) MilestoneId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.MilestoneId }).(pulumi.IntOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) MovedToId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.MovedToId }).(pulumi.IntOutput)
+}
+
+// The name or id of the project.
+func (o GetProjectIssuesIssueOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) References() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) map[string]string { return v.References }).(pulumi.StringMapOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) Subscribed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) bool { return v.Subscribed }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) TaskCompletionStatuses() GetProjectIssuesIssueTaskCompletionStatusArrayOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) []GetProjectIssuesIssueTaskCompletionStatus {
+		return v.TaskCompletionStatuses
+	}).(GetProjectIssuesIssueTaskCompletionStatusArrayOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) TimeEstimate() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.TimeEstimate }).(pulumi.IntOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) string { return v.Title }).(pulumi.StringOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) TotalTimeSpent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.TotalTimeSpent }).(pulumi.IntOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) Upvotes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.Upvotes }).(pulumi.IntOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) UserNotesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.UserNotesCount }).(pulumi.IntOutput)
+}
+
+func (o GetProjectIssuesIssueOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+// Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
+func (o GetProjectIssuesIssueOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GetProjectIssuesIssueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectIssuesIssueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectIssuesIssue)(nil)).Elem()
+}
+
+func (o GetProjectIssuesIssueArrayOutput) ToGetProjectIssuesIssueArrayOutput() GetProjectIssuesIssueArrayOutput {
+	return o
+}
+
+func (o GetProjectIssuesIssueArrayOutput) ToGetProjectIssuesIssueArrayOutputWithContext(ctx context.Context) GetProjectIssuesIssueArrayOutput {
+	return o
+}
+
+func (o GetProjectIssuesIssueArrayOutput) Index(i pulumi.IntInput) GetProjectIssuesIssueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectIssuesIssue {
+		return vs[0].([]GetProjectIssuesIssue)[vs[1].(int)]
+	}).(GetProjectIssuesIssueOutput)
+}
+
+type GetProjectIssuesIssueTaskCompletionStatus struct {
+	CompletedCount int `pulumi:"completedCount"`
+	Count          int `pulumi:"count"`
+}
+
+// GetProjectIssuesIssueTaskCompletionStatusInput is an input type that accepts GetProjectIssuesIssueTaskCompletionStatusArgs and GetProjectIssuesIssueTaskCompletionStatusOutput values.
+// You can construct a concrete instance of `GetProjectIssuesIssueTaskCompletionStatusInput` via:
+//
+//          GetProjectIssuesIssueTaskCompletionStatusArgs{...}
+type GetProjectIssuesIssueTaskCompletionStatusInput interface {
+	pulumi.Input
+
+	ToGetProjectIssuesIssueTaskCompletionStatusOutput() GetProjectIssuesIssueTaskCompletionStatusOutput
+	ToGetProjectIssuesIssueTaskCompletionStatusOutputWithContext(context.Context) GetProjectIssuesIssueTaskCompletionStatusOutput
+}
+
+type GetProjectIssuesIssueTaskCompletionStatusArgs struct {
+	CompletedCount pulumi.IntInput `pulumi:"completedCount"`
+	Count          pulumi.IntInput `pulumi:"count"`
+}
+
+func (GetProjectIssuesIssueTaskCompletionStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectIssuesIssueTaskCompletionStatus)(nil)).Elem()
+}
+
+func (i GetProjectIssuesIssueTaskCompletionStatusArgs) ToGetProjectIssuesIssueTaskCompletionStatusOutput() GetProjectIssuesIssueTaskCompletionStatusOutput {
+	return i.ToGetProjectIssuesIssueTaskCompletionStatusOutputWithContext(context.Background())
+}
+
+func (i GetProjectIssuesIssueTaskCompletionStatusArgs) ToGetProjectIssuesIssueTaskCompletionStatusOutputWithContext(ctx context.Context) GetProjectIssuesIssueTaskCompletionStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectIssuesIssueTaskCompletionStatusOutput)
+}
+
+// GetProjectIssuesIssueTaskCompletionStatusArrayInput is an input type that accepts GetProjectIssuesIssueTaskCompletionStatusArray and GetProjectIssuesIssueTaskCompletionStatusArrayOutput values.
+// You can construct a concrete instance of `GetProjectIssuesIssueTaskCompletionStatusArrayInput` via:
+//
+//          GetProjectIssuesIssueTaskCompletionStatusArray{ GetProjectIssuesIssueTaskCompletionStatusArgs{...} }
+type GetProjectIssuesIssueTaskCompletionStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectIssuesIssueTaskCompletionStatusArrayOutput() GetProjectIssuesIssueTaskCompletionStatusArrayOutput
+	ToGetProjectIssuesIssueTaskCompletionStatusArrayOutputWithContext(context.Context) GetProjectIssuesIssueTaskCompletionStatusArrayOutput
+}
+
+type GetProjectIssuesIssueTaskCompletionStatusArray []GetProjectIssuesIssueTaskCompletionStatusInput
+
+func (GetProjectIssuesIssueTaskCompletionStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectIssuesIssueTaskCompletionStatus)(nil)).Elem()
+}
+
+func (i GetProjectIssuesIssueTaskCompletionStatusArray) ToGetProjectIssuesIssueTaskCompletionStatusArrayOutput() GetProjectIssuesIssueTaskCompletionStatusArrayOutput {
+	return i.ToGetProjectIssuesIssueTaskCompletionStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectIssuesIssueTaskCompletionStatusArray) ToGetProjectIssuesIssueTaskCompletionStatusArrayOutputWithContext(ctx context.Context) GetProjectIssuesIssueTaskCompletionStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectIssuesIssueTaskCompletionStatusArrayOutput)
+}
+
+type GetProjectIssuesIssueTaskCompletionStatusOutput struct{ *pulumi.OutputState }
+
+func (GetProjectIssuesIssueTaskCompletionStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectIssuesIssueTaskCompletionStatus)(nil)).Elem()
+}
+
+func (o GetProjectIssuesIssueTaskCompletionStatusOutput) ToGetProjectIssuesIssueTaskCompletionStatusOutput() GetProjectIssuesIssueTaskCompletionStatusOutput {
+	return o
+}
+
+func (o GetProjectIssuesIssueTaskCompletionStatusOutput) ToGetProjectIssuesIssueTaskCompletionStatusOutputWithContext(ctx context.Context) GetProjectIssuesIssueTaskCompletionStatusOutput {
+	return o
+}
+
+func (o GetProjectIssuesIssueTaskCompletionStatusOutput) CompletedCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssueTaskCompletionStatus) int { return v.CompletedCount }).(pulumi.IntOutput)
+}
+
+func (o GetProjectIssuesIssueTaskCompletionStatusOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssuesIssueTaskCompletionStatus) int { return v.Count }).(pulumi.IntOutput)
+}
+
+type GetProjectIssuesIssueTaskCompletionStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectIssuesIssueTaskCompletionStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectIssuesIssueTaskCompletionStatus)(nil)).Elem()
+}
+
+func (o GetProjectIssuesIssueTaskCompletionStatusArrayOutput) ToGetProjectIssuesIssueTaskCompletionStatusArrayOutput() GetProjectIssuesIssueTaskCompletionStatusArrayOutput {
+	return o
+}
+
+func (o GetProjectIssuesIssueTaskCompletionStatusArrayOutput) ToGetProjectIssuesIssueTaskCompletionStatusArrayOutputWithContext(ctx context.Context) GetProjectIssuesIssueTaskCompletionStatusArrayOutput {
+	return o
+}
+
+func (o GetProjectIssuesIssueTaskCompletionStatusArrayOutput) Index(i pulumi.IntInput) GetProjectIssuesIssueTaskCompletionStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectIssuesIssueTaskCompletionStatus {
+		return vs[0].([]GetProjectIssuesIssueTaskCompletionStatus)[vs[1].(int)]
+	}).(GetProjectIssuesIssueTaskCompletionStatusOutput)
 }
 
 type GetProjectProtectedBranchMergeAccessLevel struct {
@@ -1731,6 +2692,266 @@ func (o GetProjectPushRulesOutput) PreventSecrets() pulumi.BoolOutput {
 
 func (o GetProjectPushRulesOutput) RejectUnsignedCommits() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectPushRules) bool { return v.RejectUnsignedCommits }).(pulumi.BoolOutput)
+}
+
+type GetProjectTagCommit struct {
+	AuthorEmail    string `pulumi:"authorEmail"`
+	AuthorName     string `pulumi:"authorName"`
+	AuthoredDate   string `pulumi:"authoredDate"`
+	CommittedDate  string `pulumi:"committedDate"`
+	CommitterEmail string `pulumi:"committerEmail"`
+	CommitterName  string `pulumi:"committerName"`
+	// The ID of this resource.
+	Id string `pulumi:"id"`
+	// Creates annotated tag.
+	Message   string   `pulumi:"message"`
+	ParentIds []string `pulumi:"parentIds"`
+	ShortId   string   `pulumi:"shortId"`
+	Title     string   `pulumi:"title"`
+}
+
+// GetProjectTagCommitInput is an input type that accepts GetProjectTagCommitArgs and GetProjectTagCommitOutput values.
+// You can construct a concrete instance of `GetProjectTagCommitInput` via:
+//
+//          GetProjectTagCommitArgs{...}
+type GetProjectTagCommitInput interface {
+	pulumi.Input
+
+	ToGetProjectTagCommitOutput() GetProjectTagCommitOutput
+	ToGetProjectTagCommitOutputWithContext(context.Context) GetProjectTagCommitOutput
+}
+
+type GetProjectTagCommitArgs struct {
+	AuthorEmail    pulumi.StringInput `pulumi:"authorEmail"`
+	AuthorName     pulumi.StringInput `pulumi:"authorName"`
+	AuthoredDate   pulumi.StringInput `pulumi:"authoredDate"`
+	CommittedDate  pulumi.StringInput `pulumi:"committedDate"`
+	CommitterEmail pulumi.StringInput `pulumi:"committerEmail"`
+	CommitterName  pulumi.StringInput `pulumi:"committerName"`
+	// The ID of this resource.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Creates annotated tag.
+	Message   pulumi.StringInput      `pulumi:"message"`
+	ParentIds pulumi.StringArrayInput `pulumi:"parentIds"`
+	ShortId   pulumi.StringInput      `pulumi:"shortId"`
+	Title     pulumi.StringInput      `pulumi:"title"`
+}
+
+func (GetProjectTagCommitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectTagCommit)(nil)).Elem()
+}
+
+func (i GetProjectTagCommitArgs) ToGetProjectTagCommitOutput() GetProjectTagCommitOutput {
+	return i.ToGetProjectTagCommitOutputWithContext(context.Background())
+}
+
+func (i GetProjectTagCommitArgs) ToGetProjectTagCommitOutputWithContext(ctx context.Context) GetProjectTagCommitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectTagCommitOutput)
+}
+
+// GetProjectTagCommitArrayInput is an input type that accepts GetProjectTagCommitArray and GetProjectTagCommitArrayOutput values.
+// You can construct a concrete instance of `GetProjectTagCommitArrayInput` via:
+//
+//          GetProjectTagCommitArray{ GetProjectTagCommitArgs{...} }
+type GetProjectTagCommitArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectTagCommitArrayOutput() GetProjectTagCommitArrayOutput
+	ToGetProjectTagCommitArrayOutputWithContext(context.Context) GetProjectTagCommitArrayOutput
+}
+
+type GetProjectTagCommitArray []GetProjectTagCommitInput
+
+func (GetProjectTagCommitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectTagCommit)(nil)).Elem()
+}
+
+func (i GetProjectTagCommitArray) ToGetProjectTagCommitArrayOutput() GetProjectTagCommitArrayOutput {
+	return i.ToGetProjectTagCommitArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectTagCommitArray) ToGetProjectTagCommitArrayOutputWithContext(ctx context.Context) GetProjectTagCommitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectTagCommitArrayOutput)
+}
+
+type GetProjectTagCommitOutput struct{ *pulumi.OutputState }
+
+func (GetProjectTagCommitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectTagCommit)(nil)).Elem()
+}
+
+func (o GetProjectTagCommitOutput) ToGetProjectTagCommitOutput() GetProjectTagCommitOutput {
+	return o
+}
+
+func (o GetProjectTagCommitOutput) ToGetProjectTagCommitOutputWithContext(ctx context.Context) GetProjectTagCommitOutput {
+	return o
+}
+
+func (o GetProjectTagCommitOutput) AuthorEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagCommit) string { return v.AuthorEmail }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagCommitOutput) AuthorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagCommit) string { return v.AuthorName }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagCommitOutput) AuthoredDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagCommit) string { return v.AuthoredDate }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagCommitOutput) CommittedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagCommit) string { return v.CommittedDate }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagCommitOutput) CommitterEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagCommit) string { return v.CommitterEmail }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagCommitOutput) CommitterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagCommit) string { return v.CommitterName }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o GetProjectTagCommitOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagCommit) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Creates annotated tag.
+func (o GetProjectTagCommitOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagCommit) string { return v.Message }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagCommitOutput) ParentIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProjectTagCommit) []string { return v.ParentIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetProjectTagCommitOutput) ShortId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagCommit) string { return v.ShortId }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagCommitOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagCommit) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type GetProjectTagCommitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectTagCommitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectTagCommit)(nil)).Elem()
+}
+
+func (o GetProjectTagCommitArrayOutput) ToGetProjectTagCommitArrayOutput() GetProjectTagCommitArrayOutput {
+	return o
+}
+
+func (o GetProjectTagCommitArrayOutput) ToGetProjectTagCommitArrayOutputWithContext(ctx context.Context) GetProjectTagCommitArrayOutput {
+	return o
+}
+
+func (o GetProjectTagCommitArrayOutput) Index(i pulumi.IntInput) GetProjectTagCommitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectTagCommit {
+		return vs[0].([]GetProjectTagCommit)[vs[1].(int)]
+	}).(GetProjectTagCommitOutput)
+}
+
+type GetProjectTagRelease struct {
+	Description string `pulumi:"description"`
+	TagName     string `pulumi:"tagName"`
+}
+
+// GetProjectTagReleaseInput is an input type that accepts GetProjectTagReleaseArgs and GetProjectTagReleaseOutput values.
+// You can construct a concrete instance of `GetProjectTagReleaseInput` via:
+//
+//          GetProjectTagReleaseArgs{...}
+type GetProjectTagReleaseInput interface {
+	pulumi.Input
+
+	ToGetProjectTagReleaseOutput() GetProjectTagReleaseOutput
+	ToGetProjectTagReleaseOutputWithContext(context.Context) GetProjectTagReleaseOutput
+}
+
+type GetProjectTagReleaseArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	TagName     pulumi.StringInput `pulumi:"tagName"`
+}
+
+func (GetProjectTagReleaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectTagRelease)(nil)).Elem()
+}
+
+func (i GetProjectTagReleaseArgs) ToGetProjectTagReleaseOutput() GetProjectTagReleaseOutput {
+	return i.ToGetProjectTagReleaseOutputWithContext(context.Background())
+}
+
+func (i GetProjectTagReleaseArgs) ToGetProjectTagReleaseOutputWithContext(ctx context.Context) GetProjectTagReleaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectTagReleaseOutput)
+}
+
+// GetProjectTagReleaseArrayInput is an input type that accepts GetProjectTagReleaseArray and GetProjectTagReleaseArrayOutput values.
+// You can construct a concrete instance of `GetProjectTagReleaseArrayInput` via:
+//
+//          GetProjectTagReleaseArray{ GetProjectTagReleaseArgs{...} }
+type GetProjectTagReleaseArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectTagReleaseArrayOutput() GetProjectTagReleaseArrayOutput
+	ToGetProjectTagReleaseArrayOutputWithContext(context.Context) GetProjectTagReleaseArrayOutput
+}
+
+type GetProjectTagReleaseArray []GetProjectTagReleaseInput
+
+func (GetProjectTagReleaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectTagRelease)(nil)).Elem()
+}
+
+func (i GetProjectTagReleaseArray) ToGetProjectTagReleaseArrayOutput() GetProjectTagReleaseArrayOutput {
+	return i.ToGetProjectTagReleaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectTagReleaseArray) ToGetProjectTagReleaseArrayOutputWithContext(ctx context.Context) GetProjectTagReleaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectTagReleaseArrayOutput)
+}
+
+type GetProjectTagReleaseOutput struct{ *pulumi.OutputState }
+
+func (GetProjectTagReleaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectTagRelease)(nil)).Elem()
+}
+
+func (o GetProjectTagReleaseOutput) ToGetProjectTagReleaseOutput() GetProjectTagReleaseOutput {
+	return o
+}
+
+func (o GetProjectTagReleaseOutput) ToGetProjectTagReleaseOutputWithContext(ctx context.Context) GetProjectTagReleaseOutput {
+	return o
+}
+
+func (o GetProjectTagReleaseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagRelease) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagReleaseOutput) TagName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagRelease) string { return v.TagName }).(pulumi.StringOutput)
+}
+
+type GetProjectTagReleaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectTagReleaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectTagRelease)(nil)).Elem()
+}
+
+func (o GetProjectTagReleaseArrayOutput) ToGetProjectTagReleaseArrayOutput() GetProjectTagReleaseArrayOutput {
+	return o
+}
+
+func (o GetProjectTagReleaseArrayOutput) ToGetProjectTagReleaseArrayOutputWithContext(ctx context.Context) GetProjectTagReleaseArrayOutput {
+	return o
+}
+
+func (o GetProjectTagReleaseArrayOutput) Index(i pulumi.IntInput) GetProjectTagReleaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectTagRelease {
+		return vs[0].([]GetProjectTagRelease)[vs[1].(int)]
+	}).(GetProjectTagReleaseOutput)
 }
 
 type GetProjectsProject struct {
@@ -2860,12 +4081,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToMergeArrayInput)(nil)).Elem(), BranchProtectionAllowedToMergeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToPushInput)(nil)).Elem(), BranchProtectionAllowedToPushArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToPushArrayInput)(nil)).Elem(), BranchProtectionAllowedToPushArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectIssueTaskCompletionStatusInput)(nil)).Elem(), ProjectIssueTaskCompletionStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectIssueTaskCompletionStatusPtrInput)(nil)).Elem(), ProjectIssueTaskCompletionStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPushRulesInput)(nil)).Elem(), ProjectPushRulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPushRulesPtrInput)(nil)).Elem(), ProjectPushRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagCommitInput)(nil)).Elem(), ProjectTagCommitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagCommitArrayInput)(nil)).Elem(), ProjectTagCommitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagReleaseInput)(nil)).Elem(), ProjectTagReleaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagReleaseArrayInput)(nil)).Elem(), ProjectTagReleaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBranchCommitInput)(nil)).Elem(), GetBranchCommitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBranchCommitArrayInput)(nil)).Elem(), GetBranchCommitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberInput)(nil)).Elem(), GetGroupMembershipMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberArrayInput)(nil)).Elem(), GetGroupMembershipMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssueTaskCompletionStatusInput)(nil)).Elem(), GetProjectIssueTaskCompletionStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssueTaskCompletionStatusArrayInput)(nil)).Elem(), GetProjectIssueTaskCompletionStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssuesIssueInput)(nil)).Elem(), GetProjectIssuesIssueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssuesIssueArrayInput)(nil)).Elem(), GetProjectIssuesIssueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssuesIssueTaskCompletionStatusInput)(nil)).Elem(), GetProjectIssuesIssueTaskCompletionStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssuesIssueTaskCompletionStatusArrayInput)(nil)).Elem(), GetProjectIssuesIssueTaskCompletionStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedBranchMergeAccessLevelInput)(nil)).Elem(), GetProjectProtectedBranchMergeAccessLevelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedBranchMergeAccessLevelArrayInput)(nil)).Elem(), GetProjectProtectedBranchMergeAccessLevelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedBranchPushAccessLevelInput)(nil)).Elem(), GetProjectProtectedBranchPushAccessLevelArgs{})
@@ -2877,6 +4110,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedBranchesProtectedBranchPushAccessLevelInput)(nil)).Elem(), GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedBranchesProtectedBranchPushAccessLevelArrayInput)(nil)).Elem(), GetProjectProtectedBranchesProtectedBranchPushAccessLevelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectPushRulesInput)(nil)).Elem(), GetProjectPushRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagCommitInput)(nil)).Elem(), GetProjectTagCommitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagCommitArrayInput)(nil)).Elem(), GetProjectTagCommitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagReleaseInput)(nil)).Elem(), GetProjectTagReleaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagReleaseArrayInput)(nil)).Elem(), GetProjectTagReleaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectInput)(nil)).Elem(), GetProjectsProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectArrayInput)(nil)).Elem(), GetProjectsProjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectForkedFromProjectInput)(nil)).Elem(), GetProjectsProjectForkedFromProjectArgs{})
@@ -2893,12 +4130,24 @@ func init() {
 	pulumi.RegisterOutputType(BranchProtectionAllowedToMergeArrayOutput{})
 	pulumi.RegisterOutputType(BranchProtectionAllowedToPushOutput{})
 	pulumi.RegisterOutputType(BranchProtectionAllowedToPushArrayOutput{})
+	pulumi.RegisterOutputType(ProjectIssueTaskCompletionStatusOutput{})
+	pulumi.RegisterOutputType(ProjectIssueTaskCompletionStatusPtrOutput{})
 	pulumi.RegisterOutputType(ProjectPushRulesOutput{})
 	pulumi.RegisterOutputType(ProjectPushRulesPtrOutput{})
+	pulumi.RegisterOutputType(ProjectTagCommitOutput{})
+	pulumi.RegisterOutputType(ProjectTagCommitArrayOutput{})
+	pulumi.RegisterOutputType(ProjectTagReleaseOutput{})
+	pulumi.RegisterOutputType(ProjectTagReleaseArrayOutput{})
 	pulumi.RegisterOutputType(GetBranchCommitOutput{})
 	pulumi.RegisterOutputType(GetBranchCommitArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipMemberOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectIssueTaskCompletionStatusOutput{})
+	pulumi.RegisterOutputType(GetProjectIssueTaskCompletionStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectIssuesIssueOutput{})
+	pulumi.RegisterOutputType(GetProjectIssuesIssueArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectIssuesIssueTaskCompletionStatusOutput{})
+	pulumi.RegisterOutputType(GetProjectIssuesIssueTaskCompletionStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectProtectedBranchMergeAccessLevelOutput{})
 	pulumi.RegisterOutputType(GetProjectProtectedBranchMergeAccessLevelArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectProtectedBranchPushAccessLevelOutput{})
@@ -2910,6 +4159,10 @@ func init() {
 	pulumi.RegisterOutputType(GetProjectProtectedBranchesProtectedBranchPushAccessLevelOutput{})
 	pulumi.RegisterOutputType(GetProjectProtectedBranchesProtectedBranchPushAccessLevelArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectPushRulesOutput{})
+	pulumi.RegisterOutputType(GetProjectTagCommitOutput{})
+	pulumi.RegisterOutputType(GetProjectTagCommitArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectTagReleaseOutput{})
+	pulumi.RegisterOutputType(GetProjectTagReleaseArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectForkedFromProjectOutput{})

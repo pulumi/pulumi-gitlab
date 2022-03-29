@@ -97,9 +97,9 @@ def get_group_membership(access_level: Optional[str] = None,
                          group_id: Optional[int] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupMembershipResult:
     """
-    Provide details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
+    The `GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
 
-    > **Note**: exactly one of group_id or full_path must be provided.
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
 
     ## Example Usage
 
@@ -139,9 +139,9 @@ def get_group_membership_output(access_level: Optional[pulumi.Input[Optional[str
                                 group_id: Optional[pulumi.Input[Optional[int]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupMembershipResult]:
     """
-    Provide details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
+    The `GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
 
-    > **Note**: exactly one of group_id or full_path must be provided.
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
 
     ## Example Usage
 

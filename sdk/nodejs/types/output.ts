@@ -93,6 +93,79 @@ export interface GetGroupMembershipMember {
     webUrl: string;
 }
 
+export interface GetProjectIssueTaskCompletionStatus {
+    completedCount: number;
+    count: number;
+}
+
+export interface GetProjectIssuesIssue {
+    assigneeIds: number[];
+    /**
+     * Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
+     */
+    authorId: number;
+    closedAt: string;
+    closedByUserId: number;
+    /**
+     * Filter confidential or public issues.
+     */
+    confidential: boolean;
+    createdAt: string;
+    description: string;
+    discussionLocked: boolean;
+    discussionToResolve: string;
+    downvotes: number;
+    /**
+     * Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
+     */
+    dueDate: string;
+    epicId: number;
+    epicIssueId: number;
+    externalId: string;
+    humanTimeEstimate: string;
+    humanTotalTimeSpent: string;
+    iid: number;
+    issueId: number;
+    issueLinkId: number;
+    /**
+     * Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
+     */
+    issueType: string;
+    /**
+     * Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
+     */
+    labels: string[];
+    links: {[key: string]: string};
+    mergeRequestToResolveDiscussionsOf: number;
+    mergeRequestsCount: number;
+    milestoneId: number;
+    movedToId: number;
+    /**
+     * The name or id of the project.
+     */
+    project: string;
+    references: {[key: string]: string};
+    state: string;
+    subscribed: boolean;
+    taskCompletionStatuses: outputs.GetProjectIssuesIssueTaskCompletionStatus[];
+    timeEstimate: number;
+    title: string;
+    totalTimeSpent: number;
+    updatedAt: string;
+    upvotes: number;
+    userNotesCount: number;
+    webUrl: string;
+    /**
+     * Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
+     */
+    weight: number;
+}
+
+export interface GetProjectIssuesIssueTaskCompletionStatus {
+    completedCount: number;
+    count: number;
+}
+
 export interface GetProjectProtectedBranchMergeAccessLevel {
     accessLevel: string;
     accessLevelDescription: string;
@@ -145,6 +218,31 @@ export interface GetProjectPushRules {
     memberCheck: boolean;
     preventSecrets: boolean;
     rejectUnsignedCommits: boolean;
+}
+
+export interface GetProjectTagCommit {
+    authorEmail: string;
+    authorName: string;
+    authoredDate: string;
+    committedDate: string;
+    committerEmail: string;
+    committerName: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    /**
+     * Creates annotated tag.
+     */
+    message: string;
+    parentIds: string[];
+    shortId: string;
+    title: string;
+}
+
+export interface GetProjectTagRelease {
+    description: string;
+    tagName: string;
 }
 
 export interface GetProjectsProject {
@@ -307,6 +405,17 @@ export interface GetUsersUser {
     websiteUrl: string;
 }
 
+export interface ProjectIssueTaskCompletionStatus {
+    /**
+     * The number of tasks that are completed.
+     */
+    completedCount: number;
+    /**
+     * The number of tasks.
+     */
+    count: number;
+}
+
 export interface ProjectPushRules {
     /**
      * All commit author emails must match this regex, e.g. `@my-company.com$`.
@@ -352,5 +461,30 @@ export interface ProjectPushRules {
      * Reject commit when it’s not signed through GPG.
      */
     rejectUnsignedCommits?: boolean;
+}
+
+export interface ProjectTagCommit {
+    authorEmail: string;
+    authorName: string;
+    authoredDate: string;
+    committedDate: string;
+    committerEmail: string;
+    committerName: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    /**
+     * Creates annotated tag.
+     */
+    message: string;
+    parentIds: string[];
+    shortId: string;
+    title: string;
+}
+
+export interface ProjectTagRelease {
+    description: string;
+    tagName: string;
 }
 

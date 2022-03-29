@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to create and manage multiple approval rules for your GitLab projects. For further information on approval rules, consult the [gitlab documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
+    /// The `gitlab.ProjectApprovalRule` resource allows to manage the lifecycle of a project-level approval rule.
     /// 
-    /// &gt; This feature requires GitLab Premium.
+    /// &gt; This resource requires a GitLab Enterprise instance.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals)
     /// 
     /// ## Import
     /// 
@@ -54,6 +56,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("protectedBranchIds")]
         public Output<ImmutableArray<int>> ProtectedBranchIds { get; private set; } = null!;
+
+        /// <summary>
+        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        /// </summary>
+        [Output("ruleType")]
+        public Output<string> RuleType { get; private set; } = null!;
 
         /// <summary>
         /// A list of specific User IDs to add to the list of approvers.
@@ -149,6 +157,12 @@ namespace Pulumi.GitLab
             set => _protectedBranchIds = value;
         }
 
+        /// <summary>
+        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        /// </summary>
+        [Input("ruleType")]
+        public Input<string>? RuleType { get; set; }
+
         [Input("userIds")]
         private InputList<int>? _userIds;
 
@@ -209,6 +223,12 @@ namespace Pulumi.GitLab
             get => _protectedBranchIds ?? (_protectedBranchIds = new InputList<int>());
             set => _protectedBranchIds = value;
         }
+
+        /// <summary>
+        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        /// </summary>
+        [Input("ruleType")]
+        public Input<string>? RuleType { get; set; }
 
         [Input("userIds")]
         private InputList<int>? _userIds;

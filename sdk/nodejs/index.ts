@@ -14,8 +14,11 @@ export * from "./getBranch";
 export * from "./getGroup";
 export * from "./getGroupMembership";
 export * from "./getProject";
+export * from "./getProjectIssue";
+export * from "./getProjectIssues";
 export * from "./getProjectProtectedBranch";
 export * from "./getProjectProtectedBranches";
+export * from "./getProjectTag";
 export * from "./getProjects";
 export * from "./getUser";
 export * from "./getUsers";
@@ -44,10 +47,12 @@ export * from "./projectCluster";
 export * from "./projectCustomAttribute";
 export * from "./projectFreezePeriod";
 export * from "./projectHook";
+export * from "./projectIssue";
 export * from "./projectLevelMrApprovals";
 export * from "./projectMembership";
 export * from "./projectMirror";
 export * from "./projectShareGroup";
+export * from "./projectTag";
 export * from "./projectVariable";
 export * from "./provider";
 export * from "./repositoryFile";
@@ -102,10 +107,12 @@ import { ProjectCluster } from "./projectCluster";
 import { ProjectCustomAttribute } from "./projectCustomAttribute";
 import { ProjectFreezePeriod } from "./projectFreezePeriod";
 import { ProjectHook } from "./projectHook";
+import { ProjectIssue } from "./projectIssue";
 import { ProjectLevelMrApprovals } from "./projectLevelMrApprovals";
 import { ProjectMembership } from "./projectMembership";
 import { ProjectMirror } from "./projectMirror";
 import { ProjectShareGroup } from "./projectShareGroup";
+import { ProjectTag } from "./projectTag";
 import { ProjectVariable } from "./projectVariable";
 import { RepositoryFile } from "./repositoryFile";
 import { ServiceGithub } from "./serviceGithub";
@@ -183,6 +190,8 @@ const _module = {
                 return new ProjectFreezePeriod(name, <any>undefined, { urn })
             case "gitlab:index/projectHook:ProjectHook":
                 return new ProjectHook(name, <any>undefined, { urn })
+            case "gitlab:index/projectIssue:ProjectIssue":
+                return new ProjectIssue(name, <any>undefined, { urn })
             case "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals":
                 return new ProjectLevelMrApprovals(name, <any>undefined, { urn })
             case "gitlab:index/projectMembership:ProjectMembership":
@@ -191,6 +200,8 @@ const _module = {
                 return new ProjectMirror(name, <any>undefined, { urn })
             case "gitlab:index/projectShareGroup:ProjectShareGroup":
                 return new ProjectShareGroup(name, <any>undefined, { urn })
+            case "gitlab:index/projectTag:ProjectTag":
+                return new ProjectTag(name, <any>undefined, { urn })
             case "gitlab:index/projectVariable:ProjectVariable":
                 return new ProjectVariable(name, <any>undefined, { urn })
             case "gitlab:index/repositoryFile:RepositoryFile":
@@ -250,10 +261,12 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCustomAttribute", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectFreezePeriod", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectHook", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIssue", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectLevelMrApprovals", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMembership", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMirror", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectShareGroup", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectTag", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectVariable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/repositoryFile", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/serviceGithub", _module)

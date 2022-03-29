@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to create and manage CI/CD variables for your GitLab instance.
-    /// For further information on variables, consult the [gitlab
-    /// documentation](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html).
+    /// The `gitlab.InstanceVariable` resource allows to manage the lifecycle of a CI/CD variable for an instance.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_variables.html)
     /// 
     /// ## Example Usage
     /// 

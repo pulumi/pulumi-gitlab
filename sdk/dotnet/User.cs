@@ -10,10 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to create and manage GitLab users.
-    /// Note your provider will need to be configured with admin-level access for this resource to work.
+    /// The `gitlab.User` resource allows to manage the lifecycle of a user.
     /// 
-    /// &gt; You must specify either `password` or `reset_password`.
+    /// &gt; the provider needs to be configured with admin-level access for this resource to work.
+    /// 
+    /// &gt; You must specify either password or reset_password.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html)
     /// 
     /// ## Example Usage
     /// 

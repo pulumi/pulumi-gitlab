@@ -243,7 +243,9 @@ class ProjectAccessToken(pulumi.CustomResource):
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        This resource allows you to create and manage Project Access Token for your GitLab projects.
+        The `ProjectAccessToken` resource allows to manage the lifecycle of a project access token.
+
+        **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/project_access_tokens.html)
 
         ## Example Usage
 
@@ -275,7 +277,9 @@ class ProjectAccessToken(pulumi.CustomResource):
                  args: ProjectAccessTokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to create and manage Project Access Token for your GitLab projects.
+        The `ProjectAccessToken` resource allows to manage the lifecycle of a project access token.
+
+        **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/project_access_tokens.html)
 
         ## Example Usage
 

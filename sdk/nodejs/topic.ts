@@ -5,11 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows you to create and manage topics that are then assignable to projects. Topics are the successors for project tags. Aside from avoiding terminology collisions with Git tags, they are more descriptive and better searchable.
+ * The `gitlab.Topic` resource allows to manage the lifecycle of topics that are then assignable to projects.
  *
- * For assigning topics, use the project resource.
+ * Topics are the successors for project tags. Aside from avoiding terminology collisions with Git tags, they are more descriptive and better searchable.
  *
  * > Deleting a resource doesn't delete the corresponding topic as the GitLab API doesn't support deleting topics yet. You can set softDestroy to true if you want the topics description to be emptied instead.
+ *
+ * **Upstream API**: [GitLab REST API docs for topics](https://docs.gitlab.com/ee/api/topics.html)
  *
  * ## Example Usage
  *

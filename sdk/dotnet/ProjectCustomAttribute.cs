@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to set custom attributes for a project.
+    /// The `gitlab.ProjectCustomAttribute` resource allows to manage custom attributes for a project.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
     /// 
     /// ## Example Usage
     /// 

@@ -161,9 +161,9 @@ class ProjectBadge(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to create and manage badges for your GitLab projects.
-        For further information consult the [gitlab
-        documentation](https://docs.gitlab.com/ce/user/project/badges.html).
+        The `ProjectBadge` resource allows to mange the lifecycle of project badges.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#project-badges)
 
         ## Example Usage
 
@@ -199,9 +199,9 @@ class ProjectBadge(pulumi.CustomResource):
                  args: ProjectBadgeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to create and manage badges for your GitLab projects.
-        For further information consult the [gitlab
-        documentation](https://docs.gitlab.com/ce/user/project/badges.html).
+        The `ProjectBadge` resource allows to mange the lifecycle of project badges.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#project-badges)
 
         ## Example Usage
 

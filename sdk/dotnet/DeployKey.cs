@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to create and manage [deploy keys](https://docs.gitlab.com/ee/user/project/deploy_keys/) for your GitLab projects.
+    /// The `gitlab.DeployKey` resource allows to manage the lifecycle of a deploy key.
+    /// 
+    /// &gt; To enable an already existing deploy key for another project use the `gitlab_project_deploy_key` resource.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html)
     /// 
     /// ## Example Usage
     /// 

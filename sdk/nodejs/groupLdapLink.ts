@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows you to add an LDAP link to an existing GitLab group.
+ * The `gitlab.GroupLdapLink` resource allows to manage the lifecycle of an LDAP integration with a group.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#ldap-group-links)
  *
  * ## Example Usage
  *

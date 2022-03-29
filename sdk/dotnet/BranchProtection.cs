@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to protect a specific branch by an access level so that the user with less access level cannot Merge/Push to the branch.
+    /// The `gitlab.BranchProtection` resource allows to manage the lifecycle of a protected branch of a repository.
     /// 
-    /// &gt; The `allowed_to_push`, `allowed_to_merge` and `code_owner_approval_required` arguments require a GitLab Premium account or above.  Please refer to [Gitlab API documentation](https://docs.gitlab.com/ee/api/protected_branches.html) for further information.
+    /// &gt; The allowed_to_push, allowed_to_merge and code_owner_approval_required attributes require a GitLab Enterprise instance.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html)
     /// 
     /// ## Import
     /// 

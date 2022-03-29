@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to create and manage Group Access Token for your GitLab Groups. (Introduced in GitLab 14.7)
+    /// The `gitlab_group_access`token resource allows to manage the lifecycle of a group access token.
+    /// 
+    /// &gt; Group Access Token were introduced in GitLab 14.7
+    /// 
+    /// **Upstream API**: [GitLab REST API](https://docs.gitlab.com/ee/api/group_access_tokens.html)
     /// 
     /// ## Example Usage
     /// 

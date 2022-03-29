@@ -196,9 +196,9 @@ class DeployKeyEnable(pulumi.CustomResource):
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to enable pre-existing deploy keys for your GitLab projects.
+        The `DeployKeyEnable` resource allows to enable an already existing deploy key (see `DeployKey resource`) for a specific project.
 
-        > **NOTE**: the GITLAB KEY_ID for the deploy key must be known
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#enable-a-deploy-key)
 
         ## Example Usage
 
@@ -244,9 +244,9 @@ class DeployKeyEnable(pulumi.CustomResource):
                  args: DeployKeyEnableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to enable pre-existing deploy keys for your GitLab projects.
+        The `DeployKeyEnable` resource allows to enable an already existing deploy key (see `DeployKey resource`) for a specific project.
 
-        > **NOTE**: the GITLAB KEY_ID for the deploy key must be known
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#enable-a-deploy-key)
 
         ## Example Usage
 

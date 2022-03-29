@@ -212,13 +212,12 @@ class ProjectMirror(pulumi.CustomResource):
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to add a mirror target for the repository, all changes will be synced to the remote target.
+        The `ProjectMirror` resource allows to manage the lifecycle of a project mirror.
 
-        > This is for *pushing* changes to a remote repository. *Pull Mirroring* can be configured using a combination of the
-        `import_url`, `mirror`, and `mirror_trigger_builds` properties on the `Project` resource.
+        This is for *pushing* changes to a remote repository. *Pull Mirroring* can be configured using a combination of the
+        import_url, mirror, and mirror_trigger_builds properties on the Project resource.
 
-        For further information on mirroring, consult the
-        [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/remote_mirrors.html)
 
         ## Example Usage
 
@@ -254,13 +253,12 @@ class ProjectMirror(pulumi.CustomResource):
                  args: ProjectMirrorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to add a mirror target for the repository, all changes will be synced to the remote target.
+        The `ProjectMirror` resource allows to manage the lifecycle of a project mirror.
 
-        > This is for *pushing* changes to a remote repository. *Pull Mirroring* can be configured using a combination of the
-        `import_url`, `mirror`, and `mirror_trigger_builds` properties on the `Project` resource.
+        This is for *pushing* changes to a remote repository. *Pull Mirroring* can be configured using a combination of the
+        import_url, mirror, and mirror_trigger_builds properties on the Project resource.
 
-        For further information on mirroring, consult the
-        [gitlab documentation](https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#repository-mirroring).
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/remote_mirrors.html)
 
         ## Example Usage
 

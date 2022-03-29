@@ -12,7 +12,10 @@ __all__ = [
     'BranchCommitArgs',
     'BranchProtectionAllowedToMergeArgs',
     'BranchProtectionAllowedToPushArgs',
+    'ProjectIssueTaskCompletionStatusArgs',
     'ProjectPushRulesArgs',
+    'ProjectTagCommitArgs',
+    'ProjectTagReleaseArgs',
 ]
 
 @pulumi.input_type
@@ -301,6 +304,45 @@ class BranchProtectionAllowedToPushArgs:
 
 
 @pulumi.input_type
+class ProjectIssueTaskCompletionStatusArgs:
+    def __init__(__self__, *,
+                 completed_count: Optional[pulumi.Input[int]] = None,
+                 count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] completed_count: The number of tasks that are completed.
+        :param pulumi.Input[int] count: The number of tasks.
+        """
+        if completed_count is not None:
+            pulumi.set(__self__, "completed_count", completed_count)
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+
+    @property
+    @pulumi.getter(name="completedCount")
+    def completed_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of tasks that are completed.
+        """
+        return pulumi.get(self, "completed_count")
+
+    @completed_count.setter
+    def completed_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "completed_count", value)
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of tasks.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "count", value)
+
+
+@pulumi.input_type
 class ProjectPushRulesArgs:
     def __init__(__self__, *,
                  author_email_regex: Optional[pulumi.Input[str]] = None,
@@ -481,5 +523,181 @@ class ProjectPushRulesArgs:
     @reject_unsigned_commits.setter
     def reject_unsigned_commits(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "reject_unsigned_commits", value)
+
+
+@pulumi.input_type
+class ProjectTagCommitArgs:
+    def __init__(__self__, *,
+                 author_email: Optional[pulumi.Input[str]] = None,
+                 author_name: Optional[pulumi.Input[str]] = None,
+                 authored_date: Optional[pulumi.Input[str]] = None,
+                 committed_date: Optional[pulumi.Input[str]] = None,
+                 committer_email: Optional[pulumi.Input[str]] = None,
+                 committer_name: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 message: Optional[pulumi.Input[str]] = None,
+                 parent_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 short_id: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: The ID of this resource.
+        :param pulumi.Input[str] message: Creates annotated tag.
+        """
+        if author_email is not None:
+            pulumi.set(__self__, "author_email", author_email)
+        if author_name is not None:
+            pulumi.set(__self__, "author_name", author_name)
+        if authored_date is not None:
+            pulumi.set(__self__, "authored_date", authored_date)
+        if committed_date is not None:
+            pulumi.set(__self__, "committed_date", committed_date)
+        if committer_email is not None:
+            pulumi.set(__self__, "committer_email", committer_email)
+        if committer_name is not None:
+            pulumi.set(__self__, "committer_name", committer_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if parent_ids is not None:
+            pulumi.set(__self__, "parent_ids", parent_ids)
+        if short_id is not None:
+            pulumi.set(__self__, "short_id", short_id)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="authorEmail")
+    def author_email(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "author_email")
+
+    @author_email.setter
+    def author_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "author_email", value)
+
+    @property
+    @pulumi.getter(name="authorName")
+    def author_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "author_name")
+
+    @author_name.setter
+    def author_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "author_name", value)
+
+    @property
+    @pulumi.getter(name="authoredDate")
+    def authored_date(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "authored_date")
+
+    @authored_date.setter
+    def authored_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authored_date", value)
+
+    @property
+    @pulumi.getter(name="committedDate")
+    def committed_date(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "committed_date")
+
+    @committed_date.setter
+    def committed_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "committed_date", value)
+
+    @property
+    @pulumi.getter(name="committerEmail")
+    def committer_email(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "committer_email")
+
+    @committer_email.setter
+    def committer_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "committer_email", value)
+
+    @property
+    @pulumi.getter(name="committerName")
+    def committer_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "committer_name")
+
+    @committer_name.setter
+    def committer_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "committer_name", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creates annotated tag.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter(name="parentIds")
+    def parent_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "parent_ids")
+
+    @parent_ids.setter
+    def parent_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "parent_ids", value)
+
+    @property
+    @pulumi.getter(name="shortId")
+    def short_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "short_id")
+
+    @short_id.setter
+    def short_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "short_id", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class ProjectTagReleaseArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 tag_name: Optional[pulumi.Input[str]] = None):
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if tag_name is not None:
+            pulumi.set(__self__, "tag_name", tag_name)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="tagName")
+    def tag_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tag_name")
+
+    @tag_name.setter
+    def tag_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_name", value)
 
 

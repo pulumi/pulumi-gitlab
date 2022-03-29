@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to manage Slack notifications integration.
+    /// The `gitlab.ServiceSlack` resource allows to manage the lifecycle of a project integration with Slack.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#slack-notifications)
     /// 
     /// ## Example Usage
     /// 

@@ -10,7 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provide details about a gitlab project branch
+// The `Branch` data source allows details of a repository branch to be retrieved by its name and project.
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
 //
 // ## Example Usage
 //

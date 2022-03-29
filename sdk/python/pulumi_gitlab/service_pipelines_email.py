@@ -163,7 +163,9 @@ class ServicePipelinesEmail(pulumi.CustomResource):
                  recipients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        This resource manages a [Pipelines email integration](https://docs.gitlab.com/ee/user/project/integrations/overview.html#integrations-listing) that emails the pipeline status to a list of recipients.
+        The `ServicePipelinesEmail` resource allows to manage the lifecycle of a project integration with Pipeline Emails Service.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#pipeline-emails)
 
         ## Example Usage
 
@@ -203,7 +205,9 @@ class ServicePipelinesEmail(pulumi.CustomResource):
                  args: ServicePipelinesEmailArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages a [Pipelines email integration](https://docs.gitlab.com/ee/user/project/integrations/overview.html#integrations-listing) that emails the pipeline status to a list of recipients.
+        The `ServicePipelinesEmail` resource allows to manage the lifecycle of a project integration with Pipeline Emails Service.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#pipeline-emails)
 
         ## Example Usage
 

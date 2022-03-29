@@ -123,6 +123,8 @@ func Provider() tfbridge.ProviderInfo {
 			"gitlab_group_access_token":         {Tok: gitLabResource(gitLabMod, "GroupAccessToken")},
 			"gitlab_topic":                      {Tok: gitLabResource(gitLabMod, "Topic")},
 			"gitlab_user_sshkey":                {Tok: gitLabResource(gitLabMod, "UserSshKey")},
+			"gitlab_project_issue":              {Tok: gitLabResource(gitLabMod, "ProjectIssue")},
+			"gitlab_project_tag":                {Tok: gitLabResource(gitLabMod, "ProjectTag")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"gitlab_group": {Tok: gitLabDataSource(gitLabMod, "getGroup")},
@@ -168,6 +170,9 @@ func Provider() tfbridge.ProviderInfo {
 			"gitlab_project_protected_branch":   {Tok: gitLabDataSource(gitLabMod, "getProjectProtectedBranch")},
 			"gitlab_project_protected_branches": {Tok: gitLabDataSource(gitLabMod, "getProjectProtectedBranches")},
 			"gitlab_branch":                     {Tok: gitLabDataSource(gitLabMod, "getBranch")},
+			"gitlab_project_issue":              {Tok: gitLabDataSource(gitLabMod, "getProjectIssue")},
+			"gitlab_project_issues":             {Tok: gitLabDataSource(gitLabMod, "getProjectIssues")},
+			"gitlab_project_tag":                {Tok: gitLabDataSource(gitLabMod, "getProjectTag")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

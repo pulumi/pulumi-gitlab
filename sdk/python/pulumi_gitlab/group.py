@@ -22,6 +22,7 @@ class GroupArgs:
                  mentions_disabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[int]] = None,
+                 prevent_forking_outside_group: Optional[pulumi.Input[bool]] = None,
                  project_creation_level: Optional[pulumi.Input[str]] = None,
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
@@ -40,6 +41,7 @@ class GroupArgs:
         :param pulumi.Input[bool] mentions_disabled: Boolean, defaults to false.  Disable the capability
         :param pulumi.Input[str] name: The name of this group.
         :param pulumi.Input[int] parent_id: Integer, id of the parent group (creates a nested group).
+        :param pulumi.Input[bool] prevent_forking_outside_group: When enabled, users can not fork projects from this group to external namespaces.
         :param pulumi.Input[str] project_creation_level: , defaults to Maintainer.
         :param pulumi.Input[bool] request_access_enabled: Boolean, defaults to false.  Whether to
         :param pulumi.Input[bool] require_two_factor_authentication: Boolean, defaults to false.
@@ -65,6 +67,8 @@ class GroupArgs:
             pulumi.set(__self__, "name", name)
         if parent_id is not None:
             pulumi.set(__self__, "parent_id", parent_id)
+        if prevent_forking_outside_group is not None:
+            pulumi.set(__self__, "prevent_forking_outside_group", prevent_forking_outside_group)
         if project_creation_level is not None:
             pulumi.set(__self__, "project_creation_level", project_creation_level)
         if request_access_enabled is not None:
@@ -189,6 +193,18 @@ class GroupArgs:
         pulumi.set(self, "parent_id", value)
 
     @property
+    @pulumi.getter(name="preventForkingOutsideGroup")
+    def prevent_forking_outside_group(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When enabled, users can not fork projects from this group to external namespaces.
+        """
+        return pulumi.get(self, "prevent_forking_outside_group")
+
+    @prevent_forking_outside_group.setter
+    def prevent_forking_outside_group(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "prevent_forking_outside_group", value)
+
+    @property
     @pulumi.getter(name="projectCreationLevel")
     def project_creation_level(self) -> Optional[pulumi.Input[str]]:
         """
@@ -287,6 +303,7 @@ class _GroupState:
                  name: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None,
+                 prevent_forking_outside_group: Optional[pulumi.Input[bool]] = None,
                  project_creation_level: Optional[pulumi.Input[str]] = None,
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
@@ -309,6 +326,7 @@ class _GroupState:
         :param pulumi.Input[str] name: The name of this group.
         :param pulumi.Input[int] parent_id: Integer, id of the parent group (creates a nested group).
         :param pulumi.Input[str] path: The path of the group.
+        :param pulumi.Input[bool] prevent_forking_outside_group: When enabled, users can not fork projects from this group to external namespaces.
         :param pulumi.Input[str] project_creation_level: , defaults to Maintainer.
         :param pulumi.Input[bool] request_access_enabled: Boolean, defaults to false.  Whether to
         :param pulumi.Input[bool] require_two_factor_authentication: Boolean, defaults to false.
@@ -341,6 +359,8 @@ class _GroupState:
             pulumi.set(__self__, "parent_id", parent_id)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if prevent_forking_outside_group is not None:
+            pulumi.set(__self__, "prevent_forking_outside_group", prevent_forking_outside_group)
         if project_creation_level is not None:
             pulumi.set(__self__, "project_creation_level", project_creation_level)
         if request_access_enabled is not None:
@@ -493,6 +513,18 @@ class _GroupState:
         pulumi.set(self, "path", value)
 
     @property
+    @pulumi.getter(name="preventForkingOutsideGroup")
+    def prevent_forking_outside_group(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When enabled, users can not fork projects from this group to external namespaces.
+        """
+        return pulumi.get(self, "prevent_forking_outside_group")
+
+    @prevent_forking_outside_group.setter
+    def prevent_forking_outside_group(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "prevent_forking_outside_group", value)
+
+    @property
     @pulumi.getter(name="projectCreationLevel")
     def project_creation_level(self) -> Optional[pulumi.Input[str]]:
         """
@@ -615,6 +647,7 @@ class Group(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None,
+                 prevent_forking_outside_group: Optional[pulumi.Input[bool]] = None,
                  project_creation_level: Optional[pulumi.Input[str]] = None,
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
@@ -665,6 +698,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of this group.
         :param pulumi.Input[int] parent_id: Integer, id of the parent group (creates a nested group).
         :param pulumi.Input[str] path: The path of the group.
+        :param pulumi.Input[bool] prevent_forking_outside_group: When enabled, users can not fork projects from this group to external namespaces.
         :param pulumi.Input[str] project_creation_level: , defaults to Maintainer.
         :param pulumi.Input[bool] request_access_enabled: Boolean, defaults to false.  Whether to
         :param pulumi.Input[bool] require_two_factor_authentication: Boolean, defaults to false.
@@ -734,6 +768,7 @@ class Group(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None,
+                 prevent_forking_outside_group: Optional[pulumi.Input[bool]] = None,
                  project_creation_level: Optional[pulumi.Input[str]] = None,
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
@@ -764,6 +799,7 @@ class Group(pulumi.CustomResource):
             if path is None and not opts.urn:
                 raise TypeError("Missing required property 'path'")
             __props__.__dict__["path"] = path
+            __props__.__dict__["prevent_forking_outside_group"] = prevent_forking_outside_group
             __props__.__dict__["project_creation_level"] = project_creation_level
             __props__.__dict__["request_access_enabled"] = request_access_enabled
             __props__.__dict__["require_two_factor_authentication"] = require_two_factor_authentication
@@ -796,6 +832,7 @@ class Group(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             parent_id: Optional[pulumi.Input[int]] = None,
             path: Optional[pulumi.Input[str]] = None,
+            prevent_forking_outside_group: Optional[pulumi.Input[bool]] = None,
             project_creation_level: Optional[pulumi.Input[str]] = None,
             request_access_enabled: Optional[pulumi.Input[bool]] = None,
             require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
@@ -823,6 +860,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of this group.
         :param pulumi.Input[int] parent_id: Integer, id of the parent group (creates a nested group).
         :param pulumi.Input[str] path: The path of the group.
+        :param pulumi.Input[bool] prevent_forking_outside_group: When enabled, users can not fork projects from this group to external namespaces.
         :param pulumi.Input[str] project_creation_level: , defaults to Maintainer.
         :param pulumi.Input[bool] request_access_enabled: Boolean, defaults to false.  Whether to
         :param pulumi.Input[bool] require_two_factor_authentication: Boolean, defaults to false.
@@ -848,6 +886,7 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["parent_id"] = parent_id
         __props__.__dict__["path"] = path
+        __props__.__dict__["prevent_forking_outside_group"] = prevent_forking_outside_group
         __props__.__dict__["project_creation_level"] = project_creation_level
         __props__.__dict__["request_access_enabled"] = request_access_enabled
         __props__.__dict__["require_two_factor_authentication"] = require_two_factor_authentication
@@ -946,6 +985,14 @@ class Group(pulumi.CustomResource):
         The path of the group.
         """
         return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="preventForkingOutsideGroup")
+    def prevent_forking_outside_group(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When enabled, users can not fork projects from this group to external namespaces.
+        """
+        return pulumi.get(self, "prevent_forking_outside_group")
 
     @property
     @pulumi.getter(name="projectCreationLevel")

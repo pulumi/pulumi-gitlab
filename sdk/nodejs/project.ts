@@ -6,7 +6,11 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows you to create and manage projects within your GitLab group or within your user.
+ * The `gitlab.Project` resource allows to manage the lifecycle of a project.
+ *
+ * A project can either be created in a group or user namespace.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/projects.html)
  *
  * ## Example Usage
  *

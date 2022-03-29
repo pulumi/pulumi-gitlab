@@ -12,9 +12,9 @@ namespace Pulumi.GitLab
     public static class GetGroupMembership
     {
         /// <summary>
-        /// Provide details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
+        /// The `gitlab.GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
         /// 
-        /// &gt; **Note**: exactly one of group_id or full_path must be provided.
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -43,9 +43,9 @@ namespace Pulumi.GitLab
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupMembershipResult>("gitlab:index/getGroupMembership:getGroupMembership", args ?? new GetGroupMembershipArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provide details about a list of group members in the gitlab provider. The results include id, username, name and more about the requested members.
+        /// The `gitlab.GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
         /// 
-        /// &gt; **Note**: exactly one of group_id or full_path must be provided.
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
         /// 
         /// {{% examples %}}
         /// ## Example Usage

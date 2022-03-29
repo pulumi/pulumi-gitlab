@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to create and manage CI/CD variables for your GitLab groups.
-    /// For further information on variables, consult the [gitlab
-    /// documentation](https://docs.gitlab.com/ce/ci/variables/README.html#variables).
+    /// The `gitlab.GroupVariable` resource allows to manage the lifecycle of a CI/CD variable for a group.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
     /// 
     /// ## Example Usage
     /// 

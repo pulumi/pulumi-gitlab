@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to add an LDAP link to an existing GitLab group.
+// The `GroupLdapLink` resource allows to manage the lifecycle of an LDAP integration with a group.
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#ldap-group-links)
 //
 // ## Example Usage
 //

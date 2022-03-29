@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows you to create and manage multiple approval rules for your GitLab projects. For further information on approval rules, consult the [gitlab documentation](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals).
+ * The `gitlab.ProjectApprovalRule` resource allows to manage the lifecycle of a project-level approval rule.
  *
- * > This feature requires GitLab Premium.
+ * > This resource requires a GitLab Enterprise instance.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals)
  *
  * ## Import
  *
@@ -66,6 +68,10 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
      */
     public readonly protectedBranchIds!: pulumi.Output<number[] | undefined>;
     /**
+     * String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`.
+     */
+    public readonly ruleType!: pulumi.Output<string>;
+    /**
      * A list of specific User IDs to add to the list of approvers.
      */
     public readonly userIds!: pulumi.Output<number[] | undefined>;
@@ -88,6 +94,7 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["protectedBranchIds"] = state ? state.protectedBranchIds : undefined;
+            resourceInputs["ruleType"] = state ? state.ruleType : undefined;
             resourceInputs["userIds"] = state ? state.userIds : undefined;
         } else {
             const args = argsOrState as ProjectApprovalRuleArgs | undefined;
@@ -102,6 +109,7 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["protectedBranchIds"] = args ? args.protectedBranchIds : undefined;
+            resourceInputs["ruleType"] = args ? args.ruleType : undefined;
             resourceInputs["userIds"] = args ? args.userIds : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -134,6 +142,10 @@ export interface ProjectApprovalRuleState {
      */
     protectedBranchIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
+     * String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`.
+     */
+    ruleType?: pulumi.Input<string>;
+    /**
      * A list of specific User IDs to add to the list of approvers.
      */
     userIds?: pulumi.Input<pulumi.Input<number>[]>;
@@ -163,6 +175,10 @@ export interface ProjectApprovalRuleArgs {
      * A list of protected branch IDs (not branch names) for which the rule applies.
      */
     protectedBranchIds?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`.
+     */
+    ruleType?: pulumi.Input<string>;
     /**
      * A list of specific User IDs to add to the list of approvers.
      */

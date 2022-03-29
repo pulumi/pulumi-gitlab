@@ -372,9 +372,11 @@ def get_user(email: Optional[str] = None,
              username: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
-    Provide details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
+    The `User` data source allows details of a user to be retrieved by either the user ID, username or email address.
 
-    > Some attributes might not be returned depending on if you're an admin or not. Please refer to [Gitlab documentation](https://docs.gitlab.com/ce/api/users.html#single-user) for more details.
+    > Some attributes might not be returned depending on if you're an admin or not.
+
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
 
 
     :param str email: The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
@@ -428,9 +430,11 @@ def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
                     username: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
     """
-    Provide details about a specific user in the gitlab provider. Especially the ability to lookup the id for linking to other resources.
+    The `User` data source allows details of a user to be retrieved by either the user ID, username or email address.
 
-    > Some attributes might not be returned depending on if you're an admin or not. Please refer to [Gitlab documentation](https://docs.gitlab.com/ce/api/users.html#single-user) for more details.
+    > Some attributes might not be returned depending on if you're an admin or not.
+
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
 
 
     :param str email: The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.

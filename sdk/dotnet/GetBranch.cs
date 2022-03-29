@@ -12,7 +12,9 @@ namespace Pulumi.GitLab
     public static class GetBranch
     {
         /// <summary>
-        /// Provide details about a gitlab project branch
+        /// The `gitlab.Branch` data source allows details of a repository branch to be retrieved by its name and project.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -42,7 +44,9 @@ namespace Pulumi.GitLab
             => Pulumi.Deployment.Instance.InvokeAsync<GetBranchResult>("gitlab:index/getBranch:getBranch", args ?? new GetBranchArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provide details about a gitlab project branch
+        /// The `gitlab.Branch` data source allows details of a repository branch to be retrieved by its name and project.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
         /// 
         /// {{% examples %}}
         /// ## Example Usage

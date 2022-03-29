@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to create and manage labels for your GitLab projects.
-    /// For further information on labels, consult the [gitlab
-    /// documentation](https://docs.gitlab.com/ee/user/project/labels.html#project-labels).
+    /// The `gitlab.Label` resource allows to manage the lifecycle of a project label.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
     /// 
     /// ## Example Usage
     /// 

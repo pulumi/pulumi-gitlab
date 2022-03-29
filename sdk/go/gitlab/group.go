@@ -81,6 +81,8 @@ type Group struct {
 	ParentId pulumi.IntPtrOutput `pulumi:"parentId"`
 	// The path of the group.
 	Path pulumi.StringOutput `pulumi:"path"`
+	// When enabled, users can not fork projects from this group to external namespaces.
+	PreventForkingOutsideGroup pulumi.BoolPtrOutput `pulumi:"preventForkingOutsideGroup"`
 	// , defaults to Maintainer.
 	ProjectCreationLevel pulumi.StringPtrOutput `pulumi:"projectCreationLevel"`
 	// Boolean, defaults to false.  Whether to
@@ -155,6 +157,8 @@ type groupState struct {
 	ParentId *int `pulumi:"parentId"`
 	// The path of the group.
 	Path *string `pulumi:"path"`
+	// When enabled, users can not fork projects from this group to external namespaces.
+	PreventForkingOutsideGroup *bool `pulumi:"preventForkingOutsideGroup"`
 	// , defaults to Maintainer.
 	ProjectCreationLevel *string `pulumi:"projectCreationLevel"`
 	// Boolean, defaults to false.  Whether to
@@ -198,6 +202,8 @@ type GroupState struct {
 	ParentId pulumi.IntPtrInput
 	// The path of the group.
 	Path pulumi.StringPtrInput
+	// When enabled, users can not fork projects from this group to external namespaces.
+	PreventForkingOutsideGroup pulumi.BoolPtrInput
 	// , defaults to Maintainer.
 	ProjectCreationLevel pulumi.StringPtrInput
 	// Boolean, defaults to false.  Whether to
@@ -241,6 +247,8 @@ type groupArgs struct {
 	ParentId *int `pulumi:"parentId"`
 	// The path of the group.
 	Path string `pulumi:"path"`
+	// When enabled, users can not fork projects from this group to external namespaces.
+	PreventForkingOutsideGroup *bool `pulumi:"preventForkingOutsideGroup"`
 	// , defaults to Maintainer.
 	ProjectCreationLevel *string `pulumi:"projectCreationLevel"`
 	// Boolean, defaults to false.  Whether to
@@ -277,6 +285,8 @@ type GroupArgs struct {
 	ParentId pulumi.IntPtrInput
 	// The path of the group.
 	Path pulumi.StringInput
+	// When enabled, users can not fork projects from this group to external namespaces.
+	PreventForkingOutsideGroup pulumi.BoolPtrInput
 	// , defaults to Maintainer.
 	ProjectCreationLevel pulumi.StringPtrInput
 	// Boolean, defaults to false.  Whether to

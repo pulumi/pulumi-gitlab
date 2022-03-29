@@ -427,10 +427,13 @@ class User(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to create and manage GitLab users.
-        Note your provider will need to be configured with admin-level access for this resource to work.
+        The `User` resource allows to manage the lifecycle of a user.
 
-        > You must specify either `password` or `reset_password`.
+        > the provider needs to be configured with admin-level access for this resource to work.
+
+        > You must specify either password or reset_password.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html)
 
         ## Example Usage
 
@@ -483,10 +486,13 @@ class User(pulumi.CustomResource):
                  args: UserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to create and manage GitLab users.
-        Note your provider will need to be configured with admin-level access for this resource to work.
+        The `User` resource allows to manage the lifecycle of a user.
 
-        > You must specify either `password` or `reset_password`.
+        > the provider needs to be configured with admin-level access for this resource to work.
+
+        > You must specify either password or reset_password.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html)
 
         ## Example Usage
 

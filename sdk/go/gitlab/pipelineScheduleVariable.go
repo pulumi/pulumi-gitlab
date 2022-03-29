@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to create and manage variables for pipeline schedules.
+// The `PipelineScheduleVariable` resource allows to manage the lifecycle of a variable for a pipeline schedule.
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html#pipeline-schedule-variables)
 //
 // ## Example Usage
 //

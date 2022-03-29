@@ -12,7 +12,9 @@ namespace Pulumi.GitLab
     public static class GetProjectProtectedBranches
     {
         /// <summary>
-        /// Provides details about all protected branches in a given project.
+        /// The `gitlab_protected_branches` data source allows details of the protected branches of a given project.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -41,7 +43,9 @@ namespace Pulumi.GitLab
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectProtectedBranchesResult>("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", args ?? new GetProjectProtectedBranchesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides details about all protected branches in a given project.
+        /// The `gitlab_protected_branches` data source allows details of the protected branches of a given project.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
         /// 
         /// {{% examples %}}
         /// ## Example Usage

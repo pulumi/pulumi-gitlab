@@ -12,7 +12,9 @@ namespace Pulumi.GitLab
     public static class GetProject
     {
         /// <summary>
-        /// Provide details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
+        /// The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -41,7 +43,9 @@ namespace Pulumi.GitLab
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gitlab:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provide details about a specific project in the gitlab provider. The results include the name of the project, path, description, default branch, etc.
+        /// The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
         /// 
         /// {{% examples %}}
         /// ## Example Usage

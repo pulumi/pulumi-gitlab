@@ -11,9 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to create and manage group clusters for your GitLab groups.
-// For further information on clusters, consult the [gitlab
-// documentation](https://docs.gitlab.com/ce/user/group/clusters/index.html).
+// The `GroupCluster` resource allows to manage the lifecycle of a group cluster.
+//
+// > This is deprecated GitLab feature since 14.5
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_clusters.html)
 //
 // ## Example Usage
 //

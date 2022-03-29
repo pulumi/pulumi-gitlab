@@ -234,7 +234,9 @@ class GroupLdapLink(pulumi.CustomResource):
                  ldap_provider: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to add an LDAP link to an existing GitLab group.
+        The `GroupLdapLink` resource allows to manage the lifecycle of an LDAP integration with a group.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#ldap-group-links)
 
         ## Example Usage
 
@@ -273,7 +275,9 @@ class GroupLdapLink(pulumi.CustomResource):
                  args: GroupLdapLinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to add an LDAP link to an existing GitLab group.
+        The `GroupLdapLink` resource allows to manage the lifecycle of an LDAP integration with a group.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#ldap-group-links)
 
         ## Example Usage
 

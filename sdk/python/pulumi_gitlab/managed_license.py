@@ -130,10 +130,11 @@ class ManagedLicense(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to add rules for managing licenses on a project.
-        For additional information, please see the [gitlab documentation](https://docs.gitlab.com/ee/user/compliance/license_compliance/).
+        The `ManagedLicense` resource allows to manage the lifecycle of a managed license.
 
-        > Using this resource requires an active [gitlab ultimate](https://about.gitlab.com/pricing/)subscription.
+        > This resource requires a GitLab Enterprise instance.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/managed_licenses.html)
 
         ## Example Usage
 
@@ -170,10 +171,11 @@ class ManagedLicense(pulumi.CustomResource):
                  args: ManagedLicenseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to add rules for managing licenses on a project.
-        For additional information, please see the [gitlab documentation](https://docs.gitlab.com/ee/user/compliance/license_compliance/).
+        The `ManagedLicense` resource allows to manage the lifecycle of a managed license.
 
-        > Using this resource requires an active [gitlab ultimate](https://about.gitlab.com/pricing/)subscription.
+        > This resource requires a GitLab Enterprise instance.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/managed_licenses.html)
 
         ## Example Usage
 

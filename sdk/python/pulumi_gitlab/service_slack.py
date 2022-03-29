@@ -812,7 +812,9 @@ class ServiceSlack(pulumi.CustomResource):
                  wiki_page_events: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        This resource allows you to manage Slack notifications integration.
+        The `ServiceSlack` resource allows to manage the lifecycle of a project integration with Slack.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#slack-notifications)
 
         ## Example Usage
 
@@ -872,7 +874,9 @@ class ServiceSlack(pulumi.CustomResource):
                  args: ServiceSlackArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to manage Slack notifications integration.
+        The `ServiceSlack` resource allows to manage the lifecycle of a project integration with Slack.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#slack-notifications)
 
         ## Example Usage
 

@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to create and manage badges for your GitLab projects.
-// For further information consult the [gitlab
-// documentation](https://docs.gitlab.com/ce/user/project/badges.html).
+// The `ProjectBadge` resource allows to mange the lifecycle of project badges.
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#project-badges)
 //
 // ## Example Usage
 //

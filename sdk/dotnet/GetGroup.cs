@@ -12,9 +12,9 @@ namespace Pulumi.GitLab
     public static class GetGroup
     {
         /// <summary>
-        /// Provide details about a specific group in the gitlab provider.
+        /// The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
         /// 
-        /// &gt; **Note**: exactly one of group_id or full_path must be provided.
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -43,9 +43,9 @@ namespace Pulumi.GitLab
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("gitlab:index/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provide details about a specific group in the gitlab provider.
+        /// The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
         /// 
-        /// &gt; **Note**: exactly one of group_id or full_path must be provided.
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -158,6 +158,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Path;
         /// <summary>
+        /// When enabled, users can not fork projects from this group to external namespaces.
+        /// </summary>
+        public readonly bool PreventForkingOutsideGroup;
+        /// <summary>
         /// Boolean, is request for access enabled to the group.
         /// </summary>
         public readonly bool RequestAccessEnabled;
@@ -196,6 +200,8 @@ namespace Pulumi.GitLab
 
             string path,
 
+            bool preventForkingOutsideGroup,
+
             bool requestAccessEnabled,
 
             string runnersToken,
@@ -214,6 +220,7 @@ namespace Pulumi.GitLab
             Name = name;
             ParentId = parentId;
             Path = path;
+            PreventForkingOutsideGroup = preventForkingOutsideGroup;
             RequestAccessEnabled = requestAccessEnabled;
             RunnersToken = runnersToken;
             VisibilityLevel = visibilityLevel;

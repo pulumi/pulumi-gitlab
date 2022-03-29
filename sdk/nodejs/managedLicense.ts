@@ -5,10 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows you to add rules for managing licenses on a project.
- * For additional information, please see the [gitlab documentation](https://docs.gitlab.com/ee/user/compliance/license_compliance/).
+ * The `gitlab.ManagedLicense` resource allows to manage the lifecycle of a managed license.
  *
- * > Using this resource requires an active [gitlab ultimate](https://about.gitlab.com/pricing/)subscription.
+ * > This resource requires a GitLab Enterprise instance.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/managed_licenses.html)
  *
  * ## Example Usage
  *

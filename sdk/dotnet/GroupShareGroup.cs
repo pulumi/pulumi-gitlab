@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to share a group with another group
+    /// The `gitlab.GroupShareGroup` resource allows to manage the lifecycle of group shared with another group.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#share-groups-with-groups)
     /// 
     /// ## Example Usage
     /// 

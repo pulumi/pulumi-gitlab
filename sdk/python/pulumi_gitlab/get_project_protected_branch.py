@@ -120,7 +120,9 @@ def get_project_protected_branch(name: Optional[str] = None,
                                  project_id: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectProtectedBranchResult:
     """
-    Provides details about a specific protected branch in a given project.
+    The `gitlab_protected_branch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
+
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
 
     ## Example Usage
 
@@ -160,7 +162,9 @@ def get_project_protected_branch_output(name: Optional[pulumi.Input[str]] = None
                                         project_id: Optional[pulumi.Input[str]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectProtectedBranchResult]:
     """
-    Provides details about a specific protected branch in a given project.
+    The `gitlab_protected_branch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
+
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
 
     ## Example Usage
 

@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to manage Microsoft Teams integration.
+// The `ServiceMicrosoftTeams` resource allows to manage the lifecycle of a project integration with Microsoft Teams.
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#microsoft-teams)
 //
 // ## Example Usage
 //

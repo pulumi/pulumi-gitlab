@@ -621,7 +621,9 @@ class ServiceJira(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to manage Jira integration.
+        The `ServiceJira` resource allows to manage the lifecycle of a project integration with Jira.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
 
         ## Example Usage
 
@@ -673,7 +675,9 @@ class ServiceJira(pulumi.CustomResource):
                  args: ServiceJiraArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to manage Jira integration.
+        The `ServiceJira` resource allows to manage the lifecycle of a project integration with Jira.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
 
         ## Example Usage
 

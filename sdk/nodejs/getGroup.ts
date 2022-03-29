@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provide details about a specific group in the gitlab provider.
+ * The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
  *
- * > **Note**: exactly one of groupId or fullPath must be provided.
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
  *
  * ## Example Usage
  *
@@ -92,6 +92,10 @@ export interface GetGroupResult {
      * The path of the group.
      */
     readonly path: string;
+    /**
+     * When enabled, users can not fork projects from this group to external namespaces.
+     */
+    readonly preventForkingOutsideGroup: boolean;
     /**
      * Boolean, is request for access enabled to the group.
      */

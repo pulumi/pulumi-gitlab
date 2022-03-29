@@ -110,6 +110,10 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly path!: pulumi.Output<string>;
     /**
+     * When enabled, users can not fork projects from this group to external namespaces.
+     */
+    public readonly preventForkingOutsideGroup!: pulumi.Output<boolean | undefined>;
+    /**
      * , defaults to Maintainer.
      */
     public readonly projectCreationLevel!: pulumi.Output<string | undefined>;
@@ -170,6 +174,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parentId"] = state ? state.parentId : undefined;
             resourceInputs["path"] = state ? state.path : undefined;
+            resourceInputs["preventForkingOutsideGroup"] = state ? state.preventForkingOutsideGroup : undefined;
             resourceInputs["projectCreationLevel"] = state ? state.projectCreationLevel : undefined;
             resourceInputs["requestAccessEnabled"] = state ? state.requestAccessEnabled : undefined;
             resourceInputs["requireTwoFactorAuthentication"] = state ? state.requireTwoFactorAuthentication : undefined;
@@ -193,6 +198,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["parentId"] = args ? args.parentId : undefined;
             resourceInputs["path"] = args ? args.path : undefined;
+            resourceInputs["preventForkingOutsideGroup"] = args ? args.preventForkingOutsideGroup : undefined;
             resourceInputs["projectCreationLevel"] = args ? args.projectCreationLevel : undefined;
             resourceInputs["requestAccessEnabled"] = args ? args.requestAccessEnabled : undefined;
             resourceInputs["requireTwoFactorAuthentication"] = args ? args.requireTwoFactorAuthentication : undefined;
@@ -258,6 +264,10 @@ export interface GroupState {
      * The path of the group.
      */
     path?: pulumi.Input<string>;
+    /**
+     * When enabled, users can not fork projects from this group to external namespaces.
+     */
+    preventForkingOutsideGroup?: pulumi.Input<boolean>;
     /**
      * , defaults to Maintainer.
      */
@@ -336,6 +346,10 @@ export interface GroupArgs {
      * The path of the group.
      */
     path: pulumi.Input<string>;
+    /**
+     * When enabled, users can not fork projects from this group to external namespaces.
+     */
+    preventForkingOutsideGroup?: pulumi.Input<boolean>;
     /**
      * , defaults to Maintainer.
      */
