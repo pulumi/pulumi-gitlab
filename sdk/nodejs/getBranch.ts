@@ -39,13 +39,7 @@ export function getBranch(args: GetBranchArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getBranch.
  */
 export interface GetBranchArgs {
-    /**
-     * The name of the branch.
-     */
     name: string;
-    /**
-     * The full path or id of the project.
-     */
     project: string;
 }
 
@@ -53,49 +47,19 @@ export interface GetBranchArgs {
  * A collection of values returned by getBranch.
  */
 export interface GetBranchResult {
-    /**
-     * Bool, true if you can push to the branch.
-     */
     readonly canPush: boolean;
-    /**
-     * The commit associated with the branch ref.
-     */
     readonly commits: outputs.GetBranchCommit[];
-    /**
-     * Bool, true if branch is the default branch for the project.
-     */
     readonly default: boolean;
-    /**
-     * Bool, true if developer level access allows to merge branch.
-     */
     readonly developerCanMerge: boolean;
-    /**
-     * Bool, true if developer level access allows git push.
-     */
     readonly developerCanPush: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Bool, true if the branch has been merged into it's parent.
-     */
     readonly merged: boolean;
-    /**
-     * The name of the branch.
-     */
     readonly name: string;
-    /**
-     * The full path or id of the project.
-     */
     readonly project: string;
-    /**
-     * Bool, true if branch has branch protection.
-     */
     readonly protected: boolean;
-    /**
-     * The url of the created branch (https.)
-     */
     readonly webUrl: string;
 }
 
@@ -107,12 +71,6 @@ export function getBranchOutput(args: GetBranchOutputArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getBranch.
  */
 export interface GetBranchOutputArgs {
-    /**
-     * The name of the branch.
-     */
     name: pulumi.Input<string>;
-    /**
-     * The full path or id of the project.
-     */
     project: pulumi.Input<string>;
 }

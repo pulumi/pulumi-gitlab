@@ -41,12 +41,21 @@ namespace Pulumi.GitLab
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// # Gitlab labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gitlab:index/label:Label example 12345:fixme
+    /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/label:Label")]
     public partial class Label : Pulumi.CustomResource
     {
         /// <summary>
-        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+        /// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         /// </summary>
         [Output("color")]
         public Output<string> Color { get; private set; } = null!;
@@ -116,7 +125,8 @@ namespace Pulumi.GitLab
     public sealed class LabelArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+        /// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         /// </summary>
         [Input("color", required: true)]
         public Input<string> Color { get; set; } = null!;
@@ -147,7 +157,8 @@ namespace Pulumi.GitLab
     public sealed class LabelState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+        /// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }

@@ -79,9 +79,11 @@ type GroupAccessToken struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// True if the token is revoked.
 	Revoked pulumi.BoolOutput `pulumi:"revoked"`
-	// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
+	// The scope for the group access token. It determines the actions which can be performed when authenticating with this
+	// token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
-	// The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+	// The group access token. This is only populated when creating a new group access token. This attribute is not available
+	// for imported resources.
 	Token pulumi.StringOutput `pulumi:"token"`
 	// The user id associated to the token.
 	UserId pulumi.IntOutput `pulumi:"userId"`
@@ -136,9 +138,11 @@ type groupAccessTokenState struct {
 	Name *string `pulumi:"name"`
 	// True if the token is revoked.
 	Revoked *bool `pulumi:"revoked"`
-	// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
+	// The scope for the group access token. It determines the actions which can be performed when authenticating with this
+	// token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
 	Scopes []string `pulumi:"scopes"`
-	// The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+	// The group access token. This is only populated when creating a new group access token. This attribute is not available
+	// for imported resources.
 	Token *string `pulumi:"token"`
 	// The user id associated to the token.
 	UserId *int `pulumi:"userId"`
@@ -159,9 +163,11 @@ type GroupAccessTokenState struct {
 	Name pulumi.StringPtrInput
 	// True if the token is revoked.
 	Revoked pulumi.BoolPtrInput
-	// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
+	// The scope for the group access token. It determines the actions which can be performed when authenticating with this
+	// token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
 	Scopes pulumi.StringArrayInput
-	// The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+	// The group access token. This is only populated when creating a new group access token. This attribute is not available
+	// for imported resources.
 	Token pulumi.StringPtrInput
 	// The user id associated to the token.
 	UserId pulumi.IntPtrInput
@@ -180,7 +186,8 @@ type groupAccessTokenArgs struct {
 	Group string `pulumi:"group"`
 	// The name of the group access token.
 	Name *string `pulumi:"name"`
-	// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
+	// The scope for the group access token. It determines the actions which can be performed when authenticating with this
+	// token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
 	Scopes []string `pulumi:"scopes"`
 }
 
@@ -194,7 +201,8 @@ type GroupAccessTokenArgs struct {
 	Group pulumi.StringInput
 	// The name of the group access token.
 	Name pulumi.StringPtrInput
-	// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
+	// The scope for the group access token. It determines the actions which can be performed when authenticating with this
+	// token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
 	Scopes pulumi.StringArrayInput
 }
 

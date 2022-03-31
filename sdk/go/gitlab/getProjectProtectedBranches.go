@@ -47,17 +47,14 @@ func GetProjectProtectedBranches(ctx *pulumi.Context, args *GetProjectProtectedB
 
 // A collection of arguments for invoking getProjectProtectedBranches.
 type GetProjectProtectedBranchesArgs struct {
-	// The integer or path with namespace that uniquely identifies the project.
 	ProjectId string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getProjectProtectedBranches.
 type GetProjectProtectedBranchesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The integer or path with namespace that uniquely identifies the project.
-	ProjectId string `pulumi:"projectId"`
-	// A list of protected branches, as defined below.
+	Id                string                                       `pulumi:"id"`
+	ProjectId         string                                       `pulumi:"projectId"`
 	ProtectedBranches []GetProjectProtectedBranchesProtectedBranch `pulumi:"protectedBranches"`
 }
 
@@ -72,7 +69,6 @@ func GetProjectProtectedBranchesOutput(ctx *pulumi.Context, args GetProjectProte
 
 // A collection of arguments for invoking getProjectProtectedBranches.
 type GetProjectProtectedBranchesOutputArgs struct {
-	// The integer or path with namespace that uniquely identifies the project.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -100,12 +96,10 @@ func (o GetProjectProtectedBranchesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The integer or path with namespace that uniquely identifies the project.
 func (o GetProjectProtectedBranchesResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchesResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// A list of protected branches, as defined below.
 func (o GetProjectProtectedBranchesResultOutput) ProtectedBranches() GetProjectProtectedBranchesProtectedBranchArrayOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchesResult) []GetProjectProtectedBranchesProtectedBranch {
 		return v.ProtectedBranches

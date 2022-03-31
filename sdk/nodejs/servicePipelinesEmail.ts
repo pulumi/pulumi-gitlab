@@ -64,7 +64,8 @@ export class ServicePipelinesEmail extends pulumi.CustomResource {
     }
 
     /**
-     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+     * Default is `default`
      */
     public readonly branchesToBeNotified!: pulumi.Output<string | undefined>;
     /**
@@ -120,7 +121,8 @@ export class ServicePipelinesEmail extends pulumi.CustomResource {
  */
 export interface ServicePipelinesEmailState {
     /**
-     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+     * Default is `default`
      */
     branchesToBeNotified?: pulumi.Input<string>;
     /**
@@ -142,7 +144,8 @@ export interface ServicePipelinesEmailState {
  */
 export interface ServicePipelinesEmailArgs {
     /**
-     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+     * Default is `default`
      */
     branchesToBeNotified?: pulumi.Input<string>;
     /**

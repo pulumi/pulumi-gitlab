@@ -60,7 +60,8 @@ import (
 type ServicePipelinesEmail struct {
 	pulumi.CustomResourceState
 
-	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+	// Default is `default`
 	BranchesToBeNotified pulumi.StringPtrOutput `pulumi:"branchesToBeNotified"`
 	// Notify only broken pipelines. Default is true.
 	NotifyOnlyBrokenPipelines pulumi.BoolPtrOutput `pulumi:"notifyOnlyBrokenPipelines"`
@@ -105,7 +106,8 @@ func GetServicePipelinesEmail(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePipelinesEmail resources.
 type servicePipelinesEmailState struct {
-	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+	// Default is `default`
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
 	// Notify only broken pipelines. Default is true.
 	NotifyOnlyBrokenPipelines *bool `pulumi:"notifyOnlyBrokenPipelines"`
@@ -116,7 +118,8 @@ type servicePipelinesEmailState struct {
 }
 
 type ServicePipelinesEmailState struct {
-	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+	// Default is `default`
 	BranchesToBeNotified pulumi.StringPtrInput
 	// Notify only broken pipelines. Default is true.
 	NotifyOnlyBrokenPipelines pulumi.BoolPtrInput
@@ -131,7 +134,8 @@ func (ServicePipelinesEmailState) ElementType() reflect.Type {
 }
 
 type servicePipelinesEmailArgs struct {
-	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+	// Default is `default`
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
 	// Notify only broken pipelines. Default is true.
 	NotifyOnlyBrokenPipelines *bool `pulumi:"notifyOnlyBrokenPipelines"`
@@ -143,7 +147,8 @@ type servicePipelinesEmailArgs struct {
 
 // The set of arguments for constructing a ServicePipelinesEmail resource.
 type ServicePipelinesEmailArgs struct {
-	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+	// Default is `default`
 	BranchesToBeNotified pulumi.StringPtrInput
 	// Notify only broken pipelines. Default is true.
 	NotifyOnlyBrokenPipelines pulumi.BoolPtrInput

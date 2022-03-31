@@ -47,57 +47,36 @@ class GetProjectProtectedBranchResult:
     @property
     @pulumi.getter(name="allowForcePush")
     def allow_force_push(self) -> bool:
-        """
-        Whether force push is allowed.
-        """
         return pulumi.get(self, "allow_force_push")
 
     @property
     @pulumi.getter(name="codeOwnerApprovalRequired")
     def code_owner_approval_required(self) -> bool:
-        """
-        Reject code pushes that change files listed in the CODEOWNERS file.
-        """
         return pulumi.get(self, "code_owner_approval_required")
 
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="mergeAccessLevels")
     def merge_access_levels(self) -> Sequence['outputs.GetProjectProtectedBranchMergeAccessLevelResult']:
-        """
-        Describes which access levels, users, or groups are allowed to perform the action.
-        """
         return pulumi.get(self, "merge_access_levels")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the protected branch.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
-        """
-        The integer or path with namespace that uniquely identifies the project.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="pushAccessLevels")
     def push_access_levels(self) -> Sequence['outputs.GetProjectProtectedBranchPushAccessLevelResult']:
-        """
-        Describes which access levels, users, or groups are allowed to perform the action.
-        """
         return pulumi.get(self, "push_access_levels")
 
 
@@ -133,10 +112,6 @@ def get_project_protected_branch(name: Optional[str] = None,
     example = gitlab.get_project_protected_branch(name="main",
         project_id="foo/bar/baz")
     ```
-
-
-    :param str name: The name of the protected branch.
-    :param str project_id: The integer or path with namespace that uniquely identifies the project.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -175,9 +150,5 @@ def get_project_protected_branch_output(name: Optional[pulumi.Input[str]] = None
     example = gitlab.get_project_protected_branch(name="main",
         project_id="foo/bar/baz")
     ```
-
-
-    :param str name: The name of the protected branch.
-    :param str project_id: The integer or path with namespace that uniquely identifies the project.
     """
     ...

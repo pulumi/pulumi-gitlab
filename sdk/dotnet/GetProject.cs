@@ -77,17 +77,14 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The integer or path with namespace that uniquely identifies the project within the gitlab install.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// The path of the repository with namespace.
-        /// </summary>
         [Input("pathWithNamespace")]
         public string? PathWithNamespace { get; set; }
+
+        [Input("publicBuilds")]
+        public bool? PublicBuilds { get; set; }
 
         public GetProjectArgs()
         {
@@ -96,17 +93,14 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The integer or path with namespace that uniquely identifies the project within the gitlab install.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// The path of the repository with namespace.
-        /// </summary>
         [Input("pathWithNamespace")]
         public Input<string>? PathWithNamespace { get; set; }
+
+        [Input("publicBuilds")]
+        public Input<bool>? PublicBuilds { get; set; }
 
         public GetProjectInvokeArgs()
         {
@@ -117,124 +111,108 @@ namespace Pulumi.GitLab
     [OutputType]
     public sealed class GetProjectResult
     {
-        /// <summary>
-        /// Whether the project is in read-only mode (archived).
-        /// </summary>
+        public readonly string AnalyticsAccessLevel;
         public readonly bool Archived;
-        /// <summary>
-        /// The default branch for the project.
-        /// </summary>
+        public readonly string AutoCancelPendingPipelines;
+        public readonly string AutoDevopsDeployStrategy;
+        public readonly bool AutoDevopsEnabled;
+        public readonly bool AutocloseReferencedIssues;
+        public readonly string BuildGitStrategy;
+        public readonly int BuildTimeout;
+        public readonly string BuildsAccessLevel;
+        public readonly ImmutableArray<Outputs.GetProjectContainerExpirationPolicyResult> ContainerExpirationPolicies;
+        public readonly string ContainerRegistryAccessLevel;
         public readonly string DefaultBranch;
-        /// <summary>
-        /// A description of the project.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// URL that can be provided to `git clone` to clone the
-        /// </summary>
+        public readonly bool EmailsDisabled;
+        public readonly string ExternalAuthorizationClassificationLabel;
+        public readonly string ForkingAccessLevel;
         public readonly string HttpUrlToRepo;
-        /// <summary>
-        /// The integer or path with namespace that uniquely identifies the project within the gitlab install.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Enable issue tracking for the project.
-        /// </summary>
+        public readonly string IssuesAccessLevel;
         public readonly bool IssuesEnabled;
-        /// <summary>
-        /// Enable LFS for the project.
-        /// </summary>
         public readonly bool LfsEnabled;
-        /// <summary>
-        /// Enable or disable merge pipelines.
-        /// </summary>
+        public readonly string MergeCommitTemplate;
         public readonly bool MergePipelinesEnabled;
-        /// <summary>
-        /// Enable merge requests for the project.
-        /// </summary>
+        public readonly string MergeRequestsAccessLevel;
         public readonly bool MergeRequestsEnabled;
-        /// <summary>
-        /// Enable or disable merge trains.
-        /// </summary>
         public readonly bool MergeTrainsEnabled;
-        /// <summary>
-        /// The name of the project.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// The namespace (group or user) of the project. Defaults to your user.
-        /// </summary>
         public readonly int NamespaceId;
-        /// <summary>
-        /// The path of the repository.
-        /// </summary>
+        public readonly string OperationsAccessLevel;
         public readonly string Path;
-        /// <summary>
-        /// The path of the repository with namespace.
-        /// </summary>
         public readonly string PathWithNamespace;
-        /// <summary>
-        /// Enable pipelines for the project.
-        /// </summary>
         public readonly bool PipelinesEnabled;
-        /// <summary>
-        /// Show link to create/view merge request when pushing from the command line
-        /// </summary>
         public readonly bool PrintingMergeRequestLinkEnabled;
-        /// <summary>
-        /// Push rules for the project.
-        /// </summary>
+        public readonly bool? PublicBuilds;
         public readonly Outputs.GetProjectPushRulesResult PushRules;
-        /// <summary>
-        /// Enable `Delete source branch` option by default for all new merge requests
-        /// </summary>
         public readonly bool RemoveSourceBranchAfterMerge;
-        /// <summary>
-        /// Allow users to request member access.
-        /// </summary>
+        public readonly string RepositoryAccessLevel;
+        public readonly string RepositoryStorage;
         public readonly bool RequestAccessEnabled;
-        /// <summary>
-        /// Registration token to use during runner setup.
-        /// </summary>
+        public readonly string RequirementsAccessLevel;
+        public readonly bool ResolveOutdatedDiffDiscussions;
         public readonly string RunnersToken;
-        /// <summary>
-        /// Enable snippets for the project.
-        /// </summary>
+        public readonly string SecurityAndComplianceAccessLevel;
+        public readonly string SnippetsAccessLevel;
         public readonly bool SnippetsEnabled;
-        /// <summary>
-        /// URL that can be provided to `git clone` to clone the
-        /// </summary>
+        public readonly string SquashCommitTemplate;
         public readonly string SshUrlToRepo;
-        /// <summary>
-        /// Repositories are created as private by default.
-        /// </summary>
+        public readonly ImmutableArray<string> Topics;
         public readonly string VisibilityLevel;
-        /// <summary>
-        /// URL that can be used to find the project in a browser.
-        /// </summary>
         public readonly string WebUrl;
-        /// <summary>
-        /// Enable wiki for the project.
-        /// </summary>
+        public readonly string WikiAccessLevel;
         public readonly bool WikiEnabled;
 
         [OutputConstructor]
         private GetProjectResult(
+            string analyticsAccessLevel,
+
             bool archived,
+
+            string autoCancelPendingPipelines,
+
+            string autoDevopsDeployStrategy,
+
+            bool autoDevopsEnabled,
+
+            bool autocloseReferencedIssues,
+
+            string buildGitStrategy,
+
+            int buildTimeout,
+
+            string buildsAccessLevel,
+
+            ImmutableArray<Outputs.GetProjectContainerExpirationPolicyResult> containerExpirationPolicies,
+
+            string containerRegistryAccessLevel,
 
             string defaultBranch,
 
             string description,
 
+            bool emailsDisabled,
+
+            string externalAuthorizationClassificationLabel,
+
+            string forkingAccessLevel,
+
             string httpUrlToRepo,
 
             string id,
+
+            string issuesAccessLevel,
 
             bool issuesEnabled,
 
             bool lfsEnabled,
 
+            string mergeCommitTemplate,
+
             bool mergePipelinesEnabled,
+
+            string mergeRequestsAccessLevel,
 
             bool mergeRequestsEnabled,
 
@@ -244,6 +222,8 @@ namespace Pulumi.GitLab
 
             int namespaceId,
 
+            string operationsAccessLevel,
+
             string path,
 
             string pathWithNamespace,
@@ -252,48 +232,95 @@ namespace Pulumi.GitLab
 
             bool printingMergeRequestLinkEnabled,
 
+            bool? publicBuilds,
+
             Outputs.GetProjectPushRulesResult pushRules,
 
             bool removeSourceBranchAfterMerge,
 
+            string repositoryAccessLevel,
+
+            string repositoryStorage,
+
             bool requestAccessEnabled,
+
+            string requirementsAccessLevel,
+
+            bool resolveOutdatedDiffDiscussions,
 
             string runnersToken,
 
+            string securityAndComplianceAccessLevel,
+
+            string snippetsAccessLevel,
+
             bool snippetsEnabled,
 
+            string squashCommitTemplate,
+
             string sshUrlToRepo,
+
+            ImmutableArray<string> topics,
 
             string visibilityLevel,
 
             string webUrl,
 
+            string wikiAccessLevel,
+
             bool wikiEnabled)
         {
+            AnalyticsAccessLevel = analyticsAccessLevel;
             Archived = archived;
+            AutoCancelPendingPipelines = autoCancelPendingPipelines;
+            AutoDevopsDeployStrategy = autoDevopsDeployStrategy;
+            AutoDevopsEnabled = autoDevopsEnabled;
+            AutocloseReferencedIssues = autocloseReferencedIssues;
+            BuildGitStrategy = buildGitStrategy;
+            BuildTimeout = buildTimeout;
+            BuildsAccessLevel = buildsAccessLevel;
+            ContainerExpirationPolicies = containerExpirationPolicies;
+            ContainerRegistryAccessLevel = containerRegistryAccessLevel;
             DefaultBranch = defaultBranch;
             Description = description;
+            EmailsDisabled = emailsDisabled;
+            ExternalAuthorizationClassificationLabel = externalAuthorizationClassificationLabel;
+            ForkingAccessLevel = forkingAccessLevel;
             HttpUrlToRepo = httpUrlToRepo;
             Id = id;
+            IssuesAccessLevel = issuesAccessLevel;
             IssuesEnabled = issuesEnabled;
             LfsEnabled = lfsEnabled;
+            MergeCommitTemplate = mergeCommitTemplate;
             MergePipelinesEnabled = mergePipelinesEnabled;
+            MergeRequestsAccessLevel = mergeRequestsAccessLevel;
             MergeRequestsEnabled = mergeRequestsEnabled;
             MergeTrainsEnabled = mergeTrainsEnabled;
             Name = name;
             NamespaceId = namespaceId;
+            OperationsAccessLevel = operationsAccessLevel;
             Path = path;
             PathWithNamespace = pathWithNamespace;
             PipelinesEnabled = pipelinesEnabled;
             PrintingMergeRequestLinkEnabled = printingMergeRequestLinkEnabled;
+            PublicBuilds = publicBuilds;
             PushRules = pushRules;
             RemoveSourceBranchAfterMerge = removeSourceBranchAfterMerge;
+            RepositoryAccessLevel = repositoryAccessLevel;
+            RepositoryStorage = repositoryStorage;
             RequestAccessEnabled = requestAccessEnabled;
+            RequirementsAccessLevel = requirementsAccessLevel;
+            ResolveOutdatedDiffDiscussions = resolveOutdatedDiffDiscussions;
             RunnersToken = runnersToken;
+            SecurityAndComplianceAccessLevel = securityAndComplianceAccessLevel;
+            SnippetsAccessLevel = snippetsAccessLevel;
             SnippetsEnabled = snippetsEnabled;
+            SquashCommitTemplate = squashCommitTemplate;
             SshUrlToRepo = sshUrlToRepo;
+            Topics = topics;
             VisibilityLevel = visibilityLevel;
             WebUrl = webUrl;
+            WikiAccessLevel = wikiAccessLevel;
             WikiEnabled = wikiEnabled;
         }
     }

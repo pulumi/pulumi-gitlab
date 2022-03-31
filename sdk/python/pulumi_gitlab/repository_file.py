@@ -25,9 +25,10 @@ class RepositoryFileArgs:
         The set of arguments for constructing a RepositoryFile resource.
         :param pulumi.Input[str] branch: Name of the branch to which to commit to.
         :param pulumi.Input[str] commit_message: Commit message.
-        :param pulumi.Input[str] content: base64 encoded file content. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        :param pulumi.Input[str] content: File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+               supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
         :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/`.
-        :param pulumi.Input[str] project: The ID of the project.
+        :param pulumi.Input[str] project: The name or ID of the project.
         :param pulumi.Input[str] author_email: Email of the commit author.
         :param pulumi.Input[str] author_name: Name of the commit author.
         :param pulumi.Input[str] start_branch: Name of the branch to start the new commit from.
@@ -72,7 +73,8 @@ class RepositoryFileArgs:
     @pulumi.getter
     def content(self) -> pulumi.Input[str]:
         """
-        base64 encoded file content. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+        supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
         """
         return pulumi.get(self, "content")
 
@@ -96,7 +98,7 @@ class RepositoryFileArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        The ID of the project.
+        The name or ID of the project.
         """
         return pulumi.get(self, "project")
 
@@ -146,41 +148,70 @@ class _RepositoryFileState:
     def __init__(__self__, *,
                  author_email: Optional[pulumi.Input[str]] = None,
                  author_name: Optional[pulumi.Input[str]] = None,
+                 blob_id: Optional[pulumi.Input[str]] = None,
                  branch: Optional[pulumi.Input[str]] = None,
+                 commit_id: Optional[pulumi.Input[str]] = None,
                  commit_message: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
+                 content_sha256: Optional[pulumi.Input[str]] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
+                 file_name: Optional[pulumi.Input[str]] = None,
                  file_path: Optional[pulumi.Input[str]] = None,
+                 last_commit_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 ref: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
                  start_branch: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RepositoryFile resources.
         :param pulumi.Input[str] author_email: Email of the commit author.
         :param pulumi.Input[str] author_name: Name of the commit author.
+        :param pulumi.Input[str] blob_id: The blob id.
         :param pulumi.Input[str] branch: Name of the branch to which to commit to.
+        :param pulumi.Input[str] commit_id: The commit id.
         :param pulumi.Input[str] commit_message: Commit message.
-        :param pulumi.Input[str] content: base64 encoded file content. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
-        :param pulumi.Input[str] encoding: Content encoding.
+        :param pulumi.Input[str] content: File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+               supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        :param pulumi.Input[str] content_sha256: File content sha256 digest.
+        :param pulumi.Input[str] encoding: The file content encoding.
+        :param pulumi.Input[str] file_name: The filename.
         :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/`.
-        :param pulumi.Input[str] project: The ID of the project.
+        :param pulumi.Input[str] last_commit_id: The last known commit id.
+        :param pulumi.Input[str] project: The name or ID of the project.
+        :param pulumi.Input[str] ref: The name of branch, tag or commit.
+        :param pulumi.Input[int] size: The file size.
         :param pulumi.Input[str] start_branch: Name of the branch to start the new commit from.
         """
         if author_email is not None:
             pulumi.set(__self__, "author_email", author_email)
         if author_name is not None:
             pulumi.set(__self__, "author_name", author_name)
+        if blob_id is not None:
+            pulumi.set(__self__, "blob_id", blob_id)
         if branch is not None:
             pulumi.set(__self__, "branch", branch)
+        if commit_id is not None:
+            pulumi.set(__self__, "commit_id", commit_id)
         if commit_message is not None:
             pulumi.set(__self__, "commit_message", commit_message)
         if content is not None:
             pulumi.set(__self__, "content", content)
+        if content_sha256 is not None:
+            pulumi.set(__self__, "content_sha256", content_sha256)
         if encoding is not None:
             pulumi.set(__self__, "encoding", encoding)
+        if file_name is not None:
+            pulumi.set(__self__, "file_name", file_name)
         if file_path is not None:
             pulumi.set(__self__, "file_path", file_path)
+        if last_commit_id is not None:
+            pulumi.set(__self__, "last_commit_id", last_commit_id)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
         if start_branch is not None:
             pulumi.set(__self__, "start_branch", start_branch)
 
@@ -209,6 +240,18 @@ class _RepositoryFileState:
         pulumi.set(self, "author_name", value)
 
     @property
+    @pulumi.getter(name="blobId")
+    def blob_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blob id.
+        """
+        return pulumi.get(self, "blob_id")
+
+    @blob_id.setter
+    def blob_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blob_id", value)
+
+    @property
     @pulumi.getter
     def branch(self) -> Optional[pulumi.Input[str]]:
         """
@@ -219,6 +262,18 @@ class _RepositoryFileState:
     @branch.setter
     def branch(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="commitId")
+    def commit_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The commit id.
+        """
+        return pulumi.get(self, "commit_id")
+
+    @commit_id.setter
+    def commit_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "commit_id", value)
 
     @property
     @pulumi.getter(name="commitMessage")
@@ -236,7 +291,8 @@ class _RepositoryFileState:
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[str]]:
         """
-        base64 encoded file content. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+        supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
         """
         return pulumi.get(self, "content")
 
@@ -245,16 +301,40 @@ class _RepositoryFileState:
         pulumi.set(self, "content", value)
 
     @property
+    @pulumi.getter(name="contentSha256")
+    def content_sha256(self) -> Optional[pulumi.Input[str]]:
+        """
+        File content sha256 digest.
+        """
+        return pulumi.get(self, "content_sha256")
+
+    @content_sha256.setter
+    def content_sha256(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_sha256", value)
+
+    @property
     @pulumi.getter
     def encoding(self) -> Optional[pulumi.Input[str]]:
         """
-        Content encoding.
+        The file content encoding.
         """
         return pulumi.get(self, "encoding")
 
     @encoding.setter
     def encoding(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "encoding", value)
+
+    @property
+    @pulumi.getter(name="fileName")
+    def file_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The filename.
+        """
+        return pulumi.get(self, "file_name")
+
+    @file_name.setter
+    def file_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_name", value)
 
     @property
     @pulumi.getter(name="filePath")
@@ -269,16 +349,52 @@ class _RepositoryFileState:
         pulumi.set(self, "file_path", value)
 
     @property
+    @pulumi.getter(name="lastCommitId")
+    def last_commit_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The last known commit id.
+        """
+        return pulumi.get(self, "last_commit_id")
+
+    @last_commit_id.setter
+    def last_commit_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_commit_id", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the project.
+        The name or ID of the project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of branch, tag or commit.
+        """
+        return pulumi.get(self, "ref")
+
+    @ref.setter
+    def ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ref", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The file size.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
 
     @property
     @pulumi.getter(name="startBranch")
@@ -322,9 +438,10 @@ class RepositoryFile(pulumi.CustomResource):
         :param pulumi.Input[str] author_name: Name of the commit author.
         :param pulumi.Input[str] branch: Name of the branch to which to commit to.
         :param pulumi.Input[str] commit_message: Commit message.
-        :param pulumi.Input[str] content: base64 encoded file content. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        :param pulumi.Input[str] content: File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+               supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
         :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/`.
-        :param pulumi.Input[str] project: The ID of the project.
+        :param pulumi.Input[str] project: The name or ID of the project.
         :param pulumi.Input[str] start_branch: Name of the branch to start the new commit from.
         """
         ...
@@ -395,7 +512,14 @@ class RepositoryFile(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["start_branch"] = start_branch
+            __props__.__dict__["blob_id"] = None
+            __props__.__dict__["commit_id"] = None
+            __props__.__dict__["content_sha256"] = None
             __props__.__dict__["encoding"] = None
+            __props__.__dict__["file_name"] = None
+            __props__.__dict__["last_commit_id"] = None
+            __props__.__dict__["ref"] = None
+            __props__.__dict__["size"] = None
         super(RepositoryFile, __self__).__init__(
             'gitlab:index/repositoryFile:RepositoryFile',
             resource_name,
@@ -408,12 +532,19 @@ class RepositoryFile(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             author_email: Optional[pulumi.Input[str]] = None,
             author_name: Optional[pulumi.Input[str]] = None,
+            blob_id: Optional[pulumi.Input[str]] = None,
             branch: Optional[pulumi.Input[str]] = None,
+            commit_id: Optional[pulumi.Input[str]] = None,
             commit_message: Optional[pulumi.Input[str]] = None,
             content: Optional[pulumi.Input[str]] = None,
+            content_sha256: Optional[pulumi.Input[str]] = None,
             encoding: Optional[pulumi.Input[str]] = None,
+            file_name: Optional[pulumi.Input[str]] = None,
             file_path: Optional[pulumi.Input[str]] = None,
+            last_commit_id: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            ref: Optional[pulumi.Input[str]] = None,
+            size: Optional[pulumi.Input[int]] = None,
             start_branch: Optional[pulumi.Input[str]] = None) -> 'RepositoryFile':
         """
         Get an existing RepositoryFile resource's state with the given name, id, and optional extra
@@ -424,12 +555,20 @@ class RepositoryFile(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] author_email: Email of the commit author.
         :param pulumi.Input[str] author_name: Name of the commit author.
+        :param pulumi.Input[str] blob_id: The blob id.
         :param pulumi.Input[str] branch: Name of the branch to which to commit to.
+        :param pulumi.Input[str] commit_id: The commit id.
         :param pulumi.Input[str] commit_message: Commit message.
-        :param pulumi.Input[str] content: base64 encoded file content. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
-        :param pulumi.Input[str] encoding: Content encoding.
+        :param pulumi.Input[str] content: File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+               supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        :param pulumi.Input[str] content_sha256: File content sha256 digest.
+        :param pulumi.Input[str] encoding: The file content encoding.
+        :param pulumi.Input[str] file_name: The filename.
         :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/`.
-        :param pulumi.Input[str] project: The ID of the project.
+        :param pulumi.Input[str] last_commit_id: The last known commit id.
+        :param pulumi.Input[str] project: The name or ID of the project.
+        :param pulumi.Input[str] ref: The name of branch, tag or commit.
+        :param pulumi.Input[int] size: The file size.
         :param pulumi.Input[str] start_branch: Name of the branch to start the new commit from.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -438,12 +577,19 @@ class RepositoryFile(pulumi.CustomResource):
 
         __props__.__dict__["author_email"] = author_email
         __props__.__dict__["author_name"] = author_name
+        __props__.__dict__["blob_id"] = blob_id
         __props__.__dict__["branch"] = branch
+        __props__.__dict__["commit_id"] = commit_id
         __props__.__dict__["commit_message"] = commit_message
         __props__.__dict__["content"] = content
+        __props__.__dict__["content_sha256"] = content_sha256
         __props__.__dict__["encoding"] = encoding
+        __props__.__dict__["file_name"] = file_name
         __props__.__dict__["file_path"] = file_path
+        __props__.__dict__["last_commit_id"] = last_commit_id
         __props__.__dict__["project"] = project
+        __props__.__dict__["ref"] = ref
+        __props__.__dict__["size"] = size
         __props__.__dict__["start_branch"] = start_branch
         return RepositoryFile(resource_name, opts=opts, __props__=__props__)
 
@@ -464,12 +610,28 @@ class RepositoryFile(pulumi.CustomResource):
         return pulumi.get(self, "author_name")
 
     @property
+    @pulumi.getter(name="blobId")
+    def blob_id(self) -> pulumi.Output[str]:
+        """
+        The blob id.
+        """
+        return pulumi.get(self, "blob_id")
+
+    @property
     @pulumi.getter
     def branch(self) -> pulumi.Output[str]:
         """
         Name of the branch to which to commit to.
         """
         return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="commitId")
+    def commit_id(self) -> pulumi.Output[str]:
+        """
+        The commit id.
+        """
+        return pulumi.get(self, "commit_id")
 
     @property
     @pulumi.getter(name="commitMessage")
@@ -483,17 +645,34 @@ class RepositoryFile(pulumi.CustomResource):
     @pulumi.getter
     def content(self) -> pulumi.Output[str]:
         """
-        base64 encoded file content. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+        supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
         """
         return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter(name="contentSha256")
+    def content_sha256(self) -> pulumi.Output[str]:
+        """
+        File content sha256 digest.
+        """
+        return pulumi.get(self, "content_sha256")
 
     @property
     @pulumi.getter
     def encoding(self) -> pulumi.Output[str]:
         """
-        Content encoding.
+        The file content encoding.
         """
         return pulumi.get(self, "encoding")
+
+    @property
+    @pulumi.getter(name="fileName")
+    def file_name(self) -> pulumi.Output[str]:
+        """
+        The filename.
+        """
+        return pulumi.get(self, "file_name")
 
     @property
     @pulumi.getter(name="filePath")
@@ -504,12 +683,36 @@ class RepositoryFile(pulumi.CustomResource):
         return pulumi.get(self, "file_path")
 
     @property
+    @pulumi.getter(name="lastCommitId")
+    def last_commit_id(self) -> pulumi.Output[str]:
+        """
+        The last known commit id.
+        """
+        return pulumi.get(self, "last_commit_id")
+
+    @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The ID of the project.
+        The name or ID of the project.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def ref(self) -> pulumi.Output[str]:
+        """
+        The name of branch, tag or commit.
+        """
+        return pulumi.get(self, "ref")
+
+    @property
+    @pulumi.getter
+    def size(self) -> pulumi.Output[int]:
+        """
+        The file size.
+        """
+        return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="startBranch")

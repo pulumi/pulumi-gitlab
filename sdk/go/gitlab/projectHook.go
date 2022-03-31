@@ -39,6 +39,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// # A GitLab Project Hook can be imported using a key composed of `<project-id>:<hook-id>`, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/projectHook:ProjectHook example "12345:1"
+// ```
+//
+// # NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 type ProjectHook struct {
 	pulumi.CustomResourceState
 
@@ -70,7 +80,7 @@ type ProjectHook struct {
 	ReleasesEvents pulumi.BoolPtrOutput `pulumi:"releasesEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents pulumi.BoolPtrOutput `pulumi:"tagPushEvents"`
-	// A token to present when invoking the hook.
+	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token pulumi.StringPtrOutput `pulumi:"token"`
 	// The url of the hook to invoke.
 	Url pulumi.StringOutput `pulumi:"url"`
@@ -141,7 +151,7 @@ type projectHookState struct {
 	ReleasesEvents *bool `pulumi:"releasesEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
-	// A token to present when invoking the hook.
+	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token *string `pulumi:"token"`
 	// The url of the hook to invoke.
 	Url *string `pulumi:"url"`
@@ -178,7 +188,7 @@ type ProjectHookState struct {
 	ReleasesEvents pulumi.BoolPtrInput
 	// Invoke the hook for tag push events.
 	TagPushEvents pulumi.BoolPtrInput
-	// A token to present when invoking the hook.
+	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token pulumi.StringPtrInput
 	// The url of the hook to invoke.
 	Url pulumi.StringPtrInput
@@ -219,7 +229,7 @@ type projectHookArgs struct {
 	ReleasesEvents *bool `pulumi:"releasesEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
-	// A token to present when invoking the hook.
+	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token *string `pulumi:"token"`
 	// The url of the hook to invoke.
 	Url string `pulumi:"url"`
@@ -257,7 +267,7 @@ type ProjectHookArgs struct {
 	ReleasesEvents pulumi.BoolPtrInput
 	// Invoke the hook for tag push events.
 	TagPushEvents pulumi.BoolPtrInput
-	// A token to present when invoking the hook.
+	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token pulumi.StringPtrInput
 	// The url of the hook to invoke.
 	Url pulumi.StringInput

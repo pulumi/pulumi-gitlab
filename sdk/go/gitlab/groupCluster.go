@@ -78,7 +78,7 @@ type GroupCluster struct {
 	Group pulumi.StringOutput `pulumi:"group"`
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl pulumi.StringOutput `pulumi:"kubernetesApiUrl"`
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType pulumi.StringPtrOutput `pulumi:"kubernetesAuthorizationType"`
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert pulumi.StringPtrOutput `pulumi:"kubernetesCaCert"`
@@ -148,7 +148,7 @@ type groupClusterState struct {
 	Group *string `pulumi:"group"`
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl *string `pulumi:"kubernetesApiUrl"`
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType *string `pulumi:"kubernetesAuthorizationType"`
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert *string `pulumi:"kubernetesCaCert"`
@@ -181,7 +181,7 @@ type GroupClusterState struct {
 	Group pulumi.StringPtrInput
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl pulumi.StringPtrInput
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType pulumi.StringPtrInput
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert pulumi.StringPtrInput
@@ -214,7 +214,7 @@ type groupClusterArgs struct {
 	Group string `pulumi:"group"`
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl string `pulumi:"kubernetesApiUrl"`
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType *string `pulumi:"kubernetesAuthorizationType"`
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert *string `pulumi:"kubernetesCaCert"`
@@ -240,7 +240,7 @@ type GroupClusterArgs struct {
 	Group pulumi.StringInput
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl pulumi.StringInput
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType pulumi.StringPtrInput
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert pulumi.StringPtrInput

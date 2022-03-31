@@ -14,9 +14,6 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetProjectsProjectNamespaceResult
     {
         public readonly string FullPath;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly int Id;
         public readonly string Kind;
         public readonly string Name;

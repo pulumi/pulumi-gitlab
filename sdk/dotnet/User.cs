@@ -72,13 +72,14 @@ namespace Pulumi.GitLab
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean, defaults to false.  Whether to enable administrative privileges
+        /// Boolean, defaults to false. Whether to enable administrative privileges
         /// </summary>
         [Output("isAdmin")]
         public Output<bool?> IsAdmin { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
+        /// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
+        /// access projects to which they are explicitly granted access.
         /// </summary>
         [Output("isExternal")]
         public Output<bool?> IsExternal { get; private set; } = null!;
@@ -102,7 +103,7 @@ namespace Pulumi.GitLab
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Integer, defaults to 0.  Number of projects user can create.
+        /// Integer, defaults to 0. Number of projects user can create.
         /// </summary>
         [Output("projectsLimit")]
         public Output<int?> ProjectsLimit { get; private set; } = null!;
@@ -190,13 +191,14 @@ namespace Pulumi.GitLab
         public Input<string> Email { get; set; } = null!;
 
         /// <summary>
-        /// Boolean, defaults to false.  Whether to enable administrative privileges
+        /// Boolean, defaults to false. Whether to enable administrative privileges
         /// </summary>
         [Input("isAdmin")]
         public Input<bool>? IsAdmin { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
+        /// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
+        /// access projects to which they are explicitly granted access.
         /// </summary>
         [Input("isExternal")]
         public Input<bool>? IsExternal { get; set; }
@@ -220,7 +222,7 @@ namespace Pulumi.GitLab
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Integer, defaults to 0.  Number of projects user can create.
+        /// Integer, defaults to 0. Number of projects user can create.
         /// </summary>
         [Input("projectsLimit")]
         public Input<int>? ProjectsLimit { get; set; }
@@ -269,13 +271,14 @@ namespace Pulumi.GitLab
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to false.  Whether to enable administrative privileges
+        /// Boolean, defaults to false. Whether to enable administrative privileges
         /// </summary>
         [Input("isAdmin")]
         public Input<bool>? IsAdmin { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
+        /// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
+        /// access projects to which they are explicitly granted access.
         /// </summary>
         [Input("isExternal")]
         public Input<bool>? IsExternal { get; set; }
@@ -299,7 +302,7 @@ namespace Pulumi.GitLab
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Integer, defaults to 0.  Number of projects user can create.
+        /// Integer, defaults to 0. Number of projects user can create.
         /// </summary>
         [Input("projectsLimit")]
         public Input<int>? ProjectsLimit { get; set; }

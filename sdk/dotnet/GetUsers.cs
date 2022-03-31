@@ -97,57 +97,30 @@ namespace Pulumi.GitLab
 
     public sealed class GetUsersArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Filter users that are active.
-        /// </summary>
         [Input("active")]
         public bool? Active { get; set; }
 
-        /// <summary>
-        /// Filter users that are blocked.
-        /// </summary>
         [Input("blocked")]
         public bool? Blocked { get; set; }
 
-        /// <summary>
-        /// Search for users created after a specific date. (Requires administrator privileges)
-        /// </summary>
         [Input("createdAfter")]
         public string? CreatedAfter { get; set; }
 
-        /// <summary>
-        /// Search for users created before a specific date. (Requires administrator privileges)
-        /// </summary>
         [Input("createdBefore")]
         public string? CreatedBefore { get; set; }
 
-        /// <summary>
-        /// Lookup users by external provider. (Requires administrator privileges)
-        /// </summary>
         [Input("externProvider")]
         public string? ExternProvider { get; set; }
 
-        /// <summary>
-        /// Lookup users by external UID. (Requires administrator privileges)
-        /// </summary>
         [Input("externUid")]
         public string? ExternUid { get; set; }
 
-        /// <summary>
-        /// Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
-        /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
-        /// <summary>
-        /// Search users by username, name or email.
-        /// </summary>
         [Input("search")]
         public string? Search { get; set; }
 
-        /// <summary>
-        /// Sort users' list in asc or desc order. (Requires administrator privileges)
-        /// </summary>
         [Input("sort")]
         public string? Sort { get; set; }
 
@@ -158,57 +131,30 @@ namespace Pulumi.GitLab
 
     public sealed class GetUsersInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Filter users that are active.
-        /// </summary>
         [Input("active")]
         public Input<bool>? Active { get; set; }
 
-        /// <summary>
-        /// Filter users that are blocked.
-        /// </summary>
         [Input("blocked")]
         public Input<bool>? Blocked { get; set; }
 
-        /// <summary>
-        /// Search for users created after a specific date. (Requires administrator privileges)
-        /// </summary>
         [Input("createdAfter")]
         public Input<string>? CreatedAfter { get; set; }
 
-        /// <summary>
-        /// Search for users created before a specific date. (Requires administrator privileges)
-        /// </summary>
         [Input("createdBefore")]
         public Input<string>? CreatedBefore { get; set; }
 
-        /// <summary>
-        /// Lookup users by external provider. (Requires administrator privileges)
-        /// </summary>
         [Input("externProvider")]
         public Input<string>? ExternProvider { get; set; }
 
-        /// <summary>
-        /// Lookup users by external UID. (Requires administrator privileges)
-        /// </summary>
         [Input("externUid")]
         public Input<string>? ExternUid { get; set; }
 
-        /// <summary>
-        /// Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
-        /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
 
-        /// <summary>
-        /// Search users by username, name or email.
-        /// </summary>
         [Input("search")]
         public Input<string>? Search { get; set; }
 
-        /// <summary>
-        /// Sort users' list in asc or desc order. (Requires administrator privileges)
-        /// </summary>
         [Input("sort")]
         public Input<string>? Sort { get; set; }
 
@@ -221,49 +167,19 @@ namespace Pulumi.GitLab
     [OutputType]
     public sealed class GetUsersResult
     {
-        /// <summary>
-        /// Filter users that are active.
-        /// </summary>
         public readonly bool? Active;
-        /// <summary>
-        /// Filter users that are blocked.
-        /// </summary>
         public readonly bool? Blocked;
-        /// <summary>
-        /// Search for users created after a specific date. (Requires administrator privileges)
-        /// </summary>
         public readonly string? CreatedAfter;
-        /// <summary>
-        /// Search for users created before a specific date. (Requires administrator privileges)
-        /// </summary>
         public readonly string? CreatedBefore;
-        /// <summary>
-        /// Lookup users by external provider. (Requires administrator privileges)
-        /// </summary>
         public readonly string? ExternProvider;
-        /// <summary>
-        /// Lookup users by external UID. (Requires administrator privileges)
-        /// </summary>
         public readonly string? ExternUid;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
-        /// </summary>
         public readonly string? OrderBy;
-        /// <summary>
-        /// Search users by username, name or email.
-        /// </summary>
         public readonly string? Search;
-        /// <summary>
-        /// Sort users' list in asc or desc order. (Requires administrator privileges)
-        /// </summary>
         public readonly string? Sort;
-        /// <summary>
-        /// The list of users.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetUsersUserResult> Users;
 
         [OutputConstructor]

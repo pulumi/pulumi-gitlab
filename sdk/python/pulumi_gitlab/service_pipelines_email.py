@@ -21,7 +21,8 @@ class ServicePipelinesEmailArgs:
         The set of arguments for constructing a ServicePipelinesEmail resource.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] recipients: ) email addresses where notifications are sent.
-        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+               Default is `default`
         :param pulumi.Input[bool] notify_only_broken_pipelines: Notify only broken pipelines. Default is true.
         """
         pulumi.set(__self__, "project", project)
@@ -59,7 +60,8 @@ class ServicePipelinesEmailArgs:
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> Optional[pulumi.Input[str]]:
         """
-        Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+        Default is `default`
         """
         return pulumi.get(self, "branches_to_be_notified")
 
@@ -89,7 +91,8 @@ class _ServicePipelinesEmailState:
                  recipients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ServicePipelinesEmail resources.
-        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+               Default is `default`
         :param pulumi.Input[bool] notify_only_broken_pipelines: Notify only broken pipelines. Default is true.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] recipients: ) email addresses where notifications are sent.
@@ -107,7 +110,8 @@ class _ServicePipelinesEmailState:
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> Optional[pulumi.Input[str]]:
         """
-        Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+        Default is `default`
         """
         return pulumi.get(self, "branches_to_be_notified")
 
@@ -193,7 +197,8 @@ class ServicePipelinesEmail(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+               Default is `default`
         :param pulumi.Input[bool] notify_only_broken_pipelines: Notify only broken pipelines. Default is true.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] recipients: ) email addresses where notifications are sent.
@@ -293,7 +298,8 @@ class ServicePipelinesEmail(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+               Default is `default`
         :param pulumi.Input[bool] notify_only_broken_pipelines: Notify only broken pipelines. Default is true.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] recipients: ) email addresses where notifications are sent.
@@ -312,7 +318,8 @@ class ServicePipelinesEmail(pulumi.CustomResource):
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> pulumi.Output[Optional[str]]:
         """
-        Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+        Default is `default`
         """
         return pulumi.get(self, "branches_to_be_notified")
 

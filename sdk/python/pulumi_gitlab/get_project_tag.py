@@ -50,9 +50,6 @@ class GetProjectTagResult:
     @property
     @pulumi.getter
     def commits(self) -> Sequence['outputs.GetProjectTagCommitResult']:
-        """
-        The commit associated with the tag ref.
-        """
         return pulumi.get(self, "commits")
 
     @property
@@ -66,49 +63,31 @@ class GetProjectTagResult:
     @property
     @pulumi.getter
     def message(self) -> str:
-        """
-        Creates annotated tag.
-        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of a tag.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        The ID or URL-encoded path of the project owned by the authenticated user.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def protected(self) -> bool:
-        """
-        Bool, true if tag has tag protection.
-        """
         return pulumi.get(self, "protected")
 
     @property
     @pulumi.getter
     def releases(self) -> Sequence['outputs.GetProjectTagReleaseResult']:
-        """
-        The release associated with the tag.
-        """
         return pulumi.get(self, "releases")
 
     @property
     @pulumi.getter
     def target(self) -> str:
-        """
-        The unique id assigned to the commit by Gitlab.
-        """
         return pulumi.get(self, "target")
 
 
@@ -134,7 +113,7 @@ def get_project_tag(name: Optional[str] = None,
     """
     The `ProjectTag` data source allows details of a project tag to be retrieved by its name.
 
-    **Upstream API** : [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
+    **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
 
     ## Example Usage
 
@@ -145,10 +124,6 @@ def get_project_tag(name: Optional[str] = None,
     foo = gitlab.get_project_tag(name="example",
         project="foo/bar")
     ```
-
-
-    :param str name: The name of a tag.
-    :param str project: The ID or URL-encoded path of the project owned by the authenticated user.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -177,7 +152,7 @@ def get_project_tag_output(name: Optional[pulumi.Input[str]] = None,
     """
     The `ProjectTag` data source allows details of a project tag to be retrieved by its name.
 
-    **Upstream API** : [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
+    **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
 
     ## Example Usage
 
@@ -188,9 +163,5 @@ def get_project_tag_output(name: Optional[pulumi.Input[str]] = None,
     foo = gitlab.get_project_tag(name="example",
         project="foo/bar")
     ```
-
-
-    :param str name: The name of a tag.
-    :param str project: The ID or URL-encoded path of the project owned by the authenticated user.
     """
     ...

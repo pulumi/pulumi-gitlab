@@ -60,7 +60,8 @@ import (
 type ProjectMembership struct {
 	pulumi.CustomResourceState
 
-	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
+	// `master`
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
 	// The id of the project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
@@ -106,7 +107,8 @@ func GetProjectMembership(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectMembership resources.
 type projectMembershipState struct {
-	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
+	// `master`
 	AccessLevel *string `pulumi:"accessLevel"`
 	// The id of the project.
 	ProjectId *string `pulumi:"projectId"`
@@ -115,7 +117,8 @@ type projectMembershipState struct {
 }
 
 type ProjectMembershipState struct {
-	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
+	// `master`
 	AccessLevel pulumi.StringPtrInput
 	// The id of the project.
 	ProjectId pulumi.StringPtrInput
@@ -128,7 +131,8 @@ func (ProjectMembershipState) ElementType() reflect.Type {
 }
 
 type projectMembershipArgs struct {
-	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
+	// `master`
 	AccessLevel string `pulumi:"accessLevel"`
 	// The id of the project.
 	ProjectId string `pulumi:"projectId"`
@@ -138,7 +142,8 @@ type projectMembershipArgs struct {
 
 // The set of arguments for constructing a ProjectMembership resource.
 type ProjectMembershipArgs struct {
-	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
+	// `master`
 	AccessLevel pulumi.StringInput
 	// The id of the project.
 	ProjectId pulumi.StringInput

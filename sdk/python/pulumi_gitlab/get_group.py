@@ -70,41 +70,26 @@ class GetGroupResult:
     @property
     @pulumi.getter(name="defaultBranchProtection")
     def default_branch_protection(self) -> int:
-        """
-        Whether developers and maintainers can push to the applicable default branch.
-        """
         return pulumi.get(self, "default_branch_protection")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        The description of the group.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="fullName")
     def full_name(self) -> str:
-        """
-        The full name of the group.
-        """
         return pulumi.get(self, "full_name")
 
     @property
     @pulumi.getter(name="fullPath")
     def full_path(self) -> str:
-        """
-        The full path of the group.
-        """
         return pulumi.get(self, "full_path")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> int:
-        """
-        The ID of the group.
-        """
         return pulumi.get(self, "group_id")
 
     @property
@@ -118,73 +103,46 @@ class GetGroupResult:
     @property
     @pulumi.getter(name="lfsEnabled")
     def lfs_enabled(self) -> bool:
-        """
-        Boolean, is LFS enabled for projects in this group.
-        """
         return pulumi.get(self, "lfs_enabled")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of this group.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> int:
-        """
-        Integer, ID of the parent group.
-        """
         return pulumi.get(self, "parent_id")
 
     @property
     @pulumi.getter
     def path(self) -> str:
-        """
-        The path of the group.
-        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="preventForkingOutsideGroup")
     def prevent_forking_outside_group(self) -> bool:
-        """
-        When enabled, users can not fork projects from this group to external namespaces.
-        """
         return pulumi.get(self, "prevent_forking_outside_group")
 
     @property
     @pulumi.getter(name="requestAccessEnabled")
     def request_access_enabled(self) -> bool:
-        """
-        Boolean, is request for access enabled to the group.
-        """
         return pulumi.get(self, "request_access_enabled")
 
     @property
     @pulumi.getter(name="runnersToken")
     def runners_token(self) -> str:
-        """
-        The group level registration token to use during runner setup.
-        """
         return pulumi.get(self, "runners_token")
 
     @property
     @pulumi.getter(name="visibilityLevel")
     def visibility_level(self) -> str:
-        """
-        Visibility level of the group. Possible values are `private`, `internal`, `public`.
-        """
         return pulumi.get(self, "visibility_level")
 
     @property
     @pulumi.getter(name="webUrl")
     def web_url(self) -> str:
-        """
-        Web URL of the group.
-        """
         return pulumi.get(self, "web_url")
 
 
@@ -227,10 +185,6 @@ def get_group(full_path: Optional[str] = None,
 
     foo = gitlab.get_group(full_path="foo/bar")
     ```
-
-
-    :param str full_path: The full path of the group.
-    :param int group_id: The ID of the group.
     """
     __args__ = dict()
     __args__['fullPath'] = full_path
@@ -276,9 +230,5 @@ def get_group_output(full_path: Optional[pulumi.Input[Optional[str]]] = None,
 
     foo = gitlab.get_group(full_path="foo/bar")
     ```
-
-
-    :param str full_path: The full path of the group.
-    :param int group_id: The ID of the group.
     """
     ...

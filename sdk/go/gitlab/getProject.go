@@ -26,9 +26,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "foo/bar/baz"
 // 		_, err := gitlab.LookupProject(ctx, &GetProjectArgs{
-// 			Id: &opt0,
+// 			Id: pulumi.StringRef("foo/bar/baz"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -48,64 +47,65 @@ func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getProject.
 type LookupProjectArgs struct {
-	// The integer or path with namespace that uniquely identifies the project within the gitlab install.
-	Id *string `pulumi:"id"`
-	// The path of the repository with namespace.
+	Id                *string `pulumi:"id"`
 	PathWithNamespace *string `pulumi:"pathWithNamespace"`
+	PublicBuilds      *bool   `pulumi:"publicBuilds"`
 }
 
 // A collection of values returned by getProject.
 type LookupProjectResult struct {
-	// Whether the project is in read-only mode (archived).
-	Archived bool `pulumi:"archived"`
-	// The default branch for the project.
-	DefaultBranch string `pulumi:"defaultBranch"`
-	// A description of the project.
-	Description string `pulumi:"description"`
-	// URL that can be provided to `git clone` to clone the
-	HttpUrlToRepo string `pulumi:"httpUrlToRepo"`
-	// The integer or path with namespace that uniquely identifies the project within the gitlab install.
-	Id string `pulumi:"id"`
-	// Enable issue tracking for the project.
-	IssuesEnabled bool `pulumi:"issuesEnabled"`
-	// Enable LFS for the project.
-	LfsEnabled bool `pulumi:"lfsEnabled"`
-	// Enable or disable merge pipelines.
-	MergePipelinesEnabled bool `pulumi:"mergePipelinesEnabled"`
-	// Enable merge requests for the project.
-	MergeRequestsEnabled bool `pulumi:"mergeRequestsEnabled"`
-	// Enable or disable merge trains.
-	MergeTrainsEnabled bool `pulumi:"mergeTrainsEnabled"`
-	// The name of the project.
-	Name string `pulumi:"name"`
-	// The namespace (group or user) of the project. Defaults to your user.
-	NamespaceId int `pulumi:"namespaceId"`
-	// The path of the repository.
-	Path string `pulumi:"path"`
-	// The path of the repository with namespace.
-	PathWithNamespace string `pulumi:"pathWithNamespace"`
-	// Enable pipelines for the project.
-	PipelinesEnabled bool `pulumi:"pipelinesEnabled"`
-	// Show link to create/view merge request when pushing from the command line
-	PrintingMergeRequestLinkEnabled bool `pulumi:"printingMergeRequestLinkEnabled"`
-	// Push rules for the project.
-	PushRules GetProjectPushRules `pulumi:"pushRules"`
-	// Enable `Delete source branch` option by default for all new merge requests
-	RemoveSourceBranchAfterMerge bool `pulumi:"removeSourceBranchAfterMerge"`
-	// Allow users to request member access.
-	RequestAccessEnabled bool `pulumi:"requestAccessEnabled"`
-	// Registration token to use during runner setup.
-	RunnersToken string `pulumi:"runnersToken"`
-	// Enable snippets for the project.
-	SnippetsEnabled bool `pulumi:"snippetsEnabled"`
-	// URL that can be provided to `git clone` to clone the
-	SshUrlToRepo string `pulumi:"sshUrlToRepo"`
-	// Repositories are created as private by default.
-	VisibilityLevel string `pulumi:"visibilityLevel"`
-	// URL that can be used to find the project in a browser.
-	WebUrl string `pulumi:"webUrl"`
-	// Enable wiki for the project.
-	WikiEnabled bool `pulumi:"wikiEnabled"`
+	AnalyticsAccessLevel                     string                                `pulumi:"analyticsAccessLevel"`
+	Archived                                 bool                                  `pulumi:"archived"`
+	AutoCancelPendingPipelines               string                                `pulumi:"autoCancelPendingPipelines"`
+	AutoDevopsDeployStrategy                 string                                `pulumi:"autoDevopsDeployStrategy"`
+	AutoDevopsEnabled                        bool                                  `pulumi:"autoDevopsEnabled"`
+	AutocloseReferencedIssues                bool                                  `pulumi:"autocloseReferencedIssues"`
+	BuildGitStrategy                         string                                `pulumi:"buildGitStrategy"`
+	BuildTimeout                             int                                   `pulumi:"buildTimeout"`
+	BuildsAccessLevel                        string                                `pulumi:"buildsAccessLevel"`
+	ContainerExpirationPolicies              []GetProjectContainerExpirationPolicy `pulumi:"containerExpirationPolicies"`
+	ContainerRegistryAccessLevel             string                                `pulumi:"containerRegistryAccessLevel"`
+	DefaultBranch                            string                                `pulumi:"defaultBranch"`
+	Description                              string                                `pulumi:"description"`
+	EmailsDisabled                           bool                                  `pulumi:"emailsDisabled"`
+	ExternalAuthorizationClassificationLabel string                                `pulumi:"externalAuthorizationClassificationLabel"`
+	ForkingAccessLevel                       string                                `pulumi:"forkingAccessLevel"`
+	HttpUrlToRepo                            string                                `pulumi:"httpUrlToRepo"`
+	Id                                       string                                `pulumi:"id"`
+	IssuesAccessLevel                        string                                `pulumi:"issuesAccessLevel"`
+	IssuesEnabled                            bool                                  `pulumi:"issuesEnabled"`
+	LfsEnabled                               bool                                  `pulumi:"lfsEnabled"`
+	MergeCommitTemplate                      string                                `pulumi:"mergeCommitTemplate"`
+	MergePipelinesEnabled                    bool                                  `pulumi:"mergePipelinesEnabled"`
+	MergeRequestsAccessLevel                 string                                `pulumi:"mergeRequestsAccessLevel"`
+	MergeRequestsEnabled                     bool                                  `pulumi:"mergeRequestsEnabled"`
+	MergeTrainsEnabled                       bool                                  `pulumi:"mergeTrainsEnabled"`
+	Name                                     string                                `pulumi:"name"`
+	NamespaceId                              int                                   `pulumi:"namespaceId"`
+	OperationsAccessLevel                    string                                `pulumi:"operationsAccessLevel"`
+	Path                                     string                                `pulumi:"path"`
+	PathWithNamespace                        string                                `pulumi:"pathWithNamespace"`
+	PipelinesEnabled                         bool                                  `pulumi:"pipelinesEnabled"`
+	PrintingMergeRequestLinkEnabled          bool                                  `pulumi:"printingMergeRequestLinkEnabled"`
+	PublicBuilds                             *bool                                 `pulumi:"publicBuilds"`
+	PushRules                                GetProjectPushRules                   `pulumi:"pushRules"`
+	RemoveSourceBranchAfterMerge             bool                                  `pulumi:"removeSourceBranchAfterMerge"`
+	RepositoryAccessLevel                    string                                `pulumi:"repositoryAccessLevel"`
+	RepositoryStorage                        string                                `pulumi:"repositoryStorage"`
+	RequestAccessEnabled                     bool                                  `pulumi:"requestAccessEnabled"`
+	RequirementsAccessLevel                  string                                `pulumi:"requirementsAccessLevel"`
+	ResolveOutdatedDiffDiscussions           bool                                  `pulumi:"resolveOutdatedDiffDiscussions"`
+	RunnersToken                             string                                `pulumi:"runnersToken"`
+	SecurityAndComplianceAccessLevel         string                                `pulumi:"securityAndComplianceAccessLevel"`
+	SnippetsAccessLevel                      string                                `pulumi:"snippetsAccessLevel"`
+	SnippetsEnabled                          bool                                  `pulumi:"snippetsEnabled"`
+	SquashCommitTemplate                     string                                `pulumi:"squashCommitTemplate"`
+	SshUrlToRepo                             string                                `pulumi:"sshUrlToRepo"`
+	Topics                                   []string                              `pulumi:"topics"`
+	VisibilityLevel                          string                                `pulumi:"visibilityLevel"`
+	WebUrl                                   string                                `pulumi:"webUrl"`
+	WikiAccessLevel                          string                                `pulumi:"wikiAccessLevel"`
+	WikiEnabled                              bool                                  `pulumi:"wikiEnabled"`
 }
 
 func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
@@ -119,10 +119,9 @@ func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts
 
 // A collection of arguments for invoking getProject.
 type LookupProjectOutputArgs struct {
-	// The integer or path with namespace that uniquely identifies the project within the gitlab install.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The path of the repository with namespace.
+	Id                pulumi.StringPtrInput `pulumi:"id"`
 	PathWithNamespace pulumi.StringPtrInput `pulumi:"pathWithNamespace"`
+	PublicBuilds      pulumi.BoolPtrInput   `pulumi:"publicBuilds"`
 }
 
 func (LookupProjectOutputArgs) ElementType() reflect.Type {
@@ -144,127 +143,212 @@ func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx co
 	return o
 }
 
-// Whether the project is in read-only mode (archived).
+func (o LookupProjectResultOutput) AnalyticsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.AnalyticsAccessLevel }).(pulumi.StringOutput)
+}
+
 func (o LookupProjectResultOutput) Archived() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.Archived }).(pulumi.BoolOutput)
 }
 
-// The default branch for the project.
+func (o LookupProjectResultOutput) AutoCancelPendingPipelines() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.AutoCancelPendingPipelines }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) AutoDevopsDeployStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.AutoDevopsDeployStrategy }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) AutoDevopsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.AutoDevopsEnabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupProjectResultOutput) AutocloseReferencedIssues() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.AutocloseReferencedIssues }).(pulumi.BoolOutput)
+}
+
+func (o LookupProjectResultOutput) BuildGitStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.BuildGitStrategy }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) BuildTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupProjectResult) int { return v.BuildTimeout }).(pulumi.IntOutput)
+}
+
+func (o LookupProjectResultOutput) BuildsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.BuildsAccessLevel }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) ContainerExpirationPolicies() GetProjectContainerExpirationPolicyArrayOutput {
+	return o.ApplyT(func(v LookupProjectResult) []GetProjectContainerExpirationPolicy {
+		return v.ContainerExpirationPolicies
+	}).(GetProjectContainerExpirationPolicyArrayOutput)
+}
+
+func (o LookupProjectResultOutput) ContainerRegistryAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.ContainerRegistryAccessLevel }).(pulumi.StringOutput)
+}
+
 func (o LookupProjectResultOutput) DefaultBranch() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.DefaultBranch }).(pulumi.StringOutput)
 }
 
-// A description of the project.
 func (o LookupProjectResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// URL that can be provided to `git clone` to clone the
+func (o LookupProjectResultOutput) EmailsDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.EmailsDisabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupProjectResultOutput) ExternalAuthorizationClassificationLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.ExternalAuthorizationClassificationLabel }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) ForkingAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.ForkingAccessLevel }).(pulumi.StringOutput)
+}
+
 func (o LookupProjectResultOutput) HttpUrlToRepo() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.HttpUrlToRepo }).(pulumi.StringOutput)
 }
 
-// The integer or path with namespace that uniquely identifies the project within the gitlab install.
 func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Enable issue tracking for the project.
+func (o LookupProjectResultOutput) IssuesAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.IssuesAccessLevel }).(pulumi.StringOutput)
+}
+
 func (o LookupProjectResultOutput) IssuesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.IssuesEnabled }).(pulumi.BoolOutput)
 }
 
-// Enable LFS for the project.
 func (o LookupProjectResultOutput) LfsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.LfsEnabled }).(pulumi.BoolOutput)
 }
 
-// Enable or disable merge pipelines.
+func (o LookupProjectResultOutput) MergeCommitTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.MergeCommitTemplate }).(pulumi.StringOutput)
+}
+
 func (o LookupProjectResultOutput) MergePipelinesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.MergePipelinesEnabled }).(pulumi.BoolOutput)
 }
 
-// Enable merge requests for the project.
+func (o LookupProjectResultOutput) MergeRequestsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.MergeRequestsAccessLevel }).(pulumi.StringOutput)
+}
+
 func (o LookupProjectResultOutput) MergeRequestsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.MergeRequestsEnabled }).(pulumi.BoolOutput)
 }
 
-// Enable or disable merge trains.
 func (o LookupProjectResultOutput) MergeTrainsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.MergeTrainsEnabled }).(pulumi.BoolOutput)
 }
 
-// The name of the project.
 func (o LookupProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The namespace (group or user) of the project. Defaults to your user.
 func (o LookupProjectResultOutput) NamespaceId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupProjectResult) int { return v.NamespaceId }).(pulumi.IntOutput)
 }
 
-// The path of the repository.
+func (o LookupProjectResultOutput) OperationsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.OperationsAccessLevel }).(pulumi.StringOutput)
+}
+
 func (o LookupProjectResultOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// The path of the repository with namespace.
 func (o LookupProjectResultOutput) PathWithNamespace() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.PathWithNamespace }).(pulumi.StringOutput)
 }
 
-// Enable pipelines for the project.
 func (o LookupProjectResultOutput) PipelinesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.PipelinesEnabled }).(pulumi.BoolOutput)
 }
 
-// Show link to create/view merge request when pushing from the command line
 func (o LookupProjectResultOutput) PrintingMergeRequestLinkEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.PrintingMergeRequestLinkEnabled }).(pulumi.BoolOutput)
 }
 
-// Push rules for the project.
+func (o LookupProjectResultOutput) PublicBuilds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupProjectResult) *bool { return v.PublicBuilds }).(pulumi.BoolPtrOutput)
+}
+
 func (o LookupProjectResultOutput) PushRules() GetProjectPushRulesOutput {
 	return o.ApplyT(func(v LookupProjectResult) GetProjectPushRules { return v.PushRules }).(GetProjectPushRulesOutput)
 }
 
-// Enable `Delete source branch` option by default for all new merge requests
 func (o LookupProjectResultOutput) RemoveSourceBranchAfterMerge() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.RemoveSourceBranchAfterMerge }).(pulumi.BoolOutput)
 }
 
-// Allow users to request member access.
+func (o LookupProjectResultOutput) RepositoryAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.RepositoryAccessLevel }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) RepositoryStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.RepositoryStorage }).(pulumi.StringOutput)
+}
+
 func (o LookupProjectResultOutput) RequestAccessEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.RequestAccessEnabled }).(pulumi.BoolOutput)
 }
 
-// Registration token to use during runner setup.
+func (o LookupProjectResultOutput) RequirementsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.RequirementsAccessLevel }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) ResolveOutdatedDiffDiscussions() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.ResolveOutdatedDiffDiscussions }).(pulumi.BoolOutput)
+}
+
 func (o LookupProjectResultOutput) RunnersToken() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.RunnersToken }).(pulumi.StringOutput)
 }
 
-// Enable snippets for the project.
+func (o LookupProjectResultOutput) SecurityAndComplianceAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.SecurityAndComplianceAccessLevel }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) SnippetsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.SnippetsAccessLevel }).(pulumi.StringOutput)
+}
+
 func (o LookupProjectResultOutput) SnippetsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.SnippetsEnabled }).(pulumi.BoolOutput)
 }
 
-// URL that can be provided to `git clone` to clone the
+func (o LookupProjectResultOutput) SquashCommitTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.SquashCommitTemplate }).(pulumi.StringOutput)
+}
+
 func (o LookupProjectResultOutput) SshUrlToRepo() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.SshUrlToRepo }).(pulumi.StringOutput)
 }
 
-// Repositories are created as private by default.
+func (o LookupProjectResultOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupProjectResult) []string { return v.Topics }).(pulumi.StringArrayOutput)
+}
+
 func (o LookupProjectResultOutput) VisibilityLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.VisibilityLevel }).(pulumi.StringOutput)
 }
 
-// URL that can be used to find the project in a browser.
 func (o LookupProjectResultOutput) WebUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.WebUrl }).(pulumi.StringOutput)
 }
 
-// Enable wiki for the project.
+func (o LookupProjectResultOutput) WikiAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.WikiAccessLevel }).(pulumi.StringOutput)
+}
+
 func (o LookupProjectResultOutput) WikiEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.WikiEnabled }).(pulumi.BoolOutput)
 }

@@ -60,9 +60,9 @@ type ProjectBadge struct {
 	LinkUrl pulumi.StringOutput `pulumi:"linkUrl"`
 	// The id of the project to add the badge to.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The imageUrl argument rendered (in case of use of placeholders).
+	// The image_url argument rendered (in case of use of placeholders).
 	RenderedImageUrl pulumi.StringOutput `pulumi:"renderedImageUrl"`
-	// The linkUrl argument rendered (in case of use of placeholders).
+	// The link_url argument rendered (in case of use of placeholders).
 	RenderedLinkUrl pulumi.StringOutput `pulumi:"renderedLinkUrl"`
 }
 
@@ -110,9 +110,9 @@ type projectBadgeState struct {
 	LinkUrl *string `pulumi:"linkUrl"`
 	// The id of the project to add the badge to.
 	Project *string `pulumi:"project"`
-	// The imageUrl argument rendered (in case of use of placeholders).
+	// The image_url argument rendered (in case of use of placeholders).
 	RenderedImageUrl *string `pulumi:"renderedImageUrl"`
-	// The linkUrl argument rendered (in case of use of placeholders).
+	// The link_url argument rendered (in case of use of placeholders).
 	RenderedLinkUrl *string `pulumi:"renderedLinkUrl"`
 }
 
@@ -123,9 +123,9 @@ type ProjectBadgeState struct {
 	LinkUrl pulumi.StringPtrInput
 	// The id of the project to add the badge to.
 	Project pulumi.StringPtrInput
-	// The imageUrl argument rendered (in case of use of placeholders).
+	// The image_url argument rendered (in case of use of placeholders).
 	RenderedImageUrl pulumi.StringPtrInput
-	// The linkUrl argument rendered (in case of use of placeholders).
+	// The link_url argument rendered (in case of use of placeholders).
 	RenderedLinkUrl pulumi.StringPtrInput
 }
 

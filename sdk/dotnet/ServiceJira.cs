@@ -89,7 +89,9 @@ namespace Pulumi.GitLab
         public Output<bool> IssuesEvents { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+        /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
+        /// administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your
+        /// project. By default, this ID is set to 2.
         /// </summary>
         [Output("jiraIssueTransitionId")]
         public Output<string?> JiraIssueTransitionId { get; private set; } = null!;
@@ -243,7 +245,9 @@ namespace Pulumi.GitLab
         public Input<bool>? IssuesEvents { get; set; }
 
         /// <summary>
-        /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+        /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
+        /// administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your
+        /// project. By default, this ID is set to 2.
         /// </summary>
         [Input("jiraIssueTransitionId")]
         public Input<string>? JiraIssueTransitionId { get; set; }
@@ -358,7 +362,9 @@ namespace Pulumi.GitLab
         public Input<bool>? IssuesEvents { get; set; }
 
         /// <summary>
-        /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+        /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
+        /// administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your
+        /// project. By default, this ID is set to 2.
         /// </summary>
         [Input("jiraIssueTransitionId")]
         public Input<string>? JiraIssueTransitionId { get; set; }

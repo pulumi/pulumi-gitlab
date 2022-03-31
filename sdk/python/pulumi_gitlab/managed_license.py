@@ -18,7 +18,9 @@ class ManagedLicenseArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ManagedLicense resource.
-        :param pulumi.Input[str] approval_status: Whether the license is approved or not. Only 'approved' or 'blacklisted' allowed.
+        :param pulumi.Input[str] approval_status: The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+               "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+               15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
         :param pulumi.Input[str] project: The ID of the project under which the managed license will be created.
         :param pulumi.Input[str] name: The name of the managed license (I.e., 'Apache License 2.0' or 'MIT license')
         """
@@ -31,7 +33,9 @@ class ManagedLicenseArgs:
     @pulumi.getter(name="approvalStatus")
     def approval_status(self) -> pulumi.Input[str]:
         """
-        Whether the license is approved or not. Only 'approved' or 'blacklisted' allowed.
+        The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+        "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+        15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
         """
         return pulumi.get(self, "approval_status")
 
@@ -72,7 +76,9 @@ class _ManagedLicenseState:
                  project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ManagedLicense resources.
-        :param pulumi.Input[str] approval_status: Whether the license is approved or not. Only 'approved' or 'blacklisted' allowed.
+        :param pulumi.Input[str] approval_status: The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+               "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+               15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
         :param pulumi.Input[str] name: The name of the managed license (I.e., 'Apache License 2.0' or 'MIT license')
         :param pulumi.Input[str] project: The ID of the project under which the managed license will be created.
         """
@@ -87,7 +93,9 @@ class _ManagedLicenseState:
     @pulumi.getter(name="approvalStatus")
     def approval_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether the license is approved or not. Only 'approved' or 'blacklisted' allowed.
+        The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+        "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+        15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
         """
         return pulumi.get(self, "approval_status")
 
@@ -147,7 +155,7 @@ class ManagedLicense(pulumi.CustomResource):
             visibility_level="public")
         mit = gitlab.ManagedLicense("mit",
             project=foo.id,
-            approval_status="approved")
+            approval_status="allowed")
         ```
 
         ## Import
@@ -160,7 +168,9 @@ class ManagedLicense(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] approval_status: Whether the license is approved or not. Only 'approved' or 'blacklisted' allowed.
+        :param pulumi.Input[str] approval_status: The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+               "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+               15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
         :param pulumi.Input[str] name: The name of the managed license (I.e., 'Apache License 2.0' or 'MIT license')
         :param pulumi.Input[str] project: The ID of the project under which the managed license will be created.
         """
@@ -188,7 +198,7 @@ class ManagedLicense(pulumi.CustomResource):
             visibility_level="public")
         mit = gitlab.ManagedLicense("mit",
             project=foo.id,
-            approval_status="approved")
+            approval_status="allowed")
         ```
 
         ## Import
@@ -256,7 +266,9 @@ class ManagedLicense(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] approval_status: Whether the license is approved or not. Only 'approved' or 'blacklisted' allowed.
+        :param pulumi.Input[str] approval_status: The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+               "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+               15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
         :param pulumi.Input[str] name: The name of the managed license (I.e., 'Apache License 2.0' or 'MIT license')
         :param pulumi.Input[str] project: The ID of the project under which the managed license will be created.
         """
@@ -273,7 +285,9 @@ class ManagedLicense(pulumi.CustomResource):
     @pulumi.getter(name="approvalStatus")
     def approval_status(self) -> pulumi.Output[str]:
         """
-        Whether the license is approved or not. Only 'approved' or 'blacklisted' allowed.
+        The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+        "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+        15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
         """
         return pulumi.get(self, "approval_status")
 

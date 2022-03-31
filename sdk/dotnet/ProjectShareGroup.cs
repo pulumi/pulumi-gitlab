@@ -47,13 +47,15 @@ namespace Pulumi.GitLab
     public partial class ProjectShareGroup : Pulumi.CustomResource
     {
         /// <summary>
-        /// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        /// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+        /// `developer`, `maintainer`, `master`
         /// </summary>
         [Output("accessLevel")]
         public Output<string?> AccessLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        /// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+        /// `developer`, `maintainer`, `master`
         /// </summary>
         [Output("groupAccess")]
         public Output<string?> GroupAccess { get; private set; } = null!;
@@ -117,13 +119,15 @@ namespace Pulumi.GitLab
     public sealed class ProjectShareGroupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        /// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+        /// `developer`, `maintainer`, `master`
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
 
         /// <summary>
-        /// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        /// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+        /// `developer`, `maintainer`, `master`
         /// </summary>
         [Input("groupAccess")]
         public Input<string>? GroupAccess { get; set; }
@@ -148,13 +152,15 @@ namespace Pulumi.GitLab
     public sealed class ProjectShareGroupState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        /// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+        /// `developer`, `maintainer`, `master`
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
 
         /// <summary>
-        /// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        /// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+        /// `developer`, `maintainer`, `master`
         /// </summary>
         [Input("groupAccess")]
         public Input<string>? GroupAccess { get; set; }

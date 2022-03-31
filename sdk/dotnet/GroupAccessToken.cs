@@ -103,13 +103,15 @@ namespace Pulumi.GitLab
         public Output<bool> Revoked { get; private set; } = null!;
 
         /// <summary>
-        /// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+        /// The scope for the group access token. It determines the actions which can be performed when authenticating with this
+        /// token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
 
         /// <summary>
-        /// The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+        /// The group access token. This is only populated when creating a new group access token. This attribute is not available
+        /// for imported resources.
         /// </summary>
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
@@ -194,7 +196,8 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+        /// The scope for the group access token. It determines the actions which can be performed when authenticating with this
+        /// token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -255,7 +258,8 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+        /// The scope for the group access token. It determines the actions which can be performed when authenticating with this
+        /// token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -264,7 +268,8 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+        /// The group access token. This is only populated when creating a new group access token. This attribute is not available
+        /// for imported resources.
         /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }

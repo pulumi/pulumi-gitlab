@@ -27,9 +27,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "example-user"
 // 		_, err := gitlab.LookupUser(ctx, &GetUserArgs{
-// 			Username: &opt0,
+// 			Username: pulumi.StringRef("example-user"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -62,7 +61,8 @@ type UserSshKey struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
 	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
-	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
+	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with
+	// the username and GitLab hostname.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The ID of the ssh key.
 	KeyId pulumi.IntOutput `pulumi:"keyId"`
@@ -114,7 +114,8 @@ type userSshKeyState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
 	ExpiresAt *string `pulumi:"expiresAt"`
-	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
+	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with
+	// the username and GitLab hostname.
 	Key *string `pulumi:"key"`
 	// The ID of the ssh key.
 	KeyId *int `pulumi:"keyId"`
@@ -129,7 +130,8 @@ type UserSshKeyState struct {
 	CreatedAt pulumi.StringPtrInput
 	// The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
 	ExpiresAt pulumi.StringPtrInput
-	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
+	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with
+	// the username and GitLab hostname.
 	Key pulumi.StringPtrInput
 	// The ID of the ssh key.
 	KeyId pulumi.IntPtrInput
@@ -146,7 +148,8 @@ func (UserSshKeyState) ElementType() reflect.Type {
 type userSshKeyArgs struct {
 	// The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
 	ExpiresAt *string `pulumi:"expiresAt"`
-	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
+	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with
+	// the username and GitLab hostname.
 	Key string `pulumi:"key"`
 	// The title of the ssh key.
 	Title string `pulumi:"title"`
@@ -158,7 +161,8 @@ type userSshKeyArgs struct {
 type UserSshKeyArgs struct {
 	// The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
 	ExpiresAt pulumi.StringPtrInput
-	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
+	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with
+	// the username and GitLab hostname.
 	Key pulumi.StringInput
 	// The title of the ssh key.
 	Title pulumi.StringInput

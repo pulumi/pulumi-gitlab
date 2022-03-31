@@ -48,28 +48,19 @@ func GetProjectProtectedBranch(ctx *pulumi.Context, args *GetProjectProtectedBra
 
 // A collection of arguments for invoking getProjectProtectedBranch.
 type GetProjectProtectedBranchArgs struct {
-	// The name of the protected branch.
-	Name string `pulumi:"name"`
-	// The integer or path with namespace that uniquely identifies the project.
+	Name      string `pulumi:"name"`
 	ProjectId string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getProjectProtectedBranch.
 type GetProjectProtectedBranchResult struct {
-	// Whether force push is allowed.
-	AllowForcePush bool `pulumi:"allowForcePush"`
-	// Reject code pushes that change files listed in the CODEOWNERS file.
-	CodeOwnerApprovalRequired bool `pulumi:"codeOwnerApprovalRequired"`
-	// The ID of this resource.
-	Id int `pulumi:"id"`
-	// Describes which access levels, users, or groups are allowed to perform the action.
-	MergeAccessLevels []GetProjectProtectedBranchMergeAccessLevel `pulumi:"mergeAccessLevels"`
-	// The name of the protected branch.
-	Name string `pulumi:"name"`
-	// The integer or path with namespace that uniquely identifies the project.
-	ProjectId string `pulumi:"projectId"`
-	// Describes which access levels, users, or groups are allowed to perform the action.
-	PushAccessLevels []GetProjectProtectedBranchPushAccessLevel `pulumi:"pushAccessLevels"`
+	AllowForcePush            bool                                        `pulumi:"allowForcePush"`
+	CodeOwnerApprovalRequired bool                                        `pulumi:"codeOwnerApprovalRequired"`
+	Id                        int                                         `pulumi:"id"`
+	MergeAccessLevels         []GetProjectProtectedBranchMergeAccessLevel `pulumi:"mergeAccessLevels"`
+	Name                      string                                      `pulumi:"name"`
+	ProjectId                 string                                      `pulumi:"projectId"`
+	PushAccessLevels          []GetProjectProtectedBranchPushAccessLevel  `pulumi:"pushAccessLevels"`
 }
 
 func GetProjectProtectedBranchOutput(ctx *pulumi.Context, args GetProjectProtectedBranchOutputArgs, opts ...pulumi.InvokeOption) GetProjectProtectedBranchResultOutput {
@@ -83,9 +74,7 @@ func GetProjectProtectedBranchOutput(ctx *pulumi.Context, args GetProjectProtect
 
 // A collection of arguments for invoking getProjectProtectedBranch.
 type GetProjectProtectedBranchOutputArgs struct {
-	// The name of the protected branch.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The integer or path with namespace that uniquely identifies the project.
+	Name      pulumi.StringInput `pulumi:"name"`
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -108,39 +97,32 @@ func (o GetProjectProtectedBranchResultOutput) ToGetProjectProtectedBranchResult
 	return o
 }
 
-// Whether force push is allowed.
 func (o GetProjectProtectedBranchResultOutput) AllowForcePush() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchResult) bool { return v.AllowForcePush }).(pulumi.BoolOutput)
 }
 
-// Reject code pushes that change files listed in the CODEOWNERS file.
 func (o GetProjectProtectedBranchResultOutput) CodeOwnerApprovalRequired() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchResult) bool { return v.CodeOwnerApprovalRequired }).(pulumi.BoolOutput)
 }
 
-// The ID of this resource.
 func (o GetProjectProtectedBranchResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
-// Describes which access levels, users, or groups are allowed to perform the action.
 func (o GetProjectProtectedBranchResultOutput) MergeAccessLevels() GetProjectProtectedBranchMergeAccessLevelArrayOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchResult) []GetProjectProtectedBranchMergeAccessLevel {
 		return v.MergeAccessLevels
 	}).(GetProjectProtectedBranchMergeAccessLevelArrayOutput)
 }
 
-// The name of the protected branch.
 func (o GetProjectProtectedBranchResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The integer or path with namespace that uniquely identifies the project.
 func (o GetProjectProtectedBranchResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Describes which access levels, users, or groups are allowed to perform the action.
 func (o GetProjectProtectedBranchResultOutput) PushAccessLevels() GetProjectProtectedBranchPushAccessLevelArrayOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchResult) []GetProjectProtectedBranchPushAccessLevel {
 		return v.PushAccessLevels

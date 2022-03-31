@@ -64,11 +64,13 @@ export class InstanceVariable extends pulumi.CustomResource {
      */
     public readonly key!: pulumi.Output<string>;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+     * requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
      */
     public readonly masked!: pulumi.Output<boolean | undefined>;
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+     * `false`.
      */
     public readonly protected!: pulumi.Output<boolean | undefined>;
     /**
@@ -76,7 +78,7 @@ export class InstanceVariable extends pulumi.CustomResource {
      */
     public readonly value!: pulumi.Output<string>;
     /**
-     * The type of a variable. Available types are: envVar (default) and file.
+     * The type of a variable. Available types are: env_var (default) and file.
      */
     public readonly variableType!: pulumi.Output<string | undefined>;
 
@@ -126,11 +128,13 @@ export interface InstanceVariableState {
      */
     key?: pulumi.Input<string>;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+     * requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
      */
     masked?: pulumi.Input<boolean>;
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+     * `false`.
      */
     protected?: pulumi.Input<boolean>;
     /**
@@ -138,7 +142,7 @@ export interface InstanceVariableState {
      */
     value?: pulumi.Input<string>;
     /**
-     * The type of a variable. Available types are: envVar (default) and file.
+     * The type of a variable. Available types are: env_var (default) and file.
      */
     variableType?: pulumi.Input<string>;
 }
@@ -152,11 +156,13 @@ export interface InstanceVariableArgs {
      */
     key: pulumi.Input<string>;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+     * requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
      */
     masked?: pulumi.Input<boolean>;
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+     * `false`.
      */
     protected?: pulumi.Input<boolean>;
     /**
@@ -164,7 +170,7 @@ export interface InstanceVariableArgs {
      */
     value: pulumi.Input<string>;
     /**
-     * The type of a variable. Available types are: envVar (default) and file.
+     * The type of a variable. Available types are: env_var (default) and file.
      */
     variableType?: pulumi.Input<string>;
 }

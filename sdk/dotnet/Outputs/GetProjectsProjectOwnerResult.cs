@@ -14,9 +14,6 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetProjectsProjectOwnerResult
     {
         public readonly string AvatarUrl;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly int Id;
         public readonly string Name;
         public readonly string State;

@@ -76,6 +76,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectCluster{}
 	case "gitlab:index/projectCustomAttribute:ProjectCustomAttribute":
 		r = &ProjectCustomAttribute{}
+	case "gitlab:index/projectEnvironment:ProjectEnvironment":
+		r = &ProjectEnvironment{}
 	case "gitlab:index/projectFreezePeriod:ProjectFreezePeriod":
 		r = &ProjectFreezePeriod{}
 	case "gitlab:index/projectHook:ProjectHook":
@@ -88,6 +90,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectMembership{}
 	case "gitlab:index/projectMirror:ProjectMirror":
 		r = &ProjectMirror{}
+	case "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment":
+		r = &ProjectProtectedEnvironment{}
 	case "gitlab:index/projectShareGroup:ProjectShareGroup":
 		r = &ProjectShareGroup{}
 	case "gitlab:index/projectTag:ProjectTag":
@@ -106,6 +110,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServicePipelinesEmail{}
 	case "gitlab:index/serviceSlack:ServiceSlack":
 		r = &ServiceSlack{}
+	case "gitlab:index/systemHook:SystemHook":
+		r = &SystemHook{}
 	case "gitlab:index/tagProtection:TagProtection":
 		r = &TagProtection{}
 	case "gitlab:index/topic:Topic":
@@ -289,6 +295,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectEnvironment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectFreezePeriod",
 		&module{version},
 	)
@@ -315,6 +326,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectMirror",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectProtectedEnvironment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -360,6 +376,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/serviceSlack",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/systemHook",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

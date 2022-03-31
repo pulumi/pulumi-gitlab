@@ -43,17 +43,11 @@ class GetProjectProtectedBranchesResult:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
-        """
-        The integer or path with namespace that uniquely identifies the project.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="protectedBranches")
     def protected_branches(self) -> Sequence['outputs.GetProjectProtectedBranchesProtectedBranchResult']:
-        """
-        A list of protected branches, as defined below.
-        """
         return pulumi.get(self, "protected_branches")
 
 
@@ -83,9 +77,6 @@ def get_project_protected_branches(project_id: Optional[str] = None,
 
     example = gitlab.get_project_protected_branches(project_id="foo/bar/baz")
     ```
-
-
-    :param str project_id: The integer or path with namespace that uniquely identifies the project.
     """
     __args__ = dict()
     __args__['projectId'] = project_id
@@ -117,8 +108,5 @@ def get_project_protected_branches_output(project_id: Optional[pulumi.Input[str]
 
     example = gitlab.get_project_protected_branches(project_id="foo/bar/baz")
     ```
-
-
-    :param str project_id: The integer or path with namespace that uniquely identifies the project.
     """
     ...

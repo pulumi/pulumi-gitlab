@@ -13,7 +13,7 @@ import (
 
 // The `BranchProtection` resource allows to manage the lifecycle of a protected branch of a repository.
 //
-// > The allowed_to_push, allowedToMerge and codeOwnerApprovalRequired attributes require a GitLab Enterprise instance.
+// > The `allowedToPush`, `allowedToMerge`, `allowedToUnprotect`, `unprotectAccessLevel` and `codeOwnerApprovalRequired` attributes require a GitLab Enterprise instance.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html)
 //
@@ -33,6 +33,8 @@ type BranchProtection struct {
 	AllowedToMerges BranchProtectionAllowedToMergeArrayOutput `pulumi:"allowedToMerges"`
 	// Defines permissions for action.
 	AllowedToPushes BranchProtectionAllowedToPushArrayOutput `pulumi:"allowedToPushes"`
+	// Defines permissions for action.
+	AllowedToUnprotects BranchProtectionAllowedToUnprotectArrayOutput `pulumi:"allowedToUnprotects"`
 	// Name of the branch.
 	Branch pulumi.StringOutput `pulumi:"branch"`
 	// The ID of the branch protection (not the branch name).
@@ -40,11 +42,13 @@ type BranchProtection struct {
 	// Can be set to true to require code owner approval before merging.
 	CodeOwnerApprovalRequired pulumi.BoolPtrOutput `pulumi:"codeOwnerApprovalRequired"`
 	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
-	MergeAccessLevel pulumi.StringOutput `pulumi:"mergeAccessLevel"`
+	MergeAccessLevel pulumi.StringPtrOutput `pulumi:"mergeAccessLevel"`
 	// The id of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
-	PushAccessLevel pulumi.StringOutput `pulumi:"pushAccessLevel"`
+	PushAccessLevel pulumi.StringPtrOutput `pulumi:"pushAccessLevel"`
+	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+	UnprotectAccessLevel pulumi.StringPtrOutput `pulumi:"unprotectAccessLevel"`
 }
 
 // NewBranchProtection registers a new resource with the given unique name, arguments, and options.
@@ -57,14 +61,8 @@ func NewBranchProtection(ctx *pulumi.Context,
 	if args.Branch == nil {
 		return nil, errors.New("invalid value for required argument 'Branch'")
 	}
-	if args.MergeAccessLevel == nil {
-		return nil, errors.New("invalid value for required argument 'MergeAccessLevel'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
-	}
-	if args.PushAccessLevel == nil {
-		return nil, errors.New("invalid value for required argument 'PushAccessLevel'")
 	}
 	var resource BranchProtection
 	err := ctx.RegisterResource("gitlab:index/branchProtection:BranchProtection", name, args, &resource, opts...)
@@ -94,6 +92,8 @@ type branchProtectionState struct {
 	AllowedToMerges []BranchProtectionAllowedToMerge `pulumi:"allowedToMerges"`
 	// Defines permissions for action.
 	AllowedToPushes []BranchProtectionAllowedToPush `pulumi:"allowedToPushes"`
+	// Defines permissions for action.
+	AllowedToUnprotects []BranchProtectionAllowedToUnprotect `pulumi:"allowedToUnprotects"`
 	// Name of the branch.
 	Branch *string `pulumi:"branch"`
 	// The ID of the branch protection (not the branch name).
@@ -106,6 +106,8 @@ type branchProtectionState struct {
 	Project *string `pulumi:"project"`
 	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
 	PushAccessLevel *string `pulumi:"pushAccessLevel"`
+	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+	UnprotectAccessLevel *string `pulumi:"unprotectAccessLevel"`
 }
 
 type BranchProtectionState struct {
@@ -115,6 +117,8 @@ type BranchProtectionState struct {
 	AllowedToMerges BranchProtectionAllowedToMergeArrayInput
 	// Defines permissions for action.
 	AllowedToPushes BranchProtectionAllowedToPushArrayInput
+	// Defines permissions for action.
+	AllowedToUnprotects BranchProtectionAllowedToUnprotectArrayInput
 	// Name of the branch.
 	Branch pulumi.StringPtrInput
 	// The ID of the branch protection (not the branch name).
@@ -127,6 +131,8 @@ type BranchProtectionState struct {
 	Project pulumi.StringPtrInput
 	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
 	PushAccessLevel pulumi.StringPtrInput
+	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+	UnprotectAccessLevel pulumi.StringPtrInput
 }
 
 func (BranchProtectionState) ElementType() reflect.Type {
@@ -140,16 +146,20 @@ type branchProtectionArgs struct {
 	AllowedToMerges []BranchProtectionAllowedToMerge `pulumi:"allowedToMerges"`
 	// Defines permissions for action.
 	AllowedToPushes []BranchProtectionAllowedToPush `pulumi:"allowedToPushes"`
+	// Defines permissions for action.
+	AllowedToUnprotects []BranchProtectionAllowedToUnprotect `pulumi:"allowedToUnprotects"`
 	// Name of the branch.
 	Branch string `pulumi:"branch"`
 	// Can be set to true to require code owner approval before merging.
 	CodeOwnerApprovalRequired *bool `pulumi:"codeOwnerApprovalRequired"`
 	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
-	MergeAccessLevel string `pulumi:"mergeAccessLevel"`
+	MergeAccessLevel *string `pulumi:"mergeAccessLevel"`
 	// The id of the project.
 	Project string `pulumi:"project"`
 	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
-	PushAccessLevel string `pulumi:"pushAccessLevel"`
+	PushAccessLevel *string `pulumi:"pushAccessLevel"`
+	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+	UnprotectAccessLevel *string `pulumi:"unprotectAccessLevel"`
 }
 
 // The set of arguments for constructing a BranchProtection resource.
@@ -160,16 +170,20 @@ type BranchProtectionArgs struct {
 	AllowedToMerges BranchProtectionAllowedToMergeArrayInput
 	// Defines permissions for action.
 	AllowedToPushes BranchProtectionAllowedToPushArrayInput
+	// Defines permissions for action.
+	AllowedToUnprotects BranchProtectionAllowedToUnprotectArrayInput
 	// Name of the branch.
 	Branch pulumi.StringInput
 	// Can be set to true to require code owner approval before merging.
 	CodeOwnerApprovalRequired pulumi.BoolPtrInput
 	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
-	MergeAccessLevel pulumi.StringInput
+	MergeAccessLevel pulumi.StringPtrInput
 	// The id of the project.
 	Project pulumi.StringInput
 	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
-	PushAccessLevel pulumi.StringInput
+	PushAccessLevel pulumi.StringPtrInput
+	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+	UnprotectAccessLevel pulumi.StringPtrInput
 }
 
 func (BranchProtectionArgs) ElementType() reflect.Type {

@@ -30,7 +30,8 @@ class ServiceMicrosoftTeamsArgs:
         The set of arguments for constructing a ServiceMicrosoftTeams resource.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[str] webhook: The Microsoft Teams webhook. For example, https://outlook.office.com/webhook/...
-        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+               “default_and_protected”. The default value is “default”
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issue events
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events
         :param pulumi.Input[bool] issues_events: Enable notifications for issue events
@@ -95,7 +96,8 @@ class ServiceMicrosoftTeamsArgs:
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> Optional[pulumi.Input[str]]:
         """
-        Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+        Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+        “default_and_protected”. The default value is “default”
         """
         return pulumi.get(self, "branches_to_be_notified")
 
@@ -246,7 +248,8 @@ class _ServiceMicrosoftTeamsState:
         """
         Input properties used for looking up and filtering ServiceMicrosoftTeams resources.
         :param pulumi.Input[bool] active: Whether the integration is active.
-        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+               “default_and_protected”. The default value is “default”
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issue events
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events
         :param pulumi.Input[str] created_at: Create time.
@@ -311,7 +314,8 @@ class _ServiceMicrosoftTeamsState:
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> Optional[pulumi.Input[str]]:
         """
-        Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+        Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+        “default_and_protected”. The default value is “default”
         """
         return pulumi.get(self, "branches_to_be_notified")
 
@@ -537,7 +541,8 @@ class ServiceMicrosoftTeams(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+               “default_and_protected”. The default value is “default”
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issue events
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events
         :param pulumi.Input[bool] issues_events: Enable notifications for issue events
@@ -679,7 +684,8 @@ class ServiceMicrosoftTeams(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Whether the integration is active.
-        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+               “default_and_protected”. The default value is “default”
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issue events
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events
         :param pulumi.Input[str] created_at: Create time.
@@ -729,7 +735,8 @@ class ServiceMicrosoftTeams(pulumi.CustomResource):
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> pulumi.Output[Optional[str]]:
         """
-        Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+        Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+        “default_and_protected”. The default value is “default”
         """
         return pulumi.get(self, "branches_to_be_notified")
 

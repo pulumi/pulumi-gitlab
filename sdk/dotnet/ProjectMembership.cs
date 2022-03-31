@@ -55,7 +55,8 @@ namespace Pulumi.GitLab
     public partial class ProjectMembership : Pulumi.CustomResource
     {
         /// <summary>
-        /// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        /// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
+        /// `master`
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -119,7 +120,8 @@ namespace Pulumi.GitLab
     public sealed class ProjectMembershipArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        /// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
+        /// `master`
         /// </summary>
         [Input("accessLevel", required: true)]
         public Input<string> AccessLevel { get; set; } = null!;
@@ -144,7 +146,8 @@ namespace Pulumi.GitLab
     public sealed class ProjectMembershipState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        /// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
+        /// `master`
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }

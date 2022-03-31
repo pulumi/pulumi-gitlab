@@ -31,6 +31,7 @@ export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): 
     return pulumi.runtime.invoke("gitlab:index/getProject:getProject", {
         "id": args.id,
         "pathWithNamespace": args.pathWithNamespace,
+        "publicBuilds": args.publicBuilds,
     }, opts);
 }
 
@@ -38,119 +39,66 @@ export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getProject.
  */
 export interface GetProjectArgs {
-    /**
-     * The integer or path with namespace that uniquely identifies the project within the gitlab install.
-     */
     id?: string;
-    /**
-     * The path of the repository with namespace.
-     */
     pathWithNamespace?: string;
+    publicBuilds?: boolean;
 }
 
 /**
  * A collection of values returned by getProject.
  */
 export interface GetProjectResult {
-    /**
-     * Whether the project is in read-only mode (archived).
-     */
+    readonly analyticsAccessLevel: string;
     readonly archived: boolean;
-    /**
-     * The default branch for the project.
-     */
+    readonly autoCancelPendingPipelines: string;
+    readonly autoDevopsDeployStrategy: string;
+    readonly autoDevopsEnabled: boolean;
+    readonly autocloseReferencedIssues: boolean;
+    readonly buildGitStrategy: string;
+    readonly buildTimeout: number;
+    readonly buildsAccessLevel: string;
+    readonly containerExpirationPolicies: outputs.GetProjectContainerExpirationPolicy[];
+    readonly containerRegistryAccessLevel: string;
     readonly defaultBranch: string;
-    /**
-     * A description of the project.
-     */
     readonly description: string;
-    /**
-     * URL that can be provided to `git clone` to clone the
-     */
+    readonly emailsDisabled: boolean;
+    readonly externalAuthorizationClassificationLabel: string;
+    readonly forkingAccessLevel: string;
     readonly httpUrlToRepo: string;
-    /**
-     * The integer or path with namespace that uniquely identifies the project within the gitlab install.
-     */
     readonly id: string;
-    /**
-     * Enable issue tracking for the project.
-     */
+    readonly issuesAccessLevel: string;
     readonly issuesEnabled: boolean;
-    /**
-     * Enable LFS for the project.
-     */
     readonly lfsEnabled: boolean;
-    /**
-     * Enable or disable merge pipelines.
-     */
+    readonly mergeCommitTemplate: string;
     readonly mergePipelinesEnabled: boolean;
-    /**
-     * Enable merge requests for the project.
-     */
+    readonly mergeRequestsAccessLevel: string;
     readonly mergeRequestsEnabled: boolean;
-    /**
-     * Enable or disable merge trains.
-     */
     readonly mergeTrainsEnabled: boolean;
-    /**
-     * The name of the project.
-     */
     readonly name: string;
-    /**
-     * The namespace (group or user) of the project. Defaults to your user.
-     */
     readonly namespaceId: number;
-    /**
-     * The path of the repository.
-     */
+    readonly operationsAccessLevel: string;
     readonly path: string;
-    /**
-     * The path of the repository with namespace.
-     */
     readonly pathWithNamespace: string;
-    /**
-     * Enable pipelines for the project.
-     */
     readonly pipelinesEnabled: boolean;
-    /**
-     * Show link to create/view merge request when pushing from the command line
-     */
     readonly printingMergeRequestLinkEnabled: boolean;
-    /**
-     * Push rules for the project.
-     */
+    readonly publicBuilds?: boolean;
     readonly pushRules: outputs.GetProjectPushRules;
-    /**
-     * Enable `Delete source branch` option by default for all new merge requests
-     */
     readonly removeSourceBranchAfterMerge: boolean;
-    /**
-     * Allow users to request member access.
-     */
+    readonly repositoryAccessLevel: string;
+    readonly repositoryStorage: string;
     readonly requestAccessEnabled: boolean;
-    /**
-     * Registration token to use during runner setup.
-     */
+    readonly requirementsAccessLevel: string;
+    readonly resolveOutdatedDiffDiscussions: boolean;
     readonly runnersToken: string;
-    /**
-     * Enable snippets for the project.
-     */
+    readonly securityAndComplianceAccessLevel: string;
+    readonly snippetsAccessLevel: string;
     readonly snippetsEnabled: boolean;
-    /**
-     * URL that can be provided to `git clone` to clone the
-     */
+    readonly squashCommitTemplate: string;
     readonly sshUrlToRepo: string;
-    /**
-     * Repositories are created as private by default.
-     */
+    readonly topics: string[];
     readonly visibilityLevel: string;
-    /**
-     * URL that can be used to find the project in a browser.
-     */
     readonly webUrl: string;
-    /**
-     * Enable wiki for the project.
-     */
+    readonly wikiAccessLevel: string;
     readonly wikiEnabled: boolean;
 }
 
@@ -162,12 +110,7 @@ export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getProject.
  */
 export interface GetProjectOutputArgs {
-    /**
-     * The integer or path with namespace that uniquely identifies the project within the gitlab install.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * The path of the repository with namespace.
-     */
     pathWithNamespace?: pulumi.Input<string>;
+    publicBuilds?: pulumi.Input<boolean>;
 }

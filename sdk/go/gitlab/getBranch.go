@@ -48,36 +48,24 @@ func LookupBranch(ctx *pulumi.Context, args *LookupBranchArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getBranch.
 type LookupBranchArgs struct {
-	// The name of the branch.
-	Name string `pulumi:"name"`
-	// The full path or id of the project.
+	Name    string `pulumi:"name"`
 	Project string `pulumi:"project"`
 }
 
 // A collection of values returned by getBranch.
 type LookupBranchResult struct {
-	// Bool, true if you can push to the branch.
-	CanPush bool `pulumi:"canPush"`
-	// The commit associated with the branch ref.
-	Commits []GetBranchCommit `pulumi:"commits"`
-	// Bool, true if branch is the default branch for the project.
-	Default bool `pulumi:"default"`
-	// Bool, true if developer level access allows to merge branch.
-	DeveloperCanMerge bool `pulumi:"developerCanMerge"`
-	// Bool, true if developer level access allows git push.
-	DeveloperCanPush bool `pulumi:"developerCanPush"`
+	CanPush           bool              `pulumi:"canPush"`
+	Commits           []GetBranchCommit `pulumi:"commits"`
+	Default           bool              `pulumi:"default"`
+	DeveloperCanMerge bool              `pulumi:"developerCanMerge"`
+	DeveloperCanPush  bool              `pulumi:"developerCanPush"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Bool, true if the branch has been merged into it's parent.
-	Merged bool `pulumi:"merged"`
-	// The name of the branch.
-	Name string `pulumi:"name"`
-	// The full path or id of the project.
-	Project string `pulumi:"project"`
-	// Bool, true if branch has branch protection.
-	Protected bool `pulumi:"protected"`
-	// The url of the created branch (https.)
-	WebUrl string `pulumi:"webUrl"`
+	Id        string `pulumi:"id"`
+	Merged    bool   `pulumi:"merged"`
+	Name      string `pulumi:"name"`
+	Project   string `pulumi:"project"`
+	Protected bool   `pulumi:"protected"`
+	WebUrl    string `pulumi:"webUrl"`
 }
 
 func LookupBranchOutput(ctx *pulumi.Context, args LookupBranchOutputArgs, opts ...pulumi.InvokeOption) LookupBranchResultOutput {
@@ -91,9 +79,7 @@ func LookupBranchOutput(ctx *pulumi.Context, args LookupBranchOutputArgs, opts .
 
 // A collection of arguments for invoking getBranch.
 type LookupBranchOutputArgs struct {
-	// The name of the branch.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The full path or id of the project.
+	Name    pulumi.StringInput `pulumi:"name"`
 	Project pulumi.StringInput `pulumi:"project"`
 }
 
@@ -116,27 +102,22 @@ func (o LookupBranchResultOutput) ToLookupBranchResultOutputWithContext(ctx cont
 	return o
 }
 
-// Bool, true if you can push to the branch.
 func (o LookupBranchResultOutput) CanPush() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBranchResult) bool { return v.CanPush }).(pulumi.BoolOutput)
 }
 
-// The commit associated with the branch ref.
 func (o LookupBranchResultOutput) Commits() GetBranchCommitArrayOutput {
 	return o.ApplyT(func(v LookupBranchResult) []GetBranchCommit { return v.Commits }).(GetBranchCommitArrayOutput)
 }
 
-// Bool, true if branch is the default branch for the project.
 func (o LookupBranchResultOutput) Default() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBranchResult) bool { return v.Default }).(pulumi.BoolOutput)
 }
 
-// Bool, true if developer level access allows to merge branch.
 func (o LookupBranchResultOutput) DeveloperCanMerge() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBranchResult) bool { return v.DeveloperCanMerge }).(pulumi.BoolOutput)
 }
 
-// Bool, true if developer level access allows git push.
 func (o LookupBranchResultOutput) DeveloperCanPush() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBranchResult) bool { return v.DeveloperCanPush }).(pulumi.BoolOutput)
 }
@@ -146,27 +127,22 @@ func (o LookupBranchResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBranchResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Bool, true if the branch has been merged into it's parent.
 func (o LookupBranchResultOutput) Merged() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBranchResult) bool { return v.Merged }).(pulumi.BoolOutput)
 }
 
-// The name of the branch.
 func (o LookupBranchResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBranchResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The full path or id of the project.
 func (o LookupBranchResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBranchResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Bool, true if branch has branch protection.
 func (o LookupBranchResultOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBranchResult) bool { return v.Protected }).(pulumi.BoolOutput)
 }
 
-// The url of the created branch (https.)
 func (o LookupBranchResultOutput) WebUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBranchResult) string { return v.WebUrl }).(pulumi.StringOutput)
 }

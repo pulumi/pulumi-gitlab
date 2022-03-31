@@ -62,7 +62,7 @@ export class ProjectVariable extends pulumi.CustomResource {
     }
 
     /**
-     * The environmentScope of the variable. Defaults to `*`.
+     * The environment_scope of the variable. Defaults to `*`.
      */
     public readonly environmentScope!: pulumi.Output<string | undefined>;
     /**
@@ -78,7 +78,8 @@ export class ProjectVariable extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+     * `false`.
      */
     public readonly protected!: pulumi.Output<boolean | undefined>;
     /**
@@ -86,7 +87,7 @@ export class ProjectVariable extends pulumi.CustomResource {
      */
     public readonly value!: pulumi.Output<string>;
     /**
-     * The type of a variable. Available types are: envVar (default) and file.
+     * The type of a variable. Available types are: env_var (default) and file.
      */
     public readonly variableType!: pulumi.Output<string | undefined>;
 
@@ -139,7 +140,7 @@ export class ProjectVariable extends pulumi.CustomResource {
  */
 export interface ProjectVariableState {
     /**
-     * The environmentScope of the variable. Defaults to `*`.
+     * The environment_scope of the variable. Defaults to `*`.
      */
     environmentScope?: pulumi.Input<string>;
     /**
@@ -155,7 +156,8 @@ export interface ProjectVariableState {
      */
     project?: pulumi.Input<string>;
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+     * `false`.
      */
     protected?: pulumi.Input<boolean>;
     /**
@@ -163,7 +165,7 @@ export interface ProjectVariableState {
      */
     value?: pulumi.Input<string>;
     /**
-     * The type of a variable. Available types are: envVar (default) and file.
+     * The type of a variable. Available types are: env_var (default) and file.
      */
     variableType?: pulumi.Input<string>;
 }
@@ -173,7 +175,7 @@ export interface ProjectVariableState {
  */
 export interface ProjectVariableArgs {
     /**
-     * The environmentScope of the variable. Defaults to `*`.
+     * The environment_scope of the variable. Defaults to `*`.
      */
     environmentScope?: pulumi.Input<string>;
     /**
@@ -189,7 +191,8 @@ export interface ProjectVariableArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+     * `false`.
      */
     protected?: pulumi.Input<boolean>;
     /**
@@ -197,7 +200,7 @@ export interface ProjectVariableArgs {
      */
     value: pulumi.Input<string>;
     /**
-     * The type of a variable. Available types are: envVar (default) and file.
+     * The type of a variable. Available types are: env_var (default) and file.
      */
     variableType?: pulumi.Input<string>;
 }

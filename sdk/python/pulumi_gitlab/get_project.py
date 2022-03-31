@@ -21,31 +21,79 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, archived=None, default_branch=None, description=None, http_url_to_repo=None, id=None, issues_enabled=None, lfs_enabled=None, merge_pipelines_enabled=None, merge_requests_enabled=None, merge_trains_enabled=None, name=None, namespace_id=None, path=None, path_with_namespace=None, pipelines_enabled=None, printing_merge_request_link_enabled=None, push_rules=None, remove_source_branch_after_merge=None, request_access_enabled=None, runners_token=None, snippets_enabled=None, ssh_url_to_repo=None, visibility_level=None, web_url=None, wiki_enabled=None):
+    def __init__(__self__, analytics_access_level=None, archived=None, auto_cancel_pending_pipelines=None, auto_devops_deploy_strategy=None, auto_devops_enabled=None, autoclose_referenced_issues=None, build_git_strategy=None, build_timeout=None, builds_access_level=None, container_expiration_policies=None, container_registry_access_level=None, default_branch=None, description=None, emails_disabled=None, external_authorization_classification_label=None, forking_access_level=None, http_url_to_repo=None, id=None, issues_access_level=None, issues_enabled=None, lfs_enabled=None, merge_commit_template=None, merge_pipelines_enabled=None, merge_requests_access_level=None, merge_requests_enabled=None, merge_trains_enabled=None, name=None, namespace_id=None, operations_access_level=None, path=None, path_with_namespace=None, pipelines_enabled=None, printing_merge_request_link_enabled=None, public_builds=None, push_rules=None, remove_source_branch_after_merge=None, repository_access_level=None, repository_storage=None, request_access_enabled=None, requirements_access_level=None, resolve_outdated_diff_discussions=None, runners_token=None, security_and_compliance_access_level=None, snippets_access_level=None, snippets_enabled=None, squash_commit_template=None, ssh_url_to_repo=None, topics=None, visibility_level=None, web_url=None, wiki_access_level=None, wiki_enabled=None):
+        if analytics_access_level and not isinstance(analytics_access_level, str):
+            raise TypeError("Expected argument 'analytics_access_level' to be a str")
+        pulumi.set(__self__, "analytics_access_level", analytics_access_level)
         if archived and not isinstance(archived, bool):
             raise TypeError("Expected argument 'archived' to be a bool")
         pulumi.set(__self__, "archived", archived)
+        if auto_cancel_pending_pipelines and not isinstance(auto_cancel_pending_pipelines, str):
+            raise TypeError("Expected argument 'auto_cancel_pending_pipelines' to be a str")
+        pulumi.set(__self__, "auto_cancel_pending_pipelines", auto_cancel_pending_pipelines)
+        if auto_devops_deploy_strategy and not isinstance(auto_devops_deploy_strategy, str):
+            raise TypeError("Expected argument 'auto_devops_deploy_strategy' to be a str")
+        pulumi.set(__self__, "auto_devops_deploy_strategy", auto_devops_deploy_strategy)
+        if auto_devops_enabled and not isinstance(auto_devops_enabled, bool):
+            raise TypeError("Expected argument 'auto_devops_enabled' to be a bool")
+        pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
+        if autoclose_referenced_issues and not isinstance(autoclose_referenced_issues, bool):
+            raise TypeError("Expected argument 'autoclose_referenced_issues' to be a bool")
+        pulumi.set(__self__, "autoclose_referenced_issues", autoclose_referenced_issues)
+        if build_git_strategy and not isinstance(build_git_strategy, str):
+            raise TypeError("Expected argument 'build_git_strategy' to be a str")
+        pulumi.set(__self__, "build_git_strategy", build_git_strategy)
+        if build_timeout and not isinstance(build_timeout, int):
+            raise TypeError("Expected argument 'build_timeout' to be a int")
+        pulumi.set(__self__, "build_timeout", build_timeout)
+        if builds_access_level and not isinstance(builds_access_level, str):
+            raise TypeError("Expected argument 'builds_access_level' to be a str")
+        pulumi.set(__self__, "builds_access_level", builds_access_level)
+        if container_expiration_policies and not isinstance(container_expiration_policies, list):
+            raise TypeError("Expected argument 'container_expiration_policies' to be a list")
+        pulumi.set(__self__, "container_expiration_policies", container_expiration_policies)
+        if container_registry_access_level and not isinstance(container_registry_access_level, str):
+            raise TypeError("Expected argument 'container_registry_access_level' to be a str")
+        pulumi.set(__self__, "container_registry_access_level", container_registry_access_level)
         if default_branch and not isinstance(default_branch, str):
             raise TypeError("Expected argument 'default_branch' to be a str")
         pulumi.set(__self__, "default_branch", default_branch)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if emails_disabled and not isinstance(emails_disabled, bool):
+            raise TypeError("Expected argument 'emails_disabled' to be a bool")
+        pulumi.set(__self__, "emails_disabled", emails_disabled)
+        if external_authorization_classification_label and not isinstance(external_authorization_classification_label, str):
+            raise TypeError("Expected argument 'external_authorization_classification_label' to be a str")
+        pulumi.set(__self__, "external_authorization_classification_label", external_authorization_classification_label)
+        if forking_access_level and not isinstance(forking_access_level, str):
+            raise TypeError("Expected argument 'forking_access_level' to be a str")
+        pulumi.set(__self__, "forking_access_level", forking_access_level)
         if http_url_to_repo and not isinstance(http_url_to_repo, str):
             raise TypeError("Expected argument 'http_url_to_repo' to be a str")
         pulumi.set(__self__, "http_url_to_repo", http_url_to_repo)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if issues_access_level and not isinstance(issues_access_level, str):
+            raise TypeError("Expected argument 'issues_access_level' to be a str")
+        pulumi.set(__self__, "issues_access_level", issues_access_level)
         if issues_enabled and not isinstance(issues_enabled, bool):
             raise TypeError("Expected argument 'issues_enabled' to be a bool")
         pulumi.set(__self__, "issues_enabled", issues_enabled)
         if lfs_enabled and not isinstance(lfs_enabled, bool):
             raise TypeError("Expected argument 'lfs_enabled' to be a bool")
         pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        if merge_commit_template and not isinstance(merge_commit_template, str):
+            raise TypeError("Expected argument 'merge_commit_template' to be a str")
+        pulumi.set(__self__, "merge_commit_template", merge_commit_template)
         if merge_pipelines_enabled and not isinstance(merge_pipelines_enabled, bool):
             raise TypeError("Expected argument 'merge_pipelines_enabled' to be a bool")
         pulumi.set(__self__, "merge_pipelines_enabled", merge_pipelines_enabled)
+        if merge_requests_access_level and not isinstance(merge_requests_access_level, str):
+            raise TypeError("Expected argument 'merge_requests_access_level' to be a str")
+        pulumi.set(__self__, "merge_requests_access_level", merge_requests_access_level)
         if merge_requests_enabled and not isinstance(merge_requests_enabled, bool):
             raise TypeError("Expected argument 'merge_requests_enabled' to be a bool")
         pulumi.set(__self__, "merge_requests_enabled", merge_requests_enabled)
@@ -58,6 +106,9 @@ class GetProjectResult:
         if namespace_id and not isinstance(namespace_id, int):
             raise TypeError("Expected argument 'namespace_id' to be a int")
         pulumi.set(__self__, "namespace_id", namespace_id)
+        if operations_access_level and not isinstance(operations_access_level, str):
+            raise TypeError("Expected argument 'operations_access_level' to be a str")
+        pulumi.set(__self__, "operations_access_level", operations_access_level)
         if path and not isinstance(path, str):
             raise TypeError("Expected argument 'path' to be a str")
         pulumi.set(__self__, "path", path)
@@ -70,232 +121,322 @@ class GetProjectResult:
         if printing_merge_request_link_enabled and not isinstance(printing_merge_request_link_enabled, bool):
             raise TypeError("Expected argument 'printing_merge_request_link_enabled' to be a bool")
         pulumi.set(__self__, "printing_merge_request_link_enabled", printing_merge_request_link_enabled)
+        if public_builds and not isinstance(public_builds, bool):
+            raise TypeError("Expected argument 'public_builds' to be a bool")
+        pulumi.set(__self__, "public_builds", public_builds)
         if push_rules and not isinstance(push_rules, dict):
             raise TypeError("Expected argument 'push_rules' to be a dict")
         pulumi.set(__self__, "push_rules", push_rules)
         if remove_source_branch_after_merge and not isinstance(remove_source_branch_after_merge, bool):
             raise TypeError("Expected argument 'remove_source_branch_after_merge' to be a bool")
         pulumi.set(__self__, "remove_source_branch_after_merge", remove_source_branch_after_merge)
+        if repository_access_level and not isinstance(repository_access_level, str):
+            raise TypeError("Expected argument 'repository_access_level' to be a str")
+        pulumi.set(__self__, "repository_access_level", repository_access_level)
+        if repository_storage and not isinstance(repository_storage, str):
+            raise TypeError("Expected argument 'repository_storage' to be a str")
+        pulumi.set(__self__, "repository_storage", repository_storage)
         if request_access_enabled and not isinstance(request_access_enabled, bool):
             raise TypeError("Expected argument 'request_access_enabled' to be a bool")
         pulumi.set(__self__, "request_access_enabled", request_access_enabled)
+        if requirements_access_level and not isinstance(requirements_access_level, str):
+            raise TypeError("Expected argument 'requirements_access_level' to be a str")
+        pulumi.set(__self__, "requirements_access_level", requirements_access_level)
+        if resolve_outdated_diff_discussions and not isinstance(resolve_outdated_diff_discussions, bool):
+            raise TypeError("Expected argument 'resolve_outdated_diff_discussions' to be a bool")
+        pulumi.set(__self__, "resolve_outdated_diff_discussions", resolve_outdated_diff_discussions)
         if runners_token and not isinstance(runners_token, str):
             raise TypeError("Expected argument 'runners_token' to be a str")
         pulumi.set(__self__, "runners_token", runners_token)
+        if security_and_compliance_access_level and not isinstance(security_and_compliance_access_level, str):
+            raise TypeError("Expected argument 'security_and_compliance_access_level' to be a str")
+        pulumi.set(__self__, "security_and_compliance_access_level", security_and_compliance_access_level)
+        if snippets_access_level and not isinstance(snippets_access_level, str):
+            raise TypeError("Expected argument 'snippets_access_level' to be a str")
+        pulumi.set(__self__, "snippets_access_level", snippets_access_level)
         if snippets_enabled and not isinstance(snippets_enabled, bool):
             raise TypeError("Expected argument 'snippets_enabled' to be a bool")
         pulumi.set(__self__, "snippets_enabled", snippets_enabled)
+        if squash_commit_template and not isinstance(squash_commit_template, str):
+            raise TypeError("Expected argument 'squash_commit_template' to be a str")
+        pulumi.set(__self__, "squash_commit_template", squash_commit_template)
         if ssh_url_to_repo and not isinstance(ssh_url_to_repo, str):
             raise TypeError("Expected argument 'ssh_url_to_repo' to be a str")
         pulumi.set(__self__, "ssh_url_to_repo", ssh_url_to_repo)
+        if topics and not isinstance(topics, list):
+            raise TypeError("Expected argument 'topics' to be a list")
+        pulumi.set(__self__, "topics", topics)
         if visibility_level and not isinstance(visibility_level, str):
             raise TypeError("Expected argument 'visibility_level' to be a str")
         pulumi.set(__self__, "visibility_level", visibility_level)
         if web_url and not isinstance(web_url, str):
             raise TypeError("Expected argument 'web_url' to be a str")
         pulumi.set(__self__, "web_url", web_url)
+        if wiki_access_level and not isinstance(wiki_access_level, str):
+            raise TypeError("Expected argument 'wiki_access_level' to be a str")
+        pulumi.set(__self__, "wiki_access_level", wiki_access_level)
         if wiki_enabled and not isinstance(wiki_enabled, bool):
             raise TypeError("Expected argument 'wiki_enabled' to be a bool")
         pulumi.set(__self__, "wiki_enabled", wiki_enabled)
 
     @property
+    @pulumi.getter(name="analyticsAccessLevel")
+    def analytics_access_level(self) -> str:
+        return pulumi.get(self, "analytics_access_level")
+
+    @property
     @pulumi.getter
     def archived(self) -> bool:
-        """
-        Whether the project is in read-only mode (archived).
-        """
         return pulumi.get(self, "archived")
+
+    @property
+    @pulumi.getter(name="autoCancelPendingPipelines")
+    def auto_cancel_pending_pipelines(self) -> str:
+        return pulumi.get(self, "auto_cancel_pending_pipelines")
+
+    @property
+    @pulumi.getter(name="autoDevopsDeployStrategy")
+    def auto_devops_deploy_strategy(self) -> str:
+        return pulumi.get(self, "auto_devops_deploy_strategy")
+
+    @property
+    @pulumi.getter(name="autoDevopsEnabled")
+    def auto_devops_enabled(self) -> bool:
+        return pulumi.get(self, "auto_devops_enabled")
+
+    @property
+    @pulumi.getter(name="autocloseReferencedIssues")
+    def autoclose_referenced_issues(self) -> bool:
+        return pulumi.get(self, "autoclose_referenced_issues")
+
+    @property
+    @pulumi.getter(name="buildGitStrategy")
+    def build_git_strategy(self) -> str:
+        return pulumi.get(self, "build_git_strategy")
+
+    @property
+    @pulumi.getter(name="buildTimeout")
+    def build_timeout(self) -> int:
+        return pulumi.get(self, "build_timeout")
+
+    @property
+    @pulumi.getter(name="buildsAccessLevel")
+    def builds_access_level(self) -> str:
+        return pulumi.get(self, "builds_access_level")
+
+    @property
+    @pulumi.getter(name="containerExpirationPolicies")
+    def container_expiration_policies(self) -> Sequence['outputs.GetProjectContainerExpirationPolicyResult']:
+        return pulumi.get(self, "container_expiration_policies")
+
+    @property
+    @pulumi.getter(name="containerRegistryAccessLevel")
+    def container_registry_access_level(self) -> str:
+        return pulumi.get(self, "container_registry_access_level")
 
     @property
     @pulumi.getter(name="defaultBranch")
     def default_branch(self) -> str:
-        """
-        The default branch for the project.
-        """
         return pulumi.get(self, "default_branch")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        A description of the project.
-        """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="emailsDisabled")
+    def emails_disabled(self) -> bool:
+        return pulumi.get(self, "emails_disabled")
+
+    @property
+    @pulumi.getter(name="externalAuthorizationClassificationLabel")
+    def external_authorization_classification_label(self) -> str:
+        return pulumi.get(self, "external_authorization_classification_label")
+
+    @property
+    @pulumi.getter(name="forkingAccessLevel")
+    def forking_access_level(self) -> str:
+        return pulumi.get(self, "forking_access_level")
 
     @property
     @pulumi.getter(name="httpUrlToRepo")
     def http_url_to_repo(self) -> str:
-        """
-        URL that can be provided to `git clone` to clone the
-        """
         return pulumi.get(self, "http_url_to_repo")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The integer or path with namespace that uniquely identifies the project within the gitlab install.
-        """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="issuesAccessLevel")
+    def issues_access_level(self) -> str:
+        return pulumi.get(self, "issues_access_level")
 
     @property
     @pulumi.getter(name="issuesEnabled")
     def issues_enabled(self) -> bool:
-        """
-        Enable issue tracking for the project.
-        """
         return pulumi.get(self, "issues_enabled")
 
     @property
     @pulumi.getter(name="lfsEnabled")
     def lfs_enabled(self) -> bool:
-        """
-        Enable LFS for the project.
-        """
         return pulumi.get(self, "lfs_enabled")
+
+    @property
+    @pulumi.getter(name="mergeCommitTemplate")
+    def merge_commit_template(self) -> str:
+        return pulumi.get(self, "merge_commit_template")
 
     @property
     @pulumi.getter(name="mergePipelinesEnabled")
     def merge_pipelines_enabled(self) -> bool:
-        """
-        Enable or disable merge pipelines.
-        """
         return pulumi.get(self, "merge_pipelines_enabled")
+
+    @property
+    @pulumi.getter(name="mergeRequestsAccessLevel")
+    def merge_requests_access_level(self) -> str:
+        return pulumi.get(self, "merge_requests_access_level")
 
     @property
     @pulumi.getter(name="mergeRequestsEnabled")
     def merge_requests_enabled(self) -> bool:
-        """
-        Enable merge requests for the project.
-        """
         return pulumi.get(self, "merge_requests_enabled")
 
     @property
     @pulumi.getter(name="mergeTrainsEnabled")
     def merge_trains_enabled(self) -> bool:
-        """
-        Enable or disable merge trains.
-        """
         return pulumi.get(self, "merge_trains_enabled")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the project.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> int:
-        """
-        The namespace (group or user) of the project. Defaults to your user.
-        """
         return pulumi.get(self, "namespace_id")
+
+    @property
+    @pulumi.getter(name="operationsAccessLevel")
+    def operations_access_level(self) -> str:
+        return pulumi.get(self, "operations_access_level")
 
     @property
     @pulumi.getter
     def path(self) -> str:
-        """
-        The path of the repository.
-        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="pathWithNamespace")
     def path_with_namespace(self) -> str:
-        """
-        The path of the repository with namespace.
-        """
         return pulumi.get(self, "path_with_namespace")
 
     @property
     @pulumi.getter(name="pipelinesEnabled")
     def pipelines_enabled(self) -> bool:
-        """
-        Enable pipelines for the project.
-        """
         return pulumi.get(self, "pipelines_enabled")
 
     @property
     @pulumi.getter(name="printingMergeRequestLinkEnabled")
     def printing_merge_request_link_enabled(self) -> bool:
-        """
-        Show link to create/view merge request when pushing from the command line
-        """
         return pulumi.get(self, "printing_merge_request_link_enabled")
+
+    @property
+    @pulumi.getter(name="publicBuilds")
+    def public_builds(self) -> Optional[bool]:
+        return pulumi.get(self, "public_builds")
 
     @property
     @pulumi.getter(name="pushRules")
     def push_rules(self) -> 'outputs.GetProjectPushRulesResult':
-        """
-        Push rules for the project.
-        """
         return pulumi.get(self, "push_rules")
 
     @property
     @pulumi.getter(name="removeSourceBranchAfterMerge")
     def remove_source_branch_after_merge(self) -> bool:
-        """
-        Enable `Delete source branch` option by default for all new merge requests
-        """
         return pulumi.get(self, "remove_source_branch_after_merge")
+
+    @property
+    @pulumi.getter(name="repositoryAccessLevel")
+    def repository_access_level(self) -> str:
+        return pulumi.get(self, "repository_access_level")
+
+    @property
+    @pulumi.getter(name="repositoryStorage")
+    def repository_storage(self) -> str:
+        return pulumi.get(self, "repository_storage")
 
     @property
     @pulumi.getter(name="requestAccessEnabled")
     def request_access_enabled(self) -> bool:
-        """
-        Allow users to request member access.
-        """
         return pulumi.get(self, "request_access_enabled")
+
+    @property
+    @pulumi.getter(name="requirementsAccessLevel")
+    def requirements_access_level(self) -> str:
+        return pulumi.get(self, "requirements_access_level")
+
+    @property
+    @pulumi.getter(name="resolveOutdatedDiffDiscussions")
+    def resolve_outdated_diff_discussions(self) -> bool:
+        return pulumi.get(self, "resolve_outdated_diff_discussions")
 
     @property
     @pulumi.getter(name="runnersToken")
     def runners_token(self) -> str:
-        """
-        Registration token to use during runner setup.
-        """
         return pulumi.get(self, "runners_token")
+
+    @property
+    @pulumi.getter(name="securityAndComplianceAccessLevel")
+    def security_and_compliance_access_level(self) -> str:
+        return pulumi.get(self, "security_and_compliance_access_level")
+
+    @property
+    @pulumi.getter(name="snippetsAccessLevel")
+    def snippets_access_level(self) -> str:
+        return pulumi.get(self, "snippets_access_level")
 
     @property
     @pulumi.getter(name="snippetsEnabled")
     def snippets_enabled(self) -> bool:
-        """
-        Enable snippets for the project.
-        """
         return pulumi.get(self, "snippets_enabled")
+
+    @property
+    @pulumi.getter(name="squashCommitTemplate")
+    def squash_commit_template(self) -> str:
+        return pulumi.get(self, "squash_commit_template")
 
     @property
     @pulumi.getter(name="sshUrlToRepo")
     def ssh_url_to_repo(self) -> str:
-        """
-        URL that can be provided to `git clone` to clone the
-        """
         return pulumi.get(self, "ssh_url_to_repo")
+
+    @property
+    @pulumi.getter
+    def topics(self) -> Sequence[str]:
+        return pulumi.get(self, "topics")
 
     @property
     @pulumi.getter(name="visibilityLevel")
     def visibility_level(self) -> str:
-        """
-        Repositories are created as private by default.
-        """
         return pulumi.get(self, "visibility_level")
 
     @property
     @pulumi.getter(name="webUrl")
     def web_url(self) -> str:
-        """
-        URL that can be used to find the project in a browser.
-        """
         return pulumi.get(self, "web_url")
+
+    @property
+    @pulumi.getter(name="wikiAccessLevel")
+    def wiki_access_level(self) -> str:
+        return pulumi.get(self, "wiki_access_level")
 
     @property
     @pulumi.getter(name="wikiEnabled")
     def wiki_enabled(self) -> bool:
-        """
-        Enable wiki for the project.
-        """
         return pulumi.get(self, "wiki_enabled")
 
 
@@ -305,35 +446,63 @@ class AwaitableGetProjectResult(GetProjectResult):
         if False:
             yield self
         return GetProjectResult(
+            analytics_access_level=self.analytics_access_level,
             archived=self.archived,
+            auto_cancel_pending_pipelines=self.auto_cancel_pending_pipelines,
+            auto_devops_deploy_strategy=self.auto_devops_deploy_strategy,
+            auto_devops_enabled=self.auto_devops_enabled,
+            autoclose_referenced_issues=self.autoclose_referenced_issues,
+            build_git_strategy=self.build_git_strategy,
+            build_timeout=self.build_timeout,
+            builds_access_level=self.builds_access_level,
+            container_expiration_policies=self.container_expiration_policies,
+            container_registry_access_level=self.container_registry_access_level,
             default_branch=self.default_branch,
             description=self.description,
+            emails_disabled=self.emails_disabled,
+            external_authorization_classification_label=self.external_authorization_classification_label,
+            forking_access_level=self.forking_access_level,
             http_url_to_repo=self.http_url_to_repo,
             id=self.id,
+            issues_access_level=self.issues_access_level,
             issues_enabled=self.issues_enabled,
             lfs_enabled=self.lfs_enabled,
+            merge_commit_template=self.merge_commit_template,
             merge_pipelines_enabled=self.merge_pipelines_enabled,
+            merge_requests_access_level=self.merge_requests_access_level,
             merge_requests_enabled=self.merge_requests_enabled,
             merge_trains_enabled=self.merge_trains_enabled,
             name=self.name,
             namespace_id=self.namespace_id,
+            operations_access_level=self.operations_access_level,
             path=self.path,
             path_with_namespace=self.path_with_namespace,
             pipelines_enabled=self.pipelines_enabled,
             printing_merge_request_link_enabled=self.printing_merge_request_link_enabled,
+            public_builds=self.public_builds,
             push_rules=self.push_rules,
             remove_source_branch_after_merge=self.remove_source_branch_after_merge,
+            repository_access_level=self.repository_access_level,
+            repository_storage=self.repository_storage,
             request_access_enabled=self.request_access_enabled,
+            requirements_access_level=self.requirements_access_level,
+            resolve_outdated_diff_discussions=self.resolve_outdated_diff_discussions,
             runners_token=self.runners_token,
+            security_and_compliance_access_level=self.security_and_compliance_access_level,
+            snippets_access_level=self.snippets_access_level,
             snippets_enabled=self.snippets_enabled,
+            squash_commit_template=self.squash_commit_template,
             ssh_url_to_repo=self.ssh_url_to_repo,
+            topics=self.topics,
             visibility_level=self.visibility_level,
             web_url=self.web_url,
+            wiki_access_level=self.wiki_access_level,
             wiki_enabled=self.wiki_enabled)
 
 
 def get_project(id: Optional[str] = None,
                 path_with_namespace: Optional[str] = None,
+                public_builds: Optional[bool] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
     The `Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
@@ -348,14 +517,11 @@ def get_project(id: Optional[str] = None,
 
     example = gitlab.get_project(id="foo/bar/baz")
     ```
-
-
-    :param str id: The integer or path with namespace that uniquely identifies the project within the gitlab install.
-    :param str path_with_namespace: The path of the repository with namespace.
     """
     __args__ = dict()
     __args__['id'] = id
     __args__['pathWithNamespace'] = path_with_namespace
+    __args__['publicBuilds'] = public_builds
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -363,36 +529,64 @@ def get_project(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProject:getProject', __args__, opts=opts, typ=GetProjectResult).value
 
     return AwaitableGetProjectResult(
+        analytics_access_level=__ret__.analytics_access_level,
         archived=__ret__.archived,
+        auto_cancel_pending_pipelines=__ret__.auto_cancel_pending_pipelines,
+        auto_devops_deploy_strategy=__ret__.auto_devops_deploy_strategy,
+        auto_devops_enabled=__ret__.auto_devops_enabled,
+        autoclose_referenced_issues=__ret__.autoclose_referenced_issues,
+        build_git_strategy=__ret__.build_git_strategy,
+        build_timeout=__ret__.build_timeout,
+        builds_access_level=__ret__.builds_access_level,
+        container_expiration_policies=__ret__.container_expiration_policies,
+        container_registry_access_level=__ret__.container_registry_access_level,
         default_branch=__ret__.default_branch,
         description=__ret__.description,
+        emails_disabled=__ret__.emails_disabled,
+        external_authorization_classification_label=__ret__.external_authorization_classification_label,
+        forking_access_level=__ret__.forking_access_level,
         http_url_to_repo=__ret__.http_url_to_repo,
         id=__ret__.id,
+        issues_access_level=__ret__.issues_access_level,
         issues_enabled=__ret__.issues_enabled,
         lfs_enabled=__ret__.lfs_enabled,
+        merge_commit_template=__ret__.merge_commit_template,
         merge_pipelines_enabled=__ret__.merge_pipelines_enabled,
+        merge_requests_access_level=__ret__.merge_requests_access_level,
         merge_requests_enabled=__ret__.merge_requests_enabled,
         merge_trains_enabled=__ret__.merge_trains_enabled,
         name=__ret__.name,
         namespace_id=__ret__.namespace_id,
+        operations_access_level=__ret__.operations_access_level,
         path=__ret__.path,
         path_with_namespace=__ret__.path_with_namespace,
         pipelines_enabled=__ret__.pipelines_enabled,
         printing_merge_request_link_enabled=__ret__.printing_merge_request_link_enabled,
+        public_builds=__ret__.public_builds,
         push_rules=__ret__.push_rules,
         remove_source_branch_after_merge=__ret__.remove_source_branch_after_merge,
+        repository_access_level=__ret__.repository_access_level,
+        repository_storage=__ret__.repository_storage,
         request_access_enabled=__ret__.request_access_enabled,
+        requirements_access_level=__ret__.requirements_access_level,
+        resolve_outdated_diff_discussions=__ret__.resolve_outdated_diff_discussions,
         runners_token=__ret__.runners_token,
+        security_and_compliance_access_level=__ret__.security_and_compliance_access_level,
+        snippets_access_level=__ret__.snippets_access_level,
         snippets_enabled=__ret__.snippets_enabled,
+        squash_commit_template=__ret__.squash_commit_template,
         ssh_url_to_repo=__ret__.ssh_url_to_repo,
+        topics=__ret__.topics,
         visibility_level=__ret__.visibility_level,
         web_url=__ret__.web_url,
+        wiki_access_level=__ret__.wiki_access_level,
         wiki_enabled=__ret__.wiki_enabled)
 
 
 @_utilities.lift_output_func(get_project)
 def get_project_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                        path_with_namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                       public_builds: Optional[pulumi.Input[Optional[bool]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
     """
     The `Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
@@ -407,9 +601,5 @@ def get_project_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     example = gitlab.get_project(id="foo/bar/baz")
     ```
-
-
-    :param str id: The integer or path with namespace that uniquely identifies the project within the gitlab install.
-    :param str path_with_namespace: The path of the repository with namespace.
     """
     ...

@@ -7,22 +7,11 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.Topic` resource allows to manage the lifecycle of topics that are then assignable to projects.
  *
- * Topics are the successors for project tags. Aside from avoiding terminology collisions with Git tags, they are more descriptive and better searchable.
+ * > Topics are the successors for project tags. Aside from avoiding terminology collisions with Git tags, they are more descriptive and better searchable.
  *
- * > Deleting a resource doesn't delete the corresponding topic as the GitLab API doesn't support deleting topics yet. You can set softDestroy to true if you want the topics description to be emptied instead.
+ * > Deleting a topic was implemented in GitLab 14.9. For older versions of GitLab set `softDestroy = true` to empty out a topic instead of deleting it.
  *
  * **Upstream API**: [GitLab REST API docs for topics](https://docs.gitlab.com/ee/api/topics.html)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const functionalProgramming = new gitlab.Topic("functional_programming", {
- *     description: "In computer science, functional programming is a programming paradigm where programs are constructed by applying and composing functions.",
- * });
- * ```
  *
  * ## Import
  *
@@ -65,17 +54,32 @@ export class Topic extends pulumi.CustomResource {
     }
 
     /**
-     * A text describing the topic
+     * A local path to the avatar image to upload. **Note**: not available for imported resources.
+     */
+    public readonly avatar!: pulumi.Output<string | undefined>;
+    /**
+     * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
+     * trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+     */
+    public readonly avatarHash!: pulumi.Output<string>;
+    /**
+     * The URL of the avatar image.
+     */
+    public /*out*/ readonly avatarUrl!: pulumi.Output<string>;
+    /**
+     * A text describing the topic.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The topic's name
+     * The topic's name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Empty the topics fields instead of deleting it
+     * Empty the topics fields instead of deleting it.
+     *
+     * @deprecated GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
      */
-    public readonly softDestroy!: pulumi.Output<boolean>;
+    public readonly softDestroy!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -84,23 +88,26 @@ export class Topic extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: TopicArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: TopicArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TopicArgs | TopicState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TopicState | undefined;
+            resourceInputs["avatar"] = state ? state.avatar : undefined;
+            resourceInputs["avatarHash"] = state ? state.avatarHash : undefined;
+            resourceInputs["avatarUrl"] = state ? state.avatarUrl : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["softDestroy"] = state ? state.softDestroy : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
-            if ((!args || args.softDestroy === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'softDestroy'");
-            }
+            resourceInputs["avatar"] = args ? args.avatar : undefined;
+            resourceInputs["avatarHash"] = args ? args.avatarHash : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["softDestroy"] = args ? args.softDestroy : undefined;
+            resourceInputs["avatarUrl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Topic.__pulumiType, name, resourceInputs, opts);
@@ -112,15 +119,30 @@ export class Topic extends pulumi.CustomResource {
  */
 export interface TopicState {
     /**
-     * A text describing the topic
+     * A local path to the avatar image to upload. **Note**: not available for imported resources.
+     */
+    avatar?: pulumi.Input<string>;
+    /**
+     * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
+     * trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+     */
+    avatarHash?: pulumi.Input<string>;
+    /**
+     * The URL of the avatar image.
+     */
+    avatarUrl?: pulumi.Input<string>;
+    /**
+     * A text describing the topic.
      */
     description?: pulumi.Input<string>;
     /**
-     * The topic's name
+     * The topic's name.
      */
     name?: pulumi.Input<string>;
     /**
-     * Empty the topics fields instead of deleting it
+     * Empty the topics fields instead of deleting it.
+     *
+     * @deprecated GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
      */
     softDestroy?: pulumi.Input<boolean>;
 }
@@ -130,15 +152,26 @@ export interface TopicState {
  */
 export interface TopicArgs {
     /**
-     * A text describing the topic
+     * A local path to the avatar image to upload. **Note**: not available for imported resources.
+     */
+    avatar?: pulumi.Input<string>;
+    /**
+     * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
+     * trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+     */
+    avatarHash?: pulumi.Input<string>;
+    /**
+     * A text describing the topic.
      */
     description?: pulumi.Input<string>;
     /**
-     * The topic's name
+     * The topic's name.
      */
     name?: pulumi.Input<string>;
     /**
-     * Empty the topics fields instead of deleting it
+     * Empty the topics fields instead of deleting it.
+     *
+     * @deprecated GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
      */
-    softDestroy: pulumi.Input<boolean>;
+    softDestroy?: pulumi.Input<boolean>;
 }

@@ -43,6 +43,16 @@ namespace Pulumi.GitLab
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// # A GitLab Project Access Token can be imported using a key composed of `&lt;project-id&gt;:&lt;token-id&gt;`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gitlab:index/projectAccessToken:ProjectAccessToken example "12345:1"
+    /// ```
+    /// 
+    /// # NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/projectAccessToken:ProjectAccessToken")]
     public partial class ProjectAccessToken : Pulumi.CustomResource
@@ -90,7 +100,7 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
 
         /// <summary>
-        /// The secret token. This is only populated when creating a new project access token.
+        /// The secret token. **Note**: the token is not available for imported resources.
         /// </summary>
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
@@ -233,7 +243,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The secret token. This is only populated when creating a new project access token.
+        /// The secret token. **Note**: the token is not available for imported resources.
         /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }

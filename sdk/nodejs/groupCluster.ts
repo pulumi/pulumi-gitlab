@@ -96,7 +96,7 @@ export class GroupCluster extends pulumi.CustomResource {
      */
     public readonly kubernetesApiUrl!: pulumi.Output<string>;
     /**
-     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
+     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
      */
     public readonly kubernetesAuthorizationType!: pulumi.Output<string | undefined>;
     /**
@@ -221,7 +221,7 @@ export interface GroupClusterState {
      */
     kubernetesApiUrl?: pulumi.Input<string>;
     /**
-     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
+     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
      */
     kubernetesAuthorizationType?: pulumi.Input<string>;
     /**
@@ -279,7 +279,7 @@ export interface GroupClusterArgs {
      */
     kubernetesApiUrl: pulumi.Input<string>;
     /**
-     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
+     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
      */
     kubernetesAuthorizationType?: pulumi.Input<string>;
     /**

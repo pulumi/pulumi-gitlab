@@ -26,9 +26,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "foo/bar"
 // 		_, err := gitlab.LookupGroupMembership(ctx, &GetGroupMembershipArgs{
-// 			FullPath: &opt0,
+// 			FullPath: pulumi.StringRef("foo/bar"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -48,25 +47,18 @@ func LookupGroupMembership(ctx *pulumi.Context, args *LookupGroupMembershipArgs,
 
 // A collection of arguments for invoking getGroupMembership.
 type LookupGroupMembershipArgs struct {
-	// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel *string `pulumi:"accessLevel"`
-	// The full path of the group.
-	FullPath *string `pulumi:"fullPath"`
-	// The ID of the group.
-	GroupId *int `pulumi:"groupId"`
+	FullPath    *string `pulumi:"fullPath"`
+	GroupId     *int    `pulumi:"groupId"`
 }
 
 // A collection of values returned by getGroupMembership.
 type LookupGroupMembershipResult struct {
-	// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel string `pulumi:"accessLevel"`
-	// The full path of the group.
-	FullPath string `pulumi:"fullPath"`
-	// The ID of the group.
-	GroupId int `pulumi:"groupId"`
+	FullPath    string `pulumi:"fullPath"`
+	GroupId     int    `pulumi:"groupId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The list of group members.
+	Id      string                     `pulumi:"id"`
 	Members []GetGroupMembershipMember `pulumi:"members"`
 }
 
@@ -81,12 +73,9 @@ func LookupGroupMembershipOutput(ctx *pulumi.Context, args LookupGroupMembership
 
 // A collection of arguments for invoking getGroupMembership.
 type LookupGroupMembershipOutputArgs struct {
-	// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// The full path of the group.
-	FullPath pulumi.StringPtrInput `pulumi:"fullPath"`
-	// The ID of the group.
-	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	FullPath    pulumi.StringPtrInput `pulumi:"fullPath"`
+	GroupId     pulumi.IntPtrInput    `pulumi:"groupId"`
 }
 
 func (LookupGroupMembershipOutputArgs) ElementType() reflect.Type {
@@ -108,17 +97,14 @@ func (o LookupGroupMembershipResultOutput) ToLookupGroupMembershipResultOutputWi
 	return o
 }
 
-// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 func (o LookupGroupMembershipResultOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupMembershipResult) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
 
-// The full path of the group.
 func (o LookupGroupMembershipResultOutput) FullPath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupMembershipResult) string { return v.FullPath }).(pulumi.StringOutput)
 }
 
-// The ID of the group.
 func (o LookupGroupMembershipResultOutput) GroupId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupGroupMembershipResult) int { return v.GroupId }).(pulumi.IntOutput)
 }
@@ -128,7 +114,6 @@ func (o LookupGroupMembershipResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupMembershipResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The list of group members.
 func (o LookupGroupMembershipResultOutput) Members() GetGroupMembershipMemberArrayOutput {
 	return o.ApplyT(func(v LookupGroupMembershipResult) []GetGroupMembershipMember { return v.Members }).(GetGroupMembershipMemberArrayOutput)
 }

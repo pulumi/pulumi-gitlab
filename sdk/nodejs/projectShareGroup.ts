@@ -59,13 +59,15 @@ export class ProjectShareGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+     * `developer`, `maintainer`, `master`
      *
      * @deprecated Use `group_access` instead of the `access_level` attribute.
      */
     public readonly accessLevel!: pulumi.Output<string | undefined>;
     /**
-     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+     * `developer`, `maintainer`, `master`
      */
     public readonly groupAccess!: pulumi.Output<string | undefined>;
     /**
@@ -117,13 +119,15 @@ export class ProjectShareGroup extends pulumi.CustomResource {
  */
 export interface ProjectShareGroupState {
     /**
-     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+     * `developer`, `maintainer`, `master`
      *
      * @deprecated Use `group_access` instead of the `access_level` attribute.
      */
     accessLevel?: pulumi.Input<string>;
     /**
-     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+     * `developer`, `maintainer`, `master`
      */
     groupAccess?: pulumi.Input<string>;
     /**
@@ -141,13 +145,15 @@ export interface ProjectShareGroupState {
  */
 export interface ProjectShareGroupArgs {
     /**
-     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+     * `developer`, `maintainer`, `master`
      *
      * @deprecated Use `group_access` instead of the `access_level` attribute.
      */
     accessLevel?: pulumi.Input<string>;
     /**
-     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+     * `developer`, `maintainer`, `master`
      */
     groupAccess?: pulumi.Input<string>;
     /**

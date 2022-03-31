@@ -12,30 +12,11 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.Topic` resource allows to manage the lifecycle of topics that are then assignable to projects.
     /// 
-    /// Topics are the successors for project tags. Aside from avoiding terminology collisions with Git tags, they are more descriptive and better searchable.
+    /// &gt; Topics are the successors for project tags. Aside from avoiding terminology collisions with Git tags, they are more descriptive and better searchable.
     /// 
-    /// &gt; Deleting a resource doesn't delete the corresponding topic as the GitLab API doesn't support deleting topics yet. You can set soft_destroy to true if you want the topics description to be emptied instead.
+    /// &gt; Deleting a topic was implemented in GitLab 14.9. For older versions of GitLab set `soft_destroy = true` to empty out a topic instead of deleting it.
     /// 
     /// **Upstream API**: [GitLab REST API docs for topics](https://docs.gitlab.com/ee/api/topics.html)
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var functionalProgramming = new GitLab.Topic("functionalProgramming", new GitLab.TopicArgs
-    ///         {
-    ///             Description = "In computer science, functional programming is a programming paradigm where programs are constructed by applying and composing functions.",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// 
     /// ## Import
     /// 
@@ -53,22 +34,41 @@ namespace Pulumi.GitLab
     public partial class Topic : Pulumi.CustomResource
     {
         /// <summary>
-        /// A text describing the topic
+        /// A local path to the avatar image to upload. **Note**: not available for imported resources.
+        /// </summary>
+        [Output("avatar")]
+        public Output<string?> Avatar { get; private set; } = null!;
+
+        /// <summary>
+        /// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
+        /// trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        /// </summary>
+        [Output("avatarHash")]
+        public Output<string> AvatarHash { get; private set; } = null!;
+
+        /// <summary>
+        /// The URL of the avatar image.
+        /// </summary>
+        [Output("avatarUrl")]
+        public Output<string> AvatarUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// A text describing the topic.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The topic's name
+        /// The topic's name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Empty the topics fields instead of deleting it
+        /// Empty the topics fields instead of deleting it.
         /// </summary>
         [Output("softDestroy")]
-        public Output<bool> SoftDestroy { get; private set; } = null!;
+        public Output<bool?> SoftDestroy { get; private set; } = null!;
 
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Pulumi.GitLab
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Topic(string name, TopicArgs args, CustomResourceOptions? options = null)
+        public Topic(string name, TopicArgs? args = null, CustomResourceOptions? options = null)
             : base("gitlab:index/topic:Topic", name, args ?? new TopicArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -117,22 +117,35 @@ namespace Pulumi.GitLab
     public sealed class TopicArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A text describing the topic
+        /// A local path to the avatar image to upload. **Note**: not available for imported resources.
+        /// </summary>
+        [Input("avatar")]
+        public Input<string>? Avatar { get; set; }
+
+        /// <summary>
+        /// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
+        /// trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        /// </summary>
+        [Input("avatarHash")]
+        public Input<string>? AvatarHash { get; set; }
+
+        /// <summary>
+        /// A text describing the topic.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The topic's name
+        /// The topic's name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Empty the topics fields instead of deleting it
+        /// Empty the topics fields instead of deleting it.
         /// </summary>
-        [Input("softDestroy", required: true)]
-        public Input<bool> SoftDestroy { get; set; } = null!;
+        [Input("softDestroy")]
+        public Input<bool>? SoftDestroy { get; set; }
 
         public TopicArgs()
         {
@@ -142,19 +155,38 @@ namespace Pulumi.GitLab
     public sealed class TopicState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A text describing the topic
+        /// A local path to the avatar image to upload. **Note**: not available for imported resources.
+        /// </summary>
+        [Input("avatar")]
+        public Input<string>? Avatar { get; set; }
+
+        /// <summary>
+        /// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
+        /// trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        /// </summary>
+        [Input("avatarHash")]
+        public Input<string>? AvatarHash { get; set; }
+
+        /// <summary>
+        /// The URL of the avatar image.
+        /// </summary>
+        [Input("avatarUrl")]
+        public Input<string>? AvatarUrl { get; set; }
+
+        /// <summary>
+        /// A text describing the topic.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The topic's name
+        /// The topic's name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Empty the topics fields instead of deleting it
+        /// Empty the topics fields instead of deleting it.
         /// </summary>
         [Input("softDestroy")]
         public Input<bool>? SoftDestroy { get; set; }

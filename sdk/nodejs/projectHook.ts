@@ -21,6 +21,16 @@ import * as utilities from "./utilities";
  *     url: "https://example.com/hook/example",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * # A GitLab Project Hook can be imported using a key composed of `<project-id>:<hook-id>`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/projectHook:ProjectHook example "12345:1"
+ * ```
+ *
+ * # NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  */
 export class ProjectHook extends pulumi.CustomResource {
     /**
@@ -107,7 +117,7 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     public readonly tagPushEvents!: pulumi.Output<boolean | undefined>;
     /**
-     * A token to present when invoking the hook.
+     * A token to present when invoking the hook. The token is not available for imported resources.
      */
     public readonly token!: pulumi.Output<string | undefined>;
     /**
@@ -241,7 +251,7 @@ export interface ProjectHookState {
      */
     tagPushEvents?: pulumi.Input<boolean>;
     /**
-     * A token to present when invoking the hook.
+     * A token to present when invoking the hook. The token is not available for imported resources.
      */
     token?: pulumi.Input<string>;
     /**
@@ -315,7 +325,7 @@ export interface ProjectHookArgs {
      */
     tagPushEvents?: pulumi.Input<boolean>;
     /**
-     * A token to present when invoking the hook.
+     * A token to present when invoking the hook. The token is not available for imported resources.
      */
     token?: pulumi.Input<string>;
     /**

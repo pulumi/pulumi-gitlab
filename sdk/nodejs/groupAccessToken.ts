@@ -97,11 +97,13 @@ export class GroupAccessToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly revoked!: pulumi.Output<boolean>;
     /**
-     * The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
+     * The scope for the group access token. It determines the actions which can be performed when authenticating with this
+     * token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
-     * The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+     * The group access token. This is only populated when creating a new group access token. This attribute is not available
+     * for imported resources.
      */
     public /*out*/ readonly token!: pulumi.Output<string>;
     /**
@@ -189,11 +191,13 @@ export interface GroupAccessTokenState {
      */
     revoked?: pulumi.Input<boolean>;
     /**
-     * The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
+     * The scope for the group access token. It determines the actions which can be performed when authenticating with this
+     * token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+     * The group access token. This is only populated when creating a new group access token. This attribute is not available
+     * for imported resources.
      */
     token?: pulumi.Input<string>;
     /**
@@ -223,7 +227,8 @@ export interface GroupAccessTokenArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
+     * The scope for the group access token. It determines the actions which can be performed when authenticating with this
+     * token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -80,11 +80,12 @@ export class User extends pulumi.CustomResource {
      */
     public readonly email!: pulumi.Output<string>;
     /**
-     * Boolean, defaults to false.  Whether to enable administrative privileges
+     * Boolean, defaults to false. Whether to enable administrative privileges
      */
     public readonly isAdmin!: pulumi.Output<boolean | undefined>;
     /**
-     * Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
+     * Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
+     * access projects to which they are explicitly granted access.
      */
     public readonly isExternal!: pulumi.Output<boolean | undefined>;
     /**
@@ -100,7 +101,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * Integer, defaults to 0.  Number of projects user can create.
+     * Integer, defaults to 0. Number of projects user can create.
      */
     public readonly projectsLimit!: pulumi.Output<number | undefined>;
     /**
@@ -184,11 +185,12 @@ export interface UserState {
      */
     email?: pulumi.Input<string>;
     /**
-     * Boolean, defaults to false.  Whether to enable administrative privileges
+     * Boolean, defaults to false. Whether to enable administrative privileges
      */
     isAdmin?: pulumi.Input<boolean>;
     /**
-     * Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
+     * Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
+     * access projects to which they are explicitly granted access.
      */
     isExternal?: pulumi.Input<boolean>;
     /**
@@ -204,7 +206,7 @@ export interface UserState {
      */
     password?: pulumi.Input<string>;
     /**
-     * Integer, defaults to 0.  Number of projects user can create.
+     * Integer, defaults to 0. Number of projects user can create.
      */
     projectsLimit?: pulumi.Input<number>;
     /**
@@ -238,11 +240,12 @@ export interface UserArgs {
      */
     email: pulumi.Input<string>;
     /**
-     * Boolean, defaults to false.  Whether to enable administrative privileges
+     * Boolean, defaults to false. Whether to enable administrative privileges
      */
     isAdmin?: pulumi.Input<boolean>;
     /**
-     * Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
+     * Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
+     * access projects to which they are explicitly granted access.
      */
     isExternal?: pulumi.Input<boolean>;
     /**
@@ -258,7 +261,7 @@ export interface UserArgs {
      */
     password?: pulumi.Input<string>;
     /**
-     * Integer, defaults to 0.  Number of projects user can create.
+     * Integer, defaults to 0. Number of projects user can create.
      */
     projectsLimit?: pulumi.Input<number>;
     /**

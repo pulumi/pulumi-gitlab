@@ -7,40 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The `Topic` resource allows to manage the lifecycle of topics that are then assignable to projects.
 //
-// Topics are the successors for project tags. Aside from avoiding terminology collisions with Git tags, they are more descriptive and better searchable.
+// > Topics are the successors for project tags. Aside from avoiding terminology collisions with Git tags, they are more descriptive and better searchable.
 //
-// > Deleting a resource doesn't delete the corresponding topic as the GitLab API doesn't support deleting topics yet. You can set softDestroy to true if you want the topics description to be emptied instead.
+// > Deleting a topic was implemented in GitLab 14.9. For older versions of GitLab set `softDestroy = true` to empty out a topic instead of deleting it.
 //
 // **Upstream API**: [GitLab REST API docs for topics](https://docs.gitlab.com/ee/api/topics.html)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewTopic(ctx, "functionalProgramming", &gitlab.TopicArgs{
-// 			Description: pulumi.String("In computer science, functional programming is a programming paradigm where programs are constructed by applying and composing functions."),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 //
 // ## Import
 //
@@ -56,24 +32,30 @@ import (
 type Topic struct {
 	pulumi.CustomResourceState
 
-	// A text describing the topic
+	// A local path to the avatar image to upload. **Note**: not available for imported resources.
+	Avatar pulumi.StringPtrOutput `pulumi:"avatar"`
+	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
+	// trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+	AvatarHash pulumi.StringOutput `pulumi:"avatarHash"`
+	// The URL of the avatar image.
+	AvatarUrl pulumi.StringOutput `pulumi:"avatarUrl"`
+	// A text describing the topic.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The topic's name
+	// The topic's name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Empty the topics fields instead of deleting it
-	SoftDestroy pulumi.BoolOutput `pulumi:"softDestroy"`
+	// Empty the topics fields instead of deleting it.
+	//
+	// Deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
+	SoftDestroy pulumi.BoolPtrOutput `pulumi:"softDestroy"`
 }
 
 // NewTopic registers a new resource with the given unique name, arguments, and options.
 func NewTopic(ctx *pulumi.Context,
 	name string, args *TopicArgs, opts ...pulumi.ResourceOption) (*Topic, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &TopicArgs{}
 	}
 
-	if args.SoftDestroy == nil {
-		return nil, errors.New("invalid value for required argument 'SoftDestroy'")
-	}
 	var resource Topic
 	err := ctx.RegisterResource("gitlab:index/topic:Topic", name, args, &resource, opts...)
 	if err != nil {
@@ -96,20 +78,38 @@ func GetTopic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Topic resources.
 type topicState struct {
-	// A text describing the topic
+	// A local path to the avatar image to upload. **Note**: not available for imported resources.
+	Avatar *string `pulumi:"avatar"`
+	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
+	// trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+	AvatarHash *string `pulumi:"avatarHash"`
+	// The URL of the avatar image.
+	AvatarUrl *string `pulumi:"avatarUrl"`
+	// A text describing the topic.
 	Description *string `pulumi:"description"`
-	// The topic's name
+	// The topic's name.
 	Name *string `pulumi:"name"`
-	// Empty the topics fields instead of deleting it
+	// Empty the topics fields instead of deleting it.
+	//
+	// Deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
 	SoftDestroy *bool `pulumi:"softDestroy"`
 }
 
 type TopicState struct {
-	// A text describing the topic
+	// A local path to the avatar image to upload. **Note**: not available for imported resources.
+	Avatar pulumi.StringPtrInput
+	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
+	// trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+	AvatarHash pulumi.StringPtrInput
+	// The URL of the avatar image.
+	AvatarUrl pulumi.StringPtrInput
+	// A text describing the topic.
 	Description pulumi.StringPtrInput
-	// The topic's name
+	// The topic's name.
 	Name pulumi.StringPtrInput
-	// Empty the topics fields instead of deleting it
+	// Empty the topics fields instead of deleting it.
+	//
+	// Deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
 	SoftDestroy pulumi.BoolPtrInput
 }
 
@@ -118,22 +118,36 @@ func (TopicState) ElementType() reflect.Type {
 }
 
 type topicArgs struct {
-	// A text describing the topic
+	// A local path to the avatar image to upload. **Note**: not available for imported resources.
+	Avatar *string `pulumi:"avatar"`
+	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
+	// trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+	AvatarHash *string `pulumi:"avatarHash"`
+	// A text describing the topic.
 	Description *string `pulumi:"description"`
-	// The topic's name
+	// The topic's name.
 	Name *string `pulumi:"name"`
-	// Empty the topics fields instead of deleting it
-	SoftDestroy bool `pulumi:"softDestroy"`
+	// Empty the topics fields instead of deleting it.
+	//
+	// Deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
+	SoftDestroy *bool `pulumi:"softDestroy"`
 }
 
 // The set of arguments for constructing a Topic resource.
 type TopicArgs struct {
-	// A text describing the topic
+	// A local path to the avatar image to upload. **Note**: not available for imported resources.
+	Avatar pulumi.StringPtrInput
+	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
+	// trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+	AvatarHash pulumi.StringPtrInput
+	// A text describing the topic.
 	Description pulumi.StringPtrInput
-	// The topic's name
+	// The topic's name.
 	Name pulumi.StringPtrInput
-	// Empty the topics fields instead of deleting it
-	SoftDestroy pulumi.BoolInput
+	// Empty the topics fields instead of deleting it.
+	//
+	// Deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
+	SoftDestroy pulumi.BoolPtrInput
 }
 
 func (TopicArgs) ElementType() reflect.Type {

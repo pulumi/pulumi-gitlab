@@ -61,7 +61,8 @@ export class DeployKey extends pulumi.CustomResource {
     }
 
     /**
-     * Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+     * Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
+     * be managed.
      */
     public readonly canPush!: pulumi.Output<boolean | undefined>;
     /**
@@ -120,7 +121,8 @@ export class DeployKey extends pulumi.CustomResource {
  */
 export interface DeployKeyState {
     /**
-     * Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+     * Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
+     * be managed.
      */
     canPush?: pulumi.Input<boolean>;
     /**
@@ -142,7 +144,8 @@ export interface DeployKeyState {
  */
 export interface DeployKeyArgs {
     /**
-     * Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+     * Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
+     * be managed.
      */
     canPush?: pulumi.Input<boolean>;
     /**

@@ -27,7 +27,8 @@ class ProjectVariableArgs:
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] environment_scope: The environment_scope of the variable. Defaults to `*`.
         :param pulumi.Input[bool] masked: If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
-        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+               `false`.
         :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
         """
         pulumi.set(__self__, "key", key)
@@ -106,7 +107,8 @@ class ProjectVariableArgs:
     @pulumi.getter
     def protected(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+        `false`.
         """
         return pulumi.get(self, "protected")
 
@@ -143,7 +145,8 @@ class _ProjectVariableState:
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
         :param pulumi.Input[str] project: The name or id of the project.
-        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+               `false`.
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
         """
@@ -214,7 +217,8 @@ class _ProjectVariableState:
     @pulumi.getter
     def protected(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+        `false`.
         """
         return pulumi.get(self, "protected")
 
@@ -294,7 +298,8 @@ class ProjectVariable(pulumi.CustomResource):
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
         :param pulumi.Input[str] project: The name or id of the project.
-        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+               `false`.
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
         """
@@ -407,7 +412,8 @@ class ProjectVariable(pulumi.CustomResource):
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
         :param pulumi.Input[str] project: The name or id of the project.
-        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+               `false`.
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
         """
@@ -460,7 +466,8 @@ class ProjectVariable(pulumi.CustomResource):
     @pulumi.getter
     def protected(self) -> pulumi.Output[Optional[bool]]:
         """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+        `false`.
         """
         return pulumi.get(self, "protected")
 

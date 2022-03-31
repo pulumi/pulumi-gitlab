@@ -33,21 +33,21 @@ class GroupArgs:
         """
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[str] path: The path of the group.
-        :param pulumi.Input[bool] auto_devops_enabled: Boolean, defaults to false.  Default to Auto
-        :param pulumi.Input[int] default_branch_protection: Int, defaults to 2.
+        :param pulumi.Input[bool] auto_devops_enabled: Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+        :param pulumi.Input[int] default_branch_protection: Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
         :param pulumi.Input[str] description: The description of the group.
-        :param pulumi.Input[bool] emails_disabled: Boolean, defaults to false.  Disable email notifications
-        :param pulumi.Input[bool] lfs_enabled: Boolean, defaults to true.  Whether to enable LFS
-        :param pulumi.Input[bool] mentions_disabled: Boolean, defaults to false.  Disable the capability
+        :param pulumi.Input[bool] emails_disabled: Defaults to false. Disable email notifications.
+        :param pulumi.Input[bool] lfs_enabled: Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[bool] mentions_disabled: Defaults to false. Disable the capability of a group from getting mentioned.
         :param pulumi.Input[str] name: The name of this group.
-        :param pulumi.Input[int] parent_id: Integer, id of the parent group (creates a nested group).
-        :param pulumi.Input[bool] prevent_forking_outside_group: When enabled, users can not fork projects from this group to external namespaces.
-        :param pulumi.Input[str] project_creation_level: , defaults to Maintainer.
-        :param pulumi.Input[bool] request_access_enabled: Boolean, defaults to false.  Whether to
-        :param pulumi.Input[bool] require_two_factor_authentication: Boolean, defaults to false.
-        :param pulumi.Input[bool] share_with_group_lock: Boolean, defaults to false.  Prevent sharing
-        :param pulumi.Input[str] subgroup_creation_level: , defaults to Owner.
-        :param pulumi.Input[int] two_factor_grace_period: Int, defaults to 48.
+        :param pulumi.Input[int] parent_id: Id of the parent group (creates a nested group).
+        :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
+        :param pulumi.Input[str] project_creation_level: Defaults to maintainer. Determine if developers can create projects in the group.
+        :param pulumi.Input[bool] request_access_enabled: Defaults to false. Allow users to request member access.
+        :param pulumi.Input[bool] require_two_factor_authentication: Defaults to false. Require all users in this group to setup Two-factor authentication.
+        :param pulumi.Input[bool] share_with_group_lock: Defaults to false. Prevent sharing a project with another group within this group.
+        :param pulumi.Input[str] subgroup_creation_level: Defaults to owner. Allowed to create subgroups.
+        :param pulumi.Input[int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
         """
         pulumi.set(__self__, "path", path)
@@ -100,7 +100,7 @@ class GroupArgs:
     @pulumi.getter(name="autoDevopsEnabled")
     def auto_devops_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to false.  Default to Auto
+        Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
         """
         return pulumi.get(self, "auto_devops_enabled")
 
@@ -112,7 +112,7 @@ class GroupArgs:
     @pulumi.getter(name="defaultBranchProtection")
     def default_branch_protection(self) -> Optional[pulumi.Input[int]]:
         """
-        Int, defaults to 2.
+        Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
         """
         return pulumi.get(self, "default_branch_protection")
 
@@ -136,7 +136,7 @@ class GroupArgs:
     @pulumi.getter(name="emailsDisabled")
     def emails_disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to false.  Disable email notifications
+        Defaults to false. Disable email notifications.
         """
         return pulumi.get(self, "emails_disabled")
 
@@ -148,7 +148,7 @@ class GroupArgs:
     @pulumi.getter(name="lfsEnabled")
     def lfs_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to true.  Whether to enable LFS
+        Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
         """
         return pulumi.get(self, "lfs_enabled")
 
@@ -160,7 +160,7 @@ class GroupArgs:
     @pulumi.getter(name="mentionsDisabled")
     def mentions_disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to false.  Disable the capability
+        Defaults to false. Disable the capability of a group from getting mentioned.
         """
         return pulumi.get(self, "mentions_disabled")
 
@@ -184,7 +184,7 @@ class GroupArgs:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[int]]:
         """
-        Integer, id of the parent group (creates a nested group).
+        Id of the parent group (creates a nested group).
         """
         return pulumi.get(self, "parent_id")
 
@@ -196,7 +196,7 @@ class GroupArgs:
     @pulumi.getter(name="preventForkingOutsideGroup")
     def prevent_forking_outside_group(self) -> Optional[pulumi.Input[bool]]:
         """
-        When enabled, users can not fork projects from this group to external namespaces.
+        Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         """
         return pulumi.get(self, "prevent_forking_outside_group")
 
@@ -208,7 +208,7 @@ class GroupArgs:
     @pulumi.getter(name="projectCreationLevel")
     def project_creation_level(self) -> Optional[pulumi.Input[str]]:
         """
-        , defaults to Maintainer.
+        Defaults to maintainer. Determine if developers can create projects in the group.
         """
         return pulumi.get(self, "project_creation_level")
 
@@ -220,7 +220,7 @@ class GroupArgs:
     @pulumi.getter(name="requestAccessEnabled")
     def request_access_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to false.  Whether to
+        Defaults to false. Allow users to request member access.
         """
         return pulumi.get(self, "request_access_enabled")
 
@@ -232,7 +232,7 @@ class GroupArgs:
     @pulumi.getter(name="requireTwoFactorAuthentication")
     def require_two_factor_authentication(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to false.
+        Defaults to false. Require all users in this group to setup Two-factor authentication.
         """
         return pulumi.get(self, "require_two_factor_authentication")
 
@@ -244,7 +244,7 @@ class GroupArgs:
     @pulumi.getter(name="shareWithGroupLock")
     def share_with_group_lock(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to false.  Prevent sharing
+        Defaults to false. Prevent sharing a project with another group within this group.
         """
         return pulumi.get(self, "share_with_group_lock")
 
@@ -256,7 +256,7 @@ class GroupArgs:
     @pulumi.getter(name="subgroupCreationLevel")
     def subgroup_creation_level(self) -> Optional[pulumi.Input[str]]:
         """
-        , defaults to Owner.
+        Defaults to owner. Allowed to create subgroups.
         """
         return pulumi.get(self, "subgroup_creation_level")
 
@@ -268,7 +268,7 @@ class GroupArgs:
     @pulumi.getter(name="twoFactorGracePeriod")
     def two_factor_grace_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Int, defaults to 48.
+        Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         """
         return pulumi.get(self, "two_factor_grace_period")
 
@@ -315,25 +315,25 @@ class _GroupState:
                  web_url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
-        :param pulumi.Input[bool] auto_devops_enabled: Boolean, defaults to false.  Default to Auto
-        :param pulumi.Input[int] default_branch_protection: Int, defaults to 2.
+        :param pulumi.Input[bool] auto_devops_enabled: Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+        :param pulumi.Input[int] default_branch_protection: Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
         :param pulumi.Input[str] description: The description of the group.
-        :param pulumi.Input[bool] emails_disabled: Boolean, defaults to false.  Disable email notifications
+        :param pulumi.Input[bool] emails_disabled: Defaults to false. Disable email notifications.
         :param pulumi.Input[str] full_name: The full name of the group.
         :param pulumi.Input[str] full_path: The full path of the group.
-        :param pulumi.Input[bool] lfs_enabled: Boolean, defaults to true.  Whether to enable LFS
-        :param pulumi.Input[bool] mentions_disabled: Boolean, defaults to false.  Disable the capability
+        :param pulumi.Input[bool] lfs_enabled: Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[bool] mentions_disabled: Defaults to false. Disable the capability of a group from getting mentioned.
         :param pulumi.Input[str] name: The name of this group.
-        :param pulumi.Input[int] parent_id: Integer, id of the parent group (creates a nested group).
+        :param pulumi.Input[int] parent_id: Id of the parent group (creates a nested group).
         :param pulumi.Input[str] path: The path of the group.
-        :param pulumi.Input[bool] prevent_forking_outside_group: When enabled, users can not fork projects from this group to external namespaces.
-        :param pulumi.Input[str] project_creation_level: , defaults to Maintainer.
-        :param pulumi.Input[bool] request_access_enabled: Boolean, defaults to false.  Whether to
-        :param pulumi.Input[bool] require_two_factor_authentication: Boolean, defaults to false.
+        :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
+        :param pulumi.Input[str] project_creation_level: Defaults to maintainer. Determine if developers can create projects in the group.
+        :param pulumi.Input[bool] request_access_enabled: Defaults to false. Allow users to request member access.
+        :param pulumi.Input[bool] require_two_factor_authentication: Defaults to false. Require all users in this group to setup Two-factor authentication.
         :param pulumi.Input[str] runners_token: The group level registration token to use during runner setup.
-        :param pulumi.Input[bool] share_with_group_lock: Boolean, defaults to false.  Prevent sharing
-        :param pulumi.Input[str] subgroup_creation_level: , defaults to Owner.
-        :param pulumi.Input[int] two_factor_grace_period: Int, defaults to 48.
+        :param pulumi.Input[bool] share_with_group_lock: Defaults to false. Prevent sharing a project with another group within this group.
+        :param pulumi.Input[str] subgroup_creation_level: Defaults to owner. Allowed to create subgroups.
+        :param pulumi.Input[int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
         :param pulumi.Input[str] web_url: Web URL of the group.
         """
@@ -384,7 +384,7 @@ class _GroupState:
     @pulumi.getter(name="autoDevopsEnabled")
     def auto_devops_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to false.  Default to Auto
+        Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
         """
         return pulumi.get(self, "auto_devops_enabled")
 
@@ -396,7 +396,7 @@ class _GroupState:
     @pulumi.getter(name="defaultBranchProtection")
     def default_branch_protection(self) -> Optional[pulumi.Input[int]]:
         """
-        Int, defaults to 2.
+        Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
         """
         return pulumi.get(self, "default_branch_protection")
 
@@ -420,7 +420,7 @@ class _GroupState:
     @pulumi.getter(name="emailsDisabled")
     def emails_disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to false.  Disable email notifications
+        Defaults to false. Disable email notifications.
         """
         return pulumi.get(self, "emails_disabled")
 
@@ -456,7 +456,7 @@ class _GroupState:
     @pulumi.getter(name="lfsEnabled")
     def lfs_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to true.  Whether to enable LFS
+        Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
         """
         return pulumi.get(self, "lfs_enabled")
 
@@ -468,7 +468,7 @@ class _GroupState:
     @pulumi.getter(name="mentionsDisabled")
     def mentions_disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to false.  Disable the capability
+        Defaults to false. Disable the capability of a group from getting mentioned.
         """
         return pulumi.get(self, "mentions_disabled")
 
@@ -492,7 +492,7 @@ class _GroupState:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[int]]:
         """
-        Integer, id of the parent group (creates a nested group).
+        Id of the parent group (creates a nested group).
         """
         return pulumi.get(self, "parent_id")
 
@@ -516,7 +516,7 @@ class _GroupState:
     @pulumi.getter(name="preventForkingOutsideGroup")
     def prevent_forking_outside_group(self) -> Optional[pulumi.Input[bool]]:
         """
-        When enabled, users can not fork projects from this group to external namespaces.
+        Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         """
         return pulumi.get(self, "prevent_forking_outside_group")
 
@@ -528,7 +528,7 @@ class _GroupState:
     @pulumi.getter(name="projectCreationLevel")
     def project_creation_level(self) -> Optional[pulumi.Input[str]]:
         """
-        , defaults to Maintainer.
+        Defaults to maintainer. Determine if developers can create projects in the group.
         """
         return pulumi.get(self, "project_creation_level")
 
@@ -540,7 +540,7 @@ class _GroupState:
     @pulumi.getter(name="requestAccessEnabled")
     def request_access_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to false.  Whether to
+        Defaults to false. Allow users to request member access.
         """
         return pulumi.get(self, "request_access_enabled")
 
@@ -552,7 +552,7 @@ class _GroupState:
     @pulumi.getter(name="requireTwoFactorAuthentication")
     def require_two_factor_authentication(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to false.
+        Defaults to false. Require all users in this group to setup Two-factor authentication.
         """
         return pulumi.get(self, "require_two_factor_authentication")
 
@@ -576,7 +576,7 @@ class _GroupState:
     @pulumi.getter(name="shareWithGroupLock")
     def share_with_group_lock(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to false.  Prevent sharing
+        Defaults to false. Prevent sharing a project with another group within this group.
         """
         return pulumi.get(self, "share_with_group_lock")
 
@@ -588,7 +588,7 @@ class _GroupState:
     @pulumi.getter(name="subgroupCreationLevel")
     def subgroup_creation_level(self) -> Optional[pulumi.Input[str]]:
         """
-        , defaults to Owner.
+        Defaults to owner. Allowed to create subgroups.
         """
         return pulumi.get(self, "subgroup_creation_level")
 
@@ -600,7 +600,7 @@ class _GroupState:
     @pulumi.getter(name="twoFactorGracePeriod")
     def two_factor_grace_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Int, defaults to 48.
+        Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         """
         return pulumi.get(self, "two_factor_grace_period")
 
@@ -657,8 +657,11 @@ class Group(pulumi.CustomResource):
                  visibility_level: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to create and manage GitLab groups.
-        Note your provider will need to be configured with admin-level access for this resource to work.
+        The `Group` resource allows to manage the lifecycle of a group.
+
+        > On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)
 
         ## Example Usage
 
@@ -689,22 +692,22 @@ class Group(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_devops_enabled: Boolean, defaults to false.  Default to Auto
-        :param pulumi.Input[int] default_branch_protection: Int, defaults to 2.
+        :param pulumi.Input[bool] auto_devops_enabled: Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+        :param pulumi.Input[int] default_branch_protection: Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
         :param pulumi.Input[str] description: The description of the group.
-        :param pulumi.Input[bool] emails_disabled: Boolean, defaults to false.  Disable email notifications
-        :param pulumi.Input[bool] lfs_enabled: Boolean, defaults to true.  Whether to enable LFS
-        :param pulumi.Input[bool] mentions_disabled: Boolean, defaults to false.  Disable the capability
+        :param pulumi.Input[bool] emails_disabled: Defaults to false. Disable email notifications.
+        :param pulumi.Input[bool] lfs_enabled: Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[bool] mentions_disabled: Defaults to false. Disable the capability of a group from getting mentioned.
         :param pulumi.Input[str] name: The name of this group.
-        :param pulumi.Input[int] parent_id: Integer, id of the parent group (creates a nested group).
+        :param pulumi.Input[int] parent_id: Id of the parent group (creates a nested group).
         :param pulumi.Input[str] path: The path of the group.
-        :param pulumi.Input[bool] prevent_forking_outside_group: When enabled, users can not fork projects from this group to external namespaces.
-        :param pulumi.Input[str] project_creation_level: , defaults to Maintainer.
-        :param pulumi.Input[bool] request_access_enabled: Boolean, defaults to false.  Whether to
-        :param pulumi.Input[bool] require_two_factor_authentication: Boolean, defaults to false.
-        :param pulumi.Input[bool] share_with_group_lock: Boolean, defaults to false.  Prevent sharing
-        :param pulumi.Input[str] subgroup_creation_level: , defaults to Owner.
-        :param pulumi.Input[int] two_factor_grace_period: Int, defaults to 48.
+        :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
+        :param pulumi.Input[str] project_creation_level: Defaults to maintainer. Determine if developers can create projects in the group.
+        :param pulumi.Input[bool] request_access_enabled: Defaults to false. Allow users to request member access.
+        :param pulumi.Input[bool] require_two_factor_authentication: Defaults to false. Require all users in this group to setup Two-factor authentication.
+        :param pulumi.Input[bool] share_with_group_lock: Defaults to false. Prevent sharing a project with another group within this group.
+        :param pulumi.Input[str] subgroup_creation_level: Defaults to owner. Allowed to create subgroups.
+        :param pulumi.Input[int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
         """
         ...
@@ -714,8 +717,11 @@ class Group(pulumi.CustomResource):
                  args: GroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to create and manage GitLab groups.
-        Note your provider will need to be configured with admin-level access for this resource to work.
+        The `Group` resource allows to manage the lifecycle of a group.
+
+        > On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)
 
         ## Example Usage
 
@@ -849,25 +855,25 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_devops_enabled: Boolean, defaults to false.  Default to Auto
-        :param pulumi.Input[int] default_branch_protection: Int, defaults to 2.
+        :param pulumi.Input[bool] auto_devops_enabled: Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+        :param pulumi.Input[int] default_branch_protection: Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
         :param pulumi.Input[str] description: The description of the group.
-        :param pulumi.Input[bool] emails_disabled: Boolean, defaults to false.  Disable email notifications
+        :param pulumi.Input[bool] emails_disabled: Defaults to false. Disable email notifications.
         :param pulumi.Input[str] full_name: The full name of the group.
         :param pulumi.Input[str] full_path: The full path of the group.
-        :param pulumi.Input[bool] lfs_enabled: Boolean, defaults to true.  Whether to enable LFS
-        :param pulumi.Input[bool] mentions_disabled: Boolean, defaults to false.  Disable the capability
+        :param pulumi.Input[bool] lfs_enabled: Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[bool] mentions_disabled: Defaults to false. Disable the capability of a group from getting mentioned.
         :param pulumi.Input[str] name: The name of this group.
-        :param pulumi.Input[int] parent_id: Integer, id of the parent group (creates a nested group).
+        :param pulumi.Input[int] parent_id: Id of the parent group (creates a nested group).
         :param pulumi.Input[str] path: The path of the group.
-        :param pulumi.Input[bool] prevent_forking_outside_group: When enabled, users can not fork projects from this group to external namespaces.
-        :param pulumi.Input[str] project_creation_level: , defaults to Maintainer.
-        :param pulumi.Input[bool] request_access_enabled: Boolean, defaults to false.  Whether to
-        :param pulumi.Input[bool] require_two_factor_authentication: Boolean, defaults to false.
+        :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
+        :param pulumi.Input[str] project_creation_level: Defaults to maintainer. Determine if developers can create projects in the group.
+        :param pulumi.Input[bool] request_access_enabled: Defaults to false. Allow users to request member access.
+        :param pulumi.Input[bool] require_two_factor_authentication: Defaults to false. Require all users in this group to setup Two-factor authentication.
         :param pulumi.Input[str] runners_token: The group level registration token to use during runner setup.
-        :param pulumi.Input[bool] share_with_group_lock: Boolean, defaults to false.  Prevent sharing
-        :param pulumi.Input[str] subgroup_creation_level: , defaults to Owner.
-        :param pulumi.Input[int] two_factor_grace_period: Int, defaults to 48.
+        :param pulumi.Input[bool] share_with_group_lock: Defaults to false. Prevent sharing a project with another group within this group.
+        :param pulumi.Input[str] subgroup_creation_level: Defaults to owner. Allowed to create subgroups.
+        :param pulumi.Input[int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
         :param pulumi.Input[str] web_url: Web URL of the group.
         """
@@ -902,7 +908,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="autoDevopsEnabled")
     def auto_devops_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean, defaults to false.  Default to Auto
+        Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
         """
         return pulumi.get(self, "auto_devops_enabled")
 
@@ -910,7 +916,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="defaultBranchProtection")
     def default_branch_protection(self) -> pulumi.Output[Optional[int]]:
         """
-        Int, defaults to 2.
+        Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
         """
         return pulumi.get(self, "default_branch_protection")
 
@@ -926,7 +932,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="emailsDisabled")
     def emails_disabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean, defaults to false.  Disable email notifications
+        Defaults to false. Disable email notifications.
         """
         return pulumi.get(self, "emails_disabled")
 
@@ -950,7 +956,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="lfsEnabled")
     def lfs_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean, defaults to true.  Whether to enable LFS
+        Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
         """
         return pulumi.get(self, "lfs_enabled")
 
@@ -958,7 +964,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="mentionsDisabled")
     def mentions_disabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean, defaults to false.  Disable the capability
+        Defaults to false. Disable the capability of a group from getting mentioned.
         """
         return pulumi.get(self, "mentions_disabled")
 
@@ -974,7 +980,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="parentId")
     def parent_id(self) -> pulumi.Output[Optional[int]]:
         """
-        Integer, id of the parent group (creates a nested group).
+        Id of the parent group (creates a nested group).
         """
         return pulumi.get(self, "parent_id")
 
@@ -990,7 +996,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="preventForkingOutsideGroup")
     def prevent_forking_outside_group(self) -> pulumi.Output[Optional[bool]]:
         """
-        When enabled, users can not fork projects from this group to external namespaces.
+        Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         """
         return pulumi.get(self, "prevent_forking_outside_group")
 
@@ -998,7 +1004,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="projectCreationLevel")
     def project_creation_level(self) -> pulumi.Output[Optional[str]]:
         """
-        , defaults to Maintainer.
+        Defaults to maintainer. Determine if developers can create projects in the group.
         """
         return pulumi.get(self, "project_creation_level")
 
@@ -1006,7 +1012,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="requestAccessEnabled")
     def request_access_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean, defaults to false.  Whether to
+        Defaults to false. Allow users to request member access.
         """
         return pulumi.get(self, "request_access_enabled")
 
@@ -1014,7 +1020,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="requireTwoFactorAuthentication")
     def require_two_factor_authentication(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean, defaults to false.
+        Defaults to false. Require all users in this group to setup Two-factor authentication.
         """
         return pulumi.get(self, "require_two_factor_authentication")
 
@@ -1030,7 +1036,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="shareWithGroupLock")
     def share_with_group_lock(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean, defaults to false.  Prevent sharing
+        Defaults to false. Prevent sharing a project with another group within this group.
         """
         return pulumi.get(self, "share_with_group_lock")
 
@@ -1038,7 +1044,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="subgroupCreationLevel")
     def subgroup_creation_level(self) -> pulumi.Output[Optional[str]]:
         """
-        , defaults to Owner.
+        Defaults to owner. Allowed to create subgroups.
         """
         return pulumi.get(self, "subgroup_creation_level")
 
@@ -1046,7 +1052,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="twoFactorGracePeriod")
     def two_factor_grace_period(self) -> pulumi.Output[Optional[int]]:
         """
-        Int, defaults to 48.
+        Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         """
         return pulumi.get(self, "two_factor_grace_period")
 

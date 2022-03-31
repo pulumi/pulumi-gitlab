@@ -52,7 +52,8 @@ import (
 type DeployKey struct {
 	pulumi.CustomResourceState
 
-	// Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+	// Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
+	// be managed.
 	CanPush pulumi.BoolPtrOutput `pulumi:"canPush"`
 	// The public ssh key body.
 	Key pulumi.StringOutput `pulumi:"key"`
@@ -100,7 +101,8 @@ func GetDeployKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DeployKey resources.
 type deployKeyState struct {
-	// Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+	// Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
+	// be managed.
 	CanPush *bool `pulumi:"canPush"`
 	// The public ssh key body.
 	Key *string `pulumi:"key"`
@@ -111,7 +113,8 @@ type deployKeyState struct {
 }
 
 type DeployKeyState struct {
-	// Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+	// Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
+	// be managed.
 	CanPush pulumi.BoolPtrInput
 	// The public ssh key body.
 	Key pulumi.StringPtrInput
@@ -126,7 +129,8 @@ func (DeployKeyState) ElementType() reflect.Type {
 }
 
 type deployKeyArgs struct {
-	// Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+	// Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
+	// be managed.
 	CanPush *bool `pulumi:"canPush"`
 	// The public ssh key body.
 	Key string `pulumi:"key"`
@@ -138,7 +142,8 @@ type deployKeyArgs struct {
 
 // The set of arguments for constructing a DeployKey resource.
 type DeployKeyArgs struct {
-	// Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+	// Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
+	// be managed.
 	CanPush pulumi.BoolPtrInput
 	// The public ssh key body.
 	Key pulumi.StringInput

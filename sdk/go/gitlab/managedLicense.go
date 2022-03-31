@@ -38,7 +38,7 @@ import (
 // 		}
 // 		_, err = gitlab.NewManagedLicense(ctx, "mit", &gitlab.ManagedLicenseArgs{
 // 			Project:        foo.ID(),
-// 			ApprovalStatus: pulumi.String("approved"),
+// 			ApprovalStatus: pulumi.String("allowed"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -58,7 +58,9 @@ import (
 type ManagedLicense struct {
 	pulumi.CustomResourceState
 
-	// Whether the license is approved or not. Only 'approved' or 'blacklisted' allowed.
+	// The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+	// "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+	// 15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
 	ApprovalStatus pulumi.StringOutput `pulumi:"approvalStatus"`
 	// The name of the managed license (I.e., 'Apache License 2.0' or 'MIT license')
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -101,7 +103,9 @@ func GetManagedLicense(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ManagedLicense resources.
 type managedLicenseState struct {
-	// Whether the license is approved or not. Only 'approved' or 'blacklisted' allowed.
+	// The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+	// "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+	// 15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
 	ApprovalStatus *string `pulumi:"approvalStatus"`
 	// The name of the managed license (I.e., 'Apache License 2.0' or 'MIT license')
 	Name *string `pulumi:"name"`
@@ -110,7 +114,9 @@ type managedLicenseState struct {
 }
 
 type ManagedLicenseState struct {
-	// Whether the license is approved or not. Only 'approved' or 'blacklisted' allowed.
+	// The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+	// "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+	// 15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
 	ApprovalStatus pulumi.StringPtrInput
 	// The name of the managed license (I.e., 'Apache License 2.0' or 'MIT license')
 	Name pulumi.StringPtrInput
@@ -123,7 +129,9 @@ func (ManagedLicenseState) ElementType() reflect.Type {
 }
 
 type managedLicenseArgs struct {
-	// Whether the license is approved or not. Only 'approved' or 'blacklisted' allowed.
+	// The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+	// "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+	// 15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
 	ApprovalStatus string `pulumi:"approvalStatus"`
 	// The name of the managed license (I.e., 'Apache License 2.0' or 'MIT license')
 	Name *string `pulumi:"name"`
@@ -133,7 +141,9 @@ type managedLicenseArgs struct {
 
 // The set of arguments for constructing a ManagedLicense resource.
 type ManagedLicenseArgs struct {
-	// Whether the license is approved or not. Only 'approved' or 'blacklisted' allowed.
+	// The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+	// "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+	// 15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
 	ApprovalStatus pulumi.StringInput
 	// The name of the managed license (I.e., 'Apache License 2.0' or 'MIT license')
 	Name pulumi.StringPtrInput

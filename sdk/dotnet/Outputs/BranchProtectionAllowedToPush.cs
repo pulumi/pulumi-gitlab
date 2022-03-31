@@ -13,21 +13,9 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class BranchProtectionAllowedToPush
     {
-        /// <summary>
-        /// Level of access.
-        /// </summary>
         public readonly string? AccessLevel;
-        /// <summary>
-        /// Readable description of level of access.
-        /// </summary>
         public readonly string? AccessLevelDescription;
-        /// <summary>
-        /// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
-        /// </summary>
         public readonly int? GroupId;
-        /// <summary>
-        /// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
-        /// </summary>
         public readonly int? UserId;
 
         [OutputConstructor]

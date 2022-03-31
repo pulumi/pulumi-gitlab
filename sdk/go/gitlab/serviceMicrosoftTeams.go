@@ -59,7 +59,8 @@ type ServiceMicrosoftTeams struct {
 
 	// Whether the integration is active.
 	Active pulumi.BoolOutput `pulumi:"active"`
-	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+	// “default_and_protected”. The default value is “default”
 	BranchesToBeNotified pulumi.StringPtrOutput `pulumi:"branchesToBeNotified"`
 	// Enable notifications for confidential issue events
 	ConfidentialIssuesEvents pulumi.BoolPtrOutput `pulumi:"confidentialIssuesEvents"`
@@ -128,7 +129,8 @@ func GetServiceMicrosoftTeams(ctx *pulumi.Context,
 type serviceMicrosoftTeamsState struct {
 	// Whether the integration is active.
 	Active *bool `pulumi:"active"`
-	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+	// “default_and_protected”. The default value is “default”
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
 	// Enable notifications for confidential issue events
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
@@ -163,7 +165,8 @@ type serviceMicrosoftTeamsState struct {
 type ServiceMicrosoftTeamsState struct {
 	// Whether the integration is active.
 	Active pulumi.BoolPtrInput
-	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+	// “default_and_protected”. The default value is “default”
 	BranchesToBeNotified pulumi.StringPtrInput
 	// Enable notifications for confidential issue events
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
@@ -200,7 +203,8 @@ func (ServiceMicrosoftTeamsState) ElementType() reflect.Type {
 }
 
 type serviceMicrosoftTeamsArgs struct {
-	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+	// “default_and_protected”. The default value is “default”
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
 	// Enable notifications for confidential issue events
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
@@ -230,7 +234,8 @@ type serviceMicrosoftTeamsArgs struct {
 
 // The set of arguments for constructing a ServiceMicrosoftTeams resource.
 type ServiceMicrosoftTeamsArgs struct {
-	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+	// “default_and_protected”. The default value is “default”
 	BranchesToBeNotified pulumi.StringPtrInput
 	// Enable notifications for confidential issue events
 	ConfidentialIssuesEvents pulumi.BoolPtrInput

@@ -74,7 +74,8 @@ type ProjectLevelMrApprovals struct {
 	ProjectId pulumi.IntOutput `pulumi:"projectId"`
 	// Set to `true` if you want to require authentication when approving a merge request.
 	RequirePasswordToApprove pulumi.BoolPtrOutput `pulumi:"requirePasswordToApprove"`
-	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
+	// Default is `true`.
 	ResetApprovalsOnPush pulumi.BoolPtrOutput `pulumi:"resetApprovalsOnPush"`
 }
 
@@ -120,7 +121,8 @@ type projectLevelMrApprovalsState struct {
 	ProjectId *int `pulumi:"projectId"`
 	// Set to `true` if you want to require authentication when approving a merge request.
 	RequirePasswordToApprove *bool `pulumi:"requirePasswordToApprove"`
-	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
+	// Default is `true`.
 	ResetApprovalsOnPush *bool `pulumi:"resetApprovalsOnPush"`
 }
 
@@ -135,7 +137,8 @@ type ProjectLevelMrApprovalsState struct {
 	ProjectId pulumi.IntPtrInput
 	// Set to `true` if you want to require authentication when approving a merge request.
 	RequirePasswordToApprove pulumi.BoolPtrInput
-	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
+	// Default is `true`.
 	ResetApprovalsOnPush pulumi.BoolPtrInput
 }
 
@@ -154,7 +157,8 @@ type projectLevelMrApprovalsArgs struct {
 	ProjectId int `pulumi:"projectId"`
 	// Set to `true` if you want to require authentication when approving a merge request.
 	RequirePasswordToApprove *bool `pulumi:"requirePasswordToApprove"`
-	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
+	// Default is `true`.
 	ResetApprovalsOnPush *bool `pulumi:"resetApprovalsOnPush"`
 }
 
@@ -170,7 +174,8 @@ type ProjectLevelMrApprovalsArgs struct {
 	ProjectId pulumi.IntInput
 	// Set to `true` if you want to require authentication when approving a merge request.
 	RequirePasswordToApprove pulumi.BoolPtrInput
-	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
+	// Default is `true`.
 	ResetApprovalsOnPush pulumi.BoolPtrInput
 }
 

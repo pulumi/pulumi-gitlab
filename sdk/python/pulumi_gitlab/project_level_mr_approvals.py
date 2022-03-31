@@ -26,7 +26,8 @@ class ProjectLevelMrApprovalsArgs:
         :param pulumi.Input[bool] merge_requests_author_approval: Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
         :param pulumi.Input[bool] merge_requests_disable_committers_approval: Set to `true` if you want to prevent approval of merge requests by merge request committers.
         :param pulumi.Input[bool] require_password_to_approve: Set to `true` if you want to require authentication when approving a merge request.
-        :param pulumi.Input[bool] reset_approvals_on_push: Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+        :param pulumi.Input[bool] reset_approvals_on_push: Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
+               Default is `true`.
         """
         pulumi.set(__self__, "project_id", project_id)
         if disable_overriding_approvers_per_merge_request is not None:
@@ -104,7 +105,8 @@ class ProjectLevelMrApprovalsArgs:
     @pulumi.getter(name="resetApprovalsOnPush")
     def reset_approvals_on_push(self) -> Optional[pulumi.Input[bool]]:
         """
-        Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+        Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
+        Default is `true`.
         """
         return pulumi.get(self, "reset_approvals_on_push")
 
@@ -129,7 +131,8 @@ class _ProjectLevelMrApprovalsState:
         :param pulumi.Input[bool] merge_requests_disable_committers_approval: Set to `true` if you want to prevent approval of merge requests by merge request committers.
         :param pulumi.Input[int] project_id: The ID of the project to change MR approval configuration.
         :param pulumi.Input[bool] require_password_to_approve: Set to `true` if you want to require authentication when approving a merge request.
-        :param pulumi.Input[bool] reset_approvals_on_push: Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+        :param pulumi.Input[bool] reset_approvals_on_push: Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
+               Default is `true`.
         """
         if disable_overriding_approvers_per_merge_request is not None:
             pulumi.set(__self__, "disable_overriding_approvers_per_merge_request", disable_overriding_approvers_per_merge_request)
@@ -208,7 +211,8 @@ class _ProjectLevelMrApprovalsState:
     @pulumi.getter(name="resetApprovalsOnPush")
     def reset_approvals_on_push(self) -> Optional[pulumi.Input[bool]]:
         """
-        Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+        Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
+        Default is `true`.
         """
         return pulumi.get(self, "reset_approvals_on_push")
 
@@ -270,7 +274,8 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
         :param pulumi.Input[bool] merge_requests_disable_committers_approval: Set to `true` if you want to prevent approval of merge requests by merge request committers.
         :param pulumi.Input[int] project_id: The ID of the project to change MR approval configuration.
         :param pulumi.Input[bool] require_password_to_approve: Set to `true` if you want to require authentication when approving a merge request.
-        :param pulumi.Input[bool] reset_approvals_on_push: Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+        :param pulumi.Input[bool] reset_approvals_on_push: Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
+               Default is `true`.
         """
         ...
     @overload
@@ -381,7 +386,8 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
         :param pulumi.Input[bool] merge_requests_disable_committers_approval: Set to `true` if you want to prevent approval of merge requests by merge request committers.
         :param pulumi.Input[int] project_id: The ID of the project to change MR approval configuration.
         :param pulumi.Input[bool] require_password_to_approve: Set to `true` if you want to require authentication when approving a merge request.
-        :param pulumi.Input[bool] reset_approvals_on_push: Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+        :param pulumi.Input[bool] reset_approvals_on_push: Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
+               Default is `true`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -439,7 +445,8 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
     @pulumi.getter(name="resetApprovalsOnPush")
     def reset_approvals_on_push(self) -> pulumi.Output[Optional[bool]]:
         """
-        Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+        Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
+        Default is `true`.
         """
         return pulumi.get(self, "reset_approvals_on_push")
 

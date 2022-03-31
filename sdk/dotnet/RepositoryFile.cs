@@ -34,10 +34,22 @@ namespace Pulumi.GitLab
         public Output<string?> AuthorName { get; private set; } = null!;
 
         /// <summary>
+        /// The blob id.
+        /// </summary>
+        [Output("blobId")]
+        public Output<string> BlobId { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the branch to which to commit to.
         /// </summary>
         [Output("branch")]
         public Output<string> Branch { get; private set; } = null!;
+
+        /// <summary>
+        /// The commit id.
+        /// </summary>
+        [Output("commitId")]
+        public Output<string> CommitId { get; private set; } = null!;
 
         /// <summary>
         /// Commit message.
@@ -46,16 +58,29 @@ namespace Pulumi.GitLab
         public Output<string> CommitMessage { get; private set; } = null!;
 
         /// <summary>
-        /// base64 encoded file content. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        /// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+        /// supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
         /// </summary>
         [Output("content")]
         public Output<string> Content { get; private set; } = null!;
 
         /// <summary>
-        /// Content encoding.
+        /// File content sha256 digest.
+        /// </summary>
+        [Output("contentSha256")]
+        public Output<string> ContentSha256 { get; private set; } = null!;
+
+        /// <summary>
+        /// The file content encoding.
         /// </summary>
         [Output("encoding")]
         public Output<string> Encoding { get; private set; } = null!;
+
+        /// <summary>
+        /// The filename.
+        /// </summary>
+        [Output("fileName")]
+        public Output<string> FileName { get; private set; } = null!;
 
         /// <summary>
         /// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
@@ -64,10 +89,28 @@ namespace Pulumi.GitLab
         public Output<string> FilePath { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the project.
+        /// The last known commit id.
+        /// </summary>
+        [Output("lastCommitId")]
+        public Output<string> LastCommitId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name or ID of the project.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of branch, tag or commit.
+        /// </summary>
+        [Output("ref")]
+        public Output<string> Ref { get; private set; } = null!;
+
+        /// <summary>
+        /// The file size.
+        /// </summary>
+        [Output("size")]
+        public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
         /// Name of the branch to start the new commit from.
@@ -146,7 +189,8 @@ namespace Pulumi.GitLab
         public Input<string> CommitMessage { get; set; } = null!;
 
         /// <summary>
-        /// base64 encoded file content. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        /// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+        /// supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
         /// </summary>
         [Input("content", required: true)]
         public Input<string> Content { get; set; } = null!;
@@ -158,7 +202,7 @@ namespace Pulumi.GitLab
         public Input<string> FilePath { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the project.
+        /// The name or ID of the project.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -189,10 +233,22 @@ namespace Pulumi.GitLab
         public Input<string>? AuthorName { get; set; }
 
         /// <summary>
+        /// The blob id.
+        /// </summary>
+        [Input("blobId")]
+        public Input<string>? BlobId { get; set; }
+
+        /// <summary>
         /// Name of the branch to which to commit to.
         /// </summary>
         [Input("branch")]
         public Input<string>? Branch { get; set; }
+
+        /// <summary>
+        /// The commit id.
+        /// </summary>
+        [Input("commitId")]
+        public Input<string>? CommitId { get; set; }
 
         /// <summary>
         /// Commit message.
@@ -201,16 +257,29 @@ namespace Pulumi.GitLab
         public Input<string>? CommitMessage { get; set; }
 
         /// <summary>
-        /// base64 encoded file content. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        /// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+        /// supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Content encoding.
+        /// File content sha256 digest.
+        /// </summary>
+        [Input("contentSha256")]
+        public Input<string>? ContentSha256 { get; set; }
+
+        /// <summary>
+        /// The file content encoding.
         /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }
+
+        /// <summary>
+        /// The filename.
+        /// </summary>
+        [Input("fileName")]
+        public Input<string>? FileName { get; set; }
 
         /// <summary>
         /// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
@@ -219,10 +288,28 @@ namespace Pulumi.GitLab
         public Input<string>? FilePath { get; set; }
 
         /// <summary>
-        /// The ID of the project.
+        /// The last known commit id.
+        /// </summary>
+        [Input("lastCommitId")]
+        public Input<string>? LastCommitId { get; set; }
+
+        /// <summary>
+        /// The name or ID of the project.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The name of branch, tag or commit.
+        /// </summary>
+        [Input("ref")]
+        public Input<string>? Ref { get; set; }
+
+        /// <summary>
+        /// The file size.
+        /// </summary>
+        [Input("size")]
+        public Input<int>? Size { get; set; }
 
         /// <summary>
         /// Name of the branch to start the new commit from.

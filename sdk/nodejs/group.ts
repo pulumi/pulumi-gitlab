@@ -5,8 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows you to create and manage GitLab groups.
- * Note your provider will need to be configured with admin-level access for this resource to work.
+ * The `gitlab.Group` resource allows to manage the lifecycle of a group.
+ *
+ * > On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)
  *
  * ## Example Usage
  *
@@ -66,11 +69,11 @@ export class Group extends pulumi.CustomResource {
     }
 
     /**
-     * Boolean, defaults to false.  Default to Auto
+     * Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
      */
     public readonly autoDevopsEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Int, defaults to 2.
+     * Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
      */
     public readonly defaultBranchProtection!: pulumi.Output<number | undefined>;
     /**
@@ -78,7 +81,7 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Boolean, defaults to false.  Disable email notifications
+     * Defaults to false. Disable email notifications.
      */
     public readonly emailsDisabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -90,11 +93,11 @@ export class Group extends pulumi.CustomResource {
      */
     public /*out*/ readonly fullPath!: pulumi.Output<string>;
     /**
-     * Boolean, defaults to true.  Whether to enable LFS
+     * Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
      */
     public readonly lfsEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Boolean, defaults to false.  Disable the capability
+     * Defaults to false. Disable the capability of a group from getting mentioned.
      */
     public readonly mentionsDisabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -102,7 +105,7 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Integer, id of the parent group (creates a nested group).
+     * Id of the parent group (creates a nested group).
      */
     public readonly parentId!: pulumi.Output<number | undefined>;
     /**
@@ -110,19 +113,19 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly path!: pulumi.Output<string>;
     /**
-     * When enabled, users can not fork projects from this group to external namespaces.
+     * Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
      */
     public readonly preventForkingOutsideGroup!: pulumi.Output<boolean | undefined>;
     /**
-     * , defaults to Maintainer.
+     * Defaults to maintainer. Determine if developers can create projects in the group.
      */
     public readonly projectCreationLevel!: pulumi.Output<string | undefined>;
     /**
-     * Boolean, defaults to false.  Whether to
+     * Defaults to false. Allow users to request member access.
      */
     public readonly requestAccessEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Boolean, defaults to false.
+     * Defaults to false. Require all users in this group to setup Two-factor authentication.
      */
     public readonly requireTwoFactorAuthentication!: pulumi.Output<boolean | undefined>;
     /**
@@ -130,15 +133,15 @@ export class Group extends pulumi.CustomResource {
      */
     public /*out*/ readonly runnersToken!: pulumi.Output<string>;
     /**
-     * Boolean, defaults to false.  Prevent sharing
+     * Defaults to false. Prevent sharing a project with another group within this group.
      */
     public readonly shareWithGroupLock!: pulumi.Output<boolean | undefined>;
     /**
-     * , defaults to Owner.
+     * Defaults to owner. Allowed to create subgroups.
      */
     public readonly subgroupCreationLevel!: pulumi.Output<string | undefined>;
     /**
-     * Int, defaults to 48.
+     * Defaults to 48. Time before Two-factor authentication is enforced (in hours).
      */
     public readonly twoFactorGracePeriod!: pulumi.Output<number | undefined>;
     /**
@@ -221,11 +224,11 @@ export class Group extends pulumi.CustomResource {
  */
 export interface GroupState {
     /**
-     * Boolean, defaults to false.  Default to Auto
+     * Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
      */
     autoDevopsEnabled?: pulumi.Input<boolean>;
     /**
-     * Int, defaults to 2.
+     * Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
      */
     defaultBranchProtection?: pulumi.Input<number>;
     /**
@@ -233,7 +236,7 @@ export interface GroupState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Boolean, defaults to false.  Disable email notifications
+     * Defaults to false. Disable email notifications.
      */
     emailsDisabled?: pulumi.Input<boolean>;
     /**
@@ -245,11 +248,11 @@ export interface GroupState {
      */
     fullPath?: pulumi.Input<string>;
     /**
-     * Boolean, defaults to true.  Whether to enable LFS
+     * Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
      */
     lfsEnabled?: pulumi.Input<boolean>;
     /**
-     * Boolean, defaults to false.  Disable the capability
+     * Defaults to false. Disable the capability of a group from getting mentioned.
      */
     mentionsDisabled?: pulumi.Input<boolean>;
     /**
@@ -257,7 +260,7 @@ export interface GroupState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Integer, id of the parent group (creates a nested group).
+     * Id of the parent group (creates a nested group).
      */
     parentId?: pulumi.Input<number>;
     /**
@@ -265,19 +268,19 @@ export interface GroupState {
      */
     path?: pulumi.Input<string>;
     /**
-     * When enabled, users can not fork projects from this group to external namespaces.
+     * Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
      */
     preventForkingOutsideGroup?: pulumi.Input<boolean>;
     /**
-     * , defaults to Maintainer.
+     * Defaults to maintainer. Determine if developers can create projects in the group.
      */
     projectCreationLevel?: pulumi.Input<string>;
     /**
-     * Boolean, defaults to false.  Whether to
+     * Defaults to false. Allow users to request member access.
      */
     requestAccessEnabled?: pulumi.Input<boolean>;
     /**
-     * Boolean, defaults to false.
+     * Defaults to false. Require all users in this group to setup Two-factor authentication.
      */
     requireTwoFactorAuthentication?: pulumi.Input<boolean>;
     /**
@@ -285,15 +288,15 @@ export interface GroupState {
      */
     runnersToken?: pulumi.Input<string>;
     /**
-     * Boolean, defaults to false.  Prevent sharing
+     * Defaults to false. Prevent sharing a project with another group within this group.
      */
     shareWithGroupLock?: pulumi.Input<boolean>;
     /**
-     * , defaults to Owner.
+     * Defaults to owner. Allowed to create subgroups.
      */
     subgroupCreationLevel?: pulumi.Input<string>;
     /**
-     * Int, defaults to 48.
+     * Defaults to 48. Time before Two-factor authentication is enforced (in hours).
      */
     twoFactorGracePeriod?: pulumi.Input<number>;
     /**
@@ -311,11 +314,11 @@ export interface GroupState {
  */
 export interface GroupArgs {
     /**
-     * Boolean, defaults to false.  Default to Auto
+     * Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
      */
     autoDevopsEnabled?: pulumi.Input<boolean>;
     /**
-     * Int, defaults to 2.
+     * Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
      */
     defaultBranchProtection?: pulumi.Input<number>;
     /**
@@ -323,15 +326,15 @@ export interface GroupArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Boolean, defaults to false.  Disable email notifications
+     * Defaults to false. Disable email notifications.
      */
     emailsDisabled?: pulumi.Input<boolean>;
     /**
-     * Boolean, defaults to true.  Whether to enable LFS
+     * Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
      */
     lfsEnabled?: pulumi.Input<boolean>;
     /**
-     * Boolean, defaults to false.  Disable the capability
+     * Defaults to false. Disable the capability of a group from getting mentioned.
      */
     mentionsDisabled?: pulumi.Input<boolean>;
     /**
@@ -339,7 +342,7 @@ export interface GroupArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Integer, id of the parent group (creates a nested group).
+     * Id of the parent group (creates a nested group).
      */
     parentId?: pulumi.Input<number>;
     /**
@@ -347,31 +350,31 @@ export interface GroupArgs {
      */
     path: pulumi.Input<string>;
     /**
-     * When enabled, users can not fork projects from this group to external namespaces.
+     * Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
      */
     preventForkingOutsideGroup?: pulumi.Input<boolean>;
     /**
-     * , defaults to Maintainer.
+     * Defaults to maintainer. Determine if developers can create projects in the group.
      */
     projectCreationLevel?: pulumi.Input<string>;
     /**
-     * Boolean, defaults to false.  Whether to
+     * Defaults to false. Allow users to request member access.
      */
     requestAccessEnabled?: pulumi.Input<boolean>;
     /**
-     * Boolean, defaults to false.
+     * Defaults to false. Require all users in this group to setup Two-factor authentication.
      */
     requireTwoFactorAuthentication?: pulumi.Input<boolean>;
     /**
-     * Boolean, defaults to false.  Prevent sharing
+     * Defaults to false. Prevent sharing a project with another group within this group.
      */
     shareWithGroupLock?: pulumi.Input<boolean>;
     /**
-     * , defaults to Owner.
+     * Defaults to owner. Allowed to create subgroups.
      */
     subgroupCreationLevel?: pulumi.Input<string>;
     /**
-     * Int, defaults to 48.
+     * Defaults to 48. Time before Two-factor authentication is enforced (in hours).
      */
     twoFactorGracePeriod?: pulumi.Input<number>;
     /**

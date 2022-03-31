@@ -11,9 +11,6 @@ export interface BranchCommit {
     committedDate?: pulumi.Input<string>;
     committerEmail?: pulumi.Input<string>;
     committerName?: pulumi.Input<string>;
-    /**
-     * The ID of this resource.
-     */
     id?: pulumi.Input<string>;
     message?: pulumi.Input<string>;
     parentIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -22,98 +19,59 @@ export interface BranchCommit {
 }
 
 export interface BranchProtectionAllowedToMerge {
-    /**
-     * Level of access.
-     */
     accessLevel?: pulumi.Input<string>;
-    /**
-     * Readable description of level of access.
-     */
     accessLevelDescription?: pulumi.Input<string>;
-    /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
-     */
     groupId?: pulumi.Input<number>;
-    /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
-     */
     userId?: pulumi.Input<number>;
 }
 
 export interface BranchProtectionAllowedToPush {
-    /**
-     * Level of access.
-     */
     accessLevel?: pulumi.Input<string>;
-    /**
-     * Readable description of level of access.
-     */
     accessLevelDescription?: pulumi.Input<string>;
-    /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
-     */
     groupId?: pulumi.Input<number>;
-    /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
-     */
     userId?: pulumi.Input<number>;
 }
 
+export interface BranchProtectionAllowedToUnprotect {
+    accessLevel?: pulumi.Input<string>;
+    accessLevelDescription?: pulumi.Input<string>;
+    groupId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number>;
+}
+
+export interface ProjectContainerExpirationPolicy {
+    cadence?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    keepN?: pulumi.Input<number>;
+    nameRegexDelete?: pulumi.Input<string>;
+    nameRegexKeep?: pulumi.Input<string>;
+    nextRunAt?: pulumi.Input<string>;
+    olderThan?: pulumi.Input<string>;
+}
+
 export interface ProjectIssueTaskCompletionStatus {
-    /**
-     * The number of tasks that are completed.
-     */
     completedCount?: pulumi.Input<number>;
-    /**
-     * The number of tasks.
-     */
     count?: pulumi.Input<number>;
 }
 
+export interface ProjectProtectedEnvironmentDeployAccessLevels {
+    accessLevel?: pulumi.Input<string>;
+    accessLevelDescription?: pulumi.Input<string>;
+    groupId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number>;
+}
+
 export interface ProjectPushRules {
-    /**
-     * All commit author emails must match this regex, e.g. `@my-company.com$`.
-     */
     authorEmailRegex?: pulumi.Input<string>;
-    /**
-     * All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
-     */
     branchNameRegex?: pulumi.Input<string>;
-    /**
-     * Users can only push commits to this repository that were committed with one of their own verified emails.
-     */
     commitCommitterCheck?: pulumi.Input<boolean>;
-    /**
-     * No commit message is allowed to match this regex, for example `ssh\:\/\/`.
-     */
     commitMessageNegativeRegex?: pulumi.Input<string>;
-    /**
-     * All commit messages must match this regex, e.g. `Fixed \d+\..*`.
-     */
     commitMessageRegex?: pulumi.Input<string>;
-    /**
-     * Deny deleting a tag.
-     */
     denyDeleteTag?: pulumi.Input<boolean>;
-    /**
-     * All commited filenames must not match this regex, e.g. `(jar|exe)$`.
-     */
     fileNameRegex?: pulumi.Input<string>;
-    /**
-     * Maximum file size (MB).
-     */
     maxFileSize?: pulumi.Input<number>;
-    /**
-     * Restrict commits by author (email) to existing GitLab users.
-     */
     memberCheck?: pulumi.Input<boolean>;
-    /**
-     * GitLab will reject any files that are likely to contain secrets.
-     */
     preventSecrets?: pulumi.Input<boolean>;
-    /**
-     * Reject commit when it’s not signed through GPG.
-     */
     rejectUnsignedCommits?: pulumi.Input<boolean>;
 }
 
@@ -124,13 +82,7 @@ export interface ProjectTagCommit {
     committedDate?: pulumi.Input<string>;
     committerEmail?: pulumi.Input<string>;
     committerName?: pulumi.Input<string>;
-    /**
-     * The ID of this resource.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * Creates annotated tag.
-     */
     message?: pulumi.Input<string>;
     parentIds?: pulumi.Input<pulumi.Input<string>[]>;
     shortId?: pulumi.Input<string>;

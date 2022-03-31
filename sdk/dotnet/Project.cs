@@ -69,13 +69,20 @@ namespace Pulumi.GitLab
         public Output<bool?> AllowMergeOnSkippedPipeline { get; private set; } = null!;
 
         /// <summary>
+        /// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("analyticsAccessLevel")]
+        public Output<string> AnalyticsAccessLevel { get; private set; } = null!;
+
+        /// <summary>
         /// Number of merge request approvals required for merging. Default is 0.
         /// </summary>
         [Output("approvalsBeforeMerge")]
         public Output<int?> ApprovalsBeforeMerge { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
+        /// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE`
+        /// operation.
         /// </summary>
         [Output("archiveOnDestroy")]
         public Output<bool?> ArchiveOnDestroy { get; private set; } = null!;
@@ -87,10 +94,52 @@ namespace Pulumi.GitLab
         public Output<bool?> Archived { get; private set; } = null!;
 
         /// <summary>
+        /// Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+        /// </summary>
+        [Output("autoCancelPendingPipelines")]
+        public Output<string> AutoCancelPendingPipelines { get; private set; } = null!;
+
+        /// <summary>
+        /// Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+        /// </summary>
+        [Output("autoDevopsDeployStrategy")]
+        public Output<string> AutoDevopsDeployStrategy { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable Auto DevOps for this project.
+        /// </summary>
+        [Output("autoDevopsEnabled")]
+        public Output<bool> AutoDevopsEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Set whether auto-closing referenced issues on default branch.
+        /// </summary>
+        [Output("autocloseReferencedIssues")]
+        public Output<bool> AutocloseReferencedIssues { get; private set; } = null!;
+
+        /// <summary>
         /// Test coverage parsing for the project.
         /// </summary>
         [Output("buildCoverageRegex")]
         public Output<string?> BuildCoverageRegex { get; private set; } = null!;
+
+        /// <summary>
+        /// The Git strategy. Defaults to fetch.
+        /// </summary>
+        [Output("buildGitStrategy")]
+        public Output<string> BuildGitStrategy { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum amount of time, in seconds, that a job can run.
+        /// </summary>
+        [Output("buildTimeout")]
+        public Output<int> BuildTimeout { get; private set; } = null!;
+
+        /// <summary>
+        /// Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("buildsAccessLevel")]
+        public Output<string> BuildsAccessLevel { get; private set; } = null!;
 
         /// <summary>
         /// Custom Path to CI config file.
@@ -103,6 +152,19 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("ciForwardDeploymentEnabled")]
         public Output<bool?> CiForwardDeploymentEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Set the image cleanup policy for this project. **Note**: this field is sometimes named
+        /// `container_expiration_policy_attributes` in the GitLab Upstream API.
+        /// </summary>
+        [Output("containerExpirationPolicy")]
+        public Output<Outputs.ProjectContainerExpirationPolicy> ContainerExpirationPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("containerRegistryAccessLevel")]
+        public Output<string> ContainerRegistryAccessLevel { get; private set; } = null!;
 
         /// <summary>
         /// Enable container registry for the project.
@@ -123,7 +185,26 @@ namespace Pulumi.GitLab
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
+        /// Disable email notifications.
+        /// </summary>
+        [Output("emailsDisabled")]
+        public Output<bool?> EmailsDisabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The classification label for the project.
+        /// </summary>
+        [Output("externalAuthorizationClassificationLabel")]
+        public Output<string?> ExternalAuthorizationClassificationLabel { get; private set; } = null!;
+
+        /// <summary>
+        /// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("forkingAccessLevel")]
+        public Output<string> ForkingAccessLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave
+        /// empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
         /// </summary>
         [Output("groupWithProjectTemplatesId")]
         public Output<int?> GroupWithProjectTemplatesId { get; private set; } = null!;
@@ -147,6 +228,12 @@ namespace Pulumi.GitLab
         public Output<bool?> InitializeWithReadme { get; private set; } = null!;
 
         /// <summary>
+        /// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("issuesAccessLevel")]
+        public Output<string> IssuesAccessLevel { get; private set; } = null!;
+
+        /// <summary>
         /// Enable issue tracking for the project.
         /// </summary>
         [Output("issuesEnabled")]
@@ -165,6 +252,12 @@ namespace Pulumi.GitLab
         public Output<bool?> LfsEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        /// </summary>
+        [Output("mergeCommitTemplate")]
+        public Output<string?> MergeCommitTemplate { get; private set; } = null!;
+
+        /// <summary>
         /// Set to `ff` to create fast-forward merges
         /// </summary>
         [Output("mergeMethod")]
@@ -175,6 +268,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("mergePipelinesEnabled")]
         public Output<bool?> MergePipelinesEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("mergeRequestsAccessLevel")]
+        public Output<string> MergeRequestsAccessLevel { get; private set; } = null!;
 
         /// <summary>
         /// Enable merge requests for the project.
@@ -243,6 +342,12 @@ namespace Pulumi.GitLab
         public Output<bool?> OnlyMirrorProtectedBranches { get; private set; } = null!;
 
         /// <summary>
+        /// Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("operationsAccessLevel")]
+        public Output<string> OperationsAccessLevel { get; private set; } = null!;
+
+        /// <summary>
         /// Enable packages repository for the project.
         /// </summary>
         [Output("packagesEnabled")]
@@ -279,6 +384,12 @@ namespace Pulumi.GitLab
         public Output<bool?> PrintingMergeRequestLinkEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// If true, jobs can be viewed by non-project members.
+        /// </summary>
+        [Output("publicBuilds")]
+        public Output<bool?> PublicBuilds { get; private set; } = null!;
+
+        /// <summary>
         /// Push rules for the project.
         /// </summary>
         [Output("pushRules")]
@@ -291,10 +402,34 @@ namespace Pulumi.GitLab
         public Output<bool?> RemoveSourceBranchAfterMerge { get; private set; } = null!;
 
         /// <summary>
+        /// Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("repositoryAccessLevel")]
+        public Output<string> RepositoryAccessLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// Which storage shard the repository is on. (administrator only)
+        /// </summary>
+        [Output("repositoryStorage")]
+        public Output<string> RepositoryStorage { get; private set; } = null!;
+
+        /// <summary>
         /// Allow users to request member access.
         /// </summary>
         [Output("requestAccessEnabled")]
         public Output<bool?> RequestAccessEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("requirementsAccessLevel")]
+        public Output<string> RequirementsAccessLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// Automatically resolve merge request diffs discussions on lines changed with a push.
+        /// </summary>
+        [Output("resolveOutdatedDiffDiscussions")]
+        public Output<bool?> ResolveOutdatedDiffDiscussions { get; private set; } = null!;
 
         /// <summary>
         /// Registration token to use during runner setup.
@@ -303,10 +438,22 @@ namespace Pulumi.GitLab
         public Output<string> RunnersToken { get; private set; } = null!;
 
         /// <summary>
+        /// Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("securityAndComplianceAccessLevel")]
+        public Output<string> SecurityAndComplianceAccessLevel { get; private set; } = null!;
+
+        /// <summary>
         /// Enable shared runners for this project.
         /// </summary>
         [Output("sharedRunnersEnabled")]
         public Output<bool> SharedRunnersEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("snippetsAccessLevel")]
+        public Output<string> SnippetsAccessLevel { get; private set; } = null!;
 
         /// <summary>
         /// Enable snippets for the project.
@@ -315,7 +462,14 @@ namespace Pulumi.GitLab
         public Output<bool?> SnippetsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
+        /// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+        /// </summary>
+        [Output("squashCommitTemplate")]
+        public Output<string?> SquashCommitTemplate { get; private set; } = null!;
+
+        /// <summary>
+        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value
+        /// is `default_off`. [GitLab &gt;= 14.1]
         /// </summary>
         [Output("squashOption")]
         public Output<string?> SquashOption { get; private set; } = null!;
@@ -327,25 +481,33 @@ namespace Pulumi.GitLab
         public Output<string> SshUrlToRepo { get; private set; } = null!;
 
         /// <summary>
-        /// Tags (topics) of the project.
+        /// The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        /// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of
+        /// a custom project template. This option is mutually exclusive with `template_project_id`.
         /// </summary>
         [Output("templateName")]
         public Output<string?> TemplateName { get; private set; } = null!;
 
         /// <summary>
-        /// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        /// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name
+        /// since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
         /// </summary>
         [Output("templateProjectId")]
         public Output<int?> TemplateProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+        /// The list of topics for the project.
+        /// </summary>
+        [Output("topics")]
+        public Output<ImmutableArray<string>> Topics { get; private set; } = null!;
+
+        /// <summary>
+        /// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
         /// </summary>
         [Output("useCustomTemplate")]
         public Output<bool?> UseCustomTemplate { get; private set; } = null!;
@@ -361,6 +523,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("webUrl")]
         public Output<string> WebUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("wikiAccessLevel")]
+        public Output<string> WikiAccessLevel { get; private set; } = null!;
 
         /// <summary>
         /// Enable wiki for the project.
@@ -421,13 +589,20 @@ namespace Pulumi.GitLab
         public Input<bool>? AllowMergeOnSkippedPipeline { get; set; }
 
         /// <summary>
+        /// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("analyticsAccessLevel")]
+        public Input<string>? AnalyticsAccessLevel { get; set; }
+
+        /// <summary>
         /// Number of merge request approvals required for merging. Default is 0.
         /// </summary>
         [Input("approvalsBeforeMerge")]
         public Input<int>? ApprovalsBeforeMerge { get; set; }
 
         /// <summary>
-        /// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
+        /// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE`
+        /// operation.
         /// </summary>
         [Input("archiveOnDestroy")]
         public Input<bool>? ArchiveOnDestroy { get; set; }
@@ -439,10 +614,52 @@ namespace Pulumi.GitLab
         public Input<bool>? Archived { get; set; }
 
         /// <summary>
+        /// Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+        /// </summary>
+        [Input("autoCancelPendingPipelines")]
+        public Input<string>? AutoCancelPendingPipelines { get; set; }
+
+        /// <summary>
+        /// Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+        /// </summary>
+        [Input("autoDevopsDeployStrategy")]
+        public Input<string>? AutoDevopsDeployStrategy { get; set; }
+
+        /// <summary>
+        /// Enable Auto DevOps for this project.
+        /// </summary>
+        [Input("autoDevopsEnabled")]
+        public Input<bool>? AutoDevopsEnabled { get; set; }
+
+        /// <summary>
+        /// Set whether auto-closing referenced issues on default branch.
+        /// </summary>
+        [Input("autocloseReferencedIssues")]
+        public Input<bool>? AutocloseReferencedIssues { get; set; }
+
+        /// <summary>
         /// Test coverage parsing for the project.
         /// </summary>
         [Input("buildCoverageRegex")]
         public Input<string>? BuildCoverageRegex { get; set; }
+
+        /// <summary>
+        /// The Git strategy. Defaults to fetch.
+        /// </summary>
+        [Input("buildGitStrategy")]
+        public Input<string>? BuildGitStrategy { get; set; }
+
+        /// <summary>
+        /// The maximum amount of time, in seconds, that a job can run.
+        /// </summary>
+        [Input("buildTimeout")]
+        public Input<int>? BuildTimeout { get; set; }
+
+        /// <summary>
+        /// Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("buildsAccessLevel")]
+        public Input<string>? BuildsAccessLevel { get; set; }
 
         /// <summary>
         /// Custom Path to CI config file.
@@ -455,6 +672,19 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("ciForwardDeploymentEnabled")]
         public Input<bool>? CiForwardDeploymentEnabled { get; set; }
+
+        /// <summary>
+        /// Set the image cleanup policy for this project. **Note**: this field is sometimes named
+        /// `container_expiration_policy_attributes` in the GitLab Upstream API.
+        /// </summary>
+        [Input("containerExpirationPolicy")]
+        public Input<Inputs.ProjectContainerExpirationPolicyArgs>? ContainerExpirationPolicy { get; set; }
+
+        /// <summary>
+        /// Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("containerRegistryAccessLevel")]
+        public Input<string>? ContainerRegistryAccessLevel { get; set; }
 
         /// <summary>
         /// Enable container registry for the project.
@@ -475,7 +705,26 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
+        /// Disable email notifications.
+        /// </summary>
+        [Input("emailsDisabled")]
+        public Input<bool>? EmailsDisabled { get; set; }
+
+        /// <summary>
+        /// The classification label for the project.
+        /// </summary>
+        [Input("externalAuthorizationClassificationLabel")]
+        public Input<string>? ExternalAuthorizationClassificationLabel { get; set; }
+
+        /// <summary>
+        /// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("forkingAccessLevel")]
+        public Input<string>? ForkingAccessLevel { get; set; }
+
+        /// <summary>
+        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave
+        /// empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
         /// </summary>
         [Input("groupWithProjectTemplatesId")]
         public Input<int>? GroupWithProjectTemplatesId { get; set; }
@@ -491,6 +740,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("initializeWithReadme")]
         public Input<bool>? InitializeWithReadme { get; set; }
+
+        /// <summary>
+        /// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("issuesAccessLevel")]
+        public Input<string>? IssuesAccessLevel { get; set; }
 
         /// <summary>
         /// Enable issue tracking for the project.
@@ -511,6 +766,12 @@ namespace Pulumi.GitLab
         public Input<bool>? LfsEnabled { get; set; }
 
         /// <summary>
+        /// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        /// </summary>
+        [Input("mergeCommitTemplate")]
+        public Input<string>? MergeCommitTemplate { get; set; }
+
+        /// <summary>
         /// Set to `ff` to create fast-forward merges
         /// </summary>
         [Input("mergeMethod")]
@@ -521,6 +782,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mergePipelinesEnabled")]
         public Input<bool>? MergePipelinesEnabled { get; set; }
+
+        /// <summary>
+        /// Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("mergeRequestsAccessLevel")]
+        public Input<string>? MergeRequestsAccessLevel { get; set; }
 
         /// <summary>
         /// Enable merge requests for the project.
@@ -587,6 +854,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("onlyMirrorProtectedBranches")]
         public Input<bool>? OnlyMirrorProtectedBranches { get; set; }
+
+        /// <summary>
+        /// Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("operationsAccessLevel")]
+        public Input<string>? OperationsAccessLevel { get; set; }
 
         /// <summary>
         /// Enable packages repository for the project.
@@ -619,6 +892,12 @@ namespace Pulumi.GitLab
         public Input<bool>? PrintingMergeRequestLinkEnabled { get; set; }
 
         /// <summary>
+        /// If true, jobs can be viewed by non-project members.
+        /// </summary>
+        [Input("publicBuilds")]
+        public Input<bool>? PublicBuilds { get; set; }
+
+        /// <summary>
         /// Push rules for the project.
         /// </summary>
         [Input("pushRules")]
@@ -631,10 +910,40 @@ namespace Pulumi.GitLab
         public Input<bool>? RemoveSourceBranchAfterMerge { get; set; }
 
         /// <summary>
+        /// Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("repositoryAccessLevel")]
+        public Input<string>? RepositoryAccessLevel { get; set; }
+
+        /// <summary>
+        /// Which storage shard the repository is on. (administrator only)
+        /// </summary>
+        [Input("repositoryStorage")]
+        public Input<string>? RepositoryStorage { get; set; }
+
+        /// <summary>
         /// Allow users to request member access.
         /// </summary>
         [Input("requestAccessEnabled")]
         public Input<bool>? RequestAccessEnabled { get; set; }
+
+        /// <summary>
+        /// Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("requirementsAccessLevel")]
+        public Input<string>? RequirementsAccessLevel { get; set; }
+
+        /// <summary>
+        /// Automatically resolve merge request diffs discussions on lines changed with a push.
+        /// </summary>
+        [Input("resolveOutdatedDiffDiscussions")]
+        public Input<bool>? ResolveOutdatedDiffDiscussions { get; set; }
+
+        /// <summary>
+        /// Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("securityAndComplianceAccessLevel")]
+        public Input<string>? SecurityAndComplianceAccessLevel { get; set; }
 
         /// <summary>
         /// Enable shared runners for this project.
@@ -643,13 +952,26 @@ namespace Pulumi.GitLab
         public Input<bool>? SharedRunnersEnabled { get; set; }
 
         /// <summary>
+        /// Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("snippetsAccessLevel")]
+        public Input<string>? SnippetsAccessLevel { get; set; }
+
+        /// <summary>
         /// Enable snippets for the project.
         /// </summary>
         [Input("snippetsEnabled")]
         public Input<bool>? SnippetsEnabled { get; set; }
 
         /// <summary>
-        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
+        /// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+        /// </summary>
+        [Input("squashCommitTemplate")]
+        public Input<string>? SquashCommitTemplate { get; set; }
+
+        /// <summary>
+        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value
+        /// is `default_off`. [GitLab &gt;= 14.1]
         /// </summary>
         [Input("squashOption")]
         public Input<string>? SquashOption { get; set; }
@@ -658,7 +980,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags (topics) of the project.
+        /// The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
         /// </summary>
         public InputList<string> Tags
         {
@@ -667,19 +989,33 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        /// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of
+        /// a custom project template. This option is mutually exclusive with `template_project_id`.
         /// </summary>
         [Input("templateName")]
         public Input<string>? TemplateName { get; set; }
 
         /// <summary>
-        /// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        /// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name
+        /// since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
         /// </summary>
         [Input("templateProjectId")]
         public Input<int>? TemplateProjectId { get; set; }
 
+        [Input("topics")]
+        private InputList<string>? _topics;
+
         /// <summary>
-        /// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+        /// The list of topics for the project.
+        /// </summary>
+        public InputList<string> Topics
+        {
+            get => _topics ?? (_topics = new InputList<string>());
+            set => _topics = value;
+        }
+
+        /// <summary>
+        /// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
         /// </summary>
         [Input("useCustomTemplate")]
         public Input<bool>? UseCustomTemplate { get; set; }
@@ -689,6 +1025,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("visibilityLevel")]
         public Input<string>? VisibilityLevel { get; set; }
+
+        /// <summary>
+        /// Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("wikiAccessLevel")]
+        public Input<string>? WikiAccessLevel { get; set; }
 
         /// <summary>
         /// Enable wiki for the project.
@@ -710,13 +1052,20 @@ namespace Pulumi.GitLab
         public Input<bool>? AllowMergeOnSkippedPipeline { get; set; }
 
         /// <summary>
+        /// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("analyticsAccessLevel")]
+        public Input<string>? AnalyticsAccessLevel { get; set; }
+
+        /// <summary>
         /// Number of merge request approvals required for merging. Default is 0.
         /// </summary>
         [Input("approvalsBeforeMerge")]
         public Input<int>? ApprovalsBeforeMerge { get; set; }
 
         /// <summary>
-        /// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
+        /// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE`
+        /// operation.
         /// </summary>
         [Input("archiveOnDestroy")]
         public Input<bool>? ArchiveOnDestroy { get; set; }
@@ -728,10 +1077,52 @@ namespace Pulumi.GitLab
         public Input<bool>? Archived { get; set; }
 
         /// <summary>
+        /// Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+        /// </summary>
+        [Input("autoCancelPendingPipelines")]
+        public Input<string>? AutoCancelPendingPipelines { get; set; }
+
+        /// <summary>
+        /// Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+        /// </summary>
+        [Input("autoDevopsDeployStrategy")]
+        public Input<string>? AutoDevopsDeployStrategy { get; set; }
+
+        /// <summary>
+        /// Enable Auto DevOps for this project.
+        /// </summary>
+        [Input("autoDevopsEnabled")]
+        public Input<bool>? AutoDevopsEnabled { get; set; }
+
+        /// <summary>
+        /// Set whether auto-closing referenced issues on default branch.
+        /// </summary>
+        [Input("autocloseReferencedIssues")]
+        public Input<bool>? AutocloseReferencedIssues { get; set; }
+
+        /// <summary>
         /// Test coverage parsing for the project.
         /// </summary>
         [Input("buildCoverageRegex")]
         public Input<string>? BuildCoverageRegex { get; set; }
+
+        /// <summary>
+        /// The Git strategy. Defaults to fetch.
+        /// </summary>
+        [Input("buildGitStrategy")]
+        public Input<string>? BuildGitStrategy { get; set; }
+
+        /// <summary>
+        /// The maximum amount of time, in seconds, that a job can run.
+        /// </summary>
+        [Input("buildTimeout")]
+        public Input<int>? BuildTimeout { get; set; }
+
+        /// <summary>
+        /// Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("buildsAccessLevel")]
+        public Input<string>? BuildsAccessLevel { get; set; }
 
         /// <summary>
         /// Custom Path to CI config file.
@@ -744,6 +1135,19 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("ciForwardDeploymentEnabled")]
         public Input<bool>? CiForwardDeploymentEnabled { get; set; }
+
+        /// <summary>
+        /// Set the image cleanup policy for this project. **Note**: this field is sometimes named
+        /// `container_expiration_policy_attributes` in the GitLab Upstream API.
+        /// </summary>
+        [Input("containerExpirationPolicy")]
+        public Input<Inputs.ProjectContainerExpirationPolicyGetArgs>? ContainerExpirationPolicy { get; set; }
+
+        /// <summary>
+        /// Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("containerRegistryAccessLevel")]
+        public Input<string>? ContainerRegistryAccessLevel { get; set; }
 
         /// <summary>
         /// Enable container registry for the project.
@@ -764,7 +1168,26 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
+        /// Disable email notifications.
+        /// </summary>
+        [Input("emailsDisabled")]
+        public Input<bool>? EmailsDisabled { get; set; }
+
+        /// <summary>
+        /// The classification label for the project.
+        /// </summary>
+        [Input("externalAuthorizationClassificationLabel")]
+        public Input<string>? ExternalAuthorizationClassificationLabel { get; set; }
+
+        /// <summary>
+        /// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("forkingAccessLevel")]
+        public Input<string>? ForkingAccessLevel { get; set; }
+
+        /// <summary>
+        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave
+        /// empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
         /// </summary>
         [Input("groupWithProjectTemplatesId")]
         public Input<int>? GroupWithProjectTemplatesId { get; set; }
@@ -788,6 +1211,12 @@ namespace Pulumi.GitLab
         public Input<bool>? InitializeWithReadme { get; set; }
 
         /// <summary>
+        /// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("issuesAccessLevel")]
+        public Input<string>? IssuesAccessLevel { get; set; }
+
+        /// <summary>
         /// Enable issue tracking for the project.
         /// </summary>
         [Input("issuesEnabled")]
@@ -806,6 +1235,12 @@ namespace Pulumi.GitLab
         public Input<bool>? LfsEnabled { get; set; }
 
         /// <summary>
+        /// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        /// </summary>
+        [Input("mergeCommitTemplate")]
+        public Input<string>? MergeCommitTemplate { get; set; }
+
+        /// <summary>
         /// Set to `ff` to create fast-forward merges
         /// </summary>
         [Input("mergeMethod")]
@@ -816,6 +1251,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mergePipelinesEnabled")]
         public Input<bool>? MergePipelinesEnabled { get; set; }
+
+        /// <summary>
+        /// Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("mergeRequestsAccessLevel")]
+        public Input<string>? MergeRequestsAccessLevel { get; set; }
 
         /// <summary>
         /// Enable merge requests for the project.
@@ -882,6 +1323,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("onlyMirrorProtectedBranches")]
         public Input<bool>? OnlyMirrorProtectedBranches { get; set; }
+
+        /// <summary>
+        /// Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("operationsAccessLevel")]
+        public Input<string>? OperationsAccessLevel { get; set; }
 
         /// <summary>
         /// Enable packages repository for the project.
@@ -920,6 +1367,12 @@ namespace Pulumi.GitLab
         public Input<bool>? PrintingMergeRequestLinkEnabled { get; set; }
 
         /// <summary>
+        /// If true, jobs can be viewed by non-project members.
+        /// </summary>
+        [Input("publicBuilds")]
+        public Input<bool>? PublicBuilds { get; set; }
+
+        /// <summary>
         /// Push rules for the project.
         /// </summary>
         [Input("pushRules")]
@@ -932,10 +1385,34 @@ namespace Pulumi.GitLab
         public Input<bool>? RemoveSourceBranchAfterMerge { get; set; }
 
         /// <summary>
+        /// Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("repositoryAccessLevel")]
+        public Input<string>? RepositoryAccessLevel { get; set; }
+
+        /// <summary>
+        /// Which storage shard the repository is on. (administrator only)
+        /// </summary>
+        [Input("repositoryStorage")]
+        public Input<string>? RepositoryStorage { get; set; }
+
+        /// <summary>
         /// Allow users to request member access.
         /// </summary>
         [Input("requestAccessEnabled")]
         public Input<bool>? RequestAccessEnabled { get; set; }
+
+        /// <summary>
+        /// Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("requirementsAccessLevel")]
+        public Input<string>? RequirementsAccessLevel { get; set; }
+
+        /// <summary>
+        /// Automatically resolve merge request diffs discussions on lines changed with a push.
+        /// </summary>
+        [Input("resolveOutdatedDiffDiscussions")]
+        public Input<bool>? ResolveOutdatedDiffDiscussions { get; set; }
 
         /// <summary>
         /// Registration token to use during runner setup.
@@ -944,10 +1421,22 @@ namespace Pulumi.GitLab
         public Input<string>? RunnersToken { get; set; }
 
         /// <summary>
+        /// Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("securityAndComplianceAccessLevel")]
+        public Input<string>? SecurityAndComplianceAccessLevel { get; set; }
+
+        /// <summary>
         /// Enable shared runners for this project.
         /// </summary>
         [Input("sharedRunnersEnabled")]
         public Input<bool>? SharedRunnersEnabled { get; set; }
+
+        /// <summary>
+        /// Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("snippetsAccessLevel")]
+        public Input<string>? SnippetsAccessLevel { get; set; }
 
         /// <summary>
         /// Enable snippets for the project.
@@ -956,7 +1445,14 @@ namespace Pulumi.GitLab
         public Input<bool>? SnippetsEnabled { get; set; }
 
         /// <summary>
-        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
+        /// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+        /// </summary>
+        [Input("squashCommitTemplate")]
+        public Input<string>? SquashCommitTemplate { get; set; }
+
+        /// <summary>
+        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value
+        /// is `default_off`. [GitLab &gt;= 14.1]
         /// </summary>
         [Input("squashOption")]
         public Input<string>? SquashOption { get; set; }
@@ -971,7 +1467,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags (topics) of the project.
+        /// The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
         /// </summary>
         public InputList<string> Tags
         {
@@ -980,19 +1476,33 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+        /// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of
+        /// a custom project template. This option is mutually exclusive with `template_project_id`.
         /// </summary>
         [Input("templateName")]
         public Input<string>? TemplateName { get; set; }
 
         /// <summary>
-        /// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        /// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name
+        /// since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
         /// </summary>
         [Input("templateProjectId")]
         public Input<int>? TemplateProjectId { get; set; }
 
+        [Input("topics")]
+        private InputList<string>? _topics;
+
         /// <summary>
-        /// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+        /// The list of topics for the project.
+        /// </summary>
+        public InputList<string> Topics
+        {
+            get => _topics ?? (_topics = new InputList<string>());
+            set => _topics = value;
+        }
+
+        /// <summary>
+        /// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
         /// </summary>
         [Input("useCustomTemplate")]
         public Input<bool>? UseCustomTemplate { get; set; }
@@ -1008,6 +1518,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("webUrl")]
         public Input<string>? WebUrl { get; set; }
+
+        /// <summary>
+        /// Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("wikiAccessLevel")]
+        public Input<string>? WikiAccessLevel { get; set; }
 
         /// <summary>
         /// Enable wiki for the project.

@@ -59,7 +59,7 @@ import (
 type ServiceSlack struct {
 	pulumi.CustomResourceState
 
-	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
 	BranchesToBeNotified pulumi.StringOutput `pulumi:"branchesToBeNotified"`
 	// The name of the channel to receive confidential issue events notifications.
 	ConfidentialIssueChannel pulumi.StringPtrOutput `pulumi:"confidentialIssueChannel"`
@@ -71,7 +71,8 @@ type ServiceSlack struct {
 	IssueChannel pulumi.StringPtrOutput `pulumi:"issueChannel"`
 	// Enable notifications for issues events.
 	IssuesEvents pulumi.BoolOutput `pulumi:"issuesEvents"`
-	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API,
+	// due to https://github.com/xanzy/go-gitlab/issues/1354.
 	JobEvents pulumi.BoolOutput `pulumi:"jobEvents"`
 	// The name of the channel to receive merge request events notifications.
 	MergeRequestChannel pulumi.StringPtrOutput `pulumi:"mergeRequestChannel"`
@@ -83,7 +84,7 @@ type ServiceSlack struct {
 	NoteEvents pulumi.BoolOutput `pulumi:"noteEvents"`
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines pulumi.BoolOutput `pulumi:"notifyOnlyBrokenPipelines"`
-	// This parameter has been replaced with `branchesToBeNotified`.
+	// This parameter has been replaced with `branches_to_be_notified`.
 	//
 	// Deprecated: use 'branches_to_be_notified' argument instead
 	NotifyOnlyDefaultBranch pulumi.BoolOutput `pulumi:"notifyOnlyDefaultBranch"`
@@ -146,7 +147,7 @@ func GetServiceSlack(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceSlack resources.
 type serviceSlackState struct {
-	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
 	// The name of the channel to receive confidential issue events notifications.
 	ConfidentialIssueChannel *string `pulumi:"confidentialIssueChannel"`
@@ -158,7 +159,8 @@ type serviceSlackState struct {
 	IssueChannel *string `pulumi:"issueChannel"`
 	// Enable notifications for issues events.
 	IssuesEvents *bool `pulumi:"issuesEvents"`
-	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API,
+	// due to https://github.com/xanzy/go-gitlab/issues/1354.
 	JobEvents *bool `pulumi:"jobEvents"`
 	// The name of the channel to receive merge request events notifications.
 	MergeRequestChannel *string `pulumi:"mergeRequestChannel"`
@@ -170,7 +172,7 @@ type serviceSlackState struct {
 	NoteEvents *bool `pulumi:"noteEvents"`
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines *bool `pulumi:"notifyOnlyBrokenPipelines"`
-	// This parameter has been replaced with `branchesToBeNotified`.
+	// This parameter has been replaced with `branches_to_be_notified`.
 	//
 	// Deprecated: use 'branches_to_be_notified' argument instead
 	NotifyOnlyDefaultBranch *bool `pulumi:"notifyOnlyDefaultBranch"`
@@ -199,7 +201,7 @@ type serviceSlackState struct {
 }
 
 type ServiceSlackState struct {
-	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
 	BranchesToBeNotified pulumi.StringPtrInput
 	// The name of the channel to receive confidential issue events notifications.
 	ConfidentialIssueChannel pulumi.StringPtrInput
@@ -211,7 +213,8 @@ type ServiceSlackState struct {
 	IssueChannel pulumi.StringPtrInput
 	// Enable notifications for issues events.
 	IssuesEvents pulumi.BoolPtrInput
-	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API,
+	// due to https://github.com/xanzy/go-gitlab/issues/1354.
 	JobEvents pulumi.BoolPtrInput
 	// The name of the channel to receive merge request events notifications.
 	MergeRequestChannel pulumi.StringPtrInput
@@ -223,7 +226,7 @@ type ServiceSlackState struct {
 	NoteEvents pulumi.BoolPtrInput
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines pulumi.BoolPtrInput
-	// This parameter has been replaced with `branchesToBeNotified`.
+	// This parameter has been replaced with `branches_to_be_notified`.
 	//
 	// Deprecated: use 'branches_to_be_notified' argument instead
 	NotifyOnlyDefaultBranch pulumi.BoolPtrInput
@@ -256,7 +259,7 @@ func (ServiceSlackState) ElementType() reflect.Type {
 }
 
 type serviceSlackArgs struct {
-	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
 	// The name of the channel to receive confidential issue events notifications.
 	ConfidentialIssueChannel *string `pulumi:"confidentialIssueChannel"`
@@ -278,7 +281,7 @@ type serviceSlackArgs struct {
 	NoteEvents *bool `pulumi:"noteEvents"`
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines *bool `pulumi:"notifyOnlyBrokenPipelines"`
-	// This parameter has been replaced with `branchesToBeNotified`.
+	// This parameter has been replaced with `branches_to_be_notified`.
 	//
 	// Deprecated: use 'branches_to_be_notified' argument instead
 	NotifyOnlyDefaultBranch *bool `pulumi:"notifyOnlyDefaultBranch"`
@@ -308,7 +311,7 @@ type serviceSlackArgs struct {
 
 // The set of arguments for constructing a ServiceSlack resource.
 type ServiceSlackArgs struct {
-	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
 	BranchesToBeNotified pulumi.StringPtrInput
 	// The name of the channel to receive confidential issue events notifications.
 	ConfidentialIssueChannel pulumi.StringPtrInput
@@ -330,7 +333,7 @@ type ServiceSlackArgs struct {
 	NoteEvents pulumi.BoolPtrInput
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines pulumi.BoolPtrInput
-	// This parameter has been replaced with `branchesToBeNotified`.
+	// This parameter has been replaced with `branches_to_be_notified`.
 	//
 	// Deprecated: use 'branches_to_be_notified' argument instead
 	NotifyOnlyDefaultBranch pulumi.BoolPtrInput
