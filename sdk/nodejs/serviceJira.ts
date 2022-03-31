@@ -88,7 +88,9 @@ export class ServiceJira extends pulumi.CustomResource {
      */
     public readonly issuesEvents!: pulumi.Output<boolean>;
     /**
-     * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+     * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
+     * administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
+     * project. By default, this ID is set to 2.
      */
     public readonly jiraIssueTransitionId!: pulumi.Output<string | undefined>;
     /**
@@ -124,7 +126,7 @@ export class ServiceJira extends pulumi.CustomResource {
      */
     public readonly pushEvents!: pulumi.Output<boolean>;
     /**
-     * Enable notifications for tagPush events.
+     * Enable notifications for tag_push events.
      */
     public readonly tagPushEvents!: pulumi.Output<boolean>;
     /**
@@ -246,7 +248,9 @@ export interface ServiceJiraState {
      */
     issuesEvents?: pulumi.Input<boolean>;
     /**
-     * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+     * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
+     * administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
+     * project. By default, this ID is set to 2.
      */
     jiraIssueTransitionId?: pulumi.Input<string>;
     /**
@@ -282,7 +286,7 @@ export interface ServiceJiraState {
      */
     pushEvents?: pulumi.Input<boolean>;
     /**
-     * Enable notifications for tagPush events.
+     * Enable notifications for tag_push events.
      */
     tagPushEvents?: pulumi.Input<boolean>;
     /**
@@ -324,7 +328,9 @@ export interface ServiceJiraArgs {
      */
     issuesEvents?: pulumi.Input<boolean>;
     /**
-     * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+     * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
+     * administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
+     * project. By default, this ID is set to 2.
      */
     jiraIssueTransitionId?: pulumi.Input<string>;
     /**
@@ -360,7 +366,7 @@ export interface ServiceJiraArgs {
      */
     pushEvents?: pulumi.Input<boolean>;
     /**
-     * Enable notifications for tagPush events.
+     * Enable notifications for tag_push events.
      */
     tagPushEvents?: pulumi.Input<boolean>;
     /**

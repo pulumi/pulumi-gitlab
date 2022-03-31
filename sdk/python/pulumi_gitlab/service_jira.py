@@ -39,7 +39,9 @@ class ServiceJiraArgs:
         :param pulumi.Input[bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
         :param pulumi.Input[bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
-        :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+        :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
+               administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
+               project. By default, this ID is set to 2.
         :param pulumi.Input[bool] job_events: Enable notifications for job events.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[bool] note_events: Enable notifications for note events.
@@ -177,7 +179,9 @@ class ServiceJiraArgs:
     @pulumi.getter(name="jiraIssueTransitionId")
     def jira_issue_transition_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+        The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
+        administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
+        project. By default, this ID is set to 2.
         """
         return pulumi.get(self, "jira_issue_transition_id")
 
@@ -301,7 +305,9 @@ class _ServiceJiraState:
         :param pulumi.Input[bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[str] created_at: Create time.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
-        :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+        :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
+               administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
+               project. By default, this ID is set to 2.
         :param pulumi.Input[bool] job_events: Enable notifications for job events.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[bool] note_events: Enable notifications for note events.
@@ -433,7 +439,9 @@ class _ServiceJiraState:
     @pulumi.getter(name="jiraIssueTransitionId")
     def jira_issue_transition_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+        The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
+        administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
+        project. By default, this ID is set to 2.
         """
         return pulumi.get(self, "jira_issue_transition_id")
 
@@ -655,7 +663,9 @@ class ServiceJira(pulumi.CustomResource):
         :param pulumi.Input[bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
         :param pulumi.Input[bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
-        :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+        :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
+               administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
+               project. By default, this ID is set to 2.
         :param pulumi.Input[bool] job_events: Enable notifications for job events.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[bool] note_events: Enable notifications for note events.
@@ -817,7 +827,9 @@ class ServiceJira(pulumi.CustomResource):
         :param pulumi.Input[bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[str] created_at: Create time.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
-        :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+        :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
+               administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
+               project. By default, this ID is set to 2.
         :param pulumi.Input[bool] job_events: Enable notifications for job events.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[bool] note_events: Enable notifications for note events.
@@ -910,7 +922,9 @@ class ServiceJira(pulumi.CustomResource):
     @pulumi.getter(name="jiraIssueTransitionId")
     def jira_issue_transition_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+        The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
+        administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
+        project. By default, this ID is set to 2.
         """
         return pulumi.get(self, "jira_issue_transition_id")
 

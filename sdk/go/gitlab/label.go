@@ -47,10 +47,19 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// # Gitlab labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/label:Label example 12345:fixme
+// ```
 type Label struct {
 	pulumi.CustomResourceState
 
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+	// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color pulumi.StringOutput `pulumi:"color"`
 	// The description of the label.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -95,7 +104,8 @@ func GetLabel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Label resources.
 type labelState struct {
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+	// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color *string `pulumi:"color"`
 	// The description of the label.
 	Description *string `pulumi:"description"`
@@ -106,7 +116,8 @@ type labelState struct {
 }
 
 type LabelState struct {
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+	// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color pulumi.StringPtrInput
 	// The description of the label.
 	Description pulumi.StringPtrInput
@@ -121,7 +132,8 @@ func (LabelState) ElementType() reflect.Type {
 }
 
 type labelArgs struct {
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+	// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color string `pulumi:"color"`
 	// The description of the label.
 	Description *string `pulumi:"description"`
@@ -133,7 +145,8 @@ type labelArgs struct {
 
 // The set of arguments for constructing a Label resource.
 type LabelArgs struct {
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+	// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color pulumi.StringInput
 	// The description of the label.
 	Description pulumi.StringPtrInput

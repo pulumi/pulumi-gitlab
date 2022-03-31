@@ -34,7 +34,7 @@ namespace Pulumi.GitLab
     ///         var mit = new GitLab.ManagedLicense("mit", new GitLab.ManagedLicenseArgs
     ///         {
     ///             Project = foo.Id,
-    ///             ApprovalStatus = "approved",
+    ///             ApprovalStatus = "allowed",
     ///         });
     ///     }
     /// 
@@ -53,7 +53,9 @@ namespace Pulumi.GitLab
     public partial class ManagedLicense : Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether the license is approved or not. Only 'approved' or 'blacklisted' allowed.
+        /// The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+        /// "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+        /// 15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
         /// </summary>
         [Output("approvalStatus")]
         public Output<string> ApprovalStatus { get; private set; } = null!;
@@ -117,7 +119,9 @@ namespace Pulumi.GitLab
     public sealed class ManagedLicenseArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the license is approved or not. Only 'approved' or 'blacklisted' allowed.
+        /// The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+        /// "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+        /// 15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
         /// </summary>
         [Input("approvalStatus", required: true)]
         public Input<string> ApprovalStatus { get; set; } = null!;
@@ -142,7 +146,9 @@ namespace Pulumi.GitLab
     public sealed class ManagedLicenseState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the license is approved or not. Only 'approved' or 'blacklisted' allowed.
+        /// The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+        /// "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+        /// 15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
         /// </summary>
         [Input("approvalStatus")]
         public Input<string>? ApprovalStatus { get; set; }

@@ -89,7 +89,8 @@ namespace Pulumi.GitLab
         public Output<bool?> RequirePasswordToApprove { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+        /// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
+        /// Default is `true`.
         /// </summary>
         [Output("resetApprovalsOnPush")]
         public Output<bool?> ResetApprovalsOnPush { get; private set; } = null!;
@@ -171,7 +172,8 @@ namespace Pulumi.GitLab
         public Input<bool>? RequirePasswordToApprove { get; set; }
 
         /// <summary>
-        /// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+        /// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
+        /// Default is `true`.
         /// </summary>
         [Input("resetApprovalsOnPush")]
         public Input<bool>? ResetApprovalsOnPush { get; set; }
@@ -214,7 +216,8 @@ namespace Pulumi.GitLab
         public Input<bool>? RequirePasswordToApprove { get; set; }
 
         /// <summary>
-        /// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+        /// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
+        /// Default is `true`.
         /// </summary>
         [Input("resetApprovalsOnPush")]
         public Input<bool>? ResetApprovalsOnPush { get; set; }

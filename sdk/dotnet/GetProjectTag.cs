@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.ProjectTag` data source allows details of a project tag to be retrieved by its name.
         /// 
-        /// **Upstream API** : [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
+        /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -46,7 +46,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.ProjectTag` data source allows details of a project tag to be retrieved by its name.
         /// 
-        /// **Upstream API** : [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
+        /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -79,15 +79,9 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectTagArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of a tag.
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
-        /// <summary>
-        /// The ID or URL-encoded path of the project owned by the authenticated user.
-        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -98,15 +92,9 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectTagInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of a tag.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// The ID or URL-encoded path of the project owned by the authenticated user.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -119,37 +107,16 @@ namespace Pulumi.GitLab
     [OutputType]
     public sealed class GetProjectTagResult
     {
-        /// <summary>
-        /// The commit associated with the tag ref.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectTagCommitResult> Commits;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Creates annotated tag.
-        /// </summary>
         public readonly string Message;
-        /// <summary>
-        /// The name of a tag.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// The ID or URL-encoded path of the project owned by the authenticated user.
-        /// </summary>
         public readonly string Project;
-        /// <summary>
-        /// Bool, true if tag has tag protection.
-        /// </summary>
         public readonly bool Protected;
-        /// <summary>
-        /// The release associated with the tag.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectTagReleaseResult> Releases;
-        /// <summary>
-        /// The unique id assigned to the commit by Gitlab.
-        /// </summary>
         public readonly string Target;
 
         [OutputConstructor]

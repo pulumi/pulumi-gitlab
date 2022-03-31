@@ -53,7 +53,7 @@ import (
 type ProjectVariable struct {
 	pulumi.CustomResourceState
 
-	// The environmentScope of the variable. Defaults to `*`.
+	// The environment_scope of the variable. Defaults to `*`.
 	EnvironmentScope pulumi.StringPtrOutput `pulumi:"environmentScope"`
 	// The name of the variable.
 	Key pulumi.StringOutput `pulumi:"key"`
@@ -61,11 +61,12 @@ type ProjectVariable struct {
 	Masked pulumi.BoolPtrOutput `pulumi:"masked"`
 	// The name or id of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+	// `false`.
 	Protected pulumi.BoolPtrOutput `pulumi:"protected"`
 	// The value of the variable.
 	Value pulumi.StringOutput `pulumi:"value"`
-	// The type of a variable. Available types are: envVar (default) and file.
+	// The type of a variable. Available types are: env_var (default) and file.
 	VariableType pulumi.StringPtrOutput `pulumi:"variableType"`
 }
 
@@ -107,7 +108,7 @@ func GetProjectVariable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectVariable resources.
 type projectVariableState struct {
-	// The environmentScope of the variable. Defaults to `*`.
+	// The environment_scope of the variable. Defaults to `*`.
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The name of the variable.
 	Key *string `pulumi:"key"`
@@ -115,16 +116,17 @@ type projectVariableState struct {
 	Masked *bool `pulumi:"masked"`
 	// The name or id of the project.
 	Project *string `pulumi:"project"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+	// `false`.
 	Protected *bool `pulumi:"protected"`
 	// The value of the variable.
 	Value *string `pulumi:"value"`
-	// The type of a variable. Available types are: envVar (default) and file.
+	// The type of a variable. Available types are: env_var (default) and file.
 	VariableType *string `pulumi:"variableType"`
 }
 
 type ProjectVariableState struct {
-	// The environmentScope of the variable. Defaults to `*`.
+	// The environment_scope of the variable. Defaults to `*`.
 	EnvironmentScope pulumi.StringPtrInput
 	// The name of the variable.
 	Key pulumi.StringPtrInput
@@ -132,11 +134,12 @@ type ProjectVariableState struct {
 	Masked pulumi.BoolPtrInput
 	// The name or id of the project.
 	Project pulumi.StringPtrInput
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+	// `false`.
 	Protected pulumi.BoolPtrInput
 	// The value of the variable.
 	Value pulumi.StringPtrInput
-	// The type of a variable. Available types are: envVar (default) and file.
+	// The type of a variable. Available types are: env_var (default) and file.
 	VariableType pulumi.StringPtrInput
 }
 
@@ -145,7 +148,7 @@ func (ProjectVariableState) ElementType() reflect.Type {
 }
 
 type projectVariableArgs struct {
-	// The environmentScope of the variable. Defaults to `*`.
+	// The environment_scope of the variable. Defaults to `*`.
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
@@ -153,17 +156,18 @@ type projectVariableArgs struct {
 	Masked *bool `pulumi:"masked"`
 	// The name or id of the project.
 	Project string `pulumi:"project"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+	// `false`.
 	Protected *bool `pulumi:"protected"`
 	// The value of the variable.
 	Value string `pulumi:"value"`
-	// The type of a variable. Available types are: envVar (default) and file.
+	// The type of a variable. Available types are: env_var (default) and file.
 	VariableType *string `pulumi:"variableType"`
 }
 
 // The set of arguments for constructing a ProjectVariable resource.
 type ProjectVariableArgs struct {
-	// The environmentScope of the variable. Defaults to `*`.
+	// The environment_scope of the variable. Defaults to `*`.
 	EnvironmentScope pulumi.StringPtrInput
 	// The name of the variable.
 	Key pulumi.StringInput
@@ -171,11 +175,12 @@ type ProjectVariableArgs struct {
 	Masked pulumi.BoolPtrInput
 	// The name or id of the project.
 	Project pulumi.StringInput
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+	// `false`.
 	Protected pulumi.BoolPtrInput
 	// The value of the variable.
 	Value pulumi.StringInput
-	// The type of a variable. Available types are: envVar (default) and file.
+	// The type of a variable. Available types are: env_var (default) and file.
 	VariableType pulumi.StringPtrInput
 }
 

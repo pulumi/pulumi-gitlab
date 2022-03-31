@@ -13,13 +13,16 @@ export * from "./deployToken";
 export * from "./getBranch";
 export * from "./getGroup";
 export * from "./getGroupMembership";
+export * from "./getInstanceDeployKeys";
 export * from "./getProject";
 export * from "./getProjectIssue";
 export * from "./getProjectIssues";
 export * from "./getProjectProtectedBranch";
 export * from "./getProjectProtectedBranches";
 export * from "./getProjectTag";
+export * from "./getProjectTags";
 export * from "./getProjects";
+export * from "./getRepositoryFile";
 export * from "./getUser";
 export * from "./getUsers";
 export * from "./group";
@@ -45,12 +48,14 @@ export * from "./projectApprovalRule";
 export * from "./projectBadge";
 export * from "./projectCluster";
 export * from "./projectCustomAttribute";
+export * from "./projectEnvironment";
 export * from "./projectFreezePeriod";
 export * from "./projectHook";
 export * from "./projectIssue";
 export * from "./projectLevelMrApprovals";
 export * from "./projectMembership";
 export * from "./projectMirror";
+export * from "./projectProtectedEnvironment";
 export * from "./projectShareGroup";
 export * from "./projectTag";
 export * from "./projectVariable";
@@ -61,6 +66,7 @@ export * from "./serviceJira";
 export * from "./serviceMicrosoftTeams";
 export * from "./servicePipelinesEmail";
 export * from "./serviceSlack";
+export * from "./systemHook";
 export * from "./tagProtection";
 export * from "./topic";
 export * from "./user";
@@ -105,12 +111,14 @@ import { ProjectApprovalRule } from "./projectApprovalRule";
 import { ProjectBadge } from "./projectBadge";
 import { ProjectCluster } from "./projectCluster";
 import { ProjectCustomAttribute } from "./projectCustomAttribute";
+import { ProjectEnvironment } from "./projectEnvironment";
 import { ProjectFreezePeriod } from "./projectFreezePeriod";
 import { ProjectHook } from "./projectHook";
 import { ProjectIssue } from "./projectIssue";
 import { ProjectLevelMrApprovals } from "./projectLevelMrApprovals";
 import { ProjectMembership } from "./projectMembership";
 import { ProjectMirror } from "./projectMirror";
+import { ProjectProtectedEnvironment } from "./projectProtectedEnvironment";
 import { ProjectShareGroup } from "./projectShareGroup";
 import { ProjectTag } from "./projectTag";
 import { ProjectVariable } from "./projectVariable";
@@ -120,6 +128,7 @@ import { ServiceJira } from "./serviceJira";
 import { ServiceMicrosoftTeams } from "./serviceMicrosoftTeams";
 import { ServicePipelinesEmail } from "./servicePipelinesEmail";
 import { ServiceSlack } from "./serviceSlack";
+import { SystemHook } from "./systemHook";
 import { TagProtection } from "./tagProtection";
 import { Topic } from "./topic";
 import { User } from "./user";
@@ -186,6 +195,8 @@ const _module = {
                 return new ProjectCluster(name, <any>undefined, { urn })
             case "gitlab:index/projectCustomAttribute:ProjectCustomAttribute":
                 return new ProjectCustomAttribute(name, <any>undefined, { urn })
+            case "gitlab:index/projectEnvironment:ProjectEnvironment":
+                return new ProjectEnvironment(name, <any>undefined, { urn })
             case "gitlab:index/projectFreezePeriod:ProjectFreezePeriod":
                 return new ProjectFreezePeriod(name, <any>undefined, { urn })
             case "gitlab:index/projectHook:ProjectHook":
@@ -198,6 +209,8 @@ const _module = {
                 return new ProjectMembership(name, <any>undefined, { urn })
             case "gitlab:index/projectMirror:ProjectMirror":
                 return new ProjectMirror(name, <any>undefined, { urn })
+            case "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment":
+                return new ProjectProtectedEnvironment(name, <any>undefined, { urn })
             case "gitlab:index/projectShareGroup:ProjectShareGroup":
                 return new ProjectShareGroup(name, <any>undefined, { urn })
             case "gitlab:index/projectTag:ProjectTag":
@@ -216,6 +229,8 @@ const _module = {
                 return new ServicePipelinesEmail(name, <any>undefined, { urn })
             case "gitlab:index/serviceSlack:ServiceSlack":
                 return new ServiceSlack(name, <any>undefined, { urn })
+            case "gitlab:index/systemHook:SystemHook":
+                return new SystemHook(name, <any>undefined, { urn })
             case "gitlab:index/tagProtection:TagProtection":
                 return new TagProtection(name, <any>undefined, { urn })
             case "gitlab:index/topic:Topic":
@@ -259,12 +274,14 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectApprovalRule", _mo
 pulumi.runtime.registerResourceModule("gitlab", "index/projectBadge", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCustomAttribute", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectEnvironment", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectFreezePeriod", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIssue", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectLevelMrApprovals", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMembership", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMirror", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectProtectedEnvironment", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectShareGroup", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectTag", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectVariable", _module)
@@ -274,6 +291,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/serviceJira", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/serviceMicrosoftTeams", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/servicePipelinesEmail", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/serviceSlack", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/systemHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/tagProtection", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/topic", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/user", _module)

@@ -58,7 +58,8 @@ namespace Pulumi.GitLab
         public Output<bool> Active { get; private set; } = null!;
 
         /// <summary>
-        /// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+        /// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+        /// “default_and_protected”. The default value is “default”
         /// </summary>
         [Output("branchesToBeNotified")]
         public Output<string?> BranchesToBeNotified { get; private set; } = null!;
@@ -194,7 +195,8 @@ namespace Pulumi.GitLab
     public sealed class ServiceMicrosoftTeamsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+        /// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+        /// “default_and_protected”. The default value is “default”
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
@@ -285,7 +287,8 @@ namespace Pulumi.GitLab
         public Input<bool>? Active { get; set; }
 
         /// <summary>
-        /// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+        /// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+        /// “default_and_protected”. The default value is “default”
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }

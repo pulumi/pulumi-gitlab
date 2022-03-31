@@ -21,8 +21,10 @@ class ProjectShareGroupArgs:
         The set of arguments for constructing a ProjectShareGroup resource.
         :param pulumi.Input[int] group_id: The id of the group.
         :param pulumi.Input[str] project_id: The id of the project.
-        :param pulumi.Input[str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
-        :param pulumi.Input[str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        :param pulumi.Input[str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+               `developer`, `maintainer`, `master`
+        :param pulumi.Input[str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+               `developer`, `maintainer`, `master`
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "project_id", project_id)
@@ -62,7 +64,8 @@ class ProjectShareGroupArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[str]]:
         """
-        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+        `developer`, `maintainer`, `master`
         """
         return pulumi.get(self, "access_level")
 
@@ -74,7 +77,8 @@ class ProjectShareGroupArgs:
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> Optional[pulumi.Input[str]]:
         """
-        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+        `developer`, `maintainer`, `master`
         """
         return pulumi.get(self, "group_access")
 
@@ -92,8 +96,10 @@ class _ProjectShareGroupState:
                  project_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ProjectShareGroup resources.
-        :param pulumi.Input[str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
-        :param pulumi.Input[str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        :param pulumi.Input[str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+               `developer`, `maintainer`, `master`
+        :param pulumi.Input[str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+               `developer`, `maintainer`, `master`
         :param pulumi.Input[int] group_id: The id of the group.
         :param pulumi.Input[str] project_id: The id of the project.
         """
@@ -113,7 +119,8 @@ class _ProjectShareGroupState:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[str]]:
         """
-        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+        `developer`, `maintainer`, `master`
         """
         return pulumi.get(self, "access_level")
 
@@ -125,7 +132,8 @@ class _ProjectShareGroupState:
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> Optional[pulumi.Input[str]]:
         """
-        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+        `developer`, `maintainer`, `master`
         """
         return pulumi.get(self, "group_access")
 
@@ -195,8 +203,10 @@ class ProjectShareGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
-        :param pulumi.Input[str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        :param pulumi.Input[str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+               `developer`, `maintainer`, `master`
+        :param pulumi.Input[str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+               `developer`, `maintainer`, `master`
         :param pulumi.Input[int] group_id: The id of the group.
         :param pulumi.Input[str] project_id: The id of the project.
         """
@@ -294,8 +304,10 @@ class ProjectShareGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
-        :param pulumi.Input[str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        :param pulumi.Input[str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+               `developer`, `maintainer`, `master`
+        :param pulumi.Input[str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+               `developer`, `maintainer`, `master`
         :param pulumi.Input[int] group_id: The id of the group.
         :param pulumi.Input[str] project_id: The id of the project.
         """
@@ -313,7 +325,8 @@ class ProjectShareGroup(pulumi.CustomResource):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Output[Optional[str]]:
         """
-        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+        `developer`, `maintainer`, `master`
         """
         return pulumi.get(self, "access_level")
 
@@ -321,7 +334,8 @@ class ProjectShareGroup(pulumi.CustomResource):
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> pulumi.Output[Optional[str]]:
         """
-        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `master`
+        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+        `developer`, `maintainer`, `master`
         """
         return pulumi.get(self, "group_access")
 

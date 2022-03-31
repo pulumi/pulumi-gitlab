@@ -68,7 +68,8 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
      */
     public readonly protectedBranchIds!: pulumi.Output<number[] | undefined>;
     /**
-     * String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`.
+     * String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
+     * `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
      */
     public readonly ruleType!: pulumi.Output<string>;
     /**
@@ -142,7 +143,8 @@ export interface ProjectApprovalRuleState {
      */
     protectedBranchIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`.
+     * String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
+     * `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
      */
     ruleType?: pulumi.Input<string>;
     /**
@@ -176,7 +178,8 @@ export interface ProjectApprovalRuleArgs {
      */
     protectedBranchIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`.
+     * String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
+     * `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
      */
     ruleType?: pulumi.Input<string>;
     /**

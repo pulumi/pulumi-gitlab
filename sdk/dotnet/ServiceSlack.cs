@@ -54,7 +54,7 @@ namespace Pulumi.GitLab
     public partial class ServiceSlack : Pulumi.CustomResource
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+        /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
         /// </summary>
         [Output("branchesToBeNotified")]
         public Output<string> BranchesToBeNotified { get; private set; } = null!;
@@ -90,7 +90,8 @@ namespace Pulumi.GitLab
         public Output<bool> IssuesEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+        /// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API,
+        /// due to https://github.com/xanzy/go-gitlab/issues/1354.
         /// </summary>
         [Output("jobEvents")]
         public Output<bool> JobEvents { get; private set; } = null!;
@@ -244,7 +245,7 @@ namespace Pulumi.GitLab
     public sealed class ServiceSlackArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+        /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
@@ -389,7 +390,7 @@ namespace Pulumi.GitLab
     public sealed class ServiceSlackState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+        /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
@@ -425,7 +426,8 @@ namespace Pulumi.GitLab
         public Input<bool>? IssuesEvents { get; set; }
 
         /// <summary>
-        /// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+        /// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API,
+        /// due to https://github.com/xanzy/go-gitlab/issues/1354.
         /// </summary>
         [Input("jobEvents")]
         public Input<bool>? JobEvents { get; set; }

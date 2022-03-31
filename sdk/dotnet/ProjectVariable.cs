@@ -74,7 +74,8 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+        /// `false`.
         /// </summary>
         [Output("protected")]
         public Output<bool?> Protected { get; private set; } = null!;
@@ -162,7 +163,8 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+        /// `false`.
         /// </summary>
         [Input("protected")]
         public Input<bool>? Protected { get; set; }
@@ -211,7 +213,8 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+        /// `false`.
         /// </summary>
         [Input("protected")]
         public Input<bool>? Protected { get; set; }

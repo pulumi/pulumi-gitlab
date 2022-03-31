@@ -13,13 +13,16 @@ from .deploy_token import *
 from .get_branch import *
 from .get_group import *
 from .get_group_membership import *
+from .get_instance_deploy_keys import *
 from .get_project import *
 from .get_project_issue import *
 from .get_project_issues import *
 from .get_project_protected_branch import *
 from .get_project_protected_branches import *
 from .get_project_tag import *
+from .get_project_tags import *
 from .get_projects import *
+from .get_repository_file import *
 from .get_user import *
 from .get_users import *
 from .group import *
@@ -45,12 +48,14 @@ from .project_approval_rule import *
 from .project_badge import *
 from .project_cluster import *
 from .project_custom_attribute import *
+from .project_environment import *
 from .project_freeze_period import *
 from .project_hook import *
 from .project_issue import *
 from .project_level_mr_approvals import *
 from .project_membership import *
 from .project_mirror import *
+from .project_protected_environment import *
 from .project_share_group import *
 from .project_tag import *
 from .project_variable import *
@@ -61,6 +66,7 @@ from .service_jira import *
 from .service_microsoft_teams import *
 from .service_pipelines_email import *
 from .service_slack import *
+from .system_hook import *
 from .tag_protection import *
 from .topic import *
 from .user import *
@@ -305,6 +311,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectEnvironment",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectEnvironment:ProjectEnvironment": "ProjectEnvironment"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectFreezePeriod",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -349,6 +363,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectMirror:ProjectMirror": "ProjectMirror"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectProtectedEnvironment",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment": "ProjectProtectedEnvironment"
   }
  },
  {
@@ -421,6 +443,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/serviceSlack:ServiceSlack": "ServiceSlack"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/systemHook",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/systemHook:SystemHook": "SystemHook"
   }
  },
  {

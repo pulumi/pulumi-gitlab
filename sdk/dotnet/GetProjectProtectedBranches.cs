@@ -77,9 +77,6 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectProtectedBranchesArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The integer or path with namespace that uniquely identifies the project.
-        /// </summary>
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
@@ -90,9 +87,6 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectProtectedBranchesInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The integer or path with namespace that uniquely identifies the project.
-        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
@@ -109,13 +103,7 @@ namespace Pulumi.GitLab
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The integer or path with namespace that uniquely identifies the project.
-        /// </summary>
         public readonly string ProjectId;
-        /// <summary>
-        /// A list of protected branches, as defined below.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectProtectedBranchesProtectedBranchResult> ProtectedBranches;
 
         [OutputConstructor]

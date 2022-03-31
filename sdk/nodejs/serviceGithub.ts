@@ -83,7 +83,8 @@ export class ServiceGithub extends pulumi.CustomResource {
      */
     public readonly repositoryUrl!: pulumi.Output<string>;
     /**
-     * Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+     * Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
+     * See [Static / dynamic status check names] to learn more.
      */
     public readonly staticContext!: pulumi.Output<boolean | undefined>;
     /**
@@ -166,7 +167,8 @@ export interface ServiceGithubState {
      */
     repositoryUrl?: pulumi.Input<string>;
     /**
-     * Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+     * Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
+     * See [Static / dynamic status check names] to learn more.
      */
     staticContext?: pulumi.Input<boolean>;
     /**
@@ -196,7 +198,8 @@ export interface ServiceGithubArgs {
      */
     repositoryUrl: pulumi.Input<string>;
     /**
-     * Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+     * Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
+     * See [Static / dynamic status check names] to learn more.
      */
     staticContext?: pulumi.Input<boolean>;
     /**

@@ -27,6 +27,14 @@ import * as utilities from "./utilities";
  *     color: "#ffa500",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * # Gitlab labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/label:Label example 12345:fixme
+ * ```
  */
 export class Label extends pulumi.CustomResource {
     /**
@@ -57,7 +65,8 @@ export class Label extends pulumi.CustomResource {
     }
 
     /**
-     * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+     * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+     * names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
      */
     public readonly color!: pulumi.Output<string>;
     /**
@@ -113,7 +122,8 @@ export class Label extends pulumi.CustomResource {
  */
 export interface LabelState {
     /**
-     * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+     * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+     * names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
      */
     color?: pulumi.Input<string>;
     /**
@@ -135,7 +145,8 @@ export interface LabelState {
  */
 export interface LabelArgs {
     /**
-     * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+     * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+     * names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
      */
     color: pulumi.Input<string>;
     /**

@@ -59,41 +59,26 @@ class GetBranchResult:
     @property
     @pulumi.getter(name="canPush")
     def can_push(self) -> bool:
-        """
-        Bool, true if you can push to the branch.
-        """
         return pulumi.get(self, "can_push")
 
     @property
     @pulumi.getter
     def commits(self) -> Sequence['outputs.GetBranchCommitResult']:
-        """
-        The commit associated with the branch ref.
-        """
         return pulumi.get(self, "commits")
 
     @property
     @pulumi.getter
     def default(self) -> bool:
-        """
-        Bool, true if branch is the default branch for the project.
-        """
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter(name="developerCanMerge")
     def developer_can_merge(self) -> bool:
-        """
-        Bool, true if developer level access allows to merge branch.
-        """
         return pulumi.get(self, "developer_can_merge")
 
     @property
     @pulumi.getter(name="developerCanPush")
     def developer_can_push(self) -> bool:
-        """
-        Bool, true if developer level access allows git push.
-        """
         return pulumi.get(self, "developer_can_push")
 
     @property
@@ -107,41 +92,26 @@ class GetBranchResult:
     @property
     @pulumi.getter
     def merged(self) -> bool:
-        """
-        Bool, true if the branch has been merged into it's parent.
-        """
         return pulumi.get(self, "merged")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the branch.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        The full path or id of the project.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def protected(self) -> bool:
-        """
-        Bool, true if branch has branch protection.
-        """
         return pulumi.get(self, "protected")
 
     @property
     @pulumi.getter(name="webUrl")
     def web_url(self) -> str:
-        """
-        The url of the created branch (https.)
-        """
         return pulumi.get(self, "web_url")
 
 
@@ -181,10 +151,6 @@ def get_branch(name: Optional[str] = None,
     foo = gitlab.get_branch(name="example",
         project="foo/bar")
     ```
-
-
-    :param str name: The name of the branch.
-    :param str project: The full path or id of the project.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -227,9 +193,5 @@ def get_branch_output(name: Optional[pulumi.Input[str]] = None,
     foo = gitlab.get_branch(name="example",
         project="foo/bar")
     ```
-
-
-    :param str name: The name of the branch.
-    :param str project: The full path or id of the project.
     """
     ...

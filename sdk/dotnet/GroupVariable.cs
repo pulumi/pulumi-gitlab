@@ -50,7 +50,9 @@ namespace Pulumi.GitLab
     public partial class GroupVariable : Pulumi.CustomResource
     {
         /// <summary>
-        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
+        /// values other than `*` will cause inconsistent plans. See
+        /// https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
         /// </summary>
         [Output("environmentScope")]
         public Output<string?> EnvironmentScope { get; private set; } = null!;
@@ -68,13 +70,15 @@ namespace Pulumi.GitLab
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+        /// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         /// </summary>
         [Output("masked")]
         public Output<bool?> Masked { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+        /// `false`.
         /// </summary>
         [Output("protected")]
         public Output<bool?> Protected { get; private set; } = null!;
@@ -138,7 +142,9 @@ namespace Pulumi.GitLab
     public sealed class GroupVariableArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
+        /// values other than `*` will cause inconsistent plans. See
+        /// https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
         /// </summary>
         [Input("environmentScope")]
         public Input<string>? EnvironmentScope { get; set; }
@@ -156,13 +162,15 @@ namespace Pulumi.GitLab
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+        /// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         /// </summary>
         [Input("masked")]
         public Input<bool>? Masked { get; set; }
 
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+        /// `false`.
         /// </summary>
         [Input("protected")]
         public Input<bool>? Protected { get; set; }
@@ -187,7 +195,9 @@ namespace Pulumi.GitLab
     public sealed class GroupVariableState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans. See https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
+        /// values other than `*` will cause inconsistent plans. See
+        /// https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
         /// </summary>
         [Input("environmentScope")]
         public Input<string>? EnvironmentScope { get; set; }
@@ -205,13 +215,15 @@ namespace Pulumi.GitLab
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+        /// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         /// </summary>
         [Input("masked")]
         public Input<bool>? Masked { get; set; }
 
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+        /// `false`.
         /// </summary>
         [Input("protected")]
         public Input<bool>? Protected { get; set; }

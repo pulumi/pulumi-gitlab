@@ -15,36 +15,46 @@ namespace Pulumi.GitLab.Outputs
     {
         public readonly ImmutableDictionary<string, string> _links;
         public readonly bool AllowMergeOnSkippedPipeline;
+        public readonly string AnalyticsAccessLevel;
         public readonly int ApprovalsBeforeMerge;
-        /// <summary>
-        /// Limit by archived status.
-        /// </summary>
         public readonly bool Archived;
+        public readonly string AutoCancelPendingPipelines;
+        public readonly string AutoDevopsDeployStrategy;
+        public readonly bool AutoDevopsEnabled;
+        public readonly bool AutocloseReferencedIssues;
         public readonly string AvatarUrl;
         public readonly string BuildCoverageRegex;
+        public readonly string BuildGitStrategy;
+        public readonly int BuildTimeout;
+        public readonly string BuildsAccessLevel;
         public readonly string CiConfigPath;
         public readonly bool CiForwardDeploymentEnabled;
+        public readonly ImmutableArray<Outputs.GetProjectsProjectContainerExpirationPolicyResult> ContainerExpirationPolicies;
+        public readonly string ContainerRegistryAccessLevel;
         public readonly bool ContainerRegistryEnabled;
         public readonly string CreatedAt;
         public readonly int CreatorId;
         public readonly ImmutableArray<ImmutableDictionary<string, object>> CustomAttributes;
         public readonly string DefaultBranch;
         public readonly string Description;
+        public readonly bool EmailsDisabled;
+        public readonly string ExternalAuthorizationClassificationLabel;
         public readonly Outputs.GetProjectsProjectForkedFromProjectResult ForkedFromProject;
+        public readonly string ForkingAccessLevel;
         public readonly int ForksCount;
         public readonly string HttpUrlToRepo;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly int Id;
         public readonly string ImportError;
         public readonly string ImportStatus;
+        public readonly string IssuesAccessLevel;
         public readonly bool IssuesEnabled;
         public readonly bool JobsEnabled;
         public readonly string LastActivityAt;
         public readonly bool LfsEnabled;
+        public readonly string MergeCommitTemplate;
         public readonly string MergeMethod;
         public readonly bool MergePipelinesEnabled;
+        public readonly string MergeRequestsAccessLevel;
         public readonly bool MergeRequestsEnabled;
         public readonly bool MergeTrainsEnabled;
         public readonly bool Mirror;
@@ -58,6 +68,7 @@ namespace Pulumi.GitLab.Outputs
         public readonly bool OnlyAllowMergeIfPipelineSucceeds;
         public readonly bool OnlyMirrorProtectedBranches;
         public readonly int OpenIssuesCount;
+        public readonly string OperationsAccessLevel;
         public readonly Outputs.GetProjectsProjectOwnerResult Owner;
         public readonly bool PackagesEnabled;
         public readonly string Path;
@@ -66,24 +77,26 @@ namespace Pulumi.GitLab.Outputs
         public readonly bool Public;
         public readonly bool PublicBuilds;
         public readonly string ReadmeUrl;
+        public readonly string RepositoryAccessLevel;
+        public readonly string RepositoryStorage;
         public readonly bool RequestAccessEnabled;
+        public readonly string RequirementsAccessLevel;
         public readonly bool ResolveOutdatedDiffDiscussions;
         public readonly string RunnersToken;
+        public readonly string SecurityAndComplianceAccessLevel;
         public readonly bool SharedRunnersEnabled;
         public readonly ImmutableArray<Outputs.GetProjectsProjectSharedWithGroupResult> SharedWithGroups;
+        public readonly string SnippetsAccessLevel;
         public readonly bool SnippetsEnabled;
+        public readonly string SquashCommitTemplate;
         public readonly string SshUrlToRepo;
         public readonly int StarCount;
-        /// <summary>
-        /// Include project statistics. Cannot be used with `group_id`.
-        /// </summary>
         public readonly ImmutableDictionary<string, int> Statistics;
         public readonly ImmutableArray<string> TagLists;
-        /// <summary>
-        /// Limit by visibility `public`, `internal`, or `private`.
-        /// </summary>
+        public readonly ImmutableArray<string> Topics;
         public readonly string Visibility;
         public readonly string WebUrl;
+        public readonly string WikiAccessLevel;
         public readonly bool WikiEnabled;
 
         [OutputConstructor]
@@ -92,17 +105,37 @@ namespace Pulumi.GitLab.Outputs
 
             bool allowMergeOnSkippedPipeline,
 
+            string analyticsAccessLevel,
+
             int approvalsBeforeMerge,
 
             bool archived,
+
+            string autoCancelPendingPipelines,
+
+            string autoDevopsDeployStrategy,
+
+            bool autoDevopsEnabled,
+
+            bool autocloseReferencedIssues,
 
             string avatarUrl,
 
             string buildCoverageRegex,
 
+            string buildGitStrategy,
+
+            int buildTimeout,
+
+            string buildsAccessLevel,
+
             string ciConfigPath,
 
             bool ciForwardDeploymentEnabled,
+
+            ImmutableArray<Outputs.GetProjectsProjectContainerExpirationPolicyResult> containerExpirationPolicies,
+
+            string containerRegistryAccessLevel,
 
             bool containerRegistryEnabled,
 
@@ -116,7 +149,13 @@ namespace Pulumi.GitLab.Outputs
 
             string description,
 
+            bool emailsDisabled,
+
+            string externalAuthorizationClassificationLabel,
+
             Outputs.GetProjectsProjectForkedFromProjectResult forkedFromProject,
+
+            string forkingAccessLevel,
 
             int forksCount,
 
@@ -128,6 +167,8 @@ namespace Pulumi.GitLab.Outputs
 
             string importStatus,
 
+            string issuesAccessLevel,
+
             bool issuesEnabled,
 
             bool jobsEnabled,
@@ -136,9 +177,13 @@ namespace Pulumi.GitLab.Outputs
 
             bool lfsEnabled,
 
+            string mergeCommitTemplate,
+
             string mergeMethod,
 
             bool mergePipelinesEnabled,
+
+            string mergeRequestsAccessLevel,
 
             bool mergeRequestsEnabled,
 
@@ -166,6 +211,8 @@ namespace Pulumi.GitLab.Outputs
 
             int openIssuesCount,
 
+            string operationsAccessLevel,
+
             Outputs.GetProjectsProjectOwnerResult owner,
 
             bool packagesEnabled,
@@ -182,17 +229,29 @@ namespace Pulumi.GitLab.Outputs
 
             string readmeUrl,
 
+            string repositoryAccessLevel,
+
+            string repositoryStorage,
+
             bool requestAccessEnabled,
+
+            string requirementsAccessLevel,
 
             bool resolveOutdatedDiffDiscussions,
 
             string runnersToken,
 
+            string securityAndComplianceAccessLevel,
+
             bool sharedRunnersEnabled,
 
             ImmutableArray<Outputs.GetProjectsProjectSharedWithGroupResult> sharedWithGroups,
 
+            string snippetsAccessLevel,
+
             bool snippetsEnabled,
+
+            string squashCommitTemplate,
 
             string sshUrlToRepo,
 
@@ -202,38 +261,58 @@ namespace Pulumi.GitLab.Outputs
 
             ImmutableArray<string> tagLists,
 
+            ImmutableArray<string> topics,
+
             string visibility,
 
             string webUrl,
+
+            string wikiAccessLevel,
 
             bool wikiEnabled)
         {
             this._links = _links;
             AllowMergeOnSkippedPipeline = allowMergeOnSkippedPipeline;
+            AnalyticsAccessLevel = analyticsAccessLevel;
             ApprovalsBeforeMerge = approvalsBeforeMerge;
             Archived = archived;
+            AutoCancelPendingPipelines = autoCancelPendingPipelines;
+            AutoDevopsDeployStrategy = autoDevopsDeployStrategy;
+            AutoDevopsEnabled = autoDevopsEnabled;
+            AutocloseReferencedIssues = autocloseReferencedIssues;
             AvatarUrl = avatarUrl;
             BuildCoverageRegex = buildCoverageRegex;
+            BuildGitStrategy = buildGitStrategy;
+            BuildTimeout = buildTimeout;
+            BuildsAccessLevel = buildsAccessLevel;
             CiConfigPath = ciConfigPath;
             CiForwardDeploymentEnabled = ciForwardDeploymentEnabled;
+            ContainerExpirationPolicies = containerExpirationPolicies;
+            ContainerRegistryAccessLevel = containerRegistryAccessLevel;
             ContainerRegistryEnabled = containerRegistryEnabled;
             CreatedAt = createdAt;
             CreatorId = creatorId;
             CustomAttributes = customAttributes;
             DefaultBranch = defaultBranch;
             Description = description;
+            EmailsDisabled = emailsDisabled;
+            ExternalAuthorizationClassificationLabel = externalAuthorizationClassificationLabel;
             ForkedFromProject = forkedFromProject;
+            ForkingAccessLevel = forkingAccessLevel;
             ForksCount = forksCount;
             HttpUrlToRepo = httpUrlToRepo;
             Id = id;
             ImportError = importError;
             ImportStatus = importStatus;
+            IssuesAccessLevel = issuesAccessLevel;
             IssuesEnabled = issuesEnabled;
             JobsEnabled = jobsEnabled;
             LastActivityAt = lastActivityAt;
             LfsEnabled = lfsEnabled;
+            MergeCommitTemplate = mergeCommitTemplate;
             MergeMethod = mergeMethod;
             MergePipelinesEnabled = mergePipelinesEnabled;
+            MergeRequestsAccessLevel = mergeRequestsAccessLevel;
             MergeRequestsEnabled = mergeRequestsEnabled;
             MergeTrainsEnabled = mergeTrainsEnabled;
             Mirror = mirror;
@@ -247,6 +326,7 @@ namespace Pulumi.GitLab.Outputs
             OnlyAllowMergeIfPipelineSucceeds = onlyAllowMergeIfPipelineSucceeds;
             OnlyMirrorProtectedBranches = onlyMirrorProtectedBranches;
             OpenIssuesCount = openIssuesCount;
+            OperationsAccessLevel = operationsAccessLevel;
             Owner = owner;
             PackagesEnabled = packagesEnabled;
             Path = path;
@@ -255,18 +335,26 @@ namespace Pulumi.GitLab.Outputs
             Public = @public;
             PublicBuilds = publicBuilds;
             ReadmeUrl = readmeUrl;
+            RepositoryAccessLevel = repositoryAccessLevel;
+            RepositoryStorage = repositoryStorage;
             RequestAccessEnabled = requestAccessEnabled;
+            RequirementsAccessLevel = requirementsAccessLevel;
             ResolveOutdatedDiffDiscussions = resolveOutdatedDiffDiscussions;
             RunnersToken = runnersToken;
+            SecurityAndComplianceAccessLevel = securityAndComplianceAccessLevel;
             SharedRunnersEnabled = sharedRunnersEnabled;
             SharedWithGroups = sharedWithGroups;
+            SnippetsAccessLevel = snippetsAccessLevel;
             SnippetsEnabled = snippetsEnabled;
+            SquashCommitTemplate = squashCommitTemplate;
             SshUrlToRepo = sshUrlToRepo;
             StarCount = starCount;
             Statistics = statistics;
             TagLists = tagLists;
+            Topics = topics;
             Visibility = visibility;
             WebUrl = webUrl;
+            WikiAccessLevel = wikiAccessLevel;
             WikiEnabled = wikiEnabled;
         }
     }

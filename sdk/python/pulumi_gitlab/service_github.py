@@ -22,7 +22,8 @@ class ServiceGithubArgs:
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[str] repository_url: The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
         :param pulumi.Input[str] token: A GitHub personal access token with at least `repo:status` scope.
-        :param pulumi.Input[bool] static_context: Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+        :param pulumi.Input[bool] static_context: Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
+               See [Static / dynamic status check names] to learn more.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "repository_url", repository_url)
@@ -70,7 +71,8 @@ class ServiceGithubArgs:
     @pulumi.getter(name="staticContext")
     def static_context(self) -> Optional[pulumi.Input[bool]]:
         """
-        Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+        Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
+        See [Static / dynamic status check names] to learn more.
         """
         return pulumi.get(self, "static_context")
 
@@ -96,7 +98,8 @@ class _ServiceGithubState:
         :param pulumi.Input[str] created_at: Create time.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[str] repository_url: The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
-        :param pulumi.Input[bool] static_context: Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+        :param pulumi.Input[bool] static_context: Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
+               See [Static / dynamic status check names] to learn more.
         :param pulumi.Input[str] title: Title.
         :param pulumi.Input[str] token: A GitHub personal access token with at least `repo:status` scope.
         :param pulumi.Input[str] updated_at: Update time.
@@ -170,7 +173,8 @@ class _ServiceGithubState:
     @pulumi.getter(name="staticContext")
     def static_context(self) -> Optional[pulumi.Input[bool]]:
         """
-        Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+        Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
+        See [Static / dynamic status check names] to learn more.
         """
         return pulumi.get(self, "static_context")
 
@@ -261,7 +265,8 @@ class ServiceGithub(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[str] repository_url: The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
-        :param pulumi.Input[bool] static_context: Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+        :param pulumi.Input[bool] static_context: Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
+               See [Static / dynamic status check names] to learn more.
         :param pulumi.Input[str] token: A GitHub personal access token with at least `repo:status` scope.
         """
         ...
@@ -376,7 +381,8 @@ class ServiceGithub(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: Create time.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[str] repository_url: The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
-        :param pulumi.Input[bool] static_context: Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+        :param pulumi.Input[bool] static_context: Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
+               See [Static / dynamic status check names] to learn more.
         :param pulumi.Input[str] title: Title.
         :param pulumi.Input[str] token: A GitHub personal access token with at least `repo:status` scope.
         :param pulumi.Input[str] updated_at: Update time.
@@ -431,7 +437,8 @@ class ServiceGithub(pulumi.CustomResource):
     @pulumi.getter(name="staticContext")
     def static_context(self) -> pulumi.Output[Optional[bool]]:
         """
-        Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+        Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
+        See [Static / dynamic status check names] to learn more.
         """
         return pulumi.get(self, "static_context")
 

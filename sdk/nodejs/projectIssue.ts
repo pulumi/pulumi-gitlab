@@ -6,6 +6,27 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const foo = new gitlab.Project("foo", {
+ *     description: "Lorem Ipsum",
+ *     visibilityLevel: "public",
+ * });
+ * const welcomeIssue = new gitlab.ProjectIssue("welcomeIssue", {
+ *     project: foo.id,
+ *     title: "Welcome!",
+ *     description: pulumi.interpolate`  Welcome to the ${foo.name} project!
+ *
+ * `,
+ *     discussionLocked: true,
+ * });
+ * export const welcomeIssueWebUrl = data.gitlab_project_issue.web_url;
+ * ```
+ *
  * ## Import
  *
  * # You can import this resource with an id made up of `{project-id}:{issue-id}`, e.g.
@@ -47,7 +68,7 @@ export class ProjectIssue extends pulumi.CustomResource {
      */
     public readonly assigneeIds!: pulumi.Output<number[] | undefined>;
     /**
-     * The ID of the author of the issue. Use `gitlab.User` data source to get more information about the user.
+     * The ID of the author of the issue. Use `gitlab_user` data source to get more information about the user.
      */
     public /*out*/ readonly authorId!: pulumi.Output<number>;
     /**
@@ -55,7 +76,7 @@ export class ProjectIssue extends pulumi.CustomResource {
      */
     public readonly closedAt!: pulumi.Output<string>;
     /**
-     * The ID of the user that closed the issue. Use `gitlab.User` data source to get more information about the user.
+     * The ID of the user that closed the issue. Use `gitlab_user` data source to get more information about the user.
      */
     public readonly closedByUserId!: pulumi.Output<number>;
     /**
@@ -63,7 +84,8 @@ export class ProjectIssue extends pulumi.CustomResource {
      */
     public readonly confidential!: pulumi.Output<boolean | undefined>;
     /**
-     * When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
+     * When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires
+     * administrator or project/group owner rights.
      */
     public readonly createdAt!: pulumi.Output<string>;
     /**
@@ -79,7 +101,8 @@ export class ProjectIssue extends pulumi.CustomResource {
      */
     public readonly discussionLocked!: pulumi.Output<boolean | undefined>;
     /**
-     * The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
+     * The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as
+     * resolved. Use in combination with merge_request_to_resolve_discussions_of.
      */
     public readonly discussionToResolve!: pulumi.Output<string | undefined>;
     /**
@@ -87,8 +110,8 @@ export class ProjectIssue extends pulumi.CustomResource {
      */
     public /*out*/ readonly downvotes!: pulumi.Output<number>;
     /**
-     * The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-     * **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
+     * The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11. **Note:** removing a due date is
+     * currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
      */
     public readonly dueDate!: pulumi.Output<string | undefined>;
     /**
@@ -124,7 +147,7 @@ export class ProjectIssue extends pulumi.CustomResource {
      */
     public /*out*/ readonly issueLinkId!: pulumi.Output<number>;
     /**
-     * The type of issue. Valid values are: `issue`, `incident`, `testCase`.
+     * The type of issue. Valid values are: `issue`, `incident`, `test_case`.
      */
     public readonly issueType!: pulumi.Output<string | undefined>;
     /**
@@ -136,7 +159,8 @@ export class ProjectIssue extends pulumi.CustomResource {
      */
     public readonly links!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
+     * The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
+     * all discussions as resolved. When passing a description or title, these values take precedence over the default values.
      */
     public readonly mergeRequestToResolveDiscussionsOf!: pulumi.Output<number | undefined>;
     /**
@@ -144,7 +168,8 @@ export class ProjectIssue extends pulumi.CustomResource {
      */
     public /*out*/ readonly mergeRequestsCount!: pulumi.Output<number>;
     /**
-     * The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
+     * The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with
+     * the milestone assigned and use the API to retrieve the issue's details.
      */
     public readonly milestoneId!: pulumi.Output<number | undefined>;
     /**
@@ -320,7 +345,7 @@ export interface ProjectIssueState {
      */
     assigneeIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * The ID of the author of the issue. Use `gitlab.User` data source to get more information about the user.
+     * The ID of the author of the issue. Use `gitlab_user` data source to get more information about the user.
      */
     authorId?: pulumi.Input<number>;
     /**
@@ -328,7 +353,7 @@ export interface ProjectIssueState {
      */
     closedAt?: pulumi.Input<string>;
     /**
-     * The ID of the user that closed the issue. Use `gitlab.User` data source to get more information about the user.
+     * The ID of the user that closed the issue. Use `gitlab_user` data source to get more information about the user.
      */
     closedByUserId?: pulumi.Input<number>;
     /**
@@ -336,7 +361,8 @@ export interface ProjectIssueState {
      */
     confidential?: pulumi.Input<boolean>;
     /**
-     * When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
+     * When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires
+     * administrator or project/group owner rights.
      */
     createdAt?: pulumi.Input<string>;
     /**
@@ -352,7 +378,8 @@ export interface ProjectIssueState {
      */
     discussionLocked?: pulumi.Input<boolean>;
     /**
-     * The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
+     * The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as
+     * resolved. Use in combination with merge_request_to_resolve_discussions_of.
      */
     discussionToResolve?: pulumi.Input<string>;
     /**
@@ -360,8 +387,8 @@ export interface ProjectIssueState {
      */
     downvotes?: pulumi.Input<number>;
     /**
-     * The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-     * **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
+     * The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11. **Note:** removing a due date is
+     * currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
      */
     dueDate?: pulumi.Input<string>;
     /**
@@ -397,7 +424,7 @@ export interface ProjectIssueState {
      */
     issueLinkId?: pulumi.Input<number>;
     /**
-     * The type of issue. Valid values are: `issue`, `incident`, `testCase`.
+     * The type of issue. Valid values are: `issue`, `incident`, `test_case`.
      */
     issueType?: pulumi.Input<string>;
     /**
@@ -409,7 +436,8 @@ export interface ProjectIssueState {
      */
     links?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
+     * The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
+     * all discussions as resolved. When passing a description or title, these values take precedence over the default values.
      */
     mergeRequestToResolveDiscussionsOf?: pulumi.Input<number>;
     /**
@@ -417,7 +445,8 @@ export interface ProjectIssueState {
      */
     mergeRequestsCount?: pulumi.Input<number>;
     /**
-     * The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
+     * The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with
+     * the milestone assigned and use the API to retrieve the issue's details.
      */
     milestoneId?: pulumi.Input<number>;
     /**
@@ -491,7 +520,7 @@ export interface ProjectIssueArgs {
      */
     closedAt?: pulumi.Input<string>;
     /**
-     * The ID of the user that closed the issue. Use `gitlab.User` data source to get more information about the user.
+     * The ID of the user that closed the issue. Use `gitlab_user` data source to get more information about the user.
      */
     closedByUserId?: pulumi.Input<number>;
     /**
@@ -499,7 +528,8 @@ export interface ProjectIssueArgs {
      */
     confidential?: pulumi.Input<boolean>;
     /**
-     * When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
+     * When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires
+     * administrator or project/group owner rights.
      */
     createdAt?: pulumi.Input<string>;
     /**
@@ -515,12 +545,13 @@ export interface ProjectIssueArgs {
      */
     discussionLocked?: pulumi.Input<boolean>;
     /**
-     * The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
+     * The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as
+     * resolved. Use in combination with merge_request_to_resolve_discussions_of.
      */
     discussionToResolve?: pulumi.Input<string>;
     /**
-     * The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-     * **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
+     * The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11. **Note:** removing a due date is
+     * currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
      */
     dueDate?: pulumi.Input<string>;
     /**
@@ -540,7 +571,7 @@ export interface ProjectIssueArgs {
      */
     iid?: pulumi.Input<number>;
     /**
-     * The type of issue. Valid values are: `issue`, `incident`, `testCase`.
+     * The type of issue. Valid values are: `issue`, `incident`, `test_case`.
      */
     issueType?: pulumi.Input<string>;
     /**
@@ -552,11 +583,13 @@ export interface ProjectIssueArgs {
      */
     links?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
+     * The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
+     * all discussions as resolved. When passing a description or title, these values take precedence over the default values.
      */
     mergeRequestToResolveDiscussionsOf?: pulumi.Input<number>;
     /**
-     * The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
+     * The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with
+     * the milestone assigned and use the API to retrieve the issue's details.
      */
     milestoneId?: pulumi.Input<number>;
     /**

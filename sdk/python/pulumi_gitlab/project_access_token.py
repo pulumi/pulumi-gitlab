@@ -101,7 +101,7 @@ class _ProjectAccessTokenState:
         :param pulumi.Input[str] project: The id of the project to add the project access token to.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
-        :param pulumi.Input[str] token: The secret token. This is only populated when creating a new project access token.
+        :param pulumi.Input[str] token: The secret token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[int] user_id: The user_id associated to the token.
         """
         if active is not None:
@@ -211,7 +211,7 @@ class _ProjectAccessTokenState:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
-        The secret token. This is only populated when creating a new project access token.
+        The secret token. **Note**: the token is not available for imported resources.
         """
         return pulumi.get(self, "token")
 
@@ -263,6 +263,16 @@ class ProjectAccessToken(pulumi.CustomResource):
             value=example_project_access_token.token)
         ```
 
+        ## Import
+
+        # A GitLab Project Access Token can be imported using a key composed of `<project-id>:<token-id>`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/projectAccessToken:ProjectAccessToken example "12345:1"
+        ```
+
+        # NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] expires_at: Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
@@ -296,6 +306,16 @@ class ProjectAccessToken(pulumi.CustomResource):
             key="pat",
             value=example_project_access_token.token)
         ```
+
+        ## Import
+
+        # A GitLab Project Access Token can be imported using a key composed of `<project-id>:<token-id>`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/projectAccessToken:ProjectAccessToken example "12345:1"
+        ```
+
+        # NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 
         :param str resource_name: The name of the resource.
         :param ProjectAccessTokenArgs args: The arguments to use to populate this resource's properties.
@@ -374,7 +394,7 @@ class ProjectAccessToken(pulumi.CustomResource):
         :param pulumi.Input[str] project: The id of the project to add the project access token to.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
-        :param pulumi.Input[str] token: The secret token. This is only populated when creating a new project access token.
+        :param pulumi.Input[str] token: The secret token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[int] user_id: The user_id associated to the token.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -452,7 +472,7 @@ class ProjectAccessToken(pulumi.CustomResource):
     @pulumi.getter
     def token(self) -> pulumi.Output[str]:
         """
-        The secret token. This is only populated when creating a new project access token.
+        The secret token. **Note**: the token is not available for imported resources.
         """
         return pulumi.get(self, "token")
 

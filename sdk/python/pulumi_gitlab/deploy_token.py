@@ -130,7 +130,8 @@ class _DeployTokenState:
         :param pulumi.Input[str] name: A name to describe the deploy token with.
         :param pulumi.Input[str] project: The name or id of the project to add the deploy token to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
-        :param pulumi.Input[str] token: The secret token. This is only populated when creating a new deploy token.
+        :param pulumi.Input[str] token: The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
+               imported resources.
         :param pulumi.Input[str] username: A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
         """
         if expires_at is not None:
@@ -212,7 +213,8 @@ class _DeployTokenState:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
-        The secret token. This is only populated when creating a new deploy token.
+        The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
+        imported resources.
         """
         return pulumi.get(self, "token")
 
@@ -250,6 +252,20 @@ class DeployToken(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_tokens.html)
 
+        ## Import
+
+        # GitLab deploy tokens can be imported using an id made up of `{type}:{type_id}:{deploy_token_id}`, where type is one ofproject, group.
+
+        ```sh
+         $ pulumi import gitlab:index/deployToken:DeployToken group_token group:1:3
+        ```
+
+        ```sh
+         $ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4
+        ```
+
+        # Notethe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] expires_at: Time the token will expire it, RFC3339 format. Will not expire per default.
@@ -269,6 +285,20 @@ class DeployToken(pulumi.CustomResource):
         The `DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_tokens.html)
+
+        ## Import
+
+        # GitLab deploy tokens can be imported using an id made up of `{type}:{type_id}:{deploy_token_id}`, where type is one ofproject, group.
+
+        ```sh
+         $ pulumi import gitlab:index/deployToken:DeployToken group_token group:1:3
+        ```
+
+        ```sh
+         $ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4
+        ```
+
+        # Notethe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 
         :param str resource_name: The name of the resource.
         :param DeployTokenArgs args: The arguments to use to populate this resource's properties.
@@ -341,7 +371,8 @@ class DeployToken(pulumi.CustomResource):
         :param pulumi.Input[str] name: A name to describe the deploy token with.
         :param pulumi.Input[str] project: The name or id of the project to add the deploy token to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
-        :param pulumi.Input[str] token: The secret token. This is only populated when creating a new deploy token.
+        :param pulumi.Input[str] token: The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
+               imported resources.
         :param pulumi.Input[str] username: A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -401,7 +432,8 @@ class DeployToken(pulumi.CustomResource):
     @pulumi.getter
     def token(self) -> pulumi.Output[str]:
         """
-        The secret token. This is only populated when creating a new deploy token.
+        The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
+        imported resources.
         """
         return pulumi.get(self, "token")
 

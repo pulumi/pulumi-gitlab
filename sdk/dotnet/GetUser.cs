@@ -35,21 +35,12 @@ namespace Pulumi.GitLab
 
     public sealed class GetUserArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
-        /// </summary>
         [Input("email")]
         public string? Email { get; set; }
 
-        /// <summary>
-        /// The ID of the user.
-        /// </summary>
         [Input("userId")]
         public int? UserId { get; set; }
 
-        /// <summary>
-        /// The username of the user.
-        /// </summary>
         [Input("username")]
         public string? Username { get; set; }
 
@@ -60,21 +51,12 @@ namespace Pulumi.GitLab
 
     public sealed class GetUserInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
-        /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
-        /// <summary>
-        /// The ID of the user.
-        /// </summary>
         [Input("userId")]
         public Input<int>? UserId { get; set; }
 
-        /// <summary>
-        /// The username of the user.
-        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 
@@ -87,117 +69,36 @@ namespace Pulumi.GitLab
     [OutputType]
     public sealed class GetUserResult
     {
-        /// <summary>
-        /// The avatar URL of the user.
-        /// </summary>
         public readonly string AvatarUrl;
-        /// <summary>
-        /// The bio of the user.
-        /// </summary>
         public readonly string Bio;
-        /// <summary>
-        /// Whether the user can create groups.
-        /// </summary>
         public readonly bool CanCreateGroup;
-        /// <summary>
-        /// Whether the user can create projects.
-        /// </summary>
         public readonly bool CanCreateProject;
-        /// <summary>
-        /// User's color scheme ID.
-        /// </summary>
         public readonly int ColorSchemeId;
-        /// <summary>
-        /// Date the user was created at.
-        /// </summary>
         public readonly string CreatedAt;
-        /// <summary>
-        /// Current user's sign-in date.
-        /// </summary>
         public readonly string CurrentSignInAt;
-        /// <summary>
-        /// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
-        /// </summary>
         public readonly string Email;
-        /// <summary>
-        /// The external UID of the user.
-        /// </summary>
         public readonly string ExternUid;
-        /// <summary>
-        /// Whether the user is external.
-        /// </summary>
         public readonly bool External;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Whether the user is an admin.
-        /// </summary>
         public readonly bool IsAdmin;
-        /// <summary>
-        /// Last user's sign-in date.
-        /// </summary>
         public readonly string LastSignInAt;
-        /// <summary>
-        /// LinkedIn profile of the user.
-        /// </summary>
         public readonly string Linkedin;
-        /// <summary>
-        /// The location of the user.
-        /// </summary>
         public readonly string Location;
-        /// <summary>
-        /// The name of the user.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Admin notes for this user.
-        /// </summary>
         public readonly string Note;
-        /// <summary>
-        /// The organization of the user.
-        /// </summary>
         public readonly string Organization;
-        /// <summary>
-        /// Number of projects the user can create.
-        /// </summary>
         public readonly int ProjectsLimit;
-        /// <summary>
-        /// Skype username of the user.
-        /// </summary>
         public readonly string Skype;
-        /// <summary>
-        /// Whether the user is active or blocked.
-        /// </summary>
         public readonly string State;
-        /// <summary>
-        /// User's theme ID.
-        /// </summary>
         public readonly int ThemeId;
-        /// <summary>
-        /// Twitter username of the user.
-        /// </summary>
         public readonly string Twitter;
-        /// <summary>
-        /// Whether user's two-factor auth is enabled.
-        /// </summary>
         public readonly bool TwoFactorEnabled;
-        /// <summary>
-        /// The ID of the user.
-        /// </summary>
         public readonly int UserId;
-        /// <summary>
-        /// The UID provider of the user.
-        /// </summary>
         public readonly string UserProvider;
-        /// <summary>
-        /// The username of the user.
-        /// </summary>
         public readonly string Username;
-        /// <summary>
-        /// User's website URL.
-        /// </summary>
         public readonly string WebsiteUrl;
 
         [OutputConstructor]

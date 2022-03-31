@@ -19,7 +19,8 @@ class LabelArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Label resource.
-        :param pulumi.Input[str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        :param pulumi.Input[str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+               names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         :param pulumi.Input[str] project: The name or id of the project to add the label to.
         :param pulumi.Input[str] description: The description of the label.
         :param pulumi.Input[str] name: The name of the label.
@@ -35,7 +36,8 @@ class LabelArgs:
     @pulumi.getter
     def color(self) -> pulumi.Input[str]:
         """
-        The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+        names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         """
         return pulumi.get(self, "color")
 
@@ -89,7 +91,8 @@ class _LabelState:
                  project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Label resources.
-        :param pulumi.Input[str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        :param pulumi.Input[str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+               names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         :param pulumi.Input[str] description: The description of the label.
         :param pulumi.Input[str] name: The name of the label.
         :param pulumi.Input[str] project: The name or id of the project to add the label to.
@@ -107,7 +110,8 @@ class _LabelState:
     @pulumi.getter
     def color(self) -> Optional[pulumi.Input[str]]:
         """
-        The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+        names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         """
         return pulumi.get(self, "color")
 
@@ -184,9 +188,18 @@ class Label(pulumi.CustomResource):
             color="#ffa500")
         ```
 
+        ## Import
+
+        # Gitlab labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/label:Label example 12345:fixme
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        :param pulumi.Input[str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+               names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         :param pulumi.Input[str] description: The description of the label.
         :param pulumi.Input[str] name: The name of the label.
         :param pulumi.Input[str] project: The name or id of the project to add the label to.
@@ -217,6 +230,14 @@ class Label(pulumi.CustomResource):
             project=gitlab_project["example"]["id"],
             description="issue for creating infrastructure resources",
             color="#ffa500")
+        ```
+
+        ## Import
+
+        # Gitlab labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/label:Label example 12345:fixme
         ```
 
         :param str resource_name: The name of the resource.
@@ -279,7 +300,8 @@ class Label(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        :param pulumi.Input[str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+               names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         :param pulumi.Input[str] description: The description of the label.
         :param pulumi.Input[str] name: The name of the label.
         :param pulumi.Input[str] project: The name or id of the project to add the label to.
@@ -298,7 +320,8 @@ class Label(pulumi.CustomResource):
     @pulumi.getter
     def color(self) -> pulumi.Output[str]:
         """
-        The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+        names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         """
         return pulumi.get(self, "color")
 

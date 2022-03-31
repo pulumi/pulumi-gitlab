@@ -60,7 +60,8 @@ export class GroupLdapLink extends pulumi.CustomResource {
     }
 
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+     * `developer`, `maintainer`, `owner`, `master`
      *
      * @deprecated Use `group_access` instead of the `access_level` attribute.
      */
@@ -74,7 +75,8 @@ export class GroupLdapLink extends pulumi.CustomResource {
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+     * `developer`, `maintainer`, `owner`, `master`
      */
     public readonly groupAccess!: pulumi.Output<string | undefined>;
     /**
@@ -133,7 +135,8 @@ export class GroupLdapLink extends pulumi.CustomResource {
  */
 export interface GroupLdapLinkState {
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+     * `developer`, `maintainer`, `owner`, `master`
      *
      * @deprecated Use `group_access` instead of the `access_level` attribute.
      */
@@ -147,7 +150,8 @@ export interface GroupLdapLinkState {
      */
     force?: pulumi.Input<boolean>;
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+     * `developer`, `maintainer`, `owner`, `master`
      */
     groupAccess?: pulumi.Input<string>;
     /**
@@ -165,7 +169,8 @@ export interface GroupLdapLinkState {
  */
 export interface GroupLdapLinkArgs {
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+     * `developer`, `maintainer`, `owner`, `master`
      *
      * @deprecated Use `group_access` instead of the `access_level` attribute.
      */
@@ -179,7 +184,8 @@ export interface GroupLdapLinkArgs {
      */
     force?: pulumi.Input<boolean>;
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+     * `developer`, `maintainer`, `owner`, `master`
      */
     groupAccess?: pulumi.Input<string>;
     /**

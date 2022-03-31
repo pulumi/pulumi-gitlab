@@ -11,18 +11,17 @@ import (
 )
 
 type BranchCommit struct {
-	AuthorEmail    *string `pulumi:"authorEmail"`
-	AuthorName     *string `pulumi:"authorName"`
-	AuthoredDate   *string `pulumi:"authoredDate"`
-	CommittedDate  *string `pulumi:"committedDate"`
-	CommitterEmail *string `pulumi:"committerEmail"`
-	CommitterName  *string `pulumi:"committerName"`
-	// The ID of this resource.
-	Id        *string  `pulumi:"id"`
-	Message   *string  `pulumi:"message"`
-	ParentIds []string `pulumi:"parentIds"`
-	ShortId   *string  `pulumi:"shortId"`
-	Title     *string  `pulumi:"title"`
+	AuthorEmail    *string  `pulumi:"authorEmail"`
+	AuthorName     *string  `pulumi:"authorName"`
+	AuthoredDate   *string  `pulumi:"authoredDate"`
+	CommittedDate  *string  `pulumi:"committedDate"`
+	CommitterEmail *string  `pulumi:"committerEmail"`
+	CommitterName  *string  `pulumi:"committerName"`
+	Id             *string  `pulumi:"id"`
+	Message        *string  `pulumi:"message"`
+	ParentIds      []string `pulumi:"parentIds"`
+	ShortId        *string  `pulumi:"shortId"`
+	Title          *string  `pulumi:"title"`
 }
 
 // BranchCommitInput is an input type that accepts BranchCommitArgs and BranchCommitOutput values.
@@ -37,18 +36,17 @@ type BranchCommitInput interface {
 }
 
 type BranchCommitArgs struct {
-	AuthorEmail    pulumi.StringPtrInput `pulumi:"authorEmail"`
-	AuthorName     pulumi.StringPtrInput `pulumi:"authorName"`
-	AuthoredDate   pulumi.StringPtrInput `pulumi:"authoredDate"`
-	CommittedDate  pulumi.StringPtrInput `pulumi:"committedDate"`
-	CommitterEmail pulumi.StringPtrInput `pulumi:"committerEmail"`
-	CommitterName  pulumi.StringPtrInput `pulumi:"committerName"`
-	// The ID of this resource.
-	Id        pulumi.StringPtrInput   `pulumi:"id"`
-	Message   pulumi.StringPtrInput   `pulumi:"message"`
-	ParentIds pulumi.StringArrayInput `pulumi:"parentIds"`
-	ShortId   pulumi.StringPtrInput   `pulumi:"shortId"`
-	Title     pulumi.StringPtrInput   `pulumi:"title"`
+	AuthorEmail    pulumi.StringPtrInput   `pulumi:"authorEmail"`
+	AuthorName     pulumi.StringPtrInput   `pulumi:"authorName"`
+	AuthoredDate   pulumi.StringPtrInput   `pulumi:"authoredDate"`
+	CommittedDate  pulumi.StringPtrInput   `pulumi:"committedDate"`
+	CommitterEmail pulumi.StringPtrInput   `pulumi:"committerEmail"`
+	CommitterName  pulumi.StringPtrInput   `pulumi:"committerName"`
+	Id             pulumi.StringPtrInput   `pulumi:"id"`
+	Message        pulumi.StringPtrInput   `pulumi:"message"`
+	ParentIds      pulumi.StringArrayInput `pulumi:"parentIds"`
+	ShortId        pulumi.StringPtrInput   `pulumi:"shortId"`
+	Title          pulumi.StringPtrInput   `pulumi:"title"`
 }
 
 func (BranchCommitArgs) ElementType() reflect.Type {
@@ -126,7 +124,6 @@ func (o BranchCommitOutput) CommitterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BranchCommit) *string { return v.CommitterName }).(pulumi.StringPtrOutput)
 }
 
-// The ID of this resource.
 func (o BranchCommitOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BranchCommit) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -168,14 +165,10 @@ func (o BranchCommitArrayOutput) Index(i pulumi.IntInput) BranchCommitOutput {
 }
 
 type BranchProtectionAllowedToMerge struct {
-	// Level of access.
-	AccessLevel *string `pulumi:"accessLevel"`
-	// Readable description of level of access.
+	AccessLevel            *string `pulumi:"accessLevel"`
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
-	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
-	GroupId *int `pulumi:"groupId"`
-	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
-	UserId *int `pulumi:"userId"`
+	GroupId                *int    `pulumi:"groupId"`
+	UserId                 *int    `pulumi:"userId"`
 }
 
 // BranchProtectionAllowedToMergeInput is an input type that accepts BranchProtectionAllowedToMergeArgs and BranchProtectionAllowedToMergeOutput values.
@@ -190,14 +183,10 @@ type BranchProtectionAllowedToMergeInput interface {
 }
 
 type BranchProtectionAllowedToMergeArgs struct {
-	// Level of access.
-	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// Readable description of level of access.
+	AccessLevel            pulumi.StringPtrInput `pulumi:"accessLevel"`
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
-	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
-	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
-	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
-	UserId pulumi.IntPtrInput `pulumi:"userId"`
+	GroupId                pulumi.IntPtrInput    `pulumi:"groupId"`
+	UserId                 pulumi.IntPtrInput    `pulumi:"userId"`
 }
 
 func (BranchProtectionAllowedToMergeArgs) ElementType() reflect.Type {
@@ -251,22 +240,18 @@ func (o BranchProtectionAllowedToMergeOutput) ToBranchProtectionAllowedToMergeOu
 	return o
 }
 
-// Level of access.
 func (o BranchProtectionAllowedToMergeOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BranchProtectionAllowedToMerge) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
-// Readable description of level of access.
 func (o BranchProtectionAllowedToMergeOutput) AccessLevelDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BranchProtectionAllowedToMerge) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
 }
 
-// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
 func (o BranchProtectionAllowedToMergeOutput) GroupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BranchProtectionAllowedToMerge) *int { return v.GroupId }).(pulumi.IntPtrOutput)
 }
 
-// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
 func (o BranchProtectionAllowedToMergeOutput) UserId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BranchProtectionAllowedToMerge) *int { return v.UserId }).(pulumi.IntPtrOutput)
 }
@@ -292,14 +277,10 @@ func (o BranchProtectionAllowedToMergeArrayOutput) Index(i pulumi.IntInput) Bran
 }
 
 type BranchProtectionAllowedToPush struct {
-	// Level of access.
-	AccessLevel *string `pulumi:"accessLevel"`
-	// Readable description of level of access.
+	AccessLevel            *string `pulumi:"accessLevel"`
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
-	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
-	GroupId *int `pulumi:"groupId"`
-	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
-	UserId *int `pulumi:"userId"`
+	GroupId                *int    `pulumi:"groupId"`
+	UserId                 *int    `pulumi:"userId"`
 }
 
 // BranchProtectionAllowedToPushInput is an input type that accepts BranchProtectionAllowedToPushArgs and BranchProtectionAllowedToPushOutput values.
@@ -314,14 +295,10 @@ type BranchProtectionAllowedToPushInput interface {
 }
 
 type BranchProtectionAllowedToPushArgs struct {
-	// Level of access.
-	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// Readable description of level of access.
+	AccessLevel            pulumi.StringPtrInput `pulumi:"accessLevel"`
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
-	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
-	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
-	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
-	UserId pulumi.IntPtrInput `pulumi:"userId"`
+	GroupId                pulumi.IntPtrInput    `pulumi:"groupId"`
+	UserId                 pulumi.IntPtrInput    `pulumi:"userId"`
 }
 
 func (BranchProtectionAllowedToPushArgs) ElementType() reflect.Type {
@@ -375,22 +352,18 @@ func (o BranchProtectionAllowedToPushOutput) ToBranchProtectionAllowedToPushOutp
 	return o
 }
 
-// Level of access.
 func (o BranchProtectionAllowedToPushOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BranchProtectionAllowedToPush) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
-// Readable description of level of access.
 func (o BranchProtectionAllowedToPushOutput) AccessLevelDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BranchProtectionAllowedToPush) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
 }
 
-// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
 func (o BranchProtectionAllowedToPushOutput) GroupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BranchProtectionAllowedToPush) *int { return v.GroupId }).(pulumi.IntPtrOutput)
 }
 
-// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
 func (o BranchProtectionAllowedToPushOutput) UserId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BranchProtectionAllowedToPush) *int { return v.UserId }).(pulumi.IntPtrOutput)
 }
@@ -415,11 +388,344 @@ func (o BranchProtectionAllowedToPushArrayOutput) Index(i pulumi.IntInput) Branc
 	}).(BranchProtectionAllowedToPushOutput)
 }
 
+type BranchProtectionAllowedToUnprotect struct {
+	AccessLevel            *string `pulumi:"accessLevel"`
+	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
+	GroupId                *int    `pulumi:"groupId"`
+	UserId                 *int    `pulumi:"userId"`
+}
+
+// BranchProtectionAllowedToUnprotectInput is an input type that accepts BranchProtectionAllowedToUnprotectArgs and BranchProtectionAllowedToUnprotectOutput values.
+// You can construct a concrete instance of `BranchProtectionAllowedToUnprotectInput` via:
+//
+//          BranchProtectionAllowedToUnprotectArgs{...}
+type BranchProtectionAllowedToUnprotectInput interface {
+	pulumi.Input
+
+	ToBranchProtectionAllowedToUnprotectOutput() BranchProtectionAllowedToUnprotectOutput
+	ToBranchProtectionAllowedToUnprotectOutputWithContext(context.Context) BranchProtectionAllowedToUnprotectOutput
+}
+
+type BranchProtectionAllowedToUnprotectArgs struct {
+	AccessLevel            pulumi.StringPtrInput `pulumi:"accessLevel"`
+	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
+	GroupId                pulumi.IntPtrInput    `pulumi:"groupId"`
+	UserId                 pulumi.IntPtrInput    `pulumi:"userId"`
+}
+
+func (BranchProtectionAllowedToUnprotectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BranchProtectionAllowedToUnprotect)(nil)).Elem()
+}
+
+func (i BranchProtectionAllowedToUnprotectArgs) ToBranchProtectionAllowedToUnprotectOutput() BranchProtectionAllowedToUnprotectOutput {
+	return i.ToBranchProtectionAllowedToUnprotectOutputWithContext(context.Background())
+}
+
+func (i BranchProtectionAllowedToUnprotectArgs) ToBranchProtectionAllowedToUnprotectOutputWithContext(ctx context.Context) BranchProtectionAllowedToUnprotectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BranchProtectionAllowedToUnprotectOutput)
+}
+
+// BranchProtectionAllowedToUnprotectArrayInput is an input type that accepts BranchProtectionAllowedToUnprotectArray and BranchProtectionAllowedToUnprotectArrayOutput values.
+// You can construct a concrete instance of `BranchProtectionAllowedToUnprotectArrayInput` via:
+//
+//          BranchProtectionAllowedToUnprotectArray{ BranchProtectionAllowedToUnprotectArgs{...} }
+type BranchProtectionAllowedToUnprotectArrayInput interface {
+	pulumi.Input
+
+	ToBranchProtectionAllowedToUnprotectArrayOutput() BranchProtectionAllowedToUnprotectArrayOutput
+	ToBranchProtectionAllowedToUnprotectArrayOutputWithContext(context.Context) BranchProtectionAllowedToUnprotectArrayOutput
+}
+
+type BranchProtectionAllowedToUnprotectArray []BranchProtectionAllowedToUnprotectInput
+
+func (BranchProtectionAllowedToUnprotectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BranchProtectionAllowedToUnprotect)(nil)).Elem()
+}
+
+func (i BranchProtectionAllowedToUnprotectArray) ToBranchProtectionAllowedToUnprotectArrayOutput() BranchProtectionAllowedToUnprotectArrayOutput {
+	return i.ToBranchProtectionAllowedToUnprotectArrayOutputWithContext(context.Background())
+}
+
+func (i BranchProtectionAllowedToUnprotectArray) ToBranchProtectionAllowedToUnprotectArrayOutputWithContext(ctx context.Context) BranchProtectionAllowedToUnprotectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BranchProtectionAllowedToUnprotectArrayOutput)
+}
+
+type BranchProtectionAllowedToUnprotectOutput struct{ *pulumi.OutputState }
+
+func (BranchProtectionAllowedToUnprotectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BranchProtectionAllowedToUnprotect)(nil)).Elem()
+}
+
+func (o BranchProtectionAllowedToUnprotectOutput) ToBranchProtectionAllowedToUnprotectOutput() BranchProtectionAllowedToUnprotectOutput {
+	return o
+}
+
+func (o BranchProtectionAllowedToUnprotectOutput) ToBranchProtectionAllowedToUnprotectOutputWithContext(ctx context.Context) BranchProtectionAllowedToUnprotectOutput {
+	return o
+}
+
+func (o BranchProtectionAllowedToUnprotectOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BranchProtectionAllowedToUnprotect) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+func (o BranchProtectionAllowedToUnprotectOutput) AccessLevelDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BranchProtectionAllowedToUnprotect) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
+}
+
+func (o BranchProtectionAllowedToUnprotectOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BranchProtectionAllowedToUnprotect) *int { return v.GroupId }).(pulumi.IntPtrOutput)
+}
+
+func (o BranchProtectionAllowedToUnprotectOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BranchProtectionAllowedToUnprotect) *int { return v.UserId }).(pulumi.IntPtrOutput)
+}
+
+type BranchProtectionAllowedToUnprotectArrayOutput struct{ *pulumi.OutputState }
+
+func (BranchProtectionAllowedToUnprotectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BranchProtectionAllowedToUnprotect)(nil)).Elem()
+}
+
+func (o BranchProtectionAllowedToUnprotectArrayOutput) ToBranchProtectionAllowedToUnprotectArrayOutput() BranchProtectionAllowedToUnprotectArrayOutput {
+	return o
+}
+
+func (o BranchProtectionAllowedToUnprotectArrayOutput) ToBranchProtectionAllowedToUnprotectArrayOutputWithContext(ctx context.Context) BranchProtectionAllowedToUnprotectArrayOutput {
+	return o
+}
+
+func (o BranchProtectionAllowedToUnprotectArrayOutput) Index(i pulumi.IntInput) BranchProtectionAllowedToUnprotectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BranchProtectionAllowedToUnprotect {
+		return vs[0].([]BranchProtectionAllowedToUnprotect)[vs[1].(int)]
+	}).(BranchProtectionAllowedToUnprotectOutput)
+}
+
+type ProjectContainerExpirationPolicy struct {
+	Cadence         *string `pulumi:"cadence"`
+	Enabled         *bool   `pulumi:"enabled"`
+	KeepN           *int    `pulumi:"keepN"`
+	NameRegexDelete *string `pulumi:"nameRegexDelete"`
+	NameRegexKeep   *string `pulumi:"nameRegexKeep"`
+	NextRunAt       *string `pulumi:"nextRunAt"`
+	OlderThan       *string `pulumi:"olderThan"`
+}
+
+// ProjectContainerExpirationPolicyInput is an input type that accepts ProjectContainerExpirationPolicyArgs and ProjectContainerExpirationPolicyOutput values.
+// You can construct a concrete instance of `ProjectContainerExpirationPolicyInput` via:
+//
+//          ProjectContainerExpirationPolicyArgs{...}
+type ProjectContainerExpirationPolicyInput interface {
+	pulumi.Input
+
+	ToProjectContainerExpirationPolicyOutput() ProjectContainerExpirationPolicyOutput
+	ToProjectContainerExpirationPolicyOutputWithContext(context.Context) ProjectContainerExpirationPolicyOutput
+}
+
+type ProjectContainerExpirationPolicyArgs struct {
+	Cadence         pulumi.StringPtrInput `pulumi:"cadence"`
+	Enabled         pulumi.BoolPtrInput   `pulumi:"enabled"`
+	KeepN           pulumi.IntPtrInput    `pulumi:"keepN"`
+	NameRegexDelete pulumi.StringPtrInput `pulumi:"nameRegexDelete"`
+	NameRegexKeep   pulumi.StringPtrInput `pulumi:"nameRegexKeep"`
+	NextRunAt       pulumi.StringPtrInput `pulumi:"nextRunAt"`
+	OlderThan       pulumi.StringPtrInput `pulumi:"olderThan"`
+}
+
+func (ProjectContainerExpirationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectContainerExpirationPolicy)(nil)).Elem()
+}
+
+func (i ProjectContainerExpirationPolicyArgs) ToProjectContainerExpirationPolicyOutput() ProjectContainerExpirationPolicyOutput {
+	return i.ToProjectContainerExpirationPolicyOutputWithContext(context.Background())
+}
+
+func (i ProjectContainerExpirationPolicyArgs) ToProjectContainerExpirationPolicyOutputWithContext(ctx context.Context) ProjectContainerExpirationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectContainerExpirationPolicyOutput)
+}
+
+func (i ProjectContainerExpirationPolicyArgs) ToProjectContainerExpirationPolicyPtrOutput() ProjectContainerExpirationPolicyPtrOutput {
+	return i.ToProjectContainerExpirationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectContainerExpirationPolicyArgs) ToProjectContainerExpirationPolicyPtrOutputWithContext(ctx context.Context) ProjectContainerExpirationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectContainerExpirationPolicyOutput).ToProjectContainerExpirationPolicyPtrOutputWithContext(ctx)
+}
+
+// ProjectContainerExpirationPolicyPtrInput is an input type that accepts ProjectContainerExpirationPolicyArgs, ProjectContainerExpirationPolicyPtr and ProjectContainerExpirationPolicyPtrOutput values.
+// You can construct a concrete instance of `ProjectContainerExpirationPolicyPtrInput` via:
+//
+//          ProjectContainerExpirationPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type ProjectContainerExpirationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToProjectContainerExpirationPolicyPtrOutput() ProjectContainerExpirationPolicyPtrOutput
+	ToProjectContainerExpirationPolicyPtrOutputWithContext(context.Context) ProjectContainerExpirationPolicyPtrOutput
+}
+
+type projectContainerExpirationPolicyPtrType ProjectContainerExpirationPolicyArgs
+
+func ProjectContainerExpirationPolicyPtr(v *ProjectContainerExpirationPolicyArgs) ProjectContainerExpirationPolicyPtrInput {
+	return (*projectContainerExpirationPolicyPtrType)(v)
+}
+
+func (*projectContainerExpirationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectContainerExpirationPolicy)(nil)).Elem()
+}
+
+func (i *projectContainerExpirationPolicyPtrType) ToProjectContainerExpirationPolicyPtrOutput() ProjectContainerExpirationPolicyPtrOutput {
+	return i.ToProjectContainerExpirationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *projectContainerExpirationPolicyPtrType) ToProjectContainerExpirationPolicyPtrOutputWithContext(ctx context.Context) ProjectContainerExpirationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectContainerExpirationPolicyPtrOutput)
+}
+
+type ProjectContainerExpirationPolicyOutput struct{ *pulumi.OutputState }
+
+func (ProjectContainerExpirationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectContainerExpirationPolicy)(nil)).Elem()
+}
+
+func (o ProjectContainerExpirationPolicyOutput) ToProjectContainerExpirationPolicyOutput() ProjectContainerExpirationPolicyOutput {
+	return o
+}
+
+func (o ProjectContainerExpirationPolicyOutput) ToProjectContainerExpirationPolicyOutputWithContext(ctx context.Context) ProjectContainerExpirationPolicyOutput {
+	return o
+}
+
+func (o ProjectContainerExpirationPolicyOutput) ToProjectContainerExpirationPolicyPtrOutput() ProjectContainerExpirationPolicyPtrOutput {
+	return o.ToProjectContainerExpirationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectContainerExpirationPolicyOutput) ToProjectContainerExpirationPolicyPtrOutputWithContext(ctx context.Context) ProjectContainerExpirationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectContainerExpirationPolicy) *ProjectContainerExpirationPolicy {
+		return &v
+	}).(ProjectContainerExpirationPolicyPtrOutput)
+}
+
+func (o ProjectContainerExpirationPolicyOutput) Cadence() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectContainerExpirationPolicy) *string { return v.Cadence }).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectContainerExpirationPolicyOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectContainerExpirationPolicy) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ProjectContainerExpirationPolicyOutput) KeepN() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectContainerExpirationPolicy) *int { return v.KeepN }).(pulumi.IntPtrOutput)
+}
+
+func (o ProjectContainerExpirationPolicyOutput) NameRegexDelete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectContainerExpirationPolicy) *string { return v.NameRegexDelete }).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectContainerExpirationPolicyOutput) NameRegexKeep() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectContainerExpirationPolicy) *string { return v.NameRegexKeep }).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectContainerExpirationPolicyOutput) NextRunAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectContainerExpirationPolicy) *string { return v.NextRunAt }).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectContainerExpirationPolicyOutput) OlderThan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectContainerExpirationPolicy) *string { return v.OlderThan }).(pulumi.StringPtrOutput)
+}
+
+type ProjectContainerExpirationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectContainerExpirationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectContainerExpirationPolicy)(nil)).Elem()
+}
+
+func (o ProjectContainerExpirationPolicyPtrOutput) ToProjectContainerExpirationPolicyPtrOutput() ProjectContainerExpirationPolicyPtrOutput {
+	return o
+}
+
+func (o ProjectContainerExpirationPolicyPtrOutput) ToProjectContainerExpirationPolicyPtrOutputWithContext(ctx context.Context) ProjectContainerExpirationPolicyPtrOutput {
+	return o
+}
+
+func (o ProjectContainerExpirationPolicyPtrOutput) Elem() ProjectContainerExpirationPolicyOutput {
+	return o.ApplyT(func(v *ProjectContainerExpirationPolicy) ProjectContainerExpirationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectContainerExpirationPolicy
+		return ret
+	}).(ProjectContainerExpirationPolicyOutput)
+}
+
+func (o ProjectContainerExpirationPolicyPtrOutput) Cadence() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectContainerExpirationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cadence
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectContainerExpirationPolicyPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectContainerExpirationPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ProjectContainerExpirationPolicyPtrOutput) KeepN() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectContainerExpirationPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepN
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ProjectContainerExpirationPolicyPtrOutput) NameRegexDelete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectContainerExpirationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameRegexDelete
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectContainerExpirationPolicyPtrOutput) NameRegexKeep() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectContainerExpirationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameRegexKeep
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectContainerExpirationPolicyPtrOutput) NextRunAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectContainerExpirationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NextRunAt
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectContainerExpirationPolicyPtrOutput) OlderThan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectContainerExpirationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OlderThan
+	}).(pulumi.StringPtrOutput)
+}
+
 type ProjectIssueTaskCompletionStatus struct {
-	// The number of tasks that are completed.
 	CompletedCount *int `pulumi:"completedCount"`
-	// The number of tasks.
-	Count *int `pulumi:"count"`
+	Count          *int `pulumi:"count"`
 }
 
 // ProjectIssueTaskCompletionStatusInput is an input type that accepts ProjectIssueTaskCompletionStatusArgs and ProjectIssueTaskCompletionStatusOutput values.
@@ -434,10 +740,8 @@ type ProjectIssueTaskCompletionStatusInput interface {
 }
 
 type ProjectIssueTaskCompletionStatusArgs struct {
-	// The number of tasks that are completed.
 	CompletedCount pulumi.IntPtrInput `pulumi:"completedCount"`
-	// The number of tasks.
-	Count pulumi.IntPtrInput `pulumi:"count"`
+	Count          pulumi.IntPtrInput `pulumi:"count"`
 }
 
 func (ProjectIssueTaskCompletionStatusArgs) ElementType() reflect.Type {
@@ -517,12 +821,10 @@ func (o ProjectIssueTaskCompletionStatusOutput) ToProjectIssueTaskCompletionStat
 	}).(ProjectIssueTaskCompletionStatusPtrOutput)
 }
 
-// The number of tasks that are completed.
 func (o ProjectIssueTaskCompletionStatusOutput) CompletedCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectIssueTaskCompletionStatus) *int { return v.CompletedCount }).(pulumi.IntPtrOutput)
 }
 
-// The number of tasks.
 func (o ProjectIssueTaskCompletionStatusOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectIssueTaskCompletionStatus) *int { return v.Count }).(pulumi.IntPtrOutput)
 }
@@ -551,7 +853,6 @@ func (o ProjectIssueTaskCompletionStatusPtrOutput) Elem() ProjectIssueTaskComple
 	}).(ProjectIssueTaskCompletionStatusOutput)
 }
 
-// The number of tasks that are completed.
 func (o ProjectIssueTaskCompletionStatusPtrOutput) CompletedCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ProjectIssueTaskCompletionStatus) *int {
 		if v == nil {
@@ -561,7 +862,6 @@ func (o ProjectIssueTaskCompletionStatusPtrOutput) CompletedCount() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of tasks.
 func (o ProjectIssueTaskCompletionStatusPtrOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ProjectIssueTaskCompletionStatus) *int {
 		if v == nil {
@@ -571,29 +871,196 @@ func (o ProjectIssueTaskCompletionStatusPtrOutput) Count() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type ProjectProtectedEnvironmentDeployAccessLevels struct {
+	AccessLevel            *string `pulumi:"accessLevel"`
+	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
+	GroupId                *int    `pulumi:"groupId"`
+	UserId                 *int    `pulumi:"userId"`
+}
+
+// ProjectProtectedEnvironmentDeployAccessLevelsInput is an input type that accepts ProjectProtectedEnvironmentDeployAccessLevelsArgs and ProjectProtectedEnvironmentDeployAccessLevelsOutput values.
+// You can construct a concrete instance of `ProjectProtectedEnvironmentDeployAccessLevelsInput` via:
+//
+//          ProjectProtectedEnvironmentDeployAccessLevelsArgs{...}
+type ProjectProtectedEnvironmentDeployAccessLevelsInput interface {
+	pulumi.Input
+
+	ToProjectProtectedEnvironmentDeployAccessLevelsOutput() ProjectProtectedEnvironmentDeployAccessLevelsOutput
+	ToProjectProtectedEnvironmentDeployAccessLevelsOutputWithContext(context.Context) ProjectProtectedEnvironmentDeployAccessLevelsOutput
+}
+
+type ProjectProtectedEnvironmentDeployAccessLevelsArgs struct {
+	AccessLevel            pulumi.StringPtrInput `pulumi:"accessLevel"`
+	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
+	GroupId                pulumi.IntPtrInput    `pulumi:"groupId"`
+	UserId                 pulumi.IntPtrInput    `pulumi:"userId"`
+}
+
+func (ProjectProtectedEnvironmentDeployAccessLevelsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectProtectedEnvironmentDeployAccessLevels)(nil)).Elem()
+}
+
+func (i ProjectProtectedEnvironmentDeployAccessLevelsArgs) ToProjectProtectedEnvironmentDeployAccessLevelsOutput() ProjectProtectedEnvironmentDeployAccessLevelsOutput {
+	return i.ToProjectProtectedEnvironmentDeployAccessLevelsOutputWithContext(context.Background())
+}
+
+func (i ProjectProtectedEnvironmentDeployAccessLevelsArgs) ToProjectProtectedEnvironmentDeployAccessLevelsOutputWithContext(ctx context.Context) ProjectProtectedEnvironmentDeployAccessLevelsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectProtectedEnvironmentDeployAccessLevelsOutput)
+}
+
+func (i ProjectProtectedEnvironmentDeployAccessLevelsArgs) ToProjectProtectedEnvironmentDeployAccessLevelsPtrOutput() ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput {
+	return i.ToProjectProtectedEnvironmentDeployAccessLevelsPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectProtectedEnvironmentDeployAccessLevelsArgs) ToProjectProtectedEnvironmentDeployAccessLevelsPtrOutputWithContext(ctx context.Context) ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectProtectedEnvironmentDeployAccessLevelsOutput).ToProjectProtectedEnvironmentDeployAccessLevelsPtrOutputWithContext(ctx)
+}
+
+// ProjectProtectedEnvironmentDeployAccessLevelsPtrInput is an input type that accepts ProjectProtectedEnvironmentDeployAccessLevelsArgs, ProjectProtectedEnvironmentDeployAccessLevelsPtr and ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput values.
+// You can construct a concrete instance of `ProjectProtectedEnvironmentDeployAccessLevelsPtrInput` via:
+//
+//          ProjectProtectedEnvironmentDeployAccessLevelsArgs{...}
+//
+//  or:
+//
+//          nil
+type ProjectProtectedEnvironmentDeployAccessLevelsPtrInput interface {
+	pulumi.Input
+
+	ToProjectProtectedEnvironmentDeployAccessLevelsPtrOutput() ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput
+	ToProjectProtectedEnvironmentDeployAccessLevelsPtrOutputWithContext(context.Context) ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput
+}
+
+type projectProtectedEnvironmentDeployAccessLevelsPtrType ProjectProtectedEnvironmentDeployAccessLevelsArgs
+
+func ProjectProtectedEnvironmentDeployAccessLevelsPtr(v *ProjectProtectedEnvironmentDeployAccessLevelsArgs) ProjectProtectedEnvironmentDeployAccessLevelsPtrInput {
+	return (*projectProtectedEnvironmentDeployAccessLevelsPtrType)(v)
+}
+
+func (*projectProtectedEnvironmentDeployAccessLevelsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectProtectedEnvironmentDeployAccessLevels)(nil)).Elem()
+}
+
+func (i *projectProtectedEnvironmentDeployAccessLevelsPtrType) ToProjectProtectedEnvironmentDeployAccessLevelsPtrOutput() ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput {
+	return i.ToProjectProtectedEnvironmentDeployAccessLevelsPtrOutputWithContext(context.Background())
+}
+
+func (i *projectProtectedEnvironmentDeployAccessLevelsPtrType) ToProjectProtectedEnvironmentDeployAccessLevelsPtrOutputWithContext(ctx context.Context) ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput)
+}
+
+type ProjectProtectedEnvironmentDeployAccessLevelsOutput struct{ *pulumi.OutputState }
+
+func (ProjectProtectedEnvironmentDeployAccessLevelsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectProtectedEnvironmentDeployAccessLevels)(nil)).Elem()
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsOutput) ToProjectProtectedEnvironmentDeployAccessLevelsOutput() ProjectProtectedEnvironmentDeployAccessLevelsOutput {
+	return o
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsOutput) ToProjectProtectedEnvironmentDeployAccessLevelsOutputWithContext(ctx context.Context) ProjectProtectedEnvironmentDeployAccessLevelsOutput {
+	return o
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsOutput) ToProjectProtectedEnvironmentDeployAccessLevelsPtrOutput() ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput {
+	return o.ToProjectProtectedEnvironmentDeployAccessLevelsPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsOutput) ToProjectProtectedEnvironmentDeployAccessLevelsPtrOutputWithContext(ctx context.Context) ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectProtectedEnvironmentDeployAccessLevels) *ProjectProtectedEnvironmentDeployAccessLevels {
+		return &v
+	}).(ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput)
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevels) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsOutput) AccessLevelDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevels) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevels) *int { return v.GroupId }).(pulumi.IntPtrOutput)
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevels) *int { return v.UserId }).(pulumi.IntPtrOutput)
+}
+
+type ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectProtectedEnvironmentDeployAccessLevels)(nil)).Elem()
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput) ToProjectProtectedEnvironmentDeployAccessLevelsPtrOutput() ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput {
+	return o
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput) ToProjectProtectedEnvironmentDeployAccessLevelsPtrOutputWithContext(ctx context.Context) ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput {
+	return o
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput) Elem() ProjectProtectedEnvironmentDeployAccessLevelsOutput {
+	return o.ApplyT(func(v *ProjectProtectedEnvironmentDeployAccessLevels) ProjectProtectedEnvironmentDeployAccessLevels {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectProtectedEnvironmentDeployAccessLevels
+		return ret
+	}).(ProjectProtectedEnvironmentDeployAccessLevelsOutput)
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectProtectedEnvironmentDeployAccessLevels) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput) AccessLevelDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectProtectedEnvironmentDeployAccessLevels) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessLevelDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectProtectedEnvironmentDeployAccessLevels) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupId
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectProtectedEnvironmentDeployAccessLevels) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UserId
+	}).(pulumi.IntPtrOutput)
+}
+
 type ProjectPushRules struct {
-	// All commit author emails must match this regex, e.g. `@my-company.com$`.
-	AuthorEmailRegex *string `pulumi:"authorEmailRegex"`
-	// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
-	BranchNameRegex *string `pulumi:"branchNameRegex"`
-	// Users can only push commits to this repository that were committed with one of their own verified emails.
-	CommitCommitterCheck *bool `pulumi:"commitCommitterCheck"`
-	// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+	AuthorEmailRegex           *string `pulumi:"authorEmailRegex"`
+	BranchNameRegex            *string `pulumi:"branchNameRegex"`
+	CommitCommitterCheck       *bool   `pulumi:"commitCommitterCheck"`
 	CommitMessageNegativeRegex *string `pulumi:"commitMessageNegativeRegex"`
-	// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
-	CommitMessageRegex *string `pulumi:"commitMessageRegex"`
-	// Deny deleting a tag.
-	DenyDeleteTag *bool `pulumi:"denyDeleteTag"`
-	// All commited filenames must not match this regex, e.g. `(jar|exe)$`.
-	FileNameRegex *string `pulumi:"fileNameRegex"`
-	// Maximum file size (MB).
-	MaxFileSize *int `pulumi:"maxFileSize"`
-	// Restrict commits by author (email) to existing GitLab users.
-	MemberCheck *bool `pulumi:"memberCheck"`
-	// GitLab will reject any files that are likely to contain secrets.
-	PreventSecrets *bool `pulumi:"preventSecrets"`
-	// Reject commit when it’s not signed through GPG.
-	RejectUnsignedCommits *bool `pulumi:"rejectUnsignedCommits"`
+	CommitMessageRegex         *string `pulumi:"commitMessageRegex"`
+	DenyDeleteTag              *bool   `pulumi:"denyDeleteTag"`
+	FileNameRegex              *string `pulumi:"fileNameRegex"`
+	MaxFileSize                *int    `pulumi:"maxFileSize"`
+	MemberCheck                *bool   `pulumi:"memberCheck"`
+	PreventSecrets             *bool   `pulumi:"preventSecrets"`
+	RejectUnsignedCommits      *bool   `pulumi:"rejectUnsignedCommits"`
 }
 
 // ProjectPushRulesInput is an input type that accepts ProjectPushRulesArgs and ProjectPushRulesOutput values.
@@ -608,28 +1075,17 @@ type ProjectPushRulesInput interface {
 }
 
 type ProjectPushRulesArgs struct {
-	// All commit author emails must match this regex, e.g. `@my-company.com$`.
-	AuthorEmailRegex pulumi.StringPtrInput `pulumi:"authorEmailRegex"`
-	// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
-	BranchNameRegex pulumi.StringPtrInput `pulumi:"branchNameRegex"`
-	// Users can only push commits to this repository that were committed with one of their own verified emails.
-	CommitCommitterCheck pulumi.BoolPtrInput `pulumi:"commitCommitterCheck"`
-	// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+	AuthorEmailRegex           pulumi.StringPtrInput `pulumi:"authorEmailRegex"`
+	BranchNameRegex            pulumi.StringPtrInput `pulumi:"branchNameRegex"`
+	CommitCommitterCheck       pulumi.BoolPtrInput   `pulumi:"commitCommitterCheck"`
 	CommitMessageNegativeRegex pulumi.StringPtrInput `pulumi:"commitMessageNegativeRegex"`
-	// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
-	CommitMessageRegex pulumi.StringPtrInput `pulumi:"commitMessageRegex"`
-	// Deny deleting a tag.
-	DenyDeleteTag pulumi.BoolPtrInput `pulumi:"denyDeleteTag"`
-	// All commited filenames must not match this regex, e.g. `(jar|exe)$`.
-	FileNameRegex pulumi.StringPtrInput `pulumi:"fileNameRegex"`
-	// Maximum file size (MB).
-	MaxFileSize pulumi.IntPtrInput `pulumi:"maxFileSize"`
-	// Restrict commits by author (email) to existing GitLab users.
-	MemberCheck pulumi.BoolPtrInput `pulumi:"memberCheck"`
-	// GitLab will reject any files that are likely to contain secrets.
-	PreventSecrets pulumi.BoolPtrInput `pulumi:"preventSecrets"`
-	// Reject commit when it’s not signed through GPG.
-	RejectUnsignedCommits pulumi.BoolPtrInput `pulumi:"rejectUnsignedCommits"`
+	CommitMessageRegex         pulumi.StringPtrInput `pulumi:"commitMessageRegex"`
+	DenyDeleteTag              pulumi.BoolPtrInput   `pulumi:"denyDeleteTag"`
+	FileNameRegex              pulumi.StringPtrInput `pulumi:"fileNameRegex"`
+	MaxFileSize                pulumi.IntPtrInput    `pulumi:"maxFileSize"`
+	MemberCheck                pulumi.BoolPtrInput   `pulumi:"memberCheck"`
+	PreventSecrets             pulumi.BoolPtrInput   `pulumi:"preventSecrets"`
+	RejectUnsignedCommits      pulumi.BoolPtrInput   `pulumi:"rejectUnsignedCommits"`
 }
 
 func (ProjectPushRulesArgs) ElementType() reflect.Type {
@@ -709,57 +1165,46 @@ func (o ProjectPushRulesOutput) ToProjectPushRulesPtrOutputWithContext(ctx conte
 	}).(ProjectPushRulesPtrOutput)
 }
 
-// All commit author emails must match this regex, e.g. `@my-company.com$`.
 func (o ProjectPushRulesOutput) AuthorEmailRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectPushRules) *string { return v.AuthorEmailRegex }).(pulumi.StringPtrOutput)
 }
 
-// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
 func (o ProjectPushRulesOutput) BranchNameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectPushRules) *string { return v.BranchNameRegex }).(pulumi.StringPtrOutput)
 }
 
-// Users can only push commits to this repository that were committed with one of their own verified emails.
 func (o ProjectPushRulesOutput) CommitCommitterCheck() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectPushRules) *bool { return v.CommitCommitterCheck }).(pulumi.BoolPtrOutput)
 }
 
-// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
 func (o ProjectPushRulesOutput) CommitMessageNegativeRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectPushRules) *string { return v.CommitMessageNegativeRegex }).(pulumi.StringPtrOutput)
 }
 
-// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
 func (o ProjectPushRulesOutput) CommitMessageRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectPushRules) *string { return v.CommitMessageRegex }).(pulumi.StringPtrOutput)
 }
 
-// Deny deleting a tag.
 func (o ProjectPushRulesOutput) DenyDeleteTag() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectPushRules) *bool { return v.DenyDeleteTag }).(pulumi.BoolPtrOutput)
 }
 
-// All commited filenames must not match this regex, e.g. `(jar|exe)$`.
 func (o ProjectPushRulesOutput) FileNameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectPushRules) *string { return v.FileNameRegex }).(pulumi.StringPtrOutput)
 }
 
-// Maximum file size (MB).
 func (o ProjectPushRulesOutput) MaxFileSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectPushRules) *int { return v.MaxFileSize }).(pulumi.IntPtrOutput)
 }
 
-// Restrict commits by author (email) to existing GitLab users.
 func (o ProjectPushRulesOutput) MemberCheck() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectPushRules) *bool { return v.MemberCheck }).(pulumi.BoolPtrOutput)
 }
 
-// GitLab will reject any files that are likely to contain secrets.
 func (o ProjectPushRulesOutput) PreventSecrets() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectPushRules) *bool { return v.PreventSecrets }).(pulumi.BoolPtrOutput)
 }
 
-// Reject commit when it’s not signed through GPG.
 func (o ProjectPushRulesOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectPushRules) *bool { return v.RejectUnsignedCommits }).(pulumi.BoolPtrOutput)
 }
@@ -788,7 +1233,6 @@ func (o ProjectPushRulesPtrOutput) Elem() ProjectPushRulesOutput {
 	}).(ProjectPushRulesOutput)
 }
 
-// All commit author emails must match this regex, e.g. `@my-company.com$`.
 func (o ProjectPushRulesPtrOutput) AuthorEmailRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectPushRules) *string {
 		if v == nil {
@@ -798,7 +1242,6 @@ func (o ProjectPushRulesPtrOutput) AuthorEmailRegex() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
 func (o ProjectPushRulesPtrOutput) BranchNameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectPushRules) *string {
 		if v == nil {
@@ -808,7 +1251,6 @@ func (o ProjectPushRulesPtrOutput) BranchNameRegex() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Users can only push commits to this repository that were committed with one of their own verified emails.
 func (o ProjectPushRulesPtrOutput) CommitCommitterCheck() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectPushRules) *bool {
 		if v == nil {
@@ -818,7 +1260,6 @@ func (o ProjectPushRulesPtrOutput) CommitCommitterCheck() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// No commit message is allowed to match this regex, for example `ssh\:\/\/`.
 func (o ProjectPushRulesPtrOutput) CommitMessageNegativeRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectPushRules) *string {
 		if v == nil {
@@ -828,7 +1269,6 @@ func (o ProjectPushRulesPtrOutput) CommitMessageNegativeRegex() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// All commit messages must match this regex, e.g. `Fixed \d+\..*`.
 func (o ProjectPushRulesPtrOutput) CommitMessageRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectPushRules) *string {
 		if v == nil {
@@ -838,7 +1278,6 @@ func (o ProjectPushRulesPtrOutput) CommitMessageRegex() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deny deleting a tag.
 func (o ProjectPushRulesPtrOutput) DenyDeleteTag() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectPushRules) *bool {
 		if v == nil {
@@ -848,7 +1287,6 @@ func (o ProjectPushRulesPtrOutput) DenyDeleteTag() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// All commited filenames must not match this regex, e.g. `(jar|exe)$`.
 func (o ProjectPushRulesPtrOutput) FileNameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectPushRules) *string {
 		if v == nil {
@@ -858,7 +1296,6 @@ func (o ProjectPushRulesPtrOutput) FileNameRegex() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Maximum file size (MB).
 func (o ProjectPushRulesPtrOutput) MaxFileSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ProjectPushRules) *int {
 		if v == nil {
@@ -868,7 +1305,6 @@ func (o ProjectPushRulesPtrOutput) MaxFileSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Restrict commits by author (email) to existing GitLab users.
 func (o ProjectPushRulesPtrOutput) MemberCheck() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectPushRules) *bool {
 		if v == nil {
@@ -878,7 +1314,6 @@ func (o ProjectPushRulesPtrOutput) MemberCheck() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// GitLab will reject any files that are likely to contain secrets.
 func (o ProjectPushRulesPtrOutput) PreventSecrets() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectPushRules) *bool {
 		if v == nil {
@@ -888,7 +1323,6 @@ func (o ProjectPushRulesPtrOutput) PreventSecrets() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Reject commit when it’s not signed through GPG.
 func (o ProjectPushRulesPtrOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectPushRules) *bool {
 		if v == nil {
@@ -899,19 +1333,17 @@ func (o ProjectPushRulesPtrOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput 
 }
 
 type ProjectTagCommit struct {
-	AuthorEmail    *string `pulumi:"authorEmail"`
-	AuthorName     *string `pulumi:"authorName"`
-	AuthoredDate   *string `pulumi:"authoredDate"`
-	CommittedDate  *string `pulumi:"committedDate"`
-	CommitterEmail *string `pulumi:"committerEmail"`
-	CommitterName  *string `pulumi:"committerName"`
-	// The ID of this resource.
-	Id *string `pulumi:"id"`
-	// Creates annotated tag.
-	Message   *string  `pulumi:"message"`
-	ParentIds []string `pulumi:"parentIds"`
-	ShortId   *string  `pulumi:"shortId"`
-	Title     *string  `pulumi:"title"`
+	AuthorEmail    *string  `pulumi:"authorEmail"`
+	AuthorName     *string  `pulumi:"authorName"`
+	AuthoredDate   *string  `pulumi:"authoredDate"`
+	CommittedDate  *string  `pulumi:"committedDate"`
+	CommitterEmail *string  `pulumi:"committerEmail"`
+	CommitterName  *string  `pulumi:"committerName"`
+	Id             *string  `pulumi:"id"`
+	Message        *string  `pulumi:"message"`
+	ParentIds      []string `pulumi:"parentIds"`
+	ShortId        *string  `pulumi:"shortId"`
+	Title          *string  `pulumi:"title"`
 }
 
 // ProjectTagCommitInput is an input type that accepts ProjectTagCommitArgs and ProjectTagCommitOutput values.
@@ -926,19 +1358,17 @@ type ProjectTagCommitInput interface {
 }
 
 type ProjectTagCommitArgs struct {
-	AuthorEmail    pulumi.StringPtrInput `pulumi:"authorEmail"`
-	AuthorName     pulumi.StringPtrInput `pulumi:"authorName"`
-	AuthoredDate   pulumi.StringPtrInput `pulumi:"authoredDate"`
-	CommittedDate  pulumi.StringPtrInput `pulumi:"committedDate"`
-	CommitterEmail pulumi.StringPtrInput `pulumi:"committerEmail"`
-	CommitterName  pulumi.StringPtrInput `pulumi:"committerName"`
-	// The ID of this resource.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Creates annotated tag.
-	Message   pulumi.StringPtrInput   `pulumi:"message"`
-	ParentIds pulumi.StringArrayInput `pulumi:"parentIds"`
-	ShortId   pulumi.StringPtrInput   `pulumi:"shortId"`
-	Title     pulumi.StringPtrInput   `pulumi:"title"`
+	AuthorEmail    pulumi.StringPtrInput   `pulumi:"authorEmail"`
+	AuthorName     pulumi.StringPtrInput   `pulumi:"authorName"`
+	AuthoredDate   pulumi.StringPtrInput   `pulumi:"authoredDate"`
+	CommittedDate  pulumi.StringPtrInput   `pulumi:"committedDate"`
+	CommitterEmail pulumi.StringPtrInput   `pulumi:"committerEmail"`
+	CommitterName  pulumi.StringPtrInput   `pulumi:"committerName"`
+	Id             pulumi.StringPtrInput   `pulumi:"id"`
+	Message        pulumi.StringPtrInput   `pulumi:"message"`
+	ParentIds      pulumi.StringArrayInput `pulumi:"parentIds"`
+	ShortId        pulumi.StringPtrInput   `pulumi:"shortId"`
+	Title          pulumi.StringPtrInput   `pulumi:"title"`
 }
 
 func (ProjectTagCommitArgs) ElementType() reflect.Type {
@@ -1016,12 +1446,10 @@ func (o ProjectTagCommitOutput) CommitterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectTagCommit) *string { return v.CommitterName }).(pulumi.StringPtrOutput)
 }
 
-// The ID of this resource.
 func (o ProjectTagCommitOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectTagCommit) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Creates annotated tag.
 func (o ProjectTagCommitOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectTagCommit) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
@@ -1159,18 +1587,17 @@ func (o ProjectTagReleaseArrayOutput) Index(i pulumi.IntInput) ProjectTagRelease
 }
 
 type GetBranchCommit struct {
-	AuthorEmail    string `pulumi:"authorEmail"`
-	AuthorName     string `pulumi:"authorName"`
-	AuthoredDate   string `pulumi:"authoredDate"`
-	CommittedDate  string `pulumi:"committedDate"`
-	CommitterEmail string `pulumi:"committerEmail"`
-	CommitterName  string `pulumi:"committerName"`
-	// The ID of this resource.
-	Id        string   `pulumi:"id"`
-	Message   string   `pulumi:"message"`
-	ParentIds []string `pulumi:"parentIds"`
-	ShortId   string   `pulumi:"shortId"`
-	Title     string   `pulumi:"title"`
+	AuthorEmail    string   `pulumi:"authorEmail"`
+	AuthorName     string   `pulumi:"authorName"`
+	AuthoredDate   string   `pulumi:"authoredDate"`
+	CommittedDate  string   `pulumi:"committedDate"`
+	CommitterEmail string   `pulumi:"committerEmail"`
+	CommitterName  string   `pulumi:"committerName"`
+	Id             string   `pulumi:"id"`
+	Message        string   `pulumi:"message"`
+	ParentIds      []string `pulumi:"parentIds"`
+	ShortId        string   `pulumi:"shortId"`
+	Title          string   `pulumi:"title"`
 }
 
 // GetBranchCommitInput is an input type that accepts GetBranchCommitArgs and GetBranchCommitOutput values.
@@ -1185,18 +1612,17 @@ type GetBranchCommitInput interface {
 }
 
 type GetBranchCommitArgs struct {
-	AuthorEmail    pulumi.StringInput `pulumi:"authorEmail"`
-	AuthorName     pulumi.StringInput `pulumi:"authorName"`
-	AuthoredDate   pulumi.StringInput `pulumi:"authoredDate"`
-	CommittedDate  pulumi.StringInput `pulumi:"committedDate"`
-	CommitterEmail pulumi.StringInput `pulumi:"committerEmail"`
-	CommitterName  pulumi.StringInput `pulumi:"committerName"`
-	// The ID of this resource.
-	Id        pulumi.StringInput      `pulumi:"id"`
-	Message   pulumi.StringInput      `pulumi:"message"`
-	ParentIds pulumi.StringArrayInput `pulumi:"parentIds"`
-	ShortId   pulumi.StringInput      `pulumi:"shortId"`
-	Title     pulumi.StringInput      `pulumi:"title"`
+	AuthorEmail    pulumi.StringInput      `pulumi:"authorEmail"`
+	AuthorName     pulumi.StringInput      `pulumi:"authorName"`
+	AuthoredDate   pulumi.StringInput      `pulumi:"authoredDate"`
+	CommittedDate  pulumi.StringInput      `pulumi:"committedDate"`
+	CommitterEmail pulumi.StringInput      `pulumi:"committerEmail"`
+	CommitterName  pulumi.StringInput      `pulumi:"committerName"`
+	Id             pulumi.StringInput      `pulumi:"id"`
+	Message        pulumi.StringInput      `pulumi:"message"`
+	ParentIds      pulumi.StringArrayInput `pulumi:"parentIds"`
+	ShortId        pulumi.StringInput      `pulumi:"shortId"`
+	Title          pulumi.StringInput      `pulumi:"title"`
 }
 
 func (GetBranchCommitArgs) ElementType() reflect.Type {
@@ -1274,7 +1700,6 @@ func (o GetBranchCommitOutput) CommitterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBranchCommit) string { return v.CommitterName }).(pulumi.StringOutput)
 }
 
-// The ID of this resource.
 func (o GetBranchCommitOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBranchCommit) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1316,16 +1741,14 @@ func (o GetBranchCommitArrayOutput) Index(i pulumi.IntInput) GetBranchCommitOutp
 }
 
 type GetGroupMembershipMember struct {
-	// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel string `pulumi:"accessLevel"`
 	AvatarUrl   string `pulumi:"avatarUrl"`
 	ExpiresAt   string `pulumi:"expiresAt"`
-	// The ID of this resource.
-	Id       int    `pulumi:"id"`
-	Name     string `pulumi:"name"`
-	State    string `pulumi:"state"`
-	Username string `pulumi:"username"`
-	WebUrl   string `pulumi:"webUrl"`
+	Id          int    `pulumi:"id"`
+	Name        string `pulumi:"name"`
+	State       string `pulumi:"state"`
+	Username    string `pulumi:"username"`
+	WebUrl      string `pulumi:"webUrl"`
 }
 
 // GetGroupMembershipMemberInput is an input type that accepts GetGroupMembershipMemberArgs and GetGroupMembershipMemberOutput values.
@@ -1340,16 +1763,14 @@ type GetGroupMembershipMemberInput interface {
 }
 
 type GetGroupMembershipMemberArgs struct {
-	// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
 	AvatarUrl   pulumi.StringInput `pulumi:"avatarUrl"`
 	ExpiresAt   pulumi.StringInput `pulumi:"expiresAt"`
-	// The ID of this resource.
-	Id       pulumi.IntInput    `pulumi:"id"`
-	Name     pulumi.StringInput `pulumi:"name"`
-	State    pulumi.StringInput `pulumi:"state"`
-	Username pulumi.StringInput `pulumi:"username"`
-	WebUrl   pulumi.StringInput `pulumi:"webUrl"`
+	Id          pulumi.IntInput    `pulumi:"id"`
+	Name        pulumi.StringInput `pulumi:"name"`
+	State       pulumi.StringInput `pulumi:"state"`
+	Username    pulumi.StringInput `pulumi:"username"`
+	WebUrl      pulumi.StringInput `pulumi:"webUrl"`
 }
 
 func (GetGroupMembershipMemberArgs) ElementType() reflect.Type {
@@ -1403,7 +1824,6 @@ func (o GetGroupMembershipMemberOutput) ToGetGroupMembershipMemberOutputWithCont
 	return o
 }
 
-// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 func (o GetGroupMembershipMemberOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMembershipMember) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
@@ -1416,7 +1836,6 @@ func (o GetGroupMembershipMemberOutput) ExpiresAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMembershipMember) string { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
-// The ID of this resource.
 func (o GetGroupMembershipMemberOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGroupMembershipMember) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -1455,6 +1874,392 @@ func (o GetGroupMembershipMemberArrayOutput) Index(i pulumi.IntInput) GetGroupMe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupMembershipMember {
 		return vs[0].([]GetGroupMembershipMember)[vs[1].(int)]
 	}).(GetGroupMembershipMemberOutput)
+}
+
+type GetInstanceDeployKeysDeployKey struct {
+	CreatedAt                 string                                                  `pulumi:"createdAt"`
+	Fingerprint               string                                                  `pulumi:"fingerprint"`
+	Id                        int                                                     `pulumi:"id"`
+	Key                       string                                                  `pulumi:"key"`
+	ProjectsWithWriteAccesses []GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess `pulumi:"projectsWithWriteAccesses"`
+	Title                     string                                                  `pulumi:"title"`
+}
+
+// GetInstanceDeployKeysDeployKeyInput is an input type that accepts GetInstanceDeployKeysDeployKeyArgs and GetInstanceDeployKeysDeployKeyOutput values.
+// You can construct a concrete instance of `GetInstanceDeployKeysDeployKeyInput` via:
+//
+//          GetInstanceDeployKeysDeployKeyArgs{...}
+type GetInstanceDeployKeysDeployKeyInput interface {
+	pulumi.Input
+
+	ToGetInstanceDeployKeysDeployKeyOutput() GetInstanceDeployKeysDeployKeyOutput
+	ToGetInstanceDeployKeysDeployKeyOutputWithContext(context.Context) GetInstanceDeployKeysDeployKeyOutput
+}
+
+type GetInstanceDeployKeysDeployKeyArgs struct {
+	CreatedAt                 pulumi.StringInput                                              `pulumi:"createdAt"`
+	Fingerprint               pulumi.StringInput                                              `pulumi:"fingerprint"`
+	Id                        pulumi.IntInput                                                 `pulumi:"id"`
+	Key                       pulumi.StringInput                                              `pulumi:"key"`
+	ProjectsWithWriteAccesses GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayInput `pulumi:"projectsWithWriteAccesses"`
+	Title                     pulumi.StringInput                                              `pulumi:"title"`
+}
+
+func (GetInstanceDeployKeysDeployKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceDeployKeysDeployKey)(nil)).Elem()
+}
+
+func (i GetInstanceDeployKeysDeployKeyArgs) ToGetInstanceDeployKeysDeployKeyOutput() GetInstanceDeployKeysDeployKeyOutput {
+	return i.ToGetInstanceDeployKeysDeployKeyOutputWithContext(context.Background())
+}
+
+func (i GetInstanceDeployKeysDeployKeyArgs) ToGetInstanceDeployKeysDeployKeyOutputWithContext(ctx context.Context) GetInstanceDeployKeysDeployKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceDeployKeysDeployKeyOutput)
+}
+
+// GetInstanceDeployKeysDeployKeyArrayInput is an input type that accepts GetInstanceDeployKeysDeployKeyArray and GetInstanceDeployKeysDeployKeyArrayOutput values.
+// You can construct a concrete instance of `GetInstanceDeployKeysDeployKeyArrayInput` via:
+//
+//          GetInstanceDeployKeysDeployKeyArray{ GetInstanceDeployKeysDeployKeyArgs{...} }
+type GetInstanceDeployKeysDeployKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceDeployKeysDeployKeyArrayOutput() GetInstanceDeployKeysDeployKeyArrayOutput
+	ToGetInstanceDeployKeysDeployKeyArrayOutputWithContext(context.Context) GetInstanceDeployKeysDeployKeyArrayOutput
+}
+
+type GetInstanceDeployKeysDeployKeyArray []GetInstanceDeployKeysDeployKeyInput
+
+func (GetInstanceDeployKeysDeployKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceDeployKeysDeployKey)(nil)).Elem()
+}
+
+func (i GetInstanceDeployKeysDeployKeyArray) ToGetInstanceDeployKeysDeployKeyArrayOutput() GetInstanceDeployKeysDeployKeyArrayOutput {
+	return i.ToGetInstanceDeployKeysDeployKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceDeployKeysDeployKeyArray) ToGetInstanceDeployKeysDeployKeyArrayOutputWithContext(ctx context.Context) GetInstanceDeployKeysDeployKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceDeployKeysDeployKeyArrayOutput)
+}
+
+type GetInstanceDeployKeysDeployKeyOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceDeployKeysDeployKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceDeployKeysDeployKey)(nil)).Elem()
+}
+
+func (o GetInstanceDeployKeysDeployKeyOutput) ToGetInstanceDeployKeysDeployKeyOutput() GetInstanceDeployKeysDeployKeyOutput {
+	return o
+}
+
+func (o GetInstanceDeployKeysDeployKeyOutput) ToGetInstanceDeployKeysDeployKeyOutputWithContext(ctx context.Context) GetInstanceDeployKeysDeployKeyOutput {
+	return o
+}
+
+func (o GetInstanceDeployKeysDeployKeyOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDeployKeysDeployKey) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceDeployKeysDeployKeyOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDeployKeysDeployKey) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceDeployKeysDeployKeyOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceDeployKeysDeployKey) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceDeployKeysDeployKeyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDeployKeysDeployKey) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceDeployKeysDeployKeyOutput) ProjectsWithWriteAccesses() GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput {
+	return o.ApplyT(func(v GetInstanceDeployKeysDeployKey) []GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess {
+		return v.ProjectsWithWriteAccesses
+	}).(GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput)
+}
+
+func (o GetInstanceDeployKeysDeployKeyOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDeployKeysDeployKey) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type GetInstanceDeployKeysDeployKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceDeployKeysDeployKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceDeployKeysDeployKey)(nil)).Elem()
+}
+
+func (o GetInstanceDeployKeysDeployKeyArrayOutput) ToGetInstanceDeployKeysDeployKeyArrayOutput() GetInstanceDeployKeysDeployKeyArrayOutput {
+	return o
+}
+
+func (o GetInstanceDeployKeysDeployKeyArrayOutput) ToGetInstanceDeployKeysDeployKeyArrayOutputWithContext(ctx context.Context) GetInstanceDeployKeysDeployKeyArrayOutput {
+	return o
+}
+
+func (o GetInstanceDeployKeysDeployKeyArrayOutput) Index(i pulumi.IntInput) GetInstanceDeployKeysDeployKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceDeployKeysDeployKey {
+		return vs[0].([]GetInstanceDeployKeysDeployKey)[vs[1].(int)]
+	}).(GetInstanceDeployKeysDeployKeyOutput)
+}
+
+type GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess struct {
+	CreatedAt         string `pulumi:"createdAt"`
+	Description       string `pulumi:"description"`
+	Id                int    `pulumi:"id"`
+	Name              string `pulumi:"name"`
+	NameWithNamespace string `pulumi:"nameWithNamespace"`
+	Path              string `pulumi:"path"`
+	PathWithNamespace string `pulumi:"pathWithNamespace"`
+}
+
+// GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessInput is an input type that accepts GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArgs and GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput values.
+// You can construct a concrete instance of `GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessInput` via:
+//
+//          GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArgs{...}
+type GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessInput interface {
+	pulumi.Input
+
+	ToGetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput() GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput
+	ToGetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutputWithContext(context.Context) GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput
+}
+
+type GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArgs struct {
+	CreatedAt         pulumi.StringInput `pulumi:"createdAt"`
+	Description       pulumi.StringInput `pulumi:"description"`
+	Id                pulumi.IntInput    `pulumi:"id"`
+	Name              pulumi.StringInput `pulumi:"name"`
+	NameWithNamespace pulumi.StringInput `pulumi:"nameWithNamespace"`
+	Path              pulumi.StringInput `pulumi:"path"`
+	PathWithNamespace pulumi.StringInput `pulumi:"pathWithNamespace"`
+}
+
+func (GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess)(nil)).Elem()
+}
+
+func (i GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArgs) ToGetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput() GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput {
+	return i.ToGetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutputWithContext(context.Background())
+}
+
+func (i GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArgs) ToGetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutputWithContext(ctx context.Context) GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput)
+}
+
+// GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayInput is an input type that accepts GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArray and GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput values.
+// You can construct a concrete instance of `GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayInput` via:
+//
+//          GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArray{ GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArgs{...} }
+type GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput() GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput
+	ToGetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutputWithContext(context.Context) GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput
+}
+
+type GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArray []GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessInput
+
+func (GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess)(nil)).Elem()
+}
+
+func (i GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArray) ToGetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput() GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput {
+	return i.ToGetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArray) ToGetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutputWithContext(ctx context.Context) GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput)
+}
+
+type GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess)(nil)).Elem()
+}
+
+func (o GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput) ToGetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput() GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput {
+	return o
+}
+
+func (o GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput) ToGetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutputWithContext(ctx context.Context) GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput {
+	return o
+}
+
+func (o GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput) NameWithNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess) string { return v.NameWithNamespace }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput) PathWithNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess) string { return v.PathWithNamespace }).(pulumi.StringOutput)
+}
+
+type GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess)(nil)).Elem()
+}
+
+func (o GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput) ToGetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput() GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput {
+	return o
+}
+
+func (o GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput) ToGetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutputWithContext(ctx context.Context) GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput {
+	return o
+}
+
+func (o GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput) Index(i pulumi.IntInput) GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess {
+		return vs[0].([]GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess)[vs[1].(int)]
+	}).(GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput)
+}
+
+type GetProjectContainerExpirationPolicy struct {
+	Cadence         string `pulumi:"cadence"`
+	Enabled         bool   `pulumi:"enabled"`
+	KeepN           int    `pulumi:"keepN"`
+	NameRegexDelete string `pulumi:"nameRegexDelete"`
+	NameRegexKeep   string `pulumi:"nameRegexKeep"`
+	NextRunAt       string `pulumi:"nextRunAt"`
+	OlderThan       string `pulumi:"olderThan"`
+}
+
+// GetProjectContainerExpirationPolicyInput is an input type that accepts GetProjectContainerExpirationPolicyArgs and GetProjectContainerExpirationPolicyOutput values.
+// You can construct a concrete instance of `GetProjectContainerExpirationPolicyInput` via:
+//
+//          GetProjectContainerExpirationPolicyArgs{...}
+type GetProjectContainerExpirationPolicyInput interface {
+	pulumi.Input
+
+	ToGetProjectContainerExpirationPolicyOutput() GetProjectContainerExpirationPolicyOutput
+	ToGetProjectContainerExpirationPolicyOutputWithContext(context.Context) GetProjectContainerExpirationPolicyOutput
+}
+
+type GetProjectContainerExpirationPolicyArgs struct {
+	Cadence         pulumi.StringInput `pulumi:"cadence"`
+	Enabled         pulumi.BoolInput   `pulumi:"enabled"`
+	KeepN           pulumi.IntInput    `pulumi:"keepN"`
+	NameRegexDelete pulumi.StringInput `pulumi:"nameRegexDelete"`
+	NameRegexKeep   pulumi.StringInput `pulumi:"nameRegexKeep"`
+	NextRunAt       pulumi.StringInput `pulumi:"nextRunAt"`
+	OlderThan       pulumi.StringInput `pulumi:"olderThan"`
+}
+
+func (GetProjectContainerExpirationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectContainerExpirationPolicy)(nil)).Elem()
+}
+
+func (i GetProjectContainerExpirationPolicyArgs) ToGetProjectContainerExpirationPolicyOutput() GetProjectContainerExpirationPolicyOutput {
+	return i.ToGetProjectContainerExpirationPolicyOutputWithContext(context.Background())
+}
+
+func (i GetProjectContainerExpirationPolicyArgs) ToGetProjectContainerExpirationPolicyOutputWithContext(ctx context.Context) GetProjectContainerExpirationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectContainerExpirationPolicyOutput)
+}
+
+// GetProjectContainerExpirationPolicyArrayInput is an input type that accepts GetProjectContainerExpirationPolicyArray and GetProjectContainerExpirationPolicyArrayOutput values.
+// You can construct a concrete instance of `GetProjectContainerExpirationPolicyArrayInput` via:
+//
+//          GetProjectContainerExpirationPolicyArray{ GetProjectContainerExpirationPolicyArgs{...} }
+type GetProjectContainerExpirationPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectContainerExpirationPolicyArrayOutput() GetProjectContainerExpirationPolicyArrayOutput
+	ToGetProjectContainerExpirationPolicyArrayOutputWithContext(context.Context) GetProjectContainerExpirationPolicyArrayOutput
+}
+
+type GetProjectContainerExpirationPolicyArray []GetProjectContainerExpirationPolicyInput
+
+func (GetProjectContainerExpirationPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectContainerExpirationPolicy)(nil)).Elem()
+}
+
+func (i GetProjectContainerExpirationPolicyArray) ToGetProjectContainerExpirationPolicyArrayOutput() GetProjectContainerExpirationPolicyArrayOutput {
+	return i.ToGetProjectContainerExpirationPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectContainerExpirationPolicyArray) ToGetProjectContainerExpirationPolicyArrayOutputWithContext(ctx context.Context) GetProjectContainerExpirationPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectContainerExpirationPolicyArrayOutput)
+}
+
+type GetProjectContainerExpirationPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetProjectContainerExpirationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectContainerExpirationPolicy)(nil)).Elem()
+}
+
+func (o GetProjectContainerExpirationPolicyOutput) ToGetProjectContainerExpirationPolicyOutput() GetProjectContainerExpirationPolicyOutput {
+	return o
+}
+
+func (o GetProjectContainerExpirationPolicyOutput) ToGetProjectContainerExpirationPolicyOutputWithContext(ctx context.Context) GetProjectContainerExpirationPolicyOutput {
+	return o
+}
+
+func (o GetProjectContainerExpirationPolicyOutput) Cadence() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectContainerExpirationPolicy) string { return v.Cadence }).(pulumi.StringOutput)
+}
+
+func (o GetProjectContainerExpirationPolicyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectContainerExpirationPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectContainerExpirationPolicyOutput) KeepN() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectContainerExpirationPolicy) int { return v.KeepN }).(pulumi.IntOutput)
+}
+
+func (o GetProjectContainerExpirationPolicyOutput) NameRegexDelete() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectContainerExpirationPolicy) string { return v.NameRegexDelete }).(pulumi.StringOutput)
+}
+
+func (o GetProjectContainerExpirationPolicyOutput) NameRegexKeep() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectContainerExpirationPolicy) string { return v.NameRegexKeep }).(pulumi.StringOutput)
+}
+
+func (o GetProjectContainerExpirationPolicyOutput) NextRunAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectContainerExpirationPolicy) string { return v.NextRunAt }).(pulumi.StringOutput)
+}
+
+func (o GetProjectContainerExpirationPolicyOutput) OlderThan() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectContainerExpirationPolicy) string { return v.OlderThan }).(pulumi.StringOutput)
+}
+
+type GetProjectContainerExpirationPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectContainerExpirationPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectContainerExpirationPolicy)(nil)).Elem()
+}
+
+func (o GetProjectContainerExpirationPolicyArrayOutput) ToGetProjectContainerExpirationPolicyArrayOutput() GetProjectContainerExpirationPolicyArrayOutput {
+	return o
+}
+
+func (o GetProjectContainerExpirationPolicyArrayOutput) ToGetProjectContainerExpirationPolicyArrayOutputWithContext(ctx context.Context) GetProjectContainerExpirationPolicyArrayOutput {
+	return o
+}
+
+func (o GetProjectContainerExpirationPolicyArrayOutput) Index(i pulumi.IntInput) GetProjectContainerExpirationPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectContainerExpirationPolicy {
+		return vs[0].([]GetProjectContainerExpirationPolicy)[vs[1].(int)]
+	}).(GetProjectContainerExpirationPolicyOutput)
 }
 
 type GetProjectIssueTaskCompletionStatus struct {
@@ -1558,52 +2363,45 @@ func (o GetProjectIssueTaskCompletionStatusArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetProjectIssuesIssue struct {
-	AssigneeIds []int `pulumi:"assigneeIds"`
-	// Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
-	AuthorId       int    `pulumi:"authorId"`
-	ClosedAt       string `pulumi:"closedAt"`
-	ClosedByUserId int    `pulumi:"closedByUserId"`
-	// Filter confidential or public issues.
-	Confidential        bool   `pulumi:"confidential"`
-	CreatedAt           string `pulumi:"createdAt"`
-	Description         string `pulumi:"description"`
-	DiscussionLocked    bool   `pulumi:"discussionLocked"`
-	DiscussionToResolve string `pulumi:"discussionToResolve"`
-	Downvotes           int    `pulumi:"downvotes"`
-	// Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
-	DueDate             string `pulumi:"dueDate"`
-	EpicId              int    `pulumi:"epicId"`
-	EpicIssueId         int    `pulumi:"epicIssueId"`
-	ExternalId          string `pulumi:"externalId"`
-	HumanTimeEstimate   string `pulumi:"humanTimeEstimate"`
-	HumanTotalTimeSpent string `pulumi:"humanTotalTimeSpent"`
-	Iid                 int    `pulumi:"iid"`
-	IssueId             int    `pulumi:"issueId"`
-	IssueLinkId         int    `pulumi:"issueLinkId"`
-	// Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
-	IssueType string `pulumi:"issueType"`
-	// Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
-	Labels                             []string          `pulumi:"labels"`
-	Links                              map[string]string `pulumi:"links"`
-	MergeRequestToResolveDiscussionsOf int               `pulumi:"mergeRequestToResolveDiscussionsOf"`
-	MergeRequestsCount                 int               `pulumi:"mergeRequestsCount"`
-	MilestoneId                        int               `pulumi:"milestoneId"`
-	MovedToId                          int               `pulumi:"movedToId"`
-	// The name or id of the project.
-	Project                string                                      `pulumi:"project"`
-	References             map[string]string                           `pulumi:"references"`
-	State                  string                                      `pulumi:"state"`
-	Subscribed             bool                                        `pulumi:"subscribed"`
-	TaskCompletionStatuses []GetProjectIssuesIssueTaskCompletionStatus `pulumi:"taskCompletionStatuses"`
-	TimeEstimate           int                                         `pulumi:"timeEstimate"`
-	Title                  string                                      `pulumi:"title"`
-	TotalTimeSpent         int                                         `pulumi:"totalTimeSpent"`
-	UpdatedAt              string                                      `pulumi:"updatedAt"`
-	Upvotes                int                                         `pulumi:"upvotes"`
-	UserNotesCount         int                                         `pulumi:"userNotesCount"`
-	WebUrl                 string                                      `pulumi:"webUrl"`
-	// Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
-	Weight int `pulumi:"weight"`
+	AssigneeIds                        []int                                       `pulumi:"assigneeIds"`
+	AuthorId                           int                                         `pulumi:"authorId"`
+	ClosedAt                           string                                      `pulumi:"closedAt"`
+	ClosedByUserId                     int                                         `pulumi:"closedByUserId"`
+	Confidential                       bool                                        `pulumi:"confidential"`
+	CreatedAt                          string                                      `pulumi:"createdAt"`
+	Description                        string                                      `pulumi:"description"`
+	DiscussionLocked                   bool                                        `pulumi:"discussionLocked"`
+	DiscussionToResolve                string                                      `pulumi:"discussionToResolve"`
+	Downvotes                          int                                         `pulumi:"downvotes"`
+	DueDate                            string                                      `pulumi:"dueDate"`
+	EpicId                             int                                         `pulumi:"epicId"`
+	EpicIssueId                        int                                         `pulumi:"epicIssueId"`
+	ExternalId                         string                                      `pulumi:"externalId"`
+	HumanTimeEstimate                  string                                      `pulumi:"humanTimeEstimate"`
+	HumanTotalTimeSpent                string                                      `pulumi:"humanTotalTimeSpent"`
+	Iid                                int                                         `pulumi:"iid"`
+	IssueId                            int                                         `pulumi:"issueId"`
+	IssueLinkId                        int                                         `pulumi:"issueLinkId"`
+	IssueType                          string                                      `pulumi:"issueType"`
+	Labels                             []string                                    `pulumi:"labels"`
+	Links                              map[string]string                           `pulumi:"links"`
+	MergeRequestToResolveDiscussionsOf int                                         `pulumi:"mergeRequestToResolveDiscussionsOf"`
+	MergeRequestsCount                 int                                         `pulumi:"mergeRequestsCount"`
+	MilestoneId                        int                                         `pulumi:"milestoneId"`
+	MovedToId                          int                                         `pulumi:"movedToId"`
+	Project                            string                                      `pulumi:"project"`
+	References                         map[string]string                           `pulumi:"references"`
+	State                              string                                      `pulumi:"state"`
+	Subscribed                         bool                                        `pulumi:"subscribed"`
+	TaskCompletionStatuses             []GetProjectIssuesIssueTaskCompletionStatus `pulumi:"taskCompletionStatuses"`
+	TimeEstimate                       int                                         `pulumi:"timeEstimate"`
+	Title                              string                                      `pulumi:"title"`
+	TotalTimeSpent                     int                                         `pulumi:"totalTimeSpent"`
+	UpdatedAt                          string                                      `pulumi:"updatedAt"`
+	Upvotes                            int                                         `pulumi:"upvotes"`
+	UserNotesCount                     int                                         `pulumi:"userNotesCount"`
+	WebUrl                             string                                      `pulumi:"webUrl"`
+	Weight                             int                                         `pulumi:"weight"`
 }
 
 // GetProjectIssuesIssueInput is an input type that accepts GetProjectIssuesIssueArgs and GetProjectIssuesIssueOutput values.
@@ -1618,52 +2416,45 @@ type GetProjectIssuesIssueInput interface {
 }
 
 type GetProjectIssuesIssueArgs struct {
-	AssigneeIds pulumi.IntArrayInput `pulumi:"assigneeIds"`
-	// Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
-	AuthorId       pulumi.IntInput    `pulumi:"authorId"`
-	ClosedAt       pulumi.StringInput `pulumi:"closedAt"`
-	ClosedByUserId pulumi.IntInput    `pulumi:"closedByUserId"`
-	// Filter confidential or public issues.
-	Confidential        pulumi.BoolInput   `pulumi:"confidential"`
-	CreatedAt           pulumi.StringInput `pulumi:"createdAt"`
-	Description         pulumi.StringInput `pulumi:"description"`
-	DiscussionLocked    pulumi.BoolInput   `pulumi:"discussionLocked"`
-	DiscussionToResolve pulumi.StringInput `pulumi:"discussionToResolve"`
-	Downvotes           pulumi.IntInput    `pulumi:"downvotes"`
-	// Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
-	DueDate             pulumi.StringInput `pulumi:"dueDate"`
-	EpicId              pulumi.IntInput    `pulumi:"epicId"`
-	EpicIssueId         pulumi.IntInput    `pulumi:"epicIssueId"`
-	ExternalId          pulumi.StringInput `pulumi:"externalId"`
-	HumanTimeEstimate   pulumi.StringInput `pulumi:"humanTimeEstimate"`
-	HumanTotalTimeSpent pulumi.StringInput `pulumi:"humanTotalTimeSpent"`
-	Iid                 pulumi.IntInput    `pulumi:"iid"`
-	IssueId             pulumi.IntInput    `pulumi:"issueId"`
-	IssueLinkId         pulumi.IntInput    `pulumi:"issueLinkId"`
-	// Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
-	IssueType pulumi.StringInput `pulumi:"issueType"`
-	// Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
-	Labels                             pulumi.StringArrayInput `pulumi:"labels"`
-	Links                              pulumi.StringMapInput   `pulumi:"links"`
-	MergeRequestToResolveDiscussionsOf pulumi.IntInput         `pulumi:"mergeRequestToResolveDiscussionsOf"`
-	MergeRequestsCount                 pulumi.IntInput         `pulumi:"mergeRequestsCount"`
-	MilestoneId                        pulumi.IntInput         `pulumi:"milestoneId"`
-	MovedToId                          pulumi.IntInput         `pulumi:"movedToId"`
-	// The name or id of the project.
-	Project                pulumi.StringInput                                  `pulumi:"project"`
-	References             pulumi.StringMapInput                               `pulumi:"references"`
-	State                  pulumi.StringInput                                  `pulumi:"state"`
-	Subscribed             pulumi.BoolInput                                    `pulumi:"subscribed"`
-	TaskCompletionStatuses GetProjectIssuesIssueTaskCompletionStatusArrayInput `pulumi:"taskCompletionStatuses"`
-	TimeEstimate           pulumi.IntInput                                     `pulumi:"timeEstimate"`
-	Title                  pulumi.StringInput                                  `pulumi:"title"`
-	TotalTimeSpent         pulumi.IntInput                                     `pulumi:"totalTimeSpent"`
-	UpdatedAt              pulumi.StringInput                                  `pulumi:"updatedAt"`
-	Upvotes                pulumi.IntInput                                     `pulumi:"upvotes"`
-	UserNotesCount         pulumi.IntInput                                     `pulumi:"userNotesCount"`
-	WebUrl                 pulumi.StringInput                                  `pulumi:"webUrl"`
-	// Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
-	Weight pulumi.IntInput `pulumi:"weight"`
+	AssigneeIds                        pulumi.IntArrayInput                                `pulumi:"assigneeIds"`
+	AuthorId                           pulumi.IntInput                                     `pulumi:"authorId"`
+	ClosedAt                           pulumi.StringInput                                  `pulumi:"closedAt"`
+	ClosedByUserId                     pulumi.IntInput                                     `pulumi:"closedByUserId"`
+	Confidential                       pulumi.BoolInput                                    `pulumi:"confidential"`
+	CreatedAt                          pulumi.StringInput                                  `pulumi:"createdAt"`
+	Description                        pulumi.StringInput                                  `pulumi:"description"`
+	DiscussionLocked                   pulumi.BoolInput                                    `pulumi:"discussionLocked"`
+	DiscussionToResolve                pulumi.StringInput                                  `pulumi:"discussionToResolve"`
+	Downvotes                          pulumi.IntInput                                     `pulumi:"downvotes"`
+	DueDate                            pulumi.StringInput                                  `pulumi:"dueDate"`
+	EpicId                             pulumi.IntInput                                     `pulumi:"epicId"`
+	EpicIssueId                        pulumi.IntInput                                     `pulumi:"epicIssueId"`
+	ExternalId                         pulumi.StringInput                                  `pulumi:"externalId"`
+	HumanTimeEstimate                  pulumi.StringInput                                  `pulumi:"humanTimeEstimate"`
+	HumanTotalTimeSpent                pulumi.StringInput                                  `pulumi:"humanTotalTimeSpent"`
+	Iid                                pulumi.IntInput                                     `pulumi:"iid"`
+	IssueId                            pulumi.IntInput                                     `pulumi:"issueId"`
+	IssueLinkId                        pulumi.IntInput                                     `pulumi:"issueLinkId"`
+	IssueType                          pulumi.StringInput                                  `pulumi:"issueType"`
+	Labels                             pulumi.StringArrayInput                             `pulumi:"labels"`
+	Links                              pulumi.StringMapInput                               `pulumi:"links"`
+	MergeRequestToResolveDiscussionsOf pulumi.IntInput                                     `pulumi:"mergeRequestToResolveDiscussionsOf"`
+	MergeRequestsCount                 pulumi.IntInput                                     `pulumi:"mergeRequestsCount"`
+	MilestoneId                        pulumi.IntInput                                     `pulumi:"milestoneId"`
+	MovedToId                          pulumi.IntInput                                     `pulumi:"movedToId"`
+	Project                            pulumi.StringInput                                  `pulumi:"project"`
+	References                         pulumi.StringMapInput                               `pulumi:"references"`
+	State                              pulumi.StringInput                                  `pulumi:"state"`
+	Subscribed                         pulumi.BoolInput                                    `pulumi:"subscribed"`
+	TaskCompletionStatuses             GetProjectIssuesIssueTaskCompletionStatusArrayInput `pulumi:"taskCompletionStatuses"`
+	TimeEstimate                       pulumi.IntInput                                     `pulumi:"timeEstimate"`
+	Title                              pulumi.StringInput                                  `pulumi:"title"`
+	TotalTimeSpent                     pulumi.IntInput                                     `pulumi:"totalTimeSpent"`
+	UpdatedAt                          pulumi.StringInput                                  `pulumi:"updatedAt"`
+	Upvotes                            pulumi.IntInput                                     `pulumi:"upvotes"`
+	UserNotesCount                     pulumi.IntInput                                     `pulumi:"userNotesCount"`
+	WebUrl                             pulumi.StringInput                                  `pulumi:"webUrl"`
+	Weight                             pulumi.IntInput                                     `pulumi:"weight"`
 }
 
 func (GetProjectIssuesIssueArgs) ElementType() reflect.Type {
@@ -1721,7 +2512,6 @@ func (o GetProjectIssuesIssueOutput) AssigneeIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetProjectIssuesIssue) []int { return v.AssigneeIds }).(pulumi.IntArrayOutput)
 }
 
-// Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
 func (o GetProjectIssuesIssueOutput) AuthorId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.AuthorId }).(pulumi.IntOutput)
 }
@@ -1734,7 +2524,6 @@ func (o GetProjectIssuesIssueOutput) ClosedByUserId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.ClosedByUserId }).(pulumi.IntOutput)
 }
 
-// Filter confidential or public issues.
 func (o GetProjectIssuesIssueOutput) Confidential() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectIssuesIssue) bool { return v.Confidential }).(pulumi.BoolOutput)
 }
@@ -1759,7 +2548,6 @@ func (o GetProjectIssuesIssueOutput) Downvotes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.Downvotes }).(pulumi.IntOutput)
 }
 
-// Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
 func (o GetProjectIssuesIssueOutput) DueDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectIssuesIssue) string { return v.DueDate }).(pulumi.StringOutput)
 }
@@ -1796,12 +2584,10 @@ func (o GetProjectIssuesIssueOutput) IssueLinkId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.IssueLinkId }).(pulumi.IntOutput)
 }
 
-// Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
 func (o GetProjectIssuesIssueOutput) IssueType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectIssuesIssue) string { return v.IssueType }).(pulumi.StringOutput)
 }
 
-// Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
 func (o GetProjectIssuesIssueOutput) Labels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetProjectIssuesIssue) []string { return v.Labels }).(pulumi.StringArrayOutput)
 }
@@ -1826,7 +2612,6 @@ func (o GetProjectIssuesIssueOutput) MovedToId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.MovedToId }).(pulumi.IntOutput)
 }
 
-// The name or id of the project.
 func (o GetProjectIssuesIssueOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectIssuesIssue) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -1877,7 +2662,6 @@ func (o GetProjectIssuesIssueOutput) WebUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectIssuesIssue) string { return v.WebUrl }).(pulumi.StringOutput)
 }
 
-// Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
 func (o GetProjectIssuesIssueOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectIssuesIssue) int { return v.Weight }).(pulumi.IntOutput)
 }
@@ -2227,13 +3011,12 @@ func (o GetProjectProtectedBranchPushAccessLevelArrayOutput) Index(i pulumi.IntI
 }
 
 type GetProjectProtectedBranchesProtectedBranch struct {
-	AllowForcePush            bool `pulumi:"allowForcePush"`
-	CodeOwnerApprovalRequired bool `pulumi:"codeOwnerApprovalRequired"`
-	// The ID of this resource.
-	Id                int                                                          `pulumi:"id"`
-	MergeAccessLevels []GetProjectProtectedBranchesProtectedBranchMergeAccessLevel `pulumi:"mergeAccessLevels"`
-	Name              string                                                       `pulumi:"name"`
-	PushAccessLevels  []GetProjectProtectedBranchesProtectedBranchPushAccessLevel  `pulumi:"pushAccessLevels"`
+	AllowForcePush            bool                                                         `pulumi:"allowForcePush"`
+	CodeOwnerApprovalRequired bool                                                         `pulumi:"codeOwnerApprovalRequired"`
+	Id                        int                                                          `pulumi:"id"`
+	MergeAccessLevels         []GetProjectProtectedBranchesProtectedBranchMergeAccessLevel `pulumi:"mergeAccessLevels"`
+	Name                      string                                                       `pulumi:"name"`
+	PushAccessLevels          []GetProjectProtectedBranchesProtectedBranchPushAccessLevel  `pulumi:"pushAccessLevels"`
 }
 
 // GetProjectProtectedBranchesProtectedBranchInput is an input type that accepts GetProjectProtectedBranchesProtectedBranchArgs and GetProjectProtectedBranchesProtectedBranchOutput values.
@@ -2248,13 +3031,12 @@ type GetProjectProtectedBranchesProtectedBranchInput interface {
 }
 
 type GetProjectProtectedBranchesProtectedBranchArgs struct {
-	AllowForcePush            pulumi.BoolInput `pulumi:"allowForcePush"`
-	CodeOwnerApprovalRequired pulumi.BoolInput `pulumi:"codeOwnerApprovalRequired"`
-	// The ID of this resource.
-	Id                pulumi.IntInput                                                      `pulumi:"id"`
-	MergeAccessLevels GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArrayInput `pulumi:"mergeAccessLevels"`
-	Name              pulumi.StringInput                                                   `pulumi:"name"`
-	PushAccessLevels  GetProjectProtectedBranchesProtectedBranchPushAccessLevelArrayInput  `pulumi:"pushAccessLevels"`
+	AllowForcePush            pulumi.BoolInput                                                     `pulumi:"allowForcePush"`
+	CodeOwnerApprovalRequired pulumi.BoolInput                                                     `pulumi:"codeOwnerApprovalRequired"`
+	Id                        pulumi.IntInput                                                      `pulumi:"id"`
+	MergeAccessLevels         GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArrayInput `pulumi:"mergeAccessLevels"`
+	Name                      pulumi.StringInput                                                   `pulumi:"name"`
+	PushAccessLevels          GetProjectProtectedBranchesProtectedBranchPushAccessLevelArrayInput  `pulumi:"pushAccessLevels"`
 }
 
 func (GetProjectProtectedBranchesProtectedBranchArgs) ElementType() reflect.Type {
@@ -2316,7 +3098,6 @@ func (o GetProjectProtectedBranchesProtectedBranchOutput) CodeOwnerApprovalRequi
 	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranch) bool { return v.CodeOwnerApprovalRequired }).(pulumi.BoolOutput)
 }
 
-// The ID of this resource.
 func (o GetProjectProtectedBranchesProtectedBranchOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranch) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -2695,19 +3476,17 @@ func (o GetProjectPushRulesOutput) RejectUnsignedCommits() pulumi.BoolOutput {
 }
 
 type GetProjectTagCommit struct {
-	AuthorEmail    string `pulumi:"authorEmail"`
-	AuthorName     string `pulumi:"authorName"`
-	AuthoredDate   string `pulumi:"authoredDate"`
-	CommittedDate  string `pulumi:"committedDate"`
-	CommitterEmail string `pulumi:"committerEmail"`
-	CommitterName  string `pulumi:"committerName"`
-	// The ID of this resource.
-	Id string `pulumi:"id"`
-	// Creates annotated tag.
-	Message   string   `pulumi:"message"`
-	ParentIds []string `pulumi:"parentIds"`
-	ShortId   string   `pulumi:"shortId"`
-	Title     string   `pulumi:"title"`
+	AuthorEmail    string   `pulumi:"authorEmail"`
+	AuthorName     string   `pulumi:"authorName"`
+	AuthoredDate   string   `pulumi:"authoredDate"`
+	CommittedDate  string   `pulumi:"committedDate"`
+	CommitterEmail string   `pulumi:"committerEmail"`
+	CommitterName  string   `pulumi:"committerName"`
+	Id             string   `pulumi:"id"`
+	Message        string   `pulumi:"message"`
+	ParentIds      []string `pulumi:"parentIds"`
+	ShortId        string   `pulumi:"shortId"`
+	Title          string   `pulumi:"title"`
 }
 
 // GetProjectTagCommitInput is an input type that accepts GetProjectTagCommitArgs and GetProjectTagCommitOutput values.
@@ -2722,19 +3501,17 @@ type GetProjectTagCommitInput interface {
 }
 
 type GetProjectTagCommitArgs struct {
-	AuthorEmail    pulumi.StringInput `pulumi:"authorEmail"`
-	AuthorName     pulumi.StringInput `pulumi:"authorName"`
-	AuthoredDate   pulumi.StringInput `pulumi:"authoredDate"`
-	CommittedDate  pulumi.StringInput `pulumi:"committedDate"`
-	CommitterEmail pulumi.StringInput `pulumi:"committerEmail"`
-	CommitterName  pulumi.StringInput `pulumi:"committerName"`
-	// The ID of this resource.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Creates annotated tag.
-	Message   pulumi.StringInput      `pulumi:"message"`
-	ParentIds pulumi.StringArrayInput `pulumi:"parentIds"`
-	ShortId   pulumi.StringInput      `pulumi:"shortId"`
-	Title     pulumi.StringInput      `pulumi:"title"`
+	AuthorEmail    pulumi.StringInput      `pulumi:"authorEmail"`
+	AuthorName     pulumi.StringInput      `pulumi:"authorName"`
+	AuthoredDate   pulumi.StringInput      `pulumi:"authoredDate"`
+	CommittedDate  pulumi.StringInput      `pulumi:"committedDate"`
+	CommitterEmail pulumi.StringInput      `pulumi:"committerEmail"`
+	CommitterName  pulumi.StringInput      `pulumi:"committerName"`
+	Id             pulumi.StringInput      `pulumi:"id"`
+	Message        pulumi.StringInput      `pulumi:"message"`
+	ParentIds      pulumi.StringArrayInput `pulumi:"parentIds"`
+	ShortId        pulumi.StringInput      `pulumi:"shortId"`
+	Title          pulumi.StringInput      `pulumi:"title"`
 }
 
 func (GetProjectTagCommitArgs) ElementType() reflect.Type {
@@ -2812,12 +3589,10 @@ func (o GetProjectTagCommitOutput) CommitterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectTagCommit) string { return v.CommitterName }).(pulumi.StringOutput)
 }
 
-// The ID of this resource.
 func (o GetProjectTagCommitOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectTagCommit) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Creates annotated tag.
 func (o GetProjectTagCommitOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectTagCommit) string { return v.Message }).(pulumi.StringOutput)
 }
@@ -2954,71 +3729,470 @@ func (o GetProjectTagReleaseArrayOutput) Index(i pulumi.IntInput) GetProjectTagR
 	}).(GetProjectTagReleaseOutput)
 }
 
+type GetProjectTagsTag struct {
+	Commits   []GetProjectTagsTagCommit  `pulumi:"commits"`
+	Message   string                     `pulumi:"message"`
+	Name      string                     `pulumi:"name"`
+	Protected bool                       `pulumi:"protected"`
+	Releases  []GetProjectTagsTagRelease `pulumi:"releases"`
+	Target    string                     `pulumi:"target"`
+}
+
+// GetProjectTagsTagInput is an input type that accepts GetProjectTagsTagArgs and GetProjectTagsTagOutput values.
+// You can construct a concrete instance of `GetProjectTagsTagInput` via:
+//
+//          GetProjectTagsTagArgs{...}
+type GetProjectTagsTagInput interface {
+	pulumi.Input
+
+	ToGetProjectTagsTagOutput() GetProjectTagsTagOutput
+	ToGetProjectTagsTagOutputWithContext(context.Context) GetProjectTagsTagOutput
+}
+
+type GetProjectTagsTagArgs struct {
+	Commits   GetProjectTagsTagCommitArrayInput  `pulumi:"commits"`
+	Message   pulumi.StringInput                 `pulumi:"message"`
+	Name      pulumi.StringInput                 `pulumi:"name"`
+	Protected pulumi.BoolInput                   `pulumi:"protected"`
+	Releases  GetProjectTagsTagReleaseArrayInput `pulumi:"releases"`
+	Target    pulumi.StringInput                 `pulumi:"target"`
+}
+
+func (GetProjectTagsTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectTagsTag)(nil)).Elem()
+}
+
+func (i GetProjectTagsTagArgs) ToGetProjectTagsTagOutput() GetProjectTagsTagOutput {
+	return i.ToGetProjectTagsTagOutputWithContext(context.Background())
+}
+
+func (i GetProjectTagsTagArgs) ToGetProjectTagsTagOutputWithContext(ctx context.Context) GetProjectTagsTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectTagsTagOutput)
+}
+
+// GetProjectTagsTagArrayInput is an input type that accepts GetProjectTagsTagArray and GetProjectTagsTagArrayOutput values.
+// You can construct a concrete instance of `GetProjectTagsTagArrayInput` via:
+//
+//          GetProjectTagsTagArray{ GetProjectTagsTagArgs{...} }
+type GetProjectTagsTagArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectTagsTagArrayOutput() GetProjectTagsTagArrayOutput
+	ToGetProjectTagsTagArrayOutputWithContext(context.Context) GetProjectTagsTagArrayOutput
+}
+
+type GetProjectTagsTagArray []GetProjectTagsTagInput
+
+func (GetProjectTagsTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectTagsTag)(nil)).Elem()
+}
+
+func (i GetProjectTagsTagArray) ToGetProjectTagsTagArrayOutput() GetProjectTagsTagArrayOutput {
+	return i.ToGetProjectTagsTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectTagsTagArray) ToGetProjectTagsTagArrayOutputWithContext(ctx context.Context) GetProjectTagsTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectTagsTagArrayOutput)
+}
+
+type GetProjectTagsTagOutput struct{ *pulumi.OutputState }
+
+func (GetProjectTagsTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectTagsTag)(nil)).Elem()
+}
+
+func (o GetProjectTagsTagOutput) ToGetProjectTagsTagOutput() GetProjectTagsTagOutput {
+	return o
+}
+
+func (o GetProjectTagsTagOutput) ToGetProjectTagsTagOutputWithContext(ctx context.Context) GetProjectTagsTagOutput {
+	return o
+}
+
+func (o GetProjectTagsTagOutput) Commits() GetProjectTagsTagCommitArrayOutput {
+	return o.ApplyT(func(v GetProjectTagsTag) []GetProjectTagsTagCommit { return v.Commits }).(GetProjectTagsTagCommitArrayOutput)
+}
+
+func (o GetProjectTagsTagOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagsTag) string { return v.Message }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagsTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagsTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagsTagOutput) Protected() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectTagsTag) bool { return v.Protected }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectTagsTagOutput) Releases() GetProjectTagsTagReleaseArrayOutput {
+	return o.ApplyT(func(v GetProjectTagsTag) []GetProjectTagsTagRelease { return v.Releases }).(GetProjectTagsTagReleaseArrayOutput)
+}
+
+func (o GetProjectTagsTagOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagsTag) string { return v.Target }).(pulumi.StringOutput)
+}
+
+type GetProjectTagsTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectTagsTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectTagsTag)(nil)).Elem()
+}
+
+func (o GetProjectTagsTagArrayOutput) ToGetProjectTagsTagArrayOutput() GetProjectTagsTagArrayOutput {
+	return o
+}
+
+func (o GetProjectTagsTagArrayOutput) ToGetProjectTagsTagArrayOutputWithContext(ctx context.Context) GetProjectTagsTagArrayOutput {
+	return o
+}
+
+func (o GetProjectTagsTagArrayOutput) Index(i pulumi.IntInput) GetProjectTagsTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectTagsTag {
+		return vs[0].([]GetProjectTagsTag)[vs[1].(int)]
+	}).(GetProjectTagsTagOutput)
+}
+
+type GetProjectTagsTagCommit struct {
+	AuthorEmail    string   `pulumi:"authorEmail"`
+	AuthorName     string   `pulumi:"authorName"`
+	AuthoredDate   string   `pulumi:"authoredDate"`
+	CommittedDate  string   `pulumi:"committedDate"`
+	CommitterEmail string   `pulumi:"committerEmail"`
+	CommitterName  string   `pulumi:"committerName"`
+	Id             string   `pulumi:"id"`
+	Message        string   `pulumi:"message"`
+	ParentIds      []string `pulumi:"parentIds"`
+	ShortId        string   `pulumi:"shortId"`
+	Title          string   `pulumi:"title"`
+}
+
+// GetProjectTagsTagCommitInput is an input type that accepts GetProjectTagsTagCommitArgs and GetProjectTagsTagCommitOutput values.
+// You can construct a concrete instance of `GetProjectTagsTagCommitInput` via:
+//
+//          GetProjectTagsTagCommitArgs{...}
+type GetProjectTagsTagCommitInput interface {
+	pulumi.Input
+
+	ToGetProjectTagsTagCommitOutput() GetProjectTagsTagCommitOutput
+	ToGetProjectTagsTagCommitOutputWithContext(context.Context) GetProjectTagsTagCommitOutput
+}
+
+type GetProjectTagsTagCommitArgs struct {
+	AuthorEmail    pulumi.StringInput      `pulumi:"authorEmail"`
+	AuthorName     pulumi.StringInput      `pulumi:"authorName"`
+	AuthoredDate   pulumi.StringInput      `pulumi:"authoredDate"`
+	CommittedDate  pulumi.StringInput      `pulumi:"committedDate"`
+	CommitterEmail pulumi.StringInput      `pulumi:"committerEmail"`
+	CommitterName  pulumi.StringInput      `pulumi:"committerName"`
+	Id             pulumi.StringInput      `pulumi:"id"`
+	Message        pulumi.StringInput      `pulumi:"message"`
+	ParentIds      pulumi.StringArrayInput `pulumi:"parentIds"`
+	ShortId        pulumi.StringInput      `pulumi:"shortId"`
+	Title          pulumi.StringInput      `pulumi:"title"`
+}
+
+func (GetProjectTagsTagCommitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectTagsTagCommit)(nil)).Elem()
+}
+
+func (i GetProjectTagsTagCommitArgs) ToGetProjectTagsTagCommitOutput() GetProjectTagsTagCommitOutput {
+	return i.ToGetProjectTagsTagCommitOutputWithContext(context.Background())
+}
+
+func (i GetProjectTagsTagCommitArgs) ToGetProjectTagsTagCommitOutputWithContext(ctx context.Context) GetProjectTagsTagCommitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectTagsTagCommitOutput)
+}
+
+// GetProjectTagsTagCommitArrayInput is an input type that accepts GetProjectTagsTagCommitArray and GetProjectTagsTagCommitArrayOutput values.
+// You can construct a concrete instance of `GetProjectTagsTagCommitArrayInput` via:
+//
+//          GetProjectTagsTagCommitArray{ GetProjectTagsTagCommitArgs{...} }
+type GetProjectTagsTagCommitArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectTagsTagCommitArrayOutput() GetProjectTagsTagCommitArrayOutput
+	ToGetProjectTagsTagCommitArrayOutputWithContext(context.Context) GetProjectTagsTagCommitArrayOutput
+}
+
+type GetProjectTagsTagCommitArray []GetProjectTagsTagCommitInput
+
+func (GetProjectTagsTagCommitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectTagsTagCommit)(nil)).Elem()
+}
+
+func (i GetProjectTagsTagCommitArray) ToGetProjectTagsTagCommitArrayOutput() GetProjectTagsTagCommitArrayOutput {
+	return i.ToGetProjectTagsTagCommitArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectTagsTagCommitArray) ToGetProjectTagsTagCommitArrayOutputWithContext(ctx context.Context) GetProjectTagsTagCommitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectTagsTagCommitArrayOutput)
+}
+
+type GetProjectTagsTagCommitOutput struct{ *pulumi.OutputState }
+
+func (GetProjectTagsTagCommitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectTagsTagCommit)(nil)).Elem()
+}
+
+func (o GetProjectTagsTagCommitOutput) ToGetProjectTagsTagCommitOutput() GetProjectTagsTagCommitOutput {
+	return o
+}
+
+func (o GetProjectTagsTagCommitOutput) ToGetProjectTagsTagCommitOutputWithContext(ctx context.Context) GetProjectTagsTagCommitOutput {
+	return o
+}
+
+func (o GetProjectTagsTagCommitOutput) AuthorEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagsTagCommit) string { return v.AuthorEmail }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagsTagCommitOutput) AuthorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagsTagCommit) string { return v.AuthorName }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagsTagCommitOutput) AuthoredDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagsTagCommit) string { return v.AuthoredDate }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagsTagCommitOutput) CommittedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagsTagCommit) string { return v.CommittedDate }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagsTagCommitOutput) CommitterEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagsTagCommit) string { return v.CommitterEmail }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagsTagCommitOutput) CommitterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagsTagCommit) string { return v.CommitterName }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagsTagCommitOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagsTagCommit) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagsTagCommitOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagsTagCommit) string { return v.Message }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagsTagCommitOutput) ParentIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProjectTagsTagCommit) []string { return v.ParentIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetProjectTagsTagCommitOutput) ShortId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagsTagCommit) string { return v.ShortId }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagsTagCommitOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagsTagCommit) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type GetProjectTagsTagCommitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectTagsTagCommitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectTagsTagCommit)(nil)).Elem()
+}
+
+func (o GetProjectTagsTagCommitArrayOutput) ToGetProjectTagsTagCommitArrayOutput() GetProjectTagsTagCommitArrayOutput {
+	return o
+}
+
+func (o GetProjectTagsTagCommitArrayOutput) ToGetProjectTagsTagCommitArrayOutputWithContext(ctx context.Context) GetProjectTagsTagCommitArrayOutput {
+	return o
+}
+
+func (o GetProjectTagsTagCommitArrayOutput) Index(i pulumi.IntInput) GetProjectTagsTagCommitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectTagsTagCommit {
+		return vs[0].([]GetProjectTagsTagCommit)[vs[1].(int)]
+	}).(GetProjectTagsTagCommitOutput)
+}
+
+type GetProjectTagsTagRelease struct {
+	Description string `pulumi:"description"`
+	TagName     string `pulumi:"tagName"`
+}
+
+// GetProjectTagsTagReleaseInput is an input type that accepts GetProjectTagsTagReleaseArgs and GetProjectTagsTagReleaseOutput values.
+// You can construct a concrete instance of `GetProjectTagsTagReleaseInput` via:
+//
+//          GetProjectTagsTagReleaseArgs{...}
+type GetProjectTagsTagReleaseInput interface {
+	pulumi.Input
+
+	ToGetProjectTagsTagReleaseOutput() GetProjectTagsTagReleaseOutput
+	ToGetProjectTagsTagReleaseOutputWithContext(context.Context) GetProjectTagsTagReleaseOutput
+}
+
+type GetProjectTagsTagReleaseArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	TagName     pulumi.StringInput `pulumi:"tagName"`
+}
+
+func (GetProjectTagsTagReleaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectTagsTagRelease)(nil)).Elem()
+}
+
+func (i GetProjectTagsTagReleaseArgs) ToGetProjectTagsTagReleaseOutput() GetProjectTagsTagReleaseOutput {
+	return i.ToGetProjectTagsTagReleaseOutputWithContext(context.Background())
+}
+
+func (i GetProjectTagsTagReleaseArgs) ToGetProjectTagsTagReleaseOutputWithContext(ctx context.Context) GetProjectTagsTagReleaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectTagsTagReleaseOutput)
+}
+
+// GetProjectTagsTagReleaseArrayInput is an input type that accepts GetProjectTagsTagReleaseArray and GetProjectTagsTagReleaseArrayOutput values.
+// You can construct a concrete instance of `GetProjectTagsTagReleaseArrayInput` via:
+//
+//          GetProjectTagsTagReleaseArray{ GetProjectTagsTagReleaseArgs{...} }
+type GetProjectTagsTagReleaseArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectTagsTagReleaseArrayOutput() GetProjectTagsTagReleaseArrayOutput
+	ToGetProjectTagsTagReleaseArrayOutputWithContext(context.Context) GetProjectTagsTagReleaseArrayOutput
+}
+
+type GetProjectTagsTagReleaseArray []GetProjectTagsTagReleaseInput
+
+func (GetProjectTagsTagReleaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectTagsTagRelease)(nil)).Elem()
+}
+
+func (i GetProjectTagsTagReleaseArray) ToGetProjectTagsTagReleaseArrayOutput() GetProjectTagsTagReleaseArrayOutput {
+	return i.ToGetProjectTagsTagReleaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectTagsTagReleaseArray) ToGetProjectTagsTagReleaseArrayOutputWithContext(ctx context.Context) GetProjectTagsTagReleaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectTagsTagReleaseArrayOutput)
+}
+
+type GetProjectTagsTagReleaseOutput struct{ *pulumi.OutputState }
+
+func (GetProjectTagsTagReleaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectTagsTagRelease)(nil)).Elem()
+}
+
+func (o GetProjectTagsTagReleaseOutput) ToGetProjectTagsTagReleaseOutput() GetProjectTagsTagReleaseOutput {
+	return o
+}
+
+func (o GetProjectTagsTagReleaseOutput) ToGetProjectTagsTagReleaseOutputWithContext(ctx context.Context) GetProjectTagsTagReleaseOutput {
+	return o
+}
+
+func (o GetProjectTagsTagReleaseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagsTagRelease) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetProjectTagsTagReleaseOutput) TagName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTagsTagRelease) string { return v.TagName }).(pulumi.StringOutput)
+}
+
+type GetProjectTagsTagReleaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectTagsTagReleaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectTagsTagRelease)(nil)).Elem()
+}
+
+func (o GetProjectTagsTagReleaseArrayOutput) ToGetProjectTagsTagReleaseArrayOutput() GetProjectTagsTagReleaseArrayOutput {
+	return o
+}
+
+func (o GetProjectTagsTagReleaseArrayOutput) ToGetProjectTagsTagReleaseArrayOutputWithContext(ctx context.Context) GetProjectTagsTagReleaseArrayOutput {
+	return o
+}
+
+func (o GetProjectTagsTagReleaseArrayOutput) Index(i pulumi.IntInput) GetProjectTagsTagReleaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectTagsTagRelease {
+		return vs[0].([]GetProjectTagsTagRelease)[vs[1].(int)]
+	}).(GetProjectTagsTagReleaseOutput)
+}
+
 type GetProjectsProject struct {
-	_links                      map[string]string `pulumi:"_links"`
-	AllowMergeOnSkippedPipeline bool              `pulumi:"allowMergeOnSkippedPipeline"`
-	ApprovalsBeforeMerge        int               `pulumi:"approvalsBeforeMerge"`
-	// Limit by archived status.
-	Archived                   bool                                `pulumi:"archived"`
-	AvatarUrl                  string                              `pulumi:"avatarUrl"`
-	BuildCoverageRegex         string                              `pulumi:"buildCoverageRegex"`
-	CiConfigPath               string                              `pulumi:"ciConfigPath"`
-	CiForwardDeploymentEnabled bool                                `pulumi:"ciForwardDeploymentEnabled"`
-	ContainerRegistryEnabled   bool                                `pulumi:"containerRegistryEnabled"`
-	CreatedAt                  string                              `pulumi:"createdAt"`
-	CreatorId                  int                                 `pulumi:"creatorId"`
-	CustomAttributes           []map[string]interface{}            `pulumi:"customAttributes"`
-	DefaultBranch              string                              `pulumi:"defaultBranch"`
-	Description                string                              `pulumi:"description"`
-	ForkedFromProject          GetProjectsProjectForkedFromProject `pulumi:"forkedFromProject"`
-	ForksCount                 int                                 `pulumi:"forksCount"`
-	HttpUrlToRepo              string                              `pulumi:"httpUrlToRepo"`
-	// The ID of this resource.
-	Id                                        int                                 `pulumi:"id"`
-	ImportError                               string                              `pulumi:"importError"`
-	ImportStatus                              string                              `pulumi:"importStatus"`
-	IssuesEnabled                             bool                                `pulumi:"issuesEnabled"`
-	JobsEnabled                               bool                                `pulumi:"jobsEnabled"`
-	LastActivityAt                            string                              `pulumi:"lastActivityAt"`
-	LfsEnabled                                bool                                `pulumi:"lfsEnabled"`
-	MergeMethod                               string                              `pulumi:"mergeMethod"`
-	MergePipelinesEnabled                     bool                                `pulumi:"mergePipelinesEnabled"`
-	MergeRequestsEnabled                      bool                                `pulumi:"mergeRequestsEnabled"`
-	MergeTrainsEnabled                        bool                                `pulumi:"mergeTrainsEnabled"`
-	Mirror                                    bool                                `pulumi:"mirror"`
-	MirrorOverwritesDivergedBranches          bool                                `pulumi:"mirrorOverwritesDivergedBranches"`
-	MirrorTriggerBuilds                       bool                                `pulumi:"mirrorTriggerBuilds"`
-	MirrorUserId                              int                                 `pulumi:"mirrorUserId"`
-	Name                                      string                              `pulumi:"name"`
-	NameWithNamespace                         string                              `pulumi:"nameWithNamespace"`
-	Namespace                                 GetProjectsProjectNamespace         `pulumi:"namespace"`
-	OnlyAllowMergeIfAllDiscussionsAreResolved bool                                `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
-	OnlyAllowMergeIfPipelineSucceeds          bool                                `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
-	OnlyMirrorProtectedBranches               bool                                `pulumi:"onlyMirrorProtectedBranches"`
-	OpenIssuesCount                           int                                 `pulumi:"openIssuesCount"`
-	Owner                                     GetProjectsProjectOwner             `pulumi:"owner"`
-	PackagesEnabled                           bool                                `pulumi:"packagesEnabled"`
-	Path                                      string                              `pulumi:"path"`
-	PathWithNamespace                         string                              `pulumi:"pathWithNamespace"`
-	Permissions                               GetProjectsProjectPermissions       `pulumi:"permissions"`
-	Public                                    bool                                `pulumi:"public"`
-	PublicBuilds                              bool                                `pulumi:"publicBuilds"`
-	ReadmeUrl                                 string                              `pulumi:"readmeUrl"`
-	RequestAccessEnabled                      bool                                `pulumi:"requestAccessEnabled"`
-	ResolveOutdatedDiffDiscussions            bool                                `pulumi:"resolveOutdatedDiffDiscussions"`
-	RunnersToken                              string                              `pulumi:"runnersToken"`
-	SharedRunnersEnabled                      bool                                `pulumi:"sharedRunnersEnabled"`
-	SharedWithGroups                          []GetProjectsProjectSharedWithGroup `pulumi:"sharedWithGroups"`
-	SnippetsEnabled                           bool                                `pulumi:"snippetsEnabled"`
-	SshUrlToRepo                              string                              `pulumi:"sshUrlToRepo"`
-	StarCount                                 int                                 `pulumi:"starCount"`
-	// Include project statistics. Cannot be used with `groupId`.
-	Statistics map[string]int `pulumi:"statistics"`
-	TagLists   []string       `pulumi:"tagLists"`
-	// Limit by visibility `public`, `internal`, or `private`.
-	Visibility  string `pulumi:"visibility"`
-	WebUrl      string `pulumi:"webUrl"`
-	WikiEnabled bool   `pulumi:"wikiEnabled"`
+	_links                                    map[string]string                             `pulumi:"_links"`
+	AllowMergeOnSkippedPipeline               bool                                          `pulumi:"allowMergeOnSkippedPipeline"`
+	AnalyticsAccessLevel                      string                                        `pulumi:"analyticsAccessLevel"`
+	ApprovalsBeforeMerge                      int                                           `pulumi:"approvalsBeforeMerge"`
+	Archived                                  bool                                          `pulumi:"archived"`
+	AutoCancelPendingPipelines                string                                        `pulumi:"autoCancelPendingPipelines"`
+	AutoDevopsDeployStrategy                  string                                        `pulumi:"autoDevopsDeployStrategy"`
+	AutoDevopsEnabled                         bool                                          `pulumi:"autoDevopsEnabled"`
+	AutocloseReferencedIssues                 bool                                          `pulumi:"autocloseReferencedIssues"`
+	AvatarUrl                                 string                                        `pulumi:"avatarUrl"`
+	BuildCoverageRegex                        string                                        `pulumi:"buildCoverageRegex"`
+	BuildGitStrategy                          string                                        `pulumi:"buildGitStrategy"`
+	BuildTimeout                              int                                           `pulumi:"buildTimeout"`
+	BuildsAccessLevel                         string                                        `pulumi:"buildsAccessLevel"`
+	CiConfigPath                              string                                        `pulumi:"ciConfigPath"`
+	CiForwardDeploymentEnabled                bool                                          `pulumi:"ciForwardDeploymentEnabled"`
+	ContainerExpirationPolicies               []GetProjectsProjectContainerExpirationPolicy `pulumi:"containerExpirationPolicies"`
+	ContainerRegistryAccessLevel              string                                        `pulumi:"containerRegistryAccessLevel"`
+	ContainerRegistryEnabled                  bool                                          `pulumi:"containerRegistryEnabled"`
+	CreatedAt                                 string                                        `pulumi:"createdAt"`
+	CreatorId                                 int                                           `pulumi:"creatorId"`
+	CustomAttributes                          []map[string]interface{}                      `pulumi:"customAttributes"`
+	DefaultBranch                             string                                        `pulumi:"defaultBranch"`
+	Description                               string                                        `pulumi:"description"`
+	EmailsDisabled                            bool                                          `pulumi:"emailsDisabled"`
+	ExternalAuthorizationClassificationLabel  string                                        `pulumi:"externalAuthorizationClassificationLabel"`
+	ForkedFromProject                         GetProjectsProjectForkedFromProject           `pulumi:"forkedFromProject"`
+	ForkingAccessLevel                        string                                        `pulumi:"forkingAccessLevel"`
+	ForksCount                                int                                           `pulumi:"forksCount"`
+	HttpUrlToRepo                             string                                        `pulumi:"httpUrlToRepo"`
+	Id                                        int                                           `pulumi:"id"`
+	ImportError                               string                                        `pulumi:"importError"`
+	ImportStatus                              string                                        `pulumi:"importStatus"`
+	IssuesAccessLevel                         string                                        `pulumi:"issuesAccessLevel"`
+	IssuesEnabled                             bool                                          `pulumi:"issuesEnabled"`
+	JobsEnabled                               bool                                          `pulumi:"jobsEnabled"`
+	LastActivityAt                            string                                        `pulumi:"lastActivityAt"`
+	LfsEnabled                                bool                                          `pulumi:"lfsEnabled"`
+	MergeCommitTemplate                       string                                        `pulumi:"mergeCommitTemplate"`
+	MergeMethod                               string                                        `pulumi:"mergeMethod"`
+	MergePipelinesEnabled                     bool                                          `pulumi:"mergePipelinesEnabled"`
+	MergeRequestsAccessLevel                  string                                        `pulumi:"mergeRequestsAccessLevel"`
+	MergeRequestsEnabled                      bool                                          `pulumi:"mergeRequestsEnabled"`
+	MergeTrainsEnabled                        bool                                          `pulumi:"mergeTrainsEnabled"`
+	Mirror                                    bool                                          `pulumi:"mirror"`
+	MirrorOverwritesDivergedBranches          bool                                          `pulumi:"mirrorOverwritesDivergedBranches"`
+	MirrorTriggerBuilds                       bool                                          `pulumi:"mirrorTriggerBuilds"`
+	MirrorUserId                              int                                           `pulumi:"mirrorUserId"`
+	Name                                      string                                        `pulumi:"name"`
+	NameWithNamespace                         string                                        `pulumi:"nameWithNamespace"`
+	Namespace                                 GetProjectsProjectNamespace                   `pulumi:"namespace"`
+	OnlyAllowMergeIfAllDiscussionsAreResolved bool                                          `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
+	OnlyAllowMergeIfPipelineSucceeds          bool                                          `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
+	OnlyMirrorProtectedBranches               bool                                          `pulumi:"onlyMirrorProtectedBranches"`
+	OpenIssuesCount                           int                                           `pulumi:"openIssuesCount"`
+	OperationsAccessLevel                     string                                        `pulumi:"operationsAccessLevel"`
+	Owner                                     GetProjectsProjectOwner                       `pulumi:"owner"`
+	PackagesEnabled                           bool                                          `pulumi:"packagesEnabled"`
+	Path                                      string                                        `pulumi:"path"`
+	PathWithNamespace                         string                                        `pulumi:"pathWithNamespace"`
+	Permissions                               GetProjectsProjectPermissions                 `pulumi:"permissions"`
+	Public                                    bool                                          `pulumi:"public"`
+	PublicBuilds                              bool                                          `pulumi:"publicBuilds"`
+	ReadmeUrl                                 string                                        `pulumi:"readmeUrl"`
+	RepositoryAccessLevel                     string                                        `pulumi:"repositoryAccessLevel"`
+	RepositoryStorage                         string                                        `pulumi:"repositoryStorage"`
+	RequestAccessEnabled                      bool                                          `pulumi:"requestAccessEnabled"`
+	RequirementsAccessLevel                   string                                        `pulumi:"requirementsAccessLevel"`
+	ResolveOutdatedDiffDiscussions            bool                                          `pulumi:"resolveOutdatedDiffDiscussions"`
+	RunnersToken                              string                                        `pulumi:"runnersToken"`
+	SecurityAndComplianceAccessLevel          string                                        `pulumi:"securityAndComplianceAccessLevel"`
+	SharedRunnersEnabled                      bool                                          `pulumi:"sharedRunnersEnabled"`
+	SharedWithGroups                          []GetProjectsProjectSharedWithGroup           `pulumi:"sharedWithGroups"`
+	SnippetsAccessLevel                       string                                        `pulumi:"snippetsAccessLevel"`
+	SnippetsEnabled                           bool                                          `pulumi:"snippetsEnabled"`
+	SquashCommitTemplate                      string                                        `pulumi:"squashCommitTemplate"`
+	SshUrlToRepo                              string                                        `pulumi:"sshUrlToRepo"`
+	StarCount                                 int                                           `pulumi:"starCount"`
+	Statistics                                map[string]int                                `pulumi:"statistics"`
+	TagLists                                  []string                                      `pulumi:"tagLists"`
+	Topics                                    []string                                      `pulumi:"topics"`
+	Visibility                                string                                        `pulumi:"visibility"`
+	WebUrl                                    string                                        `pulumi:"webUrl"`
+	WikiAccessLevel                           string                                        `pulumi:"wikiAccessLevel"`
+	WikiEnabled                               bool                                          `pulumi:"wikiEnabled"`
 }
 
 // GetProjectsProjectInput is an input type that accepts GetProjectsProjectArgs and GetProjectsProjectOutput values.
@@ -3033,70 +4207,91 @@ type GetProjectsProjectInput interface {
 }
 
 type GetProjectsProjectArgs struct {
-	_links                      pulumi.StringMapInput `pulumi:"_links"`
-	AllowMergeOnSkippedPipeline pulumi.BoolInput      `pulumi:"allowMergeOnSkippedPipeline"`
-	ApprovalsBeforeMerge        pulumi.IntInput       `pulumi:"approvalsBeforeMerge"`
-	// Limit by archived status.
-	Archived                   pulumi.BoolInput                         `pulumi:"archived"`
-	AvatarUrl                  pulumi.StringInput                       `pulumi:"avatarUrl"`
-	BuildCoverageRegex         pulumi.StringInput                       `pulumi:"buildCoverageRegex"`
-	CiConfigPath               pulumi.StringInput                       `pulumi:"ciConfigPath"`
-	CiForwardDeploymentEnabled pulumi.BoolInput                         `pulumi:"ciForwardDeploymentEnabled"`
-	ContainerRegistryEnabled   pulumi.BoolInput                         `pulumi:"containerRegistryEnabled"`
-	CreatedAt                  pulumi.StringInput                       `pulumi:"createdAt"`
-	CreatorId                  pulumi.IntInput                          `pulumi:"creatorId"`
-	CustomAttributes           pulumi.MapArrayInput                     `pulumi:"customAttributes"`
-	DefaultBranch              pulumi.StringInput                       `pulumi:"defaultBranch"`
-	Description                pulumi.StringInput                       `pulumi:"description"`
-	ForkedFromProject          GetProjectsProjectForkedFromProjectInput `pulumi:"forkedFromProject"`
-	ForksCount                 pulumi.IntInput                          `pulumi:"forksCount"`
-	HttpUrlToRepo              pulumi.StringInput                       `pulumi:"httpUrlToRepo"`
-	// The ID of this resource.
-	Id                                        pulumi.IntInput                             `pulumi:"id"`
-	ImportError                               pulumi.StringInput                          `pulumi:"importError"`
-	ImportStatus                              pulumi.StringInput                          `pulumi:"importStatus"`
-	IssuesEnabled                             pulumi.BoolInput                            `pulumi:"issuesEnabled"`
-	JobsEnabled                               pulumi.BoolInput                            `pulumi:"jobsEnabled"`
-	LastActivityAt                            pulumi.StringInput                          `pulumi:"lastActivityAt"`
-	LfsEnabled                                pulumi.BoolInput                            `pulumi:"lfsEnabled"`
-	MergeMethod                               pulumi.StringInput                          `pulumi:"mergeMethod"`
-	MergePipelinesEnabled                     pulumi.BoolInput                            `pulumi:"mergePipelinesEnabled"`
-	MergeRequestsEnabled                      pulumi.BoolInput                            `pulumi:"mergeRequestsEnabled"`
-	MergeTrainsEnabled                        pulumi.BoolInput                            `pulumi:"mergeTrainsEnabled"`
-	Mirror                                    pulumi.BoolInput                            `pulumi:"mirror"`
-	MirrorOverwritesDivergedBranches          pulumi.BoolInput                            `pulumi:"mirrorOverwritesDivergedBranches"`
-	MirrorTriggerBuilds                       pulumi.BoolInput                            `pulumi:"mirrorTriggerBuilds"`
-	MirrorUserId                              pulumi.IntInput                             `pulumi:"mirrorUserId"`
-	Name                                      pulumi.StringInput                          `pulumi:"name"`
-	NameWithNamespace                         pulumi.StringInput                          `pulumi:"nameWithNamespace"`
-	Namespace                                 GetProjectsProjectNamespaceInput            `pulumi:"namespace"`
-	OnlyAllowMergeIfAllDiscussionsAreResolved pulumi.BoolInput                            `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
-	OnlyAllowMergeIfPipelineSucceeds          pulumi.BoolInput                            `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
-	OnlyMirrorProtectedBranches               pulumi.BoolInput                            `pulumi:"onlyMirrorProtectedBranches"`
-	OpenIssuesCount                           pulumi.IntInput                             `pulumi:"openIssuesCount"`
-	Owner                                     GetProjectsProjectOwnerInput                `pulumi:"owner"`
-	PackagesEnabled                           pulumi.BoolInput                            `pulumi:"packagesEnabled"`
-	Path                                      pulumi.StringInput                          `pulumi:"path"`
-	PathWithNamespace                         pulumi.StringInput                          `pulumi:"pathWithNamespace"`
-	Permissions                               GetProjectsProjectPermissionsInput          `pulumi:"permissions"`
-	Public                                    pulumi.BoolInput                            `pulumi:"public"`
-	PublicBuilds                              pulumi.BoolInput                            `pulumi:"publicBuilds"`
-	ReadmeUrl                                 pulumi.StringInput                          `pulumi:"readmeUrl"`
-	RequestAccessEnabled                      pulumi.BoolInput                            `pulumi:"requestAccessEnabled"`
-	ResolveOutdatedDiffDiscussions            pulumi.BoolInput                            `pulumi:"resolveOutdatedDiffDiscussions"`
-	RunnersToken                              pulumi.StringInput                          `pulumi:"runnersToken"`
-	SharedRunnersEnabled                      pulumi.BoolInput                            `pulumi:"sharedRunnersEnabled"`
-	SharedWithGroups                          GetProjectsProjectSharedWithGroupArrayInput `pulumi:"sharedWithGroups"`
-	SnippetsEnabled                           pulumi.BoolInput                            `pulumi:"snippetsEnabled"`
-	SshUrlToRepo                              pulumi.StringInput                          `pulumi:"sshUrlToRepo"`
-	StarCount                                 pulumi.IntInput                             `pulumi:"starCount"`
-	// Include project statistics. Cannot be used with `groupId`.
-	Statistics pulumi.IntMapInput      `pulumi:"statistics"`
-	TagLists   pulumi.StringArrayInput `pulumi:"tagLists"`
-	// Limit by visibility `public`, `internal`, or `private`.
-	Visibility  pulumi.StringInput `pulumi:"visibility"`
-	WebUrl      pulumi.StringInput `pulumi:"webUrl"`
-	WikiEnabled pulumi.BoolInput   `pulumi:"wikiEnabled"`
+	_links                                    pulumi.StringMapInput                                 `pulumi:"_links"`
+	AllowMergeOnSkippedPipeline               pulumi.BoolInput                                      `pulumi:"allowMergeOnSkippedPipeline"`
+	AnalyticsAccessLevel                      pulumi.StringInput                                    `pulumi:"analyticsAccessLevel"`
+	ApprovalsBeforeMerge                      pulumi.IntInput                                       `pulumi:"approvalsBeforeMerge"`
+	Archived                                  pulumi.BoolInput                                      `pulumi:"archived"`
+	AutoCancelPendingPipelines                pulumi.StringInput                                    `pulumi:"autoCancelPendingPipelines"`
+	AutoDevopsDeployStrategy                  pulumi.StringInput                                    `pulumi:"autoDevopsDeployStrategy"`
+	AutoDevopsEnabled                         pulumi.BoolInput                                      `pulumi:"autoDevopsEnabled"`
+	AutocloseReferencedIssues                 pulumi.BoolInput                                      `pulumi:"autocloseReferencedIssues"`
+	AvatarUrl                                 pulumi.StringInput                                    `pulumi:"avatarUrl"`
+	BuildCoverageRegex                        pulumi.StringInput                                    `pulumi:"buildCoverageRegex"`
+	BuildGitStrategy                          pulumi.StringInput                                    `pulumi:"buildGitStrategy"`
+	BuildTimeout                              pulumi.IntInput                                       `pulumi:"buildTimeout"`
+	BuildsAccessLevel                         pulumi.StringInput                                    `pulumi:"buildsAccessLevel"`
+	CiConfigPath                              pulumi.StringInput                                    `pulumi:"ciConfigPath"`
+	CiForwardDeploymentEnabled                pulumi.BoolInput                                      `pulumi:"ciForwardDeploymentEnabled"`
+	ContainerExpirationPolicies               GetProjectsProjectContainerExpirationPolicyArrayInput `pulumi:"containerExpirationPolicies"`
+	ContainerRegistryAccessLevel              pulumi.StringInput                                    `pulumi:"containerRegistryAccessLevel"`
+	ContainerRegistryEnabled                  pulumi.BoolInput                                      `pulumi:"containerRegistryEnabled"`
+	CreatedAt                                 pulumi.StringInput                                    `pulumi:"createdAt"`
+	CreatorId                                 pulumi.IntInput                                       `pulumi:"creatorId"`
+	CustomAttributes                          pulumi.MapArrayInput                                  `pulumi:"customAttributes"`
+	DefaultBranch                             pulumi.StringInput                                    `pulumi:"defaultBranch"`
+	Description                               pulumi.StringInput                                    `pulumi:"description"`
+	EmailsDisabled                            pulumi.BoolInput                                      `pulumi:"emailsDisabled"`
+	ExternalAuthorizationClassificationLabel  pulumi.StringInput                                    `pulumi:"externalAuthorizationClassificationLabel"`
+	ForkedFromProject                         GetProjectsProjectForkedFromProjectInput              `pulumi:"forkedFromProject"`
+	ForkingAccessLevel                        pulumi.StringInput                                    `pulumi:"forkingAccessLevel"`
+	ForksCount                                pulumi.IntInput                                       `pulumi:"forksCount"`
+	HttpUrlToRepo                             pulumi.StringInput                                    `pulumi:"httpUrlToRepo"`
+	Id                                        pulumi.IntInput                                       `pulumi:"id"`
+	ImportError                               pulumi.StringInput                                    `pulumi:"importError"`
+	ImportStatus                              pulumi.StringInput                                    `pulumi:"importStatus"`
+	IssuesAccessLevel                         pulumi.StringInput                                    `pulumi:"issuesAccessLevel"`
+	IssuesEnabled                             pulumi.BoolInput                                      `pulumi:"issuesEnabled"`
+	JobsEnabled                               pulumi.BoolInput                                      `pulumi:"jobsEnabled"`
+	LastActivityAt                            pulumi.StringInput                                    `pulumi:"lastActivityAt"`
+	LfsEnabled                                pulumi.BoolInput                                      `pulumi:"lfsEnabled"`
+	MergeCommitTemplate                       pulumi.StringInput                                    `pulumi:"mergeCommitTemplate"`
+	MergeMethod                               pulumi.StringInput                                    `pulumi:"mergeMethod"`
+	MergePipelinesEnabled                     pulumi.BoolInput                                      `pulumi:"mergePipelinesEnabled"`
+	MergeRequestsAccessLevel                  pulumi.StringInput                                    `pulumi:"mergeRequestsAccessLevel"`
+	MergeRequestsEnabled                      pulumi.BoolInput                                      `pulumi:"mergeRequestsEnabled"`
+	MergeTrainsEnabled                        pulumi.BoolInput                                      `pulumi:"mergeTrainsEnabled"`
+	Mirror                                    pulumi.BoolInput                                      `pulumi:"mirror"`
+	MirrorOverwritesDivergedBranches          pulumi.BoolInput                                      `pulumi:"mirrorOverwritesDivergedBranches"`
+	MirrorTriggerBuilds                       pulumi.BoolInput                                      `pulumi:"mirrorTriggerBuilds"`
+	MirrorUserId                              pulumi.IntInput                                       `pulumi:"mirrorUserId"`
+	Name                                      pulumi.StringInput                                    `pulumi:"name"`
+	NameWithNamespace                         pulumi.StringInput                                    `pulumi:"nameWithNamespace"`
+	Namespace                                 GetProjectsProjectNamespaceInput                      `pulumi:"namespace"`
+	OnlyAllowMergeIfAllDiscussionsAreResolved pulumi.BoolInput                                      `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
+	OnlyAllowMergeIfPipelineSucceeds          pulumi.BoolInput                                      `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
+	OnlyMirrorProtectedBranches               pulumi.BoolInput                                      `pulumi:"onlyMirrorProtectedBranches"`
+	OpenIssuesCount                           pulumi.IntInput                                       `pulumi:"openIssuesCount"`
+	OperationsAccessLevel                     pulumi.StringInput                                    `pulumi:"operationsAccessLevel"`
+	Owner                                     GetProjectsProjectOwnerInput                          `pulumi:"owner"`
+	PackagesEnabled                           pulumi.BoolInput                                      `pulumi:"packagesEnabled"`
+	Path                                      pulumi.StringInput                                    `pulumi:"path"`
+	PathWithNamespace                         pulumi.StringInput                                    `pulumi:"pathWithNamespace"`
+	Permissions                               GetProjectsProjectPermissionsInput                    `pulumi:"permissions"`
+	Public                                    pulumi.BoolInput                                      `pulumi:"public"`
+	PublicBuilds                              pulumi.BoolInput                                      `pulumi:"publicBuilds"`
+	ReadmeUrl                                 pulumi.StringInput                                    `pulumi:"readmeUrl"`
+	RepositoryAccessLevel                     pulumi.StringInput                                    `pulumi:"repositoryAccessLevel"`
+	RepositoryStorage                         pulumi.StringInput                                    `pulumi:"repositoryStorage"`
+	RequestAccessEnabled                      pulumi.BoolInput                                      `pulumi:"requestAccessEnabled"`
+	RequirementsAccessLevel                   pulumi.StringInput                                    `pulumi:"requirementsAccessLevel"`
+	ResolveOutdatedDiffDiscussions            pulumi.BoolInput                                      `pulumi:"resolveOutdatedDiffDiscussions"`
+	RunnersToken                              pulumi.StringInput                                    `pulumi:"runnersToken"`
+	SecurityAndComplianceAccessLevel          pulumi.StringInput                                    `pulumi:"securityAndComplianceAccessLevel"`
+	SharedRunnersEnabled                      pulumi.BoolInput                                      `pulumi:"sharedRunnersEnabled"`
+	SharedWithGroups                          GetProjectsProjectSharedWithGroupArrayInput           `pulumi:"sharedWithGroups"`
+	SnippetsAccessLevel                       pulumi.StringInput                                    `pulumi:"snippetsAccessLevel"`
+	SnippetsEnabled                           pulumi.BoolInput                                      `pulumi:"snippetsEnabled"`
+	SquashCommitTemplate                      pulumi.StringInput                                    `pulumi:"squashCommitTemplate"`
+	SshUrlToRepo                              pulumi.StringInput                                    `pulumi:"sshUrlToRepo"`
+	StarCount                                 pulumi.IntInput                                       `pulumi:"starCount"`
+	Statistics                                pulumi.IntMapInput                                    `pulumi:"statistics"`
+	TagLists                                  pulumi.StringArrayInput                               `pulumi:"tagLists"`
+	Topics                                    pulumi.StringArrayInput                               `pulumi:"topics"`
+	Visibility                                pulumi.StringInput                                    `pulumi:"visibility"`
+	WebUrl                                    pulumi.StringInput                                    `pulumi:"webUrl"`
+	WikiAccessLevel                           pulumi.StringInput                                    `pulumi:"wikiAccessLevel"`
+	WikiEnabled                               pulumi.BoolInput                                      `pulumi:"wikiEnabled"`
 }
 
 func (GetProjectsProjectArgs) ElementType() reflect.Type {
@@ -3158,13 +4353,32 @@ func (o GetProjectsProjectOutput) AllowMergeOnSkippedPipeline() pulumi.BoolOutpu
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.AllowMergeOnSkippedPipeline }).(pulumi.BoolOutput)
 }
 
+func (o GetProjectsProjectOutput) AnalyticsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.AnalyticsAccessLevel }).(pulumi.StringOutput)
+}
+
 func (o GetProjectsProjectOutput) ApprovalsBeforeMerge() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectsProject) int { return v.ApprovalsBeforeMerge }).(pulumi.IntOutput)
 }
 
-// Limit by archived status.
 func (o GetProjectsProjectOutput) Archived() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.Archived }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectsProjectOutput) AutoCancelPendingPipelines() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.AutoCancelPendingPipelines }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectOutput) AutoDevopsDeployStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.AutoDevopsDeployStrategy }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectOutput) AutoDevopsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectsProject) bool { return v.AutoDevopsEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectsProjectOutput) AutocloseReferencedIssues() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectsProject) bool { return v.AutocloseReferencedIssues }).(pulumi.BoolOutput)
 }
 
 func (o GetProjectsProjectOutput) AvatarUrl() pulumi.StringOutput {
@@ -3175,12 +4389,34 @@ func (o GetProjectsProjectOutput) BuildCoverageRegex() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.BuildCoverageRegex }).(pulumi.StringOutput)
 }
 
+func (o GetProjectsProjectOutput) BuildGitStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.BuildGitStrategy }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectOutput) BuildTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectsProject) int { return v.BuildTimeout }).(pulumi.IntOutput)
+}
+
+func (o GetProjectsProjectOutput) BuildsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.BuildsAccessLevel }).(pulumi.StringOutput)
+}
+
 func (o GetProjectsProjectOutput) CiConfigPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.CiConfigPath }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) CiForwardDeploymentEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.CiForwardDeploymentEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectsProjectOutput) ContainerExpirationPolicies() GetProjectsProjectContainerExpirationPolicyArrayOutput {
+	return o.ApplyT(func(v GetProjectsProject) []GetProjectsProjectContainerExpirationPolicy {
+		return v.ContainerExpirationPolicies
+	}).(GetProjectsProjectContainerExpirationPolicyArrayOutput)
+}
+
+func (o GetProjectsProjectOutput) ContainerRegistryAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.ContainerRegistryAccessLevel }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) ContainerRegistryEnabled() pulumi.BoolOutput {
@@ -3207,8 +4443,20 @@ func (o GetProjectsProjectOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o GetProjectsProjectOutput) EmailsDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectsProject) bool { return v.EmailsDisabled }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectsProjectOutput) ExternalAuthorizationClassificationLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.ExternalAuthorizationClassificationLabel }).(pulumi.StringOutput)
+}
+
 func (o GetProjectsProjectOutput) ForkedFromProject() GetProjectsProjectForkedFromProjectOutput {
 	return o.ApplyT(func(v GetProjectsProject) GetProjectsProjectForkedFromProject { return v.ForkedFromProject }).(GetProjectsProjectForkedFromProjectOutput)
+}
+
+func (o GetProjectsProjectOutput) ForkingAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.ForkingAccessLevel }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) ForksCount() pulumi.IntOutput {
@@ -3219,7 +4467,6 @@ func (o GetProjectsProjectOutput) HttpUrlToRepo() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.HttpUrlToRepo }).(pulumi.StringOutput)
 }
 
-// The ID of this resource.
 func (o GetProjectsProjectOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectsProject) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -3230,6 +4477,10 @@ func (o GetProjectsProjectOutput) ImportError() pulumi.StringOutput {
 
 func (o GetProjectsProjectOutput) ImportStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.ImportStatus }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectOutput) IssuesAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.IssuesAccessLevel }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) IssuesEnabled() pulumi.BoolOutput {
@@ -3248,12 +4499,20 @@ func (o GetProjectsProjectOutput) LfsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.LfsEnabled }).(pulumi.BoolOutput)
 }
 
+func (o GetProjectsProjectOutput) MergeCommitTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.MergeCommitTemplate }).(pulumi.StringOutput)
+}
+
 func (o GetProjectsProjectOutput) MergeMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.MergeMethod }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) MergePipelinesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.MergePipelinesEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectsProjectOutput) MergeRequestsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.MergeRequestsAccessLevel }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) MergeRequestsEnabled() pulumi.BoolOutput {
@@ -3308,6 +4567,10 @@ func (o GetProjectsProjectOutput) OpenIssuesCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectsProject) int { return v.OpenIssuesCount }).(pulumi.IntOutput)
 }
 
+func (o GetProjectsProjectOutput) OperationsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.OperationsAccessLevel }).(pulumi.StringOutput)
+}
+
 func (o GetProjectsProjectOutput) Owner() GetProjectsProjectOwnerOutput {
 	return o.ApplyT(func(v GetProjectsProject) GetProjectsProjectOwner { return v.Owner }).(GetProjectsProjectOwnerOutput)
 }
@@ -3340,8 +4603,20 @@ func (o GetProjectsProjectOutput) ReadmeUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.ReadmeUrl }).(pulumi.StringOutput)
 }
 
+func (o GetProjectsProjectOutput) RepositoryAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.RepositoryAccessLevel }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectOutput) RepositoryStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.RepositoryStorage }).(pulumi.StringOutput)
+}
+
 func (o GetProjectsProjectOutput) RequestAccessEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.RequestAccessEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectsProjectOutput) RequirementsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.RequirementsAccessLevel }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) ResolveOutdatedDiffDiscussions() pulumi.BoolOutput {
@@ -3352,6 +4627,10 @@ func (o GetProjectsProjectOutput) RunnersToken() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.RunnersToken }).(pulumi.StringOutput)
 }
 
+func (o GetProjectsProjectOutput) SecurityAndComplianceAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.SecurityAndComplianceAccessLevel }).(pulumi.StringOutput)
+}
+
 func (o GetProjectsProjectOutput) SharedRunnersEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.SharedRunnersEnabled }).(pulumi.BoolOutput)
 }
@@ -3360,8 +4639,16 @@ func (o GetProjectsProjectOutput) SharedWithGroups() GetProjectsProjectSharedWit
 	return o.ApplyT(func(v GetProjectsProject) []GetProjectsProjectSharedWithGroup { return v.SharedWithGroups }).(GetProjectsProjectSharedWithGroupArrayOutput)
 }
 
+func (o GetProjectsProjectOutput) SnippetsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.SnippetsAccessLevel }).(pulumi.StringOutput)
+}
+
 func (o GetProjectsProjectOutput) SnippetsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.SnippetsEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectsProjectOutput) SquashCommitTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.SquashCommitTemplate }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) SshUrlToRepo() pulumi.StringOutput {
@@ -3372,7 +4659,6 @@ func (o GetProjectsProjectOutput) StarCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectsProject) int { return v.StarCount }).(pulumi.IntOutput)
 }
 
-// Include project statistics. Cannot be used with `groupId`.
 func (o GetProjectsProjectOutput) Statistics() pulumi.IntMapOutput {
 	return o.ApplyT(func(v GetProjectsProject) map[string]int { return v.Statistics }).(pulumi.IntMapOutput)
 }
@@ -3381,13 +4667,20 @@ func (o GetProjectsProjectOutput) TagLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetProjectsProject) []string { return v.TagLists }).(pulumi.StringArrayOutput)
 }
 
-// Limit by visibility `public`, `internal`, or `private`.
+func (o GetProjectsProjectOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProjectsProject) []string { return v.Topics }).(pulumi.StringArrayOutput)
+}
+
 func (o GetProjectsProjectOutput) Visibility() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Visibility }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) WebUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectOutput) WikiAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.WikiAccessLevel }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) WikiEnabled() pulumi.BoolOutput {
@@ -3414,9 +4707,138 @@ func (o GetProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetProjectsProje
 	}).(GetProjectsProjectOutput)
 }
 
+type GetProjectsProjectContainerExpirationPolicy struct {
+	Cadence         string `pulumi:"cadence"`
+	Enabled         bool   `pulumi:"enabled"`
+	KeepN           int    `pulumi:"keepN"`
+	NameRegexDelete string `pulumi:"nameRegexDelete"`
+	NameRegexKeep   string `pulumi:"nameRegexKeep"`
+	NextRunAt       string `pulumi:"nextRunAt"`
+	OlderThan       string `pulumi:"olderThan"`
+}
+
+// GetProjectsProjectContainerExpirationPolicyInput is an input type that accepts GetProjectsProjectContainerExpirationPolicyArgs and GetProjectsProjectContainerExpirationPolicyOutput values.
+// You can construct a concrete instance of `GetProjectsProjectContainerExpirationPolicyInput` via:
+//
+//          GetProjectsProjectContainerExpirationPolicyArgs{...}
+type GetProjectsProjectContainerExpirationPolicyInput interface {
+	pulumi.Input
+
+	ToGetProjectsProjectContainerExpirationPolicyOutput() GetProjectsProjectContainerExpirationPolicyOutput
+	ToGetProjectsProjectContainerExpirationPolicyOutputWithContext(context.Context) GetProjectsProjectContainerExpirationPolicyOutput
+}
+
+type GetProjectsProjectContainerExpirationPolicyArgs struct {
+	Cadence         pulumi.StringInput `pulumi:"cadence"`
+	Enabled         pulumi.BoolInput   `pulumi:"enabled"`
+	KeepN           pulumi.IntInput    `pulumi:"keepN"`
+	NameRegexDelete pulumi.StringInput `pulumi:"nameRegexDelete"`
+	NameRegexKeep   pulumi.StringInput `pulumi:"nameRegexKeep"`
+	NextRunAt       pulumi.StringInput `pulumi:"nextRunAt"`
+	OlderThan       pulumi.StringInput `pulumi:"olderThan"`
+}
+
+func (GetProjectsProjectContainerExpirationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsProjectContainerExpirationPolicy)(nil)).Elem()
+}
+
+func (i GetProjectsProjectContainerExpirationPolicyArgs) ToGetProjectsProjectContainerExpirationPolicyOutput() GetProjectsProjectContainerExpirationPolicyOutput {
+	return i.ToGetProjectsProjectContainerExpirationPolicyOutputWithContext(context.Background())
+}
+
+func (i GetProjectsProjectContainerExpirationPolicyArgs) ToGetProjectsProjectContainerExpirationPolicyOutputWithContext(ctx context.Context) GetProjectsProjectContainerExpirationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectContainerExpirationPolicyOutput)
+}
+
+// GetProjectsProjectContainerExpirationPolicyArrayInput is an input type that accepts GetProjectsProjectContainerExpirationPolicyArray and GetProjectsProjectContainerExpirationPolicyArrayOutput values.
+// You can construct a concrete instance of `GetProjectsProjectContainerExpirationPolicyArrayInput` via:
+//
+//          GetProjectsProjectContainerExpirationPolicyArray{ GetProjectsProjectContainerExpirationPolicyArgs{...} }
+type GetProjectsProjectContainerExpirationPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectsProjectContainerExpirationPolicyArrayOutput() GetProjectsProjectContainerExpirationPolicyArrayOutput
+	ToGetProjectsProjectContainerExpirationPolicyArrayOutputWithContext(context.Context) GetProjectsProjectContainerExpirationPolicyArrayOutput
+}
+
+type GetProjectsProjectContainerExpirationPolicyArray []GetProjectsProjectContainerExpirationPolicyInput
+
+func (GetProjectsProjectContainerExpirationPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectsProjectContainerExpirationPolicy)(nil)).Elem()
+}
+
+func (i GetProjectsProjectContainerExpirationPolicyArray) ToGetProjectsProjectContainerExpirationPolicyArrayOutput() GetProjectsProjectContainerExpirationPolicyArrayOutput {
+	return i.ToGetProjectsProjectContainerExpirationPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectsProjectContainerExpirationPolicyArray) ToGetProjectsProjectContainerExpirationPolicyArrayOutputWithContext(ctx context.Context) GetProjectsProjectContainerExpirationPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectContainerExpirationPolicyArrayOutput)
+}
+
+type GetProjectsProjectContainerExpirationPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetProjectsProjectContainerExpirationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsProjectContainerExpirationPolicy)(nil)).Elem()
+}
+
+func (o GetProjectsProjectContainerExpirationPolicyOutput) ToGetProjectsProjectContainerExpirationPolicyOutput() GetProjectsProjectContainerExpirationPolicyOutput {
+	return o
+}
+
+func (o GetProjectsProjectContainerExpirationPolicyOutput) ToGetProjectsProjectContainerExpirationPolicyOutputWithContext(ctx context.Context) GetProjectsProjectContainerExpirationPolicyOutput {
+	return o
+}
+
+func (o GetProjectsProjectContainerExpirationPolicyOutput) Cadence() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProjectContainerExpirationPolicy) string { return v.Cadence }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectContainerExpirationPolicyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectsProjectContainerExpirationPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectsProjectContainerExpirationPolicyOutput) KeepN() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectsProjectContainerExpirationPolicy) int { return v.KeepN }).(pulumi.IntOutput)
+}
+
+func (o GetProjectsProjectContainerExpirationPolicyOutput) NameRegexDelete() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProjectContainerExpirationPolicy) string { return v.NameRegexDelete }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectContainerExpirationPolicyOutput) NameRegexKeep() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProjectContainerExpirationPolicy) string { return v.NameRegexKeep }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectContainerExpirationPolicyOutput) NextRunAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProjectContainerExpirationPolicy) string { return v.NextRunAt }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectContainerExpirationPolicyOutput) OlderThan() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProjectContainerExpirationPolicy) string { return v.OlderThan }).(pulumi.StringOutput)
+}
+
+type GetProjectsProjectContainerExpirationPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectsProjectContainerExpirationPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectsProjectContainerExpirationPolicy)(nil)).Elem()
+}
+
+func (o GetProjectsProjectContainerExpirationPolicyArrayOutput) ToGetProjectsProjectContainerExpirationPolicyArrayOutput() GetProjectsProjectContainerExpirationPolicyArrayOutput {
+	return o
+}
+
+func (o GetProjectsProjectContainerExpirationPolicyArrayOutput) ToGetProjectsProjectContainerExpirationPolicyArrayOutputWithContext(ctx context.Context) GetProjectsProjectContainerExpirationPolicyArrayOutput {
+	return o
+}
+
+func (o GetProjectsProjectContainerExpirationPolicyArrayOutput) Index(i pulumi.IntInput) GetProjectsProjectContainerExpirationPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectsProjectContainerExpirationPolicy {
+		return vs[0].([]GetProjectsProjectContainerExpirationPolicy)[vs[1].(int)]
+	}).(GetProjectsProjectContainerExpirationPolicyOutput)
+}
+
 type GetProjectsProjectForkedFromProject struct {
-	HttpUrlToRepo string `pulumi:"httpUrlToRepo"`
-	// The ID of this resource.
+	HttpUrlToRepo     string `pulumi:"httpUrlToRepo"`
 	Id                int    `pulumi:"id"`
 	Name              string `pulumi:"name"`
 	NameWithNamespace string `pulumi:"nameWithNamespace"`
@@ -3437,8 +4859,7 @@ type GetProjectsProjectForkedFromProjectInput interface {
 }
 
 type GetProjectsProjectForkedFromProjectArgs struct {
-	HttpUrlToRepo pulumi.StringInput `pulumi:"httpUrlToRepo"`
-	// The ID of this resource.
+	HttpUrlToRepo     pulumi.StringInput `pulumi:"httpUrlToRepo"`
 	Id                pulumi.IntInput    `pulumi:"id"`
 	Name              pulumi.StringInput `pulumi:"name"`
 	NameWithNamespace pulumi.StringInput `pulumi:"nameWithNamespace"`
@@ -3477,7 +4898,6 @@ func (o GetProjectsProjectForkedFromProjectOutput) HttpUrlToRepo() pulumi.String
 	return o.ApplyT(func(v GetProjectsProjectForkedFromProject) string { return v.HttpUrlToRepo }).(pulumi.StringOutput)
 }
 
-// The ID of this resource.
 func (o GetProjectsProjectForkedFromProjectOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectsProjectForkedFromProject) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -3504,11 +4924,10 @@ func (o GetProjectsProjectForkedFromProjectOutput) WebUrl() pulumi.StringOutput 
 
 type GetProjectsProjectNamespace struct {
 	FullPath string `pulumi:"fullPath"`
-	// The ID of this resource.
-	Id   int    `pulumi:"id"`
-	Kind string `pulumi:"kind"`
-	Name string `pulumi:"name"`
-	Path string `pulumi:"path"`
+	Id       int    `pulumi:"id"`
+	Kind     string `pulumi:"kind"`
+	Name     string `pulumi:"name"`
+	Path     string `pulumi:"path"`
 }
 
 // GetProjectsProjectNamespaceInput is an input type that accepts GetProjectsProjectNamespaceArgs and GetProjectsProjectNamespaceOutput values.
@@ -3524,11 +4943,10 @@ type GetProjectsProjectNamespaceInput interface {
 
 type GetProjectsProjectNamespaceArgs struct {
 	FullPath pulumi.StringInput `pulumi:"fullPath"`
-	// The ID of this resource.
-	Id   pulumi.IntInput    `pulumi:"id"`
-	Kind pulumi.StringInput `pulumi:"kind"`
-	Name pulumi.StringInput `pulumi:"name"`
-	Path pulumi.StringInput `pulumi:"path"`
+	Id       pulumi.IntInput    `pulumi:"id"`
+	Kind     pulumi.StringInput `pulumi:"kind"`
+	Name     pulumi.StringInput `pulumi:"name"`
+	Path     pulumi.StringInput `pulumi:"path"`
 }
 
 func (GetProjectsProjectNamespaceArgs) ElementType() reflect.Type {
@@ -3561,7 +4979,6 @@ func (o GetProjectsProjectNamespaceOutput) FullPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProjectNamespace) string { return v.FullPath }).(pulumi.StringOutput)
 }
 
-// The ID of this resource.
 func (o GetProjectsProjectNamespaceOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectsProjectNamespace) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -3579,8 +4996,7 @@ func (o GetProjectsProjectNamespaceOutput) Path() pulumi.StringOutput {
 }
 
 type GetProjectsProjectOwner struct {
-	AvatarUrl string `pulumi:"avatarUrl"`
-	// The ID of this resource.
+	AvatarUrl  string `pulumi:"avatarUrl"`
 	Id         int    `pulumi:"id"`
 	Name       string `pulumi:"name"`
 	State      string `pulumi:"state"`
@@ -3600,8 +5016,7 @@ type GetProjectsProjectOwnerInput interface {
 }
 
 type GetProjectsProjectOwnerArgs struct {
-	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
-	// The ID of this resource.
+	AvatarUrl  pulumi.StringInput `pulumi:"avatarUrl"`
 	Id         pulumi.IntInput    `pulumi:"id"`
 	Name       pulumi.StringInput `pulumi:"name"`
 	State      pulumi.StringInput `pulumi:"state"`
@@ -3639,7 +5054,6 @@ func (o GetProjectsProjectOwnerOutput) AvatarUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProjectOwner) string { return v.AvatarUrl }).(pulumi.StringOutput)
 }
 
-// The ID of this resource.
 func (o GetProjectsProjectOwnerOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectsProjectOwner) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -3717,9 +5131,8 @@ func (o GetProjectsProjectPermissionsOutput) ProjectAccess() pulumi.IntMapOutput
 
 type GetProjectsProjectSharedWithGroup struct {
 	GroupAccessLevel string `pulumi:"groupAccessLevel"`
-	// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
-	GroupId   int    `pulumi:"groupId"`
-	GroupName string `pulumi:"groupName"`
+	GroupId          int    `pulumi:"groupId"`
+	GroupName        string `pulumi:"groupName"`
 }
 
 // GetProjectsProjectSharedWithGroupInput is an input type that accepts GetProjectsProjectSharedWithGroupArgs and GetProjectsProjectSharedWithGroupOutput values.
@@ -3735,9 +5148,8 @@ type GetProjectsProjectSharedWithGroupInput interface {
 
 type GetProjectsProjectSharedWithGroupArgs struct {
 	GroupAccessLevel pulumi.StringInput `pulumi:"groupAccessLevel"`
-	// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
-	GroupId   pulumi.IntInput    `pulumi:"groupId"`
-	GroupName pulumi.StringInput `pulumi:"groupName"`
+	GroupId          pulumi.IntInput    `pulumi:"groupId"`
+	GroupName        pulumi.StringInput `pulumi:"groupName"`
 }
 
 func (GetProjectsProjectSharedWithGroupArgs) ElementType() reflect.Type {
@@ -3795,7 +5207,6 @@ func (o GetProjectsProjectSharedWithGroupOutput) GroupAccessLevel() pulumi.Strin
 	return o.ApplyT(func(v GetProjectsProjectSharedWithGroup) string { return v.GroupAccessLevel }).(pulumi.StringOutput)
 }
 
-// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
 func (o GetProjectsProjectSharedWithGroupOutput) GroupId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectsProjectSharedWithGroup) int { return v.GroupId }).(pulumi.IntOutput)
 }
@@ -3833,10 +5244,8 @@ type GetUsersUser struct {
 	CreatedAt        string `pulumi:"createdAt"`
 	CurrentSignInAt  string `pulumi:"currentSignInAt"`
 	Email            string `pulumi:"email"`
-	// Lookup users by external UID. (Requires administrator privileges)
-	ExternUid string `pulumi:"externUid"`
-	External  bool   `pulumi:"external"`
-	// The ID of this resource.
+	ExternUid        string `pulumi:"externUid"`
+	External         bool   `pulumi:"external"`
 	Id               int    `pulumi:"id"`
 	IsAdmin          bool   `pulumi:"isAdmin"`
 	LastSignInAt     string `pulumi:"lastSignInAt"`
@@ -3875,10 +5284,8 @@ type GetUsersUserArgs struct {
 	CreatedAt        pulumi.StringInput `pulumi:"createdAt"`
 	CurrentSignInAt  pulumi.StringInput `pulumi:"currentSignInAt"`
 	Email            pulumi.StringInput `pulumi:"email"`
-	// Lookup users by external UID. (Requires administrator privileges)
-	ExternUid pulumi.StringInput `pulumi:"externUid"`
-	External  pulumi.BoolInput   `pulumi:"external"`
-	// The ID of this resource.
+	ExternUid        pulumi.StringInput `pulumi:"externUid"`
+	External         pulumi.BoolInput   `pulumi:"external"`
 	Id               pulumi.IntInput    `pulumi:"id"`
 	IsAdmin          pulumi.BoolInput   `pulumi:"isAdmin"`
 	LastSignInAt     pulumi.StringInput `pulumi:"lastSignInAt"`
@@ -3980,7 +5387,6 @@ func (o GetUsersUserOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Email }).(pulumi.StringOutput)
 }
 
-// Lookup users by external UID. (Requires administrator privileges)
 func (o GetUsersUserOutput) ExternUid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.ExternUid }).(pulumi.StringOutput)
 }
@@ -3989,7 +5395,6 @@ func (o GetUsersUserOutput) External() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUsersUser) bool { return v.External }).(pulumi.BoolOutput)
 }
 
-// The ID of this resource.
 func (o GetUsersUserOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetUsersUser) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -4081,8 +5486,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToMergeArrayInput)(nil)).Elem(), BranchProtectionAllowedToMergeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToPushInput)(nil)).Elem(), BranchProtectionAllowedToPushArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToPushArrayInput)(nil)).Elem(), BranchProtectionAllowedToPushArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToUnprotectInput)(nil)).Elem(), BranchProtectionAllowedToUnprotectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToUnprotectArrayInput)(nil)).Elem(), BranchProtectionAllowedToUnprotectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerExpirationPolicyInput)(nil)).Elem(), ProjectContainerExpirationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerExpirationPolicyPtrInput)(nil)).Elem(), ProjectContainerExpirationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectIssueTaskCompletionStatusInput)(nil)).Elem(), ProjectIssueTaskCompletionStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectIssueTaskCompletionStatusPtrInput)(nil)).Elem(), ProjectIssueTaskCompletionStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProtectedEnvironmentDeployAccessLevelsInput)(nil)).Elem(), ProjectProtectedEnvironmentDeployAccessLevelsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProtectedEnvironmentDeployAccessLevelsPtrInput)(nil)).Elem(), ProjectProtectedEnvironmentDeployAccessLevelsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPushRulesInput)(nil)).Elem(), ProjectPushRulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPushRulesPtrInput)(nil)).Elem(), ProjectPushRulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagCommitInput)(nil)).Elem(), ProjectTagCommitArgs{})
@@ -4093,6 +5504,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBranchCommitArrayInput)(nil)).Elem(), GetBranchCommitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberInput)(nil)).Elem(), GetGroupMembershipMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberArrayInput)(nil)).Elem(), GetGroupMembershipMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDeployKeysDeployKeyInput)(nil)).Elem(), GetInstanceDeployKeysDeployKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDeployKeysDeployKeyArrayInput)(nil)).Elem(), GetInstanceDeployKeysDeployKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessInput)(nil)).Elem(), GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayInput)(nil)).Elem(), GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectContainerExpirationPolicyInput)(nil)).Elem(), GetProjectContainerExpirationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectContainerExpirationPolicyArrayInput)(nil)).Elem(), GetProjectContainerExpirationPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssueTaskCompletionStatusInput)(nil)).Elem(), GetProjectIssueTaskCompletionStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssueTaskCompletionStatusArrayInput)(nil)).Elem(), GetProjectIssueTaskCompletionStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssuesIssueInput)(nil)).Elem(), GetProjectIssuesIssueArgs{})
@@ -4114,8 +5531,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagCommitArrayInput)(nil)).Elem(), GetProjectTagCommitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagReleaseInput)(nil)).Elem(), GetProjectTagReleaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagReleaseArrayInput)(nil)).Elem(), GetProjectTagReleaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagsTagInput)(nil)).Elem(), GetProjectTagsTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagsTagArrayInput)(nil)).Elem(), GetProjectTagsTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagsTagCommitInput)(nil)).Elem(), GetProjectTagsTagCommitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagsTagCommitArrayInput)(nil)).Elem(), GetProjectTagsTagCommitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagsTagReleaseInput)(nil)).Elem(), GetProjectTagsTagReleaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagsTagReleaseArrayInput)(nil)).Elem(), GetProjectTagsTagReleaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectInput)(nil)).Elem(), GetProjectsProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectArrayInput)(nil)).Elem(), GetProjectsProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectContainerExpirationPolicyInput)(nil)).Elem(), GetProjectsProjectContainerExpirationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectContainerExpirationPolicyArrayInput)(nil)).Elem(), GetProjectsProjectContainerExpirationPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectForkedFromProjectInput)(nil)).Elem(), GetProjectsProjectForkedFromProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectNamespaceInput)(nil)).Elem(), GetProjectsProjectNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectOwnerInput)(nil)).Elem(), GetProjectsProjectOwnerArgs{})
@@ -4130,8 +5555,14 @@ func init() {
 	pulumi.RegisterOutputType(BranchProtectionAllowedToMergeArrayOutput{})
 	pulumi.RegisterOutputType(BranchProtectionAllowedToPushOutput{})
 	pulumi.RegisterOutputType(BranchProtectionAllowedToPushArrayOutput{})
+	pulumi.RegisterOutputType(BranchProtectionAllowedToUnprotectOutput{})
+	pulumi.RegisterOutputType(BranchProtectionAllowedToUnprotectArrayOutput{})
+	pulumi.RegisterOutputType(ProjectContainerExpirationPolicyOutput{})
+	pulumi.RegisterOutputType(ProjectContainerExpirationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ProjectIssueTaskCompletionStatusOutput{})
 	pulumi.RegisterOutputType(ProjectIssueTaskCompletionStatusPtrOutput{})
+	pulumi.RegisterOutputType(ProjectProtectedEnvironmentDeployAccessLevelsOutput{})
+	pulumi.RegisterOutputType(ProjectProtectedEnvironmentDeployAccessLevelsPtrOutput{})
 	pulumi.RegisterOutputType(ProjectPushRulesOutput{})
 	pulumi.RegisterOutputType(ProjectPushRulesPtrOutput{})
 	pulumi.RegisterOutputType(ProjectTagCommitOutput{})
@@ -4142,6 +5573,12 @@ func init() {
 	pulumi.RegisterOutputType(GetBranchCommitArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipMemberOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceDeployKeysDeployKeyOutput{})
+	pulumi.RegisterOutputType(GetInstanceDeployKeysDeployKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput{})
+	pulumi.RegisterOutputType(GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectContainerExpirationPolicyOutput{})
+	pulumi.RegisterOutputType(GetProjectContainerExpirationPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectIssueTaskCompletionStatusOutput{})
 	pulumi.RegisterOutputType(GetProjectIssueTaskCompletionStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectIssuesIssueOutput{})
@@ -4163,8 +5600,16 @@ func init() {
 	pulumi.RegisterOutputType(GetProjectTagCommitArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectTagReleaseOutput{})
 	pulumi.RegisterOutputType(GetProjectTagReleaseArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectTagsTagOutput{})
+	pulumi.RegisterOutputType(GetProjectTagsTagArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectTagsTagCommitOutput{})
+	pulumi.RegisterOutputType(GetProjectTagsTagCommitArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectTagsTagReleaseOutput{})
+	pulumi.RegisterOutputType(GetProjectTagsTagReleaseArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectsProjectContainerExpirationPolicyOutput{})
+	pulumi.RegisterOutputType(GetProjectsProjectContainerExpirationPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectForkedFromProjectOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectNamespaceOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectOwnerOutput{})

@@ -72,11 +72,11 @@ export class ProjectBadge extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The imageUrl argument rendered (in case of use of placeholders).
+     * The image_url argument rendered (in case of use of placeholders).
      */
     public /*out*/ readonly renderedImageUrl!: pulumi.Output<string>;
     /**
-     * The linkUrl argument rendered (in case of use of placeholders).
+     * The link_url argument rendered (in case of use of placeholders).
      */
     public /*out*/ readonly renderedLinkUrl!: pulumi.Output<string>;
 
@@ -137,11 +137,11 @@ export interface ProjectBadgeState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The imageUrl argument rendered (in case of use of placeholders).
+     * The image_url argument rendered (in case of use of placeholders).
      */
     renderedImageUrl?: pulumi.Input<string>;
     /**
-     * The linkUrl argument rendered (in case of use of placeholders).
+     * The link_url argument rendered (in case of use of placeholders).
      */
     renderedLinkUrl?: pulumi.Input<string>;
 }

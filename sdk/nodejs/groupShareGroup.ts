@@ -64,7 +64,8 @@ export class GroupShareGroup extends pulumi.CustomResource {
      */
     public readonly expiresAt!: pulumi.Output<string | undefined>;
     /**
-     * The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+     * `maintainer`, `owner`, `master`
      */
     public readonly groupAccess!: pulumi.Output<string>;
     /**
@@ -123,7 +124,8 @@ export interface GroupShareGroupState {
      */
     expiresAt?: pulumi.Input<string>;
     /**
-     * The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+     * `maintainer`, `owner`, `master`
      */
     groupAccess?: pulumi.Input<string>;
     /**
@@ -145,7 +147,8 @@ export interface GroupShareGroupArgs {
      */
     expiresAt?: pulumi.Input<string>;
     /**
-     * The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+     * The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+     * `maintainer`, `owner`, `master`
      */
     groupAccess: pulumi.Input<string>;
     /**

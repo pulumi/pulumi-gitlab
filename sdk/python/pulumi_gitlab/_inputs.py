@@ -12,7 +12,10 @@ __all__ = [
     'BranchCommitArgs',
     'BranchProtectionAllowedToMergeArgs',
     'BranchProtectionAllowedToPushArgs',
+    'BranchProtectionAllowedToUnprotectArgs',
+    'ProjectContainerExpirationPolicyArgs',
     'ProjectIssueTaskCompletionStatusArgs',
+    'ProjectProtectedEnvironmentDeployAccessLevelsArgs',
     'ProjectPushRulesArgs',
     'ProjectTagCommitArgs',
     'ProjectTagReleaseArgs',
@@ -32,9 +35,6 @@ class BranchCommitArgs:
                  parent_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  short_id: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] id: The ID of this resource.
-        """
         if author_email is not None:
             pulumi.set(__self__, "author_email", author_email)
         if author_name is not None:
@@ -115,9 +115,6 @@ class BranchCommitArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -168,12 +165,6 @@ class BranchProtectionAllowedToMergeArgs:
                  access_level_description: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[str] access_level: Level of access.
-        :param pulumi.Input[str] access_level_description: Readable description of level of access.
-        :param pulumi.Input[int] group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
-        :param pulumi.Input[int] user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
-        """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
         if access_level_description is not None:
@@ -186,9 +177,6 @@ class BranchProtectionAllowedToMergeArgs:
     @property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[str]]:
-        """
-        Level of access.
-        """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
@@ -198,9 +186,6 @@ class BranchProtectionAllowedToMergeArgs:
     @property
     @pulumi.getter(name="accessLevelDescription")
     def access_level_description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Readable description of level of access.
-        """
         return pulumi.get(self, "access_level_description")
 
     @access_level_description.setter
@@ -210,9 +195,6 @@ class BranchProtectionAllowedToMergeArgs:
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
-        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -222,9 +204,6 @@ class BranchProtectionAllowedToMergeArgs:
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
-        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -239,12 +218,6 @@ class BranchProtectionAllowedToPushArgs:
                  access_level_description: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[str] access_level: Level of access.
-        :param pulumi.Input[str] access_level_description: Readable description of level of access.
-        :param pulumi.Input[int] group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
-        :param pulumi.Input[int] user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
-        """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
         if access_level_description is not None:
@@ -257,9 +230,6 @@ class BranchProtectionAllowedToPushArgs:
     @property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[str]]:
-        """
-        Level of access.
-        """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
@@ -269,9 +239,6 @@ class BranchProtectionAllowedToPushArgs:
     @property
     @pulumi.getter(name="accessLevelDescription")
     def access_level_description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Readable description of level of access.
-        """
         return pulumi.get(self, "access_level_description")
 
     @access_level_description.setter
@@ -281,9 +248,6 @@ class BranchProtectionAllowedToPushArgs:
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
-        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -293,9 +257,6 @@ class BranchProtectionAllowedToPushArgs:
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
-        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -304,14 +265,152 @@ class BranchProtectionAllowedToPushArgs:
 
 
 @pulumi.input_type
+class BranchProtectionAllowedToUnprotectArgs:
+    def __init__(__self__, *,
+                 access_level: Optional[pulumi.Input[str]] = None,
+                 access_level_description: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[int]] = None,
+                 user_id: Optional[pulumi.Input[int]] = None):
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_level_description is not None:
+            pulumi.set(__self__, "access_level_description", access_level_description)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "access_level")
+
+    @access_level.setter
+    def access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "access_level_description")
+
+    @access_level_description.setter
+    def access_level_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_level_description", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "user_id", value)
+
+
+@pulumi.input_type
+class ProjectContainerExpirationPolicyArgs:
+    def __init__(__self__, *,
+                 cadence: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 keep_n: Optional[pulumi.Input[int]] = None,
+                 name_regex_delete: Optional[pulumi.Input[str]] = None,
+                 name_regex_keep: Optional[pulumi.Input[str]] = None,
+                 next_run_at: Optional[pulumi.Input[str]] = None,
+                 older_than: Optional[pulumi.Input[str]] = None):
+        if cadence is not None:
+            pulumi.set(__self__, "cadence", cadence)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if keep_n is not None:
+            pulumi.set(__self__, "keep_n", keep_n)
+        if name_regex_delete is not None:
+            pulumi.set(__self__, "name_regex_delete", name_regex_delete)
+        if name_regex_keep is not None:
+            pulumi.set(__self__, "name_regex_keep", name_regex_keep)
+        if next_run_at is not None:
+            pulumi.set(__self__, "next_run_at", next_run_at)
+        if older_than is not None:
+            pulumi.set(__self__, "older_than", older_than)
+
+    @property
+    @pulumi.getter
+    def cadence(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cadence")
+
+    @cadence.setter
+    def cadence(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cadence", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="keepN")
+    def keep_n(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "keep_n")
+
+    @keep_n.setter
+    def keep_n(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "keep_n", value)
+
+    @property
+    @pulumi.getter(name="nameRegexDelete")
+    def name_regex_delete(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name_regex_delete")
+
+    @name_regex_delete.setter
+    def name_regex_delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_regex_delete", value)
+
+    @property
+    @pulumi.getter(name="nameRegexKeep")
+    def name_regex_keep(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name_regex_keep")
+
+    @name_regex_keep.setter
+    def name_regex_keep(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_regex_keep", value)
+
+    @property
+    @pulumi.getter(name="nextRunAt")
+    def next_run_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "next_run_at")
+
+    @next_run_at.setter
+    def next_run_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_run_at", value)
+
+    @property
+    @pulumi.getter(name="olderThan")
+    def older_than(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "older_than")
+
+    @older_than.setter
+    def older_than(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "older_than", value)
+
+
+@pulumi.input_type
 class ProjectIssueTaskCompletionStatusArgs:
     def __init__(__self__, *,
                  completed_count: Optional[pulumi.Input[int]] = None,
                  count: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[int] completed_count: The number of tasks that are completed.
-        :param pulumi.Input[int] count: The number of tasks.
-        """
         if completed_count is not None:
             pulumi.set(__self__, "completed_count", completed_count)
         if count is not None:
@@ -320,9 +419,6 @@ class ProjectIssueTaskCompletionStatusArgs:
     @property
     @pulumi.getter(name="completedCount")
     def completed_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of tasks that are completed.
-        """
         return pulumi.get(self, "completed_count")
 
     @completed_count.setter
@@ -332,14 +428,64 @@ class ProjectIssueTaskCompletionStatusArgs:
     @property
     @pulumi.getter
     def count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of tasks.
-        """
         return pulumi.get(self, "count")
 
     @count.setter
     def count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "count", value)
+
+
+@pulumi.input_type
+class ProjectProtectedEnvironmentDeployAccessLevelsArgs:
+    def __init__(__self__, *,
+                 access_level: Optional[pulumi.Input[str]] = None,
+                 access_level_description: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[int]] = None,
+                 user_id: Optional[pulumi.Input[int]] = None):
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_level_description is not None:
+            pulumi.set(__self__, "access_level_description", access_level_description)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "access_level")
+
+    @access_level.setter
+    def access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "access_level_description")
+
+    @access_level_description.setter
+    def access_level_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_level_description", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "user_id", value)
 
 
 @pulumi.input_type
@@ -356,19 +502,6 @@ class ProjectPushRulesArgs:
                  member_check: Optional[pulumi.Input[bool]] = None,
                  prevent_secrets: Optional[pulumi.Input[bool]] = None,
                  reject_unsigned_commits: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[str] author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
-        :param pulumi.Input[str] branch_name_regex: All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
-        :param pulumi.Input[bool] commit_committer_check: Users can only push commits to this repository that were committed with one of their own verified emails.
-        :param pulumi.Input[str] commit_message_negative_regex: No commit message is allowed to match this regex, for example `ssh\:\/\/`.
-        :param pulumi.Input[str] commit_message_regex: All commit messages must match this regex, e.g. `Fixed \d+\..*`.
-        :param pulumi.Input[bool] deny_delete_tag: Deny deleting a tag.
-        :param pulumi.Input[str] file_name_regex: All commited filenames must not match this regex, e.g. `(jar|exe)$`.
-        :param pulumi.Input[int] max_file_size: Maximum file size (MB).
-        :param pulumi.Input[bool] member_check: Restrict commits by author (email) to existing GitLab users.
-        :param pulumi.Input[bool] prevent_secrets: GitLab will reject any files that are likely to contain secrets.
-        :param pulumi.Input[bool] reject_unsigned_commits: Reject commit when it’s not signed through GPG.
-        """
         if author_email_regex is not None:
             pulumi.set(__self__, "author_email_regex", author_email_regex)
         if branch_name_regex is not None:
@@ -395,9 +528,6 @@ class ProjectPushRulesArgs:
     @property
     @pulumi.getter(name="authorEmailRegex")
     def author_email_regex(self) -> Optional[pulumi.Input[str]]:
-        """
-        All commit author emails must match this regex, e.g. `@my-company.com$`.
-        """
         return pulumi.get(self, "author_email_regex")
 
     @author_email_regex.setter
@@ -407,9 +537,6 @@ class ProjectPushRulesArgs:
     @property
     @pulumi.getter(name="branchNameRegex")
     def branch_name_regex(self) -> Optional[pulumi.Input[str]]:
-        """
-        All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
-        """
         return pulumi.get(self, "branch_name_regex")
 
     @branch_name_regex.setter
@@ -419,9 +546,6 @@ class ProjectPushRulesArgs:
     @property
     @pulumi.getter(name="commitCommitterCheck")
     def commit_committer_check(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Users can only push commits to this repository that were committed with one of their own verified emails.
-        """
         return pulumi.get(self, "commit_committer_check")
 
     @commit_committer_check.setter
@@ -431,9 +555,6 @@ class ProjectPushRulesArgs:
     @property
     @pulumi.getter(name="commitMessageNegativeRegex")
     def commit_message_negative_regex(self) -> Optional[pulumi.Input[str]]:
-        """
-        No commit message is allowed to match this regex, for example `ssh\:\/\/`.
-        """
         return pulumi.get(self, "commit_message_negative_regex")
 
     @commit_message_negative_regex.setter
@@ -443,9 +564,6 @@ class ProjectPushRulesArgs:
     @property
     @pulumi.getter(name="commitMessageRegex")
     def commit_message_regex(self) -> Optional[pulumi.Input[str]]:
-        """
-        All commit messages must match this regex, e.g. `Fixed \d+\..*`.
-        """
         return pulumi.get(self, "commit_message_regex")
 
     @commit_message_regex.setter
@@ -455,9 +573,6 @@ class ProjectPushRulesArgs:
     @property
     @pulumi.getter(name="denyDeleteTag")
     def deny_delete_tag(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Deny deleting a tag.
-        """
         return pulumi.get(self, "deny_delete_tag")
 
     @deny_delete_tag.setter
@@ -467,9 +582,6 @@ class ProjectPushRulesArgs:
     @property
     @pulumi.getter(name="fileNameRegex")
     def file_name_regex(self) -> Optional[pulumi.Input[str]]:
-        """
-        All commited filenames must not match this regex, e.g. `(jar|exe)$`.
-        """
         return pulumi.get(self, "file_name_regex")
 
     @file_name_regex.setter
@@ -479,9 +591,6 @@ class ProjectPushRulesArgs:
     @property
     @pulumi.getter(name="maxFileSize")
     def max_file_size(self) -> Optional[pulumi.Input[int]]:
-        """
-        Maximum file size (MB).
-        """
         return pulumi.get(self, "max_file_size")
 
     @max_file_size.setter
@@ -491,9 +600,6 @@ class ProjectPushRulesArgs:
     @property
     @pulumi.getter(name="memberCheck")
     def member_check(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Restrict commits by author (email) to existing GitLab users.
-        """
         return pulumi.get(self, "member_check")
 
     @member_check.setter
@@ -503,9 +609,6 @@ class ProjectPushRulesArgs:
     @property
     @pulumi.getter(name="preventSecrets")
     def prevent_secrets(self) -> Optional[pulumi.Input[bool]]:
-        """
-        GitLab will reject any files that are likely to contain secrets.
-        """
         return pulumi.get(self, "prevent_secrets")
 
     @prevent_secrets.setter
@@ -515,9 +618,6 @@ class ProjectPushRulesArgs:
     @property
     @pulumi.getter(name="rejectUnsignedCommits")
     def reject_unsigned_commits(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Reject commit when it’s not signed through GPG.
-        """
         return pulumi.get(self, "reject_unsigned_commits")
 
     @reject_unsigned_commits.setter
@@ -539,10 +639,6 @@ class ProjectTagCommitArgs:
                  parent_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  short_id: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] id: The ID of this resource.
-        :param pulumi.Input[str] message: Creates annotated tag.
-        """
         if author_email is not None:
             pulumi.set(__self__, "author_email", author_email)
         if author_name is not None:
@@ -623,9 +719,6 @@ class ProjectTagCommitArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -635,9 +728,6 @@ class ProjectTagCommitArgs:
     @property
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        Creates annotated tag.
-        """
         return pulumi.get(self, "message")
 
     @message.setter

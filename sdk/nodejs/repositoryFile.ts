@@ -50,29 +50,58 @@ export class RepositoryFile extends pulumi.CustomResource {
      */
     public readonly authorName!: pulumi.Output<string | undefined>;
     /**
+     * The blob id.
+     */
+    public /*out*/ readonly blobId!: pulumi.Output<string>;
+    /**
      * Name of the branch to which to commit to.
      */
     public readonly branch!: pulumi.Output<string>;
+    /**
+     * The commit id.
+     */
+    public /*out*/ readonly commitId!: pulumi.Output<string>;
     /**
      * Commit message.
      */
     public readonly commitMessage!: pulumi.Output<string>;
     /**
-     * base64 encoded file content. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+     * File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+     * supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
      */
     public readonly content!: pulumi.Output<string>;
     /**
-     * Content encoding.
+     * File content sha256 digest.
+     */
+    public /*out*/ readonly contentSha256!: pulumi.Output<string>;
+    /**
+     * The file content encoding.
      */
     public /*out*/ readonly encoding!: pulumi.Output<string>;
+    /**
+     * The filename.
+     */
+    public /*out*/ readonly fileName!: pulumi.Output<string>;
     /**
      * The full path of the file. It must be relative to the root of the project without a leading slash `/`.
      */
     public readonly filePath!: pulumi.Output<string>;
     /**
-     * The ID of the project.
+     * The last known commit id.
+     */
+    public /*out*/ readonly lastCommitId!: pulumi.Output<string>;
+    /**
+     * The name or ID of the project.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The name of branch, tag or commit.
+     */
+    public /*out*/ readonly ref!: pulumi.Output<string>;
+    /**
+     * The file size.
+     */
+    public /*out*/ readonly size!: pulumi.Output<number>;
     /**
      * Name of the branch to start the new commit from.
      */
@@ -93,12 +122,19 @@ export class RepositoryFile extends pulumi.CustomResource {
             const state = argsOrState as RepositoryFileState | undefined;
             resourceInputs["authorEmail"] = state ? state.authorEmail : undefined;
             resourceInputs["authorName"] = state ? state.authorName : undefined;
+            resourceInputs["blobId"] = state ? state.blobId : undefined;
             resourceInputs["branch"] = state ? state.branch : undefined;
+            resourceInputs["commitId"] = state ? state.commitId : undefined;
             resourceInputs["commitMessage"] = state ? state.commitMessage : undefined;
             resourceInputs["content"] = state ? state.content : undefined;
+            resourceInputs["contentSha256"] = state ? state.contentSha256 : undefined;
             resourceInputs["encoding"] = state ? state.encoding : undefined;
+            resourceInputs["fileName"] = state ? state.fileName : undefined;
             resourceInputs["filePath"] = state ? state.filePath : undefined;
+            resourceInputs["lastCommitId"] = state ? state.lastCommitId : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["ref"] = state ? state.ref : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
             resourceInputs["startBranch"] = state ? state.startBranch : undefined;
         } else {
             const args = argsOrState as RepositoryFileArgs | undefined;
@@ -125,7 +161,14 @@ export class RepositoryFile extends pulumi.CustomResource {
             resourceInputs["filePath"] = args ? args.filePath : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["startBranch"] = args ? args.startBranch : undefined;
+            resourceInputs["blobId"] = undefined /*out*/;
+            resourceInputs["commitId"] = undefined /*out*/;
+            resourceInputs["contentSha256"] = undefined /*out*/;
             resourceInputs["encoding"] = undefined /*out*/;
+            resourceInputs["fileName"] = undefined /*out*/;
+            resourceInputs["lastCommitId"] = undefined /*out*/;
+            resourceInputs["ref"] = undefined /*out*/;
+            resourceInputs["size"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RepositoryFile.__pulumiType, name, resourceInputs, opts);
@@ -145,29 +188,58 @@ export interface RepositoryFileState {
      */
     authorName?: pulumi.Input<string>;
     /**
+     * The blob id.
+     */
+    blobId?: pulumi.Input<string>;
+    /**
      * Name of the branch to which to commit to.
      */
     branch?: pulumi.Input<string>;
+    /**
+     * The commit id.
+     */
+    commitId?: pulumi.Input<string>;
     /**
      * Commit message.
      */
     commitMessage?: pulumi.Input<string>;
     /**
-     * base64 encoded file content. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+     * File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+     * supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
      */
     content?: pulumi.Input<string>;
     /**
-     * Content encoding.
+     * File content sha256 digest.
+     */
+    contentSha256?: pulumi.Input<string>;
+    /**
+     * The file content encoding.
      */
     encoding?: pulumi.Input<string>;
+    /**
+     * The filename.
+     */
+    fileName?: pulumi.Input<string>;
     /**
      * The full path of the file. It must be relative to the root of the project without a leading slash `/`.
      */
     filePath?: pulumi.Input<string>;
     /**
-     * The ID of the project.
+     * The last known commit id.
+     */
+    lastCommitId?: pulumi.Input<string>;
+    /**
+     * The name or ID of the project.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The name of branch, tag or commit.
+     */
+    ref?: pulumi.Input<string>;
+    /**
+     * The file size.
+     */
+    size?: pulumi.Input<number>;
     /**
      * Name of the branch to start the new commit from.
      */
@@ -195,7 +267,8 @@ export interface RepositoryFileArgs {
      */
     commitMessage: pulumi.Input<string>;
     /**
-     * base64 encoded file content. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+     * File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+     * supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
      */
     content: pulumi.Input<string>;
     /**
@@ -203,7 +276,7 @@ export interface RepositoryFileArgs {
      */
     filePath: pulumi.Input<string>;
     /**
-     * The ID of the project.
+     * The name or ID of the project.
      */
     project: pulumi.Input<string>;
     /**

@@ -41,25 +41,16 @@ class GetGroupMembershipResult:
     @property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> str:
-        """
-        Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-        """
         return pulumi.get(self, "access_level")
 
     @property
     @pulumi.getter(name="fullPath")
     def full_path(self) -> str:
-        """
-        The full path of the group.
-        """
         return pulumi.get(self, "full_path")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> int:
-        """
-        The ID of the group.
-        """
         return pulumi.get(self, "group_id")
 
     @property
@@ -73,9 +64,6 @@ class GetGroupMembershipResult:
     @property
     @pulumi.getter
     def members(self) -> Sequence['outputs.GetGroupMembershipMemberResult']:
-        """
-        The list of group members.
-        """
         return pulumi.get(self, "members")
 
 
@@ -109,11 +97,6 @@ def get_group_membership(access_level: Optional[str] = None,
 
     example = gitlab.get_group_membership(full_path="foo/bar")
     ```
-
-
-    :param str access_level: Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-    :param str full_path: The full path of the group.
-    :param int group_id: The ID of the group.
     """
     __args__ = dict()
     __args__['accessLevel'] = access_level
@@ -151,10 +134,5 @@ def get_group_membership_output(access_level: Optional[pulumi.Input[Optional[str
 
     example = gitlab.get_group_membership(full_path="foo/bar")
     ```
-
-
-    :param str access_level: Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-    :param str full_path: The full path of the group.
-    :param int group_id: The ID of the group.
     """
     ...

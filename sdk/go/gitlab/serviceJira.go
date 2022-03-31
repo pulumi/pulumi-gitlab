@@ -70,7 +70,9 @@ type ServiceJira struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Enable notifications for issues events.
 	IssuesEvents pulumi.BoolOutput `pulumi:"issuesEvents"`
-	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
+	// administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
+	// project. By default, this ID is set to 2.
 	JiraIssueTransitionId pulumi.StringPtrOutput `pulumi:"jiraIssueTransitionId"`
 	// Enable notifications for job events.
 	JobEvents pulumi.BoolOutput `pulumi:"jobEvents"`
@@ -88,7 +90,7 @@ type ServiceJira struct {
 	ProjectKey pulumi.StringPtrOutput `pulumi:"projectKey"`
 	// Enable notifications for push events.
 	PushEvents pulumi.BoolOutput `pulumi:"pushEvents"`
-	// Enable notifications for tagPush events.
+	// Enable notifications for tag_push events.
 	TagPushEvents pulumi.BoolOutput `pulumi:"tagPushEvents"`
 	// Title.
 	Title pulumi.StringOutput `pulumi:"title"`
@@ -153,7 +155,9 @@ type serviceJiraState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// Enable notifications for issues events.
 	IssuesEvents *bool `pulumi:"issuesEvents"`
-	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
+	// administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
+	// project. By default, this ID is set to 2.
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
 	// Enable notifications for job events.
 	JobEvents *bool `pulumi:"jobEvents"`
@@ -171,7 +175,7 @@ type serviceJiraState struct {
 	ProjectKey *string `pulumi:"projectKey"`
 	// Enable notifications for push events.
 	PushEvents *bool `pulumi:"pushEvents"`
-	// Enable notifications for tagPush events.
+	// Enable notifications for tag_push events.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// Title.
 	Title *string `pulumi:"title"`
@@ -196,7 +200,9 @@ type ServiceJiraState struct {
 	CreatedAt pulumi.StringPtrInput
 	// Enable notifications for issues events.
 	IssuesEvents pulumi.BoolPtrInput
-	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
+	// administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
+	// project. By default, this ID is set to 2.
 	JiraIssueTransitionId pulumi.StringPtrInput
 	// Enable notifications for job events.
 	JobEvents pulumi.BoolPtrInput
@@ -214,7 +220,7 @@ type ServiceJiraState struct {
 	ProjectKey pulumi.StringPtrInput
 	// Enable notifications for push events.
 	PushEvents pulumi.BoolPtrInput
-	// Enable notifications for tagPush events.
+	// Enable notifications for tag_push events.
 	TagPushEvents pulumi.BoolPtrInput
 	// Title.
 	Title pulumi.StringPtrInput
@@ -239,7 +245,9 @@ type serviceJiraArgs struct {
 	CommitEvents *bool `pulumi:"commitEvents"`
 	// Enable notifications for issues events.
 	IssuesEvents *bool `pulumi:"issuesEvents"`
-	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
+	// administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
+	// project. By default, this ID is set to 2.
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
 	// Enable notifications for job events.
 	JobEvents *bool `pulumi:"jobEvents"`
@@ -257,7 +265,7 @@ type serviceJiraArgs struct {
 	ProjectKey *string `pulumi:"projectKey"`
 	// Enable notifications for push events.
 	PushEvents *bool `pulumi:"pushEvents"`
-	// Enable notifications for tagPush events.
+	// Enable notifications for tag_push events.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
 	Url string `pulumi:"url"`
@@ -275,7 +283,9 @@ type ServiceJiraArgs struct {
 	CommitEvents pulumi.BoolPtrInput
 	// Enable notifications for issues events.
 	IssuesEvents pulumi.BoolPtrInput
-	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
+	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
+	// administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
+	// project. By default, this ID is set to 2.
 	JiraIssueTransitionId pulumi.StringPtrInput
 	// Enable notifications for job events.
 	JobEvents pulumi.BoolPtrInput
@@ -293,7 +303,7 @@ type ServiceJiraArgs struct {
 	ProjectKey pulumi.StringPtrInput
 	// Enable notifications for push events.
 	PushEvents pulumi.BoolPtrInput
-	// Enable notifications for tagPush events.
+	// Enable notifications for tag_push events.
 	TagPushEvents pulumi.BoolPtrInput
 	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
 	Url pulumi.StringInput

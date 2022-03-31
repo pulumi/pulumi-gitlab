@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * });
  * const mit = new gitlab.ManagedLicense("mit", {
  *     project: foo.id,
- *     approvalStatus: "approved",
+ *     approvalStatus: "allowed",
  * });
  * ```
  *
@@ -64,7 +64,9 @@ export class ManagedLicense extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the license is approved or not. Only 'approved' or 'blacklisted' allowed.
+     * The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+     * "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+     * 15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
      */
     public readonly approvalStatus!: pulumi.Output<string>;
     /**
@@ -114,7 +116,9 @@ export class ManagedLicense extends pulumi.CustomResource {
  */
 export interface ManagedLicenseState {
     /**
-     * Whether the license is approved or not. Only 'approved' or 'blacklisted' allowed.
+     * The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+     * "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+     * 15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
      */
     approvalStatus?: pulumi.Input<string>;
     /**
@@ -132,7 +136,9 @@ export interface ManagedLicenseState {
  */
 export interface ManagedLicenseArgs {
     /**
-     * Whether the license is approved or not. Only 'approved' or 'blacklisted' allowed.
+     * The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+     * "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+     * 15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
      */
     approvalStatus: pulumi.Input<string>;
     /**

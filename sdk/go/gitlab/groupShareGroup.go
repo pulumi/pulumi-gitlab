@@ -53,7 +53,8 @@ type GroupShareGroup struct {
 
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
-	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+	// `maintainer`, `owner`, `master`
 	GroupAccess pulumi.StringOutput `pulumi:"groupAccess"`
 	// The id of the main group.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
@@ -101,7 +102,8 @@ func GetGroupShareGroup(ctx *pulumi.Context,
 type groupShareGroupState struct {
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
-	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+	// `maintainer`, `owner`, `master`
 	GroupAccess *string `pulumi:"groupAccess"`
 	// The id of the main group.
 	GroupId *string `pulumi:"groupId"`
@@ -112,7 +114,8 @@ type groupShareGroupState struct {
 type GroupShareGroupState struct {
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
-	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+	// `maintainer`, `owner`, `master`
 	GroupAccess pulumi.StringPtrInput
 	// The id of the main group.
 	GroupId pulumi.StringPtrInput
@@ -127,7 +130,8 @@ func (GroupShareGroupState) ElementType() reflect.Type {
 type groupShareGroupArgs struct {
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
-	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+	// `maintainer`, `owner`, `master`
 	GroupAccess string `pulumi:"groupAccess"`
 	// The id of the main group.
 	GroupId string `pulumi:"groupId"`
@@ -139,7 +143,8 @@ type groupShareGroupArgs struct {
 type GroupShareGroupArgs struct {
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
-	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+	// `maintainer`, `owner`, `master`
 	GroupAccess pulumi.StringInput
 	// The id of the main group.
 	GroupId pulumi.StringInput

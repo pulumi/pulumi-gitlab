@@ -10,8 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// This resource allows you to create and manage GitLab groups.
-    /// Note your provider will need to be configured with admin-level access for this resource to work.
+    /// The `gitlab.Group` resource allows to manage the lifecycle of a group.
+    /// 
+    /// &gt; On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)
     /// 
     /// ## Example Usage
     /// 
@@ -55,13 +58,13 @@ namespace Pulumi.GitLab
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>
-        /// Boolean, defaults to false.  Default to Auto
+        /// Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
         /// </summary>
         [Output("autoDevopsEnabled")]
         public Output<bool?> AutoDevopsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Int, defaults to 2.
+        /// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
         /// </summary>
         [Output("defaultBranchProtection")]
         public Output<int?> DefaultBranchProtection { get; private set; } = null!;
@@ -73,7 +76,7 @@ namespace Pulumi.GitLab
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean, defaults to false.  Disable email notifications
+        /// Defaults to false. Disable email notifications.
         /// </summary>
         [Output("emailsDisabled")]
         public Output<bool?> EmailsDisabled { get; private set; } = null!;
@@ -91,13 +94,13 @@ namespace Pulumi.GitLab
         public Output<string> FullPath { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean, defaults to true.  Whether to enable LFS
+        /// Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
         /// </summary>
         [Output("lfsEnabled")]
         public Output<bool?> LfsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean, defaults to false.  Disable the capability
+        /// Defaults to false. Disable the capability of a group from getting mentioned.
         /// </summary>
         [Output("mentionsDisabled")]
         public Output<bool?> MentionsDisabled { get; private set; } = null!;
@@ -109,7 +112,7 @@ namespace Pulumi.GitLab
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Integer, id of the parent group (creates a nested group).
+        /// Id of the parent group (creates a nested group).
         /// </summary>
         [Output("parentId")]
         public Output<int?> ParentId { get; private set; } = null!;
@@ -121,25 +124,25 @@ namespace Pulumi.GitLab
         public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
-        /// When enabled, users can not fork projects from this group to external namespaces.
+        /// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         /// </summary>
         [Output("preventForkingOutsideGroup")]
         public Output<bool?> PreventForkingOutsideGroup { get; private set; } = null!;
 
         /// <summary>
-        /// , defaults to Maintainer.
+        /// Defaults to maintainer. Determine if developers can create projects in the group.
         /// </summary>
         [Output("projectCreationLevel")]
         public Output<string?> ProjectCreationLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean, defaults to false.  Whether to
+        /// Defaults to false. Allow users to request member access.
         /// </summary>
         [Output("requestAccessEnabled")]
         public Output<bool?> RequestAccessEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean, defaults to false.
+        /// Defaults to false. Require all users in this group to setup Two-factor authentication.
         /// </summary>
         [Output("requireTwoFactorAuthentication")]
         public Output<bool?> RequireTwoFactorAuthentication { get; private set; } = null!;
@@ -151,19 +154,19 @@ namespace Pulumi.GitLab
         public Output<string> RunnersToken { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean, defaults to false.  Prevent sharing
+        /// Defaults to false. Prevent sharing a project with another group within this group.
         /// </summary>
         [Output("shareWithGroupLock")]
         public Output<bool?> ShareWithGroupLock { get; private set; } = null!;
 
         /// <summary>
-        /// , defaults to Owner.
+        /// Defaults to owner. Allowed to create subgroups.
         /// </summary>
         [Output("subgroupCreationLevel")]
         public Output<string?> SubgroupCreationLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Int, defaults to 48.
+        /// Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         /// </summary>
         [Output("twoFactorGracePeriod")]
         public Output<int?> TwoFactorGracePeriod { get; private set; } = null!;
@@ -227,13 +230,13 @@ namespace Pulumi.GitLab
     public sealed class GroupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean, defaults to false.  Default to Auto
+        /// Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
         /// </summary>
         [Input("autoDevopsEnabled")]
         public Input<bool>? AutoDevopsEnabled { get; set; }
 
         /// <summary>
-        /// Int, defaults to 2.
+        /// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
         /// </summary>
         [Input("defaultBranchProtection")]
         public Input<int>? DefaultBranchProtection { get; set; }
@@ -245,19 +248,19 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to false.  Disable email notifications
+        /// Defaults to false. Disable email notifications.
         /// </summary>
         [Input("emailsDisabled")]
         public Input<bool>? EmailsDisabled { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to true.  Whether to enable LFS
+        /// Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
         /// </summary>
         [Input("lfsEnabled")]
         public Input<bool>? LfsEnabled { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to false.  Disable the capability
+        /// Defaults to false. Disable the capability of a group from getting mentioned.
         /// </summary>
         [Input("mentionsDisabled")]
         public Input<bool>? MentionsDisabled { get; set; }
@@ -269,7 +272,7 @@ namespace Pulumi.GitLab
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Integer, id of the parent group (creates a nested group).
+        /// Id of the parent group (creates a nested group).
         /// </summary>
         [Input("parentId")]
         public Input<int>? ParentId { get; set; }
@@ -281,43 +284,43 @@ namespace Pulumi.GitLab
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
-        /// When enabled, users can not fork projects from this group to external namespaces.
+        /// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         /// </summary>
         [Input("preventForkingOutsideGroup")]
         public Input<bool>? PreventForkingOutsideGroup { get; set; }
 
         /// <summary>
-        /// , defaults to Maintainer.
+        /// Defaults to maintainer. Determine if developers can create projects in the group.
         /// </summary>
         [Input("projectCreationLevel")]
         public Input<string>? ProjectCreationLevel { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to false.  Whether to
+        /// Defaults to false. Allow users to request member access.
         /// </summary>
         [Input("requestAccessEnabled")]
         public Input<bool>? RequestAccessEnabled { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to false.
+        /// Defaults to false. Require all users in this group to setup Two-factor authentication.
         /// </summary>
         [Input("requireTwoFactorAuthentication")]
         public Input<bool>? RequireTwoFactorAuthentication { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to false.  Prevent sharing
+        /// Defaults to false. Prevent sharing a project with another group within this group.
         /// </summary>
         [Input("shareWithGroupLock")]
         public Input<bool>? ShareWithGroupLock { get; set; }
 
         /// <summary>
-        /// , defaults to Owner.
+        /// Defaults to owner. Allowed to create subgroups.
         /// </summary>
         [Input("subgroupCreationLevel")]
         public Input<string>? SubgroupCreationLevel { get; set; }
 
         /// <summary>
-        /// Int, defaults to 48.
+        /// Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         /// </summary>
         [Input("twoFactorGracePeriod")]
         public Input<int>? TwoFactorGracePeriod { get; set; }
@@ -336,13 +339,13 @@ namespace Pulumi.GitLab
     public sealed class GroupState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean, defaults to false.  Default to Auto
+        /// Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
         /// </summary>
         [Input("autoDevopsEnabled")]
         public Input<bool>? AutoDevopsEnabled { get; set; }
 
         /// <summary>
-        /// Int, defaults to 2.
+        /// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
         /// </summary>
         [Input("defaultBranchProtection")]
         public Input<int>? DefaultBranchProtection { get; set; }
@@ -354,7 +357,7 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to false.  Disable email notifications
+        /// Defaults to false. Disable email notifications.
         /// </summary>
         [Input("emailsDisabled")]
         public Input<bool>? EmailsDisabled { get; set; }
@@ -372,13 +375,13 @@ namespace Pulumi.GitLab
         public Input<string>? FullPath { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to true.  Whether to enable LFS
+        /// Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
         /// </summary>
         [Input("lfsEnabled")]
         public Input<bool>? LfsEnabled { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to false.  Disable the capability
+        /// Defaults to false. Disable the capability of a group from getting mentioned.
         /// </summary>
         [Input("mentionsDisabled")]
         public Input<bool>? MentionsDisabled { get; set; }
@@ -390,7 +393,7 @@ namespace Pulumi.GitLab
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Integer, id of the parent group (creates a nested group).
+        /// Id of the parent group (creates a nested group).
         /// </summary>
         [Input("parentId")]
         public Input<int>? ParentId { get; set; }
@@ -402,25 +405,25 @@ namespace Pulumi.GitLab
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// When enabled, users can not fork projects from this group to external namespaces.
+        /// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         /// </summary>
         [Input("preventForkingOutsideGroup")]
         public Input<bool>? PreventForkingOutsideGroup { get; set; }
 
         /// <summary>
-        /// , defaults to Maintainer.
+        /// Defaults to maintainer. Determine if developers can create projects in the group.
         /// </summary>
         [Input("projectCreationLevel")]
         public Input<string>? ProjectCreationLevel { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to false.  Whether to
+        /// Defaults to false. Allow users to request member access.
         /// </summary>
         [Input("requestAccessEnabled")]
         public Input<bool>? RequestAccessEnabled { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to false.
+        /// Defaults to false. Require all users in this group to setup Two-factor authentication.
         /// </summary>
         [Input("requireTwoFactorAuthentication")]
         public Input<bool>? RequireTwoFactorAuthentication { get; set; }
@@ -432,19 +435,19 @@ namespace Pulumi.GitLab
         public Input<string>? RunnersToken { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to false.  Prevent sharing
+        /// Defaults to false. Prevent sharing a project with another group within this group.
         /// </summary>
         [Input("shareWithGroupLock")]
         public Input<bool>? ShareWithGroupLock { get; set; }
 
         /// <summary>
-        /// , defaults to Owner.
+        /// Defaults to owner. Allowed to create subgroups.
         /// </summary>
         [Input("subgroupCreationLevel")]
         public Input<string>? SubgroupCreationLevel { get; set; }
 
         /// <summary>
-        /// Int, defaults to 48.
+        /// Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         /// </summary>
         [Input("twoFactorGracePeriod")]
         public Input<int>? TwoFactorGracePeriod { get; set; }

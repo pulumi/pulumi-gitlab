@@ -60,9 +60,9 @@ type GroupBadge struct {
 	ImageUrl pulumi.StringOutput `pulumi:"imageUrl"`
 	// The url linked with the badge.
 	LinkUrl pulumi.StringOutput `pulumi:"linkUrl"`
-	// The imageUrl argument rendered (in case of use of placeholders).
+	// The image_url argument rendered (in case of use of placeholders).
 	RenderedImageUrl pulumi.StringOutput `pulumi:"renderedImageUrl"`
-	// The linkUrl argument rendered (in case of use of placeholders).
+	// The link_url argument rendered (in case of use of placeholders).
 	RenderedLinkUrl pulumi.StringOutput `pulumi:"renderedLinkUrl"`
 }
 
@@ -110,9 +110,9 @@ type groupBadgeState struct {
 	ImageUrl *string `pulumi:"imageUrl"`
 	// The url linked with the badge.
 	LinkUrl *string `pulumi:"linkUrl"`
-	// The imageUrl argument rendered (in case of use of placeholders).
+	// The image_url argument rendered (in case of use of placeholders).
 	RenderedImageUrl *string `pulumi:"renderedImageUrl"`
-	// The linkUrl argument rendered (in case of use of placeholders).
+	// The link_url argument rendered (in case of use of placeholders).
 	RenderedLinkUrl *string `pulumi:"renderedLinkUrl"`
 }
 
@@ -123,9 +123,9 @@ type GroupBadgeState struct {
 	ImageUrl pulumi.StringPtrInput
 	// The url linked with the badge.
 	LinkUrl pulumi.StringPtrInput
-	// The imageUrl argument rendered (in case of use of placeholders).
+	// The image_url argument rendered (in case of use of placeholders).
 	RenderedImageUrl pulumi.StringPtrInput
-	// The linkUrl argument rendered (in case of use of placeholders).
+	// The link_url argument rendered (in case of use of placeholders).
 	RenderedLinkUrl pulumi.StringPtrInput
 }
 

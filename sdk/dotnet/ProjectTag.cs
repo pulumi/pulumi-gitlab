@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.ProjectTag` resource allows to manage the lifecycle of a tag in a project.
     /// 
-    /// **Upstream API** : [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
+    /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
     /// 
     /// ## Example Usage
     /// 
@@ -60,7 +60,7 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<Outputs.ProjectTagCommit>> Commits { get; private set; } = null!;
 
         /// <summary>
-        /// Creates annotated tag.
+        /// The message of the annotated tag.
         /// </summary>
         [Output("message")]
         public Output<string?> Message { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectTagArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Creates annotated tag.
+        /// The message of the annotated tag.
         /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
@@ -191,7 +191,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Creates annotated tag.
+        /// The message of the annotated tag.
         /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }

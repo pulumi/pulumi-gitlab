@@ -49,6 +49,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// # A GitLab Project Access Token can be imported using a key composed of `<project-id>:<token-id>`, e.g.
+//
+// ```sh
+//  $ pulumi import gitlab:index/projectAccessToken:ProjectAccessToken example "12345:1"
+// ```
+//
+// # NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 type ProjectAccessToken struct {
 	pulumi.CustomResourceState
 
@@ -64,11 +74,11 @@ type ProjectAccessToken struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// True if the token is revoked.
 	Revoked pulumi.BoolOutput `pulumi:"revoked"`
-	// Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
+	// Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
-	// The secret token. This is only populated when creating a new project access token.
+	// The secret token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringOutput `pulumi:"token"`
-	// The userId associated to the token.
+	// The user_id associated to the token.
 	UserId pulumi.IntOutput `pulumi:"userId"`
 }
 
@@ -119,11 +129,11 @@ type projectAccessTokenState struct {
 	Project *string `pulumi:"project"`
 	// True if the token is revoked.
 	Revoked *bool `pulumi:"revoked"`
-	// Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
+	// Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
 	Scopes []string `pulumi:"scopes"`
-	// The secret token. This is only populated when creating a new project access token.
+	// The secret token. **Note**: the token is not available for imported resources.
 	Token *string `pulumi:"token"`
-	// The userId associated to the token.
+	// The user_id associated to the token.
 	UserId *int `pulumi:"userId"`
 }
 
@@ -140,11 +150,11 @@ type ProjectAccessTokenState struct {
 	Project pulumi.StringPtrInput
 	// True if the token is revoked.
 	Revoked pulumi.BoolPtrInput
-	// Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
+	// Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
 	Scopes pulumi.StringArrayInput
-	// The secret token. This is only populated when creating a new project access token.
+	// The secret token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringPtrInput
-	// The userId associated to the token.
+	// The user_id associated to the token.
 	UserId pulumi.IntPtrInput
 }
 
@@ -159,7 +169,7 @@ type projectAccessTokenArgs struct {
 	Name *string `pulumi:"name"`
 	// The id of the project to add the project access token to.
 	Project string `pulumi:"project"`
-	// Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
+	// Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
 	Scopes []string `pulumi:"scopes"`
 }
 
@@ -171,7 +181,7 @@ type ProjectAccessTokenArgs struct {
 	Name pulumi.StringPtrInput
 	// The id of the project to add the project access token to.
 	Project pulumi.StringInput
-	// Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
+	// Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
 	Scopes pulumi.StringArrayInput
 }
 

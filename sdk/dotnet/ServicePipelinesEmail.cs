@@ -56,7 +56,8 @@ namespace Pulumi.GitLab
     public partial class ServicePipelinesEmail : Pulumi.CustomResource
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+        /// Default is `default`
         /// </summary>
         [Output("branchesToBeNotified")]
         public Output<string?> BranchesToBeNotified { get; private set; } = null!;
@@ -126,7 +127,8 @@ namespace Pulumi.GitLab
     public sealed class ServicePipelinesEmailArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+        /// Default is `default`
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
@@ -163,7 +165,8 @@ namespace Pulumi.GitLab
     public sealed class ServicePipelinesEmailState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+        /// Default is `default`
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }

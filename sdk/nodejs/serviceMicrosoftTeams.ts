@@ -67,7 +67,8 @@ export class ServiceMicrosoftTeams extends pulumi.CustomResource {
      */
     public /*out*/ readonly active!: pulumi.Output<boolean>;
     /**
-     * Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+     * Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+     * “default_and_protected”. The default value is “default”
      */
     public readonly branchesToBeNotified!: pulumi.Output<string | undefined>;
     /**
@@ -195,7 +196,8 @@ export interface ServiceMicrosoftTeamsState {
      */
     active?: pulumi.Input<boolean>;
     /**
-     * Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+     * Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+     * “default_and_protected”. The default value is “default”
      */
     branchesToBeNotified?: pulumi.Input<string>;
     /**
@@ -261,7 +263,8 @@ export interface ServiceMicrosoftTeamsState {
  */
 export interface ServiceMicrosoftTeamsArgs {
     /**
-     * Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+     * Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+     * “default_and_protected”. The default value is “default”
      */
     branchesToBeNotified?: pulumi.Input<string>;
     /**

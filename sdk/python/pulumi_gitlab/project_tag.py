@@ -23,7 +23,7 @@ class ProjectTagArgs:
         The set of arguments for constructing a ProjectTag resource.
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project owned by the authenticated user.
         :param pulumi.Input[str] ref: Create tag using commit SHA, another tag name, or branch name. This attribute is not available for imported resources.
-        :param pulumi.Input[str] message: Creates annotated tag.
+        :param pulumi.Input[str] message: The message of the annotated tag.
         :param pulumi.Input[str] name: The name of a tag.
         """
         pulumi.set(__self__, "project", project)
@@ -61,7 +61,7 @@ class ProjectTagArgs:
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
         """
-        Creates annotated tag.
+        The message of the annotated tag.
         """
         return pulumi.get(self, "message")
 
@@ -96,7 +96,7 @@ class _ProjectTagState:
         """
         Input properties used for looking up and filtering ProjectTag resources.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectTagCommitArgs']]] commits: The commit associated with the tag.
-        :param pulumi.Input[str] message: Creates annotated tag.
+        :param pulumi.Input[str] message: The message of the annotated tag.
         :param pulumi.Input[str] name: The name of a tag.
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project owned by the authenticated user.
         :param pulumi.Input[bool] protected: Bool, true if tag has tag protection.
@@ -137,7 +137,7 @@ class _ProjectTagState:
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
         """
-        Creates annotated tag.
+        The message of the annotated tag.
         """
         return pulumi.get(self, "message")
 
@@ -231,7 +231,7 @@ class ProjectTag(pulumi.CustomResource):
         """
         The `ProjectTag` resource allows to manage the lifecycle of a tag in a project.
 
-        **Upstream API** : [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
+        **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
 
         ## Example Usage
 
@@ -260,7 +260,7 @@ class ProjectTag(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] message: Creates annotated tag.
+        :param pulumi.Input[str] message: The message of the annotated tag.
         :param pulumi.Input[str] name: The name of a tag.
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project owned by the authenticated user.
         :param pulumi.Input[str] ref: Create tag using commit SHA, another tag name, or branch name. This attribute is not available for imported resources.
@@ -274,7 +274,7 @@ class ProjectTag(pulumi.CustomResource):
         """
         The `ProjectTag` resource allows to manage the lifecycle of a tag in a project.
 
-        **Upstream API** : [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
+        **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
 
         ## Example Usage
 
@@ -370,7 +370,7 @@ class ProjectTag(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectTagCommitArgs']]]] commits: The commit associated with the tag.
-        :param pulumi.Input[str] message: Creates annotated tag.
+        :param pulumi.Input[str] message: The message of the annotated tag.
         :param pulumi.Input[str] name: The name of a tag.
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project owned by the authenticated user.
         :param pulumi.Input[bool] protected: Bool, true if tag has tag protection.
@@ -404,7 +404,7 @@ class ProjectTag(pulumi.CustomResource):
     @pulumi.getter
     def message(self) -> pulumi.Output[Optional[str]]:
         """
-        Creates annotated tag.
+        The message of the annotated tag.
         """
         return pulumi.get(self, "message")
 

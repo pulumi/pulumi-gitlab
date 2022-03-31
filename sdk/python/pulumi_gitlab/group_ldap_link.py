@@ -24,9 +24,11 @@ class GroupLdapLinkArgs:
         :param pulumi.Input[str] cn: The CN of the LDAP group to link with.
         :param pulumi.Input[str] group_id: The id of the GitLab group.
         :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database.
-        :param pulumi.Input[str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        :param pulumi.Input[str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+               `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[bool] force: If true, then delete and replace an existing LDAP link if one exists.
-        :param pulumi.Input[str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        :param pulumi.Input[str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+               `developer`, `maintainer`, `owner`, `master`
         """
         pulumi.set(__self__, "cn", cn)
         pulumi.set(__self__, "group_id", group_id)
@@ -81,7 +83,8 @@ class GroupLdapLinkArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+        `developer`, `maintainer`, `owner`, `master`
         """
         return pulumi.get(self, "access_level")
 
@@ -105,7 +108,8 @@ class GroupLdapLinkArgs:
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> Optional[pulumi.Input[str]]:
         """
-        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+        `developer`, `maintainer`, `owner`, `master`
         """
         return pulumi.get(self, "group_access")
 
@@ -125,10 +129,12 @@ class _GroupLdapLinkState:
                  ldap_provider: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GroupLdapLink resources.
-        :param pulumi.Input[str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        :param pulumi.Input[str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+               `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] cn: The CN of the LDAP group to link with.
         :param pulumi.Input[bool] force: If true, then delete and replace an existing LDAP link if one exists.
-        :param pulumi.Input[str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        :param pulumi.Input[str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+               `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] group_id: The id of the GitLab group.
         :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database.
         """
@@ -152,7 +158,8 @@ class _GroupLdapLinkState:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+        `developer`, `maintainer`, `owner`, `master`
         """
         return pulumi.get(self, "access_level")
 
@@ -188,7 +195,8 @@ class _GroupLdapLinkState:
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> Optional[pulumi.Input[str]]:
         """
-        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+        `developer`, `maintainer`, `owner`, `master`
         """
         return pulumi.get(self, "group_access")
 
@@ -261,10 +269,12 @@ class GroupLdapLink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        :param pulumi.Input[str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+               `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] cn: The CN of the LDAP group to link with.
         :param pulumi.Input[bool] force: If true, then delete and replace an existing LDAP link if one exists.
-        :param pulumi.Input[str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        :param pulumi.Input[str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+               `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] group_id: The id of the GitLab group.
         :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database.
         """
@@ -371,10 +381,12 @@ class GroupLdapLink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        :param pulumi.Input[str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+               `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] cn: The CN of the LDAP group to link with.
         :param pulumi.Input[bool] force: If true, then delete and replace an existing LDAP link if one exists.
-        :param pulumi.Input[str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        :param pulumi.Input[str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+               `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] group_id: The id of the GitLab group.
         :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database.
         """
@@ -394,7 +406,8 @@ class GroupLdapLink(pulumi.CustomResource):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Output[Optional[str]]:
         """
-        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+        `developer`, `maintainer`, `owner`, `master`
         """
         return pulumi.get(self, "access_level")
 
@@ -418,7 +431,8 @@ class GroupLdapLink(pulumi.CustomResource):
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> pulumi.Output[Optional[str]]:
         """
-        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
+        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+        `developer`, `maintainer`, `owner`, `master`
         """
         return pulumi.get(self, "group_access")
 

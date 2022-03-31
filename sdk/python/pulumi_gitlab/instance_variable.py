@@ -22,8 +22,10 @@ class InstanceVariableArgs:
         The set of arguments for constructing a InstanceVariable resource.
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[str] value: The value of the variable.
-        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
-        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+               requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+               `false`.
         :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
         """
         pulumi.set(__self__, "key", key)
@@ -63,7 +65,8 @@ class InstanceVariableArgs:
     @pulumi.getter
     def masked(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+        requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
         """
         return pulumi.get(self, "masked")
 
@@ -75,7 +78,8 @@ class InstanceVariableArgs:
     @pulumi.getter
     def protected(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+        `false`.
         """
         return pulumi.get(self, "protected")
 
@@ -107,8 +111,10 @@ class _InstanceVariableState:
         """
         Input properties used for looking up and filtering InstanceVariable resources.
         :param pulumi.Input[str] key: The name of the variable.
-        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
-        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+               requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+               `false`.
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
         """
@@ -139,7 +145,8 @@ class _InstanceVariableState:
     @pulumi.getter
     def masked(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+        requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
         """
         return pulumi.get(self, "masked")
 
@@ -151,7 +158,8 @@ class _InstanceVariableState:
     @pulumi.getter
     def protected(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+        `false`.
         """
         return pulumi.get(self, "protected")
 
@@ -224,8 +232,10 @@ class InstanceVariable(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key: The name of the variable.
-        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
-        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+               requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+               `false`.
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
         """
@@ -325,8 +335,10 @@ class InstanceVariable(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key: The name of the variable.
-        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
-        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+               requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+               `false`.
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
         """
@@ -353,7 +365,8 @@ class InstanceVariable(pulumi.CustomResource):
     @pulumi.getter
     def masked(self) -> pulumi.Output[Optional[bool]]:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+        requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
         """
         return pulumi.get(self, "masked")
 
@@ -361,7 +374,8 @@ class InstanceVariable(pulumi.CustomResource):
     @pulumi.getter
     def protected(self) -> pulumi.Output[Optional[bool]]:
         """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+        `false`.
         """
         return pulumi.get(self, "protected")
 

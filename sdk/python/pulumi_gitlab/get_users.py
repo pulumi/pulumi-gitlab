@@ -59,49 +59,31 @@ class GetUsersResult:
     @property
     @pulumi.getter
     def active(self) -> Optional[bool]:
-        """
-        Filter users that are active.
-        """
         return pulumi.get(self, "active")
 
     @property
     @pulumi.getter
     def blocked(self) -> Optional[bool]:
-        """
-        Filter users that are blocked.
-        """
         return pulumi.get(self, "blocked")
 
     @property
     @pulumi.getter(name="createdAfter")
     def created_after(self) -> Optional[str]:
-        """
-        Search for users created after a specific date. (Requires administrator privileges)
-        """
         return pulumi.get(self, "created_after")
 
     @property
     @pulumi.getter(name="createdBefore")
     def created_before(self) -> Optional[str]:
-        """
-        Search for users created before a specific date. (Requires administrator privileges)
-        """
         return pulumi.get(self, "created_before")
 
     @property
     @pulumi.getter(name="externProvider")
     def extern_provider(self) -> Optional[str]:
-        """
-        Lookup users by external provider. (Requires administrator privileges)
-        """
         return pulumi.get(self, "extern_provider")
 
     @property
     @pulumi.getter(name="externUid")
     def extern_uid(self) -> Optional[str]:
-        """
-        Lookup users by external UID. (Requires administrator privileges)
-        """
         return pulumi.get(self, "extern_uid")
 
     @property
@@ -115,33 +97,21 @@ class GetUsersResult:
     @property
     @pulumi.getter(name="orderBy")
     def order_by(self) -> Optional[str]:
-        """
-        Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
-        """
         return pulumi.get(self, "order_by")
 
     @property
     @pulumi.getter
     def search(self) -> Optional[str]:
-        """
-        Search users by username, name or email.
-        """
         return pulumi.get(self, "search")
 
     @property
     @pulumi.getter
     def sort(self) -> Optional[str]:
-        """
-        Sort users' list in asc or desc order. (Requires administrator privileges)
-        """
         return pulumi.get(self, "sort")
 
     @property
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetUsersUserResult']:
-        """
-        The list of users.
-        """
         return pulumi.get(self, "users")
 
 
@@ -194,17 +164,6 @@ def get_users(active: Optional[bool] = None,
         sort="desc")
     example_two = gitlab.get_users(search="username")
     ```
-
-
-    :param bool active: Filter users that are active.
-    :param bool blocked: Filter users that are blocked.
-    :param str created_after: Search for users created after a specific date. (Requires administrator privileges)
-    :param str created_before: Search for users created before a specific date. (Requires administrator privileges)
-    :param str extern_provider: Lookup users by external provider. (Requires administrator privileges)
-    :param str extern_uid: Lookup users by external UID. (Requires administrator privileges)
-    :param str order_by: Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
-    :param str search: Search users by username, name or email.
-    :param str sort: Sort users' list in asc or desc order. (Requires administrator privileges)
     """
     __args__ = dict()
     __args__['active'] = active
@@ -267,16 +226,5 @@ def get_users_output(active: Optional[pulumi.Input[Optional[bool]]] = None,
         sort="desc")
     example_two = gitlab.get_users(search="username")
     ```
-
-
-    :param bool active: Filter users that are active.
-    :param bool blocked: Filter users that are blocked.
-    :param str created_after: Search for users created after a specific date. (Requires administrator privileges)
-    :param str created_before: Search for users created before a specific date. (Requires administrator privileges)
-    :param str extern_provider: Lookup users by external provider. (Requires administrator privileges)
-    :param str extern_uid: Lookup users by external UID. (Requires administrator privileges)
-    :param str order_by: Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
-    :param str search: Search users by username, name or email.
-    :param str sort: Sort users' list in asc or desc order. (Requires administrator privileges)
     """
     ...

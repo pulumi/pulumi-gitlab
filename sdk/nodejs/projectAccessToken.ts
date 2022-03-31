@@ -26,6 +26,16 @@ import * as utilities from "./utilities";
  *     value: exampleProjectAccessToken.token,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * # A GitLab Project Access Token can be imported using a key composed of `<project-id>:<token-id>`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/projectAccessToken:ProjectAccessToken example "12345:1"
+ * ```
+ *
+ * # NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  */
 export class ProjectAccessToken extends pulumi.CustomResource {
     /**
@@ -80,15 +90,15 @@ export class ProjectAccessToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly revoked!: pulumi.Output<boolean>;
     /**
-     * Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
+     * Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
-     * The secret token. This is only populated when creating a new project access token.
+     * The secret token. **Note**: the token is not available for imported resources.
      */
     public /*out*/ readonly token!: pulumi.Output<string>;
     /**
-     * The userId associated to the token.
+     * The user_id associated to the token.
      */
     public /*out*/ readonly userId!: pulumi.Output<number>;
 
@@ -166,15 +176,15 @@ export interface ProjectAccessTokenState {
      */
     revoked?: pulumi.Input<boolean>;
     /**
-     * Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
+     * Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The secret token. This is only populated when creating a new project access token.
+     * The secret token. **Note**: the token is not available for imported resources.
      */
     token?: pulumi.Input<string>;
     /**
-     * The userId associated to the token.
+     * The user_id associated to the token.
      */
     userId?: pulumi.Input<number>;
 }
@@ -196,7 +206,7 @@ export interface ProjectAccessTokenArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
+     * Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
 }

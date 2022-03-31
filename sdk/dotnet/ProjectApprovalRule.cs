@@ -58,7 +58,8 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<int>> ProtectedBranchIds { get; private set; } = null!;
 
         /// <summary>
-        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
+        /// `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
         /// </summary>
         [Output("ruleType")]
         public Output<string> RuleType { get; private set; } = null!;
@@ -158,7 +159,8 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
+        /// `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
         /// </summary>
         [Input("ruleType")]
         public Input<string>? RuleType { get; set; }
@@ -225,7 +227,8 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
+        /// `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
         /// </summary>
         [Input("ruleType")]
         public Input<string>? RuleType { get; set; }

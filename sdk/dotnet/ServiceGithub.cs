@@ -80,7 +80,8 @@ namespace Pulumi.GitLab
         public Output<string> RepositoryUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
+        /// See [Static / dynamic status check names] to learn more.
         /// </summary>
         [Output("staticContext")]
         public Output<bool?> StaticContext { get; private set; } = null!;
@@ -162,7 +163,8 @@ namespace Pulumi.GitLab
         public Input<string> RepositoryUrl { get; set; } = null!;
 
         /// <summary>
-        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
+        /// See [Static / dynamic status check names] to learn more.
         /// </summary>
         [Input("staticContext")]
         public Input<bool>? StaticContext { get; set; }
@@ -205,7 +207,8 @@ namespace Pulumi.GitLab
         public Input<string>? RepositoryUrl { get; set; }
 
         /// <summary>
-        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
+        /// See [Static / dynamic status check names] to learn more.
         /// </summary>
         [Input("staticContext")]
         public Input<bool>? StaticContext { get; set; }

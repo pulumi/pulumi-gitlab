@@ -14,6 +14,20 @@ import (
 // The `DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_tokens.html)
+//
+// ## Import
+//
+// # GitLab deploy tokens can be imported using an id made up of `{type}:{type_id}:{deploy_token_id}`, where type is one ofproject, group.
+//
+// ```sh
+//  $ pulumi import gitlab:index/deployToken:DeployToken group_token group:1:3
+// ```
+//
+// ```sh
+//  $ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4
+// ```
+//
+// # Notethe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 type DeployToken struct {
 	pulumi.CustomResourceState
 
@@ -25,9 +39,10 @@ type DeployToken struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name or id of the project to add the deploy token to.
 	Project pulumi.StringPtrOutput `pulumi:"project"`
-	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
+	// Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
-	// The secret token. This is only populated when creating a new deploy token.
+	// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
+	// imported resources.
 	Token pulumi.StringOutput `pulumi:"token"`
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username pulumi.StringOutput `pulumi:"username"`
@@ -73,9 +88,10 @@ type deployTokenState struct {
 	Name *string `pulumi:"name"`
 	// The name or id of the project to add the deploy token to.
 	Project *string `pulumi:"project"`
-	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
+	// Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
 	Scopes []string `pulumi:"scopes"`
-	// The secret token. This is only populated when creating a new deploy token.
+	// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
+	// imported resources.
 	Token *string `pulumi:"token"`
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username *string `pulumi:"username"`
@@ -90,9 +106,10 @@ type DeployTokenState struct {
 	Name pulumi.StringPtrInput
 	// The name or id of the project to add the deploy token to.
 	Project pulumi.StringPtrInput
-	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
+	// Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
 	Scopes pulumi.StringArrayInput
-	// The secret token. This is only populated when creating a new deploy token.
+	// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
+	// imported resources.
 	Token pulumi.StringPtrInput
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username pulumi.StringPtrInput
@@ -111,7 +128,7 @@ type deployTokenArgs struct {
 	Name *string `pulumi:"name"`
 	// The name or id of the project to add the deploy token to.
 	Project *string `pulumi:"project"`
-	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
+	// Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
 	Scopes []string `pulumi:"scopes"`
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username *string `pulumi:"username"`
@@ -127,7 +144,7 @@ type DeployTokenArgs struct {
 	Name pulumi.StringPtrInput
 	// The name or id of the project to add the deploy token to.
 	Project pulumi.StringPtrInput
-	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
+	// Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
 	Scopes pulumi.StringArrayInput
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username pulumi.StringPtrInput

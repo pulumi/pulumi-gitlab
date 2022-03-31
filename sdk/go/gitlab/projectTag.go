@@ -13,7 +13,7 @@ import (
 
 // The `ProjectTag` resource allows to manage the lifecycle of a tag in a project.
 //
-// **Upstream API** : [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
+// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
 //
 // ## Example Usage
 //
@@ -60,7 +60,7 @@ type ProjectTag struct {
 
 	// The commit associated with the tag.
 	Commits ProjectTagCommitArrayOutput `pulumi:"commits"`
-	// Creates annotated tag.
+	// The message of the annotated tag.
 	Message pulumi.StringPtrOutput `pulumi:"message"`
 	// The name of a tag.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -113,7 +113,7 @@ func GetProjectTag(ctx *pulumi.Context,
 type projectTagState struct {
 	// The commit associated with the tag.
 	Commits []ProjectTagCommit `pulumi:"commits"`
-	// Creates annotated tag.
+	// The message of the annotated tag.
 	Message *string `pulumi:"message"`
 	// The name of a tag.
 	Name *string `pulumi:"name"`
@@ -132,7 +132,7 @@ type projectTagState struct {
 type ProjectTagState struct {
 	// The commit associated with the tag.
 	Commits ProjectTagCommitArrayInput
-	// Creates annotated tag.
+	// The message of the annotated tag.
 	Message pulumi.StringPtrInput
 	// The name of a tag.
 	Name pulumi.StringPtrInput
@@ -153,7 +153,7 @@ func (ProjectTagState) ElementType() reflect.Type {
 }
 
 type projectTagArgs struct {
-	// Creates annotated tag.
+	// The message of the annotated tag.
 	Message *string `pulumi:"message"`
 	// The name of a tag.
 	Name *string `pulumi:"name"`
@@ -165,7 +165,7 @@ type projectTagArgs struct {
 
 // The set of arguments for constructing a ProjectTag resource.
 type ProjectTagArgs struct {
-	// Creates annotated tag.
+	// The message of the annotated tag.
 	Message pulumi.StringPtrInput
 	// The name of a tag.
 	Name pulumi.StringPtrInput

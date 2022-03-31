@@ -109,81 +109,51 @@ class GetUserResult:
     @property
     @pulumi.getter(name="avatarUrl")
     def avatar_url(self) -> str:
-        """
-        The avatar URL of the user.
-        """
         return pulumi.get(self, "avatar_url")
 
     @property
     @pulumi.getter
     def bio(self) -> str:
-        """
-        The bio of the user.
-        """
         return pulumi.get(self, "bio")
 
     @property
     @pulumi.getter(name="canCreateGroup")
     def can_create_group(self) -> bool:
-        """
-        Whether the user can create groups.
-        """
         return pulumi.get(self, "can_create_group")
 
     @property
     @pulumi.getter(name="canCreateProject")
     def can_create_project(self) -> bool:
-        """
-        Whether the user can create projects.
-        """
         return pulumi.get(self, "can_create_project")
 
     @property
     @pulumi.getter(name="colorSchemeId")
     def color_scheme_id(self) -> int:
-        """
-        User's color scheme ID.
-        """
         return pulumi.get(self, "color_scheme_id")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        Date the user was created at.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="currentSignInAt")
     def current_sign_in_at(self) -> str:
-        """
-        Current user's sign-in date.
-        """
         return pulumi.get(self, "current_sign_in_at")
 
     @property
     @pulumi.getter
     def email(self) -> str:
-        """
-        The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
-        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter(name="externUid")
     def extern_uid(self) -> str:
-        """
-        The external UID of the user.
-        """
         return pulumi.get(self, "extern_uid")
 
     @property
     @pulumi.getter
     def external(self) -> bool:
-        """
-        Whether the user is external.
-        """
         return pulumi.get(self, "external")
 
     @property
@@ -197,137 +167,86 @@ class GetUserResult:
     @property
     @pulumi.getter(name="isAdmin")
     def is_admin(self) -> bool:
-        """
-        Whether the user is an admin.
-        """
         return pulumi.get(self, "is_admin")
 
     @property
     @pulumi.getter(name="lastSignInAt")
     def last_sign_in_at(self) -> str:
-        """
-        Last user's sign-in date.
-        """
         return pulumi.get(self, "last_sign_in_at")
 
     @property
     @pulumi.getter
     def linkedin(self) -> str:
-        """
-        LinkedIn profile of the user.
-        """
         return pulumi.get(self, "linkedin")
 
     @property
     @pulumi.getter
     def location(self) -> str:
-        """
-        The location of the user.
-        """
         return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the user.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def note(self) -> str:
-        """
-        Admin notes for this user.
-        """
         return pulumi.get(self, "note")
 
     @property
     @pulumi.getter
     def organization(self) -> str:
-        """
-        The organization of the user.
-        """
         return pulumi.get(self, "organization")
 
     @property
     @pulumi.getter(name="projectsLimit")
     def projects_limit(self) -> int:
-        """
-        Number of projects the user can create.
-        """
         return pulumi.get(self, "projects_limit")
 
     @property
     @pulumi.getter
     def skype(self) -> str:
-        """
-        Skype username of the user.
-        """
         return pulumi.get(self, "skype")
 
     @property
     @pulumi.getter
     def state(self) -> str:
-        """
-        Whether the user is active or blocked.
-        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="themeId")
     def theme_id(self) -> int:
-        """
-        User's theme ID.
-        """
         return pulumi.get(self, "theme_id")
 
     @property
     @pulumi.getter
     def twitter(self) -> str:
-        """
-        Twitter username of the user.
-        """
         return pulumi.get(self, "twitter")
 
     @property
     @pulumi.getter(name="twoFactorEnabled")
     def two_factor_enabled(self) -> bool:
-        """
-        Whether user's two-factor auth is enabled.
-        """
         return pulumi.get(self, "two_factor_enabled")
 
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> int:
-        """
-        The ID of the user.
-        """
         return pulumi.get(self, "user_id")
 
     @property
     @pulumi.getter(name="userProvider")
     def user_provider(self) -> str:
-        """
-        The UID provider of the user.
-        """
         return pulumi.get(self, "user_provider")
 
     @property
     @pulumi.getter
     def username(self) -> str:
-        """
-        The username of the user.
-        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter(name="websiteUrl")
     def website_url(self) -> str:
-        """
-        User's website URL.
-        """
         return pulumi.get(self, "website_url")
 
 
@@ -377,11 +296,6 @@ def get_user(email: Optional[str] = None,
     > Some attributes might not be returned depending on if you're an admin or not.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
-
-
-    :param str email: The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
-    :param int user_id: The ID of the user.
-    :param str username: The username of the user.
     """
     __args__ = dict()
     __args__['email'] = email
@@ -435,10 +349,5 @@ def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
     > Some attributes might not be returned depending on if you're an admin or not.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
-
-
-    :param str email: The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
-    :param int user_id: The ID of the user.
-    :param str username: The username of the user.
     """
     ...

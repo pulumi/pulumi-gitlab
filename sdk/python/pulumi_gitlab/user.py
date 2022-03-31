@@ -30,12 +30,13 @@ class UserArgs:
         :param pulumi.Input[str] email: The e-mail address of the user.
         :param pulumi.Input[str] username: The username of the user.
         :param pulumi.Input[bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
-        :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
-        :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
+        :param pulumi.Input[bool] is_admin: Boolean, defaults to false. Whether to enable administrative privileges
+        :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
+               access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
         :param pulumi.Input[str] note: The note associated to the user.
         :param pulumi.Input[str] password: The password of the user.
-        :param pulumi.Input[int] projects_limit: Integer, defaults to 0.  Number of projects user can create.
+        :param pulumi.Input[int] projects_limit: Integer, defaults to 0. Number of projects user can create.
         :param pulumi.Input[bool] reset_password: Boolean, defaults to false. Send user password reset link.
         :param pulumi.Input[bool] skip_confirmation: Boolean, defaults to true. Whether to skip confirmation.
         :param pulumi.Input[str] state: String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
@@ -103,7 +104,7 @@ class UserArgs:
     @pulumi.getter(name="isAdmin")
     def is_admin(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to false.  Whether to enable administrative privileges
+        Boolean, defaults to false. Whether to enable administrative privileges
         """
         return pulumi.get(self, "is_admin")
 
@@ -115,7 +116,8 @@ class UserArgs:
     @pulumi.getter(name="isExternal")
     def is_external(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
+        Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
+        access projects to which they are explicitly granted access.
         """
         return pulumi.get(self, "is_external")
 
@@ -163,7 +165,7 @@ class UserArgs:
     @pulumi.getter(name="projectsLimit")
     def projects_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        Integer, defaults to 0.  Number of projects user can create.
+        Integer, defaults to 0. Number of projects user can create.
         """
         return pulumi.get(self, "projects_limit")
 
@@ -227,12 +229,13 @@ class _UserState:
         Input properties used for looking up and filtering User resources.
         :param pulumi.Input[bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
         :param pulumi.Input[str] email: The e-mail address of the user.
-        :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
-        :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
+        :param pulumi.Input[bool] is_admin: Boolean, defaults to false. Whether to enable administrative privileges
+        :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
+               access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
         :param pulumi.Input[str] note: The note associated to the user.
         :param pulumi.Input[str] password: The password of the user.
-        :param pulumi.Input[int] projects_limit: Integer, defaults to 0.  Number of projects user can create.
+        :param pulumi.Input[int] projects_limit: Integer, defaults to 0. Number of projects user can create.
         :param pulumi.Input[bool] reset_password: Boolean, defaults to false. Send user password reset link.
         :param pulumi.Input[bool] skip_confirmation: Boolean, defaults to true. Whether to skip confirmation.
         :param pulumi.Input[str] state: String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
@@ -291,7 +294,7 @@ class _UserState:
     @pulumi.getter(name="isAdmin")
     def is_admin(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to false.  Whether to enable administrative privileges
+        Boolean, defaults to false. Whether to enable administrative privileges
         """
         return pulumi.get(self, "is_admin")
 
@@ -303,7 +306,8 @@ class _UserState:
     @pulumi.getter(name="isExternal")
     def is_external(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
+        Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
+        access projects to which they are explicitly granted access.
         """
         return pulumi.get(self, "is_external")
 
@@ -351,7 +355,7 @@ class _UserState:
     @pulumi.getter(name="projectsLimit")
     def projects_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        Integer, defaults to 0.  Number of projects user can create.
+        Integer, defaults to 0. Number of projects user can create.
         """
         return pulumi.get(self, "projects_limit")
 
@@ -468,12 +472,13 @@ class User(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
         :param pulumi.Input[str] email: The e-mail address of the user.
-        :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
-        :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
+        :param pulumi.Input[bool] is_admin: Boolean, defaults to false. Whether to enable administrative privileges
+        :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
+               access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
         :param pulumi.Input[str] note: The note associated to the user.
         :param pulumi.Input[str] password: The password of the user.
-        :param pulumi.Input[int] projects_limit: Integer, defaults to 0.  Number of projects user can create.
+        :param pulumi.Input[int] projects_limit: Integer, defaults to 0. Number of projects user can create.
         :param pulumi.Input[bool] reset_password: Boolean, defaults to false. Send user password reset link.
         :param pulumi.Input[bool] skip_confirmation: Boolean, defaults to true. Whether to skip confirmation.
         :param pulumi.Input[str] state: String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
@@ -609,12 +614,13 @@ class User(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
         :param pulumi.Input[str] email: The e-mail address of the user.
-        :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
-        :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
+        :param pulumi.Input[bool] is_admin: Boolean, defaults to false. Whether to enable administrative privileges
+        :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
+               access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
         :param pulumi.Input[str] note: The note associated to the user.
         :param pulumi.Input[str] password: The password of the user.
-        :param pulumi.Input[int] projects_limit: Integer, defaults to 0.  Number of projects user can create.
+        :param pulumi.Input[int] projects_limit: Integer, defaults to 0. Number of projects user can create.
         :param pulumi.Input[bool] reset_password: Boolean, defaults to false. Send user password reset link.
         :param pulumi.Input[bool] skip_confirmation: Boolean, defaults to true. Whether to skip confirmation.
         :param pulumi.Input[str] state: String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
@@ -658,7 +664,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="isAdmin")
     def is_admin(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean, defaults to false.  Whether to enable administrative privileges
+        Boolean, defaults to false. Whether to enable administrative privileges
         """
         return pulumi.get(self, "is_admin")
 
@@ -666,7 +672,8 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="isExternal")
     def is_external(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
+        Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
+        access projects to which they are explicitly granted access.
         """
         return pulumi.get(self, "is_external")
 
@@ -698,7 +705,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="projectsLimit")
     def projects_limit(self) -> pulumi.Output[Optional[int]]:
         """
-        Integer, defaults to 0.  Number of projects user can create.
+        Integer, defaults to 0. Number of projects user can create.
         """
         return pulumi.get(self, "projects_limit")
 

@@ -25,18 +25,33 @@ type RepositoryFile struct {
 	AuthorEmail pulumi.StringPtrOutput `pulumi:"authorEmail"`
 	// Name of the commit author.
 	AuthorName pulumi.StringPtrOutput `pulumi:"authorName"`
+	// The blob id.
+	BlobId pulumi.StringOutput `pulumi:"blobId"`
 	// Name of the branch to which to commit to.
 	Branch pulumi.StringOutput `pulumi:"branch"`
+	// The commit id.
+	CommitId pulumi.StringOutput `pulumi:"commitId"`
 	// Commit message.
 	CommitMessage pulumi.StringOutput `pulumi:"commitMessage"`
-	// base64 encoded file content. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+	// supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
 	Content pulumi.StringOutput `pulumi:"content"`
-	// Content encoding.
+	// File content sha256 digest.
+	ContentSha256 pulumi.StringOutput `pulumi:"contentSha256"`
+	// The file content encoding.
 	Encoding pulumi.StringOutput `pulumi:"encoding"`
+	// The filename.
+	FileName pulumi.StringOutput `pulumi:"fileName"`
 	// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
 	FilePath pulumi.StringOutput `pulumi:"filePath"`
-	// The ID of the project.
+	// The last known commit id.
+	LastCommitId pulumi.StringOutput `pulumi:"lastCommitId"`
+	// The name or ID of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The name of branch, tag or commit.
+	Ref pulumi.StringOutput `pulumi:"ref"`
+	// The file size.
+	Size pulumi.IntOutput `pulumi:"size"`
 	// Name of the branch to start the new commit from.
 	StartBranch pulumi.StringPtrOutput `pulumi:"startBranch"`
 }
@@ -89,18 +104,33 @@ type repositoryFileState struct {
 	AuthorEmail *string `pulumi:"authorEmail"`
 	// Name of the commit author.
 	AuthorName *string `pulumi:"authorName"`
+	// The blob id.
+	BlobId *string `pulumi:"blobId"`
 	// Name of the branch to which to commit to.
 	Branch *string `pulumi:"branch"`
+	// The commit id.
+	CommitId *string `pulumi:"commitId"`
 	// Commit message.
 	CommitMessage *string `pulumi:"commitMessage"`
-	// base64 encoded file content. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+	// supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
 	Content *string `pulumi:"content"`
-	// Content encoding.
+	// File content sha256 digest.
+	ContentSha256 *string `pulumi:"contentSha256"`
+	// The file content encoding.
 	Encoding *string `pulumi:"encoding"`
+	// The filename.
+	FileName *string `pulumi:"fileName"`
 	// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
 	FilePath *string `pulumi:"filePath"`
-	// The ID of the project.
+	// The last known commit id.
+	LastCommitId *string `pulumi:"lastCommitId"`
+	// The name or ID of the project.
 	Project *string `pulumi:"project"`
+	// The name of branch, tag or commit.
+	Ref *string `pulumi:"ref"`
+	// The file size.
+	Size *int `pulumi:"size"`
 	// Name of the branch to start the new commit from.
 	StartBranch *string `pulumi:"startBranch"`
 }
@@ -110,18 +140,33 @@ type RepositoryFileState struct {
 	AuthorEmail pulumi.StringPtrInput
 	// Name of the commit author.
 	AuthorName pulumi.StringPtrInput
+	// The blob id.
+	BlobId pulumi.StringPtrInput
 	// Name of the branch to which to commit to.
 	Branch pulumi.StringPtrInput
+	// The commit id.
+	CommitId pulumi.StringPtrInput
 	// Commit message.
 	CommitMessage pulumi.StringPtrInput
-	// base64 encoded file content. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+	// supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
 	Content pulumi.StringPtrInput
-	// Content encoding.
+	// File content sha256 digest.
+	ContentSha256 pulumi.StringPtrInput
+	// The file content encoding.
 	Encoding pulumi.StringPtrInput
+	// The filename.
+	FileName pulumi.StringPtrInput
 	// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
 	FilePath pulumi.StringPtrInput
-	// The ID of the project.
+	// The last known commit id.
+	LastCommitId pulumi.StringPtrInput
+	// The name or ID of the project.
 	Project pulumi.StringPtrInput
+	// The name of branch, tag or commit.
+	Ref pulumi.StringPtrInput
+	// The file size.
+	Size pulumi.IntPtrInput
 	// Name of the branch to start the new commit from.
 	StartBranch pulumi.StringPtrInput
 }
@@ -139,11 +184,12 @@ type repositoryFileArgs struct {
 	Branch string `pulumi:"branch"`
 	// Commit message.
 	CommitMessage string `pulumi:"commitMessage"`
-	// base64 encoded file content. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+	// supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
 	Content string `pulumi:"content"`
 	// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
 	FilePath string `pulumi:"filePath"`
-	// The ID of the project.
+	// The name or ID of the project.
 	Project string `pulumi:"project"`
 	// Name of the branch to start the new commit from.
 	StartBranch *string `pulumi:"startBranch"`
@@ -159,11 +205,12 @@ type RepositoryFileArgs struct {
 	Branch pulumi.StringInput
 	// Commit message.
 	CommitMessage pulumi.StringInput
-	// base64 encoded file content. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+	// supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
 	Content pulumi.StringInput
 	// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
 	FilePath pulumi.StringInput
-	// The ID of the project.
+	// The name or ID of the project.
 	Project pulumi.StringInput
 	// Name of the branch to start the new commit from.
 	StartBranch pulumi.StringPtrInput

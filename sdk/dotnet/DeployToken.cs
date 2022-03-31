@@ -13,6 +13,20 @@ namespace Pulumi.GitLab
     /// The `gitlab.DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_tokens.html)
+    /// 
+    /// ## Import
+    /// 
+    /// # GitLab deploy tokens can be imported using an id made up of `{type}:{type_id}:{deploy_token_id}`, where type is one ofproject, group.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gitlab:index/deployToken:DeployToken group_token group:1:3
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4
+    /// ```
+    /// 
+    /// # Notethe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/deployToken:DeployToken")]
     public partial class DeployToken : Pulumi.CustomResource
@@ -48,7 +62,8 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
 
         /// <summary>
-        /// The secret token. This is only populated when creating a new deploy token.
+        /// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
+        /// imported resources.
         /// </summary>
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
@@ -191,7 +206,8 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The secret token. This is only populated when creating a new deploy token.
+        /// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
+        /// imported resources.
         /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }

@@ -77,21 +77,12 @@ namespace Pulumi.GitLab
 
     public sealed class GetGroupMembershipArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-        /// </summary>
         [Input("accessLevel")]
         public string? AccessLevel { get; set; }
 
-        /// <summary>
-        /// The full path of the group.
-        /// </summary>
         [Input("fullPath")]
         public string? FullPath { get; set; }
 
-        /// <summary>
-        /// The ID of the group.
-        /// </summary>
         [Input("groupId")]
         public int? GroupId { get; set; }
 
@@ -102,21 +93,12 @@ namespace Pulumi.GitLab
 
     public sealed class GetGroupMembershipInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-        /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
 
-        /// <summary>
-        /// The full path of the group.
-        /// </summary>
         [Input("fullPath")]
         public Input<string>? FullPath { get; set; }
 
-        /// <summary>
-        /// The ID of the group.
-        /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
 
@@ -129,25 +111,13 @@ namespace Pulumi.GitLab
     [OutputType]
     public sealed class GetGroupMembershipResult
     {
-        /// <summary>
-        /// Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-        /// </summary>
         public readonly string AccessLevel;
-        /// <summary>
-        /// The full path of the group.
-        /// </summary>
         public readonly string FullPath;
-        /// <summary>
-        /// The ID of the group.
-        /// </summary>
         public readonly int GroupId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The list of group members.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupMembershipMemberResult> Members;
 
         [OutputConstructor]

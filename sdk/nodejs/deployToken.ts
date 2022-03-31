@@ -8,6 +8,20 @@ import * as utilities from "./utilities";
  * The `gitlab.DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_tokens.html)
+ *
+ * ## Import
+ *
+ * # GitLab deploy tokens can be imported using an id made up of `{type}:{type_id}:{deploy_token_id}`, where type is one ofproject, group.
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/deployToken:DeployToken group_token group:1:3
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4
+ * ```
+ *
+ * # Notethe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  */
 export class DeployToken extends pulumi.CustomResource {
     /**
@@ -54,11 +68,12 @@ export class DeployToken extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string | undefined>;
     /**
-     * Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
+     * Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
-     * The secret token. This is only populated when creating a new deploy token.
+     * The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
+     * imported resources.
      */
     public /*out*/ readonly token!: pulumi.Output<string>;
     /**
@@ -125,11 +140,12 @@ export interface DeployTokenState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
+     * Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The secret token. This is only populated when creating a new deploy token.
+     * The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
+     * imported resources.
      */
     token?: pulumi.Input<string>;
     /**
@@ -159,7 +175,7 @@ export interface DeployTokenArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
+     * Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
     /**

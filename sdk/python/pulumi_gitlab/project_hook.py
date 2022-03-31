@@ -47,7 +47,7 @@ class ProjectHookArgs:
         :param pulumi.Input[str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
         :param pulumi.Input[bool] releases_events: Invoke the hook for releases events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
-        :param pulumi.Input[str] token: A token to present when invoking the hook.
+        :param pulumi.Input[str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
         """
         pulumi.set(__self__, "project", project)
@@ -267,7 +267,7 @@ class ProjectHookArgs:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
-        A token to present when invoking the hook.
+        A token to present when invoking the hook. The token is not available for imported resources.
         """
         return pulumi.get(self, "token")
 
@@ -324,7 +324,7 @@ class _ProjectHookState:
         :param pulumi.Input[str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
         :param pulumi.Input[bool] releases_events: Invoke the hook for releases events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
-        :param pulumi.Input[str] token: A token to present when invoking the hook.
+        :param pulumi.Input[str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[str] url: The url of the hook to invoke.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
         """
@@ -535,7 +535,7 @@ class _ProjectHookState:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
-        A token to present when invoking the hook.
+        A token to present when invoking the hook. The token is not available for imported resources.
         """
         return pulumi.get(self, "token")
 
@@ -608,6 +608,16 @@ class ProjectHook(pulumi.CustomResource):
             url="https://example.com/hook/example")
         ```
 
+        ## Import
+
+        # A GitLab Project Hook can be imported using a key composed of `<project-id>:<hook-id>`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/projectHook:ProjectHook example "12345:1"
+        ```
+
+        # NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
@@ -624,7 +634,7 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
         :param pulumi.Input[bool] releases_events: Invoke the hook for releases events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
-        :param pulumi.Input[str] token: A token to present when invoking the hook.
+        :param pulumi.Input[str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[str] url: The url of the hook to invoke.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
         """
@@ -650,6 +660,16 @@ class ProjectHook(pulumi.CustomResource):
             project="example/hooked",
             url="https://example.com/hook/example")
         ```
+
+        ## Import
+
+        # A GitLab Project Hook can be imported using a key composed of `<project-id>:<hook-id>`, e.g.
+
+        ```sh
+         $ pulumi import gitlab:index/projectHook:ProjectHook example "12345:1"
+        ```
+
+        # NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 
         :param str resource_name: The name of the resource.
         :param ProjectHookArgs args: The arguments to use to populate this resource's properties.
@@ -764,7 +784,7 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
         :param pulumi.Input[bool] releases_events: Invoke the hook for releases events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
-        :param pulumi.Input[str] token: A token to present when invoking the hook.
+        :param pulumi.Input[str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[str] url: The url of the hook to invoke.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
         """
@@ -907,7 +927,7 @@ class ProjectHook(pulumi.CustomResource):
     @pulumi.getter
     def token(self) -> pulumi.Output[Optional[str]]:
         """
-        A token to present when invoking the hook.
+        A token to present when invoking the hook. The token is not available for imported resources.
         """
         return pulumi.get(self, "token")
 

@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.BranchProtection` resource allows to manage the lifecycle of a protected branch of a repository.
     /// 
-    /// &gt; The allowed_to_push, allowed_to_merge and code_owner_approval_required attributes require a GitLab Enterprise instance.
+    /// &gt; The `allowed_to_push`, `allowed_to_merge`, `allowed_to_unprotect`, `unprotect_access_level` and `code_owner_approval_required` attributes require a GitLab Enterprise instance.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html)
     /// 
@@ -46,6 +46,12 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<Outputs.BranchProtectionAllowedToPush>> AllowedToPushes { get; private set; } = null!;
 
         /// <summary>
+        /// Defines permissions for action.
+        /// </summary>
+        [Output("allowedToUnprotects")]
+        public Output<ImmutableArray<Outputs.BranchProtectionAllowedToUnprotect>> AllowedToUnprotects { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the branch.
         /// </summary>
         [Output("branch")]
@@ -67,7 +73,7 @@ namespace Pulumi.GitLab
         /// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
         [Output("mergeAccessLevel")]
-        public Output<string> MergeAccessLevel { get; private set; } = null!;
+        public Output<string?> MergeAccessLevel { get; private set; } = null!;
 
         /// <summary>
         /// The id of the project.
@@ -79,7 +85,13 @@ namespace Pulumi.GitLab
         /// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
         [Output("pushAccessLevel")]
-        public Output<string> PushAccessLevel { get; private set; } = null!;
+        public Output<string?> PushAccessLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+        /// </summary>
+        [Output("unprotectAccessLevel")]
+        public Output<string?> UnprotectAccessLevel { get; private set; } = null!;
 
 
         /// <summary>
@@ -157,6 +169,18 @@ namespace Pulumi.GitLab
             set => _allowedToPushes = value;
         }
 
+        [Input("allowedToUnprotects")]
+        private InputList<Inputs.BranchProtectionAllowedToUnprotectArgs>? _allowedToUnprotects;
+
+        /// <summary>
+        /// Defines permissions for action.
+        /// </summary>
+        public InputList<Inputs.BranchProtectionAllowedToUnprotectArgs> AllowedToUnprotects
+        {
+            get => _allowedToUnprotects ?? (_allowedToUnprotects = new InputList<Inputs.BranchProtectionAllowedToUnprotectArgs>());
+            set => _allowedToUnprotects = value;
+        }
+
         /// <summary>
         /// Name of the branch.
         /// </summary>
@@ -172,8 +196,8 @@ namespace Pulumi.GitLab
         /// <summary>
         /// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
-        [Input("mergeAccessLevel", required: true)]
-        public Input<string> MergeAccessLevel { get; set; } = null!;
+        [Input("mergeAccessLevel")]
+        public Input<string>? MergeAccessLevel { get; set; }
 
         /// <summary>
         /// The id of the project.
@@ -184,8 +208,14 @@ namespace Pulumi.GitLab
         /// <summary>
         /// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
-        [Input("pushAccessLevel", required: true)]
-        public Input<string> PushAccessLevel { get; set; } = null!;
+        [Input("pushAccessLevel")]
+        public Input<string>? PushAccessLevel { get; set; }
+
+        /// <summary>
+        /// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+        /// </summary>
+        [Input("unprotectAccessLevel")]
+        public Input<string>? UnprotectAccessLevel { get; set; }
 
         public BranchProtectionArgs()
         {
@@ -224,6 +254,18 @@ namespace Pulumi.GitLab
             set => _allowedToPushes = value;
         }
 
+        [Input("allowedToUnprotects")]
+        private InputList<Inputs.BranchProtectionAllowedToUnprotectGetArgs>? _allowedToUnprotects;
+
+        /// <summary>
+        /// Defines permissions for action.
+        /// </summary>
+        public InputList<Inputs.BranchProtectionAllowedToUnprotectGetArgs> AllowedToUnprotects
+        {
+            get => _allowedToUnprotects ?? (_allowedToUnprotects = new InputList<Inputs.BranchProtectionAllowedToUnprotectGetArgs>());
+            set => _allowedToUnprotects = value;
+        }
+
         /// <summary>
         /// Name of the branch.
         /// </summary>
@@ -259,6 +301,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("pushAccessLevel")]
         public Input<string>? PushAccessLevel { get; set; }
+
+        /// <summary>
+        /// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+        /// </summary>
+        [Input("unprotectAccessLevel")]
+        public Input<string>? UnprotectAccessLevel { get; set; }
 
         public BranchProtectionState()
         {

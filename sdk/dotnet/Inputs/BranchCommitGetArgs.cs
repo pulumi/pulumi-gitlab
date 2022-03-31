@@ -30,9 +30,6 @@ namespace Pulumi.GitLab.Inputs
         [Input("committerName")]
         public Input<string>? CommitterName { get; set; }
 
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 

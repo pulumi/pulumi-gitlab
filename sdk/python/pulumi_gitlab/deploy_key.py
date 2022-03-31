@@ -22,7 +22,8 @@ class DeployKeyArgs:
         :param pulumi.Input[str] key: The public ssh key body.
         :param pulumi.Input[str] project: The name or id of the project to add the deploy key to.
         :param pulumi.Input[str] title: A title to describe the deploy key with.
-        :param pulumi.Input[bool] can_push: Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+        :param pulumi.Input[bool] can_push: Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
+               be managed.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "project", project)
@@ -70,7 +71,8 @@ class DeployKeyArgs:
     @pulumi.getter(name="canPush")
     def can_push(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+        Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
+        be managed.
         """
         return pulumi.get(self, "can_push")
 
@@ -88,7 +90,8 @@ class _DeployKeyState:
                  title: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DeployKey resources.
-        :param pulumi.Input[bool] can_push: Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+        :param pulumi.Input[bool] can_push: Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
+               be managed.
         :param pulumi.Input[str] key: The public ssh key body.
         :param pulumi.Input[str] project: The name or id of the project to add the deploy key to.
         :param pulumi.Input[str] title: A title to describe the deploy key with.
@@ -106,7 +109,8 @@ class _DeployKeyState:
     @pulumi.getter(name="canPush")
     def can_push(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+        Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
+        be managed.
         """
         return pulumi.get(self, "can_push")
 
@@ -190,7 +194,8 @@ class DeployKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] can_push: Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+        :param pulumi.Input[bool] can_push: Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
+               be managed.
         :param pulumi.Input[str] key: The public ssh key body.
         :param pulumi.Input[str] project: The name or id of the project to add the deploy key to.
         :param pulumi.Input[str] title: A title to describe the deploy key with.
@@ -290,7 +295,8 @@ class DeployKey(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] can_push: Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+        :param pulumi.Input[bool] can_push: Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
+               be managed.
         :param pulumi.Input[str] key: The public ssh key body.
         :param pulumi.Input[str] project: The name or id of the project to add the deploy key to.
         :param pulumi.Input[str] title: A title to describe the deploy key with.
@@ -309,7 +315,8 @@ class DeployKey(pulumi.CustomResource):
     @pulumi.getter(name="canPush")
     def can_push(self) -> pulumi.Output[Optional[bool]]:
         """
-        Allow this deploy key to be used to push changes to the project.  Defaults to `false`. **NOTE::** this cannot currently be managed.
+        Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
+        be managed.
         """
         return pulumi.get(self, "can_push")
 

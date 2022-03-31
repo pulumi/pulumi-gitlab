@@ -75,7 +75,7 @@ type ProjectCluster struct {
 	EnvironmentScope pulumi.StringPtrOutput `pulumi:"environmentScope"`
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl pulumi.StringOutput `pulumi:"kubernetesApiUrl"`
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType pulumi.StringPtrOutput `pulumi:"kubernetesAuthorizationType"`
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert pulumi.StringPtrOutput `pulumi:"kubernetesCaCert"`
@@ -147,7 +147,7 @@ type projectClusterState struct {
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl *string `pulumi:"kubernetesApiUrl"`
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType *string `pulumi:"kubernetesAuthorizationType"`
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert *string `pulumi:"kubernetesCaCert"`
@@ -182,7 +182,7 @@ type ProjectClusterState struct {
 	EnvironmentScope pulumi.StringPtrInput
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl pulumi.StringPtrInput
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType pulumi.StringPtrInput
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert pulumi.StringPtrInput
@@ -217,7 +217,7 @@ type projectClusterArgs struct {
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl string `pulumi:"kubernetesApiUrl"`
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType *string `pulumi:"kubernetesAuthorizationType"`
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert *string `pulumi:"kubernetesCaCert"`
@@ -245,7 +245,7 @@ type ProjectClusterArgs struct {
 	EnvironmentScope pulumi.StringPtrInput
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl pulumi.StringInput
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType pulumi.StringPtrInput
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert pulumi.StringPtrInput

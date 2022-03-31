@@ -109,129 +109,66 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectsArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Limit by archived status.
-        /// </summary>
         [Input("archived")]
         public bool? Archived { get; set; }
 
-        /// <summary>
-        /// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
-        /// </summary>
         [Input("groupId")]
         public int? GroupId { get; set; }
 
-        /// <summary>
-        /// Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
-        /// </summary>
         [Input("includeSubgroups")]
         public bool? IncludeSubgroups { get; set; }
 
-        /// <summary>
-        /// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
-        /// </summary>
         [Input("maxQueryablePages")]
         public int? MaxQueryablePages { get; set; }
 
-        /// <summary>
-        /// Limit by projects that the current user is a member of.
-        /// </summary>
         [Input("membership")]
         public bool? Membership { get; set; }
 
-        /// <summary>
-        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `group_id`.
-        /// </summary>
         [Input("minAccessLevel")]
         public int? MinAccessLevel { get; set; }
 
-        /// <summary>
-        /// Return projects ordered by `id`, `name`, `path`, `created_at`, `updated_at`, or `last_activity_at` fields. Default is `created_at`.
-        /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
-        /// <summary>
-        /// Limit by projects owned by the current user.
-        /// </summary>
         [Input("owned")]
         public bool? Owned { get; set; }
 
-        /// <summary>
-        /// The first page to begin the query on.
-        /// </summary>
         [Input("page")]
         public int? Page { get; set; }
 
-        /// <summary>
-        /// The number of results to return per page.
-        /// </summary>
         [Input("perPage")]
         public int? PerPage { get; set; }
 
-        /// <summary>
-        /// Return list of authorized projects matching the search criteria.
-        /// </summary>
         [Input("search")]
         public string? Search { get; set; }
 
-        /// <summary>
-        /// Return only the ID, URL, name, and path of each project.
-        /// </summary>
         [Input("simple")]
         public bool? Simple { get; set; }
 
-        /// <summary>
-        /// Return projects sorted in `asc` or `desc` order. Default is `desc`.
-        /// </summary>
         [Input("sort")]
         public string? Sort { get; set; }
 
-        /// <summary>
-        /// Limit by projects starred by the current user.
-        /// </summary>
         [Input("starred")]
         public bool? Starred { get; set; }
 
-        /// <summary>
-        /// Include project statistics. Cannot be used with `group_id`.
-        /// </summary>
         [Input("statistics")]
         public bool? Statistics { get; set; }
 
-        /// <summary>
-        /// Limit by visibility `public`, `internal`, or `private`.
-        /// </summary>
         [Input("visibility")]
         public string? Visibility { get; set; }
 
-        /// <summary>
-        /// Include custom attributes in response *(admins only)*.
-        /// </summary>
         [Input("withCustomAttributes")]
         public bool? WithCustomAttributes { get; set; }
 
-        /// <summary>
-        /// Limit by projects with issues feature enabled. Default is `false`.
-        /// </summary>
         [Input("withIssuesEnabled")]
         public bool? WithIssuesEnabled { get; set; }
 
-        /// <summary>
-        /// Limit by projects with merge requests feature enabled. Default is `false`.
-        /// </summary>
         [Input("withMergeRequestsEnabled")]
         public bool? WithMergeRequestsEnabled { get; set; }
 
-        /// <summary>
-        /// Limit by projects which use the given programming language. Cannot be used with `group_id`.
-        /// </summary>
         [Input("withProgrammingLanguage")]
         public string? WithProgrammingLanguage { get; set; }
 
-        /// <summary>
-        /// Include projects shared to this group. Default is `true`. Needs `group_id`.
-        /// </summary>
         [Input("withShared")]
         public bool? WithShared { get; set; }
 
@@ -242,129 +179,66 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectsInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Limit by archived status.
-        /// </summary>
         [Input("archived")]
         public Input<bool>? Archived { get; set; }
 
-        /// <summary>
-        /// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
-        /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
 
-        /// <summary>
-        /// Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
-        /// </summary>
         [Input("includeSubgroups")]
         public Input<bool>? IncludeSubgroups { get; set; }
 
-        /// <summary>
-        /// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
-        /// </summary>
         [Input("maxQueryablePages")]
         public Input<int>? MaxQueryablePages { get; set; }
 
-        /// <summary>
-        /// Limit by projects that the current user is a member of.
-        /// </summary>
         [Input("membership")]
         public Input<bool>? Membership { get; set; }
 
-        /// <summary>
-        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `group_id`.
-        /// </summary>
         [Input("minAccessLevel")]
         public Input<int>? MinAccessLevel { get; set; }
 
-        /// <summary>
-        /// Return projects ordered by `id`, `name`, `path`, `created_at`, `updated_at`, or `last_activity_at` fields. Default is `created_at`.
-        /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
 
-        /// <summary>
-        /// Limit by projects owned by the current user.
-        /// </summary>
         [Input("owned")]
         public Input<bool>? Owned { get; set; }
 
-        /// <summary>
-        /// The first page to begin the query on.
-        /// </summary>
         [Input("page")]
         public Input<int>? Page { get; set; }
 
-        /// <summary>
-        /// The number of results to return per page.
-        /// </summary>
         [Input("perPage")]
         public Input<int>? PerPage { get; set; }
 
-        /// <summary>
-        /// Return list of authorized projects matching the search criteria.
-        /// </summary>
         [Input("search")]
         public Input<string>? Search { get; set; }
 
-        /// <summary>
-        /// Return only the ID, URL, name, and path of each project.
-        /// </summary>
         [Input("simple")]
         public Input<bool>? Simple { get; set; }
 
-        /// <summary>
-        /// Return projects sorted in `asc` or `desc` order. Default is `desc`.
-        /// </summary>
         [Input("sort")]
         public Input<string>? Sort { get; set; }
 
-        /// <summary>
-        /// Limit by projects starred by the current user.
-        /// </summary>
         [Input("starred")]
         public Input<bool>? Starred { get; set; }
 
-        /// <summary>
-        /// Include project statistics. Cannot be used with `group_id`.
-        /// </summary>
         [Input("statistics")]
         public Input<bool>? Statistics { get; set; }
 
-        /// <summary>
-        /// Limit by visibility `public`, `internal`, or `private`.
-        /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }
 
-        /// <summary>
-        /// Include custom attributes in response *(admins only)*.
-        /// </summary>
         [Input("withCustomAttributes")]
         public Input<bool>? WithCustomAttributes { get; set; }
 
-        /// <summary>
-        /// Limit by projects with issues feature enabled. Default is `false`.
-        /// </summary>
         [Input("withIssuesEnabled")]
         public Input<bool>? WithIssuesEnabled { get; set; }
 
-        /// <summary>
-        /// Limit by projects with merge requests feature enabled. Default is `false`.
-        /// </summary>
         [Input("withMergeRequestsEnabled")]
         public Input<bool>? WithMergeRequestsEnabled { get; set; }
 
-        /// <summary>
-        /// Limit by projects which use the given programming language. Cannot be used with `group_id`.
-        /// </summary>
         [Input("withProgrammingLanguage")]
         public Input<string>? WithProgrammingLanguage { get; set; }
 
-        /// <summary>
-        /// Include projects shared to this group. Default is `true`. Needs `group_id`.
-        /// </summary>
         [Input("withShared")]
         public Input<bool>? WithShared { get; set; }
 
@@ -377,97 +251,31 @@ namespace Pulumi.GitLab
     [OutputType]
     public sealed class GetProjectsResult
     {
-        /// <summary>
-        /// Limit by archived status.
-        /// </summary>
         public readonly bool? Archived;
-        /// <summary>
-        /// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
-        /// </summary>
         public readonly int? GroupId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
-        /// </summary>
         public readonly bool? IncludeSubgroups;
-        /// <summary>
-        /// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
-        /// </summary>
         public readonly int? MaxQueryablePages;
-        /// <summary>
-        /// Limit by projects that the current user is a member of.
-        /// </summary>
         public readonly bool? Membership;
-        /// <summary>
-        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `group_id`.
-        /// </summary>
         public readonly int? MinAccessLevel;
-        /// <summary>
-        /// Return projects ordered by `id`, `name`, `path`, `created_at`, `updated_at`, or `last_activity_at` fields. Default is `created_at`.
-        /// </summary>
         public readonly string? OrderBy;
-        /// <summary>
-        /// Limit by projects owned by the current user.
-        /// </summary>
         public readonly bool? Owned;
-        /// <summary>
-        /// The first page to begin the query on.
-        /// </summary>
         public readonly int? Page;
-        /// <summary>
-        /// The number of results to return per page.
-        /// </summary>
         public readonly int? PerPage;
-        /// <summary>
-        /// A list containing the projects matching the supplied arguments
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectResult> Projects;
-        /// <summary>
-        /// Return list of authorized projects matching the search criteria.
-        /// </summary>
         public readonly string? Search;
-        /// <summary>
-        /// Return only the ID, URL, name, and path of each project.
-        /// </summary>
         public readonly bool? Simple;
-        /// <summary>
-        /// Return projects sorted in `asc` or `desc` order. Default is `desc`.
-        /// </summary>
         public readonly string? Sort;
-        /// <summary>
-        /// Limit by projects starred by the current user.
-        /// </summary>
         public readonly bool? Starred;
-        /// <summary>
-        /// Include project statistics. Cannot be used with `group_id`.
-        /// </summary>
         public readonly bool? Statistics;
-        /// <summary>
-        /// Limit by visibility `public`, `internal`, or `private`.
-        /// </summary>
         public readonly string? Visibility;
-        /// <summary>
-        /// Include custom attributes in response *(admins only)*.
-        /// </summary>
         public readonly bool? WithCustomAttributes;
-        /// <summary>
-        /// Limit by projects with issues feature enabled. Default is `false`.
-        /// </summary>
         public readonly bool? WithIssuesEnabled;
-        /// <summary>
-        /// Limit by projects with merge requests feature enabled. Default is `false`.
-        /// </summary>
         public readonly bool? WithMergeRequestsEnabled;
-        /// <summary>
-        /// Limit by projects which use the given programming language. Cannot be used with `group_id`.
-        /// </summary>
         public readonly string? WithProgrammingLanguage;
-        /// <summary>
-        /// Include projects shared to this group. Default is `true`. Needs `group_id`.
-        /// </summary>
         public readonly bool? WithShared;
 
         [OutputConstructor]
