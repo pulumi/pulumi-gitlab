@@ -26,17 +26,15 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "foo/bar/baz"
 // 		foo, err := gitlab.LookupProject(ctx, &GetProjectArgs{
-// 			Id: &opt0,
+// 			Id: pulumi.StringRef("foo/bar/baz"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "foo"
 // 		_, err = gitlab.GetProjectIssues(ctx, &GetProjectIssuesArgs{
 // 			Project: foo.Id,
-// 			Search:  &opt1,
+// 			Search:  pulumi.StringRef("foo"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

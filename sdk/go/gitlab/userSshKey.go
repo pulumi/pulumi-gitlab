@@ -27,9 +27,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "example-user"
 // 		_, err := gitlab.LookupUser(ctx, &GetUserArgs{
-// 			Username: &opt0,
+// 			Username: pulumi.StringRef("example-user"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

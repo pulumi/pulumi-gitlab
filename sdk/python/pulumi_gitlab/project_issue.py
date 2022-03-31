@@ -1153,6 +1153,25 @@ class ProjectIssue(pulumi.CustomResource):
                  weight: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo = gitlab.Project("foo",
+            description="Lorem Ipsum",
+            visibility_level="public")
+        welcome_issue = gitlab.ProjectIssue("welcomeIssue",
+            project=foo.id,
+            title="Welcome!",
+            description=foo.name.apply(lambda name: f\"\"\"  Welcome to the {name} project!
+
+        \"\"\"),
+            discussion_locked=True)
+        pulumi.export("welcomeIssueWebUrl", data["gitlab_project_issue"]["web_url"])
+        ```
+
         ## Import
 
         # You can import this resource with an id made up of `{project-id}:{issue-id}`, e.g.
@@ -1200,6 +1219,25 @@ class ProjectIssue(pulumi.CustomResource):
                  args: ProjectIssueArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo = gitlab.Project("foo",
+            description="Lorem Ipsum",
+            visibility_level="public")
+        welcome_issue = gitlab.ProjectIssue("welcomeIssue",
+            project=foo.id,
+            title="Welcome!",
+            description=foo.name.apply(lambda name: f\"\"\"  Welcome to the {name} project!
+
+        \"\"\"),
+            discussion_locked=True)
+        pulumi.export("welcomeIssueWebUrl", data["gitlab_project_issue"]["web_url"])
+        ```
+
         ## Import
 
         # You can import this resource with an id made up of `{project-id}:{issue-id}`, e.g.
