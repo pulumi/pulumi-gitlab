@@ -12,65 +12,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const branchProtect = new gitlab.BranchProtection("branchProtect", {
- *     project: "12345",
- *     branch: "BranchProtected",
- *     pushAccessLevel: "developer",
- *     mergeAccessLevel: "developer",
- *     unprotectAccessLevel: "developer",
- *     allowForcePush: true,
- *     codeOwnerApprovalRequired: true,
- *     allowedToPushes: [
- *         {
- *             userId: 5,
- *         },
- *         {
- *             userId: 521,
- *         },
- *     ],
- *     allowedToMerges: [
- *         {
- *             userId: 15,
- *         },
- *         {
- *             userId: 37,
- *         },
- *     ],
- *     allowedToUnprotects: [
- *         {
- *             userId: 15,
- *         },
- *         {
- *             groupId: 42,
- *         },
- *     ],
- * });
- * // Example using dynamic block
- * const main = new gitlab.BranchProtection("main", {
- *     project: "12345",
- *     branch: "main",
- *     pushAccessLevel: "maintainer",
- *     mergeAccessLevel: "maintainer",
- *     unprotectAccessLevel: "maintainer",
- *     dynamic: [{
- *         forEach: [
- *             50,
- *             55,
- *             60,
- *         ],
- *         content: [{
- *             userId: allowed_to_push.value,
- *         }],
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * # Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.
