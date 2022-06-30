@@ -350,6 +350,86 @@ func (o ProjectClusterOutput) ToProjectClusterOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Cluster type.
+func (o ProjectClusterOutput) ClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectCluster) pulumi.StringOutput { return v.ClusterType }).(pulumi.StringOutput)
+}
+
+// Create time.
+func (o ProjectClusterOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectCluster) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The base domain of the cluster.
+func (o ProjectClusterOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectCluster) pulumi.StringPtrOutput { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
+func (o ProjectClusterOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectCluster) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The associated environment to the cluster. Defaults to `*`.
+func (o ProjectClusterOutput) EnvironmentScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectCluster) pulumi.StringPtrOutput { return v.EnvironmentScope }).(pulumi.StringPtrOutput)
+}
+
+// The URL to access the Kubernetes API.
+func (o ProjectClusterOutput) KubernetesApiUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectCluster) pulumi.StringOutput { return v.KubernetesApiUrl }).(pulumi.StringOutput)
+}
+
+// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+func (o ProjectClusterOutput) KubernetesAuthorizationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectCluster) pulumi.StringPtrOutput { return v.KubernetesAuthorizationType }).(pulumi.StringPtrOutput)
+}
+
+// TLS certificate (needed if API is using a self-signed TLS certificate).
+func (o ProjectClusterOutput) KubernetesCaCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectCluster) pulumi.StringPtrOutput { return v.KubernetesCaCert }).(pulumi.StringPtrOutput)
+}
+
+// The unique namespace related to the project.
+func (o ProjectClusterOutput) KubernetesNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectCluster) pulumi.StringPtrOutput { return v.KubernetesNamespace }).(pulumi.StringPtrOutput)
+}
+
+// The token to authenticate against Kubernetes.
+func (o ProjectClusterOutput) KubernetesToken() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectCluster) pulumi.StringOutput { return v.KubernetesToken }).(pulumi.StringOutput)
+}
+
+// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
+func (o ProjectClusterOutput) Managed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectCluster) pulumi.BoolPtrOutput { return v.Managed }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the management project for the cluster.
+func (o ProjectClusterOutput) ManagementProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectCluster) pulumi.StringPtrOutput { return v.ManagementProjectId }).(pulumi.StringPtrOutput)
+}
+
+// The name of cluster.
+func (o ProjectClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Platform type.
+func (o ProjectClusterOutput) PlatformType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectCluster) pulumi.StringOutput { return v.PlatformType }).(pulumi.StringOutput)
+}
+
+// The id of the project to add the cluster to.
+func (o ProjectClusterOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectCluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Provider type.
+func (o ProjectClusterOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectCluster) pulumi.StringOutput { return v.ProviderType }).(pulumi.StringOutput)
+}
+
 type ProjectClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectClusterArrayOutput) ElementType() reflect.Type {

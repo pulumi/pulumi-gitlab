@@ -246,6 +246,26 @@ func (o PipelineScheduleVariableOutput) ToPipelineScheduleVariableOutputWithCont
 	return o
 }
 
+// Name of the variable.
+func (o PipelineScheduleVariableOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *PipelineScheduleVariable) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// The id of the pipeline schedule.
+func (o PipelineScheduleVariableOutput) PipelineScheduleId() pulumi.IntOutput {
+	return o.ApplyT(func(v *PipelineScheduleVariable) pulumi.IntOutput { return v.PipelineScheduleId }).(pulumi.IntOutput)
+}
+
+// The id of the project to add the schedule to.
+func (o PipelineScheduleVariableOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *PipelineScheduleVariable) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Value of the variable.
+func (o PipelineScheduleVariableOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *PipelineScheduleVariable) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
 type PipelineScheduleVariableArrayOutput struct{ *pulumi.OutputState }
 
 func (PipelineScheduleVariableArrayOutput) ElementType() reflect.Type {

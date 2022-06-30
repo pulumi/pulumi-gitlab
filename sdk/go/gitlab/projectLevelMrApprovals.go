@@ -266,6 +266,39 @@ func (o ProjectLevelMrApprovalsOutput) ToProjectLevelMrApprovalsOutputWithContex
 	return o
 }
 
+// By default, users are able to edit the approval rules in merge requests. If set to true,
+func (o ProjectLevelMrApprovalsOutput) DisableOverridingApproversPerMergeRequest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectLevelMrApprovals) pulumi.BoolPtrOutput {
+		return v.DisableOverridingApproversPerMergeRequest
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
+func (o ProjectLevelMrApprovalsOutput) MergeRequestsAuthorApproval() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectLevelMrApprovals) pulumi.BoolPtrOutput { return v.MergeRequestsAuthorApproval }).(pulumi.BoolPtrOutput)
+}
+
+// Set to `true` if you want to prevent approval of merge requests by merge request committers.
+func (o ProjectLevelMrApprovalsOutput) MergeRequestsDisableCommittersApproval() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectLevelMrApprovals) pulumi.BoolPtrOutput { return v.MergeRequestsDisableCommittersApproval }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the project to change MR approval configuration.
+func (o ProjectLevelMrApprovalsOutput) ProjectId() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectLevelMrApprovals) pulumi.IntOutput { return v.ProjectId }).(pulumi.IntOutput)
+}
+
+// Set to `true` if you want to require authentication when approving a merge request.
+func (o ProjectLevelMrApprovalsOutput) RequirePasswordToApprove() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectLevelMrApprovals) pulumi.BoolPtrOutput { return v.RequirePasswordToApprove }).(pulumi.BoolPtrOutput)
+}
+
+// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
+// Default is `true`.
+func (o ProjectLevelMrApprovalsOutput) ResetApprovalsOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectLevelMrApprovals) pulumi.BoolPtrOutput { return v.ResetApprovalsOnPush }).(pulumi.BoolPtrOutput)
+}
+
 type ProjectLevelMrApprovalsArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectLevelMrApprovalsArrayOutput) ElementType() reflect.Type {

@@ -243,6 +243,27 @@ func (o LabelOutput) ToLabelOutputWithContext(ctx context.Context) LabelOutput {
 	return o
 }
 
+// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+func (o LabelOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v *Label) pulumi.StringOutput { return v.Color }).(pulumi.StringOutput)
+}
+
+// The description of the label.
+func (o LabelOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Label) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the label.
+func (o LabelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Label) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name or id of the project to add the label to.
+func (o LabelOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Label) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 type LabelArrayOutput struct{ *pulumi.OutputState }
 
 func (LabelArrayOutput) ElementType() reflect.Type {

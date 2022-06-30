@@ -248,6 +248,36 @@ func (o ProjectMirrorOutput) ToProjectMirrorOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Determines if the mirror is enabled.
+func (o ProjectMirrorOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectMirror) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Determines if divergent refs are skipped.
+func (o ProjectMirrorOutput) KeepDivergentRefs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectMirror) pulumi.BoolPtrOutput { return v.KeepDivergentRefs }).(pulumi.BoolPtrOutput)
+}
+
+// Mirror ID.
+func (o ProjectMirrorOutput) MirrorId() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectMirror) pulumi.IntOutput { return v.MirrorId }).(pulumi.IntOutput)
+}
+
+// Determines if only protected branches are mirrored.
+func (o ProjectMirrorOutput) OnlyProtectedBranches() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectMirror) pulumi.BoolPtrOutput { return v.OnlyProtectedBranches }).(pulumi.BoolPtrOutput)
+}
+
+// The id of the project.
+func (o ProjectMirrorOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectMirror) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The URL of the remote repository to be mirrored.
+func (o ProjectMirrorOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectMirror) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
 type ProjectMirrorArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectMirrorArrayOutput) ElementType() reflect.Type {

@@ -263,6 +263,47 @@ func (o ProjectEnvironmentOutput) ToProjectEnvironmentOutputWithContext(ctx cont
 	return o
 }
 
+// The ISO8601 date/time that this environment was created at in UTC.
+func (o ProjectEnvironmentOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Place to link to for this environment.
+func (o ProjectEnvironmentOutput) ExternalUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringPtrOutput { return v.ExternalUrl }).(pulumi.StringPtrOutput)
+}
+
+// The name of the environment.
+func (o ProjectEnvironmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID or full path of the project to environment is created for.
+func (o ProjectEnvironmentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -.
+// No leading / trailing -. Use in URLs, host names and domain names.
+func (o ProjectEnvironmentOutput) Slug() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
+}
+
+// State the environment is in. Valid values are `available`, `stopped`.
+func (o ProjectEnvironmentOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Determines whether the environment is attempted to be stopped before the environment is deleted.
+func (o ProjectEnvironmentOutput) StopBeforeDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.BoolPtrOutput { return v.StopBeforeDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// The ISO8601 date/time that this environment was last updated at in UTC.
+func (o ProjectEnvironmentOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
 type ProjectEnvironmentArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectEnvironmentArrayOutput) ElementType() reflect.Type {

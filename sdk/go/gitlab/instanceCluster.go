@@ -332,6 +332,81 @@ func (o InstanceClusterOutput) ToInstanceClusterOutputWithContext(ctx context.Co
 	return o
 }
 
+// Cluster type.
+func (o InstanceClusterOutput) ClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceCluster) pulumi.StringOutput { return v.ClusterType }).(pulumi.StringOutput)
+}
+
+// Create time.
+func (o InstanceClusterOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceCluster) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The base domain of the cluster.
+func (o InstanceClusterOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceCluster) pulumi.StringPtrOutput { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
+func (o InstanceClusterOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceCluster) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The associated environment to the cluster. Defaults to `*`.
+func (o InstanceClusterOutput) EnvironmentScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceCluster) pulumi.StringPtrOutput { return v.EnvironmentScope }).(pulumi.StringPtrOutput)
+}
+
+// The URL to access the Kubernetes API.
+func (o InstanceClusterOutput) KubernetesApiUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceCluster) pulumi.StringOutput { return v.KubernetesApiUrl }).(pulumi.StringOutput)
+}
+
+// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+func (o InstanceClusterOutput) KubernetesAuthorizationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceCluster) pulumi.StringPtrOutput { return v.KubernetesAuthorizationType }).(pulumi.StringPtrOutput)
+}
+
+// TLS certificate (needed if API is using a self-signed TLS certificate).
+func (o InstanceClusterOutput) KubernetesCaCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceCluster) pulumi.StringPtrOutput { return v.KubernetesCaCert }).(pulumi.StringPtrOutput)
+}
+
+// The unique namespace related to the instance.
+func (o InstanceClusterOutput) KubernetesNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceCluster) pulumi.StringPtrOutput { return v.KubernetesNamespace }).(pulumi.StringPtrOutput)
+}
+
+// The token to authenticate against Kubernetes. This attribute cannot be read.
+func (o InstanceClusterOutput) KubernetesToken() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceCluster) pulumi.StringOutput { return v.KubernetesToken }).(pulumi.StringOutput)
+}
+
+// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
+func (o InstanceClusterOutput) Managed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceCluster) pulumi.BoolPtrOutput { return v.Managed }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the management project for the cluster.
+func (o InstanceClusterOutput) ManagementProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceCluster) pulumi.StringPtrOutput { return v.ManagementProjectId }).(pulumi.StringPtrOutput)
+}
+
+// The name of cluster.
+func (o InstanceClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Platform type.
+func (o InstanceClusterOutput) PlatformType() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceCluster) pulumi.StringOutput { return v.PlatformType }).(pulumi.StringOutput)
+}
+
+// Provider type.
+func (o InstanceClusterOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceCluster) pulumi.StringOutput { return v.ProviderType }).(pulumi.StringOutput)
+}
+
 type InstanceClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceClusterArrayOutput) ElementType() reflect.Type {

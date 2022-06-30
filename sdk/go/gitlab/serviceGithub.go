@@ -273,6 +273,47 @@ func (o ServiceGithubOutput) ToServiceGithubOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Whether the integration is active.
+func (o ServiceGithubOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceGithub) pulumi.BoolOutput { return v.Active }).(pulumi.BoolOutput)
+}
+
+// Create time.
+func (o ServiceGithubOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceGithub) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// ID of the project you want to activate integration on.
+func (o ServiceGithubOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceGithub) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
+func (o ServiceGithubOutput) RepositoryUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceGithub) pulumi.StringOutput { return v.RepositoryUrl }).(pulumi.StringOutput)
+}
+
+// Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
+// See [Static / dynamic status check names] to learn more.
+func (o ServiceGithubOutput) StaticContext() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceGithub) pulumi.BoolPtrOutput { return v.StaticContext }).(pulumi.BoolPtrOutput)
+}
+
+// Title.
+func (o ServiceGithubOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceGithub) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
+}
+
+// A GitHub personal access token with at least `repo:status` scope.
+func (o ServiceGithubOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceGithub) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+}
+
+// Update time.
+func (o ServiceGithubOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceGithub) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
 type ServiceGithubArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceGithubArrayOutput) ElementType() reflect.Type {

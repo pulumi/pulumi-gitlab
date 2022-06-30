@@ -239,6 +239,27 @@ func (o GroupShareGroupOutput) ToGroupShareGroupOutputWithContext(ctx context.Co
 	return o
 }
 
+// Share expiration date. Format: `YYYY-MM-DD`
+func (o GroupShareGroupOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupShareGroup) pulumi.StringPtrOutput { return v.ExpiresAt }).(pulumi.StringPtrOutput)
+}
+
+// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+// `maintainer`, `owner`, `master`
+func (o GroupShareGroupOutput) GroupAccess() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupShareGroup) pulumi.StringOutput { return v.GroupAccess }).(pulumi.StringOutput)
+}
+
+// The id of the main group.
+func (o GroupShareGroupOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupShareGroup) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The id of an additional group which will be shared with the main group.
+func (o GroupShareGroupOutput) ShareGroupId() pulumi.IntOutput {
+	return o.ApplyT(func(v *GroupShareGroup) pulumi.IntOutput { return v.ShareGroupId }).(pulumi.IntOutput)
+}
+
 type GroupShareGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupShareGroupArrayOutput) ElementType() reflect.Type {

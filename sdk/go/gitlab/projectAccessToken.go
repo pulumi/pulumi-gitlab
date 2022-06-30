@@ -272,6 +272,51 @@ func (o ProjectAccessTokenOutput) ToProjectAccessTokenOutputWithContext(ctx cont
 	return o
 }
 
+// True if the token is active.
+func (o ProjectAccessTokenOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectAccessToken) pulumi.BoolOutput { return v.Active }).(pulumi.BoolOutput)
+}
+
+// Time the token has been created, RFC3339 format.
+func (o ProjectAccessTokenOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectAccessToken) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+func (o ProjectAccessTokenOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectAccessToken) pulumi.StringPtrOutput { return v.ExpiresAt }).(pulumi.StringPtrOutput)
+}
+
+// A name to describe the project access token.
+func (o ProjectAccessTokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectAccessToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The id of the project to add the project access token to.
+func (o ProjectAccessTokenOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectAccessToken) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// True if the token is revoked.
+func (o ProjectAccessTokenOutput) Revoked() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectAccessToken) pulumi.BoolOutput { return v.Revoked }).(pulumi.BoolOutput)
+}
+
+// Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+func (o ProjectAccessTokenOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ProjectAccessToken) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// The secret token. **Note**: the token is not available for imported resources.
+func (o ProjectAccessTokenOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectAccessToken) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+}
+
+// The user_id associated to the token.
+func (o ProjectAccessTokenOutput) UserId() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectAccessToken) pulumi.IntOutput { return v.UserId }).(pulumi.IntOutput)
+}
+
 type ProjectAccessTokenArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectAccessTokenArrayOutput) ElementType() reflect.Type {

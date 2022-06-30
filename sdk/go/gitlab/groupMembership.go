@@ -241,6 +241,27 @@ func (o GroupMembershipOutput) ToGroupMembershipOutputWithContext(ctx context.Co
 	return o
 }
 
+// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
+// `owner`, `master`.
+func (o GroupMembershipOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupMembership) pulumi.StringOutput { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+// Expiration date for the group membership. Format: `YYYY-MM-DD`
+func (o GroupMembershipOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupMembership) pulumi.StringPtrOutput { return v.ExpiresAt }).(pulumi.StringPtrOutput)
+}
+
+// The id of the group.
+func (o GroupMembershipOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupMembership) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The id of the user.
+func (o GroupMembershipOutput) UserId() pulumi.IntOutput {
+	return o.ApplyT(func(v *GroupMembership) pulumi.IntOutput { return v.UserId }).(pulumi.IntOutput)
+}
+
 type GroupMembershipArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupMembershipArrayOutput) ElementType() reflect.Type {

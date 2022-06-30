@@ -237,6 +237,39 @@ func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 	return o
 }
 
+// A local path to the avatar image to upload. **Note**: not available for imported resources.
+func (o TopicOutput) Avatar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringPtrOutput { return v.Avatar }).(pulumi.StringPtrOutput)
+}
+
+// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
+// trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+func (o TopicOutput) AvatarHash() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.AvatarHash }).(pulumi.StringOutput)
+}
+
+// The URL of the avatar image.
+func (o TopicOutput) AvatarUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+// A text describing the topic.
+func (o TopicOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The topic's name.
+func (o TopicOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Empty the topics fields instead of deleting it.
+//
+// Deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
+func (o TopicOutput) SoftDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Topic) pulumi.BoolPtrOutput { return v.SoftDestroy }).(pulumi.BoolPtrOutput)
+}
+
 type TopicArrayOutput struct{ *pulumi.OutputState }
 
 func (TopicArrayOutput) ElementType() reflect.Type {

@@ -237,6 +237,42 @@ func (o DeployTokenOutput) ToDeployTokenOutputWithContext(ctx context.Context) D
 	return o
 }
 
+// Time the token will expire it, RFC3339 format. Will not expire per default.
+func (o DeployTokenOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeployToken) pulumi.StringPtrOutput { return v.ExpiresAt }).(pulumi.StringPtrOutput)
+}
+
+// The name or id of the group to add the deploy token to.
+func (o DeployTokenOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeployToken) pulumi.StringPtrOutput { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// A name to describe the deploy token with.
+func (o DeployTokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeployToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name or id of the project to add the deploy token to.
+func (o DeployTokenOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeployToken) pulumi.StringPtrOutput { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+func (o DeployTokenOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeployToken) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
+// imported resources.
+func (o DeployTokenOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeployToken) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+}
+
+// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
+func (o DeployTokenOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeployToken) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
+}
+
 type DeployTokenArrayOutput struct{ *pulumi.OutputState }
 
 func (DeployTokenArrayOutput) ElementType() reflect.Type {

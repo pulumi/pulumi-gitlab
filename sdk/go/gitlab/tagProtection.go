@@ -223,6 +223,21 @@ func (o TagProtectionOutput) ToTagProtectionOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
+func (o TagProtectionOutput) CreateAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagProtection) pulumi.StringOutput { return v.CreateAccessLevel }).(pulumi.StringOutput)
+}
+
+// The id of the project.
+func (o TagProtectionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagProtection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Name of the tag or wildcard.
+func (o TagProtectionOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagProtection) pulumi.StringOutput { return v.Tag }).(pulumi.StringOutput)
+}
+
 type TagProtectionArrayOutput struct{ *pulumi.OutputState }
 
 func (TagProtectionArrayOutput) ElementType() reflect.Type {

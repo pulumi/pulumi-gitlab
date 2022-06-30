@@ -341,6 +341,81 @@ func (o GroupClusterOutput) ToGroupClusterOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Cluster type.
+func (o GroupClusterOutput) ClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupCluster) pulumi.StringOutput { return v.ClusterType }).(pulumi.StringOutput)
+}
+
+// Create time.
+func (o GroupClusterOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupCluster) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The base domain of the cluster.
+func (o GroupClusterOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupCluster) pulumi.StringPtrOutput { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
+func (o GroupClusterOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupCluster) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The associated environment to the cluster. Defaults to `*`.
+func (o GroupClusterOutput) EnvironmentScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupCluster) pulumi.StringPtrOutput { return v.EnvironmentScope }).(pulumi.StringPtrOutput)
+}
+
+// The id of the group to add the cluster to.
+func (o GroupClusterOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupCluster) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
+}
+
+// The URL to access the Kubernetes API.
+func (o GroupClusterOutput) KubernetesApiUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupCluster) pulumi.StringOutput { return v.KubernetesApiUrl }).(pulumi.StringOutput)
+}
+
+// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+func (o GroupClusterOutput) KubernetesAuthorizationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupCluster) pulumi.StringPtrOutput { return v.KubernetesAuthorizationType }).(pulumi.StringPtrOutput)
+}
+
+// TLS certificate (needed if API is using a self-signed TLS certificate).
+func (o GroupClusterOutput) KubernetesCaCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupCluster) pulumi.StringPtrOutput { return v.KubernetesCaCert }).(pulumi.StringPtrOutput)
+}
+
+// The token to authenticate against Kubernetes.
+func (o GroupClusterOutput) KubernetesToken() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupCluster) pulumi.StringOutput { return v.KubernetesToken }).(pulumi.StringOutput)
+}
+
+// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
+func (o GroupClusterOutput) Managed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupCluster) pulumi.BoolPtrOutput { return v.Managed }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the management project for the cluster.
+func (o GroupClusterOutput) ManagementProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupCluster) pulumi.StringPtrOutput { return v.ManagementProjectId }).(pulumi.StringPtrOutput)
+}
+
+// The name of cluster.
+func (o GroupClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Platform type.
+func (o GroupClusterOutput) PlatformType() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupCluster) pulumi.StringOutput { return v.PlatformType }).(pulumi.StringOutput)
+}
+
+// Provider type.
+func (o GroupClusterOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupCluster) pulumi.StringOutput { return v.ProviderType }).(pulumi.StringOutput)
+}
+
 type GroupClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupClusterArrayOutput) ElementType() reflect.Type {

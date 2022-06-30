@@ -242,6 +242,42 @@ func (o ProjectApprovalRuleOutput) ToProjectApprovalRuleOutputWithContext(ctx co
 	return o
 }
 
+// The number of approvals required for this rule.
+func (o ProjectApprovalRuleOutput) ApprovalsRequired() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectApprovalRule) pulumi.IntOutput { return v.ApprovalsRequired }).(pulumi.IntOutput)
+}
+
+// A list of group IDs whose members can approve of the merge request.
+func (o ProjectApprovalRuleOutput) GroupIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *ProjectApprovalRule) pulumi.IntArrayOutput { return v.GroupIds }).(pulumi.IntArrayOutput)
+}
+
+// The name of the approval rule.
+func (o ProjectApprovalRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectApprovalRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name or id of the project to add the approval rules.
+func (o ProjectApprovalRuleOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectApprovalRule) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// A list of protected branch IDs (not branch names) for which the rule applies.
+func (o ProjectApprovalRuleOutput) ProtectedBranchIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *ProjectApprovalRule) pulumi.IntArrayOutput { return v.ProtectedBranchIds }).(pulumi.IntArrayOutput)
+}
+
+// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
+// `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+func (o ProjectApprovalRuleOutput) RuleType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectApprovalRule) pulumi.StringOutput { return v.RuleType }).(pulumi.StringOutput)
+}
+
+// A list of specific User IDs to add to the list of approvers.
+func (o ProjectApprovalRuleOutput) UserIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *ProjectApprovalRule) pulumi.IntArrayOutput { return v.UserIds }).(pulumi.IntArrayOutput)
+}
+
 type ProjectApprovalRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectApprovalRuleArrayOutput) ElementType() reflect.Type {

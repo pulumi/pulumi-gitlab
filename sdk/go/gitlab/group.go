@@ -393,6 +393,111 @@ func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
 }
 
+// Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+func (o GroupOutput) AutoDevopsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.AutoDevopsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+func (o GroupOutput) DefaultBranchProtection() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.IntPtrOutput { return v.DefaultBranchProtection }).(pulumi.IntPtrOutput)
+}
+
+// The description of the group.
+func (o GroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Defaults to false. Disable email notifications.
+func (o GroupOutput) EmailsDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.EmailsDisabled }).(pulumi.BoolPtrOutput)
+}
+
+// The full name of the group.
+func (o GroupOutput) FullName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.FullName }).(pulumi.StringOutput)
+}
+
+// The full path of the group.
+func (o GroupOutput) FullPath() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.FullPath }).(pulumi.StringOutput)
+}
+
+// Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+func (o GroupOutput) LfsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.LfsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Defaults to false. Disable the capability of a group from getting mentioned.
+func (o GroupOutput) MentionsDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.MentionsDisabled }).(pulumi.BoolPtrOutput)
+}
+
+// The name of this group.
+func (o GroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Id of the parent group (creates a nested group).
+func (o GroupOutput) ParentId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.IntPtrOutput { return v.ParentId }).(pulumi.IntPtrOutput)
+}
+
+// The path of the group.
+func (o GroupOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
+}
+
+// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
+func (o GroupOutput) PreventForkingOutsideGroup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.PreventForkingOutsideGroup }).(pulumi.BoolPtrOutput)
+}
+
+// Defaults to maintainer. Determine if developers can create projects in the group.
+func (o GroupOutput) ProjectCreationLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.ProjectCreationLevel }).(pulumi.StringPtrOutput)
+}
+
+// Defaults to false. Allow users to request member access.
+func (o GroupOutput) RequestAccessEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.RequestAccessEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Defaults to false. Require all users in this group to setup Two-factor authentication.
+func (o GroupOutput) RequireTwoFactorAuthentication() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.RequireTwoFactorAuthentication }).(pulumi.BoolPtrOutput)
+}
+
+// The group level registration token to use during runner setup.
+func (o GroupOutput) RunnersToken() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.RunnersToken }).(pulumi.StringOutput)
+}
+
+// Defaults to false. Prevent sharing a project with another group within this group.
+func (o GroupOutput) ShareWithGroupLock() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.ShareWithGroupLock }).(pulumi.BoolPtrOutput)
+}
+
+// Defaults to owner. Allowed to create subgroups.
+func (o GroupOutput) SubgroupCreationLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.SubgroupCreationLevel }).(pulumi.StringPtrOutput)
+}
+
+// Defaults to 48. Time before Two-factor authentication is enforced (in hours).
+func (o GroupOutput) TwoFactorGracePeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.IntPtrOutput { return v.TwoFactorGracePeriod }).(pulumi.IntPtrOutput)
+}
+
+// The group's visibility. Can be `private`, `internal`, or `public`.
+func (o GroupOutput) VisibilityLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.VisibilityLevel }).(pulumi.StringOutput)
+}
+
+// Web URL of the group.
+func (o GroupOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.WebUrl }).(pulumi.StringOutput)
+}
+
 type GroupArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupArrayOutput) ElementType() reflect.Type {

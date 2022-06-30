@@ -273,6 +273,61 @@ func (o BranchProtectionOutput) ToBranchProtectionOutputWithContext(ctx context.
 	return o
 }
 
+// Can be set to true to allow users with push access to force push.
+func (o BranchProtectionOutput) AllowForcePush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BranchProtection) pulumi.BoolPtrOutput { return v.AllowForcePush }).(pulumi.BoolPtrOutput)
+}
+
+// Defines permissions for action.
+func (o BranchProtectionOutput) AllowedToMerges() BranchProtectionAllowedToMergeArrayOutput {
+	return o.ApplyT(func(v *BranchProtection) BranchProtectionAllowedToMergeArrayOutput { return v.AllowedToMerges }).(BranchProtectionAllowedToMergeArrayOutput)
+}
+
+// Defines permissions for action.
+func (o BranchProtectionOutput) AllowedToPushes() BranchProtectionAllowedToPushArrayOutput {
+	return o.ApplyT(func(v *BranchProtection) BranchProtectionAllowedToPushArrayOutput { return v.AllowedToPushes }).(BranchProtectionAllowedToPushArrayOutput)
+}
+
+// Defines permissions for action.
+func (o BranchProtectionOutput) AllowedToUnprotects() BranchProtectionAllowedToUnprotectArrayOutput {
+	return o.ApplyT(func(v *BranchProtection) BranchProtectionAllowedToUnprotectArrayOutput { return v.AllowedToUnprotects }).(BranchProtectionAllowedToUnprotectArrayOutput)
+}
+
+// Name of the branch.
+func (o BranchProtectionOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v *BranchProtection) pulumi.StringOutput { return v.Branch }).(pulumi.StringOutput)
+}
+
+// The ID of the branch protection (not the branch name).
+func (o BranchProtectionOutput) BranchProtectionId() pulumi.IntOutput {
+	return o.ApplyT(func(v *BranchProtection) pulumi.IntOutput { return v.BranchProtectionId }).(pulumi.IntOutput)
+}
+
+// Can be set to true to require code owner approval before merging.
+func (o BranchProtectionOutput) CodeOwnerApprovalRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BranchProtection) pulumi.BoolPtrOutput { return v.CodeOwnerApprovalRequired }).(pulumi.BoolPtrOutput)
+}
+
+// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+func (o BranchProtectionOutput) MergeAccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BranchProtection) pulumi.StringPtrOutput { return v.MergeAccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// The id of the project.
+func (o BranchProtectionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *BranchProtection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+func (o BranchProtectionOutput) PushAccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BranchProtection) pulumi.StringPtrOutput { return v.PushAccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+func (o BranchProtectionOutput) UnprotectAccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BranchProtection) pulumi.StringPtrOutput { return v.UnprotectAccessLevel }).(pulumi.StringPtrOutput)
+}
+
 type BranchProtectionArrayOutput struct{ *pulumi.OutputState }
 
 func (BranchProtectionArrayOutput) ElementType() reflect.Type {

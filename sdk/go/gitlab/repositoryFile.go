@@ -303,6 +303,87 @@ func (o RepositoryFileOutput) ToRepositoryFileOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Email of the commit author.
+func (o RepositoryFileOutput) AuthorEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringPtrOutput { return v.AuthorEmail }).(pulumi.StringPtrOutput)
+}
+
+// Name of the commit author.
+func (o RepositoryFileOutput) AuthorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringPtrOutput { return v.AuthorName }).(pulumi.StringPtrOutput)
+}
+
+// The blob id.
+func (o RepositoryFileOutput) BlobId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.BlobId }).(pulumi.StringOutput)
+}
+
+// Name of the branch to which to commit to.
+func (o RepositoryFileOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.Branch }).(pulumi.StringOutput)
+}
+
+// The commit id.
+func (o RepositoryFileOutput) CommitId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.CommitId }).(pulumi.StringOutput)
+}
+
+// Commit message.
+func (o RepositoryFileOutput) CommitMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.CommitMessage }).(pulumi.StringOutput)
+}
+
+// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
+// supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+func (o RepositoryFileOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
+}
+
+// File content sha256 digest.
+func (o RepositoryFileOutput) ContentSha256() pulumi.StringOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.ContentSha256 }).(pulumi.StringOutput)
+}
+
+// The file content encoding.
+func (o RepositoryFileOutput) Encoding() pulumi.StringOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.Encoding }).(pulumi.StringOutput)
+}
+
+// The filename.
+func (o RepositoryFileOutput) FileName() pulumi.StringOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.FileName }).(pulumi.StringOutput)
+}
+
+// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+func (o RepositoryFileOutput) FilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.FilePath }).(pulumi.StringOutput)
+}
+
+// The last known commit id.
+func (o RepositoryFileOutput) LastCommitId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.LastCommitId }).(pulumi.StringOutput)
+}
+
+// The name or ID of the project.
+func (o RepositoryFileOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The name of branch, tag or commit.
+func (o RepositoryFileOutput) Ref() pulumi.StringOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.Ref }).(pulumi.StringOutput)
+}
+
+// The file size.
+func (o RepositoryFileOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
+}
+
+// Name of the branch to start the new commit from.
+func (o RepositoryFileOutput) StartBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringPtrOutput { return v.StartBranch }).(pulumi.StringPtrOutput)
+}
+
 type RepositoryFileArrayOutput struct{ *pulumi.OutputState }
 
 func (RepositoryFileArrayOutput) ElementType() reflect.Type {

@@ -274,6 +274,40 @@ func (o GroupLdapLinkOutput) ToGroupLdapLinkOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+// `developer`, `maintainer`, `owner`, `master`
+//
+// Deprecated: Use `group_access` instead of the `access_level` attribute.
+func (o GroupLdapLinkOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupLdapLink) pulumi.StringPtrOutput { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// The CN of the LDAP group to link with.
+func (o GroupLdapLinkOutput) Cn() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupLdapLink) pulumi.StringOutput { return v.Cn }).(pulumi.StringOutput)
+}
+
+// If true, then delete and replace an existing LDAP link if one exists.
+func (o GroupLdapLinkOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupLdapLink) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
+// `developer`, `maintainer`, `owner`, `master`
+func (o GroupLdapLinkOutput) GroupAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupLdapLink) pulumi.StringPtrOutput { return v.GroupAccess }).(pulumi.StringPtrOutput)
+}
+
+// The id of the GitLab group.
+func (o GroupLdapLinkOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupLdapLink) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The name of the LDAP provider as stored in the GitLab database.
+func (o GroupLdapLinkOutput) LdapProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupLdapLink) pulumi.StringOutput { return v.LdapProvider }).(pulumi.StringOutput)
+}
+
 type GroupLdapLinkArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupLdapLinkArrayOutput) ElementType() reflect.Type {

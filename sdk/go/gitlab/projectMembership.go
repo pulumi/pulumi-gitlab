@@ -238,6 +238,22 @@ func (o ProjectMembershipOutput) ToProjectMembershipOutputWithContext(ctx contex
 	return o
 }
 
+// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
+// `master`
+func (o ProjectMembershipOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectMembership) pulumi.StringOutput { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+// The id of the project.
+func (o ProjectMembershipOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectMembership) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The id of the user.
+func (o ProjectMembershipOutput) UserId() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectMembership) pulumi.IntOutput { return v.UserId }).(pulumi.IntOutput)
+}
+
 type ProjectMembershipArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectMembershipArrayOutput) ElementType() reflect.Type {
