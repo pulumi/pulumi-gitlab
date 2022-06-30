@@ -223,6 +223,21 @@ func (o UserCustomAttributeOutput) ToUserCustomAttributeOutputWithContext(ctx co
 	return o
 }
 
+// Key for the Custom Attribute.
+func (o UserCustomAttributeOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserCustomAttribute) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// The id of the user.
+func (o UserCustomAttributeOutput) User() pulumi.IntOutput {
+	return o.ApplyT(func(v *UserCustomAttribute) pulumi.IntOutput { return v.User }).(pulumi.IntOutput)
+}
+
+// Value for the Custom Attribute.
+func (o UserCustomAttributeOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserCustomAttribute) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
 type UserCustomAttributeArrayOutput struct{ *pulumi.OutputState }
 
 func (UserCustomAttributeArrayOutput) ElementType() reflect.Type {

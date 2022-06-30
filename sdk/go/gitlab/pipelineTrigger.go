@@ -215,6 +215,21 @@ func (o PipelineTriggerOutput) ToPipelineTriggerOutputWithContext(ctx context.Co
 	return o
 }
 
+// The description of the pipeline trigger.
+func (o PipelineTriggerOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *PipelineTrigger) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The name or id of the project to add the trigger to.
+func (o PipelineTriggerOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *PipelineTrigger) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The pipeline trigger token.
+func (o PipelineTriggerOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v *PipelineTrigger) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+}
+
 type PipelineTriggerArrayOutput struct{ *pulumi.OutputState }
 
 func (PipelineTriggerArrayOutput) ElementType() reflect.Type {

@@ -257,6 +257,37 @@ func (o UserSshKeyOutput) ToUserSshKeyOutputWithContext(ctx context.Context) Use
 	return o
 }
 
+// The time when this key was created in GitLab.
+func (o UserSshKeyOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserSshKey) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
+func (o UserSshKeyOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserSshKey) pulumi.StringPtrOutput { return v.ExpiresAt }).(pulumi.StringPtrOutput)
+}
+
+// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with
+// the username and GitLab hostname.
+func (o UserSshKeyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserSshKey) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// The ID of the ssh key.
+func (o UserSshKeyOutput) KeyId() pulumi.IntOutput {
+	return o.ApplyT(func(v *UserSshKey) pulumi.IntOutput { return v.KeyId }).(pulumi.IntOutput)
+}
+
+// The title of the ssh key.
+func (o UserSshKeyOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserSshKey) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
+}
+
+// The ID of the user to add the ssh key to.
+func (o UserSshKeyOutput) UserId() pulumi.IntOutput {
+	return o.ApplyT(func(v *UserSshKey) pulumi.IntOutput { return v.UserId }).(pulumi.IntOutput)
+}
+
 type UserSshKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (UserSshKeyArrayOutput) ElementType() reflect.Type {

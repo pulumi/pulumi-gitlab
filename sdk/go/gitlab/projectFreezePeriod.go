@@ -234,6 +234,26 @@ func (o ProjectFreezePeriodOutput) ToProjectFreezePeriodOutputWithContext(ctx co
 	return o
 }
 
+// The timezone.
+func (o ProjectFreezePeriodOutput) CronTimezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectFreezePeriod) pulumi.StringPtrOutput { return v.CronTimezone }).(pulumi.StringPtrOutput)
+}
+
+// End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+func (o ProjectFreezePeriodOutput) FreezeEnd() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectFreezePeriod) pulumi.StringOutput { return v.FreezeEnd }).(pulumi.StringOutput)
+}
+
+// Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+func (o ProjectFreezePeriodOutput) FreezeStart() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectFreezePeriod) pulumi.StringOutput { return v.FreezeStart }).(pulumi.StringOutput)
+}
+
+// The id of the project to add the schedule to.
+func (o ProjectFreezePeriodOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectFreezePeriod) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
 type ProjectFreezePeriodArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectFreezePeriodArrayOutput) ElementType() reflect.Type {

@@ -240,6 +240,27 @@ func (o DeployKeyOutput) ToDeployKeyOutputWithContext(ctx context.Context) Deplo
 	return o
 }
 
+// Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
+// be managed.
+func (o DeployKeyOutput) CanPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeployKey) pulumi.BoolPtrOutput { return v.CanPush }).(pulumi.BoolPtrOutput)
+}
+
+// The public ssh key body.
+func (o DeployKeyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeployKey) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// The name or id of the project to add the deploy key to.
+func (o DeployKeyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeployKey) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// A title to describe the deploy key with.
+func (o DeployKeyOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeployKey) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
+}
+
 type DeployKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (DeployKeyArrayOutput) ElementType() reflect.Type {

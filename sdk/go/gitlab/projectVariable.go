@@ -271,6 +271,42 @@ func (o ProjectVariableOutput) ToProjectVariableOutputWithContext(ctx context.Co
 	return o
 }
 
+// The environment_scope of the variable. Defaults to `*`.
+func (o ProjectVariableOutput) EnvironmentScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.StringPtrOutput { return v.EnvironmentScope }).(pulumi.StringPtrOutput)
+}
+
+// The name of the variable.
+func (o ProjectVariableOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
+func (o ProjectVariableOutput) Masked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.BoolPtrOutput { return v.Masked }).(pulumi.BoolPtrOutput)
+}
+
+// The name or id of the project.
+func (o ProjectVariableOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+// `false`.
+func (o ProjectVariableOutput) Protected() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.BoolPtrOutput { return v.Protected }).(pulumi.BoolPtrOutput)
+}
+
+// The value of the variable.
+func (o ProjectVariableOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
+// The type of a variable. Available types are: env_var (default) and file.
+func (o ProjectVariableOutput) VariableType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.StringPtrOutput { return v.VariableType }).(pulumi.StringPtrOutput)
+}
+
 type ProjectVariableArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectVariableArrayOutput) ElementType() reflect.Type {

@@ -991,6 +991,402 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
+// Set to true if you want to treat skipped pipelines as if they finished with success.
+func (o ProjectOutput) AllowMergeOnSkippedPipeline() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.AllowMergeOnSkippedPipeline }).(pulumi.BoolPtrOutput)
+}
+
+// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
+func (o ProjectOutput) AnalyticsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.AnalyticsAccessLevel }).(pulumi.StringOutput)
+}
+
+// Number of merge request approvals required for merging. Default is 0.
+func (o ProjectOutput) ApprovalsBeforeMerge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.IntPtrOutput { return v.ApprovalsBeforeMerge }).(pulumi.IntPtrOutput)
+}
+
+// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE`
+// operation.
+func (o ProjectOutput) ArchiveOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.ArchiveOnDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
+func (o ProjectOutput) Archived() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.Archived }).(pulumi.BoolPtrOutput)
+}
+
+// Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+func (o ProjectOutput) AutoCancelPendingPipelines() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.AutoCancelPendingPipelines }).(pulumi.StringOutput)
+}
+
+// Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+func (o ProjectOutput) AutoDevopsDeployStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.AutoDevopsDeployStrategy }).(pulumi.StringOutput)
+}
+
+// Enable Auto DevOps for this project.
+func (o ProjectOutput) AutoDevopsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.AutoDevopsEnabled }).(pulumi.BoolOutput)
+}
+
+// Set whether auto-closing referenced issues on default branch.
+func (o ProjectOutput) AutocloseReferencedIssues() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.AutocloseReferencedIssues }).(pulumi.BoolOutput)
+}
+
+// Test coverage parsing for the project.
+func (o ProjectOutput) BuildCoverageRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.BuildCoverageRegex }).(pulumi.StringPtrOutput)
+}
+
+// The Git strategy. Defaults to fetch.
+func (o ProjectOutput) BuildGitStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.BuildGitStrategy }).(pulumi.StringOutput)
+}
+
+// The maximum amount of time, in seconds, that a job can run.
+func (o ProjectOutput) BuildTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v *Project) pulumi.IntOutput { return v.BuildTimeout }).(pulumi.IntOutput)
+}
+
+// Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
+func (o ProjectOutput) BuildsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.BuildsAccessLevel }).(pulumi.StringOutput)
+}
+
+// Custom Path to CI config file.
+func (o ProjectOutput) CiConfigPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.CiConfigPath }).(pulumi.StringPtrOutput)
+}
+
+// When a new deployment job starts, skip older deployment jobs that are still pending.
+func (o ProjectOutput) CiForwardDeploymentEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.CiForwardDeploymentEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Set the image cleanup policy for this project. **Note**: this field is sometimes named
+// `container_expiration_policy_attributes` in the GitLab Upstream API.
+func (o ProjectOutput) ContainerExpirationPolicy() ProjectContainerExpirationPolicyOutput {
+	return o.ApplyT(func(v *Project) ProjectContainerExpirationPolicyOutput { return v.ContainerExpirationPolicy }).(ProjectContainerExpirationPolicyOutput)
+}
+
+// Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
+func (o ProjectOutput) ContainerRegistryAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ContainerRegistryAccessLevel }).(pulumi.StringOutput)
+}
+
+// Enable container registry for the project.
+func (o ProjectOutput) ContainerRegistryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.ContainerRegistryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The default branch for the project.
+func (o ProjectOutput) DefaultBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.DefaultBranch }).(pulumi.StringOutput)
+}
+
+// A description of the project.
+func (o ProjectOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Disable email notifications.
+func (o ProjectOutput) EmailsDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.EmailsDisabled }).(pulumi.BoolPtrOutput)
+}
+
+// The classification label for the project.
+func (o ProjectOutput) ExternalAuthorizationClassificationLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.ExternalAuthorizationClassificationLabel }).(pulumi.StringPtrOutput)
+}
+
+// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
+func (o ProjectOutput) ForkingAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ForkingAccessLevel }).(pulumi.StringOutput)
+}
+
+// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave
+// empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+func (o ProjectOutput) GroupWithProjectTemplatesId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.IntPtrOutput { return v.GroupWithProjectTemplatesId }).(pulumi.IntPtrOutput)
+}
+
+// URL that can be provided to `git clone` to clone the
+func (o ProjectOutput) HttpUrlToRepo() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.HttpUrlToRepo }).(pulumi.StringOutput)
+}
+
+// Git URL to a repository to be imported.
+func (o ProjectOutput) ImportUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.ImportUrl }).(pulumi.StringPtrOutput)
+}
+
+// Create main branch with first commit containing a README.md file.
+func (o ProjectOutput) InitializeWithReadme() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.InitializeWithReadme }).(pulumi.BoolPtrOutput)
+}
+
+// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
+func (o ProjectOutput) IssuesAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.IssuesAccessLevel }).(pulumi.StringOutput)
+}
+
+// Enable issue tracking for the project.
+func (o ProjectOutput) IssuesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.IssuesEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Sets the template for new issues in the project.
+func (o ProjectOutput) IssuesTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.IssuesTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Enable LFS for the project.
+func (o ProjectOutput) LfsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.LfsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+func (o ProjectOutput) MergeCommitTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.MergeCommitTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Set to `ff` to create fast-forward merges
+func (o ProjectOutput) MergeMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.MergeMethod }).(pulumi.StringPtrOutput)
+}
+
+// Enable or disable merge pipelines.
+func (o ProjectOutput) MergePipelinesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.MergePipelinesEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
+func (o ProjectOutput) MergeRequestsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.MergeRequestsAccessLevel }).(pulumi.StringOutput)
+}
+
+// Enable merge requests for the project.
+func (o ProjectOutput) MergeRequestsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.MergeRequestsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Sets the template for new merge requests in the project.
+func (o ProjectOutput) MergeRequestsTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.MergeRequestsTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+func (o ProjectOutput) MergeTrainsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.MergeTrainsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Enable project pull mirror.
+func (o ProjectOutput) Mirror() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.Mirror }).(pulumi.BoolPtrOutput)
+}
+
+// Enable overwrite diverged branches for a mirrored project.
+func (o ProjectOutput) MirrorOverwritesDivergedBranches() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.MirrorOverwritesDivergedBranches }).(pulumi.BoolPtrOutput)
+}
+
+// Enable trigger builds on pushes for a mirrored project.
+func (o ProjectOutput) MirrorTriggerBuilds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.MirrorTriggerBuilds }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the project.
+func (o ProjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace (group or user) of the project. Defaults to your user.
+func (o ProjectOutput) NamespaceId() pulumi.IntOutput {
+	return o.ApplyT(func(v *Project) pulumi.IntOutput { return v.NamespaceId }).(pulumi.IntOutput)
+}
+
+// Set to true if you want allow merges only if all discussions are resolved.
+func (o ProjectOutput) OnlyAllowMergeIfAllDiscussionsAreResolved() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.OnlyAllowMergeIfAllDiscussionsAreResolved }).(pulumi.BoolPtrOutput)
+}
+
+// Set to true if you want allow merges only if a pipeline succeeds.
+func (o ProjectOutput) OnlyAllowMergeIfPipelineSucceeds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.OnlyAllowMergeIfPipelineSucceeds }).(pulumi.BoolPtrOutput)
+}
+
+// Enable only mirror protected branches for a mirrored project.
+func (o ProjectOutput) OnlyMirrorProtectedBranches() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.OnlyMirrorProtectedBranches }).(pulumi.BoolPtrOutput)
+}
+
+// Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
+func (o ProjectOutput) OperationsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.OperationsAccessLevel }).(pulumi.StringOutput)
+}
+
+// Enable packages repository for the project.
+func (o ProjectOutput) PackagesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.PackagesEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Enable pages access control
+func (o ProjectOutput) PagesAccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.PagesAccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// The path of the repository.
+func (o ProjectOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// The path of the repository with namespace.
+func (o ProjectOutput) PathWithNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.PathWithNamespace }).(pulumi.StringOutput)
+}
+
+// Enable pipelines for the project.
+func (o ProjectOutput) PipelinesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.PipelinesEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Show link to create/view merge request when pushing from the command line
+func (o ProjectOutput) PrintingMergeRequestLinkEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.PrintingMergeRequestLinkEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// If true, jobs can be viewed by non-project members.
+func (o ProjectOutput) PublicBuilds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.PublicBuilds }).(pulumi.BoolPtrOutput)
+}
+
+// Push rules for the project.
+func (o ProjectOutput) PushRules() ProjectPushRulesOutput {
+	return o.ApplyT(func(v *Project) ProjectPushRulesOutput { return v.PushRules }).(ProjectPushRulesOutput)
+}
+
+// Enable `Delete source branch` option by default for all new merge requests.
+func (o ProjectOutput) RemoveSourceBranchAfterMerge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.RemoveSourceBranchAfterMerge }).(pulumi.BoolPtrOutput)
+}
+
+// Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
+func (o ProjectOutput) RepositoryAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.RepositoryAccessLevel }).(pulumi.StringOutput)
+}
+
+// Which storage shard the repository is on. (administrator only)
+func (o ProjectOutput) RepositoryStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.RepositoryStorage }).(pulumi.StringOutput)
+}
+
+// Allow users to request member access.
+func (o ProjectOutput) RequestAccessEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.RequestAccessEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
+func (o ProjectOutput) RequirementsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.RequirementsAccessLevel }).(pulumi.StringOutput)
+}
+
+// Automatically resolve merge request diffs discussions on lines changed with a push.
+func (o ProjectOutput) ResolveOutdatedDiffDiscussions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.ResolveOutdatedDiffDiscussions }).(pulumi.BoolPtrOutput)
+}
+
+// Registration token to use during runner setup.
+func (o ProjectOutput) RunnersToken() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.RunnersToken }).(pulumi.StringOutput)
+}
+
+// Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
+func (o ProjectOutput) SecurityAndComplianceAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.SecurityAndComplianceAccessLevel }).(pulumi.StringOutput)
+}
+
+// Enable shared runners for this project.
+func (o ProjectOutput) SharedRunnersEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.SharedRunnersEnabled }).(pulumi.BoolOutput)
+}
+
+// Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
+func (o ProjectOutput) SnippetsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.SnippetsAccessLevel }).(pulumi.StringOutput)
+}
+
+// Enable snippets for the project.
+func (o ProjectOutput) SnippetsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.SnippetsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+func (o ProjectOutput) SquashCommitTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.SquashCommitTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value
+// is `default_off`. [GitLab >= 14.1]
+func (o ProjectOutput) SquashOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.SquashOption }).(pulumi.StringPtrOutput)
+}
+
+// URL that can be provided to `git clone` to clone the
+func (o ProjectOutput) SshUrlToRepo() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.SshUrlToRepo }).(pulumi.StringOutput)
+}
+
+// The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
+func (o ProjectOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of
+// a custom project template. This option is mutually exclusive with `template_project_id`.
+func (o ProjectOutput) TemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.TemplateName }).(pulumi.StringPtrOutput)
+}
+
+// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name
+// since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+func (o ProjectOutput) TemplateProjectId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.IntPtrOutput { return v.TemplateProjectId }).(pulumi.IntPtrOutput)
+}
+
+// The list of topics for the project.
+func (o ProjectOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringArrayOutput { return v.Topics }).(pulumi.StringArrayOutput)
+}
+
+// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+func (o ProjectOutput) UseCustomTemplate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.UseCustomTemplate }).(pulumi.BoolPtrOutput)
+}
+
+// Set to `public` to create a public project.
+func (o ProjectOutput) VisibilityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.VisibilityLevel }).(pulumi.StringPtrOutput)
+}
+
+// URL that can be used to find the project in a browser.
+func (o ProjectOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+// Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
+func (o ProjectOutput) WikiAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.WikiAccessLevel }).(pulumi.StringOutput)
+}
+
+// Enable wiki for the project.
+func (o ProjectOutput) WikiEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.WikiEnabled }).(pulumi.BoolPtrOutput)
+}
+
 type ProjectArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectArrayOutput) ElementType() reflect.Type {

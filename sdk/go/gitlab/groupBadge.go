@@ -239,6 +239,31 @@ func (o GroupBadgeOutput) ToGroupBadgeOutputWithContext(ctx context.Context) Gro
 	return o
 }
 
+// The id of the group to add the badge to.
+func (o GroupBadgeOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupBadge) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
+}
+
+// The image url which will be presented on group overview.
+func (o GroupBadgeOutput) ImageUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupBadge) pulumi.StringOutput { return v.ImageUrl }).(pulumi.StringOutput)
+}
+
+// The url linked with the badge.
+func (o GroupBadgeOutput) LinkUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupBadge) pulumi.StringOutput { return v.LinkUrl }).(pulumi.StringOutput)
+}
+
+// The image_url argument rendered (in case of use of placeholders).
+func (o GroupBadgeOutput) RenderedImageUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupBadge) pulumi.StringOutput { return v.RenderedImageUrl }).(pulumi.StringOutput)
+}
+
+// The link_url argument rendered (in case of use of placeholders).
+func (o GroupBadgeOutput) RenderedLinkUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupBadge) pulumi.StringOutput { return v.RenderedLinkUrl }).(pulumi.StringOutput)
+}
+
 type GroupBadgeArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupBadgeArrayOutput) ElementType() reflect.Type {

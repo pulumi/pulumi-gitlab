@@ -576,6 +576,211 @@ func (o ProjectIssueOutput) ToProjectIssueOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The IDs of the users to assign the issue to.
+func (o ProjectIssueOutput) AssigneeIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.IntArrayOutput { return v.AssigneeIds }).(pulumi.IntArrayOutput)
+}
+
+// The ID of the author of the issue. Use `gitlab_user` data source to get more information about the user.
+func (o ProjectIssueOutput) AuthorId() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.AuthorId }).(pulumi.IntOutput)
+}
+
+// When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
+func (o ProjectIssueOutput) ClosedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.StringOutput { return v.ClosedAt }).(pulumi.StringOutput)
+}
+
+// The ID of the user that closed the issue. Use `gitlab_user` data source to get more information about the user.
+func (o ProjectIssueOutput) ClosedByUserId() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.ClosedByUserId }).(pulumi.IntOutput)
+}
+
+// Set an issue to be confidential.
+func (o ProjectIssueOutput) Confidential() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.BoolPtrOutput { return v.Confidential }).(pulumi.BoolPtrOutput)
+}
+
+// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires
+// administrator or project/group owner rights.
+func (o ProjectIssueOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Whether the issue is deleted instead of closed during destroy.
+func (o ProjectIssueOutput) DeleteOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.BoolPtrOutput { return v.DeleteOnDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// The description of an issue. Limited to 1,048,576 characters.
+func (o ProjectIssueOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether the issue is locked for discussions or not.
+func (o ProjectIssueOutput) DiscussionLocked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.BoolPtrOutput { return v.DiscussionLocked }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as
+// resolved. Use in combination with merge_request_to_resolve_discussions_of.
+func (o ProjectIssueOutput) DiscussionToResolve() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.StringPtrOutput { return v.DiscussionToResolve }).(pulumi.StringPtrOutput)
+}
+
+// The number of downvotes the issue has received.
+func (o ProjectIssueOutput) Downvotes() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.Downvotes }).(pulumi.IntOutput)
+}
+
+// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11. **Note:** removing a due date is
+// currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
+func (o ProjectIssueOutput) DueDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.StringPtrOutput { return v.DueDate }).(pulumi.StringPtrOutput)
+}
+
+// ID of the epic to add the issue to. Valid values are greater than or equal to 0.
+func (o ProjectIssueOutput) EpicId() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.EpicId }).(pulumi.IntOutput)
+}
+
+// The ID of the epic issue.
+func (o ProjectIssueOutput) EpicIssueId() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.EpicIssueId }).(pulumi.IntOutput)
+}
+
+// The external ID of the issue.
+func (o ProjectIssueOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.StringOutput { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// The human-readable time estimate of the issue.
+func (o ProjectIssueOutput) HumanTimeEstimate() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.StringOutput { return v.HumanTimeEstimate }).(pulumi.StringOutput)
+}
+
+// The human-readable total time spent of the issue.
+func (o ProjectIssueOutput) HumanTotalTimeSpent() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.StringOutput { return v.HumanTotalTimeSpent }).(pulumi.StringOutput)
+}
+
+// The internal ID of the project's issue.
+func (o ProjectIssueOutput) Iid() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.Iid }).(pulumi.IntOutput)
+}
+
+// The instance-wide ID of the issue.
+func (o ProjectIssueOutput) IssueId() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.IssueId }).(pulumi.IntOutput)
+}
+
+// The ID of the issue link.
+func (o ProjectIssueOutput) IssueLinkId() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.IssueLinkId }).(pulumi.IntOutput)
+}
+
+// The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+func (o ProjectIssueOutput) IssueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.StringPtrOutput { return v.IssueType }).(pulumi.StringPtrOutput)
+}
+
+// The labels of an issue.
+func (o ProjectIssueOutput) Labels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.StringArrayOutput { return v.Labels }).(pulumi.StringArrayOutput)
+}
+
+// The links of the issue.
+func (o ProjectIssueOutput) Links() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.StringMapOutput { return v.Links }).(pulumi.StringMapOutput)
+}
+
+// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
+// all discussions as resolved. When passing a description or title, these values take precedence over the default values.
+func (o ProjectIssueOutput) MergeRequestToResolveDiscussionsOf() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.IntPtrOutput { return v.MergeRequestToResolveDiscussionsOf }).(pulumi.IntPtrOutput)
+}
+
+// The number of merge requests associated with the issue.
+func (o ProjectIssueOutput) MergeRequestsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.MergeRequestsCount }).(pulumi.IntOutput)
+}
+
+// The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with
+// the milestone assigned and use the API to retrieve the issue's details.
+func (o ProjectIssueOutput) MilestoneId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.IntPtrOutput { return v.MilestoneId }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the issue that was moved to.
+func (o ProjectIssueOutput) MovedToId() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.MovedToId }).(pulumi.IntOutput)
+}
+
+// The name or ID of the project.
+func (o ProjectIssueOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The references of the issue.
+func (o ProjectIssueOutput) References() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.StringMapOutput { return v.References }).(pulumi.StringMapOutput)
+}
+
+// The state of the issue. Valid values are: `opened`, `closed`.
+func (o ProjectIssueOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Whether the authenticated user is subscribed to the issue or not.
+func (o ProjectIssueOutput) Subscribed() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.BoolOutput { return v.Subscribed }).(pulumi.BoolOutput)
+}
+
+// The task completion status. It's always a one element list.
+func (o ProjectIssueOutput) TaskCompletionStatus() ProjectIssueTaskCompletionStatusOutput {
+	return o.ApplyT(func(v *ProjectIssue) ProjectIssueTaskCompletionStatusOutput { return v.TaskCompletionStatus }).(ProjectIssueTaskCompletionStatusOutput)
+}
+
+// The time estimate of the issue.
+func (o ProjectIssueOutput) TimeEstimate() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.TimeEstimate }).(pulumi.IntOutput)
+}
+
+// The title of the issue.
+func (o ProjectIssueOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
+}
+
+// The total time spent of the issue.
+func (o ProjectIssueOutput) TotalTimeSpent() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.TotalTimeSpent }).(pulumi.IntOutput)
+}
+
+// When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
+func (o ProjectIssueOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// The number of upvotes the issue has received.
+func (o ProjectIssueOutput) Upvotes() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.Upvotes }).(pulumi.IntOutput)
+}
+
+// The number of user notes on the issue.
+func (o ProjectIssueOutput) UserNotesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.UserNotesCount }).(pulumi.IntOutput)
+}
+
+// The web URL of the issue.
+func (o ProjectIssueOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.StringOutput { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+// The weight of the issue. Valid values are greater than or equal to 0.
+func (o ProjectIssueOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.Weight }).(pulumi.IntOutput)
+}
+
 type ProjectIssueArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectIssueArrayOutput) ElementType() reflect.Type {

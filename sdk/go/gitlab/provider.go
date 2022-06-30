@@ -147,6 +147,38 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+// This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
+// Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
+// the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
+func (o ProviderOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BaseUrl }).(pulumi.StringPtrOutput)
+}
+
+// This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab
+// CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
+func (o ProviderOutput) CacertFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CacertFile }).(pulumi.StringPtrOutput)
+}
+
+// File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
+func (o ProviderOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientCert }).(pulumi.StringPtrOutput)
+}
+
+// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
+// `client_cert` is set.
+func (o ProviderOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
+// used in this provider for authentication (using Bearer authorization token). See
+// https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
+// variable.
+func (o ProviderOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})

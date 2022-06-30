@@ -257,6 +257,36 @@ func (o PipelineScheduleOutput) ToPipelineScheduleOutputWithContext(ctx context.
 	return o
 }
 
+// The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
+func (o PipelineScheduleOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PipelineSchedule) pulumi.BoolPtrOutput { return v.Active }).(pulumi.BoolPtrOutput)
+}
+
+// The cron (e.g. `0 1 * * *`).
+func (o PipelineScheduleOutput) Cron() pulumi.StringOutput {
+	return o.ApplyT(func(v *PipelineSchedule) pulumi.StringOutput { return v.Cron }).(pulumi.StringOutput)
+}
+
+// The timezone.
+func (o PipelineScheduleOutput) CronTimezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineSchedule) pulumi.StringPtrOutput { return v.CronTimezone }).(pulumi.StringPtrOutput)
+}
+
+// The description of the pipeline schedule.
+func (o PipelineScheduleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *PipelineSchedule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The name or id of the project to add the schedule to.
+func (o PipelineScheduleOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *PipelineSchedule) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The branch/tag name to be triggered.
+func (o PipelineScheduleOutput) Ref() pulumi.StringOutput {
+	return o.ApplyT(func(v *PipelineSchedule) pulumi.StringOutput { return v.Ref }).(pulumi.StringOutput)
+}
+
 type PipelineScheduleArrayOutput struct{ *pulumi.OutputState }
 
 func (PipelineScheduleArrayOutput) ElementType() reflect.Type {

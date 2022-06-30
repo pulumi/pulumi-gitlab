@@ -350,6 +350,87 @@ func (o ServiceMicrosoftTeamsOutput) ToServiceMicrosoftTeamsOutputWithContext(ct
 	return o
 }
 
+// Whether the integration is active.
+func (o ServiceMicrosoftTeamsOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.BoolOutput { return v.Active }).(pulumi.BoolOutput)
+}
+
+// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
+// “default_and_protected”. The default value is “default”
+func (o ServiceMicrosoftTeamsOutput) BranchesToBeNotified() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.StringPtrOutput { return v.BranchesToBeNotified }).(pulumi.StringPtrOutput)
+}
+
+// Enable notifications for confidential issue events
+func (o ServiceMicrosoftTeamsOutput) ConfidentialIssuesEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.BoolPtrOutput { return v.ConfidentialIssuesEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Enable notifications for confidential note events
+func (o ServiceMicrosoftTeamsOutput) ConfidentialNoteEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.BoolPtrOutput { return v.ConfidentialNoteEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Create time.
+func (o ServiceMicrosoftTeamsOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Enable notifications for issue events
+func (o ServiceMicrosoftTeamsOutput) IssuesEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.BoolPtrOutput { return v.IssuesEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Enable notifications for merge request events
+func (o ServiceMicrosoftTeamsOutput) MergeRequestsEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.BoolPtrOutput { return v.MergeRequestsEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Enable notifications for note events
+func (o ServiceMicrosoftTeamsOutput) NoteEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.BoolPtrOutput { return v.NoteEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Send notifications for broken pipelines
+func (o ServiceMicrosoftTeamsOutput) NotifyOnlyBrokenPipelines() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.BoolPtrOutput { return v.NotifyOnlyBrokenPipelines }).(pulumi.BoolPtrOutput)
+}
+
+// Enable notifications for pipeline events
+func (o ServiceMicrosoftTeamsOutput) PipelineEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.BoolPtrOutput { return v.PipelineEvents }).(pulumi.BoolPtrOutput)
+}
+
+// ID of the project you want to activate integration on.
+func (o ServiceMicrosoftTeamsOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Enable notifications for push events
+func (o ServiceMicrosoftTeamsOutput) PushEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.BoolPtrOutput { return v.PushEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Enable notifications for tag push events
+func (o ServiceMicrosoftTeamsOutput) TagPushEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.BoolPtrOutput { return v.TagPushEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Update time.
+func (o ServiceMicrosoftTeamsOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// The Microsoft Teams webhook. For example, https://outlook.office.com/webhook/...
+func (o ServiceMicrosoftTeamsOutput) Webhook() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.StringOutput { return v.Webhook }).(pulumi.StringOutput)
+}
+
+// Enable notifications for wiki page events
+func (o ServiceMicrosoftTeamsOutput) WikiPageEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.BoolPtrOutput { return v.WikiPageEvents }).(pulumi.BoolPtrOutput)
+}
+
 type ServiceMicrosoftTeamsArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceMicrosoftTeamsArrayOutput) ElementType() reflect.Type {

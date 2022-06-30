@@ -239,6 +239,31 @@ func (o ProjectBadgeOutput) ToProjectBadgeOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The image url which will be presented on project overview.
+func (o ProjectBadgeOutput) ImageUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectBadge) pulumi.StringOutput { return v.ImageUrl }).(pulumi.StringOutput)
+}
+
+// The url linked with the badge.
+func (o ProjectBadgeOutput) LinkUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectBadge) pulumi.StringOutput { return v.LinkUrl }).(pulumi.StringOutput)
+}
+
+// The id of the project to add the badge to.
+func (o ProjectBadgeOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectBadge) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The image_url argument rendered (in case of use of placeholders).
+func (o ProjectBadgeOutput) RenderedImageUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectBadge) pulumi.StringOutput { return v.RenderedImageUrl }).(pulumi.StringOutput)
+}
+
+// The link_url argument rendered (in case of use of placeholders).
+func (o ProjectBadgeOutput) RenderedLinkUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectBadge) pulumi.StringOutput { return v.RenderedLinkUrl }).(pulumi.StringOutput)
+}
+
 type ProjectBadgeArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectBadgeArrayOutput) ElementType() reflect.Type {

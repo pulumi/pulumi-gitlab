@@ -293,6 +293,58 @@ func (o GroupAccessTokenOutput) ToGroupAccessTokenOutputWithContext(ctx context.
 	return o
 }
 
+// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`.
+func (o GroupAccessTokenOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringPtrOutput { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// True if the token is active.
+func (o GroupAccessTokenOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupAccessToken) pulumi.BoolOutput { return v.Active }).(pulumi.BoolOutput)
+}
+
+// Time the token has been created, RFC3339 format.
+func (o GroupAccessTokenOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+func (o GroupAccessTokenOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringPtrOutput { return v.ExpiresAt }).(pulumi.StringPtrOutput)
+}
+
+// The ID or path of the group to add the group access token to.
+func (o GroupAccessTokenOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
+}
+
+// The name of the group access token.
+func (o GroupAccessTokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// True if the token is revoked.
+func (o GroupAccessTokenOutput) Revoked() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupAccessToken) pulumi.BoolOutput { return v.Revoked }).(pulumi.BoolOutput)
+}
+
+// The scope for the group access token. It determines the actions which can be performed when authenticating with this
+// token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+func (o GroupAccessTokenOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// The group access token. This is only populated when creating a new group access token. This attribute is not available
+// for imported resources.
+func (o GroupAccessTokenOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+}
+
+// The user id associated to the token.
+func (o GroupAccessTokenOutput) UserId() pulumi.IntOutput {
+	return o.ApplyT(func(v *GroupAccessToken) pulumi.IntOutput { return v.UserId }).(pulumi.IntOutput)
+}
+
 type GroupAccessTokenArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupAccessTokenArrayOutput) ElementType() reflect.Type {

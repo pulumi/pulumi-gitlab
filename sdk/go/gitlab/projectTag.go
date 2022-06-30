@@ -262,6 +262,46 @@ func (o ProjectTagOutput) ToProjectTagOutputWithContext(ctx context.Context) Pro
 	return o
 }
 
+// The commit associated with the tag.
+func (o ProjectTagOutput) Commits() ProjectTagCommitArrayOutput {
+	return o.ApplyT(func(v *ProjectTag) ProjectTagCommitArrayOutput { return v.Commits }).(ProjectTagCommitArrayOutput)
+}
+
+// The message of the annotated tag.
+func (o ProjectTagOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectTag) pulumi.StringPtrOutput { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// The name of a tag.
+func (o ProjectTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectTag) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID or URL-encoded path of the project owned by the authenticated user.
+func (o ProjectTagOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectTag) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Bool, true if tag has tag protection.
+func (o ProjectTagOutput) Protected() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectTag) pulumi.BoolOutput { return v.Protected }).(pulumi.BoolOutput)
+}
+
+// Create tag using commit SHA, another tag name, or branch name. This attribute is not available for imported resources.
+func (o ProjectTagOutput) Ref() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectTag) pulumi.StringOutput { return v.Ref }).(pulumi.StringOutput)
+}
+
+// The release associated with the tag.
+func (o ProjectTagOutput) Releases() ProjectTagReleaseArrayOutput {
+	return o.ApplyT(func(v *ProjectTag) ProjectTagReleaseArrayOutput { return v.Releases }).(ProjectTagReleaseArrayOutput)
+}
+
+// The unique id assigned to the commit by Gitlab.
+func (o ProjectTagOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectTag) pulumi.StringOutput { return v.Target }).(pulumi.StringOutput)
+}
+
 type ProjectTagArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectTagArrayOutput) ElementType() reflect.Type {

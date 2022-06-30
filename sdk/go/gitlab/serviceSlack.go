@@ -448,6 +448,129 @@ func (o ServiceSlackOutput) ToServiceSlackOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
+func (o ServiceSlackOutput) BranchesToBeNotified() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.StringOutput { return v.BranchesToBeNotified }).(pulumi.StringOutput)
+}
+
+// The name of the channel to receive confidential issue events notifications.
+func (o ServiceSlackOutput) ConfidentialIssueChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.StringPtrOutput { return v.ConfidentialIssueChannel }).(pulumi.StringPtrOutput)
+}
+
+// Enable notifications for confidential issues events.
+func (o ServiceSlackOutput) ConfidentialIssuesEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.BoolOutput { return v.ConfidentialIssuesEvents }).(pulumi.BoolOutput)
+}
+
+// Enable notifications for confidential note events.
+func (o ServiceSlackOutput) ConfidentialNoteEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.BoolOutput { return v.ConfidentialNoteEvents }).(pulumi.BoolOutput)
+}
+
+// The name of the channel to receive issue events notifications.
+func (o ServiceSlackOutput) IssueChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.StringPtrOutput { return v.IssueChannel }).(pulumi.StringPtrOutput)
+}
+
+// Enable notifications for issues events.
+func (o ServiceSlackOutput) IssuesEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.BoolOutput { return v.IssuesEvents }).(pulumi.BoolOutput)
+}
+
+// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API,
+// due to https://github.com/xanzy/go-gitlab/issues/1354.
+func (o ServiceSlackOutput) JobEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.BoolOutput { return v.JobEvents }).(pulumi.BoolOutput)
+}
+
+// The name of the channel to receive merge request events notifications.
+func (o ServiceSlackOutput) MergeRequestChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.StringPtrOutput { return v.MergeRequestChannel }).(pulumi.StringPtrOutput)
+}
+
+// Enable notifications for merge requests events.
+func (o ServiceSlackOutput) MergeRequestsEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.BoolOutput { return v.MergeRequestsEvents }).(pulumi.BoolOutput)
+}
+
+// The name of the channel to receive note events notifications.
+func (o ServiceSlackOutput) NoteChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.StringPtrOutput { return v.NoteChannel }).(pulumi.StringPtrOutput)
+}
+
+// Enable notifications for note events.
+func (o ServiceSlackOutput) NoteEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.BoolOutput { return v.NoteEvents }).(pulumi.BoolOutput)
+}
+
+// Send notifications for broken pipelines.
+func (o ServiceSlackOutput) NotifyOnlyBrokenPipelines() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.BoolOutput { return v.NotifyOnlyBrokenPipelines }).(pulumi.BoolOutput)
+}
+
+// This parameter has been replaced with `branches_to_be_notified`.
+//
+// Deprecated: use 'branches_to_be_notified' argument instead
+func (o ServiceSlackOutput) NotifyOnlyDefaultBranch() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.BoolOutput { return v.NotifyOnlyDefaultBranch }).(pulumi.BoolOutput)
+}
+
+// The name of the channel to receive pipeline events notifications.
+func (o ServiceSlackOutput) PipelineChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.StringPtrOutput { return v.PipelineChannel }).(pulumi.StringPtrOutput)
+}
+
+// Enable notifications for pipeline events.
+func (o ServiceSlackOutput) PipelineEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.BoolOutput { return v.PipelineEvents }).(pulumi.BoolOutput)
+}
+
+// ID of the project you want to activate integration on.
+func (o ServiceSlackOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The name of the channel to receive push events notifications.
+func (o ServiceSlackOutput) PushChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.StringPtrOutput { return v.PushChannel }).(pulumi.StringPtrOutput)
+}
+
+// Enable notifications for push events.
+func (o ServiceSlackOutput) PushEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.BoolOutput { return v.PushEvents }).(pulumi.BoolOutput)
+}
+
+// The name of the channel to receive tag push events notifications.
+func (o ServiceSlackOutput) TagPushChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.StringPtrOutput { return v.TagPushChannel }).(pulumi.StringPtrOutput)
+}
+
+// Enable notifications for tag push events.
+func (o ServiceSlackOutput) TagPushEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.BoolOutput { return v.TagPushEvents }).(pulumi.BoolOutput)
+}
+
+// Username to use.
+func (o ServiceSlackOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// Webhook URL (ex.: https://hooks.slack.com/services/...)
+func (o ServiceSlackOutput) Webhook() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.StringOutput { return v.Webhook }).(pulumi.StringOutput)
+}
+
+// The name of the channel to receive wiki page events notifications.
+func (o ServiceSlackOutput) WikiPageChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.StringPtrOutput { return v.WikiPageChannel }).(pulumi.StringPtrOutput)
+}
+
+// Enable notifications for wiki page events.
+func (o ServiceSlackOutput) WikiPageEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceSlack) pulumi.BoolOutput { return v.WikiPageEvents }).(pulumi.BoolOutput)
+}
+
 type ServiceSlackArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceSlackArrayOutput) ElementType() reflect.Type {

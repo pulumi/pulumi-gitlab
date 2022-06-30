@@ -278,6 +278,47 @@ func (o SystemHookOutput) ToSystemHookOutputWithContext(ctx context.Context) Sys
 	return o
 }
 
+// The date and time the hook was created in ISO8601 format.
+func (o SystemHookOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *SystemHook) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Do SSL verification when triggering the hook.
+func (o SystemHookOutput) EnableSslVerification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SystemHook) pulumi.BoolPtrOutput { return v.EnableSslVerification }).(pulumi.BoolPtrOutput)
+}
+
+// Trigger hook on merge requests events.
+func (o SystemHookOutput) MergeRequestsEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SystemHook) pulumi.BoolPtrOutput { return v.MergeRequestsEvents }).(pulumi.BoolPtrOutput)
+}
+
+// When true, the hook fires on push events.
+func (o SystemHookOutput) PushEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SystemHook) pulumi.BoolPtrOutput { return v.PushEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Trigger hook on repository update events.
+func (o SystemHookOutput) RepositoryUpdateEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SystemHook) pulumi.BoolPtrOutput { return v.RepositoryUpdateEvents }).(pulumi.BoolPtrOutput)
+}
+
+// When true, the hook fires on new tags being pushed.
+func (o SystemHookOutput) TagPushEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SystemHook) pulumi.BoolPtrOutput { return v.TagPushEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for
+// imported resources.
+func (o SystemHookOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemHook) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+// The hook URL.
+func (o SystemHookOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *SystemHook) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
 type SystemHookArrayOutput struct{ *pulumi.OutputState }
 
 func (SystemHookArrayOutput) ElementType() reflect.Type {

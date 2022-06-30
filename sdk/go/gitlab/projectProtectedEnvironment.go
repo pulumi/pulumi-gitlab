@@ -266,6 +266,23 @@ func (o ProjectProtectedEnvironmentOutput) ToProjectProtectedEnvironmentOutputWi
 	return o
 }
 
+// Array of access levels allowed to deploy, with each described by a hash.
+func (o ProjectProtectedEnvironmentOutput) DeployAccessLevels() ProjectProtectedEnvironmentDeployAccessLevelsOutput {
+	return o.ApplyT(func(v *ProjectProtectedEnvironment) ProjectProtectedEnvironmentDeployAccessLevelsOutput {
+		return v.DeployAccessLevels
+	}).(ProjectProtectedEnvironmentDeployAccessLevelsOutput)
+}
+
+// The name of the environment.
+func (o ProjectProtectedEnvironmentOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectProtectedEnvironment) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
+}
+
+// The ID or full path of the project which the protected environment is created against.
+func (o ProjectProtectedEnvironmentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectProtectedEnvironment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 type ProjectProtectedEnvironmentArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectProtectedEnvironmentArrayOutput) ElementType() reflect.Type {

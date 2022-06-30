@@ -245,6 +245,27 @@ func (o ServicePipelinesEmailOutput) ToServicePipelinesEmailOutputWithContext(ct
 	return o
 }
 
+// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
+// Default is `default`
+func (o ServicePipelinesEmailOutput) BranchesToBeNotified() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePipelinesEmail) pulumi.StringPtrOutput { return v.BranchesToBeNotified }).(pulumi.StringPtrOutput)
+}
+
+// Notify only broken pipelines. Default is true.
+func (o ServicePipelinesEmailOutput) NotifyOnlyBrokenPipelines() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServicePipelinesEmail) pulumi.BoolPtrOutput { return v.NotifyOnlyBrokenPipelines }).(pulumi.BoolPtrOutput)
+}
+
+// ID of the project you want to activate integration on.
+func (o ServicePipelinesEmailOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePipelinesEmail) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// ) email addresses where notifications are sent.
+func (o ServicePipelinesEmailOutput) Recipients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePipelinesEmail) pulumi.StringArrayOutput { return v.Recipients }).(pulumi.StringArrayOutput)
+}
+
 type ServicePipelinesEmailArrayOutput struct{ *pulumi.OutputState }
 
 func (ServicePipelinesEmailArrayOutput) ElementType() reflect.Type {

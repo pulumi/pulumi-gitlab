@@ -238,6 +238,23 @@ func (o ManagedLicenseOutput) ToManagedLicenseOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
+// "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
+// 15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
+func (o ManagedLicenseOutput) ApprovalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedLicense) pulumi.StringOutput { return v.ApprovalStatus }).(pulumi.StringOutput)
+}
+
+// The name of the managed license (I.e., 'Apache License 2.0' or 'MIT license')
+func (o ManagedLicenseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedLicense) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the project under which the managed license will be created.
+func (o ManagedLicenseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedLicense) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 type ManagedLicenseArrayOutput struct{ *pulumi.OutputState }
 
 func (ManagedLicenseArrayOutput) ElementType() reflect.Type {

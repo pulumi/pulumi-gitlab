@@ -362,6 +362,91 @@ func (o ProjectHookOutput) ToProjectHookOutputWithContext(ctx context.Context) P
 	return o
 }
 
+// Invoke the hook for confidential issues events.
+func (o ProjectHookOutput) ConfidentialIssuesEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolPtrOutput { return v.ConfidentialIssuesEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Invoke the hook for confidential notes events.
+func (o ProjectHookOutput) ConfidentialNoteEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolPtrOutput { return v.ConfidentialNoteEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Invoke the hook for deployment events.
+func (o ProjectHookOutput) DeploymentEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolPtrOutput { return v.DeploymentEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Enable ssl verification when invoking the hook.
+func (o ProjectHookOutput) EnableSslVerification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolPtrOutput { return v.EnableSslVerification }).(pulumi.BoolPtrOutput)
+}
+
+// Invoke the hook for issues events.
+func (o ProjectHookOutput) IssuesEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolPtrOutput { return v.IssuesEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Invoke the hook for job events.
+func (o ProjectHookOutput) JobEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolPtrOutput { return v.JobEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Invoke the hook for merge requests.
+func (o ProjectHookOutput) MergeRequestsEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolPtrOutput { return v.MergeRequestsEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Invoke the hook for notes events.
+func (o ProjectHookOutput) NoteEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolPtrOutput { return v.NoteEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Invoke the hook for pipeline events.
+func (o ProjectHookOutput) PipelineEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolPtrOutput { return v.PipelineEvents }).(pulumi.BoolPtrOutput)
+}
+
+// The name or id of the project to add the hook to.
+func (o ProjectHookOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Invoke the hook for push events.
+func (o ProjectHookOutput) PushEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolPtrOutput { return v.PushEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Invoke the hook for push events on matching branches only.
+func (o ProjectHookOutput) PushEventsBranchFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.StringPtrOutput { return v.PushEventsBranchFilter }).(pulumi.StringPtrOutput)
+}
+
+// Invoke the hook for releases events.
+func (o ProjectHookOutput) ReleasesEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolPtrOutput { return v.ReleasesEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Invoke the hook for tag push events.
+func (o ProjectHookOutput) TagPushEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolPtrOutput { return v.TagPushEvents }).(pulumi.BoolPtrOutput)
+}
+
+// A token to present when invoking the hook. The token is not available for imported resources.
+func (o ProjectHookOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+// The url of the hook to invoke.
+func (o ProjectHookOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+// Invoke the hook for wiki page events.
+func (o ProjectHookOutput) WikiPageEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolPtrOutput { return v.WikiPageEvents }).(pulumi.BoolPtrOutput)
+}
+
 type ProjectHookArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectHookArrayOutput) ElementType() reflect.Type {

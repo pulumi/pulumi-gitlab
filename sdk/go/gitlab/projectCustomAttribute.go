@@ -223,6 +223,21 @@ func (o ProjectCustomAttributeOutput) ToProjectCustomAttributeOutputWithContext(
 	return o
 }
 
+// Key for the Custom Attribute.
+func (o ProjectCustomAttributeOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectCustomAttribute) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// The id of the project.
+func (o ProjectCustomAttributeOutput) Project() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectCustomAttribute) pulumi.IntOutput { return v.Project }).(pulumi.IntOutput)
+}
+
+// Value for the Custom Attribute.
+func (o ProjectCustomAttributeOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectCustomAttribute) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
 type ProjectCustomAttributeArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectCustomAttributeArrayOutput) ElementType() reflect.Type {

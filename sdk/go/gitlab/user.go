@@ -328,6 +328,67 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
+// Boolean, defaults to false. Whether to allow the user to create groups.
+func (o UserOutput) CanCreateGroup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.CanCreateGroup }).(pulumi.BoolPtrOutput)
+}
+
+// The e-mail address of the user.
+func (o UserOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
+}
+
+// Boolean, defaults to false. Whether to enable administrative privileges
+func (o UserOutput) IsAdmin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.IsAdmin }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
+// access projects to which they are explicitly granted access.
+func (o UserOutput) IsExternal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.IsExternal }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the user.
+func (o UserOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The note associated to the user.
+func (o UserOutput) Note() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Note }).(pulumi.StringPtrOutput)
+}
+
+// The password of the user.
+func (o UserOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Integer, defaults to 0. Number of projects user can create.
+func (o UserOutput) ProjectsLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.IntPtrOutput { return v.ProjectsLimit }).(pulumi.IntPtrOutput)
+}
+
+// Boolean, defaults to false. Send user password reset link.
+func (o UserOutput) ResetPassword() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.ResetPassword }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean, defaults to true. Whether to skip confirmation.
+func (o UserOutput) SkipConfirmation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.SkipConfirmation }).(pulumi.BoolPtrOutput)
+}
+
+// String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
+func (o UserOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// The username of the user.
+func (o UserOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
+}
+
 type UserArrayOutput struct{ *pulumi.OutputState }
 
 func (UserArrayOutput) ElementType() reflect.Type {

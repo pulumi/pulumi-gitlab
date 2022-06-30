@@ -274,6 +274,61 @@ func (o BranchOutput) ToBranchOutputWithContext(ctx context.Context) BranchOutpu
 	return o
 }
 
+// Bool, true if you can push to the branch.
+func (o BranchOutput) CanPush() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Branch) pulumi.BoolOutput { return v.CanPush }).(pulumi.BoolOutput)
+}
+
+// The commit associated with the branch ref.
+func (o BranchOutput) Commits() BranchCommitArrayOutput {
+	return o.ApplyT(func(v *Branch) BranchCommitArrayOutput { return v.Commits }).(BranchCommitArrayOutput)
+}
+
+// Bool, true if branch is the default branch for the project.
+func (o BranchOutput) Default() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Branch) pulumi.BoolOutput { return v.Default }).(pulumi.BoolOutput)
+}
+
+// Bool, true if developer level access allows to merge branch.
+func (o BranchOutput) DeveloperCanMerge() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Branch) pulumi.BoolOutput { return v.DeveloperCanMerge }).(pulumi.BoolOutput)
+}
+
+// Bool, true if developer level access allows git push.
+func (o BranchOutput) DeveloperCanPush() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Branch) pulumi.BoolOutput { return v.DeveloperCanPush }).(pulumi.BoolOutput)
+}
+
+// Bool, true if the branch has been merged into it's parent.
+func (o BranchOutput) Merged() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Branch) pulumi.BoolOutput { return v.Merged }).(pulumi.BoolOutput)
+}
+
+// The name for this branch.
+func (o BranchOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Branch) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID or full path of the project which the branch is created against.
+func (o BranchOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Branch) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Bool, true if branch has branch protection.
+func (o BranchOutput) Protected() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Branch) pulumi.BoolOutput { return v.Protected }).(pulumi.BoolOutput)
+}
+
+// The ref which the branch is created from.
+func (o BranchOutput) Ref() pulumi.StringOutput {
+	return o.ApplyT(func(v *Branch) pulumi.StringOutput { return v.Ref }).(pulumi.StringOutput)
+}
+
+// The url of the created branch (https).
+func (o BranchOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Branch) pulumi.StringOutput { return v.WebUrl }).(pulumi.StringOutput)
+}
+
 type BranchArrayOutput struct{ *pulumi.OutputState }
 
 func (BranchArrayOutput) ElementType() reflect.Type {

@@ -255,6 +255,31 @@ func (o DeployKeyEnableOutput) ToDeployKeyEnableOutputWithContext(ctx context.Co
 	return o
 }
 
+// Can deploy key push to the project’s repository.
+func (o DeployKeyEnableOutput) CanPush() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DeployKeyEnable) pulumi.BoolOutput { return v.CanPush }).(pulumi.BoolOutput)
+}
+
+// Deploy key.
+func (o DeployKeyEnableOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeployKeyEnable) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// The Gitlab key id for the pre-existing deploy key
+func (o DeployKeyEnableOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeployKeyEnable) pulumi.StringOutput { return v.KeyId }).(pulumi.StringOutput)
+}
+
+// The name or id of the project to add the deploy key to.
+func (o DeployKeyEnableOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeployKeyEnable) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Deploy key's title.
+func (o DeployKeyEnableOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeployKeyEnable) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
+}
+
 type DeployKeyEnableArrayOutput struct{ *pulumi.OutputState }
 
 func (DeployKeyEnableArrayOutput) ElementType() reflect.Type {

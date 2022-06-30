@@ -223,6 +223,21 @@ func (o GroupCustomAttributeOutput) ToGroupCustomAttributeOutputWithContext(ctx 
 	return o
 }
 
+// The id of the group.
+func (o GroupCustomAttributeOutput) Group() pulumi.IntOutput {
+	return o.ApplyT(func(v *GroupCustomAttribute) pulumi.IntOutput { return v.Group }).(pulumi.IntOutput)
+}
+
+// Key for the Custom Attribute.
+func (o GroupCustomAttributeOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupCustomAttribute) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value for the Custom Attribute.
+func (o GroupCustomAttributeOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupCustomAttribute) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
 type GroupCustomAttributeArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupCustomAttributeArrayOutput) ElementType() reflect.Type {

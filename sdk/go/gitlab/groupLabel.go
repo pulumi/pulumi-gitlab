@@ -235,6 +235,27 @@ func (o GroupLabelOutput) ToGroupLabelOutputWithContext(ctx context.Context) Gro
 	return o
 }
 
+// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
+// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+func (o GroupLabelOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupLabel) pulumi.StringOutput { return v.Color }).(pulumi.StringOutput)
+}
+
+// The description of the label.
+func (o GroupLabelOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupLabel) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name or id of the group to add the label to.
+func (o GroupLabelOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupLabel) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
+}
+
+// The name of the label.
+func (o GroupLabelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupLabel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type GroupLabelArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupLabelArrayOutput) ElementType() reflect.Type {

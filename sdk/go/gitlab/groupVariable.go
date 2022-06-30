@@ -286,6 +286,45 @@ func (o GroupVariableOutput) ToGroupVariableOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
+// values other than `*` will cause inconsistent plans. See
+// https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+func (o GroupVariableOutput) EnvironmentScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupVariable) pulumi.StringPtrOutput { return v.EnvironmentScope }).(pulumi.StringPtrOutput)
+}
+
+// The name or id of the group.
+func (o GroupVariableOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupVariable) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
+}
+
+// The name of the variable.
+func (o GroupVariableOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupVariable) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+func (o GroupVariableOutput) Masked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupVariable) pulumi.BoolPtrOutput { return v.Masked }).(pulumi.BoolPtrOutput)
+}
+
+// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
+// `false`.
+func (o GroupVariableOutput) Protected() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupVariable) pulumi.BoolPtrOutput { return v.Protected }).(pulumi.BoolPtrOutput)
+}
+
+// The value of the variable.
+func (o GroupVariableOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupVariable) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
+// The type of a variable. Available types are: env_var (default) and file.
+func (o GroupVariableOutput) VariableType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupVariable) pulumi.StringPtrOutput { return v.VariableType }).(pulumi.StringPtrOutput)
+}
+
 type GroupVariableArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupVariableArrayOutput) ElementType() reflect.Type {
