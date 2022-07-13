@@ -20,6 +20,7 @@ class RepositoryFileArgs:
                  project: pulumi.Input[str],
                  author_email: Optional[pulumi.Input[str]] = None,
                  author_name: Optional[pulumi.Input[str]] = None,
+                 execute_filemode: Optional[pulumi.Input[bool]] = None,
                  start_branch: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RepositoryFile resource.
@@ -31,6 +32,7 @@ class RepositoryFileArgs:
         :param pulumi.Input[str] project: The name or ID of the project.
         :param pulumi.Input[str] author_email: Email of the commit author.
         :param pulumi.Input[str] author_name: Name of the commit author.
+        :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
         :param pulumi.Input[str] start_branch: Name of the branch to start the new commit from.
         """
         pulumi.set(__self__, "branch", branch)
@@ -42,6 +44,8 @@ class RepositoryFileArgs:
             pulumi.set(__self__, "author_email", author_email)
         if author_name is not None:
             pulumi.set(__self__, "author_name", author_name)
+        if execute_filemode is not None:
+            pulumi.set(__self__, "execute_filemode", execute_filemode)
         if start_branch is not None:
             pulumi.set(__self__, "start_branch", start_branch)
 
@@ -131,6 +135,18 @@ class RepositoryFileArgs:
         pulumi.set(self, "author_name", value)
 
     @property
+    @pulumi.getter(name="executeFilemode")
+    def execute_filemode(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+        """
+        return pulumi.get(self, "execute_filemode")
+
+    @execute_filemode.setter
+    def execute_filemode(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "execute_filemode", value)
+
+    @property
     @pulumi.getter(name="startBranch")
     def start_branch(self) -> Optional[pulumi.Input[str]]:
         """
@@ -155,6 +171,7 @@ class _RepositoryFileState:
                  content: Optional[pulumi.Input[str]] = None,
                  content_sha256: Optional[pulumi.Input[str]] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
+                 execute_filemode: Optional[pulumi.Input[bool]] = None,
                  file_name: Optional[pulumi.Input[str]] = None,
                  file_path: Optional[pulumi.Input[str]] = None,
                  last_commit_id: Optional[pulumi.Input[str]] = None,
@@ -174,6 +191,7 @@ class _RepositoryFileState:
                supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
         :param pulumi.Input[str] content_sha256: File content sha256 digest.
         :param pulumi.Input[str] encoding: The file content encoding.
+        :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
         :param pulumi.Input[str] file_name: The filename.
         :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/`.
         :param pulumi.Input[str] last_commit_id: The last known commit id.
@@ -200,6 +218,8 @@ class _RepositoryFileState:
             pulumi.set(__self__, "content_sha256", content_sha256)
         if encoding is not None:
             pulumi.set(__self__, "encoding", encoding)
+        if execute_filemode is not None:
+            pulumi.set(__self__, "execute_filemode", execute_filemode)
         if file_name is not None:
             pulumi.set(__self__, "file_name", file_name)
         if file_path is not None:
@@ -325,6 +345,18 @@ class _RepositoryFileState:
         pulumi.set(self, "encoding", value)
 
     @property
+    @pulumi.getter(name="executeFilemode")
+    def execute_filemode(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+        """
+        return pulumi.get(self, "execute_filemode")
+
+    @execute_filemode.setter
+    def execute_filemode(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "execute_filemode", value)
+
+    @property
     @pulumi.getter(name="fileName")
     def file_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -419,6 +451,7 @@ class RepositoryFile(pulumi.CustomResource):
                  branch: Optional[pulumi.Input[str]] = None,
                  commit_message: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
+                 execute_filemode: Optional[pulumi.Input[bool]] = None,
                  file_path: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  start_branch: Optional[pulumi.Input[str]] = None,
@@ -440,6 +473,7 @@ class RepositoryFile(pulumi.CustomResource):
         :param pulumi.Input[str] commit_message: Commit message.
         :param pulumi.Input[str] content: File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
                supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
         :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/`.
         :param pulumi.Input[str] project: The name or ID of the project.
         :param pulumi.Input[str] start_branch: Name of the branch to start the new commit from.
@@ -479,6 +513,7 @@ class RepositoryFile(pulumi.CustomResource):
                  branch: Optional[pulumi.Input[str]] = None,
                  commit_message: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
+                 execute_filemode: Optional[pulumi.Input[bool]] = None,
                  file_path: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  start_branch: Optional[pulumi.Input[str]] = None,
@@ -505,6 +540,7 @@ class RepositoryFile(pulumi.CustomResource):
             if content is None and not opts.urn:
                 raise TypeError("Missing required property 'content'")
             __props__.__dict__["content"] = content
+            __props__.__dict__["execute_filemode"] = execute_filemode
             if file_path is None and not opts.urn:
                 raise TypeError("Missing required property 'file_path'")
             __props__.__dict__["file_path"] = file_path
@@ -539,6 +575,7 @@ class RepositoryFile(pulumi.CustomResource):
             content: Optional[pulumi.Input[str]] = None,
             content_sha256: Optional[pulumi.Input[str]] = None,
             encoding: Optional[pulumi.Input[str]] = None,
+            execute_filemode: Optional[pulumi.Input[bool]] = None,
             file_name: Optional[pulumi.Input[str]] = None,
             file_path: Optional[pulumi.Input[str]] = None,
             last_commit_id: Optional[pulumi.Input[str]] = None,
@@ -563,6 +600,7 @@ class RepositoryFile(pulumi.CustomResource):
                supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
         :param pulumi.Input[str] content_sha256: File content sha256 digest.
         :param pulumi.Input[str] encoding: The file content encoding.
+        :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
         :param pulumi.Input[str] file_name: The filename.
         :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/`.
         :param pulumi.Input[str] last_commit_id: The last known commit id.
@@ -584,6 +622,7 @@ class RepositoryFile(pulumi.CustomResource):
         __props__.__dict__["content"] = content
         __props__.__dict__["content_sha256"] = content_sha256
         __props__.__dict__["encoding"] = encoding
+        __props__.__dict__["execute_filemode"] = execute_filemode
         __props__.__dict__["file_name"] = file_name
         __props__.__dict__["file_path"] = file_path
         __props__.__dict__["last_commit_id"] = last_commit_id
@@ -665,6 +704,14 @@ class RepositoryFile(pulumi.CustomResource):
         The file content encoding.
         """
         return pulumi.get(self, "encoding")
+
+    @property
+    @pulumi.getter(name="executeFilemode")
+    def execute_filemode(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+        """
+        return pulumi.get(self, "execute_filemode")
 
     @property
     @pulumi.getter(name="fileName")

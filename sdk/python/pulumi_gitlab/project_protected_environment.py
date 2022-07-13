@@ -15,29 +15,33 @@ __all__ = ['ProjectProtectedEnvironmentArgs', 'ProjectProtectedEnvironment']
 @pulumi.input_type
 class ProjectProtectedEnvironmentArgs:
     def __init__(__self__, *,
-                 deploy_access_levels: pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelsArgs'],
+                 deploy_access_levels: pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]],
                  environment: pulumi.Input[str],
-                 project: pulumi.Input[str]):
+                 project: pulumi.Input[str],
+                 required_approval_count: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a ProjectProtectedEnvironment resource.
-        :param pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelsArgs'] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
         :param pulumi.Input[str] environment: The name of the environment.
         :param pulumi.Input[str] project: The ID or full path of the project which the protected environment is created against.
+        :param pulumi.Input[int] required_approval_count: The number of approvals required to deploy to this environment.
         """
         pulumi.set(__self__, "deploy_access_levels", deploy_access_levels)
         pulumi.set(__self__, "environment", environment)
         pulumi.set(__self__, "project", project)
+        if required_approval_count is not None:
+            pulumi.set(__self__, "required_approval_count", required_approval_count)
 
     @property
     @pulumi.getter(name="deployAccessLevels")
-    def deploy_access_levels(self) -> pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelsArgs']:
+    def deploy_access_levels(self) -> pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]:
         """
         Array of access levels allowed to deploy, with each described by a hash.
         """
         return pulumi.get(self, "deploy_access_levels")
 
     @deploy_access_levels.setter
-    def deploy_access_levels(self, value: pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelsArgs']):
+    def deploy_access_levels(self, value: pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]):
         pulumi.set(self, "deploy_access_levels", value)
 
     @property
@@ -64,18 +68,32 @@ class ProjectProtectedEnvironmentArgs:
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="requiredApprovalCount")
+    def required_approval_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of approvals required to deploy to this environment.
+        """
+        return pulumi.get(self, "required_approval_count")
+
+    @required_approval_count.setter
+    def required_approval_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "required_approval_count", value)
+
 
 @pulumi.input_type
 class _ProjectProtectedEnvironmentState:
     def __init__(__self__, *,
-                 deploy_access_levels: Optional[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelsArgs']] = None,
+                 deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 required_approval_count: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering ProjectProtectedEnvironment resources.
-        :param pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelsArgs'] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
         :param pulumi.Input[str] environment: The name of the environment.
         :param pulumi.Input[str] project: The ID or full path of the project which the protected environment is created against.
+        :param pulumi.Input[int] required_approval_count: The number of approvals required to deploy to this environment.
         """
         if deploy_access_levels is not None:
             pulumi.set(__self__, "deploy_access_levels", deploy_access_levels)
@@ -83,17 +101,19 @@ class _ProjectProtectedEnvironmentState:
             pulumi.set(__self__, "environment", environment)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if required_approval_count is not None:
+            pulumi.set(__self__, "required_approval_count", required_approval_count)
 
     @property
     @pulumi.getter(name="deployAccessLevels")
-    def deploy_access_levels(self) -> Optional[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelsArgs']]:
+    def deploy_access_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]]:
         """
         Array of access levels allowed to deploy, with each described by a hash.
         """
         return pulumi.get(self, "deploy_access_levels")
 
     @deploy_access_levels.setter
-    def deploy_access_levels(self, value: Optional[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelsArgs']]):
+    def deploy_access_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]]):
         pulumi.set(self, "deploy_access_levels", value)
 
     @property
@@ -120,15 +140,28 @@ class _ProjectProtectedEnvironmentState:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="requiredApprovalCount")
+    def required_approval_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of approvals required to deploy to this environment.
+        """
+        return pulumi.get(self, "required_approval_count")
+
+    @required_approval_count.setter
+    def required_approval_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "required_approval_count", value)
+
 
 class ProjectProtectedEnvironment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deploy_access_levels: Optional[pulumi.Input[pulumi.InputType['ProjectProtectedEnvironmentDeployAccessLevelsArgs']]] = None,
+                 deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 required_approval_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
         The `ProjectProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a project.
@@ -141,33 +174,47 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        this_group = gitlab.Group("thisGroup",
-            path="example",
-            description="An example group")
-        this_project = gitlab.Project("thisProject",
-            namespace_id=this_group.id,
-            initialize_with_readme=True)
-        this_project_environment = gitlab.ProjectEnvironment("thisProjectEnvironment",
-            project=this_project.id,
+        this = gitlab.ProjectEnvironment("this",
+            project="123",
             external_url="www.example.com")
-        this_project_protected_environment = gitlab.ProjectProtectedEnvironment("thisProjectProtectedEnvironment",
-            project=this_project.id,
-            environment=this_project_environment.name,
-            deploy_access_levels=gitlab.ProjectProtectedEnvironmentDeployAccessLevelsArgs(
+        # Example with access level
+        example_with_access_level = gitlab.ProjectProtectedEnvironment("exampleWithAccessLevel",
+            project=this.project,
+            required_approval_count=1,
+            environment=this.name,
+            deploy_access_levels=[gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs(
                 access_level="developer",
-            ))
-        this_index_project_protected_environment_project_protected_environment = gitlab.ProjectProtectedEnvironment("thisIndex/projectProtectedEnvironmentProjectProtectedEnvironment",
-            project=this_project.id,
-            environment=this_project_environment.name,
-            deploy_access_levels=gitlab.ProjectProtectedEnvironmentDeployAccessLevelsArgs(
-                group_id=gitlab_group["test"]["id"],
-            ))
-        this_gitlab_index_project_protected_environment_project_protected_environment = gitlab.ProjectProtectedEnvironment("thisGitlabIndex/projectProtectedEnvironmentProjectProtectedEnvironment",
-            project=this_project.id,
-            environment=this_project_environment.name,
-            deploy_access_levels=gitlab.ProjectProtectedEnvironmentDeployAccessLevelsArgs(
-                user_id=gitlab_user["test"]["id"],
-            ))
+            )])
+        # Example with group
+        example_with_group = gitlab.ProjectProtectedEnvironment("exampleWithGroup",
+            project=this.project,
+            environment=this.name,
+            deploy_access_levels=[gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs(
+                group_id=456,
+            )])
+        # Example with user
+        example_with_user = gitlab.ProjectProtectedEnvironment("exampleWithUser",
+            project=this.project,
+            environment=this.name,
+            deploy_access_levels=[gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs(
+                user_id=789,
+            )])
+        # Example with multiple access levels
+        example_with_multiple = gitlab.ProjectProtectedEnvironment("exampleWithMultiple",
+            project=this.project,
+            required_approval_count=2,
+            environment=this.name,
+            deploy_access_levels=[
+                gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs(
+                    access_level="developer",
+                ),
+                gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs(
+                    group_id=456,
+                ),
+                gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs(
+                    user_id=789,
+                ),
+            ])
         ```
 
         ## Import
@@ -180,9 +227,10 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ProjectProtectedEnvironmentDeployAccessLevelsArgs']] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
         :param pulumi.Input[str] environment: The name of the environment.
         :param pulumi.Input[str] project: The ID or full path of the project which the protected environment is created against.
+        :param pulumi.Input[int] required_approval_count: The number of approvals required to deploy to this environment.
         """
         ...
     @overload
@@ -201,33 +249,47 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        this_group = gitlab.Group("thisGroup",
-            path="example",
-            description="An example group")
-        this_project = gitlab.Project("thisProject",
-            namespace_id=this_group.id,
-            initialize_with_readme=True)
-        this_project_environment = gitlab.ProjectEnvironment("thisProjectEnvironment",
-            project=this_project.id,
+        this = gitlab.ProjectEnvironment("this",
+            project="123",
             external_url="www.example.com")
-        this_project_protected_environment = gitlab.ProjectProtectedEnvironment("thisProjectProtectedEnvironment",
-            project=this_project.id,
-            environment=this_project_environment.name,
-            deploy_access_levels=gitlab.ProjectProtectedEnvironmentDeployAccessLevelsArgs(
+        # Example with access level
+        example_with_access_level = gitlab.ProjectProtectedEnvironment("exampleWithAccessLevel",
+            project=this.project,
+            required_approval_count=1,
+            environment=this.name,
+            deploy_access_levels=[gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs(
                 access_level="developer",
-            ))
-        this_index_project_protected_environment_project_protected_environment = gitlab.ProjectProtectedEnvironment("thisIndex/projectProtectedEnvironmentProjectProtectedEnvironment",
-            project=this_project.id,
-            environment=this_project_environment.name,
-            deploy_access_levels=gitlab.ProjectProtectedEnvironmentDeployAccessLevelsArgs(
-                group_id=gitlab_group["test"]["id"],
-            ))
-        this_gitlab_index_project_protected_environment_project_protected_environment = gitlab.ProjectProtectedEnvironment("thisGitlabIndex/projectProtectedEnvironmentProjectProtectedEnvironment",
-            project=this_project.id,
-            environment=this_project_environment.name,
-            deploy_access_levels=gitlab.ProjectProtectedEnvironmentDeployAccessLevelsArgs(
-                user_id=gitlab_user["test"]["id"],
-            ))
+            )])
+        # Example with group
+        example_with_group = gitlab.ProjectProtectedEnvironment("exampleWithGroup",
+            project=this.project,
+            environment=this.name,
+            deploy_access_levels=[gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs(
+                group_id=456,
+            )])
+        # Example with user
+        example_with_user = gitlab.ProjectProtectedEnvironment("exampleWithUser",
+            project=this.project,
+            environment=this.name,
+            deploy_access_levels=[gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs(
+                user_id=789,
+            )])
+        # Example with multiple access levels
+        example_with_multiple = gitlab.ProjectProtectedEnvironment("exampleWithMultiple",
+            project=this.project,
+            required_approval_count=2,
+            environment=this.name,
+            deploy_access_levels=[
+                gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs(
+                    access_level="developer",
+                ),
+                gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs(
+                    group_id=456,
+                ),
+                gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs(
+                    user_id=789,
+                ),
+            ])
         ```
 
         ## Import
@@ -253,9 +315,10 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deploy_access_levels: Optional[pulumi.Input[pulumi.InputType['ProjectProtectedEnvironmentDeployAccessLevelsArgs']]] = None,
+                 deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 required_approval_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -277,6 +340,7 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["required_approval_count"] = required_approval_count
         super(ProjectProtectedEnvironment, __self__).__init__(
             'gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment',
             resource_name,
@@ -287,9 +351,10 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            deploy_access_levels: Optional[pulumi.Input[pulumi.InputType['ProjectProtectedEnvironmentDeployAccessLevelsArgs']]] = None,
+            deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]]] = None,
             environment: Optional[pulumi.Input[str]] = None,
-            project: Optional[pulumi.Input[str]] = None) -> 'ProjectProtectedEnvironment':
+            project: Optional[pulumi.Input[str]] = None,
+            required_approval_count: Optional[pulumi.Input[int]] = None) -> 'ProjectProtectedEnvironment':
         """
         Get an existing ProjectProtectedEnvironment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -297,9 +362,10 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ProjectProtectedEnvironmentDeployAccessLevelsArgs']] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
         :param pulumi.Input[str] environment: The name of the environment.
         :param pulumi.Input[str] project: The ID or full path of the project which the protected environment is created against.
+        :param pulumi.Input[int] required_approval_count: The number of approvals required to deploy to this environment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -308,11 +374,12 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         __props__.__dict__["deploy_access_levels"] = deploy_access_levels
         __props__.__dict__["environment"] = environment
         __props__.__dict__["project"] = project
+        __props__.__dict__["required_approval_count"] = required_approval_count
         return ProjectProtectedEnvironment(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="deployAccessLevels")
-    def deploy_access_levels(self) -> pulumi.Output['outputs.ProjectProtectedEnvironmentDeployAccessLevels']:
+    def deploy_access_levels(self) -> pulumi.Output[Sequence['outputs.ProjectProtectedEnvironmentDeployAccessLevel']]:
         """
         Array of access levels allowed to deploy, with each described by a hash.
         """
@@ -333,4 +400,12 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         The ID or full path of the project which the protected environment is created against.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requiredApprovalCount")
+    def required_approval_count(self) -> pulumi.Output[Optional[int]]:
+        """
+        The number of approvals required to deploy to this environment.
+        """
+        return pulumi.get(self, "required_approval_count")
 

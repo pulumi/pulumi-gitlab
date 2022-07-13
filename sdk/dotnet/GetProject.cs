@@ -77,6 +77,9 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectArgs : Pulumi.InvokeArgs
     {
+        [Input("ciDefaultGitDepth")]
+        public int? CiDefaultGitDepth { get; set; }
+
         [Input("id")]
         public string? Id { get; set; }
 
@@ -93,6 +96,9 @@ namespace Pulumi.GitLab
 
     public sealed class GetProjectInvokeArgs : Pulumi.InvokeArgs
     {
+        [Input("ciDefaultGitDepth")]
+        public Input<int>? CiDefaultGitDepth { get; set; }
+
         [Input("id")]
         public Input<string>? Id { get; set; }
 
@@ -120,6 +126,7 @@ namespace Pulumi.GitLab
         public readonly string BuildGitStrategy;
         public readonly int BuildTimeout;
         public readonly string BuildsAccessLevel;
+        public readonly int CiDefaultGitDepth;
         public readonly ImmutableArray<Outputs.GetProjectContainerExpirationPolicyResult> ContainerExpirationPolicies;
         public readonly string ContainerRegistryAccessLevel;
         public readonly string DefaultBranch;
@@ -183,6 +190,8 @@ namespace Pulumi.GitLab
             int buildTimeout,
 
             string buildsAccessLevel,
+
+            int ciDefaultGitDepth,
 
             ImmutableArray<Outputs.GetProjectContainerExpirationPolicyResult> containerExpirationPolicies,
 
@@ -279,6 +288,7 @@ namespace Pulumi.GitLab
             BuildGitStrategy = buildGitStrategy;
             BuildTimeout = buildTimeout;
             BuildsAccessLevel = buildsAccessLevel;
+            CiDefaultGitDepth = ciDefaultGitDepth;
             ContainerExpirationPolicies = containerExpirationPolicies;
             ContainerRegistryAccessLevel = containerRegistryAccessLevel;
             DefaultBranch = defaultBranch;

@@ -120,6 +120,7 @@ namespace Pulumi.GitLab
         public readonly string Content;
         public readonly string ContentSha256;
         public readonly string Encoding;
+        public readonly bool ExecuteFilemode;
         public readonly string FileName;
         public readonly string FilePath;
         /// <summary>
@@ -143,6 +144,8 @@ namespace Pulumi.GitLab
 
             string encoding,
 
+            bool executeFilemode,
+
             string fileName,
 
             string filePath,
@@ -162,6 +165,7 @@ namespace Pulumi.GitLab
             Content = content;
             ContentSha256 = contentSha256;
             Encoding = encoding;
+            ExecuteFilemode = executeFilemode;
             FileName = fileName;
             FilePath = filePath;
             Id = id;

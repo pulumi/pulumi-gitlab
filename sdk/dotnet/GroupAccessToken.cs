@@ -61,7 +61,7 @@ namespace Pulumi.GitLab
     public partial class GroupAccessToken : Pulumi.CustomResource
     {
         /// <summary>
-        /// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`.
+        /// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         /// </summary>
         [Output("accessLevel")]
         public Output<string?> AccessLevel { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.GitLab
     public sealed class GroupAccessTokenArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`.
+        /// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -213,7 +213,7 @@ namespace Pulumi.GitLab
     public sealed class GroupAccessTokenState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`.
+        /// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }

@@ -24,6 +24,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Branch{}
 	case "gitlab:index/branchProtection:BranchProtection":
 		r = &BranchProtection{}
+	case "gitlab:index/clusterAgent:ClusterAgent":
+		r = &ClusterAgent{}
+	case "gitlab:index/clusterAgentToken:ClusterAgentToken":
+		r = &ClusterAgentToken{}
 	case "gitlab:index/deployKey:DeployKey":
 		r = &DeployKey{}
 	case "gitlab:index/deployKeyEnable:DeployKeyEnable":
@@ -46,6 +50,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupLdapLink{}
 	case "gitlab:index/groupMembership:GroupMembership":
 		r = &GroupMembership{}
+	case "gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate":
+		r = &GroupProjectFileTemplate{}
 	case "gitlab:index/groupShareGroup:GroupShareGroup":
 		r = &GroupShareGroup{}
 	case "gitlab:index/groupVariable:GroupVariable":
@@ -58,6 +64,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Label{}
 	case "gitlab:index/managedLicense:ManagedLicense":
 		r = &ManagedLicense{}
+	case "gitlab:index/personalAccessToken:PersonalAccessToken":
+		r = &PersonalAccessToken{}
 	case "gitlab:index/pipelineSchedule:PipelineSchedule":
 		r = &PipelineSchedule{}
 	case "gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable":
@@ -88,18 +96,28 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectLevelMrApprovals{}
 	case "gitlab:index/projectMembership:ProjectMembership":
 		r = &ProjectMembership{}
+	case "gitlab:index/projectMilestone:ProjectMilestone":
+		r = &ProjectMilestone{}
 	case "gitlab:index/projectMirror:ProjectMirror":
 		r = &ProjectMirror{}
 	case "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment":
 		r = &ProjectProtectedEnvironment{}
+	case "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement":
+		r = &ProjectRunnerEnablement{}
 	case "gitlab:index/projectShareGroup:ProjectShareGroup":
 		r = &ProjectShareGroup{}
 	case "gitlab:index/projectTag:ProjectTag":
 		r = &ProjectTag{}
 	case "gitlab:index/projectVariable:ProjectVariable":
 		r = &ProjectVariable{}
+	case "gitlab:index/releaseLink:ReleaseLink":
+		r = &ReleaseLink{}
 	case "gitlab:index/repositoryFile:RepositoryFile":
 		r = &RepositoryFile{}
+	case "gitlab:index/runner:Runner":
+		r = &Runner{}
+	case "gitlab:index/serviceExternalWiki:ServiceExternalWiki":
+		r = &ServiceExternalWiki{}
 	case "gitlab:index/serviceGithub:ServiceGithub":
 		r = &ServiceGithub{}
 	case "gitlab:index/serviceJira:ServiceJira":
@@ -162,6 +180,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/clusterAgent",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/clusterAgentToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/deployKey",
 		&module{version},
 	)
@@ -217,6 +245,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/groupProjectFileTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/groupShareGroup",
 		&module{version},
 	)
@@ -243,6 +276,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/managedLicense",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/personalAccessToken",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -322,12 +360,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectMilestone",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectMirror",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectProtectedEnvironment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectRunnerEnablement",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -347,7 +395,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/releaseLink",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/repositoryFile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/runner",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/serviceExternalWiki",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

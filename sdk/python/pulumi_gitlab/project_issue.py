@@ -18,8 +18,6 @@ class ProjectIssueArgs:
                  project: pulumi.Input[str],
                  title: pulumi.Input[str],
                  assignee_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-                 closed_at: Optional[pulumi.Input[str]] = None,
-                 closed_by_user_id: Optional[pulumi.Input[int]] = None,
                  confidential: Optional[pulumi.Input[bool]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  delete_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -28,19 +26,12 @@ class ProjectIssueArgs:
                  discussion_to_resolve: Optional[pulumi.Input[str]] = None,
                  due_date: Optional[pulumi.Input[str]] = None,
                  epic_issue_id: Optional[pulumi.Input[int]] = None,
-                 human_time_estimate: Optional[pulumi.Input[str]] = None,
-                 human_total_time_spent: Optional[pulumi.Input[str]] = None,
                  iid: Optional[pulumi.Input[int]] = None,
                  issue_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 links: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  merge_request_to_resolve_discussions_of: Optional[pulumi.Input[int]] = None,
                  milestone_id: Optional[pulumi.Input[int]] = None,
-                 references: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 task_completion_status: Optional[pulumi.Input['ProjectIssueTaskCompletionStatusArgs']] = None,
-                 time_estimate: Optional[pulumi.Input[int]] = None,
-                 total_time_spent: Optional[pulumi.Input[int]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None):
         """
@@ -48,8 +39,6 @@ class ProjectIssueArgs:
         :param pulumi.Input[str] project: The name or ID of the project.
         :param pulumi.Input[str] title: The title of the issue.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] assignee_ids: The IDs of the users to assign the issue to.
-        :param pulumi.Input[str] closed_at: When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
-        :param pulumi.Input[int] closed_by_user_id: The ID of the user that closed the issue. Use `gitlab_user` data source to get more information about the user.
         :param pulumi.Input[bool] confidential: Set an issue to be confidential.
         :param pulumi.Input[str] created_at: When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires
                administrator or project/group owner rights.
@@ -61,21 +50,14 @@ class ProjectIssueArgs:
         :param pulumi.Input[str] due_date: The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11. **Note:** removing a due date is
                currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
         :param pulumi.Input[int] epic_issue_id: The ID of the epic issue.
-        :param pulumi.Input[str] human_time_estimate: The human-readable time estimate of the issue.
-        :param pulumi.Input[str] human_total_time_spent: The human-readable total time spent of the issue.
         :param pulumi.Input[int] iid: The internal ID of the project's issue.
         :param pulumi.Input[str] issue_type: The type of issue. Valid values are: `issue`, `incident`, `test_case`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] labels: The labels of an issue.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] links: The links of the issue.
         :param pulumi.Input[int] merge_request_to_resolve_discussions_of: The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
                all discussions as resolved. When passing a description or title, these values take precedence over the default values.
         :param pulumi.Input[int] milestone_id: The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with
                the milestone assigned and use the API to retrieve the issue's details.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] references: The references of the issue.
         :param pulumi.Input[str] state: The state of the issue. Valid values are: `opened`, `closed`.
-        :param pulumi.Input['ProjectIssueTaskCompletionStatusArgs'] task_completion_status: The task completion status. It's always a one element list.
-        :param pulumi.Input[int] time_estimate: The time estimate of the issue.
-        :param pulumi.Input[int] total_time_spent: The total time spent of the issue.
         :param pulumi.Input[str] updated_at: When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
         :param pulumi.Input[int] weight: The weight of the issue. Valid values are greater than or equal to 0.
         """
@@ -83,10 +65,6 @@ class ProjectIssueArgs:
         pulumi.set(__self__, "title", title)
         if assignee_ids is not None:
             pulumi.set(__self__, "assignee_ids", assignee_ids)
-        if closed_at is not None:
-            pulumi.set(__self__, "closed_at", closed_at)
-        if closed_by_user_id is not None:
-            pulumi.set(__self__, "closed_by_user_id", closed_by_user_id)
         if confidential is not None:
             pulumi.set(__self__, "confidential", confidential)
         if created_at is not None:
@@ -103,32 +81,18 @@ class ProjectIssueArgs:
             pulumi.set(__self__, "due_date", due_date)
         if epic_issue_id is not None:
             pulumi.set(__self__, "epic_issue_id", epic_issue_id)
-        if human_time_estimate is not None:
-            pulumi.set(__self__, "human_time_estimate", human_time_estimate)
-        if human_total_time_spent is not None:
-            pulumi.set(__self__, "human_total_time_spent", human_total_time_spent)
         if iid is not None:
             pulumi.set(__self__, "iid", iid)
         if issue_type is not None:
             pulumi.set(__self__, "issue_type", issue_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if links is not None:
-            pulumi.set(__self__, "links", links)
         if merge_request_to_resolve_discussions_of is not None:
             pulumi.set(__self__, "merge_request_to_resolve_discussions_of", merge_request_to_resolve_discussions_of)
         if milestone_id is not None:
             pulumi.set(__self__, "milestone_id", milestone_id)
-        if references is not None:
-            pulumi.set(__self__, "references", references)
         if state is not None:
             pulumi.set(__self__, "state", state)
-        if task_completion_status is not None:
-            pulumi.set(__self__, "task_completion_status", task_completion_status)
-        if time_estimate is not None:
-            pulumi.set(__self__, "time_estimate", time_estimate)
-        if total_time_spent is not None:
-            pulumi.set(__self__, "total_time_spent", total_time_spent)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
         if weight is not None:
@@ -169,30 +133,6 @@ class ProjectIssueArgs:
     @assignee_ids.setter
     def assignee_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "assignee_ids", value)
-
-    @property
-    @pulumi.getter(name="closedAt")
-    def closed_at(self) -> Optional[pulumi.Input[str]]:
-        """
-        When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
-        """
-        return pulumi.get(self, "closed_at")
-
-    @closed_at.setter
-    def closed_at(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "closed_at", value)
-
-    @property
-    @pulumi.getter(name="closedByUserId")
-    def closed_by_user_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        The ID of the user that closed the issue. Use `gitlab_user` data source to get more information about the user.
-        """
-        return pulumi.get(self, "closed_by_user_id")
-
-    @closed_by_user_id.setter
-    def closed_by_user_id(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "closed_by_user_id", value)
 
     @property
     @pulumi.getter
@@ -294,30 +234,6 @@ class ProjectIssueArgs:
         pulumi.set(self, "epic_issue_id", value)
 
     @property
-    @pulumi.getter(name="humanTimeEstimate")
-    def human_time_estimate(self) -> Optional[pulumi.Input[str]]:
-        """
-        The human-readable time estimate of the issue.
-        """
-        return pulumi.get(self, "human_time_estimate")
-
-    @human_time_estimate.setter
-    def human_time_estimate(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "human_time_estimate", value)
-
-    @property
-    @pulumi.getter(name="humanTotalTimeSpent")
-    def human_total_time_spent(self) -> Optional[pulumi.Input[str]]:
-        """
-        The human-readable total time spent of the issue.
-        """
-        return pulumi.get(self, "human_total_time_spent")
-
-    @human_total_time_spent.setter
-    def human_total_time_spent(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "human_total_time_spent", value)
-
-    @property
     @pulumi.getter
     def iid(self) -> Optional[pulumi.Input[int]]:
         """
@@ -354,18 +270,6 @@ class ProjectIssueArgs:
         pulumi.set(self, "labels", value)
 
     @property
-    @pulumi.getter
-    def links(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The links of the issue.
-        """
-        return pulumi.get(self, "links")
-
-    @links.setter
-    def links(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "links", value)
-
-    @property
     @pulumi.getter(name="mergeRequestToResolveDiscussionsOf")
     def merge_request_to_resolve_discussions_of(self) -> Optional[pulumi.Input[int]]:
         """
@@ -393,18 +297,6 @@ class ProjectIssueArgs:
 
     @property
     @pulumi.getter
-    def references(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The references of the issue.
-        """
-        return pulumi.get(self, "references")
-
-    @references.setter
-    def references(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "references", value)
-
-    @property
-    @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         The state of the issue. Valid values are: `opened`, `closed`.
@@ -414,42 +306,6 @@ class ProjectIssueArgs:
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
-
-    @property
-    @pulumi.getter(name="taskCompletionStatus")
-    def task_completion_status(self) -> Optional[pulumi.Input['ProjectIssueTaskCompletionStatusArgs']]:
-        """
-        The task completion status. It's always a one element list.
-        """
-        return pulumi.get(self, "task_completion_status")
-
-    @task_completion_status.setter
-    def task_completion_status(self, value: Optional[pulumi.Input['ProjectIssueTaskCompletionStatusArgs']]):
-        pulumi.set(self, "task_completion_status", value)
-
-    @property
-    @pulumi.getter(name="timeEstimate")
-    def time_estimate(self) -> Optional[pulumi.Input[int]]:
-        """
-        The time estimate of the issue.
-        """
-        return pulumi.get(self, "time_estimate")
-
-    @time_estimate.setter
-    def time_estimate(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "time_estimate", value)
-
-    @property
-    @pulumi.getter(name="totalTimeSpent")
-    def total_time_spent(self) -> Optional[pulumi.Input[int]]:
-        """
-        The total time spent of the issue.
-        """
-        return pulumi.get(self, "total_time_spent")
-
-    @total_time_spent.setter
-    def total_time_spent(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "total_time_spent", value)
 
     @property
     @pulumi.getter(name="updatedAt")
@@ -510,7 +366,7 @@ class _ProjectIssueState:
                  references: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  subscribed: Optional[pulumi.Input[bool]] = None,
-                 task_completion_status: Optional[pulumi.Input['ProjectIssueTaskCompletionStatusArgs']] = None,
+                 task_completion_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectIssueTaskCompletionStatusArgs']]]] = None,
                  time_estimate: Optional[pulumi.Input[int]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  total_time_spent: Optional[pulumi.Input[int]] = None,
@@ -557,7 +413,7 @@ class _ProjectIssueState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] references: The references of the issue.
         :param pulumi.Input[str] state: The state of the issue. Valid values are: `opened`, `closed`.
         :param pulumi.Input[bool] subscribed: Whether the authenticated user is subscribed to the issue or not.
-        :param pulumi.Input['ProjectIssueTaskCompletionStatusArgs'] task_completion_status: The task completion status. It's always a one element list.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectIssueTaskCompletionStatusArgs']]] task_completion_statuses: The task completion status. It's always a one element list.
         :param pulumi.Input[int] time_estimate: The time estimate of the issue.
         :param pulumi.Input[str] title: The title of the issue.
         :param pulumi.Input[int] total_time_spent: The total time spent of the issue.
@@ -629,8 +485,8 @@ class _ProjectIssueState:
             pulumi.set(__self__, "state", state)
         if subscribed is not None:
             pulumi.set(__self__, "subscribed", subscribed)
-        if task_completion_status is not None:
-            pulumi.set(__self__, "task_completion_status", task_completion_status)
+        if task_completion_statuses is not None:
+            pulumi.set(__self__, "task_completion_statuses", task_completion_statuses)
         if time_estimate is not None:
             pulumi.set(__self__, "time_estimate", time_estimate)
         if title is not None:
@@ -1026,16 +882,16 @@ class _ProjectIssueState:
         pulumi.set(self, "subscribed", value)
 
     @property
-    @pulumi.getter(name="taskCompletionStatus")
-    def task_completion_status(self) -> Optional[pulumi.Input['ProjectIssueTaskCompletionStatusArgs']]:
+    @pulumi.getter(name="taskCompletionStatuses")
+    def task_completion_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectIssueTaskCompletionStatusArgs']]]]:
         """
         The task completion status. It's always a one element list.
         """
-        return pulumi.get(self, "task_completion_status")
+        return pulumi.get(self, "task_completion_statuses")
 
-    @task_completion_status.setter
-    def task_completion_status(self, value: Optional[pulumi.Input['ProjectIssueTaskCompletionStatusArgs']]):
-        pulumi.set(self, "task_completion_status", value)
+    @task_completion_statuses.setter
+    def task_completion_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectIssueTaskCompletionStatusArgs']]]]):
+        pulumi.set(self, "task_completion_statuses", value)
 
     @property
     @pulumi.getter(name="timeEstimate")
@@ -1140,8 +996,6 @@ class ProjectIssue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assignee_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-                 closed_at: Optional[pulumi.Input[str]] = None,
-                 closed_by_user_id: Optional[pulumi.Input[int]] = None,
                  confidential: Optional[pulumi.Input[bool]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  delete_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -1150,21 +1004,14 @@ class ProjectIssue(pulumi.CustomResource):
                  discussion_to_resolve: Optional[pulumi.Input[str]] = None,
                  due_date: Optional[pulumi.Input[str]] = None,
                  epic_issue_id: Optional[pulumi.Input[int]] = None,
-                 human_time_estimate: Optional[pulumi.Input[str]] = None,
-                 human_total_time_spent: Optional[pulumi.Input[str]] = None,
                  iid: Optional[pulumi.Input[int]] = None,
                  issue_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 links: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  merge_request_to_resolve_discussions_of: Optional[pulumi.Input[int]] = None,
                  milestone_id: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 references: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 task_completion_status: Optional[pulumi.Input[pulumi.InputType['ProjectIssueTaskCompletionStatusArgs']]] = None,
-                 time_estimate: Optional[pulumi.Input[int]] = None,
                  title: Optional[pulumi.Input[str]] = None,
-                 total_time_spent: Optional[pulumi.Input[int]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1199,8 +1046,6 @@ class ProjectIssue(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] assignee_ids: The IDs of the users to assign the issue to.
-        :param pulumi.Input[str] closed_at: When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
-        :param pulumi.Input[int] closed_by_user_id: The ID of the user that closed the issue. Use `gitlab_user` data source to get more information about the user.
         :param pulumi.Input[bool] confidential: Set an issue to be confidential.
         :param pulumi.Input[str] created_at: When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires
                administrator or project/group owner rights.
@@ -1212,23 +1057,16 @@ class ProjectIssue(pulumi.CustomResource):
         :param pulumi.Input[str] due_date: The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11. **Note:** removing a due date is
                currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
         :param pulumi.Input[int] epic_issue_id: The ID of the epic issue.
-        :param pulumi.Input[str] human_time_estimate: The human-readable time estimate of the issue.
-        :param pulumi.Input[str] human_total_time_spent: The human-readable total time spent of the issue.
         :param pulumi.Input[int] iid: The internal ID of the project's issue.
         :param pulumi.Input[str] issue_type: The type of issue. Valid values are: `issue`, `incident`, `test_case`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] labels: The labels of an issue.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] links: The links of the issue.
         :param pulumi.Input[int] merge_request_to_resolve_discussions_of: The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
                all discussions as resolved. When passing a description or title, these values take precedence over the default values.
         :param pulumi.Input[int] milestone_id: The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with
                the milestone assigned and use the API to retrieve the issue's details.
         :param pulumi.Input[str] project: The name or ID of the project.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] references: The references of the issue.
         :param pulumi.Input[str] state: The state of the issue. Valid values are: `opened`, `closed`.
-        :param pulumi.Input[pulumi.InputType['ProjectIssueTaskCompletionStatusArgs']] task_completion_status: The task completion status. It's always a one element list.
-        :param pulumi.Input[int] time_estimate: The time estimate of the issue.
         :param pulumi.Input[str] title: The title of the issue.
-        :param pulumi.Input[int] total_time_spent: The total time spent of the issue.
         :param pulumi.Input[str] updated_at: When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
         :param pulumi.Input[int] weight: The weight of the issue. Valid values are greater than or equal to 0.
         """
@@ -1282,8 +1120,6 @@ class ProjectIssue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assignee_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-                 closed_at: Optional[pulumi.Input[str]] = None,
-                 closed_by_user_id: Optional[pulumi.Input[int]] = None,
                  confidential: Optional[pulumi.Input[bool]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  delete_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -1292,21 +1128,14 @@ class ProjectIssue(pulumi.CustomResource):
                  discussion_to_resolve: Optional[pulumi.Input[str]] = None,
                  due_date: Optional[pulumi.Input[str]] = None,
                  epic_issue_id: Optional[pulumi.Input[int]] = None,
-                 human_time_estimate: Optional[pulumi.Input[str]] = None,
-                 human_total_time_spent: Optional[pulumi.Input[str]] = None,
                  iid: Optional[pulumi.Input[int]] = None,
                  issue_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 links: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  merge_request_to_resolve_discussions_of: Optional[pulumi.Input[int]] = None,
                  milestone_id: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 references: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 task_completion_status: Optional[pulumi.Input[pulumi.InputType['ProjectIssueTaskCompletionStatusArgs']]] = None,
-                 time_estimate: Optional[pulumi.Input[int]] = None,
                  title: Optional[pulumi.Input[str]] = None,
-                 total_time_spent: Optional[pulumi.Input[int]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1322,8 +1151,6 @@ class ProjectIssue(pulumi.CustomResource):
             __props__ = ProjectIssueArgs.__new__(ProjectIssueArgs)
 
             __props__.__dict__["assignee_ids"] = assignee_ids
-            __props__.__dict__["closed_at"] = closed_at
-            __props__.__dict__["closed_by_user_id"] = closed_by_user_id
             __props__.__dict__["confidential"] = confidential
             __props__.__dict__["created_at"] = created_at
             __props__.__dict__["delete_on_destroy"] = delete_on_destroy
@@ -1332,36 +1159,38 @@ class ProjectIssue(pulumi.CustomResource):
             __props__.__dict__["discussion_to_resolve"] = discussion_to_resolve
             __props__.__dict__["due_date"] = due_date
             __props__.__dict__["epic_issue_id"] = epic_issue_id
-            __props__.__dict__["human_time_estimate"] = human_time_estimate
-            __props__.__dict__["human_total_time_spent"] = human_total_time_spent
             __props__.__dict__["iid"] = iid
             __props__.__dict__["issue_type"] = issue_type
             __props__.__dict__["labels"] = labels
-            __props__.__dict__["links"] = links
             __props__.__dict__["merge_request_to_resolve_discussions_of"] = merge_request_to_resolve_discussions_of
             __props__.__dict__["milestone_id"] = milestone_id
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            __props__.__dict__["references"] = references
             __props__.__dict__["state"] = state
-            __props__.__dict__["task_completion_status"] = task_completion_status
-            __props__.__dict__["time_estimate"] = time_estimate
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
-            __props__.__dict__["total_time_spent"] = total_time_spent
             __props__.__dict__["updated_at"] = updated_at
             __props__.__dict__["weight"] = weight
             __props__.__dict__["author_id"] = None
+            __props__.__dict__["closed_at"] = None
+            __props__.__dict__["closed_by_user_id"] = None
             __props__.__dict__["downvotes"] = None
             __props__.__dict__["epic_id"] = None
             __props__.__dict__["external_id"] = None
+            __props__.__dict__["human_time_estimate"] = None
+            __props__.__dict__["human_total_time_spent"] = None
             __props__.__dict__["issue_id"] = None
             __props__.__dict__["issue_link_id"] = None
+            __props__.__dict__["links"] = None
             __props__.__dict__["merge_requests_count"] = None
             __props__.__dict__["moved_to_id"] = None
+            __props__.__dict__["references"] = None
             __props__.__dict__["subscribed"] = None
+            __props__.__dict__["task_completion_statuses"] = None
+            __props__.__dict__["time_estimate"] = None
+            __props__.__dict__["total_time_spent"] = None
             __props__.__dict__["upvotes"] = None
             __props__.__dict__["user_notes_count"] = None
             __props__.__dict__["web_url"] = None
@@ -1406,7 +1235,7 @@ class ProjectIssue(pulumi.CustomResource):
             references: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
             subscribed: Optional[pulumi.Input[bool]] = None,
-            task_completion_status: Optional[pulumi.Input[pulumi.InputType['ProjectIssueTaskCompletionStatusArgs']]] = None,
+            task_completion_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectIssueTaskCompletionStatusArgs']]]]] = None,
             time_estimate: Optional[pulumi.Input[int]] = None,
             title: Optional[pulumi.Input[str]] = None,
             total_time_spent: Optional[pulumi.Input[int]] = None,
@@ -1458,7 +1287,7 @@ class ProjectIssue(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] references: The references of the issue.
         :param pulumi.Input[str] state: The state of the issue. Valid values are: `opened`, `closed`.
         :param pulumi.Input[bool] subscribed: Whether the authenticated user is subscribed to the issue or not.
-        :param pulumi.Input[pulumi.InputType['ProjectIssueTaskCompletionStatusArgs']] task_completion_status: The task completion status. It's always a one element list.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectIssueTaskCompletionStatusArgs']]]] task_completion_statuses: The task completion status. It's always a one element list.
         :param pulumi.Input[int] time_estimate: The time estimate of the issue.
         :param pulumi.Input[str] title: The title of the issue.
         :param pulumi.Input[int] total_time_spent: The total time spent of the issue.
@@ -1503,7 +1332,7 @@ class ProjectIssue(pulumi.CustomResource):
         __props__.__dict__["references"] = references
         __props__.__dict__["state"] = state
         __props__.__dict__["subscribed"] = subscribed
-        __props__.__dict__["task_completion_status"] = task_completion_status
+        __props__.__dict__["task_completion_statuses"] = task_completion_statuses
         __props__.__dict__["time_estimate"] = time_estimate
         __props__.__dict__["title"] = title
         __props__.__dict__["total_time_spent"] = total_time_spent
@@ -1768,12 +1597,12 @@ class ProjectIssue(pulumi.CustomResource):
         return pulumi.get(self, "subscribed")
 
     @property
-    @pulumi.getter(name="taskCompletionStatus")
-    def task_completion_status(self) -> pulumi.Output['outputs.ProjectIssueTaskCompletionStatus']:
+    @pulumi.getter(name="taskCompletionStatuses")
+    def task_completion_statuses(self) -> pulumi.Output[Sequence['outputs.ProjectIssueTaskCompletionStatus']]:
         """
         The task completion status. It's always a one element list.
         """
-        return pulumi.get(self, "task_completion_status")
+        return pulumi.get(self, "task_completion_statuses")
 
     @property
     @pulumi.getter(name="timeEstimate")

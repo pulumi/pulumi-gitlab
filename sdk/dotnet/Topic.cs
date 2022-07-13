@@ -70,6 +70,12 @@ namespace Pulumi.GitLab
         [Output("softDestroy")]
         public Output<bool?> SoftDestroy { get; private set; } = null!;
 
+        /// <summary>
+        /// The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+        /// </summary>
+        [Output("title")]
+        public Output<string?> Title { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Topic resource with the given unique name, arguments, and options.
@@ -147,6 +153,12 @@ namespace Pulumi.GitLab
         [Input("softDestroy")]
         public Input<bool>? SoftDestroy { get; set; }
 
+        /// <summary>
+        /// The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+        /// </summary>
+        [Input("title")]
+        public Input<string>? Title { get; set; }
+
         public TopicArgs()
         {
         }
@@ -190,6 +202,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("softDestroy")]
         public Input<bool>? SoftDestroy { get; set; }
+
+        /// <summary>
+        /// The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+        /// </summary>
+        [Input("title")]
+        public Input<string>? Title { get; set; }
 
         public TopicState()
         {

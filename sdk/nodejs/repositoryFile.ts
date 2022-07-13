@@ -79,6 +79,10 @@ export class RepositoryFile extends pulumi.CustomResource {
      */
     public /*out*/ readonly encoding!: pulumi.Output<string>;
     /**
+     * Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+     */
+    public readonly executeFilemode!: pulumi.Output<boolean | undefined>;
+    /**
      * The filename.
      */
     public /*out*/ readonly fileName!: pulumi.Output<string>;
@@ -129,6 +133,7 @@ export class RepositoryFile extends pulumi.CustomResource {
             resourceInputs["content"] = state ? state.content : undefined;
             resourceInputs["contentSha256"] = state ? state.contentSha256 : undefined;
             resourceInputs["encoding"] = state ? state.encoding : undefined;
+            resourceInputs["executeFilemode"] = state ? state.executeFilemode : undefined;
             resourceInputs["fileName"] = state ? state.fileName : undefined;
             resourceInputs["filePath"] = state ? state.filePath : undefined;
             resourceInputs["lastCommitId"] = state ? state.lastCommitId : undefined;
@@ -158,6 +163,7 @@ export class RepositoryFile extends pulumi.CustomResource {
             resourceInputs["branch"] = args ? args.branch : undefined;
             resourceInputs["commitMessage"] = args ? args.commitMessage : undefined;
             resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["executeFilemode"] = args ? args.executeFilemode : undefined;
             resourceInputs["filePath"] = args ? args.filePath : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["startBranch"] = args ? args.startBranch : undefined;
@@ -217,6 +223,10 @@ export interface RepositoryFileState {
      */
     encoding?: pulumi.Input<string>;
     /**
+     * Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+     */
+    executeFilemode?: pulumi.Input<boolean>;
+    /**
      * The filename.
      */
     fileName?: pulumi.Input<string>;
@@ -271,6 +281,10 @@ export interface RepositoryFileArgs {
      * supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
      */
     content: pulumi.Input<string>;
+    /**
+     * Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+     */
+    executeFilemode?: pulumi.Input<boolean>;
     /**
      * The full path of the file. It must be relative to the root of the project without a leading slash `/`.
      */

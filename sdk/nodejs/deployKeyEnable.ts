@@ -34,10 +34,14 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+ * # GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. # `project_id` can be whatever the [get single project api][get_single_project] takes for # its `:id` value, so for example
  *
  * ```sh
  *  $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example richardc/example:67890
  * ```
  */
 export class DeployKeyEnable extends pulumi.CustomResource {
@@ -69,9 +73,9 @@ export class DeployKeyEnable extends pulumi.CustomResource {
     }
 
     /**
-     * Can deploy key push to the project’s repository.
+     * Can deploy key push to the project's repository.
      */
-    public readonly canPush!: pulumi.Output<boolean>;
+    public readonly canPush!: pulumi.Output<boolean | undefined>;
     /**
      * Deploy key.
      */
@@ -131,7 +135,7 @@ export class DeployKeyEnable extends pulumi.CustomResource {
  */
 export interface DeployKeyEnableState {
     /**
-     * Can deploy key push to the project’s repository.
+     * Can deploy key push to the project's repository.
      */
     canPush?: pulumi.Input<boolean>;
     /**
@@ -157,7 +161,7 @@ export interface DeployKeyEnableState {
  */
 export interface DeployKeyEnableArgs {
     /**
-     * Can deploy key push to the project’s repository.
+     * Can deploy key push to the project's repository.
      */
     canPush?: pulumi.Input<boolean>;
     /**

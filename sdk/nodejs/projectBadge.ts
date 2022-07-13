@@ -68,6 +68,10 @@ export class ProjectBadge extends pulumi.CustomResource {
      */
     public readonly linkUrl!: pulumi.Output<string>;
     /**
+     * The name of the badge.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
      * The id of the project to add the badge to.
      */
     public readonly project!: pulumi.Output<string>;
@@ -95,6 +99,7 @@ export class ProjectBadge extends pulumi.CustomResource {
             const state = argsOrState as ProjectBadgeState | undefined;
             resourceInputs["imageUrl"] = state ? state.imageUrl : undefined;
             resourceInputs["linkUrl"] = state ? state.linkUrl : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["renderedImageUrl"] = state ? state.renderedImageUrl : undefined;
             resourceInputs["renderedLinkUrl"] = state ? state.renderedLinkUrl : undefined;
@@ -111,6 +116,7 @@ export class ProjectBadge extends pulumi.CustomResource {
             }
             resourceInputs["imageUrl"] = args ? args.imageUrl : undefined;
             resourceInputs["linkUrl"] = args ? args.linkUrl : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["renderedImageUrl"] = undefined /*out*/;
             resourceInputs["renderedLinkUrl"] = undefined /*out*/;
@@ -132,6 +138,10 @@ export interface ProjectBadgeState {
      * The url linked with the badge.
      */
     linkUrl?: pulumi.Input<string>;
+    /**
+     * The name of the badge.
+     */
+    name?: pulumi.Input<string>;
     /**
      * The id of the project to add the badge to.
      */
@@ -158,6 +168,10 @@ export interface ProjectBadgeArgs {
      * The url linked with the badge.
      */
     linkUrl: pulumi.Input<string>;
+    /**
+     * The name of the badge.
+     */
+    name?: pulumi.Input<string>;
     /**
      * The id of the project to add the badge to.
      */

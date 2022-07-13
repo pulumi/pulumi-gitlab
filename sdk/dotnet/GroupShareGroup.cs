@@ -61,13 +61,13 @@ namespace Pulumi.GitLab
         public Output<string> GroupAccess { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the main group.
+        /// The id of the main group to be shared.
         /// </summary>
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The id of an additional group which will be shared with the main group.
+        /// The id of the additional group with which the main group will be shared.
         /// </summary>
         [Output("shareGroupId")]
         public Output<int> ShareGroupId { get; private set; } = null!;
@@ -132,13 +132,13 @@ namespace Pulumi.GitLab
         public Input<string> GroupAccess { get; set; } = null!;
 
         /// <summary>
-        /// The id of the main group.
+        /// The id of the main group to be shared.
         /// </summary>
         [Input("groupId", required: true)]
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// The id of an additional group which will be shared with the main group.
+        /// The id of the additional group with which the main group will be shared.
         /// </summary>
         [Input("shareGroupId", required: true)]
         public Input<int> ShareGroupId { get; set; } = null!;
@@ -164,13 +164,13 @@ namespace Pulumi.GitLab
         public Input<string>? GroupAccess { get; set; }
 
         /// <summary>
-        /// The id of the main group.
+        /// The id of the main group to be shared.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// The id of an additional group which will be shared with the main group.
+        /// The id of the additional group with which the main group will be shared.
         /// </summary>
         [Input("shareGroupId")]
         public Input<int>? ShareGroupId { get; set; }

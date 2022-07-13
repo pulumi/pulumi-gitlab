@@ -93,6 +93,10 @@ export class User extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The ID of the user's namespace. Available since GitLab 14.10.
+     */
+    public readonly namespaceId!: pulumi.Output<number>;
+    /**
      * The note associated to the user.
      */
     public readonly note!: pulumi.Output<string | undefined>;
@@ -139,6 +143,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["isAdmin"] = state ? state.isAdmin : undefined;
             resourceInputs["isExternal"] = state ? state.isExternal : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
             resourceInputs["note"] = state ? state.note : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["projectsLimit"] = state ? state.projectsLimit : undefined;
@@ -159,6 +164,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["isAdmin"] = args ? args.isAdmin : undefined;
             resourceInputs["isExternal"] = args ? args.isExternal : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
             resourceInputs["note"] = args ? args.note : undefined;
             resourceInputs["password"] = args ? args.password : undefined;
             resourceInputs["projectsLimit"] = args ? args.projectsLimit : undefined;
@@ -197,6 +203,10 @@ export interface UserState {
      * The name of the user.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the user's namespace. Available since GitLab 14.10.
+     */
+    namespaceId?: pulumi.Input<number>;
     /**
      * The note associated to the user.
      */
@@ -252,6 +262,10 @@ export interface UserArgs {
      * The name of the user.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the user's namespace. Available since GitLab 14.10.
+     */
+    namespaceId?: pulumi.Input<number>;
     /**
      * The note associated to the user.
      */

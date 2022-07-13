@@ -16,38 +16,51 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const thisGroup = new gitlab.Group("thisGroup", {
- *     path: "example",
- *     description: "An example group",
- * });
- * const thisProject = new gitlab.Project("thisProject", {
- *     namespaceId: thisGroup.id,
- *     initializeWithReadme: true,
- * });
- * const thisProjectEnvironment = new gitlab.ProjectEnvironment("thisProjectEnvironment", {
- *     project: thisProject.id,
+ * const _this = new gitlab.ProjectEnvironment("this", {
+ *     project: "123",
  *     externalUrl: "www.example.com",
  * });
- * const thisProjectProtectedEnvironment = new gitlab.ProjectProtectedEnvironment("thisProjectProtectedEnvironment", {
- *     project: thisProject.id,
- *     environment: thisProjectEnvironment.name,
- *     deployAccessLevels: {
+ * // Example with access level
+ * const exampleWithAccessLevel = new gitlab.ProjectProtectedEnvironment("exampleWithAccessLevel", {
+ *     project: _this.project,
+ *     requiredApprovalCount: 1,
+ *     environment: _this.name,
+ *     deployAccessLevels: [{
  *         accessLevel: "developer",
- *     },
+ *     }],
  * });
- * const thisIndex_projectProtectedEnvironmentProjectProtectedEnvironment = new gitlab.ProjectProtectedEnvironment("thisIndex/projectProtectedEnvironmentProjectProtectedEnvironment", {
- *     project: thisProject.id,
- *     environment: thisProjectEnvironment.name,
- *     deployAccessLevels: {
- *         groupId: gitlab_group.test.id,
- *     },
+ * // Example with group
+ * const exampleWithGroup = new gitlab.ProjectProtectedEnvironment("exampleWithGroup", {
+ *     project: _this.project,
+ *     environment: _this.name,
+ *     deployAccessLevels: [{
+ *         groupId: 456,
+ *     }],
  * });
- * const thisGitlabIndex_projectProtectedEnvironmentProjectProtectedEnvironment = new gitlab.ProjectProtectedEnvironment("thisGitlabIndex/projectProtectedEnvironmentProjectProtectedEnvironment", {
- *     project: thisProject.id,
- *     environment: thisProjectEnvironment.name,
- *     deployAccessLevels: {
- *         userId: gitlab_user.test.id,
- *     },
+ * // Example with user
+ * const exampleWithUser = new gitlab.ProjectProtectedEnvironment("exampleWithUser", {
+ *     project: _this.project,
+ *     environment: _this.name,
+ *     deployAccessLevels: [{
+ *         userId: 789,
+ *     }],
+ * });
+ * // Example with multiple access levels
+ * const exampleWithMultiple = new gitlab.ProjectProtectedEnvironment("exampleWithMultiple", {
+ *     project: _this.project,
+ *     requiredApprovalCount: 2,
+ *     environment: _this.name,
+ *     deployAccessLevels: [
+ *         {
+ *             accessLevel: "developer",
+ *         },
+ *         {
+ *             groupId: 456,
+ *         },
+ *         {
+ *             userId: 789,
+ *         },
+ *     ],
  * });
  * ```
  *
@@ -90,7 +103,7 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
     /**
      * Array of access levels allowed to deploy, with each described by a hash.
      */
-    public readonly deployAccessLevels!: pulumi.Output<outputs.ProjectProtectedEnvironmentDeployAccessLevels>;
+    public readonly deployAccessLevels!: pulumi.Output<outputs.ProjectProtectedEnvironmentDeployAccessLevel[]>;
     /**
      * The name of the environment.
      */
@@ -99,6 +112,10 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
      * The ID or full path of the project which the protected environment is created against.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The number of approvals required to deploy to this environment.
+     */
+    public readonly requiredApprovalCount!: pulumi.Output<number | undefined>;
 
     /**
      * Create a ProjectProtectedEnvironment resource with the given unique name, arguments, and options.
@@ -116,6 +133,7 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
             resourceInputs["deployAccessLevels"] = state ? state.deployAccessLevels : undefined;
             resourceInputs["environment"] = state ? state.environment : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["requiredApprovalCount"] = state ? state.requiredApprovalCount : undefined;
         } else {
             const args = argsOrState as ProjectProtectedEnvironmentArgs | undefined;
             if ((!args || args.deployAccessLevels === undefined) && !opts.urn) {
@@ -130,6 +148,7 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
             resourceInputs["deployAccessLevels"] = args ? args.deployAccessLevels : undefined;
             resourceInputs["environment"] = args ? args.environment : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requiredApprovalCount"] = args ? args.requiredApprovalCount : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectProtectedEnvironment.__pulumiType, name, resourceInputs, opts);
@@ -143,7 +162,7 @@ export interface ProjectProtectedEnvironmentState {
     /**
      * Array of access levels allowed to deploy, with each described by a hash.
      */
-    deployAccessLevels?: pulumi.Input<inputs.ProjectProtectedEnvironmentDeployAccessLevels>;
+    deployAccessLevels?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentDeployAccessLevel>[]>;
     /**
      * The name of the environment.
      */
@@ -152,6 +171,10 @@ export interface ProjectProtectedEnvironmentState {
      * The ID or full path of the project which the protected environment is created against.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The number of approvals required to deploy to this environment.
+     */
+    requiredApprovalCount?: pulumi.Input<number>;
 }
 
 /**
@@ -161,7 +184,7 @@ export interface ProjectProtectedEnvironmentArgs {
     /**
      * Array of access levels allowed to deploy, with each described by a hash.
      */
-    deployAccessLevels: pulumi.Input<inputs.ProjectProtectedEnvironmentDeployAccessLevels>;
+    deployAccessLevels: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentDeployAccessLevel>[]>;
     /**
      * The name of the environment.
      */
@@ -170,4 +193,8 @@ export interface ProjectProtectedEnvironmentArgs {
      * The ID or full path of the project which the protected environment is created against.
      */
     project: pulumi.Input<string>;
+    /**
+     * The number of approvals required to deploy to this environment.
+     */
+    requiredApprovalCount?: pulumi.Input<number>;
 }

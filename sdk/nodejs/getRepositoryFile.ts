@@ -53,6 +53,7 @@ export interface GetRepositoryFileResult {
     readonly content: string;
     readonly contentSha256: string;
     readonly encoding: string;
+    readonly executeFilemode: boolean;
     readonly fileName: string;
     readonly filePath: string;
     /**

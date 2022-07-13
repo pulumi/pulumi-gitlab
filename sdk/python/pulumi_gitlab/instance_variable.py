@@ -23,10 +23,10 @@ class InstanceVariableArgs:
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-               requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+               requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
                `false`.
-        :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
+        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -66,7 +66,7 @@ class InstanceVariableArgs:
     def masked(self) -> Optional[pulumi.Input[bool]]:
         """
         If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-        requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+        requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         """
         return pulumi.get(self, "masked")
 
@@ -91,7 +91,7 @@ class InstanceVariableArgs:
     @pulumi.getter(name="variableType")
     def variable_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of a variable. Available types are: env_var (default) and file.
+        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
         return pulumi.get(self, "variable_type")
 
@@ -112,11 +112,11 @@ class _InstanceVariableState:
         Input properties used for looking up and filtering InstanceVariable resources.
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-               requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+               requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
                `false`.
         :param pulumi.Input[str] value: The value of the variable.
-        :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
+        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -146,7 +146,7 @@ class _InstanceVariableState:
     def masked(self) -> Optional[pulumi.Input[bool]]:
         """
         If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-        requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+        requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         """
         return pulumi.get(self, "masked")
 
@@ -183,7 +183,7 @@ class _InstanceVariableState:
     @pulumi.getter(name="variableType")
     def variable_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of a variable. Available types are: env_var (default) and file.
+        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
         return pulumi.get(self, "variable_type")
 
@@ -204,9 +204,9 @@ class InstanceVariable(pulumi.CustomResource):
                  variable_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The `InstanceVariable` resource allows to manage the lifecycle of a CI/CD variable for an instance.
+        The `InstanceVariable` resource allows to manage the lifecycle of an instance-level CI/CD variable.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_variables.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
 
         ## Example Usage
 
@@ -233,11 +233,11 @@ class InstanceVariable(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-               requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+               requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
                `false`.
         :param pulumi.Input[str] value: The value of the variable.
-        :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
+        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
         ...
     @overload
@@ -246,9 +246,9 @@ class InstanceVariable(pulumi.CustomResource):
                  args: InstanceVariableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `InstanceVariable` resource allows to manage the lifecycle of a CI/CD variable for an instance.
+        The `InstanceVariable` resource allows to manage the lifecycle of an instance-level CI/CD variable.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_variables.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
 
         ## Example Usage
 
@@ -336,11 +336,11 @@ class InstanceVariable(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-               requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+               requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
                `false`.
         :param pulumi.Input[str] value: The value of the variable.
-        :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
+        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -366,7 +366,7 @@ class InstanceVariable(pulumi.CustomResource):
     def masked(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-        requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+        requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         """
         return pulumi.get(self, "masked")
 
@@ -391,7 +391,7 @@ class InstanceVariable(pulumi.CustomResource):
     @pulumi.getter(name="variableType")
     def variable_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The type of a variable. Available types are: env_var (default) and file.
+        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
         return pulumi.get(self, "variable_type")
 

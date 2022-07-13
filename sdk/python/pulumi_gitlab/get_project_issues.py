@@ -21,7 +21,7 @@ class GetProjectIssuesResult:
     """
     A collection of values returned by getProjectIssues.
     """
-    def __init__(__self__, assignee_id=None, assignee_username=None, author_id=None, confidential=None, created_after=None, created_before=None, due_date=None, id=None, iids=None, issue_type=None, issues=None, labels=None, milestone=None, my_reaction_emoji=None, not_assignee_ids=None, not_author_ids=None, not_labels=None, not_milestones=None, not_my_reaction_emojis=None, order_by=None, project=None, scope=None, search=None, sort=None, updated_after=None, updated_before=None, weight=None, with_labels_details=None):
+    def __init__(__self__, assignee_id=None, assignee_username=None, author_id=None, confidential=None, created_after=None, created_before=None, due_date=None, id=None, iids=None, issue_type=None, issues=None, labels=None, milestone=None, my_reaction_emoji=None, not_assignee_ids=None, not_author_ids=None, not_labels=None, not_milestone=None, not_my_reaction_emojis=None, order_by=None, project=None, scope=None, search=None, sort=None, updated_after=None, updated_before=None, weight=None, with_labels_details=None):
         if assignee_id and not isinstance(assignee_id, int):
             raise TypeError("Expected argument 'assignee_id' to be a int")
         pulumi.set(__self__, "assignee_id", assignee_id)
@@ -73,9 +73,9 @@ class GetProjectIssuesResult:
         if not_labels and not isinstance(not_labels, list):
             raise TypeError("Expected argument 'not_labels' to be a list")
         pulumi.set(__self__, "not_labels", not_labels)
-        if not_milestones and not isinstance(not_milestones, list):
-            raise TypeError("Expected argument 'not_milestones' to be a list")
-        pulumi.set(__self__, "not_milestones", not_milestones)
+        if not_milestone and not isinstance(not_milestone, str):
+            raise TypeError("Expected argument 'not_milestone' to be a str")
+        pulumi.set(__self__, "not_milestone", not_milestone)
         if not_my_reaction_emojis and not isinstance(not_my_reaction_emojis, list):
             raise TypeError("Expected argument 'not_my_reaction_emojis' to be a list")
         pulumi.set(__self__, "not_my_reaction_emojis", not_my_reaction_emojis)
@@ -196,9 +196,9 @@ class GetProjectIssuesResult:
         return pulumi.get(self, "not_labels")
 
     @property
-    @pulumi.getter(name="notMilestones")
-    def not_milestones(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "not_milestones")
+    @pulumi.getter(name="notMilestone")
+    def not_milestone(self) -> Optional[str]:
+        return pulumi.get(self, "not_milestone")
 
     @property
     @pulumi.getter(name="notMyReactionEmojis")
@@ -274,7 +274,7 @@ class AwaitableGetProjectIssuesResult(GetProjectIssuesResult):
             not_assignee_ids=self.not_assignee_ids,
             not_author_ids=self.not_author_ids,
             not_labels=self.not_labels,
-            not_milestones=self.not_milestones,
+            not_milestone=self.not_milestone,
             not_my_reaction_emojis=self.not_my_reaction_emojis,
             order_by=self.order_by,
             project=self.project,
@@ -302,7 +302,7 @@ def get_project_issues(assignee_id: Optional[int] = None,
                        not_assignee_ids: Optional[Sequence[int]] = None,
                        not_author_ids: Optional[Sequence[int]] = None,
                        not_labels: Optional[Sequence[str]] = None,
-                       not_milestones: Optional[Sequence[str]] = None,
+                       not_milestone: Optional[str] = None,
                        not_my_reaction_emojis: Optional[Sequence[str]] = None,
                        order_by: Optional[str] = None,
                        project: Optional[str] = None,
@@ -346,7 +346,7 @@ def get_project_issues(assignee_id: Optional[int] = None,
     __args__['notAssigneeIds'] = not_assignee_ids
     __args__['notAuthorIds'] = not_author_ids
     __args__['notLabels'] = not_labels
-    __args__['notMilestones'] = not_milestones
+    __args__['notMilestone'] = not_milestone
     __args__['notMyReactionEmojis'] = not_my_reaction_emojis
     __args__['orderBy'] = order_by
     __args__['project'] = project
@@ -381,7 +381,7 @@ def get_project_issues(assignee_id: Optional[int] = None,
         not_assignee_ids=__ret__.not_assignee_ids,
         not_author_ids=__ret__.not_author_ids,
         not_labels=__ret__.not_labels,
-        not_milestones=__ret__.not_milestones,
+        not_milestone=__ret__.not_milestone,
         not_my_reaction_emojis=__ret__.not_my_reaction_emojis,
         order_by=__ret__.order_by,
         project=__ret__.project,
@@ -410,7 +410,7 @@ def get_project_issues_output(assignee_id: Optional[pulumi.Input[Optional[int]]]
                               not_assignee_ids: Optional[pulumi.Input[Optional[Sequence[int]]]] = None,
                               not_author_ids: Optional[pulumi.Input[Optional[Sequence[int]]]] = None,
                               not_labels: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                              not_milestones: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              not_milestone: Optional[pulumi.Input[Optional[str]]] = None,
                               not_my_reaction_emojis: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                               order_by: Optional[pulumi.Input[Optional[str]]] = None,
                               project: Optional[pulumi.Input[str]] = None,

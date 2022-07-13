@@ -26,9 +26,10 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
-	Email    *string `pulumi:"email"`
-	UserId   *int    `pulumi:"userId"`
-	Username *string `pulumi:"username"`
+	Email       *string `pulumi:"email"`
+	NamespaceId *int    `pulumi:"namespaceId"`
+	UserId      *int    `pulumi:"userId"`
+	Username    *string `pulumi:"username"`
 }
 
 // A collection of values returned by getUser.
@@ -50,6 +51,7 @@ type LookupUserResult struct {
 	Linkedin         string `pulumi:"linkedin"`
 	Location         string `pulumi:"location"`
 	Name             string `pulumi:"name"`
+	NamespaceId      int    `pulumi:"namespaceId"`
 	Note             string `pulumi:"note"`
 	Organization     string `pulumi:"organization"`
 	ProjectsLimit    int    `pulumi:"projectsLimit"`
@@ -79,9 +81,10 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getUser.
 type LookupUserOutputArgs struct {
-	Email    pulumi.StringPtrInput `pulumi:"email"`
-	UserId   pulumi.IntPtrInput    `pulumi:"userId"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Email       pulumi.StringPtrInput `pulumi:"email"`
+	NamespaceId pulumi.IntPtrInput    `pulumi:"namespaceId"`
+	UserId      pulumi.IntPtrInput    `pulumi:"userId"`
+	Username    pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (LookupUserOutputArgs) ElementType() reflect.Type {
@@ -166,6 +169,10 @@ func (o LookupUserResultOutput) Location() pulumi.StringOutput {
 
 func (o LookupUserResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupUserResultOutput) NamespaceId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupUserResult) int { return v.NamespaceId }).(pulumi.IntOutput)
 }
 
 func (o LookupUserResultOutput) Note() pulumi.StringOutput {

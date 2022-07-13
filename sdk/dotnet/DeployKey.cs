@@ -39,18 +39,21 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// # GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+    /// # GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. # `project_id` can be whatever the [get single project api][get_single_project] takes for # its `:id` value, so for example
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/deployKey:DeployKey test 1:3
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gitlab:index/deployKey:DeployKey test richardc/example:3
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/deployKey:DeployKey")]
     public partial class DeployKey : Pulumi.CustomResource
     {
         /// <summary>
-        /// Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
-        /// be managed.
+        /// Allow this deploy key to be used to push changes to the project. Defaults to `false`.
         /// </summary>
         [Output("canPush")]
         public Output<bool?> CanPush { get; private set; } = null!;
@@ -120,8 +123,7 @@ namespace Pulumi.GitLab
     public sealed class DeployKeyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
-        /// be managed.
+        /// Allow this deploy key to be used to push changes to the project. Defaults to `false`.
         /// </summary>
         [Input("canPush")]
         public Input<bool>? CanPush { get; set; }
@@ -152,8 +154,7 @@ namespace Pulumi.GitLab
     public sealed class DeployKeyState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
-        /// be managed.
+        /// Allow this deploy key to be used to push changes to the project. Defaults to `false`.
         /// </summary>
         [Input("canPush")]
         public Input<bool>? CanPush { get; set; }

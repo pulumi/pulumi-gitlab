@@ -58,6 +58,8 @@ type ProjectBadge struct {
 	ImageUrl pulumi.StringOutput `pulumi:"imageUrl"`
 	// The url linked with the badge.
 	LinkUrl pulumi.StringOutput `pulumi:"linkUrl"`
+	// The name of the badge.
+	Name pulumi.StringOutput `pulumi:"name"`
 	// The id of the project to add the badge to.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The image_url argument rendered (in case of use of placeholders).
@@ -108,6 +110,8 @@ type projectBadgeState struct {
 	ImageUrl *string `pulumi:"imageUrl"`
 	// The url linked with the badge.
 	LinkUrl *string `pulumi:"linkUrl"`
+	// The name of the badge.
+	Name *string `pulumi:"name"`
 	// The id of the project to add the badge to.
 	Project *string `pulumi:"project"`
 	// The image_url argument rendered (in case of use of placeholders).
@@ -121,6 +125,8 @@ type ProjectBadgeState struct {
 	ImageUrl pulumi.StringPtrInput
 	// The url linked with the badge.
 	LinkUrl pulumi.StringPtrInput
+	// The name of the badge.
+	Name pulumi.StringPtrInput
 	// The id of the project to add the badge to.
 	Project pulumi.StringPtrInput
 	// The image_url argument rendered (in case of use of placeholders).
@@ -138,6 +144,8 @@ type projectBadgeArgs struct {
 	ImageUrl string `pulumi:"imageUrl"`
 	// The url linked with the badge.
 	LinkUrl string `pulumi:"linkUrl"`
+	// The name of the badge.
+	Name *string `pulumi:"name"`
 	// The id of the project to add the badge to.
 	Project string `pulumi:"project"`
 }
@@ -148,6 +156,8 @@ type ProjectBadgeArgs struct {
 	ImageUrl pulumi.StringInput
 	// The url linked with the badge.
 	LinkUrl pulumi.StringInput
+	// The name of the badge.
+	Name pulumi.StringPtrInput
 	// The id of the project to add the badge to.
 	Project pulumi.StringInput
 }
@@ -247,6 +257,11 @@ func (o ProjectBadgeOutput) ImageUrl() pulumi.StringOutput {
 // The url linked with the badge.
 func (o ProjectBadgeOutput) LinkUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectBadge) pulumi.StringOutput { return v.LinkUrl }).(pulumi.StringOutput)
+}
+
+// The name of the badge.
+func (o ProjectBadgeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectBadge) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The id of the project to add the badge to.

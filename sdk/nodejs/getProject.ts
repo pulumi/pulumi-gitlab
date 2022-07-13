@@ -29,6 +29,7 @@ export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): 
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gitlab:index/getProject:getProject", {
+        "ciDefaultGitDepth": args.ciDefaultGitDepth,
         "id": args.id,
         "pathWithNamespace": args.pathWithNamespace,
         "publicBuilds": args.publicBuilds,
@@ -39,6 +40,7 @@ export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getProject.
  */
 export interface GetProjectArgs {
+    ciDefaultGitDepth?: number;
     id?: string;
     pathWithNamespace?: string;
     publicBuilds?: boolean;
@@ -57,6 +59,7 @@ export interface GetProjectResult {
     readonly buildGitStrategy: string;
     readonly buildTimeout: number;
     readonly buildsAccessLevel: string;
+    readonly ciDefaultGitDepth: number;
     readonly containerExpirationPolicies: outputs.GetProjectContainerExpirationPolicy[];
     readonly containerRegistryAccessLevel: string;
     readonly defaultBranch: string;
@@ -110,6 +113,7 @@ export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getProject.
  */
 export interface GetProjectOutputArgs {
+    ciDefaultGitDepth?: pulumi.Input<number>;
     id?: pulumi.Input<string>;
     pathWithNamespace?: pulumi.Input<string>;
     publicBuilds?: pulumi.Input<boolean>;

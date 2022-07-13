@@ -74,6 +74,8 @@ type User struct {
 	IsExternal pulumi.BoolPtrOutput `pulumi:"isExternal"`
 	// The name of the user.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the user's namespace. Available since GitLab 14.10.
+	NamespaceId pulumi.IntOutput `pulumi:"namespaceId"`
 	// The note associated to the user.
 	Note pulumi.StringPtrOutput `pulumi:"note"`
 	// The password of the user.
@@ -136,6 +138,8 @@ type userState struct {
 	IsExternal *bool `pulumi:"isExternal"`
 	// The name of the user.
 	Name *string `pulumi:"name"`
+	// The ID of the user's namespace. Available since GitLab 14.10.
+	NamespaceId *int `pulumi:"namespaceId"`
 	// The note associated to the user.
 	Note *string `pulumi:"note"`
 	// The password of the user.
@@ -164,6 +168,8 @@ type UserState struct {
 	IsExternal pulumi.BoolPtrInput
 	// The name of the user.
 	Name pulumi.StringPtrInput
+	// The ID of the user's namespace. Available since GitLab 14.10.
+	NamespaceId pulumi.IntPtrInput
 	// The note associated to the user.
 	Note pulumi.StringPtrInput
 	// The password of the user.
@@ -196,6 +202,8 @@ type userArgs struct {
 	IsExternal *bool `pulumi:"isExternal"`
 	// The name of the user.
 	Name *string `pulumi:"name"`
+	// The ID of the user's namespace. Available since GitLab 14.10.
+	NamespaceId *int `pulumi:"namespaceId"`
 	// The note associated to the user.
 	Note *string `pulumi:"note"`
 	// The password of the user.
@@ -225,6 +233,8 @@ type UserArgs struct {
 	IsExternal pulumi.BoolPtrInput
 	// The name of the user.
 	Name pulumi.StringPtrInput
+	// The ID of the user's namespace. Available since GitLab 14.10.
+	NamespaceId pulumi.IntPtrInput
 	// The note associated to the user.
 	Note pulumi.StringPtrInput
 	// The password of the user.
@@ -352,6 +362,11 @@ func (o UserOutput) IsExternal() pulumi.BoolPtrOutput {
 // The name of the user.
 func (o UserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the user's namespace. Available since GitLab 14.10.
+func (o UserOutput) NamespaceId() pulumi.IntOutput {
+	return o.ApplyT(func(v *User) pulumi.IntOutput { return v.NamespaceId }).(pulumi.IntOutput)
 }
 
 // The note associated to the user.

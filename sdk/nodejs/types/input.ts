@@ -54,7 +54,7 @@ export interface ProjectIssueTaskCompletionStatus {
     count?: pulumi.Input<number>;
 }
 
-export interface ProjectProtectedEnvironmentDeployAccessLevels {
+export interface ProjectProtectedEnvironmentDeployAccessLevel {
     accessLevel?: pulumi.Input<string>;
     accessLevelDescription?: pulumi.Input<string>;
     groupId?: pulumi.Input<number>;
@@ -93,3 +93,4 @@ export interface ProjectTagRelease {
     description?: pulumi.Input<string>;
     tagName?: pulumi.Input<string>;
 }
+

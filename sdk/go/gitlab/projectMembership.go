@@ -39,6 +39,7 @@ import (
 // 		}
 // 		_, err = gitlab.NewProjectMembership(ctx, "example", &gitlab.ProjectMembershipArgs{
 // 			AccessLevel: pulumi.String("guest"),
+// 			ExpiresAt:   pulumi.String("2022-12-31"),
 // 			ProjectId:   pulumi.String("67890"),
 // 			UserId:      pulumi.Int(1234),
 // 		})
@@ -61,8 +62,10 @@ type ProjectMembership struct {
 	pulumi.CustomResourceState
 
 	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-	// `master`
+	// `owner`, `master`
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
+	// Expiration date for the project membership. Format: `YYYY-MM-DD`
+	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
 	// The id of the project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The id of the user.
@@ -108,8 +111,10 @@ func GetProjectMembership(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ProjectMembership resources.
 type projectMembershipState struct {
 	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-	// `master`
+	// `owner`, `master`
 	AccessLevel *string `pulumi:"accessLevel"`
+	// Expiration date for the project membership. Format: `YYYY-MM-DD`
+	ExpiresAt *string `pulumi:"expiresAt"`
 	// The id of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// The id of the user.
@@ -118,8 +123,10 @@ type projectMembershipState struct {
 
 type ProjectMembershipState struct {
 	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-	// `master`
+	// `owner`, `master`
 	AccessLevel pulumi.StringPtrInput
+	// Expiration date for the project membership. Format: `YYYY-MM-DD`
+	ExpiresAt pulumi.StringPtrInput
 	// The id of the project.
 	ProjectId pulumi.StringPtrInput
 	// The id of the user.
@@ -132,8 +139,10 @@ func (ProjectMembershipState) ElementType() reflect.Type {
 
 type projectMembershipArgs struct {
 	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-	// `master`
+	// `owner`, `master`
 	AccessLevel string `pulumi:"accessLevel"`
+	// Expiration date for the project membership. Format: `YYYY-MM-DD`
+	ExpiresAt *string `pulumi:"expiresAt"`
 	// The id of the project.
 	ProjectId string `pulumi:"projectId"`
 	// The id of the user.
@@ -143,8 +152,10 @@ type projectMembershipArgs struct {
 // The set of arguments for constructing a ProjectMembership resource.
 type ProjectMembershipArgs struct {
 	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-	// `master`
+	// `owner`, `master`
 	AccessLevel pulumi.StringInput
+	// Expiration date for the project membership. Format: `YYYY-MM-DD`
+	ExpiresAt pulumi.StringPtrInput
 	// The id of the project.
 	ProjectId pulumi.StringInput
 	// The id of the user.
@@ -239,9 +250,14 @@ func (o ProjectMembershipOutput) ToProjectMembershipOutputWithContext(ctx contex
 }
 
 // The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-// `master`
+// `owner`, `master`
 func (o ProjectMembershipOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectMembership) pulumi.StringOutput { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+// Expiration date for the project membership. Format: `YYYY-MM-DD`
+func (o ProjectMembershipOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectMembership) pulumi.StringPtrOutput { return v.ExpiresAt }).(pulumi.StringPtrOutput)
 }
 
 // The id of the project.

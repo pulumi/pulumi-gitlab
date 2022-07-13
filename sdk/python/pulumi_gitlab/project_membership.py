@@ -15,24 +15,28 @@ class ProjectMembershipArgs:
     def __init__(__self__, *,
                  access_level: pulumi.Input[str],
                  project_id: pulumi.Input[str],
-                 user_id: pulumi.Input[int]):
+                 user_id: pulumi.Input[int],
+                 expires_at: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ProjectMembership resource.
         :param pulumi.Input[str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-               `master`
+               `owner`, `master`
         :param pulumi.Input[str] project_id: The id of the project.
         :param pulumi.Input[int] user_id: The id of the user.
+        :param pulumi.Input[str] expires_at: Expiration date for the project membership. Format: `YYYY-MM-DD`
         """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "user_id", user_id)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
 
     @property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Input[str]:
         """
         The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-        `master`
+        `owner`, `master`
         """
         return pulumi.get(self, "access_level")
 
@@ -64,22 +68,38 @@ class ProjectMembershipArgs:
     def user_id(self, value: pulumi.Input[int]):
         pulumi.set(self, "user_id", value)
 
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Expiration date for the project membership. Format: `YYYY-MM-DD`
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires_at", value)
+
 
 @pulumi.input_type
 class _ProjectMembershipState:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None,
+                 expires_at: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering ProjectMembership resources.
         :param pulumi.Input[str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-               `master`
+               `owner`, `master`
+        :param pulumi.Input[str] expires_at: Expiration date for the project membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[str] project_id: The id of the project.
         :param pulumi.Input[int] user_id: The id of the user.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
         if user_id is not None:
@@ -90,13 +110,25 @@ class _ProjectMembershipState:
     def access_level(self) -> Optional[pulumi.Input[str]]:
         """
         The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-        `master`
+        `owner`, `master`
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
     def access_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Expiration date for the project membership. Format: `YYYY-MM-DD`
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires_at", value)
 
     @property
     @pulumi.getter(name="projectId")
@@ -129,6 +161,7 @@ class ProjectMembership(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[str]] = None,
+                 expires_at: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -151,6 +184,7 @@ class ProjectMembership(pulumi.CustomResource):
             user_id=1337)
         example = gitlab.ProjectMembership("example",
             access_level="guest",
+            expires_at="2022-12-31",
             project_id="67890",
             user_id=1234)
         ```
@@ -166,7 +200,8 @@ class ProjectMembership(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-               `master`
+               `owner`, `master`
+        :param pulumi.Input[str] expires_at: Expiration date for the project membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[str] project_id: The id of the project.
         :param pulumi.Input[int] user_id: The id of the user.
         """
@@ -195,6 +230,7 @@ class ProjectMembership(pulumi.CustomResource):
             user_id=1337)
         example = gitlab.ProjectMembership("example",
             access_level="guest",
+            expires_at="2022-12-31",
             project_id="67890",
             user_id=1234)
         ```
@@ -223,6 +259,7 @@ class ProjectMembership(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[str]] = None,
+                 expires_at: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -240,6 +277,7 @@ class ProjectMembership(pulumi.CustomResource):
             if access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'access_level'")
             __props__.__dict__["access_level"] = access_level
+            __props__.__dict__["expires_at"] = expires_at
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
@@ -257,6 +295,7 @@ class ProjectMembership(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_level: Optional[pulumi.Input[str]] = None,
+            expires_at: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             user_id: Optional[pulumi.Input[int]] = None) -> 'ProjectMembership':
         """
@@ -267,7 +306,8 @@ class ProjectMembership(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-               `master`
+               `owner`, `master`
+        :param pulumi.Input[str] expires_at: Expiration date for the project membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[str] project_id: The id of the project.
         :param pulumi.Input[int] user_id: The id of the user.
         """
@@ -276,6 +316,7 @@ class ProjectMembership(pulumi.CustomResource):
         __props__ = _ProjectMembershipState.__new__(_ProjectMembershipState)
 
         __props__.__dict__["access_level"] = access_level
+        __props__.__dict__["expires_at"] = expires_at
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["user_id"] = user_id
         return ProjectMembership(resource_name, opts=opts, __props__=__props__)
@@ -285,9 +326,17 @@ class ProjectMembership(pulumi.CustomResource):
     def access_level(self) -> pulumi.Output[str]:
         """
         The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-        `master`
+        `owner`, `master`
         """
         return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> pulumi.Output[Optional[str]]:
+        """
+        Expiration date for the project membership. Format: `YYYY-MM-DD`
+        """
+        return pulumi.get(self, "expires_at")
 
     @property
     @pulumi.getter(name="projectId")

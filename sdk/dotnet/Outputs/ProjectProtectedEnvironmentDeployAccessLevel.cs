@@ -11,7 +11,7 @@ namespace Pulumi.GitLab.Outputs
 {
 
     [OutputType]
-    public sealed class ProjectProtectedEnvironmentDeployAccessLevels
+    public sealed class ProjectProtectedEnvironmentDeployAccessLevel
     {
         public readonly string? AccessLevel;
         public readonly string? AccessLevelDescription;
@@ -19,7 +19,7 @@ namespace Pulumi.GitLab.Outputs
         public readonly int? UserId;
 
         [OutputConstructor]
-        private ProjectProtectedEnvironmentDeployAccessLevels(
+        private ProjectProtectedEnvironmentDeployAccessLevel(
             string? accessLevel,
 
             string? accessLevelDescription,

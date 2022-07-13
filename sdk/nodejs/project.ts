@@ -6,12 +6,6 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.Project` resource allows to manage the lifecycle of a project.
- *
- * A project can either be created in a group or user namespace.
- *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/projects.html)
- *
  * ## Example Usage
  *
  * ```typescript
@@ -23,13 +17,18 @@ import * as utilities from "./utilities";
  *     visibilityLevel: "public",
  * });
  * // Project with custom push rules
- * const example_two = new gitlab.Project("example-two", {
- *     pushRules: {
- *         authorEmailRegex: "@example\\.com$",
- *         commitCommitterCheck: true,
- *         memberCheck: true,
- *         preventSecrets: true,
- *     },
+ * const example_two = new gitlab.Project("example-two", {pushRules: {
+ *     authorEmailRegex: `@example\.com$`,
+ *     commitCommitterCheck: true,
+ *     memberCheck: true,
+ *     preventSecrets: true,
+ * }});
+ * const peterParker = gitlab.getUser({
+ *     username: "peter_parker",
+ * });
+ * const petersRepo = new gitlab.Project("petersRepo", {
+ *     description: "This is a description",
+ *     namespaceId: peterParker.then(peterParker => peterParker.namespaceId),
  * });
  * ```
  *
@@ -82,7 +81,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly analyticsAccessLevel!: pulumi.Output<string>;
     /**
-     * Number of merge request approvals required for merging. Default is 0.
+     * Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
+     * with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
+     * [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
+     * this attribute and use `gitlab_project_approval_rule` instead.
      */
     public readonly approvalsBeforeMerge!: pulumi.Output<number | undefined>;
     /**
@@ -111,7 +113,9 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly autocloseReferencedIssues!: pulumi.Output<boolean>;
     /**
-     * Test coverage parsing for the project.
+     * Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
+     *
+     * @deprecated build_coverage_regex is removed in GitLab 15.0.
      */
     public readonly buildCoverageRegex!: pulumi.Output<string | undefined>;
     /**
@@ -130,6 +134,10 @@ export class Project extends pulumi.CustomResource {
      * Custom Path to CI config file.
      */
     public readonly ciConfigPath!: pulumi.Output<string | undefined>;
+    /**
+     * Default number of revisions for shallow cloning.
+     */
+    public readonly ciDefaultGitDepth!: pulumi.Output<number>;
     /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
@@ -333,6 +341,13 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly sharedRunnersEnabled!: pulumi.Output<boolean>;
     /**
+     * If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
+     * the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
+     * no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
+     * attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
+     */
+    public readonly skipWaitForDefaultBranchProtection!: pulumi.Output<boolean | undefined>;
+    /**
      * Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
      */
     public readonly snippetsAccessLevel!: pulumi.Output<string>;
@@ -419,6 +434,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["buildTimeout"] = state ? state.buildTimeout : undefined;
             resourceInputs["buildsAccessLevel"] = state ? state.buildsAccessLevel : undefined;
             resourceInputs["ciConfigPath"] = state ? state.ciConfigPath : undefined;
+            resourceInputs["ciDefaultGitDepth"] = state ? state.ciDefaultGitDepth : undefined;
             resourceInputs["ciForwardDeploymentEnabled"] = state ? state.ciForwardDeploymentEnabled : undefined;
             resourceInputs["containerExpirationPolicy"] = state ? state.containerExpirationPolicy : undefined;
             resourceInputs["containerRegistryAccessLevel"] = state ? state.containerRegistryAccessLevel : undefined;
@@ -469,6 +485,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["runnersToken"] = state ? state.runnersToken : undefined;
             resourceInputs["securityAndComplianceAccessLevel"] = state ? state.securityAndComplianceAccessLevel : undefined;
             resourceInputs["sharedRunnersEnabled"] = state ? state.sharedRunnersEnabled : undefined;
+            resourceInputs["skipWaitForDefaultBranchProtection"] = state ? state.skipWaitForDefaultBranchProtection : undefined;
             resourceInputs["snippetsAccessLevel"] = state ? state.snippetsAccessLevel : undefined;
             resourceInputs["snippetsEnabled"] = state ? state.snippetsEnabled : undefined;
             resourceInputs["squashCommitTemplate"] = state ? state.squashCommitTemplate : undefined;
@@ -499,6 +516,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["buildTimeout"] = args ? args.buildTimeout : undefined;
             resourceInputs["buildsAccessLevel"] = args ? args.buildsAccessLevel : undefined;
             resourceInputs["ciConfigPath"] = args ? args.ciConfigPath : undefined;
+            resourceInputs["ciDefaultGitDepth"] = args ? args.ciDefaultGitDepth : undefined;
             resourceInputs["ciForwardDeploymentEnabled"] = args ? args.ciForwardDeploymentEnabled : undefined;
             resourceInputs["containerExpirationPolicy"] = args ? args.containerExpirationPolicy : undefined;
             resourceInputs["containerRegistryAccessLevel"] = args ? args.containerRegistryAccessLevel : undefined;
@@ -546,6 +564,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["resolveOutdatedDiffDiscussions"] = args ? args.resolveOutdatedDiffDiscussions : undefined;
             resourceInputs["securityAndComplianceAccessLevel"] = args ? args.securityAndComplianceAccessLevel : undefined;
             resourceInputs["sharedRunnersEnabled"] = args ? args.sharedRunnersEnabled : undefined;
+            resourceInputs["skipWaitForDefaultBranchProtection"] = args ? args.skipWaitForDefaultBranchProtection : undefined;
             resourceInputs["snippetsAccessLevel"] = args ? args.snippetsAccessLevel : undefined;
             resourceInputs["snippetsEnabled"] = args ? args.snippetsEnabled : undefined;
             resourceInputs["squashCommitTemplate"] = args ? args.squashCommitTemplate : undefined;
@@ -582,7 +601,10 @@ export interface ProjectState {
      */
     analyticsAccessLevel?: pulumi.Input<string>;
     /**
-     * Number of merge request approvals required for merging. Default is 0.
+     * Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
+     * with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
+     * [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
+     * this attribute and use `gitlab_project_approval_rule` instead.
      */
     approvalsBeforeMerge?: pulumi.Input<number>;
     /**
@@ -611,7 +633,9 @@ export interface ProjectState {
      */
     autocloseReferencedIssues?: pulumi.Input<boolean>;
     /**
-     * Test coverage parsing for the project.
+     * Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
+     *
+     * @deprecated build_coverage_regex is removed in GitLab 15.0.
      */
     buildCoverageRegex?: pulumi.Input<string>;
     /**
@@ -630,6 +654,10 @@ export interface ProjectState {
      * Custom Path to CI config file.
      */
     ciConfigPath?: pulumi.Input<string>;
+    /**
+     * Default number of revisions for shallow cloning.
+     */
+    ciDefaultGitDepth?: pulumi.Input<number>;
     /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
@@ -833,6 +861,13 @@ export interface ProjectState {
      */
     sharedRunnersEnabled?: pulumi.Input<boolean>;
     /**
+     * If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
+     * the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
+     * no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
+     * attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
+     */
+    skipWaitForDefaultBranchProtection?: pulumi.Input<boolean>;
+    /**
      * Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
      */
     snippetsAccessLevel?: pulumi.Input<string>;
@@ -906,7 +941,10 @@ export interface ProjectArgs {
      */
     analyticsAccessLevel?: pulumi.Input<string>;
     /**
-     * Number of merge request approvals required for merging. Default is 0.
+     * Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
+     * with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
+     * [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
+     * this attribute and use `gitlab_project_approval_rule` instead.
      */
     approvalsBeforeMerge?: pulumi.Input<number>;
     /**
@@ -935,7 +973,9 @@ export interface ProjectArgs {
      */
     autocloseReferencedIssues?: pulumi.Input<boolean>;
     /**
-     * Test coverage parsing for the project.
+     * Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
+     *
+     * @deprecated build_coverage_regex is removed in GitLab 15.0.
      */
     buildCoverageRegex?: pulumi.Input<string>;
     /**
@@ -954,6 +994,10 @@ export interface ProjectArgs {
      * Custom Path to CI config file.
      */
     ciConfigPath?: pulumi.Input<string>;
+    /**
+     * Default number of revisions for shallow cloning.
+     */
+    ciDefaultGitDepth?: pulumi.Input<number>;
     /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
@@ -1144,6 +1188,13 @@ export interface ProjectArgs {
      * Enable shared runners for this project.
      */
     sharedRunnersEnabled?: pulumi.Input<boolean>;
+    /**
+     * If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
+     * the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
+     * no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
+     * attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
+     */
+    skipWaitForDefaultBranchProtection?: pulumi.Input<boolean>;
     /**
      * Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
      */

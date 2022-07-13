@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.InstanceVariable` resource allows to manage the lifecycle of a CI/CD variable for an instance.
+ * The `gitlab.InstanceVariable` resource allows to manage the lifecycle of an instance-level CI/CD variable.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_variables.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
  *
  * ## Example Usage
  *
@@ -65,7 +65,7 @@ export class InstanceVariable extends pulumi.CustomResource {
     public readonly key!: pulumi.Output<string>;
     /**
      * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-     * requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+     * requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
      */
     public readonly masked!: pulumi.Output<boolean | undefined>;
     /**
@@ -78,7 +78,7 @@ export class InstanceVariable extends pulumi.CustomResource {
      */
     public readonly value!: pulumi.Output<string>;
     /**
-     * The type of a variable. Available types are: env_var (default) and file.
+     * The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
      */
     public readonly variableType!: pulumi.Output<string | undefined>;
 
@@ -129,7 +129,7 @@ export interface InstanceVariableState {
     key?: pulumi.Input<string>;
     /**
      * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-     * requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+     * requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
      */
     masked?: pulumi.Input<boolean>;
     /**
@@ -142,7 +142,7 @@ export interface InstanceVariableState {
      */
     value?: pulumi.Input<string>;
     /**
-     * The type of a variable. Available types are: env_var (default) and file.
+     * The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
      */
     variableType?: pulumi.Input<string>;
 }
@@ -157,7 +157,7 @@ export interface InstanceVariableArgs {
     key: pulumi.Input<string>;
     /**
      * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-     * requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+     * requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
      */
     masked?: pulumi.Input<boolean>;
     /**
@@ -170,7 +170,7 @@ export interface InstanceVariableArgs {
      */
     value: pulumi.Input<string>;
     /**
-     * The type of a variable. Available types are: env_var (default) and file.
+     * The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
      */
     variableType?: pulumi.Input<string>;
 }

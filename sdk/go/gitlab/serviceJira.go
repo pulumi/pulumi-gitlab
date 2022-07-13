@@ -72,7 +72,7 @@ type ServiceJira struct {
 	IssuesEvents pulumi.BoolOutput `pulumi:"issuesEvents"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
 	// administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
-	// project. By default, this ID is set to 2.
+	// project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
 	JiraIssueTransitionId pulumi.StringPtrOutput `pulumi:"jiraIssueTransitionId"`
 	// Enable notifications for job events.
 	JobEvents pulumi.BoolOutput `pulumi:"jobEvents"`
@@ -157,7 +157,7 @@ type serviceJiraState struct {
 	IssuesEvents *bool `pulumi:"issuesEvents"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
 	// administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
-	// project. By default, this ID is set to 2.
+	// project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
 	// Enable notifications for job events.
 	JobEvents *bool `pulumi:"jobEvents"`
@@ -202,7 +202,7 @@ type ServiceJiraState struct {
 	IssuesEvents pulumi.BoolPtrInput
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
 	// administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
-	// project. By default, this ID is set to 2.
+	// project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
 	JiraIssueTransitionId pulumi.StringPtrInput
 	// Enable notifications for job events.
 	JobEvents pulumi.BoolPtrInput
@@ -247,7 +247,7 @@ type serviceJiraArgs struct {
 	IssuesEvents *bool `pulumi:"issuesEvents"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
 	// administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
-	// project. By default, this ID is set to 2.
+	// project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
 	// Enable notifications for job events.
 	JobEvents *bool `pulumi:"jobEvents"`
@@ -285,7 +285,7 @@ type ServiceJiraArgs struct {
 	IssuesEvents pulumi.BoolPtrInput
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
 	// administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
-	// project. By default, this ID is set to 2.
+	// project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
 	JiraIssueTransitionId pulumi.StringPtrInput
 	// Enable notifications for job events.
 	JobEvents pulumi.BoolPtrInput
@@ -430,7 +430,7 @@ func (o ServiceJiraOutput) IssuesEvents() pulumi.BoolOutput {
 
 // The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
 // administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
-// project. By default, this ID is set to 2.
+// project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
 func (o ServiceJiraOutput) JiraIssueTransitionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceJira) pulumi.StringPtrOutput { return v.JiraIssueTransitionId }).(pulumi.StringPtrOutput)
 }

@@ -38,6 +38,9 @@ namespace Pulumi.GitLab
         [Input("email")]
         public string? Email { get; set; }
 
+        [Input("namespaceId")]
+        public int? NamespaceId { get; set; }
+
         [Input("userId")]
         public int? UserId { get; set; }
 
@@ -53,6 +56,9 @@ namespace Pulumi.GitLab
     {
         [Input("email")]
         public Input<string>? Email { get; set; }
+
+        [Input("namespaceId")]
+        public Input<int>? NamespaceId { get; set; }
 
         [Input("userId")]
         public Input<int>? UserId { get; set; }
@@ -88,6 +94,7 @@ namespace Pulumi.GitLab
         public readonly string Linkedin;
         public readonly string Location;
         public readonly string Name;
+        public readonly int NamespaceId;
         public readonly string Note;
         public readonly string Organization;
         public readonly int ProjectsLimit;
@@ -135,6 +142,8 @@ namespace Pulumi.GitLab
 
             string name,
 
+            int namespaceId,
+
             string note,
 
             string organization,
@@ -175,6 +184,7 @@ namespace Pulumi.GitLab
             Linkedin = linkedin;
             Location = location;
             Name = name;
+            NamespaceId = namespaceId;
             Note = note;
             Organization = organization;
             ProjectsLimit = projectsLimit;

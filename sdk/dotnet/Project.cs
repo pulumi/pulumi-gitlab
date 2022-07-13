@@ -10,12 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.Project` resource allows to manage the lifecycle of a project.
-    /// 
-    /// A project can either be created in a group or user namespace.
-    /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/projects.html)
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -41,6 +35,15 @@ namespace Pulumi.GitLab
     ///                 MemberCheck = true,
     ///                 PreventSecrets = true,
     ///             },
+    ///         });
+    ///         var peterParker = Output.Create(GitLab.GetUser.InvokeAsync(new GitLab.GetUserArgs
+    ///         {
+    ///             Username = "peter_parker",
+    ///         }));
+    ///         var petersRepo = new GitLab.Project("petersRepo", new GitLab.ProjectArgs
+    ///         {
+    ///             Description = "This is a description",
+    ///             NamespaceId = peterParker.Apply(peterParker =&gt; peterParker.NamespaceId),
     ///         });
     ///     }
     /// 
@@ -75,7 +78,10 @@ namespace Pulumi.GitLab
         public Output<string> AnalyticsAccessLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Number of merge request approvals required for merging. Default is 0.
+        /// Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
+        /// with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
+        /// [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
+        /// this attribute and use `gitlab_project_approval_rule` instead.
         /// </summary>
         [Output("approvalsBeforeMerge")]
         public Output<int?> ApprovalsBeforeMerge { get; private set; } = null!;
@@ -118,7 +124,7 @@ namespace Pulumi.GitLab
         public Output<bool> AutocloseReferencedIssues { get; private set; } = null!;
 
         /// <summary>
-        /// Test coverage parsing for the project.
+        /// Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         /// </summary>
         [Output("buildCoverageRegex")]
         public Output<string?> BuildCoverageRegex { get; private set; } = null!;
@@ -146,6 +152,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("ciConfigPath")]
         public Output<string?> CiConfigPath { get; private set; } = null!;
+
+        /// <summary>
+        /// Default number of revisions for shallow cloning.
+        /// </summary>
+        [Output("ciDefaultGitDepth")]
+        public Output<int> CiDefaultGitDepth { get; private set; } = null!;
 
         /// <summary>
         /// When a new deployment job starts, skip older deployment jobs that are still pending.
@@ -450,6 +462,15 @@ namespace Pulumi.GitLab
         public Output<bool> SharedRunnersEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
+        /// the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
+        /// no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
+        /// attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
+        /// </summary>
+        [Output("skipWaitForDefaultBranchProtection")]
+        public Output<bool?> SkipWaitForDefaultBranchProtection { get; private set; } = null!;
+
+        /// <summary>
         /// Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         /// </summary>
         [Output("snippetsAccessLevel")]
@@ -595,7 +616,10 @@ namespace Pulumi.GitLab
         public Input<string>? AnalyticsAccessLevel { get; set; }
 
         /// <summary>
-        /// Number of merge request approvals required for merging. Default is 0.
+        /// Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
+        /// with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
+        /// [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
+        /// this attribute and use `gitlab_project_approval_rule` instead.
         /// </summary>
         [Input("approvalsBeforeMerge")]
         public Input<int>? ApprovalsBeforeMerge { get; set; }
@@ -638,7 +662,7 @@ namespace Pulumi.GitLab
         public Input<bool>? AutocloseReferencedIssues { get; set; }
 
         /// <summary>
-        /// Test coverage parsing for the project.
+        /// Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         /// </summary>
         [Input("buildCoverageRegex")]
         public Input<string>? BuildCoverageRegex { get; set; }
@@ -666,6 +690,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("ciConfigPath")]
         public Input<string>? CiConfigPath { get; set; }
+
+        /// <summary>
+        /// Default number of revisions for shallow cloning.
+        /// </summary>
+        [Input("ciDefaultGitDepth")]
+        public Input<int>? CiDefaultGitDepth { get; set; }
 
         /// <summary>
         /// When a new deployment job starts, skip older deployment jobs that are still pending.
@@ -952,6 +982,15 @@ namespace Pulumi.GitLab
         public Input<bool>? SharedRunnersEnabled { get; set; }
 
         /// <summary>
+        /// If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
+        /// the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
+        /// no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
+        /// attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
+        /// </summary>
+        [Input("skipWaitForDefaultBranchProtection")]
+        public Input<bool>? SkipWaitForDefaultBranchProtection { get; set; }
+
+        /// <summary>
         /// Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         /// </summary>
         [Input("snippetsAccessLevel")]
@@ -1058,7 +1097,10 @@ namespace Pulumi.GitLab
         public Input<string>? AnalyticsAccessLevel { get; set; }
 
         /// <summary>
-        /// Number of merge request approvals required for merging. Default is 0.
+        /// Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
+        /// with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
+        /// [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
+        /// this attribute and use `gitlab_project_approval_rule` instead.
         /// </summary>
         [Input("approvalsBeforeMerge")]
         public Input<int>? ApprovalsBeforeMerge { get; set; }
@@ -1101,7 +1143,7 @@ namespace Pulumi.GitLab
         public Input<bool>? AutocloseReferencedIssues { get; set; }
 
         /// <summary>
-        /// Test coverage parsing for the project.
+        /// Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         /// </summary>
         [Input("buildCoverageRegex")]
         public Input<string>? BuildCoverageRegex { get; set; }
@@ -1129,6 +1171,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("ciConfigPath")]
         public Input<string>? CiConfigPath { get; set; }
+
+        /// <summary>
+        /// Default number of revisions for shallow cloning.
+        /// </summary>
+        [Input("ciDefaultGitDepth")]
+        public Input<int>? CiDefaultGitDepth { get; set; }
 
         /// <summary>
         /// When a new deployment job starts, skip older deployment jobs that are still pending.
@@ -1431,6 +1479,15 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("sharedRunnersEnabled")]
         public Input<bool>? SharedRunnersEnabled { get; set; }
+
+        /// <summary>
+        /// If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
+        /// the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
+        /// no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
+        /// attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
+        /// </summary>
+        [Input("skipWaitForDefaultBranchProtection")]
+        public Input<bool>? SkipWaitForDefaultBranchProtection { get; set; }
 
         /// <summary>
         /// Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.

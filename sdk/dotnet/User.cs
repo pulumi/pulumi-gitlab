@@ -91,6 +91,12 @@ namespace Pulumi.GitLab
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the user's namespace. Available since GitLab 14.10.
+        /// </summary>
+        [Output("namespaceId")]
+        public Output<int> NamespaceId { get; private set; } = null!;
+
+        /// <summary>
         /// The note associated to the user.
         /// </summary>
         [Output("note")]
@@ -210,6 +216,12 @@ namespace Pulumi.GitLab
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The ID of the user's namespace. Available since GitLab 14.10.
+        /// </summary>
+        [Input("namespaceId")]
+        public Input<int>? NamespaceId { get; set; }
+
+        /// <summary>
         /// The note associated to the user.
         /// </summary>
         [Input("note")]
@@ -288,6 +300,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the user's namespace. Available since GitLab 14.10.
+        /// </summary>
+        [Input("namespaceId")]
+        public Input<int>? NamespaceId { get; set; }
 
         /// <summary>
         /// The note associated to the user.

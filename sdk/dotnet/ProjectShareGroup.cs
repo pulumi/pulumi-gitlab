@@ -48,14 +48,14 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-        /// `developer`, `maintainer`, `master`
+        /// `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Output("accessLevel")]
         public Output<string?> AccessLevel { get; private set; } = null!;
 
         /// <summary>
         /// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-        /// `developer`, `maintainer`, `master`
+        /// `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Output("groupAccess")]
         public Output<string?> GroupAccess { get; private set; } = null!;
@@ -120,14 +120,14 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-        /// `developer`, `maintainer`, `master`
+        /// `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
 
         /// <summary>
         /// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-        /// `developer`, `maintainer`, `master`
+        /// `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Input("groupAccess")]
         public Input<string>? GroupAccess { get; set; }
@@ -153,14 +153,14 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-        /// `developer`, `maintainer`, `master`
+        /// `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
 
         /// <summary>
         /// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-        /// `developer`, `maintainer`, `master`
+        /// `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Input("groupAccess")]
         public Input<string>? GroupAccess { get; set; }

@@ -26,13 +26,12 @@ class GroupVariableArgs:
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-               values other than `*` will cause inconsistent plans. See
-               https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+               values other than `*` will cause inconsistent plans.
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
                requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
                `false`.
-        :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
+        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "key", key)
@@ -87,8 +86,7 @@ class GroupVariableArgs:
     def environment_scope(self) -> Optional[pulumi.Input[str]]:
         """
         The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-        values other than `*` will cause inconsistent plans. See
-        https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+        values other than `*` will cause inconsistent plans.
         """
         return pulumi.get(self, "environment_scope")
 
@@ -126,7 +124,7 @@ class GroupVariableArgs:
     @pulumi.getter(name="variableType")
     def variable_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of a variable. Available types are: env_var (default) and file.
+        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
         return pulumi.get(self, "variable_type")
 
@@ -148,8 +146,7 @@ class _GroupVariableState:
         """
         Input properties used for looking up and filtering GroupVariable resources.
         :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-               values other than `*` will cause inconsistent plans. See
-               https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+               values other than `*` will cause inconsistent plans.
         :param pulumi.Input[str] group: The name or id of the group.
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
@@ -157,7 +154,7 @@ class _GroupVariableState:
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
                `false`.
         :param pulumi.Input[str] value: The value of the variable.
-        :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
+        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
         if environment_scope is not None:
             pulumi.set(__self__, "environment_scope", environment_scope)
@@ -179,8 +176,7 @@ class _GroupVariableState:
     def environment_scope(self) -> Optional[pulumi.Input[str]]:
         """
         The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-        values other than `*` will cause inconsistent plans. See
-        https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+        values other than `*` will cause inconsistent plans.
         """
         return pulumi.get(self, "environment_scope")
 
@@ -254,7 +250,7 @@ class _GroupVariableState:
     @pulumi.getter(name="variableType")
     def variable_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of a variable. Available types are: env_var (default) and file.
+        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
         return pulumi.get(self, "variable_type")
 
@@ -307,8 +303,7 @@ class GroupVariable(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-               values other than `*` will cause inconsistent plans. See
-               https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+               values other than `*` will cause inconsistent plans.
         :param pulumi.Input[str] group: The name or id of the group.
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
@@ -316,7 +311,7 @@ class GroupVariable(pulumi.CustomResource):
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
                `false`.
         :param pulumi.Input[str] value: The value of the variable.
-        :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
+        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
         ...
     @overload
@@ -424,8 +419,7 @@ class GroupVariable(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-               values other than `*` will cause inconsistent plans. See
-               https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+               values other than `*` will cause inconsistent plans.
         :param pulumi.Input[str] group: The name or id of the group.
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
@@ -433,7 +427,7 @@ class GroupVariable(pulumi.CustomResource):
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
                `false`.
         :param pulumi.Input[str] value: The value of the variable.
-        :param pulumi.Input[str] variable_type: The type of a variable. Available types are: env_var (default) and file.
+        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -453,8 +447,7 @@ class GroupVariable(pulumi.CustomResource):
     def environment_scope(self) -> pulumi.Output[Optional[str]]:
         """
         The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-        values other than `*` will cause inconsistent plans. See
-        https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+        values other than `*` will cause inconsistent plans.
         """
         return pulumi.get(self, "environment_scope")
 
@@ -504,7 +497,7 @@ class GroupVariable(pulumi.CustomResource):
     @pulumi.getter(name="variableType")
     def variable_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The type of a variable. Available types are: env_var (default) and file.
+        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
         return pulumi.get(self, "variable_type")
 

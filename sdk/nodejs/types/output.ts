@@ -53,6 +53,14 @@ export interface GetBranchCommit {
     title: string;
 }
 
+export interface GetClusterAgentsClusterAgent {
+    agentId: number;
+    createdAt: string;
+    createdByUserId: number;
+    name: string;
+    project: string;
+}
+
 export interface GetGroupMembershipMember {
     accessLevel: string;
     avatarUrl: string;
@@ -62,6 +70,16 @@ export interface GetGroupMembershipMember {
     state: string;
     username: string;
     webUrl: string;
+}
+
+export interface GetGroupVariablesVariable {
+    environmentScope: string;
+    group: string;
+    key: string;
+    masked: boolean;
+    protected: boolean;
+    value: string;
+    variableType: string;
 }
 
 export interface GetInstanceDeployKeysDeployKey {
@@ -81,6 +99,14 @@ export interface GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess {
     nameWithNamespace: string;
     path: string;
     pathWithNamespace: string;
+}
+
+export interface GetInstanceVariablesVariable {
+    key: string;
+    masked: boolean;
+    protected: boolean;
+    value: string;
+    variableType: string;
 }
 
 export interface GetProjectContainerExpirationPolicy {
@@ -143,6 +169,22 @@ export interface GetProjectIssuesIssue {
 export interface GetProjectIssuesIssueTaskCompletionStatus {
     completedCount: number;
     count: number;
+}
+
+export interface GetProjectMilestonesMilestone {
+    createdAt: string;
+    description: string;
+    dueDate: string;
+    expired: boolean;
+    iid: number;
+    milestoneId: number;
+    project: string;
+    projectId: number;
+    startDate: string;
+    state: string;
+    title: string;
+    updatedAt: string;
+    webUrl: string;
 }
 
 export interface GetProjectProtectedBranchMergeAccessLevel {
@@ -243,6 +285,16 @@ export interface GetProjectTagsTagRelease {
     tagName: string;
 }
 
+export interface GetProjectVariablesVariable {
+    environmentScope: string;
+    key: string;
+    masked: boolean;
+    project: string;
+    protected: boolean;
+    value: string;
+    variableType: string;
+}
+
 export interface GetProjectsProject {
     _links: {[key: string]: string};
     allowMergeOnSkippedPipeline: boolean;
@@ -259,13 +311,14 @@ export interface GetProjectsProject {
     buildTimeout: number;
     buildsAccessLevel: string;
     ciConfigPath: string;
+    ciDefaultGitDepth: number;
     ciForwardDeploymentEnabled: boolean;
     containerExpirationPolicies: outputs.GetProjectsProjectContainerExpirationPolicy[];
     containerRegistryAccessLevel: string;
     containerRegistryEnabled: boolean;
     createdAt: string;
     creatorId: number;
-    customAttributes: {[key: string]: any}[];
+    customAttributes: {[key: string]: string}[];
     defaultBranch: string;
     description: string;
     emailsDisabled: boolean;
@@ -379,6 +432,18 @@ export interface GetProjectsProjectSharedWithGroup {
     groupName: string;
 }
 
+export interface GetReleaseLinksReleaseLink {
+    directAssetUrl: string;
+    external: boolean;
+    filepath: string;
+    linkId: number;
+    linkType: string;
+    name: string;
+    project: string;
+    tagName: string;
+    url: string;
+}
+
 export interface GetUsersUser {
     avatarUrl: string;
     bio: string;
@@ -396,6 +461,7 @@ export interface GetUsersUser {
     linkedin: string;
     location: string;
     name: string;
+    namespaceId: number;
     organization: string;
     projectsLimit: number;
     provider: string;
@@ -423,7 +489,7 @@ export interface ProjectIssueTaskCompletionStatus {
     count: number;
 }
 
-export interface ProjectProtectedEnvironmentDeployAccessLevels {
+export interface ProjectProtectedEnvironmentDeployAccessLevel {
     accessLevel: string;
     accessLevelDescription: string;
     groupId?: number;
@@ -462,3 +528,4 @@ export interface ProjectTagRelease {
     description: string;
     tagName: string;
 }
+

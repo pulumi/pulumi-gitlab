@@ -62,7 +62,8 @@ export class ProjectVariable extends pulumi.CustomResource {
     }
 
     /**
-     * The environment_scope of the variable. Defaults to `*`.
+     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
+     * values other than `*` will cause inconsistent plans.
      */
     public readonly environmentScope!: pulumi.Output<string | undefined>;
     /**
@@ -70,7 +71,8 @@ export class ProjectVariable extends pulumi.CustomResource {
      */
     public readonly key!: pulumi.Output<string>;
     /**
-     * If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+     * requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
      */
     public readonly masked!: pulumi.Output<boolean | undefined>;
     /**
@@ -87,7 +89,7 @@ export class ProjectVariable extends pulumi.CustomResource {
      */
     public readonly value!: pulumi.Output<string>;
     /**
-     * The type of a variable. Available types are: env_var (default) and file.
+     * The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
      */
     public readonly variableType!: pulumi.Output<string | undefined>;
 
@@ -140,7 +142,8 @@ export class ProjectVariable extends pulumi.CustomResource {
  */
 export interface ProjectVariableState {
     /**
-     * The environment_scope of the variable. Defaults to `*`.
+     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
+     * values other than `*` will cause inconsistent plans.
      */
     environmentScope?: pulumi.Input<string>;
     /**
@@ -148,7 +151,8 @@ export interface ProjectVariableState {
      */
     key?: pulumi.Input<string>;
     /**
-     * If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+     * requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
      */
     masked?: pulumi.Input<boolean>;
     /**
@@ -165,7 +169,7 @@ export interface ProjectVariableState {
      */
     value?: pulumi.Input<string>;
     /**
-     * The type of a variable. Available types are: env_var (default) and file.
+     * The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
      */
     variableType?: pulumi.Input<string>;
 }
@@ -175,7 +179,8 @@ export interface ProjectVariableState {
  */
 export interface ProjectVariableArgs {
     /**
-     * The environment_scope of the variable. Defaults to `*`.
+     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
+     * values other than `*` will cause inconsistent plans.
      */
     environmentScope?: pulumi.Input<string>;
     /**
@@ -183,7 +188,8 @@ export interface ProjectVariableArgs {
      */
     key: pulumi.Input<string>;
     /**
-     * If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+     * requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
      */
     masked?: pulumi.Input<boolean>;
     /**
@@ -200,7 +206,7 @@ export interface ProjectVariableArgs {
      */
     value: pulumi.Input<string>;
     /**
-     * The type of a variable. Available types are: env_var (default) and file.
+     * The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
      */
     variableType?: pulumi.Input<string>;
 }

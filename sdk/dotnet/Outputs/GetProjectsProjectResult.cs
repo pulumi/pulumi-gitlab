@@ -28,13 +28,14 @@ namespace Pulumi.GitLab.Outputs
         public readonly int BuildTimeout;
         public readonly string BuildsAccessLevel;
         public readonly string CiConfigPath;
+        public readonly int CiDefaultGitDepth;
         public readonly bool CiForwardDeploymentEnabled;
         public readonly ImmutableArray<Outputs.GetProjectsProjectContainerExpirationPolicyResult> ContainerExpirationPolicies;
         public readonly string ContainerRegistryAccessLevel;
         public readonly bool ContainerRegistryEnabled;
         public readonly string CreatedAt;
         public readonly int CreatorId;
-        public readonly ImmutableArray<ImmutableDictionary<string, object>> CustomAttributes;
+        public readonly ImmutableArray<ImmutableDictionary<string, string>> CustomAttributes;
         public readonly string DefaultBranch;
         public readonly string Description;
         public readonly bool EmailsDisabled;
@@ -131,6 +132,8 @@ namespace Pulumi.GitLab.Outputs
 
             string ciConfigPath,
 
+            int ciDefaultGitDepth,
+
             bool ciForwardDeploymentEnabled,
 
             ImmutableArray<Outputs.GetProjectsProjectContainerExpirationPolicyResult> containerExpirationPolicies,
@@ -143,7 +146,7 @@ namespace Pulumi.GitLab.Outputs
 
             int creatorId,
 
-            ImmutableArray<ImmutableDictionary<string, object>> customAttributes,
+            ImmutableArray<ImmutableDictionary<string, string>> customAttributes,
 
             string defaultBranch,
 
@@ -286,6 +289,7 @@ namespace Pulumi.GitLab.Outputs
             BuildTimeout = buildTimeout;
             BuildsAccessLevel = buildsAccessLevel;
             CiConfigPath = ciConfigPath;
+            CiDefaultGitDepth = ciDefaultGitDepth;
             CiForwardDeploymentEnabled = ciForwardDeploymentEnabled;
             ContainerExpirationPolicies = containerExpirationPolicies;
             ContainerRegistryAccessLevel = containerRegistryAccessLevel;

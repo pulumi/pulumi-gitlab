@@ -77,6 +77,12 @@ namespace Pulumi.GitLab
         public Output<string> Encoding { get; private set; } = null!;
 
         /// <summary>
+        /// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+        /// </summary>
+        [Output("executeFilemode")]
+        public Output<bool?> ExecuteFilemode { get; private set; } = null!;
+
+        /// <summary>
         /// The filename.
         /// </summary>
         [Output("fileName")]
@@ -196,6 +202,12 @@ namespace Pulumi.GitLab
         public Input<string> Content { get; set; } = null!;
 
         /// <summary>
+        /// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+        /// </summary>
+        [Input("executeFilemode")]
+        public Input<bool>? ExecuteFilemode { get; set; }
+
+        /// <summary>
         /// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
         /// </summary>
         [Input("filePath", required: true)]
@@ -274,6 +286,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }
+
+        /// <summary>
+        /// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+        /// </summary>
+        [Input("executeFilemode")]
+        public Input<bool>? ExecuteFilemode { get; set; }
 
         /// <summary>
         /// The filename.

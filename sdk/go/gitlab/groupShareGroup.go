@@ -56,9 +56,9 @@ type GroupShareGroup struct {
 	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
 	// `maintainer`, `owner`, `master`
 	GroupAccess pulumi.StringOutput `pulumi:"groupAccess"`
-	// The id of the main group.
+	// The id of the main group to be shared.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// The id of an additional group which will be shared with the main group.
+	// The id of the additional group with which the main group will be shared.
 	ShareGroupId pulumi.IntOutput `pulumi:"shareGroupId"`
 }
 
@@ -105,9 +105,9 @@ type groupShareGroupState struct {
 	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
 	// `maintainer`, `owner`, `master`
 	GroupAccess *string `pulumi:"groupAccess"`
-	// The id of the main group.
+	// The id of the main group to be shared.
 	GroupId *string `pulumi:"groupId"`
-	// The id of an additional group which will be shared with the main group.
+	// The id of the additional group with which the main group will be shared.
 	ShareGroupId *int `pulumi:"shareGroupId"`
 }
 
@@ -117,9 +117,9 @@ type GroupShareGroupState struct {
 	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
 	// `maintainer`, `owner`, `master`
 	GroupAccess pulumi.StringPtrInput
-	// The id of the main group.
+	// The id of the main group to be shared.
 	GroupId pulumi.StringPtrInput
-	// The id of an additional group which will be shared with the main group.
+	// The id of the additional group with which the main group will be shared.
 	ShareGroupId pulumi.IntPtrInput
 }
 
@@ -133,9 +133,9 @@ type groupShareGroupArgs struct {
 	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
 	// `maintainer`, `owner`, `master`
 	GroupAccess string `pulumi:"groupAccess"`
-	// The id of the main group.
+	// The id of the main group to be shared.
 	GroupId string `pulumi:"groupId"`
-	// The id of an additional group which will be shared with the main group.
+	// The id of the additional group with which the main group will be shared.
 	ShareGroupId int `pulumi:"shareGroupId"`
 }
 
@@ -146,9 +146,9 @@ type GroupShareGroupArgs struct {
 	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
 	// `maintainer`, `owner`, `master`
 	GroupAccess pulumi.StringInput
-	// The id of the main group.
+	// The id of the main group to be shared.
 	GroupId pulumi.StringInput
-	// The id of an additional group which will be shared with the main group.
+	// The id of the additional group with which the main group will be shared.
 	ShareGroupId pulumi.IntInput
 }
 
@@ -250,12 +250,12 @@ func (o GroupShareGroupOutput) GroupAccess() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupShareGroup) pulumi.StringOutput { return v.GroupAccess }).(pulumi.StringOutput)
 }
 
-// The id of the main group.
+// The id of the main group to be shared.
 func (o GroupShareGroupOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupShareGroup) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// The id of an additional group which will be shared with the main group.
+// The id of the additional group with which the main group will be shared.
 func (o GroupShareGroupOutput) ShareGroupId() pulumi.IntOutput {
 	return o.ApplyT(func(v *GroupShareGroup) pulumi.IntOutput { return v.ShareGroupId }).(pulumi.IntOutput)
 }

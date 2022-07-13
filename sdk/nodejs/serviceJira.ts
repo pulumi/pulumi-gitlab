@@ -90,7 +90,7 @@ export class ServiceJira extends pulumi.CustomResource {
     /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
      * administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
-     * project. By default, this ID is set to 2.
+     * project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
      */
     public readonly jiraIssueTransitionId!: pulumi.Output<string | undefined>;
     /**
@@ -250,7 +250,7 @@ export interface ServiceJiraState {
     /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
      * administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
-     * project. By default, this ID is set to 2.
+     * project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
      */
     jiraIssueTransitionId?: pulumi.Input<string>;
     /**
@@ -330,7 +330,7 @@ export interface ServiceJiraArgs {
     /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
      * administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
-     * project. By default, this ID is set to 2.
+     * project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
      */
     jiraIssueTransitionId?: pulumi.Input<string>;
     /**
