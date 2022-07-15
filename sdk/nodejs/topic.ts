@@ -80,6 +80,10 @@ export class Topic extends pulumi.CustomResource {
      * @deprecated GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
      */
     public readonly softDestroy!: pulumi.Output<boolean | undefined>;
+    /**
+     * The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+     */
+    public readonly title!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -100,6 +104,7 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["softDestroy"] = state ? state.softDestroy : undefined;
+            resourceInputs["title"] = state ? state.title : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
             resourceInputs["avatar"] = args ? args.avatar : undefined;
@@ -107,6 +112,7 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["softDestroy"] = args ? args.softDestroy : undefined;
+            resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["avatarUrl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -145,6 +151,10 @@ export interface TopicState {
      * @deprecated GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
      */
     softDestroy?: pulumi.Input<boolean>;
+    /**
+     * The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+     */
+    title?: pulumi.Input<string>;
 }
 
 /**
@@ -174,4 +184,8 @@ export interface TopicArgs {
      * @deprecated GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
      */
     softDestroy?: pulumi.Input<boolean>;
+    /**
+     * The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+     */
+    title?: pulumi.Input<string>;
 }

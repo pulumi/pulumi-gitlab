@@ -20,7 +20,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, avatar_url=None, bio=None, can_create_group=None, can_create_project=None, color_scheme_id=None, created_at=None, current_sign_in_at=None, email=None, extern_uid=None, external=None, id=None, is_admin=None, last_sign_in_at=None, linkedin=None, location=None, name=None, note=None, organization=None, projects_limit=None, skype=None, state=None, theme_id=None, twitter=None, two_factor_enabled=None, user_id=None, user_provider=None, username=None, website_url=None):
+    def __init__(__self__, avatar_url=None, bio=None, can_create_group=None, can_create_project=None, color_scheme_id=None, created_at=None, current_sign_in_at=None, email=None, extern_uid=None, external=None, id=None, is_admin=None, last_sign_in_at=None, linkedin=None, location=None, name=None, namespace_id=None, note=None, organization=None, projects_limit=None, skype=None, state=None, theme_id=None, twitter=None, two_factor_enabled=None, user_id=None, user_provider=None, username=None, website_url=None):
         if avatar_url and not isinstance(avatar_url, str):
             raise TypeError("Expected argument 'avatar_url' to be a str")
         pulumi.set(__self__, "avatar_url", avatar_url)
@@ -69,6 +69,9 @@ class GetUserResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if namespace_id and not isinstance(namespace_id, int):
+            raise TypeError("Expected argument 'namespace_id' to be a int")
+        pulumi.set(__self__, "namespace_id", namespace_id)
         if note and not isinstance(note, str):
             raise TypeError("Expected argument 'note' to be a str")
         pulumi.set(__self__, "note", note)
@@ -190,6 +193,11 @@ class GetUserResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> int:
+        return pulumi.get(self, "namespace_id")
+
+    @property
     @pulumi.getter
     def note(self) -> str:
         return pulumi.get(self, "note")
@@ -272,6 +280,7 @@ class AwaitableGetUserResult(GetUserResult):
             linkedin=self.linkedin,
             location=self.location,
             name=self.name,
+            namespace_id=self.namespace_id,
             note=self.note,
             organization=self.organization,
             projects_limit=self.projects_limit,
@@ -287,6 +296,7 @@ class AwaitableGetUserResult(GetUserResult):
 
 
 def get_user(email: Optional[str] = None,
+             namespace_id: Optional[int] = None,
              user_id: Optional[int] = None,
              username: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
@@ -299,6 +309,7 @@ def get_user(email: Optional[str] = None,
     """
     __args__ = dict()
     __args__['email'] = email
+    __args__['namespaceId'] = namespace_id
     __args__['userId'] = user_id
     __args__['username'] = username
     if opts is None:
@@ -324,6 +335,7 @@ def get_user(email: Optional[str] = None,
         linkedin=__ret__.linkedin,
         location=__ret__.location,
         name=__ret__.name,
+        namespace_id=__ret__.namespace_id,
         note=__ret__.note,
         organization=__ret__.organization,
         projects_limit=__ret__.projects_limit,
@@ -340,6 +352,7 @@ def get_user(email: Optional[str] = None,
 
 @_utilities.lift_output_func(get_user)
 def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
+                    namespace_id: Optional[pulumi.Input[Optional[int]]] = None,
                     user_id: Optional[pulumi.Input[Optional[int]]] = None,
                     username: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:

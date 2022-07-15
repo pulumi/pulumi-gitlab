@@ -69,7 +69,7 @@ type GetProjectIssuesArgs struct {
 	NotAssigneeIds      []int    `pulumi:"notAssigneeIds"`
 	NotAuthorIds        []int    `pulumi:"notAuthorIds"`
 	NotLabels           []string `pulumi:"notLabels"`
-	NotMilestones       []string `pulumi:"notMilestones"`
+	NotMilestone        *string  `pulumi:"notMilestone"`
 	NotMyReactionEmojis []string `pulumi:"notMyReactionEmojis"`
 	OrderBy             *string  `pulumi:"orderBy"`
 	Project             string   `pulumi:"project"`
@@ -102,7 +102,7 @@ type GetProjectIssuesResult struct {
 	NotAssigneeIds      []int                   `pulumi:"notAssigneeIds"`
 	NotAuthorIds        []int                   `pulumi:"notAuthorIds"`
 	NotLabels           []string                `pulumi:"notLabels"`
-	NotMilestones       []string                `pulumi:"notMilestones"`
+	NotMilestone        *string                 `pulumi:"notMilestone"`
 	NotMyReactionEmojis []string                `pulumi:"notMyReactionEmojis"`
 	OrderBy             *string                 `pulumi:"orderBy"`
 	Project             string                  `pulumi:"project"`
@@ -145,7 +145,7 @@ type GetProjectIssuesOutputArgs struct {
 	NotAssigneeIds      pulumi.IntArrayInput    `pulumi:"notAssigneeIds"`
 	NotAuthorIds        pulumi.IntArrayInput    `pulumi:"notAuthorIds"`
 	NotLabels           pulumi.StringArrayInput `pulumi:"notLabels"`
-	NotMilestones       pulumi.StringArrayInput `pulumi:"notMilestones"`
+	NotMilestone        pulumi.StringPtrInput   `pulumi:"notMilestone"`
 	NotMyReactionEmojis pulumi.StringArrayInput `pulumi:"notMyReactionEmojis"`
 	OrderBy             pulumi.StringPtrInput   `pulumi:"orderBy"`
 	Project             pulumi.StringInput      `pulumi:"project"`
@@ -246,8 +246,8 @@ func (o GetProjectIssuesResultOutput) NotLabels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetProjectIssuesResult) []string { return v.NotLabels }).(pulumi.StringArrayOutput)
 }
 
-func (o GetProjectIssuesResultOutput) NotMilestones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetProjectIssuesResult) []string { return v.NotMilestones }).(pulumi.StringArrayOutput)
+func (o GetProjectIssuesResultOutput) NotMilestone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProjectIssuesResult) *string { return v.NotMilestone }).(pulumi.StringPtrOutput)
 }
 
 func (o GetProjectIssuesResultOutput) NotMyReactionEmojis() pulumi.StringArrayOutput {

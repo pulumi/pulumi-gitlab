@@ -7,21 +7,36 @@ import typing
 # Export this package's modules as members:
 from .branch import *
 from .branch_protection import *
+from .cluster_agent import *
+from .cluster_agent_token import *
 from .deploy_key import *
 from .deploy_key_enable import *
 from .deploy_token import *
 from .get_branch import *
+from .get_cluster_agent import *
+from .get_cluster_agents import *
+from .get_current_user import *
 from .get_group import *
 from .get_group_membership import *
+from .get_group_variable import *
+from .get_group_variables import *
 from .get_instance_deploy_keys import *
+from .get_instance_variable import *
+from .get_instance_variables import *
 from .get_project import *
 from .get_project_issue import *
 from .get_project_issues import *
+from .get_project_milestone import *
+from .get_project_milestones import *
 from .get_project_protected_branch import *
 from .get_project_protected_branches import *
 from .get_project_tag import *
 from .get_project_tags import *
+from .get_project_variable import *
+from .get_project_variables import *
 from .get_projects import *
+from .get_release_link import *
+from .get_release_links import *
 from .get_repository_file import *
 from .get_user import *
 from .get_users import *
@@ -33,12 +48,14 @@ from .group_custom_attribute import *
 from .group_label import *
 from .group_ldap_link import *
 from .group_membership import *
+from .group_project_file_template import *
 from .group_share_group import *
 from .group_variable import *
 from .instance_cluster import *
 from .instance_variable import *
 from .label import *
 from .managed_license import *
+from .personal_access_token import *
 from .pipeline_schedule import *
 from .pipeline_schedule_variable import *
 from .pipeline_trigger import *
@@ -54,13 +71,18 @@ from .project_hook import *
 from .project_issue import *
 from .project_level_mr_approvals import *
 from .project_membership import *
+from .project_milestone import *
 from .project_mirror import *
 from .project_protected_environment import *
+from .project_runner_enablement import *
 from .project_share_group import *
 from .project_tag import *
 from .project_variable import *
 from .provider import *
+from .release_link import *
 from .repository_file import *
+from .runner import *
+from .service_external_wiki import *
 from .service_github import *
 from .service_jira import *
 from .service_microsoft_teams import *
@@ -99,6 +121,22 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/branchProtection:BranchProtection": "BranchProtection"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/clusterAgent",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/clusterAgent:ClusterAgent": "ClusterAgent"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/clusterAgentToken",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/clusterAgentToken:ClusterAgentToken": "ClusterAgentToken"
   }
  },
  {
@@ -191,6 +229,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/groupProjectFileTemplate",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate": "GroupProjectFileTemplate"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/groupShareGroup",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -235,6 +281,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/managedLicense:ManagedLicense": "ManagedLicense"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/personalAccessToken",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/personalAccessToken:PersonalAccessToken": "PersonalAccessToken"
   }
  },
  {
@@ -359,6 +413,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectMilestone",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectMilestone:ProjectMilestone": "ProjectMilestone"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectMirror",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -371,6 +433,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment": "ProjectProtectedEnvironment"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectRunnerEnablement",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement": "ProjectRunnerEnablement"
   }
  },
  {
@@ -399,10 +469,34 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/releaseLink",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/releaseLink:ReleaseLink": "ReleaseLink"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/repositoryFile",
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/repositoryFile:RepositoryFile": "RepositoryFile"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/runner",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/runner:Runner": "Runner"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/serviceExternalWiki",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/serviceExternalWiki:ServiceExternalWiki": "ServiceExternalWiki"
   }
  },
  {

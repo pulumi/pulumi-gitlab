@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  * const exampleProjectAccessToken = new gitlab.ProjectAccessToken("exampleProjectAccessToken", {
  *     project: "25",
  *     expiresAt: "2020-03-14",
+ *     accessLevel: "reporter",
  *     scopes: ["api"],
  * });
  * const exampleProjectVariable = new gitlab.ProjectVariable("exampleProjectVariable", {
@@ -65,6 +66,11 @@ export class ProjectAccessToken extends pulumi.CustomResource {
         return obj['__pulumiType'] === ProjectAccessToken.__pulumiType;
     }
 
+    /**
+     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+     * `maintainer`, `owner`, `master`. Default is `maintainer`.
+     */
+    public readonly accessLevel!: pulumi.Output<string | undefined>;
     /**
      * True if the token is active.
      */
@@ -115,6 +121,7 @@ export class ProjectAccessToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectAccessTokenState | undefined;
+            resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
             resourceInputs["active"] = state ? state.active : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
@@ -132,6 +139,7 @@ export class ProjectAccessToken extends pulumi.CustomResource {
             if ((!args || args.scopes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scopes'");
             }
+            resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
             resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -151,6 +159,11 @@ export class ProjectAccessToken extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProjectAccessToken resources.
  */
 export interface ProjectAccessTokenState {
+    /**
+     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+     * `maintainer`, `owner`, `master`. Default is `maintainer`.
+     */
+    accessLevel?: pulumi.Input<string>;
     /**
      * True if the token is active.
      */
@@ -193,6 +206,11 @@ export interface ProjectAccessTokenState {
  * The set of arguments for constructing a ProjectAccessToken resource.
  */
 export interface ProjectAccessTokenArgs {
+    /**
+     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+     * `maintainer`, `owner`, `master`. Default is `maintainer`.
+     */
+    accessLevel?: pulumi.Input<string>;
     /**
      * Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
      */

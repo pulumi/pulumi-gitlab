@@ -35,6 +35,7 @@ namespace Pulumi.GitLab
     ///         var example = new GitLab.ProjectMembership("example", new GitLab.ProjectMembershipArgs
     ///         {
     ///             AccessLevel = "guest",
+    ///             ExpiresAt = "2022-12-31",
     ///             ProjectId = "67890",
     ///             UserId = 1234,
     ///         });
@@ -56,10 +57,16 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-        /// `master`
+        /// `owner`, `master`
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// Expiration date for the project membership. Format: `YYYY-MM-DD`
+        /// </summary>
+        [Output("expiresAt")]
+        public Output<string?> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
         /// The id of the project.
@@ -121,10 +128,16 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-        /// `master`
+        /// `owner`, `master`
         /// </summary>
         [Input("accessLevel", required: true)]
         public Input<string> AccessLevel { get; set; } = null!;
+
+        /// <summary>
+        /// Expiration date for the project membership. Format: `YYYY-MM-DD`
+        /// </summary>
+        [Input("expiresAt")]
+        public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
         /// The id of the project.
@@ -147,10 +160,16 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-        /// `master`
+        /// `owner`, `master`
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
+
+        /// <summary>
+        /// Expiration date for the project membership. Format: `YYYY-MM-DD`
+        /// </summary>
+        [Input("expiresAt")]
+        public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
         /// The id of the project.

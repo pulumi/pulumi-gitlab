@@ -51,12 +51,12 @@ type ProjectShareGroup struct {
 	pulumi.CustomResourceState
 
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-	// `developer`, `maintainer`, `master`
+	// `developer`, `maintainer`, `owner`, `master`
 	//
 	// Deprecated: Use `group_access` instead of the `access_level` attribute.
 	AccessLevel pulumi.StringPtrOutput `pulumi:"accessLevel"`
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-	// `developer`, `maintainer`, `master`
+	// `developer`, `maintainer`, `owner`, `master`
 	GroupAccess pulumi.StringPtrOutput `pulumi:"groupAccess"`
 	// The id of the group.
 	GroupId pulumi.IntOutput `pulumi:"groupId"`
@@ -100,12 +100,12 @@ func GetProjectShareGroup(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ProjectShareGroup resources.
 type projectShareGroupState struct {
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-	// `developer`, `maintainer`, `master`
+	// `developer`, `maintainer`, `owner`, `master`
 	//
 	// Deprecated: Use `group_access` instead of the `access_level` attribute.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-	// `developer`, `maintainer`, `master`
+	// `developer`, `maintainer`, `owner`, `master`
 	GroupAccess *string `pulumi:"groupAccess"`
 	// The id of the group.
 	GroupId *int `pulumi:"groupId"`
@@ -115,12 +115,12 @@ type projectShareGroupState struct {
 
 type ProjectShareGroupState struct {
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-	// `developer`, `maintainer`, `master`
+	// `developer`, `maintainer`, `owner`, `master`
 	//
 	// Deprecated: Use `group_access` instead of the `access_level` attribute.
 	AccessLevel pulumi.StringPtrInput
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-	// `developer`, `maintainer`, `master`
+	// `developer`, `maintainer`, `owner`, `master`
 	GroupAccess pulumi.StringPtrInput
 	// The id of the group.
 	GroupId pulumi.IntPtrInput
@@ -134,12 +134,12 @@ func (ProjectShareGroupState) ElementType() reflect.Type {
 
 type projectShareGroupArgs struct {
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-	// `developer`, `maintainer`, `master`
+	// `developer`, `maintainer`, `owner`, `master`
 	//
 	// Deprecated: Use `group_access` instead of the `access_level` attribute.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-	// `developer`, `maintainer`, `master`
+	// `developer`, `maintainer`, `owner`, `master`
 	GroupAccess *string `pulumi:"groupAccess"`
 	// The id of the group.
 	GroupId int `pulumi:"groupId"`
@@ -150,12 +150,12 @@ type projectShareGroupArgs struct {
 // The set of arguments for constructing a ProjectShareGroup resource.
 type ProjectShareGroupArgs struct {
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-	// `developer`, `maintainer`, `master`
+	// `developer`, `maintainer`, `owner`, `master`
 	//
 	// Deprecated: Use `group_access` instead of the `access_level` attribute.
 	AccessLevel pulumi.StringPtrInput
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-	// `developer`, `maintainer`, `master`
+	// `developer`, `maintainer`, `owner`, `master`
 	GroupAccess pulumi.StringPtrInput
 	// The id of the group.
 	GroupId pulumi.IntInput
@@ -251,7 +251,7 @@ func (o ProjectShareGroupOutput) ToProjectShareGroupOutputWithContext(ctx contex
 }
 
 // The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-// `developer`, `maintainer`, `master`
+// `developer`, `maintainer`, `owner`, `master`
 //
 // Deprecated: Use `group_access` instead of the `access_level` attribute.
 func (o ProjectShareGroupOutput) AccessLevel() pulumi.StringPtrOutput {
@@ -259,7 +259,7 @@ func (o ProjectShareGroupOutput) AccessLevel() pulumi.StringPtrOutput {
 }
 
 // The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-// `developer`, `maintainer`, `master`
+// `developer`, `maintainer`, `owner`, `master`
 func (o ProjectShareGroupOutput) GroupAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectShareGroup) pulumi.StringPtrOutput { return v.GroupAccess }).(pulumi.StringPtrOutput)
 }

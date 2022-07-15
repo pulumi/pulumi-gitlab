@@ -247,8 +247,8 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The task completion status. It's always a one element list.
         /// </summary>
-        [Output("taskCompletionStatus")]
-        public Output<Outputs.ProjectIssueTaskCompletionStatus> TaskCompletionStatus { get; private set; } = null!;
+        [Output("taskCompletionStatuses")]
+        public Output<ImmutableArray<Outputs.ProjectIssueTaskCompletionStatus>> TaskCompletionStatuses { get; private set; } = null!;
 
         /// <summary>
         /// The time estimate of the issue.
@@ -357,18 +357,6 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
-        /// </summary>
-        [Input("closedAt")]
-        public Input<string>? ClosedAt { get; set; }
-
-        /// <summary>
-        /// The ID of the user that closed the issue. Use `gitlab_user` data source to get more information about the user.
-        /// </summary>
-        [Input("closedByUserId")]
-        public Input<int>? ClosedByUserId { get; set; }
-
-        /// <summary>
         /// Set an issue to be confidential.
         /// </summary>
         [Input("confidential")]
@@ -420,18 +408,6 @@ namespace Pulumi.GitLab
         public Input<int>? EpicIssueId { get; set; }
 
         /// <summary>
-        /// The human-readable time estimate of the issue.
-        /// </summary>
-        [Input("humanTimeEstimate")]
-        public Input<string>? HumanTimeEstimate { get; set; }
-
-        /// <summary>
-        /// The human-readable total time spent of the issue.
-        /// </summary>
-        [Input("humanTotalTimeSpent")]
-        public Input<string>? HumanTotalTimeSpent { get; set; }
-
-        /// <summary>
         /// The internal ID of the project's issue.
         /// </summary>
         [Input("iid")]
@@ -455,18 +431,6 @@ namespace Pulumi.GitLab
             set => _labels = value;
         }
 
-        [Input("links")]
-        private InputMap<string>? _links;
-
-        /// <summary>
-        /// The links of the issue.
-        /// </summary>
-        public InputMap<string> Links
-        {
-            get => _links ?? (_links = new InputMap<string>());
-            set => _links = value;
-        }
-
         /// <summary>
         /// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
         /// all discussions as resolved. When passing a description or title, these values take precedence over the default values.
@@ -487,18 +451,6 @@ namespace Pulumi.GitLab
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("references")]
-        private InputMap<string>? _references;
-
-        /// <summary>
-        /// The references of the issue.
-        /// </summary>
-        public InputMap<string> References
-        {
-            get => _references ?? (_references = new InputMap<string>());
-            set => _references = value;
-        }
-
         /// <summary>
         /// The state of the issue. Valid values are: `opened`, `closed`.
         /// </summary>
@@ -506,28 +458,10 @@ namespace Pulumi.GitLab
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The task completion status. It's always a one element list.
-        /// </summary>
-        [Input("taskCompletionStatus")]
-        public Input<Inputs.ProjectIssueTaskCompletionStatusArgs>? TaskCompletionStatus { get; set; }
-
-        /// <summary>
-        /// The time estimate of the issue.
-        /// </summary>
-        [Input("timeEstimate")]
-        public Input<int>? TimeEstimate { get; set; }
-
-        /// <summary>
         /// The title of the issue.
         /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
-
-        /// <summary>
-        /// The total time spent of the issue.
-        /// </summary>
-        [Input("totalTimeSpent")]
-        public Input<int>? TotalTimeSpent { get; set; }
 
         /// <summary>
         /// When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
@@ -763,11 +697,17 @@ namespace Pulumi.GitLab
         [Input("subscribed")]
         public Input<bool>? Subscribed { get; set; }
 
+        [Input("taskCompletionStatuses")]
+        private InputList<Inputs.ProjectIssueTaskCompletionStatusGetArgs>? _taskCompletionStatuses;
+
         /// <summary>
         /// The task completion status. It's always a one element list.
         /// </summary>
-        [Input("taskCompletionStatus")]
-        public Input<Inputs.ProjectIssueTaskCompletionStatusGetArgs>? TaskCompletionStatus { get; set; }
+        public InputList<Inputs.ProjectIssueTaskCompletionStatusGetArgs> TaskCompletionStatuses
+        {
+            get => _taskCompletionStatuses ?? (_taskCompletionStatuses = new InputList<Inputs.ProjectIssueTaskCompletionStatusGetArgs>());
+            set => _taskCompletionStatuses = value;
+        }
 
         /// <summary>
         /// The time estimate of the issue.

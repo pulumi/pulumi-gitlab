@@ -27,52 +27,64 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		thisGroup, err := gitlab.NewGroup(ctx, "thisGroup", &gitlab.GroupArgs{
-// 			Path:        pulumi.String("example"),
-// 			Description: pulumi.String("An example group"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		thisProject, err := gitlab.NewProject(ctx, "thisProject", &gitlab.ProjectArgs{
-// 			NamespaceId:          thisGroup.ID(),
-// 			InitializeWithReadme: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		thisProjectEnvironment, err := gitlab.NewProjectEnvironment(ctx, "thisProjectEnvironment", &gitlab.ProjectEnvironmentArgs{
-// 			Project:     thisProject.ID(),
+// 		this, err := gitlab.NewProjectEnvironment(ctx, "this", &gitlab.ProjectEnvironmentArgs{
+// 			Project:     pulumi.String("123"),
 // 			ExternalUrl: pulumi.String("www.example.com"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = gitlab.NewProjectProtectedEnvironment(ctx, "thisProjectProtectedEnvironment", &gitlab.ProjectProtectedEnvironmentArgs{
-// 			Project:     thisProject.ID(),
-// 			Environment: thisProjectEnvironment.Name,
-// 			DeployAccessLevels: &ProjectProtectedEnvironmentDeployAccessLevelsArgs{
-// 				AccessLevel: pulumi.String("developer"),
+// 		_, err = gitlab.NewProjectProtectedEnvironment(ctx, "exampleWithAccessLevel", &gitlab.ProjectProtectedEnvironmentArgs{
+// 			Project:               this.Project,
+// 			RequiredApprovalCount: pulumi.Int(1),
+// 			Environment:           this.Name,
+// 			DeployAccessLevels: ProjectProtectedEnvironmentDeployAccessLevelArray{
+// 				&ProjectProtectedEnvironmentDeployAccessLevelArgs{
+// 					AccessLevel: pulumi.String("developer"),
+// 				},
 // 			},
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = gitlab.NewProjectProtectedEnvironment(ctx, "thisIndex/projectProtectedEnvironmentProjectProtectedEnvironment", &gitlab.ProjectProtectedEnvironmentArgs{
-// 			Project:     thisProject.ID(),
-// 			Environment: thisProjectEnvironment.Name,
-// 			DeployAccessLevels: &ProjectProtectedEnvironmentDeployAccessLevelsArgs{
-// 				GroupId: pulumi.Any(gitlab_group.Test.Id),
+// 		_, err = gitlab.NewProjectProtectedEnvironment(ctx, "exampleWithGroup", &gitlab.ProjectProtectedEnvironmentArgs{
+// 			Project:     this.Project,
+// 			Environment: this.Name,
+// 			DeployAccessLevels: ProjectProtectedEnvironmentDeployAccessLevelArray{
+// 				&ProjectProtectedEnvironmentDeployAccessLevelArgs{
+// 					GroupId: pulumi.Int(456),
+// 				},
 // 			},
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = gitlab.NewProjectProtectedEnvironment(ctx, "thisGitlabIndex/projectProtectedEnvironmentProjectProtectedEnvironment", &gitlab.ProjectProtectedEnvironmentArgs{
-// 			Project:     thisProject.ID(),
-// 			Environment: thisProjectEnvironment.Name,
-// 			DeployAccessLevels: &ProjectProtectedEnvironmentDeployAccessLevelsArgs{
-// 				UserId: pulumi.Any(gitlab_user.Test.Id),
+// 		_, err = gitlab.NewProjectProtectedEnvironment(ctx, "exampleWithUser", &gitlab.ProjectProtectedEnvironmentArgs{
+// 			Project:     this.Project,
+// 			Environment: this.Name,
+// 			DeployAccessLevels: ProjectProtectedEnvironmentDeployAccessLevelArray{
+// 				&ProjectProtectedEnvironmentDeployAccessLevelArgs{
+// 					UserId: pulumi.Int(789),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = gitlab.NewProjectProtectedEnvironment(ctx, "exampleWithMultiple", &gitlab.ProjectProtectedEnvironmentArgs{
+// 			Project:               this.Project,
+// 			RequiredApprovalCount: pulumi.Int(2),
+// 			Environment:           this.Name,
+// 			DeployAccessLevels: ProjectProtectedEnvironmentDeployAccessLevelArray{
+// 				&ProjectProtectedEnvironmentDeployAccessLevelArgs{
+// 					AccessLevel: pulumi.String("developer"),
+// 				},
+// 				&ProjectProtectedEnvironmentDeployAccessLevelArgs{
+// 					GroupId: pulumi.Int(456),
+// 				},
+// 				&ProjectProtectedEnvironmentDeployAccessLevelArgs{
+// 					UserId: pulumi.Int(789),
+// 				},
 // 			},
 // 		})
 // 		if err != nil {
@@ -94,11 +106,13 @@ type ProjectProtectedEnvironment struct {
 	pulumi.CustomResourceState
 
 	// Array of access levels allowed to deploy, with each described by a hash.
-	DeployAccessLevels ProjectProtectedEnvironmentDeployAccessLevelsOutput `pulumi:"deployAccessLevels"`
+	DeployAccessLevels ProjectProtectedEnvironmentDeployAccessLevelArrayOutput `pulumi:"deployAccessLevels"`
 	// The name of the environment.
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// The ID or full path of the project which the protected environment is created against.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The number of approvals required to deploy to this environment.
+	RequiredApprovalCount pulumi.IntPtrOutput `pulumi:"requiredApprovalCount"`
 }
 
 // NewProjectProtectedEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -140,20 +154,24 @@ func GetProjectProtectedEnvironment(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ProjectProtectedEnvironment resources.
 type projectProtectedEnvironmentState struct {
 	// Array of access levels allowed to deploy, with each described by a hash.
-	DeployAccessLevels *ProjectProtectedEnvironmentDeployAccessLevels `pulumi:"deployAccessLevels"`
+	DeployAccessLevels []ProjectProtectedEnvironmentDeployAccessLevel `pulumi:"deployAccessLevels"`
 	// The name of the environment.
 	Environment *string `pulumi:"environment"`
 	// The ID or full path of the project which the protected environment is created against.
 	Project *string `pulumi:"project"`
+	// The number of approvals required to deploy to this environment.
+	RequiredApprovalCount *int `pulumi:"requiredApprovalCount"`
 }
 
 type ProjectProtectedEnvironmentState struct {
 	// Array of access levels allowed to deploy, with each described by a hash.
-	DeployAccessLevels ProjectProtectedEnvironmentDeployAccessLevelsPtrInput
+	DeployAccessLevels ProjectProtectedEnvironmentDeployAccessLevelArrayInput
 	// The name of the environment.
 	Environment pulumi.StringPtrInput
 	// The ID or full path of the project which the protected environment is created against.
 	Project pulumi.StringPtrInput
+	// The number of approvals required to deploy to this environment.
+	RequiredApprovalCount pulumi.IntPtrInput
 }
 
 func (ProjectProtectedEnvironmentState) ElementType() reflect.Type {
@@ -162,21 +180,25 @@ func (ProjectProtectedEnvironmentState) ElementType() reflect.Type {
 
 type projectProtectedEnvironmentArgs struct {
 	// Array of access levels allowed to deploy, with each described by a hash.
-	DeployAccessLevels ProjectProtectedEnvironmentDeployAccessLevels `pulumi:"deployAccessLevels"`
+	DeployAccessLevels []ProjectProtectedEnvironmentDeployAccessLevel `pulumi:"deployAccessLevels"`
 	// The name of the environment.
 	Environment string `pulumi:"environment"`
 	// The ID or full path of the project which the protected environment is created against.
 	Project string `pulumi:"project"`
+	// The number of approvals required to deploy to this environment.
+	RequiredApprovalCount *int `pulumi:"requiredApprovalCount"`
 }
 
 // The set of arguments for constructing a ProjectProtectedEnvironment resource.
 type ProjectProtectedEnvironmentArgs struct {
 	// Array of access levels allowed to deploy, with each described by a hash.
-	DeployAccessLevels ProjectProtectedEnvironmentDeployAccessLevelsInput
+	DeployAccessLevels ProjectProtectedEnvironmentDeployAccessLevelArrayInput
 	// The name of the environment.
 	Environment pulumi.StringInput
 	// The ID or full path of the project which the protected environment is created against.
 	Project pulumi.StringInput
+	// The number of approvals required to deploy to this environment.
+	RequiredApprovalCount pulumi.IntPtrInput
 }
 
 func (ProjectProtectedEnvironmentArgs) ElementType() reflect.Type {
@@ -267,10 +289,10 @@ func (o ProjectProtectedEnvironmentOutput) ToProjectProtectedEnvironmentOutputWi
 }
 
 // Array of access levels allowed to deploy, with each described by a hash.
-func (o ProjectProtectedEnvironmentOutput) DeployAccessLevels() ProjectProtectedEnvironmentDeployAccessLevelsOutput {
-	return o.ApplyT(func(v *ProjectProtectedEnvironment) ProjectProtectedEnvironmentDeployAccessLevelsOutput {
+func (o ProjectProtectedEnvironmentOutput) DeployAccessLevels() ProjectProtectedEnvironmentDeployAccessLevelArrayOutput {
+	return o.ApplyT(func(v *ProjectProtectedEnvironment) ProjectProtectedEnvironmentDeployAccessLevelArrayOutput {
 		return v.DeployAccessLevels
-	}).(ProjectProtectedEnvironmentDeployAccessLevelsOutput)
+	}).(ProjectProtectedEnvironmentDeployAccessLevelArrayOutput)
 }
 
 // The name of the environment.
@@ -281,6 +303,11 @@ func (o ProjectProtectedEnvironmentOutput) Environment() pulumi.StringOutput {
 // The ID or full path of the project which the protected environment is created against.
 func (o ProjectProtectedEnvironmentOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectProtectedEnvironment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The number of approvals required to deploy to this environment.
+func (o ProjectProtectedEnvironmentOutput) RequiredApprovalCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectProtectedEnvironment) pulumi.IntPtrOutput { return v.RequiredApprovalCount }).(pulumi.IntPtrOutput)
 }
 
 type ProjectProtectedEnvironmentArrayOutput struct{ *pulumi.OutputState }

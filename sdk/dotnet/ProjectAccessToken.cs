@@ -28,6 +28,7 @@ namespace Pulumi.GitLab
     ///         {
     ///             Project = "25",
     ///             ExpiresAt = "2020-03-14",
+    ///             AccessLevel = "reporter",
     ///             Scopes = 
     ///             {
     ///                 "api",
@@ -57,6 +58,13 @@ namespace Pulumi.GitLab
     [GitLabResourceType("gitlab:index/projectAccessToken:ProjectAccessToken")]
     public partial class ProjectAccessToken : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+        /// `maintainer`, `owner`, `master`. Default is `maintainer`.
+        /// </summary>
+        [Output("accessLevel")]
+        public Output<string?> AccessLevel { get; private set; } = null!;
+
         /// <summary>
         /// True if the token is active.
         /// </summary>
@@ -158,6 +166,13 @@ namespace Pulumi.GitLab
     public sealed class ProjectAccessTokenArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+        /// `maintainer`, `owner`, `master`. Default is `maintainer`.
+        /// </summary>
+        [Input("accessLevel")]
+        public Input<string>? AccessLevel { get; set; }
+
+        /// <summary>
         /// Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
         /// </summary>
         [Input("expiresAt")]
@@ -194,6 +209,13 @@ namespace Pulumi.GitLab
 
     public sealed class ProjectAccessTokenState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+        /// `maintainer`, `owner`, `master`. Default is `maintainer`.
+        /// </summary>
+        [Input("accessLevel")]
+        public Input<string>? AccessLevel { get; set; }
+
         /// <summary>
         /// True if the token is active.
         /// </summary>

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab.Inputs
 {
 
-    public sealed class ProjectProtectedEnvironmentDeployAccessLevelsGetArgs : Pulumi.ResourceArgs
+    public sealed class ProjectProtectedEnvironmentDeployAccessLevelGetArgs : Pulumi.ResourceArgs
     {
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -24,7 +24,7 @@ namespace Pulumi.GitLab.Inputs
         [Input("userId")]
         public Input<int>? UserId { get; set; }
 
-        public ProjectProtectedEnvironmentDeployAccessLevelsGetArgs()
+        public ProjectProtectedEnvironmentDeployAccessLevelGetArgs()
         {
         }
     }

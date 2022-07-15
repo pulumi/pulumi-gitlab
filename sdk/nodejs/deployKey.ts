@@ -26,10 +26,14 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+ * # GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. # `project_id` can be whatever the [get single project api][get_single_project] takes for # its `:id` value, so for example
  *
  * ```sh
  *  $ pulumi import gitlab:index/deployKey:DeployKey test 1:3
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gitlab:index/deployKey:DeployKey test richardc/example:3
  * ```
  */
 export class DeployKey extends pulumi.CustomResource {
@@ -61,8 +65,7 @@ export class DeployKey extends pulumi.CustomResource {
     }
 
     /**
-     * Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
-     * be managed.
+     * Allow this deploy key to be used to push changes to the project. Defaults to `false`.
      */
     public readonly canPush!: pulumi.Output<boolean | undefined>;
     /**
@@ -121,8 +124,7 @@ export class DeployKey extends pulumi.CustomResource {
  */
 export interface DeployKeyState {
     /**
-     * Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
-     * be managed.
+     * Allow this deploy key to be used to push changes to the project. Defaults to `false`.
      */
     canPush?: pulumi.Input<boolean>;
     /**
@@ -144,8 +146,7 @@ export interface DeployKeyState {
  */
 export interface DeployKeyArgs {
     /**
-     * Allow this deploy key to be used to push changes to the project. Defaults to `false`. **NOTE::** this cannot currently
-     * be managed.
+     * Allow this deploy key to be used to push changes to the project. Defaults to `false`.
      */
     canPush?: pulumi.Input<boolean>;
     /**

@@ -74,11 +74,11 @@ export class ProjectIssue extends pulumi.CustomResource {
     /**
      * When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
      */
-    public readonly closedAt!: pulumi.Output<string>;
+    public /*out*/ readonly closedAt!: pulumi.Output<string>;
     /**
      * The ID of the user that closed the issue. Use `gitlab_user` data source to get more information about the user.
      */
-    public readonly closedByUserId!: pulumi.Output<number>;
+    public /*out*/ readonly closedByUserId!: pulumi.Output<number>;
     /**
      * Set an issue to be confidential.
      */
@@ -129,11 +129,11 @@ export class ProjectIssue extends pulumi.CustomResource {
     /**
      * The human-readable time estimate of the issue.
      */
-    public readonly humanTimeEstimate!: pulumi.Output<string>;
+    public /*out*/ readonly humanTimeEstimate!: pulumi.Output<string>;
     /**
      * The human-readable total time spent of the issue.
      */
-    public readonly humanTotalTimeSpent!: pulumi.Output<string>;
+    public /*out*/ readonly humanTotalTimeSpent!: pulumi.Output<string>;
     /**
      * The internal ID of the project's issue.
      */
@@ -157,7 +157,7 @@ export class ProjectIssue extends pulumi.CustomResource {
     /**
      * The links of the issue.
      */
-    public readonly links!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly links!: pulumi.Output<{[key: string]: string}>;
     /**
      * The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
      * all discussions as resolved. When passing a description or title, these values take precedence over the default values.
@@ -183,7 +183,7 @@ export class ProjectIssue extends pulumi.CustomResource {
     /**
      * The references of the issue.
      */
-    public readonly references!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly references!: pulumi.Output<{[key: string]: string}>;
     /**
      * The state of the issue. Valid values are: `opened`, `closed`.
      */
@@ -195,11 +195,11 @@ export class ProjectIssue extends pulumi.CustomResource {
     /**
      * The task completion status. It's always a one element list.
      */
-    public readonly taskCompletionStatus!: pulumi.Output<outputs.ProjectIssueTaskCompletionStatus>;
+    public /*out*/ readonly taskCompletionStatuses!: pulumi.Output<outputs.ProjectIssueTaskCompletionStatus[]>;
     /**
      * The time estimate of the issue.
      */
-    public readonly timeEstimate!: pulumi.Output<number>;
+    public /*out*/ readonly timeEstimate!: pulumi.Output<number>;
     /**
      * The title of the issue.
      */
@@ -207,7 +207,7 @@ export class ProjectIssue extends pulumi.CustomResource {
     /**
      * The total time spent of the issue.
      */
-    public readonly totalTimeSpent!: pulumi.Output<number>;
+    public /*out*/ readonly totalTimeSpent!: pulumi.Output<number>;
     /**
      * When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
      */
@@ -273,7 +273,7 @@ export class ProjectIssue extends pulumi.CustomResource {
             resourceInputs["references"] = state ? state.references : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["subscribed"] = state ? state.subscribed : undefined;
-            resourceInputs["taskCompletionStatus"] = state ? state.taskCompletionStatus : undefined;
+            resourceInputs["taskCompletionStatuses"] = state ? state.taskCompletionStatuses : undefined;
             resourceInputs["timeEstimate"] = state ? state.timeEstimate : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
             resourceInputs["totalTimeSpent"] = state ? state.totalTimeSpent : undefined;
@@ -291,8 +291,6 @@ export class ProjectIssue extends pulumi.CustomResource {
                 throw new Error("Missing required property 'title'");
             }
             resourceInputs["assigneeIds"] = args ? args.assigneeIds : undefined;
-            resourceInputs["closedAt"] = args ? args.closedAt : undefined;
-            resourceInputs["closedByUserId"] = args ? args.closedByUserId : undefined;
             resourceInputs["confidential"] = args ? args.confidential : undefined;
             resourceInputs["createdAt"] = args ? args.createdAt : undefined;
             resourceInputs["deleteOnDestroy"] = args ? args.deleteOnDestroy : undefined;
@@ -301,32 +299,34 @@ export class ProjectIssue extends pulumi.CustomResource {
             resourceInputs["discussionToResolve"] = args ? args.discussionToResolve : undefined;
             resourceInputs["dueDate"] = args ? args.dueDate : undefined;
             resourceInputs["epicIssueId"] = args ? args.epicIssueId : undefined;
-            resourceInputs["humanTimeEstimate"] = args ? args.humanTimeEstimate : undefined;
-            resourceInputs["humanTotalTimeSpent"] = args ? args.humanTotalTimeSpent : undefined;
             resourceInputs["iid"] = args ? args.iid : undefined;
             resourceInputs["issueType"] = args ? args.issueType : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["links"] = args ? args.links : undefined;
             resourceInputs["mergeRequestToResolveDiscussionsOf"] = args ? args.mergeRequestToResolveDiscussionsOf : undefined;
             resourceInputs["milestoneId"] = args ? args.milestoneId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["references"] = args ? args.references : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["taskCompletionStatus"] = args ? args.taskCompletionStatus : undefined;
-            resourceInputs["timeEstimate"] = args ? args.timeEstimate : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
-            resourceInputs["totalTimeSpent"] = args ? args.totalTimeSpent : undefined;
             resourceInputs["updatedAt"] = args ? args.updatedAt : undefined;
             resourceInputs["weight"] = args ? args.weight : undefined;
             resourceInputs["authorId"] = undefined /*out*/;
+            resourceInputs["closedAt"] = undefined /*out*/;
+            resourceInputs["closedByUserId"] = undefined /*out*/;
             resourceInputs["downvotes"] = undefined /*out*/;
             resourceInputs["epicId"] = undefined /*out*/;
             resourceInputs["externalId"] = undefined /*out*/;
+            resourceInputs["humanTimeEstimate"] = undefined /*out*/;
+            resourceInputs["humanTotalTimeSpent"] = undefined /*out*/;
             resourceInputs["issueId"] = undefined /*out*/;
             resourceInputs["issueLinkId"] = undefined /*out*/;
+            resourceInputs["links"] = undefined /*out*/;
             resourceInputs["mergeRequestsCount"] = undefined /*out*/;
             resourceInputs["movedToId"] = undefined /*out*/;
+            resourceInputs["references"] = undefined /*out*/;
             resourceInputs["subscribed"] = undefined /*out*/;
+            resourceInputs["taskCompletionStatuses"] = undefined /*out*/;
+            resourceInputs["timeEstimate"] = undefined /*out*/;
+            resourceInputs["totalTimeSpent"] = undefined /*out*/;
             resourceInputs["upvotes"] = undefined /*out*/;
             resourceInputs["userNotesCount"] = undefined /*out*/;
             resourceInputs["webUrl"] = undefined /*out*/;
@@ -472,7 +472,7 @@ export interface ProjectIssueState {
     /**
      * The task completion status. It's always a one element list.
      */
-    taskCompletionStatus?: pulumi.Input<inputs.ProjectIssueTaskCompletionStatus>;
+    taskCompletionStatuses?: pulumi.Input<pulumi.Input<inputs.ProjectIssueTaskCompletionStatus>[]>;
     /**
      * The time estimate of the issue.
      */
@@ -516,14 +516,6 @@ export interface ProjectIssueArgs {
      */
     assigneeIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
-     */
-    closedAt?: pulumi.Input<string>;
-    /**
-     * The ID of the user that closed the issue. Use `gitlab_user` data source to get more information about the user.
-     */
-    closedByUserId?: pulumi.Input<number>;
-    /**
      * Set an issue to be confidential.
      */
     confidential?: pulumi.Input<boolean>;
@@ -559,14 +551,6 @@ export interface ProjectIssueArgs {
      */
     epicIssueId?: pulumi.Input<number>;
     /**
-     * The human-readable time estimate of the issue.
-     */
-    humanTimeEstimate?: pulumi.Input<string>;
-    /**
-     * The human-readable total time spent of the issue.
-     */
-    humanTotalTimeSpent?: pulumi.Input<string>;
-    /**
      * The internal ID of the project's issue.
      */
     iid?: pulumi.Input<number>;
@@ -578,10 +562,6 @@ export interface ProjectIssueArgs {
      * The labels of an issue.
      */
     labels?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The links of the issue.
-     */
-    links?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
      * all discussions as resolved. When passing a description or title, these values take precedence over the default values.
@@ -597,29 +577,13 @@ export interface ProjectIssueArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * The references of the issue.
-     */
-    references?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
      * The state of the issue. Valid values are: `opened`, `closed`.
      */
     state?: pulumi.Input<string>;
     /**
-     * The task completion status. It's always a one element list.
-     */
-    taskCompletionStatus?: pulumi.Input<inputs.ProjectIssueTaskCompletionStatus>;
-    /**
-     * The time estimate of the issue.
-     */
-    timeEstimate?: pulumi.Input<number>;
-    /**
      * The title of the issue.
      */
     title: pulumi.Input<string>;
-    /**
-     * The total time spent of the issue.
-     */
-    totalTimeSpent?: pulumi.Input<number>;
     /**
      * When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
      */

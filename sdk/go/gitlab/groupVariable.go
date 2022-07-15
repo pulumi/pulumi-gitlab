@@ -54,8 +54,7 @@ type GroupVariable struct {
 	pulumi.CustomResourceState
 
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-	// values other than `*` will cause inconsistent plans. See
-	// https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+	// values other than `*` will cause inconsistent plans.
 	EnvironmentScope pulumi.StringPtrOutput `pulumi:"environmentScope"`
 	// The name or id of the group.
 	Group pulumi.StringOutput `pulumi:"group"`
@@ -69,7 +68,7 @@ type GroupVariable struct {
 	Protected pulumi.BoolPtrOutput `pulumi:"protected"`
 	// The value of the variable.
 	Value pulumi.StringOutput `pulumi:"value"`
-	// The type of a variable. Available types are: env_var (default) and file.
+	// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
 	VariableType pulumi.StringPtrOutput `pulumi:"variableType"`
 }
 
@@ -112,8 +111,7 @@ func GetGroupVariable(ctx *pulumi.Context,
 // Input properties used for looking up and filtering GroupVariable resources.
 type groupVariableState struct {
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-	// values other than `*` will cause inconsistent plans. See
-	// https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+	// values other than `*` will cause inconsistent plans.
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The name or id of the group.
 	Group *string `pulumi:"group"`
@@ -127,14 +125,13 @@ type groupVariableState struct {
 	Protected *bool `pulumi:"protected"`
 	// The value of the variable.
 	Value *string `pulumi:"value"`
-	// The type of a variable. Available types are: env_var (default) and file.
+	// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
 	VariableType *string `pulumi:"variableType"`
 }
 
 type GroupVariableState struct {
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-	// values other than `*` will cause inconsistent plans. See
-	// https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+	// values other than `*` will cause inconsistent plans.
 	EnvironmentScope pulumi.StringPtrInput
 	// The name or id of the group.
 	Group pulumi.StringPtrInput
@@ -148,7 +145,7 @@ type GroupVariableState struct {
 	Protected pulumi.BoolPtrInput
 	// The value of the variable.
 	Value pulumi.StringPtrInput
-	// The type of a variable. Available types are: env_var (default) and file.
+	// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
 	VariableType pulumi.StringPtrInput
 }
 
@@ -158,8 +155,7 @@ func (GroupVariableState) ElementType() reflect.Type {
 
 type groupVariableArgs struct {
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-	// values other than `*` will cause inconsistent plans. See
-	// https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+	// values other than `*` will cause inconsistent plans.
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The name or id of the group.
 	Group string `pulumi:"group"`
@@ -173,15 +169,14 @@ type groupVariableArgs struct {
 	Protected *bool `pulumi:"protected"`
 	// The value of the variable.
 	Value string `pulumi:"value"`
-	// The type of a variable. Available types are: env_var (default) and file.
+	// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
 	VariableType *string `pulumi:"variableType"`
 }
 
 // The set of arguments for constructing a GroupVariable resource.
 type GroupVariableArgs struct {
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-	// values other than `*` will cause inconsistent plans. See
-	// https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+	// values other than `*` will cause inconsistent plans.
 	EnvironmentScope pulumi.StringPtrInput
 	// The name or id of the group.
 	Group pulumi.StringInput
@@ -195,7 +190,7 @@ type GroupVariableArgs struct {
 	Protected pulumi.BoolPtrInput
 	// The value of the variable.
 	Value pulumi.StringInput
-	// The type of a variable. Available types are: env_var (default) and file.
+	// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
 	VariableType pulumi.StringPtrInput
 }
 
@@ -287,8 +282,7 @@ func (o GroupVariableOutput) ToGroupVariableOutputWithContext(ctx context.Contex
 }
 
 // The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-// values other than `*` will cause inconsistent plans. See
-// https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+// values other than `*` will cause inconsistent plans.
 func (o GroupVariableOutput) EnvironmentScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupVariable) pulumi.StringPtrOutput { return v.EnvironmentScope }).(pulumi.StringPtrOutput)
 }
@@ -320,7 +314,7 @@ func (o GroupVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupVariable) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }
 
-// The type of a variable. Available types are: env_var (default) and file.
+// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
 func (o GroupVariableOutput) VariableType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupVariable) pulumi.StringPtrOutput { return v.VariableType }).(pulumi.StringPtrOutput)
 }

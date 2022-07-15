@@ -47,6 +47,8 @@ type Topic struct {
 	//
 	// Deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
 	SoftDestroy pulumi.BoolPtrOutput `pulumi:"softDestroy"`
+	// The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+	Title pulumi.StringPtrOutput `pulumi:"title"`
 }
 
 // NewTopic registers a new resource with the given unique name, arguments, and options.
@@ -93,6 +95,8 @@ type topicState struct {
 	//
 	// Deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
 	SoftDestroy *bool `pulumi:"softDestroy"`
+	// The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+	Title *string `pulumi:"title"`
 }
 
 type TopicState struct {
@@ -111,6 +115,8 @@ type TopicState struct {
 	//
 	// Deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
 	SoftDestroy pulumi.BoolPtrInput
+	// The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+	Title pulumi.StringPtrInput
 }
 
 func (TopicState) ElementType() reflect.Type {
@@ -131,6 +137,8 @@ type topicArgs struct {
 	//
 	// Deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
 	SoftDestroy *bool `pulumi:"softDestroy"`
+	// The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+	Title *string `pulumi:"title"`
 }
 
 // The set of arguments for constructing a Topic resource.
@@ -148,6 +156,8 @@ type TopicArgs struct {
 	//
 	// Deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
 	SoftDestroy pulumi.BoolPtrInput
+	// The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+	Title pulumi.StringPtrInput
 }
 
 func (TopicArgs) ElementType() reflect.Type {
@@ -268,6 +278,11 @@ func (o TopicOutput) Name() pulumi.StringOutput {
 // Deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
 func (o TopicOutput) SoftDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Topic) pulumi.BoolPtrOutput { return v.SoftDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+func (o TopicOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringPtrOutput { return v.Title }).(pulumi.StringPtrOutput)
 }
 
 type TopicArrayOutput struct{ *pulumi.OutputState }

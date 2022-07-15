@@ -20,7 +20,7 @@ class GetRepositoryFileResult:
     """
     A collection of values returned by getRepositoryFile.
     """
-    def __init__(__self__, blob_id=None, commit_id=None, content=None, content_sha256=None, encoding=None, file_name=None, file_path=None, id=None, last_commit_id=None, project=None, ref=None, size=None):
+    def __init__(__self__, blob_id=None, commit_id=None, content=None, content_sha256=None, encoding=None, execute_filemode=None, file_name=None, file_path=None, id=None, last_commit_id=None, project=None, ref=None, size=None):
         if blob_id and not isinstance(blob_id, str):
             raise TypeError("Expected argument 'blob_id' to be a str")
         pulumi.set(__self__, "blob_id", blob_id)
@@ -36,6 +36,9 @@ class GetRepositoryFileResult:
         if encoding and not isinstance(encoding, str):
             raise TypeError("Expected argument 'encoding' to be a str")
         pulumi.set(__self__, "encoding", encoding)
+        if execute_filemode and not isinstance(execute_filemode, bool):
+            raise TypeError("Expected argument 'execute_filemode' to be a bool")
+        pulumi.set(__self__, "execute_filemode", execute_filemode)
         if file_name and not isinstance(file_name, str):
             raise TypeError("Expected argument 'file_name' to be a str")
         pulumi.set(__self__, "file_name", file_name)
@@ -82,6 +85,11 @@ class GetRepositoryFileResult:
     @pulumi.getter
     def encoding(self) -> str:
         return pulumi.get(self, "encoding")
+
+    @property
+    @pulumi.getter(name="executeFilemode")
+    def execute_filemode(self) -> bool:
+        return pulumi.get(self, "execute_filemode")
 
     @property
     @pulumi.getter(name="fileName")
@@ -133,6 +141,7 @@ class AwaitableGetRepositoryFileResult(GetRepositoryFileResult):
             content=self.content,
             content_sha256=self.content_sha256,
             encoding=self.encoding,
+            execute_filemode=self.execute_filemode,
             file_name=self.file_name,
             file_path=self.file_path,
             id=self.id,
@@ -178,6 +187,7 @@ def get_repository_file(file_path: Optional[str] = None,
         content=__ret__.content,
         content_sha256=__ret__.content_sha256,
         encoding=__ret__.encoding,
+        execute_filemode=__ret__.execute_filemode,
         file_name=__ret__.file_name,
         file_path=__ret__.file_path,
         id=__ret__.id,

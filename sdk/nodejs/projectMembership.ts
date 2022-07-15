@@ -24,6 +24,7 @@ import * as utilities from "./utilities";
  * });
  * const example = new gitlab.ProjectMembership("example", {
  *     accessLevel: "guest",
+ *     expiresAt: "2022-12-31",
  *     projectId: "67890",
  *     userId: 1234,
  * });
@@ -67,9 +68,13 @@ export class ProjectMembership extends pulumi.CustomResource {
 
     /**
      * The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-     * `master`
+     * `owner`, `master`
      */
     public readonly accessLevel!: pulumi.Output<string>;
+    /**
+     * Expiration date for the project membership. Format: `YYYY-MM-DD`
+     */
+    public readonly expiresAt!: pulumi.Output<string | undefined>;
     /**
      * The id of the project.
      */
@@ -93,6 +98,7 @@ export class ProjectMembership extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ProjectMembershipState | undefined;
             resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
+            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
@@ -107,6 +113,7 @@ export class ProjectMembership extends pulumi.CustomResource {
                 throw new Error("Missing required property 'userId'");
             }
             resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
+            resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["userId"] = args ? args.userId : undefined;
         }
@@ -121,9 +128,13 @@ export class ProjectMembership extends pulumi.CustomResource {
 export interface ProjectMembershipState {
     /**
      * The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-     * `master`
+     * `owner`, `master`
      */
     accessLevel?: pulumi.Input<string>;
+    /**
+     * Expiration date for the project membership. Format: `YYYY-MM-DD`
+     */
+    expiresAt?: pulumi.Input<string>;
     /**
      * The id of the project.
      */
@@ -140,9 +151,13 @@ export interface ProjectMembershipState {
 export interface ProjectMembershipArgs {
     /**
      * The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-     * `master`
+     * `owner`, `master`
      */
     accessLevel: pulumi.Input<string>;
+    /**
+     * Expiration date for the project membership. Format: `YYYY-MM-DD`
+     */
+    expiresAt?: pulumi.Input<string>;
     /**
      * The id of the project.
      */

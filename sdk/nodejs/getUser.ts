@@ -20,6 +20,7 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gitlab:index/getUser:getUser", {
         "email": args.email,
+        "namespaceId": args.namespaceId,
         "userId": args.userId,
         "username": args.username,
     }, opts);
@@ -30,6 +31,7 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
  */
 export interface GetUserArgs {
     email?: string;
+    namespaceId?: number;
     userId?: number;
     username?: string;
 }
@@ -57,6 +59,7 @@ export interface GetUserResult {
     readonly linkedin: string;
     readonly location: string;
     readonly name: string;
+    readonly namespaceId: number;
     readonly note: string;
     readonly organization: string;
     readonly projectsLimit: number;
@@ -80,6 +83,7 @@ export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetUserOutputArgs {
     email?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<number>;
     userId?: pulumi.Input<number>;
     username?: pulumi.Input<string>;
 }

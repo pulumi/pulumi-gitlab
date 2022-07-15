@@ -15,7 +15,7 @@ __all__ = [
     'BranchProtectionAllowedToUnprotectArgs',
     'ProjectContainerExpirationPolicyArgs',
     'ProjectIssueTaskCompletionStatusArgs',
-    'ProjectProtectedEnvironmentDeployAccessLevelsArgs',
+    'ProjectProtectedEnvironmentDeployAccessLevelArgs',
     'ProjectPushRulesArgs',
     'ProjectTagCommitArgs',
     'ProjectTagReleaseArgs',
@@ -436,7 +436,7 @@ class ProjectIssueTaskCompletionStatusArgs:
 
 
 @pulumi.input_type
-class ProjectProtectedEnvironmentDeployAccessLevelsArgs:
+class ProjectProtectedEnvironmentDeployAccessLevelArgs:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None,
                  access_level_description: Optional[pulumi.Input[str]] = None,

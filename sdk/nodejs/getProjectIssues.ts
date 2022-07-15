@@ -47,7 +47,7 @@ export function getProjectIssues(args: GetProjectIssuesArgs, opts?: pulumi.Invok
         "notAssigneeIds": args.notAssigneeIds,
         "notAuthorIds": args.notAuthorIds,
         "notLabels": args.notLabels,
-        "notMilestones": args.notMilestones,
+        "notMilestone": args.notMilestone,
         "notMyReactionEmojis": args.notMyReactionEmojis,
         "orderBy": args.orderBy,
         "project": args.project,
@@ -80,7 +80,7 @@ export interface GetProjectIssuesArgs {
     notAssigneeIds?: number[];
     notAuthorIds?: number[];
     notLabels?: string[];
-    notMilestones?: string[];
+    notMilestone?: string;
     notMyReactionEmojis?: string[];
     orderBy?: string;
     project: string;
@@ -117,7 +117,7 @@ export interface GetProjectIssuesResult {
     readonly notAssigneeIds?: number[];
     readonly notAuthorIds?: number[];
     readonly notLabels?: string[];
-    readonly notMilestones?: string[];
+    readonly notMilestone?: string;
     readonly notMyReactionEmojis?: string[];
     readonly orderBy?: string;
     readonly project: string;
@@ -153,7 +153,7 @@ export interface GetProjectIssuesOutputArgs {
     notAssigneeIds?: pulumi.Input<pulumi.Input<number>[]>;
     notAuthorIds?: pulumi.Input<pulumi.Input<number>[]>;
     notLabels?: pulumi.Input<pulumi.Input<string>[]>;
-    notMilestones?: pulumi.Input<pulumi.Input<string>[]>;
+    notMilestone?: pulumi.Input<string>;
     notMyReactionEmojis?: pulumi.Input<pulumi.Input<string>[]>;
     orderBy?: pulumi.Input<string>;
     project: pulumi.Input<string>;

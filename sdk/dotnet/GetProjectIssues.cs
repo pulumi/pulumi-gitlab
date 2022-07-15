@@ -157,13 +157,8 @@ namespace Pulumi.GitLab
             set => _notLabels = value;
         }
 
-        [Input("notMilestones")]
-        private List<string>? _notMilestones;
-        public List<string> NotMilestones
-        {
-            get => _notMilestones ?? (_notMilestones = new List<string>());
-            set => _notMilestones = value;
-        }
+        [Input("notMilestone")]
+        public string? NotMilestone { get; set; }
 
         [Input("notMyReactionEmojis")]
         private List<string>? _notMyReactionEmojis;
@@ -277,13 +272,8 @@ namespace Pulumi.GitLab
             set => _notLabels = value;
         }
 
-        [Input("notMilestones")]
-        private InputList<string>? _notMilestones;
-        public InputList<string> NotMilestones
-        {
-            get => _notMilestones ?? (_notMilestones = new InputList<string>());
-            set => _notMilestones = value;
-        }
+        [Input("notMilestone")]
+        public Input<string>? NotMilestone { get; set; }
 
         [Input("notMyReactionEmojis")]
         private InputList<string>? _notMyReactionEmojis;
@@ -349,7 +339,7 @@ namespace Pulumi.GitLab
         public readonly ImmutableArray<int> NotAssigneeIds;
         public readonly ImmutableArray<int> NotAuthorIds;
         public readonly ImmutableArray<string> NotLabels;
-        public readonly ImmutableArray<string> NotMilestones;
+        public readonly string? NotMilestone;
         public readonly ImmutableArray<string> NotMyReactionEmojis;
         public readonly string? OrderBy;
         public readonly string Project;
@@ -397,7 +387,7 @@ namespace Pulumi.GitLab
 
             ImmutableArray<string> notLabels,
 
-            ImmutableArray<string> notMilestones,
+            string? notMilestone,
 
             ImmutableArray<string> notMyReactionEmojis,
 
@@ -436,7 +426,7 @@ namespace Pulumi.GitLab
             NotAssigneeIds = notAssigneeIds;
             NotAuthorIds = notAuthorIds;
             NotLabels = notLabels;
-            NotMilestones = notMilestones;
+            NotMilestone = notMilestone;
             NotMyReactionEmojis = notMyReactionEmojis;
             OrderBy = orderBy;
             Project = project;

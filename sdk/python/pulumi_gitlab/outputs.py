@@ -16,18 +16,22 @@ __all__ = [
     'BranchProtectionAllowedToUnprotect',
     'ProjectContainerExpirationPolicy',
     'ProjectIssueTaskCompletionStatus',
-    'ProjectProtectedEnvironmentDeployAccessLevels',
+    'ProjectProtectedEnvironmentDeployAccessLevel',
     'ProjectPushRules',
     'ProjectTagCommit',
     'ProjectTagRelease',
     'GetBranchCommitResult',
+    'GetClusterAgentsClusterAgentResult',
     'GetGroupMembershipMemberResult',
+    'GetGroupVariablesVariableResult',
     'GetInstanceDeployKeysDeployKeyResult',
     'GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult',
+    'GetInstanceVariablesVariableResult',
     'GetProjectContainerExpirationPolicyResult',
     'GetProjectIssueTaskCompletionStatusResult',
     'GetProjectIssuesIssueResult',
     'GetProjectIssuesIssueTaskCompletionStatusResult',
+    'GetProjectMilestonesMilestoneResult',
     'GetProjectProtectedBranchMergeAccessLevelResult',
     'GetProjectProtectedBranchPushAccessLevelResult',
     'GetProjectProtectedBranchesProtectedBranchResult',
@@ -39,6 +43,7 @@ __all__ = [
     'GetProjectTagsTagResult',
     'GetProjectTagsTagCommitResult',
     'GetProjectTagsTagReleaseResult',
+    'GetProjectVariablesVariableResult',
     'GetProjectsProjectResult',
     'GetProjectsProjectContainerExpirationPolicyResult',
     'GetProjectsProjectForkedFromProjectResult',
@@ -46,6 +51,7 @@ __all__ = [
     'GetProjectsProjectOwnerResult',
     'GetProjectsProjectPermissionsResult',
     'GetProjectsProjectSharedWithGroupResult',
+    'GetReleaseLinksReleaseLinkResult',
     'GetUsersUserResult',
 ]
 
@@ -478,7 +484,7 @@ class ProjectIssueTaskCompletionStatus(dict):
 
 
 @pulumi.output_type
-class ProjectProtectedEnvironmentDeployAccessLevels(dict):
+class ProjectProtectedEnvironmentDeployAccessLevel(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -492,14 +498,14 @@ class ProjectProtectedEnvironmentDeployAccessLevels(dict):
             suggest = "user_id"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProjectProtectedEnvironmentDeployAccessLevels. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ProjectProtectedEnvironmentDeployAccessLevel. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ProjectProtectedEnvironmentDeployAccessLevels.__key_warning(key)
+        ProjectProtectedEnvironmentDeployAccessLevel.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ProjectProtectedEnvironmentDeployAccessLevels.__key_warning(key)
+        ProjectProtectedEnvironmentDeployAccessLevel.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -912,6 +918,46 @@ class GetBranchCommitResult(dict):
 
 
 @pulumi.output_type
+class GetClusterAgentsClusterAgentResult(dict):
+    def __init__(__self__, *,
+                 agent_id: int,
+                 created_at: str,
+                 created_by_user_id: int,
+                 name: str,
+                 project: str):
+        pulumi.set(__self__, "agent_id", agent_id)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "created_by_user_id", created_by_user_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> int:
+        return pulumi.get(self, "agent_id")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="createdByUserId")
+    def created_by_user_id(self) -> int:
+        return pulumi.get(self, "created_by_user_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+
+@pulumi.output_type
 class GetGroupMembershipMemberResult(dict):
     def __init__(__self__, *,
                  access_level: str,
@@ -970,6 +1016,60 @@ class GetGroupMembershipMemberResult(dict):
     @pulumi.getter(name="webUrl")
     def web_url(self) -> str:
         return pulumi.get(self, "web_url")
+
+
+@pulumi.output_type
+class GetGroupVariablesVariableResult(dict):
+    def __init__(__self__, *,
+                 environment_scope: str,
+                 group: str,
+                 key: str,
+                 masked: bool,
+                 protected: bool,
+                 value: str,
+                 variable_type: str):
+        pulumi.set(__self__, "environment_scope", environment_scope)
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "masked", masked)
+        pulumi.set(__self__, "protected", protected)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "variable_type", variable_type)
+
+    @property
+    @pulumi.getter(name="environmentScope")
+    def environment_scope(self) -> str:
+        return pulumi.get(self, "environment_scope")
+
+    @property
+    @pulumi.getter
+    def group(self) -> str:
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def masked(self) -> bool:
+        return pulumi.get(self, "masked")
+
+    @property
+    @pulumi.getter
+    def protected(self) -> bool:
+        return pulumi.get(self, "protected")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="variableType")
+    def variable_type(self) -> str:
+        return pulumi.get(self, "variable_type")
 
 
 @pulumi.output_type
@@ -1071,6 +1171,46 @@ class GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult(dict):
     @pulumi.getter(name="pathWithNamespace")
     def path_with_namespace(self) -> str:
         return pulumi.get(self, "path_with_namespace")
+
+
+@pulumi.output_type
+class GetInstanceVariablesVariableResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 masked: bool,
+                 protected: bool,
+                 value: str,
+                 variable_type: str):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "masked", masked)
+        pulumi.set(__self__, "protected", protected)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "variable_type", variable_type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def masked(self) -> bool:
+        return pulumi.get(self, "masked")
+
+    @property
+    @pulumi.getter
+    def protected(self) -> bool:
+        return pulumi.get(self, "protected")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="variableType")
+    def variable_type(self) -> str:
+        return pulumi.get(self, "variable_type")
 
 
 @pulumi.output_type
@@ -1441,6 +1581,102 @@ class GetProjectIssuesIssueTaskCompletionStatusResult(dict):
     @pulumi.getter
     def count(self) -> int:
         return pulumi.get(self, "count")
+
+
+@pulumi.output_type
+class GetProjectMilestonesMilestoneResult(dict):
+    def __init__(__self__, *,
+                 created_at: str,
+                 description: str,
+                 due_date: str,
+                 expired: bool,
+                 iid: int,
+                 milestone_id: int,
+                 project: str,
+                 project_id: int,
+                 start_date: str,
+                 state: str,
+                 title: str,
+                 updated_at: str,
+                 web_url: str):
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "due_date", due_date)
+        pulumi.set(__self__, "expired", expired)
+        pulumi.set(__self__, "iid", iid)
+        pulumi.set(__self__, "milestone_id", milestone_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "start_date", start_date)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "title", title)
+        pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "web_url", web_url)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dueDate")
+    def due_date(self) -> str:
+        return pulumi.get(self, "due_date")
+
+    @property
+    @pulumi.getter
+    def expired(self) -> bool:
+        return pulumi.get(self, "expired")
+
+    @property
+    @pulumi.getter
+    def iid(self) -> int:
+        return pulumi.get(self, "iid")
+
+    @property
+    @pulumi.getter(name="milestoneId")
+    def milestone_id(self) -> int:
+        return pulumi.get(self, "milestone_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> int:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> str:
+        return pulumi.get(self, "start_date")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> str:
+        return pulumi.get(self, "web_url")
 
 
 @pulumi.output_type
@@ -1954,6 +2190,60 @@ class GetProjectTagsTagReleaseResult(dict):
 
 
 @pulumi.output_type
+class GetProjectVariablesVariableResult(dict):
+    def __init__(__self__, *,
+                 environment_scope: str,
+                 key: str,
+                 masked: bool,
+                 project: str,
+                 protected: bool,
+                 value: str,
+                 variable_type: str):
+        pulumi.set(__self__, "environment_scope", environment_scope)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "masked", masked)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "protected", protected)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "variable_type", variable_type)
+
+    @property
+    @pulumi.getter(name="environmentScope")
+    def environment_scope(self) -> str:
+        return pulumi.get(self, "environment_scope")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def masked(self) -> bool:
+        return pulumi.get(self, "masked")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def protected(self) -> bool:
+        return pulumi.get(self, "protected")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="variableType")
+    def variable_type(self) -> str:
+        return pulumi.get(self, "variable_type")
+
+
+@pulumi.output_type
 class GetProjectsProjectResult(dict):
     def __init__(__self__, *,
                  _links: Mapping[str, str],
@@ -1971,13 +2261,14 @@ class GetProjectsProjectResult(dict):
                  build_timeout: int,
                  builds_access_level: str,
                  ci_config_path: str,
+                 ci_default_git_depth: int,
                  ci_forward_deployment_enabled: bool,
                  container_expiration_policies: Sequence['outputs.GetProjectsProjectContainerExpirationPolicyResult'],
                  container_registry_access_level: str,
                  container_registry_enabled: bool,
                  created_at: str,
                  creator_id: int,
-                 custom_attributes: Sequence[Mapping[str, Any]],
+                 custom_attributes: Sequence[Mapping[str, str]],
                  default_branch: str,
                  description: str,
                  emails_disabled: bool,
@@ -2056,6 +2347,7 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "build_timeout", build_timeout)
         pulumi.set(__self__, "builds_access_level", builds_access_level)
         pulumi.set(__self__, "ci_config_path", ci_config_path)
+        pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
         pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
         pulumi.set(__self__, "container_expiration_policies", container_expiration_policies)
         pulumi.set(__self__, "container_registry_access_level", container_registry_access_level)
@@ -2203,6 +2495,11 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "ci_config_path")
 
     @property
+    @pulumi.getter(name="ciDefaultGitDepth")
+    def ci_default_git_depth(self) -> int:
+        return pulumi.get(self, "ci_default_git_depth")
+
+    @property
     @pulumi.getter(name="ciForwardDeploymentEnabled")
     def ci_forward_deployment_enabled(self) -> bool:
         return pulumi.get(self, "ci_forward_deployment_enabled")
@@ -2234,7 +2531,7 @@ class GetProjectsProjectResult(dict):
 
     @property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Sequence[Mapping[str, Any]]:
+    def custom_attributes(self) -> Sequence[Mapping[str, str]]:
         return pulumi.get(self, "custom_attributes")
 
     @property
@@ -2794,6 +3091,74 @@ class GetProjectsProjectSharedWithGroupResult(dict):
 
 
 @pulumi.output_type
+class GetReleaseLinksReleaseLinkResult(dict):
+    def __init__(__self__, *,
+                 direct_asset_url: str,
+                 external: bool,
+                 filepath: str,
+                 link_id: int,
+                 link_type: str,
+                 name: str,
+                 project: str,
+                 tag_name: str,
+                 url: str):
+        pulumi.set(__self__, "direct_asset_url", direct_asset_url)
+        pulumi.set(__self__, "external", external)
+        pulumi.set(__self__, "filepath", filepath)
+        pulumi.set(__self__, "link_id", link_id)
+        pulumi.set(__self__, "link_type", link_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "tag_name", tag_name)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="directAssetUrl")
+    def direct_asset_url(self) -> str:
+        return pulumi.get(self, "direct_asset_url")
+
+    @property
+    @pulumi.getter
+    def external(self) -> bool:
+        return pulumi.get(self, "external")
+
+    @property
+    @pulumi.getter
+    def filepath(self) -> str:
+        return pulumi.get(self, "filepath")
+
+    @property
+    @pulumi.getter(name="linkId")
+    def link_id(self) -> int:
+        return pulumi.get(self, "link_id")
+
+    @property
+    @pulumi.getter(name="linkType")
+    def link_type(self) -> str:
+        return pulumi.get(self, "link_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="tagName")
+    def tag_name(self) -> str:
+        return pulumi.get(self, "tag_name")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
 class GetUsersUserResult(dict):
     def __init__(__self__, *,
                  avatar_url: str,
@@ -2812,6 +3177,7 @@ class GetUsersUserResult(dict):
                  linkedin: str,
                  location: str,
                  name: str,
+                 namespace_id: int,
                  organization: str,
                  projects_limit: int,
                  provider: str,
@@ -2838,6 +3204,7 @@ class GetUsersUserResult(dict):
         pulumi.set(__self__, "linkedin", linkedin)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace_id", namespace_id)
         pulumi.set(__self__, "organization", organization)
         pulumi.set(__self__, "projects_limit", projects_limit)
         pulumi.set(__self__, "provider", provider)
@@ -2928,6 +3295,11 @@ class GetUsersUserResult(dict):
     @pulumi.getter
     def name(self) -> str:
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> int:
+        return pulumi.get(self, "namespace_id")
 
     @property
     @pulumi.getter

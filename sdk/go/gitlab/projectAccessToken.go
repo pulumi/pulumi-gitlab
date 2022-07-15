@@ -28,8 +28,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		exampleProjectAccessToken, err := gitlab.NewProjectAccessToken(ctx, "exampleProjectAccessToken", &gitlab.ProjectAccessTokenArgs{
-// 			Project:   pulumi.String("25"),
-// 			ExpiresAt: pulumi.String("2020-03-14"),
+// 			Project:     pulumi.String("25"),
+// 			ExpiresAt:   pulumi.String("2020-03-14"),
+// 			AccessLevel: pulumi.String("reporter"),
 // 			Scopes: pulumi.StringArray{
 // 				pulumi.String("api"),
 // 			},
@@ -62,6 +63,9 @@ import (
 type ProjectAccessToken struct {
 	pulumi.CustomResourceState
 
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+	// `maintainer`, `owner`, `master`. Default is `maintainer`.
+	AccessLevel pulumi.StringPtrOutput `pulumi:"accessLevel"`
 	// True if the token is active.
 	Active pulumi.BoolOutput `pulumi:"active"`
 	// Time the token has been created, RFC3339 format.
@@ -117,6 +121,9 @@ func GetProjectAccessToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectAccessToken resources.
 type projectAccessTokenState struct {
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+	// `maintainer`, `owner`, `master`. Default is `maintainer`.
+	AccessLevel *string `pulumi:"accessLevel"`
 	// True if the token is active.
 	Active *bool `pulumi:"active"`
 	// Time the token has been created, RFC3339 format.
@@ -138,6 +145,9 @@ type projectAccessTokenState struct {
 }
 
 type ProjectAccessTokenState struct {
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+	// `maintainer`, `owner`, `master`. Default is `maintainer`.
+	AccessLevel pulumi.StringPtrInput
 	// True if the token is active.
 	Active pulumi.BoolPtrInput
 	// Time the token has been created, RFC3339 format.
@@ -163,6 +173,9 @@ func (ProjectAccessTokenState) ElementType() reflect.Type {
 }
 
 type projectAccessTokenArgs struct {
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+	// `maintainer`, `owner`, `master`. Default is `maintainer`.
+	AccessLevel *string `pulumi:"accessLevel"`
 	// Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// A name to describe the project access token.
@@ -175,6 +188,9 @@ type projectAccessTokenArgs struct {
 
 // The set of arguments for constructing a ProjectAccessToken resource.
 type ProjectAccessTokenArgs struct {
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+	// `maintainer`, `owner`, `master`. Default is `maintainer`.
+	AccessLevel pulumi.StringPtrInput
 	// Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
 	ExpiresAt pulumi.StringPtrInput
 	// A name to describe the project access token.
@@ -270,6 +286,12 @@ func (o ProjectAccessTokenOutput) ToProjectAccessTokenOutput() ProjectAccessToke
 
 func (o ProjectAccessTokenOutput) ToProjectAccessTokenOutputWithContext(ctx context.Context) ProjectAccessTokenOutput {
 	return o
+}
+
+// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
+// `maintainer`, `owner`, `master`. Default is `maintainer`.
+func (o ProjectAccessTokenOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectAccessToken) pulumi.StringPtrOutput { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
 // True if the token is active.

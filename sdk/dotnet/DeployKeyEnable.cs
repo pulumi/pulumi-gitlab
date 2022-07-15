@@ -52,20 +52,24 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// # GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+    /// # GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. # `project_id` can be whatever the [get single project api][get_single_project] takes for # its `:id` value, so for example
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example richardc/example:67890
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/deployKeyEnable:DeployKeyEnable")]
     public partial class DeployKeyEnable : Pulumi.CustomResource
     {
         /// <summary>
-        /// Can deploy key push to the project’s repository.
+        /// Can deploy key push to the project's repository.
         /// </summary>
         [Output("canPush")]
-        public Output<bool> CanPush { get; private set; } = null!;
+        public Output<bool?> CanPush { get; private set; } = null!;
 
         /// <summary>
         /// Deploy key.
@@ -138,7 +142,7 @@ namespace Pulumi.GitLab
     public sealed class DeployKeyEnableArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Can deploy key push to the project’s repository.
+        /// Can deploy key push to the project's repository.
         /// </summary>
         [Input("canPush")]
         public Input<bool>? CanPush { get; set; }
@@ -175,7 +179,7 @@ namespace Pulumi.GitLab
     public sealed class DeployKeyEnableState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Can deploy key push to the project’s repository.
+        /// Can deploy key push to the project's repository.
         /// </summary>
         [Input("canPush")]
         public Input<bool>? CanPush { get; set; }

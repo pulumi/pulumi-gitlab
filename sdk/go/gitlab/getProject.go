@@ -47,6 +47,7 @@ func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getProject.
 type LookupProjectArgs struct {
+	CiDefaultGitDepth *int    `pulumi:"ciDefaultGitDepth"`
 	Id                *string `pulumi:"id"`
 	PathWithNamespace *string `pulumi:"pathWithNamespace"`
 	PublicBuilds      *bool   `pulumi:"publicBuilds"`
@@ -63,6 +64,7 @@ type LookupProjectResult struct {
 	BuildGitStrategy                         string                                `pulumi:"buildGitStrategy"`
 	BuildTimeout                             int                                   `pulumi:"buildTimeout"`
 	BuildsAccessLevel                        string                                `pulumi:"buildsAccessLevel"`
+	CiDefaultGitDepth                        int                                   `pulumi:"ciDefaultGitDepth"`
 	ContainerExpirationPolicies              []GetProjectContainerExpirationPolicy `pulumi:"containerExpirationPolicies"`
 	ContainerRegistryAccessLevel             string                                `pulumi:"containerRegistryAccessLevel"`
 	DefaultBranch                            string                                `pulumi:"defaultBranch"`
@@ -123,6 +125,7 @@ func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts
 
 // A collection of arguments for invoking getProject.
 type LookupProjectOutputArgs struct {
+	CiDefaultGitDepth pulumi.IntPtrInput    `pulumi:"ciDefaultGitDepth"`
 	Id                pulumi.StringPtrInput `pulumi:"id"`
 	PathWithNamespace pulumi.StringPtrInput `pulumi:"pathWithNamespace"`
 	PublicBuilds      pulumi.BoolPtrInput   `pulumi:"publicBuilds"`
@@ -181,6 +184,10 @@ func (o LookupProjectResultOutput) BuildTimeout() pulumi.IntOutput {
 
 func (o LookupProjectResultOutput) BuildsAccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.BuildsAccessLevel }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) CiDefaultGitDepth() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupProjectResult) int { return v.CiDefaultGitDepth }).(pulumi.IntOutput)
 }
 
 func (o LookupProjectResultOutput) ContainerExpirationPolicies() GetProjectContainerExpirationPolicyArrayOutput {

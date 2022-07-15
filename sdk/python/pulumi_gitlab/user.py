@@ -19,6 +19,7 @@ class UserArgs:
                  is_admin: Optional[pulumi.Input[bool]] = None,
                  is_external: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[int]] = None,
                  note: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  projects_limit: Optional[pulumi.Input[int]] = None,
@@ -34,6 +35,7 @@ class UserArgs:
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
                access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
+        :param pulumi.Input[int] namespace_id: The ID of the user's namespace. Available since GitLab 14.10.
         :param pulumi.Input[str] note: The note associated to the user.
         :param pulumi.Input[str] password: The password of the user.
         :param pulumi.Input[int] projects_limit: Integer, defaults to 0. Number of projects user can create.
@@ -51,6 +53,8 @@ class UserArgs:
             pulumi.set(__self__, "is_external", is_external)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if namespace_id is not None:
+            pulumi.set(__self__, "namespace_id", namespace_id)
         if note is not None:
             pulumi.set(__self__, "note", note)
         if password is not None:
@@ -138,6 +142,18 @@ class UserArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the user's namespace. Available since GitLab 14.10.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @namespace_id.setter
+    def namespace_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "namespace_id", value)
+
+    @property
     @pulumi.getter
     def note(self) -> Optional[pulumi.Input[str]]:
         """
@@ -218,6 +234,7 @@ class _UserState:
                  is_admin: Optional[pulumi.Input[bool]] = None,
                  is_external: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[int]] = None,
                  note: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  projects_limit: Optional[pulumi.Input[int]] = None,
@@ -233,6 +250,7 @@ class _UserState:
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
                access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
+        :param pulumi.Input[int] namespace_id: The ID of the user's namespace. Available since GitLab 14.10.
         :param pulumi.Input[str] note: The note associated to the user.
         :param pulumi.Input[str] password: The password of the user.
         :param pulumi.Input[int] projects_limit: Integer, defaults to 0. Number of projects user can create.
@@ -251,6 +269,8 @@ class _UserState:
             pulumi.set(__self__, "is_external", is_external)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if namespace_id is not None:
+            pulumi.set(__self__, "namespace_id", namespace_id)
         if note is not None:
             pulumi.set(__self__, "note", note)
         if password is not None:
@@ -326,6 +346,18 @@ class _UserState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the user's namespace. Available since GitLab 14.10.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @namespace_id.setter
+    def namespace_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "namespace_id", value)
 
     @property
     @pulumi.getter
@@ -422,6 +454,7 @@ class User(pulumi.CustomResource):
                  is_admin: Optional[pulumi.Input[bool]] = None,
                  is_external: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[int]] = None,
                  note: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  projects_limit: Optional[pulumi.Input[int]] = None,
@@ -476,6 +509,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
                access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
+        :param pulumi.Input[int] namespace_id: The ID of the user's namespace. Available since GitLab 14.10.
         :param pulumi.Input[str] note: The note associated to the user.
         :param pulumi.Input[str] password: The password of the user.
         :param pulumi.Input[int] projects_limit: Integer, defaults to 0. Number of projects user can create.
@@ -548,6 +582,7 @@ class User(pulumi.CustomResource):
                  is_admin: Optional[pulumi.Input[bool]] = None,
                  is_external: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[int]] = None,
                  note: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  projects_limit: Optional[pulumi.Input[int]] = None,
@@ -574,6 +609,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["is_admin"] = is_admin
             __props__.__dict__["is_external"] = is_external
             __props__.__dict__["name"] = name
+            __props__.__dict__["namespace_id"] = namespace_id
             __props__.__dict__["note"] = note
             __props__.__dict__["password"] = password
             __props__.__dict__["projects_limit"] = projects_limit
@@ -598,6 +634,7 @@ class User(pulumi.CustomResource):
             is_admin: Optional[pulumi.Input[bool]] = None,
             is_external: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            namespace_id: Optional[pulumi.Input[int]] = None,
             note: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             projects_limit: Optional[pulumi.Input[int]] = None,
@@ -618,6 +655,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
                access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
+        :param pulumi.Input[int] namespace_id: The ID of the user's namespace. Available since GitLab 14.10.
         :param pulumi.Input[str] note: The note associated to the user.
         :param pulumi.Input[str] password: The password of the user.
         :param pulumi.Input[int] projects_limit: Integer, defaults to 0. Number of projects user can create.
@@ -635,6 +673,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["is_admin"] = is_admin
         __props__.__dict__["is_external"] = is_external
         __props__.__dict__["name"] = name
+        __props__.__dict__["namespace_id"] = namespace_id
         __props__.__dict__["note"] = note
         __props__.__dict__["password"] = password
         __props__.__dict__["projects_limit"] = projects_limit
@@ -684,6 +723,14 @@ class User(pulumi.CustomResource):
         The name of the user.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> pulumi.Output[int]:
+        """
+        The ID of the user's namespace. Available since GitLab 14.10.
+        """
+        return pulumi.get(self, "namespace_id")
 
     @property
     @pulumi.getter

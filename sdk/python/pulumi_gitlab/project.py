@@ -29,6 +29,7 @@ class ProjectArgs:
                  build_timeout: Optional[pulumi.Input[int]] = None,
                  builds_access_level: Optional[pulumi.Input[str]] = None,
                  ci_config_path: Optional[pulumi.Input[str]] = None,
+                 ci_default_git_depth: Optional[pulumi.Input[int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']] = None,
                  container_registry_access_level: Optional[pulumi.Input[str]] = None,
@@ -76,6 +77,7 @@ class ProjectArgs:
                  resolve_outdated_diff_discussions: Optional[pulumi.Input[bool]] = None,
                  security_and_compliance_access_level: Optional[pulumi.Input[str]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
+                 skip_wait_for_default_branch_protection: Optional[pulumi.Input[bool]] = None,
                  snippets_access_level: Optional[pulumi.Input[str]] = None,
                  snippets_enabled: Optional[pulumi.Input[bool]] = None,
                  squash_commit_template: Optional[pulumi.Input[str]] = None,
@@ -92,7 +94,10 @@ class ProjectArgs:
         The set of arguments for constructing a Project resource.
         :param pulumi.Input[bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[str] analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
+        :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
+               with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
+               [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
+               this attribute and use `gitlab_project_approval_rule` instead.
         :param pulumi.Input[bool] archive_on_destroy: Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE`
                operation.
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
@@ -100,11 +105,12 @@ class ProjectArgs:
         :param pulumi.Input[str] auto_devops_deploy_strategy: Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         :param pulumi.Input[bool] auto_devops_enabled: Enable Auto DevOps for this project.
         :param pulumi.Input[bool] autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
-        :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
+        :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         :param pulumi.Input[str] build_git_strategy: The Git strategy. Defaults to fetch.
         :param pulumi.Input[int] build_timeout: The maximum amount of time, in seconds, that a job can run.
         :param pulumi.Input[str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
+        :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
         :param pulumi.Input['ProjectContainerExpirationPolicyArgs'] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named
                `container_expiration_policy_attributes` in the GitLab Upstream API.
@@ -154,6 +160,10 @@ class ProjectArgs:
         :param pulumi.Input[bool] resolve_outdated_diff_discussions: Automatically resolve merge request diffs discussions on lines changed with a push.
         :param pulumi.Input[str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
+        :param pulumi.Input[bool] skip_wait_for_default_branch_protection: If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
+               the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
+               no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
+               attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
         :param pulumi.Input[str] snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
         :param pulumi.Input[str] squash_commit_template: Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
@@ -189,6 +199,9 @@ class ProjectArgs:
         if autoclose_referenced_issues is not None:
             pulumi.set(__self__, "autoclose_referenced_issues", autoclose_referenced_issues)
         if build_coverage_regex is not None:
+            warnings.warn("""build_coverage_regex is removed in GitLab 15.0.""", DeprecationWarning)
+            pulumi.log.warn("""build_coverage_regex is deprecated: build_coverage_regex is removed in GitLab 15.0.""")
+        if build_coverage_regex is not None:
             pulumi.set(__self__, "build_coverage_regex", build_coverage_regex)
         if build_git_strategy is not None:
             pulumi.set(__self__, "build_git_strategy", build_git_strategy)
@@ -198,6 +211,8 @@ class ProjectArgs:
             pulumi.set(__self__, "builds_access_level", builds_access_level)
         if ci_config_path is not None:
             pulumi.set(__self__, "ci_config_path", ci_config_path)
+        if ci_default_git_depth is not None:
+            pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
         if ci_forward_deployment_enabled is not None:
             pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
         if container_expiration_policy is not None:
@@ -292,6 +307,8 @@ class ProjectArgs:
             pulumi.set(__self__, "security_and_compliance_access_level", security_and_compliance_access_level)
         if shared_runners_enabled is not None:
             pulumi.set(__self__, "shared_runners_enabled", shared_runners_enabled)
+        if skip_wait_for_default_branch_protection is not None:
+            pulumi.set(__self__, "skip_wait_for_default_branch_protection", skip_wait_for_default_branch_protection)
         if snippets_access_level is not None:
             pulumi.set(__self__, "snippets_access_level", snippets_access_level)
         if snippets_enabled is not None:
@@ -345,7 +362,10 @@ class ProjectArgs:
     @pulumi.getter(name="approvalsBeforeMerge")
     def approvals_before_merge(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of merge request approvals required for merging. Default is 0.
+        Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
+        with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
+        [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
+        this attribute and use `gitlab_project_approval_rule` instead.
         """
         return pulumi.get(self, "approvals_before_merge")
 
@@ -430,7 +450,7 @@ class ProjectArgs:
     @pulumi.getter(name="buildCoverageRegex")
     def build_coverage_regex(self) -> Optional[pulumi.Input[str]]:
         """
-        Test coverage parsing for the project.
+        Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         """
         return pulumi.get(self, "build_coverage_regex")
 
@@ -485,6 +505,18 @@ class ProjectArgs:
     @ci_config_path.setter
     def ci_config_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ci_config_path", value)
+
+    @property
+    @pulumi.getter(name="ciDefaultGitDepth")
+    def ci_default_git_depth(self) -> Optional[pulumi.Input[int]]:
+        """
+        Default number of revisions for shallow cloning.
+        """
+        return pulumi.get(self, "ci_default_git_depth")
+
+    @ci_default_git_depth.setter
+    def ci_default_git_depth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ci_default_git_depth", value)
 
     @property
     @pulumi.getter(name="ciForwardDeploymentEnabled")
@@ -1053,6 +1085,21 @@ class ProjectArgs:
         pulumi.set(self, "shared_runners_enabled", value)
 
     @property
+    @pulumi.getter(name="skipWaitForDefaultBranchProtection")
+    def skip_wait_for_default_branch_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
+        the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
+        no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
+        attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
+        """
+        return pulumi.get(self, "skip_wait_for_default_branch_protection")
+
+    @skip_wait_for_default_branch_protection.setter
+    def skip_wait_for_default_branch_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_wait_for_default_branch_protection", value)
+
+    @property
     @pulumi.getter(name="snippetsAccessLevel")
     def snippets_access_level(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1217,6 +1264,7 @@ class _ProjectState:
                  build_timeout: Optional[pulumi.Input[int]] = None,
                  builds_access_level: Optional[pulumi.Input[str]] = None,
                  ci_config_path: Optional[pulumi.Input[str]] = None,
+                 ci_default_git_depth: Optional[pulumi.Input[int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']] = None,
                  container_registry_access_level: Optional[pulumi.Input[str]] = None,
@@ -1267,6 +1315,7 @@ class _ProjectState:
                  runners_token: Optional[pulumi.Input[str]] = None,
                  security_and_compliance_access_level: Optional[pulumi.Input[str]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
+                 skip_wait_for_default_branch_protection: Optional[pulumi.Input[bool]] = None,
                  snippets_access_level: Optional[pulumi.Input[str]] = None,
                  snippets_enabled: Optional[pulumi.Input[bool]] = None,
                  squash_commit_template: Optional[pulumi.Input[str]] = None,
@@ -1285,7 +1334,10 @@ class _ProjectState:
         Input properties used for looking up and filtering Project resources.
         :param pulumi.Input[bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[str] analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
+        :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
+               with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
+               [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
+               this attribute and use `gitlab_project_approval_rule` instead.
         :param pulumi.Input[bool] archive_on_destroy: Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE`
                operation.
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
@@ -1293,11 +1345,12 @@ class _ProjectState:
         :param pulumi.Input[str] auto_devops_deploy_strategy: Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         :param pulumi.Input[bool] auto_devops_enabled: Enable Auto DevOps for this project.
         :param pulumi.Input[bool] autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
-        :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
+        :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         :param pulumi.Input[str] build_git_strategy: The Git strategy. Defaults to fetch.
         :param pulumi.Input[int] build_timeout: The maximum amount of time, in seconds, that a job can run.
         :param pulumi.Input[str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
+        :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
         :param pulumi.Input['ProjectContainerExpirationPolicyArgs'] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named
                `container_expiration_policy_attributes` in the GitLab Upstream API.
@@ -1350,6 +1403,10 @@ class _ProjectState:
         :param pulumi.Input[str] runners_token: Registration token to use during runner setup.
         :param pulumi.Input[str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
+        :param pulumi.Input[bool] skip_wait_for_default_branch_protection: If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
+               the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
+               no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
+               attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
         :param pulumi.Input[str] snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
         :param pulumi.Input[str] squash_commit_template: Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
@@ -1387,6 +1444,9 @@ class _ProjectState:
         if autoclose_referenced_issues is not None:
             pulumi.set(__self__, "autoclose_referenced_issues", autoclose_referenced_issues)
         if build_coverage_regex is not None:
+            warnings.warn("""build_coverage_regex is removed in GitLab 15.0.""", DeprecationWarning)
+            pulumi.log.warn("""build_coverage_regex is deprecated: build_coverage_regex is removed in GitLab 15.0.""")
+        if build_coverage_regex is not None:
             pulumi.set(__self__, "build_coverage_regex", build_coverage_regex)
         if build_git_strategy is not None:
             pulumi.set(__self__, "build_git_strategy", build_git_strategy)
@@ -1396,6 +1456,8 @@ class _ProjectState:
             pulumi.set(__self__, "builds_access_level", builds_access_level)
         if ci_config_path is not None:
             pulumi.set(__self__, "ci_config_path", ci_config_path)
+        if ci_default_git_depth is not None:
+            pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
         if ci_forward_deployment_enabled is not None:
             pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
         if container_expiration_policy is not None:
@@ -1496,6 +1558,8 @@ class _ProjectState:
             pulumi.set(__self__, "security_and_compliance_access_level", security_and_compliance_access_level)
         if shared_runners_enabled is not None:
             pulumi.set(__self__, "shared_runners_enabled", shared_runners_enabled)
+        if skip_wait_for_default_branch_protection is not None:
+            pulumi.set(__self__, "skip_wait_for_default_branch_protection", skip_wait_for_default_branch_protection)
         if snippets_access_level is not None:
             pulumi.set(__self__, "snippets_access_level", snippets_access_level)
         if snippets_enabled is not None:
@@ -1553,7 +1617,10 @@ class _ProjectState:
     @pulumi.getter(name="approvalsBeforeMerge")
     def approvals_before_merge(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of merge request approvals required for merging. Default is 0.
+        Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
+        with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
+        [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
+        this attribute and use `gitlab_project_approval_rule` instead.
         """
         return pulumi.get(self, "approvals_before_merge")
 
@@ -1638,7 +1705,7 @@ class _ProjectState:
     @pulumi.getter(name="buildCoverageRegex")
     def build_coverage_regex(self) -> Optional[pulumi.Input[str]]:
         """
-        Test coverage parsing for the project.
+        Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         """
         return pulumi.get(self, "build_coverage_regex")
 
@@ -1693,6 +1760,18 @@ class _ProjectState:
     @ci_config_path.setter
     def ci_config_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ci_config_path", value)
+
+    @property
+    @pulumi.getter(name="ciDefaultGitDepth")
+    def ci_default_git_depth(self) -> Optional[pulumi.Input[int]]:
+        """
+        Default number of revisions for shallow cloning.
+        """
+        return pulumi.get(self, "ci_default_git_depth")
+
+    @ci_default_git_depth.setter
+    def ci_default_git_depth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ci_default_git_depth", value)
 
     @property
     @pulumi.getter(name="ciForwardDeploymentEnabled")
@@ -2297,6 +2376,21 @@ class _ProjectState:
         pulumi.set(self, "shared_runners_enabled", value)
 
     @property
+    @pulumi.getter(name="skipWaitForDefaultBranchProtection")
+    def skip_wait_for_default_branch_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
+        the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
+        no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
+        attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
+        """
+        return pulumi.get(self, "skip_wait_for_default_branch_protection")
+
+    @skip_wait_for_default_branch_protection.setter
+    def skip_wait_for_default_branch_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_wait_for_default_branch_protection", value)
+
+    @property
     @pulumi.getter(name="snippetsAccessLevel")
     def snippets_access_level(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2487,6 +2581,7 @@ class Project(pulumi.CustomResource):
                  build_timeout: Optional[pulumi.Input[int]] = None,
                  builds_access_level: Optional[pulumi.Input[str]] = None,
                  ci_config_path: Optional[pulumi.Input[str]] = None,
+                 ci_default_git_depth: Optional[pulumi.Input[int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']]] = None,
                  container_registry_access_level: Optional[pulumi.Input[str]] = None,
@@ -2534,6 +2629,7 @@ class Project(pulumi.CustomResource):
                  resolve_outdated_diff_discussions: Optional[pulumi.Input[bool]] = None,
                  security_and_compliance_access_level: Optional[pulumi.Input[str]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
+                 skip_wait_for_default_branch_protection: Optional[pulumi.Input[bool]] = None,
                  snippets_access_level: Optional[pulumi.Input[str]] = None,
                  snippets_enabled: Optional[pulumi.Input[bool]] = None,
                  squash_commit_template: Optional[pulumi.Input[str]] = None,
@@ -2548,12 +2644,6 @@ class Project(pulumi.CustomResource):
                  wiki_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        The `Project` resource allows to manage the lifecycle of a project.
-
-        A project can either be created in a group or user namespace.
-
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/projects.html)
-
         ## Example Usage
 
         ```python
@@ -2570,6 +2660,10 @@ class Project(pulumi.CustomResource):
             member_check=True,
             prevent_secrets=True,
         ))
+        peter_parker = gitlab.get_user(username="peter_parker")
+        peters_repo = gitlab.Project("petersRepo",
+            description="This is a description",
+            namespace_id=peter_parker.namespace_id)
         ```
 
         ## Import
@@ -2588,7 +2682,10 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[str] analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
+        :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
+               with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
+               [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
+               this attribute and use `gitlab_project_approval_rule` instead.
         :param pulumi.Input[bool] archive_on_destroy: Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE`
                operation.
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
@@ -2596,11 +2693,12 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] auto_devops_deploy_strategy: Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         :param pulumi.Input[bool] auto_devops_enabled: Enable Auto DevOps for this project.
         :param pulumi.Input[bool] autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
-        :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
+        :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         :param pulumi.Input[str] build_git_strategy: The Git strategy. Defaults to fetch.
         :param pulumi.Input[int] build_timeout: The maximum amount of time, in seconds, that a job can run.
         :param pulumi.Input[str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
+        :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
         :param pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named
                `container_expiration_policy_attributes` in the GitLab Upstream API.
@@ -2650,6 +2748,10 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] resolve_outdated_diff_discussions: Automatically resolve merge request diffs discussions on lines changed with a push.
         :param pulumi.Input[str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
+        :param pulumi.Input[bool] skip_wait_for_default_branch_protection: If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
+               the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
+               no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
+               attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
         :param pulumi.Input[str] snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
         :param pulumi.Input[str] squash_commit_template: Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
@@ -2673,12 +2775,6 @@ class Project(pulumi.CustomResource):
                  args: Optional[ProjectArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `Project` resource allows to manage the lifecycle of a project.
-
-        A project can either be created in a group or user namespace.
-
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/projects.html)
-
         ## Example Usage
 
         ```python
@@ -2695,6 +2791,10 @@ class Project(pulumi.CustomResource):
             member_check=True,
             prevent_secrets=True,
         ))
+        peter_parker = gitlab.get_user(username="peter_parker")
+        peters_repo = gitlab.Project("petersRepo",
+            description="This is a description",
+            namespace_id=peter_parker.namespace_id)
         ```
 
         ## Import
@@ -2738,6 +2838,7 @@ class Project(pulumi.CustomResource):
                  build_timeout: Optional[pulumi.Input[int]] = None,
                  builds_access_level: Optional[pulumi.Input[str]] = None,
                  ci_config_path: Optional[pulumi.Input[str]] = None,
+                 ci_default_git_depth: Optional[pulumi.Input[int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']]] = None,
                  container_registry_access_level: Optional[pulumi.Input[str]] = None,
@@ -2785,6 +2886,7 @@ class Project(pulumi.CustomResource):
                  resolve_outdated_diff_discussions: Optional[pulumi.Input[bool]] = None,
                  security_and_compliance_access_level: Optional[pulumi.Input[str]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
+                 skip_wait_for_default_branch_protection: Optional[pulumi.Input[bool]] = None,
                  snippets_access_level: Optional[pulumi.Input[str]] = None,
                  snippets_enabled: Optional[pulumi.Input[bool]] = None,
                  squash_commit_template: Optional[pulumi.Input[str]] = None,
@@ -2818,11 +2920,15 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["auto_devops_deploy_strategy"] = auto_devops_deploy_strategy
             __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
             __props__.__dict__["autoclose_referenced_issues"] = autoclose_referenced_issues
+            if build_coverage_regex is not None and not opts.urn:
+                warnings.warn("""build_coverage_regex is removed in GitLab 15.0.""", DeprecationWarning)
+                pulumi.log.warn("""build_coverage_regex is deprecated: build_coverage_regex is removed in GitLab 15.0.""")
             __props__.__dict__["build_coverage_regex"] = build_coverage_regex
             __props__.__dict__["build_git_strategy"] = build_git_strategy
             __props__.__dict__["build_timeout"] = build_timeout
             __props__.__dict__["builds_access_level"] = builds_access_level
             __props__.__dict__["ci_config_path"] = ci_config_path
+            __props__.__dict__["ci_default_git_depth"] = ci_default_git_depth
             __props__.__dict__["ci_forward_deployment_enabled"] = ci_forward_deployment_enabled
             __props__.__dict__["container_expiration_policy"] = container_expiration_policy
             __props__.__dict__["container_registry_access_level"] = container_registry_access_level
@@ -2870,6 +2976,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["resolve_outdated_diff_discussions"] = resolve_outdated_diff_discussions
             __props__.__dict__["security_and_compliance_access_level"] = security_and_compliance_access_level
             __props__.__dict__["shared_runners_enabled"] = shared_runners_enabled
+            __props__.__dict__["skip_wait_for_default_branch_protection"] = skip_wait_for_default_branch_protection
             __props__.__dict__["snippets_access_level"] = snippets_access_level
             __props__.__dict__["snippets_enabled"] = snippets_enabled
             __props__.__dict__["squash_commit_template"] = squash_commit_template
@@ -2911,6 +3018,7 @@ class Project(pulumi.CustomResource):
             build_timeout: Optional[pulumi.Input[int]] = None,
             builds_access_level: Optional[pulumi.Input[str]] = None,
             ci_config_path: Optional[pulumi.Input[str]] = None,
+            ci_default_git_depth: Optional[pulumi.Input[int]] = None,
             ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
             container_expiration_policy: Optional[pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']]] = None,
             container_registry_access_level: Optional[pulumi.Input[str]] = None,
@@ -2961,6 +3069,7 @@ class Project(pulumi.CustomResource):
             runners_token: Optional[pulumi.Input[str]] = None,
             security_and_compliance_access_level: Optional[pulumi.Input[str]] = None,
             shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
+            skip_wait_for_default_branch_protection: Optional[pulumi.Input[bool]] = None,
             snippets_access_level: Optional[pulumi.Input[str]] = None,
             snippets_enabled: Optional[pulumi.Input[bool]] = None,
             squash_commit_template: Optional[pulumi.Input[str]] = None,
@@ -2984,7 +3093,10 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[str] analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
+        :param pulumi.Input[int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
+               with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
+               [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
+               this attribute and use `gitlab_project_approval_rule` instead.
         :param pulumi.Input[bool] archive_on_destroy: Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE`
                operation.
         :param pulumi.Input[bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
@@ -2992,11 +3104,12 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] auto_devops_deploy_strategy: Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         :param pulumi.Input[bool] auto_devops_enabled: Enable Auto DevOps for this project.
         :param pulumi.Input[bool] autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
-        :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project.
+        :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         :param pulumi.Input[str] build_git_strategy: The Git strategy. Defaults to fetch.
         :param pulumi.Input[int] build_timeout: The maximum amount of time, in seconds, that a job can run.
         :param pulumi.Input[str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
+        :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
         :param pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named
                `container_expiration_policy_attributes` in the GitLab Upstream API.
@@ -3049,6 +3162,10 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] runners_token: Registration token to use during runner setup.
         :param pulumi.Input[str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
+        :param pulumi.Input[bool] skip_wait_for_default_branch_protection: If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
+               the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
+               no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
+               attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
         :param pulumi.Input[str] snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
         :param pulumi.Input[str] squash_commit_template: Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
@@ -3085,6 +3202,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["build_timeout"] = build_timeout
         __props__.__dict__["builds_access_level"] = builds_access_level
         __props__.__dict__["ci_config_path"] = ci_config_path
+        __props__.__dict__["ci_default_git_depth"] = ci_default_git_depth
         __props__.__dict__["ci_forward_deployment_enabled"] = ci_forward_deployment_enabled
         __props__.__dict__["container_expiration_policy"] = container_expiration_policy
         __props__.__dict__["container_registry_access_level"] = container_registry_access_level
@@ -3135,6 +3253,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["runners_token"] = runners_token
         __props__.__dict__["security_and_compliance_access_level"] = security_and_compliance_access_level
         __props__.__dict__["shared_runners_enabled"] = shared_runners_enabled
+        __props__.__dict__["skip_wait_for_default_branch_protection"] = skip_wait_for_default_branch_protection
         __props__.__dict__["snippets_access_level"] = snippets_access_level
         __props__.__dict__["snippets_enabled"] = snippets_enabled
         __props__.__dict__["squash_commit_template"] = squash_commit_template
@@ -3171,7 +3290,10 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="approvalsBeforeMerge")
     def approvals_before_merge(self) -> pulumi.Output[Optional[int]]:
         """
-        Number of merge request approvals required for merging. Default is 0.
+        Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
+        with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
+        [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
+        this attribute and use `gitlab_project_approval_rule` instead.
         """
         return pulumi.get(self, "approvals_before_merge")
 
@@ -3228,7 +3350,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="buildCoverageRegex")
     def build_coverage_regex(self) -> pulumi.Output[Optional[str]]:
         """
-        Test coverage parsing for the project.
+        Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         """
         return pulumi.get(self, "build_coverage_regex")
 
@@ -3263,6 +3385,14 @@ class Project(pulumi.CustomResource):
         Custom Path to CI config file.
         """
         return pulumi.get(self, "ci_config_path")
+
+    @property
+    @pulumi.getter(name="ciDefaultGitDepth")
+    def ci_default_git_depth(self) -> pulumi.Output[int]:
+        """
+        Default number of revisions for shallow cloning.
+        """
+        return pulumi.get(self, "ci_default_git_depth")
 
     @property
     @pulumi.getter(name="ciForwardDeploymentEnabled")
@@ -3665,6 +3795,17 @@ class Project(pulumi.CustomResource):
         Enable shared runners for this project.
         """
         return pulumi.get(self, "shared_runners_enabled")
+
+    @property
+    @pulumi.getter(name="skipWaitForDefaultBranchProtection")
+    def skip_wait_for_default_branch_protection(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
+        the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
+        no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
+        attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
+        """
+        return pulumi.get(self, "skip_wait_for_default_branch_protection")
 
     @property
     @pulumi.getter(name="snippetsAccessLevel")

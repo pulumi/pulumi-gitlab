@@ -69,7 +69,7 @@ export class GroupAccessToken extends pulumi.CustomResource {
     }
 
     /**
-     * The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`.
+     * The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
      */
     public readonly accessLevel!: pulumi.Output<string | undefined>;
     /**
@@ -163,7 +163,7 @@ export class GroupAccessToken extends pulumi.CustomResource {
  */
 export interface GroupAccessTokenState {
     /**
-     * The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`.
+     * The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -211,7 +211,7 @@ export interface GroupAccessTokenState {
  */
 export interface GroupAccessTokenArgs {
     /**
-     * The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`.
+     * The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
      */
     accessLevel?: pulumi.Input<string>;
     /**

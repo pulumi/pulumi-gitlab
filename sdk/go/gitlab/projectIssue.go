@@ -127,7 +127,7 @@ type ProjectIssue struct {
 	// Whether the authenticated user is subscribed to the issue or not.
 	Subscribed pulumi.BoolOutput `pulumi:"subscribed"`
 	// The task completion status. It's always a one element list.
-	TaskCompletionStatus ProjectIssueTaskCompletionStatusOutput `pulumi:"taskCompletionStatus"`
+	TaskCompletionStatuses ProjectIssueTaskCompletionStatusArrayOutput `pulumi:"taskCompletionStatuses"`
 	// The time estimate of the issue.
 	TimeEstimate pulumi.IntOutput `pulumi:"timeEstimate"`
 	// The title of the issue.
@@ -249,7 +249,7 @@ type projectIssueState struct {
 	// Whether the authenticated user is subscribed to the issue or not.
 	Subscribed *bool `pulumi:"subscribed"`
 	// The task completion status. It's always a one element list.
-	TaskCompletionStatus *ProjectIssueTaskCompletionStatus `pulumi:"taskCompletionStatus"`
+	TaskCompletionStatuses []ProjectIssueTaskCompletionStatus `pulumi:"taskCompletionStatuses"`
 	// The time estimate of the issue.
 	TimeEstimate *int `pulumi:"timeEstimate"`
 	// The title of the issue.
@@ -337,7 +337,7 @@ type ProjectIssueState struct {
 	// Whether the authenticated user is subscribed to the issue or not.
 	Subscribed pulumi.BoolPtrInput
 	// The task completion status. It's always a one element list.
-	TaskCompletionStatus ProjectIssueTaskCompletionStatusPtrInput
+	TaskCompletionStatuses ProjectIssueTaskCompletionStatusArrayInput
 	// The time estimate of the issue.
 	TimeEstimate pulumi.IntPtrInput
 	// The title of the issue.
@@ -363,10 +363,6 @@ func (ProjectIssueState) ElementType() reflect.Type {
 type projectIssueArgs struct {
 	// The IDs of the users to assign the issue to.
 	AssigneeIds []int `pulumi:"assigneeIds"`
-	// When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
-	ClosedAt *string `pulumi:"closedAt"`
-	// The ID of the user that closed the issue. Use `gitlab_user` data source to get more information about the user.
-	ClosedByUserId *int `pulumi:"closedByUserId"`
 	// Set an issue to be confidential.
 	Confidential *bool `pulumi:"confidential"`
 	// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires
@@ -386,18 +382,12 @@ type projectIssueArgs struct {
 	DueDate *string `pulumi:"dueDate"`
 	// The ID of the epic issue.
 	EpicIssueId *int `pulumi:"epicIssueId"`
-	// The human-readable time estimate of the issue.
-	HumanTimeEstimate *string `pulumi:"humanTimeEstimate"`
-	// The human-readable total time spent of the issue.
-	HumanTotalTimeSpent *string `pulumi:"humanTotalTimeSpent"`
 	// The internal ID of the project's issue.
 	Iid *int `pulumi:"iid"`
 	// The type of issue. Valid values are: `issue`, `incident`, `test_case`.
 	IssueType *string `pulumi:"issueType"`
 	// The labels of an issue.
 	Labels []string `pulumi:"labels"`
-	// The links of the issue.
-	Links map[string]string `pulumi:"links"`
 	// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
 	// all discussions as resolved. When passing a description or title, these values take precedence over the default values.
 	MergeRequestToResolveDiscussionsOf *int `pulumi:"mergeRequestToResolveDiscussionsOf"`
@@ -406,18 +396,10 @@ type projectIssueArgs struct {
 	MilestoneId *int `pulumi:"milestoneId"`
 	// The name or ID of the project.
 	Project string `pulumi:"project"`
-	// The references of the issue.
-	References map[string]string `pulumi:"references"`
 	// The state of the issue. Valid values are: `opened`, `closed`.
 	State *string `pulumi:"state"`
-	// The task completion status. It's always a one element list.
-	TaskCompletionStatus *ProjectIssueTaskCompletionStatus `pulumi:"taskCompletionStatus"`
-	// The time estimate of the issue.
-	TimeEstimate *int `pulumi:"timeEstimate"`
 	// The title of the issue.
 	Title string `pulumi:"title"`
-	// The total time spent of the issue.
-	TotalTimeSpent *int `pulumi:"totalTimeSpent"`
 	// When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// The weight of the issue. Valid values are greater than or equal to 0.
@@ -428,10 +410,6 @@ type projectIssueArgs struct {
 type ProjectIssueArgs struct {
 	// The IDs of the users to assign the issue to.
 	AssigneeIds pulumi.IntArrayInput
-	// When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
-	ClosedAt pulumi.StringPtrInput
-	// The ID of the user that closed the issue. Use `gitlab_user` data source to get more information about the user.
-	ClosedByUserId pulumi.IntPtrInput
 	// Set an issue to be confidential.
 	Confidential pulumi.BoolPtrInput
 	// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires
@@ -451,18 +429,12 @@ type ProjectIssueArgs struct {
 	DueDate pulumi.StringPtrInput
 	// The ID of the epic issue.
 	EpicIssueId pulumi.IntPtrInput
-	// The human-readable time estimate of the issue.
-	HumanTimeEstimate pulumi.StringPtrInput
-	// The human-readable total time spent of the issue.
-	HumanTotalTimeSpent pulumi.StringPtrInput
 	// The internal ID of the project's issue.
 	Iid pulumi.IntPtrInput
 	// The type of issue. Valid values are: `issue`, `incident`, `test_case`.
 	IssueType pulumi.StringPtrInput
 	// The labels of an issue.
 	Labels pulumi.StringArrayInput
-	// The links of the issue.
-	Links pulumi.StringMapInput
 	// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
 	// all discussions as resolved. When passing a description or title, these values take precedence over the default values.
 	MergeRequestToResolveDiscussionsOf pulumi.IntPtrInput
@@ -471,18 +443,10 @@ type ProjectIssueArgs struct {
 	MilestoneId pulumi.IntPtrInput
 	// The name or ID of the project.
 	Project pulumi.StringInput
-	// The references of the issue.
-	References pulumi.StringMapInput
 	// The state of the issue. Valid values are: `opened`, `closed`.
 	State pulumi.StringPtrInput
-	// The task completion status. It's always a one element list.
-	TaskCompletionStatus ProjectIssueTaskCompletionStatusPtrInput
-	// The time estimate of the issue.
-	TimeEstimate pulumi.IntPtrInput
 	// The title of the issue.
 	Title pulumi.StringInput
-	// The total time spent of the issue.
-	TotalTimeSpent pulumi.IntPtrInput
 	// When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
 	UpdatedAt pulumi.StringPtrInput
 	// The weight of the issue. Valid values are greater than or equal to 0.
@@ -737,8 +701,8 @@ func (o ProjectIssueOutput) Subscribed() pulumi.BoolOutput {
 }
 
 // The task completion status. It's always a one element list.
-func (o ProjectIssueOutput) TaskCompletionStatus() ProjectIssueTaskCompletionStatusOutput {
-	return o.ApplyT(func(v *ProjectIssue) ProjectIssueTaskCompletionStatusOutput { return v.TaskCompletionStatus }).(ProjectIssueTaskCompletionStatusOutput)
+func (o ProjectIssueOutput) TaskCompletionStatuses() ProjectIssueTaskCompletionStatusArrayOutput {
+	return o.ApplyT(func(v *ProjectIssue) ProjectIssueTaskCompletionStatusArrayOutput { return v.TaskCompletionStatuses }).(ProjectIssueTaskCompletionStatusArrayOutput)
 }
 
 // The time estimate of the issue.

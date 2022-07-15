@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.InstanceVariable` resource allows to manage the lifecycle of a CI/CD variable for an instance.
+    /// The `gitlab.InstanceVariable` resource allows to manage the lifecycle of an instance-level CI/CD variable.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_variables.html)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
     /// 
     /// ## Example Usage
     /// 
@@ -55,7 +55,7 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-        /// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+        /// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         /// </summary>
         [Output("masked")]
         public Output<bool?> Masked { get; private set; } = null!;
@@ -74,7 +74,7 @@ namespace Pulumi.GitLab
         public Output<string> Value { get; private set; } = null!;
 
         /// <summary>
-        /// The type of a variable. Available types are: env_var (default) and file.
+        /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         /// </summary>
         [Output("variableType")]
         public Output<string?> VariableType { get; private set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-        /// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+        /// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         /// </summary>
         [Input("masked")]
         public Input<bool>? Masked { get; set; }
@@ -152,7 +152,7 @@ namespace Pulumi.GitLab
         public Input<string> Value { get; set; } = null!;
 
         /// <summary>
-        /// The type of a variable. Available types are: env_var (default) and file.
+        /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         /// </summary>
         [Input("variableType")]
         public Input<string>? VariableType { get; set; }
@@ -172,7 +172,7 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-        /// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variable-requirements). Defaults to `false`.
+        /// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         /// </summary>
         [Input("masked")]
         public Input<bool>? Masked { get; set; }
@@ -191,7 +191,7 @@ namespace Pulumi.GitLab
         public Input<string>? Value { get; set; }
 
         /// <summary>
-        /// The type of a variable. Available types are: env_var (default) and file.
+        /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         /// </summary>
         [Input("variableType")]
         public Input<string>? VariableType { get; set; }

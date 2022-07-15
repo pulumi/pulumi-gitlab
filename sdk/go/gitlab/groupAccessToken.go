@@ -65,7 +65,7 @@ import (
 type GroupAccessToken struct {
 	pulumi.CustomResourceState
 
-	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`.
+	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel pulumi.StringPtrOutput `pulumi:"accessLevel"`
 	// True if the token is active.
 	Active pulumi.BoolOutput `pulumi:"active"`
@@ -124,7 +124,7 @@ func GetGroupAccessToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupAccessToken resources.
 type groupAccessTokenState struct {
-	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`.
+	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// True if the token is active.
 	Active *bool `pulumi:"active"`
@@ -149,7 +149,7 @@ type groupAccessTokenState struct {
 }
 
 type GroupAccessTokenState struct {
-	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`.
+	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel pulumi.StringPtrInput
 	// True if the token is active.
 	Active pulumi.BoolPtrInput
@@ -178,7 +178,7 @@ func (GroupAccessTokenState) ElementType() reflect.Type {
 }
 
 type groupAccessTokenArgs struct {
-	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`.
+	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
 	ExpiresAt *string `pulumi:"expiresAt"`
@@ -193,7 +193,7 @@ type groupAccessTokenArgs struct {
 
 // The set of arguments for constructing a GroupAccessToken resource.
 type GroupAccessTokenArgs struct {
-	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`.
+	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel pulumi.StringPtrInput
 	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
 	ExpiresAt pulumi.StringPtrInput
@@ -293,7 +293,7 @@ func (o GroupAccessTokenOutput) ToGroupAccessTokenOutputWithContext(ctx context.
 	return o
 }
 
-// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`.
+// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 func (o GroupAccessTokenOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringPtrOutput { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }

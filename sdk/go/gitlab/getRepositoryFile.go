@@ -56,13 +56,14 @@ type LookupRepositoryFileArgs struct {
 
 // A collection of values returned by getRepositoryFile.
 type LookupRepositoryFileResult struct {
-	BlobId        string `pulumi:"blobId"`
-	CommitId      string `pulumi:"commitId"`
-	Content       string `pulumi:"content"`
-	ContentSha256 string `pulumi:"contentSha256"`
-	Encoding      string `pulumi:"encoding"`
-	FileName      string `pulumi:"fileName"`
-	FilePath      string `pulumi:"filePath"`
+	BlobId          string `pulumi:"blobId"`
+	CommitId        string `pulumi:"commitId"`
+	Content         string `pulumi:"content"`
+	ContentSha256   string `pulumi:"contentSha256"`
+	Encoding        string `pulumi:"encoding"`
+	ExecuteFilemode bool   `pulumi:"executeFilemode"`
+	FileName        string `pulumi:"fileName"`
+	FilePath        string `pulumi:"filePath"`
 	// The provider-assigned unique ID for this managed resource.
 	Id           string `pulumi:"id"`
 	LastCommitId string `pulumi:"lastCommitId"`
@@ -128,6 +129,10 @@ func (o LookupRepositoryFileResultOutput) ContentSha256() pulumi.StringOutput {
 
 func (o LookupRepositoryFileResultOutput) Encoding() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.Encoding }).(pulumi.StringOutput)
+}
+
+func (o LookupRepositoryFileResultOutput) ExecuteFilemode() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRepositoryFileResult) bool { return v.ExecuteFilemode }).(pulumi.BoolOutput)
 }
 
 func (o LookupRepositoryFileResultOutput) FileName() pulumi.StringOutput {

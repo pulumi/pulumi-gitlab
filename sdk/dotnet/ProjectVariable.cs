@@ -50,7 +50,8 @@ namespace Pulumi.GitLab
     public partial class ProjectVariable : Pulumi.CustomResource
     {
         /// <summary>
-        /// The environment_scope of the variable. Defaults to `*`.
+        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
+        /// values other than `*` will cause inconsistent plans.
         /// </summary>
         [Output("environmentScope")]
         public Output<string?> EnvironmentScope { get; private set; } = null!;
@@ -62,7 +63,8 @@ namespace Pulumi.GitLab
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
+        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+        /// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         /// </summary>
         [Output("masked")]
         public Output<bool?> Masked { get; private set; } = null!;
@@ -87,7 +89,7 @@ namespace Pulumi.GitLab
         public Output<string> Value { get; private set; } = null!;
 
         /// <summary>
-        /// The type of a variable. Available types are: env_var (default) and file.
+        /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         /// </summary>
         [Output("variableType")]
         public Output<string?> VariableType { get; private set; } = null!;
@@ -139,7 +141,8 @@ namespace Pulumi.GitLab
     public sealed class ProjectVariableArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The environment_scope of the variable. Defaults to `*`.
+        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
+        /// values other than `*` will cause inconsistent plans.
         /// </summary>
         [Input("environmentScope")]
         public Input<string>? EnvironmentScope { get; set; }
@@ -151,7 +154,8 @@ namespace Pulumi.GitLab
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
+        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+        /// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         /// </summary>
         [Input("masked")]
         public Input<bool>? Masked { get; set; }
@@ -176,7 +180,7 @@ namespace Pulumi.GitLab
         public Input<string> Value { get; set; } = null!;
 
         /// <summary>
-        /// The type of a variable. Available types are: env_var (default) and file.
+        /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         /// </summary>
         [Input("variableType")]
         public Input<string>? VariableType { get; set; }
@@ -189,7 +193,8 @@ namespace Pulumi.GitLab
     public sealed class ProjectVariableState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The environment_scope of the variable. Defaults to `*`.
+        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
+        /// values other than `*` will cause inconsistent plans.
         /// </summary>
         [Input("environmentScope")]
         public Input<string>? EnvironmentScope { get; set; }
@@ -201,7 +206,8 @@ namespace Pulumi.GitLab
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// If set to `true`, the variable will be masked if it would have been written to the logs. Defaults to `false`.
+        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
+        /// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         /// </summary>
         [Input("masked")]
         public Input<bool>? Masked { get; set; }
@@ -226,7 +232,7 @@ namespace Pulumi.GitLab
         public Input<string>? Value { get; set; }
 
         /// <summary>
-        /// The type of a variable. Available types are: env_var (default) and file.
+        /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         /// </summary>
         [Input("variableType")]
         public Input<string>? VariableType { get; set; }

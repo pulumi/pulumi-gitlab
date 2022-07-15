@@ -51,8 +51,7 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-        /// values other than `*` will cause inconsistent plans. See
-        /// https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+        /// values other than `*` will cause inconsistent plans.
         /// </summary>
         [Output("environmentScope")]
         public Output<string?> EnvironmentScope { get; private set; } = null!;
@@ -90,7 +89,7 @@ namespace Pulumi.GitLab
         public Output<string> Value { get; private set; } = null!;
 
         /// <summary>
-        /// The type of a variable. Available types are: env_var (default) and file.
+        /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         /// </summary>
         [Output("variableType")]
         public Output<string?> VariableType { get; private set; } = null!;
@@ -143,8 +142,7 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-        /// values other than `*` will cause inconsistent plans. See
-        /// https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+        /// values other than `*` will cause inconsistent plans.
         /// </summary>
         [Input("environmentScope")]
         public Input<string>? EnvironmentScope { get; set; }
@@ -182,7 +180,7 @@ namespace Pulumi.GitLab
         public Input<string> Value { get; set; } = null!;
 
         /// <summary>
-        /// The type of a variable. Available types are: env_var (default) and file.
+        /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         /// </summary>
         [Input("variableType")]
         public Input<string>? VariableType { get; set; }
@@ -196,8 +194,7 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-        /// values other than `*` will cause inconsistent plans. See
-        /// https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+        /// values other than `*` will cause inconsistent plans.
         /// </summary>
         [Input("environmentScope")]
         public Input<string>? EnvironmentScope { get; set; }
@@ -235,7 +232,7 @@ namespace Pulumi.GitLab
         public Input<string>? Value { get; set; }
 
         /// <summary>
-        /// The type of a variable. Available types are: env_var (default) and file.
+        /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         /// </summary>
         [Input("variableType")]
         public Input<string>? VariableType { get; set; }

@@ -69,11 +69,11 @@ export class GroupShareGroup extends pulumi.CustomResource {
      */
     public readonly groupAccess!: pulumi.Output<string>;
     /**
-     * The id of the main group.
+     * The id of the main group to be shared.
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
-     * The id of an additional group which will be shared with the main group.
+     * The id of the additional group with which the main group will be shared.
      */
     public readonly shareGroupId!: pulumi.Output<number>;
 
@@ -129,11 +129,11 @@ export interface GroupShareGroupState {
      */
     groupAccess?: pulumi.Input<string>;
     /**
-     * The id of the main group.
+     * The id of the main group to be shared.
      */
     groupId?: pulumi.Input<string>;
     /**
-     * The id of an additional group which will be shared with the main group.
+     * The id of the additional group with which the main group will be shared.
      */
     shareGroupId?: pulumi.Input<number>;
 }
@@ -152,11 +152,11 @@ export interface GroupShareGroupArgs {
      */
     groupAccess: pulumi.Input<string>;
     /**
-     * The id of the main group.
+     * The id of the main group to be shared.
      */
     groupId: pulumi.Input<string>;
     /**
-     * The id of an additional group which will be shared with the main group.
+     * The id of the additional group with which the main group will be shared.
      */
     shareGroupId: pulumi.Input<number>;
 }

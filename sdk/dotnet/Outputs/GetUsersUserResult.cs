@@ -29,6 +29,7 @@ namespace Pulumi.GitLab.Outputs
         public readonly string Linkedin;
         public readonly string Location;
         public readonly string Name;
+        public readonly int NamespaceId;
         public readonly string Organization;
         public readonly int ProjectsLimit;
         public readonly string Provider;
@@ -74,6 +75,8 @@ namespace Pulumi.GitLab.Outputs
 
             string name,
 
+            int namespaceId,
+
             string organization,
 
             int projectsLimit,
@@ -110,6 +113,7 @@ namespace Pulumi.GitLab.Outputs
             Linkedin = linkedin;
             Location = location;
             Name = name;
+            NamespaceId = namespaceId;
             Organization = organization;
             ProjectsLimit = projectsLimit;
             Provider = provider;

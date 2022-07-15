@@ -24,46 +24,71 @@ namespace Pulumi.GitLab
     /// {
     ///     public MyStack()
     ///     {
-    ///         var thisGroup = new GitLab.Group("thisGroup", new GitLab.GroupArgs
+    ///         var @this = new GitLab.ProjectEnvironment("this", new GitLab.ProjectEnvironmentArgs
     ///         {
-    ///             Path = "example",
-    ///             Description = "An example group",
-    ///         });
-    ///         var thisProject = new GitLab.Project("thisProject", new GitLab.ProjectArgs
-    ///         {
-    ///             NamespaceId = thisGroup.Id,
-    ///             InitializeWithReadme = true,
-    ///         });
-    ///         var thisProjectEnvironment = new GitLab.ProjectEnvironment("thisProjectEnvironment", new GitLab.ProjectEnvironmentArgs
-    ///         {
-    ///             Project = thisProject.Id,
+    ///             Project = "123",
     ///             ExternalUrl = "www.example.com",
     ///         });
-    ///         var thisProjectProtectedEnvironment = new GitLab.ProjectProtectedEnvironment("thisProjectProtectedEnvironment", new GitLab.ProjectProtectedEnvironmentArgs
+    ///         // Example with access level
+    ///         var exampleWithAccessLevel = new GitLab.ProjectProtectedEnvironment("exampleWithAccessLevel", new GitLab.ProjectProtectedEnvironmentArgs
     ///         {
-    ///             Project = thisProject.Id,
-    ///             Environment = thisProjectEnvironment.Name,
-    ///             DeployAccessLevels = new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelsArgs
+    ///             Project = @this.Project,
+    ///             RequiredApprovalCount = 1,
+    ///             Environment = @this.Name,
+    ///             DeployAccessLevels = 
     ///             {
-    ///                 AccessLevel = "developer",
+    ///                 new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs
+    ///                 {
+    ///                     AccessLevel = "developer",
+    ///                 },
     ///             },
     ///         });
-    ///         var thisIndex_projectProtectedEnvironmentProjectProtectedEnvironment = new GitLab.ProjectProtectedEnvironment("thisIndex/projectProtectedEnvironmentProjectProtectedEnvironment", new GitLab.ProjectProtectedEnvironmentArgs
+    ///         // Example with group
+    ///         var exampleWithGroup = new GitLab.ProjectProtectedEnvironment("exampleWithGroup", new GitLab.ProjectProtectedEnvironmentArgs
     ///         {
-    ///             Project = thisProject.Id,
-    ///             Environment = thisProjectEnvironment.Name,
-    ///             DeployAccessLevels = new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelsArgs
+    ///             Project = @this.Project,
+    ///             Environment = @this.Name,
+    ///             DeployAccessLevels = 
     ///             {
-    ///                 GroupId = gitlab_group.Test.Id,
+    ///                 new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs
+    ///                 {
+    ///                     GroupId = 456,
+    ///                 },
     ///             },
     ///         });
-    ///         var thisGitlabIndex_projectProtectedEnvironmentProjectProtectedEnvironment = new GitLab.ProjectProtectedEnvironment("thisGitlabIndex/projectProtectedEnvironmentProjectProtectedEnvironment", new GitLab.ProjectProtectedEnvironmentArgs
+    ///         // Example with user
+    ///         var exampleWithUser = new GitLab.ProjectProtectedEnvironment("exampleWithUser", new GitLab.ProjectProtectedEnvironmentArgs
     ///         {
-    ///             Project = thisProject.Id,
-    ///             Environment = thisProjectEnvironment.Name,
-    ///             DeployAccessLevels = new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelsArgs
+    ///             Project = @this.Project,
+    ///             Environment = @this.Name,
+    ///             DeployAccessLevels = 
     ///             {
-    ///                 UserId = gitlab_user.Test.Id,
+    ///                 new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs
+    ///                 {
+    ///                     UserId = 789,
+    ///                 },
+    ///             },
+    ///         });
+    ///         // Example with multiple access levels
+    ///         var exampleWithMultiple = new GitLab.ProjectProtectedEnvironment("exampleWithMultiple", new GitLab.ProjectProtectedEnvironmentArgs
+    ///         {
+    ///             Project = @this.Project,
+    ///             RequiredApprovalCount = 2,
+    ///             Environment = @this.Name,
+    ///             DeployAccessLevels = 
+    ///             {
+    ///                 new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs
+    ///                 {
+    ///                     AccessLevel = "developer",
+    ///                 },
+    ///                 new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs
+    ///                 {
+    ///                     GroupId = 456,
+    ///                 },
+    ///                 new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs
+    ///                 {
+    ///                     UserId = 789,
+    ///                 },
     ///             },
     ///         });
     ///     }
@@ -86,7 +111,7 @@ namespace Pulumi.GitLab
         /// Array of access levels allowed to deploy, with each described by a hash.
         /// </summary>
         [Output("deployAccessLevels")]
-        public Output<Outputs.ProjectProtectedEnvironmentDeployAccessLevels> DeployAccessLevels { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ProjectProtectedEnvironmentDeployAccessLevel>> DeployAccessLevels { get; private set; } = null!;
 
         /// <summary>
         /// The name of the environment.
@@ -99,6 +124,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of approvals required to deploy to this environment.
+        /// </summary>
+        [Output("requiredApprovalCount")]
+        public Output<int?> RequiredApprovalCount { get; private set; } = null!;
 
 
         /// <summary>
@@ -146,11 +177,17 @@ namespace Pulumi.GitLab
 
     public sealed class ProjectProtectedEnvironmentArgs : Pulumi.ResourceArgs
     {
+        [Input("deployAccessLevels", required: true)]
+        private InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs>? _deployAccessLevels;
+
         /// <summary>
         /// Array of access levels allowed to deploy, with each described by a hash.
         /// </summary>
-        [Input("deployAccessLevels", required: true)]
-        public Input<Inputs.ProjectProtectedEnvironmentDeployAccessLevelsArgs> DeployAccessLevels { get; set; } = null!;
+        public InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs> DeployAccessLevels
+        {
+            get => _deployAccessLevels ?? (_deployAccessLevels = new InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs>());
+            set => _deployAccessLevels = value;
+        }
 
         /// <summary>
         /// The name of the environment.
@@ -164,6 +201,12 @@ namespace Pulumi.GitLab
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// The number of approvals required to deploy to this environment.
+        /// </summary>
+        [Input("requiredApprovalCount")]
+        public Input<int>? RequiredApprovalCount { get; set; }
+
         public ProjectProtectedEnvironmentArgs()
         {
         }
@@ -171,11 +214,17 @@ namespace Pulumi.GitLab
 
     public sealed class ProjectProtectedEnvironmentState : Pulumi.ResourceArgs
     {
+        [Input("deployAccessLevels")]
+        private InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelGetArgs>? _deployAccessLevels;
+
         /// <summary>
         /// Array of access levels allowed to deploy, with each described by a hash.
         /// </summary>
-        [Input("deployAccessLevels")]
-        public Input<Inputs.ProjectProtectedEnvironmentDeployAccessLevelsGetArgs>? DeployAccessLevels { get; set; }
+        public InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelGetArgs> DeployAccessLevels
+        {
+            get => _deployAccessLevels ?? (_deployAccessLevels = new InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelGetArgs>());
+            set => _deployAccessLevels = value;
+        }
 
         /// <summary>
         /// The name of the environment.
@@ -188,6 +237,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The number of approvals required to deploy to this environment.
+        /// </summary>
+        [Input("requiredApprovalCount")]
+        public Input<int>? RequiredApprovalCount { get; set; }
 
         public ProjectProtectedEnvironmentState()
         {

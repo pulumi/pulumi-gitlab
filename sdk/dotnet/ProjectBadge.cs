@@ -62,6 +62,12 @@ namespace Pulumi.GitLab
         public Output<string> LinkUrl { get; private set; } = null!;
 
         /// <summary>
+        /// The name of the badge.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
         /// The id of the project to add the badge to.
         /// </summary>
         [Output("project")]
@@ -138,6 +144,12 @@ namespace Pulumi.GitLab
         public Input<string> LinkUrl { get; set; } = null!;
 
         /// <summary>
+        /// The name of the badge.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
         /// The id of the project to add the badge to.
         /// </summary>
         [Input("project", required: true)]
@@ -161,6 +173,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("linkUrl")]
         public Input<string>? LinkUrl { get; set; }
+
+        /// <summary>
+        /// The name of the badge.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The id of the project to add the badge to.

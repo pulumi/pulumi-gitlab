@@ -63,8 +63,7 @@ export class GroupVariable extends pulumi.CustomResource {
 
     /**
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-     * values other than `*` will cause inconsistent plans. See
-     * https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+     * values other than `*` will cause inconsistent plans.
      */
     public readonly environmentScope!: pulumi.Output<string | undefined>;
     /**
@@ -90,7 +89,7 @@ export class GroupVariable extends pulumi.CustomResource {
      */
     public readonly value!: pulumi.Output<string>;
     /**
-     * The type of a variable. Available types are: env_var (default) and file.
+     * The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
      */
     public readonly variableType!: pulumi.Output<string | undefined>;
 
@@ -144,8 +143,7 @@ export class GroupVariable extends pulumi.CustomResource {
 export interface GroupVariableState {
     /**
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-     * values other than `*` will cause inconsistent plans. See
-     * https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+     * values other than `*` will cause inconsistent plans.
      */
     environmentScope?: pulumi.Input<string>;
     /**
@@ -171,7 +169,7 @@ export interface GroupVariableState {
      */
     value?: pulumi.Input<string>;
     /**
-     * The type of a variable. Available types are: env_var (default) and file.
+     * The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
      */
     variableType?: pulumi.Input<string>;
 }
@@ -182,8 +180,7 @@ export interface GroupVariableState {
 export interface GroupVariableArgs {
     /**
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-     * values other than `*` will cause inconsistent plans. See
-     * https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-group
+     * values other than `*` will cause inconsistent plans.
      */
     environmentScope?: pulumi.Input<string>;
     /**
@@ -209,7 +206,7 @@ export interface GroupVariableArgs {
      */
     value: pulumi.Input<string>;
     /**
-     * The type of a variable. Available types are: env_var (default) and file.
+     * The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
      */
     variableType?: pulumi.Input<string>;
 }

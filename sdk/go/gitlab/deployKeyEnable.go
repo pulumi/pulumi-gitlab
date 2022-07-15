@@ -57,16 +57,20 @@ import (
 //
 // ## Import
 //
-// # GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+// # GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. # `project_id` can be whatever the [get single project api][get_single_project] takes for # its `:id` value, so for example
 //
 // ```sh
 //  $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
 // ```
+//
+// ```sh
+//  $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example richardc/example:67890
+// ```
 type DeployKeyEnable struct {
 	pulumi.CustomResourceState
 
-	// Can deploy key push to the project’s repository.
-	CanPush pulumi.BoolOutput `pulumi:"canPush"`
+	// Can deploy key push to the project's repository.
+	CanPush pulumi.BoolPtrOutput `pulumi:"canPush"`
 	// Deploy key.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The Gitlab key id for the pre-existing deploy key
@@ -112,7 +116,7 @@ func GetDeployKeyEnable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DeployKeyEnable resources.
 type deployKeyEnableState struct {
-	// Can deploy key push to the project’s repository.
+	// Can deploy key push to the project's repository.
 	CanPush *bool `pulumi:"canPush"`
 	// Deploy key.
 	Key *string `pulumi:"key"`
@@ -125,7 +129,7 @@ type deployKeyEnableState struct {
 }
 
 type DeployKeyEnableState struct {
-	// Can deploy key push to the project’s repository.
+	// Can deploy key push to the project's repository.
 	CanPush pulumi.BoolPtrInput
 	// Deploy key.
 	Key pulumi.StringPtrInput
@@ -142,7 +146,7 @@ func (DeployKeyEnableState) ElementType() reflect.Type {
 }
 
 type deployKeyEnableArgs struct {
-	// Can deploy key push to the project’s repository.
+	// Can deploy key push to the project's repository.
 	CanPush *bool `pulumi:"canPush"`
 	// Deploy key.
 	Key *string `pulumi:"key"`
@@ -156,7 +160,7 @@ type deployKeyEnableArgs struct {
 
 // The set of arguments for constructing a DeployKeyEnable resource.
 type DeployKeyEnableArgs struct {
-	// Can deploy key push to the project’s repository.
+	// Can deploy key push to the project's repository.
 	CanPush pulumi.BoolPtrInput
 	// Deploy key.
 	Key pulumi.StringPtrInput
@@ -255,9 +259,9 @@ func (o DeployKeyEnableOutput) ToDeployKeyEnableOutputWithContext(ctx context.Co
 	return o
 }
 
-// Can deploy key push to the project’s repository.
-func (o DeployKeyEnableOutput) CanPush() pulumi.BoolOutput {
-	return o.ApplyT(func(v *DeployKeyEnable) pulumi.BoolOutput { return v.CanPush }).(pulumi.BoolOutput)
+// Can deploy key push to the project's repository.
+func (o DeployKeyEnableOutput) CanPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeployKeyEnable) pulumi.BoolPtrOutput { return v.CanPush }).(pulumi.BoolPtrOutput)
 }
 
 // Deploy key.
