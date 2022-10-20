@@ -21,30 +21,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewPipelineTrigger(ctx, "example", &gitlab.PipelineTriggerArgs{
-// 			Description: pulumi.String("Used to trigger builds"),
-// 			Project:     pulumi.String("12345"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewPipelineTrigger(ctx, "example", &gitlab.PipelineTriggerArgs{
+//				Description: pulumi.String("Used to trigger builds"),
+//				Project:     pulumi.String("12345"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
+// GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/pipelineTrigger:PipelineTrigger test 1:3
+//
+//	$ pulumi import gitlab:index/pipelineTrigger:PipelineTrigger test 1:3
+//
 // ```
 type PipelineTrigger struct {
 	pulumi.CustomResourceState
@@ -70,6 +75,10 @@ func NewPipelineTrigger(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
 	var resource PipelineTrigger
 	err := ctx.RegisterResource("gitlab:index/pipelineTrigger:PipelineTrigger", name, args, &resource, opts...)
 	if err != nil {
@@ -154,7 +163,7 @@ func (i *PipelineTrigger) ToPipelineTriggerOutputWithContext(ctx context.Context
 // PipelineTriggerArrayInput is an input type that accepts PipelineTriggerArray and PipelineTriggerArrayOutput values.
 // You can construct a concrete instance of `PipelineTriggerArrayInput` via:
 //
-//          PipelineTriggerArray{ PipelineTriggerArgs{...} }
+//	PipelineTriggerArray{ PipelineTriggerArgs{...} }
 type PipelineTriggerArrayInput interface {
 	pulumi.Input
 
@@ -179,7 +188,7 @@ func (i PipelineTriggerArray) ToPipelineTriggerArrayOutputWithContext(ctx contex
 // PipelineTriggerMapInput is an input type that accepts PipelineTriggerMap and PipelineTriggerMapOutput values.
 // You can construct a concrete instance of `PipelineTriggerMapInput` via:
 //
-//          PipelineTriggerMap{ "key": PipelineTriggerArgs{...} }
+//	PipelineTriggerMap{ "key": PipelineTriggerArgs{...} }
 type PipelineTriggerMapInput interface {
 	pulumi.Input
 

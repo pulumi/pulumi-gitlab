@@ -15,43 +15,50 @@ namespace Pulumi.GitLab
         /// The `gitlab.getCurrentUser` data source allows details of the current user (determined by `token` provider attribute) to be retrieved.
         /// 
         /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#querycurrentuser)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(GitLab.GetCurrentUser.InvokeAsync());
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCurrentUserResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCurrentUserResult>("gitlab:index/getCurrentUser:getCurrentUser", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCurrentUserResult>("gitlab:index/getCurrentUser:getCurrentUser", InvokeArgs.Empty, options.WithDefaults());
     }
 
 
     [OutputType]
     public sealed class GetCurrentUserResult
     {
+        /// <summary>
+        /// Indicates if the user is a bot.
+        /// </summary>
         public readonly bool Bot;
+        /// <summary>
+        /// Global ID of the user. This is in the form of a GraphQL globally unique ID.
+        /// </summary>
         public readonly string GlobalId;
+        /// <summary>
+        /// Personal namespace of the user. This is in the form of a GraphQL globally unique ID.
+        /// </summary>
         public readonly string GlobalNamespaceId;
+        /// <summary>
+        /// Group count for the user.
+        /// </summary>
         public readonly int GroupCount;
+        /// <summary>
+        /// ID of the user.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Human-readable name of the user. Returns **** if the user is a project bot and the requester does not have permission to view the project.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Personal namespace of the user.
+        /// </summary>
         public readonly string NamespaceId;
+        /// <summary>
+        /// User’s public email.
+        /// </summary>
         public readonly string PublicEmail;
+        /// <summary>
+        /// Username of the user. Unique within this instance of GitLab.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

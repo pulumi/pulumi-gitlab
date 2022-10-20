@@ -23,44 +23,49 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		examplePersonalAccessToken, err := gitlab.NewPersonalAccessToken(ctx, "examplePersonalAccessToken", &gitlab.PersonalAccessTokenArgs{
-// 			UserId:    pulumi.Int(25),
-// 			ExpiresAt: pulumi.String("2020-03-14"),
-// 			Scopes: pulumi.StringArray{
-// 				pulumi.String("api"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewProjectVariable(ctx, "exampleProjectVariable", &gitlab.ProjectVariableArgs{
-// 			Project: pulumi.Any(gitlab_project.Example.Id),
-// 			Key:     pulumi.String("pat"),
-// 			Value:   examplePersonalAccessToken.Token,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			examplePersonalAccessToken, err := gitlab.NewPersonalAccessToken(ctx, "examplePersonalAccessToken", &gitlab.PersonalAccessTokenArgs{
+//				UserId:    pulumi.Int(25),
+//				ExpiresAt: pulumi.String("2020-03-14"),
+//				Scopes: pulumi.StringArray{
+//					pulumi.String("api"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectVariable(ctx, "exampleProjectVariable", &gitlab.ProjectVariableArgs{
+//				Project: pulumi.Any(gitlab_project.Example.Id),
+//				Key:     pulumi.String("pat"),
+//				Value:   examplePersonalAccessToken.Token,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # A GitLab Personal Access Token can be imported using a key composed of `<user-id>:<token-id>`, e.g.
+// A GitLab Personal Access Token can be imported using a key composed of `<user-id>:<token-id>`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/personalAccessToken:PersonalAccessToken example "12345:1"
+//
+//	$ pulumi import gitlab:index/personalAccessToken:PersonalAccessToken example "12345:1"
+//
 // ```
 //
-// # NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+//	NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 type PersonalAccessToken struct {
 	pulumi.CustomResourceState
 
@@ -74,12 +79,9 @@ type PersonalAccessToken struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// True if the token is revoked.
 	Revoked pulumi.BoolOutput `pulumi:"revoked"`
-	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this
-	// token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`,
-	// `write_registry`, `sudo`.
+	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
-	// The personal access token. This is only populated when creating a new personal access token. This attribute is not
-	// available for imported resources.
+	// The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
 	Token pulumi.StringOutput `pulumi:"token"`
 	// The id of the user.
 	UserId pulumi.IntOutput `pulumi:"userId"`
@@ -98,6 +100,10 @@ func NewPersonalAccessToken(ctx *pulumi.Context,
 	if args.UserId == nil {
 		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
 	var resource PersonalAccessToken
 	err := ctx.RegisterResource("gitlab:index/personalAccessToken:PersonalAccessToken", name, args, &resource, opts...)
 	if err != nil {
@@ -130,12 +136,9 @@ type personalAccessTokenState struct {
 	Name *string `pulumi:"name"`
 	// True if the token is revoked.
 	Revoked *bool `pulumi:"revoked"`
-	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this
-	// token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`,
-	// `write_registry`, `sudo`.
+	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`.
 	Scopes []string `pulumi:"scopes"`
-	// The personal access token. This is only populated when creating a new personal access token. This attribute is not
-	// available for imported resources.
+	// The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
 	Token *string `pulumi:"token"`
 	// The id of the user.
 	UserId *int `pulumi:"userId"`
@@ -152,12 +155,9 @@ type PersonalAccessTokenState struct {
 	Name pulumi.StringPtrInput
 	// True if the token is revoked.
 	Revoked pulumi.BoolPtrInput
-	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this
-	// token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`,
-	// `write_registry`, `sudo`.
+	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`.
 	Scopes pulumi.StringArrayInput
-	// The personal access token. This is only populated when creating a new personal access token. This attribute is not
-	// available for imported resources.
+	// The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
 	Token pulumi.StringPtrInput
 	// The id of the user.
 	UserId pulumi.IntPtrInput
@@ -172,9 +172,7 @@ type personalAccessTokenArgs struct {
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The name of the personal access token.
 	Name *string `pulumi:"name"`
-	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this
-	// token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`,
-	// `write_registry`, `sudo`.
+	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`.
 	Scopes []string `pulumi:"scopes"`
 	// The id of the user.
 	UserId int `pulumi:"userId"`
@@ -186,9 +184,7 @@ type PersonalAccessTokenArgs struct {
 	ExpiresAt pulumi.StringPtrInput
 	// The name of the personal access token.
 	Name pulumi.StringPtrInput
-	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this
-	// token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`,
-	// `write_registry`, `sudo`.
+	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`.
 	Scopes pulumi.StringArrayInput
 	// The id of the user.
 	UserId pulumi.IntInput
@@ -220,7 +216,7 @@ func (i *PersonalAccessToken) ToPersonalAccessTokenOutputWithContext(ctx context
 // PersonalAccessTokenArrayInput is an input type that accepts PersonalAccessTokenArray and PersonalAccessTokenArrayOutput values.
 // You can construct a concrete instance of `PersonalAccessTokenArrayInput` via:
 //
-//          PersonalAccessTokenArray{ PersonalAccessTokenArgs{...} }
+//	PersonalAccessTokenArray{ PersonalAccessTokenArgs{...} }
 type PersonalAccessTokenArrayInput interface {
 	pulumi.Input
 
@@ -245,7 +241,7 @@ func (i PersonalAccessTokenArray) ToPersonalAccessTokenArrayOutputWithContext(ct
 // PersonalAccessTokenMapInput is an input type that accepts PersonalAccessTokenMap and PersonalAccessTokenMapOutput values.
 // You can construct a concrete instance of `PersonalAccessTokenMapInput` via:
 //
-//          PersonalAccessTokenMap{ "key": PersonalAccessTokenArgs{...} }
+//	PersonalAccessTokenMap{ "key": PersonalAccessTokenArgs{...} }
 type PersonalAccessTokenMapInput interface {
 	pulumi.Input
 
@@ -306,15 +302,12 @@ func (o PersonalAccessTokenOutput) Revoked() pulumi.BoolOutput {
 	return o.ApplyT(func(v *PersonalAccessToken) pulumi.BoolOutput { return v.Revoked }).(pulumi.BoolOutput)
 }
 
-// The scope for the personal access token. It determines the actions which can be performed when authenticating with this
-// token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`,
-// `write_registry`, `sudo`.
+// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`.
 func (o PersonalAccessTokenOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PersonalAccessToken) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
-// The personal access token. This is only populated when creating a new personal access token. This attribute is not
-// available for imported resources.
+// The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
 func (o PersonalAccessTokenOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v *PersonalAccessToken) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
 }

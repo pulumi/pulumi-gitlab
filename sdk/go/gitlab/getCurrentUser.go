@@ -10,27 +10,6 @@ import (
 // The `getCurrentUser` data source allows details of the current user (determined by `token` provider attribute) to be retrieved.
 //
 // **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/index.html#querycurrentuser)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.GetCurrentUser(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func GetCurrentUser(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCurrentUserResult, error) {
 	var rv GetCurrentUserResult
 	err := ctx.Invoke("gitlab:index/getCurrentUser:getCurrentUser", nil, &rv, opts...)
@@ -42,13 +21,22 @@ func GetCurrentUser(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCurre
 
 // A collection of values returned by getCurrentUser.
 type GetCurrentUserResult struct {
-	Bot               bool   `pulumi:"bot"`
-	GlobalId          string `pulumi:"globalId"`
+	// Indicates if the user is a bot.
+	Bot bool `pulumi:"bot"`
+	// Global ID of the user. This is in the form of a GraphQL globally unique ID.
+	GlobalId string `pulumi:"globalId"`
+	// Personal namespace of the user. This is in the form of a GraphQL globally unique ID.
 	GlobalNamespaceId string `pulumi:"globalNamespaceId"`
-	GroupCount        int    `pulumi:"groupCount"`
-	Id                string `pulumi:"id"`
-	Name              string `pulumi:"name"`
-	NamespaceId       string `pulumi:"namespaceId"`
-	PublicEmail       string `pulumi:"publicEmail"`
-	Username          string `pulumi:"username"`
+	// Group count for the user.
+	GroupCount int `pulumi:"groupCount"`
+	// ID of the user.
+	Id string `pulumi:"id"`
+	// Human-readable name of the user. Returns **** if the user is a project bot and the requester does not have permission to view the project.
+	Name string `pulumi:"name"`
+	// Personal namespace of the user.
+	NamespaceId string `pulumi:"namespaceId"`
+	// User’s public email.
+	PublicEmail string `pulumi:"publicEmail"`
+	// Username of the user. Unique within this instance of GitLab.
+	Username string `pulumi:"username"`
 }

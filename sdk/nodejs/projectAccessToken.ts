@@ -30,13 +30,13 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # A GitLab Project Access Token can be imported using a key composed of `<project-id>:<token-id>`, e.g.
+ * A GitLab Project Access Token can be imported using a key composed of `<project-id>:<token-id>`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/projectAccessToken:ProjectAccessToken example "12345:1"
  * ```
  *
- * # NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+ *  NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  */
 export class ProjectAccessToken extends pulumi.CustomResource {
     /**
@@ -67,8 +67,7 @@ export class ProjectAccessToken extends pulumi.CustomResource {
     }
 
     /**
-     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-     * `maintainer`, `owner`, `master`. Default is `maintainer`.
+     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
      */
     public readonly accessLevel!: pulumi.Output<string | undefined>;
     /**
@@ -96,7 +95,7 @@ export class ProjectAccessToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly revoked!: pulumi.Output<boolean>;
     /**
-     * Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+     * Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
@@ -104,7 +103,7 @@ export class ProjectAccessToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly token!: pulumi.Output<string>;
     /**
-     * The user_id associated to the token.
+     * The userId associated to the token.
      */
     public /*out*/ readonly userId!: pulumi.Output<number>;
 
@@ -151,6 +150,8 @@ export class ProjectAccessToken extends pulumi.CustomResource {
             resourceInputs["userId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ProjectAccessToken.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -160,8 +161,7 @@ export class ProjectAccessToken extends pulumi.CustomResource {
  */
 export interface ProjectAccessTokenState {
     /**
-     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-     * `maintainer`, `owner`, `master`. Default is `maintainer`.
+     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -189,7 +189,7 @@ export interface ProjectAccessTokenState {
      */
     revoked?: pulumi.Input<boolean>;
     /**
-     * Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+     * Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -197,7 +197,7 @@ export interface ProjectAccessTokenState {
      */
     token?: pulumi.Input<string>;
     /**
-     * The user_id associated to the token.
+     * The userId associated to the token.
      */
     userId?: pulumi.Input<number>;
 }
@@ -207,8 +207,7 @@ export interface ProjectAccessTokenState {
  */
 export interface ProjectAccessTokenArgs {
     /**
-     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-     * `maintainer`, `owner`, `master`. Default is `maintainer`.
+     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -224,7 +223,7 @@ export interface ProjectAccessTokenArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+     * Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
 }

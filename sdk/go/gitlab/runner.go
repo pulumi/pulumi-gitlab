@@ -23,12 +23,14 @@ import (
 // # A GitLab Runner can be imported using the runner's ID, eg
 //
 // ```sh
-//  $ pulumi import gitlab:index/runner:Runner this 1
+//
+//	$ pulumi import gitlab:index/runner:Runner this 1
+//
 // ```
 type Runner struct {
 	pulumi.CustomResourceState
 
-	// The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
+	// The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
 	// The authentication token used for building a config.toml file. This value is not present when imported.
 	AuthenticationToken pulumi.StringOutput `pulumi:"authenticationToken"`
@@ -44,8 +46,8 @@ type Runner struct {
 	RegistrationToken pulumi.StringOutput `pulumi:"registrationToken"`
 	// Whether the runner should handle untagged jobs.
 	RunUntagged pulumi.BoolOutput `pulumi:"runUntagged"`
-	// The status of runners to show, one of: online and offline. active and paused are also possible values which were
-	// deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+	// The status of runners to show, one of: online and offline. active and paused are also possible values
+	// 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// List of runner’s tags.
 	TagLists pulumi.StringArrayOutput `pulumi:"tagLists"`
@@ -61,6 +63,14 @@ func NewRunner(ctx *pulumi.Context,
 	if args.RegistrationToken == nil {
 		return nil, errors.New("invalid value for required argument 'RegistrationToken'")
 	}
+	if args.RegistrationToken != nil {
+		args.RegistrationToken = pulumi.ToSecret(args.RegistrationToken).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"authenticationToken",
+		"registrationToken",
+	})
+	opts = append(opts, secrets)
 	var resource Runner
 	err := ctx.RegisterResource("gitlab:index/runner:Runner", name, args, &resource, opts...)
 	if err != nil {
@@ -83,7 +93,7 @@ func GetRunner(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Runner resources.
 type runnerState struct {
-	// The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
+	// The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// The authentication token used for building a config.toml file. This value is not present when imported.
 	AuthenticationToken *string `pulumi:"authenticationToken"`
@@ -99,15 +109,15 @@ type runnerState struct {
 	RegistrationToken *string `pulumi:"registrationToken"`
 	// Whether the runner should handle untagged jobs.
 	RunUntagged *bool `pulumi:"runUntagged"`
-	// The status of runners to show, one of: online and offline. active and paused are also possible values which were
-	// deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+	// The status of runners to show, one of: online and offline. active and paused are also possible values
+	// 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
 	Status *string `pulumi:"status"`
 	// List of runner’s tags.
 	TagLists []string `pulumi:"tagLists"`
 }
 
 type RunnerState struct {
-	// The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
+	// The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
 	AccessLevel pulumi.StringPtrInput
 	// The authentication token used for building a config.toml file. This value is not present when imported.
 	AuthenticationToken pulumi.StringPtrInput
@@ -123,8 +133,8 @@ type RunnerState struct {
 	RegistrationToken pulumi.StringPtrInput
 	// Whether the runner should handle untagged jobs.
 	RunUntagged pulumi.BoolPtrInput
-	// The status of runners to show, one of: online and offline. active and paused are also possible values which were
-	// deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+	// The status of runners to show, one of: online and offline. active and paused are also possible values
+	// 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
 	Status pulumi.StringPtrInput
 	// List of runner’s tags.
 	TagLists pulumi.StringArrayInput
@@ -135,7 +145,7 @@ func (RunnerState) ElementType() reflect.Type {
 }
 
 type runnerArgs struct {
-	// The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
+	// The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// The runner's description.
 	Description *string `pulumi:"description"`
@@ -155,7 +165,7 @@ type runnerArgs struct {
 
 // The set of arguments for constructing a Runner resource.
 type RunnerArgs struct {
-	// The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
+	// The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
 	AccessLevel pulumi.StringPtrInput
 	// The runner's description.
 	Description pulumi.StringPtrInput
@@ -199,7 +209,7 @@ func (i *Runner) ToRunnerOutputWithContext(ctx context.Context) RunnerOutput {
 // RunnerArrayInput is an input type that accepts RunnerArray and RunnerArrayOutput values.
 // You can construct a concrete instance of `RunnerArrayInput` via:
 //
-//          RunnerArray{ RunnerArgs{...} }
+//	RunnerArray{ RunnerArgs{...} }
 type RunnerArrayInput interface {
 	pulumi.Input
 
@@ -224,7 +234,7 @@ func (i RunnerArray) ToRunnerArrayOutputWithContext(ctx context.Context) RunnerA
 // RunnerMapInput is an input type that accepts RunnerMap and RunnerMapOutput values.
 // You can construct a concrete instance of `RunnerMapInput` via:
 //
-//          RunnerMap{ "key": RunnerArgs{...} }
+//	RunnerMap{ "key": RunnerArgs{...} }
 type RunnerMapInput interface {
 	pulumi.Input
 
@@ -260,7 +270,7 @@ func (o RunnerOutput) ToRunnerOutputWithContext(ctx context.Context) RunnerOutpu
 	return o
 }
 
-// The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
+// The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
 func (o RunnerOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runner) pulumi.StringOutput { return v.AccessLevel }).(pulumi.StringOutput)
 }
@@ -300,8 +310,9 @@ func (o RunnerOutput) RunUntagged() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Runner) pulumi.BoolOutput { return v.RunUntagged }).(pulumi.BoolOutput)
 }
 
-// The status of runners to show, one of: online and offline. active and paused are also possible values which were
-// deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+// The status of runners to show, one of: online and offline. active and paused are also possible values
+//
+//	which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
 func (o RunnerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runner) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

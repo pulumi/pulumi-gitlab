@@ -21,37 +21,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleProject, err := gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
-// 			Description: pulumi.String("An example project"),
-// 			NamespaceId: pulumi.Any(gitlab_group.Example.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewProjectMilestone(ctx, "exampleProjectMilestone", &gitlab.ProjectMilestoneArgs{
-// 			Project: exampleProject.ID(),
-// 			Title:   pulumi.String("example"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleProject, err := gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
+//				Description: pulumi.String("An example project"),
+//				NamespaceId: pulumi.Any(gitlab_group.Example.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectMilestone(ctx, "exampleProjectMilestone", &gitlab.ProjectMilestoneArgs{
+//				Project: exampleProject.ID(),
+//				Title:   pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # Gitlab project milestone can be imported with a key composed of `<project>:<milestone_id>`, e.g.
+// Gitlab project milestone can be imported with a key composed of `<project>:<milestone_id>`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectMilestone:ProjectMilestone example "12345:11"
+//
+//	$ pulumi import gitlab:index/projectMilestone:ProjectMilestone example "12345:11"
+//
 // ```
 type ProjectMilestone struct {
 	pulumi.CustomResourceState
@@ -237,7 +242,7 @@ func (i *ProjectMilestone) ToProjectMilestoneOutputWithContext(ctx context.Conte
 // ProjectMilestoneArrayInput is an input type that accepts ProjectMilestoneArray and ProjectMilestoneArrayOutput values.
 // You can construct a concrete instance of `ProjectMilestoneArrayInput` via:
 //
-//          ProjectMilestoneArray{ ProjectMilestoneArgs{...} }
+//	ProjectMilestoneArray{ ProjectMilestoneArgs{...} }
 type ProjectMilestoneArrayInput interface {
 	pulumi.Input
 
@@ -262,7 +267,7 @@ func (i ProjectMilestoneArray) ToProjectMilestoneArrayOutputWithContext(ctx cont
 // ProjectMilestoneMapInput is an input type that accepts ProjectMilestoneMap and ProjectMilestoneMapOutput values.
 // You can construct a concrete instance of `ProjectMilestoneMapInput` via:
 //
-//          ProjectMilestoneMap{ "key": ProjectMilestoneArgs{...} }
+//	ProjectMilestoneMap{ "key": ProjectMilestoneArgs{...} }
 type ProjectMilestoneMapInput interface {
 	pulumi.Input
 

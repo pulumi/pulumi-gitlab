@@ -19,44 +19,43 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fooProject = new GitLab.Project("fooProject", new()
     ///     {
-    ///         var fooProject = new GitLab.Project("fooProject", new GitLab.ProjectArgs
-    ///         {
-    ///             Description = "My example project",
-    ///         });
-    ///         var fooProjectLevelMrApprovals = new GitLab.ProjectLevelMrApprovals("fooProjectLevelMrApprovals", new GitLab.ProjectLevelMrApprovalsArgs
-    ///         {
-    ///             ProjectId = fooProject.Id,
-    ///             ResetApprovalsOnPush = true,
-    ///             DisableOverridingApproversPerMergeRequest = false,
-    ///             MergeRequestsAuthorApproval = false,
-    ///             MergeRequestsDisableCommittersApproval = true,
-    ///         });
-    ///     }
+    ///         Description = "My example project",
+    ///     });
     /// 
-    /// }
+    ///     var fooProjectLevelMrApprovals = new GitLab.ProjectLevelMrApprovals("fooProjectLevelMrApprovals", new()
+    ///     {
+    ///         ProjectId = fooProject.Id,
+    ///         ResetApprovalsOnPush = true,
+    ///         DisableOverridingApproversPerMergeRequest = false,
+    ///         MergeRequestsAuthorApproval = false,
+    ///         MergeRequestsDisableCommittersApproval = true,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals # You can import an approval configuration state using `&lt;resource&gt; &lt;project_id&gt;`.
+    ///  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `&lt;resource&gt; &lt;project_id&gt;`.
     /// ```
     /// 
-    /// # # For example
+    /// # For example
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals")]
-    public partial class ProjectLevelMrApprovals : Pulumi.CustomResource
+    public partial class ProjectLevelMrApprovals : global::Pulumi.CustomResource
     {
         /// <summary>
         /// By default, users are able to edit the approval rules in merge requests. If set to true,
@@ -89,8 +88,7 @@ namespace Pulumi.GitLab
         public Output<bool?> RequirePasswordToApprove { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
-        /// Default is `true`.
+        /// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
         /// </summary>
         [Output("resetApprovalsOnPush")]
         public Output<bool?> ResetApprovalsOnPush { get; private set; } = null!;
@@ -139,7 +137,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ProjectLevelMrApprovalsArgs : Pulumi.ResourceArgs
+    public sealed class ProjectLevelMrApprovalsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// By default, users are able to edit the approval rules in merge requests. If set to true,
@@ -172,8 +170,7 @@ namespace Pulumi.GitLab
         public Input<bool>? RequirePasswordToApprove { get; set; }
 
         /// <summary>
-        /// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
-        /// Default is `true`.
+        /// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
         /// </summary>
         [Input("resetApprovalsOnPush")]
         public Input<bool>? ResetApprovalsOnPush { get; set; }
@@ -181,9 +178,10 @@ namespace Pulumi.GitLab
         public ProjectLevelMrApprovalsArgs()
         {
         }
+        public static new ProjectLevelMrApprovalsArgs Empty => new ProjectLevelMrApprovalsArgs();
     }
 
-    public sealed class ProjectLevelMrApprovalsState : Pulumi.ResourceArgs
+    public sealed class ProjectLevelMrApprovalsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// By default, users are able to edit the approval rules in merge requests. If set to true,
@@ -216,8 +214,7 @@ namespace Pulumi.GitLab
         public Input<bool>? RequirePasswordToApprove { get; set; }
 
         /// <summary>
-        /// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
-        /// Default is `true`.
+        /// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
         /// </summary>
         [Input("resetApprovalsOnPush")]
         public Input<bool>? ResetApprovalsOnPush { get; set; }
@@ -225,5 +222,6 @@ namespace Pulumi.GitLab
         public ProjectLevelMrApprovalsState()
         {
         }
+        public static new ProjectLevelMrApprovalsState Empty => new ProjectLevelMrApprovalsState();
     }
 }

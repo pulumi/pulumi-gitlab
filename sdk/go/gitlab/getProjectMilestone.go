@@ -20,22 +20,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.LookupProjectMilestone(ctx, &GetProjectMilestoneArgs{
-// 			MilestoneId: 10,
-// 			Project:     "foo/bar",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = gitlab.LookupProjectMilestone(ctx, &GetProjectMilestoneArgs{
+//				MilestoneId: 10,
+//				Project:     "foo/bar",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupProjectMilestone(ctx *pulumi.Context, args *LookupProjectMilestoneArgs, opts ...pulumi.InvokeOption) (*LookupProjectMilestoneResult, error) {
 	var rv LookupProjectMilestoneResult
@@ -48,27 +51,42 @@ func LookupProjectMilestone(ctx *pulumi.Context, args *LookupProjectMilestoneArg
 
 // A collection of arguments for invoking getProjectMilestone.
 type LookupProjectMilestoneArgs struct {
-	MilestoneId int    `pulumi:"milestoneId"`
-	Project     string `pulumi:"project"`
+	// The instance-wide ID of the project’s milestone.
+	MilestoneId int `pulumi:"milestoneId"`
+	// The ID or URL-encoded path of the project owned by the authenticated user.
+	Project string `pulumi:"project"`
 }
 
 // A collection of values returned by getProjectMilestone.
 type LookupProjectMilestoneResult struct {
-	CreatedAt   string `pulumi:"createdAt"`
+	// The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
+	CreatedAt string `pulumi:"createdAt"`
+	// The description of the milestone.
 	Description string `pulumi:"description"`
-	DueDate     string `pulumi:"dueDate"`
-	Expired     bool   `pulumi:"expired"`
+	// The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+	DueDate string `pulumi:"dueDate"`
+	// Bool, true if milestore expired.
+	Expired bool `pulumi:"expired"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	Iid         int    `pulumi:"iid"`
-	MilestoneId int    `pulumi:"milestoneId"`
-	Project     string `pulumi:"project"`
-	ProjectId   int    `pulumi:"projectId"`
-	StartDate   string `pulumi:"startDate"`
-	State       string `pulumi:"state"`
-	Title       string `pulumi:"title"`
-	UpdatedAt   string `pulumi:"updatedAt"`
-	WebUrl      string `pulumi:"webUrl"`
+	Id string `pulumi:"id"`
+	// The ID of the project's milestone.
+	Iid int `pulumi:"iid"`
+	// The instance-wide ID of the project’s milestone.
+	MilestoneId int `pulumi:"milestoneId"`
+	// The ID or URL-encoded path of the project owned by the authenticated user.
+	Project string `pulumi:"project"`
+	// The project ID of milestone.
+	ProjectId int `pulumi:"projectId"`
+	// The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+	StartDate string `pulumi:"startDate"`
+	// The state of the milestone. Valid values are: `active`, `closed`.
+	State string `pulumi:"state"`
+	// The title of a milestone.
+	Title string `pulumi:"title"`
+	// The last update time of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
+	UpdatedAt string `pulumi:"updatedAt"`
+	// The web URL of the milestone.
+	WebUrl string `pulumi:"webUrl"`
 }
 
 func LookupProjectMilestoneOutput(ctx *pulumi.Context, args LookupProjectMilestoneOutputArgs, opts ...pulumi.InvokeOption) LookupProjectMilestoneResultOutput {
@@ -86,8 +104,10 @@ func LookupProjectMilestoneOutput(ctx *pulumi.Context, args LookupProjectMilesto
 
 // A collection of arguments for invoking getProjectMilestone.
 type LookupProjectMilestoneOutputArgs struct {
-	MilestoneId pulumi.IntInput    `pulumi:"milestoneId"`
-	Project     pulumi.StringInput `pulumi:"project"`
+	// The instance-wide ID of the project’s milestone.
+	MilestoneId pulumi.IntInput `pulumi:"milestoneId"`
+	// The ID or URL-encoded path of the project owned by the authenticated user.
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (LookupProjectMilestoneOutputArgs) ElementType() reflect.Type {
@@ -109,18 +129,22 @@ func (o LookupProjectMilestoneResultOutput) ToLookupProjectMilestoneResultOutput
 	return o
 }
 
+// The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
 func (o LookupProjectMilestoneResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectMilestoneResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// The description of the milestone.
 func (o LookupProjectMilestoneResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectMilestoneResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
 func (o LookupProjectMilestoneResultOutput) DueDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectMilestoneResult) string { return v.DueDate }).(pulumi.StringOutput)
 }
 
+// Bool, true if milestore expired.
 func (o LookupProjectMilestoneResultOutput) Expired() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectMilestoneResult) bool { return v.Expired }).(pulumi.BoolOutput)
 }
@@ -130,38 +154,47 @@ func (o LookupProjectMilestoneResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectMilestoneResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The ID of the project's milestone.
 func (o LookupProjectMilestoneResultOutput) Iid() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupProjectMilestoneResult) int { return v.Iid }).(pulumi.IntOutput)
 }
 
+// The instance-wide ID of the project’s milestone.
 func (o LookupProjectMilestoneResultOutput) MilestoneId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupProjectMilestoneResult) int { return v.MilestoneId }).(pulumi.IntOutput)
 }
 
+// The ID or URL-encoded path of the project owned by the authenticated user.
 func (o LookupProjectMilestoneResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectMilestoneResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// The project ID of milestone.
 func (o LookupProjectMilestoneResultOutput) ProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupProjectMilestoneResult) int { return v.ProjectId }).(pulumi.IntOutput)
 }
 
+// The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
 func (o LookupProjectMilestoneResultOutput) StartDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectMilestoneResult) string { return v.StartDate }).(pulumi.StringOutput)
 }
 
+// The state of the milestone. Valid values are: `active`, `closed`.
 func (o LookupProjectMilestoneResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectMilestoneResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// The title of a milestone.
 func (o LookupProjectMilestoneResultOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectMilestoneResult) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// The last update time of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
 func (o LookupProjectMilestoneResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectMilestoneResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
+// The web URL of the milestone.
 func (o LookupProjectMilestoneResultOutput) WebUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectMilestoneResult) string { return v.WebUrl }).(pulumi.StringOutput)
 }

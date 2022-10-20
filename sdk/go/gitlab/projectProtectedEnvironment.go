@@ -13,6 +13,13 @@ import (
 
 // The `ProjectProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a project.
 //
+// > In order to use a user or group in the `deployAccessLevels` configuration,
+//
+//	you need to make sure that users have access to the project and groups must have this project shared.
+//	You may use the `ProjectMembership` and `gitlabProjectSharedGroup` resources to achieve this.
+//	Unfortunately, the GitLab API does not complain about users and groups without access to the project and just ignores those.
+//	In case this happens you will get perpetual state diffs.
+//
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_environments.html)
 //
 // ## Example Usage
@@ -21,86 +28,91 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		this, err := gitlab.NewProjectEnvironment(ctx, "this", &gitlab.ProjectEnvironmentArgs{
-// 			Project:     pulumi.String("123"),
-// 			ExternalUrl: pulumi.String("www.example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewProjectProtectedEnvironment(ctx, "exampleWithAccessLevel", &gitlab.ProjectProtectedEnvironmentArgs{
-// 			Project:               this.Project,
-// 			RequiredApprovalCount: pulumi.Int(1),
-// 			Environment:           this.Name,
-// 			DeployAccessLevels: ProjectProtectedEnvironmentDeployAccessLevelArray{
-// 				&ProjectProtectedEnvironmentDeployAccessLevelArgs{
-// 					AccessLevel: pulumi.String("developer"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewProjectProtectedEnvironment(ctx, "exampleWithGroup", &gitlab.ProjectProtectedEnvironmentArgs{
-// 			Project:     this.Project,
-// 			Environment: this.Name,
-// 			DeployAccessLevels: ProjectProtectedEnvironmentDeployAccessLevelArray{
-// 				&ProjectProtectedEnvironmentDeployAccessLevelArgs{
-// 					GroupId: pulumi.Int(456),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewProjectProtectedEnvironment(ctx, "exampleWithUser", &gitlab.ProjectProtectedEnvironmentArgs{
-// 			Project:     this.Project,
-// 			Environment: this.Name,
-// 			DeployAccessLevels: ProjectProtectedEnvironmentDeployAccessLevelArray{
-// 				&ProjectProtectedEnvironmentDeployAccessLevelArgs{
-// 					UserId: pulumi.Int(789),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewProjectProtectedEnvironment(ctx, "exampleWithMultiple", &gitlab.ProjectProtectedEnvironmentArgs{
-// 			Project:               this.Project,
-// 			RequiredApprovalCount: pulumi.Int(2),
-// 			Environment:           this.Name,
-// 			DeployAccessLevels: ProjectProtectedEnvironmentDeployAccessLevelArray{
-// 				&ProjectProtectedEnvironmentDeployAccessLevelArgs{
-// 					AccessLevel: pulumi.String("developer"),
-// 				},
-// 				&ProjectProtectedEnvironmentDeployAccessLevelArgs{
-// 					GroupId: pulumi.Int(456),
-// 				},
-// 				&ProjectProtectedEnvironmentDeployAccessLevelArgs{
-// 					UserId: pulumi.Int(789),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := gitlab.NewProjectEnvironment(ctx, "this", &gitlab.ProjectEnvironmentArgs{
+//				Project:     pulumi.String("123"),
+//				ExternalUrl: pulumi.String("www.example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectProtectedEnvironment(ctx, "exampleWithAccessLevel", &gitlab.ProjectProtectedEnvironmentArgs{
+//				Project:               this.Project,
+//				RequiredApprovalCount: pulumi.Int(1),
+//				Environment:           this.Name,
+//				DeployAccessLevels: ProjectProtectedEnvironmentDeployAccessLevelArray{
+//					&ProjectProtectedEnvironmentDeployAccessLevelArgs{
+//						AccessLevel: pulumi.String("developer"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectProtectedEnvironment(ctx, "exampleWithGroup", &gitlab.ProjectProtectedEnvironmentArgs{
+//				Project:     this.Project,
+//				Environment: this.Name,
+//				DeployAccessLevels: ProjectProtectedEnvironmentDeployAccessLevelArray{
+//					&ProjectProtectedEnvironmentDeployAccessLevelArgs{
+//						GroupId: pulumi.Int(456),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectProtectedEnvironment(ctx, "exampleWithUser", &gitlab.ProjectProtectedEnvironmentArgs{
+//				Project:     this.Project,
+//				Environment: this.Name,
+//				DeployAccessLevels: ProjectProtectedEnvironmentDeployAccessLevelArray{
+//					&ProjectProtectedEnvironmentDeployAccessLevelArgs{
+//						UserId: pulumi.Int(789),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectProtectedEnvironment(ctx, "exampleWithMultiple", &gitlab.ProjectProtectedEnvironmentArgs{
+//				Project:               this.Project,
+//				RequiredApprovalCount: pulumi.Int(2),
+//				Environment:           this.Name,
+//				DeployAccessLevels: ProjectProtectedEnvironmentDeployAccessLevelArray{
+//					&ProjectProtectedEnvironmentDeployAccessLevelArgs{
+//						AccessLevel: pulumi.String("developer"),
+//					},
+//					&ProjectProtectedEnvironmentDeployAccessLevelArgs{
+//						GroupId: pulumi.Int(456),
+//					},
+//					&ProjectProtectedEnvironmentDeployAccessLevelArgs{
+//						UserId: pulumi.Int(789),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # GitLab protected environments can be imported using an id made up of `projectId:environmentName`, e.g.
+// GitLab protected environments can be imported using an id made up of `projectId:environmentName`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment bar 123:production
+//
+//	$ pulumi import gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment bar 123:production
+//
 // ```
 type ProjectProtectedEnvironment struct {
 	pulumi.CustomResourceState
@@ -227,7 +239,7 @@ func (i *ProjectProtectedEnvironment) ToProjectProtectedEnvironmentOutputWithCon
 // ProjectProtectedEnvironmentArrayInput is an input type that accepts ProjectProtectedEnvironmentArray and ProjectProtectedEnvironmentArrayOutput values.
 // You can construct a concrete instance of `ProjectProtectedEnvironmentArrayInput` via:
 //
-//          ProjectProtectedEnvironmentArray{ ProjectProtectedEnvironmentArgs{...} }
+//	ProjectProtectedEnvironmentArray{ ProjectProtectedEnvironmentArgs{...} }
 type ProjectProtectedEnvironmentArrayInput interface {
 	pulumi.Input
 
@@ -252,7 +264,7 @@ func (i ProjectProtectedEnvironmentArray) ToProjectProtectedEnvironmentArrayOutp
 // ProjectProtectedEnvironmentMapInput is an input type that accepts ProjectProtectedEnvironmentMap and ProjectProtectedEnvironmentMapOutput values.
 // You can construct a concrete instance of `ProjectProtectedEnvironmentMapInput` via:
 //
-//          ProjectProtectedEnvironmentMap{ "key": ProjectProtectedEnvironmentArgs{...} }
+//	ProjectProtectedEnvironmentMap{ "key": ProjectProtectedEnvironmentArgs{...} }
 type ProjectProtectedEnvironmentMapInput interface {
 	pulumi.Input
 

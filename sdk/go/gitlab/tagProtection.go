@@ -21,31 +21,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewTagProtection(ctx, "tagProtect", &gitlab.TagProtectionArgs{
-// 			CreateAccessLevel: pulumi.String("developer"),
-// 			Project:           pulumi.String("12345"),
-// 			Tag:               pulumi.String("TagProtected"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewTagProtection(ctx, "tagProtect", &gitlab.TagProtectionArgs{
+//				CreateAccessLevel: pulumi.String("developer"),
+//				Project:           pulumi.String("12345"),
+//				Tag:               pulumi.String("TagProtected"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.
+// Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/tagProtection:TagProtection example 123456789:v1.0.0
+//
+//	$ pulumi import gitlab:index/tagProtection:TagProtection example 123456789:v1.0.0
+//
 // ```
 type TagProtection struct {
 	pulumi.CustomResourceState
@@ -162,7 +167,7 @@ func (i *TagProtection) ToTagProtectionOutputWithContext(ctx context.Context) Ta
 // TagProtectionArrayInput is an input type that accepts TagProtectionArray and TagProtectionArrayOutput values.
 // You can construct a concrete instance of `TagProtectionArrayInput` via:
 //
-//          TagProtectionArray{ TagProtectionArgs{...} }
+//	TagProtectionArray{ TagProtectionArgs{...} }
 type TagProtectionArrayInput interface {
 	pulumi.Input
 
@@ -187,7 +192,7 @@ func (i TagProtectionArray) ToTagProtectionArrayOutputWithContext(ctx context.Co
 // TagProtectionMapInput is an input type that accepts TagProtectionMap and TagProtectionMapOutput values.
 // You can construct a concrete instance of `TagProtectionMapInput` via:
 //
-//          TagProtectionMap{ "key": TagProtectionArgs{...} }
+//	TagProtectionMap{ "key": TagProtectionArgs{...} }
 type TagProtectionMapInput interface {
 	pulumi.Input
 

@@ -23,40 +23,45 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewSystemHook(ctx, "example", &gitlab.SystemHookArgs{
-// 			EnableSslVerification:  pulumi.Bool(true),
-// 			MergeRequestsEvents:    pulumi.Bool(true),
-// 			PushEvents:             pulumi.Bool(true),
-// 			RepositoryUpdateEvents: pulumi.Bool(true),
-// 			TagPushEvents:          pulumi.Bool(true),
-// 			Token:                  pulumi.String("secret-token"),
-// 			Url:                    pulumi.String(fmt.Sprintf("%v%v%v", "https://example.com/hook-", "%", "d")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewSystemHook(ctx, "example", &gitlab.SystemHookArgs{
+//				EnableSslVerification:  pulumi.Bool(true),
+//				MergeRequestsEvents:    pulumi.Bool(true),
+//				PushEvents:             pulumi.Bool(true),
+//				RepositoryUpdateEvents: pulumi.Bool(true),
+//				TagPushEvents:          pulumi.Bool(true),
+//				Token:                  pulumi.String("secret-token"),
+//				Url:                    pulumi.String(fmt.Sprintf("https://example.com/hook-%vd", "%")),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # You can import a system hook using the hook id `{hook-id}`, e.g.
+// You can import a system hook using the hook id `{hook-id}`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/systemHook:SystemHook example 42
+//
+//	$ pulumi import gitlab:index/systemHook:SystemHook example 42
+//
 // ```
 //
-// # NOTEthe `token` attribute won't be available for imported resources.
+//	NOTEthe `token` attribute won't be available for imported resources.
 type SystemHook struct {
 	pulumi.CustomResourceState
 
@@ -72,8 +77,7 @@ type SystemHook struct {
 	RepositoryUpdateEvents pulumi.BoolPtrOutput `pulumi:"repositoryUpdateEvents"`
 	// When true, the hook fires on new tags being pushed.
 	TagPushEvents pulumi.BoolPtrOutput `pulumi:"tagPushEvents"`
-	// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for
-	// imported resources.
+	// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
 	Token pulumi.StringPtrOutput `pulumi:"token"`
 	// The hook URL.
 	Url pulumi.StringOutput `pulumi:"url"`
@@ -89,6 +93,13 @@ func NewSystemHook(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
+	if args.Token != nil {
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
 	var resource SystemHook
 	err := ctx.RegisterResource("gitlab:index/systemHook:SystemHook", name, args, &resource, opts...)
 	if err != nil {
@@ -123,8 +134,7 @@ type systemHookState struct {
 	RepositoryUpdateEvents *bool `pulumi:"repositoryUpdateEvents"`
 	// When true, the hook fires on new tags being pushed.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
-	// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for
-	// imported resources.
+	// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
 	Token *string `pulumi:"token"`
 	// The hook URL.
 	Url *string `pulumi:"url"`
@@ -143,8 +153,7 @@ type SystemHookState struct {
 	RepositoryUpdateEvents pulumi.BoolPtrInput
 	// When true, the hook fires on new tags being pushed.
 	TagPushEvents pulumi.BoolPtrInput
-	// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for
-	// imported resources.
+	// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
 	Token pulumi.StringPtrInput
 	// The hook URL.
 	Url pulumi.StringPtrInput
@@ -165,8 +174,7 @@ type systemHookArgs struct {
 	RepositoryUpdateEvents *bool `pulumi:"repositoryUpdateEvents"`
 	// When true, the hook fires on new tags being pushed.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
-	// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for
-	// imported resources.
+	// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
 	Token *string `pulumi:"token"`
 	// The hook URL.
 	Url string `pulumi:"url"`
@@ -184,8 +192,7 @@ type SystemHookArgs struct {
 	RepositoryUpdateEvents pulumi.BoolPtrInput
 	// When true, the hook fires on new tags being pushed.
 	TagPushEvents pulumi.BoolPtrInput
-	// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for
-	// imported resources.
+	// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
 	Token pulumi.StringPtrInput
 	// The hook URL.
 	Url pulumi.StringInput
@@ -217,7 +224,7 @@ func (i *SystemHook) ToSystemHookOutputWithContext(ctx context.Context) SystemHo
 // SystemHookArrayInput is an input type that accepts SystemHookArray and SystemHookArrayOutput values.
 // You can construct a concrete instance of `SystemHookArrayInput` via:
 //
-//          SystemHookArray{ SystemHookArgs{...} }
+//	SystemHookArray{ SystemHookArgs{...} }
 type SystemHookArrayInput interface {
 	pulumi.Input
 
@@ -242,7 +249,7 @@ func (i SystemHookArray) ToSystemHookArrayOutputWithContext(ctx context.Context)
 // SystemHookMapInput is an input type that accepts SystemHookMap and SystemHookMapOutput values.
 // You can construct a concrete instance of `SystemHookMapInput` via:
 //
-//          SystemHookMap{ "key": SystemHookArgs{...} }
+//	SystemHookMap{ "key": SystemHookArgs{...} }
 type SystemHookMapInput interface {
 	pulumi.Input
 
@@ -308,8 +315,7 @@ func (o SystemHookOutput) TagPushEvents() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SystemHook) pulumi.BoolPtrOutput { return v.TagPushEvents }).(pulumi.BoolPtrOutput)
 }
 
-// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for
-// imported resources.
+// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
 func (o SystemHookOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SystemHook) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
 }

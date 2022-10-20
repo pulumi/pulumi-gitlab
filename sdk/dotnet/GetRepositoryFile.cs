@@ -21,28 +21,26 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = GitLab.GetRepositoryFile.Invoke(new()
         ///     {
-        ///         var example = Output.Create(GitLab.GetRepositoryFile.InvokeAsync(new GitLab.GetRepositoryFileArgs
-        ///         {
-        ///             FilePath = "README.md",
-        ///             Project = "example",
-        ///             Ref = "main",
-        ///         }));
-        ///     }
+        ///         FilePath = "README.md",
+        ///         Project = "example",
+        ///         Ref = "main",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRepositoryFileResult> InvokeAsync(GetRepositoryFileArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryFileResult>("gitlab:index/getRepositoryFile:getRepositoryFile", args ?? new GetRepositoryFileArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryFileResult>("gitlab:index/getRepositoryFile:getRepositoryFile", args ?? new GetRepositoryFileArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `gitlab.RepositoryFile` data source allows details of a file in a repository to be retrieved.
@@ -54,82 +52,136 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = GitLab.GetRepositoryFile.Invoke(new()
         ///     {
-        ///         var example = Output.Create(GitLab.GetRepositoryFile.InvokeAsync(new GitLab.GetRepositoryFileArgs
-        ///         {
-        ///             FilePath = "README.md",
-        ///             Project = "example",
-        ///             Ref = "main",
-        ///         }));
-        ///     }
+        ///         FilePath = "README.md",
+        ///         Project = "example",
+        ///         Ref = "main",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRepositoryFileResult> Invoke(GetRepositoryFileInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRepositoryFileResult>("gitlab:index/getRepositoryFile:getRepositoryFile", args ?? new GetRepositoryFileInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryFileResult>("gitlab:index/getRepositoryFile:getRepositoryFile", args ?? new GetRepositoryFileInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRepositoryFileArgs : Pulumi.InvokeArgs
+    public sealed class GetRepositoryFileArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+        /// </summary>
         [Input("filePath", required: true)]
         public string FilePath { get; set; } = null!;
 
+        /// <summary>
+        /// The name or ID of the project.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// The name of branch, tag or commit.
+        /// </summary>
         [Input("ref", required: true)]
         public string Ref { get; set; } = null!;
 
         public GetRepositoryFileArgs()
         {
         }
+        public static new GetRepositoryFileArgs Empty => new GetRepositoryFileArgs();
     }
 
-    public sealed class GetRepositoryFileInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRepositoryFileInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+        /// </summary>
         [Input("filePath", required: true)]
         public Input<string> FilePath { get; set; } = null!;
 
+        /// <summary>
+        /// The name or ID of the project.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// The name of branch, tag or commit.
+        /// </summary>
         [Input("ref", required: true)]
         public Input<string> Ref { get; set; } = null!;
 
         public GetRepositoryFileInvokeArgs()
         {
         }
+        public static new GetRepositoryFileInvokeArgs Empty => new GetRepositoryFileInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetRepositoryFileResult
     {
+        /// <summary>
+        /// The blob id.
+        /// </summary>
         public readonly string BlobId;
+        /// <summary>
+        /// The commit id.
+        /// </summary>
         public readonly string CommitId;
+        /// <summary>
+        /// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        /// </summary>
         public readonly string Content;
+        /// <summary>
+        /// File content sha256 digest.
+        /// </summary>
         public readonly string ContentSha256;
+        /// <summary>
+        /// The file content encoding.
+        /// </summary>
         public readonly string Encoding;
+        /// <summary>
+        /// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+        /// </summary>
         public readonly bool ExecuteFilemode;
+        /// <summary>
+        /// The filename.
+        /// </summary>
         public readonly string FileName;
+        /// <summary>
+        /// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+        /// </summary>
         public readonly string FilePath;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The last known commit id.
+        /// </summary>
         public readonly string LastCommitId;
+        /// <summary>
+        /// The name or ID of the project.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// The name of branch, tag or commit.
+        /// </summary>
         public readonly string Ref;
+        /// <summary>
+        /// The file size.
+        /// </summary>
         public readonly int Size;
 
         [OutputConstructor]

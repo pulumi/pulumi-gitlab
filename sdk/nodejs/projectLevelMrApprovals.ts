@@ -30,10 +30,10 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals # You can import an approval configuration state using `<resource> <project_id>`.
+ *  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `<resource> <project_id>`.
  * ```
  *
- * # # For example
+ * # For example
  *
  * ```sh
  *  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
@@ -88,8 +88,7 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
      */
     public readonly requirePasswordToApprove!: pulumi.Output<boolean | undefined>;
     /**
-     * Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
-     * Default is `true`.
+     * Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      */
     public readonly resetApprovalsOnPush!: pulumi.Output<boolean | undefined>;
 
@@ -154,8 +153,7 @@ export interface ProjectLevelMrApprovalsState {
      */
     requirePasswordToApprove?: pulumi.Input<boolean>;
     /**
-     * Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
-     * Default is `true`.
+     * Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      */
     resetApprovalsOnPush?: pulumi.Input<boolean>;
 }
@@ -185,8 +183,7 @@ export interface ProjectLevelMrApprovalsArgs {
      */
     requirePasswordToApprove?: pulumi.Input<boolean>;
     /**
-     * Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
-     * Default is `true`.
+     * Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      */
     resetApprovalsOnPush?: pulumi.Input<boolean>;
 }

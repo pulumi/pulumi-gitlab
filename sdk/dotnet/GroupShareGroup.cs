@@ -17,35 +17,33 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var test = new GitLab.GroupShareGroup("test", new()
     ///     {
-    ///         var test = new GitLab.GroupShareGroup("test", new GitLab.GroupShareGroupArgs
-    ///         {
-    ///             GroupId = gitlab_group.Foo.Id,
-    ///             ShareGroupId = gitlab_group.Bar.Id,
-    ///             GroupAccess = "guest",
-    ///             ExpiresAt = "2099-01-01",
-    ///         });
-    ///     }
+    ///         GroupId = gitlab_group.Foo.Id,
+    ///         ShareGroupId = gitlab_group.Bar.Id,
+    ///         GroupAccess = "guest",
+    ///         ExpiresAt = "2099-01-01",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
+    /// GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/groupShareGroup:GroupShareGroup test 12345:1337
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/groupShareGroup:GroupShareGroup")]
-    public partial class GroupShareGroup : Pulumi.CustomResource
+    public partial class GroupShareGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Share expiration date. Format: `YYYY-MM-DD`
@@ -54,8 +52,7 @@ namespace Pulumi.GitLab
         public Output<string?> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
-        /// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-        /// `maintainer`, `owner`, `master`
+        /// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Output("groupAccess")]
         public Output<string> GroupAccess { get; private set; } = null!;
@@ -116,7 +113,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class GroupShareGroupArgs : Pulumi.ResourceArgs
+    public sealed class GroupShareGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Share expiration date. Format: `YYYY-MM-DD`
@@ -125,8 +122,7 @@ namespace Pulumi.GitLab
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
-        /// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-        /// `maintainer`, `owner`, `master`
+        /// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Input("groupAccess", required: true)]
         public Input<string> GroupAccess { get; set; } = null!;
@@ -146,9 +142,10 @@ namespace Pulumi.GitLab
         public GroupShareGroupArgs()
         {
         }
+        public static new GroupShareGroupArgs Empty => new GroupShareGroupArgs();
     }
 
-    public sealed class GroupShareGroupState : Pulumi.ResourceArgs
+    public sealed class GroupShareGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Share expiration date. Format: `YYYY-MM-DD`
@@ -157,8 +154,7 @@ namespace Pulumi.GitLab
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
-        /// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-        /// `maintainer`, `owner`, `master`
+        /// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Input("groupAccess")]
         public Input<string>? GroupAccess { get; set; }
@@ -178,5 +174,6 @@ namespace Pulumi.GitLab
         public GroupShareGroupState()
         {
         }
+        public static new GroupShareGroupState Empty => new GroupShareGroupState();
     }
 }

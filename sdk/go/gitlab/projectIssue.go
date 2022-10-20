@@ -17,60 +17,64 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := gitlab.NewProject(ctx, "foo", &gitlab.ProjectArgs{
-// 			Description:     pulumi.String("Lorem Ipsum"),
-// 			VisibilityLevel: pulumi.String("public"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewProjectIssue(ctx, "welcomeIssue", &gitlab.ProjectIssueArgs{
-// 			Project: foo.ID(),
-// 			Title:   pulumi.String("Welcome!"),
-// 			Description: foo.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v%v%v", "  Welcome to the ", name, " project!\n", "\n"), nil
-// 			}).(pulumi.StringOutput),
-// 			DiscussionLocked: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("welcomeIssueWebUrl", data.Gitlab_project_issue.Web_url)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := gitlab.NewProject(ctx, "foo", &gitlab.ProjectArgs{
+//				Description:     pulumi.String("Lorem Ipsum"),
+//				VisibilityLevel: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectIssue(ctx, "welcomeIssue", &gitlab.ProjectIssueArgs{
+//				Project: foo.ID(),
+//				Title:   pulumi.String("Welcome!"),
+//				Description: foo.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("  Welcome to the %v project!\n\n", name), nil
+//				}).(pulumi.StringOutput),
+//				DiscussionLocked: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("welcomeIssueWebUrl", data.Gitlab_project_issue.Web_url)
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # You can import this resource with an id made up of `{project-id}:{issue-id}`, e.g.
+// You can import this resource with an id made up of `{project-id}:{issue-id}`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectIssue:ProjectIssue welcome_issue 42:1
+//
+//	$ pulumi import gitlab:index/projectIssue:ProjectIssue welcome_issue 42:1
+//
 // ```
 type ProjectIssue struct {
 	pulumi.CustomResourceState
 
 	// The IDs of the users to assign the issue to.
 	AssigneeIds pulumi.IntArrayOutput `pulumi:"assigneeIds"`
-	// The ID of the author of the issue. Use `gitlab_user` data source to get more information about the user.
+	// The ID of the author of the issue. Use `User` data source to get more information about the user.
 	AuthorId pulumi.IntOutput `pulumi:"authorId"`
 	// When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
 	ClosedAt pulumi.StringOutput `pulumi:"closedAt"`
-	// The ID of the user that closed the issue. Use `gitlab_user` data source to get more information about the user.
+	// The ID of the user that closed the issue. Use `User` data source to get more information about the user.
 	ClosedByUserId pulumi.IntOutput `pulumi:"closedByUserId"`
 	// Set an issue to be confidential.
 	Confidential pulumi.BoolPtrOutput `pulumi:"confidential"`
-	// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires
-	// administrator or project/group owner rights.
+	// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Whether the issue is deleted instead of closed during destroy.
 	DeleteOnDestroy pulumi.BoolPtrOutput `pulumi:"deleteOnDestroy"`
@@ -78,13 +82,12 @@ type ProjectIssue struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether the issue is locked for discussions or not.
 	DiscussionLocked pulumi.BoolPtrOutput `pulumi:"discussionLocked"`
-	// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as
-	// resolved. Use in combination with merge_request_to_resolve_discussions_of.
+	// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
 	DiscussionToResolve pulumi.StringPtrOutput `pulumi:"discussionToResolve"`
 	// The number of downvotes the issue has received.
 	Downvotes pulumi.IntOutput `pulumi:"downvotes"`
-	// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11. **Note:** removing a due date is
-	// currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
+	// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+	// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
 	DueDate pulumi.StringPtrOutput `pulumi:"dueDate"`
 	// ID of the epic to add the issue to. Valid values are greater than or equal to 0.
 	EpicId pulumi.IntOutput `pulumi:"epicId"`
@@ -102,19 +105,17 @@ type ProjectIssue struct {
 	IssueId pulumi.IntOutput `pulumi:"issueId"`
 	// The ID of the issue link.
 	IssueLinkId pulumi.IntOutput `pulumi:"issueLinkId"`
-	// The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+	// The type of issue. Valid values are: `issue`, `incident`, `testCase`.
 	IssueType pulumi.StringPtrOutput `pulumi:"issueType"`
 	// The labels of an issue.
 	Labels pulumi.StringArrayOutput `pulumi:"labels"`
 	// The links of the issue.
 	Links pulumi.StringMapOutput `pulumi:"links"`
-	// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
-	// all discussions as resolved. When passing a description or title, these values take precedence over the default values.
+	// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
 	MergeRequestToResolveDiscussionsOf pulumi.IntPtrOutput `pulumi:"mergeRequestToResolveDiscussionsOf"`
 	// The number of merge requests associated with the issue.
 	MergeRequestsCount pulumi.IntOutput `pulumi:"mergeRequestsCount"`
-	// The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with
-	// the milestone assigned and use the API to retrieve the issue's details.
+	// The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
 	MilestoneId pulumi.IntPtrOutput `pulumi:"milestoneId"`
 	// The ID of the issue that was moved to.
 	MovedToId pulumi.IntOutput `pulumi:"movedToId"`
@@ -183,16 +184,15 @@ func GetProjectIssue(ctx *pulumi.Context,
 type projectIssueState struct {
 	// The IDs of the users to assign the issue to.
 	AssigneeIds []int `pulumi:"assigneeIds"`
-	// The ID of the author of the issue. Use `gitlab_user` data source to get more information about the user.
+	// The ID of the author of the issue. Use `User` data source to get more information about the user.
 	AuthorId *int `pulumi:"authorId"`
 	// When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
 	ClosedAt *string `pulumi:"closedAt"`
-	// The ID of the user that closed the issue. Use `gitlab_user` data source to get more information about the user.
+	// The ID of the user that closed the issue. Use `User` data source to get more information about the user.
 	ClosedByUserId *int `pulumi:"closedByUserId"`
 	// Set an issue to be confidential.
 	Confidential *bool `pulumi:"confidential"`
-	// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires
-	// administrator or project/group owner rights.
+	// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
 	CreatedAt *string `pulumi:"createdAt"`
 	// Whether the issue is deleted instead of closed during destroy.
 	DeleteOnDestroy *bool `pulumi:"deleteOnDestroy"`
@@ -200,13 +200,12 @@ type projectIssueState struct {
 	Description *string `pulumi:"description"`
 	// Whether the issue is locked for discussions or not.
 	DiscussionLocked *bool `pulumi:"discussionLocked"`
-	// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as
-	// resolved. Use in combination with merge_request_to_resolve_discussions_of.
+	// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
 	DiscussionToResolve *string `pulumi:"discussionToResolve"`
 	// The number of downvotes the issue has received.
 	Downvotes *int `pulumi:"downvotes"`
-	// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11. **Note:** removing a due date is
-	// currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
+	// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+	// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
 	DueDate *string `pulumi:"dueDate"`
 	// ID of the epic to add the issue to. Valid values are greater than or equal to 0.
 	EpicId *int `pulumi:"epicId"`
@@ -224,19 +223,17 @@ type projectIssueState struct {
 	IssueId *int `pulumi:"issueId"`
 	// The ID of the issue link.
 	IssueLinkId *int `pulumi:"issueLinkId"`
-	// The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+	// The type of issue. Valid values are: `issue`, `incident`, `testCase`.
 	IssueType *string `pulumi:"issueType"`
 	// The labels of an issue.
 	Labels []string `pulumi:"labels"`
 	// The links of the issue.
 	Links map[string]string `pulumi:"links"`
-	// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
-	// all discussions as resolved. When passing a description or title, these values take precedence over the default values.
+	// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
 	MergeRequestToResolveDiscussionsOf *int `pulumi:"mergeRequestToResolveDiscussionsOf"`
 	// The number of merge requests associated with the issue.
 	MergeRequestsCount *int `pulumi:"mergeRequestsCount"`
-	// The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with
-	// the milestone assigned and use the API to retrieve the issue's details.
+	// The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
 	MilestoneId *int `pulumi:"milestoneId"`
 	// The ID of the issue that was moved to.
 	MovedToId *int `pulumi:"movedToId"`
@@ -271,16 +268,15 @@ type projectIssueState struct {
 type ProjectIssueState struct {
 	// The IDs of the users to assign the issue to.
 	AssigneeIds pulumi.IntArrayInput
-	// The ID of the author of the issue. Use `gitlab_user` data source to get more information about the user.
+	// The ID of the author of the issue. Use `User` data source to get more information about the user.
 	AuthorId pulumi.IntPtrInput
 	// When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
 	ClosedAt pulumi.StringPtrInput
-	// The ID of the user that closed the issue. Use `gitlab_user` data source to get more information about the user.
+	// The ID of the user that closed the issue. Use `User` data source to get more information about the user.
 	ClosedByUserId pulumi.IntPtrInput
 	// Set an issue to be confidential.
 	Confidential pulumi.BoolPtrInput
-	// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires
-	// administrator or project/group owner rights.
+	// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
 	CreatedAt pulumi.StringPtrInput
 	// Whether the issue is deleted instead of closed during destroy.
 	DeleteOnDestroy pulumi.BoolPtrInput
@@ -288,13 +284,12 @@ type ProjectIssueState struct {
 	Description pulumi.StringPtrInput
 	// Whether the issue is locked for discussions or not.
 	DiscussionLocked pulumi.BoolPtrInput
-	// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as
-	// resolved. Use in combination with merge_request_to_resolve_discussions_of.
+	// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
 	DiscussionToResolve pulumi.StringPtrInput
 	// The number of downvotes the issue has received.
 	Downvotes pulumi.IntPtrInput
-	// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11. **Note:** removing a due date is
-	// currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
+	// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+	// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
 	DueDate pulumi.StringPtrInput
 	// ID of the epic to add the issue to. Valid values are greater than or equal to 0.
 	EpicId pulumi.IntPtrInput
@@ -312,19 +307,17 @@ type ProjectIssueState struct {
 	IssueId pulumi.IntPtrInput
 	// The ID of the issue link.
 	IssueLinkId pulumi.IntPtrInput
-	// The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+	// The type of issue. Valid values are: `issue`, `incident`, `testCase`.
 	IssueType pulumi.StringPtrInput
 	// The labels of an issue.
 	Labels pulumi.StringArrayInput
 	// The links of the issue.
 	Links pulumi.StringMapInput
-	// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
-	// all discussions as resolved. When passing a description or title, these values take precedence over the default values.
+	// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
 	MergeRequestToResolveDiscussionsOf pulumi.IntPtrInput
 	// The number of merge requests associated with the issue.
 	MergeRequestsCount pulumi.IntPtrInput
-	// The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with
-	// the milestone assigned and use the API to retrieve the issue's details.
+	// The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
 	MilestoneId pulumi.IntPtrInput
 	// The ID of the issue that was moved to.
 	MovedToId pulumi.IntPtrInput
@@ -365,8 +358,7 @@ type projectIssueArgs struct {
 	AssigneeIds []int `pulumi:"assigneeIds"`
 	// Set an issue to be confidential.
 	Confidential *bool `pulumi:"confidential"`
-	// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires
-	// administrator or project/group owner rights.
+	// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
 	CreatedAt *string `pulumi:"createdAt"`
 	// Whether the issue is deleted instead of closed during destroy.
 	DeleteOnDestroy *bool `pulumi:"deleteOnDestroy"`
@@ -374,25 +366,22 @@ type projectIssueArgs struct {
 	Description *string `pulumi:"description"`
 	// Whether the issue is locked for discussions or not.
 	DiscussionLocked *bool `pulumi:"discussionLocked"`
-	// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as
-	// resolved. Use in combination with merge_request_to_resolve_discussions_of.
+	// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
 	DiscussionToResolve *string `pulumi:"discussionToResolve"`
-	// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11. **Note:** removing a due date is
-	// currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
+	// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+	// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
 	DueDate *string `pulumi:"dueDate"`
 	// The ID of the epic issue.
 	EpicIssueId *int `pulumi:"epicIssueId"`
 	// The internal ID of the project's issue.
 	Iid *int `pulumi:"iid"`
-	// The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+	// The type of issue. Valid values are: `issue`, `incident`, `testCase`.
 	IssueType *string `pulumi:"issueType"`
 	// The labels of an issue.
 	Labels []string `pulumi:"labels"`
-	// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
-	// all discussions as resolved. When passing a description or title, these values take precedence over the default values.
+	// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
 	MergeRequestToResolveDiscussionsOf *int `pulumi:"mergeRequestToResolveDiscussionsOf"`
-	// The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with
-	// the milestone assigned and use the API to retrieve the issue's details.
+	// The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
 	MilestoneId *int `pulumi:"milestoneId"`
 	// The name or ID of the project.
 	Project string `pulumi:"project"`
@@ -412,8 +401,7 @@ type ProjectIssueArgs struct {
 	AssigneeIds pulumi.IntArrayInput
 	// Set an issue to be confidential.
 	Confidential pulumi.BoolPtrInput
-	// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires
-	// administrator or project/group owner rights.
+	// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
 	CreatedAt pulumi.StringPtrInput
 	// Whether the issue is deleted instead of closed during destroy.
 	DeleteOnDestroy pulumi.BoolPtrInput
@@ -421,25 +409,22 @@ type ProjectIssueArgs struct {
 	Description pulumi.StringPtrInput
 	// Whether the issue is locked for discussions or not.
 	DiscussionLocked pulumi.BoolPtrInput
-	// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as
-	// resolved. Use in combination with merge_request_to_resolve_discussions_of.
+	// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
 	DiscussionToResolve pulumi.StringPtrInput
-	// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11. **Note:** removing a due date is
-	// currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
+	// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+	// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
 	DueDate pulumi.StringPtrInput
 	// The ID of the epic issue.
 	EpicIssueId pulumi.IntPtrInput
 	// The internal ID of the project's issue.
 	Iid pulumi.IntPtrInput
-	// The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+	// The type of issue. Valid values are: `issue`, `incident`, `testCase`.
 	IssueType pulumi.StringPtrInput
 	// The labels of an issue.
 	Labels pulumi.StringArrayInput
-	// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
-	// all discussions as resolved. When passing a description or title, these values take precedence over the default values.
+	// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
 	MergeRequestToResolveDiscussionsOf pulumi.IntPtrInput
-	// The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with
-	// the milestone assigned and use the API to retrieve the issue's details.
+	// The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
 	MilestoneId pulumi.IntPtrInput
 	// The name or ID of the project.
 	Project pulumi.StringInput
@@ -479,7 +464,7 @@ func (i *ProjectIssue) ToProjectIssueOutputWithContext(ctx context.Context) Proj
 // ProjectIssueArrayInput is an input type that accepts ProjectIssueArray and ProjectIssueArrayOutput values.
 // You can construct a concrete instance of `ProjectIssueArrayInput` via:
 //
-//          ProjectIssueArray{ ProjectIssueArgs{...} }
+//	ProjectIssueArray{ ProjectIssueArgs{...} }
 type ProjectIssueArrayInput interface {
 	pulumi.Input
 
@@ -504,7 +489,7 @@ func (i ProjectIssueArray) ToProjectIssueArrayOutputWithContext(ctx context.Cont
 // ProjectIssueMapInput is an input type that accepts ProjectIssueMap and ProjectIssueMapOutput values.
 // You can construct a concrete instance of `ProjectIssueMapInput` via:
 //
-//          ProjectIssueMap{ "key": ProjectIssueArgs{...} }
+//	ProjectIssueMap{ "key": ProjectIssueArgs{...} }
 type ProjectIssueMapInput interface {
 	pulumi.Input
 
@@ -545,7 +530,7 @@ func (o ProjectIssueOutput) AssigneeIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *ProjectIssue) pulumi.IntArrayOutput { return v.AssigneeIds }).(pulumi.IntArrayOutput)
 }
 
-// The ID of the author of the issue. Use `gitlab_user` data source to get more information about the user.
+// The ID of the author of the issue. Use `User` data source to get more information about the user.
 func (o ProjectIssueOutput) AuthorId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.AuthorId }).(pulumi.IntOutput)
 }
@@ -555,7 +540,7 @@ func (o ProjectIssueOutput) ClosedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectIssue) pulumi.StringOutput { return v.ClosedAt }).(pulumi.StringOutput)
 }
 
-// The ID of the user that closed the issue. Use `gitlab_user` data source to get more information about the user.
+// The ID of the user that closed the issue. Use `User` data source to get more information about the user.
 func (o ProjectIssueOutput) ClosedByUserId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.ClosedByUserId }).(pulumi.IntOutput)
 }
@@ -565,8 +550,7 @@ func (o ProjectIssueOutput) Confidential() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectIssue) pulumi.BoolPtrOutput { return v.Confidential }).(pulumi.BoolPtrOutput)
 }
 
-// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires
-// administrator or project/group owner rights.
+// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
 func (o ProjectIssueOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectIssue) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -586,8 +570,7 @@ func (o ProjectIssueOutput) DiscussionLocked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectIssue) pulumi.BoolPtrOutput { return v.DiscussionLocked }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as
-// resolved. Use in combination with merge_request_to_resolve_discussions_of.
+// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
 func (o ProjectIssueOutput) DiscussionToResolve() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectIssue) pulumi.StringPtrOutput { return v.DiscussionToResolve }).(pulumi.StringPtrOutput)
 }
@@ -597,8 +580,8 @@ func (o ProjectIssueOutput) Downvotes() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.Downvotes }).(pulumi.IntOutput)
 }
 
-// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11. **Note:** removing a due date is
-// currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
+// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
 func (o ProjectIssueOutput) DueDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectIssue) pulumi.StringPtrOutput { return v.DueDate }).(pulumi.StringPtrOutput)
 }
@@ -643,7 +626,7 @@ func (o ProjectIssueOutput) IssueLinkId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.IssueLinkId }).(pulumi.IntOutput)
 }
 
-// The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+// The type of issue. Valid values are: `issue`, `incident`, `testCase`.
 func (o ProjectIssueOutput) IssueType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectIssue) pulumi.StringPtrOutput { return v.IssueType }).(pulumi.StringPtrOutput)
 }
@@ -658,8 +641,7 @@ func (o ProjectIssueOutput) Links() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ProjectIssue) pulumi.StringMapOutput { return v.Links }).(pulumi.StringMapOutput)
 }
 
-// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
-// all discussions as resolved. When passing a description or title, these values take precedence over the default values.
+// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
 func (o ProjectIssueOutput) MergeRequestToResolveDiscussionsOf() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ProjectIssue) pulumi.IntPtrOutput { return v.MergeRequestToResolveDiscussionsOf }).(pulumi.IntPtrOutput)
 }
@@ -669,8 +651,7 @@ func (o ProjectIssueOutput) MergeRequestsCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectIssue) pulumi.IntOutput { return v.MergeRequestsCount }).(pulumi.IntOutput)
 }
 
-// The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with
-// the milestone assigned and use the API to retrieve the issue's details.
+// The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
 func (o ProjectIssueOutput) MilestoneId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ProjectIssue) pulumi.IntPtrOutput { return v.MilestoneId }).(pulumi.IntPtrOutput)
 }

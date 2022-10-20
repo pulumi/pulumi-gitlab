@@ -19,7 +19,13 @@ namespace Pulumi.GitLab.Outputs
         public readonly int LinkId;
         public readonly string LinkType;
         public readonly string Name;
+        /// <summary>
+        /// The ID or full path to the project.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// The tag associated with the Release.
+        /// </summary>
         public readonly string TagName;
         public readonly string Url;
 

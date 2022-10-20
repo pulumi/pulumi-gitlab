@@ -21,37 +21,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleProject, err := gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
-// 			Description: pulumi.String("An example project"),
-// 			NamespaceId: pulumi.Any(gitlab_group.Example.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewBranch(ctx, "exampleBranch", &gitlab.BranchArgs{
-// 			Ref:     pulumi.String("main"),
-// 			Project: exampleProject.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleProject, err := gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
+//				Description: pulumi.String("An example project"),
+//				NamespaceId: pulumi.Any(gitlab_group.Example.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewBranch(ctx, "exampleBranch", &gitlab.BranchArgs{
+//				Ref:     pulumi.String("main"),
+//				Project: exampleProject.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # Gitlab protected branches can be imported with a key composed of `<project_id>:<branch_name>`, e.g.
+// Gitlab protected branches can be imported with a key composed of `<project_id>:<branch_name>`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/branch:Branch example "12345:develop"
+//
+//	$ pulumi import gitlab:index/branch:Branch example "12345:develop"
+//
 // ```
 type Branch struct {
 	pulumi.CustomResourceState
@@ -213,7 +218,7 @@ func (i *Branch) ToBranchOutputWithContext(ctx context.Context) BranchOutput {
 // BranchArrayInput is an input type that accepts BranchArray and BranchArrayOutput values.
 // You can construct a concrete instance of `BranchArrayInput` via:
 //
-//          BranchArray{ BranchArgs{...} }
+//	BranchArray{ BranchArgs{...} }
 type BranchArrayInput interface {
 	pulumi.Input
 
@@ -238,7 +243,7 @@ func (i BranchArray) ToBranchArrayOutputWithContext(ctx context.Context) BranchA
 // BranchMapInput is an input type that accepts BranchMap and BranchMapOutput values.
 // You can construct a concrete instance of `BranchMapInput` via:
 //
-//          BranchMap{ "key": BranchArgs{...} }
+//	BranchMap{ "key": BranchArgs{...} }
 type BranchMapInput interface {
 	pulumi.Input
 

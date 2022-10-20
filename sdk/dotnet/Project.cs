@@ -13,57 +13,58 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new GitLab.Project("example", new()
     ///     {
-    ///         var example = new GitLab.Project("example", new GitLab.ProjectArgs
-    ///         {
-    ///             Description = "My awesome codebase",
-    ///             VisibilityLevel = "public",
-    ///         });
-    ///         // Project with custom push rules
-    ///         var example_two = new GitLab.Project("example-two", new GitLab.ProjectArgs
-    ///         {
-    ///             PushRules = new GitLab.Inputs.ProjectPushRulesArgs
-    ///             {
-    ///                 AuthorEmailRegex = "@example\\.com$",
-    ///                 CommitCommitterCheck = true,
-    ///                 MemberCheck = true,
-    ///                 PreventSecrets = true,
-    ///             },
-    ///         });
-    ///         var peterParker = Output.Create(GitLab.GetUser.InvokeAsync(new GitLab.GetUserArgs
-    ///         {
-    ///             Username = "peter_parker",
-    ///         }));
-    ///         var petersRepo = new GitLab.Project("petersRepo", new GitLab.ProjectArgs
-    ///         {
-    ///             Description = "This is a description",
-    ///             NamespaceId = peterParker.Apply(peterParker =&gt; peterParker.NamespaceId),
-    ///         });
-    ///     }
+    ///         Description = "My awesome codebase",
+    ///         VisibilityLevel = "public",
+    ///     });
     /// 
-    /// }
+    ///     // Project with custom push rules
+    ///     var example_two = new GitLab.Project("example-two", new()
+    ///     {
+    ///         PushRules = new GitLab.Inputs.ProjectPushRulesArgs
+    ///         {
+    ///             AuthorEmailRegex = "@example\\.com$",
+    ///             CommitCommitterCheck = true,
+    ///             MemberCheck = true,
+    ///             PreventSecrets = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var peterParker = GitLab.GetUser.Invoke(new()
+    ///     {
+    ///         Username = "peter_parker",
+    ///     });
+    /// 
+    ///     var petersRepo = new GitLab.Project("petersRepo", new()
+    ///     {
+    ///         Description = "This is a description",
+    ///         NamespaceId = peterParker.Apply(getUserResult =&gt; getUserResult.NamespaceId),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/project:Project # You can import a project state using `&lt;resource&gt; &lt;id&gt;`. The
+    ///  $ pulumi import gitlab:index/project:Project You can import a project state using `&lt;resource&gt; &lt;id&gt;`. The
     /// ```
     /// 
-    /// # `id` can be whatever the [get single project api][get_single_project] takes for # its `:id` value, so for example
+    ///  `id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/project:Project example richardc/example
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/project:Project")]
-    public partial class Project : Pulumi.CustomResource
+    public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Set to true if you want to treat skipped pipelines as if they finished with success.
@@ -78,17 +79,16 @@ namespace Pulumi.GitLab
         public Output<string> AnalyticsAccessLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
-        /// with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
-        /// [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
-        /// this attribute and use `gitlab_project_approval_rule` instead.
+        /// Number of merge request approvals required for merging. Default is 0.
+        /// This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource
+        /// and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
+        /// In the meantime we recommend against using this attribute and use `gitlab.ProjectApprovalRule` instead.
         /// </summary>
         [Output("approvalsBeforeMerge")]
         public Output<int?> ApprovalsBeforeMerge { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE`
-        /// operation.
+        /// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
         /// </summary>
         [Output("archiveOnDestroy")]
         public Output<bool?> ArchiveOnDestroy { get; private set; } = null!;
@@ -166,8 +166,7 @@ namespace Pulumi.GitLab
         public Output<bool?> CiForwardDeploymentEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Set the image cleanup policy for this project. **Note**: this field is sometimes named
-        /// `container_expiration_policy_attributes` in the GitLab Upstream API.
+        /// Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         /// </summary>
         [Output("containerExpirationPolicy")]
         public Output<Outputs.ProjectContainerExpirationPolicy> ContainerExpirationPolicy { get; private set; } = null!;
@@ -215,8 +214,7 @@ namespace Pulumi.GitLab
         public Output<string> ForkingAccessLevel { get; private set; } = null!;
 
         /// <summary>
-        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave
-        /// empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         /// </summary>
         [Output("groupWithProjectTemplatesId")]
         public Output<int?> GroupWithProjectTemplatesId { get; private set; } = null!;
@@ -462,10 +460,10 @@ namespace Pulumi.GitLab
         public Output<bool> SharedRunnersEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
-        /// the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
-        /// no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
-        /// attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
+        /// If `true`, the default behavior to wait for the default branch protection to be created is skipped.
+        /// This is necessary if the current user is not an admin and the default branch protection is disabled on an instance-level.
+        /// There is currently no known way to determine if the default branch protection is disabled on an instance-level for non-admin users.
+        /// This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
         /// </summary>
         [Output("skipWaitForDefaultBranchProtection")]
         public Output<bool?> SkipWaitForDefaultBranchProtection { get; private set; } = null!;
@@ -489,8 +487,7 @@ namespace Pulumi.GitLab
         public Output<string?> SquashCommitTemplate { get; private set; } = null!;
 
         /// <summary>
-        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value
-        /// is `default_off`. [GitLab &gt;= 14.1]
+        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
         /// </summary>
         [Output("squashOption")]
         public Output<string?> SquashOption { get; private set; } = null!;
@@ -508,15 +505,13 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of
-        /// a custom project template. This option is mutually exclusive with `template_project_id`.
+        /// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         /// </summary>
         [Output("templateName")]
         public Output<string?> TemplateName { get; private set; } = null!;
 
         /// <summary>
-        /// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name
-        /// since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        /// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `gitlab.GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         /// </summary>
         [Output("templateProjectId")]
         public Output<int?> TemplateProjectId { get; private set; } = null!;
@@ -528,7 +523,7 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<string>> Topics { get; private set; } = null!;
 
         /// <summary>
-        /// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        /// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
         /// </summary>
         [Output("useCustomTemplate")]
         public Output<bool?> UseCustomTemplate { get; private set; } = null!;
@@ -580,6 +575,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "runnersToken",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -601,7 +600,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ProjectArgs : Pulumi.ResourceArgs
+    public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set to true if you want to treat skipped pipelines as if they finished with success.
@@ -616,17 +615,16 @@ namespace Pulumi.GitLab
         public Input<string>? AnalyticsAccessLevel { get; set; }
 
         /// <summary>
-        /// Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
-        /// with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
-        /// [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
-        /// this attribute and use `gitlab_project_approval_rule` instead.
+        /// Number of merge request approvals required for merging. Default is 0.
+        /// This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource
+        /// and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
+        /// In the meantime we recommend against using this attribute and use `gitlab.ProjectApprovalRule` instead.
         /// </summary>
         [Input("approvalsBeforeMerge")]
         public Input<int>? ApprovalsBeforeMerge { get; set; }
 
         /// <summary>
-        /// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE`
-        /// operation.
+        /// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
         /// </summary>
         [Input("archiveOnDestroy")]
         public Input<bool>? ArchiveOnDestroy { get; set; }
@@ -704,8 +702,7 @@ namespace Pulumi.GitLab
         public Input<bool>? CiForwardDeploymentEnabled { get; set; }
 
         /// <summary>
-        /// Set the image cleanup policy for this project. **Note**: this field is sometimes named
-        /// `container_expiration_policy_attributes` in the GitLab Upstream API.
+        /// Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         /// </summary>
         [Input("containerExpirationPolicy")]
         public Input<Inputs.ProjectContainerExpirationPolicyArgs>? ContainerExpirationPolicy { get; set; }
@@ -753,8 +750,7 @@ namespace Pulumi.GitLab
         public Input<string>? ForkingAccessLevel { get; set; }
 
         /// <summary>
-        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave
-        /// empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         /// </summary>
         [Input("groupWithProjectTemplatesId")]
         public Input<int>? GroupWithProjectTemplatesId { get; set; }
@@ -982,10 +978,10 @@ namespace Pulumi.GitLab
         public Input<bool>? SharedRunnersEnabled { get; set; }
 
         /// <summary>
-        /// If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
-        /// the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
-        /// no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
-        /// attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
+        /// If `true`, the default behavior to wait for the default branch protection to be created is skipped.
+        /// This is necessary if the current user is not an admin and the default branch protection is disabled on an instance-level.
+        /// There is currently no known way to determine if the default branch protection is disabled on an instance-level for non-admin users.
+        /// This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
         /// </summary>
         [Input("skipWaitForDefaultBranchProtection")]
         public Input<bool>? SkipWaitForDefaultBranchProtection { get; set; }
@@ -1009,8 +1005,7 @@ namespace Pulumi.GitLab
         public Input<string>? SquashCommitTemplate { get; set; }
 
         /// <summary>
-        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value
-        /// is `default_off`. [GitLab &gt;= 14.1]
+        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
         /// </summary>
         [Input("squashOption")]
         public Input<string>? SquashOption { get; set; }
@@ -1028,15 +1023,13 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of
-        /// a custom project template. This option is mutually exclusive with `template_project_id`.
+        /// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         /// </summary>
         [Input("templateName")]
         public Input<string>? TemplateName { get; set; }
 
         /// <summary>
-        /// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name
-        /// since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        /// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `gitlab.GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         /// </summary>
         [Input("templateProjectId")]
         public Input<int>? TemplateProjectId { get; set; }
@@ -1054,7 +1047,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        /// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
         /// </summary>
         [Input("useCustomTemplate")]
         public Input<bool>? UseCustomTemplate { get; set; }
@@ -1080,9 +1073,10 @@ namespace Pulumi.GitLab
         public ProjectArgs()
         {
         }
+        public static new ProjectArgs Empty => new ProjectArgs();
     }
 
-    public sealed class ProjectState : Pulumi.ResourceArgs
+    public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set to true if you want to treat skipped pipelines as if they finished with success.
@@ -1097,17 +1091,16 @@ namespace Pulumi.GitLab
         public Input<string>? AnalyticsAccessLevel { get; set; }
 
         /// <summary>
-        /// Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
-        /// with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
-        /// [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
-        /// this attribute and use `gitlab_project_approval_rule` instead.
+        /// Number of merge request approvals required for merging. Default is 0.
+        /// This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource
+        /// and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
+        /// In the meantime we recommend against using this attribute and use `gitlab.ProjectApprovalRule` instead.
         /// </summary>
         [Input("approvalsBeforeMerge")]
         public Input<int>? ApprovalsBeforeMerge { get; set; }
 
         /// <summary>
-        /// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE`
-        /// operation.
+        /// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
         /// </summary>
         [Input("archiveOnDestroy")]
         public Input<bool>? ArchiveOnDestroy { get; set; }
@@ -1185,8 +1178,7 @@ namespace Pulumi.GitLab
         public Input<bool>? CiForwardDeploymentEnabled { get; set; }
 
         /// <summary>
-        /// Set the image cleanup policy for this project. **Note**: this field is sometimes named
-        /// `container_expiration_policy_attributes` in the GitLab Upstream API.
+        /// Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         /// </summary>
         [Input("containerExpirationPolicy")]
         public Input<Inputs.ProjectContainerExpirationPolicyGetArgs>? ContainerExpirationPolicy { get; set; }
@@ -1234,8 +1226,7 @@ namespace Pulumi.GitLab
         public Input<string>? ForkingAccessLevel { get; set; }
 
         /// <summary>
-        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave
-        /// empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+        /// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         /// </summary>
         [Input("groupWithProjectTemplatesId")]
         public Input<int>? GroupWithProjectTemplatesId { get; set; }
@@ -1462,11 +1453,21 @@ namespace Pulumi.GitLab
         [Input("resolveOutdatedDiffDiscussions")]
         public Input<bool>? ResolveOutdatedDiffDiscussions { get; set; }
 
+        [Input("runnersToken")]
+        private Input<string>? _runnersToken;
+
         /// <summary>
         /// Registration token to use during runner setup.
         /// </summary>
-        [Input("runnersToken")]
-        public Input<string>? RunnersToken { get; set; }
+        public Input<string>? RunnersToken
+        {
+            get => _runnersToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _runnersToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1481,10 +1482,10 @@ namespace Pulumi.GitLab
         public Input<bool>? SharedRunnersEnabled { get; set; }
 
         /// <summary>
-        /// If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
-        /// the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
-        /// no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
-        /// attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
+        /// If `true`, the default behavior to wait for the default branch protection to be created is skipped.
+        /// This is necessary if the current user is not an admin and the default branch protection is disabled on an instance-level.
+        /// There is currently no known way to determine if the default branch protection is disabled on an instance-level for non-admin users.
+        /// This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
         /// </summary>
         [Input("skipWaitForDefaultBranchProtection")]
         public Input<bool>? SkipWaitForDefaultBranchProtection { get; set; }
@@ -1508,8 +1509,7 @@ namespace Pulumi.GitLab
         public Input<string>? SquashCommitTemplate { get; set; }
 
         /// <summary>
-        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value
-        /// is `default_off`. [GitLab &gt;= 14.1]
+        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
         /// </summary>
         [Input("squashOption")]
         public Input<string>? SquashOption { get; set; }
@@ -1533,15 +1533,13 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of
-        /// a custom project template. This option is mutually exclusive with `template_project_id`.
+        /// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         /// </summary>
         [Input("templateName")]
         public Input<string>? TemplateName { get; set; }
 
         /// <summary>
-        /// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name
-        /// since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+        /// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `gitlab.GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         /// </summary>
         [Input("templateProjectId")]
         public Input<int>? TemplateProjectId { get; set; }
@@ -1559,7 +1557,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+        /// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
         /// </summary>
         [Input("useCustomTemplate")]
         public Input<bool>? UseCustomTemplate { get; set; }
@@ -1591,5 +1589,6 @@ namespace Pulumi.GitLab
         public ProjectState()
         {
         }
+        public static new ProjectState Empty => new ProjectState();
     }
 }

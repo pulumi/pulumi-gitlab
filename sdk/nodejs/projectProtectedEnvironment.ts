@@ -2,11 +2,18 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * The `gitlab.ProjectProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a project.
+ *
+ * > In order to use a user or group in the `deployAccessLevels` configuration,
+ *    you need to make sure that users have access to the project and groups must have this project shared.
+ *    You may use the `gitlab.ProjectMembership` and `gitlabProjectSharedGroup` resources to achieve this.
+ *    Unfortunately, the GitLab API does not complain about users and groups without access to the project and just ignores those.
+ *    In case this happens you will get perpetual state diffs.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_environments.html)
  *
@@ -66,7 +73,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # GitLab protected environments can be imported using an id made up of `projectId:environmentName`, e.g.
+ * GitLab protected environments can be imported using an id made up of `projectId:environmentName`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment bar 123:production

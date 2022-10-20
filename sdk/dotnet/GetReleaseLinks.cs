@@ -21,27 +21,25 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = GitLab.GetReleaseLinks.Invoke(new()
         ///     {
-        ///         var example = Output.Create(GitLab.GetReleaseLinks.InvokeAsync(new GitLab.GetReleaseLinksArgs
-        ///         {
-        ///             Project = "foo/bar",
-        ///             TagName = "v1.0.1",
-        ///         }));
-        ///     }
+        ///         Project = "foo/bar",
+        ///         TagName = "v1.0.1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetReleaseLinksResult> InvokeAsync(GetReleaseLinksArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReleaseLinksResult>("gitlab:index/getReleaseLinks:getReleaseLinks", args ?? new GetReleaseLinksArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetReleaseLinksResult>("gitlab:index/getReleaseLinks:getReleaseLinks", args ?? new GetReleaseLinksArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `gitlab.getReleaseLinks` data source allows get details of release links.
@@ -53,54 +51,66 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = GitLab.GetReleaseLinks.Invoke(new()
         ///     {
-        ///         var example = Output.Create(GitLab.GetReleaseLinks.InvokeAsync(new GitLab.GetReleaseLinksArgs
-        ///         {
-        ///             Project = "foo/bar",
-        ///             TagName = "v1.0.1",
-        ///         }));
-        ///     }
+        ///         Project = "foo/bar",
+        ///         TagName = "v1.0.1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetReleaseLinksResult> Invoke(GetReleaseLinksInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReleaseLinksResult>("gitlab:index/getReleaseLinks:getReleaseLinks", args ?? new GetReleaseLinksInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetReleaseLinksResult>("gitlab:index/getReleaseLinks:getReleaseLinks", args ?? new GetReleaseLinksInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetReleaseLinksArgs : Pulumi.InvokeArgs
+    public sealed class GetReleaseLinksArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID or full path to the project.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// The tag associated with the Release.
+        /// </summary>
         [Input("tagName", required: true)]
         public string TagName { get; set; } = null!;
 
         public GetReleaseLinksArgs()
         {
         }
+        public static new GetReleaseLinksArgs Empty => new GetReleaseLinksArgs();
     }
 
-    public sealed class GetReleaseLinksInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetReleaseLinksInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID or full path to the project.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// The tag associated with the Release.
+        /// </summary>
         [Input("tagName", required: true)]
         public Input<string> TagName { get; set; } = null!;
 
         public GetReleaseLinksInvokeArgs()
         {
         }
+        public static new GetReleaseLinksInvokeArgs Empty => new GetReleaseLinksInvokeArgs();
     }
 
 
@@ -111,8 +121,17 @@ namespace Pulumi.GitLab
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ID or full path to the project.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// List of release links
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetReleaseLinksReleaseLinkResult> ReleaseLinks;
+        /// <summary>
+        /// The tag associated with the Release.
+        /// </summary>
         public readonly string TagName;
 
         [OutputConstructor]

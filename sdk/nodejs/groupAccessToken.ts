@@ -32,13 +32,13 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # A GitLab Group Access Token can be imported using a key composed of `<group-id>:<token-id>`, e.g.
+ * A GitLab Group Access Token can be imported using a key composed of `<group-id>:<token-id>`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example "12345:1"
  * ```
  *
- * # ATTENTIONthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+ *  ATTENTIONthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  */
 export class GroupAccessToken extends pulumi.CustomResource {
     /**
@@ -97,13 +97,11 @@ export class GroupAccessToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly revoked!: pulumi.Output<boolean>;
     /**
-     * The scope for the group access token. It determines the actions which can be performed when authenticating with this
-     * token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+     * The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
-     * The group access token. This is only populated when creating a new group access token. This attribute is not available
-     * for imported resources.
+     * The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
      */
     public /*out*/ readonly token!: pulumi.Output<string>;
     /**
@@ -154,6 +152,8 @@ export class GroupAccessToken extends pulumi.CustomResource {
             resourceInputs["userId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(GroupAccessToken.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -191,13 +191,11 @@ export interface GroupAccessTokenState {
      */
     revoked?: pulumi.Input<boolean>;
     /**
-     * The scope for the group access token. It determines the actions which can be performed when authenticating with this
-     * token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+     * The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The group access token. This is only populated when creating a new group access token. This attribute is not available
-     * for imported resources.
+     * The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
      */
     token?: pulumi.Input<string>;
     /**
@@ -227,8 +225,7 @@ export interface GroupAccessTokenArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The scope for the group access token. It determines the actions which can be performed when authenticating with this
-     * token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+     * The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
 }

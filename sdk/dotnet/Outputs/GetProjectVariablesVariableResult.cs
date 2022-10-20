@@ -13,9 +13,15 @@ namespace Pulumi.GitLab.Outputs
     [OutputType]
     public sealed class GetProjectVariablesVariableResult
     {
+        /// <summary>
+        /// The environment scope of the variable. Defaults to all environment (`*`).
+        /// </summary>
         public readonly string EnvironmentScope;
         public readonly string Key;
         public readonly bool Masked;
+        /// <summary>
+        /// The name or id of the project.
+        /// </summary>
         public readonly string Project;
         public readonly bool Protected;
         public readonly string Value;

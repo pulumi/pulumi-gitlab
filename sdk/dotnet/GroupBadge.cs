@@ -17,37 +17,34 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var foo = new GitLab.Group("foo", new GitLab.GroupArgs
-    ///         {
-    ///         });
-    ///         var example = new GitLab.GroupBadge("example", new GitLab.GroupBadgeArgs
-    ///         {
-    ///             Group = foo.Id,
-    ///             LinkUrl = "https://example.com/badge-123",
-    ///             ImageUrl = "https://example.com/badge-123.svg",
-    ///         });
-    ///     }
+    ///     var foo = new GitLab.Group("foo");
     /// 
-    /// }
+    ///     var example = new GitLab.GroupBadge("example", new()
+    ///     {
+    ///         Group = foo.Id,
+    ///         LinkUrl = "https://example.com/badge-123",
+    ///         ImageUrl = "https://example.com/badge-123.svg",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # GitLab group badges can be imported using an id made up of `{group_id}:{badge_id}`, e.g.
+    /// GitLab group badges can be imported using an id made up of `{group_id}:{badge_id}`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/groupBadge:GroupBadge foo 1:3
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/groupBadge:GroupBadge")]
-    public partial class GroupBadge : Pulumi.CustomResource
+    public partial class GroupBadge : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The id of the group to add the badge to.
@@ -123,7 +120,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class GroupBadgeArgs : Pulumi.ResourceArgs
+    public sealed class GroupBadgeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the group to add the badge to.
@@ -146,9 +143,10 @@ namespace Pulumi.GitLab
         public GroupBadgeArgs()
         {
         }
+        public static new GroupBadgeArgs Empty => new GroupBadgeArgs();
     }
 
-    public sealed class GroupBadgeState : Pulumi.ResourceArgs
+    public sealed class GroupBadgeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the group to add the badge to.
@@ -183,5 +181,6 @@ namespace Pulumi.GitLab
         public GroupBadgeState()
         {
         }
+        public static new GroupBadgeState Empty => new GroupBadgeState();
     }
 }

@@ -39,7 +39,13 @@ export function getClusterAgent(args: GetClusterAgentArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getClusterAgent.
  */
 export interface GetClusterAgentArgs {
+    /**
+     * The ID of the agent.
+     */
     agentId: number;
+    /**
+     * ID or full path of the project maintained by the authenticated user.
+     */
     project: string;
 }
 
@@ -47,14 +53,29 @@ export interface GetClusterAgentArgs {
  * A collection of values returned by getClusterAgent.
  */
 export interface GetClusterAgentResult {
+    /**
+     * The ID of the agent.
+     */
     readonly agentId: number;
+    /**
+     * The ISO8601 datetime when the agent was created.
+     */
     readonly createdAt: string;
+    /**
+     * The ID of the user who created the agent.
+     */
     readonly createdByUserId: number;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The Name of the agent.
+     */
     readonly name: string;
+    /**
+     * ID or full path of the project maintained by the authenticated user.
+     */
     readonly project: string;
 }
 
@@ -66,6 +87,12 @@ export function getClusterAgentOutput(args: GetClusterAgentOutputArgs, opts?: pu
  * A collection of arguments for invoking getClusterAgent.
  */
 export interface GetClusterAgentOutputArgs {
+    /**
+     * The ID of the agent.
+     */
     agentId: pulumi.Input<number>;
+    /**
+     * ID or full path of the project maintained by the authenticated user.
+     */
     project: pulumi.Input<string>;
 }

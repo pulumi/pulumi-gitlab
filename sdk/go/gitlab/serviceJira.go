@@ -21,39 +21,44 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		awesomeProject, err := gitlab.NewProject(ctx, "awesomeProject", &gitlab.ProjectArgs{
-// 			Description:     pulumi.String("My awesome project."),
-// 			VisibilityLevel: pulumi.String("public"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewServiceJira(ctx, "jira", &gitlab.ServiceJiraArgs{
-// 			Project:  awesomeProject.ID(),
-// 			Url:      pulumi.String("https://jira.example.com"),
-// 			Username: pulumi.String("user"),
-// 			Password: pulumi.String("mypass"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			awesomeProject, err := gitlab.NewProject(ctx, "awesomeProject", &gitlab.ProjectArgs{
+//				Description:     pulumi.String("My awesome project."),
+//				VisibilityLevel: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewServiceJira(ctx, "jira", &gitlab.ServiceJiraArgs{
+//				Project:  awesomeProject.ID(),
+//				Url:      pulumi.String("https://jira.example.com"),
+//				Username: pulumi.String("user"),
+//				Password: pulumi.String("mypass"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # You can import a service_jira state using the project ID, e.g.
+// You can import a service_jira state using the project ID, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/serviceJira:ServiceJira jira 1
+//
+//	$ pulumi import gitlab:index/serviceJira:ServiceJira jira 1
+//
 // ```
 type ServiceJira struct {
 	pulumi.CustomResourceState
@@ -70,9 +75,7 @@ type ServiceJira struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Enable notifications for issues events.
 	IssuesEvents pulumi.BoolOutput `pulumi:"issuesEvents"`
-	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
-	// administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
-	// project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
+	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
 	JiraIssueTransitionId pulumi.StringPtrOutput `pulumi:"jiraIssueTransitionId"`
 	// Enable notifications for job events.
 	JobEvents pulumi.BoolOutput `pulumi:"jobEvents"`
@@ -90,7 +93,7 @@ type ServiceJira struct {
 	ProjectKey pulumi.StringPtrOutput `pulumi:"projectKey"`
 	// Enable notifications for push events.
 	PushEvents pulumi.BoolOutput `pulumi:"pushEvents"`
-	// Enable notifications for tag_push events.
+	// Enable notifications for tagPush events.
 	TagPushEvents pulumi.BoolOutput `pulumi:"tagPushEvents"`
 	// Title.
 	Title pulumi.StringOutput `pulumi:"title"`
@@ -121,6 +124,13 @@ func NewServiceJira(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource ServiceJira
 	err := ctx.RegisterResource("gitlab:index/serviceJira:ServiceJira", name, args, &resource, opts...)
 	if err != nil {
@@ -155,9 +165,7 @@ type serviceJiraState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// Enable notifications for issues events.
 	IssuesEvents *bool `pulumi:"issuesEvents"`
-	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
-	// administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
-	// project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
+	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
 	// Enable notifications for job events.
 	JobEvents *bool `pulumi:"jobEvents"`
@@ -175,7 +183,7 @@ type serviceJiraState struct {
 	ProjectKey *string `pulumi:"projectKey"`
 	// Enable notifications for push events.
 	PushEvents *bool `pulumi:"pushEvents"`
-	// Enable notifications for tag_push events.
+	// Enable notifications for tagPush events.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// Title.
 	Title *string `pulumi:"title"`
@@ -200,9 +208,7 @@ type ServiceJiraState struct {
 	CreatedAt pulumi.StringPtrInput
 	// Enable notifications for issues events.
 	IssuesEvents pulumi.BoolPtrInput
-	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
-	// administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
-	// project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
+	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
 	JiraIssueTransitionId pulumi.StringPtrInput
 	// Enable notifications for job events.
 	JobEvents pulumi.BoolPtrInput
@@ -220,7 +226,7 @@ type ServiceJiraState struct {
 	ProjectKey pulumi.StringPtrInput
 	// Enable notifications for push events.
 	PushEvents pulumi.BoolPtrInput
-	// Enable notifications for tag_push events.
+	// Enable notifications for tagPush events.
 	TagPushEvents pulumi.BoolPtrInput
 	// Title.
 	Title pulumi.StringPtrInput
@@ -245,9 +251,7 @@ type serviceJiraArgs struct {
 	CommitEvents *bool `pulumi:"commitEvents"`
 	// Enable notifications for issues events.
 	IssuesEvents *bool `pulumi:"issuesEvents"`
-	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
-	// administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
-	// project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
+	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
 	// Enable notifications for job events.
 	JobEvents *bool `pulumi:"jobEvents"`
@@ -265,7 +269,7 @@ type serviceJiraArgs struct {
 	ProjectKey *string `pulumi:"projectKey"`
 	// Enable notifications for push events.
 	PushEvents *bool `pulumi:"pushEvents"`
-	// Enable notifications for tag_push events.
+	// Enable notifications for tagPush events.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
 	Url string `pulumi:"url"`
@@ -283,9 +287,7 @@ type ServiceJiraArgs struct {
 	CommitEvents pulumi.BoolPtrInput
 	// Enable notifications for issues events.
 	IssuesEvents pulumi.BoolPtrInput
-	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
-	// administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
-	// project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
+	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
 	JiraIssueTransitionId pulumi.StringPtrInput
 	// Enable notifications for job events.
 	JobEvents pulumi.BoolPtrInput
@@ -303,7 +305,7 @@ type ServiceJiraArgs struct {
 	ProjectKey pulumi.StringPtrInput
 	// Enable notifications for push events.
 	PushEvents pulumi.BoolPtrInput
-	// Enable notifications for tag_push events.
+	// Enable notifications for tagPush events.
 	TagPushEvents pulumi.BoolPtrInput
 	// The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
 	Url pulumi.StringInput
@@ -337,7 +339,7 @@ func (i *ServiceJira) ToServiceJiraOutputWithContext(ctx context.Context) Servic
 // ServiceJiraArrayInput is an input type that accepts ServiceJiraArray and ServiceJiraArrayOutput values.
 // You can construct a concrete instance of `ServiceJiraArrayInput` via:
 //
-//          ServiceJiraArray{ ServiceJiraArgs{...} }
+//	ServiceJiraArray{ ServiceJiraArgs{...} }
 type ServiceJiraArrayInput interface {
 	pulumi.Input
 
@@ -362,7 +364,7 @@ func (i ServiceJiraArray) ToServiceJiraArrayOutputWithContext(ctx context.Contex
 // ServiceJiraMapInput is an input type that accepts ServiceJiraMap and ServiceJiraMapOutput values.
 // You can construct a concrete instance of `ServiceJiraMapInput` via:
 //
-//          ServiceJiraMap{ "key": ServiceJiraArgs{...} }
+//	ServiceJiraMap{ "key": ServiceJiraArgs{...} }
 type ServiceJiraMapInput interface {
 	pulumi.Input
 
@@ -428,9 +430,7 @@ func (o ServiceJiraOutput) IssuesEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServiceJira) pulumi.BoolOutput { return v.IssuesEvents }).(pulumi.BoolOutput)
 }
 
-// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
-// administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
-// project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
+// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
 func (o ServiceJiraOutput) JiraIssueTransitionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceJira) pulumi.StringPtrOutput { return v.JiraIssueTransitionId }).(pulumi.StringPtrOutput)
 }
@@ -475,7 +475,7 @@ func (o ServiceJiraOutput) PushEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServiceJira) pulumi.BoolOutput { return v.PushEvents }).(pulumi.BoolOutput)
 }
 
-// Enable notifications for tag_push events.
+// Enable notifications for tagPush events.
 func (o ServiceJiraOutput) TagPushEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServiceJira) pulumi.BoolOutput { return v.TagPushEvents }).(pulumi.BoolOutput)
 }

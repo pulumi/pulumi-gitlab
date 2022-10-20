@@ -19,39 +19,36 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var test = new GitLab.GroupMembership("test", new()
     ///     {
-    ///         var test = new GitLab.GroupMembership("test", new GitLab.GroupMembershipArgs
-    ///         {
-    ///             AccessLevel = "guest",
-    ///             ExpiresAt = "2020-12-31",
-    ///             GroupId = "12345",
-    ///             UserId = 1337,
-    ///         });
-    ///     }
+    ///         AccessLevel = "guest",
+    ///         ExpiresAt = "2020-12-31",
+    ///         GroupId = "12345",
+    ///         UserId = 1337,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
+    /// GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/groupMembership:GroupMembership test "12345:1337"
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/groupMembership:GroupMembership")]
-    public partial class GroupMembership : Pulumi.CustomResource
+    public partial class GroupMembership : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-        /// `owner`, `master`.
+        /// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -67,6 +64,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
+        /// </summary>
+        [Output("skipSubresourcesOnDestroy")]
+        public Output<bool?> SkipSubresourcesOnDestroy { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
+        /// </summary>
+        [Output("unassignIssuablesOnDestroy")]
+        public Output<bool?> UnassignIssuablesOnDestroy { get; private set; } = null!;
 
         /// <summary>
         /// The id of the user.
@@ -118,11 +127,10 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class GroupMembershipArgs : Pulumi.ResourceArgs
+    public sealed class GroupMembershipArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-        /// `owner`, `master`.
+        /// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
         /// </summary>
         [Input("accessLevel", required: true)]
         public Input<string> AccessLevel { get; set; } = null!;
@@ -140,6 +148,18 @@ namespace Pulumi.GitLab
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
+        /// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
+        /// </summary>
+        [Input("skipSubresourcesOnDestroy")]
+        public Input<bool>? SkipSubresourcesOnDestroy { get; set; }
+
+        /// <summary>
+        /// Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
+        /// </summary>
+        [Input("unassignIssuablesOnDestroy")]
+        public Input<bool>? UnassignIssuablesOnDestroy { get; set; }
+
+        /// <summary>
         /// The id of the user.
         /// </summary>
         [Input("userId", required: true)]
@@ -148,13 +168,13 @@ namespace Pulumi.GitLab
         public GroupMembershipArgs()
         {
         }
+        public static new GroupMembershipArgs Empty => new GroupMembershipArgs();
     }
 
-    public sealed class GroupMembershipState : Pulumi.ResourceArgs
+    public sealed class GroupMembershipState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-        /// `owner`, `master`.
+        /// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -172,6 +192,18 @@ namespace Pulumi.GitLab
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
+        /// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
+        /// </summary>
+        [Input("skipSubresourcesOnDestroy")]
+        public Input<bool>? SkipSubresourcesOnDestroy { get; set; }
+
+        /// <summary>
+        /// Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
+        /// </summary>
+        [Input("unassignIssuablesOnDestroy")]
+        public Input<bool>? UnassignIssuablesOnDestroy { get; set; }
+
+        /// <summary>
         /// The id of the user.
         /// </summary>
         [Input("userId")]
@@ -180,5 +212,6 @@ namespace Pulumi.GitLab
         public GroupMembershipState()
         {
         }
+        public static new GroupMembershipState Empty => new GroupMembershipState();
     }
 }

@@ -10,31 +10,53 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab.Inputs
 {
 
-    public sealed class ProjectContainerExpirationPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class ProjectContainerExpirationPolicyGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
+        /// </summary>
         [Input("cadence")]
         public Input<string>? Cadence { get; set; }
 
+        /// <summary>
+        /// If true, the policy is enabled.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// The number of images to keep.
+        /// </summary>
         [Input("keepN")]
         public Input<int>? KeepN { get; set; }
 
+        /// <summary>
+        /// The regular expression to match image names to delete. **Note**: the upstream API has some inconsistencies with the `name_regex` field here. It's basically unusable at the moment.
+        /// </summary>
         [Input("nameRegexDelete")]
         public Input<string>? NameRegexDelete { get; set; }
 
+        /// <summary>
+        /// The regular expression to match image names to keep.
+        /// </summary>
         [Input("nameRegexKeep")]
         public Input<string>? NameRegexKeep { get; set; }
 
+        /// <summary>
+        /// The next time the policy will run.
+        /// </summary>
         [Input("nextRunAt")]
         public Input<string>? NextRunAt { get; set; }
 
+        /// <summary>
+        /// The number of days to keep images.
+        /// </summary>
         [Input("olderThan")]
         public Input<string>? OlderThan { get; set; }
 
         public ProjectContainerExpirationPolicyGetArgs()
         {
         }
+        public static new ProjectContainerExpirationPolicyGetArgs Empty => new ProjectContainerExpirationPolicyGetArgs();
     }
 }

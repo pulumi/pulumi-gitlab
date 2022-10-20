@@ -26,44 +26,76 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
-	Email       *string `pulumi:"email"`
-	NamespaceId *int    `pulumi:"namespaceId"`
-	UserId      *int    `pulumi:"userId"`
-	Username    *string `pulumi:"username"`
+	// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+	Email *string `pulumi:"email"`
+	// The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+	NamespaceId *int `pulumi:"namespaceId"`
+	// The ID of the user.
+	UserId *int `pulumi:"userId"`
+	// The username of the user.
+	Username *string `pulumi:"username"`
 }
 
 // A collection of values returned by getUser.
 type LookupUserResult struct {
-	AvatarUrl        string `pulumi:"avatarUrl"`
-	Bio              string `pulumi:"bio"`
-	CanCreateGroup   bool   `pulumi:"canCreateGroup"`
-	CanCreateProject bool   `pulumi:"canCreateProject"`
-	ColorSchemeId    int    `pulumi:"colorSchemeId"`
-	CreatedAt        string `pulumi:"createdAt"`
-	CurrentSignInAt  string `pulumi:"currentSignInAt"`
-	Email            string `pulumi:"email"`
-	ExternUid        string `pulumi:"externUid"`
-	External         bool   `pulumi:"external"`
+	// The avatar URL of the user.
+	AvatarUrl string `pulumi:"avatarUrl"`
+	// The bio of the user.
+	Bio string `pulumi:"bio"`
+	// Whether the user can create groups.
+	CanCreateGroup bool `pulumi:"canCreateGroup"`
+	// Whether the user can create projects.
+	CanCreateProject bool `pulumi:"canCreateProject"`
+	// User's color scheme ID.
+	ColorSchemeId int `pulumi:"colorSchemeId"`
+	// Date the user was created at.
+	CreatedAt string `pulumi:"createdAt"`
+	// Current user's sign-in date.
+	CurrentSignInAt string `pulumi:"currentSignInAt"`
+	// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+	Email string `pulumi:"email"`
+	// The external UID of the user.
+	ExternUid string `pulumi:"externUid"`
+	// Whether the user is external.
+	External bool `pulumi:"external"`
 	// The provider-assigned unique ID for this managed resource.
-	Id               string `pulumi:"id"`
-	IsAdmin          bool   `pulumi:"isAdmin"`
-	LastSignInAt     string `pulumi:"lastSignInAt"`
-	Linkedin         string `pulumi:"linkedin"`
-	Location         string `pulumi:"location"`
-	Name             string `pulumi:"name"`
-	NamespaceId      int    `pulumi:"namespaceId"`
-	Note             string `pulumi:"note"`
-	Organization     string `pulumi:"organization"`
-	ProjectsLimit    int    `pulumi:"projectsLimit"`
-	Skype            string `pulumi:"skype"`
-	State            string `pulumi:"state"`
-	ThemeId          int    `pulumi:"themeId"`
-	Twitter          string `pulumi:"twitter"`
-	TwoFactorEnabled bool   `pulumi:"twoFactorEnabled"`
-	UserId           int    `pulumi:"userId"`
-	UserProvider     string `pulumi:"userProvider"`
-	Username         string `pulumi:"username"`
-	WebsiteUrl       string `pulumi:"websiteUrl"`
+	Id string `pulumi:"id"`
+	// Whether the user is an admin.
+	IsAdmin bool `pulumi:"isAdmin"`
+	// Last user's sign-in date.
+	LastSignInAt string `pulumi:"lastSignInAt"`
+	// LinkedIn profile of the user.
+	Linkedin string `pulumi:"linkedin"`
+	// The location of the user.
+	Location string `pulumi:"location"`
+	// The name of the user.
+	Name string `pulumi:"name"`
+	// The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+	NamespaceId int `pulumi:"namespaceId"`
+	// Admin notes for this user.
+	Note string `pulumi:"note"`
+	// The organization of the user.
+	Organization string `pulumi:"organization"`
+	// Number of projects the user can create.
+	ProjectsLimit int `pulumi:"projectsLimit"`
+	// Skype username of the user.
+	Skype string `pulumi:"skype"`
+	// Whether the user is active or blocked.
+	State string `pulumi:"state"`
+	// User's theme ID.
+	ThemeId int `pulumi:"themeId"`
+	// Twitter username of the user.
+	Twitter string `pulumi:"twitter"`
+	// Whether user's two-factor auth is enabled.
+	TwoFactorEnabled bool `pulumi:"twoFactorEnabled"`
+	// The ID of the user.
+	UserId int `pulumi:"userId"`
+	// The UID provider of the user.
+	UserProvider string `pulumi:"userProvider"`
+	// The username of the user.
+	Username string `pulumi:"username"`
+	// User's website URL.
+	WebsiteUrl string `pulumi:"websiteUrl"`
 }
 
 func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pulumi.InvokeOption) LookupUserResultOutput {
@@ -81,10 +113,14 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getUser.
 type LookupUserOutputArgs struct {
-	Email       pulumi.StringPtrInput `pulumi:"email"`
-	NamespaceId pulumi.IntPtrInput    `pulumi:"namespaceId"`
-	UserId      pulumi.IntPtrInput    `pulumi:"userId"`
-	Username    pulumi.StringPtrInput `pulumi:"username"`
+	// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+	NamespaceId pulumi.IntPtrInput `pulumi:"namespaceId"`
+	// The ID of the user.
+	UserId pulumi.IntPtrInput `pulumi:"userId"`
+	// The username of the user.
+	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (LookupUserOutputArgs) ElementType() reflect.Type {
@@ -106,42 +142,52 @@ func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.
 	return o
 }
 
+// The avatar URL of the user.
 func (o LookupUserResultOutput) AvatarUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.AvatarUrl }).(pulumi.StringOutput)
 }
 
+// The bio of the user.
 func (o LookupUserResultOutput) Bio() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Bio }).(pulumi.StringOutput)
 }
 
+// Whether the user can create groups.
 func (o LookupUserResultOutput) CanCreateGroup() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupUserResult) bool { return v.CanCreateGroup }).(pulumi.BoolOutput)
 }
 
+// Whether the user can create projects.
 func (o LookupUserResultOutput) CanCreateProject() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupUserResult) bool { return v.CanCreateProject }).(pulumi.BoolOutput)
 }
 
+// User's color scheme ID.
 func (o LookupUserResultOutput) ColorSchemeId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupUserResult) int { return v.ColorSchemeId }).(pulumi.IntOutput)
 }
 
+// Date the user was created at.
 func (o LookupUserResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Current user's sign-in date.
 func (o LookupUserResultOutput) CurrentSignInAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.CurrentSignInAt }).(pulumi.StringOutput)
 }
 
+// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
 func (o LookupUserResultOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Email }).(pulumi.StringOutput)
 }
 
+// The external UID of the user.
 func (o LookupUserResultOutput) ExternUid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.ExternUid }).(pulumi.StringOutput)
 }
 
+// Whether the user is external.
 func (o LookupUserResultOutput) External() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupUserResult) bool { return v.External }).(pulumi.BoolOutput)
 }
@@ -151,74 +197,92 @@ func (o LookupUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Whether the user is an admin.
 func (o LookupUserResultOutput) IsAdmin() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupUserResult) bool { return v.IsAdmin }).(pulumi.BoolOutput)
 }
 
+// Last user's sign-in date.
 func (o LookupUserResultOutput) LastSignInAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.LastSignInAt }).(pulumi.StringOutput)
 }
 
+// LinkedIn profile of the user.
 func (o LookupUserResultOutput) Linkedin() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Linkedin }).(pulumi.StringOutput)
 }
 
+// The location of the user.
 func (o LookupUserResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The name of the user.
 func (o LookupUserResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
 func (o LookupUserResultOutput) NamespaceId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupUserResult) int { return v.NamespaceId }).(pulumi.IntOutput)
 }
 
+// Admin notes for this user.
 func (o LookupUserResultOutput) Note() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Note }).(pulumi.StringOutput)
 }
 
+// The organization of the user.
 func (o LookupUserResultOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Organization }).(pulumi.StringOutput)
 }
 
+// Number of projects the user can create.
 func (o LookupUserResultOutput) ProjectsLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupUserResult) int { return v.ProjectsLimit }).(pulumi.IntOutput)
 }
 
+// Skype username of the user.
 func (o LookupUserResultOutput) Skype() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Skype }).(pulumi.StringOutput)
 }
 
+// Whether the user is active or blocked.
 func (o LookupUserResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// User's theme ID.
 func (o LookupUserResultOutput) ThemeId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupUserResult) int { return v.ThemeId }).(pulumi.IntOutput)
 }
 
+// Twitter username of the user.
 func (o LookupUserResultOutput) Twitter() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Twitter }).(pulumi.StringOutput)
 }
 
+// Whether user's two-factor auth is enabled.
 func (o LookupUserResultOutput) TwoFactorEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupUserResult) bool { return v.TwoFactorEnabled }).(pulumi.BoolOutput)
 }
 
+// The ID of the user.
 func (o LookupUserResultOutput) UserId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupUserResult) int { return v.UserId }).(pulumi.IntOutput)
 }
 
+// The UID provider of the user.
 func (o LookupUserResultOutput) UserProvider() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.UserProvider }).(pulumi.StringOutput)
 }
 
+// The username of the user.
 func (o LookupUserResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// User's website URL.
 func (o LookupUserResultOutput) WebsiteUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.WebsiteUrl }).(pulumi.StringOutput)
 }

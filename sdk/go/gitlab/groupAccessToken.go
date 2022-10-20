@@ -23,45 +23,50 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleGroupAccessToken, err := gitlab.NewGroupAccessToken(ctx, "exampleGroupAccessToken", &gitlab.GroupAccessTokenArgs{
-// 			Group:       pulumi.String("25"),
-// 			ExpiresAt:   pulumi.String("2020-03-14"),
-// 			AccessLevel: pulumi.String("developer"),
-// 			Scopes: pulumi.StringArray{
-// 				pulumi.String("api"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewGroupVariable(ctx, "exampleGroupVariable", &gitlab.GroupVariableArgs{
-// 			Group: pulumi.String("25"),
-// 			Key:   pulumi.String("gat"),
-// 			Value: exampleGroupAccessToken.Token,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleGroupAccessToken, err := gitlab.NewGroupAccessToken(ctx, "exampleGroupAccessToken", &gitlab.GroupAccessTokenArgs{
+//				Group:       pulumi.String("25"),
+//				ExpiresAt:   pulumi.String("2020-03-14"),
+//				AccessLevel: pulumi.String("developer"),
+//				Scopes: pulumi.StringArray{
+//					pulumi.String("api"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewGroupVariable(ctx, "exampleGroupVariable", &gitlab.GroupVariableArgs{
+//				Group: pulumi.String("25"),
+//				Key:   pulumi.String("gat"),
+//				Value: exampleGroupAccessToken.Token,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # A GitLab Group Access Token can be imported using a key composed of `<group-id>:<token-id>`, e.g.
+// A GitLab Group Access Token can be imported using a key composed of `<group-id>:<token-id>`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example "12345:1"
+//
+//	$ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example "12345:1"
+//
 // ```
 //
-// # ATTENTIONthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+//	ATTENTIONthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 type GroupAccessToken struct {
 	pulumi.CustomResourceState
 
@@ -79,11 +84,9 @@ type GroupAccessToken struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// True if the token is revoked.
 	Revoked pulumi.BoolOutput `pulumi:"revoked"`
-	// The scope for the group access token. It determines the actions which can be performed when authenticating with this
-	// token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+	// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
-	// The group access token. This is only populated when creating a new group access token. This attribute is not available
-	// for imported resources.
+	// The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
 	Token pulumi.StringOutput `pulumi:"token"`
 	// The user id associated to the token.
 	UserId pulumi.IntOutput `pulumi:"userId"`
@@ -102,6 +105,10 @@ func NewGroupAccessToken(ctx *pulumi.Context,
 	if args.Scopes == nil {
 		return nil, errors.New("invalid value for required argument 'Scopes'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
 	var resource GroupAccessToken
 	err := ctx.RegisterResource("gitlab:index/groupAccessToken:GroupAccessToken", name, args, &resource, opts...)
 	if err != nil {
@@ -138,11 +145,9 @@ type groupAccessTokenState struct {
 	Name *string `pulumi:"name"`
 	// True if the token is revoked.
 	Revoked *bool `pulumi:"revoked"`
-	// The scope for the group access token. It determines the actions which can be performed when authenticating with this
-	// token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+	// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
 	Scopes []string `pulumi:"scopes"`
-	// The group access token. This is only populated when creating a new group access token. This attribute is not available
-	// for imported resources.
+	// The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
 	Token *string `pulumi:"token"`
 	// The user id associated to the token.
 	UserId *int `pulumi:"userId"`
@@ -163,11 +168,9 @@ type GroupAccessTokenState struct {
 	Name pulumi.StringPtrInput
 	// True if the token is revoked.
 	Revoked pulumi.BoolPtrInput
-	// The scope for the group access token. It determines the actions which can be performed when authenticating with this
-	// token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+	// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
 	Scopes pulumi.StringArrayInput
-	// The group access token. This is only populated when creating a new group access token. This attribute is not available
-	// for imported resources.
+	// The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
 	Token pulumi.StringPtrInput
 	// The user id associated to the token.
 	UserId pulumi.IntPtrInput
@@ -186,8 +189,7 @@ type groupAccessTokenArgs struct {
 	Group string `pulumi:"group"`
 	// The name of the group access token.
 	Name *string `pulumi:"name"`
-	// The scope for the group access token. It determines the actions which can be performed when authenticating with this
-	// token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+	// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
 	Scopes []string `pulumi:"scopes"`
 }
 
@@ -201,8 +203,7 @@ type GroupAccessTokenArgs struct {
 	Group pulumi.StringInput
 	// The name of the group access token.
 	Name pulumi.StringPtrInput
-	// The scope for the group access token. It determines the actions which can be performed when authenticating with this
-	// token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+	// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
 	Scopes pulumi.StringArrayInput
 }
 
@@ -232,7 +233,7 @@ func (i *GroupAccessToken) ToGroupAccessTokenOutputWithContext(ctx context.Conte
 // GroupAccessTokenArrayInput is an input type that accepts GroupAccessTokenArray and GroupAccessTokenArrayOutput values.
 // You can construct a concrete instance of `GroupAccessTokenArrayInput` via:
 //
-//          GroupAccessTokenArray{ GroupAccessTokenArgs{...} }
+//	GroupAccessTokenArray{ GroupAccessTokenArgs{...} }
 type GroupAccessTokenArrayInput interface {
 	pulumi.Input
 
@@ -257,7 +258,7 @@ func (i GroupAccessTokenArray) ToGroupAccessTokenArrayOutputWithContext(ctx cont
 // GroupAccessTokenMapInput is an input type that accepts GroupAccessTokenMap and GroupAccessTokenMapOutput values.
 // You can construct a concrete instance of `GroupAccessTokenMapInput` via:
 //
-//          GroupAccessTokenMap{ "key": GroupAccessTokenArgs{...} }
+//	GroupAccessTokenMap{ "key": GroupAccessTokenArgs{...} }
 type GroupAccessTokenMapInput interface {
 	pulumi.Input
 
@@ -328,14 +329,12 @@ func (o GroupAccessTokenOutput) Revoked() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.BoolOutput { return v.Revoked }).(pulumi.BoolOutput)
 }
 
-// The scope for the group access token. It determines the actions which can be performed when authenticating with this
-// token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`.
 func (o GroupAccessTokenOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
-// The group access token. This is only populated when creating a new group access token. This attribute is not available
-// for imported resources.
+// The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
 func (o GroupAccessTokenOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
 }

@@ -21,37 +21,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		awesomeProject, err := gitlab.NewProject(ctx, "awesomeProject", &gitlab.ProjectArgs{
-// 			Description:     pulumi.String("My awesome project."),
-// 			VisibilityLevel: pulumi.String("public"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewServiceExternalWiki(ctx, "wiki", &gitlab.ServiceExternalWikiArgs{
-// 			Project:         awesomeProject.ID(),
-// 			ExternalWikiUrl: pulumi.String("https://MyAwesomeExternalWikiURL.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			awesomeProject, err := gitlab.NewProject(ctx, "awesomeProject", &gitlab.ProjectArgs{
+//				Description:     pulumi.String("My awesome project."),
+//				VisibilityLevel: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewServiceExternalWiki(ctx, "wiki", &gitlab.ServiceExternalWikiArgs{
+//				Project:         awesomeProject.ID(),
+//				ExternalWikiUrl: pulumi.String("https://MyAwesomeExternalWikiURL.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # You can import a gitlab_service_external_wiki state using the project ID, e.g.
+// You can import a gitlab_service_external_wiki state using the project ID, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/serviceExternalWiki:ServiceExternalWiki wiki 1
+//
+//	$ pulumi import gitlab:index/serviceExternalWiki:ServiceExternalWiki wiki 1
+//
 // ```
 type ServiceExternalWiki struct {
 	pulumi.CustomResourceState
@@ -64,8 +69,7 @@ type ServiceExternalWiki struct {
 	ExternalWikiUrl pulumi.StringOutput `pulumi:"externalWikiUrl"`
 	// ID of the project you want to activate integration on.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -.
-	// No leading / trailing -. Use in URLs, host names and domain names.
+	// The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 	// Title of the integration.
 	Title pulumi.StringOutput `pulumi:"title"`
@@ -116,8 +120,7 @@ type serviceExternalWikiState struct {
 	ExternalWikiUrl *string `pulumi:"externalWikiUrl"`
 	// ID of the project you want to activate integration on.
 	Project *string `pulumi:"project"`
-	// The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -.
-	// No leading / trailing -. Use in URLs, host names and domain names.
+	// The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
 	Slug *string `pulumi:"slug"`
 	// Title of the integration.
 	Title *string `pulumi:"title"`
@@ -134,8 +137,7 @@ type ServiceExternalWikiState struct {
 	ExternalWikiUrl pulumi.StringPtrInput
 	// ID of the project you want to activate integration on.
 	Project pulumi.StringPtrInput
-	// The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -.
-	// No leading / trailing -. Use in URLs, host names and domain names.
+	// The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
 	Slug pulumi.StringPtrInput
 	// Title of the integration.
 	Title pulumi.StringPtrInput
@@ -188,7 +190,7 @@ func (i *ServiceExternalWiki) ToServiceExternalWikiOutputWithContext(ctx context
 // ServiceExternalWikiArrayInput is an input type that accepts ServiceExternalWikiArray and ServiceExternalWikiArrayOutput values.
 // You can construct a concrete instance of `ServiceExternalWikiArrayInput` via:
 //
-//          ServiceExternalWikiArray{ ServiceExternalWikiArgs{...} }
+//	ServiceExternalWikiArray{ ServiceExternalWikiArgs{...} }
 type ServiceExternalWikiArrayInput interface {
 	pulumi.Input
 
@@ -213,7 +215,7 @@ func (i ServiceExternalWikiArray) ToServiceExternalWikiArrayOutputWithContext(ct
 // ServiceExternalWikiMapInput is an input type that accepts ServiceExternalWikiMap and ServiceExternalWikiMapOutput values.
 // You can construct a concrete instance of `ServiceExternalWikiMapInput` via:
 //
-//          ServiceExternalWikiMap{ "key": ServiceExternalWikiArgs{...} }
+//	ServiceExternalWikiMap{ "key": ServiceExternalWikiArgs{...} }
 type ServiceExternalWikiMapInput interface {
 	pulumi.Input
 
@@ -269,8 +271,7 @@ func (o ServiceExternalWikiOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceExternalWiki) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -.
-// No leading / trailing -. Use in URLs, host names and domain names.
+// The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
 func (o ServiceExternalWikiOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceExternalWiki) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

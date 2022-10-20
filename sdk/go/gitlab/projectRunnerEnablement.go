@@ -21,30 +21,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewProjectRunnerEnablement(ctx, "foo", &gitlab.ProjectRunnerEnablementArgs{
-// 			Project:  pulumi.String("5"),
-// 			RunnerId: pulumi.Int(7),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewProjectRunnerEnablement(ctx, "foo", &gitlab.ProjectRunnerEnablementArgs{
+//				Project:  pulumi.String("5"),
+//				RunnerId: pulumi.Int(7),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # GitLab project runners can be imported using an id made up of `project:runner_id`, e.g.
+// GitLab project runners can be imported using an id made up of `project:runner_id`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement foo 5:7
+//
+//	$ pulumi import gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement foo 5:7
+//
 // ```
 type ProjectRunnerEnablement struct {
 	pulumi.CustomResourceState
@@ -148,7 +153,7 @@ func (i *ProjectRunnerEnablement) ToProjectRunnerEnablementOutputWithContext(ctx
 // ProjectRunnerEnablementArrayInput is an input type that accepts ProjectRunnerEnablementArray and ProjectRunnerEnablementArrayOutput values.
 // You can construct a concrete instance of `ProjectRunnerEnablementArrayInput` via:
 //
-//          ProjectRunnerEnablementArray{ ProjectRunnerEnablementArgs{...} }
+//	ProjectRunnerEnablementArray{ ProjectRunnerEnablementArgs{...} }
 type ProjectRunnerEnablementArrayInput interface {
 	pulumi.Input
 
@@ -173,7 +178,7 @@ func (i ProjectRunnerEnablementArray) ToProjectRunnerEnablementArrayOutputWithCo
 // ProjectRunnerEnablementMapInput is an input type that accepts ProjectRunnerEnablementMap and ProjectRunnerEnablementMapOutput values.
 // You can construct a concrete instance of `ProjectRunnerEnablementMapInput` via:
 //
-//          ProjectRunnerEnablementMap{ "key": ProjectRunnerEnablementArgs{...} }
+//	ProjectRunnerEnablementMap{ "key": ProjectRunnerEnablementArgs{...} }
 type ProjectRunnerEnablementMapInput interface {
 	pulumi.Input
 

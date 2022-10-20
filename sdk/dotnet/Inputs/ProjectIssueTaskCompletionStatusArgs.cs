@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab.Inputs
 {
 
-    public sealed class ProjectIssueTaskCompletionStatusArgs : Pulumi.ResourceArgs
+    public sealed class ProjectIssueTaskCompletionStatusArgs : global::Pulumi.ResourceArgs
     {
         [Input("completedCount")]
         public Input<int>? CompletedCount { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.GitLab.Inputs
         public ProjectIssueTaskCompletionStatusArgs()
         {
         }
+        public static new ProjectIssueTaskCompletionStatusArgs Empty => new ProjectIssueTaskCompletionStatusArgs();
     }
 }

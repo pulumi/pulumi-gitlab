@@ -19,6 +19,9 @@ namespace Pulumi.GitLab.Outputs
         public readonly string CommittedDate;
         public readonly string CommitterEmail;
         public readonly string CommitterName;
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         public readonly string Id;
         public readonly string Message;
         public readonly ImmutableArray<string> ParentIds;

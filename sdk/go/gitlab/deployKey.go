@@ -23,35 +23,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewDeployKey(ctx, "example", &gitlab.DeployKeyArgs{
-// 			Key:     pulumi.String("ssh-rsa AAAA..."),
-// 			Project: pulumi.String("example/deploying"),
-// 			Title:   pulumi.String("Example deploy key"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewDeployKey(ctx, "example", &gitlab.DeployKeyArgs{
+//				Key:     pulumi.String("ssh-rsa AAAA..."),
+//				Project: pulumi.String("example/deploying"),
+//				Title:   pulumi.String("Example deploy key"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. # `project_id` can be whatever the [get single project api][get_single_project] takes for # its `:id` value, so for example
+// GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. `project_id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
 //
 // ```sh
-//  $ pulumi import gitlab:index/deployKey:DeployKey test 1:3
+//
+//	$ pulumi import gitlab:index/deployKey:DeployKey test 1:3
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gitlab:index/deployKey:DeployKey test richardc/example:3
+//
+//	$ pulumi import gitlab:index/deployKey:DeployKey test richardc/example:3
+//
 // ```
 type DeployKey struct {
 	pulumi.CustomResourceState
@@ -178,7 +185,7 @@ func (i *DeployKey) ToDeployKeyOutputWithContext(ctx context.Context) DeployKeyO
 // DeployKeyArrayInput is an input type that accepts DeployKeyArray and DeployKeyArrayOutput values.
 // You can construct a concrete instance of `DeployKeyArrayInput` via:
 //
-//          DeployKeyArray{ DeployKeyArgs{...} }
+//	DeployKeyArray{ DeployKeyArgs{...} }
 type DeployKeyArrayInput interface {
 	pulumi.Input
 
@@ -203,7 +210,7 @@ func (i DeployKeyArray) ToDeployKeyArrayOutputWithContext(ctx context.Context) D
 // DeployKeyMapInput is an input type that accepts DeployKeyMap and DeployKeyMapOutput values.
 // You can construct a concrete instance of `DeployKeyMapInput` via:
 //
-//          DeployKeyMap{ "key": DeployKeyArgs{...} }
+//	DeployKeyMap{ "key": DeployKeyArgs{...} }
 type DeployKeyMapInput interface {
 	pulumi.Input
 

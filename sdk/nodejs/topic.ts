@@ -16,10 +16,10 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import gitlab:index/topic:Topic # You can import a topic to terraform state using `<resource> <id>`.
+ *  $ pulumi import gitlab:index/topic:Topic You can import a topic to terraform state using `<resource> <id>`.
  * ```
  *
- * # The `id` must be an integer for the id of the topic you want to import, # for example
+ *  The `id` must be an integer for the id of the topic you want to import, for example
  *
  * ```sh
  *  $ pulumi import gitlab:index/topic:Topic functional_programming 1
@@ -58,8 +58,7 @@ export class Topic extends pulumi.CustomResource {
      */
     public readonly avatar!: pulumi.Output<string | undefined>;
     /**
-     * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
-     * trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+     * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
      */
     public readonly avatarHash!: pulumi.Output<string>;
     /**
@@ -129,8 +128,7 @@ export interface TopicState {
      */
     avatar?: pulumi.Input<string>;
     /**
-     * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
-     * trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+     * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
      */
     avatarHash?: pulumi.Input<string>;
     /**
@@ -166,8 +164,7 @@ export interface TopicArgs {
      */
     avatar?: pulumi.Input<string>;
     /**
-     * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
-     * trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+     * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
      */
     avatarHash?: pulumi.Input<string>;
     /**

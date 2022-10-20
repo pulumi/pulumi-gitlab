@@ -21,41 +21,46 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewPipelineSchedule(ctx, "examplePipelineSchedule", &gitlab.PipelineScheduleArgs{
-// 			Project:     pulumi.String("12345"),
-// 			Description: pulumi.String("Used to schedule builds"),
-// 			Ref:         pulumi.String("master"),
-// 			Cron:        pulumi.String("0 1 * * *"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewPipelineScheduleVariable(ctx, "examplePipelineScheduleVariable", &gitlab.PipelineScheduleVariableArgs{
-// 			Project:            pulumi.Any(gitlab_pipeline_schedule.Project),
-// 			PipelineScheduleId: pulumi.Any(gitlab_pipeline_schedule.Id),
-// 			Key:                pulumi.String("EXAMPLE_KEY"),
-// 			Value:              pulumi.String("example"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewPipelineSchedule(ctx, "examplePipelineSchedule", &gitlab.PipelineScheduleArgs{
+//				Project:     pulumi.String("12345"),
+//				Description: pulumi.String("Used to schedule builds"),
+//				Ref:         pulumi.String("master"),
+//				Cron:        pulumi.String("0 1 * * *"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewPipelineScheduleVariable(ctx, "examplePipelineScheduleVariable", &gitlab.PipelineScheduleVariableArgs{
+//				Project:            pulumi.Any(gitlab_pipeline_schedule.Project),
+//				PipelineScheduleId: pulumi.Any(gitlab_pipeline_schedule.Id),
+//				Key:                pulumi.String("EXAMPLE_KEY"),
+//				Value:              pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # Pipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.
+// Pipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey
+//
+//	$ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey
+//
 // ```
 type PipelineScheduleVariable struct {
 	pulumi.CustomResourceState
@@ -185,7 +190,7 @@ func (i *PipelineScheduleVariable) ToPipelineScheduleVariableOutputWithContext(c
 // PipelineScheduleVariableArrayInput is an input type that accepts PipelineScheduleVariableArray and PipelineScheduleVariableArrayOutput values.
 // You can construct a concrete instance of `PipelineScheduleVariableArrayInput` via:
 //
-//          PipelineScheduleVariableArray{ PipelineScheduleVariableArgs{...} }
+//	PipelineScheduleVariableArray{ PipelineScheduleVariableArgs{...} }
 type PipelineScheduleVariableArrayInput interface {
 	pulumi.Input
 
@@ -210,7 +215,7 @@ func (i PipelineScheduleVariableArray) ToPipelineScheduleVariableArrayOutputWith
 // PipelineScheduleVariableMapInput is an input type that accepts PipelineScheduleVariableMap and PipelineScheduleVariableMapOutput values.
 // You can construct a concrete instance of `PipelineScheduleVariableMapInput` via:
 //
-//          PipelineScheduleVariableMap{ "key": PipelineScheduleVariableArgs{...} }
+//	PipelineScheduleVariableMap{ "key": PipelineScheduleVariableArgs{...} }
 type PipelineScheduleVariableMapInput interface {
 	pulumi.Input
 

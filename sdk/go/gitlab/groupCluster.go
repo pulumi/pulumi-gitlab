@@ -23,43 +23,48 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := gitlab.NewGroup(ctx, "foo", &gitlab.GroupArgs{
-// 			Path: pulumi.String("foo-path"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewGroupCluster(ctx, "bar", &gitlab.GroupClusterArgs{
-// 			Group:                       foo.ID(),
-// 			Domain:                      pulumi.String("example.com"),
-// 			Enabled:                     pulumi.Bool(true),
-// 			KubernetesApiUrl:            pulumi.String("https://124.124.124"),
-// 			KubernetesToken:             pulumi.String("some-token"),
-// 			KubernetesCaCert:            pulumi.String("some-cert"),
-// 			KubernetesAuthorizationType: pulumi.String("rbac"),
-// 			EnvironmentScope:            pulumi.String("*"),
-// 			ManagementProjectId:         pulumi.String("123456"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := gitlab.NewGroup(ctx, "foo", &gitlab.GroupArgs{
+//				Path: pulumi.String("foo-path"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewGroupCluster(ctx, "bar", &gitlab.GroupClusterArgs{
+//				Group:                       foo.ID(),
+//				Domain:                      pulumi.String("example.com"),
+//				Enabled:                     pulumi.Bool(true),
+//				KubernetesApiUrl:            pulumi.String("https://124.124.124"),
+//				KubernetesToken:             pulumi.String("some-token"),
+//				KubernetesCaCert:            pulumi.String("some-cert"),
+//				KubernetesAuthorizationType: pulumi.String("rbac"),
+//				EnvironmentScope:            pulumi.String("*"),
+//				ManagementProjectId:         pulumi.String("123456"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
+// GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/groupCluster:GroupCluster bar 123:321
+//
+//	$ pulumi import gitlab:index/groupCluster:GroupCluster bar 123:321
+//
 // ```
 type GroupCluster struct {
 	pulumi.CustomResourceState
@@ -78,7 +83,7 @@ type GroupCluster struct {
 	Group pulumi.StringOutput `pulumi:"group"`
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl pulumi.StringOutput `pulumi:"kubernetesApiUrl"`
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType pulumi.StringPtrOutput `pulumi:"kubernetesAuthorizationType"`
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert pulumi.StringPtrOutput `pulumi:"kubernetesCaCert"`
@@ -112,6 +117,13 @@ func NewGroupCluster(ctx *pulumi.Context,
 	if args.KubernetesToken == nil {
 		return nil, errors.New("invalid value for required argument 'KubernetesToken'")
 	}
+	if args.KubernetesToken != nil {
+		args.KubernetesToken = pulumi.ToSecret(args.KubernetesToken).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"kubernetesToken",
+	})
+	opts = append(opts, secrets)
 	var resource GroupCluster
 	err := ctx.RegisterResource("gitlab:index/groupCluster:GroupCluster", name, args, &resource, opts...)
 	if err != nil {
@@ -148,7 +160,7 @@ type groupClusterState struct {
 	Group *string `pulumi:"group"`
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl *string `pulumi:"kubernetesApiUrl"`
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType *string `pulumi:"kubernetesAuthorizationType"`
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert *string `pulumi:"kubernetesCaCert"`
@@ -181,7 +193,7 @@ type GroupClusterState struct {
 	Group pulumi.StringPtrInput
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl pulumi.StringPtrInput
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType pulumi.StringPtrInput
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert pulumi.StringPtrInput
@@ -214,7 +226,7 @@ type groupClusterArgs struct {
 	Group string `pulumi:"group"`
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl string `pulumi:"kubernetesApiUrl"`
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType *string `pulumi:"kubernetesAuthorizationType"`
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert *string `pulumi:"kubernetesCaCert"`
@@ -240,7 +252,7 @@ type GroupClusterArgs struct {
 	Group pulumi.StringInput
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl pulumi.StringInput
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType pulumi.StringPtrInput
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert pulumi.StringPtrInput
@@ -280,7 +292,7 @@ func (i *GroupCluster) ToGroupClusterOutputWithContext(ctx context.Context) Grou
 // GroupClusterArrayInput is an input type that accepts GroupClusterArray and GroupClusterArrayOutput values.
 // You can construct a concrete instance of `GroupClusterArrayInput` via:
 //
-//          GroupClusterArray{ GroupClusterArgs{...} }
+//	GroupClusterArray{ GroupClusterArgs{...} }
 type GroupClusterArrayInput interface {
 	pulumi.Input
 
@@ -305,7 +317,7 @@ func (i GroupClusterArray) ToGroupClusterArrayOutputWithContext(ctx context.Cont
 // GroupClusterMapInput is an input type that accepts GroupClusterMap and GroupClusterMapOutput values.
 // You can construct a concrete instance of `GroupClusterMapInput` via:
 //
-//          GroupClusterMap{ "key": GroupClusterArgs{...} }
+//	GroupClusterMap{ "key": GroupClusterArgs{...} }
 type GroupClusterMapInput interface {
 	pulumi.Input
 
@@ -376,7 +388,7 @@ func (o GroupClusterOutput) KubernetesApiUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupCluster) pulumi.StringOutput { return v.KubernetesApiUrl }).(pulumi.StringOutput)
 }
 
-// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
 func (o GroupClusterOutput) KubernetesAuthorizationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupCluster) pulumi.StringPtrOutput { return v.KubernetesAuthorizationType }).(pulumi.StringPtrOutput)
 }

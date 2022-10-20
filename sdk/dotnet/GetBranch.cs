@@ -21,27 +21,25 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = GitLab.GetBranch.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(GitLab.GetBranch.InvokeAsync(new GitLab.GetBranchArgs
-        ///         {
-        ///             Name = "example",
-        ///             Project = "foo/bar",
-        ///         }));
-        ///     }
+        ///         Name = "example",
+        ///         Project = "foo/bar",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBranchResult> InvokeAsync(GetBranchArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBranchResult>("gitlab:index/getBranch:getBranch", args ?? new GetBranchArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBranchResult>("gitlab:index/getBranch:getBranch", args ?? new GetBranchArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `gitlab.Branch` data source allows details of a repository branch to be retrieved by its name and project.
@@ -53,73 +51,115 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = GitLab.GetBranch.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(GitLab.GetBranch.InvokeAsync(new GitLab.GetBranchArgs
-        ///         {
-        ///             Name = "example",
-        ///             Project = "foo/bar",
-        ///         }));
-        ///     }
+        ///         Name = "example",
+        ///         Project = "foo/bar",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBranchResult> Invoke(GetBranchInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBranchResult>("gitlab:index/getBranch:getBranch", args ?? new GetBranchInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBranchResult>("gitlab:index/getBranch:getBranch", args ?? new GetBranchInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBranchArgs : Pulumi.InvokeArgs
+    public sealed class GetBranchArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the branch.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The full path or id of the project.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         public GetBranchArgs()
         {
         }
+        public static new GetBranchArgs Empty => new GetBranchArgs();
     }
 
-    public sealed class GetBranchInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBranchInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the branch.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The full path or id of the project.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         public GetBranchInvokeArgs()
         {
         }
+        public static new GetBranchInvokeArgs Empty => new GetBranchInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetBranchResult
     {
+        /// <summary>
+        /// Bool, true if you can push to the branch.
+        /// </summary>
         public readonly bool CanPush;
+        /// <summary>
+        /// The commit associated with the branch ref.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBranchCommitResult> Commits;
+        /// <summary>
+        /// Bool, true if branch is the default branch for the project.
+        /// </summary>
         public readonly bool Default;
+        /// <summary>
+        /// Bool, true if developer level access allows to merge branch.
+        /// </summary>
         public readonly bool DeveloperCanMerge;
+        /// <summary>
+        /// Bool, true if developer level access allows git push.
+        /// </summary>
         public readonly bool DeveloperCanPush;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Bool, true if the branch has been merged into it's parent.
+        /// </summary>
         public readonly bool Merged;
+        /// <summary>
+        /// The name of the branch.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The full path or id of the project.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Bool, true if branch has branch protection.
+        /// </summary>
         public readonly bool Protected;
+        /// <summary>
+        /// The url of the created branch (https.)
+        /// </summary>
         public readonly string WebUrl;
 
         [OutputConstructor]

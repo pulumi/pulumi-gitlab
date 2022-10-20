@@ -19,40 +19,38 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new GitLab.SystemHook("example", new()
     ///     {
-    ///         var example = new GitLab.SystemHook("example", new GitLab.SystemHookArgs
-    ///         {
-    ///             EnableSslVerification = true,
-    ///             MergeRequestsEvents = true,
-    ///             PushEvents = true,
-    ///             RepositoryUpdateEvents = true,
-    ///             TagPushEvents = true,
-    ///             Token = "secret-token",
-    ///             Url = "https://example.com/hook-%d",
-    ///         });
-    ///     }
+    ///         EnableSslVerification = true,
+    ///         MergeRequestsEvents = true,
+    ///         PushEvents = true,
+    ///         RepositoryUpdateEvents = true,
+    ///         TagPushEvents = true,
+    ///         Token = "secret-token",
+    ///         Url = "https://example.com/hook-%d",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # You can import a system hook using the hook id `{hook-id}`, e.g.
+    /// You can import a system hook using the hook id `{hook-id}`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/systemHook:SystemHook example 42
     /// ```
     /// 
-    /// # NOTEthe `token` attribute won't be available for imported resources.
+    ///  NOTEthe `token` attribute won't be available for imported resources.
     /// </summary>
     [GitLabResourceType("gitlab:index/systemHook:SystemHook")]
-    public partial class SystemHook : Pulumi.CustomResource
+    public partial class SystemHook : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The date and time the hook was created in ISO8601 format.
@@ -91,8 +89,7 @@ namespace Pulumi.GitLab
         public Output<bool?> TagPushEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for
-        /// imported resources.
+        /// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
         /// </summary>
         [Output("token")]
         public Output<string?> Token { get; private set; } = null!;
@@ -126,6 +123,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -147,7 +148,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class SystemHookArgs : Pulumi.ResourceArgs
+    public sealed class SystemHookArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Do SSL verification when triggering the hook.
@@ -179,12 +180,21 @@ namespace Pulumi.GitLab
         [Input("tagPushEvents")]
         public Input<bool>? TagPushEvents { get; set; }
 
-        /// <summary>
-        /// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for
-        /// imported resources.
-        /// </summary>
         [Input("token")]
-        public Input<string>? Token { get; set; }
+        private Input<string>? _token;
+
+        /// <summary>
+        /// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+        /// </summary>
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The hook URL.
@@ -195,9 +205,10 @@ namespace Pulumi.GitLab
         public SystemHookArgs()
         {
         }
+        public static new SystemHookArgs Empty => new SystemHookArgs();
     }
 
-    public sealed class SystemHookState : Pulumi.ResourceArgs
+    public sealed class SystemHookState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date and time the hook was created in ISO8601 format.
@@ -235,12 +246,21 @@ namespace Pulumi.GitLab
         [Input("tagPushEvents")]
         public Input<bool>? TagPushEvents { get; set; }
 
-        /// <summary>
-        /// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for
-        /// imported resources.
-        /// </summary>
         [Input("token")]
-        public Input<string>? Token { get; set; }
+        private Input<string>? _token;
+
+        /// <summary>
+        /// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+        /// </summary>
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The hook URL.
@@ -251,5 +271,6 @@ namespace Pulumi.GitLab
         public SystemHookState()
         {
         }
+        public static new SystemHookState Empty => new SystemHookState();
     }
 }

@@ -21,50 +21,57 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		parentProject, err := gitlab.NewProject(ctx, "parentProject", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooProject, err := gitlab.NewProject(ctx, "fooProject", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		parentDeployKey, err := gitlab.NewDeployKey(ctx, "parentDeployKey", &gitlab.DeployKeyArgs{
-// 			Project: parentProject.ID(),
-// 			Title:   pulumi.String("Example deploy key"),
-// 			Key:     pulumi.String("ssh-rsa AAAA..."),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewDeployKeyEnable(ctx, "fooDeployKeyEnable", &gitlab.DeployKeyEnableArgs{
-// 			Project: fooProject.ID(),
-// 			KeyId:   parentDeployKey.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			parentProject, err := gitlab.NewProject(ctx, "parentProject", nil)
+//			if err != nil {
+//				return err
+//			}
+//			fooProject, err := gitlab.NewProject(ctx, "fooProject", nil)
+//			if err != nil {
+//				return err
+//			}
+//			parentDeployKey, err := gitlab.NewDeployKey(ctx, "parentDeployKey", &gitlab.DeployKeyArgs{
+//				Project: parentProject.ID(),
+//				Title:   pulumi.String("Example deploy key"),
+//				Key:     pulumi.String("ssh-rsa AAAA..."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewDeployKeyEnable(ctx, "fooDeployKeyEnable", &gitlab.DeployKeyEnableArgs{
+//				Project: fooProject.ID(),
+//				KeyId:   parentDeployKey.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. # `project_id` can be whatever the [get single project api][get_single_project] takes for # its `:id` value, so for example
+// GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. `project_id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
 //
 // ```sh
-//  $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
+//
+//	$ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example richardc/example:67890
+//
+//	$ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example richardc/example:67890
+//
 // ```
 type DeployKeyEnable struct {
 	pulumi.CustomResourceState
@@ -198,7 +205,7 @@ func (i *DeployKeyEnable) ToDeployKeyEnableOutputWithContext(ctx context.Context
 // DeployKeyEnableArrayInput is an input type that accepts DeployKeyEnableArray and DeployKeyEnableArrayOutput values.
 // You can construct a concrete instance of `DeployKeyEnableArrayInput` via:
 //
-//          DeployKeyEnableArray{ DeployKeyEnableArgs{...} }
+//	DeployKeyEnableArray{ DeployKeyEnableArgs{...} }
 type DeployKeyEnableArrayInput interface {
 	pulumi.Input
 
@@ -223,7 +230,7 @@ func (i DeployKeyEnableArray) ToDeployKeyEnableArrayOutputWithContext(ctx contex
 // DeployKeyEnableMapInput is an input type that accepts DeployKeyEnableMap and DeployKeyEnableMapOutput values.
 // You can construct a concrete instance of `DeployKeyEnableMapInput` via:
 //
-//          DeployKeyEnableMap{ "key": DeployKeyEnableArgs{...} }
+//	DeployKeyEnableMap{ "key": DeployKeyEnableArgs{...} }
 type DeployKeyEnableMapInput interface {
 	pulumi.Input
 

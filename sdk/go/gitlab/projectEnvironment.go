@@ -17,44 +17,49 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		thisGroup, err := gitlab.NewGroup(ctx, "thisGroup", &gitlab.GroupArgs{
-// 			Path:        pulumi.String("example"),
-// 			Description: pulumi.String("An example group"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		thisProject, err := gitlab.NewProject(ctx, "thisProject", &gitlab.ProjectArgs{
-// 			NamespaceId:          thisGroup.ID(),
-// 			InitializeWithReadme: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewProjectEnvironment(ctx, "thisProjectEnvironment", &gitlab.ProjectEnvironmentArgs{
-// 			Project:     thisProject.ID(),
-// 			ExternalUrl: pulumi.String("www.example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			thisGroup, err := gitlab.NewGroup(ctx, "thisGroup", &gitlab.GroupArgs{
+//				Path:        pulumi.String("example"),
+//				Description: pulumi.String("An example group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisProject, err := gitlab.NewProject(ctx, "thisProject", &gitlab.ProjectArgs{
+//				NamespaceId:          thisGroup.ID(),
+//				InitializeWithReadme: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectEnvironment(ctx, "thisProjectEnvironment", &gitlab.ProjectEnvironmentArgs{
+//				Project:     thisProject.ID(),
+//				ExternalUrl: pulumi.String("www.example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.
+// GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectEnvironment:ProjectEnvironment bar 123:321
+//
+//	$ pulumi import gitlab:index/projectEnvironment:ProjectEnvironment bar 123:321
+//
 // ```
 type ProjectEnvironment struct {
 	pulumi.CustomResourceState
@@ -67,8 +72,7 @@ type ProjectEnvironment struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID or full path of the project to environment is created for.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -.
-	// No leading / trailing -. Use in URLs, host names and domain names.
+	// The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 	// State the environment is in. Valid values are `available`, `stopped`.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -118,8 +122,7 @@ type projectEnvironmentState struct {
 	Name *string `pulumi:"name"`
 	// The ID or full path of the project to environment is created for.
 	Project *string `pulumi:"project"`
-	// The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -.
-	// No leading / trailing -. Use in URLs, host names and domain names.
+	// The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
 	Slug *string `pulumi:"slug"`
 	// State the environment is in. Valid values are `available`, `stopped`.
 	State *string `pulumi:"state"`
@@ -138,8 +141,7 @@ type ProjectEnvironmentState struct {
 	Name pulumi.StringPtrInput
 	// The ID or full path of the project to environment is created for.
 	Project pulumi.StringPtrInput
-	// The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -.
-	// No leading / trailing -. Use in URLs, host names and domain names.
+	// The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
 	Slug pulumi.StringPtrInput
 	// State the environment is in. Valid values are `available`, `stopped`.
 	State pulumi.StringPtrInput
@@ -202,7 +204,7 @@ func (i *ProjectEnvironment) ToProjectEnvironmentOutputWithContext(ctx context.C
 // ProjectEnvironmentArrayInput is an input type that accepts ProjectEnvironmentArray and ProjectEnvironmentArrayOutput values.
 // You can construct a concrete instance of `ProjectEnvironmentArrayInput` via:
 //
-//          ProjectEnvironmentArray{ ProjectEnvironmentArgs{...} }
+//	ProjectEnvironmentArray{ ProjectEnvironmentArgs{...} }
 type ProjectEnvironmentArrayInput interface {
 	pulumi.Input
 
@@ -227,7 +229,7 @@ func (i ProjectEnvironmentArray) ToProjectEnvironmentArrayOutputWithContext(ctx 
 // ProjectEnvironmentMapInput is an input type that accepts ProjectEnvironmentMap and ProjectEnvironmentMapOutput values.
 // You can construct a concrete instance of `ProjectEnvironmentMapInput` via:
 //
-//          ProjectEnvironmentMap{ "key": ProjectEnvironmentArgs{...} }
+//	ProjectEnvironmentMap{ "key": ProjectEnvironmentArgs{...} }
 type ProjectEnvironmentMapInput interface {
 	pulumi.Input
 
@@ -283,8 +285,7 @@ func (o ProjectEnvironmentOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -.
-// No leading / trailing -. Use in URLs, host names and domain names.
+// The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
 func (o ProjectEnvironmentOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

@@ -14,15 +14,24 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetProjectIssuesIssueResult
     {
         public readonly ImmutableArray<int> AssigneeIds;
+        /// <summary>
+        /// Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
+        /// </summary>
         public readonly int AuthorId;
         public readonly string ClosedAt;
         public readonly int ClosedByUserId;
+        /// <summary>
+        /// Filter confidential or public issues.
+        /// </summary>
         public readonly bool Confidential;
         public readonly string CreatedAt;
         public readonly string Description;
         public readonly bool DiscussionLocked;
         public readonly string DiscussionToResolve;
         public readonly int Downvotes;
+        /// <summary>
+        /// Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
+        /// </summary>
         public readonly string DueDate;
         public readonly int EpicId;
         public readonly int EpicIssueId;
@@ -32,13 +41,22 @@ namespace Pulumi.GitLab.Outputs
         public readonly int Iid;
         public readonly int IssueId;
         public readonly int IssueLinkId;
+        /// <summary>
+        /// Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
+        /// </summary>
         public readonly string IssueType;
+        /// <summary>
+        /// Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
+        /// </summary>
         public readonly ImmutableArray<string> Labels;
         public readonly ImmutableDictionary<string, string> Links;
         public readonly int MergeRequestToResolveDiscussionsOf;
         public readonly int MergeRequestsCount;
         public readonly int MilestoneId;
         public readonly int MovedToId;
+        /// <summary>
+        /// The name or id of the project.
+        /// </summary>
         public readonly string Project;
         public readonly ImmutableDictionary<string, string> References;
         public readonly string State;
@@ -51,6 +69,9 @@ namespace Pulumi.GitLab.Outputs
         public readonly int Upvotes;
         public readonly int UserNotesCount;
         public readonly string WebUrl;
+        /// <summary>
+        /// Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
+        /// </summary>
         public readonly int Weight;
 
         [OutputConstructor]

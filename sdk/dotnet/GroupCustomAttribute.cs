@@ -17,34 +17,32 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var attr = new GitLab.GroupCustomAttribute("attr", new()
     ///     {
-    ///         var attr = new GitLab.GroupCustomAttribute("attr", new GitLab.GroupCustomAttributeArgs
-    ///         {
-    ///             Group = 42,
-    ///             Key = "location",
-    ///             Value = "Greenland",
-    ///         });
-    ///     }
+    ///         Group = 42,
+    ///         Key = "location",
+    ///         Value = "Greenland",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # You can import a group custom attribute using the an id made up of `{group-id}:{key}`, e.g.
+    /// You can import a group custom attribute using the an id made up of `{group-id}:{key}`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/groupCustomAttribute:GroupCustomAttribute attr 42:location
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/groupCustomAttribute:GroupCustomAttribute")]
-    public partial class GroupCustomAttribute : Pulumi.CustomResource
+    public partial class GroupCustomAttribute : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The id of the group.
@@ -108,7 +106,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class GroupCustomAttributeArgs : Pulumi.ResourceArgs
+    public sealed class GroupCustomAttributeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the group.
@@ -131,9 +129,10 @@ namespace Pulumi.GitLab
         public GroupCustomAttributeArgs()
         {
         }
+        public static new GroupCustomAttributeArgs Empty => new GroupCustomAttributeArgs();
     }
 
-    public sealed class GroupCustomAttributeState : Pulumi.ResourceArgs
+    public sealed class GroupCustomAttributeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the group.
@@ -156,5 +155,6 @@ namespace Pulumi.GitLab
         public GroupCustomAttributeState()
         {
         }
+        public static new GroupCustomAttributeState Empty => new GroupCustomAttributeState();
     }
 }

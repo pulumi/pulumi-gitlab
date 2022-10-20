@@ -22,22 +22,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.LookupClusterAgent(ctx, &GetClusterAgentArgs{
-// 			AgentId: 1,
-// 			Project: "12345",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = gitlab.LookupClusterAgent(ctx, &GetClusterAgentArgs{
+//				AgentId: 1,
+//				Project: "12345",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupClusterAgent(ctx *pulumi.Context, args *LookupClusterAgentArgs, opts ...pulumi.InvokeOption) (*LookupClusterAgentResult, error) {
 	var rv LookupClusterAgentResult
@@ -50,18 +53,25 @@ func LookupClusterAgent(ctx *pulumi.Context, args *LookupClusterAgentArgs, opts 
 
 // A collection of arguments for invoking getClusterAgent.
 type LookupClusterAgentArgs struct {
-	AgentId int    `pulumi:"agentId"`
+	// The ID of the agent.
+	AgentId int `pulumi:"agentId"`
+	// ID or full path of the project maintained by the authenticated user.
 	Project string `pulumi:"project"`
 }
 
 // A collection of values returned by getClusterAgent.
 type LookupClusterAgentResult struct {
-	AgentId         int    `pulumi:"agentId"`
-	CreatedAt       string `pulumi:"createdAt"`
-	CreatedByUserId int    `pulumi:"createdByUserId"`
+	// The ID of the agent.
+	AgentId int `pulumi:"agentId"`
+	// The ISO8601 datetime when the agent was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// The ID of the user who created the agent.
+	CreatedByUserId int `pulumi:"createdByUserId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string `pulumi:"id"`
-	Name    string `pulumi:"name"`
+	Id string `pulumi:"id"`
+	// The Name of the agent.
+	Name string `pulumi:"name"`
+	// ID or full path of the project maintained by the authenticated user.
 	Project string `pulumi:"project"`
 }
 
@@ -80,7 +90,9 @@ func LookupClusterAgentOutput(ctx *pulumi.Context, args LookupClusterAgentOutput
 
 // A collection of arguments for invoking getClusterAgent.
 type LookupClusterAgentOutputArgs struct {
-	AgentId pulumi.IntInput    `pulumi:"agentId"`
+	// The ID of the agent.
+	AgentId pulumi.IntInput `pulumi:"agentId"`
+	// ID or full path of the project maintained by the authenticated user.
 	Project pulumi.StringInput `pulumi:"project"`
 }
 
@@ -103,14 +115,17 @@ func (o LookupClusterAgentResultOutput) ToLookupClusterAgentResultOutputWithCont
 	return o
 }
 
+// The ID of the agent.
 func (o LookupClusterAgentResultOutput) AgentId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupClusterAgentResult) int { return v.AgentId }).(pulumi.IntOutput)
 }
 
+// The ISO8601 datetime when the agent was created.
 func (o LookupClusterAgentResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterAgentResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// The ID of the user who created the agent.
 func (o LookupClusterAgentResultOutput) CreatedByUserId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupClusterAgentResult) int { return v.CreatedByUserId }).(pulumi.IntOutput)
 }
@@ -120,10 +135,12 @@ func (o LookupClusterAgentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterAgentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The Name of the agent.
 func (o LookupClusterAgentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterAgentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// ID or full path of the project maintained by the authenticated user.
 func (o LookupClusterAgentResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterAgentResult) string { return v.Project }).(pulumi.StringOutput)
 }

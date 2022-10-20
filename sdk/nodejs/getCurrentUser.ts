@@ -32,13 +32,40 @@ export function getCurrentUser(opts?: pulumi.InvokeOptions): Promise<GetCurrentU
  * A collection of values returned by getCurrentUser.
  */
 export interface GetCurrentUserResult {
+    /**
+     * Indicates if the user is a bot.
+     */
     readonly bot: boolean;
+    /**
+     * Global ID of the user. This is in the form of a GraphQL globally unique ID.
+     */
     readonly globalId: string;
+    /**
+     * Personal namespace of the user. This is in the form of a GraphQL globally unique ID.
+     */
     readonly globalNamespaceId: string;
+    /**
+     * Group count for the user.
+     */
     readonly groupCount: number;
+    /**
+     * ID of the user.
+     */
     readonly id: string;
+    /**
+     * Human-readable name of the user. Returns **** if the user is a project bot and the requester does not have permission to view the project.
+     */
     readonly name: string;
+    /**
+     * Personal namespace of the user.
+     */
     readonly namespaceId: string;
+    /**
+     * User’s public email.
+     */
     readonly publicEmail: string;
+    /**
+     * Username of the user. Unique within this instance of GitLab.
+     */
     readonly username: string;
 }

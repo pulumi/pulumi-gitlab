@@ -17,50 +17,48 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleProjectAccessToken = new GitLab.ProjectAccessToken("exampleProjectAccessToken", new()
     ///     {
-    ///         var exampleProjectAccessToken = new GitLab.ProjectAccessToken("exampleProjectAccessToken", new GitLab.ProjectAccessTokenArgs
+    ///         Project = "25",
+    ///         ExpiresAt = "2020-03-14",
+    ///         AccessLevel = "reporter",
+    ///         Scopes = new[]
     ///         {
-    ///             Project = "25",
-    ///             ExpiresAt = "2020-03-14",
-    ///             AccessLevel = "reporter",
-    ///             Scopes = 
-    ///             {
-    ///                 "api",
-    ///             },
-    ///         });
-    ///         var exampleProjectVariable = new GitLab.ProjectVariable("exampleProjectVariable", new GitLab.ProjectVariableArgs
-    ///         {
-    ///             Project = gitlab_project.Example.Id,
-    ///             Key = "pat",
-    ///             Value = exampleProjectAccessToken.Token,
-    ///         });
-    ///     }
+    ///             "api",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var exampleProjectVariable = new GitLab.ProjectVariable("exampleProjectVariable", new()
+    ///     {
+    ///         Project = gitlab_project.Example.Id,
+    ///         Key = "pat",
+    ///         Value = exampleProjectAccessToken.Token,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # A GitLab Project Access Token can be imported using a key composed of `&lt;project-id&gt;:&lt;token-id&gt;`, e.g.
+    /// A GitLab Project Access Token can be imported using a key composed of `&lt;project-id&gt;:&lt;token-id&gt;`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectAccessToken:ProjectAccessToken example "12345:1"
     /// ```
     /// 
-    /// # NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    ///  NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/projectAccessToken:ProjectAccessToken")]
-    public partial class ProjectAccessToken : Pulumi.CustomResource
+    public partial class ProjectAccessToken : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-        /// `maintainer`, `owner`, `master`. Default is `maintainer`.
+        /// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
         /// </summary>
         [Output("accessLevel")]
         public Output<string?> AccessLevel { get; private set; } = null!;
@@ -142,6 +140,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -163,11 +165,10 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ProjectAccessTokenArgs : Pulumi.ResourceArgs
+    public sealed class ProjectAccessTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-        /// `maintainer`, `owner`, `master`. Default is `maintainer`.
+        /// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -205,13 +206,13 @@ namespace Pulumi.GitLab
         public ProjectAccessTokenArgs()
         {
         }
+        public static new ProjectAccessTokenArgs Empty => new ProjectAccessTokenArgs();
     }
 
-    public sealed class ProjectAccessTokenState : Pulumi.ResourceArgs
+    public sealed class ProjectAccessTokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-        /// `maintainer`, `owner`, `master`. Default is `maintainer`.
+        /// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -264,11 +265,21 @@ namespace Pulumi.GitLab
             set => _scopes = value;
         }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// The secret token. **Note**: the token is not available for imported resources.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The user_id associated to the token.
@@ -279,5 +290,6 @@ namespace Pulumi.GitLab
         public ProjectAccessTokenState()
         {
         }
+        public static new ProjectAccessTokenState Empty => new ProjectAccessTokenState();
     }
 }

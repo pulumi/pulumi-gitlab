@@ -20,6 +20,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gitlab:index/applicationSettings:ApplicationSettings":
+		r = &ApplicationSettings{}
 	case "gitlab:index/branch:Branch":
 		r = &Branch{}
 	case "gitlab:index/branchProtection:BranchProtection":
@@ -44,6 +46,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupCluster{}
 	case "gitlab:index/groupCustomAttribute:GroupCustomAttribute":
 		r = &GroupCustomAttribute{}
+	case "gitlab:index/groupHook:GroupHook":
+		r = &GroupHook{}
 	case "gitlab:index/groupLabel:GroupLabel":
 		r = &GroupLabel{}
 	case "gitlab:index/groupLdapLink:GroupLdapLink":
@@ -52,6 +56,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupMembership{}
 	case "gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate":
 		r = &GroupProjectFileTemplate{}
+	case "gitlab:index/groupSamlLink:GroupSamlLink":
+		r = &GroupSamlLink{}
 	case "gitlab:index/groupShareGroup:GroupShareGroup":
 		r = &GroupShareGroup{}
 	case "gitlab:index/groupVariable:GroupVariable":
@@ -92,6 +98,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectHook{}
 	case "gitlab:index/projectIssue:ProjectIssue":
 		r = &ProjectIssue{}
+	case "gitlab:index/projectIssueBoard:ProjectIssueBoard":
+		r = &ProjectIssueBoard{}
 	case "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals":
 		r = &ProjectLevelMrApprovals{}
 	case "gitlab:index/projectMembership:ProjectMembership":
@@ -138,6 +146,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &User{}
 	case "gitlab:index/userCustomAttribute:UserCustomAttribute":
 		r = &UserCustomAttribute{}
+	case "gitlab:index/userGpgKey:UserGpgKey":
+		r = &UserGpgKey{}
 	case "gitlab:index/userSshKey:UserSshKey":
 		r = &UserSshKey{}
 	default:
@@ -168,6 +178,11 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 
 func init() {
 	version, _ := PkgVersion()
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/applicationSettings",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/branch",
@@ -230,6 +245,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/groupHook",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/groupLabel",
 		&module{version},
 	)
@@ -246,6 +266,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/groupProjectFileTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/groupSamlLink",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -346,6 +371,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectIssue",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectIssueBoard",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -461,6 +491,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/userCustomAttribute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/userGpgKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

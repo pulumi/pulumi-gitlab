@@ -35,6 +35,9 @@ export function getInstanceVariable(args: GetInstanceVariableArgs, opts?: pulumi
  * A collection of arguments for invoking getInstanceVariable.
  */
 export interface GetInstanceVariableArgs {
+    /**
+     * The name of the variable.
+     */
     key: string;
 }
 
@@ -46,10 +49,25 @@ export interface GetInstanceVariableResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of the variable.
+     */
     readonly key: string;
+    /**
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     */
     readonly masked: boolean;
+    /**
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     */
     readonly protected: boolean;
+    /**
+     * The value of the variable.
+     */
     readonly value: string;
+    /**
+     * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+     */
     readonly variableType: string;
 }
 
@@ -61,5 +79,8 @@ export function getInstanceVariableOutput(args: GetInstanceVariableOutputArgs, o
  * A collection of arguments for invoking getInstanceVariable.
  */
 export interface GetInstanceVariableOutputArgs {
+    /**
+     * The name of the variable.
+     */
     key: pulumi.Input<string>;
 }

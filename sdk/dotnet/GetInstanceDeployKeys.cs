@@ -23,26 +23,24 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = GitLab.GetInstanceDeployKeys.Invoke(new()
         ///     {
-        ///         var example = Output.Create(GitLab.GetInstanceDeployKeys.InvokeAsync(new GitLab.GetInstanceDeployKeysArgs
-        ///         {
-        ///             Public = true,
-        ///         }));
-        ///     }
+        ///         Public = true,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceDeployKeysResult> InvokeAsync(GetInstanceDeployKeysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceDeployKeysResult>("gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys", args ?? new GetInstanceDeployKeysArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceDeployKeysResult>("gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys", args ?? new GetInstanceDeployKeysArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `gitlab.getInstanceDeployKeys` data source allows to retrieve a list of deploy keys for a GitLab instance.
@@ -56,58 +54,70 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = GitLab.GetInstanceDeployKeys.Invoke(new()
         ///     {
-        ///         var example = Output.Create(GitLab.GetInstanceDeployKeys.InvokeAsync(new GitLab.GetInstanceDeployKeysArgs
-        ///         {
-        ///             Public = true,
-        ///         }));
-        ///     }
+        ///         Public = true,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceDeployKeysResult> Invoke(GetInstanceDeployKeysInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceDeployKeysResult>("gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys", args ?? new GetInstanceDeployKeysInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceDeployKeysResult>("gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys", args ?? new GetInstanceDeployKeysInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstanceDeployKeysArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceDeployKeysArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Only return deploy keys that are public.
+        /// </summary>
         [Input("public")]
         public bool? Public { get; set; }
 
         public GetInstanceDeployKeysArgs()
         {
         }
+        public static new GetInstanceDeployKeysArgs Empty => new GetInstanceDeployKeysArgs();
     }
 
-    public sealed class GetInstanceDeployKeysInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceDeployKeysInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Only return deploy keys that are public.
+        /// </summary>
         [Input("public")]
         public Input<bool>? Public { get; set; }
 
         public GetInstanceDeployKeysInvokeArgs()
         {
         }
+        public static new GetInstanceDeployKeysInvokeArgs Empty => new GetInstanceDeployKeysInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetInstanceDeployKeysResult
     {
+        /// <summary>
+        /// The list of all deploy keys across all projects of the GitLab instance.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceDeployKeysDeployKeyResult> DeployKeys;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Only return deploy keys that are public.
+        /// </summary>
         public readonly bool? Public;
 
         [OutputConstructor]

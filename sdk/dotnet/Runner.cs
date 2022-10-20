@@ -19,14 +19,14 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// # A GitLab Runner can be imported using the runner's ID, eg
+    /// A GitLab Runner can be imported using the runner's ID, eg
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/runner:Runner this 1
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/runner:Runner")]
-    public partial class Runner : Pulumi.CustomResource
+    public partial class Runner : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
@@ -77,8 +77,8 @@ namespace Pulumi.GitLab
         public Output<bool> RunUntagged { get; private set; } = null!;
 
         /// <summary>
-        /// The status of runners to show, one of: online and offline. active and paused are also possible values which were
-        /// deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+        /// The status of runners to show, one of: online and offline. active and paused are also possible values
+        /// 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -112,6 +112,11 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "authenticationToken",
+                    "registrationToken",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -133,7 +138,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class RunnerArgs : Pulumi.ResourceArgs
+    public sealed class RunnerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
@@ -165,11 +170,21 @@ namespace Pulumi.GitLab
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
+        [Input("registrationToken", required: true)]
+        private Input<string>? _registrationToken;
+
         /// <summary>
         /// The registration token used to register the runner.
         /// </summary>
-        [Input("registrationToken", required: true)]
-        public Input<string> RegistrationToken { get; set; } = null!;
+        public Input<string>? RegistrationToken
+        {
+            get => _registrationToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _registrationToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Whether the runner should handle untagged jobs.
@@ -192,9 +207,10 @@ namespace Pulumi.GitLab
         public RunnerArgs()
         {
         }
+        public static new RunnerArgs Empty => new RunnerArgs();
     }
 
-    public sealed class RunnerState : Pulumi.ResourceArgs
+    public sealed class RunnerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
@@ -202,11 +218,21 @@ namespace Pulumi.GitLab
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
 
+        [Input("authenticationToken")]
+        private Input<string>? _authenticationToken;
+
         /// <summary>
         /// The authentication token used for building a config.toml file. This value is not present when imported.
         /// </summary>
-        [Input("authenticationToken")]
-        public Input<string>? AuthenticationToken { get; set; }
+        public Input<string>? AuthenticationToken
+        {
+            get => _authenticationToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authenticationToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The runner's description.
@@ -232,11 +258,21 @@ namespace Pulumi.GitLab
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
+        [Input("registrationToken")]
+        private Input<string>? _registrationToken;
+
         /// <summary>
         /// The registration token used to register the runner.
         /// </summary>
-        [Input("registrationToken")]
-        public Input<string>? RegistrationToken { get; set; }
+        public Input<string>? RegistrationToken
+        {
+            get => _registrationToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _registrationToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Whether the runner should handle untagged jobs.
@@ -245,8 +281,8 @@ namespace Pulumi.GitLab
         public Input<bool>? RunUntagged { get; set; }
 
         /// <summary>
-        /// The status of runners to show, one of: online and offline. active and paused are also possible values which were
-        /// deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+        /// The status of runners to show, one of: online and offline. active and paused are also possible values
+        /// 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -266,5 +302,6 @@ namespace Pulumi.GitLab
         public RunnerState()
         {
         }
+        public static new RunnerState Empty => new RunnerState();
     }
 }

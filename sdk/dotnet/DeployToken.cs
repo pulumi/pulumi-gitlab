@@ -16,7 +16,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// # GitLab deploy tokens can be imported using an id made up of `{type}:{type_id}:{deploy_token_id}`, where type is one ofproject, group.
+    /// GitLab deploy tokens can be imported using an id made up of `{type}:{type_id}:{deploy_token_id}`, where type is one ofproject, group.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/deployToken:DeployToken group_token group:1:3
@@ -26,10 +26,10 @@ namespace Pulumi.GitLab
     ///  $ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4
     /// ```
     /// 
-    /// # Notethe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    ///  Notethe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/deployToken:DeployToken")]
-    public partial class DeployToken : Pulumi.CustomResource
+    public partial class DeployToken : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Time the token will expire it, RFC3339 format. Will not expire per default.
@@ -62,8 +62,7 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
 
         /// <summary>
-        /// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
-        /// imported resources.
+        /// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
         /// </summary>
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
@@ -97,6 +96,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -118,7 +121,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class DeployTokenArgs : Pulumi.ResourceArgs
+    public sealed class DeployTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Time the token will expire it, RFC3339 format. Will not expire per default.
@@ -165,9 +168,10 @@ namespace Pulumi.GitLab
         public DeployTokenArgs()
         {
         }
+        public static new DeployTokenArgs Empty => new DeployTokenArgs();
     }
 
-    public sealed class DeployTokenState : Pulumi.ResourceArgs
+    public sealed class DeployTokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Time the token will expire it, RFC3339 format. Will not expire per default.
@@ -205,12 +209,21 @@ namespace Pulumi.GitLab
             set => _scopes = value;
         }
 
-        /// <summary>
-        /// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
-        /// imported resources.
-        /// </summary>
         [Input("token")]
-        public Input<string>? Token { get; set; }
+        private Input<string>? _token;
+
+        /// <summary>
+        /// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
+        /// </summary>
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
@@ -221,5 +234,6 @@ namespace Pulumi.GitLab
         public DeployTokenState()
         {
         }
+        public static new DeployTokenState Empty => new DeployTokenState();
     }
 }

@@ -16,60 +16,67 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewProject(ctx, "example", &gitlab.ProjectArgs{
-// 			Description:     pulumi.String("My awesome codebase"),
-// 			VisibilityLevel: pulumi.String("public"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewProject(ctx, "example-two", &gitlab.ProjectArgs{
-// 			PushRules: &ProjectPushRulesArgs{
-// 				AuthorEmailRegex:     pulumi.String(fmt.Sprintf("%v%v", "@example\\.com", "$")),
-// 				CommitCommitterCheck: pulumi.Bool(true),
-// 				MemberCheck:          pulumi.Bool(true),
-// 				PreventSecrets:       pulumi.Bool(true),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		peterParker, err := gitlab.LookupUser(ctx, &GetUserArgs{
-// 			Username: pulumi.StringRef("peter_parker"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewProject(ctx, "petersRepo", &gitlab.ProjectArgs{
-// 			Description: pulumi.String("This is a description"),
-// 			NamespaceId: pulumi.Int(peterParker.NamespaceId),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewProject(ctx, "example", &gitlab.ProjectArgs{
+//				Description:     pulumi.String("My awesome codebase"),
+//				VisibilityLevel: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProject(ctx, "example-two", &gitlab.ProjectArgs{
+//				PushRules: &ProjectPushRulesArgs{
+//					AuthorEmailRegex:     pulumi.String(fmt.Sprintf("@example\\.com$")),
+//					CommitCommitterCheck: pulumi.Bool(true),
+//					MemberCheck:          pulumi.Bool(true),
+//					PreventSecrets:       pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			peterParker, err := gitlab.LookupUser(ctx, &GetUserArgs{
+//				Username: pulumi.StringRef("peter_parker"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProject(ctx, "petersRepo", &gitlab.ProjectArgs{
+//				Description: pulumi.String("This is a description"),
+//				NamespaceId: pulumi.Int(peterParker.NamespaceId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import gitlab:index/project:Project # You can import a project state using `<resource> <id>`. The
+//
+//	$ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
+//
 // ```
 //
-// # `id` can be whatever the [get single project api][get_single_project] takes for # its `:id` value, so for example
+//	`id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
 //
 // ```sh
-//  $ pulumi import gitlab:index/project:Project example richardc/example
+//
+//	$ pulumi import gitlab:index/project:Project example richardc/example
+//
 // ```
 type Project struct {
 	pulumi.CustomResourceState
@@ -78,19 +85,18 @@ type Project struct {
 	AllowMergeOnSkippedPipeline pulumi.BoolPtrOutput `pulumi:"allowMergeOnSkippedPipeline"`
 	// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
 	AnalyticsAccessLevel pulumi.StringOutput `pulumi:"analyticsAccessLevel"`
-	// Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
-	// with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
-	// [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
-	// this attribute and use `gitlab_project_approval_rule` instead.
+	// Number of merge request approvals required for merging. Default is 0.
+	// This field **does not** work well in combination with the `ProjectApprovalRule` resource
+	// and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
+	// In the meantime we recommend against using this attribute and use `ProjectApprovalRule` instead.
 	ApprovalsBeforeMerge pulumi.IntPtrOutput `pulumi:"approvalsBeforeMerge"`
-	// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE`
-	// operation.
+	// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
 	ArchiveOnDestroy pulumi.BoolPtrOutput `pulumi:"archiveOnDestroy"`
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
 	Archived pulumi.BoolPtrOutput `pulumi:"archived"`
 	// Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
 	AutoCancelPendingPipelines pulumi.StringOutput `pulumi:"autoCancelPendingPipelines"`
-	// Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+	// Auto Deploy strategy. Valid values are `continuous`, `manual`, `timedIncremental`.
 	AutoDevopsDeployStrategy pulumi.StringOutput `pulumi:"autoDevopsDeployStrategy"`
 	// Enable Auto DevOps for this project.
 	AutoDevopsEnabled pulumi.BoolOutput `pulumi:"autoDevopsEnabled"`
@@ -112,8 +118,7 @@ type Project struct {
 	CiDefaultGitDepth pulumi.IntOutput `pulumi:"ciDefaultGitDepth"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled pulumi.BoolPtrOutput `pulumi:"ciForwardDeploymentEnabled"`
-	// Set the image cleanup policy for this project. **Note**: this field is sometimes named
-	// `container_expiration_policy_attributes` in the GitLab Upstream API.
+	// Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
 	ContainerExpirationPolicy ProjectContainerExpirationPolicyOutput `pulumi:"containerExpirationPolicy"`
 	// Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
 	ContainerRegistryAccessLevel pulumi.StringOutput `pulumi:"containerRegistryAccessLevel"`
@@ -129,8 +134,7 @@ type Project struct {
 	ExternalAuthorizationClassificationLabel pulumi.StringPtrOutput `pulumi:"externalAuthorizationClassificationLabel"`
 	// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
 	ForkingAccessLevel pulumi.StringOutput `pulumi:"forkingAccessLevel"`
-	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave
-	// empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
 	GroupWithProjectTemplatesId pulumi.IntPtrOutput `pulumi:"groupWithProjectTemplatesId"`
 	// URL that can be provided to `git clone` to clone the
 	HttpUrlToRepo pulumi.StringOutput `pulumi:"httpUrlToRepo"`
@@ -158,7 +162,7 @@ type Project struct {
 	MergeRequestsEnabled pulumi.BoolPtrOutput `pulumi:"mergeRequestsEnabled"`
 	// Sets the template for new merge requests in the project.
 	MergeRequestsTemplate pulumi.StringPtrOutput `pulumi:"mergeRequestsTemplate"`
-	// Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+	// Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
 	MergeTrainsEnabled pulumi.BoolPtrOutput `pulumi:"mergeTrainsEnabled"`
 	// Enable project pull mirror.
 	Mirror pulumi.BoolPtrOutput `pulumi:"mirror"`
@@ -212,10 +216,10 @@ type Project struct {
 	SecurityAndComplianceAccessLevel pulumi.StringOutput `pulumi:"securityAndComplianceAccessLevel"`
 	// Enable shared runners for this project.
 	SharedRunnersEnabled pulumi.BoolOutput `pulumi:"sharedRunnersEnabled"`
-	// If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
-	// the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
-	// no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
-	// attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
+	// If `true`, the default behavior to wait for the default branch protection to be created is skipped.
+	// This is necessary if the current user is not an admin and the default branch protection is disabled on an instance-level.
+	// There is currently no known way to determine if the default branch protection is disabled on an instance-level for non-admin users.
+	// This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
 	SkipWaitForDefaultBranchProtection pulumi.BoolPtrOutput `pulumi:"skipWaitForDefaultBranchProtection"`
 	// Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
 	SnippetsAccessLevel pulumi.StringOutput `pulumi:"snippetsAccessLevel"`
@@ -223,22 +227,19 @@ type Project struct {
 	SnippetsEnabled pulumi.BoolPtrOutput `pulumi:"snippetsEnabled"`
 	// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
 	SquashCommitTemplate pulumi.StringPtrOutput `pulumi:"squashCommitTemplate"`
-	// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value
-	// is `default_off`. [GitLab >= 14.1]
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
 	SquashOption pulumi.StringPtrOutput `pulumi:"squashOption"`
 	// URL that can be provided to `git clone` to clone the
 	SshUrlToRepo pulumi.StringOutput `pulumi:"sshUrlToRepo"`
 	// The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of
-	// a custom project template. This option is mutually exclusive with `template_project_id`.
+	// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
 	TemplateName pulumi.StringPtrOutput `pulumi:"templateName"`
-	// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name
-	// since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+	// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
 	TemplateProjectId pulumi.IntPtrOutput `pulumi:"templateProjectId"`
 	// The list of topics for the project.
 	Topics pulumi.StringArrayOutput `pulumi:"topics"`
-	// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
 	UseCustomTemplate pulumi.BoolPtrOutput `pulumi:"useCustomTemplate"`
 	// Set to `public` to create a public project.
 	VisibilityLevel pulumi.StringPtrOutput `pulumi:"visibilityLevel"`
@@ -257,6 +258,10 @@ func NewProject(ctx *pulumi.Context,
 		args = &ProjectArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"runnersToken",
+	})
+	opts = append(opts, secrets)
 	var resource Project
 	err := ctx.RegisterResource("gitlab:index/project:Project", name, args, &resource, opts...)
 	if err != nil {
@@ -283,19 +288,18 @@ type projectState struct {
 	AllowMergeOnSkippedPipeline *bool `pulumi:"allowMergeOnSkippedPipeline"`
 	// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
 	AnalyticsAccessLevel *string `pulumi:"analyticsAccessLevel"`
-	// Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
-	// with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
-	// [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
-	// this attribute and use `gitlab_project_approval_rule` instead.
+	// Number of merge request approvals required for merging. Default is 0.
+	// This field **does not** work well in combination with the `ProjectApprovalRule` resource
+	// and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
+	// In the meantime we recommend against using this attribute and use `ProjectApprovalRule` instead.
 	ApprovalsBeforeMerge *int `pulumi:"approvalsBeforeMerge"`
-	// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE`
-	// operation.
+	// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
 	ArchiveOnDestroy *bool `pulumi:"archiveOnDestroy"`
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
 	Archived *bool `pulumi:"archived"`
 	// Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
 	AutoCancelPendingPipelines *string `pulumi:"autoCancelPendingPipelines"`
-	// Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+	// Auto Deploy strategy. Valid values are `continuous`, `manual`, `timedIncremental`.
 	AutoDevopsDeployStrategy *string `pulumi:"autoDevopsDeployStrategy"`
 	// Enable Auto DevOps for this project.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
@@ -317,8 +321,7 @@ type projectState struct {
 	CiDefaultGitDepth *int `pulumi:"ciDefaultGitDepth"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled *bool `pulumi:"ciForwardDeploymentEnabled"`
-	// Set the image cleanup policy for this project. **Note**: this field is sometimes named
-	// `container_expiration_policy_attributes` in the GitLab Upstream API.
+	// Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
 	ContainerExpirationPolicy *ProjectContainerExpirationPolicy `pulumi:"containerExpirationPolicy"`
 	// Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
 	ContainerRegistryAccessLevel *string `pulumi:"containerRegistryAccessLevel"`
@@ -334,8 +337,7 @@ type projectState struct {
 	ExternalAuthorizationClassificationLabel *string `pulumi:"externalAuthorizationClassificationLabel"`
 	// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
 	ForkingAccessLevel *string `pulumi:"forkingAccessLevel"`
-	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave
-	// empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
 	GroupWithProjectTemplatesId *int `pulumi:"groupWithProjectTemplatesId"`
 	// URL that can be provided to `git clone` to clone the
 	HttpUrlToRepo *string `pulumi:"httpUrlToRepo"`
@@ -363,7 +365,7 @@ type projectState struct {
 	MergeRequestsEnabled *bool `pulumi:"mergeRequestsEnabled"`
 	// Sets the template for new merge requests in the project.
 	MergeRequestsTemplate *string `pulumi:"mergeRequestsTemplate"`
-	// Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+	// Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
 	MergeTrainsEnabled *bool `pulumi:"mergeTrainsEnabled"`
 	// Enable project pull mirror.
 	Mirror *bool `pulumi:"mirror"`
@@ -417,10 +419,10 @@ type projectState struct {
 	SecurityAndComplianceAccessLevel *string `pulumi:"securityAndComplianceAccessLevel"`
 	// Enable shared runners for this project.
 	SharedRunnersEnabled *bool `pulumi:"sharedRunnersEnabled"`
-	// If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
-	// the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
-	// no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
-	// attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
+	// If `true`, the default behavior to wait for the default branch protection to be created is skipped.
+	// This is necessary if the current user is not an admin and the default branch protection is disabled on an instance-level.
+	// There is currently no known way to determine if the default branch protection is disabled on an instance-level for non-admin users.
+	// This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
 	SkipWaitForDefaultBranchProtection *bool `pulumi:"skipWaitForDefaultBranchProtection"`
 	// Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
 	SnippetsAccessLevel *string `pulumi:"snippetsAccessLevel"`
@@ -428,22 +430,19 @@ type projectState struct {
 	SnippetsEnabled *bool `pulumi:"snippetsEnabled"`
 	// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
 	SquashCommitTemplate *string `pulumi:"squashCommitTemplate"`
-	// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value
-	// is `default_off`. [GitLab >= 14.1]
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
 	SquashOption *string `pulumi:"squashOption"`
 	// URL that can be provided to `git clone` to clone the
 	SshUrlToRepo *string `pulumi:"sshUrlToRepo"`
 	// The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
 	Tags []string `pulumi:"tags"`
-	// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of
-	// a custom project template. This option is mutually exclusive with `template_project_id`.
+	// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
 	TemplateName *string `pulumi:"templateName"`
-	// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name
-	// since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+	// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
 	TemplateProjectId *int `pulumi:"templateProjectId"`
 	// The list of topics for the project.
 	Topics []string `pulumi:"topics"`
-	// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
 	UseCustomTemplate *bool `pulumi:"useCustomTemplate"`
 	// Set to `public` to create a public project.
 	VisibilityLevel *string `pulumi:"visibilityLevel"`
@@ -460,19 +459,18 @@ type ProjectState struct {
 	AllowMergeOnSkippedPipeline pulumi.BoolPtrInput
 	// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
 	AnalyticsAccessLevel pulumi.StringPtrInput
-	// Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
-	// with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
-	// [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
-	// this attribute and use `gitlab_project_approval_rule` instead.
+	// Number of merge request approvals required for merging. Default is 0.
+	// This field **does not** work well in combination with the `ProjectApprovalRule` resource
+	// and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
+	// In the meantime we recommend against using this attribute and use `ProjectApprovalRule` instead.
 	ApprovalsBeforeMerge pulumi.IntPtrInput
-	// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE`
-	// operation.
+	// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
 	ArchiveOnDestroy pulumi.BoolPtrInput
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
 	Archived pulumi.BoolPtrInput
 	// Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
 	AutoCancelPendingPipelines pulumi.StringPtrInput
-	// Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+	// Auto Deploy strategy. Valid values are `continuous`, `manual`, `timedIncremental`.
 	AutoDevopsDeployStrategy pulumi.StringPtrInput
 	// Enable Auto DevOps for this project.
 	AutoDevopsEnabled pulumi.BoolPtrInput
@@ -494,8 +492,7 @@ type ProjectState struct {
 	CiDefaultGitDepth pulumi.IntPtrInput
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled pulumi.BoolPtrInput
-	// Set the image cleanup policy for this project. **Note**: this field is sometimes named
-	// `container_expiration_policy_attributes` in the GitLab Upstream API.
+	// Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
 	ContainerExpirationPolicy ProjectContainerExpirationPolicyPtrInput
 	// Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
 	ContainerRegistryAccessLevel pulumi.StringPtrInput
@@ -511,8 +508,7 @@ type ProjectState struct {
 	ExternalAuthorizationClassificationLabel pulumi.StringPtrInput
 	// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
 	ForkingAccessLevel pulumi.StringPtrInput
-	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave
-	// empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
 	GroupWithProjectTemplatesId pulumi.IntPtrInput
 	// URL that can be provided to `git clone` to clone the
 	HttpUrlToRepo pulumi.StringPtrInput
@@ -540,7 +536,7 @@ type ProjectState struct {
 	MergeRequestsEnabled pulumi.BoolPtrInput
 	// Sets the template for new merge requests in the project.
 	MergeRequestsTemplate pulumi.StringPtrInput
-	// Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+	// Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
 	MergeTrainsEnabled pulumi.BoolPtrInput
 	// Enable project pull mirror.
 	Mirror pulumi.BoolPtrInput
@@ -594,10 +590,10 @@ type ProjectState struct {
 	SecurityAndComplianceAccessLevel pulumi.StringPtrInput
 	// Enable shared runners for this project.
 	SharedRunnersEnabled pulumi.BoolPtrInput
-	// If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
-	// the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
-	// no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
-	// attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
+	// If `true`, the default behavior to wait for the default branch protection to be created is skipped.
+	// This is necessary if the current user is not an admin and the default branch protection is disabled on an instance-level.
+	// There is currently no known way to determine if the default branch protection is disabled on an instance-level for non-admin users.
+	// This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
 	SkipWaitForDefaultBranchProtection pulumi.BoolPtrInput
 	// Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
 	SnippetsAccessLevel pulumi.StringPtrInput
@@ -605,22 +601,19 @@ type ProjectState struct {
 	SnippetsEnabled pulumi.BoolPtrInput
 	// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
 	SquashCommitTemplate pulumi.StringPtrInput
-	// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value
-	// is `default_off`. [GitLab >= 14.1]
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
 	SquashOption pulumi.StringPtrInput
 	// URL that can be provided to `git clone` to clone the
 	SshUrlToRepo pulumi.StringPtrInput
 	// The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
 	Tags pulumi.StringArrayInput
-	// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of
-	// a custom project template. This option is mutually exclusive with `template_project_id`.
+	// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
 	TemplateName pulumi.StringPtrInput
-	// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name
-	// since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+	// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
 	TemplateProjectId pulumi.IntPtrInput
 	// The list of topics for the project.
 	Topics pulumi.StringArrayInput
-	// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
 	UseCustomTemplate pulumi.BoolPtrInput
 	// Set to `public` to create a public project.
 	VisibilityLevel pulumi.StringPtrInput
@@ -641,19 +634,18 @@ type projectArgs struct {
 	AllowMergeOnSkippedPipeline *bool `pulumi:"allowMergeOnSkippedPipeline"`
 	// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
 	AnalyticsAccessLevel *string `pulumi:"analyticsAccessLevel"`
-	// Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
-	// with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
-	// [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
-	// this attribute and use `gitlab_project_approval_rule` instead.
+	// Number of merge request approvals required for merging. Default is 0.
+	// This field **does not** work well in combination with the `ProjectApprovalRule` resource
+	// and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
+	// In the meantime we recommend against using this attribute and use `ProjectApprovalRule` instead.
 	ApprovalsBeforeMerge *int `pulumi:"approvalsBeforeMerge"`
-	// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE`
-	// operation.
+	// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
 	ArchiveOnDestroy *bool `pulumi:"archiveOnDestroy"`
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
 	Archived *bool `pulumi:"archived"`
 	// Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
 	AutoCancelPendingPipelines *string `pulumi:"autoCancelPendingPipelines"`
-	// Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+	// Auto Deploy strategy. Valid values are `continuous`, `manual`, `timedIncremental`.
 	AutoDevopsDeployStrategy *string `pulumi:"autoDevopsDeployStrategy"`
 	// Enable Auto DevOps for this project.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
@@ -675,8 +667,7 @@ type projectArgs struct {
 	CiDefaultGitDepth *int `pulumi:"ciDefaultGitDepth"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled *bool `pulumi:"ciForwardDeploymentEnabled"`
-	// Set the image cleanup policy for this project. **Note**: this field is sometimes named
-	// `container_expiration_policy_attributes` in the GitLab Upstream API.
+	// Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
 	ContainerExpirationPolicy *ProjectContainerExpirationPolicy `pulumi:"containerExpirationPolicy"`
 	// Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
 	ContainerRegistryAccessLevel *string `pulumi:"containerRegistryAccessLevel"`
@@ -692,8 +683,7 @@ type projectArgs struct {
 	ExternalAuthorizationClassificationLabel *string `pulumi:"externalAuthorizationClassificationLabel"`
 	// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
 	ForkingAccessLevel *string `pulumi:"forkingAccessLevel"`
-	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave
-	// empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
 	GroupWithProjectTemplatesId *int `pulumi:"groupWithProjectTemplatesId"`
 	// Git URL to a repository to be imported.
 	ImportUrl *string `pulumi:"importUrl"`
@@ -719,7 +709,7 @@ type projectArgs struct {
 	MergeRequestsEnabled *bool `pulumi:"mergeRequestsEnabled"`
 	// Sets the template for new merge requests in the project.
 	MergeRequestsTemplate *string `pulumi:"mergeRequestsTemplate"`
-	// Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+	// Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
 	MergeTrainsEnabled *bool `pulumi:"mergeTrainsEnabled"`
 	// Enable project pull mirror.
 	Mirror *bool `pulumi:"mirror"`
@@ -769,10 +759,10 @@ type projectArgs struct {
 	SecurityAndComplianceAccessLevel *string `pulumi:"securityAndComplianceAccessLevel"`
 	// Enable shared runners for this project.
 	SharedRunnersEnabled *bool `pulumi:"sharedRunnersEnabled"`
-	// If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
-	// the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
-	// no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
-	// attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
+	// If `true`, the default behavior to wait for the default branch protection to be created is skipped.
+	// This is necessary if the current user is not an admin and the default branch protection is disabled on an instance-level.
+	// There is currently no known way to determine if the default branch protection is disabled on an instance-level for non-admin users.
+	// This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
 	SkipWaitForDefaultBranchProtection *bool `pulumi:"skipWaitForDefaultBranchProtection"`
 	// Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
 	SnippetsAccessLevel *string `pulumi:"snippetsAccessLevel"`
@@ -780,20 +770,17 @@ type projectArgs struct {
 	SnippetsEnabled *bool `pulumi:"snippetsEnabled"`
 	// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
 	SquashCommitTemplate *string `pulumi:"squashCommitTemplate"`
-	// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value
-	// is `default_off`. [GitLab >= 14.1]
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
 	SquashOption *string `pulumi:"squashOption"`
 	// The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
 	Tags []string `pulumi:"tags"`
-	// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of
-	// a custom project template. This option is mutually exclusive with `template_project_id`.
+	// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
 	TemplateName *string `pulumi:"templateName"`
-	// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name
-	// since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+	// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
 	TemplateProjectId *int `pulumi:"templateProjectId"`
 	// The list of topics for the project.
 	Topics []string `pulumi:"topics"`
-	// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
 	UseCustomTemplate *bool `pulumi:"useCustomTemplate"`
 	// Set to `public` to create a public project.
 	VisibilityLevel *string `pulumi:"visibilityLevel"`
@@ -809,19 +796,18 @@ type ProjectArgs struct {
 	AllowMergeOnSkippedPipeline pulumi.BoolPtrInput
 	// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
 	AnalyticsAccessLevel pulumi.StringPtrInput
-	// Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
-	// with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
-	// [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
-	// this attribute and use `gitlab_project_approval_rule` instead.
+	// Number of merge request approvals required for merging. Default is 0.
+	// This field **does not** work well in combination with the `ProjectApprovalRule` resource
+	// and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
+	// In the meantime we recommend against using this attribute and use `ProjectApprovalRule` instead.
 	ApprovalsBeforeMerge pulumi.IntPtrInput
-	// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE`
-	// operation.
+	// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
 	ArchiveOnDestroy pulumi.BoolPtrInput
 	// Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
 	Archived pulumi.BoolPtrInput
 	// Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
 	AutoCancelPendingPipelines pulumi.StringPtrInput
-	// Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+	// Auto Deploy strategy. Valid values are `continuous`, `manual`, `timedIncremental`.
 	AutoDevopsDeployStrategy pulumi.StringPtrInput
 	// Enable Auto DevOps for this project.
 	AutoDevopsEnabled pulumi.BoolPtrInput
@@ -843,8 +829,7 @@ type ProjectArgs struct {
 	CiDefaultGitDepth pulumi.IntPtrInput
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled pulumi.BoolPtrInput
-	// Set the image cleanup policy for this project. **Note**: this field is sometimes named
-	// `container_expiration_policy_attributes` in the GitLab Upstream API.
+	// Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
 	ContainerExpirationPolicy ProjectContainerExpirationPolicyPtrInput
 	// Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
 	ContainerRegistryAccessLevel pulumi.StringPtrInput
@@ -860,8 +845,7 @@ type ProjectArgs struct {
 	ExternalAuthorizationClassificationLabel pulumi.StringPtrInput
 	// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
 	ForkingAccessLevel pulumi.StringPtrInput
-	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave
-	// empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+	// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
 	GroupWithProjectTemplatesId pulumi.IntPtrInput
 	// Git URL to a repository to be imported.
 	ImportUrl pulumi.StringPtrInput
@@ -887,7 +871,7 @@ type ProjectArgs struct {
 	MergeRequestsEnabled pulumi.BoolPtrInput
 	// Sets the template for new merge requests in the project.
 	MergeRequestsTemplate pulumi.StringPtrInput
-	// Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+	// Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
 	MergeTrainsEnabled pulumi.BoolPtrInput
 	// Enable project pull mirror.
 	Mirror pulumi.BoolPtrInput
@@ -937,10 +921,10 @@ type ProjectArgs struct {
 	SecurityAndComplianceAccessLevel pulumi.StringPtrInput
 	// Enable shared runners for this project.
 	SharedRunnersEnabled pulumi.BoolPtrInput
-	// If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
-	// the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
-	// no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
-	// attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
+	// If `true`, the default behavior to wait for the default branch protection to be created is skipped.
+	// This is necessary if the current user is not an admin and the default branch protection is disabled on an instance-level.
+	// There is currently no known way to determine if the default branch protection is disabled on an instance-level for non-admin users.
+	// This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
 	SkipWaitForDefaultBranchProtection pulumi.BoolPtrInput
 	// Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
 	SnippetsAccessLevel pulumi.StringPtrInput
@@ -948,20 +932,17 @@ type ProjectArgs struct {
 	SnippetsEnabled pulumi.BoolPtrInput
 	// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
 	SquashCommitTemplate pulumi.StringPtrInput
-	// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value
-	// is `default_off`. [GitLab >= 14.1]
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
 	SquashOption pulumi.StringPtrInput
 	// The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
 	Tags pulumi.StringArrayInput
-	// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of
-	// a custom project template. This option is mutually exclusive with `template_project_id`.
+	// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
 	TemplateName pulumi.StringPtrInput
-	// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name
-	// since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+	// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
 	TemplateProjectId pulumi.IntPtrInput
 	// The list of topics for the project.
 	Topics pulumi.StringArrayInput
-	// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
 	UseCustomTemplate pulumi.BoolPtrInput
 	// Set to `public` to create a public project.
 	VisibilityLevel pulumi.StringPtrInput
@@ -997,7 +978,7 @@ func (i *Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput 
 // ProjectArrayInput is an input type that accepts ProjectArray and ProjectArrayOutput values.
 // You can construct a concrete instance of `ProjectArrayInput` via:
 //
-//          ProjectArray{ ProjectArgs{...} }
+//	ProjectArray{ ProjectArgs{...} }
 type ProjectArrayInput interface {
 	pulumi.Input
 
@@ -1022,7 +1003,7 @@ func (i ProjectArray) ToProjectArrayOutputWithContext(ctx context.Context) Proje
 // ProjectMapInput is an input type that accepts ProjectMap and ProjectMapOutput values.
 // You can construct a concrete instance of `ProjectMapInput` via:
 //
-//          ProjectMap{ "key": ProjectArgs{...} }
+//	ProjectMap{ "key": ProjectArgs{...} }
 type ProjectMapInput interface {
 	pulumi.Input
 
@@ -1068,16 +1049,15 @@ func (o ProjectOutput) AnalyticsAccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.AnalyticsAccessLevel }).(pulumi.StringOutput)
 }
 
-// Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination
-// with the `gitlab_project_approval_rule` resource and is most likely gonna be deprecated in a future GitLab version (see
-// [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)). In the meantime we recommend against using
-// this attribute and use `gitlab_project_approval_rule` instead.
+// Number of merge request approvals required for merging. Default is 0.
+// This field **does not** work well in combination with the `ProjectApprovalRule` resource
+// and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
+// In the meantime we recommend against using this attribute and use `ProjectApprovalRule` instead.
 func (o ProjectOutput) ApprovalsBeforeMerge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.IntPtrOutput { return v.ApprovalsBeforeMerge }).(pulumi.IntPtrOutput)
 }
 
-// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE`
-// operation.
+// Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
 func (o ProjectOutput) ArchiveOnDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.ArchiveOnDestroy }).(pulumi.BoolPtrOutput)
 }
@@ -1092,7 +1072,7 @@ func (o ProjectOutput) AutoCancelPendingPipelines() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.AutoCancelPendingPipelines }).(pulumi.StringOutput)
 }
 
-// Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+// Auto Deploy strategy. Valid values are `continuous`, `manual`, `timedIncremental`.
 func (o ProjectOutput) AutoDevopsDeployStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.AutoDevopsDeployStrategy }).(pulumi.StringOutput)
 }
@@ -1144,8 +1124,7 @@ func (o ProjectOutput) CiForwardDeploymentEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.CiForwardDeploymentEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Set the image cleanup policy for this project. **Note**: this field is sometimes named
-// `container_expiration_policy_attributes` in the GitLab Upstream API.
+// Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
 func (o ProjectOutput) ContainerExpirationPolicy() ProjectContainerExpirationPolicyOutput {
 	return o.ApplyT(func(v *Project) ProjectContainerExpirationPolicyOutput { return v.ContainerExpirationPolicy }).(ProjectContainerExpirationPolicyOutput)
 }
@@ -1185,8 +1164,7 @@ func (o ProjectOutput) ForkingAccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ForkingAccessLevel }).(pulumi.StringOutput)
 }
 
-// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave
-// empty for instance-level templates. Requires use_custom_template to be true (enterprise edition).
+// For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
 func (o ProjectOutput) GroupWithProjectTemplatesId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.IntPtrOutput { return v.GroupWithProjectTemplatesId }).(pulumi.IntPtrOutput)
 }
@@ -1256,7 +1234,7 @@ func (o ProjectOutput) MergeRequestsTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.MergeRequestsTemplate }).(pulumi.StringPtrOutput)
 }
 
-// Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+// Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
 func (o ProjectOutput) MergeTrainsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.MergeTrainsEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1391,10 +1369,10 @@ func (o ProjectOutput) SharedRunnersEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.SharedRunnersEnabled }).(pulumi.BoolOutput)
 }
 
-// If `true`, the default behavior to wait for the default branch protection to be created is skipped. This is necessary if
-// the current user is not an admin and the default branch protection is disabled on an instance-level. There is currently
-// no known way to determine if the default branch protection is disabled on an instance-level for non-admin users. This
-// attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
+// If `true`, the default behavior to wait for the default branch protection to be created is skipped.
+// This is necessary if the current user is not an admin and the default branch protection is disabled on an instance-level.
+// There is currently no known way to determine if the default branch protection is disabled on an instance-level for non-admin users.
+// This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
 func (o ProjectOutput) SkipWaitForDefaultBranchProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.SkipWaitForDefaultBranchProtection }).(pulumi.BoolPtrOutput)
 }
@@ -1414,8 +1392,7 @@ func (o ProjectOutput) SquashCommitTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.SquashCommitTemplate }).(pulumi.StringPtrOutput)
 }
 
-// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value
-// is `default_off`. [GitLab >= 14.1]
+// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
 func (o ProjectOutput) SquashOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.SquashOption }).(pulumi.StringPtrOutput)
 }
@@ -1430,14 +1407,12 @@ func (o ProjectOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of
-// a custom project template. This option is mutually exclusive with `template_project_id`.
+// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
 func (o ProjectOutput) TemplateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.TemplateName }).(pulumi.StringPtrOutput)
 }
 
-// When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name
-// since template_name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`.
+// When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
 func (o ProjectOutput) TemplateProjectId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.IntPtrOutput { return v.TemplateProjectId }).(pulumi.IntPtrOutput)
 }
@@ -1447,7 +1422,7 @@ func (o ProjectOutput) Topics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringArrayOutput { return v.Topics }).(pulumi.StringArrayOutput)
 }
 
-// Use either custom instance or group (with group_with_project_templates_id) project template (enterprise edition).
+// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
 func (o ProjectOutput) UseCustomTemplate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.UseCustomTemplate }).(pulumi.BoolPtrOutput)
 }

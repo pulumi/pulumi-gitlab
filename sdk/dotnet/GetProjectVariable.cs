@@ -21,33 +21,32 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = GitLab.GetProjectVariable.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(GitLab.GetProjectVariable.InvokeAsync(new GitLab.GetProjectVariableArgs
-        ///         {
-        ///             Key = "foo",
-        ///             Project = "my/example/project",
-        ///         }));
-        ///         var bar = Output.Create(GitLab.GetProjectVariable.InvokeAsync(new GitLab.GetProjectVariableArgs
-        ///         {
-        ///             EnvironmentScope = "staging/*",
-        ///             Key = "bar",
-        ///             Project = "my/example/project",
-        ///         }));
-        ///     }
+        ///         Key = "foo",
+        ///         Project = "my/example/project",
+        ///     });
         /// 
-        /// }
+        ///     var bar = GitLab.GetProjectVariable.Invoke(new()
+        ///     {
+        ///         EnvironmentScope = "staging/*",
+        ///         Key = "bar",
+        ///         Project = "my/example/project",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectVariableResult> InvokeAsync(GetProjectVariableArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectVariableResult>("gitlab:index/getProjectVariable:getProjectVariable", args ?? new GetProjectVariableArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectVariableResult>("gitlab:index/getProjectVariable:getProjectVariable", args ?? new GetProjectVariableArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `gitlab.ProjectVariable` data source allows to retrieve details about a project-level CI/CD variable.
@@ -59,82 +58,122 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = GitLab.GetProjectVariable.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(GitLab.GetProjectVariable.InvokeAsync(new GitLab.GetProjectVariableArgs
-        ///         {
-        ///             Key = "foo",
-        ///             Project = "my/example/project",
-        ///         }));
-        ///         var bar = Output.Create(GitLab.GetProjectVariable.InvokeAsync(new GitLab.GetProjectVariableArgs
-        ///         {
-        ///             EnvironmentScope = "staging/*",
-        ///             Key = "bar",
-        ///             Project = "my/example/project",
-        ///         }));
-        ///     }
+        ///         Key = "foo",
+        ///         Project = "my/example/project",
+        ///     });
         /// 
-        /// }
+        ///     var bar = GitLab.GetProjectVariable.Invoke(new()
+        ///     {
+        ///         EnvironmentScope = "staging/*",
+        ///         Key = "bar",
+        ///         Project = "my/example/project",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectVariableResult> Invoke(GetProjectVariableInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectVariableResult>("gitlab:index/getProjectVariable:getProjectVariable", args ?? new GetProjectVariableInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectVariableResult>("gitlab:index/getProjectVariable:getProjectVariable", args ?? new GetProjectVariableInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetProjectVariableArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectVariableArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+        /// </summary>
         [Input("environmentScope")]
         public string? EnvironmentScope { get; set; }
 
+        /// <summary>
+        /// The name of the variable.
+        /// </summary>
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
 
+        /// <summary>
+        /// The name or id of the project.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         public GetProjectVariableArgs()
         {
         }
+        public static new GetProjectVariableArgs Empty => new GetProjectVariableArgs();
     }
 
-    public sealed class GetProjectVariableInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectVariableInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+        /// </summary>
         [Input("environmentScope")]
         public Input<string>? EnvironmentScope { get; set; }
 
+        /// <summary>
+        /// The name of the variable.
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// The name or id of the project.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         public GetProjectVariableInvokeArgs()
         {
         }
+        public static new GetProjectVariableInvokeArgs Empty => new GetProjectVariableInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetProjectVariableResult
     {
+        /// <summary>
+        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+        /// </summary>
         public readonly string EnvironmentScope;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name of the variable.
+        /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        /// </summary>
         public readonly bool Masked;
+        /// <summary>
+        /// The name or id of the project.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        /// </summary>
         public readonly bool Protected;
+        /// <summary>
+        /// The value of the variable.
+        /// </summary>
         public readonly string Value;
+        /// <summary>
+        /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        /// </summary>
         public readonly string VariableType;
 
         [OutputConstructor]

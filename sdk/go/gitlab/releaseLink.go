@@ -21,48 +21,51 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleProject, err := gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
-// 			Description: pulumi.String("An example project"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewReleaseLink(ctx, "exampleReleaseLink", &gitlab.ReleaseLinkArgs{
-// 			Project: exampleProject.ID(),
-// 			TagName: pulumi.String("tag_name_associated_with_release"),
-// 			Url:     pulumi.String("https://test/"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleProject, err := gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
+//				Description: pulumi.String("An example project"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewReleaseLink(ctx, "exampleReleaseLink", &gitlab.ReleaseLinkArgs{
+//				Project: exampleProject.ID(),
+//				TagName: pulumi.String("tag_name_associated_with_release"),
+//				Url:     pulumi.String("https://test/"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # Gitlab release link can be imported with a key composed of `<project>:<tag_name>:<link_id>`, e.g.
+// Gitlab release link can be imported with a key composed of `<project>:<tag_name>:<link_id>`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/releaseLink:ReleaseLink example "12345:test:2"
+//
+//	$ pulumi import gitlab:index/releaseLink:ReleaseLink example "12345:test:2"
+//
 // ```
 type ReleaseLink struct {
 	pulumi.CustomResourceState
 
-	// Full path for a [Direct Asset
-	// link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+	// Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
 	DirectAssetUrl pulumi.StringOutput `pulumi:"directAssetUrl"`
 	// External or internal link.
 	External pulumi.BoolOutput `pulumi:"external"`
-	// Relative path for a [Direct Asset
-	// link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+	// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
 	Filepath pulumi.StringPtrOutput `pulumi:"filepath"`
 	// The ID of the link.
 	LinkId pulumi.IntOutput `pulumi:"linkId"`
@@ -116,13 +119,11 @@ func GetReleaseLink(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ReleaseLink resources.
 type releaseLinkState struct {
-	// Full path for a [Direct Asset
-	// link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+	// Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
 	DirectAssetUrl *string `pulumi:"directAssetUrl"`
 	// External or internal link.
 	External *bool `pulumi:"external"`
-	// Relative path for a [Direct Asset
-	// link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+	// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
 	Filepath *string `pulumi:"filepath"`
 	// The ID of the link.
 	LinkId *int `pulumi:"linkId"`
@@ -139,13 +140,11 @@ type releaseLinkState struct {
 }
 
 type ReleaseLinkState struct {
-	// Full path for a [Direct Asset
-	// link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+	// Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
 	DirectAssetUrl pulumi.StringPtrInput
 	// External or internal link.
 	External pulumi.BoolPtrInput
-	// Relative path for a [Direct Asset
-	// link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+	// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
 	Filepath pulumi.StringPtrInput
 	// The ID of the link.
 	LinkId pulumi.IntPtrInput
@@ -166,8 +165,7 @@ func (ReleaseLinkState) ElementType() reflect.Type {
 }
 
 type releaseLinkArgs struct {
-	// Relative path for a [Direct Asset
-	// link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+	// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
 	Filepath *string `pulumi:"filepath"`
 	// The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
 	LinkType *string `pulumi:"linkType"`
@@ -183,8 +181,7 @@ type releaseLinkArgs struct {
 
 // The set of arguments for constructing a ReleaseLink resource.
 type ReleaseLinkArgs struct {
-	// Relative path for a [Direct Asset
-	// link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+	// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
 	Filepath pulumi.StringPtrInput
 	// The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
 	LinkType pulumi.StringPtrInput
@@ -224,7 +221,7 @@ func (i *ReleaseLink) ToReleaseLinkOutputWithContext(ctx context.Context) Releas
 // ReleaseLinkArrayInput is an input type that accepts ReleaseLinkArray and ReleaseLinkArrayOutput values.
 // You can construct a concrete instance of `ReleaseLinkArrayInput` via:
 //
-//          ReleaseLinkArray{ ReleaseLinkArgs{...} }
+//	ReleaseLinkArray{ ReleaseLinkArgs{...} }
 type ReleaseLinkArrayInput interface {
 	pulumi.Input
 
@@ -249,7 +246,7 @@ func (i ReleaseLinkArray) ToReleaseLinkArrayOutputWithContext(ctx context.Contex
 // ReleaseLinkMapInput is an input type that accepts ReleaseLinkMap and ReleaseLinkMapOutput values.
 // You can construct a concrete instance of `ReleaseLinkMapInput` via:
 //
-//          ReleaseLinkMap{ "key": ReleaseLinkArgs{...} }
+//	ReleaseLinkMap{ "key": ReleaseLinkArgs{...} }
 type ReleaseLinkMapInput interface {
 	pulumi.Input
 
@@ -285,8 +282,7 @@ func (o ReleaseLinkOutput) ToReleaseLinkOutputWithContext(ctx context.Context) R
 	return o
 }
 
-// Full path for a [Direct Asset
-// link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+// Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
 func (o ReleaseLinkOutput) DirectAssetUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReleaseLink) pulumi.StringOutput { return v.DirectAssetUrl }).(pulumi.StringOutput)
 }
@@ -296,8 +292,7 @@ func (o ReleaseLinkOutput) External() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ReleaseLink) pulumi.BoolOutput { return v.External }).(pulumi.BoolOutput)
 }
 
-// Relative path for a [Direct Asset
-// link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
 func (o ReleaseLinkOutput) Filepath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseLink) pulumi.StringPtrOutput { return v.Filepath }).(pulumi.StringPtrOutput)
 }

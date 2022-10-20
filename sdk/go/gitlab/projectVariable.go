@@ -23,52 +23,54 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewProjectVariable(ctx, "example", &gitlab.ProjectVariableArgs{
-// 			Key:       pulumi.String("project_variable_key"),
-// 			Project:   pulumi.String("12345"),
-// 			Protected: pulumi.Bool(false),
-// 			Value:     pulumi.String("project_variable_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewProjectVariable(ctx, "example", &gitlab.ProjectVariableArgs{
+//				Key:       pulumi.String("project_variable_key"),
+//				Project:   pulumi.String("12345"),
+//				Protected: pulumi.Bool(false),
+//				Value:     pulumi.String("project_variable_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.
+// GitLab project variables can be imported using an id made up of `project:key:environment_scope`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectVariable:ProjectVariable example '12345:project_variable_key:*'
+//
+//	$ pulumi import gitlab:index/projectVariable:ProjectVariable example '12345:project_variable_key:*'
+//
 // ```
 type ProjectVariable struct {
 	pulumi.CustomResourceState
 
-	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-	// values other than `*` will cause inconsistent plans.
+	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope pulumi.StringPtrOutput `pulumi:"environmentScope"`
 	// The name of the variable.
 	Key pulumi.StringOutput `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-	// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
 	Masked pulumi.BoolPtrOutput `pulumi:"masked"`
 	// The name or id of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-	// `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrOutput `pulumi:"protected"`
 	// The value of the variable.
 	Value pulumi.StringOutput `pulumi:"value"`
-	// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
 	VariableType pulumi.StringPtrOutput `pulumi:"variableType"`
 }
 
@@ -88,6 +90,13 @@ func NewProjectVariable(ctx *pulumi.Context,
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
 	}
+	if args.Value != nil {
+		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"value",
+	})
+	opts = append(opts, secrets)
 	var resource ProjectVariable
 	err := ctx.RegisterResource("gitlab:index/projectVariable:ProjectVariable", name, args, &resource, opts...)
 	if err != nil {
@@ -110,42 +119,36 @@ func GetProjectVariable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectVariable resources.
 type projectVariableState struct {
-	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-	// values other than `*` will cause inconsistent plans.
+	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The name of the variable.
 	Key *string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-	// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
 	Masked *bool `pulumi:"masked"`
 	// The name or id of the project.
 	Project *string `pulumi:"project"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-	// `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected *bool `pulumi:"protected"`
 	// The value of the variable.
 	Value *string `pulumi:"value"`
-	// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
 	VariableType *string `pulumi:"variableType"`
 }
 
 type ProjectVariableState struct {
-	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-	// values other than `*` will cause inconsistent plans.
+	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope pulumi.StringPtrInput
 	// The name of the variable.
 	Key pulumi.StringPtrInput
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-	// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
 	Masked pulumi.BoolPtrInput
 	// The name or id of the project.
 	Project pulumi.StringPtrInput
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-	// `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrInput
 	// The value of the variable.
 	Value pulumi.StringPtrInput
-	// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
 	VariableType pulumi.StringPtrInput
 }
 
@@ -154,43 +157,37 @@ func (ProjectVariableState) ElementType() reflect.Type {
 }
 
 type projectVariableArgs struct {
-	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-	// values other than `*` will cause inconsistent plans.
+	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-	// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
 	Masked *bool `pulumi:"masked"`
 	// The name or id of the project.
 	Project string `pulumi:"project"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-	// `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected *bool `pulumi:"protected"`
 	// The value of the variable.
 	Value string `pulumi:"value"`
-	// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
 	VariableType *string `pulumi:"variableType"`
 }
 
 // The set of arguments for constructing a ProjectVariable resource.
 type ProjectVariableArgs struct {
-	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-	// values other than `*` will cause inconsistent plans.
+	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope pulumi.StringPtrInput
 	// The name of the variable.
 	Key pulumi.StringInput
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-	// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
 	Masked pulumi.BoolPtrInput
 	// The name or id of the project.
 	Project pulumi.StringInput
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-	// `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrInput
 	// The value of the variable.
 	Value pulumi.StringInput
-	// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
 	VariableType pulumi.StringPtrInput
 }
 
@@ -220,7 +217,7 @@ func (i *ProjectVariable) ToProjectVariableOutputWithContext(ctx context.Context
 // ProjectVariableArrayInput is an input type that accepts ProjectVariableArray and ProjectVariableArrayOutput values.
 // You can construct a concrete instance of `ProjectVariableArrayInput` via:
 //
-//          ProjectVariableArray{ ProjectVariableArgs{...} }
+//	ProjectVariableArray{ ProjectVariableArgs{...} }
 type ProjectVariableArrayInput interface {
 	pulumi.Input
 
@@ -245,7 +242,7 @@ func (i ProjectVariableArray) ToProjectVariableArrayOutputWithContext(ctx contex
 // ProjectVariableMapInput is an input type that accepts ProjectVariableMap and ProjectVariableMapOutput values.
 // You can construct a concrete instance of `ProjectVariableMapInput` via:
 //
-//          ProjectVariableMap{ "key": ProjectVariableArgs{...} }
+//	ProjectVariableMap{ "key": ProjectVariableArgs{...} }
 type ProjectVariableMapInput interface {
 	pulumi.Input
 
@@ -281,8 +278,7 @@ func (o ProjectVariableOutput) ToProjectVariableOutputWithContext(ctx context.Co
 	return o
 }
 
-// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-// values other than `*` will cause inconsistent plans.
+// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 func (o ProjectVariableOutput) EnvironmentScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectVariable) pulumi.StringPtrOutput { return v.EnvironmentScope }).(pulumi.StringPtrOutput)
 }
@@ -292,8 +288,7 @@ func (o ProjectVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectVariable) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
 func (o ProjectVariableOutput) Masked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectVariable) pulumi.BoolPtrOutput { return v.Masked }).(pulumi.BoolPtrOutput)
 }
@@ -303,8 +298,7 @@ func (o ProjectVariableOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectVariable) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-// `false`.
+// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 func (o ProjectVariableOutput) Protected() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectVariable) pulumi.BoolPtrOutput { return v.Protected }).(pulumi.BoolPtrOutput)
 }
@@ -314,7 +308,7 @@ func (o ProjectVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectVariable) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }
 
-// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
 func (o ProjectVariableOutput) VariableType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectVariable) pulumi.StringPtrOutput { return v.VariableType }).(pulumi.StringPtrOutput)
 }

@@ -21,21 +21,24 @@ import (
 // ## Import
 //
 // ```sh
-//  $ pulumi import gitlab:index/topic:Topic # You can import a topic to terraform state using `<resource> <id>`.
+//
+//	$ pulumi import gitlab:index/topic:Topic You can import a topic to terraform state using `<resource> <id>`.
+//
 // ```
 //
-// # The `id` must be an integer for the id of the topic you want to import, # for example
+//	The `id` must be an integer for the id of the topic you want to import, for example
 //
 // ```sh
-//  $ pulumi import gitlab:index/topic:Topic functional_programming 1
+//
+//	$ pulumi import gitlab:index/topic:Topic functional_programming 1
+//
 // ```
 type Topic struct {
 	pulumi.CustomResourceState
 
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
 	Avatar pulumi.StringPtrOutput `pulumi:"avatar"`
-	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
-	// trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
 	AvatarHash pulumi.StringOutput `pulumi:"avatarHash"`
 	// The URL of the avatar image.
 	AvatarUrl pulumi.StringOutput `pulumi:"avatarUrl"`
@@ -82,8 +85,7 @@ func GetTopic(ctx *pulumi.Context,
 type topicState struct {
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
 	Avatar *string `pulumi:"avatar"`
-	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
-	// trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
 	AvatarHash *string `pulumi:"avatarHash"`
 	// The URL of the avatar image.
 	AvatarUrl *string `pulumi:"avatarUrl"`
@@ -102,8 +104,7 @@ type topicState struct {
 type TopicState struct {
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
 	Avatar pulumi.StringPtrInput
-	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
-	// trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
 	AvatarHash pulumi.StringPtrInput
 	// The URL of the avatar image.
 	AvatarUrl pulumi.StringPtrInput
@@ -126,8 +127,7 @@ func (TopicState) ElementType() reflect.Type {
 type topicArgs struct {
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
 	Avatar *string `pulumi:"avatar"`
-	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
-	// trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
 	AvatarHash *string `pulumi:"avatarHash"`
 	// A text describing the topic.
 	Description *string `pulumi:"description"`
@@ -145,8 +145,7 @@ type topicArgs struct {
 type TopicArgs struct {
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
 	Avatar pulumi.StringPtrInput
-	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
-	// trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
 	AvatarHash pulumi.StringPtrInput
 	// A text describing the topic.
 	Description pulumi.StringPtrInput
@@ -186,7 +185,7 @@ func (i *Topic) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 // TopicArrayInput is an input type that accepts TopicArray and TopicArrayOutput values.
 // You can construct a concrete instance of `TopicArrayInput` via:
 //
-//          TopicArray{ TopicArgs{...} }
+//	TopicArray{ TopicArgs{...} }
 type TopicArrayInput interface {
 	pulumi.Input
 
@@ -211,7 +210,7 @@ func (i TopicArray) ToTopicArrayOutputWithContext(ctx context.Context) TopicArra
 // TopicMapInput is an input type that accepts TopicMap and TopicMapOutput values.
 // You can construct a concrete instance of `TopicMapInput` via:
 //
-//          TopicMap{ "key": TopicArgs{...} }
+//	TopicMap{ "key": TopicArgs{...} }
 type TopicMapInput interface {
 	pulumi.Input
 
@@ -252,8 +251,7 @@ func (o TopicOutput) Avatar() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringPtrOutput { return v.Avatar }).(pulumi.StringPtrOutput)
 }
 
-// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
-// trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
 func (o TopicOutput) AvatarHash() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.AvatarHash }).(pulumi.StringOutput)
 }

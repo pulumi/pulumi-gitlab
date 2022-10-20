@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
+ * GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/projectMirror:ProjectMirror foo "12345:1337"
@@ -120,10 +120,12 @@ export class ProjectMirror extends pulumi.CustomResource {
             resourceInputs["keepDivergentRefs"] = args ? args.keepDivergentRefs : undefined;
             resourceInputs["onlyProtectedBranches"] = args ? args.onlyProtectedBranches : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["url"] = args?.url ? pulumi.secret(args.url) : undefined;
             resourceInputs["mirrorId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["url"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ProjectMirror.__pulumiType, name, resourceInputs, opts);
     }
 }

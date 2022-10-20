@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
+ * GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/projectCluster:ProjectCluster bar 123:321
@@ -93,7 +93,7 @@ export class ProjectCluster extends pulumi.CustomResource {
      */
     public readonly kubernetesApiUrl!: pulumi.Output<string>;
     /**
-     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
      */
     public readonly kubernetesAuthorizationType!: pulumi.Output<string | undefined>;
     /**
@@ -180,7 +180,7 @@ export class ProjectCluster extends pulumi.CustomResource {
             resourceInputs["kubernetesAuthorizationType"] = args ? args.kubernetesAuthorizationType : undefined;
             resourceInputs["kubernetesCaCert"] = args ? args.kubernetesCaCert : undefined;
             resourceInputs["kubernetesNamespace"] = args ? args.kubernetesNamespace : undefined;
-            resourceInputs["kubernetesToken"] = args ? args.kubernetesToken : undefined;
+            resourceInputs["kubernetesToken"] = args?.kubernetesToken ? pulumi.secret(args.kubernetesToken) : undefined;
             resourceInputs["managed"] = args ? args.managed : undefined;
             resourceInputs["managementProjectId"] = args ? args.managementProjectId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -191,6 +191,8 @@ export class ProjectCluster extends pulumi.CustomResource {
             resourceInputs["providerType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["kubernetesToken"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ProjectCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -224,7 +226,7 @@ export interface ProjectClusterState {
      */
     kubernetesApiUrl?: pulumi.Input<string>;
     /**
-     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
      */
     kubernetesAuthorizationType?: pulumi.Input<string>;
     /**
@@ -286,7 +288,7 @@ export interface ProjectClusterArgs {
      */
     kubernetesApiUrl: pulumi.Input<string>;
     /**
-     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
      */
     kubernetesAuthorizationType?: pulumi.Input<string>;
     /**

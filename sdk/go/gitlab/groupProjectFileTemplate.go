@@ -12,9 +12,10 @@ import (
 )
 
 // The `GroupProjectFileTemplate` resource allows setting a project from which
-// custom file templates will be loaded. The project selected must be a direct child of the group identified.
+// custom file templates will be loaded. In order to use this resource, the project selected must be a direct child of
+// the group selected. After the resource has run, `gitlab_project_template.template_project_id` is available for use.
 // For more information about which file types are available as templates, view
-// [GitLab's documentation](https://docs.gitlab.com/ee/user/admin_area/settings/instance_template_repository.html#supported-file-types-and-locations)
+// [GitLab's documentation](https://docs.gitlab.com/ee/user/group/custom_project_templates.html)
 //
 // > This resource requires a GitLab Enterprise instance with a Premium license.
 //
@@ -22,11 +23,11 @@ import (
 type GroupProjectFileTemplate struct {
 	pulumi.CustomResourceState
 
-	// The ID of the project that will be used for file templates. This project must be the direct child of the project defined
-	// by the group_id
+	// The ID of the project that will be used for file templates. This project must be the direct
+	// 			child of the project defined by the group_id
 	FileTemplateProjectId pulumi.IntOutput `pulumi:"fileTemplateProjectId"`
-	// The ID of the group that will use the file template project. This group must be the direct parent of the project defined
-	// by project_id
+	// The ID of the group that will use the file template project. This group must be the direct
+	//             parent of the project defined by project_id
 	GroupId pulumi.IntOutput `pulumi:"groupId"`
 }
 
@@ -65,20 +66,20 @@ func GetGroupProjectFileTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupProjectFileTemplate resources.
 type groupProjectFileTemplateState struct {
-	// The ID of the project that will be used for file templates. This project must be the direct child of the project defined
-	// by the group_id
+	// The ID of the project that will be used for file templates. This project must be the direct
+	// 			child of the project defined by the group_id
 	FileTemplateProjectId *int `pulumi:"fileTemplateProjectId"`
-	// The ID of the group that will use the file template project. This group must be the direct parent of the project defined
-	// by project_id
+	// The ID of the group that will use the file template project. This group must be the direct
+	//             parent of the project defined by project_id
 	GroupId *int `pulumi:"groupId"`
 }
 
 type GroupProjectFileTemplateState struct {
-	// The ID of the project that will be used for file templates. This project must be the direct child of the project defined
-	// by the group_id
+	// The ID of the project that will be used for file templates. This project must be the direct
+	// 			child of the project defined by the group_id
 	FileTemplateProjectId pulumi.IntPtrInput
-	// The ID of the group that will use the file template project. This group must be the direct parent of the project defined
-	// by project_id
+	// The ID of the group that will use the file template project. This group must be the direct
+	//             parent of the project defined by project_id
 	GroupId pulumi.IntPtrInput
 }
 
@@ -87,21 +88,21 @@ func (GroupProjectFileTemplateState) ElementType() reflect.Type {
 }
 
 type groupProjectFileTemplateArgs struct {
-	// The ID of the project that will be used for file templates. This project must be the direct child of the project defined
-	// by the group_id
+	// The ID of the project that will be used for file templates. This project must be the direct
+	// 			child of the project defined by the group_id
 	FileTemplateProjectId int `pulumi:"fileTemplateProjectId"`
-	// The ID of the group that will use the file template project. This group must be the direct parent of the project defined
-	// by project_id
+	// The ID of the group that will use the file template project. This group must be the direct
+	//             parent of the project defined by project_id
 	GroupId int `pulumi:"groupId"`
 }
 
 // The set of arguments for constructing a GroupProjectFileTemplate resource.
 type GroupProjectFileTemplateArgs struct {
-	// The ID of the project that will be used for file templates. This project must be the direct child of the project defined
-	// by the group_id
+	// The ID of the project that will be used for file templates. This project must be the direct
+	// 			child of the project defined by the group_id
 	FileTemplateProjectId pulumi.IntInput
-	// The ID of the group that will use the file template project. This group must be the direct parent of the project defined
-	// by project_id
+	// The ID of the group that will use the file template project. This group must be the direct
+	//             parent of the project defined by project_id
 	GroupId pulumi.IntInput
 }
 
@@ -131,7 +132,7 @@ func (i *GroupProjectFileTemplate) ToGroupProjectFileTemplateOutputWithContext(c
 // GroupProjectFileTemplateArrayInput is an input type that accepts GroupProjectFileTemplateArray and GroupProjectFileTemplateArrayOutput values.
 // You can construct a concrete instance of `GroupProjectFileTemplateArrayInput` via:
 //
-//          GroupProjectFileTemplateArray{ GroupProjectFileTemplateArgs{...} }
+//	GroupProjectFileTemplateArray{ GroupProjectFileTemplateArgs{...} }
 type GroupProjectFileTemplateArrayInput interface {
 	pulumi.Input
 
@@ -156,7 +157,7 @@ func (i GroupProjectFileTemplateArray) ToGroupProjectFileTemplateArrayOutputWith
 // GroupProjectFileTemplateMapInput is an input type that accepts GroupProjectFileTemplateMap and GroupProjectFileTemplateMapOutput values.
 // You can construct a concrete instance of `GroupProjectFileTemplateMapInput` via:
 //
-//          GroupProjectFileTemplateMap{ "key": GroupProjectFileTemplateArgs{...} }
+//	GroupProjectFileTemplateMap{ "key": GroupProjectFileTemplateArgs{...} }
 type GroupProjectFileTemplateMapInput interface {
 	pulumi.Input
 
@@ -192,14 +193,16 @@ func (o GroupProjectFileTemplateOutput) ToGroupProjectFileTemplateOutputWithCont
 	return o
 }
 
-// The ID of the project that will be used for file templates. This project must be the direct child of the project defined
-// by the group_id
+// The ID of the project that will be used for file templates. This project must be the direct
+//
+//	child of the project defined by the group_id
 func (o GroupProjectFileTemplateOutput) FileTemplateProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v *GroupProjectFileTemplate) pulumi.IntOutput { return v.FileTemplateProjectId }).(pulumi.IntOutput)
 }
 
-// The ID of the group that will use the file template project. This group must be the direct parent of the project defined
-// by project_id
+// The ID of the group that will use the file template project. This group must be the direct
+//
+//	parent of the project defined by project_id
 func (o GroupProjectFileTemplateOutput) GroupId() pulumi.IntOutput {
 	return o.ApplyT(func(v *GroupProjectFileTemplate) pulumi.IntOutput { return v.GroupId }).(pulumi.IntOutput)
 }

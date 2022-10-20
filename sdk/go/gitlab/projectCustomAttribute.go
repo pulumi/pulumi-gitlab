@@ -21,31 +21,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewProjectCustomAttribute(ctx, "attr", &gitlab.ProjectCustomAttributeArgs{
-// 			Key:     pulumi.String("location"),
-// 			Project: pulumi.Int(42),
-// 			Value:   pulumi.String("Greenland"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewProjectCustomAttribute(ctx, "attr", &gitlab.ProjectCustomAttributeArgs{
+//				Key:     pulumi.String("location"),
+//				Project: pulumi.Int(42),
+//				Value:   pulumi.String("Greenland"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # You can import a project custom attribute using an id made up of `{project-id}:{key}`, e.g.
+// You can import a project custom attribute using an id made up of `{project-id}:{key}`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectCustomAttribute:ProjectCustomAttribute attr 42:location
+//
+//	$ pulumi import gitlab:index/projectCustomAttribute:ProjectCustomAttribute attr 42:location
+//
 // ```
 type ProjectCustomAttribute struct {
 	pulumi.CustomResourceState
@@ -162,7 +167,7 @@ func (i *ProjectCustomAttribute) ToProjectCustomAttributeOutputWithContext(ctx c
 // ProjectCustomAttributeArrayInput is an input type that accepts ProjectCustomAttributeArray and ProjectCustomAttributeArrayOutput values.
 // You can construct a concrete instance of `ProjectCustomAttributeArrayInput` via:
 //
-//          ProjectCustomAttributeArray{ ProjectCustomAttributeArgs{...} }
+//	ProjectCustomAttributeArray{ ProjectCustomAttributeArgs{...} }
 type ProjectCustomAttributeArrayInput interface {
 	pulumi.Input
 
@@ -187,7 +192,7 @@ func (i ProjectCustomAttributeArray) ToProjectCustomAttributeArrayOutputWithCont
 // ProjectCustomAttributeMapInput is an input type that accepts ProjectCustomAttributeMap and ProjectCustomAttributeMapOutput values.
 // You can construct a concrete instance of `ProjectCustomAttributeMapInput` via:
 //
-//          ProjectCustomAttributeMap{ "key": ProjectCustomAttributeArgs{...} }
+//	ProjectCustomAttributeMap{ "key": ProjectCustomAttributeArgs{...} }
 type ProjectCustomAttributeMapInput interface {
 	pulumi.Input
 

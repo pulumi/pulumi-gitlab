@@ -17,44 +17,43 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var awesomeProject = new GitLab.Project("awesomeProject", new()
     ///     {
-    ///         var awesomeProject = new GitLab.Project("awesomeProject", new GitLab.ProjectArgs
-    ///         {
-    ///             Description = "My awesome project.",
-    ///             VisibilityLevel = "public",
-    ///         });
-    ///         var slack = new GitLab.ServiceSlack("slack", new GitLab.ServiceSlackArgs
-    ///         {
-    ///             Project = awesomeProject.Id,
-    ///             Webhook = "https://webhook.com",
-    ///             Username = "myuser",
-    ///             PushEvents = true,
-    ///             PushChannel = "push_chan",
-    ///         });
-    ///     }
+    ///         Description = "My awesome project.",
+    ///         VisibilityLevel = "public",
+    ///     });
     /// 
-    /// }
+    ///     var slack = new GitLab.ServiceSlack("slack", new()
+    ///     {
+    ///         Project = awesomeProject.Id,
+    ///         Webhook = "https://webhook.com",
+    ///         Username = "myuser",
+    ///         PushEvents = true,
+    ///         PushChannel = "push_chan",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # You can import a gitlab_service_slack.slack state using the project ID, e.g.
+    /// You can import a gitlab_service_slack.slack state using the project ID, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/serviceSlack:ServiceSlack email 1
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/serviceSlack:ServiceSlack")]
-    public partial class ServiceSlack : Pulumi.CustomResource
+    public partial class ServiceSlack : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
+        /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         /// </summary>
         [Output("branchesToBeNotified")]
         public Output<string> BranchesToBeNotified { get; private set; } = null!;
@@ -90,8 +89,7 @@ namespace Pulumi.GitLab
         public Output<bool> IssuesEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API,
-        /// due to https://github.com/xanzy/go-gitlab/issues/1354.
+        /// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
         /// </summary>
         [Output("jobEvents")]
         public Output<bool> JobEvents { get; private set; } = null!;
@@ -242,10 +240,10 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ServiceSlackArgs : Pulumi.ResourceArgs
+    public sealed class ServiceSlackArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
+        /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
@@ -385,12 +383,13 @@ namespace Pulumi.GitLab
         public ServiceSlackArgs()
         {
         }
+        public static new ServiceSlackArgs Empty => new ServiceSlackArgs();
     }
 
-    public sealed class ServiceSlackState : Pulumi.ResourceArgs
+    public sealed class ServiceSlackState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default_and_protected".
+        /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
@@ -426,8 +425,7 @@ namespace Pulumi.GitLab
         public Input<bool>? IssuesEvents { get; set; }
 
         /// <summary>
-        /// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API,
-        /// due to https://github.com/xanzy/go-gitlab/issues/1354.
+        /// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
         /// </summary>
         [Input("jobEvents")]
         public Input<bool>? JobEvents { get; set; }
@@ -537,5 +535,6 @@ namespace Pulumi.GitLab
         public ServiceSlackState()
         {
         }
+        public static new ServiceSlackState Empty => new ServiceSlackState();
     }
 }

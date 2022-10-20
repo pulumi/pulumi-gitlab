@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab.Inputs
 {
 
-    public sealed class BranchCommitGetArgs : Pulumi.ResourceArgs
+    public sealed class BranchCommitGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("authorEmail")]
         public Input<string>? AuthorEmail { get; set; }
@@ -30,6 +30,9 @@ namespace Pulumi.GitLab.Inputs
         [Input("committerName")]
         public Input<string>? CommitterName { get; set; }
 
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
@@ -53,5 +56,6 @@ namespace Pulumi.GitLab.Inputs
         public BranchCommitGetArgs()
         {
         }
+        public static new BranchCommitGetArgs Empty => new BranchCommitGetArgs();
     }
 }

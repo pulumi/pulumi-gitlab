@@ -17,39 +17,38 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var awesomeProject = new GitLab.Project("awesomeProject", new()
     ///     {
-    ///         var awesomeProject = new GitLab.Project("awesomeProject", new GitLab.ProjectArgs
-    ///         {
-    ///             Description = "My awesome project.",
-    ///             VisibilityLevel = "public",
-    ///         });
-    ///         var teams = new GitLab.ServiceMicrosoftTeams("teams", new GitLab.ServiceMicrosoftTeamsArgs
-    ///         {
-    ///             Project = awesomeProject.Id,
-    ///             Webhook = "https://testurl.com/?token=XYZ",
-    ///             PushEvents = true,
-    ///         });
-    ///     }
+    ///         Description = "My awesome project.",
+    ///         VisibilityLevel = "public",
+    ///     });
     /// 
-    /// }
+    ///     var teams = new GitLab.ServiceMicrosoftTeams("teams", new()
+    ///     {
+    ///         Project = awesomeProject.Id,
+    ///         Webhook = "https://testurl.com/?token=XYZ",
+    ///         PushEvents = true,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # You can import a service_microsoft_teams state using the project ID, e.g.
+    /// You can import a service_microsoft_teams state using the project ID, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams teams 1
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams")]
-    public partial class ServiceMicrosoftTeams : Pulumi.CustomResource
+    public partial class ServiceMicrosoftTeams : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether the integration is active.
@@ -58,8 +57,7 @@ namespace Pulumi.GitLab
         public Output<bool> Active { get; private set; } = null!;
 
         /// <summary>
-        /// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
-        /// “default_and_protected”. The default value is “default”
+        /// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
         /// </summary>
         [Output("branchesToBeNotified")]
         public Output<string?> BranchesToBeNotified { get; private set; } = null!;
@@ -192,11 +190,10 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ServiceMicrosoftTeamsArgs : Pulumi.ResourceArgs
+    public sealed class ServiceMicrosoftTeamsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
-        /// “default_and_protected”. The default value is “default”
+        /// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
@@ -276,9 +273,10 @@ namespace Pulumi.GitLab
         public ServiceMicrosoftTeamsArgs()
         {
         }
+        public static new ServiceMicrosoftTeamsArgs Empty => new ServiceMicrosoftTeamsArgs();
     }
 
-    public sealed class ServiceMicrosoftTeamsState : Pulumi.ResourceArgs
+    public sealed class ServiceMicrosoftTeamsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the integration is active.
@@ -287,8 +285,7 @@ namespace Pulumi.GitLab
         public Input<bool>? Active { get; set; }
 
         /// <summary>
-        /// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
-        /// “default_and_protected”. The default value is “default”
+        /// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
@@ -380,5 +377,6 @@ namespace Pulumi.GitLab
         public ServiceMicrosoftTeamsState()
         {
         }
+        public static new ServiceMicrosoftTeamsState Empty => new ServiceMicrosoftTeamsState();
     }
 }

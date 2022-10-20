@@ -42,7 +42,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>`
+ * GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>`
  *
  * ```sh
  *  $ pulumi import gitlab:index/clusterAgent:ClusterAgent example '12345:42'

@@ -17,34 +17,32 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var attr = new GitLab.ProjectCustomAttribute("attr", new()
     ///     {
-    ///         var attr = new GitLab.ProjectCustomAttribute("attr", new GitLab.ProjectCustomAttributeArgs
-    ///         {
-    ///             Key = "location",
-    ///             Project = 42,
-    ///             Value = "Greenland",
-    ///         });
-    ///     }
+    ///         Key = "location",
+    ///         Project = 42,
+    ///         Value = "Greenland",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # You can import a project custom attribute using an id made up of `{project-id}:{key}`, e.g.
+    /// You can import a project custom attribute using an id made up of `{project-id}:{key}`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectCustomAttribute:ProjectCustomAttribute attr 42:location
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/projectCustomAttribute:ProjectCustomAttribute")]
-    public partial class ProjectCustomAttribute : Pulumi.CustomResource
+    public partial class ProjectCustomAttribute : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Key for the Custom Attribute.
@@ -108,7 +106,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ProjectCustomAttributeArgs : Pulumi.ResourceArgs
+    public sealed class ProjectCustomAttributeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Key for the Custom Attribute.
@@ -131,9 +129,10 @@ namespace Pulumi.GitLab
         public ProjectCustomAttributeArgs()
         {
         }
+        public static new ProjectCustomAttributeArgs Empty => new ProjectCustomAttributeArgs();
     }
 
-    public sealed class ProjectCustomAttributeState : Pulumi.ResourceArgs
+    public sealed class ProjectCustomAttributeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Key for the Custom Attribute.
@@ -156,5 +155,6 @@ namespace Pulumi.GitLab
         public ProjectCustomAttributeState()
         {
         }
+        public static new ProjectCustomAttributeState Empty => new ProjectCustomAttributeState();
     }
 }

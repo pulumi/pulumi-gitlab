@@ -17,34 +17,32 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var attr = new GitLab.UserCustomAttribute("attr", new()
     ///     {
-    ///         var attr = new GitLab.UserCustomAttribute("attr", new GitLab.UserCustomAttributeArgs
-    ///         {
-    ///             Key = "location",
-    ///             User = 42,
-    ///             Value = "Greenland",
-    ///         });
-    ///     }
+    ///         Key = "location",
+    ///         User = 42,
+    ///         Value = "Greenland",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # You can import a user custom attribute using an id made up of `{user-id}:{key}`, e.g.
+    /// You can import a user custom attribute using an id made up of `{user-id}:{key}`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/userCustomAttribute:UserCustomAttribute attr 42:location
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/userCustomAttribute:UserCustomAttribute")]
-    public partial class UserCustomAttribute : Pulumi.CustomResource
+    public partial class UserCustomAttribute : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Key for the Custom Attribute.
@@ -108,7 +106,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class UserCustomAttributeArgs : Pulumi.ResourceArgs
+    public sealed class UserCustomAttributeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Key for the Custom Attribute.
@@ -131,9 +129,10 @@ namespace Pulumi.GitLab
         public UserCustomAttributeArgs()
         {
         }
+        public static new UserCustomAttributeArgs Empty => new UserCustomAttributeArgs();
     }
 
-    public sealed class UserCustomAttributeState : Pulumi.ResourceArgs
+    public sealed class UserCustomAttributeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Key for the Custom Attribute.
@@ -156,5 +155,6 @@ namespace Pulumi.GitLab
         public UserCustomAttributeState()
         {
         }
+        public static new UserCustomAttributeState Empty => new UserCustomAttributeState();
     }
 }

@@ -17,37 +17,34 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var foo = new GitLab.Project("foo", new GitLab.ProjectArgs
-    ///         {
-    ///         });
-    ///         var example = new GitLab.ProjectBadge("example", new GitLab.ProjectBadgeArgs
-    ///         {
-    ///             Project = foo.Id,
-    ///             LinkUrl = "https://example.com/badge-123",
-    ///             ImageUrl = "https://example.com/badge-123.svg",
-    ///         });
-    ///     }
+    ///     var foo = new GitLab.Project("foo");
     /// 
-    /// }
+    ///     var example = new GitLab.ProjectBadge("example", new()
+    ///     {
+    ///         Project = foo.Id,
+    ///         LinkUrl = "https://example.com/badge-123",
+    ///         ImageUrl = "https://example.com/badge-123.svg",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # GitLab project badges can be imported using an id made up of `{project_id}:{badge_id}`, e.g.
+    /// GitLab project badges can be imported using an id made up of `{project_id}:{badge_id}`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectBadge:ProjectBadge foo 1:3
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/projectBadge:ProjectBadge")]
-    public partial class ProjectBadge : Pulumi.CustomResource
+    public partial class ProjectBadge : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The image url which will be presented on project overview.
@@ -129,7 +126,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ProjectBadgeArgs : Pulumi.ResourceArgs
+    public sealed class ProjectBadgeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The image url which will be presented on project overview.
@@ -158,9 +155,10 @@ namespace Pulumi.GitLab
         public ProjectBadgeArgs()
         {
         }
+        public static new ProjectBadgeArgs Empty => new ProjectBadgeArgs();
     }
 
-    public sealed class ProjectBadgeState : Pulumi.ResourceArgs
+    public sealed class ProjectBadgeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The image url which will be presented on project overview.
@@ -201,5 +199,6 @@ namespace Pulumi.GitLab
         public ProjectBadgeState()
         {
         }
+        public static new ProjectBadgeState Empty => new ProjectBadgeState();
     }
 }

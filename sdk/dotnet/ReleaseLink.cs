@@ -17,44 +17,42 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a project
+    ///     var exampleProject = new GitLab.Project("exampleProject", new()
     ///     {
-    ///         // Create a project
-    ///         var exampleProject = new GitLab.Project("exampleProject", new GitLab.ProjectArgs
-    ///         {
-    ///             Description = "An example project",
-    ///         });
-    ///         // Can create release link only to a tag associated with a release
-    ///         var exampleReleaseLink = new GitLab.ReleaseLink("exampleReleaseLink", new GitLab.ReleaseLinkArgs
-    ///         {
-    ///             Project = exampleProject.Id,
-    ///             TagName = "tag_name_associated_with_release",
-    ///             Url = "https://test/",
-    ///         });
-    ///     }
+    ///         Description = "An example project",
+    ///     });
     /// 
-    /// }
+    ///     // Can create release link only to a tag associated with a release
+    ///     var exampleReleaseLink = new GitLab.ReleaseLink("exampleReleaseLink", new()
+    ///     {
+    ///         Project = exampleProject.Id,
+    ///         TagName = "tag_name_associated_with_release",
+    ///         Url = "https://test/",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # Gitlab release link can be imported with a key composed of `&lt;project&gt;:&lt;tag_name&gt;:&lt;link_id&gt;`, e.g.
+    /// Gitlab release link can be imported with a key composed of `&lt;project&gt;:&lt;tag_name&gt;:&lt;link_id&gt;`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/releaseLink:ReleaseLink example "12345:test:2"
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/releaseLink:ReleaseLink")]
-    public partial class ReleaseLink : Pulumi.CustomResource
+    public partial class ReleaseLink : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Full path for a [Direct Asset
-        /// link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        /// Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
         /// </summary>
         [Output("directAssetUrl")]
         public Output<string> DirectAssetUrl { get; private set; } = null!;
@@ -66,8 +64,7 @@ namespace Pulumi.GitLab
         public Output<bool> External { get; private set; } = null!;
 
         /// <summary>
-        /// Relative path for a [Direct Asset
-        /// link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        /// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
         /// </summary>
         [Output("filepath")]
         public Output<string?> Filepath { get; private set; } = null!;
@@ -152,11 +149,10 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ReleaseLinkArgs : Pulumi.ResourceArgs
+    public sealed class ReleaseLinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Relative path for a [Direct Asset
-        /// link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        /// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
         /// </summary>
         [Input("filepath")]
         public Input<string>? Filepath { get; set; }
@@ -194,13 +190,13 @@ namespace Pulumi.GitLab
         public ReleaseLinkArgs()
         {
         }
+        public static new ReleaseLinkArgs Empty => new ReleaseLinkArgs();
     }
 
-    public sealed class ReleaseLinkState : Pulumi.ResourceArgs
+    public sealed class ReleaseLinkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Full path for a [Direct Asset
-        /// link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        /// Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
         /// </summary>
         [Input("directAssetUrl")]
         public Input<string>? DirectAssetUrl { get; set; }
@@ -212,8 +208,7 @@ namespace Pulumi.GitLab
         public Input<bool>? External { get; set; }
 
         /// <summary>
-        /// Relative path for a [Direct Asset
-        /// link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        /// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
         /// </summary>
         [Input("filepath")]
         public Input<string>? Filepath { get; set; }
@@ -257,5 +252,6 @@ namespace Pulumi.GitLab
         public ReleaseLinkState()
         {
         }
+        public static new ReleaseLinkState Empty => new ReleaseLinkState();
     }
 }

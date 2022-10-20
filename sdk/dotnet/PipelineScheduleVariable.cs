@@ -17,42 +17,41 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var examplePipelineSchedule = new GitLab.PipelineSchedule("examplePipelineSchedule", new()
     ///     {
-    ///         var examplePipelineSchedule = new GitLab.PipelineSchedule("examplePipelineSchedule", new GitLab.PipelineScheduleArgs
-    ///         {
-    ///             Project = "12345",
-    ///             Description = "Used to schedule builds",
-    ///             Ref = "master",
-    ///             Cron = "0 1 * * *",
-    ///         });
-    ///         var examplePipelineScheduleVariable = new GitLab.PipelineScheduleVariable("examplePipelineScheduleVariable", new GitLab.PipelineScheduleVariableArgs
-    ///         {
-    ///             Project = gitlab_pipeline_schedule.Project,
-    ///             PipelineScheduleId = gitlab_pipeline_schedule.Id,
-    ///             Key = "EXAMPLE_KEY",
-    ///             Value = "example",
-    ///         });
-    ///     }
+    ///         Project = "12345",
+    ///         Description = "Used to schedule builds",
+    ///         Ref = "master",
+    ///         Cron = "0 1 * * *",
+    ///     });
     /// 
-    /// }
+    ///     var examplePipelineScheduleVariable = new GitLab.PipelineScheduleVariable("examplePipelineScheduleVariable", new()
+    ///     {
+    ///         Project = gitlab_pipeline_schedule.Project,
+    ///         PipelineScheduleId = gitlab_pipeline_schedule.Id,
+    ///         Key = "EXAMPLE_KEY",
+    ///         Value = "example",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # Pipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.
+    /// Pipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable")]
-    public partial class PipelineScheduleVariable : Pulumi.CustomResource
+    public partial class PipelineScheduleVariable : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name of the variable.
@@ -122,7 +121,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class PipelineScheduleVariableArgs : Pulumi.ResourceArgs
+    public sealed class PipelineScheduleVariableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the variable.
@@ -151,9 +150,10 @@ namespace Pulumi.GitLab
         public PipelineScheduleVariableArgs()
         {
         }
+        public static new PipelineScheduleVariableArgs Empty => new PipelineScheduleVariableArgs();
     }
 
-    public sealed class PipelineScheduleVariableState : Pulumi.ResourceArgs
+    public sealed class PipelineScheduleVariableState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the variable.
@@ -182,5 +182,6 @@ namespace Pulumi.GitLab
         public PipelineScheduleVariableState()
         {
         }
+        public static new PipelineScheduleVariableState Empty => new PipelineScheduleVariableState();
     }
 }

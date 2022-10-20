@@ -21,17 +21,17 @@ namespace Pulumi.GitLab
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/topic:Topic # You can import a topic to terraform state using `&lt;resource&gt; &lt;id&gt;`.
+    ///  $ pulumi import gitlab:index/topic:Topic You can import a topic to terraform state using `&lt;resource&gt; &lt;id&gt;`.
     /// ```
     /// 
-    /// # The `id` must be an integer for the id of the topic you want to import, # for example
+    ///  The `id` must be an integer for the id of the topic you want to import, for example
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/topic:Topic functional_programming 1
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/topic:Topic")]
-    public partial class Topic : Pulumi.CustomResource
+    public partial class Topic : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -40,8 +40,7 @@ namespace Pulumi.GitLab
         public Output<string?> Avatar { get; private set; } = null!;
 
         /// <summary>
-        /// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
-        /// trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        /// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         /// </summary>
         [Output("avatarHash")]
         public Output<string> AvatarHash { get; private set; } = null!;
@@ -120,7 +119,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class TopicArgs : Pulumi.ResourceArgs
+    public sealed class TopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -129,8 +128,7 @@ namespace Pulumi.GitLab
         public Input<string>? Avatar { get; set; }
 
         /// <summary>
-        /// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
-        /// trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        /// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         /// </summary>
         [Input("avatarHash")]
         public Input<string>? AvatarHash { get; set; }
@@ -162,9 +160,10 @@ namespace Pulumi.GitLab
         public TopicArgs()
         {
         }
+        public static new TopicArgs Empty => new TopicArgs();
     }
 
-    public sealed class TopicState : Pulumi.ResourceArgs
+    public sealed class TopicState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -173,8 +172,7 @@ namespace Pulumi.GitLab
         public Input<string>? Avatar { get; set; }
 
         /// <summary>
-        /// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to
-        /// trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        /// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         /// </summary>
         [Input("avatarHash")]
         public Input<string>? AvatarHash { get; set; }
@@ -212,5 +210,6 @@ namespace Pulumi.GitLab
         public TopicState()
         {
         }
+        public static new TopicState Empty => new TopicState();
     }
 }
