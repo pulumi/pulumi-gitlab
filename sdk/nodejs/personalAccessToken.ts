@@ -31,13 +31,13 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # A GitLab Personal Access Token can be imported using a key composed of `<user-id>:<token-id>`, e.g.
+ * A GitLab Personal Access Token can be imported using a key composed of `<user-id>:<token-id>`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/personalAccessToken:PersonalAccessToken example "12345:1"
  * ```
  *
- * # NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+ *  NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  */
 export class PersonalAccessToken extends pulumi.CustomResource {
     /**
@@ -88,14 +88,11 @@ export class PersonalAccessToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly revoked!: pulumi.Output<boolean>;
     /**
-     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this
-     * token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`,
-     * `write_registry`, `sudo`.
+     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`.
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
-     * The personal access token. This is only populated when creating a new personal access token. This attribute is not
-     * available for imported resources.
+     * The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
      */
     public /*out*/ readonly token!: pulumi.Output<string>;
     /**
@@ -142,6 +139,8 @@ export class PersonalAccessToken extends pulumi.CustomResource {
             resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(PersonalAccessToken.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -171,14 +170,11 @@ export interface PersonalAccessTokenState {
      */
     revoked?: pulumi.Input<boolean>;
     /**
-     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this
-     * token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`,
-     * `write_registry`, `sudo`.
+     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The personal access token. This is only populated when creating a new personal access token. This attribute is not
-     * available for imported resources.
+     * The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
      */
     token?: pulumi.Input<string>;
     /**
@@ -200,9 +196,7 @@ export interface PersonalAccessTokenArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this
-     * token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`,
-     * `write_registry`, `sudo`.
+     * The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`.
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
     /**

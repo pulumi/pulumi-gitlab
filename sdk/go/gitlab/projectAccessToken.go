@@ -21,50 +21,54 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleProjectAccessToken, err := gitlab.NewProjectAccessToken(ctx, "exampleProjectAccessToken", &gitlab.ProjectAccessTokenArgs{
-// 			Project:     pulumi.String("25"),
-// 			ExpiresAt:   pulumi.String("2020-03-14"),
-// 			AccessLevel: pulumi.String("reporter"),
-// 			Scopes: pulumi.StringArray{
-// 				pulumi.String("api"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewProjectVariable(ctx, "exampleProjectVariable", &gitlab.ProjectVariableArgs{
-// 			Project: pulumi.Any(gitlab_project.Example.Id),
-// 			Key:     pulumi.String("pat"),
-// 			Value:   exampleProjectAccessToken.Token,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleProjectAccessToken, err := gitlab.NewProjectAccessToken(ctx, "exampleProjectAccessToken", &gitlab.ProjectAccessTokenArgs{
+//				Project:     pulumi.String("25"),
+//				ExpiresAt:   pulumi.String("2020-03-14"),
+//				AccessLevel: pulumi.String("reporter"),
+//				Scopes: pulumi.StringArray{
+//					pulumi.String("api"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectVariable(ctx, "exampleProjectVariable", &gitlab.ProjectVariableArgs{
+//				Project: pulumi.Any(gitlab_project.Example.Id),
+//				Key:     pulumi.String("pat"),
+//				Value:   exampleProjectAccessToken.Token,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # A GitLab Project Access Token can be imported using a key composed of `<project-id>:<token-id>`, e.g.
+// A GitLab Project Access Token can be imported using a key composed of `<project-id>:<token-id>`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectAccessToken:ProjectAccessToken example "12345:1"
+//
+//	$ pulumi import gitlab:index/projectAccessToken:ProjectAccessToken example "12345:1"
+//
 // ```
 //
-// # NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+//	NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 type ProjectAccessToken struct {
 	pulumi.CustomResourceState
 
-	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-	// `maintainer`, `owner`, `master`. Default is `maintainer`.
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
 	AccessLevel pulumi.StringPtrOutput `pulumi:"accessLevel"`
 	// True if the token is active.
 	Active pulumi.BoolOutput `pulumi:"active"`
@@ -78,11 +82,11 @@ type ProjectAccessToken struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// True if the token is revoked.
 	Revoked pulumi.BoolOutput `pulumi:"revoked"`
-	// Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+	// Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// The secret token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringOutput `pulumi:"token"`
-	// The user_id associated to the token.
+	// The userId associated to the token.
 	UserId pulumi.IntOutput `pulumi:"userId"`
 }
 
@@ -99,6 +103,10 @@ func NewProjectAccessToken(ctx *pulumi.Context,
 	if args.Scopes == nil {
 		return nil, errors.New("invalid value for required argument 'Scopes'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
 	var resource ProjectAccessToken
 	err := ctx.RegisterResource("gitlab:index/projectAccessToken:ProjectAccessToken", name, args, &resource, opts...)
 	if err != nil {
@@ -121,8 +129,7 @@ func GetProjectAccessToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectAccessToken resources.
 type projectAccessTokenState struct {
-	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-	// `maintainer`, `owner`, `master`. Default is `maintainer`.
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// True if the token is active.
 	Active *bool `pulumi:"active"`
@@ -136,17 +143,16 @@ type projectAccessTokenState struct {
 	Project *string `pulumi:"project"`
 	// True if the token is revoked.
 	Revoked *bool `pulumi:"revoked"`
-	// Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+	// Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
 	Scopes []string `pulumi:"scopes"`
 	// The secret token. **Note**: the token is not available for imported resources.
 	Token *string `pulumi:"token"`
-	// The user_id associated to the token.
+	// The userId associated to the token.
 	UserId *int `pulumi:"userId"`
 }
 
 type ProjectAccessTokenState struct {
-	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-	// `maintainer`, `owner`, `master`. Default is `maintainer`.
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
 	AccessLevel pulumi.StringPtrInput
 	// True if the token is active.
 	Active pulumi.BoolPtrInput
@@ -160,11 +166,11 @@ type ProjectAccessTokenState struct {
 	Project pulumi.StringPtrInput
 	// True if the token is revoked.
 	Revoked pulumi.BoolPtrInput
-	// Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+	// Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
 	Scopes pulumi.StringArrayInput
 	// The secret token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringPtrInput
-	// The user_id associated to the token.
+	// The userId associated to the token.
 	UserId pulumi.IntPtrInput
 }
 
@@ -173,8 +179,7 @@ func (ProjectAccessTokenState) ElementType() reflect.Type {
 }
 
 type projectAccessTokenArgs struct {
-	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-	// `maintainer`, `owner`, `master`. Default is `maintainer`.
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
 	ExpiresAt *string `pulumi:"expiresAt"`
@@ -182,14 +187,13 @@ type projectAccessTokenArgs struct {
 	Name *string `pulumi:"name"`
 	// The id of the project to add the project access token to.
 	Project string `pulumi:"project"`
-	// Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+	// Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
 	Scopes []string `pulumi:"scopes"`
 }
 
 // The set of arguments for constructing a ProjectAccessToken resource.
 type ProjectAccessTokenArgs struct {
-	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-	// `maintainer`, `owner`, `master`. Default is `maintainer`.
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
 	AccessLevel pulumi.StringPtrInput
 	// Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
 	ExpiresAt pulumi.StringPtrInput
@@ -197,7 +201,7 @@ type ProjectAccessTokenArgs struct {
 	Name pulumi.StringPtrInput
 	// The id of the project to add the project access token to.
 	Project pulumi.StringInput
-	// Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+	// Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
 	Scopes pulumi.StringArrayInput
 }
 
@@ -227,7 +231,7 @@ func (i *ProjectAccessToken) ToProjectAccessTokenOutputWithContext(ctx context.C
 // ProjectAccessTokenArrayInput is an input type that accepts ProjectAccessTokenArray and ProjectAccessTokenArrayOutput values.
 // You can construct a concrete instance of `ProjectAccessTokenArrayInput` via:
 //
-//          ProjectAccessTokenArray{ ProjectAccessTokenArgs{...} }
+//	ProjectAccessTokenArray{ ProjectAccessTokenArgs{...} }
 type ProjectAccessTokenArrayInput interface {
 	pulumi.Input
 
@@ -252,7 +256,7 @@ func (i ProjectAccessTokenArray) ToProjectAccessTokenArrayOutputWithContext(ctx 
 // ProjectAccessTokenMapInput is an input type that accepts ProjectAccessTokenMap and ProjectAccessTokenMapOutput values.
 // You can construct a concrete instance of `ProjectAccessTokenMapInput` via:
 //
-//          ProjectAccessTokenMap{ "key": ProjectAccessTokenArgs{...} }
+//	ProjectAccessTokenMap{ "key": ProjectAccessTokenArgs{...} }
 type ProjectAccessTokenMapInput interface {
 	pulumi.Input
 
@@ -288,8 +292,7 @@ func (o ProjectAccessTokenOutput) ToProjectAccessTokenOutputWithContext(ctx cont
 	return o
 }
 
-// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-// `maintainer`, `owner`, `master`. Default is `maintainer`.
+// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
 func (o ProjectAccessTokenOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectAccessToken) pulumi.StringPtrOutput { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
@@ -324,7 +327,7 @@ func (o ProjectAccessTokenOutput) Revoked() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectAccessToken) pulumi.BoolOutput { return v.Revoked }).(pulumi.BoolOutput)
 }
 
-// Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+// Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
 func (o ProjectAccessTokenOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ProjectAccessToken) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }
@@ -334,7 +337,7 @@ func (o ProjectAccessTokenOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectAccessToken) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
 }
 
-// The user_id associated to the token.
+// The userId associated to the token.
 func (o ProjectAccessTokenOutput) UserId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectAccessToken) pulumi.IntOutput { return v.UserId }).(pulumi.IntOutput)
 }

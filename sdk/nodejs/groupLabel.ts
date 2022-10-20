@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
+ * Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/groupLabel:GroupLabel example 12345:fixme
@@ -59,8 +59,7 @@ export class GroupLabel extends pulumi.CustomResource {
     }
 
     /**
-     * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-     * names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+     * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
      */
     public readonly color!: pulumi.Output<string>;
     /**
@@ -116,8 +115,7 @@ export class GroupLabel extends pulumi.CustomResource {
  */
 export interface GroupLabelState {
     /**
-     * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-     * names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+     * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
      */
     color?: pulumi.Input<string>;
     /**
@@ -139,8 +137,7 @@ export interface GroupLabelState {
  */
 export interface GroupLabelArgs {
     /**
-     * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-     * names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+     * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
      */
     color: pulumi.Input<string>;
     /**

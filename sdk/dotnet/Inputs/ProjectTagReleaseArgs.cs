@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab.Inputs
 {
 
-    public sealed class ProjectTagReleaseArgs : Pulumi.ResourceArgs
+    public sealed class ProjectTagReleaseArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.GitLab.Inputs
         public ProjectTagReleaseArgs()
         {
         }
+        public static new ProjectTagReleaseArgs Empty => new ProjectTagReleaseArgs();
     }
 }

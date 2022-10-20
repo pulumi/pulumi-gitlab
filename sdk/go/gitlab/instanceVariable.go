@@ -21,47 +21,50 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewInstanceVariable(ctx, "example", &gitlab.InstanceVariableArgs{
-// 			Key:       pulumi.String("instance_variable_key"),
-// 			Masked:    pulumi.Bool(false),
-// 			Protected: pulumi.Bool(false),
-// 			Value:     pulumi.String("instance_variable_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewInstanceVariable(ctx, "example", &gitlab.InstanceVariableArgs{
+//				Key:       pulumi.String("instance_variable_key"),
+//				Masked:    pulumi.Bool(false),
+//				Protected: pulumi.Bool(false),
+//				Value:     pulumi.String("instance_variable_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # GitLab instance variables can be imported using an id made up of `variablename`, e.g.
+// GitLab instance variables can be imported using an id made up of `variablename`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/instanceVariable:InstanceVariable example instance_variable_key
+//
+//	$ pulumi import gitlab:index/instanceVariable:InstanceVariable example instance_variable_key
+//
 // ```
 type InstanceVariable struct {
 	pulumi.CustomResourceState
 
 	// The name of the variable.
 	Key pulumi.StringOutput `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-	// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
 	Masked pulumi.BoolPtrOutput `pulumi:"masked"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-	// `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrOutput `pulumi:"protected"`
 	// The value of the variable.
 	Value pulumi.StringOutput `pulumi:"value"`
-	// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
 	VariableType pulumi.StringPtrOutput `pulumi:"variableType"`
 }
 
@@ -78,6 +81,13 @@ func NewInstanceVariable(ctx *pulumi.Context,
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
 	}
+	if args.Value != nil {
+		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"value",
+	})
+	opts = append(opts, secrets)
 	var resource InstanceVariable
 	err := ctx.RegisterResource("gitlab:index/instanceVariable:InstanceVariable", name, args, &resource, opts...)
 	if err != nil {
@@ -102,30 +112,26 @@ func GetInstanceVariable(ctx *pulumi.Context,
 type instanceVariableState struct {
 	// The name of the variable.
 	Key *string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-	// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
 	Masked *bool `pulumi:"masked"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-	// `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected *bool `pulumi:"protected"`
 	// The value of the variable.
 	Value *string `pulumi:"value"`
-	// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
 	VariableType *string `pulumi:"variableType"`
 }
 
 type InstanceVariableState struct {
 	// The name of the variable.
 	Key pulumi.StringPtrInput
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-	// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
 	Masked pulumi.BoolPtrInput
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-	// `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrInput
 	// The value of the variable.
 	Value pulumi.StringPtrInput
-	// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
 	VariableType pulumi.StringPtrInput
 }
 
@@ -136,15 +142,13 @@ func (InstanceVariableState) ElementType() reflect.Type {
 type instanceVariableArgs struct {
 	// The name of the variable.
 	Key string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-	// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
 	Masked *bool `pulumi:"masked"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-	// `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected *bool `pulumi:"protected"`
 	// The value of the variable.
 	Value string `pulumi:"value"`
-	// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
 	VariableType *string `pulumi:"variableType"`
 }
 
@@ -152,15 +156,13 @@ type instanceVariableArgs struct {
 type InstanceVariableArgs struct {
 	// The name of the variable.
 	Key pulumi.StringInput
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-	// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
 	Masked pulumi.BoolPtrInput
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-	// `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrInput
 	// The value of the variable.
 	Value pulumi.StringInput
-	// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
 	VariableType pulumi.StringPtrInput
 }
 
@@ -190,7 +192,7 @@ func (i *InstanceVariable) ToInstanceVariableOutputWithContext(ctx context.Conte
 // InstanceVariableArrayInput is an input type that accepts InstanceVariableArray and InstanceVariableArrayOutput values.
 // You can construct a concrete instance of `InstanceVariableArrayInput` via:
 //
-//          InstanceVariableArray{ InstanceVariableArgs{...} }
+//	InstanceVariableArray{ InstanceVariableArgs{...} }
 type InstanceVariableArrayInput interface {
 	pulumi.Input
 
@@ -215,7 +217,7 @@ func (i InstanceVariableArray) ToInstanceVariableArrayOutputWithContext(ctx cont
 // InstanceVariableMapInput is an input type that accepts InstanceVariableMap and InstanceVariableMapOutput values.
 // You can construct a concrete instance of `InstanceVariableMapInput` via:
 //
-//          InstanceVariableMap{ "key": InstanceVariableArgs{...} }
+//	InstanceVariableMap{ "key": InstanceVariableArgs{...} }
 type InstanceVariableMapInput interface {
 	pulumi.Input
 
@@ -256,14 +258,12 @@ func (o InstanceVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceVariable) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
 func (o InstanceVariableOutput) Masked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceVariable) pulumi.BoolPtrOutput { return v.Masked }).(pulumi.BoolPtrOutput)
 }
 
-// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-// `false`.
+// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 func (o InstanceVariableOutput) Protected() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceVariable) pulumi.BoolPtrOutput { return v.Protected }).(pulumi.BoolPtrOutput)
 }
@@ -273,7 +273,7 @@ func (o InstanceVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceVariable) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }
 
-// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
 func (o InstanceVariableOutput) VariableType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceVariable) pulumi.StringPtrOutput { return v.VariableType }).(pulumi.StringPtrOutput)
 }

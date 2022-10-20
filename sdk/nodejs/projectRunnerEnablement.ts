@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # GitLab project runners can be imported using an id made up of `project:runner_id`, e.g.
+ * GitLab project runners can be imported using an id made up of `project:runner_id`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement foo 5:7

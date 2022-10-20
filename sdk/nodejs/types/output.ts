@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface BranchCommit {
     authorEmail: string;
@@ -11,6 +12,9 @@ export interface BranchCommit {
     committedDate: string;
     committerEmail: string;
     committerName: string;
+    /**
+     * The ID of this resource.
+     */
     id: string;
     message: string;
     parentIds: string[];
@@ -19,23 +23,59 @@ export interface BranchCommit {
 }
 
 export interface BranchProtectionAllowedToMerge {
+    /**
+     * Level of access.
+     */
     accessLevel: string;
+    /**
+     * Readable description of level of access.
+     */
     accessLevelDescription: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
     groupId?: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
     userId?: number;
 }
 
 export interface BranchProtectionAllowedToPush {
+    /**
+     * Level of access.
+     */
     accessLevel: string;
+    /**
+     * Readable description of level of access.
+     */
     accessLevelDescription: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
     groupId?: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
     userId?: number;
 }
 
 export interface BranchProtectionAllowedToUnprotect {
+    /**
+     * Level of access.
+     */
     accessLevel: string;
+    /**
+     * Readable description of level of access.
+     */
     accessLevelDescription: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
     groupId?: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
     userId?: number;
 }
 
@@ -46,6 +86,9 @@ export interface GetBranchCommit {
     committedDate: string;
     committerEmail: string;
     committerName: string;
+    /**
+     * The ID of this resource.
+     */
     id: string;
     message: string;
     parentIds: string[];
@@ -58,13 +101,48 @@ export interface GetClusterAgentsClusterAgent {
     createdAt: string;
     createdByUserId: number;
     name: string;
+    /**
+     * The ID or full path of the project owned by the authenticated user.
+     */
     project: string;
 }
 
+export interface GetGroupHooksHook {
+    confidentialIssuesEvents: boolean;
+    confidentialNoteEvents: boolean;
+    deploymentEvents: boolean;
+    enableSslVerification: boolean;
+    /**
+     * The ID or full path of the group.
+     */
+    group: string;
+    groupId: number;
+    hookId: number;
+    issuesEvents: boolean;
+    jobEvents: boolean;
+    mergeRequestsEvents: boolean;
+    noteEvents: boolean;
+    pipelineEvents: boolean;
+    pushEvents: boolean;
+    pushEventsBranchFilter: string;
+    releasesEvents: boolean;
+    subgroupEvents: boolean;
+    tagPushEvents: boolean;
+    token: string;
+    url: string;
+    wikiPageEvents: boolean;
+}
+
 export interface GetGroupMembershipMember {
+    /**
+     * Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     */
     accessLevel: string;
     avatarUrl: string;
     expiresAt: string;
+    /**
+     * The ID of this resource.
+     */
     id: number;
     name: string;
     state: string;
@@ -73,7 +151,13 @@ export interface GetGroupMembershipMember {
 }
 
 export interface GetGroupVariablesVariable {
+    /**
+     * The environment scope of the variable. Defaults to all environment (`*`).
+     */
     environmentScope: string;
+    /**
+     * The name or id of the group.
+     */
     group: string;
     key: string;
     masked: boolean;
@@ -85,6 +169,9 @@ export interface GetGroupVariablesVariable {
 export interface GetInstanceDeployKeysDeployKey {
     createdAt: string;
     fingerprint: string;
+    /**
+     * The ID of this resource.
+     */
     id: number;
     key: string;
     projectsWithWriteAccesses: outputs.GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess[];
@@ -94,6 +181,9 @@ export interface GetInstanceDeployKeysDeployKey {
 export interface GetInstanceDeployKeysDeployKeyProjectsWithWriteAccess {
     createdAt: string;
     description: string;
+    /**
+     * The ID of this resource.
+     */
     id: number;
     name: string;
     nameWithNamespace: string;
@@ -119,6 +209,31 @@ export interface GetProjectContainerExpirationPolicy {
     olderThan: string;
 }
 
+export interface GetProjectHooksHook {
+    confidentialIssuesEvents: boolean;
+    confidentialNoteEvents: boolean;
+    deploymentEvents: boolean;
+    enableSslVerification: boolean;
+    hookId: number;
+    issuesEvents: boolean;
+    jobEvents: boolean;
+    mergeRequestsEvents: boolean;
+    noteEvents: boolean;
+    pipelineEvents: boolean;
+    /**
+     * The name or id of the project.
+     */
+    project: string;
+    projectId: number;
+    pushEvents: boolean;
+    pushEventsBranchFilter: string;
+    releasesEvents: boolean;
+    tagPushEvents: boolean;
+    token: string;
+    url: string;
+    wikiPageEvents: boolean;
+}
+
 export interface GetProjectIssueTaskCompletionStatus {
     completedCount: number;
     count: number;
@@ -126,15 +241,24 @@ export interface GetProjectIssueTaskCompletionStatus {
 
 export interface GetProjectIssuesIssue {
     assigneeIds: number[];
+    /**
+     * Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
+     */
     authorId: number;
     closedAt: string;
     closedByUserId: number;
+    /**
+     * Filter confidential or public issues.
+     */
     confidential: boolean;
     createdAt: string;
     description: string;
     discussionLocked: boolean;
     discussionToResolve: string;
     downvotes: number;
+    /**
+     * Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
+     */
     dueDate: string;
     epicId: number;
     epicIssueId: number;
@@ -144,13 +268,22 @@ export interface GetProjectIssuesIssue {
     iid: number;
     issueId: number;
     issueLinkId: number;
+    /**
+     * Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
+     */
     issueType: string;
+    /**
+     * Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
+     */
     labels: string[];
     links: {[key: string]: string};
     mergeRequestToResolveDiscussionsOf: number;
     mergeRequestsCount: number;
     milestoneId: number;
     movedToId: number;
+    /**
+     * The name or id of the project.
+     */
     project: string;
     references: {[key: string]: string};
     state: string;
@@ -163,12 +296,29 @@ export interface GetProjectIssuesIssue {
     upvotes: number;
     userNotesCount: number;
     webUrl: string;
+    /**
+     * Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
+     */
     weight: number;
 }
 
 export interface GetProjectIssuesIssueTaskCompletionStatus {
     completedCount: number;
     count: number;
+}
+
+export interface GetProjectMembershipMember {
+    accessLevel: string;
+    avatarUrl: string;
+    expiresAt: string;
+    /**
+     * The ID of this resource.
+     */
+    id: number;
+    name: string;
+    state: string;
+    username: string;
+    webUrl: string;
 }
 
 export interface GetProjectMilestonesMilestone {
@@ -178,10 +328,19 @@ export interface GetProjectMilestonesMilestone {
     expired: boolean;
     iid: number;
     milestoneId: number;
+    /**
+     * The ID or URL-encoded path of the project owned by the authenticated user.
+     */
     project: string;
     projectId: number;
     startDate: string;
+    /**
+     * Return only `active` or `closed` milestones.
+     */
     state: string;
+    /**
+     * Return only the milestones having the given `title`.
+     */
     title: string;
     updatedAt: string;
     webUrl: string;
@@ -204,6 +363,9 @@ export interface GetProjectProtectedBranchPushAccessLevel {
 export interface GetProjectProtectedBranchesProtectedBranch {
     allowForcePush: boolean;
     codeOwnerApprovalRequired: boolean;
+    /**
+     * The ID of this resource.
+     */
     id: number;
     mergeAccessLevels: outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevel[];
     name: string;
@@ -245,7 +407,13 @@ export interface GetProjectTagCommit {
     committedDate: string;
     committerEmail: string;
     committerName: string;
+    /**
+     * The ID of this resource.
+     */
     id: string;
+    /**
+     * The message of the annotated tag.
+     */
     message: string;
     parentIds: string[];
     shortId: string;
@@ -273,6 +441,9 @@ export interface GetProjectTagsTagCommit {
     committedDate: string;
     committerEmail: string;
     committerName: string;
+    /**
+     * The ID of this resource.
+     */
     id: string;
     message: string;
     parentIds: string[];
@@ -286,9 +457,15 @@ export interface GetProjectTagsTagRelease {
 }
 
 export interface GetProjectVariablesVariable {
+    /**
+     * The environment scope of the variable. Defaults to all environment (`*`).
+     */
     environmentScope: string;
     key: string;
     masked: boolean;
+    /**
+     * The name or id of the project.
+     */
     project: string;
     protected: boolean;
     value: string;
@@ -300,6 +477,9 @@ export interface GetProjectsProject {
     allowMergeOnSkippedPipeline: boolean;
     analyticsAccessLevel: string;
     approvalsBeforeMerge: number;
+    /**
+     * Limit by archived status.
+     */
     archived: boolean;
     autoCancelPendingPipelines: string;
     autoDevopsDeployStrategy: string;
@@ -327,6 +507,9 @@ export interface GetProjectsProject {
     forkingAccessLevel: string;
     forksCount: number;
     httpUrlToRepo: string;
+    /**
+     * The ID of this resource.
+     */
     id: number;
     importError: string;
     importStatus: string;
@@ -375,9 +558,15 @@ export interface GetProjectsProject {
     squashCommitTemplate: string;
     sshUrlToRepo: string;
     starCount: number;
+    /**
+     * Include project statistics. Cannot be used with `groupId`.
+     */
     statistics: {[key: string]: number};
     tagLists: string[];
     topics: string[];
+    /**
+     * Limit by visibility `public`, `internal`, or `private`.
+     */
     visibility: string;
     webUrl: string;
     wikiAccessLevel: string;
@@ -396,6 +585,9 @@ export interface GetProjectsProjectContainerExpirationPolicy {
 
 export interface GetProjectsProjectForkedFromProject {
     httpUrlToRepo: string;
+    /**
+     * The ID of this resource.
+     */
     id: number;
     name: string;
     nameWithNamespace: string;
@@ -406,6 +598,9 @@ export interface GetProjectsProjectForkedFromProject {
 
 export interface GetProjectsProjectNamespace {
     fullPath: string;
+    /**
+     * The ID of this resource.
+     */
     id: number;
     kind: string;
     name: string;
@@ -414,6 +609,9 @@ export interface GetProjectsProjectNamespace {
 
 export interface GetProjectsProjectOwner {
     avatarUrl: string;
+    /**
+     * The ID of this resource.
+     */
     id: number;
     name: string;
     state: string;
@@ -428,6 +626,9 @@ export interface GetProjectsProjectPermissions {
 
 export interface GetProjectsProjectSharedWithGroup {
     groupAccessLevel: string;
+    /**
+     * The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
+     */
     groupId: number;
     groupName: string;
 }
@@ -439,9 +640,29 @@ export interface GetReleaseLinksReleaseLink {
     linkId: number;
     linkType: string;
     name: string;
+    /**
+     * The ID or full path to the project.
+     */
     project: string;
+    /**
+     * The tag associated with the Release.
+     */
     tagName: string;
     url: string;
+}
+
+export interface GetRepositoryTreeTree {
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    mode: string;
+    name: string;
+    /**
+     * The path inside repository. Used to get content of subdirectories.
+     */
+    path: string;
+    type: string;
 }
 
 export interface GetUsersUser {
@@ -453,8 +674,14 @@ export interface GetUsersUser {
     createdAt: string;
     currentSignInAt: string;
     email: string;
+    /**
+     * Lookup users by external UID. (Requires administrator privileges)
+     */
     externUid: string;
     external: boolean;
+    /**
+     * The ID of this resource.
+     */
     id: number;
     isAdmin: boolean;
     lastSignInAt: string;
@@ -475,13 +702,61 @@ export interface GetUsersUser {
 }
 
 export interface ProjectContainerExpirationPolicy {
+    /**
+     * The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
+     */
     cadence: string;
+    /**
+     * If true, the policy is enabled.
+     */
     enabled: boolean;
+    /**
+     * The number of images to keep.
+     */
     keepN: number;
+    /**
+     * The regular expression to match image names to delete. **Note**: the upstream API has some inconsistencies with the `nameRegex` field here. It's basically unusable at the moment.
+     */
     nameRegexDelete: string;
+    /**
+     * The regular expression to match image names to keep.
+     */
     nameRegexKeep: string;
+    /**
+     * The next time the policy will run.
+     */
     nextRunAt: string;
+    /**
+     * The number of days to keep images.
+     */
     olderThan: string;
+}
+
+export interface ProjectIssueBoardList {
+    /**
+     * The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
+     */
+    assigneeId?: number;
+    /**
+     * The ID of the list
+     */
+    id: number;
+    /**
+     * The ID of the iteration the list should be scoped to. Requires a GitLab EE license.
+     */
+    iterationId?: number;
+    /**
+     * The ID of the label the list should be scoped to. Requires a GitLab EE license.
+     */
+    labelId?: number;
+    /**
+     * The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
+     */
+    milestoneId?: number;
+    /**
+     * The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+     */
+    position: number;
 }
 
 export interface ProjectIssueTaskCompletionStatus {
@@ -490,23 +765,68 @@ export interface ProjectIssueTaskCompletionStatus {
 }
 
 export interface ProjectProtectedEnvironmentDeployAccessLevel {
+    /**
+     * Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+     */
     accessLevel: string;
+    /**
+     * Readable description of level of access.
+     */
     accessLevelDescription: string;
+    /**
+     * The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
+     */
     groupId?: number;
+    /**
+     * The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
+     */
     userId?: number;
 }
 
 export interface ProjectPushRules {
+    /**
+     * All commit author emails must match this regex, e.g. `@my-company.com$`.
+     */
     authorEmailRegex?: string;
+    /**
+     * All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+     */
     branchNameRegex?: string;
+    /**
+     * Users can only push commits to this repository that were committed with one of their own verified emails.
+     */
     commitCommitterCheck?: boolean;
+    /**
+     * No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+     */
     commitMessageNegativeRegex?: string;
+    /**
+     * All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+     */
     commitMessageRegex?: string;
+    /**
+     * Deny deleting a tag.
+     */
     denyDeleteTag?: boolean;
+    /**
+     * All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+     */
     fileNameRegex?: string;
+    /**
+     * Maximum file size (MB).
+     */
     maxFileSize?: number;
+    /**
+     * Restrict commits by author (email) to existing GitLab users.
+     */
     memberCheck?: boolean;
+    /**
+     * GitLab will reject any files that are likely to contain secrets.
+     */
     preventSecrets?: boolean;
+    /**
+     * Reject commit when it’s not signed through GPG.
+     */
     rejectUnsignedCommits?: boolean;
 }
 
@@ -517,7 +837,13 @@ export interface ProjectTagCommit {
     committedDate: string;
     committerEmail: string;
     committerName: string;
+    /**
+     * The ID of this resource.
+     */
     id: string;
+    /**
+     * The message of the annotated tag.
+     */
     message: string;
     parentIds: string[];
     shortId: string;

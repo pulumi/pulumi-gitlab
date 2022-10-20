@@ -21,37 +21,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewGroupLabel(ctx, "fixme", &gitlab.GroupLabelArgs{
-// 			Color:       pulumi.String("#ffcc00"),
-// 			Description: pulumi.String("issue with failing tests"),
-// 			Group:       pulumi.String("example"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewGroupLabel(ctx, "fixme", &gitlab.GroupLabelArgs{
+//				Color:       pulumi.String("#ffcc00"),
+//				Description: pulumi.String("issue with failing tests"),
+//				Group:       pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
+// Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/groupLabel:GroupLabel example 12345:fixme
+//
+//	$ pulumi import gitlab:index/groupLabel:GroupLabel example 12345:fixme
+//
 // ```
 type GroupLabel struct {
 	pulumi.CustomResourceState
 
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-	// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color pulumi.StringOutput `pulumi:"color"`
 	// The description of the label.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -96,8 +100,7 @@ func GetGroupLabel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupLabel resources.
 type groupLabelState struct {
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-	// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color *string `pulumi:"color"`
 	// The description of the label.
 	Description *string `pulumi:"description"`
@@ -108,8 +111,7 @@ type groupLabelState struct {
 }
 
 type GroupLabelState struct {
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-	// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color pulumi.StringPtrInput
 	// The description of the label.
 	Description pulumi.StringPtrInput
@@ -124,8 +126,7 @@ func (GroupLabelState) ElementType() reflect.Type {
 }
 
 type groupLabelArgs struct {
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-	// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color string `pulumi:"color"`
 	// The description of the label.
 	Description *string `pulumi:"description"`
@@ -137,8 +138,7 @@ type groupLabelArgs struct {
 
 // The set of arguments for constructing a GroupLabel resource.
 type GroupLabelArgs struct {
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-	// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color pulumi.StringInput
 	// The description of the label.
 	Description pulumi.StringPtrInput
@@ -174,7 +174,7 @@ func (i *GroupLabel) ToGroupLabelOutputWithContext(ctx context.Context) GroupLab
 // GroupLabelArrayInput is an input type that accepts GroupLabelArray and GroupLabelArrayOutput values.
 // You can construct a concrete instance of `GroupLabelArrayInput` via:
 //
-//          GroupLabelArray{ GroupLabelArgs{...} }
+//	GroupLabelArray{ GroupLabelArgs{...} }
 type GroupLabelArrayInput interface {
 	pulumi.Input
 
@@ -199,7 +199,7 @@ func (i GroupLabelArray) ToGroupLabelArrayOutputWithContext(ctx context.Context)
 // GroupLabelMapInput is an input type that accepts GroupLabelMap and GroupLabelMapOutput values.
 // You can construct a concrete instance of `GroupLabelMapInput` via:
 //
-//          GroupLabelMap{ "key": GroupLabelArgs{...} }
+//	GroupLabelMap{ "key": GroupLabelArgs{...} }
 type GroupLabelMapInput interface {
 	pulumi.Input
 
@@ -235,8 +235,7 @@ func (o GroupLabelOutput) ToGroupLabelOutputWithContext(ctx context.Context) Gro
 	return o
 }
 
-// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 func (o GroupLabelOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupLabel) pulumi.StringOutput { return v.Color }).(pulumi.StringOutput)
 }

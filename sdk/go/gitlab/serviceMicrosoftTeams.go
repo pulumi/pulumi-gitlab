@@ -21,46 +21,50 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		awesomeProject, err := gitlab.NewProject(ctx, "awesomeProject", &gitlab.ProjectArgs{
-// 			Description:     pulumi.String("My awesome project."),
-// 			VisibilityLevel: pulumi.String("public"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewServiceMicrosoftTeams(ctx, "teams", &gitlab.ServiceMicrosoftTeamsArgs{
-// 			Project:    awesomeProject.ID(),
-// 			Webhook:    pulumi.String("https://testurl.com/?token=XYZ"),
-// 			PushEvents: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			awesomeProject, err := gitlab.NewProject(ctx, "awesomeProject", &gitlab.ProjectArgs{
+//				Description:     pulumi.String("My awesome project."),
+//				VisibilityLevel: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewServiceMicrosoftTeams(ctx, "teams", &gitlab.ServiceMicrosoftTeamsArgs{
+//				Project:    awesomeProject.ID(),
+//				Webhook:    pulumi.String("https://testurl.com/?token=XYZ"),
+//				PushEvents: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # You can import a service_microsoft_teams state using the project ID, e.g.
+// You can import a service_microsoft_teams state using the project ID, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams teams 1
+//
+//	$ pulumi import gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams teams 1
+//
 // ```
 type ServiceMicrosoftTeams struct {
 	pulumi.CustomResourceState
 
 	// Whether the integration is active.
 	Active pulumi.BoolOutput `pulumi:"active"`
-	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
-	// “default_and_protected”. The default value is “default”
+	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
 	BranchesToBeNotified pulumi.StringPtrOutput `pulumi:"branchesToBeNotified"`
 	// Enable notifications for confidential issue events
 	ConfidentialIssuesEvents pulumi.BoolPtrOutput `pulumi:"confidentialIssuesEvents"`
@@ -129,8 +133,7 @@ func GetServiceMicrosoftTeams(ctx *pulumi.Context,
 type serviceMicrosoftTeamsState struct {
 	// Whether the integration is active.
 	Active *bool `pulumi:"active"`
-	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
-	// “default_and_protected”. The default value is “default”
+	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
 	// Enable notifications for confidential issue events
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
@@ -165,8 +168,7 @@ type serviceMicrosoftTeamsState struct {
 type ServiceMicrosoftTeamsState struct {
 	// Whether the integration is active.
 	Active pulumi.BoolPtrInput
-	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
-	// “default_and_protected”. The default value is “default”
+	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
 	BranchesToBeNotified pulumi.StringPtrInput
 	// Enable notifications for confidential issue events
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
@@ -203,8 +205,7 @@ func (ServiceMicrosoftTeamsState) ElementType() reflect.Type {
 }
 
 type serviceMicrosoftTeamsArgs struct {
-	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
-	// “default_and_protected”. The default value is “default”
+	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
 	// Enable notifications for confidential issue events
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
@@ -234,8 +235,7 @@ type serviceMicrosoftTeamsArgs struct {
 
 // The set of arguments for constructing a ServiceMicrosoftTeams resource.
 type ServiceMicrosoftTeamsArgs struct {
-	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
-	// “default_and_protected”. The default value is “default”
+	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
 	BranchesToBeNotified pulumi.StringPtrInput
 	// Enable notifications for confidential issue events
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
@@ -289,7 +289,7 @@ func (i *ServiceMicrosoftTeams) ToServiceMicrosoftTeamsOutputWithContext(ctx con
 // ServiceMicrosoftTeamsArrayInput is an input type that accepts ServiceMicrosoftTeamsArray and ServiceMicrosoftTeamsArrayOutput values.
 // You can construct a concrete instance of `ServiceMicrosoftTeamsArrayInput` via:
 //
-//          ServiceMicrosoftTeamsArray{ ServiceMicrosoftTeamsArgs{...} }
+//	ServiceMicrosoftTeamsArray{ ServiceMicrosoftTeamsArgs{...} }
 type ServiceMicrosoftTeamsArrayInput interface {
 	pulumi.Input
 
@@ -314,7 +314,7 @@ func (i ServiceMicrosoftTeamsArray) ToServiceMicrosoftTeamsArrayOutputWithContex
 // ServiceMicrosoftTeamsMapInput is an input type that accepts ServiceMicrosoftTeamsMap and ServiceMicrosoftTeamsMapOutput values.
 // You can construct a concrete instance of `ServiceMicrosoftTeamsMapInput` via:
 //
-//          ServiceMicrosoftTeamsMap{ "key": ServiceMicrosoftTeamsArgs{...} }
+//	ServiceMicrosoftTeamsMap{ "key": ServiceMicrosoftTeamsArgs{...} }
 type ServiceMicrosoftTeamsMapInput interface {
 	pulumi.Input
 
@@ -355,8 +355,7 @@ func (o ServiceMicrosoftTeamsOutput) Active() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.BoolOutput { return v.Active }).(pulumi.BoolOutput)
 }
 
-// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
-// “default_and_protected”. The default value is “default”
+// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
 func (o ServiceMicrosoftTeamsOutput) BranchesToBeNotified() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.StringPtrOutput { return v.BranchesToBeNotified }).(pulumi.StringPtrOutput)
 }

@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("gitlab");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("gitlab");
 
         private static readonly __Value<string?> _baseUrl = new __Value<string?>(() => __config.Get("baseUrl"));
         /// <summary>

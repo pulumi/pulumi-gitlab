@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Gitlab release link can be imported with a key composed of `<project>:<tag_name>:<link_id>`, e.g.
+ * Gitlab release link can be imported with a key composed of `<project>:<tag_name>:<link_id>`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/releaseLink:ReleaseLink example "12345:test:2"
@@ -62,8 +62,7 @@ export class ReleaseLink extends pulumi.CustomResource {
     }
 
     /**
-     * Full path for a [Direct Asset
-     * link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
      */
     public /*out*/ readonly directAssetUrl!: pulumi.Output<string>;
     /**
@@ -71,8 +70,7 @@ export class ReleaseLink extends pulumi.CustomResource {
      */
     public /*out*/ readonly external!: pulumi.Output<boolean>;
     /**
-     * Relative path for a [Direct Asset
-     * link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
      */
     public readonly filepath!: pulumi.Output<string | undefined>;
     /**
@@ -153,8 +151,7 @@ export class ReleaseLink extends pulumi.CustomResource {
  */
 export interface ReleaseLinkState {
     /**
-     * Full path for a [Direct Asset
-     * link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
      */
     directAssetUrl?: pulumi.Input<string>;
     /**
@@ -162,8 +159,7 @@ export interface ReleaseLinkState {
      */
     external?: pulumi.Input<boolean>;
     /**
-     * Relative path for a [Direct Asset
-     * link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
      */
     filepath?: pulumi.Input<string>;
     /**
@@ -197,8 +193,7 @@ export interface ReleaseLinkState {
  */
 export interface ReleaseLinkArgs {
     /**
-     * Relative path for a [Direct Asset
-     * link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
      */
     filepath?: pulumi.Input<string>;
     /**

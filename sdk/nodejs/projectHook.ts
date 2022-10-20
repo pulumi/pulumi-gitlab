@@ -24,13 +24,13 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # A GitLab Project Hook can be imported using a key composed of `<project-id>:<hook-id>`, e.g.
+ * A GitLab Project Hook can be imported using a key composed of `<project-id>:<hook-id>`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/projectHook:ProjectHook example "12345:1"
  * ```
  *
- * # NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+ *  NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  */
 export class ProjectHook extends pulumi.CustomResource {
     /**
@@ -77,6 +77,10 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     public readonly enableSslVerification!: pulumi.Output<boolean | undefined>;
     /**
+     * The id of the project hook.
+     */
+    public /*out*/ readonly hookId!: pulumi.Output<number>;
+    /**
      * Invoke the hook for issues events.
      */
     public readonly issuesEvents!: pulumi.Output<boolean | undefined>;
@@ -100,6 +104,10 @@ export class ProjectHook extends pulumi.CustomResource {
      * The name or id of the project to add the hook to.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The id of the project for the hook.
+     */
+    public /*out*/ readonly projectId!: pulumi.Output<number>;
     /**
      * Invoke the hook for push events.
      */
@@ -146,12 +154,14 @@ export class ProjectHook extends pulumi.CustomResource {
             resourceInputs["confidentialNoteEvents"] = state ? state.confidentialNoteEvents : undefined;
             resourceInputs["deploymentEvents"] = state ? state.deploymentEvents : undefined;
             resourceInputs["enableSslVerification"] = state ? state.enableSslVerification : undefined;
+            resourceInputs["hookId"] = state ? state.hookId : undefined;
             resourceInputs["issuesEvents"] = state ? state.issuesEvents : undefined;
             resourceInputs["jobEvents"] = state ? state.jobEvents : undefined;
             resourceInputs["mergeRequestsEvents"] = state ? state.mergeRequestsEvents : undefined;
             resourceInputs["noteEvents"] = state ? state.noteEvents : undefined;
             resourceInputs["pipelineEvents"] = state ? state.pipelineEvents : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["pushEvents"] = state ? state.pushEvents : undefined;
             resourceInputs["pushEventsBranchFilter"] = state ? state.pushEventsBranchFilter : undefined;
             resourceInputs["releasesEvents"] = state ? state.releasesEvents : undefined;
@@ -181,11 +191,15 @@ export class ProjectHook extends pulumi.CustomResource {
             resourceInputs["pushEventsBranchFilter"] = args ? args.pushEventsBranchFilter : undefined;
             resourceInputs["releasesEvents"] = args ? args.releasesEvents : undefined;
             resourceInputs["tagPushEvents"] = args ? args.tagPushEvents : undefined;
-            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
             resourceInputs["wikiPageEvents"] = args ? args.wikiPageEvents : undefined;
+            resourceInputs["hookId"] = undefined /*out*/;
+            resourceInputs["projectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ProjectHook.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -211,6 +225,10 @@ export interface ProjectHookState {
      */
     enableSslVerification?: pulumi.Input<boolean>;
     /**
+     * The id of the project hook.
+     */
+    hookId?: pulumi.Input<number>;
+    /**
      * Invoke the hook for issues events.
      */
     issuesEvents?: pulumi.Input<boolean>;
@@ -234,6 +252,10 @@ export interface ProjectHookState {
      * The name or id of the project to add the hook to.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The id of the project for the hook.
+     */
+    projectId?: pulumi.Input<number>;
     /**
      * Invoke the hook for push events.
      */

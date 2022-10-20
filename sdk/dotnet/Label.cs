@@ -17,45 +17,43 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fixme = new GitLab.Label("fixme", new()
     ///     {
-    ///         var fixme = new GitLab.Label("fixme", new GitLab.LabelArgs
-    ///         {
-    ///             Project = "example",
-    ///             Description = "issue with failing tests",
-    ///             Color = "#ffcc00",
-    ///         });
-    ///         // Scoped label
-    ///         var devopsCreate = new GitLab.Label("devopsCreate", new GitLab.LabelArgs
-    ///         {
-    ///             Project = gitlab_project.Example.Id,
-    ///             Description = "issue for creating infrastructure resources",
-    ///             Color = "#ffa500",
-    ///         });
-    ///     }
+    ///         Project = "example",
+    ///         Description = "issue with failing tests",
+    ///         Color = "#ffcc00",
+    ///     });
     /// 
-    /// }
+    ///     // Scoped label
+    ///     var devopsCreate = new GitLab.Label("devopsCreate", new()
+    ///     {
+    ///         Project = gitlab_project.Example.Id,
+    ///         Description = "issue for creating infrastructure resources",
+    ///         Color = "#ffa500",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # Gitlab labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
+    /// Gitlab labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/label:Label example 12345:fixme
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/label:Label")]
-    public partial class Label : Pulumi.CustomResource
+    public partial class Label : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-        /// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         /// </summary>
         [Output("color")]
         public Output<string> Color { get; private set; } = null!;
@@ -122,11 +120,10 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class LabelArgs : Pulumi.ResourceArgs
+    public sealed class LabelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-        /// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         /// </summary>
         [Input("color", required: true)]
         public Input<string> Color { get; set; } = null!;
@@ -152,13 +149,13 @@ namespace Pulumi.GitLab
         public LabelArgs()
         {
         }
+        public static new LabelArgs Empty => new LabelArgs();
     }
 
-    public sealed class LabelState : Pulumi.ResourceArgs
+    public sealed class LabelState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-        /// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }
@@ -184,5 +181,6 @@ namespace Pulumi.GitLab
         public LabelState()
         {
         }
+        public static new LabelState Empty => new LabelState();
     }
 }

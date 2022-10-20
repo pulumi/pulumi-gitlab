@@ -44,8 +44,17 @@ export function getProjectVariable(args: GetProjectVariableArgs, opts?: pulumi.I
  * A collection of arguments for invoking getProjectVariable.
  */
 export interface GetProjectVariableArgs {
+    /**
+     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+     */
     environmentScope?: string;
+    /**
+     * The name of the variable.
+     */
     key: string;
+    /**
+     * The name or id of the project.
+     */
     project: string;
 }
 
@@ -53,16 +62,37 @@ export interface GetProjectVariableArgs {
  * A collection of values returned by getProjectVariable.
  */
 export interface GetProjectVariableResult {
+    /**
+     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+     */
     readonly environmentScope: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of the variable.
+     */
     readonly key: string;
+    /**
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     */
     readonly masked: boolean;
+    /**
+     * The name or id of the project.
+     */
     readonly project: string;
+    /**
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     */
     readonly protected: boolean;
+    /**
+     * The value of the variable.
+     */
     readonly value: string;
+    /**
+     * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+     */
     readonly variableType: string;
 }
 
@@ -74,7 +104,16 @@ export function getProjectVariableOutput(args: GetProjectVariableOutputArgs, opt
  * A collection of arguments for invoking getProjectVariable.
  */
 export interface GetProjectVariableOutputArgs {
+    /**
+     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+     */
     environmentScope?: pulumi.Input<string>;
+    /**
+     * The name of the variable.
+     */
     key: pulumi.Input<string>;
+    /**
+     * The name or id of the project.
+     */
     project: pulumi.Input<string>;
 }

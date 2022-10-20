@@ -5,6 +5,7 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .application_settings import *
 from .branch import *
 from .branch_protection import *
 from .cluster_agent import *
@@ -17,6 +18,8 @@ from .get_cluster_agent import *
 from .get_cluster_agents import *
 from .get_current_user import *
 from .get_group import *
+from .get_group_hook import *
+from .get_group_hooks import *
 from .get_group_membership import *
 from .get_group_variable import *
 from .get_group_variables import *
@@ -24,8 +27,11 @@ from .get_instance_deploy_keys import *
 from .get_instance_variable import *
 from .get_instance_variables import *
 from .get_project import *
+from .get_project_hook import *
+from .get_project_hooks import *
 from .get_project_issue import *
 from .get_project_issues import *
+from .get_project_membership import *
 from .get_project_milestone import *
 from .get_project_milestones import *
 from .get_project_protected_branch import *
@@ -38,6 +44,7 @@ from .get_projects import *
 from .get_release_link import *
 from .get_release_links import *
 from .get_repository_file import *
+from .get_repository_tree import *
 from .get_user import *
 from .get_users import *
 from .group import *
@@ -45,10 +52,12 @@ from .group_access_token import *
 from .group_badge import *
 from .group_cluster import *
 from .group_custom_attribute import *
+from .group_hook import *
 from .group_label import *
 from .group_ldap_link import *
 from .group_membership import *
 from .group_project_file_template import *
+from .group_saml_link import *
 from .group_share_group import *
 from .group_variable import *
 from .instance_cluster import *
@@ -69,6 +78,7 @@ from .project_environment import *
 from .project_freeze_period import *
 from .project_hook import *
 from .project_issue import *
+from .project_issue_board import *
 from .project_level_mr_approvals import *
 from .project_membership import *
 from .project_milestone import *
@@ -93,6 +103,7 @@ from .tag_protection import *
 from .topic import *
 from .user import *
 from .user_custom_attribute import *
+from .user_gpg_key import *
 from .user_ssh_key import *
 from ._inputs import *
 from . import outputs
@@ -107,6 +118,14 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "gitlab",
+  "mod": "index/applicationSettings",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/applicationSettings:ApplicationSettings": "ApplicationSettings"
+  }
+ },
  {
   "pkg": "gitlab",
   "mod": "index/branch",
@@ -205,6 +224,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/groupHook",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupHook:GroupHook": "GroupHook"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/groupLabel",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -233,6 +260,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate": "GroupProjectFileTemplate"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/groupSamlLink",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupSamlLink:GroupSamlLink": "GroupSamlLink"
   }
  },
  {
@@ -393,6 +428,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectIssue:ProjectIssue": "ProjectIssue"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectIssueBoard",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIssueBoard:ProjectIssueBoard": "ProjectIssueBoard"
   }
  },
  {
@@ -577,6 +620,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/userCustomAttribute:UserCustomAttribute": "UserCustomAttribute"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/userGpgKey",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/userGpgKey:UserGpgKey": "UserGpgKey"
   }
  },
  {

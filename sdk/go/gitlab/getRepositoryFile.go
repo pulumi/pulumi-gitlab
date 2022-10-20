@@ -20,23 +20,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.LookupRepositoryFile(ctx, &GetRepositoryFileArgs{
-// 			FilePath: "README.md",
-// 			Project:  "example",
-// 			Ref:      "main",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = gitlab.LookupRepositoryFile(ctx, &GetRepositoryFileArgs{
+//				FilePath: "README.md",
+//				Project:  "example",
+//				Ref:      "main",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupRepositoryFile(ctx *pulumi.Context, args *LookupRepositoryFileArgs, opts ...pulumi.InvokeOption) (*LookupRepositoryFileResult, error) {
 	var rv LookupRepositoryFileResult
@@ -49,27 +52,42 @@ func LookupRepositoryFile(ctx *pulumi.Context, args *LookupRepositoryFileArgs, o
 
 // A collection of arguments for invoking getRepositoryFile.
 type LookupRepositoryFileArgs struct {
+	// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
 	FilePath string `pulumi:"filePath"`
-	Project  string `pulumi:"project"`
-	Ref      string `pulumi:"ref"`
+	// The name or ID of the project.
+	Project string `pulumi:"project"`
+	// The name of branch, tag or commit.
+	Ref string `pulumi:"ref"`
 }
 
 // A collection of values returned by getRepositoryFile.
 type LookupRepositoryFileResult struct {
-	BlobId          string `pulumi:"blobId"`
-	CommitId        string `pulumi:"commitId"`
-	Content         string `pulumi:"content"`
-	ContentSha256   string `pulumi:"contentSha256"`
-	Encoding        string `pulumi:"encoding"`
-	ExecuteFilemode bool   `pulumi:"executeFilemode"`
-	FileName        string `pulumi:"fileName"`
-	FilePath        string `pulumi:"filePath"`
+	// The blob id.
+	BlobId string `pulumi:"blobId"`
+	// The commit id.
+	CommitId string `pulumi:"commitId"`
+	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+	Content string `pulumi:"content"`
+	// File content sha256 digest.
+	ContentSha256 string `pulumi:"contentSha256"`
+	// The file content encoding.
+	Encoding string `pulumi:"encoding"`
+	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+	ExecuteFilemode bool `pulumi:"executeFilemode"`
+	// The filename.
+	FileName string `pulumi:"fileName"`
+	// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+	FilePath string `pulumi:"filePath"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The last known commit id.
 	LastCommitId string `pulumi:"lastCommitId"`
-	Project      string `pulumi:"project"`
-	Ref          string `pulumi:"ref"`
-	Size         int    `pulumi:"size"`
+	// The name or ID of the project.
+	Project string `pulumi:"project"`
+	// The name of branch, tag or commit.
+	Ref string `pulumi:"ref"`
+	// The file size.
+	Size int `pulumi:"size"`
 }
 
 func LookupRepositoryFileOutput(ctx *pulumi.Context, args LookupRepositoryFileOutputArgs, opts ...pulumi.InvokeOption) LookupRepositoryFileResultOutput {
@@ -87,9 +105,12 @@ func LookupRepositoryFileOutput(ctx *pulumi.Context, args LookupRepositoryFileOu
 
 // A collection of arguments for invoking getRepositoryFile.
 type LookupRepositoryFileOutputArgs struct {
+	// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
 	FilePath pulumi.StringInput `pulumi:"filePath"`
-	Project  pulumi.StringInput `pulumi:"project"`
-	Ref      pulumi.StringInput `pulumi:"ref"`
+	// The name or ID of the project.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The name of branch, tag or commit.
+	Ref pulumi.StringInput `pulumi:"ref"`
 }
 
 func (LookupRepositoryFileOutputArgs) ElementType() reflect.Type {
@@ -111,34 +132,42 @@ func (o LookupRepositoryFileResultOutput) ToLookupRepositoryFileResultOutputWith
 	return o
 }
 
+// The blob id.
 func (o LookupRepositoryFileResultOutput) BlobId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.BlobId }).(pulumi.StringOutput)
 }
 
+// The commit id.
 func (o LookupRepositoryFileResultOutput) CommitId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.CommitId }).(pulumi.StringOutput)
 }
 
+// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
 func (o LookupRepositoryFileResultOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.Content }).(pulumi.StringOutput)
 }
 
+// File content sha256 digest.
 func (o LookupRepositoryFileResultOutput) ContentSha256() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.ContentSha256 }).(pulumi.StringOutput)
 }
 
+// The file content encoding.
 func (o LookupRepositoryFileResultOutput) Encoding() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.Encoding }).(pulumi.StringOutput)
 }
 
+// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
 func (o LookupRepositoryFileResultOutput) ExecuteFilemode() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) bool { return v.ExecuteFilemode }).(pulumi.BoolOutput)
 }
 
+// The filename.
 func (o LookupRepositoryFileResultOutput) FileName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.FileName }).(pulumi.StringOutput)
 }
 
+// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
 func (o LookupRepositoryFileResultOutput) FilePath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.FilePath }).(pulumi.StringOutput)
 }
@@ -148,18 +177,22 @@ func (o LookupRepositoryFileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The last known commit id.
 func (o LookupRepositoryFileResultOutput) LastCommitId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.LastCommitId }).(pulumi.StringOutput)
 }
 
+// The name or ID of the project.
 func (o LookupRepositoryFileResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// The name of branch, tag or commit.
 func (o LookupRepositoryFileResultOutput) Ref() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.Ref }).(pulumi.StringOutput)
 }
 
+// The file size.
 func (o LookupRepositoryFileResultOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) int { return v.Size }).(pulumi.IntOutput)
 }

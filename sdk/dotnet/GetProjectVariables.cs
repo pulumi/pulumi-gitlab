@@ -21,31 +21,30 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var vars = GitLab.GetProjectVariables.Invoke(new()
         ///     {
-        ///         var vars = Output.Create(GitLab.GetProjectVariables.InvokeAsync(new GitLab.GetProjectVariablesArgs
-        ///         {
-        ///             Project = "my/example/project",
-        ///         }));
-        ///         var stagingVars = Output.Create(GitLab.GetProjectVariables.InvokeAsync(new GitLab.GetProjectVariablesArgs
-        ///         {
-        ///             EnvironmentScope = "staging/*",
-        ///             Project = "my/example/project",
-        ///         }));
-        ///     }
+        ///         Project = "my/example/project",
+        ///     });
         /// 
-        /// }
+        ///     var stagingVars = GitLab.GetProjectVariables.Invoke(new()
+        ///     {
+        ///         EnvironmentScope = "staging/*",
+        ///         Project = "my/example/project",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectVariablesResult> InvokeAsync(GetProjectVariablesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectVariablesResult>("gitlab:index/getProjectVariables:getProjectVariables", args ?? new GetProjectVariablesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectVariablesResult>("gitlab:index/getProjectVariables:getProjectVariables", args ?? new GetProjectVariablesArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `gitlab.getProjectVariables` data source allows to retrieve all project-level CI/CD variables.
@@ -57,70 +56,92 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var vars = GitLab.GetProjectVariables.Invoke(new()
         ///     {
-        ///         var vars = Output.Create(GitLab.GetProjectVariables.InvokeAsync(new GitLab.GetProjectVariablesArgs
-        ///         {
-        ///             Project = "my/example/project",
-        ///         }));
-        ///         var stagingVars = Output.Create(GitLab.GetProjectVariables.InvokeAsync(new GitLab.GetProjectVariablesArgs
-        ///         {
-        ///             EnvironmentScope = "staging/*",
-        ///             Project = "my/example/project",
-        ///         }));
-        ///     }
+        ///         Project = "my/example/project",
+        ///     });
         /// 
-        /// }
+        ///     var stagingVars = GitLab.GetProjectVariables.Invoke(new()
+        ///     {
+        ///         EnvironmentScope = "staging/*",
+        ///         Project = "my/example/project",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectVariablesResult> Invoke(GetProjectVariablesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectVariablesResult>("gitlab:index/getProjectVariables:getProjectVariables", args ?? new GetProjectVariablesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectVariablesResult>("gitlab:index/getProjectVariables:getProjectVariables", args ?? new GetProjectVariablesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetProjectVariablesArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectVariablesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The environment scope of the variable. Defaults to all environment (`*`).
+        /// </summary>
         [Input("environmentScope")]
         public string? EnvironmentScope { get; set; }
 
+        /// <summary>
+        /// The name or id of the project.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         public GetProjectVariablesArgs()
         {
         }
+        public static new GetProjectVariablesArgs Empty => new GetProjectVariablesArgs();
     }
 
-    public sealed class GetProjectVariablesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectVariablesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The environment scope of the variable. Defaults to all environment (`*`).
+        /// </summary>
         [Input("environmentScope")]
         public Input<string>? EnvironmentScope { get; set; }
 
+        /// <summary>
+        /// The name or id of the project.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         public GetProjectVariablesInvokeArgs()
         {
         }
+        public static new GetProjectVariablesInvokeArgs Empty => new GetProjectVariablesInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetProjectVariablesResult
     {
+        /// <summary>
+        /// The environment scope of the variable. Defaults to all environment (`*`).
+        /// </summary>
         public readonly string? EnvironmentScope;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name or id of the project.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// The list of variables returned by the search
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectVariablesVariableResult> Variables;
 
         [OutputConstructor]

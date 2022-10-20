@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -36,6 +37,9 @@ export function getProjectProtectedBranches(args: GetProjectProtectedBranchesArg
  * A collection of arguments for invoking getProjectProtectedBranches.
  */
 export interface GetProjectProtectedBranchesArgs {
+    /**
+     * The integer or path with namespace that uniquely identifies the project.
+     */
     projectId: string;
 }
 
@@ -47,7 +51,13 @@ export interface GetProjectProtectedBranchesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The integer or path with namespace that uniquely identifies the project.
+     */
     readonly projectId: string;
+    /**
+     * A list of protected branches, as defined below.
+     */
     readonly protectedBranches: outputs.GetProjectProtectedBranchesProtectedBranch[];
 }
 
@@ -59,5 +69,8 @@ export function getProjectProtectedBranchesOutput(args: GetProjectProtectedBranc
  * A collection of arguments for invoking getProjectProtectedBranches.
  */
 export interface GetProjectProtectedBranchesOutputArgs {
+    /**
+     * The integer or path with namespace that uniquely identifies the project.
+     */
     projectId: pulumi.Input<string>;
 }

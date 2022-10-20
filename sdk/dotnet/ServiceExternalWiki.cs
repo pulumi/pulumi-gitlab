@@ -17,38 +17,37 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var awesomeProject = new GitLab.Project("awesomeProject", new()
     ///     {
-    ///         var awesomeProject = new GitLab.Project("awesomeProject", new GitLab.ProjectArgs
-    ///         {
-    ///             Description = "My awesome project.",
-    ///             VisibilityLevel = "public",
-    ///         });
-    ///         var wiki = new GitLab.ServiceExternalWiki("wiki", new GitLab.ServiceExternalWikiArgs
-    ///         {
-    ///             Project = awesomeProject.Id,
-    ///             ExternalWikiUrl = "https://MyAwesomeExternalWikiURL.com",
-    ///         });
-    ///     }
+    ///         Description = "My awesome project.",
+    ///         VisibilityLevel = "public",
+    ///     });
     /// 
-    /// }
+    ///     var wiki = new GitLab.ServiceExternalWiki("wiki", new()
+    ///     {
+    ///         Project = awesomeProject.Id,
+    ///         ExternalWikiUrl = "https://MyAwesomeExternalWikiURL.com",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # You can import a gitlab_service_external_wiki state using the project ID, e.g.
+    /// You can import a gitlab_service_external_wiki state using the project ID, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/serviceExternalWiki:ServiceExternalWiki wiki 1
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/serviceExternalWiki:ServiceExternalWiki")]
-    public partial class ServiceExternalWiki : Pulumi.CustomResource
+    public partial class ServiceExternalWiki : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether the integration is active.
@@ -75,8 +74,7 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -.
-        /// No leading / trailing -. Use in URLs, host names and domain names.
+        /// The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
         /// </summary>
         [Output("slug")]
         public Output<string> Slug { get; private set; } = null!;
@@ -137,7 +135,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ServiceExternalWikiArgs : Pulumi.ResourceArgs
+    public sealed class ServiceExternalWikiArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URL of the external wiki.
@@ -154,9 +152,10 @@ namespace Pulumi.GitLab
         public ServiceExternalWikiArgs()
         {
         }
+        public static new ServiceExternalWikiArgs Empty => new ServiceExternalWikiArgs();
     }
 
-    public sealed class ServiceExternalWikiState : Pulumi.ResourceArgs
+    public sealed class ServiceExternalWikiState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the integration is active.
@@ -183,8 +182,7 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -.
-        /// No leading / trailing -. Use in URLs, host names and domain names.
+        /// The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
         /// </summary>
         [Input("slug")]
         public Input<string>? Slug { get; set; }
@@ -204,5 +202,6 @@ namespace Pulumi.GitLab
         public ServiceExternalWikiState()
         {
         }
+        public static new ServiceExternalWikiState Empty => new ServiceExternalWikiState();
     }
 }

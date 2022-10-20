@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # You can import a user ssh key using an id made up of `{user-id}:{key}`, e.g.
+ * You can import a user ssh key using an id made up of `{user-id}:{key}`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/userSshKey:UserSshKey example 42:1
@@ -71,8 +71,7 @@ export class UserSshKey extends pulumi.CustomResource {
      */
     public readonly expiresAt!: pulumi.Output<string | undefined>;
     /**
-     * The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with
-     * the username and GitLab hostname.
+     * The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
      */
     public readonly key!: pulumi.Output<string>;
     /**
@@ -143,8 +142,7 @@ export interface UserSshKeyState {
      */
     expiresAt?: pulumi.Input<string>;
     /**
-     * The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with
-     * the username and GitLab hostname.
+     * The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
      */
     key?: pulumi.Input<string>;
     /**
@@ -170,8 +168,7 @@ export interface UserSshKeyArgs {
      */
     expiresAt?: pulumi.Input<string>;
     /**
-     * The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with
-     * the username and GitLab hostname.
+     * The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
      */
     key: pulumi.Input<string>;
     /**

@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # A GitLab Runner can be imported using the runner's ID, eg
+ * A GitLab Runner can be imported using the runner's ID, eg
  *
  * ```sh
  *  $ pulumi import gitlab:index/runner:Runner this 1
@@ -49,7 +49,7 @@ export class Runner extends pulumi.CustomResource {
     }
 
     /**
-     * The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
+     * The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
      */
     public readonly accessLevel!: pulumi.Output<string>;
     /**
@@ -81,8 +81,8 @@ export class Runner extends pulumi.CustomResource {
      */
     public readonly runUntagged!: pulumi.Output<boolean>;
     /**
-     * The status of runners to show, one of: online and offline. active and paused are also possible values which were
-     * deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+     * The status of runners to show, one of: online and offline. active and paused are also possible values
+     * 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -123,13 +123,15 @@ export class Runner extends pulumi.CustomResource {
             resourceInputs["locked"] = args ? args.locked : undefined;
             resourceInputs["maximumTimeout"] = args ? args.maximumTimeout : undefined;
             resourceInputs["paused"] = args ? args.paused : undefined;
-            resourceInputs["registrationToken"] = args ? args.registrationToken : undefined;
+            resourceInputs["registrationToken"] = args?.registrationToken ? pulumi.secret(args.registrationToken) : undefined;
             resourceInputs["runUntagged"] = args ? args.runUntagged : undefined;
             resourceInputs["tagLists"] = args ? args.tagLists : undefined;
             resourceInputs["authenticationToken"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["authenticationToken", "registrationToken"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Runner.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -139,7 +141,7 @@ export class Runner extends pulumi.CustomResource {
  */
 export interface RunnerState {
     /**
-     * The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
+     * The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -171,8 +173,8 @@ export interface RunnerState {
      */
     runUntagged?: pulumi.Input<boolean>;
     /**
-     * The status of runners to show, one of: online and offline. active and paused are also possible values which were
-     * deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
+     * The status of runners to show, one of: online and offline. active and paused are also possible values
+     * 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
      */
     status?: pulumi.Input<string>;
     /**
@@ -186,7 +188,7 @@ export interface RunnerState {
  */
 export interface RunnerArgs {
     /**
-     * The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
+     * The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
      */
     accessLevel?: pulumi.Input<string>;
     /**

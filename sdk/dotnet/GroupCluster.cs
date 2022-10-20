@@ -19,44 +19,43 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new GitLab.Group("foo", new()
     ///     {
-    ///         var foo = new GitLab.Group("foo", new GitLab.GroupArgs
-    ///         {
-    ///             Path = "foo-path",
-    ///         });
-    ///         var bar = new GitLab.GroupCluster("bar", new GitLab.GroupClusterArgs
-    ///         {
-    ///             Group = foo.Id,
-    ///             Domain = "example.com",
-    ///             Enabled = true,
-    ///             KubernetesApiUrl = "https://124.124.124",
-    ///             KubernetesToken = "some-token",
-    ///             KubernetesCaCert = "some-cert",
-    ///             KubernetesAuthorizationType = "rbac",
-    ///             EnvironmentScope = "*",
-    ///             ManagementProjectId = "123456",
-    ///         });
-    ///     }
+    ///         Path = "foo-path",
+    ///     });
     /// 
-    /// }
+    ///     var bar = new GitLab.GroupCluster("bar", new()
+    ///     {
+    ///         Group = foo.Id,
+    ///         Domain = "example.com",
+    ///         Enabled = true,
+    ///         KubernetesApiUrl = "https://124.124.124",
+    ///         KubernetesToken = "some-token",
+    ///         KubernetesCaCert = "some-cert",
+    ///         KubernetesAuthorizationType = "rbac",
+    ///         EnvironmentScope = "*",
+    ///         ManagementProjectId = "123456",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
+    /// GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/groupCluster:GroupCluster bar 123:321
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/groupCluster:GroupCluster")]
-    public partial class GroupCluster : Pulumi.CustomResource
+    public partial class GroupCluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Cluster type.
@@ -171,6 +170,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "kubernetesToken",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -192,7 +195,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class GroupClusterArgs : Pulumi.ResourceArgs
+    public sealed class GroupClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The base domain of the cluster.
@@ -236,11 +239,21 @@ namespace Pulumi.GitLab
         [Input("kubernetesCaCert")]
         public Input<string>? KubernetesCaCert { get; set; }
 
+        [Input("kubernetesToken", required: true)]
+        private Input<string>? _kubernetesToken;
+
         /// <summary>
         /// The token to authenticate against Kubernetes.
         /// </summary>
-        [Input("kubernetesToken", required: true)]
-        public Input<string> KubernetesToken { get; set; } = null!;
+        public Input<string>? KubernetesToken
+        {
+            get => _kubernetesToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _kubernetesToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
@@ -263,9 +276,10 @@ namespace Pulumi.GitLab
         public GroupClusterArgs()
         {
         }
+        public static new GroupClusterArgs Empty => new GroupClusterArgs();
     }
 
-    public sealed class GroupClusterState : Pulumi.ResourceArgs
+    public sealed class GroupClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cluster type.
@@ -321,11 +335,21 @@ namespace Pulumi.GitLab
         [Input("kubernetesCaCert")]
         public Input<string>? KubernetesCaCert { get; set; }
 
+        [Input("kubernetesToken")]
+        private Input<string>? _kubernetesToken;
+
         /// <summary>
         /// The token to authenticate against Kubernetes.
         /// </summary>
-        [Input("kubernetesToken")]
-        public Input<string>? KubernetesToken { get; set; }
+        public Input<string>? KubernetesToken
+        {
+            get => _kubernetesToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _kubernetesToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
@@ -360,5 +384,6 @@ namespace Pulumi.GitLab
         public GroupClusterState()
         {
         }
+        public static new GroupClusterState Empty => new GroupClusterState();
     }
 }

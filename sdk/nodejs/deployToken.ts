@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # GitLab deploy tokens can be imported using an id made up of `{type}:{type_id}:{deploy_token_id}`, where type is one ofproject, group.
+ * GitLab deploy tokens can be imported using an id made up of `{type}:{type_id}:{deploy_token_id}`, where type is one ofproject, group.
  *
  * ```sh
  *  $ pulumi import gitlab:index/deployToken:DeployToken group_token group:1:3
@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *  $ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4
  * ```
  *
- * # Notethe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+ *  Notethe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  */
 export class DeployToken extends pulumi.CustomResource {
     /**
@@ -68,12 +68,11 @@ export class DeployToken extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string | undefined>;
     /**
-     * Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+     * Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
-     * The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
-     * imported resources.
+     * The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
      */
     public /*out*/ readonly token!: pulumi.Output<string>;
     /**
@@ -115,6 +114,8 @@ export class DeployToken extends pulumi.CustomResource {
             resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(DeployToken.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -140,12 +141,11 @@ export interface DeployTokenState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+     * Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
-     * imported resources.
+     * The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
      */
     token?: pulumi.Input<string>;
     /**
@@ -175,7 +175,7 @@ export interface DeployTokenArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+     * Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
     /**

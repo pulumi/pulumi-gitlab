@@ -10,22 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.BranchProtection` resource allows to manage the lifecycle of a protected branch of a repository.
-    /// 
-    /// &gt; The `allowed_to_push`, `allowed_to_merge`, `allowed_to_unprotect`, `unprotect_access_level` and `code_owner_approval_required` attributes require a GitLab Enterprise instance.
-    /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html)
-    /// 
     /// ## Import
     /// 
-    /// # Gitlab protected branches can be imported with a key composed of `&lt;project_id&gt;:&lt;branch&gt;`, e.g.
+    /// Gitlab protected branches can be imported with a key composed of `&lt;project_id&gt;:&lt;branch&gt;`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/branchProtection:BranchProtection")]
-    public partial class BranchProtection : Pulumi.CustomResource
+    public partial class BranchProtection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Can be set to true to allow users with push access to force push.
@@ -137,7 +131,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class BranchProtectionArgs : Pulumi.ResourceArgs
+    public sealed class BranchProtectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Can be set to true to allow users with push access to force push.
@@ -220,9 +214,10 @@ namespace Pulumi.GitLab
         public BranchProtectionArgs()
         {
         }
+        public static new BranchProtectionArgs Empty => new BranchProtectionArgs();
     }
 
-    public sealed class BranchProtectionState : Pulumi.ResourceArgs
+    public sealed class BranchProtectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Can be set to true to allow users with push access to force push.
@@ -311,5 +306,6 @@ namespace Pulumi.GitLab
         public BranchProtectionState()
         {
         }
+        public static new BranchProtectionState Empty => new BranchProtectionState();
     }
 }

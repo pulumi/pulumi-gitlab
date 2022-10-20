@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # You can import a service_microsoft_teams state using the project ID, e.g.
+ * You can import a service_microsoft_teams state using the project ID, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams teams 1
@@ -67,8 +67,7 @@ export class ServiceMicrosoftTeams extends pulumi.CustomResource {
      */
     public /*out*/ readonly active!: pulumi.Output<boolean>;
     /**
-     * Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
-     * “default_and_protected”. The default value is “default”
+     * Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
      */
     public readonly branchesToBeNotified!: pulumi.Output<string | undefined>;
     /**
@@ -196,8 +195,7 @@ export interface ServiceMicrosoftTeamsState {
      */
     active?: pulumi.Input<boolean>;
     /**
-     * Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
-     * “default_and_protected”. The default value is “default”
+     * Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
      */
     branchesToBeNotified?: pulumi.Input<string>;
     /**
@@ -263,8 +261,7 @@ export interface ServiceMicrosoftTeamsState {
  */
 export interface ServiceMicrosoftTeamsArgs {
     /**
-     * Branches to send notifications for. Valid options are “all”, “default”, “protected”, and
-     * “default_and_protected”. The default value is “default”
+     * Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
      */
     branchesToBeNotified?: pulumi.Input<string>;
     /**

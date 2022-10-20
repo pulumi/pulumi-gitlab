@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # You can import a gitlab_service_pipelines_email state using the project ID, e.g.
+ * You can import a gitlab_service_pipelines_email state using the project ID, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/servicePipelinesEmail:ServicePipelinesEmail email 1
@@ -64,8 +64,7 @@ export class ServicePipelinesEmail extends pulumi.CustomResource {
     }
 
     /**
-     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
-     * Default is `default`
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
      */
     public readonly branchesToBeNotified!: pulumi.Output<string | undefined>;
     /**
@@ -121,8 +120,7 @@ export class ServicePipelinesEmail extends pulumi.CustomResource {
  */
 export interface ServicePipelinesEmailState {
     /**
-     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
-     * Default is `default`
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
      */
     branchesToBeNotified?: pulumi.Input<string>;
     /**
@@ -144,8 +142,7 @@ export interface ServicePipelinesEmailState {
  */
 export interface ServicePipelinesEmailArgs {
     /**
-     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
-     * Default is `default`
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
      */
     branchesToBeNotified?: pulumi.Input<string>;
     /**

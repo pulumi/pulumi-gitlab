@@ -17,39 +17,38 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleUser = GitLab.GetUser.Invoke(new()
     ///     {
-    ///         var exampleUser = Output.Create(GitLab.GetUser.InvokeAsync(new GitLab.GetUserArgs
-    ///         {
-    ///             Username = "example-user",
-    ///         }));
-    ///         var exampleUserSshKey = new GitLab.UserSshKey("exampleUserSshKey", new GitLab.UserSshKeyArgs
-    ///         {
-    ///             UserId = data.Gitlab_user.Id,
-    ///             Title = "example-key",
-    ///             Key = "ssh-rsa AAAA...",
-    ///             ExpiresAt = "2016-01-21T00:00:00.000Z",
-    ///         });
-    ///     }
+    ///         Username = "example-user",
+    ///     });
     /// 
-    /// }
+    ///     var exampleUserSshKey = new GitLab.UserSshKey("exampleUserSshKey", new()
+    ///     {
+    ///         UserId = data.Gitlab_user.Id,
+    ///         Title = "example-key",
+    ///         Key = "ssh-rsa AAAA...",
+    ///         ExpiresAt = "2016-01-21T00:00:00.000Z",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # You can import a user ssh key using an id made up of `{user-id}:{key}`, e.g.
+    /// You can import a user ssh key using an id made up of `{user-id}:{key}`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/userSshKey:UserSshKey example 42:1
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/userSshKey:UserSshKey")]
-    public partial class UserSshKey : Pulumi.CustomResource
+    public partial class UserSshKey : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time when this key was created in GitLab.
@@ -64,8 +63,7 @@ namespace Pulumi.GitLab
         public Output<string?> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
-        /// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with
-        /// the username and GitLab hostname.
+        /// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
@@ -132,7 +130,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class UserSshKeyArgs : Pulumi.ResourceArgs
+    public sealed class UserSshKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
@@ -141,8 +139,7 @@ namespace Pulumi.GitLab
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
-        /// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with
-        /// the username and GitLab hostname.
+        /// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -162,9 +159,10 @@ namespace Pulumi.GitLab
         public UserSshKeyArgs()
         {
         }
+        public static new UserSshKeyArgs Empty => new UserSshKeyArgs();
     }
 
-    public sealed class UserSshKeyState : Pulumi.ResourceArgs
+    public sealed class UserSshKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time when this key was created in GitLab.
@@ -179,8 +177,7 @@ namespace Pulumi.GitLab
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
-        /// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with
-        /// the username and GitLab hostname.
+        /// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -206,5 +203,6 @@ namespace Pulumi.GitLab
         public UserSshKeyState()
         {
         }
+        public static new UserSshKeyState Empty => new UserSshKeyState();
     }
 }

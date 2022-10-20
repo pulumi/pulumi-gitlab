@@ -23,43 +23,50 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooProject, err := gitlab.NewProject(ctx, "fooProject", &gitlab.ProjectArgs{
-// 			Description: pulumi.String("My example project"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewProjectLevelMrApprovals(ctx, "fooProjectLevelMrApprovals", &gitlab.ProjectLevelMrApprovalsArgs{
-// 			ProjectId:            fooProject.ID(),
-// 			ResetApprovalsOnPush: pulumi.Bool(true),
-// 			DisableOverridingApproversPerMergeRequest: pulumi.Bool(false),
-// 			MergeRequestsAuthorApproval:               pulumi.Bool(false),
-// 			MergeRequestsDisableCommittersApproval:    pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooProject, err := gitlab.NewProject(ctx, "fooProject", &gitlab.ProjectArgs{
+//				Description: pulumi.String("My example project"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectLevelMrApprovals(ctx, "fooProjectLevelMrApprovals", &gitlab.ProjectLevelMrApprovalsArgs{
+//				ProjectId:            fooProject.ID(),
+//				ResetApprovalsOnPush: pulumi.Bool(true),
+//				DisableOverridingApproversPerMergeRequest: pulumi.Bool(false),
+//				MergeRequestsAuthorApproval:               pulumi.Bool(false),
+//				MergeRequestsDisableCommittersApproval:    pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals # You can import an approval configuration state using `<resource> <project_id>`.
+//
+//	$ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `<resource> <project_id>`.
+//
 // ```
 //
-// # # For example
+// # For example
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
+//
+//	$ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
+//
 // ```
 type ProjectLevelMrApprovals struct {
 	pulumi.CustomResourceState
@@ -74,8 +81,7 @@ type ProjectLevelMrApprovals struct {
 	ProjectId pulumi.IntOutput `pulumi:"projectId"`
 	// Set to `true` if you want to require authentication when approving a merge request.
 	RequirePasswordToApprove pulumi.BoolPtrOutput `pulumi:"requirePasswordToApprove"`
-	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
-	// Default is `true`.
+	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
 	ResetApprovalsOnPush pulumi.BoolPtrOutput `pulumi:"resetApprovalsOnPush"`
 }
 
@@ -121,8 +127,7 @@ type projectLevelMrApprovalsState struct {
 	ProjectId *int `pulumi:"projectId"`
 	// Set to `true` if you want to require authentication when approving a merge request.
 	RequirePasswordToApprove *bool `pulumi:"requirePasswordToApprove"`
-	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
-	// Default is `true`.
+	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
 	ResetApprovalsOnPush *bool `pulumi:"resetApprovalsOnPush"`
 }
 
@@ -137,8 +142,7 @@ type ProjectLevelMrApprovalsState struct {
 	ProjectId pulumi.IntPtrInput
 	// Set to `true` if you want to require authentication when approving a merge request.
 	RequirePasswordToApprove pulumi.BoolPtrInput
-	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
-	// Default is `true`.
+	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
 	ResetApprovalsOnPush pulumi.BoolPtrInput
 }
 
@@ -157,8 +161,7 @@ type projectLevelMrApprovalsArgs struct {
 	ProjectId int `pulumi:"projectId"`
 	// Set to `true` if you want to require authentication when approving a merge request.
 	RequirePasswordToApprove *bool `pulumi:"requirePasswordToApprove"`
-	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
-	// Default is `true`.
+	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
 	ResetApprovalsOnPush *bool `pulumi:"resetApprovalsOnPush"`
 }
 
@@ -174,8 +177,7 @@ type ProjectLevelMrApprovalsArgs struct {
 	ProjectId pulumi.IntInput
 	// Set to `true` if you want to require authentication when approving a merge request.
 	RequirePasswordToApprove pulumi.BoolPtrInput
-	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
-	// Default is `true`.
+	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
 	ResetApprovalsOnPush pulumi.BoolPtrInput
 }
 
@@ -205,7 +207,7 @@ func (i *ProjectLevelMrApprovals) ToProjectLevelMrApprovalsOutputWithContext(ctx
 // ProjectLevelMrApprovalsArrayInput is an input type that accepts ProjectLevelMrApprovalsArray and ProjectLevelMrApprovalsArrayOutput values.
 // You can construct a concrete instance of `ProjectLevelMrApprovalsArrayInput` via:
 //
-//          ProjectLevelMrApprovalsArray{ ProjectLevelMrApprovalsArgs{...} }
+//	ProjectLevelMrApprovalsArray{ ProjectLevelMrApprovalsArgs{...} }
 type ProjectLevelMrApprovalsArrayInput interface {
 	pulumi.Input
 
@@ -230,7 +232,7 @@ func (i ProjectLevelMrApprovalsArray) ToProjectLevelMrApprovalsArrayOutputWithCo
 // ProjectLevelMrApprovalsMapInput is an input type that accepts ProjectLevelMrApprovalsMap and ProjectLevelMrApprovalsMapOutput values.
 // You can construct a concrete instance of `ProjectLevelMrApprovalsMapInput` via:
 //
-//          ProjectLevelMrApprovalsMap{ "key": ProjectLevelMrApprovalsArgs{...} }
+//	ProjectLevelMrApprovalsMap{ "key": ProjectLevelMrApprovalsArgs{...} }
 type ProjectLevelMrApprovalsMapInput interface {
 	pulumi.Input
 
@@ -293,8 +295,7 @@ func (o ProjectLevelMrApprovalsOutput) RequirePasswordToApprove() pulumi.BoolPtr
 	return o.ApplyT(func(v *ProjectLevelMrApprovals) pulumi.BoolPtrOutput { return v.RequirePasswordToApprove }).(pulumi.BoolPtrOutput)
 }
 
-// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch.
-// Default is `true`.
+// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
 func (o ProjectLevelMrApprovalsOutput) ResetApprovalsOnPush() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectLevelMrApprovals) pulumi.BoolPtrOutput { return v.ResetApprovalsOnPush }).(pulumi.BoolPtrOutput)
 }

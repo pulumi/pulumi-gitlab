@@ -14,6 +14,9 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetProjectsProjectSharedWithGroupResult
     {
         public readonly string GroupAccessLevel;
+        /// <summary>
+        /// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
+        /// </summary>
         public readonly int GroupId;
         public readonly string GroupName;
 

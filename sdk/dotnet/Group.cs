@@ -19,43 +19,42 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleGroup = new GitLab.Group("exampleGroup", new()
     ///     {
-    ///         var exampleGroup = new GitLab.Group("exampleGroup", new GitLab.GroupArgs
-    ///         {
-    ///             Path = "example",
-    ///             Description = "An example group",
-    ///         });
-    ///         // Create a project in the example group
-    ///         var exampleProject = new GitLab.Project("exampleProject", new GitLab.ProjectArgs
-    ///         {
-    ///             Description = "An example project",
-    ///             NamespaceId = exampleGroup.Id,
-    ///         });
-    ///     }
+    ///         Path = "example",
+    ///         Description = "An example group",
+    ///     });
     /// 
-    /// }
+    ///     // Create a project in the example group
+    ///     var exampleProject = new GitLab.Project("exampleProject", new()
+    ///     {
+    ///         Description = "An example project",
+    ///         NamespaceId = exampleGroup.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/group:Group # You can import a group state using `&lt;resource&gt; &lt;id&gt;`. The
+    ///  $ pulumi import gitlab:index/group:Group You can import a group state using `&lt;resource&gt; &lt;id&gt;`. The
     /// ```
     /// 
-    /// # `id` can be whatever the [details of a group][details_of_a_group] api takes for # its `:id` value, so for example
+    ///  `id` can be whatever the [details of a group][details_of_a_group] api takes for its `:id` value, so for example
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/group:Group example example
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/group:Group")]
-    public partial class Group : Pulumi.CustomResource
+    public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
@@ -64,7 +63,7 @@ namespace Pulumi.GitLab
         public Output<bool?> AutoDevopsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+        /// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
         /// </summary>
         [Output("defaultBranchProtection")]
         public Output<int?> DefaultBranchProtection { get; private set; } = null!;
@@ -206,6 +205,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "runnersToken",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -227,7 +230,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class GroupArgs : Pulumi.ResourceArgs
+    public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
@@ -236,7 +239,7 @@ namespace Pulumi.GitLab
         public Input<bool>? AutoDevopsEnabled { get; set; }
 
         /// <summary>
-        /// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+        /// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
         /// </summary>
         [Input("defaultBranchProtection")]
         public Input<int>? DefaultBranchProtection { get; set; }
@@ -334,9 +337,10 @@ namespace Pulumi.GitLab
         public GroupArgs()
         {
         }
+        public static new GroupArgs Empty => new GroupArgs();
     }
 
-    public sealed class GroupState : Pulumi.ResourceArgs
+    public sealed class GroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
@@ -345,7 +349,7 @@ namespace Pulumi.GitLab
         public Input<bool>? AutoDevopsEnabled { get; set; }
 
         /// <summary>
-        /// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+        /// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
         /// </summary>
         [Input("defaultBranchProtection")]
         public Input<int>? DefaultBranchProtection { get; set; }
@@ -428,11 +432,21 @@ namespace Pulumi.GitLab
         [Input("requireTwoFactorAuthentication")]
         public Input<bool>? RequireTwoFactorAuthentication { get; set; }
 
+        [Input("runnersToken")]
+        private Input<string>? _runnersToken;
+
         /// <summary>
         /// The group level registration token to use during runner setup.
         /// </summary>
-        [Input("runnersToken")]
-        public Input<string>? RunnersToken { get; set; }
+        public Input<string>? RunnersToken
+        {
+            get => _runnersToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _runnersToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Defaults to false. Prevent sharing a project with another group within this group.
@@ -467,5 +481,6 @@ namespace Pulumi.GitLab
         public GroupState()
         {
         }
+        public static new GroupState Empty => new GroupState();
     }
 }

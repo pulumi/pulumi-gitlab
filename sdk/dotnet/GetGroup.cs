@@ -21,26 +21,24 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = GitLab.GetGroup.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(GitLab.GetGroup.InvokeAsync(new GitLab.GetGroupArgs
-        ///         {
-        ///             FullPath = "foo/bar",
-        ///         }));
-        ///     }
+        ///         FullPath = "foo/bar",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("gitlab:index/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("gitlab:index/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
@@ -52,76 +50,130 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = GitLab.GetGroup.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(GitLab.GetGroup.InvokeAsync(new GitLab.GetGroupArgs
-        ///         {
-        ///             FullPath = "foo/bar",
-        ///         }));
-        ///     }
+        ///         FullPath = "foo/bar",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGroupResult>("gitlab:index/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("gitlab:index/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The full path of the group.
+        /// </summary>
         [Input("fullPath")]
         public string? FullPath { get; set; }
 
+        /// <summary>
+        /// The ID of the group.
+        /// </summary>
         [Input("groupId")]
         public int? GroupId { get; set; }
 
         public GetGroupArgs()
         {
         }
+        public static new GetGroupArgs Empty => new GetGroupArgs();
     }
 
-    public sealed class GetGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The full path of the group.
+        /// </summary>
         [Input("fullPath")]
         public Input<string>? FullPath { get; set; }
 
+        /// <summary>
+        /// The ID of the group.
+        /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
 
         public GetGroupInvokeArgs()
         {
         }
+        public static new GetGroupInvokeArgs Empty => new GetGroupInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetGroupResult
     {
+        /// <summary>
+        /// Whether developers and maintainers can push to the applicable default branch.
+        /// </summary>
         public readonly int DefaultBranchProtection;
+        /// <summary>
+        /// The description of the group.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The full name of the group.
+        /// </summary>
         public readonly string FullName;
+        /// <summary>
+        /// The full path of the group.
+        /// </summary>
         public readonly string FullPath;
+        /// <summary>
+        /// The ID of the group.
+        /// </summary>
         public readonly int GroupId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Boolean, is LFS enabled for projects in this group.
+        /// </summary>
         public readonly bool LfsEnabled;
+        /// <summary>
+        /// The name of this group.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Integer, ID of the parent group.
+        /// </summary>
         public readonly int ParentId;
+        /// <summary>
+        /// The path of the group.
+        /// </summary>
         public readonly string Path;
+        /// <summary>
+        /// When enabled, users can not fork projects from this group to external namespaces.
+        /// </summary>
         public readonly bool PreventForkingOutsideGroup;
+        /// <summary>
+        /// Boolean, is request for access enabled to the group.
+        /// </summary>
         public readonly bool RequestAccessEnabled;
+        /// <summary>
+        /// The group level registration token to use during runner setup.
+        /// </summary>
         public readonly string RunnersToken;
+        /// <summary>
+        /// Visibility level of the group. Possible values are `private`, `internal`, `public`.
+        /// </summary>
         public readonly string VisibilityLevel;
+        /// <summary>
+        /// Web URL of the group.
+        /// </summary>
         public readonly string WebUrl;
 
         [OutputConstructor]

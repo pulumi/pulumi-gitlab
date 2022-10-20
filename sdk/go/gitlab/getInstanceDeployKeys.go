@@ -22,21 +22,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.GetInstanceDeployKeys(ctx, &GetInstanceDeployKeysArgs{
-// 			Public: pulumi.BoolRef(true),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = gitlab.GetInstanceDeployKeys(ctx, &GetInstanceDeployKeysArgs{
+//				Public: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInstanceDeployKeys(ctx *pulumi.Context, args *GetInstanceDeployKeysArgs, opts ...pulumi.InvokeOption) (*GetInstanceDeployKeysResult, error) {
 	var rv GetInstanceDeployKeysResult
@@ -49,15 +52,18 @@ func GetInstanceDeployKeys(ctx *pulumi.Context, args *GetInstanceDeployKeysArgs,
 
 // A collection of arguments for invoking getInstanceDeployKeys.
 type GetInstanceDeployKeysArgs struct {
+	// Only return deploy keys that are public.
 	Public *bool `pulumi:"public"`
 }
 
 // A collection of values returned by getInstanceDeployKeys.
 type GetInstanceDeployKeysResult struct {
+	// The list of all deploy keys across all projects of the GitLab instance.
 	DeployKeys []GetInstanceDeployKeysDeployKey `pulumi:"deployKeys"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string `pulumi:"id"`
-	Public *bool  `pulumi:"public"`
+	Id string `pulumi:"id"`
+	// Only return deploy keys that are public.
+	Public *bool `pulumi:"public"`
 }
 
 func GetInstanceDeployKeysOutput(ctx *pulumi.Context, args GetInstanceDeployKeysOutputArgs, opts ...pulumi.InvokeOption) GetInstanceDeployKeysResultOutput {
@@ -75,6 +81,7 @@ func GetInstanceDeployKeysOutput(ctx *pulumi.Context, args GetInstanceDeployKeys
 
 // A collection of arguments for invoking getInstanceDeployKeys.
 type GetInstanceDeployKeysOutputArgs struct {
+	// Only return deploy keys that are public.
 	Public pulumi.BoolPtrInput `pulumi:"public"`
 }
 
@@ -97,6 +104,7 @@ func (o GetInstanceDeployKeysResultOutput) ToGetInstanceDeployKeysResultOutputWi
 	return o
 }
 
+// The list of all deploy keys across all projects of the GitLab instance.
 func (o GetInstanceDeployKeysResultOutput) DeployKeys() GetInstanceDeployKeysDeployKeyArrayOutput {
 	return o.ApplyT(func(v GetInstanceDeployKeysResult) []GetInstanceDeployKeysDeployKey { return v.DeployKeys }).(GetInstanceDeployKeysDeployKeyArrayOutput)
 }
@@ -106,6 +114,7 @@ func (o GetInstanceDeployKeysResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceDeployKeysResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Only return deploy keys that are public.
 func (o GetInstanceDeployKeysResultOutput) Public() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetInstanceDeployKeysResult) *bool { return v.Public }).(pulumi.BoolPtrOutput)
 }

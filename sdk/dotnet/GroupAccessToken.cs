@@ -19,46 +19,45 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleGroupAccessToken = new GitLab.GroupAccessToken("exampleGroupAccessToken", new()
     ///     {
-    ///         var exampleGroupAccessToken = new GitLab.GroupAccessToken("exampleGroupAccessToken", new GitLab.GroupAccessTokenArgs
+    ///         Group = "25",
+    ///         ExpiresAt = "2020-03-14",
+    ///         AccessLevel = "developer",
+    ///         Scopes = new[]
     ///         {
-    ///             Group = "25",
-    ///             ExpiresAt = "2020-03-14",
-    ///             AccessLevel = "developer",
-    ///             Scopes = 
-    ///             {
-    ///                 "api",
-    ///             },
-    ///         });
-    ///         var exampleGroupVariable = new GitLab.GroupVariable("exampleGroupVariable", new GitLab.GroupVariableArgs
-    ///         {
-    ///             Group = "25",
-    ///             Key = "gat",
-    ///             Value = exampleGroupAccessToken.Token,
-    ///         });
-    ///     }
+    ///             "api",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var exampleGroupVariable = new GitLab.GroupVariable("exampleGroupVariable", new()
+    ///     {
+    ///         Group = "25",
+    ///         Key = "gat",
+    ///         Value = exampleGroupAccessToken.Token,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # A GitLab Group Access Token can be imported using a key composed of `&lt;group-id&gt;:&lt;token-id&gt;`, e.g.
+    /// A GitLab Group Access Token can be imported using a key composed of `&lt;group-id&gt;:&lt;token-id&gt;`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example "12345:1"
     /// ```
     /// 
-    /// # ATTENTIONthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    ///  ATTENTIONthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/groupAccessToken:GroupAccessToken")]
-    public partial class GroupAccessToken : Pulumi.CustomResource
+    public partial class GroupAccessToken : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
@@ -103,15 +102,13 @@ namespace Pulumi.GitLab
         public Output<bool> Revoked { get; private set; } = null!;
 
         /// <summary>
-        /// The scope for the group access token. It determines the actions which can be performed when authenticating with this
-        /// token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+        /// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
 
         /// <summary>
-        /// The group access token. This is only populated when creating a new group access token. This attribute is not available
-        /// for imported resources.
+        /// The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
         /// </summary>
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
@@ -145,6 +142,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -166,7 +167,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class GroupAccessTokenArgs : Pulumi.ResourceArgs
+    public sealed class GroupAccessTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
@@ -196,8 +197,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The scope for the group access token. It determines the actions which can be performed when authenticating with this
-        /// token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+        /// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -208,9 +208,10 @@ namespace Pulumi.GitLab
         public GroupAccessTokenArgs()
         {
         }
+        public static new GroupAccessTokenArgs Empty => new GroupAccessTokenArgs();
     }
 
-    public sealed class GroupAccessTokenState : Pulumi.ResourceArgs
+    public sealed class GroupAccessTokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
@@ -258,8 +259,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The scope for the group access token. It determines the actions which can be performed when authenticating with this
-        /// token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
+        /// The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -267,12 +267,21 @@ namespace Pulumi.GitLab
             set => _scopes = value;
         }
 
-        /// <summary>
-        /// The group access token. This is only populated when creating a new group access token. This attribute is not available
-        /// for imported resources.
-        /// </summary>
         [Input("token")]
-        public Input<string>? Token { get; set; }
+        private Input<string>? _token;
+
+        /// <summary>
+        /// The group access token. This is only populated when creating a new group access token. This attribute is not available for imported resources.
+        /// </summary>
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The user id associated to the token.
@@ -283,5 +292,6 @@ namespace Pulumi.GitLab
         public GroupAccessTokenState()
         {
         }
+        public static new GroupAccessTokenState Empty => new GroupAccessTokenState();
     }
 }

@@ -17,40 +17,39 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var awesomeProject = new GitLab.Project("awesomeProject", new()
     ///     {
-    ///         var awesomeProject = new GitLab.Project("awesomeProject", new GitLab.ProjectArgs
-    ///         {
-    ///             Description = "My awesome project.",
-    ///             VisibilityLevel = "public",
-    ///         });
-    ///         var jira = new GitLab.ServiceJira("jira", new GitLab.ServiceJiraArgs
-    ///         {
-    ///             Project = awesomeProject.Id,
-    ///             Url = "https://jira.example.com",
-    ///             Username = "user",
-    ///             Password = "mypass",
-    ///         });
-    ///     }
+    ///         Description = "My awesome project.",
+    ///         VisibilityLevel = "public",
+    ///     });
     /// 
-    /// }
+    ///     var jira = new GitLab.ServiceJira("jira", new()
+    ///     {
+    ///         Project = awesomeProject.Id,
+    ///         Url = "https://jira.example.com",
+    ///         Username = "user",
+    ///         Password = "mypass",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # You can import a service_jira state using the project ID, e.g.
+    /// You can import a service_jira state using the project ID, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/serviceJira:ServiceJira jira 1
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/serviceJira:ServiceJira")]
-    public partial class ServiceJira : Pulumi.CustomResource
+    public partial class ServiceJira : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether the integration is active.
@@ -89,9 +88,7 @@ namespace Pulumi.GitLab
         public Output<bool> IssuesEvents { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
-        /// administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your
-        /// project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
+        /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
         /// </summary>
         [Output("jiraIssueTransitionId")]
         public Output<string?> JiraIssueTransitionId { get; private set; } = null!;
@@ -197,6 +194,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -218,7 +219,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ServiceJiraArgs : Pulumi.ResourceArgs
+    public sealed class ServiceJiraArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
@@ -245,9 +246,7 @@ namespace Pulumi.GitLab
         public Input<bool>? IssuesEvents { get; set; }
 
         /// <summary>
-        /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
-        /// administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your
-        /// project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
+        /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
         /// </summary>
         [Input("jiraIssueTransitionId")]
         public Input<string>? JiraIssueTransitionId { get; set; }
@@ -270,11 +269,21 @@ namespace Pulumi.GitLab
         [Input("noteEvents")]
         public Input<bool>? NoteEvents { get; set; }
 
+        [Input("password", required: true)]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the user created to be used with GitLab/JIRA.
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Enable notifications for pipeline events.
@@ -321,9 +330,10 @@ namespace Pulumi.GitLab
         public ServiceJiraArgs()
         {
         }
+        public static new ServiceJiraArgs Empty => new ServiceJiraArgs();
     }
 
-    public sealed class ServiceJiraState : Pulumi.ResourceArgs
+    public sealed class ServiceJiraState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the integration is active.
@@ -362,9 +372,7 @@ namespace Pulumi.GitLab
         public Input<bool>? IssuesEvents { get; set; }
 
         /// <summary>
-        /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
-        /// administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your
-        /// project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
+        /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
         /// </summary>
         [Input("jiraIssueTransitionId")]
         public Input<string>? JiraIssueTransitionId { get; set; }
@@ -387,11 +395,21 @@ namespace Pulumi.GitLab
         [Input("noteEvents")]
         public Input<bool>? NoteEvents { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the user created to be used with GitLab/JIRA.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Enable notifications for pipeline events.
@@ -450,5 +468,6 @@ namespace Pulumi.GitLab
         public ServiceJiraState()
         {
         }
+        public static new ServiceJiraState Empty => new ServiceJiraState();
     }
 }

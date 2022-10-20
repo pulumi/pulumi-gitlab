@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.
+ * GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/projectEnvironment:ProjectEnvironment bar 123:321
@@ -78,8 +78,7 @@ export class ProjectEnvironment extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -.
-     * No leading / trailing -. Use in URLs, host names and domain names.
+     * The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
      */
     public /*out*/ readonly slug!: pulumi.Output<string>;
     /**
@@ -156,8 +155,7 @@ export interface ProjectEnvironmentState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -.
-     * No leading / trailing -. Use in URLs, host names and domain names.
+     * The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
      */
     slug?: pulumi.Input<string>;
     /**

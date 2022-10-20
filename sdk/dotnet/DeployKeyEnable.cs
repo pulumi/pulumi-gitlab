@@ -17,42 +17,39 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         // A repo to host the deployment key
-    ///         var parentProject = new GitLab.Project("parentProject", new GitLab.ProjectArgs
-    ///         {
-    ///         });
-    ///         // A second repo to use the deployment key from the parent project
-    ///         var fooProject = new GitLab.Project("fooProject", new GitLab.ProjectArgs
-    ///         {
-    ///         });
-    ///         // Upload a deployment key for the parent repo
-    ///         var parentDeployKey = new GitLab.DeployKey("parentDeployKey", new GitLab.DeployKeyArgs
-    ///         {
-    ///             Project = parentProject.Id,
-    ///             Title = "Example deploy key",
-    ///             Key = "ssh-rsa AAAA...",
-    ///         });
-    ///         // Enable the deployment key on the second repo
-    ///         var fooDeployKeyEnable = new GitLab.DeployKeyEnable("fooDeployKeyEnable", new GitLab.DeployKeyEnableArgs
-    ///         {
-    ///             Project = fooProject.Id,
-    ///             KeyId = parentDeployKey.Id,
-    ///         });
-    ///     }
+    ///     // A repo to host the deployment key
+    ///     var parentProject = new GitLab.Project("parentProject");
     /// 
-    /// }
+    ///     // A second repo to use the deployment key from the parent project
+    ///     var fooProject = new GitLab.Project("fooProject");
+    /// 
+    ///     // Upload a deployment key for the parent repo
+    ///     var parentDeployKey = new GitLab.DeployKey("parentDeployKey", new()
+    ///     {
+    ///         Project = parentProject.Id,
+    ///         Title = "Example deploy key",
+    ///         Key = "ssh-rsa AAAA...",
+    ///     });
+    /// 
+    ///     // Enable the deployment key on the second repo
+    ///     var fooDeployKeyEnable = new GitLab.DeployKeyEnable("fooDeployKeyEnable", new()
+    ///     {
+    ///         Project = fooProject.Id,
+    ///         KeyId = parentDeployKey.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. # `project_id` can be whatever the [get single project api][get_single_project] takes for # its `:id` value, so for example
+    /// GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. `project_id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
@@ -63,7 +60,7 @@ namespace Pulumi.GitLab
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/deployKeyEnable:DeployKeyEnable")]
-    public partial class DeployKeyEnable : Pulumi.CustomResource
+    public partial class DeployKeyEnable : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Can deploy key push to the project's repository.
@@ -139,7 +136,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class DeployKeyEnableArgs : Pulumi.ResourceArgs
+    public sealed class DeployKeyEnableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Can deploy key push to the project's repository.
@@ -174,9 +171,10 @@ namespace Pulumi.GitLab
         public DeployKeyEnableArgs()
         {
         }
+        public static new DeployKeyEnableArgs Empty => new DeployKeyEnableArgs();
     }
 
-    public sealed class DeployKeyEnableState : Pulumi.ResourceArgs
+    public sealed class DeployKeyEnableState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Can deploy key push to the project's repository.
@@ -211,5 +209,6 @@ namespace Pulumi.GitLab
         public DeployKeyEnableState()
         {
         }
+        public static new DeployKeyEnableState Empty => new DeployKeyEnableState();
     }
 }

@@ -21,31 +21,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewUserCustomAttribute(ctx, "attr", &gitlab.UserCustomAttributeArgs{
-// 			Key:   pulumi.String("location"),
-// 			User:  pulumi.Int(42),
-// 			Value: pulumi.String("Greenland"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewUserCustomAttribute(ctx, "attr", &gitlab.UserCustomAttributeArgs{
+//				Key:   pulumi.String("location"),
+//				User:  pulumi.Int(42),
+//				Value: pulumi.String("Greenland"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # You can import a user custom attribute using an id made up of `{user-id}:{key}`, e.g.
+// You can import a user custom attribute using an id made up of `{user-id}:{key}`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/userCustomAttribute:UserCustomAttribute attr 42:location
+//
+//	$ pulumi import gitlab:index/userCustomAttribute:UserCustomAttribute attr 42:location
+//
 // ```
 type UserCustomAttribute struct {
 	pulumi.CustomResourceState
@@ -162,7 +167,7 @@ func (i *UserCustomAttribute) ToUserCustomAttributeOutputWithContext(ctx context
 // UserCustomAttributeArrayInput is an input type that accepts UserCustomAttributeArray and UserCustomAttributeArrayOutput values.
 // You can construct a concrete instance of `UserCustomAttributeArrayInput` via:
 //
-//          UserCustomAttributeArray{ UserCustomAttributeArgs{...} }
+//	UserCustomAttributeArray{ UserCustomAttributeArgs{...} }
 type UserCustomAttributeArrayInput interface {
 	pulumi.Input
 
@@ -187,7 +192,7 @@ func (i UserCustomAttributeArray) ToUserCustomAttributeArrayOutputWithContext(ct
 // UserCustomAttributeMapInput is an input type that accepts UserCustomAttributeMap and UserCustomAttributeMapOutput values.
 // You can construct a concrete instance of `UserCustomAttributeMapInput` via:
 //
-//          UserCustomAttributeMap{ "key": UserCustomAttributeArgs{...} }
+//	UserCustomAttributeMap{ "key": UserCustomAttributeArgs{...} }
 type UserCustomAttributeMapInput interface {
 	pulumi.Input
 

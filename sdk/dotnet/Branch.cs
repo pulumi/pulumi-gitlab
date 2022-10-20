@@ -17,39 +17,38 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a project for the branch to use
+    ///     var exampleProject = new GitLab.Project("exampleProject", new()
     ///     {
-    ///         // Create a project for the branch to use
-    ///         var exampleProject = new GitLab.Project("exampleProject", new GitLab.ProjectArgs
-    ///         {
-    ///             Description = "An example project",
-    ///             NamespaceId = gitlab_group.Example.Id,
-    ///         });
-    ///         var exampleBranch = new GitLab.Branch("exampleBranch", new GitLab.BranchArgs
-    ///         {
-    ///             Ref = "main",
-    ///             Project = exampleProject.Id,
-    ///         });
-    ///     }
+    ///         Description = "An example project",
+    ///         NamespaceId = gitlab_group.Example.Id,
+    ///     });
     /// 
-    /// }
+    ///     var exampleBranch = new GitLab.Branch("exampleBranch", new()
+    ///     {
+    ///         Ref = "main",
+    ///         Project = exampleProject.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # Gitlab protected branches can be imported with a key composed of `&lt;project_id&gt;:&lt;branch_name&gt;`, e.g.
+    /// Gitlab protected branches can be imported with a key composed of `&lt;project_id&gt;:&lt;branch_name&gt;`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/branch:Branch example "12345:develop"
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/branch:Branch")]
-    public partial class Branch : Pulumi.CustomResource
+    public partial class Branch : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Bool, true if you can push to the branch.
@@ -161,7 +160,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class BranchArgs : Pulumi.ResourceArgs
+    public sealed class BranchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name for this branch.
@@ -184,9 +183,10 @@ namespace Pulumi.GitLab
         public BranchArgs()
         {
         }
+        public static new BranchArgs Empty => new BranchArgs();
     }
 
-    public sealed class BranchState : Pulumi.ResourceArgs
+    public sealed class BranchState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bool, true if you can push to the branch.
@@ -263,5 +263,6 @@ namespace Pulumi.GitLab
         public BranchState()
         {
         }
+        public static new BranchState Empty => new BranchState();
     }
 }

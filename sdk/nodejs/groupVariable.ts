@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.
+ * GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key:*
@@ -62,8 +62,7 @@ export class GroupVariable extends pulumi.CustomResource {
     }
 
     /**
-     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-     * values other than `*` will cause inconsistent plans.
+     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      */
     public readonly environmentScope!: pulumi.Output<string | undefined>;
     /**
@@ -75,13 +74,11 @@ export class GroupVariable extends pulumi.CustomResource {
      */
     public readonly key!: pulumi.Output<string>;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-     * requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
      */
     public readonly masked!: pulumi.Output<boolean | undefined>;
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-     * `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      */
     public readonly protected!: pulumi.Output<boolean | undefined>;
     /**
@@ -89,7 +86,7 @@ export class GroupVariable extends pulumi.CustomResource {
      */
     public readonly value!: pulumi.Output<string>;
     /**
-     * The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
      */
     public readonly variableType!: pulumi.Output<string | undefined>;
 
@@ -129,10 +126,12 @@ export class GroupVariable extends pulumi.CustomResource {
             resourceInputs["key"] = args ? args.key : undefined;
             resourceInputs["masked"] = args ? args.masked : undefined;
             resourceInputs["protected"] = args ? args.protected : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
             resourceInputs["variableType"] = args ? args.variableType : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["value"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(GroupVariable.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -142,8 +141,7 @@ export class GroupVariable extends pulumi.CustomResource {
  */
 export interface GroupVariableState {
     /**
-     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-     * values other than `*` will cause inconsistent plans.
+     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      */
     environmentScope?: pulumi.Input<string>;
     /**
@@ -155,13 +153,11 @@ export interface GroupVariableState {
      */
     key?: pulumi.Input<string>;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-     * requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
      */
     masked?: pulumi.Input<boolean>;
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-     * `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      */
     protected?: pulumi.Input<boolean>;
     /**
@@ -169,7 +165,7 @@ export interface GroupVariableState {
      */
     value?: pulumi.Input<string>;
     /**
-     * The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
      */
     variableType?: pulumi.Input<string>;
 }
@@ -179,8 +175,7 @@ export interface GroupVariableState {
  */
 export interface GroupVariableArgs {
     /**
-     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-     * values other than `*` will cause inconsistent plans.
+     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      */
     environmentScope?: pulumi.Input<string>;
     /**
@@ -192,13 +187,11 @@ export interface GroupVariableArgs {
      */
     key: pulumi.Input<string>;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-     * requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
      */
     masked?: pulumi.Input<boolean>;
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-     * `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      */
     protected?: pulumi.Input<boolean>;
     /**
@@ -206,7 +199,7 @@ export interface GroupVariableArgs {
      */
     value: pulumi.Input<string>;
     /**
-     * The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
      */
     variableType?: pulumi.Input<string>;
 }

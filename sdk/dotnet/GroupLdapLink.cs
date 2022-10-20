@@ -17,39 +17,36 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var test = new GitLab.GroupLdapLink("test", new()
     ///     {
-    ///         var test = new GitLab.GroupLdapLink("test", new GitLab.GroupLdapLinkArgs
-    ///         {
-    ///             Cn = "testuser",
-    ///             GroupAccess = "developer",
-    ///             GroupId = "12345",
-    ///             LdapProvider = "ldapmain",
-    ///         });
-    ///     }
+    ///         Cn = "testuser",
+    ///         GroupAccess = "developer",
+    ///         GroupId = "12345",
+    ///         LdapProvider = "ldapmain",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # GitLab group ldap links can be imported using an id made up of `group_id:ldap_provider:cn`, e.g.
+    /// GitLab group ldap links can be imported using an id made up of `group_id:ldap_provider:cn`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test "12345:ldapmain:testuser"
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/groupLdapLink:GroupLdapLink")]
-    public partial class GroupLdapLink : Pulumi.CustomResource
+    public partial class GroupLdapLink : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-        /// `developer`, `maintainer`, `owner`, `master`
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Output("accessLevel")]
         public Output<string?> AccessLevel { get; private set; } = null!;
@@ -67,8 +64,7 @@ namespace Pulumi.GitLab
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-        /// `developer`, `maintainer`, `owner`, `master`
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Output("groupAccess")]
         public Output<string?> GroupAccess { get; private set; } = null!;
@@ -80,7 +76,7 @@ namespace Pulumi.GitLab
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the LDAP provider as stored in the GitLab database.
+        /// The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
         /// </summary>
         [Output("ldapProvider")]
         public Output<string> LdapProvider { get; private set; } = null!;
@@ -129,11 +125,10 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class GroupLdapLinkArgs : Pulumi.ResourceArgs
+    public sealed class GroupLdapLinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-        /// `developer`, `maintainer`, `owner`, `master`
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -151,8 +146,7 @@ namespace Pulumi.GitLab
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-        /// `developer`, `maintainer`, `owner`, `master`
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Input("groupAccess")]
         public Input<string>? GroupAccess { get; set; }
@@ -164,7 +158,7 @@ namespace Pulumi.GitLab
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the LDAP provider as stored in the GitLab database.
+        /// The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
         /// </summary>
         [Input("ldapProvider", required: true)]
         public Input<string> LdapProvider { get; set; } = null!;
@@ -172,13 +166,13 @@ namespace Pulumi.GitLab
         public GroupLdapLinkArgs()
         {
         }
+        public static new GroupLdapLinkArgs Empty => new GroupLdapLinkArgs();
     }
 
-    public sealed class GroupLdapLinkState : Pulumi.ResourceArgs
+    public sealed class GroupLdapLinkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-        /// `developer`, `maintainer`, `owner`, `master`
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -196,8 +190,7 @@ namespace Pulumi.GitLab
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`,
-        /// `developer`, `maintainer`, `owner`, `master`
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Input("groupAccess")]
         public Input<string>? GroupAccess { get; set; }
@@ -209,7 +202,7 @@ namespace Pulumi.GitLab
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// The name of the LDAP provider as stored in the GitLab database.
+        /// The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
         /// </summary>
         [Input("ldapProvider")]
         public Input<string>? LdapProvider { get; set; }
@@ -217,5 +210,6 @@ namespace Pulumi.GitLab
         public GroupLdapLinkState()
         {
         }
+        public static new GroupLdapLinkState Empty => new GroupLdapLinkState();
     }
 }

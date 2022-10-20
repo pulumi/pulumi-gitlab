@@ -17,39 +17,38 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a project for the milestone to use
+    ///     var exampleProject = new GitLab.Project("exampleProject", new()
     ///     {
-    ///         // Create a project for the milestone to use
-    ///         var exampleProject = new GitLab.Project("exampleProject", new GitLab.ProjectArgs
-    ///         {
-    ///             Description = "An example project",
-    ///             NamespaceId = gitlab_group.Example.Id,
-    ///         });
-    ///         var exampleProjectMilestone = new GitLab.ProjectMilestone("exampleProjectMilestone", new GitLab.ProjectMilestoneArgs
-    ///         {
-    ///             Project = exampleProject.Id,
-    ///             Title = "example",
-    ///         });
-    ///     }
+    ///         Description = "An example project",
+    ///         NamespaceId = gitlab_group.Example.Id,
+    ///     });
     /// 
-    /// }
+    ///     var exampleProjectMilestone = new GitLab.ProjectMilestone("exampleProjectMilestone", new()
+    ///     {
+    ///         Project = exampleProject.Id,
+    ///         Title = "example",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # Gitlab project milestone can be imported with a key composed of `&lt;project&gt;:&lt;milestone_id&gt;`, e.g.
+    /// Gitlab project milestone can be imported with a key composed of `&lt;project&gt;:&lt;milestone_id&gt;`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectMilestone:ProjectMilestone example "12345:11"
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/projectMilestone:ProjectMilestone")]
-    public partial class ProjectMilestone : Pulumi.CustomResource
+    public partial class ProjectMilestone : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
@@ -173,7 +172,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ProjectMilestoneArgs : Pulumi.ResourceArgs
+    public sealed class ProjectMilestoneArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the milestone.
@@ -214,9 +213,10 @@ namespace Pulumi.GitLab
         public ProjectMilestoneArgs()
         {
         }
+        public static new ProjectMilestoneArgs Empty => new ProjectMilestoneArgs();
     }
 
-    public sealed class ProjectMilestoneState : Pulumi.ResourceArgs
+    public sealed class ProjectMilestoneState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
@@ -299,5 +299,6 @@ namespace Pulumi.GitLab
         public ProjectMilestoneState()
         {
         }
+        public static new ProjectMilestoneState Empty => new ProjectMilestoneState();
     }
 }

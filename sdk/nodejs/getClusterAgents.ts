@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -38,6 +39,9 @@ export function getClusterAgents(args: GetClusterAgentsArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getClusterAgents.
  */
 export interface GetClusterAgentsArgs {
+    /**
+     * The ID or full path of the project owned by the authenticated user.
+     */
     project: string;
 }
 
@@ -45,11 +49,17 @@ export interface GetClusterAgentsArgs {
  * A collection of values returned by getClusterAgents.
  */
 export interface GetClusterAgentsResult {
+    /**
+     * List of the registered agents.
+     */
     readonly clusterAgents: outputs.GetClusterAgentsClusterAgent[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The ID or full path of the project owned by the authenticated user.
+     */
     readonly project: string;
 }
 
@@ -61,5 +71,8 @@ export function getClusterAgentsOutput(args: GetClusterAgentsOutputArgs, opts?: 
  * A collection of arguments for invoking getClusterAgents.
  */
 export interface GetClusterAgentsOutputArgs {
+    /**
+     * The ID or full path of the project owned by the authenticated user.
+     */
     project: pulumi.Input<string>;
 }

@@ -21,32 +21,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewPipelineSchedule(ctx, "example", &gitlab.PipelineScheduleArgs{
-// 			Cron:        pulumi.String("0 1 * * *"),
-// 			Description: pulumi.String("Used to schedule builds"),
-// 			Project:     pulumi.String("12345"),
-// 			Ref:         pulumi.String("master"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewPipelineSchedule(ctx, "example", &gitlab.PipelineScheduleArgs{
+//				Cron:        pulumi.String("0 1 * * *"),
+//				Description: pulumi.String("Used to schedule builds"),
+//				Project:     pulumi.String("12345"),
+//				Ref:         pulumi.String("master"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # GitLab pipeline schedules can be imported using an id made up of `{project_id}:{pipeline_schedule_id}`, e.g.
+// GitLab pipeline schedules can be imported using an id made up of `{project_id}:{pipeline_schedule_id}`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/pipelineSchedule:PipelineSchedule test 1:3
+//
+//	$ pulumi import gitlab:index/pipelineSchedule:PipelineSchedule test 1:3
+//
 // ```
 type PipelineSchedule struct {
 	pulumi.CustomResourceState
@@ -196,7 +201,7 @@ func (i *PipelineSchedule) ToPipelineScheduleOutputWithContext(ctx context.Conte
 // PipelineScheduleArrayInput is an input type that accepts PipelineScheduleArray and PipelineScheduleArrayOutput values.
 // You can construct a concrete instance of `PipelineScheduleArrayInput` via:
 //
-//          PipelineScheduleArray{ PipelineScheduleArgs{...} }
+//	PipelineScheduleArray{ PipelineScheduleArgs{...} }
 type PipelineScheduleArrayInput interface {
 	pulumi.Input
 
@@ -221,7 +226,7 @@ func (i PipelineScheduleArray) ToPipelineScheduleArrayOutputWithContext(ctx cont
 // PipelineScheduleMapInput is an input type that accepts PipelineScheduleMap and PipelineScheduleMapOutput values.
 // You can construct a concrete instance of `PipelineScheduleMapInput` via:
 //
-//          PipelineScheduleMap{ "key": PipelineScheduleArgs{...} }
+//	PipelineScheduleMap{ "key": PipelineScheduleArgs{...} }
 type PipelineScheduleMapInput interface {
 	pulumi.Input
 

@@ -23,42 +23,47 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := gitlab.NewProject(ctx, "foo", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewProjectCluster(ctx, "bar", &gitlab.ProjectClusterArgs{
-// 			Project:                     foo.ID(),
-// 			Domain:                      pulumi.String("example.com"),
-// 			Enabled:                     pulumi.Bool(true),
-// 			KubernetesApiUrl:            pulumi.String("https://124.124.124"),
-// 			KubernetesToken:             pulumi.String("some-token"),
-// 			KubernetesCaCert:            pulumi.String("some-cert"),
-// 			KubernetesNamespace:         pulumi.String("namespace"),
-// 			KubernetesAuthorizationType: pulumi.String("rbac"),
-// 			EnvironmentScope:            pulumi.String("*"),
-// 			ManagementProjectId:         pulumi.String("123456"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := gitlab.NewProject(ctx, "foo", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectCluster(ctx, "bar", &gitlab.ProjectClusterArgs{
+//				Project:                     foo.ID(),
+//				Domain:                      pulumi.String("example.com"),
+//				Enabled:                     pulumi.Bool(true),
+//				KubernetesApiUrl:            pulumi.String("https://124.124.124"),
+//				KubernetesToken:             pulumi.String("some-token"),
+//				KubernetesCaCert:            pulumi.String("some-cert"),
+//				KubernetesNamespace:         pulumi.String("namespace"),
+//				KubernetesAuthorizationType: pulumi.String("rbac"),
+//				EnvironmentScope:            pulumi.String("*"),
+//				ManagementProjectId:         pulumi.String("123456"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
+// GitLab project clusters can be imported using an id made up of `projectid:clusterid`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectCluster:ProjectCluster bar 123:321
+//
+//	$ pulumi import gitlab:index/projectCluster:ProjectCluster bar 123:321
+//
 // ```
 type ProjectCluster struct {
 	pulumi.CustomResourceState
@@ -75,7 +80,7 @@ type ProjectCluster struct {
 	EnvironmentScope pulumi.StringPtrOutput `pulumi:"environmentScope"`
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl pulumi.StringOutput `pulumi:"kubernetesApiUrl"`
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType pulumi.StringPtrOutput `pulumi:"kubernetesAuthorizationType"`
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert pulumi.StringPtrOutput `pulumi:"kubernetesCaCert"`
@@ -113,6 +118,13 @@ func NewProjectCluster(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	if args.KubernetesToken != nil {
+		args.KubernetesToken = pulumi.ToSecret(args.KubernetesToken).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"kubernetesToken",
+	})
+	opts = append(opts, secrets)
 	var resource ProjectCluster
 	err := ctx.RegisterResource("gitlab:index/projectCluster:ProjectCluster", name, args, &resource, opts...)
 	if err != nil {
@@ -147,7 +159,7 @@ type projectClusterState struct {
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl *string `pulumi:"kubernetesApiUrl"`
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType *string `pulumi:"kubernetesAuthorizationType"`
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert *string `pulumi:"kubernetesCaCert"`
@@ -182,7 +194,7 @@ type ProjectClusterState struct {
 	EnvironmentScope pulumi.StringPtrInput
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl pulumi.StringPtrInput
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType pulumi.StringPtrInput
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert pulumi.StringPtrInput
@@ -217,7 +229,7 @@ type projectClusterArgs struct {
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl string `pulumi:"kubernetesApiUrl"`
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType *string `pulumi:"kubernetesAuthorizationType"`
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert *string `pulumi:"kubernetesCaCert"`
@@ -245,7 +257,7 @@ type ProjectClusterArgs struct {
 	EnvironmentScope pulumi.StringPtrInput
 	// The URL to access the Kubernetes API.
 	KubernetesApiUrl pulumi.StringInput
-	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+	// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
 	KubernetesAuthorizationType pulumi.StringPtrInput
 	// TLS certificate (needed if API is using a self-signed TLS certificate).
 	KubernetesCaCert pulumi.StringPtrInput
@@ -289,7 +301,7 @@ func (i *ProjectCluster) ToProjectClusterOutputWithContext(ctx context.Context) 
 // ProjectClusterArrayInput is an input type that accepts ProjectClusterArray and ProjectClusterArrayOutput values.
 // You can construct a concrete instance of `ProjectClusterArrayInput` via:
 //
-//          ProjectClusterArray{ ProjectClusterArgs{...} }
+//	ProjectClusterArray{ ProjectClusterArgs{...} }
 type ProjectClusterArrayInput interface {
 	pulumi.Input
 
@@ -314,7 +326,7 @@ func (i ProjectClusterArray) ToProjectClusterArrayOutputWithContext(ctx context.
 // ProjectClusterMapInput is an input type that accepts ProjectClusterMap and ProjectClusterMapOutput values.
 // You can construct a concrete instance of `ProjectClusterMapInput` via:
 //
-//          ProjectClusterMap{ "key": ProjectClusterArgs{...} }
+//	ProjectClusterMap{ "key": ProjectClusterArgs{...} }
 type ProjectClusterMapInput interface {
 	pulumi.Input
 
@@ -380,7 +392,7 @@ func (o ProjectClusterOutput) KubernetesApiUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectCluster) pulumi.StringOutput { return v.KubernetesApiUrl }).(pulumi.StringOutput)
 }
 
-// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+// The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
 func (o ProjectClusterOutput) KubernetesAuthorizationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectCluster) pulumi.StringPtrOutput { return v.KubernetesAuthorizationType }).(pulumi.StringPtrOutput)
 }

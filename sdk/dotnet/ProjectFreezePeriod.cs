@@ -17,35 +17,33 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var schedule = new GitLab.ProjectFreezePeriod("schedule", new()
     ///     {
-    ///         var schedule = new GitLab.ProjectFreezePeriod("schedule", new GitLab.ProjectFreezePeriodArgs
-    ///         {
-    ///             ProjectId = gitlab_project.Foo.Id,
-    ///             FreezeStart = "0 23 * * 5",
-    ///             FreezeEnd = "0 7 * * 1",
-    ///             CronTimezone = "UTC",
-    ///         });
-    ///     }
+    ///         ProjectId = gitlab_project.Foo.Id,
+    ///         FreezeStart = "0 23 * * 5",
+    ///         FreezeEnd = "0 7 * * 1",
+    ///         CronTimezone = "UTC",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # GitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, e.g.
+    /// GitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectFreezePeriod:ProjectFreezePeriod schedule "12345:1337"
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/projectFreezePeriod:ProjectFreezePeriod")]
-    public partial class ProjectFreezePeriod : Pulumi.CustomResource
+    public partial class ProjectFreezePeriod : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The timezone.
@@ -115,7 +113,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ProjectFreezePeriodArgs : Pulumi.ResourceArgs
+    public sealed class ProjectFreezePeriodArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The timezone.
@@ -144,9 +142,10 @@ namespace Pulumi.GitLab
         public ProjectFreezePeriodArgs()
         {
         }
+        public static new ProjectFreezePeriodArgs Empty => new ProjectFreezePeriodArgs();
     }
 
-    public sealed class ProjectFreezePeriodState : Pulumi.ResourceArgs
+    public sealed class ProjectFreezePeriodState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The timezone.
@@ -175,5 +174,6 @@ namespace Pulumi.GitLab
         public ProjectFreezePeriodState()
         {
         }
+        public static new ProjectFreezePeriodState Empty => new ProjectFreezePeriodState();
     }
 }

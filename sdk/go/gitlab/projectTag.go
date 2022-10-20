@@ -21,40 +21,45 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleProject, err := gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
-// 			Description: pulumi.String("An example project"),
-// 			NamespaceId: pulumi.Any(gitlab_group.Example.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewProjectTag(ctx, "exampleProjectTag", &gitlab.ProjectTagArgs{
-// 			Ref:     pulumi.String("main"),
-// 			Project: exampleProject.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleProject, err := gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
+//				Description: pulumi.String("An example project"),
+//				NamespaceId: pulumi.Any(gitlab_group.Example.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectTag(ctx, "exampleProjectTag", &gitlab.ProjectTagArgs{
+//				Ref:     pulumi.String("main"),
+//				Project: exampleProject.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # Gitlab project tags can be imported with a key composed of `<project_id>:<tag_name>`, e.g.
+// Gitlab project tags can be imported with a key composed of `<project_id>:<tag_name>`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectTag:ProjectTag example "12345:develop"
+//
+//	$ pulumi import gitlab:index/projectTag:ProjectTag example "12345:develop"
+//
 // ```
 //
-// # NOTEthe `ref` attribute won't be available for imported `gitlab_project_tag` resources.
+//	NOTEthe `ref` attribute won't be available for imported `gitlab_project_tag` resources.
 type ProjectTag struct {
 	pulumi.CustomResourceState
 
@@ -201,7 +206,7 @@ func (i *ProjectTag) ToProjectTagOutputWithContext(ctx context.Context) ProjectT
 // ProjectTagArrayInput is an input type that accepts ProjectTagArray and ProjectTagArrayOutput values.
 // You can construct a concrete instance of `ProjectTagArrayInput` via:
 //
-//          ProjectTagArray{ ProjectTagArgs{...} }
+//	ProjectTagArray{ ProjectTagArgs{...} }
 type ProjectTagArrayInput interface {
 	pulumi.Input
 
@@ -226,7 +231,7 @@ func (i ProjectTagArray) ToProjectTagArrayOutputWithContext(ctx context.Context)
 // ProjectTagMapInput is an input type that accepts ProjectTagMap and ProjectTagMapOutput values.
 // You can construct a concrete instance of `ProjectTagMapInput` via:
 //
-//          ProjectTagMap{ "key": ProjectTagArgs{...} }
+//	ProjectTagMap{ "key": ProjectTagArgs{...} }
 type ProjectTagMapInput interface {
 	pulumi.Input
 

@@ -21,26 +21,24 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = GitLab.GetProjectTags.Invoke(new()
         ///     {
-        ///         var example = Output.Create(GitLab.GetProjectTags.InvokeAsync(new GitLab.GetProjectTagsArgs
-        ///         {
-        ///             Project = "foo/bar",
-        ///         }));
-        ///     }
+        ///         Project = "foo/bar",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectTagsResult> InvokeAsync(GetProjectTagsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectTagsResult>("gitlab:index/getProjectTags:getProjectTags", args ?? new GetProjectTagsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectTagsResult>("gitlab:index/getProjectTags:getProjectTags", args ?? new GetProjectTagsArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `gitlab.getProjectTags` data source allows details of project tags to be retrieved by some search criteria.
@@ -52,65 +50,89 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = GitLab.GetProjectTags.Invoke(new()
         ///     {
-        ///         var example = Output.Create(GitLab.GetProjectTags.InvokeAsync(new GitLab.GetProjectTagsArgs
-        ///         {
-        ///             Project = "foo/bar",
-        ///         }));
-        ///     }
+        ///         Project = "foo/bar",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectTagsResult> Invoke(GetProjectTagsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectTagsResult>("gitlab:index/getProjectTags:getProjectTags", args ?? new GetProjectTagsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectTagsResult>("gitlab:index/getProjectTags:getProjectTags", args ?? new GetProjectTagsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetProjectTagsArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectTagsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Return tags ordered by `name` or `updated` fields. Default is `updated`.
+        /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
+        /// <summary>
+        /// The ID or URL-encoded path of the project owned by the authenticated user.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Return list of tags matching the search criteria. You can use `^term` and `term$` to find tags that begin and end with `term` respectively. No other regular expressions are supported.
+        /// </summary>
         [Input("search")]
         public string? Search { get; set; }
 
+        /// <summary>
+        /// Return tags sorted in `asc` or `desc` order. Default is `desc`.
+        /// </summary>
         [Input("sort")]
         public string? Sort { get; set; }
 
         public GetProjectTagsArgs()
         {
         }
+        public static new GetProjectTagsArgs Empty => new GetProjectTagsArgs();
     }
 
-    public sealed class GetProjectTagsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectTagsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Return tags ordered by `name` or `updated` fields. Default is `updated`.
+        /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
 
+        /// <summary>
+        /// The ID or URL-encoded path of the project owned by the authenticated user.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Return list of tags matching the search criteria. You can use `^term` and `term$` to find tags that begin and end with `term` respectively. No other regular expressions are supported.
+        /// </summary>
         [Input("search")]
         public Input<string>? Search { get; set; }
 
+        /// <summary>
+        /// Return tags sorted in `asc` or `desc` order. Default is `desc`.
+        /// </summary>
         [Input("sort")]
         public Input<string>? Sort { get; set; }
 
         public GetProjectTagsInvokeArgs()
         {
         }
+        public static new GetProjectTagsInvokeArgs Empty => new GetProjectTagsInvokeArgs();
     }
 
 
@@ -121,10 +143,25 @@ namespace Pulumi.GitLab
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Return tags ordered by `name` or `updated` fields. Default is `updated`.
+        /// </summary>
         public readonly string? OrderBy;
+        /// <summary>
+        /// The ID or URL-encoded path of the project owned by the authenticated user.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Return list of tags matching the search criteria. You can use `^term` and `term$` to find tags that begin and end with `term` respectively. No other regular expressions are supported.
+        /// </summary>
         public readonly string? Search;
+        /// <summary>
+        /// Return tags sorted in `asc` or `desc` order. Default is `desc`.
+        /// </summary>
         public readonly string? Sort;
+        /// <summary>
+        /// List of repository tags from a project.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectTagsTagResult> Tags;
 
         [OutputConstructor]

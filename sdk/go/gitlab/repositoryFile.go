@@ -13,10 +13,12 @@ import (
 
 // ## Import
 //
-// # A Repository File can be imported using an id made up of `<project-id>:<branch-name>:<file-path>`, e.g.
+// A Repository File can be imported using an id made up of `<project-id>:<branch-name>:<file-path>`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/repositoryFile:RepositoryFile this 1:main:foo/bar.txt
+//
+//	$ pulumi import gitlab:index/repositoryFile:RepositoryFile this 1:main:foo/bar.txt
+//
 // ```
 type RepositoryFile struct {
 	pulumi.CustomResourceState
@@ -33,8 +35,7 @@ type RepositoryFile struct {
 	CommitId pulumi.StringOutput `pulumi:"commitId"`
 	// Commit message.
 	CommitMessage pulumi.StringOutput `pulumi:"commitMessage"`
-	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
-	// supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
 	Content pulumi.StringOutput `pulumi:"content"`
 	// File content sha256 digest.
 	ContentSha256 pulumi.StringOutput `pulumi:"contentSha256"`
@@ -114,8 +115,7 @@ type repositoryFileState struct {
 	CommitId *string `pulumi:"commitId"`
 	// Commit message.
 	CommitMessage *string `pulumi:"commitMessage"`
-	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
-	// supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
 	Content *string `pulumi:"content"`
 	// File content sha256 digest.
 	ContentSha256 *string `pulumi:"contentSha256"`
@@ -152,8 +152,7 @@ type RepositoryFileState struct {
 	CommitId pulumi.StringPtrInput
 	// Commit message.
 	CommitMessage pulumi.StringPtrInput
-	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
-	// supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
 	Content pulumi.StringPtrInput
 	// File content sha256 digest.
 	ContentSha256 pulumi.StringPtrInput
@@ -190,8 +189,7 @@ type repositoryFileArgs struct {
 	Branch string `pulumi:"branch"`
 	// Commit message.
 	CommitMessage string `pulumi:"commitMessage"`
-	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
-	// supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
 	Content string `pulumi:"content"`
 	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
 	ExecuteFilemode *bool `pulumi:"executeFilemode"`
@@ -213,8 +211,7 @@ type RepositoryFileArgs struct {
 	Branch pulumi.StringInput
 	// Commit message.
 	CommitMessage pulumi.StringInput
-	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
-	// supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
 	Content pulumi.StringInput
 	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
 	ExecuteFilemode pulumi.BoolPtrInput
@@ -252,7 +249,7 @@ func (i *RepositoryFile) ToRepositoryFileOutputWithContext(ctx context.Context) 
 // RepositoryFileArrayInput is an input type that accepts RepositoryFileArray and RepositoryFileArrayOutput values.
 // You can construct a concrete instance of `RepositoryFileArrayInput` via:
 //
-//          RepositoryFileArray{ RepositoryFileArgs{...} }
+//	RepositoryFileArray{ RepositoryFileArgs{...} }
 type RepositoryFileArrayInput interface {
 	pulumi.Input
 
@@ -277,7 +274,7 @@ func (i RepositoryFileArray) ToRepositoryFileArrayOutputWithContext(ctx context.
 // RepositoryFileMapInput is an input type that accepts RepositoryFileMap and RepositoryFileMapOutput values.
 // You can construct a concrete instance of `RepositoryFileMapInput` via:
 //
-//          RepositoryFileMap{ "key": RepositoryFileArgs{...} }
+//	RepositoryFileMap{ "key": RepositoryFileArgs{...} }
 type RepositoryFileMapInput interface {
 	pulumi.Input
 
@@ -343,8 +340,7 @@ func (o RepositoryFileOutput) CommitMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.CommitMessage }).(pulumi.StringOutput)
 }
 
-// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
-// supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
 func (o RepositoryFileOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
 }

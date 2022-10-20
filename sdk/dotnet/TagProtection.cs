@@ -17,34 +17,32 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var tagProtect = new GitLab.TagProtection("tagProtect", new()
     ///     {
-    ///         var tagProtect = new GitLab.TagProtection("tagProtect", new GitLab.TagProtectionArgs
-    ///         {
-    ///             CreateAccessLevel = "developer",
-    ///             Project = "12345",
-    ///             Tag = "TagProtected",
-    ///         });
-    ///     }
+    ///         CreateAccessLevel = "developer",
+    ///         Project = "12345",
+    ///         Tag = "TagProtected",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.
+    /// Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/tagProtection:TagProtection example 123456789:v1.0.0
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/tagProtection:TagProtection")]
-    public partial class TagProtection : Pulumi.CustomResource
+    public partial class TagProtection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
@@ -108,7 +106,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class TagProtectionArgs : Pulumi.ResourceArgs
+    public sealed class TagProtectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
@@ -131,9 +129,10 @@ namespace Pulumi.GitLab
         public TagProtectionArgs()
         {
         }
+        public static new TagProtectionArgs Empty => new TagProtectionArgs();
     }
 
-    public sealed class TagProtectionState : Pulumi.ResourceArgs
+    public sealed class TagProtectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
@@ -156,5 +155,6 @@ namespace Pulumi.GitLab
         public TagProtectionState()
         {
         }
+        public static new TagProtectionState Empty => new TagProtectionState();
     }
 }

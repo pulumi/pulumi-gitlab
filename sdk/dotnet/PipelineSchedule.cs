@@ -17,35 +17,33 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new GitLab.PipelineSchedule("example", new()
     ///     {
-    ///         var example = new GitLab.PipelineSchedule("example", new GitLab.PipelineScheduleArgs
-    ///         {
-    ///             Cron = "0 1 * * *",
-    ///             Description = "Used to schedule builds",
-    ///             Project = "12345",
-    ///             Ref = "master",
-    ///         });
-    ///     }
+    ///         Cron = "0 1 * * *",
+    ///         Description = "Used to schedule builds",
+    ///         Project = "12345",
+    ///         Ref = "master",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # GitLab pipeline schedules can be imported using an id made up of `{project_id}:{pipeline_schedule_id}`, e.g.
+    /// GitLab pipeline schedules can be imported using an id made up of `{project_id}:{pipeline_schedule_id}`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/pipelineSchedule:PipelineSchedule test 1:3
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/pipelineSchedule:PipelineSchedule")]
-    public partial class PipelineSchedule : Pulumi.CustomResource
+    public partial class PipelineSchedule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
@@ -127,7 +125,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class PipelineScheduleArgs : Pulumi.ResourceArgs
+    public sealed class PipelineScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
@@ -168,9 +166,10 @@ namespace Pulumi.GitLab
         public PipelineScheduleArgs()
         {
         }
+        public static new PipelineScheduleArgs Empty => new PipelineScheduleArgs();
     }
 
-    public sealed class PipelineScheduleState : Pulumi.ResourceArgs
+    public sealed class PipelineScheduleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
@@ -211,5 +210,6 @@ namespace Pulumi.GitLab
         public PipelineScheduleState()
         {
         }
+        public static new PipelineScheduleState Empty => new PipelineScheduleState();
     }
 }

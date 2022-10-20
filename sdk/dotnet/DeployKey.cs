@@ -19,27 +19,25 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new GitLab.DeployKey("example", new()
     ///     {
-    ///         var example = new GitLab.DeployKey("example", new GitLab.DeployKeyArgs
-    ///         {
-    ///             Key = "ssh-rsa AAAA...",
-    ///             Project = "example/deploying",
-    ///             Title = "Example deploy key",
-    ///         });
-    ///     }
+    ///         Key = "ssh-rsa AAAA...",
+    ///         Project = "example/deploying",
+    ///         Title = "Example deploy key",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. # `project_id` can be whatever the [get single project api][get_single_project] takes for # its `:id` value, so for example
+    /// GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g. `project_id` can be whatever the [get single project api][get_single_project] takes for its `:id` value, so for example
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/deployKey:DeployKey test 1:3
@@ -50,7 +48,7 @@ namespace Pulumi.GitLab
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/deployKey:DeployKey")]
-    public partial class DeployKey : Pulumi.CustomResource
+    public partial class DeployKey : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Allow this deploy key to be used to push changes to the project. Defaults to `false`.
@@ -120,7 +118,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class DeployKeyArgs : Pulumi.ResourceArgs
+    public sealed class DeployKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Allow this deploy key to be used to push changes to the project. Defaults to `false`.
@@ -149,9 +147,10 @@ namespace Pulumi.GitLab
         public DeployKeyArgs()
         {
         }
+        public static new DeployKeyArgs Empty => new DeployKeyArgs();
     }
 
-    public sealed class DeployKeyState : Pulumi.ResourceArgs
+    public sealed class DeployKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Allow this deploy key to be used to push changes to the project. Defaults to `false`.
@@ -180,5 +179,6 @@ namespace Pulumi.GitLab
         public DeployKeyState()
         {
         }
+        public static new DeployKeyState Empty => new DeployKeyState();
     }
 }

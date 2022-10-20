@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
+ * GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"
@@ -68,8 +68,7 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
      */
     public readonly protectedBranchIds!: pulumi.Output<number[] | undefined>;
     /**
-     * String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
-     * `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+     * String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`.
      */
     public readonly ruleType!: pulumi.Output<string>;
     /**
@@ -143,8 +142,7 @@ export interface ProjectApprovalRuleState {
      */
     protectedBranchIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
-     * `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+     * String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`.
      */
     ruleType?: pulumi.Input<string>;
     /**
@@ -178,8 +176,7 @@ export interface ProjectApprovalRuleArgs {
      */
     protectedBranchIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
-     * `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+     * String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`.
      */
     ruleType?: pulumi.Input<string>;
     /**

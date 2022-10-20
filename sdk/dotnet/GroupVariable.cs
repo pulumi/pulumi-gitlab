@@ -17,41 +17,38 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new GitLab.GroupVariable("example", new()
     ///     {
-    ///         var example = new GitLab.GroupVariable("example", new GitLab.GroupVariableArgs
-    ///         {
-    ///             EnvironmentScope = "*",
-    ///             Group = "12345",
-    ///             Key = "group_variable_key",
-    ///             Masked = false,
-    ///             Protected = false,
-    ///             Value = "group_variable_value",
-    ///         });
-    ///     }
+    ///         EnvironmentScope = "*",
+    ///         Group = "12345",
+    ///         Key = "group_variable_key",
+    ///         Masked = false,
+    ///         Protected = false,
+    ///         Value = "group_variable_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.
+    /// GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key:*
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/groupVariable:GroupVariable")]
-    public partial class GroupVariable : Pulumi.CustomResource
+    public partial class GroupVariable : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-        /// values other than `*` will cause inconsistent plans.
+        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         /// </summary>
         [Output("environmentScope")]
         public Output<string?> EnvironmentScope { get; private set; } = null!;
@@ -69,15 +66,13 @@ namespace Pulumi.GitLab
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-        /// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         /// </summary>
         [Output("masked")]
         public Output<bool?> Masked { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-        /// `false`.
+        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         /// </summary>
         [Output("protected")]
         public Output<bool?> Protected { get; private set; } = null!;
@@ -117,6 +112,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "value",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -138,11 +137,10 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class GroupVariableArgs : Pulumi.ResourceArgs
+    public sealed class GroupVariableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-        /// values other than `*` will cause inconsistent plans.
+        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         /// </summary>
         [Input("environmentScope")]
         public Input<string>? EnvironmentScope { get; set; }
@@ -160,24 +158,32 @@ namespace Pulumi.GitLab
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-        /// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         /// </summary>
         [Input("masked")]
         public Input<bool>? Masked { get; set; }
 
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-        /// `false`.
+        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         /// </summary>
         [Input("protected")]
         public Input<bool>? Protected { get; set; }
 
+        [Input("value", required: true)]
+        private Input<string>? _value;
+
         /// <summary>
         /// The value of the variable.
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
@@ -188,13 +194,13 @@ namespace Pulumi.GitLab
         public GroupVariableArgs()
         {
         }
+        public static new GroupVariableArgs Empty => new GroupVariableArgs();
     }
 
-    public sealed class GroupVariableState : Pulumi.ResourceArgs
+    public sealed class GroupVariableState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab,
-        /// values other than `*` will cause inconsistent plans.
+        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         /// </summary>
         [Input("environmentScope")]
         public Input<string>? EnvironmentScope { get; set; }
@@ -212,24 +218,32 @@ namespace Pulumi.GitLab
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-        /// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         /// </summary>
         [Input("masked")]
         public Input<bool>? Masked { get; set; }
 
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-        /// `false`.
+        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         /// </summary>
         [Input("protected")]
         public Input<bool>? Protected { get; set; }
 
+        [Input("value")]
+        private Input<string>? _value;
+
         /// <summary>
         /// The value of the variable.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
@@ -240,5 +254,6 @@ namespace Pulumi.GitLab
         public GroupVariableState()
         {
         }
+        public static new GroupVariableState Empty => new GroupVariableState();
     }
 }

@@ -21,27 +21,25 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = GitLab.GetProjectTag.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(GitLab.GetProjectTag.InvokeAsync(new GitLab.GetProjectTagArgs
-        ///         {
-        ///             Name = "example",
-        ///             Project = "foo/bar",
-        ///         }));
-        ///     }
+        ///         Name = "example",
+        ///         Project = "foo/bar",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectTagResult> InvokeAsync(GetProjectTagArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectTagResult>("gitlab:index/getProjectTag:getProjectTag", args ?? new GetProjectTagArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectTagResult>("gitlab:index/getProjectTag:getProjectTag", args ?? new GetProjectTagArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `gitlab.ProjectTag` data source allows details of a project tag to be retrieved by its name.
@@ -53,70 +51,103 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = GitLab.GetProjectTag.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(GitLab.GetProjectTag.InvokeAsync(new GitLab.GetProjectTagArgs
-        ///         {
-        ///             Name = "example",
-        ///             Project = "foo/bar",
-        ///         }));
-        ///     }
+        ///         Name = "example",
+        ///         Project = "foo/bar",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectTagResult> Invoke(GetProjectTagInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectTagResult>("gitlab:index/getProjectTag:getProjectTag", args ?? new GetProjectTagInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectTagResult>("gitlab:index/getProjectTag:getProjectTag", args ?? new GetProjectTagInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetProjectTagArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectTagArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of a tag.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The ID or URL-encoded path of the project owned by the authenticated user.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         public GetProjectTagArgs()
         {
         }
+        public static new GetProjectTagArgs Empty => new GetProjectTagArgs();
     }
 
-    public sealed class GetProjectTagInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectTagInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of a tag.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The ID or URL-encoded path of the project owned by the authenticated user.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         public GetProjectTagInvokeArgs()
         {
         }
+        public static new GetProjectTagInvokeArgs Empty => new GetProjectTagInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetProjectTagResult
     {
+        /// <summary>
+        /// The commit associated with the tag.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectTagCommitResult> Commits;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The message of the annotated tag.
+        /// </summary>
         public readonly string Message;
+        /// <summary>
+        /// The name of a tag.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The ID or URL-encoded path of the project owned by the authenticated user.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Bool, true if tag has tag protection.
+        /// </summary>
         public readonly bool Protected;
+        /// <summary>
+        /// The release associated with the tag.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectTagReleaseResult> Releases;
+        /// <summary>
+        /// The unique id assigned to the commit by Gitlab.
+        /// </summary>
         public readonly string Target;
 
         [OutputConstructor]

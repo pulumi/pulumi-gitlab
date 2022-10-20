@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -42,7 +43,13 @@ export function getGroupVariables(args: GetGroupVariablesArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getGroupVariables.
  */
 export interface GetGroupVariablesArgs {
+    /**
+     * The environment scope of the variable. Defaults to all environment (`*`).
+     */
     environmentScope?: string;
+    /**
+     * The name or id of the group.
+     */
     group: string;
 }
 
@@ -50,12 +57,21 @@ export interface GetGroupVariablesArgs {
  * A collection of values returned by getGroupVariables.
  */
 export interface GetGroupVariablesResult {
+    /**
+     * The environment scope of the variable. Defaults to all environment (`*`).
+     */
     readonly environmentScope?: string;
+    /**
+     * The name or id of the group.
+     */
     readonly group: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The list of variables returned by the search
+     */
     readonly variables: outputs.GetGroupVariablesVariable[];
 }
 
@@ -67,6 +83,12 @@ export function getGroupVariablesOutput(args: GetGroupVariablesOutputArgs, opts?
  * A collection of arguments for invoking getGroupVariables.
  */
 export interface GetGroupVariablesOutputArgs {
+    /**
+     * The environment scope of the variable. Defaults to all environment (`*`).
+     */
     environmentScope?: pulumi.Input<string>;
+    /**
+     * The name or id of the group.
+     */
     group: pulumi.Input<string>;
 }

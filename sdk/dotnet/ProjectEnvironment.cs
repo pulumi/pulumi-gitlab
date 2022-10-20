@@ -13,43 +13,43 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var thisGroup = new GitLab.Group("thisGroup", new()
     ///     {
-    ///         var thisGroup = new GitLab.Group("thisGroup", new GitLab.GroupArgs
-    ///         {
-    ///             Path = "example",
-    ///             Description = "An example group",
-    ///         });
-    ///         var thisProject = new GitLab.Project("thisProject", new GitLab.ProjectArgs
-    ///         {
-    ///             NamespaceId = thisGroup.Id,
-    ///             InitializeWithReadme = true,
-    ///         });
-    ///         var thisProjectEnvironment = new GitLab.ProjectEnvironment("thisProjectEnvironment", new GitLab.ProjectEnvironmentArgs
-    ///         {
-    ///             Project = thisProject.Id,
-    ///             ExternalUrl = "www.example.com",
-    ///         });
-    ///     }
+    ///         Path = "example",
+    ///         Description = "An example group",
+    ///     });
     /// 
-    /// }
+    ///     var thisProject = new GitLab.Project("thisProject", new()
+    ///     {
+    ///         NamespaceId = thisGroup.Id,
+    ///         InitializeWithReadme = true,
+    ///     });
+    /// 
+    ///     var thisProjectEnvironment = new GitLab.ProjectEnvironment("thisProjectEnvironment", new()
+    ///     {
+    ///         Project = thisProject.Id,
+    ///         ExternalUrl = "www.example.com",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.
+    /// GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectEnvironment:ProjectEnvironment bar 123:321
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/projectEnvironment:ProjectEnvironment")]
-    public partial class ProjectEnvironment : Pulumi.CustomResource
+    public partial class ProjectEnvironment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ISO8601 date/time that this environment was created at in UTC.
@@ -76,8 +76,7 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -.
-        /// No leading / trailing -. Use in URLs, host names and domain names.
+        /// The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
         /// </summary>
         [Output("slug")]
         public Output<string> Slug { get; private set; } = null!;
@@ -144,7 +143,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ProjectEnvironmentArgs : Pulumi.ResourceArgs
+    public sealed class ProjectEnvironmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Place to link to for this environment.
@@ -173,9 +172,10 @@ namespace Pulumi.GitLab
         public ProjectEnvironmentArgs()
         {
         }
+        public static new ProjectEnvironmentArgs Empty => new ProjectEnvironmentArgs();
     }
 
-    public sealed class ProjectEnvironmentState : Pulumi.ResourceArgs
+    public sealed class ProjectEnvironmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ISO8601 date/time that this environment was created at in UTC.
@@ -202,8 +202,7 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -.
-        /// No leading / trailing -. Use in URLs, host names and domain names.
+        /// The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
         /// </summary>
         [Input("slug")]
         public Input<string>? Slug { get; set; }
@@ -229,5 +228,6 @@ namespace Pulumi.GitLab
         public ProjectEnvironmentState()
         {
         }
+        public static new ProjectEnvironmentState Empty => new ProjectEnvironmentState();
     }
 }

@@ -21,35 +21,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := gitlab.NewGroup(ctx, "foo", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewGroupBadge(ctx, "example", &gitlab.GroupBadgeArgs{
-// 			Group:    foo.ID(),
-// 			LinkUrl:  pulumi.String("https://example.com/badge-123"),
-// 			ImageUrl: pulumi.String("https://example.com/badge-123.svg"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := gitlab.NewGroup(ctx, "foo", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewGroupBadge(ctx, "example", &gitlab.GroupBadgeArgs{
+//				Group:    foo.ID(),
+//				LinkUrl:  pulumi.String("https://example.com/badge-123"),
+//				ImageUrl: pulumi.String("https://example.com/badge-123.svg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # GitLab group badges can be imported using an id made up of `{group_id}:{badge_id}`, e.g.
+// GitLab group badges can be imported using an id made up of `{group_id}:{badge_id}`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/groupBadge:GroupBadge foo 1:3
+//
+//	$ pulumi import gitlab:index/groupBadge:GroupBadge foo 1:3
+//
 // ```
 type GroupBadge struct {
 	pulumi.CustomResourceState
@@ -60,9 +65,9 @@ type GroupBadge struct {
 	ImageUrl pulumi.StringOutput `pulumi:"imageUrl"`
 	// The url linked with the badge.
 	LinkUrl pulumi.StringOutput `pulumi:"linkUrl"`
-	// The image_url argument rendered (in case of use of placeholders).
+	// The imageUrl argument rendered (in case of use of placeholders).
 	RenderedImageUrl pulumi.StringOutput `pulumi:"renderedImageUrl"`
-	// The link_url argument rendered (in case of use of placeholders).
+	// The linkUrl argument rendered (in case of use of placeholders).
 	RenderedLinkUrl pulumi.StringOutput `pulumi:"renderedLinkUrl"`
 }
 
@@ -110,9 +115,9 @@ type groupBadgeState struct {
 	ImageUrl *string `pulumi:"imageUrl"`
 	// The url linked with the badge.
 	LinkUrl *string `pulumi:"linkUrl"`
-	// The image_url argument rendered (in case of use of placeholders).
+	// The imageUrl argument rendered (in case of use of placeholders).
 	RenderedImageUrl *string `pulumi:"renderedImageUrl"`
-	// The link_url argument rendered (in case of use of placeholders).
+	// The linkUrl argument rendered (in case of use of placeholders).
 	RenderedLinkUrl *string `pulumi:"renderedLinkUrl"`
 }
 
@@ -123,9 +128,9 @@ type GroupBadgeState struct {
 	ImageUrl pulumi.StringPtrInput
 	// The url linked with the badge.
 	LinkUrl pulumi.StringPtrInput
-	// The image_url argument rendered (in case of use of placeholders).
+	// The imageUrl argument rendered (in case of use of placeholders).
 	RenderedImageUrl pulumi.StringPtrInput
-	// The link_url argument rendered (in case of use of placeholders).
+	// The linkUrl argument rendered (in case of use of placeholders).
 	RenderedLinkUrl pulumi.StringPtrInput
 }
 
@@ -178,7 +183,7 @@ func (i *GroupBadge) ToGroupBadgeOutputWithContext(ctx context.Context) GroupBad
 // GroupBadgeArrayInput is an input type that accepts GroupBadgeArray and GroupBadgeArrayOutput values.
 // You can construct a concrete instance of `GroupBadgeArrayInput` via:
 //
-//          GroupBadgeArray{ GroupBadgeArgs{...} }
+//	GroupBadgeArray{ GroupBadgeArgs{...} }
 type GroupBadgeArrayInput interface {
 	pulumi.Input
 
@@ -203,7 +208,7 @@ func (i GroupBadgeArray) ToGroupBadgeArrayOutputWithContext(ctx context.Context)
 // GroupBadgeMapInput is an input type that accepts GroupBadgeMap and GroupBadgeMapOutput values.
 // You can construct a concrete instance of `GroupBadgeMapInput` via:
 //
-//          GroupBadgeMap{ "key": GroupBadgeArgs{...} }
+//	GroupBadgeMap{ "key": GroupBadgeArgs{...} }
 type GroupBadgeMapInput interface {
 	pulumi.Input
 
@@ -254,12 +259,12 @@ func (o GroupBadgeOutput) LinkUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupBadge) pulumi.StringOutput { return v.LinkUrl }).(pulumi.StringOutput)
 }
 
-// The image_url argument rendered (in case of use of placeholders).
+// The imageUrl argument rendered (in case of use of placeholders).
 func (o GroupBadgeOutput) RenderedImageUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupBadge) pulumi.StringOutput { return v.RenderedImageUrl }).(pulumi.StringOutput)
 }
 
-// The link_url argument rendered (in case of use of placeholders).
+// The linkUrl argument rendered (in case of use of placeholders).
 func (o GroupBadgeOutput) RenderedLinkUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupBadge) pulumi.StringOutput { return v.RenderedLinkUrl }).(pulumi.StringOutput)
 }

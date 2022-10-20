@@ -23,43 +23,51 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewGroupMembership(ctx, "test", &gitlab.GroupMembershipArgs{
-// 			AccessLevel: pulumi.String("guest"),
-// 			ExpiresAt:   pulumi.String("2020-12-31"),
-// 			GroupId:     pulumi.String("12345"),
-// 			UserId:      pulumi.Int(1337),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewGroupMembership(ctx, "test", &gitlab.GroupMembershipArgs{
+//				AccessLevel: pulumi.String("guest"),
+//				ExpiresAt:   pulumi.String("2020-12-31"),
+//				GroupId:     pulumi.String("12345"),
+//				UserId:      pulumi.Int(1337),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
+// GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/groupMembership:GroupMembership test "12345:1337"
+//
+//	$ pulumi import gitlab:index/groupMembership:GroupMembership test "12345:1337"
+//
 // ```
 type GroupMembership struct {
 	pulumi.CustomResourceState
 
-	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-	// `owner`, `master`.
+	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
 	// The id of the group.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
+	// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
+	SkipSubresourcesOnDestroy pulumi.BoolPtrOutput `pulumi:"skipSubresourcesOnDestroy"`
+	// Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
+	UnassignIssuablesOnDestroy pulumi.BoolPtrOutput `pulumi:"unassignIssuablesOnDestroy"`
 	// The id of the user.
 	UserId pulumi.IntOutput `pulumi:"userId"`
 }
@@ -102,25 +110,31 @@ func GetGroupMembership(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupMembership resources.
 type groupMembershipState struct {
-	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-	// `owner`, `master`.
+	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The id of the group.
 	GroupId *string `pulumi:"groupId"`
+	// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
+	SkipSubresourcesOnDestroy *bool `pulumi:"skipSubresourcesOnDestroy"`
+	// Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
+	UnassignIssuablesOnDestroy *bool `pulumi:"unassignIssuablesOnDestroy"`
 	// The id of the user.
 	UserId *int `pulumi:"userId"`
 }
 
 type GroupMembershipState struct {
-	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-	// `owner`, `master`.
+	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
 	AccessLevel pulumi.StringPtrInput
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
 	// The id of the group.
 	GroupId pulumi.StringPtrInput
+	// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
+	SkipSubresourcesOnDestroy pulumi.BoolPtrInput
+	// Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
+	UnassignIssuablesOnDestroy pulumi.BoolPtrInput
 	// The id of the user.
 	UserId pulumi.IntPtrInput
 }
@@ -130,26 +144,32 @@ func (GroupMembershipState) ElementType() reflect.Type {
 }
 
 type groupMembershipArgs struct {
-	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-	// `owner`, `master`.
+	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
 	AccessLevel string `pulumi:"accessLevel"`
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The id of the group.
 	GroupId string `pulumi:"groupId"`
+	// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
+	SkipSubresourcesOnDestroy *bool `pulumi:"skipSubresourcesOnDestroy"`
+	// Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
+	UnassignIssuablesOnDestroy *bool `pulumi:"unassignIssuablesOnDestroy"`
 	// The id of the user.
 	UserId int `pulumi:"userId"`
 }
 
 // The set of arguments for constructing a GroupMembership resource.
 type GroupMembershipArgs struct {
-	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-	// `owner`, `master`.
+	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
 	AccessLevel pulumi.StringInput
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
 	// The id of the group.
 	GroupId pulumi.StringInput
+	// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
+	SkipSubresourcesOnDestroy pulumi.BoolPtrInput
+	// Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
+	UnassignIssuablesOnDestroy pulumi.BoolPtrInput
 	// The id of the user.
 	UserId pulumi.IntInput
 }
@@ -180,7 +200,7 @@ func (i *GroupMembership) ToGroupMembershipOutputWithContext(ctx context.Context
 // GroupMembershipArrayInput is an input type that accepts GroupMembershipArray and GroupMembershipArrayOutput values.
 // You can construct a concrete instance of `GroupMembershipArrayInput` via:
 //
-//          GroupMembershipArray{ GroupMembershipArgs{...} }
+//	GroupMembershipArray{ GroupMembershipArgs{...} }
 type GroupMembershipArrayInput interface {
 	pulumi.Input
 
@@ -205,7 +225,7 @@ func (i GroupMembershipArray) ToGroupMembershipArrayOutputWithContext(ctx contex
 // GroupMembershipMapInput is an input type that accepts GroupMembershipMap and GroupMembershipMapOutput values.
 // You can construct a concrete instance of `GroupMembershipMapInput` via:
 //
-//          GroupMembershipMap{ "key": GroupMembershipArgs{...} }
+//	GroupMembershipMap{ "key": GroupMembershipArgs{...} }
 type GroupMembershipMapInput interface {
 	pulumi.Input
 
@@ -241,8 +261,7 @@ func (o GroupMembershipOutput) ToGroupMembershipOutputWithContext(ctx context.Co
 	return o
 }
 
-// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-// `owner`, `master`.
+// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
 func (o GroupMembershipOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMembership) pulumi.StringOutput { return v.AccessLevel }).(pulumi.StringOutput)
 }
@@ -255,6 +274,16 @@ func (o GroupMembershipOutput) ExpiresAt() pulumi.StringPtrOutput {
 // The id of the group.
 func (o GroupMembershipOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMembership) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
+func (o GroupMembershipOutput) SkipSubresourcesOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupMembership) pulumi.BoolPtrOutput { return v.SkipSubresourcesOnDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
+func (o GroupMembershipOutput) UnassignIssuablesOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupMembership) pulumi.BoolPtrOutput { return v.UnassignIssuablesOnDestroy }).(pulumi.BoolPtrOutput)
 }
 
 // The id of the user.

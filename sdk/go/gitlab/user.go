@@ -25,40 +25,47 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewUser(ctx, "example", &gitlab.UserArgs{
-// 			CanCreateGroup: pulumi.Bool(false),
-// 			Email:          pulumi.String("gitlab@user.create"),
-// 			IsAdmin:        pulumi.Bool(true),
-// 			IsExternal:     pulumi.Bool(true),
-// 			Password:       pulumi.String("superPassword"),
-// 			ProjectsLimit:  pulumi.Int(4),
-// 			ResetPassword:  pulumi.Bool(false),
-// 			Username:       pulumi.String("example"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewUser(ctx, "example", &gitlab.UserArgs{
+//				CanCreateGroup: pulumi.Bool(false),
+//				Email:          pulumi.String("gitlab@user.create"),
+//				IsAdmin:        pulumi.Bool(true),
+//				IsExternal:     pulumi.Bool(true),
+//				Password:       pulumi.String("superPassword"),
+//				ProjectsLimit:  pulumi.Int(4),
+//				ResetPassword:  pulumi.Bool(false),
+//				Username:       pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import gitlab:index/user:User # You can import a user to terraform state using `<resource> <id>`.
+//
+//	$ pulumi import gitlab:index/user:User You can import a user to terraform state using `<resource> <id>`.
+//
 // ```
 //
-// # The `id` must be an integer for the id of the user you want to import, # for example
+//	The `id` must be an integer for the id of the user you want to import, for example
 //
 // ```sh
-//  $ pulumi import gitlab:index/user:User example 42
+//
+//	$ pulumi import gitlab:index/user:User example 42
+//
 // ```
 type User struct {
 	pulumi.CustomResourceState
@@ -67,10 +74,9 @@ type User struct {
 	CanCreateGroup pulumi.BoolPtrOutput `pulumi:"canCreateGroup"`
 	// The e-mail address of the user.
 	Email pulumi.StringOutput `pulumi:"email"`
-	// Boolean, defaults to false. Whether to enable administrative privileges
+	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin pulumi.BoolPtrOutput `pulumi:"isAdmin"`
-	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
-	// access projects to which they are explicitly granted access.
+	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
 	IsExternal pulumi.BoolPtrOutput `pulumi:"isExternal"`
 	// The name of the user.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -80,7 +86,7 @@ type User struct {
 	Note pulumi.StringPtrOutput `pulumi:"note"`
 	// The password of the user.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// Integer, defaults to 0. Number of projects user can create.
+	// Integer, defaults to 0.  Number of projects user can create.
 	ProjectsLimit pulumi.IntPtrOutput `pulumi:"projectsLimit"`
 	// Boolean, defaults to false. Send user password reset link.
 	ResetPassword pulumi.BoolPtrOutput `pulumi:"resetPassword"`
@@ -105,6 +111,13 @@ func NewUser(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource User
 	err := ctx.RegisterResource("gitlab:index/user:User", name, args, &resource, opts...)
 	if err != nil {
@@ -131,10 +144,9 @@ type userState struct {
 	CanCreateGroup *bool `pulumi:"canCreateGroup"`
 	// The e-mail address of the user.
 	Email *string `pulumi:"email"`
-	// Boolean, defaults to false. Whether to enable administrative privileges
+	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin *bool `pulumi:"isAdmin"`
-	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
-	// access projects to which they are explicitly granted access.
+	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
 	IsExternal *bool `pulumi:"isExternal"`
 	// The name of the user.
 	Name *string `pulumi:"name"`
@@ -144,7 +156,7 @@ type userState struct {
 	Note *string `pulumi:"note"`
 	// The password of the user.
 	Password *string `pulumi:"password"`
-	// Integer, defaults to 0. Number of projects user can create.
+	// Integer, defaults to 0.  Number of projects user can create.
 	ProjectsLimit *int `pulumi:"projectsLimit"`
 	// Boolean, defaults to false. Send user password reset link.
 	ResetPassword *bool `pulumi:"resetPassword"`
@@ -161,10 +173,9 @@ type UserState struct {
 	CanCreateGroup pulumi.BoolPtrInput
 	// The e-mail address of the user.
 	Email pulumi.StringPtrInput
-	// Boolean, defaults to false. Whether to enable administrative privileges
+	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin pulumi.BoolPtrInput
-	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
-	// access projects to which they are explicitly granted access.
+	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
 	IsExternal pulumi.BoolPtrInput
 	// The name of the user.
 	Name pulumi.StringPtrInput
@@ -174,7 +185,7 @@ type UserState struct {
 	Note pulumi.StringPtrInput
 	// The password of the user.
 	Password pulumi.StringPtrInput
-	// Integer, defaults to 0. Number of projects user can create.
+	// Integer, defaults to 0.  Number of projects user can create.
 	ProjectsLimit pulumi.IntPtrInput
 	// Boolean, defaults to false. Send user password reset link.
 	ResetPassword pulumi.BoolPtrInput
@@ -195,10 +206,9 @@ type userArgs struct {
 	CanCreateGroup *bool `pulumi:"canCreateGroup"`
 	// The e-mail address of the user.
 	Email string `pulumi:"email"`
-	// Boolean, defaults to false. Whether to enable administrative privileges
+	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin *bool `pulumi:"isAdmin"`
-	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
-	// access projects to which they are explicitly granted access.
+	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
 	IsExternal *bool `pulumi:"isExternal"`
 	// The name of the user.
 	Name *string `pulumi:"name"`
@@ -208,7 +218,7 @@ type userArgs struct {
 	Note *string `pulumi:"note"`
 	// The password of the user.
 	Password *string `pulumi:"password"`
-	// Integer, defaults to 0. Number of projects user can create.
+	// Integer, defaults to 0.  Number of projects user can create.
 	ProjectsLimit *int `pulumi:"projectsLimit"`
 	// Boolean, defaults to false. Send user password reset link.
 	ResetPassword *bool `pulumi:"resetPassword"`
@@ -226,10 +236,9 @@ type UserArgs struct {
 	CanCreateGroup pulumi.BoolPtrInput
 	// The e-mail address of the user.
 	Email pulumi.StringInput
-	// Boolean, defaults to false. Whether to enable administrative privileges
+	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin pulumi.BoolPtrInput
-	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
-	// access projects to which they are explicitly granted access.
+	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
 	IsExternal pulumi.BoolPtrInput
 	// The name of the user.
 	Name pulumi.StringPtrInput
@@ -239,7 +248,7 @@ type UserArgs struct {
 	Note pulumi.StringPtrInput
 	// The password of the user.
 	Password pulumi.StringPtrInput
-	// Integer, defaults to 0. Number of projects user can create.
+	// Integer, defaults to 0.  Number of projects user can create.
 	ProjectsLimit pulumi.IntPtrInput
 	// Boolean, defaults to false. Send user password reset link.
 	ResetPassword pulumi.BoolPtrInput
@@ -277,7 +286,7 @@ func (i *User) ToUserOutputWithContext(ctx context.Context) UserOutput {
 // UserArrayInput is an input type that accepts UserArray and UserArrayOutput values.
 // You can construct a concrete instance of `UserArrayInput` via:
 //
-//          UserArray{ UserArgs{...} }
+//	UserArray{ UserArgs{...} }
 type UserArrayInput interface {
 	pulumi.Input
 
@@ -302,7 +311,7 @@ func (i UserArray) ToUserArrayOutputWithContext(ctx context.Context) UserArrayOu
 // UserMapInput is an input type that accepts UserMap and UserMapOutput values.
 // You can construct a concrete instance of `UserMapInput` via:
 //
-//          UserMap{ "key": UserArgs{...} }
+//	UserMap{ "key": UserArgs{...} }
 type UserMapInput interface {
 	pulumi.Input
 
@@ -348,13 +357,12 @@ func (o UserOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
 
-// Boolean, defaults to false. Whether to enable administrative privileges
+// Boolean, defaults to false.  Whether to enable administrative privileges
 func (o UserOutput) IsAdmin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.IsAdmin }).(pulumi.BoolPtrOutput)
 }
 
-// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
-// access projects to which they are explicitly granted access.
+// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
 func (o UserOutput) IsExternal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.IsExternal }).(pulumi.BoolPtrOutput)
 }
@@ -379,7 +387,7 @@ func (o UserOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Integer, defaults to 0. Number of projects user can create.
+// Integer, defaults to 0.  Number of projects user can create.
 func (o UserOutput) ProjectsLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.IntPtrOutput { return v.ProjectsLimit }).(pulumi.IntPtrOutput)
 }

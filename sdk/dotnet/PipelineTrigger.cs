@@ -17,33 +17,31 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new GitLab.PipelineTrigger("example", new()
     ///     {
-    ///         var example = new GitLab.PipelineTrigger("example", new GitLab.PipelineTriggerArgs
-    ///         {
-    ///             Description = "Used to trigger builds",
-    ///             Project = "12345",
-    ///         });
-    ///     }
+    ///         Description = "Used to trigger builds",
+    ///         Project = "12345",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
+    /// GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/pipelineTrigger:PipelineTrigger test 1:3
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/pipelineTrigger:PipelineTrigger")]
-    public partial class PipelineTrigger : Pulumi.CustomResource
+    public partial class PipelineTrigger : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the pipeline trigger.
@@ -86,6 +84,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -107,7 +109,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class PipelineTriggerArgs : Pulumi.ResourceArgs
+    public sealed class PipelineTriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the pipeline trigger.
@@ -124,9 +126,10 @@ namespace Pulumi.GitLab
         public PipelineTriggerArgs()
         {
         }
+        public static new PipelineTriggerArgs Empty => new PipelineTriggerArgs();
     }
 
-    public sealed class PipelineTriggerState : Pulumi.ResourceArgs
+    public sealed class PipelineTriggerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the pipeline trigger.
@@ -140,14 +143,25 @@ namespace Pulumi.GitLab
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// The pipeline trigger token.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public PipelineTriggerState()
         {
         }
+        public static new PipelineTriggerState Empty => new PipelineTriggerState();
     }
 }

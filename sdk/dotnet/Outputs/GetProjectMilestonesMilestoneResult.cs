@@ -19,10 +19,19 @@ namespace Pulumi.GitLab.Outputs
         public readonly bool Expired;
         public readonly int Iid;
         public readonly int MilestoneId;
+        /// <summary>
+        /// The ID or URL-encoded path of the project owned by the authenticated user.
+        /// </summary>
         public readonly string Project;
         public readonly int ProjectId;
         public readonly string StartDate;
+        /// <summary>
+        /// Return only `active` or `closed` milestones.
+        /// </summary>
         public readonly string State;
+        /// <summary>
+        /// Return only the milestones having the given `title`.
+        /// </summary>
         public readonly string Title;
         public readonly string UpdatedAt;
         public readonly string WebUrl;

@@ -20,22 +20,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.LookupProjectTag(ctx, &GetProjectTagArgs{
-// 			Name:    "example",
-// 			Project: "foo/bar",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = gitlab.LookupProjectTag(ctx, &GetProjectTagArgs{
+//				Name:    "example",
+//				Project: "foo/bar",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupProjectTag(ctx *pulumi.Context, args *LookupProjectTagArgs, opts ...pulumi.InvokeOption) (*LookupProjectTagResult, error) {
 	var rv LookupProjectTagResult
@@ -48,21 +51,30 @@ func LookupProjectTag(ctx *pulumi.Context, args *LookupProjectTagArgs, opts ...p
 
 // A collection of arguments for invoking getProjectTag.
 type LookupProjectTagArgs struct {
-	Name    string `pulumi:"name"`
+	// The name of a tag.
+	Name string `pulumi:"name"`
+	// The ID or URL-encoded path of the project owned by the authenticated user.
 	Project string `pulumi:"project"`
 }
 
 // A collection of values returned by getProjectTag.
 type LookupProjectTagResult struct {
+	// The commit associated with the tag.
 	Commits []GetProjectTagCommit `pulumi:"commits"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string                 `pulumi:"id"`
-	Message   string                 `pulumi:"message"`
-	Name      string                 `pulumi:"name"`
-	Project   string                 `pulumi:"project"`
-	Protected bool                   `pulumi:"protected"`
-	Releases  []GetProjectTagRelease `pulumi:"releases"`
-	Target    string                 `pulumi:"target"`
+	Id string `pulumi:"id"`
+	// The message of the annotated tag.
+	Message string `pulumi:"message"`
+	// The name of a tag.
+	Name string `pulumi:"name"`
+	// The ID or URL-encoded path of the project owned by the authenticated user.
+	Project string `pulumi:"project"`
+	// Bool, true if tag has tag protection.
+	Protected bool `pulumi:"protected"`
+	// The release associated with the tag.
+	Releases []GetProjectTagRelease `pulumi:"releases"`
+	// The unique id assigned to the commit by Gitlab.
+	Target string `pulumi:"target"`
 }
 
 func LookupProjectTagOutput(ctx *pulumi.Context, args LookupProjectTagOutputArgs, opts ...pulumi.InvokeOption) LookupProjectTagResultOutput {
@@ -80,7 +92,9 @@ func LookupProjectTagOutput(ctx *pulumi.Context, args LookupProjectTagOutputArgs
 
 // A collection of arguments for invoking getProjectTag.
 type LookupProjectTagOutputArgs struct {
-	Name    pulumi.StringInput `pulumi:"name"`
+	// The name of a tag.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID or URL-encoded path of the project owned by the authenticated user.
 	Project pulumi.StringInput `pulumi:"project"`
 }
 
@@ -103,6 +117,7 @@ func (o LookupProjectTagResultOutput) ToLookupProjectTagResultOutputWithContext(
 	return o
 }
 
+// The commit associated with the tag.
 func (o LookupProjectTagResultOutput) Commits() GetProjectTagCommitArrayOutput {
 	return o.ApplyT(func(v LookupProjectTagResult) []GetProjectTagCommit { return v.Commits }).(GetProjectTagCommitArrayOutput)
 }
@@ -112,26 +127,32 @@ func (o LookupProjectTagResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectTagResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The message of the annotated tag.
 func (o LookupProjectTagResultOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectTagResult) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// The name of a tag.
 func (o LookupProjectTagResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectTagResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID or URL-encoded path of the project owned by the authenticated user.
 func (o LookupProjectTagResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectTagResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// Bool, true if tag has tag protection.
 func (o LookupProjectTagResultOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectTagResult) bool { return v.Protected }).(pulumi.BoolOutput)
 }
 
+// The release associated with the tag.
 func (o LookupProjectTagResultOutput) Releases() GetProjectTagReleaseArrayOutput {
 	return o.ApplyT(func(v LookupProjectTagResult) []GetProjectTagRelease { return v.Releases }).(GetProjectTagReleaseArrayOutput)
 }
 
+// The unique id assigned to the commit by Gitlab.
 func (o LookupProjectTagResultOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectTagResult) string { return v.Target }).(pulumi.StringOutput)
 }

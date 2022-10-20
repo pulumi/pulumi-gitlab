@@ -20,28 +20,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.GetProjectVariables(ctx, &GetProjectVariablesArgs{
-// 			Project: "my/example/project",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.GetProjectVariables(ctx, &GetProjectVariablesArgs{
-// 			EnvironmentScope: pulumi.StringRef("staging/*"),
-// 			Project:          "my/example/project",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = gitlab.GetProjectVariables(ctx, &GetProjectVariablesArgs{
+//				Project: "my/example/project",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.GetProjectVariables(ctx, &GetProjectVariablesArgs{
+//				EnvironmentScope: pulumi.StringRef("staging/*"),
+//				Project:          "my/example/project",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetProjectVariables(ctx *pulumi.Context, args *GetProjectVariablesArgs, opts ...pulumi.InvokeOption) (*GetProjectVariablesResult, error) {
 	var rv GetProjectVariablesResult
@@ -54,16 +57,21 @@ func GetProjectVariables(ctx *pulumi.Context, args *GetProjectVariablesArgs, opt
 
 // A collection of arguments for invoking getProjectVariables.
 type GetProjectVariablesArgs struct {
+	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope *string `pulumi:"environmentScope"`
-	Project          string  `pulumi:"project"`
+	// The name or id of the project.
+	Project string `pulumi:"project"`
 }
 
 // A collection of values returned by getProjectVariables.
 type GetProjectVariablesResult struct {
+	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string                        `pulumi:"id"`
-	Project   string                        `pulumi:"project"`
+	Id string `pulumi:"id"`
+	// The name or id of the project.
+	Project string `pulumi:"project"`
+	// The list of variables returned by the search
 	Variables []GetProjectVariablesVariable `pulumi:"variables"`
 }
 
@@ -82,8 +90,10 @@ func GetProjectVariablesOutput(ctx *pulumi.Context, args GetProjectVariablesOutp
 
 // A collection of arguments for invoking getProjectVariables.
 type GetProjectVariablesOutputArgs struct {
+	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope pulumi.StringPtrInput `pulumi:"environmentScope"`
-	Project          pulumi.StringInput    `pulumi:"project"`
+	// The name or id of the project.
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (GetProjectVariablesOutputArgs) ElementType() reflect.Type {
@@ -105,6 +115,7 @@ func (o GetProjectVariablesResultOutput) ToGetProjectVariablesResultOutputWithCo
 	return o
 }
 
+// The environment scope of the variable. Defaults to all environment (`*`).
 func (o GetProjectVariablesResultOutput) EnvironmentScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProjectVariablesResult) *string { return v.EnvironmentScope }).(pulumi.StringPtrOutput)
 }
@@ -114,10 +125,12 @@ func (o GetProjectVariablesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectVariablesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name or id of the project.
 func (o GetProjectVariablesResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectVariablesResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// The list of variables returned by the search
 func (o GetProjectVariablesResultOutput) Variables() GetProjectVariablesVariableArrayOutput {
 	return o.ApplyT(func(v GetProjectVariablesResult) []GetProjectVariablesVariable { return v.Variables }).(GetProjectVariablesVariableArrayOutput)
 }
