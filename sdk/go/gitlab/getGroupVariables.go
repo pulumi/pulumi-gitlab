@@ -20,28 +20,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.GetGroupVariables(ctx, &GetGroupVariablesArgs{
-// 			Group: "my/example/group",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.GetGroupVariables(ctx, &GetGroupVariablesArgs{
-// 			EnvironmentScope: pulumi.StringRef("staging/*"),
-// 			Group:            "my/example/group",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = gitlab.GetGroupVariables(ctx, &GetGroupVariablesArgs{
+//				Group: "my/example/group",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.GetGroupVariables(ctx, &GetGroupVariablesArgs{
+//				EnvironmentScope: pulumi.StringRef("staging/*"),
+//				Group:            "my/example/group",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetGroupVariables(ctx *pulumi.Context, args *GetGroupVariablesArgs, opts ...pulumi.InvokeOption) (*GetGroupVariablesResult, error) {
 	var rv GetGroupVariablesResult
@@ -54,16 +57,21 @@ func GetGroupVariables(ctx *pulumi.Context, args *GetGroupVariablesArgs, opts ..
 
 // A collection of arguments for invoking getGroupVariables.
 type GetGroupVariablesArgs struct {
+	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope *string `pulumi:"environmentScope"`
-	Group            string  `pulumi:"group"`
+	// The name or id of the group.
+	Group string `pulumi:"group"`
 }
 
 // A collection of values returned by getGroupVariables.
 type GetGroupVariablesResult struct {
+	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope *string `pulumi:"environmentScope"`
-	Group            string  `pulumi:"group"`
+	// The name or id of the group.
+	Group string `pulumi:"group"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string                      `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The list of variables returned by the search
 	Variables []GetGroupVariablesVariable `pulumi:"variables"`
 }
 
@@ -82,8 +90,10 @@ func GetGroupVariablesOutput(ctx *pulumi.Context, args GetGroupVariablesOutputAr
 
 // A collection of arguments for invoking getGroupVariables.
 type GetGroupVariablesOutputArgs struct {
+	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope pulumi.StringPtrInput `pulumi:"environmentScope"`
-	Group            pulumi.StringInput    `pulumi:"group"`
+	// The name or id of the group.
+	Group pulumi.StringInput `pulumi:"group"`
 }
 
 func (GetGroupVariablesOutputArgs) ElementType() reflect.Type {
@@ -105,10 +115,12 @@ func (o GetGroupVariablesResultOutput) ToGetGroupVariablesResultOutputWithContex
 	return o
 }
 
+// The environment scope of the variable. Defaults to all environment (`*`).
 func (o GetGroupVariablesResultOutput) EnvironmentScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGroupVariablesResult) *string { return v.EnvironmentScope }).(pulumi.StringPtrOutput)
 }
 
+// The name or id of the group.
 func (o GetGroupVariablesResultOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupVariablesResult) string { return v.Group }).(pulumi.StringOutput)
 }
@@ -118,6 +130,7 @@ func (o GetGroupVariablesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupVariablesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The list of variables returned by the search
 func (o GetGroupVariablesResultOutput) Variables() GetGroupVariablesVariableArrayOutput {
 	return o.ApplyT(func(v GetGroupVariablesResult) []GetGroupVariablesVariable { return v.Variables }).(GetGroupVariablesVariableArrayOutput)
 }

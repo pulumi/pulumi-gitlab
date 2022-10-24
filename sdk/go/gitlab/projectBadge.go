@@ -21,35 +21,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := gitlab.NewProject(ctx, "foo", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewProjectBadge(ctx, "example", &gitlab.ProjectBadgeArgs{
-// 			Project:  foo.ID(),
-// 			LinkUrl:  pulumi.String("https://example.com/badge-123"),
-// 			ImageUrl: pulumi.String("https://example.com/badge-123.svg"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := gitlab.NewProject(ctx, "foo", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectBadge(ctx, "example", &gitlab.ProjectBadgeArgs{
+//				Project:  foo.ID(),
+//				LinkUrl:  pulumi.String("https://example.com/badge-123"),
+//				ImageUrl: pulumi.String("https://example.com/badge-123.svg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # GitLab project badges can be imported using an id made up of `{project_id}:{badge_id}`, e.g.
+// GitLab project badges can be imported using an id made up of `{project_id}:{badge_id}`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectBadge:ProjectBadge foo 1:3
+//
+//	$ pulumi import gitlab:index/projectBadge:ProjectBadge foo 1:3
+//
 // ```
 type ProjectBadge struct {
 	pulumi.CustomResourceState
@@ -62,9 +67,9 @@ type ProjectBadge struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The id of the project to add the badge to.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The image_url argument rendered (in case of use of placeholders).
+	// The imageUrl argument rendered (in case of use of placeholders).
 	RenderedImageUrl pulumi.StringOutput `pulumi:"renderedImageUrl"`
-	// The link_url argument rendered (in case of use of placeholders).
+	// The linkUrl argument rendered (in case of use of placeholders).
 	RenderedLinkUrl pulumi.StringOutput `pulumi:"renderedLinkUrl"`
 }
 
@@ -114,9 +119,9 @@ type projectBadgeState struct {
 	Name *string `pulumi:"name"`
 	// The id of the project to add the badge to.
 	Project *string `pulumi:"project"`
-	// The image_url argument rendered (in case of use of placeholders).
+	// The imageUrl argument rendered (in case of use of placeholders).
 	RenderedImageUrl *string `pulumi:"renderedImageUrl"`
-	// The link_url argument rendered (in case of use of placeholders).
+	// The linkUrl argument rendered (in case of use of placeholders).
 	RenderedLinkUrl *string `pulumi:"renderedLinkUrl"`
 }
 
@@ -129,9 +134,9 @@ type ProjectBadgeState struct {
 	Name pulumi.StringPtrInput
 	// The id of the project to add the badge to.
 	Project pulumi.StringPtrInput
-	// The image_url argument rendered (in case of use of placeholders).
+	// The imageUrl argument rendered (in case of use of placeholders).
 	RenderedImageUrl pulumi.StringPtrInput
-	// The link_url argument rendered (in case of use of placeholders).
+	// The linkUrl argument rendered (in case of use of placeholders).
 	RenderedLinkUrl pulumi.StringPtrInput
 }
 
@@ -188,7 +193,7 @@ func (i *ProjectBadge) ToProjectBadgeOutputWithContext(ctx context.Context) Proj
 // ProjectBadgeArrayInput is an input type that accepts ProjectBadgeArray and ProjectBadgeArrayOutput values.
 // You can construct a concrete instance of `ProjectBadgeArrayInput` via:
 //
-//          ProjectBadgeArray{ ProjectBadgeArgs{...} }
+//	ProjectBadgeArray{ ProjectBadgeArgs{...} }
 type ProjectBadgeArrayInput interface {
 	pulumi.Input
 
@@ -213,7 +218,7 @@ func (i ProjectBadgeArray) ToProjectBadgeArrayOutputWithContext(ctx context.Cont
 // ProjectBadgeMapInput is an input type that accepts ProjectBadgeMap and ProjectBadgeMapOutput values.
 // You can construct a concrete instance of `ProjectBadgeMapInput` via:
 //
-//          ProjectBadgeMap{ "key": ProjectBadgeArgs{...} }
+//	ProjectBadgeMap{ "key": ProjectBadgeArgs{...} }
 type ProjectBadgeMapInput interface {
 	pulumi.Input
 
@@ -269,12 +274,12 @@ func (o ProjectBadgeOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectBadge) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The image_url argument rendered (in case of use of placeholders).
+// The imageUrl argument rendered (in case of use of placeholders).
 func (o ProjectBadgeOutput) RenderedImageUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectBadge) pulumi.StringOutput { return v.RenderedImageUrl }).(pulumi.StringOutput)
 }
 
-// The link_url argument rendered (in case of use of placeholders).
+// The linkUrl argument rendered (in case of use of placeholders).
 func (o ProjectBadgeOutput) RenderedLinkUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectBadge) pulumi.StringOutput { return v.RenderedLinkUrl }).(pulumi.StringOutput)
 }

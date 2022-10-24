@@ -19,33 +19,32 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var awesomeProject = new GitLab.Project("awesomeProject", new()
     ///     {
-    ///         var awesomeProject = new GitLab.Project("awesomeProject", new GitLab.ProjectArgs
-    ///         {
-    ///             Description = "My awesome project.",
-    ///             VisibilityLevel = "public",
-    ///         });
-    ///         var github = new GitLab.ServiceGithub("github", new GitLab.ServiceGithubArgs
-    ///         {
-    ///             Project = awesomeProject.Id,
-    ///             Token = "REDACTED",
-    ///             RepositoryUrl = "https://github.com/gitlabhq/terraform-provider-gitlab",
-    ///         });
-    ///     }
+    ///         Description = "My awesome project.",
+    ///         VisibilityLevel = "public",
+    ///     });
     /// 
-    /// }
+    ///     var github = new GitLab.ServiceGithub("github", new()
+    ///     {
+    ///         Project = awesomeProject.Id,
+    ///         Token = "REDACTED",
+    ///         RepositoryUrl = "https://github.com/gitlabhq/terraform-provider-gitlab",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/serviceGithub:ServiceGithub # You can import a service_github state using `&lt;resource&gt; &lt;project_id&gt;`
+    ///  $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a service_github state using `&lt;resource&gt; &lt;project_id&gt;`
     /// ```
     /// 
     /// ```sh
@@ -53,7 +52,7 @@ namespace Pulumi.GitLab
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/serviceGithub:ServiceGithub")]
-    public partial class ServiceGithub : Pulumi.CustomResource
+    public partial class ServiceGithub : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether the integration is active.
@@ -80,8 +79,7 @@ namespace Pulumi.GitLab
         public Output<string> RepositoryUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
-        /// See [Static / dynamic status check names] to learn more.
+        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         /// </summary>
         [Output("staticContext")]
         public Output<bool?> StaticContext { get; private set; } = null!;
@@ -127,6 +125,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -148,7 +150,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ServiceGithubArgs : Pulumi.ResourceArgs
+    public sealed class ServiceGithubArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the project you want to activate integration on.
@@ -163,24 +165,34 @@ namespace Pulumi.GitLab
         public Input<string> RepositoryUrl { get; set; } = null!;
 
         /// <summary>
-        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
-        /// See [Static / dynamic status check names] to learn more.
+        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         /// </summary>
         [Input("staticContext")]
         public Input<bool>? StaticContext { get; set; }
 
+        [Input("token", required: true)]
+        private Input<string>? _token;
+
         /// <summary>
         /// A GitHub personal access token with at least `repo:status` scope.
         /// </summary>
-        [Input("token", required: true)]
-        public Input<string> Token { get; set; } = null!;
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ServiceGithubArgs()
         {
         }
+        public static new ServiceGithubArgs Empty => new ServiceGithubArgs();
     }
 
-    public sealed class ServiceGithubState : Pulumi.ResourceArgs
+    public sealed class ServiceGithubState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the integration is active.
@@ -207,8 +219,7 @@ namespace Pulumi.GitLab
         public Input<string>? RepositoryUrl { get; set; }
 
         /// <summary>
-        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
-        /// See [Static / dynamic status check names] to learn more.
+        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         /// </summary>
         [Input("staticContext")]
         public Input<bool>? StaticContext { get; set; }
@@ -219,11 +230,21 @@ namespace Pulumi.GitLab
         [Input("title")]
         public Input<string>? Title { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// A GitHub personal access token with at least `repo:status` scope.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Update time.
@@ -234,5 +255,6 @@ namespace Pulumi.GitLab
         public ServiceGithubState()
         {
         }
+        public static new ServiceGithubState Empty => new ServiceGithubState();
     }
 }

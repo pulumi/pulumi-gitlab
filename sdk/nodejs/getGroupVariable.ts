@@ -44,8 +44,17 @@ export function getGroupVariable(args: GetGroupVariableArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getGroupVariable.
  */
 export interface GetGroupVariableArgs {
+    /**
+     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+     */
     environmentScope?: string;
+    /**
+     * The name or id of the group.
+     */
     group: string;
+    /**
+     * The name of the variable.
+     */
     key: string;
 }
 
@@ -53,16 +62,37 @@ export interface GetGroupVariableArgs {
  * A collection of values returned by getGroupVariable.
  */
 export interface GetGroupVariableResult {
+    /**
+     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+     */
     readonly environmentScope: string;
+    /**
+     * The name or id of the group.
+     */
     readonly group: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of the variable.
+     */
     readonly key: string;
+    /**
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     */
     readonly masked: boolean;
+    /**
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     */
     readonly protected: boolean;
+    /**
+     * The value of the variable.
+     */
     readonly value: string;
+    /**
+     * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+     */
     readonly variableType: string;
 }
 
@@ -74,7 +104,16 @@ export function getGroupVariableOutput(args: GetGroupVariableOutputArgs, opts?: 
  * A collection of arguments for invoking getGroupVariable.
  */
 export interface GetGroupVariableOutputArgs {
+    /**
+     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+     */
     environmentScope?: pulumi.Input<string>;
+    /**
+     * The name or id of the group.
+     */
     group: pulumi.Input<string>;
+    /**
+     * The name of the variable.
+     */
     key: pulumi.Input<string>;
 }

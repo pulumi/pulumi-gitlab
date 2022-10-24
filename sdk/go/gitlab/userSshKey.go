@@ -21,38 +21,43 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.LookupUser(ctx, &GetUserArgs{
-// 			Username: pulumi.StringRef("example-user"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewUserSshKey(ctx, "exampleUserSshKey", &gitlab.UserSshKeyArgs{
-// 			UserId:    pulumi.Any(data.Gitlab_user.Id),
-// 			Title:     pulumi.String("example-key"),
-// 			Key:       pulumi.String("ssh-rsa AAAA..."),
-// 			ExpiresAt: pulumi.String("2016-01-21T00:00:00.000Z"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = gitlab.LookupUser(ctx, &GetUserArgs{
+//				Username: pulumi.StringRef("example-user"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewUserSshKey(ctx, "exampleUserSshKey", &gitlab.UserSshKeyArgs{
+//				UserId:    pulumi.Any(data.Gitlab_user.Id),
+//				Title:     pulumi.String("example-key"),
+//				Key:       pulumi.String("ssh-rsa AAAA..."),
+//				ExpiresAt: pulumi.String("2016-01-21T00:00:00.000Z"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # You can import a user ssh key using an id made up of `{user-id}:{key}`, e.g.
+// You can import a user ssh key using an id made up of `{user-id}:{key}`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/userSshKey:UserSshKey example 42:1
+//
+//	$ pulumi import gitlab:index/userSshKey:UserSshKey example 42:1
+//
 // ```
 type UserSshKey struct {
 	pulumi.CustomResourceState
@@ -61,8 +66,7 @@ type UserSshKey struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
 	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
-	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with
-	// the username and GitLab hostname.
+	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The ID of the ssh key.
 	KeyId pulumi.IntOutput `pulumi:"keyId"`
@@ -114,8 +118,7 @@ type userSshKeyState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
 	ExpiresAt *string `pulumi:"expiresAt"`
-	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with
-	// the username and GitLab hostname.
+	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
 	Key *string `pulumi:"key"`
 	// The ID of the ssh key.
 	KeyId *int `pulumi:"keyId"`
@@ -130,8 +133,7 @@ type UserSshKeyState struct {
 	CreatedAt pulumi.StringPtrInput
 	// The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
 	ExpiresAt pulumi.StringPtrInput
-	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with
-	// the username and GitLab hostname.
+	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
 	Key pulumi.StringPtrInput
 	// The ID of the ssh key.
 	KeyId pulumi.IntPtrInput
@@ -148,8 +150,7 @@ func (UserSshKeyState) ElementType() reflect.Type {
 type userSshKeyArgs struct {
 	// The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
 	ExpiresAt *string `pulumi:"expiresAt"`
-	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with
-	// the username and GitLab hostname.
+	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
 	Key string `pulumi:"key"`
 	// The title of the ssh key.
 	Title string `pulumi:"title"`
@@ -161,8 +162,7 @@ type userSshKeyArgs struct {
 type UserSshKeyArgs struct {
 	// The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
 	ExpiresAt pulumi.StringPtrInput
-	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with
-	// the username and GitLab hostname.
+	// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
 	Key pulumi.StringInput
 	// The title of the ssh key.
 	Title pulumi.StringInput
@@ -196,7 +196,7 @@ func (i *UserSshKey) ToUserSshKeyOutputWithContext(ctx context.Context) UserSshK
 // UserSshKeyArrayInput is an input type that accepts UserSshKeyArray and UserSshKeyArrayOutput values.
 // You can construct a concrete instance of `UserSshKeyArrayInput` via:
 //
-//          UserSshKeyArray{ UserSshKeyArgs{...} }
+//	UserSshKeyArray{ UserSshKeyArgs{...} }
 type UserSshKeyArrayInput interface {
 	pulumi.Input
 
@@ -221,7 +221,7 @@ func (i UserSshKeyArray) ToUserSshKeyArrayOutputWithContext(ctx context.Context)
 // UserSshKeyMapInput is an input type that accepts UserSshKeyMap and UserSshKeyMapOutput values.
 // You can construct a concrete instance of `UserSshKeyMapInput` via:
 //
-//          UserSshKeyMap{ "key": UserSshKeyArgs{...} }
+//	UserSshKeyMap{ "key": UserSshKeyArgs{...} }
 type UserSshKeyMapInput interface {
 	pulumi.Input
 
@@ -267,8 +267,7 @@ func (o UserSshKeyOutput) ExpiresAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserSshKey) pulumi.StringPtrOutput { return v.ExpiresAt }).(pulumi.StringPtrOutput)
 }
 
-// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with
-// the username and GitLab hostname.
+// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
 func (o UserSshKeyOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserSshKey) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }

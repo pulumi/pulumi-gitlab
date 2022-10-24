@@ -19,45 +19,43 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var test = new GitLab.ProjectMembership("test", new()
     ///     {
-    ///         var test = new GitLab.ProjectMembership("test", new GitLab.ProjectMembershipArgs
-    ///         {
-    ///             AccessLevel = "guest",
-    ///             ProjectId = "12345",
-    ///             UserId = 1337,
-    ///         });
-    ///         var example = new GitLab.ProjectMembership("example", new GitLab.ProjectMembershipArgs
-    ///         {
-    ///             AccessLevel = "guest",
-    ///             ExpiresAt = "2022-12-31",
-    ///             ProjectId = "67890",
-    ///             UserId = 1234,
-    ///         });
-    ///     }
+    ///         AccessLevel = "guest",
+    ///         ProjectId = "12345",
+    ///         UserId = 1337,
+    ///     });
     /// 
-    /// }
+    ///     var example = new GitLab.ProjectMembership("example", new()
+    ///     {
+    ///         AccessLevel = "guest",
+    ///         ExpiresAt = "2022-12-31",
+    ///         ProjectId = "67890",
+    ///         UserId = 1234,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # GitLab project membership can be imported using an id made up of `project_id:user_id`, e.g.
+    /// GitLab project membership can be imported using an id made up of `project_id:user_id`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectMembership:ProjectMembership test "12345:1337"
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/projectMembership:ProjectMembership")]
-    public partial class ProjectMembership : Pulumi.CustomResource
+    public partial class ProjectMembership : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-        /// `owner`, `master`
+        /// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -124,11 +122,10 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ProjectMembershipArgs : Pulumi.ResourceArgs
+    public sealed class ProjectMembershipArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-        /// `owner`, `master`
+        /// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Input("accessLevel", required: true)]
         public Input<string> AccessLevel { get; set; } = null!;
@@ -154,13 +151,13 @@ namespace Pulumi.GitLab
         public ProjectMembershipArgs()
         {
         }
+        public static new ProjectMembershipArgs Empty => new ProjectMembershipArgs();
     }
 
-    public sealed class ProjectMembershipState : Pulumi.ResourceArgs
+    public sealed class ProjectMembershipState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-        /// `owner`, `master`
+        /// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -186,5 +183,6 @@ namespace Pulumi.GitLab
         public ProjectMembershipState()
         {
         }
+        public static new ProjectMembershipState Empty => new ProjectMembershipState();
     }
 }

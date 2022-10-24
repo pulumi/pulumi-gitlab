@@ -26,46 +26,45 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new GitLab.ClusterAgent("example", new()
     ///     {
-    ///         var example = new GitLab.ClusterAgent("example", new GitLab.ClusterAgentArgs
-    ///         {
-    ///             Project = "12345",
-    ///         });
-    ///         // Optionally, configure the agent as described in
-    ///         // https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file
-    ///         var exampleAgentConfig = new GitLab.RepositoryFile("exampleAgentConfig", new GitLab.RepositoryFileArgs
-    ///         {
-    ///             Project = example.Project,
-    ///             Branch = "main",
-    ///             FilePath = example.Name.Apply(name =&gt; $".gitlab/agents/{name}"),
-    ///             Content = @"  gitops:
+    ///         Project = "12345",
+    ///     });
+    /// 
+    ///     // Optionally, configure the agent as described in
+    ///     // https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file
+    ///     var exampleAgentConfig = new GitLab.RepositoryFile("exampleAgentConfig", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         Branch = "main",
+    ///         FilePath = example.Name.Apply(name =&gt; $".gitlab/agents/{name}"),
+    ///         Content = @"  gitops:
     ///     ...
     /// ",
-    ///             AuthorEmail = "terraform@example.com",
-    ///             AuthorName = "Terraform",
-    ///             CommitMessage = example.Name.Apply(name =&gt; $"feature: add agent config for {name}"),
-    ///         });
-    ///     }
+    ///         AuthorEmail = "terraform@example.com",
+    ///         AuthorName = "Terraform",
+    ///         CommitMessage = example.Name.Apply(name =&gt; $"feature: add agent config for {name}"),
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # GitLab Agent for Kubernetes can be imported with the following command and the id pattern `&lt;project&gt;:&lt;agent-id&gt;`
+    /// GitLab Agent for Kubernetes can be imported with the following command and the id pattern `&lt;project&gt;:&lt;agent-id&gt;`
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/clusterAgent:ClusterAgent example '12345:42'
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/clusterAgent:ClusterAgent")]
-    public partial class ClusterAgent : Pulumi.CustomResource
+    public partial class ClusterAgent : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the agent.
@@ -141,7 +140,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ClusterAgentArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAgentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Name of the agent.
@@ -158,9 +157,10 @@ namespace Pulumi.GitLab
         public ClusterAgentArgs()
         {
         }
+        public static new ClusterAgentArgs Empty => new ClusterAgentArgs();
     }
 
-    public sealed class ClusterAgentState : Pulumi.ResourceArgs
+    public sealed class ClusterAgentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the agent.
@@ -195,5 +195,6 @@ namespace Pulumi.GitLab
         public ClusterAgentState()
         {
         }
+        public static new ClusterAgentState Empty => new ClusterAgentState();
     }
 }

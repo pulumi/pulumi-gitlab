@@ -23,48 +23,55 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleGroup, err := gitlab.NewGroup(ctx, "exampleGroup", &gitlab.GroupArgs{
-// 			Path:        pulumi.String("example"),
-// 			Description: pulumi.String("An example group"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
-// 			Description: pulumi.String("An example project"),
-// 			NamespaceId: exampleGroup.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleGroup, err := gitlab.NewGroup(ctx, "exampleGroup", &gitlab.GroupArgs{
+//				Path:        pulumi.String("example"),
+//				Description: pulumi.String("An example group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProject(ctx, "exampleProject", &gitlab.ProjectArgs{
+//				Description: pulumi.String("An example project"),
+//				NamespaceId: exampleGroup.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import gitlab:index/group:Group # You can import a group state using `<resource> <id>`. The
+//
+//	$ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
+//
 // ```
 //
-// # `id` can be whatever the [details of a group][details_of_a_group] api takes for # its `:id` value, so for example
+//	`id` can be whatever the [details of a group][details_of_a_group] api takes for its `:id` value, so for example
 //
 // ```sh
-//  $ pulumi import gitlab:index/group:Group example example
+//
+//	$ pulumi import gitlab:index/group:Group example example
+//
 // ```
 type Group struct {
 	pulumi.CustomResourceState
 
 	// Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled pulumi.BoolPtrOutput `pulumi:"autoDevopsEnabled"`
-	// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+	// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
 	DefaultBranchProtection pulumi.IntPtrOutput `pulumi:"defaultBranchProtection"`
 	// The description of the group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -116,6 +123,10 @@ func NewGroup(ctx *pulumi.Context,
 	if args.Path == nil {
 		return nil, errors.New("invalid value for required argument 'Path'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"runnersToken",
+	})
+	opts = append(opts, secrets)
 	var resource Group
 	err := ctx.RegisterResource("gitlab:index/group:Group", name, args, &resource, opts...)
 	if err != nil {
@@ -140,7 +151,7 @@ func GetGroup(ctx *pulumi.Context,
 type groupState struct {
 	// Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
-	// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+	// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
 	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
 	// The description of the group.
 	Description *string `pulumi:"description"`
@@ -185,7 +196,7 @@ type groupState struct {
 type GroupState struct {
 	// Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled pulumi.BoolPtrInput
-	// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+	// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
 	DefaultBranchProtection pulumi.IntPtrInput
 	// The description of the group.
 	Description pulumi.StringPtrInput
@@ -234,7 +245,7 @@ func (GroupState) ElementType() reflect.Type {
 type groupArgs struct {
 	// Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
-	// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+	// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
 	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
 	// The description of the group.
 	Description *string `pulumi:"description"`
@@ -272,7 +283,7 @@ type groupArgs struct {
 type GroupArgs struct {
 	// Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled pulumi.BoolPtrInput
-	// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+	// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
 	DefaultBranchProtection pulumi.IntPtrInput
 	// The description of the group.
 	Description pulumi.StringPtrInput
@@ -332,7 +343,7 @@ func (i *Group) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 // GroupArrayInput is an input type that accepts GroupArray and GroupArrayOutput values.
 // You can construct a concrete instance of `GroupArrayInput` via:
 //
-//          GroupArray{ GroupArgs{...} }
+//	GroupArray{ GroupArgs{...} }
 type GroupArrayInput interface {
 	pulumi.Input
 
@@ -357,7 +368,7 @@ func (i GroupArray) ToGroupArrayOutputWithContext(ctx context.Context) GroupArra
 // GroupMapInput is an input type that accepts GroupMap and GroupMapOutput values.
 // You can construct a concrete instance of `GroupMapInput` via:
 //
-//          GroupMap{ "key": GroupArgs{...} }
+//	GroupMap{ "key": GroupArgs{...} }
 type GroupMapInput interface {
 	pulumi.Input
 
@@ -398,7 +409,7 @@ func (o GroupOutput) AutoDevopsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.AutoDevopsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
 func (o GroupOutput) DefaultBranchProtection() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.IntPtrOutput { return v.DefaultBranchProtection }).(pulumi.IntPtrOutput)
 }

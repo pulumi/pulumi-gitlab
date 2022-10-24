@@ -20,23 +20,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.LookupReleaseLink(ctx, &GetReleaseLinkArgs{
-// 			LinkId:  11,
-// 			Project: "foo/bar",
-// 			TagName: "v1.0.1",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = gitlab.LookupReleaseLink(ctx, &GetReleaseLinkArgs{
+//				LinkId:  11,
+//				Project: "foo/bar",
+//				TagName: "v1.0.1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupReleaseLink(ctx *pulumi.Context, args *LookupReleaseLinkArgs, opts ...pulumi.InvokeOption) (*LookupReleaseLinkResult, error) {
 	var rv LookupReleaseLinkResult
@@ -49,24 +52,36 @@ func LookupReleaseLink(ctx *pulumi.Context, args *LookupReleaseLinkArgs, opts ..
 
 // A collection of arguments for invoking getReleaseLink.
 type LookupReleaseLinkArgs struct {
-	LinkId  int    `pulumi:"linkId"`
+	// The ID of the link.
+	LinkId int `pulumi:"linkId"`
+	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
 	Project string `pulumi:"project"`
+	// The tag associated with the Release.
 	TagName string `pulumi:"tagName"`
 }
 
 // A collection of values returned by getReleaseLink.
 type LookupReleaseLinkResult struct {
+	// Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
 	DirectAssetUrl string `pulumi:"directAssetUrl"`
-	External       bool   `pulumi:"external"`
-	Filepath       string `pulumi:"filepath"`
+	// External or internal link.
+	External bool `pulumi:"external"`
+	// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+	Filepath string `pulumi:"filepath"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
-	LinkId   int    `pulumi:"linkId"`
+	Id string `pulumi:"id"`
+	// The ID of the link.
+	LinkId int `pulumi:"linkId"`
+	// The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
 	LinkType string `pulumi:"linkType"`
-	Name     string `pulumi:"name"`
-	Project  string `pulumi:"project"`
-	TagName  string `pulumi:"tagName"`
-	Url      string `pulumi:"url"`
+	// The name of the link. Link names must be unique within the release.
+	Name string `pulumi:"name"`
+	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+	Project string `pulumi:"project"`
+	// The tag associated with the Release.
+	TagName string `pulumi:"tagName"`
+	// The URL of the link. Link URLs must be unique within the release.
+	Url string `pulumi:"url"`
 }
 
 func LookupReleaseLinkOutput(ctx *pulumi.Context, args LookupReleaseLinkOutputArgs, opts ...pulumi.InvokeOption) LookupReleaseLinkResultOutput {
@@ -84,8 +99,11 @@ func LookupReleaseLinkOutput(ctx *pulumi.Context, args LookupReleaseLinkOutputAr
 
 // A collection of arguments for invoking getReleaseLink.
 type LookupReleaseLinkOutputArgs struct {
-	LinkId  pulumi.IntInput    `pulumi:"linkId"`
+	// The ID of the link.
+	LinkId pulumi.IntInput `pulumi:"linkId"`
+	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
 	Project pulumi.StringInput `pulumi:"project"`
+	// The tag associated with the Release.
 	TagName pulumi.StringInput `pulumi:"tagName"`
 }
 
@@ -108,14 +126,17 @@ func (o LookupReleaseLinkResultOutput) ToLookupReleaseLinkResultOutputWithContex
 	return o
 }
 
+// Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
 func (o LookupReleaseLinkResultOutput) DirectAssetUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) string { return v.DirectAssetUrl }).(pulumi.StringOutput)
 }
 
+// External or internal link.
 func (o LookupReleaseLinkResultOutput) External() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) bool { return v.External }).(pulumi.BoolOutput)
 }
 
+// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
 func (o LookupReleaseLinkResultOutput) Filepath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) string { return v.Filepath }).(pulumi.StringOutput)
 }
@@ -125,26 +146,32 @@ func (o LookupReleaseLinkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The ID of the link.
 func (o LookupReleaseLinkResultOutput) LinkId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) int { return v.LinkId }).(pulumi.IntOutput)
 }
 
+// The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
 func (o LookupReleaseLinkResultOutput) LinkType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) string { return v.LinkType }).(pulumi.StringOutput)
 }
 
+// The name of the link. Link names must be unique within the release.
 func (o LookupReleaseLinkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
 func (o LookupReleaseLinkResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// The tag associated with the Release.
 func (o LookupReleaseLinkResultOutput) TagName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) string { return v.TagName }).(pulumi.StringOutput)
 }
 
+// The URL of the link. Link URLs must be unique within the release.
 func (o LookupReleaseLinkResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) string { return v.Url }).(pulumi.StringOutput)
 }

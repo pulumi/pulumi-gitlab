@@ -20,16 +20,16 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// # A token for a GitLab Agent for Kubernetes can be imported with the following command and the id pattern `&lt;project&gt;:&lt;agent-id&gt;:&lt;token-id&gt;`
+    /// A token for a GitLab Agent for Kubernetes can be imported with the following command and the id pattern `&lt;project&gt;:&lt;agent-id&gt;:&lt;token-id&gt;`
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/clusterAgentToken:ClusterAgentToken example '12345:42:1'
     /// ```
     /// 
-    /// # ATTENTIONthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    ///  ATTENTIONthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/clusterAgentToken:ClusterAgentToken")]
-    public partial class ClusterAgentToken : Pulumi.CustomResource
+    public partial class ClusterAgentToken : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the agent.
@@ -135,7 +135,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ClusterAgentTokenArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAgentTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the agent.
@@ -164,9 +164,10 @@ namespace Pulumi.GitLab
         public ClusterAgentTokenArgs()
         {
         }
+        public static new ClusterAgentTokenArgs Empty => new ClusterAgentTokenArgs();
     }
 
-    public sealed class ClusterAgentTokenState : Pulumi.ResourceArgs
+    public sealed class ClusterAgentTokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the agent.
@@ -231,5 +232,6 @@ namespace Pulumi.GitLab
         public ClusterAgentTokenState()
         {
         }
+        public static new ClusterAgentTokenState Empty => new ClusterAgentTokenState();
     }
 }

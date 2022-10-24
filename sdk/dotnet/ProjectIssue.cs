@@ -13,45 +13,45 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new GitLab.Project("foo", new()
     ///     {
-    ///         var foo = new GitLab.Project("foo", new GitLab.ProjectArgs
-    ///         {
-    ///             Description = "Lorem Ipsum",
-    ///             VisibilityLevel = "public",
-    ///         });
-    ///         var welcomeIssue = new GitLab.ProjectIssue("welcomeIssue", new GitLab.ProjectIssueArgs
-    ///         {
-    ///             Project = foo.Id,
-    ///             Title = "Welcome!",
-    ///             Description = foo.Name.Apply(name =&gt; @$"  Welcome to the {name} project!
+    ///         Description = "Lorem Ipsum",
+    ///         VisibilityLevel = "public",
+    ///     });
+    /// 
+    ///     var welcomeIssue = new GitLab.ProjectIssue("welcomeIssue", new()
+    ///     {
+    ///         Project = foo.Id,
+    ///         Title = "Welcome!",
+    ///         Description = foo.Name.Apply(name =&gt; @$"  Welcome to the {name} project!
     /// 
     /// "),
-    ///             DiscussionLocked = true,
-    ///         });
-    ///         this.WelcomeIssueWebUrl = data.Gitlab_project_issue.Web_url;
-    ///     }
+    ///         DiscussionLocked = true,
+    ///     });
     /// 
-    ///     [Output("welcomeIssueWebUrl")]
-    ///     public Output&lt;string&gt; WelcomeIssueWebUrl { get; set; }
-    /// }
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["welcomeIssueWebUrl"] = data.Gitlab_project_issue.Web_url,
+    ///     };
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # You can import this resource with an id made up of `{project-id}:{issue-id}`, e.g.
+    /// You can import this resource with an id made up of `{project-id}:{issue-id}`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectIssue:ProjectIssue welcome_issue 42:1
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/projectIssue:ProjectIssue")]
-    public partial class ProjectIssue : Pulumi.CustomResource
+    public partial class ProjectIssue : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The IDs of the users to assign the issue to.
@@ -60,7 +60,7 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<int>> AssigneeIds { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the author of the issue. Use `gitlab_user` data source to get more information about the user.
+        /// The ID of the author of the issue. Use `gitlab.User` data source to get more information about the user.
         /// </summary>
         [Output("authorId")]
         public Output<int> AuthorId { get; private set; } = null!;
@@ -72,7 +72,7 @@ namespace Pulumi.GitLab
         public Output<string> ClosedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the user that closed the issue. Use `gitlab_user` data source to get more information about the user.
+        /// The ID of the user that closed the issue. Use `gitlab.User` data source to get more information about the user.
         /// </summary>
         [Output("closedByUserId")]
         public Output<int> ClosedByUserId { get; private set; } = null!;
@@ -84,8 +84,7 @@ namespace Pulumi.GitLab
         public Output<bool?> Confidential { get; private set; } = null!;
 
         /// <summary>
-        /// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires
-        /// administrator or project/group owner rights.
+        /// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -109,8 +108,7 @@ namespace Pulumi.GitLab
         public Output<bool?> DiscussionLocked { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as
-        /// resolved. Use in combination with merge_request_to_resolve_discussions_of.
+        /// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
         /// </summary>
         [Output("discussionToResolve")]
         public Output<string?> DiscussionToResolve { get; private set; } = null!;
@@ -122,8 +120,8 @@ namespace Pulumi.GitLab
         public Output<int> Downvotes { get; private set; } = null!;
 
         /// <summary>
-        /// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11. **Note:** removing a due date is
-        /// currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
+        /// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        /// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
         /// </summary>
         [Output("dueDate")]
         public Output<string?> DueDate { get; private set; } = null!;
@@ -195,8 +193,7 @@ namespace Pulumi.GitLab
         public Output<ImmutableDictionary<string, string>> Links { get; private set; } = null!;
 
         /// <summary>
-        /// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
-        /// all discussions as resolved. When passing a description or title, these values take precedence over the default values.
+        /// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
         /// </summary>
         [Output("mergeRequestToResolveDiscussionsOf")]
         public Output<int?> MergeRequestToResolveDiscussionsOf { get; private set; } = null!;
@@ -208,8 +205,7 @@ namespace Pulumi.GitLab
         public Output<int> MergeRequestsCount { get; private set; } = null!;
 
         /// <summary>
-        /// The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with
-        /// the milestone assigned and use the API to retrieve the issue's details.
+        /// The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
         /// </summary>
         [Output("milestoneId")]
         public Output<int?> MilestoneId { get; private set; } = null!;
@@ -342,7 +338,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ProjectIssueArgs : Pulumi.ResourceArgs
+    public sealed class ProjectIssueArgs : global::Pulumi.ResourceArgs
     {
         [Input("assigneeIds")]
         private InputList<int>? _assigneeIds;
@@ -363,8 +359,7 @@ namespace Pulumi.GitLab
         public Input<bool>? Confidential { get; set; }
 
         /// <summary>
-        /// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires
-        /// administrator or project/group owner rights.
+        /// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -388,15 +383,14 @@ namespace Pulumi.GitLab
         public Input<bool>? DiscussionLocked { get; set; }
 
         /// <summary>
-        /// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as
-        /// resolved. Use in combination with merge_request_to_resolve_discussions_of.
+        /// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
         /// </summary>
         [Input("discussionToResolve")]
         public Input<string>? DiscussionToResolve { get; set; }
 
         /// <summary>
-        /// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11. **Note:** removing a due date is
-        /// currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
+        /// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        /// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
         /// </summary>
         [Input("dueDate")]
         public Input<string>? DueDate { get; set; }
@@ -432,15 +426,13 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
-        /// all discussions as resolved. When passing a description or title, these values take precedence over the default values.
+        /// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
         /// </summary>
         [Input("mergeRequestToResolveDiscussionsOf")]
         public Input<int>? MergeRequestToResolveDiscussionsOf { get; set; }
 
         /// <summary>
-        /// The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with
-        /// the milestone assigned and use the API to retrieve the issue's details.
+        /// The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
         /// </summary>
         [Input("milestoneId")]
         public Input<int>? MilestoneId { get; set; }
@@ -478,9 +470,10 @@ namespace Pulumi.GitLab
         public ProjectIssueArgs()
         {
         }
+        public static new ProjectIssueArgs Empty => new ProjectIssueArgs();
     }
 
-    public sealed class ProjectIssueState : Pulumi.ResourceArgs
+    public sealed class ProjectIssueState : global::Pulumi.ResourceArgs
     {
         [Input("assigneeIds")]
         private InputList<int>? _assigneeIds;
@@ -495,7 +488,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The ID of the author of the issue. Use `gitlab_user` data source to get more information about the user.
+        /// The ID of the author of the issue. Use `gitlab.User` data source to get more information about the user.
         /// </summary>
         [Input("authorId")]
         public Input<int>? AuthorId { get; set; }
@@ -507,7 +500,7 @@ namespace Pulumi.GitLab
         public Input<string>? ClosedAt { get; set; }
 
         /// <summary>
-        /// The ID of the user that closed the issue. Use `gitlab_user` data source to get more information about the user.
+        /// The ID of the user that closed the issue. Use `gitlab.User` data source to get more information about the user.
         /// </summary>
         [Input("closedByUserId")]
         public Input<int>? ClosedByUserId { get; set; }
@@ -519,8 +512,7 @@ namespace Pulumi.GitLab
         public Input<bool>? Confidential { get; set; }
 
         /// <summary>
-        /// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires
-        /// administrator or project/group owner rights.
+        /// When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -544,8 +536,7 @@ namespace Pulumi.GitLab
         public Input<bool>? DiscussionLocked { get; set; }
 
         /// <summary>
-        /// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as
-        /// resolved. Use in combination with merge_request_to_resolve_discussions_of.
+        /// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
         /// </summary>
         [Input("discussionToResolve")]
         public Input<string>? DiscussionToResolve { get; set; }
@@ -557,8 +548,8 @@ namespace Pulumi.GitLab
         public Input<int>? Downvotes { get; set; }
 
         /// <summary>
-        /// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11. **Note:** removing a due date is
-        /// currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
+        /// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        /// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
         /// </summary>
         [Input("dueDate")]
         public Input<string>? DueDate { get; set; }
@@ -642,8 +633,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark
-        /// all discussions as resolved. When passing a description or title, these values take precedence over the default values.
+        /// The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
         /// </summary>
         [Input("mergeRequestToResolveDiscussionsOf")]
         public Input<int>? MergeRequestToResolveDiscussionsOf { get; set; }
@@ -655,8 +645,7 @@ namespace Pulumi.GitLab
         public Input<int>? MergeRequestsCount { get; set; }
 
         /// <summary>
-        /// The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with
-        /// the milestone assigned and use the API to retrieve the issue's details.
+        /// The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
         /// </summary>
         [Input("milestoneId")]
         public Input<int>? MilestoneId { get; set; }
@@ -760,5 +749,6 @@ namespace Pulumi.GitLab
         public ProjectIssueState()
         {
         }
+        public static new ProjectIssueState Empty => new ProjectIssueState();
     }
 }

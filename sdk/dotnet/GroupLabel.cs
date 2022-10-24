@@ -17,38 +17,35 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fixme = new GitLab.GroupLabel("fixme", new()
     ///     {
-    ///         var fixme = new GitLab.GroupLabel("fixme", new GitLab.GroupLabelArgs
-    ///         {
-    ///             Color = "#ffcc00",
-    ///             Description = "issue with failing tests",
-    ///             Group = "example",
-    ///         });
-    ///     }
+    ///         Color = "#ffcc00",
+    ///         Description = "issue with failing tests",
+    ///         Group = "example",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
+    /// Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/groupLabel:GroupLabel example 12345:fixme
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/groupLabel:GroupLabel")]
-    public partial class GroupLabel : Pulumi.CustomResource
+    public partial class GroupLabel : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-        /// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         /// </summary>
         [Output("color")]
         public Output<string> Color { get; private set; } = null!;
@@ -115,11 +112,10 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class GroupLabelArgs : Pulumi.ResourceArgs
+    public sealed class GroupLabelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-        /// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         /// </summary>
         [Input("color", required: true)]
         public Input<string> Color { get; set; } = null!;
@@ -145,13 +141,13 @@ namespace Pulumi.GitLab
         public GroupLabelArgs()
         {
         }
+        public static new GroupLabelArgs Empty => new GroupLabelArgs();
     }
 
-    public sealed class GroupLabelState : Pulumi.ResourceArgs
+    public sealed class GroupLabelState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-        /// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }
@@ -177,5 +173,6 @@ namespace Pulumi.GitLab
         public GroupLabelState()
         {
         }
+        public static new GroupLabelState Empty => new GroupLabelState();
     }
 }

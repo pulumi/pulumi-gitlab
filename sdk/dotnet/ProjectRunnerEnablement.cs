@@ -17,33 +17,31 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new GitLab.ProjectRunnerEnablement("foo", new()
     ///     {
-    ///         var foo = new GitLab.ProjectRunnerEnablement("foo", new GitLab.ProjectRunnerEnablementArgs
-    ///         {
-    ///             Project = "5",
-    ///             RunnerId = 7,
-    ///         });
-    ///     }
+    ///         Project = "5",
+    ///         RunnerId = 7,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # GitLab project runners can be imported using an id made up of `project:runner_id`, e.g.
+    /// GitLab project runners can be imported using an id made up of `project:runner_id`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement foo 5:7
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement")]
-    public partial class ProjectRunnerEnablement : Pulumi.CustomResource
+    public partial class ProjectRunnerEnablement : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID or URL-encoded path of the project owned by the authenticated user.
@@ -101,7 +99,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ProjectRunnerEnablementArgs : Pulumi.ResourceArgs
+    public sealed class ProjectRunnerEnablementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID or URL-encoded path of the project owned by the authenticated user.
@@ -118,9 +116,10 @@ namespace Pulumi.GitLab
         public ProjectRunnerEnablementArgs()
         {
         }
+        public static new ProjectRunnerEnablementArgs Empty => new ProjectRunnerEnablementArgs();
     }
 
-    public sealed class ProjectRunnerEnablementState : Pulumi.ResourceArgs
+    public sealed class ProjectRunnerEnablementState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID or URL-encoded path of the project owned by the authenticated user.
@@ -137,5 +136,6 @@ namespace Pulumi.GitLab
         public ProjectRunnerEnablementState()
         {
         }
+        public static new ProjectRunnerEnablementState Empty => new ProjectRunnerEnablementState();
     }
 }

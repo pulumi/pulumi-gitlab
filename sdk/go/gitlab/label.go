@@ -21,45 +21,49 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewLabel(ctx, "fixme", &gitlab.LabelArgs{
-// 			Project:     pulumi.String("example"),
-// 			Description: pulumi.String("issue with failing tests"),
-// 			Color:       pulumi.String("#ffcc00"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewLabel(ctx, "devopsCreate", &gitlab.LabelArgs{
-// 			Project:     pulumi.Any(gitlab_project.Example.Id),
-// 			Description: pulumi.String("issue for creating infrastructure resources"),
-// 			Color:       pulumi.String("#ffa500"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewLabel(ctx, "fixme", &gitlab.LabelArgs{
+//				Project:     pulumi.String("example"),
+//				Description: pulumi.String("issue with failing tests"),
+//				Color:       pulumi.String("#ffcc00"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewLabel(ctx, "devopsCreate", &gitlab.LabelArgs{
+//				Project:     pulumi.Any(gitlab_project.Example.Id),
+//				Description: pulumi.String("issue for creating infrastructure resources"),
+//				Color:       pulumi.String("#ffa500"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # Gitlab labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
+// Gitlab labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/label:Label example 12345:fixme
+//
+//	$ pulumi import gitlab:index/label:Label example 12345:fixme
+//
 // ```
 type Label struct {
 	pulumi.CustomResourceState
 
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-	// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color pulumi.StringOutput `pulumi:"color"`
 	// The description of the label.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -104,8 +108,7 @@ func GetLabel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Label resources.
 type labelState struct {
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-	// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color *string `pulumi:"color"`
 	// The description of the label.
 	Description *string `pulumi:"description"`
@@ -116,8 +119,7 @@ type labelState struct {
 }
 
 type LabelState struct {
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-	// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color pulumi.StringPtrInput
 	// The description of the label.
 	Description pulumi.StringPtrInput
@@ -132,8 +134,7 @@ func (LabelState) ElementType() reflect.Type {
 }
 
 type labelArgs struct {
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-	// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color string `pulumi:"color"`
 	// The description of the label.
 	Description *string `pulumi:"description"`
@@ -145,8 +146,7 @@ type labelArgs struct {
 
 // The set of arguments for constructing a Label resource.
 type LabelArgs struct {
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-	// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color pulumi.StringInput
 	// The description of the label.
 	Description pulumi.StringPtrInput
@@ -182,7 +182,7 @@ func (i *Label) ToLabelOutputWithContext(ctx context.Context) LabelOutput {
 // LabelArrayInput is an input type that accepts LabelArray and LabelArrayOutput values.
 // You can construct a concrete instance of `LabelArrayInput` via:
 //
-//          LabelArray{ LabelArgs{...} }
+//	LabelArray{ LabelArgs{...} }
 type LabelArrayInput interface {
 	pulumi.Input
 
@@ -207,7 +207,7 @@ func (i LabelArray) ToLabelArrayOutputWithContext(ctx context.Context) LabelArra
 // LabelMapInput is an input type that accepts LabelMap and LabelMapOutput values.
 // You can construct a concrete instance of `LabelMapInput` via:
 //
-//          LabelMap{ "key": LabelArgs{...} }
+//	LabelMap{ "key": LabelArgs{...} }
 type LabelMapInput interface {
 	pulumi.Input
 
@@ -243,8 +243,7 @@ func (o LabelOutput) ToLabelOutputWithContext(ctx context.Context) LabelOutput {
 	return o
 }
 
-// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color
-// names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 func (o LabelOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v *Label) pulumi.StringOutput { return v.Color }).(pulumi.StringOutput)
 }

@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # You can import a service_jira state using the project ID, e.g.
+ * You can import a service_jira state using the project ID, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/serviceJira:ServiceJira jira 1
@@ -88,9 +88,7 @@ export class ServiceJira extends pulumi.CustomResource {
      */
     public readonly issuesEvents!: pulumi.Output<boolean>;
     /**
-     * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
-     * administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
-     * project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
+     * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
      */
     public readonly jiraIssueTransitionId!: pulumi.Output<string | undefined>;
     /**
@@ -126,7 +124,7 @@ export class ServiceJira extends pulumi.CustomResource {
      */
     public readonly pushEvents!: pulumi.Output<boolean>;
     /**
-     * Enable notifications for tag_push events.
+     * Enable notifications for tagPush events.
      */
     public readonly tagPushEvents!: pulumi.Output<boolean>;
     /**
@@ -201,7 +199,7 @@ export class ServiceJira extends pulumi.CustomResource {
             resourceInputs["jobEvents"] = args ? args.jobEvents : undefined;
             resourceInputs["mergeRequestsEvents"] = args ? args.mergeRequestsEvents : undefined;
             resourceInputs["noteEvents"] = args ? args.noteEvents : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["pipelineEvents"] = args ? args.pipelineEvents : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["projectKey"] = args ? args.projectKey : undefined;
@@ -215,6 +213,8 @@ export class ServiceJira extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ServiceJira.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -248,9 +248,7 @@ export interface ServiceJiraState {
      */
     issuesEvents?: pulumi.Input<boolean>;
     /**
-     * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
-     * administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
-     * project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
+     * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
      */
     jiraIssueTransitionId?: pulumi.Input<string>;
     /**
@@ -286,7 +284,7 @@ export interface ServiceJiraState {
      */
     pushEvents?: pulumi.Input<boolean>;
     /**
-     * Enable notifications for tag_push events.
+     * Enable notifications for tagPush events.
      */
     tagPushEvents?: pulumi.Input<boolean>;
     /**
@@ -328,9 +326,7 @@ export interface ServiceJiraArgs {
      */
     issuesEvents?: pulumi.Input<boolean>;
     /**
-     * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow
-     * administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your
-     * project. By default, this ID is set to 2. **Note**: importing this field is currently not supported.
+     * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
      */
     jiraIssueTransitionId?: pulumi.Input<string>;
     /**
@@ -366,7 +362,7 @@ export interface ServiceJiraArgs {
      */
     pushEvents?: pulumi.Input<boolean>;
     /**
-     * Enable notifications for tag_push events.
+     * Enable notifications for tagPush events.
      */
     tagPushEvents?: pulumi.Input<boolean>;
     /**

@@ -31,10 +31,10 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import gitlab:index/group:Group # You can import a group state using `<resource> <id>`. The
+ *  $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
  * ```
  *
- * # `id` can be whatever the [details of a group][details_of_a_group] api takes for # its `:id` value, so for example
+ *  `id` can be whatever the [details of a group][details_of_a_group] api takes for its `:id` value, so for example
  *
  * ```sh
  *  $ pulumi import gitlab:index/group:Group example example
@@ -73,7 +73,7 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly autoDevopsEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+     * Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
      */
     public readonly defaultBranchProtection!: pulumi.Output<number | undefined>;
     /**
@@ -215,6 +215,8 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["webUrl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["runnersToken"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Group.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -228,7 +230,7 @@ export interface GroupState {
      */
     autoDevopsEnabled?: pulumi.Input<boolean>;
     /**
-     * Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+     * Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
      */
     defaultBranchProtection?: pulumi.Input<number>;
     /**
@@ -318,7 +320,7 @@ export interface GroupArgs {
      */
     autoDevopsEnabled?: pulumi.Input<boolean>;
     /**
-     * Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default_branch_protection
+     * Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
      */
     defaultBranchProtection?: pulumi.Input<number>;
     /**

@@ -23,27 +23,25 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = GitLab.GetClusterAgent.Invoke(new()
         ///     {
-        ///         var example = Output.Create(GitLab.GetClusterAgent.InvokeAsync(new GitLab.GetClusterAgentArgs
-        ///         {
-        ///             AgentId = 1,
-        ///             Project = "12345",
-        ///         }));
-        ///     }
+        ///         AgentId = 1,
+        ///         Project = "12345",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterAgentResult> InvokeAsync(GetClusterAgentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAgentResult>("gitlab:index/getClusterAgent:getClusterAgent", args ?? new GetClusterAgentArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterAgentResult>("gitlab:index/getClusterAgent:getClusterAgent", args ?? new GetClusterAgentArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `gitlab.ClusterAgent` data source allows to retrieve details about a GitLab Agent for Kubernetes.
@@ -57,68 +55,95 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = GitLab.GetClusterAgent.Invoke(new()
         ///     {
-        ///         var example = Output.Create(GitLab.GetClusterAgent.InvokeAsync(new GitLab.GetClusterAgentArgs
-        ///         {
-        ///             AgentId = 1,
-        ///             Project = "12345",
-        ///         }));
-        ///     }
+        ///         AgentId = 1,
+        ///         Project = "12345",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClusterAgentResult> Invoke(GetClusterAgentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClusterAgentResult>("gitlab:index/getClusterAgent:getClusterAgent", args ?? new GetClusterAgentInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClusterAgentResult>("gitlab:index/getClusterAgent:getClusterAgent", args ?? new GetClusterAgentInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetClusterAgentArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterAgentArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the agent.
+        /// </summary>
         [Input("agentId", required: true)]
         public int AgentId { get; set; }
 
+        /// <summary>
+        /// ID or full path of the project maintained by the authenticated user.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         public GetClusterAgentArgs()
         {
         }
+        public static new GetClusterAgentArgs Empty => new GetClusterAgentArgs();
     }
 
-    public sealed class GetClusterAgentInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterAgentInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the agent.
+        /// </summary>
         [Input("agentId", required: true)]
         public Input<int> AgentId { get; set; } = null!;
 
+        /// <summary>
+        /// ID or full path of the project maintained by the authenticated user.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         public GetClusterAgentInvokeArgs()
         {
         }
+        public static new GetClusterAgentInvokeArgs Empty => new GetClusterAgentInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetClusterAgentResult
     {
+        /// <summary>
+        /// The ID of the agent.
+        /// </summary>
         public readonly int AgentId;
+        /// <summary>
+        /// The ISO8601 datetime when the agent was created.
+        /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// The ID of the user who created the agent.
+        /// </summary>
         public readonly int CreatedByUserId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The Name of the agent.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// ID or full path of the project maintained by the authenticated user.
+        /// </summary>
         public readonly string Project;
 
         [OutputConstructor]

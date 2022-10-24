@@ -21,40 +21,44 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewGroupShareGroup(ctx, "test", &gitlab.GroupShareGroupArgs{
-// 			GroupId:      pulumi.Any(gitlab_group.Foo.Id),
-// 			ShareGroupId: pulumi.Any(gitlab_group.Bar.Id),
-// 			GroupAccess:  pulumi.String("guest"),
-// 			ExpiresAt:    pulumi.String("2099-01-01"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewGroupShareGroup(ctx, "test", &gitlab.GroupShareGroupArgs{
+//				GroupId:      pulumi.Any(gitlab_group.Foo.Id),
+//				ShareGroupId: pulumi.Any(gitlab_group.Bar.Id),
+//				GroupAccess:  pulumi.String("guest"),
+//				ExpiresAt:    pulumi.String("2099-01-01"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
+// GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/groupShareGroup:GroupShareGroup test 12345:1337
+//
+//	$ pulumi import gitlab:index/groupShareGroup:GroupShareGroup test 12345:1337
+//
 // ```
 type GroupShareGroup struct {
 	pulumi.CustomResourceState
 
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
-	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-	// `maintainer`, `owner`, `master`
+	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
 	GroupAccess pulumi.StringOutput `pulumi:"groupAccess"`
 	// The id of the main group to be shared.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
@@ -102,8 +106,7 @@ func GetGroupShareGroup(ctx *pulumi.Context,
 type groupShareGroupState struct {
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
-	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-	// `maintainer`, `owner`, `master`
+	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
 	GroupAccess *string `pulumi:"groupAccess"`
 	// The id of the main group to be shared.
 	GroupId *string `pulumi:"groupId"`
@@ -114,8 +117,7 @@ type groupShareGroupState struct {
 type GroupShareGroupState struct {
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
-	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-	// `maintainer`, `owner`, `master`
+	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
 	GroupAccess pulumi.StringPtrInput
 	// The id of the main group to be shared.
 	GroupId pulumi.StringPtrInput
@@ -130,8 +132,7 @@ func (GroupShareGroupState) ElementType() reflect.Type {
 type groupShareGroupArgs struct {
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
-	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-	// `maintainer`, `owner`, `master`
+	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
 	GroupAccess string `pulumi:"groupAccess"`
 	// The id of the main group to be shared.
 	GroupId string `pulumi:"groupId"`
@@ -143,8 +144,7 @@ type groupShareGroupArgs struct {
 type GroupShareGroupArgs struct {
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
-	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-	// `maintainer`, `owner`, `master`
+	// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
 	GroupAccess pulumi.StringInput
 	// The id of the main group to be shared.
 	GroupId pulumi.StringInput
@@ -178,7 +178,7 @@ func (i *GroupShareGroup) ToGroupShareGroupOutputWithContext(ctx context.Context
 // GroupShareGroupArrayInput is an input type that accepts GroupShareGroupArray and GroupShareGroupArrayOutput values.
 // You can construct a concrete instance of `GroupShareGroupArrayInput` via:
 //
-//          GroupShareGroupArray{ GroupShareGroupArgs{...} }
+//	GroupShareGroupArray{ GroupShareGroupArgs{...} }
 type GroupShareGroupArrayInput interface {
 	pulumi.Input
 
@@ -203,7 +203,7 @@ func (i GroupShareGroupArray) ToGroupShareGroupArrayOutputWithContext(ctx contex
 // GroupShareGroupMapInput is an input type that accepts GroupShareGroupMap and GroupShareGroupMapOutput values.
 // You can construct a concrete instance of `GroupShareGroupMapInput` via:
 //
-//          GroupShareGroupMap{ "key": GroupShareGroupArgs{...} }
+//	GroupShareGroupMap{ "key": GroupShareGroupArgs{...} }
 type GroupShareGroupMapInput interface {
 	pulumi.Input
 
@@ -244,8 +244,7 @@ func (o GroupShareGroupOutput) ExpiresAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupShareGroup) pulumi.StringPtrOutput { return v.ExpiresAt }).(pulumi.StringPtrOutput)
 }
 
-// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`,
-// `maintainer`, `owner`, `master`
+// The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
 func (o GroupShareGroupOutput) GroupAccess() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupShareGroup) pulumi.StringOutput { return v.GroupAccess }).(pulumi.StringOutput)
 }

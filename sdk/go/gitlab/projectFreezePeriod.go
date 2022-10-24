@@ -21,32 +21,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewProjectFreezePeriod(ctx, "schedule", &gitlab.ProjectFreezePeriodArgs{
-// 			ProjectId:    pulumi.Any(gitlab_project.Foo.Id),
-// 			FreezeStart:  pulumi.String("0 23 * * 5"),
-// 			FreezeEnd:    pulumi.String("0 7 * * 1"),
-// 			CronTimezone: pulumi.String("UTC"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewProjectFreezePeriod(ctx, "schedule", &gitlab.ProjectFreezePeriodArgs{
+//				ProjectId:    pulumi.Any(gitlab_project.Foo.Id),
+//				FreezeStart:  pulumi.String("0 23 * * 5"),
+//				FreezeEnd:    pulumi.String("0 7 * * 1"),
+//				CronTimezone: pulumi.String("UTC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # GitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, e.g.
+// GitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectFreezePeriod:ProjectFreezePeriod schedule "12345:1337"
+//
+//	$ pulumi import gitlab:index/projectFreezePeriod:ProjectFreezePeriod schedule "12345:1337"
+//
 // ```
 type ProjectFreezePeriod struct {
 	pulumi.CustomResourceState
@@ -173,7 +178,7 @@ func (i *ProjectFreezePeriod) ToProjectFreezePeriodOutputWithContext(ctx context
 // ProjectFreezePeriodArrayInput is an input type that accepts ProjectFreezePeriodArray and ProjectFreezePeriodArrayOutput values.
 // You can construct a concrete instance of `ProjectFreezePeriodArrayInput` via:
 //
-//          ProjectFreezePeriodArray{ ProjectFreezePeriodArgs{...} }
+//	ProjectFreezePeriodArray{ ProjectFreezePeriodArgs{...} }
 type ProjectFreezePeriodArrayInput interface {
 	pulumi.Input
 
@@ -198,7 +203,7 @@ func (i ProjectFreezePeriodArray) ToProjectFreezePeriodArrayOutputWithContext(ct
 // ProjectFreezePeriodMapInput is an input type that accepts ProjectFreezePeriodMap and ProjectFreezePeriodMapOutput values.
 // You can construct a concrete instance of `ProjectFreezePeriodMapInput` via:
 //
-//          ProjectFreezePeriodMap{ "key": ProjectFreezePeriodArgs{...} }
+//	ProjectFreezePeriodMap{ "key": ProjectFreezePeriodArgs{...} }
 type ProjectFreezePeriodMapInput interface {
 	pulumi.Input
 

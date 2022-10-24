@@ -17,41 +17,40 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a project for the tag to use
+    ///     var exampleProject = new GitLab.Project("exampleProject", new()
     ///     {
-    ///         // Create a project for the tag to use
-    ///         var exampleProject = new GitLab.Project("exampleProject", new GitLab.ProjectArgs
-    ///         {
-    ///             Description = "An example project",
-    ///             NamespaceId = gitlab_group.Example.Id,
-    ///         });
-    ///         var exampleProjectTag = new GitLab.ProjectTag("exampleProjectTag", new GitLab.ProjectTagArgs
-    ///         {
-    ///             Ref = "main",
-    ///             Project = exampleProject.Id,
-    ///         });
-    ///     }
+    ///         Description = "An example project",
+    ///         NamespaceId = gitlab_group.Example.Id,
+    ///     });
     /// 
-    /// }
+    ///     var exampleProjectTag = new GitLab.ProjectTag("exampleProjectTag", new()
+    ///     {
+    ///         Ref = "main",
+    ///         Project = exampleProject.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # Gitlab project tags can be imported with a key composed of `&lt;project_id&gt;:&lt;tag_name&gt;`, e.g.
+    /// Gitlab project tags can be imported with a key composed of `&lt;project_id&gt;:&lt;tag_name&gt;`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectTag:ProjectTag example "12345:develop"
     /// ```
     /// 
-    /// # NOTEthe `ref` attribute won't be available for imported `gitlab_project_tag` resources.
+    ///  NOTEthe `ref` attribute won't be available for imported `gitlab_project_tag` resources.
     /// </summary>
     [GitLabResourceType("gitlab:index/projectTag:ProjectTag")]
-    public partial class ProjectTag : Pulumi.CustomResource
+    public partial class ProjectTag : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The commit associated with the tag.
@@ -145,7 +144,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ProjectTagArgs : Pulumi.ResourceArgs
+    public sealed class ProjectTagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The message of the annotated tag.
@@ -174,9 +173,10 @@ namespace Pulumi.GitLab
         public ProjectTagArgs()
         {
         }
+        public static new ProjectTagArgs Empty => new ProjectTagArgs();
     }
 
-    public sealed class ProjectTagState : Pulumi.ResourceArgs
+    public sealed class ProjectTagState : global::Pulumi.ResourceArgs
     {
         [Input("commits")]
         private InputList<Inputs.ProjectTagCommitGetArgs>? _commits;
@@ -241,5 +241,6 @@ namespace Pulumi.GitLab
         public ProjectTagState()
         {
         }
+        public static new ProjectTagState Empty => new ProjectTagState();
     }
 }

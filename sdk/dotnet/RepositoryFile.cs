@@ -12,14 +12,14 @@ namespace Pulumi.GitLab
     /// <summary>
     /// ## Import
     /// 
-    /// # A Repository File can be imported using an id made up of `&lt;project-id&gt;:&lt;branch-name&gt;:&lt;file-path&gt;`, e.g.
+    /// A Repository File can be imported using an id made up of `&lt;project-id&gt;:&lt;branch-name&gt;:&lt;file-path&gt;`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/repositoryFile:RepositoryFile this 1:main:foo/bar.txt
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/repositoryFile:RepositoryFile")]
-    public partial class RepositoryFile : Pulumi.CustomResource
+    public partial class RepositoryFile : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Email of the commit author.
@@ -58,8 +58,7 @@ namespace Pulumi.GitLab
         public Output<string> CommitMessage { get; private set; } = null!;
 
         /// <summary>
-        /// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
-        /// supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        /// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
         /// </summary>
         [Output("content")]
         public Output<string> Content { get; private set; } = null!;
@@ -168,7 +167,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class RepositoryFileArgs : Pulumi.ResourceArgs
+    public sealed class RepositoryFileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Email of the commit author.
@@ -195,8 +194,7 @@ namespace Pulumi.GitLab
         public Input<string> CommitMessage { get; set; } = null!;
 
         /// <summary>
-        /// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
-        /// supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        /// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
         /// </summary>
         [Input("content", required: true)]
         public Input<string> Content { get; set; } = null!;
@@ -228,9 +226,10 @@ namespace Pulumi.GitLab
         public RepositoryFileArgs()
         {
         }
+        public static new RepositoryFileArgs Empty => new RepositoryFileArgs();
     }
 
-    public sealed class RepositoryFileState : Pulumi.ResourceArgs
+    public sealed class RepositoryFileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Email of the commit author.
@@ -269,8 +268,7 @@ namespace Pulumi.GitLab
         public Input<string>? CommitMessage { get; set; }
 
         /// <summary>
-        /// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
-        /// supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        /// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
@@ -338,5 +336,6 @@ namespace Pulumi.GitLab
         public RepositoryFileState()
         {
         }
+        public static new RepositoryFileState Empty => new RepositoryFileState();
     }
 }

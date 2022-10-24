@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Gitlab project milestone can be imported with a key composed of `<project>:<milestone_id>`, e.g.
+ * Gitlab project milestone can be imported with a key composed of `<project>:<milestone_id>`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/projectMilestone:ProjectMilestone example "12345:11"

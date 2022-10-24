@@ -23,40 +23,47 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		awesomeProject, err := gitlab.NewProject(ctx, "awesomeProject", &gitlab.ProjectArgs{
-// 			Description:     pulumi.String("My awesome project."),
-// 			VisibilityLevel: pulumi.String("public"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewServiceGithub(ctx, "github", &gitlab.ServiceGithubArgs{
-// 			Project:       awesomeProject.ID(),
-// 			Token:         pulumi.String("REDACTED"),
-// 			RepositoryUrl: pulumi.String("https://github.com/gitlabhq/terraform-provider-gitlab"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			awesomeProject, err := gitlab.NewProject(ctx, "awesomeProject", &gitlab.ProjectArgs{
+//				Description:     pulumi.String("My awesome project."),
+//				VisibilityLevel: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewServiceGithub(ctx, "github", &gitlab.ServiceGithubArgs{
+//				Project:       awesomeProject.ID(),
+//				Token:         pulumi.String("REDACTED"),
+//				RepositoryUrl: pulumi.String("https://github.com/gitlabhq/terraform-provider-gitlab"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import gitlab:index/serviceGithub:ServiceGithub # You can import a service_github state using `<resource> <project_id>`
+//
+//	$ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a service_github state using `<resource> <project_id>`
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gitlab:index/serviceGithub:ServiceGithub github 1
+//
+//	$ pulumi import gitlab:index/serviceGithub:ServiceGithub github 1
+//
 // ```
 type ServiceGithub struct {
 	pulumi.CustomResourceState
@@ -69,8 +76,7 @@ type ServiceGithub struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
 	RepositoryUrl pulumi.StringOutput `pulumi:"repositoryUrl"`
-	// Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
-	// See [Static / dynamic status check names] to learn more.
+	// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 	StaticContext pulumi.BoolPtrOutput `pulumi:"staticContext"`
 	// Title.
 	Title pulumi.StringOutput `pulumi:"title"`
@@ -96,6 +102,13 @@ func NewServiceGithub(ctx *pulumi.Context,
 	if args.Token == nil {
 		return nil, errors.New("invalid value for required argument 'Token'")
 	}
+	if args.Token != nil {
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
 	var resource ServiceGithub
 	err := ctx.RegisterResource("gitlab:index/serviceGithub:ServiceGithub", name, args, &resource, opts...)
 	if err != nil {
@@ -126,8 +139,7 @@ type serviceGithubState struct {
 	Project *string `pulumi:"project"`
 	// The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
 	RepositoryUrl *string `pulumi:"repositoryUrl"`
-	// Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
-	// See [Static / dynamic status check names] to learn more.
+	// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 	StaticContext *bool `pulumi:"staticContext"`
 	// Title.
 	Title *string `pulumi:"title"`
@@ -146,8 +158,7 @@ type ServiceGithubState struct {
 	Project pulumi.StringPtrInput
 	// The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
 	RepositoryUrl pulumi.StringPtrInput
-	// Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
-	// See [Static / dynamic status check names] to learn more.
+	// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 	StaticContext pulumi.BoolPtrInput
 	// Title.
 	Title pulumi.StringPtrInput
@@ -166,8 +177,7 @@ type serviceGithubArgs struct {
 	Project string `pulumi:"project"`
 	// The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
 	RepositoryUrl string `pulumi:"repositoryUrl"`
-	// Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
-	// See [Static / dynamic status check names] to learn more.
+	// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 	StaticContext *bool `pulumi:"staticContext"`
 	// A GitHub personal access token with at least `repo:status` scope.
 	Token string `pulumi:"token"`
@@ -179,8 +189,7 @@ type ServiceGithubArgs struct {
 	Project pulumi.StringInput
 	// The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
 	RepositoryUrl pulumi.StringInput
-	// Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
-	// See [Static / dynamic status check names] to learn more.
+	// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 	StaticContext pulumi.BoolPtrInput
 	// A GitHub personal access token with at least `repo:status` scope.
 	Token pulumi.StringInput
@@ -212,7 +221,7 @@ func (i *ServiceGithub) ToServiceGithubOutputWithContext(ctx context.Context) Se
 // ServiceGithubArrayInput is an input type that accepts ServiceGithubArray and ServiceGithubArrayOutput values.
 // You can construct a concrete instance of `ServiceGithubArrayInput` via:
 //
-//          ServiceGithubArray{ ServiceGithubArgs{...} }
+//	ServiceGithubArray{ ServiceGithubArgs{...} }
 type ServiceGithubArrayInput interface {
 	pulumi.Input
 
@@ -237,7 +246,7 @@ func (i ServiceGithubArray) ToServiceGithubArrayOutputWithContext(ctx context.Co
 // ServiceGithubMapInput is an input type that accepts ServiceGithubMap and ServiceGithubMapOutput values.
 // You can construct a concrete instance of `ServiceGithubMapInput` via:
 //
-//          ServiceGithubMap{ "key": ServiceGithubArgs{...} }
+//	ServiceGithubMap{ "key": ServiceGithubArgs{...} }
 type ServiceGithubMapInput interface {
 	pulumi.Input
 
@@ -293,8 +302,7 @@ func (o ServiceGithubOutput) RepositoryUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceGithub) pulumi.StringOutput { return v.RepositoryUrl }).(pulumi.StringOutput)
 }
 
-// Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
-// See [Static / dynamic status check names] to learn more.
+// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 func (o ServiceGithubOutput) StaticContext() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceGithub) pulumi.BoolPtrOutput { return v.StaticContext }).(pulumi.BoolPtrOutput)
 }

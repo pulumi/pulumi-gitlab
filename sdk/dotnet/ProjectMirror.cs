@@ -24,33 +24,31 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new GitLab.ProjectMirror("foo", new()
     ///     {
-    ///         var foo = new GitLab.ProjectMirror("foo", new GitLab.ProjectMirrorArgs
-    ///         {
-    ///             Project = "1",
-    ///             Url = "https://username:password@github.com/org/repository.git",
-    ///         });
-    ///     }
+    ///         Project = "1",
+    ///         Url = "https://username:password@github.com/org/repository.git",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
+    /// GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectMirror:ProjectMirror foo "12345:1337"
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/projectMirror:ProjectMirror")]
-    public partial class ProjectMirror : Pulumi.CustomResource
+    public partial class ProjectMirror : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Determines if the mirror is enabled.
@@ -111,6 +109,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "url",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -132,7 +134,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ProjectMirrorArgs : Pulumi.ResourceArgs
+    public sealed class ProjectMirrorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Determines if the mirror is enabled.
@@ -158,18 +160,29 @@ namespace Pulumi.GitLab
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        [Input("url", required: true)]
+        private Input<string>? _url;
+
         /// <summary>
         /// The URL of the remote repository to be mirrored.
         /// </summary>
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
+        public Input<string>? Url
+        {
+            get => _url;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _url = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ProjectMirrorArgs()
         {
         }
+        public static new ProjectMirrorArgs Empty => new ProjectMirrorArgs();
     }
 
-    public sealed class ProjectMirrorState : Pulumi.ResourceArgs
+    public sealed class ProjectMirrorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Determines if the mirror is enabled.
@@ -201,14 +214,25 @@ namespace Pulumi.GitLab
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("url")]
+        private Input<string>? _url;
+
         /// <summary>
         /// The URL of the remote repository to be mirrored.
         /// </summary>
-        [Input("url")]
-        public Input<string>? Url { get; set; }
+        public Input<string>? Url
+        {
+            get => _url;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _url = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ProjectMirrorState()
         {
         }
+        public static new ProjectMirrorState Empty => new ProjectMirrorState();
     }
 }

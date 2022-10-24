@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
+ * GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/groupMembership:GroupMembership test "12345:1337"
@@ -62,8 +62,7 @@ export class GroupMembership extends pulumi.CustomResource {
     }
 
     /**
-     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-     * `owner`, `master`.
+     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
      */
     public readonly accessLevel!: pulumi.Output<string>;
     /**
@@ -74,6 +73,14 @@ export class GroupMembership extends pulumi.CustomResource {
      * The id of the group.
      */
     public readonly groupId!: pulumi.Output<string>;
+    /**
+     * Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
+     */
+    public readonly skipSubresourcesOnDestroy!: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
+     */
+    public readonly unassignIssuablesOnDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * The id of the user.
      */
@@ -95,6 +102,8 @@ export class GroupMembership extends pulumi.CustomResource {
             resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
             resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["skipSubresourcesOnDestroy"] = state ? state.skipSubresourcesOnDestroy : undefined;
+            resourceInputs["unassignIssuablesOnDestroy"] = state ? state.unassignIssuablesOnDestroy : undefined;
             resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as GroupMembershipArgs | undefined;
@@ -110,6 +119,8 @@ export class GroupMembership extends pulumi.CustomResource {
             resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
             resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["skipSubresourcesOnDestroy"] = args ? args.skipSubresourcesOnDestroy : undefined;
+            resourceInputs["unassignIssuablesOnDestroy"] = args ? args.unassignIssuablesOnDestroy : undefined;
             resourceInputs["userId"] = args ? args.userId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -122,8 +133,7 @@ export class GroupMembership extends pulumi.CustomResource {
  */
 export interface GroupMembershipState {
     /**
-     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-     * `owner`, `master`.
+     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -135,6 +145,14 @@ export interface GroupMembershipState {
      */
     groupId?: pulumi.Input<string>;
     /**
+     * Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
+     */
+    skipSubresourcesOnDestroy?: pulumi.Input<boolean>;
+    /**
+     * Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
+     */
+    unassignIssuablesOnDestroy?: pulumi.Input<boolean>;
+    /**
      * The id of the user.
      */
     userId?: pulumi.Input<number>;
@@ -145,8 +163,7 @@ export interface GroupMembershipState {
  */
 export interface GroupMembershipArgs {
     /**
-     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`,
-     * `owner`, `master`.
+     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
      */
     accessLevel: pulumi.Input<string>;
     /**
@@ -157,6 +174,14 @@ export interface GroupMembershipArgs {
      * The id of the group.
      */
     groupId: pulumi.Input<string>;
+    /**
+     * Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
+     */
+    skipSubresourcesOnDestroy?: pulumi.Input<boolean>;
+    /**
+     * Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
+     */
+    unassignIssuablesOnDestroy?: pulumi.Input<boolean>;
     /**
      * The id of the user.
      */

@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # You can import a gitlab_service_external_wiki state using the project ID, e.g.
+ * You can import a gitlab_service_external_wiki state using the project ID, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/serviceExternalWiki:ServiceExternalWiki wiki 1
@@ -78,8 +78,7 @@ export class ServiceExternalWiki extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -.
-     * No leading / trailing -. Use in URLs, host names and domain names.
+     * The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
      */
     public /*out*/ readonly slug!: pulumi.Output<string>;
     /**
@@ -153,8 +152,7 @@ export interface ServiceExternalWikiState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -.
-     * No leading / trailing -. Use in URLs, host names and domain names.
+     * The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
      */
     slug?: pulumi.Input<string>;
     /**

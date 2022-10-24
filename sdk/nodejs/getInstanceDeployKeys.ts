@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -40,6 +41,9 @@ export function getInstanceDeployKeys(args?: GetInstanceDeployKeysArgs, opts?: p
  * A collection of arguments for invoking getInstanceDeployKeys.
  */
 export interface GetInstanceDeployKeysArgs {
+    /**
+     * Only return deploy keys that are public.
+     */
     public?: boolean;
 }
 
@@ -47,11 +51,17 @@ export interface GetInstanceDeployKeysArgs {
  * A collection of values returned by getInstanceDeployKeys.
  */
 export interface GetInstanceDeployKeysResult {
+    /**
+     * The list of all deploy keys across all projects of the GitLab instance.
+     */
     readonly deployKeys: outputs.GetInstanceDeployKeysDeployKey[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Only return deploy keys that are public.
+     */
     readonly public?: boolean;
 }
 
@@ -63,5 +73,8 @@ export function getInstanceDeployKeysOutput(args?: GetInstanceDeployKeysOutputAr
  * A collection of arguments for invoking getInstanceDeployKeys.
  */
 export interface GetInstanceDeployKeysOutputArgs {
+    /**
+     * Only return deploy keys that are public.
+     */
     public?: pulumi.Input<boolean>;
 }

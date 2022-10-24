@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * # A Repository File can be imported using an id made up of `<project-id>:<branch-name>:<file-path>`, e.g.
+ * A Repository File can be imported using an id made up of `<project-id>:<branch-name>:<file-path>`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/repositoryFile:RepositoryFile this 1:main:foo/bar.txt
@@ -66,8 +66,7 @@ export class RepositoryFile extends pulumi.CustomResource {
      */
     public readonly commitMessage!: pulumi.Output<string>;
     /**
-     * File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
-     * supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+     * File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
      */
     public readonly content!: pulumi.Output<string>;
     /**
@@ -210,8 +209,7 @@ export interface RepositoryFileState {
      */
     commitMessage?: pulumi.Input<string>;
     /**
-     * File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
-     * supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+     * File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
      */
     content?: pulumi.Input<string>;
     /**
@@ -277,8 +275,7 @@ export interface RepositoryFileArgs {
      */
     commitMessage: pulumi.Input<string>;
     /**
-     * File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently
-     * supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+     * File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
      */
     content: pulumi.Input<string>;
     /**

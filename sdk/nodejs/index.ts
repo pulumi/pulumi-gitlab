@@ -5,95 +5,504 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./branch";
-export * from "./branchProtection";
-export * from "./clusterAgent";
-export * from "./clusterAgentToken";
-export * from "./deployKey";
-export * from "./deployKeyEnable";
-export * from "./deployToken";
-export * from "./getBranch";
-export * from "./getClusterAgent";
-export * from "./getClusterAgents";
-export * from "./getCurrentUser";
-export * from "./getGroup";
-export * from "./getGroupMembership";
-export * from "./getGroupVariable";
-export * from "./getGroupVariables";
-export * from "./getInstanceDeployKeys";
-export * from "./getInstanceVariable";
-export * from "./getInstanceVariables";
-export * from "./getProject";
-export * from "./getProjectIssue";
-export * from "./getProjectIssues";
-export * from "./getProjectMilestone";
-export * from "./getProjectMilestones";
-export * from "./getProjectProtectedBranch";
-export * from "./getProjectProtectedBranches";
-export * from "./getProjectTag";
-export * from "./getProjectTags";
-export * from "./getProjectVariable";
-export * from "./getProjectVariables";
-export * from "./getProjects";
-export * from "./getReleaseLink";
-export * from "./getReleaseLinks";
-export * from "./getRepositoryFile";
-export * from "./getUser";
-export * from "./getUsers";
-export * from "./group";
-export * from "./groupAccessToken";
-export * from "./groupBadge";
-export * from "./groupCluster";
-export * from "./groupCustomAttribute";
-export * from "./groupLabel";
-export * from "./groupLdapLink";
-export * from "./groupMembership";
-export * from "./groupProjectFileTemplate";
-export * from "./groupShareGroup";
-export * from "./groupVariable";
-export * from "./instanceCluster";
-export * from "./instanceVariable";
-export * from "./label";
-export * from "./managedLicense";
-export * from "./personalAccessToken";
-export * from "./pipelineSchedule";
-export * from "./pipelineScheduleVariable";
-export * from "./pipelineTrigger";
-export * from "./project";
-export * from "./projectAccessToken";
-export * from "./projectApprovalRule";
-export * from "./projectBadge";
-export * from "./projectCluster";
-export * from "./projectCustomAttribute";
-export * from "./projectEnvironment";
-export * from "./projectFreezePeriod";
-export * from "./projectHook";
-export * from "./projectIssue";
-export * from "./projectLevelMrApprovals";
-export * from "./projectMembership";
-export * from "./projectMilestone";
-export * from "./projectMirror";
-export * from "./projectProtectedEnvironment";
-export * from "./projectRunnerEnablement";
-export * from "./projectShareGroup";
-export * from "./projectTag";
-export * from "./projectVariable";
-export * from "./provider";
-export * from "./releaseLink";
-export * from "./repositoryFile";
-export * from "./runner";
-export * from "./serviceExternalWiki";
-export * from "./serviceGithub";
-export * from "./serviceJira";
-export * from "./serviceMicrosoftTeams";
-export * from "./servicePipelinesEmail";
-export * from "./serviceSlack";
-export * from "./systemHook";
-export * from "./tagProtection";
-export * from "./topic";
-export * from "./user";
-export * from "./userCustomAttribute";
-export * from "./userSshKey";
+export { ApplicationSettingsArgs, ApplicationSettingsState } from "./applicationSettings";
+export type ApplicationSettings = import("./applicationSettings").ApplicationSettings;
+export const ApplicationSettings: typeof import("./applicationSettings").ApplicationSettings = null as any;
+utilities.lazyLoad(exports, ["ApplicationSettings"], () => require("./applicationSettings"));
+
+export { BranchArgs, BranchState } from "./branch";
+export type Branch = import("./branch").Branch;
+export const Branch: typeof import("./branch").Branch = null as any;
+utilities.lazyLoad(exports, ["Branch"], () => require("./branch"));
+
+export { BranchProtectionArgs, BranchProtectionState } from "./branchProtection";
+export type BranchProtection = import("./branchProtection").BranchProtection;
+export const BranchProtection: typeof import("./branchProtection").BranchProtection = null as any;
+utilities.lazyLoad(exports, ["BranchProtection"], () => require("./branchProtection"));
+
+export { ClusterAgentArgs, ClusterAgentState } from "./clusterAgent";
+export type ClusterAgent = import("./clusterAgent").ClusterAgent;
+export const ClusterAgent: typeof import("./clusterAgent").ClusterAgent = null as any;
+utilities.lazyLoad(exports, ["ClusterAgent"], () => require("./clusterAgent"));
+
+export { ClusterAgentTokenArgs, ClusterAgentTokenState } from "./clusterAgentToken";
+export type ClusterAgentToken = import("./clusterAgentToken").ClusterAgentToken;
+export const ClusterAgentToken: typeof import("./clusterAgentToken").ClusterAgentToken = null as any;
+utilities.lazyLoad(exports, ["ClusterAgentToken"], () => require("./clusterAgentToken"));
+
+export { DeployKeyArgs, DeployKeyState } from "./deployKey";
+export type DeployKey = import("./deployKey").DeployKey;
+export const DeployKey: typeof import("./deployKey").DeployKey = null as any;
+utilities.lazyLoad(exports, ["DeployKey"], () => require("./deployKey"));
+
+export { DeployKeyEnableArgs, DeployKeyEnableState } from "./deployKeyEnable";
+export type DeployKeyEnable = import("./deployKeyEnable").DeployKeyEnable;
+export const DeployKeyEnable: typeof import("./deployKeyEnable").DeployKeyEnable = null as any;
+utilities.lazyLoad(exports, ["DeployKeyEnable"], () => require("./deployKeyEnable"));
+
+export { DeployTokenArgs, DeployTokenState } from "./deployToken";
+export type DeployToken = import("./deployToken").DeployToken;
+export const DeployToken: typeof import("./deployToken").DeployToken = null as any;
+utilities.lazyLoad(exports, ["DeployToken"], () => require("./deployToken"));
+
+export { GetBranchArgs, GetBranchResult, GetBranchOutputArgs } from "./getBranch";
+export const getBranch: typeof import("./getBranch").getBranch = null as any;
+export const getBranchOutput: typeof import("./getBranch").getBranchOutput = null as any;
+utilities.lazyLoad(exports, ["getBranch","getBranchOutput"], () => require("./getBranch"));
+
+export { GetClusterAgentArgs, GetClusterAgentResult, GetClusterAgentOutputArgs } from "./getClusterAgent";
+export const getClusterAgent: typeof import("./getClusterAgent").getClusterAgent = null as any;
+export const getClusterAgentOutput: typeof import("./getClusterAgent").getClusterAgentOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterAgent","getClusterAgentOutput"], () => require("./getClusterAgent"));
+
+export { GetClusterAgentsArgs, GetClusterAgentsResult, GetClusterAgentsOutputArgs } from "./getClusterAgents";
+export const getClusterAgents: typeof import("./getClusterAgents").getClusterAgents = null as any;
+export const getClusterAgentsOutput: typeof import("./getClusterAgents").getClusterAgentsOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterAgents","getClusterAgentsOutput"], () => require("./getClusterAgents"));
+
+export { GetCurrentUserResult } from "./getCurrentUser";
+export const getCurrentUser: typeof import("./getCurrentUser").getCurrentUser = null as any;
+utilities.lazyLoad(exports, ["getCurrentUser"], () => require("./getCurrentUser"));
+
+export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
+export const getGroup: typeof import("./getGroup").getGroup = null as any;
+export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
+
+export { GetGroupHookArgs, GetGroupHookResult, GetGroupHookOutputArgs } from "./getGroupHook";
+export const getGroupHook: typeof import("./getGroupHook").getGroupHook = null as any;
+export const getGroupHookOutput: typeof import("./getGroupHook").getGroupHookOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupHook","getGroupHookOutput"], () => require("./getGroupHook"));
+
+export { GetGroupHooksArgs, GetGroupHooksResult, GetGroupHooksOutputArgs } from "./getGroupHooks";
+export const getGroupHooks: typeof import("./getGroupHooks").getGroupHooks = null as any;
+export const getGroupHooksOutput: typeof import("./getGroupHooks").getGroupHooksOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupHooks","getGroupHooksOutput"], () => require("./getGroupHooks"));
+
+export { GetGroupMembershipArgs, GetGroupMembershipResult, GetGroupMembershipOutputArgs } from "./getGroupMembership";
+export const getGroupMembership: typeof import("./getGroupMembership").getGroupMembership = null as any;
+export const getGroupMembershipOutput: typeof import("./getGroupMembership").getGroupMembershipOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupMembership","getGroupMembershipOutput"], () => require("./getGroupMembership"));
+
+export { GetGroupVariableArgs, GetGroupVariableResult, GetGroupVariableOutputArgs } from "./getGroupVariable";
+export const getGroupVariable: typeof import("./getGroupVariable").getGroupVariable = null as any;
+export const getGroupVariableOutput: typeof import("./getGroupVariable").getGroupVariableOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupVariable","getGroupVariableOutput"], () => require("./getGroupVariable"));
+
+export { GetGroupVariablesArgs, GetGroupVariablesResult, GetGroupVariablesOutputArgs } from "./getGroupVariables";
+export const getGroupVariables: typeof import("./getGroupVariables").getGroupVariables = null as any;
+export const getGroupVariablesOutput: typeof import("./getGroupVariables").getGroupVariablesOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupVariables","getGroupVariablesOutput"], () => require("./getGroupVariables"));
+
+export { GetInstanceDeployKeysArgs, GetInstanceDeployKeysResult, GetInstanceDeployKeysOutputArgs } from "./getInstanceDeployKeys";
+export const getInstanceDeployKeys: typeof import("./getInstanceDeployKeys").getInstanceDeployKeys = null as any;
+export const getInstanceDeployKeysOutput: typeof import("./getInstanceDeployKeys").getInstanceDeployKeysOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceDeployKeys","getInstanceDeployKeysOutput"], () => require("./getInstanceDeployKeys"));
+
+export { GetInstanceVariableArgs, GetInstanceVariableResult, GetInstanceVariableOutputArgs } from "./getInstanceVariable";
+export const getInstanceVariable: typeof import("./getInstanceVariable").getInstanceVariable = null as any;
+export const getInstanceVariableOutput: typeof import("./getInstanceVariable").getInstanceVariableOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceVariable","getInstanceVariableOutput"], () => require("./getInstanceVariable"));
+
+export { GetInstanceVariablesResult } from "./getInstanceVariables";
+export const getInstanceVariables: typeof import("./getInstanceVariables").getInstanceVariables = null as any;
+utilities.lazyLoad(exports, ["getInstanceVariables"], () => require("./getInstanceVariables"));
+
+export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
+export const getProject: typeof import("./getProject").getProject = null as any;
+export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
+utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
+
+export { GetProjectHookArgs, GetProjectHookResult, GetProjectHookOutputArgs } from "./getProjectHook";
+export const getProjectHook: typeof import("./getProjectHook").getProjectHook = null as any;
+export const getProjectHookOutput: typeof import("./getProjectHook").getProjectHookOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectHook","getProjectHookOutput"], () => require("./getProjectHook"));
+
+export { GetProjectHooksArgs, GetProjectHooksResult, GetProjectHooksOutputArgs } from "./getProjectHooks";
+export const getProjectHooks: typeof import("./getProjectHooks").getProjectHooks = null as any;
+export const getProjectHooksOutput: typeof import("./getProjectHooks").getProjectHooksOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectHooks","getProjectHooksOutput"], () => require("./getProjectHooks"));
+
+export { GetProjectIssueArgs, GetProjectIssueResult, GetProjectIssueOutputArgs } from "./getProjectIssue";
+export const getProjectIssue: typeof import("./getProjectIssue").getProjectIssue = null as any;
+export const getProjectIssueOutput: typeof import("./getProjectIssue").getProjectIssueOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectIssue","getProjectIssueOutput"], () => require("./getProjectIssue"));
+
+export { GetProjectIssuesArgs, GetProjectIssuesResult, GetProjectIssuesOutputArgs } from "./getProjectIssues";
+export const getProjectIssues: typeof import("./getProjectIssues").getProjectIssues = null as any;
+export const getProjectIssuesOutput: typeof import("./getProjectIssues").getProjectIssuesOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectIssues","getProjectIssuesOutput"], () => require("./getProjectIssues"));
+
+export { GetProjectMembershipArgs, GetProjectMembershipResult, GetProjectMembershipOutputArgs } from "./getProjectMembership";
+export const getProjectMembership: typeof import("./getProjectMembership").getProjectMembership = null as any;
+export const getProjectMembershipOutput: typeof import("./getProjectMembership").getProjectMembershipOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectMembership","getProjectMembershipOutput"], () => require("./getProjectMembership"));
+
+export { GetProjectMilestoneArgs, GetProjectMilestoneResult, GetProjectMilestoneOutputArgs } from "./getProjectMilestone";
+export const getProjectMilestone: typeof import("./getProjectMilestone").getProjectMilestone = null as any;
+export const getProjectMilestoneOutput: typeof import("./getProjectMilestone").getProjectMilestoneOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectMilestone","getProjectMilestoneOutput"], () => require("./getProjectMilestone"));
+
+export { GetProjectMilestonesArgs, GetProjectMilestonesResult, GetProjectMilestonesOutputArgs } from "./getProjectMilestones";
+export const getProjectMilestones: typeof import("./getProjectMilestones").getProjectMilestones = null as any;
+export const getProjectMilestonesOutput: typeof import("./getProjectMilestones").getProjectMilestonesOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectMilestones","getProjectMilestonesOutput"], () => require("./getProjectMilestones"));
+
+export { GetProjectProtectedBranchArgs, GetProjectProtectedBranchResult, GetProjectProtectedBranchOutputArgs } from "./getProjectProtectedBranch";
+export const getProjectProtectedBranch: typeof import("./getProjectProtectedBranch").getProjectProtectedBranch = null as any;
+export const getProjectProtectedBranchOutput: typeof import("./getProjectProtectedBranch").getProjectProtectedBranchOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectProtectedBranch","getProjectProtectedBranchOutput"], () => require("./getProjectProtectedBranch"));
+
+export { GetProjectProtectedBranchesArgs, GetProjectProtectedBranchesResult, GetProjectProtectedBranchesOutputArgs } from "./getProjectProtectedBranches";
+export const getProjectProtectedBranches: typeof import("./getProjectProtectedBranches").getProjectProtectedBranches = null as any;
+export const getProjectProtectedBranchesOutput: typeof import("./getProjectProtectedBranches").getProjectProtectedBranchesOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectProtectedBranches","getProjectProtectedBranchesOutput"], () => require("./getProjectProtectedBranches"));
+
+export { GetProjectTagArgs, GetProjectTagResult, GetProjectTagOutputArgs } from "./getProjectTag";
+export const getProjectTag: typeof import("./getProjectTag").getProjectTag = null as any;
+export const getProjectTagOutput: typeof import("./getProjectTag").getProjectTagOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectTag","getProjectTagOutput"], () => require("./getProjectTag"));
+
+export { GetProjectTagsArgs, GetProjectTagsResult, GetProjectTagsOutputArgs } from "./getProjectTags";
+export const getProjectTags: typeof import("./getProjectTags").getProjectTags = null as any;
+export const getProjectTagsOutput: typeof import("./getProjectTags").getProjectTagsOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectTags","getProjectTagsOutput"], () => require("./getProjectTags"));
+
+export { GetProjectVariableArgs, GetProjectVariableResult, GetProjectVariableOutputArgs } from "./getProjectVariable";
+export const getProjectVariable: typeof import("./getProjectVariable").getProjectVariable = null as any;
+export const getProjectVariableOutput: typeof import("./getProjectVariable").getProjectVariableOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectVariable","getProjectVariableOutput"], () => require("./getProjectVariable"));
+
+export { GetProjectVariablesArgs, GetProjectVariablesResult, GetProjectVariablesOutputArgs } from "./getProjectVariables";
+export const getProjectVariables: typeof import("./getProjectVariables").getProjectVariables = null as any;
+export const getProjectVariablesOutput: typeof import("./getProjectVariables").getProjectVariablesOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectVariables","getProjectVariablesOutput"], () => require("./getProjectVariables"));
+
+export { GetProjectsArgs, GetProjectsResult, GetProjectsOutputArgs } from "./getProjects";
+export const getProjects: typeof import("./getProjects").getProjects = null as any;
+export const getProjectsOutput: typeof import("./getProjects").getProjectsOutput = null as any;
+utilities.lazyLoad(exports, ["getProjects","getProjectsOutput"], () => require("./getProjects"));
+
+export { GetReleaseLinkArgs, GetReleaseLinkResult, GetReleaseLinkOutputArgs } from "./getReleaseLink";
+export const getReleaseLink: typeof import("./getReleaseLink").getReleaseLink = null as any;
+export const getReleaseLinkOutput: typeof import("./getReleaseLink").getReleaseLinkOutput = null as any;
+utilities.lazyLoad(exports, ["getReleaseLink","getReleaseLinkOutput"], () => require("./getReleaseLink"));
+
+export { GetReleaseLinksArgs, GetReleaseLinksResult, GetReleaseLinksOutputArgs } from "./getReleaseLinks";
+export const getReleaseLinks: typeof import("./getReleaseLinks").getReleaseLinks = null as any;
+export const getReleaseLinksOutput: typeof import("./getReleaseLinks").getReleaseLinksOutput = null as any;
+utilities.lazyLoad(exports, ["getReleaseLinks","getReleaseLinksOutput"], () => require("./getReleaseLinks"));
+
+export { GetRepositoryFileArgs, GetRepositoryFileResult, GetRepositoryFileOutputArgs } from "./getRepositoryFile";
+export const getRepositoryFile: typeof import("./getRepositoryFile").getRepositoryFile = null as any;
+export const getRepositoryFileOutput: typeof import("./getRepositoryFile").getRepositoryFileOutput = null as any;
+utilities.lazyLoad(exports, ["getRepositoryFile","getRepositoryFileOutput"], () => require("./getRepositoryFile"));
+
+export { GetRepositoryTreeArgs, GetRepositoryTreeResult, GetRepositoryTreeOutputArgs } from "./getRepositoryTree";
+export const getRepositoryTree: typeof import("./getRepositoryTree").getRepositoryTree = null as any;
+export const getRepositoryTreeOutput: typeof import("./getRepositoryTree").getRepositoryTreeOutput = null as any;
+utilities.lazyLoad(exports, ["getRepositoryTree","getRepositoryTreeOutput"], () => require("./getRepositoryTree"));
+
+export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
+export const getUser: typeof import("./getUser").getUser = null as any;
+export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
+utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
+
+export { GetUsersArgs, GetUsersResult, GetUsersOutputArgs } from "./getUsers";
+export const getUsers: typeof import("./getUsers").getUsers = null as any;
+export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getUsers","getUsersOutput"], () => require("./getUsers"));
+
+export { GroupArgs, GroupState } from "./group";
+export type Group = import("./group").Group;
+export const Group: typeof import("./group").Group = null as any;
+utilities.lazyLoad(exports, ["Group"], () => require("./group"));
+
+export { GroupAccessTokenArgs, GroupAccessTokenState } from "./groupAccessToken";
+export type GroupAccessToken = import("./groupAccessToken").GroupAccessToken;
+export const GroupAccessToken: typeof import("./groupAccessToken").GroupAccessToken = null as any;
+utilities.lazyLoad(exports, ["GroupAccessToken"], () => require("./groupAccessToken"));
+
+export { GroupBadgeArgs, GroupBadgeState } from "./groupBadge";
+export type GroupBadge = import("./groupBadge").GroupBadge;
+export const GroupBadge: typeof import("./groupBadge").GroupBadge = null as any;
+utilities.lazyLoad(exports, ["GroupBadge"], () => require("./groupBadge"));
+
+export { GroupClusterArgs, GroupClusterState } from "./groupCluster";
+export type GroupCluster = import("./groupCluster").GroupCluster;
+export const GroupCluster: typeof import("./groupCluster").GroupCluster = null as any;
+utilities.lazyLoad(exports, ["GroupCluster"], () => require("./groupCluster"));
+
+export { GroupCustomAttributeArgs, GroupCustomAttributeState } from "./groupCustomAttribute";
+export type GroupCustomAttribute = import("./groupCustomAttribute").GroupCustomAttribute;
+export const GroupCustomAttribute: typeof import("./groupCustomAttribute").GroupCustomAttribute = null as any;
+utilities.lazyLoad(exports, ["GroupCustomAttribute"], () => require("./groupCustomAttribute"));
+
+export { GroupHookArgs, GroupHookState } from "./groupHook";
+export type GroupHook = import("./groupHook").GroupHook;
+export const GroupHook: typeof import("./groupHook").GroupHook = null as any;
+utilities.lazyLoad(exports, ["GroupHook"], () => require("./groupHook"));
+
+export { GroupLabelArgs, GroupLabelState } from "./groupLabel";
+export type GroupLabel = import("./groupLabel").GroupLabel;
+export const GroupLabel: typeof import("./groupLabel").GroupLabel = null as any;
+utilities.lazyLoad(exports, ["GroupLabel"], () => require("./groupLabel"));
+
+export { GroupLdapLinkArgs, GroupLdapLinkState } from "./groupLdapLink";
+export type GroupLdapLink = import("./groupLdapLink").GroupLdapLink;
+export const GroupLdapLink: typeof import("./groupLdapLink").GroupLdapLink = null as any;
+utilities.lazyLoad(exports, ["GroupLdapLink"], () => require("./groupLdapLink"));
+
+export { GroupMembershipArgs, GroupMembershipState } from "./groupMembership";
+export type GroupMembership = import("./groupMembership").GroupMembership;
+export const GroupMembership: typeof import("./groupMembership").GroupMembership = null as any;
+utilities.lazyLoad(exports, ["GroupMembership"], () => require("./groupMembership"));
+
+export { GroupProjectFileTemplateArgs, GroupProjectFileTemplateState } from "./groupProjectFileTemplate";
+export type GroupProjectFileTemplate = import("./groupProjectFileTemplate").GroupProjectFileTemplate;
+export const GroupProjectFileTemplate: typeof import("./groupProjectFileTemplate").GroupProjectFileTemplate = null as any;
+utilities.lazyLoad(exports, ["GroupProjectFileTemplate"], () => require("./groupProjectFileTemplate"));
+
+export { GroupSamlLinkArgs, GroupSamlLinkState } from "./groupSamlLink";
+export type GroupSamlLink = import("./groupSamlLink").GroupSamlLink;
+export const GroupSamlLink: typeof import("./groupSamlLink").GroupSamlLink = null as any;
+utilities.lazyLoad(exports, ["GroupSamlLink"], () => require("./groupSamlLink"));
+
+export { GroupShareGroupArgs, GroupShareGroupState } from "./groupShareGroup";
+export type GroupShareGroup = import("./groupShareGroup").GroupShareGroup;
+export const GroupShareGroup: typeof import("./groupShareGroup").GroupShareGroup = null as any;
+utilities.lazyLoad(exports, ["GroupShareGroup"], () => require("./groupShareGroup"));
+
+export { GroupVariableArgs, GroupVariableState } from "./groupVariable";
+export type GroupVariable = import("./groupVariable").GroupVariable;
+export const GroupVariable: typeof import("./groupVariable").GroupVariable = null as any;
+utilities.lazyLoad(exports, ["GroupVariable"], () => require("./groupVariable"));
+
+export { InstanceClusterArgs, InstanceClusterState } from "./instanceCluster";
+export type InstanceCluster = import("./instanceCluster").InstanceCluster;
+export const InstanceCluster: typeof import("./instanceCluster").InstanceCluster = null as any;
+utilities.lazyLoad(exports, ["InstanceCluster"], () => require("./instanceCluster"));
+
+export { InstanceVariableArgs, InstanceVariableState } from "./instanceVariable";
+export type InstanceVariable = import("./instanceVariable").InstanceVariable;
+export const InstanceVariable: typeof import("./instanceVariable").InstanceVariable = null as any;
+utilities.lazyLoad(exports, ["InstanceVariable"], () => require("./instanceVariable"));
+
+export { LabelArgs, LabelState } from "./label";
+export type Label = import("./label").Label;
+export const Label: typeof import("./label").Label = null as any;
+utilities.lazyLoad(exports, ["Label"], () => require("./label"));
+
+export { ManagedLicenseArgs, ManagedLicenseState } from "./managedLicense";
+export type ManagedLicense = import("./managedLicense").ManagedLicense;
+export const ManagedLicense: typeof import("./managedLicense").ManagedLicense = null as any;
+utilities.lazyLoad(exports, ["ManagedLicense"], () => require("./managedLicense"));
+
+export { PersonalAccessTokenArgs, PersonalAccessTokenState } from "./personalAccessToken";
+export type PersonalAccessToken = import("./personalAccessToken").PersonalAccessToken;
+export const PersonalAccessToken: typeof import("./personalAccessToken").PersonalAccessToken = null as any;
+utilities.lazyLoad(exports, ["PersonalAccessToken"], () => require("./personalAccessToken"));
+
+export { PipelineScheduleArgs, PipelineScheduleState } from "./pipelineSchedule";
+export type PipelineSchedule = import("./pipelineSchedule").PipelineSchedule;
+export const PipelineSchedule: typeof import("./pipelineSchedule").PipelineSchedule = null as any;
+utilities.lazyLoad(exports, ["PipelineSchedule"], () => require("./pipelineSchedule"));
+
+export { PipelineScheduleVariableArgs, PipelineScheduleVariableState } from "./pipelineScheduleVariable";
+export type PipelineScheduleVariable = import("./pipelineScheduleVariable").PipelineScheduleVariable;
+export const PipelineScheduleVariable: typeof import("./pipelineScheduleVariable").PipelineScheduleVariable = null as any;
+utilities.lazyLoad(exports, ["PipelineScheduleVariable"], () => require("./pipelineScheduleVariable"));
+
+export { PipelineTriggerArgs, PipelineTriggerState } from "./pipelineTrigger";
+export type PipelineTrigger = import("./pipelineTrigger").PipelineTrigger;
+export const PipelineTrigger: typeof import("./pipelineTrigger").PipelineTrigger = null as any;
+utilities.lazyLoad(exports, ["PipelineTrigger"], () => require("./pipelineTrigger"));
+
+export { ProjectArgs, ProjectState } from "./project";
+export type Project = import("./project").Project;
+export const Project: typeof import("./project").Project = null as any;
+utilities.lazyLoad(exports, ["Project"], () => require("./project"));
+
+export { ProjectAccessTokenArgs, ProjectAccessTokenState } from "./projectAccessToken";
+export type ProjectAccessToken = import("./projectAccessToken").ProjectAccessToken;
+export const ProjectAccessToken: typeof import("./projectAccessToken").ProjectAccessToken = null as any;
+utilities.lazyLoad(exports, ["ProjectAccessToken"], () => require("./projectAccessToken"));
+
+export { ProjectApprovalRuleArgs, ProjectApprovalRuleState } from "./projectApprovalRule";
+export type ProjectApprovalRule = import("./projectApprovalRule").ProjectApprovalRule;
+export const ProjectApprovalRule: typeof import("./projectApprovalRule").ProjectApprovalRule = null as any;
+utilities.lazyLoad(exports, ["ProjectApprovalRule"], () => require("./projectApprovalRule"));
+
+export { ProjectBadgeArgs, ProjectBadgeState } from "./projectBadge";
+export type ProjectBadge = import("./projectBadge").ProjectBadge;
+export const ProjectBadge: typeof import("./projectBadge").ProjectBadge = null as any;
+utilities.lazyLoad(exports, ["ProjectBadge"], () => require("./projectBadge"));
+
+export { ProjectClusterArgs, ProjectClusterState } from "./projectCluster";
+export type ProjectCluster = import("./projectCluster").ProjectCluster;
+export const ProjectCluster: typeof import("./projectCluster").ProjectCluster = null as any;
+utilities.lazyLoad(exports, ["ProjectCluster"], () => require("./projectCluster"));
+
+export { ProjectCustomAttributeArgs, ProjectCustomAttributeState } from "./projectCustomAttribute";
+export type ProjectCustomAttribute = import("./projectCustomAttribute").ProjectCustomAttribute;
+export const ProjectCustomAttribute: typeof import("./projectCustomAttribute").ProjectCustomAttribute = null as any;
+utilities.lazyLoad(exports, ["ProjectCustomAttribute"], () => require("./projectCustomAttribute"));
+
+export { ProjectEnvironmentArgs, ProjectEnvironmentState } from "./projectEnvironment";
+export type ProjectEnvironment = import("./projectEnvironment").ProjectEnvironment;
+export const ProjectEnvironment: typeof import("./projectEnvironment").ProjectEnvironment = null as any;
+utilities.lazyLoad(exports, ["ProjectEnvironment"], () => require("./projectEnvironment"));
+
+export { ProjectFreezePeriodArgs, ProjectFreezePeriodState } from "./projectFreezePeriod";
+export type ProjectFreezePeriod = import("./projectFreezePeriod").ProjectFreezePeriod;
+export const ProjectFreezePeriod: typeof import("./projectFreezePeriod").ProjectFreezePeriod = null as any;
+utilities.lazyLoad(exports, ["ProjectFreezePeriod"], () => require("./projectFreezePeriod"));
+
+export { ProjectHookArgs, ProjectHookState } from "./projectHook";
+export type ProjectHook = import("./projectHook").ProjectHook;
+export const ProjectHook: typeof import("./projectHook").ProjectHook = null as any;
+utilities.lazyLoad(exports, ["ProjectHook"], () => require("./projectHook"));
+
+export { ProjectIssueArgs, ProjectIssueState } from "./projectIssue";
+export type ProjectIssue = import("./projectIssue").ProjectIssue;
+export const ProjectIssue: typeof import("./projectIssue").ProjectIssue = null as any;
+utilities.lazyLoad(exports, ["ProjectIssue"], () => require("./projectIssue"));
+
+export { ProjectIssueBoardArgs, ProjectIssueBoardState } from "./projectIssueBoard";
+export type ProjectIssueBoard = import("./projectIssueBoard").ProjectIssueBoard;
+export const ProjectIssueBoard: typeof import("./projectIssueBoard").ProjectIssueBoard = null as any;
+utilities.lazyLoad(exports, ["ProjectIssueBoard"], () => require("./projectIssueBoard"));
+
+export { ProjectLevelMrApprovalsArgs, ProjectLevelMrApprovalsState } from "./projectLevelMrApprovals";
+export type ProjectLevelMrApprovals = import("./projectLevelMrApprovals").ProjectLevelMrApprovals;
+export const ProjectLevelMrApprovals: typeof import("./projectLevelMrApprovals").ProjectLevelMrApprovals = null as any;
+utilities.lazyLoad(exports, ["ProjectLevelMrApprovals"], () => require("./projectLevelMrApprovals"));
+
+export { ProjectMembershipArgs, ProjectMembershipState } from "./projectMembership";
+export type ProjectMembership = import("./projectMembership").ProjectMembership;
+export const ProjectMembership: typeof import("./projectMembership").ProjectMembership = null as any;
+utilities.lazyLoad(exports, ["ProjectMembership"], () => require("./projectMembership"));
+
+export { ProjectMilestoneArgs, ProjectMilestoneState } from "./projectMilestone";
+export type ProjectMilestone = import("./projectMilestone").ProjectMilestone;
+export const ProjectMilestone: typeof import("./projectMilestone").ProjectMilestone = null as any;
+utilities.lazyLoad(exports, ["ProjectMilestone"], () => require("./projectMilestone"));
+
+export { ProjectMirrorArgs, ProjectMirrorState } from "./projectMirror";
+export type ProjectMirror = import("./projectMirror").ProjectMirror;
+export const ProjectMirror: typeof import("./projectMirror").ProjectMirror = null as any;
+utilities.lazyLoad(exports, ["ProjectMirror"], () => require("./projectMirror"));
+
+export { ProjectProtectedEnvironmentArgs, ProjectProtectedEnvironmentState } from "./projectProtectedEnvironment";
+export type ProjectProtectedEnvironment = import("./projectProtectedEnvironment").ProjectProtectedEnvironment;
+export const ProjectProtectedEnvironment: typeof import("./projectProtectedEnvironment").ProjectProtectedEnvironment = null as any;
+utilities.lazyLoad(exports, ["ProjectProtectedEnvironment"], () => require("./projectProtectedEnvironment"));
+
+export { ProjectRunnerEnablementArgs, ProjectRunnerEnablementState } from "./projectRunnerEnablement";
+export type ProjectRunnerEnablement = import("./projectRunnerEnablement").ProjectRunnerEnablement;
+export const ProjectRunnerEnablement: typeof import("./projectRunnerEnablement").ProjectRunnerEnablement = null as any;
+utilities.lazyLoad(exports, ["ProjectRunnerEnablement"], () => require("./projectRunnerEnablement"));
+
+export { ProjectShareGroupArgs, ProjectShareGroupState } from "./projectShareGroup";
+export type ProjectShareGroup = import("./projectShareGroup").ProjectShareGroup;
+export const ProjectShareGroup: typeof import("./projectShareGroup").ProjectShareGroup = null as any;
+utilities.lazyLoad(exports, ["ProjectShareGroup"], () => require("./projectShareGroup"));
+
+export { ProjectTagArgs, ProjectTagState } from "./projectTag";
+export type ProjectTag = import("./projectTag").ProjectTag;
+export const ProjectTag: typeof import("./projectTag").ProjectTag = null as any;
+utilities.lazyLoad(exports, ["ProjectTag"], () => require("./projectTag"));
+
+export { ProjectVariableArgs, ProjectVariableState } from "./projectVariable";
+export type ProjectVariable = import("./projectVariable").ProjectVariable;
+export const ProjectVariable: typeof import("./projectVariable").ProjectVariable = null as any;
+utilities.lazyLoad(exports, ["ProjectVariable"], () => require("./projectVariable"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { ReleaseLinkArgs, ReleaseLinkState } from "./releaseLink";
+export type ReleaseLink = import("./releaseLink").ReleaseLink;
+export const ReleaseLink: typeof import("./releaseLink").ReleaseLink = null as any;
+utilities.lazyLoad(exports, ["ReleaseLink"], () => require("./releaseLink"));
+
+export { RepositoryFileArgs, RepositoryFileState } from "./repositoryFile";
+export type RepositoryFile = import("./repositoryFile").RepositoryFile;
+export const RepositoryFile: typeof import("./repositoryFile").RepositoryFile = null as any;
+utilities.lazyLoad(exports, ["RepositoryFile"], () => require("./repositoryFile"));
+
+export { RunnerArgs, RunnerState } from "./runner";
+export type Runner = import("./runner").Runner;
+export const Runner: typeof import("./runner").Runner = null as any;
+utilities.lazyLoad(exports, ["Runner"], () => require("./runner"));
+
+export { ServiceExternalWikiArgs, ServiceExternalWikiState } from "./serviceExternalWiki";
+export type ServiceExternalWiki = import("./serviceExternalWiki").ServiceExternalWiki;
+export const ServiceExternalWiki: typeof import("./serviceExternalWiki").ServiceExternalWiki = null as any;
+utilities.lazyLoad(exports, ["ServiceExternalWiki"], () => require("./serviceExternalWiki"));
+
+export { ServiceGithubArgs, ServiceGithubState } from "./serviceGithub";
+export type ServiceGithub = import("./serviceGithub").ServiceGithub;
+export const ServiceGithub: typeof import("./serviceGithub").ServiceGithub = null as any;
+utilities.lazyLoad(exports, ["ServiceGithub"], () => require("./serviceGithub"));
+
+export { ServiceJiraArgs, ServiceJiraState } from "./serviceJira";
+export type ServiceJira = import("./serviceJira").ServiceJira;
+export const ServiceJira: typeof import("./serviceJira").ServiceJira = null as any;
+utilities.lazyLoad(exports, ["ServiceJira"], () => require("./serviceJira"));
+
+export { ServiceMicrosoftTeamsArgs, ServiceMicrosoftTeamsState } from "./serviceMicrosoftTeams";
+export type ServiceMicrosoftTeams = import("./serviceMicrosoftTeams").ServiceMicrosoftTeams;
+export const ServiceMicrosoftTeams: typeof import("./serviceMicrosoftTeams").ServiceMicrosoftTeams = null as any;
+utilities.lazyLoad(exports, ["ServiceMicrosoftTeams"], () => require("./serviceMicrosoftTeams"));
+
+export { ServicePipelinesEmailArgs, ServicePipelinesEmailState } from "./servicePipelinesEmail";
+export type ServicePipelinesEmail = import("./servicePipelinesEmail").ServicePipelinesEmail;
+export const ServicePipelinesEmail: typeof import("./servicePipelinesEmail").ServicePipelinesEmail = null as any;
+utilities.lazyLoad(exports, ["ServicePipelinesEmail"], () => require("./servicePipelinesEmail"));
+
+export { ServiceSlackArgs, ServiceSlackState } from "./serviceSlack";
+export type ServiceSlack = import("./serviceSlack").ServiceSlack;
+export const ServiceSlack: typeof import("./serviceSlack").ServiceSlack = null as any;
+utilities.lazyLoad(exports, ["ServiceSlack"], () => require("./serviceSlack"));
+
+export { SystemHookArgs, SystemHookState } from "./systemHook";
+export type SystemHook = import("./systemHook").SystemHook;
+export const SystemHook: typeof import("./systemHook").SystemHook = null as any;
+utilities.lazyLoad(exports, ["SystemHook"], () => require("./systemHook"));
+
+export { TagProtectionArgs, TagProtectionState } from "./tagProtection";
+export type TagProtection = import("./tagProtection").TagProtection;
+export const TagProtection: typeof import("./tagProtection").TagProtection = null as any;
+utilities.lazyLoad(exports, ["TagProtection"], () => require("./tagProtection"));
+
+export { TopicArgs, TopicState } from "./topic";
+export type Topic = import("./topic").Topic;
+export const Topic: typeof import("./topic").Topic = null as any;
+utilities.lazyLoad(exports, ["Topic"], () => require("./topic"));
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
+export { UserCustomAttributeArgs, UserCustomAttributeState } from "./userCustomAttribute";
+export type UserCustomAttribute = import("./userCustomAttribute").UserCustomAttribute;
+export const UserCustomAttribute: typeof import("./userCustomAttribute").UserCustomAttribute = null as any;
+utilities.lazyLoad(exports, ["UserCustomAttribute"], () => require("./userCustomAttribute"));
+
+export { UserGpgKeyArgs, UserGpgKeyState } from "./userGpgKey";
+export type UserGpgKey = import("./userGpgKey").UserGpgKey;
+export const UserGpgKey: typeof import("./userGpgKey").UserGpgKey = null as any;
+utilities.lazyLoad(exports, ["UserGpgKey"], () => require("./userGpgKey"));
+
+export { UserSshKeyArgs, UserSshKeyState } from "./userSshKey";
+export type UserSshKey = import("./userSshKey").UserSshKey;
+export const UserSshKey: typeof import("./userSshKey").UserSshKey = null as any;
+utilities.lazyLoad(exports, ["UserSshKey"], () => require("./userSshKey"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -104,72 +513,12 @@ export {
     types,
 };
 
-// Import resources to register:
-import { Branch } from "./branch";
-import { BranchProtection } from "./branchProtection";
-import { ClusterAgent } from "./clusterAgent";
-import { ClusterAgentToken } from "./clusterAgentToken";
-import { DeployKey } from "./deployKey";
-import { DeployKeyEnable } from "./deployKeyEnable";
-import { DeployToken } from "./deployToken";
-import { Group } from "./group";
-import { GroupAccessToken } from "./groupAccessToken";
-import { GroupBadge } from "./groupBadge";
-import { GroupCluster } from "./groupCluster";
-import { GroupCustomAttribute } from "./groupCustomAttribute";
-import { GroupLabel } from "./groupLabel";
-import { GroupLdapLink } from "./groupLdapLink";
-import { GroupMembership } from "./groupMembership";
-import { GroupProjectFileTemplate } from "./groupProjectFileTemplate";
-import { GroupShareGroup } from "./groupShareGroup";
-import { GroupVariable } from "./groupVariable";
-import { InstanceCluster } from "./instanceCluster";
-import { InstanceVariable } from "./instanceVariable";
-import { Label } from "./label";
-import { ManagedLicense } from "./managedLicense";
-import { PersonalAccessToken } from "./personalAccessToken";
-import { PipelineSchedule } from "./pipelineSchedule";
-import { PipelineScheduleVariable } from "./pipelineScheduleVariable";
-import { PipelineTrigger } from "./pipelineTrigger";
-import { Project } from "./project";
-import { ProjectAccessToken } from "./projectAccessToken";
-import { ProjectApprovalRule } from "./projectApprovalRule";
-import { ProjectBadge } from "./projectBadge";
-import { ProjectCluster } from "./projectCluster";
-import { ProjectCustomAttribute } from "./projectCustomAttribute";
-import { ProjectEnvironment } from "./projectEnvironment";
-import { ProjectFreezePeriod } from "./projectFreezePeriod";
-import { ProjectHook } from "./projectHook";
-import { ProjectIssue } from "./projectIssue";
-import { ProjectLevelMrApprovals } from "./projectLevelMrApprovals";
-import { ProjectMembership } from "./projectMembership";
-import { ProjectMilestone } from "./projectMilestone";
-import { ProjectMirror } from "./projectMirror";
-import { ProjectProtectedEnvironment } from "./projectProtectedEnvironment";
-import { ProjectRunnerEnablement } from "./projectRunnerEnablement";
-import { ProjectShareGroup } from "./projectShareGroup";
-import { ProjectTag } from "./projectTag";
-import { ProjectVariable } from "./projectVariable";
-import { ReleaseLink } from "./releaseLink";
-import { RepositoryFile } from "./repositoryFile";
-import { Runner } from "./runner";
-import { ServiceExternalWiki } from "./serviceExternalWiki";
-import { ServiceGithub } from "./serviceGithub";
-import { ServiceJira } from "./serviceJira";
-import { ServiceMicrosoftTeams } from "./serviceMicrosoftTeams";
-import { ServicePipelinesEmail } from "./servicePipelinesEmail";
-import { ServiceSlack } from "./serviceSlack";
-import { SystemHook } from "./systemHook";
-import { TagProtection } from "./tagProtection";
-import { Topic } from "./topic";
-import { User } from "./user";
-import { UserCustomAttribute } from "./userCustomAttribute";
-import { UserSshKey } from "./userSshKey";
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gitlab:index/applicationSettings:ApplicationSettings":
+                return new ApplicationSettings(name, <any>undefined, { urn })
             case "gitlab:index/branch:Branch":
                 return new Branch(name, <any>undefined, { urn })
             case "gitlab:index/branchProtection:BranchProtection":
@@ -194,6 +543,8 @@ const _module = {
                 return new GroupCluster(name, <any>undefined, { urn })
             case "gitlab:index/groupCustomAttribute:GroupCustomAttribute":
                 return new GroupCustomAttribute(name, <any>undefined, { urn })
+            case "gitlab:index/groupHook:GroupHook":
+                return new GroupHook(name, <any>undefined, { urn })
             case "gitlab:index/groupLabel:GroupLabel":
                 return new GroupLabel(name, <any>undefined, { urn })
             case "gitlab:index/groupLdapLink:GroupLdapLink":
@@ -202,6 +553,8 @@ const _module = {
                 return new GroupMembership(name, <any>undefined, { urn })
             case "gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate":
                 return new GroupProjectFileTemplate(name, <any>undefined, { urn })
+            case "gitlab:index/groupSamlLink:GroupSamlLink":
+                return new GroupSamlLink(name, <any>undefined, { urn })
             case "gitlab:index/groupShareGroup:GroupShareGroup":
                 return new GroupShareGroup(name, <any>undefined, { urn })
             case "gitlab:index/groupVariable:GroupVariable":
@@ -242,6 +595,8 @@ const _module = {
                 return new ProjectHook(name, <any>undefined, { urn })
             case "gitlab:index/projectIssue:ProjectIssue":
                 return new ProjectIssue(name, <any>undefined, { urn })
+            case "gitlab:index/projectIssueBoard:ProjectIssueBoard":
+                return new ProjectIssueBoard(name, <any>undefined, { urn })
             case "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals":
                 return new ProjectLevelMrApprovals(name, <any>undefined, { urn })
             case "gitlab:index/projectMembership:ProjectMembership":
@@ -288,6 +643,8 @@ const _module = {
                 return new User(name, <any>undefined, { urn })
             case "gitlab:index/userCustomAttribute:UserCustomAttribute":
                 return new UserCustomAttribute(name, <any>undefined, { urn })
+            case "gitlab:index/userGpgKey:UserGpgKey":
+                return new UserGpgKey(name, <any>undefined, { urn })
             case "gitlab:index/userSshKey:UserSshKey":
                 return new UserSshKey(name, <any>undefined, { urn })
             default:
@@ -295,6 +652,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gitlab", "index/applicationSettings", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/branch", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/branchProtection", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/clusterAgent", _module)
@@ -307,10 +665,12 @@ pulumi.runtime.registerResourceModule("gitlab", "index/groupAccessToken", _modul
 pulumi.runtime.registerResourceModule("gitlab", "index/groupBadge", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupCustomAttribute", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupLabel", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupLdapLink", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupMembership", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupProjectFileTemplate", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupSamlLink", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupShareGroup", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupVariable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/instanceCluster", _module)
@@ -331,6 +691,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectEnvironment", _mod
 pulumi.runtime.registerResourceModule("gitlab", "index/projectFreezePeriod", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIssue", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIssueBoard", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectLevelMrApprovals", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMembership", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMilestone", _module)
@@ -354,10 +715,8 @@ pulumi.runtime.registerResourceModule("gitlab", "index/tagProtection", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/topic", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/user", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userCustomAttribute", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/userGpgKey", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userSshKey", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("gitlab", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

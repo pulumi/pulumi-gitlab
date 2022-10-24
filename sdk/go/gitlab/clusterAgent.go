@@ -14,9 +14,10 @@ import (
 // The `ClusterAgent` resource allows to manage the lifecycle of a GitLab Agent for Kubernetes.
 //
 // > Note that this resource only registers the agent, but doesn't configure it.
-//    The configuration needs to be manually added as described in
-//    [the docs](https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file).
-//    However, a `RepositoryFile` resource may be used to achieve that.
+//
+//	The configuration needs to be manually added as described in
+//	[the docs](https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file).
+//	However, a `RepositoryFile` resource may be used to achieve that.
 //
 // > Requires at least maintainer permissions on the project.
 //
@@ -30,47 +31,52 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := gitlab.NewClusterAgent(ctx, "example", &gitlab.ClusterAgentArgs{
-// 			Project: pulumi.String("12345"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewRepositoryFile(ctx, "exampleAgentConfig", &gitlab.RepositoryFileArgs{
-// 			Project: example.Project,
-// 			Branch:  pulumi.String("main"),
-// 			FilePath: example.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", ".gitlab/agents/", name), nil
-// 			}).(pulumi.StringOutput),
-// 			Content:     pulumi.String(fmt.Sprintf("%v%v", "  gitops:\n", "    ...\n")),
-// 			AuthorEmail: pulumi.String("terraform@example.com"),
-// 			AuthorName:  pulumi.String("Terraform"),
-// 			CommitMessage: example.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "feature: add agent config for ", name), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := gitlab.NewClusterAgent(ctx, "example", &gitlab.ClusterAgentArgs{
+//				Project: pulumi.String("12345"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewRepositoryFile(ctx, "exampleAgentConfig", &gitlab.RepositoryFileArgs{
+//				Project: example.Project,
+//				Branch:  pulumi.String("main"),
+//				FilePath: example.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf(".gitlab/agents/%v", name), nil
+//				}).(pulumi.StringOutput),
+//				Content:     pulumi.String(fmt.Sprintf("  gitops:\n    ...\n")),
+//				AuthorEmail: pulumi.String("terraform@example.com"),
+//				AuthorName:  pulumi.String("Terraform"),
+//				CommitMessage: example.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("feature: add agent config for %v", name), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>`
+// GitLab Agent for Kubernetes can be imported with the following command and the id pattern `<project>:<agent-id>`
 //
 // ```sh
-//  $ pulumi import gitlab:index/clusterAgent:ClusterAgent example '12345:42'
+//
+//	$ pulumi import gitlab:index/clusterAgent:ClusterAgent example '12345:42'
+//
 // ```
 type ClusterAgent struct {
 	pulumi.CustomResourceState
@@ -189,7 +195,7 @@ func (i *ClusterAgent) ToClusterAgentOutputWithContext(ctx context.Context) Clus
 // ClusterAgentArrayInput is an input type that accepts ClusterAgentArray and ClusterAgentArrayOutput values.
 // You can construct a concrete instance of `ClusterAgentArrayInput` via:
 //
-//          ClusterAgentArray{ ClusterAgentArgs{...} }
+//	ClusterAgentArray{ ClusterAgentArgs{...} }
 type ClusterAgentArrayInput interface {
 	pulumi.Input
 
@@ -214,7 +220,7 @@ func (i ClusterAgentArray) ToClusterAgentArrayOutputWithContext(ctx context.Cont
 // ClusterAgentMapInput is an input type that accepts ClusterAgentMap and ClusterAgentMapOutput values.
 // You can construct a concrete instance of `ClusterAgentMapInput` via:
 //
-//          ClusterAgentMap{ "key": ClusterAgentArgs{...} }
+//	ClusterAgentMap{ "key": ClusterAgentArgs{...} }
 type ClusterAgentMapInput interface {
 	pulumi.Input
 

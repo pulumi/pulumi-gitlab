@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab.Inputs
 {
 
-    public sealed class ProjectTagCommitGetArgs : Pulumi.ResourceArgs
+    public sealed class ProjectTagCommitGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("authorEmail")]
         public Input<string>? AuthorEmail { get; set; }
@@ -30,9 +30,15 @@ namespace Pulumi.GitLab.Inputs
         [Input("committerName")]
         public Input<string>? CommitterName { get; set; }
 
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// The message of the annotated tag.
+        /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 
@@ -53,5 +59,6 @@ namespace Pulumi.GitLab.Inputs
         public ProjectTagCommitGetArgs()
         {
         }
+        public static new ProjectTagCommitGetArgs Empty => new ProjectTagCommitGetArgs();
     }
 }

@@ -19,43 +19,42 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new GitLab.Project("foo", new()
     ///     {
-    ///         var foo = new GitLab.Project("foo", new GitLab.ProjectArgs
-    ///         {
-    ///             Description = "Lorem Ipsum",
-    ///             VisibilityLevel = "public",
-    ///         });
-    ///         var mit = new GitLab.ManagedLicense("mit", new GitLab.ManagedLicenseArgs
-    ///         {
-    ///             Project = foo.Id,
-    ///             ApprovalStatus = "allowed",
-    ///         });
-    ///     }
+    ///         Description = "Lorem Ipsum",
+    ///         VisibilityLevel = "public",
+    ///     });
     /// 
-    /// }
+    ///     var mit = new GitLab.ManagedLicense("mit", new()
+    ///     {
+    ///         Project = foo.Id,
+    ///         ApprovalStatus = "allowed",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # You can import this resource with an id made up of `{project-id}:{license-id}`, e.g.
+    /// You can import this resource with an id made up of `{project-id}:{license-id}`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/managedLicense:ManagedLicense foo 1:2
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/managedLicense:ManagedLicense")]
-    public partial class ManagedLicense : Pulumi.CustomResource
+    public partial class ManagedLicense : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
-        /// "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
-        /// 15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
+        /// The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and "blacklisted"
+        /// 			have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions 15.0 and higher.
+        /// 			Prior to version 15.0 and after 14.6, the values are equivalent.
         /// </summary>
         [Output("approvalStatus")]
         public Output<string> ApprovalStatus { get; private set; } = null!;
@@ -116,12 +115,12 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ManagedLicenseArgs : Pulumi.ResourceArgs
+    public sealed class ManagedLicenseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
-        /// "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
-        /// 15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
+        /// The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and "blacklisted"
+        /// 			have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions 15.0 and higher.
+        /// 			Prior to version 15.0 and after 14.6, the values are equivalent.
         /// </summary>
         [Input("approvalStatus", required: true)]
         public Input<string> ApprovalStatus { get; set; } = null!;
@@ -141,14 +140,15 @@ namespace Pulumi.GitLab
         public ManagedLicenseArgs()
         {
         }
+        public static new ManagedLicenseArgs Empty => new ManagedLicenseArgs();
     }
 
-    public sealed class ManagedLicenseState : Pulumi.ResourceArgs
+    public sealed class ManagedLicenseState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and
-        /// "blacklisted" have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions
-        /// 15.0 and higher. Prior to version 15.0 and after 14.6, the values are equivalent.
+        /// The approval status of the license. Valid values are: `approved`, `blacklisted`, `allowed`, `denied`. "approved" and "blacklisted"
+        /// 			have been deprecated in favor of "allowed" and "denied"; use "allowed" and "denied" for GitLab versions 15.0 and higher.
+        /// 			Prior to version 15.0 and after 14.6, the values are equivalent.
         /// </summary>
         [Input("approvalStatus")]
         public Input<string>? ApprovalStatus { get; set; }
@@ -168,5 +168,6 @@ namespace Pulumi.GitLab
         public ManagedLicenseState()
         {
         }
+        public static new ManagedLicenseState Empty => new ManagedLicenseState();
     }
 }

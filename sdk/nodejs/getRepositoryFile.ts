@@ -39,8 +39,17 @@ export function getRepositoryFile(args: GetRepositoryFileArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getRepositoryFile.
  */
 export interface GetRepositoryFileArgs {
+    /**
+     * The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     */
     filePath: string;
+    /**
+     * The name or ID of the project.
+     */
     project: string;
+    /**
+     * The name of branch, tag or commit.
+     */
     ref: string;
 }
 
@@ -48,21 +57,57 @@ export interface GetRepositoryFileArgs {
  * A collection of values returned by getRepositoryFile.
  */
 export interface GetRepositoryFileResult {
+    /**
+     * The blob id.
+     */
     readonly blobId: string;
+    /**
+     * The commit id.
+     */
     readonly commitId: string;
+    /**
+     * File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+     */
     readonly content: string;
+    /**
+     * File content sha256 digest.
+     */
     readonly contentSha256: string;
+    /**
+     * The file content encoding.
+     */
     readonly encoding: string;
+    /**
+     * Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+     */
     readonly executeFilemode: boolean;
+    /**
+     * The filename.
+     */
     readonly fileName: string;
+    /**
+     * The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     */
     readonly filePath: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The last known commit id.
+     */
     readonly lastCommitId: string;
+    /**
+     * The name or ID of the project.
+     */
     readonly project: string;
+    /**
+     * The name of branch, tag or commit.
+     */
     readonly ref: string;
+    /**
+     * The file size.
+     */
     readonly size: number;
 }
 
@@ -74,7 +119,16 @@ export function getRepositoryFileOutput(args: GetRepositoryFileOutputArgs, opts?
  * A collection of arguments for invoking getRepositoryFile.
  */
 export interface GetRepositoryFileOutputArgs {
+    /**
+     * The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     */
     filePath: pulumi.Input<string>;
+    /**
+     * The name or ID of the project.
+     */
     project: pulumi.Input<string>;
+    /**
+     * The name of branch, tag or commit.
+     */
     ref: pulumi.Input<string>;
 }

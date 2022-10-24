@@ -21,28 +21,26 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = GitLab.GetReleaseLink.Invoke(new()
         ///     {
-        ///         var example = Output.Create(GitLab.GetReleaseLink.InvokeAsync(new GitLab.GetReleaseLinkArgs
-        ///         {
-        ///             LinkId = 11,
-        ///             Project = "foo/bar",
-        ///             TagName = "v1.0.1",
-        ///         }));
-        ///     }
+        ///         LinkId = 11,
+        ///         Project = "foo/bar",
+        ///         TagName = "v1.0.1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetReleaseLinkResult> InvokeAsync(GetReleaseLinkArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReleaseLinkResult>("gitlab:index/getReleaseLink:getReleaseLink", args ?? new GetReleaseLinkArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetReleaseLinkResult>("gitlab:index/getReleaseLink:getReleaseLink", args ?? new GetReleaseLinkArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `gitlab.ReleaseLink` data source allows get details of a release link.
@@ -54,79 +52,124 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = GitLab.GetReleaseLink.Invoke(new()
         ///     {
-        ///         var example = Output.Create(GitLab.GetReleaseLink.InvokeAsync(new GitLab.GetReleaseLinkArgs
-        ///         {
-        ///             LinkId = 11,
-        ///             Project = "foo/bar",
-        ///             TagName = "v1.0.1",
-        ///         }));
-        ///     }
+        ///         LinkId = 11,
+        ///         Project = "foo/bar",
+        ///         TagName = "v1.0.1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetReleaseLinkResult> Invoke(GetReleaseLinkInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReleaseLinkResult>("gitlab:index/getReleaseLink:getReleaseLink", args ?? new GetReleaseLinkInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetReleaseLinkResult>("gitlab:index/getReleaseLink:getReleaseLink", args ?? new GetReleaseLinkInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetReleaseLinkArgs : Pulumi.InvokeArgs
+    public sealed class GetReleaseLinkArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the link.
+        /// </summary>
         [Input("linkId", required: true)]
         public int LinkId { get; set; }
 
+        /// <summary>
+        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// The tag associated with the Release.
+        /// </summary>
         [Input("tagName", required: true)]
         public string TagName { get; set; } = null!;
 
         public GetReleaseLinkArgs()
         {
         }
+        public static new GetReleaseLinkArgs Empty => new GetReleaseLinkArgs();
     }
 
-    public sealed class GetReleaseLinkInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetReleaseLinkInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the link.
+        /// </summary>
         [Input("linkId", required: true)]
         public Input<int> LinkId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// The tag associated with the Release.
+        /// </summary>
         [Input("tagName", required: true)]
         public Input<string> TagName { get; set; } = null!;
 
         public GetReleaseLinkInvokeArgs()
         {
         }
+        public static new GetReleaseLinkInvokeArgs Empty => new GetReleaseLinkInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetReleaseLinkResult
     {
+        /// <summary>
+        /// Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        /// </summary>
         public readonly string DirectAssetUrl;
+        /// <summary>
+        /// External or internal link.
+        /// </summary>
         public readonly bool External;
+        /// <summary>
+        /// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        /// </summary>
         public readonly string Filepath;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ID of the link.
+        /// </summary>
         public readonly int LinkId;
+        /// <summary>
+        /// The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+        /// </summary>
         public readonly string LinkType;
+        /// <summary>
+        /// The name of the link. Link names must be unique within the release.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// The tag associated with the Release.
+        /// </summary>
         public readonly string TagName;
+        /// <summary>
+        /// The URL of the link. Link URLs must be unique within the release.
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

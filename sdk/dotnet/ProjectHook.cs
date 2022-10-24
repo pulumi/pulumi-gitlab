@@ -17,36 +17,34 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new GitLab.ProjectHook("example", new()
     ///     {
-    ///         var example = new GitLab.ProjectHook("example", new GitLab.ProjectHookArgs
-    ///         {
-    ///             MergeRequestsEvents = true,
-    ///             Project = "example/hooked",
-    ///             Url = "https://example.com/hook/example",
-    ///         });
-    ///     }
+    ///         MergeRequestsEvents = true,
+    ///         Project = "example/hooked",
+    ///         Url = "https://example.com/hook/example",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # A GitLab Project Hook can be imported using a key composed of `&lt;project-id&gt;:&lt;hook-id&gt;`, e.g.
+    /// A GitLab Project Hook can be imported using a key composed of `&lt;project-id&gt;:&lt;hook-id&gt;`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectHook:ProjectHook example "12345:1"
     /// ```
     /// 
-    /// # NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    ///  NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/projectHook:ProjectHook")]
-    public partial class ProjectHook : Pulumi.CustomResource
+    public partial class ProjectHook : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Invoke the hook for confidential issues events.
@@ -71,6 +69,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("enableSslVerification")]
         public Output<bool?> EnableSslVerification { get; private set; } = null!;
+
+        /// <summary>
+        /// The id of the project hook.
+        /// </summary>
+        [Output("hookId")]
+        public Output<int> HookId { get; private set; } = null!;
 
         /// <summary>
         /// Invoke the hook for issues events.
@@ -107,6 +111,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The id of the project for the hook.
+        /// </summary>
+        [Output("projectId")]
+        public Output<int> ProjectId { get; private set; } = null!;
 
         /// <summary>
         /// Invoke the hook for push events.
@@ -173,6 +183,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -194,7 +208,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ProjectHookArgs : Pulumi.ResourceArgs
+    public sealed class ProjectHookArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Invoke the hook for confidential issues events.
@@ -280,11 +294,21 @@ namespace Pulumi.GitLab
         [Input("tagPushEvents")]
         public Input<bool>? TagPushEvents { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// A token to present when invoking the hook. The token is not available for imported resources.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The url of the hook to invoke.
@@ -301,9 +325,10 @@ namespace Pulumi.GitLab
         public ProjectHookArgs()
         {
         }
+        public static new ProjectHookArgs Empty => new ProjectHookArgs();
     }
 
-    public sealed class ProjectHookState : Pulumi.ResourceArgs
+    public sealed class ProjectHookState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Invoke the hook for confidential issues events.
@@ -328,6 +353,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("enableSslVerification")]
         public Input<bool>? EnableSslVerification { get; set; }
+
+        /// <summary>
+        /// The id of the project hook.
+        /// </summary>
+        [Input("hookId")]
+        public Input<int>? HookId { get; set; }
 
         /// <summary>
         /// Invoke the hook for issues events.
@@ -366,6 +397,12 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// The id of the project for the hook.
+        /// </summary>
+        [Input("projectId")]
+        public Input<int>? ProjectId { get; set; }
+
+        /// <summary>
         /// Invoke the hook for push events.
         /// </summary>
         [Input("pushEvents")]
@@ -389,11 +426,21 @@ namespace Pulumi.GitLab
         [Input("tagPushEvents")]
         public Input<bool>? TagPushEvents { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// A token to present when invoking the hook. The token is not available for imported resources.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The url of the hook to invoke.
@@ -410,5 +457,6 @@ namespace Pulumi.GitLab
         public ProjectHookState()
         {
         }
+        public static new ProjectHookState Empty => new ProjectHookState();
     }
 }

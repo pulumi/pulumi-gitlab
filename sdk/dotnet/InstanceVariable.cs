@@ -17,35 +17,33 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new GitLab.InstanceVariable("example", new()
     ///     {
-    ///         var example = new GitLab.InstanceVariable("example", new GitLab.InstanceVariableArgs
-    ///         {
-    ///             Key = "instance_variable_key",
-    ///             Masked = false,
-    ///             Protected = false,
-    ///             Value = "instance_variable_value",
-    ///         });
-    ///     }
+    ///         Key = "instance_variable_key",
+    ///         Masked = false,
+    ///         Protected = false,
+    ///         Value = "instance_variable_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # GitLab instance variables can be imported using an id made up of `variablename`, e.g.
+    /// GitLab instance variables can be imported using an id made up of `variablename`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/instanceVariable:InstanceVariable example instance_variable_key
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/instanceVariable:InstanceVariable")]
-    public partial class InstanceVariable : Pulumi.CustomResource
+    public partial class InstanceVariable : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the variable.
@@ -54,15 +52,13 @@ namespace Pulumi.GitLab
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-        /// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         /// </summary>
         [Output("masked")]
         public Output<bool?> Masked { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-        /// `false`.
+        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         /// </summary>
         [Output("protected")]
         public Output<bool?> Protected { get; private set; } = null!;
@@ -102,6 +98,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "value",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -123,7 +123,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class InstanceVariableArgs : Pulumi.ResourceArgs
+    public sealed class InstanceVariableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the variable.
@@ -132,24 +132,32 @@ namespace Pulumi.GitLab
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-        /// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         /// </summary>
         [Input("masked")]
         public Input<bool>? Masked { get; set; }
 
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-        /// `false`.
+        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         /// </summary>
         [Input("protected")]
         public Input<bool>? Protected { get; set; }
 
+        [Input("value", required: true)]
+        private Input<string>? _value;
+
         /// <summary>
         /// The value of the variable.
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
@@ -160,9 +168,10 @@ namespace Pulumi.GitLab
         public InstanceVariableArgs()
         {
         }
+        public static new InstanceVariableArgs Empty => new InstanceVariableArgs();
     }
 
-    public sealed class InstanceVariableState : Pulumi.ResourceArgs
+    public sealed class InstanceVariableState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the variable.
@@ -171,24 +180,32 @@ namespace Pulumi.GitLab
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking
-        /// requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         /// </summary>
         [Input("masked")]
         public Input<bool>? Masked { get; set; }
 
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to
-        /// `false`.
+        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         /// </summary>
         [Input("protected")]
         public Input<bool>? Protected { get; set; }
 
+        [Input("value")]
+        private Input<string>? _value;
+
         /// <summary>
         /// The value of the variable.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
@@ -199,5 +216,6 @@ namespace Pulumi.GitLab
         public InstanceVariableState()
         {
         }
+        public static new InstanceVariableState Empty => new InstanceVariableState();
     }
 }

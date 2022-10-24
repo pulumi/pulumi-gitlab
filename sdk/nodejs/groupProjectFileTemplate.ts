@@ -6,9 +6,10 @@ import * as utilities from "./utilities";
 
 /**
  * The `gitlab.GroupProjectFileTemplate` resource allows setting a project from which
- * custom file templates will be loaded. The project selected must be a direct child of the group identified.
+ * custom file templates will be loaded. In order to use this resource, the project selected must be a direct child of
+ * the group selected. After the resource has run, `gitlab_project_template.template_project_id` is available for use.
  * For more information about which file types are available as templates, view
- * [GitLab's documentation](https://docs.gitlab.com/ee/user/admin_area/settings/instance_template_repository.html#supported-file-types-and-locations)
+ * [GitLab's documentation](https://docs.gitlab.com/ee/user/group/custom_project_templates.html)
  *
  * > This resource requires a GitLab Enterprise instance with a Premium license.
  *
@@ -43,13 +44,13 @@ export class GroupProjectFileTemplate extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the project that will be used for file templates. This project must be the direct child of the project defined
-     * by the group_id
+     * The ID of the project that will be used for file templates. This project must be the direct
+     * 			child of the project defined by the group_id
      */
     public readonly fileTemplateProjectId!: pulumi.Output<number>;
     /**
-     * The ID of the group that will use the file template project. This group must be the direct parent of the project defined
-     * by project_id
+     * The ID of the group that will use the file template project. This group must be the direct
+     *             parent of the project defined by project_id
      */
     public readonly groupId!: pulumi.Output<number>;
 
@@ -89,13 +90,13 @@ export class GroupProjectFileTemplate extends pulumi.CustomResource {
  */
 export interface GroupProjectFileTemplateState {
     /**
-     * The ID of the project that will be used for file templates. This project must be the direct child of the project defined
-     * by the group_id
+     * The ID of the project that will be used for file templates. This project must be the direct
+     * 			child of the project defined by the group_id
      */
     fileTemplateProjectId?: pulumi.Input<number>;
     /**
-     * The ID of the group that will use the file template project. This group must be the direct parent of the project defined
-     * by project_id
+     * The ID of the group that will use the file template project. This group must be the direct
+     *             parent of the project defined by project_id
      */
     groupId?: pulumi.Input<number>;
 }
@@ -105,13 +106,13 @@ export interface GroupProjectFileTemplateState {
  */
 export interface GroupProjectFileTemplateArgs {
     /**
-     * The ID of the project that will be used for file templates. This project must be the direct child of the project defined
-     * by the group_id
+     * The ID of the project that will be used for file templates. This project must be the direct
+     * 			child of the project defined by the group_id
      */
     fileTemplateProjectId: pulumi.Input<number>;
     /**
-     * The ID of the group that will use the file template project. This group must be the direct parent of the project defined
-     * by project_id
+     * The ID of the group that will use the file template project. This group must be the direct
+     *             parent of the project defined by project_id
      */
     groupId: pulumi.Input<number>;
 }

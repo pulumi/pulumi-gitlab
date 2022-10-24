@@ -11,27 +11,28 @@ namespace Pulumi.GitLab
 {
     /// <summary>
     /// The `gitlab.GroupProjectFileTemplate` resource allows setting a project from which
-    /// custom file templates will be loaded. The project selected must be a direct child of the group identified.
+    /// custom file templates will be loaded. In order to use this resource, the project selected must be a direct child of
+    /// the group selected. After the resource has run, `gitlab_project_template.template_project_id` is available for use.
     /// For more information about which file types are available as templates, view
-    /// [GitLab's documentation](https://docs.gitlab.com/ee/user/admin_area/settings/instance_template_repository.html#supported-file-types-and-locations)
+    /// [GitLab's documentation](https://docs.gitlab.com/ee/user/group/custom_project_templates.html)
     /// 
     /// &gt; This resource requires a GitLab Enterprise instance with a Premium license.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#update-group)
     /// </summary>
     [GitLabResourceType("gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate")]
-    public partial class GroupProjectFileTemplate : Pulumi.CustomResource
+    public partial class GroupProjectFileTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the project that will be used for file templates. This project must be the direct child of the project defined
-        /// by the group_id
+        /// The ID of the project that will be used for file templates. This project must be the direct
+        /// 			child of the project defined by the group_id
         /// </summary>
         [Output("fileTemplateProjectId")]
         public Output<int> FileTemplateProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the group that will use the file template project. This group must be the direct parent of the project defined
-        /// by project_id
+        /// The ID of the group that will use the file template project. This group must be the direct
+        ///             parent of the project defined by project_id
         /// </summary>
         [Output("groupId")]
         public Output<int> GroupId { get; private set; } = null!;
@@ -80,18 +81,18 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class GroupProjectFileTemplateArgs : Pulumi.ResourceArgs
+    public sealed class GroupProjectFileTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the project that will be used for file templates. This project must be the direct child of the project defined
-        /// by the group_id
+        /// The ID of the project that will be used for file templates. This project must be the direct
+        /// 			child of the project defined by the group_id
         /// </summary>
         [Input("fileTemplateProjectId", required: true)]
         public Input<int> FileTemplateProjectId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the group that will use the file template project. This group must be the direct parent of the project defined
-        /// by project_id
+        /// The ID of the group that will use the file template project. This group must be the direct
+        ///             parent of the project defined by project_id
         /// </summary>
         [Input("groupId", required: true)]
         public Input<int> GroupId { get; set; } = null!;
@@ -99,20 +100,21 @@ namespace Pulumi.GitLab
         public GroupProjectFileTemplateArgs()
         {
         }
+        public static new GroupProjectFileTemplateArgs Empty => new GroupProjectFileTemplateArgs();
     }
 
-    public sealed class GroupProjectFileTemplateState : Pulumi.ResourceArgs
+    public sealed class GroupProjectFileTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the project that will be used for file templates. This project must be the direct child of the project defined
-        /// by the group_id
+        /// The ID of the project that will be used for file templates. This project must be the direct
+        /// 			child of the project defined by the group_id
         /// </summary>
         [Input("fileTemplateProjectId")]
         public Input<int>? FileTemplateProjectId { get; set; }
 
         /// <summary>
-        /// The ID of the group that will use the file template project. This group must be the direct parent of the project defined
-        /// by project_id
+        /// The ID of the group that will use the file template project. This group must be the direct
+        ///             parent of the project defined by project_id
         /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
@@ -120,5 +122,6 @@ namespace Pulumi.GitLab
         public GroupProjectFileTemplateState()
         {
         }
+        public static new GroupProjectFileTemplateState Empty => new GroupProjectFileTemplateState();
     }
 }

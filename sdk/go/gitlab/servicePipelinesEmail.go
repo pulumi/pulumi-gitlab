@@ -21,47 +21,51 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		awesomeProject, err := gitlab.NewProject(ctx, "awesomeProject", &gitlab.ProjectArgs{
-// 			Description:     pulumi.String("My awesome project."),
-// 			VisibilityLevel: pulumi.String("public"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.NewServicePipelinesEmail(ctx, "email", &gitlab.ServicePipelinesEmailArgs{
-// 			Project: awesomeProject.ID(),
-// 			Recipients: pulumi.StringArray{
-// 				pulumi.String("gitlab@user.create"),
-// 			},
-// 			NotifyOnlyBrokenPipelines: pulumi.Bool(true),
-// 			BranchesToBeNotified:      pulumi.String("all"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			awesomeProject, err := gitlab.NewProject(ctx, "awesomeProject", &gitlab.ProjectArgs{
+//				Description:     pulumi.String("My awesome project."),
+//				VisibilityLevel: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewServicePipelinesEmail(ctx, "email", &gitlab.ServicePipelinesEmailArgs{
+//				Project: awesomeProject.ID(),
+//				Recipients: pulumi.StringArray{
+//					pulumi.String("gitlab@user.create"),
+//				},
+//				NotifyOnlyBrokenPipelines: pulumi.Bool(true),
+//				BranchesToBeNotified:      pulumi.String("all"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # You can import a gitlab_service_pipelines_email state using the project ID, e.g.
+// You can import a gitlab_service_pipelines_email state using the project ID, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/servicePipelinesEmail:ServicePipelinesEmail email 1
+//
+//	$ pulumi import gitlab:index/servicePipelinesEmail:ServicePipelinesEmail email 1
+//
 // ```
 type ServicePipelinesEmail struct {
 	pulumi.CustomResourceState
 
-	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
-	// Default is `default`
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
 	BranchesToBeNotified pulumi.StringPtrOutput `pulumi:"branchesToBeNotified"`
 	// Notify only broken pipelines. Default is true.
 	NotifyOnlyBrokenPipelines pulumi.BoolPtrOutput `pulumi:"notifyOnlyBrokenPipelines"`
@@ -106,8 +110,7 @@ func GetServicePipelinesEmail(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePipelinesEmail resources.
 type servicePipelinesEmailState struct {
-	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
-	// Default is `default`
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
 	// Notify only broken pipelines. Default is true.
 	NotifyOnlyBrokenPipelines *bool `pulumi:"notifyOnlyBrokenPipelines"`
@@ -118,8 +121,7 @@ type servicePipelinesEmailState struct {
 }
 
 type ServicePipelinesEmailState struct {
-	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
-	// Default is `default`
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
 	BranchesToBeNotified pulumi.StringPtrInput
 	// Notify only broken pipelines. Default is true.
 	NotifyOnlyBrokenPipelines pulumi.BoolPtrInput
@@ -134,8 +136,7 @@ func (ServicePipelinesEmailState) ElementType() reflect.Type {
 }
 
 type servicePipelinesEmailArgs struct {
-	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
-	// Default is `default`
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
 	// Notify only broken pipelines. Default is true.
 	NotifyOnlyBrokenPipelines *bool `pulumi:"notifyOnlyBrokenPipelines"`
@@ -147,8 +148,7 @@ type servicePipelinesEmailArgs struct {
 
 // The set of arguments for constructing a ServicePipelinesEmail resource.
 type ServicePipelinesEmailArgs struct {
-	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
-	// Default is `default`
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
 	BranchesToBeNotified pulumi.StringPtrInput
 	// Notify only broken pipelines. Default is true.
 	NotifyOnlyBrokenPipelines pulumi.BoolPtrInput
@@ -184,7 +184,7 @@ func (i *ServicePipelinesEmail) ToServicePipelinesEmailOutputWithContext(ctx con
 // ServicePipelinesEmailArrayInput is an input type that accepts ServicePipelinesEmailArray and ServicePipelinesEmailArrayOutput values.
 // You can construct a concrete instance of `ServicePipelinesEmailArrayInput` via:
 //
-//          ServicePipelinesEmailArray{ ServicePipelinesEmailArgs{...} }
+//	ServicePipelinesEmailArray{ ServicePipelinesEmailArgs{...} }
 type ServicePipelinesEmailArrayInput interface {
 	pulumi.Input
 
@@ -209,7 +209,7 @@ func (i ServicePipelinesEmailArray) ToServicePipelinesEmailArrayOutputWithContex
 // ServicePipelinesEmailMapInput is an input type that accepts ServicePipelinesEmailMap and ServicePipelinesEmailMapOutput values.
 // You can construct a concrete instance of `ServicePipelinesEmailMapInput` via:
 //
-//          ServicePipelinesEmailMap{ "key": ServicePipelinesEmailArgs{...} }
+//	ServicePipelinesEmailMap{ "key": ServicePipelinesEmailArgs{...} }
 type ServicePipelinesEmailMapInput interface {
 	pulumi.Input
 
@@ -245,8 +245,7 @@ func (o ServicePipelinesEmailOutput) ToServicePipelinesEmailOutputWithContext(ct
 	return o
 }
 
-// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
-// Default is `default`
+// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
 func (o ServicePipelinesEmailOutput) BranchesToBeNotified() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePipelinesEmail) pulumi.StringPtrOutput { return v.BranchesToBeNotified }).(pulumi.StringPtrOutput)
 }

@@ -11,18 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `BranchProtection` resource allows to manage the lifecycle of a protected branch of a repository.
-//
-// > The `allowedToPush`, `allowedToMerge`, `allowedToUnprotect`, `unprotectAccessLevel` and `codeOwnerApprovalRequired` attributes require a GitLab Enterprise instance.
-//
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html)
-//
 // ## Import
 //
-// # Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.
+// Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"
+//
+//	$ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"
+//
 // ```
 type BranchProtection struct {
 	pulumi.CustomResourceState
@@ -212,7 +208,7 @@ func (i *BranchProtection) ToBranchProtectionOutputWithContext(ctx context.Conte
 // BranchProtectionArrayInput is an input type that accepts BranchProtectionArray and BranchProtectionArrayOutput values.
 // You can construct a concrete instance of `BranchProtectionArrayInput` via:
 //
-//          BranchProtectionArray{ BranchProtectionArgs{...} }
+//	BranchProtectionArray{ BranchProtectionArgs{...} }
 type BranchProtectionArrayInput interface {
 	pulumi.Input
 
@@ -237,7 +233,7 @@ func (i BranchProtectionArray) ToBranchProtectionArrayOutputWithContext(ctx cont
 // BranchProtectionMapInput is an input type that accepts BranchProtectionMap and BranchProtectionMapOutput values.
 // You can construct a concrete instance of `BranchProtectionMapInput` via:
 //
-//          BranchProtectionMap{ "key": BranchProtectionArgs{...} }
+//	BranchProtectionMap{ "key": BranchProtectionArgs{...} }
 type BranchProtectionMapInput interface {
 	pulumi.Input
 

@@ -21,26 +21,24 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = GitLab.GetProjectProtectedBranches.Invoke(new()
         ///     {
-        ///         var example = Output.Create(GitLab.GetProjectProtectedBranches.InvokeAsync(new GitLab.GetProjectProtectedBranchesArgs
-        ///         {
-        ///             ProjectId = "foo/bar/baz",
-        ///         }));
-        ///     }
+        ///         ProjectId = "foo/bar/baz",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectProtectedBranchesResult> InvokeAsync(GetProjectProtectedBranchesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectProtectedBranchesResult>("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", args ?? new GetProjectProtectedBranchesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectProtectedBranchesResult>("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", args ?? new GetProjectProtectedBranchesArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `gitlab_protected_branches` data source allows details of the protected branches of a given project.
@@ -52,47 +50,53 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = GitLab.GetProjectProtectedBranches.Invoke(new()
         ///     {
-        ///         var example = Output.Create(GitLab.GetProjectProtectedBranches.InvokeAsync(new GitLab.GetProjectProtectedBranchesArgs
-        ///         {
-        ///             ProjectId = "foo/bar/baz",
-        ///         }));
-        ///     }
+        ///         ProjectId = "foo/bar/baz",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectProtectedBranchesResult> Invoke(GetProjectProtectedBranchesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectProtectedBranchesResult>("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", args ?? new GetProjectProtectedBranchesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectProtectedBranchesResult>("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", args ?? new GetProjectProtectedBranchesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetProjectProtectedBranchesArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectProtectedBranchesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The integer or path with namespace that uniquely identifies the project.
+        /// </summary>
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
         public GetProjectProtectedBranchesArgs()
         {
         }
+        public static new GetProjectProtectedBranchesArgs Empty => new GetProjectProtectedBranchesArgs();
     }
 
-    public sealed class GetProjectProtectedBranchesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectProtectedBranchesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The integer or path with namespace that uniquely identifies the project.
+        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
         public GetProjectProtectedBranchesInvokeArgs()
         {
         }
+        public static new GetProjectProtectedBranchesInvokeArgs Empty => new GetProjectProtectedBranchesInvokeArgs();
     }
 
 
@@ -103,7 +107,13 @@ namespace Pulumi.GitLab
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The integer or path with namespace that uniquely identifies the project.
+        /// </summary>
         public readonly string ProjectId;
+        /// <summary>
+        /// A list of protected branches, as defined below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectProtectedBranchesProtectedBranchResult> ProtectedBranches;
 
         [OutputConstructor]

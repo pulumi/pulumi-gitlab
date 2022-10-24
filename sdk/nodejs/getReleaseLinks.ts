@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -39,7 +40,13 @@ export function getReleaseLinks(args: GetReleaseLinksArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getReleaseLinks.
  */
 export interface GetReleaseLinksArgs {
+    /**
+     * The ID or full path to the project.
+     */
     project: string;
+    /**
+     * The tag associated with the Release.
+     */
     tagName: string;
 }
 
@@ -51,8 +58,17 @@ export interface GetReleaseLinksResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The ID or full path to the project.
+     */
     readonly project: string;
+    /**
+     * List of release links
+     */
     readonly releaseLinks: outputs.GetReleaseLinksReleaseLink[];
+    /**
+     * The tag associated with the Release.
+     */
     readonly tagName: string;
 }
 
@@ -64,6 +80,12 @@ export function getReleaseLinksOutput(args: GetReleaseLinksOutputArgs, opts?: pu
  * A collection of arguments for invoking getReleaseLinks.
  */
 export interface GetReleaseLinksOutputArgs {
+    /**
+     * The ID or full path to the project.
+     */
     project: pulumi.Input<string>;
+    /**
+     * The tag associated with the Release.
+     */
     tagName: pulumi.Input<string>;
 }

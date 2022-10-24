@@ -30,13 +30,13 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # You can import a system hook using the hook id `{hook-id}`, e.g.
+ * You can import a system hook using the hook id `{hook-id}`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/systemHook:SystemHook example 42
  * ```
  *
- * # NOTEthe `token` attribute won't be available for imported resources.
+ *  NOTEthe `token` attribute won't be available for imported resources.
  */
 export class SystemHook extends pulumi.CustomResource {
     /**
@@ -91,8 +91,7 @@ export class SystemHook extends pulumi.CustomResource {
      */
     public readonly tagPushEvents!: pulumi.Output<boolean | undefined>;
     /**
-     * Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for
-     * imported resources.
+     * Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
      */
     public readonly token!: pulumi.Output<string | undefined>;
     /**
@@ -131,11 +130,13 @@ export class SystemHook extends pulumi.CustomResource {
             resourceInputs["pushEvents"] = args ? args.pushEvents : undefined;
             resourceInputs["repositoryUpdateEvents"] = args ? args.repositoryUpdateEvents : undefined;
             resourceInputs["tagPushEvents"] = args ? args.tagPushEvents : undefined;
-            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(SystemHook.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -169,8 +170,7 @@ export interface SystemHookState {
      */
     tagPushEvents?: pulumi.Input<boolean>;
     /**
-     * Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for
-     * imported resources.
+     * Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
      */
     token?: pulumi.Input<string>;
     /**
@@ -204,8 +204,7 @@ export interface SystemHookArgs {
      */
     tagPushEvents?: pulumi.Input<boolean>;
     /**
-     * Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for
-     * imported resources.
+     * Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
      */
     token?: pulumi.Input<string>;
     /**

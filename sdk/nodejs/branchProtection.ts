@@ -2,19 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.BranchProtection` resource allows to manage the lifecycle of a protected branch of a repository.
- *
- * > The `allowedToPush`, `allowedToMerge`, `allowedToUnprotect`, `unprotectAccessLevel` and `codeOwnerApprovalRequired` attributes require a GitLab Enterprise instance.
- *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html)
- *
  * ## Import
  *
- * # Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.
+ * Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"

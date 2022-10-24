@@ -19,10 +19,12 @@ import (
 //
 // ## Import
 //
-// # GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
+// GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"
+//
+//	$ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"
+//
 // ```
 type ProjectApprovalRule struct {
 	pulumi.CustomResourceState
@@ -37,8 +39,7 @@ type ProjectApprovalRule struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// A list of protected branch IDs (not branch names) for which the rule applies.
 	ProtectedBranchIds pulumi.IntArrayOutput `pulumi:"protectedBranchIds"`
-	// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
-	// `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+	// String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`.
 	RuleType pulumi.StringOutput `pulumi:"ruleType"`
 	// A list of specific User IDs to add to the list of approvers.
 	UserIds pulumi.IntArrayOutput `pulumi:"userIds"`
@@ -89,8 +90,7 @@ type projectApprovalRuleState struct {
 	Project *string `pulumi:"project"`
 	// A list of protected branch IDs (not branch names) for which the rule applies.
 	ProtectedBranchIds []int `pulumi:"protectedBranchIds"`
-	// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
-	// `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+	// String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`.
 	RuleType *string `pulumi:"ruleType"`
 	// A list of specific User IDs to add to the list of approvers.
 	UserIds []int `pulumi:"userIds"`
@@ -107,8 +107,7 @@ type ProjectApprovalRuleState struct {
 	Project pulumi.StringPtrInput
 	// A list of protected branch IDs (not branch names) for which the rule applies.
 	ProtectedBranchIds pulumi.IntArrayInput
-	// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
-	// `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+	// String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`.
 	RuleType pulumi.StringPtrInput
 	// A list of specific User IDs to add to the list of approvers.
 	UserIds pulumi.IntArrayInput
@@ -129,8 +128,7 @@ type projectApprovalRuleArgs struct {
 	Project string `pulumi:"project"`
 	// A list of protected branch IDs (not branch names) for which the rule applies.
 	ProtectedBranchIds []int `pulumi:"protectedBranchIds"`
-	// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
-	// `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+	// String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`.
 	RuleType *string `pulumi:"ruleType"`
 	// A list of specific User IDs to add to the list of approvers.
 	UserIds []int `pulumi:"userIds"`
@@ -148,8 +146,7 @@ type ProjectApprovalRuleArgs struct {
 	Project pulumi.StringInput
 	// A list of protected branch IDs (not branch names) for which the rule applies.
 	ProtectedBranchIds pulumi.IntArrayInput
-	// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
-	// `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+	// String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`.
 	RuleType pulumi.StringPtrInput
 	// A list of specific User IDs to add to the list of approvers.
 	UserIds pulumi.IntArrayInput
@@ -181,7 +178,7 @@ func (i *ProjectApprovalRule) ToProjectApprovalRuleOutputWithContext(ctx context
 // ProjectApprovalRuleArrayInput is an input type that accepts ProjectApprovalRuleArray and ProjectApprovalRuleArrayOutput values.
 // You can construct a concrete instance of `ProjectApprovalRuleArrayInput` via:
 //
-//          ProjectApprovalRuleArray{ ProjectApprovalRuleArgs{...} }
+//	ProjectApprovalRuleArray{ ProjectApprovalRuleArgs{...} }
 type ProjectApprovalRuleArrayInput interface {
 	pulumi.Input
 
@@ -206,7 +203,7 @@ func (i ProjectApprovalRuleArray) ToProjectApprovalRuleArrayOutputWithContext(ct
 // ProjectApprovalRuleMapInput is an input type that accepts ProjectApprovalRuleMap and ProjectApprovalRuleMapOutput values.
 // You can construct a concrete instance of `ProjectApprovalRuleMapInput` via:
 //
-//          ProjectApprovalRuleMap{ "key": ProjectApprovalRuleArgs{...} }
+//	ProjectApprovalRuleMap{ "key": ProjectApprovalRuleArgs{...} }
 type ProjectApprovalRuleMapInput interface {
 	pulumi.Input
 
@@ -267,8 +264,7 @@ func (o ProjectApprovalRuleOutput) ProtectedBranchIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *ProjectApprovalRule) pulumi.IntArrayOutput { return v.ProtectedBranchIds }).(pulumi.IntArrayOutput)
 }
 
-// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
-// `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+// String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`.
 func (o ProjectApprovalRuleOutput) RuleType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectApprovalRule) pulumi.StringOutput { return v.RuleType }).(pulumi.StringOutput)
 }

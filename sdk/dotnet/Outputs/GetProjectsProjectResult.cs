@@ -17,6 +17,9 @@ namespace Pulumi.GitLab.Outputs
         public readonly bool AllowMergeOnSkippedPipeline;
         public readonly string AnalyticsAccessLevel;
         public readonly int ApprovalsBeforeMerge;
+        /// <summary>
+        /// Limit by archived status.
+        /// </summary>
         public readonly bool Archived;
         public readonly string AutoCancelPendingPipelines;
         public readonly string AutoDevopsDeployStrategy;
@@ -44,6 +47,9 @@ namespace Pulumi.GitLab.Outputs
         public readonly string ForkingAccessLevel;
         public readonly int ForksCount;
         public readonly string HttpUrlToRepo;
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         public readonly int Id;
         public readonly string ImportError;
         public readonly string ImportStatus;
@@ -92,9 +98,15 @@ namespace Pulumi.GitLab.Outputs
         public readonly string SquashCommitTemplate;
         public readonly string SshUrlToRepo;
         public readonly int StarCount;
+        /// <summary>
+        /// Include project statistics. Cannot be used with `group_id`.
+        /// </summary>
         public readonly ImmutableDictionary<string, int> Statistics;
         public readonly ImmutableArray<string> TagLists;
         public readonly ImmutableArray<string> Topics;
+        /// <summary>
+        /// Limit by visibility `public`, `internal`, or `private`.
+        /// </summary>
         public readonly string Visibility;
         public readonly string WebUrl;
         public readonly string WikiAccessLevel;

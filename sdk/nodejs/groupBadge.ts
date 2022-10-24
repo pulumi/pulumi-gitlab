@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # GitLab group badges can be imported using an id made up of `{group_id}:{badge_id}`, e.g.
+ * GitLab group badges can be imported using an id made up of `{group_id}:{badge_id}`, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/groupBadge:GroupBadge foo 1:3
@@ -72,11 +72,11 @@ export class GroupBadge extends pulumi.CustomResource {
      */
     public readonly linkUrl!: pulumi.Output<string>;
     /**
-     * The image_url argument rendered (in case of use of placeholders).
+     * The imageUrl argument rendered (in case of use of placeholders).
      */
     public /*out*/ readonly renderedImageUrl!: pulumi.Output<string>;
     /**
-     * The link_url argument rendered (in case of use of placeholders).
+     * The linkUrl argument rendered (in case of use of placeholders).
      */
     public /*out*/ readonly renderedLinkUrl!: pulumi.Output<string>;
 
@@ -137,11 +137,11 @@ export interface GroupBadgeState {
      */
     linkUrl?: pulumi.Input<string>;
     /**
-     * The image_url argument rendered (in case of use of placeholders).
+     * The imageUrl argument rendered (in case of use of placeholders).
      */
     renderedImageUrl?: pulumi.Input<string>;
     /**
-     * The link_url argument rendered (in case of use of placeholders).
+     * The linkUrl argument rendered (in case of use of placeholders).
      */
     renderedLinkUrl?: pulumi.Input<string>;
 }

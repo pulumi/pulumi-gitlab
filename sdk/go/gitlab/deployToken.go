@@ -17,17 +17,21 @@ import (
 //
 // ## Import
 //
-// # GitLab deploy tokens can be imported using an id made up of `{type}:{type_id}:{deploy_token_id}`, where type is one ofproject, group.
+// GitLab deploy tokens can be imported using an id made up of `{type}:{type_id}:{deploy_token_id}`, where type is one ofproject, group.
 //
 // ```sh
-//  $ pulumi import gitlab:index/deployToken:DeployToken group_token group:1:3
+//
+//	$ pulumi import gitlab:index/deployToken:DeployToken group_token group:1:3
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4
+//
+//	$ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4
+//
 // ```
 //
-// # Notethe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+//	Notethe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 type DeployToken struct {
 	pulumi.CustomResourceState
 
@@ -39,10 +43,9 @@ type DeployToken struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name or id of the project to add the deploy token to.
 	Project pulumi.StringPtrOutput `pulumi:"project"`
-	// Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
-	// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
-	// imported resources.
+	// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
 	Token pulumi.StringOutput `pulumi:"token"`
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username pulumi.StringOutput `pulumi:"username"`
@@ -58,6 +61,10 @@ func NewDeployToken(ctx *pulumi.Context,
 	if args.Scopes == nil {
 		return nil, errors.New("invalid value for required argument 'Scopes'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
 	var resource DeployToken
 	err := ctx.RegisterResource("gitlab:index/deployToken:DeployToken", name, args, &resource, opts...)
 	if err != nil {
@@ -88,10 +95,9 @@ type deployTokenState struct {
 	Name *string `pulumi:"name"`
 	// The name or id of the project to add the deploy token to.
 	Project *string `pulumi:"project"`
-	// Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
 	Scopes []string `pulumi:"scopes"`
-	// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
-	// imported resources.
+	// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
 	Token *string `pulumi:"token"`
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username *string `pulumi:"username"`
@@ -106,10 +112,9 @@ type DeployTokenState struct {
 	Name pulumi.StringPtrInput
 	// The name or id of the project to add the deploy token to.
 	Project pulumi.StringPtrInput
-	// Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
 	Scopes pulumi.StringArrayInput
-	// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
-	// imported resources.
+	// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
 	Token pulumi.StringPtrInput
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username pulumi.StringPtrInput
@@ -128,7 +133,7 @@ type deployTokenArgs struct {
 	Name *string `pulumi:"name"`
 	// The name or id of the project to add the deploy token to.
 	Project *string `pulumi:"project"`
-	// Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
 	Scopes []string `pulumi:"scopes"`
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username *string `pulumi:"username"`
@@ -144,7 +149,7 @@ type DeployTokenArgs struct {
 	Name pulumi.StringPtrInput
 	// The name or id of the project to add the deploy token to.
 	Project pulumi.StringPtrInput
-	// Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
 	Scopes pulumi.StringArrayInput
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username pulumi.StringPtrInput
@@ -176,7 +181,7 @@ func (i *DeployToken) ToDeployTokenOutputWithContext(ctx context.Context) Deploy
 // DeployTokenArrayInput is an input type that accepts DeployTokenArray and DeployTokenArrayOutput values.
 // You can construct a concrete instance of `DeployTokenArrayInput` via:
 //
-//          DeployTokenArray{ DeployTokenArgs{...} }
+//	DeployTokenArray{ DeployTokenArgs{...} }
 type DeployTokenArrayInput interface {
 	pulumi.Input
 
@@ -201,7 +206,7 @@ func (i DeployTokenArray) ToDeployTokenArrayOutputWithContext(ctx context.Contex
 // DeployTokenMapInput is an input type that accepts DeployTokenMap and DeployTokenMapOutput values.
 // You can construct a concrete instance of `DeployTokenMapInput` via:
 //
-//          DeployTokenMap{ "key": DeployTokenArgs{...} }
+//	DeployTokenMap{ "key": DeployTokenArgs{...} }
 type DeployTokenMapInput interface {
 	pulumi.Input
 
@@ -257,13 +262,12 @@ func (o DeployTokenOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeployToken) pulumi.StringPtrOutput { return v.Project }).(pulumi.StringPtrOutput)
 }
 
-// Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
 func (o DeployTokenOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeployToken) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
-// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for
-// imported resources.
+// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
 func (o DeployTokenOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeployToken) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
 }

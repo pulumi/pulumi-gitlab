@@ -20,30 +20,33 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.LookupGroupVariable(ctx, &GetGroupVariableArgs{
-// 			Group: "my/example/group",
-// 			Key:   "foo",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gitlab.LookupGroupVariable(ctx, &GetGroupVariableArgs{
-// 			EnvironmentScope: pulumi.StringRef("staging/*"),
-// 			Group:            "my/example/group",
-// 			Key:              "bar",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = gitlab.LookupGroupVariable(ctx, &GetGroupVariableArgs{
+//				Group: "my/example/group",
+//				Key:   "foo",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.LookupGroupVariable(ctx, &GetGroupVariableArgs{
+//				EnvironmentScope: pulumi.StringRef("staging/*"),
+//				Group:            "my/example/group",
+//				Key:              "bar",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupGroupVariable(ctx *pulumi.Context, args *LookupGroupVariableArgs, opts ...pulumi.InvokeOption) (*LookupGroupVariableResult, error) {
 	var rv LookupGroupVariableResult
@@ -56,21 +59,31 @@ func LookupGroupVariable(ctx *pulumi.Context, args *LookupGroupVariableArgs, opt
 
 // A collection of arguments for invoking getGroupVariable.
 type LookupGroupVariableArgs struct {
+	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope *string `pulumi:"environmentScope"`
-	Group            string  `pulumi:"group"`
-	Key              string  `pulumi:"key"`
+	// The name or id of the group.
+	Group string `pulumi:"group"`
+	// The name of the variable.
+	Key string `pulumi:"key"`
 }
 
 // A collection of values returned by getGroupVariable.
 type LookupGroupVariableResult struct {
+	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope string `pulumi:"environmentScope"`
-	Group            string `pulumi:"group"`
+	// The name or id of the group.
+	Group string `pulumi:"group"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string `pulumi:"id"`
-	Key          string `pulumi:"key"`
-	Masked       bool   `pulumi:"masked"`
-	Protected    bool   `pulumi:"protected"`
-	Value        string `pulumi:"value"`
+	Id string `pulumi:"id"`
+	// The name of the variable.
+	Key string `pulumi:"key"`
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	Masked bool `pulumi:"masked"`
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	Protected bool `pulumi:"protected"`
+	// The value of the variable.
+	Value string `pulumi:"value"`
+	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
 	VariableType string `pulumi:"variableType"`
 }
 
@@ -89,9 +102,12 @@ func LookupGroupVariableOutput(ctx *pulumi.Context, args LookupGroupVariableOutp
 
 // A collection of arguments for invoking getGroupVariable.
 type LookupGroupVariableOutputArgs struct {
+	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope pulumi.StringPtrInput `pulumi:"environmentScope"`
-	Group            pulumi.StringInput    `pulumi:"group"`
-	Key              pulumi.StringInput    `pulumi:"key"`
+	// The name or id of the group.
+	Group pulumi.StringInput `pulumi:"group"`
+	// The name of the variable.
+	Key pulumi.StringInput `pulumi:"key"`
 }
 
 func (LookupGroupVariableOutputArgs) ElementType() reflect.Type {
@@ -113,10 +129,12 @@ func (o LookupGroupVariableResultOutput) ToLookupGroupVariableResultOutputWithCo
 	return o
 }
 
+// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 func (o LookupGroupVariableResultOutput) EnvironmentScope() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) string { return v.EnvironmentScope }).(pulumi.StringOutput)
 }
 
+// The name or id of the group.
 func (o LookupGroupVariableResultOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) string { return v.Group }).(pulumi.StringOutput)
 }
@@ -126,22 +144,27 @@ func (o LookupGroupVariableResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the variable.
 func (o LookupGroupVariableResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
 func (o LookupGroupVariableResultOutput) Masked() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) bool { return v.Masked }).(pulumi.BoolOutput)
 }
 
+// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 func (o LookupGroupVariableResultOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) bool { return v.Protected }).(pulumi.BoolOutput)
 }
 
+// The value of the variable.
 func (o LookupGroupVariableResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) string { return v.Value }).(pulumi.StringOutput)
 }
 
+// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
 func (o LookupGroupVariableResultOutput) VariableType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) string { return v.VariableType }).(pulumi.StringOutput)
 }

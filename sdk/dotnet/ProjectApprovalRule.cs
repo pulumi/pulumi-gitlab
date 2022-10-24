@@ -18,14 +18,14 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// # GitLab project approval rules can be imported using a key composed of `&lt;project-id&gt;:&lt;rule-id&gt;`, e.g.
+    /// GitLab project approval rules can be imported using a key composed of `&lt;project-id&gt;:&lt;rule-id&gt;`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/projectApprovalRule:ProjectApprovalRule")]
-    public partial class ProjectApprovalRule : Pulumi.CustomResource
+    public partial class ProjectApprovalRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The number of approvals required for this rule.
@@ -58,8 +58,7 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<int>> ProtectedBranchIds { get; private set; } = null!;
 
         /// <summary>
-        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
-        /// `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
         /// </summary>
         [Output("ruleType")]
         public Output<string> RuleType { get; private set; } = null!;
@@ -114,7 +113,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ProjectApprovalRuleArgs : Pulumi.ResourceArgs
+    public sealed class ProjectApprovalRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of approvals required for this rule.
@@ -159,8 +158,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
-        /// `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
         /// </summary>
         [Input("ruleType")]
         public Input<string>? RuleType { get; set; }
@@ -180,9 +178,10 @@ namespace Pulumi.GitLab
         public ProjectApprovalRuleArgs()
         {
         }
+        public static new ProjectApprovalRuleArgs Empty => new ProjectApprovalRuleArgs();
     }
 
-    public sealed class ProjectApprovalRuleState : Pulumi.ResourceArgs
+    public sealed class ProjectApprovalRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of approvals required for this rule.
@@ -227,8 +226,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with
-        /// `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
+        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
         /// </summary>
         [Input("ruleType")]
         public Input<string>? RuleType { get; set; }
@@ -248,5 +246,6 @@ namespace Pulumi.GitLab
         public ProjectApprovalRuleState()
         {
         }
+        public static new ProjectApprovalRuleState Empty => new ProjectApprovalRuleState();
     }
 }

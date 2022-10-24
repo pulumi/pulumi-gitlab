@@ -16,7 +16,7 @@ namespace Pulumi.GitLab
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [GitLabResourceType("pulumi:providers:gitlab")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
@@ -81,7 +81,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
@@ -138,5 +138,6 @@ namespace Pulumi.GitLab
         public ProviderArgs()
         {
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

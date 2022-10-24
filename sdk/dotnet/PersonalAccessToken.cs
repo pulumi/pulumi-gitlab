@@ -19,45 +19,44 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var examplePersonalAccessToken = new GitLab.PersonalAccessToken("examplePersonalAccessToken", new()
     ///     {
-    ///         var examplePersonalAccessToken = new GitLab.PersonalAccessToken("examplePersonalAccessToken", new GitLab.PersonalAccessTokenArgs
+    ///         UserId = 25,
+    ///         ExpiresAt = "2020-03-14",
+    ///         Scopes = new[]
     ///         {
-    ///             UserId = 25,
-    ///             ExpiresAt = "2020-03-14",
-    ///             Scopes = 
-    ///             {
-    ///                 "api",
-    ///             },
-    ///         });
-    ///         var exampleProjectVariable = new GitLab.ProjectVariable("exampleProjectVariable", new GitLab.ProjectVariableArgs
-    ///         {
-    ///             Project = gitlab_project.Example.Id,
-    ///             Key = "pat",
-    ///             Value = examplePersonalAccessToken.Token,
-    ///         });
-    ///     }
+    ///             "api",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var exampleProjectVariable = new GitLab.ProjectVariable("exampleProjectVariable", new()
+    ///     {
+    ///         Project = gitlab_project.Example.Id,
+    ///         Key = "pat",
+    ///         Value = examplePersonalAccessToken.Token,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # A GitLab Personal Access Token can be imported using a key composed of `&lt;user-id&gt;:&lt;token-id&gt;`, e.g.
+    /// A GitLab Personal Access Token can be imported using a key composed of `&lt;user-id&gt;:&lt;token-id&gt;`, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/personalAccessToken:PersonalAccessToken example "12345:1"
     /// ```
     /// 
-    /// # NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    ///  NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/personalAccessToken:PersonalAccessToken")]
-    public partial class PersonalAccessToken : Pulumi.CustomResource
+    public partial class PersonalAccessToken : global::Pulumi.CustomResource
     {
         /// <summary>
         /// True if the token is active.
@@ -90,16 +89,13 @@ namespace Pulumi.GitLab
         public Output<bool> Revoked { get; private set; } = null!;
 
         /// <summary>
-        /// The scope for the personal access token. It determines the actions which can be performed when authenticating with this
-        /// token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`,
-        /// `write_registry`, `sudo`.
+        /// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`.
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
 
         /// <summary>
-        /// The personal access token. This is only populated when creating a new personal access token. This attribute is not
-        /// available for imported resources.
+        /// The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
         /// </summary>
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
@@ -133,6 +129,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -154,7 +154,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class PersonalAccessTokenArgs : Pulumi.ResourceArgs
+    public sealed class PersonalAccessTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
@@ -172,9 +172,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The scope for the personal access token. It determines the actions which can be performed when authenticating with this
-        /// token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`,
-        /// `write_registry`, `sudo`.
+        /// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -191,9 +189,10 @@ namespace Pulumi.GitLab
         public PersonalAccessTokenArgs()
         {
         }
+        public static new PersonalAccessTokenArgs Empty => new PersonalAccessTokenArgs();
     }
 
-    public sealed class PersonalAccessTokenState : Pulumi.ResourceArgs
+    public sealed class PersonalAccessTokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// True if the token is active.
@@ -229,9 +228,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The scope for the personal access token. It determines the actions which can be performed when authenticating with this
-        /// token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`,
-        /// `write_registry`, `sudo`.
+        /// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -239,12 +236,21 @@ namespace Pulumi.GitLab
             set => _scopes = value;
         }
 
-        /// <summary>
-        /// The personal access token. This is only populated when creating a new personal access token. This attribute is not
-        /// available for imported resources.
-        /// </summary>
         [Input("token")]
-        public Input<string>? Token { get; set; }
+        private Input<string>? _token;
+
+        /// <summary>
+        /// The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
+        /// </summary>
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The id of the user.
@@ -255,5 +261,6 @@ namespace Pulumi.GitLab
         public PersonalAccessTokenState()
         {
         }
+        public static new PersonalAccessTokenState Empty => new PersonalAccessTokenState();
     }
 }

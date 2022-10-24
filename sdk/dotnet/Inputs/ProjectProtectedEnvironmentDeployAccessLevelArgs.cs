@@ -10,22 +10,35 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab.Inputs
 {
 
-    public sealed class ProjectProtectedEnvironmentDeployAccessLevelArgs : Pulumi.ResourceArgs
+    public sealed class ProjectProtectedEnvironmentDeployAccessLevelArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
+        /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
 
+        /// <summary>
+        /// Readable description of level of access.
+        /// </summary>
         [Input("accessLevelDescription")]
         public Input<string>? AccessLevelDescription { get; set; }
 
+        /// <summary>
+        /// The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.
+        /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
 
+        /// <summary>
+        /// The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.
+        /// </summary>
         [Input("userId")]
         public Input<int>? UserId { get; set; }
 
         public ProjectProtectedEnvironmentDeployAccessLevelArgs()
         {
         }
+        public static new ProjectProtectedEnvironmentDeployAccessLevelArgs Empty => new ProjectProtectedEnvironmentDeployAccessLevelArgs();
     }
 }

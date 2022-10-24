@@ -21,31 +21,30 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var vars = GitLab.GetGroupVariables.Invoke(new()
         ///     {
-        ///         var vars = Output.Create(GitLab.GetGroupVariables.InvokeAsync(new GitLab.GetGroupVariablesArgs
-        ///         {
-        ///             Group = "my/example/group",
-        ///         }));
-        ///         var stagingVars = Output.Create(GitLab.GetGroupVariables.InvokeAsync(new GitLab.GetGroupVariablesArgs
-        ///         {
-        ///             EnvironmentScope = "staging/*",
-        ///             Group = "my/example/group",
-        ///         }));
-        ///     }
+        ///         Group = "my/example/group",
+        ///     });
         /// 
-        /// }
+        ///     var stagingVars = GitLab.GetGroupVariables.Invoke(new()
+        ///     {
+        ///         EnvironmentScope = "staging/*",
+        ///         Group = "my/example/group",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupVariablesResult> InvokeAsync(GetGroupVariablesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupVariablesResult>("gitlab:index/getGroupVariables:getGroupVariables", args ?? new GetGroupVariablesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupVariablesResult>("gitlab:index/getGroupVariables:getGroupVariables", args ?? new GetGroupVariablesArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `gitlab.getGroupVariables` data source allows to retrieve all group-level CI/CD variables.
@@ -57,70 +56,92 @@ namespace Pulumi.GitLab
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var vars = GitLab.GetGroupVariables.Invoke(new()
         ///     {
-        ///         var vars = Output.Create(GitLab.GetGroupVariables.InvokeAsync(new GitLab.GetGroupVariablesArgs
-        ///         {
-        ///             Group = "my/example/group",
-        ///         }));
-        ///         var stagingVars = Output.Create(GitLab.GetGroupVariables.InvokeAsync(new GitLab.GetGroupVariablesArgs
-        ///         {
-        ///             EnvironmentScope = "staging/*",
-        ///             Group = "my/example/group",
-        ///         }));
-        ///     }
+        ///         Group = "my/example/group",
+        ///     });
         /// 
-        /// }
+        ///     var stagingVars = GitLab.GetGroupVariables.Invoke(new()
+        ///     {
+        ///         EnvironmentScope = "staging/*",
+        ///         Group = "my/example/group",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupVariablesResult> Invoke(GetGroupVariablesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGroupVariablesResult>("gitlab:index/getGroupVariables:getGroupVariables", args ?? new GetGroupVariablesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupVariablesResult>("gitlab:index/getGroupVariables:getGroupVariables", args ?? new GetGroupVariablesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGroupVariablesArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupVariablesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The environment scope of the variable. Defaults to all environment (`*`).
+        /// </summary>
         [Input("environmentScope")]
         public string? EnvironmentScope { get; set; }
 
+        /// <summary>
+        /// The name or id of the group.
+        /// </summary>
         [Input("group", required: true)]
         public string Group { get; set; } = null!;
 
         public GetGroupVariablesArgs()
         {
         }
+        public static new GetGroupVariablesArgs Empty => new GetGroupVariablesArgs();
     }
 
-    public sealed class GetGroupVariablesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupVariablesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The environment scope of the variable. Defaults to all environment (`*`).
+        /// </summary>
         [Input("environmentScope")]
         public Input<string>? EnvironmentScope { get; set; }
 
+        /// <summary>
+        /// The name or id of the group.
+        /// </summary>
         [Input("group", required: true)]
         public Input<string> Group { get; set; } = null!;
 
         public GetGroupVariablesInvokeArgs()
         {
         }
+        public static new GetGroupVariablesInvokeArgs Empty => new GetGroupVariablesInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetGroupVariablesResult
     {
+        /// <summary>
+        /// The environment scope of the variable. Defaults to all environment (`*`).
+        /// </summary>
         public readonly string? EnvironmentScope;
+        /// <summary>
+        /// The name or id of the group.
+        /// </summary>
         public readonly string Group;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The list of variables returned by the search
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupVariablesVariableResult> Variables;
 
         [OutputConstructor]

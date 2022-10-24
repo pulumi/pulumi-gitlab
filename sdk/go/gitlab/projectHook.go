@@ -21,34 +21,39 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewProjectHook(ctx, "example", &gitlab.ProjectHookArgs{
-// 			MergeRequestsEvents: pulumi.Bool(true),
-// 			Project:             pulumi.String("example/hooked"),
-// 			Url:                 pulumi.String("https://example.com/hook/example"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewProjectHook(ctx, "example", &gitlab.ProjectHookArgs{
+//				MergeRequestsEvents: pulumi.Bool(true),
+//				Project:             pulumi.String("example/hooked"),
+//				Url:                 pulumi.String("https://example.com/hook/example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # A GitLab Project Hook can be imported using a key composed of `<project-id>:<hook-id>`, e.g.
+// A GitLab Project Hook can be imported using a key composed of `<project-id>:<hook-id>`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectHook:ProjectHook example "12345:1"
+//
+//	$ pulumi import gitlab:index/projectHook:ProjectHook example "12345:1"
+//
 // ```
 //
-// # NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+//	NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 type ProjectHook struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +65,8 @@ type ProjectHook struct {
 	DeploymentEvents pulumi.BoolPtrOutput `pulumi:"deploymentEvents"`
 	// Enable ssl verification when invoking the hook.
 	EnableSslVerification pulumi.BoolPtrOutput `pulumi:"enableSslVerification"`
+	// The id of the project hook.
+	HookId pulumi.IntOutput `pulumi:"hookId"`
 	// Invoke the hook for issues events.
 	IssuesEvents pulumi.BoolPtrOutput `pulumi:"issuesEvents"`
 	// Invoke the hook for job events.
@@ -72,6 +79,8 @@ type ProjectHook struct {
 	PipelineEvents pulumi.BoolPtrOutput `pulumi:"pipelineEvents"`
 	// The name or id of the project to add the hook to.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The id of the project for the hook.
+	ProjectId pulumi.IntOutput `pulumi:"projectId"`
 	// Invoke the hook for push events.
 	PushEvents pulumi.BoolPtrOutput `pulumi:"pushEvents"`
 	// Invoke the hook for push events on matching branches only.
@@ -101,6 +110,13 @@ func NewProjectHook(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
+	if args.Token != nil {
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
 	var resource ProjectHook
 	err := ctx.RegisterResource("gitlab:index/projectHook:ProjectHook", name, args, &resource, opts...)
 	if err != nil {
@@ -131,6 +147,8 @@ type projectHookState struct {
 	DeploymentEvents *bool `pulumi:"deploymentEvents"`
 	// Enable ssl verification when invoking the hook.
 	EnableSslVerification *bool `pulumi:"enableSslVerification"`
+	// The id of the project hook.
+	HookId *int `pulumi:"hookId"`
 	// Invoke the hook for issues events.
 	IssuesEvents *bool `pulumi:"issuesEvents"`
 	// Invoke the hook for job events.
@@ -143,6 +161,8 @@ type projectHookState struct {
 	PipelineEvents *bool `pulumi:"pipelineEvents"`
 	// The name or id of the project to add the hook to.
 	Project *string `pulumi:"project"`
+	// The id of the project for the hook.
+	ProjectId *int `pulumi:"projectId"`
 	// Invoke the hook for push events.
 	PushEvents *bool `pulumi:"pushEvents"`
 	// Invoke the hook for push events on matching branches only.
@@ -168,6 +188,8 @@ type ProjectHookState struct {
 	DeploymentEvents pulumi.BoolPtrInput
 	// Enable ssl verification when invoking the hook.
 	EnableSslVerification pulumi.BoolPtrInput
+	// The id of the project hook.
+	HookId pulumi.IntPtrInput
 	// Invoke the hook for issues events.
 	IssuesEvents pulumi.BoolPtrInput
 	// Invoke the hook for job events.
@@ -180,6 +202,8 @@ type ProjectHookState struct {
 	PipelineEvents pulumi.BoolPtrInput
 	// The name or id of the project to add the hook to.
 	Project pulumi.StringPtrInput
+	// The id of the project for the hook.
+	ProjectId pulumi.IntPtrInput
 	// Invoke the hook for push events.
 	PushEvents pulumi.BoolPtrInput
 	// Invoke the hook for push events on matching branches only.
@@ -301,7 +325,7 @@ func (i *ProjectHook) ToProjectHookOutputWithContext(ctx context.Context) Projec
 // ProjectHookArrayInput is an input type that accepts ProjectHookArray and ProjectHookArrayOutput values.
 // You can construct a concrete instance of `ProjectHookArrayInput` via:
 //
-//          ProjectHookArray{ ProjectHookArgs{...} }
+//	ProjectHookArray{ ProjectHookArgs{...} }
 type ProjectHookArrayInput interface {
 	pulumi.Input
 
@@ -326,7 +350,7 @@ func (i ProjectHookArray) ToProjectHookArrayOutputWithContext(ctx context.Contex
 // ProjectHookMapInput is an input type that accepts ProjectHookMap and ProjectHookMapOutput values.
 // You can construct a concrete instance of `ProjectHookMapInput` via:
 //
-//          ProjectHookMap{ "key": ProjectHookArgs{...} }
+//	ProjectHookMap{ "key": ProjectHookArgs{...} }
 type ProjectHookMapInput interface {
 	pulumi.Input
 
@@ -382,6 +406,11 @@ func (o ProjectHookOutput) EnableSslVerification() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.BoolPtrOutput { return v.EnableSslVerification }).(pulumi.BoolPtrOutput)
 }
 
+// The id of the project hook.
+func (o ProjectHookOutput) HookId() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.IntOutput { return v.HookId }).(pulumi.IntOutput)
+}
+
 // Invoke the hook for issues events.
 func (o ProjectHookOutput) IssuesEvents() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.BoolPtrOutput { return v.IssuesEvents }).(pulumi.BoolPtrOutput)
@@ -410,6 +439,11 @@ func (o ProjectHookOutput) PipelineEvents() pulumi.BoolPtrOutput {
 // The name or id of the project to add the hook to.
 func (o ProjectHookOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The id of the project for the hook.
+func (o ProjectHookOutput) ProjectId() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.IntOutput { return v.ProjectId }).(pulumi.IntOutput)
 }
 
 // Invoke the hook for push events.

@@ -20,22 +20,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.GetReleaseLinks(ctx, &GetReleaseLinksArgs{
-// 			Project: "foo/bar",
-// 			TagName: "v1.0.1",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = gitlab.GetReleaseLinks(ctx, &GetReleaseLinksArgs{
+//				Project: "foo/bar",
+//				TagName: "v1.0.1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetReleaseLinks(ctx *pulumi.Context, args *GetReleaseLinksArgs, opts ...pulumi.InvokeOption) (*GetReleaseLinksResult, error) {
 	var rv GetReleaseLinksResult
@@ -48,17 +51,22 @@ func GetReleaseLinks(ctx *pulumi.Context, args *GetReleaseLinksArgs, opts ...pul
 
 // A collection of arguments for invoking getReleaseLinks.
 type GetReleaseLinksArgs struct {
+	// The ID or full path to the project.
 	Project string `pulumi:"project"`
+	// The tag associated with the Release.
 	TagName string `pulumi:"tagName"`
 }
 
 // A collection of values returned by getReleaseLinks.
 type GetReleaseLinksResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                       `pulumi:"id"`
-	Project      string                       `pulumi:"project"`
+	Id string `pulumi:"id"`
+	// The ID or full path to the project.
+	Project string `pulumi:"project"`
+	// List of release links
 	ReleaseLinks []GetReleaseLinksReleaseLink `pulumi:"releaseLinks"`
-	TagName      string                       `pulumi:"tagName"`
+	// The tag associated with the Release.
+	TagName string `pulumi:"tagName"`
 }
 
 func GetReleaseLinksOutput(ctx *pulumi.Context, args GetReleaseLinksOutputArgs, opts ...pulumi.InvokeOption) GetReleaseLinksResultOutput {
@@ -76,7 +84,9 @@ func GetReleaseLinksOutput(ctx *pulumi.Context, args GetReleaseLinksOutputArgs, 
 
 // A collection of arguments for invoking getReleaseLinks.
 type GetReleaseLinksOutputArgs struct {
+	// The ID or full path to the project.
 	Project pulumi.StringInput `pulumi:"project"`
+	// The tag associated with the Release.
 	TagName pulumi.StringInput `pulumi:"tagName"`
 }
 
@@ -104,14 +114,17 @@ func (o GetReleaseLinksResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseLinksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The ID or full path to the project.
 func (o GetReleaseLinksResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseLinksResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// List of release links
 func (o GetReleaseLinksResultOutput) ReleaseLinks() GetReleaseLinksReleaseLinkArrayOutput {
 	return o.ApplyT(func(v GetReleaseLinksResult) []GetReleaseLinksReleaseLink { return v.ReleaseLinks }).(GetReleaseLinksReleaseLinkArrayOutput)
 }
 
+// The tag associated with the Release.
 func (o GetReleaseLinksResultOutput) TagName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseLinksResult) string { return v.TagName }).(pulumi.StringOutput)
 }

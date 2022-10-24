@@ -21,43 +21,41 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new GitLab.User("example", new()
     ///     {
-    ///         var example = new GitLab.User("example", new GitLab.UserArgs
-    ///         {
-    ///             CanCreateGroup = false,
-    ///             Email = "gitlab@user.create",
-    ///             IsAdmin = true,
-    ///             IsExternal = true,
-    ///             Password = "superPassword",
-    ///             ProjectsLimit = 4,
-    ///             ResetPassword = false,
-    ///             Username = "example",
-    ///         });
-    ///     }
+    ///         CanCreateGroup = false,
+    ///         Email = "gitlab@user.create",
+    ///         IsAdmin = true,
+    ///         IsExternal = true,
+    ///         Password = "superPassword",
+    ///         ProjectsLimit = 4,
+    ///         ResetPassword = false,
+    ///         Username = "example",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/user:User # You can import a user to terraform state using `&lt;resource&gt; &lt;id&gt;`.
+    ///  $ pulumi import gitlab:index/user:User You can import a user to terraform state using `&lt;resource&gt; &lt;id&gt;`.
     /// ```
     /// 
-    /// # The `id` must be an integer for the id of the user you want to import, # for example
+    ///  The `id` must be an integer for the id of the user you want to import, for example
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/user:User example 42
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/user:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Boolean, defaults to false. Whether to allow the user to create groups.
@@ -72,14 +70,13 @@ namespace Pulumi.GitLab
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean, defaults to false. Whether to enable administrative privileges
+        /// Boolean, defaults to false.  Whether to enable administrative privileges
         /// </summary>
         [Output("isAdmin")]
         public Output<bool?> IsAdmin { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
-        /// access projects to which they are explicitly granted access.
+        /// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         /// </summary>
         [Output("isExternal")]
         public Output<bool?> IsExternal { get; private set; } = null!;
@@ -109,7 +106,7 @@ namespace Pulumi.GitLab
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Integer, defaults to 0. Number of projects user can create.
+        /// Integer, defaults to 0.  Number of projects user can create.
         /// </summary>
         [Output("projectsLimit")]
         public Output<int?> ProjectsLimit { get; private set; } = null!;
@@ -161,6 +158,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -182,7 +183,7 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean, defaults to false. Whether to allow the user to create groups.
@@ -197,14 +198,13 @@ namespace Pulumi.GitLab
         public Input<string> Email { get; set; } = null!;
 
         /// <summary>
-        /// Boolean, defaults to false. Whether to enable administrative privileges
+        /// Boolean, defaults to false.  Whether to enable administrative privileges
         /// </summary>
         [Input("isAdmin")]
         public Input<bool>? IsAdmin { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
-        /// access projects to which they are explicitly granted access.
+        /// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         /// </summary>
         [Input("isExternal")]
         public Input<bool>? IsExternal { get; set; }
@@ -227,14 +227,24 @@ namespace Pulumi.GitLab
         [Input("note")]
         public Input<string>? Note { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the user.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
-        /// Integer, defaults to 0. Number of projects user can create.
+        /// Integer, defaults to 0.  Number of projects user can create.
         /// </summary>
         [Input("projectsLimit")]
         public Input<int>? ProjectsLimit { get; set; }
@@ -266,9 +276,10 @@ namespace Pulumi.GitLab
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 
-    public sealed class UserState : Pulumi.ResourceArgs
+    public sealed class UserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean, defaults to false. Whether to allow the user to create groups.
@@ -283,14 +294,13 @@ namespace Pulumi.GitLab
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to false. Whether to enable administrative privileges
+        /// Boolean, defaults to false.  Whether to enable administrative privileges
         /// </summary>
         [Input("isAdmin")]
         public Input<bool>? IsAdmin { get; set; }
 
         /// <summary>
-        /// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only
-        /// access projects to which they are explicitly granted access.
+        /// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         /// </summary>
         [Input("isExternal")]
         public Input<bool>? IsExternal { get; set; }
@@ -313,14 +323,24 @@ namespace Pulumi.GitLab
         [Input("note")]
         public Input<string>? Note { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the user.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
-        /// Integer, defaults to 0. Number of projects user can create.
+        /// Integer, defaults to 0.  Number of projects user can create.
         /// </summary>
         [Input("projectsLimit")]
         public Input<int>? ProjectsLimit { get; set; }
@@ -352,5 +372,6 @@ namespace Pulumi.GitLab
         public UserState()
         {
         }
+        public static new UserState Empty => new UserState();
     }
 }

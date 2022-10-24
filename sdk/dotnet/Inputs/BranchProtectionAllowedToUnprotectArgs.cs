@@ -10,22 +10,35 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab.Inputs
 {
 
-    public sealed class BranchProtectionAllowedToUnprotectArgs : Pulumi.ResourceArgs
+    public sealed class BranchProtectionAllowedToUnprotectArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Level of access.
+        /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
 
+        /// <summary>
+        /// Readable description of level of access.
+        /// </summary>
         [Input("accessLevelDescription")]
         public Input<string>? AccessLevelDescription { get; set; }
 
+        /// <summary>
+        /// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
 
+        /// <summary>
+        /// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        /// </summary>
         [Input("userId")]
         public Input<int>? UserId { get; set; }
 
         public BranchProtectionAllowedToUnprotectArgs()
         {
         }
+        public static new BranchProtectionAllowedToUnprotectArgs Empty => new BranchProtectionAllowedToUnprotectArgs();
     }
 }

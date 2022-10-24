@@ -15,29 +15,9 @@ namespace Pulumi.GitLab
         /// The `gitlab.getInstanceVariables` data source allows to retrieve all instance-level CI/CD variables.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using GitLab = Pulumi.GitLab;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var vars = Output.Create(GitLab.GetInstanceVariables.InvokeAsync());
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceVariablesResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceVariablesResult>("gitlab:index/getInstanceVariables:getInstanceVariables", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceVariablesResult>("gitlab:index/getInstanceVariables:getInstanceVariables", InvokeArgs.Empty, options.WithDefaults());
     }
 
 
@@ -48,6 +28,9 @@ namespace Pulumi.GitLab
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The list of variables returned by the search
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceVariablesVariableResult> Variables;
 
         [OutputConstructor]

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -42,11 +43,29 @@ export function getProjectMilestones(args: GetProjectMilestonesArgs, opts?: pulu
  * A collection of arguments for invoking getProjectMilestones.
  */
 export interface GetProjectMilestonesArgs {
+    /**
+     * Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
+     */
     iids?: number[];
+    /**
+     * Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+     */
     includeParentMilestones?: boolean;
+    /**
+     * The ID or URL-encoded path of the project owned by the authenticated user.
+     */
     project: string;
+    /**
+     * Return only milestones with a title or description matching the provided string.
+     */
     search?: string;
+    /**
+     * Return only `active` or `closed` milestones.
+     */
     state?: string;
+    /**
+     * Return only the milestones having the given `title`.
+     */
     title?: string;
 }
 
@@ -58,12 +77,33 @@ export interface GetProjectMilestonesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
+     */
     readonly iids?: number[];
+    /**
+     * Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+     */
     readonly includeParentMilestones?: boolean;
+    /**
+     * List of milestones from a project.
+     */
     readonly milestones: outputs.GetProjectMilestonesMilestone[];
+    /**
+     * The ID or URL-encoded path of the project owned by the authenticated user.
+     */
     readonly project: string;
+    /**
+     * Return only milestones with a title or description matching the provided string.
+     */
     readonly search?: string;
+    /**
+     * Return only `active` or `closed` milestones.
+     */
     readonly state?: string;
+    /**
+     * Return only the milestones having the given `title`.
+     */
     readonly title?: string;
 }
 
@@ -75,10 +115,28 @@ export function getProjectMilestonesOutput(args: GetProjectMilestonesOutputArgs,
  * A collection of arguments for invoking getProjectMilestones.
  */
 export interface GetProjectMilestonesOutputArgs {
+    /**
+     * Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
+     */
     iids?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+     */
     includeParentMilestones?: pulumi.Input<boolean>;
+    /**
+     * The ID or URL-encoded path of the project owned by the authenticated user.
+     */
     project: pulumi.Input<string>;
+    /**
+     * Return only milestones with a title or description matching the provided string.
+     */
     search?: pulumi.Input<string>;
+    /**
+     * Return only `active` or `closed` milestones.
+     */
     state?: pulumi.Input<string>;
+    /**
+     * Return only the milestones having the given `title`.
+     */
     title?: pulumi.Input<string>;
 }

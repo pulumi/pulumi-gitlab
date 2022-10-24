@@ -17,8 +17,9 @@ import (
 // import_url, mirror, and mirrorTriggerBuilds properties on the Project resource.
 //
 // > **Destroy Behavior** GitLab 14.10 introduced an API endpoint to delete a project mirror.
-//    Therefore, for GitLab 14.10 and newer the project mirror will be destroyed when the resource is destroyed.
-//    For older versions, the mirror will be disabled and the resource will be destroyed.
+//
+//	Therefore, for GitLab 14.10 and newer the project mirror will be destroyed when the resource is destroyed.
+//	For older versions, the mirror will be disabled and the resource will be destroyed.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/remote_mirrors.html)
 //
@@ -28,30 +29,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewProjectMirror(ctx, "foo", &gitlab.ProjectMirrorArgs{
-// 			Project: pulumi.String("1"),
-// 			Url:     pulumi.String("https://username:password@github.com/org/repository.git"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewProjectMirror(ctx, "foo", &gitlab.ProjectMirrorArgs{
+//				Project: pulumi.String("1"),
+//				Url:     pulumi.String("https://username:password@github.com/org/repository.git"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
+// GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/projectMirror:ProjectMirror foo "12345:1337"
+//
+//	$ pulumi import gitlab:index/projectMirror:ProjectMirror foo "12345:1337"
+//
 // ```
 type ProjectMirror struct {
 	pulumi.CustomResourceState
@@ -83,6 +89,13 @@ func NewProjectMirror(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
+	if args.Url != nil {
+		args.Url = pulumi.ToSecret(args.Url).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"url",
+	})
+	opts = append(opts, secrets)
 	var resource ProjectMirror
 	err := ctx.RegisterResource("gitlab:index/projectMirror:ProjectMirror", name, args, &resource, opts...)
 	if err != nil {
@@ -191,7 +204,7 @@ func (i *ProjectMirror) ToProjectMirrorOutputWithContext(ctx context.Context) Pr
 // ProjectMirrorArrayInput is an input type that accepts ProjectMirrorArray and ProjectMirrorArrayOutput values.
 // You can construct a concrete instance of `ProjectMirrorArrayInput` via:
 //
-//          ProjectMirrorArray{ ProjectMirrorArgs{...} }
+//	ProjectMirrorArray{ ProjectMirrorArgs{...} }
 type ProjectMirrorArrayInput interface {
 	pulumi.Input
 
@@ -216,7 +229,7 @@ func (i ProjectMirrorArray) ToProjectMirrorArrayOutputWithContext(ctx context.Co
 // ProjectMirrorMapInput is an input type that accepts ProjectMirrorMap and ProjectMirrorMapOutput values.
 // You can construct a concrete instance of `ProjectMirrorMapInput` via:
 //
-//          ProjectMirrorMap{ "key": ProjectMirrorArgs{...} }
+//	ProjectMirrorMap{ "key": ProjectMirrorArgs{...} }
 type ProjectMirrorMapInput interface {
 	pulumi.Input
 

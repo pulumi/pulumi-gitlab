@@ -21,31 +21,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gitlab.NewGroupCustomAttribute(ctx, "attr", &gitlab.GroupCustomAttributeArgs{
-// 			Group: pulumi.Int(42),
-// 			Key:   pulumi.String("location"),
-// 			Value: pulumi.String("Greenland"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewGroupCustomAttribute(ctx, "attr", &gitlab.GroupCustomAttributeArgs{
+//				Group: pulumi.Int(42),
+//				Key:   pulumi.String("location"),
+//				Value: pulumi.String("Greenland"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// # You can import a group custom attribute using the an id made up of `{group-id}:{key}`, e.g.
+// You can import a group custom attribute using the an id made up of `{group-id}:{key}`, e.g.
 //
 // ```sh
-//  $ pulumi import gitlab:index/groupCustomAttribute:GroupCustomAttribute attr 42:location
+//
+//	$ pulumi import gitlab:index/groupCustomAttribute:GroupCustomAttribute attr 42:location
+//
 // ```
 type GroupCustomAttribute struct {
 	pulumi.CustomResourceState
@@ -162,7 +167,7 @@ func (i *GroupCustomAttribute) ToGroupCustomAttributeOutputWithContext(ctx conte
 // GroupCustomAttributeArrayInput is an input type that accepts GroupCustomAttributeArray and GroupCustomAttributeArrayOutput values.
 // You can construct a concrete instance of `GroupCustomAttributeArrayInput` via:
 //
-//          GroupCustomAttributeArray{ GroupCustomAttributeArgs{...} }
+//	GroupCustomAttributeArray{ GroupCustomAttributeArgs{...} }
 type GroupCustomAttributeArrayInput interface {
 	pulumi.Input
 
@@ -187,7 +192,7 @@ func (i GroupCustomAttributeArray) ToGroupCustomAttributeArrayOutputWithContext(
 // GroupCustomAttributeMapInput is an input type that accepts GroupCustomAttributeMap and GroupCustomAttributeMapOutput values.
 // You can construct a concrete instance of `GroupCustomAttributeMapInput` via:
 //
-//          GroupCustomAttributeMap{ "key": GroupCustomAttributeArgs{...} }
+//	GroupCustomAttributeMap{ "key": GroupCustomAttributeArgs{...} }
 type GroupCustomAttributeMapInput interface {
 	pulumi.Input
 

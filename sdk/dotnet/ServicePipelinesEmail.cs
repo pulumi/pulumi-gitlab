@@ -17,47 +17,45 @@ namespace Pulumi.GitLab
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using GitLab = Pulumi.GitLab;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var awesomeProject = new GitLab.Project("awesomeProject", new()
     ///     {
-    ///         var awesomeProject = new GitLab.Project("awesomeProject", new GitLab.ProjectArgs
-    ///         {
-    ///             Description = "My awesome project.",
-    ///             VisibilityLevel = "public",
-    ///         });
-    ///         var email = new GitLab.ServicePipelinesEmail("email", new GitLab.ServicePipelinesEmailArgs
-    ///         {
-    ///             Project = awesomeProject.Id,
-    ///             Recipients = 
-    ///             {
-    ///                 "gitlab@user.create",
-    ///             },
-    ///             NotifyOnlyBrokenPipelines = true,
-    ///             BranchesToBeNotified = "all",
-    ///         });
-    ///     }
+    ///         Description = "My awesome project.",
+    ///         VisibilityLevel = "public",
+    ///     });
     /// 
-    /// }
+    ///     var email = new GitLab.ServicePipelinesEmail("email", new()
+    ///     {
+    ///         Project = awesomeProject.Id,
+    ///         Recipients = new[]
+    ///         {
+    ///             "gitlab@user.create",
+    ///         },
+    ///         NotifyOnlyBrokenPipelines = true,
+    ///         BranchesToBeNotified = "all",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// # You can import a gitlab_service_pipelines_email state using the project ID, e.g.
+    /// You can import a gitlab_service_pipelines_email state using the project ID, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/servicePipelinesEmail:ServicePipelinesEmail email 1
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/servicePipelinesEmail:ServicePipelinesEmail")]
-    public partial class ServicePipelinesEmail : Pulumi.CustomResource
+    public partial class ServicePipelinesEmail : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
-        /// Default is `default`
+        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
         /// </summary>
         [Output("branchesToBeNotified")]
         public Output<string?> BranchesToBeNotified { get; private set; } = null!;
@@ -124,11 +122,10 @@ namespace Pulumi.GitLab
         }
     }
 
-    public sealed class ServicePipelinesEmailArgs : Pulumi.ResourceArgs
+    public sealed class ServicePipelinesEmailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
-        /// Default is `default`
+        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
@@ -160,13 +157,13 @@ namespace Pulumi.GitLab
         public ServicePipelinesEmailArgs()
         {
         }
+        public static new ServicePipelinesEmailArgs Empty => new ServicePipelinesEmailArgs();
     }
 
-    public sealed class ServicePipelinesEmailState : Pulumi.ResourceArgs
+    public sealed class ServicePipelinesEmailState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`.
-        /// Default is `default`
+        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
@@ -198,5 +195,6 @@ namespace Pulumi.GitLab
         public ServicePipelinesEmailState()
         {
         }
+        public static new ServicePipelinesEmailState Empty => new ServicePipelinesEmailState();
     }
 }

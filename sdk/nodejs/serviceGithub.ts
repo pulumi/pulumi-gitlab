@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import gitlab:index/serviceGithub:ServiceGithub # You can import a service_github state using `<resource> <project_id>`
+ *  $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a service_github state using `<resource> <project_id>`
  * ```
  *
  * ```sh
@@ -83,8 +83,7 @@ export class ServiceGithub extends pulumi.CustomResource {
      */
     public readonly repositoryUrl!: pulumi.Output<string>;
     /**
-     * Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
-     * See [Static / dynamic status check names] to learn more.
+     * Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
      */
     public readonly staticContext!: pulumi.Output<boolean | undefined>;
     /**
@@ -135,13 +134,15 @@ export class ServiceGithub extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["repositoryUrl"] = args ? args.repositoryUrl : undefined;
             resourceInputs["staticContext"] = args ? args.staticContext : undefined;
-            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["active"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["title"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ServiceGithub.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -167,8 +168,7 @@ export interface ServiceGithubState {
      */
     repositoryUrl?: pulumi.Input<string>;
     /**
-     * Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
-     * See [Static / dynamic status check names] to learn more.
+     * Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
      */
     staticContext?: pulumi.Input<boolean>;
     /**
@@ -198,8 +198,7 @@ export interface ServiceGithubArgs {
      */
     repositoryUrl: pulumi.Input<string>;
     /**
-     * Append instance name instead of branch to the status. Must enable to set a GitLab status check as _required_ in GitHub.
-     * See [Static / dynamic status check names] to learn more.
+     * Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
      */
     staticContext?: pulumi.Input<boolean>;
     /**
