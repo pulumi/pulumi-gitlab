@@ -11,28 +11,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#get-a-specific-gpg-key)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const exampleUser = gitlab.getUser({
- *     username: "example-user",
- * });
- * // Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
- * const exampleUserGpgKey = new gitlab.UserGpgKey("exampleUserGpgKey", {
- *     userId: exampleUser.then(exampleUser => exampleUser.id),
- *     key: `-----BEGIN PGP PUBLIC KEY BLOCK-----
- * ...
- * -----END PGP PUBLIC KEY BLOCK-----`,
- * });
- * // Manages a GPG key for the current user
- * const exampleUserUserGpgKey = new gitlab.UserGpgKey("exampleUserUserGpgKey", {key: `-----BEGIN PGP PUBLIC KEY BLOCK-----
- * ...
- * -----END PGP PUBLIC KEY BLOCK-----`});
- * ```
- *
  * ## Import
  *
  * You can import a GPG key for a specific user using an id made up of `{user-id}:{key}`, e.g.
