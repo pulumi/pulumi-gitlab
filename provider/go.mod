@@ -87,7 +87,7 @@ require (
 	github.com/ettle/strcase v0.1.1 // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/gedex/inflector v0.0.0-20170307190818-16278e9db813 // indirect
-	github.com/gitlabhq/terraform-provider-gitlab v1.3.1-0.20220330125313-61400af97b03 // indirect
+	github.com/gitlabhq/terraform-provider-gitlab v15.7.1+incompatible // indirect
 	github.com/go-git/gcfg v1.5.0 // indirect
 	github.com/go-git/go-billy/v5 v5.3.1 // indirect
 	github.com/go-git/go-git/v5 v5.4.2 // indirect
