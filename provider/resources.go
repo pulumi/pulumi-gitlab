@@ -19,11 +19,11 @@ import (
 	"path/filepath"
 	"unicode"
 
-	gitlabShim "github.com/gitlabhq/terraform-provider-gitlab/shim"
 	"github.com/pulumi/pulumi-gitlab/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	gitlabShim "gitlab.com/gitlab-org/terraform-provider-gitlab/shim"
 )
 
 // all of the GitLab token components used below.
