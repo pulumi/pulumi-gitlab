@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-gitlab/provider/v4
 
-go 1.18
+go 1.19
 
 require (
 	github.com/gitlabhq/terraform-provider-gitlab/shim v0.0.0
