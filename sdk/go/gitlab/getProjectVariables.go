@@ -28,13 +28,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = gitlab.GetProjectVariables(ctx, &GetProjectVariablesArgs{
+//			_, err := gitlab.GetProjectVariables(ctx, &gitlab.GetProjectVariablesArgs{
 //				Project: "my/example/project",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.GetProjectVariables(ctx, &GetProjectVariablesArgs{
+//			_, err = gitlab.GetProjectVariables(ctx, &gitlab.GetProjectVariablesArgs{
 //				EnvironmentScope: pulumi.StringRef("staging/*"),
 //				Project:          "my/example/project",
 //			}, nil)

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,14 +31,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleUser, err := gitlab.LookupUser(ctx, &GetUserArgs{
+//			exampleUser, err := gitlab.LookupUser(ctx, &gitlab.LookupUserArgs{
 //				Username: pulumi.StringRef("example-user"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gitlab.NewUserGpgKey(ctx, "exampleUserGpgKey", &gitlab.UserGpgKeyArgs{
-//				UserId: pulumi.String(exampleUser.Id),
+//				UserId: *pulumi.String(exampleUser.Id),
 //				Key:    pulumi.String("-----BEGIN PGP PUBLIC KEY BLOCK-----\n...\n-----END PGP PUBLIC KEY BLOCK-----"),
 //			})
 //			if err != nil {

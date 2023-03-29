@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,8 +24,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -40,7 +38,7 @@ import (
 //				RepositoryUpdateEvents: pulumi.Bool(true),
 //				TagPushEvents:          pulumi.Bool(true),
 //				Token:                  pulumi.String("secret-token"),
-//				Url:                    pulumi.String(fmt.Sprintf("https://example.com/hook-%vd", "%")),
+//				Url:                    pulumi.String("https://example.com/hook-%d"),
 //			})
 //			if err != nil {
 //				return err
@@ -94,7 +92,7 @@ func NewSystemHook(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
 	if args.Token != nil {
-		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrOutput)
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"token",

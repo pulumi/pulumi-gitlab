@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = gitlab.LookupUser(ctx, &GetUserArgs{
+//			_, err := gitlab.LookupUser(ctx, &gitlab.LookupUserArgs{
 //				Username: pulumi.StringRef("example-user"),
 //			}, nil)
 //			if err != nil {

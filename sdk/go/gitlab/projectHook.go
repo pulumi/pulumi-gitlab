@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -111,7 +111,7 @@ func NewProjectHook(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
 	if args.Token != nil {
-		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrOutput)
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"token",

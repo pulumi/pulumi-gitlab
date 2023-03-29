@@ -15,15 +15,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const example = pulumi.output(gitlab.getCurrentUser());
+ * const example = gitlab.getCurrentUser({});
  * ```
  */
 export function getCurrentUser(opts?: pulumi.InvokeOptions): Promise<GetCurrentUserResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getCurrentUser:getCurrentUser", {
     }, opts);
 }

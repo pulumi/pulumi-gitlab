@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *     url: "https://example.com/hook/example",
  * });
  * // Setting all attributes
- * const allAttributes = new gitlab.GroupHook("all_attributes", {
+ * const allAttributes = new gitlab.GroupHook("allAttributes", {
  *     confidentialIssuesEvents: false,
  *     confidentialNoteEvents: true,
  *     deploymentEvents: true,

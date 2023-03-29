@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = gitlab.LookupBranch(ctx, &GetBranchArgs{
+//			_, err := gitlab.LookupBranch(ctx, &gitlab.LookupBranchArgs{
 //				Name:    "example",
 //				Project: "foo/bar",
 //			}, nil)

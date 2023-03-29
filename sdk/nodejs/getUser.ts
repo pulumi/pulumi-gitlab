@@ -13,11 +13,8 @@ import * as utilities from "./utilities";
  */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getUser:getUser", {
         "email": args.email,
         "namespaceId": args.namespaceId,
@@ -169,9 +166,15 @@ export interface GetUserResult {
      */
     readonly websiteUrl: string;
 }
-
+/**
+ * The `gitlab.User` data source allows details of a user to be retrieved by either the user ID, username or email address.
+ *
+ * > Some attributes might not be returned depending on if you're an admin or not.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
+ */
 export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
-    return pulumi.output(args).apply(a => getUser(a, opts))
+    return pulumi.output(args).apply((a: any) => getUser(a, opts))
 }
 
 /**

@@ -17,20 +17,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const thisRepositoryTree = pulumi.output(gitlab.getRepositoryTree({
+ * const this = gitlab.getRepositoryTree({
  *     path: "ExampleSubFolder",
  *     project: "example",
  *     recursive: true,
  *     ref: "main",
- * }));
+ * });
  * ```
  */
 export function getRepositoryTree(args: GetRepositoryTreeArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryTreeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getRepositoryTree:getRepositoryTree", {
         "path": args.path,
         "project": args.project,
@@ -90,9 +87,27 @@ export interface GetRepositoryTreeResult {
      */
     readonly trees: outputs.GetRepositoryTreeTree[];
 }
-
+/**
+ * The `gitlab.getRepositoryTree` data source allows details of directories and files in a repository to be retrieved.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repositories.html#list-repository-tree)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const this = gitlab.getRepositoryTree({
+ *     path: "ExampleSubFolder",
+ *     project: "example",
+ *     recursive: true,
+ *     ref: "main",
+ * });
+ * ```
+ */
 export function getRepositoryTreeOutput(args: GetRepositoryTreeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryTreeResult> {
-    return pulumi.output(args).apply(a => getRepositoryTree(a, opts))
+    return pulumi.output(args).apply((a: any) => getRepositoryTree(a, opts))
 }
 
 /**

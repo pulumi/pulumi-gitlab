@@ -19,21 +19,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * // Get members of a project including all members
- * // through ancestor groups
- * const example = pulumi.output(gitlab.getProjectMembership({
+ * const example = gitlab.getProjectMembership({
  *     inherited: true,
  *     projectId: 123,
- * }));
+ * });
  * ```
  */
 export function getProjectMembership(args?: GetProjectMembershipArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectMembershipResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectMembership:getProjectMembership", {
         "fullPath": args.fullPath,
         "inherited": args.inherited,
@@ -93,9 +88,27 @@ export interface GetProjectMembershipResult {
      */
     readonly query?: string;
 }
-
+/**
+ * The `gitlab.ProjectMembership` data source allows to list and filter all members of a project specified by either its id or full path.
+ *
+ * > **Note** exactly one of projectId or fullPath must be provided.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getProjectMembership({
+ *     inherited: true,
+ *     projectId: 123,
+ * });
+ * ```
+ */
 export function getProjectMembershipOutput(args?: GetProjectMembershipOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectMembershipResult> {
-    return pulumi.output(args).apply(a => getProjectMembership(a, opts))
+    return pulumi.output(args).apply((a: any) => getProjectMembership(a, opts))
 }
 
 /**

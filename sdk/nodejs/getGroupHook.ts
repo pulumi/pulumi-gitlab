@@ -10,11 +10,8 @@ import * as utilities from "./utilities";
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#get-group-hook)
  */
 export function getGroupHook(args: GetGroupHookArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupHookResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getGroupHook:getGroupHook", {
         "group": args.group,
         "hookId": args.hookId,
@@ -124,9 +121,13 @@ export interface GetGroupHookResult {
      */
     readonly wikiPageEvents: boolean;
 }
-
+/**
+ * The `gitlab.GroupHook` data source allows to retrieve details about a hook in a group.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#get-group-hook)
+ */
 export function getGroupHookOutput(args: GetGroupHookOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupHookResult> {
-    return pulumi.output(args).apply(a => getGroupHook(a, opts))
+    return pulumi.output(args).apply((a: any) => getGroupHook(a, opts))
 }
 
 /**

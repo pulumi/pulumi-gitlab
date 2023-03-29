@@ -19,19 +19,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * // only public deploy keys
- * const example = pulumi.output(gitlab.getInstanceDeployKeys({
- *     public: true,
- * }));
+ * const example = gitlab.getInstanceDeployKeys({
+ *     "public": true,
+ * });
  * ```
  */
 export function getInstanceDeployKeys(args?: GetInstanceDeployKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceDeployKeysResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys", {
         "public": args.public,
     }, opts);
@@ -64,9 +60,26 @@ export interface GetInstanceDeployKeysResult {
      */
     readonly public?: boolean;
 }
-
+/**
+ * The `gitlab.getInstanceDeployKeys` data source allows to retrieve a list of deploy keys for a GitLab instance.
+ *
+ * > This data source requires administration privileges.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getInstanceDeployKeys({
+ *     "public": true,
+ * });
+ * ```
+ */
 export function getInstanceDeployKeysOutput(args?: GetInstanceDeployKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceDeployKeysResult> {
-    return pulumi.output(args).apply(a => getInstanceDeployKeys(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceDeployKeys(a, opts))
 }
 
 /**
