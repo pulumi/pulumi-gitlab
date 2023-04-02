@@ -12,10 +12,14 @@ JAVA_GEN := pulumi-java-gen
 JAVA_GEN_VERSION := v0.5.4
 TESTPARALLELISM := 10
 WORKING_DIR := $(shell pwd)
+RELEASE_GOWORK := $(WORKING_DIR)/go.release.work
+ifeq ($(GOWORK),release)
+export GOWORK := $(RELEASE_GOWORK)
+endif
 
-development: install_plugins provider build_sdks install_sdks
+development: workspace install_plugins provider build_sdks install_sdks
 
-build: install_plugins provider build_sdks install_sdks
+build: workspace install_plugins provider build_sdks install_sdks
 
 build_sdks: build_nodejs build_python build_go build_dotnet build_java
 
@@ -38,9 +42,10 @@ build_dotnet: upstream
 		echo "$(DOTNET_VERSION)" >version.txt && \
 		dotnet build /p:Version=$(DOTNET_VERSION)
 
-build_go: upstream
+build_go: workspace upstream
 	$(WORKING_DIR)/bin/$(TFGEN) go --out sdk/go/
-	cd sdk && go list `grep -e "^module" go.mod | cut -d ' ' -f 2`/go/... | xargs go build
+	cd sdk && go mod tidy
+	go vet ./sdk/go/...
 
 build_java: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
 build_java: bin/pulumi-java-gen upstream
@@ -96,12 +101,12 @@ install_nodejs_sdk:
 	yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
 
 install_plugins:
-	[ -x "$(shell command -v pulumi 2>/dev/null)" ] || curl -fsSL https://get.pulumi.com | sh
+	@[ -x "$(shell command -v pulumi 2>/dev/null)" ] || curl -fsSL https://get.pulumi.com | sh
 
 lint_provider: provider
 	cd provider && golangci-lint run -c ../.golangci.yml
 
-provider: tfgen install_plugins
+provider: workspace tfgen install_plugins
 	(cd provider && go build -p 1 -o $(WORKING_DIR)/bin/$(PROVIDER) -ldflags "-X $(PROJECT)/$(VERSION_PATH)=$(VERSION)" $(PROJECT)/$(PROVIDER_PATH)/cmd/$(PROVIDER))
 
 start-patch: upstream
@@ -109,52 +114,86 @@ ifeq ("$(wildcard upstream)","")
 	@echo "No upstream found, so upstream can't be patched"
 	@exit 1
 else
-	# To add an additional patch:
-	#
-	#	1. Run this command (`make start-patch`).
-	#
-	#	2. Edit the `upstream` repo, making whatever changes you want to appear in the new
-	#	patch. It's fine to edit multiple files.
-	#
-	#	3. Commit your changes. The slugified first line of your commit description will
-	#	be used to generate the patch file name. Only the diff from the latest commit will
-	#	end up in the final patch.
-	#
-	#	4. Run `make finish-patch`.
-	#
-	# It is safe to run `make start-patch` as many times as you want, but any changes
-	# might be reverted until `make finish-patch` is run.
+# To add an additional patch:
+#
+#	1. Run this command (`make start-patch`).
+#
+#	2. Edit the `upstream` repo, making whatever changes you want to appear in the new
+#	patch. It's fine to edit multiple files.
+#
+#	3. Commit your changes. The slugified first line of your commit description will
+#	be used to generate the patch file name. Only the diff from the latest commit will
+#	end up in the final patch.
+#
+#	4. Run `make finish-patch`.
+#
+# It is safe to run `make start-patch` as many times as you want, but any changes
+# might be reverted until `make finish-patch` is run.
 	@cd upstream && git commit --quiet -m "existing patches"
 endif
 
 test:
 	cd examples && go test -v -tags=all -parallel $(TESTPARALLELISM) -timeout 2h
 
-tfgen: install_plugins upstream
+tfgen: workspace install_plugins upstream
 	(cd provider && go build -p 1 -o $(WORKING_DIR)/bin/$(TFGEN) -ldflags "-X $(PROJECT)/$(VERSION_PATH)=$(VERSION)" $(PROJECT)/$(PROVIDER_PATH)/cmd/$(TFGEN))
 	$(WORKING_DIR)/bin/$(TFGEN) schema --out provider/cmd/$(PROVIDER)
 	(cd provider && VERSION=$(VERSION) go generate cmd/$(PROVIDER)/main.go)
 
 upstream:
 ifeq ("$(wildcard upstream)","")
-	# upstream doesn't exist, so skip
+# upstream doesn't exist, so skip
 else ifeq ("$(wildcard patches/*.patch)","")
-	# upstream exists, but patches don't exist. This is probably an error.
+# upstream exists, but patches don't exist. This is probably an error.
 	@echo "No patches found within the patch operation"
 	@echo "patches were expected because upstream exists"
 	@exit 1
 else
-	# Checkout the submodule at the pinned commit.
-	# `--force`: If the submodule is at a different commit, move it to the pinned commit.
-	# `--init`: If the submodule is not initialized, initialize it.
+# Checkout the submodule at the pinned commit.
+# `--force`: If the submodule is at a different commit, move it to the pinned commit.
+# `--init`: If the submodule is not initialized, initialize it.
 	git submodule update --force --init
-	# Iterating over the patches folder in sorted order,
-	# apply the patch using a 3-way merge strategy. This mirrors the default behavior of `git merge`
+# Iterating over the patches folder in sorted order,
+# apply the patch using a 3-way merge strategy. This mirrors the default behavior of `git merge`
 	cd upstream && \
 		for patch in $(sort $(wildcard patches/*.patch)); do git apply --3way ../$$patch || exit 1; done
+endif
+
+workspace:
+# we accept three modes, based on the use of the GOWORK env var.
+# - GOWORK=release => we use a local Go workspace config for reproducible builds
+# - GOWORK=off     => we honor the user's setting, but it is not recommended
+# - default        => we use the user's Go workspace, or create one if they have not configured it
+ifeq ($(GOWORK),off)
+	@echo "# Warning: Go workspaces are disabled by GOWORK=off. You may wish to use Go workspaces with this project."
+else
+ifeq ($(GOWORK),$(RELEASE_GOWORK))
+	@echo "# Resetting release workspace for reproducible build"
+	@rm $(GOWORK) $(GOWORK).sum 2>/dev/null || true
+endif
+	@if [ ! -f "$$(go env GOWORK)" ]; then \
+	  echo "go work init"; \
+	  go work init; \
+	fi
+# Codegen prior to adopting Go workspaces and this make target used "fake" go.mod files to exclude
+# the generated code from the Go toolchain. We want to hide those from 'go work use -r' so that they
+# are not included in the workspace. To do that, we rename them to go.mod.tmp, and restore after.
+	@find sdk/*/* -name go.mod -exec sh -c 'mv "$$1" "$$1.tmp"' sh {} \;
+	go work use -r .
+	@find sdk/*/* -name go.mod.tmp -exec sh -c 'mv "$$1" "$${1%.tmp}"' sh {} \;
+ifeq ($(GOWORK),$(RELEASE_GOWORK))
+# For release builds, we want to sync all modules' dependencies
+	go work sync
+endif
+# `go work sync` creates a global buildlist, see:
+# https://go.googlesource.com/proposal/+/master/design/45713-workspace.md
+#
+# We must tidy the provider to handle any local replace directives.
+	@echo "# Tidying provider"
+	cd provider && go mod tidy
 endif
 
 bin/pulumi-java-gen:
 	$(shell pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java)
 
-.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup finish-patch help install_dotnet_sdk install_nodejs_sdk install_plugins lint_provider provider start-patch test tfgen upstream
+.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup finish-patch help install_dotnet_sdk install_nodejs_sdk install_plugins lint_provider provider start-patch test tfgen upstream workspace

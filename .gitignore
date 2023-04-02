@@ -5,6 +5,11 @@
 Pulumi.*.yaml
 .DS_Store
 
+/go.work
+/go.work.sum
+/go.release.work
+/go.release.work.sum
+
 **/command-output/
 
 .idea/
