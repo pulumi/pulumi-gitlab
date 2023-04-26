@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *     group: "12345",
  *     key: "group_variable_key",
  *     masked: false,
- *     protected: false,
+ *     "protected": false,
  *     value: "group_variable_value",
  * });
  * ```

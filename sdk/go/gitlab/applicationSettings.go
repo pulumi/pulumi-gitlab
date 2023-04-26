@@ -529,49 +529,49 @@ func NewApplicationSettings(ctx *pulumi.Context,
 	}
 
 	if args.AkismetApiKey != nil {
-		args.AkismetApiKey = pulumi.ToSecret(args.AkismetApiKey).(pulumi.StringPtrOutput)
+		args.AkismetApiKey = pulumi.ToSecret(args.AkismetApiKey).(pulumi.StringPtrInput)
 	}
 	if args.AssetProxySecretKey != nil {
-		args.AssetProxySecretKey = pulumi.ToSecret(args.AssetProxySecretKey).(pulumi.StringPtrOutput)
+		args.AssetProxySecretKey = pulumi.ToSecret(args.AssetProxySecretKey).(pulumi.StringPtrInput)
 	}
 	if args.EksAccessKeyId != nil {
-		args.EksAccessKeyId = pulumi.ToSecret(args.EksAccessKeyId).(pulumi.StringPtrOutput)
+		args.EksAccessKeyId = pulumi.ToSecret(args.EksAccessKeyId).(pulumi.StringPtrInput)
 	}
 	if args.EksSecretAccessKey != nil {
-		args.EksSecretAccessKey = pulumi.ToSecret(args.EksSecretAccessKey).(pulumi.StringPtrOutput)
+		args.EksSecretAccessKey = pulumi.ToSecret(args.EksSecretAccessKey).(pulumi.StringPtrInput)
 	}
 	if args.ElasticsearchAwsAccessKey != nil {
-		args.ElasticsearchAwsAccessKey = pulumi.ToSecret(args.ElasticsearchAwsAccessKey).(pulumi.StringPtrOutput)
+		args.ElasticsearchAwsAccessKey = pulumi.ToSecret(args.ElasticsearchAwsAccessKey).(pulumi.StringPtrInput)
 	}
 	if args.ElasticsearchAwsSecretAccessKey != nil {
-		args.ElasticsearchAwsSecretAccessKey = pulumi.ToSecret(args.ElasticsearchAwsSecretAccessKey).(pulumi.StringPtrOutput)
+		args.ElasticsearchAwsSecretAccessKey = pulumi.ToSecret(args.ElasticsearchAwsSecretAccessKey).(pulumi.StringPtrInput)
 	}
 	if args.ElasticsearchPassword != nil {
-		args.ElasticsearchPassword = pulumi.ToSecret(args.ElasticsearchPassword).(pulumi.StringPtrOutput)
+		args.ElasticsearchPassword = pulumi.ToSecret(args.ElasticsearchPassword).(pulumi.StringPtrInput)
 	}
 	if args.ExternalAuthClientKey != nil {
-		args.ExternalAuthClientKey = pulumi.ToSecret(args.ExternalAuthClientKey).(pulumi.StringPtrOutput)
+		args.ExternalAuthClientKey = pulumi.ToSecret(args.ExternalAuthClientKey).(pulumi.StringPtrInput)
 	}
 	if args.ExternalAuthClientKeyPass != nil {
-		args.ExternalAuthClientKeyPass = pulumi.ToSecret(args.ExternalAuthClientKeyPass).(pulumi.StringPtrOutput)
+		args.ExternalAuthClientKeyPass = pulumi.ToSecret(args.ExternalAuthClientKeyPass).(pulumi.StringPtrInput)
 	}
 	if args.MailgunSigningKey != nil {
-		args.MailgunSigningKey = pulumi.ToSecret(args.MailgunSigningKey).(pulumi.StringPtrOutput)
+		args.MailgunSigningKey = pulumi.ToSecret(args.MailgunSigningKey).(pulumi.StringPtrInput)
 	}
 	if args.RecaptchaPrivateKey != nil {
-		args.RecaptchaPrivateKey = pulumi.ToSecret(args.RecaptchaPrivateKey).(pulumi.StringPtrOutput)
+		args.RecaptchaPrivateKey = pulumi.ToSecret(args.RecaptchaPrivateKey).(pulumi.StringPtrInput)
 	}
 	if args.RecaptchaSiteKey != nil {
-		args.RecaptchaSiteKey = pulumi.ToSecret(args.RecaptchaSiteKey).(pulumi.StringPtrOutput)
+		args.RecaptchaSiteKey = pulumi.ToSecret(args.RecaptchaSiteKey).(pulumi.StringPtrInput)
 	}
 	if args.SlackAppSecret != nil {
-		args.SlackAppSecret = pulumi.ToSecret(args.SlackAppSecret).(pulumi.StringPtrOutput)
+		args.SlackAppSecret = pulumi.ToSecret(args.SlackAppSecret).(pulumi.StringPtrInput)
 	}
 	if args.SlackAppSigningSecret != nil {
-		args.SlackAppSigningSecret = pulumi.ToSecret(args.SlackAppSigningSecret).(pulumi.StringPtrOutput)
+		args.SlackAppSigningSecret = pulumi.ToSecret(args.SlackAppSigningSecret).(pulumi.StringPtrInput)
 	}
 	if args.SpamCheckApiKey != nil {
-		args.SpamCheckApiKey = pulumi.ToSecret(args.SpamCheckApiKey).(pulumi.StringPtrOutput)
+		args.SpamCheckApiKey = pulumi.ToSecret(args.SpamCheckApiKey).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"akismetApiKey",

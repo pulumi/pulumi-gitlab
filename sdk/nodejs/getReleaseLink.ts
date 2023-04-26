@@ -15,20 +15,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * // By project full path
- * const example = pulumi.output(gitlab.getReleaseLink({
+ * const example = gitlab.getReleaseLink({
  *     linkId: 11,
  *     project: "foo/bar",
  *     tagName: "v1.0.1",
- * }));
+ * });
  * ```
  */
 export function getReleaseLink(args: GetReleaseLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetReleaseLinkResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getReleaseLink:getReleaseLink", {
         "linkId": args.linkId,
         "project": args.project,
@@ -99,9 +95,26 @@ export interface GetReleaseLinkResult {
      */
     readonly url: string;
 }
-
+/**
+ * The `gitlab.ReleaseLink` data source allows get details of a release link.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getReleaseLink({
+ *     linkId: 11,
+ *     project: "foo/bar",
+ *     tagName: "v1.0.1",
+ * });
+ * ```
+ */
 export function getReleaseLinkOutput(args: GetReleaseLinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReleaseLinkResult> {
-    return pulumi.output(args).apply(a => getReleaseLink(a, opts))
+    return pulumi.output(args).apply((a: any) => getReleaseLink(a, opts))
 }
 
 /**

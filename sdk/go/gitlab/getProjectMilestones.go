@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = gitlab.GetProjectMilestones(ctx, &GetProjectMilestonesArgs{
+//			_, err := gitlab.GetProjectMilestones(ctx, &gitlab.GetProjectMilestonesArgs{
 //				Project: "foo/bar",
 //			}, nil)
 //			if err != nil {

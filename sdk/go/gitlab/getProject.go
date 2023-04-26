@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = gitlab.LookupProject(ctx, &GetProjectArgs{
+//			_, err := gitlab.LookupProject(ctx, &gitlab.LookupProjectArgs{
 //				Id: pulumi.StringRef("foo/bar/baz"),
 //			}, nil)
 //			if err != nil {

@@ -23,51 +23,6 @@ import javax.annotation.Nullable;
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#get-a-specific-gpg-key)
  * 
  * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gitlab.GitlabFunctions;
- * import com.pulumi.gitlab.inputs.GetUserArgs;
- * import com.pulumi.gitlab.UserGpgKey;
- * import com.pulumi.gitlab.UserGpgKeyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var exampleUser = GitlabFunctions.getUser(GetUserArgs.builder()
- *             .username(&#34;example-user&#34;)
- *             .build());
- * 
- *         var exampleUserGpgKey = new UserGpgKey(&#34;exampleUserGpgKey&#34;, UserGpgKeyArgs.builder()        
- *             .userId(exampleUser.applyValue(getUserResult -&gt; getUserResult.id()))
- *             .key(&#34;&#34;&#34;
- * -----BEGIN PGP PUBLIC KEY BLOCK-----
- * ...
- * -----END PGP PUBLIC KEY BLOCK-----            &#34;&#34;&#34;)
- *             .build());
- * 
- *         var exampleUserUserGpgKey = new UserGpgKey(&#34;exampleUserUserGpgKey&#34;, UserGpgKeyArgs.builder()        
- *             .key(&#34;&#34;&#34;
- * -----BEGIN PGP PUBLIC KEY BLOCK-----
- * ...
- * -----END PGP PUBLIC KEY BLOCK-----            &#34;&#34;&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 

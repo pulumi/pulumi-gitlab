@@ -17,8 +17,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -34,8 +32,8 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProject(ctx, "example-two", &gitlab.ProjectArgs{
-//				PushRules: &ProjectPushRulesArgs{
-//					AuthorEmailRegex:     pulumi.String(fmt.Sprintf("@example\\.com$")),
+//				PushRules: &gitlab.ProjectPushRulesArgs{
+//					AuthorEmailRegex:     pulumi.String("@example\\.com$"),
 //					CommitCommitterCheck: pulumi.Bool(true),
 //					MemberCheck:          pulumi.Bool(true),
 //					PreventSecrets:       pulumi.Bool(true),
@@ -44,7 +42,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			peterParker, err := gitlab.LookupUser(ctx, &GetUserArgs{
+//			peterParker, err := gitlab.LookupUser(ctx, &gitlab.LookupUserArgs{
 //				Username: pulumi.StringRef("peter_parker"),
 //			}, nil)
 //			if err != nil {
@@ -52,7 +50,7 @@ import (
 //			}
 //			_, err = gitlab.NewProject(ctx, "petersRepo", &gitlab.ProjectArgs{
 //				Description: pulumi.String("This is a description"),
-//				NamespaceId: pulumi.Int(peterParker.NamespaceId),
+//				NamespaceId: *pulumi.Int(peterParker.NamespaceId),
 //			})
 //			if err != nil {
 //				return err

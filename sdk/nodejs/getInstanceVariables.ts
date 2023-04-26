@@ -17,15 +17,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const vars = pulumi.output(gitlab.getInstanceVariables());
+ * const vars = gitlab.getInstanceVariables({});
  * ```
  */
 export function getInstanceVariables(opts?: pulumi.InvokeOptions): Promise<GetInstanceVariablesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getInstanceVariables:getInstanceVariables", {
     }, opts);
 }

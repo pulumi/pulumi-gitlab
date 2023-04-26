@@ -17,18 +17,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * // By project full path
- * const example = pulumi.output(gitlab.getProjectTags({
+ * const example = gitlab.getProjectTags({
  *     project: "foo/bar",
- * }));
+ * });
  * ```
  */
 export function getProjectTags(args: GetProjectTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectTagsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectTags:getProjectTags", {
         "orderBy": args.orderBy,
         "project": args.project,
@@ -88,9 +84,24 @@ export interface GetProjectTagsResult {
      */
     readonly tags: outputs.GetProjectTagsTag[];
 }
-
+/**
+ * The `gitlab.getProjectTags` data source allows details of project tags to be retrieved by some search criteria.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getProjectTags({
+ *     project: "foo/bar",
+ * });
+ * ```
+ */
 export function getProjectTagsOutput(args: GetProjectTagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectTagsResult> {
-    return pulumi.output(args).apply(a => getProjectTags(a, opts))
+    return pulumi.output(args).apply((a: any) => getProjectTags(a, opts))
 }
 
 /**

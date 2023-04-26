@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = gitlab.LookupInstanceVariable(ctx, &GetInstanceVariableArgs{
+//			_, err := gitlab.LookupInstanceVariable(ctx, &gitlab.LookupInstanceVariableArgs{
 //				Key: "foo",
 //			}, nil)
 //			if err != nil {

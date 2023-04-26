@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = gitlab.LookupReleaseLink(ctx, &GetReleaseLinkArgs{
+//			_, err := gitlab.LookupReleaseLink(ctx, &gitlab.LookupReleaseLinkArgs{
 //				LinkId:  11,
 //				Project: "foo/bar",
 //				TagName: "v1.0.1",

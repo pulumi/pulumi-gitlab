@@ -28,13 +28,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo, err := gitlab.LookupProject(ctx, &GetProjectArgs{
+//			foo, err := gitlab.LookupProject(ctx, &gitlab.LookupProjectArgs{
 //				Id: pulumi.StringRef("foo/bar/baz"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.GetProjectIssues(ctx, &GetProjectIssuesArgs{
+//			_, err = gitlab.GetProjectIssues(ctx, &gitlab.GetProjectIssuesArgs{
 //				Project: foo.Id,
 //				Search:  pulumi.StringRef("foo"),
 //			}, nil)

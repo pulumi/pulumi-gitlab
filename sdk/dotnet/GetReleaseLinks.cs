@@ -22,6 +22,7 @@ namespace Pulumi.GitLab
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
@@ -52,6 +53,7 @@ namespace Pulumi.GitLab
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using GitLab = Pulumi.GitLab;
         /// 
