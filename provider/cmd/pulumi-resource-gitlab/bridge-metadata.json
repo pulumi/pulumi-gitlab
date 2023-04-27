@@ -794,6 +794,7 @@
                     "squash_commit_template": {},
                     "squash_option": {},
                     "ssh_url_to_repo": {},
+                    "suggestion_commit_message": {},
                     "tags": {
                         "maxItemsOne": false,
                         "elem": {}
@@ -1217,6 +1218,23 @@
                     }
                 }
             },
+            "gitlab_service_emails_on_push": {
+                "current": "gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush",
+                "fields": {
+                    "active": {},
+                    "branches_to_be_notified": {},
+                    "created_at": {},
+                    "disable_diffs": {},
+                    "project": {},
+                    "push_events": {},
+                    "recipients": {},
+                    "send_from_committer_email": {},
+                    "slug": {},
+                    "tag_push_events": {},
+                    "title": {},
+                    "updated_at": {}
+                }
+            },
             "gitlab_service_external_wiki": {
                 "current": "gitlab:index/serviceExternalWiki:ServiceExternalWiki",
                 "fields": {
@@ -1568,6 +1586,7 @@
             "gitlab:index/releaseLink:ReleaseLink": "gitlab_release_link",
             "gitlab:index/repositoryFile:RepositoryFile": "gitlab_repository_file",
             "gitlab:index/runner:Runner": "gitlab_runner",
+            "gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush": "gitlab_service_emails_on_push",
             "gitlab:index/serviceExternalWiki:ServiceExternalWiki": "gitlab_service_external_wiki",
             "gitlab:index/serviceGithub:ServiceGithub": "gitlab_service_github",
             "gitlab:index/serviceJira:ServiceJira": "gitlab_service_jira",
@@ -2149,6 +2168,7 @@
                 "snippetsEnabled": "snippets_enabled",
                 "squashCommitTemplate": "squash_commit_template",
                 "sshUrlToRepo": "ssh_url_to_repo",
+                "suggestionCommitMessage": "suggestion_commit_message",
                 "visibilityLevel": "visibility_level",
                 "webUrl": "web_url",
                 "wikiAccessLevel": "wiki_access_level",
@@ -2493,6 +2513,7 @@
                 "squashCommitTemplate": "squash_commit_template",
                 "sshUrlToRepo": "ssh_url_to_repo",
                 "starCount": "star_count",
+                "suggestionCommitMessage": "suggestion_commit_message",
                 "tagLists": "tag_list",
                 "webUrl": "web_url",
                 "wikiAccessLevel": "wiki_access_level",
@@ -2788,6 +2809,7 @@
                 "squashCommitTemplate": "squash_commit_template",
                 "squashOption": "squash_option",
                 "sshUrlToRepo": "ssh_url_to_repo",
+                "suggestionCommitMessage": "suggestion_commit_message",
                 "templateName": "template_name",
                 "templateProjectId": "template_project_id",
                 "useCustomTemplate": "use_custom_template",
@@ -2966,6 +2988,15 @@
                 "registrationToken": "registration_token",
                 "runUntagged": "run_untagged",
                 "tagLists": "tag_list"
+            },
+            "gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush": {
+                "branchesToBeNotified": "branches_to_be_notified",
+                "createdAt": "created_at",
+                "disableDiffs": "disable_diffs",
+                "pushEvents": "push_events",
+                "sendFromCommitterEmail": "send_from_committer_email",
+                "tagPushEvents": "tag_push_events",
+                "updatedAt": "updated_at"
             },
             "gitlab:index/serviceExternalWiki:ServiceExternalWiki": {
                 "createdAt": "created_at",
