@@ -111,6 +111,7 @@ public final class GetProjectsProject {
      * 
      */
     private Map<String,Integer> statistics;
+    private String suggestionCommitMessage;
     private List<String> tagLists;
     private List<String> topics;
     /**
@@ -375,6 +376,9 @@ public final class GetProjectsProject {
     public Map<String,Integer> statistics() {
         return this.statistics;
     }
+    public String suggestionCommitMessage() {
+        return this.suggestionCommitMessage;
+    }
     public List<String> tagLists() {
         return this.tagLists;
     }
@@ -487,6 +491,7 @@ public final class GetProjectsProject {
         private String sshUrlToRepo;
         private Integer starCount;
         private Map<String,Integer> statistics;
+        private String suggestionCommitMessage;
         private List<String> tagLists;
         private List<String> topics;
         private String visibility;
@@ -576,6 +581,7 @@ public final class GetProjectsProject {
     	      this.sshUrlToRepo = defaults.sshUrlToRepo;
     	      this.starCount = defaults.starCount;
     	      this.statistics = defaults.statistics;
+    	      this.suggestionCommitMessage = defaults.suggestionCommitMessage;
     	      this.tagLists = defaults.tagLists;
     	      this.topics = defaults.topics;
     	      this.visibility = defaults.visibility;
@@ -991,6 +997,11 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder suggestionCommitMessage(String suggestionCommitMessage) {
+            this.suggestionCommitMessage = Objects.requireNonNull(suggestionCommitMessage);
+            return this;
+        }
+        @CustomType.Setter
         public Builder tagLists(List<String> tagLists) {
             this.tagLists = Objects.requireNonNull(tagLists);
             return this;
@@ -1108,6 +1119,7 @@ public final class GetProjectsProject {
             o.sshUrlToRepo = sshUrlToRepo;
             o.starCount = starCount;
             o.statistics = statistics;
+            o.suggestionCommitMessage = suggestionCommitMessage;
             o.tagLists = tagLists;
             o.topics = topics;
             o.visibility = visibility;

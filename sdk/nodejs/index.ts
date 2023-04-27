@@ -438,6 +438,11 @@ export type Runner = import("./runner").Runner;
 export const Runner: typeof import("./runner").Runner = null as any;
 utilities.lazyLoad(exports, ["Runner"], () => require("./runner"));
 
+export { ServiceEmailsOnPushArgs, ServiceEmailsOnPushState } from "./serviceEmailsOnPush";
+export type ServiceEmailsOnPush = import("./serviceEmailsOnPush").ServiceEmailsOnPush;
+export const ServiceEmailsOnPush: typeof import("./serviceEmailsOnPush").ServiceEmailsOnPush = null as any;
+utilities.lazyLoad(exports, ["ServiceEmailsOnPush"], () => require("./serviceEmailsOnPush"));
+
 export { ServiceExternalWikiArgs, ServiceExternalWikiState } from "./serviceExternalWiki";
 export type ServiceExternalWiki = import("./serviceExternalWiki").ServiceExternalWiki;
 export const ServiceExternalWiki: typeof import("./serviceExternalWiki").ServiceExternalWiki = null as any;
@@ -621,6 +626,8 @@ const _module = {
                 return new RepositoryFile(name, <any>undefined, { urn })
             case "gitlab:index/runner:Runner":
                 return new Runner(name, <any>undefined, { urn })
+            case "gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush":
+                return new ServiceEmailsOnPush(name, <any>undefined, { urn })
             case "gitlab:index/serviceExternalWiki:ServiceExternalWiki":
                 return new ServiceExternalWiki(name, <any>undefined, { urn })
             case "gitlab:index/serviceGithub:ServiceGithub":
@@ -704,6 +711,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectVariable", _module
 pulumi.runtime.registerResourceModule("gitlab", "index/releaseLink", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/repositoryFile", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/runner", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/serviceEmailsOnPush", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/serviceExternalWiki", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/serviceGithub", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/serviceJira", _module)

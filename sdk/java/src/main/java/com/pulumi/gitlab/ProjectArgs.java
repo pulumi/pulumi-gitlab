@@ -1046,6 +1046,21 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The commit message used to apply merge request suggestions.
+     * 
+     */
+    @Import(name="suggestionCommitMessage")
+    private @Nullable Output<String> suggestionCommitMessage;
+
+    /**
+     * @return The commit message used to apply merge request suggestions.
+     * 
+     */
+    public Optional<Output<String>> suggestionCommitMessage() {
+        return Optional.ofNullable(this.suggestionCommitMessage);
+    }
+
+    /**
      * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
      * 
      */
@@ -1235,6 +1250,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         this.snippetsEnabled = $.snippetsEnabled;
         this.squashCommitTemplate = $.squashCommitTemplate;
         this.squashOption = $.squashOption;
+        this.suggestionCommitMessage = $.suggestionCommitMessage;
         this.tags = $.tags;
         this.templateName = $.templateName;
         this.templateProjectId = $.templateProjectId;
@@ -2688,6 +2704,27 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder squashOption(String squashOption) {
             return squashOption(Output.of(squashOption));
+        }
+
+        /**
+         * @param suggestionCommitMessage The commit message used to apply merge request suggestions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suggestionCommitMessage(@Nullable Output<String> suggestionCommitMessage) {
+            $.suggestionCommitMessage = suggestionCommitMessage;
+            return this;
+        }
+
+        /**
+         * @param suggestionCommitMessage The commit message used to apply merge request suggestions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suggestionCommitMessage(String suggestionCommitMessage) {
+            return suggestionCommitMessage(Output.of(suggestionCommitMessage));
         }
 
         /**

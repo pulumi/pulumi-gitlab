@@ -37,7 +37,7 @@ class BranchProtectionArgs:
         :param pulumi.Input[bool] code_owner_approval_required: Can be set to true to require code owner approval before merging.
         :param pulumi.Input[str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
-        :param pulumi.Input[str] unprotect_access_level: Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+        :param pulumi.Input[str] unprotect_access_level: Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
         """
         pulumi.set(__self__, "branch", branch)
         pulumi.set(__self__, "project", project)
@@ -170,7 +170,7 @@ class BranchProtectionArgs:
     @pulumi.getter(name="unprotectAccessLevel")
     def unprotect_access_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+        Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
         """
         return pulumi.get(self, "unprotect_access_level")
 
@@ -205,7 +205,7 @@ class _BranchProtectionState:
         :param pulumi.Input[str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
-        :param pulumi.Input[str] unprotect_access_level: Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+        :param pulumi.Input[str] unprotect_access_level: Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
         """
         if allow_force_push is not None:
             pulumi.set(__self__, "allow_force_push", allow_force_push)
@@ -354,7 +354,7 @@ class _BranchProtectionState:
     @pulumi.getter(name="unprotectAccessLevel")
     def unprotect_access_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+        Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
         """
         return pulumi.get(self, "unprotect_access_level")
 
@@ -399,7 +399,7 @@ class BranchProtection(pulumi.CustomResource):
         :param pulumi.Input[str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
-        :param pulumi.Input[str] unprotect_access_level: Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+        :param pulumi.Input[str] unprotect_access_level: Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
         """
         ...
     @overload
@@ -503,7 +503,7 @@ class BranchProtection(pulumi.CustomResource):
         :param pulumi.Input[str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
-        :param pulumi.Input[str] unprotect_access_level: Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+        :param pulumi.Input[str] unprotect_access_level: Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -606,7 +606,7 @@ class BranchProtection(pulumi.CustomResource):
     @pulumi.getter(name="unprotectAccessLevel")
     def unprotect_access_level(self) -> pulumi.Output[Optional[str]]:
         """
-        Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+        Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
         """
         return pulumi.get(self, "unprotect_access_level")
 

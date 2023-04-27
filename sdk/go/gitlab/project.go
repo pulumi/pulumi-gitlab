@@ -229,6 +229,8 @@ type Project struct {
 	SquashOption pulumi.StringPtrOutput `pulumi:"squashOption"`
 	// URL that can be provided to `git clone` to clone the
 	SshUrlToRepo pulumi.StringOutput `pulumi:"sshUrlToRepo"`
+	// The commit message used to apply merge request suggestions.
+	SuggestionCommitMessage pulumi.StringPtrOutput `pulumi:"suggestionCommitMessage"`
 	// The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
@@ -432,6 +434,8 @@ type projectState struct {
 	SquashOption *string `pulumi:"squashOption"`
 	// URL that can be provided to `git clone` to clone the
 	SshUrlToRepo *string `pulumi:"sshUrlToRepo"`
+	// The commit message used to apply merge request suggestions.
+	SuggestionCommitMessage *string `pulumi:"suggestionCommitMessage"`
 	// The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
 	Tags []string `pulumi:"tags"`
 	// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
@@ -603,6 +607,8 @@ type ProjectState struct {
 	SquashOption pulumi.StringPtrInput
 	// URL that can be provided to `git clone` to clone the
 	SshUrlToRepo pulumi.StringPtrInput
+	// The commit message used to apply merge request suggestions.
+	SuggestionCommitMessage pulumi.StringPtrInput
 	// The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
 	Tags pulumi.StringArrayInput
 	// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
@@ -770,6 +776,8 @@ type projectArgs struct {
 	SquashCommitTemplate *string `pulumi:"squashCommitTemplate"`
 	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
 	SquashOption *string `pulumi:"squashOption"`
+	// The commit message used to apply merge request suggestions.
+	SuggestionCommitMessage *string `pulumi:"suggestionCommitMessage"`
 	// The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
 	Tags []string `pulumi:"tags"`
 	// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
@@ -932,6 +940,8 @@ type ProjectArgs struct {
 	SquashCommitTemplate pulumi.StringPtrInput
 	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
 	SquashOption pulumi.StringPtrInput
+	// The commit message used to apply merge request suggestions.
+	SuggestionCommitMessage pulumi.StringPtrInput
 	// The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
 	Tags pulumi.StringArrayInput
 	// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
@@ -1398,6 +1408,11 @@ func (o ProjectOutput) SquashOption() pulumi.StringPtrOutput {
 // URL that can be provided to `git clone` to clone the
 func (o ProjectOutput) SshUrlToRepo() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.SshUrlToRepo }).(pulumi.StringOutput)
+}
+
+// The commit message used to apply merge request suggestions.
+func (o ProjectOutput) SuggestionCommitMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.SuggestionCommitMessage }).(pulumi.StringPtrOutput)
 }
 
 // The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.

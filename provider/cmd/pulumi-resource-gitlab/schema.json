@@ -2074,6 +2074,9 @@
                     },
                     "description": "Include project statistics. Cannot be used with `group_id`.\n"
                 },
+                "suggestionCommitMessage": {
+                    "type": "string"
+                },
                 "tagLists": {
                     "type": "array",
                     "items": {
@@ -2182,6 +2185,7 @@
                 "sshUrlToRepo",
                 "starCount",
                 "statistics",
+                "suggestionCommitMessage",
                 "tagLists",
                 "topics",
                 "visibility",
@@ -6167,7 +6171,7 @@
                 },
                 "unprotectAccessLevel": {
                     "type": "string",
-                    "description": "Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.\n"
+                    "description": "Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.\n"
                 }
             },
             "required": [
@@ -6231,7 +6235,7 @@
                 },
                 "unprotectAccessLevel": {
                     "type": "string",
-                    "description": "Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.\n",
+                    "description": "Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -6301,7 +6305,7 @@
                     },
                     "unprotectAccessLevel": {
                         "type": "string",
-                        "description": "Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.\n",
+                        "description": "Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -8145,7 +8149,7 @@
             }
         },
         "gitlab:index/groupSamlLink:GroupSamlLink": {
-            "description": "The `gitlab.GroupSamlLink` resource allows to manage the lifecycle of an SAML integration with a group.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#saml-group-links)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GroupSamlLink;\nimport com.pulumi.gitlab.GroupSamlLinkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new GroupSamlLink(\"test\", GroupSamlLinkArgs.builder()        \n            .accessLevel(\"developer\")\n            .groupId(\"12345\")\n            .samlGroupName(\"samlgroupname1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: gitlab:GroupSamlLink\n    properties:\n      accessLevel: developer\n      groupId: '12345'\n      samlGroupName: samlgroupname1\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGitLab group saml links can be imported using an id made up of `group_id:saml_group_name`, e.g.\n\n```sh\n $ pulumi import gitlab:index/groupSamlLink:GroupSamlLink test \"12345:samlgroupname1\"\n```\n\n ",
+            "description": "The `gitlab.GroupSamlLink` resource allows to manage the lifecycle of an SAML integration with a group.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#saml-group-links)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.GroupSamlLink(\"test\", {\n    accessLevel: \"developer\",\n    group: \"12345\",\n    samlGroupName: \"samlgroupname1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.GroupSamlLink(\"test\",\n    access_level=\"developer\",\n    group=\"12345\",\n    saml_group_name=\"samlgroupname1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new GitLab.GroupSamlLink(\"test\", new()\n    {\n        AccessLevel = \"developer\",\n        Group = \"12345\",\n        SamlGroupName = \"samlgroupname1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGroupSamlLink(ctx, \"test\", \u0026gitlab.GroupSamlLinkArgs{\n\t\t\tAccessLevel:   pulumi.String(\"developer\"),\n\t\t\tGroup:         pulumi.String(\"12345\"),\n\t\t\tSamlGroupName: pulumi.String(\"samlgroupname1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GroupSamlLink;\nimport com.pulumi.gitlab.GroupSamlLinkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new GroupSamlLink(\"test\", GroupSamlLinkArgs.builder()        \n            .accessLevel(\"developer\")\n            .group(\"12345\")\n            .samlGroupName(\"samlgroupname1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: gitlab:GroupSamlLink\n    properties:\n      accessLevel: developer\n      group: '12345'\n      samlGroupName: samlgroupname1\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGitLab group saml links can be imported using an id made up of `group_id:saml_group_name`, e.g.\n\n```sh\n $ pulumi import gitlab:index/groupSamlLink:GroupSamlLink test \"12345:samlgroupname1\"\n```\n\n ",
             "properties": {
                 "accessLevel": {
                     "type": "string",
@@ -9471,6 +9475,10 @@
                     "type": "string",
                     "description": "URL that can be provided to `git clone` to clone the\n"
                 },
+                "suggestionCommitMessage": {
+                    "type": "string",
+                    "description": "The commit message used to apply merge request suggestions.\n"
+                },
                 "tags": {
                     "type": "array",
                     "items": {
@@ -9820,6 +9828,10 @@
                     "type": "string",
                     "description": "Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab \u003e= 14.1]\n"
                 },
+                "suggestionCommitMessage": {
+                    "type": "string",
+                    "description": "The commit message used to apply merge request suggestions.\n"
+                },
                 "tags": {
                     "type": "array",
                     "items": {
@@ -10150,6 +10162,10 @@
                     "sshUrlToRepo": {
                         "type": "string",
                         "description": "URL that can be provided to `git clone` to clone the\n"
+                    },
+                    "suggestionCommitMessage": {
+                        "type": "string",
+                        "description": "The commit message used to apply merge request suggestions.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -13258,6 +13274,158 @@
                 "type": "object"
             }
         },
+        "gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush": {
+            "description": "The `gitlab.ServiceEmailsOnPush` resource allows to manage the lifecycle of a project integration with Emails on Push Service.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#emails-on-push)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst awesomeProject = new gitlab.Project(\"awesomeProject\", {\n    description: \"My awesome project.\",\n    visibilityLevel: \"public\",\n});\nconst emails = new gitlab.ServiceEmailsOnPush(\"emails\", {\n    project: awesomeProject.id,\n    recipients: \"myrecipient@example.com myotherrecipient@example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nawesome_project = gitlab.Project(\"awesomeProject\",\n    description=\"My awesome project.\",\n    visibility_level=\"public\")\nemails = gitlab.ServiceEmailsOnPush(\"emails\",\n    project=awesome_project.id,\n    recipients=\"myrecipient@example.com myotherrecipient@example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awesomeProject = new GitLab.Project(\"awesomeProject\", new()\n    {\n        Description = \"My awesome project.\",\n        VisibilityLevel = \"public\",\n    });\n\n    var emails = new GitLab.ServiceEmailsOnPush(\"emails\", new()\n    {\n        Project = awesomeProject.Id,\n        Recipients = \"myrecipient@example.com myotherrecipient@example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawesomeProject, err := gitlab.NewProject(ctx, \"awesomeProject\", \u0026gitlab.ProjectArgs{\n\t\t\tDescription:     pulumi.String(\"My awesome project.\"),\n\t\t\tVisibilityLevel: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewServiceEmailsOnPush(ctx, \"emails\", \u0026gitlab.ServiceEmailsOnPushArgs{\n\t\t\tProject:    awesomeProject.ID(),\n\t\t\tRecipients: pulumi.String(\"myrecipient@example.com myotherrecipient@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.ServiceEmailsOnPush;\nimport com.pulumi.gitlab.ServiceEmailsOnPushArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awesomeProject = new Project(\"awesomeProject\", ProjectArgs.builder()        \n            .description(\"My awesome project.\")\n            .visibilityLevel(\"public\")\n            .build());\n\n        var emails = new ServiceEmailsOnPush(\"emails\", ServiceEmailsOnPushArgs.builder()        \n            .project(awesomeProject.id())\n            .recipients(\"myrecipient@example.com myotherrecipient@example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awesomeProject:\n    type: gitlab:Project\n    properties:\n      description: My awesome project.\n      visibilityLevel: public\n  emails:\n    type: gitlab:ServiceEmailsOnPush\n    properties:\n      project: ${awesomeProject.id}\n      recipients: myrecipient@example.com myotherrecipient@example.com\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nYou can import a gitlab_service_emails_on_push state using the project ID, e.g.\n\n```sh\n $ pulumi import gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush emails 1\n```\n\n ",
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Whether the integration is active.\n"
+                },
+                "branchesToBeNotified": {
+                    "type": "string",
+                    "description": "Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Notifications are always fired for tag pushes.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The ISO8601 date/time that this integration was activated at in UTC.\n"
+                },
+                "disableDiffs": {
+                    "type": "boolean",
+                    "description": "Disable code diffs.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "ID or full-path of the project you want to activate integration on.\n"
+                },
+                "pushEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for push events.\n"
+                },
+                "recipients": {
+                    "type": "string",
+                    "description": "Emails separated by whitespace.\n"
+                },
+                "sendFromCommitterEmail": {
+                    "type": "boolean",
+                    "description": "Send from committer.\n"
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.\n"
+                },
+                "tagPushEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for tag push events.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Title of the integration.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The ISO8601 date/time that this integration was last updated at in UTC.\n"
+                }
+            },
+            "required": [
+                "active",
+                "createdAt",
+                "project",
+                "recipients",
+                "slug",
+                "title",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "branchesToBeNotified": {
+                    "type": "string",
+                    "description": "Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Notifications are always fired for tag pushes.\n"
+                },
+                "disableDiffs": {
+                    "type": "boolean",
+                    "description": "Disable code diffs.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "ID or full-path of the project you want to activate integration on.\n",
+                    "willReplaceOnChanges": true
+                },
+                "pushEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for push events.\n"
+                },
+                "recipients": {
+                    "type": "string",
+                    "description": "Emails separated by whitespace.\n"
+                },
+                "sendFromCommitterEmail": {
+                    "type": "boolean",
+                    "description": "Send from committer.\n"
+                },
+                "tagPushEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for tag push events.\n"
+                }
+            },
+            "requiredInputs": [
+                "project",
+                "recipients"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ServiceEmailsOnPush resources.\n",
+                "properties": {
+                    "active": {
+                        "type": "boolean",
+                        "description": "Whether the integration is active.\n"
+                    },
+                    "branchesToBeNotified": {
+                        "type": "string",
+                        "description": "Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Notifications are always fired for tag pushes.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The ISO8601 date/time that this integration was activated at in UTC.\n"
+                    },
+                    "disableDiffs": {
+                        "type": "boolean",
+                        "description": "Disable code diffs.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "ID or full-path of the project you want to activate integration on.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "pushEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for push events.\n"
+                    },
+                    "recipients": {
+                        "type": "string",
+                        "description": "Emails separated by whitespace.\n"
+                    },
+                    "sendFromCommitterEmail": {
+                        "type": "boolean",
+                        "description": "Send from committer.\n"
+                    },
+                    "slug": {
+                        "type": "string",
+                        "description": "The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.\n"
+                    },
+                    "tagPushEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for tag push events.\n"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "Title of the integration.\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The ISO8601 date/time that this integration was last updated at in UTC.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "gitlab:index/serviceExternalWiki:ServiceExternalWiki": {
             "description": "The `gitlab.ServiceExternalWiki` resource allows to manage the lifecycle of a project integration with External Wiki Service.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#external-wiki)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst awesomeProject = new gitlab.Project(\"awesomeProject\", {\n    description: \"My awesome project.\",\n    visibilityLevel: \"public\",\n});\nconst wiki = new gitlab.ServiceExternalWiki(\"wiki\", {\n    project: awesomeProject.id,\n    externalWikiUrl: \"https://MyAwesomeExternalWikiURL.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nawesome_project = gitlab.Project(\"awesomeProject\",\n    description=\"My awesome project.\",\n    visibility_level=\"public\")\nwiki = gitlab.ServiceExternalWiki(\"wiki\",\n    project=awesome_project.id,\n    external_wiki_url=\"https://MyAwesomeExternalWikiURL.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awesomeProject = new GitLab.Project(\"awesomeProject\", new()\n    {\n        Description = \"My awesome project.\",\n        VisibilityLevel = \"public\",\n    });\n\n    var wiki = new GitLab.ServiceExternalWiki(\"wiki\", new()\n    {\n        Project = awesomeProject.Id,\n        ExternalWikiUrl = \"https://MyAwesomeExternalWikiURL.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawesomeProject, err := gitlab.NewProject(ctx, \"awesomeProject\", \u0026gitlab.ProjectArgs{\n\t\t\tDescription:     pulumi.String(\"My awesome project.\"),\n\t\t\tVisibilityLevel: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewServiceExternalWiki(ctx, \"wiki\", \u0026gitlab.ServiceExternalWikiArgs{\n\t\t\tProject:         awesomeProject.ID(),\n\t\t\tExternalWikiUrl: pulumi.String(\"https://MyAwesomeExternalWikiURL.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.ServiceExternalWiki;\nimport com.pulumi.gitlab.ServiceExternalWikiArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awesomeProject = new Project(\"awesomeProject\", ProjectArgs.builder()        \n            .description(\"My awesome project.\")\n            .visibilityLevel(\"public\")\n            .build());\n\n        var wiki = new ServiceExternalWiki(\"wiki\", ServiceExternalWikiArgs.builder()        \n            .project(awesomeProject.id())\n            .externalWikiUrl(\"https://MyAwesomeExternalWikiURL.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awesomeProject:\n    type: gitlab:Project\n    properties:\n      description: My awesome project.\n      visibilityLevel: public\n  wiki:\n    type: gitlab:ServiceExternalWiki\n    properties:\n      project: ${awesomeProject.id}\n      externalWikiUrl: https://MyAwesomeExternalWikiURL.com\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nYou can import a gitlab_service_external_wiki state using the project ID, e.g.\n\n```sh\n $ pulumi import gitlab:index/serviceExternalWiki:ServiceExternalWiki wiki 1\n```\n\n ",
             "properties": {
@@ -16089,6 +16257,10 @@
                         "type": "string",
                         "description": "URL that can be provided to `git clone` to clone the\n"
                     },
+                    "suggestionCommitMessage": {
+                        "type": "string",
+                        "description": "The commit message used to apply merge request suggestions.\n"
+                    },
                     "topics": {
                         "type": "array",
                         "items": {
@@ -16163,6 +16335,7 @@
                     "snippetsEnabled",
                     "squashCommitTemplate",
                     "sshUrlToRepo",
+                    "suggestionCommitMessage",
                     "topics",
                     "visibilityLevel",
                     "webUrl",

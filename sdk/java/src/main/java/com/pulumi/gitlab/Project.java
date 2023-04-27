@@ -1098,6 +1098,20 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.sshUrlToRepo;
     }
     /**
+     * The commit message used to apply merge request suggestions.
+     * 
+     */
+    @Export(name="suggestionCommitMessage", type=String.class, parameters={})
+    private Output</* @Nullable */ String> suggestionCommitMessage;
+
+    /**
+     * @return The commit message used to apply merge request suggestions.
+     * 
+     */
+    public Output<Optional<String>> suggestionCommitMessage() {
+        return Codegen.optional(this.suggestionCommitMessage);
+    }
+    /**
      * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
      * 
      */

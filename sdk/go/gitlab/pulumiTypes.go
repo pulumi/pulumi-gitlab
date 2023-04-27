@@ -5636,9 +5636,10 @@ type GetProjectsProject struct {
 	SshUrlToRepo                              string                              `pulumi:"sshUrlToRepo"`
 	StarCount                                 int                                 `pulumi:"starCount"`
 	// Include project statistics. Cannot be used with `groupId`.
-	Statistics map[string]int `pulumi:"statistics"`
-	TagLists   []string       `pulumi:"tagLists"`
-	Topics     []string       `pulumi:"topics"`
+	Statistics              map[string]int `pulumi:"statistics"`
+	SuggestionCommitMessage string         `pulumi:"suggestionCommitMessage"`
+	TagLists                []string       `pulumi:"tagLists"`
+	Topics                  []string       `pulumi:"topics"`
 	// Limit by visibility `public`, `internal`, or `private`.
 	Visibility      string `pulumi:"visibility"`
 	WebUrl          string `pulumi:"webUrl"`
@@ -5740,9 +5741,10 @@ type GetProjectsProjectArgs struct {
 	SshUrlToRepo                              pulumi.StringInput                          `pulumi:"sshUrlToRepo"`
 	StarCount                                 pulumi.IntInput                             `pulumi:"starCount"`
 	// Include project statistics. Cannot be used with `groupId`.
-	Statistics pulumi.IntMapInput      `pulumi:"statistics"`
-	TagLists   pulumi.StringArrayInput `pulumi:"tagLists"`
-	Topics     pulumi.StringArrayInput `pulumi:"topics"`
+	Statistics              pulumi.IntMapInput      `pulumi:"statistics"`
+	SuggestionCommitMessage pulumi.StringInput      `pulumi:"suggestionCommitMessage"`
+	TagLists                pulumi.StringArrayInput `pulumi:"tagLists"`
+	Topics                  pulumi.StringArrayInput `pulumi:"topics"`
 	// Limit by visibility `public`, `internal`, or `private`.
 	Visibility      pulumi.StringInput `pulumi:"visibility"`
 	WebUrl          pulumi.StringInput `pulumi:"webUrl"`
@@ -6124,6 +6126,10 @@ func (o GetProjectsProjectOutput) StarCount() pulumi.IntOutput {
 // Include project statistics. Cannot be used with `groupId`.
 func (o GetProjectsProjectOutput) Statistics() pulumi.IntMapOutput {
 	return o.ApplyT(func(v GetProjectsProject) map[string]int { return v.Statistics }).(pulumi.IntMapOutput)
+}
+
+func (o GetProjectsProjectOutput) SuggestionCommitMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.SuggestionCommitMessage }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) TagLists() pulumi.StringArrayOutput {

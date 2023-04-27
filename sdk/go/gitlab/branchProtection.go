@@ -43,7 +43,7 @@ type BranchProtection struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
 	PushAccessLevel pulumi.StringPtrOutput `pulumi:"pushAccessLevel"`
-	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+	// Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
 	UnprotectAccessLevel pulumi.StringPtrOutput `pulumi:"unprotectAccessLevel"`
 }
 
@@ -102,7 +102,7 @@ type branchProtectionState struct {
 	Project *string `pulumi:"project"`
 	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
 	PushAccessLevel *string `pulumi:"pushAccessLevel"`
-	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+	// Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
 	UnprotectAccessLevel *string `pulumi:"unprotectAccessLevel"`
 }
 
@@ -127,7 +127,7 @@ type BranchProtectionState struct {
 	Project pulumi.StringPtrInput
 	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
 	PushAccessLevel pulumi.StringPtrInput
-	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+	// Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
 	UnprotectAccessLevel pulumi.StringPtrInput
 }
 
@@ -154,7 +154,7 @@ type branchProtectionArgs struct {
 	Project string `pulumi:"project"`
 	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
 	PushAccessLevel *string `pulumi:"pushAccessLevel"`
-	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+	// Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
 	UnprotectAccessLevel *string `pulumi:"unprotectAccessLevel"`
 }
 
@@ -178,7 +178,7 @@ type BranchProtectionArgs struct {
 	Project pulumi.StringInput
 	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
 	PushAccessLevel pulumi.StringPtrInput
-	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+	// Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
 	UnprotectAccessLevel pulumi.StringPtrInput
 }
 
@@ -319,7 +319,7 @@ func (o BranchProtectionOutput) PushAccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BranchProtection) pulumi.StringPtrOutput { return v.PushAccessLevel }).(pulumi.StringPtrOutput)
 }
 
-// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+// Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
 func (o BranchProtectionOutput) UnprotectAccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BranchProtection) pulumi.StringPtrOutput { return v.UnprotectAccessLevel }).(pulumi.StringPtrOutput)
 }

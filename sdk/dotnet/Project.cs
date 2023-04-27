@@ -500,6 +500,12 @@ namespace Pulumi.GitLab
         public Output<string> SshUrlToRepo { get; private set; } = null!;
 
         /// <summary>
+        /// The commit message used to apply merge request suggestions.
+        /// </summary>
+        [Output("suggestionCommitMessage")]
+        public Output<string?> SuggestionCommitMessage { get; private set; } = null!;
+
+        /// <summary>
         /// The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
         /// </summary>
         [Output("tags")]
@@ -1011,6 +1017,12 @@ namespace Pulumi.GitLab
         [Input("squashOption")]
         public Input<string>? SquashOption { get; set; }
 
+        /// <summary>
+        /// The commit message used to apply merge request suggestions.
+        /// </summary>
+        [Input("suggestionCommitMessage")]
+        public Input<string>? SuggestionCommitMessage { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -1520,6 +1532,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("sshUrlToRepo")]
         public Input<string>? SshUrlToRepo { get; set; }
+
+        /// <summary>
+        /// The commit message used to apply merge request suggestions.
+        /// </summary>
+        [Input("suggestionCommitMessage")]
+        public Input<string>? SuggestionCommitMessage { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

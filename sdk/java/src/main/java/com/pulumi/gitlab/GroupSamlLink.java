@@ -19,7 +19,6 @@ import javax.annotation.Nullable;
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#saml-group-links)
  * 
  * ## Example Usage
- * 
  * ```java
  * package generated_program;
  * 
@@ -43,7 +42,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var test = new GroupSamlLink(&#34;test&#34;, GroupSamlLinkArgs.builder()        
  *             .accessLevel(&#34;developer&#34;)
- *             .groupId(&#34;12345&#34;)
+ *             .group(&#34;12345&#34;)
  *             .samlGroupName(&#34;samlgroupname1&#34;)
  *             .build());
  * 

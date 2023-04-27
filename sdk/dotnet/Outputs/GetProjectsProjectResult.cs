@@ -102,6 +102,7 @@ namespace Pulumi.GitLab.Outputs
         /// Include project statistics. Cannot be used with `group_id`.
         /// </summary>
         public readonly ImmutableDictionary<string, int> Statistics;
+        public readonly string SuggestionCommitMessage;
         public readonly ImmutableArray<string> TagLists;
         public readonly ImmutableArray<string> Topics;
         /// <summary>
@@ -274,6 +275,8 @@ namespace Pulumi.GitLab.Outputs
 
             ImmutableDictionary<string, int> statistics,
 
+            string suggestionCommitMessage,
+
             ImmutableArray<string> tagLists,
 
             ImmutableArray<string> topics,
@@ -366,6 +369,7 @@ namespace Pulumi.GitLab.Outputs
             SshUrlToRepo = sshUrlToRepo;
             StarCount = starCount;
             Statistics = statistics;
+            SuggestionCommitMessage = suggestionCommitMessage;
             TagLists = tagLists;
             Topics = topics;
             Visibility = visibility;

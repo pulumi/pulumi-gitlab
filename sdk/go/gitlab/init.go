@@ -124,6 +124,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RepositoryFile{}
 	case "gitlab:index/runner:Runner":
 		r = &Runner{}
+	case "gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush":
+		r = &ServiceEmailsOnPush{}
 	case "gitlab:index/serviceExternalWiki:ServiceExternalWiki":
 		r = &ServiceExternalWiki{}
 	case "gitlab:index/serviceGithub:ServiceGithub":
@@ -436,6 +438,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/runner",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/serviceEmailsOnPush",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

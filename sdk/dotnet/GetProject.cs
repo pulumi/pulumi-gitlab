@@ -338,6 +338,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string SshUrlToRepo;
         /// <summary>
+        /// The commit message used to apply merge request suggestions.
+        /// </summary>
+        public readonly string SuggestionCommitMessage;
+        /// <summary>
         /// The list of topics for the project.
         /// </summary>
         public readonly ImmutableArray<string> Topics;
@@ -458,6 +462,8 @@ namespace Pulumi.GitLab
 
             string sshUrlToRepo,
 
+            string suggestionCommitMessage,
+
             ImmutableArray<string> topics,
 
             string visibilityLevel,
@@ -517,6 +523,7 @@ namespace Pulumi.GitLab
             SnippetsEnabled = snippetsEnabled;
             SquashCommitTemplate = squashCommitTemplate;
             SshUrlToRepo = sshUrlToRepo;
+            SuggestionCommitMessage = suggestionCommitMessage;
             Topics = topics;
             VisibilityLevel = visibilityLevel;
             WebUrl = webUrl;
