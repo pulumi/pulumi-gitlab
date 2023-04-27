@@ -18,6 +18,8 @@ import (
 	"fmt"
 	"path/filepath"
 	"unicode"
+	// The linter requires unnamed imports to have a doc comment
+	_ "embed"
 
 	gitlabShim "github.com/gitlabhq/terraform-provider-gitlab/shim"
 	"github.com/pulumi/pulumi-gitlab/provider/v4/pkg/version"
@@ -49,18 +51,21 @@ func gitLabType(mod string, typ string) tokens.Type {
 // gitLabDataSource manufactures a standard resource token given a module and resource name.
 // It automatically uses the GitLab package and names the file by simply lower casing the data
 // source's first character.
-func gitLabDataSource(mod string, res string) tokens.ModuleMember {
+func gitLabDataSource(res string) tokens.ModuleMember {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return gitLabMember(mod+"/"+fn, res)
+	return gitLabMember(gitLabMod+"/"+fn, res)
 }
 
 // gitLabResource manufactures a standard resource token given a module and resource name.
 // It automatically uses the GitLab package and names the file by simply lower casing the resource's
 // first character.
-func gitLabResource(mod string, res string) tokens.Type {
+func gitLabResource(res string) tokens.Type {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return gitLabType(mod+"/"+fn, res)
+	return gitLabType(gitLabMod+"/"+fn, res)
 }
+
+//go:embed cmd/pulumi-resource-gitlab/bridge-metadata.json
+var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the GitLab package.
 func Provider() tfbridge.ProviderInfo {
@@ -75,6 +80,7 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:        "gitlabhq",
 		Repository:       "https://github.com/pulumi/pulumi-gitlab",
 		UpstreamRepoPath: "./upstream",
+		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
 
 		Config: map[string]*tfbridge.SchemaInfo{
 			"cacert_file": {},
@@ -82,12 +88,12 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Both sshkey and gpgkey have non-standard capitalization.
-			"gitlab_user_sshkey": {Tok: gitLabResource(gitLabMod, "UserSshKey")},
-			"gitlab_user_gpgkey": {Tok: gitLabResource(gitLabMod, "UserGpgKey")},
+			"gitlab_user_sshkey": {Tok: gitLabResource("UserSshKey")},
+			"gitlab_user_gpgkey": {Tok: gitLabResource("UserGpgKey")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"gitlab_project": {
-				Tok: gitLabDataSource(gitLabMod, "getProject"),
+				Tok: gitLabDataSource("getProject"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"push_rules": {
 						Name:        "pushRules",
@@ -96,7 +102,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"gitlab_projects": {
-				Tok: gitLabDataSource(gitLabMod, "getProjects"),
+				Tok: gitLabDataSource("getProjects"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"projects": {
 						Elem: &tfbridge.SchemaInfo{
@@ -162,6 +168,9 @@ func Provider() tfbridge.ProviderInfo {
 	contract.AssertNoErrorf(err, "failed to apply token mappings")
 
 	prov.SetAutonaming(255, "-")
+
+	err = x.AutoAliasing(&prov, prov.GetMetadata())
+	contract.AssertNoErrorf(err, "failed to apply auto-aliasing")
 
 	return prov
 }
