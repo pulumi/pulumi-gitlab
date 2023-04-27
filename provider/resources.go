@@ -22,7 +22,9 @@ import (
 	gitlabShim "github.com/gitlabhq/terraform-provider-gitlab/shim"
 	"github.com/pulumi/pulumi-gitlab/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
+	"github.com/pulumi/pulumi/sdk/go/common/util/contract"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
@@ -79,74 +81,11 @@ func Provider() tfbridge.ProviderInfo {
 			"insecure":    {},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"gitlab_application_settings":          {Tok: gitLabResource(gitLabMod, "ApplicationSettings")},
-			"gitlab_branch_protection":             {Tok: gitLabResource(gitLabMod, "BranchProtection")},
-			"gitlab_tag_protection":                {Tok: gitLabResource(gitLabMod, "TagProtection")},
-			"gitlab_group":                         {Tok: gitLabResource(gitLabMod, "Group")},
-			"gitlab_group_label":                   {Tok: gitLabResource(gitLabMod, "GroupLabel")},
-			"gitlab_group_cluster":                 {Tok: gitLabResource(gitLabMod, "GroupCluster")},
-			"gitlab_project":                       {Tok: gitLabResource(gitLabMod, "Project")},
-			"gitlab_label":                         {Tok: gitLabResource(gitLabMod, "Label")},
-			"gitlab_pipeline_schedule":             {Tok: gitLabResource(gitLabMod, "PipelineSchedule")},
-			"gitlab_pipeline_trigger":              {Tok: gitLabResource(gitLabMod, "PipelineTrigger")},
-			"gitlab_pipeline_schedule_variable":    {Tok: gitLabResource(gitLabMod, "PipelineScheduleVariable")},
-			"gitlab_project_hook":                  {Tok: gitLabResource(gitLabMod, "ProjectHook")},
-			"gitlab_deploy_key":                    {Tok: gitLabResource(gitLabMod, "DeployKey")},
-			"gitlab_deploy_key_enable":             {Tok: gitLabResource(gitLabMod, "DeployKeyEnable")},
-			"gitlab_user":                          {Tok: gitLabResource(gitLabMod, "User")},
-			"gitlab_project_membership":            {Tok: gitLabResource(gitLabMod, "ProjectMembership")},
-			"gitlab_group_hook":                    {Tok: gitLabResource(gitLabMod, "GroupHook")},
-			"gitlab_group_membership":              {Tok: gitLabResource(gitLabMod, "GroupMembership")},
-			"gitlab_group_saml_link":               {Tok: gitLabResource(gitLabMod, "GroupSamlLink")},
-			"gitlab_project_issue_board":           {Tok: gitLabResource(gitLabMod, "ProjectIssueBoard")},
-			"gitlab_project_variable":              {Tok: gitLabResource(gitLabMod, "ProjectVariable")},
-			"gitlab_project_share_group":           {Tok: gitLabResource(gitLabMod, "ProjectShareGroup")},
-			"gitlab_group_variable":                {Tok: gitLabResource(gitLabMod, "GroupVariable")},
-			"gitlab_project_cluster":               {Tok: gitLabResource(gitLabMod, "ProjectCluster")},
-			"gitlab_service_slack":                 {Tok: gitLabResource(gitLabMod, "ServiceSlack")},
-			"gitlab_service_jira":                  {Tok: gitLabResource(gitLabMod, "ServiceJira")},
-			"gitlab_service_github":                {Tok: gitLabResource(gitLabMod, "ServiceGithub")},
-			"gitlab_group_ldap_link":               {Tok: gitLabResource(gitLabMod, "GroupLdapLink")},
-			"gitlab_deploy_token":                  {Tok: gitLabResource(gitLabMod, "DeployToken")},
-			"gitlab_instance_cluster":              {Tok: gitLabResource(gitLabMod, "InstanceCluster")},
-			"gitlab_project_level_mr_approvals":    {Tok: gitLabResource(gitLabMod, "ProjectLevelMrApprovals")},
-			"gitlab_project_mirror":                {Tok: gitLabResource(gitLabMod, "ProjectMirror")},
-			"gitlab_service_pipelines_email":       {Tok: gitLabResource(gitLabMod, "ServicePipelinesEmail")},
-			"gitlab_project_approval_rule":         {Tok: gitLabResource(gitLabMod, "ProjectApprovalRule")},
-			"gitlab_instance_variable":             {Tok: gitLabResource(gitLabMod, "InstanceVariable")},
-			"gitlab_group_share_group":             {Tok: gitLabResource(gitLabMod, "GroupShareGroup")},
-			"gitlab_project_freeze_period":         {Tok: gitLabResource(gitLabMod, "ProjectFreezePeriod")},
-			"gitlab_project_badge":                 {Tok: gitLabResource(gitLabMod, "ProjectBadge")},
-			"gitlab_group_badge":                   {Tok: gitLabResource(gitLabMod, "GroupBadge")},
-			"gitlab_group_custom_attribute":        {Tok: gitLabResource(gitLabMod, "GroupCustomAttribute")},
-			"gitlab_managed_license":               {Tok: gitLabResource(gitLabMod, "ManagedLicense")},
-			"gitlab_project_access_token":          {Tok: gitLabResource(gitLabMod, "ProjectAccessToken")},
-			"gitlab_project_custom_attribute":      {Tok: gitLabResource(gitLabMod, "ProjectCustomAttribute")},
-			"gitlab_repository_file":               {Tok: gitLabResource(gitLabMod, "RepositoryFile")},
-			"gitlab_service_microsoft_teams":       {Tok: gitLabResource(gitLabMod, "ServiceMicrosoftTeams")},
-			"gitlab_user_custom_attribute":         {Tok: gitLabResource(gitLabMod, "UserCustomAttribute")},
-			"gitlab_branch":                        {Tok: gitLabResource(gitLabMod, "Branch")},
-			"gitlab_group_access_token":            {Tok: gitLabResource(gitLabMod, "GroupAccessToken")},
-			"gitlab_topic":                         {Tok: gitLabResource(gitLabMod, "Topic")},
-			"gitlab_user_sshkey":                   {Tok: gitLabResource(gitLabMod, "UserSshKey")},
-			"gitlab_user_gpgkey":                   {Tok: gitLabResource(gitLabMod, "UserGpgKey")},
-			"gitlab_project_issue":                 {Tok: gitLabResource(gitLabMod, "ProjectIssue")},
-			"gitlab_project_tag":                   {Tok: gitLabResource(gitLabMod, "ProjectTag")},
-			"gitlab_project_environment":           {Tok: gitLabResource(gitLabMod, "ProjectEnvironment")},
-			"gitlab_project_protected_environment": {Tok: gitLabResource(gitLabMod, "ProjectProtectedEnvironment")},
-			"gitlab_system_hook":                   {Tok: gitLabResource(gitLabMod, "SystemHook")},
-			"gitlab_cluster_agent":                 {Tok: gitLabResource(gitLabMod, "ClusterAgent")},
-			"gitlab_cluster_agent_token":           {Tok: gitLabResource(gitLabMod, "ClusterAgentToken")},
-			"gitlab_group_project_file_template":   {Tok: gitLabResource(gitLabMod, "GroupProjectFileTemplate")},
-			"gitlab_personal_access_token":         {Tok: gitLabResource(gitLabMod, "PersonalAccessToken")},
-			"gitlab_project_milestone":             {Tok: gitLabResource(gitLabMod, "ProjectMilestone")},
-			"gitlab_project_runner_enablement":     {Tok: gitLabResource(gitLabMod, "ProjectRunnerEnablement")},
-			"gitlab_release_link":                  {Tok: gitLabResource(gitLabMod, "ReleaseLink")},
-			"gitlab_runner":                        {Tok: gitLabResource(gitLabMod, "Runner")},
-			"gitlab_service_external_wiki":         {Tok: gitLabResource(gitLabMod, "ServiceExternalWiki")},
+			// Both sshkey and gpgkey have non-standard capitalization.
+			"gitlab_user_sshkey": {Tok: gitLabResource(gitLabMod, "UserSshKey")},
+			"gitlab_user_gpgkey": {Tok: gitLabResource(gitLabMod, "UserGpgKey")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"gitlab_group": {Tok: gitLabDataSource(gitLabMod, "getGroup")},
 			"gitlab_project": {
 				Tok: gitLabDataSource(gitLabMod, "getProject"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -156,8 +95,6 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"gitlab_user":  {Tok: gitLabDataSource(gitLabMod, "getUser")},
-			"gitlab_users": {Tok: gitLabDataSource(gitLabMod, "getUsers")},
 			"gitlab_projects": {
 				Tok: gitLabDataSource(gitLabMod, "getProjects"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -185,35 +122,6 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"gitlab_group_hook":                 {Tok: gitLabDataSource(gitLabMod, "getGroupHook")},
-			"gitlab_group_hooks":                {Tok: gitLabDataSource(gitLabMod, "getGroupHooks")},
-			"gitlab_group_membership":           {Tok: gitLabDataSource(gitLabMod, "getGroupMembership")},
-			"gitlab_project_hook":               {Tok: gitLabDataSource(gitLabMod, "getProjectHook")},
-			"gitlab_project_hooks":              {Tok: gitLabDataSource(gitLabMod, "getProjectHooks")},
-			"gitlab_project_membership":         {Tok: gitLabDataSource(gitLabMod, "getProjectMembership")},
-			"gitlab_project_protected_branch":   {Tok: gitLabDataSource(gitLabMod, "getProjectProtectedBranch")},
-			"gitlab_project_protected_branches": {Tok: gitLabDataSource(gitLabMod, "getProjectProtectedBranches")},
-			"gitlab_branch":                     {Tok: gitLabDataSource(gitLabMod, "getBranch")},
-			"gitlab_project_issue":              {Tok: gitLabDataSource(gitLabMod, "getProjectIssue")},
-			"gitlab_project_issues":             {Tok: gitLabDataSource(gitLabMod, "getProjectIssues")},
-			"gitlab_project_tag":                {Tok: gitLabDataSource(gitLabMod, "getProjectTag")},
-			"gitlab_instance_deploy_keys":       {Tok: gitLabDataSource(gitLabMod, "getInstanceDeployKeys")},
-			"gitlab_project_tags":               {Tok: gitLabDataSource(gitLabMod, "getProjectTags")},
-			"gitlab_repository_file":            {Tok: gitLabDataSource(gitLabMod, "getRepositoryFile")},
-			"gitlab_cluster_agent":              {Tok: gitLabDataSource(gitLabMod, "getClusterAgent")},
-			"gitlab_cluster_agents":             {Tok: gitLabDataSource(gitLabMod, "getClusterAgents")},
-			"gitlab_current_user":               {Tok: gitLabDataSource(gitLabMod, "getCurrentUser")},
-			"gitlab_group_variable":             {Tok: gitLabDataSource(gitLabMod, "getGroupVariable")},
-			"gitlab_group_variables":            {Tok: gitLabDataSource(gitLabMod, "getGroupVariables")},
-			"gitlab_instance_variable":          {Tok: gitLabDataSource(gitLabMod, "getInstanceVariable")},
-			"gitlab_instance_variables":         {Tok: gitLabDataSource(gitLabMod, "getInstanceVariables")},
-			"gitlab_project_milestone":          {Tok: gitLabDataSource(gitLabMod, "getProjectMilestone")},
-			"gitlab_project_milestones":         {Tok: gitLabDataSource(gitLabMod, "getProjectMilestones")},
-			"gitlab_project_variable":           {Tok: gitLabDataSource(gitLabMod, "getProjectVariable")},
-			"gitlab_project_variables":          {Tok: gitLabDataSource(gitLabMod, "getProjectVariables")},
-			"gitlab_release_link":               {Tok: gitLabDataSource(gitLabMod, "getReleaseLink")},
-			"gitlab_release_links":              {Tok: gitLabDataSource(gitLabMod, "getReleaseLinks")},
-			"gitlab_repository_tree":            {Tok: gitLabDataSource(gitLabMod, "getRepositoryTree")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
@@ -249,6 +157,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 	}
+
+	err := x.ComputeDefaults(&prov, x.TokensSingleModule("gitlab_", gitLabMod, x.MakeStandardToken(gitLabPkg)))
+	contract.AssertNoErrorf(err, "failed to apply token mappings")
 
 	prov.SetAutonaming(255, "-")
 
