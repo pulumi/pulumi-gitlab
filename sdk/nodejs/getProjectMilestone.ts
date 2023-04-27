@@ -15,19 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * // By project full path
- * const example = pulumi.output(gitlab.getProjectMilestone({
+ * const example = gitlab.getProjectMilestone({
  *     milestoneId: 10,
  *     project: "foo/bar",
- * }));
+ * });
  * ```
  */
 export function getProjectMilestone(args: GetProjectMilestoneArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectMilestoneResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectMilestone:getProjectMilestone", {
         "milestoneId": args.milestoneId,
         "project": args.project,
@@ -109,9 +105,25 @@ export interface GetProjectMilestoneResult {
      */
     readonly webUrl: string;
 }
-
+/**
+ * The `gitlab.ProjectMilestone` data source allows get details of a project milestone.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getProjectMilestone({
+ *     milestoneId: 10,
+ *     project: "foo/bar",
+ * });
+ * ```
+ */
 export function getProjectMilestoneOutput(args: GetProjectMilestoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectMilestoneResult> {
-    return pulumi.output(args).apply(a => getProjectMilestone(a, opts))
+    return pulumi.output(args).apply((a: any) => getProjectMilestone(a, opts))
 }
 
 /**

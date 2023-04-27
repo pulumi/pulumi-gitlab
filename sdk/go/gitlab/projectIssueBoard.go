@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,8 +23,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -43,7 +41,7 @@ import (
 //			exampleUser, err := gitlab.NewUser(ctx, "exampleUser", &gitlab.UserArgs{
 //				Username: pulumi.String("example"),
 //				Email:    pulumi.String("example@example.com"),
-//				Password: pulumi.String(fmt.Sprintf("example1$$$")),
+//				Password: pulumi.String("example1$$$"),
 //			})
 //			if err != nil {
 //				return err
@@ -65,11 +63,11 @@ import (
 //			}
 //			_, err = gitlab.NewProjectIssueBoard(ctx, "this", &gitlab.ProjectIssueBoardArgs{
 //				Project: exampleProject.ID(),
-//				Lists: ProjectIssueBoardListArray{
-//					&ProjectIssueBoardListArgs{
+//				Lists: gitlab.ProjectIssueBoardListArray{
+//					&gitlab.ProjectIssueBoardListArgs{
 //						AssigneeId: exampleUser.ID(),
 //					},
-//					&ProjectIssueBoardListArgs{
+//					&gitlab.ProjectIssueBoardListArgs{
 //						MilestoneId: exampleProjectMilestone.MilestoneId,
 //					},
 //				},
@@ -81,11 +79,11 @@ import (
 //			}
 //			_, err = gitlab.NewProjectIssueBoard(ctx, "listSyntax", &gitlab.ProjectIssueBoardArgs{
 //				Project: exampleProject.ID(),
-//				Lists: ProjectIssueBoardListArray{
-//					&ProjectIssueBoardListArgs{
+//				Lists: gitlab.ProjectIssueBoardListArray{
+//					&gitlab.ProjectIssueBoardListArgs{
 //						AssigneeId: exampleUser.ID(),
 //					},
-//					&ProjectIssueBoardListArgs{
+//					&gitlab.ProjectIssueBoardListArgs{
 //						MilestoneId: exampleProjectMilestone.MilestoneId,
 //					},
 //				},

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -82,7 +82,7 @@ func NewInstanceVariable(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Value'")
 	}
 	if args.Value != nil {
-		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringOutput)
+		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"value",

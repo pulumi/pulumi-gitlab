@@ -9,19 +9,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#saml-group-links)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const test = new gitlab.GroupSamlLink("test", {
- *     accessLevel: "developer",
- *     groupId: "12345",
- *     samlGroupName: "samlgroupname1",
- * });
- * ```
- *
  * ## Import
  *
  * GitLab group saml links can be imported using an id made up of `group_id:saml_group_name`, e.g.

@@ -28,11 +28,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getProjectIssue(args: GetProjectIssueArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectIssueResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectIssue:getProjectIssue", {
         "iid": args.iid,
         "project": args.project,
@@ -219,9 +216,29 @@ export interface GetProjectIssueResult {
      */
     readonly weight: number;
 }
-
+/**
+ * The `gitlab.ProjectIssue` data source allows to retrieve details about an issue in a project.
+ *
+ * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const foo = gitlab.getProject({
+ *     id: "foo/bar/baz",
+ * });
+ * const welcomeIssue = foo.then(foo => gitlab.getProjectIssue({
+ *     project: foo.id,
+ *     iid: 1,
+ * }));
+ * export const welcomeIssueWebUrl = data.gitlab_project_issue.web_url;
+ * ```
+ */
 export function getProjectIssueOutput(args: GetProjectIssueOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectIssueResult> {
-    return pulumi.output(args).apply(a => getProjectIssue(a, opts))
+    return pulumi.output(args).apply((a: any) => getProjectIssue(a, opts))
 }
 
 /**

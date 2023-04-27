@@ -32,13 +32,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mygroup, err := gitlab.LookupGroup(ctx, &GetGroupArgs{
+//			mygroup, err := gitlab.LookupGroup(ctx, &gitlab.LookupGroupArgs{
 //				FullPath: pulumi.StringRef("mygroup"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.GetProjects(ctx, &GetProjectsArgs{
+//			_, err = gitlab.GetProjects(ctx, &gitlab.GetProjectsArgs{
 //				GroupId:          pulumi.IntRef(mygroup.Id),
 //				OrderBy:          pulumi.StringRef("name"),
 //				IncludeSubgroups: pulumi.BoolRef(true),
@@ -47,7 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.GetProjects(ctx, &GetProjectsArgs{
+//			_, err = gitlab.GetProjects(ctx, &gitlab.GetProjectsArgs{
 //				Search:     pulumi.StringRef("postgresql"),
 //				Visibility: pulumi.StringRef("private"),
 //			}, nil)

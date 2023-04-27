@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = gitlab.LookupProjectTag(ctx, &GetProjectTagArgs{
+//			_, err := gitlab.LookupProjectTag(ctx, &gitlab.LookupProjectTagArgs{
 //				Name:    "example",
 //				Project: "foo/bar",
 //			}, nil)

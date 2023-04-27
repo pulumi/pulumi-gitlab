@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const tagProtect = new gitlab.TagProtection("TagProtect", {
+ * const tagProtect = new gitlab.TagProtection("tagProtect", {
  *     createAccessLevel: "developer",
  *     project: "12345",
  *     tag: "TagProtected",

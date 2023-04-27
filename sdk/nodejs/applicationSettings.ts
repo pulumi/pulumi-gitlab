@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * // Set the 2FA settings
- * const thisApplicationSettings = new gitlab.ApplicationSettings("this", {
+ * const _this = new gitlab.ApplicationSettings("this", {
  *     requireTwoFactorAuthentication: true,
  *     twoFactorGracePeriod: 24,
  * });

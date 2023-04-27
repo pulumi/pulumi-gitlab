@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,7 +64,7 @@ func NewRunner(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'RegistrationToken'")
 	}
 	if args.RegistrationToken != nil {
-		args.RegistrationToken = pulumi.ToSecret(args.RegistrationToken).(pulumi.StringOutput)
+		args.RegistrationToken = pulumi.ToSecret(args.RegistrationToken).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"authenticationToken",

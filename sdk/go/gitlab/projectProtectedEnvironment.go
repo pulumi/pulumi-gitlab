@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,8 +47,8 @@ import (
 //				Project:               this.Project,
 //				RequiredApprovalCount: pulumi.Int(1),
 //				Environment:           this.Name,
-//				DeployAccessLevels: ProjectProtectedEnvironmentDeployAccessLevelArray{
-//					&ProjectProtectedEnvironmentDeployAccessLevelArgs{
+//				DeployAccessLevels: gitlab.ProjectProtectedEnvironmentDeployAccessLevelArray{
+//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs{
 //						AccessLevel: pulumi.String("developer"),
 //					},
 //				},
@@ -59,8 +59,8 @@ import (
 //			_, err = gitlab.NewProjectProtectedEnvironment(ctx, "exampleWithGroup", &gitlab.ProjectProtectedEnvironmentArgs{
 //				Project:     this.Project,
 //				Environment: this.Name,
-//				DeployAccessLevels: ProjectProtectedEnvironmentDeployAccessLevelArray{
-//					&ProjectProtectedEnvironmentDeployAccessLevelArgs{
+//				DeployAccessLevels: gitlab.ProjectProtectedEnvironmentDeployAccessLevelArray{
+//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs{
 //						GroupId: pulumi.Int(456),
 //					},
 //				},
@@ -71,8 +71,8 @@ import (
 //			_, err = gitlab.NewProjectProtectedEnvironment(ctx, "exampleWithUser", &gitlab.ProjectProtectedEnvironmentArgs{
 //				Project:     this.Project,
 //				Environment: this.Name,
-//				DeployAccessLevels: ProjectProtectedEnvironmentDeployAccessLevelArray{
-//					&ProjectProtectedEnvironmentDeployAccessLevelArgs{
+//				DeployAccessLevels: gitlab.ProjectProtectedEnvironmentDeployAccessLevelArray{
+//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs{
 //						UserId: pulumi.Int(789),
 //					},
 //				},
@@ -84,14 +84,14 @@ import (
 //				Project:               this.Project,
 //				RequiredApprovalCount: pulumi.Int(2),
 //				Environment:           this.Name,
-//				DeployAccessLevels: ProjectProtectedEnvironmentDeployAccessLevelArray{
-//					&ProjectProtectedEnvironmentDeployAccessLevelArgs{
+//				DeployAccessLevels: gitlab.ProjectProtectedEnvironmentDeployAccessLevelArray{
+//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs{
 //						AccessLevel: pulumi.String("developer"),
 //					},
-//					&ProjectProtectedEnvironmentDeployAccessLevelArgs{
+//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs{
 //						GroupId: pulumi.Int(456),
 //					},
-//					&ProjectProtectedEnvironmentDeployAccessLevelArgs{
+//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs{
 //						UserId: pulumi.Int(789),
 //					},
 //				},

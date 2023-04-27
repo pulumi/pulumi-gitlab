@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -119,7 +119,7 @@ func NewProjectCluster(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.KubernetesToken != nil {
-		args.KubernetesToken = pulumi.ToSecret(args.KubernetesToken).(pulumi.StringOutput)
+		args.KubernetesToken = pulumi.ToSecret(args.KubernetesToken).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"kubernetesToken",
