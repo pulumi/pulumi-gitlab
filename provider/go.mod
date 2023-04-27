@@ -5,6 +5,7 @@ go 1.19
 require (
 	github.com/gitlabhq/terraform-provider-gitlab v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.45.2
+	github.com/pulumi/pulumi/sdk v1.14.1
 	github.com/pulumi/pulumi/sdk/v3 v3.63.0
 )
 
