@@ -1,0 +1,29 @@
+From f3686cf0103a15b52f133a8a8eeff894cab97496 Mon Sep 17 00:00:00 2001
+From: Ian Wahbe <ian@wahbe.com>
+Date: Thu, 27 Apr 2023 10:06:00 -0700
+Subject: [PATCH] expose-provider
+
+---
+ shim/shim.go | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+ create mode 100644 shim/shim.go
+
+diff --git a/shim/shim.go b/shim/shim.go
+new file mode 100644
+index 00000000..8889e1f6
+--- /dev/null
++++ b/shim/shim.go
+@@ -0,0 +1,10 @@
++package shim
++
++import (
++	"github.com/gitlabhq/terraform-provider-gitlab/internal/provider"
++	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
++)
++
++func NewProvider() *schema.Provider {
++	return provider.New("")()
++}
+-- 
+2.39.1
+
