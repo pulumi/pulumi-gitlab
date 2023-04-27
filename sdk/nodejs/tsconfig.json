@@ -103,6 +103,7 @@
         "releaseLink.ts",
         "repositoryFile.ts",
         "runner.ts",
+        "serviceEmailsOnPush.ts",
         "serviceExternalWiki.ts",
         "serviceGithub.ts",
         "serviceJira.ts",

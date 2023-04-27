@@ -14,6 +14,26 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#saml-group-links)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new GitLab.GroupSamlLink("test", new()
+    ///     {
+    ///         AccessLevel = "developer",
+    ///         Group = "12345",
+    ///         SamlGroupName = "samlgroupname1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// GitLab group saml links can be imported using an id made up of `group_id:saml_group_name`, e.g.

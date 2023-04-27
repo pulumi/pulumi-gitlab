@@ -3080,6 +3080,7 @@ class GetProjectsProjectResult(dict):
                  ssh_url_to_repo: str,
                  star_count: int,
                  statistics: Mapping[str, int],
+                 suggestion_commit_message: str,
                  tag_lists: Sequence[str],
                  topics: Sequence[str],
                  visibility: str,
@@ -3172,6 +3173,7 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "ssh_url_to_repo", ssh_url_to_repo)
         pulumi.set(__self__, "star_count", star_count)
         pulumi.set(__self__, "statistics", statistics)
+        pulumi.set(__self__, "suggestion_commit_message", suggestion_commit_message)
         pulumi.set(__self__, "tag_lists", tag_lists)
         pulumi.set(__self__, "topics", topics)
         pulumi.set(__self__, "visibility", visibility)
@@ -3587,6 +3589,11 @@ class GetProjectsProjectResult(dict):
         Include project statistics. Cannot be used with `group_id`.
         """
         return pulumi.get(self, "statistics")
+
+    @property
+    @pulumi.getter(name="suggestionCommitMessage")
+    def suggestion_commit_message(self) -> str:
+        return pulumi.get(self, "suggestion_commit_message")
 
     @property
     @pulumi.getter(name="tagLists")

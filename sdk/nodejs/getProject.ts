@@ -257,6 +257,10 @@ export interface GetProjectResult {
      */
     readonly sshUrlToRepo: string;
     /**
+     * The commit message used to apply merge request suggestions.
+     */
+    readonly suggestionCommitMessage: string;
+    /**
      * The list of topics for the project.
      */
     readonly topics: string[];

@@ -366,6 +366,10 @@ export class Project extends pulumi.CustomResource {
      */
     public /*out*/ readonly sshUrlToRepo!: pulumi.Output<string>;
     /**
+     * The commit message used to apply merge request suggestions.
+     */
+    public readonly suggestionCommitMessage!: pulumi.Output<string | undefined>;
+    /**
      * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
      */
     public readonly tags!: pulumi.Output<string[]>;
@@ -486,6 +490,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["squashCommitTemplate"] = state ? state.squashCommitTemplate : undefined;
             resourceInputs["squashOption"] = state ? state.squashOption : undefined;
             resourceInputs["sshUrlToRepo"] = state ? state.sshUrlToRepo : undefined;
+            resourceInputs["suggestionCommitMessage"] = state ? state.suggestionCommitMessage : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["templateName"] = state ? state.templateName : undefined;
             resourceInputs["templateProjectId"] = state ? state.templateProjectId : undefined;
@@ -564,6 +569,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["snippetsEnabled"] = args ? args.snippetsEnabled : undefined;
             resourceInputs["squashCommitTemplate"] = args ? args.squashCommitTemplate : undefined;
             resourceInputs["squashOption"] = args ? args.squashOption : undefined;
+            resourceInputs["suggestionCommitMessage"] = args ? args.suggestionCommitMessage : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["templateName"] = args ? args.templateName : undefined;
             resourceInputs["templateProjectId"] = args ? args.templateProjectId : undefined;
@@ -882,6 +888,10 @@ export interface ProjectState {
      */
     sshUrlToRepo?: pulumi.Input<string>;
     /**
+     * The commit message used to apply merge request suggestions.
+     */
+    suggestionCommitMessage?: pulumi.Input<string>;
+    /**
      * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1199,6 +1209,10 @@ export interface ProjectArgs {
      * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
      */
     squashOption?: pulumi.Input<string>;
+    /**
+     * The commit message used to apply merge request suggestions.
+     */
+    suggestionCommitMessage?: pulumi.Input<string>;
     /**
      * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
      */

@@ -92,6 +92,7 @@ from .provider import *
 from .release_link import *
 from .repository_file import *
 from .runner import *
+from .service_emails_on_push import *
 from .service_external_wiki import *
 from .service_github import *
 from .service_jira import *
@@ -532,6 +533,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/runner:Runner": "Runner"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/serviceEmailsOnPush",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush": "ServiceEmailsOnPush"
   }
  },
  {

@@ -134,6 +134,18 @@ class GroupSamlLink(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#saml-group-links)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.GroupSamlLink("test",
+            access_level="developer",
+            group="12345",
+            saml_group_name="samlgroupname1")
+        ```
+
         ## Import
 
         GitLab group saml links can be imported using an id made up of `group_id:saml_group_name`, e.g.
@@ -158,6 +170,18 @@ class GroupSamlLink(pulumi.CustomResource):
         The `GroupSamlLink` resource allows to manage the lifecycle of an SAML integration with a group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#saml-group-links)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.GroupSamlLink("test",
+            access_level="developer",
+            group="12345",
+            saml_group_name="samlgroupname1")
+        ```
 
         ## Import
 

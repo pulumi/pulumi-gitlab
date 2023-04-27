@@ -160,6 +160,8 @@ type LookupProjectResult struct {
 	SquashCommitTemplate string `pulumi:"squashCommitTemplate"`
 	// URL that can be provided to `git clone` to clone the
 	SshUrlToRepo string `pulumi:"sshUrlToRepo"`
+	// The commit message used to apply merge request suggestions.
+	SuggestionCommitMessage string `pulumi:"suggestionCommitMessage"`
 	// The list of topics for the project.
 	Topics []string `pulumi:"topics"`
 	// Repositories are created as private by default.
@@ -461,6 +463,11 @@ func (o LookupProjectResultOutput) SquashCommitTemplate() pulumi.StringOutput {
 // URL that can be provided to `git clone` to clone the
 func (o LookupProjectResultOutput) SshUrlToRepo() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.SshUrlToRepo }).(pulumi.StringOutput)
+}
+
+// The commit message used to apply merge request suggestions.
+func (o LookupProjectResultOutput) SuggestionCommitMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.SuggestionCommitMessage }).(pulumi.StringOutput)
 }
 
 // The list of topics for the project.

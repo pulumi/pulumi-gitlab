@@ -562,6 +562,7 @@ export interface GetProjectsProject {
      * Include project statistics. Cannot be used with `groupId`.
      */
     statistics: {[key: string]: number};
+    suggestionCommitMessage: string;
     tagLists: string[];
     topics: string[];
     /**

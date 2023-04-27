@@ -262,6 +262,11 @@ public final class GetProjectResult {
      */
     private String sshUrlToRepo;
     /**
+     * @return The commit message used to apply merge request suggestions.
+     * 
+     */
+    private String suggestionCommitMessage;
+    /**
      * @return The list of topics for the project.
      * 
      */
@@ -632,6 +637,13 @@ public final class GetProjectResult {
         return this.sshUrlToRepo;
     }
     /**
+     * @return The commit message used to apply merge request suggestions.
+     * 
+     */
+    public String suggestionCommitMessage() {
+        return this.suggestionCommitMessage;
+    }
+    /**
      * @return The list of topics for the project.
      * 
      */
@@ -725,6 +737,7 @@ public final class GetProjectResult {
         private Boolean snippetsEnabled;
         private String squashCommitTemplate;
         private String sshUrlToRepo;
+        private String suggestionCommitMessage;
         private List<String> topics;
         private String visibilityLevel;
         private String webUrl;
@@ -782,6 +795,7 @@ public final class GetProjectResult {
     	      this.snippetsEnabled = defaults.snippetsEnabled;
     	      this.squashCommitTemplate = defaults.squashCommitTemplate;
     	      this.sshUrlToRepo = defaults.sshUrlToRepo;
+    	      this.suggestionCommitMessage = defaults.suggestionCommitMessage;
     	      this.topics = defaults.topics;
     	      this.visibilityLevel = defaults.visibilityLevel;
     	      this.webUrl = defaults.webUrl;
@@ -1038,6 +1052,11 @@ public final class GetProjectResult {
             return this;
         }
         @CustomType.Setter
+        public Builder suggestionCommitMessage(String suggestionCommitMessage) {
+            this.suggestionCommitMessage = Objects.requireNonNull(suggestionCommitMessage);
+            return this;
+        }
+        @CustomType.Setter
         public Builder topics(List<String> topics) {
             this.topics = Objects.requireNonNull(topics);
             return this;
@@ -1116,6 +1135,7 @@ public final class GetProjectResult {
             o.snippetsEnabled = snippetsEnabled;
             o.squashCommitTemplate = squashCommitTemplate;
             o.sshUrlToRepo = sshUrlToRepo;
+            o.suggestionCommitMessage = suggestionCommitMessage;
             o.topics = topics;
             o.visibilityLevel = visibilityLevel;
             o.webUrl = webUrl;

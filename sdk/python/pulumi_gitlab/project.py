@@ -83,6 +83,7 @@ class ProjectArgs:
                  snippets_enabled: Optional[pulumi.Input[bool]] = None,
                  squash_commit_template: Optional[pulumi.Input[str]] = None,
                  squash_option: Optional[pulumi.Input[str]] = None,
+                 suggestion_commit_message: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  template_project_id: Optional[pulumi.Input[int]] = None,
@@ -166,6 +167,7 @@ class ProjectArgs:
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
         :param pulumi.Input[str] squash_commit_template: Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
         :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
+        :param pulumi.Input[str] suggestion_commit_message: The commit message used to apply merge request suggestions.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
         :param pulumi.Input[str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         :param pulumi.Input[int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
@@ -312,6 +314,8 @@ class ProjectArgs:
             pulumi.set(__self__, "squash_commit_template", squash_commit_template)
         if squash_option is not None:
             pulumi.set(__self__, "squash_option", squash_option)
+        if suggestion_commit_message is not None:
+            pulumi.set(__self__, "suggestion_commit_message", suggestion_commit_message)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if template_name is not None:
@@ -1140,6 +1144,18 @@ class ProjectArgs:
         pulumi.set(self, "squash_option", value)
 
     @property
+    @pulumi.getter(name="suggestionCommitMessage")
+    def suggestion_commit_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        The commit message used to apply merge request suggestions.
+        """
+        return pulumi.get(self, "suggestion_commit_message")
+
+    @suggestion_commit_message.setter
+    def suggestion_commit_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "suggestion_commit_message", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -1310,6 +1326,7 @@ class _ProjectState:
                  squash_commit_template: Optional[pulumi.Input[str]] = None,
                  squash_option: Optional[pulumi.Input[str]] = None,
                  ssh_url_to_repo: Optional[pulumi.Input[str]] = None,
+                 suggestion_commit_message: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  template_project_id: Optional[pulumi.Input[int]] = None,
@@ -1398,6 +1415,7 @@ class _ProjectState:
         :param pulumi.Input[str] squash_commit_template: Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
         :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
         :param pulumi.Input[str] ssh_url_to_repo: URL that can be provided to `git clone` to clone the
+        :param pulumi.Input[str] suggestion_commit_message: The commit message used to apply merge request suggestions.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
         :param pulumi.Input[str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         :param pulumi.Input[int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
@@ -1553,6 +1571,8 @@ class _ProjectState:
             pulumi.set(__self__, "squash_option", squash_option)
         if ssh_url_to_repo is not None:
             pulumi.set(__self__, "ssh_url_to_repo", ssh_url_to_repo)
+        if suggestion_commit_message is not None:
+            pulumi.set(__self__, "suggestion_commit_message", suggestion_commit_message)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if template_name is not None:
@@ -2431,6 +2451,18 @@ class _ProjectState:
         pulumi.set(self, "ssh_url_to_repo", value)
 
     @property
+    @pulumi.getter(name="suggestionCommitMessage")
+    def suggestion_commit_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        The commit message used to apply merge request suggestions.
+        """
+        return pulumi.get(self, "suggestion_commit_message")
+
+    @suggestion_commit_message.setter
+    def suggestion_commit_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "suggestion_commit_message", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -2611,6 +2643,7 @@ class Project(pulumi.CustomResource):
                  snippets_enabled: Optional[pulumi.Input[bool]] = None,
                  squash_commit_template: Optional[pulumi.Input[str]] = None,
                  squash_option: Optional[pulumi.Input[str]] = None,
+                 suggestion_commit_message: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  template_project_id: Optional[pulumi.Input[int]] = None,
@@ -2730,6 +2763,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
         :param pulumi.Input[str] squash_commit_template: Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
         :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
+        :param pulumi.Input[str] suggestion_commit_message: The commit message used to apply merge request suggestions.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
         :param pulumi.Input[str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         :param pulumi.Input[int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
@@ -2862,6 +2896,7 @@ class Project(pulumi.CustomResource):
                  snippets_enabled: Optional[pulumi.Input[bool]] = None,
                  squash_commit_template: Optional[pulumi.Input[str]] = None,
                  squash_option: Optional[pulumi.Input[str]] = None,
+                 suggestion_commit_message: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  template_project_id: Optional[pulumi.Input[int]] = None,
@@ -2949,6 +2984,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["snippets_enabled"] = snippets_enabled
             __props__.__dict__["squash_commit_template"] = squash_commit_template
             __props__.__dict__["squash_option"] = squash_option
+            __props__.__dict__["suggestion_commit_message"] = suggestion_commit_message
             __props__.__dict__["tags"] = tags
             __props__.__dict__["template_name"] = template_name
             __props__.__dict__["template_project_id"] = template_project_id
@@ -3045,6 +3081,7 @@ class Project(pulumi.CustomResource):
             squash_commit_template: Optional[pulumi.Input[str]] = None,
             squash_option: Optional[pulumi.Input[str]] = None,
             ssh_url_to_repo: Optional[pulumi.Input[str]] = None,
+            suggestion_commit_message: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template_name: Optional[pulumi.Input[str]] = None,
             template_project_id: Optional[pulumi.Input[int]] = None,
@@ -3138,6 +3175,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] squash_commit_template: Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
         :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
         :param pulumi.Input[str] ssh_url_to_repo: URL that can be provided to `git clone` to clone the
+        :param pulumi.Input[str] suggestion_commit_message: The commit message used to apply merge request suggestions.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
         :param pulumi.Input[str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         :param pulumi.Input[int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
@@ -3223,6 +3261,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["squash_commit_template"] = squash_commit_template
         __props__.__dict__["squash_option"] = squash_option
         __props__.__dict__["ssh_url_to_repo"] = ssh_url_to_repo
+        __props__.__dict__["suggestion_commit_message"] = suggestion_commit_message
         __props__.__dict__["tags"] = tags
         __props__.__dict__["template_name"] = template_name
         __props__.__dict__["template_project_id"] = template_project_id
@@ -3807,6 +3846,14 @@ class Project(pulumi.CustomResource):
         URL that can be provided to `git clone` to clone the
         """
         return pulumi.get(self, "ssh_url_to_repo")
+
+    @property
+    @pulumi.getter(name="suggestionCommitMessage")
+    def suggestion_commit_message(self) -> pulumi.Output[Optional[str]]:
+        """
+        The commit message used to apply merge request suggestions.
+        """
+        return pulumi.get(self, "suggestion_commit_message")
 
     @property
     @pulumi.getter

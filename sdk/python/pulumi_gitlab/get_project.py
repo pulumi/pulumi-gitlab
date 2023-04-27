@@ -22,7 +22,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, analytics_access_level=None, archived=None, auto_cancel_pending_pipelines=None, auto_devops_deploy_strategy=None, auto_devops_enabled=None, autoclose_referenced_issues=None, build_git_strategy=None, build_timeout=None, builds_access_level=None, ci_config_path=None, ci_default_git_depth=None, container_expiration_policies=None, container_registry_access_level=None, default_branch=None, description=None, emails_disabled=None, external_authorization_classification_label=None, forking_access_level=None, http_url_to_repo=None, id=None, issues_access_level=None, issues_enabled=None, lfs_enabled=None, merge_commit_template=None, merge_pipelines_enabled=None, merge_requests_access_level=None, merge_requests_enabled=None, merge_trains_enabled=None, name=None, namespace_id=None, operations_access_level=None, path=None, path_with_namespace=None, pipelines_enabled=None, printing_merge_request_link_enabled=None, public_builds=None, push_rules=None, remove_source_branch_after_merge=None, repository_access_level=None, repository_storage=None, request_access_enabled=None, requirements_access_level=None, resolve_outdated_diff_discussions=None, runners_token=None, security_and_compliance_access_level=None, snippets_access_level=None, snippets_enabled=None, squash_commit_template=None, ssh_url_to_repo=None, topics=None, visibility_level=None, web_url=None, wiki_access_level=None, wiki_enabled=None):
+    def __init__(__self__, analytics_access_level=None, archived=None, auto_cancel_pending_pipelines=None, auto_devops_deploy_strategy=None, auto_devops_enabled=None, autoclose_referenced_issues=None, build_git_strategy=None, build_timeout=None, builds_access_level=None, ci_config_path=None, ci_default_git_depth=None, container_expiration_policies=None, container_registry_access_level=None, default_branch=None, description=None, emails_disabled=None, external_authorization_classification_label=None, forking_access_level=None, http_url_to_repo=None, id=None, issues_access_level=None, issues_enabled=None, lfs_enabled=None, merge_commit_template=None, merge_pipelines_enabled=None, merge_requests_access_level=None, merge_requests_enabled=None, merge_trains_enabled=None, name=None, namespace_id=None, operations_access_level=None, path=None, path_with_namespace=None, pipelines_enabled=None, printing_merge_request_link_enabled=None, public_builds=None, push_rules=None, remove_source_branch_after_merge=None, repository_access_level=None, repository_storage=None, request_access_enabled=None, requirements_access_level=None, resolve_outdated_diff_discussions=None, runners_token=None, security_and_compliance_access_level=None, snippets_access_level=None, snippets_enabled=None, squash_commit_template=None, ssh_url_to_repo=None, suggestion_commit_message=None, topics=None, visibility_level=None, web_url=None, wiki_access_level=None, wiki_enabled=None):
         if analytics_access_level and not isinstance(analytics_access_level, str):
             raise TypeError("Expected argument 'analytics_access_level' to be a str")
         pulumi.set(__self__, "analytics_access_level", analytics_access_level)
@@ -170,6 +170,9 @@ class GetProjectResult:
         if ssh_url_to_repo and not isinstance(ssh_url_to_repo, str):
             raise TypeError("Expected argument 'ssh_url_to_repo' to be a str")
         pulumi.set(__self__, "ssh_url_to_repo", ssh_url_to_repo)
+        if suggestion_commit_message and not isinstance(suggestion_commit_message, str):
+            raise TypeError("Expected argument 'suggestion_commit_message' to be a str")
+        pulumi.set(__self__, "suggestion_commit_message", suggestion_commit_message)
         if topics and not isinstance(topics, list):
             raise TypeError("Expected argument 'topics' to be a list")
         pulumi.set(__self__, "topics", topics)
@@ -579,6 +582,14 @@ class GetProjectResult:
         return pulumi.get(self, "ssh_url_to_repo")
 
     @property
+    @pulumi.getter(name="suggestionCommitMessage")
+    def suggestion_commit_message(self) -> str:
+        """
+        The commit message used to apply merge request suggestions.
+        """
+        return pulumi.get(self, "suggestion_commit_message")
+
+    @property
     @pulumi.getter
     def topics(self) -> Sequence[str]:
         """
@@ -674,6 +685,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             snippets_enabled=self.snippets_enabled,
             squash_commit_template=self.squash_commit_template,
             ssh_url_to_repo=self.ssh_url_to_repo,
+            suggestion_commit_message=self.suggestion_commit_message,
             topics=self.topics,
             visibility_level=self.visibility_level,
             web_url=self.web_url,
@@ -764,6 +776,7 @@ def get_project(ci_default_git_depth: Optional[int] = None,
         snippets_enabled=__ret__.snippets_enabled,
         squash_commit_template=__ret__.squash_commit_template,
         ssh_url_to_repo=__ret__.ssh_url_to_repo,
+        suggestion_commit_message=__ret__.suggestion_commit_message,
         topics=__ret__.topics,
         visibility_level=__ret__.visibility_level,
         web_url=__ret__.web_url,
