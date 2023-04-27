@@ -9,7 +9,7 @@ require (
 )
 
 replace (
-	github.com/gitlabhq/terraform-provider-gitlab => github.com/pulumi/terraform-provider-gitlab v1.3.1-0.20221020165750-5eb609747411
+	github.com/gitlabhq/terraform-provider-gitlab => ../upstream
 	github.com/gitlabhq/terraform-provider-gitlab/shim => ./shim
 	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
 	github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-exec v0.17.2

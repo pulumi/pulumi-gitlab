@@ -7,7 +7,7 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.19.0
 )
 
-replace github.com/gitlabhq/terraform-provider-gitlab => github.com/pulumi/terraform-provider-gitlab v1.3.1-0.20221020165750-5eb609747411
+replace github.com/gitlabhq/terraform-provider-gitlab => ../../upstream
 
 require (
 	github.com/agext/levenshtein v1.2.2 // indirect
