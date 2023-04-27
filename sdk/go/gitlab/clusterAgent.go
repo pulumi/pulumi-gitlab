@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,7 +53,7 @@ import (
 //				FilePath: example.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf(".gitlab/agents/%v", name), nil
 //				}).(pulumi.StringOutput),
-//				Content:     pulumi.String(fmt.Sprintf("  gitops:\n    ...\n")),
+//				Content:     pulumi.String("  gitops:\n    ...\n"),
 //				AuthorEmail: pulumi.String("terraform@example.com"),
 //				AuthorName:  pulumi.String("Terraform"),
 //				CommitMessage: example.Name.ApplyT(func(name string) (string, error) {

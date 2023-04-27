@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = gitlab.GetProjectProtectedBranches(ctx, &GetProjectProtectedBranchesArgs{
+//			_, err := gitlab.GetProjectProtectedBranches(ctx, &gitlab.GetProjectProtectedBranchesArgs{
 //				ProjectId: "foo/bar/baz",
 //			}, nil)
 //			if err != nil {

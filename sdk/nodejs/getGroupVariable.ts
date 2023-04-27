@@ -15,24 +15,20 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const foo = pulumi.output(gitlab.getGroupVariable({
+ * const foo = gitlab.getGroupVariable({
  *     group: "my/example/group",
  *     key: "foo",
- * }));
- * // Using an environment scope
- * const bar = pulumi.output(gitlab.getGroupVariable({
+ * });
+ * const bar = gitlab.getGroupVariable({
  *     environmentScope: "staging/*",
  *     group: "my/example/group",
  *     key: "bar",
- * }));
+ * });
  * ```
  */
 export function getGroupVariable(args: GetGroupVariableArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupVariableResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getGroupVariable:getGroupVariable", {
         "environmentScope": args.environmentScope,
         "group": args.group,
@@ -95,9 +91,30 @@ export interface GetGroupVariableResult {
      */
     readonly variableType: string;
 }
-
+/**
+ * The `gitlab.GroupVariable` data source allows to retrieve details about a group-level CI/CD variable.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const foo = gitlab.getGroupVariable({
+ *     group: "my/example/group",
+ *     key: "foo",
+ * });
+ * const bar = gitlab.getGroupVariable({
+ *     environmentScope: "staging/*",
+ *     group: "my/example/group",
+ *     key: "bar",
+ * });
+ * ```
+ */
 export function getGroupVariableOutput(args: GetGroupVariableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupVariableResult> {
-    return pulumi.output(args).apply(a => getGroupVariable(a, opts))
+    return pulumi.output(args).apply((a: any) => getGroupVariable(a, opts))
 }
 
 /**

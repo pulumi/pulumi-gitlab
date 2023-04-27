@@ -17,22 +17,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const vars = pulumi.output(gitlab.getProjectVariables({
+ * const vars = gitlab.getProjectVariables({
  *     project: "my/example/project",
- * }));
- * // Using an environment scope
- * const stagingVars = pulumi.output(gitlab.getProjectVariables({
+ * });
+ * const stagingVars = gitlab.getProjectVariables({
  *     environmentScope: "staging/*",
  *     project: "my/example/project",
- * }));
+ * });
  * ```
  */
 export function getProjectVariables(args: GetProjectVariablesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectVariablesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectVariables:getProjectVariables", {
         "environmentScope": args.environmentScope,
         "project": args.project,
@@ -74,9 +70,28 @@ export interface GetProjectVariablesResult {
      */
     readonly variables: outputs.GetProjectVariablesVariable[];
 }
-
+/**
+ * The `gitlab.getProjectVariables` data source allows to retrieve all project-level CI/CD variables.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const vars = gitlab.getProjectVariables({
+ *     project: "my/example/project",
+ * });
+ * const stagingVars = gitlab.getProjectVariables({
+ *     environmentScope: "staging/*",
+ *     project: "my/example/project",
+ * });
+ * ```
+ */
 export function getProjectVariablesOutput(args: GetProjectVariablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectVariablesResult> {
-    return pulumi.output(args).apply(a => getProjectVariables(a, opts))
+    return pulumi.output(args).apply((a: any) => getProjectVariables(a, opts))
 }
 
 /**

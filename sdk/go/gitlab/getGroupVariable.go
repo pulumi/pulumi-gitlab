@@ -28,14 +28,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = gitlab.LookupGroupVariable(ctx, &GetGroupVariableArgs{
+//			_, err := gitlab.LookupGroupVariable(ctx, &gitlab.LookupGroupVariableArgs{
 //				Group: "my/example/group",
 //				Key:   "foo",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.LookupGroupVariable(ctx, &GetGroupVariableArgs{
+//			_, err = gitlab.LookupGroupVariable(ctx, &gitlab.LookupGroupVariableArgs{
 //				EnvironmentScope: pulumi.StringRef("staging/*"),
 //				Group:            "my/example/group",
 //				Key:              "bar",

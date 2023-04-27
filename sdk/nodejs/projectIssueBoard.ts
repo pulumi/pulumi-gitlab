@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * const exampleUser = new gitlab.User("exampleUser", {
  *     username: "example",
  *     email: "example@example.com",
- *     password: `example1$$$`,
+ *     password: "example1$$$",
  * });
  * const exampleProjectMembership = new gitlab.ProjectMembership("exampleProjectMembership", {
  *     projectId: exampleProject.id,

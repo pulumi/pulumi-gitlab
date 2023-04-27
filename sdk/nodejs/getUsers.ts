@@ -21,23 +21,20 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const example = pulumi.output(gitlab.getUsers({
+ * const example = gitlab.getUsers({
  *     createdBefore: "2019-01-01",
  *     orderBy: "name",
  *     sort: "desc",
- * }));
- * const example_two = pulumi.output(gitlab.getUsers({
+ * });
+ * const example-two = gitlab.getUsers({
  *     search: "username",
- * }));
+ * });
  * ```
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getUsers:getUsers", {
         "active": args.active,
         "blocked": args.blocked,
@@ -142,9 +139,33 @@ export interface GetUsersResult {
      */
     readonly users: outputs.GetUsersUser[];
 }
-
+/**
+ * The `gitlab.getUsers` data source allows details of multiple users to be retrieved given some optional filter criteria.
+ *
+ * > Some attributes might not be returned depending on if you're an admin or not.
+ *
+ * > Some available options require administrator privileges.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users.html#list-users)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getUsers({
+ *     createdBefore: "2019-01-01",
+ *     orderBy: "name",
+ *     sort: "desc",
+ * });
+ * const example-two = gitlab.getUsers({
+ *     search: "username",
+ * });
+ * ```
+ */
 export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
-    return pulumi.output(args).apply(a => getUsers(a, opts))
+    return pulumi.output(args).apply((a: any) => getUsers(a, opts))
 }
 
 /**

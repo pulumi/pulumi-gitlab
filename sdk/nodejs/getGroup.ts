@@ -15,19 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * // By group's full path
- * const foo = pulumi.output(gitlab.getGroup({
+ * const foo = gitlab.getGroup({
  *     fullPath: "foo/bar",
- * }));
+ * });
  * ```
  */
 export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getGroup:getGroup", {
         "fullPath": args.fullPath,
         "groupId": args.groupId,
@@ -113,9 +109,24 @@ export interface GetGroupResult {
      */
     readonly webUrl: string;
 }
-
+/**
+ * The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#details-of-a-group)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const foo = gitlab.getGroup({
+ *     fullPath: "foo/bar",
+ * });
+ * ```
+ */
 export function getGroupOutput(args?: GetGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
-    return pulumi.output(args).apply(a => getGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getGroup(a, opts))
 }
 
 /**

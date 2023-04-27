@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = gitlab.GetClusterAgents(ctx, &GetClusterAgentsArgs{
+//			_, err := gitlab.GetClusterAgents(ctx, &gitlab.GetClusterAgentsArgs{
 //				Project: "12345",
 //			}, nil)
 //			if err != nil {

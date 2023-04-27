@@ -38,11 +38,8 @@ import * as utilities from "./utilities";
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjects:getProjects", {
         "archived": args.archived,
         "groupId": args.groupId,
@@ -255,9 +252,38 @@ export interface GetProjectsResult {
      */
     readonly withShared?: boolean;
 }
-
+/**
+ * The `gitlab.getProjects` data source allows details of multiple projects to be retrieved. Optionally filtered by the set attributes.
+ *
+ * > This data source supports all available filters exposed by the xanzy/go-gitlab package, which might not expose all available filters exposed by the Gitlab APIs.
+ *
+ * > The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const mygroup = gitlab.getGroup({
+ *     fullPath: "mygroup",
+ * });
+ * const groupProjects = mygroup.then(mygroup => gitlab.getProjects({
+ *     groupId: mygroup.id,
+ *     orderBy: "name",
+ *     includeSubgroups: true,
+ *     withShared: false,
+ * }));
+ * const projects = gitlab.getProjects({
+ *     search: "postgresql",
+ *     visibility: "private",
+ * });
+ * ```
+ */
 export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
-    return pulumi.output(args).apply(a => getProjects(a, opts))
+    return pulumi.output(args).apply((a: any) => getProjects(a, opts))
 }
 
 /**

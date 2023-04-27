@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * const example = new gitlab.ProjectVariable("example", {
  *     key: "project_variable_key",
  *     project: "12345",
- *     protected: false,
+ *     "protected": false,
  *     value: "project_variable_value",
  * });
  * ```

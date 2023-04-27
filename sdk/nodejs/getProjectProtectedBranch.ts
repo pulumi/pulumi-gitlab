@@ -17,18 +17,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const example = pulumi.output(gitlab.getProjectProtectedBranch({
+ * const example = gitlab.getProjectProtectedBranch({
  *     name: "main",
  *     projectId: "foo/bar/baz",
- * }));
+ * });
  * ```
  */
 export function getProjectProtectedBranch(args: GetProjectProtectedBranchArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectProtectedBranchResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch", {
         "name": args.name,
         "projectId": args.projectId,
@@ -82,9 +79,25 @@ export interface GetProjectProtectedBranchResult {
      */
     readonly pushAccessLevels: outputs.GetProjectProtectedBranchPushAccessLevel[];
 }
-
+/**
+ * The `gitlabProtectedBranch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getProjectProtectedBranch({
+ *     name: "main",
+ *     projectId: "foo/bar/baz",
+ * });
+ * ```
+ */
 export function getProjectProtectedBranchOutput(args: GetProjectProtectedBranchOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectProtectedBranchResult> {
-    return pulumi.output(args).apply(a => getProjectProtectedBranch(a, opts))
+    return pulumi.output(args).apply((a: any) => getProjectProtectedBranch(a, opts))
 }
 
 /**

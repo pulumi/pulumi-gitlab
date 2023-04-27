@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = gitlab.LookupProjectMembership(ctx, &GetProjectMembershipArgs{
+//			_, err := gitlab.LookupProjectMembership(ctx, &gitlab.LookupProjectMembershipArgs{
 //				Inherited: pulumi.BoolRef(true),
 //				ProjectId: pulumi.IntRef(123),
 //			}, nil)

@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = gitlab.GetInstanceDeployKeys(ctx, &GetInstanceDeployKeysArgs{
+//			_, err := gitlab.GetInstanceDeployKeys(ctx, &gitlab.GetInstanceDeployKeysArgs{
 //				Public: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {

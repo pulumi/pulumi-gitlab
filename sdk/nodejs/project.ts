@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * });
  * // Project with custom push rules
  * const example_two = new gitlab.Project("example-two", {pushRules: {
- *     authorEmailRegex: `@example\.com$`,
+ *     authorEmailRegex: "@example\\.com$",
  *     commitCommitterCheck: true,
  *     memberCheck: true,
  *     preventSecrets: true,
