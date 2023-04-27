@@ -3,14 +3,13 @@ module github.com/pulumi/pulumi-gitlab/provider/v4
 go 1.19
 
 require (
-	github.com/gitlabhq/terraform-provider-gitlab/shim v0.0.0
+	github.com/gitlabhq/terraform-provider-gitlab v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.45.2
 	github.com/pulumi/pulumi/sdk/v3 v3.63.0
 )
 
 replace (
-	github.com/gitlabhq/terraform-provider-gitlab => github.com/pulumi/terraform-provider-gitlab v1.3.1-0.20221020165750-5eb609747411
-	github.com/gitlabhq/terraform-provider-gitlab/shim => ./shim
+	github.com/gitlabhq/terraform-provider-gitlab => ../upstream
 	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
 	github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-exec v0.17.2
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220927231159-9ccf93a70751
@@ -91,7 +90,6 @@ require (
 	github.com/ettle/strcase v0.1.1 // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/gedex/inflector v0.0.0-20170307190818-16278e9db813 // indirect
-	github.com/gitlabhq/terraform-provider-gitlab v1.3.1-0.20220330125313-61400af97b03 // indirect
 	github.com/go-git/gcfg v1.5.0 // indirect
 	github.com/go-git/go-billy/v5 v5.4.0 // indirect
 	github.com/go-git/go-git/v5 v5.6.0 // indirect

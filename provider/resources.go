@@ -64,14 +64,16 @@ func gitLabResource(mod string, res string) tokens.Type {
 func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(gitlabShim.NewProvider())
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "gitlab",
-		Description: "A Pulumi package for creating and managing GitLab resources.",
-		Keywords:    []string{"pulumi", "gitlab"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		GitHubOrg:   "gitlabhq",
-		Repository:  "https://github.com/pulumi/pulumi-gitlab",
+		P:                p,
+		Name:             "gitlab",
+		Description:      "A Pulumi package for creating and managing GitLab resources.",
+		Keywords:         []string{"pulumi", "gitlab"},
+		License:          "Apache-2.0",
+		Homepage:         "https://pulumi.io",
+		GitHubOrg:        "gitlabhq",
+		Repository:       "https://github.com/pulumi/pulumi-gitlab",
+		UpstreamRepoPath: "./upstream",
+
 		Config: map[string]*tfbridge.SchemaInfo{
 			"cacert_file": {},
 			"insecure":    {},
