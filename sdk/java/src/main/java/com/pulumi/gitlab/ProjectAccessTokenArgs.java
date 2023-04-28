@@ -77,14 +77,14 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+     * Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.
      * 
      */
     @Import(name="scopes", required=true)
     private Output<List<String>> scopes;
 
     /**
-     * @return Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+     * @return Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.
      * 
      */
     public Output<List<String>> scopes() {
@@ -204,7 +204,7 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scopes Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+         * @param scopes Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scopes Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+         * @param scopes Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scopes Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+         * @param scopes Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.
          * 
          * @return builder
          * 

@@ -83,7 +83,7 @@ export class UserSshKey extends pulumi.CustomResource {
      */
     public readonly title!: pulumi.Output<string>;
     /**
-     * The ID of the user to add the ssh key to.
+     * The ID or username of the user.
      */
     public readonly userId!: pulumi.Output<number>;
 
@@ -154,7 +154,7 @@ export interface UserSshKeyState {
      */
     title?: pulumi.Input<string>;
     /**
-     * The ID of the user to add the ssh key to.
+     * The ID or username of the user.
      */
     userId?: pulumi.Input<number>;
 }
@@ -176,7 +176,7 @@ export interface UserSshKeyArgs {
      */
     title: pulumi.Input<string>;
     /**
-     * The ID of the user to add the ssh key to.
+     * The ID or username of the user.
      */
     userId: pulumi.Input<number>;
 }

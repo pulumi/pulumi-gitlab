@@ -187,14 +187,14 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
         return this.branchProtectionId;
     }
     /**
-     * Can be set to true to require code owner approval before merging.
+     * Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
      * 
      */
     @Export(name="codeOwnerApprovalRequired", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> codeOwnerApprovalRequired;
 
     /**
-     * @return Can be set to true to require code owner approval before merging.
+     * @return Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
      * 
      */
     public Output<Optional<Boolean>> codeOwnerApprovalRequired() {

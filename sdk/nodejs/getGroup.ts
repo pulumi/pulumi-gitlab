@@ -57,6 +57,10 @@ export interface GetGroupResult {
      */
     readonly description: string;
     /**
+     * Can be set by administrators only. Additional CI/CD minutes for this group.
+     */
+    readonly extraSharedRunnersMinutesLimit: number;
+    /**
      * The full name of the group.
      */
     readonly fullName: string;
@@ -76,6 +80,10 @@ export interface GetGroupResult {
      * Boolean, is LFS enabled for projects in this group.
      */
     readonly lfsEnabled: boolean;
+    /**
+     * Users cannot be added to projects in this group.
+     */
+    readonly membershipLock: boolean;
     /**
      * The name of this group.
      */
@@ -100,6 +108,10 @@ export interface GetGroupResult {
      * The group level registration token to use during runner setup.
      */
     readonly runnersToken: string;
+    /**
+     * Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+     */
+    readonly sharedRunnersMinutesLimit: number;
     /**
      * Visibility level of the group. Possible values are `private`, `internal`, `public`.
      */

@@ -129,7 +129,7 @@ class ProjectArgs:
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_commit_template: Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
-        :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
+        :param pulumi.Input[str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         :param pulumi.Input[bool] merge_pipelines_enabled: Enable or disable merge pipelines.
         :param pulumi.Input[str] merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
@@ -147,7 +147,7 @@ class ProjectArgs:
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[str] pages_access_level: Enable pages access control
         :param pulumi.Input[str] path: The path of the repository.
-        :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
+        :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input['ProjectPushRulesArgs'] push_rules: Push rules for the project.
@@ -280,6 +280,9 @@ class ProjectArgs:
             pulumi.set(__self__, "pages_access_level", pages_access_level)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if pipelines_enabled is not None:
+            warnings.warn("""Deprecated in favor of `builds_access_level`""", DeprecationWarning)
+            pulumi.log.warn("""pipelines_enabled is deprecated: Deprecated in favor of `builds_access_level`""")
         if pipelines_enabled is not None:
             pulumi.set(__self__, "pipelines_enabled", pipelines_enabled)
         if printing_merge_request_link_enabled is not None:
@@ -724,7 +727,7 @@ class ProjectArgs:
     @pulumi.getter(name="mergeMethod")
     def merge_method(self) -> Optional[pulumi.Input[str]]:
         """
-        Set to `ff` to create fast-forward merges
+        Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         """
         return pulumi.get(self, "merge_method")
 
@@ -940,7 +943,7 @@ class ProjectArgs:
     @pulumi.getter(name="pipelinesEnabled")
     def pipelines_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable pipelines for the project.
+        Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         """
         return pulumi.get(self, "pipelines_enabled")
 
@@ -1374,7 +1377,7 @@ class _ProjectState:
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_commit_template: Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
-        :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
+        :param pulumi.Input[str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         :param pulumi.Input[bool] merge_pipelines_enabled: Enable or disable merge pipelines.
         :param pulumi.Input[str] merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
@@ -1393,7 +1396,7 @@ class _ProjectState:
         :param pulumi.Input[str] pages_access_level: Enable pages access control
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[str] path_with_namespace: The path of the repository with namespace.
-        :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
+        :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input['ProjectPushRulesArgs'] push_rules: Push rules for the project.
@@ -1533,6 +1536,9 @@ class _ProjectState:
             pulumi.set(__self__, "path", path)
         if path_with_namespace is not None:
             pulumi.set(__self__, "path_with_namespace", path_with_namespace)
+        if pipelines_enabled is not None:
+            warnings.warn("""Deprecated in favor of `builds_access_level`""", DeprecationWarning)
+            pulumi.log.warn("""pipelines_enabled is deprecated: Deprecated in favor of `builds_access_level`""")
         if pipelines_enabled is not None:
             pulumi.set(__self__, "pipelines_enabled", pipelines_enabled)
         if printing_merge_request_link_enabled is not None:
@@ -1995,7 +2001,7 @@ class _ProjectState:
     @pulumi.getter(name="mergeMethod")
     def merge_method(self) -> Optional[pulumi.Input[str]]:
         """
-        Set to `ff` to create fast-forward merges
+        Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         """
         return pulumi.get(self, "merge_method")
 
@@ -2223,7 +2229,7 @@ class _ProjectState:
     @pulumi.getter(name="pipelinesEnabled")
     def pipelines_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable pipelines for the project.
+        Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         """
         return pulumi.get(self, "pipelines_enabled")
 
@@ -2725,7 +2731,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_commit_template: Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
-        :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
+        :param pulumi.Input[str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         :param pulumi.Input[bool] merge_pipelines_enabled: Enable or disable merge pipelines.
         :param pulumi.Input[str] merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
@@ -2743,7 +2749,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[str] pages_access_level: Enable pages access control
         :param pulumi.Input[str] path: The path of the repository.
-        :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
+        :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']] push_rules: Push rules for the project.
@@ -2967,6 +2973,9 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["packages_enabled"] = packages_enabled
             __props__.__dict__["pages_access_level"] = pages_access_level
             __props__.__dict__["path"] = path
+            if pipelines_enabled is not None and not opts.urn:
+                warnings.warn("""Deprecated in favor of `builds_access_level`""", DeprecationWarning)
+                pulumi.log.warn("""pipelines_enabled is deprecated: Deprecated in favor of `builds_access_level`""")
             __props__.__dict__["pipelines_enabled"] = pipelines_enabled
             __props__.__dict__["printing_merge_request_link_enabled"] = printing_merge_request_link_enabled
             __props__.__dict__["public_builds"] = public_builds
@@ -3134,7 +3143,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_commit_template: Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
-        :param pulumi.Input[str] merge_method: Set to `ff` to create fast-forward merges
+        :param pulumi.Input[str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         :param pulumi.Input[bool] merge_pipelines_enabled: Enable or disable merge pipelines.
         :param pulumi.Input[str] merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] merge_requests_enabled: Enable merge requests for the project.
@@ -3153,7 +3162,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] pages_access_level: Enable pages access control
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[str] path_with_namespace: The path of the repository with namespace.
-        :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project.
+        :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']] push_rules: Push rules for the project.
@@ -3544,7 +3553,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="mergeMethod")
     def merge_method(self) -> pulumi.Output[Optional[str]]:
         """
-        Set to `ff` to create fast-forward merges
+        Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         """
         return pulumi.get(self, "merge_method")
 
@@ -3670,7 +3679,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pagesAccessLevel")
-    def pages_access_level(self) -> pulumi.Output[Optional[str]]:
+    def pages_access_level(self) -> pulumi.Output[str]:
         """
         Enable pages access control
         """
@@ -3694,9 +3703,9 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pipelinesEnabled")
-    def pipelines_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def pipelines_enabled(self) -> pulumi.Output[bool]:
         """
-        Enable pipelines for the project.
+        Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         """
         return pulumi.get(self, "pipelines_enabled")
 
@@ -3710,7 +3719,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="publicBuilds")
-    def public_builds(self) -> pulumi.Output[Optional[bool]]:
+    def public_builds(self) -> pulumi.Output[bool]:
         """
         If true, jobs can be viewed by non-project members.
         """

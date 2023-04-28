@@ -82,7 +82,7 @@ namespace Pulumi.GitLab
         public Output<string> Title { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the user to add the ssh key to.
+        /// The ID or username of the user.
         /// </summary>
         [Output("userId")]
         public Output<int> UserId { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.GitLab
         public Input<string> Title { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the user to add the ssh key to.
+        /// The ID or username of the user.
         /// </summary>
         [Input("userId", required: true)]
         public Input<int> UserId { get; set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.GitLab
         public Input<string>? Title { get; set; }
 
         /// <summary>
-        /// The ID of the user to add the ssh key to.
+        /// The ID or username of the user.
         /// </summary>
         [Input("userId")]
         public Input<int>? UserId { get; set; }

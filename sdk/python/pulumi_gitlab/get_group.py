@@ -21,13 +21,16 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, default_branch_protection=None, description=None, full_name=None, full_path=None, group_id=None, id=None, lfs_enabled=None, name=None, parent_id=None, path=None, prevent_forking_outside_group=None, request_access_enabled=None, runners_token=None, visibility_level=None, web_url=None):
+    def __init__(__self__, default_branch_protection=None, description=None, extra_shared_runners_minutes_limit=None, full_name=None, full_path=None, group_id=None, id=None, lfs_enabled=None, membership_lock=None, name=None, parent_id=None, path=None, prevent_forking_outside_group=None, request_access_enabled=None, runners_token=None, shared_runners_minutes_limit=None, visibility_level=None, web_url=None):
         if default_branch_protection and not isinstance(default_branch_protection, int):
             raise TypeError("Expected argument 'default_branch_protection' to be a int")
         pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if extra_shared_runners_minutes_limit and not isinstance(extra_shared_runners_minutes_limit, int):
+            raise TypeError("Expected argument 'extra_shared_runners_minutes_limit' to be a int")
+        pulumi.set(__self__, "extra_shared_runners_minutes_limit", extra_shared_runners_minutes_limit)
         if full_name and not isinstance(full_name, str):
             raise TypeError("Expected argument 'full_name' to be a str")
         pulumi.set(__self__, "full_name", full_name)
@@ -43,6 +46,9 @@ class GetGroupResult:
         if lfs_enabled and not isinstance(lfs_enabled, bool):
             raise TypeError("Expected argument 'lfs_enabled' to be a bool")
         pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        if membership_lock and not isinstance(membership_lock, bool):
+            raise TypeError("Expected argument 'membership_lock' to be a bool")
+        pulumi.set(__self__, "membership_lock", membership_lock)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -61,6 +67,9 @@ class GetGroupResult:
         if runners_token and not isinstance(runners_token, str):
             raise TypeError("Expected argument 'runners_token' to be a str")
         pulumi.set(__self__, "runners_token", runners_token)
+        if shared_runners_minutes_limit and not isinstance(shared_runners_minutes_limit, int):
+            raise TypeError("Expected argument 'shared_runners_minutes_limit' to be a int")
+        pulumi.set(__self__, "shared_runners_minutes_limit", shared_runners_minutes_limit)
         if visibility_level and not isinstance(visibility_level, str):
             raise TypeError("Expected argument 'visibility_level' to be a str")
         pulumi.set(__self__, "visibility_level", visibility_level)
@@ -83,6 +92,14 @@ class GetGroupResult:
         The description of the group.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="extraSharedRunnersMinutesLimit")
+    def extra_shared_runners_minutes_limit(self) -> int:
+        """
+        Can be set by administrators only. Additional CI/CD minutes for this group.
+        """
+        return pulumi.get(self, "extra_shared_runners_minutes_limit")
 
     @property
     @pulumi.getter(name="fullName")
@@ -123,6 +140,14 @@ class GetGroupResult:
         Boolean, is LFS enabled for projects in this group.
         """
         return pulumi.get(self, "lfs_enabled")
+
+    @property
+    @pulumi.getter(name="membershipLock")
+    def membership_lock(self) -> bool:
+        """
+        Users cannot be added to projects in this group.
+        """
+        return pulumi.get(self, "membership_lock")
 
     @property
     @pulumi.getter
@@ -173,6 +198,14 @@ class GetGroupResult:
         return pulumi.get(self, "runners_token")
 
     @property
+    @pulumi.getter(name="sharedRunnersMinutesLimit")
+    def shared_runners_minutes_limit(self) -> int:
+        """
+        Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+        """
+        return pulumi.get(self, "shared_runners_minutes_limit")
+
+    @property
     @pulumi.getter(name="visibilityLevel")
     def visibility_level(self) -> str:
         """
@@ -197,17 +230,20 @@ class AwaitableGetGroupResult(GetGroupResult):
         return GetGroupResult(
             default_branch_protection=self.default_branch_protection,
             description=self.description,
+            extra_shared_runners_minutes_limit=self.extra_shared_runners_minutes_limit,
             full_name=self.full_name,
             full_path=self.full_path,
             group_id=self.group_id,
             id=self.id,
             lfs_enabled=self.lfs_enabled,
+            membership_lock=self.membership_lock,
             name=self.name,
             parent_id=self.parent_id,
             path=self.path,
             prevent_forking_outside_group=self.prevent_forking_outside_group,
             request_access_enabled=self.request_access_enabled,
             runners_token=self.runners_token,
+            shared_runners_minutes_limit=self.shared_runners_minutes_limit,
             visibility_level=self.visibility_level,
             web_url=self.web_url)
 
@@ -242,17 +278,20 @@ def get_group(full_path: Optional[str] = None,
     return AwaitableGetGroupResult(
         default_branch_protection=__ret__.default_branch_protection,
         description=__ret__.description,
+        extra_shared_runners_minutes_limit=__ret__.extra_shared_runners_minutes_limit,
         full_name=__ret__.full_name,
         full_path=__ret__.full_path,
         group_id=__ret__.group_id,
         id=__ret__.id,
         lfs_enabled=__ret__.lfs_enabled,
+        membership_lock=__ret__.membership_lock,
         name=__ret__.name,
         parent_id=__ret__.parent_id,
         path=__ret__.path,
         prevent_forking_outside_group=__ret__.prevent_forking_outside_group,
         request_access_enabled=__ret__.request_access_enabled,
         runners_token=__ret__.runners_token,
+        shared_runners_minutes_limit=__ret__.shared_runners_minutes_limit,
         visibility_level=__ret__.visibility_level,
         web_url=__ret__.web_url)
 

@@ -150,6 +150,40 @@ export interface GetGroupMembershipMember {
     webUrl: string;
 }
 
+export interface GetGroupSubgroupsSubgroup {
+    autoDevopsEnabled: boolean;
+    avatarUrl: string;
+    createdAt: string;
+    defaultBranchProtection: number;
+    description: string;
+    emailsDisabled: boolean;
+    fileTemplateProjectId: number;
+    fullName: string;
+    fullPath: string;
+    /**
+     * The ID of the group.
+     */
+    groupId: number;
+    ipRestrictionRanges: string;
+    lfsEnabled: boolean;
+    mentionsDisabled: boolean;
+    name: string;
+    parentId: number;
+    path: string;
+    projectCreationLevel: string;
+    requestAccessEnabled: boolean;
+    requireTwoFactorAuthentication: boolean;
+    shareWithGroupLock: boolean;
+    /**
+     * Include group statistics (administrators only).
+     */
+    statistics: {[key: string]: string};
+    subgroupCreationLevel: string;
+    twoFactorGracePeriod: number;
+    visibility: string;
+    webUrl: string;
+}
+
 export interface GetGroupVariablesVariable {
     /**
      * The environment scope of the variable. Defaults to all environment (`*`).
@@ -164,6 +198,23 @@ export interface GetGroupVariablesVariable {
     protected: boolean;
     value: string;
     variableType: string;
+}
+
+export interface GetGroupsGroup {
+    defaultBranchProtection: number;
+    description: string;
+    fullName: string;
+    fullPath: string;
+    groupId: number;
+    lfsEnabled: boolean;
+    name: string;
+    parentId: number;
+    path: string;
+    preventForkingOutsideGroup: boolean;
+    requestAccessEnabled: boolean;
+    runnersToken: string;
+    visibilityLevel: string;
+    webUrl: string;
 }
 
 export interface GetInstanceDeployKeysDeployKey {
@@ -197,6 +248,35 @@ export interface GetInstanceVariablesVariable {
     protected: boolean;
     value: string;
     variableType: string;
+}
+
+export interface GetProjectBranchesBranch {
+    canPush: boolean;
+    commits: outputs.GetProjectBranchesBranchCommit[];
+    default: boolean;
+    developersCanMerge: boolean;
+    developersCanPush: boolean;
+    merged: boolean;
+    name: string;
+    protected: boolean;
+    webUrl: string;
+}
+
+export interface GetProjectBranchesBranchCommit {
+    authorEmail: string;
+    authorName: string;
+    authoredDate: string;
+    committedDate: string;
+    committerEmail: string;
+    committerName: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    message: string;
+    parentIds: string[];
+    shortId: string;
+    title: string;
 }
 
 export interface GetProjectContainerExpirationPolicy {
@@ -664,6 +744,18 @@ export interface GetRepositoryTreeTree {
      */
     path: string;
     type: string;
+}
+
+export interface GetUserSshkeysKey {
+    createdAt: string;
+    expiresAt: string;
+    key: string;
+    keyId: number;
+    title: string;
+    /**
+     * ID of the user to get the SSH keys for.
+     */
+    userId: number;
 }
 
 export interface GetUsersUser {

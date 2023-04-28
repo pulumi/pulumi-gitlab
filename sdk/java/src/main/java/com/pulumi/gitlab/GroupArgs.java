@@ -78,6 +78,21 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Can be set by administrators only. Additional CI/CD minutes for this group.
+     * 
+     */
+    @Import(name="extraSharedRunnersMinutesLimit")
+    private @Nullable Output<Integer> extraSharedRunnersMinutesLimit;
+
+    /**
+     * @return Can be set by administrators only. Additional CI/CD minutes for this group.
+     * 
+     */
+    public Optional<Output<Integer>> extraSharedRunnersMinutesLimit() {
+        return Optional.ofNullable(this.extraSharedRunnersMinutesLimit);
+    }
+
+    /**
      * Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
      * 
      */
@@ -90,6 +105,21 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> lfsEnabled() {
         return Optional.ofNullable(this.lfsEnabled);
+    }
+
+    /**
+     * Users cannot be added to projects in this group.
+     * 
+     */
+    @Import(name="membershipLock")
+    private @Nullable Output<Boolean> membershipLock;
+
+    /**
+     * @return Users cannot be added to projects in this group.
+     * 
+     */
+    public Optional<Output<Boolean>> membershipLock() {
+        return Optional.ofNullable(this.membershipLock);
     }
 
     /**
@@ -228,6 +258,21 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+     * 
+     */
+    @Import(name="sharedRunnersMinutesLimit")
+    private @Nullable Output<Integer> sharedRunnersMinutesLimit;
+
+    /**
+     * @return Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+     * 
+     */
+    public Optional<Output<Integer>> sharedRunnersMinutesLimit() {
+        return Optional.ofNullable(this.sharedRunnersMinutesLimit);
+    }
+
+    /**
      * Defaults to owner. Allowed to create subgroups.
      * 
      */
@@ -279,7 +324,9 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         this.defaultBranchProtection = $.defaultBranchProtection;
         this.description = $.description;
         this.emailsDisabled = $.emailsDisabled;
+        this.extraSharedRunnersMinutesLimit = $.extraSharedRunnersMinutesLimit;
         this.lfsEnabled = $.lfsEnabled;
+        this.membershipLock = $.membershipLock;
         this.mentionsDisabled = $.mentionsDisabled;
         this.name = $.name;
         this.parentId = $.parentId;
@@ -289,6 +336,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         this.requestAccessEnabled = $.requestAccessEnabled;
         this.requireTwoFactorAuthentication = $.requireTwoFactorAuthentication;
         this.shareWithGroupLock = $.shareWithGroupLock;
+        this.sharedRunnersMinutesLimit = $.sharedRunnersMinutesLimit;
         this.subgroupCreationLevel = $.subgroupCreationLevel;
         this.twoFactorGracePeriod = $.twoFactorGracePeriod;
         this.visibilityLevel = $.visibilityLevel;
@@ -397,6 +445,27 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param extraSharedRunnersMinutesLimit Can be set by administrators only. Additional CI/CD minutes for this group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extraSharedRunnersMinutesLimit(@Nullable Output<Integer> extraSharedRunnersMinutesLimit) {
+            $.extraSharedRunnersMinutesLimit = extraSharedRunnersMinutesLimit;
+            return this;
+        }
+
+        /**
+         * @param extraSharedRunnersMinutesLimit Can be set by administrators only. Additional CI/CD minutes for this group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extraSharedRunnersMinutesLimit(Integer extraSharedRunnersMinutesLimit) {
+            return extraSharedRunnersMinutesLimit(Output.of(extraSharedRunnersMinutesLimit));
+        }
+
+        /**
          * @param lfsEnabled Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
          * 
          * @return builder
@@ -415,6 +484,27 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder lfsEnabled(Boolean lfsEnabled) {
             return lfsEnabled(Output.of(lfsEnabled));
+        }
+
+        /**
+         * @param membershipLock Users cannot be added to projects in this group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder membershipLock(@Nullable Output<Boolean> membershipLock) {
+            $.membershipLock = membershipLock;
+            return this;
+        }
+
+        /**
+         * @param membershipLock Users cannot be added to projects in this group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder membershipLock(Boolean membershipLock) {
+            return membershipLock(Output.of(membershipLock));
         }
 
         /**
@@ -604,6 +694,27 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder shareWithGroupLock(Boolean shareWithGroupLock) {
             return shareWithGroupLock(Output.of(shareWithGroupLock));
+        }
+
+        /**
+         * @param sharedRunnersMinutesLimit Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sharedRunnersMinutesLimit(@Nullable Output<Integer> sharedRunnersMinutesLimit) {
+            $.sharedRunnersMinutesLimit = sharedRunnersMinutesLimit;
+            return this;
+        }
+
+        /**
+         * @param sharedRunnersMinutesLimit Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sharedRunnersMinutesLimit(Integer sharedRunnersMinutesLimit) {
+            return sharedRunnersMinutesLimit(Output.of(sharedRunnersMinutesLimit));
         }
 
         /**

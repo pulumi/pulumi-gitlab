@@ -269,7 +269,7 @@ namespace Pulumi.GitLab
         public Output<string?> MergeCommitTemplate { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `ff` to create fast-forward merges
+        /// Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         /// </summary>
         [Output("mergeMethod")]
         public Output<string?> MergeMethod { get; private set; } = null!;
@@ -368,7 +368,7 @@ namespace Pulumi.GitLab
         /// Enable pages access control
         /// </summary>
         [Output("pagesAccessLevel")]
-        public Output<string?> PagesAccessLevel { get; private set; } = null!;
+        public Output<string> PagesAccessLevel { get; private set; } = null!;
 
         /// <summary>
         /// The path of the repository.
@@ -383,10 +383,10 @@ namespace Pulumi.GitLab
         public Output<string> PathWithNamespace { get; private set; } = null!;
 
         /// <summary>
-        /// Enable pipelines for the project.
+        /// Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         /// </summary>
         [Output("pipelinesEnabled")]
-        public Output<bool?> PipelinesEnabled { get; private set; } = null!;
+        public Output<bool> PipelinesEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Show link to create/view merge request when pushing from the command line
@@ -398,7 +398,7 @@ namespace Pulumi.GitLab
         /// If true, jobs can be viewed by non-project members.
         /// </summary>
         [Output("publicBuilds")]
-        public Output<bool?> PublicBuilds { get; private set; } = null!;
+        public Output<bool> PublicBuilds { get; private set; } = null!;
 
         /// <summary>
         /// Push rules for the project.
@@ -805,7 +805,7 @@ namespace Pulumi.GitLab
         public Input<string>? MergeCommitTemplate { get; set; }
 
         /// <summary>
-        /// Set to `ff` to create fast-forward merges
+        /// Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         /// </summary>
         [Input("mergeMethod")]
         public Input<string>? MergeMethod { get; set; }
@@ -913,7 +913,7 @@ namespace Pulumi.GitLab
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Enable pipelines for the project.
+        /// Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         /// </summary>
         [Input("pipelinesEnabled")]
         public Input<bool>? PipelinesEnabled { get; set; }
@@ -1293,7 +1293,7 @@ namespace Pulumi.GitLab
         public Input<string>? MergeCommitTemplate { get; set; }
 
         /// <summary>
-        /// Set to `ff` to create fast-forward merges
+        /// Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         /// </summary>
         [Input("mergeMethod")]
         public Input<string>? MergeMethod { get; set; }
@@ -1407,7 +1407,7 @@ namespace Pulumi.GitLab
         public Input<string>? PathWithNamespace { get; set; }
 
         /// <summary>
-        /// Enable pipelines for the project.
+        /// Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         /// </summary>
         [Input("pipelinesEnabled")]
         public Input<bool>? PipelinesEnabled { get; set; }

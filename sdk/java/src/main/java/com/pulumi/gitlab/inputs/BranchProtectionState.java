@@ -112,14 +112,14 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Can be set to true to require code owner approval before merging.
+     * Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
      * 
      */
     @Import(name="codeOwnerApprovalRequired")
     private @Nullable Output<Boolean> codeOwnerApprovalRequired;
 
     /**
-     * @return Can be set to true to require code owner approval before merging.
+     * @return Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
      * 
      */
     public Optional<Output<Boolean>> codeOwnerApprovalRequired() {
@@ -377,7 +377,7 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param codeOwnerApprovalRequired Can be set to true to require code owner approval before merging.
+         * @param codeOwnerApprovalRequired Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param codeOwnerApprovalRequired Can be set to true to require code owner approval before merging.
+         * @param codeOwnerApprovalRequired Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
          * 
          * @return builder
          * 

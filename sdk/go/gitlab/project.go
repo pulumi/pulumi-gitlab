@@ -150,7 +150,7 @@ type Project struct {
 	LfsEnabled pulumi.BoolPtrOutput `pulumi:"lfsEnabled"`
 	// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
 	MergeCommitTemplate pulumi.StringPtrOutput `pulumi:"mergeCommitTemplate"`
-	// Set to `ff` to create fast-forward merges
+	// Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
 	MergeMethod pulumi.StringPtrOutput `pulumi:"mergeMethod"`
 	// Enable or disable merge pipelines.
 	MergePipelinesEnabled pulumi.BoolPtrOutput `pulumi:"mergePipelinesEnabled"`
@@ -183,17 +183,19 @@ type Project struct {
 	// Enable packages repository for the project.
 	PackagesEnabled pulumi.BoolPtrOutput `pulumi:"packagesEnabled"`
 	// Enable pages access control
-	PagesAccessLevel pulumi.StringPtrOutput `pulumi:"pagesAccessLevel"`
+	PagesAccessLevel pulumi.StringOutput `pulumi:"pagesAccessLevel"`
 	// The path of the repository.
 	Path pulumi.StringPtrOutput `pulumi:"path"`
 	// The path of the repository with namespace.
 	PathWithNamespace pulumi.StringOutput `pulumi:"pathWithNamespace"`
-	// Enable pipelines for the project.
-	PipelinesEnabled pulumi.BoolPtrOutput `pulumi:"pipelinesEnabled"`
+	// Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
+	//
+	// Deprecated: Deprecated in favor of `builds_access_level`
+	PipelinesEnabled pulumi.BoolOutput `pulumi:"pipelinesEnabled"`
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled pulumi.BoolPtrOutput `pulumi:"printingMergeRequestLinkEnabled"`
 	// If true, jobs can be viewed by non-project members.
-	PublicBuilds pulumi.BoolPtrOutput `pulumi:"publicBuilds"`
+	PublicBuilds pulumi.BoolOutput `pulumi:"publicBuilds"`
 	// Push rules for the project.
 	PushRules ProjectPushRulesOutput `pulumi:"pushRules"`
 	// Enable `Delete source branch` option by default for all new merge requests.
@@ -355,7 +357,7 @@ type projectState struct {
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
 	// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
 	MergeCommitTemplate *string `pulumi:"mergeCommitTemplate"`
-	// Set to `ff` to create fast-forward merges
+	// Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
 	MergeMethod *string `pulumi:"mergeMethod"`
 	// Enable or disable merge pipelines.
 	MergePipelinesEnabled *bool `pulumi:"mergePipelinesEnabled"`
@@ -393,7 +395,9 @@ type projectState struct {
 	Path *string `pulumi:"path"`
 	// The path of the repository with namespace.
 	PathWithNamespace *string `pulumi:"pathWithNamespace"`
-	// Enable pipelines for the project.
+	// Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
+	//
+	// Deprecated: Deprecated in favor of `builds_access_level`
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled *bool `pulumi:"printingMergeRequestLinkEnabled"`
@@ -528,7 +532,7 @@ type ProjectState struct {
 	LfsEnabled pulumi.BoolPtrInput
 	// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
 	MergeCommitTemplate pulumi.StringPtrInput
-	// Set to `ff` to create fast-forward merges
+	// Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
 	MergeMethod pulumi.StringPtrInput
 	// Enable or disable merge pipelines.
 	MergePipelinesEnabled pulumi.BoolPtrInput
@@ -566,7 +570,9 @@ type ProjectState struct {
 	Path pulumi.StringPtrInput
 	// The path of the repository with namespace.
 	PathWithNamespace pulumi.StringPtrInput
-	// Enable pipelines for the project.
+	// Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
+	//
+	// Deprecated: Deprecated in favor of `builds_access_level`
 	PipelinesEnabled pulumi.BoolPtrInput
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled pulumi.BoolPtrInput
@@ -703,7 +709,7 @@ type projectArgs struct {
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
 	// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
 	MergeCommitTemplate *string `pulumi:"mergeCommitTemplate"`
-	// Set to `ff` to create fast-forward merges
+	// Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
 	MergeMethod *string `pulumi:"mergeMethod"`
 	// Enable or disable merge pipelines.
 	MergePipelinesEnabled *bool `pulumi:"mergePipelinesEnabled"`
@@ -739,7 +745,9 @@ type projectArgs struct {
 	PagesAccessLevel *string `pulumi:"pagesAccessLevel"`
 	// The path of the repository.
 	Path *string `pulumi:"path"`
-	// Enable pipelines for the project.
+	// Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
+	//
+	// Deprecated: Deprecated in favor of `builds_access_level`
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled *bool `pulumi:"printingMergeRequestLinkEnabled"`
@@ -867,7 +875,7 @@ type ProjectArgs struct {
 	LfsEnabled pulumi.BoolPtrInput
 	// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
 	MergeCommitTemplate pulumi.StringPtrInput
-	// Set to `ff` to create fast-forward merges
+	// Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
 	MergeMethod pulumi.StringPtrInput
 	// Enable or disable merge pipelines.
 	MergePipelinesEnabled pulumi.BoolPtrInput
@@ -903,7 +911,9 @@ type ProjectArgs struct {
 	PagesAccessLevel pulumi.StringPtrInput
 	// The path of the repository.
 	Path pulumi.StringPtrInput
-	// Enable pipelines for the project.
+	// Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
+	//
+	// Deprecated: Deprecated in favor of `builds_access_level`
 	PipelinesEnabled pulumi.BoolPtrInput
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled pulumi.BoolPtrInput
@@ -1217,7 +1227,7 @@ func (o ProjectOutput) MergeCommitTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.MergeCommitTemplate }).(pulumi.StringPtrOutput)
 }
 
-// Set to `ff` to create fast-forward merges
+// Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
 func (o ProjectOutput) MergeMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.MergeMethod }).(pulumi.StringPtrOutput)
 }
@@ -1298,8 +1308,8 @@ func (o ProjectOutput) PackagesEnabled() pulumi.BoolPtrOutput {
 }
 
 // Enable pages access control
-func (o ProjectOutput) PagesAccessLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.PagesAccessLevel }).(pulumi.StringPtrOutput)
+func (o ProjectOutput) PagesAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.PagesAccessLevel }).(pulumi.StringOutput)
 }
 
 // The path of the repository.
@@ -1312,9 +1322,11 @@ func (o ProjectOutput) PathWithNamespace() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.PathWithNamespace }).(pulumi.StringOutput)
 }
 
-// Enable pipelines for the project.
-func (o ProjectOutput) PipelinesEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.PipelinesEnabled }).(pulumi.BoolPtrOutput)
+// Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
+//
+// Deprecated: Deprecated in favor of `builds_access_level`
+func (o ProjectOutput) PipelinesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.PipelinesEnabled }).(pulumi.BoolOutput)
 }
 
 // Show link to create/view merge request when pushing from the command line
@@ -1323,8 +1335,8 @@ func (o ProjectOutput) PrintingMergeRequestLinkEnabled() pulumi.BoolPtrOutput {
 }
 
 // If true, jobs can be viewed by non-project members.
-func (o ProjectOutput) PublicBuilds() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.PublicBuilds }).(pulumi.BoolPtrOutput)
+func (o ProjectOutput) PublicBuilds() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.PublicBuilds }).(pulumi.BoolOutput)
 }
 
 // Push rules for the project.

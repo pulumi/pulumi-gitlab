@@ -72,7 +72,7 @@ type UserSshKey struct {
 	KeyId pulumi.IntOutput `pulumi:"keyId"`
 	// The title of the ssh key.
 	Title pulumi.StringOutput `pulumi:"title"`
-	// The ID of the user to add the ssh key to.
+	// The ID or username of the user.
 	UserId pulumi.IntOutput `pulumi:"userId"`
 }
 
@@ -124,7 +124,7 @@ type userSshKeyState struct {
 	KeyId *int `pulumi:"keyId"`
 	// The title of the ssh key.
 	Title *string `pulumi:"title"`
-	// The ID of the user to add the ssh key to.
+	// The ID or username of the user.
 	UserId *int `pulumi:"userId"`
 }
 
@@ -139,7 +139,7 @@ type UserSshKeyState struct {
 	KeyId pulumi.IntPtrInput
 	// The title of the ssh key.
 	Title pulumi.StringPtrInput
-	// The ID of the user to add the ssh key to.
+	// The ID or username of the user.
 	UserId pulumi.IntPtrInput
 }
 
@@ -154,7 +154,7 @@ type userSshKeyArgs struct {
 	Key string `pulumi:"key"`
 	// The title of the ssh key.
 	Title string `pulumi:"title"`
-	// The ID of the user to add the ssh key to.
+	// The ID or username of the user.
 	UserId int `pulumi:"userId"`
 }
 
@@ -166,7 +166,7 @@ type UserSshKeyArgs struct {
 	Key pulumi.StringInput
 	// The title of the ssh key.
 	Title pulumi.StringInput
-	// The ID of the user to add the ssh key to.
+	// The ID or username of the user.
 	UserId pulumi.IntInput
 }
 
@@ -282,7 +282,7 @@ func (o UserSshKeyOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserSshKey) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }
 
-// The ID of the user to add the ssh key to.
+// The ID or username of the user.
 func (o UserSshKeyOutput) UserId() pulumi.IntOutput {
 	return o.ApplyT(func(v *UserSshKey) pulumi.IntOutput { return v.UserId }).(pulumi.IntOutput)
 }

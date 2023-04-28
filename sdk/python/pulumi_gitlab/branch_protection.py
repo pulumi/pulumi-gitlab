@@ -34,7 +34,7 @@ class BranchProtectionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]] allowed_to_merges: Defines permissions for action.
         :param pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]] allowed_to_pushes: Defines permissions for action.
         :param pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToUnprotectArgs']]] allowed_to_unprotects: Defines permissions for action.
-        :param pulumi.Input[bool] code_owner_approval_required: Can be set to true to require code owner approval before merging.
+        :param pulumi.Input[bool] code_owner_approval_required: Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
         :param pulumi.Input[str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] unprotect_access_level: Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
@@ -134,7 +134,7 @@ class BranchProtectionArgs:
     @pulumi.getter(name="codeOwnerApprovalRequired")
     def code_owner_approval_required(self) -> Optional[pulumi.Input[bool]]:
         """
-        Can be set to true to require code owner approval before merging.
+        Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
         """
         return pulumi.get(self, "code_owner_approval_required")
 
@@ -201,7 +201,7 @@ class _BranchProtectionState:
         :param pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToUnprotectArgs']]] allowed_to_unprotects: Defines permissions for action.
         :param pulumi.Input[str] branch: Name of the branch.
         :param pulumi.Input[int] branch_protection_id: The ID of the branch protection (not the branch name).
-        :param pulumi.Input[bool] code_owner_approval_required: Can be set to true to require code owner approval before merging.
+        :param pulumi.Input[bool] code_owner_approval_required: Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
         :param pulumi.Input[str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
@@ -306,7 +306,7 @@ class _BranchProtectionState:
     @pulumi.getter(name="codeOwnerApprovalRequired")
     def code_owner_approval_required(self) -> Optional[pulumi.Input[bool]]:
         """
-        Can be set to true to require code owner approval before merging.
+        Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
         """
         return pulumi.get(self, "code_owner_approval_required")
 
@@ -395,7 +395,7 @@ class BranchProtection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToPushArgs']]]] allowed_to_pushes: Defines permissions for action.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToUnprotectArgs']]]] allowed_to_unprotects: Defines permissions for action.
         :param pulumi.Input[str] branch: Name of the branch.
-        :param pulumi.Input[bool] code_owner_approval_required: Can be set to true to require code owner approval before merging.
+        :param pulumi.Input[bool] code_owner_approval_required: Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
         :param pulumi.Input[str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
@@ -499,7 +499,7 @@ class BranchProtection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BranchProtectionAllowedToUnprotectArgs']]]] allowed_to_unprotects: Defines permissions for action.
         :param pulumi.Input[str] branch: Name of the branch.
         :param pulumi.Input[int] branch_protection_id: The ID of the branch protection (not the branch name).
-        :param pulumi.Input[bool] code_owner_approval_required: Can be set to true to require code owner approval before merging.
+        :param pulumi.Input[bool] code_owner_approval_required: Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
         :param pulumi.Input[str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
@@ -574,7 +574,7 @@ class BranchProtection(pulumi.CustomResource):
     @pulumi.getter(name="codeOwnerApprovalRequired")
     def code_owner_approval_required(self) -> pulumi.Output[Optional[bool]]:
         """
-        Can be set to true to require code owner approval before merging.
+        Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
         """
         return pulumi.get(self, "code_owner_approval_required")
 

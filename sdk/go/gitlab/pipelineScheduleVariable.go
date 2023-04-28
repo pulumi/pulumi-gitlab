@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.NewPipelineSchedule(ctx, "examplePipelineSchedule", &gitlab.PipelineScheduleArgs{
+//			examplePipelineSchedule, err := gitlab.NewPipelineSchedule(ctx, "examplePipelineSchedule", &gitlab.PipelineScheduleArgs{
 //				Project:     pulumi.String("12345"),
 //				Description: pulumi.String("Used to schedule builds"),
 //				Ref:         pulumi.String("master"),
@@ -39,8 +39,8 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewPipelineScheduleVariable(ctx, "examplePipelineScheduleVariable", &gitlab.PipelineScheduleVariableArgs{
-//				Project:            pulumi.Any(gitlab_pipeline_schedule.Project),
-//				PipelineScheduleId: pulumi.Any(gitlab_pipeline_schedule.Id),
+//				Project:            examplePipelineSchedule.Project,
+//				PipelineScheduleId: examplePipelineSchedule.ID(),
 //				Key:                pulumi.String("EXAMPLE_KEY"),
 //				Value:              pulumi.String("example"),
 //			})

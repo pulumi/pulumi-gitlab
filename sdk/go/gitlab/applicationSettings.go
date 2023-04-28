@@ -241,6 +241,8 @@ type ApplicationSettings struct {
 	GrafanaUrl pulumi.StringOutput `pulumi:"grafanaUrl"`
 	// Enable Gravatar.
 	GravatarEnabled pulumi.BoolOutput `pulumi:"gravatarEnabled"`
+	// Prevent overrides of default branch protection.
+	GroupOwnersCanManageDefaultBranchProtection pulumi.BoolOutput `pulumi:"groupOwnersCanManageDefaultBranchProtection"`
 	// Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
 	HashedStorageEnabled pulumi.BoolOutput `pulumi:"hashedStorageEnabled"`
 	// Hide marketing-related entries from help.
@@ -815,6 +817,8 @@ type applicationSettingsState struct {
 	GrafanaUrl *string `pulumi:"grafanaUrl"`
 	// Enable Gravatar.
 	GravatarEnabled *bool `pulumi:"gravatarEnabled"`
+	// Prevent overrides of default branch protection.
+	GroupOwnersCanManageDefaultBranchProtection *bool `pulumi:"groupOwnersCanManageDefaultBranchProtection"`
 	// Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
 	HashedStorageEnabled *bool `pulumi:"hashedStorageEnabled"`
 	// Hide marketing-related entries from help.
@@ -1298,6 +1302,8 @@ type ApplicationSettingsState struct {
 	GrafanaUrl pulumi.StringPtrInput
 	// Enable Gravatar.
 	GravatarEnabled pulumi.BoolPtrInput
+	// Prevent overrides of default branch protection.
+	GroupOwnersCanManageDefaultBranchProtection pulumi.BoolPtrInput
 	// Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
 	HashedStorageEnabled pulumi.BoolPtrInput
 	// Hide marketing-related entries from help.
@@ -1785,6 +1791,8 @@ type applicationSettingsArgs struct {
 	GrafanaUrl *string `pulumi:"grafanaUrl"`
 	// Enable Gravatar.
 	GravatarEnabled *bool `pulumi:"gravatarEnabled"`
+	// Prevent overrides of default branch protection.
+	GroupOwnersCanManageDefaultBranchProtection *bool `pulumi:"groupOwnersCanManageDefaultBranchProtection"`
 	// Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
 	HashedStorageEnabled *bool `pulumi:"hashedStorageEnabled"`
 	// Hide marketing-related entries from help.
@@ -2269,6 +2277,8 @@ type ApplicationSettingsArgs struct {
 	GrafanaUrl pulumi.StringPtrInput
 	// Enable Gravatar.
 	GravatarEnabled pulumi.BoolPtrInput
+	// Prevent overrides of default branch protection.
+	GroupOwnersCanManageDefaultBranchProtection pulumi.BoolPtrInput
 	// Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
 	HashedStorageEnabled pulumi.BoolPtrInput
 	// Hide marketing-related entries from help.
@@ -3143,6 +3153,11 @@ func (o ApplicationSettingsOutput) GrafanaUrl() pulumi.StringOutput {
 // Enable Gravatar.
 func (o ApplicationSettingsOutput) GravatarEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.GravatarEnabled }).(pulumi.BoolOutput)
+}
+
+// Prevent overrides of default branch protection.
+func (o ApplicationSettingsOutput) GroupOwnersCanManageDefaultBranchProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.GroupOwnersCanManageDefaultBranchProtection }).(pulumi.BoolOutput)
 }
 
 // Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).

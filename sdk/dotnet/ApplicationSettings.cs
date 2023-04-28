@@ -640,6 +640,12 @@ namespace Pulumi.GitLab
         public Output<bool> GravatarEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Prevent overrides of default branch protection.
+        /// </summary>
+        [Output("groupOwnersCanManageDefaultBranchProtection")]
+        public Output<bool> GroupOwnersCanManageDefaultBranchProtection { get; private set; } = null!;
+
+        /// <summary>
         /// Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
         /// </summary>
         [Output("hashedStorageEnabled")]
@@ -2280,6 +2286,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("gravatarEnabled")]
         public Input<bool>? GravatarEnabled { get; set; }
+
+        /// <summary>
+        /// Prevent overrides of default branch protection.
+        /// </summary>
+        [Input("groupOwnersCanManageDefaultBranchProtection")]
+        public Input<bool>? GroupOwnersCanManageDefaultBranchProtection { get; set; }
 
         /// <summary>
         /// Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
@@ -3956,6 +3968,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("gravatarEnabled")]
         public Input<bool>? GravatarEnabled { get; set; }
+
+        /// <summary>
+        /// Prevent overrides of default branch protection.
+        /// </summary>
+        [Input("groupOwnersCanManageDefaultBranchProtection")]
+        public Input<bool>? GroupOwnersCanManageDefaultBranchProtection { get; set; }
 
         /// <summary>
         /// Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).

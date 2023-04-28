@@ -62,6 +62,8 @@ type LookupGroupResult struct {
 	DefaultBranchProtection int `pulumi:"defaultBranchProtection"`
 	// The description of the group.
 	Description string `pulumi:"description"`
+	// Can be set by administrators only. Additional CI/CD minutes for this group.
+	ExtraSharedRunnersMinutesLimit int `pulumi:"extraSharedRunnersMinutesLimit"`
 	// The full name of the group.
 	FullName string `pulumi:"fullName"`
 	// The full path of the group.
@@ -72,6 +74,8 @@ type LookupGroupResult struct {
 	Id string `pulumi:"id"`
 	// Boolean, is LFS enabled for projects in this group.
 	LfsEnabled bool `pulumi:"lfsEnabled"`
+	// Users cannot be added to projects in this group.
+	MembershipLock bool `pulumi:"membershipLock"`
 	// The name of this group.
 	Name string `pulumi:"name"`
 	// Integer, ID of the parent group.
@@ -84,6 +88,8 @@ type LookupGroupResult struct {
 	RequestAccessEnabled bool `pulumi:"requestAccessEnabled"`
 	// The group level registration token to use during runner setup.
 	RunnersToken string `pulumi:"runnersToken"`
+	// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+	SharedRunnersMinutesLimit int `pulumi:"sharedRunnersMinutesLimit"`
 	// Visibility level of the group. Possible values are `private`, `internal`, `public`.
 	VisibilityLevel string `pulumi:"visibilityLevel"`
 	// Web URL of the group.
@@ -140,6 +146,11 @@ func (o LookupGroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Can be set by administrators only. Additional CI/CD minutes for this group.
+func (o LookupGroupResultOutput) ExtraSharedRunnersMinutesLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupGroupResult) int { return v.ExtraSharedRunnersMinutesLimit }).(pulumi.IntOutput)
+}
+
 // The full name of the group.
 func (o LookupGroupResultOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.FullName }).(pulumi.StringOutput)
@@ -163,6 +174,11 @@ func (o LookupGroupResultOutput) Id() pulumi.StringOutput {
 // Boolean, is LFS enabled for projects in this group.
 func (o LookupGroupResultOutput) LfsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupResult) bool { return v.LfsEnabled }).(pulumi.BoolOutput)
+}
+
+// Users cannot be added to projects in this group.
+func (o LookupGroupResultOutput) MembershipLock() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.MembershipLock }).(pulumi.BoolOutput)
 }
 
 // The name of this group.
@@ -193,6 +209,11 @@ func (o LookupGroupResultOutput) RequestAccessEnabled() pulumi.BoolOutput {
 // The group level registration token to use during runner setup.
 func (o LookupGroupResultOutput) RunnersToken() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.RunnersToken }).(pulumi.StringOutput)
+}
+
+// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+func (o LookupGroupResultOutput) SharedRunnersMinutesLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupGroupResult) int { return v.SharedRunnersMinutesLimit }).(pulumi.IntOutput)
 }
 
 // Visibility level of the group. Possible values are `private`, `internal`, `public`.

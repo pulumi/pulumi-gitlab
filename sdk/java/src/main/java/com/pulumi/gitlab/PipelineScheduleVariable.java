@@ -51,8 +51,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var examplePipelineScheduleVariable = new PipelineScheduleVariable(&#34;examplePipelineScheduleVariable&#34;, PipelineScheduleVariableArgs.builder()        
- *             .project(gitlab_pipeline_schedule.project())
- *             .pipelineScheduleId(gitlab_pipeline_schedule.id())
+ *             .project(examplePipelineSchedule.project())
+ *             .pipelineScheduleId(examplePipelineSchedule.id())
  *             .key(&#34;EXAMPLE_KEY&#34;)
  *             .value(&#34;example&#34;)
  *             .build());

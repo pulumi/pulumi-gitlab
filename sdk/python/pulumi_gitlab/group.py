@@ -19,7 +19,9 @@ class GroupArgs:
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_disabled: Optional[pulumi.Input[bool]] = None,
+                 extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
+                 membership_lock: Optional[pulumi.Input[bool]] = None,
                  mentions_disabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[int]] = None,
@@ -28,6 +30,7 @@ class GroupArgs:
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
                  share_with_group_lock: Optional[pulumi.Input[bool]] = None,
+                 shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
                  subgroup_creation_level: Optional[pulumi.Input[str]] = None,
                  two_factor_grace_period: Optional[pulumi.Input[int]] = None,
                  visibility_level: Optional[pulumi.Input[str]] = None):
@@ -38,7 +41,9 @@ class GroupArgs:
         :param pulumi.Input[int] default_branch_protection: Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
         :param pulumi.Input[str] description: The description of the group.
         :param pulumi.Input[bool] emails_disabled: Defaults to false. Disable email notifications.
+        :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[bool] lfs_enabled: Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[bool] mentions_disabled: Defaults to false. Disable the capability of a group from getting mentioned.
         :param pulumi.Input[str] name: The name of this group.
         :param pulumi.Input[int] parent_id: Id of the parent group (creates a nested group).
@@ -47,6 +52,7 @@ class GroupArgs:
         :param pulumi.Input[bool] request_access_enabled: Defaults to false. Allow users to request member access.
         :param pulumi.Input[bool] require_two_factor_authentication: Defaults to false. Require all users in this group to setup Two-factor authentication.
         :param pulumi.Input[bool] share_with_group_lock: Defaults to false. Prevent sharing a project with another group within this group.
+        :param pulumi.Input[int] shared_runners_minutes_limit: Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
         :param pulumi.Input[str] subgroup_creation_level: Defaults to owner. Allowed to create subgroups.
         :param pulumi.Input[int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
@@ -60,8 +66,12 @@ class GroupArgs:
             pulumi.set(__self__, "description", description)
         if emails_disabled is not None:
             pulumi.set(__self__, "emails_disabled", emails_disabled)
+        if extra_shared_runners_minutes_limit is not None:
+            pulumi.set(__self__, "extra_shared_runners_minutes_limit", extra_shared_runners_minutes_limit)
         if lfs_enabled is not None:
             pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        if membership_lock is not None:
+            pulumi.set(__self__, "membership_lock", membership_lock)
         if mentions_disabled is not None:
             pulumi.set(__self__, "mentions_disabled", mentions_disabled)
         if name is not None:
@@ -78,6 +88,8 @@ class GroupArgs:
             pulumi.set(__self__, "require_two_factor_authentication", require_two_factor_authentication)
         if share_with_group_lock is not None:
             pulumi.set(__self__, "share_with_group_lock", share_with_group_lock)
+        if shared_runners_minutes_limit is not None:
+            pulumi.set(__self__, "shared_runners_minutes_limit", shared_runners_minutes_limit)
         if subgroup_creation_level is not None:
             pulumi.set(__self__, "subgroup_creation_level", subgroup_creation_level)
         if two_factor_grace_period is not None:
@@ -146,6 +158,18 @@ class GroupArgs:
         pulumi.set(self, "emails_disabled", value)
 
     @property
+    @pulumi.getter(name="extraSharedRunnersMinutesLimit")
+    def extra_shared_runners_minutes_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Can be set by administrators only. Additional CI/CD minutes for this group.
+        """
+        return pulumi.get(self, "extra_shared_runners_minutes_limit")
+
+    @extra_shared_runners_minutes_limit.setter
+    def extra_shared_runners_minutes_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "extra_shared_runners_minutes_limit", value)
+
+    @property
     @pulumi.getter(name="lfsEnabled")
     def lfs_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -156,6 +180,18 @@ class GroupArgs:
     @lfs_enabled.setter
     def lfs_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "lfs_enabled", value)
+
+    @property
+    @pulumi.getter(name="membershipLock")
+    def membership_lock(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Users cannot be added to projects in this group.
+        """
+        return pulumi.get(self, "membership_lock")
+
+    @membership_lock.setter
+    def membership_lock(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "membership_lock", value)
 
     @property
     @pulumi.getter(name="mentionsDisabled")
@@ -254,6 +290,18 @@ class GroupArgs:
         pulumi.set(self, "share_with_group_lock", value)
 
     @property
+    @pulumi.getter(name="sharedRunnersMinutesLimit")
+    def shared_runners_minutes_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+        """
+        return pulumi.get(self, "shared_runners_minutes_limit")
+
+    @shared_runners_minutes_limit.setter
+    def shared_runners_minutes_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "shared_runners_minutes_limit", value)
+
+    @property
     @pulumi.getter(name="subgroupCreationLevel")
     def subgroup_creation_level(self) -> Optional[pulumi.Input[str]]:
         """
@@ -297,9 +345,11 @@ class _GroupState:
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_disabled: Optional[pulumi.Input[bool]] = None,
+                 extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
                  full_name: Optional[pulumi.Input[str]] = None,
                  full_path: Optional[pulumi.Input[str]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
+                 membership_lock: Optional[pulumi.Input[bool]] = None,
                  mentions_disabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[int]] = None,
@@ -310,6 +360,7 @@ class _GroupState:
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
                  runners_token: Optional[pulumi.Input[str]] = None,
                  share_with_group_lock: Optional[pulumi.Input[bool]] = None,
+                 shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
                  subgroup_creation_level: Optional[pulumi.Input[str]] = None,
                  two_factor_grace_period: Optional[pulumi.Input[int]] = None,
                  visibility_level: Optional[pulumi.Input[str]] = None,
@@ -320,9 +371,11 @@ class _GroupState:
         :param pulumi.Input[int] default_branch_protection: Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
         :param pulumi.Input[str] description: The description of the group.
         :param pulumi.Input[bool] emails_disabled: Defaults to false. Disable email notifications.
+        :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[str] full_name: The full name of the group.
         :param pulumi.Input[str] full_path: The full path of the group.
         :param pulumi.Input[bool] lfs_enabled: Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[bool] mentions_disabled: Defaults to false. Disable the capability of a group from getting mentioned.
         :param pulumi.Input[str] name: The name of this group.
         :param pulumi.Input[int] parent_id: Id of the parent group (creates a nested group).
@@ -333,6 +386,7 @@ class _GroupState:
         :param pulumi.Input[bool] require_two_factor_authentication: Defaults to false. Require all users in this group to setup Two-factor authentication.
         :param pulumi.Input[str] runners_token: The group level registration token to use during runner setup.
         :param pulumi.Input[bool] share_with_group_lock: Defaults to false. Prevent sharing a project with another group within this group.
+        :param pulumi.Input[int] shared_runners_minutes_limit: Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
         :param pulumi.Input[str] subgroup_creation_level: Defaults to owner. Allowed to create subgroups.
         :param pulumi.Input[int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
@@ -346,12 +400,16 @@ class _GroupState:
             pulumi.set(__self__, "description", description)
         if emails_disabled is not None:
             pulumi.set(__self__, "emails_disabled", emails_disabled)
+        if extra_shared_runners_minutes_limit is not None:
+            pulumi.set(__self__, "extra_shared_runners_minutes_limit", extra_shared_runners_minutes_limit)
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
         if full_path is not None:
             pulumi.set(__self__, "full_path", full_path)
         if lfs_enabled is not None:
             pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        if membership_lock is not None:
+            pulumi.set(__self__, "membership_lock", membership_lock)
         if mentions_disabled is not None:
             pulumi.set(__self__, "mentions_disabled", mentions_disabled)
         if name is not None:
@@ -372,6 +430,8 @@ class _GroupState:
             pulumi.set(__self__, "runners_token", runners_token)
         if share_with_group_lock is not None:
             pulumi.set(__self__, "share_with_group_lock", share_with_group_lock)
+        if shared_runners_minutes_limit is not None:
+            pulumi.set(__self__, "shared_runners_minutes_limit", shared_runners_minutes_limit)
         if subgroup_creation_level is not None:
             pulumi.set(__self__, "subgroup_creation_level", subgroup_creation_level)
         if two_factor_grace_period is not None:
@@ -430,6 +490,18 @@ class _GroupState:
         pulumi.set(self, "emails_disabled", value)
 
     @property
+    @pulumi.getter(name="extraSharedRunnersMinutesLimit")
+    def extra_shared_runners_minutes_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Can be set by administrators only. Additional CI/CD minutes for this group.
+        """
+        return pulumi.get(self, "extra_shared_runners_minutes_limit")
+
+    @extra_shared_runners_minutes_limit.setter
+    def extra_shared_runners_minutes_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "extra_shared_runners_minutes_limit", value)
+
+    @property
     @pulumi.getter(name="fullName")
     def full_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -464,6 +536,18 @@ class _GroupState:
     @lfs_enabled.setter
     def lfs_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "lfs_enabled", value)
+
+    @property
+    @pulumi.getter(name="membershipLock")
+    def membership_lock(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Users cannot be added to projects in this group.
+        """
+        return pulumi.get(self, "membership_lock")
+
+    @membership_lock.setter
+    def membership_lock(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "membership_lock", value)
 
     @property
     @pulumi.getter(name="mentionsDisabled")
@@ -586,6 +670,18 @@ class _GroupState:
         pulumi.set(self, "share_with_group_lock", value)
 
     @property
+    @pulumi.getter(name="sharedRunnersMinutesLimit")
+    def shared_runners_minutes_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+        """
+        return pulumi.get(self, "shared_runners_minutes_limit")
+
+    @shared_runners_minutes_limit.setter
+    def shared_runners_minutes_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "shared_runners_minutes_limit", value)
+
+    @property
     @pulumi.getter(name="subgroupCreationLevel")
     def subgroup_creation_level(self) -> Optional[pulumi.Input[str]]:
         """
@@ -643,7 +739,9 @@ class Group(pulumi.CustomResource):
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_disabled: Optional[pulumi.Input[bool]] = None,
+                 extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
+                 membership_lock: Optional[pulumi.Input[bool]] = None,
                  mentions_disabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[int]] = None,
@@ -653,6 +751,7 @@ class Group(pulumi.CustomResource):
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
                  share_with_group_lock: Optional[pulumi.Input[bool]] = None,
+                 shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
                  subgroup_creation_level: Optional[pulumi.Input[str]] = None,
                  two_factor_grace_period: Optional[pulumi.Input[int]] = None,
                  visibility_level: Optional[pulumi.Input[str]] = None,
@@ -697,7 +796,9 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[int] default_branch_protection: Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
         :param pulumi.Input[str] description: The description of the group.
         :param pulumi.Input[bool] emails_disabled: Defaults to false. Disable email notifications.
+        :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[bool] lfs_enabled: Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[bool] mentions_disabled: Defaults to false. Disable the capability of a group from getting mentioned.
         :param pulumi.Input[str] name: The name of this group.
         :param pulumi.Input[int] parent_id: Id of the parent group (creates a nested group).
@@ -707,6 +808,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[bool] request_access_enabled: Defaults to false. Allow users to request member access.
         :param pulumi.Input[bool] require_two_factor_authentication: Defaults to false. Require all users in this group to setup Two-factor authentication.
         :param pulumi.Input[bool] share_with_group_lock: Defaults to false. Prevent sharing a project with another group within this group.
+        :param pulumi.Input[int] shared_runners_minutes_limit: Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
         :param pulumi.Input[str] subgroup_creation_level: Defaults to owner. Allowed to create subgroups.
         :param pulumi.Input[int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
@@ -770,7 +872,9 @@ class Group(pulumi.CustomResource):
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_disabled: Optional[pulumi.Input[bool]] = None,
+                 extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
+                 membership_lock: Optional[pulumi.Input[bool]] = None,
                  mentions_disabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[int]] = None,
@@ -780,6 +884,7 @@ class Group(pulumi.CustomResource):
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
                  share_with_group_lock: Optional[pulumi.Input[bool]] = None,
+                 shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
                  subgroup_creation_level: Optional[pulumi.Input[str]] = None,
                  two_factor_grace_period: Optional[pulumi.Input[int]] = None,
                  visibility_level: Optional[pulumi.Input[str]] = None,
@@ -796,7 +901,9 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["default_branch_protection"] = default_branch_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["emails_disabled"] = emails_disabled
+            __props__.__dict__["extra_shared_runners_minutes_limit"] = extra_shared_runners_minutes_limit
             __props__.__dict__["lfs_enabled"] = lfs_enabled
+            __props__.__dict__["membership_lock"] = membership_lock
             __props__.__dict__["mentions_disabled"] = mentions_disabled
             __props__.__dict__["name"] = name
             __props__.__dict__["parent_id"] = parent_id
@@ -808,6 +915,7 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["request_access_enabled"] = request_access_enabled
             __props__.__dict__["require_two_factor_authentication"] = require_two_factor_authentication
             __props__.__dict__["share_with_group_lock"] = share_with_group_lock
+            __props__.__dict__["shared_runners_minutes_limit"] = shared_runners_minutes_limit
             __props__.__dict__["subgroup_creation_level"] = subgroup_creation_level
             __props__.__dict__["two_factor_grace_period"] = two_factor_grace_period
             __props__.__dict__["visibility_level"] = visibility_level
@@ -831,9 +939,11 @@ class Group(pulumi.CustomResource):
             default_branch_protection: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             emails_disabled: Optional[pulumi.Input[bool]] = None,
+            extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
             full_name: Optional[pulumi.Input[str]] = None,
             full_path: Optional[pulumi.Input[str]] = None,
             lfs_enabled: Optional[pulumi.Input[bool]] = None,
+            membership_lock: Optional[pulumi.Input[bool]] = None,
             mentions_disabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent_id: Optional[pulumi.Input[int]] = None,
@@ -844,6 +954,7 @@ class Group(pulumi.CustomResource):
             require_two_factor_authentication: Optional[pulumi.Input[bool]] = None,
             runners_token: Optional[pulumi.Input[str]] = None,
             share_with_group_lock: Optional[pulumi.Input[bool]] = None,
+            shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
             subgroup_creation_level: Optional[pulumi.Input[str]] = None,
             two_factor_grace_period: Optional[pulumi.Input[int]] = None,
             visibility_level: Optional[pulumi.Input[str]] = None,
@@ -859,9 +970,11 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[int] default_branch_protection: Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
         :param pulumi.Input[str] description: The description of the group.
         :param pulumi.Input[bool] emails_disabled: Defaults to false. Disable email notifications.
+        :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[str] full_name: The full name of the group.
         :param pulumi.Input[str] full_path: The full path of the group.
         :param pulumi.Input[bool] lfs_enabled: Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[bool] mentions_disabled: Defaults to false. Disable the capability of a group from getting mentioned.
         :param pulumi.Input[str] name: The name of this group.
         :param pulumi.Input[int] parent_id: Id of the parent group (creates a nested group).
@@ -872,6 +985,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[bool] require_two_factor_authentication: Defaults to false. Require all users in this group to setup Two-factor authentication.
         :param pulumi.Input[str] runners_token: The group level registration token to use during runner setup.
         :param pulumi.Input[bool] share_with_group_lock: Defaults to false. Prevent sharing a project with another group within this group.
+        :param pulumi.Input[int] shared_runners_minutes_limit: Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
         :param pulumi.Input[str] subgroup_creation_level: Defaults to owner. Allowed to create subgroups.
         :param pulumi.Input[int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
@@ -885,9 +999,11 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["default_branch_protection"] = default_branch_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["emails_disabled"] = emails_disabled
+        __props__.__dict__["extra_shared_runners_minutes_limit"] = extra_shared_runners_minutes_limit
         __props__.__dict__["full_name"] = full_name
         __props__.__dict__["full_path"] = full_path
         __props__.__dict__["lfs_enabled"] = lfs_enabled
+        __props__.__dict__["membership_lock"] = membership_lock
         __props__.__dict__["mentions_disabled"] = mentions_disabled
         __props__.__dict__["name"] = name
         __props__.__dict__["parent_id"] = parent_id
@@ -898,6 +1014,7 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["require_two_factor_authentication"] = require_two_factor_authentication
         __props__.__dict__["runners_token"] = runners_token
         __props__.__dict__["share_with_group_lock"] = share_with_group_lock
+        __props__.__dict__["shared_runners_minutes_limit"] = shared_runners_minutes_limit
         __props__.__dict__["subgroup_creation_level"] = subgroup_creation_level
         __props__.__dict__["two_factor_grace_period"] = two_factor_grace_period
         __props__.__dict__["visibility_level"] = visibility_level
@@ -937,6 +1054,14 @@ class Group(pulumi.CustomResource):
         return pulumi.get(self, "emails_disabled")
 
     @property
+    @pulumi.getter(name="extraSharedRunnersMinutesLimit")
+    def extra_shared_runners_minutes_limit(self) -> pulumi.Output[Optional[int]]:
+        """
+        Can be set by administrators only. Additional CI/CD minutes for this group.
+        """
+        return pulumi.get(self, "extra_shared_runners_minutes_limit")
+
+    @property
     @pulumi.getter(name="fullName")
     def full_name(self) -> pulumi.Output[str]:
         """
@@ -959,6 +1084,14 @@ class Group(pulumi.CustomResource):
         Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
         """
         return pulumi.get(self, "lfs_enabled")
+
+    @property
+    @pulumi.getter(name="membershipLock")
+    def membership_lock(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Users cannot be added to projects in this group.
+        """
+        return pulumi.get(self, "membership_lock")
 
     @property
     @pulumi.getter(name="mentionsDisabled")
@@ -1039,6 +1172,14 @@ class Group(pulumi.CustomResource):
         Defaults to false. Prevent sharing a project with another group within this group.
         """
         return pulumi.get(self, "share_with_group_lock")
+
+    @property
+    @pulumi.getter(name="sharedRunnersMinutesLimit")
+    def shared_runners_minutes_limit(self) -> pulumi.Output[Optional[int]]:
+        """
+        Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+        """
+        return pulumi.get(self, "shared_runners_minutes_limit")
 
     @property
     @pulumi.getter(name="subgroupCreationLevel")

@@ -95,7 +95,7 @@ export class ProjectAccessToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly revoked!: pulumi.Output<boolean>;
     /**
-     * Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
+     * Valid values: `api`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`.
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
@@ -189,7 +189,7 @@ export interface ProjectAccessTokenState {
      */
     revoked?: pulumi.Input<boolean>;
     /**
-     * Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
+     * Valid values: `api`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -223,7 +223,7 @@ export interface ProjectAccessTokenArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * Valid values: `api`, `readApi`, `readRepository`, `writeRepository`.
+     * Valid values: `api`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`.
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
 }

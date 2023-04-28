@@ -134,6 +134,20 @@ public class Group extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.emailsDisabled);
     }
     /**
+     * Can be set by administrators only. Additional CI/CD minutes for this group.
+     * 
+     */
+    @Export(name="extraSharedRunnersMinutesLimit", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> extraSharedRunnersMinutesLimit;
+
+    /**
+     * @return Can be set by administrators only. Additional CI/CD minutes for this group.
+     * 
+     */
+    public Output<Optional<Integer>> extraSharedRunnersMinutesLimit() {
+        return Codegen.optional(this.extraSharedRunnersMinutesLimit);
+    }
+    /**
      * The full name of the group.
      * 
      */
@@ -174,6 +188,20 @@ public class Group extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> lfsEnabled() {
         return Codegen.optional(this.lfsEnabled);
+    }
+    /**
+     * Users cannot be added to projects in this group.
+     * 
+     */
+    @Export(name="membershipLock", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> membershipLock;
+
+    /**
+     * @return Users cannot be added to projects in this group.
+     * 
+     */
+    public Output<Optional<Boolean>> membershipLock() {
+        return Codegen.optional(this.membershipLock);
     }
     /**
      * Defaults to false. Disable the capability of a group from getting mentioned.
@@ -314,6 +342,20 @@ public class Group extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> shareWithGroupLock() {
         return Codegen.optional(this.shareWithGroupLock);
+    }
+    /**
+     * Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+     * 
+     */
+    @Export(name="sharedRunnersMinutesLimit", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> sharedRunnersMinutesLimit;
+
+    /**
+     * @return Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+     * 
+     */
+    public Output<Optional<Integer>> sharedRunnersMinutesLimit() {
+        return Codegen.optional(this.sharedRunnersMinutesLimit);
     }
     /**
      * Defaults to owner. Allowed to create subgroups.

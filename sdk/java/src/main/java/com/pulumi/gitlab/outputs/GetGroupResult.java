@@ -22,6 +22,11 @@ public final class GetGroupResult {
      */
     private String description;
     /**
+     * @return Can be set by administrators only. Additional CI/CD minutes for this group.
+     * 
+     */
+    private Integer extraSharedRunnersMinutesLimit;
+    /**
      * @return The full name of the group.
      * 
      */
@@ -46,6 +51,11 @@ public final class GetGroupResult {
      * 
      */
     private Boolean lfsEnabled;
+    /**
+     * @return Users cannot be added to projects in this group.
+     * 
+     */
+    private Boolean membershipLock;
     /**
      * @return The name of this group.
      * 
@@ -77,6 +87,11 @@ public final class GetGroupResult {
      */
     private String runnersToken;
     /**
+     * @return Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+     * 
+     */
+    private Integer sharedRunnersMinutesLimit;
+    /**
      * @return Visibility level of the group. Possible values are `private`, `internal`, `public`.
      * 
      */
@@ -101,6 +116,13 @@ public final class GetGroupResult {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return Can be set by administrators only. Additional CI/CD minutes for this group.
+     * 
+     */
+    public Integer extraSharedRunnersMinutesLimit() {
+        return this.extraSharedRunnersMinutesLimit;
     }
     /**
      * @return The full name of the group.
@@ -136,6 +158,13 @@ public final class GetGroupResult {
      */
     public Boolean lfsEnabled() {
         return this.lfsEnabled;
+    }
+    /**
+     * @return Users cannot be added to projects in this group.
+     * 
+     */
+    public Boolean membershipLock() {
+        return this.membershipLock;
     }
     /**
      * @return The name of this group.
@@ -180,6 +209,13 @@ public final class GetGroupResult {
         return this.runnersToken;
     }
     /**
+     * @return Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+     * 
+     */
+    public Integer sharedRunnersMinutesLimit() {
+        return this.sharedRunnersMinutesLimit;
+    }
+    /**
      * @return Visibility level of the group. Possible values are `private`, `internal`, `public`.
      * 
      */
@@ -205,17 +241,20 @@ public final class GetGroupResult {
     public static final class Builder {
         private Integer defaultBranchProtection;
         private String description;
+        private Integer extraSharedRunnersMinutesLimit;
         private String fullName;
         private String fullPath;
         private Integer groupId;
         private String id;
         private Boolean lfsEnabled;
+        private Boolean membershipLock;
         private String name;
         private Integer parentId;
         private String path;
         private Boolean preventForkingOutsideGroup;
         private Boolean requestAccessEnabled;
         private String runnersToken;
+        private Integer sharedRunnersMinutesLimit;
         private String visibilityLevel;
         private String webUrl;
         public Builder() {}
@@ -223,17 +262,20 @@ public final class GetGroupResult {
     	      Objects.requireNonNull(defaults);
     	      this.defaultBranchProtection = defaults.defaultBranchProtection;
     	      this.description = defaults.description;
+    	      this.extraSharedRunnersMinutesLimit = defaults.extraSharedRunnersMinutesLimit;
     	      this.fullName = defaults.fullName;
     	      this.fullPath = defaults.fullPath;
     	      this.groupId = defaults.groupId;
     	      this.id = defaults.id;
     	      this.lfsEnabled = defaults.lfsEnabled;
+    	      this.membershipLock = defaults.membershipLock;
     	      this.name = defaults.name;
     	      this.parentId = defaults.parentId;
     	      this.path = defaults.path;
     	      this.preventForkingOutsideGroup = defaults.preventForkingOutsideGroup;
     	      this.requestAccessEnabled = defaults.requestAccessEnabled;
     	      this.runnersToken = defaults.runnersToken;
+    	      this.sharedRunnersMinutesLimit = defaults.sharedRunnersMinutesLimit;
     	      this.visibilityLevel = defaults.visibilityLevel;
     	      this.webUrl = defaults.webUrl;
         }
@@ -246,6 +288,11 @@ public final class GetGroupResult {
         @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder extraSharedRunnersMinutesLimit(Integer extraSharedRunnersMinutesLimit) {
+            this.extraSharedRunnersMinutesLimit = Objects.requireNonNull(extraSharedRunnersMinutesLimit);
             return this;
         }
         @CustomType.Setter
@@ -271,6 +318,11 @@ public final class GetGroupResult {
         @CustomType.Setter
         public Builder lfsEnabled(Boolean lfsEnabled) {
             this.lfsEnabled = Objects.requireNonNull(lfsEnabled);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder membershipLock(Boolean membershipLock) {
+            this.membershipLock = Objects.requireNonNull(membershipLock);
             return this;
         }
         @CustomType.Setter
@@ -304,6 +356,11 @@ public final class GetGroupResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sharedRunnersMinutesLimit(Integer sharedRunnersMinutesLimit) {
+            this.sharedRunnersMinutesLimit = Objects.requireNonNull(sharedRunnersMinutesLimit);
+            return this;
+        }
+        @CustomType.Setter
         public Builder visibilityLevel(String visibilityLevel) {
             this.visibilityLevel = Objects.requireNonNull(visibilityLevel);
             return this;
@@ -317,17 +374,20 @@ public final class GetGroupResult {
             final var o = new GetGroupResult();
             o.defaultBranchProtection = defaultBranchProtection;
             o.description = description;
+            o.extraSharedRunnersMinutesLimit = extraSharedRunnersMinutesLimit;
             o.fullName = fullName;
             o.fullPath = fullPath;
             o.groupId = groupId;
             o.id = id;
             o.lfsEnabled = lfsEnabled;
+            o.membershipLock = membershipLock;
             o.name = name;
             o.parentId = parentId;
             o.path = path;
             o.preventForkingOutsideGroup = preventForkingOutsideGroup;
             o.requestAccessEnabled = requestAccessEnabled;
             o.runnersToken = runnersToken;
+            o.sharedRunnersMinutesLimit = sharedRunnersMinutesLimit;
             o.visibilityLevel = visibilityLevel;
             o.webUrl = webUrl;
             return o;

@@ -68,7 +68,7 @@ export class BranchProtection extends pulumi.CustomResource {
      */
     public /*out*/ readonly branchProtectionId!: pulumi.Output<number>;
     /**
-     * Can be set to true to require code owner approval before merging.
+     * Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
      */
     public readonly codeOwnerApprovalRequired!: pulumi.Output<boolean | undefined>;
     /**
@@ -166,7 +166,7 @@ export interface BranchProtectionState {
      */
     branchProtectionId?: pulumi.Input<number>;
     /**
-     * Can be set to true to require code owner approval before merging.
+     * Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
      */
     codeOwnerApprovalRequired?: pulumi.Input<boolean>;
     /**
@@ -212,7 +212,7 @@ export interface BranchProtectionArgs {
      */
     branch: pulumi.Input<string>;
     /**
-     * Can be set to true to require code owner approval before merging.
+     * Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
      */
     codeOwnerApprovalRequired?: pulumi.Input<boolean>;
     /**

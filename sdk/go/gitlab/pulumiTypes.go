@@ -2374,6 +2374,250 @@ func (o GetGroupMembershipMemberArrayOutput) Index(i pulumi.IntInput) GetGroupMe
 	}).(GetGroupMembershipMemberOutput)
 }
 
+type GetGroupSubgroupsSubgroup struct {
+	AutoDevopsEnabled       bool   `pulumi:"autoDevopsEnabled"`
+	AvatarUrl               string `pulumi:"avatarUrl"`
+	CreatedAt               string `pulumi:"createdAt"`
+	DefaultBranchProtection int    `pulumi:"defaultBranchProtection"`
+	Description             string `pulumi:"description"`
+	EmailsDisabled          bool   `pulumi:"emailsDisabled"`
+	FileTemplateProjectId   int    `pulumi:"fileTemplateProjectId"`
+	FullName                string `pulumi:"fullName"`
+	FullPath                string `pulumi:"fullPath"`
+	// The ID of the group.
+	GroupId                        int    `pulumi:"groupId"`
+	IpRestrictionRanges            string `pulumi:"ipRestrictionRanges"`
+	LfsEnabled                     bool   `pulumi:"lfsEnabled"`
+	MentionsDisabled               bool   `pulumi:"mentionsDisabled"`
+	Name                           string `pulumi:"name"`
+	ParentId                       int    `pulumi:"parentId"`
+	Path                           string `pulumi:"path"`
+	ProjectCreationLevel           string `pulumi:"projectCreationLevel"`
+	RequestAccessEnabled           bool   `pulumi:"requestAccessEnabled"`
+	RequireTwoFactorAuthentication bool   `pulumi:"requireTwoFactorAuthentication"`
+	ShareWithGroupLock             bool   `pulumi:"shareWithGroupLock"`
+	// Include group statistics (administrators only).
+	Statistics            map[string]string `pulumi:"statistics"`
+	SubgroupCreationLevel string            `pulumi:"subgroupCreationLevel"`
+	TwoFactorGracePeriod  int               `pulumi:"twoFactorGracePeriod"`
+	Visibility            string            `pulumi:"visibility"`
+	WebUrl                string            `pulumi:"webUrl"`
+}
+
+// GetGroupSubgroupsSubgroupInput is an input type that accepts GetGroupSubgroupsSubgroupArgs and GetGroupSubgroupsSubgroupOutput values.
+// You can construct a concrete instance of `GetGroupSubgroupsSubgroupInput` via:
+//
+//	GetGroupSubgroupsSubgroupArgs{...}
+type GetGroupSubgroupsSubgroupInput interface {
+	pulumi.Input
+
+	ToGetGroupSubgroupsSubgroupOutput() GetGroupSubgroupsSubgroupOutput
+	ToGetGroupSubgroupsSubgroupOutputWithContext(context.Context) GetGroupSubgroupsSubgroupOutput
+}
+
+type GetGroupSubgroupsSubgroupArgs struct {
+	AutoDevopsEnabled       pulumi.BoolInput   `pulumi:"autoDevopsEnabled"`
+	AvatarUrl               pulumi.StringInput `pulumi:"avatarUrl"`
+	CreatedAt               pulumi.StringInput `pulumi:"createdAt"`
+	DefaultBranchProtection pulumi.IntInput    `pulumi:"defaultBranchProtection"`
+	Description             pulumi.StringInput `pulumi:"description"`
+	EmailsDisabled          pulumi.BoolInput   `pulumi:"emailsDisabled"`
+	FileTemplateProjectId   pulumi.IntInput    `pulumi:"fileTemplateProjectId"`
+	FullName                pulumi.StringInput `pulumi:"fullName"`
+	FullPath                pulumi.StringInput `pulumi:"fullPath"`
+	// The ID of the group.
+	GroupId                        pulumi.IntInput    `pulumi:"groupId"`
+	IpRestrictionRanges            pulumi.StringInput `pulumi:"ipRestrictionRanges"`
+	LfsEnabled                     pulumi.BoolInput   `pulumi:"lfsEnabled"`
+	MentionsDisabled               pulumi.BoolInput   `pulumi:"mentionsDisabled"`
+	Name                           pulumi.StringInput `pulumi:"name"`
+	ParentId                       pulumi.IntInput    `pulumi:"parentId"`
+	Path                           pulumi.StringInput `pulumi:"path"`
+	ProjectCreationLevel           pulumi.StringInput `pulumi:"projectCreationLevel"`
+	RequestAccessEnabled           pulumi.BoolInput   `pulumi:"requestAccessEnabled"`
+	RequireTwoFactorAuthentication pulumi.BoolInput   `pulumi:"requireTwoFactorAuthentication"`
+	ShareWithGroupLock             pulumi.BoolInput   `pulumi:"shareWithGroupLock"`
+	// Include group statistics (administrators only).
+	Statistics            pulumi.StringMapInput `pulumi:"statistics"`
+	SubgroupCreationLevel pulumi.StringInput    `pulumi:"subgroupCreationLevel"`
+	TwoFactorGracePeriod  pulumi.IntInput       `pulumi:"twoFactorGracePeriod"`
+	Visibility            pulumi.StringInput    `pulumi:"visibility"`
+	WebUrl                pulumi.StringInput    `pulumi:"webUrl"`
+}
+
+func (GetGroupSubgroupsSubgroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupSubgroupsSubgroup)(nil)).Elem()
+}
+
+func (i GetGroupSubgroupsSubgroupArgs) ToGetGroupSubgroupsSubgroupOutput() GetGroupSubgroupsSubgroupOutput {
+	return i.ToGetGroupSubgroupsSubgroupOutputWithContext(context.Background())
+}
+
+func (i GetGroupSubgroupsSubgroupArgs) ToGetGroupSubgroupsSubgroupOutputWithContext(ctx context.Context) GetGroupSubgroupsSubgroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupSubgroupsSubgroupOutput)
+}
+
+// GetGroupSubgroupsSubgroupArrayInput is an input type that accepts GetGroupSubgroupsSubgroupArray and GetGroupSubgroupsSubgroupArrayOutput values.
+// You can construct a concrete instance of `GetGroupSubgroupsSubgroupArrayInput` via:
+//
+//	GetGroupSubgroupsSubgroupArray{ GetGroupSubgroupsSubgroupArgs{...} }
+type GetGroupSubgroupsSubgroupArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupSubgroupsSubgroupArrayOutput() GetGroupSubgroupsSubgroupArrayOutput
+	ToGetGroupSubgroupsSubgroupArrayOutputWithContext(context.Context) GetGroupSubgroupsSubgroupArrayOutput
+}
+
+type GetGroupSubgroupsSubgroupArray []GetGroupSubgroupsSubgroupInput
+
+func (GetGroupSubgroupsSubgroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupSubgroupsSubgroup)(nil)).Elem()
+}
+
+func (i GetGroupSubgroupsSubgroupArray) ToGetGroupSubgroupsSubgroupArrayOutput() GetGroupSubgroupsSubgroupArrayOutput {
+	return i.ToGetGroupSubgroupsSubgroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupSubgroupsSubgroupArray) ToGetGroupSubgroupsSubgroupArrayOutputWithContext(ctx context.Context) GetGroupSubgroupsSubgroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupSubgroupsSubgroupArrayOutput)
+}
+
+type GetGroupSubgroupsSubgroupOutput struct{ *pulumi.OutputState }
+
+func (GetGroupSubgroupsSubgroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupSubgroupsSubgroup)(nil)).Elem()
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) ToGetGroupSubgroupsSubgroupOutput() GetGroupSubgroupsSubgroupOutput {
+	return o
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) ToGetGroupSubgroupsSubgroupOutputWithContext(ctx context.Context) GetGroupSubgroupsSubgroupOutput {
+	return o
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) AutoDevopsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) bool { return v.AutoDevopsEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) AvatarUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) DefaultBranchProtection() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) int { return v.DefaultBranchProtection }).(pulumi.IntOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) EmailsDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) bool { return v.EmailsDisabled }).(pulumi.BoolOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) FileTemplateProjectId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) int { return v.FileTemplateProjectId }).(pulumi.IntOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) FullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.FullName }).(pulumi.StringOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) FullPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.FullPath }).(pulumi.StringOutput)
+}
+
+// The ID of the group.
+func (o GetGroupSubgroupsSubgroupOutput) GroupId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) int { return v.GroupId }).(pulumi.IntOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) IpRestrictionRanges() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.IpRestrictionRanges }).(pulumi.StringOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) LfsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) bool { return v.LfsEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) MentionsDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) bool { return v.MentionsDisabled }).(pulumi.BoolOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) ParentId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) int { return v.ParentId }).(pulumi.IntOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) ProjectCreationLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.ProjectCreationLevel }).(pulumi.StringOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) RequestAccessEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) bool { return v.RequestAccessEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) RequireTwoFactorAuthentication() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) bool { return v.RequireTwoFactorAuthentication }).(pulumi.BoolOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) ShareWithGroupLock() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) bool { return v.ShareWithGroupLock }).(pulumi.BoolOutput)
+}
+
+// Include group statistics (administrators only).
+func (o GetGroupSubgroupsSubgroupOutput) Statistics() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) map[string]string { return v.Statistics }).(pulumi.StringMapOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) SubgroupCreationLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.SubgroupCreationLevel }).(pulumi.StringOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) TwoFactorGracePeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) int { return v.TwoFactorGracePeriod }).(pulumi.IntOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) Visibility() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.Visibility }).(pulumi.StringOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+type GetGroupSubgroupsSubgroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupSubgroupsSubgroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupSubgroupsSubgroup)(nil)).Elem()
+}
+
+func (o GetGroupSubgroupsSubgroupArrayOutput) ToGetGroupSubgroupsSubgroupArrayOutput() GetGroupSubgroupsSubgroupArrayOutput {
+	return o
+}
+
+func (o GetGroupSubgroupsSubgroupArrayOutput) ToGetGroupSubgroupsSubgroupArrayOutputWithContext(ctx context.Context) GetGroupSubgroupsSubgroupArrayOutput {
+	return o
+}
+
+func (o GetGroupSubgroupsSubgroupArrayOutput) Index(i pulumi.IntInput) GetGroupSubgroupsSubgroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupSubgroupsSubgroup {
+		return vs[0].([]GetGroupSubgroupsSubgroup)[vs[1].(int)]
+	}).(GetGroupSubgroupsSubgroupOutput)
+}
+
 type GetGroupVariablesVariable struct {
 	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope string `pulumi:"environmentScope"`
@@ -2508,6 +2752,178 @@ func (o GetGroupVariablesVariableArrayOutput) Index(i pulumi.IntInput) GetGroupV
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupVariablesVariable {
 		return vs[0].([]GetGroupVariablesVariable)[vs[1].(int)]
 	}).(GetGroupVariablesVariableOutput)
+}
+
+type GetGroupsGroup struct {
+	DefaultBranchProtection    int    `pulumi:"defaultBranchProtection"`
+	Description                string `pulumi:"description"`
+	FullName                   string `pulumi:"fullName"`
+	FullPath                   string `pulumi:"fullPath"`
+	GroupId                    int    `pulumi:"groupId"`
+	LfsEnabled                 bool   `pulumi:"lfsEnabled"`
+	Name                       string `pulumi:"name"`
+	ParentId                   int    `pulumi:"parentId"`
+	Path                       string `pulumi:"path"`
+	PreventForkingOutsideGroup bool   `pulumi:"preventForkingOutsideGroup"`
+	RequestAccessEnabled       bool   `pulumi:"requestAccessEnabled"`
+	RunnersToken               string `pulumi:"runnersToken"`
+	VisibilityLevel            string `pulumi:"visibilityLevel"`
+	WebUrl                     string `pulumi:"webUrl"`
+}
+
+// GetGroupsGroupInput is an input type that accepts GetGroupsGroupArgs and GetGroupsGroupOutput values.
+// You can construct a concrete instance of `GetGroupsGroupInput` via:
+//
+//	GetGroupsGroupArgs{...}
+type GetGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetGroupsGroupOutput() GetGroupsGroupOutput
+	ToGetGroupsGroupOutputWithContext(context.Context) GetGroupsGroupOutput
+}
+
+type GetGroupsGroupArgs struct {
+	DefaultBranchProtection    pulumi.IntInput    `pulumi:"defaultBranchProtection"`
+	Description                pulumi.StringInput `pulumi:"description"`
+	FullName                   pulumi.StringInput `pulumi:"fullName"`
+	FullPath                   pulumi.StringInput `pulumi:"fullPath"`
+	GroupId                    pulumi.IntInput    `pulumi:"groupId"`
+	LfsEnabled                 pulumi.BoolInput   `pulumi:"lfsEnabled"`
+	Name                       pulumi.StringInput `pulumi:"name"`
+	ParentId                   pulumi.IntInput    `pulumi:"parentId"`
+	Path                       pulumi.StringInput `pulumi:"path"`
+	PreventForkingOutsideGroup pulumi.BoolInput   `pulumi:"preventForkingOutsideGroup"`
+	RequestAccessEnabled       pulumi.BoolInput   `pulumi:"requestAccessEnabled"`
+	RunnersToken               pulumi.StringInput `pulumi:"runnersToken"`
+	VisibilityLevel            pulumi.StringInput `pulumi:"visibilityLevel"`
+	WebUrl                     pulumi.StringInput `pulumi:"webUrl"`
+}
+
+func (GetGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupsGroup)(nil)).Elem()
+}
+
+func (i GetGroupsGroupArgs) ToGetGroupsGroupOutput() GetGroupsGroupOutput {
+	return i.ToGetGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetGroupsGroupArgs) ToGetGroupsGroupOutputWithContext(ctx context.Context) GetGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupOutput)
+}
+
+// GetGroupsGroupArrayInput is an input type that accepts GetGroupsGroupArray and GetGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetGroupsGroupArrayInput` via:
+//
+//	GetGroupsGroupArray{ GetGroupsGroupArgs{...} }
+type GetGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupsGroupArrayOutput() GetGroupsGroupArrayOutput
+	ToGetGroupsGroupArrayOutputWithContext(context.Context) GetGroupsGroupArrayOutput
+}
+
+type GetGroupsGroupArray []GetGroupsGroupInput
+
+func (GetGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupsGroup)(nil)).Elem()
+}
+
+func (i GetGroupsGroupArray) ToGetGroupsGroupArrayOutput() GetGroupsGroupArrayOutput {
+	return i.ToGetGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupsGroupArray) ToGetGroupsGroupArrayOutputWithContext(ctx context.Context) GetGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupArrayOutput)
+}
+
+type GetGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupsGroup)(nil)).Elem()
+}
+
+func (o GetGroupsGroupOutput) ToGetGroupsGroupOutput() GetGroupsGroupOutput {
+	return o
+}
+
+func (o GetGroupsGroupOutput) ToGetGroupsGroupOutputWithContext(ctx context.Context) GetGroupsGroupOutput {
+	return o
+}
+
+func (o GetGroupsGroupOutput) DefaultBranchProtection() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupsGroup) int { return v.DefaultBranchProtection }).(pulumi.IntOutput)
+}
+
+func (o GetGroupsGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetGroupsGroupOutput) FullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.FullName }).(pulumi.StringOutput)
+}
+
+func (o GetGroupsGroupOutput) FullPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.FullPath }).(pulumi.StringOutput)
+}
+
+func (o GetGroupsGroupOutput) GroupId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupsGroup) int { return v.GroupId }).(pulumi.IntOutput)
+}
+
+func (o GetGroupsGroupOutput) LfsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupsGroup) bool { return v.LfsEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetGroupsGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetGroupsGroupOutput) ParentId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupsGroup) int { return v.ParentId }).(pulumi.IntOutput)
+}
+
+func (o GetGroupsGroupOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o GetGroupsGroupOutput) PreventForkingOutsideGroup() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupsGroup) bool { return v.PreventForkingOutsideGroup }).(pulumi.BoolOutput)
+}
+
+func (o GetGroupsGroupOutput) RequestAccessEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupsGroup) bool { return v.RequestAccessEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetGroupsGroupOutput) RunnersToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.RunnersToken }).(pulumi.StringOutput)
+}
+
+func (o GetGroupsGroupOutput) VisibilityLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.VisibilityLevel }).(pulumi.StringOutput)
+}
+
+func (o GetGroupsGroupOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+type GetGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupsGroup)(nil)).Elem()
+}
+
+func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutput() GetGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutputWithContext(ctx context.Context) GetGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupsGroup {
+		return vs[0].([]GetGroupsGroup)[vs[1].(int)]
+	}).(GetGroupsGroupOutput)
 }
 
 type GetInstanceDeployKeysDeployKey struct {
@@ -2888,6 +3304,305 @@ func (o GetInstanceVariablesVariableArrayOutput) Index(i pulumi.IntInput) GetIns
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceVariablesVariable {
 		return vs[0].([]GetInstanceVariablesVariable)[vs[1].(int)]
 	}).(GetInstanceVariablesVariableOutput)
+}
+
+type GetProjectBranchesBranch struct {
+	CanPush            bool                             `pulumi:"canPush"`
+	Commits            []GetProjectBranchesBranchCommit `pulumi:"commits"`
+	Default            bool                             `pulumi:"default"`
+	DevelopersCanMerge bool                             `pulumi:"developersCanMerge"`
+	DevelopersCanPush  bool                             `pulumi:"developersCanPush"`
+	Merged             bool                             `pulumi:"merged"`
+	Name               string                           `pulumi:"name"`
+	Protected          bool                             `pulumi:"protected"`
+	WebUrl             string                           `pulumi:"webUrl"`
+}
+
+// GetProjectBranchesBranchInput is an input type that accepts GetProjectBranchesBranchArgs and GetProjectBranchesBranchOutput values.
+// You can construct a concrete instance of `GetProjectBranchesBranchInput` via:
+//
+//	GetProjectBranchesBranchArgs{...}
+type GetProjectBranchesBranchInput interface {
+	pulumi.Input
+
+	ToGetProjectBranchesBranchOutput() GetProjectBranchesBranchOutput
+	ToGetProjectBranchesBranchOutputWithContext(context.Context) GetProjectBranchesBranchOutput
+}
+
+type GetProjectBranchesBranchArgs struct {
+	CanPush            pulumi.BoolInput                         `pulumi:"canPush"`
+	Commits            GetProjectBranchesBranchCommitArrayInput `pulumi:"commits"`
+	Default            pulumi.BoolInput                         `pulumi:"default"`
+	DevelopersCanMerge pulumi.BoolInput                         `pulumi:"developersCanMerge"`
+	DevelopersCanPush  pulumi.BoolInput                         `pulumi:"developersCanPush"`
+	Merged             pulumi.BoolInput                         `pulumi:"merged"`
+	Name               pulumi.StringInput                       `pulumi:"name"`
+	Protected          pulumi.BoolInput                         `pulumi:"protected"`
+	WebUrl             pulumi.StringInput                       `pulumi:"webUrl"`
+}
+
+func (GetProjectBranchesBranchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectBranchesBranch)(nil)).Elem()
+}
+
+func (i GetProjectBranchesBranchArgs) ToGetProjectBranchesBranchOutput() GetProjectBranchesBranchOutput {
+	return i.ToGetProjectBranchesBranchOutputWithContext(context.Background())
+}
+
+func (i GetProjectBranchesBranchArgs) ToGetProjectBranchesBranchOutputWithContext(ctx context.Context) GetProjectBranchesBranchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectBranchesBranchOutput)
+}
+
+// GetProjectBranchesBranchArrayInput is an input type that accepts GetProjectBranchesBranchArray and GetProjectBranchesBranchArrayOutput values.
+// You can construct a concrete instance of `GetProjectBranchesBranchArrayInput` via:
+//
+//	GetProjectBranchesBranchArray{ GetProjectBranchesBranchArgs{...} }
+type GetProjectBranchesBranchArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectBranchesBranchArrayOutput() GetProjectBranchesBranchArrayOutput
+	ToGetProjectBranchesBranchArrayOutputWithContext(context.Context) GetProjectBranchesBranchArrayOutput
+}
+
+type GetProjectBranchesBranchArray []GetProjectBranchesBranchInput
+
+func (GetProjectBranchesBranchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectBranchesBranch)(nil)).Elem()
+}
+
+func (i GetProjectBranchesBranchArray) ToGetProjectBranchesBranchArrayOutput() GetProjectBranchesBranchArrayOutput {
+	return i.ToGetProjectBranchesBranchArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectBranchesBranchArray) ToGetProjectBranchesBranchArrayOutputWithContext(ctx context.Context) GetProjectBranchesBranchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectBranchesBranchArrayOutput)
+}
+
+type GetProjectBranchesBranchOutput struct{ *pulumi.OutputState }
+
+func (GetProjectBranchesBranchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectBranchesBranch)(nil)).Elem()
+}
+
+func (o GetProjectBranchesBranchOutput) ToGetProjectBranchesBranchOutput() GetProjectBranchesBranchOutput {
+	return o
+}
+
+func (o GetProjectBranchesBranchOutput) ToGetProjectBranchesBranchOutputWithContext(ctx context.Context) GetProjectBranchesBranchOutput {
+	return o
+}
+
+func (o GetProjectBranchesBranchOutput) CanPush() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranch) bool { return v.CanPush }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectBranchesBranchOutput) Commits() GetProjectBranchesBranchCommitArrayOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranch) []GetProjectBranchesBranchCommit { return v.Commits }).(GetProjectBranchesBranchCommitArrayOutput)
+}
+
+func (o GetProjectBranchesBranchOutput) Default() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranch) bool { return v.Default }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectBranchesBranchOutput) DevelopersCanMerge() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranch) bool { return v.DevelopersCanMerge }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectBranchesBranchOutput) DevelopersCanPush() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranch) bool { return v.DevelopersCanPush }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectBranchesBranchOutput) Merged() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranch) bool { return v.Merged }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectBranchesBranchOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranch) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetProjectBranchesBranchOutput) Protected() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranch) bool { return v.Protected }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectBranchesBranchOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranch) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+type GetProjectBranchesBranchArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectBranchesBranchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectBranchesBranch)(nil)).Elem()
+}
+
+func (o GetProjectBranchesBranchArrayOutput) ToGetProjectBranchesBranchArrayOutput() GetProjectBranchesBranchArrayOutput {
+	return o
+}
+
+func (o GetProjectBranchesBranchArrayOutput) ToGetProjectBranchesBranchArrayOutputWithContext(ctx context.Context) GetProjectBranchesBranchArrayOutput {
+	return o
+}
+
+func (o GetProjectBranchesBranchArrayOutput) Index(i pulumi.IntInput) GetProjectBranchesBranchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectBranchesBranch {
+		return vs[0].([]GetProjectBranchesBranch)[vs[1].(int)]
+	}).(GetProjectBranchesBranchOutput)
+}
+
+type GetProjectBranchesBranchCommit struct {
+	AuthorEmail    string `pulumi:"authorEmail"`
+	AuthorName     string `pulumi:"authorName"`
+	AuthoredDate   string `pulumi:"authoredDate"`
+	CommittedDate  string `pulumi:"committedDate"`
+	CommitterEmail string `pulumi:"committerEmail"`
+	CommitterName  string `pulumi:"committerName"`
+	// The ID of this resource.
+	Id        string   `pulumi:"id"`
+	Message   string   `pulumi:"message"`
+	ParentIds []string `pulumi:"parentIds"`
+	ShortId   string   `pulumi:"shortId"`
+	Title     string   `pulumi:"title"`
+}
+
+// GetProjectBranchesBranchCommitInput is an input type that accepts GetProjectBranchesBranchCommitArgs and GetProjectBranchesBranchCommitOutput values.
+// You can construct a concrete instance of `GetProjectBranchesBranchCommitInput` via:
+//
+//	GetProjectBranchesBranchCommitArgs{...}
+type GetProjectBranchesBranchCommitInput interface {
+	pulumi.Input
+
+	ToGetProjectBranchesBranchCommitOutput() GetProjectBranchesBranchCommitOutput
+	ToGetProjectBranchesBranchCommitOutputWithContext(context.Context) GetProjectBranchesBranchCommitOutput
+}
+
+type GetProjectBranchesBranchCommitArgs struct {
+	AuthorEmail    pulumi.StringInput `pulumi:"authorEmail"`
+	AuthorName     pulumi.StringInput `pulumi:"authorName"`
+	AuthoredDate   pulumi.StringInput `pulumi:"authoredDate"`
+	CommittedDate  pulumi.StringInput `pulumi:"committedDate"`
+	CommitterEmail pulumi.StringInput `pulumi:"committerEmail"`
+	CommitterName  pulumi.StringInput `pulumi:"committerName"`
+	// The ID of this resource.
+	Id        pulumi.StringInput      `pulumi:"id"`
+	Message   pulumi.StringInput      `pulumi:"message"`
+	ParentIds pulumi.StringArrayInput `pulumi:"parentIds"`
+	ShortId   pulumi.StringInput      `pulumi:"shortId"`
+	Title     pulumi.StringInput      `pulumi:"title"`
+}
+
+func (GetProjectBranchesBranchCommitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectBranchesBranchCommit)(nil)).Elem()
+}
+
+func (i GetProjectBranchesBranchCommitArgs) ToGetProjectBranchesBranchCommitOutput() GetProjectBranchesBranchCommitOutput {
+	return i.ToGetProjectBranchesBranchCommitOutputWithContext(context.Background())
+}
+
+func (i GetProjectBranchesBranchCommitArgs) ToGetProjectBranchesBranchCommitOutputWithContext(ctx context.Context) GetProjectBranchesBranchCommitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectBranchesBranchCommitOutput)
+}
+
+// GetProjectBranchesBranchCommitArrayInput is an input type that accepts GetProjectBranchesBranchCommitArray and GetProjectBranchesBranchCommitArrayOutput values.
+// You can construct a concrete instance of `GetProjectBranchesBranchCommitArrayInput` via:
+//
+//	GetProjectBranchesBranchCommitArray{ GetProjectBranchesBranchCommitArgs{...} }
+type GetProjectBranchesBranchCommitArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectBranchesBranchCommitArrayOutput() GetProjectBranchesBranchCommitArrayOutput
+	ToGetProjectBranchesBranchCommitArrayOutputWithContext(context.Context) GetProjectBranchesBranchCommitArrayOutput
+}
+
+type GetProjectBranchesBranchCommitArray []GetProjectBranchesBranchCommitInput
+
+func (GetProjectBranchesBranchCommitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectBranchesBranchCommit)(nil)).Elem()
+}
+
+func (i GetProjectBranchesBranchCommitArray) ToGetProjectBranchesBranchCommitArrayOutput() GetProjectBranchesBranchCommitArrayOutput {
+	return i.ToGetProjectBranchesBranchCommitArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectBranchesBranchCommitArray) ToGetProjectBranchesBranchCommitArrayOutputWithContext(ctx context.Context) GetProjectBranchesBranchCommitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectBranchesBranchCommitArrayOutput)
+}
+
+type GetProjectBranchesBranchCommitOutput struct{ *pulumi.OutputState }
+
+func (GetProjectBranchesBranchCommitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectBranchesBranchCommit)(nil)).Elem()
+}
+
+func (o GetProjectBranchesBranchCommitOutput) ToGetProjectBranchesBranchCommitOutput() GetProjectBranchesBranchCommitOutput {
+	return o
+}
+
+func (o GetProjectBranchesBranchCommitOutput) ToGetProjectBranchesBranchCommitOutputWithContext(ctx context.Context) GetProjectBranchesBranchCommitOutput {
+	return o
+}
+
+func (o GetProjectBranchesBranchCommitOutput) AuthorEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranchCommit) string { return v.AuthorEmail }).(pulumi.StringOutput)
+}
+
+func (o GetProjectBranchesBranchCommitOutput) AuthorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranchCommit) string { return v.AuthorName }).(pulumi.StringOutput)
+}
+
+func (o GetProjectBranchesBranchCommitOutput) AuthoredDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranchCommit) string { return v.AuthoredDate }).(pulumi.StringOutput)
+}
+
+func (o GetProjectBranchesBranchCommitOutput) CommittedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranchCommit) string { return v.CommittedDate }).(pulumi.StringOutput)
+}
+
+func (o GetProjectBranchesBranchCommitOutput) CommitterEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranchCommit) string { return v.CommitterEmail }).(pulumi.StringOutput)
+}
+
+func (o GetProjectBranchesBranchCommitOutput) CommitterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranchCommit) string { return v.CommitterName }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o GetProjectBranchesBranchCommitOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranchCommit) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetProjectBranchesBranchCommitOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranchCommit) string { return v.Message }).(pulumi.StringOutput)
+}
+
+func (o GetProjectBranchesBranchCommitOutput) ParentIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranchCommit) []string { return v.ParentIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetProjectBranchesBranchCommitOutput) ShortId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranchCommit) string { return v.ShortId }).(pulumi.StringOutput)
+}
+
+func (o GetProjectBranchesBranchCommitOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectBranchesBranchCommit) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type GetProjectBranchesBranchCommitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectBranchesBranchCommitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectBranchesBranchCommit)(nil)).Elem()
+}
+
+func (o GetProjectBranchesBranchCommitArrayOutput) ToGetProjectBranchesBranchCommitArrayOutput() GetProjectBranchesBranchCommitArrayOutput {
+	return o
+}
+
+func (o GetProjectBranchesBranchCommitArrayOutput) ToGetProjectBranchesBranchCommitArrayOutputWithContext(ctx context.Context) GetProjectBranchesBranchCommitArrayOutput {
+	return o
+}
+
+func (o GetProjectBranchesBranchCommitArrayOutput) Index(i pulumi.IntInput) GetProjectBranchesBranchCommitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectBranchesBranchCommit {
+		return vs[0].([]GetProjectBranchesBranchCommit)[vs[1].(int)]
+	}).(GetProjectBranchesBranchCommitOutput)
 }
 
 type GetProjectContainerExpirationPolicy struct {
@@ -6989,6 +7704,133 @@ func (o GetRepositoryTreeTreeArrayOutput) Index(i pulumi.IntInput) GetRepository
 	}).(GetRepositoryTreeTreeOutput)
 }
 
+type GetUserSshkeysKey struct {
+	CreatedAt string `pulumi:"createdAt"`
+	ExpiresAt string `pulumi:"expiresAt"`
+	Key       string `pulumi:"key"`
+	KeyId     int    `pulumi:"keyId"`
+	Title     string `pulumi:"title"`
+	// ID of the user to get the SSH keys for.
+	UserId int `pulumi:"userId"`
+}
+
+// GetUserSshkeysKeyInput is an input type that accepts GetUserSshkeysKeyArgs and GetUserSshkeysKeyOutput values.
+// You can construct a concrete instance of `GetUserSshkeysKeyInput` via:
+//
+//	GetUserSshkeysKeyArgs{...}
+type GetUserSshkeysKeyInput interface {
+	pulumi.Input
+
+	ToGetUserSshkeysKeyOutput() GetUserSshkeysKeyOutput
+	ToGetUserSshkeysKeyOutputWithContext(context.Context) GetUserSshkeysKeyOutput
+}
+
+type GetUserSshkeysKeyArgs struct {
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	ExpiresAt pulumi.StringInput `pulumi:"expiresAt"`
+	Key       pulumi.StringInput `pulumi:"key"`
+	KeyId     pulumi.IntInput    `pulumi:"keyId"`
+	Title     pulumi.StringInput `pulumi:"title"`
+	// ID of the user to get the SSH keys for.
+	UserId pulumi.IntInput `pulumi:"userId"`
+}
+
+func (GetUserSshkeysKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserSshkeysKey)(nil)).Elem()
+}
+
+func (i GetUserSshkeysKeyArgs) ToGetUserSshkeysKeyOutput() GetUserSshkeysKeyOutput {
+	return i.ToGetUserSshkeysKeyOutputWithContext(context.Background())
+}
+
+func (i GetUserSshkeysKeyArgs) ToGetUserSshkeysKeyOutputWithContext(ctx context.Context) GetUserSshkeysKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserSshkeysKeyOutput)
+}
+
+// GetUserSshkeysKeyArrayInput is an input type that accepts GetUserSshkeysKeyArray and GetUserSshkeysKeyArrayOutput values.
+// You can construct a concrete instance of `GetUserSshkeysKeyArrayInput` via:
+//
+//	GetUserSshkeysKeyArray{ GetUserSshkeysKeyArgs{...} }
+type GetUserSshkeysKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetUserSshkeysKeyArrayOutput() GetUserSshkeysKeyArrayOutput
+	ToGetUserSshkeysKeyArrayOutputWithContext(context.Context) GetUserSshkeysKeyArrayOutput
+}
+
+type GetUserSshkeysKeyArray []GetUserSshkeysKeyInput
+
+func (GetUserSshkeysKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserSshkeysKey)(nil)).Elem()
+}
+
+func (i GetUserSshkeysKeyArray) ToGetUserSshkeysKeyArrayOutput() GetUserSshkeysKeyArrayOutput {
+	return i.ToGetUserSshkeysKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserSshkeysKeyArray) ToGetUserSshkeysKeyArrayOutputWithContext(ctx context.Context) GetUserSshkeysKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserSshkeysKeyArrayOutput)
+}
+
+type GetUserSshkeysKeyOutput struct{ *pulumi.OutputState }
+
+func (GetUserSshkeysKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserSshkeysKey)(nil)).Elem()
+}
+
+func (o GetUserSshkeysKeyOutput) ToGetUserSshkeysKeyOutput() GetUserSshkeysKeyOutput {
+	return o
+}
+
+func (o GetUserSshkeysKeyOutput) ToGetUserSshkeysKeyOutputWithContext(ctx context.Context) GetUserSshkeysKeyOutput {
+	return o
+}
+
+func (o GetUserSshkeysKeyOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserSshkeysKey) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetUserSshkeysKeyOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserSshkeysKey) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+func (o GetUserSshkeysKeyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserSshkeysKey) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetUserSshkeysKeyOutput) KeyId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUserSshkeysKey) int { return v.KeyId }).(pulumi.IntOutput)
+}
+
+func (o GetUserSshkeysKeyOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserSshkeysKey) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// ID of the user to get the SSH keys for.
+func (o GetUserSshkeysKeyOutput) UserId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUserSshkeysKey) int { return v.UserId }).(pulumi.IntOutput)
+}
+
+type GetUserSshkeysKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserSshkeysKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserSshkeysKey)(nil)).Elem()
+}
+
+func (o GetUserSshkeysKeyArrayOutput) ToGetUserSshkeysKeyArrayOutput() GetUserSshkeysKeyArrayOutput {
+	return o
+}
+
+func (o GetUserSshkeysKeyArrayOutput) ToGetUserSshkeysKeyArrayOutputWithContext(ctx context.Context) GetUserSshkeysKeyArrayOutput {
+	return o
+}
+
+func (o GetUserSshkeysKeyArrayOutput) Index(i pulumi.IntInput) GetUserSshkeysKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserSshkeysKey {
+		return vs[0].([]GetUserSshkeysKey)[vs[1].(int)]
+	}).(GetUserSshkeysKeyOutput)
+}
+
 type GetUsersUser struct {
 	AvatarUrl        string `pulumi:"avatarUrl"`
 	Bio              string `pulumi:"bio"`
@@ -7276,14 +8118,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupHooksHookArrayInput)(nil)).Elem(), GetGroupHooksHookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberInput)(nil)).Elem(), GetGroupMembershipMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberArrayInput)(nil)).Elem(), GetGroupMembershipMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSubgroupsSubgroupInput)(nil)).Elem(), GetGroupSubgroupsSubgroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSubgroupsSubgroupArrayInput)(nil)).Elem(), GetGroupSubgroupsSubgroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupVariablesVariableInput)(nil)).Elem(), GetGroupVariablesVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupVariablesVariableArrayInput)(nil)).Elem(), GetGroupVariablesVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupInput)(nil)).Elem(), GetGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDeployKeysDeployKeyInput)(nil)).Elem(), GetInstanceDeployKeysDeployKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDeployKeysDeployKeyArrayInput)(nil)).Elem(), GetInstanceDeployKeysDeployKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessInput)(nil)).Elem(), GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayInput)(nil)).Elem(), GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceVariablesVariableInput)(nil)).Elem(), GetInstanceVariablesVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceVariablesVariableArrayInput)(nil)).Elem(), GetInstanceVariablesVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectBranchesBranchInput)(nil)).Elem(), GetProjectBranchesBranchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectBranchesBranchArrayInput)(nil)).Elem(), GetProjectBranchesBranchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectBranchesBranchCommitInput)(nil)).Elem(), GetProjectBranchesBranchCommitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectBranchesBranchCommitArrayInput)(nil)).Elem(), GetProjectBranchesBranchCommitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectContainerExpirationPolicyInput)(nil)).Elem(), GetProjectContainerExpirationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectContainerExpirationPolicyArrayInput)(nil)).Elem(), GetProjectContainerExpirationPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectHooksHookInput)(nil)).Elem(), GetProjectHooksHookArgs{})
@@ -7335,6 +8185,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseLinksReleaseLinkArrayInput)(nil)).Elem(), GetReleaseLinksReleaseLinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryTreeTreeInput)(nil)).Elem(), GetRepositoryTreeTreeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryTreeTreeArrayInput)(nil)).Elem(), GetRepositoryTreeTreeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserSshkeysKeyInput)(nil)).Elem(), GetUserSshkeysKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserSshkeysKeyArrayInput)(nil)).Elem(), GetUserSshkeysKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
 	pulumi.RegisterOutputType(BranchCommitOutput{})
@@ -7367,14 +8219,22 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupHooksHookArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipMemberOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupSubgroupsSubgroupOutput{})
+	pulumi.RegisterOutputType(GetGroupSubgroupsSubgroupArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupVariablesVariableOutput{})
 	pulumi.RegisterOutputType(GetGroupVariablesVariableArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceDeployKeysDeployKeyOutput{})
 	pulumi.RegisterOutputType(GetInstanceDeployKeysDeployKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessOutput{})
 	pulumi.RegisterOutputType(GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceVariablesVariableOutput{})
 	pulumi.RegisterOutputType(GetInstanceVariablesVariableArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectBranchesBranchOutput{})
+	pulumi.RegisterOutputType(GetProjectBranchesBranchArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectBranchesBranchCommitOutput{})
+	pulumi.RegisterOutputType(GetProjectBranchesBranchCommitArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectContainerExpirationPolicyOutput{})
 	pulumi.RegisterOutputType(GetProjectContainerExpirationPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectHooksHookOutput{})
@@ -7426,6 +8286,8 @@ func init() {
 	pulumi.RegisterOutputType(GetReleaseLinksReleaseLinkArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryTreeTreeOutput{})
 	pulumi.RegisterOutputType(GetRepositoryTreeTreeArrayOutput{})
+	pulumi.RegisterOutputType(GetUserSshkeysKeyOutput{})
+	pulumi.RegisterOutputType(GetUserSshkeysKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersUserOutput{})
 	pulumi.RegisterOutputType(GetUsersUserArrayOutput{})
 }

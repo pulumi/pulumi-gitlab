@@ -178,8 +178,8 @@ class PipelineScheduleVariable(pulumi.CustomResource):
             ref="master",
             cron="0 1 * * *")
         example_pipeline_schedule_variable = gitlab.PipelineScheduleVariable("examplePipelineScheduleVariable",
-            project=gitlab_pipeline_schedule["project"],
-            pipeline_schedule_id=gitlab_pipeline_schedule["id"],
+            project=example_pipeline_schedule.project,
+            pipeline_schedule_id=example_pipeline_schedule.id,
             key="EXAMPLE_KEY",
             value="example")
         ```
@@ -222,8 +222,8 @@ class PipelineScheduleVariable(pulumi.CustomResource):
             ref="master",
             cron="0 1 * * *")
         example_pipeline_schedule_variable = gitlab.PipelineScheduleVariable("examplePipelineScheduleVariable",
-            project=gitlab_pipeline_schedule["project"],
-            pipeline_schedule_id=gitlab_pipeline_schedule["id"],
+            project=example_pipeline_schedule.project,
+            pipeline_schedule_id=example_pipeline_schedule.id,
             key="EXAMPLE_KEY",
             value="example")
         ```

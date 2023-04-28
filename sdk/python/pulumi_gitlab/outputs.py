@@ -26,10 +26,14 @@ __all__ = [
     'GetClusterAgentsClusterAgentResult',
     'GetGroupHooksHookResult',
     'GetGroupMembershipMemberResult',
+    'GetGroupSubgroupsSubgroupResult',
     'GetGroupVariablesVariableResult',
+    'GetGroupsGroupResult',
     'GetInstanceDeployKeysDeployKeyResult',
     'GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult',
     'GetInstanceVariablesVariableResult',
+    'GetProjectBranchesBranchResult',
+    'GetProjectBranchesBranchCommitResult',
     'GetProjectContainerExpirationPolicyResult',
     'GetProjectHooksHookResult',
     'GetProjectIssueTaskCompletionStatusResult',
@@ -58,6 +62,7 @@ __all__ = [
     'GetProjectsProjectSharedWithGroupResult',
     'GetReleaseLinksReleaseLinkResult',
     'GetRepositoryTreeTreeResult',
+    'GetUserSshkeysKeyResult',
     'GetUsersUserResult',
 ]
 
@@ -1464,6 +1469,196 @@ class GetGroupMembershipMemberResult(dict):
 
 
 @pulumi.output_type
+class GetGroupSubgroupsSubgroupResult(dict):
+    def __init__(__self__, *,
+                 auto_devops_enabled: bool,
+                 avatar_url: str,
+                 created_at: str,
+                 default_branch_protection: int,
+                 description: str,
+                 emails_disabled: bool,
+                 file_template_project_id: int,
+                 full_name: str,
+                 full_path: str,
+                 group_id: int,
+                 ip_restriction_ranges: str,
+                 lfs_enabled: bool,
+                 mentions_disabled: bool,
+                 name: str,
+                 parent_id: int,
+                 path: str,
+                 project_creation_level: str,
+                 request_access_enabled: bool,
+                 require_two_factor_authentication: bool,
+                 share_with_group_lock: bool,
+                 statistics: Mapping[str, str],
+                 subgroup_creation_level: str,
+                 two_factor_grace_period: int,
+                 visibility: str,
+                 web_url: str):
+        """
+        :param int group_id: The ID of the group.
+        :param Mapping[str, str] statistics: Include group statistics (administrators only).
+        """
+        pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
+        pulumi.set(__self__, "avatar_url", avatar_url)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "default_branch_protection", default_branch_protection)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "emails_disabled", emails_disabled)
+        pulumi.set(__self__, "file_template_project_id", file_template_project_id)
+        pulumi.set(__self__, "full_name", full_name)
+        pulumi.set(__self__, "full_path", full_path)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "ip_restriction_ranges", ip_restriction_ranges)
+        pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        pulumi.set(__self__, "mentions_disabled", mentions_disabled)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parent_id", parent_id)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "project_creation_level", project_creation_level)
+        pulumi.set(__self__, "request_access_enabled", request_access_enabled)
+        pulumi.set(__self__, "require_two_factor_authentication", require_two_factor_authentication)
+        pulumi.set(__self__, "share_with_group_lock", share_with_group_lock)
+        pulumi.set(__self__, "statistics", statistics)
+        pulumi.set(__self__, "subgroup_creation_level", subgroup_creation_level)
+        pulumi.set(__self__, "two_factor_grace_period", two_factor_grace_period)
+        pulumi.set(__self__, "visibility", visibility)
+        pulumi.set(__self__, "web_url", web_url)
+
+    @property
+    @pulumi.getter(name="autoDevopsEnabled")
+    def auto_devops_enabled(self) -> bool:
+        return pulumi.get(self, "auto_devops_enabled")
+
+    @property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> str:
+        return pulumi.get(self, "avatar_url")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="defaultBranchProtection")
+    def default_branch_protection(self) -> int:
+        return pulumi.get(self, "default_branch_protection")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="emailsDisabled")
+    def emails_disabled(self) -> bool:
+        return pulumi.get(self, "emails_disabled")
+
+    @property
+    @pulumi.getter(name="fileTemplateProjectId")
+    def file_template_project_id(self) -> int:
+        return pulumi.get(self, "file_template_project_id")
+
+    @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> str:
+        return pulumi.get(self, "full_name")
+
+    @property
+    @pulumi.getter(name="fullPath")
+    def full_path(self) -> str:
+        return pulumi.get(self, "full_path")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> int:
+        """
+        The ID of the group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="ipRestrictionRanges")
+    def ip_restriction_ranges(self) -> str:
+        return pulumi.get(self, "ip_restriction_ranges")
+
+    @property
+    @pulumi.getter(name="lfsEnabled")
+    def lfs_enabled(self) -> bool:
+        return pulumi.get(self, "lfs_enabled")
+
+    @property
+    @pulumi.getter(name="mentionsDisabled")
+    def mentions_disabled(self) -> bool:
+        return pulumi.get(self, "mentions_disabled")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> int:
+        return pulumi.get(self, "parent_id")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="projectCreationLevel")
+    def project_creation_level(self) -> str:
+        return pulumi.get(self, "project_creation_level")
+
+    @property
+    @pulumi.getter(name="requestAccessEnabled")
+    def request_access_enabled(self) -> bool:
+        return pulumi.get(self, "request_access_enabled")
+
+    @property
+    @pulumi.getter(name="requireTwoFactorAuthentication")
+    def require_two_factor_authentication(self) -> bool:
+        return pulumi.get(self, "require_two_factor_authentication")
+
+    @property
+    @pulumi.getter(name="shareWithGroupLock")
+    def share_with_group_lock(self) -> bool:
+        return pulumi.get(self, "share_with_group_lock")
+
+    @property
+    @pulumi.getter
+    def statistics(self) -> Mapping[str, str]:
+        """
+        Include group statistics (administrators only).
+        """
+        return pulumi.get(self, "statistics")
+
+    @property
+    @pulumi.getter(name="subgroupCreationLevel")
+    def subgroup_creation_level(self) -> str:
+        return pulumi.get(self, "subgroup_creation_level")
+
+    @property
+    @pulumi.getter(name="twoFactorGracePeriod")
+    def two_factor_grace_period(self) -> int:
+        return pulumi.get(self, "two_factor_grace_period")
+
+    @property
+    @pulumi.getter
+    def visibility(self) -> str:
+        return pulumi.get(self, "visibility")
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> str:
+        return pulumi.get(self, "web_url")
+
+
+@pulumi.output_type
 class GetGroupVariablesVariableResult(dict):
     def __init__(__self__, *,
                  environment_scope: str,
@@ -1525,6 +1720,109 @@ class GetGroupVariablesVariableResult(dict):
     @pulumi.getter(name="variableType")
     def variable_type(self) -> str:
         return pulumi.get(self, "variable_type")
+
+
+@pulumi.output_type
+class GetGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 default_branch_protection: int,
+                 description: str,
+                 full_name: str,
+                 full_path: str,
+                 group_id: int,
+                 lfs_enabled: bool,
+                 name: str,
+                 parent_id: int,
+                 path: str,
+                 prevent_forking_outside_group: bool,
+                 request_access_enabled: bool,
+                 runners_token: str,
+                 visibility_level: str,
+                 web_url: str):
+        pulumi.set(__self__, "default_branch_protection", default_branch_protection)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "full_name", full_name)
+        pulumi.set(__self__, "full_path", full_path)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parent_id", parent_id)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "prevent_forking_outside_group", prevent_forking_outside_group)
+        pulumi.set(__self__, "request_access_enabled", request_access_enabled)
+        pulumi.set(__self__, "runners_token", runners_token)
+        pulumi.set(__self__, "visibility_level", visibility_level)
+        pulumi.set(__self__, "web_url", web_url)
+
+    @property
+    @pulumi.getter(name="defaultBranchProtection")
+    def default_branch_protection(self) -> int:
+        return pulumi.get(self, "default_branch_protection")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> str:
+        return pulumi.get(self, "full_name")
+
+    @property
+    @pulumi.getter(name="fullPath")
+    def full_path(self) -> str:
+        return pulumi.get(self, "full_path")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> int:
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="lfsEnabled")
+    def lfs_enabled(self) -> bool:
+        return pulumi.get(self, "lfs_enabled")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> int:
+        return pulumi.get(self, "parent_id")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="preventForkingOutsideGroup")
+    def prevent_forking_outside_group(self) -> bool:
+        return pulumi.get(self, "prevent_forking_outside_group")
+
+    @property
+    @pulumi.getter(name="requestAccessEnabled")
+    def request_access_enabled(self) -> bool:
+        return pulumi.get(self, "request_access_enabled")
+
+    @property
+    @pulumi.getter(name="runnersToken")
+    def runners_token(self) -> str:
+        return pulumi.get(self, "runners_token")
+
+    @property
+    @pulumi.getter(name="visibilityLevel")
+    def visibility_level(self) -> str:
+        return pulumi.get(self, "visibility_level")
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> str:
+        return pulumi.get(self, "web_url")
 
 
 @pulumi.output_type
@@ -1678,6 +1976,162 @@ class GetInstanceVariablesVariableResult(dict):
     @pulumi.getter(name="variableType")
     def variable_type(self) -> str:
         return pulumi.get(self, "variable_type")
+
+
+@pulumi.output_type
+class GetProjectBranchesBranchResult(dict):
+    def __init__(__self__, *,
+                 can_push: bool,
+                 commits: Sequence['outputs.GetProjectBranchesBranchCommitResult'],
+                 default: bool,
+                 developers_can_merge: bool,
+                 developers_can_push: bool,
+                 merged: bool,
+                 name: str,
+                 protected: bool,
+                 web_url: str):
+        pulumi.set(__self__, "can_push", can_push)
+        pulumi.set(__self__, "commits", commits)
+        pulumi.set(__self__, "default", default)
+        pulumi.set(__self__, "developers_can_merge", developers_can_merge)
+        pulumi.set(__self__, "developers_can_push", developers_can_push)
+        pulumi.set(__self__, "merged", merged)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "protected", protected)
+        pulumi.set(__self__, "web_url", web_url)
+
+    @property
+    @pulumi.getter(name="canPush")
+    def can_push(self) -> bool:
+        return pulumi.get(self, "can_push")
+
+    @property
+    @pulumi.getter
+    def commits(self) -> Sequence['outputs.GetProjectBranchesBranchCommitResult']:
+        return pulumi.get(self, "commits")
+
+    @property
+    @pulumi.getter
+    def default(self) -> bool:
+        return pulumi.get(self, "default")
+
+    @property
+    @pulumi.getter(name="developersCanMerge")
+    def developers_can_merge(self) -> bool:
+        return pulumi.get(self, "developers_can_merge")
+
+    @property
+    @pulumi.getter(name="developersCanPush")
+    def developers_can_push(self) -> bool:
+        return pulumi.get(self, "developers_can_push")
+
+    @property
+    @pulumi.getter
+    def merged(self) -> bool:
+        return pulumi.get(self, "merged")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def protected(self) -> bool:
+        return pulumi.get(self, "protected")
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> str:
+        return pulumi.get(self, "web_url")
+
+
+@pulumi.output_type
+class GetProjectBranchesBranchCommitResult(dict):
+    def __init__(__self__, *,
+                 author_email: str,
+                 author_name: str,
+                 authored_date: str,
+                 committed_date: str,
+                 committer_email: str,
+                 committer_name: str,
+                 id: str,
+                 message: str,
+                 parent_ids: Sequence[str],
+                 short_id: str,
+                 title: str):
+        """
+        :param str id: The ID of this resource.
+        """
+        pulumi.set(__self__, "author_email", author_email)
+        pulumi.set(__self__, "author_name", author_name)
+        pulumi.set(__self__, "authored_date", authored_date)
+        pulumi.set(__self__, "committed_date", committed_date)
+        pulumi.set(__self__, "committer_email", committer_email)
+        pulumi.set(__self__, "committer_name", committer_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "parent_ids", parent_ids)
+        pulumi.set(__self__, "short_id", short_id)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="authorEmail")
+    def author_email(self) -> str:
+        return pulumi.get(self, "author_email")
+
+    @property
+    @pulumi.getter(name="authorName")
+    def author_name(self) -> str:
+        return pulumi.get(self, "author_name")
+
+    @property
+    @pulumi.getter(name="authoredDate")
+    def authored_date(self) -> str:
+        return pulumi.get(self, "authored_date")
+
+    @property
+    @pulumi.getter(name="committedDate")
+    def committed_date(self) -> str:
+        return pulumi.get(self, "committed_date")
+
+    @property
+    @pulumi.getter(name="committerEmail")
+    def committer_email(self) -> str:
+        return pulumi.get(self, "committer_email")
+
+    @property
+    @pulumi.getter(name="committerName")
+    def committer_name(self) -> str:
+        return pulumi.get(self, "committer_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter(name="parentIds")
+    def parent_ids(self) -> Sequence[str]:
+        return pulumi.get(self, "parent_ids")
+
+    @property
+    @pulumi.getter(name="shortId")
+    def short_id(self) -> str:
+        return pulumi.get(self, "short_id")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
 
 
 @pulumi.output_type
@@ -4019,6 +4473,59 @@ class GetRepositoryTreeTreeResult(dict):
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetUserSshkeysKeyResult(dict):
+    def __init__(__self__, *,
+                 created_at: str,
+                 expires_at: str,
+                 key: str,
+                 key_id: int,
+                 title: str,
+                 user_id: int):
+        """
+        :param int user_id: ID of the user to get the SSH keys for.
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "expires_at", expires_at)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "title", title)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> str:
+        return pulumi.get(self, "expires_at")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> int:
+        return pulumi.get(self, "key_id")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> int:
+        """
+        ID of the user to get the SSH keys for.
+        """
+        return pulumi.get(self, "user_id")
 
 
 @pulumi.output_type

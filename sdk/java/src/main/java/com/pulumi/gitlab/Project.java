@@ -560,14 +560,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mergeCommitTemplate);
     }
     /**
-     * Set to `ff` to create fast-forward merges
+     * Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
      * 
      */
     @Export(name="mergeMethod", type=String.class, parameters={})
     private Output</* @Nullable */ String> mergeMethod;
 
     /**
-     * @return Set to `ff` to create fast-forward merges
+     * @return Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
      * 
      */
     public Output<Optional<String>> mergeMethod() {
@@ -788,14 +788,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="pagesAccessLevel", type=String.class, parameters={})
-    private Output</* @Nullable */ String> pagesAccessLevel;
+    private Output<String> pagesAccessLevel;
 
     /**
      * @return Enable pages access control
      * 
      */
-    public Output<Optional<String>> pagesAccessLevel() {
-        return Codegen.optional(this.pagesAccessLevel);
+    public Output<String> pagesAccessLevel() {
+        return this.pagesAccessLevel;
     }
     /**
      * The path of the repository.
@@ -826,18 +826,22 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.pathWithNamespace;
     }
     /**
-     * Enable pipelines for the project.
+     * Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
+     * 
+     * @deprecated
+     * Deprecated in favor of `builds_access_level`
      * 
      */
+    @Deprecated /* Deprecated in favor of `builds_access_level` */
     @Export(name="pipelinesEnabled", type=Boolean.class, parameters={})
-    private Output</* @Nullable */ Boolean> pipelinesEnabled;
+    private Output<Boolean> pipelinesEnabled;
 
     /**
-     * @return Enable pipelines for the project.
+     * @return Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
      * 
      */
-    public Output<Optional<Boolean>> pipelinesEnabled() {
-        return Codegen.optional(this.pipelinesEnabled);
+    public Output<Boolean> pipelinesEnabled() {
+        return this.pipelinesEnabled;
     }
     /**
      * Show link to create/view merge request when pushing from the command line
@@ -858,14 +862,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="publicBuilds", type=Boolean.class, parameters={})
-    private Output</* @Nullable */ Boolean> publicBuilds;
+    private Output<Boolean> publicBuilds;
 
     /**
      * @return If true, jobs can be viewed by non-project members.
      * 
      */
-    public Output<Optional<Boolean>> publicBuilds() {
-        return Codegen.optional(this.publicBuilds);
+    public Output<Boolean> publicBuilds() {
+        return this.publicBuilds;
     }
     /**
      * Push rules for the project.

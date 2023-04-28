@@ -58,7 +58,7 @@ namespace Pulumi.GitLab
         public Output<int> BranchProtectionId { get; private set; } = null!;
 
         /// <summary>
-        /// Can be set to true to require code owner approval before merging.
+        /// Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
         /// </summary>
         [Output("codeOwnerApprovalRequired")]
         public Output<bool?> CodeOwnerApprovalRequired { get; private set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.GitLab
         public Input<string> Branch { get; set; } = null!;
 
         /// <summary>
-        /// Can be set to true to require code owner approval before merging.
+        /// Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
         /// </summary>
         [Input("codeOwnerApprovalRequired")]
         public Input<bool>? CodeOwnerApprovalRequired { get; set; }
@@ -274,7 +274,7 @@ namespace Pulumi.GitLab
         public Input<int>? BranchProtectionId { get; set; }
 
         /// <summary>
-        /// Can be set to true to require code owner approval before merging.
+        /// Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
         /// </summary>
         [Input("codeOwnerApprovalRequired")]
         public Input<bool>? CodeOwnerApprovalRequired { get; set; }

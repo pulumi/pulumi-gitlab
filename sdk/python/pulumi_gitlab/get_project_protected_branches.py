@@ -72,7 +72,7 @@ class AwaitableGetProjectProtectedBranchesResult(GetProjectProtectedBranchesResu
 def get_project_protected_branches(project_id: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectProtectedBranchesResult:
     """
-    The `gitlab_protected_branches` data source allows details of the protected branches of a given project.
+    The `get_project_protected_branches` data source allows details of the protected branches of a given project.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
 
@@ -103,7 +103,7 @@ def get_project_protected_branches(project_id: Optional[str] = None,
 def get_project_protected_branches_output(project_id: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectProtectedBranchesResult]:
     """
-    The `gitlab_protected_branches` data source allows details of the protected branches of a given project.
+    The `get_project_protected_branches` data source allows details of the protected branches of a given project.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
 

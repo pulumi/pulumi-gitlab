@@ -141,14 +141,14 @@ public class UserSshKey extends com.pulumi.resources.CustomResource {
         return this.title;
     }
     /**
-     * The ID of the user to add the ssh key to.
+     * The ID or username of the user.
      * 
      */
     @Export(name="userId", type=Integer.class, parameters={})
     private Output<Integer> userId;
 
     /**
-     * @return The ID of the user to add the ssh key to.
+     * @return The ID or username of the user.
      * 
      */
     public Output<Integer> userId() {

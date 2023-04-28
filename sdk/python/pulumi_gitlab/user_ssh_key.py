@@ -22,7 +22,7 @@ class UserSshKeyArgs:
         The set of arguments for constructing a UserSshKey resource.
         :param pulumi.Input[str] key: The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
         :param pulumi.Input[str] title: The title of the ssh key.
-        :param pulumi.Input[int] user_id: The ID of the user to add the ssh key to.
+        :param pulumi.Input[int] user_id: The ID or username of the user.
         :param pulumi.Input[str] expires_at: The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
         """
         pulumi.set(__self__, "key", key)
@@ -59,7 +59,7 @@ class UserSshKeyArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Input[int]:
         """
-        The ID of the user to add the ssh key to.
+        The ID or username of the user.
         """
         return pulumi.get(self, "user_id")
 
@@ -96,7 +96,7 @@ class _UserSshKeyState:
         :param pulumi.Input[str] key: The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
         :param pulumi.Input[int] key_id: The ID of the ssh key.
         :param pulumi.Input[str] title: The title of the ssh key.
-        :param pulumi.Input[int] user_id: The ID of the user to add the ssh key to.
+        :param pulumi.Input[int] user_id: The ID or username of the user.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -175,7 +175,7 @@ class _UserSshKeyState:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the user to add the ssh key to.
+        The ID or username of the user.
         """
         return pulumi.get(self, "user_id")
 
@@ -226,7 +226,7 @@ class UserSshKey(pulumi.CustomResource):
         :param pulumi.Input[str] expires_at: The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
         :param pulumi.Input[str] key: The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
         :param pulumi.Input[str] title: The title of the ssh key.
-        :param pulumi.Input[int] user_id: The ID of the user to add the ssh key to.
+        :param pulumi.Input[int] user_id: The ID or username of the user.
         """
         ...
     @overload
@@ -329,7 +329,7 @@ class UserSshKey(pulumi.CustomResource):
         :param pulumi.Input[str] key: The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
         :param pulumi.Input[int] key_id: The ID of the ssh key.
         :param pulumi.Input[str] title: The title of the ssh key.
-        :param pulumi.Input[int] user_id: The ID of the user to add the ssh key to.
+        :param pulumi.Input[int] user_id: The ID or username of the user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -387,7 +387,7 @@ class UserSshKey(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[int]:
         """
-        The ID of the user to add the ssh key to.
+        The ID or username of the user.
         """
         return pulumi.get(self, "user_id")
 

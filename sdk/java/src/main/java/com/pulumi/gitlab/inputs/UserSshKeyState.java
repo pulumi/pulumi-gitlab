@@ -92,14 +92,14 @@ public final class UserSshKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the user to add the ssh key to.
+     * The ID or username of the user.
      * 
      */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
     /**
-     * @return The ID of the user to add the ssh key to.
+     * @return The ID or username of the user.
      * 
      */
     public Optional<Output<Integer>> userId() {
@@ -241,7 +241,7 @@ public final class UserSshKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userId The ID of the user to add the ssh key to.
+         * @param userId The ID or username of the user.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class UserSshKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userId The ID of the user to add the ssh key to.
+         * @param userId The ID or username of the user.
          * 
          * @return builder
          * 

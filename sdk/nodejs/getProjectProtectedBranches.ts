@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlabProtectedBranches` data source allows details of the protected branches of a given project.
+ * The `gitlab.getProjectProtectedBranches` data source allows details of the protected branches of a given project.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
  *
@@ -58,7 +58,7 @@ export interface GetProjectProtectedBranchesResult {
     readonly protectedBranches: outputs.GetProjectProtectedBranchesProtectedBranch[];
 }
 /**
- * The `gitlabProtectedBranches` data source allows details of the protected branches of a given project.
+ * The `gitlab.getProjectProtectedBranches` data source allows details of the protected branches of a given project.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
  *
