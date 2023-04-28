@@ -107,18 +107,18 @@ tfgen: install_plugins upstream
 	$(WORKING_DIR)/bin/$(TFGEN) schema --out provider/cmd/$(PROVIDER)
 	(cd provider && VERSION=$(VERSION) go generate cmd/$(PROVIDER)/main.go)
 
-upstream.rebase:
-	@./scripts/upstream.sh "$@" start_rebase
-
-upstream.toPatches:
-	@./scripts/upstream.sh "$@" end_rebase
-
 upstream:
 ifneq ("$(wildcard upstream)","")
-	@./scripts/upstream.sh "$@" apply
+	@$(SHELL) ./scripts/upstream.sh "$@" apply
 endif
+
+upstream.finalize:
+	@$(SHELL) ./scripts/upstream.sh "$@" end_rebase
+
+upstream.rebase:
+	@$(SHELL) ./scripts/upstream.sh "$@" start_rebase
 
 bin/pulumi-java-gen:
 	$(shell pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java)
 
-.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_plugins lint_provider provider test tfgen upstream upstream.rebase upstream.toPatches
+.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_plugins lint_provider provider test tfgen upstream upstream.finalize upstream.rebase
