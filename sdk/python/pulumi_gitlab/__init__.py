@@ -21,12 +21,15 @@ from .get_group import *
 from .get_group_hook import *
 from .get_group_hooks import *
 from .get_group_membership import *
+from .get_group_subgroups import *
 from .get_group_variable import *
 from .get_group_variables import *
+from .get_groups import *
 from .get_instance_deploy_keys import *
 from .get_instance_variable import *
 from .get_instance_variables import *
 from .get_project import *
+from .get_project_branches import *
 from .get_project_hook import *
 from .get_project_hooks import *
 from .get_project_issue import *
@@ -46,6 +49,7 @@ from .get_release_links import *
 from .get_repository_file import *
 from .get_repository_tree import *
 from .get_user import *
+from .get_user_sshkeys import *
 from .get_users import *
 from .group import *
 from .group_access_token import *

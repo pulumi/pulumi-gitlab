@@ -451,6 +451,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly gravatarEnabled!: pulumi.Output<boolean>;
     /**
+     * Prevent overrides of default branch protection.
+     */
+    public readonly groupOwnersCanManageDefaultBranchProtection!: pulumi.Output<boolean>;
+    /**
      * Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
      */
     public readonly hashedStorageEnabled!: pulumi.Output<boolean>;
@@ -1121,6 +1125,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["grafanaEnabled"] = state ? state.grafanaEnabled : undefined;
             resourceInputs["grafanaUrl"] = state ? state.grafanaUrl : undefined;
             resourceInputs["gravatarEnabled"] = state ? state.gravatarEnabled : undefined;
+            resourceInputs["groupOwnersCanManageDefaultBranchProtection"] = state ? state.groupOwnersCanManageDefaultBranchProtection : undefined;
             resourceInputs["hashedStorageEnabled"] = state ? state.hashedStorageEnabled : undefined;
             resourceInputs["helpPageHideCommercialContent"] = state ? state.helpPageHideCommercialContent : undefined;
             resourceInputs["helpPageSupportUrl"] = state ? state.helpPageSupportUrl : undefined;
@@ -1363,6 +1368,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["grafanaEnabled"] = args ? args.grafanaEnabled : undefined;
             resourceInputs["grafanaUrl"] = args ? args.grafanaUrl : undefined;
             resourceInputs["gravatarEnabled"] = args ? args.gravatarEnabled : undefined;
+            resourceInputs["groupOwnersCanManageDefaultBranchProtection"] = args ? args.groupOwnersCanManageDefaultBranchProtection : undefined;
             resourceInputs["hashedStorageEnabled"] = args ? args.hashedStorageEnabled : undefined;
             resourceInputs["helpPageHideCommercialContent"] = args ? args.helpPageHideCommercialContent : undefined;
             resourceInputs["helpPageSupportUrl"] = args ? args.helpPageSupportUrl : undefined;
@@ -1918,6 +1924,10 @@ export interface ApplicationSettingsState {
      * Enable Gravatar.
      */
     gravatarEnabled?: pulumi.Input<boolean>;
+    /**
+     * Prevent overrides of default branch protection.
+     */
+    groupOwnersCanManageDefaultBranchProtection?: pulumi.Input<boolean>;
     /**
      * Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
      */
@@ -2884,6 +2894,10 @@ export interface ApplicationSettingsArgs {
      * Enable Gravatar.
      */
     gravatarEnabled?: pulumi.Input<boolean>;
+    /**
+     * Prevent overrides of default branch protection.
+     */
+    groupOwnersCanManageDefaultBranchProtection?: pulumi.Input<boolean>;
     /**
      * Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
      */

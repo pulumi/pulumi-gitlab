@@ -728,6 +728,123 @@
                 }
             }
         },
+        "gitlab:index/getGroupSubgroupsSubgroup:getGroupSubgroupsSubgroup": {
+            "properties": {
+                "autoDevopsEnabled": {
+                    "type": "boolean"
+                },
+                "avatarUrl": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "defaultBranchProtection": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "emailsDisabled": {
+                    "type": "boolean"
+                },
+                "fileTemplateProjectId": {
+                    "type": "integer"
+                },
+                "fullName": {
+                    "type": "string"
+                },
+                "fullPath": {
+                    "type": "string"
+                },
+                "groupId": {
+                    "type": "integer",
+                    "description": "The ID of the group.\n"
+                },
+                "ipRestrictionRanges": {
+                    "type": "string"
+                },
+                "lfsEnabled": {
+                    "type": "boolean"
+                },
+                "mentionsDisabled": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "parentId": {
+                    "type": "integer"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "projectCreationLevel": {
+                    "type": "string"
+                },
+                "requestAccessEnabled": {
+                    "type": "boolean"
+                },
+                "requireTwoFactorAuthentication": {
+                    "type": "boolean"
+                },
+                "shareWithGroupLock": {
+                    "type": "boolean"
+                },
+                "statistics": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Include group statistics (administrators only).\n"
+                },
+                "subgroupCreationLevel": {
+                    "type": "string"
+                },
+                "twoFactorGracePeriod": {
+                    "type": "integer"
+                },
+                "visibility": {
+                    "type": "string"
+                },
+                "webUrl": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "autoDevopsEnabled",
+                "avatarUrl",
+                "createdAt",
+                "defaultBranchProtection",
+                "description",
+                "emailsDisabled",
+                "fileTemplateProjectId",
+                "fullName",
+                "fullPath",
+                "groupId",
+                "ipRestrictionRanges",
+                "lfsEnabled",
+                "mentionsDisabled",
+                "name",
+                "parentId",
+                "path",
+                "projectCreationLevel",
+                "requestAccessEnabled",
+                "requireTwoFactorAuthentication",
+                "shareWithGroupLock",
+                "statistics",
+                "subgroupCreationLevel",
+                "twoFactorGracePeriod",
+                "visibility",
+                "webUrl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "gitlab:index/getGroupVariablesVariable:getGroupVariablesVariable": {
             "properties": {
                 "environmentScope": {
@@ -763,6 +880,75 @@
                 "protected",
                 "value",
                 "variableType"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "gitlab:index/getGroupsGroup:getGroupsGroup": {
+            "properties": {
+                "defaultBranchProtection": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "fullName": {
+                    "type": "string"
+                },
+                "fullPath": {
+                    "type": "string"
+                },
+                "groupId": {
+                    "type": "integer"
+                },
+                "lfsEnabled": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "parentId": {
+                    "type": "integer"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "preventForkingOutsideGroup": {
+                    "type": "boolean"
+                },
+                "requestAccessEnabled": {
+                    "type": "boolean"
+                },
+                "runnersToken": {
+                    "type": "string",
+                    "secret": true
+                },
+                "visibilityLevel": {
+                    "type": "string"
+                },
+                "webUrl": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultBranchProtection",
+                "description",
+                "fullName",
+                "fullPath",
+                "groupId",
+                "lfsEnabled",
+                "name",
+                "parentId",
+                "path",
+                "preventForkingOutsideGroup",
+                "requestAccessEnabled",
+                "runnersToken",
+                "visibilityLevel",
+                "webUrl"
             ],
             "language": {
                 "nodejs": {
@@ -876,6 +1062,117 @@
                 "protected",
                 "value",
                 "variableType"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "gitlab:index/getProjectBranchesBranch:getProjectBranchesBranch": {
+            "properties": {
+                "canPush": {
+                    "type": "boolean"
+                },
+                "commits": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/gitlab:index/getProjectBranchesBranchCommit:getProjectBranchesBranchCommit"
+                    }
+                },
+                "default": {
+                    "type": "boolean"
+                },
+                "developersCanMerge": {
+                    "type": "boolean"
+                },
+                "developersCanPush": {
+                    "type": "boolean"
+                },
+                "merged": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "protected": {
+                    "type": "boolean"
+                },
+                "webUrl": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "canPush",
+                "commits",
+                "default",
+                "developersCanMerge",
+                "developersCanPush",
+                "merged",
+                "name",
+                "protected",
+                "webUrl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "gitlab:index/getProjectBranchesBranchCommit:getProjectBranchesBranchCommit": {
+            "properties": {
+                "authorEmail": {
+                    "type": "string"
+                },
+                "authorName": {
+                    "type": "string"
+                },
+                "authoredDate": {
+                    "type": "string"
+                },
+                "committedDate": {
+                    "type": "string"
+                },
+                "committerEmail": {
+                    "type": "string"
+                },
+                "committerName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "parentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "shortId": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "authorEmail",
+                "authorName",
+                "authoredDate",
+                "committedDate",
+                "committerEmail",
+                "committerName",
+                "id",
+                "message",
+                "parentIds",
+                "shortId",
+                "title"
             ],
             "language": {
                 "nodejs": {
@@ -2485,6 +2782,43 @@
                 }
             }
         },
+        "gitlab:index/getUserSshkeysKey:getUserSshkeysKey": {
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "expiresAt": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "keyId": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "ID of the user to get the SSH keys for.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdAt",
+                "expiresAt",
+                "key",
+                "keyId",
+                "title",
+                "userId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "gitlab:index/getUsersUser:getUsersUser": {
             "properties": {
                 "avatarUrl": {
@@ -3117,6 +3451,10 @@
                 "gravatarEnabled": {
                     "type": "boolean",
                     "description": "Enable Gravatar.\n"
+                },
+                "groupOwnersCanManageDefaultBranchProtection": {
+                    "type": "boolean",
+                    "description": "Prevent overrides of default branch protection.\n"
                 },
                 "hashedStorageEnabled": {
                     "type": "boolean",
@@ -3798,6 +4136,7 @@
                 "grafanaEnabled",
                 "grafanaUrl",
                 "gravatarEnabled",
+                "groupOwnersCanManageDefaultBranchProtection",
                 "hashedStorageEnabled",
                 "helpPageHideCommercialContent",
                 "helpPageSupportUrl",
@@ -4375,6 +4714,10 @@
                 "gravatarEnabled": {
                     "type": "boolean",
                     "description": "Enable Gravatar.\n"
+                },
+                "groupOwnersCanManageDefaultBranchProtection": {
+                    "type": "boolean",
+                    "description": "Prevent overrides of default branch protection.\n"
                 },
                 "hashedStorageEnabled": {
                     "type": "boolean",
@@ -5394,6 +5737,10 @@
                         "type": "boolean",
                         "description": "Enable Gravatar.\n"
                     },
+                    "groupOwnersCanManageDefaultBranchProtection": {
+                        "type": "boolean",
+                        "description": "Prevent overrides of default branch protection.\n"
+                    },
                     "hashedStorageEnabled": {
                         "type": "boolean",
                         "description": "Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).\n"
@@ -6155,7 +6502,7 @@
                 },
                 "codeOwnerApprovalRequired": {
                     "type": "boolean",
-                    "description": "Can be set to true to require code owner approval before merging.\n"
+                    "description": "Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.\n"
                 },
                 "mergeAccessLevel": {
                     "type": "string",
@@ -6216,7 +6563,7 @@
                 },
                 "codeOwnerApprovalRequired": {
                     "type": "boolean",
-                    "description": "Can be set to true to require code owner approval before merging.\n"
+                    "description": "Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.\n"
                 },
                 "mergeAccessLevel": {
                     "type": "string",
@@ -6286,7 +6633,7 @@
                     },
                     "codeOwnerApprovalRequired": {
                         "type": "boolean",
-                        "description": "Can be set to true to require code owner approval before merging.\n"
+                        "description": "Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.\n"
                     },
                     "mergeAccessLevel": {
                         "type": "string",
@@ -6831,6 +7178,10 @@
                     "type": "boolean",
                     "description": "Defaults to false. Disable email notifications.\n"
                 },
+                "extraSharedRunnersMinutesLimit": {
+                    "type": "integer",
+                    "description": "Can be set by administrators only. Additional CI/CD minutes for this group.\n"
+                },
                 "fullName": {
                     "type": "string",
                     "description": "The full name of the group.\n"
@@ -6842,6 +7193,10 @@
                 "lfsEnabled": {
                     "type": "boolean",
                     "description": "Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.\n"
+                },
+                "membershipLock": {
+                    "type": "boolean",
+                    "description": "Users cannot be added to projects in this group.\n"
                 },
                 "mentionsDisabled": {
                     "type": "boolean",
@@ -6883,6 +7238,10 @@
                 "shareWithGroupLock": {
                     "type": "boolean",
                     "description": "Defaults to false. Prevent sharing a project with another group within this group.\n"
+                },
+                "sharedRunnersMinutesLimit": {
+                    "type": "integer",
+                    "description": "Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or \u003e 0.\n"
                 },
                 "subgroupCreationLevel": {
                     "type": "string",
@@ -6927,9 +7286,17 @@
                     "type": "boolean",
                     "description": "Defaults to false. Disable email notifications.\n"
                 },
+                "extraSharedRunnersMinutesLimit": {
+                    "type": "integer",
+                    "description": "Can be set by administrators only. Additional CI/CD minutes for this group.\n"
+                },
                 "lfsEnabled": {
                     "type": "boolean",
                     "description": "Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.\n"
+                },
+                "membershipLock": {
+                    "type": "boolean",
+                    "description": "Users cannot be added to projects in this group.\n"
                 },
                 "mentionsDisabled": {
                     "type": "boolean",
@@ -6967,6 +7334,10 @@
                     "type": "boolean",
                     "description": "Defaults to false. Prevent sharing a project with another group within this group.\n"
                 },
+                "sharedRunnersMinutesLimit": {
+                    "type": "integer",
+                    "description": "Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or \u003e 0.\n"
+                },
                 "subgroupCreationLevel": {
                     "type": "string",
                     "description": "Defaults to owner. Allowed to create subgroups.\n"
@@ -7002,6 +7373,10 @@
                         "type": "boolean",
                         "description": "Defaults to false. Disable email notifications.\n"
                     },
+                    "extraSharedRunnersMinutesLimit": {
+                        "type": "integer",
+                        "description": "Can be set by administrators only. Additional CI/CD minutes for this group.\n"
+                    },
                     "fullName": {
                         "type": "string",
                         "description": "The full name of the group.\n"
@@ -7013,6 +7388,10 @@
                     "lfsEnabled": {
                         "type": "boolean",
                         "description": "Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.\n"
+                    },
+                    "membershipLock": {
+                        "type": "boolean",
+                        "description": "Users cannot be added to projects in this group.\n"
                     },
                     "mentionsDisabled": {
                         "type": "boolean",
@@ -7054,6 +7433,10 @@
                     "shareWithGroupLock": {
                         "type": "boolean",
                         "description": "Defaults to false. Prevent sharing a project with another group within this group.\n"
+                    },
+                    "sharedRunnersMinutesLimit": {
+                        "type": "integer",
+                        "description": "Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or \u003e 0.\n"
                     },
                     "subgroupCreationLevel": {
                         "type": "string",
@@ -9052,7 +9435,7 @@
             }
         },
         "gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable": {
-            "description": "The `gitlab.PipelineScheduleVariable` resource allows to manage the lifecycle of a variable for a pipeline schedule.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html#pipeline-schedule-variables)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst examplePipelineSchedule = new gitlab.PipelineSchedule(\"examplePipelineSchedule\", {\n    project: \"12345\",\n    description: \"Used to schedule builds\",\n    ref: \"master\",\n    cron: \"0 1 * * *\",\n});\nconst examplePipelineScheduleVariable = new gitlab.PipelineScheduleVariable(\"examplePipelineScheduleVariable\", {\n    project: gitlab_pipeline_schedule.project,\n    pipelineScheduleId: gitlab_pipeline_schedule.id,\n    key: \"EXAMPLE_KEY\",\n    value: \"example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample_pipeline_schedule = gitlab.PipelineSchedule(\"examplePipelineSchedule\",\n    project=\"12345\",\n    description=\"Used to schedule builds\",\n    ref=\"master\",\n    cron=\"0 1 * * *\")\nexample_pipeline_schedule_variable = gitlab.PipelineScheduleVariable(\"examplePipelineScheduleVariable\",\n    project=gitlab_pipeline_schedule[\"project\"],\n    pipeline_schedule_id=gitlab_pipeline_schedule[\"id\"],\n    key=\"EXAMPLE_KEY\",\n    value=\"example\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var examplePipelineSchedule = new GitLab.PipelineSchedule(\"examplePipelineSchedule\", new()\n    {\n        Project = \"12345\",\n        Description = \"Used to schedule builds\",\n        Ref = \"master\",\n        Cron = \"0 1 * * *\",\n    });\n\n    var examplePipelineScheduleVariable = new GitLab.PipelineScheduleVariable(\"examplePipelineScheduleVariable\", new()\n    {\n        Project = gitlab_pipeline_schedule.Project,\n        PipelineScheduleId = gitlab_pipeline_schedule.Id,\n        Key = \"EXAMPLE_KEY\",\n        Value = \"example\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewPipelineSchedule(ctx, \"examplePipelineSchedule\", \u0026gitlab.PipelineScheduleArgs{\n\t\t\tProject:     pulumi.String(\"12345\"),\n\t\t\tDescription: pulumi.String(\"Used to schedule builds\"),\n\t\t\tRef:         pulumi.String(\"master\"),\n\t\t\tCron:        pulumi.String(\"0 1 * * *\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewPipelineScheduleVariable(ctx, \"examplePipelineScheduleVariable\", \u0026gitlab.PipelineScheduleVariableArgs{\n\t\t\tProject:            pulumi.Any(gitlab_pipeline_schedule.Project),\n\t\t\tPipelineScheduleId: pulumi.Any(gitlab_pipeline_schedule.Id),\n\t\t\tKey:                pulumi.String(\"EXAMPLE_KEY\"),\n\t\t\tValue:              pulumi.String(\"example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.PipelineSchedule;\nimport com.pulumi.gitlab.PipelineScheduleArgs;\nimport com.pulumi.gitlab.PipelineScheduleVariable;\nimport com.pulumi.gitlab.PipelineScheduleVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var examplePipelineSchedule = new PipelineSchedule(\"examplePipelineSchedule\", PipelineScheduleArgs.builder()        \n            .project(\"12345\")\n            .description(\"Used to schedule builds\")\n            .ref(\"master\")\n            .cron(\"0 1 * * *\")\n            .build());\n\n        var examplePipelineScheduleVariable = new PipelineScheduleVariable(\"examplePipelineScheduleVariable\", PipelineScheduleVariableArgs.builder()        \n            .project(gitlab_pipeline_schedule.project())\n            .pipelineScheduleId(gitlab_pipeline_schedule.id())\n            .key(\"EXAMPLE_KEY\")\n            .value(\"example\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  examplePipelineSchedule:\n    type: gitlab:PipelineSchedule\n    properties:\n      project: '12345'\n      description: Used to schedule builds\n      ref: master\n      cron: 0 1 * * *\n  examplePipelineScheduleVariable:\n    type: gitlab:PipelineScheduleVariable\n    properties:\n      project: ${gitlab_pipeline_schedule.project}\n      pipelineScheduleId: ${gitlab_pipeline_schedule.id}\n      key: EXAMPLE_KEY\n      value: example\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nPipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.\n\n```sh\n $ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey\n```\n\n ",
+            "description": "The `gitlab.PipelineScheduleVariable` resource allows to manage the lifecycle of a variable for a pipeline schedule.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html#pipeline-schedule-variables)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst examplePipelineSchedule = new gitlab.PipelineSchedule(\"examplePipelineSchedule\", {\n    project: \"12345\",\n    description: \"Used to schedule builds\",\n    ref: \"master\",\n    cron: \"0 1 * * *\",\n});\nconst examplePipelineScheduleVariable = new gitlab.PipelineScheduleVariable(\"examplePipelineScheduleVariable\", {\n    project: examplePipelineSchedule.project,\n    pipelineScheduleId: examplePipelineSchedule.id,\n    key: \"EXAMPLE_KEY\",\n    value: \"example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample_pipeline_schedule = gitlab.PipelineSchedule(\"examplePipelineSchedule\",\n    project=\"12345\",\n    description=\"Used to schedule builds\",\n    ref=\"master\",\n    cron=\"0 1 * * *\")\nexample_pipeline_schedule_variable = gitlab.PipelineScheduleVariable(\"examplePipelineScheduleVariable\",\n    project=example_pipeline_schedule.project,\n    pipeline_schedule_id=example_pipeline_schedule.id,\n    key=\"EXAMPLE_KEY\",\n    value=\"example\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var examplePipelineSchedule = new GitLab.PipelineSchedule(\"examplePipelineSchedule\", new()\n    {\n        Project = \"12345\",\n        Description = \"Used to schedule builds\",\n        Ref = \"master\",\n        Cron = \"0 1 * * *\",\n    });\n\n    var examplePipelineScheduleVariable = new GitLab.PipelineScheduleVariable(\"examplePipelineScheduleVariable\", new()\n    {\n        Project = examplePipelineSchedule.Project,\n        PipelineScheduleId = examplePipelineSchedule.Id,\n        Key = \"EXAMPLE_KEY\",\n        Value = \"example\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texamplePipelineSchedule, err := gitlab.NewPipelineSchedule(ctx, \"examplePipelineSchedule\", \u0026gitlab.PipelineScheduleArgs{\n\t\t\tProject:     pulumi.String(\"12345\"),\n\t\t\tDescription: pulumi.String(\"Used to schedule builds\"),\n\t\t\tRef:         pulumi.String(\"master\"),\n\t\t\tCron:        pulumi.String(\"0 1 * * *\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewPipelineScheduleVariable(ctx, \"examplePipelineScheduleVariable\", \u0026gitlab.PipelineScheduleVariableArgs{\n\t\t\tProject:            examplePipelineSchedule.Project,\n\t\t\tPipelineScheduleId: examplePipelineSchedule.ID(),\n\t\t\tKey:                pulumi.String(\"EXAMPLE_KEY\"),\n\t\t\tValue:              pulumi.String(\"example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.PipelineSchedule;\nimport com.pulumi.gitlab.PipelineScheduleArgs;\nimport com.pulumi.gitlab.PipelineScheduleVariable;\nimport com.pulumi.gitlab.PipelineScheduleVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var examplePipelineSchedule = new PipelineSchedule(\"examplePipelineSchedule\", PipelineScheduleArgs.builder()        \n            .project(\"12345\")\n            .description(\"Used to schedule builds\")\n            .ref(\"master\")\n            .cron(\"0 1 * * *\")\n            .build());\n\n        var examplePipelineScheduleVariable = new PipelineScheduleVariable(\"examplePipelineScheduleVariable\", PipelineScheduleVariableArgs.builder()        \n            .project(examplePipelineSchedule.project())\n            .pipelineScheduleId(examplePipelineSchedule.id())\n            .key(\"EXAMPLE_KEY\")\n            .value(\"example\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  examplePipelineSchedule:\n    type: gitlab:PipelineSchedule\n    properties:\n      project: '12345'\n      description: Used to schedule builds\n      ref: master\n      cron: 0 1 * * *\n  examplePipelineScheduleVariable:\n    type: gitlab:PipelineScheduleVariable\n    properties:\n      project: ${examplePipelineSchedule.project}\n      pipelineScheduleId: ${examplePipelineSchedule.id}\n      key: EXAMPLE_KEY\n      value: example\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nPipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.\n\n```sh\n $ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey\n```\n\n ",
             "properties": {
                 "key": {
                     "type": "string",
@@ -9324,7 +9707,7 @@
                 },
                 "mergeMethod": {
                     "type": "string",
-                    "description": "Set to `ff` to create fast-forward merges\n"
+                    "description": "Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.\n"
                 },
                 "mergePipelinesEnabled": {
                     "type": "boolean",
@@ -9400,7 +9783,8 @@
                 },
                 "pipelinesEnabled": {
                     "type": "boolean",
-                    "description": "Enable pipelines for the project.\n"
+                    "description": "Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.\n",
+                    "deprecationMessage": "Deprecated in favor of `builds_access_level`"
                 },
                 "printingMergeRequestLinkEnabled": {
                     "type": "boolean",
@@ -9542,7 +9926,10 @@
                 "name",
                 "namespaceId",
                 "operationsAccessLevel",
+                "pagesAccessLevel",
                 "pathWithNamespace",
+                "pipelinesEnabled",
+                "publicBuilds",
                 "pushRules",
                 "repositoryAccessLevel",
                 "repositoryStorage",
@@ -9690,7 +10077,7 @@
                 },
                 "mergeMethod": {
                     "type": "string",
-                    "description": "Set to `ff` to create fast-forward merges\n"
+                    "description": "Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.\n"
                 },
                 "mergePipelinesEnabled": {
                     "type": "boolean",
@@ -9762,7 +10149,8 @@
                 },
                 "pipelinesEnabled": {
                     "type": "boolean",
-                    "description": "Enable pipelines for the project.\n"
+                    "description": "Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.\n",
+                    "deprecationMessage": "Deprecated in favor of `builds_access_level`"
                 },
                 "printingMergeRequestLinkEnabled": {
                     "type": "boolean",
@@ -10012,7 +10400,7 @@
                     },
                     "mergeMethod": {
                         "type": "string",
-                        "description": "Set to `ff` to create fast-forward merges\n"
+                        "description": "Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.\n"
                     },
                     "mergePipelinesEnabled": {
                         "type": "boolean",
@@ -10088,7 +10476,8 @@
                     },
                     "pipelinesEnabled": {
                         "type": "boolean",
-                        "description": "Enable pipelines for the project.\n"
+                        "description": "Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.\n",
+                        "deprecationMessage": "Deprecated in favor of `builds_access_level`"
                     },
                     "printingMergeRequestLinkEnabled": {
                         "type": "boolean",
@@ -10251,7 +10640,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Valid values: `api`, `read_api`, `read_repository`, `write_repository`.\n"
+                    "description": "Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.\n"
                 },
                 "token": {
                     "type": "string",
@@ -10299,7 +10688,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Valid values: `api`, `read_api`, `read_repository`, `write_repository`.\n",
+                    "description": "Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -10347,7 +10736,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Valid values: `api`, `read_api`, `read_repository`, `write_repository`.\n",
+                        "description": "Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.\n",
                         "willReplaceOnChanges": true
                     },
                     "token": {
@@ -15139,7 +15528,7 @@
                 },
                 "userId": {
                     "type": "integer",
-                    "description": "The ID of the user to add the ssh key to.\n"
+                    "description": "The ID or username of the user.\n"
                 }
             },
             "required": [
@@ -15167,7 +15556,7 @@
                 },
                 "userId": {
                     "type": "integer",
-                    "description": "The ID of the user to add the ssh key to.\n",
+                    "description": "The ID or username of the user.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -15204,7 +15593,7 @@
                     },
                     "userId": {
                         "type": "integer",
-                        "description": "The ID of the user to add the ssh key to.\n",
+                        "description": "The ID or username of the user.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -15484,6 +15873,10 @@
                         "type": "string",
                         "description": "The description of the group.\n"
                     },
+                    "extraSharedRunnersMinutesLimit": {
+                        "type": "integer",
+                        "description": "Can be set by administrators only. Additional CI/CD minutes for this group.\n"
+                    },
                     "fullName": {
                         "type": "string",
                         "description": "The full name of the group.\n"
@@ -15503,6 +15896,10 @@
                     "lfsEnabled": {
                         "type": "boolean",
                         "description": "Boolean, is LFS enabled for projects in this group.\n"
+                    },
+                    "membershipLock": {
+                        "type": "boolean",
+                        "description": "Users cannot be added to projects in this group.\n"
                     },
                     "name": {
                         "type": "string",
@@ -15529,6 +15926,10 @@
                         "description": "The group level registration token to use during runner setup.\n",
                         "secret": true
                     },
+                    "sharedRunnersMinutesLimit": {
+                        "type": "integer",
+                        "description": "Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or \u003e 0.\n"
+                    },
                     "visibilityLevel": {
                         "type": "string",
                         "description": "Visibility level of the group. Possible values are `private`, `internal`, `public`.\n"
@@ -15542,16 +15943,19 @@
                 "required": [
                     "defaultBranchProtection",
                     "description",
+                    "extraSharedRunnersMinutesLimit",
                     "fullName",
                     "fullPath",
                     "groupId",
                     "lfsEnabled",
+                    "membershipLock",
                     "name",
                     "parentId",
                     "path",
                     "preventForkingOutsideGroup",
                     "requestAccessEnabled",
                     "runnersToken",
+                    "sharedRunnersMinutesLimit",
                     "visibilityLevel",
                     "webUrl",
                     "id"
@@ -15791,6 +16195,135 @@
                 ]
             }
         },
+        "gitlab:index/getGroupSubgroups:getGroupSubgroups": {
+            "description": "The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-subgroups)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst subgroupsGroupSubgroups = gitlab.getGroupSubgroups({\n    groupId: 123456,\n});\nexport const subgroups = subgroupsGroupSubgroups;\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nsubgroups_group_subgroups = gitlab.get_group_subgroups(group_id=123456)\npulumi.export(\"subgroups\", subgroups_group_subgroups)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var subgroupsGroupSubgroups = GitLab.GetGroupSubgroups.Invoke(new()\n    {\n        GroupId = 123456,\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"subgroups\"] = subgroupsGroupSubgroups,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsubgroupsGroupSubgroups, err := gitlab.GetGroupSubgroups(ctx, \u0026gitlab.GetGroupSubgroupsArgs{\n\t\t\tGroupId: 123456,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"subgroups\", subgroupsGroupSubgroups)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetGroupSubgroupsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var subgroupsGroupSubgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()\n            .groupId(\"123456\")\n            .build());\n\n        ctx.export(\"subgroups\", subgroupsGroupSubgroups.applyValue(getGroupSubgroupsResult -\u003e getGroupSubgroupsResult));\n    }\n}\n```\n```yaml\nvariables:\n  subgroupsGroupSubgroups:\n    fn::invoke:\n      Function: gitlab:getGroupSubgroups\n      Arguments:\n        groupId: '123456'\noutputs:\n  subgroups: ${subgroupsGroupSubgroups}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGroupSubgroups.\n",
+                "properties": {
+                    "allAvailable": {
+                        "type": "boolean",
+                        "description": "Show all the groups you have access to.\n"
+                    },
+                    "groupId": {
+                        "type": "integer",
+                        "description": "The ID of the group.\n"
+                    },
+                    "minAccessLevel": {
+                        "type": "string",
+                        "description": "Limit to groups where current user has at least this access level.\n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "Order groups by name, path or id.\n"
+                    },
+                    "owned": {
+                        "type": "boolean",
+                        "description": "Limit to groups explicitly owned by the current user.\n"
+                    },
+                    "search": {
+                        "type": "string",
+                        "description": "Return the list of authorized groups matching the search criteria.\n"
+                    },
+                    "skipGroups": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "Skip the group IDs passed.\n"
+                    },
+                    "sort": {
+                        "type": "string",
+                        "description": "Order groups in asc or desc order.\n"
+                    },
+                    "statistics": {
+                        "type": "boolean",
+                        "description": "Include group statistics (administrators only).\n"
+                    },
+                    "withCustomAttributes": {
+                        "type": "boolean",
+                        "description": "Include custom attributes in response (administrators only).\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "groupId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGroupSubgroups.\n",
+                "properties": {
+                    "allAvailable": {
+                        "type": "boolean",
+                        "description": "Show all the groups you have access to.\n"
+                    },
+                    "groupId": {
+                        "type": "integer",
+                        "description": "The ID of the group.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "minAccessLevel": {
+                        "type": "string",
+                        "description": "Limit to groups where current user has at least this access level.\n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "Order groups by name, path or id.\n"
+                    },
+                    "owned": {
+                        "type": "boolean",
+                        "description": "Limit to groups explicitly owned by the current user.\n"
+                    },
+                    "search": {
+                        "type": "string",
+                        "description": "Return the list of authorized groups matching the search criteria.\n"
+                    },
+                    "skipGroups": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "Skip the group IDs passed.\n"
+                    },
+                    "sort": {
+                        "type": "string",
+                        "description": "Order groups in asc or desc order.\n"
+                    },
+                    "statistics": {
+                        "type": "boolean",
+                        "description": "Include group statistics (administrators only).\n"
+                    },
+                    "subgroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/getGroupSubgroupsSubgroup:getGroupSubgroupsSubgroup"
+                        },
+                        "description": "Subgroups of the parent group.\n"
+                    },
+                    "withCustomAttributes": {
+                        "type": "boolean",
+                        "description": "Include custom attributes in response (administrators only).\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "allAvailable",
+                    "groupId",
+                    "minAccessLevel",
+                    "orderBy",
+                    "owned",
+                    "search",
+                    "skipGroups",
+                    "sort",
+                    "statistics",
+                    "subgroups",
+                    "withCustomAttributes",
+                    "id"
+                ]
+            }
+        },
         "gitlab:index/getGroupVariable:getGroupVariable": {
             "description": "The `gitlab.GroupVariable` data source allows to retrieve details about a group-level CI/CD variable.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = gitlab.getGroupVariable({\n    group: \"my/example/group\",\n    key: \"foo\",\n});\nconst bar = gitlab.getGroupVariable({\n    environmentScope: \"staging/*\",\n    group: \"my/example/group\",\n    key: \"bar\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.get_group_variable(group=\"my/example/group\",\n    key=\"foo\")\nbar = gitlab.get_group_variable(environment_scope=\"staging/*\",\n    group=\"my/example/group\",\n    key=\"bar\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = GitLab.GetGroupVariable.Invoke(new()\n    {\n        Group = \"my/example/group\",\n        Key = \"foo\",\n    });\n\n    var bar = GitLab.GetGroupVariable.Invoke(new()\n    {\n        EnvironmentScope = \"staging/*\",\n        Group = \"my/example/group\",\n        Key = \"bar\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.LookupGroupVariable(ctx, \u0026gitlab.LookupGroupVariableArgs{\n\t\t\tGroup: \"my/example/group\",\n\t\t\tKey:   \"foo\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.LookupGroupVariable(ctx, \u0026gitlab.LookupGroupVariableArgs{\n\t\t\tEnvironmentScope: pulumi.StringRef(\"staging/*\"),\n\t\t\tGroup:            \"my/example/group\",\n\t\t\tKey:              \"bar\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetGroupVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = GitlabFunctions.getGroupVariable(GetGroupVariableArgs.builder()\n            .group(\"my/example/group\")\n            .key(\"foo\")\n            .build());\n\n        final var bar = GitlabFunctions.getGroupVariable(GetGroupVariableArgs.builder()\n            .environmentScope(\"staging/*\")\n            .group(\"my/example/group\")\n            .key(\"bar\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: gitlab:getGroupVariable\n      Arguments:\n        group: my/example/group\n        key: foo\n  bar:\n    fn::invoke:\n      Function: gitlab:getGroupVariable\n      Arguments:\n        environmentScope: staging/*\n        group: my/example/group\n        key: bar\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -15911,6 +16444,60 @@
                 "required": [
                     "group",
                     "variables",
+                    "id"
+                ]
+            }
+        },
+        "gitlab:index/getGroups:getGroups": {
+            "description": "The `gitlab.getGroups` data source allows details of multiple groups to be retrieved given some optional filter criteria.\n\n\u003e Some attributes might not be returned depending on if you're an admin or not.\n\n\u003e Some available options require administrator privileges.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = gitlab.getGroups({\n    orderBy: \"name\",\n    sort: \"desc\",\n});\nconst example-two = gitlab.getGroups({\n    search: \"GitLab\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_groups(order_by=\"name\",\n    sort=\"desc\")\nexample_two = gitlab.get_groups(search=\"GitLab\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = GitLab.GetGroups.Invoke(new()\n    {\n        OrderBy = \"name\",\n        Sort = \"desc\",\n    });\n\n    var example_two = GitLab.GetGroups.Invoke(new()\n    {\n        Search = \"GitLab\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.GetGroups(ctx, \u0026gitlab.GetGroupsArgs{\n\t\t\tOrderBy: pulumi.StringRef(\"name\"),\n\t\t\tSort:    pulumi.StringRef(\"desc\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.GetGroups(ctx, \u0026gitlab.GetGroupsArgs{\n\t\t\tSearch: pulumi.StringRef(\"GitLab\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetGroupsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()\n            .orderBy(\"name\")\n            .sort(\"desc\")\n            .build());\n\n        final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()\n            .search(\"GitLab\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: gitlab:getGroups\n      Arguments:\n        orderBy: name\n        sort: desc\n  example-two:\n    fn::invoke:\n      Function: gitlab:getGroups\n      Arguments:\n        search: GitLab\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGroups.\n",
+                "properties": {
+                    "orderBy": {
+                        "type": "string",
+                        "description": "Order the groups' list by `id`, `name`, `path`, or `similarity`. (Requires administrator privileges)\n"
+                    },
+                    "search": {
+                        "type": "string",
+                        "description": "Search groups by name or path.\n"
+                    },
+                    "sort": {
+                        "type": "string",
+                        "description": "Sort groups' list in asc or desc order. (Requires administrator privileges)\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGroups.\n",
+                "properties": {
+                    "groups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/getGroupsGroup:getGroupsGroup"
+                        },
+                        "description": "The list of groups.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "Order the groups' list by `id`, `name`, `path`, or `similarity`. (Requires administrator privileges)\n"
+                    },
+                    "search": {
+                        "type": "string",
+                        "description": "Search groups by name or path.\n"
+                    },
+                    "sort": {
+                        "type": "string",
+                        "description": "Sort groups' list in asc or desc order. (Requires administrator privileges)\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "groups",
                     "id"
                 ]
             }
@@ -16341,6 +16928,48 @@
                     "webUrl",
                     "wikiAccessLevel",
                     "wikiEnabled"
+                ]
+            }
+        },
+        "gitlab:index/getProjectBranches:getProjectBranches": {
+            "description": "The `gitlab.getProjectBranches` data source allows details of the branches of a given project to be retrieved.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = gitlab.getProjectBranches({\n    project: \"foo/bar/baz\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_project_branches(project=\"foo/bar/baz\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = GitLab.GetProjectBranches.Invoke(new()\n    {\n        Project = \"foo/bar/baz\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.GetProjectBranches(ctx, \u0026gitlab.GetProjectBranchesArgs{\n\t\t\tProject: \"foo/bar/baz\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetProjectBranchesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GitlabFunctions.getProjectBranches(GetProjectBranchesArgs.builder()\n            .project(\"foo/bar/baz\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: gitlab:getProjectBranches\n      Arguments:\n        project: foo/bar/baz\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getProjectBranches.\n",
+                "properties": {
+                    "project": {
+                        "type": "string",
+                        "description": "ID or URL-encoded path of the project owned by the authenticated user.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "project"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getProjectBranches.\n",
+                "properties": {
+                    "branches": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/getProjectBranchesBranch:getProjectBranchesBranch"
+                        },
+                        "description": "The list of branches of the project, as defined below.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "ID or URL-encoded path of the project owned by the authenticated user.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "branches",
+                    "project",
+                    "id"
                 ]
             }
         },
@@ -17360,7 +17989,7 @@
             }
         },
         "gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches": {
-            "description": "The `gitlab_protected_branches` data source allows details of the protected branches of a given project.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = gitlab.getProjectProtectedBranches({\n    projectId: \"foo/bar/baz\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_project_protected_branches(project_id=\"foo/bar/baz\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = GitLab.GetProjectProtectedBranches.Invoke(new()\n    {\n        ProjectId = \"foo/bar/baz\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.GetProjectProtectedBranches(ctx, \u0026gitlab.GetProjectProtectedBranchesArgs{\n\t\t\tProjectId: \"foo/bar/baz\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetProjectProtectedBranchesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GitlabFunctions.getProjectProtectedBranches(GetProjectProtectedBranchesArgs.builder()\n            .projectId(\"foo/bar/baz\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: gitlab:getProjectProtectedBranches\n      Arguments:\n        projectId: foo/bar/baz\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "The `gitlab.getProjectProtectedBranches` data source allows details of the protected branches of a given project.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = gitlab.getProjectProtectedBranches({\n    projectId: \"foo/bar/baz\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_project_protected_branches(project_id=\"foo/bar/baz\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = GitLab.GetProjectProtectedBranches.Invoke(new()\n    {\n        ProjectId = \"foo/bar/baz\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.GetProjectProtectedBranches(ctx, \u0026gitlab.GetProjectProtectedBranchesArgs{\n\t\t\tProjectId: \"foo/bar/baz\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetProjectProtectedBranchesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GitlabFunctions.getProjectProtectedBranches(GetProjectProtectedBranchesArgs.builder()\n            .projectId(\"foo/bar/baz\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: gitlab:getProjectProtectedBranches\n      Arguments:\n        projectId: foo/bar/baz\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getProjectProtectedBranches.\n",
                 "properties": {
@@ -18343,6 +18972,54 @@
                     "userProvider",
                     "username",
                     "websiteUrl",
+                    "id"
+                ]
+            }
+        },
+        "gitlab:index/getUserSshkeys:getUserSshkeys": {
+            "description": "The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#list-ssh-keys-for-user)\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getUserSshkeys.\n",
+                "properties": {
+                    "userId": {
+                        "type": "integer",
+                        "description": "ID of the user to get the SSH keys for.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "Username of the user to get the SSH keys for.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getUserSshkeys.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "keys": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/getUserSshkeysKey:getUserSshkeysKey"
+                        },
+                        "description": "The user's keys.\n"
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "description": "ID of the user to get the SSH keys for.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "Username of the user to get the SSH keys for.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "keys",
+                    "userId",
+                    "username",
                     "id"
                 ]
             }

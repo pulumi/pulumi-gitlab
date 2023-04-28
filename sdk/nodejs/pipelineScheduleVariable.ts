@@ -22,8 +22,8 @@ import * as utilities from "./utilities";
  *     cron: "0 1 * * *",
  * });
  * const examplePipelineScheduleVariable = new gitlab.PipelineScheduleVariable("examplePipelineScheduleVariable", {
- *     project: gitlab_pipeline_schedule.project,
- *     pipelineScheduleId: gitlab_pipeline_schedule.id,
+ *     project: examplePipelineSchedule.project,
+ *     pipelineScheduleId: examplePipelineSchedule.id,
  *     key: "EXAMPLE_KEY",
  *     value: "example",
  * });

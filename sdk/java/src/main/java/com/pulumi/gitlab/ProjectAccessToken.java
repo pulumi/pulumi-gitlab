@@ -175,14 +175,14 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
         return this.revoked;
     }
     /**
-     * Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+     * Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.
      * 
      */
     @Export(name="scopes", type=List.class, parameters={String.class})
     private Output<List<String>> scopes;
 
     /**
-     * @return Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+     * @return Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.
      * 
      */
     public Output<List<String>> scopes() {

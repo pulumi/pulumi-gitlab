@@ -34,8 +34,8 @@ namespace Pulumi.GitLab
     /// 
     ///     var examplePipelineScheduleVariable = new GitLab.PipelineScheduleVariable("examplePipelineScheduleVariable", new()
     ///     {
-    ///         Project = gitlab_pipeline_schedule.Project,
-    ///         PipelineScheduleId = gitlab_pipeline_schedule.Id,
+    ///         Project = examplePipelineSchedule.Project,
+    ///         PipelineScheduleId = examplePipelineSchedule.Id,
     ///         Key = "EXAMPLE_KEY",
     ///         Value = "example",
     ///     });

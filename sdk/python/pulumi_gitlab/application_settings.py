@@ -115,6 +115,7 @@ class ApplicationSettingsArgs:
                  grafana_enabled: Optional[pulumi.Input[bool]] = None,
                  grafana_url: Optional[pulumi.Input[str]] = None,
                  gravatar_enabled: Optional[pulumi.Input[bool]] = None,
+                 group_owners_can_manage_default_branch_protection: Optional[pulumi.Input[bool]] = None,
                  hashed_storage_enabled: Optional[pulumi.Input[bool]] = None,
                  help_page_hide_commercial_content: Optional[pulumi.Input[bool]] = None,
                  help_page_support_url: Optional[pulumi.Input[str]] = None,
@@ -357,6 +358,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[bool] grafana_enabled: Enable Grafana.
         :param pulumi.Input[str] grafana_url: Grafana URL.
         :param pulumi.Input[bool] gravatar_enabled: Enable Gravatar.
+        :param pulumi.Input[bool] group_owners_can_manage_default_branch_protection: Prevent overrides of default branch protection.
         :param pulumi.Input[bool] hashed_storage_enabled: Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
         :param pulumi.Input[bool] help_page_hide_commercial_content: Hide marketing-related entries from help.
         :param pulumi.Input[str] help_page_support_url: Alternate support URL for help page and help dropdown.
@@ -699,6 +701,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "grafana_url", grafana_url)
         if gravatar_enabled is not None:
             pulumi.set(__self__, "gravatar_enabled", gravatar_enabled)
+        if group_owners_can_manage_default_branch_protection is not None:
+            pulumi.set(__self__, "group_owners_can_manage_default_branch_protection", group_owners_can_manage_default_branch_protection)
         if hashed_storage_enabled is not None:
             pulumi.set(__self__, "hashed_storage_enabled", hashed_storage_enabled)
         if help_page_hide_commercial_content is not None:
@@ -2189,6 +2193,18 @@ class ApplicationSettingsArgs:
     @gravatar_enabled.setter
     def gravatar_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "gravatar_enabled", value)
+
+    @property
+    @pulumi.getter(name="groupOwnersCanManageDefaultBranchProtection")
+    def group_owners_can_manage_default_branch_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Prevent overrides of default branch protection.
+        """
+        return pulumi.get(self, "group_owners_can_manage_default_branch_protection")
+
+    @group_owners_can_manage_default_branch_protection.setter
+    def group_owners_can_manage_default_branch_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "group_owners_can_manage_default_branch_protection", value)
 
     @property
     @pulumi.getter(name="hashedStorageEnabled")
@@ -3963,6 +3979,7 @@ class _ApplicationSettingsState:
                  grafana_enabled: Optional[pulumi.Input[bool]] = None,
                  grafana_url: Optional[pulumi.Input[str]] = None,
                  gravatar_enabled: Optional[pulumi.Input[bool]] = None,
+                 group_owners_can_manage_default_branch_protection: Optional[pulumi.Input[bool]] = None,
                  hashed_storage_enabled: Optional[pulumi.Input[bool]] = None,
                  help_page_hide_commercial_content: Optional[pulumi.Input[bool]] = None,
                  help_page_support_url: Optional[pulumi.Input[str]] = None,
@@ -4205,6 +4222,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[bool] grafana_enabled: Enable Grafana.
         :param pulumi.Input[str] grafana_url: Grafana URL.
         :param pulumi.Input[bool] gravatar_enabled: Enable Gravatar.
+        :param pulumi.Input[bool] group_owners_can_manage_default_branch_protection: Prevent overrides of default branch protection.
         :param pulumi.Input[bool] hashed_storage_enabled: Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
         :param pulumi.Input[bool] help_page_hide_commercial_content: Hide marketing-related entries from help.
         :param pulumi.Input[str] help_page_support_url: Alternate support URL for help page and help dropdown.
@@ -4547,6 +4565,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "grafana_url", grafana_url)
         if gravatar_enabled is not None:
             pulumi.set(__self__, "gravatar_enabled", gravatar_enabled)
+        if group_owners_can_manage_default_branch_protection is not None:
+            pulumi.set(__self__, "group_owners_can_manage_default_branch_protection", group_owners_can_manage_default_branch_protection)
         if hashed_storage_enabled is not None:
             pulumi.set(__self__, "hashed_storage_enabled", hashed_storage_enabled)
         if help_page_hide_commercial_content is not None:
@@ -6037,6 +6057,18 @@ class _ApplicationSettingsState:
     @gravatar_enabled.setter
     def gravatar_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "gravatar_enabled", value)
+
+    @property
+    @pulumi.getter(name="groupOwnersCanManageDefaultBranchProtection")
+    def group_owners_can_manage_default_branch_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Prevent overrides of default branch protection.
+        """
+        return pulumi.get(self, "group_owners_can_manage_default_branch_protection")
+
+    @group_owners_can_manage_default_branch_protection.setter
+    def group_owners_can_manage_default_branch_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "group_owners_can_manage_default_branch_protection", value)
 
     @property
     @pulumi.getter(name="hashedStorageEnabled")
@@ -7813,6 +7845,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  grafana_enabled: Optional[pulumi.Input[bool]] = None,
                  grafana_url: Optional[pulumi.Input[str]] = None,
                  gravatar_enabled: Optional[pulumi.Input[bool]] = None,
+                 group_owners_can_manage_default_branch_protection: Optional[pulumi.Input[bool]] = None,
                  hashed_storage_enabled: Optional[pulumi.Input[bool]] = None,
                  help_page_hide_commercial_content: Optional[pulumi.Input[bool]] = None,
                  help_page_support_url: Optional[pulumi.Input[str]] = None,
@@ -8069,6 +8102,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[bool] grafana_enabled: Enable Grafana.
         :param pulumi.Input[str] grafana_url: Grafana URL.
         :param pulumi.Input[bool] gravatar_enabled: Enable Gravatar.
+        :param pulumi.Input[bool] group_owners_can_manage_default_branch_protection: Prevent overrides of default branch protection.
         :param pulumi.Input[bool] hashed_storage_enabled: Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
         :param pulumi.Input[bool] help_page_hide_commercial_content: Hide marketing-related entries from help.
         :param pulumi.Input[str] help_page_support_url: Alternate support URL for help page and help dropdown.
@@ -8344,6 +8378,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  grafana_enabled: Optional[pulumi.Input[bool]] = None,
                  grafana_url: Optional[pulumi.Input[str]] = None,
                  gravatar_enabled: Optional[pulumi.Input[bool]] = None,
+                 group_owners_can_manage_default_branch_protection: Optional[pulumi.Input[bool]] = None,
                  hashed_storage_enabled: Optional[pulumi.Input[bool]] = None,
                  help_page_hide_commercial_content: Optional[pulumi.Input[bool]] = None,
                  help_page_support_url: Optional[pulumi.Input[str]] = None,
@@ -8593,6 +8628,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["grafana_enabled"] = grafana_enabled
             __props__.__dict__["grafana_url"] = grafana_url
             __props__.__dict__["gravatar_enabled"] = gravatar_enabled
+            __props__.__dict__["group_owners_can_manage_default_branch_protection"] = group_owners_can_manage_default_branch_protection
             __props__.__dict__["hashed_storage_enabled"] = hashed_storage_enabled
             __props__.__dict__["help_page_hide_commercial_content"] = help_page_hide_commercial_content
             __props__.__dict__["help_page_support_url"] = help_page_support_url
@@ -8845,6 +8881,7 @@ class ApplicationSettings(pulumi.CustomResource):
             grafana_enabled: Optional[pulumi.Input[bool]] = None,
             grafana_url: Optional[pulumi.Input[str]] = None,
             gravatar_enabled: Optional[pulumi.Input[bool]] = None,
+            group_owners_can_manage_default_branch_protection: Optional[pulumi.Input[bool]] = None,
             hashed_storage_enabled: Optional[pulumi.Input[bool]] = None,
             help_page_hide_commercial_content: Optional[pulumi.Input[bool]] = None,
             help_page_support_url: Optional[pulumi.Input[str]] = None,
@@ -9092,6 +9129,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[bool] grafana_enabled: Enable Grafana.
         :param pulumi.Input[str] grafana_url: Grafana URL.
         :param pulumi.Input[bool] gravatar_enabled: Enable Gravatar.
+        :param pulumi.Input[bool] group_owners_can_manage_default_branch_protection: Prevent overrides of default branch protection.
         :param pulumi.Input[bool] hashed_storage_enabled: Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
         :param pulumi.Input[bool] help_page_hide_commercial_content: Hide marketing-related entries from help.
         :param pulumi.Input[str] help_page_support_url: Alternate support URL for help page and help dropdown.
@@ -9337,6 +9375,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["grafana_enabled"] = grafana_enabled
         __props__.__dict__["grafana_url"] = grafana_url
         __props__.__dict__["gravatar_enabled"] = gravatar_enabled
+        __props__.__dict__["group_owners_can_manage_default_branch_protection"] = group_owners_can_manage_default_branch_protection
         __props__.__dict__["hashed_storage_enabled"] = hashed_storage_enabled
         __props__.__dict__["help_page_hide_commercial_content"] = help_page_hide_commercial_content
         __props__.__dict__["help_page_support_url"] = help_page_support_url
@@ -10285,6 +10324,14 @@ class ApplicationSettings(pulumi.CustomResource):
         Enable Gravatar.
         """
         return pulumi.get(self, "gravatar_enabled")
+
+    @property
+    @pulumi.getter(name="groupOwnersCanManageDefaultBranchProtection")
+    def group_owners_can_manage_default_branch_protection(self) -> pulumi.Output[bool]:
+        """
+        Prevent overrides of default branch protection.
+        """
+        return pulumi.get(self, "group_owners_can_manage_default_branch_protection")
 
     @property
     @pulumi.getter(name="hashedStorageEnabled")

@@ -84,6 +84,11 @@ export const getGroupMembership: typeof import("./getGroupMembership").getGroupM
 export const getGroupMembershipOutput: typeof import("./getGroupMembership").getGroupMembershipOutput = null as any;
 utilities.lazyLoad(exports, ["getGroupMembership","getGroupMembershipOutput"], () => require("./getGroupMembership"));
 
+export { GetGroupSubgroupsArgs, GetGroupSubgroupsResult, GetGroupSubgroupsOutputArgs } from "./getGroupSubgroups";
+export const getGroupSubgroups: typeof import("./getGroupSubgroups").getGroupSubgroups = null as any;
+export const getGroupSubgroupsOutput: typeof import("./getGroupSubgroups").getGroupSubgroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupSubgroups","getGroupSubgroupsOutput"], () => require("./getGroupSubgroups"));
+
 export { GetGroupVariableArgs, GetGroupVariableResult, GetGroupVariableOutputArgs } from "./getGroupVariable";
 export const getGroupVariable: typeof import("./getGroupVariable").getGroupVariable = null as any;
 export const getGroupVariableOutput: typeof import("./getGroupVariable").getGroupVariableOutput = null as any;
@@ -93,6 +98,11 @@ export { GetGroupVariablesArgs, GetGroupVariablesResult, GetGroupVariablesOutput
 export const getGroupVariables: typeof import("./getGroupVariables").getGroupVariables = null as any;
 export const getGroupVariablesOutput: typeof import("./getGroupVariables").getGroupVariablesOutput = null as any;
 utilities.lazyLoad(exports, ["getGroupVariables","getGroupVariablesOutput"], () => require("./getGroupVariables"));
+
+export { GetGroupsArgs, GetGroupsResult, GetGroupsOutputArgs } from "./getGroups";
+export const getGroups: typeof import("./getGroups").getGroups = null as any;
+export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getGroups","getGroupsOutput"], () => require("./getGroups"));
 
 export { GetInstanceDeployKeysArgs, GetInstanceDeployKeysResult, GetInstanceDeployKeysOutputArgs } from "./getInstanceDeployKeys";
 export const getInstanceDeployKeys: typeof import("./getInstanceDeployKeys").getInstanceDeployKeys = null as any;
@@ -112,6 +122,11 @@ export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getPro
 export const getProject: typeof import("./getProject").getProject = null as any;
 export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
 utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
+
+export { GetProjectBranchesArgs, GetProjectBranchesResult, GetProjectBranchesOutputArgs } from "./getProjectBranches";
+export const getProjectBranches: typeof import("./getProjectBranches").getProjectBranches = null as any;
+export const getProjectBranchesOutput: typeof import("./getProjectBranches").getProjectBranchesOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectBranches","getProjectBranchesOutput"], () => require("./getProjectBranches"));
 
 export { GetProjectHookArgs, GetProjectHookResult, GetProjectHookOutputArgs } from "./getProjectHook";
 export const getProjectHook: typeof import("./getProjectHook").getProjectHook = null as any;
@@ -207,6 +222,11 @@ export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
 utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
+
+export { GetUserSshkeysArgs, GetUserSshkeysResult, GetUserSshkeysOutputArgs } from "./getUserSshkeys";
+export const getUserSshkeys: typeof import("./getUserSshkeys").getUserSshkeys = null as any;
+export const getUserSshkeysOutput: typeof import("./getUserSshkeys").getUserSshkeysOutput = null as any;
+utilities.lazyLoad(exports, ["getUserSshkeys","getUserSshkeysOutput"], () => require("./getUserSshkeys"));
 
 export { GetUsersArgs, GetUsersResult, GetUsersOutputArgs } from "./getUsers";
 export const getUsers: typeof import("./getUsers").getUsers = null as any;

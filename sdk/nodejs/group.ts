@@ -85,6 +85,10 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly emailsDisabled!: pulumi.Output<boolean | undefined>;
     /**
+     * Can be set by administrators only. Additional CI/CD minutes for this group.
+     */
+    public readonly extraSharedRunnersMinutesLimit!: pulumi.Output<number | undefined>;
+    /**
      * The full name of the group.
      */
     public /*out*/ readonly fullName!: pulumi.Output<string>;
@@ -96,6 +100,10 @@ export class Group extends pulumi.CustomResource {
      * Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
      */
     public readonly lfsEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Users cannot be added to projects in this group.
+     */
+    public readonly membershipLock!: pulumi.Output<boolean | undefined>;
     /**
      * Defaults to false. Disable the capability of a group from getting mentioned.
      */
@@ -137,6 +145,10 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly shareWithGroupLock!: pulumi.Output<boolean | undefined>;
     /**
+     * Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+     */
+    public readonly sharedRunnersMinutesLimit!: pulumi.Output<number | undefined>;
+    /**
      * Defaults to owner. Allowed to create subgroups.
      */
     public readonly subgroupCreationLevel!: pulumi.Output<string | undefined>;
@@ -170,9 +182,11 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["defaultBranchProtection"] = state ? state.defaultBranchProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["emailsDisabled"] = state ? state.emailsDisabled : undefined;
+            resourceInputs["extraSharedRunnersMinutesLimit"] = state ? state.extraSharedRunnersMinutesLimit : undefined;
             resourceInputs["fullName"] = state ? state.fullName : undefined;
             resourceInputs["fullPath"] = state ? state.fullPath : undefined;
             resourceInputs["lfsEnabled"] = state ? state.lfsEnabled : undefined;
+            resourceInputs["membershipLock"] = state ? state.membershipLock : undefined;
             resourceInputs["mentionsDisabled"] = state ? state.mentionsDisabled : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parentId"] = state ? state.parentId : undefined;
@@ -183,6 +197,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["requireTwoFactorAuthentication"] = state ? state.requireTwoFactorAuthentication : undefined;
             resourceInputs["runnersToken"] = state ? state.runnersToken : undefined;
             resourceInputs["shareWithGroupLock"] = state ? state.shareWithGroupLock : undefined;
+            resourceInputs["sharedRunnersMinutesLimit"] = state ? state.sharedRunnersMinutesLimit : undefined;
             resourceInputs["subgroupCreationLevel"] = state ? state.subgroupCreationLevel : undefined;
             resourceInputs["twoFactorGracePeriod"] = state ? state.twoFactorGracePeriod : undefined;
             resourceInputs["visibilityLevel"] = state ? state.visibilityLevel : undefined;
@@ -196,7 +211,9 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["defaultBranchProtection"] = args ? args.defaultBranchProtection : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["emailsDisabled"] = args ? args.emailsDisabled : undefined;
+            resourceInputs["extraSharedRunnersMinutesLimit"] = args ? args.extraSharedRunnersMinutesLimit : undefined;
             resourceInputs["lfsEnabled"] = args ? args.lfsEnabled : undefined;
+            resourceInputs["membershipLock"] = args ? args.membershipLock : undefined;
             resourceInputs["mentionsDisabled"] = args ? args.mentionsDisabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["parentId"] = args ? args.parentId : undefined;
@@ -206,6 +223,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["requestAccessEnabled"] = args ? args.requestAccessEnabled : undefined;
             resourceInputs["requireTwoFactorAuthentication"] = args ? args.requireTwoFactorAuthentication : undefined;
             resourceInputs["shareWithGroupLock"] = args ? args.shareWithGroupLock : undefined;
+            resourceInputs["sharedRunnersMinutesLimit"] = args ? args.sharedRunnersMinutesLimit : undefined;
             resourceInputs["subgroupCreationLevel"] = args ? args.subgroupCreationLevel : undefined;
             resourceInputs["twoFactorGracePeriod"] = args ? args.twoFactorGracePeriod : undefined;
             resourceInputs["visibilityLevel"] = args ? args.visibilityLevel : undefined;
@@ -242,6 +260,10 @@ export interface GroupState {
      */
     emailsDisabled?: pulumi.Input<boolean>;
     /**
+     * Can be set by administrators only. Additional CI/CD minutes for this group.
+     */
+    extraSharedRunnersMinutesLimit?: pulumi.Input<number>;
+    /**
      * The full name of the group.
      */
     fullName?: pulumi.Input<string>;
@@ -253,6 +275,10 @@ export interface GroupState {
      * Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
      */
     lfsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Users cannot be added to projects in this group.
+     */
+    membershipLock?: pulumi.Input<boolean>;
     /**
      * Defaults to false. Disable the capability of a group from getting mentioned.
      */
@@ -294,6 +320,10 @@ export interface GroupState {
      */
     shareWithGroupLock?: pulumi.Input<boolean>;
     /**
+     * Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+     */
+    sharedRunnersMinutesLimit?: pulumi.Input<number>;
+    /**
      * Defaults to owner. Allowed to create subgroups.
      */
     subgroupCreationLevel?: pulumi.Input<string>;
@@ -332,9 +362,17 @@ export interface GroupArgs {
      */
     emailsDisabled?: pulumi.Input<boolean>;
     /**
+     * Can be set by administrators only. Additional CI/CD minutes for this group.
+     */
+    extraSharedRunnersMinutesLimit?: pulumi.Input<number>;
+    /**
      * Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
      */
     lfsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Users cannot be added to projects in this group.
+     */
+    membershipLock?: pulumi.Input<boolean>;
     /**
      * Defaults to false. Disable the capability of a group from getting mentioned.
      */
@@ -371,6 +409,10 @@ export interface GroupArgs {
      * Defaults to false. Prevent sharing a project with another group within this group.
      */
     shareWithGroupLock?: pulumi.Input<boolean>;
+    /**
+     * Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+     */
+    sharedRunnersMinutesLimit?: pulumi.Input<number>;
     /**
      * Defaults to owner. Allowed to create subgroups.
      */

@@ -1468,6 +1468,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.gravatarEnabled;
     }
     /**
+     * Prevent overrides of default branch protection.
+     * 
+     */
+    @Export(name="groupOwnersCanManageDefaultBranchProtection", type=Boolean.class, parameters={})
+    private Output<Boolean> groupOwnersCanManageDefaultBranchProtection;
+
+    /**
+     * @return Prevent overrides of default branch protection.
+     * 
+     */
+    public Output<Boolean> groupOwnersCanManageDefaultBranchProtection() {
+        return this.groupOwnersCanManageDefaultBranchProtection;
+    }
+    /**
      * Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
      * 
      */

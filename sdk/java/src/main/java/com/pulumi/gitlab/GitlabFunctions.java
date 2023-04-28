@@ -22,15 +22,21 @@ import com.pulumi.gitlab.inputs.GetGroupHooksPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupMembershipArgs;
 import com.pulumi.gitlab.inputs.GetGroupMembershipPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupPlainArgs;
+import com.pulumi.gitlab.inputs.GetGroupSubgroupsArgs;
+import com.pulumi.gitlab.inputs.GetGroupSubgroupsPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupVariableArgs;
 import com.pulumi.gitlab.inputs.GetGroupVariablePlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupVariablesArgs;
 import com.pulumi.gitlab.inputs.GetGroupVariablesPlainArgs;
+import com.pulumi.gitlab.inputs.GetGroupsArgs;
+import com.pulumi.gitlab.inputs.GetGroupsPlainArgs;
 import com.pulumi.gitlab.inputs.GetInstanceDeployKeysArgs;
 import com.pulumi.gitlab.inputs.GetInstanceDeployKeysPlainArgs;
 import com.pulumi.gitlab.inputs.GetInstanceVariableArgs;
 import com.pulumi.gitlab.inputs.GetInstanceVariablePlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectArgs;
+import com.pulumi.gitlab.inputs.GetProjectBranchesArgs;
+import com.pulumi.gitlab.inputs.GetProjectBranchesPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectHookArgs;
 import com.pulumi.gitlab.inputs.GetProjectHookPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectHooksArgs;
@@ -70,6 +76,8 @@ import com.pulumi.gitlab.inputs.GetRepositoryTreeArgs;
 import com.pulumi.gitlab.inputs.GetRepositoryTreePlainArgs;
 import com.pulumi.gitlab.inputs.GetUserArgs;
 import com.pulumi.gitlab.inputs.GetUserPlainArgs;
+import com.pulumi.gitlab.inputs.GetUserSshkeysArgs;
+import com.pulumi.gitlab.inputs.GetUserSshkeysPlainArgs;
 import com.pulumi.gitlab.inputs.GetUsersArgs;
 import com.pulumi.gitlab.inputs.GetUsersPlainArgs;
 import com.pulumi.gitlab.outputs.GetBranchResult;
@@ -80,11 +88,14 @@ import com.pulumi.gitlab.outputs.GetGroupHookResult;
 import com.pulumi.gitlab.outputs.GetGroupHooksResult;
 import com.pulumi.gitlab.outputs.GetGroupMembershipResult;
 import com.pulumi.gitlab.outputs.GetGroupResult;
+import com.pulumi.gitlab.outputs.GetGroupSubgroupsResult;
 import com.pulumi.gitlab.outputs.GetGroupVariableResult;
 import com.pulumi.gitlab.outputs.GetGroupVariablesResult;
+import com.pulumi.gitlab.outputs.GetGroupsResult;
 import com.pulumi.gitlab.outputs.GetInstanceDeployKeysResult;
 import com.pulumi.gitlab.outputs.GetInstanceVariableResult;
 import com.pulumi.gitlab.outputs.GetInstanceVariablesResult;
+import com.pulumi.gitlab.outputs.GetProjectBranchesResult;
 import com.pulumi.gitlab.outputs.GetProjectHookResult;
 import com.pulumi.gitlab.outputs.GetProjectHooksResult;
 import com.pulumi.gitlab.outputs.GetProjectIssueResult;
@@ -105,6 +116,7 @@ import com.pulumi.gitlab.outputs.GetReleaseLinksResult;
 import com.pulumi.gitlab.outputs.GetRepositoryFileResult;
 import com.pulumi.gitlab.outputs.GetRepositoryTreeResult;
 import com.pulumi.gitlab.outputs.GetUserResult;
+import com.pulumi.gitlab.outputs.GetUserSshkeysResult;
 import com.pulumi.gitlab.outputs.GetUsersResult;
 import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
@@ -1651,6 +1663,166 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invokeAsync("gitlab:index/getGroupMembership:getGroupMembership", TypeShape.of(GetGroupMembershipResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-subgroups)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupSubgroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subgroupsGroupSubgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
+     *             .groupId(&#34;123456&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;subgroups&#34;, subgroupsGroupSubgroups.applyValue(getGroupSubgroupsResult -&gt; getGroupSubgroupsResult));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGroupSubgroupsResult> getGroupSubgroups(GetGroupSubgroupsArgs args) {
+        return getGroupSubgroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-subgroups)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupSubgroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subgroupsGroupSubgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
+     *             .groupId(&#34;123456&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;subgroups&#34;, subgroupsGroupSubgroups.applyValue(getGroupSubgroupsResult -&gt; getGroupSubgroupsResult));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGroupSubgroupsResult> getGroupSubgroupsPlain(GetGroupSubgroupsPlainArgs args) {
+        return getGroupSubgroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-subgroups)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupSubgroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subgroupsGroupSubgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
+     *             .groupId(&#34;123456&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;subgroups&#34;, subgroupsGroupSubgroups.applyValue(getGroupSubgroupsResult -&gt; getGroupSubgroupsResult));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGroupSubgroupsResult> getGroupSubgroups(GetGroupSubgroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupSubgroups:getGroupSubgroups", TypeShape.of(GetGroupSubgroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-a-groups-subgroups)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupSubgroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subgroupsGroupSubgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
+     *             .groupId(&#34;123456&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;subgroups&#34;, subgroupsGroupSubgroups.applyValue(getGroupSubgroupsResult -&gt; getGroupSubgroupsResult));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGroupSubgroupsResult> getGroupSubgroupsPlain(GetGroupSubgroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getGroupSubgroups:getGroupSubgroups", TypeShape.of(GetGroupSubgroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * The `gitlab.GroupVariable` data source allows to retrieve details about a group-level CI/CD variable.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
@@ -2009,6 +2181,294 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetGroupVariablesResult> getGroupVariablesPlain(GetGroupVariablesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getGroupVariables:getGroupVariables", TypeShape.of(GetGroupVariablesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroups` data source allows details of multiple groups to be retrieved given some optional filter criteria.
+     * 
+     * &gt; Some attributes might not be returned depending on if you&#39;re an admin or not.
+     * 
+     * &gt; Some available options require administrator privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()
+     *             .orderBy(&#34;name&#34;)
+     *             .sort(&#34;desc&#34;)
+     *             .build());
+     * 
+     *         final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()
+     *             .search(&#34;GitLab&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGroupsResult> getGroups() {
+        return getGroups(GetGroupsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroups` data source allows details of multiple groups to be retrieved given some optional filter criteria.
+     * 
+     * &gt; Some attributes might not be returned depending on if you&#39;re an admin or not.
+     * 
+     * &gt; Some available options require administrator privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()
+     *             .orderBy(&#34;name&#34;)
+     *             .sort(&#34;desc&#34;)
+     *             .build());
+     * 
+     *         final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()
+     *             .search(&#34;GitLab&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGroupsResult> getGroupsPlain() {
+        return getGroupsPlain(GetGroupsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroups` data source allows details of multiple groups to be retrieved given some optional filter criteria.
+     * 
+     * &gt; Some attributes might not be returned depending on if you&#39;re an admin or not.
+     * 
+     * &gt; Some available options require administrator privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()
+     *             .orderBy(&#34;name&#34;)
+     *             .sort(&#34;desc&#34;)
+     *             .build());
+     * 
+     *         final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()
+     *             .search(&#34;GitLab&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGroupsResult> getGroups(GetGroupsArgs args) {
+        return getGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroups` data source allows details of multiple groups to be retrieved given some optional filter criteria.
+     * 
+     * &gt; Some attributes might not be returned depending on if you&#39;re an admin or not.
+     * 
+     * &gt; Some available options require administrator privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()
+     *             .orderBy(&#34;name&#34;)
+     *             .sort(&#34;desc&#34;)
+     *             .build());
+     * 
+     *         final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()
+     *             .search(&#34;GitLab&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args) {
+        return getGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroups` data source allows details of multiple groups to be retrieved given some optional filter criteria.
+     * 
+     * &gt; Some attributes might not be returned depending on if you&#39;re an admin or not.
+     * 
+     * &gt; Some available options require administrator privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()
+     *             .orderBy(&#34;name&#34;)
+     *             .sort(&#34;desc&#34;)
+     *             .build());
+     * 
+     *         final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()
+     *             .search(&#34;GitLab&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroups` data source allows details of multiple groups to be retrieved given some optional filter criteria.
+     * 
+     * &gt; Some attributes might not be returned depending on if you&#39;re an admin or not.
+     * 
+     * &gt; Some available options require administrator privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroups(GetGroupsArgs.builder()
+     *             .orderBy(&#34;name&#34;)
+     *             .sort(&#34;desc&#34;)
+     *             .build());
+     * 
+     *         final var example-two = GitlabFunctions.getGroups(GetGroupsArgs.builder()
+     *             .search(&#34;GitLab&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.getInstanceDeployKeys` data source allows to retrieve a list of deploy keys for a GitLab instance.
@@ -2861,6 +3321,162 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectBranches` data source allows details of the branches of a given project to be retrieved.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectBranchesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectBranches(GetProjectBranchesArgs.builder()
+     *             .project(&#34;foo/bar/baz&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetProjectBranchesResult> getProjectBranches(GetProjectBranchesArgs args) {
+        return getProjectBranches(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectBranches` data source allows details of the branches of a given project to be retrieved.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectBranchesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectBranches(GetProjectBranchesArgs.builder()
+     *             .project(&#34;foo/bar/baz&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetProjectBranchesResult> getProjectBranchesPlain(GetProjectBranchesPlainArgs args) {
+        return getProjectBranchesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectBranches` data source allows details of the branches of a given project to be retrieved.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectBranchesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectBranches(GetProjectBranchesArgs.builder()
+     *             .project(&#34;foo/bar/baz&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetProjectBranchesResult> getProjectBranches(GetProjectBranchesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectBranches:getProjectBranches", TypeShape.of(GetProjectBranchesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectBranches` data source allows details of the branches of a given project to be retrieved.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectBranchesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectBranches(GetProjectBranchesArgs.builder()
+     *             .project(&#34;foo/bar/baz&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetProjectBranchesResult> getProjectBranchesPlain(GetProjectBranchesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getProjectBranches:getProjectBranches", TypeShape.of(GetProjectBranchesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.ProjectHook` data source allows to retrieve details about a hook in a project.
@@ -4311,7 +4927,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch", TypeShape.of(GetProjectProtectedBranchResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab_protected_branches` data source allows details of the protected branches of a given project.
+     * The `gitlab.getProjectProtectedBranches` data source allows details of the protected branches of a given project.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
      * 
@@ -4350,7 +4966,7 @@ public final class GitlabFunctions {
         return getProjectProtectedBranches(args, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab_protected_branches` data source allows details of the protected branches of a given project.
+     * The `gitlab.getProjectProtectedBranches` data source allows details of the protected branches of a given project.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
      * 
@@ -4389,7 +5005,7 @@ public final class GitlabFunctions {
         return getProjectProtectedBranchesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab_protected_branches` data source allows details of the protected branches of a given project.
+     * The `gitlab.getProjectProtectedBranches` data source allows details of the protected branches of a given project.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
      * 
@@ -4428,7 +5044,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invoke("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", TypeShape.of(GetProjectProtectedBranchesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab_protected_branches` data source allows details of the protected branches of a given project.
+     * The `gitlab.getProjectProtectedBranches` data source allows details of the protected branches of a given project.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
      * 
@@ -6199,6 +6815,60 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#list-ssh-keys-for-user)
+     * 
+     */
+    public static Output<GetUserSshkeysResult> getUserSshkeys() {
+        return getUserSshkeys(GetUserSshkeysArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#list-ssh-keys-for-user)
+     * 
+     */
+    public static CompletableFuture<GetUserSshkeysResult> getUserSshkeysPlain() {
+        return getUserSshkeysPlain(GetUserSshkeysPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#list-ssh-keys-for-user)
+     * 
+     */
+    public static Output<GetUserSshkeysResult> getUserSshkeys(GetUserSshkeysArgs args) {
+        return getUserSshkeys(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#list-ssh-keys-for-user)
+     * 
+     */
+    public static CompletableFuture<GetUserSshkeysResult> getUserSshkeysPlain(GetUserSshkeysPlainArgs args) {
+        return getUserSshkeysPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#list-ssh-keys-for-user)
+     * 
+     */
+    public static Output<GetUserSshkeysResult> getUserSshkeys(GetUserSshkeysArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getUserSshkeys:getUserSshkeys", TypeShape.of(GetUserSshkeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#list-ssh-keys-for-user)
+     * 
+     */
+    public static CompletableFuture<GetUserSshkeysResult> getUserSshkeysPlain(GetUserSshkeysPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getUserSshkeys:getUserSshkeys", TypeShape.of(GetUserSshkeysResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.getUsers` data source allows details of multiple users to be retrieved given some optional filter criteria.

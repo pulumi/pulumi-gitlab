@@ -77,12 +77,16 @@ type Group struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Defaults to false. Disable email notifications.
 	EmailsDisabled pulumi.BoolPtrOutput `pulumi:"emailsDisabled"`
+	// Can be set by administrators only. Additional CI/CD minutes for this group.
+	ExtraSharedRunnersMinutesLimit pulumi.IntPtrOutput `pulumi:"extraSharedRunnersMinutesLimit"`
 	// The full name of the group.
 	FullName pulumi.StringOutput `pulumi:"fullName"`
 	// The full path of the group.
 	FullPath pulumi.StringOutput `pulumi:"fullPath"`
 	// Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled pulumi.BoolPtrOutput `pulumi:"lfsEnabled"`
+	// Users cannot be added to projects in this group.
+	MembershipLock pulumi.BoolPtrOutput `pulumi:"membershipLock"`
 	// Defaults to false. Disable the capability of a group from getting mentioned.
 	MentionsDisabled pulumi.BoolPtrOutput `pulumi:"mentionsDisabled"`
 	// The name of this group.
@@ -103,6 +107,8 @@ type Group struct {
 	RunnersToken pulumi.StringOutput `pulumi:"runnersToken"`
 	// Defaults to false. Prevent sharing a project with another group within this group.
 	ShareWithGroupLock pulumi.BoolPtrOutput `pulumi:"shareWithGroupLock"`
+	// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+	SharedRunnersMinutesLimit pulumi.IntPtrOutput `pulumi:"sharedRunnersMinutesLimit"`
 	// Defaults to owner. Allowed to create subgroups.
 	SubgroupCreationLevel pulumi.StringPtrOutput `pulumi:"subgroupCreationLevel"`
 	// Defaults to 48. Time before Two-factor authentication is enforced (in hours).
@@ -157,12 +163,16 @@ type groupState struct {
 	Description *string `pulumi:"description"`
 	// Defaults to false. Disable email notifications.
 	EmailsDisabled *bool `pulumi:"emailsDisabled"`
+	// Can be set by administrators only. Additional CI/CD minutes for this group.
+	ExtraSharedRunnersMinutesLimit *int `pulumi:"extraSharedRunnersMinutesLimit"`
 	// The full name of the group.
 	FullName *string `pulumi:"fullName"`
 	// The full path of the group.
 	FullPath *string `pulumi:"fullPath"`
 	// Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
+	// Users cannot be added to projects in this group.
+	MembershipLock *bool `pulumi:"membershipLock"`
 	// Defaults to false. Disable the capability of a group from getting mentioned.
 	MentionsDisabled *bool `pulumi:"mentionsDisabled"`
 	// The name of this group.
@@ -183,6 +193,8 @@ type groupState struct {
 	RunnersToken *string `pulumi:"runnersToken"`
 	// Defaults to false. Prevent sharing a project with another group within this group.
 	ShareWithGroupLock *bool `pulumi:"shareWithGroupLock"`
+	// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+	SharedRunnersMinutesLimit *int `pulumi:"sharedRunnersMinutesLimit"`
 	// Defaults to owner. Allowed to create subgroups.
 	SubgroupCreationLevel *string `pulumi:"subgroupCreationLevel"`
 	// Defaults to 48. Time before Two-factor authentication is enforced (in hours).
@@ -202,12 +214,16 @@ type GroupState struct {
 	Description pulumi.StringPtrInput
 	// Defaults to false. Disable email notifications.
 	EmailsDisabled pulumi.BoolPtrInput
+	// Can be set by administrators only. Additional CI/CD minutes for this group.
+	ExtraSharedRunnersMinutesLimit pulumi.IntPtrInput
 	// The full name of the group.
 	FullName pulumi.StringPtrInput
 	// The full path of the group.
 	FullPath pulumi.StringPtrInput
 	// Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled pulumi.BoolPtrInput
+	// Users cannot be added to projects in this group.
+	MembershipLock pulumi.BoolPtrInput
 	// Defaults to false. Disable the capability of a group from getting mentioned.
 	MentionsDisabled pulumi.BoolPtrInput
 	// The name of this group.
@@ -228,6 +244,8 @@ type GroupState struct {
 	RunnersToken pulumi.StringPtrInput
 	// Defaults to false. Prevent sharing a project with another group within this group.
 	ShareWithGroupLock pulumi.BoolPtrInput
+	// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+	SharedRunnersMinutesLimit pulumi.IntPtrInput
 	// Defaults to owner. Allowed to create subgroups.
 	SubgroupCreationLevel pulumi.StringPtrInput
 	// Defaults to 48. Time before Two-factor authentication is enforced (in hours).
@@ -251,8 +269,12 @@ type groupArgs struct {
 	Description *string `pulumi:"description"`
 	// Defaults to false. Disable email notifications.
 	EmailsDisabled *bool `pulumi:"emailsDisabled"`
+	// Can be set by administrators only. Additional CI/CD minutes for this group.
+	ExtraSharedRunnersMinutesLimit *int `pulumi:"extraSharedRunnersMinutesLimit"`
 	// Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
+	// Users cannot be added to projects in this group.
+	MembershipLock *bool `pulumi:"membershipLock"`
 	// Defaults to false. Disable the capability of a group from getting mentioned.
 	MentionsDisabled *bool `pulumi:"mentionsDisabled"`
 	// The name of this group.
@@ -271,6 +293,8 @@ type groupArgs struct {
 	RequireTwoFactorAuthentication *bool `pulumi:"requireTwoFactorAuthentication"`
 	// Defaults to false. Prevent sharing a project with another group within this group.
 	ShareWithGroupLock *bool `pulumi:"shareWithGroupLock"`
+	// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+	SharedRunnersMinutesLimit *int `pulumi:"sharedRunnersMinutesLimit"`
 	// Defaults to owner. Allowed to create subgroups.
 	SubgroupCreationLevel *string `pulumi:"subgroupCreationLevel"`
 	// Defaults to 48. Time before Two-factor authentication is enforced (in hours).
@@ -289,8 +313,12 @@ type GroupArgs struct {
 	Description pulumi.StringPtrInput
 	// Defaults to false. Disable email notifications.
 	EmailsDisabled pulumi.BoolPtrInput
+	// Can be set by administrators only. Additional CI/CD minutes for this group.
+	ExtraSharedRunnersMinutesLimit pulumi.IntPtrInput
 	// Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled pulumi.BoolPtrInput
+	// Users cannot be added to projects in this group.
+	MembershipLock pulumi.BoolPtrInput
 	// Defaults to false. Disable the capability of a group from getting mentioned.
 	MentionsDisabled pulumi.BoolPtrInput
 	// The name of this group.
@@ -309,6 +337,8 @@ type GroupArgs struct {
 	RequireTwoFactorAuthentication pulumi.BoolPtrInput
 	// Defaults to false. Prevent sharing a project with another group within this group.
 	ShareWithGroupLock pulumi.BoolPtrInput
+	// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+	SharedRunnersMinutesLimit pulumi.IntPtrInput
 	// Defaults to owner. Allowed to create subgroups.
 	SubgroupCreationLevel pulumi.StringPtrInput
 	// Defaults to 48. Time before Two-factor authentication is enforced (in hours).
@@ -424,6 +454,11 @@ func (o GroupOutput) EmailsDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.EmailsDisabled }).(pulumi.BoolPtrOutput)
 }
 
+// Can be set by administrators only. Additional CI/CD minutes for this group.
+func (o GroupOutput) ExtraSharedRunnersMinutesLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.IntPtrOutput { return v.ExtraSharedRunnersMinutesLimit }).(pulumi.IntPtrOutput)
+}
+
 // The full name of the group.
 func (o GroupOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.FullName }).(pulumi.StringOutput)
@@ -437,6 +472,11 @@ func (o GroupOutput) FullPath() pulumi.StringOutput {
 // Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
 func (o GroupOutput) LfsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.LfsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Users cannot be added to projects in this group.
+func (o GroupOutput) MembershipLock() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.MembershipLock }).(pulumi.BoolPtrOutput)
 }
 
 // Defaults to false. Disable the capability of a group from getting mentioned.
@@ -487,6 +527,11 @@ func (o GroupOutput) RunnersToken() pulumi.StringOutput {
 // Defaults to false. Prevent sharing a project with another group within this group.
 func (o GroupOutput) ShareWithGroupLock() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.ShareWithGroupLock }).(pulumi.BoolPtrOutput)
+}
+
+// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+func (o GroupOutput) SharedRunnersMinutesLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.IntPtrOutput { return v.SharedRunnersMinutesLimit }).(pulumi.IntPtrOutput)
 }
 
 // Defaults to owner. Allowed to create subgroups.

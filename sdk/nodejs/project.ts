@@ -211,7 +211,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly mergeCommitTemplate!: pulumi.Output<string | undefined>;
     /**
-     * Set to `ff` to create fast-forward merges
+     * Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
      */
     public readonly mergeMethod!: pulumi.Output<string | undefined>;
     /**
@@ -277,7 +277,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Enable pages access control
      */
-    public readonly pagesAccessLevel!: pulumi.Output<string | undefined>;
+    public readonly pagesAccessLevel!: pulumi.Output<string>;
     /**
      * The path of the repository.
      */
@@ -287,9 +287,11 @@ export class Project extends pulumi.CustomResource {
      */
     public /*out*/ readonly pathWithNamespace!: pulumi.Output<string>;
     /**
-     * Enable pipelines for the project.
+     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
+     *
+     * @deprecated Deprecated in favor of `builds_access_level`
      */
-    public readonly pipelinesEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly pipelinesEnabled!: pulumi.Output<boolean>;
     /**
      * Show link to create/view merge request when pushing from the command line
      */
@@ -297,7 +299,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * If true, jobs can be viewed by non-project members.
      */
-    public readonly publicBuilds!: pulumi.Output<boolean | undefined>;
+    public readonly publicBuilds!: pulumi.Output<boolean>;
     /**
      * Push rules for the project.
      */
@@ -733,7 +735,7 @@ export interface ProjectState {
      */
     mergeCommitTemplate?: pulumi.Input<string>;
     /**
-     * Set to `ff` to create fast-forward merges
+     * Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
      */
     mergeMethod?: pulumi.Input<string>;
     /**
@@ -809,7 +811,9 @@ export interface ProjectState {
      */
     pathWithNamespace?: pulumi.Input<string>;
     /**
-     * Enable pipelines for the project.
+     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
+     *
+     * @deprecated Deprecated in favor of `builds_access_level`
      */
     pipelinesEnabled?: pulumi.Input<boolean>;
     /**
@@ -1067,7 +1071,7 @@ export interface ProjectArgs {
      */
     mergeCommitTemplate?: pulumi.Input<string>;
     /**
-     * Set to `ff` to create fast-forward merges
+     * Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
      */
     mergeMethod?: pulumi.Input<string>;
     /**
@@ -1139,7 +1143,9 @@ export interface ProjectArgs {
      */
     path?: pulumi.Input<string>;
     /**
-     * Enable pipelines for the project.
+     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
+     *
+     * @deprecated Deprecated in favor of `builds_access_level`
      */
     pipelinesEnabled?: pulumi.Input<boolean>;
     /**

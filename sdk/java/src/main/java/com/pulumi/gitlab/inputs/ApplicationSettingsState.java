@@ -1536,6 +1536,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Prevent overrides of default branch protection.
+     * 
+     */
+    @Import(name="groupOwnersCanManageDefaultBranchProtection")
+    private @Nullable Output<Boolean> groupOwnersCanManageDefaultBranchProtection;
+
+    /**
+     * @return Prevent overrides of default branch protection.
+     * 
+     */
+    public Optional<Output<Boolean>> groupOwnersCanManageDefaultBranchProtection() {
+        return Optional.ofNullable(this.groupOwnersCanManageDefaultBranchProtection);
+    }
+
+    /**
      * Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
      * 
      */
@@ -3724,6 +3739,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.grafanaEnabled = $.grafanaEnabled;
         this.grafanaUrl = $.grafanaUrl;
         this.gravatarEnabled = $.gravatarEnabled;
+        this.groupOwnersCanManageDefaultBranchProtection = $.groupOwnersCanManageDefaultBranchProtection;
         this.hashedStorageEnabled = $.hashedStorageEnabled;
         this.helpPageHideCommercialContent = $.helpPageHideCommercialContent;
         this.helpPageSupportUrl = $.helpPageSupportUrl;
@@ -6082,6 +6098,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder gravatarEnabled(Boolean gravatarEnabled) {
             return gravatarEnabled(Output.of(gravatarEnabled));
+        }
+
+        /**
+         * @param groupOwnersCanManageDefaultBranchProtection Prevent overrides of default branch protection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupOwnersCanManageDefaultBranchProtection(@Nullable Output<Boolean> groupOwnersCanManageDefaultBranchProtection) {
+            $.groupOwnersCanManageDefaultBranchProtection = groupOwnersCanManageDefaultBranchProtection;
+            return this;
+        }
+
+        /**
+         * @param groupOwnersCanManageDefaultBranchProtection Prevent overrides of default branch protection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupOwnersCanManageDefaultBranchProtection(Boolean groupOwnersCanManageDefaultBranchProtection) {
+            return groupOwnersCanManageDefaultBranchProtection(Output.of(groupOwnersCanManageDefaultBranchProtection));
         }
 
         /**

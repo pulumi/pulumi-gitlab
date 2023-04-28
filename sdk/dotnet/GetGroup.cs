@@ -126,6 +126,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Can be set by administrators only. Additional CI/CD minutes for this group.
+        /// </summary>
+        public readonly int ExtraSharedRunnersMinutesLimit;
+        /// <summary>
         /// The full name of the group.
         /// </summary>
         public readonly string FullName;
@@ -145,6 +149,10 @@ namespace Pulumi.GitLab
         /// Boolean, is LFS enabled for projects in this group.
         /// </summary>
         public readonly bool LfsEnabled;
+        /// <summary>
+        /// Users cannot be added to projects in this group.
+        /// </summary>
+        public readonly bool MembershipLock;
         /// <summary>
         /// The name of this group.
         /// </summary>
@@ -170,6 +178,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string RunnersToken;
         /// <summary>
+        /// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+        /// </summary>
+        public readonly int SharedRunnersMinutesLimit;
+        /// <summary>
         /// Visibility level of the group. Possible values are `private`, `internal`, `public`.
         /// </summary>
         public readonly string VisibilityLevel;
@@ -184,6 +196,8 @@ namespace Pulumi.GitLab
 
             string description,
 
+            int extraSharedRunnersMinutesLimit,
+
             string fullName,
 
             string fullPath,
@@ -193,6 +207,8 @@ namespace Pulumi.GitLab
             string id,
 
             bool lfsEnabled,
+
+            bool membershipLock,
 
             string name,
 
@@ -206,23 +222,28 @@ namespace Pulumi.GitLab
 
             string runnersToken,
 
+            int sharedRunnersMinutesLimit,
+
             string visibilityLevel,
 
             string webUrl)
         {
             DefaultBranchProtection = defaultBranchProtection;
             Description = description;
+            ExtraSharedRunnersMinutesLimit = extraSharedRunnersMinutesLimit;
             FullName = fullName;
             FullPath = fullPath;
             GroupId = groupId;
             Id = id;
             LfsEnabled = lfsEnabled;
+            MembershipLock = membershipLock;
             Name = name;
             ParentId = parentId;
             Path = path;
             PreventForkingOutsideGroup = preventForkingOutsideGroup;
             RequestAccessEnabled = requestAccessEnabled;
             RunnersToken = runnersToken;
+            SharedRunnersMinutesLimit = sharedRunnersMinutesLimit;
             VisibilityLevel = visibilityLevel;
             WebUrl = webUrl;
         }

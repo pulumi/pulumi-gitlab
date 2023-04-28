@@ -124,14 +124,14 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+     * Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+     * @return Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.
      * 
      */
     public Optional<Output<List<String>>> scopes() {
@@ -349,7 +349,7 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scopes Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+         * @param scopes Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scopes Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+         * @param scopes Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scopes Valid values: `api`, `read_api`, `read_repository`, `write_repository`.
+         * @param scopes Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.
          * 
          * @return builder
          * 

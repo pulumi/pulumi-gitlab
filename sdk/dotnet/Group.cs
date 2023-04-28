@@ -82,6 +82,12 @@ namespace Pulumi.GitLab
         public Output<bool?> EmailsDisabled { get; private set; } = null!;
 
         /// <summary>
+        /// Can be set by administrators only. Additional CI/CD minutes for this group.
+        /// </summary>
+        [Output("extraSharedRunnersMinutesLimit")]
+        public Output<int?> ExtraSharedRunnersMinutesLimit { get; private set; } = null!;
+
+        /// <summary>
         /// The full name of the group.
         /// </summary>
         [Output("fullName")]
@@ -98,6 +104,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("lfsEnabled")]
         public Output<bool?> LfsEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Users cannot be added to projects in this group.
+        /// </summary>
+        [Output("membershipLock")]
+        public Output<bool?> MembershipLock { get; private set; } = null!;
 
         /// <summary>
         /// Defaults to false. Disable the capability of a group from getting mentioned.
@@ -158,6 +170,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("shareWithGroupLock")]
         public Output<bool?> ShareWithGroupLock { get; private set; } = null!;
+
+        /// <summary>
+        /// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+        /// </summary>
+        [Output("sharedRunnersMinutesLimit")]
+        public Output<int?> SharedRunnersMinutesLimit { get; private set; } = null!;
 
         /// <summary>
         /// Defaults to owner. Allowed to create subgroups.
@@ -258,10 +276,22 @@ namespace Pulumi.GitLab
         public Input<bool>? EmailsDisabled { get; set; }
 
         /// <summary>
+        /// Can be set by administrators only. Additional CI/CD minutes for this group.
+        /// </summary>
+        [Input("extraSharedRunnersMinutesLimit")]
+        public Input<int>? ExtraSharedRunnersMinutesLimit { get; set; }
+
+        /// <summary>
         /// Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
         /// </summary>
         [Input("lfsEnabled")]
         public Input<bool>? LfsEnabled { get; set; }
+
+        /// <summary>
+        /// Users cannot be added to projects in this group.
+        /// </summary>
+        [Input("membershipLock")]
+        public Input<bool>? MembershipLock { get; set; }
 
         /// <summary>
         /// Defaults to false. Disable the capability of a group from getting mentioned.
@@ -318,6 +348,12 @@ namespace Pulumi.GitLab
         public Input<bool>? ShareWithGroupLock { get; set; }
 
         /// <summary>
+        /// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+        /// </summary>
+        [Input("sharedRunnersMinutesLimit")]
+        public Input<int>? SharedRunnersMinutesLimit { get; set; }
+
+        /// <summary>
         /// Defaults to owner. Allowed to create subgroups.
         /// </summary>
         [Input("subgroupCreationLevel")]
@@ -368,6 +404,12 @@ namespace Pulumi.GitLab
         public Input<bool>? EmailsDisabled { get; set; }
 
         /// <summary>
+        /// Can be set by administrators only. Additional CI/CD minutes for this group.
+        /// </summary>
+        [Input("extraSharedRunnersMinutesLimit")]
+        public Input<int>? ExtraSharedRunnersMinutesLimit { get; set; }
+
+        /// <summary>
         /// The full name of the group.
         /// </summary>
         [Input("fullName")]
@@ -384,6 +426,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("lfsEnabled")]
         public Input<bool>? LfsEnabled { get; set; }
+
+        /// <summary>
+        /// Users cannot be added to projects in this group.
+        /// </summary>
+        [Input("membershipLock")]
+        public Input<bool>? MembershipLock { get; set; }
 
         /// <summary>
         /// Defaults to false. Disable the capability of a group from getting mentioned.
@@ -454,6 +502,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("shareWithGroupLock")]
         public Input<bool>? ShareWithGroupLock { get; set; }
+
+        /// <summary>
+        /// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+        /// </summary>
+        [Input("sharedRunnersMinutesLimit")]
+        public Input<int>? SharedRunnersMinutesLimit { get; set; }
 
         /// <summary>
         /// Defaults to owner. Allowed to create subgroups.

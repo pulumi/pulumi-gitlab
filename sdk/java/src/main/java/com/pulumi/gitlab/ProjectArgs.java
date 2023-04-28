@@ -515,14 +515,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set to `ff` to create fast-forward merges
+     * Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
      * 
      */
     @Import(name="mergeMethod")
     private @Nullable Output<String> mergeMethod;
 
     /**
-     * @return Set to `ff` to create fast-forward merges
+     * @return Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
      * 
      */
     public Optional<Output<String>> mergeMethod() {
@@ -785,16 +785,24 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable pipelines for the project.
+     * Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
+     * 
+     * @deprecated
+     * Deprecated in favor of `builds_access_level`
      * 
      */
+    @Deprecated /* Deprecated in favor of `builds_access_level` */
     @Import(name="pipelinesEnabled")
     private @Nullable Output<Boolean> pipelinesEnabled;
 
     /**
-     * @return Enable pipelines for the project.
+     * @return Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
+     * 
+     * @deprecated
+     * Deprecated in favor of `builds_access_level`
      * 
      */
+    @Deprecated /* Deprecated in favor of `builds_access_level` */
     public Optional<Output<Boolean>> pipelinesEnabled() {
         return Optional.ofNullable(this.pipelinesEnabled);
     }
@@ -1966,7 +1974,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mergeMethod Set to `ff` to create fast-forward merges
+         * @param mergeMethod Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
          * 
          * @return builder
          * 
@@ -1977,7 +1985,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mergeMethod Set to `ff` to create fast-forward merges
+         * @param mergeMethod Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
          * 
          * @return builder
          * 
@@ -2344,22 +2352,30 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pipelinesEnabled Enable pipelines for the project.
+         * @param pipelinesEnabled Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Deprecated in favor of `builds_access_level`
+         * 
          */
+        @Deprecated /* Deprecated in favor of `builds_access_level` */
         public Builder pipelinesEnabled(@Nullable Output<Boolean> pipelinesEnabled) {
             $.pipelinesEnabled = pipelinesEnabled;
             return this;
         }
 
         /**
-         * @param pipelinesEnabled Enable pipelines for the project.
+         * @param pipelinesEnabled Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Deprecated in favor of `builds_access_level`
+         * 
          */
+        @Deprecated /* Deprecated in favor of `builds_access_level` */
         public Builder pipelinesEnabled(Boolean pipelinesEnabled) {
             return pipelinesEnabled(Output.of(pipelinesEnabled));
         }
