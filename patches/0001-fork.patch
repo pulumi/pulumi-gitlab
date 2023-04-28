@@ -1,11 +1,22 @@
-diff --git b/internal/provider/resource_gitlab_project.go a/internal/provider/resource_gitlab_project.go
-index 0b47a068..0aefcb62 100644
---- b/internal/provider/resource_gitlab_project.go
-+++ a/internal/provider/resource_gitlab_project.go
-@@ -342,33 +342,34 @@ var resourceGitLabProjectSchema = map[string]*schema.Schema{
+From 6fc305c27b437a8e9f7c4df5aa58816796acb3b6 Mon Sep 17 00:00:00 2001
+From: Ian Wahbe <ian@wahbe.com>
+Date: Fri, 28 Apr 2023 13:16:07 -0700
+Subject: [PATCH 1/2] fork
+
+---
+ internal/provider/resource_gitlab_project.go | 43 ++++++++++----------
+ 1 file changed, 22 insertions(+), 21 deletions(-)
+
+diff --git a/internal/provider/resource_gitlab_project.go b/internal/provider/resource_gitlab_project.go
+index 367966eb..e710fb9e 100644
+--- a/internal/provider/resource_gitlab_project.go
++++ b/internal/provider/resource_gitlab_project.go
+@@ -347,34 +347,35 @@ var resourceGitLabProjectSchema = map[string]*schema.Schema{
+ 		ValidateFunc: validation.StringInSlice([]string{"public", "private", "enabled", "disabled"}, true),
  	},
  	// The GitLab API requires that import_url is also set when mirror options are used
- 	// Ref: https://github.com/gitlabhq/terraform-provider-gitlab/pull/449#discussion_r549729230
+-	// Ref: https://gitlab.com/gitlab-org/terraform-provider-gitlab/pull/449#discussion_r549729230
++	// Ref: https://github.com/gitlabhq/terraform-provider-gitlab/pull/449#discussion_r549729230
 +	// Fork: When https://github.com/pulumi/pulumi-terraform-bridge/issues/540 is closed, add these back
  	"mirror": {
 -		Description:  "Enable project pull mirror.",
@@ -57,3 +68,6 @@ index 0b47a068..0aefcb62 100644
  	},
  	"build_coverage_regex": {
  		Description: "Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.",
+-- 
+2.39.1
+
