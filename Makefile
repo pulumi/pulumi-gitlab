@@ -107,120 +107,15 @@ tfgen: install_plugins upstream
 	$(WORKING_DIR)/bin/$(TFGEN) schema --out provider/cmd/$(PROVIDER)
 	(cd provider && VERSION=$(VERSION) go generate cmd/$(PROVIDER)/main.go)
 
-define REBASE_IN_PROGRESS
-	@echo 'A rebase is already in progress. To finish the current rebase,'
-	@echo 'complete the `git rebase` in `./upstream` and then run:'
-	@echo
-	@echo '    make upstream.toPatches'
-	@echo
-	@echo 'If you want to abandon the rebase currently in progress and'
-	@echo 'execute this target anyway, run:'
-	@echo
-	@echo '    rm rebase-in-progress && make $@'
-	@echo
-	@exit 1
-endef
-
 upstream.rebase:
-ifeq ("$(wildcard upstream)","")
-	@echo "No upstream directory detected, so it doesn't make sense to run upstream based commands"
-	exit 1
-else ifneq ("$(wildcard rebase-in-progress)","") # Make sure we don't overwrite a rebase in progress
-	${REBASE_IN_PROGRESS}
-else
-	git submodule update --force --init
-	cd upstream && git fetch
-ifeq ("${TO}","")
-	# TO not specified, assuming TO is the upstream SHA currently commited
-else
-	cd upstream && git checkout ${TO}
-endif
-	cd upstream && git checkout -B local
-	# We use a local tag branch here because our upstream is almost always a tag, and
-	# we can't rebase into a tag.
-	cd upstream && git checkout -B pulumi-patch ${FROM}
-	cd upstream && git branch --set-upstream-to=local pulumi-patch
-	@cd upstream && for patch in $(sort $(wildcard patches/*.patch)); do \
-		echo "Applying $$patch"; \
-		if ! git apply --3way ../$$patch; then \
-			echo '\nFailed to apply patch. Please run "make upstream.rebase FROM=$$TAG where $$TAG is a known safe version\n'; \
-			exit 1; \
-		fi; \
-		patch=$${patch#patches/*-}; \
-		git commit -am "$${patch%.patch}"; \
-	done
-	@touch rebase-in-progress
-	@cd upstream && if git rebase local; then \
-		echo ; \
-		echo 'The full patch set has been cleanly applied to the `./upstream` repository.'; \
-		echo 'To "edit" the patch set, commit changes directly to `./upstream`. When'; \
-		echo 'you are done making changes, run '; \
-		echo ; \
-		echo '    make upstream.toPatches'; \
-		echo ; \
-		echo 'to finish the rebase and commit those changes into the patch set.'; \
-	else \
-		echo ; \
-		echo 'The patch set did not apply cleanly. You need to manually resolve'; \
-		echo 'rebase conflicts directly in `./upstream`. When you have completed'; \
-		echo 'the rebase, run' ;\
-		echo ; \
-		echo '    make upstream.toPatches'; \
-		echo ; \
-		echo 'This will finalize the changes you made back into the patch set.'; \
-	fi
-endif
+	@./scripts/upstream.sh "$@" start_rebase
 
 upstream.toPatches:
-ifeq ("$(wildcard rebase-in-progress)","")
-	@echo "Didn't detect an upstream rebase in progress."
-	@echo "To start an upstream rebase, run"
-	@echo
-	@echo '    make upstream.rebase [FROM=vX.Y.Z] [TO=vA.B.C]'
-	@echo
-	@echo "If you are absolutly sure you are already in a rebase, run"
-	@echo
-	@echo "    touch rebase-in-progress && make $@"
-	@echo
-	@exit 1
-else
-	@rm $(sort $(wildcard patches/*.patch))
-	cd upstream && git format-patch local -o ../patches
-	@rm rebase-in-progress
-endif
+	@./scripts/upstream.sh "$@" end_rebase
 
 upstream:
-ifeq ("$(wildcard upstream)","")
-	@# "upstream doesn't exist, so skip"
-else ifeq ("$(wildcard patches/*.patch)","")
-	@# "upstream exists, but patches don't exist. This is probably an error."
-	@echo "No patches found within the patch operation"
-	@echo "patches were expected because upstream exists"
-	@exit 1
-else ifneq ("$(wildcard rebase-in-progress)","")
-	${REBASE_IN_PROGRESS}
-else
-	@# Checkout the submodule at the pinned commit.
-	@# `--force`: If the submodule is at a different commit, move it to the pinned commit.
-	@# `--init`: If the submodule is not initialized, initialize it.
-	@git submodule update --force --init
-	@# Iterating over the patches folder in sorted order,
-	@# apply the patch using a 3-way merge strategy. This mirrors the default behavior of `git merge`
-	@cd upstream && for patch in $(sort $(wildcard patches/*.patch)); do \
-		git apply --3way ../$$patch; \
-		if ! [ $$? = 0 ]; then \
-		echo ; \
-		echo '`make $@` failed to apply a patch. This is because there is a conflict between'; \
-		echo 'the checkout version of upstream and the patch set. To resolve this conflict'; \
-		echo 'run'; \
-		echo ; \
-		echo '    make upstream.rebase FROM=$$LAST_KNOWN_GOOD_COMMIT'; \
-		echo ; \
-		echo 'This will walk you through resolving the conflict and producing a new patch set'; \
-		echo 'that applies cleanly to `$$DESIRED_COMMTI`.'; \
-		echo ; \
-		exit 1; fi \
-	done
+ifneq ("$(wildcard upstream)","")
+	@./scripts/upstream.sh "$@" apply
 endif
 
 bin/pulumi-java-gen:
