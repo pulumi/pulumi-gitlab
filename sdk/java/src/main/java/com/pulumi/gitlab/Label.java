@@ -72,7 +72,7 @@ public class Label extends com.pulumi.resources.CustomResource {
      * The color of the label given in 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
      * 
      */
-    @Export(name="color", type=String.class, parameters={})
+    @Export(name="color", refs={String.class}, tree="[0]")
     private Output<String> color;
 
     /**
@@ -86,7 +86,7 @@ public class Label extends com.pulumi.resources.CustomResource {
      * The description of the label.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -100,7 +100,7 @@ public class Label extends com.pulumi.resources.CustomResource {
      * The name of the label.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -114,7 +114,7 @@ public class Label extends com.pulumi.resources.CustomResource {
      * The name or id of the project to add the label to.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

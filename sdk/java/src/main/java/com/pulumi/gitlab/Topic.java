@@ -43,7 +43,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * A local path to the avatar image to upload. **Note**: not available for imported resources.
      * 
      */
-    @Export(name="avatar", type=String.class, parameters={})
+    @Export(name="avatar", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> avatar;
 
     /**
@@ -57,7 +57,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * The hash of the avatar image. Use `filesha256(&#34;path/to/avatar.png&#34;)` whenever possible. **Note**: this is used to trigger an update of the avatar. If it&#39;s not given, but an avatar is given, the avatar will be updated each time.
      * 
      */
-    @Export(name="avatarHash", type=String.class, parameters={})
+    @Export(name="avatarHash", refs={String.class}, tree="[0]")
     private Output<String> avatarHash;
 
     /**
@@ -71,7 +71,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * The URL of the avatar image.
      * 
      */
-    @Export(name="avatarUrl", type=String.class, parameters={})
+    @Export(name="avatarUrl", refs={String.class}, tree="[0]")
     private Output<String> avatarUrl;
 
     /**
@@ -85,7 +85,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * A text describing the topic.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -99,7 +99,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * The topic&#39;s name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -117,7 +117,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed. */
-    @Export(name="softDestroy", type=Boolean.class, parameters={})
+    @Export(name="softDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> softDestroy;
 
     /**
@@ -131,7 +131,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * The topic&#39;s description. Requires at least GitLab 15.0 for which it&#39;s a required argument.
      * 
      */
-    @Export(name="title", type=String.class, parameters={})
+    @Export(name="title", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> title;
 
     /**

@@ -28,7 +28,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
      * 
      */
-    @Export(name="baseUrl", type=String.class, parameters={})
+    @Export(name="baseUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> baseUrl;
 
     /**
@@ -45,7 +45,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
      * 
      */
-    @Export(name="cacertFile", type=String.class, parameters={})
+    @Export(name="cacertFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cacertFile;
 
     /**
@@ -60,7 +60,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
      * 
      */
-    @Export(name="clientCert", type=String.class, parameters={})
+    @Export(name="clientCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCert;
 
     /**
@@ -75,7 +75,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * `client_cert` is set.
      * 
      */
-    @Export(name="clientKey", type=String.class, parameters={})
+    @Export(name="clientKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientKey;
 
     /**
@@ -93,7 +93,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * variable.
      * 
      */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output<String> token;
 
     /**

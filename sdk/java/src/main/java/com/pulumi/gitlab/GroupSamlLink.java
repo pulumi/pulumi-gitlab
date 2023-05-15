@@ -65,7 +65,7 @@ public class GroupSamlLink extends com.pulumi.resources.CustomResource {
      * Access level for members of the SAML group. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
      * 
      */
-    @Export(name="accessLevel", type=String.class, parameters={})
+    @Export(name="accessLevel", refs={String.class}, tree="[0]")
     private Output<String> accessLevel;
 
     /**
@@ -79,7 +79,7 @@ public class GroupSamlLink extends com.pulumi.resources.CustomResource {
      * The ID or path of the group to add the SAML Group Link to.
      * 
      */
-    @Export(name="group", type=String.class, parameters={})
+    @Export(name="group", refs={String.class}, tree="[0]")
     private Output<String> group;
 
     /**
@@ -93,7 +93,7 @@ public class GroupSamlLink extends com.pulumi.resources.CustomResource {
      * The name of the SAML group.
      * 
      */
-    @Export(name="samlGroupName", type=String.class, parameters={})
+    @Export(name="samlGroupName", refs={String.class}, tree="[0]")
     private Output<String> samlGroupName;
 
     /**

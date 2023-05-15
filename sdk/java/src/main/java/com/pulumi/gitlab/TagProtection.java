@@ -65,7 +65,7 @@ public class TagProtection extends com.pulumi.resources.CustomResource {
      * Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
      * 
      */
-    @Export(name="createAccessLevel", type=String.class, parameters={})
+    @Export(name="createAccessLevel", refs={String.class}, tree="[0]")
     private Output<String> createAccessLevel;
 
     /**
@@ -79,7 +79,7 @@ public class TagProtection extends com.pulumi.resources.CustomResource {
      * The id of the project.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -93,7 +93,7 @@ public class TagProtection extends com.pulumi.resources.CustomResource {
      * Name of the tag or wildcard.
      * 
      */
-    @Export(name="tag", type=String.class, parameters={})
+    @Export(name="tag", refs={String.class}, tree="[0]")
     private Output<String> tag;
 
     /**

@@ -69,7 +69,7 @@ public class InstanceVariable extends com.pulumi.resources.CustomResource {
      * The name of the variable.
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -83,7 +83,7 @@ public class InstanceVariable extends com.pulumi.resources.CustomResource {
      * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
      * 
      */
-    @Export(name="masked", type=Boolean.class, parameters={})
+    @Export(name="masked", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> masked;
 
     /**
@@ -97,7 +97,7 @@ public class InstanceVariable extends com.pulumi.resources.CustomResource {
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      * 
      */
-    @Export(name="protected", type=Boolean.class, parameters={})
+    @Export(name="protected", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> protected_;
 
     /**
@@ -111,7 +111,7 @@ public class InstanceVariable extends com.pulumi.resources.CustomResource {
      * The value of the variable.
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**
@@ -125,7 +125,7 @@ public class InstanceVariable extends com.pulumi.resources.CustomResource {
      * The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
      * 
      */
-    @Export(name="variableType", type=String.class, parameters={})
+    @Export(name="variableType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> variableType;
 
     /**

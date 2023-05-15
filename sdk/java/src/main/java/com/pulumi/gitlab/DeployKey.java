@@ -73,7 +73,7 @@ public class DeployKey extends com.pulumi.resources.CustomResource {
      * Allow this deploy key to be used to push changes to the project. Defaults to `false`.
      * 
      */
-    @Export(name="canPush", type=Boolean.class, parameters={})
+    @Export(name="canPush", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> canPush;
 
     /**
@@ -87,7 +87,7 @@ public class DeployKey extends com.pulumi.resources.CustomResource {
      * The public ssh key body.
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -101,7 +101,7 @@ public class DeployKey extends com.pulumi.resources.CustomResource {
      * The name or id of the project to add the deploy key to.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -115,7 +115,7 @@ public class DeployKey extends com.pulumi.resources.CustomResource {
      * A title to describe the deploy key with.
      * 
      */
-    @Export(name="title", type=String.class, parameters={})
+    @Export(name="title", refs={String.class}, tree="[0]")
     private Output<String> title;
 
     /**

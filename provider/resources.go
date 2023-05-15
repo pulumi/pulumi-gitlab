@@ -81,6 +81,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:       "https://github.com/pulumi/pulumi-gitlab",
 		UpstreamRepoPath: "./upstream",
 		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+		Version:          version.Version,
 
 		Config: map[string]*tfbridge.SchemaInfo{
 			"cacert_file": {},
@@ -96,7 +97,6 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gitLabDataSource("getProject"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"push_rules": {
-						Name:        "pushRules",
 						MaxItemsOne: tfbridge.True(),
 					},
 				},
@@ -107,22 +107,10 @@ func Provider() tfbridge.ProviderInfo {
 					"projects": {
 						Elem: &tfbridge.SchemaInfo{
 							Fields: map[string]*tfbridge.SchemaInfo{
-								"permissions": {
-									Name:        "permissions",
-									MaxItemsOne: tfbridge.True(),
-								},
-								"namespace": {
-									Name:        "namespace",
-									MaxItemsOne: tfbridge.True(),
-								},
-								"forked_from_project": {
-									Name:        "forkedFromProject",
-									MaxItemsOne: tfbridge.True(),
-								},
-								"owner": {
-									Name:        "owner",
-									MaxItemsOne: tfbridge.True(),
-								},
+								"permissions":         {MaxItemsOne: tfbridge.True()},
+								"namespace":           {MaxItemsOne: tfbridge.True()},
+								"forked_from_project": {MaxItemsOne: tfbridge.True()},
+								"owner":               {MaxItemsOne: tfbridge.True()},
 							},
 						},
 					},

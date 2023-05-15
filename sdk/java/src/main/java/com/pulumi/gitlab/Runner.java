@@ -40,7 +40,7 @@ public class Runner extends com.pulumi.resources.CustomResource {
      * The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
      * 
      */
-    @Export(name="accessLevel", type=String.class, parameters={})
+    @Export(name="accessLevel", refs={String.class}, tree="[0]")
     private Output<String> accessLevel;
 
     /**
@@ -54,7 +54,7 @@ public class Runner extends com.pulumi.resources.CustomResource {
      * The authentication token used for building a config.toml file. This value is not present when imported.
      * 
      */
-    @Export(name="authenticationToken", type=String.class, parameters={})
+    @Export(name="authenticationToken", refs={String.class}, tree="[0]")
     private Output<String> authenticationToken;
 
     /**
@@ -68,7 +68,7 @@ public class Runner extends com.pulumi.resources.CustomResource {
      * The runner&#39;s description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -82,7 +82,7 @@ public class Runner extends com.pulumi.resources.CustomResource {
      * Whether the runner should be locked for current project.
      * 
      */
-    @Export(name="locked", type=Boolean.class, parameters={})
+    @Export(name="locked", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> locked;
 
     /**
@@ -96,7 +96,7 @@ public class Runner extends com.pulumi.resources.CustomResource {
      * Maximum timeout set when this runner handles the job.
      * 
      */
-    @Export(name="maximumTimeout", type=Integer.class, parameters={})
+    @Export(name="maximumTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maximumTimeout;
 
     /**
@@ -110,7 +110,7 @@ public class Runner extends com.pulumi.resources.CustomResource {
      * Whether the runner should ignore new jobs.
      * 
      */
-    @Export(name="paused", type=Boolean.class, parameters={})
+    @Export(name="paused", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> paused;
 
     /**
@@ -124,7 +124,7 @@ public class Runner extends com.pulumi.resources.CustomResource {
      * The registration token used to register the runner.
      * 
      */
-    @Export(name="registrationToken", type=String.class, parameters={})
+    @Export(name="registrationToken", refs={String.class}, tree="[0]")
     private Output<String> registrationToken;
 
     /**
@@ -138,7 +138,7 @@ public class Runner extends com.pulumi.resources.CustomResource {
      * Whether the runner should handle untagged jobs.
      * 
      */
-    @Export(name="runUntagged", type=Boolean.class, parameters={})
+    @Export(name="runUntagged", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> runUntagged;
 
     /**
@@ -153,7 +153,7 @@ public class Runner extends com.pulumi.resources.CustomResource {
      * 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -168,7 +168,7 @@ public class Runner extends com.pulumi.resources.CustomResource {
      * List of runner’s tags.
      * 
      */
-    @Export(name="tagLists", type=List.class, parameters={String.class})
+    @Export(name="tagLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tagLists;
 
     /**

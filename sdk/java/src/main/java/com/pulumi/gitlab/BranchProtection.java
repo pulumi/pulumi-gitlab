@@ -106,7 +106,7 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
      * Can be set to true to allow users with push access to force push.
      * 
      */
-    @Export(name="allowForcePush", type=Boolean.class, parameters={})
+    @Export(name="allowForcePush", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowForcePush;
 
     /**
@@ -120,7 +120,7 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
      * Defines permissions for action.
      * 
      */
-    @Export(name="allowedToMerges", type=List.class, parameters={BranchProtectionAllowedToMerge.class})
+    @Export(name="allowedToMerges", refs={List.class,BranchProtectionAllowedToMerge.class}, tree="[0,1]")
     private Output</* @Nullable */ List<BranchProtectionAllowedToMerge>> allowedToMerges;
 
     /**
@@ -134,7 +134,7 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
      * Defines permissions for action.
      * 
      */
-    @Export(name="allowedToPushes", type=List.class, parameters={BranchProtectionAllowedToPush.class})
+    @Export(name="allowedToPushes", refs={List.class,BranchProtectionAllowedToPush.class}, tree="[0,1]")
     private Output</* @Nullable */ List<BranchProtectionAllowedToPush>> allowedToPushes;
 
     /**
@@ -148,7 +148,7 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
      * Defines permissions for action.
      * 
      */
-    @Export(name="allowedToUnprotects", type=List.class, parameters={BranchProtectionAllowedToUnprotect.class})
+    @Export(name="allowedToUnprotects", refs={List.class,BranchProtectionAllowedToUnprotect.class}, tree="[0,1]")
     private Output</* @Nullable */ List<BranchProtectionAllowedToUnprotect>> allowedToUnprotects;
 
     /**
@@ -162,7 +162,7 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
      * Name of the branch.
      * 
      */
-    @Export(name="branch", type=String.class, parameters={})
+    @Export(name="branch", refs={String.class}, tree="[0]")
     private Output<String> branch;
 
     /**
@@ -176,7 +176,7 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
      * The ID of the branch protection (not the branch name).
      * 
      */
-    @Export(name="branchProtectionId", type=Integer.class, parameters={})
+    @Export(name="branchProtectionId", refs={Integer.class}, tree="[0]")
     private Output<Integer> branchProtectionId;
 
     /**
@@ -190,7 +190,7 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
      * Can be set to true to require code owner approval before merging. Only available own Premium and Ultimate instances.
      * 
      */
-    @Export(name="codeOwnerApprovalRequired", type=Boolean.class, parameters={})
+    @Export(name="codeOwnerApprovalRequired", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> codeOwnerApprovalRequired;
 
     /**
@@ -204,7 +204,7 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
      * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
      * 
      */
-    @Export(name="mergeAccessLevel", type=String.class, parameters={})
+    @Export(name="mergeAccessLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mergeAccessLevel;
 
     /**
@@ -218,7 +218,7 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
      * The id of the project.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -232,7 +232,7 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
      * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
      * 
      */
-    @Export(name="pushAccessLevel", type=String.class, parameters={})
+    @Export(name="pushAccessLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pushAccessLevel;
 
     /**
@@ -246,7 +246,7 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
      * Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
      * 
      */
-    @Export(name="unprotectAccessLevel", type=String.class, parameters={})
+    @Export(name="unprotectAccessLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> unprotectAccessLevel;
 
     /**

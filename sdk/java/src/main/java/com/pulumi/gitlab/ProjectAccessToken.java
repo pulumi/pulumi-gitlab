@@ -80,7 +80,7 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
      * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
      * 
      */
-    @Export(name="accessLevel", type=String.class, parameters={})
+    @Export(name="accessLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessLevel;
 
     /**
@@ -94,7 +94,7 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
      * True if the token is active.
      * 
      */
-    @Export(name="active", type=Boolean.class, parameters={})
+    @Export(name="active", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> active;
 
     /**
@@ -108,7 +108,7 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
      * Time the token has been created, RFC3339 format.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -122,7 +122,7 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
      * Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
      * 
      */
-    @Export(name="expiresAt", type=String.class, parameters={})
+    @Export(name="expiresAt", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expiresAt;
 
     /**
@@ -136,7 +136,7 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
      * A name to describe the project access token.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -150,7 +150,7 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
      * The id of the project to add the project access token to.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -164,7 +164,7 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
      * True if the token is revoked.
      * 
      */
-    @Export(name="revoked", type=Boolean.class, parameters={})
+    @Export(name="revoked", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> revoked;
 
     /**
@@ -178,7 +178,7 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
      * Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.
      * 
      */
-    @Export(name="scopes", type=List.class, parameters={String.class})
+    @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> scopes;
 
     /**
@@ -192,7 +192,7 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
      * The secret token. **Note**: the token is not available for imported resources.
      * 
      */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output<String> token;
 
     /**
@@ -206,7 +206,7 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
      * The user_id associated to the token.
      * 
      */
-    @Export(name="userId", type=Integer.class, parameters={})
+    @Export(name="userId", refs={Integer.class}, tree="[0]")
     private Output<Integer> userId;
 
     /**
