@@ -81,6 +81,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:       "https://github.com/pulumi/pulumi-gitlab",
 		UpstreamRepoPath: "./upstream",
 		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+		Version:          version.Version,
 
 		Config: map[string]*tfbridge.SchemaInfo{
 			"cacert_file": {},
