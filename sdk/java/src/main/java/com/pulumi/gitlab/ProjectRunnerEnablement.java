@@ -65,7 +65,7 @@ public class ProjectRunnerEnablement extends com.pulumi.resources.CustomResource
      * The ID or URL-encoded path of the project owned by the authenticated user.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -79,7 +79,7 @@ public class ProjectRunnerEnablement extends com.pulumi.resources.CustomResource
      * The ID of a runner to enable for the project.
      * 
      */
-    @Export(name="runnerId", type=Integer.class, parameters={})
+    @Export(name="runnerId", refs={Integer.class}, tree="[0]")
     private Output<Integer> runnerId;
 
     /**

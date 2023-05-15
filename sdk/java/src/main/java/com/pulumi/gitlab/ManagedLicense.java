@@ -75,7 +75,7 @@ public class ManagedLicense extends com.pulumi.resources.CustomResource {
      * 			Prior to version 15.0 and after 14.6, the values are equivalent.
      * 
      */
-    @Export(name="approvalStatus", type=String.class, parameters={})
+    @Export(name="approvalStatus", refs={String.class}, tree="[0]")
     private Output<String> approvalStatus;
 
     /**
@@ -91,7 +91,7 @@ public class ManagedLicense extends com.pulumi.resources.CustomResource {
      * The name of the managed license (I.e., &#39;Apache License 2.0&#39; or &#39;MIT license&#39;)
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -105,7 +105,7 @@ public class ManagedLicense extends com.pulumi.resources.CustomResource {
      * The ID of the project under which the managed license will be created.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

@@ -41,7 +41,7 @@ public class ClusterAgentToken extends com.pulumi.resources.CustomResource {
      * The ID of the agent.
      * 
      */
-    @Export(name="agentId", type=Integer.class, parameters={})
+    @Export(name="agentId", refs={Integer.class}, tree="[0]")
     private Output<Integer> agentId;
 
     /**
@@ -55,7 +55,7 @@ public class ClusterAgentToken extends com.pulumi.resources.CustomResource {
      * The ISO8601 datetime when the agent was created.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -69,7 +69,7 @@ public class ClusterAgentToken extends com.pulumi.resources.CustomResource {
      * The ID of the user who created the agent.
      * 
      */
-    @Export(name="createdByUserId", type=Integer.class, parameters={})
+    @Export(name="createdByUserId", refs={Integer.class}, tree="[0]")
     private Output<Integer> createdByUserId;
 
     /**
@@ -83,7 +83,7 @@ public class ClusterAgentToken extends com.pulumi.resources.CustomResource {
      * The Description for the agent.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -97,7 +97,7 @@ public class ClusterAgentToken extends com.pulumi.resources.CustomResource {
      * The ISO8601 datetime when the token was last used.
      * 
      */
-    @Export(name="lastUsedAt", type=String.class, parameters={})
+    @Export(name="lastUsedAt", refs={String.class}, tree="[0]")
     private Output<String> lastUsedAt;
 
     /**
@@ -111,7 +111,7 @@ public class ClusterAgentToken extends com.pulumi.resources.CustomResource {
      * The Name of the agent.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -125,7 +125,7 @@ public class ClusterAgentToken extends com.pulumi.resources.CustomResource {
      * ID or full path of the project maintained by the authenticated user.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -139,7 +139,7 @@ public class ClusterAgentToken extends com.pulumi.resources.CustomResource {
      * The status of the token. Valid values are `active`, `revoked`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -153,7 +153,7 @@ public class ClusterAgentToken extends com.pulumi.resources.CustomResource {
      * The secret token for the agent. The `token` is not available in imported resources.
      * 
      */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output<String> token;
 
     /**
@@ -167,7 +167,7 @@ public class ClusterAgentToken extends com.pulumi.resources.CustomResource {
      * The ID of the token.
      * 
      */
-    @Export(name="tokenId", type=Integer.class, parameters={})
+    @Export(name="tokenId", refs={Integer.class}, tree="[0]")
     private Output<Integer> tokenId;
 
     /**

@@ -76,7 +76,7 @@ public class ProjectMembership extends com.pulumi.resources.CustomResource {
      * The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
      * 
      */
-    @Export(name="accessLevel", type=String.class, parameters={})
+    @Export(name="accessLevel", refs={String.class}, tree="[0]")
     private Output<String> accessLevel;
 
     /**
@@ -90,7 +90,7 @@ public class ProjectMembership extends com.pulumi.resources.CustomResource {
      * Expiration date for the project membership. Format: `YYYY-MM-DD`
      * 
      */
-    @Export(name="expiresAt", type=String.class, parameters={})
+    @Export(name="expiresAt", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expiresAt;
 
     /**
@@ -104,7 +104,7 @@ public class ProjectMembership extends com.pulumi.resources.CustomResource {
      * The id of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -118,7 +118,7 @@ public class ProjectMembership extends com.pulumi.resources.CustomResource {
      * The id of the user.
      * 
      */
-    @Export(name="userId", type=Integer.class, parameters={})
+    @Export(name="userId", refs={Integer.class}, tree="[0]")
     private Output<Integer> userId;
 
     /**

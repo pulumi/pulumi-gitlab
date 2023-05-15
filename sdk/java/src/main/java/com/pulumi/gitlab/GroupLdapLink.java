@@ -72,7 +72,7 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `group_access` instead of the `access_level` attribute. */
-    @Export(name="accessLevel", type=String.class, parameters={})
+    @Export(name="accessLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessLevel;
 
     /**
@@ -86,7 +86,7 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
      * The CN of the LDAP group to link with.
      * 
      */
-    @Export(name="cn", type=String.class, parameters={})
+    @Export(name="cn", refs={String.class}, tree="[0]")
     private Output<String> cn;
 
     /**
@@ -100,7 +100,7 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
      * If true, then delete and replace an existing LDAP link if one exists.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -114,7 +114,7 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
      * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
      * 
      */
-    @Export(name="groupAccess", type=String.class, parameters={})
+    @Export(name="groupAccess", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupAccess;
 
     /**
@@ -128,7 +128,7 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
      * The id of the GitLab group.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -142,7 +142,7 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
      * The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
      * 
      */
-    @Export(name="ldapProvider", type=String.class, parameters={})
+    @Export(name="ldapProvider", refs={String.class}, tree="[0]")
     private Output<String> ldapProvider;
 
     /**

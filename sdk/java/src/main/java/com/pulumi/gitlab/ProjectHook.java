@@ -71,7 +71,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for confidential issues events.
      * 
      */
-    @Export(name="confidentialIssuesEvents", type=Boolean.class, parameters={})
+    @Export(name="confidentialIssuesEvents", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> confidentialIssuesEvents;
 
     /**
@@ -85,7 +85,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for confidential notes events.
      * 
      */
-    @Export(name="confidentialNoteEvents", type=Boolean.class, parameters={})
+    @Export(name="confidentialNoteEvents", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> confidentialNoteEvents;
 
     /**
@@ -99,7 +99,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for deployment events.
      * 
      */
-    @Export(name="deploymentEvents", type=Boolean.class, parameters={})
+    @Export(name="deploymentEvents", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deploymentEvents;
 
     /**
@@ -113,7 +113,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * Enable ssl verification when invoking the hook.
      * 
      */
-    @Export(name="enableSslVerification", type=Boolean.class, parameters={})
+    @Export(name="enableSslVerification", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableSslVerification;
 
     /**
@@ -127,7 +127,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * The id of the project hook.
      * 
      */
-    @Export(name="hookId", type=Integer.class, parameters={})
+    @Export(name="hookId", refs={Integer.class}, tree="[0]")
     private Output<Integer> hookId;
 
     /**
@@ -141,7 +141,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for issues events.
      * 
      */
-    @Export(name="issuesEvents", type=Boolean.class, parameters={})
+    @Export(name="issuesEvents", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> issuesEvents;
 
     /**
@@ -155,7 +155,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for job events.
      * 
      */
-    @Export(name="jobEvents", type=Boolean.class, parameters={})
+    @Export(name="jobEvents", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> jobEvents;
 
     /**
@@ -169,7 +169,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for merge requests.
      * 
      */
-    @Export(name="mergeRequestsEvents", type=Boolean.class, parameters={})
+    @Export(name="mergeRequestsEvents", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> mergeRequestsEvents;
 
     /**
@@ -183,7 +183,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for notes events.
      * 
      */
-    @Export(name="noteEvents", type=Boolean.class, parameters={})
+    @Export(name="noteEvents", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> noteEvents;
 
     /**
@@ -197,7 +197,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for pipeline events.
      * 
      */
-    @Export(name="pipelineEvents", type=Boolean.class, parameters={})
+    @Export(name="pipelineEvents", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> pipelineEvents;
 
     /**
@@ -211,7 +211,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * The name or id of the project to add the hook to.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -225,7 +225,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * The id of the project for the hook.
      * 
      */
-    @Export(name="projectId", type=Integer.class, parameters={})
+    @Export(name="projectId", refs={Integer.class}, tree="[0]")
     private Output<Integer> projectId;
 
     /**
@@ -239,7 +239,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for push events.
      * 
      */
-    @Export(name="pushEvents", type=Boolean.class, parameters={})
+    @Export(name="pushEvents", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> pushEvents;
 
     /**
@@ -253,7 +253,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for push events on matching branches only.
      * 
      */
-    @Export(name="pushEventsBranchFilter", type=String.class, parameters={})
+    @Export(name="pushEventsBranchFilter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pushEventsBranchFilter;
 
     /**
@@ -267,7 +267,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for releases events.
      * 
      */
-    @Export(name="releasesEvents", type=Boolean.class, parameters={})
+    @Export(name="releasesEvents", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> releasesEvents;
 
     /**
@@ -281,7 +281,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for tag push events.
      * 
      */
-    @Export(name="tagPushEvents", type=Boolean.class, parameters={})
+    @Export(name="tagPushEvents", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> tagPushEvents;
 
     /**
@@ -295,7 +295,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * A token to present when invoking the hook. The token is not available for imported resources.
      * 
      */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 
     /**
@@ -309,7 +309,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * The url of the hook to invoke.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
@@ -323,7 +323,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for wiki page events.
      * 
      */
-    @Export(name="wikiPageEvents", type=Boolean.class, parameters={})
+    @Export(name="wikiPageEvents", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> wikiPageEvents;
 
     /**

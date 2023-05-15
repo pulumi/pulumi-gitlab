@@ -90,7 +90,7 @@ public class UserGpgKey extends com.pulumi.resources.CustomResource {
      * The time when this key was created in GitLab.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -104,7 +104,7 @@ public class UserGpgKey extends com.pulumi.resources.CustomResource {
      * The armored GPG public key.
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -118,7 +118,7 @@ public class UserGpgKey extends com.pulumi.resources.CustomResource {
      * The ID of the GPG key.
      * 
      */
-    @Export(name="keyId", type=Integer.class, parameters={})
+    @Export(name="keyId", refs={Integer.class}, tree="[0]")
     private Output<Integer> keyId;
 
     /**
@@ -132,7 +132,7 @@ public class UserGpgKey extends com.pulumi.resources.CustomResource {
      * The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
      * 
      */
-    @Export(name="userId", type=Integer.class, parameters={})
+    @Export(name="userId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> userId;
 
     /**

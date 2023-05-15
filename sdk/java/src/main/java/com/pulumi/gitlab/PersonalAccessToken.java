@@ -81,7 +81,7 @@ public class PersonalAccessToken extends com.pulumi.resources.CustomResource {
      * True if the token is active.
      * 
      */
-    @Export(name="active", type=Boolean.class, parameters={})
+    @Export(name="active", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> active;
 
     /**
@@ -95,7 +95,7 @@ public class PersonalAccessToken extends com.pulumi.resources.CustomResource {
      * Time the token has been created, RFC3339 format.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -109,7 +109,7 @@ public class PersonalAccessToken extends com.pulumi.resources.CustomResource {
      * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
      * 
      */
-    @Export(name="expiresAt", type=String.class, parameters={})
+    @Export(name="expiresAt", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expiresAt;
 
     /**
@@ -123,7 +123,7 @@ public class PersonalAccessToken extends com.pulumi.resources.CustomResource {
      * The name of the personal access token.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -137,7 +137,7 @@ public class PersonalAccessToken extends com.pulumi.resources.CustomResource {
      * True if the token is revoked.
      * 
      */
-    @Export(name="revoked", type=Boolean.class, parameters={})
+    @Export(name="revoked", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> revoked;
 
     /**
@@ -151,7 +151,7 @@ public class PersonalAccessToken extends com.pulumi.resources.CustomResource {
      * The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`.
      * 
      */
-    @Export(name="scopes", type=List.class, parameters={String.class})
+    @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> scopes;
 
     /**
@@ -165,7 +165,7 @@ public class PersonalAccessToken extends com.pulumi.resources.CustomResource {
      * The personal access token. This is only populated when creating a new personal access token. This attribute is not available for imported resources.
      * 
      */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output<String> token;
 
     /**
@@ -179,7 +179,7 @@ public class PersonalAccessToken extends com.pulumi.resources.CustomResource {
      * The id of the user.
      * 
      */
-    @Export(name="userId", type=Integer.class, parameters={})
+    @Export(name="userId", refs={Integer.class}, tree="[0]")
     private Output<Integer> userId;
 
     /**
