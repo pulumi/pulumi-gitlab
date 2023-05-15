@@ -51,14 +51,6 @@ func gitLabType(mod string, typ string) tokens.Type {
 	return tokens.Type(gitLabMember(mod, typ))
 }
 
-// gitLabDataSource manufactures a standard resource token given a module and resource name.
-// It automatically uses the GitLab package and names the file by simply lower casing the data
-// source's first character.
-func gitLabDataSource(res string) tokens.ModuleMember {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return gitLabMember(gitLabMod+"/"+fn, res)
-}
-
 // gitLabResource manufactures a standard resource token given a module and resource name.
 // It automatically uses the GitLab package and names the file by simply lower casing the resource's
 // first character.
