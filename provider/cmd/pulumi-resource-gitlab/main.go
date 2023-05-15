@@ -17,16 +17,16 @@
 package main
 
 import (
+	"context"
 	_ "embed"
 
-	gitlab "github.com/pulumi/pulumi-gitlab/provider/v4"
-	"github.com/pulumi/pulumi-gitlab/provider/v4/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	gitlab "github.com/pulumi/pulumi-gitlab/provider/v5"
+	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 )
 
 //go:embed schema-embed.json
 var pulumiSchema []byte
 
 func main() {
-	tfbridge.Main("gitlab", version.Version, gitlab.Provider(), pulumiSchema)
+	tfbridge.MainWithMuxer(context.Background(), "gitlab", gitlab.Provider(), pulumiSchema)
 }

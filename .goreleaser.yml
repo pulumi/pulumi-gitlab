@@ -28,7 +28,7 @@ builds:
   - linux
   ignore: []
   ldflags:
-  - -X github.com/pulumi/pulumi-gitlab/provider/v4/pkg/version.Version={{.Tag}}
+  - -X github.com/pulumi/pulumi-gitlab/provider/v5/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-gitlab/
 changelog:
   filters:

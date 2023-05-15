@@ -15,11 +15,10 @@
 package main
 
 import (
-	gitlab "github.com/pulumi/pulumi-gitlab/provider/v4"
-	"github.com/pulumi/pulumi-gitlab/provider/v4/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	gitlab "github.com/pulumi/pulumi-gitlab/provider/v5"
+	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
 )
 
 func main() {
-	tfgen.Main("gitlab", version.Version, gitlab.Provider())
+	tfgen.MainWithMuxer("gitlab", gitlab.Provider())
 }
