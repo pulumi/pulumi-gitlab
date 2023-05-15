@@ -70,7 +70,7 @@ namespace Pulumi.GitLab
         public Output<string?> DueDate { get; private set; } = null!;
 
         /// <summary>
-        /// Bool, true if milestore expired.
+        /// Bool, true if milestone expired.
         /// </summary>
         [Output("expired")]
         public Output<bool> Expired { get; private set; } = null!;
@@ -238,7 +238,7 @@ namespace Pulumi.GitLab
         public Input<string>? DueDate { get; set; }
 
         /// <summary>
-        /// Bool, true if milestore expired.
+        /// Bool, true if milestone expired.
         /// </summary>
         [Input("expired")]
         public Input<bool>? Expired { get; set; }

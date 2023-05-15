@@ -49,7 +49,7 @@ namespace Pulumi.GitLab.Inputs
         public Input<bool>? DenyDeleteTag { get; set; }
 
         /// <summary>
-        /// All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+        /// All committed filenames must not match this regex, e.g. `(jar|exe)$`.
         /// </summary>
         [Input("fileNameRegex")]
         public Input<string>? FileNameRegex { get; set; }

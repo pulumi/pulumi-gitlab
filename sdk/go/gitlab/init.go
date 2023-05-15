@@ -20,6 +20,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gitlab:index/application:Application":
+		r = &Application{}
 	case "gitlab:index/applicationSettings:ApplicationSettings":
 		r = &ApplicationSettings{}
 	case "gitlab:index/branch:Branch":
@@ -70,6 +72,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Label{}
 	case "gitlab:index/managedLicense:ManagedLicense":
 		r = &ManagedLicense{}
+	case "gitlab:index/pagesDomain:PagesDomain":
+		r = &PagesDomain{}
 	case "gitlab:index/personalAccessToken:PersonalAccessToken":
 		r = &PersonalAccessToken{}
 	case "gitlab:index/pipelineSchedule:PipelineSchedule":
@@ -124,6 +128,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RepositoryFile{}
 	case "gitlab:index/runner:Runner":
 		r = &Runner{}
+	case "gitlab:index/serviceCustomIssueTracker:ServiceCustomIssueTracker":
+		r = &ServiceCustomIssueTracker{}
 	case "gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush":
 		r = &ServiceEmailsOnPush{}
 	case "gitlab:index/serviceExternalWiki:ServiceExternalWiki":
@@ -180,6 +186,11 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 
 func init() {
 	version, _ := PkgVersion()
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/application",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/applicationSettings",
@@ -303,6 +314,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/managedLicense",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/pagesDomain",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -438,6 +454,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/runner",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/serviceCustomIssueTracker",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

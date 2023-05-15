@@ -122,7 +122,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-        /// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
         /// </summary>
         [Output("dueDate")]
         public Output<string?> DueDate { get; private set; } = null!;
@@ -391,7 +390,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-        /// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
         /// </summary>
         [Input("dueDate")]
         public Input<string>? DueDate { get; set; }
@@ -550,7 +548,6 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-        /// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
         /// </summary>
         [Input("dueDate")]
         public Input<string>? DueDate { get; set; }

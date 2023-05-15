@@ -14,19 +14,15 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 token: pulumi.Input[str],
                  base_url: Optional[pulumi.Input[str]] = None,
                  cacert_file: Optional[pulumi.Input[str]] = None,
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
                  early_auth_check: Optional[pulumi.Input[bool]] = None,
-                 insecure: Optional[pulumi.Input[bool]] = None):
+                 insecure: Optional[pulumi.Input[bool]] = None,
+                 token: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[str] token: The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
-               used in this provider for authentication (using Bearer authorization token). See
-               https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
-               variable.
         :param pulumi.Input[str] base_url: This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
                Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
                the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
@@ -36,12 +32,16 @@ class ProviderArgs:
         :param pulumi.Input[str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
                `client_cert` is set.
         :param pulumi.Input[bool] early_auth_check: (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
-               configuration is correct and the GitLab API is reachable. Turn it off, to skip this check. This may be useful if the
-               GitLab instance does not yet exist and is created within the same terraform module. This is an experimental feature and
-               may change in the future. Please make sure to always keep backups of your state.
+               configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if
+               the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the
+               `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep
+               backups of your state.
         :param pulumi.Input[bool] insecure: When set to true this disables SSL verification of the connection to the GitLab instance.
+        :param pulumi.Input[str] token: The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
+               used in this provider for authentication (using Bearer authorization token). See
+               https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
+               variable.
         """
-        pulumi.set(__self__, "token", token)
         if base_url is not None:
             pulumi.set(__self__, "base_url", base_url)
         if cacert_file is not None:
@@ -54,21 +54,8 @@ class ProviderArgs:
             pulumi.set(__self__, "early_auth_check", early_auth_check)
         if insecure is not None:
             pulumi.set(__self__, "insecure", insecure)
-
-    @property
-    @pulumi.getter
-    def token(self) -> pulumi.Input[str]:
-        """
-        The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
-        used in this provider for authentication (using Bearer authorization token). See
-        https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
-        variable.
-        """
-        return pulumi.get(self, "token")
-
-    @token.setter
-    def token(self, value: pulumi.Input[str]):
-        pulumi.set(self, "token", value)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
 
     @property
     @pulumi.getter(name="baseUrl")
@@ -127,9 +114,10 @@ class ProviderArgs:
     def early_auth_check(self) -> Optional[pulumi.Input[bool]]:
         """
         (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
-        configuration is correct and the GitLab API is reachable. Turn it off, to skip this check. This may be useful if the
-        GitLab instance does not yet exist and is created within the same terraform module. This is an experimental feature and
-        may change in the future. Please make sure to always keep backups of your state.
+        configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if
+        the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the
+        `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep
+        backups of your state.
         """
         return pulumi.get(self, "early_auth_check")
 
@@ -148,6 +136,21 @@ class ProviderArgs:
     @insecure.setter
     def insecure(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "insecure", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
+        used in this provider for authentication (using Bearer authorization token). See
+        https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
+        variable.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token", value)
 
 
 class Provider(pulumi.ProviderResource):
@@ -180,9 +183,10 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
                `client_cert` is set.
         :param pulumi.Input[bool] early_auth_check: (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
-               configuration is correct and the GitLab API is reachable. Turn it off, to skip this check. This may be useful if the
-               GitLab instance does not yet exist and is created within the same terraform module. This is an experimental feature and
-               may change in the future. Please make sure to always keep backups of your state.
+               configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if
+               the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the
+               `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep
+               backups of your state.
         :param pulumi.Input[bool] insecure: When set to true this disables SSL verification of the connection to the GitLab instance.
         :param pulumi.Input[str] token: The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
                used in this provider for authentication (using Bearer authorization token). See
@@ -193,7 +197,7 @@ class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProviderArgs,
+                 args: Optional[ProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the gitlab package. By default, resources use package-wide configuration
@@ -238,9 +242,9 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["client_key"] = client_key
             __props__.__dict__["early_auth_check"] = pulumi.Output.from_input(early_auth_check).apply(pulumi.runtime.to_json) if early_auth_check is not None else None
             __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
-            if token is None and not opts.urn:
-                raise TypeError("Missing required property 'token'")
-            __props__.__dict__["token"] = token
+            __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'gitlab',
             resource_name,
@@ -285,7 +289,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter
-    def token(self) -> pulumi.Output[str]:
+    def token(self) -> pulumi.Output[Optional[str]]:
         """
         The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
         used in this provider for authentication (using Bearer authorization token). See

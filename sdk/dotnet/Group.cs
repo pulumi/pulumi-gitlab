@@ -61,13 +61,31 @@ namespace Pulumi.GitLab
         /// Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
         /// </summary>
         [Output("autoDevopsEnabled")]
-        public Output<bool?> AutoDevopsEnabled { get; private set; } = null!;
+        public Output<bool> AutoDevopsEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// A local path to the avatar image to upload. **Note**: not available for imported resources.
+        /// </summary>
+        [Output("avatar")]
+        public Output<string?> Avatar { get; private set; } = null!;
+
+        /// <summary>
+        /// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        /// </summary>
+        [Output("avatarHash")]
+        public Output<string> AvatarHash { get; private set; } = null!;
+
+        /// <summary>
+        /// The URL of the avatar image.
+        /// </summary>
+        [Output("avatarUrl")]
+        public Output<string> AvatarUrl { get; private set; } = null!;
 
         /// <summary>
         /// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
         /// </summary>
         [Output("defaultBranchProtection")]
-        public Output<int?> DefaultBranchProtection { get; private set; } = null!;
+        public Output<int> DefaultBranchProtection { get; private set; } = null!;
 
         /// <summary>
         /// The description of the group.
@@ -79,13 +97,13 @@ namespace Pulumi.GitLab
         /// Defaults to false. Disable email notifications.
         /// </summary>
         [Output("emailsDisabled")]
-        public Output<bool?> EmailsDisabled { get; private set; } = null!;
+        public Output<bool> EmailsDisabled { get; private set; } = null!;
 
         /// <summary>
         /// Can be set by administrators only. Additional CI/CD minutes for this group.
         /// </summary>
         [Output("extraSharedRunnersMinutesLimit")]
-        public Output<int?> ExtraSharedRunnersMinutesLimit { get; private set; } = null!;
+        public Output<int> ExtraSharedRunnersMinutesLimit { get; private set; } = null!;
 
         /// <summary>
         /// The full name of the group.
@@ -100,10 +118,16 @@ namespace Pulumi.GitLab
         public Output<string> FullPath { get; private set; } = null!;
 
         /// <summary>
+        /// A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+        /// </summary>
+        [Output("ipRestrictionRanges")]
+        public Output<ImmutableArray<string>> IpRestrictionRanges { get; private set; } = null!;
+
+        /// <summary>
         /// Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
         /// </summary>
         [Output("lfsEnabled")]
-        public Output<bool?> LfsEnabled { get; private set; } = null!;
+        public Output<bool> LfsEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Users cannot be added to projects in this group.
@@ -115,7 +139,7 @@ namespace Pulumi.GitLab
         /// Defaults to false. Disable the capability of a group from getting mentioned.
         /// </summary>
         [Output("mentionsDisabled")]
-        public Output<bool?> MentionsDisabled { get; private set; } = null!;
+        public Output<bool> MentionsDisabled { get; private set; } = null!;
 
         /// <summary>
         /// The name of this group.
@@ -127,7 +151,7 @@ namespace Pulumi.GitLab
         /// Id of the parent group (creates a nested group).
         /// </summary>
         [Output("parentId")]
-        public Output<int?> ParentId { get; private set; } = null!;
+        public Output<int> ParentId { get; private set; } = null!;
 
         /// <summary>
         /// The path of the group.
@@ -139,25 +163,25 @@ namespace Pulumi.GitLab
         /// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         /// </summary>
         [Output("preventForkingOutsideGroup")]
-        public Output<bool?> PreventForkingOutsideGroup { get; private set; } = null!;
+        public Output<bool> PreventForkingOutsideGroup { get; private set; } = null!;
 
         /// <summary>
         /// Defaults to maintainer. Determine if developers can create projects in the group.
         /// </summary>
         [Output("projectCreationLevel")]
-        public Output<string?> ProjectCreationLevel { get; private set; } = null!;
+        public Output<string> ProjectCreationLevel { get; private set; } = null!;
 
         /// <summary>
         /// Defaults to false. Allow users to request member access.
         /// </summary>
         [Output("requestAccessEnabled")]
-        public Output<bool?> RequestAccessEnabled { get; private set; } = null!;
+        public Output<bool> RequestAccessEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Defaults to false. Require all users in this group to setup Two-factor authentication.
         /// </summary>
         [Output("requireTwoFactorAuthentication")]
-        public Output<bool?> RequireTwoFactorAuthentication { get; private set; } = null!;
+        public Output<bool> RequireTwoFactorAuthentication { get; private set; } = null!;
 
         /// <summary>
         /// The group level registration token to use during runner setup.
@@ -169,25 +193,25 @@ namespace Pulumi.GitLab
         /// Defaults to false. Prevent sharing a project with another group within this group.
         /// </summary>
         [Output("shareWithGroupLock")]
-        public Output<bool?> ShareWithGroupLock { get; private set; } = null!;
+        public Output<bool> ShareWithGroupLock { get; private set; } = null!;
 
         /// <summary>
         /// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
         /// </summary>
         [Output("sharedRunnersMinutesLimit")]
-        public Output<int?> SharedRunnersMinutesLimit { get; private set; } = null!;
+        public Output<int> SharedRunnersMinutesLimit { get; private set; } = null!;
 
         /// <summary>
         /// Defaults to owner. Allowed to create subgroups.
         /// </summary>
         [Output("subgroupCreationLevel")]
-        public Output<string?> SubgroupCreationLevel { get; private set; } = null!;
+        public Output<string> SubgroupCreationLevel { get; private set; } = null!;
 
         /// <summary>
         /// Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         /// </summary>
         [Output("twoFactorGracePeriod")]
-        public Output<int?> TwoFactorGracePeriod { get; private set; } = null!;
+        public Output<int> TwoFactorGracePeriod { get; private set; } = null!;
 
         /// <summary>
         /// The group's visibility. Can be `private`, `internal`, or `public`.
@@ -258,6 +282,18 @@ namespace Pulumi.GitLab
         public Input<bool>? AutoDevopsEnabled { get; set; }
 
         /// <summary>
+        /// A local path to the avatar image to upload. **Note**: not available for imported resources.
+        /// </summary>
+        [Input("avatar")]
+        public Input<string>? Avatar { get; set; }
+
+        /// <summary>
+        /// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        /// </summary>
+        [Input("avatarHash")]
+        public Input<string>? AvatarHash { get; set; }
+
+        /// <summary>
         /// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
         /// </summary>
         [Input("defaultBranchProtection")]
@@ -280,6 +316,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("extraSharedRunnersMinutesLimit")]
         public Input<int>? ExtraSharedRunnersMinutesLimit { get; set; }
+
+        [Input("ipRestrictionRanges")]
+        private InputList<string>? _ipRestrictionRanges;
+
+        /// <summary>
+        /// A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+        /// </summary>
+        public InputList<string> IpRestrictionRanges
+        {
+            get => _ipRestrictionRanges ?? (_ipRestrictionRanges = new InputList<string>());
+            set => _ipRestrictionRanges = value;
+        }
 
         /// <summary>
         /// Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
@@ -386,6 +434,24 @@ namespace Pulumi.GitLab
         public Input<bool>? AutoDevopsEnabled { get; set; }
 
         /// <summary>
+        /// A local path to the avatar image to upload. **Note**: not available for imported resources.
+        /// </summary>
+        [Input("avatar")]
+        public Input<string>? Avatar { get; set; }
+
+        /// <summary>
+        /// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        /// </summary>
+        [Input("avatarHash")]
+        public Input<string>? AvatarHash { get; set; }
+
+        /// <summary>
+        /// The URL of the avatar image.
+        /// </summary>
+        [Input("avatarUrl")]
+        public Input<string>? AvatarUrl { get; set; }
+
+        /// <summary>
         /// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
         /// </summary>
         [Input("defaultBranchProtection")]
@@ -420,6 +486,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("fullPath")]
         public Input<string>? FullPath { get; set; }
+
+        [Input("ipRestrictionRanges")]
+        private InputList<string>? _ipRestrictionRanges;
+
+        /// <summary>
+        /// A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+        /// </summary>
+        public InputList<string> IpRestrictionRanges
+        {
+            get => _ipRestrictionRanges ?? (_ipRestrictionRanges = new InputList<string>());
+            set => _ipRestrictionRanges = value;
+        }
 
         /// <summary>
         /// Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.

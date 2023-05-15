@@ -31,7 +31,13 @@ namespace Pulumi.GitLab.Inputs
         public Input<int>? KeepN { get; set; }
 
         /// <summary>
-        /// The regular expression to match image names to delete. **Note**: the upstream API has some inconsistencies with the `name_regex` field here. It's basically unusable at the moment.
+        /// The regular expression to match image names to delete.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// The regular expression to match image names to delete.
         /// </summary>
         [Input("nameRegexDelete")]
         public Input<string>? NameRegexDelete { get; set; }

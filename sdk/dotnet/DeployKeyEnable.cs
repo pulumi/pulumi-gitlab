@@ -35,7 +35,7 @@ namespace Pulumi.GitLab
     ///     {
     ///         Project = parentProject.Id,
     ///         Title = "Example deploy key",
-    ///         Key = "ssh-rsa AAAA...",
+    ///         Key = "ssh-ed25519 AAAA...",
     ///     });
     /// 
     ///     // Enable the deployment key on the second repo

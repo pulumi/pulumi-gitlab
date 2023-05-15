@@ -183,14 +183,14 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
         return this.fileName;
     }
     /**
-     * The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     * The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      * 
      */
     @Export(name="filePath", refs={String.class}, tree="[0]")
     private Output<String> filePath;
 
     /**
-     * @return The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     * @return The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      * 
      */
     public Output<String> filePath() {
@@ -209,6 +209,20 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      */
     public Output<String> lastCommitId() {
         return this.lastCommitId;
+    }
+    /**
+     * Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+     * 
+     */
+    @Export(name="overwriteOnCreate", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> overwriteOnCreate;
+
+    /**
+     * @return Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+     * 
+     */
+    public Output<Optional<Boolean>> overwriteOnCreate() {
+        return Codegen.optional(this.overwriteOnCreate);
     }
     /**
      * The name or ID of the project.

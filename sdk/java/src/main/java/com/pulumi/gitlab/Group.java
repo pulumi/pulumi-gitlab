@@ -82,28 +82,70 @@ public class Group extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="autoDevopsEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> autoDevopsEnabled;
+    private Output<Boolean> autoDevopsEnabled;
 
     /**
      * @return Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
      * 
      */
-    public Output<Optional<Boolean>> autoDevopsEnabled() {
-        return Codegen.optional(this.autoDevopsEnabled);
+    public Output<Boolean> autoDevopsEnabled() {
+        return this.autoDevopsEnabled;
+    }
+    /**
+     * A local path to the avatar image to upload. **Note**: not available for imported resources.
+     * 
+     */
+    @Export(name="avatar", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> avatar;
+
+    /**
+     * @return A local path to the avatar image to upload. **Note**: not available for imported resources.
+     * 
+     */
+    public Output<Optional<String>> avatar() {
+        return Codegen.optional(this.avatar);
+    }
+    /**
+     * The hash of the avatar image. Use `filesha256(&#34;path/to/avatar.png&#34;)` whenever possible. **Note**: this is used to trigger an update of the avatar. If it&#39;s not given, but an avatar is given, the avatar will be updated each time.
+     * 
+     */
+    @Export(name="avatarHash", refs={String.class}, tree="[0]")
+    private Output<String> avatarHash;
+
+    /**
+     * @return The hash of the avatar image. Use `filesha256(&#34;path/to/avatar.png&#34;)` whenever possible. **Note**: this is used to trigger an update of the avatar. If it&#39;s not given, but an avatar is given, the avatar will be updated each time.
+     * 
+     */
+    public Output<String> avatarHash() {
+        return this.avatarHash;
+    }
+    /**
+     * The URL of the avatar image.
+     * 
+     */
+    @Export(name="avatarUrl", refs={String.class}, tree="[0]")
+    private Output<String> avatarUrl;
+
+    /**
+     * @return The URL of the avatar image.
+     * 
+     */
+    public Output<String> avatarUrl() {
+        return this.avatarUrl;
     }
     /**
      * Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
      * 
      */
     @Export(name="defaultBranchProtection", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> defaultBranchProtection;
+    private Output<Integer> defaultBranchProtection;
 
     /**
      * @return Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
      * 
      */
-    public Output<Optional<Integer>> defaultBranchProtection() {
-        return Codegen.optional(this.defaultBranchProtection);
+    public Output<Integer> defaultBranchProtection() {
+        return this.defaultBranchProtection;
     }
     /**
      * The description of the group.
@@ -124,28 +166,28 @@ public class Group extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="emailsDisabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> emailsDisabled;
+    private Output<Boolean> emailsDisabled;
 
     /**
      * @return Defaults to false. Disable email notifications.
      * 
      */
-    public Output<Optional<Boolean>> emailsDisabled() {
-        return Codegen.optional(this.emailsDisabled);
+    public Output<Boolean> emailsDisabled() {
+        return this.emailsDisabled;
     }
     /**
      * Can be set by administrators only. Additional CI/CD minutes for this group.
      * 
      */
     @Export(name="extraSharedRunnersMinutesLimit", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> extraSharedRunnersMinutesLimit;
+    private Output<Integer> extraSharedRunnersMinutesLimit;
 
     /**
      * @return Can be set by administrators only. Additional CI/CD minutes for this group.
      * 
      */
-    public Output<Optional<Integer>> extraSharedRunnersMinutesLimit() {
-        return Codegen.optional(this.extraSharedRunnersMinutesLimit);
+    public Output<Integer> extraSharedRunnersMinutesLimit() {
+        return this.extraSharedRunnersMinutesLimit;
     }
     /**
      * The full name of the group.
@@ -176,18 +218,32 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.fullPath;
     }
     /**
+     * A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+     * 
+     */
+    @Export(name="ipRestrictionRanges", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> ipRestrictionRanges;
+
+    /**
+     * @return A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+     * 
+     */
+    public Output<Optional<List<String>>> ipRestrictionRanges() {
+        return Codegen.optional(this.ipRestrictionRanges);
+    }
+    /**
      * Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
      * 
      */
     @Export(name="lfsEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> lfsEnabled;
+    private Output<Boolean> lfsEnabled;
 
     /**
      * @return Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
      * 
      */
-    public Output<Optional<Boolean>> lfsEnabled() {
-        return Codegen.optional(this.lfsEnabled);
+    public Output<Boolean> lfsEnabled() {
+        return this.lfsEnabled;
     }
     /**
      * Users cannot be added to projects in this group.
@@ -208,14 +264,14 @@ public class Group extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="mentionsDisabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> mentionsDisabled;
+    private Output<Boolean> mentionsDisabled;
 
     /**
      * @return Defaults to false. Disable the capability of a group from getting mentioned.
      * 
      */
-    public Output<Optional<Boolean>> mentionsDisabled() {
-        return Codegen.optional(this.mentionsDisabled);
+    public Output<Boolean> mentionsDisabled() {
+        return this.mentionsDisabled;
     }
     /**
      * The name of this group.
@@ -236,14 +292,14 @@ public class Group extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="parentId", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> parentId;
+    private Output<Integer> parentId;
 
     /**
      * @return Id of the parent group (creates a nested group).
      * 
      */
-    public Output<Optional<Integer>> parentId() {
-        return Codegen.optional(this.parentId);
+    public Output<Integer> parentId() {
+        return this.parentId;
     }
     /**
      * The path of the group.
@@ -264,56 +320,56 @@ public class Group extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="preventForkingOutsideGroup", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> preventForkingOutsideGroup;
+    private Output<Boolean> preventForkingOutsideGroup;
 
     /**
      * @return Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
      * 
      */
-    public Output<Optional<Boolean>> preventForkingOutsideGroup() {
-        return Codegen.optional(this.preventForkingOutsideGroup);
+    public Output<Boolean> preventForkingOutsideGroup() {
+        return this.preventForkingOutsideGroup;
     }
     /**
      * Defaults to maintainer. Determine if developers can create projects in the group.
      * 
      */
     @Export(name="projectCreationLevel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> projectCreationLevel;
+    private Output<String> projectCreationLevel;
 
     /**
      * @return Defaults to maintainer. Determine if developers can create projects in the group.
      * 
      */
-    public Output<Optional<String>> projectCreationLevel() {
-        return Codegen.optional(this.projectCreationLevel);
+    public Output<String> projectCreationLevel() {
+        return this.projectCreationLevel;
     }
     /**
      * Defaults to false. Allow users to request member access.
      * 
      */
     @Export(name="requestAccessEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> requestAccessEnabled;
+    private Output<Boolean> requestAccessEnabled;
 
     /**
      * @return Defaults to false. Allow users to request member access.
      * 
      */
-    public Output<Optional<Boolean>> requestAccessEnabled() {
-        return Codegen.optional(this.requestAccessEnabled);
+    public Output<Boolean> requestAccessEnabled() {
+        return this.requestAccessEnabled;
     }
     /**
      * Defaults to false. Require all users in this group to setup Two-factor authentication.
      * 
      */
     @Export(name="requireTwoFactorAuthentication", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> requireTwoFactorAuthentication;
+    private Output<Boolean> requireTwoFactorAuthentication;
 
     /**
      * @return Defaults to false. Require all users in this group to setup Two-factor authentication.
      * 
      */
-    public Output<Optional<Boolean>> requireTwoFactorAuthentication() {
-        return Codegen.optional(this.requireTwoFactorAuthentication);
+    public Output<Boolean> requireTwoFactorAuthentication() {
+        return this.requireTwoFactorAuthentication;
     }
     /**
      * The group level registration token to use during runner setup.
@@ -334,56 +390,56 @@ public class Group extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="shareWithGroupLock", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> shareWithGroupLock;
+    private Output<Boolean> shareWithGroupLock;
 
     /**
      * @return Defaults to false. Prevent sharing a project with another group within this group.
      * 
      */
-    public Output<Optional<Boolean>> shareWithGroupLock() {
-        return Codegen.optional(this.shareWithGroupLock);
+    public Output<Boolean> shareWithGroupLock() {
+        return this.shareWithGroupLock;
     }
     /**
      * Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
      * 
      */
     @Export(name="sharedRunnersMinutesLimit", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> sharedRunnersMinutesLimit;
+    private Output<Integer> sharedRunnersMinutesLimit;
 
     /**
      * @return Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
      * 
      */
-    public Output<Optional<Integer>> sharedRunnersMinutesLimit() {
-        return Codegen.optional(this.sharedRunnersMinutesLimit);
+    public Output<Integer> sharedRunnersMinutesLimit() {
+        return this.sharedRunnersMinutesLimit;
     }
     /**
      * Defaults to owner. Allowed to create subgroups.
      * 
      */
     @Export(name="subgroupCreationLevel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> subgroupCreationLevel;
+    private Output<String> subgroupCreationLevel;
 
     /**
      * @return Defaults to owner. Allowed to create subgroups.
      * 
      */
-    public Output<Optional<String>> subgroupCreationLevel() {
-        return Codegen.optional(this.subgroupCreationLevel);
+    public Output<String> subgroupCreationLevel() {
+        return this.subgroupCreationLevel;
     }
     /**
      * Defaults to 48. Time before Two-factor authentication is enforced (in hours).
      * 
      */
     @Export(name="twoFactorGracePeriod", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> twoFactorGracePeriod;
+    private Output<Integer> twoFactorGracePeriod;
 
     /**
      * @return Defaults to 48. Time before Two-factor authentication is enforced (in hours).
      * 
      */
-    public Output<Optional<Integer>> twoFactorGracePeriod() {
-        return Codegen.optional(this.twoFactorGracePeriod);
+    public Output<Integer> twoFactorGracePeriod() {
+        return this.twoFactorGracePeriod;
     }
     /**
      * The group&#39;s visibility. Can be `private`, `internal`, or `public`.

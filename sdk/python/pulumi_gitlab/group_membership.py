@@ -229,7 +229,7 @@ class GroupMembership(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        The `GroupMembership` resource allows to manage the lifecycle of a users group membersip.
+        The `GroupMembership` resource allows to manage the lifecycle of a users group membership.
 
         > If a group should grant membership to another group use the `GroupShareGroup` resource instead.
 
@@ -272,7 +272,7 @@ class GroupMembership(pulumi.CustomResource):
                  args: GroupMembershipArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `GroupMembership` resource allows to manage the lifecycle of a users group membersip.
+        The `GroupMembership` resource allows to manage the lifecycle of a users group membership.
 
         > If a group should grant membership to another group use the `GroupShareGroup` resource instead.
 

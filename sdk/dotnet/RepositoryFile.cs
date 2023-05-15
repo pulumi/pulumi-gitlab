@@ -88,7 +88,7 @@ namespace Pulumi.GitLab
         public Output<string> FileName { get; private set; } = null!;
 
         /// <summary>
-        /// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+        /// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         /// </summary>
         [Output("filePath")]
         public Output<string> FilePath { get; private set; } = null!;
@@ -98,6 +98,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("lastCommitId")]
         public Output<string> LastCommitId { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+        /// </summary>
+        [Output("overwriteOnCreate")]
+        public Output<bool?> OverwriteOnCreate { get; private set; } = null!;
 
         /// <summary>
         /// The name or ID of the project.
@@ -206,10 +212,16 @@ namespace Pulumi.GitLab
         public Input<bool>? ExecuteFilemode { get; set; }
 
         /// <summary>
-        /// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+        /// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         /// </summary>
         [Input("filePath", required: true)]
         public Input<string> FilePath { get; set; } = null!;
+
+        /// <summary>
+        /// Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+        /// </summary>
+        [Input("overwriteOnCreate")]
+        public Input<bool>? OverwriteOnCreate { get; set; }
 
         /// <summary>
         /// The name or ID of the project.
@@ -298,7 +310,7 @@ namespace Pulumi.GitLab
         public Input<string>? FileName { get; set; }
 
         /// <summary>
-        /// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+        /// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         /// </summary>
         [Input("filePath")]
         public Input<string>? FilePath { get; set; }
@@ -308,6 +320,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("lastCommitId")]
         public Input<string>? LastCommitId { get; set; }
+
+        /// <summary>
+        /// Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+        /// </summary>
+        [Input("overwriteOnCreate")]
+        public Input<bool>? OverwriteOnCreate { get; set; }
 
         /// <summary>
         /// The name or ID of the project.

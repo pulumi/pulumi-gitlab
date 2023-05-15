@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getProject({
- *     id: "foo/bar/baz",
+ *     pathWithNamespace: "foo/bar/baz",
  * });
  * ```
  */
@@ -43,7 +43,7 @@ export interface GetProjectArgs {
      */
     ciDefaultGitDepth?: number;
     /**
-     * The integer or path with namespace that uniquely identifies the project within the gitlab install.
+     * The integer that uniquely identifies the project within the gitlab install.
      */
     id?: string;
     /**
@@ -105,6 +105,10 @@ export interface GetProjectResult {
      */
     readonly ciDefaultGitDepth: number;
     /**
+     * Use separate caches for protected branches.
+     */
+    readonly ciSeparatedCaches: boolean;
+    /**
      * Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
      */
     readonly containerExpirationPolicies: outputs.GetProjectContainerExpirationPolicy[];
@@ -125,9 +129,17 @@ export interface GetProjectResult {
      */
     readonly emailsDisabled: boolean;
     /**
+     * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    readonly environmentsAccessLevel: string;
+    /**
      * The classification label for the project.
      */
     readonly externalAuthorizationClassificationLabel: string;
+    /**
+     * Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    readonly featureFlagsAccessLevel: string;
     /**
      * Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -137,9 +149,17 @@ export interface GetProjectResult {
      */
     readonly httpUrlToRepo: string;
     /**
-     * The integer or path with namespace that uniquely identifies the project within the gitlab install.
+     * The integer that uniquely identifies the project within the gitlab install.
      */
     readonly id: string;
+    /**
+     * URL the project was imported from.
+     */
+    readonly importUrl: string;
+    /**
+     * Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    readonly infrastructureAccessLevel: string;
     /**
      * Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -148,6 +168,10 @@ export interface GetProjectResult {
      * Enable issue tracking for the project.
      */
     readonly issuesEnabled: boolean;
+    /**
+     * Disable or enable the ability to keep the latest artifact for this project.
+     */
+    readonly keepLatestArtifact: boolean;
     /**
      * Enable LFS for the project.
      */
@@ -172,6 +196,10 @@ export interface GetProjectResult {
      * Enable or disable merge trains.
      */
     readonly mergeTrainsEnabled: boolean;
+    /**
+     * Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    readonly monitorAccessLevel: string;
     /**
      * The name of the project.
      */
@@ -205,9 +233,13 @@ export interface GetProjectResult {
      */
     readonly publicBuilds?: boolean;
     /**
-     * Push rules for the project.
+     * Push rules for the project. Push rules are only available on Enterprise plans and if the authenticated has permissions to read them.
      */
-    readonly pushRules: outputs.GetProjectPushRules;
+    readonly pushRules: outputs.GetProjectPushRule[];
+    /**
+     * Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    readonly releasesAccessLevel: string;
     /**
      * Enable `Delete source branch` option by default for all new merge requests
      */
@@ -232,6 +264,10 @@ export interface GetProjectResult {
      * Automatically resolve merge request diffs discussions on lines changed with a push.
      */
     readonly resolveOutdatedDiffDiscussions: boolean;
+    /**
+     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     */
+    readonly restrictUserDefinedVariables: boolean;
     /**
      * Registration token to use during runner setup.
      */
@@ -293,7 +329,7 @@ export interface GetProjectResult {
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getProject({
- *     id: "foo/bar/baz",
+ *     pathWithNamespace: "foo/bar/baz",
  * });
  * ```
  */
@@ -310,7 +346,7 @@ export interface GetProjectOutputArgs {
      */
     ciDefaultGitDepth?: pulumi.Input<number>;
     /**
-     * The integer or path with namespace that uniquely identifies the project within the gitlab install.
+     * The integer that uniquely identifies the project within the gitlab install.
      */
     id?: pulumi.Input<string>;
     /**

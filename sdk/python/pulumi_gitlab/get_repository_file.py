@@ -122,7 +122,7 @@ class GetRepositoryFileResult:
     @pulumi.getter(name="filePath")
     def file_path(self) -> str:
         """
-        The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+        The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         """
         return pulumi.get(self, "file_path")
 
@@ -209,7 +209,7 @@ def get_repository_file(file_path: Optional[str] = None,
     ```
 
 
-    :param str file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+    :param str file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
     :param str project: The name or ID of the project.
     :param str ref: The name of branch, tag or commit.
     """
@@ -258,7 +258,7 @@ def get_repository_file_output(file_path: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+    :param str file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
     :param str project: The name or ID of the project.
     :param str ref: The name of branch, tag or commit.
     """

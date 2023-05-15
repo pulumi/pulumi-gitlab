@@ -138,7 +138,7 @@ namespace Pulumi.GitLab
         /// The number of approvals required to deploy to this environment.
         /// </summary>
         [Output("requiredApprovalCount")]
-        public Output<int?> RequiredApprovalCount { get; private set; } = null!;
+        public Output<int> RequiredApprovalCount { get; private set; } = null!;
 
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace Pulumi.GitLab
 
     public sealed class ProjectProtectedEnvironmentArgs : global::Pulumi.ResourceArgs
     {
-        [Input("deployAccessLevels", required: true)]
+        [Input("deployAccessLevels")]
         private InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs>? _deployAccessLevels;
 
         /// <summary>

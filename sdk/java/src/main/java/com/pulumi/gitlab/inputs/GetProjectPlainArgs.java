@@ -32,14 +32,14 @@ public final class GetProjectPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The integer or path with namespace that uniquely identifies the project within the gitlab install.
+     * The integer that uniquely identifies the project within the gitlab install.
      * 
      */
     @Import(name="id")
     private @Nullable String id;
 
     /**
-     * @return The integer or path with namespace that uniquely identifies the project within the gitlab install.
+     * @return The integer that uniquely identifies the project within the gitlab install.
      * 
      */
     public Optional<String> id() {
@@ -115,7 +115,7 @@ public final class GetProjectPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param id The integer or path with namespace that uniquely identifies the project within the gitlab install.
+         * @param id The integer that uniquely identifies the project within the gitlab install.
          * 
          * @return builder
          * 

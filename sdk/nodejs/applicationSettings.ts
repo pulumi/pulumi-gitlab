@@ -119,6 +119,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly automaticPurchasedStorageAllocation!: pulumi.Output<boolean>;
     /**
+     * Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
+     */
+    public readonly canCreateGroup!: pulumi.Output<boolean>;
+    /**
      * Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
      */
     public readonly checkNamespacePlan!: pulumi.Output<boolean>;
@@ -171,7 +175,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly defaultCiConfigPath!: pulumi.Output<string>;
     /**
-     * What visibility level new groups receive. Can take private, internal and public as a parameter. Default is private.
+     * What visibility level new groups receive. Can take private, internal and public as a parameter.
      */
     public readonly defaultGroupVisibility!: pulumi.Output<string>;
     /**
@@ -179,31 +183,31 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly defaultProjectCreation!: pulumi.Output<number>;
     /**
-     * What visibility level new projects receive. Can take private, internal and public as a parameter. Default is private.
+     * What visibility level new projects receive. Can take private, internal and public as a parameter.
      */
     public readonly defaultProjectVisibility!: pulumi.Output<string>;
     /**
-     * Project limit per user. Default is 100000.
+     * Project limit per user.
      */
     public readonly defaultProjectsLimit!: pulumi.Output<number>;
     /**
-     * What visibility level new snippets receive. Can take private, internal and public as a parameter. Default is private.
+     * What visibility level new snippets receive. Can take private, internal and public as a parameter.
      */
     public readonly defaultSnippetVisibility!: pulumi.Output<string>;
     /**
-     * Enable delayed group deletion. Default is true. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
+     * Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
      */
     public readonly delayedGroupDeletion!: pulumi.Output<boolean>;
     /**
-     * Enable delayed project deletion by default in new groups. Default is false. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
+     * Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
      */
     public readonly delayedProjectDeletion!: pulumi.Output<boolean>;
     /**
-     * Enable inactive project deletion feature. Default is false. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion, disabled by default).
+     * Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
      */
     public readonly deleteInactiveProjects!: pulumi.Output<boolean>;
     /**
-     * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. Defaults to 7. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+     * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
      */
     public readonly deletionAdjournedPeriod!: pulumi.Output<number>;
     /**
@@ -231,7 +235,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly dnsRebindingProtectionEnabled!: pulumi.Output<boolean>;
     /**
-     * Force people to use only corporate emails for sign-up. Default is null, meaning there is no restriction.
+     * Force people to use only corporate emails for sign-up. Null means there is no restriction.
      */
     public readonly domainAllowlists!: pulumi.Output<string[]>;
     /**
@@ -243,23 +247,23 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly domainDenylists!: pulumi.Output<string[]>;
     /**
-     * The minimum allowed bit length of an uploaded DSA key. Default is 0 (no restriction). -1 disables DSA keys.
+     * The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
      */
     public readonly dsaKeyRestriction!: pulumi.Output<number>;
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ECDSA key. Default is 0 (no restriction). -1 disables ECDSA keys.
+     * The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
      */
     public readonly ecdsaKeyRestriction!: pulumi.Output<number>;
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. Default is 0 (no restriction). -1 disables ECDSA*SK keys.
+     * The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
      */
     public readonly ecdsaSkKeyRestriction!: pulumi.Output<number>;
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ED25519 key. Default is 0 (no restriction). -1 disables ED25519 keys.
+     * The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
      */
     public readonly ed25519KeyRestriction!: pulumi.Output<number>;
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. Default is 0 (no restriction). -1 disables ED25519*SK keys.
+     * The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
      */
     public readonly ed25519SkKeyRestriction!: pulumi.Output<number>;
     /**
@@ -407,7 +411,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly fileTemplateProjectId!: pulumi.Output<number>;
     /**
-     * Start day of the week for calendar views and date pickers. Valid values are 0 (default) for Sunday, 1 for Monday, and 6 for Saturday.
+     * Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
      */
     public readonly firstDayOfWeek!: pulumi.Output<number>;
     /**
@@ -419,7 +423,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly geoStatusTimeout!: pulumi.Output<number>;
     /**
-     * List of usernames excluded from Git anti-abuse rate limits. Default: [], Maximum: 100 usernames. Introduced in GitLab 15.2.
+     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
      */
     public readonly gitRateLimitUsersAllowlists!: pulumi.Output<string[]>;
     /**
@@ -507,31 +511,31 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly importSources!: pulumi.Output<string[]>;
     /**
-     * Enable in-product marketing emails. Enabled by default.
+     * Enable in-product marketing emails.
      */
     public readonly inProductMarketingEmailsEnabled!: pulumi.Output<boolean>;
     /**
-     * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Default is 2. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      */
     public readonly inactiveProjectsDeleteAfterMonths!: pulumi.Output<number>;
     /**
-     * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Default is 0. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      */
     public readonly inactiveProjectsMinSizeMb!: pulumi.Output<number>;
     /**
-     * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Default is 1. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      */
     public readonly inactiveProjectsSendWarningEmailAfterMonths!: pulumi.Output<number>;
     /**
-     * Enable Invisible CAPTCHA spam detection during sign-up. Disabled by default.
+     * Enable Invisible CAPTCHA spam detection during sign-up.
      */
     public readonly invisibleCaptchaEnabled!: pulumi.Output<boolean>;
     /**
-     * Max number of issue creation requests per minute per user. Disabled by default.
+     * Max number of issue creation requests per minute per user.
      */
     public readonly issuesCreateLimit!: pulumi.Output<number>;
     /**
-     * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time. Enabled by default.
+     * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
      */
     public readonly keepLatestArtifact!: pulumi.Output<boolean>;
     /**
@@ -563,19 +567,19 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly maxAttachmentSize!: pulumi.Output<number>;
     /**
-     * Maximum export size in MB. 0 for unlimited. Default = 0 (unlimited).
+     * Maximum export size in MB. 0 for unlimited.
      */
     public readonly maxExportSize!: pulumi.Output<number>;
     /**
-     * Maximum import size in MB. 0 for unlimited. Default = 0 (unlimited) Modified from 50MB to 0 in GitLab 13.8.
+     * Maximum import size in MB. 0 for unlimited.
      */
     public readonly maxImportSize!: pulumi.Output<number>;
     /**
-     * Maximum number of unique repositories a user can download in the specified time period before they are banned. Default: 0, Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+     * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
      */
     public readonly maxNumberOfRepositoryDownloads!: pulumi.Output<number>;
     /**
-     * Reporting time period (in seconds). Default: 0, Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+     * Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
      */
     public readonly maxNumberOfRepositoryDownloadsWithinTimePeriod!: pulumi.Output<number>;
     /**
@@ -627,11 +631,11 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly pagesDomainVerificationEnabled!: pulumi.Output<boolean>;
     /**
-     * Enable authentication for Git over HTTP(S) via a GitLab account password. Default is true.
+     * Enable authentication for Git over HTTP(S) via a GitLab account password.
      */
     public readonly passwordAuthenticationEnabledForGit!: pulumi.Output<boolean>;
     /**
-     * Enable authentication for the web interface via a GitLab account password. Default is true.
+     * Enable authentication for the web interface via a GitLab account password.
      */
     public readonly passwordAuthenticationEnabledForWeb!: pulumi.Output<boolean>;
     /**
@@ -659,11 +663,11 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly personalAccessTokenPrefix!: pulumi.Output<string>;
     /**
-     * Maximum number of pipeline creation requests per minute per user and commit. Disabled by default.
+     * Maximum number of pipeline creation requests per minute per user and commit.
      */
     public readonly pipelineLimitPerProjectUserSha!: pulumi.Output<number>;
     /**
-     * (If enabled, requires: plantuml_url) Enable PlantUML integration. Default is false.
+     * (If enabled, requires: plantuml_url) Enable PlantUML integration.
      */
     public readonly plantumlEnabled!: pulumi.Output<boolean>;
     /**
@@ -703,7 +707,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly rateLimitingResponseText!: pulumi.Output<string>;
     /**
-     * Max number of requests per minute for each raw path. Default: 300. To disable throttling set to 0.
+     * Max number of requests per minute for each raw path. To disable throttling set to 0.
      */
     public readonly rawBlobRequestLimit!: pulumi.Output<number>;
     /**
@@ -747,19 +751,19 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly requireTwoFactorAuthentication!: pulumi.Output<boolean>;
     /**
-     * Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Default is null which means there is no restriction.
+     * Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
      */
     public readonly restrictedVisibilityLevels!: pulumi.Output<string[]>;
     /**
-     * The minimum allowed bit length of an uploaded RSA key. Default is 0 (no restriction). -1 disables RSA keys.
+     * The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
      */
     public readonly rsaKeyRestriction!: pulumi.Output<number>;
     /**
-     * Max number of requests per minute for performing a search while authenticated. Default: 30. To disable throttling set to 0.
+     * Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
      */
     public readonly searchRateLimit!: pulumi.Output<number>;
     /**
-     * Max number of requests per minute for performing a search while unauthenticated. Default: 10. To disable throttling set to 0.
+     * Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
      */
     public readonly searchRateLimitUnauthenticated!: pulumi.Output<number>;
     /**
@@ -783,15 +787,15 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly sharedRunnersText!: pulumi.Output<string>;
     /**
-     * The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis. Default: 100 000 bytes (100KB).
+     * The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
      */
     public readonly sidekiqJobLimiterCompressionThresholdBytes!: pulumi.Output<number>;
     /**
-     * The threshold in bytes at which Sidekiq jobs are rejected. Default: 0 bytes (doesn’t reject any job).
+     * The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
      */
     public readonly sidekiqJobLimiterLimitBytes!: pulumi.Output<number>;
     /**
-     * track or compress. Sets the behavior for Sidekiq job size limits. Default: ‘compress’.
+     * track or compress. Sets the behavior for Sidekiq job size limits.
      */
     public readonly sidekiqJobLimiterMode!: pulumi.Output<string>;
     /**
@@ -799,7 +803,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly signInText!: pulumi.Output<string>;
     /**
-     * Enable registration. Default is true.
+     * Enable registration.
      */
     public readonly signupEnabled!: pulumi.Output<boolean>;
     /**
@@ -823,7 +827,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly slackAppVerificationToken!: pulumi.Output<string>;
     /**
-     * Max snippet content size in bytes. Default: 52428800 Bytes (50MB).
+     * Max snippet content size in bytes.
      */
     public readonly snippetSizeLimit!: pulumi.Output<number>;
     /**
@@ -843,11 +847,11 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly snowplowEnabled!: pulumi.Output<boolean>;
     /**
-     * Enables Sourcegraph integration. Default is false. If enabled, requires sourcegraph_url.
+     * Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
      */
     public readonly sourcegraphEnabled!: pulumi.Output<boolean>;
     /**
-     * Blocks Sourcegraph from being loaded on private and internal projects. Default is true.
+     * Blocks Sourcegraph from being loaded on private and internal projects.
      */
     public readonly sourcegraphPublicOnly!: pulumi.Output<boolean>;
     /**
@@ -859,7 +863,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly spamCheckApiKey!: pulumi.Output<string>;
     /**
-     * Enables spam checking using external Spam Check API endpoint. Default is false.
+     * Enables spam checking using external Spam Check API endpoint.
      */
     public readonly spamCheckEndpointEnabled!: pulumi.Output<boolean>;
     /**
@@ -951,7 +955,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly throttleUnauthenticatedWebRequestsPerPeriod!: pulumi.Output<number>;
     /**
-     * Limit display of time tracking units to hours. Default is false.
+     * Limit display of time tracking units to hours.
      */
     public readonly timeTrackingLimitToHours!: pulumi.Output<boolean>;
     /**
@@ -1007,7 +1011,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly whatsNewVariant!: pulumi.Output<string>;
     /**
-     * Maximum wiki page content size in bytes. Default: 52428800 Bytes (50 MB). The minimum value is 1024 bytes.
+     * Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
      */
     public readonly wikiPageMaxContentBytes!: pulumi.Output<number>;
 
@@ -1042,6 +1046,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["autoDevopsDomain"] = state ? state.autoDevopsDomain : undefined;
             resourceInputs["autoDevopsEnabled"] = state ? state.autoDevopsEnabled : undefined;
             resourceInputs["automaticPurchasedStorageAllocation"] = state ? state.automaticPurchasedStorageAllocation : undefined;
+            resourceInputs["canCreateGroup"] = state ? state.canCreateGroup : undefined;
             resourceInputs["checkNamespacePlan"] = state ? state.checkNamespacePlan : undefined;
             resourceInputs["commitEmailHostname"] = state ? state.commitEmailHostname : undefined;
             resourceInputs["containerExpirationPoliciesEnableHistoricEntries"] = state ? state.containerExpirationPoliciesEnableHistoricEntries : undefined;
@@ -1285,6 +1290,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["autoDevopsDomain"] = args ? args.autoDevopsDomain : undefined;
             resourceInputs["autoDevopsEnabled"] = args ? args.autoDevopsEnabled : undefined;
             resourceInputs["automaticPurchasedStorageAllocation"] = args ? args.automaticPurchasedStorageAllocation : undefined;
+            resourceInputs["canCreateGroup"] = args ? args.canCreateGroup : undefined;
             resourceInputs["checkNamespacePlan"] = args ? args.checkNamespacePlan : undefined;
             resourceInputs["commitEmailHostname"] = args ? args.commitEmailHostname : undefined;
             resourceInputs["containerExpirationPoliciesEnableHistoricEntries"] = args ? args.containerExpirationPoliciesEnableHistoricEntries : undefined;
@@ -1593,6 +1599,10 @@ export interface ApplicationSettingsState {
      */
     automaticPurchasedStorageAllocation?: pulumi.Input<boolean>;
     /**
+     * Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
+     */
+    canCreateGroup?: pulumi.Input<boolean>;
+    /**
      * Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
      */
     checkNamespacePlan?: pulumi.Input<boolean>;
@@ -1645,7 +1655,7 @@ export interface ApplicationSettingsState {
      */
     defaultCiConfigPath?: pulumi.Input<string>;
     /**
-     * What visibility level new groups receive. Can take private, internal and public as a parameter. Default is private.
+     * What visibility level new groups receive. Can take private, internal and public as a parameter.
      */
     defaultGroupVisibility?: pulumi.Input<string>;
     /**
@@ -1653,31 +1663,31 @@ export interface ApplicationSettingsState {
      */
     defaultProjectCreation?: pulumi.Input<number>;
     /**
-     * What visibility level new projects receive. Can take private, internal and public as a parameter. Default is private.
+     * What visibility level new projects receive. Can take private, internal and public as a parameter.
      */
     defaultProjectVisibility?: pulumi.Input<string>;
     /**
-     * Project limit per user. Default is 100000.
+     * Project limit per user.
      */
     defaultProjectsLimit?: pulumi.Input<number>;
     /**
-     * What visibility level new snippets receive. Can take private, internal and public as a parameter. Default is private.
+     * What visibility level new snippets receive. Can take private, internal and public as a parameter.
      */
     defaultSnippetVisibility?: pulumi.Input<string>;
     /**
-     * Enable delayed group deletion. Default is true. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
+     * Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
      */
     delayedGroupDeletion?: pulumi.Input<boolean>;
     /**
-     * Enable delayed project deletion by default in new groups. Default is false. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
+     * Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
      */
     delayedProjectDeletion?: pulumi.Input<boolean>;
     /**
-     * Enable inactive project deletion feature. Default is false. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion, disabled by default).
+     * Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
      */
     deleteInactiveProjects?: pulumi.Input<boolean>;
     /**
-     * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. Defaults to 7. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+     * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
      */
     deletionAdjournedPeriod?: pulumi.Input<number>;
     /**
@@ -1705,7 +1715,7 @@ export interface ApplicationSettingsState {
      */
     dnsRebindingProtectionEnabled?: pulumi.Input<boolean>;
     /**
-     * Force people to use only corporate emails for sign-up. Default is null, meaning there is no restriction.
+     * Force people to use only corporate emails for sign-up. Null means there is no restriction.
      */
     domainAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1717,23 +1727,23 @@ export interface ApplicationSettingsState {
      */
     domainDenylists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The minimum allowed bit length of an uploaded DSA key. Default is 0 (no restriction). -1 disables DSA keys.
+     * The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
      */
     dsaKeyRestriction?: pulumi.Input<number>;
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ECDSA key. Default is 0 (no restriction). -1 disables ECDSA keys.
+     * The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
      */
     ecdsaKeyRestriction?: pulumi.Input<number>;
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. Default is 0 (no restriction). -1 disables ECDSA*SK keys.
+     * The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
      */
     ecdsaSkKeyRestriction?: pulumi.Input<number>;
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ED25519 key. Default is 0 (no restriction). -1 disables ED25519 keys.
+     * The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
      */
     ed25519KeyRestriction?: pulumi.Input<number>;
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. Default is 0 (no restriction). -1 disables ED25519*SK keys.
+     * The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
      */
     ed25519SkKeyRestriction?: pulumi.Input<number>;
     /**
@@ -1881,7 +1891,7 @@ export interface ApplicationSettingsState {
      */
     fileTemplateProjectId?: pulumi.Input<number>;
     /**
-     * Start day of the week for calendar views and date pickers. Valid values are 0 (default) for Sunday, 1 for Monday, and 6 for Saturday.
+     * Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
      */
     firstDayOfWeek?: pulumi.Input<number>;
     /**
@@ -1893,7 +1903,7 @@ export interface ApplicationSettingsState {
      */
     geoStatusTimeout?: pulumi.Input<number>;
     /**
-     * List of usernames excluded from Git anti-abuse rate limits. Default: [], Maximum: 100 usernames. Introduced in GitLab 15.2.
+     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
      */
     gitRateLimitUsersAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1981,31 +1991,31 @@ export interface ApplicationSettingsState {
      */
     importSources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Enable in-product marketing emails. Enabled by default.
+     * Enable in-product marketing emails.
      */
     inProductMarketingEmailsEnabled?: pulumi.Input<boolean>;
     /**
-     * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Default is 2. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      */
     inactiveProjectsDeleteAfterMonths?: pulumi.Input<number>;
     /**
-     * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Default is 0. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      */
     inactiveProjectsMinSizeMb?: pulumi.Input<number>;
     /**
-     * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Default is 1. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      */
     inactiveProjectsSendWarningEmailAfterMonths?: pulumi.Input<number>;
     /**
-     * Enable Invisible CAPTCHA spam detection during sign-up. Disabled by default.
+     * Enable Invisible CAPTCHA spam detection during sign-up.
      */
     invisibleCaptchaEnabled?: pulumi.Input<boolean>;
     /**
-     * Max number of issue creation requests per minute per user. Disabled by default.
+     * Max number of issue creation requests per minute per user.
      */
     issuesCreateLimit?: pulumi.Input<number>;
     /**
-     * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time. Enabled by default.
+     * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
      */
     keepLatestArtifact?: pulumi.Input<boolean>;
     /**
@@ -2037,19 +2047,19 @@ export interface ApplicationSettingsState {
      */
     maxAttachmentSize?: pulumi.Input<number>;
     /**
-     * Maximum export size in MB. 0 for unlimited. Default = 0 (unlimited).
+     * Maximum export size in MB. 0 for unlimited.
      */
     maxExportSize?: pulumi.Input<number>;
     /**
-     * Maximum import size in MB. 0 for unlimited. Default = 0 (unlimited) Modified from 50MB to 0 in GitLab 13.8.
+     * Maximum import size in MB. 0 for unlimited.
      */
     maxImportSize?: pulumi.Input<number>;
     /**
-     * Maximum number of unique repositories a user can download in the specified time period before they are banned. Default: 0, Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+     * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
      */
     maxNumberOfRepositoryDownloads?: pulumi.Input<number>;
     /**
-     * Reporting time period (in seconds). Default: 0, Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+     * Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
      */
     maxNumberOfRepositoryDownloadsWithinTimePeriod?: pulumi.Input<number>;
     /**
@@ -2101,11 +2111,11 @@ export interface ApplicationSettingsState {
      */
     pagesDomainVerificationEnabled?: pulumi.Input<boolean>;
     /**
-     * Enable authentication for Git over HTTP(S) via a GitLab account password. Default is true.
+     * Enable authentication for Git over HTTP(S) via a GitLab account password.
      */
     passwordAuthenticationEnabledForGit?: pulumi.Input<boolean>;
     /**
-     * Enable authentication for the web interface via a GitLab account password. Default is true.
+     * Enable authentication for the web interface via a GitLab account password.
      */
     passwordAuthenticationEnabledForWeb?: pulumi.Input<boolean>;
     /**
@@ -2133,11 +2143,11 @@ export interface ApplicationSettingsState {
      */
     personalAccessTokenPrefix?: pulumi.Input<string>;
     /**
-     * Maximum number of pipeline creation requests per minute per user and commit. Disabled by default.
+     * Maximum number of pipeline creation requests per minute per user and commit.
      */
     pipelineLimitPerProjectUserSha?: pulumi.Input<number>;
     /**
-     * (If enabled, requires: plantuml_url) Enable PlantUML integration. Default is false.
+     * (If enabled, requires: plantuml_url) Enable PlantUML integration.
      */
     plantumlEnabled?: pulumi.Input<boolean>;
     /**
@@ -2177,7 +2187,7 @@ export interface ApplicationSettingsState {
      */
     rateLimitingResponseText?: pulumi.Input<string>;
     /**
-     * Max number of requests per minute for each raw path. Default: 300. To disable throttling set to 0.
+     * Max number of requests per minute for each raw path. To disable throttling set to 0.
      */
     rawBlobRequestLimit?: pulumi.Input<number>;
     /**
@@ -2221,19 +2231,19 @@ export interface ApplicationSettingsState {
      */
     requireTwoFactorAuthentication?: pulumi.Input<boolean>;
     /**
-     * Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Default is null which means there is no restriction.
+     * Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
      */
     restrictedVisibilityLevels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The minimum allowed bit length of an uploaded RSA key. Default is 0 (no restriction). -1 disables RSA keys.
+     * The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
      */
     rsaKeyRestriction?: pulumi.Input<number>;
     /**
-     * Max number of requests per minute for performing a search while authenticated. Default: 30. To disable throttling set to 0.
+     * Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
      */
     searchRateLimit?: pulumi.Input<number>;
     /**
-     * Max number of requests per minute for performing a search while unauthenticated. Default: 10. To disable throttling set to 0.
+     * Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
      */
     searchRateLimitUnauthenticated?: pulumi.Input<number>;
     /**
@@ -2257,15 +2267,15 @@ export interface ApplicationSettingsState {
      */
     sharedRunnersText?: pulumi.Input<string>;
     /**
-     * The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis. Default: 100 000 bytes (100KB).
+     * The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
      */
     sidekiqJobLimiterCompressionThresholdBytes?: pulumi.Input<number>;
     /**
-     * The threshold in bytes at which Sidekiq jobs are rejected. Default: 0 bytes (doesn’t reject any job).
+     * The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
      */
     sidekiqJobLimiterLimitBytes?: pulumi.Input<number>;
     /**
-     * track or compress. Sets the behavior for Sidekiq job size limits. Default: ‘compress’.
+     * track or compress. Sets the behavior for Sidekiq job size limits.
      */
     sidekiqJobLimiterMode?: pulumi.Input<string>;
     /**
@@ -2273,7 +2283,7 @@ export interface ApplicationSettingsState {
      */
     signInText?: pulumi.Input<string>;
     /**
-     * Enable registration. Default is true.
+     * Enable registration.
      */
     signupEnabled?: pulumi.Input<boolean>;
     /**
@@ -2297,7 +2307,7 @@ export interface ApplicationSettingsState {
      */
     slackAppVerificationToken?: pulumi.Input<string>;
     /**
-     * Max snippet content size in bytes. Default: 52428800 Bytes (50MB).
+     * Max snippet content size in bytes.
      */
     snippetSizeLimit?: pulumi.Input<number>;
     /**
@@ -2317,11 +2327,11 @@ export interface ApplicationSettingsState {
      */
     snowplowEnabled?: pulumi.Input<boolean>;
     /**
-     * Enables Sourcegraph integration. Default is false. If enabled, requires sourcegraph_url.
+     * Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
      */
     sourcegraphEnabled?: pulumi.Input<boolean>;
     /**
-     * Blocks Sourcegraph from being loaded on private and internal projects. Default is true.
+     * Blocks Sourcegraph from being loaded on private and internal projects.
      */
     sourcegraphPublicOnly?: pulumi.Input<boolean>;
     /**
@@ -2333,7 +2343,7 @@ export interface ApplicationSettingsState {
      */
     spamCheckApiKey?: pulumi.Input<string>;
     /**
-     * Enables spam checking using external Spam Check API endpoint. Default is false.
+     * Enables spam checking using external Spam Check API endpoint.
      */
     spamCheckEndpointEnabled?: pulumi.Input<boolean>;
     /**
@@ -2425,7 +2435,7 @@ export interface ApplicationSettingsState {
      */
     throttleUnauthenticatedWebRequestsPerPeriod?: pulumi.Input<number>;
     /**
-     * Limit display of time tracking units to hours. Default is false.
+     * Limit display of time tracking units to hours.
      */
     timeTrackingLimitToHours?: pulumi.Input<boolean>;
     /**
@@ -2481,7 +2491,7 @@ export interface ApplicationSettingsState {
      */
     whatsNewVariant?: pulumi.Input<string>;
     /**
-     * Maximum wiki page content size in bytes. Default: 52428800 Bytes (50 MB). The minimum value is 1024 bytes.
+     * Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
      */
     wikiPageMaxContentBytes?: pulumi.Input<number>;
 }
@@ -2563,6 +2573,10 @@ export interface ApplicationSettingsArgs {
      */
     automaticPurchasedStorageAllocation?: pulumi.Input<boolean>;
     /**
+     * Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
+     */
+    canCreateGroup?: pulumi.Input<boolean>;
+    /**
      * Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
      */
     checkNamespacePlan?: pulumi.Input<boolean>;
@@ -2615,7 +2629,7 @@ export interface ApplicationSettingsArgs {
      */
     defaultCiConfigPath?: pulumi.Input<string>;
     /**
-     * What visibility level new groups receive. Can take private, internal and public as a parameter. Default is private.
+     * What visibility level new groups receive. Can take private, internal and public as a parameter.
      */
     defaultGroupVisibility?: pulumi.Input<string>;
     /**
@@ -2623,31 +2637,31 @@ export interface ApplicationSettingsArgs {
      */
     defaultProjectCreation?: pulumi.Input<number>;
     /**
-     * What visibility level new projects receive. Can take private, internal and public as a parameter. Default is private.
+     * What visibility level new projects receive. Can take private, internal and public as a parameter.
      */
     defaultProjectVisibility?: pulumi.Input<string>;
     /**
-     * Project limit per user. Default is 100000.
+     * Project limit per user.
      */
     defaultProjectsLimit?: pulumi.Input<number>;
     /**
-     * What visibility level new snippets receive. Can take private, internal and public as a parameter. Default is private.
+     * What visibility level new snippets receive. Can take private, internal and public as a parameter.
      */
     defaultSnippetVisibility?: pulumi.Input<string>;
     /**
-     * Enable delayed group deletion. Default is true. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
+     * Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
      */
     delayedGroupDeletion?: pulumi.Input<boolean>;
     /**
-     * Enable delayed project deletion by default in new groups. Default is false. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
+     * Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
      */
     delayedProjectDeletion?: pulumi.Input<boolean>;
     /**
-     * Enable inactive project deletion feature. Default is false. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion, disabled by default).
+     * Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
      */
     deleteInactiveProjects?: pulumi.Input<boolean>;
     /**
-     * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. Defaults to 7. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+     * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
      */
     deletionAdjournedPeriod?: pulumi.Input<number>;
     /**
@@ -2675,7 +2689,7 @@ export interface ApplicationSettingsArgs {
      */
     dnsRebindingProtectionEnabled?: pulumi.Input<boolean>;
     /**
-     * Force people to use only corporate emails for sign-up. Default is null, meaning there is no restriction.
+     * Force people to use only corporate emails for sign-up. Null means there is no restriction.
      */
     domainAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2687,23 +2701,23 @@ export interface ApplicationSettingsArgs {
      */
     domainDenylists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The minimum allowed bit length of an uploaded DSA key. Default is 0 (no restriction). -1 disables DSA keys.
+     * The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
      */
     dsaKeyRestriction?: pulumi.Input<number>;
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ECDSA key. Default is 0 (no restriction). -1 disables ECDSA keys.
+     * The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
      */
     ecdsaKeyRestriction?: pulumi.Input<number>;
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. Default is 0 (no restriction). -1 disables ECDSA*SK keys.
+     * The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
      */
     ecdsaSkKeyRestriction?: pulumi.Input<number>;
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ED25519 key. Default is 0 (no restriction). -1 disables ED25519 keys.
+     * The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
      */
     ed25519KeyRestriction?: pulumi.Input<number>;
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. Default is 0 (no restriction). -1 disables ED25519*SK keys.
+     * The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
      */
     ed25519SkKeyRestriction?: pulumi.Input<number>;
     /**
@@ -2851,7 +2865,7 @@ export interface ApplicationSettingsArgs {
      */
     fileTemplateProjectId?: pulumi.Input<number>;
     /**
-     * Start day of the week for calendar views and date pickers. Valid values are 0 (default) for Sunday, 1 for Monday, and 6 for Saturday.
+     * Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
      */
     firstDayOfWeek?: pulumi.Input<number>;
     /**
@@ -2863,7 +2877,7 @@ export interface ApplicationSettingsArgs {
      */
     geoStatusTimeout?: pulumi.Input<number>;
     /**
-     * List of usernames excluded from Git anti-abuse rate limits. Default: [], Maximum: 100 usernames. Introduced in GitLab 15.2.
+     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
      */
     gitRateLimitUsersAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2951,31 +2965,31 @@ export interface ApplicationSettingsArgs {
      */
     importSources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Enable in-product marketing emails. Enabled by default.
+     * Enable in-product marketing emails.
      */
     inProductMarketingEmailsEnabled?: pulumi.Input<boolean>;
     /**
-     * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Default is 2. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      */
     inactiveProjectsDeleteAfterMonths?: pulumi.Input<number>;
     /**
-     * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Default is 0. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      */
     inactiveProjectsMinSizeMb?: pulumi.Input<number>;
     /**
-     * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Default is 1. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      */
     inactiveProjectsSendWarningEmailAfterMonths?: pulumi.Input<number>;
     /**
-     * Enable Invisible CAPTCHA spam detection during sign-up. Disabled by default.
+     * Enable Invisible CAPTCHA spam detection during sign-up.
      */
     invisibleCaptchaEnabled?: pulumi.Input<boolean>;
     /**
-     * Max number of issue creation requests per minute per user. Disabled by default.
+     * Max number of issue creation requests per minute per user.
      */
     issuesCreateLimit?: pulumi.Input<number>;
     /**
-     * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time. Enabled by default.
+     * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
      */
     keepLatestArtifact?: pulumi.Input<boolean>;
     /**
@@ -3007,19 +3021,19 @@ export interface ApplicationSettingsArgs {
      */
     maxAttachmentSize?: pulumi.Input<number>;
     /**
-     * Maximum export size in MB. 0 for unlimited. Default = 0 (unlimited).
+     * Maximum export size in MB. 0 for unlimited.
      */
     maxExportSize?: pulumi.Input<number>;
     /**
-     * Maximum import size in MB. 0 for unlimited. Default = 0 (unlimited) Modified from 50MB to 0 in GitLab 13.8.
+     * Maximum import size in MB. 0 for unlimited.
      */
     maxImportSize?: pulumi.Input<number>;
     /**
-     * Maximum number of unique repositories a user can download in the specified time period before they are banned. Default: 0, Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+     * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
      */
     maxNumberOfRepositoryDownloads?: pulumi.Input<number>;
     /**
-     * Reporting time period (in seconds). Default: 0, Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+     * Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
      */
     maxNumberOfRepositoryDownloadsWithinTimePeriod?: pulumi.Input<number>;
     /**
@@ -3071,11 +3085,11 @@ export interface ApplicationSettingsArgs {
      */
     pagesDomainVerificationEnabled?: pulumi.Input<boolean>;
     /**
-     * Enable authentication for Git over HTTP(S) via a GitLab account password. Default is true.
+     * Enable authentication for Git over HTTP(S) via a GitLab account password.
      */
     passwordAuthenticationEnabledForGit?: pulumi.Input<boolean>;
     /**
-     * Enable authentication for the web interface via a GitLab account password. Default is true.
+     * Enable authentication for the web interface via a GitLab account password.
      */
     passwordAuthenticationEnabledForWeb?: pulumi.Input<boolean>;
     /**
@@ -3103,11 +3117,11 @@ export interface ApplicationSettingsArgs {
      */
     personalAccessTokenPrefix?: pulumi.Input<string>;
     /**
-     * Maximum number of pipeline creation requests per minute per user and commit. Disabled by default.
+     * Maximum number of pipeline creation requests per minute per user and commit.
      */
     pipelineLimitPerProjectUserSha?: pulumi.Input<number>;
     /**
-     * (If enabled, requires: plantuml_url) Enable PlantUML integration. Default is false.
+     * (If enabled, requires: plantuml_url) Enable PlantUML integration.
      */
     plantumlEnabled?: pulumi.Input<boolean>;
     /**
@@ -3147,7 +3161,7 @@ export interface ApplicationSettingsArgs {
      */
     rateLimitingResponseText?: pulumi.Input<string>;
     /**
-     * Max number of requests per minute for each raw path. Default: 300. To disable throttling set to 0.
+     * Max number of requests per minute for each raw path. To disable throttling set to 0.
      */
     rawBlobRequestLimit?: pulumi.Input<number>;
     /**
@@ -3191,19 +3205,19 @@ export interface ApplicationSettingsArgs {
      */
     requireTwoFactorAuthentication?: pulumi.Input<boolean>;
     /**
-     * Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Default is null which means there is no restriction.
+     * Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
      */
     restrictedVisibilityLevels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The minimum allowed bit length of an uploaded RSA key. Default is 0 (no restriction). -1 disables RSA keys.
+     * The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
      */
     rsaKeyRestriction?: pulumi.Input<number>;
     /**
-     * Max number of requests per minute for performing a search while authenticated. Default: 30. To disable throttling set to 0.
+     * Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
      */
     searchRateLimit?: pulumi.Input<number>;
     /**
-     * Max number of requests per minute for performing a search while unauthenticated. Default: 10. To disable throttling set to 0.
+     * Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
      */
     searchRateLimitUnauthenticated?: pulumi.Input<number>;
     /**
@@ -3227,15 +3241,15 @@ export interface ApplicationSettingsArgs {
      */
     sharedRunnersText?: pulumi.Input<string>;
     /**
-     * The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis. Default: 100 000 bytes (100KB).
+     * The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
      */
     sidekiqJobLimiterCompressionThresholdBytes?: pulumi.Input<number>;
     /**
-     * The threshold in bytes at which Sidekiq jobs are rejected. Default: 0 bytes (doesn’t reject any job).
+     * The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
      */
     sidekiqJobLimiterLimitBytes?: pulumi.Input<number>;
     /**
-     * track or compress. Sets the behavior for Sidekiq job size limits. Default: ‘compress’.
+     * track or compress. Sets the behavior for Sidekiq job size limits.
      */
     sidekiqJobLimiterMode?: pulumi.Input<string>;
     /**
@@ -3243,7 +3257,7 @@ export interface ApplicationSettingsArgs {
      */
     signInText?: pulumi.Input<string>;
     /**
-     * Enable registration. Default is true.
+     * Enable registration.
      */
     signupEnabled?: pulumi.Input<boolean>;
     /**
@@ -3267,7 +3281,7 @@ export interface ApplicationSettingsArgs {
      */
     slackAppVerificationToken?: pulumi.Input<string>;
     /**
-     * Max snippet content size in bytes. Default: 52428800 Bytes (50MB).
+     * Max snippet content size in bytes.
      */
     snippetSizeLimit?: pulumi.Input<number>;
     /**
@@ -3287,11 +3301,11 @@ export interface ApplicationSettingsArgs {
      */
     snowplowEnabled?: pulumi.Input<boolean>;
     /**
-     * Enables Sourcegraph integration. Default is false. If enabled, requires sourcegraph_url.
+     * Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
      */
     sourcegraphEnabled?: pulumi.Input<boolean>;
     /**
-     * Blocks Sourcegraph from being loaded on private and internal projects. Default is true.
+     * Blocks Sourcegraph from being loaded on private and internal projects.
      */
     sourcegraphPublicOnly?: pulumi.Input<boolean>;
     /**
@@ -3303,7 +3317,7 @@ export interface ApplicationSettingsArgs {
      */
     spamCheckApiKey?: pulumi.Input<string>;
     /**
-     * Enables spam checking using external Spam Check API endpoint. Default is false.
+     * Enables spam checking using external Spam Check API endpoint.
      */
     spamCheckEndpointEnabled?: pulumi.Input<boolean>;
     /**
@@ -3395,7 +3409,7 @@ export interface ApplicationSettingsArgs {
      */
     throttleUnauthenticatedWebRequestsPerPeriod?: pulumi.Input<number>;
     /**
-     * Limit display of time tracking units to hours. Default is false.
+     * Limit display of time tracking units to hours.
      */
     timeTrackingLimitToHours?: pulumi.Input<boolean>;
     /**
@@ -3451,7 +3465,7 @@ export interface ApplicationSettingsArgs {
      */
     whatsNewVariant?: pulumi.Input<string>;
     /**
-     * Maximum wiki page content size in bytes. Default: 52428800 Bytes (50 MB). The minimum value is 1024 bytes.
+     * Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
      */
     wikiPageMaxContentBytes?: pulumi.Input<number>;
 }

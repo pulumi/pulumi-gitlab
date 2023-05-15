@@ -22,15 +22,15 @@ public final class ProjectProtectedEnvironmentArgs extends com.pulumi.resources.
      * Array of access levels allowed to deploy, with each described by a hash.
      * 
      */
-    @Import(name="deployAccessLevels", required=true)
-    private Output<List<ProjectProtectedEnvironmentDeployAccessLevelArgs>> deployAccessLevels;
+    @Import(name="deployAccessLevels")
+    private @Nullable Output<List<ProjectProtectedEnvironmentDeployAccessLevelArgs>> deployAccessLevels;
 
     /**
      * @return Array of access levels allowed to deploy, with each described by a hash.
      * 
      */
-    public Output<List<ProjectProtectedEnvironmentDeployAccessLevelArgs>> deployAccessLevels() {
-        return this.deployAccessLevels;
+    public Optional<Output<List<ProjectProtectedEnvironmentDeployAccessLevelArgs>>> deployAccessLevels() {
+        return Optional.ofNullable(this.deployAccessLevels);
     }
 
     /**
@@ -111,7 +111,7 @@ public final class ProjectProtectedEnvironmentArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder deployAccessLevels(Output<List<ProjectProtectedEnvironmentDeployAccessLevelArgs>> deployAccessLevels) {
+        public Builder deployAccessLevels(@Nullable Output<List<ProjectProtectedEnvironmentDeployAccessLevelArgs>> deployAccessLevels) {
             $.deployAccessLevels = deployAccessLevels;
             return this;
         }
@@ -200,7 +200,6 @@ public final class ProjectProtectedEnvironmentArgs extends com.pulumi.resources.
         }
 
         public ProjectProtectedEnvironmentArgs build() {
-            $.deployAccessLevels = Objects.requireNonNull($.deployAccessLevels, "expected parameter 'deployAccessLevels' to be non-null");
             $.environment = Objects.requireNonNull($.environment, "expected parameter 'environment' to be non-null");
             $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
             return $;

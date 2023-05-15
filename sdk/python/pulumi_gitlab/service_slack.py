@@ -40,7 +40,7 @@ class ServiceSlackArgs:
         """
         The set of arguments for constructing a ServiceSlack resource.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[str] webhook: Webhook URL (ex.: https://hooks.slack.com/services/...)
+        :param pulumi.Input[str] webhook: Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
         :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         :param pulumi.Input[str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
@@ -127,7 +127,7 @@ class ServiceSlackArgs:
     @pulumi.getter
     def webhook(self) -> pulumi.Input[str]:
         """
-        Webhook URL (ex.: https://hooks.slack.com/services/...)
+        Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
         """
         return pulumi.get(self, "webhook")
 
@@ -438,7 +438,7 @@ class _ServiceSlackState:
         :param pulumi.Input[str] tag_push_channel: The name of the channel to receive tag push events notifications.
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag push events.
         :param pulumi.Input[str] username: Username to use.
-        :param pulumi.Input[str] webhook: Webhook URL (ex.: https://hooks.slack.com/services/...)
+        :param pulumi.Input[str] webhook: Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
         """
@@ -750,7 +750,7 @@ class _ServiceSlackState:
     @pulumi.getter
     def webhook(self) -> Optional[pulumi.Input[str]]:
         """
-        Webhook URL (ex.: https://hooks.slack.com/services/...)
+        Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
         """
         return pulumi.get(self, "webhook")
 
@@ -864,7 +864,7 @@ class ServiceSlack(pulumi.CustomResource):
         :param pulumi.Input[str] tag_push_channel: The name of the channel to receive tag push events notifications.
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag push events.
         :param pulumi.Input[str] username: Username to use.
-        :param pulumi.Input[str] webhook: Webhook URL (ex.: https://hooks.slack.com/services/...)
+        :param pulumi.Input[str] webhook: Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
         """
@@ -1044,7 +1044,7 @@ class ServiceSlack(pulumi.CustomResource):
         :param pulumi.Input[str] tag_push_channel: The name of the channel to receive tag push events notifications.
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag push events.
         :param pulumi.Input[str] username: Username to use.
-        :param pulumi.Input[str] webhook: Webhook URL (ex.: https://hooks.slack.com/services/...)
+        :param pulumi.Input[str] webhook: Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
         :param pulumi.Input[str] wiki_page_channel: The name of the channel to receive wiki page events notifications.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
         """
@@ -1250,7 +1250,7 @@ class ServiceSlack(pulumi.CustomResource):
     @pulumi.getter
     def webhook(self) -> pulumi.Output[str]:
         """
-        Webhook URL (ex.: https://hooks.slack.com/services/...)
+        Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
         """
         return pulumi.get(self, "webhook")
 

@@ -119,14 +119,14 @@ public class ProjectProtectedEnvironment extends com.pulumi.resources.CustomReso
      * 
      */
     @Export(name="deployAccessLevels", refs={List.class,ProjectProtectedEnvironmentDeployAccessLevel.class}, tree="[0,1]")
-    private Output<List<ProjectProtectedEnvironmentDeployAccessLevel>> deployAccessLevels;
+    private Output</* @Nullable */ List<ProjectProtectedEnvironmentDeployAccessLevel>> deployAccessLevels;
 
     /**
      * @return Array of access levels allowed to deploy, with each described by a hash.
      * 
      */
-    public Output<List<ProjectProtectedEnvironmentDeployAccessLevel>> deployAccessLevels() {
-        return this.deployAccessLevels;
+    public Output<Optional<List<ProjectProtectedEnvironmentDeployAccessLevel>>> deployAccessLevels() {
+        return Codegen.optional(this.deployAccessLevels);
     }
     /**
      * The name of the environment.
@@ -161,14 +161,14 @@ public class ProjectProtectedEnvironment extends com.pulumi.resources.CustomReso
      * 
      */
     @Export(name="requiredApprovalCount", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> requiredApprovalCount;
+    private Output<Integer> requiredApprovalCount;
 
     /**
      * @return The number of approvals required to deploy to this environment.
      * 
      */
-    public Output<Optional<Integer>> requiredApprovalCount() {
-        return Codegen.optional(this.requiredApprovalCount);
+    public Output<Integer> requiredApprovalCount() {
+        return this.requiredApprovalCount;
     }
 
     /**

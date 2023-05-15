@@ -385,6 +385,7 @@ class ProjectContainerExpirationPolicyArgs:
                  cadence: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  keep_n: Optional[pulumi.Input[int]] = None,
+                 name_regex: Optional[pulumi.Input[str]] = None,
                  name_regex_delete: Optional[pulumi.Input[str]] = None,
                  name_regex_keep: Optional[pulumi.Input[str]] = None,
                  next_run_at: Optional[pulumi.Input[str]] = None,
@@ -393,7 +394,8 @@ class ProjectContainerExpirationPolicyArgs:
         :param pulumi.Input[str] cadence: The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
         :param pulumi.Input[bool] enabled: If true, the policy is enabled.
         :param pulumi.Input[int] keep_n: The number of images to keep.
-        :param pulumi.Input[str] name_regex_delete: The regular expression to match image names to delete. **Note**: the upstream API has some inconsistencies with the `name_regex` field here. It's basically unusable at the moment.
+        :param pulumi.Input[str] name_regex: The regular expression to match image names to delete.
+        :param pulumi.Input[str] name_regex_delete: The regular expression to match image names to delete.
         :param pulumi.Input[str] name_regex_keep: The regular expression to match image names to keep.
         :param pulumi.Input[str] next_run_at: The next time the policy will run.
         :param pulumi.Input[str] older_than: The number of days to keep images.
@@ -404,6 +406,11 @@ class ProjectContainerExpirationPolicyArgs:
             pulumi.set(__self__, "enabled", enabled)
         if keep_n is not None:
             pulumi.set(__self__, "keep_n", keep_n)
+        if name_regex is not None:
+            pulumi.set(__self__, "name_regex", name_regex)
+        if name_regex_delete is not None:
+            warnings.warn("""`name_regex_delete` has been deprecated. Use `name_regex` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name_regex_delete is deprecated: `name_regex_delete` has been deprecated. Use `name_regex` instead.""")
         if name_regex_delete is not None:
             pulumi.set(__self__, "name_regex_delete", name_regex_delete)
         if name_regex_keep is not None:
@@ -450,10 +457,22 @@ class ProjectContainerExpirationPolicyArgs:
         pulumi.set(self, "keep_n", value)
 
     @property
+    @pulumi.getter(name="nameRegex")
+    def name_regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        The regular expression to match image names to delete.
+        """
+        return pulumi.get(self, "name_regex")
+
+    @name_regex.setter
+    def name_regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_regex", value)
+
+    @property
     @pulumi.getter(name="nameRegexDelete")
     def name_regex_delete(self) -> Optional[pulumi.Input[str]]:
         """
-        The regular expression to match image names to delete. **Note**: the upstream API has some inconsistencies with the `name_regex` field here. It's basically unusable at the moment.
+        The regular expression to match image names to delete.
         """
         return pulumi.get(self, "name_regex_delete")
 
@@ -722,7 +741,7 @@ class ProjectPushRulesArgs:
         :param pulumi.Input[str] commit_message_negative_regex: No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
         :param pulumi.Input[str] commit_message_regex: All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
         :param pulumi.Input[bool] deny_delete_tag: Deny deleting a tag.
-        :param pulumi.Input[str] file_name_regex: All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+        :param pulumi.Input[str] file_name_regex: All committed filenames must not match this regex, e.g. `(jar|exe)$`.
         :param pulumi.Input[int] max_file_size: Maximum file size (MB).
         :param pulumi.Input[bool] member_check: Restrict commits by author (email) to existing GitLab users.
         :param pulumi.Input[bool] prevent_secrets: GitLab will reject any files that are likely to contain secrets.
@@ -827,7 +846,7 @@ class ProjectPushRulesArgs:
     @pulumi.getter(name="fileNameRegex")
     def file_name_regex(self) -> Optional[pulumi.Input[str]]:
         """
-        All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+        All committed filenames must not match this regex, e.g. `(jar|exe)$`.
         """
         return pulumi.get(self, "file_name_regex")
 

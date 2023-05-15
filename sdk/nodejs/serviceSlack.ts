@@ -151,7 +151,7 @@ export class ServiceSlack extends pulumi.CustomResource {
      */
     public readonly username!: pulumi.Output<string | undefined>;
     /**
-     * Webhook URL (ex.: https://hooks.slack.com/services/...)
+     * Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
      */
     public readonly webhook!: pulumi.Output<string>;
     /**
@@ -329,7 +329,7 @@ export interface ServiceSlackState {
      */
     username?: pulumi.Input<string>;
     /**
-     * Webhook URL (ex.: https://hooks.slack.com/services/...)
+     * Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
      */
     webhook?: pulumi.Input<string>;
     /**
@@ -429,7 +429,7 @@ export interface ServiceSlackArgs {
      */
     username?: pulumi.Input<string>;
     /**
-     * Webhook URL (ex.: https://hooks.slack.com/services/...)
+     * Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
      */
     webhook: pulumi.Input<string>;
     /**

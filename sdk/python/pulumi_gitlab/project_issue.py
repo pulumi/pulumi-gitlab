@@ -47,7 +47,6 @@ class ProjectIssueArgs:
         :param pulumi.Input[bool] discussion_locked: Whether the issue is locked for discussions or not.
         :param pulumi.Input[str] discussion_to_resolve: The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
         :param pulumi.Input[str] due_date: The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-               **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
         :param pulumi.Input[int] epic_issue_id: The ID of the epic issue.
         :param pulumi.Input[int] iid: The internal ID of the project's issue.
         :param pulumi.Input[str] issue_type: The type of issue. Valid values are: `issue`, `incident`, `test_case`.
@@ -208,7 +207,6 @@ class ProjectIssueArgs:
     def due_date(self) -> Optional[pulumi.Input[str]]:
         """
         The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-        **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
         """
         return pulumi.get(self, "due_date")
 
@@ -382,7 +380,6 @@ class _ProjectIssueState:
         :param pulumi.Input[str] discussion_to_resolve: The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
         :param pulumi.Input[int] downvotes: The number of downvotes the issue has received.
         :param pulumi.Input[str] due_date: The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-               **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
         :param pulumi.Input[int] epic_id: ID of the epic to add the issue to. Valid values are greater than or equal to 0.
         :param pulumi.Input[int] epic_issue_id: The ID of the epic issue.
         :param pulumi.Input[str] external_id: The external ID of the issue.
@@ -630,7 +627,6 @@ class _ProjectIssueState:
     def due_date(self) -> Optional[pulumi.Input[str]]:
         """
         The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-        **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
         """
         return pulumi.get(self, "due_date")
 
@@ -1038,7 +1034,6 @@ class ProjectIssue(pulumi.CustomResource):
         :param pulumi.Input[bool] discussion_locked: Whether the issue is locked for discussions or not.
         :param pulumi.Input[str] discussion_to_resolve: The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
         :param pulumi.Input[str] due_date: The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-               **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
         :param pulumi.Input[int] epic_issue_id: The ID of the epic issue.
         :param pulumi.Input[int] iid: The internal ID of the project's issue.
         :param pulumi.Input[str] issue_type: The type of issue. Valid values are: `issue`, `incident`, `test_case`.
@@ -1241,7 +1236,6 @@ class ProjectIssue(pulumi.CustomResource):
         :param pulumi.Input[str] discussion_to_resolve: The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
         :param pulumi.Input[int] downvotes: The number of downvotes the issue has received.
         :param pulumi.Input[str] due_date: The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-               **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
         :param pulumi.Input[int] epic_id: ID of the epic to add the issue to. Valid values are greater than or equal to 0.
         :param pulumi.Input[int] epic_issue_id: The ID of the epic issue.
         :param pulumi.Input[str] external_id: The external ID of the issue.
@@ -1410,7 +1404,6 @@ class ProjectIssue(pulumi.CustomResource):
     def due_date(self) -> pulumi.Output[Optional[str]]:
         """
         The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-        **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
         """
         return pulumi.get(self, "due_date")
 

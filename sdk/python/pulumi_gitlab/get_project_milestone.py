@@ -93,7 +93,7 @@ class GetProjectMilestoneResult:
     @pulumi.getter
     def expired(self) -> bool:
         """
-        Bool, true if milestore expired.
+        Bool, true if milestone expired.
         """
         return pulumi.get(self, "expired")
 

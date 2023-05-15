@@ -306,6 +306,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.automaticPurchasedStorageAllocation;
     }
     /**
+     * Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
+     * 
+     */
+    @Export(name="canCreateGroup", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> canCreateGroup;
+
+    /**
+     * @return Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
+     * 
+     */
+    public Output<Boolean> canCreateGroup() {
+        return this.canCreateGroup;
+    }
+    /**
      * Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
      * 
      */
@@ -488,14 +502,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.defaultCiConfigPath;
     }
     /**
-     * What visibility level new groups receive. Can take private, internal and public as a parameter. Default is private.
+     * What visibility level new groups receive. Can take private, internal and public as a parameter.
      * 
      */
     @Export(name="defaultGroupVisibility", refs={String.class}, tree="[0]")
     private Output<String> defaultGroupVisibility;
 
     /**
-     * @return What visibility level new groups receive. Can take private, internal and public as a parameter. Default is private.
+     * @return What visibility level new groups receive. Can take private, internal and public as a parameter.
      * 
      */
     public Output<String> defaultGroupVisibility() {
@@ -516,98 +530,98 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.defaultProjectCreation;
     }
     /**
-     * What visibility level new projects receive. Can take private, internal and public as a parameter. Default is private.
+     * What visibility level new projects receive. Can take private, internal and public as a parameter.
      * 
      */
     @Export(name="defaultProjectVisibility", refs={String.class}, tree="[0]")
     private Output<String> defaultProjectVisibility;
 
     /**
-     * @return What visibility level new projects receive. Can take private, internal and public as a parameter. Default is private.
+     * @return What visibility level new projects receive. Can take private, internal and public as a parameter.
      * 
      */
     public Output<String> defaultProjectVisibility() {
         return this.defaultProjectVisibility;
     }
     /**
-     * Project limit per user. Default is 100000.
+     * Project limit per user.
      * 
      */
     @Export(name="defaultProjectsLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> defaultProjectsLimit;
 
     /**
-     * @return Project limit per user. Default is 100000.
+     * @return Project limit per user.
      * 
      */
     public Output<Integer> defaultProjectsLimit() {
         return this.defaultProjectsLimit;
     }
     /**
-     * What visibility level new snippets receive. Can take private, internal and public as a parameter. Default is private.
+     * What visibility level new snippets receive. Can take private, internal and public as a parameter.
      * 
      */
     @Export(name="defaultSnippetVisibility", refs={String.class}, tree="[0]")
     private Output<String> defaultSnippetVisibility;
 
     /**
-     * @return What visibility level new snippets receive. Can take private, internal and public as a parameter. Default is private.
+     * @return What visibility level new snippets receive. Can take private, internal and public as a parameter.
      * 
      */
     public Output<String> defaultSnippetVisibility() {
         return this.defaultSnippetVisibility;
     }
     /**
-     * Enable delayed group deletion. Default is true. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
+     * Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
      * 
      */
     @Export(name="delayedGroupDeletion", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> delayedGroupDeletion;
 
     /**
-     * @return Enable delayed group deletion. Default is true. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
+     * @return Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
      * 
      */
     public Output<Boolean> delayedGroupDeletion() {
         return this.delayedGroupDeletion;
     }
     /**
-     * Enable delayed project deletion by default in new groups. Default is false. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
+     * Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
      * 
      */
     @Export(name="delayedProjectDeletion", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> delayedProjectDeletion;
 
     /**
-     * @return Enable delayed project deletion by default in new groups. Default is false. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
+     * @return Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
      * 
      */
     public Output<Boolean> delayedProjectDeletion() {
         return this.delayedProjectDeletion;
     }
     /**
-     * Enable inactive project deletion feature. Default is false. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion, disabled by default).
+     * Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
      * 
      */
     @Export(name="deleteInactiveProjects", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deleteInactiveProjects;
 
     /**
-     * @return Enable inactive project deletion feature. Default is false. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion, disabled by default).
+     * @return Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
      * 
      */
     public Output<Boolean> deleteInactiveProjects() {
         return this.deleteInactiveProjects;
     }
     /**
-     * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. Defaults to 7. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+     * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
      * 
      */
     @Export(name="deletionAdjournedPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> deletionAdjournedPeriod;
 
     /**
-     * @return The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. Defaults to 7. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+     * @return The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
      * 
      */
     public Output<Integer> deletionAdjournedPeriod() {
@@ -698,14 +712,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.dnsRebindingProtectionEnabled;
     }
     /**
-     * Force people to use only corporate emails for sign-up. Default is null, meaning there is no restriction.
+     * Force people to use only corporate emails for sign-up. Null means there is no restriction.
      * 
      */
     @Export(name="domainAllowlists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> domainAllowlists;
 
     /**
-     * @return Force people to use only corporate emails for sign-up. Default is null, meaning there is no restriction.
+     * @return Force people to use only corporate emails for sign-up. Null means there is no restriction.
      * 
      */
     public Output<List<String>> domainAllowlists() {
@@ -740,70 +754,70 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.domainDenylists;
     }
     /**
-     * The minimum allowed bit length of an uploaded DSA key. Default is 0 (no restriction). -1 disables DSA keys.
+     * The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
      * 
      */
     @Export(name="dsaKeyRestriction", refs={Integer.class}, tree="[0]")
     private Output<Integer> dsaKeyRestriction;
 
     /**
-     * @return The minimum allowed bit length of an uploaded DSA key. Default is 0 (no restriction). -1 disables DSA keys.
+     * @return The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
      * 
      */
     public Output<Integer> dsaKeyRestriction() {
         return this.dsaKeyRestriction;
     }
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ECDSA key. Default is 0 (no restriction). -1 disables ECDSA keys.
+     * The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
      * 
      */
     @Export(name="ecdsaKeyRestriction", refs={Integer.class}, tree="[0]")
     private Output<Integer> ecdsaKeyRestriction;
 
     /**
-     * @return The minimum allowed curve size (in bits) of an uploaded ECDSA key. Default is 0 (no restriction). -1 disables ECDSA keys.
+     * @return The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
      * 
      */
     public Output<Integer> ecdsaKeyRestriction() {
         return this.ecdsaKeyRestriction;
     }
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. Default is 0 (no restriction). -1 disables ECDSA*SK keys.
+     * The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
      * 
      */
     @Export(name="ecdsaSkKeyRestriction", refs={Integer.class}, tree="[0]")
     private Output<Integer> ecdsaSkKeyRestriction;
 
     /**
-     * @return The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. Default is 0 (no restriction). -1 disables ECDSA*SK keys.
+     * @return The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
      * 
      */
     public Output<Integer> ecdsaSkKeyRestriction() {
         return this.ecdsaSkKeyRestriction;
     }
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ED25519 key. Default is 0 (no restriction). -1 disables ED25519 keys.
+     * The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
      * 
      */
     @Export(name="ed25519KeyRestriction", refs={Integer.class}, tree="[0]")
     private Output<Integer> ed25519KeyRestriction;
 
     /**
-     * @return The minimum allowed curve size (in bits) of an uploaded ED25519 key. Default is 0 (no restriction). -1 disables ED25519 keys.
+     * @return The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
      * 
      */
     public Output<Integer> ed25519KeyRestriction() {
         return this.ed25519KeyRestriction;
     }
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. Default is 0 (no restriction). -1 disables ED25519*SK keys.
+     * The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
      * 
      */
     @Export(name="ed25519SkKeyRestriction", refs={Integer.class}, tree="[0]")
     private Output<Integer> ed25519SkKeyRestriction;
 
     /**
-     * @return The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. Default is 0 (no restriction). -1 disables ED25519*SK keys.
+     * @return The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
      * 
      */
     public Output<Integer> ed25519SkKeyRestriction() {
@@ -1314,14 +1328,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.fileTemplateProjectId;
     }
     /**
-     * Start day of the week for calendar views and date pickers. Valid values are 0 (default) for Sunday, 1 for Monday, and 6 for Saturday.
+     * Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
      * 
      */
     @Export(name="firstDayOfWeek", refs={Integer.class}, tree="[0]")
     private Output<Integer> firstDayOfWeek;
 
     /**
-     * @return Start day of the week for calendar views and date pickers. Valid values are 0 (default) for Sunday, 1 for Monday, and 6 for Saturday.
+     * @return Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
      * 
      */
     public Output<Integer> firstDayOfWeek() {
@@ -1356,14 +1370,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.geoStatusTimeout;
     }
     /**
-     * List of usernames excluded from Git anti-abuse rate limits. Default: [], Maximum: 100 usernames. Introduced in GitLab 15.2.
+     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
      * 
      */
     @Export(name="gitRateLimitUsersAllowlists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> gitRateLimitUsersAllowlists;
 
     /**
-     * @return List of usernames excluded from Git anti-abuse rate limits. Default: [], Maximum: 100 usernames. Introduced in GitLab 15.2.
+     * @return List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
      * 
      */
     public Output<List<String>> gitRateLimitUsersAllowlists() {
@@ -1664,98 +1678,98 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.importSources;
     }
     /**
-     * Enable in-product marketing emails. Enabled by default.
+     * Enable in-product marketing emails.
      * 
      */
     @Export(name="inProductMarketingEmailsEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> inProductMarketingEmailsEnabled;
 
     /**
-     * @return Enable in-product marketing emails. Enabled by default.
+     * @return Enable in-product marketing emails.
      * 
      */
     public Output<Boolean> inProductMarketingEmailsEnabled() {
         return this.inProductMarketingEmailsEnabled;
     }
     /**
-     * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Default is 2. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      * 
      */
     @Export(name="inactiveProjectsDeleteAfterMonths", refs={Integer.class}, tree="[0]")
     private Output<Integer> inactiveProjectsDeleteAfterMonths;
 
     /**
-     * @return If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Default is 2. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * @return If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      * 
      */
     public Output<Integer> inactiveProjectsDeleteAfterMonths() {
         return this.inactiveProjectsDeleteAfterMonths;
     }
     /**
-     * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Default is 0. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      * 
      */
     @Export(name="inactiveProjectsMinSizeMb", refs={Integer.class}, tree="[0]")
     private Output<Integer> inactiveProjectsMinSizeMb;
 
     /**
-     * @return If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Default is 0. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * @return If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      * 
      */
     public Output<Integer> inactiveProjectsMinSizeMb() {
         return this.inactiveProjectsMinSizeMb;
     }
     /**
-     * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Default is 1. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      * 
      */
     @Export(name="inactiveProjectsSendWarningEmailAfterMonths", refs={Integer.class}, tree="[0]")
     private Output<Integer> inactiveProjectsSendWarningEmailAfterMonths;
 
     /**
-     * @return If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Default is 1. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * @return If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      * 
      */
     public Output<Integer> inactiveProjectsSendWarningEmailAfterMonths() {
         return this.inactiveProjectsSendWarningEmailAfterMonths;
     }
     /**
-     * Enable Invisible CAPTCHA spam detection during sign-up. Disabled by default.
+     * Enable Invisible CAPTCHA spam detection during sign-up.
      * 
      */
     @Export(name="invisibleCaptchaEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> invisibleCaptchaEnabled;
 
     /**
-     * @return Enable Invisible CAPTCHA spam detection during sign-up. Disabled by default.
+     * @return Enable Invisible CAPTCHA spam detection during sign-up.
      * 
      */
     public Output<Boolean> invisibleCaptchaEnabled() {
         return this.invisibleCaptchaEnabled;
     }
     /**
-     * Max number of issue creation requests per minute per user. Disabled by default.
+     * Max number of issue creation requests per minute per user.
      * 
      */
     @Export(name="issuesCreateLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> issuesCreateLimit;
 
     /**
-     * @return Max number of issue creation requests per minute per user. Disabled by default.
+     * @return Max number of issue creation requests per minute per user.
      * 
      */
     public Output<Integer> issuesCreateLimit() {
         return this.issuesCreateLimit;
     }
     /**
-     * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time. Enabled by default.
+     * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
      * 
      */
     @Export(name="keepLatestArtifact", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> keepLatestArtifact;
 
     /**
-     * @return Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time. Enabled by default.
+     * @return Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
      * 
      */
     public Output<Boolean> keepLatestArtifact() {
@@ -1860,56 +1874,56 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.maxAttachmentSize;
     }
     /**
-     * Maximum export size in MB. 0 for unlimited. Default = 0 (unlimited).
+     * Maximum export size in MB. 0 for unlimited.
      * 
      */
     @Export(name="maxExportSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxExportSize;
 
     /**
-     * @return Maximum export size in MB. 0 for unlimited. Default = 0 (unlimited).
+     * @return Maximum export size in MB. 0 for unlimited.
      * 
      */
     public Output<Integer> maxExportSize() {
         return this.maxExportSize;
     }
     /**
-     * Maximum import size in MB. 0 for unlimited. Default = 0 (unlimited) Modified from 50MB to 0 in GitLab 13.8.
+     * Maximum import size in MB. 0 for unlimited.
      * 
      */
     @Export(name="maxImportSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxImportSize;
 
     /**
-     * @return Maximum import size in MB. 0 for unlimited. Default = 0 (unlimited) Modified from 50MB to 0 in GitLab 13.8.
+     * @return Maximum import size in MB. 0 for unlimited.
      * 
      */
     public Output<Integer> maxImportSize() {
         return this.maxImportSize;
     }
     /**
-     * Maximum number of unique repositories a user can download in the specified time period before they are banned. Default: 0, Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+     * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
      * 
      */
     @Export(name="maxNumberOfRepositoryDownloads", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxNumberOfRepositoryDownloads;
 
     /**
-     * @return Maximum number of unique repositories a user can download in the specified time period before they are banned. Default: 0, Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+     * @return Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
      * 
      */
     public Output<Integer> maxNumberOfRepositoryDownloads() {
         return this.maxNumberOfRepositoryDownloads;
     }
     /**
-     * Reporting time period (in seconds). Default: 0, Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+     * Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
      * 
      */
     @Export(name="maxNumberOfRepositoryDownloadsWithinTimePeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxNumberOfRepositoryDownloadsWithinTimePeriod;
 
     /**
-     * @return Reporting time period (in seconds). Default: 0, Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+     * @return Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
      * 
      */
     public Output<Integer> maxNumberOfRepositoryDownloadsWithinTimePeriod() {
@@ -2084,28 +2098,28 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.pagesDomainVerificationEnabled;
     }
     /**
-     * Enable authentication for Git over HTTP(S) via a GitLab account password. Default is true.
+     * Enable authentication for Git over HTTP(S) via a GitLab account password.
      * 
      */
     @Export(name="passwordAuthenticationEnabledForGit", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> passwordAuthenticationEnabledForGit;
 
     /**
-     * @return Enable authentication for Git over HTTP(S) via a GitLab account password. Default is true.
+     * @return Enable authentication for Git over HTTP(S) via a GitLab account password.
      * 
      */
     public Output<Boolean> passwordAuthenticationEnabledForGit() {
         return this.passwordAuthenticationEnabledForGit;
     }
     /**
-     * Enable authentication for the web interface via a GitLab account password. Default is true.
+     * Enable authentication for the web interface via a GitLab account password.
      * 
      */
     @Export(name="passwordAuthenticationEnabledForWeb", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> passwordAuthenticationEnabledForWeb;
 
     /**
-     * @return Enable authentication for the web interface via a GitLab account password. Default is true.
+     * @return Enable authentication for the web interface via a GitLab account password.
      * 
      */
     public Output<Boolean> passwordAuthenticationEnabledForWeb() {
@@ -2196,28 +2210,28 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.personalAccessTokenPrefix;
     }
     /**
-     * Maximum number of pipeline creation requests per minute per user and commit. Disabled by default.
+     * Maximum number of pipeline creation requests per minute per user and commit.
      * 
      */
     @Export(name="pipelineLimitPerProjectUserSha", refs={Integer.class}, tree="[0]")
     private Output<Integer> pipelineLimitPerProjectUserSha;
 
     /**
-     * @return Maximum number of pipeline creation requests per minute per user and commit. Disabled by default.
+     * @return Maximum number of pipeline creation requests per minute per user and commit.
      * 
      */
     public Output<Integer> pipelineLimitPerProjectUserSha() {
         return this.pipelineLimitPerProjectUserSha;
     }
     /**
-     * (If enabled, requires: plantuml_url) Enable PlantUML integration. Default is false.
+     * (If enabled, requires: plantuml_url) Enable PlantUML integration.
      * 
      */
     @Export(name="plantumlEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> plantumlEnabled;
 
     /**
-     * @return (If enabled, requires: plantuml_url) Enable PlantUML integration. Default is false.
+     * @return (If enabled, requires: plantuml_url) Enable PlantUML integration.
      * 
      */
     public Output<Boolean> plantumlEnabled() {
@@ -2350,14 +2364,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.rateLimitingResponseText;
     }
     /**
-     * Max number of requests per minute for each raw path. Default: 300. To disable throttling set to 0.
+     * Max number of requests per minute for each raw path. To disable throttling set to 0.
      * 
      */
     @Export(name="rawBlobRequestLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> rawBlobRequestLimit;
 
     /**
-     * @return Max number of requests per minute for each raw path. Default: 300. To disable throttling set to 0.
+     * @return Max number of requests per minute for each raw path. To disable throttling set to 0.
      * 
      */
     public Output<Integer> rawBlobRequestLimit() {
@@ -2504,56 +2518,56 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.requireTwoFactorAuthentication;
     }
     /**
-     * Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Default is null which means there is no restriction.
+     * Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
      * 
      */
     @Export(name="restrictedVisibilityLevels", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> restrictedVisibilityLevels;
 
     /**
-     * @return Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Default is null which means there is no restriction.
+     * @return Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
      * 
      */
     public Output<List<String>> restrictedVisibilityLevels() {
         return this.restrictedVisibilityLevels;
     }
     /**
-     * The minimum allowed bit length of an uploaded RSA key. Default is 0 (no restriction). -1 disables RSA keys.
+     * The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
      * 
      */
     @Export(name="rsaKeyRestriction", refs={Integer.class}, tree="[0]")
     private Output<Integer> rsaKeyRestriction;
 
     /**
-     * @return The minimum allowed bit length of an uploaded RSA key. Default is 0 (no restriction). -1 disables RSA keys.
+     * @return The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
      * 
      */
     public Output<Integer> rsaKeyRestriction() {
         return this.rsaKeyRestriction;
     }
     /**
-     * Max number of requests per minute for performing a search while authenticated. Default: 30. To disable throttling set to 0.
+     * Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
      * 
      */
     @Export(name="searchRateLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> searchRateLimit;
 
     /**
-     * @return Max number of requests per minute for performing a search while authenticated. Default: 30. To disable throttling set to 0.
+     * @return Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
      * 
      */
     public Output<Integer> searchRateLimit() {
         return this.searchRateLimit;
     }
     /**
-     * Max number of requests per minute for performing a search while unauthenticated. Default: 10. To disable throttling set to 0.
+     * Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
      * 
      */
     @Export(name="searchRateLimitUnauthenticated", refs={Integer.class}, tree="[0]")
     private Output<Integer> searchRateLimitUnauthenticated;
 
     /**
-     * @return Max number of requests per minute for performing a search while unauthenticated. Default: 10. To disable throttling set to 0.
+     * @return Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
      * 
      */
     public Output<Integer> searchRateLimitUnauthenticated() {
@@ -2630,42 +2644,42 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.sharedRunnersText;
     }
     /**
-     * The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis. Default: 100 000 bytes (100KB).
+     * The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
      * 
      */
     @Export(name="sidekiqJobLimiterCompressionThresholdBytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> sidekiqJobLimiterCompressionThresholdBytes;
 
     /**
-     * @return The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis. Default: 100 000 bytes (100KB).
+     * @return The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
      * 
      */
     public Output<Integer> sidekiqJobLimiterCompressionThresholdBytes() {
         return this.sidekiqJobLimiterCompressionThresholdBytes;
     }
     /**
-     * The threshold in bytes at which Sidekiq jobs are rejected. Default: 0 bytes (doesn’t reject any job).
+     * The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
      * 
      */
     @Export(name="sidekiqJobLimiterLimitBytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> sidekiqJobLimiterLimitBytes;
 
     /**
-     * @return The threshold in bytes at which Sidekiq jobs are rejected. Default: 0 bytes (doesn’t reject any job).
+     * @return The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
      * 
      */
     public Output<Integer> sidekiqJobLimiterLimitBytes() {
         return this.sidekiqJobLimiterLimitBytes;
     }
     /**
-     * track or compress. Sets the behavior for Sidekiq job size limits. Default: ‘compress’.
+     * track or compress. Sets the behavior for Sidekiq job size limits.
      * 
      */
     @Export(name="sidekiqJobLimiterMode", refs={String.class}, tree="[0]")
     private Output<String> sidekiqJobLimiterMode;
 
     /**
-     * @return track or compress. Sets the behavior for Sidekiq job size limits. Default: ‘compress’.
+     * @return track or compress. Sets the behavior for Sidekiq job size limits.
      * 
      */
     public Output<String> sidekiqJobLimiterMode() {
@@ -2686,14 +2700,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.signInText;
     }
     /**
-     * Enable registration. Default is true.
+     * Enable registration.
      * 
      */
     @Export(name="signupEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> signupEnabled;
 
     /**
-     * @return Enable registration. Default is true.
+     * @return Enable registration.
      * 
      */
     public Output<Boolean> signupEnabled() {
@@ -2770,14 +2784,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.slackAppVerificationToken;
     }
     /**
-     * Max snippet content size in bytes. Default: 52428800 Bytes (50MB).
+     * Max snippet content size in bytes.
      * 
      */
     @Export(name="snippetSizeLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> snippetSizeLimit;
 
     /**
-     * @return Max snippet content size in bytes. Default: 52428800 Bytes (50MB).
+     * @return Max snippet content size in bytes.
      * 
      */
     public Output<Integer> snippetSizeLimit() {
@@ -2840,28 +2854,28 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.snowplowEnabled;
     }
     /**
-     * Enables Sourcegraph integration. Default is false. If enabled, requires sourcegraph_url.
+     * Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
      * 
      */
     @Export(name="sourcegraphEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> sourcegraphEnabled;
 
     /**
-     * @return Enables Sourcegraph integration. Default is false. If enabled, requires sourcegraph_url.
+     * @return Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
      * 
      */
     public Output<Boolean> sourcegraphEnabled() {
         return this.sourcegraphEnabled;
     }
     /**
-     * Blocks Sourcegraph from being loaded on private and internal projects. Default is true.
+     * Blocks Sourcegraph from being loaded on private and internal projects.
      * 
      */
     @Export(name="sourcegraphPublicOnly", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> sourcegraphPublicOnly;
 
     /**
-     * @return Blocks Sourcegraph from being loaded on private and internal projects. Default is true.
+     * @return Blocks Sourcegraph from being loaded on private and internal projects.
      * 
      */
     public Output<Boolean> sourcegraphPublicOnly() {
@@ -2896,14 +2910,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.spamCheckApiKey;
     }
     /**
-     * Enables spam checking using external Spam Check API endpoint. Default is false.
+     * Enables spam checking using external Spam Check API endpoint.
      * 
      */
     @Export(name="spamCheckEndpointEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> spamCheckEndpointEnabled;
 
     /**
-     * @return Enables spam checking using external Spam Check API endpoint. Default is false.
+     * @return Enables spam checking using external Spam Check API endpoint.
      * 
      */
     public Output<Boolean> spamCheckEndpointEnabled() {
@@ -3218,14 +3232,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.throttleUnauthenticatedWebRequestsPerPeriod;
     }
     /**
-     * Limit display of time tracking units to hours. Default is false.
+     * Limit display of time tracking units to hours.
      * 
      */
     @Export(name="timeTrackingLimitToHours", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> timeTrackingLimitToHours;
 
     /**
-     * @return Limit display of time tracking units to hours. Default is false.
+     * @return Limit display of time tracking units to hours.
      * 
      */
     public Output<Boolean> timeTrackingLimitToHours() {
@@ -3414,14 +3428,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.whatsNewVariant;
     }
     /**
-     * Maximum wiki page content size in bytes. Default: 52428800 Bytes (50 MB). The minimum value is 1024 bytes.
+     * Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
      * 
      */
     @Export(name="wikiPageMaxContentBytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> wikiPageMaxContentBytes;
 
     /**
-     * @return Maximum wiki page content size in bytes. Default: 52428800 Bytes (50 MB). The minimum value is 1024 bytes.
+     * @return Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
      * 
      */
     public Output<Integer> wikiPageMaxContentBytes() {

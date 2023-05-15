@@ -5,10 +5,13 @@ package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gitlab.outputs.GetGroupMembershipMember;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGroupMembershipResult {
@@ -32,6 +35,11 @@ public final class GetGroupMembershipResult {
      * 
      */
     private String id;
+    /**
+     * @return Return all project members including members through ancestor groups.
+     * 
+     */
+    private @Nullable Boolean inherited;
     /**
      * @return The list of group members.
      * 
@@ -68,6 +76,13 @@ public final class GetGroupMembershipResult {
         return this.id;
     }
     /**
+     * @return Return all project members including members through ancestor groups.
+     * 
+     */
+    public Optional<Boolean> inherited() {
+        return Optional.ofNullable(this.inherited);
+    }
+    /**
      * @return The list of group members.
      * 
      */
@@ -88,6 +103,7 @@ public final class GetGroupMembershipResult {
         private String fullPath;
         private Integer groupId;
         private String id;
+        private @Nullable Boolean inherited;
         private List<GetGroupMembershipMember> members;
         public Builder() {}
         public Builder(GetGroupMembershipResult defaults) {
@@ -96,6 +112,7 @@ public final class GetGroupMembershipResult {
     	      this.fullPath = defaults.fullPath;
     	      this.groupId = defaults.groupId;
     	      this.id = defaults.id;
+    	      this.inherited = defaults.inherited;
     	      this.members = defaults.members;
         }
 
@@ -120,6 +137,11 @@ public final class GetGroupMembershipResult {
             return this;
         }
         @CustomType.Setter
+        public Builder inherited(@Nullable Boolean inherited) {
+            this.inherited = inherited;
+            return this;
+        }
+        @CustomType.Setter
         public Builder members(List<GetGroupMembershipMember> members) {
             this.members = Objects.requireNonNull(members);
             return this;
@@ -133,6 +155,7 @@ public final class GetGroupMembershipResult {
             o.fullPath = fullPath;
             o.groupId = groupId;
             o.id = id;
+            o.inherited = inherited;
             o.members = members;
             return o;
         }

@@ -20,6 +20,48 @@ import (
 // > This resource requires a GitLab Enterprise instance with a Premium license.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#update-group)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := gitlab.NewGroup(ctx, "foo", &gitlab.GroupArgs{
+//				Path:        pulumi.String("group"),
+//				Description: pulumi.String("An example group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bar, err := gitlab.NewProject(ctx, "bar", &gitlab.ProjectArgs{
+//				Description:     pulumi.String("contains file templates"),
+//				VisibilityLevel: pulumi.String("public"),
+//				NamespaceId:     foo.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewGroupProjectFileTemplate(ctx, "templateLink", &gitlab.GroupProjectFileTemplateArgs{
+//				GroupId:               foo.ID(),
+//				FileTemplateProjectId: bar.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type GroupProjectFileTemplate struct {
 	pulumi.CustomResourceState
 

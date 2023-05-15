@@ -183,14 +183,14 @@ public final class RepositoryFileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     * The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      * 
      */
     @Import(name="filePath")
     private @Nullable Output<String> filePath;
 
     /**
-     * @return The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     * @return The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      * 
      */
     public Optional<Output<String>> filePath() {
@@ -210,6 +210,21 @@ public final class RepositoryFileState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> lastCommitId() {
         return Optional.ofNullable(this.lastCommitId);
+    }
+
+    /**
+     * Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+     * 
+     */
+    @Import(name="overwriteOnCreate")
+    private @Nullable Output<Boolean> overwriteOnCreate;
+
+    /**
+     * @return Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+     * 
+     */
+    public Optional<Output<Boolean>> overwriteOnCreate() {
+        return Optional.ofNullable(this.overwriteOnCreate);
     }
 
     /**
@@ -288,6 +303,7 @@ public final class RepositoryFileState extends com.pulumi.resources.ResourceArgs
         this.fileName = $.fileName;
         this.filePath = $.filePath;
         this.lastCommitId = $.lastCommitId;
+        this.overwriteOnCreate = $.overwriteOnCreate;
         this.project = $.project;
         this.ref = $.ref;
         this.size = $.size;
@@ -544,7 +560,7 @@ public final class RepositoryFileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param filePath The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+         * @param filePath The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
          * 
          * @return builder
          * 
@@ -555,7 +571,7 @@ public final class RepositoryFileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param filePath The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+         * @param filePath The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
          * 
          * @return builder
          * 
@@ -583,6 +599,27 @@ public final class RepositoryFileState extends com.pulumi.resources.ResourceArgs
          */
         public Builder lastCommitId(String lastCommitId) {
             return lastCommitId(Output.of(lastCommitId));
+        }
+
+        /**
+         * @param overwriteOnCreate Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder overwriteOnCreate(@Nullable Output<Boolean> overwriteOnCreate) {
+            $.overwriteOnCreate = overwriteOnCreate;
+            return this;
+        }
+
+        /**
+         * @param overwriteOnCreate Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder overwriteOnCreate(Boolean overwriteOnCreate) {
+            return overwriteOnCreate(Output.of(overwriteOnCreate));
         }
 
         /**

@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -40,7 +40,7 @@ import (
 //			parentDeployKey, err := gitlab.NewDeployKey(ctx, "parentDeployKey", &gitlab.DeployKeyArgs{
 //				Project: parentProject.ID(),
 //				Title:   pulumi.String("Example deploy key"),
-//				Key:     pulumi.String("ssh-rsa AAAA..."),
+//				Key:     pulumi.String("ssh-ed25519 AAAA..."),
 //			})
 //			if err != nil {
 //				return err

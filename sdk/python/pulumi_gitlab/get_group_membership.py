@@ -22,7 +22,7 @@ class GetGroupMembershipResult:
     """
     A collection of values returned by getGroupMembership.
     """
-    def __init__(__self__, access_level=None, full_path=None, group_id=None, id=None, members=None):
+    def __init__(__self__, access_level=None, full_path=None, group_id=None, id=None, inherited=None, members=None):
         if access_level and not isinstance(access_level, str):
             raise TypeError("Expected argument 'access_level' to be a str")
         pulumi.set(__self__, "access_level", access_level)
@@ -35,6 +35,9 @@ class GetGroupMembershipResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if inherited and not isinstance(inherited, bool):
+            raise TypeError("Expected argument 'inherited' to be a bool")
+        pulumi.set(__self__, "inherited", inherited)
         if members and not isinstance(members, list):
             raise TypeError("Expected argument 'members' to be a list")
         pulumi.set(__self__, "members", members)
@@ -73,6 +76,14 @@ class GetGroupMembershipResult:
 
     @property
     @pulumi.getter
+    def inherited(self) -> Optional[bool]:
+        """
+        Return all project members including members through ancestor groups.
+        """
+        return pulumi.get(self, "inherited")
+
+    @property
+    @pulumi.getter
     def members(self) -> Sequence['outputs.GetGroupMembershipMemberResult']:
         """
         The list of group members.
@@ -90,12 +101,14 @@ class AwaitableGetGroupMembershipResult(GetGroupMembershipResult):
             full_path=self.full_path,
             group_id=self.group_id,
             id=self.id,
+            inherited=self.inherited,
             members=self.members)
 
 
 def get_group_membership(access_level: Optional[str] = None,
                          full_path: Optional[str] = None,
                          group_id: Optional[int] = None,
+                         inherited: Optional[bool] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupMembershipResult:
     """
     The `GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
@@ -115,11 +128,13 @@ def get_group_membership(access_level: Optional[str] = None,
     :param str access_level: Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
     :param str full_path: The full path of the group.
     :param int group_id: The ID of the group.
+    :param bool inherited: Return all project members including members through ancestor groups.
     """
     __args__ = dict()
     __args__['accessLevel'] = access_level
     __args__['fullPath'] = full_path
     __args__['groupId'] = group_id
+    __args__['inherited'] = inherited
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gitlab:index/getGroupMembership:getGroupMembership', __args__, opts=opts, typ=GetGroupMembershipResult).value
 
@@ -128,6 +143,7 @@ def get_group_membership(access_level: Optional[str] = None,
         full_path=__ret__.full_path,
         group_id=__ret__.group_id,
         id=__ret__.id,
+        inherited=__ret__.inherited,
         members=__ret__.members)
 
 
@@ -135,6 +151,7 @@ def get_group_membership(access_level: Optional[str] = None,
 def get_group_membership_output(access_level: Optional[pulumi.Input[Optional[str]]] = None,
                                 full_path: Optional[pulumi.Input[Optional[str]]] = None,
                                 group_id: Optional[pulumi.Input[Optional[int]]] = None,
+                                inherited: Optional[pulumi.Input[Optional[bool]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupMembershipResult]:
     """
     The `GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
@@ -154,5 +171,6 @@ def get_group_membership_output(access_level: Optional[pulumi.Input[Optional[str
     :param str access_level: Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
     :param str full_path: The full path of the group.
     :param int group_id: The ID of the group.
+    :param bool inherited: Return all project members including members through ancestor groups.
     """
     ...

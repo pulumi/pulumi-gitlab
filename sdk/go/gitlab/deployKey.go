@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewDeployKey(ctx, "example", &gitlab.DeployKeyArgs{
-//				Key:     pulumi.String("ssh-rsa AAAA..."),
+//				Key:     pulumi.String("ssh-ed25519 AAAA..."),
 //				Project: pulumi.String("example/deploying"),
 //				Title:   pulumi.String("Example deploy key"),
 //			})

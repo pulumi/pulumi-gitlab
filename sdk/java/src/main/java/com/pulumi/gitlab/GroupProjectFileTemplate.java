@@ -25,7 +25,6 @@ import javax.annotation.Nullable;
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#update-group)
  * 
  * ## Example Usage
- * 
  * ```java
  * package generated_program;
  * 
@@ -64,7 +63,7 @@ import javax.annotation.Nullable;
  * 
  *         var templateLink = new GroupProjectFileTemplate(&#34;templateLink&#34;, GroupProjectFileTemplateArgs.builder()        
  *             .groupId(foo.id())
- *             .project(bar.id())
+ *             .fileTemplateProjectId(bar.id())
  *             .build());
  * 
  *     }

@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -70,49 +70,57 @@ type Group struct {
 	pulumi.CustomResourceState
 
 	// Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
-	AutoDevopsEnabled pulumi.BoolPtrOutput `pulumi:"autoDevopsEnabled"`
+	AutoDevopsEnabled pulumi.BoolOutput `pulumi:"autoDevopsEnabled"`
+	// A local path to the avatar image to upload. **Note**: not available for imported resources.
+	Avatar pulumi.StringPtrOutput `pulumi:"avatar"`
+	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+	AvatarHash pulumi.StringOutput `pulumi:"avatarHash"`
+	// The URL of the avatar image.
+	AvatarUrl pulumi.StringOutput `pulumi:"avatarUrl"`
 	// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
-	DefaultBranchProtection pulumi.IntPtrOutput `pulumi:"defaultBranchProtection"`
+	DefaultBranchProtection pulumi.IntOutput `pulumi:"defaultBranchProtection"`
 	// The description of the group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Defaults to false. Disable email notifications.
-	EmailsDisabled pulumi.BoolPtrOutput `pulumi:"emailsDisabled"`
+	EmailsDisabled pulumi.BoolOutput `pulumi:"emailsDisabled"`
 	// Can be set by administrators only. Additional CI/CD minutes for this group.
-	ExtraSharedRunnersMinutesLimit pulumi.IntPtrOutput `pulumi:"extraSharedRunnersMinutesLimit"`
+	ExtraSharedRunnersMinutesLimit pulumi.IntOutput `pulumi:"extraSharedRunnersMinutesLimit"`
 	// The full name of the group.
 	FullName pulumi.StringOutput `pulumi:"fullName"`
 	// The full path of the group.
 	FullPath pulumi.StringOutput `pulumi:"fullPath"`
+	// A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+	IpRestrictionRanges pulumi.StringArrayOutput `pulumi:"ipRestrictionRanges"`
 	// Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
-	LfsEnabled pulumi.BoolPtrOutput `pulumi:"lfsEnabled"`
+	LfsEnabled pulumi.BoolOutput `pulumi:"lfsEnabled"`
 	// Users cannot be added to projects in this group.
 	MembershipLock pulumi.BoolPtrOutput `pulumi:"membershipLock"`
 	// Defaults to false. Disable the capability of a group from getting mentioned.
-	MentionsDisabled pulumi.BoolPtrOutput `pulumi:"mentionsDisabled"`
+	MentionsDisabled pulumi.BoolOutput `pulumi:"mentionsDisabled"`
 	// The name of this group.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Id of the parent group (creates a nested group).
-	ParentId pulumi.IntPtrOutput `pulumi:"parentId"`
+	ParentId pulumi.IntOutput `pulumi:"parentId"`
 	// The path of the group.
 	Path pulumi.StringOutput `pulumi:"path"`
 	// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
-	PreventForkingOutsideGroup pulumi.BoolPtrOutput `pulumi:"preventForkingOutsideGroup"`
+	PreventForkingOutsideGroup pulumi.BoolOutput `pulumi:"preventForkingOutsideGroup"`
 	// Defaults to maintainer. Determine if developers can create projects in the group.
-	ProjectCreationLevel pulumi.StringPtrOutput `pulumi:"projectCreationLevel"`
+	ProjectCreationLevel pulumi.StringOutput `pulumi:"projectCreationLevel"`
 	// Defaults to false. Allow users to request member access.
-	RequestAccessEnabled pulumi.BoolPtrOutput `pulumi:"requestAccessEnabled"`
+	RequestAccessEnabled pulumi.BoolOutput `pulumi:"requestAccessEnabled"`
 	// Defaults to false. Require all users in this group to setup Two-factor authentication.
-	RequireTwoFactorAuthentication pulumi.BoolPtrOutput `pulumi:"requireTwoFactorAuthentication"`
+	RequireTwoFactorAuthentication pulumi.BoolOutput `pulumi:"requireTwoFactorAuthentication"`
 	// The group level registration token to use during runner setup.
 	RunnersToken pulumi.StringOutput `pulumi:"runnersToken"`
 	// Defaults to false. Prevent sharing a project with another group within this group.
-	ShareWithGroupLock pulumi.BoolPtrOutput `pulumi:"shareWithGroupLock"`
+	ShareWithGroupLock pulumi.BoolOutput `pulumi:"shareWithGroupLock"`
 	// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
-	SharedRunnersMinutesLimit pulumi.IntPtrOutput `pulumi:"sharedRunnersMinutesLimit"`
+	SharedRunnersMinutesLimit pulumi.IntOutput `pulumi:"sharedRunnersMinutesLimit"`
 	// Defaults to owner. Allowed to create subgroups.
-	SubgroupCreationLevel pulumi.StringPtrOutput `pulumi:"subgroupCreationLevel"`
+	SubgroupCreationLevel pulumi.StringOutput `pulumi:"subgroupCreationLevel"`
 	// Defaults to 48. Time before Two-factor authentication is enforced (in hours).
-	TwoFactorGracePeriod pulumi.IntPtrOutput `pulumi:"twoFactorGracePeriod"`
+	TwoFactorGracePeriod pulumi.IntOutput `pulumi:"twoFactorGracePeriod"`
 	// The group's visibility. Can be `private`, `internal`, or `public`.
 	VisibilityLevel pulumi.StringOutput `pulumi:"visibilityLevel"`
 	// Web URL of the group.
@@ -157,6 +165,12 @@ func GetGroup(ctx *pulumi.Context,
 type groupState struct {
 	// Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
+	// A local path to the avatar image to upload. **Note**: not available for imported resources.
+	Avatar *string `pulumi:"avatar"`
+	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+	AvatarHash *string `pulumi:"avatarHash"`
+	// The URL of the avatar image.
+	AvatarUrl *string `pulumi:"avatarUrl"`
 	// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
 	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
 	// The description of the group.
@@ -169,6 +183,8 @@ type groupState struct {
 	FullName *string `pulumi:"fullName"`
 	// The full path of the group.
 	FullPath *string `pulumi:"fullPath"`
+	// A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+	IpRestrictionRanges []string `pulumi:"ipRestrictionRanges"`
 	// Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
 	// Users cannot be added to projects in this group.
@@ -208,6 +224,12 @@ type groupState struct {
 type GroupState struct {
 	// Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled pulumi.BoolPtrInput
+	// A local path to the avatar image to upload. **Note**: not available for imported resources.
+	Avatar pulumi.StringPtrInput
+	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+	AvatarHash pulumi.StringPtrInput
+	// The URL of the avatar image.
+	AvatarUrl pulumi.StringPtrInput
 	// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
 	DefaultBranchProtection pulumi.IntPtrInput
 	// The description of the group.
@@ -220,6 +242,8 @@ type GroupState struct {
 	FullName pulumi.StringPtrInput
 	// The full path of the group.
 	FullPath pulumi.StringPtrInput
+	// A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+	IpRestrictionRanges pulumi.StringArrayInput
 	// Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled pulumi.BoolPtrInput
 	// Users cannot be added to projects in this group.
@@ -263,6 +287,10 @@ func (GroupState) ElementType() reflect.Type {
 type groupArgs struct {
 	// Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
+	// A local path to the avatar image to upload. **Note**: not available for imported resources.
+	Avatar *string `pulumi:"avatar"`
+	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+	AvatarHash *string `pulumi:"avatarHash"`
 	// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
 	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
 	// The description of the group.
@@ -271,6 +299,8 @@ type groupArgs struct {
 	EmailsDisabled *bool `pulumi:"emailsDisabled"`
 	// Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit *int `pulumi:"extraSharedRunnersMinutesLimit"`
+	// A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+	IpRestrictionRanges []string `pulumi:"ipRestrictionRanges"`
 	// Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
 	// Users cannot be added to projects in this group.
@@ -307,6 +337,10 @@ type groupArgs struct {
 type GroupArgs struct {
 	// Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled pulumi.BoolPtrInput
+	// A local path to the avatar image to upload. **Note**: not available for imported resources.
+	Avatar pulumi.StringPtrInput
+	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+	AvatarHash pulumi.StringPtrInput
 	// Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
 	DefaultBranchProtection pulumi.IntPtrInput
 	// The description of the group.
@@ -315,6 +349,8 @@ type GroupArgs struct {
 	EmailsDisabled pulumi.BoolPtrInput
 	// Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit pulumi.IntPtrInput
+	// A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+	IpRestrictionRanges pulumi.StringArrayInput
 	// Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled pulumi.BoolPtrInput
 	// Users cannot be added to projects in this group.
@@ -435,13 +471,28 @@ func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 }
 
 // Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
-func (o GroupOutput) AutoDevopsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.AutoDevopsEnabled }).(pulumi.BoolPtrOutput)
+func (o GroupOutput) AutoDevopsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.AutoDevopsEnabled }).(pulumi.BoolOutput)
+}
+
+// A local path to the avatar image to upload. **Note**: not available for imported resources.
+func (o GroupOutput) Avatar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.Avatar }).(pulumi.StringPtrOutput)
+}
+
+// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+func (o GroupOutput) AvatarHash() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.AvatarHash }).(pulumi.StringOutput)
+}
+
+// The URL of the avatar image.
+func (o GroupOutput) AvatarUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.AvatarUrl }).(pulumi.StringOutput)
 }
 
 // Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
-func (o GroupOutput) DefaultBranchProtection() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Group) pulumi.IntPtrOutput { return v.DefaultBranchProtection }).(pulumi.IntPtrOutput)
+func (o GroupOutput) DefaultBranchProtection() pulumi.IntOutput {
+	return o.ApplyT(func(v *Group) pulumi.IntOutput { return v.DefaultBranchProtection }).(pulumi.IntOutput)
 }
 
 // The description of the group.
@@ -450,13 +501,13 @@ func (o GroupOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Defaults to false. Disable email notifications.
-func (o GroupOutput) EmailsDisabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.EmailsDisabled }).(pulumi.BoolPtrOutput)
+func (o GroupOutput) EmailsDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.EmailsDisabled }).(pulumi.BoolOutput)
 }
 
 // Can be set by administrators only. Additional CI/CD minutes for this group.
-func (o GroupOutput) ExtraSharedRunnersMinutesLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Group) pulumi.IntPtrOutput { return v.ExtraSharedRunnersMinutesLimit }).(pulumi.IntPtrOutput)
+func (o GroupOutput) ExtraSharedRunnersMinutesLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *Group) pulumi.IntOutput { return v.ExtraSharedRunnersMinutesLimit }).(pulumi.IntOutput)
 }
 
 // The full name of the group.
@@ -469,9 +520,14 @@ func (o GroupOutput) FullPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.FullPath }).(pulumi.StringOutput)
 }
 
+// A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+func (o GroupOutput) IpRestrictionRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringArrayOutput { return v.IpRestrictionRanges }).(pulumi.StringArrayOutput)
+}
+
 // Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
-func (o GroupOutput) LfsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.LfsEnabled }).(pulumi.BoolPtrOutput)
+func (o GroupOutput) LfsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.LfsEnabled }).(pulumi.BoolOutput)
 }
 
 // Users cannot be added to projects in this group.
@@ -480,8 +536,8 @@ func (o GroupOutput) MembershipLock() pulumi.BoolPtrOutput {
 }
 
 // Defaults to false. Disable the capability of a group from getting mentioned.
-func (o GroupOutput) MentionsDisabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.MentionsDisabled }).(pulumi.BoolPtrOutput)
+func (o GroupOutput) MentionsDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.MentionsDisabled }).(pulumi.BoolOutput)
 }
 
 // The name of this group.
@@ -490,8 +546,8 @@ func (o GroupOutput) Name() pulumi.StringOutput {
 }
 
 // Id of the parent group (creates a nested group).
-func (o GroupOutput) ParentId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Group) pulumi.IntPtrOutput { return v.ParentId }).(pulumi.IntPtrOutput)
+func (o GroupOutput) ParentId() pulumi.IntOutput {
+	return o.ApplyT(func(v *Group) pulumi.IntOutput { return v.ParentId }).(pulumi.IntOutput)
 }
 
 // The path of the group.
@@ -500,23 +556,23 @@ func (o GroupOutput) Path() pulumi.StringOutput {
 }
 
 // Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
-func (o GroupOutput) PreventForkingOutsideGroup() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.PreventForkingOutsideGroup }).(pulumi.BoolPtrOutput)
+func (o GroupOutput) PreventForkingOutsideGroup() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.PreventForkingOutsideGroup }).(pulumi.BoolOutput)
 }
 
 // Defaults to maintainer. Determine if developers can create projects in the group.
-func (o GroupOutput) ProjectCreationLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.ProjectCreationLevel }).(pulumi.StringPtrOutput)
+func (o GroupOutput) ProjectCreationLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.ProjectCreationLevel }).(pulumi.StringOutput)
 }
 
 // Defaults to false. Allow users to request member access.
-func (o GroupOutput) RequestAccessEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.RequestAccessEnabled }).(pulumi.BoolPtrOutput)
+func (o GroupOutput) RequestAccessEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.RequestAccessEnabled }).(pulumi.BoolOutput)
 }
 
 // Defaults to false. Require all users in this group to setup Two-factor authentication.
-func (o GroupOutput) RequireTwoFactorAuthentication() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.RequireTwoFactorAuthentication }).(pulumi.BoolPtrOutput)
+func (o GroupOutput) RequireTwoFactorAuthentication() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.RequireTwoFactorAuthentication }).(pulumi.BoolOutput)
 }
 
 // The group level registration token to use during runner setup.
@@ -525,23 +581,23 @@ func (o GroupOutput) RunnersToken() pulumi.StringOutput {
 }
 
 // Defaults to false. Prevent sharing a project with another group within this group.
-func (o GroupOutput) ShareWithGroupLock() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.ShareWithGroupLock }).(pulumi.BoolPtrOutput)
+func (o GroupOutput) ShareWithGroupLock() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.ShareWithGroupLock }).(pulumi.BoolOutput)
 }
 
 // Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
-func (o GroupOutput) SharedRunnersMinutesLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Group) pulumi.IntPtrOutput { return v.SharedRunnersMinutesLimit }).(pulumi.IntPtrOutput)
+func (o GroupOutput) SharedRunnersMinutesLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *Group) pulumi.IntOutput { return v.SharedRunnersMinutesLimit }).(pulumi.IntOutput)
 }
 
 // Defaults to owner. Allowed to create subgroups.
-func (o GroupOutput) SubgroupCreationLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.SubgroupCreationLevel }).(pulumi.StringPtrOutput)
+func (o GroupOutput) SubgroupCreationLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.SubgroupCreationLevel }).(pulumi.StringOutput)
 }
 
 // Defaults to 48. Time before Two-factor authentication is enforced (in hours).
-func (o GroupOutput) TwoFactorGracePeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Group) pulumi.IntPtrOutput { return v.TwoFactorGracePeriod }).(pulumi.IntPtrOutput)
+func (o GroupOutput) TwoFactorGracePeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *Group) pulumi.IntOutput { return v.TwoFactorGracePeriod }).(pulumi.IntOutput)
 }
 
 // The group's visibility. Can be `private`, `internal`, or `public`.

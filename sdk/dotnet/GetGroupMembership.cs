@@ -93,6 +93,12 @@ namespace Pulumi.GitLab
         [Input("groupId")]
         public int? GroupId { get; set; }
 
+        /// <summary>
+        /// Return all project members including members through ancestor groups.
+        /// </summary>
+        [Input("inherited")]
+        public bool? Inherited { get; set; }
+
         public GetGroupMembershipArgs()
         {
         }
@@ -118,6 +124,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
+
+        /// <summary>
+        /// Return all project members including members through ancestor groups.
+        /// </summary>
+        [Input("inherited")]
+        public Input<bool>? Inherited { get; set; }
 
         public GetGroupMembershipInvokeArgs()
         {
@@ -146,6 +158,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Return all project members including members through ancestor groups.
+        /// </summary>
+        public readonly bool? Inherited;
+        /// <summary>
         /// The list of group members.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupMembershipMemberResult> Members;
@@ -160,12 +176,15 @@ namespace Pulumi.GitLab
 
             string id,
 
+            bool? inherited,
+
             ImmutableArray<Outputs.GetGroupMembershipMemberResult> members)
         {
             AccessLevel = accessLevel;
             FullPath = fullPath;
             GroupId = groupId;
             Id = id;
+            Inherited = inherited;
             Members = members;
         }
     }

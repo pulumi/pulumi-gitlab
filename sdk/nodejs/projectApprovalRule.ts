@@ -5,12 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.ProjectApprovalRule` resource allows to manage the lifecycle of a project-level approval rule.
- *
- * > This resource requires a GitLab Enterprise instance.
- *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals)
- *
  * ## Import
  *
  * GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
@@ -52,6 +46,10 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
      */
     public readonly approvalsRequired!: pulumi.Output<number>;
     /**
+     * When this flag is set, the default `anyApprover` rule will not be imported if present.
+     */
+    public readonly disableImportingDefaultAnyApproverRuleOnCreate!: pulumi.Output<boolean | undefined>;
+    /**
      * A list of group IDs whose members can approve of the merge request.
      */
     public readonly groupIds!: pulumi.Output<number[] | undefined>;
@@ -90,6 +88,7 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ProjectApprovalRuleState | undefined;
             resourceInputs["approvalsRequired"] = state ? state.approvalsRequired : undefined;
+            resourceInputs["disableImportingDefaultAnyApproverRuleOnCreate"] = state ? state.disableImportingDefaultAnyApproverRuleOnCreate : undefined;
             resourceInputs["groupIds"] = state ? state.groupIds : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -105,6 +104,7 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             resourceInputs["approvalsRequired"] = args ? args.approvalsRequired : undefined;
+            resourceInputs["disableImportingDefaultAnyApproverRuleOnCreate"] = args ? args.disableImportingDefaultAnyApproverRuleOnCreate : undefined;
             resourceInputs["groupIds"] = args ? args.groupIds : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -125,6 +125,10 @@ export interface ProjectApprovalRuleState {
      * The number of approvals required for this rule.
      */
     approvalsRequired?: pulumi.Input<number>;
+    /**
+     * When this flag is set, the default `anyApprover` rule will not be imported if present.
+     */
+    disableImportingDefaultAnyApproverRuleOnCreate?: pulumi.Input<boolean>;
     /**
      * A list of group IDs whose members can approve of the merge request.
      */
@@ -159,6 +163,10 @@ export interface ProjectApprovalRuleArgs {
      * The number of approvals required for this rule.
      */
     approvalsRequired: pulumi.Input<number>;
+    /**
+     * When this flag is set, the default `anyApprover` rule will not be imported if present.
+     */
+    disableImportingDefaultAnyApproverRuleOnCreate?: pulumi.Input<boolean>;
     /**
      * A list of group IDs whose members can approve of the merge request.
      */

@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * const parentDeployKey = new gitlab.DeployKey("parentDeployKey", {
  *     project: parentProject.id,
  *     title: "Example deploy key",
- *     key: "ssh-rsa AAAA...",
+ *     key: "ssh-ed25519 AAAA...",
  * });
  * // Enable the deployment key on the second repo
  * const fooDeployKeyEnable = new gitlab.DeployKeyEnable("fooDeployKeyEnable", {

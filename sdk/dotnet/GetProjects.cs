@@ -148,7 +148,7 @@ namespace Pulumi.GitLab
         public int? MinAccessLevel { get; set; }
 
         /// <summary>
-        /// Return projects ordered by `id`, `name`, `path`, `created_at`, `updated_at`, or `last_activity_at` fields. Default is `created_at`.
+        /// Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects) for details.
         /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
@@ -282,7 +282,7 @@ namespace Pulumi.GitLab
         public Input<int>? MinAccessLevel { get; set; }
 
         /// <summary>
-        /// Return projects ordered by `id`, `name`, `path`, `created_at`, `updated_at`, or `last_activity_at` fields. Default is `created_at`.
+        /// Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects) for details.
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
@@ -410,7 +410,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int? MinAccessLevel;
         /// <summary>
-        /// Return projects ordered by `id`, `name`, `path`, `created_at`, `updated_at`, or `last_activity_at` fields. Default is `created_at`.
+        /// Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects) for details.
         /// </summary>
         public readonly string? OrderBy;
         /// <summary>

@@ -87,7 +87,7 @@ namespace Pulumi.GitLab
         public Output<int> KeyId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+        /// The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
         /// </summary>
         [Output("userId")]
         public Output<int?> UserId { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.GitLab
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+        /// The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
         /// </summary>
         [Input("userId")]
         public Input<int>? UserId { get; set; }
@@ -177,7 +177,7 @@ namespace Pulumi.GitLab
         public Input<int>? KeyId { get; set; }
 
         /// <summary>
-        /// The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+        /// The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
         /// </summary>
         [Input("userId")]
         public Input<int>? UserId { get; set; }

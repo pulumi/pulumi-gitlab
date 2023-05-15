@@ -291,6 +291,21 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
+     * 
+     */
+    @Import(name="canCreateGroup")
+    private @Nullable Output<Boolean> canCreateGroup;
+
+    /**
+     * @return Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
+     * 
+     */
+    public Optional<Output<Boolean>> canCreateGroup() {
+        return Optional.ofNullable(this.canCreateGroup);
+    }
+
+    /**
      * Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
      * 
      */
@@ -486,14 +501,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * What visibility level new groups receive. Can take private, internal and public as a parameter. Default is private.
+     * What visibility level new groups receive. Can take private, internal and public as a parameter.
      * 
      */
     @Import(name="defaultGroupVisibility")
     private @Nullable Output<String> defaultGroupVisibility;
 
     /**
-     * @return What visibility level new groups receive. Can take private, internal and public as a parameter. Default is private.
+     * @return What visibility level new groups receive. Can take private, internal and public as a parameter.
      * 
      */
     public Optional<Output<String>> defaultGroupVisibility() {
@@ -516,14 +531,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * What visibility level new projects receive. Can take private, internal and public as a parameter. Default is private.
+     * What visibility level new projects receive. Can take private, internal and public as a parameter.
      * 
      */
     @Import(name="defaultProjectVisibility")
     private @Nullable Output<String> defaultProjectVisibility;
 
     /**
-     * @return What visibility level new projects receive. Can take private, internal and public as a parameter. Default is private.
+     * @return What visibility level new projects receive. Can take private, internal and public as a parameter.
      * 
      */
     public Optional<Output<String>> defaultProjectVisibility() {
@@ -531,14 +546,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Project limit per user. Default is 100000.
+     * Project limit per user.
      * 
      */
     @Import(name="defaultProjectsLimit")
     private @Nullable Output<Integer> defaultProjectsLimit;
 
     /**
-     * @return Project limit per user. Default is 100000.
+     * @return Project limit per user.
      * 
      */
     public Optional<Output<Integer>> defaultProjectsLimit() {
@@ -546,14 +561,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * What visibility level new snippets receive. Can take private, internal and public as a parameter. Default is private.
+     * What visibility level new snippets receive. Can take private, internal and public as a parameter.
      * 
      */
     @Import(name="defaultSnippetVisibility")
     private @Nullable Output<String> defaultSnippetVisibility;
 
     /**
-     * @return What visibility level new snippets receive. Can take private, internal and public as a parameter. Default is private.
+     * @return What visibility level new snippets receive. Can take private, internal and public as a parameter.
      * 
      */
     public Optional<Output<String>> defaultSnippetVisibility() {
@@ -561,14 +576,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Enable delayed group deletion. Default is true. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
+     * Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
      * 
      */
     @Import(name="delayedGroupDeletion")
     private @Nullable Output<Boolean> delayedGroupDeletion;
 
     /**
-     * @return Enable delayed group deletion. Default is true. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
+     * @return Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
      * 
      */
     public Optional<Output<Boolean>> delayedGroupDeletion() {
@@ -576,14 +591,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Enable delayed project deletion by default in new groups. Default is false. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
+     * Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
      * 
      */
     @Import(name="delayedProjectDeletion")
     private @Nullable Output<Boolean> delayedProjectDeletion;
 
     /**
-     * @return Enable delayed project deletion by default in new groups. Default is false. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
+     * @return Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
      * 
      */
     public Optional<Output<Boolean>> delayedProjectDeletion() {
@@ -591,14 +606,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Enable inactive project deletion feature. Default is false. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion, disabled by default).
+     * Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
      * 
      */
     @Import(name="deleteInactiveProjects")
     private @Nullable Output<Boolean> deleteInactiveProjects;
 
     /**
-     * @return Enable inactive project deletion feature. Default is false. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion, disabled by default).
+     * @return Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
      * 
      */
     public Optional<Output<Boolean>> deleteInactiveProjects() {
@@ -606,14 +621,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. Defaults to 7. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+     * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
      * 
      */
     @Import(name="deletionAdjournedPeriod")
     private @Nullable Output<Integer> deletionAdjournedPeriod;
 
     /**
-     * @return The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. Defaults to 7. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+     * @return The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
      * 
      */
     public Optional<Output<Integer>> deletionAdjournedPeriod() {
@@ -711,14 +726,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Force people to use only corporate emails for sign-up. Default is null, meaning there is no restriction.
+     * Force people to use only corporate emails for sign-up. Null means there is no restriction.
      * 
      */
     @Import(name="domainAllowlists")
     private @Nullable Output<List<String>> domainAllowlists;
 
     /**
-     * @return Force people to use only corporate emails for sign-up. Default is null, meaning there is no restriction.
+     * @return Force people to use only corporate emails for sign-up. Null means there is no restriction.
      * 
      */
     public Optional<Output<List<String>>> domainAllowlists() {
@@ -756,14 +771,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The minimum allowed bit length of an uploaded DSA key. Default is 0 (no restriction). -1 disables DSA keys.
+     * The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
      * 
      */
     @Import(name="dsaKeyRestriction")
     private @Nullable Output<Integer> dsaKeyRestriction;
 
     /**
-     * @return The minimum allowed bit length of an uploaded DSA key. Default is 0 (no restriction). -1 disables DSA keys.
+     * @return The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
      * 
      */
     public Optional<Output<Integer>> dsaKeyRestriction() {
@@ -771,14 +786,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ECDSA key. Default is 0 (no restriction). -1 disables ECDSA keys.
+     * The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
      * 
      */
     @Import(name="ecdsaKeyRestriction")
     private @Nullable Output<Integer> ecdsaKeyRestriction;
 
     /**
-     * @return The minimum allowed curve size (in bits) of an uploaded ECDSA key. Default is 0 (no restriction). -1 disables ECDSA keys.
+     * @return The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
      * 
      */
     public Optional<Output<Integer>> ecdsaKeyRestriction() {
@@ -786,14 +801,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. Default is 0 (no restriction). -1 disables ECDSA*SK keys.
+     * The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
      * 
      */
     @Import(name="ecdsaSkKeyRestriction")
     private @Nullable Output<Integer> ecdsaSkKeyRestriction;
 
     /**
-     * @return The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. Default is 0 (no restriction). -1 disables ECDSA*SK keys.
+     * @return The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
      * 
      */
     public Optional<Output<Integer>> ecdsaSkKeyRestriction() {
@@ -801,14 +816,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ED25519 key. Default is 0 (no restriction). -1 disables ED25519 keys.
+     * The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
      * 
      */
     @Import(name="ed25519KeyRestriction")
     private @Nullable Output<Integer> ed25519KeyRestriction;
 
     /**
-     * @return The minimum allowed curve size (in bits) of an uploaded ED25519 key. Default is 0 (no restriction). -1 disables ED25519 keys.
+     * @return The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
      * 
      */
     public Optional<Output<Integer>> ed25519KeyRestriction() {
@@ -816,14 +831,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. Default is 0 (no restriction). -1 disables ED25519*SK keys.
+     * The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
      * 
      */
     @Import(name="ed25519SkKeyRestriction")
     private @Nullable Output<Integer> ed25519SkKeyRestriction;
 
     /**
-     * @return The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. Default is 0 (no restriction). -1 disables ED25519*SK keys.
+     * @return The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
      * 
      */
     public Optional<Output<Integer>> ed25519SkKeyRestriction() {
@@ -1371,14 +1386,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Start day of the week for calendar views and date pickers. Valid values are 0 (default) for Sunday, 1 for Monday, and 6 for Saturday.
+     * Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
      * 
      */
     @Import(name="firstDayOfWeek")
     private @Nullable Output<Integer> firstDayOfWeek;
 
     /**
-     * @return Start day of the week for calendar views and date pickers. Valid values are 0 (default) for Sunday, 1 for Monday, and 6 for Saturday.
+     * @return Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
      * 
      */
     public Optional<Output<Integer>> firstDayOfWeek() {
@@ -1416,14 +1431,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * List of usernames excluded from Git anti-abuse rate limits. Default: [], Maximum: 100 usernames. Introduced in GitLab 15.2.
+     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
      * 
      */
     @Import(name="gitRateLimitUsersAllowlists")
     private @Nullable Output<List<String>> gitRateLimitUsersAllowlists;
 
     /**
-     * @return List of usernames excluded from Git anti-abuse rate limits. Default: [], Maximum: 100 usernames. Introduced in GitLab 15.2.
+     * @return List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
      * 
      */
     public Optional<Output<List<String>>> gitRateLimitUsersAllowlists() {
@@ -1746,14 +1761,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Enable in-product marketing emails. Enabled by default.
+     * Enable in-product marketing emails.
      * 
      */
     @Import(name="inProductMarketingEmailsEnabled")
     private @Nullable Output<Boolean> inProductMarketingEmailsEnabled;
 
     /**
-     * @return Enable in-product marketing emails. Enabled by default.
+     * @return Enable in-product marketing emails.
      * 
      */
     public Optional<Output<Boolean>> inProductMarketingEmailsEnabled() {
@@ -1761,14 +1776,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Default is 2. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      * 
      */
     @Import(name="inactiveProjectsDeleteAfterMonths")
     private @Nullable Output<Integer> inactiveProjectsDeleteAfterMonths;
 
     /**
-     * @return If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Default is 2. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * @return If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      * 
      */
     public Optional<Output<Integer>> inactiveProjectsDeleteAfterMonths() {
@@ -1776,14 +1791,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Default is 0. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      * 
      */
     @Import(name="inactiveProjectsMinSizeMb")
     private @Nullable Output<Integer> inactiveProjectsMinSizeMb;
 
     /**
-     * @return If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Default is 0. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * @return If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      * 
      */
     public Optional<Output<Integer>> inactiveProjectsMinSizeMb() {
@@ -1791,14 +1806,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Default is 1. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      * 
      */
     @Import(name="inactiveProjectsSendWarningEmailAfterMonths")
     private @Nullable Output<Integer> inactiveProjectsSendWarningEmailAfterMonths;
 
     /**
-     * @return If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Default is 1. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * @return If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      * 
      */
     public Optional<Output<Integer>> inactiveProjectsSendWarningEmailAfterMonths() {
@@ -1806,14 +1821,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Enable Invisible CAPTCHA spam detection during sign-up. Disabled by default.
+     * Enable Invisible CAPTCHA spam detection during sign-up.
      * 
      */
     @Import(name="invisibleCaptchaEnabled")
     private @Nullable Output<Boolean> invisibleCaptchaEnabled;
 
     /**
-     * @return Enable Invisible CAPTCHA spam detection during sign-up. Disabled by default.
+     * @return Enable Invisible CAPTCHA spam detection during sign-up.
      * 
      */
     public Optional<Output<Boolean>> invisibleCaptchaEnabled() {
@@ -1821,14 +1836,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Max number of issue creation requests per minute per user. Disabled by default.
+     * Max number of issue creation requests per minute per user.
      * 
      */
     @Import(name="issuesCreateLimit")
     private @Nullable Output<Integer> issuesCreateLimit;
 
     /**
-     * @return Max number of issue creation requests per minute per user. Disabled by default.
+     * @return Max number of issue creation requests per minute per user.
      * 
      */
     public Optional<Output<Integer>> issuesCreateLimit() {
@@ -1836,14 +1851,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time. Enabled by default.
+     * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
      * 
      */
     @Import(name="keepLatestArtifact")
     private @Nullable Output<Boolean> keepLatestArtifact;
 
     /**
-     * @return Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time. Enabled by default.
+     * @return Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
      * 
      */
     public Optional<Output<Boolean>> keepLatestArtifact() {
@@ -1956,14 +1971,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Maximum export size in MB. 0 for unlimited. Default = 0 (unlimited).
+     * Maximum export size in MB. 0 for unlimited.
      * 
      */
     @Import(name="maxExportSize")
     private @Nullable Output<Integer> maxExportSize;
 
     /**
-     * @return Maximum export size in MB. 0 for unlimited. Default = 0 (unlimited).
+     * @return Maximum export size in MB. 0 for unlimited.
      * 
      */
     public Optional<Output<Integer>> maxExportSize() {
@@ -1971,14 +1986,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Maximum import size in MB. 0 for unlimited. Default = 0 (unlimited) Modified from 50MB to 0 in GitLab 13.8.
+     * Maximum import size in MB. 0 for unlimited.
      * 
      */
     @Import(name="maxImportSize")
     private @Nullable Output<Integer> maxImportSize;
 
     /**
-     * @return Maximum import size in MB. 0 for unlimited. Default = 0 (unlimited) Modified from 50MB to 0 in GitLab 13.8.
+     * @return Maximum import size in MB. 0 for unlimited.
      * 
      */
     public Optional<Output<Integer>> maxImportSize() {
@@ -1986,14 +2001,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Maximum number of unique repositories a user can download in the specified time period before they are banned. Default: 0, Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+     * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
      * 
      */
     @Import(name="maxNumberOfRepositoryDownloads")
     private @Nullable Output<Integer> maxNumberOfRepositoryDownloads;
 
     /**
-     * @return Maximum number of unique repositories a user can download in the specified time period before they are banned. Default: 0, Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+     * @return Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
      * 
      */
     public Optional<Output<Integer>> maxNumberOfRepositoryDownloads() {
@@ -2001,14 +2016,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Reporting time period (in seconds). Default: 0, Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+     * Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
      * 
      */
     @Import(name="maxNumberOfRepositoryDownloadsWithinTimePeriod")
     private @Nullable Output<Integer> maxNumberOfRepositoryDownloadsWithinTimePeriod;
 
     /**
-     * @return Reporting time period (in seconds). Default: 0, Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+     * @return Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
      * 
      */
     public Optional<Output<Integer>> maxNumberOfRepositoryDownloadsWithinTimePeriod() {
@@ -2196,14 +2211,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Enable authentication for Git over HTTP(S) via a GitLab account password. Default is true.
+     * Enable authentication for Git over HTTP(S) via a GitLab account password.
      * 
      */
     @Import(name="passwordAuthenticationEnabledForGit")
     private @Nullable Output<Boolean> passwordAuthenticationEnabledForGit;
 
     /**
-     * @return Enable authentication for Git over HTTP(S) via a GitLab account password. Default is true.
+     * @return Enable authentication for Git over HTTP(S) via a GitLab account password.
      * 
      */
     public Optional<Output<Boolean>> passwordAuthenticationEnabledForGit() {
@@ -2211,14 +2226,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Enable authentication for the web interface via a GitLab account password. Default is true.
+     * Enable authentication for the web interface via a GitLab account password.
      * 
      */
     @Import(name="passwordAuthenticationEnabledForWeb")
     private @Nullable Output<Boolean> passwordAuthenticationEnabledForWeb;
 
     /**
-     * @return Enable authentication for the web interface via a GitLab account password. Default is true.
+     * @return Enable authentication for the web interface via a GitLab account password.
      * 
      */
     public Optional<Output<Boolean>> passwordAuthenticationEnabledForWeb() {
@@ -2316,14 +2331,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Maximum number of pipeline creation requests per minute per user and commit. Disabled by default.
+     * Maximum number of pipeline creation requests per minute per user and commit.
      * 
      */
     @Import(name="pipelineLimitPerProjectUserSha")
     private @Nullable Output<Integer> pipelineLimitPerProjectUserSha;
 
     /**
-     * @return Maximum number of pipeline creation requests per minute per user and commit. Disabled by default.
+     * @return Maximum number of pipeline creation requests per minute per user and commit.
      * 
      */
     public Optional<Output<Integer>> pipelineLimitPerProjectUserSha() {
@@ -2331,14 +2346,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * (If enabled, requires: plantuml_url) Enable PlantUML integration. Default is false.
+     * (If enabled, requires: plantuml_url) Enable PlantUML integration.
      * 
      */
     @Import(name="plantumlEnabled")
     private @Nullable Output<Boolean> plantumlEnabled;
 
     /**
-     * @return (If enabled, requires: plantuml_url) Enable PlantUML integration. Default is false.
+     * @return (If enabled, requires: plantuml_url) Enable PlantUML integration.
      * 
      */
     public Optional<Output<Boolean>> plantumlEnabled() {
@@ -2481,14 +2496,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Max number of requests per minute for each raw path. Default: 300. To disable throttling set to 0.
+     * Max number of requests per minute for each raw path. To disable throttling set to 0.
      * 
      */
     @Import(name="rawBlobRequestLimit")
     private @Nullable Output<Integer> rawBlobRequestLimit;
 
     /**
-     * @return Max number of requests per minute for each raw path. Default: 300. To disable throttling set to 0.
+     * @return Max number of requests per minute for each raw path. To disable throttling set to 0.
      * 
      */
     public Optional<Output<Integer>> rawBlobRequestLimit() {
@@ -2646,14 +2661,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Default is null which means there is no restriction.
+     * Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
      * 
      */
     @Import(name="restrictedVisibilityLevels")
     private @Nullable Output<List<String>> restrictedVisibilityLevels;
 
     /**
-     * @return Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Default is null which means there is no restriction.
+     * @return Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
      * 
      */
     public Optional<Output<List<String>>> restrictedVisibilityLevels() {
@@ -2661,14 +2676,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The minimum allowed bit length of an uploaded RSA key. Default is 0 (no restriction). -1 disables RSA keys.
+     * The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
      * 
      */
     @Import(name="rsaKeyRestriction")
     private @Nullable Output<Integer> rsaKeyRestriction;
 
     /**
-     * @return The minimum allowed bit length of an uploaded RSA key. Default is 0 (no restriction). -1 disables RSA keys.
+     * @return The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
      * 
      */
     public Optional<Output<Integer>> rsaKeyRestriction() {
@@ -2676,14 +2691,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Max number of requests per minute for performing a search while authenticated. Default: 30. To disable throttling set to 0.
+     * Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
      * 
      */
     @Import(name="searchRateLimit")
     private @Nullable Output<Integer> searchRateLimit;
 
     /**
-     * @return Max number of requests per minute for performing a search while authenticated. Default: 30. To disable throttling set to 0.
+     * @return Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
      * 
      */
     public Optional<Output<Integer>> searchRateLimit() {
@@ -2691,14 +2706,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Max number of requests per minute for performing a search while unauthenticated. Default: 10. To disable throttling set to 0.
+     * Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
      * 
      */
     @Import(name="searchRateLimitUnauthenticated")
     private @Nullable Output<Integer> searchRateLimitUnauthenticated;
 
     /**
-     * @return Max number of requests per minute for performing a search while unauthenticated. Default: 10. To disable throttling set to 0.
+     * @return Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
      * 
      */
     public Optional<Output<Integer>> searchRateLimitUnauthenticated() {
@@ -2781,14 +2796,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis. Default: 100 000 bytes (100KB).
+     * The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
      * 
      */
     @Import(name="sidekiqJobLimiterCompressionThresholdBytes")
     private @Nullable Output<Integer> sidekiqJobLimiterCompressionThresholdBytes;
 
     /**
-     * @return The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis. Default: 100 000 bytes (100KB).
+     * @return The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
      * 
      */
     public Optional<Output<Integer>> sidekiqJobLimiterCompressionThresholdBytes() {
@@ -2796,14 +2811,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The threshold in bytes at which Sidekiq jobs are rejected. Default: 0 bytes (doesn’t reject any job).
+     * The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
      * 
      */
     @Import(name="sidekiqJobLimiterLimitBytes")
     private @Nullable Output<Integer> sidekiqJobLimiterLimitBytes;
 
     /**
-     * @return The threshold in bytes at which Sidekiq jobs are rejected. Default: 0 bytes (doesn’t reject any job).
+     * @return The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
      * 
      */
     public Optional<Output<Integer>> sidekiqJobLimiterLimitBytes() {
@@ -2811,14 +2826,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * track or compress. Sets the behavior for Sidekiq job size limits. Default: ‘compress’.
+     * track or compress. Sets the behavior for Sidekiq job size limits.
      * 
      */
     @Import(name="sidekiqJobLimiterMode")
     private @Nullable Output<String> sidekiqJobLimiterMode;
 
     /**
-     * @return track or compress. Sets the behavior for Sidekiq job size limits. Default: ‘compress’.
+     * @return track or compress. Sets the behavior for Sidekiq job size limits.
      * 
      */
     public Optional<Output<String>> sidekiqJobLimiterMode() {
@@ -2841,14 +2856,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Enable registration. Default is true.
+     * Enable registration.
      * 
      */
     @Import(name="signupEnabled")
     private @Nullable Output<Boolean> signupEnabled;
 
     /**
-     * @return Enable registration. Default is true.
+     * @return Enable registration.
      * 
      */
     public Optional<Output<Boolean>> signupEnabled() {
@@ -2931,14 +2946,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Max snippet content size in bytes. Default: 52428800 Bytes (50MB).
+     * Max snippet content size in bytes.
      * 
      */
     @Import(name="snippetSizeLimit")
     private @Nullable Output<Integer> snippetSizeLimit;
 
     /**
-     * @return Max snippet content size in bytes. Default: 52428800 Bytes (50MB).
+     * @return Max snippet content size in bytes.
      * 
      */
     public Optional<Output<Integer>> snippetSizeLimit() {
@@ -3006,14 +3021,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Enables Sourcegraph integration. Default is false. If enabled, requires sourcegraph_url.
+     * Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
      * 
      */
     @Import(name="sourcegraphEnabled")
     private @Nullable Output<Boolean> sourcegraphEnabled;
 
     /**
-     * @return Enables Sourcegraph integration. Default is false. If enabled, requires sourcegraph_url.
+     * @return Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
      * 
      */
     public Optional<Output<Boolean>> sourcegraphEnabled() {
@@ -3021,14 +3036,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Blocks Sourcegraph from being loaded on private and internal projects. Default is true.
+     * Blocks Sourcegraph from being loaded on private and internal projects.
      * 
      */
     @Import(name="sourcegraphPublicOnly")
     private @Nullable Output<Boolean> sourcegraphPublicOnly;
 
     /**
-     * @return Blocks Sourcegraph from being loaded on private and internal projects. Default is true.
+     * @return Blocks Sourcegraph from being loaded on private and internal projects.
      * 
      */
     public Optional<Output<Boolean>> sourcegraphPublicOnly() {
@@ -3066,14 +3081,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Enables spam checking using external Spam Check API endpoint. Default is false.
+     * Enables spam checking using external Spam Check API endpoint.
      * 
      */
     @Import(name="spamCheckEndpointEnabled")
     private @Nullable Output<Boolean> spamCheckEndpointEnabled;
 
     /**
-     * @return Enables spam checking using external Spam Check API endpoint. Default is false.
+     * @return Enables spam checking using external Spam Check API endpoint.
      * 
      */
     public Optional<Output<Boolean>> spamCheckEndpointEnabled() {
@@ -3411,14 +3426,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Limit display of time tracking units to hours. Default is false.
+     * Limit display of time tracking units to hours.
      * 
      */
     @Import(name="timeTrackingLimitToHours")
     private @Nullable Output<Boolean> timeTrackingLimitToHours;
 
     /**
-     * @return Limit display of time tracking units to hours. Default is false.
+     * @return Limit display of time tracking units to hours.
      * 
      */
     public Optional<Output<Boolean>> timeTrackingLimitToHours() {
@@ -3621,14 +3636,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Maximum wiki page content size in bytes. Default: 52428800 Bytes (50 MB). The minimum value is 1024 bytes.
+     * Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
      * 
      */
     @Import(name="wikiPageMaxContentBytes")
     private @Nullable Output<Integer> wikiPageMaxContentBytes;
 
     /**
-     * @return Maximum wiki page content size in bytes. Default: 52428800 Bytes (50 MB). The minimum value is 1024 bytes.
+     * @return Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
      * 
      */
     public Optional<Output<Integer>> wikiPageMaxContentBytes() {
@@ -3656,6 +3671,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         this.autoDevopsDomain = $.autoDevopsDomain;
         this.autoDevopsEnabled = $.autoDevopsEnabled;
         this.automaticPurchasedStorageAllocation = $.automaticPurchasedStorageAllocation;
+        this.canCreateGroup = $.canCreateGroup;
         this.checkNamespacePlan = $.checkNamespacePlan;
         this.commitEmailHostname = $.commitEmailHostname;
         this.containerExpirationPoliciesEnableHistoricEntries = $.containerExpirationPoliciesEnableHistoricEntries;
@@ -4288,6 +4304,27 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param canCreateGroup Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder canCreateGroup(@Nullable Output<Boolean> canCreateGroup) {
+            $.canCreateGroup = canCreateGroup;
+            return this;
+        }
+
+        /**
+         * @param canCreateGroup Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder canCreateGroup(Boolean canCreateGroup) {
+            return canCreateGroup(Output.of(canCreateGroup));
+        }
+
+        /**
          * @param checkNamespacePlan Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
          * 
          * @return builder
@@ -4561,7 +4598,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param defaultGroupVisibility What visibility level new groups receive. Can take private, internal and public as a parameter. Default is private.
+         * @param defaultGroupVisibility What visibility level new groups receive. Can take private, internal and public as a parameter.
          * 
          * @return builder
          * 
@@ -4572,7 +4609,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param defaultGroupVisibility What visibility level new groups receive. Can take private, internal and public as a parameter. Default is private.
+         * @param defaultGroupVisibility What visibility level new groups receive. Can take private, internal and public as a parameter.
          * 
          * @return builder
          * 
@@ -4603,7 +4640,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param defaultProjectVisibility What visibility level new projects receive. Can take private, internal and public as a parameter. Default is private.
+         * @param defaultProjectVisibility What visibility level new projects receive. Can take private, internal and public as a parameter.
          * 
          * @return builder
          * 
@@ -4614,7 +4651,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param defaultProjectVisibility What visibility level new projects receive. Can take private, internal and public as a parameter. Default is private.
+         * @param defaultProjectVisibility What visibility level new projects receive. Can take private, internal and public as a parameter.
          * 
          * @return builder
          * 
@@ -4624,7 +4661,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param defaultProjectsLimit Project limit per user. Default is 100000.
+         * @param defaultProjectsLimit Project limit per user.
          * 
          * @return builder
          * 
@@ -4635,7 +4672,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param defaultProjectsLimit Project limit per user. Default is 100000.
+         * @param defaultProjectsLimit Project limit per user.
          * 
          * @return builder
          * 
@@ -4645,7 +4682,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param defaultSnippetVisibility What visibility level new snippets receive. Can take private, internal and public as a parameter. Default is private.
+         * @param defaultSnippetVisibility What visibility level new snippets receive. Can take private, internal and public as a parameter.
          * 
          * @return builder
          * 
@@ -4656,7 +4693,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param defaultSnippetVisibility What visibility level new snippets receive. Can take private, internal and public as a parameter. Default is private.
+         * @param defaultSnippetVisibility What visibility level new snippets receive. Can take private, internal and public as a parameter.
          * 
          * @return builder
          * 
@@ -4666,7 +4703,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param delayedGroupDeletion Enable delayed group deletion. Default is true. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
+         * @param delayedGroupDeletion Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
          * 
          * @return builder
          * 
@@ -4677,7 +4714,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param delayedGroupDeletion Enable delayed group deletion. Default is true. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
+         * @param delayedGroupDeletion Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
          * 
          * @return builder
          * 
@@ -4687,7 +4724,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param delayedProjectDeletion Enable delayed project deletion by default in new groups. Default is false. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
+         * @param delayedProjectDeletion Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
          * 
          * @return builder
          * 
@@ -4698,7 +4735,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param delayedProjectDeletion Enable delayed project deletion by default in new groups. Default is false. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
+         * @param delayedProjectDeletion Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
          * 
          * @return builder
          * 
@@ -4708,7 +4745,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param deleteInactiveProjects Enable inactive project deletion feature. Default is false. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion, disabled by default).
+         * @param deleteInactiveProjects Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
          * 
          * @return builder
          * 
@@ -4719,7 +4756,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param deleteInactiveProjects Enable inactive project deletion feature. Default is false. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion, disabled by default).
+         * @param deleteInactiveProjects Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
          * 
          * @return builder
          * 
@@ -4729,7 +4766,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param deletionAdjournedPeriod The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. Defaults to 7. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+         * @param deletionAdjournedPeriod The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
          * 
          * @return builder
          * 
@@ -4740,7 +4777,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param deletionAdjournedPeriod The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. Defaults to 7. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+         * @param deletionAdjournedPeriod The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
          * 
          * @return builder
          * 
@@ -4886,7 +4923,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param domainAllowlists Force people to use only corporate emails for sign-up. Default is null, meaning there is no restriction.
+         * @param domainAllowlists Force people to use only corporate emails for sign-up. Null means there is no restriction.
          * 
          * @return builder
          * 
@@ -4897,7 +4934,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param domainAllowlists Force people to use only corporate emails for sign-up. Default is null, meaning there is no restriction.
+         * @param domainAllowlists Force people to use only corporate emails for sign-up. Null means there is no restriction.
          * 
          * @return builder
          * 
@@ -4907,7 +4944,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param domainAllowlists Force people to use only corporate emails for sign-up. Default is null, meaning there is no restriction.
+         * @param domainAllowlists Force people to use only corporate emails for sign-up. Null means there is no restriction.
          * 
          * @return builder
          * 
@@ -4969,7 +5006,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dsaKeyRestriction The minimum allowed bit length of an uploaded DSA key. Default is 0 (no restriction). -1 disables DSA keys.
+         * @param dsaKeyRestriction The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
          * 
          * @return builder
          * 
@@ -4980,7 +5017,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dsaKeyRestriction The minimum allowed bit length of an uploaded DSA key. Default is 0 (no restriction). -1 disables DSA keys.
+         * @param dsaKeyRestriction The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
          * 
          * @return builder
          * 
@@ -4990,7 +5027,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ecdsaKeyRestriction The minimum allowed curve size (in bits) of an uploaded ECDSA key. Default is 0 (no restriction). -1 disables ECDSA keys.
+         * @param ecdsaKeyRestriction The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
          * 
          * @return builder
          * 
@@ -5001,7 +5038,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ecdsaKeyRestriction The minimum allowed curve size (in bits) of an uploaded ECDSA key. Default is 0 (no restriction). -1 disables ECDSA keys.
+         * @param ecdsaKeyRestriction The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
          * 
          * @return builder
          * 
@@ -5011,7 +5048,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ecdsaSkKeyRestriction The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. Default is 0 (no restriction). -1 disables ECDSA*SK keys.
+         * @param ecdsaSkKeyRestriction The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
          * 
          * @return builder
          * 
@@ -5022,7 +5059,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ecdsaSkKeyRestriction The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. Default is 0 (no restriction). -1 disables ECDSA*SK keys.
+         * @param ecdsaSkKeyRestriction The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
          * 
          * @return builder
          * 
@@ -5032,7 +5069,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ed25519KeyRestriction The minimum allowed curve size (in bits) of an uploaded ED25519 key. Default is 0 (no restriction). -1 disables ED25519 keys.
+         * @param ed25519KeyRestriction The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
          * 
          * @return builder
          * 
@@ -5043,7 +5080,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ed25519KeyRestriction The minimum allowed curve size (in bits) of an uploaded ED25519 key. Default is 0 (no restriction). -1 disables ED25519 keys.
+         * @param ed25519KeyRestriction The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
          * 
          * @return builder
          * 
@@ -5053,7 +5090,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ed25519SkKeyRestriction The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. Default is 0 (no restriction). -1 disables ED25519*SK keys.
+         * @param ed25519SkKeyRestriction The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
          * 
          * @return builder
          * 
@@ -5064,7 +5101,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ed25519SkKeyRestriction The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. Default is 0 (no restriction). -1 disables ED25519*SK keys.
+         * @param ed25519SkKeyRestriction The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
          * 
          * @return builder
          * 
@@ -5860,7 +5897,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param firstDayOfWeek Start day of the week for calendar views and date pickers. Valid values are 0 (default) for Sunday, 1 for Monday, and 6 for Saturday.
+         * @param firstDayOfWeek Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
          * 
          * @return builder
          * 
@@ -5871,7 +5908,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param firstDayOfWeek Start day of the week for calendar views and date pickers. Valid values are 0 (default) for Sunday, 1 for Monday, and 6 for Saturday.
+         * @param firstDayOfWeek Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
          * 
          * @return builder
          * 
@@ -5923,7 +5960,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param gitRateLimitUsersAllowlists List of usernames excluded from Git anti-abuse rate limits. Default: [], Maximum: 100 usernames. Introduced in GitLab 15.2.
+         * @param gitRateLimitUsersAllowlists List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
          * 
          * @return builder
          * 
@@ -5934,7 +5971,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param gitRateLimitUsersAllowlists List of usernames excluded from Git anti-abuse rate limits. Default: [], Maximum: 100 usernames. Introduced in GitLab 15.2.
+         * @param gitRateLimitUsersAllowlists List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
          * 
          * @return builder
          * 
@@ -5944,7 +5981,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param gitRateLimitUsersAllowlists List of usernames excluded from Git anti-abuse rate limits. Default: [], Maximum: 100 usernames. Introduced in GitLab 15.2.
+         * @param gitRateLimitUsersAllowlists List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
          * 
          * @return builder
          * 
@@ -6405,7 +6442,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inProductMarketingEmailsEnabled Enable in-product marketing emails. Enabled by default.
+         * @param inProductMarketingEmailsEnabled Enable in-product marketing emails.
          * 
          * @return builder
          * 
@@ -6416,7 +6453,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inProductMarketingEmailsEnabled Enable in-product marketing emails. Enabled by default.
+         * @param inProductMarketingEmailsEnabled Enable in-product marketing emails.
          * 
          * @return builder
          * 
@@ -6426,7 +6463,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inactiveProjectsDeleteAfterMonths If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Default is 2. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+         * @param inactiveProjectsDeleteAfterMonths If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
          * 
          * @return builder
          * 
@@ -6437,7 +6474,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inactiveProjectsDeleteAfterMonths If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Default is 2. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+         * @param inactiveProjectsDeleteAfterMonths If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
          * 
          * @return builder
          * 
@@ -6447,7 +6484,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inactiveProjectsMinSizeMb If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Default is 0. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+         * @param inactiveProjectsMinSizeMb If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
          * 
          * @return builder
          * 
@@ -6458,7 +6495,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inactiveProjectsMinSizeMb If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Default is 0. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+         * @param inactiveProjectsMinSizeMb If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
          * 
          * @return builder
          * 
@@ -6468,7 +6505,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inactiveProjectsSendWarningEmailAfterMonths If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Default is 1. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+         * @param inactiveProjectsSendWarningEmailAfterMonths If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
          * 
          * @return builder
          * 
@@ -6479,7 +6516,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inactiveProjectsSendWarningEmailAfterMonths If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Default is 1. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+         * @param inactiveProjectsSendWarningEmailAfterMonths If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
          * 
          * @return builder
          * 
@@ -6489,7 +6526,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param invisibleCaptchaEnabled Enable Invisible CAPTCHA spam detection during sign-up. Disabled by default.
+         * @param invisibleCaptchaEnabled Enable Invisible CAPTCHA spam detection during sign-up.
          * 
          * @return builder
          * 
@@ -6500,7 +6537,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param invisibleCaptchaEnabled Enable Invisible CAPTCHA spam detection during sign-up. Disabled by default.
+         * @param invisibleCaptchaEnabled Enable Invisible CAPTCHA spam detection during sign-up.
          * 
          * @return builder
          * 
@@ -6510,7 +6547,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param issuesCreateLimit Max number of issue creation requests per minute per user. Disabled by default.
+         * @param issuesCreateLimit Max number of issue creation requests per minute per user.
          * 
          * @return builder
          * 
@@ -6521,7 +6558,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param issuesCreateLimit Max number of issue creation requests per minute per user. Disabled by default.
+         * @param issuesCreateLimit Max number of issue creation requests per minute per user.
          * 
          * @return builder
          * 
@@ -6531,7 +6568,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param keepLatestArtifact Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time. Enabled by default.
+         * @param keepLatestArtifact Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
          * 
          * @return builder
          * 
@@ -6542,7 +6579,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param keepLatestArtifact Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time. Enabled by default.
+         * @param keepLatestArtifact Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
          * 
          * @return builder
          * 
@@ -6699,7 +6736,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param maxExportSize Maximum export size in MB. 0 for unlimited. Default = 0 (unlimited).
+         * @param maxExportSize Maximum export size in MB. 0 for unlimited.
          * 
          * @return builder
          * 
@@ -6710,7 +6747,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param maxExportSize Maximum export size in MB. 0 for unlimited. Default = 0 (unlimited).
+         * @param maxExportSize Maximum export size in MB. 0 for unlimited.
          * 
          * @return builder
          * 
@@ -6720,7 +6757,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param maxImportSize Maximum import size in MB. 0 for unlimited. Default = 0 (unlimited) Modified from 50MB to 0 in GitLab 13.8.
+         * @param maxImportSize Maximum import size in MB. 0 for unlimited.
          * 
          * @return builder
          * 
@@ -6731,7 +6768,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param maxImportSize Maximum import size in MB. 0 for unlimited. Default = 0 (unlimited) Modified from 50MB to 0 in GitLab 13.8.
+         * @param maxImportSize Maximum import size in MB. 0 for unlimited.
          * 
          * @return builder
          * 
@@ -6741,7 +6778,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param maxNumberOfRepositoryDownloads Maximum number of unique repositories a user can download in the specified time period before they are banned. Default: 0, Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+         * @param maxNumberOfRepositoryDownloads Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
          * 
          * @return builder
          * 
@@ -6752,7 +6789,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param maxNumberOfRepositoryDownloads Maximum number of unique repositories a user can download in the specified time period before they are banned. Default: 0, Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+         * @param maxNumberOfRepositoryDownloads Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
          * 
          * @return builder
          * 
@@ -6762,7 +6799,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param maxNumberOfRepositoryDownloadsWithinTimePeriod Reporting time period (in seconds). Default: 0, Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+         * @param maxNumberOfRepositoryDownloadsWithinTimePeriod Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
          * 
          * @return builder
          * 
@@ -6773,7 +6810,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param maxNumberOfRepositoryDownloadsWithinTimePeriod Reporting time period (in seconds). Default: 0, Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+         * @param maxNumberOfRepositoryDownloadsWithinTimePeriod Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
          * 
          * @return builder
          * 
@@ -7045,7 +7082,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param passwordAuthenticationEnabledForGit Enable authentication for Git over HTTP(S) via a GitLab account password. Default is true.
+         * @param passwordAuthenticationEnabledForGit Enable authentication for Git over HTTP(S) via a GitLab account password.
          * 
          * @return builder
          * 
@@ -7056,7 +7093,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param passwordAuthenticationEnabledForGit Enable authentication for Git over HTTP(S) via a GitLab account password. Default is true.
+         * @param passwordAuthenticationEnabledForGit Enable authentication for Git over HTTP(S) via a GitLab account password.
          * 
          * @return builder
          * 
@@ -7066,7 +7103,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param passwordAuthenticationEnabledForWeb Enable authentication for the web interface via a GitLab account password. Default is true.
+         * @param passwordAuthenticationEnabledForWeb Enable authentication for the web interface via a GitLab account password.
          * 
          * @return builder
          * 
@@ -7077,7 +7114,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param passwordAuthenticationEnabledForWeb Enable authentication for the web interface via a GitLab account password. Default is true.
+         * @param passwordAuthenticationEnabledForWeb Enable authentication for the web interface via a GitLab account password.
          * 
          * @return builder
          * 
@@ -7213,7 +7250,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param pipelineLimitPerProjectUserSha Maximum number of pipeline creation requests per minute per user and commit. Disabled by default.
+         * @param pipelineLimitPerProjectUserSha Maximum number of pipeline creation requests per minute per user and commit.
          * 
          * @return builder
          * 
@@ -7224,7 +7261,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param pipelineLimitPerProjectUserSha Maximum number of pipeline creation requests per minute per user and commit. Disabled by default.
+         * @param pipelineLimitPerProjectUserSha Maximum number of pipeline creation requests per minute per user and commit.
          * 
          * @return builder
          * 
@@ -7234,7 +7271,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param plantumlEnabled (If enabled, requires: plantuml_url) Enable PlantUML integration. Default is false.
+         * @param plantumlEnabled (If enabled, requires: plantuml_url) Enable PlantUML integration.
          * 
          * @return builder
          * 
@@ -7245,7 +7282,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param plantumlEnabled (If enabled, requires: plantuml_url) Enable PlantUML integration. Default is false.
+         * @param plantumlEnabled (If enabled, requires: plantuml_url) Enable PlantUML integration.
          * 
          * @return builder
          * 
@@ -7444,7 +7481,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param rawBlobRequestLimit Max number of requests per minute for each raw path. Default: 300. To disable throttling set to 0.
+         * @param rawBlobRequestLimit Max number of requests per minute for each raw path. To disable throttling set to 0.
          * 
          * @return builder
          * 
@@ -7455,7 +7492,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param rawBlobRequestLimit Max number of requests per minute for each raw path. Default: 300. To disable throttling set to 0.
+         * @param rawBlobRequestLimit Max number of requests per minute for each raw path. To disable throttling set to 0.
          * 
          * @return builder
          * 
@@ -7685,7 +7722,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param restrictedVisibilityLevels Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Default is null which means there is no restriction.
+         * @param restrictedVisibilityLevels Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
          * 
          * @return builder
          * 
@@ -7696,7 +7733,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param restrictedVisibilityLevels Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Default is null which means there is no restriction.
+         * @param restrictedVisibilityLevels Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
          * 
          * @return builder
          * 
@@ -7706,7 +7743,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param restrictedVisibilityLevels Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Default is null which means there is no restriction.
+         * @param restrictedVisibilityLevels Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
          * 
          * @return builder
          * 
@@ -7716,7 +7753,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param rsaKeyRestriction The minimum allowed bit length of an uploaded RSA key. Default is 0 (no restriction). -1 disables RSA keys.
+         * @param rsaKeyRestriction The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
          * 
          * @return builder
          * 
@@ -7727,7 +7764,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param rsaKeyRestriction The minimum allowed bit length of an uploaded RSA key. Default is 0 (no restriction). -1 disables RSA keys.
+         * @param rsaKeyRestriction The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
          * 
          * @return builder
          * 
@@ -7737,7 +7774,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param searchRateLimit Max number of requests per minute for performing a search while authenticated. Default: 30. To disable throttling set to 0.
+         * @param searchRateLimit Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
          * 
          * @return builder
          * 
@@ -7748,7 +7785,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param searchRateLimit Max number of requests per minute for performing a search while authenticated. Default: 30. To disable throttling set to 0.
+         * @param searchRateLimit Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
          * 
          * @return builder
          * 
@@ -7758,7 +7795,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param searchRateLimitUnauthenticated Max number of requests per minute for performing a search while unauthenticated. Default: 10. To disable throttling set to 0.
+         * @param searchRateLimitUnauthenticated Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
          * 
          * @return builder
          * 
@@ -7769,7 +7806,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param searchRateLimitUnauthenticated Max number of requests per minute for performing a search while unauthenticated. Default: 10. To disable throttling set to 0.
+         * @param searchRateLimitUnauthenticated Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
          * 
          * @return builder
          * 
@@ -7884,7 +7921,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sidekiqJobLimiterCompressionThresholdBytes The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis. Default: 100 000 bytes (100KB).
+         * @param sidekiqJobLimiterCompressionThresholdBytes The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
          * 
          * @return builder
          * 
@@ -7895,7 +7932,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sidekiqJobLimiterCompressionThresholdBytes The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis. Default: 100 000 bytes (100KB).
+         * @param sidekiqJobLimiterCompressionThresholdBytes The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
          * 
          * @return builder
          * 
@@ -7905,7 +7942,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sidekiqJobLimiterLimitBytes The threshold in bytes at which Sidekiq jobs are rejected. Default: 0 bytes (doesn’t reject any job).
+         * @param sidekiqJobLimiterLimitBytes The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
          * 
          * @return builder
          * 
@@ -7916,7 +7953,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sidekiqJobLimiterLimitBytes The threshold in bytes at which Sidekiq jobs are rejected. Default: 0 bytes (doesn’t reject any job).
+         * @param sidekiqJobLimiterLimitBytes The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
          * 
          * @return builder
          * 
@@ -7926,7 +7963,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sidekiqJobLimiterMode track or compress. Sets the behavior for Sidekiq job size limits. Default: ‘compress’.
+         * @param sidekiqJobLimiterMode track or compress. Sets the behavior for Sidekiq job size limits.
          * 
          * @return builder
          * 
@@ -7937,7 +7974,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sidekiqJobLimiterMode track or compress. Sets the behavior for Sidekiq job size limits. Default: ‘compress’.
+         * @param sidekiqJobLimiterMode track or compress. Sets the behavior for Sidekiq job size limits.
          * 
          * @return builder
          * 
@@ -7968,7 +8005,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param signupEnabled Enable registration. Default is true.
+         * @param signupEnabled Enable registration.
          * 
          * @return builder
          * 
@@ -7979,7 +8016,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param signupEnabled Enable registration. Default is true.
+         * @param signupEnabled Enable registration.
          * 
          * @return builder
          * 
@@ -8094,7 +8131,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param snippetSizeLimit Max snippet content size in bytes. Default: 52428800 Bytes (50MB).
+         * @param snippetSizeLimit Max snippet content size in bytes.
          * 
          * @return builder
          * 
@@ -8105,7 +8142,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param snippetSizeLimit Max snippet content size in bytes. Default: 52428800 Bytes (50MB).
+         * @param snippetSizeLimit Max snippet content size in bytes.
          * 
          * @return builder
          * 
@@ -8199,7 +8236,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sourcegraphEnabled Enables Sourcegraph integration. Default is false. If enabled, requires sourcegraph_url.
+         * @param sourcegraphEnabled Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
          * 
          * @return builder
          * 
@@ -8210,7 +8247,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sourcegraphEnabled Enables Sourcegraph integration. Default is false. If enabled, requires sourcegraph_url.
+         * @param sourcegraphEnabled Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
          * 
          * @return builder
          * 
@@ -8220,7 +8257,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sourcegraphPublicOnly Blocks Sourcegraph from being loaded on private and internal projects. Default is true.
+         * @param sourcegraphPublicOnly Blocks Sourcegraph from being loaded on private and internal projects.
          * 
          * @return builder
          * 
@@ -8231,7 +8268,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sourcegraphPublicOnly Blocks Sourcegraph from being loaded on private and internal projects. Default is true.
+         * @param sourcegraphPublicOnly Blocks Sourcegraph from being loaded on private and internal projects.
          * 
          * @return builder
          * 
@@ -8283,7 +8320,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param spamCheckEndpointEnabled Enables spam checking using external Spam Check API endpoint. Default is false.
+         * @param spamCheckEndpointEnabled Enables spam checking using external Spam Check API endpoint.
          * 
          * @return builder
          * 
@@ -8294,7 +8331,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param spamCheckEndpointEnabled Enables spam checking using external Spam Check API endpoint. Default is false.
+         * @param spamCheckEndpointEnabled Enables spam checking using external Spam Check API endpoint.
          * 
          * @return builder
          * 
@@ -8766,7 +8803,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param timeTrackingLimitToHours Limit display of time tracking units to hours. Default is false.
+         * @param timeTrackingLimitToHours Limit display of time tracking units to hours.
          * 
          * @return builder
          * 
@@ -8777,7 +8814,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param timeTrackingLimitToHours Limit display of time tracking units to hours. Default is false.
+         * @param timeTrackingLimitToHours Limit display of time tracking units to hours.
          * 
          * @return builder
          * 
@@ -9060,7 +9097,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param wikiPageMaxContentBytes Maximum wiki page content size in bytes. Default: 52428800 Bytes (50 MB). The minimum value is 1024 bytes.
+         * @param wikiPageMaxContentBytes Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
          * 
          * @return builder
          * 
@@ -9071,7 +9108,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param wikiPageMaxContentBytes Maximum wiki page content size in bytes. Default: 52428800 Bytes (50 MB). The minimum value is 1024 bytes.
+         * @param wikiPageMaxContentBytes Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
          * 
          * @return builder
          * 

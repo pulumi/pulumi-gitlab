@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,6 +31,51 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> autoDevopsEnabled() {
         return Optional.ofNullable(this.autoDevopsEnabled);
+    }
+
+    /**
+     * A local path to the avatar image to upload. **Note**: not available for imported resources.
+     * 
+     */
+    @Import(name="avatar")
+    private @Nullable Output<String> avatar;
+
+    /**
+     * @return A local path to the avatar image to upload. **Note**: not available for imported resources.
+     * 
+     */
+    public Optional<Output<String>> avatar() {
+        return Optional.ofNullable(this.avatar);
+    }
+
+    /**
+     * The hash of the avatar image. Use `filesha256(&#34;path/to/avatar.png&#34;)` whenever possible. **Note**: this is used to trigger an update of the avatar. If it&#39;s not given, but an avatar is given, the avatar will be updated each time.
+     * 
+     */
+    @Import(name="avatarHash")
+    private @Nullable Output<String> avatarHash;
+
+    /**
+     * @return The hash of the avatar image. Use `filesha256(&#34;path/to/avatar.png&#34;)` whenever possible. **Note**: this is used to trigger an update of the avatar. If it&#39;s not given, but an avatar is given, the avatar will be updated each time.
+     * 
+     */
+    public Optional<Output<String>> avatarHash() {
+        return Optional.ofNullable(this.avatarHash);
+    }
+
+    /**
+     * The URL of the avatar image.
+     * 
+     */
+    @Import(name="avatarUrl")
+    private @Nullable Output<String> avatarUrl;
+
+    /**
+     * @return The URL of the avatar image.
+     * 
+     */
+    public Optional<Output<String>> avatarUrl() {
+        return Optional.ofNullable(this.avatarUrl);
     }
 
     /**
@@ -120,6 +166,21 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> fullPath() {
         return Optional.ofNullable(this.fullPath);
+    }
+
+    /**
+     * A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+     * 
+     */
+    @Import(name="ipRestrictionRanges")
+    private @Nullable Output<List<String>> ipRestrictionRanges;
+
+    /**
+     * @return A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+     * 
+     */
+    public Optional<Output<List<String>>> ipRestrictionRanges() {
+        return Optional.ofNullable(this.ipRestrictionRanges);
     }
 
     /**
@@ -381,12 +442,16 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
 
     private GroupState(GroupState $) {
         this.autoDevopsEnabled = $.autoDevopsEnabled;
+        this.avatar = $.avatar;
+        this.avatarHash = $.avatarHash;
+        this.avatarUrl = $.avatarUrl;
         this.defaultBranchProtection = $.defaultBranchProtection;
         this.description = $.description;
         this.emailsDisabled = $.emailsDisabled;
         this.extraSharedRunnersMinutesLimit = $.extraSharedRunnersMinutesLimit;
         this.fullName = $.fullName;
         this.fullPath = $.fullPath;
+        this.ipRestrictionRanges = $.ipRestrictionRanges;
         this.lfsEnabled = $.lfsEnabled;
         this.membershipLock = $.membershipLock;
         this.mentionsDisabled = $.mentionsDisabled;
@@ -443,6 +508,69 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder autoDevopsEnabled(Boolean autoDevopsEnabled) {
             return autoDevopsEnabled(Output.of(autoDevopsEnabled));
+        }
+
+        /**
+         * @param avatar A local path to the avatar image to upload. **Note**: not available for imported resources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder avatar(@Nullable Output<String> avatar) {
+            $.avatar = avatar;
+            return this;
+        }
+
+        /**
+         * @param avatar A local path to the avatar image to upload. **Note**: not available for imported resources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder avatar(String avatar) {
+            return avatar(Output.of(avatar));
+        }
+
+        /**
+         * @param avatarHash The hash of the avatar image. Use `filesha256(&#34;path/to/avatar.png&#34;)` whenever possible. **Note**: this is used to trigger an update of the avatar. If it&#39;s not given, but an avatar is given, the avatar will be updated each time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder avatarHash(@Nullable Output<String> avatarHash) {
+            $.avatarHash = avatarHash;
+            return this;
+        }
+
+        /**
+         * @param avatarHash The hash of the avatar image. Use `filesha256(&#34;path/to/avatar.png&#34;)` whenever possible. **Note**: this is used to trigger an update of the avatar. If it&#39;s not given, but an avatar is given, the avatar will be updated each time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder avatarHash(String avatarHash) {
+            return avatarHash(Output.of(avatarHash));
+        }
+
+        /**
+         * @param avatarUrl The URL of the avatar image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder avatarUrl(@Nullable Output<String> avatarUrl) {
+            $.avatarUrl = avatarUrl;
+            return this;
+        }
+
+        /**
+         * @param avatarUrl The URL of the avatar image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder avatarUrl(String avatarUrl) {
+            return avatarUrl(Output.of(avatarUrl));
         }
 
         /**
@@ -569,6 +697,37 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder fullPath(String fullPath) {
             return fullPath(Output.of(fullPath));
+        }
+
+        /**
+         * @param ipRestrictionRanges A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipRestrictionRanges(@Nullable Output<List<String>> ipRestrictionRanges) {
+            $.ipRestrictionRanges = ipRestrictionRanges;
+            return this;
+        }
+
+        /**
+         * @param ipRestrictionRanges A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipRestrictionRanges(List<String> ipRestrictionRanges) {
+            return ipRestrictionRanges(Output.of(ipRestrictionRanges));
+        }
+
+        /**
+         * @param ipRestrictionRanges A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipRestrictionRanges(String... ipRestrictionRanges) {
+            return ipRestrictionRanges(List.of(ipRestrictionRanges));
         }
 
         /**

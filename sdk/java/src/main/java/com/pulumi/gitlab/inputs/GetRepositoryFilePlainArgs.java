@@ -13,14 +13,14 @@ public final class GetRepositoryFilePlainArgs extends com.pulumi.resources.Invok
     public static final GetRepositoryFilePlainArgs Empty = new GetRepositoryFilePlainArgs();
 
     /**
-     * The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     * The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      * 
      */
     @Import(name="filePath", required=true)
     private String filePath;
 
     /**
-     * @return The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     * @return The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      * 
      */
     public String filePath() {
@@ -84,7 +84,7 @@ public final class GetRepositoryFilePlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param filePath The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+         * @param filePath The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
          * 
          * @return builder
          * 

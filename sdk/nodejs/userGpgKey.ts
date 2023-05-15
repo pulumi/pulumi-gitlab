@@ -88,7 +88,7 @@ export class UserGpgKey extends pulumi.CustomResource {
      */
     public /*out*/ readonly keyId!: pulumi.Output<number>;
     /**
-     * The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+     * The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
      */
     public readonly userId!: pulumi.Output<number | undefined>;
 
@@ -141,7 +141,7 @@ export interface UserGpgKeyState {
      */
     keyId?: pulumi.Input<number>;
     /**
-     * The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+     * The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
      */
     userId?: pulumi.Input<number>;
 }
@@ -155,7 +155,7 @@ export interface UserGpgKeyArgs {
      */
     key: pulumi.Input<string>;
     /**
-     * The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+     * The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
      */
     userId?: pulumi.Input<number>;
 }

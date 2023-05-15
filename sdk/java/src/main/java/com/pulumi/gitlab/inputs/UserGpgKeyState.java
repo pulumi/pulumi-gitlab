@@ -62,14 +62,14 @@ public final class UserGpgKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+     * The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
      * 
      */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
     /**
-     * @return The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+     * @return The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
      * 
      */
     public Optional<Output<Integer>> userId() {
@@ -167,7 +167,7 @@ public final class UserGpgKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userId The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+         * @param userId The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class UserGpgKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userId The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+         * @param userId The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
          * 
          * @return builder
          * 

@@ -63,16 +63,39 @@ public final class ProjectContainerExpirationPolicyArgs extends com.pulumi.resou
     }
 
     /**
-     * The regular expression to match image names to delete. **Note**: the upstream API has some inconsistencies with the `name_regex` field here. It&#39;s basically unusable at the moment.
+     * The regular expression to match image names to delete.
      * 
      */
+    @Import(name="nameRegex")
+    private @Nullable Output<String> nameRegex;
+
+    /**
+     * @return The regular expression to match image names to delete.
+     * 
+     */
+    public Optional<Output<String>> nameRegex() {
+        return Optional.ofNullable(this.nameRegex);
+    }
+
+    /**
+     * The regular expression to match image names to delete.
+     * 
+     * @deprecated
+     * `name_regex_delete` has been deprecated. Use `name_regex` instead.
+     * 
+     */
+    @Deprecated /* `name_regex_delete` has been deprecated. Use `name_regex` instead. */
     @Import(name="nameRegexDelete")
     private @Nullable Output<String> nameRegexDelete;
 
     /**
-     * @return The regular expression to match image names to delete. **Note**: the upstream API has some inconsistencies with the `name_regex` field here. It&#39;s basically unusable at the moment.
+     * @return The regular expression to match image names to delete.
+     * 
+     * @deprecated
+     * `name_regex_delete` has been deprecated. Use `name_regex` instead.
      * 
      */
+    @Deprecated /* `name_regex_delete` has been deprecated. Use `name_regex` instead. */
     public Optional<Output<String>> nameRegexDelete() {
         return Optional.ofNullable(this.nameRegexDelete);
     }
@@ -128,6 +151,7 @@ public final class ProjectContainerExpirationPolicyArgs extends com.pulumi.resou
         this.cadence = $.cadence;
         this.enabled = $.enabled;
         this.keepN = $.keepN;
+        this.nameRegex = $.nameRegex;
         this.nameRegexDelete = $.nameRegexDelete;
         this.nameRegexKeep = $.nameRegexKeep;
         this.nextRunAt = $.nextRunAt;
@@ -216,22 +240,51 @@ public final class ProjectContainerExpirationPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nameRegexDelete The regular expression to match image names to delete. **Note**: the upstream API has some inconsistencies with the `name_regex` field here. It&#39;s basically unusable at the moment.
+         * @param nameRegex The regular expression to match image names to delete.
          * 
          * @return builder
          * 
          */
+        public Builder nameRegex(@Nullable Output<String> nameRegex) {
+            $.nameRegex = nameRegex;
+            return this;
+        }
+
+        /**
+         * @param nameRegex The regular expression to match image names to delete.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameRegex(String nameRegex) {
+            return nameRegex(Output.of(nameRegex));
+        }
+
+        /**
+         * @param nameRegexDelete The regular expression to match image names to delete.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * `name_regex_delete` has been deprecated. Use `name_regex` instead.
+         * 
+         */
+        @Deprecated /* `name_regex_delete` has been deprecated. Use `name_regex` instead. */
         public Builder nameRegexDelete(@Nullable Output<String> nameRegexDelete) {
             $.nameRegexDelete = nameRegexDelete;
             return this;
         }
 
         /**
-         * @param nameRegexDelete The regular expression to match image names to delete. **Note**: the upstream API has some inconsistencies with the `name_regex` field here. It&#39;s basically unusable at the moment.
+         * @param nameRegexDelete The regular expression to match image names to delete.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `name_regex_delete` has been deprecated. Use `name_regex` instead.
+         * 
          */
+        @Deprecated /* `name_regex_delete` has been deprecated. Use `name_regex` instead. */
         public Builder nameRegexDelete(String nameRegexDelete) {
             return nameRegexDelete(Output.of(nameRegexDelete));
         }

@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -52,7 +52,7 @@ func LookupRepositoryFile(ctx *pulumi.Context, args *LookupRepositoryFileArgs, o
 
 // A collection of arguments for invoking getRepositoryFile.
 type LookupRepositoryFileArgs struct {
-	// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+	// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
 	FilePath string `pulumi:"filePath"`
 	// The name or ID of the project.
 	Project string `pulumi:"project"`
@@ -76,7 +76,7 @@ type LookupRepositoryFileResult struct {
 	ExecuteFilemode bool `pulumi:"executeFilemode"`
 	// The filename.
 	FileName string `pulumi:"fileName"`
-	// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+	// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
 	FilePath string `pulumi:"filePath"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -105,7 +105,7 @@ func LookupRepositoryFileOutput(ctx *pulumi.Context, args LookupRepositoryFileOu
 
 // A collection of arguments for invoking getRepositoryFile.
 type LookupRepositoryFileOutputArgs struct {
-	// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+	// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
 	FilePath pulumi.StringInput `pulumi:"filePath"`
 	// The name or ID of the project.
 	Project pulumi.StringInput `pulumi:"project"`
@@ -167,7 +167,7 @@ func (o LookupRepositoryFileResultOutput) FileName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.FileName }).(pulumi.StringOutput)
 }
 
-// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
 func (o LookupRepositoryFileResultOutput) FilePath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.FilePath }).(pulumi.StringOutput)
 }

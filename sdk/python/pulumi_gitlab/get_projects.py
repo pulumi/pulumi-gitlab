@@ -153,7 +153,7 @@ class GetProjectsResult:
     @pulumi.getter(name="orderBy")
     def order_by(self) -> Optional[str]:
         """
-        Return projects ordered by `id`, `name`, `path`, `created_at`, `updated_at`, or `last_activity_at` fields. Default is `created_at`.
+        Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects) for details.
         """
         return pulumi.get(self, "order_by")
 
@@ -362,7 +362,7 @@ def get_projects(archived: Optional[bool] = None,
     :param int max_queryable_pages: The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
     :param bool membership: Limit by projects that the current user is a member of.
     :param int min_access_level: Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `group_id`.
-    :param str order_by: Return projects ordered by `id`, `name`, `path`, `created_at`, `updated_at`, or `last_activity_at` fields. Default is `created_at`.
+    :param str order_by: Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects) for details.
     :param bool owned: Limit by projects owned by the current user.
     :param int page: The first page to begin the query on.
     :param int per_page: The number of results to return per page.
@@ -483,7 +483,7 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
     :param int max_queryable_pages: The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
     :param bool membership: Limit by projects that the current user is a member of.
     :param int min_access_level: Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `group_id`.
-    :param str order_by: Return projects ordered by `id`, `name`, `path`, `created_at`, `updated_at`, or `last_activity_at` fields. Default is `created_at`.
+    :param str order_by: Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects) for details.
     :param bool owned: Limit by projects owned by the current user.
     :param int page: The first page to begin the query on.
     :param int per_page: The number of results to return per page.

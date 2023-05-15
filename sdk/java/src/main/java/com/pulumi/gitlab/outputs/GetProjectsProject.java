@@ -8,7 +8,7 @@ import com.pulumi.gitlab.outputs.GetProjectsProjectContainerExpirationPolicy;
 import com.pulumi.gitlab.outputs.GetProjectsProjectForkedFromProject;
 import com.pulumi.gitlab.outputs.GetProjectsProjectNamespace;
 import com.pulumi.gitlab.outputs.GetProjectsProjectOwner;
-import com.pulumi.gitlab.outputs.GetProjectsProjectPermissions;
+import com.pulumi.gitlab.outputs.GetProjectsProjectPermission;
 import com.pulumi.gitlab.outputs.GetProjectsProjectSharedWithGroup;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -49,8 +49,10 @@ public final class GetProjectsProject {
     private String defaultBranch;
     private String description;
     private Boolean emailsDisabled;
+    private String environmentsAccessLevel;
     private String externalAuthorizationClassificationLabel;
-    private GetProjectsProjectForkedFromProject forkedFromProject;
+    private String featureFlagsAccessLevel;
+    private List<GetProjectsProjectForkedFromProject> forkedFromProjects;
     private String forkingAccessLevel;
     private Integer forksCount;
     private String httpUrlToRepo;
@@ -61,9 +63,12 @@ public final class GetProjectsProject {
     private Integer id;
     private String importError;
     private String importStatus;
+    private String importUrl;
+    private String infrastructureAccessLevel;
     private String issuesAccessLevel;
     private Boolean issuesEnabled;
     private Boolean jobsEnabled;
+    private Boolean keepLatestArtifact;
     private String lastActivityAt;
     private Boolean lfsEnabled;
     private String mergeCommitTemplate;
@@ -76,27 +81,30 @@ public final class GetProjectsProject {
     private Boolean mirrorOverwritesDivergedBranches;
     private Boolean mirrorTriggerBuilds;
     private Integer mirrorUserId;
+    private String monitorAccessLevel;
     private String name;
     private String nameWithNamespace;
-    private GetProjectsProjectNamespace namespace;
+    private List<GetProjectsProjectNamespace> namespaces;
     private Boolean onlyAllowMergeIfAllDiscussionsAreResolved;
     private Boolean onlyAllowMergeIfPipelineSucceeds;
     private Boolean onlyMirrorProtectedBranches;
     private Integer openIssuesCount;
     private String operationsAccessLevel;
-    private GetProjectsProjectOwner owner;
+    private List<GetProjectsProjectOwner> owners;
     private Boolean packagesEnabled;
     private String path;
     private String pathWithNamespace;
-    private GetProjectsProjectPermissions permissions;
+    private List<GetProjectsProjectPermission> permissions;
     private Boolean public_;
     private Boolean publicBuilds;
     private String readmeUrl;
+    private String releasesAccessLevel;
     private String repositoryAccessLevel;
     private String repositoryStorage;
     private Boolean requestAccessEnabled;
     private String requirementsAccessLevel;
     private Boolean resolveOutdatedDiffDiscussions;
+    private Boolean restrictUserDefinedVariables;
     private String runnersToken;
     private String securityAndComplianceAccessLevel;
     private Boolean sharedRunnersEnabled;
@@ -206,11 +214,17 @@ public final class GetProjectsProject {
     public Boolean emailsDisabled() {
         return this.emailsDisabled;
     }
+    public String environmentsAccessLevel() {
+        return this.environmentsAccessLevel;
+    }
     public String externalAuthorizationClassificationLabel() {
         return this.externalAuthorizationClassificationLabel;
     }
-    public GetProjectsProjectForkedFromProject forkedFromProject() {
-        return this.forkedFromProject;
+    public String featureFlagsAccessLevel() {
+        return this.featureFlagsAccessLevel;
+    }
+    public List<GetProjectsProjectForkedFromProject> forkedFromProjects() {
+        return this.forkedFromProjects;
     }
     public String forkingAccessLevel() {
         return this.forkingAccessLevel;
@@ -234,6 +248,12 @@ public final class GetProjectsProject {
     public String importStatus() {
         return this.importStatus;
     }
+    public String importUrl() {
+        return this.importUrl;
+    }
+    public String infrastructureAccessLevel() {
+        return this.infrastructureAccessLevel;
+    }
     public String issuesAccessLevel() {
         return this.issuesAccessLevel;
     }
@@ -242,6 +262,9 @@ public final class GetProjectsProject {
     }
     public Boolean jobsEnabled() {
         return this.jobsEnabled;
+    }
+    public Boolean keepLatestArtifact() {
+        return this.keepLatestArtifact;
     }
     public String lastActivityAt() {
         return this.lastActivityAt;
@@ -279,14 +302,17 @@ public final class GetProjectsProject {
     public Integer mirrorUserId() {
         return this.mirrorUserId;
     }
+    public String monitorAccessLevel() {
+        return this.monitorAccessLevel;
+    }
     public String name() {
         return this.name;
     }
     public String nameWithNamespace() {
         return this.nameWithNamespace;
     }
-    public GetProjectsProjectNamespace namespace() {
-        return this.namespace;
+    public List<GetProjectsProjectNamespace> namespaces() {
+        return this.namespaces;
     }
     public Boolean onlyAllowMergeIfAllDiscussionsAreResolved() {
         return this.onlyAllowMergeIfAllDiscussionsAreResolved;
@@ -303,8 +329,8 @@ public final class GetProjectsProject {
     public String operationsAccessLevel() {
         return this.operationsAccessLevel;
     }
-    public GetProjectsProjectOwner owner() {
-        return this.owner;
+    public List<GetProjectsProjectOwner> owners() {
+        return this.owners;
     }
     public Boolean packagesEnabled() {
         return this.packagesEnabled;
@@ -315,7 +341,7 @@ public final class GetProjectsProject {
     public String pathWithNamespace() {
         return this.pathWithNamespace;
     }
-    public GetProjectsProjectPermissions permissions() {
+    public List<GetProjectsProjectPermission> permissions() {
         return this.permissions;
     }
     public Boolean public_() {
@@ -326,6 +352,9 @@ public final class GetProjectsProject {
     }
     public String readmeUrl() {
         return this.readmeUrl;
+    }
+    public String releasesAccessLevel() {
+        return this.releasesAccessLevel;
     }
     public String repositoryAccessLevel() {
         return this.repositoryAccessLevel;
@@ -341,6 +370,9 @@ public final class GetProjectsProject {
     }
     public Boolean resolveOutdatedDiffDiscussions() {
         return this.resolveOutdatedDiffDiscussions;
+    }
+    public Boolean restrictUserDefinedVariables() {
+        return this.restrictUserDefinedVariables;
     }
     public String runnersToken() {
         return this.runnersToken;
@@ -437,17 +469,22 @@ public final class GetProjectsProject {
         private String defaultBranch;
         private String description;
         private Boolean emailsDisabled;
+        private String environmentsAccessLevel;
         private String externalAuthorizationClassificationLabel;
-        private GetProjectsProjectForkedFromProject forkedFromProject;
+        private String featureFlagsAccessLevel;
+        private List<GetProjectsProjectForkedFromProject> forkedFromProjects;
         private String forkingAccessLevel;
         private Integer forksCount;
         private String httpUrlToRepo;
         private Integer id;
         private String importError;
         private String importStatus;
+        private String importUrl;
+        private String infrastructureAccessLevel;
         private String issuesAccessLevel;
         private Boolean issuesEnabled;
         private Boolean jobsEnabled;
+        private Boolean keepLatestArtifact;
         private String lastActivityAt;
         private Boolean lfsEnabled;
         private String mergeCommitTemplate;
@@ -460,27 +497,30 @@ public final class GetProjectsProject {
         private Boolean mirrorOverwritesDivergedBranches;
         private Boolean mirrorTriggerBuilds;
         private Integer mirrorUserId;
+        private String monitorAccessLevel;
         private String name;
         private String nameWithNamespace;
-        private GetProjectsProjectNamespace namespace;
+        private List<GetProjectsProjectNamespace> namespaces;
         private Boolean onlyAllowMergeIfAllDiscussionsAreResolved;
         private Boolean onlyAllowMergeIfPipelineSucceeds;
         private Boolean onlyMirrorProtectedBranches;
         private Integer openIssuesCount;
         private String operationsAccessLevel;
-        private GetProjectsProjectOwner owner;
+        private List<GetProjectsProjectOwner> owners;
         private Boolean packagesEnabled;
         private String path;
         private String pathWithNamespace;
-        private GetProjectsProjectPermissions permissions;
+        private List<GetProjectsProjectPermission> permissions;
         private Boolean public_;
         private Boolean publicBuilds;
         private String readmeUrl;
+        private String releasesAccessLevel;
         private String repositoryAccessLevel;
         private String repositoryStorage;
         private Boolean requestAccessEnabled;
         private String requirementsAccessLevel;
         private Boolean resolveOutdatedDiffDiscussions;
+        private Boolean restrictUserDefinedVariables;
         private String runnersToken;
         private String securityAndComplianceAccessLevel;
         private Boolean sharedRunnersEnabled;
@@ -527,17 +567,22 @@ public final class GetProjectsProject {
     	      this.defaultBranch = defaults.defaultBranch;
     	      this.description = defaults.description;
     	      this.emailsDisabled = defaults.emailsDisabled;
+    	      this.environmentsAccessLevel = defaults.environmentsAccessLevel;
     	      this.externalAuthorizationClassificationLabel = defaults.externalAuthorizationClassificationLabel;
-    	      this.forkedFromProject = defaults.forkedFromProject;
+    	      this.featureFlagsAccessLevel = defaults.featureFlagsAccessLevel;
+    	      this.forkedFromProjects = defaults.forkedFromProjects;
     	      this.forkingAccessLevel = defaults.forkingAccessLevel;
     	      this.forksCount = defaults.forksCount;
     	      this.httpUrlToRepo = defaults.httpUrlToRepo;
     	      this.id = defaults.id;
     	      this.importError = defaults.importError;
     	      this.importStatus = defaults.importStatus;
+    	      this.importUrl = defaults.importUrl;
+    	      this.infrastructureAccessLevel = defaults.infrastructureAccessLevel;
     	      this.issuesAccessLevel = defaults.issuesAccessLevel;
     	      this.issuesEnabled = defaults.issuesEnabled;
     	      this.jobsEnabled = defaults.jobsEnabled;
+    	      this.keepLatestArtifact = defaults.keepLatestArtifact;
     	      this.lastActivityAt = defaults.lastActivityAt;
     	      this.lfsEnabled = defaults.lfsEnabled;
     	      this.mergeCommitTemplate = defaults.mergeCommitTemplate;
@@ -550,15 +595,16 @@ public final class GetProjectsProject {
     	      this.mirrorOverwritesDivergedBranches = defaults.mirrorOverwritesDivergedBranches;
     	      this.mirrorTriggerBuilds = defaults.mirrorTriggerBuilds;
     	      this.mirrorUserId = defaults.mirrorUserId;
+    	      this.monitorAccessLevel = defaults.monitorAccessLevel;
     	      this.name = defaults.name;
     	      this.nameWithNamespace = defaults.nameWithNamespace;
-    	      this.namespace = defaults.namespace;
+    	      this.namespaces = defaults.namespaces;
     	      this.onlyAllowMergeIfAllDiscussionsAreResolved = defaults.onlyAllowMergeIfAllDiscussionsAreResolved;
     	      this.onlyAllowMergeIfPipelineSucceeds = defaults.onlyAllowMergeIfPipelineSucceeds;
     	      this.onlyMirrorProtectedBranches = defaults.onlyMirrorProtectedBranches;
     	      this.openIssuesCount = defaults.openIssuesCount;
     	      this.operationsAccessLevel = defaults.operationsAccessLevel;
-    	      this.owner = defaults.owner;
+    	      this.owners = defaults.owners;
     	      this.packagesEnabled = defaults.packagesEnabled;
     	      this.path = defaults.path;
     	      this.pathWithNamespace = defaults.pathWithNamespace;
@@ -566,11 +612,13 @@ public final class GetProjectsProject {
     	      this.public_ = defaults.public_;
     	      this.publicBuilds = defaults.publicBuilds;
     	      this.readmeUrl = defaults.readmeUrl;
+    	      this.releasesAccessLevel = defaults.releasesAccessLevel;
     	      this.repositoryAccessLevel = defaults.repositoryAccessLevel;
     	      this.repositoryStorage = defaults.repositoryStorage;
     	      this.requestAccessEnabled = defaults.requestAccessEnabled;
     	      this.requirementsAccessLevel = defaults.requirementsAccessLevel;
     	      this.resolveOutdatedDiffDiscussions = defaults.resolveOutdatedDiffDiscussions;
+    	      this.restrictUserDefinedVariables = defaults.restrictUserDefinedVariables;
     	      this.runnersToken = defaults.runnersToken;
     	      this.securityAndComplianceAccessLevel = defaults.securityAndComplianceAccessLevel;
     	      this.sharedRunnersEnabled = defaults.sharedRunnersEnabled;
@@ -724,14 +772,27 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder environmentsAccessLevel(String environmentsAccessLevel) {
+            this.environmentsAccessLevel = Objects.requireNonNull(environmentsAccessLevel);
+            return this;
+        }
+        @CustomType.Setter
         public Builder externalAuthorizationClassificationLabel(String externalAuthorizationClassificationLabel) {
             this.externalAuthorizationClassificationLabel = Objects.requireNonNull(externalAuthorizationClassificationLabel);
             return this;
         }
         @CustomType.Setter
-        public Builder forkedFromProject(GetProjectsProjectForkedFromProject forkedFromProject) {
-            this.forkedFromProject = Objects.requireNonNull(forkedFromProject);
+        public Builder featureFlagsAccessLevel(String featureFlagsAccessLevel) {
+            this.featureFlagsAccessLevel = Objects.requireNonNull(featureFlagsAccessLevel);
             return this;
+        }
+        @CustomType.Setter
+        public Builder forkedFromProjects(List<GetProjectsProjectForkedFromProject> forkedFromProjects) {
+            this.forkedFromProjects = Objects.requireNonNull(forkedFromProjects);
+            return this;
+        }
+        public Builder forkedFromProjects(GetProjectsProjectForkedFromProject... forkedFromProjects) {
+            return forkedFromProjects(List.of(forkedFromProjects));
         }
         @CustomType.Setter
         public Builder forkingAccessLevel(String forkingAccessLevel) {
@@ -764,6 +825,16 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder importUrl(String importUrl) {
+            this.importUrl = Objects.requireNonNull(importUrl);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder infrastructureAccessLevel(String infrastructureAccessLevel) {
+            this.infrastructureAccessLevel = Objects.requireNonNull(infrastructureAccessLevel);
+            return this;
+        }
+        @CustomType.Setter
         public Builder issuesAccessLevel(String issuesAccessLevel) {
             this.issuesAccessLevel = Objects.requireNonNull(issuesAccessLevel);
             return this;
@@ -776,6 +847,11 @@ public final class GetProjectsProject {
         @CustomType.Setter
         public Builder jobsEnabled(Boolean jobsEnabled) {
             this.jobsEnabled = Objects.requireNonNull(jobsEnabled);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder keepLatestArtifact(Boolean keepLatestArtifact) {
+            this.keepLatestArtifact = Objects.requireNonNull(keepLatestArtifact);
             return this;
         }
         @CustomType.Setter
@@ -839,6 +915,11 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder monitorAccessLevel(String monitorAccessLevel) {
+            this.monitorAccessLevel = Objects.requireNonNull(monitorAccessLevel);
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
@@ -849,9 +930,12 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
-        public Builder namespace(GetProjectsProjectNamespace namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+        public Builder namespaces(List<GetProjectsProjectNamespace> namespaces) {
+            this.namespaces = Objects.requireNonNull(namespaces);
             return this;
+        }
+        public Builder namespaces(GetProjectsProjectNamespace... namespaces) {
+            return namespaces(List.of(namespaces));
         }
         @CustomType.Setter
         public Builder onlyAllowMergeIfAllDiscussionsAreResolved(Boolean onlyAllowMergeIfAllDiscussionsAreResolved) {
@@ -879,9 +963,12 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
-        public Builder owner(GetProjectsProjectOwner owner) {
-            this.owner = Objects.requireNonNull(owner);
+        public Builder owners(List<GetProjectsProjectOwner> owners) {
+            this.owners = Objects.requireNonNull(owners);
             return this;
+        }
+        public Builder owners(GetProjectsProjectOwner... owners) {
+            return owners(List.of(owners));
         }
         @CustomType.Setter
         public Builder packagesEnabled(Boolean packagesEnabled) {
@@ -899,9 +986,12 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
-        public Builder permissions(GetProjectsProjectPermissions permissions) {
+        public Builder permissions(List<GetProjectsProjectPermission> permissions) {
             this.permissions = Objects.requireNonNull(permissions);
             return this;
+        }
+        public Builder permissions(GetProjectsProjectPermission... permissions) {
+            return permissions(List.of(permissions));
         }
         @CustomType.Setter("public")
         public Builder public_(Boolean public_) {
@@ -916,6 +1006,11 @@ public final class GetProjectsProject {
         @CustomType.Setter
         public Builder readmeUrl(String readmeUrl) {
             this.readmeUrl = Objects.requireNonNull(readmeUrl);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder releasesAccessLevel(String releasesAccessLevel) {
+            this.releasesAccessLevel = Objects.requireNonNull(releasesAccessLevel);
             return this;
         }
         @CustomType.Setter
@@ -941,6 +1036,11 @@ public final class GetProjectsProject {
         @CustomType.Setter
         public Builder resolveOutdatedDiffDiscussions(Boolean resolveOutdatedDiffDiscussions) {
             this.resolveOutdatedDiffDiscussions = Objects.requireNonNull(resolveOutdatedDiffDiscussions);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder restrictUserDefinedVariables(Boolean restrictUserDefinedVariables) {
+            this.restrictUserDefinedVariables = Objects.requireNonNull(restrictUserDefinedVariables);
             return this;
         }
         @CustomType.Setter
@@ -1065,17 +1165,22 @@ public final class GetProjectsProject {
             o.defaultBranch = defaultBranch;
             o.description = description;
             o.emailsDisabled = emailsDisabled;
+            o.environmentsAccessLevel = environmentsAccessLevel;
             o.externalAuthorizationClassificationLabel = externalAuthorizationClassificationLabel;
-            o.forkedFromProject = forkedFromProject;
+            o.featureFlagsAccessLevel = featureFlagsAccessLevel;
+            o.forkedFromProjects = forkedFromProjects;
             o.forkingAccessLevel = forkingAccessLevel;
             o.forksCount = forksCount;
             o.httpUrlToRepo = httpUrlToRepo;
             o.id = id;
             o.importError = importError;
             o.importStatus = importStatus;
+            o.importUrl = importUrl;
+            o.infrastructureAccessLevel = infrastructureAccessLevel;
             o.issuesAccessLevel = issuesAccessLevel;
             o.issuesEnabled = issuesEnabled;
             o.jobsEnabled = jobsEnabled;
+            o.keepLatestArtifact = keepLatestArtifact;
             o.lastActivityAt = lastActivityAt;
             o.lfsEnabled = lfsEnabled;
             o.mergeCommitTemplate = mergeCommitTemplate;
@@ -1088,15 +1193,16 @@ public final class GetProjectsProject {
             o.mirrorOverwritesDivergedBranches = mirrorOverwritesDivergedBranches;
             o.mirrorTriggerBuilds = mirrorTriggerBuilds;
             o.mirrorUserId = mirrorUserId;
+            o.monitorAccessLevel = monitorAccessLevel;
             o.name = name;
             o.nameWithNamespace = nameWithNamespace;
-            o.namespace = namespace;
+            o.namespaces = namespaces;
             o.onlyAllowMergeIfAllDiscussionsAreResolved = onlyAllowMergeIfAllDiscussionsAreResolved;
             o.onlyAllowMergeIfPipelineSucceeds = onlyAllowMergeIfPipelineSucceeds;
             o.onlyMirrorProtectedBranches = onlyMirrorProtectedBranches;
             o.openIssuesCount = openIssuesCount;
             o.operationsAccessLevel = operationsAccessLevel;
-            o.owner = owner;
+            o.owners = owners;
             o.packagesEnabled = packagesEnabled;
             o.path = path;
             o.pathWithNamespace = pathWithNamespace;
@@ -1104,11 +1210,13 @@ public final class GetProjectsProject {
             o.public_ = public_;
             o.publicBuilds = publicBuilds;
             o.readmeUrl = readmeUrl;
+            o.releasesAccessLevel = releasesAccessLevel;
             o.repositoryAccessLevel = repositoryAccessLevel;
             o.repositoryStorage = repositoryStorage;
             o.requestAccessEnabled = requestAccessEnabled;
             o.requirementsAccessLevel = requirementsAccessLevel;
             o.resolveOutdatedDiffDiscussions = resolveOutdatedDiffDiscussions;
+            o.restrictUserDefinedVariables = restrictUserDefinedVariables;
             o.runnersToken = runnersToken;
             o.securityAndComplianceAccessLevel = securityAndComplianceAccessLevel;
             o.sharedRunnersEnabled = sharedRunnersEnabled;

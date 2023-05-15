@@ -134,7 +134,7 @@ class _ProjectMilestoneState:
         :param pulumi.Input[str] created_at: The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
         :param pulumi.Input[str] description: The description of the milestone.
         :param pulumi.Input[str] due_date: The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-        :param pulumi.Input[bool] expired: Bool, true if milestore expired.
+        :param pulumi.Input[bool] expired: Bool, true if milestone expired.
         :param pulumi.Input[int] iid: The ID of the project's milestone.
         :param pulumi.Input[int] milestone_id: The instance-wide ID of the project’s milestone.
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project owned by the authenticated user.
@@ -212,7 +212,7 @@ class _ProjectMilestoneState:
     @pulumi.getter
     def expired(self) -> Optional[pulumi.Input[bool]]:
         """
-        Bool, true if milestore expired.
+        Bool, true if milestone expired.
         """
         return pulumi.get(self, "expired")
 
@@ -492,7 +492,7 @@ class ProjectMilestone(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
         :param pulumi.Input[str] description: The description of the milestone.
         :param pulumi.Input[str] due_date: The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-        :param pulumi.Input[bool] expired: Bool, true if milestore expired.
+        :param pulumi.Input[bool] expired: Bool, true if milestone expired.
         :param pulumi.Input[int] iid: The ID of the project's milestone.
         :param pulumi.Input[int] milestone_id: The instance-wide ID of the project’s milestone.
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project owned by the authenticated user.
@@ -550,7 +550,7 @@ class ProjectMilestone(pulumi.CustomResource):
     @pulumi.getter
     def expired(self) -> pulumi.Output[bool]:
         """
-        Bool, true if milestore expired.
+        Bool, true if milestone expired.
         """
         return pulumi.get(self, "expired")
 

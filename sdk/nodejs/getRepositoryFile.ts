@@ -37,7 +37,7 @@ export function getRepositoryFile(args: GetRepositoryFileArgs, opts?: pulumi.Inv
  */
 export interface GetRepositoryFileArgs {
     /**
-     * The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     * The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      */
     filePath: string;
     /**
@@ -83,7 +83,7 @@ export interface GetRepositoryFileResult {
      */
     readonly fileName: string;
     /**
-     * The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     * The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      */
     readonly filePath: string;
     /**
@@ -134,7 +134,7 @@ export function getRepositoryFileOutput(args: GetRepositoryFileOutputArgs, opts?
  */
 export interface GetRepositoryFileOutputArgs {
     /**
-     * The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     * The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      */
     filePath: pulumi.Input<string>;
     /**

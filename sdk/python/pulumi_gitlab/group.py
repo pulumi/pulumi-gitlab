@@ -16,10 +16,13 @@ class GroupArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[str],
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
+                 avatar: Optional[pulumi.Input[str]] = None,
+                 avatar_hash: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_disabled: Optional[pulumi.Input[bool]] = None,
                  extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
+                 ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
                  membership_lock: Optional[pulumi.Input[bool]] = None,
                  mentions_disabled: Optional[pulumi.Input[bool]] = None,
@@ -38,10 +41,13 @@ class GroupArgs:
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[str] path: The path of the group.
         :param pulumi.Input[bool] auto_devops_enabled: Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+        :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
+        :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[int] default_branch_protection: Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
         :param pulumi.Input[str] description: The description of the group.
         :param pulumi.Input[bool] emails_disabled: Defaults to false. Disable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
         :param pulumi.Input[bool] lfs_enabled: Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
         :param pulumi.Input[bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[bool] mentions_disabled: Defaults to false. Disable the capability of a group from getting mentioned.
@@ -60,6 +66,10 @@ class GroupArgs:
         pulumi.set(__self__, "path", path)
         if auto_devops_enabled is not None:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
+        if avatar is not None:
+            pulumi.set(__self__, "avatar", avatar)
+        if avatar_hash is not None:
+            pulumi.set(__self__, "avatar_hash", avatar_hash)
         if default_branch_protection is not None:
             pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         if description is not None:
@@ -68,6 +78,8 @@ class GroupArgs:
             pulumi.set(__self__, "emails_disabled", emails_disabled)
         if extra_shared_runners_minutes_limit is not None:
             pulumi.set(__self__, "extra_shared_runners_minutes_limit", extra_shared_runners_minutes_limit)
+        if ip_restriction_ranges is not None:
+            pulumi.set(__self__, "ip_restriction_ranges", ip_restriction_ranges)
         if lfs_enabled is not None:
             pulumi.set(__self__, "lfs_enabled", lfs_enabled)
         if membership_lock is not None:
@@ -122,6 +134,30 @@ class GroupArgs:
         pulumi.set(self, "auto_devops_enabled", value)
 
     @property
+    @pulumi.getter
+    def avatar(self) -> Optional[pulumi.Input[str]]:
+        """
+        A local path to the avatar image to upload. **Note**: not available for imported resources.
+        """
+        return pulumi.get(self, "avatar")
+
+    @avatar.setter
+    def avatar(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "avatar", value)
+
+    @property
+    @pulumi.getter(name="avatarHash")
+    def avatar_hash(self) -> Optional[pulumi.Input[str]]:
+        """
+        The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        """
+        return pulumi.get(self, "avatar_hash")
+
+    @avatar_hash.setter
+    def avatar_hash(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "avatar_hash", value)
+
+    @property
     @pulumi.getter(name="defaultBranchProtection")
     def default_branch_protection(self) -> Optional[pulumi.Input[int]]:
         """
@@ -168,6 +204,18 @@ class GroupArgs:
     @extra_shared_runners_minutes_limit.setter
     def extra_shared_runners_minutes_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "extra_shared_runners_minutes_limit", value)
+
+    @property
+    @pulumi.getter(name="ipRestrictionRanges")
+    def ip_restriction_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+        """
+        return pulumi.get(self, "ip_restriction_ranges")
+
+    @ip_restriction_ranges.setter
+    def ip_restriction_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_restriction_ranges", value)
 
     @property
     @pulumi.getter(name="lfsEnabled")
@@ -342,12 +390,16 @@ class GroupArgs:
 class _GroupState:
     def __init__(__self__, *,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
+                 avatar: Optional[pulumi.Input[str]] = None,
+                 avatar_hash: Optional[pulumi.Input[str]] = None,
+                 avatar_url: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_disabled: Optional[pulumi.Input[bool]] = None,
                  extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
                  full_name: Optional[pulumi.Input[str]] = None,
                  full_path: Optional[pulumi.Input[str]] = None,
+                 ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
                  membership_lock: Optional[pulumi.Input[bool]] = None,
                  mentions_disabled: Optional[pulumi.Input[bool]] = None,
@@ -368,12 +420,16 @@ class _GroupState:
         """
         Input properties used for looking up and filtering Group resources.
         :param pulumi.Input[bool] auto_devops_enabled: Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+        :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
+        :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        :param pulumi.Input[str] avatar_url: The URL of the avatar image.
         :param pulumi.Input[int] default_branch_protection: Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
         :param pulumi.Input[str] description: The description of the group.
         :param pulumi.Input[bool] emails_disabled: Defaults to false. Disable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[str] full_name: The full name of the group.
         :param pulumi.Input[str] full_path: The full path of the group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
         :param pulumi.Input[bool] lfs_enabled: Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
         :param pulumi.Input[bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[bool] mentions_disabled: Defaults to false. Disable the capability of a group from getting mentioned.
@@ -394,6 +450,12 @@ class _GroupState:
         """
         if auto_devops_enabled is not None:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
+        if avatar is not None:
+            pulumi.set(__self__, "avatar", avatar)
+        if avatar_hash is not None:
+            pulumi.set(__self__, "avatar_hash", avatar_hash)
+        if avatar_url is not None:
+            pulumi.set(__self__, "avatar_url", avatar_url)
         if default_branch_protection is not None:
             pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         if description is not None:
@@ -406,6 +468,8 @@ class _GroupState:
             pulumi.set(__self__, "full_name", full_name)
         if full_path is not None:
             pulumi.set(__self__, "full_path", full_path)
+        if ip_restriction_ranges is not None:
+            pulumi.set(__self__, "ip_restriction_ranges", ip_restriction_ranges)
         if lfs_enabled is not None:
             pulumi.set(__self__, "lfs_enabled", lfs_enabled)
         if membership_lock is not None:
@@ -452,6 +516,42 @@ class _GroupState:
     @auto_devops_enabled.setter
     def auto_devops_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_devops_enabled", value)
+
+    @property
+    @pulumi.getter
+    def avatar(self) -> Optional[pulumi.Input[str]]:
+        """
+        A local path to the avatar image to upload. **Note**: not available for imported resources.
+        """
+        return pulumi.get(self, "avatar")
+
+    @avatar.setter
+    def avatar(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "avatar", value)
+
+    @property
+    @pulumi.getter(name="avatarHash")
+    def avatar_hash(self) -> Optional[pulumi.Input[str]]:
+        """
+        The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        """
+        return pulumi.get(self, "avatar_hash")
+
+    @avatar_hash.setter
+    def avatar_hash(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "avatar_hash", value)
+
+    @property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the avatar image.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @avatar_url.setter
+    def avatar_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "avatar_url", value)
 
     @property
     @pulumi.getter(name="defaultBranchProtection")
@@ -524,6 +624,18 @@ class _GroupState:
     @full_path.setter
     def full_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "full_path", value)
+
+    @property
+    @pulumi.getter(name="ipRestrictionRanges")
+    def ip_restriction_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+        """
+        return pulumi.get(self, "ip_restriction_ranges")
+
+    @ip_restriction_ranges.setter
+    def ip_restriction_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_restriction_ranges", value)
 
     @property
     @pulumi.getter(name="lfsEnabled")
@@ -736,10 +848,13 @@ class Group(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
+                 avatar: Optional[pulumi.Input[str]] = None,
+                 avatar_hash: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_disabled: Optional[pulumi.Input[bool]] = None,
                  extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
+                 ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
                  membership_lock: Optional[pulumi.Input[bool]] = None,
                  mentions_disabled: Optional[pulumi.Input[bool]] = None,
@@ -793,10 +908,13 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_devops_enabled: Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+        :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
+        :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[int] default_branch_protection: Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
         :param pulumi.Input[str] description: The description of the group.
         :param pulumi.Input[bool] emails_disabled: Defaults to false. Disable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
         :param pulumi.Input[bool] lfs_enabled: Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
         :param pulumi.Input[bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[bool] mentions_disabled: Defaults to false. Disable the capability of a group from getting mentioned.
@@ -869,10 +987,13 @@ class Group(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
+                 avatar: Optional[pulumi.Input[str]] = None,
+                 avatar_hash: Optional[pulumi.Input[str]] = None,
                  default_branch_protection: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_disabled: Optional[pulumi.Input[bool]] = None,
                  extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
+                 ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
                  membership_lock: Optional[pulumi.Input[bool]] = None,
                  mentions_disabled: Optional[pulumi.Input[bool]] = None,
@@ -898,10 +1019,13 @@ class Group(pulumi.CustomResource):
             __props__ = GroupArgs.__new__(GroupArgs)
 
             __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
+            __props__.__dict__["avatar"] = avatar
+            __props__.__dict__["avatar_hash"] = avatar_hash
             __props__.__dict__["default_branch_protection"] = default_branch_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["emails_disabled"] = emails_disabled
             __props__.__dict__["extra_shared_runners_minutes_limit"] = extra_shared_runners_minutes_limit
+            __props__.__dict__["ip_restriction_ranges"] = ip_restriction_ranges
             __props__.__dict__["lfs_enabled"] = lfs_enabled
             __props__.__dict__["membership_lock"] = membership_lock
             __props__.__dict__["mentions_disabled"] = mentions_disabled
@@ -919,6 +1043,7 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["subgroup_creation_level"] = subgroup_creation_level
             __props__.__dict__["two_factor_grace_period"] = two_factor_grace_period
             __props__.__dict__["visibility_level"] = visibility_level
+            __props__.__dict__["avatar_url"] = None
             __props__.__dict__["full_name"] = None
             __props__.__dict__["full_path"] = None
             __props__.__dict__["runners_token"] = None
@@ -936,12 +1061,16 @@ class Group(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
+            avatar: Optional[pulumi.Input[str]] = None,
+            avatar_hash: Optional[pulumi.Input[str]] = None,
+            avatar_url: Optional[pulumi.Input[str]] = None,
             default_branch_protection: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             emails_disabled: Optional[pulumi.Input[bool]] = None,
             extra_shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
             full_name: Optional[pulumi.Input[str]] = None,
             full_path: Optional[pulumi.Input[str]] = None,
+            ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             lfs_enabled: Optional[pulumi.Input[bool]] = None,
             membership_lock: Optional[pulumi.Input[bool]] = None,
             mentions_disabled: Optional[pulumi.Input[bool]] = None,
@@ -967,12 +1096,16 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_devops_enabled: Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
+        :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
+        :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        :param pulumi.Input[str] avatar_url: The URL of the avatar image.
         :param pulumi.Input[int] default_branch_protection: Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
         :param pulumi.Input[str] description: The description of the group.
         :param pulumi.Input[bool] emails_disabled: Defaults to false. Disable email notifications.
         :param pulumi.Input[int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[str] full_name: The full name of the group.
         :param pulumi.Input[str] full_path: The full path of the group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
         :param pulumi.Input[bool] lfs_enabled: Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
         :param pulumi.Input[bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[bool] mentions_disabled: Defaults to false. Disable the capability of a group from getting mentioned.
@@ -996,12 +1129,16 @@ class Group(pulumi.CustomResource):
         __props__ = _GroupState.__new__(_GroupState)
 
         __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
+        __props__.__dict__["avatar"] = avatar
+        __props__.__dict__["avatar_hash"] = avatar_hash
+        __props__.__dict__["avatar_url"] = avatar_url
         __props__.__dict__["default_branch_protection"] = default_branch_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["emails_disabled"] = emails_disabled
         __props__.__dict__["extra_shared_runners_minutes_limit"] = extra_shared_runners_minutes_limit
         __props__.__dict__["full_name"] = full_name
         __props__.__dict__["full_path"] = full_path
+        __props__.__dict__["ip_restriction_ranges"] = ip_restriction_ranges
         __props__.__dict__["lfs_enabled"] = lfs_enabled
         __props__.__dict__["membership_lock"] = membership_lock
         __props__.__dict__["mentions_disabled"] = mentions_disabled
@@ -1023,15 +1160,39 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoDevopsEnabled")
-    def auto_devops_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def auto_devops_enabled(self) -> pulumi.Output[bool]:
         """
         Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
         """
         return pulumi.get(self, "auto_devops_enabled")
 
     @property
+    @pulumi.getter
+    def avatar(self) -> pulumi.Output[Optional[str]]:
+        """
+        A local path to the avatar image to upload. **Note**: not available for imported resources.
+        """
+        return pulumi.get(self, "avatar")
+
+    @property
+    @pulumi.getter(name="avatarHash")
+    def avatar_hash(self) -> pulumi.Output[str]:
+        """
+        The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        """
+        return pulumi.get(self, "avatar_hash")
+
+    @property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> pulumi.Output[str]:
+        """
+        The URL of the avatar image.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @property
     @pulumi.getter(name="defaultBranchProtection")
-    def default_branch_protection(self) -> pulumi.Output[Optional[int]]:
+    def default_branch_protection(self) -> pulumi.Output[int]:
         """
         Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
         """
@@ -1047,7 +1208,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="emailsDisabled")
-    def emails_disabled(self) -> pulumi.Output[Optional[bool]]:
+    def emails_disabled(self) -> pulumi.Output[bool]:
         """
         Defaults to false. Disable email notifications.
         """
@@ -1055,7 +1216,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="extraSharedRunnersMinutesLimit")
-    def extra_shared_runners_minutes_limit(self) -> pulumi.Output[Optional[int]]:
+    def extra_shared_runners_minutes_limit(self) -> pulumi.Output[int]:
         """
         Can be set by administrators only. Additional CI/CD minutes for this group.
         """
@@ -1078,8 +1239,16 @@ class Group(pulumi.CustomResource):
         return pulumi.get(self, "full_path")
 
     @property
+    @pulumi.getter(name="ipRestrictionRanges")
+    def ip_restriction_ranges(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+        """
+        return pulumi.get(self, "ip_restriction_ranges")
+
+    @property
     @pulumi.getter(name="lfsEnabled")
-    def lfs_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def lfs_enabled(self) -> pulumi.Output[bool]:
         """
         Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
         """
@@ -1095,7 +1264,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mentionsDisabled")
-    def mentions_disabled(self) -> pulumi.Output[Optional[bool]]:
+    def mentions_disabled(self) -> pulumi.Output[bool]:
         """
         Defaults to false. Disable the capability of a group from getting mentioned.
         """
@@ -1111,7 +1280,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="parentId")
-    def parent_id(self) -> pulumi.Output[Optional[int]]:
+    def parent_id(self) -> pulumi.Output[int]:
         """
         Id of the parent group (creates a nested group).
         """
@@ -1127,7 +1296,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="preventForkingOutsideGroup")
-    def prevent_forking_outside_group(self) -> pulumi.Output[Optional[bool]]:
+    def prevent_forking_outside_group(self) -> pulumi.Output[bool]:
         """
         Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         """
@@ -1135,7 +1304,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectCreationLevel")
-    def project_creation_level(self) -> pulumi.Output[Optional[str]]:
+    def project_creation_level(self) -> pulumi.Output[str]:
         """
         Defaults to maintainer. Determine if developers can create projects in the group.
         """
@@ -1143,7 +1312,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requestAccessEnabled")
-    def request_access_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def request_access_enabled(self) -> pulumi.Output[bool]:
         """
         Defaults to false. Allow users to request member access.
         """
@@ -1151,7 +1320,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requireTwoFactorAuthentication")
-    def require_two_factor_authentication(self) -> pulumi.Output[Optional[bool]]:
+    def require_two_factor_authentication(self) -> pulumi.Output[bool]:
         """
         Defaults to false. Require all users in this group to setup Two-factor authentication.
         """
@@ -1167,7 +1336,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shareWithGroupLock")
-    def share_with_group_lock(self) -> pulumi.Output[Optional[bool]]:
+    def share_with_group_lock(self) -> pulumi.Output[bool]:
         """
         Defaults to false. Prevent sharing a project with another group within this group.
         """
@@ -1175,7 +1344,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sharedRunnersMinutesLimit")
-    def shared_runners_minutes_limit(self) -> pulumi.Output[Optional[int]]:
+    def shared_runners_minutes_limit(self) -> pulumi.Output[int]:
         """
         Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
         """
@@ -1183,7 +1352,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subgroupCreationLevel")
-    def subgroup_creation_level(self) -> pulumi.Output[Optional[str]]:
+    def subgroup_creation_level(self) -> pulumi.Output[str]:
         """
         Defaults to owner. Allowed to create subgroups.
         """
@@ -1191,7 +1360,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="twoFactorGracePeriod")
-    def two_factor_grace_period(self) -> pulumi.Output[Optional[int]]:
+    def two_factor_grace_period(self) -> pulumi.Output[int]:
         """
         Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         """

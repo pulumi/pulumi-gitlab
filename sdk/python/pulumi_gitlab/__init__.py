@@ -5,6 +5,7 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .application import *
 from .application_settings import *
 from .branch import *
 from .branch_protection import *
@@ -13,6 +14,7 @@ from .cluster_agent_token import *
 from .deploy_key import *
 from .deploy_key_enable import *
 from .deploy_token import *
+from .get_application import *
 from .get_branch import *
 from .get_cluster_agent import *
 from .get_cluster_agents import *
@@ -28,6 +30,7 @@ from .get_groups import *
 from .get_instance_deploy_keys import *
 from .get_instance_variable import *
 from .get_instance_variables import *
+from .get_metadata import *
 from .get_project import *
 from .get_project_branches import *
 from .get_project_hook import *
@@ -68,6 +71,7 @@ from .instance_cluster import *
 from .instance_variable import *
 from .label import *
 from .managed_license import *
+from .pages_domain import *
 from .personal_access_token import *
 from .pipeline_schedule import *
 from .pipeline_schedule_variable import *
@@ -96,6 +100,7 @@ from .provider import *
 from .release_link import *
 from .repository_file import *
 from .runner import *
+from .service_custom_issue_tracker import *
 from .service_emails_on_push import *
 from .service_external_wiki import *
 from .service_github import *
@@ -123,6 +128,14 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "gitlab",
+  "mod": "index/application",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/application:Application": "Application"
+  }
+ },
  {
   "pkg": "gitlab",
   "mod": "index/applicationSettings",
@@ -321,6 +334,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/managedLicense:ManagedLicense": "ManagedLicense"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/pagesDomain",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/pagesDomain:PagesDomain": "PagesDomain"
   }
  },
  {
@@ -537,6 +558,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/runner:Runner": "Runner"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/serviceCustomIssueTracker",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/serviceCustomIssueTracker:ServiceCustomIssueTracker": "ServiceCustomIssueTracker"
   }
  },
  {

@@ -51,7 +51,7 @@ export class Provider extends pulumi.ProviderResource {
      * https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
      * variable.
      */
-    public readonly token!: pulumi.Output<string>;
+    public readonly token!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -60,22 +60,21 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.token === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'token'");
-            }
             resourceInputs["baseUrl"] = args ? args.baseUrl : undefined;
             resourceInputs["cacertFile"] = args ? args.cacertFile : undefined;
             resourceInputs["clientCert"] = args ? args.clientCert : undefined;
             resourceInputs["clientKey"] = args ? args.clientKey : undefined;
             resourceInputs["earlyAuthCheck"] = pulumi.output(args ? args.earlyAuthCheck : undefined).apply(JSON.stringify);
             resourceInputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
-            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -106,9 +105,10 @@ export interface ProviderArgs {
     clientKey?: pulumi.Input<string>;
     /**
      * (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
-     * configuration is correct and the GitLab API is reachable. Turn it off, to skip this check. This may be useful if the
-     * GitLab instance does not yet exist and is created within the same terraform module. This is an experimental feature and
-     * may change in the future. Please make sure to always keep backups of your state.
+     * configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if
+     * the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the
+     * `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep
+     * backups of your state.
      */
     earlyAuthCheck?: pulumi.Input<boolean>;
     /**
@@ -121,5 +121,5 @@ export interface ProviderArgs {
      * https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
      * variable.
      */
-    token: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
 }

@@ -110,7 +110,6 @@ export class ProjectIssue extends pulumi.CustomResource {
     public /*out*/ readonly downvotes!: pulumi.Output<number>;
     /**
      * The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-     * **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
      */
     public readonly dueDate!: pulumi.Output<string | undefined>;
     /**
@@ -383,7 +382,6 @@ export interface ProjectIssueState {
     downvotes?: pulumi.Input<number>;
     /**
      * The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-     * **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
      */
     dueDate?: pulumi.Input<string>;
     /**
@@ -534,7 +532,6 @@ export interface ProjectIssueArgs {
     discussionToResolve?: pulumi.Input<string>;
     /**
      * The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-     * **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
      */
     dueDate?: pulumi.Input<string>;
     /**

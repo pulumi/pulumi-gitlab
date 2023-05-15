@@ -113,14 +113,14 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dueDate);
     }
     /**
-     * Bool, true if milestore expired.
+     * Bool, true if milestone expired.
      * 
      */
     @Export(name="expired", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> expired;
 
     /**
-     * @return Bool, true if milestore expired.
+     * @return Bool, true if milestone expired.
      * 
      */
     public Output<Boolean> expired() {

@@ -44,7 +44,7 @@ public final class ProjectPushRules {
      */
     private @Nullable Boolean denyDeleteTag;
     /**
-     * @return All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+     * @return All committed filenames must not match this regex, e.g. `(jar|exe)$`.
      * 
      */
     private @Nullable String fileNameRegex;
@@ -113,7 +113,7 @@ public final class ProjectPushRules {
         return Optional.ofNullable(this.denyDeleteTag);
     }
     /**
-     * @return All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+     * @return All committed filenames must not match this regex, e.g. `(jar|exe)$`.
      * 
      */
     public Optional<String> fileNameRegex() {

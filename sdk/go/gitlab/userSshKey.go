@@ -22,23 +22,23 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.LookupUser(ctx, &gitlab.LookupUserArgs{
+//			exampleUser, err := gitlab.LookupUser(ctx, &gitlab.LookupUserArgs{
 //				Username: pulumi.StringRef("example-user"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gitlab.NewUserSshKey(ctx, "exampleUserSshKey", &gitlab.UserSshKeyArgs{
-//				UserId:    pulumi.Any(data.Gitlab_user.Id),
+//				UserId:    *pulumi.String(exampleUser.Id),
 //				Title:     pulumi.String("example-key"),
-//				Key:       pulumi.String("ssh-rsa AAAA..."),
+//				Key:       pulumi.String("ssh-ed25519 AAAA..."),
 //				ExpiresAt: pulumi.String("2016-01-21T00:00:00.000Z"),
 //			})
 //			if err != nil {

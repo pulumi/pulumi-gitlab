@@ -110,7 +110,7 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
     /**
      * Array of access levels allowed to deploy, with each described by a hash.
      */
-    public readonly deployAccessLevels!: pulumi.Output<outputs.ProjectProtectedEnvironmentDeployAccessLevel[]>;
+    public readonly deployAccessLevels!: pulumi.Output<outputs.ProjectProtectedEnvironmentDeployAccessLevel[] | undefined>;
     /**
      * The name of the environment.
      */
@@ -122,7 +122,7 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
     /**
      * The number of approvals required to deploy to this environment.
      */
-    public readonly requiredApprovalCount!: pulumi.Output<number | undefined>;
+    public readonly requiredApprovalCount!: pulumi.Output<number>;
 
     /**
      * Create a ProjectProtectedEnvironment resource with the given unique name, arguments, and options.
@@ -143,9 +143,6 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
             resourceInputs["requiredApprovalCount"] = state ? state.requiredApprovalCount : undefined;
         } else {
             const args = argsOrState as ProjectProtectedEnvironmentArgs | undefined;
-            if ((!args || args.deployAccessLevels === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'deployAccessLevels'");
-            }
             if ((!args || args.environment === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
@@ -191,7 +188,7 @@ export interface ProjectProtectedEnvironmentArgs {
     /**
      * Array of access levels allowed to deploy, with each described by a hash.
      */
-    deployAccessLevels: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentDeployAccessLevel>[]>;
+    deployAccessLevels?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentDeployAccessLevel>[]>;
     /**
      * The name of the environment.
      */

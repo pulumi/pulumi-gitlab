@@ -8,6 +8,8 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gitlab.Utilities;
+import com.pulumi.gitlab.inputs.GetApplicationArgs;
+import com.pulumi.gitlab.inputs.GetApplicationPlainArgs;
 import com.pulumi.gitlab.inputs.GetBranchArgs;
 import com.pulumi.gitlab.inputs.GetBranchPlainArgs;
 import com.pulumi.gitlab.inputs.GetClusterAgentArgs;
@@ -80,6 +82,7 @@ import com.pulumi.gitlab.inputs.GetUserSshkeysArgs;
 import com.pulumi.gitlab.inputs.GetUserSshkeysPlainArgs;
 import com.pulumi.gitlab.inputs.GetUsersArgs;
 import com.pulumi.gitlab.inputs.GetUsersPlainArgs;
+import com.pulumi.gitlab.outputs.GetApplicationResult;
 import com.pulumi.gitlab.outputs.GetBranchResult;
 import com.pulumi.gitlab.outputs.GetClusterAgentResult;
 import com.pulumi.gitlab.outputs.GetClusterAgentsResult;
@@ -95,6 +98,7 @@ import com.pulumi.gitlab.outputs.GetGroupsResult;
 import com.pulumi.gitlab.outputs.GetInstanceDeployKeysResult;
 import com.pulumi.gitlab.outputs.GetInstanceVariableResult;
 import com.pulumi.gitlab.outputs.GetInstanceVariablesResult;
+import com.pulumi.gitlab.outputs.GetMetadataResult;
 import com.pulumi.gitlab.outputs.GetProjectBranchesResult;
 import com.pulumi.gitlab.outputs.GetProjectHookResult;
 import com.pulumi.gitlab.outputs.GetProjectHooksResult;
@@ -122,6 +126,166 @@ import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class GitlabFunctions {
+    /**
+     * The `gitlab.Application` data source retrieves information about a gitlab application.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = GitlabFunctions.getApplication(GetApplicationArgs.builder()
+     *             .applicationId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetApplicationResult> getApplication(GetApplicationArgs args) {
+        return getApplication(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.Application` data source retrieves information about a gitlab application.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = GitlabFunctions.getApplication(GetApplicationArgs.builder()
+     *             .applicationId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetApplicationResult> getApplicationPlain(GetApplicationPlainArgs args) {
+        return getApplicationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.Application` data source retrieves information about a gitlab application.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = GitlabFunctions.getApplication(GetApplicationArgs.builder()
+     *             .applicationId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetApplicationResult> getApplication(GetApplicationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getApplication:getApplication", TypeShape.of(GetApplicationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.Application` data source retrieves information about a gitlab application.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = GitlabFunctions.getApplication(GetApplicationArgs.builder()
+     *             .applicationId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetApplicationResult> getApplicationPlain(GetApplicationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getApplication:getApplication", TypeShape.of(GetApplicationResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * The `gitlab.Branch` data source allows details of a repository branch to be retrieved by its name and project.
      * 
@@ -3089,6 +3253,222 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invokeAsync("gitlab:index/getInstanceVariables:getInstanceVariables", TypeShape.of(GetInstanceVariablesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `gitlab.getMetadata` data source retrieves the metadata of the GitLab instance.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = GitlabFunctions.getMetadata();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetMetadataResult> getMetadata() {
+        return getMetadata(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getMetadata` data source retrieves the metadata of the GitLab instance.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = GitlabFunctions.getMetadata();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetMetadataResult> getMetadataPlain() {
+        return getMetadataPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getMetadata` data source retrieves the metadata of the GitLab instance.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = GitlabFunctions.getMetadata();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetMetadataResult> getMetadata(InvokeArgs args) {
+        return getMetadata(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getMetadata` data source retrieves the metadata of the GitLab instance.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = GitlabFunctions.getMetadata();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetMetadataResult> getMetadataPlain(InvokeArgs args) {
+        return getMetadataPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getMetadata` data source retrieves the metadata of the GitLab instance.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = GitlabFunctions.getMetadata();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetMetadataResult> getMetadata(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getMetadata:getMetadata", TypeShape.of(GetMetadataResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getMetadata` data source retrieves the metadata of the GitLab instance.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = GitlabFunctions.getMetadata();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetMetadataResult> getMetadataPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getMetadata:getMetadata", TypeShape.of(GetMetadataResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
@@ -3116,7 +3496,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
      *             .build());
      * 
      *     }
@@ -3155,7 +3535,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
      *             .build());
      * 
      *     }
@@ -3194,7 +3574,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
      *             .build());
      * 
      *     }
@@ -3233,7 +3613,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
      *             .build());
      * 
      *     }
@@ -3272,7 +3652,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
      *             .build());
      * 
      *     }
@@ -3311,7 +3691,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
      *             .build());
      * 
      *     }

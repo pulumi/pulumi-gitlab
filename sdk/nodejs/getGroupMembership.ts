@@ -30,6 +30,7 @@ export function getGroupMembership(args?: GetGroupMembershipArgs, opts?: pulumi.
         "accessLevel": args.accessLevel,
         "fullPath": args.fullPath,
         "groupId": args.groupId,
+        "inherited": args.inherited,
     }, opts);
 }
 
@@ -49,6 +50,10 @@ export interface GetGroupMembershipArgs {
      * The ID of the group.
      */
     groupId?: number;
+    /**
+     * Return all project members including members through ancestor groups.
+     */
+    inherited?: boolean;
 }
 
 /**
@@ -71,6 +76,10 @@ export interface GetGroupMembershipResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Return all project members including members through ancestor groups.
+     */
+    readonly inherited?: boolean;
     /**
      * The list of group members.
      */
@@ -112,4 +121,8 @@ export interface GetGroupMembershipOutputArgs {
      * The ID of the group.
      */
     groupId?: pulumi.Input<number>;
+    /**
+     * Return all project members including members through ancestor groups.
+     */
+    inherited?: pulumi.Input<boolean>;
 }

@@ -282,7 +282,7 @@ class Branch(pulumi.CustomResource):
 
         ## Import
 
-        Gitlab protected branches can be imported with a key composed of `<project_id>:<branch_name>`, e.g.
+        Gitlab branches can be imported with a key composed of `<project_id>:<branch_name>`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/branch:Branch example "12345:develop"
@@ -322,7 +322,7 @@ class Branch(pulumi.CustomResource):
 
         ## Import
 
-        Gitlab protected branches can be imported with a key composed of `<project_id>:<branch_name>`, e.g.
+        Gitlab branches can be imported with a key composed of `<project_id>:<branch_name>`, e.g.
 
         ```sh
          $ pulumi import gitlab:index/branch:Branch example "12345:develop"

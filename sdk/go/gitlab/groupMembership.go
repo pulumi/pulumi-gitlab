@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `GroupMembership` resource allows to manage the lifecycle of a users group membersip.
+// The `GroupMembership` resource allows to manage the lifecycle of a users group membership.
 //
 // > If a group should grant membership to another group use the `GroupShareGroup` resource instead.
 //
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

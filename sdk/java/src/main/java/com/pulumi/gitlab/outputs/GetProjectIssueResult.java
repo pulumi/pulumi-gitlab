@@ -66,7 +66,6 @@ public final class GetProjectIssueResult {
     private Integer downvotes;
     /**
      * @return The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-     * **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
      * 
      */
     private String dueDate;
@@ -289,7 +288,6 @@ public final class GetProjectIssueResult {
     }
     /**
      * @return The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-     * **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
      * 
      */
     public String dueDate() {

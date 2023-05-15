@@ -11,12 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectApprovalRule` resource allows to manage the lifecycle of a project-level approval rule.
-//
-// > This resource requires a GitLab Enterprise instance.
-//
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals)
-//
 // ## Import
 //
 // GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
@@ -31,6 +25,8 @@ type ProjectApprovalRule struct {
 
 	// The number of approvals required for this rule.
 	ApprovalsRequired pulumi.IntOutput `pulumi:"approvalsRequired"`
+	// When this flag is set, the default `anyApprover` rule will not be imported if present.
+	DisableImportingDefaultAnyApproverRuleOnCreate pulumi.BoolPtrOutput `pulumi:"disableImportingDefaultAnyApproverRuleOnCreate"`
 	// A list of group IDs whose members can approve of the merge request.
 	GroupIds pulumi.IntArrayOutput `pulumi:"groupIds"`
 	// The name of the approval rule.
@@ -82,6 +78,8 @@ func GetProjectApprovalRule(ctx *pulumi.Context,
 type projectApprovalRuleState struct {
 	// The number of approvals required for this rule.
 	ApprovalsRequired *int `pulumi:"approvalsRequired"`
+	// When this flag is set, the default `anyApprover` rule will not be imported if present.
+	DisableImportingDefaultAnyApproverRuleOnCreate *bool `pulumi:"disableImportingDefaultAnyApproverRuleOnCreate"`
 	// A list of group IDs whose members can approve of the merge request.
 	GroupIds []int `pulumi:"groupIds"`
 	// The name of the approval rule.
@@ -99,6 +97,8 @@ type projectApprovalRuleState struct {
 type ProjectApprovalRuleState struct {
 	// The number of approvals required for this rule.
 	ApprovalsRequired pulumi.IntPtrInput
+	// When this flag is set, the default `anyApprover` rule will not be imported if present.
+	DisableImportingDefaultAnyApproverRuleOnCreate pulumi.BoolPtrInput
 	// A list of group IDs whose members can approve of the merge request.
 	GroupIds pulumi.IntArrayInput
 	// The name of the approval rule.
@@ -120,6 +120,8 @@ func (ProjectApprovalRuleState) ElementType() reflect.Type {
 type projectApprovalRuleArgs struct {
 	// The number of approvals required for this rule.
 	ApprovalsRequired int `pulumi:"approvalsRequired"`
+	// When this flag is set, the default `anyApprover` rule will not be imported if present.
+	DisableImportingDefaultAnyApproverRuleOnCreate *bool `pulumi:"disableImportingDefaultAnyApproverRuleOnCreate"`
 	// A list of group IDs whose members can approve of the merge request.
 	GroupIds []int `pulumi:"groupIds"`
 	// The name of the approval rule.
@@ -138,6 +140,8 @@ type projectApprovalRuleArgs struct {
 type ProjectApprovalRuleArgs struct {
 	// The number of approvals required for this rule.
 	ApprovalsRequired pulumi.IntInput
+	// When this flag is set, the default `anyApprover` rule will not be imported if present.
+	DisableImportingDefaultAnyApproverRuleOnCreate pulumi.BoolPtrInput
 	// A list of group IDs whose members can approve of the merge request.
 	GroupIds pulumi.IntArrayInput
 	// The name of the approval rule.
@@ -242,6 +246,13 @@ func (o ProjectApprovalRuleOutput) ToProjectApprovalRuleOutputWithContext(ctx co
 // The number of approvals required for this rule.
 func (o ProjectApprovalRuleOutput) ApprovalsRequired() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectApprovalRule) pulumi.IntOutput { return v.ApprovalsRequired }).(pulumi.IntOutput)
+}
+
+// When this flag is set, the default `anyApprover` rule will not be imported if present.
+func (o ProjectApprovalRuleOutput) DisableImportingDefaultAnyApproverRuleOnCreate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectApprovalRule) pulumi.BoolPtrOutput {
+		return v.DisableImportingDefaultAnyApproverRuleOnCreate
+	}).(pulumi.BoolPtrOutput)
 }
 
 // A list of group IDs whose members can approve of the merge request.

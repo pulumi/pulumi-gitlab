@@ -53,7 +53,7 @@ namespace Pulumi.GitLab
         /// variable.
         /// </summary>
         [Output("token")]
-        public Output<string> Token { get; private set; } = null!;
+        public Output<string?> Token { get; private set; } = null!;
 
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Pulumi.GitLab
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
             : base("gitlab", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -73,6 +73,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -113,9 +117,10 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
-        /// configuration is correct and the GitLab API is reachable. Turn it off, to skip this check. This may be useful if the
-        /// GitLab instance does not yet exist and is created within the same terraform module. This is an experimental feature and
-        /// may change in the future. Please make sure to always keep backups of your state.
+        /// configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if
+        /// the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the
+        /// `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep
+        /// backups of your state.
         /// </summary>
         [Input("earlyAuthCheck", json: true)]
         public Input<bool>? EarlyAuthCheck { get; set; }
@@ -126,14 +131,24 @@ namespace Pulumi.GitLab
         [Input("insecure", json: true)]
         public Input<bool>? Insecure { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
         /// used in this provider for authentication (using Bearer authorization token). See
         /// https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
         /// variable.
         /// </summary>
-        [Input("token", required: true)]
-        public Input<string> Token { get; set; } = null!;
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ProviderArgs()
         {
