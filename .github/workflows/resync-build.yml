@@ -5,7 +5,6 @@ env:
     6.0.x
     3.1.301
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
   GOVERSION: 1.20.1
   JAVAVERSION: "11"
   NODEVERSION: 16.x
@@ -18,6 +17,7 @@ env:
   PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_EXTRA_MAPPING_ERROR: true
+  PULUMI_GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
   PULUMI_MISSING_MAPPING_ERROR: true
