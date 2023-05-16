@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -51,7 +51,7 @@ import (
 //
 // ## Import
 //
-// Gitlab protected branches can be imported with a key composed of `<project_id>:<branch_name>`, e.g.
+// Gitlab branches can be imported with a key composed of `<project_id>:<branch_name>`, e.g.
 //
 // ```sh
 //

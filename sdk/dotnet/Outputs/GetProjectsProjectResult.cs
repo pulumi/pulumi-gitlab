@@ -42,8 +42,10 @@ namespace Pulumi.GitLab.Outputs
         public readonly string DefaultBranch;
         public readonly string Description;
         public readonly bool EmailsDisabled;
+        public readonly string EnvironmentsAccessLevel;
         public readonly string ExternalAuthorizationClassificationLabel;
-        public readonly Outputs.GetProjectsProjectForkedFromProjectResult ForkedFromProject;
+        public readonly string FeatureFlagsAccessLevel;
+        public readonly ImmutableArray<Outputs.GetProjectsProjectForkedFromProjectResult> ForkedFromProjects;
         public readonly string ForkingAccessLevel;
         public readonly int ForksCount;
         public readonly string HttpUrlToRepo;
@@ -53,9 +55,12 @@ namespace Pulumi.GitLab.Outputs
         public readonly int Id;
         public readonly string ImportError;
         public readonly string ImportStatus;
+        public readonly string ImportUrl;
+        public readonly string InfrastructureAccessLevel;
         public readonly string IssuesAccessLevel;
         public readonly bool IssuesEnabled;
         public readonly bool JobsEnabled;
+        public readonly bool KeepLatestArtifact;
         public readonly string LastActivityAt;
         public readonly bool LfsEnabled;
         public readonly string MergeCommitTemplate;
@@ -68,27 +73,30 @@ namespace Pulumi.GitLab.Outputs
         public readonly bool MirrorOverwritesDivergedBranches;
         public readonly bool MirrorTriggerBuilds;
         public readonly int MirrorUserId;
+        public readonly string MonitorAccessLevel;
         public readonly string Name;
         public readonly string NameWithNamespace;
-        public readonly Outputs.GetProjectsProjectNamespaceResult Namespace;
+        public readonly ImmutableArray<Outputs.GetProjectsProjectNamespaceResult> Namespaces;
         public readonly bool OnlyAllowMergeIfAllDiscussionsAreResolved;
         public readonly bool OnlyAllowMergeIfPipelineSucceeds;
         public readonly bool OnlyMirrorProtectedBranches;
         public readonly int OpenIssuesCount;
         public readonly string OperationsAccessLevel;
-        public readonly Outputs.GetProjectsProjectOwnerResult Owner;
+        public readonly ImmutableArray<Outputs.GetProjectsProjectOwnerResult> Owners;
         public readonly bool PackagesEnabled;
         public readonly string Path;
         public readonly string PathWithNamespace;
-        public readonly Outputs.GetProjectsProjectPermissionsResult Permissions;
+        public readonly ImmutableArray<Outputs.GetProjectsProjectPermissionResult> Permissions;
         public readonly bool Public;
         public readonly bool PublicBuilds;
         public readonly string ReadmeUrl;
+        public readonly string ReleasesAccessLevel;
         public readonly string RepositoryAccessLevel;
         public readonly string RepositoryStorage;
         public readonly bool RequestAccessEnabled;
         public readonly string RequirementsAccessLevel;
         public readonly bool ResolveOutdatedDiffDiscussions;
+        public readonly bool RestrictUserDefinedVariables;
         public readonly string RunnersToken;
         public readonly string SecurityAndComplianceAccessLevel;
         public readonly bool SharedRunnersEnabled;
@@ -167,9 +175,13 @@ namespace Pulumi.GitLab.Outputs
 
             bool emailsDisabled,
 
+            string environmentsAccessLevel,
+
             string externalAuthorizationClassificationLabel,
 
-            Outputs.GetProjectsProjectForkedFromProjectResult forkedFromProject,
+            string featureFlagsAccessLevel,
+
+            ImmutableArray<Outputs.GetProjectsProjectForkedFromProjectResult> forkedFromProjects,
 
             string forkingAccessLevel,
 
@@ -183,11 +195,17 @@ namespace Pulumi.GitLab.Outputs
 
             string importStatus,
 
+            string importUrl,
+
+            string infrastructureAccessLevel,
+
             string issuesAccessLevel,
 
             bool issuesEnabled,
 
             bool jobsEnabled,
+
+            bool keepLatestArtifact,
 
             string lastActivityAt,
 
@@ -213,11 +231,13 @@ namespace Pulumi.GitLab.Outputs
 
             int mirrorUserId,
 
+            string monitorAccessLevel,
+
             string name,
 
             string nameWithNamespace,
 
-            Outputs.GetProjectsProjectNamespaceResult @namespace,
+            ImmutableArray<Outputs.GetProjectsProjectNamespaceResult> namespaces,
 
             bool onlyAllowMergeIfAllDiscussionsAreResolved,
 
@@ -229,7 +249,7 @@ namespace Pulumi.GitLab.Outputs
 
             string operationsAccessLevel,
 
-            Outputs.GetProjectsProjectOwnerResult owner,
+            ImmutableArray<Outputs.GetProjectsProjectOwnerResult> owners,
 
             bool packagesEnabled,
 
@@ -237,13 +257,15 @@ namespace Pulumi.GitLab.Outputs
 
             string pathWithNamespace,
 
-            Outputs.GetProjectsProjectPermissionsResult permissions,
+            ImmutableArray<Outputs.GetProjectsProjectPermissionResult> permissions,
 
             bool @public,
 
             bool publicBuilds,
 
             string readmeUrl,
+
+            string releasesAccessLevel,
 
             string repositoryAccessLevel,
 
@@ -254,6 +276,8 @@ namespace Pulumi.GitLab.Outputs
             string requirementsAccessLevel,
 
             bool resolveOutdatedDiffDiscussions,
+
+            bool restrictUserDefinedVariables,
 
             string runnersToken,
 
@@ -315,17 +339,22 @@ namespace Pulumi.GitLab.Outputs
             DefaultBranch = defaultBranch;
             Description = description;
             EmailsDisabled = emailsDisabled;
+            EnvironmentsAccessLevel = environmentsAccessLevel;
             ExternalAuthorizationClassificationLabel = externalAuthorizationClassificationLabel;
-            ForkedFromProject = forkedFromProject;
+            FeatureFlagsAccessLevel = featureFlagsAccessLevel;
+            ForkedFromProjects = forkedFromProjects;
             ForkingAccessLevel = forkingAccessLevel;
             ForksCount = forksCount;
             HttpUrlToRepo = httpUrlToRepo;
             Id = id;
             ImportError = importError;
             ImportStatus = importStatus;
+            ImportUrl = importUrl;
+            InfrastructureAccessLevel = infrastructureAccessLevel;
             IssuesAccessLevel = issuesAccessLevel;
             IssuesEnabled = issuesEnabled;
             JobsEnabled = jobsEnabled;
+            KeepLatestArtifact = keepLatestArtifact;
             LastActivityAt = lastActivityAt;
             LfsEnabled = lfsEnabled;
             MergeCommitTemplate = mergeCommitTemplate;
@@ -338,15 +367,16 @@ namespace Pulumi.GitLab.Outputs
             MirrorOverwritesDivergedBranches = mirrorOverwritesDivergedBranches;
             MirrorTriggerBuilds = mirrorTriggerBuilds;
             MirrorUserId = mirrorUserId;
+            MonitorAccessLevel = monitorAccessLevel;
             Name = name;
             NameWithNamespace = nameWithNamespace;
-            Namespace = @namespace;
+            Namespaces = namespaces;
             OnlyAllowMergeIfAllDiscussionsAreResolved = onlyAllowMergeIfAllDiscussionsAreResolved;
             OnlyAllowMergeIfPipelineSucceeds = onlyAllowMergeIfPipelineSucceeds;
             OnlyMirrorProtectedBranches = onlyMirrorProtectedBranches;
             OpenIssuesCount = openIssuesCount;
             OperationsAccessLevel = operationsAccessLevel;
-            Owner = owner;
+            Owners = owners;
             PackagesEnabled = packagesEnabled;
             Path = path;
             PathWithNamespace = pathWithNamespace;
@@ -354,11 +384,13 @@ namespace Pulumi.GitLab.Outputs
             Public = @public;
             PublicBuilds = publicBuilds;
             ReadmeUrl = readmeUrl;
+            ReleasesAccessLevel = releasesAccessLevel;
             RepositoryAccessLevel = repositoryAccessLevel;
             RepositoryStorage = repositoryStorage;
             RequestAccessEnabled = requestAccessEnabled;
             RequirementsAccessLevel = requirementsAccessLevel;
             ResolveOutdatedDiffDiscussions = resolveOutdatedDiffDiscussions;
+            RestrictUserDefinedVariables = restrictUserDefinedVariables;
             RunnersToken = runnersToken;
             SecurityAndComplianceAccessLevel = securityAndComplianceAccessLevel;
             SharedRunnersEnabled = sharedRunnersEnabled;

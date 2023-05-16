@@ -16,6 +16,7 @@ namespace Pulumi.GitLab.Outputs
         public readonly string Cadence;
         public readonly bool Enabled;
         public readonly int KeepN;
+        public readonly string NameRegex;
         public readonly string NameRegexDelete;
         public readonly string NameRegexKeep;
         public readonly string NextRunAt;
@@ -29,6 +30,8 @@ namespace Pulumi.GitLab.Outputs
 
             int keepN,
 
+            string nameRegex,
+
             string nameRegexDelete,
 
             string nameRegexKeep,
@@ -40,6 +43,7 @@ namespace Pulumi.GitLab.Outputs
             Cadence = cadence;
             Enabled = enabled;
             KeepN = keepN;
+            NameRegex = nameRegex;
             NameRegexDelete = nameRegexDelete;
             NameRegexKeep = nameRegexKeep;
             NextRunAt = nextRunAt;

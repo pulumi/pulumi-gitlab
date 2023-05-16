@@ -231,7 +231,6 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
     }
     /**
      * The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-     * **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
      * 
      */
     @Export(name="dueDate", refs={String.class}, tree="[0]")
@@ -239,7 +238,6 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-     * **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
      * 
      */
     public Output<Optional<String>> dueDate() {

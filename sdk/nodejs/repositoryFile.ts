@@ -86,13 +86,17 @@ export class RepositoryFile extends pulumi.CustomResource {
      */
     public /*out*/ readonly fileName!: pulumi.Output<string>;
     /**
-     * The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     * The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      */
     public readonly filePath!: pulumi.Output<string>;
     /**
      * The last known commit id.
      */
     public /*out*/ readonly lastCommitId!: pulumi.Output<string>;
+    /**
+     * Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+     */
+    public readonly overwriteOnCreate!: pulumi.Output<boolean | undefined>;
     /**
      * The name or ID of the project.
      */
@@ -136,6 +140,7 @@ export class RepositoryFile extends pulumi.CustomResource {
             resourceInputs["fileName"] = state ? state.fileName : undefined;
             resourceInputs["filePath"] = state ? state.filePath : undefined;
             resourceInputs["lastCommitId"] = state ? state.lastCommitId : undefined;
+            resourceInputs["overwriteOnCreate"] = state ? state.overwriteOnCreate : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["ref"] = state ? state.ref : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
@@ -164,6 +169,7 @@ export class RepositoryFile extends pulumi.CustomResource {
             resourceInputs["content"] = args ? args.content : undefined;
             resourceInputs["executeFilemode"] = args ? args.executeFilemode : undefined;
             resourceInputs["filePath"] = args ? args.filePath : undefined;
+            resourceInputs["overwriteOnCreate"] = args ? args.overwriteOnCreate : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["startBranch"] = args ? args.startBranch : undefined;
             resourceInputs["blobId"] = undefined /*out*/;
@@ -229,13 +235,17 @@ export interface RepositoryFileState {
      */
     fileName?: pulumi.Input<string>;
     /**
-     * The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     * The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      */
     filePath?: pulumi.Input<string>;
     /**
      * The last known commit id.
      */
     lastCommitId?: pulumi.Input<string>;
+    /**
+     * Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+     */
+    overwriteOnCreate?: pulumi.Input<boolean>;
     /**
      * The name or ID of the project.
      */
@@ -283,9 +293,13 @@ export interface RepositoryFileArgs {
      */
     executeFilemode?: pulumi.Input<boolean>;
     /**
-     * The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     * The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      */
     filePath: pulumi.Input<string>;
+    /**
+     * Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+     */
+    overwriteOnCreate?: pulumi.Input<boolean>;
     /**
      * The name or ID of the project.
      */

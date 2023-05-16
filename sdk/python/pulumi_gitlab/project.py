@@ -25,6 +25,8 @@ class ProjectArgs:
                  auto_devops_deploy_strategy: Optional[pulumi.Input[str]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  autoclose_referenced_issues: Optional[pulumi.Input[bool]] = None,
+                 avatar: Optional[pulumi.Input[str]] = None,
+                 avatar_hash: Optional[pulumi.Input[str]] = None,
                  build_coverage_regex: Optional[pulumi.Input[str]] = None,
                  build_git_strategy: Optional[pulumi.Input[str]] = None,
                  build_timeout: Optional[pulumi.Input[int]] = None,
@@ -32,20 +34,28 @@ class ProjectArgs:
                  ci_config_path: Optional[pulumi.Input[str]] = None,
                  ci_default_git_depth: Optional[pulumi.Input[int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
+                 ci_separated_caches: Optional[pulumi.Input[bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']] = None,
                  container_registry_access_level: Optional[pulumi.Input[str]] = None,
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_disabled: Optional[pulumi.Input[bool]] = None,
+                 environments_access_level: Optional[pulumi.Input[str]] = None,
                  external_authorization_classification_label: Optional[pulumi.Input[str]] = None,
+                 feature_flags_access_level: Optional[pulumi.Input[str]] = None,
+                 forked_from_project_id: Optional[pulumi.Input[int]] = None,
                  forking_access_level: Optional[pulumi.Input[str]] = None,
                  group_with_project_templates_id: Optional[pulumi.Input[int]] = None,
                  import_url: Optional[pulumi.Input[str]] = None,
+                 import_url_password: Optional[pulumi.Input[str]] = None,
+                 import_url_username: Optional[pulumi.Input[str]] = None,
+                 infrastructure_access_level: Optional[pulumi.Input[str]] = None,
                  initialize_with_readme: Optional[pulumi.Input[bool]] = None,
                  issues_access_level: Optional[pulumi.Input[str]] = None,
                  issues_enabled: Optional[pulumi.Input[bool]] = None,
                  issues_template: Optional[pulumi.Input[str]] = None,
+                 keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_commit_template: Optional[pulumi.Input[str]] = None,
                  merge_method: Optional[pulumi.Input[str]] = None,
@@ -57,6 +67,8 @@ class ProjectArgs:
                  mirror: Optional[pulumi.Input[bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
+                 monitor_access_level: Optional[pulumi.Input[str]] = None,
+                 mr_default_target_self: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[int]] = None,
                  only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
@@ -70,12 +82,14 @@ class ProjectArgs:
                  printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
                  public_builds: Optional[pulumi.Input[bool]] = None,
                  push_rules: Optional[pulumi.Input['ProjectPushRulesArgs']] = None,
+                 releases_access_level: Optional[pulumi.Input[str]] = None,
                  remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
                  repository_access_level: Optional[pulumi.Input[str]] = None,
                  repository_storage: Optional[pulumi.Input[str]] = None,
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  requirements_access_level: Optional[pulumi.Input[str]] = None,
                  resolve_outdated_diff_discussions: Optional[pulumi.Input[bool]] = None,
+                 restrict_user_defined_variables: Optional[pulumi.Input[bool]] = None,
                  security_and_compliance_access_level: Optional[pulumi.Input[str]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
                  skip_wait_for_default_branch_protection: Optional[pulumi.Input[bool]] = None,
@@ -106,6 +120,8 @@ class ProjectArgs:
         :param pulumi.Input[str] auto_devops_deploy_strategy: Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         :param pulumi.Input[bool] auto_devops_enabled: Enable Auto DevOps for this project.
         :param pulumi.Input[bool] autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
+        :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
+        :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         :param pulumi.Input[str] build_git_strategy: The Git strategy. Defaults to fetch.
         :param pulumi.Input[int] build_timeout: The maximum amount of time, in seconds, that a job can run.
@@ -113,20 +129,36 @@ class ProjectArgs:
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input['ProjectContainerExpirationPolicyArgs'] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
         :param pulumi.Input[bool] emails_disabled: Disable email notifications.
+        :param pulumi.Input[str] environments_access_level: Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] external_authorization_classification_label: The classification label for the project.
+        :param pulumi.Input[str] feature_flags_access_level: Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[int] forked_from_project_id: The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
         :param pulumi.Input[str] forking_access_level: Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
-        :param pulumi.Input[str] import_url: Git URL to a repository to be imported.
+        :param pulumi.Input[str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+               together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+               Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+               credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+               `terraform import`. See the examples section for how to properly use it.
+        :param pulumi.Input[str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+               to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+               use it.
+        :param pulumi.Input[str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+               to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+               use it.
+        :param pulumi.Input[str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
         :param pulumi.Input[str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
+        :param pulumi.Input[bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_commit_template: Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
         :param pulumi.Input[str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
@@ -138,6 +170,8 @@ class ProjectArgs:
         :param pulumi.Input[bool] mirror: Enable project pull mirror.
         :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
         :param pulumi.Input[bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
+        :param pulumi.Input[str] monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[bool] mr_default_target_self: For forked projects, target merge requests to this project. If false, the target will be the upstream project.
         :param pulumi.Input[str] name: The name of the project.
         :param pulumi.Input[int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
@@ -151,12 +185,14 @@ class ProjectArgs:
         :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input['ProjectPushRulesArgs'] push_rules: Push rules for the project.
+        :param pulumi.Input[str] releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[str] repository_access_level: Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] repository_storage: Which storage shard the repository is on. (administrator only)
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[str] requirements_access_level: Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] resolve_outdated_diff_discussions: Automatically resolve merge request diffs discussions on lines changed with a push.
+        :param pulumi.Input[bool] restrict_user_defined_variables: Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
         :param pulumi.Input[str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[bool] skip_wait_for_default_branch_protection: If `true`, the default behavior to wait for the default branch protection to be created is skipped.
@@ -173,6 +209,7 @@ class ProjectArgs:
         :param pulumi.Input[int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: The list of topics for the project.
         :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public project.
         :param pulumi.Input[str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
@@ -195,6 +232,10 @@ class ProjectArgs:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
         if autoclose_referenced_issues is not None:
             pulumi.set(__self__, "autoclose_referenced_issues", autoclose_referenced_issues)
+        if avatar is not None:
+            pulumi.set(__self__, "avatar", avatar)
+        if avatar_hash is not None:
+            pulumi.set(__self__, "avatar_hash", avatar_hash)
         if build_coverage_regex is not None:
             warnings.warn("""build_coverage_regex is removed in GitLab 15.0.""", DeprecationWarning)
             pulumi.log.warn("""build_coverage_regex is deprecated: build_coverage_regex is removed in GitLab 15.0.""")
@@ -212,10 +253,15 @@ class ProjectArgs:
             pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
         if ci_forward_deployment_enabled is not None:
             pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
+        if ci_separated_caches is not None:
+            pulumi.set(__self__, "ci_separated_caches", ci_separated_caches)
         if container_expiration_policy is not None:
             pulumi.set(__self__, "container_expiration_policy", container_expiration_policy)
         if container_registry_access_level is not None:
             pulumi.set(__self__, "container_registry_access_level", container_registry_access_level)
+        if container_registry_enabled is not None:
+            warnings.warn("""Use `container_registry_access_level` instead.""", DeprecationWarning)
+            pulumi.log.warn("""container_registry_enabled is deprecated: Use `container_registry_access_level` instead.""")
         if container_registry_enabled is not None:
             pulumi.set(__self__, "container_registry_enabled", container_registry_enabled)
         if default_branch is not None:
@@ -224,14 +270,26 @@ class ProjectArgs:
             pulumi.set(__self__, "description", description)
         if emails_disabled is not None:
             pulumi.set(__self__, "emails_disabled", emails_disabled)
+        if environments_access_level is not None:
+            pulumi.set(__self__, "environments_access_level", environments_access_level)
         if external_authorization_classification_label is not None:
             pulumi.set(__self__, "external_authorization_classification_label", external_authorization_classification_label)
+        if feature_flags_access_level is not None:
+            pulumi.set(__self__, "feature_flags_access_level", feature_flags_access_level)
+        if forked_from_project_id is not None:
+            pulumi.set(__self__, "forked_from_project_id", forked_from_project_id)
         if forking_access_level is not None:
             pulumi.set(__self__, "forking_access_level", forking_access_level)
         if group_with_project_templates_id is not None:
             pulumi.set(__self__, "group_with_project_templates_id", group_with_project_templates_id)
         if import_url is not None:
             pulumi.set(__self__, "import_url", import_url)
+        if import_url_password is not None:
+            pulumi.set(__self__, "import_url_password", import_url_password)
+        if import_url_username is not None:
+            pulumi.set(__self__, "import_url_username", import_url_username)
+        if infrastructure_access_level is not None:
+            pulumi.set(__self__, "infrastructure_access_level", infrastructure_access_level)
         if initialize_with_readme is not None:
             pulumi.set(__self__, "initialize_with_readme", initialize_with_readme)
         if issues_access_level is not None:
@@ -240,6 +298,8 @@ class ProjectArgs:
             pulumi.set(__self__, "issues_enabled", issues_enabled)
         if issues_template is not None:
             pulumi.set(__self__, "issues_template", issues_template)
+        if keep_latest_artifact is not None:
+            pulumi.set(__self__, "keep_latest_artifact", keep_latest_artifact)
         if lfs_enabled is not None:
             pulumi.set(__self__, "lfs_enabled", lfs_enabled)
         if merge_commit_template is not None:
@@ -262,6 +322,10 @@ class ProjectArgs:
             pulumi.set(__self__, "mirror_overwrites_diverged_branches", mirror_overwrites_diverged_branches)
         if mirror_trigger_builds is not None:
             pulumi.set(__self__, "mirror_trigger_builds", mirror_trigger_builds)
+        if monitor_access_level is not None:
+            pulumi.set(__self__, "monitor_access_level", monitor_access_level)
+        if mr_default_target_self is not None:
+            pulumi.set(__self__, "mr_default_target_self", mr_default_target_self)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if namespace_id is not None:
@@ -291,6 +355,8 @@ class ProjectArgs:
             pulumi.set(__self__, "public_builds", public_builds)
         if push_rules is not None:
             pulumi.set(__self__, "push_rules", push_rules)
+        if releases_access_level is not None:
+            pulumi.set(__self__, "releases_access_level", releases_access_level)
         if remove_source_branch_after_merge is not None:
             pulumi.set(__self__, "remove_source_branch_after_merge", remove_source_branch_after_merge)
         if repository_access_level is not None:
@@ -303,6 +369,8 @@ class ProjectArgs:
             pulumi.set(__self__, "requirements_access_level", requirements_access_level)
         if resolve_outdated_diff_discussions is not None:
             pulumi.set(__self__, "resolve_outdated_diff_discussions", resolve_outdated_diff_discussions)
+        if restrict_user_defined_variables is not None:
+            pulumi.set(__self__, "restrict_user_defined_variables", restrict_user_defined_variables)
         if security_and_compliance_access_level is not None:
             pulumi.set(__self__, "security_and_compliance_access_level", security_and_compliance_access_level)
         if shared_runners_enabled is not None:
@@ -448,6 +516,30 @@ class ProjectArgs:
         pulumi.set(self, "autoclose_referenced_issues", value)
 
     @property
+    @pulumi.getter
+    def avatar(self) -> Optional[pulumi.Input[str]]:
+        """
+        A local path to the avatar image to upload. **Note**: not available for imported resources.
+        """
+        return pulumi.get(self, "avatar")
+
+    @avatar.setter
+    def avatar(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "avatar", value)
+
+    @property
+    @pulumi.getter(name="avatarHash")
+    def avatar_hash(self) -> Optional[pulumi.Input[str]]:
+        """
+        The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        """
+        return pulumi.get(self, "avatar_hash")
+
+    @avatar_hash.setter
+    def avatar_hash(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "avatar_hash", value)
+
+    @property
     @pulumi.getter(name="buildCoverageRegex")
     def build_coverage_regex(self) -> Optional[pulumi.Input[str]]:
         """
@@ -532,6 +624,18 @@ class ProjectArgs:
         pulumi.set(self, "ci_forward_deployment_enabled", value)
 
     @property
+    @pulumi.getter(name="ciSeparatedCaches")
+    def ci_separated_caches(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use separate caches for protected branches.
+        """
+        return pulumi.get(self, "ci_separated_caches")
+
+    @ci_separated_caches.setter
+    def ci_separated_caches(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ci_separated_caches", value)
+
+    @property
     @pulumi.getter(name="containerExpirationPolicy")
     def container_expiration_policy(self) -> Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']]:
         """
@@ -604,6 +708,18 @@ class ProjectArgs:
         pulumi.set(self, "emails_disabled", value)
 
     @property
+    @pulumi.getter(name="environmentsAccessLevel")
+    def environments_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "environments_access_level")
+
+    @environments_access_level.setter
+    def environments_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environments_access_level", value)
+
+    @property
     @pulumi.getter(name="externalAuthorizationClassificationLabel")
     def external_authorization_classification_label(self) -> Optional[pulumi.Input[str]]:
         """
@@ -614,6 +730,30 @@ class ProjectArgs:
     @external_authorization_classification_label.setter
     def external_authorization_classification_label(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "external_authorization_classification_label", value)
+
+    @property
+    @pulumi.getter(name="featureFlagsAccessLevel")
+    def feature_flags_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "feature_flags_access_level")
+
+    @feature_flags_access_level.setter
+    def feature_flags_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "feature_flags_access_level", value)
+
+    @property
+    @pulumi.getter(name="forkedFromProjectId")
+    def forked_from_project_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
+        """
+        return pulumi.get(self, "forked_from_project_id")
+
+    @forked_from_project_id.setter
+    def forked_from_project_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "forked_from_project_id", value)
 
     @property
     @pulumi.getter(name="forkingAccessLevel")
@@ -643,13 +783,57 @@ class ProjectArgs:
     @pulumi.getter(name="importUrl")
     def import_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Git URL to a repository to be imported.
+        Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+        together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+        Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+        credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+        `terraform import`. See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url")
 
     @import_url.setter
     def import_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "import_url", value)
+
+    @property
+    @pulumi.getter(name="importUrlPassword")
+    def import_url_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+        to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+        use it.
+        """
+        return pulumi.get(self, "import_url_password")
+
+    @import_url_password.setter
+    def import_url_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "import_url_password", value)
+
+    @property
+    @pulumi.getter(name="importUrlUsername")
+    def import_url_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+        to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+        use it.
+        """
+        return pulumi.get(self, "import_url_username")
+
+    @import_url_username.setter
+    def import_url_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "import_url_username", value)
+
+    @property
+    @pulumi.getter(name="infrastructureAccessLevel")
+    def infrastructure_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "infrastructure_access_level")
+
+    @infrastructure_access_level.setter
+    def infrastructure_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "infrastructure_access_level", value)
 
     @property
     @pulumi.getter(name="initializeWithReadme")
@@ -698,6 +882,18 @@ class ProjectArgs:
     @issues_template.setter
     def issues_template(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "issues_template", value)
+
+    @property
+    @pulumi.getter(name="keepLatestArtifact")
+    def keep_latest_artifact(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable or enable the ability to keep the latest artifact for this project.
+        """
+        return pulumi.get(self, "keep_latest_artifact")
+
+    @keep_latest_artifact.setter
+    def keep_latest_artifact(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "keep_latest_artifact", value)
 
     @property
     @pulumi.getter(name="lfsEnabled")
@@ -830,6 +1026,30 @@ class ProjectArgs:
     @mirror_trigger_builds.setter
     def mirror_trigger_builds(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "mirror_trigger_builds", value)
+
+    @property
+    @pulumi.getter(name="monitorAccessLevel")
+    def monitor_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "monitor_access_level")
+
+    @monitor_access_level.setter
+    def monitor_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "monitor_access_level", value)
+
+    @property
+    @pulumi.getter(name="mrDefaultTargetSelf")
+    def mr_default_target_self(self) -> Optional[pulumi.Input[bool]]:
+        """
+        For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+        """
+        return pulumi.get(self, "mr_default_target_self")
+
+    @mr_default_target_self.setter
+    def mr_default_target_self(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mr_default_target_self", value)
 
     @property
     @pulumi.getter
@@ -988,6 +1208,18 @@ class ProjectArgs:
         pulumi.set(self, "push_rules", value)
 
     @property
+    @pulumi.getter(name="releasesAccessLevel")
+    def releases_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "releases_access_level")
+
+    @releases_access_level.setter
+    def releases_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "releases_access_level", value)
+
+    @property
     @pulumi.getter(name="removeSourceBranchAfterMerge")
     def remove_source_branch_after_merge(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1058,6 +1290,18 @@ class ProjectArgs:
     @resolve_outdated_diff_discussions.setter
     def resolve_outdated_diff_discussions(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "resolve_outdated_diff_discussions", value)
+
+    @property
+    @pulumi.getter(name="restrictUserDefinedVariables")
+    def restrict_user_defined_variables(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        """
+        return pulumi.get(self, "restrict_user_defined_variables")
+
+    @restrict_user_defined_variables.setter
+    def restrict_user_defined_variables(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "restrict_user_defined_variables", value)
 
     @property
     @pulumi.getter(name="securityAndComplianceAccessLevel")
@@ -1211,6 +1455,7 @@ class ProjectArgs:
     def use_custom_template(self) -> Optional[pulumi.Input[bool]]:
         """
         Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+        	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         """
         return pulumi.get(self, "use_custom_template")
 
@@ -1267,6 +1512,9 @@ class _ProjectState:
                  auto_devops_deploy_strategy: Optional[pulumi.Input[str]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  autoclose_referenced_issues: Optional[pulumi.Input[bool]] = None,
+                 avatar: Optional[pulumi.Input[str]] = None,
+                 avatar_hash: Optional[pulumi.Input[str]] = None,
+                 avatar_url: Optional[pulumi.Input[str]] = None,
                  build_coverage_regex: Optional[pulumi.Input[str]] = None,
                  build_git_strategy: Optional[pulumi.Input[str]] = None,
                  build_timeout: Optional[pulumi.Input[int]] = None,
@@ -1274,21 +1522,29 @@ class _ProjectState:
                  ci_config_path: Optional[pulumi.Input[str]] = None,
                  ci_default_git_depth: Optional[pulumi.Input[int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
+                 ci_separated_caches: Optional[pulumi.Input[bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']] = None,
                  container_registry_access_level: Optional[pulumi.Input[str]] = None,
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_disabled: Optional[pulumi.Input[bool]] = None,
+                 environments_access_level: Optional[pulumi.Input[str]] = None,
                  external_authorization_classification_label: Optional[pulumi.Input[str]] = None,
+                 feature_flags_access_level: Optional[pulumi.Input[str]] = None,
+                 forked_from_project_id: Optional[pulumi.Input[int]] = None,
                  forking_access_level: Optional[pulumi.Input[str]] = None,
                  group_with_project_templates_id: Optional[pulumi.Input[int]] = None,
                  http_url_to_repo: Optional[pulumi.Input[str]] = None,
                  import_url: Optional[pulumi.Input[str]] = None,
+                 import_url_password: Optional[pulumi.Input[str]] = None,
+                 import_url_username: Optional[pulumi.Input[str]] = None,
+                 infrastructure_access_level: Optional[pulumi.Input[str]] = None,
                  initialize_with_readme: Optional[pulumi.Input[bool]] = None,
                  issues_access_level: Optional[pulumi.Input[str]] = None,
                  issues_enabled: Optional[pulumi.Input[bool]] = None,
                  issues_template: Optional[pulumi.Input[str]] = None,
+                 keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_commit_template: Optional[pulumi.Input[str]] = None,
                  merge_method: Optional[pulumi.Input[str]] = None,
@@ -1300,6 +1556,8 @@ class _ProjectState:
                  mirror: Optional[pulumi.Input[bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
+                 monitor_access_level: Optional[pulumi.Input[str]] = None,
+                 mr_default_target_self: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[int]] = None,
                  only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
@@ -1314,12 +1572,14 @@ class _ProjectState:
                  printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
                  public_builds: Optional[pulumi.Input[bool]] = None,
                  push_rules: Optional[pulumi.Input['ProjectPushRulesArgs']] = None,
+                 releases_access_level: Optional[pulumi.Input[str]] = None,
                  remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
                  repository_access_level: Optional[pulumi.Input[str]] = None,
                  repository_storage: Optional[pulumi.Input[str]] = None,
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  requirements_access_level: Optional[pulumi.Input[str]] = None,
                  resolve_outdated_diff_discussions: Optional[pulumi.Input[bool]] = None,
+                 restrict_user_defined_variables: Optional[pulumi.Input[bool]] = None,
                  runners_token: Optional[pulumi.Input[str]] = None,
                  security_and_compliance_access_level: Optional[pulumi.Input[str]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
@@ -1353,6 +1613,9 @@ class _ProjectState:
         :param pulumi.Input[str] auto_devops_deploy_strategy: Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         :param pulumi.Input[bool] auto_devops_enabled: Enable Auto DevOps for this project.
         :param pulumi.Input[bool] autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
+        :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
+        :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        :param pulumi.Input[str] avatar_url: The URL of the avatar image.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         :param pulumi.Input[str] build_git_strategy: The Git strategy. Defaults to fetch.
         :param pulumi.Input[int] build_timeout: The maximum amount of time, in seconds, that a job can run.
@@ -1360,21 +1623,37 @@ class _ProjectState:
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input['ProjectContainerExpirationPolicyArgs'] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
         :param pulumi.Input[bool] emails_disabled: Disable email notifications.
+        :param pulumi.Input[str] environments_access_level: Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] external_authorization_classification_label: The classification label for the project.
+        :param pulumi.Input[str] feature_flags_access_level: Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[int] forked_from_project_id: The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
         :param pulumi.Input[str] forking_access_level: Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         :param pulumi.Input[str] http_url_to_repo: URL that can be provided to `git clone` to clone the
-        :param pulumi.Input[str] import_url: Git URL to a repository to be imported.
+        :param pulumi.Input[str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+               together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+               Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+               credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+               `terraform import`. See the examples section for how to properly use it.
+        :param pulumi.Input[str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+               to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+               use it.
+        :param pulumi.Input[str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+               to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+               use it.
+        :param pulumi.Input[str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
         :param pulumi.Input[str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
+        :param pulumi.Input[bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_commit_template: Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
         :param pulumi.Input[str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
@@ -1386,6 +1665,8 @@ class _ProjectState:
         :param pulumi.Input[bool] mirror: Enable project pull mirror.
         :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
         :param pulumi.Input[bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
+        :param pulumi.Input[str] monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[bool] mr_default_target_self: For forked projects, target merge requests to this project. If false, the target will be the upstream project.
         :param pulumi.Input[str] name: The name of the project.
         :param pulumi.Input[int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
@@ -1400,12 +1681,14 @@ class _ProjectState:
         :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input['ProjectPushRulesArgs'] push_rules: Push rules for the project.
+        :param pulumi.Input[str] releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[str] repository_access_level: Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] repository_storage: Which storage shard the repository is on. (administrator only)
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[str] requirements_access_level: Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] resolve_outdated_diff_discussions: Automatically resolve merge request diffs discussions on lines changed with a push.
+        :param pulumi.Input[bool] restrict_user_defined_variables: Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
         :param pulumi.Input[str] runners_token: Registration token to use during runner setup.
         :param pulumi.Input[str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
@@ -1424,6 +1707,7 @@ class _ProjectState:
         :param pulumi.Input[int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: The list of topics for the project.
         :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public project.
         :param pulumi.Input[str] web_url: URL that can be used to find the project in a browser.
         :param pulumi.Input[str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1447,6 +1731,12 @@ class _ProjectState:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
         if autoclose_referenced_issues is not None:
             pulumi.set(__self__, "autoclose_referenced_issues", autoclose_referenced_issues)
+        if avatar is not None:
+            pulumi.set(__self__, "avatar", avatar)
+        if avatar_hash is not None:
+            pulumi.set(__self__, "avatar_hash", avatar_hash)
+        if avatar_url is not None:
+            pulumi.set(__self__, "avatar_url", avatar_url)
         if build_coverage_regex is not None:
             warnings.warn("""build_coverage_regex is removed in GitLab 15.0.""", DeprecationWarning)
             pulumi.log.warn("""build_coverage_regex is deprecated: build_coverage_regex is removed in GitLab 15.0.""")
@@ -1464,10 +1754,15 @@ class _ProjectState:
             pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
         if ci_forward_deployment_enabled is not None:
             pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
+        if ci_separated_caches is not None:
+            pulumi.set(__self__, "ci_separated_caches", ci_separated_caches)
         if container_expiration_policy is not None:
             pulumi.set(__self__, "container_expiration_policy", container_expiration_policy)
         if container_registry_access_level is not None:
             pulumi.set(__self__, "container_registry_access_level", container_registry_access_level)
+        if container_registry_enabled is not None:
+            warnings.warn("""Use `container_registry_access_level` instead.""", DeprecationWarning)
+            pulumi.log.warn("""container_registry_enabled is deprecated: Use `container_registry_access_level` instead.""")
         if container_registry_enabled is not None:
             pulumi.set(__self__, "container_registry_enabled", container_registry_enabled)
         if default_branch is not None:
@@ -1476,8 +1771,14 @@ class _ProjectState:
             pulumi.set(__self__, "description", description)
         if emails_disabled is not None:
             pulumi.set(__self__, "emails_disabled", emails_disabled)
+        if environments_access_level is not None:
+            pulumi.set(__self__, "environments_access_level", environments_access_level)
         if external_authorization_classification_label is not None:
             pulumi.set(__self__, "external_authorization_classification_label", external_authorization_classification_label)
+        if feature_flags_access_level is not None:
+            pulumi.set(__self__, "feature_flags_access_level", feature_flags_access_level)
+        if forked_from_project_id is not None:
+            pulumi.set(__self__, "forked_from_project_id", forked_from_project_id)
         if forking_access_level is not None:
             pulumi.set(__self__, "forking_access_level", forking_access_level)
         if group_with_project_templates_id is not None:
@@ -1486,6 +1787,12 @@ class _ProjectState:
             pulumi.set(__self__, "http_url_to_repo", http_url_to_repo)
         if import_url is not None:
             pulumi.set(__self__, "import_url", import_url)
+        if import_url_password is not None:
+            pulumi.set(__self__, "import_url_password", import_url_password)
+        if import_url_username is not None:
+            pulumi.set(__self__, "import_url_username", import_url_username)
+        if infrastructure_access_level is not None:
+            pulumi.set(__self__, "infrastructure_access_level", infrastructure_access_level)
         if initialize_with_readme is not None:
             pulumi.set(__self__, "initialize_with_readme", initialize_with_readme)
         if issues_access_level is not None:
@@ -1494,6 +1801,8 @@ class _ProjectState:
             pulumi.set(__self__, "issues_enabled", issues_enabled)
         if issues_template is not None:
             pulumi.set(__self__, "issues_template", issues_template)
+        if keep_latest_artifact is not None:
+            pulumi.set(__self__, "keep_latest_artifact", keep_latest_artifact)
         if lfs_enabled is not None:
             pulumi.set(__self__, "lfs_enabled", lfs_enabled)
         if merge_commit_template is not None:
@@ -1516,6 +1825,10 @@ class _ProjectState:
             pulumi.set(__self__, "mirror_overwrites_diverged_branches", mirror_overwrites_diverged_branches)
         if mirror_trigger_builds is not None:
             pulumi.set(__self__, "mirror_trigger_builds", mirror_trigger_builds)
+        if monitor_access_level is not None:
+            pulumi.set(__self__, "monitor_access_level", monitor_access_level)
+        if mr_default_target_self is not None:
+            pulumi.set(__self__, "mr_default_target_self", mr_default_target_self)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if namespace_id is not None:
@@ -1547,6 +1860,8 @@ class _ProjectState:
             pulumi.set(__self__, "public_builds", public_builds)
         if push_rules is not None:
             pulumi.set(__self__, "push_rules", push_rules)
+        if releases_access_level is not None:
+            pulumi.set(__self__, "releases_access_level", releases_access_level)
         if remove_source_branch_after_merge is not None:
             pulumi.set(__self__, "remove_source_branch_after_merge", remove_source_branch_after_merge)
         if repository_access_level is not None:
@@ -1559,6 +1874,8 @@ class _ProjectState:
             pulumi.set(__self__, "requirements_access_level", requirements_access_level)
         if resolve_outdated_diff_discussions is not None:
             pulumi.set(__self__, "resolve_outdated_diff_discussions", resolve_outdated_diff_discussions)
+        if restrict_user_defined_variables is not None:
+            pulumi.set(__self__, "restrict_user_defined_variables", restrict_user_defined_variables)
         if runners_token is not None:
             pulumi.set(__self__, "runners_token", runners_token)
         if security_and_compliance_access_level is not None:
@@ -1710,6 +2027,42 @@ class _ProjectState:
         pulumi.set(self, "autoclose_referenced_issues", value)
 
     @property
+    @pulumi.getter
+    def avatar(self) -> Optional[pulumi.Input[str]]:
+        """
+        A local path to the avatar image to upload. **Note**: not available for imported resources.
+        """
+        return pulumi.get(self, "avatar")
+
+    @avatar.setter
+    def avatar(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "avatar", value)
+
+    @property
+    @pulumi.getter(name="avatarHash")
+    def avatar_hash(self) -> Optional[pulumi.Input[str]]:
+        """
+        The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        """
+        return pulumi.get(self, "avatar_hash")
+
+    @avatar_hash.setter
+    def avatar_hash(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "avatar_hash", value)
+
+    @property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the avatar image.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @avatar_url.setter
+    def avatar_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "avatar_url", value)
+
+    @property
     @pulumi.getter(name="buildCoverageRegex")
     def build_coverage_regex(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1794,6 +2147,18 @@ class _ProjectState:
         pulumi.set(self, "ci_forward_deployment_enabled", value)
 
     @property
+    @pulumi.getter(name="ciSeparatedCaches")
+    def ci_separated_caches(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use separate caches for protected branches.
+        """
+        return pulumi.get(self, "ci_separated_caches")
+
+    @ci_separated_caches.setter
+    def ci_separated_caches(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ci_separated_caches", value)
+
+    @property
     @pulumi.getter(name="containerExpirationPolicy")
     def container_expiration_policy(self) -> Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']]:
         """
@@ -1866,6 +2231,18 @@ class _ProjectState:
         pulumi.set(self, "emails_disabled", value)
 
     @property
+    @pulumi.getter(name="environmentsAccessLevel")
+    def environments_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "environments_access_level")
+
+    @environments_access_level.setter
+    def environments_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environments_access_level", value)
+
+    @property
     @pulumi.getter(name="externalAuthorizationClassificationLabel")
     def external_authorization_classification_label(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1876,6 +2253,30 @@ class _ProjectState:
     @external_authorization_classification_label.setter
     def external_authorization_classification_label(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "external_authorization_classification_label", value)
+
+    @property
+    @pulumi.getter(name="featureFlagsAccessLevel")
+    def feature_flags_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "feature_flags_access_level")
+
+    @feature_flags_access_level.setter
+    def feature_flags_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "feature_flags_access_level", value)
+
+    @property
+    @pulumi.getter(name="forkedFromProjectId")
+    def forked_from_project_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
+        """
+        return pulumi.get(self, "forked_from_project_id")
+
+    @forked_from_project_id.setter
+    def forked_from_project_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "forked_from_project_id", value)
 
     @property
     @pulumi.getter(name="forkingAccessLevel")
@@ -1917,13 +2318,57 @@ class _ProjectState:
     @pulumi.getter(name="importUrl")
     def import_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Git URL to a repository to be imported.
+        Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+        together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+        Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+        credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+        `terraform import`. See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url")
 
     @import_url.setter
     def import_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "import_url", value)
+
+    @property
+    @pulumi.getter(name="importUrlPassword")
+    def import_url_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+        to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+        use it.
+        """
+        return pulumi.get(self, "import_url_password")
+
+    @import_url_password.setter
+    def import_url_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "import_url_password", value)
+
+    @property
+    @pulumi.getter(name="importUrlUsername")
+    def import_url_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+        to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+        use it.
+        """
+        return pulumi.get(self, "import_url_username")
+
+    @import_url_username.setter
+    def import_url_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "import_url_username", value)
+
+    @property
+    @pulumi.getter(name="infrastructureAccessLevel")
+    def infrastructure_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "infrastructure_access_level")
+
+    @infrastructure_access_level.setter
+    def infrastructure_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "infrastructure_access_level", value)
 
     @property
     @pulumi.getter(name="initializeWithReadme")
@@ -1972,6 +2417,18 @@ class _ProjectState:
     @issues_template.setter
     def issues_template(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "issues_template", value)
+
+    @property
+    @pulumi.getter(name="keepLatestArtifact")
+    def keep_latest_artifact(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable or enable the ability to keep the latest artifact for this project.
+        """
+        return pulumi.get(self, "keep_latest_artifact")
+
+    @keep_latest_artifact.setter
+    def keep_latest_artifact(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "keep_latest_artifact", value)
 
     @property
     @pulumi.getter(name="lfsEnabled")
@@ -2104,6 +2561,30 @@ class _ProjectState:
     @mirror_trigger_builds.setter
     def mirror_trigger_builds(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "mirror_trigger_builds", value)
+
+    @property
+    @pulumi.getter(name="monitorAccessLevel")
+    def monitor_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "monitor_access_level")
+
+    @monitor_access_level.setter
+    def monitor_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "monitor_access_level", value)
+
+    @property
+    @pulumi.getter(name="mrDefaultTargetSelf")
+    def mr_default_target_self(self) -> Optional[pulumi.Input[bool]]:
+        """
+        For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+        """
+        return pulumi.get(self, "mr_default_target_self")
+
+    @mr_default_target_self.setter
+    def mr_default_target_self(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mr_default_target_self", value)
 
     @property
     @pulumi.getter
@@ -2274,6 +2755,18 @@ class _ProjectState:
         pulumi.set(self, "push_rules", value)
 
     @property
+    @pulumi.getter(name="releasesAccessLevel")
+    def releases_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "releases_access_level")
+
+    @releases_access_level.setter
+    def releases_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "releases_access_level", value)
+
+    @property
     @pulumi.getter(name="removeSourceBranchAfterMerge")
     def remove_source_branch_after_merge(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -2344,6 +2837,18 @@ class _ProjectState:
     @resolve_outdated_diff_discussions.setter
     def resolve_outdated_diff_discussions(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "resolve_outdated_diff_discussions", value)
+
+    @property
+    @pulumi.getter(name="restrictUserDefinedVariables")
+    def restrict_user_defined_variables(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        """
+        return pulumi.get(self, "restrict_user_defined_variables")
+
+    @restrict_user_defined_variables.setter
+    def restrict_user_defined_variables(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "restrict_user_defined_variables", value)
 
     @property
     @pulumi.getter(name="runnersToken")
@@ -2521,6 +3026,7 @@ class _ProjectState:
     def use_custom_template(self) -> Optional[pulumi.Input[bool]]:
         """
         Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+        	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         """
         return pulumi.get(self, "use_custom_template")
 
@@ -2591,6 +3097,8 @@ class Project(pulumi.CustomResource):
                  auto_devops_deploy_strategy: Optional[pulumi.Input[str]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  autoclose_referenced_issues: Optional[pulumi.Input[bool]] = None,
+                 avatar: Optional[pulumi.Input[str]] = None,
+                 avatar_hash: Optional[pulumi.Input[str]] = None,
                  build_coverage_regex: Optional[pulumi.Input[str]] = None,
                  build_git_strategy: Optional[pulumi.Input[str]] = None,
                  build_timeout: Optional[pulumi.Input[int]] = None,
@@ -2598,20 +3106,28 @@ class Project(pulumi.CustomResource):
                  ci_config_path: Optional[pulumi.Input[str]] = None,
                  ci_default_git_depth: Optional[pulumi.Input[int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
+                 ci_separated_caches: Optional[pulumi.Input[bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']]] = None,
                  container_registry_access_level: Optional[pulumi.Input[str]] = None,
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_disabled: Optional[pulumi.Input[bool]] = None,
+                 environments_access_level: Optional[pulumi.Input[str]] = None,
                  external_authorization_classification_label: Optional[pulumi.Input[str]] = None,
+                 feature_flags_access_level: Optional[pulumi.Input[str]] = None,
+                 forked_from_project_id: Optional[pulumi.Input[int]] = None,
                  forking_access_level: Optional[pulumi.Input[str]] = None,
                  group_with_project_templates_id: Optional[pulumi.Input[int]] = None,
                  import_url: Optional[pulumi.Input[str]] = None,
+                 import_url_password: Optional[pulumi.Input[str]] = None,
+                 import_url_username: Optional[pulumi.Input[str]] = None,
+                 infrastructure_access_level: Optional[pulumi.Input[str]] = None,
                  initialize_with_readme: Optional[pulumi.Input[bool]] = None,
                  issues_access_level: Optional[pulumi.Input[str]] = None,
                  issues_enabled: Optional[pulumi.Input[bool]] = None,
                  issues_template: Optional[pulumi.Input[str]] = None,
+                 keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_commit_template: Optional[pulumi.Input[str]] = None,
                  merge_method: Optional[pulumi.Input[str]] = None,
@@ -2623,6 +3139,8 @@ class Project(pulumi.CustomResource):
                  mirror: Optional[pulumi.Input[bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
+                 monitor_access_level: Optional[pulumi.Input[str]] = None,
+                 mr_default_target_self: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[int]] = None,
                  only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
@@ -2636,12 +3154,14 @@ class Project(pulumi.CustomResource):
                  printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
                  public_builds: Optional[pulumi.Input[bool]] = None,
                  push_rules: Optional[pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']]] = None,
+                 releases_access_level: Optional[pulumi.Input[str]] = None,
                  remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
                  repository_access_level: Optional[pulumi.Input[str]] = None,
                  repository_storage: Optional[pulumi.Input[str]] = None,
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  requirements_access_level: Optional[pulumi.Input[str]] = None,
                  resolve_outdated_diff_discussions: Optional[pulumi.Input[bool]] = None,
+                 restrict_user_defined_variables: Optional[pulumi.Input[bool]] = None,
                  security_and_compliance_access_level: Optional[pulumi.Input[str]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
                  skip_wait_for_default_branch_protection: Optional[pulumi.Input[bool]] = None,
@@ -2680,6 +3200,37 @@ class Project(pulumi.CustomResource):
         peters_repo = gitlab.Project("petersRepo",
             description="This is a description",
             namespace_id=peter_parker.namespace_id)
+        # Fork a project
+        fork_project = gitlab.Project("forkProject",
+            description="This is a fork",
+            forked_from_project_id=example.id)
+        # Fork a project and setup a pull mirror
+        fork_index_project_project = gitlab.Project("forkIndex/projectProject",
+            description="This is a fork",
+            forked_from_project_id=example.id,
+            import_url=example.http_url_to_repo,
+            mirror=True)
+        # Create a project by importing it from a public project
+        import_public = gitlab.Project("importPublic", import_url="https://gitlab.example.com/repo.git")
+        # Create a project by importing it from a public project and setup the pull mirror
+        import_public_with_mirror = gitlab.Project("importPublicWithMirror",
+            import_url="https://gitlab.example.com/repo.git",
+            mirror=True)
+        # Create a project by importing it from a private project
+        import_private_project = gitlab.Project("importPrivateProject",
+            import_url="https://gitlab.example.com/repo.git",
+            import_url_username="user",
+            import_url_password="pass")
+        # Create a project by importing it from a private project and setup the pull mirror
+        import_private_with_mirror = gitlab.Project("importPrivateWithMirror",
+            import_url="https://gitlab.example.com/repo.git",
+            import_url_username="user",
+            import_url_password="pass",
+            mirror=True)
+        # Create a project by importing it from a private project and provide credentials in `import_url`
+        # NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
+        #       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
+        import_private_index_project_project = gitlab.Project("importPrivateIndex/projectProject", import_url="https://user:pass@gitlab.example.com/repo.git")
         ```
 
         ## Import
@@ -2693,6 +3244,8 @@ class Project(pulumi.CustomResource):
         ```sh
          $ pulumi import gitlab:index/project:Project example richardc/example
         ```
+
+         NOTEthe `import_url_username` and `import_url_password` cannot be imported.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -2708,6 +3261,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] auto_devops_deploy_strategy: Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         :param pulumi.Input[bool] auto_devops_enabled: Enable Auto DevOps for this project.
         :param pulumi.Input[bool] autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
+        :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
+        :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         :param pulumi.Input[str] build_git_strategy: The Git strategy. Defaults to fetch.
         :param pulumi.Input[int] build_timeout: The maximum amount of time, in seconds, that a job can run.
@@ -2715,20 +3270,36 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
         :param pulumi.Input[bool] emails_disabled: Disable email notifications.
+        :param pulumi.Input[str] environments_access_level: Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] external_authorization_classification_label: The classification label for the project.
+        :param pulumi.Input[str] feature_flags_access_level: Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[int] forked_from_project_id: The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
         :param pulumi.Input[str] forking_access_level: Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
-        :param pulumi.Input[str] import_url: Git URL to a repository to be imported.
+        :param pulumi.Input[str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+               together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+               Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+               credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+               `terraform import`. See the examples section for how to properly use it.
+        :param pulumi.Input[str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+               to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+               use it.
+        :param pulumi.Input[str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+               to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+               use it.
+        :param pulumi.Input[str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
         :param pulumi.Input[str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
+        :param pulumi.Input[bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_commit_template: Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
         :param pulumi.Input[str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
@@ -2740,6 +3311,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] mirror: Enable project pull mirror.
         :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
         :param pulumi.Input[bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
+        :param pulumi.Input[str] monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[bool] mr_default_target_self: For forked projects, target merge requests to this project. If false, the target will be the upstream project.
         :param pulumi.Input[str] name: The name of the project.
         :param pulumi.Input[int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
@@ -2753,12 +3326,14 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']] push_rules: Push rules for the project.
+        :param pulumi.Input[str] releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[str] repository_access_level: Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] repository_storage: Which storage shard the repository is on. (administrator only)
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[str] requirements_access_level: Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] resolve_outdated_diff_discussions: Automatically resolve merge request diffs discussions on lines changed with a push.
+        :param pulumi.Input[bool] restrict_user_defined_variables: Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
         :param pulumi.Input[str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[bool] skip_wait_for_default_branch_protection: If `true`, the default behavior to wait for the default branch protection to be created is skipped.
@@ -2775,6 +3350,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: The list of topics for the project.
         :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public project.
         :param pulumi.Input[str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
@@ -2806,6 +3382,37 @@ class Project(pulumi.CustomResource):
         peters_repo = gitlab.Project("petersRepo",
             description="This is a description",
             namespace_id=peter_parker.namespace_id)
+        # Fork a project
+        fork_project = gitlab.Project("forkProject",
+            description="This is a fork",
+            forked_from_project_id=example.id)
+        # Fork a project and setup a pull mirror
+        fork_index_project_project = gitlab.Project("forkIndex/projectProject",
+            description="This is a fork",
+            forked_from_project_id=example.id,
+            import_url=example.http_url_to_repo,
+            mirror=True)
+        # Create a project by importing it from a public project
+        import_public = gitlab.Project("importPublic", import_url="https://gitlab.example.com/repo.git")
+        # Create a project by importing it from a public project and setup the pull mirror
+        import_public_with_mirror = gitlab.Project("importPublicWithMirror",
+            import_url="https://gitlab.example.com/repo.git",
+            mirror=True)
+        # Create a project by importing it from a private project
+        import_private_project = gitlab.Project("importPrivateProject",
+            import_url="https://gitlab.example.com/repo.git",
+            import_url_username="user",
+            import_url_password="pass")
+        # Create a project by importing it from a private project and setup the pull mirror
+        import_private_with_mirror = gitlab.Project("importPrivateWithMirror",
+            import_url="https://gitlab.example.com/repo.git",
+            import_url_username="user",
+            import_url_password="pass",
+            mirror=True)
+        # Create a project by importing it from a private project and provide credentials in `import_url`
+        # NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
+        #       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
+        import_private_index_project_project = gitlab.Project("importPrivateIndex/projectProject", import_url="https://user:pass@gitlab.example.com/repo.git")
         ```
 
         ## Import
@@ -2819,6 +3426,8 @@ class Project(pulumi.CustomResource):
         ```sh
          $ pulumi import gitlab:index/project:Project example richardc/example
         ```
+
+         NOTEthe `import_url_username` and `import_url_password` cannot be imported.
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.
@@ -2844,6 +3453,8 @@ class Project(pulumi.CustomResource):
                  auto_devops_deploy_strategy: Optional[pulumi.Input[str]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  autoclose_referenced_issues: Optional[pulumi.Input[bool]] = None,
+                 avatar: Optional[pulumi.Input[str]] = None,
+                 avatar_hash: Optional[pulumi.Input[str]] = None,
                  build_coverage_regex: Optional[pulumi.Input[str]] = None,
                  build_git_strategy: Optional[pulumi.Input[str]] = None,
                  build_timeout: Optional[pulumi.Input[int]] = None,
@@ -2851,20 +3462,28 @@ class Project(pulumi.CustomResource):
                  ci_config_path: Optional[pulumi.Input[str]] = None,
                  ci_default_git_depth: Optional[pulumi.Input[int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
+                 ci_separated_caches: Optional[pulumi.Input[bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']]] = None,
                  container_registry_access_level: Optional[pulumi.Input[str]] = None,
                  container_registry_enabled: Optional[pulumi.Input[bool]] = None,
                  default_branch: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  emails_disabled: Optional[pulumi.Input[bool]] = None,
+                 environments_access_level: Optional[pulumi.Input[str]] = None,
                  external_authorization_classification_label: Optional[pulumi.Input[str]] = None,
+                 feature_flags_access_level: Optional[pulumi.Input[str]] = None,
+                 forked_from_project_id: Optional[pulumi.Input[int]] = None,
                  forking_access_level: Optional[pulumi.Input[str]] = None,
                  group_with_project_templates_id: Optional[pulumi.Input[int]] = None,
                  import_url: Optional[pulumi.Input[str]] = None,
+                 import_url_password: Optional[pulumi.Input[str]] = None,
+                 import_url_username: Optional[pulumi.Input[str]] = None,
+                 infrastructure_access_level: Optional[pulumi.Input[str]] = None,
                  initialize_with_readme: Optional[pulumi.Input[bool]] = None,
                  issues_access_level: Optional[pulumi.Input[str]] = None,
                  issues_enabled: Optional[pulumi.Input[bool]] = None,
                  issues_template: Optional[pulumi.Input[str]] = None,
+                 keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
                  lfs_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_commit_template: Optional[pulumi.Input[str]] = None,
                  merge_method: Optional[pulumi.Input[str]] = None,
@@ -2876,6 +3495,8 @@ class Project(pulumi.CustomResource):
                  mirror: Optional[pulumi.Input[bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
+                 monitor_access_level: Optional[pulumi.Input[str]] = None,
+                 mr_default_target_self: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[int]] = None,
                  only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
@@ -2889,12 +3510,14 @@ class Project(pulumi.CustomResource):
                  printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
                  public_builds: Optional[pulumi.Input[bool]] = None,
                  push_rules: Optional[pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']]] = None,
+                 releases_access_level: Optional[pulumi.Input[str]] = None,
                  remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
                  repository_access_level: Optional[pulumi.Input[str]] = None,
                  repository_storage: Optional[pulumi.Input[str]] = None,
                  request_access_enabled: Optional[pulumi.Input[bool]] = None,
                  requirements_access_level: Optional[pulumi.Input[str]] = None,
                  resolve_outdated_diff_discussions: Optional[pulumi.Input[bool]] = None,
+                 restrict_user_defined_variables: Optional[pulumi.Input[bool]] = None,
                  security_and_compliance_access_level: Optional[pulumi.Input[str]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
                  skip_wait_for_default_branch_protection: Optional[pulumi.Input[bool]] = None,
@@ -2929,6 +3552,8 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["auto_devops_deploy_strategy"] = auto_devops_deploy_strategy
             __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
             __props__.__dict__["autoclose_referenced_issues"] = autoclose_referenced_issues
+            __props__.__dict__["avatar"] = avatar
+            __props__.__dict__["avatar_hash"] = avatar_hash
             if build_coverage_regex is not None and not opts.urn:
                 warnings.warn("""build_coverage_regex is removed in GitLab 15.0.""", DeprecationWarning)
                 pulumi.log.warn("""build_coverage_regex is deprecated: build_coverage_regex is removed in GitLab 15.0.""")
@@ -2939,20 +3564,31 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["ci_config_path"] = ci_config_path
             __props__.__dict__["ci_default_git_depth"] = ci_default_git_depth
             __props__.__dict__["ci_forward_deployment_enabled"] = ci_forward_deployment_enabled
+            __props__.__dict__["ci_separated_caches"] = ci_separated_caches
             __props__.__dict__["container_expiration_policy"] = container_expiration_policy
             __props__.__dict__["container_registry_access_level"] = container_registry_access_level
+            if container_registry_enabled is not None and not opts.urn:
+                warnings.warn("""Use `container_registry_access_level` instead.""", DeprecationWarning)
+                pulumi.log.warn("""container_registry_enabled is deprecated: Use `container_registry_access_level` instead.""")
             __props__.__dict__["container_registry_enabled"] = container_registry_enabled
             __props__.__dict__["default_branch"] = default_branch
             __props__.__dict__["description"] = description
             __props__.__dict__["emails_disabled"] = emails_disabled
+            __props__.__dict__["environments_access_level"] = environments_access_level
             __props__.__dict__["external_authorization_classification_label"] = external_authorization_classification_label
+            __props__.__dict__["feature_flags_access_level"] = feature_flags_access_level
+            __props__.__dict__["forked_from_project_id"] = forked_from_project_id
             __props__.__dict__["forking_access_level"] = forking_access_level
             __props__.__dict__["group_with_project_templates_id"] = group_with_project_templates_id
             __props__.__dict__["import_url"] = import_url
+            __props__.__dict__["import_url_password"] = None if import_url_password is None else pulumi.Output.secret(import_url_password)
+            __props__.__dict__["import_url_username"] = import_url_username
+            __props__.__dict__["infrastructure_access_level"] = infrastructure_access_level
             __props__.__dict__["initialize_with_readme"] = initialize_with_readme
             __props__.__dict__["issues_access_level"] = issues_access_level
             __props__.__dict__["issues_enabled"] = issues_enabled
             __props__.__dict__["issues_template"] = issues_template
+            __props__.__dict__["keep_latest_artifact"] = keep_latest_artifact
             __props__.__dict__["lfs_enabled"] = lfs_enabled
             __props__.__dict__["merge_commit_template"] = merge_commit_template
             __props__.__dict__["merge_method"] = merge_method
@@ -2964,6 +3600,8 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["mirror"] = mirror
             __props__.__dict__["mirror_overwrites_diverged_branches"] = mirror_overwrites_diverged_branches
             __props__.__dict__["mirror_trigger_builds"] = mirror_trigger_builds
+            __props__.__dict__["monitor_access_level"] = monitor_access_level
+            __props__.__dict__["mr_default_target_self"] = mr_default_target_self
             __props__.__dict__["name"] = name
             __props__.__dict__["namespace_id"] = namespace_id
             __props__.__dict__["only_allow_merge_if_all_discussions_are_resolved"] = only_allow_merge_if_all_discussions_are_resolved
@@ -2980,12 +3618,14 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["printing_merge_request_link_enabled"] = printing_merge_request_link_enabled
             __props__.__dict__["public_builds"] = public_builds
             __props__.__dict__["push_rules"] = push_rules
+            __props__.__dict__["releases_access_level"] = releases_access_level
             __props__.__dict__["remove_source_branch_after_merge"] = remove_source_branch_after_merge
             __props__.__dict__["repository_access_level"] = repository_access_level
             __props__.__dict__["repository_storage"] = repository_storage
             __props__.__dict__["request_access_enabled"] = request_access_enabled
             __props__.__dict__["requirements_access_level"] = requirements_access_level
             __props__.__dict__["resolve_outdated_diff_discussions"] = resolve_outdated_diff_discussions
+            __props__.__dict__["restrict_user_defined_variables"] = restrict_user_defined_variables
             __props__.__dict__["security_and_compliance_access_level"] = security_and_compliance_access_level
             __props__.__dict__["shared_runners_enabled"] = shared_runners_enabled
             __props__.__dict__["skip_wait_for_default_branch_protection"] = skip_wait_for_default_branch_protection
@@ -3002,12 +3642,13 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["visibility_level"] = visibility_level
             __props__.__dict__["wiki_access_level"] = wiki_access_level
             __props__.__dict__["wiki_enabled"] = wiki_enabled
+            __props__.__dict__["avatar_url"] = None
             __props__.__dict__["http_url_to_repo"] = None
             __props__.__dict__["path_with_namespace"] = None
             __props__.__dict__["runners_token"] = None
             __props__.__dict__["ssh_url_to_repo"] = None
             __props__.__dict__["web_url"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["runnersToken"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["importUrlPassword", "runnersToken"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Project, __self__).__init__(
             'gitlab:index/project:Project',
@@ -3028,6 +3669,9 @@ class Project(pulumi.CustomResource):
             auto_devops_deploy_strategy: Optional[pulumi.Input[str]] = None,
             auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
             autoclose_referenced_issues: Optional[pulumi.Input[bool]] = None,
+            avatar: Optional[pulumi.Input[str]] = None,
+            avatar_hash: Optional[pulumi.Input[str]] = None,
+            avatar_url: Optional[pulumi.Input[str]] = None,
             build_coverage_regex: Optional[pulumi.Input[str]] = None,
             build_git_strategy: Optional[pulumi.Input[str]] = None,
             build_timeout: Optional[pulumi.Input[int]] = None,
@@ -3035,21 +3679,29 @@ class Project(pulumi.CustomResource):
             ci_config_path: Optional[pulumi.Input[str]] = None,
             ci_default_git_depth: Optional[pulumi.Input[int]] = None,
             ci_forward_deployment_enabled: Optional[pulumi.Input[bool]] = None,
+            ci_separated_caches: Optional[pulumi.Input[bool]] = None,
             container_expiration_policy: Optional[pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']]] = None,
             container_registry_access_level: Optional[pulumi.Input[str]] = None,
             container_registry_enabled: Optional[pulumi.Input[bool]] = None,
             default_branch: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             emails_disabled: Optional[pulumi.Input[bool]] = None,
+            environments_access_level: Optional[pulumi.Input[str]] = None,
             external_authorization_classification_label: Optional[pulumi.Input[str]] = None,
+            feature_flags_access_level: Optional[pulumi.Input[str]] = None,
+            forked_from_project_id: Optional[pulumi.Input[int]] = None,
             forking_access_level: Optional[pulumi.Input[str]] = None,
             group_with_project_templates_id: Optional[pulumi.Input[int]] = None,
             http_url_to_repo: Optional[pulumi.Input[str]] = None,
             import_url: Optional[pulumi.Input[str]] = None,
+            import_url_password: Optional[pulumi.Input[str]] = None,
+            import_url_username: Optional[pulumi.Input[str]] = None,
+            infrastructure_access_level: Optional[pulumi.Input[str]] = None,
             initialize_with_readme: Optional[pulumi.Input[bool]] = None,
             issues_access_level: Optional[pulumi.Input[str]] = None,
             issues_enabled: Optional[pulumi.Input[bool]] = None,
             issues_template: Optional[pulumi.Input[str]] = None,
+            keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
             lfs_enabled: Optional[pulumi.Input[bool]] = None,
             merge_commit_template: Optional[pulumi.Input[str]] = None,
             merge_method: Optional[pulumi.Input[str]] = None,
@@ -3061,6 +3713,8 @@ class Project(pulumi.CustomResource):
             mirror: Optional[pulumi.Input[bool]] = None,
             mirror_overwrites_diverged_branches: Optional[pulumi.Input[bool]] = None,
             mirror_trigger_builds: Optional[pulumi.Input[bool]] = None,
+            monitor_access_level: Optional[pulumi.Input[str]] = None,
+            mr_default_target_self: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             namespace_id: Optional[pulumi.Input[int]] = None,
             only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
@@ -3075,12 +3729,14 @@ class Project(pulumi.CustomResource):
             printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
             public_builds: Optional[pulumi.Input[bool]] = None,
             push_rules: Optional[pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']]] = None,
+            releases_access_level: Optional[pulumi.Input[str]] = None,
             remove_source_branch_after_merge: Optional[pulumi.Input[bool]] = None,
             repository_access_level: Optional[pulumi.Input[str]] = None,
             repository_storage: Optional[pulumi.Input[str]] = None,
             request_access_enabled: Optional[pulumi.Input[bool]] = None,
             requirements_access_level: Optional[pulumi.Input[str]] = None,
             resolve_outdated_diff_discussions: Optional[pulumi.Input[bool]] = None,
+            restrict_user_defined_variables: Optional[pulumi.Input[bool]] = None,
             runners_token: Optional[pulumi.Input[str]] = None,
             security_and_compliance_access_level: Optional[pulumi.Input[str]] = None,
             shared_runners_enabled: Optional[pulumi.Input[bool]] = None,
@@ -3119,6 +3775,9 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] auto_devops_deploy_strategy: Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         :param pulumi.Input[bool] auto_devops_enabled: Enable Auto DevOps for this project.
         :param pulumi.Input[bool] autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
+        :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
+        :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        :param pulumi.Input[str] avatar_url: The URL of the avatar image.
         :param pulumi.Input[str] build_coverage_regex: Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         :param pulumi.Input[str] build_git_strategy: The Git strategy. Defaults to fetch.
         :param pulumi.Input[int] build_timeout: The maximum amount of time, in seconds, that a job can run.
@@ -3126,21 +3785,37 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input[pulumi.InputType['ProjectContainerExpirationPolicyArgs']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] container_registry_enabled: Enable container registry for the project.
         :param pulumi.Input[str] default_branch: The default branch for the project.
         :param pulumi.Input[str] description: A description of the project.
         :param pulumi.Input[bool] emails_disabled: Disable email notifications.
+        :param pulumi.Input[str] environments_access_level: Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] external_authorization_classification_label: The classification label for the project.
+        :param pulumi.Input[str] feature_flags_access_level: Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[int] forked_from_project_id: The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
         :param pulumi.Input[str] forking_access_level: Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         :param pulumi.Input[str] http_url_to_repo: URL that can be provided to `git clone` to clone the
-        :param pulumi.Input[str] import_url: Git URL to a repository to be imported.
+        :param pulumi.Input[str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+               together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+               Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+               credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+               `terraform import`. See the examples section for how to properly use it.
+        :param pulumi.Input[str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+               to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+               use it.
+        :param pulumi.Input[str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+               to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+               use it.
+        :param pulumi.Input[str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] initialize_with_readme: Create main branch with first commit containing a README.md file.
         :param pulumi.Input[str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] issues_enabled: Enable issue tracking for the project.
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
+        :param pulumi.Input[bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
         :param pulumi.Input[str] merge_commit_template: Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
         :param pulumi.Input[str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
@@ -3152,6 +3827,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] mirror: Enable project pull mirror.
         :param pulumi.Input[bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
         :param pulumi.Input[bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
+        :param pulumi.Input[str] monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[bool] mr_default_target_self: For forked projects, target merge requests to this project. If false, the target will be the upstream project.
         :param pulumi.Input[str] name: The name of the project.
         :param pulumi.Input[int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
@@ -3166,12 +3843,14 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input[pulumi.InputType['ProjectPushRulesArgs']] push_rules: Push rules for the project.
+        :param pulumi.Input[str] releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[str] repository_access_level: Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[str] repository_storage: Which storage shard the repository is on. (administrator only)
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[str] requirements_access_level: Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] resolve_outdated_diff_discussions: Automatically resolve merge request diffs discussions on lines changed with a push.
+        :param pulumi.Input[bool] restrict_user_defined_variables: Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
         :param pulumi.Input[str] runners_token: Registration token to use during runner setup.
         :param pulumi.Input[str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] shared_runners_enabled: Enable shared runners for this project.
@@ -3190,6 +3869,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: The list of topics for the project.
         :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public project.
         :param pulumi.Input[str] web_url: URL that can be used to find the project in a browser.
         :param pulumi.Input[str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
@@ -3208,6 +3888,9 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["auto_devops_deploy_strategy"] = auto_devops_deploy_strategy
         __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
         __props__.__dict__["autoclose_referenced_issues"] = autoclose_referenced_issues
+        __props__.__dict__["avatar"] = avatar
+        __props__.__dict__["avatar_hash"] = avatar_hash
+        __props__.__dict__["avatar_url"] = avatar_url
         __props__.__dict__["build_coverage_regex"] = build_coverage_regex
         __props__.__dict__["build_git_strategy"] = build_git_strategy
         __props__.__dict__["build_timeout"] = build_timeout
@@ -3215,21 +3898,29 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["ci_config_path"] = ci_config_path
         __props__.__dict__["ci_default_git_depth"] = ci_default_git_depth
         __props__.__dict__["ci_forward_deployment_enabled"] = ci_forward_deployment_enabled
+        __props__.__dict__["ci_separated_caches"] = ci_separated_caches
         __props__.__dict__["container_expiration_policy"] = container_expiration_policy
         __props__.__dict__["container_registry_access_level"] = container_registry_access_level
         __props__.__dict__["container_registry_enabled"] = container_registry_enabled
         __props__.__dict__["default_branch"] = default_branch
         __props__.__dict__["description"] = description
         __props__.__dict__["emails_disabled"] = emails_disabled
+        __props__.__dict__["environments_access_level"] = environments_access_level
         __props__.__dict__["external_authorization_classification_label"] = external_authorization_classification_label
+        __props__.__dict__["feature_flags_access_level"] = feature_flags_access_level
+        __props__.__dict__["forked_from_project_id"] = forked_from_project_id
         __props__.__dict__["forking_access_level"] = forking_access_level
         __props__.__dict__["group_with_project_templates_id"] = group_with_project_templates_id
         __props__.__dict__["http_url_to_repo"] = http_url_to_repo
         __props__.__dict__["import_url"] = import_url
+        __props__.__dict__["import_url_password"] = import_url_password
+        __props__.__dict__["import_url_username"] = import_url_username
+        __props__.__dict__["infrastructure_access_level"] = infrastructure_access_level
         __props__.__dict__["initialize_with_readme"] = initialize_with_readme
         __props__.__dict__["issues_access_level"] = issues_access_level
         __props__.__dict__["issues_enabled"] = issues_enabled
         __props__.__dict__["issues_template"] = issues_template
+        __props__.__dict__["keep_latest_artifact"] = keep_latest_artifact
         __props__.__dict__["lfs_enabled"] = lfs_enabled
         __props__.__dict__["merge_commit_template"] = merge_commit_template
         __props__.__dict__["merge_method"] = merge_method
@@ -3241,6 +3932,8 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["mirror"] = mirror
         __props__.__dict__["mirror_overwrites_diverged_branches"] = mirror_overwrites_diverged_branches
         __props__.__dict__["mirror_trigger_builds"] = mirror_trigger_builds
+        __props__.__dict__["monitor_access_level"] = monitor_access_level
+        __props__.__dict__["mr_default_target_self"] = mr_default_target_self
         __props__.__dict__["name"] = name
         __props__.__dict__["namespace_id"] = namespace_id
         __props__.__dict__["only_allow_merge_if_all_discussions_are_resolved"] = only_allow_merge_if_all_discussions_are_resolved
@@ -3255,12 +3948,14 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["printing_merge_request_link_enabled"] = printing_merge_request_link_enabled
         __props__.__dict__["public_builds"] = public_builds
         __props__.__dict__["push_rules"] = push_rules
+        __props__.__dict__["releases_access_level"] = releases_access_level
         __props__.__dict__["remove_source_branch_after_merge"] = remove_source_branch_after_merge
         __props__.__dict__["repository_access_level"] = repository_access_level
         __props__.__dict__["repository_storage"] = repository_storage
         __props__.__dict__["request_access_enabled"] = request_access_enabled
         __props__.__dict__["requirements_access_level"] = requirements_access_level
         __props__.__dict__["resolve_outdated_diff_discussions"] = resolve_outdated_diff_discussions
+        __props__.__dict__["restrict_user_defined_variables"] = restrict_user_defined_variables
         __props__.__dict__["runners_token"] = runners_token
         __props__.__dict__["security_and_compliance_access_level"] = security_and_compliance_access_level
         __props__.__dict__["shared_runners_enabled"] = shared_runners_enabled
@@ -3284,7 +3979,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowMergeOnSkippedPipeline")
-    def allow_merge_on_skipped_pipeline(self) -> pulumi.Output[Optional[bool]]:
+    def allow_merge_on_skipped_pipeline(self) -> pulumi.Output[bool]:
         """
         Set to true if you want to treat skipped pipelines as if they finished with success.
         """
@@ -3358,6 +4053,30 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "autoclose_referenced_issues")
 
     @property
+    @pulumi.getter
+    def avatar(self) -> pulumi.Output[Optional[str]]:
+        """
+        A local path to the avatar image to upload. **Note**: not available for imported resources.
+        """
+        return pulumi.get(self, "avatar")
+
+    @property
+    @pulumi.getter(name="avatarHash")
+    def avatar_hash(self) -> pulumi.Output[str]:
+        """
+        The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        """
+        return pulumi.get(self, "avatar_hash")
+
+    @property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> pulumi.Output[str]:
+        """
+        The URL of the avatar image.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @property
     @pulumi.getter(name="buildCoverageRegex")
     def build_coverage_regex(self) -> pulumi.Output[Optional[str]]:
         """
@@ -3407,11 +4126,19 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ciForwardDeploymentEnabled")
-    def ci_forward_deployment_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def ci_forward_deployment_enabled(self) -> pulumi.Output[bool]:
         """
         When a new deployment job starts, skip older deployment jobs that are still pending.
         """
         return pulumi.get(self, "ci_forward_deployment_enabled")
+
+    @property
+    @pulumi.getter(name="ciSeparatedCaches")
+    def ci_separated_caches(self) -> pulumi.Output[bool]:
+        """
+        Use separate caches for protected branches.
+        """
+        return pulumi.get(self, "ci_separated_caches")
 
     @property
     @pulumi.getter(name="containerExpirationPolicy")
@@ -3431,7 +4158,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerRegistryEnabled")
-    def container_registry_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def container_registry_enabled(self) -> pulumi.Output[bool]:
         """
         Enable container registry for the project.
         """
@@ -3462,12 +4189,36 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "emails_disabled")
 
     @property
+    @pulumi.getter(name="environmentsAccessLevel")
+    def environments_access_level(self) -> pulumi.Output[str]:
+        """
+        Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "environments_access_level")
+
+    @property
     @pulumi.getter(name="externalAuthorizationClassificationLabel")
     def external_authorization_classification_label(self) -> pulumi.Output[Optional[str]]:
         """
         The classification label for the project.
         """
         return pulumi.get(self, "external_authorization_classification_label")
+
+    @property
+    @pulumi.getter(name="featureFlagsAccessLevel")
+    def feature_flags_access_level(self) -> pulumi.Output[str]:
+        """
+        Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "feature_flags_access_level")
+
+    @property
+    @pulumi.getter(name="forkedFromProjectId")
+    def forked_from_project_id(self) -> pulumi.Output[Optional[int]]:
+        """
+        The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
+        """
+        return pulumi.get(self, "forked_from_project_id")
 
     @property
     @pulumi.getter(name="forkingAccessLevel")
@@ -3497,9 +4248,41 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="importUrl")
     def import_url(self) -> pulumi.Output[Optional[str]]:
         """
-        Git URL to a repository to be imported.
+        Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+        together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+        Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+        credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+        `terraform import`. See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url")
+
+    @property
+    @pulumi.getter(name="importUrlPassword")
+    def import_url_password(self) -> pulumi.Output[Optional[str]]:
+        """
+        The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+        to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+        use it.
+        """
+        return pulumi.get(self, "import_url_password")
+
+    @property
+    @pulumi.getter(name="importUrlUsername")
+    def import_url_username(self) -> pulumi.Output[Optional[str]]:
+        """
+        The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+        to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+        use it.
+        """
+        return pulumi.get(self, "import_url_username")
+
+    @property
+    @pulumi.getter(name="infrastructureAccessLevel")
+    def infrastructure_access_level(self) -> pulumi.Output[str]:
+        """
+        Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "infrastructure_access_level")
 
     @property
     @pulumi.getter(name="initializeWithReadme")
@@ -3519,7 +4302,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="issuesEnabled")
-    def issues_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def issues_enabled(self) -> pulumi.Output[bool]:
         """
         Enable issue tracking for the project.
         """
@@ -3534,8 +4317,16 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "issues_template")
 
     @property
+    @pulumi.getter(name="keepLatestArtifact")
+    def keep_latest_artifact(self) -> pulumi.Output[bool]:
+        """
+        Disable or enable the ability to keep the latest artifact for this project.
+        """
+        return pulumi.get(self, "keep_latest_artifact")
+
+    @property
     @pulumi.getter(name="lfsEnabled")
-    def lfs_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def lfs_enabled(self) -> pulumi.Output[bool]:
         """
         Enable LFS for the project.
         """
@@ -3551,7 +4342,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mergeMethod")
-    def merge_method(self) -> pulumi.Output[Optional[str]]:
+    def merge_method(self) -> pulumi.Output[str]:
         """
         Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         """
@@ -3559,7 +4350,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mergePipelinesEnabled")
-    def merge_pipelines_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def merge_pipelines_enabled(self) -> pulumi.Output[bool]:
         """
         Enable or disable merge pipelines.
         """
@@ -3575,7 +4366,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mergeRequestsEnabled")
-    def merge_requests_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def merge_requests_enabled(self) -> pulumi.Output[bool]:
         """
         Enable merge requests for the project.
         """
@@ -3591,7 +4382,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mergeTrainsEnabled")
-    def merge_trains_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def merge_trains_enabled(self) -> pulumi.Output[bool]:
         """
         Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         """
@@ -3607,7 +4398,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mirrorOverwritesDivergedBranches")
-    def mirror_overwrites_diverged_branches(self) -> pulumi.Output[Optional[bool]]:
+    def mirror_overwrites_diverged_branches(self) -> pulumi.Output[bool]:
         """
         Enable overwrite diverged branches for a mirrored project.
         """
@@ -3615,11 +4406,27 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mirrorTriggerBuilds")
-    def mirror_trigger_builds(self) -> pulumi.Output[Optional[bool]]:
+    def mirror_trigger_builds(self) -> pulumi.Output[bool]:
         """
         Enable trigger builds on pushes for a mirrored project.
         """
         return pulumi.get(self, "mirror_trigger_builds")
+
+    @property
+    @pulumi.getter(name="monitorAccessLevel")
+    def monitor_access_level(self) -> pulumi.Output[str]:
+        """
+        Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "monitor_access_level")
+
+    @property
+    @pulumi.getter(name="mrDefaultTargetSelf")
+    def mr_default_target_self(self) -> pulumi.Output[Optional[bool]]:
+        """
+        For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+        """
+        return pulumi.get(self, "mr_default_target_self")
 
     @property
     @pulumi.getter
@@ -3639,7 +4446,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="onlyAllowMergeIfAllDiscussionsAreResolved")
-    def only_allow_merge_if_all_discussions_are_resolved(self) -> pulumi.Output[Optional[bool]]:
+    def only_allow_merge_if_all_discussions_are_resolved(self) -> pulumi.Output[bool]:
         """
         Set to true if you want allow merges only if all discussions are resolved.
         """
@@ -3647,7 +4454,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="onlyAllowMergeIfPipelineSucceeds")
-    def only_allow_merge_if_pipeline_succeeds(self) -> pulumi.Output[Optional[bool]]:
+    def only_allow_merge_if_pipeline_succeeds(self) -> pulumi.Output[bool]:
         """
         Set to true if you want allow merges only if a pipeline succeeds.
         """
@@ -3655,7 +4462,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="onlyMirrorProtectedBranches")
-    def only_mirror_protected_branches(self) -> pulumi.Output[Optional[bool]]:
+    def only_mirror_protected_branches(self) -> pulumi.Output[bool]:
         """
         Enable only mirror protected branches for a mirrored project.
         """
@@ -3671,7 +4478,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="packagesEnabled")
-    def packages_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def packages_enabled(self) -> pulumi.Output[bool]:
         """
         Enable packages repository for the project.
         """
@@ -3711,7 +4518,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="printingMergeRequestLinkEnabled")
-    def printing_merge_request_link_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def printing_merge_request_link_enabled(self) -> pulumi.Output[bool]:
         """
         Show link to create/view merge request when pushing from the command line
         """
@@ -3734,8 +4541,16 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "push_rules")
 
     @property
+    @pulumi.getter(name="releasesAccessLevel")
+    def releases_access_level(self) -> pulumi.Output[str]:
+        """
+        Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "releases_access_level")
+
+    @property
     @pulumi.getter(name="removeSourceBranchAfterMerge")
-    def remove_source_branch_after_merge(self) -> pulumi.Output[Optional[bool]]:
+    def remove_source_branch_after_merge(self) -> pulumi.Output[bool]:
         """
         Enable `Delete source branch` option by default for all new merge requests.
         """
@@ -3759,7 +4574,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requestAccessEnabled")
-    def request_access_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def request_access_enabled(self) -> pulumi.Output[bool]:
         """
         Allow users to request member access.
         """
@@ -3780,6 +4595,14 @@ class Project(pulumi.CustomResource):
         Automatically resolve merge request diffs discussions on lines changed with a push.
         """
         return pulumi.get(self, "resolve_outdated_diff_discussions")
+
+    @property
+    @pulumi.getter(name="restrictUserDefinedVariables")
+    def restrict_user_defined_variables(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        """
+        return pulumi.get(self, "restrict_user_defined_variables")
 
     @property
     @pulumi.getter(name="runnersToken")
@@ -3826,7 +4649,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snippetsEnabled")
-    def snippets_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def snippets_enabled(self) -> pulumi.Output[bool]:
         """
         Enable snippets for the project.
         """
@@ -3842,7 +4665,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="squashOption")
-    def squash_option(self) -> pulumi.Output[Optional[str]]:
+    def squash_option(self) -> pulumi.Output[str]:
         """
         Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
         """
@@ -3901,12 +4724,13 @@ class Project(pulumi.CustomResource):
     def use_custom_template(self) -> pulumi.Output[Optional[bool]]:
         """
         Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+        	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         """
         return pulumi.get(self, "use_custom_template")
 
     @property
     @pulumi.getter(name="visibilityLevel")
-    def visibility_level(self) -> pulumi.Output[Optional[str]]:
+    def visibility_level(self) -> pulumi.Output[str]:
         """
         Set to `public` to create a public project.
         """
@@ -3930,7 +4754,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="wikiEnabled")
-    def wiki_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def wiki_enabled(self) -> pulumi.Output[bool]:
         """
         Enable wiki for the project.
         """

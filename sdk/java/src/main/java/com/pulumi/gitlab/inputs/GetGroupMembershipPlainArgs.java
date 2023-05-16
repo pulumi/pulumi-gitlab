@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -60,12 +61,28 @@ public final class GetGroupMembershipPlainArgs extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.groupId);
     }
 
+    /**
+     * Return all project members including members through ancestor groups.
+     * 
+     */
+    @Import(name="inherited")
+    private @Nullable Boolean inherited;
+
+    /**
+     * @return Return all project members including members through ancestor groups.
+     * 
+     */
+    public Optional<Boolean> inherited() {
+        return Optional.ofNullable(this.inherited);
+    }
+
     private GetGroupMembershipPlainArgs() {}
 
     private GetGroupMembershipPlainArgs(GetGroupMembershipPlainArgs $) {
         this.accessLevel = $.accessLevel;
         this.fullPath = $.fullPath;
         this.groupId = $.groupId;
+        this.inherited = $.inherited;
     }
 
     public static Builder builder() {
@@ -116,6 +133,17 @@ public final class GetGroupMembershipPlainArgs extends com.pulumi.resources.Invo
          */
         public Builder groupId(@Nullable Integer groupId) {
             $.groupId = groupId;
+            return this;
+        }
+
+        /**
+         * @param inherited Return all project members including members through ancestor groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inherited(@Nullable Boolean inherited) {
+            $.inherited = inherited;
             return this;
         }
 

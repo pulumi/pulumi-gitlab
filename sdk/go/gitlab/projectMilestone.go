@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -67,7 +67,7 @@ type ProjectMilestone struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
 	DueDate pulumi.StringPtrOutput `pulumi:"dueDate"`
-	// Bool, true if milestore expired.
+	// Bool, true if milestone expired.
 	Expired pulumi.BoolOutput `pulumi:"expired"`
 	// The ID of the project's milestone.
 	Iid pulumi.IntOutput `pulumi:"iid"`
@@ -130,7 +130,7 @@ type projectMilestoneState struct {
 	Description *string `pulumi:"description"`
 	// The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
 	DueDate *string `pulumi:"dueDate"`
-	// Bool, true if milestore expired.
+	// Bool, true if milestone expired.
 	Expired *bool `pulumi:"expired"`
 	// The ID of the project's milestone.
 	Iid *int `pulumi:"iid"`
@@ -159,7 +159,7 @@ type ProjectMilestoneState struct {
 	Description pulumi.StringPtrInput
 	// The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
 	DueDate pulumi.StringPtrInput
-	// Bool, true if milestore expired.
+	// Bool, true if milestone expired.
 	Expired pulumi.BoolPtrInput
 	// The ID of the project's milestone.
 	Iid pulumi.IntPtrInput
@@ -318,7 +318,7 @@ func (o ProjectMilestoneOutput) DueDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectMilestone) pulumi.StringPtrOutput { return v.DueDate }).(pulumi.StringPtrOutput)
 }
 
-// Bool, true if milestore expired.
+// Bool, true if milestone expired.
 func (o ProjectMilestoneOutput) Expired() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectMilestone) pulumi.BoolOutput { return v.Expired }).(pulumi.BoolOutput)
 }

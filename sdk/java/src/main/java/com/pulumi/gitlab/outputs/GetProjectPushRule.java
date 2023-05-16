@@ -10,7 +10,7 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class GetProjectPushRules {
+public final class GetProjectPushRule {
     private String authorEmailRegex;
     private String branchNameRegex;
     private Boolean commitCommitterCheck;
@@ -23,7 +23,7 @@ public final class GetProjectPushRules {
     private Boolean preventSecrets;
     private Boolean rejectUnsignedCommits;
 
-    private GetProjectPushRules() {}
+    private GetProjectPushRule() {}
     public String authorEmailRegex() {
         return this.authorEmailRegex;
     }
@@ -62,7 +62,7 @@ public final class GetProjectPushRules {
         return new Builder();
     }
 
-    public static Builder builder(GetProjectPushRules defaults) {
+    public static Builder builder(GetProjectPushRule defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -79,7 +79,7 @@ public final class GetProjectPushRules {
         private Boolean preventSecrets;
         private Boolean rejectUnsignedCommits;
         public Builder() {}
-        public Builder(GetProjectPushRules defaults) {
+        public Builder(GetProjectPushRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authorEmailRegex = defaults.authorEmailRegex;
     	      this.branchNameRegex = defaults.branchNameRegex;
@@ -149,8 +149,8 @@ public final class GetProjectPushRules {
             this.rejectUnsignedCommits = Objects.requireNonNull(rejectUnsignedCommits);
             return this;
         }
-        public GetProjectPushRules build() {
-            final var o = new GetProjectPushRules();
+        public GetProjectPushRule build() {
+            final var o = new GetProjectPushRule();
             o.authorEmailRegex = authorEmailRegex;
             o.branchNameRegex = branchNameRegex;
             o.commitCommitterCheck = commitCommitterCheck;

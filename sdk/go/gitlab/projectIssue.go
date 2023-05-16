@@ -20,7 +20,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -87,7 +87,6 @@ type ProjectIssue struct {
 	// The number of downvotes the issue has received.
 	Downvotes pulumi.IntOutput `pulumi:"downvotes"`
 	// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-	// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
 	DueDate pulumi.StringPtrOutput `pulumi:"dueDate"`
 	// ID of the epic to add the issue to. Valid values are greater than or equal to 0.
 	EpicId pulumi.IntOutput `pulumi:"epicId"`
@@ -205,7 +204,6 @@ type projectIssueState struct {
 	// The number of downvotes the issue has received.
 	Downvotes *int `pulumi:"downvotes"`
 	// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-	// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
 	DueDate *string `pulumi:"dueDate"`
 	// ID of the epic to add the issue to. Valid values are greater than or equal to 0.
 	EpicId *int `pulumi:"epicId"`
@@ -289,7 +287,6 @@ type ProjectIssueState struct {
 	// The number of downvotes the issue has received.
 	Downvotes pulumi.IntPtrInput
 	// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-	// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
 	DueDate pulumi.StringPtrInput
 	// ID of the epic to add the issue to. Valid values are greater than or equal to 0.
 	EpicId pulumi.IntPtrInput
@@ -369,7 +366,6 @@ type projectIssueArgs struct {
 	// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
 	DiscussionToResolve *string `pulumi:"discussionToResolve"`
 	// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-	// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
 	DueDate *string `pulumi:"dueDate"`
 	// The ID of the epic issue.
 	EpicIssueId *int `pulumi:"epicIssueId"`
@@ -412,7 +408,6 @@ type ProjectIssueArgs struct {
 	// The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
 	DiscussionToResolve pulumi.StringPtrInput
 	// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-	// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
 	DueDate pulumi.StringPtrInput
 	// The ID of the epic issue.
 	EpicIssueId pulumi.IntPtrInput
@@ -581,7 +576,6 @@ func (o ProjectIssueOutput) Downvotes() pulumi.IntOutput {
 }
 
 // The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
 func (o ProjectIssueOutput) DueDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectIssue) pulumi.StringPtrOutput { return v.DueDate }).(pulumi.StringPtrOutput)
 }

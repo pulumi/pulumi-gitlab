@@ -19,9 +19,9 @@ import * as utilities from "./utilities";
  *     username: "example-user",
  * });
  * const exampleUserSshKey = new gitlab.UserSshKey("exampleUserSshKey", {
- *     userId: data.gitlab_user.id,
+ *     userId: exampleUser.then(exampleUser => exampleUser.id),
  *     title: "example-key",
- *     key: "ssh-rsa AAAA...",
+ *     key: "ssh-ed25519 AAAA...",
  *     expiresAt: "2016-01-21T00:00:00.000Z",
  * });
  * ```

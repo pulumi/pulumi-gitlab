@@ -32,6 +32,7 @@ class ApplicationSettingsArgs:
                  auto_devops_domain: Optional[pulumi.Input[str]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  automatic_purchased_storage_allocation: Optional[pulumi.Input[bool]] = None,
+                 can_create_group: Optional[pulumi.Input[bool]] = None,
                  check_namespace_plan: Optional[pulumi.Input[bool]] = None,
                  commit_email_hostname: Optional[pulumi.Input[str]] = None,
                  container_expiration_policies_enable_historic_entries: Optional[pulumi.Input[bool]] = None,
@@ -275,6 +276,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[str] auto_devops_domain: Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
         :param pulumi.Input[bool] auto_devops_enabled: Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
         :param pulumi.Input[bool] automatic_purchased_storage_allocation: Enabling this permits automatic allocation of purchased storage in a namespace.
+        :param pulumi.Input[bool] can_create_group: Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
         :param pulumi.Input[bool] check_namespace_plan: Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
         :param pulumi.Input[str] commit_email_hostname: Custom hostname (for private commit emails).
         :param pulumi.Input[bool] container_expiration_policies_enable_historic_entries: Enable cleanup policies for all projects.
@@ -288,29 +290,29 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[str] default_branch_name: Instance-level custom initial branch name (introduced in GitLab 13.2).
         :param pulumi.Input[int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
         :param pulumi.Input[str] default_ci_config_path: Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
-        :param pulumi.Input[str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter. Default is private.
+        :param pulumi.Input[str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter.
         :param pulumi.Input[int] default_project_creation: Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
-        :param pulumi.Input[str] default_project_visibility: What visibility level new projects receive. Can take private, internal and public as a parameter. Default is private.
-        :param pulumi.Input[int] default_projects_limit: Project limit per user. Default is 100000.
-        :param pulumi.Input[str] default_snippet_visibility: What visibility level new snippets receive. Can take private, internal and public as a parameter. Default is private.
-        :param pulumi.Input[bool] delayed_group_deletion: Enable delayed group deletion. Default is true. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-        :param pulumi.Input[bool] delayed_project_deletion: Enable delayed project deletion by default in new groups. Default is false. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
-        :param pulumi.Input[bool] delete_inactive_projects: Enable inactive project deletion feature. Default is false. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion, disabled by default).
-        :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. Defaults to 7. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+        :param pulumi.Input[str] default_project_visibility: What visibility level new projects receive. Can take private, internal and public as a parameter.
+        :param pulumi.Input[int] default_projects_limit: Project limit per user.
+        :param pulumi.Input[str] default_snippet_visibility: What visibility level new snippets receive. Can take private, internal and public as a parameter.
+        :param pulumi.Input[bool] delayed_group_deletion: Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
+        :param pulumi.Input[bool] delayed_project_deletion: Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
+        :param pulumi.Input[bool] delete_inactive_projects: Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
+        :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
         :param pulumi.Input[int] diff_max_files: Maximum files in a diff.
         :param pulumi.Input[int] diff_max_lines: Maximum lines in a diff.
         :param pulumi.Input[int] diff_max_patch_bytes: Maximum diff patch size, in bytes.
         :param pulumi.Input[bool] disable_feed_token: Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_oauth_sign_in_sources: Disabled OAuth sign-in sources.
         :param pulumi.Input[bool] dns_rebinding_protection_enabled: Enforce DNS rebinding attack protection.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_allowlists: Force people to use only corporate emails for sign-up. Default is null, meaning there is no restriction.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_allowlists: Force people to use only corporate emails for sign-up. Null means there is no restriction.
         :param pulumi.Input[bool] domain_denylist_enabled: (If enabled, requires: domain_denylist) Allows blocking sign-ups from emails from specific domains.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_denylists: Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
-        :param pulumi.Input[int] dsa_key_restriction: The minimum allowed bit length of an uploaded DSA key. Default is 0 (no restriction). -1 disables DSA keys.
-        :param pulumi.Input[int] ecdsa_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA key. Default is 0 (no restriction). -1 disables ECDSA keys.
-        :param pulumi.Input[int] ecdsa_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. Default is 0 (no restriction). -1 disables ECDSA*SK keys.
-        :param pulumi.Input[int] ed25519_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519 key. Default is 0 (no restriction). -1 disables ED25519 keys.
-        :param pulumi.Input[int] ed25519_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. Default is 0 (no restriction). -1 disables ED25519*SK keys.
+        :param pulumi.Input[int] dsa_key_restriction: The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
+        :param pulumi.Input[int] ecdsa_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
+        :param pulumi.Input[int] ecdsa_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
+        :param pulumi.Input[int] ed25519_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
+        :param pulumi.Input[int] ed25519_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
         :param pulumi.Input[str] eks_access_key_id: AWS IAM access key ID.
         :param pulumi.Input[str] eks_account_id: Amazon account ID.
         :param pulumi.Input[bool] eks_integration_enabled: Enable integration with Amazon EKS.
@@ -347,10 +349,10 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[str] external_pipeline_validation_service_token: Optional. Token to include as the X-Gitlab-Token header in requests to the URL in external*pipeline*validation*service*url.
         :param pulumi.Input[str] external_pipeline_validation_service_url: URL to use for pipeline validation requests.
         :param pulumi.Input[int] file_template_project_id: The ID of a project to load custom file templates from.
-        :param pulumi.Input[int] first_day_of_week: Start day of the week for calendar views and date pickers. Valid values are 0 (default) for Sunday, 1 for Monday, and 6 for Saturday.
+        :param pulumi.Input[int] first_day_of_week: Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
         :param pulumi.Input[str] geo_node_allowed_ips: Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, 1.1.1.1, 2.2.2.0/24.
         :param pulumi.Input[int] geo_status_timeout: The amount of seconds after which a request to get a secondary node status times out.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Default: [], Maximum: 100 usernames. Introduced in GitLab 15.2.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
         :param pulumi.Input[int] git_two_factor_session_expiry: Maximum duration (in minutes) of a session for Git operations when 2FA is enabled.
         :param pulumi.Input[int] gitaly_timeout_default: Default Gitaly timeout, in seconds. This timeout is not enforced for Git fetch/push operations or Sidekiq jobs. Set to 0 to disable timeouts.
         :param pulumi.Input[int] gitaly_timeout_fast: Gitaly fast operation timeout, in seconds. Some Gitaly operations are expected to be fast. If they exceed this threshold, there may be a problem with a storage shard and ‘failing fast’ can help maintain the stability of the GitLab instance. Set to 0 to disable timeouts.
@@ -372,13 +374,13 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[bool] html_emails_enabled: Enable HTML emails.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] import_sources: Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
-        :param pulumi.Input[bool] in_product_marketing_emails_enabled: Enable in-product marketing emails. Enabled by default.
-        :param pulumi.Input[int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Default is 2. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
-        :param pulumi.Input[int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Default is 0. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
-        :param pulumi.Input[int] inactive_projects_send_warning_email_after_months: If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Default is 1. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
-        :param pulumi.Input[bool] invisible_captcha_enabled: Enable Invisible CAPTCHA spam detection during sign-up. Disabled by default.
-        :param pulumi.Input[int] issues_create_limit: Max number of issue creation requests per minute per user. Disabled by default.
-        :param pulumi.Input[bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time. Enabled by default.
+        :param pulumi.Input[bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
+        :param pulumi.Input[int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        :param pulumi.Input[int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        :param pulumi.Input[int] inactive_projects_send_warning_email_after_months: If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        :param pulumi.Input[bool] invisible_captcha_enabled: Enable Invisible CAPTCHA spam detection during sign-up.
+        :param pulumi.Input[int] issues_create_limit: Max number of issue creation requests per minute per user.
+        :param pulumi.Input[bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         :param pulumi.Input[int] local_markdown_version: Increase this value when any cached Markdown should be invalidated.
         :param pulumi.Input[bool] mailgun_events_enabled: Enable Mailgun event receiver.
         :param pulumi.Input[str] mailgun_signing_key: The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -386,10 +388,10 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[str] maintenance_mode_message: Message displayed when instance is in maintenance mode.
         :param pulumi.Input[int] max_artifacts_size: Maximum artifacts size in MB.
         :param pulumi.Input[int] max_attachment_size: Limit attachment size in MB.
-        :param pulumi.Input[int] max_export_size: Maximum export size in MB. 0 for unlimited. Default = 0 (unlimited).
-        :param pulumi.Input[int] max_import_size: Maximum import size in MB. 0 for unlimited. Default = 0 (unlimited) Modified from 50MB to 0 in GitLab 13.8.
-        :param pulumi.Input[int] max_number_of_repository_downloads: Maximum number of unique repositories a user can download in the specified time period before they are banned. Default: 0, Maximum: 10,000 repositories. Introduced in GitLab 15.1.
-        :param pulumi.Input[int] max_number_of_repository_downloads_within_time_period: Reporting time period (in seconds). Default: 0, Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+        :param pulumi.Input[int] max_export_size: Maximum export size in MB. 0 for unlimited.
+        :param pulumi.Input[int] max_import_size: Maximum import size in MB. 0 for unlimited.
+        :param pulumi.Input[int] max_number_of_repository_downloads: Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+        :param pulumi.Input[int] max_number_of_repository_downloads_within_time_period: Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
         :param pulumi.Input[int] max_pages_size: Maximum size of pages repositories in MB.
         :param pulumi.Input[int] max_personal_access_token_lifetime: Maximum allowable lifetime for access tokens in days.
         :param pulumi.Input[int] max_ssh_key_lifetime: Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
@@ -402,16 +404,16 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] outbound_local_requests_whitelists: Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
         :param pulumi.Input[int] package_registry_cleanup_policies_worker_capacity: Number of workers assigned to the packages cleanup policies.
         :param pulumi.Input[bool] pages_domain_verification_enabled: Require users to prove ownership of custom domains. Domain verification is an essential security measure for public GitLab sites. Users are required to demonstrate they control a domain before it is enabled.
-        :param pulumi.Input[bool] password_authentication_enabled_for_git: Enable authentication for Git over HTTP(S) via a GitLab account password. Default is true.
-        :param pulumi.Input[bool] password_authentication_enabled_for_web: Enable authentication for the web interface via a GitLab account password. Default is true.
+        :param pulumi.Input[bool] password_authentication_enabled_for_git: Enable authentication for Git over HTTP(S) via a GitLab account password.
+        :param pulumi.Input[bool] password_authentication_enabled_for_web: Enable authentication for the web interface via a GitLab account password.
         :param pulumi.Input[bool] password_lowercase_required: Indicates whether passwords require at least one lowercase letter. Introduced in GitLab 15.1.
         :param pulumi.Input[bool] password_number_required: Indicates whether passwords require at least one number. Introduced in GitLab 15.1.
         :param pulumi.Input[bool] password_symbol_required: Indicates whether passwords require at least one symbol character. Introduced in GitLab 15.1.
         :param pulumi.Input[bool] password_uppercase_required: Indicates whether passwords require at least one uppercase letter. Introduced in GitLab 15.1.
         :param pulumi.Input[str] performance_bar_allowed_group_path: Path of the group that is allowed to toggle the performance bar.
         :param pulumi.Input[str] personal_access_token_prefix: Prefix for all generated personal access tokens.
-        :param pulumi.Input[int] pipeline_limit_per_project_user_sha: Maximum number of pipeline creation requests per minute per user and commit. Disabled by default.
-        :param pulumi.Input[bool] plantuml_enabled: (If enabled, requires: plantuml_url) Enable PlantUML integration. Default is false.
+        :param pulumi.Input[int] pipeline_limit_per_project_user_sha: Maximum number of pipeline creation requests per minute per user and commit.
+        :param pulumi.Input[bool] plantuml_enabled: (If enabled, requires: plantuml_url) Enable PlantUML integration.
         :param pulumi.Input[str] plantuml_url: The PlantUML instance URL for integration.
         :param pulumi.Input[float] polling_interval_multiplier: Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
         :param pulumi.Input[bool] project_export_enabled: Enable project export.
@@ -421,7 +423,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[int] push_event_hooks_limit: Number of changes (branches or tags) in a single push to determine whether webhooks and services fire or not. Webhooks and services aren’t submitted if it surpasses that value.
         :param pulumi.Input[bool] pypi_package_requests_forwarding: Use pypi.org as a default remote repository when the package is not found in the GitLab Package Registry for PyPI.
         :param pulumi.Input[str] rate_limiting_response_text: When rate limiting is enabled via the throttle_* settings, send this plain text response when a rate limit is exceeded. ‘Retry later’ is sent if this is blank.
-        :param pulumi.Input[int] raw_blob_request_limit: Max number of requests per minute for each raw path. Default: 300. To disable throttling set to 0.
+        :param pulumi.Input[int] raw_blob_request_limit: Max number of requests per minute for each raw path. To disable throttling set to 0.
         :param pulumi.Input[bool] recaptcha_enabled: (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
         :param pulumi.Input[str] recaptcha_private_key: Private key for reCAPTCHA.
         :param pulumi.Input[str] recaptcha_site_key: Site key for reCAPTCHA.
@@ -432,35 +434,35 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[int]]] repository_storages_weighted: (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         :param pulumi.Input[bool] require_admin_approval_after_user_signup: When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
         :param pulumi.Input[bool] require_two_factor_authentication: (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_visibility_levels: Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Default is null which means there is no restriction.
-        :param pulumi.Input[int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. Default is 0 (no restriction). -1 disables RSA keys.
-        :param pulumi.Input[int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. Default: 30. To disable throttling set to 0.
-        :param pulumi.Input[int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. Default: 10. To disable throttling set to 0.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_visibility_levels: Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
+        :param pulumi.Input[int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
+        :param pulumi.Input[int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
+        :param pulumi.Input[int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
         :param pulumi.Input[bool] send_user_confirmation_email: Send confirmation email on sign-up.
         :param pulumi.Input[int] session_expire_delay: Session duration in minutes. GitLab restart is required to apply changes.
         :param pulumi.Input[bool] shared_runners_enabled: (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
         :param pulumi.Input[int] shared_runners_minutes: Set the maximum number of CI/CD minutes that a group can use on shared runners per month.
         :param pulumi.Input[str] shared_runners_text: Shared runners text.
-        :param pulumi.Input[int] sidekiq_job_limiter_compression_threshold_bytes: The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis. Default: 100 000 bytes (100KB).
-        :param pulumi.Input[int] sidekiq_job_limiter_limit_bytes: The threshold in bytes at which Sidekiq jobs are rejected. Default: 0 bytes (doesn’t reject any job).
-        :param pulumi.Input[str] sidekiq_job_limiter_mode: track or compress. Sets the behavior for Sidekiq job size limits. Default: ‘compress’.
+        :param pulumi.Input[int] sidekiq_job_limiter_compression_threshold_bytes: The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
+        :param pulumi.Input[int] sidekiq_job_limiter_limit_bytes: The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
+        :param pulumi.Input[str] sidekiq_job_limiter_mode: track or compress. Sets the behavior for Sidekiq job size limits.
         :param pulumi.Input[str] sign_in_text: Text on the login page.
-        :param pulumi.Input[bool] signup_enabled: Enable registration. Default is true.
+        :param pulumi.Input[bool] signup_enabled: Enable registration.
         :param pulumi.Input[bool] slack_app_enabled: (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
         :param pulumi.Input[str] slack_app_id: The app ID of the Slack-app.
         :param pulumi.Input[str] slack_app_secret: The app secret of the Slack-app.
         :param pulumi.Input[str] slack_app_signing_secret: The signing secret of the Slack-app.
         :param pulumi.Input[str] slack_app_verification_token: The verification token of the Slack-app.
-        :param pulumi.Input[int] snippet_size_limit: Max snippet content size in bytes. Default: 52428800 Bytes (50MB).
+        :param pulumi.Input[int] snippet_size_limit: Max snippet content size in bytes.
         :param pulumi.Input[str] snowplow_app_id: The Snowplow site name / application ID. (for example, gitlab)
         :param pulumi.Input[str] snowplow_collector_hostname: The Snowplow collector hostname. (for example, snowplow.trx.gitlab.net)
         :param pulumi.Input[str] snowplow_cookie_domain: The Snowplow cookie domain. (for example, .gitlab.com)
         :param pulumi.Input[bool] snowplow_enabled: Enable snowplow tracking.
-        :param pulumi.Input[bool] sourcegraph_enabled: Enables Sourcegraph integration. Default is false. If enabled, requires sourcegraph_url.
-        :param pulumi.Input[bool] sourcegraph_public_only: Blocks Sourcegraph from being loaded on private and internal projects. Default is true.
+        :param pulumi.Input[bool] sourcegraph_enabled: Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
+        :param pulumi.Input[bool] sourcegraph_public_only: Blocks Sourcegraph from being loaded on private and internal projects.
         :param pulumi.Input[str] sourcegraph_url: The Sourcegraph instance URL for integration.
         :param pulumi.Input[str] spam_check_api_key: API key used by GitLab for accessing the Spam Check service endpoint.
-        :param pulumi.Input[bool] spam_check_endpoint_enabled: Enables spam checking using external Spam Check API endpoint. Default is false.
+        :param pulumi.Input[bool] spam_check_endpoint_enabled: Enables spam checking using external Spam Check API endpoint.
         :param pulumi.Input[str] spam_check_endpoint_url: URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.
         :param pulumi.Input[bool] suggest_pipeline_enabled: Enable pipeline suggestion banner.
         :param pulumi.Input[int] terminal_max_session_time: Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
@@ -483,7 +485,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[bool] throttle_unauthenticated_web_enabled: (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[int] throttle_unauthenticated_web_period_in_seconds: Rate limit period in seconds.
         :param pulumi.Input[int] throttle_unauthenticated_web_requests_per_period: Max requests per period per IP.
-        :param pulumi.Input[bool] time_tracking_limit_to_hours: Limit display of time tracking units to hours. Default is false.
+        :param pulumi.Input[bool] time_tracking_limit_to_hours: Limit display of time tracking units to hours.
         :param pulumi.Input[int] two_factor_grace_period: Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication.
         :param pulumi.Input[bool] unique_ips_limit_enabled: (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
         :param pulumi.Input[int] unique_ips_limit_per_user: Maximum number of IPs per user.
@@ -497,7 +499,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[bool] version_check_enabled: Let GitLab inform you when an update is available.
         :param pulumi.Input[bool] web_ide_clientside_preview_enabled: Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
         :param pulumi.Input[str] whats_new_variant: What’s new variant, possible values: all*tiers, current*tier, and disabled.
-        :param pulumi.Input[int] wiki_page_max_content_bytes: Maximum wiki page content size in bytes. Default: 52428800 Bytes (50 MB). The minimum value is 1024 bytes.
+        :param pulumi.Input[int] wiki_page_max_content_bytes: Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
         """
         if abuse_notification_email is not None:
             pulumi.set(__self__, "abuse_notification_email", abuse_notification_email)
@@ -535,6 +537,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
         if automatic_purchased_storage_allocation is not None:
             pulumi.set(__self__, "automatic_purchased_storage_allocation", automatic_purchased_storage_allocation)
+        if can_create_group is not None:
+            pulumi.set(__self__, "can_create_group", can_create_group)
         if check_namespace_plan is not None:
             pulumi.set(__self__, "check_namespace_plan", check_namespace_plan)
         if commit_email_hostname is not None:
@@ -1199,6 +1203,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "automatic_purchased_storage_allocation", value)
 
     @property
+    @pulumi.getter(name="canCreateGroup")
+    def can_create_group(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
+        """
+        return pulumi.get(self, "can_create_group")
+
+    @can_create_group.setter
+    def can_create_group(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "can_create_group", value)
+
+    @property
     @pulumi.getter(name="checkNamespacePlan")
     def check_namespace_plan(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1358,7 +1374,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="defaultGroupVisibility")
     def default_group_visibility(self) -> Optional[pulumi.Input[str]]:
         """
-        What visibility level new groups receive. Can take private, internal and public as a parameter. Default is private.
+        What visibility level new groups receive. Can take private, internal and public as a parameter.
         """
         return pulumi.get(self, "default_group_visibility")
 
@@ -1382,7 +1398,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="defaultProjectVisibility")
     def default_project_visibility(self) -> Optional[pulumi.Input[str]]:
         """
-        What visibility level new projects receive. Can take private, internal and public as a parameter. Default is private.
+        What visibility level new projects receive. Can take private, internal and public as a parameter.
         """
         return pulumi.get(self, "default_project_visibility")
 
@@ -1394,7 +1410,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="defaultProjectsLimit")
     def default_projects_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        Project limit per user. Default is 100000.
+        Project limit per user.
         """
         return pulumi.get(self, "default_projects_limit")
 
@@ -1406,7 +1422,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="defaultSnippetVisibility")
     def default_snippet_visibility(self) -> Optional[pulumi.Input[str]]:
         """
-        What visibility level new snippets receive. Can take private, internal and public as a parameter. Default is private.
+        What visibility level new snippets receive. Can take private, internal and public as a parameter.
         """
         return pulumi.get(self, "default_snippet_visibility")
 
@@ -1418,7 +1434,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="delayedGroupDeletion")
     def delayed_group_deletion(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable delayed group deletion. Default is true. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
+        Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
         """
         return pulumi.get(self, "delayed_group_deletion")
 
@@ -1430,7 +1446,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="delayedProjectDeletion")
     def delayed_project_deletion(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable delayed project deletion by default in new groups. Default is false. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
+        Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
         """
         return pulumi.get(self, "delayed_project_deletion")
 
@@ -1442,7 +1458,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="deleteInactiveProjects")
     def delete_inactive_projects(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable inactive project deletion feature. Default is false. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion, disabled by default).
+        Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
         """
         return pulumi.get(self, "delete_inactive_projects")
 
@@ -1454,7 +1470,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="deletionAdjournedPeriod")
     def deletion_adjourned_period(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. Defaults to 7. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+        The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
         """
         return pulumi.get(self, "deletion_adjourned_period")
 
@@ -1538,7 +1554,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="domainAllowlists")
     def domain_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Force people to use only corporate emails for sign-up. Default is null, meaning there is no restriction.
+        Force people to use only corporate emails for sign-up. Null means there is no restriction.
         """
         return pulumi.get(self, "domain_allowlists")
 
@@ -1574,7 +1590,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="dsaKeyRestriction")
     def dsa_key_restriction(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum allowed bit length of an uploaded DSA key. Default is 0 (no restriction). -1 disables DSA keys.
+        The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
         """
         return pulumi.get(self, "dsa_key_restriction")
 
@@ -1586,7 +1602,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="ecdsaKeyRestriction")
     def ecdsa_key_restriction(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum allowed curve size (in bits) of an uploaded ECDSA key. Default is 0 (no restriction). -1 disables ECDSA keys.
+        The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
         """
         return pulumi.get(self, "ecdsa_key_restriction")
 
@@ -1598,7 +1614,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="ecdsaSkKeyRestriction")
     def ecdsa_sk_key_restriction(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. Default is 0 (no restriction). -1 disables ECDSA*SK keys.
+        The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
         """
         return pulumi.get(self, "ecdsa_sk_key_restriction")
 
@@ -1610,7 +1626,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="ed25519KeyRestriction")
     def ed25519_key_restriction(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum allowed curve size (in bits) of an uploaded ED25519 key. Default is 0 (no restriction). -1 disables ED25519 keys.
+        The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
         """
         return pulumi.get(self, "ed25519_key_restriction")
 
@@ -1622,7 +1638,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="ed25519SkKeyRestriction")
     def ed25519_sk_key_restriction(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. Default is 0 (no restriction). -1 disables ED25519*SK keys.
+        The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
         """
         return pulumi.get(self, "ed25519_sk_key_restriction")
 
@@ -2066,7 +2082,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="firstDayOfWeek")
     def first_day_of_week(self) -> Optional[pulumi.Input[int]]:
         """
-        Start day of the week for calendar views and date pickers. Valid values are 0 (default) for Sunday, 1 for Monday, and 6 for Saturday.
+        Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
         """
         return pulumi.get(self, "first_day_of_week")
 
@@ -2102,7 +2118,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="gitRateLimitUsersAllowlists")
     def git_rate_limit_users_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of usernames excluded from Git anti-abuse rate limits. Default: [], Maximum: 100 usernames. Introduced in GitLab 15.2.
+        List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
         """
         return pulumi.get(self, "git_rate_limit_users_allowlists")
 
@@ -2366,7 +2382,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="inProductMarketingEmailsEnabled")
     def in_product_marketing_emails_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable in-product marketing emails. Enabled by default.
+        Enable in-product marketing emails.
         """
         return pulumi.get(self, "in_product_marketing_emails_enabled")
 
@@ -2378,7 +2394,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="inactiveProjectsDeleteAfterMonths")
     def inactive_projects_delete_after_months(self) -> Optional[pulumi.Input[int]]:
         """
-        If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Default is 2. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         """
         return pulumi.get(self, "inactive_projects_delete_after_months")
 
@@ -2390,7 +2406,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="inactiveProjectsMinSizeMb")
     def inactive_projects_min_size_mb(self) -> Optional[pulumi.Input[int]]:
         """
-        If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Default is 0. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         """
         return pulumi.get(self, "inactive_projects_min_size_mb")
 
@@ -2402,7 +2418,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="inactiveProjectsSendWarningEmailAfterMonths")
     def inactive_projects_send_warning_email_after_months(self) -> Optional[pulumi.Input[int]]:
         """
-        If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Default is 1. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         """
         return pulumi.get(self, "inactive_projects_send_warning_email_after_months")
 
@@ -2414,7 +2430,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="invisibleCaptchaEnabled")
     def invisible_captcha_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable Invisible CAPTCHA spam detection during sign-up. Disabled by default.
+        Enable Invisible CAPTCHA spam detection during sign-up.
         """
         return pulumi.get(self, "invisible_captcha_enabled")
 
@@ -2426,7 +2442,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="issuesCreateLimit")
     def issues_create_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        Max number of issue creation requests per minute per user. Disabled by default.
+        Max number of issue creation requests per minute per user.
         """
         return pulumi.get(self, "issues_create_limit")
 
@@ -2438,7 +2454,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="keepLatestArtifact")
     def keep_latest_artifact(self) -> Optional[pulumi.Input[bool]]:
         """
-        Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time. Enabled by default.
+        Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         """
         return pulumi.get(self, "keep_latest_artifact")
 
@@ -2534,7 +2550,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="maxExportSize")
     def max_export_size(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum export size in MB. 0 for unlimited. Default = 0 (unlimited).
+        Maximum export size in MB. 0 for unlimited.
         """
         return pulumi.get(self, "max_export_size")
 
@@ -2546,7 +2562,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="maxImportSize")
     def max_import_size(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum import size in MB. 0 for unlimited. Default = 0 (unlimited) Modified from 50MB to 0 in GitLab 13.8.
+        Maximum import size in MB. 0 for unlimited.
         """
         return pulumi.get(self, "max_import_size")
 
@@ -2558,7 +2574,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="maxNumberOfRepositoryDownloads")
     def max_number_of_repository_downloads(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of unique repositories a user can download in the specified time period before they are banned. Default: 0, Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+        Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
         """
         return pulumi.get(self, "max_number_of_repository_downloads")
 
@@ -2570,7 +2586,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="maxNumberOfRepositoryDownloadsWithinTimePeriod")
     def max_number_of_repository_downloads_within_time_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Reporting time period (in seconds). Default: 0, Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+        Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
         """
         return pulumi.get(self, "max_number_of_repository_downloads_within_time_period")
 
@@ -2726,7 +2742,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="passwordAuthenticationEnabledForGit")
     def password_authentication_enabled_for_git(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable authentication for Git over HTTP(S) via a GitLab account password. Default is true.
+        Enable authentication for Git over HTTP(S) via a GitLab account password.
         """
         return pulumi.get(self, "password_authentication_enabled_for_git")
 
@@ -2738,7 +2754,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="passwordAuthenticationEnabledForWeb")
     def password_authentication_enabled_for_web(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable authentication for the web interface via a GitLab account password. Default is true.
+        Enable authentication for the web interface via a GitLab account password.
         """
         return pulumi.get(self, "password_authentication_enabled_for_web")
 
@@ -2822,7 +2838,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="pipelineLimitPerProjectUserSha")
     def pipeline_limit_per_project_user_sha(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of pipeline creation requests per minute per user and commit. Disabled by default.
+        Maximum number of pipeline creation requests per minute per user and commit.
         """
         return pulumi.get(self, "pipeline_limit_per_project_user_sha")
 
@@ -2834,7 +2850,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="plantumlEnabled")
     def plantuml_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        (If enabled, requires: plantuml_url) Enable PlantUML integration. Default is false.
+        (If enabled, requires: plantuml_url) Enable PlantUML integration.
         """
         return pulumi.get(self, "plantuml_enabled")
 
@@ -2954,7 +2970,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="rawBlobRequestLimit")
     def raw_blob_request_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        Max number of requests per minute for each raw path. Default: 300. To disable throttling set to 0.
+        Max number of requests per minute for each raw path. To disable throttling set to 0.
         """
         return pulumi.get(self, "raw_blob_request_limit")
 
@@ -3086,7 +3102,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="restrictedVisibilityLevels")
     def restricted_visibility_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Default is null which means there is no restriction.
+        Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
         """
         return pulumi.get(self, "restricted_visibility_levels")
 
@@ -3098,7 +3114,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="rsaKeyRestriction")
     def rsa_key_restriction(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum allowed bit length of an uploaded RSA key. Default is 0 (no restriction). -1 disables RSA keys.
+        The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
         """
         return pulumi.get(self, "rsa_key_restriction")
 
@@ -3110,7 +3126,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="searchRateLimit")
     def search_rate_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        Max number of requests per minute for performing a search while authenticated. Default: 30. To disable throttling set to 0.
+        Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
         """
         return pulumi.get(self, "search_rate_limit")
 
@@ -3122,7 +3138,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="searchRateLimitUnauthenticated")
     def search_rate_limit_unauthenticated(self) -> Optional[pulumi.Input[int]]:
         """
-        Max number of requests per minute for performing a search while unauthenticated. Default: 10. To disable throttling set to 0.
+        Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
         """
         return pulumi.get(self, "search_rate_limit_unauthenticated")
 
@@ -3194,7 +3210,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="sidekiqJobLimiterCompressionThresholdBytes")
     def sidekiq_job_limiter_compression_threshold_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis. Default: 100 000 bytes (100KB).
+        The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
         """
         return pulumi.get(self, "sidekiq_job_limiter_compression_threshold_bytes")
 
@@ -3206,7 +3222,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="sidekiqJobLimiterLimitBytes")
     def sidekiq_job_limiter_limit_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        The threshold in bytes at which Sidekiq jobs are rejected. Default: 0 bytes (doesn’t reject any job).
+        The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
         """
         return pulumi.get(self, "sidekiq_job_limiter_limit_bytes")
 
@@ -3218,7 +3234,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="sidekiqJobLimiterMode")
     def sidekiq_job_limiter_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        track or compress. Sets the behavior for Sidekiq job size limits. Default: ‘compress’.
+        track or compress. Sets the behavior for Sidekiq job size limits.
         """
         return pulumi.get(self, "sidekiq_job_limiter_mode")
 
@@ -3242,7 +3258,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="signupEnabled")
     def signup_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable registration. Default is true.
+        Enable registration.
         """
         return pulumi.get(self, "signup_enabled")
 
@@ -3314,7 +3330,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="snippetSizeLimit")
     def snippet_size_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        Max snippet content size in bytes. Default: 52428800 Bytes (50MB).
+        Max snippet content size in bytes.
         """
         return pulumi.get(self, "snippet_size_limit")
 
@@ -3374,7 +3390,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="sourcegraphEnabled")
     def sourcegraph_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables Sourcegraph integration. Default is false. If enabled, requires sourcegraph_url.
+        Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
         """
         return pulumi.get(self, "sourcegraph_enabled")
 
@@ -3386,7 +3402,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="sourcegraphPublicOnly")
     def sourcegraph_public_only(self) -> Optional[pulumi.Input[bool]]:
         """
-        Blocks Sourcegraph from being loaded on private and internal projects. Default is true.
+        Blocks Sourcegraph from being loaded on private and internal projects.
         """
         return pulumi.get(self, "sourcegraph_public_only")
 
@@ -3422,7 +3438,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="spamCheckEndpointEnabled")
     def spam_check_endpoint_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables spam checking using external Spam Check API endpoint. Default is false.
+        Enables spam checking using external Spam Check API endpoint.
         """
         return pulumi.get(self, "spam_check_endpoint_enabled")
 
@@ -3698,7 +3714,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="timeTrackingLimitToHours")
     def time_tracking_limit_to_hours(self) -> Optional[pulumi.Input[bool]]:
         """
-        Limit display of time tracking units to hours. Default is false.
+        Limit display of time tracking units to hours.
         """
         return pulumi.get(self, "time_tracking_limit_to_hours")
 
@@ -3866,7 +3882,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="wikiPageMaxContentBytes")
     def wiki_page_max_content_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum wiki page content size in bytes. Default: 52428800 Bytes (50 MB). The minimum value is 1024 bytes.
+        Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
         """
         return pulumi.get(self, "wiki_page_max_content_bytes")
 
@@ -3896,6 +3912,7 @@ class _ApplicationSettingsState:
                  auto_devops_domain: Optional[pulumi.Input[str]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  automatic_purchased_storage_allocation: Optional[pulumi.Input[bool]] = None,
+                 can_create_group: Optional[pulumi.Input[bool]] = None,
                  check_namespace_plan: Optional[pulumi.Input[bool]] = None,
                  commit_email_hostname: Optional[pulumi.Input[str]] = None,
                  container_expiration_policies_enable_historic_entries: Optional[pulumi.Input[bool]] = None,
@@ -4139,6 +4156,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[str] auto_devops_domain: Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
         :param pulumi.Input[bool] auto_devops_enabled: Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
         :param pulumi.Input[bool] automatic_purchased_storage_allocation: Enabling this permits automatic allocation of purchased storage in a namespace.
+        :param pulumi.Input[bool] can_create_group: Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
         :param pulumi.Input[bool] check_namespace_plan: Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
         :param pulumi.Input[str] commit_email_hostname: Custom hostname (for private commit emails).
         :param pulumi.Input[bool] container_expiration_policies_enable_historic_entries: Enable cleanup policies for all projects.
@@ -4152,29 +4170,29 @@ class _ApplicationSettingsState:
         :param pulumi.Input[str] default_branch_name: Instance-level custom initial branch name (introduced in GitLab 13.2).
         :param pulumi.Input[int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
         :param pulumi.Input[str] default_ci_config_path: Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
-        :param pulumi.Input[str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter. Default is private.
+        :param pulumi.Input[str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter.
         :param pulumi.Input[int] default_project_creation: Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
-        :param pulumi.Input[str] default_project_visibility: What visibility level new projects receive. Can take private, internal and public as a parameter. Default is private.
-        :param pulumi.Input[int] default_projects_limit: Project limit per user. Default is 100000.
-        :param pulumi.Input[str] default_snippet_visibility: What visibility level new snippets receive. Can take private, internal and public as a parameter. Default is private.
-        :param pulumi.Input[bool] delayed_group_deletion: Enable delayed group deletion. Default is true. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-        :param pulumi.Input[bool] delayed_project_deletion: Enable delayed project deletion by default in new groups. Default is false. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
-        :param pulumi.Input[bool] delete_inactive_projects: Enable inactive project deletion feature. Default is false. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion, disabled by default).
-        :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. Defaults to 7. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+        :param pulumi.Input[str] default_project_visibility: What visibility level new projects receive. Can take private, internal and public as a parameter.
+        :param pulumi.Input[int] default_projects_limit: Project limit per user.
+        :param pulumi.Input[str] default_snippet_visibility: What visibility level new snippets receive. Can take private, internal and public as a parameter.
+        :param pulumi.Input[bool] delayed_group_deletion: Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
+        :param pulumi.Input[bool] delayed_project_deletion: Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
+        :param pulumi.Input[bool] delete_inactive_projects: Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
+        :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
         :param pulumi.Input[int] diff_max_files: Maximum files in a diff.
         :param pulumi.Input[int] diff_max_lines: Maximum lines in a diff.
         :param pulumi.Input[int] diff_max_patch_bytes: Maximum diff patch size, in bytes.
         :param pulumi.Input[bool] disable_feed_token: Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_oauth_sign_in_sources: Disabled OAuth sign-in sources.
         :param pulumi.Input[bool] dns_rebinding_protection_enabled: Enforce DNS rebinding attack protection.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_allowlists: Force people to use only corporate emails for sign-up. Default is null, meaning there is no restriction.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_allowlists: Force people to use only corporate emails for sign-up. Null means there is no restriction.
         :param pulumi.Input[bool] domain_denylist_enabled: (If enabled, requires: domain_denylist) Allows blocking sign-ups from emails from specific domains.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_denylists: Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
-        :param pulumi.Input[int] dsa_key_restriction: The minimum allowed bit length of an uploaded DSA key. Default is 0 (no restriction). -1 disables DSA keys.
-        :param pulumi.Input[int] ecdsa_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA key. Default is 0 (no restriction). -1 disables ECDSA keys.
-        :param pulumi.Input[int] ecdsa_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. Default is 0 (no restriction). -1 disables ECDSA*SK keys.
-        :param pulumi.Input[int] ed25519_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519 key. Default is 0 (no restriction). -1 disables ED25519 keys.
-        :param pulumi.Input[int] ed25519_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. Default is 0 (no restriction). -1 disables ED25519*SK keys.
+        :param pulumi.Input[int] dsa_key_restriction: The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
+        :param pulumi.Input[int] ecdsa_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
+        :param pulumi.Input[int] ecdsa_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
+        :param pulumi.Input[int] ed25519_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
+        :param pulumi.Input[int] ed25519_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
         :param pulumi.Input[str] eks_access_key_id: AWS IAM access key ID.
         :param pulumi.Input[str] eks_account_id: Amazon account ID.
         :param pulumi.Input[bool] eks_integration_enabled: Enable integration with Amazon EKS.
@@ -4211,10 +4229,10 @@ class _ApplicationSettingsState:
         :param pulumi.Input[str] external_pipeline_validation_service_token: Optional. Token to include as the X-Gitlab-Token header in requests to the URL in external*pipeline*validation*service*url.
         :param pulumi.Input[str] external_pipeline_validation_service_url: URL to use for pipeline validation requests.
         :param pulumi.Input[int] file_template_project_id: The ID of a project to load custom file templates from.
-        :param pulumi.Input[int] first_day_of_week: Start day of the week for calendar views and date pickers. Valid values are 0 (default) for Sunday, 1 for Monday, and 6 for Saturday.
+        :param pulumi.Input[int] first_day_of_week: Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
         :param pulumi.Input[str] geo_node_allowed_ips: Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, 1.1.1.1, 2.2.2.0/24.
         :param pulumi.Input[int] geo_status_timeout: The amount of seconds after which a request to get a secondary node status times out.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Default: [], Maximum: 100 usernames. Introduced in GitLab 15.2.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
         :param pulumi.Input[int] git_two_factor_session_expiry: Maximum duration (in minutes) of a session for Git operations when 2FA is enabled.
         :param pulumi.Input[int] gitaly_timeout_default: Default Gitaly timeout, in seconds. This timeout is not enforced for Git fetch/push operations or Sidekiq jobs. Set to 0 to disable timeouts.
         :param pulumi.Input[int] gitaly_timeout_fast: Gitaly fast operation timeout, in seconds. Some Gitaly operations are expected to be fast. If they exceed this threshold, there may be a problem with a storage shard and ‘failing fast’ can help maintain the stability of the GitLab instance. Set to 0 to disable timeouts.
@@ -4236,13 +4254,13 @@ class _ApplicationSettingsState:
         :param pulumi.Input[int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[bool] html_emails_enabled: Enable HTML emails.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] import_sources: Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
-        :param pulumi.Input[bool] in_product_marketing_emails_enabled: Enable in-product marketing emails. Enabled by default.
-        :param pulumi.Input[int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Default is 2. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
-        :param pulumi.Input[int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Default is 0. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
-        :param pulumi.Input[int] inactive_projects_send_warning_email_after_months: If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Default is 1. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
-        :param pulumi.Input[bool] invisible_captcha_enabled: Enable Invisible CAPTCHA spam detection during sign-up. Disabled by default.
-        :param pulumi.Input[int] issues_create_limit: Max number of issue creation requests per minute per user. Disabled by default.
-        :param pulumi.Input[bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time. Enabled by default.
+        :param pulumi.Input[bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
+        :param pulumi.Input[int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        :param pulumi.Input[int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        :param pulumi.Input[int] inactive_projects_send_warning_email_after_months: If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        :param pulumi.Input[bool] invisible_captcha_enabled: Enable Invisible CAPTCHA spam detection during sign-up.
+        :param pulumi.Input[int] issues_create_limit: Max number of issue creation requests per minute per user.
+        :param pulumi.Input[bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         :param pulumi.Input[int] local_markdown_version: Increase this value when any cached Markdown should be invalidated.
         :param pulumi.Input[bool] mailgun_events_enabled: Enable Mailgun event receiver.
         :param pulumi.Input[str] mailgun_signing_key: The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -4250,10 +4268,10 @@ class _ApplicationSettingsState:
         :param pulumi.Input[str] maintenance_mode_message: Message displayed when instance is in maintenance mode.
         :param pulumi.Input[int] max_artifacts_size: Maximum artifacts size in MB.
         :param pulumi.Input[int] max_attachment_size: Limit attachment size in MB.
-        :param pulumi.Input[int] max_export_size: Maximum export size in MB. 0 for unlimited. Default = 0 (unlimited).
-        :param pulumi.Input[int] max_import_size: Maximum import size in MB. 0 for unlimited. Default = 0 (unlimited) Modified from 50MB to 0 in GitLab 13.8.
-        :param pulumi.Input[int] max_number_of_repository_downloads: Maximum number of unique repositories a user can download in the specified time period before they are banned. Default: 0, Maximum: 10,000 repositories. Introduced in GitLab 15.1.
-        :param pulumi.Input[int] max_number_of_repository_downloads_within_time_period: Reporting time period (in seconds). Default: 0, Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+        :param pulumi.Input[int] max_export_size: Maximum export size in MB. 0 for unlimited.
+        :param pulumi.Input[int] max_import_size: Maximum import size in MB. 0 for unlimited.
+        :param pulumi.Input[int] max_number_of_repository_downloads: Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+        :param pulumi.Input[int] max_number_of_repository_downloads_within_time_period: Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
         :param pulumi.Input[int] max_pages_size: Maximum size of pages repositories in MB.
         :param pulumi.Input[int] max_personal_access_token_lifetime: Maximum allowable lifetime for access tokens in days.
         :param pulumi.Input[int] max_ssh_key_lifetime: Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
@@ -4266,16 +4284,16 @@ class _ApplicationSettingsState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] outbound_local_requests_whitelists: Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
         :param pulumi.Input[int] package_registry_cleanup_policies_worker_capacity: Number of workers assigned to the packages cleanup policies.
         :param pulumi.Input[bool] pages_domain_verification_enabled: Require users to prove ownership of custom domains. Domain verification is an essential security measure for public GitLab sites. Users are required to demonstrate they control a domain before it is enabled.
-        :param pulumi.Input[bool] password_authentication_enabled_for_git: Enable authentication for Git over HTTP(S) via a GitLab account password. Default is true.
-        :param pulumi.Input[bool] password_authentication_enabled_for_web: Enable authentication for the web interface via a GitLab account password. Default is true.
+        :param pulumi.Input[bool] password_authentication_enabled_for_git: Enable authentication for Git over HTTP(S) via a GitLab account password.
+        :param pulumi.Input[bool] password_authentication_enabled_for_web: Enable authentication for the web interface via a GitLab account password.
         :param pulumi.Input[bool] password_lowercase_required: Indicates whether passwords require at least one lowercase letter. Introduced in GitLab 15.1.
         :param pulumi.Input[bool] password_number_required: Indicates whether passwords require at least one number. Introduced in GitLab 15.1.
         :param pulumi.Input[bool] password_symbol_required: Indicates whether passwords require at least one symbol character. Introduced in GitLab 15.1.
         :param pulumi.Input[bool] password_uppercase_required: Indicates whether passwords require at least one uppercase letter. Introduced in GitLab 15.1.
         :param pulumi.Input[str] performance_bar_allowed_group_path: Path of the group that is allowed to toggle the performance bar.
         :param pulumi.Input[str] personal_access_token_prefix: Prefix for all generated personal access tokens.
-        :param pulumi.Input[int] pipeline_limit_per_project_user_sha: Maximum number of pipeline creation requests per minute per user and commit. Disabled by default.
-        :param pulumi.Input[bool] plantuml_enabled: (If enabled, requires: plantuml_url) Enable PlantUML integration. Default is false.
+        :param pulumi.Input[int] pipeline_limit_per_project_user_sha: Maximum number of pipeline creation requests per minute per user and commit.
+        :param pulumi.Input[bool] plantuml_enabled: (If enabled, requires: plantuml_url) Enable PlantUML integration.
         :param pulumi.Input[str] plantuml_url: The PlantUML instance URL for integration.
         :param pulumi.Input[float] polling_interval_multiplier: Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
         :param pulumi.Input[bool] project_export_enabled: Enable project export.
@@ -4285,7 +4303,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[int] push_event_hooks_limit: Number of changes (branches or tags) in a single push to determine whether webhooks and services fire or not. Webhooks and services aren’t submitted if it surpasses that value.
         :param pulumi.Input[bool] pypi_package_requests_forwarding: Use pypi.org as a default remote repository when the package is not found in the GitLab Package Registry for PyPI.
         :param pulumi.Input[str] rate_limiting_response_text: When rate limiting is enabled via the throttle_* settings, send this plain text response when a rate limit is exceeded. ‘Retry later’ is sent if this is blank.
-        :param pulumi.Input[int] raw_blob_request_limit: Max number of requests per minute for each raw path. Default: 300. To disable throttling set to 0.
+        :param pulumi.Input[int] raw_blob_request_limit: Max number of requests per minute for each raw path. To disable throttling set to 0.
         :param pulumi.Input[bool] recaptcha_enabled: (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
         :param pulumi.Input[str] recaptcha_private_key: Private key for reCAPTCHA.
         :param pulumi.Input[str] recaptcha_site_key: Site key for reCAPTCHA.
@@ -4296,35 +4314,35 @@ class _ApplicationSettingsState:
         :param pulumi.Input[Mapping[str, pulumi.Input[int]]] repository_storages_weighted: (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         :param pulumi.Input[bool] require_admin_approval_after_user_signup: When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
         :param pulumi.Input[bool] require_two_factor_authentication: (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_visibility_levels: Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Default is null which means there is no restriction.
-        :param pulumi.Input[int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. Default is 0 (no restriction). -1 disables RSA keys.
-        :param pulumi.Input[int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. Default: 30. To disable throttling set to 0.
-        :param pulumi.Input[int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. Default: 10. To disable throttling set to 0.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_visibility_levels: Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
+        :param pulumi.Input[int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
+        :param pulumi.Input[int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
+        :param pulumi.Input[int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
         :param pulumi.Input[bool] send_user_confirmation_email: Send confirmation email on sign-up.
         :param pulumi.Input[int] session_expire_delay: Session duration in minutes. GitLab restart is required to apply changes.
         :param pulumi.Input[bool] shared_runners_enabled: (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
         :param pulumi.Input[int] shared_runners_minutes: Set the maximum number of CI/CD minutes that a group can use on shared runners per month.
         :param pulumi.Input[str] shared_runners_text: Shared runners text.
-        :param pulumi.Input[int] sidekiq_job_limiter_compression_threshold_bytes: The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis. Default: 100 000 bytes (100KB).
-        :param pulumi.Input[int] sidekiq_job_limiter_limit_bytes: The threshold in bytes at which Sidekiq jobs are rejected. Default: 0 bytes (doesn’t reject any job).
-        :param pulumi.Input[str] sidekiq_job_limiter_mode: track or compress. Sets the behavior for Sidekiq job size limits. Default: ‘compress’.
+        :param pulumi.Input[int] sidekiq_job_limiter_compression_threshold_bytes: The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
+        :param pulumi.Input[int] sidekiq_job_limiter_limit_bytes: The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
+        :param pulumi.Input[str] sidekiq_job_limiter_mode: track or compress. Sets the behavior for Sidekiq job size limits.
         :param pulumi.Input[str] sign_in_text: Text on the login page.
-        :param pulumi.Input[bool] signup_enabled: Enable registration. Default is true.
+        :param pulumi.Input[bool] signup_enabled: Enable registration.
         :param pulumi.Input[bool] slack_app_enabled: (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
         :param pulumi.Input[str] slack_app_id: The app ID of the Slack-app.
         :param pulumi.Input[str] slack_app_secret: The app secret of the Slack-app.
         :param pulumi.Input[str] slack_app_signing_secret: The signing secret of the Slack-app.
         :param pulumi.Input[str] slack_app_verification_token: The verification token of the Slack-app.
-        :param pulumi.Input[int] snippet_size_limit: Max snippet content size in bytes. Default: 52428800 Bytes (50MB).
+        :param pulumi.Input[int] snippet_size_limit: Max snippet content size in bytes.
         :param pulumi.Input[str] snowplow_app_id: The Snowplow site name / application ID. (for example, gitlab)
         :param pulumi.Input[str] snowplow_collector_hostname: The Snowplow collector hostname. (for example, snowplow.trx.gitlab.net)
         :param pulumi.Input[str] snowplow_cookie_domain: The Snowplow cookie domain. (for example, .gitlab.com)
         :param pulumi.Input[bool] snowplow_enabled: Enable snowplow tracking.
-        :param pulumi.Input[bool] sourcegraph_enabled: Enables Sourcegraph integration. Default is false. If enabled, requires sourcegraph_url.
-        :param pulumi.Input[bool] sourcegraph_public_only: Blocks Sourcegraph from being loaded on private and internal projects. Default is true.
+        :param pulumi.Input[bool] sourcegraph_enabled: Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
+        :param pulumi.Input[bool] sourcegraph_public_only: Blocks Sourcegraph from being loaded on private and internal projects.
         :param pulumi.Input[str] sourcegraph_url: The Sourcegraph instance URL for integration.
         :param pulumi.Input[str] spam_check_api_key: API key used by GitLab for accessing the Spam Check service endpoint.
-        :param pulumi.Input[bool] spam_check_endpoint_enabled: Enables spam checking using external Spam Check API endpoint. Default is false.
+        :param pulumi.Input[bool] spam_check_endpoint_enabled: Enables spam checking using external Spam Check API endpoint.
         :param pulumi.Input[str] spam_check_endpoint_url: URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.
         :param pulumi.Input[bool] suggest_pipeline_enabled: Enable pipeline suggestion banner.
         :param pulumi.Input[int] terminal_max_session_time: Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
@@ -4347,7 +4365,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[bool] throttle_unauthenticated_web_enabled: (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[int] throttle_unauthenticated_web_period_in_seconds: Rate limit period in seconds.
         :param pulumi.Input[int] throttle_unauthenticated_web_requests_per_period: Max requests per period per IP.
-        :param pulumi.Input[bool] time_tracking_limit_to_hours: Limit display of time tracking units to hours. Default is false.
+        :param pulumi.Input[bool] time_tracking_limit_to_hours: Limit display of time tracking units to hours.
         :param pulumi.Input[int] two_factor_grace_period: Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication.
         :param pulumi.Input[bool] unique_ips_limit_enabled: (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
         :param pulumi.Input[int] unique_ips_limit_per_user: Maximum number of IPs per user.
@@ -4361,7 +4379,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[bool] version_check_enabled: Let GitLab inform you when an update is available.
         :param pulumi.Input[bool] web_ide_clientside_preview_enabled: Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
         :param pulumi.Input[str] whats_new_variant: What’s new variant, possible values: all*tiers, current*tier, and disabled.
-        :param pulumi.Input[int] wiki_page_max_content_bytes: Maximum wiki page content size in bytes. Default: 52428800 Bytes (50 MB). The minimum value is 1024 bytes.
+        :param pulumi.Input[int] wiki_page_max_content_bytes: Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
         """
         if abuse_notification_email is not None:
             pulumi.set(__self__, "abuse_notification_email", abuse_notification_email)
@@ -4399,6 +4417,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
         if automatic_purchased_storage_allocation is not None:
             pulumi.set(__self__, "automatic_purchased_storage_allocation", automatic_purchased_storage_allocation)
+        if can_create_group is not None:
+            pulumi.set(__self__, "can_create_group", can_create_group)
         if check_namespace_plan is not None:
             pulumi.set(__self__, "check_namespace_plan", check_namespace_plan)
         if commit_email_hostname is not None:
@@ -5063,6 +5083,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "automatic_purchased_storage_allocation", value)
 
     @property
+    @pulumi.getter(name="canCreateGroup")
+    def can_create_group(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
+        """
+        return pulumi.get(self, "can_create_group")
+
+    @can_create_group.setter
+    def can_create_group(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "can_create_group", value)
+
+    @property
     @pulumi.getter(name="checkNamespacePlan")
     def check_namespace_plan(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -5222,7 +5254,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="defaultGroupVisibility")
     def default_group_visibility(self) -> Optional[pulumi.Input[str]]:
         """
-        What visibility level new groups receive. Can take private, internal and public as a parameter. Default is private.
+        What visibility level new groups receive. Can take private, internal and public as a parameter.
         """
         return pulumi.get(self, "default_group_visibility")
 
@@ -5246,7 +5278,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="defaultProjectVisibility")
     def default_project_visibility(self) -> Optional[pulumi.Input[str]]:
         """
-        What visibility level new projects receive. Can take private, internal and public as a parameter. Default is private.
+        What visibility level new projects receive. Can take private, internal and public as a parameter.
         """
         return pulumi.get(self, "default_project_visibility")
 
@@ -5258,7 +5290,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="defaultProjectsLimit")
     def default_projects_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        Project limit per user. Default is 100000.
+        Project limit per user.
         """
         return pulumi.get(self, "default_projects_limit")
 
@@ -5270,7 +5302,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="defaultSnippetVisibility")
     def default_snippet_visibility(self) -> Optional[pulumi.Input[str]]:
         """
-        What visibility level new snippets receive. Can take private, internal and public as a parameter. Default is private.
+        What visibility level new snippets receive. Can take private, internal and public as a parameter.
         """
         return pulumi.get(self, "default_snippet_visibility")
 
@@ -5282,7 +5314,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="delayedGroupDeletion")
     def delayed_group_deletion(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable delayed group deletion. Default is true. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
+        Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
         """
         return pulumi.get(self, "delayed_group_deletion")
 
@@ -5294,7 +5326,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="delayedProjectDeletion")
     def delayed_project_deletion(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable delayed project deletion by default in new groups. Default is false. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
+        Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
         """
         return pulumi.get(self, "delayed_project_deletion")
 
@@ -5306,7 +5338,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="deleteInactiveProjects")
     def delete_inactive_projects(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable inactive project deletion feature. Default is false. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion, disabled by default).
+        Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
         """
         return pulumi.get(self, "delete_inactive_projects")
 
@@ -5318,7 +5350,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="deletionAdjournedPeriod")
     def deletion_adjourned_period(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. Defaults to 7. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+        The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
         """
         return pulumi.get(self, "deletion_adjourned_period")
 
@@ -5402,7 +5434,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="domainAllowlists")
     def domain_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Force people to use only corporate emails for sign-up. Default is null, meaning there is no restriction.
+        Force people to use only corporate emails for sign-up. Null means there is no restriction.
         """
         return pulumi.get(self, "domain_allowlists")
 
@@ -5438,7 +5470,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="dsaKeyRestriction")
     def dsa_key_restriction(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum allowed bit length of an uploaded DSA key. Default is 0 (no restriction). -1 disables DSA keys.
+        The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
         """
         return pulumi.get(self, "dsa_key_restriction")
 
@@ -5450,7 +5482,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="ecdsaKeyRestriction")
     def ecdsa_key_restriction(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum allowed curve size (in bits) of an uploaded ECDSA key. Default is 0 (no restriction). -1 disables ECDSA keys.
+        The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
         """
         return pulumi.get(self, "ecdsa_key_restriction")
 
@@ -5462,7 +5494,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="ecdsaSkKeyRestriction")
     def ecdsa_sk_key_restriction(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. Default is 0 (no restriction). -1 disables ECDSA*SK keys.
+        The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
         """
         return pulumi.get(self, "ecdsa_sk_key_restriction")
 
@@ -5474,7 +5506,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="ed25519KeyRestriction")
     def ed25519_key_restriction(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum allowed curve size (in bits) of an uploaded ED25519 key. Default is 0 (no restriction). -1 disables ED25519 keys.
+        The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
         """
         return pulumi.get(self, "ed25519_key_restriction")
 
@@ -5486,7 +5518,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="ed25519SkKeyRestriction")
     def ed25519_sk_key_restriction(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. Default is 0 (no restriction). -1 disables ED25519*SK keys.
+        The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
         """
         return pulumi.get(self, "ed25519_sk_key_restriction")
 
@@ -5930,7 +5962,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="firstDayOfWeek")
     def first_day_of_week(self) -> Optional[pulumi.Input[int]]:
         """
-        Start day of the week for calendar views and date pickers. Valid values are 0 (default) for Sunday, 1 for Monday, and 6 for Saturday.
+        Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
         """
         return pulumi.get(self, "first_day_of_week")
 
@@ -5966,7 +5998,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="gitRateLimitUsersAllowlists")
     def git_rate_limit_users_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of usernames excluded from Git anti-abuse rate limits. Default: [], Maximum: 100 usernames. Introduced in GitLab 15.2.
+        List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
         """
         return pulumi.get(self, "git_rate_limit_users_allowlists")
 
@@ -6230,7 +6262,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="inProductMarketingEmailsEnabled")
     def in_product_marketing_emails_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable in-product marketing emails. Enabled by default.
+        Enable in-product marketing emails.
         """
         return pulumi.get(self, "in_product_marketing_emails_enabled")
 
@@ -6242,7 +6274,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="inactiveProjectsDeleteAfterMonths")
     def inactive_projects_delete_after_months(self) -> Optional[pulumi.Input[int]]:
         """
-        If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Default is 2. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         """
         return pulumi.get(self, "inactive_projects_delete_after_months")
 
@@ -6254,7 +6286,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="inactiveProjectsMinSizeMb")
     def inactive_projects_min_size_mb(self) -> Optional[pulumi.Input[int]]:
         """
-        If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Default is 0. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         """
         return pulumi.get(self, "inactive_projects_min_size_mb")
 
@@ -6266,7 +6298,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="inactiveProjectsSendWarningEmailAfterMonths")
     def inactive_projects_send_warning_email_after_months(self) -> Optional[pulumi.Input[int]]:
         """
-        If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Default is 1. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         """
         return pulumi.get(self, "inactive_projects_send_warning_email_after_months")
 
@@ -6278,7 +6310,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="invisibleCaptchaEnabled")
     def invisible_captcha_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable Invisible CAPTCHA spam detection during sign-up. Disabled by default.
+        Enable Invisible CAPTCHA spam detection during sign-up.
         """
         return pulumi.get(self, "invisible_captcha_enabled")
 
@@ -6290,7 +6322,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="issuesCreateLimit")
     def issues_create_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        Max number of issue creation requests per minute per user. Disabled by default.
+        Max number of issue creation requests per minute per user.
         """
         return pulumi.get(self, "issues_create_limit")
 
@@ -6302,7 +6334,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="keepLatestArtifact")
     def keep_latest_artifact(self) -> Optional[pulumi.Input[bool]]:
         """
-        Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time. Enabled by default.
+        Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         """
         return pulumi.get(self, "keep_latest_artifact")
 
@@ -6398,7 +6430,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="maxExportSize")
     def max_export_size(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum export size in MB. 0 for unlimited. Default = 0 (unlimited).
+        Maximum export size in MB. 0 for unlimited.
         """
         return pulumi.get(self, "max_export_size")
 
@@ -6410,7 +6442,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="maxImportSize")
     def max_import_size(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum import size in MB. 0 for unlimited. Default = 0 (unlimited) Modified from 50MB to 0 in GitLab 13.8.
+        Maximum import size in MB. 0 for unlimited.
         """
         return pulumi.get(self, "max_import_size")
 
@@ -6422,7 +6454,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="maxNumberOfRepositoryDownloads")
     def max_number_of_repository_downloads(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of unique repositories a user can download in the specified time period before they are banned. Default: 0, Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+        Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
         """
         return pulumi.get(self, "max_number_of_repository_downloads")
 
@@ -6434,7 +6466,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="maxNumberOfRepositoryDownloadsWithinTimePeriod")
     def max_number_of_repository_downloads_within_time_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Reporting time period (in seconds). Default: 0, Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+        Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
         """
         return pulumi.get(self, "max_number_of_repository_downloads_within_time_period")
 
@@ -6590,7 +6622,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="passwordAuthenticationEnabledForGit")
     def password_authentication_enabled_for_git(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable authentication for Git over HTTP(S) via a GitLab account password. Default is true.
+        Enable authentication for Git over HTTP(S) via a GitLab account password.
         """
         return pulumi.get(self, "password_authentication_enabled_for_git")
 
@@ -6602,7 +6634,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="passwordAuthenticationEnabledForWeb")
     def password_authentication_enabled_for_web(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable authentication for the web interface via a GitLab account password. Default is true.
+        Enable authentication for the web interface via a GitLab account password.
         """
         return pulumi.get(self, "password_authentication_enabled_for_web")
 
@@ -6686,7 +6718,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="pipelineLimitPerProjectUserSha")
     def pipeline_limit_per_project_user_sha(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of pipeline creation requests per minute per user and commit. Disabled by default.
+        Maximum number of pipeline creation requests per minute per user and commit.
         """
         return pulumi.get(self, "pipeline_limit_per_project_user_sha")
 
@@ -6698,7 +6730,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="plantumlEnabled")
     def plantuml_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        (If enabled, requires: plantuml_url) Enable PlantUML integration. Default is false.
+        (If enabled, requires: plantuml_url) Enable PlantUML integration.
         """
         return pulumi.get(self, "plantuml_enabled")
 
@@ -6818,7 +6850,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="rawBlobRequestLimit")
     def raw_blob_request_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        Max number of requests per minute for each raw path. Default: 300. To disable throttling set to 0.
+        Max number of requests per minute for each raw path. To disable throttling set to 0.
         """
         return pulumi.get(self, "raw_blob_request_limit")
 
@@ -6950,7 +6982,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="restrictedVisibilityLevels")
     def restricted_visibility_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Default is null which means there is no restriction.
+        Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
         """
         return pulumi.get(self, "restricted_visibility_levels")
 
@@ -6962,7 +6994,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="rsaKeyRestriction")
     def rsa_key_restriction(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum allowed bit length of an uploaded RSA key. Default is 0 (no restriction). -1 disables RSA keys.
+        The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
         """
         return pulumi.get(self, "rsa_key_restriction")
 
@@ -6974,7 +7006,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="searchRateLimit")
     def search_rate_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        Max number of requests per minute for performing a search while authenticated. Default: 30. To disable throttling set to 0.
+        Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
         """
         return pulumi.get(self, "search_rate_limit")
 
@@ -6986,7 +7018,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="searchRateLimitUnauthenticated")
     def search_rate_limit_unauthenticated(self) -> Optional[pulumi.Input[int]]:
         """
-        Max number of requests per minute for performing a search while unauthenticated. Default: 10. To disable throttling set to 0.
+        Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
         """
         return pulumi.get(self, "search_rate_limit_unauthenticated")
 
@@ -7058,7 +7090,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="sidekiqJobLimiterCompressionThresholdBytes")
     def sidekiq_job_limiter_compression_threshold_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis. Default: 100 000 bytes (100KB).
+        The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
         """
         return pulumi.get(self, "sidekiq_job_limiter_compression_threshold_bytes")
 
@@ -7070,7 +7102,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="sidekiqJobLimiterLimitBytes")
     def sidekiq_job_limiter_limit_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        The threshold in bytes at which Sidekiq jobs are rejected. Default: 0 bytes (doesn’t reject any job).
+        The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
         """
         return pulumi.get(self, "sidekiq_job_limiter_limit_bytes")
 
@@ -7082,7 +7114,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="sidekiqJobLimiterMode")
     def sidekiq_job_limiter_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        track or compress. Sets the behavior for Sidekiq job size limits. Default: ‘compress’.
+        track or compress. Sets the behavior for Sidekiq job size limits.
         """
         return pulumi.get(self, "sidekiq_job_limiter_mode")
 
@@ -7106,7 +7138,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="signupEnabled")
     def signup_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable registration. Default is true.
+        Enable registration.
         """
         return pulumi.get(self, "signup_enabled")
 
@@ -7178,7 +7210,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="snippetSizeLimit")
     def snippet_size_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        Max snippet content size in bytes. Default: 52428800 Bytes (50MB).
+        Max snippet content size in bytes.
         """
         return pulumi.get(self, "snippet_size_limit")
 
@@ -7238,7 +7270,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="sourcegraphEnabled")
     def sourcegraph_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables Sourcegraph integration. Default is false. If enabled, requires sourcegraph_url.
+        Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
         """
         return pulumi.get(self, "sourcegraph_enabled")
 
@@ -7250,7 +7282,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="sourcegraphPublicOnly")
     def sourcegraph_public_only(self) -> Optional[pulumi.Input[bool]]:
         """
-        Blocks Sourcegraph from being loaded on private and internal projects. Default is true.
+        Blocks Sourcegraph from being loaded on private and internal projects.
         """
         return pulumi.get(self, "sourcegraph_public_only")
 
@@ -7286,7 +7318,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="spamCheckEndpointEnabled")
     def spam_check_endpoint_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables spam checking using external Spam Check API endpoint. Default is false.
+        Enables spam checking using external Spam Check API endpoint.
         """
         return pulumi.get(self, "spam_check_endpoint_enabled")
 
@@ -7562,7 +7594,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="timeTrackingLimitToHours")
     def time_tracking_limit_to_hours(self) -> Optional[pulumi.Input[bool]]:
         """
-        Limit display of time tracking units to hours. Default is false.
+        Limit display of time tracking units to hours.
         """
         return pulumi.get(self, "time_tracking_limit_to_hours")
 
@@ -7730,7 +7762,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="wikiPageMaxContentBytes")
     def wiki_page_max_content_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum wiki page content size in bytes. Default: 52428800 Bytes (50 MB). The minimum value is 1024 bytes.
+        Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
         """
         return pulumi.get(self, "wiki_page_max_content_bytes")
 
@@ -7762,6 +7794,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  auto_devops_domain: Optional[pulumi.Input[str]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  automatic_purchased_storage_allocation: Optional[pulumi.Input[bool]] = None,
+                 can_create_group: Optional[pulumi.Input[bool]] = None,
                  check_namespace_plan: Optional[pulumi.Input[bool]] = None,
                  commit_email_hostname: Optional[pulumi.Input[str]] = None,
                  container_expiration_policies_enable_historic_entries: Optional[pulumi.Input[bool]] = None,
@@ -8019,6 +8052,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] auto_devops_domain: Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
         :param pulumi.Input[bool] auto_devops_enabled: Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
         :param pulumi.Input[bool] automatic_purchased_storage_allocation: Enabling this permits automatic allocation of purchased storage in a namespace.
+        :param pulumi.Input[bool] can_create_group: Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
         :param pulumi.Input[bool] check_namespace_plan: Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
         :param pulumi.Input[str] commit_email_hostname: Custom hostname (for private commit emails).
         :param pulumi.Input[bool] container_expiration_policies_enable_historic_entries: Enable cleanup policies for all projects.
@@ -8032,29 +8066,29 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] default_branch_name: Instance-level custom initial branch name (introduced in GitLab 13.2).
         :param pulumi.Input[int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
         :param pulumi.Input[str] default_ci_config_path: Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
-        :param pulumi.Input[str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter. Default is private.
+        :param pulumi.Input[str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter.
         :param pulumi.Input[int] default_project_creation: Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
-        :param pulumi.Input[str] default_project_visibility: What visibility level new projects receive. Can take private, internal and public as a parameter. Default is private.
-        :param pulumi.Input[int] default_projects_limit: Project limit per user. Default is 100000.
-        :param pulumi.Input[str] default_snippet_visibility: What visibility level new snippets receive. Can take private, internal and public as a parameter. Default is private.
-        :param pulumi.Input[bool] delayed_group_deletion: Enable delayed group deletion. Default is true. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-        :param pulumi.Input[bool] delayed_project_deletion: Enable delayed project deletion by default in new groups. Default is false. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
-        :param pulumi.Input[bool] delete_inactive_projects: Enable inactive project deletion feature. Default is false. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion, disabled by default).
-        :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. Defaults to 7. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+        :param pulumi.Input[str] default_project_visibility: What visibility level new projects receive. Can take private, internal and public as a parameter.
+        :param pulumi.Input[int] default_projects_limit: Project limit per user.
+        :param pulumi.Input[str] default_snippet_visibility: What visibility level new snippets receive. Can take private, internal and public as a parameter.
+        :param pulumi.Input[bool] delayed_group_deletion: Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
+        :param pulumi.Input[bool] delayed_project_deletion: Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
+        :param pulumi.Input[bool] delete_inactive_projects: Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
+        :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
         :param pulumi.Input[int] diff_max_files: Maximum files in a diff.
         :param pulumi.Input[int] diff_max_lines: Maximum lines in a diff.
         :param pulumi.Input[int] diff_max_patch_bytes: Maximum diff patch size, in bytes.
         :param pulumi.Input[bool] disable_feed_token: Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_oauth_sign_in_sources: Disabled OAuth sign-in sources.
         :param pulumi.Input[bool] dns_rebinding_protection_enabled: Enforce DNS rebinding attack protection.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_allowlists: Force people to use only corporate emails for sign-up. Default is null, meaning there is no restriction.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_allowlists: Force people to use only corporate emails for sign-up. Null means there is no restriction.
         :param pulumi.Input[bool] domain_denylist_enabled: (If enabled, requires: domain_denylist) Allows blocking sign-ups from emails from specific domains.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_denylists: Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
-        :param pulumi.Input[int] dsa_key_restriction: The minimum allowed bit length of an uploaded DSA key. Default is 0 (no restriction). -1 disables DSA keys.
-        :param pulumi.Input[int] ecdsa_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA key. Default is 0 (no restriction). -1 disables ECDSA keys.
-        :param pulumi.Input[int] ecdsa_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. Default is 0 (no restriction). -1 disables ECDSA*SK keys.
-        :param pulumi.Input[int] ed25519_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519 key. Default is 0 (no restriction). -1 disables ED25519 keys.
-        :param pulumi.Input[int] ed25519_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. Default is 0 (no restriction). -1 disables ED25519*SK keys.
+        :param pulumi.Input[int] dsa_key_restriction: The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
+        :param pulumi.Input[int] ecdsa_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
+        :param pulumi.Input[int] ecdsa_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
+        :param pulumi.Input[int] ed25519_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
+        :param pulumi.Input[int] ed25519_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
         :param pulumi.Input[str] eks_access_key_id: AWS IAM access key ID.
         :param pulumi.Input[str] eks_account_id: Amazon account ID.
         :param pulumi.Input[bool] eks_integration_enabled: Enable integration with Amazon EKS.
@@ -8091,10 +8125,10 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] external_pipeline_validation_service_token: Optional. Token to include as the X-Gitlab-Token header in requests to the URL in external*pipeline*validation*service*url.
         :param pulumi.Input[str] external_pipeline_validation_service_url: URL to use for pipeline validation requests.
         :param pulumi.Input[int] file_template_project_id: The ID of a project to load custom file templates from.
-        :param pulumi.Input[int] first_day_of_week: Start day of the week for calendar views and date pickers. Valid values are 0 (default) for Sunday, 1 for Monday, and 6 for Saturday.
+        :param pulumi.Input[int] first_day_of_week: Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
         :param pulumi.Input[str] geo_node_allowed_ips: Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, 1.1.1.1, 2.2.2.0/24.
         :param pulumi.Input[int] geo_status_timeout: The amount of seconds after which a request to get a secondary node status times out.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Default: [], Maximum: 100 usernames. Introduced in GitLab 15.2.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
         :param pulumi.Input[int] git_two_factor_session_expiry: Maximum duration (in minutes) of a session for Git operations when 2FA is enabled.
         :param pulumi.Input[int] gitaly_timeout_default: Default Gitaly timeout, in seconds. This timeout is not enforced for Git fetch/push operations or Sidekiq jobs. Set to 0 to disable timeouts.
         :param pulumi.Input[int] gitaly_timeout_fast: Gitaly fast operation timeout, in seconds. Some Gitaly operations are expected to be fast. If they exceed this threshold, there may be a problem with a storage shard and ‘failing fast’ can help maintain the stability of the GitLab instance. Set to 0 to disable timeouts.
@@ -8116,13 +8150,13 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[bool] html_emails_enabled: Enable HTML emails.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] import_sources: Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
-        :param pulumi.Input[bool] in_product_marketing_emails_enabled: Enable in-product marketing emails. Enabled by default.
-        :param pulumi.Input[int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Default is 2. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
-        :param pulumi.Input[int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Default is 0. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
-        :param pulumi.Input[int] inactive_projects_send_warning_email_after_months: If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Default is 1. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
-        :param pulumi.Input[bool] invisible_captcha_enabled: Enable Invisible CAPTCHA spam detection during sign-up. Disabled by default.
-        :param pulumi.Input[int] issues_create_limit: Max number of issue creation requests per minute per user. Disabled by default.
-        :param pulumi.Input[bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time. Enabled by default.
+        :param pulumi.Input[bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
+        :param pulumi.Input[int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        :param pulumi.Input[int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        :param pulumi.Input[int] inactive_projects_send_warning_email_after_months: If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        :param pulumi.Input[bool] invisible_captcha_enabled: Enable Invisible CAPTCHA spam detection during sign-up.
+        :param pulumi.Input[int] issues_create_limit: Max number of issue creation requests per minute per user.
+        :param pulumi.Input[bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         :param pulumi.Input[int] local_markdown_version: Increase this value when any cached Markdown should be invalidated.
         :param pulumi.Input[bool] mailgun_events_enabled: Enable Mailgun event receiver.
         :param pulumi.Input[str] mailgun_signing_key: The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -8130,10 +8164,10 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] maintenance_mode_message: Message displayed when instance is in maintenance mode.
         :param pulumi.Input[int] max_artifacts_size: Maximum artifacts size in MB.
         :param pulumi.Input[int] max_attachment_size: Limit attachment size in MB.
-        :param pulumi.Input[int] max_export_size: Maximum export size in MB. 0 for unlimited. Default = 0 (unlimited).
-        :param pulumi.Input[int] max_import_size: Maximum import size in MB. 0 for unlimited. Default = 0 (unlimited) Modified from 50MB to 0 in GitLab 13.8.
-        :param pulumi.Input[int] max_number_of_repository_downloads: Maximum number of unique repositories a user can download in the specified time period before they are banned. Default: 0, Maximum: 10,000 repositories. Introduced in GitLab 15.1.
-        :param pulumi.Input[int] max_number_of_repository_downloads_within_time_period: Reporting time period (in seconds). Default: 0, Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+        :param pulumi.Input[int] max_export_size: Maximum export size in MB. 0 for unlimited.
+        :param pulumi.Input[int] max_import_size: Maximum import size in MB. 0 for unlimited.
+        :param pulumi.Input[int] max_number_of_repository_downloads: Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+        :param pulumi.Input[int] max_number_of_repository_downloads_within_time_period: Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
         :param pulumi.Input[int] max_pages_size: Maximum size of pages repositories in MB.
         :param pulumi.Input[int] max_personal_access_token_lifetime: Maximum allowable lifetime for access tokens in days.
         :param pulumi.Input[int] max_ssh_key_lifetime: Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
@@ -8146,16 +8180,16 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] outbound_local_requests_whitelists: Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
         :param pulumi.Input[int] package_registry_cleanup_policies_worker_capacity: Number of workers assigned to the packages cleanup policies.
         :param pulumi.Input[bool] pages_domain_verification_enabled: Require users to prove ownership of custom domains. Domain verification is an essential security measure for public GitLab sites. Users are required to demonstrate they control a domain before it is enabled.
-        :param pulumi.Input[bool] password_authentication_enabled_for_git: Enable authentication for Git over HTTP(S) via a GitLab account password. Default is true.
-        :param pulumi.Input[bool] password_authentication_enabled_for_web: Enable authentication for the web interface via a GitLab account password. Default is true.
+        :param pulumi.Input[bool] password_authentication_enabled_for_git: Enable authentication for Git over HTTP(S) via a GitLab account password.
+        :param pulumi.Input[bool] password_authentication_enabled_for_web: Enable authentication for the web interface via a GitLab account password.
         :param pulumi.Input[bool] password_lowercase_required: Indicates whether passwords require at least one lowercase letter. Introduced in GitLab 15.1.
         :param pulumi.Input[bool] password_number_required: Indicates whether passwords require at least one number. Introduced in GitLab 15.1.
         :param pulumi.Input[bool] password_symbol_required: Indicates whether passwords require at least one symbol character. Introduced in GitLab 15.1.
         :param pulumi.Input[bool] password_uppercase_required: Indicates whether passwords require at least one uppercase letter. Introduced in GitLab 15.1.
         :param pulumi.Input[str] performance_bar_allowed_group_path: Path of the group that is allowed to toggle the performance bar.
         :param pulumi.Input[str] personal_access_token_prefix: Prefix for all generated personal access tokens.
-        :param pulumi.Input[int] pipeline_limit_per_project_user_sha: Maximum number of pipeline creation requests per minute per user and commit. Disabled by default.
-        :param pulumi.Input[bool] plantuml_enabled: (If enabled, requires: plantuml_url) Enable PlantUML integration. Default is false.
+        :param pulumi.Input[int] pipeline_limit_per_project_user_sha: Maximum number of pipeline creation requests per minute per user and commit.
+        :param pulumi.Input[bool] plantuml_enabled: (If enabled, requires: plantuml_url) Enable PlantUML integration.
         :param pulumi.Input[str] plantuml_url: The PlantUML instance URL for integration.
         :param pulumi.Input[float] polling_interval_multiplier: Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
         :param pulumi.Input[bool] project_export_enabled: Enable project export.
@@ -8165,7 +8199,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[int] push_event_hooks_limit: Number of changes (branches or tags) in a single push to determine whether webhooks and services fire or not. Webhooks and services aren’t submitted if it surpasses that value.
         :param pulumi.Input[bool] pypi_package_requests_forwarding: Use pypi.org as a default remote repository when the package is not found in the GitLab Package Registry for PyPI.
         :param pulumi.Input[str] rate_limiting_response_text: When rate limiting is enabled via the throttle_* settings, send this plain text response when a rate limit is exceeded. ‘Retry later’ is sent if this is blank.
-        :param pulumi.Input[int] raw_blob_request_limit: Max number of requests per minute for each raw path. Default: 300. To disable throttling set to 0.
+        :param pulumi.Input[int] raw_blob_request_limit: Max number of requests per minute for each raw path. To disable throttling set to 0.
         :param pulumi.Input[bool] recaptcha_enabled: (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
         :param pulumi.Input[str] recaptcha_private_key: Private key for reCAPTCHA.
         :param pulumi.Input[str] recaptcha_site_key: Site key for reCAPTCHA.
@@ -8176,35 +8210,35 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[int]]] repository_storages_weighted: (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         :param pulumi.Input[bool] require_admin_approval_after_user_signup: When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
         :param pulumi.Input[bool] require_two_factor_authentication: (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_visibility_levels: Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Default is null which means there is no restriction.
-        :param pulumi.Input[int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. Default is 0 (no restriction). -1 disables RSA keys.
-        :param pulumi.Input[int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. Default: 30. To disable throttling set to 0.
-        :param pulumi.Input[int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. Default: 10. To disable throttling set to 0.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_visibility_levels: Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
+        :param pulumi.Input[int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
+        :param pulumi.Input[int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
+        :param pulumi.Input[int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
         :param pulumi.Input[bool] send_user_confirmation_email: Send confirmation email on sign-up.
         :param pulumi.Input[int] session_expire_delay: Session duration in minutes. GitLab restart is required to apply changes.
         :param pulumi.Input[bool] shared_runners_enabled: (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
         :param pulumi.Input[int] shared_runners_minutes: Set the maximum number of CI/CD minutes that a group can use on shared runners per month.
         :param pulumi.Input[str] shared_runners_text: Shared runners text.
-        :param pulumi.Input[int] sidekiq_job_limiter_compression_threshold_bytes: The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis. Default: 100 000 bytes (100KB).
-        :param pulumi.Input[int] sidekiq_job_limiter_limit_bytes: The threshold in bytes at which Sidekiq jobs are rejected. Default: 0 bytes (doesn’t reject any job).
-        :param pulumi.Input[str] sidekiq_job_limiter_mode: track or compress. Sets the behavior for Sidekiq job size limits. Default: ‘compress’.
+        :param pulumi.Input[int] sidekiq_job_limiter_compression_threshold_bytes: The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
+        :param pulumi.Input[int] sidekiq_job_limiter_limit_bytes: The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
+        :param pulumi.Input[str] sidekiq_job_limiter_mode: track or compress. Sets the behavior for Sidekiq job size limits.
         :param pulumi.Input[str] sign_in_text: Text on the login page.
-        :param pulumi.Input[bool] signup_enabled: Enable registration. Default is true.
+        :param pulumi.Input[bool] signup_enabled: Enable registration.
         :param pulumi.Input[bool] slack_app_enabled: (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
         :param pulumi.Input[str] slack_app_id: The app ID of the Slack-app.
         :param pulumi.Input[str] slack_app_secret: The app secret of the Slack-app.
         :param pulumi.Input[str] slack_app_signing_secret: The signing secret of the Slack-app.
         :param pulumi.Input[str] slack_app_verification_token: The verification token of the Slack-app.
-        :param pulumi.Input[int] snippet_size_limit: Max snippet content size in bytes. Default: 52428800 Bytes (50MB).
+        :param pulumi.Input[int] snippet_size_limit: Max snippet content size in bytes.
         :param pulumi.Input[str] snowplow_app_id: The Snowplow site name / application ID. (for example, gitlab)
         :param pulumi.Input[str] snowplow_collector_hostname: The Snowplow collector hostname. (for example, snowplow.trx.gitlab.net)
         :param pulumi.Input[str] snowplow_cookie_domain: The Snowplow cookie domain. (for example, .gitlab.com)
         :param pulumi.Input[bool] snowplow_enabled: Enable snowplow tracking.
-        :param pulumi.Input[bool] sourcegraph_enabled: Enables Sourcegraph integration. Default is false. If enabled, requires sourcegraph_url.
-        :param pulumi.Input[bool] sourcegraph_public_only: Blocks Sourcegraph from being loaded on private and internal projects. Default is true.
+        :param pulumi.Input[bool] sourcegraph_enabled: Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
+        :param pulumi.Input[bool] sourcegraph_public_only: Blocks Sourcegraph from being loaded on private and internal projects.
         :param pulumi.Input[str] sourcegraph_url: The Sourcegraph instance URL for integration.
         :param pulumi.Input[str] spam_check_api_key: API key used by GitLab for accessing the Spam Check service endpoint.
-        :param pulumi.Input[bool] spam_check_endpoint_enabled: Enables spam checking using external Spam Check API endpoint. Default is false.
+        :param pulumi.Input[bool] spam_check_endpoint_enabled: Enables spam checking using external Spam Check API endpoint.
         :param pulumi.Input[str] spam_check_endpoint_url: URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.
         :param pulumi.Input[bool] suggest_pipeline_enabled: Enable pipeline suggestion banner.
         :param pulumi.Input[int] terminal_max_session_time: Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
@@ -8227,7 +8261,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[bool] throttle_unauthenticated_web_enabled: (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[int] throttle_unauthenticated_web_period_in_seconds: Rate limit period in seconds.
         :param pulumi.Input[int] throttle_unauthenticated_web_requests_per_period: Max requests per period per IP.
-        :param pulumi.Input[bool] time_tracking_limit_to_hours: Limit display of time tracking units to hours. Default is false.
+        :param pulumi.Input[bool] time_tracking_limit_to_hours: Limit display of time tracking units to hours.
         :param pulumi.Input[int] two_factor_grace_period: Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication.
         :param pulumi.Input[bool] unique_ips_limit_enabled: (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
         :param pulumi.Input[int] unique_ips_limit_per_user: Maximum number of IPs per user.
@@ -8241,7 +8275,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[bool] version_check_enabled: Let GitLab inform you when an update is available.
         :param pulumi.Input[bool] web_ide_clientside_preview_enabled: Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
         :param pulumi.Input[str] whats_new_variant: What’s new variant, possible values: all*tiers, current*tier, and disabled.
-        :param pulumi.Input[int] wiki_page_max_content_bytes: Maximum wiki page content size in bytes. Default: 52428800 Bytes (50 MB). The minimum value is 1024 bytes.
+        :param pulumi.Input[int] wiki_page_max_content_bytes: Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
         """
         ...
     @overload
@@ -8295,6 +8329,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  auto_devops_domain: Optional[pulumi.Input[str]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
                  automatic_purchased_storage_allocation: Optional[pulumi.Input[bool]] = None,
+                 can_create_group: Optional[pulumi.Input[bool]] = None,
                  check_namespace_plan: Optional[pulumi.Input[bool]] = None,
                  commit_email_hostname: Optional[pulumi.Input[str]] = None,
                  container_expiration_policies_enable_historic_entries: Optional[pulumi.Input[bool]] = None,
@@ -8545,6 +8580,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["auto_devops_domain"] = auto_devops_domain
             __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
             __props__.__dict__["automatic_purchased_storage_allocation"] = automatic_purchased_storage_allocation
+            __props__.__dict__["can_create_group"] = can_create_group
             __props__.__dict__["check_namespace_plan"] = check_namespace_plan
             __props__.__dict__["commit_email_hostname"] = commit_email_hostname
             __props__.__dict__["container_expiration_policies_enable_historic_entries"] = container_expiration_policies_enable_historic_entries
@@ -8798,6 +8834,7 @@ class ApplicationSettings(pulumi.CustomResource):
             auto_devops_domain: Optional[pulumi.Input[str]] = None,
             auto_devops_enabled: Optional[pulumi.Input[bool]] = None,
             automatic_purchased_storage_allocation: Optional[pulumi.Input[bool]] = None,
+            can_create_group: Optional[pulumi.Input[bool]] = None,
             check_namespace_plan: Optional[pulumi.Input[bool]] = None,
             commit_email_hostname: Optional[pulumi.Input[str]] = None,
             container_expiration_policies_enable_historic_entries: Optional[pulumi.Input[bool]] = None,
@@ -9046,6 +9083,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] auto_devops_domain: Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
         :param pulumi.Input[bool] auto_devops_enabled: Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
         :param pulumi.Input[bool] automatic_purchased_storage_allocation: Enabling this permits automatic allocation of purchased storage in a namespace.
+        :param pulumi.Input[bool] can_create_group: Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
         :param pulumi.Input[bool] check_namespace_plan: Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
         :param pulumi.Input[str] commit_email_hostname: Custom hostname (for private commit emails).
         :param pulumi.Input[bool] container_expiration_policies_enable_historic_entries: Enable cleanup policies for all projects.
@@ -9059,29 +9097,29 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] default_branch_name: Instance-level custom initial branch name (introduced in GitLab 13.2).
         :param pulumi.Input[int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
         :param pulumi.Input[str] default_ci_config_path: Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
-        :param pulumi.Input[str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter. Default is private.
+        :param pulumi.Input[str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter.
         :param pulumi.Input[int] default_project_creation: Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
-        :param pulumi.Input[str] default_project_visibility: What visibility level new projects receive. Can take private, internal and public as a parameter. Default is private.
-        :param pulumi.Input[int] default_projects_limit: Project limit per user. Default is 100000.
-        :param pulumi.Input[str] default_snippet_visibility: What visibility level new snippets receive. Can take private, internal and public as a parameter. Default is private.
-        :param pulumi.Input[bool] delayed_group_deletion: Enable delayed group deletion. Default is true. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
-        :param pulumi.Input[bool] delayed_project_deletion: Enable delayed project deletion by default in new groups. Default is false. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
-        :param pulumi.Input[bool] delete_inactive_projects: Enable inactive project deletion feature. Default is false. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion, disabled by default).
-        :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. Defaults to 7. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+        :param pulumi.Input[str] default_project_visibility: What visibility level new projects receive. Can take private, internal and public as a parameter.
+        :param pulumi.Input[int] default_projects_limit: Project limit per user.
+        :param pulumi.Input[str] default_snippet_visibility: What visibility level new snippets receive. Can take private, internal and public as a parameter.
+        :param pulumi.Input[bool] delayed_group_deletion: Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
+        :param pulumi.Input[bool] delayed_project_deletion: Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
+        :param pulumi.Input[bool] delete_inactive_projects: Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
+        :param pulumi.Input[int] deletion_adjourned_period: The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
         :param pulumi.Input[int] diff_max_files: Maximum files in a diff.
         :param pulumi.Input[int] diff_max_lines: Maximum lines in a diff.
         :param pulumi.Input[int] diff_max_patch_bytes: Maximum diff patch size, in bytes.
         :param pulumi.Input[bool] disable_feed_token: Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_oauth_sign_in_sources: Disabled OAuth sign-in sources.
         :param pulumi.Input[bool] dns_rebinding_protection_enabled: Enforce DNS rebinding attack protection.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_allowlists: Force people to use only corporate emails for sign-up. Default is null, meaning there is no restriction.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_allowlists: Force people to use only corporate emails for sign-up. Null means there is no restriction.
         :param pulumi.Input[bool] domain_denylist_enabled: (If enabled, requires: domain_denylist) Allows blocking sign-ups from emails from specific domains.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_denylists: Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
-        :param pulumi.Input[int] dsa_key_restriction: The minimum allowed bit length of an uploaded DSA key. Default is 0 (no restriction). -1 disables DSA keys.
-        :param pulumi.Input[int] ecdsa_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA key. Default is 0 (no restriction). -1 disables ECDSA keys.
-        :param pulumi.Input[int] ecdsa_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. Default is 0 (no restriction). -1 disables ECDSA*SK keys.
-        :param pulumi.Input[int] ed25519_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519 key. Default is 0 (no restriction). -1 disables ED25519 keys.
-        :param pulumi.Input[int] ed25519_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. Default is 0 (no restriction). -1 disables ED25519*SK keys.
+        :param pulumi.Input[int] dsa_key_restriction: The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
+        :param pulumi.Input[int] ecdsa_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
+        :param pulumi.Input[int] ecdsa_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
+        :param pulumi.Input[int] ed25519_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
+        :param pulumi.Input[int] ed25519_sk_key_restriction: The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
         :param pulumi.Input[str] eks_access_key_id: AWS IAM access key ID.
         :param pulumi.Input[str] eks_account_id: Amazon account ID.
         :param pulumi.Input[bool] eks_integration_enabled: Enable integration with Amazon EKS.
@@ -9118,10 +9156,10 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] external_pipeline_validation_service_token: Optional. Token to include as the X-Gitlab-Token header in requests to the URL in external*pipeline*validation*service*url.
         :param pulumi.Input[str] external_pipeline_validation_service_url: URL to use for pipeline validation requests.
         :param pulumi.Input[int] file_template_project_id: The ID of a project to load custom file templates from.
-        :param pulumi.Input[int] first_day_of_week: Start day of the week for calendar views and date pickers. Valid values are 0 (default) for Sunday, 1 for Monday, and 6 for Saturday.
+        :param pulumi.Input[int] first_day_of_week: Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
         :param pulumi.Input[str] geo_node_allowed_ips: Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, 1.1.1.1, 2.2.2.0/24.
         :param pulumi.Input[int] geo_status_timeout: The amount of seconds after which a request to get a secondary node status times out.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Default: [], Maximum: 100 usernames. Introduced in GitLab 15.2.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
         :param pulumi.Input[int] git_two_factor_session_expiry: Maximum duration (in minutes) of a session for Git operations when 2FA is enabled.
         :param pulumi.Input[int] gitaly_timeout_default: Default Gitaly timeout, in seconds. This timeout is not enforced for Git fetch/push operations or Sidekiq jobs. Set to 0 to disable timeouts.
         :param pulumi.Input[int] gitaly_timeout_fast: Gitaly fast operation timeout, in seconds. Some Gitaly operations are expected to be fast. If they exceed this threshold, there may be a problem with a storage shard and ‘failing fast’ can help maintain the stability of the GitLab instance. Set to 0 to disable timeouts.
@@ -9143,13 +9181,13 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[bool] html_emails_enabled: Enable HTML emails.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] import_sources: Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
-        :param pulumi.Input[bool] in_product_marketing_emails_enabled: Enable in-product marketing emails. Enabled by default.
-        :param pulumi.Input[int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Default is 2. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
-        :param pulumi.Input[int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Default is 0. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
-        :param pulumi.Input[int] inactive_projects_send_warning_email_after_months: If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Default is 1. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
-        :param pulumi.Input[bool] invisible_captcha_enabled: Enable Invisible CAPTCHA spam detection during sign-up. Disabled by default.
-        :param pulumi.Input[int] issues_create_limit: Max number of issue creation requests per minute per user. Disabled by default.
-        :param pulumi.Input[bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time. Enabled by default.
+        :param pulumi.Input[bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
+        :param pulumi.Input[int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        :param pulumi.Input[int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        :param pulumi.Input[int] inactive_projects_send_warning_email_after_months: If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        :param pulumi.Input[bool] invisible_captcha_enabled: Enable Invisible CAPTCHA spam detection during sign-up.
+        :param pulumi.Input[int] issues_create_limit: Max number of issue creation requests per minute per user.
+        :param pulumi.Input[bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         :param pulumi.Input[int] local_markdown_version: Increase this value when any cached Markdown should be invalidated.
         :param pulumi.Input[bool] mailgun_events_enabled: Enable Mailgun event receiver.
         :param pulumi.Input[str] mailgun_signing_key: The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -9157,10 +9195,10 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] maintenance_mode_message: Message displayed when instance is in maintenance mode.
         :param pulumi.Input[int] max_artifacts_size: Maximum artifacts size in MB.
         :param pulumi.Input[int] max_attachment_size: Limit attachment size in MB.
-        :param pulumi.Input[int] max_export_size: Maximum export size in MB. 0 for unlimited. Default = 0 (unlimited).
-        :param pulumi.Input[int] max_import_size: Maximum import size in MB. 0 for unlimited. Default = 0 (unlimited) Modified from 50MB to 0 in GitLab 13.8.
-        :param pulumi.Input[int] max_number_of_repository_downloads: Maximum number of unique repositories a user can download in the specified time period before they are banned. Default: 0, Maximum: 10,000 repositories. Introduced in GitLab 15.1.
-        :param pulumi.Input[int] max_number_of_repository_downloads_within_time_period: Reporting time period (in seconds). Default: 0, Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+        :param pulumi.Input[int] max_export_size: Maximum export size in MB. 0 for unlimited.
+        :param pulumi.Input[int] max_import_size: Maximum import size in MB. 0 for unlimited.
+        :param pulumi.Input[int] max_number_of_repository_downloads: Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+        :param pulumi.Input[int] max_number_of_repository_downloads_within_time_period: Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
         :param pulumi.Input[int] max_pages_size: Maximum size of pages repositories in MB.
         :param pulumi.Input[int] max_personal_access_token_lifetime: Maximum allowable lifetime for access tokens in days.
         :param pulumi.Input[int] max_ssh_key_lifetime: Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
@@ -9173,16 +9211,16 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] outbound_local_requests_whitelists: Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
         :param pulumi.Input[int] package_registry_cleanup_policies_worker_capacity: Number of workers assigned to the packages cleanup policies.
         :param pulumi.Input[bool] pages_domain_verification_enabled: Require users to prove ownership of custom domains. Domain verification is an essential security measure for public GitLab sites. Users are required to demonstrate they control a domain before it is enabled.
-        :param pulumi.Input[bool] password_authentication_enabled_for_git: Enable authentication for Git over HTTP(S) via a GitLab account password. Default is true.
-        :param pulumi.Input[bool] password_authentication_enabled_for_web: Enable authentication for the web interface via a GitLab account password. Default is true.
+        :param pulumi.Input[bool] password_authentication_enabled_for_git: Enable authentication for Git over HTTP(S) via a GitLab account password.
+        :param pulumi.Input[bool] password_authentication_enabled_for_web: Enable authentication for the web interface via a GitLab account password.
         :param pulumi.Input[bool] password_lowercase_required: Indicates whether passwords require at least one lowercase letter. Introduced in GitLab 15.1.
         :param pulumi.Input[bool] password_number_required: Indicates whether passwords require at least one number. Introduced in GitLab 15.1.
         :param pulumi.Input[bool] password_symbol_required: Indicates whether passwords require at least one symbol character. Introduced in GitLab 15.1.
         :param pulumi.Input[bool] password_uppercase_required: Indicates whether passwords require at least one uppercase letter. Introduced in GitLab 15.1.
         :param pulumi.Input[str] performance_bar_allowed_group_path: Path of the group that is allowed to toggle the performance bar.
         :param pulumi.Input[str] personal_access_token_prefix: Prefix for all generated personal access tokens.
-        :param pulumi.Input[int] pipeline_limit_per_project_user_sha: Maximum number of pipeline creation requests per minute per user and commit. Disabled by default.
-        :param pulumi.Input[bool] plantuml_enabled: (If enabled, requires: plantuml_url) Enable PlantUML integration. Default is false.
+        :param pulumi.Input[int] pipeline_limit_per_project_user_sha: Maximum number of pipeline creation requests per minute per user and commit.
+        :param pulumi.Input[bool] plantuml_enabled: (If enabled, requires: plantuml_url) Enable PlantUML integration.
         :param pulumi.Input[str] plantuml_url: The PlantUML instance URL for integration.
         :param pulumi.Input[float] polling_interval_multiplier: Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
         :param pulumi.Input[bool] project_export_enabled: Enable project export.
@@ -9192,7 +9230,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[int] push_event_hooks_limit: Number of changes (branches or tags) in a single push to determine whether webhooks and services fire or not. Webhooks and services aren’t submitted if it surpasses that value.
         :param pulumi.Input[bool] pypi_package_requests_forwarding: Use pypi.org as a default remote repository when the package is not found in the GitLab Package Registry for PyPI.
         :param pulumi.Input[str] rate_limiting_response_text: When rate limiting is enabled via the throttle_* settings, send this plain text response when a rate limit is exceeded. ‘Retry later’ is sent if this is blank.
-        :param pulumi.Input[int] raw_blob_request_limit: Max number of requests per minute for each raw path. Default: 300. To disable throttling set to 0.
+        :param pulumi.Input[int] raw_blob_request_limit: Max number of requests per minute for each raw path. To disable throttling set to 0.
         :param pulumi.Input[bool] recaptcha_enabled: (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
         :param pulumi.Input[str] recaptcha_private_key: Private key for reCAPTCHA.
         :param pulumi.Input[str] recaptcha_site_key: Site key for reCAPTCHA.
@@ -9203,35 +9241,35 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[int]]] repository_storages_weighted: (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         :param pulumi.Input[bool] require_admin_approval_after_user_signup: When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
         :param pulumi.Input[bool] require_two_factor_authentication: (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_visibility_levels: Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Default is null which means there is no restriction.
-        :param pulumi.Input[int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. Default is 0 (no restriction). -1 disables RSA keys.
-        :param pulumi.Input[int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. Default: 30. To disable throttling set to 0.
-        :param pulumi.Input[int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. Default: 10. To disable throttling set to 0.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_visibility_levels: Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
+        :param pulumi.Input[int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
+        :param pulumi.Input[int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
+        :param pulumi.Input[int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
         :param pulumi.Input[bool] send_user_confirmation_email: Send confirmation email on sign-up.
         :param pulumi.Input[int] session_expire_delay: Session duration in minutes. GitLab restart is required to apply changes.
         :param pulumi.Input[bool] shared_runners_enabled: (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
         :param pulumi.Input[int] shared_runners_minutes: Set the maximum number of CI/CD minutes that a group can use on shared runners per month.
         :param pulumi.Input[str] shared_runners_text: Shared runners text.
-        :param pulumi.Input[int] sidekiq_job_limiter_compression_threshold_bytes: The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis. Default: 100 000 bytes (100KB).
-        :param pulumi.Input[int] sidekiq_job_limiter_limit_bytes: The threshold in bytes at which Sidekiq jobs are rejected. Default: 0 bytes (doesn’t reject any job).
-        :param pulumi.Input[str] sidekiq_job_limiter_mode: track or compress. Sets the behavior for Sidekiq job size limits. Default: ‘compress’.
+        :param pulumi.Input[int] sidekiq_job_limiter_compression_threshold_bytes: The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
+        :param pulumi.Input[int] sidekiq_job_limiter_limit_bytes: The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
+        :param pulumi.Input[str] sidekiq_job_limiter_mode: track or compress. Sets the behavior for Sidekiq job size limits.
         :param pulumi.Input[str] sign_in_text: Text on the login page.
-        :param pulumi.Input[bool] signup_enabled: Enable registration. Default is true.
+        :param pulumi.Input[bool] signup_enabled: Enable registration.
         :param pulumi.Input[bool] slack_app_enabled: (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
         :param pulumi.Input[str] slack_app_id: The app ID of the Slack-app.
         :param pulumi.Input[str] slack_app_secret: The app secret of the Slack-app.
         :param pulumi.Input[str] slack_app_signing_secret: The signing secret of the Slack-app.
         :param pulumi.Input[str] slack_app_verification_token: The verification token of the Slack-app.
-        :param pulumi.Input[int] snippet_size_limit: Max snippet content size in bytes. Default: 52428800 Bytes (50MB).
+        :param pulumi.Input[int] snippet_size_limit: Max snippet content size in bytes.
         :param pulumi.Input[str] snowplow_app_id: The Snowplow site name / application ID. (for example, gitlab)
         :param pulumi.Input[str] snowplow_collector_hostname: The Snowplow collector hostname. (for example, snowplow.trx.gitlab.net)
         :param pulumi.Input[str] snowplow_cookie_domain: The Snowplow cookie domain. (for example, .gitlab.com)
         :param pulumi.Input[bool] snowplow_enabled: Enable snowplow tracking.
-        :param pulumi.Input[bool] sourcegraph_enabled: Enables Sourcegraph integration. Default is false. If enabled, requires sourcegraph_url.
-        :param pulumi.Input[bool] sourcegraph_public_only: Blocks Sourcegraph from being loaded on private and internal projects. Default is true.
+        :param pulumi.Input[bool] sourcegraph_enabled: Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
+        :param pulumi.Input[bool] sourcegraph_public_only: Blocks Sourcegraph from being loaded on private and internal projects.
         :param pulumi.Input[str] sourcegraph_url: The Sourcegraph instance URL for integration.
         :param pulumi.Input[str] spam_check_api_key: API key used by GitLab for accessing the Spam Check service endpoint.
-        :param pulumi.Input[bool] spam_check_endpoint_enabled: Enables spam checking using external Spam Check API endpoint. Default is false.
+        :param pulumi.Input[bool] spam_check_endpoint_enabled: Enables spam checking using external Spam Check API endpoint.
         :param pulumi.Input[str] spam_check_endpoint_url: URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.
         :param pulumi.Input[bool] suggest_pipeline_enabled: Enable pipeline suggestion banner.
         :param pulumi.Input[int] terminal_max_session_time: Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
@@ -9254,7 +9292,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[bool] throttle_unauthenticated_web_enabled: (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[int] throttle_unauthenticated_web_period_in_seconds: Rate limit period in seconds.
         :param pulumi.Input[int] throttle_unauthenticated_web_requests_per_period: Max requests per period per IP.
-        :param pulumi.Input[bool] time_tracking_limit_to_hours: Limit display of time tracking units to hours. Default is false.
+        :param pulumi.Input[bool] time_tracking_limit_to_hours: Limit display of time tracking units to hours.
         :param pulumi.Input[int] two_factor_grace_period: Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication.
         :param pulumi.Input[bool] unique_ips_limit_enabled: (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
         :param pulumi.Input[int] unique_ips_limit_per_user: Maximum number of IPs per user.
@@ -9268,7 +9306,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[bool] version_check_enabled: Let GitLab inform you when an update is available.
         :param pulumi.Input[bool] web_ide_clientside_preview_enabled: Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
         :param pulumi.Input[str] whats_new_variant: What’s new variant, possible values: all*tiers, current*tier, and disabled.
-        :param pulumi.Input[int] wiki_page_max_content_bytes: Maximum wiki page content size in bytes. Default: 52428800 Bytes (50 MB). The minimum value is 1024 bytes.
+        :param pulumi.Input[int] wiki_page_max_content_bytes: Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -9292,6 +9330,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["auto_devops_domain"] = auto_devops_domain
         __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
         __props__.__dict__["automatic_purchased_storage_allocation"] = automatic_purchased_storage_allocation
+        __props__.__dict__["can_create_group"] = can_create_group
         __props__.__dict__["check_namespace_plan"] = check_namespace_plan
         __props__.__dict__["commit_email_hostname"] = commit_email_hostname
         __props__.__dict__["container_expiration_policies_enable_historic_entries"] = container_expiration_policies_enable_historic_entries
@@ -9662,6 +9701,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "automatic_purchased_storage_allocation")
 
     @property
+    @pulumi.getter(name="canCreateGroup")
+    def can_create_group(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
+        """
+        return pulumi.get(self, "can_create_group")
+
+    @property
     @pulumi.getter(name="checkNamespacePlan")
     def check_namespace_plan(self) -> pulumi.Output[bool]:
         """
@@ -9769,7 +9816,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="defaultGroupVisibility")
     def default_group_visibility(self) -> pulumi.Output[str]:
         """
-        What visibility level new groups receive. Can take private, internal and public as a parameter. Default is private.
+        What visibility level new groups receive. Can take private, internal and public as a parameter.
         """
         return pulumi.get(self, "default_group_visibility")
 
@@ -9785,7 +9832,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="defaultProjectVisibility")
     def default_project_visibility(self) -> pulumi.Output[str]:
         """
-        What visibility level new projects receive. Can take private, internal and public as a parameter. Default is private.
+        What visibility level new projects receive. Can take private, internal and public as a parameter.
         """
         return pulumi.get(self, "default_project_visibility")
 
@@ -9793,7 +9840,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="defaultProjectsLimit")
     def default_projects_limit(self) -> pulumi.Output[int]:
         """
-        Project limit per user. Default is 100000.
+        Project limit per user.
         """
         return pulumi.get(self, "default_projects_limit")
 
@@ -9801,7 +9848,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="defaultSnippetVisibility")
     def default_snippet_visibility(self) -> pulumi.Output[str]:
         """
-        What visibility level new snippets receive. Can take private, internal and public as a parameter. Default is private.
+        What visibility level new snippets receive. Can take private, internal and public as a parameter.
         """
         return pulumi.get(self, "default_snippet_visibility")
 
@@ -9809,7 +9856,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="delayedGroupDeletion")
     def delayed_group_deletion(self) -> pulumi.Output[bool]:
         """
-        Enable delayed group deletion. Default is true. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
+        Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
         """
         return pulumi.get(self, "delayed_group_deletion")
 
@@ -9817,7 +9864,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="delayedProjectDeletion")
     def delayed_project_deletion(self) -> pulumi.Output[bool]:
         """
-        Enable delayed project deletion by default in new groups. Default is false. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
+        Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
         """
         return pulumi.get(self, "delayed_project_deletion")
 
@@ -9825,7 +9872,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="deleteInactiveProjects")
     def delete_inactive_projects(self) -> pulumi.Output[bool]:
         """
-        Enable inactive project deletion feature. Default is false. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion, disabled by default).
+        Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
         """
         return pulumi.get(self, "delete_inactive_projects")
 
@@ -9833,7 +9880,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="deletionAdjournedPeriod")
     def deletion_adjourned_period(self) -> pulumi.Output[int]:
         """
-        The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. Defaults to 7. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
+        The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
         """
         return pulumi.get(self, "deletion_adjourned_period")
 
@@ -9889,7 +9936,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="domainAllowlists")
     def domain_allowlists(self) -> pulumi.Output[Sequence[str]]:
         """
-        Force people to use only corporate emails for sign-up. Default is null, meaning there is no restriction.
+        Force people to use only corporate emails for sign-up. Null means there is no restriction.
         """
         return pulumi.get(self, "domain_allowlists")
 
@@ -9913,7 +9960,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="dsaKeyRestriction")
     def dsa_key_restriction(self) -> pulumi.Output[int]:
         """
-        The minimum allowed bit length of an uploaded DSA key. Default is 0 (no restriction). -1 disables DSA keys.
+        The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
         """
         return pulumi.get(self, "dsa_key_restriction")
 
@@ -9921,7 +9968,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="ecdsaKeyRestriction")
     def ecdsa_key_restriction(self) -> pulumi.Output[int]:
         """
-        The minimum allowed curve size (in bits) of an uploaded ECDSA key. Default is 0 (no restriction). -1 disables ECDSA keys.
+        The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
         """
         return pulumi.get(self, "ecdsa_key_restriction")
 
@@ -9929,7 +9976,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="ecdsaSkKeyRestriction")
     def ecdsa_sk_key_restriction(self) -> pulumi.Output[int]:
         """
-        The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. Default is 0 (no restriction). -1 disables ECDSA*SK keys.
+        The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
         """
         return pulumi.get(self, "ecdsa_sk_key_restriction")
 
@@ -9937,7 +9984,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="ed25519KeyRestriction")
     def ed25519_key_restriction(self) -> pulumi.Output[int]:
         """
-        The minimum allowed curve size (in bits) of an uploaded ED25519 key. Default is 0 (no restriction). -1 disables ED25519 keys.
+        The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
         """
         return pulumi.get(self, "ed25519_key_restriction")
 
@@ -9945,7 +9992,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="ed25519SkKeyRestriction")
     def ed25519_sk_key_restriction(self) -> pulumi.Output[int]:
         """
-        The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. Default is 0 (no restriction). -1 disables ED25519*SK keys.
+        The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
         """
         return pulumi.get(self, "ed25519_sk_key_restriction")
 
@@ -10241,7 +10288,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="firstDayOfWeek")
     def first_day_of_week(self) -> pulumi.Output[int]:
         """
-        Start day of the week for calendar views and date pickers. Valid values are 0 (default) for Sunday, 1 for Monday, and 6 for Saturday.
+        Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
         """
         return pulumi.get(self, "first_day_of_week")
 
@@ -10265,7 +10312,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="gitRateLimitUsersAllowlists")
     def git_rate_limit_users_allowlists(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of usernames excluded from Git anti-abuse rate limits. Default: [], Maximum: 100 usernames. Introduced in GitLab 15.2.
+        List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
         """
         return pulumi.get(self, "git_rate_limit_users_allowlists")
 
@@ -10441,7 +10488,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="inProductMarketingEmailsEnabled")
     def in_product_marketing_emails_enabled(self) -> pulumi.Output[bool]:
         """
-        Enable in-product marketing emails. Enabled by default.
+        Enable in-product marketing emails.
         """
         return pulumi.get(self, "in_product_marketing_emails_enabled")
 
@@ -10449,7 +10496,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="inactiveProjectsDeleteAfterMonths")
     def inactive_projects_delete_after_months(self) -> pulumi.Output[int]:
         """
-        If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Default is 2. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         """
         return pulumi.get(self, "inactive_projects_delete_after_months")
 
@@ -10457,7 +10504,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="inactiveProjectsMinSizeMb")
     def inactive_projects_min_size_mb(self) -> pulumi.Output[int]:
         """
-        If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Default is 0. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         """
         return pulumi.get(self, "inactive_projects_min_size_mb")
 
@@ -10465,7 +10512,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="inactiveProjectsSendWarningEmailAfterMonths")
     def inactive_projects_send_warning_email_after_months(self) -> pulumi.Output[int]:
         """
-        If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Default is 1. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+        If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         """
         return pulumi.get(self, "inactive_projects_send_warning_email_after_months")
 
@@ -10473,7 +10520,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="invisibleCaptchaEnabled")
     def invisible_captcha_enabled(self) -> pulumi.Output[bool]:
         """
-        Enable Invisible CAPTCHA spam detection during sign-up. Disabled by default.
+        Enable Invisible CAPTCHA spam detection during sign-up.
         """
         return pulumi.get(self, "invisible_captcha_enabled")
 
@@ -10481,7 +10528,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="issuesCreateLimit")
     def issues_create_limit(self) -> pulumi.Output[int]:
         """
-        Max number of issue creation requests per minute per user. Disabled by default.
+        Max number of issue creation requests per minute per user.
         """
         return pulumi.get(self, "issues_create_limit")
 
@@ -10489,7 +10536,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="keepLatestArtifact")
     def keep_latest_artifact(self) -> pulumi.Output[bool]:
         """
-        Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time. Enabled by default.
+        Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         """
         return pulumi.get(self, "keep_latest_artifact")
 
@@ -10553,7 +10600,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="maxExportSize")
     def max_export_size(self) -> pulumi.Output[int]:
         """
-        Maximum export size in MB. 0 for unlimited. Default = 0 (unlimited).
+        Maximum export size in MB. 0 for unlimited.
         """
         return pulumi.get(self, "max_export_size")
 
@@ -10561,7 +10608,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="maxImportSize")
     def max_import_size(self) -> pulumi.Output[int]:
         """
-        Maximum import size in MB. 0 for unlimited. Default = 0 (unlimited) Modified from 50MB to 0 in GitLab 13.8.
+        Maximum import size in MB. 0 for unlimited.
         """
         return pulumi.get(self, "max_import_size")
 
@@ -10569,7 +10616,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="maxNumberOfRepositoryDownloads")
     def max_number_of_repository_downloads(self) -> pulumi.Output[int]:
         """
-        Maximum number of unique repositories a user can download in the specified time period before they are banned. Default: 0, Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+        Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
         """
         return pulumi.get(self, "max_number_of_repository_downloads")
 
@@ -10577,7 +10624,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="maxNumberOfRepositoryDownloadsWithinTimePeriod")
     def max_number_of_repository_downloads_within_time_period(self) -> pulumi.Output[int]:
         """
-        Reporting time period (in seconds). Default: 0, Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+        Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
         """
         return pulumi.get(self, "max_number_of_repository_downloads_within_time_period")
 
@@ -10681,7 +10728,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="passwordAuthenticationEnabledForGit")
     def password_authentication_enabled_for_git(self) -> pulumi.Output[bool]:
         """
-        Enable authentication for Git over HTTP(S) via a GitLab account password. Default is true.
+        Enable authentication for Git over HTTP(S) via a GitLab account password.
         """
         return pulumi.get(self, "password_authentication_enabled_for_git")
 
@@ -10689,7 +10736,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="passwordAuthenticationEnabledForWeb")
     def password_authentication_enabled_for_web(self) -> pulumi.Output[bool]:
         """
-        Enable authentication for the web interface via a GitLab account password. Default is true.
+        Enable authentication for the web interface via a GitLab account password.
         """
         return pulumi.get(self, "password_authentication_enabled_for_web")
 
@@ -10745,7 +10792,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="pipelineLimitPerProjectUserSha")
     def pipeline_limit_per_project_user_sha(self) -> pulumi.Output[int]:
         """
-        Maximum number of pipeline creation requests per minute per user and commit. Disabled by default.
+        Maximum number of pipeline creation requests per minute per user and commit.
         """
         return pulumi.get(self, "pipeline_limit_per_project_user_sha")
 
@@ -10753,7 +10800,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="plantumlEnabled")
     def plantuml_enabled(self) -> pulumi.Output[bool]:
         """
-        (If enabled, requires: plantuml_url) Enable PlantUML integration. Default is false.
+        (If enabled, requires: plantuml_url) Enable PlantUML integration.
         """
         return pulumi.get(self, "plantuml_enabled")
 
@@ -10833,7 +10880,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="rawBlobRequestLimit")
     def raw_blob_request_limit(self) -> pulumi.Output[int]:
         """
-        Max number of requests per minute for each raw path. Default: 300. To disable throttling set to 0.
+        Max number of requests per minute for each raw path. To disable throttling set to 0.
         """
         return pulumi.get(self, "raw_blob_request_limit")
 
@@ -10921,7 +10968,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="restrictedVisibilityLevels")
     def restricted_visibility_levels(self) -> pulumi.Output[Sequence[str]]:
         """
-        Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Default is null which means there is no restriction.
+        Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
         """
         return pulumi.get(self, "restricted_visibility_levels")
 
@@ -10929,7 +10976,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="rsaKeyRestriction")
     def rsa_key_restriction(self) -> pulumi.Output[int]:
         """
-        The minimum allowed bit length of an uploaded RSA key. Default is 0 (no restriction). -1 disables RSA keys.
+        The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
         """
         return pulumi.get(self, "rsa_key_restriction")
 
@@ -10937,7 +10984,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="searchRateLimit")
     def search_rate_limit(self) -> pulumi.Output[int]:
         """
-        Max number of requests per minute for performing a search while authenticated. Default: 30. To disable throttling set to 0.
+        Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
         """
         return pulumi.get(self, "search_rate_limit")
 
@@ -10945,7 +10992,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="searchRateLimitUnauthenticated")
     def search_rate_limit_unauthenticated(self) -> pulumi.Output[int]:
         """
-        Max number of requests per minute for performing a search while unauthenticated. Default: 10. To disable throttling set to 0.
+        Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
         """
         return pulumi.get(self, "search_rate_limit_unauthenticated")
 
@@ -10993,7 +11040,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="sidekiqJobLimiterCompressionThresholdBytes")
     def sidekiq_job_limiter_compression_threshold_bytes(self) -> pulumi.Output[int]:
         """
-        The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis. Default: 100 000 bytes (100KB).
+        The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
         """
         return pulumi.get(self, "sidekiq_job_limiter_compression_threshold_bytes")
 
@@ -11001,7 +11048,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="sidekiqJobLimiterLimitBytes")
     def sidekiq_job_limiter_limit_bytes(self) -> pulumi.Output[int]:
         """
-        The threshold in bytes at which Sidekiq jobs are rejected. Default: 0 bytes (doesn’t reject any job).
+        The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
         """
         return pulumi.get(self, "sidekiq_job_limiter_limit_bytes")
 
@@ -11009,7 +11056,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="sidekiqJobLimiterMode")
     def sidekiq_job_limiter_mode(self) -> pulumi.Output[str]:
         """
-        track or compress. Sets the behavior for Sidekiq job size limits. Default: ‘compress’.
+        track or compress. Sets the behavior for Sidekiq job size limits.
         """
         return pulumi.get(self, "sidekiq_job_limiter_mode")
 
@@ -11025,7 +11072,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="signupEnabled")
     def signup_enabled(self) -> pulumi.Output[bool]:
         """
-        Enable registration. Default is true.
+        Enable registration.
         """
         return pulumi.get(self, "signup_enabled")
 
@@ -11073,7 +11120,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="snippetSizeLimit")
     def snippet_size_limit(self) -> pulumi.Output[int]:
         """
-        Max snippet content size in bytes. Default: 52428800 Bytes (50MB).
+        Max snippet content size in bytes.
         """
         return pulumi.get(self, "snippet_size_limit")
 
@@ -11113,7 +11160,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="sourcegraphEnabled")
     def sourcegraph_enabled(self) -> pulumi.Output[bool]:
         """
-        Enables Sourcegraph integration. Default is false. If enabled, requires sourcegraph_url.
+        Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
         """
         return pulumi.get(self, "sourcegraph_enabled")
 
@@ -11121,7 +11168,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="sourcegraphPublicOnly")
     def sourcegraph_public_only(self) -> pulumi.Output[bool]:
         """
-        Blocks Sourcegraph from being loaded on private and internal projects. Default is true.
+        Blocks Sourcegraph from being loaded on private and internal projects.
         """
         return pulumi.get(self, "sourcegraph_public_only")
 
@@ -11145,7 +11192,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="spamCheckEndpointEnabled")
     def spam_check_endpoint_enabled(self) -> pulumi.Output[bool]:
         """
-        Enables spam checking using external Spam Check API endpoint. Default is false.
+        Enables spam checking using external Spam Check API endpoint.
         """
         return pulumi.get(self, "spam_check_endpoint_enabled")
 
@@ -11329,7 +11376,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="timeTrackingLimitToHours")
     def time_tracking_limit_to_hours(self) -> pulumi.Output[bool]:
         """
-        Limit display of time tracking units to hours. Default is false.
+        Limit display of time tracking units to hours.
         """
         return pulumi.get(self, "time_tracking_limit_to_hours")
 
@@ -11441,7 +11488,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="wikiPageMaxContentBytes")
     def wiki_page_max_content_bytes(self) -> pulumi.Output[int]:
         """
-        Maximum wiki page content size in bytes. Default: 52428800 Bytes (50 MB). The minimum value is 1024 bytes.
+        Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
         """
         return pulumi.get(self, "wiki_page_max_content_bytes")
 

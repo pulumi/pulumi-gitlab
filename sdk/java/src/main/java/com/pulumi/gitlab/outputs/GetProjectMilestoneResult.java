@@ -27,7 +27,7 @@ public final class GetProjectMilestoneResult {
      */
     private String dueDate;
     /**
-     * @return Bool, true if milestore expired.
+     * @return Bool, true if milestone expired.
      * 
      */
     private Boolean expired;
@@ -105,7 +105,7 @@ public final class GetProjectMilestoneResult {
         return this.dueDate;
     }
     /**
-     * @return Bool, true if milestore expired.
+     * @return Bool, true if milestone expired.
      * 
      */
     public Boolean expired() {

@@ -47,7 +47,7 @@ public final class GetRepositoryFileResult {
      */
     private String fileName;
     /**
-     * @return The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     * @return The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      * 
      */
     private String filePath;
@@ -128,7 +128,7 @@ public final class GetRepositoryFileResult {
         return this.fileName;
     }
     /**
-     * @return The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     * @return The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      * 
      */
     public String filePath() {

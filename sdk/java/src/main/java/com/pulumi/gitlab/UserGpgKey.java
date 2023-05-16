@@ -129,14 +129,14 @@ public class UserGpgKey extends com.pulumi.resources.CustomResource {
         return this.keyId;
     }
     /**
-     * The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+     * The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
      * 
      */
     @Export(name="userId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> userId;
 
     /**
-     * @return The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+     * @return The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
      * 
      */
     public Output<Optional<Integer>> userId() {

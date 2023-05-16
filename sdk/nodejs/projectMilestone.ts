@@ -75,7 +75,7 @@ export class ProjectMilestone extends pulumi.CustomResource {
      */
     public readonly dueDate!: pulumi.Output<string | undefined>;
     /**
-     * Bool, true if milestore expired.
+     * Bool, true if milestone expired.
      */
     public /*out*/ readonly expired!: pulumi.Output<boolean>;
     /**
@@ -185,7 +185,7 @@ export interface ProjectMilestoneState {
      */
     dueDate?: pulumi.Input<string>;
     /**
-     * Bool, true if milestore expired.
+     * Bool, true if milestone expired.
      */
     expired?: pulumi.Input<boolean>;
     /**

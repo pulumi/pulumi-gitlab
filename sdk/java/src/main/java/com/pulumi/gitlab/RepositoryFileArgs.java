@@ -107,18 +107,33 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     * The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      * 
      */
     @Import(name="filePath", required=true)
     private Output<String> filePath;
 
     /**
-     * @return The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+     * @return The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      * 
      */
     public Output<String> filePath() {
         return this.filePath;
+    }
+
+    /**
+     * Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+     * 
+     */
+    @Import(name="overwriteOnCreate")
+    private @Nullable Output<Boolean> overwriteOnCreate;
+
+    /**
+     * @return Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+     * 
+     */
+    public Optional<Output<Boolean>> overwriteOnCreate() {
+        return Optional.ofNullable(this.overwriteOnCreate);
     }
 
     /**
@@ -161,6 +176,7 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
         this.content = $.content;
         this.executeFilemode = $.executeFilemode;
         this.filePath = $.filePath;
+        this.overwriteOnCreate = $.overwriteOnCreate;
         this.project = $.project;
         this.startBranch = $.startBranch;
     }
@@ -310,7 +326,7 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param filePath The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+         * @param filePath The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
          * 
          * @return builder
          * 
@@ -321,13 +337,34 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param filePath The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+         * @param filePath The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
          * 
          * @return builder
          * 
          */
         public Builder filePath(String filePath) {
             return filePath(Output.of(filePath));
+        }
+
+        /**
+         * @param overwriteOnCreate Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder overwriteOnCreate(@Nullable Output<Boolean> overwriteOnCreate) {
+            $.overwriteOnCreate = overwriteOnCreate;
+            return this;
+        }
+
+        /**
+         * @param overwriteOnCreate Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder overwriteOnCreate(Boolean overwriteOnCreate) {
+            return overwriteOnCreate(Output.of(overwriteOnCreate));
         }
 
         /**

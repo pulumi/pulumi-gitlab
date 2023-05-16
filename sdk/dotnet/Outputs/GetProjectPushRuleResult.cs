@@ -11,7 +11,7 @@ namespace Pulumi.GitLab.Outputs
 {
 
     [OutputType]
-    public sealed class GetProjectPushRulesResult
+    public sealed class GetProjectPushRuleResult
     {
         public readonly string AuthorEmailRegex;
         public readonly string BranchNameRegex;
@@ -26,7 +26,7 @@ namespace Pulumi.GitLab.Outputs
         public readonly bool RejectUnsignedCommits;
 
         [OutputConstructor]
-        private GetProjectPushRulesResult(
+        private GetProjectPushRuleResult(
             string authorEmailRegex,
 
             string branchNameRegex,

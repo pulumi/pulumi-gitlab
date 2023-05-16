@@ -5,7 +5,7 @@ package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gitlab.outputs.GetProjectContainerExpirationPolicy;
-import com.pulumi.gitlab.outputs.GetProjectPushRules;
+import com.pulumi.gitlab.outputs.GetProjectPushRule;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -72,6 +72,11 @@ public final class GetProjectResult {
      */
     private Integer ciDefaultGitDepth;
     /**
+     * @return Use separate caches for protected branches.
+     * 
+     */
+    private Boolean ciSeparatedCaches;
+    /**
      * @return Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
      * 
      */
@@ -97,10 +102,20 @@ public final class GetProjectResult {
      */
     private Boolean emailsDisabled;
     /**
+     * @return Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    private String environmentsAccessLevel;
+    /**
      * @return The classification label for the project.
      * 
      */
     private String externalAuthorizationClassificationLabel;
+    /**
+     * @return Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    private String featureFlagsAccessLevel;
     /**
      * @return Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
      * 
@@ -112,10 +127,20 @@ public final class GetProjectResult {
      */
     private String httpUrlToRepo;
     /**
-     * @return The integer or path with namespace that uniquely identifies the project within the gitlab install.
+     * @return The integer that uniquely identifies the project within the gitlab install.
      * 
      */
     private String id;
+    /**
+     * @return URL the project was imported from.
+     * 
+     */
+    private String importUrl;
+    /**
+     * @return Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    private String infrastructureAccessLevel;
     /**
      * @return Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
      * 
@@ -126,6 +151,11 @@ public final class GetProjectResult {
      * 
      */
     private Boolean issuesEnabled;
+    /**
+     * @return Disable or enable the ability to keep the latest artifact for this project.
+     * 
+     */
+    private Boolean keepLatestArtifact;
     /**
      * @return Enable LFS for the project.
      * 
@@ -156,6 +186,11 @@ public final class GetProjectResult {
      * 
      */
     private Boolean mergeTrainsEnabled;
+    /**
+     * @return Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    private String monitorAccessLevel;
     /**
      * @return The name of the project.
      * 
@@ -197,10 +232,15 @@ public final class GetProjectResult {
      */
     private @Nullable Boolean publicBuilds;
     /**
-     * @return Push rules for the project.
+     * @return Push rules for the project. Push rules are only available on Enterprise plans and if the authenticated has permissions to read them.
      * 
      */
-    private GetProjectPushRules pushRules;
+    private List<GetProjectPushRule> pushRules;
+    /**
+     * @return Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    private String releasesAccessLevel;
     /**
      * @return Enable `Delete source branch` option by default for all new merge requests
      * 
@@ -231,6 +271,11 @@ public final class GetProjectResult {
      * 
      */
     private Boolean resolveOutdatedDiffDiscussions;
+    /**
+     * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     * 
+     */
+    private Boolean restrictUserDefinedVariables;
     /**
      * @return Registration token to use during runner setup.
      * 
@@ -371,6 +416,13 @@ public final class GetProjectResult {
         return this.ciDefaultGitDepth;
     }
     /**
+     * @return Use separate caches for protected branches.
+     * 
+     */
+    public Boolean ciSeparatedCaches() {
+        return this.ciSeparatedCaches;
+    }
+    /**
      * @return Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
      * 
      */
@@ -406,11 +458,25 @@ public final class GetProjectResult {
         return this.emailsDisabled;
     }
     /**
+     * @return Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public String environmentsAccessLevel() {
+        return this.environmentsAccessLevel;
+    }
+    /**
      * @return The classification label for the project.
      * 
      */
     public String externalAuthorizationClassificationLabel() {
         return this.externalAuthorizationClassificationLabel;
+    }
+    /**
+     * @return Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public String featureFlagsAccessLevel() {
+        return this.featureFlagsAccessLevel;
     }
     /**
      * @return Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
@@ -427,11 +493,25 @@ public final class GetProjectResult {
         return this.httpUrlToRepo;
     }
     /**
-     * @return The integer or path with namespace that uniquely identifies the project within the gitlab install.
+     * @return The integer that uniquely identifies the project within the gitlab install.
      * 
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return URL the project was imported from.
+     * 
+     */
+    public String importUrl() {
+        return this.importUrl;
+    }
+    /**
+     * @return Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public String infrastructureAccessLevel() {
+        return this.infrastructureAccessLevel;
     }
     /**
      * @return Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
@@ -446,6 +526,13 @@ public final class GetProjectResult {
      */
     public Boolean issuesEnabled() {
         return this.issuesEnabled;
+    }
+    /**
+     * @return Disable or enable the ability to keep the latest artifact for this project.
+     * 
+     */
+    public Boolean keepLatestArtifact() {
+        return this.keepLatestArtifact;
     }
     /**
      * @return Enable LFS for the project.
@@ -488,6 +575,13 @@ public final class GetProjectResult {
      */
     public Boolean mergeTrainsEnabled() {
         return this.mergeTrainsEnabled;
+    }
+    /**
+     * @return Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public String monitorAccessLevel() {
+        return this.monitorAccessLevel;
     }
     /**
      * @return The name of the project.
@@ -546,11 +640,18 @@ public final class GetProjectResult {
         return Optional.ofNullable(this.publicBuilds);
     }
     /**
-     * @return Push rules for the project.
+     * @return Push rules for the project. Push rules are only available on Enterprise plans and if the authenticated has permissions to read them.
      * 
      */
-    public GetProjectPushRules pushRules() {
+    public List<GetProjectPushRule> pushRules() {
         return this.pushRules;
+    }
+    /**
+     * @return Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public String releasesAccessLevel() {
+        return this.releasesAccessLevel;
     }
     /**
      * @return Enable `Delete source branch` option by default for all new merge requests
@@ -593,6 +694,13 @@ public final class GetProjectResult {
      */
     public Boolean resolveOutdatedDiffDiscussions() {
         return this.resolveOutdatedDiffDiscussions;
+    }
+    /**
+     * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     * 
+     */
+    public Boolean restrictUserDefinedVariables() {
+        return this.restrictUserDefinedVariables;
     }
     /**
      * @return Registration token to use during runner setup.
@@ -699,23 +807,30 @@ public final class GetProjectResult {
         private String buildsAccessLevel;
         private String ciConfigPath;
         private Integer ciDefaultGitDepth;
+        private Boolean ciSeparatedCaches;
         private List<GetProjectContainerExpirationPolicy> containerExpirationPolicies;
         private String containerRegistryAccessLevel;
         private String defaultBranch;
         private String description;
         private Boolean emailsDisabled;
+        private String environmentsAccessLevel;
         private String externalAuthorizationClassificationLabel;
+        private String featureFlagsAccessLevel;
         private String forkingAccessLevel;
         private String httpUrlToRepo;
         private String id;
+        private String importUrl;
+        private String infrastructureAccessLevel;
         private String issuesAccessLevel;
         private Boolean issuesEnabled;
+        private Boolean keepLatestArtifact;
         private Boolean lfsEnabled;
         private String mergeCommitTemplate;
         private Boolean mergePipelinesEnabled;
         private String mergeRequestsAccessLevel;
         private Boolean mergeRequestsEnabled;
         private Boolean mergeTrainsEnabled;
+        private String monitorAccessLevel;
         private String name;
         private Integer namespaceId;
         private String operationsAccessLevel;
@@ -724,13 +839,15 @@ public final class GetProjectResult {
         private Boolean pipelinesEnabled;
         private Boolean printingMergeRequestLinkEnabled;
         private @Nullable Boolean publicBuilds;
-        private GetProjectPushRules pushRules;
+        private List<GetProjectPushRule> pushRules;
+        private String releasesAccessLevel;
         private Boolean removeSourceBranchAfterMerge;
         private String repositoryAccessLevel;
         private String repositoryStorage;
         private Boolean requestAccessEnabled;
         private String requirementsAccessLevel;
         private Boolean resolveOutdatedDiffDiscussions;
+        private Boolean restrictUserDefinedVariables;
         private String runnersToken;
         private String securityAndComplianceAccessLevel;
         private String snippetsAccessLevel;
@@ -757,23 +874,30 @@ public final class GetProjectResult {
     	      this.buildsAccessLevel = defaults.buildsAccessLevel;
     	      this.ciConfigPath = defaults.ciConfigPath;
     	      this.ciDefaultGitDepth = defaults.ciDefaultGitDepth;
+    	      this.ciSeparatedCaches = defaults.ciSeparatedCaches;
     	      this.containerExpirationPolicies = defaults.containerExpirationPolicies;
     	      this.containerRegistryAccessLevel = defaults.containerRegistryAccessLevel;
     	      this.defaultBranch = defaults.defaultBranch;
     	      this.description = defaults.description;
     	      this.emailsDisabled = defaults.emailsDisabled;
+    	      this.environmentsAccessLevel = defaults.environmentsAccessLevel;
     	      this.externalAuthorizationClassificationLabel = defaults.externalAuthorizationClassificationLabel;
+    	      this.featureFlagsAccessLevel = defaults.featureFlagsAccessLevel;
     	      this.forkingAccessLevel = defaults.forkingAccessLevel;
     	      this.httpUrlToRepo = defaults.httpUrlToRepo;
     	      this.id = defaults.id;
+    	      this.importUrl = defaults.importUrl;
+    	      this.infrastructureAccessLevel = defaults.infrastructureAccessLevel;
     	      this.issuesAccessLevel = defaults.issuesAccessLevel;
     	      this.issuesEnabled = defaults.issuesEnabled;
+    	      this.keepLatestArtifact = defaults.keepLatestArtifact;
     	      this.lfsEnabled = defaults.lfsEnabled;
     	      this.mergeCommitTemplate = defaults.mergeCommitTemplate;
     	      this.mergePipelinesEnabled = defaults.mergePipelinesEnabled;
     	      this.mergeRequestsAccessLevel = defaults.mergeRequestsAccessLevel;
     	      this.mergeRequestsEnabled = defaults.mergeRequestsEnabled;
     	      this.mergeTrainsEnabled = defaults.mergeTrainsEnabled;
+    	      this.monitorAccessLevel = defaults.monitorAccessLevel;
     	      this.name = defaults.name;
     	      this.namespaceId = defaults.namespaceId;
     	      this.operationsAccessLevel = defaults.operationsAccessLevel;
@@ -783,12 +907,14 @@ public final class GetProjectResult {
     	      this.printingMergeRequestLinkEnabled = defaults.printingMergeRequestLinkEnabled;
     	      this.publicBuilds = defaults.publicBuilds;
     	      this.pushRules = defaults.pushRules;
+    	      this.releasesAccessLevel = defaults.releasesAccessLevel;
     	      this.removeSourceBranchAfterMerge = defaults.removeSourceBranchAfterMerge;
     	      this.repositoryAccessLevel = defaults.repositoryAccessLevel;
     	      this.repositoryStorage = defaults.repositoryStorage;
     	      this.requestAccessEnabled = defaults.requestAccessEnabled;
     	      this.requirementsAccessLevel = defaults.requirementsAccessLevel;
     	      this.resolveOutdatedDiffDiscussions = defaults.resolveOutdatedDiffDiscussions;
+    	      this.restrictUserDefinedVariables = defaults.restrictUserDefinedVariables;
     	      this.runnersToken = defaults.runnersToken;
     	      this.securityAndComplianceAccessLevel = defaults.securityAndComplianceAccessLevel;
     	      this.snippetsAccessLevel = defaults.snippetsAccessLevel;
@@ -859,6 +985,11 @@ public final class GetProjectResult {
             return this;
         }
         @CustomType.Setter
+        public Builder ciSeparatedCaches(Boolean ciSeparatedCaches) {
+            this.ciSeparatedCaches = Objects.requireNonNull(ciSeparatedCaches);
+            return this;
+        }
+        @CustomType.Setter
         public Builder containerExpirationPolicies(List<GetProjectContainerExpirationPolicy> containerExpirationPolicies) {
             this.containerExpirationPolicies = Objects.requireNonNull(containerExpirationPolicies);
             return this;
@@ -887,8 +1018,18 @@ public final class GetProjectResult {
             return this;
         }
         @CustomType.Setter
+        public Builder environmentsAccessLevel(String environmentsAccessLevel) {
+            this.environmentsAccessLevel = Objects.requireNonNull(environmentsAccessLevel);
+            return this;
+        }
+        @CustomType.Setter
         public Builder externalAuthorizationClassificationLabel(String externalAuthorizationClassificationLabel) {
             this.externalAuthorizationClassificationLabel = Objects.requireNonNull(externalAuthorizationClassificationLabel);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder featureFlagsAccessLevel(String featureFlagsAccessLevel) {
+            this.featureFlagsAccessLevel = Objects.requireNonNull(featureFlagsAccessLevel);
             return this;
         }
         @CustomType.Setter
@@ -907,6 +1048,16 @@ public final class GetProjectResult {
             return this;
         }
         @CustomType.Setter
+        public Builder importUrl(String importUrl) {
+            this.importUrl = Objects.requireNonNull(importUrl);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder infrastructureAccessLevel(String infrastructureAccessLevel) {
+            this.infrastructureAccessLevel = Objects.requireNonNull(infrastructureAccessLevel);
+            return this;
+        }
+        @CustomType.Setter
         public Builder issuesAccessLevel(String issuesAccessLevel) {
             this.issuesAccessLevel = Objects.requireNonNull(issuesAccessLevel);
             return this;
@@ -914,6 +1065,11 @@ public final class GetProjectResult {
         @CustomType.Setter
         public Builder issuesEnabled(Boolean issuesEnabled) {
             this.issuesEnabled = Objects.requireNonNull(issuesEnabled);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder keepLatestArtifact(Boolean keepLatestArtifact) {
+            this.keepLatestArtifact = Objects.requireNonNull(keepLatestArtifact);
             return this;
         }
         @CustomType.Setter
@@ -944,6 +1100,11 @@ public final class GetProjectResult {
         @CustomType.Setter
         public Builder mergeTrainsEnabled(Boolean mergeTrainsEnabled) {
             this.mergeTrainsEnabled = Objects.requireNonNull(mergeTrainsEnabled);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder monitorAccessLevel(String monitorAccessLevel) {
+            this.monitorAccessLevel = Objects.requireNonNull(monitorAccessLevel);
             return this;
         }
         @CustomType.Setter
@@ -987,8 +1148,16 @@ public final class GetProjectResult {
             return this;
         }
         @CustomType.Setter
-        public Builder pushRules(GetProjectPushRules pushRules) {
+        public Builder pushRules(List<GetProjectPushRule> pushRules) {
             this.pushRules = Objects.requireNonNull(pushRules);
+            return this;
+        }
+        public Builder pushRules(GetProjectPushRule... pushRules) {
+            return pushRules(List.of(pushRules));
+        }
+        @CustomType.Setter
+        public Builder releasesAccessLevel(String releasesAccessLevel) {
+            this.releasesAccessLevel = Objects.requireNonNull(releasesAccessLevel);
             return this;
         }
         @CustomType.Setter
@@ -1019,6 +1188,11 @@ public final class GetProjectResult {
         @CustomType.Setter
         public Builder resolveOutdatedDiffDiscussions(Boolean resolveOutdatedDiffDiscussions) {
             this.resolveOutdatedDiffDiscussions = Objects.requireNonNull(resolveOutdatedDiffDiscussions);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder restrictUserDefinedVariables(Boolean restrictUserDefinedVariables) {
+            this.restrictUserDefinedVariables = Objects.requireNonNull(restrictUserDefinedVariables);
             return this;
         }
         @CustomType.Setter
@@ -1097,23 +1271,30 @@ public final class GetProjectResult {
             o.buildsAccessLevel = buildsAccessLevel;
             o.ciConfigPath = ciConfigPath;
             o.ciDefaultGitDepth = ciDefaultGitDepth;
+            o.ciSeparatedCaches = ciSeparatedCaches;
             o.containerExpirationPolicies = containerExpirationPolicies;
             o.containerRegistryAccessLevel = containerRegistryAccessLevel;
             o.defaultBranch = defaultBranch;
             o.description = description;
             o.emailsDisabled = emailsDisabled;
+            o.environmentsAccessLevel = environmentsAccessLevel;
             o.externalAuthorizationClassificationLabel = externalAuthorizationClassificationLabel;
+            o.featureFlagsAccessLevel = featureFlagsAccessLevel;
             o.forkingAccessLevel = forkingAccessLevel;
             o.httpUrlToRepo = httpUrlToRepo;
             o.id = id;
+            o.importUrl = importUrl;
+            o.infrastructureAccessLevel = infrastructureAccessLevel;
             o.issuesAccessLevel = issuesAccessLevel;
             o.issuesEnabled = issuesEnabled;
+            o.keepLatestArtifact = keepLatestArtifact;
             o.lfsEnabled = lfsEnabled;
             o.mergeCommitTemplate = mergeCommitTemplate;
             o.mergePipelinesEnabled = mergePipelinesEnabled;
             o.mergeRequestsAccessLevel = mergeRequestsAccessLevel;
             o.mergeRequestsEnabled = mergeRequestsEnabled;
             o.mergeTrainsEnabled = mergeTrainsEnabled;
+            o.monitorAccessLevel = monitorAccessLevel;
             o.name = name;
             o.namespaceId = namespaceId;
             o.operationsAccessLevel = operationsAccessLevel;
@@ -1123,12 +1304,14 @@ public final class GetProjectResult {
             o.printingMergeRequestLinkEnabled = printingMergeRequestLinkEnabled;
             o.publicBuilds = publicBuilds;
             o.pushRules = pushRules;
+            o.releasesAccessLevel = releasesAccessLevel;
             o.removeSourceBranchAfterMerge = removeSourceBranchAfterMerge;
             o.repositoryAccessLevel = repositoryAccessLevel;
             o.repositoryStorage = repositoryStorage;
             o.requestAccessEnabled = requestAccessEnabled;
             o.requirementsAccessLevel = requirementsAccessLevel;
             o.resolveOutdatedDiffDiscussions = resolveOutdatedDiffDiscussions;
+            o.restrictUserDefinedVariables = restrictUserDefinedVariables;
             o.runnersToken = runnersToken;
             o.securityAndComplianceAccessLevel = securityAndComplianceAccessLevel;
             o.snippetsAccessLevel = snippetsAccessLevel;

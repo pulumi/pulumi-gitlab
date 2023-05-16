@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetProject.Invoke(new()
         ///     {
-        ///         Id = "foo/bar/baz",
+        ///         PathWithNamespace = "foo/bar/baz",
         ///     });
         /// 
         /// });
@@ -60,7 +60,7 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetProject.Invoke(new()
         ///     {
-        ///         Id = "foo/bar/baz",
+        ///         PathWithNamespace = "foo/bar/baz",
         ///     });
         /// 
         /// });
@@ -82,7 +82,7 @@ namespace Pulumi.GitLab
         public int? CiDefaultGitDepth { get; set; }
 
         /// <summary>
-        /// The integer or path with namespace that uniquely identifies the project within the gitlab install.
+        /// The integer that uniquely identifies the project within the gitlab install.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
@@ -114,7 +114,7 @@ namespace Pulumi.GitLab
         public Input<int>? CiDefaultGitDepth { get; set; }
 
         /// <summary>
-        /// The integer or path with namespace that uniquely identifies the project within the gitlab install.
+        /// The integer that uniquely identifies the project within the gitlab install.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -186,6 +186,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int CiDefaultGitDepth;
         /// <summary>
+        /// Use separate caches for protected branches.
+        /// </summary>
+        public readonly bool CiSeparatedCaches;
+        /// <summary>
         /// Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectContainerExpirationPolicyResult> ContainerExpirationPolicies;
@@ -206,9 +210,17 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool EmailsDisabled;
         /// <summary>
+        /// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        public readonly string EnvironmentsAccessLevel;
+        /// <summary>
         /// The classification label for the project.
         /// </summary>
         public readonly string ExternalAuthorizationClassificationLabel;
+        /// <summary>
+        /// Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        public readonly string FeatureFlagsAccessLevel;
         /// <summary>
         /// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
         /// </summary>
@@ -218,9 +230,17 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string HttpUrlToRepo;
         /// <summary>
-        /// The integer or path with namespace that uniquely identifies the project within the gitlab install.
+        /// The integer that uniquely identifies the project within the gitlab install.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// URL the project was imported from.
+        /// </summary>
+        public readonly string ImportUrl;
+        /// <summary>
+        /// Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        public readonly string InfrastructureAccessLevel;
         /// <summary>
         /// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
         /// </summary>
@@ -229,6 +249,10 @@ namespace Pulumi.GitLab
         /// Enable issue tracking for the project.
         /// </summary>
         public readonly bool IssuesEnabled;
+        /// <summary>
+        /// Disable or enable the ability to keep the latest artifact for this project.
+        /// </summary>
+        public readonly bool KeepLatestArtifact;
         /// <summary>
         /// Enable LFS for the project.
         /// </summary>
@@ -253,6 +277,10 @@ namespace Pulumi.GitLab
         /// Enable or disable merge trains.
         /// </summary>
         public readonly bool MergeTrainsEnabled;
+        /// <summary>
+        /// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        public readonly string MonitorAccessLevel;
         /// <summary>
         /// The name of the project.
         /// </summary>
@@ -286,9 +314,13 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool? PublicBuilds;
         /// <summary>
-        /// Push rules for the project.
+        /// Push rules for the project. Push rules are only available on Enterprise plans and if the authenticated has permissions to read them.
         /// </summary>
-        public readonly Outputs.GetProjectPushRulesResult PushRules;
+        public readonly ImmutableArray<Outputs.GetProjectPushRuleResult> PushRules;
+        /// <summary>
+        /// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        public readonly string ReleasesAccessLevel;
         /// <summary>
         /// Enable `Delete source branch` option by default for all new merge requests
         /// </summary>
@@ -313,6 +345,10 @@ namespace Pulumi.GitLab
         /// Automatically resolve merge request diffs discussions on lines changed with a push.
         /// </summary>
         public readonly bool ResolveOutdatedDiffDiscussions;
+        /// <summary>
+        /// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        /// </summary>
+        public readonly bool RestrictUserDefinedVariables;
         /// <summary>
         /// Registration token to use during runner setup.
         /// </summary>
@@ -386,6 +422,8 @@ namespace Pulumi.GitLab
 
             int ciDefaultGitDepth,
 
+            bool ciSeparatedCaches,
+
             ImmutableArray<Outputs.GetProjectContainerExpirationPolicyResult> containerExpirationPolicies,
 
             string containerRegistryAccessLevel,
@@ -396,7 +434,11 @@ namespace Pulumi.GitLab
 
             bool emailsDisabled,
 
+            string environmentsAccessLevel,
+
             string externalAuthorizationClassificationLabel,
+
+            string featureFlagsAccessLevel,
 
             string forkingAccessLevel,
 
@@ -404,9 +446,15 @@ namespace Pulumi.GitLab
 
             string id,
 
+            string importUrl,
+
+            string infrastructureAccessLevel,
+
             string issuesAccessLevel,
 
             bool issuesEnabled,
+
+            bool keepLatestArtifact,
 
             bool lfsEnabled,
 
@@ -419,6 +467,8 @@ namespace Pulumi.GitLab
             bool mergeRequestsEnabled,
 
             bool mergeTrainsEnabled,
+
+            string monitorAccessLevel,
 
             string name,
 
@@ -436,7 +486,9 @@ namespace Pulumi.GitLab
 
             bool? publicBuilds,
 
-            Outputs.GetProjectPushRulesResult pushRules,
+            ImmutableArray<Outputs.GetProjectPushRuleResult> pushRules,
+
+            string releasesAccessLevel,
 
             bool removeSourceBranchAfterMerge,
 
@@ -449,6 +501,8 @@ namespace Pulumi.GitLab
             string requirementsAccessLevel,
 
             bool resolveOutdatedDiffDiscussions,
+
+            bool restrictUserDefinedVariables,
 
             string runnersToken,
 
@@ -485,23 +539,30 @@ namespace Pulumi.GitLab
             BuildsAccessLevel = buildsAccessLevel;
             CiConfigPath = ciConfigPath;
             CiDefaultGitDepth = ciDefaultGitDepth;
+            CiSeparatedCaches = ciSeparatedCaches;
             ContainerExpirationPolicies = containerExpirationPolicies;
             ContainerRegistryAccessLevel = containerRegistryAccessLevel;
             DefaultBranch = defaultBranch;
             Description = description;
             EmailsDisabled = emailsDisabled;
+            EnvironmentsAccessLevel = environmentsAccessLevel;
             ExternalAuthorizationClassificationLabel = externalAuthorizationClassificationLabel;
+            FeatureFlagsAccessLevel = featureFlagsAccessLevel;
             ForkingAccessLevel = forkingAccessLevel;
             HttpUrlToRepo = httpUrlToRepo;
             Id = id;
+            ImportUrl = importUrl;
+            InfrastructureAccessLevel = infrastructureAccessLevel;
             IssuesAccessLevel = issuesAccessLevel;
             IssuesEnabled = issuesEnabled;
+            KeepLatestArtifact = keepLatestArtifact;
             LfsEnabled = lfsEnabled;
             MergeCommitTemplate = mergeCommitTemplate;
             MergePipelinesEnabled = mergePipelinesEnabled;
             MergeRequestsAccessLevel = mergeRequestsAccessLevel;
             MergeRequestsEnabled = mergeRequestsEnabled;
             MergeTrainsEnabled = mergeTrainsEnabled;
+            MonitorAccessLevel = monitorAccessLevel;
             Name = name;
             NamespaceId = namespaceId;
             OperationsAccessLevel = operationsAccessLevel;
@@ -511,12 +572,14 @@ namespace Pulumi.GitLab
             PrintingMergeRequestLinkEnabled = printingMergeRequestLinkEnabled;
             PublicBuilds = publicBuilds;
             PushRules = pushRules;
+            ReleasesAccessLevel = releasesAccessLevel;
             RemoveSourceBranchAfterMerge = removeSourceBranchAfterMerge;
             RepositoryAccessLevel = repositoryAccessLevel;
             RepositoryStorage = repositoryStorage;
             RequestAccessEnabled = requestAccessEnabled;
             RequirementsAccessLevel = requirementsAccessLevel;
             ResolveOutdatedDiffDiscussions = resolveOutdatedDiffDiscussions;
+            RestrictUserDefinedVariables = restrictUserDefinedVariables;
             RunnersToken = runnersToken;
             SecurityAndComplianceAccessLevel = securityAndComplianceAccessLevel;
             SnippetsAccessLevel = snippetsAccessLevel;

@@ -93,7 +93,13 @@ export interface ProjectContainerExpirationPolicy {
      */
     keepN?: pulumi.Input<number>;
     /**
-     * The regular expression to match image names to delete. **Note**: the upstream API has some inconsistencies with the `nameRegex` field here. It's basically unusable at the moment.
+     * The regular expression to match image names to delete.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * The regular expression to match image names to delete.
+     *
+     * @deprecated `name_regex_delete` has been deprecated. Use `name_regex` instead.
      */
     nameRegexDelete?: pulumi.Input<string>;
     /**
@@ -187,7 +193,7 @@ export interface ProjectPushRules {
      */
     denyDeleteTag?: pulumi.Input<boolean>;
     /**
-     * All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+     * All committed filenames must not match this regex, e.g. `(jar|exe)$`.
      */
     fileNameRegex?: pulumi.Input<string>;
     /**

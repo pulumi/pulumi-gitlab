@@ -33,9 +33,10 @@ func GetClientKey(ctx *pulumi.Context) string {
 }
 
 // (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
-// configuration is correct and the GitLab API is reachable. Turn it off, to skip this check. This may be useful if the
-// GitLab instance does not yet exist and is created within the same terraform module. This is an experimental feature and
-// may change in the future. Please make sure to always keep backups of your state.
+// configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if
+// the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the
+// `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep
+// backups of your state.
 func GetEarlyAuthCheck(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "gitlab:earlyAuthCheck")
 }

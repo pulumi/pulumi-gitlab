@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = new gitlab.DeployKey("example", {
- *     key: "ssh-rsa AAAA...",
+ *     key: "ssh-ed25519 AAAA...",
  *     project: "example/deploying",
  *     title: "Example deploy key",
  * });

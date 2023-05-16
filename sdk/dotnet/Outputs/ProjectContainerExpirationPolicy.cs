@@ -26,7 +26,11 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly int? KeepN;
         /// <summary>
-        /// The regular expression to match image names to delete. **Note**: the upstream API has some inconsistencies with the `name_regex` field here. It's basically unusable at the moment.
+        /// The regular expression to match image names to delete.
+        /// </summary>
+        public readonly string? NameRegex;
+        /// <summary>
+        /// The regular expression to match image names to delete.
         /// </summary>
         public readonly string? NameRegexDelete;
         /// <summary>
@@ -50,6 +54,8 @@ namespace Pulumi.GitLab.Outputs
 
             int? keepN,
 
+            string? nameRegex,
+
             string? nameRegexDelete,
 
             string? nameRegexKeep,
@@ -61,6 +67,7 @@ namespace Pulumi.GitLab.Outputs
             Cadence = cadence;
             Enabled = enabled;
             KeepN = keepN;
+            NameRegex = nameRegex;
             NameRegexDelete = nameRegexDelete;
             NameRegexKeep = nameRegexKeep;
             NextRunAt = nextRunAt;

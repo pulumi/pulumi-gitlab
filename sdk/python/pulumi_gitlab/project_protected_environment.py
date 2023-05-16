@@ -16,34 +16,23 @@ __all__ = ['ProjectProtectedEnvironmentArgs', 'ProjectProtectedEnvironment']
 @pulumi.input_type
 class ProjectProtectedEnvironmentArgs:
     def __init__(__self__, *,
-                 deploy_access_levels: pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]],
                  environment: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]] = None,
                  required_approval_count: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a ProjectProtectedEnvironment resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
         :param pulumi.Input[str] environment: The name of the environment.
         :param pulumi.Input[str] project: The ID or full path of the project which the protected environment is created against.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.
         :param pulumi.Input[int] required_approval_count: The number of approvals required to deploy to this environment.
         """
-        pulumi.set(__self__, "deploy_access_levels", deploy_access_levels)
         pulumi.set(__self__, "environment", environment)
         pulumi.set(__self__, "project", project)
+        if deploy_access_levels is not None:
+            pulumi.set(__self__, "deploy_access_levels", deploy_access_levels)
         if required_approval_count is not None:
             pulumi.set(__self__, "required_approval_count", required_approval_count)
-
-    @property
-    @pulumi.getter(name="deployAccessLevels")
-    def deploy_access_levels(self) -> pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]:
-        """
-        Array of access levels allowed to deploy, with each described by a hash.
-        """
-        return pulumi.get(self, "deploy_access_levels")
-
-    @deploy_access_levels.setter
-    def deploy_access_levels(self, value: pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]):
-        pulumi.set(self, "deploy_access_levels", value)
 
     @property
     @pulumi.getter
@@ -68,6 +57,18 @@ class ProjectProtectedEnvironmentArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="deployAccessLevels")
+    def deploy_access_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]]:
+        """
+        Array of access levels allowed to deploy, with each described by a hash.
+        """
+        return pulumi.get(self, "deploy_access_levels")
+
+    @deploy_access_levels.setter
+    def deploy_access_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]]):
+        pulumi.set(self, "deploy_access_levels", value)
 
     @property
     @pulumi.getter(name="requiredApprovalCount")
@@ -341,8 +342,6 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProjectProtectedEnvironmentArgs.__new__(ProjectProtectedEnvironmentArgs)
 
-            if deploy_access_levels is None and not opts.urn:
-                raise TypeError("Missing required property 'deploy_access_levels'")
             __props__.__dict__["deploy_access_levels"] = deploy_access_levels
             if environment is None and not opts.urn:
                 raise TypeError("Missing required property 'environment'")
@@ -389,7 +388,7 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deployAccessLevels")
-    def deploy_access_levels(self) -> pulumi.Output[Sequence['outputs.ProjectProtectedEnvironmentDeployAccessLevel']]:
+    def deploy_access_levels(self) -> pulumi.Output[Optional[Sequence['outputs.ProjectProtectedEnvironmentDeployAccessLevel']]]:
         """
         Array of access levels allowed to deploy, with each described by a hash.
         """
@@ -413,7 +412,7 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requiredApprovalCount")
-    def required_approval_count(self) -> pulumi.Output[Optional[int]]:
+    def required_approval_count(self) -> pulumi.Output[int]:
         """
         The number of approvals required to deploy to this environment.
         """

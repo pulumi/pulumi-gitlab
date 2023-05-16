@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -87,7 +87,6 @@ type LookupProjectIssueResult struct {
 	// The number of downvotes the issue has received.
 	Downvotes int `pulumi:"downvotes"`
 	// The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-	// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
 	DueDate string `pulumi:"dueDate"`
 	// ID of the epic to add the issue to. Valid values are greater than or equal to 0.
 	EpicId int `pulumi:"epicId"`
@@ -240,7 +239,6 @@ func (o LookupProjectIssueResultOutput) Downvotes() pulumi.IntOutput {
 }
 
 // The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-// **Note:** removing a due date is currently not supported, see https://github.com/xanzy/go-gitlab/issues/1384 for details.
 func (o LookupProjectIssueResultOutput) DueDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectIssueResult) string { return v.DueDate }).(pulumi.StringOutput)
 }

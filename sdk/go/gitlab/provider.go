@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,19 +33,23 @@ type Provider struct {
 	// used in this provider for authentication (using Bearer authorization token). See
 	// https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
 	// variable.
-	Token pulumi.StringOutput `pulumi:"token"`
+	Token pulumi.StringPtrOutput `pulumi:"token"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProviderArgs{}
 	}
 
-	if args.Token == nil {
-		return nil, errors.New("invalid value for required argument 'Token'")
+	if args.Token != nil {
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:gitlab", name, args, &resource, opts...)
 	if err != nil {
@@ -69,9 +72,10 @@ type providerArgs struct {
 	// `client_cert` is set.
 	ClientKey *string `pulumi:"clientKey"`
 	// (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
-	// configuration is correct and the GitLab API is reachable. Turn it off, to skip this check. This may be useful if the
-	// GitLab instance does not yet exist and is created within the same terraform module. This is an experimental feature and
-	// may change in the future. Please make sure to always keep backups of your state.
+	// configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if
+	// the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the
+	// `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep
+	// backups of your state.
 	EarlyAuthCheck *bool `pulumi:"earlyAuthCheck"`
 	// When set to true this disables SSL verification of the connection to the GitLab instance.
 	Insecure *bool `pulumi:"insecure"`
@@ -79,7 +83,7 @@ type providerArgs struct {
 	// used in this provider for authentication (using Bearer authorization token). See
 	// https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
 	// variable.
-	Token string `pulumi:"token"`
+	Token *string `pulumi:"token"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -97,9 +101,10 @@ type ProviderArgs struct {
 	// `client_cert` is set.
 	ClientKey pulumi.StringPtrInput
 	// (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider
-	// configuration is correct and the GitLab API is reachable. Turn it off, to skip this check. This may be useful if the
-	// GitLab instance does not yet exist and is created within the same terraform module. This is an experimental feature and
-	// may change in the future. Please make sure to always keep backups of your state.
+	// configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if
+	// the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the
+	// `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep
+	// backups of your state.
 	EarlyAuthCheck pulumi.BoolPtrInput
 	// When set to true this disables SSL verification of the connection to the GitLab instance.
 	Insecure pulumi.BoolPtrInput
@@ -107,7 +112,7 @@ type ProviderArgs struct {
 	// used in this provider for authentication (using Bearer authorization token). See
 	// https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
 	// variable.
-	Token pulumi.StringInput
+	Token pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -175,8 +180,8 @@ func (o ProviderOutput) ClientKey() pulumi.StringPtrOutput {
 // used in this provider for authentication (using Bearer authorization token). See
 // https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
 // variable.
-func (o ProviderOutput) Token() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+func (o ProviderOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
 }
 
 func init() {

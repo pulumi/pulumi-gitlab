@@ -61,7 +61,7 @@ export interface GetProjectMilestoneResult {
      */
     readonly dueDate: string;
     /**
-     * Bool, true if milestore expired.
+     * Bool, true if milestone expired.
      */
     readonly expired: boolean;
     /**

@@ -162,6 +162,36 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A local path to the avatar image to upload. **Note**: not available for imported resources.
+     * 
+     */
+    @Import(name="avatar")
+    private @Nullable Output<String> avatar;
+
+    /**
+     * @return A local path to the avatar image to upload. **Note**: not available for imported resources.
+     * 
+     */
+    public Optional<Output<String>> avatar() {
+        return Optional.ofNullable(this.avatar);
+    }
+
+    /**
+     * The hash of the avatar image. Use `filesha256(&#34;path/to/avatar.png&#34;)` whenever possible. **Note**: this is used to trigger an update of the avatar. If it&#39;s not given, but an avatar is given, the avatar will be updated each time.
+     * 
+     */
+    @Import(name="avatarHash")
+    private @Nullable Output<String> avatarHash;
+
+    /**
+     * @return The hash of the avatar image. Use `filesha256(&#34;path/to/avatar.png&#34;)` whenever possible. **Note**: this is used to trigger an update of the avatar. If it&#39;s not given, but an avatar is given, the avatar will be updated each time.
+     * 
+     */
+    public Optional<Output<String>> avatarHash() {
+        return Optional.ofNullable(this.avatarHash);
+    }
+
+    /**
      * Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
      * 
      * @deprecated
@@ -275,6 +305,21 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Use separate caches for protected branches.
+     * 
+     */
+    @Import(name="ciSeparatedCaches")
+    private @Nullable Output<Boolean> ciSeparatedCaches;
+
+    /**
+     * @return Use separate caches for protected branches.
+     * 
+     */
+    public Optional<Output<Boolean>> ciSeparatedCaches() {
+        return Optional.ofNullable(this.ciSeparatedCaches);
+    }
+
+    /**
      * Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
      * 
      */
@@ -307,14 +352,22 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Enable container registry for the project.
      * 
+     * @deprecated
+     * Use `container_registry_access_level` instead.
+     * 
      */
+    @Deprecated /* Use `container_registry_access_level` instead. */
     @Import(name="containerRegistryEnabled")
     private @Nullable Output<Boolean> containerRegistryEnabled;
 
     /**
      * @return Enable container registry for the project.
      * 
+     * @deprecated
+     * Use `container_registry_access_level` instead.
+     * 
      */
+    @Deprecated /* Use `container_registry_access_level` instead. */
     public Optional<Output<Boolean>> containerRegistryEnabled() {
         return Optional.ofNullable(this.containerRegistryEnabled);
     }
@@ -365,6 +418,21 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    @Import(name="environmentsAccessLevel")
+    private @Nullable Output<String> environmentsAccessLevel;
+
+    /**
+     * @return Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public Optional<Output<String>> environmentsAccessLevel() {
+        return Optional.ofNullable(this.environmentsAccessLevel);
+    }
+
+    /**
      * The classification label for the project.
      * 
      */
@@ -377,6 +445,36 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> externalAuthorizationClassificationLabel() {
         return Optional.ofNullable(this.externalAuthorizationClassificationLabel);
+    }
+
+    /**
+     * Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    @Import(name="featureFlagsAccessLevel")
+    private @Nullable Output<String> featureFlagsAccessLevel;
+
+    /**
+     * @return Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public Optional<Output<String>> featureFlagsAccessLevel() {
+        return Optional.ofNullable(this.featureFlagsAccessLevel);
+    }
+
+    /**
+     * The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
+     * 
+     */
+    @Import(name="forkedFromProjectId")
+    private @Nullable Output<Integer> forkedFromProjectId;
+
+    /**
+     * @return The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
+     * 
+     */
+    public Optional<Output<Integer>> forkedFromProjectId() {
+        return Optional.ofNullable(this.forkedFromProjectId);
     }
 
     /**
@@ -410,18 +508,79 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Git URL to a repository to be imported.
+     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+     * together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+     * Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+     * credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+     * `terraform import`. See the examples section for how to properly use it.
      * 
      */
     @Import(name="importUrl")
     private @Nullable Output<String> importUrl;
 
     /**
-     * @return Git URL to a repository to be imported.
+     * @return Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+     * together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+     * Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+     * credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+     * `terraform import`. See the examples section for how to properly use it.
      * 
      */
     public Optional<Output<String>> importUrl() {
         return Optional.ofNullable(this.importUrl);
+    }
+
+    /**
+     * The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+     * use it.
+     * 
+     */
+    @Import(name="importUrlPassword")
+    private @Nullable Output<String> importUrlPassword;
+
+    /**
+     * @return The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+     * use it.
+     * 
+     */
+    public Optional<Output<String>> importUrlPassword() {
+        return Optional.ofNullable(this.importUrlPassword);
+    }
+
+    /**
+     * The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+     * use it.
+     * 
+     */
+    @Import(name="importUrlUsername")
+    private @Nullable Output<String> importUrlUsername;
+
+    /**
+     * @return The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+     * use it.
+     * 
+     */
+    public Optional<Output<String>> importUrlUsername() {
+        return Optional.ofNullable(this.importUrlUsername);
+    }
+
+    /**
+     * Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    @Import(name="infrastructureAccessLevel")
+    private @Nullable Output<String> infrastructureAccessLevel;
+
+    /**
+     * @return Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public Optional<Output<String>> infrastructureAccessLevel() {
+        return Optional.ofNullable(this.infrastructureAccessLevel);
     }
 
     /**
@@ -482,6 +641,21 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> issuesTemplate() {
         return Optional.ofNullable(this.issuesTemplate);
+    }
+
+    /**
+     * Disable or enable the ability to keep the latest artifact for this project.
+     * 
+     */
+    @Import(name="keepLatestArtifact")
+    private @Nullable Output<Boolean> keepLatestArtifact;
+
+    /**
+     * @return Disable or enable the ability to keep the latest artifact for this project.
+     * 
+     */
+    public Optional<Output<Boolean>> keepLatestArtifact() {
+        return Optional.ofNullable(this.keepLatestArtifact);
     }
 
     /**
@@ -647,6 +821,36 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> mirrorTriggerBuilds() {
         return Optional.ofNullable(this.mirrorTriggerBuilds);
+    }
+
+    /**
+     * Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    @Import(name="monitorAccessLevel")
+    private @Nullable Output<String> monitorAccessLevel;
+
+    /**
+     * @return Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public Optional<Output<String>> monitorAccessLevel() {
+        return Optional.ofNullable(this.monitorAccessLevel);
+    }
+
+    /**
+     * For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+     * 
+     */
+    @Import(name="mrDefaultTargetSelf")
+    private @Nullable Output<Boolean> mrDefaultTargetSelf;
+
+    /**
+     * @return For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+     * 
+     */
+    public Optional<Output<Boolean>> mrDefaultTargetSelf() {
+        return Optional.ofNullable(this.mrDefaultTargetSelf);
     }
 
     /**
@@ -853,6 +1057,21 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    @Import(name="releasesAccessLevel")
+    private @Nullable Output<String> releasesAccessLevel;
+
+    /**
+     * @return Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public Optional<Output<String>> releasesAccessLevel() {
+        return Optional.ofNullable(this.releasesAccessLevel);
+    }
+
+    /**
      * Enable `Delete source branch` option by default for all new merge requests.
      * 
      */
@@ -940,6 +1159,21 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> resolveOutdatedDiffDiscussions() {
         return Optional.ofNullable(this.resolveOutdatedDiffDiscussions);
+    }
+
+    /**
+     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     * 
+     */
+    @Import(name="restrictUserDefinedVariables")
+    private @Nullable Output<Boolean> restrictUserDefinedVariables;
+
+    /**
+     * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     * 
+     */
+    public Optional<Output<Boolean>> restrictUserDefinedVariables() {
+        return Optional.ofNullable(this.restrictUserDefinedVariables);
     }
 
     /**
@@ -1130,6 +1364,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
      * 
      */
     @Import(name="useCustomTemplate")
@@ -1137,6 +1372,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
      * 
      */
     public Optional<Output<Boolean>> useCustomTemplate() {
@@ -1200,6 +1436,8 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         this.autoDevopsDeployStrategy = $.autoDevopsDeployStrategy;
         this.autoDevopsEnabled = $.autoDevopsEnabled;
         this.autocloseReferencedIssues = $.autocloseReferencedIssues;
+        this.avatar = $.avatar;
+        this.avatarHash = $.avatarHash;
         this.buildCoverageRegex = $.buildCoverageRegex;
         this.buildGitStrategy = $.buildGitStrategy;
         this.buildTimeout = $.buildTimeout;
@@ -1207,20 +1445,28 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         this.ciConfigPath = $.ciConfigPath;
         this.ciDefaultGitDepth = $.ciDefaultGitDepth;
         this.ciForwardDeploymentEnabled = $.ciForwardDeploymentEnabled;
+        this.ciSeparatedCaches = $.ciSeparatedCaches;
         this.containerExpirationPolicy = $.containerExpirationPolicy;
         this.containerRegistryAccessLevel = $.containerRegistryAccessLevel;
         this.containerRegistryEnabled = $.containerRegistryEnabled;
         this.defaultBranch = $.defaultBranch;
         this.description = $.description;
         this.emailsDisabled = $.emailsDisabled;
+        this.environmentsAccessLevel = $.environmentsAccessLevel;
         this.externalAuthorizationClassificationLabel = $.externalAuthorizationClassificationLabel;
+        this.featureFlagsAccessLevel = $.featureFlagsAccessLevel;
+        this.forkedFromProjectId = $.forkedFromProjectId;
         this.forkingAccessLevel = $.forkingAccessLevel;
         this.groupWithProjectTemplatesId = $.groupWithProjectTemplatesId;
         this.importUrl = $.importUrl;
+        this.importUrlPassword = $.importUrlPassword;
+        this.importUrlUsername = $.importUrlUsername;
+        this.infrastructureAccessLevel = $.infrastructureAccessLevel;
         this.initializeWithReadme = $.initializeWithReadme;
         this.issuesAccessLevel = $.issuesAccessLevel;
         this.issuesEnabled = $.issuesEnabled;
         this.issuesTemplate = $.issuesTemplate;
+        this.keepLatestArtifact = $.keepLatestArtifact;
         this.lfsEnabled = $.lfsEnabled;
         this.mergeCommitTemplate = $.mergeCommitTemplate;
         this.mergeMethod = $.mergeMethod;
@@ -1232,6 +1478,8 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         this.mirror = $.mirror;
         this.mirrorOverwritesDivergedBranches = $.mirrorOverwritesDivergedBranches;
         this.mirrorTriggerBuilds = $.mirrorTriggerBuilds;
+        this.monitorAccessLevel = $.monitorAccessLevel;
+        this.mrDefaultTargetSelf = $.mrDefaultTargetSelf;
         this.name = $.name;
         this.namespaceId = $.namespaceId;
         this.onlyAllowMergeIfAllDiscussionsAreResolved = $.onlyAllowMergeIfAllDiscussionsAreResolved;
@@ -1245,12 +1493,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         this.printingMergeRequestLinkEnabled = $.printingMergeRequestLinkEnabled;
         this.publicBuilds = $.publicBuilds;
         this.pushRules = $.pushRules;
+        this.releasesAccessLevel = $.releasesAccessLevel;
         this.removeSourceBranchAfterMerge = $.removeSourceBranchAfterMerge;
         this.repositoryAccessLevel = $.repositoryAccessLevel;
         this.repositoryStorage = $.repositoryStorage;
         this.requestAccessEnabled = $.requestAccessEnabled;
         this.requirementsAccessLevel = $.requirementsAccessLevel;
         this.resolveOutdatedDiffDiscussions = $.resolveOutdatedDiffDiscussions;
+        this.restrictUserDefinedVariables = $.restrictUserDefinedVariables;
         this.securityAndComplianceAccessLevel = $.securityAndComplianceAccessLevel;
         this.sharedRunnersEnabled = $.sharedRunnersEnabled;
         this.skipWaitForDefaultBranchProtection = $.skipWaitForDefaultBranchProtection;
@@ -1483,6 +1733,48 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param avatar A local path to the avatar image to upload. **Note**: not available for imported resources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder avatar(@Nullable Output<String> avatar) {
+            $.avatar = avatar;
+            return this;
+        }
+
+        /**
+         * @param avatar A local path to the avatar image to upload. **Note**: not available for imported resources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder avatar(String avatar) {
+            return avatar(Output.of(avatar));
+        }
+
+        /**
+         * @param avatarHash The hash of the avatar image. Use `filesha256(&#34;path/to/avatar.png&#34;)` whenever possible. **Note**: this is used to trigger an update of the avatar. If it&#39;s not given, but an avatar is given, the avatar will be updated each time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder avatarHash(@Nullable Output<String> avatarHash) {
+            $.avatarHash = avatarHash;
+            return this;
+        }
+
+        /**
+         * @param avatarHash The hash of the avatar image. Use `filesha256(&#34;path/to/avatar.png&#34;)` whenever possible. **Note**: this is used to trigger an update of the avatar. If it&#39;s not given, but an avatar is given, the avatar will be updated each time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder avatarHash(String avatarHash) {
+            return avatarHash(Output.of(avatarHash));
+        }
+
+        /**
          * @param buildCoverageRegex Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
          * 
          * @return builder
@@ -1638,6 +1930,27 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param ciSeparatedCaches Use separate caches for protected branches.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciSeparatedCaches(@Nullable Output<Boolean> ciSeparatedCaches) {
+            $.ciSeparatedCaches = ciSeparatedCaches;
+            return this;
+        }
+
+        /**
+         * @param ciSeparatedCaches Use separate caches for protected branches.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciSeparatedCaches(Boolean ciSeparatedCaches) {
+            return ciSeparatedCaches(Output.of(ciSeparatedCaches));
+        }
+
+        /**
          * @param containerExpirationPolicy Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
          * 
          * @return builder
@@ -1684,7 +1997,11 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `container_registry_access_level` instead.
+         * 
          */
+        @Deprecated /* Use `container_registry_access_level` instead. */
         public Builder containerRegistryEnabled(@Nullable Output<Boolean> containerRegistryEnabled) {
             $.containerRegistryEnabled = containerRegistryEnabled;
             return this;
@@ -1695,7 +2012,11 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `container_registry_access_level` instead.
+         * 
          */
+        @Deprecated /* Use `container_registry_access_level` instead. */
         public Builder containerRegistryEnabled(Boolean containerRegistryEnabled) {
             return containerRegistryEnabled(Output.of(containerRegistryEnabled));
         }
@@ -1764,6 +2085,27 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param environmentsAccessLevel Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environmentsAccessLevel(@Nullable Output<String> environmentsAccessLevel) {
+            $.environmentsAccessLevel = environmentsAccessLevel;
+            return this;
+        }
+
+        /**
+         * @param environmentsAccessLevel Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environmentsAccessLevel(String environmentsAccessLevel) {
+            return environmentsAccessLevel(Output.of(environmentsAccessLevel));
+        }
+
+        /**
          * @param externalAuthorizationClassificationLabel The classification label for the project.
          * 
          * @return builder
@@ -1782,6 +2124,48 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder externalAuthorizationClassificationLabel(String externalAuthorizationClassificationLabel) {
             return externalAuthorizationClassificationLabel(Output.of(externalAuthorizationClassificationLabel));
+        }
+
+        /**
+         * @param featureFlagsAccessLevel Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder featureFlagsAccessLevel(@Nullable Output<String> featureFlagsAccessLevel) {
+            $.featureFlagsAccessLevel = featureFlagsAccessLevel;
+            return this;
+        }
+
+        /**
+         * @param featureFlagsAccessLevel Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder featureFlagsAccessLevel(String featureFlagsAccessLevel) {
+            return featureFlagsAccessLevel(Output.of(featureFlagsAccessLevel));
+        }
+
+        /**
+         * @param forkedFromProjectId The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forkedFromProjectId(@Nullable Output<Integer> forkedFromProjectId) {
+            $.forkedFromProjectId = forkedFromProjectId;
+            return this;
+        }
+
+        /**
+         * @param forkedFromProjectId The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forkedFromProjectId(Integer forkedFromProjectId) {
+            return forkedFromProjectId(Output.of(forkedFromProjectId));
         }
 
         /**
@@ -1827,7 +2211,11 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importUrl Git URL to a repository to be imported.
+         * @param importUrl Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+         * together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+         * Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+         * credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+         * `terraform import`. See the examples section for how to properly use it.
          * 
          * @return builder
          * 
@@ -1838,13 +2226,88 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importUrl Git URL to a repository to be imported.
+         * @param importUrl Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+         * together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+         * Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+         * credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+         * `terraform import`. See the examples section for how to properly use it.
          * 
          * @return builder
          * 
          */
         public Builder importUrl(String importUrl) {
             return importUrl(Output.of(importUrl));
+        }
+
+        /**
+         * @param importUrlPassword The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+         * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+         * use it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importUrlPassword(@Nullable Output<String> importUrlPassword) {
+            $.importUrlPassword = importUrlPassword;
+            return this;
+        }
+
+        /**
+         * @param importUrlPassword The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+         * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+         * use it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importUrlPassword(String importUrlPassword) {
+            return importUrlPassword(Output.of(importUrlPassword));
+        }
+
+        /**
+         * @param importUrlUsername The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+         * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+         * use it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importUrlUsername(@Nullable Output<String> importUrlUsername) {
+            $.importUrlUsername = importUrlUsername;
+            return this;
+        }
+
+        /**
+         * @param importUrlUsername The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+         * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+         * use it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importUrlUsername(String importUrlUsername) {
+            return importUrlUsername(Output.of(importUrlUsername));
+        }
+
+        /**
+         * @param infrastructureAccessLevel Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder infrastructureAccessLevel(@Nullable Output<String> infrastructureAccessLevel) {
+            $.infrastructureAccessLevel = infrastructureAccessLevel;
+            return this;
+        }
+
+        /**
+         * @param infrastructureAccessLevel Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder infrastructureAccessLevel(String infrastructureAccessLevel) {
+            return infrastructureAccessLevel(Output.of(infrastructureAccessLevel));
         }
 
         /**
@@ -1929,6 +2392,27 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder issuesTemplate(String issuesTemplate) {
             return issuesTemplate(Output.of(issuesTemplate));
+        }
+
+        /**
+         * @param keepLatestArtifact Disable or enable the ability to keep the latest artifact for this project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keepLatestArtifact(@Nullable Output<Boolean> keepLatestArtifact) {
+            $.keepLatestArtifact = keepLatestArtifact;
+            return this;
+        }
+
+        /**
+         * @param keepLatestArtifact Disable or enable the ability to keep the latest artifact for this project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keepLatestArtifact(Boolean keepLatestArtifact) {
+            return keepLatestArtifact(Output.of(keepLatestArtifact));
         }
 
         /**
@@ -2160,6 +2644,48 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mirrorTriggerBuilds(Boolean mirrorTriggerBuilds) {
             return mirrorTriggerBuilds(Output.of(mirrorTriggerBuilds));
+        }
+
+        /**
+         * @param monitorAccessLevel Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder monitorAccessLevel(@Nullable Output<String> monitorAccessLevel) {
+            $.monitorAccessLevel = monitorAccessLevel;
+            return this;
+        }
+
+        /**
+         * @param monitorAccessLevel Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder monitorAccessLevel(String monitorAccessLevel) {
+            return monitorAccessLevel(Output.of(monitorAccessLevel));
+        }
+
+        /**
+         * @param mrDefaultTargetSelf For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mrDefaultTargetSelf(@Nullable Output<Boolean> mrDefaultTargetSelf) {
+            $.mrDefaultTargetSelf = mrDefaultTargetSelf;
+            return this;
+        }
+
+        /**
+         * @param mrDefaultTargetSelf For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mrDefaultTargetSelf(Boolean mrDefaultTargetSelf) {
+            return mrDefaultTargetSelf(Output.of(mrDefaultTargetSelf));
         }
 
         /**
@@ -2444,6 +2970,27 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param releasesAccessLevel Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder releasesAccessLevel(@Nullable Output<String> releasesAccessLevel) {
+            $.releasesAccessLevel = releasesAccessLevel;
+            return this;
+        }
+
+        /**
+         * @param releasesAccessLevel Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder releasesAccessLevel(String releasesAccessLevel) {
+            return releasesAccessLevel(Output.of(releasesAccessLevel));
+        }
+
+        /**
          * @param removeSourceBranchAfterMerge Enable `Delete source branch` option by default for all new merge requests.
          * 
          * @return builder
@@ -2567,6 +3114,27 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resolveOutdatedDiffDiscussions(Boolean resolveOutdatedDiffDiscussions) {
             return resolveOutdatedDiffDiscussions(Output.of(resolveOutdatedDiffDiscussions));
+        }
+
+        /**
+         * @param restrictUserDefinedVariables Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restrictUserDefinedVariables(@Nullable Output<Boolean> restrictUserDefinedVariables) {
+            $.restrictUserDefinedVariables = restrictUserDefinedVariables;
+            return this;
+        }
+
+        /**
+         * @param restrictUserDefinedVariables Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restrictUserDefinedVariables(Boolean restrictUserDefinedVariables) {
+            return restrictUserDefinedVariables(Output.of(restrictUserDefinedVariables));
         }
 
         /**
@@ -2849,6 +3417,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param useCustomTemplate Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+         * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
          * 
          * @return builder
          * 
@@ -2860,6 +3429,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param useCustomTemplate Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+         * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
          * 
          * @return builder
          * 

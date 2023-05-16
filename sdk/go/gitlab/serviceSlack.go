@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -108,7 +108,7 @@ type ServiceSlack struct {
 	TagPushEvents pulumi.BoolOutput `pulumi:"tagPushEvents"`
 	// Username to use.
 	Username pulumi.StringPtrOutput `pulumi:"username"`
-	// Webhook URL (ex.: https://hooks.slack.com/services/...)
+	// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
 	Webhook pulumi.StringOutput `pulumi:"webhook"`
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel pulumi.StringPtrOutput `pulumi:"wikiPageChannel"`
@@ -195,7 +195,7 @@ type serviceSlackState struct {
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// Username to use.
 	Username *string `pulumi:"username"`
-	// Webhook URL (ex.: https://hooks.slack.com/services/...)
+	// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
 	Webhook *string `pulumi:"webhook"`
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel *string `pulumi:"wikiPageChannel"`
@@ -248,7 +248,7 @@ type ServiceSlackState struct {
 	TagPushEvents pulumi.BoolPtrInput
 	// Username to use.
 	Username pulumi.StringPtrInput
-	// Webhook URL (ex.: https://hooks.slack.com/services/...)
+	// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
 	Webhook pulumi.StringPtrInput
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel pulumi.StringPtrInput
@@ -303,7 +303,7 @@ type serviceSlackArgs struct {
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// Username to use.
 	Username *string `pulumi:"username"`
-	// Webhook URL (ex.: https://hooks.slack.com/services/...)
+	// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
 	Webhook string `pulumi:"webhook"`
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel *string `pulumi:"wikiPageChannel"`
@@ -355,7 +355,7 @@ type ServiceSlackArgs struct {
 	TagPushEvents pulumi.BoolPtrInput
 	// Username to use.
 	Username pulumi.StringPtrInput
-	// Webhook URL (ex.: https://hooks.slack.com/services/...)
+	// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
 	Webhook pulumi.StringInput
 	// The name of the channel to receive wiki page events notifications.
 	WikiPageChannel pulumi.StringPtrInput
@@ -557,7 +557,7 @@ func (o ServiceSlackOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceSlack) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
 }
 
-// Webhook URL (ex.: https://hooks.slack.com/services/...)
+// Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
 func (o ServiceSlackOutput) Webhook() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceSlack) pulumi.StringOutput { return v.Webhook }).(pulumi.StringOutput)
 }

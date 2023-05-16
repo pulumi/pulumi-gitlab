@@ -371,14 +371,14 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.username);
     }
     /**
-     * Webhook URL (ex.: https://hooks.slack.com/services/...)
+     * Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
      * 
      */
     @Export(name="webhook", refs={String.class}, tree="[0]")
     private Output<String> webhook;
 
     /**
-     * @return Webhook URL (ex.: https://hooks.slack.com/services/...)
+     * @return Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
      * 
      */
     public Output<String> webhook() {

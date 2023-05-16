@@ -68,6 +68,44 @@ import javax.annotation.Nullable;
  *             .namespaceId(peterParker.applyValue(getUserResult -&gt; getUserResult.namespaceId()))
  *             .build());
  * 
+ *         var forkProject = new Project(&#34;forkProject&#34;, ProjectArgs.builder()        
+ *             .description(&#34;This is a fork&#34;)
+ *             .forkedFromProjectId(example.id())
+ *             .build());
+ * 
+ *         var forkIndex_projectProject = new Project(&#34;forkIndex/projectProject&#34;, ProjectArgs.builder()        
+ *             .description(&#34;This is a fork&#34;)
+ *             .forkedFromProjectId(example.id())
+ *             .importUrl(example.httpUrlToRepo())
+ *             .mirror(true)
+ *             .build());
+ * 
+ *         var importPublic = new Project(&#34;importPublic&#34;, ProjectArgs.builder()        
+ *             .importUrl(&#34;https://gitlab.example.com/repo.git&#34;)
+ *             .build());
+ * 
+ *         var importPublicWithMirror = new Project(&#34;importPublicWithMirror&#34;, ProjectArgs.builder()        
+ *             .importUrl(&#34;https://gitlab.example.com/repo.git&#34;)
+ *             .mirror(true)
+ *             .build());
+ * 
+ *         var importPrivateProject = new Project(&#34;importPrivateProject&#34;, ProjectArgs.builder()        
+ *             .importUrl(&#34;https://gitlab.example.com/repo.git&#34;)
+ *             .importUrlUsername(&#34;user&#34;)
+ *             .importUrlPassword(&#34;pass&#34;)
+ *             .build());
+ * 
+ *         var importPrivateWithMirror = new Project(&#34;importPrivateWithMirror&#34;, ProjectArgs.builder()        
+ *             .importUrl(&#34;https://gitlab.example.com/repo.git&#34;)
+ *             .importUrlUsername(&#34;user&#34;)
+ *             .importUrlPassword(&#34;pass&#34;)
+ *             .mirror(true)
+ *             .build());
+ * 
+ *         var importPrivateIndex_projectProject = new Project(&#34;importPrivateIndex/projectProject&#34;, ProjectArgs.builder()        
+ *             .importUrl(&#34;https://user:pass@gitlab.example.com/repo.git&#34;)
+ *             .build());
+ * 
  *     }
  * }
  * ```
@@ -84,6 +122,8 @@ import javax.annotation.Nullable;
  *  $ pulumi import gitlab:index/project:Project example richardc/example
  * ```
  * 
+ *  NOTEthe `import_url_username` and `import_url_password` cannot be imported.
+ * 
  */
 @ResourceType(type="gitlab:index/project:Project")
 public class Project extends com.pulumi.resources.CustomResource {
@@ -92,14 +132,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="allowMergeOnSkippedPipeline", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> allowMergeOnSkippedPipeline;
+    private Output<Boolean> allowMergeOnSkippedPipeline;
 
     /**
      * @return Set to true if you want to treat skipped pipelines as if they finished with success.
      * 
      */
-    public Output<Optional<Boolean>> allowMergeOnSkippedPipeline() {
-        return Codegen.optional(this.allowMergeOnSkippedPipeline);
+    public Output<Boolean> allowMergeOnSkippedPipeline() {
+        return this.allowMergeOnSkippedPipeline;
     }
     /**
      * Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
@@ -220,6 +260,48 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.autocloseReferencedIssues;
     }
     /**
+     * A local path to the avatar image to upload. **Note**: not available for imported resources.
+     * 
+     */
+    @Export(name="avatar", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> avatar;
+
+    /**
+     * @return A local path to the avatar image to upload. **Note**: not available for imported resources.
+     * 
+     */
+    public Output<Optional<String>> avatar() {
+        return Codegen.optional(this.avatar);
+    }
+    /**
+     * The hash of the avatar image. Use `filesha256(&#34;path/to/avatar.png&#34;)` whenever possible. **Note**: this is used to trigger an update of the avatar. If it&#39;s not given, but an avatar is given, the avatar will be updated each time.
+     * 
+     */
+    @Export(name="avatarHash", refs={String.class}, tree="[0]")
+    private Output<String> avatarHash;
+
+    /**
+     * @return The hash of the avatar image. Use `filesha256(&#34;path/to/avatar.png&#34;)` whenever possible. **Note**: this is used to trigger an update of the avatar. If it&#39;s not given, but an avatar is given, the avatar will be updated each time.
+     * 
+     */
+    public Output<String> avatarHash() {
+        return this.avatarHash;
+    }
+    /**
+     * The URL of the avatar image.
+     * 
+     */
+    @Export(name="avatarUrl", refs={String.class}, tree="[0]")
+    private Output<String> avatarUrl;
+
+    /**
+     * @return The URL of the avatar image.
+     * 
+     */
+    public Output<String> avatarUrl() {
+        return this.avatarUrl;
+    }
+    /**
      * Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
      * 
      * @deprecated
@@ -312,14 +394,28 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ciForwardDeploymentEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> ciForwardDeploymentEnabled;
+    private Output<Boolean> ciForwardDeploymentEnabled;
 
     /**
      * @return When a new deployment job starts, skip older deployment jobs that are still pending.
      * 
      */
-    public Output<Optional<Boolean>> ciForwardDeploymentEnabled() {
-        return Codegen.optional(this.ciForwardDeploymentEnabled);
+    public Output<Boolean> ciForwardDeploymentEnabled() {
+        return this.ciForwardDeploymentEnabled;
+    }
+    /**
+     * Use separate caches for protected branches.
+     * 
+     */
+    @Export(name="ciSeparatedCaches", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> ciSeparatedCaches;
+
+    /**
+     * @return Use separate caches for protected branches.
+     * 
+     */
+    public Output<Boolean> ciSeparatedCaches() {
+        return this.ciSeparatedCaches;
     }
     /**
      * Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
@@ -352,16 +448,20 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * Enable container registry for the project.
      * 
+     * @deprecated
+     * Use `container_registry_access_level` instead.
+     * 
      */
+    @Deprecated /* Use `container_registry_access_level` instead. */
     @Export(name="containerRegistryEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> containerRegistryEnabled;
+    private Output<Boolean> containerRegistryEnabled;
 
     /**
      * @return Enable container registry for the project.
      * 
      */
-    public Output<Optional<Boolean>> containerRegistryEnabled() {
-        return Codegen.optional(this.containerRegistryEnabled);
+    public Output<Boolean> containerRegistryEnabled() {
+        return this.containerRegistryEnabled;
     }
     /**
      * The default branch for the project.
@@ -406,6 +506,20 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.emailsDisabled);
     }
     /**
+     * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    @Export(name="environmentsAccessLevel", refs={String.class}, tree="[0]")
+    private Output<String> environmentsAccessLevel;
+
+    /**
+     * @return Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public Output<String> environmentsAccessLevel() {
+        return this.environmentsAccessLevel;
+    }
+    /**
      * The classification label for the project.
      * 
      */
@@ -418,6 +532,34 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> externalAuthorizationClassificationLabel() {
         return Codegen.optional(this.externalAuthorizationClassificationLabel);
+    }
+    /**
+     * Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    @Export(name="featureFlagsAccessLevel", refs={String.class}, tree="[0]")
+    private Output<String> featureFlagsAccessLevel;
+
+    /**
+     * @return Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public Output<String> featureFlagsAccessLevel() {
+        return this.featureFlagsAccessLevel;
+    }
+    /**
+     * The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
+     * 
+     */
+    @Export(name="forkedFromProjectId", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> forkedFromProjectId;
+
+    /**
+     * @return The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
+     * 
+     */
+    public Output<Optional<Integer>> forkedFromProjectId() {
+        return Codegen.optional(this.forkedFromProjectId);
     }
     /**
      * Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
@@ -462,18 +604,76 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.httpUrlToRepo;
     }
     /**
-     * Git URL to a repository to be imported.
+     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+     * together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+     * Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+     * credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+     * `terraform import`. See the examples section for how to properly use it.
      * 
      */
     @Export(name="importUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> importUrl;
 
     /**
-     * @return Git URL to a repository to be imported.
+     * @return Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+     * together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+     * Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+     * credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+     * `terraform import`. See the examples section for how to properly use it.
      * 
      */
     public Output<Optional<String>> importUrl() {
         return Codegen.optional(this.importUrl);
+    }
+    /**
+     * The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+     * use it.
+     * 
+     */
+    @Export(name="importUrlPassword", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> importUrlPassword;
+
+    /**
+     * @return The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+     * use it.
+     * 
+     */
+    public Output<Optional<String>> importUrlPassword() {
+        return Codegen.optional(this.importUrlPassword);
+    }
+    /**
+     * The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+     * use it.
+     * 
+     */
+    @Export(name="importUrlUsername", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> importUrlUsername;
+
+    /**
+     * @return The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+     * use it.
+     * 
+     */
+    public Output<Optional<String>> importUrlUsername() {
+        return Codegen.optional(this.importUrlUsername);
+    }
+    /**
+     * Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    @Export(name="infrastructureAccessLevel", refs={String.class}, tree="[0]")
+    private Output<String> infrastructureAccessLevel;
+
+    /**
+     * @return Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public Output<String> infrastructureAccessLevel() {
+        return this.infrastructureAccessLevel;
     }
     /**
      * Create main branch with first commit containing a README.md file.
@@ -508,14 +708,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="issuesEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> issuesEnabled;
+    private Output<Boolean> issuesEnabled;
 
     /**
      * @return Enable issue tracking for the project.
      * 
      */
-    public Output<Optional<Boolean>> issuesEnabled() {
-        return Codegen.optional(this.issuesEnabled);
+    public Output<Boolean> issuesEnabled() {
+        return this.issuesEnabled;
     }
     /**
      * Sets the template for new issues in the project.
@@ -532,18 +732,32 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.issuesTemplate);
     }
     /**
+     * Disable or enable the ability to keep the latest artifact for this project.
+     * 
+     */
+    @Export(name="keepLatestArtifact", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> keepLatestArtifact;
+
+    /**
+     * @return Disable or enable the ability to keep the latest artifact for this project.
+     * 
+     */
+    public Output<Boolean> keepLatestArtifact() {
+        return this.keepLatestArtifact;
+    }
+    /**
      * Enable LFS for the project.
      * 
      */
     @Export(name="lfsEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> lfsEnabled;
+    private Output<Boolean> lfsEnabled;
 
     /**
      * @return Enable LFS for the project.
      * 
      */
-    public Output<Optional<Boolean>> lfsEnabled() {
-        return Codegen.optional(this.lfsEnabled);
+    public Output<Boolean> lfsEnabled() {
+        return this.lfsEnabled;
     }
     /**
      * Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
@@ -564,28 +778,28 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="mergeMethod", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> mergeMethod;
+    private Output<String> mergeMethod;
 
     /**
      * @return Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
      * 
      */
-    public Output<Optional<String>> mergeMethod() {
-        return Codegen.optional(this.mergeMethod);
+    public Output<String> mergeMethod() {
+        return this.mergeMethod;
     }
     /**
      * Enable or disable merge pipelines.
      * 
      */
     @Export(name="mergePipelinesEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> mergePipelinesEnabled;
+    private Output<Boolean> mergePipelinesEnabled;
 
     /**
      * @return Enable or disable merge pipelines.
      * 
      */
-    public Output<Optional<Boolean>> mergePipelinesEnabled() {
-        return Codegen.optional(this.mergePipelinesEnabled);
+    public Output<Boolean> mergePipelinesEnabled() {
+        return this.mergePipelinesEnabled;
     }
     /**
      * Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
@@ -606,14 +820,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="mergeRequestsEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> mergeRequestsEnabled;
+    private Output<Boolean> mergeRequestsEnabled;
 
     /**
      * @return Enable merge requests for the project.
      * 
      */
-    public Output<Optional<Boolean>> mergeRequestsEnabled() {
-        return Codegen.optional(this.mergeRequestsEnabled);
+    public Output<Boolean> mergeRequestsEnabled() {
+        return this.mergeRequestsEnabled;
     }
     /**
      * Sets the template for new merge requests in the project.
@@ -634,14 +848,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="mergeTrainsEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> mergeTrainsEnabled;
+    private Output<Boolean> mergeTrainsEnabled;
 
     /**
      * @return Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
      * 
      */
-    public Output<Optional<Boolean>> mergeTrainsEnabled() {
-        return Codegen.optional(this.mergeTrainsEnabled);
+    public Output<Boolean> mergeTrainsEnabled() {
+        return this.mergeTrainsEnabled;
     }
     /**
      * Enable project pull mirror.
@@ -662,28 +876,56 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="mirrorOverwritesDivergedBranches", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> mirrorOverwritesDivergedBranches;
+    private Output<Boolean> mirrorOverwritesDivergedBranches;
 
     /**
      * @return Enable overwrite diverged branches for a mirrored project.
      * 
      */
-    public Output<Optional<Boolean>> mirrorOverwritesDivergedBranches() {
-        return Codegen.optional(this.mirrorOverwritesDivergedBranches);
+    public Output<Boolean> mirrorOverwritesDivergedBranches() {
+        return this.mirrorOverwritesDivergedBranches;
     }
     /**
      * Enable trigger builds on pushes for a mirrored project.
      * 
      */
     @Export(name="mirrorTriggerBuilds", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> mirrorTriggerBuilds;
+    private Output<Boolean> mirrorTriggerBuilds;
 
     /**
      * @return Enable trigger builds on pushes for a mirrored project.
      * 
      */
-    public Output<Optional<Boolean>> mirrorTriggerBuilds() {
-        return Codegen.optional(this.mirrorTriggerBuilds);
+    public Output<Boolean> mirrorTriggerBuilds() {
+        return this.mirrorTriggerBuilds;
+    }
+    /**
+     * Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    @Export(name="monitorAccessLevel", refs={String.class}, tree="[0]")
+    private Output<String> monitorAccessLevel;
+
+    /**
+     * @return Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public Output<String> monitorAccessLevel() {
+        return this.monitorAccessLevel;
+    }
+    /**
+     * For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+     * 
+     */
+    @Export(name="mrDefaultTargetSelf", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> mrDefaultTargetSelf;
+
+    /**
+     * @return For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+     * 
+     */
+    public Output<Optional<Boolean>> mrDefaultTargetSelf() {
+        return Codegen.optional(this.mrDefaultTargetSelf);
     }
     /**
      * The name of the project.
@@ -718,42 +960,42 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="onlyAllowMergeIfAllDiscussionsAreResolved", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> onlyAllowMergeIfAllDiscussionsAreResolved;
+    private Output<Boolean> onlyAllowMergeIfAllDiscussionsAreResolved;
 
     /**
      * @return Set to true if you want allow merges only if all discussions are resolved.
      * 
      */
-    public Output<Optional<Boolean>> onlyAllowMergeIfAllDiscussionsAreResolved() {
-        return Codegen.optional(this.onlyAllowMergeIfAllDiscussionsAreResolved);
+    public Output<Boolean> onlyAllowMergeIfAllDiscussionsAreResolved() {
+        return this.onlyAllowMergeIfAllDiscussionsAreResolved;
     }
     /**
      * Set to true if you want allow merges only if a pipeline succeeds.
      * 
      */
     @Export(name="onlyAllowMergeIfPipelineSucceeds", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> onlyAllowMergeIfPipelineSucceeds;
+    private Output<Boolean> onlyAllowMergeIfPipelineSucceeds;
 
     /**
      * @return Set to true if you want allow merges only if a pipeline succeeds.
      * 
      */
-    public Output<Optional<Boolean>> onlyAllowMergeIfPipelineSucceeds() {
-        return Codegen.optional(this.onlyAllowMergeIfPipelineSucceeds);
+    public Output<Boolean> onlyAllowMergeIfPipelineSucceeds() {
+        return this.onlyAllowMergeIfPipelineSucceeds;
     }
     /**
      * Enable only mirror protected branches for a mirrored project.
      * 
      */
     @Export(name="onlyMirrorProtectedBranches", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> onlyMirrorProtectedBranches;
+    private Output<Boolean> onlyMirrorProtectedBranches;
 
     /**
      * @return Enable only mirror protected branches for a mirrored project.
      * 
      */
-    public Output<Optional<Boolean>> onlyMirrorProtectedBranches() {
-        return Codegen.optional(this.onlyMirrorProtectedBranches);
+    public Output<Boolean> onlyMirrorProtectedBranches() {
+        return this.onlyMirrorProtectedBranches;
     }
     /**
      * Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
@@ -774,14 +1016,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="packagesEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> packagesEnabled;
+    private Output<Boolean> packagesEnabled;
 
     /**
      * @return Enable packages repository for the project.
      * 
      */
-    public Output<Optional<Boolean>> packagesEnabled() {
-        return Codegen.optional(this.packagesEnabled);
+    public Output<Boolean> packagesEnabled() {
+        return this.packagesEnabled;
     }
     /**
      * Enable pages access control
@@ -848,14 +1090,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="printingMergeRequestLinkEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> printingMergeRequestLinkEnabled;
+    private Output<Boolean> printingMergeRequestLinkEnabled;
 
     /**
      * @return Show link to create/view merge request when pushing from the command line
      * 
      */
-    public Output<Optional<Boolean>> printingMergeRequestLinkEnabled() {
-        return Codegen.optional(this.printingMergeRequestLinkEnabled);
+    public Output<Boolean> printingMergeRequestLinkEnabled() {
+        return this.printingMergeRequestLinkEnabled;
     }
     /**
      * If true, jobs can be viewed by non-project members.
@@ -886,18 +1128,32 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.pushRules;
     }
     /**
+     * Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    @Export(name="releasesAccessLevel", refs={String.class}, tree="[0]")
+    private Output<String> releasesAccessLevel;
+
+    /**
+     * @return Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public Output<String> releasesAccessLevel() {
+        return this.releasesAccessLevel;
+    }
+    /**
      * Enable `Delete source branch` option by default for all new merge requests.
      * 
      */
     @Export(name="removeSourceBranchAfterMerge", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> removeSourceBranchAfterMerge;
+    private Output<Boolean> removeSourceBranchAfterMerge;
 
     /**
      * @return Enable `Delete source branch` option by default for all new merge requests.
      * 
      */
-    public Output<Optional<Boolean>> removeSourceBranchAfterMerge() {
-        return Codegen.optional(this.removeSourceBranchAfterMerge);
+    public Output<Boolean> removeSourceBranchAfterMerge() {
+        return this.removeSourceBranchAfterMerge;
     }
     /**
      * Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
@@ -932,14 +1188,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="requestAccessEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> requestAccessEnabled;
+    private Output<Boolean> requestAccessEnabled;
 
     /**
      * @return Allow users to request member access.
      * 
      */
-    public Output<Optional<Boolean>> requestAccessEnabled() {
-        return Codegen.optional(this.requestAccessEnabled);
+    public Output<Boolean> requestAccessEnabled() {
+        return this.requestAccessEnabled;
     }
     /**
      * Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
@@ -968,6 +1224,20 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> resolveOutdatedDiffDiscussions() {
         return Codegen.optional(this.resolveOutdatedDiffDiscussions);
+    }
+    /**
+     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     * 
+     */
+    @Export(name="restrictUserDefinedVariables", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> restrictUserDefinedVariables;
+
+    /**
+     * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     * 
+     */
+    public Output<Optional<Boolean>> restrictUserDefinedVariables() {
+        return Codegen.optional(this.restrictUserDefinedVariables);
     }
     /**
      * Registration token to use during runner setup.
@@ -1050,14 +1320,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="snippetsEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> snippetsEnabled;
+    private Output<Boolean> snippetsEnabled;
 
     /**
      * @return Enable snippets for the project.
      * 
      */
-    public Output<Optional<Boolean>> snippetsEnabled() {
-        return Codegen.optional(this.snippetsEnabled);
+    public Output<Boolean> snippetsEnabled() {
+        return this.snippetsEnabled;
     }
     /**
      * Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
@@ -1078,14 +1348,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="squashOption", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> squashOption;
+    private Output<String> squashOption;
 
     /**
      * @return Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
      * 
      */
-    public Output<Optional<String>> squashOption() {
-        return Codegen.optional(this.squashOption);
+    public Output<String> squashOption() {
+        return this.squashOption;
     }
     /**
      * URL that can be provided to `git clone` to clone the
@@ -1173,6 +1443,7 @@ public class Project extends com.pulumi.resources.CustomResource {
     }
     /**
      * Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
      * 
      */
     @Export(name="useCustomTemplate", refs={Boolean.class}, tree="[0]")
@@ -1180,6 +1451,7 @@ public class Project extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
      * 
      */
     public Output<Optional<Boolean>> useCustomTemplate() {
@@ -1190,14 +1462,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="visibilityLevel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> visibilityLevel;
+    private Output<String> visibilityLevel;
 
     /**
      * @return Set to `public` to create a public project.
      * 
      */
-    public Output<Optional<String>> visibilityLevel() {
-        return Codegen.optional(this.visibilityLevel);
+    public Output<String> visibilityLevel() {
+        return this.visibilityLevel;
     }
     /**
      * URL that can be used to find the project in a browser.
@@ -1232,14 +1504,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="wikiEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> wikiEnabled;
+    private Output<Boolean> wikiEnabled;
 
     /**
      * @return Enable wiki for the project.
      * 
      */
-    public Output<Optional<Boolean>> wikiEnabled() {
-        return Codegen.optional(this.wikiEnabled);
+    public Output<Boolean> wikiEnabled() {
+        return this.wikiEnabled;
     }
 
     /**
@@ -1275,6 +1547,7 @@ public class Project extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
+                "importUrlPassword",
                 "runnersToken"
             ))
             .build();

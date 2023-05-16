@@ -49,6 +49,60 @@ namespace Pulumi.GitLab
     ///         NamespaceId = peterParker.Apply(getUserResult =&gt; getUserResult.NamespaceId),
     ///     });
     /// 
+    ///     // Fork a project
+    ///     var forkProject = new GitLab.Project("forkProject", new()
+    ///     {
+    ///         Description = "This is a fork",
+    ///         ForkedFromProjectId = example.Id,
+    ///     });
+    /// 
+    ///     // Fork a project and setup a pull mirror
+    ///     var forkIndex_projectProject = new GitLab.Project("forkIndex/projectProject", new()
+    ///     {
+    ///         Description = "This is a fork",
+    ///         ForkedFromProjectId = example.Id,
+    ///         ImportUrl = example.HttpUrlToRepo,
+    ///         Mirror = true,
+    ///     });
+    /// 
+    ///     // Create a project by importing it from a public project
+    ///     var importPublic = new GitLab.Project("importPublic", new()
+    ///     {
+    ///         ImportUrl = "https://gitlab.example.com/repo.git",
+    ///     });
+    /// 
+    ///     // Create a project by importing it from a public project and setup the pull mirror
+    ///     var importPublicWithMirror = new GitLab.Project("importPublicWithMirror", new()
+    ///     {
+    ///         ImportUrl = "https://gitlab.example.com/repo.git",
+    ///         Mirror = true,
+    ///     });
+    /// 
+    ///     // Create a project by importing it from a private project
+    ///     var importPrivateProject = new GitLab.Project("importPrivateProject", new()
+    ///     {
+    ///         ImportUrl = "https://gitlab.example.com/repo.git",
+    ///         ImportUrlUsername = "user",
+    ///         ImportUrlPassword = "pass",
+    ///     });
+    /// 
+    ///     // Create a project by importing it from a private project and setup the pull mirror
+    ///     var importPrivateWithMirror = new GitLab.Project("importPrivateWithMirror", new()
+    ///     {
+    ///         ImportUrl = "https://gitlab.example.com/repo.git",
+    ///         ImportUrlUsername = "user",
+    ///         ImportUrlPassword = "pass",
+    ///         Mirror = true,
+    ///     });
+    /// 
+    ///     // Create a project by importing it from a private project and provide credentials in `import_url`
+    ///     // NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
+    ///     //       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
+    ///     var importPrivateIndex_projectProject = new GitLab.Project("importPrivateIndex/projectProject", new()
+    ///     {
+    ///         ImportUrl = "https://user:pass@gitlab.example.com/repo.git",
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -63,6 +117,8 @@ namespace Pulumi.GitLab
     /// ```sh
     ///  $ pulumi import gitlab:index/project:Project example richardc/example
     /// ```
+    /// 
+    ///  NOTEthe `import_url_username` and `import_url_password` cannot be imported.
     /// </summary>
     [GitLabResourceType("gitlab:index/project:Project")]
     public partial class Project : global::Pulumi.CustomResource
@@ -71,7 +127,7 @@ namespace Pulumi.GitLab
         /// Set to true if you want to treat skipped pipelines as if they finished with success.
         /// </summary>
         [Output("allowMergeOnSkippedPipeline")]
-        public Output<bool?> AllowMergeOnSkippedPipeline { get; private set; } = null!;
+        public Output<bool> AllowMergeOnSkippedPipeline { get; private set; } = null!;
 
         /// <summary>
         /// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
@@ -125,6 +181,24 @@ namespace Pulumi.GitLab
         public Output<bool> AutocloseReferencedIssues { get; private set; } = null!;
 
         /// <summary>
+        /// A local path to the avatar image to upload. **Note**: not available for imported resources.
+        /// </summary>
+        [Output("avatar")]
+        public Output<string?> Avatar { get; private set; } = null!;
+
+        /// <summary>
+        /// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        /// </summary>
+        [Output("avatarHash")]
+        public Output<string> AvatarHash { get; private set; } = null!;
+
+        /// <summary>
+        /// The URL of the avatar image.
+        /// </summary>
+        [Output("avatarUrl")]
+        public Output<string> AvatarUrl { get; private set; } = null!;
+
+        /// <summary>
         /// Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         /// </summary>
         [Output("buildCoverageRegex")]
@@ -164,7 +238,13 @@ namespace Pulumi.GitLab
         /// When a new deployment job starts, skip older deployment jobs that are still pending.
         /// </summary>
         [Output("ciForwardDeploymentEnabled")]
-        public Output<bool?> CiForwardDeploymentEnabled { get; private set; } = null!;
+        public Output<bool> CiForwardDeploymentEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Use separate caches for protected branches.
+        /// </summary>
+        [Output("ciSeparatedCaches")]
+        public Output<bool> CiSeparatedCaches { get; private set; } = null!;
 
         /// <summary>
         /// Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
@@ -182,7 +262,7 @@ namespace Pulumi.GitLab
         /// Enable container registry for the project.
         /// </summary>
         [Output("containerRegistryEnabled")]
-        public Output<bool?> ContainerRegistryEnabled { get; private set; } = null!;
+        public Output<bool> ContainerRegistryEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The default branch for the project.
@@ -203,10 +283,28 @@ namespace Pulumi.GitLab
         public Output<bool?> EmailsDisabled { get; private set; } = null!;
 
         /// <summary>
+        /// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("environmentsAccessLevel")]
+        public Output<string> EnvironmentsAccessLevel { get; private set; } = null!;
+
+        /// <summary>
         /// The classification label for the project.
         /// </summary>
         [Output("externalAuthorizationClassificationLabel")]
         public Output<string?> ExternalAuthorizationClassificationLabel { get; private set; } = null!;
+
+        /// <summary>
+        /// Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("featureFlagsAccessLevel")]
+        public Output<string> FeatureFlagsAccessLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
+        /// </summary>
+        [Output("forkedFromProjectId")]
+        public Output<int?> ForkedFromProjectId { get; private set; } = null!;
 
         /// <summary>
         /// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
@@ -227,10 +325,36 @@ namespace Pulumi.GitLab
         public Output<string> HttpUrlToRepo { get; private set; } = null!;
 
         /// <summary>
-        /// Git URL to a repository to be imported.
+        /// Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+        /// together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+        /// Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+        /// credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+        /// `terraform import`. See the examples section for how to properly use it.
         /// </summary>
         [Output("importUrl")]
         public Output<string?> ImportUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+        /// to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+        /// use it.
+        /// </summary>
+        [Output("importUrlPassword")]
+        public Output<string?> ImportUrlPassword { get; private set; } = null!;
+
+        /// <summary>
+        /// The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+        /// to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+        /// use it.
+        /// </summary>
+        [Output("importUrlUsername")]
+        public Output<string?> ImportUrlUsername { get; private set; } = null!;
+
+        /// <summary>
+        /// Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("infrastructureAccessLevel")]
+        public Output<string> InfrastructureAccessLevel { get; private set; } = null!;
 
         /// <summary>
         /// Create main branch with first commit containing a README.md file.
@@ -248,7 +372,7 @@ namespace Pulumi.GitLab
         /// Enable issue tracking for the project.
         /// </summary>
         [Output("issuesEnabled")]
-        public Output<bool?> IssuesEnabled { get; private set; } = null!;
+        public Output<bool> IssuesEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Sets the template for new issues in the project.
@@ -257,10 +381,16 @@ namespace Pulumi.GitLab
         public Output<string?> IssuesTemplate { get; private set; } = null!;
 
         /// <summary>
+        /// Disable or enable the ability to keep the latest artifact for this project.
+        /// </summary>
+        [Output("keepLatestArtifact")]
+        public Output<bool> KeepLatestArtifact { get; private set; } = null!;
+
+        /// <summary>
         /// Enable LFS for the project.
         /// </summary>
         [Output("lfsEnabled")]
-        public Output<bool?> LfsEnabled { get; private set; } = null!;
+        public Output<bool> LfsEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
@@ -272,13 +402,13 @@ namespace Pulumi.GitLab
         /// Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         /// </summary>
         [Output("mergeMethod")]
-        public Output<string?> MergeMethod { get; private set; } = null!;
+        public Output<string> MergeMethod { get; private set; } = null!;
 
         /// <summary>
         /// Enable or disable merge pipelines.
         /// </summary>
         [Output("mergePipelinesEnabled")]
-        public Output<bool?> MergePipelinesEnabled { get; private set; } = null!;
+        public Output<bool> MergePipelinesEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
@@ -290,7 +420,7 @@ namespace Pulumi.GitLab
         /// Enable merge requests for the project.
         /// </summary>
         [Output("mergeRequestsEnabled")]
-        public Output<bool?> MergeRequestsEnabled { get; private set; } = null!;
+        public Output<bool> MergeRequestsEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Sets the template for new merge requests in the project.
@@ -302,7 +432,7 @@ namespace Pulumi.GitLab
         /// Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         /// </summary>
         [Output("mergeTrainsEnabled")]
-        public Output<bool?> MergeTrainsEnabled { get; private set; } = null!;
+        public Output<bool> MergeTrainsEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Enable project pull mirror.
@@ -314,13 +444,25 @@ namespace Pulumi.GitLab
         /// Enable overwrite diverged branches for a mirrored project.
         /// </summary>
         [Output("mirrorOverwritesDivergedBranches")]
-        public Output<bool?> MirrorOverwritesDivergedBranches { get; private set; } = null!;
+        public Output<bool> MirrorOverwritesDivergedBranches { get; private set; } = null!;
 
         /// <summary>
         /// Enable trigger builds on pushes for a mirrored project.
         /// </summary>
         [Output("mirrorTriggerBuilds")]
-        public Output<bool?> MirrorTriggerBuilds { get; private set; } = null!;
+        public Output<bool> MirrorTriggerBuilds { get; private set; } = null!;
+
+        /// <summary>
+        /// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("monitorAccessLevel")]
+        public Output<string> MonitorAccessLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+        /// </summary>
+        [Output("mrDefaultTargetSelf")]
+        public Output<bool?> MrDefaultTargetSelf { get; private set; } = null!;
 
         /// <summary>
         /// The name of the project.
@@ -338,19 +480,19 @@ namespace Pulumi.GitLab
         /// Set to true if you want allow merges only if all discussions are resolved.
         /// </summary>
         [Output("onlyAllowMergeIfAllDiscussionsAreResolved")]
-        public Output<bool?> OnlyAllowMergeIfAllDiscussionsAreResolved { get; private set; } = null!;
+        public Output<bool> OnlyAllowMergeIfAllDiscussionsAreResolved { get; private set; } = null!;
 
         /// <summary>
         /// Set to true if you want allow merges only if a pipeline succeeds.
         /// </summary>
         [Output("onlyAllowMergeIfPipelineSucceeds")]
-        public Output<bool?> OnlyAllowMergeIfPipelineSucceeds { get; private set; } = null!;
+        public Output<bool> OnlyAllowMergeIfPipelineSucceeds { get; private set; } = null!;
 
         /// <summary>
         /// Enable only mirror protected branches for a mirrored project.
         /// </summary>
         [Output("onlyMirrorProtectedBranches")]
-        public Output<bool?> OnlyMirrorProtectedBranches { get; private set; } = null!;
+        public Output<bool> OnlyMirrorProtectedBranches { get; private set; } = null!;
 
         /// <summary>
         /// Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
@@ -362,7 +504,7 @@ namespace Pulumi.GitLab
         /// Enable packages repository for the project.
         /// </summary>
         [Output("packagesEnabled")]
-        public Output<bool?> PackagesEnabled { get; private set; } = null!;
+        public Output<bool> PackagesEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Enable pages access control
@@ -392,7 +534,7 @@ namespace Pulumi.GitLab
         /// Show link to create/view merge request when pushing from the command line
         /// </summary>
         [Output("printingMergeRequestLinkEnabled")]
-        public Output<bool?> PrintingMergeRequestLinkEnabled { get; private set; } = null!;
+        public Output<bool> PrintingMergeRequestLinkEnabled { get; private set; } = null!;
 
         /// <summary>
         /// If true, jobs can be viewed by non-project members.
@@ -407,10 +549,16 @@ namespace Pulumi.GitLab
         public Output<Outputs.ProjectPushRules> PushRules { get; private set; } = null!;
 
         /// <summary>
+        /// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("releasesAccessLevel")]
+        public Output<string> ReleasesAccessLevel { get; private set; } = null!;
+
+        /// <summary>
         /// Enable `Delete source branch` option by default for all new merge requests.
         /// </summary>
         [Output("removeSourceBranchAfterMerge")]
-        public Output<bool?> RemoveSourceBranchAfterMerge { get; private set; } = null!;
+        public Output<bool> RemoveSourceBranchAfterMerge { get; private set; } = null!;
 
         /// <summary>
         /// Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
@@ -428,7 +576,7 @@ namespace Pulumi.GitLab
         /// Allow users to request member access.
         /// </summary>
         [Output("requestAccessEnabled")]
-        public Output<bool?> RequestAccessEnabled { get; private set; } = null!;
+        public Output<bool> RequestAccessEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
@@ -441,6 +589,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("resolveOutdatedDiffDiscussions")]
         public Output<bool?> ResolveOutdatedDiffDiscussions { get; private set; } = null!;
+
+        /// <summary>
+        /// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        /// </summary>
+        [Output("restrictUserDefinedVariables")]
+        public Output<bool?> RestrictUserDefinedVariables { get; private set; } = null!;
 
         /// <summary>
         /// Registration token to use during runner setup.
@@ -479,7 +633,7 @@ namespace Pulumi.GitLab
         /// Enable snippets for the project.
         /// </summary>
         [Output("snippetsEnabled")]
-        public Output<bool?> SnippetsEnabled { get; private set; } = null!;
+        public Output<bool> SnippetsEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
@@ -491,7 +645,7 @@ namespace Pulumi.GitLab
         /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
         /// </summary>
         [Output("squashOption")]
-        public Output<string?> SquashOption { get; private set; } = null!;
+        public Output<string> SquashOption { get; private set; } = null!;
 
         /// <summary>
         /// URL that can be provided to `git clone` to clone the
@@ -531,6 +685,7 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+        /// 	&gt; When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         /// </summary>
         [Output("useCustomTemplate")]
         public Output<bool?> UseCustomTemplate { get; private set; } = null!;
@@ -539,7 +694,7 @@ namespace Pulumi.GitLab
         /// Set to `public` to create a public project.
         /// </summary>
         [Output("visibilityLevel")]
-        public Output<string?> VisibilityLevel { get; private set; } = null!;
+        public Output<string> VisibilityLevel { get; private set; } = null!;
 
         /// <summary>
         /// URL that can be used to find the project in a browser.
@@ -557,7 +712,7 @@ namespace Pulumi.GitLab
         /// Enable wiki for the project.
         /// </summary>
         [Output("wikiEnabled")]
-        public Output<bool?> WikiEnabled { get; private set; } = null!;
+        public Output<bool> WikiEnabled { get; private set; } = null!;
 
 
         /// <summary>
@@ -584,6 +739,7 @@ namespace Pulumi.GitLab
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "importUrlPassword",
                     "runnersToken",
                 },
             };
@@ -667,6 +823,18 @@ namespace Pulumi.GitLab
         public Input<bool>? AutocloseReferencedIssues { get; set; }
 
         /// <summary>
+        /// A local path to the avatar image to upload. **Note**: not available for imported resources.
+        /// </summary>
+        [Input("avatar")]
+        public Input<string>? Avatar { get; set; }
+
+        /// <summary>
+        /// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        /// </summary>
+        [Input("avatarHash")]
+        public Input<string>? AvatarHash { get; set; }
+
+        /// <summary>
         /// Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         /// </summary>
         [Input("buildCoverageRegex")]
@@ -709,6 +877,12 @@ namespace Pulumi.GitLab
         public Input<bool>? CiForwardDeploymentEnabled { get; set; }
 
         /// <summary>
+        /// Use separate caches for protected branches.
+        /// </summary>
+        [Input("ciSeparatedCaches")]
+        public Input<bool>? CiSeparatedCaches { get; set; }
+
+        /// <summary>
         /// Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         /// </summary>
         [Input("containerExpirationPolicy")]
@@ -745,10 +919,28 @@ namespace Pulumi.GitLab
         public Input<bool>? EmailsDisabled { get; set; }
 
         /// <summary>
+        /// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("environmentsAccessLevel")]
+        public Input<string>? EnvironmentsAccessLevel { get; set; }
+
+        /// <summary>
         /// The classification label for the project.
         /// </summary>
         [Input("externalAuthorizationClassificationLabel")]
         public Input<string>? ExternalAuthorizationClassificationLabel { get; set; }
+
+        /// <summary>
+        /// Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("featureFlagsAccessLevel")]
+        public Input<string>? FeatureFlagsAccessLevel { get; set; }
+
+        /// <summary>
+        /// The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
+        /// </summary>
+        [Input("forkedFromProjectId")]
+        public Input<int>? ForkedFromProjectId { get; set; }
 
         /// <summary>
         /// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
@@ -763,10 +955,46 @@ namespace Pulumi.GitLab
         public Input<int>? GroupWithProjectTemplatesId { get; set; }
 
         /// <summary>
-        /// Git URL to a repository to be imported.
+        /// Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+        /// together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+        /// Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+        /// credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+        /// `terraform import`. See the examples section for how to properly use it.
         /// </summary>
         [Input("importUrl")]
         public Input<string>? ImportUrl { get; set; }
+
+        [Input("importUrlPassword")]
+        private Input<string>? _importUrlPassword;
+
+        /// <summary>
+        /// The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+        /// to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+        /// use it.
+        /// </summary>
+        public Input<string>? ImportUrlPassword
+        {
+            get => _importUrlPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _importUrlPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+        /// to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+        /// use it.
+        /// </summary>
+        [Input("importUrlUsername")]
+        public Input<string>? ImportUrlUsername { get; set; }
+
+        /// <summary>
+        /// Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("infrastructureAccessLevel")]
+        public Input<string>? InfrastructureAccessLevel { get; set; }
 
         /// <summary>
         /// Create main branch with first commit containing a README.md file.
@@ -791,6 +1019,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("issuesTemplate")]
         public Input<string>? IssuesTemplate { get; set; }
+
+        /// <summary>
+        /// Disable or enable the ability to keep the latest artifact for this project.
+        /// </summary>
+        [Input("keepLatestArtifact")]
+        public Input<bool>? KeepLatestArtifact { get; set; }
 
         /// <summary>
         /// Enable LFS for the project.
@@ -857,6 +1091,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mirrorTriggerBuilds")]
         public Input<bool>? MirrorTriggerBuilds { get; set; }
+
+        /// <summary>
+        /// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("monitorAccessLevel")]
+        public Input<string>? MonitorAccessLevel { get; set; }
+
+        /// <summary>
+        /// For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+        /// </summary>
+        [Input("mrDefaultTargetSelf")]
+        public Input<bool>? MrDefaultTargetSelf { get; set; }
 
         /// <summary>
         /// The name of the project.
@@ -937,6 +1183,12 @@ namespace Pulumi.GitLab
         public Input<Inputs.ProjectPushRulesArgs>? PushRules { get; set; }
 
         /// <summary>
+        /// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("releasesAccessLevel")]
+        public Input<string>? ReleasesAccessLevel { get; set; }
+
+        /// <summary>
         /// Enable `Delete source branch` option by default for all new merge requests.
         /// </summary>
         [Input("removeSourceBranchAfterMerge")]
@@ -971,6 +1223,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("resolveOutdatedDiffDiscussions")]
         public Input<bool>? ResolveOutdatedDiffDiscussions { get; set; }
+
+        /// <summary>
+        /// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        /// </summary>
+        [Input("restrictUserDefinedVariables")]
+        public Input<bool>? RestrictUserDefinedVariables { get; set; }
 
         /// <summary>
         /// Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1061,6 +1319,7 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+        /// 	&gt; When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         /// </summary>
         [Input("useCustomTemplate")]
         public Input<bool>? UseCustomTemplate { get; set; }
@@ -1149,6 +1408,24 @@ namespace Pulumi.GitLab
         public Input<bool>? AutocloseReferencedIssues { get; set; }
 
         /// <summary>
+        /// A local path to the avatar image to upload. **Note**: not available for imported resources.
+        /// </summary>
+        [Input("avatar")]
+        public Input<string>? Avatar { get; set; }
+
+        /// <summary>
+        /// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        /// </summary>
+        [Input("avatarHash")]
+        public Input<string>? AvatarHash { get; set; }
+
+        /// <summary>
+        /// The URL of the avatar image.
+        /// </summary>
+        [Input("avatarUrl")]
+        public Input<string>? AvatarUrl { get; set; }
+
+        /// <summary>
         /// Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         /// </summary>
         [Input("buildCoverageRegex")]
@@ -1191,6 +1468,12 @@ namespace Pulumi.GitLab
         public Input<bool>? CiForwardDeploymentEnabled { get; set; }
 
         /// <summary>
+        /// Use separate caches for protected branches.
+        /// </summary>
+        [Input("ciSeparatedCaches")]
+        public Input<bool>? CiSeparatedCaches { get; set; }
+
+        /// <summary>
         /// Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         /// </summary>
         [Input("containerExpirationPolicy")]
@@ -1227,10 +1510,28 @@ namespace Pulumi.GitLab
         public Input<bool>? EmailsDisabled { get; set; }
 
         /// <summary>
+        /// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("environmentsAccessLevel")]
+        public Input<string>? EnvironmentsAccessLevel { get; set; }
+
+        /// <summary>
         /// The classification label for the project.
         /// </summary>
         [Input("externalAuthorizationClassificationLabel")]
         public Input<string>? ExternalAuthorizationClassificationLabel { get; set; }
+
+        /// <summary>
+        /// Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("featureFlagsAccessLevel")]
+        public Input<string>? FeatureFlagsAccessLevel { get; set; }
+
+        /// <summary>
+        /// The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
+        /// </summary>
+        [Input("forkedFromProjectId")]
+        public Input<int>? ForkedFromProjectId { get; set; }
 
         /// <summary>
         /// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1251,10 +1552,46 @@ namespace Pulumi.GitLab
         public Input<string>? HttpUrlToRepo { get; set; }
 
         /// <summary>
-        /// Git URL to a repository to be imported.
+        /// Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+        /// together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+        /// Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+        /// credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+        /// `terraform import`. See the examples section for how to properly use it.
         /// </summary>
         [Input("importUrl")]
         public Input<string>? ImportUrl { get; set; }
+
+        [Input("importUrlPassword")]
+        private Input<string>? _importUrlPassword;
+
+        /// <summary>
+        /// The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+        /// to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+        /// use it.
+        /// </summary>
+        public Input<string>? ImportUrlPassword
+        {
+            get => _importUrlPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _importUrlPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+        /// to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+        /// use it.
+        /// </summary>
+        [Input("importUrlUsername")]
+        public Input<string>? ImportUrlUsername { get; set; }
+
+        /// <summary>
+        /// Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("infrastructureAccessLevel")]
+        public Input<string>? InfrastructureAccessLevel { get; set; }
 
         /// <summary>
         /// Create main branch with first commit containing a README.md file.
@@ -1279,6 +1616,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("issuesTemplate")]
         public Input<string>? IssuesTemplate { get; set; }
+
+        /// <summary>
+        /// Disable or enable the ability to keep the latest artifact for this project.
+        /// </summary>
+        [Input("keepLatestArtifact")]
+        public Input<bool>? KeepLatestArtifact { get; set; }
 
         /// <summary>
         /// Enable LFS for the project.
@@ -1345,6 +1688,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mirrorTriggerBuilds")]
         public Input<bool>? MirrorTriggerBuilds { get; set; }
+
+        /// <summary>
+        /// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("monitorAccessLevel")]
+        public Input<string>? MonitorAccessLevel { get; set; }
+
+        /// <summary>
+        /// For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+        /// </summary>
+        [Input("mrDefaultTargetSelf")]
+        public Input<bool>? MrDefaultTargetSelf { get; set; }
 
         /// <summary>
         /// The name of the project.
@@ -1431,6 +1786,12 @@ namespace Pulumi.GitLab
         public Input<Inputs.ProjectPushRulesGetArgs>? PushRules { get; set; }
 
         /// <summary>
+        /// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("releasesAccessLevel")]
+        public Input<string>? ReleasesAccessLevel { get; set; }
+
+        /// <summary>
         /// Enable `Delete source branch` option by default for all new merge requests.
         /// </summary>
         [Input("removeSourceBranchAfterMerge")]
@@ -1465,6 +1826,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("resolveOutdatedDiffDiscussions")]
         public Input<bool>? ResolveOutdatedDiffDiscussions { get; set; }
+
+        /// <summary>
+        /// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        /// </summary>
+        [Input("restrictUserDefinedVariables")]
+        public Input<bool>? RestrictUserDefinedVariables { get; set; }
 
         [Input("runnersToken")]
         private Input<string>? _runnersToken;
@@ -1577,6 +1944,7 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+        /// 	&gt; When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         /// </summary>
         [Input("useCustomTemplate")]
         public Input<bool>? UseCustomTemplate { get; set; }

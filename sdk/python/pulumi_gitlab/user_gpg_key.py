@@ -19,7 +19,7 @@ class UserGpgKeyArgs:
         """
         The set of arguments for constructing a UserGpgKey resource.
         :param pulumi.Input[str] key: The armored GPG public key.
-        :param pulumi.Input[int] user_id: The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+        :param pulumi.Input[int] user_id: The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
         """
         pulumi.set(__self__, "key", key)
         if user_id is not None:
@@ -41,7 +41,7 @@ class UserGpgKeyArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+        The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
         """
         return pulumi.get(self, "user_id")
 
@@ -62,7 +62,7 @@ class _UserGpgKeyState:
         :param pulumi.Input[str] created_at: The time when this key was created in GitLab.
         :param pulumi.Input[str] key: The armored GPG public key.
         :param pulumi.Input[int] key_id: The ID of the GPG key.
-        :param pulumi.Input[int] user_id: The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+        :param pulumi.Input[int] user_id: The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -113,7 +113,7 @@ class _UserGpgKeyState:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+        The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
         """
         return pulumi.get(self, "user_id")
 
@@ -173,7 +173,7 @@ class UserGpgKey(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key: The armored GPG public key.
-        :param pulumi.Input[int] user_id: The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+        :param pulumi.Input[int] user_id: The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
         """
         ...
     @overload
@@ -277,7 +277,7 @@ class UserGpgKey(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: The time when this key was created in GitLab.
         :param pulumi.Input[str] key: The armored GPG public key.
         :param pulumi.Input[int] key_id: The ID of the GPG key.
-        :param pulumi.Input[int] user_id: The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+        :param pulumi.Input[int] user_id: The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -317,7 +317,7 @@ class UserGpgKey(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[Optional[int]]:
         """
-        The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+        The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
         """
         return pulumi.get(self, "user_id")
 

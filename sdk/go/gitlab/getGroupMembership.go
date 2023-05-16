@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -56,6 +56,8 @@ type LookupGroupMembershipArgs struct {
 	FullPath *string `pulumi:"fullPath"`
 	// The ID of the group.
 	GroupId *int `pulumi:"groupId"`
+	// Return all project members including members through ancestor groups.
+	Inherited *bool `pulumi:"inherited"`
 }
 
 // A collection of values returned by getGroupMembership.
@@ -68,6 +70,8 @@ type LookupGroupMembershipResult struct {
 	GroupId int `pulumi:"groupId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Return all project members including members through ancestor groups.
+	Inherited *bool `pulumi:"inherited"`
 	// The list of group members.
 	Members []GetGroupMembershipMember `pulumi:"members"`
 }
@@ -93,6 +97,8 @@ type LookupGroupMembershipOutputArgs struct {
 	FullPath pulumi.StringPtrInput `pulumi:"fullPath"`
 	// The ID of the group.
 	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// Return all project members including members through ancestor groups.
+	Inherited pulumi.BoolPtrInput `pulumi:"inherited"`
 }
 
 func (LookupGroupMembershipOutputArgs) ElementType() reflect.Type {
@@ -132,6 +138,11 @@ func (o LookupGroupMembershipResultOutput) GroupId() pulumi.IntOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupGroupMembershipResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupMembershipResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Return all project members including members through ancestor groups.
+func (o LookupGroupMembershipResultOutput) Inherited() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupGroupMembershipResult) *bool { return v.Inherited }).(pulumi.BoolPtrOutput)
 }
 
 // The list of group members.

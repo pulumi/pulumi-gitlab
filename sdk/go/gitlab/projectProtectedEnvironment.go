@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -124,7 +124,7 @@ type ProjectProtectedEnvironment struct {
 	// The ID or full path of the project which the protected environment is created against.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The number of approvals required to deploy to this environment.
-	RequiredApprovalCount pulumi.IntPtrOutput `pulumi:"requiredApprovalCount"`
+	RequiredApprovalCount pulumi.IntOutput `pulumi:"requiredApprovalCount"`
 }
 
 // NewProjectProtectedEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -134,9 +134,6 @@ func NewProjectProtectedEnvironment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DeployAccessLevels == nil {
-		return nil, errors.New("invalid value for required argument 'DeployAccessLevels'")
-	}
 	if args.Environment == nil {
 		return nil, errors.New("invalid value for required argument 'Environment'")
 	}
@@ -318,8 +315,8 @@ func (o ProjectProtectedEnvironmentOutput) Project() pulumi.StringOutput {
 }
 
 // The number of approvals required to deploy to this environment.
-func (o ProjectProtectedEnvironmentOutput) RequiredApprovalCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ProjectProtectedEnvironment) pulumi.IntPtrOutput { return v.RequiredApprovalCount }).(pulumi.IntPtrOutput)
+func (o ProjectProtectedEnvironmentOutput) RequiredApprovalCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectProtectedEnvironment) pulumi.IntOutput { return v.RequiredApprovalCount }).(pulumi.IntOutput)
 }
 
 type ProjectProtectedEnvironmentArrayOutput struct{ *pulumi.OutputState }

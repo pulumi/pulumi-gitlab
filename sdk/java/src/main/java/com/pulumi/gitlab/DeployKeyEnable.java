@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *         var parentDeployKey = new DeployKey(&#34;parentDeployKey&#34;, DeployKeyArgs.builder()        
  *             .project(parentProject.id())
  *             .title(&#34;Example deploy key&#34;)
- *             .key(&#34;ssh-rsa AAAA...&#34;)
+ *             .key(&#34;ssh-ed25519 AAAA...&#34;)
  *             .build());
  * 
  *         var fooDeployKeyEnable = new DeployKeyEnable(&#34;fooDeployKeyEnable&#34;, DeployKeyEnableArgs.builder()        

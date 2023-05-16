@@ -14,6 +14,13 @@ public final class GetProjectContainerExpirationPolicy {
     private String cadence;
     private Boolean enabled;
     private Integer keepN;
+    private String nameRegex;
+    /**
+     * @deprecated
+     * `name_regex_delete` has been deprecated. Use `name_regex` instead.
+     * 
+     */
+    @Deprecated /* `name_regex_delete` has been deprecated. Use `name_regex` instead. */
     private String nameRegexDelete;
     private String nameRegexKeep;
     private String nextRunAt;
@@ -29,6 +36,15 @@ public final class GetProjectContainerExpirationPolicy {
     public Integer keepN() {
         return this.keepN;
     }
+    public String nameRegex() {
+        return this.nameRegex;
+    }
+    /**
+     * @deprecated
+     * `name_regex_delete` has been deprecated. Use `name_regex` instead.
+     * 
+     */
+    @Deprecated /* `name_regex_delete` has been deprecated. Use `name_regex` instead. */
     public String nameRegexDelete() {
         return this.nameRegexDelete;
     }
@@ -54,6 +70,7 @@ public final class GetProjectContainerExpirationPolicy {
         private String cadence;
         private Boolean enabled;
         private Integer keepN;
+        private String nameRegex;
         private String nameRegexDelete;
         private String nameRegexKeep;
         private String nextRunAt;
@@ -64,6 +81,7 @@ public final class GetProjectContainerExpirationPolicy {
     	      this.cadence = defaults.cadence;
     	      this.enabled = defaults.enabled;
     	      this.keepN = defaults.keepN;
+    	      this.nameRegex = defaults.nameRegex;
     	      this.nameRegexDelete = defaults.nameRegexDelete;
     	      this.nameRegexKeep = defaults.nameRegexKeep;
     	      this.nextRunAt = defaults.nextRunAt;
@@ -83,6 +101,11 @@ public final class GetProjectContainerExpirationPolicy {
         @CustomType.Setter
         public Builder keepN(Integer keepN) {
             this.keepN = Objects.requireNonNull(keepN);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nameRegex(String nameRegex) {
+            this.nameRegex = Objects.requireNonNull(nameRegex);
             return this;
         }
         @CustomType.Setter
@@ -110,6 +133,7 @@ public final class GetProjectContainerExpirationPolicy {
             o.cadence = cadence;
             o.enabled = enabled;
             o.keepN = keepN;
+            o.nameRegex = nameRegex;
             o.nameRegexDelete = nameRegexDelete;
             o.nameRegexKeep = nameRegexKeep;
             o.nextRunAt = nextRunAt;

@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.LookupProject(ctx, &gitlab.LookupProjectArgs{
-//				Id: pulumi.StringRef("foo/bar/baz"),
+//				PathWithNamespace: pulumi.StringRef("foo/bar/baz"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.
 type LookupProjectArgs struct {
 	// Default number of revisions for shallow cloning.
 	CiDefaultGitDepth *int `pulumi:"ciDefaultGitDepth"`
-	// The integer or path with namespace that uniquely identifies the project within the gitlab install.
+	// The integer that uniquely identifies the project within the gitlab install.
 	Id *string `pulumi:"id"`
 	// The path of the repository with namespace.
 	PathWithNamespace *string `pulumi:"pathWithNamespace"`
@@ -84,6 +84,8 @@ type LookupProjectResult struct {
 	CiConfigPath string `pulumi:"ciConfigPath"`
 	// Default number of revisions for shallow cloning.
 	CiDefaultGitDepth int `pulumi:"ciDefaultGitDepth"`
+	// Use separate caches for protected branches.
+	CiSeparatedCaches bool `pulumi:"ciSeparatedCaches"`
 	// Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
 	ContainerExpirationPolicies []GetProjectContainerExpirationPolicy `pulumi:"containerExpirationPolicies"`
 	// Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
@@ -94,18 +96,28 @@ type LookupProjectResult struct {
 	Description string `pulumi:"description"`
 	// Disable email notifications.
 	EmailsDisabled bool `pulumi:"emailsDisabled"`
+	// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+	EnvironmentsAccessLevel string `pulumi:"environmentsAccessLevel"`
 	// The classification label for the project.
 	ExternalAuthorizationClassificationLabel string `pulumi:"externalAuthorizationClassificationLabel"`
+	// Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+	FeatureFlagsAccessLevel string `pulumi:"featureFlagsAccessLevel"`
 	// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
 	ForkingAccessLevel string `pulumi:"forkingAccessLevel"`
 	// URL that can be provided to `git clone` to clone the
 	HttpUrlToRepo string `pulumi:"httpUrlToRepo"`
-	// The integer or path with namespace that uniquely identifies the project within the gitlab install.
+	// The integer that uniquely identifies the project within the gitlab install.
 	Id string `pulumi:"id"`
+	// URL the project was imported from.
+	ImportUrl string `pulumi:"importUrl"`
+	// Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+	InfrastructureAccessLevel string `pulumi:"infrastructureAccessLevel"`
 	// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
 	IssuesAccessLevel string `pulumi:"issuesAccessLevel"`
 	// Enable issue tracking for the project.
 	IssuesEnabled bool `pulumi:"issuesEnabled"`
+	// Disable or enable the ability to keep the latest artifact for this project.
+	KeepLatestArtifact bool `pulumi:"keepLatestArtifact"`
 	// Enable LFS for the project.
 	LfsEnabled bool `pulumi:"lfsEnabled"`
 	// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
@@ -118,6 +130,8 @@ type LookupProjectResult struct {
 	MergeRequestsEnabled bool `pulumi:"mergeRequestsEnabled"`
 	// Enable or disable merge trains.
 	MergeTrainsEnabled bool `pulumi:"mergeTrainsEnabled"`
+	// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+	MonitorAccessLevel string `pulumi:"monitorAccessLevel"`
 	// The name of the project.
 	Name string `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
@@ -134,8 +148,10 @@ type LookupProjectResult struct {
 	PrintingMergeRequestLinkEnabled bool `pulumi:"printingMergeRequestLinkEnabled"`
 	// If true, jobs can be viewed by non-project members.
 	PublicBuilds *bool `pulumi:"publicBuilds"`
-	// Push rules for the project.
-	PushRules GetProjectPushRules `pulumi:"pushRules"`
+	// Push rules for the project. Push rules are only available on Enterprise plans and if the authenticated has permissions to read them.
+	PushRules []GetProjectPushRule `pulumi:"pushRules"`
+	// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+	ReleasesAccessLevel string `pulumi:"releasesAccessLevel"`
 	// Enable `Delete source branch` option by default for all new merge requests
 	RemoveSourceBranchAfterMerge bool `pulumi:"removeSourceBranchAfterMerge"`
 	// Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
@@ -148,6 +164,8 @@ type LookupProjectResult struct {
 	RequirementsAccessLevel string `pulumi:"requirementsAccessLevel"`
 	// Automatically resolve merge request diffs discussions on lines changed with a push.
 	ResolveOutdatedDiffDiscussions bool `pulumi:"resolveOutdatedDiffDiscussions"`
+	// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+	RestrictUserDefinedVariables bool `pulumi:"restrictUserDefinedVariables"`
 	// Registration token to use during runner setup.
 	RunnersToken string `pulumi:"runnersToken"`
 	// Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
@@ -191,7 +209,7 @@ func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts
 type LookupProjectOutputArgs struct {
 	// Default number of revisions for shallow cloning.
 	CiDefaultGitDepth pulumi.IntPtrInput `pulumi:"ciDefaultGitDepth"`
-	// The integer or path with namespace that uniquely identifies the project within the gitlab install.
+	// The integer that uniquely identifies the project within the gitlab install.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The path of the repository with namespace.
 	PathWithNamespace pulumi.StringPtrInput `pulumi:"pathWithNamespace"`
@@ -273,6 +291,11 @@ func (o LookupProjectResultOutput) CiDefaultGitDepth() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupProjectResult) int { return v.CiDefaultGitDepth }).(pulumi.IntOutput)
 }
 
+// Use separate caches for protected branches.
+func (o LookupProjectResultOutput) CiSeparatedCaches() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.CiSeparatedCaches }).(pulumi.BoolOutput)
+}
+
 // Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
 func (o LookupProjectResultOutput) ContainerExpirationPolicies() GetProjectContainerExpirationPolicyArrayOutput {
 	return o.ApplyT(func(v LookupProjectResult) []GetProjectContainerExpirationPolicy {
@@ -300,9 +323,19 @@ func (o LookupProjectResultOutput) EmailsDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.EmailsDisabled }).(pulumi.BoolOutput)
 }
 
+// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+func (o LookupProjectResultOutput) EnvironmentsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.EnvironmentsAccessLevel }).(pulumi.StringOutput)
+}
+
 // The classification label for the project.
 func (o LookupProjectResultOutput) ExternalAuthorizationClassificationLabel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.ExternalAuthorizationClassificationLabel }).(pulumi.StringOutput)
+}
+
+// Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+func (o LookupProjectResultOutput) FeatureFlagsAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.FeatureFlagsAccessLevel }).(pulumi.StringOutput)
 }
 
 // Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
@@ -315,9 +348,19 @@ func (o LookupProjectResultOutput) HttpUrlToRepo() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.HttpUrlToRepo }).(pulumi.StringOutput)
 }
 
-// The integer or path with namespace that uniquely identifies the project within the gitlab install.
+// The integer that uniquely identifies the project within the gitlab install.
 func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// URL the project was imported from.
+func (o LookupProjectResultOutput) ImportUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.ImportUrl }).(pulumi.StringOutput)
+}
+
+// Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+func (o LookupProjectResultOutput) InfrastructureAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.InfrastructureAccessLevel }).(pulumi.StringOutput)
 }
 
 // Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
@@ -328,6 +371,11 @@ func (o LookupProjectResultOutput) IssuesAccessLevel() pulumi.StringOutput {
 // Enable issue tracking for the project.
 func (o LookupProjectResultOutput) IssuesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.IssuesEnabled }).(pulumi.BoolOutput)
+}
+
+// Disable or enable the ability to keep the latest artifact for this project.
+func (o LookupProjectResultOutput) KeepLatestArtifact() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.KeepLatestArtifact }).(pulumi.BoolOutput)
 }
 
 // Enable LFS for the project.
@@ -358,6 +406,11 @@ func (o LookupProjectResultOutput) MergeRequestsEnabled() pulumi.BoolOutput {
 // Enable or disable merge trains.
 func (o LookupProjectResultOutput) MergeTrainsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.MergeTrainsEnabled }).(pulumi.BoolOutput)
+}
+
+// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+func (o LookupProjectResultOutput) MonitorAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.MonitorAccessLevel }).(pulumi.StringOutput)
 }
 
 // The name of the project.
@@ -400,9 +453,14 @@ func (o LookupProjectResultOutput) PublicBuilds() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *bool { return v.PublicBuilds }).(pulumi.BoolPtrOutput)
 }
 
-// Push rules for the project.
-func (o LookupProjectResultOutput) PushRules() GetProjectPushRulesOutput {
-	return o.ApplyT(func(v LookupProjectResult) GetProjectPushRules { return v.PushRules }).(GetProjectPushRulesOutput)
+// Push rules for the project. Push rules are only available on Enterprise plans and if the authenticated has permissions to read them.
+func (o LookupProjectResultOutput) PushRules() GetProjectPushRuleArrayOutput {
+	return o.ApplyT(func(v LookupProjectResult) []GetProjectPushRule { return v.PushRules }).(GetProjectPushRuleArrayOutput)
+}
+
+// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+func (o LookupProjectResultOutput) ReleasesAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.ReleasesAccessLevel }).(pulumi.StringOutput)
 }
 
 // Enable `Delete source branch` option by default for all new merge requests
@@ -433,6 +491,11 @@ func (o LookupProjectResultOutput) RequirementsAccessLevel() pulumi.StringOutput
 // Automatically resolve merge request diffs discussions on lines changed with a push.
 func (o LookupProjectResultOutput) ResolveOutdatedDiffDiscussions() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.ResolveOutdatedDiffDiscussions }).(pulumi.BoolOutput)
+}
+
+// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+func (o LookupProjectResultOutput) RestrictUserDefinedVariables() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.RestrictUserDefinedVariables }).(pulumi.BoolOutput)
 }
 
 // Registration token to use during runner setup.

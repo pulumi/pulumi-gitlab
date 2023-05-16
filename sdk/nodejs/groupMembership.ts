@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.GroupMembership` resource allows to manage the lifecycle of a users group membersip.
+ * The `gitlab.GroupMembership` resource allows to manage the lifecycle of a users group membership.
  *
  * > If a group should grant membership to another group use the `gitlab.GroupShareGroup` resource instead.
  *

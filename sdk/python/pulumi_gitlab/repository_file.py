@@ -22,17 +22,19 @@ class RepositoryFileArgs:
                  author_email: Optional[pulumi.Input[str]] = None,
                  author_name: Optional[pulumi.Input[str]] = None,
                  execute_filemode: Optional[pulumi.Input[bool]] = None,
+                 overwrite_on_create: Optional[pulumi.Input[bool]] = None,
                  start_branch: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RepositoryFile resource.
         :param pulumi.Input[str] branch: Name of the branch to which to commit to.
         :param pulumi.Input[str] commit_message: Commit message.
         :param pulumi.Input[str] content: File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
-        :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+        :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         :param pulumi.Input[str] project: The name or ID of the project.
         :param pulumi.Input[str] author_email: Email of the commit author.
         :param pulumi.Input[str] author_name: Name of the commit author.
         :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+        :param pulumi.Input[bool] overwrite_on_create: Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
         :param pulumi.Input[str] start_branch: Name of the branch to start the new commit from.
         """
         pulumi.set(__self__, "branch", branch)
@@ -46,6 +48,8 @@ class RepositoryFileArgs:
             pulumi.set(__self__, "author_name", author_name)
         if execute_filemode is not None:
             pulumi.set(__self__, "execute_filemode", execute_filemode)
+        if overwrite_on_create is not None:
+            pulumi.set(__self__, "overwrite_on_create", overwrite_on_create)
         if start_branch is not None:
             pulumi.set(__self__, "start_branch", start_branch)
 
@@ -89,7 +93,7 @@ class RepositoryFileArgs:
     @pulumi.getter(name="filePath")
     def file_path(self) -> pulumi.Input[str]:
         """
-        The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+        The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         """
         return pulumi.get(self, "file_path")
 
@@ -146,6 +150,18 @@ class RepositoryFileArgs:
         pulumi.set(self, "execute_filemode", value)
 
     @property
+    @pulumi.getter(name="overwriteOnCreate")
+    def overwrite_on_create(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+        """
+        return pulumi.get(self, "overwrite_on_create")
+
+    @overwrite_on_create.setter
+    def overwrite_on_create(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "overwrite_on_create", value)
+
+    @property
     @pulumi.getter(name="startBranch")
     def start_branch(self) -> Optional[pulumi.Input[str]]:
         """
@@ -174,6 +190,7 @@ class _RepositoryFileState:
                  file_name: Optional[pulumi.Input[str]] = None,
                  file_path: Optional[pulumi.Input[str]] = None,
                  last_commit_id: Optional[pulumi.Input[str]] = None,
+                 overwrite_on_create: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  ref: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
@@ -191,8 +208,9 @@ class _RepositoryFileState:
         :param pulumi.Input[str] encoding: The file content encoding.
         :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
         :param pulumi.Input[str] file_name: The filename.
-        :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+        :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         :param pulumi.Input[str] last_commit_id: The last known commit id.
+        :param pulumi.Input[bool] overwrite_on_create: Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
         :param pulumi.Input[str] project: The name or ID of the project.
         :param pulumi.Input[str] ref: The name of branch, tag or commit.
         :param pulumi.Input[int] size: The file size.
@@ -224,6 +242,8 @@ class _RepositoryFileState:
             pulumi.set(__self__, "file_path", file_path)
         if last_commit_id is not None:
             pulumi.set(__self__, "last_commit_id", last_commit_id)
+        if overwrite_on_create is not None:
+            pulumi.set(__self__, "overwrite_on_create", overwrite_on_create)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if ref is not None:
@@ -369,7 +389,7 @@ class _RepositoryFileState:
     @pulumi.getter(name="filePath")
     def file_path(self) -> Optional[pulumi.Input[str]]:
         """
-        The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+        The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         """
         return pulumi.get(self, "file_path")
 
@@ -388,6 +408,18 @@ class _RepositoryFileState:
     @last_commit_id.setter
     def last_commit_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "last_commit_id", value)
+
+    @property
+    @pulumi.getter(name="overwriteOnCreate")
+    def overwrite_on_create(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+        """
+        return pulumi.get(self, "overwrite_on_create")
+
+    @overwrite_on_create.setter
+    def overwrite_on_create(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "overwrite_on_create", value)
 
     @property
     @pulumi.getter
@@ -450,6 +482,7 @@ class RepositoryFile(pulumi.CustomResource):
                  content: Optional[pulumi.Input[str]] = None,
                  execute_filemode: Optional[pulumi.Input[bool]] = None,
                  file_path: Optional[pulumi.Input[str]] = None,
+                 overwrite_on_create: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  start_branch: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -470,7 +503,8 @@ class RepositoryFile(pulumi.CustomResource):
         :param pulumi.Input[str] commit_message: Commit message.
         :param pulumi.Input[str] content: File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
         :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
-        :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+        :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
+        :param pulumi.Input[bool] overwrite_on_create: Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
         :param pulumi.Input[str] project: The name or ID of the project.
         :param pulumi.Input[str] start_branch: Name of the branch to start the new commit from.
         """
@@ -511,6 +545,7 @@ class RepositoryFile(pulumi.CustomResource):
                  content: Optional[pulumi.Input[str]] = None,
                  execute_filemode: Optional[pulumi.Input[bool]] = None,
                  file_path: Optional[pulumi.Input[str]] = None,
+                 overwrite_on_create: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  start_branch: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -537,6 +572,7 @@ class RepositoryFile(pulumi.CustomResource):
             if file_path is None and not opts.urn:
                 raise TypeError("Missing required property 'file_path'")
             __props__.__dict__["file_path"] = file_path
+            __props__.__dict__["overwrite_on_create"] = overwrite_on_create
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
@@ -572,6 +608,7 @@ class RepositoryFile(pulumi.CustomResource):
             file_name: Optional[pulumi.Input[str]] = None,
             file_path: Optional[pulumi.Input[str]] = None,
             last_commit_id: Optional[pulumi.Input[str]] = None,
+            overwrite_on_create: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
             ref: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[int]] = None,
@@ -594,8 +631,9 @@ class RepositoryFile(pulumi.CustomResource):
         :param pulumi.Input[str] encoding: The file content encoding.
         :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
         :param pulumi.Input[str] file_name: The filename.
-        :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+        :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         :param pulumi.Input[str] last_commit_id: The last known commit id.
+        :param pulumi.Input[bool] overwrite_on_create: Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
         :param pulumi.Input[str] project: The name or ID of the project.
         :param pulumi.Input[str] ref: The name of branch, tag or commit.
         :param pulumi.Input[int] size: The file size.
@@ -618,6 +656,7 @@ class RepositoryFile(pulumi.CustomResource):
         __props__.__dict__["file_name"] = file_name
         __props__.__dict__["file_path"] = file_path
         __props__.__dict__["last_commit_id"] = last_commit_id
+        __props__.__dict__["overwrite_on_create"] = overwrite_on_create
         __props__.__dict__["project"] = project
         __props__.__dict__["ref"] = ref
         __props__.__dict__["size"] = size
@@ -716,7 +755,7 @@ class RepositoryFile(pulumi.CustomResource):
     @pulumi.getter(name="filePath")
     def file_path(self) -> pulumi.Output[str]:
         """
-        The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+        The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         """
         return pulumi.get(self, "file_path")
 
@@ -727,6 +766,14 @@ class RepositoryFile(pulumi.CustomResource):
         The last known commit id.
         """
         return pulumi.get(self, "last_commit_id")
+
+    @property
+    @pulumi.getter(name="overwriteOnCreate")
+    def overwrite_on_create(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+        """
+        return pulumi.get(self, "overwrite_on_create")
 
     @property
     @pulumi.getter

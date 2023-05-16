@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
     /// {
     ///     var example = new GitLab.DeployKey("example", new()
     ///     {
-    ///         Key = "ssh-rsa AAAA...",
+    ///         Key = "ssh-ed25519 AAAA...",
     ///         Project = "example/deploying",
     ///         Title = "Example deploy key",
     ///     });

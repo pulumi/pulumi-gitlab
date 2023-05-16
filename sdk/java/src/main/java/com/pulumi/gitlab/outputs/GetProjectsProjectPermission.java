@@ -10,11 +10,11 @@ import java.util.Map;
 import java.util.Objects;
 
 @CustomType
-public final class GetProjectsProjectPermissions {
+public final class GetProjectsProjectPermission {
     private Map<String,Integer> groupAccess;
     private Map<String,Integer> projectAccess;
 
-    private GetProjectsProjectPermissions() {}
+    private GetProjectsProjectPermission() {}
     public Map<String,Integer> groupAccess() {
         return this.groupAccess;
     }
@@ -26,7 +26,7 @@ public final class GetProjectsProjectPermissions {
         return new Builder();
     }
 
-    public static Builder builder(GetProjectsProjectPermissions defaults) {
+    public static Builder builder(GetProjectsProjectPermission defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -34,7 +34,7 @@ public final class GetProjectsProjectPermissions {
         private Map<String,Integer> groupAccess;
         private Map<String,Integer> projectAccess;
         public Builder() {}
-        public Builder(GetProjectsProjectPermissions defaults) {
+        public Builder(GetProjectsProjectPermission defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groupAccess = defaults.groupAccess;
     	      this.projectAccess = defaults.projectAccess;
@@ -50,8 +50,8 @@ public final class GetProjectsProjectPermissions {
             this.projectAccess = Objects.requireNonNull(projectAccess);
             return this;
         }
-        public GetProjectsProjectPermissions build() {
-            final var o = new GetProjectsProjectPermissions();
+        public GetProjectsProjectPermission build() {
+            final var o = new GetProjectsProjectPermission();
             o.groupAccess = groupAccess;
             o.projectAccess = projectAccess;
             return o;

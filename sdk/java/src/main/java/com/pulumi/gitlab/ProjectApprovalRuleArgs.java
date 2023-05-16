@@ -5,6 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -30,6 +31,21 @@ public final class ProjectApprovalRuleArgs extends com.pulumi.resources.Resource
      */
     public Output<Integer> approvalsRequired() {
         return this.approvalsRequired;
+    }
+
+    /**
+     * When this flag is set, the default `any_approver` rule will not be imported if present.
+     * 
+     */
+    @Import(name="disableImportingDefaultAnyApproverRuleOnCreate")
+    private @Nullable Output<Boolean> disableImportingDefaultAnyApproverRuleOnCreate;
+
+    /**
+     * @return When this flag is set, the default `any_approver` rule will not be imported if present.
+     * 
+     */
+    public Optional<Output<Boolean>> disableImportingDefaultAnyApproverRuleOnCreate() {
+        return Optional.ofNullable(this.disableImportingDefaultAnyApproverRuleOnCreate);
     }
 
     /**
@@ -126,6 +142,7 @@ public final class ProjectApprovalRuleArgs extends com.pulumi.resources.Resource
 
     private ProjectApprovalRuleArgs(ProjectApprovalRuleArgs $) {
         this.approvalsRequired = $.approvalsRequired;
+        this.disableImportingDefaultAnyApproverRuleOnCreate = $.disableImportingDefaultAnyApproverRuleOnCreate;
         this.groupIds = $.groupIds;
         this.name = $.name;
         this.project = $.project;
@@ -171,6 +188,27 @@ public final class ProjectApprovalRuleArgs extends com.pulumi.resources.Resource
          */
         public Builder approvalsRequired(Integer approvalsRequired) {
             return approvalsRequired(Output.of(approvalsRequired));
+        }
+
+        /**
+         * @param disableImportingDefaultAnyApproverRuleOnCreate When this flag is set, the default `any_approver` rule will not be imported if present.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableImportingDefaultAnyApproverRuleOnCreate(@Nullable Output<Boolean> disableImportingDefaultAnyApproverRuleOnCreate) {
+            $.disableImportingDefaultAnyApproverRuleOnCreate = disableImportingDefaultAnyApproverRuleOnCreate;
+            return this;
+        }
+
+        /**
+         * @param disableImportingDefaultAnyApproverRuleOnCreate When this flag is set, the default `any_approver` rule will not be imported if present.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableImportingDefaultAnyApproverRuleOnCreate(Boolean disableImportingDefaultAnyApproverRuleOnCreate) {
+            return disableImportingDefaultAnyApproverRuleOnCreate(Output.of(disableImportingDefaultAnyApproverRuleOnCreate));
         }
 
         /**

@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -82,7 +82,7 @@ type UserGpgKey struct {
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The ID of the GPG key.
 	KeyId pulumi.IntOutput `pulumi:"keyId"`
-	// The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+	// The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
 	UserId pulumi.IntPtrOutput `pulumi:"userId"`
 }
 
@@ -124,7 +124,7 @@ type userGpgKeyState struct {
 	Key *string `pulumi:"key"`
 	// The ID of the GPG key.
 	KeyId *int `pulumi:"keyId"`
-	// The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+	// The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
 	UserId *int `pulumi:"userId"`
 }
 
@@ -135,7 +135,7 @@ type UserGpgKeyState struct {
 	Key pulumi.StringPtrInput
 	// The ID of the GPG key.
 	KeyId pulumi.IntPtrInput
-	// The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+	// The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
 	UserId pulumi.IntPtrInput
 }
 
@@ -146,7 +146,7 @@ func (UserGpgKeyState) ElementType() reflect.Type {
 type userGpgKeyArgs struct {
 	// The armored GPG public key.
 	Key string `pulumi:"key"`
-	// The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+	// The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
 	UserId *int `pulumi:"userId"`
 }
 
@@ -154,7 +154,7 @@ type userGpgKeyArgs struct {
 type UserGpgKeyArgs struct {
 	// The armored GPG public key.
 	Key pulumi.StringInput
-	// The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+	// The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
 	UserId pulumi.IntPtrInput
 }
 
@@ -260,7 +260,7 @@ func (o UserGpgKeyOutput) KeyId() pulumi.IntOutput {
 	return o.ApplyT(func(v *UserGpgKey) pulumi.IntOutput { return v.KeyId }).(pulumi.IntOutput)
 }
 
-// The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the speicifed user, and an admin token is required.
+// The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
 func (o UserGpgKeyOutput) UserId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *UserGpgKey) pulumi.IntPtrOutput { return v.UserId }).(pulumi.IntPtrOutput)
 }

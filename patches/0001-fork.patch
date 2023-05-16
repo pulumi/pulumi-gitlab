@@ -1,17 +1,17 @@
-From 6fc305c27b437a8e9f7c4df5aa58816796acb3b6 Mon Sep 17 00:00:00 2001
+From 18761699bdd108b060a30a4a96f8740c4ac96d85 Mon Sep 17 00:00:00 2001
 From: Ian Wahbe <ian@wahbe.com>
-Date: Fri, 28 Apr 2023 13:16:07 -0700
+Date: Mon, 15 May 2023 14:33:58 -0700
 Subject: [PATCH 1/2] fork
 
 ---
- internal/provider/resource_gitlab_project.go | 43 ++++++++++----------
- 1 file changed, 22 insertions(+), 21 deletions(-)
+ .../provider/sdk/resource_gitlab_project.go   | 41 ++++++++++---------
+ 1 file changed, 21 insertions(+), 20 deletions(-)
 
-diff --git a/internal/provider/resource_gitlab_project.go b/internal/provider/resource_gitlab_project.go
-index 367966eb..e710fb9e 100644
---- a/internal/provider/resource_gitlab_project.go
-+++ b/internal/provider/resource_gitlab_project.go
-@@ -347,34 +347,35 @@ var resourceGitLabProjectSchema = map[string]*schema.Schema{
+diff --git a/internal/provider/sdk/resource_gitlab_project.go b/internal/provider/sdk/resource_gitlab_project.go
+index b3394eda..78dd874e 100644
+--- a/internal/provider/sdk/resource_gitlab_project.go
++++ b/internal/provider/sdk/resource_gitlab_project.go
+@@ -371,33 +371,34 @@ var resourceGitLabProjectSchema = map[string]*schema.Schema{
  		ValidateFunc: validation.StringInSlice([]string{"public", "private", "enabled", "disabled"}, true),
  	},
  	// The GitLab API requires that import_url is also set when mirror options are used
@@ -22,52 +22,50 @@ index 367966eb..e710fb9e 100644
 -		Description:  "Enable project pull mirror.",
 -		Type:         schema.TypeBool,
 -		Optional:     true,
--		Default:      false,
 -		RequiredWith: []string{"import_url"},
 +		Description: "Enable project pull mirror.",
 +		Type:        schema.TypeBool,
 +		Optional:    true,
-+		Default:     false,
-+		//RequiredWith: []string{"import_url"},
++		// RequiredWith: []string{"import_url"},
  	},
  	"mirror_trigger_builds": {
 -		Description:  "Enable trigger builds on pushes for a mirrored project.",
 -		Type:         schema.TypeBool,
 -		Optional:     true,
--		Default:      false,
+-		Computed:     true,
 -		RequiredWith: []string{"import_url"},
 +		Description: "Enable trigger builds on pushes for a mirrored project.",
 +		Type:        schema.TypeBool,
 +		Optional:    true,
-+		Default:     false,
-+		//RequiredWith: []string{"import_url"},
++		Computed:    true,
++		// RequiredWith: []string{"import_url"},
  	},
  	"mirror_overwrites_diverged_branches": {
 -		Description:  "Enable overwrite diverged branches for a mirrored project.",
 -		Type:         schema.TypeBool,
 -		Optional:     true,
--		Default:      false,
+-		Computed:     true,
 -		RequiredWith: []string{"import_url"},
 +		Description: "Enable overwrite diverged branches for a mirrored project.",
 +		Type:        schema.TypeBool,
 +		Optional:    true,
-+		Default:     false,
-+		//RequiredWith: []string{"import_url"},
++		Computed:    true,
++		// RequiredWith: []string{"import_url"},
  	},
  	"only_mirror_protected_branches": {
 -		Description:  "Enable only mirror protected branches for a mirrored project.",
 -		Type:         schema.TypeBool,
 -		Optional:     true,
--		Default:      false,
+-		Computed:     true,
 -		RequiredWith: []string{"import_url"},
 +		Description: "Enable only mirror protected branches for a mirrored project.",
 +		Type:        schema.TypeBool,
 +		Optional:    true,
-+		Default:     false,
-+		//RequiredWith: []string{"import_url"},
++		Computed:    true,
++		// RequiredWith: []string{"import_url"},
  	},
  	"build_coverage_regex": {
  		Description: "Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.",
 -- 
-2.39.1
+2.40.1
 

@@ -32,6 +32,7 @@ __all__ = [
     'GetInstanceDeployKeysDeployKeyResult',
     'GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult',
     'GetInstanceVariablesVariableResult',
+    'GetMetadataKasResult',
     'GetProjectBranchesBranchResult',
     'GetProjectBranchesBranchCommitResult',
     'GetProjectContainerExpirationPolicyResult',
@@ -46,7 +47,7 @@ __all__ = [
     'GetProjectProtectedBranchesProtectedBranchResult',
     'GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult',
     'GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult',
-    'GetProjectPushRulesResult',
+    'GetProjectPushRuleResult',
     'GetProjectTagCommitResult',
     'GetProjectTagReleaseResult',
     'GetProjectTagsTagResult',
@@ -58,7 +59,7 @@ __all__ = [
     'GetProjectsProjectForkedFromProjectResult',
     'GetProjectsProjectNamespaceResult',
     'GetProjectsProjectOwnerResult',
-    'GetProjectsProjectPermissionsResult',
+    'GetProjectsProjectPermissionResult',
     'GetProjectsProjectSharedWithGroupResult',
     'GetReleaseLinksReleaseLinkResult',
     'GetRepositoryTreeTreeResult',
@@ -437,6 +438,8 @@ class ProjectContainerExpirationPolicy(dict):
         suggest = None
         if key == "keepN":
             suggest = "keep_n"
+        elif key == "nameRegex":
+            suggest = "name_regex"
         elif key == "nameRegexDelete":
             suggest = "name_regex_delete"
         elif key == "nameRegexKeep":
@@ -461,6 +464,7 @@ class ProjectContainerExpirationPolicy(dict):
                  cadence: Optional[str] = None,
                  enabled: Optional[bool] = None,
                  keep_n: Optional[int] = None,
+                 name_regex: Optional[str] = None,
                  name_regex_delete: Optional[str] = None,
                  name_regex_keep: Optional[str] = None,
                  next_run_at: Optional[str] = None,
@@ -469,7 +473,8 @@ class ProjectContainerExpirationPolicy(dict):
         :param str cadence: The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
         :param bool enabled: If true, the policy is enabled.
         :param int keep_n: The number of images to keep.
-        :param str name_regex_delete: The regular expression to match image names to delete. **Note**: the upstream API has some inconsistencies with the `name_regex` field here. It's basically unusable at the moment.
+        :param str name_regex: The regular expression to match image names to delete.
+        :param str name_regex_delete: The regular expression to match image names to delete.
         :param str name_regex_keep: The regular expression to match image names to keep.
         :param str next_run_at: The next time the policy will run.
         :param str older_than: The number of days to keep images.
@@ -480,6 +485,8 @@ class ProjectContainerExpirationPolicy(dict):
             pulumi.set(__self__, "enabled", enabled)
         if keep_n is not None:
             pulumi.set(__self__, "keep_n", keep_n)
+        if name_regex is not None:
+            pulumi.set(__self__, "name_regex", name_regex)
         if name_regex_delete is not None:
             pulumi.set(__self__, "name_regex_delete", name_regex_delete)
         if name_regex_keep is not None:
@@ -514,10 +521,18 @@ class ProjectContainerExpirationPolicy(dict):
         return pulumi.get(self, "keep_n")
 
     @property
+    @pulumi.getter(name="nameRegex")
+    def name_regex(self) -> Optional[str]:
+        """
+        The regular expression to match image names to delete.
+        """
+        return pulumi.get(self, "name_regex")
+
+    @property
     @pulumi.getter(name="nameRegexDelete")
     def name_regex_delete(self) -> Optional[str]:
         """
-        The regular expression to match image names to delete. **Note**: the upstream API has some inconsistencies with the `name_regex` field here. It's basically unusable at the moment.
+        The regular expression to match image names to delete.
         """
         return pulumi.get(self, "name_regex_delete")
 
@@ -822,7 +837,7 @@ class ProjectPushRules(dict):
         :param str commit_message_negative_regex: No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
         :param str commit_message_regex: All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
         :param bool deny_delete_tag: Deny deleting a tag.
-        :param str file_name_regex: All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+        :param str file_name_regex: All committed filenames must not match this regex, e.g. `(jar|exe)$`.
         :param int max_file_size: Maximum file size (MB).
         :param bool member_check: Restrict commits by author (email) to existing GitLab users.
         :param bool prevent_secrets: GitLab will reject any files that are likely to contain secrets.
@@ -903,7 +918,7 @@ class ProjectPushRules(dict):
     @pulumi.getter(name="fileNameRegex")
     def file_name_regex(self) -> Optional[str]:
         """
-        All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+        All committed filenames must not match this regex, e.g. `(jar|exe)$`.
         """
         return pulumi.get(self, "file_name_regex")
 
@@ -1979,6 +1994,46 @@ class GetInstanceVariablesVariableResult(dict):
 
 
 @pulumi.output_type
+class GetMetadataKasResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 external_url: str,
+                 version: str):
+        """
+        :param bool enabled: Indicates whether KAS is enabled.
+        :param str external_url: URL used by the agents to communicate with KAS. It’s null if kas.enabled is false.
+        :param str version: Version of KAS. It’s null if kas.enabled is false.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "external_url", external_url)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Indicates whether KAS is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="externalUrl")
+    def external_url(self) -> str:
+        """
+        URL used by the agents to communicate with KAS. It’s null if kas.enabled is false.
+        """
+        return pulumi.get(self, "external_url")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version of KAS. It’s null if kas.enabled is false.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
 class GetProjectBranchesBranchResult(dict):
     def __init__(__self__, *,
                  can_push: bool,
@@ -2140,6 +2195,7 @@ class GetProjectContainerExpirationPolicyResult(dict):
                  cadence: str,
                  enabled: bool,
                  keep_n: int,
+                 name_regex: str,
                  name_regex_delete: str,
                  name_regex_keep: str,
                  next_run_at: str,
@@ -2147,6 +2203,7 @@ class GetProjectContainerExpirationPolicyResult(dict):
         pulumi.set(__self__, "cadence", cadence)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "keep_n", keep_n)
+        pulumi.set(__self__, "name_regex", name_regex)
         pulumi.set(__self__, "name_regex_delete", name_regex_delete)
         pulumi.set(__self__, "name_regex_keep", name_regex_keep)
         pulumi.set(__self__, "next_run_at", next_run_at)
@@ -2166,6 +2223,11 @@ class GetProjectContainerExpirationPolicyResult(dict):
     @pulumi.getter(name="keepN")
     def keep_n(self) -> int:
         return pulumi.get(self, "keep_n")
+
+    @property
+    @pulumi.getter(name="nameRegex")
+    def name_regex(self) -> str:
+        return pulumi.get(self, "name_regex")
 
     @property
     @pulumi.getter(name="nameRegexDelete")
@@ -3041,7 +3103,7 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult(dict):
 
 
 @pulumi.output_type
-class GetProjectPushRulesResult(dict):
+class GetProjectPushRuleResult(dict):
     def __init__(__self__, *,
                  author_email_regex: str,
                  branch_name_regex: str,
@@ -3480,17 +3542,22 @@ class GetProjectsProjectResult(dict):
                  default_branch: str,
                  description: str,
                  emails_disabled: bool,
+                 environments_access_level: str,
                  external_authorization_classification_label: str,
-                 forked_from_project: 'outputs.GetProjectsProjectForkedFromProjectResult',
+                 feature_flags_access_level: str,
+                 forked_from_projects: Sequence['outputs.GetProjectsProjectForkedFromProjectResult'],
                  forking_access_level: str,
                  forks_count: int,
                  http_url_to_repo: str,
                  id: int,
                  import_error: str,
                  import_status: str,
+                 import_url: str,
+                 infrastructure_access_level: str,
                  issues_access_level: str,
                  issues_enabled: bool,
                  jobs_enabled: bool,
+                 keep_latest_artifact: bool,
                  last_activity_at: str,
                  lfs_enabled: bool,
                  merge_commit_template: str,
@@ -3503,27 +3570,30 @@ class GetProjectsProjectResult(dict):
                  mirror_overwrites_diverged_branches: bool,
                  mirror_trigger_builds: bool,
                  mirror_user_id: int,
+                 monitor_access_level: str,
                  name: str,
                  name_with_namespace: str,
-                 namespace: 'outputs.GetProjectsProjectNamespaceResult',
+                 namespaces: Sequence['outputs.GetProjectsProjectNamespaceResult'],
                  only_allow_merge_if_all_discussions_are_resolved: bool,
                  only_allow_merge_if_pipeline_succeeds: bool,
                  only_mirror_protected_branches: bool,
                  open_issues_count: int,
                  operations_access_level: str,
-                 owner: 'outputs.GetProjectsProjectOwnerResult',
+                 owners: Sequence['outputs.GetProjectsProjectOwnerResult'],
                  packages_enabled: bool,
                  path: str,
                  path_with_namespace: str,
-                 permissions: 'outputs.GetProjectsProjectPermissionsResult',
+                 permissions: Sequence['outputs.GetProjectsProjectPermissionResult'],
                  public: bool,
                  public_builds: bool,
                  readme_url: str,
+                 releases_access_level: str,
                  repository_access_level: str,
                  repository_storage: str,
                  request_access_enabled: bool,
                  requirements_access_level: str,
                  resolve_outdated_diff_discussions: bool,
+                 restrict_user_defined_variables: bool,
                  runners_token: str,
                  security_and_compliance_access_level: str,
                  shared_runners_enabled: bool,
@@ -3573,17 +3643,22 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "default_branch", default_branch)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "emails_disabled", emails_disabled)
+        pulumi.set(__self__, "environments_access_level", environments_access_level)
         pulumi.set(__self__, "external_authorization_classification_label", external_authorization_classification_label)
-        pulumi.set(__self__, "forked_from_project", forked_from_project)
+        pulumi.set(__self__, "feature_flags_access_level", feature_flags_access_level)
+        pulumi.set(__self__, "forked_from_projects", forked_from_projects)
         pulumi.set(__self__, "forking_access_level", forking_access_level)
         pulumi.set(__self__, "forks_count", forks_count)
         pulumi.set(__self__, "http_url_to_repo", http_url_to_repo)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "import_error", import_error)
         pulumi.set(__self__, "import_status", import_status)
+        pulumi.set(__self__, "import_url", import_url)
+        pulumi.set(__self__, "infrastructure_access_level", infrastructure_access_level)
         pulumi.set(__self__, "issues_access_level", issues_access_level)
         pulumi.set(__self__, "issues_enabled", issues_enabled)
         pulumi.set(__self__, "jobs_enabled", jobs_enabled)
+        pulumi.set(__self__, "keep_latest_artifact", keep_latest_artifact)
         pulumi.set(__self__, "last_activity_at", last_activity_at)
         pulumi.set(__self__, "lfs_enabled", lfs_enabled)
         pulumi.set(__self__, "merge_commit_template", merge_commit_template)
@@ -3596,15 +3671,16 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "mirror_overwrites_diverged_branches", mirror_overwrites_diverged_branches)
         pulumi.set(__self__, "mirror_trigger_builds", mirror_trigger_builds)
         pulumi.set(__self__, "mirror_user_id", mirror_user_id)
+        pulumi.set(__self__, "monitor_access_level", monitor_access_level)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "name_with_namespace", name_with_namespace)
-        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "namespaces", namespaces)
         pulumi.set(__self__, "only_allow_merge_if_all_discussions_are_resolved", only_allow_merge_if_all_discussions_are_resolved)
         pulumi.set(__self__, "only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
         pulumi.set(__self__, "only_mirror_protected_branches", only_mirror_protected_branches)
         pulumi.set(__self__, "open_issues_count", open_issues_count)
         pulumi.set(__self__, "operations_access_level", operations_access_level)
-        pulumi.set(__self__, "owner", owner)
+        pulumi.set(__self__, "owners", owners)
         pulumi.set(__self__, "packages_enabled", packages_enabled)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "path_with_namespace", path_with_namespace)
@@ -3612,11 +3688,13 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "public", public)
         pulumi.set(__self__, "public_builds", public_builds)
         pulumi.set(__self__, "readme_url", readme_url)
+        pulumi.set(__self__, "releases_access_level", releases_access_level)
         pulumi.set(__self__, "repository_access_level", repository_access_level)
         pulumi.set(__self__, "repository_storage", repository_storage)
         pulumi.set(__self__, "request_access_enabled", request_access_enabled)
         pulumi.set(__self__, "requirements_access_level", requirements_access_level)
         pulumi.set(__self__, "resolve_outdated_diff_discussions", resolve_outdated_diff_discussions)
+        pulumi.set(__self__, "restrict_user_defined_variables", restrict_user_defined_variables)
         pulumi.set(__self__, "runners_token", runners_token)
         pulumi.set(__self__, "security_and_compliance_access_level", security_and_compliance_access_level)
         pulumi.set(__self__, "shared_runners_enabled", shared_runners_enabled)
@@ -3769,14 +3847,24 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "emails_disabled")
 
     @property
+    @pulumi.getter(name="environmentsAccessLevel")
+    def environments_access_level(self) -> str:
+        return pulumi.get(self, "environments_access_level")
+
+    @property
     @pulumi.getter(name="externalAuthorizationClassificationLabel")
     def external_authorization_classification_label(self) -> str:
         return pulumi.get(self, "external_authorization_classification_label")
 
     @property
-    @pulumi.getter(name="forkedFromProject")
-    def forked_from_project(self) -> 'outputs.GetProjectsProjectForkedFromProjectResult':
-        return pulumi.get(self, "forked_from_project")
+    @pulumi.getter(name="featureFlagsAccessLevel")
+    def feature_flags_access_level(self) -> str:
+        return pulumi.get(self, "feature_flags_access_level")
+
+    @property
+    @pulumi.getter(name="forkedFromProjects")
+    def forked_from_projects(self) -> Sequence['outputs.GetProjectsProjectForkedFromProjectResult']:
+        return pulumi.get(self, "forked_from_projects")
 
     @property
     @pulumi.getter(name="forkingAccessLevel")
@@ -3812,6 +3900,16 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "import_status")
 
     @property
+    @pulumi.getter(name="importUrl")
+    def import_url(self) -> str:
+        return pulumi.get(self, "import_url")
+
+    @property
+    @pulumi.getter(name="infrastructureAccessLevel")
+    def infrastructure_access_level(self) -> str:
+        return pulumi.get(self, "infrastructure_access_level")
+
+    @property
     @pulumi.getter(name="issuesAccessLevel")
     def issues_access_level(self) -> str:
         return pulumi.get(self, "issues_access_level")
@@ -3825,6 +3923,11 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="jobsEnabled")
     def jobs_enabled(self) -> bool:
         return pulumi.get(self, "jobs_enabled")
+
+    @property
+    @pulumi.getter(name="keepLatestArtifact")
+    def keep_latest_artifact(self) -> bool:
+        return pulumi.get(self, "keep_latest_artifact")
 
     @property
     @pulumi.getter(name="lastActivityAt")
@@ -3887,6 +3990,11 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "mirror_user_id")
 
     @property
+    @pulumi.getter(name="monitorAccessLevel")
+    def monitor_access_level(self) -> str:
+        return pulumi.get(self, "monitor_access_level")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         return pulumi.get(self, "name")
@@ -3898,8 +4006,8 @@ class GetProjectsProjectResult(dict):
 
     @property
     @pulumi.getter
-    def namespace(self) -> 'outputs.GetProjectsProjectNamespaceResult':
-        return pulumi.get(self, "namespace")
+    def namespaces(self) -> Sequence['outputs.GetProjectsProjectNamespaceResult']:
+        return pulumi.get(self, "namespaces")
 
     @property
     @pulumi.getter(name="onlyAllowMergeIfAllDiscussionsAreResolved")
@@ -3928,8 +4036,8 @@ class GetProjectsProjectResult(dict):
 
     @property
     @pulumi.getter
-    def owner(self) -> 'outputs.GetProjectsProjectOwnerResult':
-        return pulumi.get(self, "owner")
+    def owners(self) -> Sequence['outputs.GetProjectsProjectOwnerResult']:
+        return pulumi.get(self, "owners")
 
     @property
     @pulumi.getter(name="packagesEnabled")
@@ -3948,7 +4056,7 @@ class GetProjectsProjectResult(dict):
 
     @property
     @pulumi.getter
-    def permissions(self) -> 'outputs.GetProjectsProjectPermissionsResult':
+    def permissions(self) -> Sequence['outputs.GetProjectsProjectPermissionResult']:
         return pulumi.get(self, "permissions")
 
     @property
@@ -3965,6 +4073,11 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="readmeUrl")
     def readme_url(self) -> str:
         return pulumi.get(self, "readme_url")
+
+    @property
+    @pulumi.getter(name="releasesAccessLevel")
+    def releases_access_level(self) -> str:
+        return pulumi.get(self, "releases_access_level")
 
     @property
     @pulumi.getter(name="repositoryAccessLevel")
@@ -3990,6 +4103,11 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="resolveOutdatedDiffDiscussions")
     def resolve_outdated_diff_discussions(self) -> bool:
         return pulumi.get(self, "resolve_outdated_diff_discussions")
+
+    @property
+    @pulumi.getter(name="restrictUserDefinedVariables")
+    def restrict_user_defined_variables(self) -> bool:
+        return pulumi.get(self, "restrict_user_defined_variables")
 
     @property
     @pulumi.getter(name="runnersToken")
@@ -4089,6 +4207,7 @@ class GetProjectsProjectContainerExpirationPolicyResult(dict):
                  cadence: str,
                  enabled: bool,
                  keep_n: int,
+                 name_regex: str,
                  name_regex_delete: str,
                  name_regex_keep: str,
                  next_run_at: str,
@@ -4096,6 +4215,7 @@ class GetProjectsProjectContainerExpirationPolicyResult(dict):
         pulumi.set(__self__, "cadence", cadence)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "keep_n", keep_n)
+        pulumi.set(__self__, "name_regex", name_regex)
         pulumi.set(__self__, "name_regex_delete", name_regex_delete)
         pulumi.set(__self__, "name_regex_keep", name_regex_keep)
         pulumi.set(__self__, "next_run_at", next_run_at)
@@ -4115,6 +4235,11 @@ class GetProjectsProjectContainerExpirationPolicyResult(dict):
     @pulumi.getter(name="keepN")
     def keep_n(self) -> int:
         return pulumi.get(self, "keep_n")
+
+    @property
+    @pulumi.getter(name="nameRegex")
+    def name_regex(self) -> str:
+        return pulumi.get(self, "name_regex")
 
     @property
     @pulumi.getter(name="nameRegexDelete")
@@ -4297,7 +4422,7 @@ class GetProjectsProjectOwnerResult(dict):
 
 
 @pulumi.output_type
-class GetProjectsProjectPermissionsResult(dict):
+class GetProjectsProjectPermissionResult(dict):
     def __init__(__self__, *,
                  group_access: Mapping[str, int],
                  project_access: Mapping[str, int]):

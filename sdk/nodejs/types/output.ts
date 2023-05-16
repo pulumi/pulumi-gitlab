@@ -250,6 +250,21 @@ export interface GetInstanceVariablesVariable {
     variableType: string;
 }
 
+export interface GetMetadataKas {
+    /**
+     * Indicates whether KAS is enabled.
+     */
+    enabled: boolean;
+    /**
+     * URL used by the agents to communicate with KAS. It’s null if kas.enabled is false.
+     */
+    externalUrl: string;
+    /**
+     * Version of KAS. It’s null if kas.enabled is false.
+     */
+    version: string;
+}
+
 export interface GetProjectBranchesBranch {
     canPush: boolean;
     commits: outputs.GetProjectBranchesBranchCommit[];
@@ -283,6 +298,10 @@ export interface GetProjectContainerExpirationPolicy {
     cadence: string;
     enabled: boolean;
     keepN: number;
+    nameRegex: string;
+    /**
+     * @deprecated `name_regex_delete` has been deprecated. Use `name_regex` instead.
+     */
     nameRegexDelete: string;
     nameRegexKeep: string;
     nextRunAt: string;
@@ -466,7 +485,7 @@ export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
     userId: number;
 }
 
-export interface GetProjectPushRules {
+export interface GetProjectPushRule {
     authorEmailRegex: string;
     branchNameRegex: string;
     commitCommitterCheck: boolean;
@@ -582,8 +601,10 @@ export interface GetProjectsProject {
     defaultBranch: string;
     description: string;
     emailsDisabled: boolean;
+    environmentsAccessLevel: string;
     externalAuthorizationClassificationLabel: string;
-    forkedFromProject: outputs.GetProjectsProjectForkedFromProject;
+    featureFlagsAccessLevel: string;
+    forkedFromProjects: outputs.GetProjectsProjectForkedFromProject[];
     forkingAccessLevel: string;
     forksCount: number;
     httpUrlToRepo: string;
@@ -593,9 +614,12 @@ export interface GetProjectsProject {
     id: number;
     importError: string;
     importStatus: string;
+    importUrl: string;
+    infrastructureAccessLevel: string;
     issuesAccessLevel: string;
     issuesEnabled: boolean;
     jobsEnabled: boolean;
+    keepLatestArtifact: boolean;
     lastActivityAt: string;
     lfsEnabled: boolean;
     mergeCommitTemplate: string;
@@ -608,27 +632,30 @@ export interface GetProjectsProject {
     mirrorOverwritesDivergedBranches: boolean;
     mirrorTriggerBuilds: boolean;
     mirrorUserId: number;
+    monitorAccessLevel: string;
     name: string;
     nameWithNamespace: string;
-    namespace: outputs.GetProjectsProjectNamespace;
+    namespaces: outputs.GetProjectsProjectNamespace[];
     onlyAllowMergeIfAllDiscussionsAreResolved: boolean;
     onlyAllowMergeIfPipelineSucceeds: boolean;
     onlyMirrorProtectedBranches: boolean;
     openIssuesCount: number;
     operationsAccessLevel: string;
-    owner: outputs.GetProjectsProjectOwner;
+    owners: outputs.GetProjectsProjectOwner[];
     packagesEnabled: boolean;
     path: string;
     pathWithNamespace: string;
-    permissions: outputs.GetProjectsProjectPermissions;
+    permissions: outputs.GetProjectsProjectPermission[];
     public: boolean;
     publicBuilds: boolean;
     readmeUrl: string;
+    releasesAccessLevel: string;
     repositoryAccessLevel: string;
     repositoryStorage: string;
     requestAccessEnabled: boolean;
     requirementsAccessLevel: string;
     resolveOutdatedDiffDiscussions: boolean;
+    restrictUserDefinedVariables: boolean;
     runnersToken: string;
     securityAndComplianceAccessLevel: string;
     sharedRunnersEnabled: boolean;
@@ -658,6 +685,10 @@ export interface GetProjectsProjectContainerExpirationPolicy {
     cadence: string;
     enabled: boolean;
     keepN: number;
+    nameRegex: string;
+    /**
+     * @deprecated `name_regex_delete` has been deprecated. Use `name_regex` instead.
+     */
     nameRegexDelete: string;
     nameRegexKeep: string;
     nextRunAt: string;
@@ -700,7 +731,7 @@ export interface GetProjectsProjectOwner {
     websiteUrl: string;
 }
 
-export interface GetProjectsProjectPermissions {
+export interface GetProjectsProjectPermission {
     groupAccess: {[key: string]: number};
     projectAccess: {[key: string]: number};
 }
@@ -808,7 +839,13 @@ export interface ProjectContainerExpirationPolicy {
      */
     keepN: number;
     /**
-     * The regular expression to match image names to delete. **Note**: the upstream API has some inconsistencies with the `nameRegex` field here. It's basically unusable at the moment.
+     * The regular expression to match image names to delete.
+     */
+    nameRegex: string;
+    /**
+     * The regular expression to match image names to delete.
+     *
+     * @deprecated `name_regex_delete` has been deprecated. Use `name_regex` instead.
      */
     nameRegexDelete: string;
     /**
@@ -861,7 +898,7 @@ export interface ProjectProtectedEnvironmentDeployAccessLevel {
     /**
      * Levels of access required to deploy to this protected environment. Valid values are `developer`, `maintainer`.
      */
-    accessLevel: string;
+    accessLevel?: string;
     /**
      * Readable description of level of access.
      */
@@ -902,7 +939,7 @@ export interface ProjectPushRules {
      */
     denyDeleteTag?: boolean;
     /**
-     * All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+     * All committed filenames must not match this regex, e.g. `(jar|exe)$`.
      */
     fileNameRegex?: string;
     /**

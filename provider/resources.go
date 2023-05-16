@@ -15,19 +15,22 @@
 package provider
 
 import (
+	"context"
 	"fmt"
 	"path/filepath"
 	"unicode"
+
 	// The linter requires unnamed imports to have a doc comment
 	_ "embed"
 
-	gitlabShim "github.com/gitlabhq/terraform-provider-gitlab/shim"
-	"github.com/pulumi/pulumi-gitlab/provider/v4/pkg/version"
+	"github.com/pulumi/pulumi-gitlab/provider/v5/pkg/version"
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/go/common/util/contract"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	gitlabShim "gitlab.com/gitlab-org/terraform-provider-gitlab/shim"
 )
 
 // all of the GitLab token components used below.
@@ -48,14 +51,6 @@ func gitLabType(mod string, typ string) tokens.Type {
 	return tokens.Type(gitLabMember(mod, typ))
 }
 
-// gitLabDataSource manufactures a standard resource token given a module and resource name.
-// It automatically uses the GitLab package and names the file by simply lower casing the data
-// source's first character.
-func gitLabDataSource(res string) tokens.ModuleMember {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return gitLabMember(gitLabMod+"/"+fn, res)
-}
-
 // gitLabResource manufactures a standard resource token given a module and resource name.
 // It automatically uses the GitLab package and names the file by simply lower casing the resource's
 // first character.
@@ -69,7 +64,10 @@ var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the GitLab package.
 func Provider() tfbridge.ProviderInfo {
-	p := shimv2.NewProvider(gitlabShim.NewProvider())
+	p := pfbridge.MuxShimWithPF(context.Background(),
+		shimv2.NewProvider(gitlabShim.SDKProvider()),
+		gitlabShim.PFProvider(),
+	)
 	prov := tfbridge.ProviderInfo{
 		P:                p,
 		Name:             "gitlab",
@@ -91,31 +89,6 @@ func Provider() tfbridge.ProviderInfo {
 			// Both sshkey and gpgkey have non-standard capitalization.
 			"gitlab_user_sshkey": {Tok: gitLabResource("UserSshKey")},
 			"gitlab_user_gpgkey": {Tok: gitLabResource("UserGpgKey")},
-		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"gitlab_project": {
-				Tok: gitLabDataSource("getProject"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"push_rules": {
-						MaxItemsOne: tfbridge.True(),
-					},
-				},
-			},
-			"gitlab_projects": {
-				Tok: gitLabDataSource("getProjects"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"projects": {
-						Elem: &tfbridge.SchemaInfo{
-							Fields: map[string]*tfbridge.SchemaInfo{
-								"permissions":         {MaxItemsOne: tfbridge.True()},
-								"namespace":           {MaxItemsOne: tfbridge.True()},
-								"forked_from_project": {MaxItemsOne: tfbridge.True()},
-								"owner":               {MaxItemsOne: tfbridge.True()},
-							},
-						},
-					},
-				},
-			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

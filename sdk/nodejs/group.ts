@@ -71,11 +71,23 @@ export class Group extends pulumi.CustomResource {
     /**
      * Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
      */
-    public readonly autoDevopsEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly autoDevopsEnabled!: pulumi.Output<boolean>;
+    /**
+     * A local path to the avatar image to upload. **Note**: not available for imported resources.
+     */
+    public readonly avatar!: pulumi.Output<string | undefined>;
+    /**
+     * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+     */
+    public readonly avatarHash!: pulumi.Output<string>;
+    /**
+     * The URL of the avatar image.
+     */
+    public /*out*/ readonly avatarUrl!: pulumi.Output<string>;
     /**
      * Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
      */
-    public readonly defaultBranchProtection!: pulumi.Output<number | undefined>;
+    public readonly defaultBranchProtection!: pulumi.Output<number>;
     /**
      * The description of the group.
      */
@@ -83,11 +95,11 @@ export class Group extends pulumi.CustomResource {
     /**
      * Defaults to false. Disable email notifications.
      */
-    public readonly emailsDisabled!: pulumi.Output<boolean | undefined>;
+    public readonly emailsDisabled!: pulumi.Output<boolean>;
     /**
      * Can be set by administrators only. Additional CI/CD minutes for this group.
      */
-    public readonly extraSharedRunnersMinutesLimit!: pulumi.Output<number | undefined>;
+    public readonly extraSharedRunnersMinutesLimit!: pulumi.Output<number>;
     /**
      * The full name of the group.
      */
@@ -97,9 +109,13 @@ export class Group extends pulumi.CustomResource {
      */
     public /*out*/ readonly fullPath!: pulumi.Output<string>;
     /**
+     * A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+     */
+    public readonly ipRestrictionRanges!: pulumi.Output<string[] | undefined>;
+    /**
      * Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
      */
-    public readonly lfsEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly lfsEnabled!: pulumi.Output<boolean>;
     /**
      * Users cannot be added to projects in this group.
      */
@@ -107,7 +123,7 @@ export class Group extends pulumi.CustomResource {
     /**
      * Defaults to false. Disable the capability of a group from getting mentioned.
      */
-    public readonly mentionsDisabled!: pulumi.Output<boolean | undefined>;
+    public readonly mentionsDisabled!: pulumi.Output<boolean>;
     /**
      * The name of this group.
      */
@@ -115,7 +131,7 @@ export class Group extends pulumi.CustomResource {
     /**
      * Id of the parent group (creates a nested group).
      */
-    public readonly parentId!: pulumi.Output<number | undefined>;
+    public readonly parentId!: pulumi.Output<number>;
     /**
      * The path of the group.
      */
@@ -123,19 +139,19 @@ export class Group extends pulumi.CustomResource {
     /**
      * Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
      */
-    public readonly preventForkingOutsideGroup!: pulumi.Output<boolean | undefined>;
+    public readonly preventForkingOutsideGroup!: pulumi.Output<boolean>;
     /**
      * Defaults to maintainer. Determine if developers can create projects in the group.
      */
-    public readonly projectCreationLevel!: pulumi.Output<string | undefined>;
+    public readonly projectCreationLevel!: pulumi.Output<string>;
     /**
      * Defaults to false. Allow users to request member access.
      */
-    public readonly requestAccessEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly requestAccessEnabled!: pulumi.Output<boolean>;
     /**
      * Defaults to false. Require all users in this group to setup Two-factor authentication.
      */
-    public readonly requireTwoFactorAuthentication!: pulumi.Output<boolean | undefined>;
+    public readonly requireTwoFactorAuthentication!: pulumi.Output<boolean>;
     /**
      * The group level registration token to use during runner setup.
      */
@@ -143,19 +159,19 @@ export class Group extends pulumi.CustomResource {
     /**
      * Defaults to false. Prevent sharing a project with another group within this group.
      */
-    public readonly shareWithGroupLock!: pulumi.Output<boolean | undefined>;
+    public readonly shareWithGroupLock!: pulumi.Output<boolean>;
     /**
      * Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
      */
-    public readonly sharedRunnersMinutesLimit!: pulumi.Output<number | undefined>;
+    public readonly sharedRunnersMinutesLimit!: pulumi.Output<number>;
     /**
      * Defaults to owner. Allowed to create subgroups.
      */
-    public readonly subgroupCreationLevel!: pulumi.Output<string | undefined>;
+    public readonly subgroupCreationLevel!: pulumi.Output<string>;
     /**
      * Defaults to 48. Time before Two-factor authentication is enforced (in hours).
      */
-    public readonly twoFactorGracePeriod!: pulumi.Output<number | undefined>;
+    public readonly twoFactorGracePeriod!: pulumi.Output<number>;
     /**
      * The group's visibility. Can be `private`, `internal`, or `public`.
      */
@@ -179,12 +195,16 @@ export class Group extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
             resourceInputs["autoDevopsEnabled"] = state ? state.autoDevopsEnabled : undefined;
+            resourceInputs["avatar"] = state ? state.avatar : undefined;
+            resourceInputs["avatarHash"] = state ? state.avatarHash : undefined;
+            resourceInputs["avatarUrl"] = state ? state.avatarUrl : undefined;
             resourceInputs["defaultBranchProtection"] = state ? state.defaultBranchProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["emailsDisabled"] = state ? state.emailsDisabled : undefined;
             resourceInputs["extraSharedRunnersMinutesLimit"] = state ? state.extraSharedRunnersMinutesLimit : undefined;
             resourceInputs["fullName"] = state ? state.fullName : undefined;
             resourceInputs["fullPath"] = state ? state.fullPath : undefined;
+            resourceInputs["ipRestrictionRanges"] = state ? state.ipRestrictionRanges : undefined;
             resourceInputs["lfsEnabled"] = state ? state.lfsEnabled : undefined;
             resourceInputs["membershipLock"] = state ? state.membershipLock : undefined;
             resourceInputs["mentionsDisabled"] = state ? state.mentionsDisabled : undefined;
@@ -208,10 +228,13 @@ export class Group extends pulumi.CustomResource {
                 throw new Error("Missing required property 'path'");
             }
             resourceInputs["autoDevopsEnabled"] = args ? args.autoDevopsEnabled : undefined;
+            resourceInputs["avatar"] = args ? args.avatar : undefined;
+            resourceInputs["avatarHash"] = args ? args.avatarHash : undefined;
             resourceInputs["defaultBranchProtection"] = args ? args.defaultBranchProtection : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["emailsDisabled"] = args ? args.emailsDisabled : undefined;
             resourceInputs["extraSharedRunnersMinutesLimit"] = args ? args.extraSharedRunnersMinutesLimit : undefined;
+            resourceInputs["ipRestrictionRanges"] = args ? args.ipRestrictionRanges : undefined;
             resourceInputs["lfsEnabled"] = args ? args.lfsEnabled : undefined;
             resourceInputs["membershipLock"] = args ? args.membershipLock : undefined;
             resourceInputs["mentionsDisabled"] = args ? args.mentionsDisabled : undefined;
@@ -227,6 +250,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["subgroupCreationLevel"] = args ? args.subgroupCreationLevel : undefined;
             resourceInputs["twoFactorGracePeriod"] = args ? args.twoFactorGracePeriod : undefined;
             resourceInputs["visibilityLevel"] = args ? args.visibilityLevel : undefined;
+            resourceInputs["avatarUrl"] = undefined /*out*/;
             resourceInputs["fullName"] = undefined /*out*/;
             resourceInputs["fullPath"] = undefined /*out*/;
             resourceInputs["runnersToken"] = undefined /*out*/;
@@ -247,6 +271,18 @@ export interface GroupState {
      * Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
      */
     autoDevopsEnabled?: pulumi.Input<boolean>;
+    /**
+     * A local path to the avatar image to upload. **Note**: not available for imported resources.
+     */
+    avatar?: pulumi.Input<string>;
+    /**
+     * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+     */
+    avatarHash?: pulumi.Input<string>;
+    /**
+     * The URL of the avatar image.
+     */
+    avatarUrl?: pulumi.Input<string>;
     /**
      * Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
      */
@@ -271,6 +307,10 @@ export interface GroupState {
      * The full path of the group.
      */
     fullPath?: pulumi.Input<string>;
+    /**
+     * A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+     */
+    ipRestrictionRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
      */
@@ -350,6 +390,14 @@ export interface GroupArgs {
      */
     autoDevopsEnabled?: pulumi.Input<boolean>;
     /**
+     * A local path to the avatar image to upload. **Note**: not available for imported resources.
+     */
+    avatar?: pulumi.Input<string>;
+    /**
+     * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+     */
+    avatarHash?: pulumi.Input<string>;
+    /**
      * Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
      */
     defaultBranchProtection?: pulumi.Input<number>;
@@ -365,6 +413,10 @@ export interface GroupArgs {
      * Can be set by administrators only. Additional CI/CD minutes for this group.
      */
     extraSharedRunnersMinutesLimit?: pulumi.Input<number>;
+    /**
+     * A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
+     */
+    ipRestrictionRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
      */

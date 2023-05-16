@@ -80,7 +80,7 @@ namespace Pulumi.GitLab
     public sealed class GetRepositoryFileArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+        /// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         /// </summary>
         [Input("filePath", required: true)]
         public string FilePath { get; set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.GitLab
     public sealed class GetRepositoryFileInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+        /// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         /// </summary>
         [Input("filePath", required: true)]
         public Input<string> FilePath { get; set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string FileName;
         /// <summary>
-        /// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+        /// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         /// </summary>
         public readonly string FilePath;
         /// <summary>

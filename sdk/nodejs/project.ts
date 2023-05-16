@@ -31,6 +31,42 @@ import * as utilities from "./utilities";
  *     description: "This is a description",
  *     namespaceId: peterParker.then(peterParker => peterParker.namespaceId),
  * });
+ * // Fork a project
+ * const forkProject = new gitlab.Project("forkProject", {
+ *     description: "This is a fork",
+ *     forkedFromProjectId: example.id,
+ * });
+ * // Fork a project and setup a pull mirror
+ * const forkIndex_projectProject = new gitlab.Project("forkIndex/projectProject", {
+ *     description: "This is a fork",
+ *     forkedFromProjectId: example.id,
+ *     importUrl: example.httpUrlToRepo,
+ *     mirror: true,
+ * });
+ * // Create a project by importing it from a public project
+ * const importPublic = new gitlab.Project("importPublic", {importUrl: "https://gitlab.example.com/repo.git"});
+ * // Create a project by importing it from a public project and setup the pull mirror
+ * const importPublicWithMirror = new gitlab.Project("importPublicWithMirror", {
+ *     importUrl: "https://gitlab.example.com/repo.git",
+ *     mirror: true,
+ * });
+ * // Create a project by importing it from a private project
+ * const importPrivateProject = new gitlab.Project("importPrivateProject", {
+ *     importUrl: "https://gitlab.example.com/repo.git",
+ *     importUrlUsername: "user",
+ *     importUrlPassword: "pass",
+ * });
+ * // Create a project by importing it from a private project and setup the pull mirror
+ * const importPrivateWithMirror = new gitlab.Project("importPrivateWithMirror", {
+ *     importUrl: "https://gitlab.example.com/repo.git",
+ *     importUrlUsername: "user",
+ *     importUrlPassword: "pass",
+ *     mirror: true,
+ * });
+ * // Create a project by importing it from a private project and provide credentials in `import_url`
+ * // NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
+ * //       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
+ * const importPrivateIndex_projectProject = new gitlab.Project("importPrivateIndex/projectProject", {importUrl: "https://user:pass@gitlab.example.com/repo.git"});
  * ```
  *
  * ## Import
@@ -44,6 +80,8 @@ import * as utilities from "./utilities";
  * ```sh
  *  $ pulumi import gitlab:index/project:Project example richardc/example
  * ```
+ *
+ *  NOTEthe `import_url_username` and `import_url_password` cannot be imported.
  */
 export class Project extends pulumi.CustomResource {
     /**
@@ -76,7 +114,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Set to true if you want to treat skipped pipelines as if they finished with success.
      */
-    public readonly allowMergeOnSkippedPipeline!: pulumi.Output<boolean | undefined>;
+    public readonly allowMergeOnSkippedPipeline!: pulumi.Output<boolean>;
     /**
      * Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -113,6 +151,18 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly autocloseReferencedIssues!: pulumi.Output<boolean>;
     /**
+     * A local path to the avatar image to upload. **Note**: not available for imported resources.
+     */
+    public readonly avatar!: pulumi.Output<string | undefined>;
+    /**
+     * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+     */
+    public readonly avatarHash!: pulumi.Output<string>;
+    /**
+     * The URL of the avatar image.
+     */
+    public /*out*/ readonly avatarUrl!: pulumi.Output<string>;
+    /**
      * Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
      *
      * @deprecated build_coverage_regex is removed in GitLab 15.0.
@@ -141,7 +191,11 @@ export class Project extends pulumi.CustomResource {
     /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
-    public readonly ciForwardDeploymentEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly ciForwardDeploymentEnabled!: pulumi.Output<boolean>;
+    /**
+     * Use separate caches for protected branches.
+     */
+    public readonly ciSeparatedCaches!: pulumi.Output<boolean>;
     /**
      * Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
      */
@@ -152,8 +206,10 @@ export class Project extends pulumi.CustomResource {
     public readonly containerRegistryAccessLevel!: pulumi.Output<string>;
     /**
      * Enable container registry for the project.
+     *
+     * @deprecated Use `container_registry_access_level` instead.
      */
-    public readonly containerRegistryEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly containerRegistryEnabled!: pulumi.Output<boolean>;
     /**
      * The default branch for the project.
      */
@@ -167,9 +223,21 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly emailsDisabled!: pulumi.Output<boolean | undefined>;
     /**
+     * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    public readonly environmentsAccessLevel!: pulumi.Output<string>;
+    /**
      * The classification label for the project.
      */
     public readonly externalAuthorizationClassificationLabel!: pulumi.Output<string | undefined>;
+    /**
+     * Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    public readonly featureFlagsAccessLevel!: pulumi.Output<string>;
+    /**
+     * The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
+     */
+    public readonly forkedFromProjectId!: pulumi.Output<number | undefined>;
     /**
      * Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -183,9 +251,29 @@ export class Project extends pulumi.CustomResource {
      */
     public /*out*/ readonly httpUrlToRepo!: pulumi.Output<string>;
     /**
-     * Git URL to a repository to be imported.
+     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+     * together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+     * Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+     * credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+     * `terraform import`. See the examples section for how to properly use it.
      */
     public readonly importUrl!: pulumi.Output<string | undefined>;
+    /**
+     * The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+     * use it.
+     */
+    public readonly importUrlPassword!: pulumi.Output<string | undefined>;
+    /**
+     * The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+     * use it.
+     */
+    public readonly importUrlUsername!: pulumi.Output<string | undefined>;
+    /**
+     * Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    public readonly infrastructureAccessLevel!: pulumi.Output<string>;
     /**
      * Create main branch with first commit containing a README.md file.
      */
@@ -197,15 +285,19 @@ export class Project extends pulumi.CustomResource {
     /**
      * Enable issue tracking for the project.
      */
-    public readonly issuesEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly issuesEnabled!: pulumi.Output<boolean>;
     /**
      * Sets the template for new issues in the project.
      */
     public readonly issuesTemplate!: pulumi.Output<string | undefined>;
     /**
+     * Disable or enable the ability to keep the latest artifact for this project.
+     */
+    public readonly keepLatestArtifact!: pulumi.Output<boolean>;
+    /**
      * Enable LFS for the project.
      */
-    public readonly lfsEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly lfsEnabled!: pulumi.Output<boolean>;
     /**
      * Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
      */
@@ -213,11 +305,11 @@ export class Project extends pulumi.CustomResource {
     /**
      * Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
      */
-    public readonly mergeMethod!: pulumi.Output<string | undefined>;
+    public readonly mergeMethod!: pulumi.Output<string>;
     /**
      * Enable or disable merge pipelines.
      */
-    public readonly mergePipelinesEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly mergePipelinesEnabled!: pulumi.Output<boolean>;
     /**
      * Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -225,7 +317,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Enable merge requests for the project.
      */
-    public readonly mergeRequestsEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly mergeRequestsEnabled!: pulumi.Output<boolean>;
     /**
      * Sets the template for new merge requests in the project.
      */
@@ -233,7 +325,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
      */
-    public readonly mergeTrainsEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly mergeTrainsEnabled!: pulumi.Output<boolean>;
     /**
      * Enable project pull mirror.
      */
@@ -241,11 +333,19 @@ export class Project extends pulumi.CustomResource {
     /**
      * Enable overwrite diverged branches for a mirrored project.
      */
-    public readonly mirrorOverwritesDivergedBranches!: pulumi.Output<boolean | undefined>;
+    public readonly mirrorOverwritesDivergedBranches!: pulumi.Output<boolean>;
     /**
      * Enable trigger builds on pushes for a mirrored project.
      */
-    public readonly mirrorTriggerBuilds!: pulumi.Output<boolean | undefined>;
+    public readonly mirrorTriggerBuilds!: pulumi.Output<boolean>;
+    /**
+     * Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    public readonly monitorAccessLevel!: pulumi.Output<string>;
+    /**
+     * For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+     */
+    public readonly mrDefaultTargetSelf!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the project.
      */
@@ -257,15 +357,15 @@ export class Project extends pulumi.CustomResource {
     /**
      * Set to true if you want allow merges only if all discussions are resolved.
      */
-    public readonly onlyAllowMergeIfAllDiscussionsAreResolved!: pulumi.Output<boolean | undefined>;
+    public readonly onlyAllowMergeIfAllDiscussionsAreResolved!: pulumi.Output<boolean>;
     /**
      * Set to true if you want allow merges only if a pipeline succeeds.
      */
-    public readonly onlyAllowMergeIfPipelineSucceeds!: pulumi.Output<boolean | undefined>;
+    public readonly onlyAllowMergeIfPipelineSucceeds!: pulumi.Output<boolean>;
     /**
      * Enable only mirror protected branches for a mirrored project.
      */
-    public readonly onlyMirrorProtectedBranches!: pulumi.Output<boolean | undefined>;
+    public readonly onlyMirrorProtectedBranches!: pulumi.Output<boolean>;
     /**
      * Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -273,7 +373,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Enable packages repository for the project.
      */
-    public readonly packagesEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly packagesEnabled!: pulumi.Output<boolean>;
     /**
      * Enable pages access control
      */
@@ -295,7 +395,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Show link to create/view merge request when pushing from the command line
      */
-    public readonly printingMergeRequestLinkEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly printingMergeRequestLinkEnabled!: pulumi.Output<boolean>;
     /**
      * If true, jobs can be viewed by non-project members.
      */
@@ -305,9 +405,13 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly pushRules!: pulumi.Output<outputs.ProjectPushRules>;
     /**
+     * Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    public readonly releasesAccessLevel!: pulumi.Output<string>;
+    /**
      * Enable `Delete source branch` option by default for all new merge requests.
      */
-    public readonly removeSourceBranchAfterMerge!: pulumi.Output<boolean | undefined>;
+    public readonly removeSourceBranchAfterMerge!: pulumi.Output<boolean>;
     /**
      * Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -319,7 +423,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Allow users to request member access.
      */
-    public readonly requestAccessEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly requestAccessEnabled!: pulumi.Output<boolean>;
     /**
      * Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -328,6 +432,10 @@ export class Project extends pulumi.CustomResource {
      * Automatically resolve merge request diffs discussions on lines changed with a push.
      */
     public readonly resolveOutdatedDiffDiscussions!: pulumi.Output<boolean | undefined>;
+    /**
+     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     */
+    public readonly restrictUserDefinedVariables!: pulumi.Output<boolean | undefined>;
     /**
      * Registration token to use during runner setup.
      */
@@ -354,7 +462,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Enable snippets for the project.
      */
-    public readonly snippetsEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly snippetsEnabled!: pulumi.Output<boolean>;
     /**
      * Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
      */
@@ -362,7 +470,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
      */
-    public readonly squashOption!: pulumi.Output<string | undefined>;
+    public readonly squashOption!: pulumi.Output<string>;
     /**
      * URL that can be provided to `git clone` to clone the
      */
@@ -389,12 +497,13 @@ export class Project extends pulumi.CustomResource {
     public readonly topics!: pulumi.Output<string[]>;
     /**
      * Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+     * 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
      */
     public readonly useCustomTemplate!: pulumi.Output<boolean | undefined>;
     /**
      * Set to `public` to create a public project.
      */
-    public readonly visibilityLevel!: pulumi.Output<string | undefined>;
+    public readonly visibilityLevel!: pulumi.Output<string>;
     /**
      * URL that can be used to find the project in a browser.
      */
@@ -406,7 +515,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Enable wiki for the project.
      */
-    public readonly wikiEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly wikiEnabled!: pulumi.Output<boolean>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -430,6 +539,9 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["autoDevopsDeployStrategy"] = state ? state.autoDevopsDeployStrategy : undefined;
             resourceInputs["autoDevopsEnabled"] = state ? state.autoDevopsEnabled : undefined;
             resourceInputs["autocloseReferencedIssues"] = state ? state.autocloseReferencedIssues : undefined;
+            resourceInputs["avatar"] = state ? state.avatar : undefined;
+            resourceInputs["avatarHash"] = state ? state.avatarHash : undefined;
+            resourceInputs["avatarUrl"] = state ? state.avatarUrl : undefined;
             resourceInputs["buildCoverageRegex"] = state ? state.buildCoverageRegex : undefined;
             resourceInputs["buildGitStrategy"] = state ? state.buildGitStrategy : undefined;
             resourceInputs["buildTimeout"] = state ? state.buildTimeout : undefined;
@@ -437,21 +549,29 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["ciConfigPath"] = state ? state.ciConfigPath : undefined;
             resourceInputs["ciDefaultGitDepth"] = state ? state.ciDefaultGitDepth : undefined;
             resourceInputs["ciForwardDeploymentEnabled"] = state ? state.ciForwardDeploymentEnabled : undefined;
+            resourceInputs["ciSeparatedCaches"] = state ? state.ciSeparatedCaches : undefined;
             resourceInputs["containerExpirationPolicy"] = state ? state.containerExpirationPolicy : undefined;
             resourceInputs["containerRegistryAccessLevel"] = state ? state.containerRegistryAccessLevel : undefined;
             resourceInputs["containerRegistryEnabled"] = state ? state.containerRegistryEnabled : undefined;
             resourceInputs["defaultBranch"] = state ? state.defaultBranch : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["emailsDisabled"] = state ? state.emailsDisabled : undefined;
+            resourceInputs["environmentsAccessLevel"] = state ? state.environmentsAccessLevel : undefined;
             resourceInputs["externalAuthorizationClassificationLabel"] = state ? state.externalAuthorizationClassificationLabel : undefined;
+            resourceInputs["featureFlagsAccessLevel"] = state ? state.featureFlagsAccessLevel : undefined;
+            resourceInputs["forkedFromProjectId"] = state ? state.forkedFromProjectId : undefined;
             resourceInputs["forkingAccessLevel"] = state ? state.forkingAccessLevel : undefined;
             resourceInputs["groupWithProjectTemplatesId"] = state ? state.groupWithProjectTemplatesId : undefined;
             resourceInputs["httpUrlToRepo"] = state ? state.httpUrlToRepo : undefined;
             resourceInputs["importUrl"] = state ? state.importUrl : undefined;
+            resourceInputs["importUrlPassword"] = state ? state.importUrlPassword : undefined;
+            resourceInputs["importUrlUsername"] = state ? state.importUrlUsername : undefined;
+            resourceInputs["infrastructureAccessLevel"] = state ? state.infrastructureAccessLevel : undefined;
             resourceInputs["initializeWithReadme"] = state ? state.initializeWithReadme : undefined;
             resourceInputs["issuesAccessLevel"] = state ? state.issuesAccessLevel : undefined;
             resourceInputs["issuesEnabled"] = state ? state.issuesEnabled : undefined;
             resourceInputs["issuesTemplate"] = state ? state.issuesTemplate : undefined;
+            resourceInputs["keepLatestArtifact"] = state ? state.keepLatestArtifact : undefined;
             resourceInputs["lfsEnabled"] = state ? state.lfsEnabled : undefined;
             resourceInputs["mergeCommitTemplate"] = state ? state.mergeCommitTemplate : undefined;
             resourceInputs["mergeMethod"] = state ? state.mergeMethod : undefined;
@@ -463,6 +583,8 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["mirror"] = state ? state.mirror : undefined;
             resourceInputs["mirrorOverwritesDivergedBranches"] = state ? state.mirrorOverwritesDivergedBranches : undefined;
             resourceInputs["mirrorTriggerBuilds"] = state ? state.mirrorTriggerBuilds : undefined;
+            resourceInputs["monitorAccessLevel"] = state ? state.monitorAccessLevel : undefined;
+            resourceInputs["mrDefaultTargetSelf"] = state ? state.mrDefaultTargetSelf : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
             resourceInputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = state ? state.onlyAllowMergeIfAllDiscussionsAreResolved : undefined;
@@ -477,12 +599,14 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["printingMergeRequestLinkEnabled"] = state ? state.printingMergeRequestLinkEnabled : undefined;
             resourceInputs["publicBuilds"] = state ? state.publicBuilds : undefined;
             resourceInputs["pushRules"] = state ? state.pushRules : undefined;
+            resourceInputs["releasesAccessLevel"] = state ? state.releasesAccessLevel : undefined;
             resourceInputs["removeSourceBranchAfterMerge"] = state ? state.removeSourceBranchAfterMerge : undefined;
             resourceInputs["repositoryAccessLevel"] = state ? state.repositoryAccessLevel : undefined;
             resourceInputs["repositoryStorage"] = state ? state.repositoryStorage : undefined;
             resourceInputs["requestAccessEnabled"] = state ? state.requestAccessEnabled : undefined;
             resourceInputs["requirementsAccessLevel"] = state ? state.requirementsAccessLevel : undefined;
             resourceInputs["resolveOutdatedDiffDiscussions"] = state ? state.resolveOutdatedDiffDiscussions : undefined;
+            resourceInputs["restrictUserDefinedVariables"] = state ? state.restrictUserDefinedVariables : undefined;
             resourceInputs["runnersToken"] = state ? state.runnersToken : undefined;
             resourceInputs["securityAndComplianceAccessLevel"] = state ? state.securityAndComplianceAccessLevel : undefined;
             resourceInputs["sharedRunnersEnabled"] = state ? state.sharedRunnersEnabled : undefined;
@@ -513,6 +637,8 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["autoDevopsDeployStrategy"] = args ? args.autoDevopsDeployStrategy : undefined;
             resourceInputs["autoDevopsEnabled"] = args ? args.autoDevopsEnabled : undefined;
             resourceInputs["autocloseReferencedIssues"] = args ? args.autocloseReferencedIssues : undefined;
+            resourceInputs["avatar"] = args ? args.avatar : undefined;
+            resourceInputs["avatarHash"] = args ? args.avatarHash : undefined;
             resourceInputs["buildCoverageRegex"] = args ? args.buildCoverageRegex : undefined;
             resourceInputs["buildGitStrategy"] = args ? args.buildGitStrategy : undefined;
             resourceInputs["buildTimeout"] = args ? args.buildTimeout : undefined;
@@ -520,20 +646,28 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["ciConfigPath"] = args ? args.ciConfigPath : undefined;
             resourceInputs["ciDefaultGitDepth"] = args ? args.ciDefaultGitDepth : undefined;
             resourceInputs["ciForwardDeploymentEnabled"] = args ? args.ciForwardDeploymentEnabled : undefined;
+            resourceInputs["ciSeparatedCaches"] = args ? args.ciSeparatedCaches : undefined;
             resourceInputs["containerExpirationPolicy"] = args ? args.containerExpirationPolicy : undefined;
             resourceInputs["containerRegistryAccessLevel"] = args ? args.containerRegistryAccessLevel : undefined;
             resourceInputs["containerRegistryEnabled"] = args ? args.containerRegistryEnabled : undefined;
             resourceInputs["defaultBranch"] = args ? args.defaultBranch : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["emailsDisabled"] = args ? args.emailsDisabled : undefined;
+            resourceInputs["environmentsAccessLevel"] = args ? args.environmentsAccessLevel : undefined;
             resourceInputs["externalAuthorizationClassificationLabel"] = args ? args.externalAuthorizationClassificationLabel : undefined;
+            resourceInputs["featureFlagsAccessLevel"] = args ? args.featureFlagsAccessLevel : undefined;
+            resourceInputs["forkedFromProjectId"] = args ? args.forkedFromProjectId : undefined;
             resourceInputs["forkingAccessLevel"] = args ? args.forkingAccessLevel : undefined;
             resourceInputs["groupWithProjectTemplatesId"] = args ? args.groupWithProjectTemplatesId : undefined;
             resourceInputs["importUrl"] = args ? args.importUrl : undefined;
+            resourceInputs["importUrlPassword"] = args?.importUrlPassword ? pulumi.secret(args.importUrlPassword) : undefined;
+            resourceInputs["importUrlUsername"] = args ? args.importUrlUsername : undefined;
+            resourceInputs["infrastructureAccessLevel"] = args ? args.infrastructureAccessLevel : undefined;
             resourceInputs["initializeWithReadme"] = args ? args.initializeWithReadme : undefined;
             resourceInputs["issuesAccessLevel"] = args ? args.issuesAccessLevel : undefined;
             resourceInputs["issuesEnabled"] = args ? args.issuesEnabled : undefined;
             resourceInputs["issuesTemplate"] = args ? args.issuesTemplate : undefined;
+            resourceInputs["keepLatestArtifact"] = args ? args.keepLatestArtifact : undefined;
             resourceInputs["lfsEnabled"] = args ? args.lfsEnabled : undefined;
             resourceInputs["mergeCommitTemplate"] = args ? args.mergeCommitTemplate : undefined;
             resourceInputs["mergeMethod"] = args ? args.mergeMethod : undefined;
@@ -545,6 +679,8 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["mirror"] = args ? args.mirror : undefined;
             resourceInputs["mirrorOverwritesDivergedBranches"] = args ? args.mirrorOverwritesDivergedBranches : undefined;
             resourceInputs["mirrorTriggerBuilds"] = args ? args.mirrorTriggerBuilds : undefined;
+            resourceInputs["monitorAccessLevel"] = args ? args.monitorAccessLevel : undefined;
+            resourceInputs["mrDefaultTargetSelf"] = args ? args.mrDefaultTargetSelf : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
             resourceInputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = args ? args.onlyAllowMergeIfAllDiscussionsAreResolved : undefined;
@@ -558,12 +694,14 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["printingMergeRequestLinkEnabled"] = args ? args.printingMergeRequestLinkEnabled : undefined;
             resourceInputs["publicBuilds"] = args ? args.publicBuilds : undefined;
             resourceInputs["pushRules"] = args ? args.pushRules : undefined;
+            resourceInputs["releasesAccessLevel"] = args ? args.releasesAccessLevel : undefined;
             resourceInputs["removeSourceBranchAfterMerge"] = args ? args.removeSourceBranchAfterMerge : undefined;
             resourceInputs["repositoryAccessLevel"] = args ? args.repositoryAccessLevel : undefined;
             resourceInputs["repositoryStorage"] = args ? args.repositoryStorage : undefined;
             resourceInputs["requestAccessEnabled"] = args ? args.requestAccessEnabled : undefined;
             resourceInputs["requirementsAccessLevel"] = args ? args.requirementsAccessLevel : undefined;
             resourceInputs["resolveOutdatedDiffDiscussions"] = args ? args.resolveOutdatedDiffDiscussions : undefined;
+            resourceInputs["restrictUserDefinedVariables"] = args ? args.restrictUserDefinedVariables : undefined;
             resourceInputs["securityAndComplianceAccessLevel"] = args ? args.securityAndComplianceAccessLevel : undefined;
             resourceInputs["sharedRunnersEnabled"] = args ? args.sharedRunnersEnabled : undefined;
             resourceInputs["skipWaitForDefaultBranchProtection"] = args ? args.skipWaitForDefaultBranchProtection : undefined;
@@ -580,6 +718,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["visibilityLevel"] = args ? args.visibilityLevel : undefined;
             resourceInputs["wikiAccessLevel"] = args ? args.wikiAccessLevel : undefined;
             resourceInputs["wikiEnabled"] = args ? args.wikiEnabled : undefined;
+            resourceInputs["avatarUrl"] = undefined /*out*/;
             resourceInputs["httpUrlToRepo"] = undefined /*out*/;
             resourceInputs["pathWithNamespace"] = undefined /*out*/;
             resourceInputs["runnersToken"] = undefined /*out*/;
@@ -587,7 +726,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["webUrl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["runnersToken"] };
+        const secretOpts = { additionalSecretOutputs: ["importUrlPassword", "runnersToken"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Project.__pulumiType, name, resourceInputs, opts);
     }
@@ -637,6 +776,18 @@ export interface ProjectState {
      */
     autocloseReferencedIssues?: pulumi.Input<boolean>;
     /**
+     * A local path to the avatar image to upload. **Note**: not available for imported resources.
+     */
+    avatar?: pulumi.Input<string>;
+    /**
+     * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+     */
+    avatarHash?: pulumi.Input<string>;
+    /**
+     * The URL of the avatar image.
+     */
+    avatarUrl?: pulumi.Input<string>;
+    /**
      * Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
      *
      * @deprecated build_coverage_regex is removed in GitLab 15.0.
@@ -667,6 +818,10 @@ export interface ProjectState {
      */
     ciForwardDeploymentEnabled?: pulumi.Input<boolean>;
     /**
+     * Use separate caches for protected branches.
+     */
+    ciSeparatedCaches?: pulumi.Input<boolean>;
+    /**
      * Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
      */
     containerExpirationPolicy?: pulumi.Input<inputs.ProjectContainerExpirationPolicy>;
@@ -676,6 +831,8 @@ export interface ProjectState {
     containerRegistryAccessLevel?: pulumi.Input<string>;
     /**
      * Enable container registry for the project.
+     *
+     * @deprecated Use `container_registry_access_level` instead.
      */
     containerRegistryEnabled?: pulumi.Input<boolean>;
     /**
@@ -691,9 +848,21 @@ export interface ProjectState {
      */
     emailsDisabled?: pulumi.Input<boolean>;
     /**
+     * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    environmentsAccessLevel?: pulumi.Input<string>;
+    /**
      * The classification label for the project.
      */
     externalAuthorizationClassificationLabel?: pulumi.Input<string>;
+    /**
+     * Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    featureFlagsAccessLevel?: pulumi.Input<string>;
+    /**
+     * The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
+     */
+    forkedFromProjectId?: pulumi.Input<number>;
     /**
      * Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -707,9 +876,29 @@ export interface ProjectState {
      */
     httpUrlToRepo?: pulumi.Input<string>;
     /**
-     * Git URL to a repository to be imported.
+     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+     * together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+     * Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+     * credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+     * `terraform import`. See the examples section for how to properly use it.
      */
     importUrl?: pulumi.Input<string>;
+    /**
+     * The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+     * use it.
+     */
+    importUrlPassword?: pulumi.Input<string>;
+    /**
+     * The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+     * use it.
+     */
+    importUrlUsername?: pulumi.Input<string>;
+    /**
+     * Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    infrastructureAccessLevel?: pulumi.Input<string>;
     /**
      * Create main branch with first commit containing a README.md file.
      */
@@ -726,6 +915,10 @@ export interface ProjectState {
      * Sets the template for new issues in the project.
      */
     issuesTemplate?: pulumi.Input<string>;
+    /**
+     * Disable or enable the ability to keep the latest artifact for this project.
+     */
+    keepLatestArtifact?: pulumi.Input<boolean>;
     /**
      * Enable LFS for the project.
      */
@@ -770,6 +963,14 @@ export interface ProjectState {
      * Enable trigger builds on pushes for a mirrored project.
      */
     mirrorTriggerBuilds?: pulumi.Input<boolean>;
+    /**
+     * Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    monitorAccessLevel?: pulumi.Input<string>;
+    /**
+     * For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+     */
+    mrDefaultTargetSelf?: pulumi.Input<boolean>;
     /**
      * The name of the project.
      */
@@ -829,6 +1030,10 @@ export interface ProjectState {
      */
     pushRules?: pulumi.Input<inputs.ProjectPushRules>;
     /**
+     * Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    releasesAccessLevel?: pulumi.Input<string>;
+    /**
      * Enable `Delete source branch` option by default for all new merge requests.
      */
     removeSourceBranchAfterMerge?: pulumi.Input<boolean>;
@@ -852,6 +1057,10 @@ export interface ProjectState {
      * Automatically resolve merge request diffs discussions on lines changed with a push.
      */
     resolveOutdatedDiffDiscussions?: pulumi.Input<boolean>;
+    /**
+     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     */
+    restrictUserDefinedVariables?: pulumi.Input<boolean>;
     /**
      * Registration token to use during runner setup.
      */
@@ -913,6 +1122,7 @@ export interface ProjectState {
     topics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+     * 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
      */
     useCustomTemplate?: pulumi.Input<boolean>;
     /**
@@ -977,6 +1187,14 @@ export interface ProjectArgs {
      */
     autocloseReferencedIssues?: pulumi.Input<boolean>;
     /**
+     * A local path to the avatar image to upload. **Note**: not available for imported resources.
+     */
+    avatar?: pulumi.Input<string>;
+    /**
+     * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+     */
+    avatarHash?: pulumi.Input<string>;
+    /**
      * Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
      *
      * @deprecated build_coverage_regex is removed in GitLab 15.0.
@@ -1007,6 +1225,10 @@ export interface ProjectArgs {
      */
     ciForwardDeploymentEnabled?: pulumi.Input<boolean>;
     /**
+     * Use separate caches for protected branches.
+     */
+    ciSeparatedCaches?: pulumi.Input<boolean>;
+    /**
      * Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
      */
     containerExpirationPolicy?: pulumi.Input<inputs.ProjectContainerExpirationPolicy>;
@@ -1016,6 +1238,8 @@ export interface ProjectArgs {
     containerRegistryAccessLevel?: pulumi.Input<string>;
     /**
      * Enable container registry for the project.
+     *
+     * @deprecated Use `container_registry_access_level` instead.
      */
     containerRegistryEnabled?: pulumi.Input<boolean>;
     /**
@@ -1031,9 +1255,21 @@ export interface ProjectArgs {
      */
     emailsDisabled?: pulumi.Input<boolean>;
     /**
+     * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    environmentsAccessLevel?: pulumi.Input<string>;
+    /**
      * The classification label for the project.
      */
     externalAuthorizationClassificationLabel?: pulumi.Input<string>;
+    /**
+     * Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    featureFlagsAccessLevel?: pulumi.Input<string>;
+    /**
+     * The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
+     */
+    forkedFromProjectId?: pulumi.Input<number>;
     /**
      * Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -1043,9 +1279,29 @@ export interface ProjectArgs {
      */
     groupWithProjectTemplatesId?: pulumi.Input<number>;
     /**
-     * Git URL to a repository to be imported.
+     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used
+     * together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import.
+     * Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the
+     * credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using
+     * `terraform import`. See the examples section for how to properly use it.
      */
     importUrl?: pulumi.Input<string>;
+    /**
+     * The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+     * use it.
+     */
+    importUrlPassword?: pulumi.Input<string>;
+    /**
+     * The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related
+     * to the provider. This field cannot be imported using `terraform import`. See the examples section for how to properly
+     * use it.
+     */
+    importUrlUsername?: pulumi.Input<string>;
+    /**
+     * Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    infrastructureAccessLevel?: pulumi.Input<string>;
     /**
      * Create main branch with first commit containing a README.md file.
      */
@@ -1062,6 +1318,10 @@ export interface ProjectArgs {
      * Sets the template for new issues in the project.
      */
     issuesTemplate?: pulumi.Input<string>;
+    /**
+     * Disable or enable the ability to keep the latest artifact for this project.
+     */
+    keepLatestArtifact?: pulumi.Input<boolean>;
     /**
      * Enable LFS for the project.
      */
@@ -1106,6 +1366,14 @@ export interface ProjectArgs {
      * Enable trigger builds on pushes for a mirrored project.
      */
     mirrorTriggerBuilds?: pulumi.Input<boolean>;
+    /**
+     * Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    monitorAccessLevel?: pulumi.Input<string>;
+    /**
+     * For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+     */
+    mrDefaultTargetSelf?: pulumi.Input<boolean>;
     /**
      * The name of the project.
      */
@@ -1161,6 +1429,10 @@ export interface ProjectArgs {
      */
     pushRules?: pulumi.Input<inputs.ProjectPushRules>;
     /**
+     * Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    releasesAccessLevel?: pulumi.Input<string>;
+    /**
      * Enable `Delete source branch` option by default for all new merge requests.
      */
     removeSourceBranchAfterMerge?: pulumi.Input<boolean>;
@@ -1184,6 +1456,10 @@ export interface ProjectArgs {
      * Automatically resolve merge request diffs discussions on lines changed with a push.
      */
     resolveOutdatedDiffDiscussions?: pulumi.Input<boolean>;
+    /**
+     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     */
+    restrictUserDefinedVariables?: pulumi.Input<boolean>;
     /**
      * Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -1237,6 +1513,7 @@ export interface ProjectArgs {
     topics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
+     * 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
      */
     useCustomTemplate?: pulumi.Input<boolean>;
     /**

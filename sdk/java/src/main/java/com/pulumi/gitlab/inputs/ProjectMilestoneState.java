@@ -63,14 +63,14 @@ public final class ProjectMilestoneState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Bool, true if milestore expired.
+     * Bool, true if milestone expired.
      * 
      */
     @Import(name="expired")
     private @Nullable Output<Boolean> expired;
 
     /**
-     * @return Bool, true if milestore expired.
+     * @return Bool, true if milestone expired.
      * 
      */
     public Optional<Output<Boolean>> expired() {
@@ -312,7 +312,7 @@ public final class ProjectMilestoneState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param expired Bool, true if milestore expired.
+         * @param expired Bool, true if milestone expired.
          * 
          * @return builder
          * 
@@ -323,7 +323,7 @@ public final class ProjectMilestoneState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param expired Bool, true if milestore expired.
+         * @param expired Bool, true if milestone expired.
          * 
          * @return builder
          * 

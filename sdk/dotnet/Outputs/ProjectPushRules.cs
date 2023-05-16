@@ -38,7 +38,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool? DenyDeleteTag;
         /// <summary>
-        /// All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+        /// All committed filenames must not match this regex, e.g. `(jar|exe)$`.
         /// </summary>
         public readonly string? FileNameRegex;
         /// <summary>

@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -65,7 +65,7 @@ type LookupProjectMilestoneResult struct {
 	Description string `pulumi:"description"`
 	// The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
 	DueDate string `pulumi:"dueDate"`
-	// Bool, true if milestore expired.
+	// Bool, true if milestone expired.
 	Expired bool `pulumi:"expired"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -144,7 +144,7 @@ func (o LookupProjectMilestoneResultOutput) DueDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectMilestoneResult) string { return v.DueDate }).(pulumi.StringOutput)
 }
 
-// Bool, true if milestore expired.
+// Bool, true if milestone expired.
 func (o LookupProjectMilestoneResultOutput) Expired() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectMilestoneResult) bool { return v.Expired }).(pulumi.BoolOutput)
 }

@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v4/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -90,7 +90,7 @@ type ServiceMicrosoftTeams struct {
 	TagPushEvents pulumi.BoolPtrOutput `pulumi:"tagPushEvents"`
 	// Update time.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// The Microsoft Teams webhook. For example, https://outlook.office.com/webhook/...
+	// The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
 	Webhook pulumi.StringOutput `pulumi:"webhook"`
 	// Enable notifications for wiki page events
 	WikiPageEvents pulumi.BoolPtrOutput `pulumi:"wikiPageEvents"`
@@ -159,7 +159,7 @@ type serviceMicrosoftTeamsState struct {
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// Update time.
 	UpdatedAt *string `pulumi:"updatedAt"`
-	// The Microsoft Teams webhook. For example, https://outlook.office.com/webhook/...
+	// The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
 	Webhook *string `pulumi:"webhook"`
 	// Enable notifications for wiki page events
 	WikiPageEvents *bool `pulumi:"wikiPageEvents"`
@@ -194,7 +194,7 @@ type ServiceMicrosoftTeamsState struct {
 	TagPushEvents pulumi.BoolPtrInput
 	// Update time.
 	UpdatedAt pulumi.StringPtrInput
-	// The Microsoft Teams webhook. For example, https://outlook.office.com/webhook/...
+	// The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
 	Webhook pulumi.StringPtrInput
 	// Enable notifications for wiki page events
 	WikiPageEvents pulumi.BoolPtrInput
@@ -227,7 +227,7 @@ type serviceMicrosoftTeamsArgs struct {
 	PushEvents *bool `pulumi:"pushEvents"`
 	// Enable notifications for tag push events
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
-	// The Microsoft Teams webhook. For example, https://outlook.office.com/webhook/...
+	// The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
 	Webhook string `pulumi:"webhook"`
 	// Enable notifications for wiki page events
 	WikiPageEvents *bool `pulumi:"wikiPageEvents"`
@@ -257,7 +257,7 @@ type ServiceMicrosoftTeamsArgs struct {
 	PushEvents pulumi.BoolPtrInput
 	// Enable notifications for tag push events
 	TagPushEvents pulumi.BoolPtrInput
-	// The Microsoft Teams webhook. For example, https://outlook.office.com/webhook/...
+	// The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
 	Webhook pulumi.StringInput
 	// Enable notifications for wiki page events
 	WikiPageEvents pulumi.BoolPtrInput
@@ -420,7 +420,7 @@ func (o ServiceMicrosoftTeamsOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// The Microsoft Teams webhook. For example, https://outlook.office.com/webhook/...
+// The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
 func (o ServiceMicrosoftTeamsOutput) Webhook() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceMicrosoftTeams) pulumi.StringOutput { return v.Webhook }).(pulumi.StringOutput)
 }

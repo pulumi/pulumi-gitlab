@@ -108,14 +108,14 @@ public final class ProjectPushRulesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+     * All committed filenames must not match this regex, e.g. `(jar|exe)$`.
      * 
      */
     @Import(name="fileNameRegex")
     private @Nullable Output<String> fileNameRegex;
 
     /**
-     * @return All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+     * @return All committed filenames must not match this regex, e.g. `(jar|exe)$`.
      * 
      */
     public Optional<Output<String>> fileNameRegex() {
@@ -343,7 +343,7 @@ public final class ProjectPushRulesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fileNameRegex All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+         * @param fileNameRegex All committed filenames must not match this regex, e.g. `(jar|exe)$`.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class ProjectPushRulesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fileNameRegex All commited filenames must not match this regex, e.g. `(jar|exe)$`.
+         * @param fileNameRegex All committed filenames must not match this regex, e.g. `(jar|exe)$`.
          * 
          * @return builder
          * 

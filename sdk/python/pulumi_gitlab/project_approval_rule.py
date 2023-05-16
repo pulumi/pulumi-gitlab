@@ -16,6 +16,7 @@ class ProjectApprovalRuleArgs:
     def __init__(__self__, *,
                  approvals_required: pulumi.Input[int],
                  project: pulumi.Input[str],
+                 disable_importing_default_any_approver_rule_on_create: Optional[pulumi.Input[bool]] = None,
                  group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
@@ -25,6 +26,7 @@ class ProjectApprovalRuleArgs:
         The set of arguments for constructing a ProjectApprovalRule resource.
         :param pulumi.Input[int] approvals_required: The number of approvals required for this rule.
         :param pulumi.Input[str] project: The name or id of the project to add the approval rules.
+        :param pulumi.Input[bool] disable_importing_default_any_approver_rule_on_create: When this flag is set, the default `any_approver` rule will not be imported if present.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_ids: A list of group IDs whose members can approve of the merge request.
         :param pulumi.Input[str] name: The name of the approval rule.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] protected_branch_ids: A list of protected branch IDs (not branch names) for which the rule applies.
@@ -33,6 +35,8 @@ class ProjectApprovalRuleArgs:
         """
         pulumi.set(__self__, "approvals_required", approvals_required)
         pulumi.set(__self__, "project", project)
+        if disable_importing_default_any_approver_rule_on_create is not None:
+            pulumi.set(__self__, "disable_importing_default_any_approver_rule_on_create", disable_importing_default_any_approver_rule_on_create)
         if group_ids is not None:
             pulumi.set(__self__, "group_ids", group_ids)
         if name is not None:
@@ -67,6 +71,18 @@ class ProjectApprovalRuleArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="disableImportingDefaultAnyApproverRuleOnCreate")
+    def disable_importing_default_any_approver_rule_on_create(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When this flag is set, the default `any_approver` rule will not be imported if present.
+        """
+        return pulumi.get(self, "disable_importing_default_any_approver_rule_on_create")
+
+    @disable_importing_default_any_approver_rule_on_create.setter
+    def disable_importing_default_any_approver_rule_on_create(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_importing_default_any_approver_rule_on_create", value)
 
     @property
     @pulumi.getter(name="groupIds")
@@ -133,6 +149,7 @@ class ProjectApprovalRuleArgs:
 class _ProjectApprovalRuleState:
     def __init__(__self__, *,
                  approvals_required: Optional[pulumi.Input[int]] = None,
+                 disable_importing_default_any_approver_rule_on_create: Optional[pulumi.Input[bool]] = None,
                  group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -142,6 +159,7 @@ class _ProjectApprovalRuleState:
         """
         Input properties used for looking up and filtering ProjectApprovalRule resources.
         :param pulumi.Input[int] approvals_required: The number of approvals required for this rule.
+        :param pulumi.Input[bool] disable_importing_default_any_approver_rule_on_create: When this flag is set, the default `any_approver` rule will not be imported if present.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_ids: A list of group IDs whose members can approve of the merge request.
         :param pulumi.Input[str] name: The name of the approval rule.
         :param pulumi.Input[str] project: The name or id of the project to add the approval rules.
@@ -151,6 +169,8 @@ class _ProjectApprovalRuleState:
         """
         if approvals_required is not None:
             pulumi.set(__self__, "approvals_required", approvals_required)
+        if disable_importing_default_any_approver_rule_on_create is not None:
+            pulumi.set(__self__, "disable_importing_default_any_approver_rule_on_create", disable_importing_default_any_approver_rule_on_create)
         if group_ids is not None:
             pulumi.set(__self__, "group_ids", group_ids)
         if name is not None:
@@ -175,6 +195,18 @@ class _ProjectApprovalRuleState:
     @approvals_required.setter
     def approvals_required(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "approvals_required", value)
+
+    @property
+    @pulumi.getter(name="disableImportingDefaultAnyApproverRuleOnCreate")
+    def disable_importing_default_any_approver_rule_on_create(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When this flag is set, the default `any_approver` rule will not be imported if present.
+        """
+        return pulumi.get(self, "disable_importing_default_any_approver_rule_on_create")
+
+    @disable_importing_default_any_approver_rule_on_create.setter
+    def disable_importing_default_any_approver_rule_on_create(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_importing_default_any_approver_rule_on_create", value)
 
     @property
     @pulumi.getter(name="groupIds")
@@ -255,6 +287,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  approvals_required: Optional[pulumi.Input[int]] = None,
+                 disable_importing_default_any_approver_rule_on_create: Optional[pulumi.Input[bool]] = None,
                  group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -263,12 +296,6 @@ class ProjectApprovalRule(pulumi.CustomResource):
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
         """
-        The `ProjectApprovalRule` resource allows to manage the lifecycle of a project-level approval rule.
-
-        > This resource requires a GitLab Enterprise instance.
-
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals)
-
         ## Import
 
         GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
@@ -280,6 +307,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] approvals_required: The number of approvals required for this rule.
+        :param pulumi.Input[bool] disable_importing_default_any_approver_rule_on_create: When this flag is set, the default `any_approver` rule will not be imported if present.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_ids: A list of group IDs whose members can approve of the merge request.
         :param pulumi.Input[str] name: The name of the approval rule.
         :param pulumi.Input[str] project: The name or id of the project to add the approval rules.
@@ -294,12 +322,6 @@ class ProjectApprovalRule(pulumi.CustomResource):
                  args: ProjectApprovalRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectApprovalRule` resource allows to manage the lifecycle of a project-level approval rule.
-
-        > This resource requires a GitLab Enterprise instance.
-
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals)
-
         ## Import
 
         GitLab project approval rules can be imported using a key composed of `<project-id>:<rule-id>`, e.g.
@@ -324,6 +346,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  approvals_required: Optional[pulumi.Input[int]] = None,
+                 disable_importing_default_any_approver_rule_on_create: Optional[pulumi.Input[bool]] = None,
                  group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -342,6 +365,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
             if approvals_required is None and not opts.urn:
                 raise TypeError("Missing required property 'approvals_required'")
             __props__.__dict__["approvals_required"] = approvals_required
+            __props__.__dict__["disable_importing_default_any_approver_rule_on_create"] = disable_importing_default_any_approver_rule_on_create
             __props__.__dict__["group_ids"] = group_ids
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
@@ -361,6 +385,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             approvals_required: Optional[pulumi.Input[int]] = None,
+            disable_importing_default_any_approver_rule_on_create: Optional[pulumi.Input[bool]] = None,
             group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -375,6 +400,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] approvals_required: The number of approvals required for this rule.
+        :param pulumi.Input[bool] disable_importing_default_any_approver_rule_on_create: When this flag is set, the default `any_approver` rule will not be imported if present.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_ids: A list of group IDs whose members can approve of the merge request.
         :param pulumi.Input[str] name: The name of the approval rule.
         :param pulumi.Input[str] project: The name or id of the project to add the approval rules.
@@ -387,6 +413,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
         __props__ = _ProjectApprovalRuleState.__new__(_ProjectApprovalRuleState)
 
         __props__.__dict__["approvals_required"] = approvals_required
+        __props__.__dict__["disable_importing_default_any_approver_rule_on_create"] = disable_importing_default_any_approver_rule_on_create
         __props__.__dict__["group_ids"] = group_ids
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -402,6 +429,14 @@ class ProjectApprovalRule(pulumi.CustomResource):
         The number of approvals required for this rule.
         """
         return pulumi.get(self, "approvals_required")
+
+    @property
+    @pulumi.getter(name="disableImportingDefaultAnyApproverRuleOnCreate")
+    def disable_importing_default_any_approver_rule_on_create(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When this flag is set, the default `any_approver` rule will not be imported if present.
+        """
+        return pulumi.get(self, "disable_importing_default_any_approver_rule_on_create")
 
     @property
     @pulumi.getter(name="groupIds")

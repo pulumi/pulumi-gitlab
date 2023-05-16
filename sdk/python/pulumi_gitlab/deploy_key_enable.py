@@ -215,7 +215,7 @@ class DeployKeyEnable(pulumi.CustomResource):
         parent_deploy_key = gitlab.DeployKey("parentDeployKey",
             project=parent_project.id,
             title="Example deploy key",
-            key="ssh-rsa AAAA...")
+            key="ssh-ed25519 AAAA...")
         # Enable the deployment key on the second repo
         foo_deploy_key_enable = gitlab.DeployKeyEnable("fooDeployKeyEnable",
             project=foo_project.id,
@@ -267,7 +267,7 @@ class DeployKeyEnable(pulumi.CustomResource):
         parent_deploy_key = gitlab.DeployKey("parentDeployKey",
             project=parent_project.id,
             title="Example deploy key",
-            key="ssh-rsa AAAA...")
+            key="ssh-ed25519 AAAA...")
         # Enable the deployment key on the second repo
         foo_deploy_key_enable = gitlab.DeployKeyEnable("fooDeployKeyEnable",
             project=foo_project.id,

@@ -45,10 +45,12 @@ type RepositoryFile struct {
 	ExecuteFilemode pulumi.BoolPtrOutput `pulumi:"executeFilemode"`
 	// The filename.
 	FileName pulumi.StringOutput `pulumi:"fileName"`
-	// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+	// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
 	FilePath pulumi.StringOutput `pulumi:"filePath"`
 	// The last known commit id.
 	LastCommitId pulumi.StringOutput `pulumi:"lastCommitId"`
+	// Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+	OverwriteOnCreate pulumi.BoolPtrOutput `pulumi:"overwriteOnCreate"`
 	// The name or ID of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of branch, tag or commit.
@@ -125,10 +127,12 @@ type repositoryFileState struct {
 	ExecuteFilemode *bool `pulumi:"executeFilemode"`
 	// The filename.
 	FileName *string `pulumi:"fileName"`
-	// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+	// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
 	FilePath *string `pulumi:"filePath"`
 	// The last known commit id.
 	LastCommitId *string `pulumi:"lastCommitId"`
+	// Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+	OverwriteOnCreate *bool `pulumi:"overwriteOnCreate"`
 	// The name or ID of the project.
 	Project *string `pulumi:"project"`
 	// The name of branch, tag or commit.
@@ -162,10 +166,12 @@ type RepositoryFileState struct {
 	ExecuteFilemode pulumi.BoolPtrInput
 	// The filename.
 	FileName pulumi.StringPtrInput
-	// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+	// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
 	FilePath pulumi.StringPtrInput
 	// The last known commit id.
 	LastCommitId pulumi.StringPtrInput
+	// Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+	OverwriteOnCreate pulumi.BoolPtrInput
 	// The name or ID of the project.
 	Project pulumi.StringPtrInput
 	// The name of branch, tag or commit.
@@ -193,8 +199,10 @@ type repositoryFileArgs struct {
 	Content string `pulumi:"content"`
 	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
 	ExecuteFilemode *bool `pulumi:"executeFilemode"`
-	// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+	// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
 	FilePath string `pulumi:"filePath"`
+	// Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+	OverwriteOnCreate *bool `pulumi:"overwriteOnCreate"`
 	// The name or ID of the project.
 	Project string `pulumi:"project"`
 	// Name of the branch to start the new commit from.
@@ -215,8 +223,10 @@ type RepositoryFileArgs struct {
 	Content pulumi.StringInput
 	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
 	ExecuteFilemode pulumi.BoolPtrInput
-	// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+	// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
 	FilePath pulumi.StringInput
+	// Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+	OverwriteOnCreate pulumi.BoolPtrInput
 	// The name or ID of the project.
 	Project pulumi.StringInput
 	// Name of the branch to start the new commit from.
@@ -365,7 +375,7 @@ func (o RepositoryFileOutput) FileName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.FileName }).(pulumi.StringOutput)
 }
 
-// The full path of the file. It must be relative to the root of the project without a leading slash `/`.
+// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
 func (o RepositoryFileOutput) FilePath() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.FilePath }).(pulumi.StringOutput)
 }
@@ -373,6 +383,11 @@ func (o RepositoryFileOutput) FilePath() pulumi.StringOutput {
 // The last known commit id.
 func (o RepositoryFileOutput) LastCommitId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.LastCommitId }).(pulumi.StringOutput)
+}
+
+// Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+func (o RepositoryFileOutput) OverwriteOnCreate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.BoolPtrOutput { return v.OverwriteOnCreate }).(pulumi.BoolPtrOutput)
 }
 
 // The name or ID of the project.

@@ -116,6 +116,24 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#update-group)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo = gitlab.Group("foo",
+            path="group",
+            description="An example group")
+        bar = gitlab.Project("bar",
+            description="contains file templates",
+            visibility_level="public",
+            namespace_id=foo.id)
+        template_link = gitlab.GroupProjectFileTemplate("templateLink",
+            group_id=foo.id,
+            file_template_project_id=bar.id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] file_template_project_id: The ID of the project that will be used for file templates. This project must be the direct
@@ -139,6 +157,24 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
         > This resource requires a GitLab Enterprise instance with a Premium license.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#update-group)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo = gitlab.Group("foo",
+            path="group",
+            description="An example group")
+        bar = gitlab.Project("bar",
+            description="contains file templates",
+            visibility_level="public",
+            namespace_id=foo.id)
+        template_link = gitlab.GroupProjectFileTemplate("templateLink",
+            group_id=foo.id,
+            file_template_project_id=bar.id)
+        ```
 
         :param str resource_name: The name of the resource.
         :param GroupProjectFileTemplateArgs args: The arguments to use to populate this resource's properties.

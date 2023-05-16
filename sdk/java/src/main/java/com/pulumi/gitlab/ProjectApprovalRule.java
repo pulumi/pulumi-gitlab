@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.ProjectApprovalRuleArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectApprovalRuleState;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -17,12 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ProjectApprovalRule` resource allows to manage the lifecycle of a project-level approval rule.
- * 
- * &gt; This resource requires a GitLab Enterprise instance.
- * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals)
- * 
  * ## Import
  * 
  * GitLab project approval rules can be imported using a key composed of `&lt;project-id&gt;:&lt;rule-id&gt;`, e.g.
@@ -47,6 +42,20 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> approvalsRequired() {
         return this.approvalsRequired;
+    }
+    /**
+     * When this flag is set, the default `any_approver` rule will not be imported if present.
+     * 
+     */
+    @Export(name="disableImportingDefaultAnyApproverRuleOnCreate", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> disableImportingDefaultAnyApproverRuleOnCreate;
+
+    /**
+     * @return When this flag is set, the default `any_approver` rule will not be imported if present.
+     * 
+     */
+    public Output<Optional<Boolean>> disableImportingDefaultAnyApproverRuleOnCreate() {
+        return Codegen.optional(this.disableImportingDefaultAnyApproverRuleOnCreate);
     }
     /**
      * A list of group IDs whose members can approve of the merge request.

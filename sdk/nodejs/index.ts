@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { ApplicationArgs, ApplicationState } from "./application";
+export type Application = import("./application").Application;
+export const Application: typeof import("./application").Application = null as any;
+utilities.lazyLoad(exports, ["Application"], () => require("./application"));
+
 export { ApplicationSettingsArgs, ApplicationSettingsState } from "./applicationSettings";
 export type ApplicationSettings = import("./applicationSettings").ApplicationSettings;
 export const ApplicationSettings: typeof import("./applicationSettings").ApplicationSettings = null as any;
@@ -44,6 +49,11 @@ export { DeployTokenArgs, DeployTokenState } from "./deployToken";
 export type DeployToken = import("./deployToken").DeployToken;
 export const DeployToken: typeof import("./deployToken").DeployToken = null as any;
 utilities.lazyLoad(exports, ["DeployToken"], () => require("./deployToken"));
+
+export { GetApplicationArgs, GetApplicationResult, GetApplicationOutputArgs } from "./getApplication";
+export const getApplication: typeof import("./getApplication").getApplication = null as any;
+export const getApplicationOutput: typeof import("./getApplication").getApplicationOutput = null as any;
+utilities.lazyLoad(exports, ["getApplication","getApplicationOutput"], () => require("./getApplication"));
 
 export { GetBranchArgs, GetBranchResult, GetBranchOutputArgs } from "./getBranch";
 export const getBranch: typeof import("./getBranch").getBranch = null as any;
@@ -117,6 +127,10 @@ utilities.lazyLoad(exports, ["getInstanceVariable","getInstanceVariableOutput"],
 export { GetInstanceVariablesResult } from "./getInstanceVariables";
 export const getInstanceVariables: typeof import("./getInstanceVariables").getInstanceVariables = null as any;
 utilities.lazyLoad(exports, ["getInstanceVariables"], () => require("./getInstanceVariables"));
+
+export { GetMetadataResult } from "./getMetadata";
+export const getMetadata: typeof import("./getMetadata").getMetadata = null as any;
+utilities.lazyLoad(exports, ["getMetadata"], () => require("./getMetadata"));
 
 export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
 export const getProject: typeof import("./getProject").getProject = null as any;
@@ -318,6 +332,11 @@ export type ManagedLicense = import("./managedLicense").ManagedLicense;
 export const ManagedLicense: typeof import("./managedLicense").ManagedLicense = null as any;
 utilities.lazyLoad(exports, ["ManagedLicense"], () => require("./managedLicense"));
 
+export { PagesDomainArgs, PagesDomainState } from "./pagesDomain";
+export type PagesDomain = import("./pagesDomain").PagesDomain;
+export const PagesDomain: typeof import("./pagesDomain").PagesDomain = null as any;
+utilities.lazyLoad(exports, ["PagesDomain"], () => require("./pagesDomain"));
+
 export { PersonalAccessTokenArgs, PersonalAccessTokenState } from "./personalAccessToken";
 export type PersonalAccessToken = import("./personalAccessToken").PersonalAccessToken;
 export const PersonalAccessToken: typeof import("./personalAccessToken").PersonalAccessToken = null as any;
@@ -458,6 +477,11 @@ export type Runner = import("./runner").Runner;
 export const Runner: typeof import("./runner").Runner = null as any;
 utilities.lazyLoad(exports, ["Runner"], () => require("./runner"));
 
+export { ServiceCustomIssueTrackerArgs, ServiceCustomIssueTrackerState } from "./serviceCustomIssueTracker";
+export type ServiceCustomIssueTracker = import("./serviceCustomIssueTracker").ServiceCustomIssueTracker;
+export const ServiceCustomIssueTracker: typeof import("./serviceCustomIssueTracker").ServiceCustomIssueTracker = null as any;
+utilities.lazyLoad(exports, ["ServiceCustomIssueTracker"], () => require("./serviceCustomIssueTracker"));
+
 export { ServiceEmailsOnPushArgs, ServiceEmailsOnPushState } from "./serviceEmailsOnPush";
 export type ServiceEmailsOnPush = import("./serviceEmailsOnPush").ServiceEmailsOnPush;
 export const ServiceEmailsOnPush: typeof import("./serviceEmailsOnPush").ServiceEmailsOnPush = null as any;
@@ -542,6 +566,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gitlab:index/application:Application":
+                return new Application(name, <any>undefined, { urn })
             case "gitlab:index/applicationSettings:ApplicationSettings":
                 return new ApplicationSettings(name, <any>undefined, { urn })
             case "gitlab:index/branch:Branch":
@@ -592,6 +618,8 @@ const _module = {
                 return new Label(name, <any>undefined, { urn })
             case "gitlab:index/managedLicense:ManagedLicense":
                 return new ManagedLicense(name, <any>undefined, { urn })
+            case "gitlab:index/pagesDomain:PagesDomain":
+                return new PagesDomain(name, <any>undefined, { urn })
             case "gitlab:index/personalAccessToken:PersonalAccessToken":
                 return new PersonalAccessToken(name, <any>undefined, { urn })
             case "gitlab:index/pipelineSchedule:PipelineSchedule":
@@ -646,6 +674,8 @@ const _module = {
                 return new RepositoryFile(name, <any>undefined, { urn })
             case "gitlab:index/runner:Runner":
                 return new Runner(name, <any>undefined, { urn })
+            case "gitlab:index/serviceCustomIssueTracker:ServiceCustomIssueTracker":
+                return new ServiceCustomIssueTracker(name, <any>undefined, { urn })
             case "gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush":
                 return new ServiceEmailsOnPush(name, <any>undefined, { urn })
             case "gitlab:index/serviceExternalWiki:ServiceExternalWiki":
@@ -679,6 +709,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gitlab", "index/application", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/applicationSettings", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/branch", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/branchProtection", _module)
@@ -704,6 +735,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/instanceCluster", _module
 pulumi.runtime.registerResourceModule("gitlab", "index/instanceVariable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/label", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/managedLicense", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/pagesDomain", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/personalAccessToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/pipelineSchedule", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/pipelineScheduleVariable", _module)
@@ -731,6 +763,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectVariable", _module
 pulumi.runtime.registerResourceModule("gitlab", "index/releaseLink", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/repositoryFile", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/runner", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/serviceCustomIssueTracker", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/serviceEmailsOnPush", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/serviceExternalWiki", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/serviceGithub", _module)

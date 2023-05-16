@@ -132,7 +132,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string DueDate;
         /// <summary>
-        /// Bool, true if milestore expired.
+        /// Bool, true if milestone expired.
         /// </summary>
         public readonly bool Expired;
         /// <summary>

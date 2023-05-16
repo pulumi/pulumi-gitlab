@@ -10,12 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.ProjectApprovalRule` resource allows to manage the lifecycle of a project-level approval rule.
-    /// 
-    /// &gt; This resource requires a GitLab Enterprise instance.
-    /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#project-level-mr-approvals)
-    /// 
     /// ## Import
     /// 
     /// GitLab project approval rules can be imported using a key composed of `&lt;project-id&gt;:&lt;rule-id&gt;`, e.g.
@@ -32,6 +26,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("approvalsRequired")]
         public Output<int> ApprovalsRequired { get; private set; } = null!;
+
+        /// <summary>
+        /// When this flag is set, the default `any_approver` rule will not be imported if present.
+        /// </summary>
+        [Output("disableImportingDefaultAnyApproverRuleOnCreate")]
+        public Output<bool?> DisableImportingDefaultAnyApproverRuleOnCreate { get; private set; } = null!;
 
         /// <summary>
         /// A list of group IDs whose members can approve of the merge request.
@@ -121,6 +121,12 @@ namespace Pulumi.GitLab
         [Input("approvalsRequired", required: true)]
         public Input<int> ApprovalsRequired { get; set; } = null!;
 
+        /// <summary>
+        /// When this flag is set, the default `any_approver` rule will not be imported if present.
+        /// </summary>
+        [Input("disableImportingDefaultAnyApproverRuleOnCreate")]
+        public Input<bool>? DisableImportingDefaultAnyApproverRuleOnCreate { get; set; }
+
         [Input("groupIds")]
         private InputList<int>? _groupIds;
 
@@ -188,6 +194,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("approvalsRequired")]
         public Input<int>? ApprovalsRequired { get; set; }
+
+        /// <summary>
+        /// When this flag is set, the default `any_approver` rule will not be imported if present.
+        /// </summary>
+        [Input("disableImportingDefaultAnyApproverRuleOnCreate")]
+        public Input<bool>? DisableImportingDefaultAnyApproverRuleOnCreate { get; set; }
 
         [Input("groupIds")]
         private InputList<int>? _groupIds;
