@@ -13,18 +13,12 @@
 package examples
 
 import (
+	"fmt"
 	"os"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 )
-
-func checkTestCredentials(t *testing.T) {
-	token := os.Getenv("GITLAB_TOKEN")
-	if token == "" {
-		t.Skipf("Skipping test due to missing GITLAB_TOKEN environment variable")
-	}
-}
 
 func getCwd(t *testing.T) string {
 	cwd, err := os.Getwd()
@@ -35,8 +29,13 @@ func getCwd(t *testing.T) string {
 	return cwd
 }
 
-func getBaseOptions() integration.ProgramTestOptions {
+func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	token := os.Getenv("PULUMI_GITLAB_TOKEN")
+	if token == "" {
+		t.Skipf("Skipping test due to missing PULUMI_GITLAB_TOKEN environment variable")
+	}
 	return integration.ProgramTestOptions{
 		ExpectRefreshChanges: true,
+		Env:                  []string{fmt.Sprintf("GITLAB_TOKEN=%s", token)},
 	}
 }
