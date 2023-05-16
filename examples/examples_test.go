@@ -20,9 +20,9 @@ import (
 )
 
 func checkTestCredentials(t *testing.T) {
-	token := os.Getenv("GITLAB_TOKEN")
+	token := os.Getenv("PULUMI_GITLAB_TOKEN")
 	if token == "" {
-		t.Skipf("Skipping test due to missing GITLAB_TOKEN environment variable")
+		t.Skipf("Skipping test due to missing PULUMI_GITLAB_TOKEN environment variable")
 	}
 }
 
