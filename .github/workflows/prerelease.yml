@@ -5,7 +5,6 @@ env:
     6.0.x
     3.1.301
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
   GOVERSION: 1.20.1
   IS_PRERELEASE: true
   JAVAVERSION: "11"
