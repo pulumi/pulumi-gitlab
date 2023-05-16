@@ -19,17 +19,10 @@ import (
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 )
 
-
-
 func checkTestCredentials(t *testing.T) {
 	token := os.Getenv("GITLAB_TOKEN")
 	if token == "" {
 		t.Skipf("Skipping test due to missing GITLAB_TOKEN environment variable")
-	}
-
-	baseUrl := os.Getenv("GITLAB_BASE_URL")
-	if baseUrl == "" {
-		t.Skipf("Skipping test due to missing GITLAB_BASE_URL environment variable")
 	}
 }
 
@@ -47,5 +40,3 @@ func getBaseOptions() integration.ProgramTestOptions {
 		ExpectRefreshChanges: true,
 	}
 }
-
-
