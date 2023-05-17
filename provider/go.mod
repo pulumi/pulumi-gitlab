@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-gitlab/provider/v5
 go 1.19
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.9.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.9.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.47.2
 	github.com/pulumi/pulumi/sdk v1.14.1
 	github.com/pulumi/pulumi/sdk/v3 v3.67.1
