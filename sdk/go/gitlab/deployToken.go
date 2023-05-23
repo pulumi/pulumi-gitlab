@@ -35,6 +35,8 @@ import (
 type DeployToken struct {
 	pulumi.CustomResourceState
 
+	// The id of the deploy token.
+	DeployTokenId pulumi.IntOutput `pulumi:"deployTokenId"`
 	// Time the token will expire it, RFC3339 format. Will not expire per default.
 	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
 	// The name or id of the group to add the deploy token to.
@@ -87,6 +89,8 @@ func GetDeployToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DeployToken resources.
 type deployTokenState struct {
+	// The id of the deploy token.
+	DeployTokenId *int `pulumi:"deployTokenId"`
 	// Time the token will expire it, RFC3339 format. Will not expire per default.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The name or id of the group to add the deploy token to.
@@ -104,6 +108,8 @@ type deployTokenState struct {
 }
 
 type DeployTokenState struct {
+	// The id of the deploy token.
+	DeployTokenId pulumi.IntPtrInput
 	// Time the token will expire it, RFC3339 format. Will not expire per default.
 	ExpiresAt pulumi.StringPtrInput
 	// The name or id of the group to add the deploy token to.
@@ -240,6 +246,11 @@ func (o DeployTokenOutput) ToDeployTokenOutput() DeployTokenOutput {
 
 func (o DeployTokenOutput) ToDeployTokenOutputWithContext(ctx context.Context) DeployTokenOutput {
 	return o
+}
+
+// The id of the deploy token.
+func (o DeployTokenOutput) DeployTokenId() pulumi.IntOutput {
+	return o.ApplyT(func(v *DeployToken) pulumi.IntOutput { return v.DeployTokenId }).(pulumi.IntOutput)
 }
 
 // Time the token will expire it, RFC3339 format. Will not expire per default.

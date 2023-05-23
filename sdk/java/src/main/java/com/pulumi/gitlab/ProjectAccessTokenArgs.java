@@ -32,18 +32,18 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+     * Time the token will expire it, YYYY-MM-DD format.
      * 
      */
-    @Import(name="expiresAt")
-    private @Nullable Output<String> expiresAt;
+    @Import(name="expiresAt", required=true)
+    private Output<String> expiresAt;
 
     /**
-     * @return Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+     * @return Time the token will expire it, YYYY-MM-DD format.
      * 
      */
-    public Optional<Output<String>> expiresAt() {
-        return Optional.ofNullable(this.expiresAt);
+    public Output<String> expiresAt() {
+        return this.expiresAt;
     }
 
     /**
@@ -141,18 +141,18 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param expiresAt Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+         * @param expiresAt Time the token will expire it, YYYY-MM-DD format.
          * 
          * @return builder
          * 
          */
-        public Builder expiresAt(@Nullable Output<String> expiresAt) {
+        public Builder expiresAt(Output<String> expiresAt) {
             $.expiresAt = expiresAt;
             return this;
         }
 
         /**
-         * @param expiresAt Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+         * @param expiresAt Time the token will expire it, YYYY-MM-DD format.
          * 
          * @return builder
          * 
@@ -235,6 +235,7 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         public ProjectAccessTokenArgs build() {
+            $.expiresAt = Objects.requireNonNull($.expiresAt, "expected parameter 'expiresAt' to be non-null");
             $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
             $.scopes = Objects.requireNonNull($.scopes, "expected parameter 'scopes' to be non-null");
             return $;

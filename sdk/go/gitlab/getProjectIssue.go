@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foo, err := gitlab.LookupProject(ctx, &gitlab.LookupProjectArgs{
-//				Id: pulumi.StringRef("foo/bar/baz"),
+//				PathWithNamespace: pulumi.StringRef("foo/bar/baz"),
 //			}, nil)
 //			if err != nil {
 //				return err

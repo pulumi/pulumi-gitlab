@@ -40,18 +40,33 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The CN of the LDAP group to link with.
+     * The CN of the LDAP group to link with. Required if `filter` is not provided.
      * 
      */
     @Import(name="cn")
     private @Nullable Output<String> cn;
 
     /**
-     * @return The CN of the LDAP group to link with.
+     * @return The CN of the LDAP group to link with. Required if `filter` is not provided.
      * 
      */
     public Optional<Output<String>> cn() {
         return Optional.ofNullable(this.cn);
+    }
+
+    /**
+     * The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
+     * 
+     */
+    @Import(name="filter")
+    private @Nullable Output<String> filter;
+
+    /**
+     * @return The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
+     * 
+     */
+    public Optional<Output<String>> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
@@ -70,6 +85,21 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The ID or URL-encoded path of the group
+     * 
+     */
+    @Import(name="group")
+    private @Nullable Output<String> group;
+
+    /**
+     * @return The ID or URL-encoded path of the group
+     * 
+     */
+    public Optional<Output<String>> group() {
+        return Optional.ofNullable(this.group);
+    }
+
+    /**
      * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
      * 
      */
@@ -82,21 +112,6 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> groupAccess() {
         return Optional.ofNullable(this.groupAccess);
-    }
-
-    /**
-     * The id of the GitLab group.
-     * 
-     */
-    @Import(name="groupId")
-    private @Nullable Output<String> groupId;
-
-    /**
-     * @return The id of the GitLab group.
-     * 
-     */
-    public Optional<Output<String>> groupId() {
-        return Optional.ofNullable(this.groupId);
     }
 
     /**
@@ -119,9 +134,10 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
     private GroupLdapLinkState(GroupLdapLinkState $) {
         this.accessLevel = $.accessLevel;
         this.cn = $.cn;
+        this.filter = $.filter;
         this.force = $.force;
+        this.group = $.group;
         this.groupAccess = $.groupAccess;
-        this.groupId = $.groupId;
         this.ldapProvider = $.ldapProvider;
     }
 
@@ -173,7 +189,7 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cn The CN of the LDAP group to link with.
+         * @param cn The CN of the LDAP group to link with. Required if `filter` is not provided.
          * 
          * @return builder
          * 
@@ -184,13 +200,34 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cn The CN of the LDAP group to link with.
+         * @param cn The CN of the LDAP group to link with. Required if `filter` is not provided.
          * 
          * @return builder
          * 
          */
         public Builder cn(String cn) {
             return cn(Output.of(cn));
+        }
+
+        /**
+         * @param filter The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(@Nullable Output<String> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        /**
+         * @param filter The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(String filter) {
+            return filter(Output.of(filter));
         }
 
         /**
@@ -215,6 +252,27 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param group The ID or URL-encoded path of the group
+         * 
+         * @return builder
+         * 
+         */
+        public Builder group(@Nullable Output<String> group) {
+            $.group = group;
+            return this;
+        }
+
+        /**
+         * @param group The ID or URL-encoded path of the group
+         * 
+         * @return builder
+         * 
+         */
+        public Builder group(String group) {
+            return group(Output.of(group));
+        }
+
+        /**
          * @param groupAccess Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
          * 
          * @return builder
@@ -233,27 +291,6 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder groupAccess(String groupAccess) {
             return groupAccess(Output.of(groupAccess));
-        }
-
-        /**
-         * @param groupId The id of the GitLab group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groupId(@Nullable Output<String> groupId) {
-            $.groupId = groupId;
-            return this;
-        }
-
-        /**
-         * @param groupId The id of the GitLab group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groupId(String groupId) {
-            return groupId(Output.of(groupId));
         }
 
         /**

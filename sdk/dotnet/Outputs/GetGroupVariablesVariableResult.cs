@@ -24,6 +24,7 @@ namespace Pulumi.GitLab.Outputs
         public readonly string Key;
         public readonly bool Masked;
         public readonly bool Protected;
+        public readonly bool Raw;
         public readonly string Value;
         public readonly string VariableType;
 
@@ -39,6 +40,8 @@ namespace Pulumi.GitLab.Outputs
 
             bool @protected,
 
+            bool raw,
+
             string value,
 
             string variableType)
@@ -48,6 +51,7 @@ namespace Pulumi.GitLab.Outputs
             Key = key;
             Masked = masked;
             Protected = @protected;
+            Raw = raw;
             Value = value;
             VariableType = variableType;
         }

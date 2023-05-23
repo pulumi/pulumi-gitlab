@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class LabelArgs extends com.pulumi.resources.ResourceArgs {
+public final class ProjectLabelArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final LabelArgs Empty = new LabelArgs();
+    public static final ProjectLabelArgs Empty = new ProjectLabelArgs();
 
     /**
      * The color of the label given in 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
@@ -75,9 +75,9 @@ public final class LabelArgs extends com.pulumi.resources.ResourceArgs {
         return this.project;
     }
 
-    private LabelArgs() {}
+    private ProjectLabelArgs() {}
 
-    private LabelArgs(LabelArgs $) {
+    private ProjectLabelArgs(ProjectLabelArgs $) {
         this.color = $.color;
         this.description = $.description;
         this.name = $.name;
@@ -87,19 +87,19 @@ public final class LabelArgs extends com.pulumi.resources.ResourceArgs {
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(LabelArgs defaults) {
+    public static Builder builder(ProjectLabelArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private LabelArgs $;
+        private ProjectLabelArgs $;
 
         public Builder() {
-            $ = new LabelArgs();
+            $ = new ProjectLabelArgs();
         }
 
-        public Builder(LabelArgs defaults) {
-            $ = new LabelArgs(Objects.requireNonNull(defaults));
+        public Builder(ProjectLabelArgs defaults) {
+            $ = new ProjectLabelArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -186,7 +186,7 @@ public final class LabelArgs extends com.pulumi.resources.ResourceArgs {
             return project(Output.of(project));
         }
 
-        public LabelArgs build() {
+        public ProjectLabelArgs build() {
             $.color = Objects.requireNonNull($.color, "expected parameter 'color' to be non-null");
             $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
             return $;

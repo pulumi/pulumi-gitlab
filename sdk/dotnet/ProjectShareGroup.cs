@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
     ///     {
     ///         GroupAccess = "guest",
     ///         GroupId = 1337,
-    ///         ProjectId = "12345",
+    ///         Project = "12345",
     ///     });
     /// 
     /// });
@@ -64,10 +64,10 @@ namespace Pulumi.GitLab
         public Output<int> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the project.
+        /// The ID or URL-encoded path of the project.
         /// </summary>
-        [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
 
         /// <summary>
@@ -134,10 +134,10 @@ namespace Pulumi.GitLab
         public Input<int> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// The id of the project.
+        /// The ID or URL-encoded path of the project.
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public ProjectShareGroupArgs()
         {
@@ -166,10 +166,10 @@ namespace Pulumi.GitLab
         public Input<int>? GroupId { get; set; }
 
         /// <summary>
-        /// The id of the project.
+        /// The ID or URL-encoded path of the project.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public ProjectShareGroupState()
         {

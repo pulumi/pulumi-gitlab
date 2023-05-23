@@ -69,8 +69,14 @@ from .group_share_group import *
 from .group_variable import *
 from .instance_cluster import *
 from .instance_variable import *
-from .label import *
-from .managed_license import *
+from .integration_custom_issue_tracker import *
+from .integration_emails_on_push import *
+from .integration_external_wiki import *
+from .integration_github import *
+from .integration_jira import *
+from .integration_microsoft_teams import *
+from .integration_pipelines_email import *
+from .integration_slack import *
 from .pages_domain import *
 from .personal_access_token import *
 from .pipeline_schedule import *
@@ -87,6 +93,7 @@ from .project_freeze_period import *
 from .project_hook import *
 from .project_issue import *
 from .project_issue_board import *
+from .project_label import *
 from .project_level_mr_approvals import *
 from .project_membership import *
 from .project_milestone import *
@@ -322,18 +329,66 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
-  "mod": "index/label",
+  "mod": "index/integrationCustomIssueTracker",
   "fqn": "pulumi_gitlab",
   "classes": {
-   "gitlab:index/label:Label": "Label"
+   "gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker": "IntegrationCustomIssueTracker"
   }
  },
  {
   "pkg": "gitlab",
-  "mod": "index/managedLicense",
+  "mod": "index/integrationEmailsOnPush",
   "fqn": "pulumi_gitlab",
   "classes": {
-   "gitlab:index/managedLicense:ManagedLicense": "ManagedLicense"
+   "gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush": "IntegrationEmailsOnPush"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/integrationExternalWiki",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/integrationExternalWiki:IntegrationExternalWiki": "IntegrationExternalWiki"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/integrationGithub",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/integrationGithub:IntegrationGithub": "IntegrationGithub"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/integrationJira",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/integrationJira:IntegrationJira": "IntegrationJira"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/integrationMicrosoftTeams",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams": "IntegrationMicrosoftTeams"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/integrationPipelinesEmail",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail": "IntegrationPipelinesEmail"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/integrationSlack",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/integrationSlack:IntegrationSlack": "IntegrationSlack"
   }
  },
  {
@@ -462,6 +517,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectIssueBoard:ProjectIssueBoard": "ProjectIssueBoard"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectLabel",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectLabel:ProjectLabel": "ProjectLabel"
   }
  },
  {

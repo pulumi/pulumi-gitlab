@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -38,7 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectLevelMrApprovals(ctx, "fooProjectLevelMrApprovals", &gitlab.ProjectLevelMrApprovalsArgs{
-//				ProjectId:            fooProject.ID(),
+//				Project:              fooProject.ID(),
 //				ResetApprovalsOnPush: pulumi.Bool(true),
 //				DisableOverridingApproversPerMergeRequest: pulumi.Bool(false),
 //				MergeRequestsAuthorApproval:               pulumi.Bool(false),
@@ -77,8 +77,8 @@ type ProjectLevelMrApprovals struct {
 	MergeRequestsAuthorApproval pulumi.BoolPtrOutput `pulumi:"mergeRequestsAuthorApproval"`
 	// Set to `true` if you want to prevent approval of merge requests by merge request committers.
 	MergeRequestsDisableCommittersApproval pulumi.BoolPtrOutput `pulumi:"mergeRequestsDisableCommittersApproval"`
-	// The ID of the project to change MR approval configuration.
-	ProjectId pulumi.IntOutput `pulumi:"projectId"`
+	// The ID or URL-encoded path of a project to change MR approval configuration.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Set to `true` if you want to require authentication when approving a merge request.
 	RequirePasswordToApprove pulumi.BoolPtrOutput `pulumi:"requirePasswordToApprove"`
 	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
@@ -92,8 +92,8 @@ func NewProjectLevelMrApprovals(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource ProjectLevelMrApprovals
 	err := ctx.RegisterResource("gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals", name, args, &resource, opts...)
@@ -123,8 +123,8 @@ type projectLevelMrApprovalsState struct {
 	MergeRequestsAuthorApproval *bool `pulumi:"mergeRequestsAuthorApproval"`
 	// Set to `true` if you want to prevent approval of merge requests by merge request committers.
 	MergeRequestsDisableCommittersApproval *bool `pulumi:"mergeRequestsDisableCommittersApproval"`
-	// The ID of the project to change MR approval configuration.
-	ProjectId *int `pulumi:"projectId"`
+	// The ID or URL-encoded path of a project to change MR approval configuration.
+	Project *string `pulumi:"project"`
 	// Set to `true` if you want to require authentication when approving a merge request.
 	RequirePasswordToApprove *bool `pulumi:"requirePasswordToApprove"`
 	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
@@ -138,8 +138,8 @@ type ProjectLevelMrApprovalsState struct {
 	MergeRequestsAuthorApproval pulumi.BoolPtrInput
 	// Set to `true` if you want to prevent approval of merge requests by merge request committers.
 	MergeRequestsDisableCommittersApproval pulumi.BoolPtrInput
-	// The ID of the project to change MR approval configuration.
-	ProjectId pulumi.IntPtrInput
+	// The ID or URL-encoded path of a project to change MR approval configuration.
+	Project pulumi.StringPtrInput
 	// Set to `true` if you want to require authentication when approving a merge request.
 	RequirePasswordToApprove pulumi.BoolPtrInput
 	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
@@ -157,8 +157,8 @@ type projectLevelMrApprovalsArgs struct {
 	MergeRequestsAuthorApproval *bool `pulumi:"mergeRequestsAuthorApproval"`
 	// Set to `true` if you want to prevent approval of merge requests by merge request committers.
 	MergeRequestsDisableCommittersApproval *bool `pulumi:"mergeRequestsDisableCommittersApproval"`
-	// The ID of the project to change MR approval configuration.
-	ProjectId int `pulumi:"projectId"`
+	// The ID or URL-encoded path of a project to change MR approval configuration.
+	Project string `pulumi:"project"`
 	// Set to `true` if you want to require authentication when approving a merge request.
 	RequirePasswordToApprove *bool `pulumi:"requirePasswordToApprove"`
 	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
@@ -173,8 +173,8 @@ type ProjectLevelMrApprovalsArgs struct {
 	MergeRequestsAuthorApproval pulumi.BoolPtrInput
 	// Set to `true` if you want to prevent approval of merge requests by merge request committers.
 	MergeRequestsDisableCommittersApproval pulumi.BoolPtrInput
-	// The ID of the project to change MR approval configuration.
-	ProjectId pulumi.IntInput
+	// The ID or URL-encoded path of a project to change MR approval configuration.
+	Project pulumi.StringInput
 	// Set to `true` if you want to require authentication when approving a merge request.
 	RequirePasswordToApprove pulumi.BoolPtrInput
 	// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
@@ -285,9 +285,9 @@ func (o ProjectLevelMrApprovalsOutput) MergeRequestsDisableCommittersApproval() 
 	return o.ApplyT(func(v *ProjectLevelMrApprovals) pulumi.BoolPtrOutput { return v.MergeRequestsDisableCommittersApproval }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the project to change MR approval configuration.
-func (o ProjectLevelMrApprovalsOutput) ProjectId() pulumi.IntOutput {
-	return o.ApplyT(func(v *ProjectLevelMrApprovals) pulumi.IntOutput { return v.ProjectId }).(pulumi.IntOutput)
+// The ID or URL-encoded path of a project to change MR approval configuration.
+func (o ProjectLevelMrApprovalsOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectLevelMrApprovals) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Set to `true` if you want to require authentication when approving a merge request.

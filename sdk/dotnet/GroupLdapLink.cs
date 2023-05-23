@@ -14,33 +14,18 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#ldap-group-links)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var test = new GitLab.GroupLdapLink("test", new()
-    ///     {
-    ///         Cn = "testuser",
-    ///         GroupAccess = "developer",
-    ///         GroupId = "12345",
-    ///         LdapProvider = "ldapmain",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// GitLab group ldap links can be imported using an id made up of `group_id:ldap_provider:cn`, e.g.
+    /// GitLab group ldap links can be imported using an id made up of `group_id:ldap_provider:cn:filter`. CN and Filter are mutually exclusive, so one will be missing. If using the CN for the group link, the ID will end with a blank filter (":"). e.g.,
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test "12345:ldapmain:testuser"
+    ///  $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test "12345:ldapmain:testcn:"
+    /// ```
+    /// 
+    ///  If using the Filter for the group link, the ID will have two "::" in the middle due to having a blank CN. e.g.,
+    /// 
+    /// ```sh
+    ///  $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test "12345:ldapmain::testfilter"
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/groupLdapLink:GroupLdapLink")]
@@ -53,10 +38,16 @@ namespace Pulumi.GitLab
         public Output<string?> AccessLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The CN of the LDAP group to link with.
+        /// The CN of the LDAP group to link with. Required if `filter` is not provided.
         /// </summary>
         [Output("cn")]
         public Output<string> Cn { get; private set; } = null!;
+
+        /// <summary>
+        /// The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
+        /// </summary>
+        [Output("filter")]
+        public Output<string> Filter { get; private set; } = null!;
 
         /// <summary>
         /// If true, then delete and replace an existing LDAP link if one exists.
@@ -65,16 +56,16 @@ namespace Pulumi.GitLab
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
+        /// The ID or URL-encoded path of the group
+        /// </summary>
+        [Output("group")]
+        public Output<string> Group { get; private set; } = null!;
+
+        /// <summary>
         /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Output("groupAccess")]
         public Output<string?> GroupAccess { get; private set; } = null!;
-
-        /// <summary>
-        /// The id of the GitLab group.
-        /// </summary>
-        [Output("groupId")]
-        public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
         /// The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
@@ -135,10 +126,16 @@ namespace Pulumi.GitLab
         public Input<string>? AccessLevel { get; set; }
 
         /// <summary>
-        /// The CN of the LDAP group to link with.
+        /// The CN of the LDAP group to link with. Required if `filter` is not provided.
         /// </summary>
-        [Input("cn", required: true)]
-        public Input<string> Cn { get; set; } = null!;
+        [Input("cn")]
+        public Input<string>? Cn { get; set; }
+
+        /// <summary>
+        /// The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
 
         /// <summary>
         /// If true, then delete and replace an existing LDAP link if one exists.
@@ -147,16 +144,16 @@ namespace Pulumi.GitLab
         public Input<bool>? Force { get; set; }
 
         /// <summary>
+        /// The ID or URL-encoded path of the group
+        /// </summary>
+        [Input("group", required: true)]
+        public Input<string> Group { get; set; } = null!;
+
+        /// <summary>
         /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Input("groupAccess")]
         public Input<string>? GroupAccess { get; set; }
-
-        /// <summary>
-        /// The id of the GitLab group.
-        /// </summary>
-        [Input("groupId", required: true)]
-        public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
         /// The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
@@ -179,10 +176,16 @@ namespace Pulumi.GitLab
         public Input<string>? AccessLevel { get; set; }
 
         /// <summary>
-        /// The CN of the LDAP group to link with.
+        /// The CN of the LDAP group to link with. Required if `filter` is not provided.
         /// </summary>
         [Input("cn")]
         public Input<string>? Cn { get; set; }
+
+        /// <summary>
+        /// The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
 
         /// <summary>
         /// If true, then delete and replace an existing LDAP link if one exists.
@@ -191,16 +194,16 @@ namespace Pulumi.GitLab
         public Input<bool>? Force { get; set; }
 
         /// <summary>
+        /// The ID or URL-encoded path of the group
+        /// </summary>
+        [Input("group")]
+        public Input<string>? Group { get; set; }
+
+        /// <summary>
         /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         /// </summary>
         [Input("groupAccess")]
         public Input<string>? GroupAccess { get; set; }
-
-        /// <summary>
-        /// The id of the GitLab group.
-        /// </summary>
-        [Input("groupId")]
-        public Input<string>? GroupId { get; set; }
 
         /// <summary>
         /// The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`

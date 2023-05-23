@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -61,6 +61,8 @@ type GroupLabel struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name or id of the group to add the label to.
 	Group pulumi.StringOutput `pulumi:"group"`
+	// The id of the group label.
+	LabelId pulumi.IntOutput `pulumi:"labelId"`
 	// The name of the label.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
@@ -106,6 +108,8 @@ type groupLabelState struct {
 	Description *string `pulumi:"description"`
 	// The name or id of the group to add the label to.
 	Group *string `pulumi:"group"`
+	// The id of the group label.
+	LabelId *int `pulumi:"labelId"`
 	// The name of the label.
 	Name *string `pulumi:"name"`
 }
@@ -117,6 +121,8 @@ type GroupLabelState struct {
 	Description pulumi.StringPtrInput
 	// The name or id of the group to add the label to.
 	Group pulumi.StringPtrInput
+	// The id of the group label.
+	LabelId pulumi.IntPtrInput
 	// The name of the label.
 	Name pulumi.StringPtrInput
 }
@@ -248,6 +254,11 @@ func (o GroupLabelOutput) Description() pulumi.StringPtrOutput {
 // The name or id of the group to add the label to.
 func (o GroupLabelOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupLabel) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
+}
+
+// The id of the group label.
+func (o GroupLabelOutput) LabelId() pulumi.IntOutput {
+	return o.ApplyT(func(v *GroupLabel) pulumi.IntOutput { return v.LabelId }).(pulumi.IntOutput)
 }
 
 // The name of the label.

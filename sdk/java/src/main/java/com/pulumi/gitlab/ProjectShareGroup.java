@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *         var test = new ProjectShareGroup(&#34;test&#34;, ProjectShareGroupArgs.builder()        
  *             .groupAccess(&#34;guest&#34;)
  *             .groupId(1337)
- *             .projectId(&#34;12345&#34;)
+ *             .project(&#34;12345&#34;)
  *             .build());
  * 
  *     }
@@ -110,18 +110,18 @@ public class ProjectShareGroup extends com.pulumi.resources.CustomResource {
         return this.groupId;
     }
     /**
-     * The id of the project.
+     * The ID or URL-encoded path of the project.
      * 
      */
-    @Export(name="projectId", refs={String.class}, tree="[0]")
-    private Output<String> projectId;
+    @Export(name="project", refs={String.class}, tree="[0]")
+    private Output<String> project;
 
     /**
-     * @return The id of the project.
+     * @return The ID or URL-encoded path of the project.
      * 
      */
-    public Output<String> projectId() {
-        return this.projectId;
+    public Output<String> project() {
+        return this.project;
     }
 
     /**

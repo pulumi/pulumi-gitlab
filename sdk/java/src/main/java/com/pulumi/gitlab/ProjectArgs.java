@@ -929,21 +929,6 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-     * 
-     */
-    @Import(name="operationsAccessLevel")
-    private @Nullable Output<String> operationsAccessLevel;
-
-    /**
-     * @return Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-     * 
-     */
-    public Optional<Output<String>> operationsAccessLevel() {
-        return Optional.ofNullable(this.operationsAccessLevel);
-    }
-
-    /**
      * Enable packages repository for the project.
      * 
      */
@@ -1485,7 +1470,6 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         this.onlyAllowMergeIfAllDiscussionsAreResolved = $.onlyAllowMergeIfAllDiscussionsAreResolved;
         this.onlyAllowMergeIfPipelineSucceeds = $.onlyAllowMergeIfPipelineSucceeds;
         this.onlyMirrorProtectedBranches = $.onlyMirrorProtectedBranches;
-        this.operationsAccessLevel = $.operationsAccessLevel;
         this.packagesEnabled = $.packagesEnabled;
         this.pagesAccessLevel = $.pagesAccessLevel;
         this.path = $.path;
@@ -2791,27 +2775,6 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder onlyMirrorProtectedBranches(Boolean onlyMirrorProtectedBranches) {
             return onlyMirrorProtectedBranches(Output.of(onlyMirrorProtectedBranches));
-        }
-
-        /**
-         * @param operationsAccessLevel Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder operationsAccessLevel(@Nullable Output<String> operationsAccessLevel) {
-            $.operationsAccessLevel = operationsAccessLevel;
-            return this;
-        }
-
-        /**
-         * @param operationsAccessLevel Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder operationsAccessLevel(String operationsAccessLevel) {
-            return operationsAccessLevel(Output.of(operationsAccessLevel));
         }
 
         /**

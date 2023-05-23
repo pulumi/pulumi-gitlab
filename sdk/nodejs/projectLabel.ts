@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.Label` resource allows to manage the lifecycle of a project label.
+ * The `gitlab.ProjectLabel` resource allows to manage the lifecycle of a project label.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
  *
@@ -15,13 +15,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const fixme = new gitlab.Label("fixme", {
+ * const fixme = new gitlab.ProjectLabel("fixme", {
  *     project: "example",
  *     description: "issue with failing tests",
  *     color: "#ffcc00",
  * });
  * // Scoped label
- * const devopsCreate = new gitlab.Label("devopsCreate", {
+ * const devopsCreate = new gitlab.ProjectLabel("devopsCreate", {
  *     project: gitlab_project.example.id,
  *     description: "issue for creating infrastructure resources",
  *     color: "#ffa500",
@@ -30,15 +30,15 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Gitlab labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
+ * Gitlab Project labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
  *
  * ```sh
- *  $ pulumi import gitlab:index/label:Label example 12345:fixme
+ *  $ pulumi import gitlab:index/projectLabel:ProjectLabel example 12345:fixme
  * ```
  */
-export class Label extends pulumi.CustomResource {
+export class ProjectLabel extends pulumi.CustomResource {
     /**
-     * Get an existing Label resource's state with the given name, ID, and optional extra
+     * Get an existing ProjectLabel resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -46,22 +46,22 @@ export class Label extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LabelState, opts?: pulumi.CustomResourceOptions): Label {
-        return new Label(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ProjectLabelState, opts?: pulumi.CustomResourceOptions): ProjectLabel {
+        return new ProjectLabel(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gitlab:index/label:Label';
+    public static readonly __pulumiType = 'gitlab:index/projectLabel:ProjectLabel';
 
     /**
-     * Returns true if the given object is an instance of Label.  This is designed to work even
+     * Returns true if the given object is an instance of ProjectLabel.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is Label {
+    public static isInstance(obj: any): obj is ProjectLabel {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === Label.__pulumiType;
+        return obj['__pulumiType'] === ProjectLabel.__pulumiType;
     }
 
     /**
@@ -73,6 +73,10 @@ export class Label extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The id of the project label.
+     */
+    public /*out*/ readonly labelId!: pulumi.Output<number>;
+    /**
      * The name of the label.
      */
     public readonly name!: pulumi.Output<string>;
@@ -82,24 +86,25 @@ export class Label extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
 
     /**
-     * Create a Label resource with the given unique name, arguments, and options.
+     * Create a ProjectLabel resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: LabelArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: LabelArgs | LabelState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ProjectLabelArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ProjectLabelArgs | ProjectLabelState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as LabelState | undefined;
+            const state = argsOrState as ProjectLabelState | undefined;
             resourceInputs["color"] = state ? state.color : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["labelId"] = state ? state.labelId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
         } else {
-            const args = argsOrState as LabelArgs | undefined;
+            const args = argsOrState as ProjectLabelArgs | undefined;
             if ((!args || args.color === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'color'");
             }
@@ -110,16 +115,17 @@ export class Label extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["labelId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Label.__pulumiType, name, resourceInputs, opts);
+        super(ProjectLabel.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering Label resources.
+ * Input properties used for looking up and filtering ProjectLabel resources.
  */
-export interface LabelState {
+export interface ProjectLabelState {
     /**
      * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
      */
@@ -128,6 +134,10 @@ export interface LabelState {
      * The description of the label.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The id of the project label.
+     */
+    labelId?: pulumi.Input<number>;
     /**
      * The name of the label.
      */
@@ -139,9 +149,9 @@ export interface LabelState {
 }
 
 /**
- * The set of arguments for constructing a Label resource.
+ * The set of arguments for constructing a ProjectLabel resource.
  */
-export interface LabelArgs {
+export interface ProjectLabelArgs {
     /**
      * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
      */

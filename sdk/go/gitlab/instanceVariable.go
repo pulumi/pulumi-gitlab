@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -62,6 +62,8 @@ type InstanceVariable struct {
 	Masked pulumi.BoolPtrOutput `pulumi:"masked"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrOutput `pulumi:"protected"`
+	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	Raw pulumi.BoolPtrOutput `pulumi:"raw"`
 	// The value of the variable.
 	Value pulumi.StringOutput `pulumi:"value"`
 	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
@@ -81,13 +83,6 @@ func NewInstanceVariable(ctx *pulumi.Context,
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
 	}
-	if args.Value != nil {
-		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringInput)
-	}
-	secrets := pulumi.AdditionalSecretOutputs([]string{
-		"value",
-	})
-	opts = append(opts, secrets)
 	var resource InstanceVariable
 	err := ctx.RegisterResource("gitlab:index/instanceVariable:InstanceVariable", name, args, &resource, opts...)
 	if err != nil {
@@ -116,6 +111,8 @@ type instanceVariableState struct {
 	Masked *bool `pulumi:"masked"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected *bool `pulumi:"protected"`
+	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	Raw *bool `pulumi:"raw"`
 	// The value of the variable.
 	Value *string `pulumi:"value"`
 	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
@@ -129,6 +126,8 @@ type InstanceVariableState struct {
 	Masked pulumi.BoolPtrInput
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrInput
+	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	Raw pulumi.BoolPtrInput
 	// The value of the variable.
 	Value pulumi.StringPtrInput
 	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
@@ -146,6 +145,8 @@ type instanceVariableArgs struct {
 	Masked *bool `pulumi:"masked"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected *bool `pulumi:"protected"`
+	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	Raw *bool `pulumi:"raw"`
 	// The value of the variable.
 	Value string `pulumi:"value"`
 	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
@@ -160,6 +161,8 @@ type InstanceVariableArgs struct {
 	Masked pulumi.BoolPtrInput
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrInput
+	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	Raw pulumi.BoolPtrInput
 	// The value of the variable.
 	Value pulumi.StringInput
 	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
@@ -266,6 +269,11 @@ func (o InstanceVariableOutput) Masked() pulumi.BoolPtrOutput {
 // If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 func (o InstanceVariableOutput) Protected() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceVariable) pulumi.BoolPtrOutput { return v.Protected }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+func (o InstanceVariableOutput) Raw() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceVariable) pulumi.BoolPtrOutput { return v.Raw }).(pulumi.BoolPtrOutput)
 }
 
 // The value of the variable.

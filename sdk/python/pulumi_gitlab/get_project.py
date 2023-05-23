@@ -22,7 +22,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, analytics_access_level=None, archived=None, auto_cancel_pending_pipelines=None, auto_devops_deploy_strategy=None, auto_devops_enabled=None, autoclose_referenced_issues=None, build_git_strategy=None, build_timeout=None, builds_access_level=None, ci_config_path=None, ci_default_git_depth=None, ci_separated_caches=None, container_expiration_policies=None, container_registry_access_level=None, default_branch=None, description=None, emails_disabled=None, environments_access_level=None, external_authorization_classification_label=None, feature_flags_access_level=None, forking_access_level=None, http_url_to_repo=None, id=None, import_url=None, infrastructure_access_level=None, issues_access_level=None, issues_enabled=None, keep_latest_artifact=None, lfs_enabled=None, merge_commit_template=None, merge_pipelines_enabled=None, merge_requests_access_level=None, merge_requests_enabled=None, merge_trains_enabled=None, monitor_access_level=None, name=None, namespace_id=None, operations_access_level=None, path=None, path_with_namespace=None, pipelines_enabled=None, printing_merge_request_link_enabled=None, public_builds=None, push_rules=None, releases_access_level=None, remove_source_branch_after_merge=None, repository_access_level=None, repository_storage=None, request_access_enabled=None, requirements_access_level=None, resolve_outdated_diff_discussions=None, restrict_user_defined_variables=None, runners_token=None, security_and_compliance_access_level=None, snippets_access_level=None, snippets_enabled=None, squash_commit_template=None, ssh_url_to_repo=None, suggestion_commit_message=None, topics=None, visibility_level=None, web_url=None, wiki_access_level=None, wiki_enabled=None):
+    def __init__(__self__, analytics_access_level=None, archived=None, auto_cancel_pending_pipelines=None, auto_devops_deploy_strategy=None, auto_devops_enabled=None, autoclose_referenced_issues=None, build_git_strategy=None, build_timeout=None, builds_access_level=None, ci_config_path=None, ci_default_git_depth=None, ci_separated_caches=None, container_expiration_policies=None, container_registry_access_level=None, default_branch=None, description=None, emails_disabled=None, environments_access_level=None, external_authorization_classification_label=None, feature_flags_access_level=None, forking_access_level=None, http_url_to_repo=None, id=None, import_url=None, infrastructure_access_level=None, issues_access_level=None, issues_enabled=None, keep_latest_artifact=None, lfs_enabled=None, merge_commit_template=None, merge_pipelines_enabled=None, merge_requests_access_level=None, merge_requests_enabled=None, merge_trains_enabled=None, monitor_access_level=None, name=None, namespace_id=None, path=None, path_with_namespace=None, pipelines_enabled=None, printing_merge_request_link_enabled=None, public_builds=None, push_rules=None, releases_access_level=None, remove_source_branch_after_merge=None, repository_access_level=None, repository_storage=None, request_access_enabled=None, requirements_access_level=None, resolve_outdated_diff_discussions=None, restrict_user_defined_variables=None, runners_token=None, security_and_compliance_access_level=None, snippets_access_level=None, snippets_enabled=None, squash_commit_template=None, ssh_url_to_repo=None, suggestion_commit_message=None, topics=None, visibility_level=None, web_url=None, wiki_access_level=None, wiki_enabled=None):
         if analytics_access_level and not isinstance(analytics_access_level, str):
             raise TypeError("Expected argument 'analytics_access_level' to be a str")
         pulumi.set(__self__, "analytics_access_level", analytics_access_level)
@@ -134,9 +134,6 @@ class GetProjectResult:
         if namespace_id and not isinstance(namespace_id, int):
             raise TypeError("Expected argument 'namespace_id' to be a int")
         pulumi.set(__self__, "namespace_id", namespace_id)
-        if operations_access_level and not isinstance(operations_access_level, str):
-            raise TypeError("Expected argument 'operations_access_level' to be a str")
-        pulumi.set(__self__, "operations_access_level", operations_access_level)
         if path and not isinstance(path, str):
             raise TypeError("Expected argument 'path' to be a str")
         pulumi.set(__self__, "path", path)
@@ -513,14 +510,6 @@ class GetProjectResult:
         return pulumi.get(self, "namespace_id")
 
     @property
-    @pulumi.getter(name="operationsAccessLevel")
-    def operations_access_level(self) -> str:
-        """
-        Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-        """
-        return pulumi.get(self, "operations_access_level")
-
-    @property
     @pulumi.getter
     def path(self) -> str:
         """
@@ -772,7 +761,6 @@ class AwaitableGetProjectResult(GetProjectResult):
             monitor_access_level=self.monitor_access_level,
             name=self.name,
             namespace_id=self.namespace_id,
-            operations_access_level=self.operations_access_level,
             path=self.path,
             path_with_namespace=self.path_with_namespace,
             pipelines_enabled=self.pipelines_enabled,
@@ -872,7 +860,6 @@ def get_project(ci_default_git_depth: Optional[int] = None,
         monitor_access_level=__ret__.monitor_access_level,
         name=__ret__.name,
         namespace_id=__ret__.namespace_id,
-        operations_access_level=__ret__.operations_access_level,
         path=__ret__.path,
         path_with_namespace=__ret__.path_with_namespace,
         pipelines_enabled=__ret__.pipelines_enabled,

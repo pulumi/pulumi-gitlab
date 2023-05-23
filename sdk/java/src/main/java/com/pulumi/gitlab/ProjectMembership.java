@@ -46,14 +46,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var test = new ProjectMembership(&#34;test&#34;, ProjectMembershipArgs.builder()        
  *             .accessLevel(&#34;guest&#34;)
- *             .projectId(&#34;12345&#34;)
+ *             .project(&#34;12345&#34;)
  *             .userId(1337)
  *             .build());
  * 
  *         var example = new ProjectMembership(&#34;example&#34;, ProjectMembershipArgs.builder()        
  *             .accessLevel(&#34;guest&#34;)
  *             .expiresAt(&#34;2022-12-31&#34;)
- *             .projectId(&#34;67890&#34;)
+ *             .project(&#34;67890&#34;)
  *             .userId(1234)
  *             .build());
  * 
@@ -101,18 +101,18 @@ public class ProjectMembership extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.expiresAt);
     }
     /**
-     * The id of the project.
+     * The ID or URL-encoded path of the project.
      * 
      */
-    @Export(name="projectId", refs={String.class}, tree="[0]")
-    private Output<String> projectId;
+    @Export(name="project", refs={String.class}, tree="[0]")
+    private Output<String> project;
 
     /**
-     * @return The id of the project.
+     * @return The ID or URL-encoded path of the project.
      * 
      */
-    public Output<String> projectId() {
-        return this.projectId;
+    public Output<String> project() {
+        return this.project;
     }
     /**
      * The id of the user.

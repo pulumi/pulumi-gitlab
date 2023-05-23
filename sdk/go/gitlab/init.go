@@ -68,10 +68,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceCluster{}
 	case "gitlab:index/instanceVariable:InstanceVariable":
 		r = &InstanceVariable{}
-	case "gitlab:index/label:Label":
-		r = &Label{}
-	case "gitlab:index/managedLicense:ManagedLicense":
-		r = &ManagedLicense{}
+	case "gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker":
+		r = &IntegrationCustomIssueTracker{}
+	case "gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush":
+		r = &IntegrationEmailsOnPush{}
+	case "gitlab:index/integrationExternalWiki:IntegrationExternalWiki":
+		r = &IntegrationExternalWiki{}
+	case "gitlab:index/integrationGithub:IntegrationGithub":
+		r = &IntegrationGithub{}
+	case "gitlab:index/integrationJira:IntegrationJira":
+		r = &IntegrationJira{}
+	case "gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams":
+		r = &IntegrationMicrosoftTeams{}
+	case "gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail":
+		r = &IntegrationPipelinesEmail{}
+	case "gitlab:index/integrationSlack:IntegrationSlack":
+		r = &IntegrationSlack{}
 	case "gitlab:index/pagesDomain:PagesDomain":
 		r = &PagesDomain{}
 	case "gitlab:index/personalAccessToken:PersonalAccessToken":
@@ -104,6 +116,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectIssue{}
 	case "gitlab:index/projectIssueBoard:ProjectIssueBoard":
 		r = &ProjectIssueBoard{}
+	case "gitlab:index/projectLabel:ProjectLabel":
+		r = &ProjectLabel{}
 	case "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals":
 		r = &ProjectLevelMrApprovals{}
 	case "gitlab:index/projectMembership:ProjectMembership":
@@ -308,12 +322,42 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
-		"index/label",
+		"index/integrationCustomIssueTracker",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
-		"index/managedLicense",
+		"index/integrationEmailsOnPush",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/integrationExternalWiki",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/integrationGithub",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/integrationJira",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/integrationMicrosoftTeams",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/integrationPipelinesEmail",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/integrationSlack",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -394,6 +438,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectIssueBoard",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectLabel",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

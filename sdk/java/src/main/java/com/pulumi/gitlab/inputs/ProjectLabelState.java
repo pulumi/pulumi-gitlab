@@ -5,15 +5,16 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class LabelState extends com.pulumi.resources.ResourceArgs {
+public final class ProjectLabelState extends com.pulumi.resources.ResourceArgs {
 
-    public static final LabelState Empty = new LabelState();
+    public static final ProjectLabelState Empty = new ProjectLabelState();
 
     /**
      * The color of the label given in 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
@@ -46,6 +47,21 @@ public final class LabelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The id of the project label.
+     * 
+     */
+    @Import(name="labelId")
+    private @Nullable Output<Integer> labelId;
+
+    /**
+     * @return The id of the project label.
+     * 
+     */
+    public Optional<Output<Integer>> labelId() {
+        return Optional.ofNullable(this.labelId);
+    }
+
+    /**
      * The name of the label.
      * 
      */
@@ -75,11 +91,12 @@ public final class LabelState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.project);
     }
 
-    private LabelState() {}
+    private ProjectLabelState() {}
 
-    private LabelState(LabelState $) {
+    private ProjectLabelState(ProjectLabelState $) {
         this.color = $.color;
         this.description = $.description;
+        this.labelId = $.labelId;
         this.name = $.name;
         this.project = $.project;
     }
@@ -87,19 +104,19 @@ public final class LabelState extends com.pulumi.resources.ResourceArgs {
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(LabelState defaults) {
+    public static Builder builder(ProjectLabelState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private LabelState $;
+        private ProjectLabelState $;
 
         public Builder() {
-            $ = new LabelState();
+            $ = new ProjectLabelState();
         }
 
-        public Builder(LabelState defaults) {
-            $ = new LabelState(Objects.requireNonNull(defaults));
+        public Builder(ProjectLabelState defaults) {
+            $ = new ProjectLabelState(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -145,6 +162,27 @@ public final class LabelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param labelId The id of the project label.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labelId(@Nullable Output<Integer> labelId) {
+            $.labelId = labelId;
+            return this;
+        }
+
+        /**
+         * @param labelId The id of the project label.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labelId(Integer labelId) {
+            return labelId(Output.of(labelId));
+        }
+
+        /**
          * @param name The name of the label.
          * 
          * @return builder
@@ -186,7 +224,7 @@ public final class LabelState extends com.pulumi.resources.ResourceArgs {
             return project(Output.of(project));
         }
 
-        public LabelState build() {
+        public ProjectLabelState build() {
             return $;
         }
     }

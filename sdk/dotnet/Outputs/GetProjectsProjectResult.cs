@@ -81,7 +81,6 @@ namespace Pulumi.GitLab.Outputs
         public readonly bool OnlyAllowMergeIfPipelineSucceeds;
         public readonly bool OnlyMirrorProtectedBranches;
         public readonly int OpenIssuesCount;
-        public readonly string OperationsAccessLevel;
         public readonly ImmutableArray<Outputs.GetProjectsProjectOwnerResult> Owners;
         public readonly bool PackagesEnabled;
         public readonly string Path;
@@ -247,8 +246,6 @@ namespace Pulumi.GitLab.Outputs
 
             int openIssuesCount,
 
-            string operationsAccessLevel,
-
             ImmutableArray<Outputs.GetProjectsProjectOwnerResult> owners,
 
             bool packagesEnabled,
@@ -375,7 +372,6 @@ namespace Pulumi.GitLab.Outputs
             OnlyAllowMergeIfPipelineSucceeds = onlyAllowMergeIfPipelineSucceeds;
             OnlyMirrorProtectedBranches = onlyMirrorProtectedBranches;
             OpenIssuesCount = openIssuesCount;
-            OperationsAccessLevel = operationsAccessLevel;
             Owners = owners;
             PackagesEnabled = packagesEnabled;
             Path = path;

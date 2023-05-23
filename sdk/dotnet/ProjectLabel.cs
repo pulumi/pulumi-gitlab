@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.Label` resource allows to manage the lifecycle of a project label.
+    /// The `gitlab.ProjectLabel` resource allows to manage the lifecycle of a project label.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
     /// 
@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fixme = new GitLab.Label("fixme", new()
+    ///     var fixme = new GitLab.ProjectLabel("fixme", new()
     ///     {
     ///         Project = "example",
     ///         Description = "issue with failing tests",
@@ -32,7 +32,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Scoped label
-    ///     var devopsCreate = new GitLab.Label("devopsCreate", new()
+    ///     var devopsCreate = new GitLab.ProjectLabel("devopsCreate", new()
     ///     {
     ///         Project = gitlab_project.Example.Id,
     ///         Description = "issue for creating infrastructure resources",
@@ -44,14 +44,14 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Gitlab labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
+    /// Gitlab Project labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/label:Label example 12345:fixme
+    ///  $ pulumi import gitlab:index/projectLabel:ProjectLabel example 12345:fixme
     /// ```
     /// </summary>
-    [GitLabResourceType("gitlab:index/label:Label")]
-    public partial class Label : global::Pulumi.CustomResource
+    [GitLabResourceType("gitlab:index/projectLabel:ProjectLabel")]
+    public partial class ProjectLabel : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
@@ -64,6 +64,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The id of the project label.
+        /// </summary>
+        [Output("labelId")]
+        public Output<int> LabelId { get; private set; } = null!;
 
         /// <summary>
         /// The name of the label.
@@ -79,19 +85,19 @@ namespace Pulumi.GitLab
 
 
         /// <summary>
-        /// Create a Label resource with the given unique name, arguments, and options.
+        /// Create a ProjectLabel resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Label(string name, LabelArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/label:Label", name, args ?? new LabelArgs(), MakeResourceOptions(options, ""))
+        public ProjectLabel(string name, ProjectLabelArgs args, CustomResourceOptions? options = null)
+            : base("gitlab:index/projectLabel:ProjectLabel", name, args ?? new ProjectLabelArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private Label(string name, Input<string> id, LabelState? state = null, CustomResourceOptions? options = null)
-            : base("gitlab:index/label:Label", name, state, MakeResourceOptions(options, id))
+        private ProjectLabel(string name, Input<string> id, ProjectLabelState? state = null, CustomResourceOptions? options = null)
+            : base("gitlab:index/projectLabel:ProjectLabel", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -107,7 +113,7 @@ namespace Pulumi.GitLab
             return merged;
         }
         /// <summary>
-        /// Get an existing Label resource's state with the given name, ID, and optional extra
+        /// Get an existing ProjectLabel resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -115,13 +121,13 @@ namespace Pulumi.GitLab
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static Label Get(string name, Input<string> id, LabelState? state = null, CustomResourceOptions? options = null)
+        public static ProjectLabel Get(string name, Input<string> id, ProjectLabelState? state = null, CustomResourceOptions? options = null)
         {
-            return new Label(name, id, state, options);
+            return new ProjectLabel(name, id, state, options);
         }
     }
 
-    public sealed class LabelArgs : global::Pulumi.ResourceArgs
+    public sealed class ProjectLabelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
@@ -147,13 +153,13 @@ namespace Pulumi.GitLab
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        public LabelArgs()
+        public ProjectLabelArgs()
         {
         }
-        public static new LabelArgs Empty => new LabelArgs();
+        public static new ProjectLabelArgs Empty => new ProjectLabelArgs();
     }
 
-    public sealed class LabelState : global::Pulumi.ResourceArgs
+    public sealed class ProjectLabelState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
@@ -168,6 +174,12 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The id of the project label.
+        /// </summary>
+        [Input("labelId")]
+        public Input<int>? LabelId { get; set; }
+
+        /// <summary>
         /// The name of the label.
         /// </summary>
         [Input("name")]
@@ -179,9 +191,9 @@ namespace Pulumi.GitLab
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        public LabelState()
+        public ProjectLabelState()
         {
         }
-        public static new LabelState Empty => new LabelState();
+        public static new ProjectLabelState Empty => new ProjectLabelState();
     }
 }

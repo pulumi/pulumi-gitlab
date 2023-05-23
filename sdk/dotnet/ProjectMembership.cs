@@ -29,7 +29,7 @@ namespace Pulumi.GitLab
     ///     var test = new GitLab.ProjectMembership("test", new()
     ///     {
     ///         AccessLevel = "guest",
-    ///         ProjectId = "12345",
+    ///         Project = "12345",
     ///         UserId = 1337,
     ///     });
     /// 
@@ -37,7 +37,7 @@ namespace Pulumi.GitLab
     ///     {
     ///         AccessLevel = "guest",
     ///         ExpiresAt = "2022-12-31",
-    ///         ProjectId = "67890",
+    ///         Project = "67890",
     ///         UserId = 1234,
     ///     });
     /// 
@@ -68,10 +68,10 @@ namespace Pulumi.GitLab
         public Output<string?> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the project.
+        /// The ID or URL-encoded path of the project.
         /// </summary>
-        [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The id of the user.
@@ -138,10 +138,10 @@ namespace Pulumi.GitLab
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
-        /// The id of the project.
+        /// The ID or URL-encoded path of the project.
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The id of the user.
@@ -170,10 +170,10 @@ namespace Pulumi.GitLab
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
-        /// The id of the project.
+        /// The ID or URL-encoded path of the project.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The id of the user.

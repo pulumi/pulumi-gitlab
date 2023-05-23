@@ -196,6 +196,7 @@ export interface GetGroupVariablesVariable {
     key: string;
     masked: boolean;
     protected: boolean;
+    raw: boolean;
     value: string;
     variableType: string;
 }
@@ -246,6 +247,7 @@ export interface GetInstanceVariablesVariable {
     key: string;
     masked: boolean;
     protected: boolean;
+    raw: boolean;
     value: string;
     variableType: string;
 }
@@ -567,6 +569,7 @@ export interface GetProjectVariablesVariable {
      */
     project: string;
     protected: boolean;
+    raw: boolean;
     value: string;
     variableType: string;
 }
@@ -640,7 +643,6 @@ export interface GetProjectsProject {
     onlyAllowMergeIfPipelineSucceeds: boolean;
     onlyMirrorProtectedBranches: boolean;
     openIssuesCount: number;
-    operationsAccessLevel: string;
     owners: outputs.GetProjectsProjectOwner[];
     packagesEnabled: boolean;
     path: string;

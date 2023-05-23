@@ -33,7 +33,7 @@ namespace Pulumi.GitLab
     /// 
     ///     var fooProjectLevelMrApprovals = new GitLab.ProjectLevelMrApprovals("fooProjectLevelMrApprovals", new()
     ///     {
-    ///         ProjectId = fooProject.Id,
+    ///         Project = fooProject.Id,
     ///         ResetApprovalsOnPush = true,
     ///         DisableOverridingApproversPerMergeRequest = false,
     ///         MergeRequestsAuthorApproval = false,
@@ -77,10 +77,10 @@ namespace Pulumi.GitLab
         public Output<bool?> MergeRequestsDisableCommittersApproval { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the project to change MR approval configuration.
+        /// The ID or URL-encoded path of a project to change MR approval configuration.
         /// </summary>
-        [Output("projectId")]
-        public Output<int> ProjectId { get; private set; } = null!;
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Set to `true` if you want to require authentication when approving a merge request.
@@ -159,10 +159,10 @@ namespace Pulumi.GitLab
         public Input<bool>? MergeRequestsDisableCommittersApproval { get; set; }
 
         /// <summary>
-        /// The ID of the project to change MR approval configuration.
+        /// The ID or URL-encoded path of a project to change MR approval configuration.
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<int> ProjectId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Set to `true` if you want to require authentication when approving a merge request.
@@ -203,10 +203,10 @@ namespace Pulumi.GitLab
         public Input<bool>? MergeRequestsDisableCommittersApproval { get; set; }
 
         /// <summary>
-        /// The ID of the project to change MR approval configuration.
+        /// The ID or URL-encoded path of a project to change MR approval configuration.
         /// </summary>
-        [Input("projectId")]
-        public Input<int>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Set to `true` if you want to require authentication when approving a merge request.

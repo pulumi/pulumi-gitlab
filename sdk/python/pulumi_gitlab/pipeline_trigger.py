@@ -53,16 +53,20 @@ class PipelineTriggerArgs:
 class _PipelineTriggerState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 pipeline_trigger_id: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PipelineTrigger resources.
         :param pulumi.Input[str] description: The description of the pipeline trigger.
+        :param pulumi.Input[int] pipeline_trigger_id: The pipeline trigger id.
         :param pulumi.Input[str] project: The name or id of the project to add the trigger to.
         :param pulumi.Input[str] token: The pipeline trigger token.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if pipeline_trigger_id is not None:
+            pulumi.set(__self__, "pipeline_trigger_id", pipeline_trigger_id)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if token is not None:
@@ -79,6 +83,18 @@ class _PipelineTriggerState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="pipelineTriggerId")
+    def pipeline_trigger_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The pipeline trigger id.
+        """
+        return pulumi.get(self, "pipeline_trigger_id")
+
+    @pipeline_trigger_id.setter
+    def pipeline_trigger_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "pipeline_trigger_id", value)
 
     @property
     @pulumi.getter
@@ -204,6 +220,7 @@ class PipelineTrigger(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["pipeline_trigger_id"] = None
             __props__.__dict__["token"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -218,6 +235,7 @@ class PipelineTrigger(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            pipeline_trigger_id: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             token: Optional[pulumi.Input[str]] = None) -> 'PipelineTrigger':
         """
@@ -228,6 +246,7 @@ class PipelineTrigger(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the pipeline trigger.
+        :param pulumi.Input[int] pipeline_trigger_id: The pipeline trigger id.
         :param pulumi.Input[str] project: The name or id of the project to add the trigger to.
         :param pulumi.Input[str] token: The pipeline trigger token.
         """
@@ -236,6 +255,7 @@ class PipelineTrigger(pulumi.CustomResource):
         __props__ = _PipelineTriggerState.__new__(_PipelineTriggerState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["pipeline_trigger_id"] = pipeline_trigger_id
         __props__.__dict__["project"] = project
         __props__.__dict__["token"] = token
         return PipelineTrigger(resource_name, opts=opts, __props__=__props__)
@@ -247,6 +267,14 @@ class PipelineTrigger(pulumi.CustomResource):
         The description of the pipeline trigger.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="pipelineTriggerId")
+    def pipeline_trigger_id(self) -> pulumi.Output[int]:
+        """
+        The pipeline trigger id.
+        """
+        return pulumi.get(self, "pipeline_trigger_id")
 
     @property
     @pulumi.getter

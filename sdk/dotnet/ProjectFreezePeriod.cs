@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// {
     ///     var schedule = new GitLab.ProjectFreezePeriod("schedule", new()
     ///     {
-    ///         ProjectId = gitlab_project.Foo.Id,
+    ///         Project = gitlab_project.Foo.Id,
     ///         FreezeStart = "0 23 * * 5",
     ///         FreezeEnd = "0 7 * * 1",
     ///         CronTimezone = "UTC",
@@ -65,10 +65,10 @@ namespace Pulumi.GitLab
         public Output<string> FreezeStart { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the project to add the schedule to.
+        /// The ID or URL-encoded path of the project to add the schedule to.
         /// </summary>
-        [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
 
         /// <summary>
@@ -135,10 +135,10 @@ namespace Pulumi.GitLab
         public Input<string> FreezeStart { get; set; } = null!;
 
         /// <summary>
-        /// The id of the project to add the schedule to.
+        /// The ID or URL-encoded path of the project to add the schedule to.
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public ProjectFreezePeriodArgs()
         {
@@ -167,10 +167,10 @@ namespace Pulumi.GitLab
         public Input<string>? FreezeStart { get; set; }
 
         /// <summary>
-        /// The id of the project to add the schedule to.
+        /// The ID or URL-encoded path of the project to add the schedule to.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public ProjectFreezePeriodState()
         {

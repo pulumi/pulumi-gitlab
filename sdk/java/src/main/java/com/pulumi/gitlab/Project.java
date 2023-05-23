@@ -998,20 +998,6 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.onlyMirrorProtectedBranches;
     }
     /**
-     * Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-     * 
-     */
-    @Export(name="operationsAccessLevel", refs={String.class}, tree="[0]")
-    private Output<String> operationsAccessLevel;
-
-    /**
-     * @return Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-     * 
-     */
-    public Output<String> operationsAccessLevel() {
-        return this.operationsAccessLevel;
-    }
-    /**
      * Enable packages repository for the project.
      * 
      */

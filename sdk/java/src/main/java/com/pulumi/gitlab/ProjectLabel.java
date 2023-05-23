@@ -7,15 +7,16 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import com.pulumi.gitlab.LabelArgs;
+import com.pulumi.gitlab.ProjectLabelArgs;
 import com.pulumi.gitlab.Utilities;
-import com.pulumi.gitlab.inputs.LabelState;
+import com.pulumi.gitlab.inputs.ProjectLabelState;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.Label` resource allows to manage the lifecycle of a project label.
+ * The `gitlab.ProjectLabel` resource allows to manage the lifecycle of a project label.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
  * 
@@ -26,8 +27,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gitlab.Label;
- * import com.pulumi.gitlab.LabelArgs;
+ * import com.pulumi.gitlab.ProjectLabel;
+ * import com.pulumi.gitlab.ProjectLabelArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -41,13 +42,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fixme = new Label(&#34;fixme&#34;, LabelArgs.builder()        
+ *         var fixme = new ProjectLabel(&#34;fixme&#34;, ProjectLabelArgs.builder()        
  *             .project(&#34;example&#34;)
  *             .description(&#34;issue with failing tests&#34;)
  *             .color(&#34;#ffcc00&#34;)
  *             .build());
  * 
- *         var devopsCreate = new Label(&#34;devopsCreate&#34;, LabelArgs.builder()        
+ *         var devopsCreate = new ProjectLabel(&#34;devopsCreate&#34;, ProjectLabelArgs.builder()        
  *             .project(gitlab_project.example().id())
  *             .description(&#34;issue for creating infrastructure resources&#34;)
  *             .color(&#34;#ffa500&#34;)
@@ -59,15 +60,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Gitlab labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
+ * Gitlab Project labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
  * 
  * ```sh
- *  $ pulumi import gitlab:index/label:Label example 12345:fixme
+ *  $ pulumi import gitlab:index/projectLabel:ProjectLabel example 12345:fixme
  * ```
  * 
  */
-@ResourceType(type="gitlab:index/label:Label")
-public class Label extends com.pulumi.resources.CustomResource {
+@ResourceType(type="gitlab:index/projectLabel:ProjectLabel")
+public class ProjectLabel extends com.pulumi.resources.CustomResource {
     /**
      * The color of the label given in 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
      * 
@@ -95,6 +96,20 @@ public class Label extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * The id of the project label.
+     * 
+     */
+    @Export(name="labelId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> labelId;
+
+    /**
+     * @return The id of the project label.
+     * 
+     */
+    public Output<Integer> labelId() {
+        return this.labelId;
     }
     /**
      * The name of the label.
@@ -129,15 +144,15 @@ public class Label extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Label(String name) {
-        this(name, LabelArgs.Empty);
+    public ProjectLabel(String name) {
+        this(name, ProjectLabelArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Label(String name, LabelArgs args) {
+    public ProjectLabel(String name, ProjectLabelArgs args) {
         this(name, args, null);
     }
     /**
@@ -146,12 +161,12 @@ public class Label extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Label(String name, LabelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/label:Label", name, args == null ? LabelArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ProjectLabel(String name, ProjectLabelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectLabel:ProjectLabel", name, args == null ? ProjectLabelArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private Label(String name, Output<String> id, @Nullable LabelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/label:Label", name, state, makeResourceOptions(options, id));
+    private ProjectLabel(String name, Output<String> id, @Nullable ProjectLabelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectLabel:ProjectLabel", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -170,7 +185,7 @@ public class Label extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Label get(String name, Output<String> id, @Nullable LabelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new Label(name, id, state, options);
+    public static ProjectLabel get(String name, Output<String> id, @Nullable ProjectLabelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new ProjectLabel(name, id, state, options);
     }
 }

@@ -9,17 +9,17 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['LabelArgs', 'Label']
+__all__ = ['ProjectLabelArgs', 'ProjectLabel']
 
 @pulumi.input_type
-class LabelArgs:
+class ProjectLabelArgs:
     def __init__(__self__, *,
                  color: pulumi.Input[str],
                  project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a Label resource.
+        The set of arguments for constructing a ProjectLabel resource.
         :param pulumi.Input[str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         :param pulumi.Input[str] project: The name or id of the project to add the label to.
         :param pulumi.Input[str] description: The description of the label.
@@ -82,16 +82,18 @@ class LabelArgs:
 
 
 @pulumi.input_type
-class _LabelState:
+class _ProjectLabelState:
     def __init__(__self__, *,
                  color: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 label_id: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering Label resources.
+        Input properties used for looking up and filtering ProjectLabel resources.
         :param pulumi.Input[str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         :param pulumi.Input[str] description: The description of the label.
+        :param pulumi.Input[int] label_id: The id of the project label.
         :param pulumi.Input[str] name: The name of the label.
         :param pulumi.Input[str] project: The name or id of the project to add the label to.
         """
@@ -99,6 +101,8 @@ class _LabelState:
             pulumi.set(__self__, "color", color)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if label_id is not None:
+            pulumi.set(__self__, "label_id", label_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -129,6 +133,18 @@ class _LabelState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="labelId")
+    def label_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The id of the project label.
+        """
+        return pulumi.get(self, "label_id")
+
+    @label_id.setter
+    def label_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "label_id", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -153,7 +169,7 @@ class _LabelState:
         pulumi.set(self, "project", value)
 
 
-class Label(pulumi.CustomResource):
+class ProjectLabel(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -164,7 +180,7 @@ class Label(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The `Label` resource allows to manage the lifecycle of a project label.
+        The `ProjectLabel` resource allows to manage the lifecycle of a project label.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
 
@@ -174,12 +190,12 @@ class Label(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        fixme = gitlab.Label("fixme",
+        fixme = gitlab.ProjectLabel("fixme",
             project="example",
             description="issue with failing tests",
             color="#ffcc00")
         # Scoped label
-        devops_create = gitlab.Label("devopsCreate",
+        devops_create = gitlab.ProjectLabel("devopsCreate",
             project=gitlab_project["example"]["id"],
             description="issue for creating infrastructure resources",
             color="#ffa500")
@@ -187,10 +203,10 @@ class Label(pulumi.CustomResource):
 
         ## Import
 
-        Gitlab labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
+        Gitlab Project labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/label:Label example 12345:fixme
+         $ pulumi import gitlab:index/projectLabel:ProjectLabel example 12345:fixme
         ```
 
         :param str resource_name: The name of the resource.
@@ -204,10 +220,10 @@ class Label(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: LabelArgs,
+                 args: ProjectLabelArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `Label` resource allows to manage the lifecycle of a project label.
+        The `ProjectLabel` resource allows to manage the lifecycle of a project label.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
 
@@ -217,12 +233,12 @@ class Label(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        fixme = gitlab.Label("fixme",
+        fixme = gitlab.ProjectLabel("fixme",
             project="example",
             description="issue with failing tests",
             color="#ffcc00")
         # Scoped label
-        devops_create = gitlab.Label("devopsCreate",
+        devops_create = gitlab.ProjectLabel("devopsCreate",
             project=gitlab_project["example"]["id"],
             description="issue for creating infrastructure resources",
             color="#ffa500")
@@ -230,19 +246,19 @@ class Label(pulumi.CustomResource):
 
         ## Import
 
-        Gitlab labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
+        Gitlab Project labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
 
         ```sh
-         $ pulumi import gitlab:index/label:Label example 12345:fixme
+         $ pulumi import gitlab:index/projectLabel:ProjectLabel example 12345:fixme
         ```
 
         :param str resource_name: The name of the resource.
-        :param LabelArgs args: The arguments to use to populate this resource's properties.
+        :param ProjectLabelArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(LabelArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectLabelArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -262,7 +278,7 @@ class Label(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = LabelArgs.__new__(LabelArgs)
+            __props__ = ProjectLabelArgs.__new__(ProjectLabelArgs)
 
             if color is None and not opts.urn:
                 raise TypeError("Missing required property 'color'")
@@ -272,8 +288,9 @@ class Label(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-        super(Label, __self__).__init__(
-            'gitlab:index/label:Label',
+            __props__.__dict__["label_id"] = None
+        super(ProjectLabel, __self__).__init__(
+            'gitlab:index/projectLabel:ProjectLabel',
             resource_name,
             __props__,
             opts)
@@ -284,10 +301,11 @@ class Label(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             color: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            label_id: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            project: Optional[pulumi.Input[str]] = None) -> 'Label':
+            project: Optional[pulumi.Input[str]] = None) -> 'ProjectLabel':
         """
-        Get an existing Label resource's state with the given name, id, and optional extra
+        Get an existing ProjectLabel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -295,18 +313,20 @@ class Label(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         :param pulumi.Input[str] description: The description of the label.
+        :param pulumi.Input[int] label_id: The id of the project label.
         :param pulumi.Input[str] name: The name of the label.
         :param pulumi.Input[str] project: The name or id of the project to add the label to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _LabelState.__new__(_LabelState)
+        __props__ = _ProjectLabelState.__new__(_ProjectLabelState)
 
         __props__.__dict__["color"] = color
         __props__.__dict__["description"] = description
+        __props__.__dict__["label_id"] = label_id
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
-        return Label(resource_name, opts=opts, __props__=__props__)
+        return ProjectLabel(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
@@ -323,6 +343,14 @@ class Label(pulumi.CustomResource):
         The description of the label.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="labelId")
+    def label_id(self) -> pulumi.Output[int]:
+        """
+        The id of the project label.
+        """
+        return pulumi.get(self, "label_id")
 
     @property
     @pulumi.getter

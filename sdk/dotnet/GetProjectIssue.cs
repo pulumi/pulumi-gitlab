@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// {
         ///     var foo = GitLab.GetProject.Invoke(new()
         ///     {
-        ///         Id = "foo/bar/baz",
+        ///         PathWithNamespace = "foo/bar/baz",
         ///     });
         /// 
         ///     var welcomeIssue = GitLab.GetProjectIssue.Invoke(new()
@@ -70,7 +70,7 @@ namespace Pulumi.GitLab
         /// {
         ///     var foo = GitLab.GetProject.Invoke(new()
         ///     {
-        ///         Id = "foo/bar/baz",
+        ///         PathWithNamespace = "foo/bar/baz",
         ///     });
         /// 
         ///     var welcomeIssue = GitLab.GetProjectIssue.Invoke(new()

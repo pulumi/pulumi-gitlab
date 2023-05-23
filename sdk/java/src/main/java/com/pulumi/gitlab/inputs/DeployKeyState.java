@@ -6,6 +6,7 @@ package com.pulumi.gitlab.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,6 +30,21 @@ public final class DeployKeyState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> canPush() {
         return Optional.ofNullable(this.canPush);
+    }
+
+    /**
+     * The id of the project deploy key.
+     * 
+     */
+    @Import(name="deployKeyId")
+    private @Nullable Output<Integer> deployKeyId;
+
+    /**
+     * @return The id of the project deploy key.
+     * 
+     */
+    public Optional<Output<Integer>> deployKeyId() {
+        return Optional.ofNullable(this.deployKeyId);
     }
 
     /**
@@ -80,6 +96,7 @@ public final class DeployKeyState extends com.pulumi.resources.ResourceArgs {
 
     private DeployKeyState(DeployKeyState $) {
         this.canPush = $.canPush;
+        this.deployKeyId = $.deployKeyId;
         this.key = $.key;
         this.project = $.project;
         this.title = $.title;
@@ -122,6 +139,27 @@ public final class DeployKeyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder canPush(Boolean canPush) {
             return canPush(Output.of(canPush));
+        }
+
+        /**
+         * @param deployKeyId The id of the project deploy key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployKeyId(@Nullable Output<Integer> deployKeyId) {
+            $.deployKeyId = deployKeyId;
+            return this;
+        }
+
+        /**
+         * @param deployKeyId The id of the project deploy key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployKeyId(Integer deployKeyId) {
+            return deployKeyId(Output.of(deployKeyId));
         }
 
         /**

@@ -12,6 +12,8 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.ServicePipelinesEmail` resource allows to manage the lifecycle of a project integration with Pipeline Emails Service.
     /// 
+    /// &gt; This resource is deprecated. use `gitlab.IntegrationPipelinesEmail`instead!
+    /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#pipeline-emails)
     /// 
     /// ## Example Usage

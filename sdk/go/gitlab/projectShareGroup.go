@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -32,7 +32,7 @@ import (
 //			_, err := gitlab.NewProjectShareGroup(ctx, "test", &gitlab.ProjectShareGroupArgs{
 //				GroupAccess: pulumi.String("guest"),
 //				GroupId:     pulumi.Int(1337),
-//				ProjectId:   pulumi.String("12345"),
+//				Project:     pulumi.String("12345"),
 //			})
 //			if err != nil {
 //				return err
@@ -63,8 +63,8 @@ type ProjectShareGroup struct {
 	GroupAccess pulumi.StringPtrOutput `pulumi:"groupAccess"`
 	// The id of the group.
 	GroupId pulumi.IntOutput `pulumi:"groupId"`
-	// The id of the project.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The ID or URL-encoded path of the project.
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewProjectShareGroup registers a new resource with the given unique name, arguments, and options.
@@ -77,8 +77,8 @@ func NewProjectShareGroup(ctx *pulumi.Context,
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource ProjectShareGroup
 	err := ctx.RegisterResource("gitlab:index/projectShareGroup:ProjectShareGroup", name, args, &resource, opts...)
@@ -110,8 +110,8 @@ type projectShareGroupState struct {
 	GroupAccess *string `pulumi:"groupAccess"`
 	// The id of the group.
 	GroupId *int `pulumi:"groupId"`
-	// The id of the project.
-	ProjectId *string `pulumi:"projectId"`
+	// The ID or URL-encoded path of the project.
+	Project *string `pulumi:"project"`
 }
 
 type ProjectShareGroupState struct {
@@ -123,8 +123,8 @@ type ProjectShareGroupState struct {
 	GroupAccess pulumi.StringPtrInput
 	// The id of the group.
 	GroupId pulumi.IntPtrInput
-	// The id of the project.
-	ProjectId pulumi.StringPtrInput
+	// The ID or URL-encoded path of the project.
+	Project pulumi.StringPtrInput
 }
 
 func (ProjectShareGroupState) ElementType() reflect.Type {
@@ -140,8 +140,8 @@ type projectShareGroupArgs struct {
 	GroupAccess *string `pulumi:"groupAccess"`
 	// The id of the group.
 	GroupId int `pulumi:"groupId"`
-	// The id of the project.
-	ProjectId string `pulumi:"projectId"`
+	// The ID or URL-encoded path of the project.
+	Project string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ProjectShareGroup resource.
@@ -154,8 +154,8 @@ type ProjectShareGroupArgs struct {
 	GroupAccess pulumi.StringPtrInput
 	// The id of the group.
 	GroupId pulumi.IntInput
-	// The id of the project.
-	ProjectId pulumi.StringInput
+	// The ID or URL-encoded path of the project.
+	Project pulumi.StringInput
 }
 
 func (ProjectShareGroupArgs) ElementType() reflect.Type {
@@ -262,9 +262,9 @@ func (o ProjectShareGroupOutput) GroupId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectShareGroup) pulumi.IntOutput { return v.GroupId }).(pulumi.IntOutput)
 }
 
-// The id of the project.
-func (o ProjectShareGroupOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ProjectShareGroup) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+// The ID or URL-encoded path of the project.
+func (o ProjectShareGroupOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectShareGroup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 type ProjectShareGroupArrayOutput struct{ *pulumi.OutputState }

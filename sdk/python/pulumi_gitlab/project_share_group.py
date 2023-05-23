@@ -15,18 +15,18 @@ __all__ = ['ProjectShareGroupArgs', 'ProjectShareGroup']
 class ProjectShareGroupArgs:
     def __init__(__self__, *,
                  group_id: pulumi.Input[int],
-                 project_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  access_level: Optional[pulumi.Input[str]] = None,
                  group_access: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ProjectShareGroup resource.
         :param pulumi.Input[int] group_id: The id of the group.
-        :param pulumi.Input[str] project_id: The id of the project.
+        :param pulumi.Input[str] project: The ID or URL-encoded path of the project.
         :param pulumi.Input[str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         """
         pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         if access_level is not None:
             warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
             pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
@@ -48,16 +48,16 @@ class ProjectShareGroupArgs:
         pulumi.set(self, "group_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
         """
-        The id of the project.
+        The ID or URL-encoded path of the project.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -90,13 +90,13 @@ class _ProjectShareGroupState:
                  access_level: Optional[pulumi.Input[str]] = None,
                  group_access: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ProjectShareGroup resources.
         :param pulumi.Input[str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[int] group_id: The id of the group.
-        :param pulumi.Input[str] project_id: The id of the project.
+        :param pulumi.Input[str] project: The ID or URL-encoded path of the project.
         """
         if access_level is not None:
             warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
@@ -107,8 +107,8 @@ class _ProjectShareGroupState:
             pulumi.set(__self__, "group_access", group_access)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -147,16 +147,16 @@ class _ProjectShareGroupState:
         pulumi.set(self, "group_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the project.
+        The ID or URL-encoded path of the project.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class ProjectShareGroup(pulumi.CustomResource):
@@ -167,7 +167,7 @@ class ProjectShareGroup(pulumi.CustomResource):
                  access_level: Optional[pulumi.Input[str]] = None,
                  group_access: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         The `ProjectShareGroup` resource allows to manage the lifecycle of project shared with a group.
@@ -183,7 +183,7 @@ class ProjectShareGroup(pulumi.CustomResource):
         test = gitlab.ProjectShareGroup("test",
             group_access="guest",
             group_id=1337,
-            project_id="12345")
+            project="12345")
         ```
 
         ## Import
@@ -199,7 +199,7 @@ class ProjectShareGroup(pulumi.CustomResource):
         :param pulumi.Input[str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[int] group_id: The id of the group.
-        :param pulumi.Input[str] project_id: The id of the project.
+        :param pulumi.Input[str] project: The ID or URL-encoded path of the project.
         """
         ...
     @overload
@@ -221,7 +221,7 @@ class ProjectShareGroup(pulumi.CustomResource):
         test = gitlab.ProjectShareGroup("test",
             group_access="guest",
             group_id=1337,
-            project_id="12345")
+            project="12345")
         ```
 
         ## Import
@@ -250,7 +250,7 @@ class ProjectShareGroup(pulumi.CustomResource):
                  access_level: Optional[pulumi.Input[str]] = None,
                  group_access: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -268,9 +268,9 @@ class ProjectShareGroup(pulumi.CustomResource):
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
-            __props__.__dict__["project_id"] = project_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
         super(ProjectShareGroup, __self__).__init__(
             'gitlab:index/projectShareGroup:ProjectShareGroup',
             resource_name,
@@ -284,7 +284,7 @@ class ProjectShareGroup(pulumi.CustomResource):
             access_level: Optional[pulumi.Input[str]] = None,
             group_access: Optional[pulumi.Input[str]] = None,
             group_id: Optional[pulumi.Input[int]] = None,
-            project_id: Optional[pulumi.Input[str]] = None) -> 'ProjectShareGroup':
+            project: Optional[pulumi.Input[str]] = None) -> 'ProjectShareGroup':
         """
         Get an existing ProjectShareGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -295,7 +295,7 @@ class ProjectShareGroup(pulumi.CustomResource):
         :param pulumi.Input[str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         :param pulumi.Input[int] group_id: The id of the group.
-        :param pulumi.Input[str] project_id: The id of the project.
+        :param pulumi.Input[str] project: The ID or URL-encoded path of the project.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -304,7 +304,7 @@ class ProjectShareGroup(pulumi.CustomResource):
         __props__.__dict__["access_level"] = access_level
         __props__.__dict__["group_access"] = group_access
         __props__.__dict__["group_id"] = group_id
-        __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["project"] = project
         return ProjectShareGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -332,10 +332,10 @@ class ProjectShareGroup(pulumi.CustomResource):
         return pulumi.get(self, "group_id")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Output[str]:
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
         """
-        The id of the project.
+        The ID or URL-encoded path of the project.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 

@@ -19,13 +19,13 @@ import * as utilities from "./utilities";
  *
  * const test = new gitlab.ProjectMembership("test", {
  *     accessLevel: "guest",
- *     projectId: "12345",
+ *     project: "12345",
  *     userId: 1337,
  * });
  * const example = new gitlab.ProjectMembership("example", {
  *     accessLevel: "guest",
  *     expiresAt: "2022-12-31",
- *     projectId: "67890",
+ *     project: "67890",
  *     userId: 1234,
  * });
  * ```
@@ -75,9 +75,9 @@ export class ProjectMembership extends pulumi.CustomResource {
      */
     public readonly expiresAt!: pulumi.Output<string | undefined>;
     /**
-     * The id of the project.
+     * The ID or URL-encoded path of the project.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The id of the user.
      */
@@ -98,22 +98,22 @@ export class ProjectMembership extends pulumi.CustomResource {
             const state = argsOrState as ProjectMembershipState | undefined;
             resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
             resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as ProjectMembershipArgs | undefined;
             if ((!args || args.accessLevel === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessLevel'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.userId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
             resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
             resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["userId"] = args ? args.userId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -134,9 +134,9 @@ export interface ProjectMembershipState {
      */
     expiresAt?: pulumi.Input<string>;
     /**
-     * The id of the project.
+     * The ID or URL-encoded path of the project.
      */
-    projectId?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The id of the user.
      */
@@ -156,9 +156,9 @@ export interface ProjectMembershipArgs {
      */
     expiresAt?: pulumi.Input<string>;
     /**
-     * The id of the project.
+     * The ID or URL-encoded path of the project.
      */
-    projectId: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The id of the user.
      */

@@ -32,6 +32,12 @@ namespace Pulumi.GitLab
     public partial class DeployToken : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The id of the deploy token.
+        /// </summary>
+        [Output("deployTokenId")]
+        public Output<int> DeployTokenId { get; private set; } = null!;
+
+        /// <summary>
         /// Time the token will expire it, RFC3339 format. Will not expire per default.
         /// </summary>
         [Output("expiresAt")]
@@ -173,6 +179,12 @@ namespace Pulumi.GitLab
 
     public sealed class DeployTokenState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The id of the deploy token.
+        /// </summary>
+        [Input("deployTokenId")]
+        public Input<int>? DeployTokenId { get; set; }
+
         /// <summary>
         /// Time the token will expire it, RFC3339 format. Will not expire per default.
         /// </summary>

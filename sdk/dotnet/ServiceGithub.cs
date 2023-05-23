@@ -14,6 +14,8 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; This resource requires a GitLab Enterprise instance.
     /// 
+    /// &gt; This resource is deprecated. use `gitlab.IntegrationGithub`instead!
+    /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#github)
     /// 
     /// ## Example Usage
@@ -45,7 +47,7 @@ namespace Pulumi.GitLab
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a service_github state using `&lt;resource&gt; &lt;project_id&gt;`
+    ///  $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `&lt;resource&gt; &lt;project_id&gt;`
     /// ```
     /// 
     /// ```sh

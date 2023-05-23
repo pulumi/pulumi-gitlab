@@ -70,18 +70,18 @@ public final class ProjectShareGroupArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The id of the project.
+     * The ID or URL-encoded path of the project.
      * 
      */
-    @Import(name="projectId", required=true)
-    private Output<String> projectId;
+    @Import(name="project", required=true)
+    private Output<String> project;
 
     /**
-     * @return The id of the project.
+     * @return The ID or URL-encoded path of the project.
      * 
      */
-    public Output<String> projectId() {
-        return this.projectId;
+    public Output<String> project() {
+        return this.project;
     }
 
     private ProjectShareGroupArgs() {}
@@ -90,7 +90,7 @@ public final class ProjectShareGroupArgs extends com.pulumi.resources.ResourceAr
         this.accessLevel = $.accessLevel;
         this.groupAccess = $.groupAccess;
         this.groupId = $.groupId;
-        this.projectId = $.projectId;
+        this.project = $.project;
     }
 
     public static Builder builder() {
@@ -183,29 +183,29 @@ public final class ProjectShareGroupArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param projectId The id of the project.
+         * @param project The ID or URL-encoded path of the project.
          * 
          * @return builder
          * 
          */
-        public Builder projectId(Output<String> projectId) {
-            $.projectId = projectId;
+        public Builder project(Output<String> project) {
+            $.project = project;
             return this;
         }
 
         /**
-         * @param projectId The id of the project.
+         * @param project The ID or URL-encoded path of the project.
          * 
          * @return builder
          * 
          */
-        public Builder projectId(String projectId) {
-            return projectId(Output.of(projectId));
+        public Builder project(String project) {
+            return project(Output.of(project));
         }
 
         public ProjectShareGroupArgs build() {
             $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
             return $;
         }
     }

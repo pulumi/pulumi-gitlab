@@ -74,7 +74,6 @@ class ProjectArgs:
                  only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
                  only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[bool]] = None,
                  only_mirror_protected_branches: Optional[pulumi.Input[bool]] = None,
-                 operations_access_level: Optional[pulumi.Input[str]] = None,
                  packages_enabled: Optional[pulumi.Input[bool]] = None,
                  pages_access_level: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
@@ -177,7 +176,6 @@ class ProjectArgs:
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
         :param pulumi.Input[bool] only_mirror_protected_branches: Enable only mirror protected branches for a mirrored project.
-        :param pulumi.Input[str] operations_access_level: Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[str] pages_access_level: Enable pages access control
         :param pulumi.Input[str] path: The path of the repository.
@@ -336,8 +334,6 @@ class ProjectArgs:
             pulumi.set(__self__, "only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
         if only_mirror_protected_branches is not None:
             pulumi.set(__self__, "only_mirror_protected_branches", only_mirror_protected_branches)
-        if operations_access_level is not None:
-            pulumi.set(__self__, "operations_access_level", operations_access_level)
         if packages_enabled is not None:
             pulumi.set(__self__, "packages_enabled", packages_enabled)
         if pages_access_level is not None:
@@ -1112,18 +1108,6 @@ class ProjectArgs:
         pulumi.set(self, "only_mirror_protected_branches", value)
 
     @property
-    @pulumi.getter(name="operationsAccessLevel")
-    def operations_access_level(self) -> Optional[pulumi.Input[str]]:
-        """
-        Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-        """
-        return pulumi.get(self, "operations_access_level")
-
-    @operations_access_level.setter
-    def operations_access_level(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "operations_access_level", value)
-
-    @property
     @pulumi.getter(name="packagesEnabled")
     def packages_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1563,7 +1547,6 @@ class _ProjectState:
                  only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
                  only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[bool]] = None,
                  only_mirror_protected_branches: Optional[pulumi.Input[bool]] = None,
-                 operations_access_level: Optional[pulumi.Input[str]] = None,
                  packages_enabled: Optional[pulumi.Input[bool]] = None,
                  pages_access_level: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
@@ -1672,7 +1655,6 @@ class _ProjectState:
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
         :param pulumi.Input[bool] only_mirror_protected_branches: Enable only mirror protected branches for a mirrored project.
-        :param pulumi.Input[str] operations_access_level: Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[str] pages_access_level: Enable pages access control
         :param pulumi.Input[str] path: The path of the repository.
@@ -1839,8 +1821,6 @@ class _ProjectState:
             pulumi.set(__self__, "only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
         if only_mirror_protected_branches is not None:
             pulumi.set(__self__, "only_mirror_protected_branches", only_mirror_protected_branches)
-        if operations_access_level is not None:
-            pulumi.set(__self__, "operations_access_level", operations_access_level)
         if packages_enabled is not None:
             pulumi.set(__self__, "packages_enabled", packages_enabled)
         if pages_access_level is not None:
@@ -2647,18 +2627,6 @@ class _ProjectState:
         pulumi.set(self, "only_mirror_protected_branches", value)
 
     @property
-    @pulumi.getter(name="operationsAccessLevel")
-    def operations_access_level(self) -> Optional[pulumi.Input[str]]:
-        """
-        Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-        """
-        return pulumi.get(self, "operations_access_level")
-
-    @operations_access_level.setter
-    def operations_access_level(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "operations_access_level", value)
-
-    @property
     @pulumi.getter(name="packagesEnabled")
     def packages_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -3146,7 +3114,6 @@ class Project(pulumi.CustomResource):
                  only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
                  only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[bool]] = None,
                  only_mirror_protected_branches: Optional[pulumi.Input[bool]] = None,
-                 operations_access_level: Optional[pulumi.Input[str]] = None,
                  packages_enabled: Optional[pulumi.Input[bool]] = None,
                  pages_access_level: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
@@ -3318,7 +3285,6 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
         :param pulumi.Input[bool] only_mirror_protected_branches: Enable only mirror protected branches for a mirrored project.
-        :param pulumi.Input[str] operations_access_level: Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[str] pages_access_level: Enable pages access control
         :param pulumi.Input[str] path: The path of the repository.
@@ -3502,7 +3468,6 @@ class Project(pulumi.CustomResource):
                  only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
                  only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[bool]] = None,
                  only_mirror_protected_branches: Optional[pulumi.Input[bool]] = None,
-                 operations_access_level: Optional[pulumi.Input[str]] = None,
                  packages_enabled: Optional[pulumi.Input[bool]] = None,
                  pages_access_level: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
@@ -3607,7 +3572,6 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["only_allow_merge_if_all_discussions_are_resolved"] = only_allow_merge_if_all_discussions_are_resolved
             __props__.__dict__["only_allow_merge_if_pipeline_succeeds"] = only_allow_merge_if_pipeline_succeeds
             __props__.__dict__["only_mirror_protected_branches"] = only_mirror_protected_branches
-            __props__.__dict__["operations_access_level"] = operations_access_level
             __props__.__dict__["packages_enabled"] = packages_enabled
             __props__.__dict__["pages_access_level"] = pages_access_level
             __props__.__dict__["path"] = path
@@ -3720,7 +3684,6 @@ class Project(pulumi.CustomResource):
             only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[bool]] = None,
             only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[bool]] = None,
             only_mirror_protected_branches: Optional[pulumi.Input[bool]] = None,
-            operations_access_level: Optional[pulumi.Input[str]] = None,
             packages_enabled: Optional[pulumi.Input[bool]] = None,
             pages_access_level: Optional[pulumi.Input[str]] = None,
             path: Optional[pulumi.Input[str]] = None,
@@ -3834,7 +3797,6 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
         :param pulumi.Input[bool] only_mirror_protected_branches: Enable only mirror protected branches for a mirrored project.
-        :param pulumi.Input[str] operations_access_level: Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[str] pages_access_level: Enable pages access control
         :param pulumi.Input[str] path: The path of the repository.
@@ -3939,7 +3901,6 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["only_allow_merge_if_all_discussions_are_resolved"] = only_allow_merge_if_all_discussions_are_resolved
         __props__.__dict__["only_allow_merge_if_pipeline_succeeds"] = only_allow_merge_if_pipeline_succeeds
         __props__.__dict__["only_mirror_protected_branches"] = only_mirror_protected_branches
-        __props__.__dict__["operations_access_level"] = operations_access_level
         __props__.__dict__["packages_enabled"] = packages_enabled
         __props__.__dict__["pages_access_level"] = pages_access_level
         __props__.__dict__["path"] = path
@@ -4467,14 +4428,6 @@ class Project(pulumi.CustomResource):
         Enable only mirror protected branches for a mirrored project.
         """
         return pulumi.get(self, "only_mirror_protected_branches")
-
-    @property
-    @pulumi.getter(name="operationsAccessLevel")
-    def operations_access_level(self) -> pulumi.Output[str]:
-        """
-        Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-        """
-        return pulumi.get(self, "operations_access_level")
 
     @property
     @pulumi.getter(name="packagesEnabled")

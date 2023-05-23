@@ -83,6 +83,10 @@ export interface GetProjectVariableResult {
      */
     readonly protected: boolean;
     /**
+     * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     */
+    readonly raw: boolean;
+    /**
      * The value of the variable.
      */
     readonly value: string;

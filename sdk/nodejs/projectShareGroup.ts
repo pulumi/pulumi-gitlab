@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * const test = new gitlab.ProjectShareGroup("test", {
  *     groupAccess: "guest",
  *     groupId: 1337,
- *     projectId: "12345",
+ *     project: "12345",
  * });
  * ```
  *
@@ -73,9 +73,9 @@ export class ProjectShareGroup extends pulumi.CustomResource {
      */
     public readonly groupId!: pulumi.Output<number>;
     /**
-     * The id of the project.
+     * The ID or URL-encoded path of the project.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a ProjectShareGroup resource with the given unique name, arguments, and options.
@@ -93,19 +93,19 @@ export class ProjectShareGroup extends pulumi.CustomResource {
             resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
             resourceInputs["groupAccess"] = state ? state.groupAccess : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ProjectShareGroupArgs | undefined;
             if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
             resourceInputs["groupAccess"] = args ? args.groupAccess : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectShareGroup.__pulumiType, name, resourceInputs, opts);
@@ -131,9 +131,9 @@ export interface ProjectShareGroupState {
      */
     groupId?: pulumi.Input<number>;
     /**
-     * The id of the project.
+     * The ID or URL-encoded path of the project.
      */
-    projectId?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -155,7 +155,7 @@ export interface ProjectShareGroupArgs {
      */
     groupId: pulumi.Input<number>;
     /**
-     * The id of the project.
+     * The ID or URL-encoded path of the project.
      */
-    projectId: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

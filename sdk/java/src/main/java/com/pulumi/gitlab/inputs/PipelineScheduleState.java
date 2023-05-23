@@ -6,6 +6,7 @@ package com.pulumi.gitlab.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -77,6 +78,21 @@ public final class PipelineScheduleState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The pipeline schedule id.
+     * 
+     */
+    @Import(name="pipelineScheduleId")
+    private @Nullable Output<Integer> pipelineScheduleId;
+
+    /**
+     * @return The pipeline schedule id.
+     * 
+     */
+    public Optional<Output<Integer>> pipelineScheduleId() {
+        return Optional.ofNullable(this.pipelineScheduleId);
+    }
+
+    /**
      * The name or id of the project to add the schedule to.
      * 
      */
@@ -113,6 +129,7 @@ public final class PipelineScheduleState extends com.pulumi.resources.ResourceAr
         this.cron = $.cron;
         this.cronTimezone = $.cronTimezone;
         this.description = $.description;
+        this.pipelineScheduleId = $.pipelineScheduleId;
         this.project = $.project;
         this.ref = $.ref;
     }
@@ -217,6 +234,27 @@ public final class PipelineScheduleState extends com.pulumi.resources.ResourceAr
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param pipelineScheduleId The pipeline schedule id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pipelineScheduleId(@Nullable Output<Integer> pipelineScheduleId) {
+            $.pipelineScheduleId = pipelineScheduleId;
+            return this;
+        }
+
+        /**
+         * @param pipelineScheduleId The pipeline schedule id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pipelineScheduleId(Integer pipelineScheduleId) {
+            return pipelineScheduleId(Output.of(pipelineScheduleId));
         }
 
         /**

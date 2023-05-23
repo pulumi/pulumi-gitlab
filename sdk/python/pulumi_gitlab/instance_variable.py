@@ -18,6 +18,7 @@ class InstanceVariableArgs:
                  value: pulumi.Input[str],
                  masked: Optional[pulumi.Input[bool]] = None,
                  protected: Optional[pulumi.Input[bool]] = None,
+                 raw: Optional[pulumi.Input[bool]] = None,
                  variable_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a InstanceVariable resource.
@@ -25,6 +26,7 @@ class InstanceVariableArgs:
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
         :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
         pulumi.set(__self__, "key", key)
@@ -33,6 +35,8 @@ class InstanceVariableArgs:
             pulumi.set(__self__, "masked", masked)
         if protected is not None:
             pulumi.set(__self__, "protected", protected)
+        if raw is not None:
+            pulumi.set(__self__, "raw", raw)
         if variable_type is not None:
             pulumi.set(__self__, "variable_type", variable_type)
 
@@ -85,6 +89,18 @@ class InstanceVariableArgs:
         pulumi.set(self, "protected", value)
 
     @property
+    @pulumi.getter
+    def raw(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        """
+        return pulumi.get(self, "raw")
+
+    @raw.setter
+    def raw(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "raw", value)
+
+    @property
     @pulumi.getter(name="variableType")
     def variable_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -103,6 +119,7 @@ class _InstanceVariableState:
                  key: Optional[pulumi.Input[str]] = None,
                  masked: Optional[pulumi.Input[bool]] = None,
                  protected: Optional[pulumi.Input[bool]] = None,
+                 raw: Optional[pulumi.Input[bool]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  variable_type: Optional[pulumi.Input[str]] = None):
         """
@@ -110,6 +127,7 @@ class _InstanceVariableState:
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
@@ -119,6 +137,8 @@ class _InstanceVariableState:
             pulumi.set(__self__, "masked", masked)
         if protected is not None:
             pulumi.set(__self__, "protected", protected)
+        if raw is not None:
+            pulumi.set(__self__, "raw", raw)
         if value is not None:
             pulumi.set(__self__, "value", value)
         if variable_type is not None:
@@ -162,6 +182,18 @@ class _InstanceVariableState:
 
     @property
     @pulumi.getter
+    def raw(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        """
+        return pulumi.get(self, "raw")
+
+    @raw.setter
+    def raw(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "raw", value)
+
+    @property
+    @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         The value of the variable.
@@ -193,6 +225,7 @@ class InstanceVariable(pulumi.CustomResource):
                  key: Optional[pulumi.Input[str]] = None,
                  masked: Optional[pulumi.Input[bool]] = None,
                  protected: Optional[pulumi.Input[bool]] = None,
+                 raw: Optional[pulumi.Input[bool]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  variable_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -227,6 +260,7 @@ class InstanceVariable(pulumi.CustomResource):
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
@@ -280,6 +314,7 @@ class InstanceVariable(pulumi.CustomResource):
                  key: Optional[pulumi.Input[str]] = None,
                  masked: Optional[pulumi.Input[bool]] = None,
                  protected: Optional[pulumi.Input[bool]] = None,
+                 raw: Optional[pulumi.Input[bool]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  variable_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -296,12 +331,11 @@ class InstanceVariable(pulumi.CustomResource):
             __props__.__dict__["key"] = key
             __props__.__dict__["masked"] = masked
             __props__.__dict__["protected"] = protected
+            __props__.__dict__["raw"] = raw
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
-            __props__.__dict__["value"] = None if value is None else pulumi.Output.secret(value)
+            __props__.__dict__["value"] = value
             __props__.__dict__["variable_type"] = variable_type
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
-        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(InstanceVariable, __self__).__init__(
             'gitlab:index/instanceVariable:InstanceVariable',
             resource_name,
@@ -315,6 +349,7 @@ class InstanceVariable(pulumi.CustomResource):
             key: Optional[pulumi.Input[str]] = None,
             masked: Optional[pulumi.Input[bool]] = None,
             protected: Optional[pulumi.Input[bool]] = None,
+            raw: Optional[pulumi.Input[bool]] = None,
             value: Optional[pulumi.Input[str]] = None,
             variable_type: Optional[pulumi.Input[str]] = None) -> 'InstanceVariable':
         """
@@ -327,6 +362,7 @@ class InstanceVariable(pulumi.CustomResource):
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
@@ -337,6 +373,7 @@ class InstanceVariable(pulumi.CustomResource):
         __props__.__dict__["key"] = key
         __props__.__dict__["masked"] = masked
         __props__.__dict__["protected"] = protected
+        __props__.__dict__["raw"] = raw
         __props__.__dict__["value"] = value
         __props__.__dict__["variable_type"] = variable_type
         return InstanceVariable(resource_name, opts=opts, __props__=__props__)
@@ -364,6 +401,14 @@ class InstanceVariable(pulumi.CustomResource):
         If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         """
         return pulumi.get(self, "protected")
+
+    @property
+    @pulumi.getter
+    def raw(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        """
+        return pulumi.get(self, "raw")
 
     @property
     @pulumi.getter

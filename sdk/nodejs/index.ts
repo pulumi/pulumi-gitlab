@@ -322,15 +322,45 @@ export type InstanceVariable = import("./instanceVariable").InstanceVariable;
 export const InstanceVariable: typeof import("./instanceVariable").InstanceVariable = null as any;
 utilities.lazyLoad(exports, ["InstanceVariable"], () => require("./instanceVariable"));
 
-export { LabelArgs, LabelState } from "./label";
-export type Label = import("./label").Label;
-export const Label: typeof import("./label").Label = null as any;
-utilities.lazyLoad(exports, ["Label"], () => require("./label"));
+export { IntegrationCustomIssueTrackerArgs, IntegrationCustomIssueTrackerState } from "./integrationCustomIssueTracker";
+export type IntegrationCustomIssueTracker = import("./integrationCustomIssueTracker").IntegrationCustomIssueTracker;
+export const IntegrationCustomIssueTracker: typeof import("./integrationCustomIssueTracker").IntegrationCustomIssueTracker = null as any;
+utilities.lazyLoad(exports, ["IntegrationCustomIssueTracker"], () => require("./integrationCustomIssueTracker"));
 
-export { ManagedLicenseArgs, ManagedLicenseState } from "./managedLicense";
-export type ManagedLicense = import("./managedLicense").ManagedLicense;
-export const ManagedLicense: typeof import("./managedLicense").ManagedLicense = null as any;
-utilities.lazyLoad(exports, ["ManagedLicense"], () => require("./managedLicense"));
+export { IntegrationEmailsOnPushArgs, IntegrationEmailsOnPushState } from "./integrationEmailsOnPush";
+export type IntegrationEmailsOnPush = import("./integrationEmailsOnPush").IntegrationEmailsOnPush;
+export const IntegrationEmailsOnPush: typeof import("./integrationEmailsOnPush").IntegrationEmailsOnPush = null as any;
+utilities.lazyLoad(exports, ["IntegrationEmailsOnPush"], () => require("./integrationEmailsOnPush"));
+
+export { IntegrationExternalWikiArgs, IntegrationExternalWikiState } from "./integrationExternalWiki";
+export type IntegrationExternalWiki = import("./integrationExternalWiki").IntegrationExternalWiki;
+export const IntegrationExternalWiki: typeof import("./integrationExternalWiki").IntegrationExternalWiki = null as any;
+utilities.lazyLoad(exports, ["IntegrationExternalWiki"], () => require("./integrationExternalWiki"));
+
+export { IntegrationGithubArgs, IntegrationGithubState } from "./integrationGithub";
+export type IntegrationGithub = import("./integrationGithub").IntegrationGithub;
+export const IntegrationGithub: typeof import("./integrationGithub").IntegrationGithub = null as any;
+utilities.lazyLoad(exports, ["IntegrationGithub"], () => require("./integrationGithub"));
+
+export { IntegrationJiraArgs, IntegrationJiraState } from "./integrationJira";
+export type IntegrationJira = import("./integrationJira").IntegrationJira;
+export const IntegrationJira: typeof import("./integrationJira").IntegrationJira = null as any;
+utilities.lazyLoad(exports, ["IntegrationJira"], () => require("./integrationJira"));
+
+export { IntegrationMicrosoftTeamsArgs, IntegrationMicrosoftTeamsState } from "./integrationMicrosoftTeams";
+export type IntegrationMicrosoftTeams = import("./integrationMicrosoftTeams").IntegrationMicrosoftTeams;
+export const IntegrationMicrosoftTeams: typeof import("./integrationMicrosoftTeams").IntegrationMicrosoftTeams = null as any;
+utilities.lazyLoad(exports, ["IntegrationMicrosoftTeams"], () => require("./integrationMicrosoftTeams"));
+
+export { IntegrationPipelinesEmailArgs, IntegrationPipelinesEmailState } from "./integrationPipelinesEmail";
+export type IntegrationPipelinesEmail = import("./integrationPipelinesEmail").IntegrationPipelinesEmail;
+export const IntegrationPipelinesEmail: typeof import("./integrationPipelinesEmail").IntegrationPipelinesEmail = null as any;
+utilities.lazyLoad(exports, ["IntegrationPipelinesEmail"], () => require("./integrationPipelinesEmail"));
+
+export { IntegrationSlackArgs, IntegrationSlackState } from "./integrationSlack";
+export type IntegrationSlack = import("./integrationSlack").IntegrationSlack;
+export const IntegrationSlack: typeof import("./integrationSlack").IntegrationSlack = null as any;
+utilities.lazyLoad(exports, ["IntegrationSlack"], () => require("./integrationSlack"));
 
 export { PagesDomainArgs, PagesDomainState } from "./pagesDomain";
 export type PagesDomain = import("./pagesDomain").PagesDomain;
@@ -411,6 +441,11 @@ export { ProjectIssueBoardArgs, ProjectIssueBoardState } from "./projectIssueBoa
 export type ProjectIssueBoard = import("./projectIssueBoard").ProjectIssueBoard;
 export const ProjectIssueBoard: typeof import("./projectIssueBoard").ProjectIssueBoard = null as any;
 utilities.lazyLoad(exports, ["ProjectIssueBoard"], () => require("./projectIssueBoard"));
+
+export { ProjectLabelArgs, ProjectLabelState } from "./projectLabel";
+export type ProjectLabel = import("./projectLabel").ProjectLabel;
+export const ProjectLabel: typeof import("./projectLabel").ProjectLabel = null as any;
+utilities.lazyLoad(exports, ["ProjectLabel"], () => require("./projectLabel"));
 
 export { ProjectLevelMrApprovalsArgs, ProjectLevelMrApprovalsState } from "./projectLevelMrApprovals";
 export type ProjectLevelMrApprovals = import("./projectLevelMrApprovals").ProjectLevelMrApprovals;
@@ -614,10 +649,22 @@ const _module = {
                 return new InstanceCluster(name, <any>undefined, { urn })
             case "gitlab:index/instanceVariable:InstanceVariable":
                 return new InstanceVariable(name, <any>undefined, { urn })
-            case "gitlab:index/label:Label":
-                return new Label(name, <any>undefined, { urn })
-            case "gitlab:index/managedLicense:ManagedLicense":
-                return new ManagedLicense(name, <any>undefined, { urn })
+            case "gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker":
+                return new IntegrationCustomIssueTracker(name, <any>undefined, { urn })
+            case "gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush":
+                return new IntegrationEmailsOnPush(name, <any>undefined, { urn })
+            case "gitlab:index/integrationExternalWiki:IntegrationExternalWiki":
+                return new IntegrationExternalWiki(name, <any>undefined, { urn })
+            case "gitlab:index/integrationGithub:IntegrationGithub":
+                return new IntegrationGithub(name, <any>undefined, { urn })
+            case "gitlab:index/integrationJira:IntegrationJira":
+                return new IntegrationJira(name, <any>undefined, { urn })
+            case "gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams":
+                return new IntegrationMicrosoftTeams(name, <any>undefined, { urn })
+            case "gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail":
+                return new IntegrationPipelinesEmail(name, <any>undefined, { urn })
+            case "gitlab:index/integrationSlack:IntegrationSlack":
+                return new IntegrationSlack(name, <any>undefined, { urn })
             case "gitlab:index/pagesDomain:PagesDomain":
                 return new PagesDomain(name, <any>undefined, { urn })
             case "gitlab:index/personalAccessToken:PersonalAccessToken":
@@ -650,6 +697,8 @@ const _module = {
                 return new ProjectIssue(name, <any>undefined, { urn })
             case "gitlab:index/projectIssueBoard:ProjectIssueBoard":
                 return new ProjectIssueBoard(name, <any>undefined, { urn })
+            case "gitlab:index/projectLabel:ProjectLabel":
+                return new ProjectLabel(name, <any>undefined, { urn })
             case "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals":
                 return new ProjectLevelMrApprovals(name, <any>undefined, { urn })
             case "gitlab:index/projectMembership:ProjectMembership":
@@ -733,8 +782,14 @@ pulumi.runtime.registerResourceModule("gitlab", "index/groupShareGroup", _module
 pulumi.runtime.registerResourceModule("gitlab", "index/groupVariable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/instanceCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/instanceVariable", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/label", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/managedLicense", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/integrationCustomIssueTracker", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/integrationEmailsOnPush", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/integrationExternalWiki", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/integrationGithub", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/integrationJira", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/integrationMicrosoftTeams", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/integrationPipelinesEmail", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/integrationSlack", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/pagesDomain", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/personalAccessToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/pipelineSchedule", _module)
@@ -751,6 +806,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectFreezePeriod", _mo
 pulumi.runtime.registerResourceModule("gitlab", "index/projectHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIssue", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIssueBoard", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectLabel", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectLevelMrApprovals", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMembership", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMilestone", _module)

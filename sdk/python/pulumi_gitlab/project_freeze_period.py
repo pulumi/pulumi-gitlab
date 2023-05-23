@@ -16,18 +16,18 @@ class ProjectFreezePeriodArgs:
     def __init__(__self__, *,
                  freeze_end: pulumi.Input[str],
                  freeze_start: pulumi.Input[str],
-                 project_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  cron_timezone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ProjectFreezePeriod resource.
         :param pulumi.Input[str] freeze_end: End of the Freeze Period in cron format (e.g. `0 2 * * *`).
         :param pulumi.Input[str] freeze_start: Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
-        :param pulumi.Input[str] project_id: The id of the project to add the schedule to.
+        :param pulumi.Input[str] project: The ID or URL-encoded path of the project to add the schedule to.
         :param pulumi.Input[str] cron_timezone: The timezone.
         """
         pulumi.set(__self__, "freeze_end", freeze_end)
         pulumi.set(__self__, "freeze_start", freeze_start)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         if cron_timezone is not None:
             pulumi.set(__self__, "cron_timezone", cron_timezone)
 
@@ -56,16 +56,16 @@ class ProjectFreezePeriodArgs:
         pulumi.set(self, "freeze_start", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
         """
-        The id of the project to add the schedule to.
+        The ID or URL-encoded path of the project to add the schedule to.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="cronTimezone")
@@ -86,13 +86,13 @@ class _ProjectFreezePeriodState:
                  cron_timezone: Optional[pulumi.Input[str]] = None,
                  freeze_end: Optional[pulumi.Input[str]] = None,
                  freeze_start: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ProjectFreezePeriod resources.
         :param pulumi.Input[str] cron_timezone: The timezone.
         :param pulumi.Input[str] freeze_end: End of the Freeze Period in cron format (e.g. `0 2 * * *`).
         :param pulumi.Input[str] freeze_start: Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
-        :param pulumi.Input[str] project_id: The id of the project to add the schedule to.
+        :param pulumi.Input[str] project: The ID or URL-encoded path of the project to add the schedule to.
         """
         if cron_timezone is not None:
             pulumi.set(__self__, "cron_timezone", cron_timezone)
@@ -100,8 +100,8 @@ class _ProjectFreezePeriodState:
             pulumi.set(__self__, "freeze_end", freeze_end)
         if freeze_start is not None:
             pulumi.set(__self__, "freeze_start", freeze_start)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="cronTimezone")
@@ -140,16 +140,16 @@ class _ProjectFreezePeriodState:
         pulumi.set(self, "freeze_start", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the project to add the schedule to.
+        The ID or URL-encoded path of the project to add the schedule to.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class ProjectFreezePeriod(pulumi.CustomResource):
@@ -160,7 +160,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
                  cron_timezone: Optional[pulumi.Input[str]] = None,
                  freeze_end: Optional[pulumi.Input[str]] = None,
                  freeze_start: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         The `ProjectFreezePeriod` resource allows to manage the lifecycle of a freeze period for a project.
@@ -174,7 +174,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         schedule = gitlab.ProjectFreezePeriod("schedule",
-            project_id=gitlab_project["foo"]["id"],
+            project=gitlab_project["foo"]["id"],
             freeze_start="0 23 * * 5",
             freeze_end="0 7 * * 1",
             cron_timezone="UTC")
@@ -193,7 +193,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
         :param pulumi.Input[str] cron_timezone: The timezone.
         :param pulumi.Input[str] freeze_end: End of the Freeze Period in cron format (e.g. `0 2 * * *`).
         :param pulumi.Input[str] freeze_start: Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
-        :param pulumi.Input[str] project_id: The id of the project to add the schedule to.
+        :param pulumi.Input[str] project: The ID or URL-encoded path of the project to add the schedule to.
         """
         ...
     @overload
@@ -213,7 +213,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         schedule = gitlab.ProjectFreezePeriod("schedule",
-            project_id=gitlab_project["foo"]["id"],
+            project=gitlab_project["foo"]["id"],
             freeze_start="0 23 * * 5",
             freeze_end="0 7 * * 1",
             cron_timezone="UTC")
@@ -245,7 +245,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
                  cron_timezone: Optional[pulumi.Input[str]] = None,
                  freeze_end: Optional[pulumi.Input[str]] = None,
                  freeze_start: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -262,9 +262,9 @@ class ProjectFreezePeriod(pulumi.CustomResource):
             if freeze_start is None and not opts.urn:
                 raise TypeError("Missing required property 'freeze_start'")
             __props__.__dict__["freeze_start"] = freeze_start
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
-            __props__.__dict__["project_id"] = project_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
         super(ProjectFreezePeriod, __self__).__init__(
             'gitlab:index/projectFreezePeriod:ProjectFreezePeriod',
             resource_name,
@@ -278,7 +278,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
             cron_timezone: Optional[pulumi.Input[str]] = None,
             freeze_end: Optional[pulumi.Input[str]] = None,
             freeze_start: Optional[pulumi.Input[str]] = None,
-            project_id: Optional[pulumi.Input[str]] = None) -> 'ProjectFreezePeriod':
+            project: Optional[pulumi.Input[str]] = None) -> 'ProjectFreezePeriod':
         """
         Get an existing ProjectFreezePeriod resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -289,7 +289,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
         :param pulumi.Input[str] cron_timezone: The timezone.
         :param pulumi.Input[str] freeze_end: End of the Freeze Period in cron format (e.g. `0 2 * * *`).
         :param pulumi.Input[str] freeze_start: Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
-        :param pulumi.Input[str] project_id: The id of the project to add the schedule to.
+        :param pulumi.Input[str] project: The ID or URL-encoded path of the project to add the schedule to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -298,7 +298,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
         __props__.__dict__["cron_timezone"] = cron_timezone
         __props__.__dict__["freeze_end"] = freeze_end
         __props__.__dict__["freeze_start"] = freeze_start
-        __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["project"] = project
         return ProjectFreezePeriod(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -326,10 +326,10 @@ class ProjectFreezePeriod(pulumi.CustomResource):
         return pulumi.get(self, "freeze_start")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Output[str]:
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
         """
-        The id of the project to add the schedule to.
+        The ID or URL-encoded path of the project to add the schedule to.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 

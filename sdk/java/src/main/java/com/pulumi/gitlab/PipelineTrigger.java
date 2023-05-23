@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.PipelineTriggerArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.PipelineTriggerState;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
@@ -74,6 +75,20 @@ public class PipelineTrigger extends com.pulumi.resources.CustomResource {
      */
     public Output<String> description() {
         return this.description;
+    }
+    /**
+     * The pipeline trigger id.
+     * 
+     */
+    @Export(name="pipelineTriggerId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> pipelineTriggerId;
+
+    /**
+     * @return The pipeline trigger id.
+     * 
+     */
+    public Output<Integer> pipelineTriggerId() {
+        return this.pipelineTriggerId;
     }
     /**
      * The name or id of the project to add the trigger to.

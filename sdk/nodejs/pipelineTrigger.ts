@@ -62,6 +62,10 @@ export class PipelineTrigger extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * The pipeline trigger id.
+     */
+    public /*out*/ readonly pipelineTriggerId!: pulumi.Output<number>;
+    /**
      * The name or id of the project to add the trigger to.
      */
     public readonly project!: pulumi.Output<string>;
@@ -84,6 +88,7 @@ export class PipelineTrigger extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PipelineTriggerState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["pipelineTriggerId"] = state ? state.pipelineTriggerId : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["token"] = state ? state.token : undefined;
         } else {
@@ -96,6 +101,7 @@ export class PipelineTrigger extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pipelineTriggerId"] = undefined /*out*/;
             resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -113,6 +119,10 @@ export interface PipelineTriggerState {
      * The description of the pipeline trigger.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The pipeline trigger id.
+     */
+    pipelineTriggerId?: pulumi.Input<number>;
     /**
      * The name or id of the project to add the trigger to.
      */

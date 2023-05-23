@@ -25,6 +25,7 @@ import javax.annotation.Nullable;
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/boards.html)
  * 
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 

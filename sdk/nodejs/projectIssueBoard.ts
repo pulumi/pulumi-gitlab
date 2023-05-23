@@ -13,58 +13,6 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/boards.html)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const exampleProject = new gitlab.Project("exampleProject", {
- *     description: "Lorem Ipsum",
- *     visibilityLevel: "public",
- * });
- * const exampleUser = new gitlab.User("exampleUser", {
- *     username: "example",
- *     email: "example@example.com",
- *     password: "example1$$$",
- * });
- * const exampleProjectMembership = new gitlab.ProjectMembership("exampleProjectMembership", {
- *     projectId: exampleProject.id,
- *     userId: exampleUser.id,
- *     accessLevel: "developer",
- * });
- * const exampleProjectMilestone = new gitlab.ProjectMilestone("exampleProjectMilestone", {
- *     project: exampleProject.id,
- *     title: "m1",
- * });
- * const _this = new gitlab.ProjectIssueBoard("this", {
- *     project: exampleProject.id,
- *     lists: [
- *         {
- *             assigneeId: exampleUser.id,
- *         },
- *         {
- *             milestoneId: exampleProjectMilestone.milestoneId,
- *         },
- *     ],
- * }, {
- *     dependsOn: [exampleProjectMembership],
- * });
- * const listSyntax = new gitlab.ProjectIssueBoard("listSyntax", {
- *     project: exampleProject.id,
- *     lists: [
- *         {
- *             assigneeId: exampleUser.id,
- *         },
- *         {
- *             milestoneId: exampleProjectMilestone.milestoneId,
- *         },
- *     ],
- * }, {
- *     dependsOn: [exampleProjectMembership],
- * });
- * ```
- *
  * ## Import
  *
  * You can import this resource with an id made up of `{project-id}:{issue-board-id}`, e.g.

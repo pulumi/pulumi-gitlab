@@ -13,6 +13,8 @@ import (
 
 // The `ServiceEmailsOnPush` resource allows to manage the lifecycle of a project integration with Emails on Push Service.
 //
+// > This resource is deprecated. Please use `IntegrationEmailsOnPush` instead!
+//
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#emails-on-push)
 //
 // ## Example Usage
@@ -22,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
