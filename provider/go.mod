@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-gitlab/provider/v5
 go 1.19
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.9.1
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.9.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.47.2
 	github.com/pulumi/pulumi/sdk v1.14.1
 	github.com/pulumi/pulumi/sdk/v3 v3.67.1
@@ -189,7 +189,7 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.9.2 // indirect
-	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.3 // indirect
+	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.4 // indirect
 	github.com/pulumi/pulumi-yaml v1.1.1 // indirect
 	github.com/pulumi/pulumi/pkg/v3 v3.67.1 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
