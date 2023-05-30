@@ -71,6 +71,12 @@ namespace Pulumi.GitLab
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The pipeline schedule id.
+        /// </summary>
+        [Output("pipelineScheduleId")]
+        public Output<int> PipelineScheduleId { get; private set; } = null!;
+
+        /// <summary>
         /// The name or id of the project to add the schedule to.
         /// </summary>
         [Output("project")]
@@ -195,6 +201,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The pipeline schedule id.
+        /// </summary>
+        [Input("pipelineScheduleId")]
+        public Input<int>? PipelineScheduleId { get; set; }
 
         /// <summary>
         /// The name or id of the project to add the schedule to.

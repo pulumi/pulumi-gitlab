@@ -11,6 +11,7 @@ import com.pulumi.gitlab.PipelineScheduleArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.PipelineScheduleState;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -119,6 +120,20 @@ public class PipelineSchedule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> description() {
         return this.description;
+    }
+    /**
+     * The pipeline schedule id.
+     * 
+     */
+    @Export(name="pipelineScheduleId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> pipelineScheduleId;
+
+    /**
+     * @return The pipeline schedule id.
+     * 
+     */
+    public Output<Integer> pipelineScheduleId() {
+        return this.pipelineScheduleId;
     }
     /**
      * The name or id of the project to add the schedule to.

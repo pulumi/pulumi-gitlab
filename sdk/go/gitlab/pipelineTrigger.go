@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -56,6 +56,8 @@ type PipelineTrigger struct {
 
 	// The description of the pipeline trigger.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The pipeline trigger id.
+	PipelineTriggerId pulumi.IntOutput `pulumi:"pipelineTriggerId"`
 	// The name or id of the project to add the trigger to.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The pipeline trigger token.
@@ -103,6 +105,8 @@ func GetPipelineTrigger(ctx *pulumi.Context,
 type pipelineTriggerState struct {
 	// The description of the pipeline trigger.
 	Description *string `pulumi:"description"`
+	// The pipeline trigger id.
+	PipelineTriggerId *int `pulumi:"pipelineTriggerId"`
 	// The name or id of the project to add the trigger to.
 	Project *string `pulumi:"project"`
 	// The pipeline trigger token.
@@ -112,6 +116,8 @@ type pipelineTriggerState struct {
 type PipelineTriggerState struct {
 	// The description of the pipeline trigger.
 	Description pulumi.StringPtrInput
+	// The pipeline trigger id.
+	PipelineTriggerId pulumi.IntPtrInput
 	// The name or id of the project to add the trigger to.
 	Project pulumi.StringPtrInput
 	// The pipeline trigger token.
@@ -227,6 +233,11 @@ func (o PipelineTriggerOutput) ToPipelineTriggerOutputWithContext(ctx context.Co
 // The description of the pipeline trigger.
 func (o PipelineTriggerOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *PipelineTrigger) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The pipeline trigger id.
+func (o PipelineTriggerOutput) PipelineTriggerId() pulumi.IntOutput {
+	return o.ApplyT(func(v *PipelineTrigger) pulumi.IntOutput { return v.PipelineTriggerId }).(pulumi.IntOutput)
 }
 
 // The name or id of the project to add the trigger to.

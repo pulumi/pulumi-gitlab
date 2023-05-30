@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ServiceExternalWiki` resource allows to manage the lifecycle of a project integration with External Wiki Service.
  * 
+ * &gt; This resource is deprecated. use `gitlab.IntegrationExternalWiki`instead!
+ * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#external-wiki)
  * 
  * ## Example Usage

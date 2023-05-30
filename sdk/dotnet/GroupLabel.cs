@@ -64,6 +64,12 @@ namespace Pulumi.GitLab
         public Output<string> Group { get; private set; } = null!;
 
         /// <summary>
+        /// The id of the group label.
+        /// </summary>
+        [Output("labelId")]
+        public Output<int> LabelId { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the label.
         /// </summary>
         [Output("name")]
@@ -164,6 +170,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
+
+        /// <summary>
+        /// The id of the group label.
+        /// </summary>
+        [Input("labelId")]
+        public Input<int>? LabelId { get; set; }
 
         /// <summary>
         /// The name of the label.

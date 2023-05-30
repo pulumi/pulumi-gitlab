@@ -52,6 +52,10 @@ export class DeployToken extends pulumi.CustomResource {
     }
 
     /**
+     * The id of the deploy token.
+     */
+    public /*out*/ readonly deployTokenId!: pulumi.Output<number>;
+    /**
      * Time the token will expire it, RFC3339 format. Will not expire per default.
      */
     public readonly expiresAt!: pulumi.Output<string | undefined>;
@@ -93,6 +97,7 @@ export class DeployToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DeployTokenState | undefined;
+            resourceInputs["deployTokenId"] = state ? state.deployTokenId : undefined;
             resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -111,6 +116,7 @@ export class DeployToken extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["scopes"] = args ? args.scopes : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["deployTokenId"] = undefined /*out*/;
             resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -124,6 +130,10 @@ export class DeployToken extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DeployToken resources.
  */
 export interface DeployTokenState {
+    /**
+     * The id of the deploy token.
+     */
+    deployTokenId?: pulumi.Input<number>;
     /**
      * Time the token will expire it, RFC3339 format. Will not expire per default.
      */

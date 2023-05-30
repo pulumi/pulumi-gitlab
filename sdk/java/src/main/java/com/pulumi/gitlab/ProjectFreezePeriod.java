@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var schedule = new ProjectFreezePeriod(&#34;schedule&#34;, ProjectFreezePeriodArgs.builder()        
- *             .projectId(gitlab_project.foo().id())
+ *             .project(gitlab_project.foo().id())
  *             .freezeStart(&#34;0 23 * * 5&#34;)
  *             .freezeEnd(&#34;0 7 * * 1&#34;)
  *             .cronTimezone(&#34;UTC&#34;)
@@ -106,18 +106,18 @@ public class ProjectFreezePeriod extends com.pulumi.resources.CustomResource {
         return this.freezeStart;
     }
     /**
-     * The id of the project to add the schedule to.
+     * The ID or URL-encoded path of the project to add the schedule to.
      * 
      */
-    @Export(name="projectId", refs={String.class}, tree="[0]")
-    private Output<String> projectId;
+    @Export(name="project", refs={String.class}, tree="[0]")
+    private Output<String> project;
 
     /**
-     * @return The id of the project to add the schedule to.
+     * @return The ID or URL-encoded path of the project to add the schedule to.
      * 
      */
-    public Output<String> projectId() {
-        return this.projectId;
+    public Output<String> project() {
+        return this.project;
     }
 
     /**

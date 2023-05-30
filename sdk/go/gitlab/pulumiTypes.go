@@ -2653,6 +2653,7 @@ type GetGroupVariablesVariable struct {
 	Key          string `pulumi:"key"`
 	Masked       bool   `pulumi:"masked"`
 	Protected    bool   `pulumi:"protected"`
+	Raw          bool   `pulumi:"raw"`
 	Value        string `pulumi:"value"`
 	VariableType string `pulumi:"variableType"`
 }
@@ -2676,6 +2677,7 @@ type GetGroupVariablesVariableArgs struct {
 	Key          pulumi.StringInput `pulumi:"key"`
 	Masked       pulumi.BoolInput   `pulumi:"masked"`
 	Protected    pulumi.BoolInput   `pulumi:"protected"`
+	Raw          pulumi.BoolInput   `pulumi:"raw"`
 	Value        pulumi.StringInput `pulumi:"value"`
 	VariableType pulumi.StringInput `pulumi:"variableType"`
 }
@@ -2751,6 +2753,10 @@ func (o GetGroupVariablesVariableOutput) Masked() pulumi.BoolOutput {
 
 func (o GetGroupVariablesVariableOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupVariablesVariable) bool { return v.Protected }).(pulumi.BoolOutput)
+}
+
+func (o GetGroupVariablesVariableOutput) Raw() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupVariablesVariable) bool { return v.Raw }).(pulumi.BoolOutput)
 }
 
 func (o GetGroupVariablesVariableOutput) Value() pulumi.StringOutput {
@@ -3219,6 +3225,7 @@ type GetInstanceVariablesVariable struct {
 	Key          string `pulumi:"key"`
 	Masked       bool   `pulumi:"masked"`
 	Protected    bool   `pulumi:"protected"`
+	Raw          bool   `pulumi:"raw"`
 	Value        string `pulumi:"value"`
 	VariableType string `pulumi:"variableType"`
 }
@@ -3238,6 +3245,7 @@ type GetInstanceVariablesVariableArgs struct {
 	Key          pulumi.StringInput `pulumi:"key"`
 	Masked       pulumi.BoolInput   `pulumi:"masked"`
 	Protected    pulumi.BoolInput   `pulumi:"protected"`
+	Raw          pulumi.BoolInput   `pulumi:"raw"`
 	Value        pulumi.StringInput `pulumi:"value"`
 	VariableType pulumi.StringInput `pulumi:"variableType"`
 }
@@ -3303,6 +3311,10 @@ func (o GetInstanceVariablesVariableOutput) Masked() pulumi.BoolOutput {
 
 func (o GetInstanceVariablesVariableOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceVariablesVariable) bool { return v.Protected }).(pulumi.BoolOutput)
+}
+
+func (o GetInstanceVariablesVariableOutput) Raw() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceVariablesVariable) bool { return v.Raw }).(pulumi.BoolOutput)
 }
 
 func (o GetInstanceVariablesVariableOutput) Value() pulumi.StringOutput {
@@ -6291,6 +6303,7 @@ type GetProjectVariablesVariable struct {
 	// The name or id of the project.
 	Project      string `pulumi:"project"`
 	Protected    bool   `pulumi:"protected"`
+	Raw          bool   `pulumi:"raw"`
 	Value        string `pulumi:"value"`
 	VariableType string `pulumi:"variableType"`
 }
@@ -6314,6 +6327,7 @@ type GetProjectVariablesVariableArgs struct {
 	// The name or id of the project.
 	Project      pulumi.StringInput `pulumi:"project"`
 	Protected    pulumi.BoolInput   `pulumi:"protected"`
+	Raw          pulumi.BoolInput   `pulumi:"raw"`
 	Value        pulumi.StringInput `pulumi:"value"`
 	VariableType pulumi.StringInput `pulumi:"variableType"`
 }
@@ -6389,6 +6403,10 @@ func (o GetProjectVariablesVariableOutput) Project() pulumi.StringOutput {
 
 func (o GetProjectVariablesVariableOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectVariablesVariable) bool { return v.Protected }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectVariablesVariableOutput) Raw() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectVariablesVariable) bool { return v.Raw }).(pulumi.BoolOutput)
 }
 
 func (o GetProjectVariablesVariableOutput) Value() pulumi.StringOutput {
@@ -6484,7 +6502,6 @@ type GetProjectsProject struct {
 	OnlyAllowMergeIfPipelineSucceeds          bool                                `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
 	OnlyMirrorProtectedBranches               bool                                `pulumi:"onlyMirrorProtectedBranches"`
 	OpenIssuesCount                           int                                 `pulumi:"openIssuesCount"`
-	OperationsAccessLevel                     string                              `pulumi:"operationsAccessLevel"`
 	Owners                                    []GetProjectsProjectOwner           `pulumi:"owners"`
 	PackagesEnabled                           bool                                `pulumi:"packagesEnabled"`
 	Path                                      string                              `pulumi:"path"`
@@ -6597,7 +6614,6 @@ type GetProjectsProjectArgs struct {
 	OnlyAllowMergeIfPipelineSucceeds          pulumi.BoolInput                            `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
 	OnlyMirrorProtectedBranches               pulumi.BoolInput                            `pulumi:"onlyMirrorProtectedBranches"`
 	OpenIssuesCount                           pulumi.IntInput                             `pulumi:"openIssuesCount"`
-	OperationsAccessLevel                     pulumi.StringInput                          `pulumi:"operationsAccessLevel"`
 	Owners                                    GetProjectsProjectOwnerArrayInput           `pulumi:"owners"`
 	PackagesEnabled                           pulumi.BoolInput                            `pulumi:"packagesEnabled"`
 	Path                                      pulumi.StringInput                          `pulumi:"path"`
@@ -6935,10 +6951,6 @@ func (o GetProjectsProjectOutput) OnlyMirrorProtectedBranches() pulumi.BoolOutpu
 
 func (o GetProjectsProjectOutput) OpenIssuesCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectsProject) int { return v.OpenIssuesCount }).(pulumi.IntOutput)
-}
-
-func (o GetProjectsProjectOutput) OperationsAccessLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectsProject) string { return v.OperationsAccessLevel }).(pulumi.StringOutput)
 }
 
 func (o GetProjectsProjectOutput) Owners() GetProjectsProjectOwnerArrayOutput {

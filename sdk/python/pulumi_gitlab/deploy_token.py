@@ -117,6 +117,7 @@ class DeployTokenArgs:
 @pulumi.input_type
 class _DeployTokenState:
     def __init__(__self__, *,
+                 deploy_token_id: Optional[pulumi.Input[int]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -126,6 +127,7 @@ class _DeployTokenState:
                  username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DeployToken resources.
+        :param pulumi.Input[int] deploy_token_id: The id of the deploy token.
         :param pulumi.Input[str] expires_at: Time the token will expire it, RFC3339 format. Will not expire per default.
         :param pulumi.Input[str] group: The name or id of the group to add the deploy token to.
         :param pulumi.Input[str] name: A name to describe the deploy token with.
@@ -134,6 +136,8 @@ class _DeployTokenState:
         :param pulumi.Input[str] token: The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
         :param pulumi.Input[str] username: A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
         """
+        if deploy_token_id is not None:
+            pulumi.set(__self__, "deploy_token_id", deploy_token_id)
         if expires_at is not None:
             pulumi.set(__self__, "expires_at", expires_at)
         if group is not None:
@@ -148,6 +152,18 @@ class _DeployTokenState:
             pulumi.set(__self__, "token", token)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="deployTokenId")
+    def deploy_token_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The id of the deploy token.
+        """
+        return pulumi.get(self, "deploy_token_id")
+
+    @deploy_token_id.setter
+    def deploy_token_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "deploy_token_id", value)
 
     @property
     @pulumi.getter(name="expiresAt")
@@ -337,6 +353,7 @@ class DeployToken(pulumi.CustomResource):
                 raise TypeError("Missing required property 'scopes'")
             __props__.__dict__["scopes"] = scopes
             __props__.__dict__["username"] = username
+            __props__.__dict__["deploy_token_id"] = None
             __props__.__dict__["token"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -350,6 +367,7 @@ class DeployToken(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deploy_token_id: Optional[pulumi.Input[int]] = None,
             expires_at: Optional[pulumi.Input[str]] = None,
             group: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -364,6 +382,7 @@ class DeployToken(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] deploy_token_id: The id of the deploy token.
         :param pulumi.Input[str] expires_at: Time the token will expire it, RFC3339 format. Will not expire per default.
         :param pulumi.Input[str] group: The name or id of the group to add the deploy token to.
         :param pulumi.Input[str] name: A name to describe the deploy token with.
@@ -376,6 +395,7 @@ class DeployToken(pulumi.CustomResource):
 
         __props__ = _DeployTokenState.__new__(_DeployTokenState)
 
+        __props__.__dict__["deploy_token_id"] = deploy_token_id
         __props__.__dict__["expires_at"] = expires_at
         __props__.__dict__["group"] = group
         __props__.__dict__["name"] = name
@@ -384,6 +404,14 @@ class DeployToken(pulumi.CustomResource):
         __props__.__dict__["token"] = token
         __props__.__dict__["username"] = username
         return DeployToken(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="deployTokenId")
+    def deploy_token_id(self) -> pulumi.Output[int]:
+        """
+        The id of the deploy token.
+        """
+        return pulumi.get(self, "deploy_token_id")
 
     @property
     @pulumi.getter(name="expiresAt")

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.LabelArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.LabelState;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,53 +18,9 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.Label` resource allows to manage the lifecycle of a project label.
  * 
+ * &gt; This resource is deprecated. use `gitlab.ProjectLabel`instead!
+ * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
- * 
- * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gitlab.Label;
- * import com.pulumi.gitlab.LabelArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var fixme = new Label(&#34;fixme&#34;, LabelArgs.builder()        
- *             .project(&#34;example&#34;)
- *             .description(&#34;issue with failing tests&#34;)
- *             .color(&#34;#ffcc00&#34;)
- *             .build());
- * 
- *         var devopsCreate = new Label(&#34;devopsCreate&#34;, LabelArgs.builder()        
- *             .project(gitlab_project.example().id())
- *             .description(&#34;issue for creating infrastructure resources&#34;)
- *             .color(&#34;#ffa500&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * ## Import
- * 
- * Gitlab labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
- * 
- * ```sh
- *  $ pulumi import gitlab:index/label:Label example 12345:fixme
- * ```
  * 
  */
 @ResourceType(type="gitlab:index/label:Label")
@@ -95,6 +52,20 @@ public class Label extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * The id of the project label.
+     * 
+     */
+    @Export(name="labelId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> labelId;
+
+    /**
+     * @return The id of the project label.
+     * 
+     */
+    public Output<Integer> labelId() {
+        return this.labelId;
     }
     /**
      * The name of the label.

@@ -47,18 +47,18 @@ public final class ProjectMembershipArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The id of the project.
+     * The ID or URL-encoded path of the project.
      * 
      */
-    @Import(name="projectId", required=true)
-    private Output<String> projectId;
+    @Import(name="project", required=true)
+    private Output<String> project;
 
     /**
-     * @return The id of the project.
+     * @return The ID or URL-encoded path of the project.
      * 
      */
-    public Output<String> projectId() {
-        return this.projectId;
+    public Output<String> project() {
+        return this.project;
     }
 
     /**
@@ -81,7 +81,7 @@ public final class ProjectMembershipArgs extends com.pulumi.resources.ResourceAr
     private ProjectMembershipArgs(ProjectMembershipArgs $) {
         this.accessLevel = $.accessLevel;
         this.expiresAt = $.expiresAt;
-        this.projectId = $.projectId;
+        this.project = $.project;
         this.userId = $.userId;
     }
 
@@ -146,24 +146,24 @@ public final class ProjectMembershipArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param projectId The id of the project.
+         * @param project The ID or URL-encoded path of the project.
          * 
          * @return builder
          * 
          */
-        public Builder projectId(Output<String> projectId) {
-            $.projectId = projectId;
+        public Builder project(Output<String> project) {
+            $.project = project;
             return this;
         }
 
         /**
-         * @param projectId The id of the project.
+         * @param project The ID or URL-encoded path of the project.
          * 
          * @return builder
          * 
          */
-        public Builder projectId(String projectId) {
-            return projectId(Output.of(projectId));
+        public Builder project(String project) {
+            return project(Output.of(project));
         }
 
         /**
@@ -189,7 +189,7 @@ public final class ProjectMembershipArgs extends com.pulumi.resources.ResourceAr
 
         public ProjectMembershipArgs build() {
             $.accessLevel = Objects.requireNonNull($.accessLevel, "expected parameter 'accessLevel' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
             $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
             return $;
         }

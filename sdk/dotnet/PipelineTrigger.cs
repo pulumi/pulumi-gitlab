@@ -51,6 +51,12 @@ namespace Pulumi.GitLab
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The pipeline trigger id.
+        /// </summary>
+        [Output("pipelineTriggerId")]
+        public Output<int> PipelineTriggerId { get; private set; } = null!;
+
+        /// <summary>
         /// The name or id of the project to add the trigger to.
         /// </summary>
         [Output("project")]
@@ -137,6 +143,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The pipeline trigger id.
+        /// </summary>
+        [Input("pipelineTriggerId")]
+        public Input<int>? PipelineTriggerId { get; set; }
 
         /// <summary>
         /// The name or id of the project to add the trigger to.

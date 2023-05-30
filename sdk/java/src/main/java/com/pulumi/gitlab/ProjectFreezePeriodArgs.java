@@ -61,18 +61,18 @@ public final class ProjectFreezePeriodArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The id of the project to add the schedule to.
+     * The ID or URL-encoded path of the project to add the schedule to.
      * 
      */
-    @Import(name="projectId", required=true)
-    private Output<String> projectId;
+    @Import(name="project", required=true)
+    private Output<String> project;
 
     /**
-     * @return The id of the project to add the schedule to.
+     * @return The ID or URL-encoded path of the project to add the schedule to.
      * 
      */
-    public Output<String> projectId() {
-        return this.projectId;
+    public Output<String> project() {
+        return this.project;
     }
 
     private ProjectFreezePeriodArgs() {}
@@ -81,7 +81,7 @@ public final class ProjectFreezePeriodArgs extends com.pulumi.resources.Resource
         this.cronTimezone = $.cronTimezone;
         this.freezeEnd = $.freezeEnd;
         this.freezeStart = $.freezeStart;
-        this.projectId = $.projectId;
+        this.project = $.project;
     }
 
     public static Builder builder() {
@@ -166,30 +166,30 @@ public final class ProjectFreezePeriodArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param projectId The id of the project to add the schedule to.
+         * @param project The ID or URL-encoded path of the project to add the schedule to.
          * 
          * @return builder
          * 
          */
-        public Builder projectId(Output<String> projectId) {
-            $.projectId = projectId;
+        public Builder project(Output<String> project) {
+            $.project = project;
             return this;
         }
 
         /**
-         * @param projectId The id of the project to add the schedule to.
+         * @param project The ID or URL-encoded path of the project to add the schedule to.
          * 
          * @return builder
          * 
          */
-        public Builder projectId(String projectId) {
-            return projectId(Output.of(projectId));
+        public Builder project(String project) {
+            return project(Output.of(project));
         }
 
         public ProjectFreezePeriodArgs build() {
             $.freezeEnd = Objects.requireNonNull($.freezeEnd, "expected parameter 'freezeEnd' to be non-null");
             $.freezeStart = Objects.requireNonNull($.freezeStart, "expected parameter 'freezeStart' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
             return $;
         }
     }

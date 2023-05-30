@@ -290,10 +290,6 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int NamespaceId;
         /// <summary>
-        /// Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-        /// </summary>
-        public readonly string OperationsAccessLevel;
-        /// <summary>
         /// The path of the repository.
         /// </summary>
         public readonly string Path;
@@ -474,8 +470,6 @@ namespace Pulumi.GitLab
 
             int namespaceId,
 
-            string operationsAccessLevel,
-
             string path,
 
             string pathWithNamespace,
@@ -565,7 +559,6 @@ namespace Pulumi.GitLab
             MonitorAccessLevel = monitorAccessLevel;
             Name = name;
             NamespaceId = namespaceId;
-            OperationsAccessLevel = operationsAccessLevel;
             Path = path;
             PathWithNamespace = pathWithNamespace;
             PipelinesEnabled = pipelinesEnabled;

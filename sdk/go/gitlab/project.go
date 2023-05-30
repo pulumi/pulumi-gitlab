@@ -17,7 +17,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -268,8 +268,6 @@ type Project struct {
 	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolOutput `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
 	// Enable only mirror protected branches for a mirrored project.
 	OnlyMirrorProtectedBranches pulumi.BoolOutput `pulumi:"onlyMirrorProtectedBranches"`
-	// Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-	OperationsAccessLevel pulumi.StringOutput `pulumi:"operationsAccessLevel"`
 	// Enable packages repository for the project.
 	PackagesEnabled pulumi.BoolOutput `pulumi:"packagesEnabled"`
 	// Enable pages access control
@@ -520,8 +518,6 @@ type projectState struct {
 	OnlyAllowMergeIfPipelineSucceeds *bool `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
 	// Enable only mirror protected branches for a mirrored project.
 	OnlyMirrorProtectedBranches *bool `pulumi:"onlyMirrorProtectedBranches"`
-	// Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-	OperationsAccessLevel *string `pulumi:"operationsAccessLevel"`
 	// Enable packages repository for the project.
 	PackagesEnabled *bool `pulumi:"packagesEnabled"`
 	// Enable pages access control
@@ -736,8 +732,6 @@ type ProjectState struct {
 	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolPtrInput
 	// Enable only mirror protected branches for a mirrored project.
 	OnlyMirrorProtectedBranches pulumi.BoolPtrInput
-	// Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-	OperationsAccessLevel pulumi.StringPtrInput
 	// Enable packages repository for the project.
 	PackagesEnabled pulumi.BoolPtrInput
 	// Enable pages access control
@@ -952,8 +946,6 @@ type projectArgs struct {
 	OnlyAllowMergeIfPipelineSucceeds *bool `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
 	// Enable only mirror protected branches for a mirrored project.
 	OnlyMirrorProtectedBranches *bool `pulumi:"onlyMirrorProtectedBranches"`
-	// Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-	OperationsAccessLevel *string `pulumi:"operationsAccessLevel"`
 	// Enable packages repository for the project.
 	PackagesEnabled *bool `pulumi:"packagesEnabled"`
 	// Enable pages access control
@@ -1157,8 +1149,6 @@ type ProjectArgs struct {
 	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolPtrInput
 	// Enable only mirror protected branches for a mirrored project.
 	OnlyMirrorProtectedBranches pulumi.BoolPtrInput
-	// Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-	OperationsAccessLevel pulumi.StringPtrInput
 	// Enable packages repository for the project.
 	PackagesEnabled pulumi.BoolPtrInput
 	// Enable pages access control
@@ -1629,11 +1619,6 @@ func (o ProjectOutput) OnlyAllowMergeIfPipelineSucceeds() pulumi.BoolOutput {
 // Enable only mirror protected branches for a mirrored project.
 func (o ProjectOutput) OnlyMirrorProtectedBranches() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.OnlyMirrorProtectedBranches }).(pulumi.BoolOutput)
-}
-
-// Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-func (o ProjectOutput) OperationsAccessLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.OperationsAccessLevel }).(pulumi.StringOutput)
 }
 
 // Enable packages repository for the project.

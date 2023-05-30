@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *
  * const fooProject = new gitlab.Project("fooProject", {description: "My example project"});
  * const fooProjectLevelMrApprovals = new gitlab.ProjectLevelMrApprovals("fooProjectLevelMrApprovals", {
- *     projectId: fooProject.id,
+ *     project: fooProject.id,
  *     resetApprovalsOnPush: true,
  *     disableOverridingApproversPerMergeRequest: false,
  *     mergeRequestsAuthorApproval: false,
@@ -80,9 +80,9 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
      */
     public readonly mergeRequestsDisableCommittersApproval!: pulumi.Output<boolean | undefined>;
     /**
-     * The ID of the project to change MR approval configuration.
+     * The ID or URL-encoded path of a project to change MR approval configuration.
      */
-    public readonly projectId!: pulumi.Output<number>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Set to `true` if you want to require authentication when approving a merge request.
      */
@@ -108,18 +108,18 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
             resourceInputs["disableOverridingApproversPerMergeRequest"] = state ? state.disableOverridingApproversPerMergeRequest : undefined;
             resourceInputs["mergeRequestsAuthorApproval"] = state ? state.mergeRequestsAuthorApproval : undefined;
             resourceInputs["mergeRequestsDisableCommittersApproval"] = state ? state.mergeRequestsDisableCommittersApproval : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["requirePasswordToApprove"] = state ? state.requirePasswordToApprove : undefined;
             resourceInputs["resetApprovalsOnPush"] = state ? state.resetApprovalsOnPush : undefined;
         } else {
             const args = argsOrState as ProjectLevelMrApprovalsArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             resourceInputs["disableOverridingApproversPerMergeRequest"] = args ? args.disableOverridingApproversPerMergeRequest : undefined;
             resourceInputs["mergeRequestsAuthorApproval"] = args ? args.mergeRequestsAuthorApproval : undefined;
             resourceInputs["mergeRequestsDisableCommittersApproval"] = args ? args.mergeRequestsDisableCommittersApproval : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requirePasswordToApprove"] = args ? args.requirePasswordToApprove : undefined;
             resourceInputs["resetApprovalsOnPush"] = args ? args.resetApprovalsOnPush : undefined;
         }
@@ -145,9 +145,9 @@ export interface ProjectLevelMrApprovalsState {
      */
     mergeRequestsDisableCommittersApproval?: pulumi.Input<boolean>;
     /**
-     * The ID of the project to change MR approval configuration.
+     * The ID or URL-encoded path of a project to change MR approval configuration.
      */
-    projectId?: pulumi.Input<number>;
+    project?: pulumi.Input<string>;
     /**
      * Set to `true` if you want to require authentication when approving a merge request.
      */
@@ -175,9 +175,9 @@ export interface ProjectLevelMrApprovalsArgs {
      */
     mergeRequestsDisableCommittersApproval?: pulumi.Input<boolean>;
     /**
-     * The ID of the project to change MR approval configuration.
+     * The ID or URL-encoded path of a project to change MR approval configuration.
      */
-    projectId: pulumi.Input<number>;
+    project: pulumi.Input<string>;
     /**
      * Set to `true` if you want to require authentication when approving a merge request.
      */

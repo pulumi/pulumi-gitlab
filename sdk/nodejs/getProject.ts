@@ -209,10 +209,6 @@ export interface GetProjectResult {
      */
     readonly namespaceId: number;
     /**
-     * Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-     */
-    readonly operationsAccessLevel: string;
-    /**
      * The path of the repository.
      */
     readonly path: string;

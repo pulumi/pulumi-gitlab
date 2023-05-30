@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewProjectFreezePeriod(ctx, "schedule", &gitlab.ProjectFreezePeriodArgs{
-//				ProjectId:    pulumi.Any(gitlab_project.Foo.Id),
+//				Project:      pulumi.Any(gitlab_project.Foo.Id),
 //				FreezeStart:  pulumi.String("0 23 * * 5"),
 //				FreezeEnd:    pulumi.String("0 7 * * 1"),
 //				CronTimezone: pulumi.String("UTC"),
@@ -62,8 +62,8 @@ type ProjectFreezePeriod struct {
 	FreezeEnd pulumi.StringOutput `pulumi:"freezeEnd"`
 	// Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
 	FreezeStart pulumi.StringOutput `pulumi:"freezeStart"`
-	// The id of the project to add the schedule to.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The ID or URL-encoded path of the project to add the schedule to.
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewProjectFreezePeriod registers a new resource with the given unique name, arguments, and options.
@@ -79,8 +79,8 @@ func NewProjectFreezePeriod(ctx *pulumi.Context,
 	if args.FreezeStart == nil {
 		return nil, errors.New("invalid value for required argument 'FreezeStart'")
 	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource ProjectFreezePeriod
 	err := ctx.RegisterResource("gitlab:index/projectFreezePeriod:ProjectFreezePeriod", name, args, &resource, opts...)
@@ -110,8 +110,8 @@ type projectFreezePeriodState struct {
 	FreezeEnd *string `pulumi:"freezeEnd"`
 	// Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
 	FreezeStart *string `pulumi:"freezeStart"`
-	// The id of the project to add the schedule to.
-	ProjectId *string `pulumi:"projectId"`
+	// The ID or URL-encoded path of the project to add the schedule to.
+	Project *string `pulumi:"project"`
 }
 
 type ProjectFreezePeriodState struct {
@@ -121,8 +121,8 @@ type ProjectFreezePeriodState struct {
 	FreezeEnd pulumi.StringPtrInput
 	// Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
 	FreezeStart pulumi.StringPtrInput
-	// The id of the project to add the schedule to.
-	ProjectId pulumi.StringPtrInput
+	// The ID or URL-encoded path of the project to add the schedule to.
+	Project pulumi.StringPtrInput
 }
 
 func (ProjectFreezePeriodState) ElementType() reflect.Type {
@@ -136,8 +136,8 @@ type projectFreezePeriodArgs struct {
 	FreezeEnd string `pulumi:"freezeEnd"`
 	// Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
 	FreezeStart string `pulumi:"freezeStart"`
-	// The id of the project to add the schedule to.
-	ProjectId string `pulumi:"projectId"`
+	// The ID or URL-encoded path of the project to add the schedule to.
+	Project string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ProjectFreezePeriod resource.
@@ -148,8 +148,8 @@ type ProjectFreezePeriodArgs struct {
 	FreezeEnd pulumi.StringInput
 	// Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
 	FreezeStart pulumi.StringInput
-	// The id of the project to add the schedule to.
-	ProjectId pulumi.StringInput
+	// The ID or URL-encoded path of the project to add the schedule to.
+	Project pulumi.StringInput
 }
 
 func (ProjectFreezePeriodArgs) ElementType() reflect.Type {
@@ -254,9 +254,9 @@ func (o ProjectFreezePeriodOutput) FreezeStart() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectFreezePeriod) pulumi.StringOutput { return v.FreezeStart }).(pulumi.StringOutput)
 }
 
-// The id of the project to add the schedule to.
-func (o ProjectFreezePeriodOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ProjectFreezePeriod) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+// The ID or URL-encoded path of the project to add the schedule to.
+func (o ProjectFreezePeriodOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectFreezePeriod) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 type ProjectFreezePeriodArrayOutput struct{ *pulumi.OutputState }

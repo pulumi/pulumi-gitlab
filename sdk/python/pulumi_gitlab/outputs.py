@@ -1681,6 +1681,7 @@ class GetGroupVariablesVariableResult(dict):
                  key: str,
                  masked: bool,
                  protected: bool,
+                 raw: bool,
                  value: str,
                  variable_type: str):
         """
@@ -1692,6 +1693,7 @@ class GetGroupVariablesVariableResult(dict):
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "masked", masked)
         pulumi.set(__self__, "protected", protected)
+        pulumi.set(__self__, "raw", raw)
         pulumi.set(__self__, "value", value)
         pulumi.set(__self__, "variable_type", variable_type)
 
@@ -1725,6 +1727,11 @@ class GetGroupVariablesVariableResult(dict):
     @pulumi.getter
     def protected(self) -> bool:
         return pulumi.get(self, "protected")
+
+    @property
+    @pulumi.getter
+    def raw(self) -> bool:
+        return pulumi.get(self, "raw")
 
     @property
     @pulumi.getter
@@ -1959,11 +1966,13 @@ class GetInstanceVariablesVariableResult(dict):
                  key: str,
                  masked: bool,
                  protected: bool,
+                 raw: bool,
                  value: str,
                  variable_type: str):
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "masked", masked)
         pulumi.set(__self__, "protected", protected)
+        pulumi.set(__self__, "raw", raw)
         pulumi.set(__self__, "value", value)
         pulumi.set(__self__, "variable_type", variable_type)
 
@@ -1981,6 +1990,11 @@ class GetInstanceVariablesVariableResult(dict):
     @pulumi.getter
     def protected(self) -> bool:
         return pulumi.get(self, "protected")
+
+    @property
+    @pulumi.getter
+    def raw(self) -> bool:
+        return pulumi.get(self, "raw")
 
     @property
     @pulumi.getter
@@ -3457,6 +3471,7 @@ class GetProjectVariablesVariableResult(dict):
                  masked: bool,
                  project: str,
                  protected: bool,
+                 raw: bool,
                  value: str,
                  variable_type: str):
         """
@@ -3468,6 +3483,7 @@ class GetProjectVariablesVariableResult(dict):
         pulumi.set(__self__, "masked", masked)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "protected", protected)
+        pulumi.set(__self__, "raw", raw)
         pulumi.set(__self__, "value", value)
         pulumi.set(__self__, "variable_type", variable_type)
 
@@ -3501,6 +3517,11 @@ class GetProjectVariablesVariableResult(dict):
     @pulumi.getter
     def protected(self) -> bool:
         return pulumi.get(self, "protected")
+
+    @property
+    @pulumi.getter
+    def raw(self) -> bool:
+        return pulumi.get(self, "raw")
 
     @property
     @pulumi.getter
@@ -3578,7 +3599,6 @@ class GetProjectsProjectResult(dict):
                  only_allow_merge_if_pipeline_succeeds: bool,
                  only_mirror_protected_branches: bool,
                  open_issues_count: int,
-                 operations_access_level: str,
                  owners: Sequence['outputs.GetProjectsProjectOwnerResult'],
                  packages_enabled: bool,
                  path: str,
@@ -3679,7 +3699,6 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
         pulumi.set(__self__, "only_mirror_protected_branches", only_mirror_protected_branches)
         pulumi.set(__self__, "open_issues_count", open_issues_count)
-        pulumi.set(__self__, "operations_access_level", operations_access_level)
         pulumi.set(__self__, "owners", owners)
         pulumi.set(__self__, "packages_enabled", packages_enabled)
         pulumi.set(__self__, "path", path)
@@ -4028,11 +4047,6 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="openIssuesCount")
     def open_issues_count(self) -> int:
         return pulumi.get(self, "open_issues_count")
-
-    @property
-    @pulumi.getter(name="operationsAccessLevel")
-    def operations_access_level(self) -> str:
-        return pulumi.get(self, "operations_access_level")
 
     @property
     @pulumi.getter

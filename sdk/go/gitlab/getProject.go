@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -136,8 +136,6 @@ type LookupProjectResult struct {
 	Name string `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
 	NamespaceId int `pulumi:"namespaceId"`
-	// Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-	OperationsAccessLevel string `pulumi:"operationsAccessLevel"`
 	// The path of the repository.
 	Path string `pulumi:"path"`
 	// The path of the repository with namespace.
@@ -421,11 +419,6 @@ func (o LookupProjectResultOutput) Name() pulumi.StringOutput {
 // The namespace (group or user) of the project. Defaults to your user.
 func (o LookupProjectResultOutput) NamespaceId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupProjectResult) int { return v.NamespaceId }).(pulumi.IntOutput)
-}
-
-// Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-func (o LookupProjectResultOutput) OperationsAccessLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProjectResult) string { return v.OperationsAccessLevel }).(pulumi.StringOutput)
 }
 
 // The path of the repository.

@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
  *
  * > This resource requires a GitLab Enterprise instance.
  *
+ * > This resource is deprecated. use `gitlab.IntegrationGithub`instead!
+ *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#github)
  *
  * ## Example Usage
@@ -31,7 +33,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a service_github state using `<resource> <project_id>`
+ *  $ pulumi import gitlab:index/serviceGithub:ServiceGithub You can import a gitlab_service_github state using `<resource> <project_id>`
  * ```
  *
  * ```sh

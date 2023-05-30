@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -73,8 +73,8 @@ type PersonalAccessToken struct {
 	Active pulumi.BoolOutput `pulumi:"active"`
 	// Time the token has been created, RFC3339 format.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
-	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
+	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
 	// The name of the personal access token.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// True if the token is revoked.
@@ -130,7 +130,7 @@ type personalAccessTokenState struct {
 	Active *bool `pulumi:"active"`
 	// Time the token has been created, RFC3339 format.
 	CreatedAt *string `pulumi:"createdAt"`
-	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The name of the personal access token.
 	Name *string `pulumi:"name"`
@@ -149,7 +149,7 @@ type PersonalAccessTokenState struct {
 	Active pulumi.BoolPtrInput
 	// Time the token has been created, RFC3339 format.
 	CreatedAt pulumi.StringPtrInput
-	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
 	ExpiresAt pulumi.StringPtrInput
 	// The name of the personal access token.
 	Name pulumi.StringPtrInput
@@ -168,7 +168,7 @@ func (PersonalAccessTokenState) ElementType() reflect.Type {
 }
 
 type personalAccessTokenArgs struct {
-	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The name of the personal access token.
 	Name *string `pulumi:"name"`
@@ -180,7 +180,7 @@ type personalAccessTokenArgs struct {
 
 // The set of arguments for constructing a PersonalAccessToken resource.
 type PersonalAccessTokenArgs struct {
-	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
 	ExpiresAt pulumi.StringPtrInput
 	// The name of the personal access token.
 	Name pulumi.StringPtrInput
@@ -287,9 +287,9 @@ func (o PersonalAccessTokenOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *PersonalAccessToken) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
-func (o PersonalAccessTokenOutput) ExpiresAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PersonalAccessToken) pulumi.StringPtrOutput { return v.ExpiresAt }).(pulumi.StringPtrOutput)
+// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+func (o PersonalAccessTokenOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *PersonalAccessToken) pulumi.StringOutput { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
 // The name of the personal access token.

@@ -70,18 +70,18 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The id of the project.
+     * The ID or URL-encoded path of the project.
      * 
      */
-    @Import(name="projectId")
-    private @Nullable Output<String> projectId;
+    @Import(name="project")
+    private @Nullable Output<String> project;
 
     /**
-     * @return The id of the project.
+     * @return The ID or URL-encoded path of the project.
      * 
      */
-    public Optional<Output<String>> projectId() {
-        return Optional.ofNullable(this.projectId);
+    public Optional<Output<String>> project() {
+        return Optional.ofNullable(this.project);
     }
 
     private ProjectShareGroupState() {}
@@ -90,7 +90,7 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
         this.accessLevel = $.accessLevel;
         this.groupAccess = $.groupAccess;
         this.groupId = $.groupId;
-        this.projectId = $.projectId;
+        this.project = $.project;
     }
 
     public static Builder builder() {
@@ -183,24 +183,24 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param projectId The id of the project.
+         * @param project The ID or URL-encoded path of the project.
          * 
          * @return builder
          * 
          */
-        public Builder projectId(@Nullable Output<String> projectId) {
-            $.projectId = projectId;
+        public Builder project(@Nullable Output<String> project) {
+            $.project = project;
             return this;
         }
 
         /**
-         * @param projectId The id of the project.
+         * @param project The ID or URL-encoded path of the project.
          * 
          * @return builder
          * 
          */
-        public Builder projectId(String projectId) {
-            return projectId(Output.of(projectId));
+        public Builder project(String project) {
+            return project(Output.of(project));
         }
 
         public ProjectShareGroupState build() {

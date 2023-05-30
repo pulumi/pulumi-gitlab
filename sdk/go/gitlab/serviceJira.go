@@ -13,6 +13,8 @@ import (
 
 // The `ServiceJira` resource allows to manage the lifecycle of a project integration with Jira.
 //
+// > This resource is deprecated. use `IntegrationJira`instead!
+//
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
 //
 // ## Example Usage
@@ -22,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -53,7 +55,7 @@ import (
 //
 // ## Import
 //
-// You can import a service_jira state using the project ID, e.g.
+// You can import a gitlab_service_jira state using the project ID, e.g.
 //
 // ```sh
 //

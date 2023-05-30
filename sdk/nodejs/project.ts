@@ -367,10 +367,6 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly onlyMirrorProtectedBranches!: pulumi.Output<boolean>;
     /**
-     * Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-     */
-    public readonly operationsAccessLevel!: pulumi.Output<string>;
-    /**
      * Enable packages repository for the project.
      */
     public readonly packagesEnabled!: pulumi.Output<boolean>;
@@ -590,7 +586,6 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = state ? state.onlyAllowMergeIfAllDiscussionsAreResolved : undefined;
             resourceInputs["onlyAllowMergeIfPipelineSucceeds"] = state ? state.onlyAllowMergeIfPipelineSucceeds : undefined;
             resourceInputs["onlyMirrorProtectedBranches"] = state ? state.onlyMirrorProtectedBranches : undefined;
-            resourceInputs["operationsAccessLevel"] = state ? state.operationsAccessLevel : undefined;
             resourceInputs["packagesEnabled"] = state ? state.packagesEnabled : undefined;
             resourceInputs["pagesAccessLevel"] = state ? state.pagesAccessLevel : undefined;
             resourceInputs["path"] = state ? state.path : undefined;
@@ -686,7 +681,6 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = args ? args.onlyAllowMergeIfAllDiscussionsAreResolved : undefined;
             resourceInputs["onlyAllowMergeIfPipelineSucceeds"] = args ? args.onlyAllowMergeIfPipelineSucceeds : undefined;
             resourceInputs["onlyMirrorProtectedBranches"] = args ? args.onlyMirrorProtectedBranches : undefined;
-            resourceInputs["operationsAccessLevel"] = args ? args.operationsAccessLevel : undefined;
             resourceInputs["packagesEnabled"] = args ? args.packagesEnabled : undefined;
             resourceInputs["pagesAccessLevel"] = args ? args.pagesAccessLevel : undefined;
             resourceInputs["path"] = args ? args.path : undefined;
@@ -991,10 +985,6 @@ export interface ProjectState {
      * Enable only mirror protected branches for a mirrored project.
      */
     onlyMirrorProtectedBranches?: pulumi.Input<boolean>;
-    /**
-     * Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-     */
-    operationsAccessLevel?: pulumi.Input<string>;
     /**
      * Enable packages repository for the project.
      */
@@ -1394,10 +1384,6 @@ export interface ProjectArgs {
      * Enable only mirror protected branches for a mirrored project.
      */
     onlyMirrorProtectedBranches?: pulumi.Input<boolean>;
-    /**
-     * Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-     */
-    operationsAccessLevel?: pulumi.Input<string>;
     /**
      * Enable packages repository for the project.
      */

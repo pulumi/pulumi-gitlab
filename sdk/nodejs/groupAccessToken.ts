@@ -81,9 +81,9 @@ export class GroupAccessToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
      */
-    public readonly expiresAt!: pulumi.Output<string | undefined>;
+    public readonly expiresAt!: pulumi.Output<string>;
     /**
      * The ID or path of the group to add the group access token to.
      */
@@ -175,7 +175,7 @@ export interface GroupAccessTokenState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
      */
     expiresAt?: pulumi.Input<string>;
     /**
@@ -213,7 +213,7 @@ export interface GroupAccessTokenArgs {
      */
     accessLevel?: pulumi.Input<string>;
     /**
-     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
      */
     expiresAt?: pulumi.Input<string>;
     /**

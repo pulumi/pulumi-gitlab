@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const schedule = new gitlab.ProjectFreezePeriod("schedule", {
- *     projectId: gitlab_project.foo.id,
+ *     project: gitlab_project.foo.id,
  *     freezeStart: "0 23 * * 5",
  *     freezeEnd: "0 7 * * 1",
  *     cronTimezone: "UTC",
@@ -72,9 +72,9 @@ export class ProjectFreezePeriod extends pulumi.CustomResource {
      */
     public readonly freezeStart!: pulumi.Output<string>;
     /**
-     * The id of the project to add the schedule to.
+     * The ID or URL-encoded path of the project to add the schedule to.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a ProjectFreezePeriod resource with the given unique name, arguments, and options.
@@ -92,7 +92,7 @@ export class ProjectFreezePeriod extends pulumi.CustomResource {
             resourceInputs["cronTimezone"] = state ? state.cronTimezone : undefined;
             resourceInputs["freezeEnd"] = state ? state.freezeEnd : undefined;
             resourceInputs["freezeStart"] = state ? state.freezeStart : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ProjectFreezePeriodArgs | undefined;
             if ((!args || args.freezeEnd === undefined) && !opts.urn) {
@@ -101,13 +101,13 @@ export class ProjectFreezePeriod extends pulumi.CustomResource {
             if ((!args || args.freezeStart === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'freezeStart'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             resourceInputs["cronTimezone"] = args ? args.cronTimezone : undefined;
             resourceInputs["freezeEnd"] = args ? args.freezeEnd : undefined;
             resourceInputs["freezeStart"] = args ? args.freezeStart : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectFreezePeriod.__pulumiType, name, resourceInputs, opts);
@@ -131,9 +131,9 @@ export interface ProjectFreezePeriodState {
      */
     freezeStart?: pulumi.Input<string>;
     /**
-     * The id of the project to add the schedule to.
+     * The ID or URL-encoded path of the project to add the schedule to.
      */
-    projectId?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -153,7 +153,7 @@ export interface ProjectFreezePeriodArgs {
      */
     freezeStart: pulumi.Input<string>;
     /**
-     * The id of the project to add the schedule to.
+     * The ID or URL-encoded path of the project to add the schedule to.
      */
-    projectId: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.GroupLabelArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.GroupLabelState;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -103,6 +104,20 @@ public class GroupLabel extends com.pulumi.resources.CustomResource {
      */
     public Output<String> group() {
         return this.group;
+    }
+    /**
+     * The id of the group label.
+     * 
+     */
+    @Export(name="labelId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> labelId;
+
+    /**
+     * @return The id of the group label.
+     * 
+     */
+    public Output<Integer> labelId() {
+        return this.labelId;
     }
     /**
      * The name of the label.

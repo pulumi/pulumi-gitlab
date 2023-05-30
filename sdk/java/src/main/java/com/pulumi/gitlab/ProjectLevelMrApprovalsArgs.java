@@ -6,7 +6,7 @@ package com.pulumi.gitlab;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -62,18 +62,18 @@ public final class ProjectLevelMrApprovalsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The ID of the project to change MR approval configuration.
+     * The ID or URL-encoded path of a project to change MR approval configuration.
      * 
      */
-    @Import(name="projectId", required=true)
-    private Output<Integer> projectId;
+    @Import(name="project", required=true)
+    private Output<String> project;
 
     /**
-     * @return The ID of the project to change MR approval configuration.
+     * @return The ID or URL-encoded path of a project to change MR approval configuration.
      * 
      */
-    public Output<Integer> projectId() {
-        return this.projectId;
+    public Output<String> project() {
+        return this.project;
     }
 
     /**
@@ -112,7 +112,7 @@ public final class ProjectLevelMrApprovalsArgs extends com.pulumi.resources.Reso
         this.disableOverridingApproversPerMergeRequest = $.disableOverridingApproversPerMergeRequest;
         this.mergeRequestsAuthorApproval = $.mergeRequestsAuthorApproval;
         this.mergeRequestsDisableCommittersApproval = $.mergeRequestsDisableCommittersApproval;
-        this.projectId = $.projectId;
+        this.project = $.project;
         this.requirePasswordToApprove = $.requirePasswordToApprove;
         this.resetApprovalsOnPush = $.resetApprovalsOnPush;
     }
@@ -199,24 +199,24 @@ public final class ProjectLevelMrApprovalsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param projectId The ID of the project to change MR approval configuration.
+         * @param project The ID or URL-encoded path of a project to change MR approval configuration.
          * 
          * @return builder
          * 
          */
-        public Builder projectId(Output<Integer> projectId) {
-            $.projectId = projectId;
+        public Builder project(Output<String> project) {
+            $.project = project;
             return this;
         }
 
         /**
-         * @param projectId The ID of the project to change MR approval configuration.
+         * @param project The ID or URL-encoded path of a project to change MR approval configuration.
          * 
          * @return builder
          * 
          */
-        public Builder projectId(Integer projectId) {
-            return projectId(Output.of(projectId));
+        public Builder project(String project) {
+            return project(Output.of(project));
         }
 
         /**
@@ -262,7 +262,7 @@ public final class ProjectLevelMrApprovalsArgs extends com.pulumi.resources.Reso
         }
 
         public ProjectLevelMrApprovalsArgs build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
             return $;
         }
     }

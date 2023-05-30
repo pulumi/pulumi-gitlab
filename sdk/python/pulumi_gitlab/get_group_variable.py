@@ -21,7 +21,7 @@ class GetGroupVariableResult:
     """
     A collection of values returned by getGroupVariable.
     """
-    def __init__(__self__, environment_scope=None, group=None, id=None, key=None, masked=None, protected=None, value=None, variable_type=None):
+    def __init__(__self__, environment_scope=None, group=None, id=None, key=None, masked=None, protected=None, raw=None, value=None, variable_type=None):
         if environment_scope and not isinstance(environment_scope, str):
             raise TypeError("Expected argument 'environment_scope' to be a str")
         pulumi.set(__self__, "environment_scope", environment_scope)
@@ -40,6 +40,9 @@ class GetGroupVariableResult:
         if protected and not isinstance(protected, bool):
             raise TypeError("Expected argument 'protected' to be a bool")
         pulumi.set(__self__, "protected", protected)
+        if raw and not isinstance(raw, bool):
+            raise TypeError("Expected argument 'raw' to be a bool")
+        pulumi.set(__self__, "raw", raw)
         if value and not isinstance(value, str):
             raise TypeError("Expected argument 'value' to be a str")
         pulumi.set(__self__, "value", value)
@@ -97,6 +100,14 @@ class GetGroupVariableResult:
 
     @property
     @pulumi.getter
+    def raw(self) -> bool:
+        """
+        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        """
+        return pulumi.get(self, "raw")
+
+    @property
+    @pulumi.getter
     def value(self) -> str:
         """
         The value of the variable.
@@ -124,6 +135,7 @@ class AwaitableGetGroupVariableResult(GetGroupVariableResult):
             key=self.key,
             masked=self.masked,
             protected=self.protected,
+            raw=self.raw,
             value=self.value,
             variable_type=self.variable_type)
 
@@ -169,6 +181,7 @@ def get_group_variable(environment_scope: Optional[str] = None,
         key=__ret__.key,
         masked=__ret__.masked,
         protected=__ret__.protected,
+        raw=__ret__.raw,
         value=__ret__.value,
         variable_type=__ret__.variable_type)
 

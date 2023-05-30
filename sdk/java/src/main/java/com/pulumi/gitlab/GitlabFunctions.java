@@ -4243,7 +4243,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
      *             .build());
      * 
      *         final var welcomeIssue = GitlabFunctions.getProjectIssue(GetProjectIssueArgs.builder()
@@ -4289,7 +4289,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
      *             .build());
      * 
      *         final var welcomeIssue = GitlabFunctions.getProjectIssue(GetProjectIssueArgs.builder()
@@ -4335,7 +4335,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
      *             .build());
      * 
      *         final var welcomeIssue = GitlabFunctions.getProjectIssue(GetProjectIssueArgs.builder()
@@ -4381,7 +4381,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id(&#34;foo/bar/baz&#34;)
+     *             .pathWithNamespace(&#34;foo/bar/baz&#34;)
      *             .build());
      * 
      *         final var welcomeIssue = GitlabFunctions.getProjectIssue(GetProjectIssueArgs.builder()

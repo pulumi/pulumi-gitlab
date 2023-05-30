@@ -14,7 +14,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -106,18 +105,18 @@ public class PersonalAccessToken extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
-     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
      * 
      */
     @Export(name="expiresAt", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> expiresAt;
+    private Output<String> expiresAt;
 
     /**
-     * @return The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+     * @return The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
      * 
      */
-    public Output<Optional<String>> expiresAt() {
-        return Codegen.optional(this.expiresAt);
+    public Output<String> expiresAt() {
+        return this.expiresAt;
     }
     /**
      * The name of the personal access token.

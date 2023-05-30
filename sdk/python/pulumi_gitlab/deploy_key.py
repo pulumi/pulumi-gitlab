@@ -84,18 +84,22 @@ class DeployKeyArgs:
 class _DeployKeyState:
     def __init__(__self__, *,
                  can_push: Optional[pulumi.Input[bool]] = None,
+                 deploy_key_id: Optional[pulumi.Input[int]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DeployKey resources.
         :param pulumi.Input[bool] can_push: Allow this deploy key to be used to push changes to the project. Defaults to `false`.
+        :param pulumi.Input[int] deploy_key_id: The id of the project deploy key.
         :param pulumi.Input[str] key: The public ssh key body.
         :param pulumi.Input[str] project: The name or id of the project to add the deploy key to.
         :param pulumi.Input[str] title: A title to describe the deploy key with.
         """
         if can_push is not None:
             pulumi.set(__self__, "can_push", can_push)
+        if deploy_key_id is not None:
+            pulumi.set(__self__, "deploy_key_id", deploy_key_id)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if project is not None:
@@ -114,6 +118,18 @@ class _DeployKeyState:
     @can_push.setter
     def can_push(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "can_push", value)
+
+    @property
+    @pulumi.getter(name="deployKeyId")
+    def deploy_key_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The id of the project deploy key.
+        """
+        return pulumi.get(self, "deploy_key_id")
+
+    @deploy_key_id.setter
+    def deploy_key_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "deploy_key_id", value)
 
     @property
     @pulumi.getter
@@ -275,6 +291,7 @@ class DeployKey(pulumi.CustomResource):
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
+            __props__.__dict__["deploy_key_id"] = None
         super(DeployKey, __self__).__init__(
             'gitlab:index/deployKey:DeployKey',
             resource_name,
@@ -286,6 +303,7 @@ class DeployKey(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             can_push: Optional[pulumi.Input[bool]] = None,
+            deploy_key_id: Optional[pulumi.Input[int]] = None,
             key: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             title: Optional[pulumi.Input[str]] = None) -> 'DeployKey':
@@ -297,6 +315,7 @@ class DeployKey(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] can_push: Allow this deploy key to be used to push changes to the project. Defaults to `false`.
+        :param pulumi.Input[int] deploy_key_id: The id of the project deploy key.
         :param pulumi.Input[str] key: The public ssh key body.
         :param pulumi.Input[str] project: The name or id of the project to add the deploy key to.
         :param pulumi.Input[str] title: A title to describe the deploy key with.
@@ -306,6 +325,7 @@ class DeployKey(pulumi.CustomResource):
         __props__ = _DeployKeyState.__new__(_DeployKeyState)
 
         __props__.__dict__["can_push"] = can_push
+        __props__.__dict__["deploy_key_id"] = deploy_key_id
         __props__.__dict__["key"] = key
         __props__.__dict__["project"] = project
         __props__.__dict__["title"] = title
@@ -318,6 +338,14 @@ class DeployKey(pulumi.CustomResource):
         Allow this deploy key to be used to push changes to the project. Defaults to `false`.
         """
         return pulumi.get(self, "can_push")
+
+    @property
+    @pulumi.getter(name="deployKeyId")
+    def deploy_key_id(self) -> pulumi.Output[int]:
+        """
+        The id of the project deploy key.
+        """
+        return pulumi.get(self, "deploy_key_id")
 
     @property
     @pulumi.getter

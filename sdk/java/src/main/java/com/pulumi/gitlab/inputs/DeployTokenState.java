@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class DeployTokenState extends com.pulumi.resources.ResourceArgs {
 
     public static final DeployTokenState Empty = new DeployTokenState();
+
+    /**
+     * The id of the deploy token.
+     * 
+     */
+    @Import(name="deployTokenId")
+    private @Nullable Output<Integer> deployTokenId;
+
+    /**
+     * @return The id of the deploy token.
+     * 
+     */
+    public Optional<Output<Integer>> deployTokenId() {
+        return Optional.ofNullable(this.deployTokenId);
+    }
 
     /**
      * Time the token will expire it, RFC3339 format. Will not expire per default.
@@ -124,6 +140,7 @@ public final class DeployTokenState extends com.pulumi.resources.ResourceArgs {
     private DeployTokenState() {}
 
     private DeployTokenState(DeployTokenState $) {
+        this.deployTokenId = $.deployTokenId;
         this.expiresAt = $.expiresAt;
         this.group = $.group;
         this.name = $.name;
@@ -149,6 +166,27 @@ public final class DeployTokenState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DeployTokenState defaults) {
             $ = new DeployTokenState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deployTokenId The id of the deploy token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployTokenId(@Nullable Output<Integer> deployTokenId) {
+            $.deployTokenId = deployTokenId;
+            return this;
+        }
+
+        /**
+         * @param deployTokenId The id of the deploy token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployTokenId(Integer deployTokenId) {
+            return deployTokenId(Output.of(deployTokenId));
         }
 
         /**

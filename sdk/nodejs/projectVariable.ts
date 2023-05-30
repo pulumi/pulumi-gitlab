@@ -82,6 +82,10 @@ export class ProjectVariable extends pulumi.CustomResource {
      */
     public readonly protected!: pulumi.Output<boolean | undefined>;
     /**
+     * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     */
+    public readonly raw!: pulumi.Output<boolean | undefined>;
+    /**
      * The value of the variable.
      */
     public readonly value!: pulumi.Output<string>;
@@ -108,6 +112,7 @@ export class ProjectVariable extends pulumi.CustomResource {
             resourceInputs["masked"] = state ? state.masked : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["protected"] = state ? state.protected : undefined;
+            resourceInputs["raw"] = state ? state.raw : undefined;
             resourceInputs["value"] = state ? state.value : undefined;
             resourceInputs["variableType"] = state ? state.variableType : undefined;
         } else {
@@ -126,12 +131,11 @@ export class ProjectVariable extends pulumi.CustomResource {
             resourceInputs["masked"] = args ? args.masked : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["protected"] = args ? args.protected : undefined;
-            resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
+            resourceInputs["raw"] = args ? args.raw : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
             resourceInputs["variableType"] = args ? args.variableType : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["value"] };
-        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ProjectVariable.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -160,6 +164,10 @@ export interface ProjectVariableState {
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      */
     protected?: pulumi.Input<boolean>;
+    /**
+     * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     */
+    raw?: pulumi.Input<boolean>;
     /**
      * The value of the variable.
      */
@@ -194,6 +202,10 @@ export interface ProjectVariableArgs {
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      */
     protected?: pulumi.Input<boolean>;
+    /**
+     * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     */
+    raw?: pulumi.Input<boolean>;
     /**
      * The value of the variable.
      */

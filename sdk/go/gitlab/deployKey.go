@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -65,6 +65,8 @@ type DeployKey struct {
 
 	// Allow this deploy key to be used to push changes to the project. Defaults to `false`.
 	CanPush pulumi.BoolPtrOutput `pulumi:"canPush"`
+	// The id of the project deploy key.
+	DeployKeyId pulumi.IntOutput `pulumi:"deployKeyId"`
 	// The public ssh key body.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The name or id of the project to add the deploy key to.
@@ -113,6 +115,8 @@ func GetDeployKey(ctx *pulumi.Context,
 type deployKeyState struct {
 	// Allow this deploy key to be used to push changes to the project. Defaults to `false`.
 	CanPush *bool `pulumi:"canPush"`
+	// The id of the project deploy key.
+	DeployKeyId *int `pulumi:"deployKeyId"`
 	// The public ssh key body.
 	Key *string `pulumi:"key"`
 	// The name or id of the project to add the deploy key to.
@@ -124,6 +128,8 @@ type deployKeyState struct {
 type DeployKeyState struct {
 	// Allow this deploy key to be used to push changes to the project. Defaults to `false`.
 	CanPush pulumi.BoolPtrInput
+	// The id of the project deploy key.
+	DeployKeyId pulumi.IntPtrInput
 	// The public ssh key body.
 	Key pulumi.StringPtrInput
 	// The name or id of the project to add the deploy key to.
@@ -249,6 +255,11 @@ func (o DeployKeyOutput) ToDeployKeyOutputWithContext(ctx context.Context) Deplo
 // Allow this deploy key to be used to push changes to the project. Defaults to `false`.
 func (o DeployKeyOutput) CanPush() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeployKey) pulumi.BoolPtrOutput { return v.CanPush }).(pulumi.BoolPtrOutput)
+}
+
+// The id of the project deploy key.
+func (o DeployKeyOutput) DeployKeyId() pulumi.IntOutput {
+	return o.ApplyT(func(v *DeployKey) pulumi.IntOutput { return v.DeployKeyId }).(pulumi.IntOutput)
 }
 
 // The public ssh key body.

@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -33,7 +33,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewProjectMembership(ctx, "test", &gitlab.ProjectMembershipArgs{
 //				AccessLevel: pulumi.String("guest"),
-//				ProjectId:   pulumi.String("12345"),
+//				Project:     pulumi.String("12345"),
 //				UserId:      pulumi.Int(1337),
 //			})
 //			if err != nil {
@@ -42,7 +42,7 @@ import (
 //			_, err = gitlab.NewProjectMembership(ctx, "example", &gitlab.ProjectMembershipArgs{
 //				AccessLevel: pulumi.String("guest"),
 //				ExpiresAt:   pulumi.String("2022-12-31"),
-//				ProjectId:   pulumi.String("67890"),
+//				Project:     pulumi.String("67890"),
 //				UserId:      pulumi.Int(1234),
 //			})
 //			if err != nil {
@@ -70,8 +70,8 @@ type ProjectMembership struct {
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
 	// Expiration date for the project membership. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
-	// The id of the project.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The ID or URL-encoded path of the project.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The id of the user.
 	UserId pulumi.IntOutput `pulumi:"userId"`
 }
@@ -86,8 +86,8 @@ func NewProjectMembership(ctx *pulumi.Context,
 	if args.AccessLevel == nil {
 		return nil, errors.New("invalid value for required argument 'AccessLevel'")
 	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.UserId == nil {
 		return nil, errors.New("invalid value for required argument 'UserId'")
@@ -118,8 +118,8 @@ type projectMembershipState struct {
 	AccessLevel *string `pulumi:"accessLevel"`
 	// Expiration date for the project membership. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
-	// The id of the project.
-	ProjectId *string `pulumi:"projectId"`
+	// The ID or URL-encoded path of the project.
+	Project *string `pulumi:"project"`
 	// The id of the user.
 	UserId *int `pulumi:"userId"`
 }
@@ -129,8 +129,8 @@ type ProjectMembershipState struct {
 	AccessLevel pulumi.StringPtrInput
 	// Expiration date for the project membership. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
-	// The id of the project.
-	ProjectId pulumi.StringPtrInput
+	// The ID or URL-encoded path of the project.
+	Project pulumi.StringPtrInput
 	// The id of the user.
 	UserId pulumi.IntPtrInput
 }
@@ -144,8 +144,8 @@ type projectMembershipArgs struct {
 	AccessLevel string `pulumi:"accessLevel"`
 	// Expiration date for the project membership. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
-	// The id of the project.
-	ProjectId string `pulumi:"projectId"`
+	// The ID or URL-encoded path of the project.
+	Project string `pulumi:"project"`
 	// The id of the user.
 	UserId int `pulumi:"userId"`
 }
@@ -156,8 +156,8 @@ type ProjectMembershipArgs struct {
 	AccessLevel pulumi.StringInput
 	// Expiration date for the project membership. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
-	// The id of the project.
-	ProjectId pulumi.StringInput
+	// The ID or URL-encoded path of the project.
+	Project pulumi.StringInput
 	// The id of the user.
 	UserId pulumi.IntInput
 }
@@ -259,9 +259,9 @@ func (o ProjectMembershipOutput) ExpiresAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectMembership) pulumi.StringPtrOutput { return v.ExpiresAt }).(pulumi.StringPtrOutput)
 }
 
-// The id of the project.
-func (o ProjectMembershipOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ProjectMembership) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+// The ID or URL-encoded path of the project.
+func (o ProjectMembershipOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectMembership) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The id of the user.

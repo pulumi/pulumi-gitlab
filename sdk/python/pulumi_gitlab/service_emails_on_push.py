@@ -345,6 +345,8 @@ class ServiceEmailsOnPush(pulumi.CustomResource):
         """
         The `ServiceEmailsOnPush` resource allows to manage the lifecycle of a project integration with Emails on Push Service.
 
+        > This resource is deprecated. Please use `IntegrationEmailsOnPush` instead!
+
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#emails-on-push)
 
         ## Example Usage
@@ -387,6 +389,8 @@ class ServiceEmailsOnPush(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The `ServiceEmailsOnPush` resource allows to manage the lifecycle of a project integration with Emails on Push Service.
+
+        > This resource is deprecated. Please use `IntegrationEmailsOnPush` instead!
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#emails-on-push)
 

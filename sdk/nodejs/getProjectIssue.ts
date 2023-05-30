@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const foo = gitlab.getProject({
- *     id: "foo/bar/baz",
+ *     pathWithNamespace: "foo/bar/baz",
  * });
  * const welcomeIssue = foo.then(foo => gitlab.getProjectIssue({
  *     project: foo.id,
@@ -227,7 +227,7 @@ export interface GetProjectIssueResult {
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const foo = gitlab.getProject({
- *     id: "foo/bar/baz",
+ *     pathWithNamespace: "foo/bar/baz",
  * });
  * const welcomeIssue = foo.then(foo => gitlab.getProjectIssue({
  *     project: foo.id,

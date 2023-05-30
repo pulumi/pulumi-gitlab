@@ -76,9 +76,9 @@ export class PersonalAccessToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
      */
-    public readonly expiresAt!: pulumi.Output<string | undefined>;
+    public readonly expiresAt!: pulumi.Output<string>;
     /**
      * The name of the personal access token.
      */
@@ -158,7 +158,7 @@ export interface PersonalAccessTokenState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
      */
     expiresAt?: pulumi.Input<string>;
     /**
@@ -188,7 +188,7 @@ export interface PersonalAccessTokenState {
  */
 export interface PersonalAccessTokenArgs {
     /**
-     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
      */
     expiresAt?: pulumi.Input<string>;
     /**

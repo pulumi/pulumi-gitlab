@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -76,8 +76,8 @@ type GroupAccessToken struct {
 	Active pulumi.BoolOutput `pulumi:"active"`
 	// Time the token has been created, RFC3339 format.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
-	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
+	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
 	// The ID or path of the group to add the group access token to.
 	Group pulumi.StringOutput `pulumi:"group"`
 	// The name of the group access token.
@@ -137,7 +137,7 @@ type groupAccessTokenState struct {
 	Active *bool `pulumi:"active"`
 	// Time the token has been created, RFC3339 format.
 	CreatedAt *string `pulumi:"createdAt"`
-	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The ID or path of the group to add the group access token to.
 	Group *string `pulumi:"group"`
@@ -160,7 +160,7 @@ type GroupAccessTokenState struct {
 	Active pulumi.BoolPtrInput
 	// Time the token has been created, RFC3339 format.
 	CreatedAt pulumi.StringPtrInput
-	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
 	ExpiresAt pulumi.StringPtrInput
 	// The ID or path of the group to add the group access token to.
 	Group pulumi.StringPtrInput
@@ -183,7 +183,7 @@ func (GroupAccessTokenState) ElementType() reflect.Type {
 type groupAccessTokenArgs struct {
 	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel *string `pulumi:"accessLevel"`
-	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The ID or path of the group to add the group access token to.
 	Group string `pulumi:"group"`
@@ -197,7 +197,7 @@ type groupAccessTokenArgs struct {
 type GroupAccessTokenArgs struct {
 	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel pulumi.StringPtrInput
-	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
 	ExpiresAt pulumi.StringPtrInput
 	// The ID or path of the group to add the group access token to.
 	Group pulumi.StringInput
@@ -309,9 +309,9 @@ func (o GroupAccessTokenOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
-func (o GroupAccessTokenOutput) ExpiresAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringPtrOutput { return v.ExpiresAt }).(pulumi.StringPtrOutput)
+// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+func (o GroupAccessTokenOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringOutput { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
 // The ID or path of the group to add the group access token to.

@@ -71,6 +71,10 @@ export class GroupLabel extends pulumi.CustomResource {
      */
     public readonly group!: pulumi.Output<string>;
     /**
+     * The id of the group label.
+     */
+    public /*out*/ readonly labelId!: pulumi.Output<number>;
+    /**
      * The name of the label.
      */
     public readonly name!: pulumi.Output<string>;
@@ -91,6 +95,7 @@ export class GroupLabel extends pulumi.CustomResource {
             resourceInputs["color"] = state ? state.color : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
+            resourceInputs["labelId"] = state ? state.labelId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as GroupLabelArgs | undefined;
@@ -104,6 +109,7 @@ export class GroupLabel extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["group"] = args ? args.group : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["labelId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupLabel.__pulumiType, name, resourceInputs, opts);
@@ -126,6 +132,10 @@ export interface GroupLabelState {
      * The name or id of the group to add the label to.
      */
     group?: pulumi.Input<string>;
+    /**
+     * The id of the group label.
+     */
+    labelId?: pulumi.Input<number>;
     /**
      * The name of the label.
      */

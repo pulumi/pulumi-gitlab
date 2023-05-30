@@ -119,18 +119,18 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
-     * Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+     * Time the token will expire it, YYYY-MM-DD format.
      * 
      */
     @Export(name="expiresAt", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> expiresAt;
+    private Output<String> expiresAt;
 
     /**
-     * @return Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+     * @return Time the token will expire it, YYYY-MM-DD format.
      * 
      */
-    public Output<Optional<String>> expiresAt() {
-        return Codegen.optional(this.expiresAt);
+    public Output<String> expiresAt() {
+        return this.expiresAt;
     }
     /**
      * A name to describe the project access token.

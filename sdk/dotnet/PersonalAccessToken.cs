@@ -72,10 +72,10 @@ namespace Pulumi.GitLab
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+        /// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
         /// </summary>
         [Output("expiresAt")]
-        public Output<string?> ExpiresAt { get; private set; } = null!;
+        public Output<string> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
         /// The name of the personal access token.
@@ -158,7 +158,7 @@ namespace Pulumi.GitLab
     public sealed class PersonalAccessTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+        /// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
         /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.GitLab
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+        /// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
         /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
