@@ -12,7 +12,6 @@ import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.InstanceVariableState;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -108,6 +107,20 @@ public class InstanceVariable extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.protected_);
     }
     /**
+     * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * 
+     */
+    @Export(name="raw", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> raw;
+
+    /**
+     * @return Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * 
+     */
+    public Output<Optional<Boolean>> raw() {
+        return Codegen.optional(this.raw);
+    }
+    /**
      * The value of the variable.
      * 
      */
@@ -168,9 +181,6 @@ public class InstanceVariable extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .additionalSecretOutputs(List.of(
-                "value"
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

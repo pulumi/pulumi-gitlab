@@ -89,7 +89,6 @@ public final class GetProjectsProject {
     private Boolean onlyAllowMergeIfPipelineSucceeds;
     private Boolean onlyMirrorProtectedBranches;
     private Integer openIssuesCount;
-    private String operationsAccessLevel;
     private List<GetProjectsProjectOwner> owners;
     private Boolean packagesEnabled;
     private String path;
@@ -326,9 +325,6 @@ public final class GetProjectsProject {
     public Integer openIssuesCount() {
         return this.openIssuesCount;
     }
-    public String operationsAccessLevel() {
-        return this.operationsAccessLevel;
-    }
     public List<GetProjectsProjectOwner> owners() {
         return this.owners;
     }
@@ -505,7 +501,6 @@ public final class GetProjectsProject {
         private Boolean onlyAllowMergeIfPipelineSucceeds;
         private Boolean onlyMirrorProtectedBranches;
         private Integer openIssuesCount;
-        private String operationsAccessLevel;
         private List<GetProjectsProjectOwner> owners;
         private Boolean packagesEnabled;
         private String path;
@@ -603,7 +598,6 @@ public final class GetProjectsProject {
     	      this.onlyAllowMergeIfPipelineSucceeds = defaults.onlyAllowMergeIfPipelineSucceeds;
     	      this.onlyMirrorProtectedBranches = defaults.onlyMirrorProtectedBranches;
     	      this.openIssuesCount = defaults.openIssuesCount;
-    	      this.operationsAccessLevel = defaults.operationsAccessLevel;
     	      this.owners = defaults.owners;
     	      this.packagesEnabled = defaults.packagesEnabled;
     	      this.path = defaults.path;
@@ -958,11 +952,6 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
-        public Builder operationsAccessLevel(String operationsAccessLevel) {
-            this.operationsAccessLevel = Objects.requireNonNull(operationsAccessLevel);
-            return this;
-        }
-        @CustomType.Setter
         public Builder owners(List<GetProjectsProjectOwner> owners) {
             this.owners = Objects.requireNonNull(owners);
             return this;
@@ -1201,7 +1190,6 @@ public final class GetProjectsProject {
             o.onlyAllowMergeIfPipelineSucceeds = onlyAllowMergeIfPipelineSucceeds;
             o.onlyMirrorProtectedBranches = onlyMirrorProtectedBranches;
             o.openIssuesCount = openIssuesCount;
-            o.operationsAccessLevel = operationsAccessLevel;
             o.owners = owners;
             o.packagesEnabled = packagesEnabled;
             o.path = path;

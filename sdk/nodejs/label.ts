@@ -7,34 +7,9 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.Label` resource allows to manage the lifecycle of a project label.
  *
+ * > This resource is deprecated. use `gitlab.ProjectLabel`instead!
+ *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gitlab from "@pulumi/gitlab";
- *
- * const fixme = new gitlab.Label("fixme", {
- *     project: "example",
- *     description: "issue with failing tests",
- *     color: "#ffcc00",
- * });
- * // Scoped label
- * const devopsCreate = new gitlab.Label("devopsCreate", {
- *     project: gitlab_project.example.id,
- *     description: "issue for creating infrastructure resources",
- *     color: "#ffa500",
- * });
- * ```
- *
- * ## Import
- *
- * Gitlab labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
- *
- * ```sh
- *  $ pulumi import gitlab:index/label:Label example 12345:fixme
- * ```
  */
 export class Label extends pulumi.CustomResource {
     /**
@@ -73,6 +48,10 @@ export class Label extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The id of the project label.
+     */
+    public /*out*/ readonly labelId!: pulumi.Output<number>;
+    /**
      * The name of the label.
      */
     public readonly name!: pulumi.Output<string>;
@@ -96,6 +75,7 @@ export class Label extends pulumi.CustomResource {
             const state = argsOrState as LabelState | undefined;
             resourceInputs["color"] = state ? state.color : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["labelId"] = state ? state.labelId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
         } else {
@@ -110,6 +90,7 @@ export class Label extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["labelId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Label.__pulumiType, name, resourceInputs, opts);
@@ -128,6 +109,10 @@ export interface LabelState {
      * The description of the label.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The id of the project label.
+     */
+    labelId?: pulumi.Input<number>;
     /**
      * The name of the label.
      */

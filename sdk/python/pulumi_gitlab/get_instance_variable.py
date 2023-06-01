@@ -21,7 +21,7 @@ class GetInstanceVariableResult:
     """
     A collection of values returned by getInstanceVariable.
     """
-    def __init__(__self__, id=None, key=None, masked=None, protected=None, value=None, variable_type=None):
+    def __init__(__self__, id=None, key=None, masked=None, protected=None, raw=None, value=None, variable_type=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -34,6 +34,9 @@ class GetInstanceVariableResult:
         if protected and not isinstance(protected, bool):
             raise TypeError("Expected argument 'protected' to be a bool")
         pulumi.set(__self__, "protected", protected)
+        if raw and not isinstance(raw, bool):
+            raise TypeError("Expected argument 'raw' to be a bool")
+        pulumi.set(__self__, "raw", raw)
         if value and not isinstance(value, str):
             raise TypeError("Expected argument 'value' to be a str")
         pulumi.set(__self__, "value", value)
@@ -75,6 +78,14 @@ class GetInstanceVariableResult:
 
     @property
     @pulumi.getter
+    def raw(self) -> bool:
+        """
+        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        """
+        return pulumi.get(self, "raw")
+
+    @property
+    @pulumi.getter
     def value(self) -> str:
         """
         The value of the variable.
@@ -100,6 +111,7 @@ class AwaitableGetInstanceVariableResult(GetInstanceVariableResult):
             key=self.key,
             masked=self.masked,
             protected=self.protected,
+            raw=self.raw,
             value=self.value,
             variable_type=self.variable_type)
 
@@ -133,6 +145,7 @@ def get_instance_variable(key: Optional[str] = None,
         key=__ret__.key,
         masked=__ret__.masked,
         protected=__ret__.protected,
+        raw=__ret__.raw,
         value=__ret__.value,
         variable_type=__ret__.variable_type)
 

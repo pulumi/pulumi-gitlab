@@ -12,43 +12,9 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.Label` resource allows to manage the lifecycle of a project label.
     /// 
+    /// &gt; This resource is deprecated. use `gitlab.ProjectLabel`instead!
+    /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using GitLab = Pulumi.GitLab;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var fixme = new GitLab.Label("fixme", new()
-    ///     {
-    ///         Project = "example",
-    ///         Description = "issue with failing tests",
-    ///         Color = "#ffcc00",
-    ///     });
-    /// 
-    ///     // Scoped label
-    ///     var devopsCreate = new GitLab.Label("devopsCreate", new()
-    ///     {
-    ///         Project = gitlab_project.Example.Id,
-    ///         Description = "issue for creating infrastructure resources",
-    ///         Color = "#ffa500",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// Gitlab labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import gitlab:index/label:Label example 12345:fixme
-    /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/label:Label")]
     public partial class Label : global::Pulumi.CustomResource
@@ -64,6 +30,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The id of the project label.
+        /// </summary>
+        [Output("labelId")]
+        public Output<int> LabelId { get; private set; } = null!;
 
         /// <summary>
         /// The name of the label.
@@ -166,6 +138,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The id of the project label.
+        /// </summary>
+        [Input("labelId")]
+        public Input<int>? LabelId { get; set; }
 
         /// <summary>
         /// The name of the label.

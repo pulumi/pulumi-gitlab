@@ -64,14 +64,14 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
      * 
      */
     @Import(name="expiresAt")
     private @Nullable Output<String> expiresAt;
 
     /**
-     * @return The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+     * @return The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
      * 
      */
     public Optional<Output<String>> expiresAt() {
@@ -265,7 +265,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param expiresAt The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+         * @param expiresAt The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param expiresAt The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+         * @param expiresAt The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
          * 
          * @return builder
          * 

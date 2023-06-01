@@ -58,6 +58,12 @@ namespace Pulumi.GitLab
         public Output<bool?> CanPush { get; private set; } = null!;
 
         /// <summary>
+        /// The id of the project deploy key.
+        /// </summary>
+        [Output("deployKeyId")]
+        public Output<int> DeployKeyId { get; private set; } = null!;
+
+        /// <summary>
         /// The public ssh key body.
         /// </summary>
         [Output("key")]
@@ -158,6 +164,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("canPush")]
         public Input<bool>? CanPush { get; set; }
+
+        /// <summary>
+        /// The id of the project deploy key.
+        /// </summary>
+        [Input("deployKeyId")]
+        public Input<int>? DeployKeyId { get; set; }
 
         /// <summary>
         /// The public ssh key body.

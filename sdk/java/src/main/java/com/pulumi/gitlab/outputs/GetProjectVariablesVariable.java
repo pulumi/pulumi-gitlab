@@ -23,6 +23,7 @@ public final class GetProjectVariablesVariable {
      */
     private String project;
     private Boolean protected_;
+    private Boolean raw;
     private String value;
     private String variableType;
 
@@ -50,6 +51,9 @@ public final class GetProjectVariablesVariable {
     public Boolean protected_() {
         return this.protected_;
     }
+    public Boolean raw() {
+        return this.raw;
+    }
     public String value() {
         return this.value;
     }
@@ -71,6 +75,7 @@ public final class GetProjectVariablesVariable {
         private Boolean masked;
         private String project;
         private Boolean protected_;
+        private Boolean raw;
         private String value;
         private String variableType;
         public Builder() {}
@@ -81,6 +86,7 @@ public final class GetProjectVariablesVariable {
     	      this.masked = defaults.masked;
     	      this.project = defaults.project;
     	      this.protected_ = defaults.protected_;
+    	      this.raw = defaults.raw;
     	      this.value = defaults.value;
     	      this.variableType = defaults.variableType;
         }
@@ -111,6 +117,11 @@ public final class GetProjectVariablesVariable {
             return this;
         }
         @CustomType.Setter
+        public Builder raw(Boolean raw) {
+            this.raw = Objects.requireNonNull(raw);
+            return this;
+        }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
@@ -127,6 +138,7 @@ public final class GetProjectVariablesVariable {
             o.masked = masked;
             o.project = project;
             o.protected_ = protected_;
+            o.raw = raw;
             o.value = value;
             o.variableType = variableType;
             return o;

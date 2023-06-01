@@ -12,6 +12,8 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.ServiceCustomIssueTracker` resource allows to manage the lifecycle of a project integration with Custom Issue Tracker.
     /// 
+    /// &gt; This resource is deprecated. use `gitlab.IntegrationCustomIssueTracker`instead!
+    /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#custom-issue-tracker)
     /// 
     /// ## Example Usage
@@ -42,7 +44,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// You can import a gitlab_service_external_wiki state using the project ID, e.g.
+    /// You can import a gitlab_service_custom_issue_tracker state using the project ID, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/serviceCustomIssueTracker:ServiceCustomIssueTracker tracker 1

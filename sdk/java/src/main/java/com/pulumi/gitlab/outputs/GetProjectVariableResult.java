@@ -41,6 +41,11 @@ public final class GetProjectVariableResult {
      */
     private Boolean protected_;
     /**
+     * @return Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * 
+     */
+    private Boolean raw;
+    /**
      * @return The value of the variable.
      * 
      */
@@ -95,6 +100,13 @@ public final class GetProjectVariableResult {
         return this.protected_;
     }
     /**
+     * @return Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * 
+     */
+    public Boolean raw() {
+        return this.raw;
+    }
+    /**
      * @return The value of the variable.
      * 
      */
@@ -124,6 +136,7 @@ public final class GetProjectVariableResult {
         private Boolean masked;
         private String project;
         private Boolean protected_;
+        private Boolean raw;
         private String value;
         private String variableType;
         public Builder() {}
@@ -135,6 +148,7 @@ public final class GetProjectVariableResult {
     	      this.masked = defaults.masked;
     	      this.project = defaults.project;
     	      this.protected_ = defaults.protected_;
+    	      this.raw = defaults.raw;
     	      this.value = defaults.value;
     	      this.variableType = defaults.variableType;
         }
@@ -170,6 +184,11 @@ public final class GetProjectVariableResult {
             return this;
         }
         @CustomType.Setter
+        public Builder raw(Boolean raw) {
+            this.raw = Objects.requireNonNull(raw);
+            return this;
+        }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
@@ -187,6 +206,7 @@ public final class GetProjectVariableResult {
             o.masked = masked;
             o.project = project;
             o.protected_ = protected_;
+            o.raw = raw;
             o.value = value;
             o.variableType = variableType;
             return o;

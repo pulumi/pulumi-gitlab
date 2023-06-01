@@ -32,14 +32,14 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+     * Time the token will expire it, YYYY-MM-DD format.
      * 
      */
     @Import(name="expiresAt")
     private @Nullable Output<String> expiresAt;
 
     /**
-     * @return Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+     * @return Time the token will expire it, YYYY-MM-DD format.
      * 
      */
     public Optional<Output<String>> expiresAt() {
@@ -141,7 +141,7 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param expiresAt Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+         * @param expiresAt Time the token will expire it, YYYY-MM-DD format.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param expiresAt Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+         * @param expiresAt Time the token will expire it, YYYY-MM-DD format.
          * 
          * @return builder
          * 

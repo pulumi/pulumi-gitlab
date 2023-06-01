@@ -11,7 +11,7 @@ import com.pulumi.gitlab.ProjectLevelMrApprovalsArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectLevelMrApprovalsState;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var fooProjectLevelMrApprovals = new ProjectLevelMrApprovals(&#34;fooProjectLevelMrApprovals&#34;, ProjectLevelMrApprovalsArgs.builder()        
- *             .projectId(fooProject.id())
+ *             .project(fooProject.id())
  *             .resetApprovalsOnPush(true)
  *             .disableOverridingApproversPerMergeRequest(false)
  *             .mergeRequestsAuthorApproval(false)
@@ -120,18 +120,18 @@ public class ProjectLevelMrApprovals extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.mergeRequestsDisableCommittersApproval);
     }
     /**
-     * The ID of the project to change MR approval configuration.
+     * The ID or URL-encoded path of a project to change MR approval configuration.
      * 
      */
-    @Export(name="projectId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> projectId;
+    @Export(name="project", refs={String.class}, tree="[0]")
+    private Output<String> project;
 
     /**
-     * @return The ID of the project to change MR approval configuration.
+     * @return The ID or URL-encoded path of a project to change MR approval configuration.
      * 
      */
-    public Output<Integer> projectId() {
-        return this.projectId;
+    public Output<String> project() {
+        return this.project;
     }
     /**
      * Set to `true` if you want to require authentication when approving a merge request.

@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -46,6 +47,21 @@ public final class LabelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The id of the project label.
+     * 
+     */
+    @Import(name="labelId")
+    private @Nullable Output<Integer> labelId;
+
+    /**
+     * @return The id of the project label.
+     * 
+     */
+    public Optional<Output<Integer>> labelId() {
+        return Optional.ofNullable(this.labelId);
+    }
+
+    /**
      * The name of the label.
      * 
      */
@@ -80,6 +96,7 @@ public final class LabelState extends com.pulumi.resources.ResourceArgs {
     private LabelState(LabelState $) {
         this.color = $.color;
         this.description = $.description;
+        this.labelId = $.labelId;
         this.name = $.name;
         this.project = $.project;
     }
@@ -142,6 +159,27 @@ public final class LabelState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param labelId The id of the project label.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labelId(@Nullable Output<Integer> labelId) {
+            $.labelId = labelId;
+            return this;
+        }
+
+        /**
+         * @param labelId The id of the project label.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labelId(Integer labelId) {
+            return labelId(Output.of(labelId));
         }
 
         /**

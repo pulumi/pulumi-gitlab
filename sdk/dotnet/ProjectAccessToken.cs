@@ -77,10 +77,10 @@ namespace Pulumi.GitLab
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+        /// Time the token will expire it, YYYY-MM-DD format.
         /// </summary>
         [Output("expiresAt")]
-        public Output<string?> ExpiresAt { get; private set; } = null!;
+        public Output<string> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
         /// A name to describe the project access token.
@@ -175,7 +175,7 @@ namespace Pulumi.GitLab
         public Input<string>? AccessLevel { get; set; }
 
         /// <summary>
-        /// Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+        /// Time the token will expire it, YYYY-MM-DD format.
         /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
@@ -231,7 +231,7 @@ namespace Pulumi.GitLab
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+        /// Time the token will expire it, YYYY-MM-DD format.
         /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }

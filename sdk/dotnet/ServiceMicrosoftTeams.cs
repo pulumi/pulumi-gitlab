@@ -12,6 +12,8 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.ServiceMicrosoftTeams` resource allows to manage the lifecycle of a project integration with Microsoft Teams.
     /// 
+    /// &gt; This resource is deprecated. use `gitlab.IntegrationMicrosoftTeams`instead!
+    /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#microsoft-teams)
     /// 
     /// ## Example Usage
@@ -42,7 +44,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// You can import a service_microsoft_teams state using the project ID, e.g.
+    /// You can import a gitlab_service_microsoft_teams state using the project ID, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams teams 1

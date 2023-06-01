@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -81,6 +81,8 @@ type LookupProjectVariableResult struct {
 	Project string `pulumi:"project"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected bool `pulumi:"protected"`
+	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	Raw bool `pulumi:"raw"`
 	// The value of the variable.
 	Value string `pulumi:"value"`
 	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
@@ -157,6 +159,11 @@ func (o LookupProjectVariableResultOutput) Project() pulumi.StringOutput {
 // If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 func (o LookupProjectVariableResultOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectVariableResult) bool { return v.Protected }).(pulumi.BoolOutput)
+}
+
+// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+func (o LookupProjectVariableResultOutput) Raw() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectVariableResult) bool { return v.Raw }).(pulumi.BoolOutput)
 }
 
 // The value of the variable.

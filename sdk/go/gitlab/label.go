@@ -13,53 +13,9 @@ import (
 
 // The `Label` resource allows to manage the lifecycle of a project label.
 //
+// > This resource is deprecated. use `ProjectLabel`instead!
+//
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.NewLabel(ctx, "fixme", &gitlab.LabelArgs{
-//				Project:     pulumi.String("example"),
-//				Description: pulumi.String("issue with failing tests"),
-//				Color:       pulumi.String("#ffcc00"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewLabel(ctx, "devopsCreate", &gitlab.LabelArgs{
-//				Project:     pulumi.Any(gitlab_project.Example.Id),
-//				Description: pulumi.String("issue for creating infrastructure resources"),
-//				Color:       pulumi.String("#ffa500"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Gitlab labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
-//
-// ```sh
-//
-//	$ pulumi import gitlab:index/label:Label example 12345:fixme
-//
-// ```
 type Label struct {
 	pulumi.CustomResourceState
 
@@ -67,6 +23,8 @@ type Label struct {
 	Color pulumi.StringOutput `pulumi:"color"`
 	// The description of the label.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The id of the project label.
+	LabelId pulumi.IntOutput `pulumi:"labelId"`
 	// The name of the label.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name or id of the project to add the label to.
@@ -112,6 +70,8 @@ type labelState struct {
 	Color *string `pulumi:"color"`
 	// The description of the label.
 	Description *string `pulumi:"description"`
+	// The id of the project label.
+	LabelId *int `pulumi:"labelId"`
 	// The name of the label.
 	Name *string `pulumi:"name"`
 	// The name or id of the project to add the label to.
@@ -123,6 +83,8 @@ type LabelState struct {
 	Color pulumi.StringPtrInput
 	// The description of the label.
 	Description pulumi.StringPtrInput
+	// The id of the project label.
+	LabelId pulumi.IntPtrInput
 	// The name of the label.
 	Name pulumi.StringPtrInput
 	// The name or id of the project to add the label to.
@@ -251,6 +213,11 @@ func (o LabelOutput) Color() pulumi.StringOutput {
 // The description of the label.
 func (o LabelOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Label) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The id of the project label.
+func (o LabelOutput) LabelId() pulumi.IntOutput {
+	return o.ApplyT(func(v *Label) pulumi.IntOutput { return v.LabelId }).(pulumi.IntOutput)
 }
 
 // The name of the label.

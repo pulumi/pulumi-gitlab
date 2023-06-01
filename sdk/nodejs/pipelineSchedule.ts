@@ -76,6 +76,10 @@ export class PipelineSchedule extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * The pipeline schedule id.
+     */
+    public /*out*/ readonly pipelineScheduleId!: pulumi.Output<number>;
+    /**
      * The name or id of the project to add the schedule to.
      */
     public readonly project!: pulumi.Output<string>;
@@ -101,6 +105,7 @@ export class PipelineSchedule extends pulumi.CustomResource {
             resourceInputs["cron"] = state ? state.cron : undefined;
             resourceInputs["cronTimezone"] = state ? state.cronTimezone : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["pipelineScheduleId"] = state ? state.pipelineScheduleId : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["ref"] = state ? state.ref : undefined;
         } else {
@@ -123,6 +128,7 @@ export class PipelineSchedule extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["ref"] = args ? args.ref : undefined;
+            resourceInputs["pipelineScheduleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PipelineSchedule.__pulumiType, name, resourceInputs, opts);
@@ -149,6 +155,10 @@ export interface PipelineScheduleState {
      * The description of the pipeline schedule.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The pipeline schedule id.
+     */
+    pipelineScheduleId?: pulumi.Input<number>;
     /**
      * The name or id of the project to add the schedule to.
      */

@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -28,6 +29,21 @@ public final class PipelineTriggerState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The pipeline trigger id.
+     * 
+     */
+    @Import(name="pipelineTriggerId")
+    private @Nullable Output<Integer> pipelineTriggerId;
+
+    /**
+     * @return The pipeline trigger id.
+     * 
+     */
+    public Optional<Output<Integer>> pipelineTriggerId() {
+        return Optional.ofNullable(this.pipelineTriggerId);
     }
 
     /**
@@ -64,6 +80,7 @@ public final class PipelineTriggerState extends com.pulumi.resources.ResourceArg
 
     private PipelineTriggerState(PipelineTriggerState $) {
         this.description = $.description;
+        this.pipelineTriggerId = $.pipelineTriggerId;
         this.project = $.project;
         this.token = $.token;
     }
@@ -105,6 +122,27 @@ public final class PipelineTriggerState extends com.pulumi.resources.ResourceArg
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param pipelineTriggerId The pipeline trigger id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pipelineTriggerId(@Nullable Output<Integer> pipelineTriggerId) {
+            $.pipelineTriggerId = pipelineTriggerId;
+            return this;
+        }
+
+        /**
+         * @param pipelineTriggerId The pipeline trigger id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pipelineTriggerId(Integer pipelineTriggerId) {
+            return pipelineTriggerId(Output.of(pipelineTriggerId));
         }
 
         /**

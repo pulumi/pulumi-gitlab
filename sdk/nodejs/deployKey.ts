@@ -69,6 +69,10 @@ export class DeployKey extends pulumi.CustomResource {
      */
     public readonly canPush!: pulumi.Output<boolean | undefined>;
     /**
+     * The id of the project deploy key.
+     */
+    public /*out*/ readonly deployKeyId!: pulumi.Output<number>;
+    /**
      * The public ssh key body.
      */
     public readonly key!: pulumi.Output<string>;
@@ -95,6 +99,7 @@ export class DeployKey extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DeployKeyState | undefined;
             resourceInputs["canPush"] = state ? state.canPush : undefined;
+            resourceInputs["deployKeyId"] = state ? state.deployKeyId : undefined;
             resourceInputs["key"] = state ? state.key : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
@@ -113,6 +118,7 @@ export class DeployKey extends pulumi.CustomResource {
             resourceInputs["key"] = args ? args.key : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["deployKeyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DeployKey.__pulumiType, name, resourceInputs, opts);
@@ -127,6 +133,10 @@ export interface DeployKeyState {
      * Allow this deploy key to be used to push changes to the project. Defaults to `false`.
      */
     canPush?: pulumi.Input<boolean>;
+    /**
+     * The id of the project deploy key.
+     */
+    deployKeyId?: pulumi.Input<number>;
     /**
      * The public ssh key body.
      */

@@ -92,6 +92,21 @@ public final class ProjectVariableState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * 
+     */
+    @Import(name="raw")
+    private @Nullable Output<Boolean> raw;
+
+    /**
+     * @return Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * 
+     */
+    public Optional<Output<Boolean>> raw() {
+        return Optional.ofNullable(this.raw);
+    }
+
+    /**
      * The value of the variable.
      * 
      */
@@ -129,6 +144,7 @@ public final class ProjectVariableState extends com.pulumi.resources.ResourceArg
         this.masked = $.masked;
         this.project = $.project;
         this.protected_ = $.protected_;
+        this.raw = $.raw;
         this.value = $.value;
         this.variableType = $.variableType;
     }
@@ -254,6 +270,27 @@ public final class ProjectVariableState extends com.pulumi.resources.ResourceArg
          */
         public Builder protected_(Boolean protected_) {
             return protected_(Output.of(protected_));
+        }
+
+        /**
+         * @param raw Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder raw(@Nullable Output<Boolean> raw) {
+            $.raw = raw;
+            return this;
+        }
+
+        /**
+         * @param raw Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder raw(Boolean raw) {
+            return raw(Output.of(raw));
         }
 
         /**

@@ -202,11 +202,6 @@ public final class GetProjectResult {
      */
     private Integer namespaceId;
     /**
-     * @return Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-     * 
-     */
-    private String operationsAccessLevel;
-    /**
      * @return The path of the repository.
      * 
      */
@@ -598,13 +593,6 @@ public final class GetProjectResult {
         return this.namespaceId;
     }
     /**
-     * @return Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-     * 
-     */
-    public String operationsAccessLevel() {
-        return this.operationsAccessLevel;
-    }
-    /**
      * @return The path of the repository.
      * 
      */
@@ -833,7 +821,6 @@ public final class GetProjectResult {
         private String monitorAccessLevel;
         private String name;
         private Integer namespaceId;
-        private String operationsAccessLevel;
         private String path;
         private String pathWithNamespace;
         private Boolean pipelinesEnabled;
@@ -900,7 +887,6 @@ public final class GetProjectResult {
     	      this.monitorAccessLevel = defaults.monitorAccessLevel;
     	      this.name = defaults.name;
     	      this.namespaceId = defaults.namespaceId;
-    	      this.operationsAccessLevel = defaults.operationsAccessLevel;
     	      this.path = defaults.path;
     	      this.pathWithNamespace = defaults.pathWithNamespace;
     	      this.pipelinesEnabled = defaults.pipelinesEnabled;
@@ -1118,11 +1104,6 @@ public final class GetProjectResult {
             return this;
         }
         @CustomType.Setter
-        public Builder operationsAccessLevel(String operationsAccessLevel) {
-            this.operationsAccessLevel = Objects.requireNonNull(operationsAccessLevel);
-            return this;
-        }
-        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
@@ -1297,7 +1278,6 @@ public final class GetProjectResult {
             o.monitorAccessLevel = monitorAccessLevel;
             o.name = name;
             o.namespaceId = namespaceId;
-            o.operationsAccessLevel = operationsAccessLevel;
             o.path = path;
             o.pathWithNamespace = pathWithNamespace;
             o.pipelinesEnabled = pipelinesEnabled;

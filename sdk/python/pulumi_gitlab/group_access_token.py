@@ -24,7 +24,7 @@ class GroupAccessTokenArgs:
         :param pulumi.Input[str] group: The ID or path of the group to add the group access token to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
         :param pulumi.Input[str] access_level: The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-        :param pulumi.Input[str] expires_at: The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+        :param pulumi.Input[str] expires_at: The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
         :param pulumi.Input[str] name: The name of the group access token.
         """
         pulumi.set(__self__, "group", group)
@@ -76,7 +76,7 @@ class GroupAccessTokenArgs:
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[pulumi.Input[str]]:
         """
-        The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+        The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
         """
         return pulumi.get(self, "expires_at")
 
@@ -115,7 +115,7 @@ class _GroupAccessTokenState:
         :param pulumi.Input[str] access_level: The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[bool] active: True if the token is active.
         :param pulumi.Input[str] created_at: Time the token has been created, RFC3339 format.
-        :param pulumi.Input[str] expires_at: The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+        :param pulumi.Input[str] expires_at: The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
         :param pulumi.Input[str] group: The ID or path of the group to add the group access token to.
         :param pulumi.Input[str] name: The name of the group access token.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
@@ -184,7 +184,7 @@ class _GroupAccessTokenState:
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[pulumi.Input[str]]:
         """
-        The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+        The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
         """
         return pulumi.get(self, "expires_at")
 
@@ -313,7 +313,7 @@ class GroupAccessToken(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-        :param pulumi.Input[str] expires_at: The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+        :param pulumi.Input[str] expires_at: The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
         :param pulumi.Input[str] group: The ID or path of the group to add the group access token to.
         :param pulumi.Input[str] name: The name of the group access token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
@@ -433,7 +433,7 @@ class GroupAccessToken(pulumi.CustomResource):
         :param pulumi.Input[str] access_level: The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[bool] active: True if the token is active.
         :param pulumi.Input[str] created_at: Time the token has been created, RFC3339 format.
-        :param pulumi.Input[str] expires_at: The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+        :param pulumi.Input[str] expires_at: The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
         :param pulumi.Input[str] group: The ID or path of the group to add the group access token to.
         :param pulumi.Input[str] name: The name of the group access token.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
@@ -483,9 +483,9 @@ class GroupAccessToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> pulumi.Output[Optional[str]]:
+    def expires_at(self) -> pulumi.Output[str]:
         """
-        The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+        The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
         """
         return pulumi.get(self, "expires_at")
 

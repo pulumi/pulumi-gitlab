@@ -61,18 +61,18 @@ public final class ProjectFreezePeriodState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The id of the project to add the schedule to.
+     * The ID or URL-encoded path of the project to add the schedule to.
      * 
      */
-    @Import(name="projectId")
-    private @Nullable Output<String> projectId;
+    @Import(name="project")
+    private @Nullable Output<String> project;
 
     /**
-     * @return The id of the project to add the schedule to.
+     * @return The ID or URL-encoded path of the project to add the schedule to.
      * 
      */
-    public Optional<Output<String>> projectId() {
-        return Optional.ofNullable(this.projectId);
+    public Optional<Output<String>> project() {
+        return Optional.ofNullable(this.project);
     }
 
     private ProjectFreezePeriodState() {}
@@ -81,7 +81,7 @@ public final class ProjectFreezePeriodState extends com.pulumi.resources.Resourc
         this.cronTimezone = $.cronTimezone;
         this.freezeEnd = $.freezeEnd;
         this.freezeStart = $.freezeStart;
-        this.projectId = $.projectId;
+        this.project = $.project;
     }
 
     public static Builder builder() {
@@ -166,24 +166,24 @@ public final class ProjectFreezePeriodState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param projectId The id of the project to add the schedule to.
+         * @param project The ID or URL-encoded path of the project to add the schedule to.
          * 
          * @return builder
          * 
          */
-        public Builder projectId(@Nullable Output<String> projectId) {
-            $.projectId = projectId;
+        public Builder project(@Nullable Output<String> project) {
+            $.project = project;
             return this;
         }
 
         /**
-         * @param projectId The id of the project to add the schedule to.
+         * @param project The ID or URL-encoded path of the project to add the schedule to.
          * 
          * @return builder
          * 
          */
-        public Builder projectId(String projectId) {
-            return projectId(Output.of(projectId));
+        public Builder project(String project) {
+            return project(Output.of(project));
         }
 
         public ProjectFreezePeriodState build() {

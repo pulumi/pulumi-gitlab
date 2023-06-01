@@ -6,7 +6,7 @@ package com.pulumi.gitlab.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -62,18 +62,18 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
     }
 
     /**
-     * The ID of the project to change MR approval configuration.
+     * The ID or URL-encoded path of a project to change MR approval configuration.
      * 
      */
-    @Import(name="projectId")
-    private @Nullable Output<Integer> projectId;
+    @Import(name="project")
+    private @Nullable Output<String> project;
 
     /**
-     * @return The ID of the project to change MR approval configuration.
+     * @return The ID or URL-encoded path of a project to change MR approval configuration.
      * 
      */
-    public Optional<Output<Integer>> projectId() {
-        return Optional.ofNullable(this.projectId);
+    public Optional<Output<String>> project() {
+        return Optional.ofNullable(this.project);
     }
 
     /**
@@ -112,7 +112,7 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
         this.disableOverridingApproversPerMergeRequest = $.disableOverridingApproversPerMergeRequest;
         this.mergeRequestsAuthorApproval = $.mergeRequestsAuthorApproval;
         this.mergeRequestsDisableCommittersApproval = $.mergeRequestsDisableCommittersApproval;
-        this.projectId = $.projectId;
+        this.project = $.project;
         this.requirePasswordToApprove = $.requirePasswordToApprove;
         this.resetApprovalsOnPush = $.resetApprovalsOnPush;
     }
@@ -199,24 +199,24 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param projectId The ID of the project to change MR approval configuration.
+         * @param project The ID or URL-encoded path of a project to change MR approval configuration.
          * 
          * @return builder
          * 
          */
-        public Builder projectId(@Nullable Output<Integer> projectId) {
-            $.projectId = projectId;
+        public Builder project(@Nullable Output<String> project) {
+            $.project = project;
             return this;
         }
 
         /**
-         * @param projectId The ID of the project to change MR approval configuration.
+         * @param project The ID or URL-encoded path of a project to change MR approval configuration.
          * 
          * @return builder
          * 
          */
-        public Builder projectId(Integer projectId) {
-            return projectId(Output.of(projectId));
+        public Builder project(String project) {
+            return project(Output.of(project));
         }
 
         /**

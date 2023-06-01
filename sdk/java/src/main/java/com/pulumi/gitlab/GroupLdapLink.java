@@ -21,6 +21,7 @@ import javax.annotation.Nullable;
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#ldap-group-links)
  * 
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 
@@ -55,10 +56,16 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * GitLab group ldap links can be imported using an id made up of `group_id:ldap_provider:cn`, e.g.
+ * GitLab group ldap links can be imported using an id made up of `group_id:ldap_provider:cn:filter`. CN and Filter are mutually exclusive, so one will be missing. If using the CN for the group link, the ID will end with a blank filter (&#34;:&#34;). e.g.,
  * 
  * ```sh
- *  $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test &#34;12345:ldapmain:testuser&#34;
+ *  $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test &#34;12345:ldapmain:testcn:&#34;
+ * ```
+ * 
+ *  If using the Filter for the group link, the ID will have two &#34;::&#34; in the middle due to having a blank CN. e.g.,
+ * 
+ * ```sh
+ *  $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test &#34;12345:ldapmain::testfilter&#34;
  * ```
  * 
  */
@@ -83,18 +90,32 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accessLevel);
     }
     /**
-     * The CN of the LDAP group to link with.
+     * The CN of the LDAP group to link with. Required if `filter` is not provided.
      * 
      */
     @Export(name="cn", refs={String.class}, tree="[0]")
     private Output<String> cn;
 
     /**
-     * @return The CN of the LDAP group to link with.
+     * @return The CN of the LDAP group to link with. Required if `filter` is not provided.
      * 
      */
     public Output<String> cn() {
         return this.cn;
+    }
+    /**
+     * The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
+     * 
+     */
+    @Export(name="filter", refs={String.class}, tree="[0]")
+    private Output<String> filter;
+
+    /**
+     * @return The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
+     * 
+     */
+    public Output<String> filter() {
+        return this.filter;
     }
     /**
      * If true, then delete and replace an existing LDAP link if one exists.
@@ -111,6 +132,20 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.force);
     }
     /**
+     * The ID or URL-encoded path of the group
+     * 
+     */
+    @Export(name="group", refs={String.class}, tree="[0]")
+    private Output<String> group;
+
+    /**
+     * @return The ID or URL-encoded path of the group
+     * 
+     */
+    public Output<String> group() {
+        return this.group;
+    }
+    /**
      * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
      * 
      */
@@ -123,20 +158,6 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> groupAccess() {
         return Codegen.optional(this.groupAccess);
-    }
-    /**
-     * The id of the GitLab group.
-     * 
-     */
-    @Export(name="groupId", refs={String.class}, tree="[0]")
-    private Output<String> groupId;
-
-    /**
-     * @return The id of the GitLab group.
-     * 
-     */
-    public Output<String> groupId() {
-        return this.groupId;
     }
     /**
      * The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`

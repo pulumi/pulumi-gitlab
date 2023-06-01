@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.DeployTokenArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.DeployTokenState;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +38,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gitlab:index/deployToken:DeployToken")
 public class DeployToken extends com.pulumi.resources.CustomResource {
+    /**
+     * The id of the deploy token.
+     * 
+     */
+    @Export(name="deployTokenId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> deployTokenId;
+
+    /**
+     * @return The id of the deploy token.
+     * 
+     */
+    public Output<Integer> deployTokenId() {
+        return this.deployTokenId;
+    }
     /**
      * Time the token will expire it, RFC3339 format. Will not expire per default.
      * 

@@ -40,18 +40,33 @@ public final class GroupLdapLinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The CN of the LDAP group to link with.
+     * The CN of the LDAP group to link with. Required if `filter` is not provided.
      * 
      */
-    @Import(name="cn", required=true)
-    private Output<String> cn;
+    @Import(name="cn")
+    private @Nullable Output<String> cn;
 
     /**
-     * @return The CN of the LDAP group to link with.
+     * @return The CN of the LDAP group to link with. Required if `filter` is not provided.
      * 
      */
-    public Output<String> cn() {
-        return this.cn;
+    public Optional<Output<String>> cn() {
+        return Optional.ofNullable(this.cn);
+    }
+
+    /**
+     * The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
+     * 
+     */
+    @Import(name="filter")
+    private @Nullable Output<String> filter;
+
+    /**
+     * @return The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
+     * 
+     */
+    public Optional<Output<String>> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
@@ -70,6 +85,21 @@ public final class GroupLdapLinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID or URL-encoded path of the group
+     * 
+     */
+    @Import(name="group", required=true)
+    private Output<String> group;
+
+    /**
+     * @return The ID or URL-encoded path of the group
+     * 
+     */
+    public Output<String> group() {
+        return this.group;
+    }
+
+    /**
      * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
      * 
      */
@@ -82,21 +112,6 @@ public final class GroupLdapLinkArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> groupAccess() {
         return Optional.ofNullable(this.groupAccess);
-    }
-
-    /**
-     * The id of the GitLab group.
-     * 
-     */
-    @Import(name="groupId", required=true)
-    private Output<String> groupId;
-
-    /**
-     * @return The id of the GitLab group.
-     * 
-     */
-    public Output<String> groupId() {
-        return this.groupId;
     }
 
     /**
@@ -119,9 +134,10 @@ public final class GroupLdapLinkArgs extends com.pulumi.resources.ResourceArgs {
     private GroupLdapLinkArgs(GroupLdapLinkArgs $) {
         this.accessLevel = $.accessLevel;
         this.cn = $.cn;
+        this.filter = $.filter;
         this.force = $.force;
+        this.group = $.group;
         this.groupAccess = $.groupAccess;
-        this.groupId = $.groupId;
         this.ldapProvider = $.ldapProvider;
     }
 
@@ -173,24 +189,45 @@ public final class GroupLdapLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cn The CN of the LDAP group to link with.
+         * @param cn The CN of the LDAP group to link with. Required if `filter` is not provided.
          * 
          * @return builder
          * 
          */
-        public Builder cn(Output<String> cn) {
+        public Builder cn(@Nullable Output<String> cn) {
             $.cn = cn;
             return this;
         }
 
         /**
-         * @param cn The CN of the LDAP group to link with.
+         * @param cn The CN of the LDAP group to link with. Required if `filter` is not provided.
          * 
          * @return builder
          * 
          */
         public Builder cn(String cn) {
             return cn(Output.of(cn));
+        }
+
+        /**
+         * @param filter The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(@Nullable Output<String> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        /**
+         * @param filter The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(String filter) {
+            return filter(Output.of(filter));
         }
 
         /**
@@ -215,6 +252,27 @@ public final class GroupLdapLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param group The ID or URL-encoded path of the group
+         * 
+         * @return builder
+         * 
+         */
+        public Builder group(Output<String> group) {
+            $.group = group;
+            return this;
+        }
+
+        /**
+         * @param group The ID or URL-encoded path of the group
+         * 
+         * @return builder
+         * 
+         */
+        public Builder group(String group) {
+            return group(Output.of(group));
+        }
+
+        /**
          * @param groupAccess Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
          * 
          * @return builder
@@ -233,27 +291,6 @@ public final class GroupLdapLinkArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder groupAccess(String groupAccess) {
             return groupAccess(Output.of(groupAccess));
-        }
-
-        /**
-         * @param groupId The id of the GitLab group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groupId(Output<String> groupId) {
-            $.groupId = groupId;
-            return this;
-        }
-
-        /**
-         * @param groupId The id of the GitLab group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groupId(String groupId) {
-            return groupId(Output.of(groupId));
         }
 
         /**
@@ -278,8 +315,7 @@ public final class GroupLdapLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GroupLdapLinkArgs build() {
-            $.cn = Objects.requireNonNull($.cn, "expected parameter 'cn' to be non-null");
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
+            $.group = Objects.requireNonNull($.group, "expected parameter 'group' to be non-null");
             $.ldapProvider = Objects.requireNonNull($.ldapProvider, "expected parameter 'ldapProvider' to be non-null");
             return $;
         }

@@ -118,6 +118,7 @@ class _PipelineScheduleState:
                  cron: Optional[pulumi.Input[str]] = None,
                  cron_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 pipeline_schedule_id: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  ref: Optional[pulumi.Input[str]] = None):
         """
@@ -126,6 +127,7 @@ class _PipelineScheduleState:
         :param pulumi.Input[str] cron: The cron (e.g. `0 1 * * *`).
         :param pulumi.Input[str] cron_timezone: The timezone.
         :param pulumi.Input[str] description: The description of the pipeline schedule.
+        :param pulumi.Input[int] pipeline_schedule_id: The pipeline schedule id.
         :param pulumi.Input[str] project: The name or id of the project to add the schedule to.
         :param pulumi.Input[str] ref: The branch/tag name to be triggered.
         """
@@ -137,6 +139,8 @@ class _PipelineScheduleState:
             pulumi.set(__self__, "cron_timezone", cron_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if pipeline_schedule_id is not None:
+            pulumi.set(__self__, "pipeline_schedule_id", pipeline_schedule_id)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if ref is not None:
@@ -189,6 +193,18 @@ class _PipelineScheduleState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="pipelineScheduleId")
+    def pipeline_schedule_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The pipeline schedule id.
+        """
+        return pulumi.get(self, "pipeline_schedule_id")
+
+    @pipeline_schedule_id.setter
+    def pipeline_schedule_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "pipeline_schedule_id", value)
 
     @property
     @pulumi.getter
@@ -338,6 +354,7 @@ class PipelineSchedule(pulumi.CustomResource):
             if ref is None and not opts.urn:
                 raise TypeError("Missing required property 'ref'")
             __props__.__dict__["ref"] = ref
+            __props__.__dict__["pipeline_schedule_id"] = None
         super(PipelineSchedule, __self__).__init__(
             'gitlab:index/pipelineSchedule:PipelineSchedule',
             resource_name,
@@ -352,6 +369,7 @@ class PipelineSchedule(pulumi.CustomResource):
             cron: Optional[pulumi.Input[str]] = None,
             cron_timezone: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            pipeline_schedule_id: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             ref: Optional[pulumi.Input[str]] = None) -> 'PipelineSchedule':
         """
@@ -365,6 +383,7 @@ class PipelineSchedule(pulumi.CustomResource):
         :param pulumi.Input[str] cron: The cron (e.g. `0 1 * * *`).
         :param pulumi.Input[str] cron_timezone: The timezone.
         :param pulumi.Input[str] description: The description of the pipeline schedule.
+        :param pulumi.Input[int] pipeline_schedule_id: The pipeline schedule id.
         :param pulumi.Input[str] project: The name or id of the project to add the schedule to.
         :param pulumi.Input[str] ref: The branch/tag name to be triggered.
         """
@@ -376,6 +395,7 @@ class PipelineSchedule(pulumi.CustomResource):
         __props__.__dict__["cron"] = cron
         __props__.__dict__["cron_timezone"] = cron_timezone
         __props__.__dict__["description"] = description
+        __props__.__dict__["pipeline_schedule_id"] = pipeline_schedule_id
         __props__.__dict__["project"] = project
         __props__.__dict__["ref"] = ref
         return PipelineSchedule(resource_name, opts=opts, __props__=__props__)
@@ -411,6 +431,14 @@ class PipelineSchedule(pulumi.CustomResource):
         The description of the pipeline schedule.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="pipelineScheduleId")
+    def pipeline_schedule_id(self) -> pulumi.Output[int]:
+        """
+        The pipeline schedule id.
+        """
+        return pulumi.get(self, "pipeline_schedule_id")
 
     @property
     @pulumi.getter

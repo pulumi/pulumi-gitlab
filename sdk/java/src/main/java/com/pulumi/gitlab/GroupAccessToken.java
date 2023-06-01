@@ -121,18 +121,18 @@ public class GroupAccessToken extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
-     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+     * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
      * 
      */
     @Export(name="expiresAt", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> expiresAt;
+    private Output<String> expiresAt;
 
     /**
-     * @return The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD. Default is never.
+     * @return The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
      * 
      */
-    public Output<Optional<String>> expiresAt() {
-        return Codegen.optional(this.expiresAt);
+    public Output<String> expiresAt() {
+        return this.expiresAt;
     }
     /**
      * The ID or path of the group to add the group access token to.

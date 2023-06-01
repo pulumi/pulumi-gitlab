@@ -166,6 +166,8 @@ class ServicePipelinesEmail(pulumi.CustomResource):
         """
         The `ServicePipelinesEmail` resource allows to manage the lifecycle of a project integration with Pipeline Emails Service.
 
+        > This resource is deprecated. use `IntegrationPipelinesEmail`instead!
+
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#pipeline-emails)
 
         ## Example Usage
@@ -207,6 +209,8 @@ class ServicePipelinesEmail(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The `ServicePipelinesEmail` resource allows to manage the lifecycle of a project integration with Pipeline Emails Service.
+
+        > This resource is deprecated. use `IntegrationPipelinesEmail`instead!
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#pipeline-emails)
 

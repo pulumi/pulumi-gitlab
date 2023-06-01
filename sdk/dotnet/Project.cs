@@ -495,12 +495,6 @@ namespace Pulumi.GitLab
         public Output<bool> OnlyMirrorProtectedBranches { get; private set; } = null!;
 
         /// <summary>
-        /// Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-        /// </summary>
-        [Output("operationsAccessLevel")]
-        public Output<string> OperationsAccessLevel { get; private set; } = null!;
-
-        /// <summary>
         /// Enable packages repository for the project.
         /// </summary>
         [Output("packagesEnabled")]
@@ -1135,12 +1129,6 @@ namespace Pulumi.GitLab
         public Input<bool>? OnlyMirrorProtectedBranches { get; set; }
 
         /// <summary>
-        /// Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-        /// </summary>
-        [Input("operationsAccessLevel")]
-        public Input<string>? OperationsAccessLevel { get; set; }
-
-        /// <summary>
         /// Enable packages repository for the project.
         /// </summary>
         [Input("packagesEnabled")]
@@ -1730,12 +1718,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("onlyMirrorProtectedBranches")]
         public Input<bool>? OnlyMirrorProtectedBranches { get; set; }
-
-        /// <summary>
-        /// Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
-        /// </summary>
-        [Input("operationsAccessLevel")]
-        public Input<string>? OperationsAccessLevel { get; set; }
 
         /// <summary>
         /// Enable packages repository for the project.

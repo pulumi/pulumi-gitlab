@@ -65,6 +65,12 @@ namespace Pulumi.GitLab
         public Output<bool?> Protected { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        /// </summary>
+        [Output("raw")]
+        public Output<bool?> Raw { get; private set; } = null!;
+
+        /// <summary>
         /// The value of the variable.
         /// </summary>
         [Output("value")]
@@ -99,10 +105,6 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                AdditionalSecretOutputs =
-                {
-                    "value",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -144,21 +146,17 @@ namespace Pulumi.GitLab
         [Input("protected")]
         public Input<bool>? Protected { get; set; }
 
-        [Input("value", required: true)]
-        private Input<string>? _value;
+        /// <summary>
+        /// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        /// </summary>
+        [Input("raw")]
+        public Input<bool>? Raw { get; set; }
 
         /// <summary>
         /// The value of the variable.
         /// </summary>
-        public Input<string>? Value
-        {
-            get => _value;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
 
         /// <summary>
         /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
@@ -192,21 +190,17 @@ namespace Pulumi.GitLab
         [Input("protected")]
         public Input<bool>? Protected { get; set; }
 
-        [Input("value")]
-        private Input<string>? _value;
+        /// <summary>
+        /// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        /// </summary>
+        [Input("raw")]
+        public Input<bool>? Raw { get; set; }
 
         /// <summary>
         /// The value of the variable.
         /// </summary>
-        public Input<string>? Value
-        {
-            get => _value;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         /// <summary>
         /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.

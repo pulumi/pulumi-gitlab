@@ -24,7 +24,7 @@ class ProjectAccessTokenArgs:
         :param pulumi.Input[str] project: The id of the project to add the project access token to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.
         :param pulumi.Input[str] access_level: The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
-        :param pulumi.Input[str] expires_at: Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+        :param pulumi.Input[str] expires_at: Time the token will expire it, YYYY-MM-DD format.
         :param pulumi.Input[str] name: A name to describe the project access token.
         """
         pulumi.set(__self__, "project", project)
@@ -76,7 +76,7 @@ class ProjectAccessTokenArgs:
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+        Time the token will expire it, YYYY-MM-DD format.
         """
         return pulumi.get(self, "expires_at")
 
@@ -115,7 +115,7 @@ class _ProjectAccessTokenState:
         :param pulumi.Input[str] access_level: The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
         :param pulumi.Input[bool] active: True if the token is active.
         :param pulumi.Input[str] created_at: Time the token has been created, RFC3339 format.
-        :param pulumi.Input[str] expires_at: Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+        :param pulumi.Input[str] expires_at: Time the token will expire it, YYYY-MM-DD format.
         :param pulumi.Input[str] name: A name to describe the project access token.
         :param pulumi.Input[str] project: The id of the project to add the project access token to.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
@@ -184,7 +184,7 @@ class _ProjectAccessTokenState:
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+        Time the token will expire it, YYYY-MM-DD format.
         """
         return pulumi.get(self, "expires_at")
 
@@ -311,7 +311,7 @@ class ProjectAccessToken(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
-        :param pulumi.Input[str] expires_at: Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+        :param pulumi.Input[str] expires_at: Time the token will expire it, YYYY-MM-DD format.
         :param pulumi.Input[str] name: A name to describe the project access token.
         :param pulumi.Input[str] project: The id of the project to add the project access token to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.
@@ -429,7 +429,7 @@ class ProjectAccessToken(pulumi.CustomResource):
         :param pulumi.Input[str] access_level: The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
         :param pulumi.Input[bool] active: True if the token is active.
         :param pulumi.Input[str] created_at: Time the token has been created, RFC3339 format.
-        :param pulumi.Input[str] expires_at: Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+        :param pulumi.Input[str] expires_at: Time the token will expire it, YYYY-MM-DD format.
         :param pulumi.Input[str] name: A name to describe the project access token.
         :param pulumi.Input[str] project: The id of the project to add the project access token to.
         :param pulumi.Input[bool] revoked: True if the token is revoked.
@@ -479,9 +479,9 @@ class ProjectAccessToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> pulumi.Output[Optional[str]]:
+    def expires_at(self) -> pulumi.Output[str]:
         """
-        Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+        Time the token will expire it, YYYY-MM-DD format.
         """
         return pulumi.get(self, "expires_at")
 

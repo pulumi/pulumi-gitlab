@@ -87,12 +87,14 @@ class _GroupLabelState:
                  color: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
+                 label_id: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GroupLabel resources.
         :param pulumi.Input[str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         :param pulumi.Input[str] description: The description of the label.
         :param pulumi.Input[str] group: The name or id of the group to add the label to.
+        :param pulumi.Input[int] label_id: The id of the group label.
         :param pulumi.Input[str] name: The name of the label.
         """
         if color is not None:
@@ -101,6 +103,8 @@ class _GroupLabelState:
             pulumi.set(__self__, "description", description)
         if group is not None:
             pulumi.set(__self__, "group", group)
+        if label_id is not None:
+            pulumi.set(__self__, "label_id", label_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -139,6 +143,18 @@ class _GroupLabelState:
     @group.setter
     def group(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter(name="labelId")
+    def label_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The id of the group label.
+        """
+        return pulumi.get(self, "label_id")
+
+    @label_id.setter
+    def label_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "label_id", value)
 
     @property
     @pulumi.getter
@@ -262,6 +278,7 @@ class GroupLabel(pulumi.CustomResource):
                 raise TypeError("Missing required property 'group'")
             __props__.__dict__["group"] = group
             __props__.__dict__["name"] = name
+            __props__.__dict__["label_id"] = None
         super(GroupLabel, __self__).__init__(
             'gitlab:index/groupLabel:GroupLabel',
             resource_name,
@@ -275,6 +292,7 @@ class GroupLabel(pulumi.CustomResource):
             color: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             group: Optional[pulumi.Input[str]] = None,
+            label_id: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'GroupLabel':
         """
         Get an existing GroupLabel resource's state with the given name, id, and optional extra
@@ -286,6 +304,7 @@ class GroupLabel(pulumi.CustomResource):
         :param pulumi.Input[str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         :param pulumi.Input[str] description: The description of the label.
         :param pulumi.Input[str] group: The name or id of the group to add the label to.
+        :param pulumi.Input[int] label_id: The id of the group label.
         :param pulumi.Input[str] name: The name of the label.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -295,6 +314,7 @@ class GroupLabel(pulumi.CustomResource):
         __props__.__dict__["color"] = color
         __props__.__dict__["description"] = description
         __props__.__dict__["group"] = group
+        __props__.__dict__["label_id"] = label_id
         __props__.__dict__["name"] = name
         return GroupLabel(resource_name, opts=opts, __props__=__props__)
 
@@ -321,6 +341,14 @@ class GroupLabel(pulumi.CustomResource):
         The name or id of the group to add the label to.
         """
         return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter(name="labelId")
+    def label_id(self) -> pulumi.Output[int]:
+        """
+        The id of the group label.
+        """
+        return pulumi.get(self, "label_id")
 
     @property
     @pulumi.getter

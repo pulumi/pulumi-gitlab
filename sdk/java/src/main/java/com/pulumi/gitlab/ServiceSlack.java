@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ServiceSlack` resource allows to manage the lifecycle of a project integration with Slack.
  * 
+ * &gt; This resource is deprecated. use `gitlab.IntegrationSlack`instead!
+ * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#slack-notifications)
  * 
  * ## Example Usage

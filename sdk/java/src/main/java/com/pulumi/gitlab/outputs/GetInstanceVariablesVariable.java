@@ -13,6 +13,7 @@ public final class GetInstanceVariablesVariable {
     private String key;
     private Boolean masked;
     private Boolean protected_;
+    private Boolean raw;
     private String value;
     private String variableType;
 
@@ -25,6 +26,9 @@ public final class GetInstanceVariablesVariable {
     }
     public Boolean protected_() {
         return this.protected_;
+    }
+    public Boolean raw() {
+        return this.raw;
     }
     public String value() {
         return this.value;
@@ -45,6 +49,7 @@ public final class GetInstanceVariablesVariable {
         private String key;
         private Boolean masked;
         private Boolean protected_;
+        private Boolean raw;
         private String value;
         private String variableType;
         public Builder() {}
@@ -53,6 +58,7 @@ public final class GetInstanceVariablesVariable {
     	      this.key = defaults.key;
     	      this.masked = defaults.masked;
     	      this.protected_ = defaults.protected_;
+    	      this.raw = defaults.raw;
     	      this.value = defaults.value;
     	      this.variableType = defaults.variableType;
         }
@@ -73,6 +79,11 @@ public final class GetInstanceVariablesVariable {
             return this;
         }
         @CustomType.Setter
+        public Builder raw(Boolean raw) {
+            this.raw = Objects.requireNonNull(raw);
+            return this;
+        }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
@@ -87,6 +98,7 @@ public final class GetInstanceVariablesVariable {
             o.key = key;
             o.masked = masked;
             o.protected_ = protected_;
+            o.raw = raw;
             o.value = value;
             o.variableType = variableType;
             return o;

@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -68,6 +68,8 @@ type ProjectVariable struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrOutput `pulumi:"protected"`
+	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	Raw pulumi.BoolPtrOutput `pulumi:"raw"`
 	// The value of the variable.
 	Value pulumi.StringOutput `pulumi:"value"`
 	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
@@ -90,13 +92,6 @@ func NewProjectVariable(ctx *pulumi.Context,
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
 	}
-	if args.Value != nil {
-		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringInput)
-	}
-	secrets := pulumi.AdditionalSecretOutputs([]string{
-		"value",
-	})
-	opts = append(opts, secrets)
 	var resource ProjectVariable
 	err := ctx.RegisterResource("gitlab:index/projectVariable:ProjectVariable", name, args, &resource, opts...)
 	if err != nil {
@@ -129,6 +124,8 @@ type projectVariableState struct {
 	Project *string `pulumi:"project"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected *bool `pulumi:"protected"`
+	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	Raw *bool `pulumi:"raw"`
 	// The value of the variable.
 	Value *string `pulumi:"value"`
 	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
@@ -146,6 +143,8 @@ type ProjectVariableState struct {
 	Project pulumi.StringPtrInput
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrInput
+	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	Raw pulumi.BoolPtrInput
 	// The value of the variable.
 	Value pulumi.StringPtrInput
 	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
@@ -167,6 +166,8 @@ type projectVariableArgs struct {
 	Project string `pulumi:"project"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected *bool `pulumi:"protected"`
+	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	Raw *bool `pulumi:"raw"`
 	// The value of the variable.
 	Value string `pulumi:"value"`
 	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
@@ -185,6 +186,8 @@ type ProjectVariableArgs struct {
 	Project pulumi.StringInput
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrInput
+	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	Raw pulumi.BoolPtrInput
 	// The value of the variable.
 	Value pulumi.StringInput
 	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
@@ -301,6 +304,11 @@ func (o ProjectVariableOutput) Project() pulumi.StringOutput {
 // If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 func (o ProjectVariableOutput) Protected() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectVariable) pulumi.BoolPtrOutput { return v.Protected }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+func (o ProjectVariableOutput) Raw() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.BoolPtrOutput { return v.Raw }).(pulumi.BoolPtrOutput)
 }
 
 // The value of the variable.

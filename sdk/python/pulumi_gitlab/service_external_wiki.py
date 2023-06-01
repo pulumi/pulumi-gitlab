@@ -180,6 +180,8 @@ class ServiceExternalWiki(pulumi.CustomResource):
         """
         The `ServiceExternalWiki` resource allows to manage the lifecycle of a project integration with External Wiki Service.
 
+        > This resource is deprecated. use `IntegrationExternalWiki`instead!
+
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#external-wiki)
 
         ## Example Usage
@@ -217,6 +219,8 @@ class ServiceExternalWiki(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The `ServiceExternalWiki` resource allows to manage the lifecycle of a project integration with External Wiki Service.
+
+        > This resource is deprecated. use `IntegrationExternalWiki`instead!
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#external-wiki)
 

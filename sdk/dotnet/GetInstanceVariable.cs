@@ -122,6 +122,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool Protected;
         /// <summary>
+        /// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        /// </summary>
+        public readonly bool Raw;
+        /// <summary>
         /// The value of the variable.
         /// </summary>
         public readonly string Value;
@@ -140,6 +144,8 @@ namespace Pulumi.GitLab
 
             bool @protected,
 
+            bool raw,
+
             string value,
 
             string variableType)
@@ -148,6 +154,7 @@ namespace Pulumi.GitLab
             Key = key;
             Masked = masked;
             Protected = @protected;
+            Raw = raw;
             Value = value;
             VariableType = variableType;
         }

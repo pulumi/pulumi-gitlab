@@ -79,9 +79,9 @@ export class ProjectAccessToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+     * Time the token will expire it, YYYY-MM-DD format.
      */
-    public readonly expiresAt!: pulumi.Output<string | undefined>;
+    public readonly expiresAt!: pulumi.Output<string>;
     /**
      * A name to describe the project access token.
      */
@@ -173,7 +173,7 @@ export interface ProjectAccessTokenState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+     * Time the token will expire it, YYYY-MM-DD format.
      */
     expiresAt?: pulumi.Input<string>;
     /**
@@ -211,7 +211,7 @@ export interface ProjectAccessTokenArgs {
      */
     accessLevel?: pulumi.Input<string>;
     /**
-     * Time the token will expire it, YYYY-MM-DD format. Will not expire per default.
+     * Time the token will expire it, YYYY-MM-DD format.
      */
     expiresAt?: pulumi.Input<string>;
     /**

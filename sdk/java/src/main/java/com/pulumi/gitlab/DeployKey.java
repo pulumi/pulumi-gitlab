@@ -11,6 +11,7 @@ import com.pulumi.gitlab.DeployKeyArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.DeployKeyState;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -82,6 +83,20 @@ public class DeployKey extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> canPush() {
         return Codegen.optional(this.canPush);
+    }
+    /**
+     * The id of the project deploy key.
+     * 
+     */
+    @Export(name="deployKeyId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> deployKeyId;
+
+    /**
+     * @return The id of the project deploy key.
+     * 
+     */
+    public Output<Integer> deployKeyId() {
+        return this.deployKeyId;
     }
     /**
      * The public ssh key body.

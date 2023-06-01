@@ -13,6 +13,8 @@ import (
 
 // The `ServiceExternalWiki` resource allows to manage the lifecycle of a project integration with External Wiki Service.
 //
+// > This resource is deprecated. use `IntegrationExternalWiki`instead!
+//
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#external-wiki)
 //
 // ## Example Usage
@@ -22,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

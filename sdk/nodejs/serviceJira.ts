@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.ServiceJira` resource allows to manage the lifecycle of a project integration with Jira.
  *
+ * > This resource is deprecated. use `gitlab.IntegrationJira`instead!
+ *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/services.html#jira)
  *
  * ## Example Usage
@@ -29,7 +31,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * You can import a service_jira state using the project ID, e.g.
+ * You can import a gitlab_service_jira state using the project ID, e.g.
  *
  * ```sh
  *  $ pulumi import gitlab:index/serviceJira:ServiceJira jira 1

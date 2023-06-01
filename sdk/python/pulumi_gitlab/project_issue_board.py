@@ -272,50 +272,6 @@ class ProjectIssueBoard(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/boards.html)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example_project = gitlab.Project("exampleProject",
-            description="Lorem Ipsum",
-            visibility_level="public")
-        example_user = gitlab.User("exampleUser",
-            username="example",
-            email="example@example.com",
-            password="example1$$$")
-        example_project_membership = gitlab.ProjectMembership("exampleProjectMembership",
-            project_id=example_project.id,
-            user_id=example_user.id,
-            access_level="developer")
-        example_project_milestone = gitlab.ProjectMilestone("exampleProjectMilestone",
-            project=example_project.id,
-            title="m1")
-        this = gitlab.ProjectIssueBoard("this",
-            project=example_project.id,
-            lists=[
-                gitlab.ProjectIssueBoardListArgs(
-                    assignee_id=example_user.id,
-                ),
-                gitlab.ProjectIssueBoardListArgs(
-                    milestone_id=example_project_milestone.milestone_id,
-                ),
-            ],
-            opts=pulumi.ResourceOptions(depends_on=[example_project_membership]))
-        list_syntax = gitlab.ProjectIssueBoard("listSyntax",
-            project=example_project.id,
-            lists=[
-                gitlab.ProjectIssueBoardListArgs(
-                    assignee_id=example_user.id,
-                ),
-                gitlab.ProjectIssueBoardListArgs(
-                    milestone_id=example_project_milestone.milestone_id,
-                ),
-            ],
-            opts=pulumi.ResourceOptions(depends_on=[example_project_membership]))
-        ```
-
         ## Import
 
         You can import this resource with an id made up of `{project-id}:{issue-board-id}`, e.g.
@@ -346,50 +302,6 @@ class ProjectIssueBoard(pulumi.CustomResource):
         > **NOTE:** If the board lists are changed all lists will be recreated.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/boards.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example_project = gitlab.Project("exampleProject",
-            description="Lorem Ipsum",
-            visibility_level="public")
-        example_user = gitlab.User("exampleUser",
-            username="example",
-            email="example@example.com",
-            password="example1$$$")
-        example_project_membership = gitlab.ProjectMembership("exampleProjectMembership",
-            project_id=example_project.id,
-            user_id=example_user.id,
-            access_level="developer")
-        example_project_milestone = gitlab.ProjectMilestone("exampleProjectMilestone",
-            project=example_project.id,
-            title="m1")
-        this = gitlab.ProjectIssueBoard("this",
-            project=example_project.id,
-            lists=[
-                gitlab.ProjectIssueBoardListArgs(
-                    assignee_id=example_user.id,
-                ),
-                gitlab.ProjectIssueBoardListArgs(
-                    milestone_id=example_project_milestone.milestone_id,
-                ),
-            ],
-            opts=pulumi.ResourceOptions(depends_on=[example_project_membership]))
-        list_syntax = gitlab.ProjectIssueBoard("listSyntax",
-            project=example_project.id,
-            lists=[
-                gitlab.ProjectIssueBoardListArgs(
-                    assignee_id=example_user.id,
-                ),
-                gitlab.ProjectIssueBoardListArgs(
-                    milestone_id=example_project_milestone.milestone_id,
-                ),
-            ],
-            opts=pulumi.ResourceOptions(depends_on=[example_project_membership]))
-        ```
 
         ## Import
 

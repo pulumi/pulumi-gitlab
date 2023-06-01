@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ServiceEmailsOnPush` resource allows to manage the lifecycle of a project integration with Emails on Push Service.
  * 
+ * &gt; This resource is deprecated. Please use `gitlab.IntegrationEmailsOnPush` instead!
+ * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#emails-on-push)
  * 
  * ## Example Usage

@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v5/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -64,6 +64,8 @@ type PipelineSchedule struct {
 	CronTimezone pulumi.StringPtrOutput `pulumi:"cronTimezone"`
 	// The description of the pipeline schedule.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The pipeline schedule id.
+	PipelineScheduleId pulumi.IntOutput `pulumi:"pipelineScheduleId"`
 	// The name or id of the project to add the schedule to.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The branch/tag name to be triggered.
@@ -119,6 +121,8 @@ type pipelineScheduleState struct {
 	CronTimezone *string `pulumi:"cronTimezone"`
 	// The description of the pipeline schedule.
 	Description *string `pulumi:"description"`
+	// The pipeline schedule id.
+	PipelineScheduleId *int `pulumi:"pipelineScheduleId"`
 	// The name or id of the project to add the schedule to.
 	Project *string `pulumi:"project"`
 	// The branch/tag name to be triggered.
@@ -134,6 +138,8 @@ type PipelineScheduleState struct {
 	CronTimezone pulumi.StringPtrInput
 	// The description of the pipeline schedule.
 	Description pulumi.StringPtrInput
+	// The pipeline schedule id.
+	PipelineScheduleId pulumi.IntPtrInput
 	// The name or id of the project to add the schedule to.
 	Project pulumi.StringPtrInput
 	// The branch/tag name to be triggered.
@@ -280,6 +286,11 @@ func (o PipelineScheduleOutput) CronTimezone() pulumi.StringPtrOutput {
 // The description of the pipeline schedule.
 func (o PipelineScheduleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *PipelineSchedule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The pipeline schedule id.
+func (o PipelineScheduleOutput) PipelineScheduleId() pulumi.IntOutput {
+	return o.ApplyT(func(v *PipelineSchedule) pulumi.IntOutput { return v.PipelineScheduleId }).(pulumi.IntOutput)
 }
 
 // The name or id of the project to add the schedule to.
