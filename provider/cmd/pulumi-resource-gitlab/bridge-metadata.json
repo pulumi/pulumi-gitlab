@@ -461,7 +461,12 @@
             },
             "gitlab_tag_protection": {
                 "current": "gitlab:index/tagProtection:TagProtection",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "allowed_to_create": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_topic": {
                 "current": "gitlab:index/topic:Topic",
@@ -929,6 +934,12 @@
             },
             "gitlab:index/ProjectTagRelease:ProjectTagRelease": {
                 "tagName": "tag_name"
+            },
+            "gitlab:index/TagProtectionAllowedToCreate:TagProtectionAllowedToCreate": {
+                "accessLevel": "access_level",
+                "accessLevelDescription": "access_level_description",
+                "groupId": "group_id",
+                "userId": "user_id"
             },
             "gitlab:index/application:Application": {
                 "applicationId": "application_id",
@@ -2521,6 +2532,7 @@
                 "tagPushEvents": "tag_push_events"
             },
             "gitlab:index/tagProtection:TagProtection": {
+                "allowedToCreates": "allowed_to_create",
                 "createAccessLevel": "create_access_level"
             },
             "gitlab:index/topic:Topic": {
