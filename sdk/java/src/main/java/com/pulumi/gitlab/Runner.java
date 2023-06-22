@@ -25,6 +25,81 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#register-a-new-runner)
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.Group;
+ * import com.pulumi.gitlab.GroupArgs;
+ * import com.pulumi.gitlab.Runner;
+ * import com.pulumi.gitlab.RunnerArgs;
+ * import com.pulumi.local.File;
+ * import com.pulumi.local.FileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myGroup = new Group(&#34;myGroup&#34;, GroupArgs.builder()        
+ *             .description(&#34;group that holds the runners&#34;)
+ *             .build());
+ * 
+ *         var basicRunner = new Runner(&#34;basicRunner&#34;, RunnerArgs.builder()        
+ *             .registrationToken(myGroup.runnersToken())
+ *             .build());
+ * 
+ *         var taggedOnly = new Runner(&#34;taggedOnly&#34;, RunnerArgs.builder()        
+ *             .registrationToken(myGroup.runnersToken())
+ *             .description(&#34;I only run tagged jobs&#34;)
+ *             .runUntagged(&#34;false&#34;)
+ *             .tagLists(            
+ *                 &#34;tag_one&#34;,
+ *                 &#34;tag_two&#34;)
+ *             .build());
+ * 
+ *         var protected_ = new Runner(&#34;protected&#34;, RunnerArgs.builder()        
+ *             .registrationToken(myGroup.runnersToken())
+ *             .description(&#34;I only run protected jobs&#34;)
+ *             .accessLevel(&#34;ref_protected&#34;)
+ *             .build());
+ * 
+ *         var myCustomGroup = new Group(&#34;myCustomGroup&#34;, GroupArgs.builder()        
+ *             .description(&#34;group that holds the custom runners&#34;)
+ *             .build());
+ * 
+ *         var myRunner = new Runner(&#34;myRunner&#34;, RunnerArgs.builder()        
+ *             .registrationToken(myCustomGroup.runnersToken())
+ *             .build());
+ * 
+ *         var config = new File(&#34;config&#34;, FileArgs.builder()        
+ *             .filename(String.format(&#34;%s/config.toml&#34;, path.module()))
+ *             .content(myRunner.authenticationToken().applyValue(authenticationToken -&gt; &#34;&#34;&#34;
+ *   concurrent = 1
+ * 
+ *   [[runners]]
+ *     name = &#34;Hello Terraform&#34;
+ *     url = &#34;https://example.gitlab.com/&#34;
+ *     token = &#34;%s&#34;
+ *     executor = &#34;shell&#34;
+ *     
+ * &#34;, authenticationToken)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * A GitLab Runner can be imported using the runner&#39;s ID, eg

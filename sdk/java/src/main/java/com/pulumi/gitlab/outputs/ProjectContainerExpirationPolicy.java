@@ -31,16 +31,16 @@ public final class ProjectContainerExpirationPolicy {
     /**
      * @return The regular expression to match image names to delete.
      * 
+     * @deprecated
+     * `name_regex` has been deprecated. Use `name_regex_delete` instead.
+     * 
      */
+    @Deprecated /* `name_regex` has been deprecated. Use `name_regex_delete` instead. */
     private @Nullable String nameRegex;
     /**
      * @return The regular expression to match image names to delete.
      * 
-     * @deprecated
-     * `name_regex_delete` has been deprecated. Use `name_regex` instead.
-     * 
      */
-    @Deprecated /* `name_regex_delete` has been deprecated. Use `name_regex` instead. */
     private @Nullable String nameRegexDelete;
     /**
      * @return The regular expression to match image names to keep.
@@ -83,18 +83,18 @@ public final class ProjectContainerExpirationPolicy {
     /**
      * @return The regular expression to match image names to delete.
      * 
+     * @deprecated
+     * `name_regex` has been deprecated. Use `name_regex_delete` instead.
+     * 
      */
+    @Deprecated /* `name_regex` has been deprecated. Use `name_regex_delete` instead. */
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
      * @return The regular expression to match image names to delete.
      * 
-     * @deprecated
-     * `name_regex_delete` has been deprecated. Use `name_regex` instead.
-     * 
      */
-    @Deprecated /* `name_regex_delete` has been deprecated. Use `name_regex` instead. */
     public Optional<String> nameRegexDelete() {
         return Optional.ofNullable(this.nameRegexDelete);
     }

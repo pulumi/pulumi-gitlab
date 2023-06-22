@@ -219,7 +219,7 @@ class DeployKeyEnable(pulumi.CustomResource):
         # Enable the deployment key on the second repo
         foo_deploy_key_enable = gitlab.DeployKeyEnable("fooDeployKeyEnable",
             project=foo_project.id,
-            key_id=parent_deploy_key.id)
+            key_id=parent_deploy_key.deploy_key_id)
         ```
 
         ## Import
@@ -271,7 +271,7 @@ class DeployKeyEnable(pulumi.CustomResource):
         # Enable the deployment key on the second repo
         foo_deploy_key_enable = gitlab.DeployKeyEnable("fooDeployKeyEnable",
             project=foo_project.id,
-            key_id=parent_deploy_key.id)
+            key_id=parent_deploy_key.deploy_key_id)
         ```
 
         ## Import

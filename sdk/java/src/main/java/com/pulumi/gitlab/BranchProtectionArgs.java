@@ -156,14 +156,14 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
      * 
      */
     @Import(name="unprotectAccessLevel")
     private @Nullable Output<String> unprotectAccessLevel;
 
     /**
-     * @return Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
+     * @return Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
      * 
      */
     public Optional<Output<String>> unprotectAccessLevel() {
@@ -423,7 +423,7 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param unprotectAccessLevel Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
+         * @param unprotectAccessLevel Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param unprotectAccessLevel Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
+         * @param unprotectAccessLevel Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
          * 
          * @return builder
          * 

@@ -10,10 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.TagProtection` resource allows to manage the lifecycle of a tag protection.
-    /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html)
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -26,6 +22,17 @@ namespace Pulumi.GitLab
     /// {
     ///     var tagProtect = new GitLab.TagProtection("tagProtect", new()
     ///     {
+    ///         AllowedToCreates = new[]
+    ///         {
+    ///             new GitLab.Inputs.TagProtectionAllowedToCreateArgs
+    ///             {
+    ///                 UserId = 42,
+    ///             },
+    ///             new GitLab.Inputs.TagProtectionAllowedToCreateArgs
+    ///             {
+    ///                 GroupId = 43,
+    ///             },
+    ///         },
     ///         CreateAccessLevel = "developer",
     ///         Project = "12345",
     ///         Tag = "TagProtected",
@@ -45,6 +52,12 @@ namespace Pulumi.GitLab
     [GitLabResourceType("gitlab:index/tagProtection:TagProtection")]
     public partial class TagProtection : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// User or group which are allowed to create.
+        /// </summary>
+        [Output("allowedToCreates")]
+        public Output<ImmutableArray<Outputs.TagProtectionAllowedToCreate>> AllowedToCreates { get; private set; } = null!;
+
         /// <summary>
         /// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
@@ -109,6 +122,18 @@ namespace Pulumi.GitLab
 
     public sealed class TagProtectionArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allowedToCreates")]
+        private InputList<Inputs.TagProtectionAllowedToCreateArgs>? _allowedToCreates;
+
+        /// <summary>
+        /// User or group which are allowed to create.
+        /// </summary>
+        public InputList<Inputs.TagProtectionAllowedToCreateArgs> AllowedToCreates
+        {
+            get => _allowedToCreates ?? (_allowedToCreates = new InputList<Inputs.TagProtectionAllowedToCreateArgs>());
+            set => _allowedToCreates = value;
+        }
+
         /// <summary>
         /// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>
@@ -135,6 +160,18 @@ namespace Pulumi.GitLab
 
     public sealed class TagProtectionState : global::Pulumi.ResourceArgs
     {
+        [Input("allowedToCreates")]
+        private InputList<Inputs.TagProtectionAllowedToCreateGetArgs>? _allowedToCreates;
+
+        /// <summary>
+        /// User or group which are allowed to create.
+        /// </summary>
+        public InputList<Inputs.TagProtectionAllowedToCreateGetArgs> AllowedToCreates
+        {
+            get => _allowedToCreates ?? (_allowedToCreates = new InputList<Inputs.TagProtectionAllowedToCreateGetArgs>());
+            set => _allowedToCreates = value;
+        }
+
         /// <summary>
         /// Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
         /// </summary>

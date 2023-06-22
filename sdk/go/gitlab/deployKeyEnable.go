@@ -47,7 +47,7 @@ import (
 //			}
 //			_, err = gitlab.NewDeployKeyEnable(ctx, "fooDeployKeyEnable", &gitlab.DeployKeyEnableArgs{
 //				Project: fooProject.ID(),
-//				KeyId:   parentDeployKey.ID(),
+//				KeyId:   parentDeployKey.DeployKeyId,
 //			})
 //			if err != nil {
 //				return err

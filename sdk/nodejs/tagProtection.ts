@@ -2,13 +2,11 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.TagProtection` resource allows to manage the lifecycle of a tag protection.
- *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html)
- *
  * ## Example Usage
  *
  * ```typescript
@@ -16,6 +14,14 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const tagProtect = new gitlab.TagProtection("tagProtect", {
+ *     allowedToCreates: [
+ *         {
+ *             userId: 42,
+ *         },
+ *         {
+ *             groupId: 43,
+ *         },
+ *     ],
  *     createAccessLevel: "developer",
  *     project: "12345",
  *     tag: "TagProtected",
@@ -59,6 +65,10 @@ export class TagProtection extends pulumi.CustomResource {
     }
 
     /**
+     * User or group which are allowed to create.
+     */
+    public readonly allowedToCreates!: pulumi.Output<outputs.TagProtectionAllowedToCreate[] | undefined>;
+    /**
      * Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
      */
     public readonly createAccessLevel!: pulumi.Output<string>;
@@ -84,6 +94,7 @@ export class TagProtection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagProtectionState | undefined;
+            resourceInputs["allowedToCreates"] = state ? state.allowedToCreates : undefined;
             resourceInputs["createAccessLevel"] = state ? state.createAccessLevel : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["tag"] = state ? state.tag : undefined;
@@ -98,6 +109,7 @@ export class TagProtection extends pulumi.CustomResource {
             if ((!args || args.tag === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tag'");
             }
+            resourceInputs["allowedToCreates"] = args ? args.allowedToCreates : undefined;
             resourceInputs["createAccessLevel"] = args ? args.createAccessLevel : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["tag"] = args ? args.tag : undefined;
@@ -111,6 +123,10 @@ export class TagProtection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TagProtection resources.
  */
 export interface TagProtectionState {
+    /**
+     * User or group which are allowed to create.
+     */
+    allowedToCreates?: pulumi.Input<pulumi.Input<inputs.TagProtectionAllowedToCreate>[]>;
     /**
      * Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
      */
@@ -129,6 +145,10 @@ export interface TagProtectionState {
  * The set of arguments for constructing a TagProtection resource.
  */
 export interface TagProtectionArgs {
+    /**
+     * User or group which are allowed to create.
+     */
+    allowedToCreates?: pulumi.Input<pulumi.Input<inputs.TagProtectionAllowedToCreate>[]>;
     /**
      * Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
      */
