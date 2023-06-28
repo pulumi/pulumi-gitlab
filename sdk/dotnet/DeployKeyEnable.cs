@@ -42,7 +42,7 @@ namespace Pulumi.GitLab
     ///     var fooDeployKeyEnable = new GitLab.DeployKeyEnable("fooDeployKeyEnable", new()
     ///     {
     ///         Project = fooProject.Id,
-    ///         KeyId = parentDeployKey.Id,
+    ///         KeyId = parentDeployKey.DeployKeyId,
     ///     });
     /// 
     /// });

@@ -22,6 +22,7 @@ __all__ = [
     'ProjectPushRules',
     'ProjectTagCommit',
     'ProjectTagRelease',
+    'TagProtectionAllowedToCreate',
     'GetBranchCommitResult',
     'GetClusterAgentsClusterAgentResult',
     'GetGroupHooksHookResult',
@@ -1125,6 +1126,84 @@ class ProjectTagRelease(dict):
     @pulumi.getter(name="tagName")
     def tag_name(self) -> Optional[str]:
         return pulumi.get(self, "tag_name")
+
+
+@pulumi.output_type
+class TagProtectionAllowedToCreate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+        elif key == "accessLevelDescription":
+            suggest = "access_level_description"
+        elif key == "groupId":
+            suggest = "group_id"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TagProtectionAllowedToCreate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TagProtectionAllowedToCreate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TagProtectionAllowedToCreate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_level: Optional[str] = None,
+                 access_level_description: Optional[str] = None,
+                 group_id: Optional[int] = None,
+                 user_id: Optional[int] = None):
+        """
+        :param str access_level: Level of access.
+        :param str access_level_description: Readable description of level of access.
+        :param int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        :param int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_level_description is not None:
+            pulumi.set(__self__, "access_level_description", access_level_description)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[str]:
+        """
+        Level of access.
+        """
+        return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> Optional[str]:
+        """
+        Readable description of level of access.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[int]:
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
+        return pulumi.get(self, "user_id")
 
 
 @pulumi.output_type

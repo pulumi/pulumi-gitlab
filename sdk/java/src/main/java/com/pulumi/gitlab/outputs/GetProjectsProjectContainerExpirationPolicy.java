@@ -14,13 +14,13 @@ public final class GetProjectsProjectContainerExpirationPolicy {
     private String cadence;
     private Boolean enabled;
     private Integer keepN;
-    private String nameRegex;
     /**
      * @deprecated
-     * `name_regex_delete` has been deprecated. Use `name_regex` instead.
+     * `name_regex` has been deprecated. Use `name_regex_delete` instead.
      * 
      */
-    @Deprecated /* `name_regex_delete` has been deprecated. Use `name_regex` instead. */
+    @Deprecated /* `name_regex` has been deprecated. Use `name_regex_delete` instead. */
+    private String nameRegex;
     private String nameRegexDelete;
     private String nameRegexKeep;
     private String nextRunAt;
@@ -36,15 +36,15 @@ public final class GetProjectsProjectContainerExpirationPolicy {
     public Integer keepN() {
         return this.keepN;
     }
+    /**
+     * @deprecated
+     * `name_regex` has been deprecated. Use `name_regex_delete` instead.
+     * 
+     */
+    @Deprecated /* `name_regex` has been deprecated. Use `name_regex_delete` instead. */
     public String nameRegex() {
         return this.nameRegex;
     }
-    /**
-     * @deprecated
-     * `name_regex_delete` has been deprecated. Use `name_regex` instead.
-     * 
-     */
-    @Deprecated /* `name_regex_delete` has been deprecated. Use `name_regex` instead. */
     public String nameRegexDelete() {
         return this.nameRegexDelete;
     }

@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * 
  *         var fooDeployKeyEnable = new DeployKeyEnable(&#34;fooDeployKeyEnable&#34;, DeployKeyEnableArgs.builder()        
  *             .project(fooProject.id())
- *             .keyId(parentDeployKey.id())
+ *             .keyId(parentDeployKey.deployKeyId())
  *             .build());
  * 
  *     }

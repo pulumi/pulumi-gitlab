@@ -547,10 +547,10 @@ type ProjectContainerExpirationPolicy struct {
 	// The number of images to keep.
 	KeepN *int `pulumi:"keepN"`
 	// The regular expression to match image names to delete.
+	//
+	// Deprecated: `name_regex` has been deprecated. Use `name_regex_delete` instead.
 	NameRegex *string `pulumi:"nameRegex"`
 	// The regular expression to match image names to delete.
-	//
-	// Deprecated: `name_regex_delete` has been deprecated. Use `name_regex` instead.
 	NameRegexDelete *string `pulumi:"nameRegexDelete"`
 	// The regular expression to match image names to keep.
 	NameRegexKeep *string `pulumi:"nameRegexKeep"`
@@ -579,10 +579,10 @@ type ProjectContainerExpirationPolicyArgs struct {
 	// The number of images to keep.
 	KeepN pulumi.IntPtrInput `pulumi:"keepN"`
 	// The regular expression to match image names to delete.
+	//
+	// Deprecated: `name_regex` has been deprecated. Use `name_regex_delete` instead.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The regular expression to match image names to delete.
-	//
-	// Deprecated: `name_regex_delete` has been deprecated. Use `name_regex` instead.
 	NameRegexDelete pulumi.StringPtrInput `pulumi:"nameRegexDelete"`
 	// The regular expression to match image names to keep.
 	NameRegexKeep pulumi.StringPtrInput `pulumi:"nameRegexKeep"`
@@ -685,13 +685,13 @@ func (o ProjectContainerExpirationPolicyOutput) KeepN() pulumi.IntPtrOutput {
 }
 
 // The regular expression to match image names to delete.
+//
+// Deprecated: `name_regex` has been deprecated. Use `name_regex_delete` instead.
 func (o ProjectContainerExpirationPolicyOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectContainerExpirationPolicy) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
 // The regular expression to match image names to delete.
-//
-// Deprecated: `name_regex_delete` has been deprecated. Use `name_regex` instead.
 func (o ProjectContainerExpirationPolicyOutput) NameRegexDelete() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectContainerExpirationPolicy) *string { return v.NameRegexDelete }).(pulumi.StringPtrOutput)
 }
@@ -766,6 +766,8 @@ func (o ProjectContainerExpirationPolicyPtrOutput) KeepN() pulumi.IntPtrOutput {
 }
 
 // The regular expression to match image names to delete.
+//
+// Deprecated: `name_regex` has been deprecated. Use `name_regex_delete` instead.
 func (o ProjectContainerExpirationPolicyPtrOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectContainerExpirationPolicy) *string {
 		if v == nil {
@@ -776,8 +778,6 @@ func (o ProjectContainerExpirationPolicyPtrOutput) NameRegex() pulumi.StringPtrO
 }
 
 // The regular expression to match image names to delete.
-//
-// Deprecated: `name_regex_delete` has been deprecated. Use `name_regex` instead.
 func (o ProjectContainerExpirationPolicyPtrOutput) NameRegexDelete() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectContainerExpirationPolicy) *string {
 		if v == nil {
@@ -1768,6 +1768,130 @@ func (o ProjectTagReleaseArrayOutput) Index(i pulumi.IntInput) ProjectTagRelease
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectTagRelease {
 		return vs[0].([]ProjectTagRelease)[vs[1].(int)]
 	}).(ProjectTagReleaseOutput)
+}
+
+type TagProtectionAllowedToCreate struct {
+	// Level of access.
+	AccessLevel *string `pulumi:"accessLevel"`
+	// Readable description of level of access.
+	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
+	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+	GroupId *int `pulumi:"groupId"`
+	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+	UserId *int `pulumi:"userId"`
+}
+
+// TagProtectionAllowedToCreateInput is an input type that accepts TagProtectionAllowedToCreateArgs and TagProtectionAllowedToCreateOutput values.
+// You can construct a concrete instance of `TagProtectionAllowedToCreateInput` via:
+//
+//	TagProtectionAllowedToCreateArgs{...}
+type TagProtectionAllowedToCreateInput interface {
+	pulumi.Input
+
+	ToTagProtectionAllowedToCreateOutput() TagProtectionAllowedToCreateOutput
+	ToTagProtectionAllowedToCreateOutputWithContext(context.Context) TagProtectionAllowedToCreateOutput
+}
+
+type TagProtectionAllowedToCreateArgs struct {
+	// Level of access.
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// Readable description of level of access.
+	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
+	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+	UserId pulumi.IntPtrInput `pulumi:"userId"`
+}
+
+func (TagProtectionAllowedToCreateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagProtectionAllowedToCreate)(nil)).Elem()
+}
+
+func (i TagProtectionAllowedToCreateArgs) ToTagProtectionAllowedToCreateOutput() TagProtectionAllowedToCreateOutput {
+	return i.ToTagProtectionAllowedToCreateOutputWithContext(context.Background())
+}
+
+func (i TagProtectionAllowedToCreateArgs) ToTagProtectionAllowedToCreateOutputWithContext(ctx context.Context) TagProtectionAllowedToCreateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagProtectionAllowedToCreateOutput)
+}
+
+// TagProtectionAllowedToCreateArrayInput is an input type that accepts TagProtectionAllowedToCreateArray and TagProtectionAllowedToCreateArrayOutput values.
+// You can construct a concrete instance of `TagProtectionAllowedToCreateArrayInput` via:
+//
+//	TagProtectionAllowedToCreateArray{ TagProtectionAllowedToCreateArgs{...} }
+type TagProtectionAllowedToCreateArrayInput interface {
+	pulumi.Input
+
+	ToTagProtectionAllowedToCreateArrayOutput() TagProtectionAllowedToCreateArrayOutput
+	ToTagProtectionAllowedToCreateArrayOutputWithContext(context.Context) TagProtectionAllowedToCreateArrayOutput
+}
+
+type TagProtectionAllowedToCreateArray []TagProtectionAllowedToCreateInput
+
+func (TagProtectionAllowedToCreateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TagProtectionAllowedToCreate)(nil)).Elem()
+}
+
+func (i TagProtectionAllowedToCreateArray) ToTagProtectionAllowedToCreateArrayOutput() TagProtectionAllowedToCreateArrayOutput {
+	return i.ToTagProtectionAllowedToCreateArrayOutputWithContext(context.Background())
+}
+
+func (i TagProtectionAllowedToCreateArray) ToTagProtectionAllowedToCreateArrayOutputWithContext(ctx context.Context) TagProtectionAllowedToCreateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagProtectionAllowedToCreateArrayOutput)
+}
+
+type TagProtectionAllowedToCreateOutput struct{ *pulumi.OutputState }
+
+func (TagProtectionAllowedToCreateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagProtectionAllowedToCreate)(nil)).Elem()
+}
+
+func (o TagProtectionAllowedToCreateOutput) ToTagProtectionAllowedToCreateOutput() TagProtectionAllowedToCreateOutput {
+	return o
+}
+
+func (o TagProtectionAllowedToCreateOutput) ToTagProtectionAllowedToCreateOutputWithContext(ctx context.Context) TagProtectionAllowedToCreateOutput {
+	return o
+}
+
+// Level of access.
+func (o TagProtectionAllowedToCreateOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TagProtectionAllowedToCreate) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// Readable description of level of access.
+func (o TagProtectionAllowedToCreateOutput) AccessLevelDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TagProtectionAllowedToCreate) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
+}
+
+// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+func (o TagProtectionAllowedToCreateOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TagProtectionAllowedToCreate) *int { return v.GroupId }).(pulumi.IntPtrOutput)
+}
+
+// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+func (o TagProtectionAllowedToCreateOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TagProtectionAllowedToCreate) *int { return v.UserId }).(pulumi.IntPtrOutput)
+}
+
+type TagProtectionAllowedToCreateArrayOutput struct{ *pulumi.OutputState }
+
+func (TagProtectionAllowedToCreateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TagProtectionAllowedToCreate)(nil)).Elem()
+}
+
+func (o TagProtectionAllowedToCreateArrayOutput) ToTagProtectionAllowedToCreateArrayOutput() TagProtectionAllowedToCreateArrayOutput {
+	return o
+}
+
+func (o TagProtectionAllowedToCreateArrayOutput) ToTagProtectionAllowedToCreateArrayOutputWithContext(ctx context.Context) TagProtectionAllowedToCreateArrayOutput {
+	return o
+}
+
+func (o TagProtectionAllowedToCreateArrayOutput) Index(i pulumi.IntInput) TagProtectionAllowedToCreateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TagProtectionAllowedToCreate {
+		return vs[0].([]TagProtectionAllowedToCreate)[vs[1].(int)]
+	}).(TagProtectionAllowedToCreateOutput)
 }
 
 type GetBranchCommit struct {
@@ -3715,11 +3839,11 @@ func (o GetProjectBranchesBranchCommitArrayOutput) Index(i pulumi.IntInput) GetP
 }
 
 type GetProjectContainerExpirationPolicy struct {
-	Cadence   string `pulumi:"cadence"`
-	Enabled   bool   `pulumi:"enabled"`
-	KeepN     int    `pulumi:"keepN"`
-	NameRegex string `pulumi:"nameRegex"`
-	// Deprecated: `name_regex_delete` has been deprecated. Use `name_regex` instead.
+	Cadence string `pulumi:"cadence"`
+	Enabled bool   `pulumi:"enabled"`
+	KeepN   int    `pulumi:"keepN"`
+	// Deprecated: `name_regex` has been deprecated. Use `name_regex_delete` instead.
+	NameRegex       string `pulumi:"nameRegex"`
 	NameRegexDelete string `pulumi:"nameRegexDelete"`
 	NameRegexKeep   string `pulumi:"nameRegexKeep"`
 	NextRunAt       string `pulumi:"nextRunAt"`
@@ -3738,11 +3862,11 @@ type GetProjectContainerExpirationPolicyInput interface {
 }
 
 type GetProjectContainerExpirationPolicyArgs struct {
-	Cadence   pulumi.StringInput `pulumi:"cadence"`
-	Enabled   pulumi.BoolInput   `pulumi:"enabled"`
-	KeepN     pulumi.IntInput    `pulumi:"keepN"`
-	NameRegex pulumi.StringInput `pulumi:"nameRegex"`
-	// Deprecated: `name_regex_delete` has been deprecated. Use `name_regex` instead.
+	Cadence pulumi.StringInput `pulumi:"cadence"`
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	KeepN   pulumi.IntInput    `pulumi:"keepN"`
+	// Deprecated: `name_regex` has been deprecated. Use `name_regex_delete` instead.
+	NameRegex       pulumi.StringInput `pulumi:"nameRegex"`
 	NameRegexDelete pulumi.StringInput `pulumi:"nameRegexDelete"`
 	NameRegexKeep   pulumi.StringInput `pulumi:"nameRegexKeep"`
 	NextRunAt       pulumi.StringInput `pulumi:"nextRunAt"`
@@ -3812,11 +3936,11 @@ func (o GetProjectContainerExpirationPolicyOutput) KeepN() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectContainerExpirationPolicy) int { return v.KeepN }).(pulumi.IntOutput)
 }
 
+// Deprecated: `name_regex` has been deprecated. Use `name_regex_delete` instead.
 func (o GetProjectContainerExpirationPolicyOutput) NameRegex() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectContainerExpirationPolicy) string { return v.NameRegex }).(pulumi.StringOutput)
 }
 
-// Deprecated: `name_regex_delete` has been deprecated. Use `name_regex` instead.
 func (o GetProjectContainerExpirationPolicyOutput) NameRegexDelete() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectContainerExpirationPolicy) string { return v.NameRegexDelete }).(pulumi.StringOutput)
 }
@@ -7104,11 +7228,11 @@ func (o GetProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetProjectsProje
 }
 
 type GetProjectsProjectContainerExpirationPolicy struct {
-	Cadence   string `pulumi:"cadence"`
-	Enabled   bool   `pulumi:"enabled"`
-	KeepN     int    `pulumi:"keepN"`
-	NameRegex string `pulumi:"nameRegex"`
-	// Deprecated: `name_regex_delete` has been deprecated. Use `name_regex` instead.
+	Cadence string `pulumi:"cadence"`
+	Enabled bool   `pulumi:"enabled"`
+	KeepN   int    `pulumi:"keepN"`
+	// Deprecated: `name_regex` has been deprecated. Use `name_regex_delete` instead.
+	NameRegex       string `pulumi:"nameRegex"`
 	NameRegexDelete string `pulumi:"nameRegexDelete"`
 	NameRegexKeep   string `pulumi:"nameRegexKeep"`
 	NextRunAt       string `pulumi:"nextRunAt"`
@@ -7127,11 +7251,11 @@ type GetProjectsProjectContainerExpirationPolicyInput interface {
 }
 
 type GetProjectsProjectContainerExpirationPolicyArgs struct {
-	Cadence   pulumi.StringInput `pulumi:"cadence"`
-	Enabled   pulumi.BoolInput   `pulumi:"enabled"`
-	KeepN     pulumi.IntInput    `pulumi:"keepN"`
-	NameRegex pulumi.StringInput `pulumi:"nameRegex"`
-	// Deprecated: `name_regex_delete` has been deprecated. Use `name_regex` instead.
+	Cadence pulumi.StringInput `pulumi:"cadence"`
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	KeepN   pulumi.IntInput    `pulumi:"keepN"`
+	// Deprecated: `name_regex` has been deprecated. Use `name_regex_delete` instead.
+	NameRegex       pulumi.StringInput `pulumi:"nameRegex"`
 	NameRegexDelete pulumi.StringInput `pulumi:"nameRegexDelete"`
 	NameRegexKeep   pulumi.StringInput `pulumi:"nameRegexKeep"`
 	NextRunAt       pulumi.StringInput `pulumi:"nextRunAt"`
@@ -7201,11 +7325,11 @@ func (o GetProjectsProjectContainerExpirationPolicyOutput) KeepN() pulumi.IntOut
 	return o.ApplyT(func(v GetProjectsProjectContainerExpirationPolicy) int { return v.KeepN }).(pulumi.IntOutput)
 }
 
+// Deprecated: `name_regex` has been deprecated. Use `name_regex_delete` instead.
 func (o GetProjectsProjectContainerExpirationPolicyOutput) NameRegex() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProjectContainerExpirationPolicy) string { return v.NameRegex }).(pulumi.StringOutput)
 }
 
-// Deprecated: `name_regex_delete` has been deprecated. Use `name_regex` instead.
 func (o GetProjectsProjectContainerExpirationPolicyOutput) NameRegexDelete() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProjectContainerExpirationPolicy) string { return v.NameRegexDelete }).(pulumi.StringOutput)
 }
@@ -8510,6 +8634,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagCommitArrayInput)(nil)).Elem(), ProjectTagCommitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagReleaseInput)(nil)).Elem(), ProjectTagReleaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagReleaseArrayInput)(nil)).Elem(), ProjectTagReleaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagProtectionAllowedToCreateInput)(nil)).Elem(), TagProtectionAllowedToCreateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagProtectionAllowedToCreateArrayInput)(nil)).Elem(), TagProtectionAllowedToCreateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBranchCommitInput)(nil)).Elem(), GetBranchCommitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBranchCommitArrayInput)(nil)).Elem(), GetBranchCommitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAgentsClusterAgentInput)(nil)).Elem(), GetClusterAgentsClusterAgentArgs{})
@@ -8617,6 +8743,8 @@ func init() {
 	pulumi.RegisterOutputType(ProjectTagCommitArrayOutput{})
 	pulumi.RegisterOutputType(ProjectTagReleaseOutput{})
 	pulumi.RegisterOutputType(ProjectTagReleaseArrayOutput{})
+	pulumi.RegisterOutputType(TagProtectionAllowedToCreateOutput{})
+	pulumi.RegisterOutputType(TagProtectionAllowedToCreateArrayOutput{})
 	pulumi.RegisterOutputType(GetBranchCommitOutput{})
 	pulumi.RegisterOutputType(GetBranchCommitArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAgentsClusterAgentOutput{})
