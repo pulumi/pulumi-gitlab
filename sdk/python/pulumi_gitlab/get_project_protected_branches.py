@@ -94,9 +94,9 @@ def get_project_protected_branches(project_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches', __args__, opts=opts, typ=GetProjectProtectedBranchesResult).value
 
     return AwaitableGetProjectProtectedBranchesResult(
-        id=__ret__.id,
-        project_id=__ret__.project_id,
-        protected_branches=__ret__.protected_branches)
+        id=pulumi.get(__ret__, 'id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        protected_branches=pulumi.get(__ret__, 'protected_branches'))
 
 
 @_utilities.lift_output_func(get_project_protected_branches)

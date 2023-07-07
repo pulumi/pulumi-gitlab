@@ -185,16 +185,16 @@ def get_release_link(link_id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getReleaseLink:getReleaseLink', __args__, opts=opts, typ=GetReleaseLinkResult).value
 
     return AwaitableGetReleaseLinkResult(
-        direct_asset_url=__ret__.direct_asset_url,
-        external=__ret__.external,
-        filepath=__ret__.filepath,
-        id=__ret__.id,
-        link_id=__ret__.link_id,
-        link_type=__ret__.link_type,
-        name=__ret__.name,
-        project=__ret__.project,
-        tag_name=__ret__.tag_name,
-        url=__ret__.url)
+        direct_asset_url=pulumi.get(__ret__, 'direct_asset_url'),
+        external=pulumi.get(__ret__, 'external'),
+        filepath=pulumi.get(__ret__, 'filepath'),
+        id=pulumi.get(__ret__, 'id'),
+        link_id=pulumi.get(__ret__, 'link_id'),
+        link_type=pulumi.get(__ret__, 'link_type'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        tag_name=pulumi.get(__ret__, 'tag_name'),
+        url=pulumi.get(__ret__, 'url'))
 
 
 @_utilities.lift_output_func(get_release_link)

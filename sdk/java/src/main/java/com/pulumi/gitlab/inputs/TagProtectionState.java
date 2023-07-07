@@ -5,7 +5,9 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gitlab.inputs.TagProtectionAllowedToCreateArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +16,21 @@ import javax.annotation.Nullable;
 public final class TagProtectionState extends com.pulumi.resources.ResourceArgs {
 
     public static final TagProtectionState Empty = new TagProtectionState();
+
+    /**
+     * User or group which are allowed to create.
+     * 
+     */
+    @Import(name="allowedToCreates")
+    private @Nullable Output<List<TagProtectionAllowedToCreateArgs>> allowedToCreates;
+
+    /**
+     * @return User or group which are allowed to create.
+     * 
+     */
+    public Optional<Output<List<TagProtectionAllowedToCreateArgs>>> allowedToCreates() {
+        return Optional.ofNullable(this.allowedToCreates);
+    }
 
     /**
      * Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
@@ -63,6 +80,7 @@ public final class TagProtectionState extends com.pulumi.resources.ResourceArgs 
     private TagProtectionState() {}
 
     private TagProtectionState(TagProtectionState $) {
+        this.allowedToCreates = $.allowedToCreates;
         this.createAccessLevel = $.createAccessLevel;
         this.project = $.project;
         this.tag = $.tag;
@@ -84,6 +102,37 @@ public final class TagProtectionState extends com.pulumi.resources.ResourceArgs 
 
         public Builder(TagProtectionState defaults) {
             $ = new TagProtectionState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowedToCreates User or group which are allowed to create.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedToCreates(@Nullable Output<List<TagProtectionAllowedToCreateArgs>> allowedToCreates) {
+            $.allowedToCreates = allowedToCreates;
+            return this;
+        }
+
+        /**
+         * @param allowedToCreates User or group which are allowed to create.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedToCreates(List<TagProtectionAllowedToCreateArgs> allowedToCreates) {
+            return allowedToCreates(Output.of(allowedToCreates));
+        }
+
+        /**
+         * @param allowedToCreates User or group which are allowed to create.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedToCreates(TagProtectionAllowedToCreateArgs... allowedToCreates) {
+            return allowedToCreates(List.of(allowedToCreates));
         }
 
         /**

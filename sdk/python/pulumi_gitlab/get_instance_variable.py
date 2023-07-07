@@ -141,13 +141,13 @@ def get_instance_variable(key: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getInstanceVariable:getInstanceVariable', __args__, opts=opts, typ=GetInstanceVariableResult).value
 
     return AwaitableGetInstanceVariableResult(
-        id=__ret__.id,
-        key=__ret__.key,
-        masked=__ret__.masked,
-        protected=__ret__.protected,
-        raw=__ret__.raw,
-        value=__ret__.value,
-        variable_type=__ret__.variable_type)
+        id=pulumi.get(__ret__, 'id'),
+        key=pulumi.get(__ret__, 'key'),
+        masked=pulumi.get(__ret__, 'masked'),
+        protected=pulumi.get(__ret__, 'protected'),
+        raw=pulumi.get(__ret__, 'raw'),
+        value=pulumi.get(__ret__, 'value'),
+        variable_type=pulumi.get(__ret__, 'variable_type'))
 
 
 @_utilities.lift_output_func(get_instance_variable)

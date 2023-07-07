@@ -82,7 +82,7 @@ namespace Pulumi.GitLab
         public Output<string?> PushAccessLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
+        /// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
         /// </summary>
         [Output("unprotectAccessLevel")]
         public Output<string?> UnprotectAccessLevel { get; private set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.GitLab
         public Input<string>? PushAccessLevel { get; set; }
 
         /// <summary>
-        /// Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
+        /// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
         /// </summary>
         [Input("unprotectAccessLevel")]
         public Input<string>? UnprotectAccessLevel { get; set; }
@@ -298,7 +298,7 @@ namespace Pulumi.GitLab
         public Input<string>? PushAccessLevel { get; set; }
 
         /// <summary>
-        /// Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
+        /// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
         /// </summary>
         [Input("unprotectAccessLevel")]
         public Input<string>? UnprotectAccessLevel { get; set; }

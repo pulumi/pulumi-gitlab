@@ -94,9 +94,9 @@ def get_project_branches(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjectBranches:getProjectBranches', __args__, opts=opts, typ=GetProjectBranchesResult).value
 
     return AwaitableGetProjectBranchesResult(
-        branches=__ret__.branches,
-        id=__ret__.id,
-        project=__ret__.project)
+        branches=pulumi.get(__ret__, 'branches'),
+        id=pulumi.get(__ret__, 'id'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_project_branches)

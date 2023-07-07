@@ -159,12 +159,12 @@ def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     __ret__ = pulumi.runtime.invoke('gitlab:index/getCurrentUser:getCurrentUser', __args__, opts=opts, typ=GetCurrentUserResult).value
 
     return AwaitableGetCurrentUserResult(
-        bot=__ret__.bot,
-        global_id=__ret__.global_id,
-        global_namespace_id=__ret__.global_namespace_id,
-        group_count=__ret__.group_count,
-        id=__ret__.id,
-        name=__ret__.name,
-        namespace_id=__ret__.namespace_id,
-        public_email=__ret__.public_email,
-        username=__ret__.username)
+        bot=pulumi.get(__ret__, 'bot'),
+        global_id=pulumi.get(__ret__, 'global_id'),
+        global_namespace_id=pulumi.get(__ret__, 'global_namespace_id'),
+        group_count=pulumi.get(__ret__, 'group_count'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        namespace_id=pulumi.get(__ret__, 'namespace_id'),
+        public_email=pulumi.get(__ret__, 'public_email'),
+        username=pulumi.get(__ret__, 'username'))

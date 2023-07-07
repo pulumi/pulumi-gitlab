@@ -158,14 +158,14 @@ def get_project_tag(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjectTag:getProjectTag', __args__, opts=opts, typ=GetProjectTagResult).value
 
     return AwaitableGetProjectTagResult(
-        commits=__ret__.commits,
-        id=__ret__.id,
-        message=__ret__.message,
-        name=__ret__.name,
-        project=__ret__.project,
-        protected=__ret__.protected,
-        releases=__ret__.releases,
-        target=__ret__.target)
+        commits=pulumi.get(__ret__, 'commits'),
+        id=pulumi.get(__ret__, 'id'),
+        message=pulumi.get(__ret__, 'message'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        protected=pulumi.get(__ret__, 'protected'),
+        releases=pulumi.get(__ret__, 'releases'),
+        target=pulumi.get(__ret__, 'target'))
 
 
 @_utilities.lift_output_func(get_project_tag)

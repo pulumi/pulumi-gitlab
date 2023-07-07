@@ -65,6 +65,9 @@ class ProjectShareGroupArgs:
         """
         The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         """
+        warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
+        pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
+
         return pulumi.get(self, "access_level")
 
     @access_level.setter
@@ -116,6 +119,9 @@ class _ProjectShareGroupState:
         """
         The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         """
+        warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
+        pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
+
         return pulumi.get(self, "access_level")
 
     @access_level.setter
@@ -313,6 +319,9 @@ class ProjectShareGroup(pulumi.CustomResource):
         """
         The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         """
+        warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
+        pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
+
         return pulumi.get(self, "access_level")
 
     @property

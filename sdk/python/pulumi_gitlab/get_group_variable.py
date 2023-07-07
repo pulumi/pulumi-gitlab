@@ -175,15 +175,15 @@ def get_group_variable(environment_scope: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getGroupVariable:getGroupVariable', __args__, opts=opts, typ=GetGroupVariableResult).value
 
     return AwaitableGetGroupVariableResult(
-        environment_scope=__ret__.environment_scope,
-        group=__ret__.group,
-        id=__ret__.id,
-        key=__ret__.key,
-        masked=__ret__.masked,
-        protected=__ret__.protected,
-        raw=__ret__.raw,
-        value=__ret__.value,
-        variable_type=__ret__.variable_type)
+        environment_scope=pulumi.get(__ret__, 'environment_scope'),
+        group=pulumi.get(__ret__, 'group'),
+        id=pulumi.get(__ret__, 'id'),
+        key=pulumi.get(__ret__, 'key'),
+        masked=pulumi.get(__ret__, 'masked'),
+        protected=pulumi.get(__ret__, 'protected'),
+        raw=pulumi.get(__ret__, 'raw'),
+        value=pulumi.get(__ret__, 'value'),
+        variable_type=pulumi.get(__ret__, 'variable_type'))
 
 
 @_utilities.lift_output_func(get_group_variable)

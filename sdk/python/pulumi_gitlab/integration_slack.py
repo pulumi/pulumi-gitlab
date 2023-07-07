@@ -273,6 +273,9 @@ class IntegrationSlackArgs:
         """
         This parameter has been replaced with `branches_to_be_notified`.
         """
+        warnings.warn("""use 'branches_to_be_notified' argument instead""", DeprecationWarning)
+        pulumi.log.warn("""notify_only_default_branch is deprecated: use 'branches_to_be_notified' argument instead""")
+
         return pulumi.get(self, "notify_only_default_branch")
 
     @notify_only_default_branch.setter
@@ -644,6 +647,9 @@ class _IntegrationSlackState:
         """
         This parameter has been replaced with `branches_to_be_notified`.
         """
+        warnings.warn("""use 'branches_to_be_notified' argument instead""", DeprecationWarning)
+        pulumi.log.warn("""notify_only_default_branch is deprecated: use 'branches_to_be_notified' argument instead""")
+
         return pulumi.get(self, "notify_only_default_branch")
 
     @notify_only_default_branch.setter
@@ -1180,6 +1186,9 @@ class IntegrationSlack(pulumi.CustomResource):
         """
         This parameter has been replaced with `branches_to_be_notified`.
         """
+        warnings.warn("""use 'branches_to_be_notified' argument instead""", DeprecationWarning)
+        pulumi.log.warn("""notify_only_default_branch is deprecated: use 'branches_to_be_notified' argument instead""")
+
         return pulumi.get(self, "notify_only_default_branch")
 
     @property

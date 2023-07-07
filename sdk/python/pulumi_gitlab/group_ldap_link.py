@@ -77,6 +77,9 @@ class GroupLdapLinkArgs:
         """
         Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         """
+        warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
+        pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
+
         return pulumi.get(self, "access_level")
 
     @access_level.setter
@@ -176,6 +179,9 @@ class _GroupLdapLinkState:
         """
         Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         """
+        warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
+        pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
+
         return pulumi.get(self, "access_level")
 
     @access_level.setter
@@ -418,6 +424,9 @@ class GroupLdapLink(pulumi.CustomResource):
         """
         Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
         """
+        warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
+        pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
+
         return pulumi.get(self, "access_level")
 
     @property

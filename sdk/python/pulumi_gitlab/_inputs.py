@@ -21,6 +21,7 @@ __all__ = [
     'ProjectPushRulesArgs',
     'ProjectTagCommitArgs',
     'ProjectTagReleaseArgs',
+    'TagProtectionAllowedToCreateArgs',
 ]
 
 @pulumi.input_type
@@ -407,10 +408,10 @@ class ProjectContainerExpirationPolicyArgs:
         if keep_n is not None:
             pulumi.set(__self__, "keep_n", keep_n)
         if name_regex is not None:
+            warnings.warn("""`name_regex` has been deprecated. Use `name_regex_delete` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name_regex is deprecated: `name_regex` has been deprecated. Use `name_regex_delete` instead.""")
+        if name_regex is not None:
             pulumi.set(__self__, "name_regex", name_regex)
-        if name_regex_delete is not None:
-            warnings.warn("""`name_regex_delete` has been deprecated. Use `name_regex` instead.""", DeprecationWarning)
-            pulumi.log.warn("""name_regex_delete is deprecated: `name_regex_delete` has been deprecated. Use `name_regex` instead.""")
         if name_regex_delete is not None:
             pulumi.set(__self__, "name_regex_delete", name_regex_delete)
         if name_regex_keep is not None:
@@ -462,6 +463,9 @@ class ProjectContainerExpirationPolicyArgs:
         """
         The regular expression to match image names to delete.
         """
+        warnings.warn("""`name_regex` has been deprecated. Use `name_regex_delete` instead.""", DeprecationWarning)
+        pulumi.log.warn("""name_regex is deprecated: `name_regex` has been deprecated. Use `name_regex_delete` instead.""")
+
         return pulumi.get(self, "name_regex")
 
     @name_regex.setter
@@ -1077,5 +1081,76 @@ class ProjectTagReleaseArgs:
     @tag_name.setter
     def tag_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tag_name", value)
+
+
+@pulumi.input_type
+class TagProtectionAllowedToCreateArgs:
+    def __init__(__self__, *,
+                 access_level: Optional[pulumi.Input[str]] = None,
+                 access_level_description: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[int]] = None,
+                 user_id: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] access_level: Level of access.
+        :param pulumi.Input[str] access_level_description: Readable description of level of access.
+        :param pulumi.Input[int] group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        :param pulumi.Input[int] user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_level_description is not None:
+            pulumi.set(__self__, "access_level_description", access_level_description)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Level of access.
+        """
+        return pulumi.get(self, "access_level")
+
+    @access_level.setter
+    def access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Readable description of level of access.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @access_level_description.setter
+    def access_level_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_level_description", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "user_id", value)
 
 

@@ -276,24 +276,24 @@ def get_group(full_path: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult).value
 
     return AwaitableGetGroupResult(
-        default_branch_protection=__ret__.default_branch_protection,
-        description=__ret__.description,
-        extra_shared_runners_minutes_limit=__ret__.extra_shared_runners_minutes_limit,
-        full_name=__ret__.full_name,
-        full_path=__ret__.full_path,
-        group_id=__ret__.group_id,
-        id=__ret__.id,
-        lfs_enabled=__ret__.lfs_enabled,
-        membership_lock=__ret__.membership_lock,
-        name=__ret__.name,
-        parent_id=__ret__.parent_id,
-        path=__ret__.path,
-        prevent_forking_outside_group=__ret__.prevent_forking_outside_group,
-        request_access_enabled=__ret__.request_access_enabled,
-        runners_token=__ret__.runners_token,
-        shared_runners_minutes_limit=__ret__.shared_runners_minutes_limit,
-        visibility_level=__ret__.visibility_level,
-        web_url=__ret__.web_url)
+        default_branch_protection=pulumi.get(__ret__, 'default_branch_protection'),
+        description=pulumi.get(__ret__, 'description'),
+        extra_shared_runners_minutes_limit=pulumi.get(__ret__, 'extra_shared_runners_minutes_limit'),
+        full_name=pulumi.get(__ret__, 'full_name'),
+        full_path=pulumi.get(__ret__, 'full_path'),
+        group_id=pulumi.get(__ret__, 'group_id'),
+        id=pulumi.get(__ret__, 'id'),
+        lfs_enabled=pulumi.get(__ret__, 'lfs_enabled'),
+        membership_lock=pulumi.get(__ret__, 'membership_lock'),
+        name=pulumi.get(__ret__, 'name'),
+        parent_id=pulumi.get(__ret__, 'parent_id'),
+        path=pulumi.get(__ret__, 'path'),
+        prevent_forking_outside_group=pulumi.get(__ret__, 'prevent_forking_outside_group'),
+        request_access_enabled=pulumi.get(__ret__, 'request_access_enabled'),
+        runners_token=pulumi.get(__ret__, 'runners_token'),
+        shared_runners_minutes_limit=pulumi.get(__ret__, 'shared_runners_minutes_limit'),
+        visibility_level=pulumi.get(__ret__, 'visibility_level'),
+        web_url=pulumi.get(__ret__, 'web_url'))
 
 
 @_utilities.lift_output_func(get_group)

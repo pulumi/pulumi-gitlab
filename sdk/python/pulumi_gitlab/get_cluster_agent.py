@@ -135,12 +135,12 @@ def get_cluster_agent(agent_id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getClusterAgent:getClusterAgent', __args__, opts=opts, typ=GetClusterAgentResult).value
 
     return AwaitableGetClusterAgentResult(
-        agent_id=__ret__.agent_id,
-        created_at=__ret__.created_at,
-        created_by_user_id=__ret__.created_by_user_id,
-        id=__ret__.id,
-        name=__ret__.name,
-        project=__ret__.project)
+        agent_id=pulumi.get(__ret__, 'agent_id'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        created_by_user_id=pulumi.get(__ret__, 'created_by_user_id'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_cluster_agent)

@@ -112,8 +112,8 @@ def get_metadata(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMet
     __ret__ = pulumi.runtime.invoke('gitlab:index/getMetadata:getMetadata', __args__, opts=opts, typ=GetMetadataResult).value
 
     return AwaitableGetMetadataResult(
-        enterprise=__ret__.enterprise,
-        id=__ret__.id,
-        kas=__ret__.kas,
-        revision=__ret__.revision,
-        version=__ret__.version)
+        enterprise=pulumi.get(__ret__, 'enterprise'),
+        id=pulumi.get(__ret__, 'id'),
+        kas=pulumi.get(__ret__, 'kas'),
+        revision=pulumi.get(__ret__, 'revision'),
+        version=pulumi.get(__ret__, 'version'))

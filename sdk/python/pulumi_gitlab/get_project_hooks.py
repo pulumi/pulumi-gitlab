@@ -95,9 +95,9 @@ def get_project_hooks(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjectHooks:getProjectHooks', __args__, opts=opts, typ=GetProjectHooksResult).value
 
     return AwaitableGetProjectHooksResult(
-        hooks=__ret__.hooks,
-        id=__ret__.id,
-        project=__ret__.project)
+        hooks=pulumi.get(__ret__, 'hooks'),
+        id=pulumi.get(__ret__, 'id'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_project_hooks)

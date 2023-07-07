@@ -146,13 +146,13 @@ def get_project_protected_branch(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch', __args__, opts=opts, typ=GetProjectProtectedBranchResult).value
 
     return AwaitableGetProjectProtectedBranchResult(
-        allow_force_push=__ret__.allow_force_push,
-        code_owner_approval_required=__ret__.code_owner_approval_required,
-        id=__ret__.id,
-        merge_access_levels=__ret__.merge_access_levels,
-        name=__ret__.name,
-        project_id=__ret__.project_id,
-        push_access_levels=__ret__.push_access_levels)
+        allow_force_push=pulumi.get(__ret__, 'allow_force_push'),
+        code_owner_approval_required=pulumi.get(__ret__, 'code_owner_approval_required'),
+        id=pulumi.get(__ret__, 'id'),
+        merge_access_levels=pulumi.get(__ret__, 'merge_access_levels'),
+        name=pulumi.get(__ret__, 'name'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        push_access_levels=pulumi.get(__ret__, 'push_access_levels'))
 
 
 @_utilities.lift_output_func(get_project_protected_branch)

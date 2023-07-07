@@ -85,9 +85,9 @@ def get_group_hooks(group: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getGroupHooks:getGroupHooks', __args__, opts=opts, typ=GetGroupHooksResult).value
 
     return AwaitableGetGroupHooksResult(
-        group=__ret__.group,
-        hooks=__ret__.hooks,
-        id=__ret__.id)
+        group=pulumi.get(__ret__, 'group'),
+        hooks=pulumi.get(__ret__, 'hooks'),
+        id=pulumi.get(__ret__, 'id'))
 
 
 @_utilities.lift_output_func(get_group_hooks)

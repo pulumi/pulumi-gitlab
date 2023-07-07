@@ -221,19 +221,19 @@ def get_repository_file(file_path: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getRepositoryFile:getRepositoryFile', __args__, opts=opts, typ=GetRepositoryFileResult).value
 
     return AwaitableGetRepositoryFileResult(
-        blob_id=__ret__.blob_id,
-        commit_id=__ret__.commit_id,
-        content=__ret__.content,
-        content_sha256=__ret__.content_sha256,
-        encoding=__ret__.encoding,
-        execute_filemode=__ret__.execute_filemode,
-        file_name=__ret__.file_name,
-        file_path=__ret__.file_path,
-        id=__ret__.id,
-        last_commit_id=__ret__.last_commit_id,
-        project=__ret__.project,
-        ref=__ret__.ref,
-        size=__ret__.size)
+        blob_id=pulumi.get(__ret__, 'blob_id'),
+        commit_id=pulumi.get(__ret__, 'commit_id'),
+        content=pulumi.get(__ret__, 'content'),
+        content_sha256=pulumi.get(__ret__, 'content_sha256'),
+        encoding=pulumi.get(__ret__, 'encoding'),
+        execute_filemode=pulumi.get(__ret__, 'execute_filemode'),
+        file_name=pulumi.get(__ret__, 'file_name'),
+        file_path=pulumi.get(__ret__, 'file_path'),
+        id=pulumi.get(__ret__, 'id'),
+        last_commit_id=pulumi.get(__ret__, 'last_commit_id'),
+        project=pulumi.get(__ret__, 'project'),
+        ref=pulumi.get(__ret__, 'ref'),
+        size=pulumi.get(__ret__, 'size'))
 
 
 @_utilities.lift_output_func(get_repository_file)

@@ -24,6 +24,68 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html#create-an-agent-token)
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.ClusterAgentToken;
+ * import com.pulumi.gitlab.ClusterAgentTokenArgs;
+ * import com.pulumi.gitlab.GitlabFunctions;
+ * import com.pulumi.gitlab.inputs.GetProjectArgs;
+ * import com.pulumi.gitlab.ClusterAgent;
+ * import com.pulumi.gitlab.ClusterAgentArgs;
+ * import com.pulumi.helm.helm_release;
+ * import com.pulumi.helm.Helm_releaseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new ClusterAgentToken(&#34;example&#34;, ClusterAgentTokenArgs.builder()        
+ *             .project(&#34;12345&#34;)
+ *             .agentId(42)
+ *             .description(&#34;some token&#34;)
+ *             .build());
+ * 
+ *         final var thisProject = GitlabFunctions.getProject(GetProjectArgs.builder()
+ *             .pathWithNamespace(&#34;my-org/example&#34;)
+ *             .build());
+ * 
+ *         var thisClusterAgent = new ClusterAgent(&#34;thisClusterAgent&#34;, ClusterAgentArgs.builder()        
+ *             .project(thisProject.applyValue(getProjectResult -&gt; getProjectResult.id()))
+ *             .build());
+ * 
+ *         var thisClusterAgentToken = new ClusterAgentToken(&#34;thisClusterAgentToken&#34;, ClusterAgentTokenArgs.builder()        
+ *             .project(thisProject.applyValue(getProjectResult -&gt; getProjectResult.id()))
+ *             .agentId(thisClusterAgent.agentId())
+ *             .description(&#34;Token for the my-agent used with `gitlab-agent` Helm Chart&#34;)
+ *             .build());
+ * 
+ *         var gitlabAgent = new Helm_release(&#34;gitlabAgent&#34;, Helm_releaseArgs.builder()        
+ *             .name(&#34;gitlab-agent&#34;)
+ *             .namespace(&#34;gitlab-agent&#34;)
+ *             .createNamespace(true)
+ *             .repository(&#34;https://charts.gitlab.io&#34;)
+ *             .chart(&#34;gitlab-agent&#34;)
+ *             .version(&#34;1.2.0&#34;)
+ *             .set(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * A token for a GitLab Agent for Kubernetes can be imported with the following command and the id pattern `&lt;project&gt;:&lt;agent-id&gt;:&lt;token-id&gt;`

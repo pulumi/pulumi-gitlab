@@ -229,20 +229,20 @@ def get_project_milestone(milestone_id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjectMilestone:getProjectMilestone', __args__, opts=opts, typ=GetProjectMilestoneResult).value
 
     return AwaitableGetProjectMilestoneResult(
-        created_at=__ret__.created_at,
-        description=__ret__.description,
-        due_date=__ret__.due_date,
-        expired=__ret__.expired,
-        id=__ret__.id,
-        iid=__ret__.iid,
-        milestone_id=__ret__.milestone_id,
-        project=__ret__.project,
-        project_id=__ret__.project_id,
-        start_date=__ret__.start_date,
-        state=__ret__.state,
-        title=__ret__.title,
-        updated_at=__ret__.updated_at,
-        web_url=__ret__.web_url)
+        created_at=pulumi.get(__ret__, 'created_at'),
+        description=pulumi.get(__ret__, 'description'),
+        due_date=pulumi.get(__ret__, 'due_date'),
+        expired=pulumi.get(__ret__, 'expired'),
+        id=pulumi.get(__ret__, 'id'),
+        iid=pulumi.get(__ret__, 'iid'),
+        milestone_id=pulumi.get(__ret__, 'milestone_id'),
+        project=pulumi.get(__ret__, 'project'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        start_date=pulumi.get(__ret__, 'start_date'),
+        state=pulumi.get(__ret__, 'state'),
+        title=pulumi.get(__ret__, 'title'),
+        updated_at=pulumi.get(__ret__, 'updated_at'),
+        web_url=pulumi.get(__ret__, 'web_url'))
 
 
 @_utilities.lift_output_func(get_project_milestone)

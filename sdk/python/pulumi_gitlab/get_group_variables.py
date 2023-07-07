@@ -111,10 +111,10 @@ def get_group_variables(environment_scope: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getGroupVariables:getGroupVariables', __args__, opts=opts, typ=GetGroupVariablesResult).value
 
     return AwaitableGetGroupVariablesResult(
-        environment_scope=__ret__.environment_scope,
-        group=__ret__.group,
-        id=__ret__.id,
-        variables=__ret__.variables)
+        environment_scope=pulumi.get(__ret__, 'environment_scope'),
+        group=pulumi.get(__ret__, 'group'),
+        id=pulumi.get(__ret__, 'id'),
+        variables=pulumi.get(__ret__, 'variables'))
 
 
 @_utilities.lift_output_func(get_group_variables)

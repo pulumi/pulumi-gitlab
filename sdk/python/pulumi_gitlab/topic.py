@@ -99,6 +99,9 @@ class TopicArgs:
         """
         Empty the topics fields instead of deleting it.
         """
+        warnings.warn("""GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""", DeprecationWarning)
+        pulumi.log.warn("""soft_destroy is deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""")
+
         return pulumi.get(self, "soft_destroy")
 
     @soft_destroy.setter
@@ -222,6 +225,9 @@ class _TopicState:
         """
         Empty the topics fields instead of deleting it.
         """
+        warnings.warn("""GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""", DeprecationWarning)
+        pulumi.log.warn("""soft_destroy is deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""")
+
         return pulumi.get(self, "soft_destroy")
 
     @soft_destroy.setter
@@ -441,6 +447,9 @@ class Topic(pulumi.CustomResource):
         """
         Empty the topics fields instead of deleting it.
         """
+        warnings.warn("""GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""", DeprecationWarning)
+        pulumi.log.warn("""soft_destroy is deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""")
+
         return pulumi.get(self, "soft_destroy")
 
     @property

@@ -102,11 +102,11 @@ def get_application(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getApplication:getApplication', __args__, opts=opts, typ=GetApplicationResult).value
 
     return AwaitableGetApplicationResult(
-        application_id=__ret__.application_id,
-        confidential=__ret__.confidential,
-        id=__ret__.id,
-        name=__ret__.name,
-        redirect_url=__ret__.redirect_url)
+        application_id=pulumi.get(__ret__, 'application_id'),
+        confidential=pulumi.get(__ret__, 'confidential'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        redirect_url=pulumi.get(__ret__, 'redirect_url'))
 
 
 @_utilities.lift_output_func(get_application)

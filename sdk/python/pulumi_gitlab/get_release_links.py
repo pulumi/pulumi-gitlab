@@ -110,10 +110,10 @@ def get_release_links(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getReleaseLinks:getReleaseLinks', __args__, opts=opts, typ=GetReleaseLinksResult).value
 
     return AwaitableGetReleaseLinksResult(
-        id=__ret__.id,
-        project=__ret__.project,
-        release_links=__ret__.release_links,
-        tag_name=__ret__.tag_name)
+        id=pulumi.get(__ret__, 'id'),
+        project=pulumi.get(__ret__, 'project'),
+        release_links=pulumi.get(__ret__, 'release_links'),
+        tag_name=pulumi.get(__ret__, 'tag_name'))
 
 
 @_utilities.lift_output_func(get_release_links)

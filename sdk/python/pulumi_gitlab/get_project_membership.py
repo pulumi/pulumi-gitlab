@@ -142,12 +142,12 @@ def get_project_membership(full_path: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjectMembership:getProjectMembership', __args__, opts=opts, typ=GetProjectMembershipResult).value
 
     return AwaitableGetProjectMembershipResult(
-        full_path=__ret__.full_path,
-        id=__ret__.id,
-        inherited=__ret__.inherited,
-        members=__ret__.members,
-        project_id=__ret__.project_id,
-        query=__ret__.query)
+        full_path=pulumi.get(__ret__, 'full_path'),
+        id=pulumi.get(__ret__, 'id'),
+        inherited=pulumi.get(__ret__, 'inherited'),
+        members=pulumi.get(__ret__, 'members'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        query=pulumi.get(__ret__, 'query'))
 
 
 @_utilities.lift_output_func(get_project_membership)

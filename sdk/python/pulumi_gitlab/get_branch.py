@@ -194,17 +194,17 @@ def get_branch(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getBranch:getBranch', __args__, opts=opts, typ=GetBranchResult).value
 
     return AwaitableGetBranchResult(
-        can_push=__ret__.can_push,
-        commits=__ret__.commits,
-        default=__ret__.default,
-        developer_can_merge=__ret__.developer_can_merge,
-        developer_can_push=__ret__.developer_can_push,
-        id=__ret__.id,
-        merged=__ret__.merged,
-        name=__ret__.name,
-        project=__ret__.project,
-        protected=__ret__.protected,
-        web_url=__ret__.web_url)
+        can_push=pulumi.get(__ret__, 'can_push'),
+        commits=pulumi.get(__ret__, 'commits'),
+        default=pulumi.get(__ret__, 'default'),
+        developer_can_merge=pulumi.get(__ret__, 'developer_can_merge'),
+        developer_can_push=pulumi.get(__ret__, 'developer_can_push'),
+        id=pulumi.get(__ret__, 'id'),
+        merged=pulumi.get(__ret__, 'merged'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        protected=pulumi.get(__ret__, 'protected'),
+        web_url=pulumi.get(__ret__, 'web_url'))
 
 
 @_utilities.lift_output_func(get_branch)

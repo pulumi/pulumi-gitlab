@@ -139,12 +139,12 @@ def get_project_tags(order_by: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjectTags:getProjectTags', __args__, opts=opts, typ=GetProjectTagsResult).value
 
     return AwaitableGetProjectTagsResult(
-        id=__ret__.id,
-        order_by=__ret__.order_by,
-        project=__ret__.project,
-        search=__ret__.search,
-        sort=__ret__.sort,
-        tags=__ret__.tags)
+        id=pulumi.get(__ret__, 'id'),
+        order_by=pulumi.get(__ret__, 'order_by'),
+        project=pulumi.get(__ret__, 'project'),
+        search=pulumi.get(__ret__, 'search'),
+        sort=pulumi.get(__ret__, 'sort'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_project_tags)

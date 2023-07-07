@@ -230,18 +230,18 @@ def get_group_subgroups(all_available: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getGroupSubgroups:getGroupSubgroups', __args__, opts=opts, typ=GetGroupSubgroupsResult).value
 
     return AwaitableGetGroupSubgroupsResult(
-        all_available=__ret__.all_available,
-        group_id=__ret__.group_id,
-        id=__ret__.id,
-        min_access_level=__ret__.min_access_level,
-        order_by=__ret__.order_by,
-        owned=__ret__.owned,
-        search=__ret__.search,
-        skip_groups=__ret__.skip_groups,
-        sort=__ret__.sort,
-        statistics=__ret__.statistics,
-        subgroups=__ret__.subgroups,
-        with_custom_attributes=__ret__.with_custom_attributes)
+        all_available=pulumi.get(__ret__, 'all_available'),
+        group_id=pulumi.get(__ret__, 'group_id'),
+        id=pulumi.get(__ret__, 'id'),
+        min_access_level=pulumi.get(__ret__, 'min_access_level'),
+        order_by=pulumi.get(__ret__, 'order_by'),
+        owned=pulumi.get(__ret__, 'owned'),
+        search=pulumi.get(__ret__, 'search'),
+        skip_groups=pulumi.get(__ret__, 'skip_groups'),
+        sort=pulumi.get(__ret__, 'sort'),
+        statistics=pulumi.get(__ret__, 'statistics'),
+        subgroups=pulumi.get(__ret__, 'subgroups'),
+        with_custom_attributes=pulumi.get(__ret__, 'with_custom_attributes'))
 
 
 @_utilities.lift_output_func(get_group_subgroups)
