@@ -300,10 +300,10 @@ export interface GetProjectContainerExpirationPolicy {
     cadence: string;
     enabled: boolean;
     keepN: number;
-    nameRegex: string;
     /**
-     * @deprecated `name_regex_delete` has been deprecated. Use `name_regex` instead.
+     * @deprecated `name_regex` has been deprecated. Use `name_regex_delete` instead.
      */
+    nameRegex: string;
     nameRegexDelete: string;
     nameRegexKeep: string;
     nextRunAt: string;
@@ -687,10 +687,10 @@ export interface GetProjectsProjectContainerExpirationPolicy {
     cadence: string;
     enabled: boolean;
     keepN: number;
-    nameRegex: string;
     /**
-     * @deprecated `name_regex_delete` has been deprecated. Use `name_regex` instead.
+     * @deprecated `name_regex` has been deprecated. Use `name_regex_delete` instead.
      */
+    nameRegex: string;
     nameRegexDelete: string;
     nameRegexKeep: string;
     nextRunAt: string;
@@ -842,12 +842,12 @@ export interface ProjectContainerExpirationPolicy {
     keepN: number;
     /**
      * The regular expression to match image names to delete.
+     *
+     * @deprecated `name_regex` has been deprecated. Use `name_regex_delete` instead.
      */
     nameRegex: string;
     /**
      * The regular expression to match image names to delete.
-     *
-     * @deprecated `name_regex_delete` has been deprecated. Use `name_regex` instead.
      */
     nameRegexDelete: string;
     /**
@@ -985,5 +985,24 @@ export interface ProjectTagCommit {
 export interface ProjectTagRelease {
     description: string;
     tagName: string;
+}
+
+export interface TagProtectionAllowedToCreate {
+    /**
+     * Level of access.
+     */
+    accessLevel: string;
+    /**
+     * Readable description of level of access.
+     */
+    accessLevelDescription: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
+    groupId?: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
+    userId?: number;
 }
 

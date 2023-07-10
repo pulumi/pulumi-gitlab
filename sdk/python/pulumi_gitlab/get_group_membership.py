@@ -139,12 +139,12 @@ def get_group_membership(access_level: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getGroupMembership:getGroupMembership', __args__, opts=opts, typ=GetGroupMembershipResult).value
 
     return AwaitableGetGroupMembershipResult(
-        access_level=__ret__.access_level,
-        full_path=__ret__.full_path,
-        group_id=__ret__.group_id,
-        id=__ret__.id,
-        inherited=__ret__.inherited,
-        members=__ret__.members)
+        access_level=pulumi.get(__ret__, 'access_level'),
+        full_path=pulumi.get(__ret__, 'full_path'),
+        group_id=pulumi.get(__ret__, 'group_id'),
+        id=pulumi.get(__ret__, 'id'),
+        inherited=pulumi.get(__ret__, 'inherited'),
+        members=pulumi.get(__ret__, 'members'))
 
 
 @_utilities.lift_output_func(get_group_membership)

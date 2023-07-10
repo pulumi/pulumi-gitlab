@@ -461,7 +461,12 @@
             },
             "gitlab_tag_protection": {
                 "current": "gitlab:index/tagProtection:TagProtection",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "allowed_to_create": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_topic": {
                 "current": "gitlab:index/topic:Topic",
@@ -486,124 +491,442 @@
         },
         "datasources": {
             "gitlab_application": {
-                "current": "gitlab:index/getApplication:getApplication"
+                "current": "gitlab:index/getApplication:getApplication",
+                "majorVersion": 6
             },
             "gitlab_branch": {
-                "current": "gitlab:index/getBranch:getBranch"
+                "current": "gitlab:index/getBranch:getBranch",
+                "majorVersion": 6,
+                "fields": {
+                    "commit": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "parent_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "gitlab_cluster_agent": {
-                "current": "gitlab:index/getClusterAgent:getClusterAgent"
+                "current": "gitlab:index/getClusterAgent:getClusterAgent",
+                "majorVersion": 6
             },
             "gitlab_cluster_agents": {
-                "current": "gitlab:index/getClusterAgents:getClusterAgents"
+                "current": "gitlab:index/getClusterAgents:getClusterAgents",
+                "majorVersion": 6,
+                "fields": {
+                    "cluster_agents": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_current_user": {
-                "current": "gitlab:index/getCurrentUser:getCurrentUser"
+                "current": "gitlab:index/getCurrentUser:getCurrentUser",
+                "majorVersion": 6
             },
             "gitlab_group": {
-                "current": "gitlab:index/getGroup:getGroup"
+                "current": "gitlab:index/getGroup:getGroup",
+                "majorVersion": 6
             },
             "gitlab_group_hook": {
-                "current": "gitlab:index/getGroupHook:getGroupHook"
+                "current": "gitlab:index/getGroupHook:getGroupHook",
+                "majorVersion": 6
             },
             "gitlab_group_hooks": {
-                "current": "gitlab:index/getGroupHooks:getGroupHooks"
+                "current": "gitlab:index/getGroupHooks:getGroupHooks",
+                "majorVersion": 6,
+                "fields": {
+                    "hooks": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_group_membership": {
-                "current": "gitlab:index/getGroupMembership:getGroupMembership"
+                "current": "gitlab:index/getGroupMembership:getGroupMembership",
+                "majorVersion": 6,
+                "fields": {
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_group_subgroups": {
-                "current": "gitlab:index/getGroupSubgroups:getGroupSubgroups"
+                "current": "gitlab:index/getGroupSubgroups:getGroupSubgroups",
+                "majorVersion": 6,
+                "fields": {
+                    "skip_groups": {
+                        "maxItemsOne": false
+                    },
+                    "subgroups": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_group_variable": {
-                "current": "gitlab:index/getGroupVariable:getGroupVariable"
+                "current": "gitlab:index/getGroupVariable:getGroupVariable",
+                "majorVersion": 6
             },
             "gitlab_group_variables": {
-                "current": "gitlab:index/getGroupVariables:getGroupVariables"
+                "current": "gitlab:index/getGroupVariables:getGroupVariables",
+                "majorVersion": 6,
+                "fields": {
+                    "variables": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_groups": {
-                "current": "gitlab:index/getGroups:getGroups"
+                "current": "gitlab:index/getGroups:getGroups",
+                "majorVersion": 6,
+                "fields": {
+                    "groups": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_instance_deploy_keys": {
-                "current": "gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys"
+                "current": "gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys",
+                "majorVersion": 6,
+                "fields": {
+                    "deploy_keys": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "projects_with_write_access": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "gitlab_instance_variable": {
-                "current": "gitlab:index/getInstanceVariable:getInstanceVariable"
+                "current": "gitlab:index/getInstanceVariable:getInstanceVariable",
+                "majorVersion": 6
             },
             "gitlab_instance_variables": {
-                "current": "gitlab:index/getInstanceVariables:getInstanceVariables"
+                "current": "gitlab:index/getInstanceVariables:getInstanceVariables",
+                "majorVersion": 6,
+                "fields": {
+                    "variables": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_metadata": {
-                "current": "gitlab:index/getMetadata:getMetadata"
+                "current": "gitlab:index/getMetadata:getMetadata",
+                "majorVersion": 6
             },
             "gitlab_project": {
-                "current": "gitlab:index/getProject:getProject"
+                "current": "gitlab:index/getProject:getProject",
+                "majorVersion": 6,
+                "fields": {
+                    "container_expiration_policy": {
+                        "maxItemsOne": false
+                    },
+                    "push_rules": {
+                        "maxItemsOne": false
+                    },
+                    "topics": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_project_branches": {
-                "current": "gitlab:index/getProjectBranches:getProjectBranches"
+                "current": "gitlab:index/getProjectBranches:getProjectBranches",
+                "majorVersion": 6,
+                "fields": {
+                    "branches": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "commit": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "parent_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "gitlab_project_hook": {
-                "current": "gitlab:index/getProjectHook:getProjectHook"
+                "current": "gitlab:index/getProjectHook:getProjectHook",
+                "majorVersion": 6
             },
             "gitlab_project_hooks": {
-                "current": "gitlab:index/getProjectHooks:getProjectHooks"
+                "current": "gitlab:index/getProjectHooks:getProjectHooks",
+                "majorVersion": 6,
+                "fields": {
+                    "hooks": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_project_issue": {
-                "current": "gitlab:index/getProjectIssue:getProjectIssue"
+                "current": "gitlab:index/getProjectIssue:getProjectIssue",
+                "majorVersion": 6,
+                "fields": {
+                    "assignee_ids": {
+                        "maxItemsOne": false
+                    },
+                    "labels": {
+                        "maxItemsOne": false
+                    },
+                    "task_completion_status": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_project_issues": {
-                "current": "gitlab:index/getProjectIssues:getProjectIssues"
+                "current": "gitlab:index/getProjectIssues:getProjectIssues",
+                "majorVersion": 6,
+                "fields": {
+                    "iids": {
+                        "maxItemsOne": false
+                    },
+                    "issues": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "assignee_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "labels": {
+                                    "maxItemsOne": false
+                                },
+                                "task_completion_status": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "labels": {
+                        "maxItemsOne": false
+                    },
+                    "not_assignee_id": {
+                        "maxItemsOne": false
+                    },
+                    "not_author_id": {
+                        "maxItemsOne": false
+                    },
+                    "not_labels": {
+                        "maxItemsOne": false
+                    },
+                    "not_my_reaction_emoji": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_project_membership": {
-                "current": "gitlab:index/getProjectMembership:getProjectMembership"
+                "current": "gitlab:index/getProjectMembership:getProjectMembership",
+                "majorVersion": 6,
+                "fields": {
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_project_milestone": {
-                "current": "gitlab:index/getProjectMilestone:getProjectMilestone"
+                "current": "gitlab:index/getProjectMilestone:getProjectMilestone",
+                "majorVersion": 6
             },
             "gitlab_project_milestones": {
-                "current": "gitlab:index/getProjectMilestones:getProjectMilestones"
+                "current": "gitlab:index/getProjectMilestones:getProjectMilestones",
+                "majorVersion": 6,
+                "fields": {
+                    "iids": {
+                        "maxItemsOne": false
+                    },
+                    "milestones": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_project_protected_branch": {
-                "current": "gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch"
+                "current": "gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch",
+                "majorVersion": 6,
+                "fields": {
+                    "merge_access_levels": {
+                        "maxItemsOne": false
+                    },
+                    "push_access_levels": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_project_protected_branches": {
-                "current": "gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches"
+                "current": "gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches",
+                "majorVersion": 6,
+                "fields": {
+                    "protected_branches": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "merge_access_levels": {
+                                    "maxItemsOne": false
+                                },
+                                "push_access_levels": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "gitlab_project_tag": {
-                "current": "gitlab:index/getProjectTag:getProjectTag"
+                "current": "gitlab:index/getProjectTag:getProjectTag",
+                "majorVersion": 6,
+                "fields": {
+                    "commit": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "parent_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "release": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_project_tags": {
-                "current": "gitlab:index/getProjectTags:getProjectTags"
+                "current": "gitlab:index/getProjectTags:getProjectTags",
+                "majorVersion": 6,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "commit": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "parent_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "release": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "gitlab_project_variable": {
-                "current": "gitlab:index/getProjectVariable:getProjectVariable"
+                "current": "gitlab:index/getProjectVariable:getProjectVariable",
+                "majorVersion": 6
             },
             "gitlab_project_variables": {
-                "current": "gitlab:index/getProjectVariables:getProjectVariables"
+                "current": "gitlab:index/getProjectVariables:getProjectVariables",
+                "majorVersion": 6,
+                "fields": {
+                    "variables": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_projects": {
-                "current": "gitlab:index/getProjects:getProjects"
+                "current": "gitlab:index/getProjects:getProjects",
+                "majorVersion": 6,
+                "fields": {
+                    "projects": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "container_expiration_policy": {
+                                    "maxItemsOne": false
+                                },
+                                "custom_attributes": {
+                                    "maxItemsOne": false
+                                },
+                                "forked_from_project": {
+                                    "maxItemsOne": false
+                                },
+                                "namespace": {
+                                    "maxItemsOne": false
+                                },
+                                "owner": {
+                                    "maxItemsOne": false
+                                },
+                                "permissions": {
+                                    "maxItemsOne": false
+                                },
+                                "shared_with_groups": {
+                                    "maxItemsOne": false
+                                },
+                                "tag_list": {
+                                    "maxItemsOne": false
+                                },
+                                "topics": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "gitlab_release_link": {
-                "current": "gitlab:index/getReleaseLink:getReleaseLink"
+                "current": "gitlab:index/getReleaseLink:getReleaseLink",
+                "majorVersion": 6
             },
             "gitlab_release_links": {
-                "current": "gitlab:index/getReleaseLinks:getReleaseLinks"
+                "current": "gitlab:index/getReleaseLinks:getReleaseLinks",
+                "majorVersion": 6,
+                "fields": {
+                    "release_links": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_repository_file": {
-                "current": "gitlab:index/getRepositoryFile:getRepositoryFile"
+                "current": "gitlab:index/getRepositoryFile:getRepositoryFile",
+                "majorVersion": 6
             },
             "gitlab_repository_tree": {
-                "current": "gitlab:index/getRepositoryTree:getRepositoryTree"
+                "current": "gitlab:index/getRepositoryTree:getRepositoryTree",
+                "majorVersion": 6,
+                "fields": {
+                    "tree": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_user": {
-                "current": "gitlab:index/getUser:getUser"
+                "current": "gitlab:index/getUser:getUser",
+                "majorVersion": 6
             },
             "gitlab_user_sshkeys": {
-                "current": "gitlab:index/getUserSshkeys:getUserSshkeys"
+                "current": "gitlab:index/getUserSshkeys:getUserSshkeys",
+                "majorVersion": 6,
+                "fields": {
+                    "keys": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_users": {
-                "current": "gitlab:index/getUsers:getUsers"
+                "current": "gitlab:index/getUsers:getUsers",
+                "majorVersion": 6,
+                "fields": {
+                    "users": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         }
     },
@@ -929,6 +1252,12 @@
             },
             "gitlab:index/ProjectTagRelease:ProjectTagRelease": {
                 "tagName": "tag_name"
+            },
+            "gitlab:index/TagProtectionAllowedToCreate:TagProtectionAllowedToCreate": {
+                "accessLevel": "access_level",
+                "accessLevelDescription": "access_level_description",
+                "groupId": "group_id",
+                "userId": "user_id"
             },
             "gitlab:index/application:Application": {
                 "applicationId": "application_id",
@@ -2521,6 +2850,7 @@
                 "tagPushEvents": "tag_push_events"
             },
             "gitlab:index/tagProtection:TagProtection": {
+                "allowedToCreates": "allowed_to_create",
                 "createAccessLevel": "create_access_level"
             },
             "gitlab:index/topic:Topic": {

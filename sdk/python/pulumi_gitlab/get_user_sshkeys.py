@@ -100,10 +100,10 @@ def get_user_sshkeys(user_id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getUserSshkeys:getUserSshkeys', __args__, opts=opts, typ=GetUserSshkeysResult).value
 
     return AwaitableGetUserSshkeysResult(
-        id=__ret__.id,
-        keys=__ret__.keys,
-        user_id=__ret__.user_id,
-        username=__ret__.username)
+        id=pulumi.get(__ret__, 'id'),
+        keys=pulumi.get(__ret__, 'keys'),
+        user_id=pulumi.get(__ret__, 'user_id'),
+        username=pulumi.get(__ret__, 'username'))
 
 
 @_utilities.lift_output_func(get_user_sshkeys)

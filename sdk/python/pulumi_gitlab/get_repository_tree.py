@@ -142,12 +142,12 @@ def get_repository_tree(path: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getRepositoryTree:getRepositoryTree', __args__, opts=opts, typ=GetRepositoryTreeResult).value
 
     return AwaitableGetRepositoryTreeResult(
-        id=__ret__.id,
-        path=__ret__.path,
-        project=__ret__.project,
-        recursive=__ret__.recursive,
-        ref=__ret__.ref,
-        trees=__ret__.trees)
+        id=pulumi.get(__ret__, 'id'),
+        path=pulumi.get(__ret__, 'path'),
+        project=pulumi.get(__ret__, 'project'),
+        recursive=pulumi.get(__ret__, 'recursive'),
+        ref=pulumi.get(__ret__, 'ref'),
+        trees=pulumi.get(__ret__, 'trees'))
 
 
 @_utilities.lift_output_func(get_repository_tree)

@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['TagProtectionArgs', 'TagProtection']
 
@@ -16,16 +18,20 @@ class TagProtectionArgs:
     def __init__(__self__, *,
                  create_access_level: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 tag: pulumi.Input[str]):
+                 tag: pulumi.Input[str],
+                 allowed_to_creates: Optional[pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]] = None):
         """
         The set of arguments for constructing a TagProtection resource.
         :param pulumi.Input[str] create_access_level: Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] tag: Name of the tag or wildcard.
+        :param pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]] allowed_to_creates: User or group which are allowed to create.
         """
         pulumi.set(__self__, "create_access_level", create_access_level)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "tag", tag)
+        if allowed_to_creates is not None:
+            pulumi.set(__self__, "allowed_to_creates", allowed_to_creates)
 
     @property
     @pulumi.getter(name="createAccessLevel")
@@ -63,25 +69,53 @@ class TagProtectionArgs:
     def tag(self, value: pulumi.Input[str]):
         pulumi.set(self, "tag", value)
 
+    @property
+    @pulumi.getter(name="allowedToCreates")
+    def allowed_to_creates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]]:
+        """
+        User or group which are allowed to create.
+        """
+        return pulumi.get(self, "allowed_to_creates")
+
+    @allowed_to_creates.setter
+    def allowed_to_creates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]]):
+        pulumi.set(self, "allowed_to_creates", value)
+
 
 @pulumi.input_type
 class _TagProtectionState:
     def __init__(__self__, *,
+                 allowed_to_creates: Optional[pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]] = None,
                  create_access_level: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TagProtection resources.
+        :param pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]] allowed_to_creates: User or group which are allowed to create.
         :param pulumi.Input[str] create_access_level: Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] tag: Name of the tag or wildcard.
         """
+        if allowed_to_creates is not None:
+            pulumi.set(__self__, "allowed_to_creates", allowed_to_creates)
         if create_access_level is not None:
             pulumi.set(__self__, "create_access_level", create_access_level)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter(name="allowedToCreates")
+    def allowed_to_creates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]]:
+        """
+        User or group which are allowed to create.
+        """
+        return pulumi.get(self, "allowed_to_creates")
+
+    @allowed_to_creates.setter
+    def allowed_to_creates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]]):
+        pulumi.set(self, "allowed_to_creates", value)
 
     @property
     @pulumi.getter(name="createAccessLevel")
@@ -125,15 +159,12 @@ class TagProtection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allowed_to_creates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagProtectionAllowedToCreateArgs']]]]] = None,
                  create_access_level: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The `TagProtection` resource allows to manage the lifecycle of a tag protection.
-
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html)
-
         ## Example Usage
 
         ```python
@@ -141,6 +172,14 @@ class TagProtection(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         tag_protect = gitlab.TagProtection("tagProtect",
+            allowed_to_creates=[
+                gitlab.TagProtectionAllowedToCreateArgs(
+                    user_id=42,
+                ),
+                gitlab.TagProtectionAllowedToCreateArgs(
+                    group_id=43,
+                ),
+            ],
             create_access_level="developer",
             project="12345",
             tag="TagProtected")
@@ -156,6 +195,7 @@ class TagProtection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagProtectionAllowedToCreateArgs']]]] allowed_to_creates: User or group which are allowed to create.
         :param pulumi.Input[str] create_access_level: Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] tag: Name of the tag or wildcard.
@@ -167,10 +207,6 @@ class TagProtection(pulumi.CustomResource):
                  args: TagProtectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `TagProtection` resource allows to manage the lifecycle of a tag protection.
-
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html)
-
         ## Example Usage
 
         ```python
@@ -178,6 +214,14 @@ class TagProtection(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         tag_protect = gitlab.TagProtection("tagProtect",
+            allowed_to_creates=[
+                gitlab.TagProtectionAllowedToCreateArgs(
+                    user_id=42,
+                ),
+                gitlab.TagProtectionAllowedToCreateArgs(
+                    group_id=43,
+                ),
+            ],
             create_access_level="developer",
             project="12345",
             tag="TagProtected")
@@ -206,6 +250,7 @@ class TagProtection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allowed_to_creates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagProtectionAllowedToCreateArgs']]]]] = None,
                  create_access_level: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
@@ -218,6 +263,7 @@ class TagProtection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TagProtectionArgs.__new__(TagProtectionArgs)
 
+            __props__.__dict__["allowed_to_creates"] = allowed_to_creates
             if create_access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'create_access_level'")
             __props__.__dict__["create_access_level"] = create_access_level
@@ -237,6 +283,7 @@ class TagProtection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_to_creates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagProtectionAllowedToCreateArgs']]]]] = None,
             create_access_level: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             tag: Optional[pulumi.Input[str]] = None) -> 'TagProtection':
@@ -247,6 +294,7 @@ class TagProtection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagProtectionAllowedToCreateArgs']]]] allowed_to_creates: User or group which are allowed to create.
         :param pulumi.Input[str] create_access_level: Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] tag: Name of the tag or wildcard.
@@ -255,10 +303,19 @@ class TagProtection(pulumi.CustomResource):
 
         __props__ = _TagProtectionState.__new__(_TagProtectionState)
 
+        __props__.__dict__["allowed_to_creates"] = allowed_to_creates
         __props__.__dict__["create_access_level"] = create_access_level
         __props__.__dict__["project"] = project
         __props__.__dict__["tag"] = tag
         return TagProtection(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allowedToCreates")
+    def allowed_to_creates(self) -> pulumi.Output[Optional[Sequence['outputs.TagProtectionAllowedToCreate']]]:
+        """
+        User or group which are allowed to create.
+        """
+        return pulumi.get(self, "allowed_to_creates")
 
     @property
     @pulumi.getter(name="createAccessLevel")

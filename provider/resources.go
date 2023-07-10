@@ -26,9 +26,8 @@ import (
 	"github.com/pulumi/pulumi-gitlab/provider/v6/pkg/version"
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/go/common/util/contract"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	gitlabShim "gitlab.com/gitlab-org/terraform-provider-gitlab/shim"
 )
@@ -125,13 +124,11 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	err := x.ComputeDefaults(&prov, x.TokensSingleModule("gitlab_", gitLabMod, x.MakeStandardToken(gitLabPkg)))
-	contract.AssertNoErrorf(err, "failed to apply token mappings")
+	prov.MustComputeTokens(tks.SingleModule("gitlab_", gitLabMod, tks.MakeStandard(gitLabPkg)))
 
 	prov.SetAutonaming(255, "-")
 
-	err = x.AutoAliasing(&prov, prov.GetMetadata())
-	contract.AssertNoErrorf(err, "failed to apply auto-aliasing")
+	prov.MustApplyAutoAliases()
 
 	return prov
 }

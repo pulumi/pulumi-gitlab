@@ -10,14 +10,13 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.TagProtectionArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.TagProtectionState;
+import com.pulumi.gitlab.outputs.TagProtectionAllowedToCreate;
 import java.lang.String;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.TagProtection` resource allows to manage the lifecycle of a tag protection.
- * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html)
- * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -27,6 +26,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gitlab.TagProtection;
  * import com.pulumi.gitlab.TagProtectionArgs;
+ * import com.pulumi.gitlab.inputs.TagProtectionAllowedToCreateArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -41,6 +41,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tagProtect = new TagProtection(&#34;tagProtect&#34;, TagProtectionArgs.builder()        
+ *             .allowedToCreates(            
+ *                 TagProtectionAllowedToCreateArgs.builder()
+ *                     .userId(42)
+ *                     .build(),
+ *                 TagProtectionAllowedToCreateArgs.builder()
+ *                     .groupId(43)
+ *                     .build())
  *             .createAccessLevel(&#34;developer&#34;)
  *             .project(&#34;12345&#34;)
  *             .tag(&#34;TagProtected&#34;)
@@ -61,6 +68,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gitlab:index/tagProtection:TagProtection")
 public class TagProtection extends com.pulumi.resources.CustomResource {
+    /**
+     * User or group which are allowed to create.
+     * 
+     */
+    @Export(name="allowedToCreates", refs={List.class,TagProtectionAllowedToCreate.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<TagProtectionAllowedToCreate>> allowedToCreates;
+
+    /**
+     * @return User or group which are allowed to create.
+     * 
+     */
+    public Output<Optional<List<TagProtectionAllowedToCreate>>> allowedToCreates() {
+        return Codegen.optional(this.allowedToCreates);
+    }
     /**
      * Access levels which are allowed to create. Valid values are: `no one`, `developer`, `maintainer`.
      * 

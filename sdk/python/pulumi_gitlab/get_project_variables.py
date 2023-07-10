@@ -111,10 +111,10 @@ def get_project_variables(environment_scope: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjectVariables:getProjectVariables', __args__, opts=opts, typ=GetProjectVariablesResult).value
 
     return AwaitableGetProjectVariablesResult(
-        environment_scope=__ret__.environment_scope,
-        id=__ret__.id,
-        project=__ret__.project,
-        variables=__ret__.variables)
+        environment_scope=pulumi.get(__ret__, 'environment_scope'),
+        id=pulumi.get(__ret__, 'id'),
+        project=pulumi.get(__ret__, 'project'),
+        variables=pulumi.get(__ret__, 'variables'))
 
 
 @_utilities.lift_output_func(get_project_variables)

@@ -96,9 +96,9 @@ def get_instance_deploy_keys(public: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys', __args__, opts=opts, typ=GetInstanceDeployKeysResult).value
 
     return AwaitableGetInstanceDeployKeysResult(
-        deploy_keys=__ret__.deploy_keys,
-        id=__ret__.id,
-        public=__ret__.public)
+        deploy_keys=pulumi.get(__ret__, 'deploy_keys'),
+        id=pulumi.get(__ret__, 'id'),
+        public=pulumi.get(__ret__, 'public'))
 
 
 @_utilities.lift_output_func(get_instance_deploy_keys)

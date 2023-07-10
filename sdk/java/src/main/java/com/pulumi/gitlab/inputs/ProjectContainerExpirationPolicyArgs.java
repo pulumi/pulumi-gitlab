@@ -65,14 +65,22 @@ public final class ProjectContainerExpirationPolicyArgs extends com.pulumi.resou
     /**
      * The regular expression to match image names to delete.
      * 
+     * @deprecated
+     * `name_regex` has been deprecated. Use `name_regex_delete` instead.
+     * 
      */
+    @Deprecated /* `name_regex` has been deprecated. Use `name_regex_delete` instead. */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
     /**
      * @return The regular expression to match image names to delete.
      * 
+     * @deprecated
+     * `name_regex` has been deprecated. Use `name_regex_delete` instead.
+     * 
      */
+    @Deprecated /* `name_regex` has been deprecated. Use `name_regex_delete` instead. */
     public Optional<Output<String>> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
@@ -80,22 +88,14 @@ public final class ProjectContainerExpirationPolicyArgs extends com.pulumi.resou
     /**
      * The regular expression to match image names to delete.
      * 
-     * @deprecated
-     * `name_regex_delete` has been deprecated. Use `name_regex` instead.
-     * 
      */
-    @Deprecated /* `name_regex_delete` has been deprecated. Use `name_regex` instead. */
     @Import(name="nameRegexDelete")
     private @Nullable Output<String> nameRegexDelete;
 
     /**
      * @return The regular expression to match image names to delete.
      * 
-     * @deprecated
-     * `name_regex_delete` has been deprecated. Use `name_regex` instead.
-     * 
      */
-    @Deprecated /* `name_regex_delete` has been deprecated. Use `name_regex` instead. */
     public Optional<Output<String>> nameRegexDelete() {
         return Optional.ofNullable(this.nameRegexDelete);
     }
@@ -244,7 +244,11 @@ public final class ProjectContainerExpirationPolicyArgs extends com.pulumi.resou
          * 
          * @return builder
          * 
+         * @deprecated
+         * `name_regex` has been deprecated. Use `name_regex_delete` instead.
+         * 
          */
+        @Deprecated /* `name_regex` has been deprecated. Use `name_regex_delete` instead. */
         public Builder nameRegex(@Nullable Output<String> nameRegex) {
             $.nameRegex = nameRegex;
             return this;
@@ -255,7 +259,11 @@ public final class ProjectContainerExpirationPolicyArgs extends com.pulumi.resou
          * 
          * @return builder
          * 
+         * @deprecated
+         * `name_regex` has been deprecated. Use `name_regex_delete` instead.
+         * 
          */
+        @Deprecated /* `name_regex` has been deprecated. Use `name_regex_delete` instead. */
         public Builder nameRegex(String nameRegex) {
             return nameRegex(Output.of(nameRegex));
         }
@@ -265,11 +273,7 @@ public final class ProjectContainerExpirationPolicyArgs extends com.pulumi.resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * `name_regex_delete` has been deprecated. Use `name_regex` instead.
-         * 
          */
-        @Deprecated /* `name_regex_delete` has been deprecated. Use `name_regex` instead. */
         public Builder nameRegexDelete(@Nullable Output<String> nameRegexDelete) {
             $.nameRegexDelete = nameRegexDelete;
             return this;
@@ -280,11 +284,7 @@ public final class ProjectContainerExpirationPolicyArgs extends com.pulumi.resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * `name_regex_delete` has been deprecated. Use `name_regex` instead.
-         * 
          */
-        @Deprecated /* `name_regex_delete` has been deprecated. Use `name_regex` instead. */
         public Builder nameRegexDelete(String nameRegexDelete) {
             return nameRegexDelete(Output.of(nameRegexDelete));
         }

@@ -243,14 +243,14 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.pushAccessLevel);
     }
     /**
-     * Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
      * 
      */
     @Export(name="unprotectAccessLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> unprotectAccessLevel;
 
     /**
-     * @return Access levels allowed to unprotect. Valid values are: `no one`, `developer`, `maintainer`.
+     * @return Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
      * 
      */
     public Output<Optional<String>> unprotectAccessLevel() {

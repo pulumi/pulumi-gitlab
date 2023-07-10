@@ -76,5 +76,5 @@ def get_instance_variables(opts: Optional[pulumi.InvokeOptions] = None) -> Await
     __ret__ = pulumi.runtime.invoke('gitlab:index/getInstanceVariables:getInstanceVariables', __args__, opts=opts, typ=GetInstanceVariablesResult).value
 
     return AwaitableGetInstanceVariablesResult(
-        id=__ret__.id,
-        variables=__ret__.variables)
+        id=pulumi.get(__ret__, 'id'),
+        variables=pulumi.get(__ret__, 'variables'))

@@ -541,6 +541,9 @@ class ProjectArgs:
         """
         Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         """
+        warnings.warn("""build_coverage_regex is removed in GitLab 15.0.""", DeprecationWarning)
+        pulumi.log.warn("""build_coverage_regex is deprecated: build_coverage_regex is removed in GitLab 15.0.""")
+
         return pulumi.get(self, "build_coverage_regex")
 
     @build_coverage_regex.setter
@@ -661,6 +664,9 @@ class ProjectArgs:
         """
         Enable container registry for the project.
         """
+        warnings.warn("""Use `container_registry_access_level` instead.""", DeprecationWarning)
+        pulumi.log.warn("""container_registry_enabled is deprecated: Use `container_registry_access_level` instead.""")
+
         return pulumi.get(self, "container_registry_enabled")
 
     @container_registry_enabled.setter
@@ -1149,6 +1155,9 @@ class ProjectArgs:
         """
         Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         """
+        warnings.warn("""Deprecated in favor of `builds_access_level`""", DeprecationWarning)
+        pulumi.log.warn("""pipelines_enabled is deprecated: Deprecated in favor of `builds_access_level`""")
+
         return pulumi.get(self, "pipelines_enabled")
 
     @pipelines_enabled.setter
@@ -2048,6 +2057,9 @@ class _ProjectState:
         """
         Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         """
+        warnings.warn("""build_coverage_regex is removed in GitLab 15.0.""", DeprecationWarning)
+        pulumi.log.warn("""build_coverage_regex is deprecated: build_coverage_regex is removed in GitLab 15.0.""")
+
         return pulumi.get(self, "build_coverage_regex")
 
     @build_coverage_regex.setter
@@ -2168,6 +2180,9 @@ class _ProjectState:
         """
         Enable container registry for the project.
         """
+        warnings.warn("""Use `container_registry_access_level` instead.""", DeprecationWarning)
+        pulumi.log.warn("""container_registry_enabled is deprecated: Use `container_registry_access_level` instead.""")
+
         return pulumi.get(self, "container_registry_enabled")
 
     @container_registry_enabled.setter
@@ -2680,6 +2695,9 @@ class _ProjectState:
         """
         Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         """
+        warnings.warn("""Deprecated in favor of `builds_access_level`""", DeprecationWarning)
+        pulumi.log.warn("""pipelines_enabled is deprecated: Deprecated in favor of `builds_access_level`""")
+
         return pulumi.get(self, "pipelines_enabled")
 
     @pipelines_enabled.setter
@@ -4043,6 +4061,9 @@ class Project(pulumi.CustomResource):
         """
         Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         """
+        warnings.warn("""build_coverage_regex is removed in GitLab 15.0.""", DeprecationWarning)
+        pulumi.log.warn("""build_coverage_regex is deprecated: build_coverage_regex is removed in GitLab 15.0.""")
+
         return pulumi.get(self, "build_coverage_regex")
 
     @property
@@ -4123,6 +4144,9 @@ class Project(pulumi.CustomResource):
         """
         Enable container registry for the project.
         """
+        warnings.warn("""Use `container_registry_access_level` instead.""", DeprecationWarning)
+        pulumi.log.warn("""container_registry_enabled is deprecated: Use `container_registry_access_level` instead.""")
+
         return pulumi.get(self, "container_registry_enabled")
 
     @property
@@ -4467,6 +4491,9 @@ class Project(pulumi.CustomResource):
         """
         Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         """
+        warnings.warn("""Deprecated in favor of `builds_access_level`""", DeprecationWarning)
+        pulumi.log.warn("""pipelines_enabled is deprecated: Deprecated in favor of `builds_access_level`""")
+
         return pulumi.get(self, "pipelines_enabled")
 
     @property

@@ -94,12 +94,12 @@ export interface ProjectContainerExpirationPolicy {
     keepN?: pulumi.Input<number>;
     /**
      * The regular expression to match image names to delete.
+     *
+     * @deprecated `name_regex` has been deprecated. Use `name_regex_delete` instead.
      */
     nameRegex?: pulumi.Input<string>;
     /**
      * The regular expression to match image names to delete.
-     *
-     * @deprecated `name_regex_delete` has been deprecated. Use `name_regex` instead.
      */
     nameRegexDelete?: pulumi.Input<string>;
     /**
@@ -237,4 +237,23 @@ export interface ProjectTagCommit {
 export interface ProjectTagRelease {
     description?: pulumi.Input<string>;
     tagName?: pulumi.Input<string>;
+}
+
+export interface TagProtectionAllowedToCreate {
+    /**
+     * Level of access.
+     */
+    accessLevel?: pulumi.Input<string>;
+    /**
+     * Readable description of level of access.
+     */
+    accessLevelDescription?: pulumi.Input<string>;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     */
+    groupId?: pulumi.Input<number>;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     */
+    userId?: pulumi.Input<number>;
 }

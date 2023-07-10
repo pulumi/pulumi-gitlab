@@ -130,11 +130,11 @@ def get_groups(order_by: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getGroups:getGroups', __args__, opts=opts, typ=GetGroupsResult).value
 
     return AwaitableGetGroupsResult(
-        groups=__ret__.groups,
-        id=__ret__.id,
-        order_by=__ret__.order_by,
-        search=__ret__.search,
-        sort=__ret__.sort)
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        order_by=pulumi.get(__ret__, 'order_by'),
+        search=pulumi.get(__ret__, 'search'),
+        sort=pulumi.get(__ret__, 'sort'))
 
 
 @_utilities.lift_output_func(get_groups)

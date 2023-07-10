@@ -169,14 +169,14 @@ def get_project_milestones(iids: Optional[Sequence[int]] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjectMilestones:getProjectMilestones', __args__, opts=opts, typ=GetProjectMilestonesResult).value
 
     return AwaitableGetProjectMilestonesResult(
-        id=__ret__.id,
-        iids=__ret__.iids,
-        include_parent_milestones=__ret__.include_parent_milestones,
-        milestones=__ret__.milestones,
-        project=__ret__.project,
-        search=__ret__.search,
-        state=__ret__.state,
-        title=__ret__.title)
+        id=pulumi.get(__ret__, 'id'),
+        iids=pulumi.get(__ret__, 'iids'),
+        include_parent_milestones=pulumi.get(__ret__, 'include_parent_milestones'),
+        milestones=pulumi.get(__ret__, 'milestones'),
+        project=pulumi.get(__ret__, 'project'),
+        search=pulumi.get(__ret__, 'search'),
+        state=pulumi.get(__ret__, 'state'),
+        title=pulumi.get(__ret__, 'title'))
 
 
 @_utilities.lift_output_func(get_project_milestones)

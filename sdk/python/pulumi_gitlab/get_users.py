@@ -221,17 +221,17 @@ def get_users(active: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult).value
 
     return AwaitableGetUsersResult(
-        active=__ret__.active,
-        blocked=__ret__.blocked,
-        created_after=__ret__.created_after,
-        created_before=__ret__.created_before,
-        extern_provider=__ret__.extern_provider,
-        extern_uid=__ret__.extern_uid,
-        id=__ret__.id,
-        order_by=__ret__.order_by,
-        search=__ret__.search,
-        sort=__ret__.sort,
-        users=__ret__.users)
+        active=pulumi.get(__ret__, 'active'),
+        blocked=pulumi.get(__ret__, 'blocked'),
+        created_after=pulumi.get(__ret__, 'created_after'),
+        created_before=pulumi.get(__ret__, 'created_before'),
+        extern_provider=pulumi.get(__ret__, 'extern_provider'),
+        extern_uid=pulumi.get(__ret__, 'extern_uid'),
+        id=pulumi.get(__ret__, 'id'),
+        order_by=pulumi.get(__ret__, 'order_by'),
+        search=pulumi.get(__ret__, 'search'),
+        sort=pulumi.get(__ret__, 'sort'),
+        users=pulumi.get(__ret__, 'users'))
 
 
 @_utilities.lift_output_func(get_users)
