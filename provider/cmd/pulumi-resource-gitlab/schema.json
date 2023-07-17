@@ -15402,7 +15402,7 @@
                 },
                 "encoding": {
                     "type": "string",
-                    "description": "The file content encoding.\n"
+                    "description": "The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.\n"
                 },
                 "executeFilemode": {
                     "type": "boolean",
@@ -15448,7 +15448,6 @@
                 "commitMessage",
                 "content",
                 "contentSha256",
-                "encoding",
                 "fileName",
                 "filePath",
                 "lastCommitId",
@@ -15477,6 +15476,10 @@
                 "content": {
                     "type": "string",
                     "description": "File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).\n"
+                },
+                "encoding": {
+                    "type": "string",
+                    "description": "The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.\n"
                 },
                 "executeFilemode": {
                     "type": "boolean",
@@ -15546,7 +15549,7 @@
                     },
                     "encoding": {
                         "type": "string",
-                        "description": "The file content encoding.\n"
+                        "description": "The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.\n"
                     },
                     "executeFilemode": {
                         "type": "boolean",
