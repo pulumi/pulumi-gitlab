@@ -21,6 +21,7 @@ class RepositoryFileArgs:
                  project: pulumi.Input[str],
                  author_email: Optional[pulumi.Input[str]] = None,
                  author_name: Optional[pulumi.Input[str]] = None,
+                 encoding: Optional[pulumi.Input[str]] = None,
                  execute_filemode: Optional[pulumi.Input[bool]] = None,
                  overwrite_on_create: Optional[pulumi.Input[bool]] = None,
                  start_branch: Optional[pulumi.Input[str]] = None):
@@ -33,6 +34,7 @@ class RepositoryFileArgs:
         :param pulumi.Input[str] project: The name or ID of the project.
         :param pulumi.Input[str] author_email: Email of the commit author.
         :param pulumi.Input[str] author_name: Name of the commit author.
+        :param pulumi.Input[str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
         :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
         :param pulumi.Input[bool] overwrite_on_create: Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
         :param pulumi.Input[str] start_branch: Name of the branch to start the new commit from.
@@ -46,6 +48,8 @@ class RepositoryFileArgs:
             pulumi.set(__self__, "author_email", author_email)
         if author_name is not None:
             pulumi.set(__self__, "author_name", author_name)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
         if execute_filemode is not None:
             pulumi.set(__self__, "execute_filemode", execute_filemode)
         if overwrite_on_create is not None:
@@ -138,6 +142,18 @@ class RepositoryFileArgs:
         pulumi.set(self, "author_name", value)
 
     @property
+    @pulumi.getter
+    def encoding(self) -> Optional[pulumi.Input[str]]:
+        """
+        The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+        """
+        return pulumi.get(self, "encoding")
+
+    @encoding.setter
+    def encoding(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encoding", value)
+
+    @property
     @pulumi.getter(name="executeFilemode")
     def execute_filemode(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -205,7 +221,7 @@ class _RepositoryFileState:
         :param pulumi.Input[str] commit_message: Commit message.
         :param pulumi.Input[str] content: File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
         :param pulumi.Input[str] content_sha256: File content sha256 digest.
-        :param pulumi.Input[str] encoding: The file content encoding.
+        :param pulumi.Input[str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
         :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
         :param pulumi.Input[str] file_name: The filename.
         :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
@@ -353,7 +369,7 @@ class _RepositoryFileState:
     @pulumi.getter
     def encoding(self) -> Optional[pulumi.Input[str]]:
         """
-        The file content encoding.
+        The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
         """
         return pulumi.get(self, "encoding")
 
@@ -480,6 +496,7 @@ class RepositoryFile(pulumi.CustomResource):
                  branch: Optional[pulumi.Input[str]] = None,
                  commit_message: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
+                 encoding: Optional[pulumi.Input[str]] = None,
                  execute_filemode: Optional[pulumi.Input[bool]] = None,
                  file_path: Optional[pulumi.Input[str]] = None,
                  overwrite_on_create: Optional[pulumi.Input[bool]] = None,
@@ -502,6 +519,7 @@ class RepositoryFile(pulumi.CustomResource):
         :param pulumi.Input[str] branch: Name of the branch to which to commit to.
         :param pulumi.Input[str] commit_message: Commit message.
         :param pulumi.Input[str] content: File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        :param pulumi.Input[str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
         :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
         :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         :param pulumi.Input[bool] overwrite_on_create: Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
@@ -543,6 +561,7 @@ class RepositoryFile(pulumi.CustomResource):
                  branch: Optional[pulumi.Input[str]] = None,
                  commit_message: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
+                 encoding: Optional[pulumi.Input[str]] = None,
                  execute_filemode: Optional[pulumi.Input[bool]] = None,
                  file_path: Optional[pulumi.Input[str]] = None,
                  overwrite_on_create: Optional[pulumi.Input[bool]] = None,
@@ -568,6 +587,7 @@ class RepositoryFile(pulumi.CustomResource):
             if content is None and not opts.urn:
                 raise TypeError("Missing required property 'content'")
             __props__.__dict__["content"] = content
+            __props__.__dict__["encoding"] = encoding
             __props__.__dict__["execute_filemode"] = execute_filemode
             if file_path is None and not opts.urn:
                 raise TypeError("Missing required property 'file_path'")
@@ -580,7 +600,6 @@ class RepositoryFile(pulumi.CustomResource):
             __props__.__dict__["blob_id"] = None
             __props__.__dict__["commit_id"] = None
             __props__.__dict__["content_sha256"] = None
-            __props__.__dict__["encoding"] = None
             __props__.__dict__["file_name"] = None
             __props__.__dict__["last_commit_id"] = None
             __props__.__dict__["ref"] = None
@@ -628,7 +647,7 @@ class RepositoryFile(pulumi.CustomResource):
         :param pulumi.Input[str] commit_message: Commit message.
         :param pulumi.Input[str] content: File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
         :param pulumi.Input[str] content_sha256: File content sha256 digest.
-        :param pulumi.Input[str] encoding: The file content encoding.
+        :param pulumi.Input[str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
         :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
         :param pulumi.Input[str] file_name: The filename.
         :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
@@ -729,9 +748,9 @@ class RepositoryFile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def encoding(self) -> pulumi.Output[str]:
+    def encoding(self) -> pulumi.Output[Optional[str]]:
         """
-        The file content encoding.
+        The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
         """
         return pulumi.get(self, "encoding")
 

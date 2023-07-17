@@ -141,18 +141,18 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
         return this.contentSha256;
     }
     /**
-     * The file content encoding.
+     * The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
      * 
      */
     @Export(name="encoding", refs={String.class}, tree="[0]")
-    private Output<String> encoding;
+    private Output</* @Nullable */ String> encoding;
 
     /**
-     * @return The file content encoding.
+     * @return The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
      * 
      */
-    public Output<String> encoding() {
-        return this.encoding;
+    public Output<Optional<String>> encoding() {
+        return Codegen.optional(this.encoding);
     }
     /**
      * Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.

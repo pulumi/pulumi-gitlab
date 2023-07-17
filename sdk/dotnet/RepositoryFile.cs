@@ -70,10 +70,10 @@ namespace Pulumi.GitLab
         public Output<string> ContentSha256 { get; private set; } = null!;
 
         /// <summary>
-        /// The file content encoding.
+        /// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
         /// </summary>
         [Output("encoding")]
-        public Output<string> Encoding { get; private set; } = null!;
+        public Output<string?> Encoding { get; private set; } = null!;
 
         /// <summary>
         /// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
@@ -206,6 +206,12 @@ namespace Pulumi.GitLab
         public Input<string> Content { get; set; } = null!;
 
         /// <summary>
+        /// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+        /// </summary>
+        [Input("encoding")]
+        public Input<string>? Encoding { get; set; }
+
+        /// <summary>
         /// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
         /// </summary>
         [Input("executeFilemode")]
@@ -292,7 +298,7 @@ namespace Pulumi.GitLab
         public Input<string>? ContentSha256 { get; set; }
 
         /// <summary>
-        /// The file content encoding.
+        /// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
         /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }
