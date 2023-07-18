@@ -138,14 +138,14 @@ public final class RepositoryFileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The file content encoding.
+     * The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
      * 
      */
     @Import(name="encoding")
     private @Nullable Output<String> encoding;
 
     /**
-     * @return The file content encoding.
+     * @return The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
      * 
      */
     public Optional<Output<String>> encoding() {
@@ -497,7 +497,7 @@ public final class RepositoryFileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param encoding The file content encoding.
+         * @param encoding The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
          * 
          * @return builder
          * 
@@ -508,7 +508,7 @@ public final class RepositoryFileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param encoding The file content encoding.
+         * @param encoding The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
          * 
          * @return builder
          * 

@@ -92,6 +92,21 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+     * 
+     */
+    @Import(name="encoding")
+    private @Nullable Output<String> encoding;
+
+    /**
+     * @return The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+     * 
+     */
+    public Optional<Output<String>> encoding() {
+        return Optional.ofNullable(this.encoding);
+    }
+
+    /**
      * Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
      * 
      */
@@ -174,6 +189,7 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
         this.branch = $.branch;
         this.commitMessage = $.commitMessage;
         this.content = $.content;
+        this.encoding = $.encoding;
         this.executeFilemode = $.executeFilemode;
         this.filePath = $.filePath;
         this.overwriteOnCreate = $.overwriteOnCreate;
@@ -302,6 +318,27 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder content(String content) {
             return content(Output.of(content));
+        }
+
+        /**
+         * @param encoding The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encoding(@Nullable Output<String> encoding) {
+            $.encoding = encoding;
+            return this;
+        }
+
+        /**
+         * @param encoding The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encoding(String encoding) {
+            return encoding(Output.of(encoding));
         }
 
         /**

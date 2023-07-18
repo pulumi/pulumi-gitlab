@@ -39,8 +39,8 @@ type RepositoryFile struct {
 	Content pulumi.StringOutput `pulumi:"content"`
 	// File content sha256 digest.
 	ContentSha256 pulumi.StringOutput `pulumi:"contentSha256"`
-	// The file content encoding.
-	Encoding pulumi.StringOutput `pulumi:"encoding"`
+	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+	Encoding pulumi.StringPtrOutput `pulumi:"encoding"`
 	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
 	ExecuteFilemode pulumi.BoolPtrOutput `pulumi:"executeFilemode"`
 	// The filename.
@@ -121,7 +121,7 @@ type repositoryFileState struct {
 	Content *string `pulumi:"content"`
 	// File content sha256 digest.
 	ContentSha256 *string `pulumi:"contentSha256"`
-	// The file content encoding.
+	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
 	Encoding *string `pulumi:"encoding"`
 	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
 	ExecuteFilemode *bool `pulumi:"executeFilemode"`
@@ -160,7 +160,7 @@ type RepositoryFileState struct {
 	Content pulumi.StringPtrInput
 	// File content sha256 digest.
 	ContentSha256 pulumi.StringPtrInput
-	// The file content encoding.
+	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
 	Encoding pulumi.StringPtrInput
 	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
 	ExecuteFilemode pulumi.BoolPtrInput
@@ -197,6 +197,8 @@ type repositoryFileArgs struct {
 	CommitMessage string `pulumi:"commitMessage"`
 	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
 	Content string `pulumi:"content"`
+	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+	Encoding *string `pulumi:"encoding"`
 	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
 	ExecuteFilemode *bool `pulumi:"executeFilemode"`
 	// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
@@ -221,6 +223,8 @@ type RepositoryFileArgs struct {
 	CommitMessage pulumi.StringInput
 	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
 	Content pulumi.StringInput
+	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+	Encoding pulumi.StringPtrInput
 	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
 	ExecuteFilemode pulumi.BoolPtrInput
 	// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
@@ -360,9 +364,9 @@ func (o RepositoryFileOutput) ContentSha256() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.ContentSha256 }).(pulumi.StringOutput)
 }
 
-// The file content encoding.
-func (o RepositoryFileOutput) Encoding() pulumi.StringOutput {
-	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.Encoding }).(pulumi.StringOutput)
+// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+func (o RepositoryFileOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringPtrOutput { return v.Encoding }).(pulumi.StringPtrOutput)
 }
 
 // Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.

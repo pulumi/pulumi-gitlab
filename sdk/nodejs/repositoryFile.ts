@@ -74,9 +74,9 @@ export class RepositoryFile extends pulumi.CustomResource {
      */
     public /*out*/ readonly contentSha256!: pulumi.Output<string>;
     /**
-     * The file content encoding.
+     * The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
      */
-    public /*out*/ readonly encoding!: pulumi.Output<string>;
+    public readonly encoding!: pulumi.Output<string | undefined>;
     /**
      * Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
      */
@@ -167,6 +167,7 @@ export class RepositoryFile extends pulumi.CustomResource {
             resourceInputs["branch"] = args ? args.branch : undefined;
             resourceInputs["commitMessage"] = args ? args.commitMessage : undefined;
             resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["encoding"] = args ? args.encoding : undefined;
             resourceInputs["executeFilemode"] = args ? args.executeFilemode : undefined;
             resourceInputs["filePath"] = args ? args.filePath : undefined;
             resourceInputs["overwriteOnCreate"] = args ? args.overwriteOnCreate : undefined;
@@ -175,7 +176,6 @@ export class RepositoryFile extends pulumi.CustomResource {
             resourceInputs["blobId"] = undefined /*out*/;
             resourceInputs["commitId"] = undefined /*out*/;
             resourceInputs["contentSha256"] = undefined /*out*/;
-            resourceInputs["encoding"] = undefined /*out*/;
             resourceInputs["fileName"] = undefined /*out*/;
             resourceInputs["lastCommitId"] = undefined /*out*/;
             resourceInputs["ref"] = undefined /*out*/;
@@ -223,7 +223,7 @@ export interface RepositoryFileState {
      */
     contentSha256?: pulumi.Input<string>;
     /**
-     * The file content encoding.
+     * The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
      */
     encoding?: pulumi.Input<string>;
     /**
@@ -288,6 +288,10 @@ export interface RepositoryFileArgs {
      * File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
      */
     content: pulumi.Input<string>;
+    /**
+     * The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+     */
+    encoding?: pulumi.Input<string>;
     /**
      * Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
      */
