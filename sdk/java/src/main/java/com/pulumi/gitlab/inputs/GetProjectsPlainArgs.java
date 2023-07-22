@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -242,6 +243,21 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * Limit by projects that have all of the given topics.
+     * 
+     */
+    @Import(name="topics")
+    private @Nullable List<String> topics;
+
+    /**
+     * @return Limit by projects that have all of the given topics.
+     * 
+     */
+    public Optional<List<String>> topics() {
+        return Optional.ofNullable(this.topics);
+    }
+
+    /**
      * Limit by visibility `public`, `internal`, or `private`.
      * 
      */
@@ -349,6 +365,7 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
         this.sort = $.sort;
         this.starred = $.starred;
         this.statistics = $.statistics;
+        this.topics = $.topics;
         this.visibility = $.visibility;
         this.withCustomAttributes = $.withCustomAttributes;
         this.withIssuesEnabled = $.withIssuesEnabled;
@@ -538,6 +555,27 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
         public Builder statistics(@Nullable Boolean statistics) {
             $.statistics = statistics;
             return this;
+        }
+
+        /**
+         * @param topics Limit by projects that have all of the given topics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topics(@Nullable List<String> topics) {
+            $.topics = topics;
+            return this;
+        }
+
+        /**
+         * @param topics Limit by projects that have all of the given topics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topics(String... topics) {
+            return topics(List.of(topics));
         }
 
         /**

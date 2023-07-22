@@ -66,7 +66,7 @@ export class RepositoryFile extends pulumi.CustomResource {
      */
     public readonly commitMessage!: pulumi.Output<string>;
     /**
-     * File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+     * File content.
      */
     public readonly content!: pulumi.Output<string>;
     /**
@@ -215,7 +215,7 @@ export interface RepositoryFileState {
      */
     commitMessage?: pulumi.Input<string>;
     /**
-     * File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+     * File content.
      */
     content?: pulumi.Input<string>;
     /**
@@ -285,7 +285,7 @@ export interface RepositoryFileArgs {
      */
     commitMessage: pulumi.Input<string>;
     /**
-     * File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+     * File content.
      */
     content: pulumi.Input<string>;
     /**

@@ -724,7 +724,7 @@ namespace Pulumi.GitLab
         public Output<bool> HtmlEmailsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+        /// Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
         /// </summary>
         [Output("importSources")]
         public Output<ImmutableArray<string>> ImportSources { get; private set; } = null!;
@@ -2381,7 +2381,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _importSources;
 
         /// <summary>
-        /// Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+        /// Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
         /// </summary>
         public InputList<string> ImportSources
         {
@@ -4069,7 +4069,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _importSources;
 
         /// <summary>
-        /// Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+        /// Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
         /// </summary>
         public InputList<string> ImportSources
         {

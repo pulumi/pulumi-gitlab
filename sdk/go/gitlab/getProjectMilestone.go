@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func LookupProjectMilestone(ctx *pulumi.Context, args *LookupProjectMilestoneArgs, opts ...pulumi.InvokeOption) (*LookupProjectMilestoneResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectMilestoneResult
 	err := ctx.Invoke("gitlab:index/getProjectMilestone:getProjectMilestone", args, &rv, opts...)
 	if err != nil {

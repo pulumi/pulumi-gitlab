@@ -22,7 +22,7 @@ public final class GetRepositoryFileResult {
      */
     private String commitId;
     /**
-     * @return File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+     * @return File content.
      * 
      */
     private String content;
@@ -93,7 +93,7 @@ public final class GetRepositoryFileResult {
         return this.commitId;
     }
     /**
-     * @return File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+     * @return File content.
      * 
      */
     public String content() {

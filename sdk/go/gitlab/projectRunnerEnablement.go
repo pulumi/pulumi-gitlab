@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,6 +74,7 @@ func NewProjectRunnerEnablement(ctx *pulumi.Context,
 	if args.RunnerId == nil {
 		return nil, errors.New("invalid value for required argument 'RunnerId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectRunnerEnablement
 	err := ctx.RegisterResource("gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement", name, args, &resource, opts...)
 	if err != nil {

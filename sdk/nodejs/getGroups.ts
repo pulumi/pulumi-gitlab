@@ -38,6 +38,7 @@ export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Pr
         "orderBy": args.orderBy,
         "search": args.search,
         "sort": args.sort,
+        "topLevelOnly": args.topLevelOnly,
     }, opts);
 }
 
@@ -57,6 +58,10 @@ export interface GetGroupsArgs {
      * Sort groups' list in asc or desc order. (Requires administrator privileges)
      */
     sort?: string;
+    /**
+     * Limit to top level groups, excluding all subgroups.
+     */
+    topLevelOnly?: boolean;
 }
 
 /**
@@ -83,6 +88,10 @@ export interface GetGroupsResult {
      * Sort groups' list in asc or desc order. (Requires administrator privileges)
      */
     readonly sort?: string;
+    /**
+     * Limit to top level groups, excluding all subgroups.
+     */
+    readonly topLevelOnly?: boolean;
 }
 /**
  * The `gitlab.getGroups` data source allows details of multiple groups to be retrieved given some optional filter criteria.
@@ -128,4 +137,8 @@ export interface GetGroupsOutputArgs {
      * Sort groups' list in asc or desc order. (Requires administrator privileges)
      */
     sort?: pulumi.Input<string>;
+    /**
+     * Limit to top level groups, excluding all subgroups.
+     */
+    topLevelOnly?: pulumi.Input<boolean>;
 }

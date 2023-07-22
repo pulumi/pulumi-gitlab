@@ -195,7 +195,7 @@ class ProjectBadge(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The `ProjectBadge` resource allows to mange the lifecycle of project badges.
+        The `ProjectBadge` resource allows to manage the lifecycle of project badges.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#project-badges)
 
@@ -210,6 +210,21 @@ class ProjectBadge(pulumi.CustomResource):
             project=foo.id,
             link_url="https://example.com/badge-123",
             image_url="https://example.com/badge-123.svg")
+        # Pipeline status badges with placeholders will be enabled
+        gitlab_pipeline = gitlab.ProjectBadge("gitlabPipeline",
+            project=foo.id,
+            link_url="https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}",
+            image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg")
+        # Test coverage report badges with placeholders will be enabled
+        gitlab_coverage = gitlab.ProjectBadge("gitlabCoverage",
+            project=foo.id,
+            link_url="https://gitlab.example.com/%{project_path}/-/jobs",
+            image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg")
+        # Latest release badges with placeholders will be enabled
+        gitlab_release = gitlab.ProjectBadge("gitlabRelease",
+            project=foo.id,
+            link_url="https://gitlab.example.com/%{project_path}/-/releases",
+            image_url="https://gitlab.example.com/%{project_path}/-/badges/release.svg")
         ```
 
         ## Import
@@ -234,7 +249,7 @@ class ProjectBadge(pulumi.CustomResource):
                  args: ProjectBadgeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectBadge` resource allows to mange the lifecycle of project badges.
+        The `ProjectBadge` resource allows to manage the lifecycle of project badges.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#project-badges)
 
@@ -249,6 +264,21 @@ class ProjectBadge(pulumi.CustomResource):
             project=foo.id,
             link_url="https://example.com/badge-123",
             image_url="https://example.com/badge-123.svg")
+        # Pipeline status badges with placeholders will be enabled
+        gitlab_pipeline = gitlab.ProjectBadge("gitlabPipeline",
+            project=foo.id,
+            link_url="https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}",
+            image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg")
+        # Test coverage report badges with placeholders will be enabled
+        gitlab_coverage = gitlab.ProjectBadge("gitlabCoverage",
+            project=foo.id,
+            link_url="https://gitlab.example.com/%{project_path}/-/jobs",
+            image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg")
+        # Latest release badges with placeholders will be enabled
+        gitlab_release = gitlab.ProjectBadge("gitlabRelease",
+            project=foo.id,
+            link_url="https://gitlab.example.com/%{project_path}/-/releases",
+            image_url="https://gitlab.example.com/%{project_path}/-/badges/release.svg")
         ```
 
         ## Import

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -156,6 +157,7 @@ func NewRunner(ctx *pulumi.Context,
 		"registrationToken",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Runner
 	err := ctx.RegisterResource("gitlab:index/runner:Runner", name, args, &resource, opts...)
 	if err != nil {

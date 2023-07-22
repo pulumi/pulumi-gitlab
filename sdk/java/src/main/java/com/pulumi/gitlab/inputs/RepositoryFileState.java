@@ -108,14 +108,14 @@ public final class RepositoryFileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+     * File content.
      * 
      */
     @Import(name="content")
     private @Nullable Output<String> content;
 
     /**
-     * @return File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+     * @return File content.
      * 
      */
     public Optional<Output<String>> content() {
@@ -455,7 +455,7 @@ public final class RepositoryFileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param content File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+         * @param content File content.
          * 
          * @return builder
          * 
@@ -466,7 +466,7 @@ public final class RepositoryFileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param content File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+         * @param content File content.
          * 
          * @return builder
          * 

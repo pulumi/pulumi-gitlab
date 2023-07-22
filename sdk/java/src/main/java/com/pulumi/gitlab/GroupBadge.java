@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.GroupBadge` resource allows to mange the lifecycle of group badges.
+ * The `gitlab.GroupBadge` resource allows to manage the lifecycle of group badges.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#group-badges)
  * 
@@ -47,6 +47,24 @@ import javax.annotation.Nullable;
  *             .group(foo.id())
  *             .linkUrl(&#34;https://example.com/badge-123&#34;)
  *             .imageUrl(&#34;https://example.com/badge-123.svg&#34;)
+ *             .build());
+ * 
+ *         var gitlabPipeline = new GroupBadge(&#34;gitlabPipeline&#34;, GroupBadgeArgs.builder()        
+ *             .group(foo.id())
+ *             .linkUrl(&#34;https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}&#34;)
+ *             .imageUrl(&#34;https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg&#34;)
+ *             .build());
+ * 
+ *         var gitlabCoverage = new GroupBadge(&#34;gitlabCoverage&#34;, GroupBadgeArgs.builder()        
+ *             .group(foo.id())
+ *             .linkUrl(&#34;https://gitlab.example.com/%{project_path}/-/jobs&#34;)
+ *             .imageUrl(&#34;https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg&#34;)
+ *             .build());
+ * 
+ *         var gitlabRelease = new GroupBadge(&#34;gitlabRelease&#34;, GroupBadgeArgs.builder()        
+ *             .group(foo.id())
+ *             .linkUrl(&#34;https://gitlab.example.com/%{project_path}/-/releases&#34;)
+ *             .imageUrl(&#34;https://gitlab.example.com/%{project_path}/-/badges/release.svg&#34;)
  *             .build());
  * 
  *     }

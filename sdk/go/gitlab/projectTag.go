@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -94,6 +95,7 @@ func NewProjectTag(ctx *pulumi.Context,
 	if args.Ref == nil {
 		return nil, errors.New("invalid value for required argument 'Ref'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectTag
 	err := ctx.RegisterResource("gitlab:index/projectTag:ProjectTag", name, args, &resource, opts...)
 	if err != nil {

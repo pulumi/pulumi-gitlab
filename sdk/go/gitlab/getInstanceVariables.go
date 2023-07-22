@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,7 @@ import (
 //
 // ```
 func GetInstanceVariables(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetInstanceVariablesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceVariablesResult
 	err := ctx.Invoke("gitlab:index/getInstanceVariables:getInstanceVariables", nil, &rv, opts...)
 	if err != nil {

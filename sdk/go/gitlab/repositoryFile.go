@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,7 +36,7 @@ type RepositoryFile struct {
 	CommitId pulumi.StringOutput `pulumi:"commitId"`
 	// Commit message.
 	CommitMessage pulumi.StringOutput `pulumi:"commitMessage"`
-	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+	// File content.
 	Content pulumi.StringOutput `pulumi:"content"`
 	// File content sha256 digest.
 	ContentSha256 pulumi.StringOutput `pulumi:"contentSha256"`
@@ -83,6 +84,7 @@ func NewRepositoryFile(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RepositoryFile
 	err := ctx.RegisterResource("gitlab:index/repositoryFile:RepositoryFile", name, args, &resource, opts...)
 	if err != nil {
@@ -117,7 +119,7 @@ type repositoryFileState struct {
 	CommitId *string `pulumi:"commitId"`
 	// Commit message.
 	CommitMessage *string `pulumi:"commitMessage"`
-	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+	// File content.
 	Content *string `pulumi:"content"`
 	// File content sha256 digest.
 	ContentSha256 *string `pulumi:"contentSha256"`
@@ -156,7 +158,7 @@ type RepositoryFileState struct {
 	CommitId pulumi.StringPtrInput
 	// Commit message.
 	CommitMessage pulumi.StringPtrInput
-	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+	// File content.
 	Content pulumi.StringPtrInput
 	// File content sha256 digest.
 	ContentSha256 pulumi.StringPtrInput
@@ -195,7 +197,7 @@ type repositoryFileArgs struct {
 	Branch string `pulumi:"branch"`
 	// Commit message.
 	CommitMessage string `pulumi:"commitMessage"`
-	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+	// File content.
 	Content string `pulumi:"content"`
 	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
 	Encoding *string `pulumi:"encoding"`
@@ -221,7 +223,7 @@ type RepositoryFileArgs struct {
 	Branch pulumi.StringInput
 	// Commit message.
 	CommitMessage pulumi.StringInput
-	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+	// File content.
 	Content pulumi.StringInput
 	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
 	Encoding pulumi.StringPtrInput
@@ -354,7 +356,7 @@ func (o RepositoryFileOutput) CommitMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.CommitMessage }).(pulumi.StringOutput)
 }
 
-// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+// File content.
 func (o RepositoryFileOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
 }

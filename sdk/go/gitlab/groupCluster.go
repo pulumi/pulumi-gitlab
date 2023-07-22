@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -124,6 +125,7 @@ func NewGroupCluster(ctx *pulumi.Context,
 		"kubernetesToken",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GroupCluster
 	err := ctx.RegisterResource("gitlab:index/groupCluster:GroupCluster", name, args, &resource, opts...)
 	if err != nil {

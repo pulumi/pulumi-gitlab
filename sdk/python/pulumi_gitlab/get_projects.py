@@ -22,7 +22,7 @@ class GetProjectsResult:
     """
     A collection of values returned by getProjects.
     """
-    def __init__(__self__, archived=None, group_id=None, id=None, include_subgroups=None, max_queryable_pages=None, membership=None, min_access_level=None, order_by=None, owned=None, page=None, per_page=None, projects=None, search=None, simple=None, sort=None, starred=None, statistics=None, visibility=None, with_custom_attributes=None, with_issues_enabled=None, with_merge_requests_enabled=None, with_programming_language=None, with_shared=None):
+    def __init__(__self__, archived=None, group_id=None, id=None, include_subgroups=None, max_queryable_pages=None, membership=None, min_access_level=None, order_by=None, owned=None, page=None, per_page=None, projects=None, search=None, simple=None, sort=None, starred=None, statistics=None, topics=None, visibility=None, with_custom_attributes=None, with_issues_enabled=None, with_merge_requests_enabled=None, with_programming_language=None, with_shared=None):
         if archived and not isinstance(archived, bool):
             raise TypeError("Expected argument 'archived' to be a bool")
         pulumi.set(__self__, "archived", archived)
@@ -74,6 +74,9 @@ class GetProjectsResult:
         if statistics and not isinstance(statistics, bool):
             raise TypeError("Expected argument 'statistics' to be a bool")
         pulumi.set(__self__, "statistics", statistics)
+        if topics and not isinstance(topics, list):
+            raise TypeError("Expected argument 'topics' to be a list")
+        pulumi.set(__self__, "topics", topics)
         if visibility and not isinstance(visibility, str):
             raise TypeError("Expected argument 'visibility' to be a str")
         pulumi.set(__self__, "visibility", visibility)
@@ -231,6 +234,14 @@ class GetProjectsResult:
 
     @property
     @pulumi.getter
+    def topics(self) -> Optional[Sequence[str]]:
+        """
+        Limit by projects that have all of the given topics.
+        """
+        return pulumi.get(self, "topics")
+
+    @property
+    @pulumi.getter
     def visibility(self) -> Optional[str]:
         """
         Limit by visibility `public`, `internal`, or `private`.
@@ -301,6 +312,7 @@ class AwaitableGetProjectsResult(GetProjectsResult):
             sort=self.sort,
             starred=self.starred,
             statistics=self.statistics,
+            topics=self.topics,
             visibility=self.visibility,
             with_custom_attributes=self.with_custom_attributes,
             with_issues_enabled=self.with_issues_enabled,
@@ -324,6 +336,7 @@ def get_projects(archived: Optional[bool] = None,
                  sort: Optional[str] = None,
                  starred: Optional[bool] = None,
                  statistics: Optional[bool] = None,
+                 topics: Optional[Sequence[str]] = None,
                  visibility: Optional[str] = None,
                  with_custom_attributes: Optional[bool] = None,
                  with_issues_enabled: Optional[bool] = None,
@@ -371,6 +384,7 @@ def get_projects(archived: Optional[bool] = None,
     :param str sort: Return projects sorted in `asc` or `desc` order. Default is `desc`.
     :param bool starred: Limit by projects starred by the current user.
     :param bool statistics: Include project statistics. Cannot be used with `group_id`.
+    :param Sequence[str] topics: Limit by projects that have all of the given topics.
     :param str visibility: Limit by visibility `public`, `internal`, or `private`.
     :param bool with_custom_attributes: Include custom attributes in response *(admins only)*.
     :param bool with_issues_enabled: Limit by projects with issues feature enabled. Default is `false`.
@@ -394,6 +408,7 @@ def get_projects(archived: Optional[bool] = None,
     __args__['sort'] = sort
     __args__['starred'] = starred
     __args__['statistics'] = statistics
+    __args__['topics'] = topics
     __args__['visibility'] = visibility
     __args__['withCustomAttributes'] = with_custom_attributes
     __args__['withIssuesEnabled'] = with_issues_enabled
@@ -421,6 +436,7 @@ def get_projects(archived: Optional[bool] = None,
         sort=pulumi.get(__ret__, 'sort'),
         starred=pulumi.get(__ret__, 'starred'),
         statistics=pulumi.get(__ret__, 'statistics'),
+        topics=pulumi.get(__ret__, 'topics'),
         visibility=pulumi.get(__ret__, 'visibility'),
         with_custom_attributes=pulumi.get(__ret__, 'with_custom_attributes'),
         with_issues_enabled=pulumi.get(__ret__, 'with_issues_enabled'),
@@ -445,6 +461,7 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
                         sort: Optional[pulumi.Input[Optional[str]]] = None,
                         starred: Optional[pulumi.Input[Optional[bool]]] = None,
                         statistics: Optional[pulumi.Input[Optional[bool]]] = None,
+                        topics: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         visibility: Optional[pulumi.Input[Optional[str]]] = None,
                         with_custom_attributes: Optional[pulumi.Input[Optional[bool]]] = None,
                         with_issues_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -492,6 +509,7 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
     :param str sort: Return projects sorted in `asc` or `desc` order. Default is `desc`.
     :param bool starred: Limit by projects starred by the current user.
     :param bool statistics: Include project statistics. Cannot be used with `group_id`.
+    :param Sequence[str] topics: Limit by projects that have all of the given topics.
     :param str visibility: Limit by visibility `public`, `internal`, or `private`.
     :param bool with_custom_attributes: Include custom attributes in response *(admins only)*.
     :param bool with_issues_enabled: Limit by projects with issues feature enabled. Default is `false`.

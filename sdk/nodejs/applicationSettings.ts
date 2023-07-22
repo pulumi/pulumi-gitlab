@@ -507,7 +507,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly htmlEmailsEnabled!: pulumi.Output<boolean>;
     /**
-     * Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+     * Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
      */
     public readonly importSources!: pulumi.Output<string[]>;
     /**
@@ -1987,7 +1987,7 @@ export interface ApplicationSettingsState {
      */
     htmlEmailsEnabled?: pulumi.Input<boolean>;
     /**
-     * Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+     * Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
      */
     importSources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2961,7 +2961,7 @@ export interface ApplicationSettingsArgs {
      */
     htmlEmailsEnabled?: pulumi.Input<boolean>;
     /**
-     * Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+     * Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
      */
     importSources?: pulumi.Input<pulumi.Input<string>[]>;
     /**

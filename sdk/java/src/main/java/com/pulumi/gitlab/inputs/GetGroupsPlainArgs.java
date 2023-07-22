@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -59,12 +60,28 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.sort);
     }
 
+    /**
+     * Limit to top level groups, excluding all subgroups.
+     * 
+     */
+    @Import(name="topLevelOnly")
+    private @Nullable Boolean topLevelOnly;
+
+    /**
+     * @return Limit to top level groups, excluding all subgroups.
+     * 
+     */
+    public Optional<Boolean> topLevelOnly() {
+        return Optional.ofNullable(this.topLevelOnly);
+    }
+
     private GetGroupsPlainArgs() {}
 
     private GetGroupsPlainArgs(GetGroupsPlainArgs $) {
         this.orderBy = $.orderBy;
         this.search = $.search;
         this.sort = $.sort;
+        this.topLevelOnly = $.topLevelOnly;
     }
 
     public static Builder builder() {
@@ -115,6 +132,17 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder sort(@Nullable String sort) {
             $.sort = sort;
+            return this;
+        }
+
+        /**
+         * @param topLevelOnly Limit to top level groups, excluding all subgroups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topLevelOnly(@Nullable Boolean topLevelOnly) {
+            $.topLevelOnly = topLevelOnly;
             return this;
         }
 

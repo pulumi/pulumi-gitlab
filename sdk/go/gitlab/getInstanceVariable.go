@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupInstanceVariable(ctx *pulumi.Context, args *LookupInstanceVariableArgs, opts ...pulumi.InvokeOption) (*LookupInstanceVariableResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceVariableResult
 	err := ctx.Invoke("gitlab:index/getInstanceVariable:getInstanceVariable", args, &rv, opts...)
 	if err != nil {

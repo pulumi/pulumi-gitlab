@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func LookupClusterAgent(ctx *pulumi.Context, args *LookupClusterAgentArgs, opts ...pulumi.InvokeOption) (*LookupClusterAgentResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterAgentResult
 	err := ctx.Invoke("gitlab:index/getClusterAgent:getClusterAgent", args, &rv, opts...)
 	if err != nil {

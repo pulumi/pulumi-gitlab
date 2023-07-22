@@ -5,6 +5,7 @@ package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gitlab.outputs.GetGroupsGroup;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -38,6 +39,11 @@ public final class GetGroupsResult {
      * 
      */
     private @Nullable String sort;
+    /**
+     * @return Limit to top level groups, excluding all subgroups.
+     * 
+     */
+    private @Nullable Boolean topLevelOnly;
 
     private GetGroupsResult() {}
     /**
@@ -75,6 +81,13 @@ public final class GetGroupsResult {
     public Optional<String> sort() {
         return Optional.ofNullable(this.sort);
     }
+    /**
+     * @return Limit to top level groups, excluding all subgroups.
+     * 
+     */
+    public Optional<Boolean> topLevelOnly() {
+        return Optional.ofNullable(this.topLevelOnly);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -90,6 +103,7 @@ public final class GetGroupsResult {
         private @Nullable String orderBy;
         private @Nullable String search;
         private @Nullable String sort;
+        private @Nullable Boolean topLevelOnly;
         public Builder() {}
         public Builder(GetGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -98,6 +112,7 @@ public final class GetGroupsResult {
     	      this.orderBy = defaults.orderBy;
     	      this.search = defaults.search;
     	      this.sort = defaults.sort;
+    	      this.topLevelOnly = defaults.topLevelOnly;
         }
 
         @CustomType.Setter
@@ -128,6 +143,11 @@ public final class GetGroupsResult {
             this.sort = sort;
             return this;
         }
+        @CustomType.Setter
+        public Builder topLevelOnly(@Nullable Boolean topLevelOnly) {
+            this.topLevelOnly = topLevelOnly;
+            return this;
+        }
         public GetGroupsResult build() {
             final var o = new GetGroupsResult();
             o.groups = groups;
@@ -135,6 +155,7 @@ public final class GetGroupsResult {
             o.orderBy = orderBy;
             o.search = search;
             o.sort = sort;
+            o.topLevelOnly = topLevelOnly;
             return o;
         }
     }

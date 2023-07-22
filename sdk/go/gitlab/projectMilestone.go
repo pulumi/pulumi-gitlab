@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -102,6 +103,7 @@ func NewProjectMilestone(ctx *pulumi.Context,
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectMilestone
 	err := ctx.RegisterResource("gitlab:index/projectMilestone:ProjectMilestone", name, args, &resource, opts...)
 	if err != nil {

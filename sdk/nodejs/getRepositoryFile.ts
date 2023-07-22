@@ -63,7 +63,7 @@ export interface GetRepositoryFileResult {
      */
     readonly commitId: string;
     /**
-     * File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+     * File content.
      */
     readonly content: string;
     /**

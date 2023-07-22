@@ -29,7 +29,7 @@ class RepositoryFileArgs:
         The set of arguments for constructing a RepositoryFile resource.
         :param pulumi.Input[str] branch: Name of the branch to which to commit to.
         :param pulumi.Input[str] commit_message: Commit message.
-        :param pulumi.Input[str] content: File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        :param pulumi.Input[str] content: File content.
         :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         :param pulumi.Input[str] project: The name or ID of the project.
         :param pulumi.Input[str] author_email: Email of the commit author.
@@ -85,7 +85,7 @@ class RepositoryFileArgs:
     @pulumi.getter
     def content(self) -> pulumi.Input[str]:
         """
-        File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        File content.
         """
         return pulumi.get(self, "content")
 
@@ -219,7 +219,7 @@ class _RepositoryFileState:
         :param pulumi.Input[str] branch: Name of the branch to which to commit to.
         :param pulumi.Input[str] commit_id: The commit id.
         :param pulumi.Input[str] commit_message: Commit message.
-        :param pulumi.Input[str] content: File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        :param pulumi.Input[str] content: File content.
         :param pulumi.Input[str] content_sha256: File content sha256 digest.
         :param pulumi.Input[str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
         :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
@@ -345,7 +345,7 @@ class _RepositoryFileState:
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[str]]:
         """
-        File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        File content.
         """
         return pulumi.get(self, "content")
 
@@ -518,7 +518,7 @@ class RepositoryFile(pulumi.CustomResource):
         :param pulumi.Input[str] author_name: Name of the commit author.
         :param pulumi.Input[str] branch: Name of the branch to which to commit to.
         :param pulumi.Input[str] commit_message: Commit message.
-        :param pulumi.Input[str] content: File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        :param pulumi.Input[str] content: File content.
         :param pulumi.Input[str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
         :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
         :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
@@ -645,7 +645,7 @@ class RepositoryFile(pulumi.CustomResource):
         :param pulumi.Input[str] branch: Name of the branch to which to commit to.
         :param pulumi.Input[str] commit_id: The commit id.
         :param pulumi.Input[str] commit_message: Commit message.
-        :param pulumi.Input[str] content: File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        :param pulumi.Input[str] content: File content.
         :param pulumi.Input[str] content_sha256: File content sha256 digest.
         :param pulumi.Input[str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
         :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
@@ -734,7 +734,7 @@ class RepositoryFile(pulumi.CustomResource):
     @pulumi.getter
     def content(self) -> pulumi.Output[str]:
         """
-        File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+        File content.
         """
         return pulumi.get(self, "content")
 

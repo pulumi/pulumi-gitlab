@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.ProjectBadge` resource allows to mange the lifecycle of project badges.
+    /// The `gitlab.ProjectBadge` resource allows to manage the lifecycle of project badges.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#project-badges)
     /// 
@@ -31,6 +31,30 @@ namespace Pulumi.GitLab
     ///         Project = foo.Id,
     ///         LinkUrl = "https://example.com/badge-123",
     ///         ImageUrl = "https://example.com/badge-123.svg",
+    ///     });
+    /// 
+    ///     // Pipeline status badges with placeholders will be enabled
+    ///     var gitlabPipeline = new GitLab.ProjectBadge("gitlabPipeline", new()
+    ///     {
+    ///         Project = foo.Id,
+    ///         LinkUrl = "https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}",
+    ///         ImageUrl = "https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg",
+    ///     });
+    /// 
+    ///     // Test coverage report badges with placeholders will be enabled
+    ///     var gitlabCoverage = new GitLab.ProjectBadge("gitlabCoverage", new()
+    ///     {
+    ///         Project = foo.Id,
+    ///         LinkUrl = "https://gitlab.example.com/%{project_path}/-/jobs",
+    ///         ImageUrl = "https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg",
+    ///     });
+    /// 
+    ///     // Latest release badges with placeholders will be enabled
+    ///     var gitlabRelease = new GitLab.ProjectBadge("gitlabRelease", new()
+    ///     {
+    ///         Project = foo.Id,
+    ///         LinkUrl = "https://gitlab.example.com/%{project_path}/-/releases",
+    ///         ImageUrl = "https://gitlab.example.com/%{project_path}/-/badges/release.svg",
     ///     });
     /// 
     /// });

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-group-hooks)
 func GetGroupHooks(ctx *pulumi.Context, args *GetGroupHooksArgs, opts ...pulumi.InvokeOption) (*GetGroupHooksResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupHooksResult
 	err := ctx.Invoke("gitlab:index/getGroupHooks:getGroupHooks", args, &rv, opts...)
 	if err != nil {

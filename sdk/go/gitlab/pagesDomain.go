@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -112,6 +113,7 @@ func NewPagesDomain(ctx *pulumi.Context,
 		"verificationCode",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PagesDomain
 	err := ctx.RegisterResource("gitlab:index/pagesDomain:PagesDomain", name, args, &resource, opts...)
 	if err != nil {

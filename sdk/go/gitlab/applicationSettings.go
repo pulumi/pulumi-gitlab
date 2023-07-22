@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -269,7 +270,7 @@ type ApplicationSettings struct {
 	HousekeepingIncrementalRepackPeriod pulumi.IntOutput `pulumi:"housekeepingIncrementalRepackPeriod"`
 	// Enable HTML emails.
 	HtmlEmailsEnabled pulumi.BoolOutput `pulumi:"htmlEmailsEnabled"`
-	// Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+	// Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
 	ImportSources pulumi.StringArrayOutput `pulumi:"importSources"`
 	// Enable in-product marketing emails.
 	InProductMarketingEmailsEnabled pulumi.BoolOutput `pulumi:"inProductMarketingEmailsEnabled"`
@@ -595,6 +596,7 @@ func NewApplicationSettings(ctx *pulumi.Context,
 		"spamCheckApiKey",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApplicationSettings
 	err := ctx.RegisterResource("gitlab:index/applicationSettings:ApplicationSettings", name, args, &resource, opts...)
 	if err != nil {
@@ -847,7 +849,7 @@ type applicationSettingsState struct {
 	HousekeepingIncrementalRepackPeriod *int `pulumi:"housekeepingIncrementalRepackPeriod"`
 	// Enable HTML emails.
 	HtmlEmailsEnabled *bool `pulumi:"htmlEmailsEnabled"`
-	// Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+	// Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
 	ImportSources []string `pulumi:"importSources"`
 	// Enable in-product marketing emails.
 	InProductMarketingEmailsEnabled *bool `pulumi:"inProductMarketingEmailsEnabled"`
@@ -1334,7 +1336,7 @@ type ApplicationSettingsState struct {
 	HousekeepingIncrementalRepackPeriod pulumi.IntPtrInput
 	// Enable HTML emails.
 	HtmlEmailsEnabled pulumi.BoolPtrInput
-	// Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+	// Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
 	ImportSources pulumi.StringArrayInput
 	// Enable in-product marketing emails.
 	InProductMarketingEmailsEnabled pulumi.BoolPtrInput
@@ -1825,7 +1827,7 @@ type applicationSettingsArgs struct {
 	HousekeepingIncrementalRepackPeriod *int `pulumi:"housekeepingIncrementalRepackPeriod"`
 	// Enable HTML emails.
 	HtmlEmailsEnabled *bool `pulumi:"htmlEmailsEnabled"`
-	// Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+	// Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
 	ImportSources []string `pulumi:"importSources"`
 	// Enable in-product marketing emails.
 	InProductMarketingEmailsEnabled *bool `pulumi:"inProductMarketingEmailsEnabled"`
@@ -2313,7 +2315,7 @@ type ApplicationSettingsArgs struct {
 	HousekeepingIncrementalRepackPeriod pulumi.IntPtrInput
 	// Enable HTML emails.
 	HtmlEmailsEnabled pulumi.BoolPtrInput
-	// Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+	// Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
 	ImportSources pulumi.StringArrayInput
 	// Enable in-product marketing emails.
 	InProductMarketingEmailsEnabled pulumi.BoolPtrInput
@@ -3235,7 +3237,7 @@ func (o ApplicationSettingsOutput) HtmlEmailsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.HtmlEmailsEnabled }).(pulumi.BoolOutput)
 }
 
-// Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+// Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
 func (o ApplicationSettingsOutput) ImportSources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringArrayOutput { return v.ImportSources }).(pulumi.StringArrayOutput)
 }

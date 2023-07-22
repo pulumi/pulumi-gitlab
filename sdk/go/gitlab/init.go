@@ -7,6 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClusterAgent{}
 	case "gitlab:index/clusterAgentToken:ClusterAgentToken":
 		r = &ClusterAgentToken{}
+	case "gitlab:index/complianceFramework:ComplianceFramework":
+		r = &ComplianceFramework{}
 	case "gitlab:index/deployKey:DeployKey":
 		r = &DeployKey{}
 	case "gitlab:index/deployKeyEnable:DeployKeyEnable":
@@ -106,6 +109,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectBadge{}
 	case "gitlab:index/projectCluster:ProjectCluster":
 		r = &ProjectCluster{}
+	case "gitlab:index/projectComplianceFramework:ProjectComplianceFramework":
+		r = &ProjectComplianceFramework{}
 	case "gitlab:index/projectCustomAttribute:ProjectCustomAttribute":
 		r = &ProjectCustomAttribute{}
 	case "gitlab:index/projectEnvironment:ProjectEnvironment":
@@ -201,7 +206,10 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 }
 
 func init() {
-	version, _ := PkgVersion()
+	version, err := internal.PkgVersion()
+	if err != nil {
+		version = semver.Version{Major: 1}
+	}
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/application",
@@ -230,6 +238,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/clusterAgentToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/complianceFramework",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -415,6 +428,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectComplianceFramework",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

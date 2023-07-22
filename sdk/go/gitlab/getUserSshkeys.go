@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#list-ssh-keys-for-user)
 func GetUserSshkeys(ctx *pulumi.Context, args *GetUserSshkeysArgs, opts ...pulumi.InvokeOption) (*GetUserSshkeysResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUserSshkeysResult
 	err := ctx.Invoke("gitlab:index/getUserSshkeys:getUserSshkeys", args, &rv, opts...)
 	if err != nil {
