@@ -84,7 +84,7 @@ export class BranchProtection extends pulumi.CustomResource {
      */
     public readonly pushAccessLevel!: pulumi.Output<string | undefined>;
     /**
-     * Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+     * Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
      */
     public readonly unprotectAccessLevel!: pulumi.Output<string | undefined>;
 
@@ -182,7 +182,7 @@ export interface BranchProtectionState {
      */
     pushAccessLevel?: pulumi.Input<string>;
     /**
-     * Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+     * Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
      */
     unprotectAccessLevel?: pulumi.Input<string>;
 }
@@ -228,7 +228,7 @@ export interface BranchProtectionArgs {
      */
     pushAccessLevel?: pulumi.Input<string>;
     /**
-     * Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.
+     * Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
      */
     unprotectAccessLevel?: pulumi.Input<string>;
 }

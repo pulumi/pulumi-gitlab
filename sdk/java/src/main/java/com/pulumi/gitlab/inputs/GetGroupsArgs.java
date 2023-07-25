@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -60,12 +61,28 @@ public final class GetGroupsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.sort);
     }
 
+    /**
+     * Limit to top level groups, excluding all subgroups.
+     * 
+     */
+    @Import(name="topLevelOnly")
+    private @Nullable Output<Boolean> topLevelOnly;
+
+    /**
+     * @return Limit to top level groups, excluding all subgroups.
+     * 
+     */
+    public Optional<Output<Boolean>> topLevelOnly() {
+        return Optional.ofNullable(this.topLevelOnly);
+    }
+
     private GetGroupsArgs() {}
 
     private GetGroupsArgs(GetGroupsArgs $) {
         this.orderBy = $.orderBy;
         this.search = $.search;
         this.sort = $.sort;
+        this.topLevelOnly = $.topLevelOnly;
     }
 
     public static Builder builder() {
@@ -147,6 +164,27 @@ public final class GetGroupsArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder sort(String sort) {
             return sort(Output.of(sort));
+        }
+
+        /**
+         * @param topLevelOnly Limit to top level groups, excluding all subgroups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topLevelOnly(@Nullable Output<Boolean> topLevelOnly) {
+            $.topLevelOnly = topLevelOnly;
+            return this;
+        }
+
+        /**
+         * @param topLevelOnly Limit to top level groups, excluding all subgroups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topLevelOnly(Boolean topLevelOnly) {
+            return topLevelOnly(Output.of(topLevelOnly));
         }
 
         public GetGroupsArgs build() {

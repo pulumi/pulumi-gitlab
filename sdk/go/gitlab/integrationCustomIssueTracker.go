@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -94,6 +95,7 @@ func NewIntegrationCustomIssueTracker(ctx *pulumi.Context,
 	if args.ProjectUrl == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectUrl'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IntegrationCustomIssueTracker
 	err := ctx.RegisterResource("gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker", name, args, &resource, opts...)
 	if err != nil {

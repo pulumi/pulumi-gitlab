@@ -8,10 +8,11 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectBadge` resource allows to mange the lifecycle of project badges.
+// The `ProjectBadge` resource allows to manage the lifecycle of project badges.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#project-badges)
 //
@@ -37,6 +38,30 @@ import (
 //				Project:  foo.ID(),
 //				LinkUrl:  pulumi.String("https://example.com/badge-123"),
 //				ImageUrl: pulumi.String("https://example.com/badge-123.svg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectBadge(ctx, "gitlabPipeline", &gitlab.ProjectBadgeArgs{
+//				Project:  foo.ID(),
+//				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}"),
+//				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectBadge(ctx, "gitlabCoverage", &gitlab.ProjectBadgeArgs{
+//				Project:  foo.ID(),
+//				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/jobs"),
+//				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectBadge(ctx, "gitlabRelease", &gitlab.ProjectBadgeArgs{
+//				Project:  foo.ID(),
+//				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/releases"),
+//				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/-/badges/release.svg"),
 //			})
 //			if err != nil {
 //				return err
@@ -89,6 +114,7 @@ func NewProjectBadge(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectBadge
 	err := ctx.RegisterResource("gitlab:index/projectBadge:ProjectBadge", name, args, &resource, opts...)
 	if err != nil {

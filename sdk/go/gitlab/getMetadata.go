@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,7 @@ import (
 //
 // ```
 func GetMetadata(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetMetadataResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMetadataResult
 	err := ctx.Invoke("gitlab:index/getMetadata:getMetadata", nil, &rv, opts...)
 	if err != nil {

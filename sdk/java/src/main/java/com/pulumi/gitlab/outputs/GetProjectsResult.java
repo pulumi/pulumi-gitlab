@@ -101,6 +101,11 @@ public final class GetProjectsResult {
      */
     private @Nullable Boolean statistics;
     /**
+     * @return Limit by projects that have all of the given topics.
+     * 
+     */
+    private @Nullable List<String> topics;
+    /**
      * @return Limit by visibility `public`, `internal`, or `private`.
      * 
      */
@@ -252,6 +257,13 @@ public final class GetProjectsResult {
         return Optional.ofNullable(this.statistics);
     }
     /**
+     * @return Limit by projects that have all of the given topics.
+     * 
+     */
+    public List<String> topics() {
+        return this.topics == null ? List.of() : this.topics;
+    }
+    /**
      * @return Limit by visibility `public`, `internal`, or `private`.
      * 
      */
@@ -320,6 +332,7 @@ public final class GetProjectsResult {
         private @Nullable String sort;
         private @Nullable Boolean starred;
         private @Nullable Boolean statistics;
+        private @Nullable List<String> topics;
         private @Nullable String visibility;
         private @Nullable Boolean withCustomAttributes;
         private @Nullable Boolean withIssuesEnabled;
@@ -346,6 +359,7 @@ public final class GetProjectsResult {
     	      this.sort = defaults.sort;
     	      this.starred = defaults.starred;
     	      this.statistics = defaults.statistics;
+    	      this.topics = defaults.topics;
     	      this.visibility = defaults.visibility;
     	      this.withCustomAttributes = defaults.withCustomAttributes;
     	      this.withIssuesEnabled = defaults.withIssuesEnabled;
@@ -443,6 +457,14 @@ public final class GetProjectsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder topics(@Nullable List<String> topics) {
+            this.topics = topics;
+            return this;
+        }
+        public Builder topics(String... topics) {
+            return topics(List.of(topics));
+        }
+        @CustomType.Setter
         public Builder visibility(@Nullable String visibility) {
             this.visibility = visibility;
             return this;
@@ -491,6 +513,7 @@ public final class GetProjectsResult {
             o.sort = sort;
             o.starred = starred;
             o.statistics = statistics;
+            o.topics = topics;
             o.visibility = visibility;
             o.withCustomAttributes = withCustomAttributes;
             o.withIssuesEnabled = withIssuesEnabled;

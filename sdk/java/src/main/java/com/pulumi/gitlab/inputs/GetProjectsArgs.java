@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -243,6 +244,21 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Limit by projects that have all of the given topics.
+     * 
+     */
+    @Import(name="topics")
+    private @Nullable Output<List<String>> topics;
+
+    /**
+     * @return Limit by projects that have all of the given topics.
+     * 
+     */
+    public Optional<Output<List<String>>> topics() {
+        return Optional.ofNullable(this.topics);
+    }
+
+    /**
      * Limit by visibility `public`, `internal`, or `private`.
      * 
      */
@@ -350,6 +366,7 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
         this.sort = $.sort;
         this.starred = $.starred;
         this.statistics = $.statistics;
+        this.topics = $.topics;
         this.visibility = $.visibility;
         this.withCustomAttributes = $.withCustomAttributes;
         this.withIssuesEnabled = $.withIssuesEnabled;
@@ -689,6 +706,37 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder statistics(Boolean statistics) {
             return statistics(Output.of(statistics));
+        }
+
+        /**
+         * @param topics Limit by projects that have all of the given topics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topics(@Nullable Output<List<String>> topics) {
+            $.topics = topics;
+            return this;
+        }
+
+        /**
+         * @param topics Limit by projects that have all of the given topics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topics(List<String> topics) {
+            return topics(Output.of(topics));
+        }
+
+        /**
+         * @param topics Limit by projects that have all of the given topics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topics(String... topics) {
+            return topics(List.of(topics));
         }
 
         /**

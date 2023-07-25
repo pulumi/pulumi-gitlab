@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func GetProjectBranches(ctx *pulumi.Context, args *GetProjectBranchesArgs, opts ...pulumi.InvokeOption) (*GetProjectBranchesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectBranchesResult
 	err := ctx.Invoke("gitlab:index/getProjectBranches:getProjectBranches", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetReleaseLinks(ctx *pulumi.Context, args *GetReleaseLinksArgs, opts ...pulumi.InvokeOption) (*GetReleaseLinksResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetReleaseLinksResult
 	err := ctx.Invoke("gitlab:index/getReleaseLinks:getReleaseLinks", args, &rv, opts...)
 	if err != nil {

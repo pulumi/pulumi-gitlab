@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 //
 // ```
 func GetProjectHooks(ctx *pulumi.Context, args *GetProjectHooksArgs, opts ...pulumi.InvokeOption) (*GetProjectHooksResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectHooksResult
 	err := ctx.Invoke("gitlab:index/getProjectHooks:getProjectHooks", args, &rv, opts...)
 	if err != nil {

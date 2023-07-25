@@ -11,6 +11,7 @@ from .branch import *
 from .branch_protection import *
 from .cluster_agent import *
 from .cluster_agent_token import *
+from .compliance_framework import *
 from .deploy_key import *
 from .deploy_key_enable import *
 from .deploy_token import *
@@ -88,6 +89,7 @@ from .project_access_token import *
 from .project_approval_rule import *
 from .project_badge import *
 from .project_cluster import *
+from .project_compliance_framework import *
 from .project_custom_attribute import *
 from .project_environment import *
 from .project_freeze_period import *
@@ -182,6 +184,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/clusterAgentToken:ClusterAgentToken": "ClusterAgentToken"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/complianceFramework",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/complianceFramework:ComplianceFramework": "ComplianceFramework"
   }
  },
  {
@@ -478,6 +488,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectCluster:ProjectCluster": "ProjectCluster"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectComplianceFramework",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectComplianceFramework:ProjectComplianceFramework": "ProjectComplianceFramework"
   }
  },
  {

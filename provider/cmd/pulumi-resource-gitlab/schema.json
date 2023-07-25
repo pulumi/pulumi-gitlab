@@ -3731,7 +3731,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.\n"
+                    "description": "Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`\n"
                 },
                 "inProductMarketingEmailsEnabled": {
                     "type": "boolean",
@@ -4999,7 +4999,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.\n"
+                    "description": "Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`\n"
                 },
                 "inProductMarketingEmailsEnabled": {
                     "type": "boolean",
@@ -6025,7 +6025,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.\n"
+                        "description": "Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`\n"
                     },
                     "inProductMarketingEmailsEnabled": {
                         "type": "boolean",
@@ -6749,7 +6749,7 @@
                 },
                 "unprotectAccessLevel": {
                     "type": "string",
-                    "description": "Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.\n"
+                    "description": "Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.\n"
                 }
             },
             "required": [
@@ -6813,7 +6813,7 @@
                 },
                 "unprotectAccessLevel": {
                     "type": "string",
-                    "description": "Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.\n",
+                    "description": "Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -6883,7 +6883,7 @@
                     },
                     "unprotectAccessLevel": {
                         "type": "string",
-                        "description": "Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`.\n",
+                        "description": "Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -7092,6 +7092,112 @@
                     "tokenId": {
                         "type": "integer",
                         "description": "The ID of the token.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/complianceFramework:ComplianceFramework": {
+            "description": "The `gitlab.ComplianceFramework` resource allows to manage the lifecycle of a compliance framework on top-level groups.\n\nThere can be only one `default` compliance framework. Of all the configured compliance frameworks marked as default, the last one applied will be the default compliance framework.\n\n\u003e This resource requires a GitLab Enterprise instance with a Premium license to create the compliance framework.\n\n\u003e This resource requires a GitLab Enterprise instance with an Ultimate license to specify a compliance pipeline configuration in the compliance framework.\n\n**Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationcreatecomplianceframework)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst sample = new gitlab.ComplianceFramework(\"sample\", {\n    color: \"#87BEEF\",\n    \"default\": false,\n    description: \"A HIPAA Compliance Framework\",\n    namespacePath: \"top-level-group\",\n    pipelineConfigurationFullPath: \".hipaa.yml@top-level-group/compliance-frameworks\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nsample = gitlab.ComplianceFramework(\"sample\",\n    color=\"#87BEEF\",\n    default=False,\n    description=\"A HIPAA Compliance Framework\",\n    namespace_path=\"top-level-group\",\n    pipeline_configuration_full_path=\".hipaa.yml@top-level-group/compliance-frameworks\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sample = new GitLab.ComplianceFramework(\"sample\", new()\n    {\n        Color = \"#87BEEF\",\n        Default = false,\n        Description = \"A HIPAA Compliance Framework\",\n        NamespacePath = \"top-level-group\",\n        PipelineConfigurationFullPath = \".hipaa.yml@top-level-group/compliance-frameworks\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewComplianceFramework(ctx, \"sample\", \u0026gitlab.ComplianceFrameworkArgs{\n\t\t\tColor:                         pulumi.String(\"#87BEEF\"),\n\t\t\tDefault:                       pulumi.Bool(false),\n\t\t\tDescription:                   pulumi.String(\"A HIPAA Compliance Framework\"),\n\t\t\tNamespacePath:                 pulumi.String(\"top-level-group\"),\n\t\t\tPipelineConfigurationFullPath: pulumi.String(\".hipaa.yml@top-level-group/compliance-frameworks\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.ComplianceFramework;\nimport com.pulumi.gitlab.ComplianceFrameworkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sample = new ComplianceFramework(\"sample\", ComplianceFrameworkArgs.builder()        \n            .color(\"#87BEEF\")\n            .default_(false)\n            .description(\"A HIPAA Compliance Framework\")\n            .namespacePath(\"top-level-group\")\n            .pipelineConfigurationFullPath(\".hipaa.yml@top-level-group/compliance-frameworks\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sample:\n    type: gitlab:ComplianceFramework\n    properties:\n      color: '#87BEEF'\n      default: false\n      description: A HIPAA Compliance Framework\n      namespacePath: top-level-group\n      pipelineConfigurationFullPath: .hipaa.yml@top-level-group/compliance-frameworks\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGitlab compliance frameworks can be imported with a key composed of `\u003cnamespace_path\u003e:\u003cframework_id\u003e`, e.g.\n\n```sh\n $ pulumi import gitlab:index/complianceFramework:ComplianceFramework sample \"top-level-group:gid://gitlab/ComplianceManagement::Framework/12345\"\n```\n\n ",
+            "properties": {
+                "color": {
+                    "type": "string",
+                    "description": "New color representation of the compliance framework in hex format. e.g. #FCA121.\n"
+                },
+                "default": {
+                    "type": "boolean",
+                    "description": "Set this compliance framework as the default framework for the group. Default: `false`\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description for the compliance framework.\n"
+                },
+                "frameworkId": {
+                    "type": "string",
+                    "description": "Globally unique ID of the compliance framework.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name for the compliance framework.\n"
+                },
+                "namespacePath": {
+                    "type": "string",
+                    "description": "Full path of the namespace to add the compliance framework to.\n"
+                },
+                "pipelineConfigurationFullPath": {
+                    "type": "string",
+                    "description": "Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.\n"
+                }
+            },
+            "required": [
+                "color",
+                "default",
+                "description",
+                "frameworkId",
+                "name",
+                "namespacePath"
+            ],
+            "inputProperties": {
+                "color": {
+                    "type": "string",
+                    "description": "New color representation of the compliance framework in hex format. e.g. #FCA121.\n"
+                },
+                "default": {
+                    "type": "boolean",
+                    "description": "Set this compliance framework as the default framework for the group. Default: `false`\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description for the compliance framework.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name for the compliance framework.\n"
+                },
+                "namespacePath": {
+                    "type": "string",
+                    "description": "Full path of the namespace to add the compliance framework to.\n"
+                },
+                "pipelineConfigurationFullPath": {
+                    "type": "string",
+                    "description": "Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.\n"
+                }
+            },
+            "requiredInputs": [
+                "color",
+                "description",
+                "namespacePath"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ComplianceFramework resources.\n",
+                "properties": {
+                    "color": {
+                        "type": "string",
+                        "description": "New color representation of the compliance framework in hex format. e.g. #FCA121.\n"
+                    },
+                    "default": {
+                        "type": "boolean",
+                        "description": "Set this compliance framework as the default framework for the group. Default: `false`\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description for the compliance framework.\n"
+                    },
+                    "frameworkId": {
+                        "type": "string",
+                        "description": "Globally unique ID of the compliance framework.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name for the compliance framework.\n"
+                    },
+                    "namespacePath": {
+                        "type": "string",
+                        "description": "Full path of the namespace to add the compliance framework to.\n"
+                    },
+                    "pipelineConfigurationFullPath": {
+                        "type": "string",
+                        "description": "Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.\n"
                     }
                 },
                 "type": "object"
@@ -7927,7 +8033,7 @@
             }
         },
         "gitlab:index/groupBadge:GroupBadge": {
-            "description": "The `gitlab.GroupBadge` resource allows to mange the lifecycle of group badges.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#group-badges)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.Group(\"foo\", {});\nconst example = new gitlab.GroupBadge(\"example\", {\n    group: foo.id,\n    linkUrl: \"https://example.com/badge-123\",\n    imageUrl: \"https://example.com/badge-123.svg\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.Group(\"foo\")\nexample = gitlab.GroupBadge(\"example\",\n    group=foo.id,\n    link_url=\"https://example.com/badge-123\",\n    image_url=\"https://example.com/badge-123.svg\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new GitLab.Group(\"foo\");\n\n    var example = new GitLab.GroupBadge(\"example\", new()\n    {\n        Group = foo.Id,\n        LinkUrl = \"https://example.com/badge-123\",\n        ImageUrl = \"https://example.com/badge-123.svg\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := gitlab.NewGroup(ctx, \"foo\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupBadge(ctx, \"example\", \u0026gitlab.GroupBadgeArgs{\n\t\t\tGroup:    foo.ID(),\n\t\t\tLinkUrl:  pulumi.String(\"https://example.com/badge-123\"),\n\t\t\tImageUrl: pulumi.String(\"https://example.com/badge-123.svg\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Group;\nimport com.pulumi.gitlab.GroupBadge;\nimport com.pulumi.gitlab.GroupBadgeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new Group(\"foo\");\n\n        var example = new GroupBadge(\"example\", GroupBadgeArgs.builder()        \n            .group(foo.id())\n            .linkUrl(\"https://example.com/badge-123\")\n            .imageUrl(\"https://example.com/badge-123.svg\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: gitlab:Group\n  example:\n    type: gitlab:GroupBadge\n    properties:\n      group: ${foo.id}\n      linkUrl: https://example.com/badge-123\n      imageUrl: https://example.com/badge-123.svg\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGitLab group badges can be imported using an id made up of `{group_id}:{badge_id}`, e.g.\n\n```sh\n $ pulumi import gitlab:index/groupBadge:GroupBadge foo 1:3\n```\n\n ",
+            "description": "The `gitlab.GroupBadge` resource allows to manage the lifecycle of group badges.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#group-badges)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.Group(\"foo\", {});\nconst example = new gitlab.GroupBadge(\"example\", {\n    group: foo.id,\n    linkUrl: \"https://example.com/badge-123\",\n    imageUrl: \"https://example.com/badge-123.svg\",\n});\n// Pipeline status badges with placeholders will be enabled for each project\nconst gitlabPipeline = new gitlab.GroupBadge(\"gitlabPipeline\", {\n    group: foo.id,\n    linkUrl: \"https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}\",\n    imageUrl: \"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg\",\n});\n// Test coverage report badges with placeholders will be enabled for each project\nconst gitlabCoverage = new gitlab.GroupBadge(\"gitlabCoverage\", {\n    group: foo.id,\n    linkUrl: \"https://gitlab.example.com/%{project_path}/-/jobs\",\n    imageUrl: \"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg\",\n});\n// Latest release badges with placeholders will be enabled for each project\nconst gitlabRelease = new gitlab.GroupBadge(\"gitlabRelease\", {\n    group: foo.id,\n    linkUrl: \"https://gitlab.example.com/%{project_path}/-/releases\",\n    imageUrl: \"https://gitlab.example.com/%{project_path}/-/badges/release.svg\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.Group(\"foo\")\nexample = gitlab.GroupBadge(\"example\",\n    group=foo.id,\n    link_url=\"https://example.com/badge-123\",\n    image_url=\"https://example.com/badge-123.svg\")\n# Pipeline status badges with placeholders will be enabled for each project\ngitlab_pipeline = gitlab.GroupBadge(\"gitlabPipeline\",\n    group=foo.id,\n    link_url=\"https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}\",\n    image_url=\"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg\")\n# Test coverage report badges with placeholders will be enabled for each project\ngitlab_coverage = gitlab.GroupBadge(\"gitlabCoverage\",\n    group=foo.id,\n    link_url=\"https://gitlab.example.com/%{project_path}/-/jobs\",\n    image_url=\"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg\")\n# Latest release badges with placeholders will be enabled for each project\ngitlab_release = gitlab.GroupBadge(\"gitlabRelease\",\n    group=foo.id,\n    link_url=\"https://gitlab.example.com/%{project_path}/-/releases\",\n    image_url=\"https://gitlab.example.com/%{project_path}/-/badges/release.svg\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new GitLab.Group(\"foo\");\n\n    var example = new GitLab.GroupBadge(\"example\", new()\n    {\n        Group = foo.Id,\n        LinkUrl = \"https://example.com/badge-123\",\n        ImageUrl = \"https://example.com/badge-123.svg\",\n    });\n\n    // Pipeline status badges with placeholders will be enabled for each project\n    var gitlabPipeline = new GitLab.GroupBadge(\"gitlabPipeline\", new()\n    {\n        Group = foo.Id,\n        LinkUrl = \"https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}\",\n        ImageUrl = \"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg\",\n    });\n\n    // Test coverage report badges with placeholders will be enabled for each project\n    var gitlabCoverage = new GitLab.GroupBadge(\"gitlabCoverage\", new()\n    {\n        Group = foo.Id,\n        LinkUrl = \"https://gitlab.example.com/%{project_path}/-/jobs\",\n        ImageUrl = \"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg\",\n    });\n\n    // Latest release badges with placeholders will be enabled for each project\n    var gitlabRelease = new GitLab.GroupBadge(\"gitlabRelease\", new()\n    {\n        Group = foo.Id,\n        LinkUrl = \"https://gitlab.example.com/%{project_path}/-/releases\",\n        ImageUrl = \"https://gitlab.example.com/%{project_path}/-/badges/release.svg\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := gitlab.NewGroup(ctx, \"foo\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupBadge(ctx, \"example\", \u0026gitlab.GroupBadgeArgs{\n\t\t\tGroup:    foo.ID(),\n\t\t\tLinkUrl:  pulumi.String(\"https://example.com/badge-123\"),\n\t\t\tImageUrl: pulumi.String(\"https://example.com/badge-123.svg\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupBadge(ctx, \"gitlabPipeline\", \u0026gitlab.GroupBadgeArgs{\n\t\t\tGroup:    foo.ID(),\n\t\t\tLinkUrl:  pulumi.String(\"https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}\"),\n\t\t\tImageUrl: pulumi.String(\"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupBadge(ctx, \"gitlabCoverage\", \u0026gitlab.GroupBadgeArgs{\n\t\t\tGroup:    foo.ID(),\n\t\t\tLinkUrl:  pulumi.String(\"https://gitlab.example.com/%{project_path}/-/jobs\"),\n\t\t\tImageUrl: pulumi.String(\"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupBadge(ctx, \"gitlabRelease\", \u0026gitlab.GroupBadgeArgs{\n\t\t\tGroup:    foo.ID(),\n\t\t\tLinkUrl:  pulumi.String(\"https://gitlab.example.com/%{project_path}/-/releases\"),\n\t\t\tImageUrl: pulumi.String(\"https://gitlab.example.com/%{project_path}/-/badges/release.svg\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Group;\nimport com.pulumi.gitlab.GroupBadge;\nimport com.pulumi.gitlab.GroupBadgeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new Group(\"foo\");\n\n        var example = new GroupBadge(\"example\", GroupBadgeArgs.builder()        \n            .group(foo.id())\n            .linkUrl(\"https://example.com/badge-123\")\n            .imageUrl(\"https://example.com/badge-123.svg\")\n            .build());\n\n        var gitlabPipeline = new GroupBadge(\"gitlabPipeline\", GroupBadgeArgs.builder()        \n            .group(foo.id())\n            .linkUrl(\"https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}\")\n            .imageUrl(\"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg\")\n            .build());\n\n        var gitlabCoverage = new GroupBadge(\"gitlabCoverage\", GroupBadgeArgs.builder()        \n            .group(foo.id())\n            .linkUrl(\"https://gitlab.example.com/%{project_path}/-/jobs\")\n            .imageUrl(\"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg\")\n            .build());\n\n        var gitlabRelease = new GroupBadge(\"gitlabRelease\", GroupBadgeArgs.builder()        \n            .group(foo.id())\n            .linkUrl(\"https://gitlab.example.com/%{project_path}/-/releases\")\n            .imageUrl(\"https://gitlab.example.com/%{project_path}/-/badges/release.svg\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: gitlab:Group\n  example:\n    type: gitlab:GroupBadge\n    properties:\n      group: ${foo.id}\n      linkUrl: https://example.com/badge-123\n      imageUrl: https://example.com/badge-123.svg\n  # Pipeline status badges with placeholders will be enabled for each project\n  gitlabPipeline:\n    type: gitlab:GroupBadge\n    properties:\n      group: ${foo.id}\n      linkUrl: https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}\n      imageUrl: https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg\n  # Test coverage report badges with placeholders will be enabled for each project\n  gitlabCoverage:\n    type: gitlab:GroupBadge\n    properties:\n      group: ${foo.id}\n      linkUrl: https://gitlab.example.com/%{project_path}/-/jobs\n      imageUrl: https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg\n  # Latest release badges with placeholders will be enabled for each project\n  gitlabRelease:\n    type: gitlab:GroupBadge\n    properties:\n      group: ${foo.id}\n      linkUrl: https://gitlab.example.com/%{project_path}/-/releases\n      imageUrl: https://gitlab.example.com/%{project_path}/-/badges/release.svg\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGitLab group badges can be imported using an id made up of `{group_id}:{badge_id}`, e.g.\n\n```sh\n $ pulumi import gitlab:index/groupBadge:GroupBadge foo 1:3\n```\n\n ",
             "properties": {
                 "group": {
                     "type": "string",
@@ -12878,7 +12984,7 @@
             }
         },
         "gitlab:index/projectBadge:ProjectBadge": {
-            "description": "The `gitlab.ProjectBadge` resource allows to mange the lifecycle of project badges.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#project-badges)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.Project(\"foo\", {});\nconst example = new gitlab.ProjectBadge(\"example\", {\n    project: foo.id,\n    linkUrl: \"https://example.com/badge-123\",\n    imageUrl: \"https://example.com/badge-123.svg\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.Project(\"foo\")\nexample = gitlab.ProjectBadge(\"example\",\n    project=foo.id,\n    link_url=\"https://example.com/badge-123\",\n    image_url=\"https://example.com/badge-123.svg\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new GitLab.Project(\"foo\");\n\n    var example = new GitLab.ProjectBadge(\"example\", new()\n    {\n        Project = foo.Id,\n        LinkUrl = \"https://example.com/badge-123\",\n        ImageUrl = \"https://example.com/badge-123.svg\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := gitlab.NewProject(ctx, \"foo\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectBadge(ctx, \"example\", \u0026gitlab.ProjectBadgeArgs{\n\t\t\tProject:  foo.ID(),\n\t\t\tLinkUrl:  pulumi.String(\"https://example.com/badge-123\"),\n\t\t\tImageUrl: pulumi.String(\"https://example.com/badge-123.svg\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectBadge;\nimport com.pulumi.gitlab.ProjectBadgeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new Project(\"foo\");\n\n        var example = new ProjectBadge(\"example\", ProjectBadgeArgs.builder()        \n            .project(foo.id())\n            .linkUrl(\"https://example.com/badge-123\")\n            .imageUrl(\"https://example.com/badge-123.svg\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: gitlab:Project\n  example:\n    type: gitlab:ProjectBadge\n    properties:\n      project: ${foo.id}\n      linkUrl: https://example.com/badge-123\n      imageUrl: https://example.com/badge-123.svg\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGitLab project badges can be imported using an id made up of `{project_id}:{badge_id}`, e.g.\n\n```sh\n $ pulumi import gitlab:index/projectBadge:ProjectBadge foo 1:3\n```\n\n ",
+            "description": "The `gitlab.ProjectBadge` resource allows to manage the lifecycle of project badges.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#project-badges)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.Project(\"foo\", {});\nconst example = new gitlab.ProjectBadge(\"example\", {\n    project: foo.id,\n    linkUrl: \"https://example.com/badge-123\",\n    imageUrl: \"https://example.com/badge-123.svg\",\n});\n// Pipeline status badges with placeholders will be enabled\nconst gitlabPipeline = new gitlab.ProjectBadge(\"gitlabPipeline\", {\n    project: foo.id,\n    linkUrl: \"https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}\",\n    imageUrl: \"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg\",\n});\n// Test coverage report badges with placeholders will be enabled\nconst gitlabCoverage = new gitlab.ProjectBadge(\"gitlabCoverage\", {\n    project: foo.id,\n    linkUrl: \"https://gitlab.example.com/%{project_path}/-/jobs\",\n    imageUrl: \"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg\",\n});\n// Latest release badges with placeholders will be enabled\nconst gitlabRelease = new gitlab.ProjectBadge(\"gitlabRelease\", {\n    project: foo.id,\n    linkUrl: \"https://gitlab.example.com/%{project_path}/-/releases\",\n    imageUrl: \"https://gitlab.example.com/%{project_path}/-/badges/release.svg\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.Project(\"foo\")\nexample = gitlab.ProjectBadge(\"example\",\n    project=foo.id,\n    link_url=\"https://example.com/badge-123\",\n    image_url=\"https://example.com/badge-123.svg\")\n# Pipeline status badges with placeholders will be enabled\ngitlab_pipeline = gitlab.ProjectBadge(\"gitlabPipeline\",\n    project=foo.id,\n    link_url=\"https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}\",\n    image_url=\"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg\")\n# Test coverage report badges with placeholders will be enabled\ngitlab_coverage = gitlab.ProjectBadge(\"gitlabCoverage\",\n    project=foo.id,\n    link_url=\"https://gitlab.example.com/%{project_path}/-/jobs\",\n    image_url=\"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg\")\n# Latest release badges with placeholders will be enabled\ngitlab_release = gitlab.ProjectBadge(\"gitlabRelease\",\n    project=foo.id,\n    link_url=\"https://gitlab.example.com/%{project_path}/-/releases\",\n    image_url=\"https://gitlab.example.com/%{project_path}/-/badges/release.svg\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new GitLab.Project(\"foo\");\n\n    var example = new GitLab.ProjectBadge(\"example\", new()\n    {\n        Project = foo.Id,\n        LinkUrl = \"https://example.com/badge-123\",\n        ImageUrl = \"https://example.com/badge-123.svg\",\n    });\n\n    // Pipeline status badges with placeholders will be enabled\n    var gitlabPipeline = new GitLab.ProjectBadge(\"gitlabPipeline\", new()\n    {\n        Project = foo.Id,\n        LinkUrl = \"https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}\",\n        ImageUrl = \"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg\",\n    });\n\n    // Test coverage report badges with placeholders will be enabled\n    var gitlabCoverage = new GitLab.ProjectBadge(\"gitlabCoverage\", new()\n    {\n        Project = foo.Id,\n        LinkUrl = \"https://gitlab.example.com/%{project_path}/-/jobs\",\n        ImageUrl = \"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg\",\n    });\n\n    // Latest release badges with placeholders will be enabled\n    var gitlabRelease = new GitLab.ProjectBadge(\"gitlabRelease\", new()\n    {\n        Project = foo.Id,\n        LinkUrl = \"https://gitlab.example.com/%{project_path}/-/releases\",\n        ImageUrl = \"https://gitlab.example.com/%{project_path}/-/badges/release.svg\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := gitlab.NewProject(ctx, \"foo\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectBadge(ctx, \"example\", \u0026gitlab.ProjectBadgeArgs{\n\t\t\tProject:  foo.ID(),\n\t\t\tLinkUrl:  pulumi.String(\"https://example.com/badge-123\"),\n\t\t\tImageUrl: pulumi.String(\"https://example.com/badge-123.svg\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectBadge(ctx, \"gitlabPipeline\", \u0026gitlab.ProjectBadgeArgs{\n\t\t\tProject:  foo.ID(),\n\t\t\tLinkUrl:  pulumi.String(\"https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}\"),\n\t\t\tImageUrl: pulumi.String(\"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectBadge(ctx, \"gitlabCoverage\", \u0026gitlab.ProjectBadgeArgs{\n\t\t\tProject:  foo.ID(),\n\t\t\tLinkUrl:  pulumi.String(\"https://gitlab.example.com/%{project_path}/-/jobs\"),\n\t\t\tImageUrl: pulumi.String(\"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectBadge(ctx, \"gitlabRelease\", \u0026gitlab.ProjectBadgeArgs{\n\t\t\tProject:  foo.ID(),\n\t\t\tLinkUrl:  pulumi.String(\"https://gitlab.example.com/%{project_path}/-/releases\"),\n\t\t\tImageUrl: pulumi.String(\"https://gitlab.example.com/%{project_path}/-/badges/release.svg\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectBadge;\nimport com.pulumi.gitlab.ProjectBadgeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new Project(\"foo\");\n\n        var example = new ProjectBadge(\"example\", ProjectBadgeArgs.builder()        \n            .project(foo.id())\n            .linkUrl(\"https://example.com/badge-123\")\n            .imageUrl(\"https://example.com/badge-123.svg\")\n            .build());\n\n        var gitlabPipeline = new ProjectBadge(\"gitlabPipeline\", ProjectBadgeArgs.builder()        \n            .project(foo.id())\n            .linkUrl(\"https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}\")\n            .imageUrl(\"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg\")\n            .build());\n\n        var gitlabCoverage = new ProjectBadge(\"gitlabCoverage\", ProjectBadgeArgs.builder()        \n            .project(foo.id())\n            .linkUrl(\"https://gitlab.example.com/%{project_path}/-/jobs\")\n            .imageUrl(\"https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg\")\n            .build());\n\n        var gitlabRelease = new ProjectBadge(\"gitlabRelease\", ProjectBadgeArgs.builder()        \n            .project(foo.id())\n            .linkUrl(\"https://gitlab.example.com/%{project_path}/-/releases\")\n            .imageUrl(\"https://gitlab.example.com/%{project_path}/-/badges/release.svg\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: gitlab:Project\n  example:\n    type: gitlab:ProjectBadge\n    properties:\n      project: ${foo.id}\n      linkUrl: https://example.com/badge-123\n      imageUrl: https://example.com/badge-123.svg\n  # Pipeline status badges with placeholders will be enabled\n  gitlabPipeline:\n    type: gitlab:ProjectBadge\n    properties:\n      project: ${foo.id}\n      linkUrl: https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}\n      imageUrl: https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg\n  # Test coverage report badges with placeholders will be enabled\n  gitlabCoverage:\n    type: gitlab:ProjectBadge\n    properties:\n      project: ${foo.id}\n      linkUrl: https://gitlab.example.com/%{project_path}/-/jobs\n      imageUrl: https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg\n  # Latest release badges with placeholders will be enabled\n  gitlabRelease:\n    type: gitlab:ProjectBadge\n    properties:\n      project: ${foo.id}\n      linkUrl: https://gitlab.example.com/%{project_path}/-/releases\n      imageUrl: https://gitlab.example.com/%{project_path}/-/badges/release.svg\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGitLab project badges can be imported using an id made up of `{project_id}:{badge_id}`, e.g.\n\n```sh\n $ pulumi import gitlab:index/projectBadge:ProjectBadge foo 1:3\n```\n\n ",
             "properties": {
                 "imageUrl": {
                     "type": "string",
@@ -13177,6 +13283,51 @@
                     "providerType": {
                         "type": "string",
                         "description": "Provider type.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/projectComplianceFramework:ProjectComplianceFramework": {
+            "description": "The `gitlab.ProjectComplianceFramework` resource allows to manage the lifecycle of a compliance framework on a project.\n\n\u003e This resource requires a GitLab Enterprise instance with a Premium license to set the compliance framework on a project.\n\n**Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationprojectsetcomplianceframework)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst sampleComplianceFramework = new gitlab.ComplianceFramework(\"sampleComplianceFramework\", {\n    namespacePath: \"top-level-group\",\n    description: \"A HIPAA Compliance Framework\",\n    color: \"#87BEEF\",\n    \"default\": false,\n    pipelineConfigurationFullPath: \".hipaa.yml@top-level-group/compliance-frameworks\",\n});\nconst sampleProjectComplianceFramework = new gitlab.ProjectComplianceFramework(\"sampleProjectComplianceFramework\", {\n    complianceFrameworkId: sampleComplianceFramework.frameworkId,\n    project: \"12345678\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nsample_compliance_framework = gitlab.ComplianceFramework(\"sampleComplianceFramework\",\n    namespace_path=\"top-level-group\",\n    description=\"A HIPAA Compliance Framework\",\n    color=\"#87BEEF\",\n    default=False,\n    pipeline_configuration_full_path=\".hipaa.yml@top-level-group/compliance-frameworks\")\nsample_project_compliance_framework = gitlab.ProjectComplianceFramework(\"sampleProjectComplianceFramework\",\n    compliance_framework_id=sample_compliance_framework.framework_id,\n    project=\"12345678\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sampleComplianceFramework = new GitLab.ComplianceFramework(\"sampleComplianceFramework\", new()\n    {\n        NamespacePath = \"top-level-group\",\n        Description = \"A HIPAA Compliance Framework\",\n        Color = \"#87BEEF\",\n        Default = false,\n        PipelineConfigurationFullPath = \".hipaa.yml@top-level-group/compliance-frameworks\",\n    });\n\n    var sampleProjectComplianceFramework = new GitLab.ProjectComplianceFramework(\"sampleProjectComplianceFramework\", new()\n    {\n        ComplianceFrameworkId = sampleComplianceFramework.FrameworkId,\n        Project = \"12345678\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsampleComplianceFramework, err := gitlab.NewComplianceFramework(ctx, \"sampleComplianceFramework\", \u0026gitlab.ComplianceFrameworkArgs{\n\t\t\tNamespacePath:                 pulumi.String(\"top-level-group\"),\n\t\t\tDescription:                   pulumi.String(\"A HIPAA Compliance Framework\"),\n\t\t\tColor:                         pulumi.String(\"#87BEEF\"),\n\t\t\tDefault:                       pulumi.Bool(false),\n\t\t\tPipelineConfigurationFullPath: pulumi.String(\".hipaa.yml@top-level-group/compliance-frameworks\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectComplianceFramework(ctx, \"sampleProjectComplianceFramework\", \u0026gitlab.ProjectComplianceFrameworkArgs{\n\t\t\tComplianceFrameworkId: sampleComplianceFramework.FrameworkId,\n\t\t\tProject:               pulumi.String(\"12345678\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.ComplianceFramework;\nimport com.pulumi.gitlab.ComplianceFrameworkArgs;\nimport com.pulumi.gitlab.ProjectComplianceFramework;\nimport com.pulumi.gitlab.ProjectComplianceFrameworkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sampleComplianceFramework = new ComplianceFramework(\"sampleComplianceFramework\", ComplianceFrameworkArgs.builder()        \n            .namespacePath(\"top-level-group\")\n            .description(\"A HIPAA Compliance Framework\")\n            .color(\"#87BEEF\")\n            .default_(false)\n            .pipelineConfigurationFullPath(\".hipaa.yml@top-level-group/compliance-frameworks\")\n            .build());\n\n        var sampleProjectComplianceFramework = new ProjectComplianceFramework(\"sampleProjectComplianceFramework\", ProjectComplianceFrameworkArgs.builder()        \n            .complianceFrameworkId(sampleComplianceFramework.frameworkId())\n            .project(\"12345678\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sampleComplianceFramework:\n    type: gitlab:ComplianceFramework\n    properties:\n      namespacePath: top-level-group\n      description: A HIPAA Compliance Framework\n      color: '#87BEEF'\n      default: false\n      pipelineConfigurationFullPath: .hipaa.yml@top-level-group/compliance-frameworks\n  sampleProjectComplianceFramework:\n    type: gitlab:ProjectComplianceFramework\n    properties:\n      complianceFrameworkId: ${sampleComplianceFramework.frameworkId}\n      project: '12345678'\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGitlab project compliance frameworks can be imported with a key composed of `\u003cproject_id\u003e`, e.g.\n\n```sh\n $ pulumi import gitlab:index/projectComplianceFramework:ProjectComplianceFramework sample \"42\"\n```\n\n ",
+            "properties": {
+                "complianceFrameworkId": {
+                    "type": "string",
+                    "description": "Globally unique ID of the compliance framework to assign to the project.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The ID or full path of the project to change the compliance framework of.\n"
+                }
+            },
+            "required": [
+                "complianceFrameworkId",
+                "project"
+            ],
+            "inputProperties": {
+                "complianceFrameworkId": {
+                    "type": "string",
+                    "description": "Globally unique ID of the compliance framework to assign to the project.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The ID or full path of the project to change the compliance framework of.\n"
+                }
+            },
+            "requiredInputs": [
+                "complianceFrameworkId",
+                "project"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ProjectComplianceFramework resources.\n",
+                "properties": {
+                    "complianceFrameworkId": {
+                        "type": "string",
+                        "description": "Globally unique ID of the compliance framework to assign to the project.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The ID or full path of the project to change the compliance framework of.\n"
                     }
                 },
                 "type": "object"
@@ -15394,7 +15545,7 @@
                 },
                 "content": {
                     "type": "string",
-                    "description": "File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).\n"
+                    "description": "File content.\n"
                 },
                 "contentSha256": {
                     "type": "string",
@@ -15475,7 +15626,7 @@
                 },
                 "content": {
                     "type": "string",
-                    "description": "File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).\n"
+                    "description": "File content.\n"
                 },
                 "encoding": {
                     "type": "string",
@@ -15541,7 +15692,7 @@
                     },
                     "content": {
                         "type": "string",
-                        "description": "File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).\n"
+                        "description": "File content.\n"
                     },
                     "contentSha256": {
                         "type": "string",
@@ -18725,6 +18876,10 @@
                     "sort": {
                         "type": "string",
                         "description": "Sort groups' list in asc or desc order. (Requires administrator privileges)\n"
+                    },
+                    "topLevelOnly": {
+                        "type": "boolean",
+                        "description": "Limit to top level groups, excluding all subgroups.\n"
                     }
                 },
                 "type": "object"
@@ -18754,6 +18909,10 @@
                     "sort": {
                         "type": "string",
                         "description": "Sort groups' list in asc or desc order. (Requires administrator privileges)\n"
+                    },
+                    "topLevelOnly": {
+                        "type": "boolean",
+                        "description": "Limit to top level groups, excluding all subgroups.\n"
                     }
                 },
                 "type": "object",
@@ -20711,6 +20870,13 @@
                         "type": "boolean",
                         "description": "Include project statistics. Cannot be used with `group_id`.\n"
                     },
+                    "topics": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Limit by projects that have all of the given topics.\n"
+                    },
                     "visibility": {
                         "type": "string",
                         "description": "Limit by visibility `public`, `internal`, or `private`.\n"
@@ -20811,6 +20977,13 @@
                     "statistics": {
                         "type": "boolean",
                         "description": "Include project statistics. Cannot be used with `group_id`.\n"
+                    },
+                    "topics": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Limit by projects that have all of the given topics.\n"
                     },
                     "visibility": {
                         "type": "string",
@@ -21020,7 +21193,7 @@
                     },
                     "content": {
                         "type": "string",
-                        "description": "File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).\n"
+                        "description": "File content.\n"
                     },
                     "contentSha256": {
                         "type": "string",

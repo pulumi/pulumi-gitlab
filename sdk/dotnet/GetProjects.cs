@@ -201,6 +201,18 @@ namespace Pulumi.GitLab
         [Input("statistics")]
         public bool? Statistics { get; set; }
 
+        [Input("topics")]
+        private List<string>? _topics;
+
+        /// <summary>
+        /// Limit by projects that have all of the given topics.
+        /// </summary>
+        public List<string> Topics
+        {
+            get => _topics ?? (_topics = new List<string>());
+            set => _topics = value;
+        }
+
         /// <summary>
         /// Limit by visibility `public`, `internal`, or `private`.
         /// </summary>
@@ -335,6 +347,18 @@ namespace Pulumi.GitLab
         [Input("statistics")]
         public Input<bool>? Statistics { get; set; }
 
+        [Input("topics")]
+        private InputList<string>? _topics;
+
+        /// <summary>
+        /// Limit by projects that have all of the given topics.
+        /// </summary>
+        public InputList<string> Topics
+        {
+            get => _topics ?? (_topics = new InputList<string>());
+            set => _topics = value;
+        }
+
         /// <summary>
         /// Limit by visibility `public`, `internal`, or `private`.
         /// </summary>
@@ -450,6 +474,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool? Statistics;
         /// <summary>
+        /// Limit by projects that have all of the given topics.
+        /// </summary>
+        public readonly ImmutableArray<string> Topics;
+        /// <summary>
         /// Limit by visibility `public`, `internal`, or `private`.
         /// </summary>
         public readonly string? Visibility;
@@ -510,6 +538,8 @@ namespace Pulumi.GitLab
 
             bool? statistics,
 
+            ImmutableArray<string> topics,
+
             string? visibility,
 
             bool? withCustomAttributes,
@@ -539,6 +569,7 @@ namespace Pulumi.GitLab
             Sort = sort;
             Starred = starred;
             Statistics = statistics;
+            Topics = topics;
             Visibility = visibility;
             WithCustomAttributes = withCustomAttributes;
             WithIssuesEnabled = withIssuesEnabled;

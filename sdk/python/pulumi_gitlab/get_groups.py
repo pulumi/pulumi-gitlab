@@ -22,7 +22,7 @@ class GetGroupsResult:
     """
     A collection of values returned by getGroups.
     """
-    def __init__(__self__, groups=None, id=None, order_by=None, search=None, sort=None):
+    def __init__(__self__, groups=None, id=None, order_by=None, search=None, sort=None, top_level_only=None):
         if groups and not isinstance(groups, list):
             raise TypeError("Expected argument 'groups' to be a list")
         pulumi.set(__self__, "groups", groups)
@@ -38,6 +38,9 @@ class GetGroupsResult:
         if sort and not isinstance(sort, str):
             raise TypeError("Expected argument 'sort' to be a str")
         pulumi.set(__self__, "sort", sort)
+        if top_level_only and not isinstance(top_level_only, bool):
+            raise TypeError("Expected argument 'top_level_only' to be a bool")
+        pulumi.set(__self__, "top_level_only", top_level_only)
 
     @property
     @pulumi.getter
@@ -79,6 +82,14 @@ class GetGroupsResult:
         """
         return pulumi.get(self, "sort")
 
+    @property
+    @pulumi.getter(name="topLevelOnly")
+    def top_level_only(self) -> Optional[bool]:
+        """
+        Limit to top level groups, excluding all subgroups.
+        """
+        return pulumi.get(self, "top_level_only")
+
 
 class AwaitableGetGroupsResult(GetGroupsResult):
     # pylint: disable=using-constant-test
@@ -90,12 +101,14 @@ class AwaitableGetGroupsResult(GetGroupsResult):
             id=self.id,
             order_by=self.order_by,
             search=self.search,
-            sort=self.sort)
+            sort=self.sort,
+            top_level_only=self.top_level_only)
 
 
 def get_groups(order_by: Optional[str] = None,
                search: Optional[str] = None,
                sort: Optional[str] = None,
+               top_level_only: Optional[bool] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupsResult:
     """
     The `get_groups` data source allows details of multiple groups to be retrieved given some optional filter criteria.
@@ -121,11 +134,13 @@ def get_groups(order_by: Optional[str] = None,
     :param str order_by: Order the groups' list by `id`, `name`, `path`, or `similarity`. (Requires administrator privileges)
     :param str search: Search groups by name or path.
     :param str sort: Sort groups' list in asc or desc order. (Requires administrator privileges)
+    :param bool top_level_only: Limit to top level groups, excluding all subgroups.
     """
     __args__ = dict()
     __args__['orderBy'] = order_by
     __args__['search'] = search
     __args__['sort'] = sort
+    __args__['topLevelOnly'] = top_level_only
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gitlab:index/getGroups:getGroups', __args__, opts=opts, typ=GetGroupsResult).value
 
@@ -134,13 +149,15 @@ def get_groups(order_by: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         order_by=pulumi.get(__ret__, 'order_by'),
         search=pulumi.get(__ret__, 'search'),
-        sort=pulumi.get(__ret__, 'sort'))
+        sort=pulumi.get(__ret__, 'sort'),
+        top_level_only=pulumi.get(__ret__, 'top_level_only'))
 
 
 @_utilities.lift_output_func(get_groups)
 def get_groups_output(order_by: Optional[pulumi.Input[Optional[str]]] = None,
                       search: Optional[pulumi.Input[Optional[str]]] = None,
                       sort: Optional[pulumi.Input[Optional[str]]] = None,
+                      top_level_only: Optional[pulumi.Input[Optional[bool]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
     """
     The `get_groups` data source allows details of multiple groups to be retrieved given some optional filter criteria.
@@ -166,5 +183,6 @@ def get_groups_output(order_by: Optional[pulumi.Input[Optional[str]]] = None,
     :param str order_by: Order the groups' list by `id`, `name`, `path`, or `similarity`. (Requires administrator privileges)
     :param str search: Search groups by name or path.
     :param str sort: Sort groups' list in asc or desc order. (Requires administrator privileges)
+    :param bool top_level_only: Limit to top level groups, excluding all subgroups.
     """
     ...

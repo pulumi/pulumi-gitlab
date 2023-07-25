@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupGroupMembership(ctx *pulumi.Context, args *LookupGroupMembershipArgs, opts ...pulumi.InvokeOption) (*LookupGroupMembershipResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupMembershipResult
 	err := ctx.Invoke("gitlab:index/getGroupMembership:getGroupMembership", args, &rv, opts...)
 	if err != nil {

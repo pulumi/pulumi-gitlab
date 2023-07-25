@@ -113,6 +113,12 @@ namespace Pulumi.GitLab
         [Input("sort")]
         public string? Sort { get; set; }
 
+        /// <summary>
+        /// Limit to top level groups, excluding all subgroups.
+        /// </summary>
+        [Input("topLevelOnly")]
+        public bool? TopLevelOnly { get; set; }
+
         public GetGroupsArgs()
         {
         }
@@ -138,6 +144,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("sort")]
         public Input<string>? Sort { get; set; }
+
+        /// <summary>
+        /// Limit to top level groups, excluding all subgroups.
+        /// </summary>
+        [Input("topLevelOnly")]
+        public Input<bool>? TopLevelOnly { get; set; }
 
         public GetGroupsInvokeArgs()
         {
@@ -169,6 +181,10 @@ namespace Pulumi.GitLab
         /// Sort groups' list in asc or desc order. (Requires administrator privileges)
         /// </summary>
         public readonly string? Sort;
+        /// <summary>
+        /// Limit to top level groups, excluding all subgroups.
+        /// </summary>
+        public readonly bool? TopLevelOnly;
 
         [OutputConstructor]
         private GetGroupsResult(
@@ -180,13 +196,16 @@ namespace Pulumi.GitLab
 
             string? search,
 
-            string? sort)
+            string? sort,
+
+            bool? topLevelOnly)
         {
             Groups = groups;
             Id = id;
             OrderBy = orderBy;
             Search = search;
             Sort = sort;
+            TopLevelOnly = topLevelOnly;
         }
     }
 }

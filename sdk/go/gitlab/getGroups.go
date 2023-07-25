@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,6 +52,7 @@ import (
 //
 // ```
 func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOption) (*GetGroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupsResult
 	err := ctx.Invoke("gitlab:index/getGroups:getGroups", args, &rv, opts...)
 	if err != nil {
@@ -67,6 +69,8 @@ type GetGroupsArgs struct {
 	Search *string `pulumi:"search"`
 	// Sort groups' list in asc or desc order. (Requires administrator privileges)
 	Sort *string `pulumi:"sort"`
+	// Limit to top level groups, excluding all subgroups.
+	TopLevelOnly *bool `pulumi:"topLevelOnly"`
 }
 
 // A collection of values returned by getGroups.
@@ -81,6 +85,8 @@ type GetGroupsResult struct {
 	Search *string `pulumi:"search"`
 	// Sort groups' list in asc or desc order. (Requires administrator privileges)
 	Sort *string `pulumi:"sort"`
+	// Limit to top level groups, excluding all subgroups.
+	TopLevelOnly *bool `pulumi:"topLevelOnly"`
 }
 
 func GetGroupsOutput(ctx *pulumi.Context, args GetGroupsOutputArgs, opts ...pulumi.InvokeOption) GetGroupsResultOutput {
@@ -104,6 +110,8 @@ type GetGroupsOutputArgs struct {
 	Search pulumi.StringPtrInput `pulumi:"search"`
 	// Sort groups' list in asc or desc order. (Requires administrator privileges)
 	Sort pulumi.StringPtrInput `pulumi:"sort"`
+	// Limit to top level groups, excluding all subgroups.
+	TopLevelOnly pulumi.BoolPtrInput `pulumi:"topLevelOnly"`
 }
 
 func (GetGroupsOutputArgs) ElementType() reflect.Type {
@@ -148,6 +156,11 @@ func (o GetGroupsResultOutput) Search() pulumi.StringPtrOutput {
 // Sort groups' list in asc or desc order. (Requires administrator privileges)
 func (o GetGroupsResultOutput) Sort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGroupsResult) *string { return v.Sort }).(pulumi.StringPtrOutput)
+}
+
+// Limit to top level groups, excluding all subgroups.
+func (o GetGroupsResultOutput) TopLevelOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGroupsResult) *bool { return v.TopLevelOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

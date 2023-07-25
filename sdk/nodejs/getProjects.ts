@@ -56,6 +56,7 @@ export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions)
         "sort": args.sort,
         "starred": args.starred,
         "statistics": args.statistics,
+        "topics": args.topics,
         "visibility": args.visibility,
         "withCustomAttributes": args.withCustomAttributes,
         "withIssuesEnabled": args.withIssuesEnabled,
@@ -129,6 +130,10 @@ export interface GetProjectsArgs {
      * Include project statistics. Cannot be used with `groupId`.
      */
     statistics?: boolean;
+    /**
+     * Limit by projects that have all of the given topics.
+     */
+    topics?: string[];
     /**
      * Limit by visibility `public`, `internal`, or `private`.
      */
@@ -227,6 +232,10 @@ export interface GetProjectsResult {
      * Include project statistics. Cannot be used with `groupId`.
      */
     readonly statistics?: boolean;
+    /**
+     * Limit by projects that have all of the given topics.
+     */
+    readonly topics?: string[];
     /**
      * Limit by visibility `public`, `internal`, or `private`.
      */
@@ -350,6 +359,10 @@ export interface GetProjectsOutputArgs {
      * Include project statistics. Cannot be used with `groupId`.
      */
     statistics?: pulumi.Input<boolean>;
+    /**
+     * Limit by projects that have all of the given topics.
+     */
+    topics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Limit by visibility `public`, `internal`, or `private`.
      */

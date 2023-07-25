@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetGroupSubgroups(ctx *pulumi.Context, args *GetGroupSubgroupsArgs, opts ...pulumi.InvokeOption) (*GetGroupSubgroupsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupSubgroupsResult
 	err := ctx.Invoke("gitlab:index/getGroupSubgroups:getGroupSubgroups", args, &rv, opts...)
 	if err != nil {

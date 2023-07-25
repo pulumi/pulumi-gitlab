@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func LookupRepositoryFile(ctx *pulumi.Context, args *LookupRepositoryFileArgs, opts ...pulumi.InvokeOption) (*LookupRepositoryFileResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRepositoryFileResult
 	err := ctx.Invoke("gitlab:index/getRepositoryFile:getRepositoryFile", args, &rv, opts...)
 	if err != nil {
@@ -66,7 +68,7 @@ type LookupRepositoryFileResult struct {
 	BlobId string `pulumi:"blobId"`
 	// The commit id.
 	CommitId string `pulumi:"commitId"`
-	// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+	// File content.
 	Content string `pulumi:"content"`
 	// File content sha256 digest.
 	ContentSha256 string `pulumi:"contentSha256"`
@@ -142,7 +144,7 @@ func (o LookupRepositoryFileResultOutput) CommitId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.CommitId }).(pulumi.StringOutput)
 }
 
-// File content. If the content is not yet base64 encoded, it will be encoded automatically. No other encoding is currently supported, because of a [GitLab API bug](https://gitlab.com/gitlab-org/gitlab/-/issues/342430).
+// File content.
 func (o LookupRepositoryFileResultOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.Content }).(pulumi.StringOutput)
 }

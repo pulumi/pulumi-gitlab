@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -86,6 +87,7 @@ func NewGroupProjectFileTemplate(ctx *pulumi.Context,
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GroupProjectFileTemplate
 	err := ctx.RegisterResource("gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate", name, args, &resource, opts...)
 	if err != nil {

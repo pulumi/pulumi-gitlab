@@ -35,6 +35,11 @@ export type ClusterAgentToken = import("./clusterAgentToken").ClusterAgentToken;
 export const ClusterAgentToken: typeof import("./clusterAgentToken").ClusterAgentToken = null as any;
 utilities.lazyLoad(exports, ["ClusterAgentToken"], () => require("./clusterAgentToken"));
 
+export { ComplianceFrameworkArgs, ComplianceFrameworkState } from "./complianceFramework";
+export type ComplianceFramework = import("./complianceFramework").ComplianceFramework;
+export const ComplianceFramework: typeof import("./complianceFramework").ComplianceFramework = null as any;
+utilities.lazyLoad(exports, ["ComplianceFramework"], () => require("./complianceFramework"));
+
 export { DeployKeyArgs, DeployKeyState } from "./deployKey";
 export type DeployKey = import("./deployKey").DeployKey;
 export const DeployKey: typeof import("./deployKey").DeployKey = null as any;
@@ -417,6 +422,11 @@ export type ProjectCluster = import("./projectCluster").ProjectCluster;
 export const ProjectCluster: typeof import("./projectCluster").ProjectCluster = null as any;
 utilities.lazyLoad(exports, ["ProjectCluster"], () => require("./projectCluster"));
 
+export { ProjectComplianceFrameworkArgs, ProjectComplianceFrameworkState } from "./projectComplianceFramework";
+export type ProjectComplianceFramework = import("./projectComplianceFramework").ProjectComplianceFramework;
+export const ProjectComplianceFramework: typeof import("./projectComplianceFramework").ProjectComplianceFramework = null as any;
+utilities.lazyLoad(exports, ["ProjectComplianceFramework"], () => require("./projectComplianceFramework"));
+
 export { ProjectCustomAttributeArgs, ProjectCustomAttributeState } from "./projectCustomAttribute";
 export type ProjectCustomAttribute = import("./projectCustomAttribute").ProjectCustomAttribute;
 export const ProjectCustomAttribute: typeof import("./projectCustomAttribute").ProjectCustomAttribute = null as any;
@@ -618,6 +628,8 @@ const _module = {
                 return new ClusterAgent(name, <any>undefined, { urn })
             case "gitlab:index/clusterAgentToken:ClusterAgentToken":
                 return new ClusterAgentToken(name, <any>undefined, { urn })
+            case "gitlab:index/complianceFramework:ComplianceFramework":
+                return new ComplianceFramework(name, <any>undefined, { urn })
             case "gitlab:index/deployKey:DeployKey":
                 return new DeployKey(name, <any>undefined, { urn })
             case "gitlab:index/deployKeyEnable:DeployKeyEnable":
@@ -692,6 +704,8 @@ const _module = {
                 return new ProjectBadge(name, <any>undefined, { urn })
             case "gitlab:index/projectCluster:ProjectCluster":
                 return new ProjectCluster(name, <any>undefined, { urn })
+            case "gitlab:index/projectComplianceFramework:ProjectComplianceFramework":
+                return new ProjectComplianceFramework(name, <any>undefined, { urn })
             case "gitlab:index/projectCustomAttribute:ProjectCustomAttribute":
                 return new ProjectCustomAttribute(name, <any>undefined, { urn })
             case "gitlab:index/projectEnvironment:ProjectEnvironment":
@@ -771,6 +785,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/branch", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/branchProtection", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/clusterAgent", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/clusterAgentToken", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/complianceFramework", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/deployKey", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/deployKeyEnable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/deployToken", _module)
@@ -808,6 +823,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectAccessToken", _mod
 pulumi.runtime.registerResourceModule("gitlab", "index/projectApprovalRule", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectBadge", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCluster", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectComplianceFramework", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCustomAttribute", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectEnvironment", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectFreezePeriod", _module)

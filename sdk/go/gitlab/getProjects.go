@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,6 +61,7 @@ import (
 //
 // ```
 func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.InvokeOption) (*GetProjectsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectsResult
 	err := ctx.Invoke("gitlab:index/getProjects:getProjects", args, &rv, opts...)
 	if err != nil {
@@ -100,6 +102,8 @@ type GetProjectsArgs struct {
 	Starred *bool `pulumi:"starred"`
 	// Include project statistics. Cannot be used with `groupId`.
 	Statistics *bool `pulumi:"statistics"`
+	// Limit by projects that have all of the given topics.
+	Topics []string `pulumi:"topics"`
 	// Limit by visibility `public`, `internal`, or `private`.
 	Visibility *string `pulumi:"visibility"`
 	// Include custom attributes in response *(admins only)*.
@@ -150,6 +154,8 @@ type GetProjectsResult struct {
 	Starred *bool `pulumi:"starred"`
 	// Include project statistics. Cannot be used with `groupId`.
 	Statistics *bool `pulumi:"statistics"`
+	// Limit by projects that have all of the given topics.
+	Topics []string `pulumi:"topics"`
 	// Limit by visibility `public`, `internal`, or `private`.
 	Visibility *string `pulumi:"visibility"`
 	// Include custom attributes in response *(admins only)*.
@@ -209,6 +215,8 @@ type GetProjectsOutputArgs struct {
 	Starred pulumi.BoolPtrInput `pulumi:"starred"`
 	// Include project statistics. Cannot be used with `groupId`.
 	Statistics pulumi.BoolPtrInput `pulumi:"statistics"`
+	// Limit by projects that have all of the given topics.
+	Topics pulumi.StringArrayInput `pulumi:"topics"`
 	// Limit by visibility `public`, `internal`, or `private`.
 	Visibility pulumi.StringPtrInput `pulumi:"visibility"`
 	// Include custom attributes in response *(admins only)*.
@@ -325,6 +333,11 @@ func (o GetProjectsResultOutput) Starred() pulumi.BoolPtrOutput {
 // Include project statistics. Cannot be used with `groupId`.
 func (o GetProjectsResultOutput) Statistics() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *bool { return v.Statistics }).(pulumi.BoolPtrOutput)
+}
+
+// Limit by projects that have all of the given topics.
+func (o GetProjectsResultOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProjectsResult) []string { return v.Topics }).(pulumi.StringArrayOutput)
 }
 
 // Limit by visibility `public`, `internal`, or `private`.

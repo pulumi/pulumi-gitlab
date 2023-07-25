@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,6 +56,7 @@ func NewProjectIssueBoard(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectIssueBoard
 	err := ctx.RegisterResource("gitlab:index/projectIssueBoard:ProjectIssueBoard", name, args, &resource, opts...)
 	if err != nil {

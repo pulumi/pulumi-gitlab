@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.GroupBadge` resource allows to mange the lifecycle of group badges.
+    /// The `gitlab.GroupBadge` resource allows to manage the lifecycle of group badges.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#group-badges)
     /// 
@@ -31,6 +31,30 @@ namespace Pulumi.GitLab
     ///         Group = foo.Id,
     ///         LinkUrl = "https://example.com/badge-123",
     ///         ImageUrl = "https://example.com/badge-123.svg",
+    ///     });
+    /// 
+    ///     // Pipeline status badges with placeholders will be enabled for each project
+    ///     var gitlabPipeline = new GitLab.GroupBadge("gitlabPipeline", new()
+    ///     {
+    ///         Group = foo.Id,
+    ///         LinkUrl = "https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}",
+    ///         ImageUrl = "https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg",
+    ///     });
+    /// 
+    ///     // Test coverage report badges with placeholders will be enabled for each project
+    ///     var gitlabCoverage = new GitLab.GroupBadge("gitlabCoverage", new()
+    ///     {
+    ///         Group = foo.Id,
+    ///         LinkUrl = "https://gitlab.example.com/%{project_path}/-/jobs",
+    ///         ImageUrl = "https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg",
+    ///     });
+    /// 
+    ///     // Latest release badges with placeholders will be enabled for each project
+    ///     var gitlabRelease = new GitLab.GroupBadge("gitlabRelease", new()
+    ///     {
+    ///         Group = foo.Id,
+    ///         LinkUrl = "https://gitlab.example.com/%{project_path}/-/releases",
+    ///         ImageUrl = "https://gitlab.example.com/%{project_path}/-/badges/release.svg",
     ///     });
     /// 
     /// });

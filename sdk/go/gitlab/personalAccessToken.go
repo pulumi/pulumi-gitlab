@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -104,6 +105,7 @@ func NewPersonalAccessToken(ctx *pulumi.Context,
 		"token",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PersonalAccessToken
 	err := ctx.RegisterResource("gitlab:index/personalAccessToken:PersonalAccessToken", name, args, &resource, opts...)
 	if err != nil {

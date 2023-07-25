@@ -4,6 +4,7 @@
 package gitlab
 
 import (
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,7 @@ import (
 //
 // ```
 func GetCurrentUser(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCurrentUserResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCurrentUserResult
 	err := ctx.Invoke("gitlab:index/getCurrentUser:getCurrentUser", nil, &rv, opts...)
 	if err != nil {

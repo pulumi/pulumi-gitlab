@@ -1664,14 +1664,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.htmlEmailsEnabled;
     }
     /**
-     * Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+     * Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
      * 
      */
     @Export(name="importSources", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> importSources;
 
     /**
-     * @return Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+     * @return Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
      * 
      */
     public Output<List<String>> importSources() {

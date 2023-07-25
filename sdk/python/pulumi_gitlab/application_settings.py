@@ -373,7 +373,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[int] housekeeping_gc_period: Number of Git pushes after which git gc is run.
         :param pulumi.Input[int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[bool] html_emails_enabled: Enable HTML emails.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] import_sources: Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] import_sources: Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         :param pulumi.Input[bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
         :param pulumi.Input[int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         :param pulumi.Input[int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
@@ -2370,7 +2370,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="importSources")
     def import_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+        Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         """
         return pulumi.get(self, "import_sources")
 
@@ -4253,7 +4253,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[int] housekeeping_gc_period: Number of Git pushes after which git gc is run.
         :param pulumi.Input[int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[bool] html_emails_enabled: Enable HTML emails.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] import_sources: Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] import_sources: Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         :param pulumi.Input[bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
         :param pulumi.Input[int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         :param pulumi.Input[int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
@@ -6250,7 +6250,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="importSources")
     def import_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+        Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         """
         return pulumi.get(self, "import_sources")
 
@@ -8149,7 +8149,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[int] housekeeping_gc_period: Number of Git pushes after which git gc is run.
         :param pulumi.Input[int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[bool] html_emails_enabled: Enable HTML emails.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] import_sources: Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] import_sources: Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         :param pulumi.Input[bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
         :param pulumi.Input[int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         :param pulumi.Input[int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
@@ -9180,7 +9180,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[int] housekeeping_gc_period: Number of Git pushes after which git gc is run.
         :param pulumi.Input[int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
         :param pulumi.Input[bool] html_emails_enabled: Enable HTML emails.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] import_sources: Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] import_sources: Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         :param pulumi.Input[bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
         :param pulumi.Input[int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
         :param pulumi.Input[int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
@@ -10480,7 +10480,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="importSources")
     def import_sources(self) -> pulumi.Output[Sequence[str]]:
         """
-        Sources to allow project import from, possible values: github, bitbucket, bitbucket*server, gitlab, fogbugz, git, gitlab*project, gitea, manifest, and phabricator.
+        Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         """
         return pulumi.get(self, "import_sources")
 

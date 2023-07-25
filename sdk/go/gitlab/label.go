@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ func NewLabel(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Label
 	err := ctx.RegisterResource("gitlab:index/label:Label", name, args, &resource, opts...)
 	if err != nil {

@@ -8,10 +8,11 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `GroupBadge` resource allows to mange the lifecycle of group badges.
+// The `GroupBadge` resource allows to manage the lifecycle of group badges.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#group-badges)
 //
@@ -37,6 +38,30 @@ import (
 //				Group:    foo.ID(),
 //				LinkUrl:  pulumi.String("https://example.com/badge-123"),
 //				ImageUrl: pulumi.String("https://example.com/badge-123.svg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewGroupBadge(ctx, "gitlabPipeline", &gitlab.GroupBadgeArgs{
+//				Group:    foo.ID(),
+//				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}"),
+//				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewGroupBadge(ctx, "gitlabCoverage", &gitlab.GroupBadgeArgs{
+//				Group:    foo.ID(),
+//				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/jobs"),
+//				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewGroupBadge(ctx, "gitlabRelease", &gitlab.GroupBadgeArgs{
+//				Group:    foo.ID(),
+//				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/releases"),
+//				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/-/badges/release.svg"),
 //			})
 //			if err != nil {
 //				return err
@@ -87,6 +112,7 @@ func NewGroupBadge(ctx *pulumi.Context,
 	if args.LinkUrl == nil {
 		return nil, errors.New("invalid value for required argument 'LinkUrl'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GroupBadge
 	err := ctx.RegisterResource("gitlab:index/groupBadge:GroupBadge", name, args, &resource, opts...)
 	if err != nil {

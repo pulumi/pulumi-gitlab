@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,6 +80,7 @@ func NewProjectCustomAttribute(ctx *pulumi.Context,
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectCustomAttribute
 	err := ctx.RegisterResource("gitlab:index/projectCustomAttribute:ProjectCustomAttribute", name, args, &resource, opts...)
 	if err != nil {

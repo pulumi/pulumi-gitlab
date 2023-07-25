@@ -162,7 +162,7 @@ class GroupBadge(pulumi.CustomResource):
                  link_url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The `GroupBadge` resource allows to mange the lifecycle of group badges.
+        The `GroupBadge` resource allows to manage the lifecycle of group badges.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#group-badges)
 
@@ -177,6 +177,21 @@ class GroupBadge(pulumi.CustomResource):
             group=foo.id,
             link_url="https://example.com/badge-123",
             image_url="https://example.com/badge-123.svg")
+        # Pipeline status badges with placeholders will be enabled for each project
+        gitlab_pipeline = gitlab.GroupBadge("gitlabPipeline",
+            group=foo.id,
+            link_url="https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}",
+            image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg")
+        # Test coverage report badges with placeholders will be enabled for each project
+        gitlab_coverage = gitlab.GroupBadge("gitlabCoverage",
+            group=foo.id,
+            link_url="https://gitlab.example.com/%{project_path}/-/jobs",
+            image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg")
+        # Latest release badges with placeholders will be enabled for each project
+        gitlab_release = gitlab.GroupBadge("gitlabRelease",
+            group=foo.id,
+            link_url="https://gitlab.example.com/%{project_path}/-/releases",
+            image_url="https://gitlab.example.com/%{project_path}/-/badges/release.svg")
         ```
 
         ## Import
@@ -200,7 +215,7 @@ class GroupBadge(pulumi.CustomResource):
                  args: GroupBadgeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `GroupBadge` resource allows to mange the lifecycle of group badges.
+        The `GroupBadge` resource allows to manage the lifecycle of group badges.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#group-badges)
 
@@ -215,6 +230,21 @@ class GroupBadge(pulumi.CustomResource):
             group=foo.id,
             link_url="https://example.com/badge-123",
             image_url="https://example.com/badge-123.svg")
+        # Pipeline status badges with placeholders will be enabled for each project
+        gitlab_pipeline = gitlab.GroupBadge("gitlabPipeline",
+            group=foo.id,
+            link_url="https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}",
+            image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg")
+        # Test coverage report badges with placeholders will be enabled for each project
+        gitlab_coverage = gitlab.GroupBadge("gitlabCoverage",
+            group=foo.id,
+            link_url="https://gitlab.example.com/%{project_path}/-/jobs",
+            image_url="https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg")
+        # Latest release badges with placeholders will be enabled for each project
+        gitlab_release = gitlab.GroupBadge("gitlabRelease",
+            group=foo.id,
+            link_url="https://gitlab.example.com/%{project_path}/-/releases",
+            image_url="https://gitlab.example.com/%{project_path}/-/badges/release.svg")
         ```
 
         ## Import

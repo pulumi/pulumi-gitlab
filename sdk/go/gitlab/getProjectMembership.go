@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func LookupProjectMembership(ctx *pulumi.Context, args *LookupProjectMembershipArgs, opts ...pulumi.InvokeOption) (*LookupProjectMembershipResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectMembershipResult
 	err := ctx.Invoke("gitlab:index/getProjectMembership:getProjectMembership", args, &rv, opts...)
 	if err != nil {

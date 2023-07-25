@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,6 +80,7 @@ func NewGroupSamlLink(ctx *pulumi.Context,
 	if args.SamlGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'SamlGroupName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GroupSamlLink
 	err := ctx.RegisterResource("gitlab:index/groupSamlLink:GroupSamlLink", name, args, &resource, opts...)
 	if err != nil {

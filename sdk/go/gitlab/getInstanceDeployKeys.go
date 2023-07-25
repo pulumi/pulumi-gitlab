@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func GetInstanceDeployKeys(ctx *pulumi.Context, args *GetInstanceDeployKeysArgs, opts ...pulumi.InvokeOption) (*GetInstanceDeployKeysResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceDeployKeysResult
 	err := ctx.Invoke("gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys", args, &rv, opts...)
 	if err != nil {

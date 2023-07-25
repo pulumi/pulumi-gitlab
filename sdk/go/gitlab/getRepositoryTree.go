@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetRepositoryTree(ctx *pulumi.Context, args *GetRepositoryTreeArgs, opts ...pulumi.InvokeOption) (*GetRepositoryTreeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRepositoryTreeResult
 	err := ctx.Invoke("gitlab:index/getRepositoryTree:getRepositoryTree", args, &rv, opts...)
 	if err != nil {

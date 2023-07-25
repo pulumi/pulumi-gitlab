@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -88,6 +89,7 @@ func NewIntegrationPipelinesEmail(ctx *pulumi.Context,
 	if args.Recipients == nil {
 		return nil, errors.New("invalid value for required argument 'Recipients'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IntegrationPipelinesEmail
 	err := ctx.RegisterResource("gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail", name, args, &resource, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func GetProjectProtectedBranches(ctx *pulumi.Context, args *GetProjectProtectedBranchesArgs, opts ...pulumi.InvokeOption) (*GetProjectProtectedBranchesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectProtectedBranchesResult
 	err := ctx.Invoke("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", args, &rv, opts...)
 	if err != nil {
