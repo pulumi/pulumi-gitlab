@@ -142,9 +142,27 @@
                 "current": "gitlab:index/groupCustomAttribute:GroupCustomAttribute",
                 "majorVersion": 6
             },
+            "gitlab_group_epic_board": {
+                "current": "gitlab:index/groupEpicBoard:GroupEpicBoard",
+                "majorVersion": 6,
+                "fields": {
+                    "lists": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "gitlab_group_hook": {
                 "current": "gitlab:index/groupHook:GroupHook",
                 "majorVersion": 6
+            },
+            "gitlab_group_issue_board": {
+                "current": "gitlab:index/groupIssueBoard:GroupIssueBoard",
+                "majorVersion": 6,
+                "fields": {
+                    "lists": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_group_label": {
                 "current": "gitlab:index/groupLabel:GroupLabel",
@@ -349,6 +367,10 @@
                     }
                 }
             },
+            "gitlab_project_job_token_scope": {
+                "current": "gitlab:index/projectJobTokenScope:ProjectJobTokenScope",
+                "majorVersion": 6
+            },
             "gitlab_project_label": {
                 "current": "gitlab:index/projectLabel:ProjectLabel",
                 "majorVersion": 6
@@ -491,6 +513,15 @@
             "gitlab_user_gpgkey": {
                 "current": "gitlab:index/userGpgKey:UserGpgKey",
                 "majorVersion": 6
+            },
+            "gitlab_user_runner": {
+                "current": "gitlab:index/userRunner:UserRunner",
+                "majorVersion": 6,
+                "fields": {
+                    "tag_list": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_user_sshkey": {
                 "current": "gitlab:index/userSshKey:UserSshKey",
@@ -958,7 +989,9 @@
             "gitlab:index/groupBadge:GroupBadge": 0,
             "gitlab:index/groupCluster:GroupCluster": 0,
             "gitlab:index/groupCustomAttribute:GroupCustomAttribute": 0,
+            "gitlab:index/groupEpicBoard:GroupEpicBoard": 1,
             "gitlab:index/groupHook:GroupHook": 0,
+            "gitlab:index/groupIssueBoard:GroupIssueBoard": 1,
             "gitlab:index/groupLabel:GroupLabel": 0,
             "gitlab:index/groupLdapLink:GroupLdapLink": 0,
             "gitlab:index/groupMembership:GroupMembership": 0,
@@ -994,8 +1027,9 @@
             "gitlab:index/projectHook:ProjectHook": 0,
             "gitlab:index/projectIssue:ProjectIssue": 0,
             "gitlab:index/projectIssueBoard:ProjectIssueBoard": 0,
+            "gitlab:index/projectJobTokenScope:ProjectJobTokenScope": 1,
             "gitlab:index/projectLabel:ProjectLabel": 0,
-            "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals": 0,
+            "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals": 1,
             "gitlab:index/projectMembership:ProjectMembership": 0,
             "gitlab:index/projectMilestone:ProjectMilestone": 0,
             "gitlab:index/projectMirror:ProjectMirror": 0,
@@ -1021,6 +1055,7 @@
             "gitlab:index/user:User": 0,
             "gitlab:index/userCustomAttribute:UserCustomAttribute": 0,
             "gitlab:index/userGpgKey:UserGpgKey": 0,
+            "gitlab:index/userRunner:UserRunner": 1,
             "gitlab:index/userSshKey:UserSshKey": 0
         },
         "functions": {
@@ -1083,7 +1118,9 @@
             "gitlab:index/groupBadge:GroupBadge": "gitlab_group_badge",
             "gitlab:index/groupCluster:GroupCluster": "gitlab_group_cluster",
             "gitlab:index/groupCustomAttribute:GroupCustomAttribute": "gitlab_group_custom_attribute",
+            "gitlab:index/groupEpicBoard:GroupEpicBoard": "gitlab_group_epic_board",
             "gitlab:index/groupHook:GroupHook": "gitlab_group_hook",
+            "gitlab:index/groupIssueBoard:GroupIssueBoard": "gitlab_group_issue_board",
             "gitlab:index/groupLabel:GroupLabel": "gitlab_group_label",
             "gitlab:index/groupLdapLink:GroupLdapLink": "gitlab_group_ldap_link",
             "gitlab:index/groupMembership:GroupMembership": "gitlab_group_membership",
@@ -1119,6 +1156,7 @@
             "gitlab:index/projectHook:ProjectHook": "gitlab_project_hook",
             "gitlab:index/projectIssue:ProjectIssue": "gitlab_project_issue",
             "gitlab:index/projectIssueBoard:ProjectIssueBoard": "gitlab_project_issue_board",
+            "gitlab:index/projectJobTokenScope:ProjectJobTokenScope": "gitlab_project_job_token_scope",
             "gitlab:index/projectLabel:ProjectLabel": "gitlab_project_label",
             "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals": "gitlab_project_level_mr_approvals",
             "gitlab:index/projectMembership:ProjectMembership": "gitlab_project_membership",
@@ -1146,6 +1184,7 @@
             "gitlab:index/user:User": "gitlab_user",
             "gitlab:index/userCustomAttribute:UserCustomAttribute": "gitlab_user_custom_attribute",
             "gitlab:index/userGpgKey:UserGpgKey": "gitlab_user_gpgkey",
+            "gitlab:index/userRunner:UserRunner": "gitlab_user_runner",
             "gitlab:index/userSshKey:UserSshKey": "gitlab_user_sshkey"
         },
         "functions": {
@@ -1218,6 +1257,12 @@
                 "accessLevelDescription": "access_level_description",
                 "groupId": "group_id",
                 "userId": "user_id"
+            },
+            "gitlab:index/GroupEpicBoardList:GroupEpicBoardList": {
+                "labelId": "label_id"
+            },
+            "gitlab:index/GroupIssueBoardList:GroupIssueBoardList": {
+                "labelId": "label_id"
             },
             "gitlab:index/ProjectContainerExpirationPolicy:ProjectContainerExpirationPolicy": {
                 "keepN": "keep_n",
@@ -1623,7 +1668,8 @@
                 "runnersToken": "runners_token",
                 "sharedRunnersMinutesLimit": "shared_runners_minutes_limit",
                 "visibilityLevel": "visibility_level",
-                "webUrl": "web_url"
+                "webUrl": "web_url",
+                "wikiAccessLevel": "wiki_access_level"
             },
             "gitlab:index/getGroupHook:getGroupHook": {
                 "confidentialIssuesEvents": "confidential_issues_events",
@@ -1702,7 +1748,8 @@
                 "shareWithGroupLock": "share_with_group_lock",
                 "subgroupCreationLevel": "subgroup_creation_level",
                 "twoFactorGracePeriod": "two_factor_grace_period",
-                "webUrl": "web_url"
+                "webUrl": "web_url",
+                "wikiAccessLevel": "wiki_access_level"
             },
             "gitlab:index/getGroupVariable:getGroupVariable": {
                 "environmentScope": "environment_scope",
@@ -1730,7 +1777,8 @@
                 "requestAccessEnabled": "request_access_enabled",
                 "runnersToken": "runners_token",
                 "visibilityLevel": "visibility_level",
-                "webUrl": "web_url"
+                "webUrl": "web_url",
+                "wikiAccessLevel": "wiki_access_level"
             },
             "gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys": {
                 "deployKeys": "deploy_keys"
@@ -2317,7 +2365,8 @@
                 "subgroupCreationLevel": "subgroup_creation_level",
                 "twoFactorGracePeriod": "two_factor_grace_period",
                 "visibilityLevel": "visibility_level",
-                "webUrl": "web_url"
+                "webUrl": "web_url",
+                "wikiAccessLevel": "wiki_access_level"
             },
             "gitlab:index/groupAccessToken:GroupAccessToken": {
                 "accessLevel": "access_level",
@@ -2361,6 +2410,9 @@
                 "subgroupEvents": "subgroup_events",
                 "tagPushEvents": "tag_push_events",
                 "wikiPageEvents": "wiki_page_events"
+            },
+            "gitlab:index/groupIssueBoard:GroupIssueBoard": {
+                "milestoneId": "milestone_id"
             },
             "gitlab:index/groupLabel:GroupLabel": {
                 "labelId": "label_id"
@@ -2705,6 +2757,9 @@
                 "assigneeId": "assignee_id",
                 "milestoneId": "milestone_id"
             },
+            "gitlab:index/projectJobTokenScope:ProjectJobTokenScope": {
+                "targetProjectId": "target_project_id"
+            },
             "gitlab:index/projectLabel:ProjectLabel": {
                 "labelId": "label_id"
             },
@@ -2713,7 +2768,8 @@
                 "mergeRequestsAuthorApproval": "merge_requests_author_approval",
                 "mergeRequestsDisableCommittersApproval": "merge_requests_disable_committers_approval",
                 "requirePasswordToApprove": "require_password_to_approve",
-                "resetApprovalsOnPush": "reset_approvals_on_push"
+                "resetApprovalsOnPush": "reset_approvals_on_push",
+                "selectiveCodeOwnerRemovals": "selective_code_owner_removals"
             },
             "gitlab:index/projectMembership:ProjectMembership": {
                 "accessLevel": "access_level",
@@ -2767,12 +2823,15 @@
                 "commitId": "commit_id",
                 "commitMessage": "commit_message",
                 "contentSha256": "content_sha256",
+                "createCommitMessage": "create_commit_message",
+                "deleteCommitMessage": "delete_commit_message",
                 "executeFilemode": "execute_filemode",
                 "fileName": "file_name",
                 "filePath": "file_path",
                 "lastCommitId": "last_commit_id",
                 "overwriteOnCreate": "overwrite_on_create",
-                "startBranch": "start_branch"
+                "startBranch": "start_branch",
+                "updateCommitMessage": "update_commit_message"
             },
             "gitlab:index/runner:Runner": {
                 "accessLevel": "access_level",
@@ -2896,6 +2955,14 @@
                 "createdAt": "created_at",
                 "keyId": "key_id",
                 "userId": "user_id"
+            },
+            "gitlab:index/userRunner:UserRunner": {
+                "accessLevel": "access_level",
+                "groupId": "group_id",
+                "maximumTimeout": "maximum_timeout",
+                "projectId": "project_id",
+                "runnerType": "runner_type",
+                "tagLists": "tag_list"
             },
             "gitlab:index/userSshKey:UserSshKey": {
                 "createdAt": "created_at",

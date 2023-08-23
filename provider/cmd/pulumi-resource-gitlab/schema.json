@@ -231,6 +231,56 @@
                 }
             }
         },
+        "gitlab:index/GroupEpicBoardList:GroupEpicBoardList": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the list.\n"
+                },
+                "labelId": {
+                    "type": "integer",
+                    "description": "The ID of the label the list should be scoped to.\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the list within the board. The position for the list is sed on the its position in the `lists` array.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "position"
+                    ]
+                }
+            }
+        },
+        "gitlab:index/GroupIssueBoardList:GroupIssueBoardList": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the list.\n"
+                },
+                "labelId": {
+                    "type": "integer",
+                    "description": "The ID of the label the list should be scoped to.\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the list within the board. The position for the list is based on the its position in the `lists` array.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "position"
+                    ]
+                }
+            }
+        },
         "gitlab:index/ProjectContainerExpirationPolicy:ProjectContainerExpirationPolicy": {
             "properties": {
                 "cadence": {
@@ -839,6 +889,9 @@
                 },
                 "webUrl": {
                     "type": "string"
+                },
+                "wikiAccessLevel": {
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -867,7 +920,8 @@
                 "subgroupCreationLevel",
                 "twoFactorGracePeriod",
                 "visibility",
-                "webUrl"
+                "webUrl",
+                "wikiAccessLevel"
             ],
             "language": {
                 "nodejs": {
@@ -965,6 +1019,9 @@
                 },
                 "webUrl": {
                     "type": "string"
+                },
+                "wikiAccessLevel": {
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -982,7 +1039,8 @@
                 "requestAccessEnabled",
                 "runnersToken",
                 "visibilityLevel",
-                "webUrl"
+                "webUrl",
+                "wikiAccessLevel"
             ],
             "language": {
                 "nodejs": {
@@ -7629,6 +7687,10 @@
                 "webUrl": {
                     "type": "string",
                     "description": "Web URL of the group.\n"
+                },
+                "wikiAccessLevel": {
+                    "type": "string",
+                    "description": "The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.\n"
                 }
             },
             "required": [
@@ -7655,7 +7717,8 @@
                 "subgroupCreationLevel",
                 "twoFactorGracePeriod",
                 "visibilityLevel",
-                "webUrl"
+                "webUrl",
+                "wikiAccessLevel"
             ],
             "inputProperties": {
                 "autoDevopsEnabled": {
@@ -7752,6 +7815,10 @@
                 "visibilityLevel": {
                     "type": "string",
                     "description": "The group's visibility. Can be `private`, `internal`, or `public`.\n"
+                },
+                "wikiAccessLevel": {
+                    "type": "string",
+                    "description": "The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.\n"
                 }
             },
             "requiredInputs": [
@@ -7875,6 +7942,10 @@
                     "webUrl": {
                         "type": "string",
                         "description": "Web URL of the group.\n"
+                    },
+                    "wikiAccessLevel": {
+                        "type": "string",
+                        "description": "The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.\n"
                     }
                 },
                 "type": "object"
@@ -7970,6 +8041,7 @@
                 }
             },
             "requiredInputs": [
+                "expiresAt",
                 "group",
                 "scopes"
             ],
@@ -8044,6 +8116,10 @@
                     "type": "string",
                     "description": "The url linked with the badge.\n"
                 },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the badge.\n"
+                },
                 "renderedImageUrl": {
                     "type": "string",
                     "description": "The image_url argument rendered (in case of use of placeholders).\n"
@@ -8057,6 +8133,7 @@
                 "group",
                 "imageUrl",
                 "linkUrl",
+                "name",
                 "renderedImageUrl",
                 "renderedLinkUrl"
             ],
@@ -8072,6 +8149,10 @@
                 "linkUrl": {
                     "type": "string",
                     "description": "The url linked with the badge.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the badge.\n"
                 }
             },
             "requiredInputs": [
@@ -8093,6 +8174,10 @@
                     "linkUrl": {
                         "type": "string",
                         "description": "The url linked with the badge.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the badge.\n"
                     },
                     "renderedImageUrl": {
                         "type": "string",
@@ -8368,6 +8453,71 @@
                 "type": "object"
             }
         },
+        "gitlab:index/groupEpicBoard:GroupEpicBoard": {
+            "description": "The `gitlab.GroupEpicBoard` resource allows to manage the lifecycle of a epic board in a group.\n\n\u003e Multiple epic boards on one group requires a GitLab Premium or above License.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_boards.html)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.Group(\"example\", {\n    path: \"test_group\",\n    description: \"An example group\",\n});\nconst label1 = new gitlab.GroupLabel(\"label1\", {\n    group: example.id,\n    color: \"#FF0000\",\n});\nconst label3 = new gitlab.GroupLabel(\"label3\", {\n    group: example.id,\n    color: \"#003000\",\n});\nconst epicBoard = new gitlab.GroupEpicBoard(\"epicBoard\", {\n    group: example.path,\n    lists: [{\n        labelId: label1.labelId,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.Group(\"example\",\n    path=\"test_group\",\n    description=\"An example group\")\nlabel1 = gitlab.GroupLabel(\"label1\",\n    group=example.id,\n    color=\"#FF0000\")\nlabel3 = gitlab.GroupLabel(\"label3\",\n    group=example.id,\n    color=\"#003000\")\nepic_board = gitlab.GroupEpicBoard(\"epicBoard\",\n    group=example.path,\n    lists=[gitlab.GroupEpicBoardListArgs(\n        label_id=label1.label_id,\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new GitLab.Group(\"example\", new()\n    {\n        Path = \"test_group\",\n        Description = \"An example group\",\n    });\n\n    var label1 = new GitLab.GroupLabel(\"label1\", new()\n    {\n        Group = example.Id,\n        Color = \"#FF0000\",\n    });\n\n    var label3 = new GitLab.GroupLabel(\"label3\", new()\n    {\n        Group = example.Id,\n        Color = \"#003000\",\n    });\n\n    var epicBoard = new GitLab.GroupEpicBoard(\"epicBoard\", new()\n    {\n        Group = example.Path,\n        Lists = new[]\n        {\n            new GitLab.Inputs.GroupEpicBoardListArgs\n            {\n                LabelId = label1.LabelId,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := gitlab.NewGroup(ctx, \"example\", \u0026gitlab.GroupArgs{\n\t\t\tPath:        pulumi.String(\"test_group\"),\n\t\t\tDescription: pulumi.String(\"An example group\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tlabel1, err := gitlab.NewGroupLabel(ctx, \"label1\", \u0026gitlab.GroupLabelArgs{\n\t\t\tGroup: example.ID(),\n\t\t\tColor: pulumi.String(\"#FF0000\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupLabel(ctx, \"label3\", \u0026gitlab.GroupLabelArgs{\n\t\t\tGroup: example.ID(),\n\t\t\tColor: pulumi.String(\"#003000\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupEpicBoard(ctx, \"epicBoard\", \u0026gitlab.GroupEpicBoardArgs{\n\t\t\tGroup: example.Path,\n\t\t\tLists: gitlab.GroupEpicBoardListArray{\n\t\t\t\t\u0026gitlab.GroupEpicBoardListArgs{\n\t\t\t\t\tLabelId: label1.LabelId,\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Group;\nimport com.pulumi.gitlab.GroupArgs;\nimport com.pulumi.gitlab.GroupLabel;\nimport com.pulumi.gitlab.GroupLabelArgs;\nimport com.pulumi.gitlab.GroupEpicBoard;\nimport com.pulumi.gitlab.GroupEpicBoardArgs;\nimport com.pulumi.gitlab.inputs.GroupEpicBoardListArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Group(\"example\", GroupArgs.builder()        \n            .path(\"test_group\")\n            .description(\"An example group\")\n            .build());\n\n        var label1 = new GroupLabel(\"label1\", GroupLabelArgs.builder()        \n            .group(example.id())\n            .color(\"#FF0000\")\n            .build());\n\n        var label3 = new GroupLabel(\"label3\", GroupLabelArgs.builder()        \n            .group(example.id())\n            .color(\"#003000\")\n            .build());\n\n        var epicBoard = new GroupEpicBoard(\"epicBoard\", GroupEpicBoardArgs.builder()        \n            .group(example.path())\n            .lists(GroupEpicBoardListArgs.builder()\n                .labelId(label1.labelId())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: gitlab:Group\n    properties:\n      path: test_group\n      description: An example group\n  label1:\n    type: gitlab:GroupLabel\n    properties:\n      group: ${example.id}\n      color: '#FF0000'\n  label3:\n    type: gitlab:GroupLabel\n    properties:\n      group: ${example.id}\n      color: '#003000'\n  epicBoard:\n    type: gitlab:GroupEpicBoard\n    properties:\n      group: ${example.path}\n      lists:\n        - labelId: ${label1.labelId}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nYou can import this resource with an id made up of `{group-id}:{epic-board-id}`, e.g.\n\n```sh\n $ pulumi import gitlab:index/groupEpicBoard:GroupEpicBoard agile 70:156\n```\n\n ",
+            "properties": {
+                "group": {
+                    "type": "string",
+                    "description": "The ID or URL-encoded path of the group owned by the authenticated user.\n"
+                },
+                "lists": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/gitlab:index/GroupEpicBoardList:GroupEpicBoardList"
+                    },
+                    "description": "The list of epic board lists.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the board.\n"
+                }
+            },
+            "required": [
+                "group",
+                "name"
+            ],
+            "inputProperties": {
+                "group": {
+                    "type": "string",
+                    "description": "The ID or URL-encoded path of the group owned by the authenticated user.\n"
+                },
+                "lists": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/gitlab:index/GroupEpicBoardList:GroupEpicBoardList"
+                    },
+                    "description": "The list of epic board lists.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the board.\n"
+                }
+            },
+            "requiredInputs": [
+                "group"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupEpicBoard resources.\n",
+                "properties": {
+                    "group": {
+                        "type": "string",
+                        "description": "The ID or URL-encoded path of the group owned by the authenticated user.\n"
+                    },
+                    "lists": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/GroupEpicBoardList:GroupEpicBoardList"
+                        },
+                        "description": "The list of epic board lists.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the board.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "gitlab:index/groupHook:GroupHook": {
             "description": "The `gitlab.GroupHook` resource allows to manage the lifecycle of a group hook.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#hooks)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.GroupHook(\"example\", {\n    group: \"example/hooked\",\n    mergeRequestsEvents: true,\n    url: \"https://example.com/hook/example\",\n});\n// Setting all attributes\nconst allAttributes = new gitlab.GroupHook(\"allAttributes\", {\n    confidentialIssuesEvents: false,\n    confidentialNoteEvents: true,\n    deploymentEvents: true,\n    enableSslVerification: false,\n    group: \"1\",\n    issuesEvents: false,\n    jobEvents: true,\n    mergeRequestsEvents: true,\n    noteEvents: true,\n    pipelineEvents: true,\n    pushEvents: true,\n    pushEventsBranchFilter: \"devel\",\n    releasesEvents: true,\n    subgroupEvents: true,\n    tagPushEvents: true,\n    token: \"supersecret\",\n    url: \"http://example.com\",\n    wikiPageEvents: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.GroupHook(\"example\",\n    group=\"example/hooked\",\n    merge_requests_events=True,\n    url=\"https://example.com/hook/example\")\n# Setting all attributes\nall_attributes = gitlab.GroupHook(\"allAttributes\",\n    confidential_issues_events=False,\n    confidential_note_events=True,\n    deployment_events=True,\n    enable_ssl_verification=False,\n    group=\"1\",\n    issues_events=False,\n    job_events=True,\n    merge_requests_events=True,\n    note_events=True,\n    pipeline_events=True,\n    push_events=True,\n    push_events_branch_filter=\"devel\",\n    releases_events=True,\n    subgroup_events=True,\n    tag_push_events=True,\n    token=\"supersecret\",\n    url=\"http://example.com\",\n    wiki_page_events=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new GitLab.GroupHook(\"example\", new()\n    {\n        Group = \"example/hooked\",\n        MergeRequestsEvents = true,\n        Url = \"https://example.com/hook/example\",\n    });\n\n    // Setting all attributes\n    var allAttributes = new GitLab.GroupHook(\"allAttributes\", new()\n    {\n        ConfidentialIssuesEvents = false,\n        ConfidentialNoteEvents = true,\n        DeploymentEvents = true,\n        EnableSslVerification = false,\n        Group = \"1\",\n        IssuesEvents = false,\n        JobEvents = true,\n        MergeRequestsEvents = true,\n        NoteEvents = true,\n        PipelineEvents = true,\n        PushEvents = true,\n        PushEventsBranchFilter = \"devel\",\n        ReleasesEvents = true,\n        SubgroupEvents = true,\n        TagPushEvents = true,\n        Token = \"supersecret\",\n        Url = \"http://example.com\",\n        WikiPageEvents = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGroupHook(ctx, \"example\", \u0026gitlab.GroupHookArgs{\n\t\t\tGroup:               pulumi.String(\"example/hooked\"),\n\t\t\tMergeRequestsEvents: pulumi.Bool(true),\n\t\t\tUrl:                 pulumi.String(\"https://example.com/hook/example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupHook(ctx, \"allAttributes\", \u0026gitlab.GroupHookArgs{\n\t\t\tConfidentialIssuesEvents: pulumi.Bool(false),\n\t\t\tConfidentialNoteEvents:   pulumi.Bool(true),\n\t\t\tDeploymentEvents:         pulumi.Bool(true),\n\t\t\tEnableSslVerification:    pulumi.Bool(false),\n\t\t\tGroup:                    pulumi.String(\"1\"),\n\t\t\tIssuesEvents:             pulumi.Bool(false),\n\t\t\tJobEvents:                pulumi.Bool(true),\n\t\t\tMergeRequestsEvents:      pulumi.Bool(true),\n\t\t\tNoteEvents:               pulumi.Bool(true),\n\t\t\tPipelineEvents:           pulumi.Bool(true),\n\t\t\tPushEvents:               pulumi.Bool(true),\n\t\t\tPushEventsBranchFilter:   pulumi.String(\"devel\"),\n\t\t\tReleasesEvents:           pulumi.Bool(true),\n\t\t\tSubgroupEvents:           pulumi.Bool(true),\n\t\t\tTagPushEvents:            pulumi.Bool(true),\n\t\t\tToken:                    pulumi.String(\"supersecret\"),\n\t\t\tUrl:                      pulumi.String(\"http://example.com\"),\n\t\t\tWikiPageEvents:           pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GroupHook;\nimport com.pulumi.gitlab.GroupHookArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new GroupHook(\"example\", GroupHookArgs.builder()        \n            .group(\"example/hooked\")\n            .mergeRequestsEvents(true)\n            .url(\"https://example.com/hook/example\")\n            .build());\n\n        var allAttributes = new GroupHook(\"allAttributes\", GroupHookArgs.builder()        \n            .confidentialIssuesEvents(false)\n            .confidentialNoteEvents(true)\n            .deploymentEvents(true)\n            .enableSslVerification(false)\n            .group(1)\n            .issuesEvents(false)\n            .jobEvents(true)\n            .mergeRequestsEvents(true)\n            .noteEvents(true)\n            .pipelineEvents(true)\n            .pushEvents(true)\n            .pushEventsBranchFilter(\"devel\")\n            .releasesEvents(true)\n            .subgroupEvents(true)\n            .tagPushEvents(true)\n            .token(\"supersecret\")\n            .url(\"http://example.com\")\n            .wikiPageEvents(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: gitlab:GroupHook\n    properties:\n      group: example/hooked\n      mergeRequestsEvents: true\n      url: https://example.com/hook/example\n  # Setting all attributes\n  allAttributes:\n    type: gitlab:GroupHook\n    properties:\n      confidentialIssuesEvents: false\n      confidentialNoteEvents: true\n      deploymentEvents: true\n      enableSslVerification: false\n      group: 1\n      issuesEvents: false\n      jobEvents: true\n      mergeRequestsEvents: true\n      noteEvents: true\n      pipelineEvents: true\n      pushEvents: true\n      pushEventsBranchFilter: devel\n      releasesEvents: true\n      subgroupEvents: true\n      tagPushEvents: true\n      token: supersecret\n      url: http://example.com\n      wikiPageEvents: true\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA GitLab Group Hook can be imported using a key composed of `\u003cgroup-id\u003e:\u003chook-id\u003e`, e.g.\n\n```sh\n $ pulumi import gitlab:index/groupHook:GroupHook example \"12345:1\"\n```\n\n NOTEthe `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API. ",
             "properties": {
@@ -8621,6 +8771,83 @@
                     "wikiPageEvents": {
                         "type": "boolean",
                         "description": "Invoke the hook for wiki page events.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/groupIssueBoard:GroupIssueBoard": {
+            "description": "The `gitlab.GroupIssueBoard` resource allows to manage the lifecycle of a issue board in a group.\n\n\u003e Multiple issue boards on one group requires a GitLab Premium or above License.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_boards.html)\n",
+            "properties": {
+                "group": {
+                    "type": "string",
+                    "description": "The ID or URL-encoded path of the group owned by the authenticated user.\n"
+                },
+                "lists": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/gitlab:index/GroupIssueBoardList:GroupIssueBoardList"
+                    },
+                    "description": "The list of issue board lists.\n"
+                },
+                "milestoneId": {
+                    "type": "integer",
+                    "description": "The milestone the board should be scoped to.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the board.\n"
+                }
+            },
+            "required": [
+                "group",
+                "name"
+            ],
+            "inputProperties": {
+                "group": {
+                    "type": "string",
+                    "description": "The ID or URL-encoded path of the group owned by the authenticated user.\n"
+                },
+                "lists": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/gitlab:index/GroupIssueBoardList:GroupIssueBoardList"
+                    },
+                    "description": "The list of issue board lists.\n"
+                },
+                "milestoneId": {
+                    "type": "integer",
+                    "description": "The milestone the board should be scoped to.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the board.\n"
+                }
+            },
+            "requiredInputs": [
+                "group"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupIssueBoard resources.\n",
+                "properties": {
+                    "group": {
+                        "type": "string",
+                        "description": "The ID or URL-encoded path of the group owned by the authenticated user.\n"
+                    },
+                    "lists": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/GroupIssueBoardList:GroupIssueBoardList"
+                        },
+                        "description": "The list of issue board lists.\n"
+                    },
+                    "milestoneId": {
+                        "type": "integer",
+                        "description": "The milestone the board should be scoped to.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the board.\n"
                     }
                 },
                 "type": "object"
@@ -11146,6 +11373,7 @@
                 }
             },
             "requiredInputs": [
+                "expiresAt",
                 "scopes",
                 "userId"
             ],
@@ -11305,7 +11533,7 @@
             }
         },
         "gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable": {
-            "description": "The `gitlab.PipelineScheduleVariable` resource allows to manage the lifecycle of a variable for a pipeline schedule.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html#pipeline-schedule-variables)\n\n\n## Import\n\nPipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.\n\n```sh\n $ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey\n```\n\n ",
+            "description": "The `gitlab.PipelineScheduleVariable` resource allows to manage the lifecycle of a variable for a pipeline schedule.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html#pipeline-schedule-variables)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst examplePipelineSchedule = new gitlab.PipelineSchedule(\"examplePipelineSchedule\", {\n    project: \"12345\",\n    description: \"Used to schedule builds\",\n    ref: \"master\",\n    cron: \"0 1 * * *\",\n});\nconst examplePipelineScheduleVariable = new gitlab.PipelineScheduleVariable(\"examplePipelineScheduleVariable\", {\n    project: examplePipelineSchedule.project,\n    pipelineScheduleId: examplePipelineSchedule.pipelineScheduleId,\n    key: \"EXAMPLE_KEY\",\n    value: \"example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample_pipeline_schedule = gitlab.PipelineSchedule(\"examplePipelineSchedule\",\n    project=\"12345\",\n    description=\"Used to schedule builds\",\n    ref=\"master\",\n    cron=\"0 1 * * *\")\nexample_pipeline_schedule_variable = gitlab.PipelineScheduleVariable(\"examplePipelineScheduleVariable\",\n    project=example_pipeline_schedule.project,\n    pipeline_schedule_id=example_pipeline_schedule.pipeline_schedule_id,\n    key=\"EXAMPLE_KEY\",\n    value=\"example\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var examplePipelineSchedule = new GitLab.PipelineSchedule(\"examplePipelineSchedule\", new()\n    {\n        Project = \"12345\",\n        Description = \"Used to schedule builds\",\n        Ref = \"master\",\n        Cron = \"0 1 * * *\",\n    });\n\n    var examplePipelineScheduleVariable = new GitLab.PipelineScheduleVariable(\"examplePipelineScheduleVariable\", new()\n    {\n        Project = examplePipelineSchedule.Project,\n        PipelineScheduleId = examplePipelineSchedule.PipelineScheduleId,\n        Key = \"EXAMPLE_KEY\",\n        Value = \"example\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texamplePipelineSchedule, err := gitlab.NewPipelineSchedule(ctx, \"examplePipelineSchedule\", \u0026gitlab.PipelineScheduleArgs{\n\t\t\tProject:     pulumi.String(\"12345\"),\n\t\t\tDescription: pulumi.String(\"Used to schedule builds\"),\n\t\t\tRef:         pulumi.String(\"master\"),\n\t\t\tCron:        pulumi.String(\"0 1 * * *\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewPipelineScheduleVariable(ctx, \"examplePipelineScheduleVariable\", \u0026gitlab.PipelineScheduleVariableArgs{\n\t\t\tProject:            examplePipelineSchedule.Project,\n\t\t\tPipelineScheduleId: examplePipelineSchedule.PipelineScheduleId,\n\t\t\tKey:                pulumi.String(\"EXAMPLE_KEY\"),\n\t\t\tValue:              pulumi.String(\"example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.PipelineSchedule;\nimport com.pulumi.gitlab.PipelineScheduleArgs;\nimport com.pulumi.gitlab.PipelineScheduleVariable;\nimport com.pulumi.gitlab.PipelineScheduleVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var examplePipelineSchedule = new PipelineSchedule(\"examplePipelineSchedule\", PipelineScheduleArgs.builder()        \n            .project(\"12345\")\n            .description(\"Used to schedule builds\")\n            .ref(\"master\")\n            .cron(\"0 1 * * *\")\n            .build());\n\n        var examplePipelineScheduleVariable = new PipelineScheduleVariable(\"examplePipelineScheduleVariable\", PipelineScheduleVariableArgs.builder()        \n            .project(examplePipelineSchedule.project())\n            .pipelineScheduleId(examplePipelineSchedule.pipelineScheduleId())\n            .key(\"EXAMPLE_KEY\")\n            .value(\"example\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  examplePipelineSchedule:\n    type: gitlab:PipelineSchedule\n    properties:\n      project: '12345'\n      description: Used to schedule builds\n      ref: master\n      cron: 0 1 * * *\n  examplePipelineScheduleVariable:\n    type: gitlab:PipelineScheduleVariable\n    properties:\n      project: ${examplePipelineSchedule.project}\n      pipelineScheduleId: ${examplePipelineSchedule.pipelineScheduleId}\n      key: EXAMPLE_KEY\n      value: example\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nPipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.\n\n```sh\n $ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey\n```\n\n ",
             "properties": {
                 "key": {
                     "type": "string",
@@ -11862,6 +12090,7 @@
                 "containerRegistryAccessLevel",
                 "containerRegistryEnabled",
                 "defaultBranch",
+                "emailsDisabled",
                 "environmentsAccessLevel",
                 "featureFlagsAccessLevel",
                 "forkingAccessLevel",
@@ -12771,6 +13000,7 @@
                 }
             },
             "requiredInputs": [
+                "expiresAt",
                 "project",
                 "scopes"
             ],
@@ -14425,6 +14655,51 @@
                 "type": "object"
             }
         },
+        "gitlab:index/projectJobTokenScope:ProjectJobTokenScope": {
+            "description": "The `gitlab.ProjectJobTokenScope` resource allows to manage the CI/CD Job Token scope in a project.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_job_token_scopes.html)\n\n\n## Import\n\nGitLab project environments can be imported using an id made up of `projectId:targetProjectId`, e.g.\n\n```sh\n $ pulumi import gitlab:index/projectJobTokenScope:ProjectJobTokenScope bar 123:321\n```\n\n ",
+            "properties": {
+                "project": {
+                    "type": "string",
+                    "description": "The ID or full path of the project.\n"
+                },
+                "targetProjectId": {
+                    "type": "integer",
+                    "description": "The ID of the project that is in the CI/CD job token inbound allowlist.\n"
+                }
+            },
+            "required": [
+                "project",
+                "targetProjectId"
+            ],
+            "inputProperties": {
+                "project": {
+                    "type": "string",
+                    "description": "The ID or full path of the project.\n"
+                },
+                "targetProjectId": {
+                    "type": "integer",
+                    "description": "The ID of the project that is in the CI/CD job token inbound allowlist.\n"
+                }
+            },
+            "requiredInputs": [
+                "project",
+                "targetProjectId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ProjectJobTokenScope resources.\n",
+                "properties": {
+                    "project": {
+                        "type": "string",
+                        "description": "The ID or full path of the project.\n"
+                    },
+                    "targetProjectId": {
+                        "type": "integer",
+                        "description": "The ID of the project that is in the CI/CD job token inbound allowlist.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "gitlab:index/projectLabel:ProjectLabel": {
             "description": "The `gitlab.ProjectLabel` resource allows to manage the lifecycle of a project label.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst fixme = new gitlab.ProjectLabel(\"fixme\", {\n    project: \"example\",\n    description: \"issue with failing tests\",\n    color: \"#ffcc00\",\n});\n// Scoped label\nconst devopsCreate = new gitlab.ProjectLabel(\"devopsCreate\", {\n    project: gitlab_project.example.id,\n    description: \"issue for creating infrastructure resources\",\n    color: \"#ffa500\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfixme = gitlab.ProjectLabel(\"fixme\",\n    project=\"example\",\n    description=\"issue with failing tests\",\n    color=\"#ffcc00\")\n# Scoped label\ndevops_create = gitlab.ProjectLabel(\"devopsCreate\",\n    project=gitlab_project[\"example\"][\"id\"],\n    description=\"issue for creating infrastructure resources\",\n    color=\"#ffa500\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var fixme = new GitLab.ProjectLabel(\"fixme\", new()\n    {\n        Project = \"example\",\n        Description = \"issue with failing tests\",\n        Color = \"#ffcc00\",\n    });\n\n    // Scoped label\n    var devopsCreate = new GitLab.ProjectLabel(\"devopsCreate\", new()\n    {\n        Project = gitlab_project.Example.Id,\n        Description = \"issue for creating infrastructure resources\",\n        Color = \"#ffa500\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewProjectLabel(ctx, \"fixme\", \u0026gitlab.ProjectLabelArgs{\n\t\t\tProject:     pulumi.String(\"example\"),\n\t\t\tDescription: pulumi.String(\"issue with failing tests\"),\n\t\t\tColor:       pulumi.String(\"#ffcc00\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectLabel(ctx, \"devopsCreate\", \u0026gitlab.ProjectLabelArgs{\n\t\t\tProject:     pulumi.Any(gitlab_project.Example.Id),\n\t\t\tDescription: pulumi.String(\"issue for creating infrastructure resources\"),\n\t\t\tColor:       pulumi.String(\"#ffa500\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.ProjectLabel;\nimport com.pulumi.gitlab.ProjectLabelArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var fixme = new ProjectLabel(\"fixme\", ProjectLabelArgs.builder()        \n            .project(\"example\")\n            .description(\"issue with failing tests\")\n            .color(\"#ffcc00\")\n            .build());\n\n        var devopsCreate = new ProjectLabel(\"devopsCreate\", ProjectLabelArgs.builder()        \n            .project(gitlab_project.example().id())\n            .description(\"issue for creating infrastructure resources\")\n            .color(\"#ffa500\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  fixme:\n    type: gitlab:ProjectLabel\n    properties:\n      project: example\n      description: issue with failing tests\n      color: '#ffcc00'\n  # Scoped label\n  devopsCreate:\n    type: gitlab:ProjectLabel\n    properties:\n      project: ${gitlab_project.example.id}\n      description: issue for creating infrastructure resources\n      color: '#ffa500'\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGitlab Project labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.\n\n```sh\n $ pulumi import gitlab:index/projectLabel:ProjectLabel example 12345:fixme\n```\n\n ",
             "properties": {
@@ -14507,19 +14782,19 @@
             }
         },
         "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals": {
-            "description": "The `gitlab_project_level_mr_approval_rule` resource allows to manage the lifecycle of a Merge Request-level approval rule.\n\n\u003e This resource requires a GitLab Enterprise instance.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#merge-request-level-mr-approvals)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst fooProject = new gitlab.Project(\"fooProject\", {description: \"My example project\"});\nconst fooProjectLevelMrApprovals = new gitlab.ProjectLevelMrApprovals(\"fooProjectLevelMrApprovals\", {\n    project: fooProject.id,\n    resetApprovalsOnPush: true,\n    disableOverridingApproversPerMergeRequest: false,\n    mergeRequestsAuthorApproval: false,\n    mergeRequestsDisableCommittersApproval: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo_project = gitlab.Project(\"fooProject\", description=\"My example project\")\nfoo_project_level_mr_approvals = gitlab.ProjectLevelMrApprovals(\"fooProjectLevelMrApprovals\",\n    project=foo_project.id,\n    reset_approvals_on_push=True,\n    disable_overriding_approvers_per_merge_request=False,\n    merge_requests_author_approval=False,\n    merge_requests_disable_committers_approval=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var fooProject = new GitLab.Project(\"fooProject\", new()\n    {\n        Description = \"My example project\",\n    });\n\n    var fooProjectLevelMrApprovals = new GitLab.ProjectLevelMrApprovals(\"fooProjectLevelMrApprovals\", new()\n    {\n        Project = fooProject.Id,\n        ResetApprovalsOnPush = true,\n        DisableOverridingApproversPerMergeRequest = false,\n        MergeRequestsAuthorApproval = false,\n        MergeRequestsDisableCommittersApproval = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooProject, err := gitlab.NewProject(ctx, \"fooProject\", \u0026gitlab.ProjectArgs{\n\t\t\tDescription: pulumi.String(\"My example project\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectLevelMrApprovals(ctx, \"fooProjectLevelMrApprovals\", \u0026gitlab.ProjectLevelMrApprovalsArgs{\n\t\t\tProject:              fooProject.ID(),\n\t\t\tResetApprovalsOnPush: pulumi.Bool(true),\n\t\t\tDisableOverridingApproversPerMergeRequest: pulumi.Bool(false),\n\t\t\tMergeRequestsAuthorApproval:               pulumi.Bool(false),\n\t\t\tMergeRequestsDisableCommittersApproval:    pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.ProjectLevelMrApprovals;\nimport com.pulumi.gitlab.ProjectLevelMrApprovalsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var fooProject = new Project(\"fooProject\", ProjectArgs.builder()        \n            .description(\"My example project\")\n            .build());\n\n        var fooProjectLevelMrApprovals = new ProjectLevelMrApprovals(\"fooProjectLevelMrApprovals\", ProjectLevelMrApprovalsArgs.builder()        \n            .project(fooProject.id())\n            .resetApprovalsOnPush(true)\n            .disableOverridingApproversPerMergeRequest(false)\n            .mergeRequestsAuthorApproval(false)\n            .mergeRequestsDisableCommittersApproval(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  fooProject:\n    type: gitlab:Project\n    properties:\n      description: My example project\n  fooProjectLevelMrApprovals:\n    type: gitlab:ProjectLevelMrApprovals\n    properties:\n      project: ${fooProject.id}\n      resetApprovalsOnPush: true\n      disableOverridingApproversPerMergeRequest: false\n      mergeRequestsAuthorApproval: false\n      mergeRequestsDisableCommittersApproval: true\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `\u003cresource\u003e \u003cproject_id\u003e`.\n```\n\n # For example\n\n```sh\n $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234\n```\n\n ",
+            "description": "The `gitlab_project_level_mr_approval_rule` resource allows to manage the lifecycle of a Merge Request-level approval rule.\n\n\u003e This resource requires a GitLab Enterprise instance.\n\t\t\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#merge-request-level-mr-approvals)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst fooProject = new gitlab.Project(\"fooProject\", {description: \"My example project\"});\nconst fooProjectLevelMrApprovals = new gitlab.ProjectLevelMrApprovals(\"fooProjectLevelMrApprovals\", {\n    project: fooProject.id,\n    resetApprovalsOnPush: true,\n    disableOverridingApproversPerMergeRequest: false,\n    mergeRequestsAuthorApproval: false,\n    mergeRequestsDisableCommittersApproval: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo_project = gitlab.Project(\"fooProject\", description=\"My example project\")\nfoo_project_level_mr_approvals = gitlab.ProjectLevelMrApprovals(\"fooProjectLevelMrApprovals\",\n    project=foo_project.id,\n    reset_approvals_on_push=True,\n    disable_overriding_approvers_per_merge_request=False,\n    merge_requests_author_approval=False,\n    merge_requests_disable_committers_approval=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var fooProject = new GitLab.Project(\"fooProject\", new()\n    {\n        Description = \"My example project\",\n    });\n\n    var fooProjectLevelMrApprovals = new GitLab.ProjectLevelMrApprovals(\"fooProjectLevelMrApprovals\", new()\n    {\n        Project = fooProject.Id,\n        ResetApprovalsOnPush = true,\n        DisableOverridingApproversPerMergeRequest = false,\n        MergeRequestsAuthorApproval = false,\n        MergeRequestsDisableCommittersApproval = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooProject, err := gitlab.NewProject(ctx, \"fooProject\", \u0026gitlab.ProjectArgs{\n\t\t\tDescription: pulumi.String(\"My example project\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectLevelMrApprovals(ctx, \"fooProjectLevelMrApprovals\", \u0026gitlab.ProjectLevelMrApprovalsArgs{\n\t\t\tProject:              fooProject.ID(),\n\t\t\tResetApprovalsOnPush: pulumi.Bool(true),\n\t\t\tDisableOverridingApproversPerMergeRequest: pulumi.Bool(false),\n\t\t\tMergeRequestsAuthorApproval:               pulumi.Bool(false),\n\t\t\tMergeRequestsDisableCommittersApproval:    pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.ProjectLevelMrApprovals;\nimport com.pulumi.gitlab.ProjectLevelMrApprovalsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var fooProject = new Project(\"fooProject\", ProjectArgs.builder()        \n            .description(\"My example project\")\n            .build());\n\n        var fooProjectLevelMrApprovals = new ProjectLevelMrApprovals(\"fooProjectLevelMrApprovals\", ProjectLevelMrApprovalsArgs.builder()        \n            .project(fooProject.id())\n            .resetApprovalsOnPush(true)\n            .disableOverridingApproversPerMergeRequest(false)\n            .mergeRequestsAuthorApproval(false)\n            .mergeRequestsDisableCommittersApproval(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  fooProject:\n    type: gitlab:Project\n    properties:\n      description: My example project\n  fooProjectLevelMrApprovals:\n    type: gitlab:ProjectLevelMrApprovals\n    properties:\n      project: ${fooProject.id}\n      resetApprovalsOnPush: true\n      disableOverridingApproversPerMergeRequest: false\n      mergeRequestsAuthorApproval: false\n      mergeRequestsDisableCommittersApproval: true\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `\u003cresource\u003e \u003cproject_id\u003e`.\n```\n\n # For example\n\n```sh\n $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234\n```\n\n ",
             "properties": {
                 "disableOverridingApproversPerMergeRequest": {
                     "type": "boolean",
-                    "description": "By default, users are able to edit the approval rules in merge requests. If set to true,\n"
+                    "description": "Set to `true` to disable overriding approvers per merge request.\n"
                 },
                 "mergeRequestsAuthorApproval": {
                     "type": "boolean",
-                    "description": "Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors\n"
+                    "description": "Set to `true` to allow merge requests authors to approve their own merge requests.\n"
                 },
                 "mergeRequestsDisableCommittersApproval": {
                     "type": "boolean",
-                    "description": "Set to `true` if you want to prevent approval of merge requests by merge request committers.\n"
+                    "description": "Set to `true` to allow merge requests committers to approve their own merge requests.\n"
                 },
                 "project": {
                     "type": "string",
@@ -14527,41 +14802,54 @@
                 },
                 "requirePasswordToApprove": {
                     "type": "boolean",
-                    "description": "Set to `true` if you want to require authentication when approving a merge request.\n"
+                    "description": "Set to `true` to require authentication to approve merge requests.\n"
                 },
                 "resetApprovalsOnPush": {
                     "type": "boolean",
-                    "description": "Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.\n"
+                    "description": "Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.\n"
+                },
+                "selectiveCodeOwnerRemovals": {
+                    "type": "boolean",
+                    "description": "Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.\n"
                 }
             },
             "required": [
-                "project"
+                "disableOverridingApproversPerMergeRequest",
+                "mergeRequestsAuthorApproval",
+                "mergeRequestsDisableCommittersApproval",
+                "project",
+                "requirePasswordToApprove",
+                "resetApprovalsOnPush",
+                "selectiveCodeOwnerRemovals"
             ],
             "inputProperties": {
                 "disableOverridingApproversPerMergeRequest": {
                     "type": "boolean",
-                    "description": "By default, users are able to edit the approval rules in merge requests. If set to true,\n"
+                    "description": "Set to `true` to disable overriding approvers per merge request.\n"
                 },
                 "mergeRequestsAuthorApproval": {
                     "type": "boolean",
-                    "description": "Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors\n"
+                    "description": "Set to `true` to allow merge requests authors to approve their own merge requests.\n"
                 },
                 "mergeRequestsDisableCommittersApproval": {
                     "type": "boolean",
-                    "description": "Set to `true` if you want to prevent approval of merge requests by merge request committers.\n"
+                    "description": "Set to `true` to allow merge requests committers to approve their own merge requests.\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "The ID or URL-encoded path of a project to change MR approval configuration.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID or URL-encoded path of a project to change MR approval configuration.\n"
                 },
                 "requirePasswordToApprove": {
                     "type": "boolean",
-                    "description": "Set to `true` if you want to require authentication when approving a merge request.\n"
+                    "description": "Set to `true` to require authentication to approve merge requests.\n"
                 },
                 "resetApprovalsOnPush": {
                     "type": "boolean",
-                    "description": "Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.\n"
+                    "description": "Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.\n"
+                },
+                "selectiveCodeOwnerRemovals": {
+                    "type": "boolean",
+                    "description": "Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.\n"
                 }
             },
             "requiredInputs": [
@@ -14572,28 +14860,31 @@
                 "properties": {
                     "disableOverridingApproversPerMergeRequest": {
                         "type": "boolean",
-                        "description": "By default, users are able to edit the approval rules in merge requests. If set to true,\n"
+                        "description": "Set to `true` to disable overriding approvers per merge request.\n"
                     },
                     "mergeRequestsAuthorApproval": {
                         "type": "boolean",
-                        "description": "Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors\n"
+                        "description": "Set to `true` to allow merge requests authors to approve their own merge requests.\n"
                     },
                     "mergeRequestsDisableCommittersApproval": {
                         "type": "boolean",
-                        "description": "Set to `true` if you want to prevent approval of merge requests by merge request committers.\n"
+                        "description": "Set to `true` to allow merge requests committers to approve their own merge requests.\n"
                     },
                     "project": {
                         "type": "string",
-                        "description": "The ID or URL-encoded path of a project to change MR approval configuration.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID or URL-encoded path of a project to change MR approval configuration.\n"
                     },
                     "requirePasswordToApprove": {
                         "type": "boolean",
-                        "description": "Set to `true` if you want to require authentication when approving a merge request.\n"
+                        "description": "Set to `true` to require authentication to approve merge requests.\n"
                     },
                     "resetApprovalsOnPush": {
                         "type": "boolean",
-                        "description": "Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.\n"
+                        "description": "Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.\n"
+                    },
+                    "selectiveCodeOwnerRemovals": {
+                        "type": "boolean",
+                        "description": "Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.\n"
                     }
                 },
                 "type": "object"
@@ -15548,6 +15839,14 @@
                     "type": "string",
                     "description": "File content sha256 digest.\n"
                 },
+                "createCommitMessage": {
+                    "type": "string",
+                    "description": "Create commit message.\n"
+                },
+                "deleteCommitMessage": {
+                    "type": "string",
+                    "description": "Delete Commit message.\n"
+                },
                 "encoding": {
                     "type": "string",
                     "description": "The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.\n"
@@ -15587,13 +15886,16 @@
                 "startBranch": {
                     "type": "string",
                     "description": "Name of the branch to start the new commit from.\n"
+                },
+                "updateCommitMessage": {
+                    "type": "string",
+                    "description": "Update commit message.\n"
                 }
             },
             "required": [
                 "blobId",
                 "branch",
                 "commitId",
-                "commitMessage",
                 "content",
                 "contentSha256",
                 "fileName",
@@ -15625,6 +15927,14 @@
                     "type": "string",
                     "description": "File content.\n"
                 },
+                "createCommitMessage": {
+                    "type": "string",
+                    "description": "Create commit message.\n"
+                },
+                "deleteCommitMessage": {
+                    "type": "string",
+                    "description": "Delete Commit message.\n"
+                },
                 "encoding": {
                     "type": "string",
                     "description": "The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.\n"
@@ -15650,11 +15960,14 @@
                 "startBranch": {
                     "type": "string",
                     "description": "Name of the branch to start the new commit from.\n"
+                },
+                "updateCommitMessage": {
+                    "type": "string",
+                    "description": "Update commit message.\n"
                 }
             },
             "requiredInputs": [
                 "branch",
-                "commitMessage",
                 "content",
                 "filePath",
                 "project"
@@ -15694,6 +16007,14 @@
                     "contentSha256": {
                         "type": "string",
                         "description": "File content sha256 digest.\n"
+                    },
+                    "createCommitMessage": {
+                        "type": "string",
+                        "description": "Create commit message.\n"
+                    },
+                    "deleteCommitMessage": {
+                        "type": "string",
+                        "description": "Delete Commit message.\n"
                     },
                     "encoding": {
                         "type": "string",
@@ -15736,13 +16057,17 @@
                     "startBranch": {
                         "type": "string",
                         "description": "Name of the branch to start the new commit from.\n"
+                    },
+                    "updateCommitMessage": {
+                        "type": "string",
+                        "description": "Update commit message.\n"
                     }
                 },
                 "type": "object"
             }
         },
         "gitlab:index/runner:Runner": {
-            "description": "The `gitlab.Runner` resource allows to manage the lifecycle of a runner.\n\nA runner can either be registered at an instance level or group level.\nThe runner will be registered at a group level if the token used is from a group, or at an instance level if the token used is for the instance.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#register-a-new-runner)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\nimport * as local from \"@pulumi/local\";\n\n// Basic GitLab Group Runner\nconst myGroup = new gitlab.Group(\"myGroup\", {description: \"group that holds the runners\"});\nconst basicRunner = new gitlab.Runner(\"basicRunner\", {registrationToken: myGroup.runnersToken});\n// GitLab Runner that runs only tagged jobs\nconst taggedOnly = new gitlab.Runner(\"taggedOnly\", {\n    registrationToken: myGroup.runnersToken,\n    description: \"I only run tagged jobs\",\n    runUntagged: false,\n    tagLists: [\n        \"tag_one\",\n        \"tag_two\",\n    ],\n});\n// GitLab Runner that only runs on protected branches\nconst _protected = new gitlab.Runner(\"protected\", {\n    registrationToken: myGroup.runnersToken,\n    description: \"I only run protected jobs\",\n    accessLevel: \"ref_protected\",\n});\n// Generate a `config.toml` file that you can use to create a runner\n// This is the typical workflow for this resource, using it to create an authentication_token which can then be used\n// to generate the `config.toml` file to prevent re-registering the runner every time new hardware is created.\nconst myCustomGroup = new gitlab.Group(\"myCustomGroup\", {description: \"group that holds the custom runners\"});\nconst myRunner = new gitlab.Runner(\"myRunner\", {registrationToken: myCustomGroup.runnersToken});\n// This creates a configuration for a local \"shell\" runner, but can be changed to generate whatever is needed.\n// Place this configuration file on a server at `/etc/gitlab-runner/config.toml`, then run `gitlab-runner start`.\n// See https://docs.gitlab.com/runner/configuration/advanced-configuration.html for more information.\nconst config = new local.File(\"config\", {\n    filename: `${path.module}/config.toml`,\n    content: pulumi.interpolate`  concurrent = 1\n\n  [[runners]]\n    name = \"Hello Terraform\"\n    url = \"https://example.gitlab.com/\"\n    token = \"${myRunner.authenticationToken}\"\n    executor = \"shell\"\n    \n`,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\nimport pulumi_local as local\n\n# Basic GitLab Group Runner\nmy_group = gitlab.Group(\"myGroup\", description=\"group that holds the runners\")\nbasic_runner = gitlab.Runner(\"basicRunner\", registration_token=my_group.runners_token)\n# GitLab Runner that runs only tagged jobs\ntagged_only = gitlab.Runner(\"taggedOnly\",\n    registration_token=my_group.runners_token,\n    description=\"I only run tagged jobs\",\n    run_untagged=False,\n    tag_lists=[\n        \"tag_one\",\n        \"tag_two\",\n    ])\n# GitLab Runner that only runs on protected branches\nprotected = gitlab.Runner(\"protected\",\n    registration_token=my_group.runners_token,\n    description=\"I only run protected jobs\",\n    access_level=\"ref_protected\")\n# Generate a `config.toml` file that you can use to create a runner\n# This is the typical workflow for this resource, using it to create an authentication_token which can then be used\n# to generate the `config.toml` file to prevent re-registering the runner every time new hardware is created.\nmy_custom_group = gitlab.Group(\"myCustomGroup\", description=\"group that holds the custom runners\")\nmy_runner = gitlab.Runner(\"myRunner\", registration_token=my_custom_group.runners_token)\n# This creates a configuration for a local \"shell\" runner, but can be changed to generate whatever is needed.\n# Place this configuration file on a server at `/etc/gitlab-runner/config.toml`, then run `gitlab-runner start`.\n# See https://docs.gitlab.com/runner/configuration/advanced-configuration.html for more information.\nconfig = local.File(\"config\",\n    filename=f\"{path['module']}/config.toml\",\n    content=my_runner.authentication_token.apply(lambda authentication_token: f\"\"\"  concurrent = 1\n\n  [[runners]]\n    name = \"Hello Terraform\"\n    url = \"https://example.gitlab.com/\"\n    token = \"{authentication_token}\"\n    executor = \"shell\"\n    \n\"\"\"))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\nusing Local = Pulumi.Local;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Basic GitLab Group Runner\n    var myGroup = new GitLab.Group(\"myGroup\", new()\n    {\n        Description = \"group that holds the runners\",\n    });\n\n    var basicRunner = new GitLab.Runner(\"basicRunner\", new()\n    {\n        RegistrationToken = myGroup.RunnersToken,\n    });\n\n    // GitLab Runner that runs only tagged jobs\n    var taggedOnly = new GitLab.Runner(\"taggedOnly\", new()\n    {\n        RegistrationToken = myGroup.RunnersToken,\n        Description = \"I only run tagged jobs\",\n        RunUntagged = false,\n        TagLists = new[]\n        {\n            \"tag_one\",\n            \"tag_two\",\n        },\n    });\n\n    // GitLab Runner that only runs on protected branches\n    var @protected = new GitLab.Runner(\"protected\", new()\n    {\n        RegistrationToken = myGroup.RunnersToken,\n        Description = \"I only run protected jobs\",\n        AccessLevel = \"ref_protected\",\n    });\n\n    // Generate a `config.toml` file that you can use to create a runner\n    // This is the typical workflow for this resource, using it to create an authentication_token which can then be used\n    // to generate the `config.toml` file to prevent re-registering the runner every time new hardware is created.\n    var myCustomGroup = new GitLab.Group(\"myCustomGroup\", new()\n    {\n        Description = \"group that holds the custom runners\",\n    });\n\n    var myRunner = new GitLab.Runner(\"myRunner\", new()\n    {\n        RegistrationToken = myCustomGroup.RunnersToken,\n    });\n\n    // This creates a configuration for a local \"shell\" runner, but can be changed to generate whatever is needed.\n    // Place this configuration file on a server at `/etc/gitlab-runner/config.toml`, then run `gitlab-runner start`.\n    // See https://docs.gitlab.com/runner/configuration/advanced-configuration.html for more information.\n    var config = new Local.File(\"config\", new()\n    {\n        Filename = $\"{path.Module}/config.toml\",\n        Content = myRunner.AuthenticationToken.Apply(authenticationToken =\u003e @$\"  concurrent = 1\n\n  [[runners]]\n    name = \"\"Hello Terraform\"\"\n    url = \"\"https://example.gitlab.com/\"\"\n    token = \"\"{authenticationToken}\"\"\n    executor = \"\"shell\"\"\n    \n\"),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi-local/sdk/go/local\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyGroup, err := gitlab.NewGroup(ctx, \"myGroup\", \u0026gitlab.GroupArgs{\n\t\t\tDescription: pulumi.String(\"group that holds the runners\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewRunner(ctx, \"basicRunner\", \u0026gitlab.RunnerArgs{\n\t\t\tRegistrationToken: myGroup.RunnersToken,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewRunner(ctx, \"taggedOnly\", \u0026gitlab.RunnerArgs{\n\t\t\tRegistrationToken: myGroup.RunnersToken,\n\t\t\tDescription:       pulumi.String(\"I only run tagged jobs\"),\n\t\t\tRunUntagged:       pulumi.Bool(false),\n\t\t\tTagLists: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"tag_one\"),\n\t\t\t\tpulumi.String(\"tag_two\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewRunner(ctx, \"protected\", \u0026gitlab.RunnerArgs{\n\t\t\tRegistrationToken: myGroup.RunnersToken,\n\t\t\tDescription:       pulumi.String(\"I only run protected jobs\"),\n\t\t\tAccessLevel:       pulumi.String(\"ref_protected\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyCustomGroup, err := gitlab.NewGroup(ctx, \"myCustomGroup\", \u0026gitlab.GroupArgs{\n\t\t\tDescription: pulumi.String(\"group that holds the custom runners\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyRunner, err := gitlab.NewRunner(ctx, \"myRunner\", \u0026gitlab.RunnerArgs{\n\t\t\tRegistrationToken: myCustomGroup.RunnersToken,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = local.NewFile(ctx, \"config\", \u0026local.FileArgs{\n\t\t\tFilename: pulumi.String(fmt.Sprintf(\"%v/config.toml\", path.Module)),\n\t\t\tContent: myRunner.AuthenticationToken.ApplyT(func(authenticationToken string) (string, error) {\n\t\t\t\treturn fmt.Sprintf(`  concurrent = 1\n\n  [[runners]]\n    name = \"Hello Terraform\"\n    url = \"https://example.gitlab.com/\"\n    token = \"%v\"\n    executor = \"shell\"\n    \n`, authenticationToken), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Group;\nimport com.pulumi.gitlab.GroupArgs;\nimport com.pulumi.gitlab.Runner;\nimport com.pulumi.gitlab.RunnerArgs;\nimport com.pulumi.local.File;\nimport com.pulumi.local.FileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myGroup = new Group(\"myGroup\", GroupArgs.builder()        \n            .description(\"group that holds the runners\")\n            .build());\n\n        var basicRunner = new Runner(\"basicRunner\", RunnerArgs.builder()        \n            .registrationToken(myGroup.runnersToken())\n            .build());\n\n        var taggedOnly = new Runner(\"taggedOnly\", RunnerArgs.builder()        \n            .registrationToken(myGroup.runnersToken())\n            .description(\"I only run tagged jobs\")\n            .runUntagged(\"false\")\n            .tagLists(            \n                \"tag_one\",\n                \"tag_two\")\n            .build());\n\n        var protected_ = new Runner(\"protected\", RunnerArgs.builder()        \n            .registrationToken(myGroup.runnersToken())\n            .description(\"I only run protected jobs\")\n            .accessLevel(\"ref_protected\")\n            .build());\n\n        var myCustomGroup = new Group(\"myCustomGroup\", GroupArgs.builder()        \n            .description(\"group that holds the custom runners\")\n            .build());\n\n        var myRunner = new Runner(\"myRunner\", RunnerArgs.builder()        \n            .registrationToken(myCustomGroup.runnersToken())\n            .build());\n\n        var config = new File(\"config\", FileArgs.builder()        \n            .filename(String.format(\"%s/config.toml\", path.module()))\n            .content(myRunner.authenticationToken().applyValue(authenticationToken -\u003e \"\"\"\n  concurrent = 1\n\n  [[runners]]\n    name = \"Hello Terraform\"\n    url = \"https://example.gitlab.com/\"\n    token = \"%s\"\n    executor = \"shell\"\n    \n\", authenticationToken)))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Basic GitLab Group Runner\n  myGroup:\n    type: gitlab:Group\n    properties:\n      description: group that holds the runners\n  basicRunner:\n    type: gitlab:Runner\n    properties:\n      registrationToken: ${myGroup.runnersToken}\n  # GitLab Runner that runs only tagged jobs\n  taggedOnly:\n    type: gitlab:Runner\n    properties:\n      registrationToken: ${myGroup.runnersToken}\n      description: I only run tagged jobs\n      runUntagged: 'false'\n      tagLists:\n        - tag_one\n        - tag_two\n  # GitLab Runner that only runs on protected branches\n  protected: # Generate a `config.toml` file that you can use to create a runner\n  # This is the typical workflow for this resource, using it to create an authentication_token which can then be used\n  # to generate the `config.toml` file to prevent re-registering the runner every time new hardware is created.\n    type: gitlab:Runner\n    properties:\n      registrationToken: ${myGroup.runnersToken}\n      description: I only run protected jobs\n      accessLevel: ref_protected\n  myCustomGroup:\n    type: gitlab:Group\n    properties:\n      description: group that holds the custom runners\n  myRunner:\n    type: gitlab:Runner\n    properties:\n      registrationToken: ${myCustomGroup.runnersToken}\n  # This creates a configuration for a local \"shell\" runner, but can be changed to generate whatever is needed.\n  # Place this configuration file on a server at `/etc/gitlab-runner/config.toml`, then run `gitlab-runner start`.\n  # See https://docs.gitlab.com/runner/configuration/advanced-configuration.html for more information.\n  config:\n    type: local:File\n    properties:\n      filename: ${path.module}/config.toml\n      content: \"  concurrent = 1\\n\\n  [[runners]]\\n    name = \\\"Hello Terraform\\\"\\n    url = \\\"https://example.gitlab.com/\\\"\\n    token = \\\"${myRunner.authenticationToken}\\\"\\n    executor = \\\"shell\\\"\\n    \\n\"\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA GitLab Runner can be imported using the runner's ID, eg\n\n```sh\n $ pulumi import gitlab:index/runner:Runner this 1\n```\n\n ",
+            "description": "The `gitlab.Runner` resource allows to manage the lifecycle of a runner.\n\nA runner can either be registered at an instance level or group level.\nThe runner will be registered at a group level if the token used is from a group, or at an instance level if the token used is for the instance.\n\n~ \u003e Using this resource will register a runner using the deprecated `registration_token` flow. To use the new `authentication_token` flow instead,\nuse the `gitlab.UserRunner` resource!\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#register-a-new-runner)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\nimport * as local from \"@pulumi/local\";\n\n// Basic GitLab Group Runner\nconst myGroup = new gitlab.Group(\"myGroup\", {description: \"group that holds the runners\"});\nconst basicRunner = new gitlab.Runner(\"basicRunner\", {registrationToken: myGroup.runnersToken});\n// GitLab Runner that runs only tagged jobs\nconst taggedOnly = new gitlab.Runner(\"taggedOnly\", {\n    registrationToken: myGroup.runnersToken,\n    description: \"I only run tagged jobs\",\n    runUntagged: false,\n    tagLists: [\n        \"tag_one\",\n        \"tag_two\",\n    ],\n});\n// GitLab Runner that only runs on protected branches\nconst _protected = new gitlab.Runner(\"protected\", {\n    registrationToken: myGroup.runnersToken,\n    description: \"I only run protected jobs\",\n    accessLevel: \"ref_protected\",\n});\n// Generate a `config.toml` file that you can use to create a runner\n// This is the typical workflow for this resource, using it to create an authentication_token which can then be used\n// to generate the `config.toml` file to prevent re-registering the runner every time new hardware is created.\nconst myCustomGroup = new gitlab.Group(\"myCustomGroup\", {description: \"group that holds the custom runners\"});\nconst myRunner = new gitlab.Runner(\"myRunner\", {registrationToken: myCustomGroup.runnersToken});\n// This creates a configuration for a local \"shell\" runner, but can be changed to generate whatever is needed.\n// Place this configuration file on a server at `/etc/gitlab-runner/config.toml`, then run `gitlab-runner start`.\n// See https://docs.gitlab.com/runner/configuration/advanced-configuration.html for more information.\nconst config = new local.File(\"config\", {\n    filename: `${path.module}/config.toml`,\n    content: pulumi.interpolate`  concurrent = 1\n\n  [[runners]]\n    name = \"Hello Terraform\"\n    url = \"https://example.gitlab.com/\"\n    token = \"${myRunner.authenticationToken}\"\n    executor = \"shell\"\n    \n`,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\nimport pulumi_local as local\n\n# Basic GitLab Group Runner\nmy_group = gitlab.Group(\"myGroup\", description=\"group that holds the runners\")\nbasic_runner = gitlab.Runner(\"basicRunner\", registration_token=my_group.runners_token)\n# GitLab Runner that runs only tagged jobs\ntagged_only = gitlab.Runner(\"taggedOnly\",\n    registration_token=my_group.runners_token,\n    description=\"I only run tagged jobs\",\n    run_untagged=False,\n    tag_lists=[\n        \"tag_one\",\n        \"tag_two\",\n    ])\n# GitLab Runner that only runs on protected branches\nprotected = gitlab.Runner(\"protected\",\n    registration_token=my_group.runners_token,\n    description=\"I only run protected jobs\",\n    access_level=\"ref_protected\")\n# Generate a `config.toml` file that you can use to create a runner\n# This is the typical workflow for this resource, using it to create an authentication_token which can then be used\n# to generate the `config.toml` file to prevent re-registering the runner every time new hardware is created.\nmy_custom_group = gitlab.Group(\"myCustomGroup\", description=\"group that holds the custom runners\")\nmy_runner = gitlab.Runner(\"myRunner\", registration_token=my_custom_group.runners_token)\n# This creates a configuration for a local \"shell\" runner, but can be changed to generate whatever is needed.\n# Place this configuration file on a server at `/etc/gitlab-runner/config.toml`, then run `gitlab-runner start`.\n# See https://docs.gitlab.com/runner/configuration/advanced-configuration.html for more information.\nconfig = local.File(\"config\",\n    filename=f\"{path['module']}/config.toml\",\n    content=my_runner.authentication_token.apply(lambda authentication_token: f\"\"\"  concurrent = 1\n\n  [[runners]]\n    name = \"Hello Terraform\"\n    url = \"https://example.gitlab.com/\"\n    token = \"{authentication_token}\"\n    executor = \"shell\"\n    \n\"\"\"))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\nusing Local = Pulumi.Local;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Basic GitLab Group Runner\n    var myGroup = new GitLab.Group(\"myGroup\", new()\n    {\n        Description = \"group that holds the runners\",\n    });\n\n    var basicRunner = new GitLab.Runner(\"basicRunner\", new()\n    {\n        RegistrationToken = myGroup.RunnersToken,\n    });\n\n    // GitLab Runner that runs only tagged jobs\n    var taggedOnly = new GitLab.Runner(\"taggedOnly\", new()\n    {\n        RegistrationToken = myGroup.RunnersToken,\n        Description = \"I only run tagged jobs\",\n        RunUntagged = false,\n        TagLists = new[]\n        {\n            \"tag_one\",\n            \"tag_two\",\n        },\n    });\n\n    // GitLab Runner that only runs on protected branches\n    var @protected = new GitLab.Runner(\"protected\", new()\n    {\n        RegistrationToken = myGroup.RunnersToken,\n        Description = \"I only run protected jobs\",\n        AccessLevel = \"ref_protected\",\n    });\n\n    // Generate a `config.toml` file that you can use to create a runner\n    // This is the typical workflow for this resource, using it to create an authentication_token which can then be used\n    // to generate the `config.toml` file to prevent re-registering the runner every time new hardware is created.\n    var myCustomGroup = new GitLab.Group(\"myCustomGroup\", new()\n    {\n        Description = \"group that holds the custom runners\",\n    });\n\n    var myRunner = new GitLab.Runner(\"myRunner\", new()\n    {\n        RegistrationToken = myCustomGroup.RunnersToken,\n    });\n\n    // This creates a configuration for a local \"shell\" runner, but can be changed to generate whatever is needed.\n    // Place this configuration file on a server at `/etc/gitlab-runner/config.toml`, then run `gitlab-runner start`.\n    // See https://docs.gitlab.com/runner/configuration/advanced-configuration.html for more information.\n    var config = new Local.File(\"config\", new()\n    {\n        Filename = $\"{path.Module}/config.toml\",\n        Content = myRunner.AuthenticationToken.Apply(authenticationToken =\u003e @$\"  concurrent = 1\n\n  [[runners]]\n    name = \"\"Hello Terraform\"\"\n    url = \"\"https://example.gitlab.com/\"\"\n    token = \"\"{authenticationToken}\"\"\n    executor = \"\"shell\"\"\n    \n\"),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi-local/sdk/go/local\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyGroup, err := gitlab.NewGroup(ctx, \"myGroup\", \u0026gitlab.GroupArgs{\n\t\t\tDescription: pulumi.String(\"group that holds the runners\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewRunner(ctx, \"basicRunner\", \u0026gitlab.RunnerArgs{\n\t\t\tRegistrationToken: myGroup.RunnersToken,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewRunner(ctx, \"taggedOnly\", \u0026gitlab.RunnerArgs{\n\t\t\tRegistrationToken: myGroup.RunnersToken,\n\t\t\tDescription:       pulumi.String(\"I only run tagged jobs\"),\n\t\t\tRunUntagged:       pulumi.Bool(false),\n\t\t\tTagLists: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"tag_one\"),\n\t\t\t\tpulumi.String(\"tag_two\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewRunner(ctx, \"protected\", \u0026gitlab.RunnerArgs{\n\t\t\tRegistrationToken: myGroup.RunnersToken,\n\t\t\tDescription:       pulumi.String(\"I only run protected jobs\"),\n\t\t\tAccessLevel:       pulumi.String(\"ref_protected\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyCustomGroup, err := gitlab.NewGroup(ctx, \"myCustomGroup\", \u0026gitlab.GroupArgs{\n\t\t\tDescription: pulumi.String(\"group that holds the custom runners\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyRunner, err := gitlab.NewRunner(ctx, \"myRunner\", \u0026gitlab.RunnerArgs{\n\t\t\tRegistrationToken: myCustomGroup.RunnersToken,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = local.NewFile(ctx, \"config\", \u0026local.FileArgs{\n\t\t\tFilename: pulumi.String(fmt.Sprintf(\"%v/config.toml\", path.Module)),\n\t\t\tContent: myRunner.AuthenticationToken.ApplyT(func(authenticationToken string) (string, error) {\n\t\t\t\treturn fmt.Sprintf(`  concurrent = 1\n\n  [[runners]]\n    name = \"Hello Terraform\"\n    url = \"https://example.gitlab.com/\"\n    token = \"%v\"\n    executor = \"shell\"\n    \n`, authenticationToken), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Group;\nimport com.pulumi.gitlab.GroupArgs;\nimport com.pulumi.gitlab.Runner;\nimport com.pulumi.gitlab.RunnerArgs;\nimport com.pulumi.local.File;\nimport com.pulumi.local.FileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myGroup = new Group(\"myGroup\", GroupArgs.builder()        \n            .description(\"group that holds the runners\")\n            .build());\n\n        var basicRunner = new Runner(\"basicRunner\", RunnerArgs.builder()        \n            .registrationToken(myGroup.runnersToken())\n            .build());\n\n        var taggedOnly = new Runner(\"taggedOnly\", RunnerArgs.builder()        \n            .registrationToken(myGroup.runnersToken())\n            .description(\"I only run tagged jobs\")\n            .runUntagged(\"false\")\n            .tagLists(            \n                \"tag_one\",\n                \"tag_two\")\n            .build());\n\n        var protected_ = new Runner(\"protected\", RunnerArgs.builder()        \n            .registrationToken(myGroup.runnersToken())\n            .description(\"I only run protected jobs\")\n            .accessLevel(\"ref_protected\")\n            .build());\n\n        var myCustomGroup = new Group(\"myCustomGroup\", GroupArgs.builder()        \n            .description(\"group that holds the custom runners\")\n            .build());\n\n        var myRunner = new Runner(\"myRunner\", RunnerArgs.builder()        \n            .registrationToken(myCustomGroup.runnersToken())\n            .build());\n\n        var config = new File(\"config\", FileArgs.builder()        \n            .filename(String.format(\"%s/config.toml\", path.module()))\n            .content(myRunner.authenticationToken().applyValue(authenticationToken -\u003e \"\"\"\n  concurrent = 1\n\n  [[runners]]\n    name = \"Hello Terraform\"\n    url = \"https://example.gitlab.com/\"\n    token = \"%s\"\n    executor = \"shell\"\n    \n\", authenticationToken)))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Basic GitLab Group Runner\n  myGroup:\n    type: gitlab:Group\n    properties:\n      description: group that holds the runners\n  basicRunner:\n    type: gitlab:Runner\n    properties:\n      registrationToken: ${myGroup.runnersToken}\n  # GitLab Runner that runs only tagged jobs\n  taggedOnly:\n    type: gitlab:Runner\n    properties:\n      registrationToken: ${myGroup.runnersToken}\n      description: I only run tagged jobs\n      runUntagged: 'false'\n      tagLists:\n        - tag_one\n        - tag_two\n  # GitLab Runner that only runs on protected branches\n  protected: # Generate a `config.toml` file that you can use to create a runner\n  # This is the typical workflow for this resource, using it to create an authentication_token which can then be used\n  # to generate the `config.toml` file to prevent re-registering the runner every time new hardware is created.\n    type: gitlab:Runner\n    properties:\n      registrationToken: ${myGroup.runnersToken}\n      description: I only run protected jobs\n      accessLevel: ref_protected\n  myCustomGroup:\n    type: gitlab:Group\n    properties:\n      description: group that holds the custom runners\n  myRunner:\n    type: gitlab:Runner\n    properties:\n      registrationToken: ${myCustomGroup.runnersToken}\n  # This creates a configuration for a local \"shell\" runner, but can be changed to generate whatever is needed.\n  # Place this configuration file on a server at `/etc/gitlab-runner/config.toml`, then run `gitlab-runner start`.\n  # See https://docs.gitlab.com/runner/configuration/advanced-configuration.html for more information.\n  config:\n    type: local:File\n    properties:\n      filename: ${path.module}/config.toml\n      content: \"  concurrent = 1\\n\\n  [[runners]]\\n    name = \\\"Hello Terraform\\\"\\n    url = \\\"https://example.gitlab.com/\\\"\\n    token = \\\"${myRunner.authenticationToken}\\\"\\n    executor = \\\"shell\\\"\\n    \\n\"\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA GitLab Runner can be imported using the runner's ID, eg\n\n```sh\n $ pulumi import gitlab:index/runner:Runner this 1\n```\n\n ",
             "properties": {
                 "accessLevel": {
                     "type": "string",
@@ -17852,6 +18177,170 @@
                 "type": "object"
             }
         },
+        "gitlab:index/userRunner:UserRunner": {
+            "description": "The `gitlab.UserRunner` resource allows creating a GitLab runner using the new [GitLab Runner Registration Flow](https://docs.gitlab.com/ee/ci/runners/new_creation_workflow.html).\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#create-a-runner)\n",
+            "properties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "The access level of the runner. Valid values are: `not_protected`, `ref_protected`.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the runner.\n"
+                },
+                "groupId": {
+                    "type": "integer",
+                    "description": "The ID of the group that the runner is created in. Required if runner*type is group*type.\n"
+                },
+                "locked": {
+                    "type": "boolean",
+                    "description": "Specifies if the runner should be locked for the current project.\n"
+                },
+                "maximumTimeout": {
+                    "type": "integer",
+                    "description": "Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).\n"
+                },
+                "paused": {
+                    "type": "boolean",
+                    "description": "Specifies if the runner should ignore new jobs.\n"
+                },
+                "projectId": {
+                    "type": "integer",
+                    "description": "The ID of the project that the runner is created in. Required if runner*type is project*type.\n"
+                },
+                "runnerType": {
+                    "type": "string",
+                    "description": "The scope of the runner. Valid values are: `instance_type`, `group_type`, `project_type`.\n"
+                },
+                "tagLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of runner tags.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The authentication token to use when setting up a new runner with this configuration. This value cannot be imported.\n"
+                },
+                "untagged": {
+                    "type": "boolean",
+                    "description": "Specifies if the runner should handle untagged jobs.\n"
+                }
+            },
+            "required": [
+                "accessLevel",
+                "description",
+                "locked",
+                "maximumTimeout",
+                "paused",
+                "runnerType",
+                "tagLists",
+                "token",
+                "untagged"
+            ],
+            "inputProperties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "The access level of the runner. Valid values are: `not_protected`, `ref_protected`.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the runner.\n"
+                },
+                "groupId": {
+                    "type": "integer",
+                    "description": "The ID of the group that the runner is created in. Required if runner*type is group*type.\n"
+                },
+                "locked": {
+                    "type": "boolean",
+                    "description": "Specifies if the runner should be locked for the current project.\n"
+                },
+                "maximumTimeout": {
+                    "type": "integer",
+                    "description": "Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).\n"
+                },
+                "paused": {
+                    "type": "boolean",
+                    "description": "Specifies if the runner should ignore new jobs.\n"
+                },
+                "projectId": {
+                    "type": "integer",
+                    "description": "The ID of the project that the runner is created in. Required if runner*type is project*type.\n"
+                },
+                "runnerType": {
+                    "type": "string",
+                    "description": "The scope of the runner. Valid values are: `instance_type`, `group_type`, `project_type`.\n"
+                },
+                "tagLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of runner tags.\n"
+                },
+                "untagged": {
+                    "type": "boolean",
+                    "description": "Specifies if the runner should handle untagged jobs.\n"
+                }
+            },
+            "requiredInputs": [
+                "runnerType"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UserRunner resources.\n",
+                "properties": {
+                    "accessLevel": {
+                        "type": "string",
+                        "description": "The access level of the runner. Valid values are: `not_protected`, `ref_protected`.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the runner.\n"
+                    },
+                    "groupId": {
+                        "type": "integer",
+                        "description": "The ID of the group that the runner is created in. Required if runner*type is group*type.\n"
+                    },
+                    "locked": {
+                        "type": "boolean",
+                        "description": "Specifies if the runner should be locked for the current project.\n"
+                    },
+                    "maximumTimeout": {
+                        "type": "integer",
+                        "description": "Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).\n"
+                    },
+                    "paused": {
+                        "type": "boolean",
+                        "description": "Specifies if the runner should ignore new jobs.\n"
+                    },
+                    "projectId": {
+                        "type": "integer",
+                        "description": "The ID of the project that the runner is created in. Required if runner*type is project*type.\n"
+                    },
+                    "runnerType": {
+                        "type": "string",
+                        "description": "The scope of the runner. Valid values are: `instance_type`, `group_type`, `project_type`.\n"
+                    },
+                    "tagLists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of runner tags.\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "The authentication token to use when setting up a new runner with this configuration. This value cannot be imported.\n"
+                    },
+                    "untagged": {
+                        "type": "boolean",
+                        "description": "Specifies if the runner should handle untagged jobs.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "gitlab:index/userSshKey:UserSshKey": {
             "description": "The `gitlab.UserSshKey` resource allows to manage the lifecycle of an SSH key assigned to a user.\n\n**Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/users.html#single-ssh-key)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst exampleUser = gitlab.getUser({\n    username: \"example-user\",\n});\nconst exampleUserSshKey = new gitlab.UserSshKey(\"exampleUserSshKey\", {\n    userId: exampleUser.then(exampleUser =\u003e exampleUser.id),\n    title: \"example-key\",\n    key: \"ssh-ed25519 AAAA...\",\n    expiresAt: \"2016-01-21T00:00:00.000Z\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample_user = gitlab.get_user(username=\"example-user\")\nexample_user_ssh_key = gitlab.UserSshKey(\"exampleUserSshKey\",\n    user_id=example_user.id,\n    title=\"example-key\",\n    key=\"ssh-ed25519 AAAA...\",\n    expires_at=\"2016-01-21T00:00:00.000Z\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleUser = GitLab.GetUser.Invoke(new()\n    {\n        Username = \"example-user\",\n    });\n\n    var exampleUserSshKey = new GitLab.UserSshKey(\"exampleUserSshKey\", new()\n    {\n        UserId = exampleUser.Apply(getUserResult =\u003e getUserResult.Id),\n        Title = \"example-key\",\n        Key = \"ssh-ed25519 AAAA...\",\n        ExpiresAt = \"2016-01-21T00:00:00.000Z\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleUser, err := gitlab.LookupUser(ctx, \u0026gitlab.LookupUserArgs{\n\t\t\tUsername: pulumi.StringRef(\"example-user\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewUserSshKey(ctx, \"exampleUserSshKey\", \u0026gitlab.UserSshKeyArgs{\n\t\t\tUserId:    *pulumi.String(exampleUser.Id),\n\t\t\tTitle:     pulumi.String(\"example-key\"),\n\t\t\tKey:       pulumi.String(\"ssh-ed25519 AAAA...\"),\n\t\t\tExpiresAt: pulumi.String(\"2016-01-21T00:00:00.000Z\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetUserArgs;\nimport com.pulumi.gitlab.UserSshKey;\nimport com.pulumi.gitlab.UserSshKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var exampleUser = GitlabFunctions.getUser(GetUserArgs.builder()\n            .username(\"example-user\")\n            .build());\n\n        var exampleUserSshKey = new UserSshKey(\"exampleUserSshKey\", UserSshKeyArgs.builder()        \n            .userId(exampleUser.applyValue(getUserResult -\u003e getUserResult.id()))\n            .title(\"example-key\")\n            .key(\"ssh-ed25519 AAAA...\")\n            .expiresAt(\"2016-01-21T00:00:00.000Z\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleUserSshKey:\n    type: gitlab:UserSshKey\n    properties:\n      userId: ${exampleUser.id}\n      title: example-key\n      key: ssh-ed25519 AAAA...\n      expiresAt: 2016-01-21T00:00:00.000Z\nvariables:\n  exampleUser:\n    fn::invoke:\n      Function: gitlab:getUser\n      Arguments:\n        username: example-user\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nYou can import a user ssh key using an id made up of `{user-id}:{key}`, e.g.\n\n```sh\n $ pulumi import gitlab:index/userSshKey:UserSshKey example 42:1\n```\n\n ",
             "properties": {
@@ -18333,6 +18822,10 @@
                     "webUrl": {
                         "type": "string",
                         "description": "Web URL of the group.\n"
+                    },
+                    "wikiAccessLevel": {
+                        "type": "string",
+                        "description": "The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.\n"
                     }
                 },
                 "type": "object",
@@ -18354,6 +18847,7 @@
                     "sharedRunnersMinutesLimit",
                     "visibilityLevel",
                     "webUrl",
+                    "wikiAccessLevel",
                     "id"
                 ]
             }

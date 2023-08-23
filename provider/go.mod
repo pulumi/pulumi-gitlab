@@ -3,8 +3,8 @@ module github.com/pulumi/pulumi-gitlab/provider/v6
 go 1.19
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.15.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.56.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.15.2
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.57.0
 	github.com/pulumi/pulumi/sdk/v3 v3.76.1
 	gitlab.com/gitlab-org/terraform-provider-gitlab v0.0.0
 )
@@ -136,12 +136,12 @@ require (
 	github.com/hashicorp/hcl/v2 v2.17.0 // indirect
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
-	github.com/hashicorp/terraform-plugin-framework v1.3.3 // indirect
-	github.com/hashicorp/terraform-plugin-framework-validators v0.10.0 // indirect
+	github.com/hashicorp/terraform-plugin-framework v1.3.5 // indirect
+	github.com/hashicorp/terraform-plugin-framework-validators v0.11.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.18.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-mux v0.11.2 // indirect
-	github.com/hashicorp/terraform-plugin-sdk/v2 v2.26.1 // indirect
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.27.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.1 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/vault/api v1.8.2 // indirect
@@ -218,7 +218,7 @@ require (
 	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
 	github.com/vmihailenco/msgpack/v5 v5.3.5 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
-	github.com/xanzy/go-gitlab v0.88.0 // indirect
+	github.com/xanzy/go-gitlab v0.90.0 // indirect
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
 	github.com/xeipuuv/gojsonpointer v0.0.0-20180127040702-4e3ac2762d5f // indirect
 	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
@@ -228,14 +228,14 @@ require (
 	go.uber.org/atomic v1.9.0 // indirect
 	gocloud.dev v0.27.0 // indirect
 	gocloud.dev/secrets/hashivault v0.27.0 // indirect
-	golang.org/x/crypto v0.10.0 // indirect
+	golang.org/x/crypto v0.11.0 // indirect
 	golang.org/x/mod v0.10.0 // indirect
-	golang.org/x/net v0.11.0 // indirect
+	golang.org/x/net v0.12.0 // indirect
 	golang.org/x/oauth2 v0.7.0 // indirect
 	golang.org/x/sync v0.2.0 // indirect
-	golang.org/x/sys v0.9.0 // indirect
-	golang.org/x/term v0.9.0 // indirect
-	golang.org/x/text v0.10.0 // indirect
+	golang.org/x/sys v0.10.0 // indirect
+	golang.org/x/term v0.10.0 // indirect
+	golang.org/x/text v0.11.0 // indirect
 	golang.org/x/time v0.3.0 // indirect
 	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2 // indirect
 	google.golang.org/api v0.114.0 // indirect
