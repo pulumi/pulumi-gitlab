@@ -35,11 +35,15 @@ type RepositoryFile struct {
 	// The commit id.
 	CommitId pulumi.StringOutput `pulumi:"commitId"`
 	// Commit message.
-	CommitMessage pulumi.StringOutput `pulumi:"commitMessage"`
+	CommitMessage pulumi.StringPtrOutput `pulumi:"commitMessage"`
 	// File content.
 	Content pulumi.StringOutput `pulumi:"content"`
 	// File content sha256 digest.
 	ContentSha256 pulumi.StringOutput `pulumi:"contentSha256"`
+	// Create commit message.
+	CreateCommitMessage pulumi.StringPtrOutput `pulumi:"createCommitMessage"`
+	// Delete Commit message.
+	DeleteCommitMessage pulumi.StringPtrOutput `pulumi:"deleteCommitMessage"`
 	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
 	Encoding pulumi.StringPtrOutput `pulumi:"encoding"`
 	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
@@ -60,6 +64,8 @@ type RepositoryFile struct {
 	Size pulumi.IntOutput `pulumi:"size"`
 	// Name of the branch to start the new commit from.
 	StartBranch pulumi.StringPtrOutput `pulumi:"startBranch"`
+	// Update commit message.
+	UpdateCommitMessage pulumi.StringPtrOutput `pulumi:"updateCommitMessage"`
 }
 
 // NewRepositoryFile registers a new resource with the given unique name, arguments, and options.
@@ -71,9 +77,6 @@ func NewRepositoryFile(ctx *pulumi.Context,
 
 	if args.Branch == nil {
 		return nil, errors.New("invalid value for required argument 'Branch'")
-	}
-	if args.CommitMessage == nil {
-		return nil, errors.New("invalid value for required argument 'CommitMessage'")
 	}
 	if args.Content == nil {
 		return nil, errors.New("invalid value for required argument 'Content'")
@@ -123,6 +126,10 @@ type repositoryFileState struct {
 	Content *string `pulumi:"content"`
 	// File content sha256 digest.
 	ContentSha256 *string `pulumi:"contentSha256"`
+	// Create commit message.
+	CreateCommitMessage *string `pulumi:"createCommitMessage"`
+	// Delete Commit message.
+	DeleteCommitMessage *string `pulumi:"deleteCommitMessage"`
 	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
 	Encoding *string `pulumi:"encoding"`
 	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
@@ -143,6 +150,8 @@ type repositoryFileState struct {
 	Size *int `pulumi:"size"`
 	// Name of the branch to start the new commit from.
 	StartBranch *string `pulumi:"startBranch"`
+	// Update commit message.
+	UpdateCommitMessage *string `pulumi:"updateCommitMessage"`
 }
 
 type RepositoryFileState struct {
@@ -162,6 +171,10 @@ type RepositoryFileState struct {
 	Content pulumi.StringPtrInput
 	// File content sha256 digest.
 	ContentSha256 pulumi.StringPtrInput
+	// Create commit message.
+	CreateCommitMessage pulumi.StringPtrInput
+	// Delete Commit message.
+	DeleteCommitMessage pulumi.StringPtrInput
 	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
 	Encoding pulumi.StringPtrInput
 	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
@@ -182,6 +195,8 @@ type RepositoryFileState struct {
 	Size pulumi.IntPtrInput
 	// Name of the branch to start the new commit from.
 	StartBranch pulumi.StringPtrInput
+	// Update commit message.
+	UpdateCommitMessage pulumi.StringPtrInput
 }
 
 func (RepositoryFileState) ElementType() reflect.Type {
@@ -196,9 +211,13 @@ type repositoryFileArgs struct {
 	// Name of the branch to which to commit to.
 	Branch string `pulumi:"branch"`
 	// Commit message.
-	CommitMessage string `pulumi:"commitMessage"`
+	CommitMessage *string `pulumi:"commitMessage"`
 	// File content.
 	Content string `pulumi:"content"`
+	// Create commit message.
+	CreateCommitMessage *string `pulumi:"createCommitMessage"`
+	// Delete Commit message.
+	DeleteCommitMessage *string `pulumi:"deleteCommitMessage"`
 	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
 	Encoding *string `pulumi:"encoding"`
 	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
@@ -211,6 +230,8 @@ type repositoryFileArgs struct {
 	Project string `pulumi:"project"`
 	// Name of the branch to start the new commit from.
 	StartBranch *string `pulumi:"startBranch"`
+	// Update commit message.
+	UpdateCommitMessage *string `pulumi:"updateCommitMessage"`
 }
 
 // The set of arguments for constructing a RepositoryFile resource.
@@ -222,9 +243,13 @@ type RepositoryFileArgs struct {
 	// Name of the branch to which to commit to.
 	Branch pulumi.StringInput
 	// Commit message.
-	CommitMessage pulumi.StringInput
+	CommitMessage pulumi.StringPtrInput
 	// File content.
 	Content pulumi.StringInput
+	// Create commit message.
+	CreateCommitMessage pulumi.StringPtrInput
+	// Delete Commit message.
+	DeleteCommitMessage pulumi.StringPtrInput
 	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
 	Encoding pulumi.StringPtrInput
 	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
@@ -237,6 +262,8 @@ type RepositoryFileArgs struct {
 	Project pulumi.StringInput
 	// Name of the branch to start the new commit from.
 	StartBranch pulumi.StringPtrInput
+	// Update commit message.
+	UpdateCommitMessage pulumi.StringPtrInput
 }
 
 func (RepositoryFileArgs) ElementType() reflect.Type {
@@ -352,8 +379,8 @@ func (o RepositoryFileOutput) CommitId() pulumi.StringOutput {
 }
 
 // Commit message.
-func (o RepositoryFileOutput) CommitMessage() pulumi.StringOutput {
-	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.CommitMessage }).(pulumi.StringOutput)
+func (o RepositoryFileOutput) CommitMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringPtrOutput { return v.CommitMessage }).(pulumi.StringPtrOutput)
 }
 
 // File content.
@@ -364,6 +391,16 @@ func (o RepositoryFileOutput) Content() pulumi.StringOutput {
 // File content sha256 digest.
 func (o RepositoryFileOutput) ContentSha256() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.ContentSha256 }).(pulumi.StringOutput)
+}
+
+// Create commit message.
+func (o RepositoryFileOutput) CreateCommitMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringPtrOutput { return v.CreateCommitMessage }).(pulumi.StringPtrOutput)
+}
+
+// Delete Commit message.
+func (o RepositoryFileOutput) DeleteCommitMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringPtrOutput { return v.DeleteCommitMessage }).(pulumi.StringPtrOutput)
 }
 
 // The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
@@ -414,6 +451,11 @@ func (o RepositoryFileOutput) Size() pulumi.IntOutput {
 // Name of the branch to start the new commit from.
 func (o RepositoryFileOutput) StartBranch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryFile) pulumi.StringPtrOutput { return v.StartBranch }).(pulumi.StringPtrOutput)
+}
+
+// Update commit message.
+func (o RepositoryFileOutput) UpdateCommitMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringPtrOutput { return v.UpdateCommitMessage }).(pulumi.StringPtrOutput)
 }
 
 type RepositoryFileArrayOutput struct{ *pulumi.OutputState }

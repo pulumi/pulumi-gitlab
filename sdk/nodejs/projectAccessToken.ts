@@ -132,6 +132,9 @@ export class ProjectAccessToken extends pulumi.CustomResource {
             resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as ProjectAccessTokenArgs | undefined;
+            if ((!args || args.expiresAt === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'expiresAt'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -213,7 +216,7 @@ export interface ProjectAccessTokenArgs {
     /**
      * Time the token will expire it, YYYY-MM-DD format.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt: pulumi.Input<string>;
     /**
      * A name to describe the project access token.
      */

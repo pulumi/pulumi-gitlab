@@ -21,7 +21,7 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, default_branch_protection=None, description=None, extra_shared_runners_minutes_limit=None, full_name=None, full_path=None, group_id=None, id=None, lfs_enabled=None, membership_lock=None, name=None, parent_id=None, path=None, prevent_forking_outside_group=None, request_access_enabled=None, runners_token=None, shared_runners_minutes_limit=None, visibility_level=None, web_url=None):
+    def __init__(__self__, default_branch_protection=None, description=None, extra_shared_runners_minutes_limit=None, full_name=None, full_path=None, group_id=None, id=None, lfs_enabled=None, membership_lock=None, name=None, parent_id=None, path=None, prevent_forking_outside_group=None, request_access_enabled=None, runners_token=None, shared_runners_minutes_limit=None, visibility_level=None, web_url=None, wiki_access_level=None):
         if default_branch_protection and not isinstance(default_branch_protection, int):
             raise TypeError("Expected argument 'default_branch_protection' to be a int")
         pulumi.set(__self__, "default_branch_protection", default_branch_protection)
@@ -76,6 +76,9 @@ class GetGroupResult:
         if web_url and not isinstance(web_url, str):
             raise TypeError("Expected argument 'web_url' to be a str")
         pulumi.set(__self__, "web_url", web_url)
+        if wiki_access_level and not isinstance(wiki_access_level, str):
+            raise TypeError("Expected argument 'wiki_access_level' to be a str")
+        pulumi.set(__self__, "wiki_access_level", wiki_access_level)
 
     @property
     @pulumi.getter(name="defaultBranchProtection")
@@ -221,6 +224,14 @@ class GetGroupResult:
         """
         return pulumi.get(self, "web_url")
 
+    @property
+    @pulumi.getter(name="wikiAccessLevel")
+    def wiki_access_level(self) -> str:
+        """
+        The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "wiki_access_level")
+
 
 class AwaitableGetGroupResult(GetGroupResult):
     # pylint: disable=using-constant-test
@@ -245,7 +256,8 @@ class AwaitableGetGroupResult(GetGroupResult):
             runners_token=self.runners_token,
             shared_runners_minutes_limit=self.shared_runners_minutes_limit,
             visibility_level=self.visibility_level,
-            web_url=self.web_url)
+            web_url=self.web_url,
+            wiki_access_level=self.wiki_access_level)
 
 
 def get_group(full_path: Optional[str] = None,
@@ -293,7 +305,8 @@ def get_group(full_path: Optional[str] = None,
         runners_token=pulumi.get(__ret__, 'runners_token'),
         shared_runners_minutes_limit=pulumi.get(__ret__, 'shared_runners_minutes_limit'),
         visibility_level=pulumi.get(__ret__, 'visibility_level'),
-        web_url=pulumi.get(__ret__, 'web_url'))
+        web_url=pulumi.get(__ret__, 'web_url'),
+        wiki_access_level=pulumi.get(__ret__, 'wiki_access_level'))
 
 
 @_utilities.lift_output_func(get_group)

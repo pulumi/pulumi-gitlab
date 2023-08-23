@@ -90,6 +90,10 @@ export class GroupBadge extends pulumi.CustomResource {
      */
     public readonly linkUrl!: pulumi.Output<string>;
     /**
+     * The name of the badge.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
      * The imageUrl argument rendered (in case of use of placeholders).
      */
     public /*out*/ readonly renderedImageUrl!: pulumi.Output<string>;
@@ -114,6 +118,7 @@ export class GroupBadge extends pulumi.CustomResource {
             resourceInputs["group"] = state ? state.group : undefined;
             resourceInputs["imageUrl"] = state ? state.imageUrl : undefined;
             resourceInputs["linkUrl"] = state ? state.linkUrl : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["renderedImageUrl"] = state ? state.renderedImageUrl : undefined;
             resourceInputs["renderedLinkUrl"] = state ? state.renderedLinkUrl : undefined;
         } else {
@@ -130,6 +135,7 @@ export class GroupBadge extends pulumi.CustomResource {
             resourceInputs["group"] = args ? args.group : undefined;
             resourceInputs["imageUrl"] = args ? args.imageUrl : undefined;
             resourceInputs["linkUrl"] = args ? args.linkUrl : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["renderedImageUrl"] = undefined /*out*/;
             resourceInputs["renderedLinkUrl"] = undefined /*out*/;
         }
@@ -154,6 +160,10 @@ export interface GroupBadgeState {
      * The url linked with the badge.
      */
     linkUrl?: pulumi.Input<string>;
+    /**
+     * The name of the badge.
+     */
+    name?: pulumi.Input<string>;
     /**
      * The imageUrl argument rendered (in case of use of placeholders).
      */
@@ -180,4 +190,8 @@ export interface GroupBadgeArgs {
      * The url linked with the badge.
      */
     linkUrl: pulumi.Input<string>;
+    /**
+     * The name of the badge.
+     */
+    name?: pulumi.Input<string>;
 }

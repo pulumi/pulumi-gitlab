@@ -192,7 +192,7 @@ type Project struct {
 	// A description of the project.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disable email notifications.
-	EmailsDisabled pulumi.BoolPtrOutput `pulumi:"emailsDisabled"`
+	EmailsDisabled pulumi.BoolOutput `pulumi:"emailsDisabled"`
 	// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
 	EnvironmentsAccessLevel pulumi.StringOutput `pulumi:"environmentsAccessLevel"`
 	// The classification label for the project.
@@ -1441,8 +1441,8 @@ func (o ProjectOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Disable email notifications.
-func (o ProjectOutput) EmailsDisabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.EmailsDisabled }).(pulumi.BoolPtrOutput)
+func (o ProjectOutput) EmailsDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.EmailsDisabled }).(pulumi.BoolOutput)
 }
 
 // Set the environments access level. Valid values are `disabled`, `private`, `enabled`.

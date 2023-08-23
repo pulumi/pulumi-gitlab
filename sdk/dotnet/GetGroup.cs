@@ -189,6 +189,10 @@ namespace Pulumi.GitLab
         /// Web URL of the group.
         /// </summary>
         public readonly string WebUrl;
+        /// <summary>
+        /// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        public readonly string WikiAccessLevel;
 
         [OutputConstructor]
         private GetGroupResult(
@@ -226,7 +230,9 @@ namespace Pulumi.GitLab
 
             string visibilityLevel,
 
-            string webUrl)
+            string webUrl,
+
+            string wikiAccessLevel)
         {
             DefaultBranchProtection = defaultBranchProtection;
             Description = description;
@@ -246,6 +252,7 @@ namespace Pulumi.GitLab
             SharedRunnersMinutesLimit = sharedRunnersMinutesLimit;
             VisibilityLevel = visibilityLevel;
             WebUrl = webUrl;
+            WikiAccessLevel = wikiAccessLevel;
         }
     }
 }

@@ -542,6 +542,236 @@ func (o BranchProtectionAllowedToUnprotectArrayOutput) Index(i pulumi.IntInput) 
 	}).(BranchProtectionAllowedToUnprotectOutput)
 }
 
+type GroupEpicBoardList struct {
+	// The ID of the list.
+	Id *int `pulumi:"id"`
+	// The ID of the label the list should be scoped to.
+	LabelId *int `pulumi:"labelId"`
+	// The position of the list within the board. The position for the list is sed on the its position in the `lists` array.
+	Position *int `pulumi:"position"`
+}
+
+// GroupEpicBoardListInput is an input type that accepts GroupEpicBoardListArgs and GroupEpicBoardListOutput values.
+// You can construct a concrete instance of `GroupEpicBoardListInput` via:
+//
+//	GroupEpicBoardListArgs{...}
+type GroupEpicBoardListInput interface {
+	pulumi.Input
+
+	ToGroupEpicBoardListOutput() GroupEpicBoardListOutput
+	ToGroupEpicBoardListOutputWithContext(context.Context) GroupEpicBoardListOutput
+}
+
+type GroupEpicBoardListArgs struct {
+	// The ID of the list.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The ID of the label the list should be scoped to.
+	LabelId pulumi.IntPtrInput `pulumi:"labelId"`
+	// The position of the list within the board. The position for the list is sed on the its position in the `lists` array.
+	Position pulumi.IntPtrInput `pulumi:"position"`
+}
+
+func (GroupEpicBoardListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupEpicBoardList)(nil)).Elem()
+}
+
+func (i GroupEpicBoardListArgs) ToGroupEpicBoardListOutput() GroupEpicBoardListOutput {
+	return i.ToGroupEpicBoardListOutputWithContext(context.Background())
+}
+
+func (i GroupEpicBoardListArgs) ToGroupEpicBoardListOutputWithContext(ctx context.Context) GroupEpicBoardListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupEpicBoardListOutput)
+}
+
+// GroupEpicBoardListArrayInput is an input type that accepts GroupEpicBoardListArray and GroupEpicBoardListArrayOutput values.
+// You can construct a concrete instance of `GroupEpicBoardListArrayInput` via:
+//
+//	GroupEpicBoardListArray{ GroupEpicBoardListArgs{...} }
+type GroupEpicBoardListArrayInput interface {
+	pulumi.Input
+
+	ToGroupEpicBoardListArrayOutput() GroupEpicBoardListArrayOutput
+	ToGroupEpicBoardListArrayOutputWithContext(context.Context) GroupEpicBoardListArrayOutput
+}
+
+type GroupEpicBoardListArray []GroupEpicBoardListInput
+
+func (GroupEpicBoardListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupEpicBoardList)(nil)).Elem()
+}
+
+func (i GroupEpicBoardListArray) ToGroupEpicBoardListArrayOutput() GroupEpicBoardListArrayOutput {
+	return i.ToGroupEpicBoardListArrayOutputWithContext(context.Background())
+}
+
+func (i GroupEpicBoardListArray) ToGroupEpicBoardListArrayOutputWithContext(ctx context.Context) GroupEpicBoardListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupEpicBoardListArrayOutput)
+}
+
+type GroupEpicBoardListOutput struct{ *pulumi.OutputState }
+
+func (GroupEpicBoardListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupEpicBoardList)(nil)).Elem()
+}
+
+func (o GroupEpicBoardListOutput) ToGroupEpicBoardListOutput() GroupEpicBoardListOutput {
+	return o
+}
+
+func (o GroupEpicBoardListOutput) ToGroupEpicBoardListOutputWithContext(ctx context.Context) GroupEpicBoardListOutput {
+	return o
+}
+
+// The ID of the list.
+func (o GroupEpicBoardListOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupEpicBoardList) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the label the list should be scoped to.
+func (o GroupEpicBoardListOutput) LabelId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupEpicBoardList) *int { return v.LabelId }).(pulumi.IntPtrOutput)
+}
+
+// The position of the list within the board. The position for the list is sed on the its position in the `lists` array.
+func (o GroupEpicBoardListOutput) Position() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupEpicBoardList) *int { return v.Position }).(pulumi.IntPtrOutput)
+}
+
+type GroupEpicBoardListArrayOutput struct{ *pulumi.OutputState }
+
+func (GroupEpicBoardListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupEpicBoardList)(nil)).Elem()
+}
+
+func (o GroupEpicBoardListArrayOutput) ToGroupEpicBoardListArrayOutput() GroupEpicBoardListArrayOutput {
+	return o
+}
+
+func (o GroupEpicBoardListArrayOutput) ToGroupEpicBoardListArrayOutputWithContext(ctx context.Context) GroupEpicBoardListArrayOutput {
+	return o
+}
+
+func (o GroupEpicBoardListArrayOutput) Index(i pulumi.IntInput) GroupEpicBoardListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupEpicBoardList {
+		return vs[0].([]GroupEpicBoardList)[vs[1].(int)]
+	}).(GroupEpicBoardListOutput)
+}
+
+type GroupIssueBoardList struct {
+	// The ID of the list.
+	Id *int `pulumi:"id"`
+	// The ID of the label the list should be scoped to.
+	LabelId *int `pulumi:"labelId"`
+	// The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+	Position *int `pulumi:"position"`
+}
+
+// GroupIssueBoardListInput is an input type that accepts GroupIssueBoardListArgs and GroupIssueBoardListOutput values.
+// You can construct a concrete instance of `GroupIssueBoardListInput` via:
+//
+//	GroupIssueBoardListArgs{...}
+type GroupIssueBoardListInput interface {
+	pulumi.Input
+
+	ToGroupIssueBoardListOutput() GroupIssueBoardListOutput
+	ToGroupIssueBoardListOutputWithContext(context.Context) GroupIssueBoardListOutput
+}
+
+type GroupIssueBoardListArgs struct {
+	// The ID of the list.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The ID of the label the list should be scoped to.
+	LabelId pulumi.IntPtrInput `pulumi:"labelId"`
+	// The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+	Position pulumi.IntPtrInput `pulumi:"position"`
+}
+
+func (GroupIssueBoardListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupIssueBoardList)(nil)).Elem()
+}
+
+func (i GroupIssueBoardListArgs) ToGroupIssueBoardListOutput() GroupIssueBoardListOutput {
+	return i.ToGroupIssueBoardListOutputWithContext(context.Background())
+}
+
+func (i GroupIssueBoardListArgs) ToGroupIssueBoardListOutputWithContext(ctx context.Context) GroupIssueBoardListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupIssueBoardListOutput)
+}
+
+// GroupIssueBoardListArrayInput is an input type that accepts GroupIssueBoardListArray and GroupIssueBoardListArrayOutput values.
+// You can construct a concrete instance of `GroupIssueBoardListArrayInput` via:
+//
+//	GroupIssueBoardListArray{ GroupIssueBoardListArgs{...} }
+type GroupIssueBoardListArrayInput interface {
+	pulumi.Input
+
+	ToGroupIssueBoardListArrayOutput() GroupIssueBoardListArrayOutput
+	ToGroupIssueBoardListArrayOutputWithContext(context.Context) GroupIssueBoardListArrayOutput
+}
+
+type GroupIssueBoardListArray []GroupIssueBoardListInput
+
+func (GroupIssueBoardListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupIssueBoardList)(nil)).Elem()
+}
+
+func (i GroupIssueBoardListArray) ToGroupIssueBoardListArrayOutput() GroupIssueBoardListArrayOutput {
+	return i.ToGroupIssueBoardListArrayOutputWithContext(context.Background())
+}
+
+func (i GroupIssueBoardListArray) ToGroupIssueBoardListArrayOutputWithContext(ctx context.Context) GroupIssueBoardListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupIssueBoardListArrayOutput)
+}
+
+type GroupIssueBoardListOutput struct{ *pulumi.OutputState }
+
+func (GroupIssueBoardListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupIssueBoardList)(nil)).Elem()
+}
+
+func (o GroupIssueBoardListOutput) ToGroupIssueBoardListOutput() GroupIssueBoardListOutput {
+	return o
+}
+
+func (o GroupIssueBoardListOutput) ToGroupIssueBoardListOutputWithContext(ctx context.Context) GroupIssueBoardListOutput {
+	return o
+}
+
+// The ID of the list.
+func (o GroupIssueBoardListOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupIssueBoardList) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the label the list should be scoped to.
+func (o GroupIssueBoardListOutput) LabelId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupIssueBoardList) *int { return v.LabelId }).(pulumi.IntPtrOutput)
+}
+
+// The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+func (o GroupIssueBoardListOutput) Position() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupIssueBoardList) *int { return v.Position }).(pulumi.IntPtrOutput)
+}
+
+type GroupIssueBoardListArrayOutput struct{ *pulumi.OutputState }
+
+func (GroupIssueBoardListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupIssueBoardList)(nil)).Elem()
+}
+
+func (o GroupIssueBoardListArrayOutput) ToGroupIssueBoardListArrayOutput() GroupIssueBoardListArrayOutput {
+	return o
+}
+
+func (o GroupIssueBoardListArrayOutput) ToGroupIssueBoardListArrayOutputWithContext(ctx context.Context) GroupIssueBoardListArrayOutput {
+	return o
+}
+
+func (o GroupIssueBoardListArrayOutput) Index(i pulumi.IntInput) GroupIssueBoardListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupIssueBoardList {
+		return vs[0].([]GroupIssueBoardList)[vs[1].(int)]
+	}).(GroupIssueBoardListOutput)
+}
+
 type ProjectContainerExpirationPolicy struct {
 	// The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
 	Cadence *string `pulumi:"cadence"`
@@ -2556,6 +2786,7 @@ type GetGroupSubgroupsSubgroup struct {
 	TwoFactorGracePeriod  int               `pulumi:"twoFactorGracePeriod"`
 	Visibility            string            `pulumi:"visibility"`
 	WebUrl                string            `pulumi:"webUrl"`
+	WikiAccessLevel       string            `pulumi:"wikiAccessLevel"`
 }
 
 // GetGroupSubgroupsSubgroupInput is an input type that accepts GetGroupSubgroupsSubgroupArgs and GetGroupSubgroupsSubgroupOutput values.
@@ -2597,6 +2828,7 @@ type GetGroupSubgroupsSubgroupArgs struct {
 	TwoFactorGracePeriod  pulumi.IntInput       `pulumi:"twoFactorGracePeriod"`
 	Visibility            pulumi.StringInput    `pulumi:"visibility"`
 	WebUrl                pulumi.StringInput    `pulumi:"webUrl"`
+	WikiAccessLevel       pulumi.StringInput    `pulumi:"wikiAccessLevel"`
 }
 
 func (GetGroupSubgroupsSubgroupArgs) ElementType() reflect.Type {
@@ -2750,6 +2982,10 @@ func (o GetGroupSubgroupsSubgroupOutput) Visibility() pulumi.StringOutput {
 
 func (o GetGroupSubgroupsSubgroupOutput) WebUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+func (o GetGroupSubgroupsSubgroupOutput) WikiAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.WikiAccessLevel }).(pulumi.StringOutput)
 }
 
 type GetGroupSubgroupsSubgroupArrayOutput struct{ *pulumi.OutputState }
@@ -2929,6 +3165,7 @@ type GetGroupsGroup struct {
 	RunnersToken               string `pulumi:"runnersToken"`
 	VisibilityLevel            string `pulumi:"visibilityLevel"`
 	WebUrl                     string `pulumi:"webUrl"`
+	WikiAccessLevel            string `pulumi:"wikiAccessLevel"`
 }
 
 // GetGroupsGroupInput is an input type that accepts GetGroupsGroupArgs and GetGroupsGroupOutput values.
@@ -2957,6 +3194,7 @@ type GetGroupsGroupArgs struct {
 	RunnersToken               pulumi.StringInput `pulumi:"runnersToken"`
 	VisibilityLevel            pulumi.StringInput `pulumi:"visibilityLevel"`
 	WebUrl                     pulumi.StringInput `pulumi:"webUrl"`
+	WikiAccessLevel            pulumi.StringInput `pulumi:"wikiAccessLevel"`
 }
 
 func (GetGroupsGroupArgs) ElementType() reflect.Type {
@@ -3064,6 +3302,10 @@ func (o GetGroupsGroupOutput) VisibilityLevel() pulumi.StringOutput {
 
 func (o GetGroupsGroupOutput) WebUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+func (o GetGroupsGroupOutput) WikiAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.WikiAccessLevel }).(pulumi.StringOutput)
 }
 
 type GetGroupsGroupArrayOutput struct{ *pulumi.OutputState }
@@ -8623,6 +8865,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToPushArrayInput)(nil)).Elem(), BranchProtectionAllowedToPushArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToUnprotectInput)(nil)).Elem(), BranchProtectionAllowedToUnprotectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToUnprotectArrayInput)(nil)).Elem(), BranchProtectionAllowedToUnprotectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupEpicBoardListInput)(nil)).Elem(), GroupEpicBoardListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupEpicBoardListArrayInput)(nil)).Elem(), GroupEpicBoardListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupIssueBoardListInput)(nil)).Elem(), GroupIssueBoardListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupIssueBoardListArrayInput)(nil)).Elem(), GroupIssueBoardListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerExpirationPolicyInput)(nil)).Elem(), ProjectContainerExpirationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerExpirationPolicyPtrInput)(nil)).Elem(), ProjectContainerExpirationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectIssueBoardListInput)(nil)).Elem(), ProjectIssueBoardListArgs{})
@@ -8732,6 +8978,10 @@ func init() {
 	pulumi.RegisterOutputType(BranchProtectionAllowedToPushArrayOutput{})
 	pulumi.RegisterOutputType(BranchProtectionAllowedToUnprotectOutput{})
 	pulumi.RegisterOutputType(BranchProtectionAllowedToUnprotectArrayOutput{})
+	pulumi.RegisterOutputType(GroupEpicBoardListOutput{})
+	pulumi.RegisterOutputType(GroupEpicBoardListArrayOutput{})
+	pulumi.RegisterOutputType(GroupIssueBoardListOutput{})
+	pulumi.RegisterOutputType(GroupIssueBoardListArrayOutput{})
 	pulumi.RegisterOutputType(ProjectContainerExpirationPolicyOutput{})
 	pulumi.RegisterOutputType(ProjectContainerExpirationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ProjectIssueBoardListOutput{})

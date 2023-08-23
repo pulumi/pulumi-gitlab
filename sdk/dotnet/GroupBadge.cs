@@ -90,6 +90,12 @@ namespace Pulumi.GitLab
         public Output<string> LinkUrl { get; private set; } = null!;
 
         /// <summary>
+        /// The name of the badge.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
         /// The image_url argument rendered (in case of use of placeholders).
         /// </summary>
         [Output("renderedImageUrl")]
@@ -165,6 +171,12 @@ namespace Pulumi.GitLab
         [Input("linkUrl", required: true)]
         public Input<string> LinkUrl { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the badge.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
         public GroupBadgeArgs()
         {
         }
@@ -190,6 +202,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("linkUrl")]
         public Input<string>? LinkUrl { get; set; }
+
+        /// <summary>
+        /// The name of the badge.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The image_url argument rendered (in case of use of placeholders).

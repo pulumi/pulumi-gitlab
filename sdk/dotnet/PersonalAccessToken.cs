@@ -160,8 +160,8 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
         /// </summary>
-        [Input("expiresAt")]
-        public Input<string>? ExpiresAt { get; set; }
+        [Input("expiresAt", required: true)]
+        public Input<string> ExpiresAt { get; set; } = null!;
 
         /// <summary>
         /// The name of the personal access token.

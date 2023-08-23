@@ -4167,7 +4167,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="emailsDisabled")
-    def emails_disabled(self) -> pulumi.Output[Optional[bool]]:
+    def emails_disabled(self) -> pulumi.Output[bool]:
         """
         Disable email notifications.
         """

@@ -182,6 +182,7 @@ export interface GetGroupSubgroupsSubgroup {
     twoFactorGracePeriod: number;
     visibility: string;
     webUrl: string;
+    wikiAccessLevel: string;
 }
 
 export interface GetGroupVariablesVariable {
@@ -216,6 +217,7 @@ export interface GetGroupsGroup {
     runnersToken: string;
     visibilityLevel: string;
     webUrl: string;
+    wikiAccessLevel: string;
 }
 
 export interface GetInstanceDeployKeysDeployKey {
@@ -825,6 +827,36 @@ export interface GetUsersUser {
     twoFactorEnabled: boolean;
     username: string;
     websiteUrl: string;
+}
+
+export interface GroupEpicBoardList {
+    /**
+     * The ID of the list.
+     */
+    id: number;
+    /**
+     * The ID of the label the list should be scoped to.
+     */
+    labelId?: number;
+    /**
+     * The position of the list within the board. The position for the list is sed on the its position in the `lists` array.
+     */
+    position: number;
+}
+
+export interface GroupIssueBoardList {
+    /**
+     * The ID of the list.
+     */
+    id: number;
+    /**
+     * The ID of the label the list should be scoped to.
+     */
+    labelId?: number;
+    /**
+     * The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+     */
+    position: number;
 }
 
 export interface ProjectContainerExpirationPolicy {

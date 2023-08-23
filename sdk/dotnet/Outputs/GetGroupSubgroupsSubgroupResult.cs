@@ -44,6 +44,7 @@ namespace Pulumi.GitLab.Outputs
         public readonly int TwoFactorGracePeriod;
         public readonly string Visibility;
         public readonly string WebUrl;
+        public readonly string WikiAccessLevel;
 
         [OutputConstructor]
         private GetGroupSubgroupsSubgroupResult(
@@ -95,7 +96,9 @@ namespace Pulumi.GitLab.Outputs
 
             string visibility,
 
-            string webUrl)
+            string webUrl,
+
+            string wikiAccessLevel)
         {
             AutoDevopsEnabled = autoDevopsEnabled;
             AvatarUrl = avatarUrl;
@@ -122,6 +125,7 @@ namespace Pulumi.GitLab.Outputs
             TwoFactorGracePeriod = twoFactorGracePeriod;
             Visibility = visibility;
             WebUrl = webUrl;
+            WikiAccessLevel = wikiAccessLevel;
         }
     }
 }

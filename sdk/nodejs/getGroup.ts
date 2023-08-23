@@ -120,6 +120,10 @@ export interface GetGroupResult {
      * Web URL of the group.
      */
     readonly webUrl: string;
+    /**
+     * The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+     */
+    readonly wikiAccessLevel: string;
 }
 /**
  * The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.

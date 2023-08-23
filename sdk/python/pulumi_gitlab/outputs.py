@@ -15,6 +15,8 @@ __all__ = [
     'BranchProtectionAllowedToMerge',
     'BranchProtectionAllowedToPush',
     'BranchProtectionAllowedToUnprotect',
+    'GroupEpicBoardList',
+    'GroupIssueBoardList',
     'ProjectContainerExpirationPolicy',
     'ProjectIssueBoardList',
     'ProjectIssueTaskCompletionStatus',
@@ -430,6 +432,126 @@ class BranchProtectionAllowedToUnprotect(dict):
         The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
         return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GroupEpicBoardList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "labelId":
+            suggest = "label_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupEpicBoardList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupEpicBoardList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupEpicBoardList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: Optional[int] = None,
+                 label_id: Optional[int] = None,
+                 position: Optional[int] = None):
+        """
+        :param int id: The ID of the list.
+        :param int label_id: The ID of the label the list should be scoped to.
+        :param int position: The position of the list within the board. The position for the list is sed on the its position in the `lists` array.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if label_id is not None:
+            pulumi.set(__self__, "label_id", label_id)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[int]:
+        """
+        The ID of the list.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="labelId")
+    def label_id(self) -> Optional[int]:
+        """
+        The ID of the label the list should be scoped to.
+        """
+        return pulumi.get(self, "label_id")
+
+    @property
+    @pulumi.getter
+    def position(self) -> Optional[int]:
+        """
+        The position of the list within the board. The position for the list is sed on the its position in the `lists` array.
+        """
+        return pulumi.get(self, "position")
+
+
+@pulumi.output_type
+class GroupIssueBoardList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "labelId":
+            suggest = "label_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupIssueBoardList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupIssueBoardList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupIssueBoardList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: Optional[int] = None,
+                 label_id: Optional[int] = None,
+                 position: Optional[int] = None):
+        """
+        :param int id: The ID of the list.
+        :param int label_id: The ID of the label the list should be scoped to.
+        :param int position: The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if label_id is not None:
+            pulumi.set(__self__, "label_id", label_id)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[int]:
+        """
+        The ID of the list.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="labelId")
+    def label_id(self) -> Optional[int]:
+        """
+        The ID of the label the list should be scoped to.
+        """
+        return pulumi.get(self, "label_id")
+
+    @property
+    @pulumi.getter
+    def position(self) -> Optional[int]:
+        """
+        The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+        """
+        return pulumi.get(self, "position")
 
 
 @pulumi.output_type
@@ -1592,7 +1714,8 @@ class GetGroupSubgroupsSubgroupResult(dict):
                  subgroup_creation_level: str,
                  two_factor_grace_period: int,
                  visibility: str,
-                 web_url: str):
+                 web_url: str,
+                 wiki_access_level: str):
         """
         :param int group_id: The ID of the group.
         :param Mapping[str, str] statistics: Include group statistics (administrators only).
@@ -1622,6 +1745,7 @@ class GetGroupSubgroupsSubgroupResult(dict):
         pulumi.set(__self__, "two_factor_grace_period", two_factor_grace_period)
         pulumi.set(__self__, "visibility", visibility)
         pulumi.set(__self__, "web_url", web_url)
+        pulumi.set(__self__, "wiki_access_level", wiki_access_level)
 
     @property
     @pulumi.getter(name="autoDevopsEnabled")
@@ -1754,6 +1878,11 @@ class GetGroupSubgroupsSubgroupResult(dict):
     def web_url(self) -> str:
         return pulumi.get(self, "web_url")
 
+    @property
+    @pulumi.getter(name="wikiAccessLevel")
+    def wiki_access_level(self) -> str:
+        return pulumi.get(self, "wiki_access_level")
+
 
 @pulumi.output_type
 class GetGroupVariablesVariableResult(dict):
@@ -1842,7 +1971,8 @@ class GetGroupsGroupResult(dict):
                  request_access_enabled: bool,
                  runners_token: str,
                  visibility_level: str,
-                 web_url: str):
+                 web_url: str,
+                 wiki_access_level: str):
         pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "full_name", full_name)
@@ -1857,6 +1987,7 @@ class GetGroupsGroupResult(dict):
         pulumi.set(__self__, "runners_token", runners_token)
         pulumi.set(__self__, "visibility_level", visibility_level)
         pulumi.set(__self__, "web_url", web_url)
+        pulumi.set(__self__, "wiki_access_level", wiki_access_level)
 
     @property
     @pulumi.getter(name="defaultBranchProtection")
@@ -1927,6 +2058,11 @@ class GetGroupsGroupResult(dict):
     @pulumi.getter(name="webUrl")
     def web_url(self) -> str:
         return pulumi.get(self, "web_url")
+
+    @property
+    @pulumi.getter(name="wikiAccessLevel")
+    def wiki_access_level(self) -> str:
+        return pulumi.get(self, "wiki_access_level")
 
 
 @pulumi.output_type

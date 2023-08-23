@@ -98,6 +98,9 @@ func NewProjectAccessToken(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ExpiresAt == nil {
+		return nil, errors.New("invalid value for required argument 'ExpiresAt'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -184,7 +187,7 @@ type projectAccessTokenArgs struct {
 	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// Time the token will expire it, YYYY-MM-DD format.
-	ExpiresAt *string `pulumi:"expiresAt"`
+	ExpiresAt string `pulumi:"expiresAt"`
 	// A name to describe the project access token.
 	Name *string `pulumi:"name"`
 	// The id of the project to add the project access token to.
@@ -198,7 +201,7 @@ type ProjectAccessTokenArgs struct {
 	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
 	AccessLevel pulumi.StringPtrInput
 	// Time the token will expire it, YYYY-MM-DD format.
-	ExpiresAt pulumi.StringPtrInput
+	ExpiresAt pulumi.StringInput
 	// A name to describe the project access token.
 	Name pulumi.StringPtrInput
 	// The id of the project to add the project access token to.

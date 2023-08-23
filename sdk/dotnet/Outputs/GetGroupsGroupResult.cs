@@ -27,6 +27,7 @@ namespace Pulumi.GitLab.Outputs
         public readonly string RunnersToken;
         public readonly string VisibilityLevel;
         public readonly string WebUrl;
+        public readonly string WikiAccessLevel;
 
         [OutputConstructor]
         private GetGroupsGroupResult(
@@ -56,7 +57,9 @@ namespace Pulumi.GitLab.Outputs
 
             string visibilityLevel,
 
-            string webUrl)
+            string webUrl,
+
+            string wikiAccessLevel)
         {
             DefaultBranchProtection = defaultBranchProtection;
             Description = description;
@@ -72,6 +75,7 @@ namespace Pulumi.GitLab.Outputs
             RunnersToken = runnersToken;
             VisibilityLevel = visibilityLevel;
             WebUrl = webUrl;
+            WikiAccessLevel = wikiAccessLevel;
         }
     }
 }

@@ -95,6 +95,9 @@ func NewPersonalAccessToken(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ExpiresAt == nil {
+		return nil, errors.New("invalid value for required argument 'ExpiresAt'")
+	}
 	if args.Scopes == nil {
 		return nil, errors.New("invalid value for required argument 'Scopes'")
 	}
@@ -171,7 +174,7 @@ func (PersonalAccessTokenState) ElementType() reflect.Type {
 
 type personalAccessTokenArgs struct {
 	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
-	ExpiresAt *string `pulumi:"expiresAt"`
+	ExpiresAt string `pulumi:"expiresAt"`
 	// The name of the personal access token.
 	Name *string `pulumi:"name"`
 	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`.
@@ -183,7 +186,7 @@ type personalAccessTokenArgs struct {
 // The set of arguments for constructing a PersonalAccessToken resource.
 type PersonalAccessTokenArgs struct {
 	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
-	ExpiresAt pulumi.StringPtrInput
+	ExpiresAt pulumi.StringInput
 	// The name of the personal access token.
 	Name pulumi.StringPtrInput
 	// The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`.

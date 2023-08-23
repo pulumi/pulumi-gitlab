@@ -179,8 +179,8 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
         /// </summary>
-        [Input("expiresAt")]
-        public Input<string>? ExpiresAt { get; set; }
+        [Input("expiresAt", required: true)]
+        public Input<string> ExpiresAt { get; set; } = null!;
 
         /// <summary>
         /// The ID or path of the group to add the group access token to.

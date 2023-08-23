@@ -12,7 +12,6 @@ import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectLevelMrApprovalsState;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -78,46 +77,46 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals")
 public class ProjectLevelMrApprovals extends com.pulumi.resources.CustomResource {
     /**
-     * By default, users are able to edit the approval rules in merge requests. If set to true,
+     * Set to `true` to disable overriding approvers per merge request.
      * 
      */
     @Export(name="disableOverridingApproversPerMergeRequest", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> disableOverridingApproversPerMergeRequest;
+    private Output<Boolean> disableOverridingApproversPerMergeRequest;
 
     /**
-     * @return By default, users are able to edit the approval rules in merge requests. If set to true,
+     * @return Set to `true` to disable overriding approvers per merge request.
      * 
      */
-    public Output<Optional<Boolean>> disableOverridingApproversPerMergeRequest() {
-        return Codegen.optional(this.disableOverridingApproversPerMergeRequest);
+    public Output<Boolean> disableOverridingApproversPerMergeRequest() {
+        return this.disableOverridingApproversPerMergeRequest;
     }
     /**
-     * Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
+     * Set to `true` to allow merge requests authors to approve their own merge requests.
      * 
      */
     @Export(name="mergeRequestsAuthorApproval", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> mergeRequestsAuthorApproval;
+    private Output<Boolean> mergeRequestsAuthorApproval;
 
     /**
-     * @return Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
+     * @return Set to `true` to allow merge requests authors to approve their own merge requests.
      * 
      */
-    public Output<Optional<Boolean>> mergeRequestsAuthorApproval() {
-        return Codegen.optional(this.mergeRequestsAuthorApproval);
+    public Output<Boolean> mergeRequestsAuthorApproval() {
+        return this.mergeRequestsAuthorApproval;
     }
     /**
-     * Set to `true` if you want to prevent approval of merge requests by merge request committers.
+     * Set to `true` to allow merge requests committers to approve their own merge requests.
      * 
      */
     @Export(name="mergeRequestsDisableCommittersApproval", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> mergeRequestsDisableCommittersApproval;
+    private Output<Boolean> mergeRequestsDisableCommittersApproval;
 
     /**
-     * @return Set to `true` if you want to prevent approval of merge requests by merge request committers.
+     * @return Set to `true` to allow merge requests committers to approve their own merge requests.
      * 
      */
-    public Output<Optional<Boolean>> mergeRequestsDisableCommittersApproval() {
-        return Codegen.optional(this.mergeRequestsDisableCommittersApproval);
+    public Output<Boolean> mergeRequestsDisableCommittersApproval() {
+        return this.mergeRequestsDisableCommittersApproval;
     }
     /**
      * The ID or URL-encoded path of a project to change MR approval configuration.
@@ -134,32 +133,46 @@ public class ProjectLevelMrApprovals extends com.pulumi.resources.CustomResource
         return this.project;
     }
     /**
-     * Set to `true` if you want to require authentication when approving a merge request.
+     * Set to `true` to require authentication to approve merge requests.
      * 
      */
     @Export(name="requirePasswordToApprove", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> requirePasswordToApprove;
+    private Output<Boolean> requirePasswordToApprove;
 
     /**
-     * @return Set to `true` if you want to require authentication when approving a merge request.
+     * @return Set to `true` to require authentication to approve merge requests.
      * 
      */
-    public Output<Optional<Boolean>> requirePasswordToApprove() {
-        return Codegen.optional(this.requirePasswordToApprove);
+    public Output<Boolean> requirePasswordToApprove() {
+        return this.requirePasswordToApprove;
     }
     /**
-     * Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+     * Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      * 
      */
     @Export(name="resetApprovalsOnPush", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> resetApprovalsOnPush;
+    private Output<Boolean> resetApprovalsOnPush;
 
     /**
-     * @return Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+     * @return Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      * 
      */
-    public Output<Optional<Boolean>> resetApprovalsOnPush() {
-        return Codegen.optional(this.resetApprovalsOnPush);
+    public Output<Boolean> resetApprovalsOnPush() {
+        return this.resetApprovalsOnPush;
+    }
+    /**
+     * Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
+     * 
+     */
+    @Export(name="selectiveCodeOwnerRemovals", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> selectiveCodeOwnerRemovals;
+
+    /**
+     * @return Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
+     * 
+     */
+    public Output<Boolean> selectiveCodeOwnerRemovals() {
+        return this.selectiveCodeOwnerRemovals;
     }
 
     /**

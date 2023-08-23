@@ -126,6 +126,8 @@ type Group struct {
 	VisibilityLevel pulumi.StringOutput `pulumi:"visibilityLevel"`
 	// Web URL of the group.
 	WebUrl pulumi.StringOutput `pulumi:"webUrl"`
+	// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+	WikiAccessLevel pulumi.StringOutput `pulumi:"wikiAccessLevel"`
 }
 
 // NewGroup registers a new resource with the given unique name, arguments, and options.
@@ -221,6 +223,8 @@ type groupState struct {
 	VisibilityLevel *string `pulumi:"visibilityLevel"`
 	// Web URL of the group.
 	WebUrl *string `pulumi:"webUrl"`
+	// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+	WikiAccessLevel *string `pulumi:"wikiAccessLevel"`
 }
 
 type GroupState struct {
@@ -280,6 +284,8 @@ type GroupState struct {
 	VisibilityLevel pulumi.StringPtrInput
 	// Web URL of the group.
 	WebUrl pulumi.StringPtrInput
+	// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+	WikiAccessLevel pulumi.StringPtrInput
 }
 
 func (GroupState) ElementType() reflect.Type {
@@ -333,6 +339,8 @@ type groupArgs struct {
 	TwoFactorGracePeriod *int `pulumi:"twoFactorGracePeriod"`
 	// The group's visibility. Can be `private`, `internal`, or `public`.
 	VisibilityLevel *string `pulumi:"visibilityLevel"`
+	// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+	WikiAccessLevel *string `pulumi:"wikiAccessLevel"`
 }
 
 // The set of arguments for constructing a Group resource.
@@ -383,6 +391,8 @@ type GroupArgs struct {
 	TwoFactorGracePeriod pulumi.IntPtrInput
 	// The group's visibility. Can be `private`, `internal`, or `public`.
 	VisibilityLevel pulumi.StringPtrInput
+	// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+	WikiAccessLevel pulumi.StringPtrInput
 }
 
 func (GroupArgs) ElementType() reflect.Type {
@@ -610,6 +620,11 @@ func (o GroupOutput) VisibilityLevel() pulumi.StringOutput {
 // Web URL of the group.
 func (o GroupOutput) WebUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+func (o GroupOutput) WikiAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.WikiAccessLevel }).(pulumi.StringOutput)
 }
 
 type GroupArrayOutput struct{ *pulumi.OutputState }

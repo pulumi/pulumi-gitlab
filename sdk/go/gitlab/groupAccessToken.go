@@ -100,6 +100,9 @@ func NewGroupAccessToken(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ExpiresAt == nil {
+		return nil, errors.New("invalid value for required argument 'ExpiresAt'")
+	}
 	if args.Group == nil {
 		return nil, errors.New("invalid value for required argument 'Group'")
 	}
@@ -186,7 +189,7 @@ type groupAccessTokenArgs struct {
 	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
-	ExpiresAt *string `pulumi:"expiresAt"`
+	ExpiresAt string `pulumi:"expiresAt"`
 	// The ID or path of the group to add the group access token to.
 	Group string `pulumi:"group"`
 	// The name of the group access token.
@@ -200,7 +203,7 @@ type GroupAccessTokenArgs struct {
 	// The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
 	AccessLevel pulumi.StringPtrInput
 	// The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
-	ExpiresAt pulumi.StringPtrInput
+	ExpiresAt pulumi.StringInput
 	// The ID or path of the group to add the group access token to.
 	Group pulumi.StringInput
 	// The name of the group access token.

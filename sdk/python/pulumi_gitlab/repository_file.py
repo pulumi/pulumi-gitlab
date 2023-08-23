@@ -15,32 +15,37 @@ __all__ = ['RepositoryFileArgs', 'RepositoryFile']
 class RepositoryFileArgs:
     def __init__(__self__, *,
                  branch: pulumi.Input[str],
-                 commit_message: pulumi.Input[str],
                  content: pulumi.Input[str],
                  file_path: pulumi.Input[str],
                  project: pulumi.Input[str],
                  author_email: Optional[pulumi.Input[str]] = None,
                  author_name: Optional[pulumi.Input[str]] = None,
+                 commit_message: Optional[pulumi.Input[str]] = None,
+                 create_commit_message: Optional[pulumi.Input[str]] = None,
+                 delete_commit_message: Optional[pulumi.Input[str]] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
                  execute_filemode: Optional[pulumi.Input[bool]] = None,
                  overwrite_on_create: Optional[pulumi.Input[bool]] = None,
-                 start_branch: Optional[pulumi.Input[str]] = None):
+                 start_branch: Optional[pulumi.Input[str]] = None,
+                 update_commit_message: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RepositoryFile resource.
         :param pulumi.Input[str] branch: Name of the branch to which to commit to.
-        :param pulumi.Input[str] commit_message: Commit message.
         :param pulumi.Input[str] content: File content.
         :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         :param pulumi.Input[str] project: The name or ID of the project.
         :param pulumi.Input[str] author_email: Email of the commit author.
         :param pulumi.Input[str] author_name: Name of the commit author.
+        :param pulumi.Input[str] commit_message: Commit message.
+        :param pulumi.Input[str] create_commit_message: Create commit message.
+        :param pulumi.Input[str] delete_commit_message: Delete Commit message.
         :param pulumi.Input[str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
         :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
         :param pulumi.Input[bool] overwrite_on_create: Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
         :param pulumi.Input[str] start_branch: Name of the branch to start the new commit from.
+        :param pulumi.Input[str] update_commit_message: Update commit message.
         """
         pulumi.set(__self__, "branch", branch)
-        pulumi.set(__self__, "commit_message", commit_message)
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "file_path", file_path)
         pulumi.set(__self__, "project", project)
@@ -48,6 +53,12 @@ class RepositoryFileArgs:
             pulumi.set(__self__, "author_email", author_email)
         if author_name is not None:
             pulumi.set(__self__, "author_name", author_name)
+        if commit_message is not None:
+            pulumi.set(__self__, "commit_message", commit_message)
+        if create_commit_message is not None:
+            pulumi.set(__self__, "create_commit_message", create_commit_message)
+        if delete_commit_message is not None:
+            pulumi.set(__self__, "delete_commit_message", delete_commit_message)
         if encoding is not None:
             pulumi.set(__self__, "encoding", encoding)
         if execute_filemode is not None:
@@ -56,6 +67,8 @@ class RepositoryFileArgs:
             pulumi.set(__self__, "overwrite_on_create", overwrite_on_create)
         if start_branch is not None:
             pulumi.set(__self__, "start_branch", start_branch)
+        if update_commit_message is not None:
+            pulumi.set(__self__, "update_commit_message", update_commit_message)
 
     @property
     @pulumi.getter
@@ -68,18 +81,6 @@ class RepositoryFileArgs:
     @branch.setter
     def branch(self, value: pulumi.Input[str]):
         pulumi.set(self, "branch", value)
-
-    @property
-    @pulumi.getter(name="commitMessage")
-    def commit_message(self) -> pulumi.Input[str]:
-        """
-        Commit message.
-        """
-        return pulumi.get(self, "commit_message")
-
-    @commit_message.setter
-    def commit_message(self, value: pulumi.Input[str]):
-        pulumi.set(self, "commit_message", value)
 
     @property
     @pulumi.getter
@@ -142,6 +143,42 @@ class RepositoryFileArgs:
         pulumi.set(self, "author_name", value)
 
     @property
+    @pulumi.getter(name="commitMessage")
+    def commit_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Commit message.
+        """
+        return pulumi.get(self, "commit_message")
+
+    @commit_message.setter
+    def commit_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "commit_message", value)
+
+    @property
+    @pulumi.getter(name="createCommitMessage")
+    def create_commit_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Create commit message.
+        """
+        return pulumi.get(self, "create_commit_message")
+
+    @create_commit_message.setter
+    def create_commit_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_commit_message", value)
+
+    @property
+    @pulumi.getter(name="deleteCommitMessage")
+    def delete_commit_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Delete Commit message.
+        """
+        return pulumi.get(self, "delete_commit_message")
+
+    @delete_commit_message.setter
+    def delete_commit_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete_commit_message", value)
+
+    @property
     @pulumi.getter
     def encoding(self) -> Optional[pulumi.Input[str]]:
         """
@@ -189,6 +226,18 @@ class RepositoryFileArgs:
     def start_branch(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start_branch", value)
 
+    @property
+    @pulumi.getter(name="updateCommitMessage")
+    def update_commit_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Update commit message.
+        """
+        return pulumi.get(self, "update_commit_message")
+
+    @update_commit_message.setter
+    def update_commit_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_commit_message", value)
+
 
 @pulumi.input_type
 class _RepositoryFileState:
@@ -201,6 +250,8 @@ class _RepositoryFileState:
                  commit_message: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  content_sha256: Optional[pulumi.Input[str]] = None,
+                 create_commit_message: Optional[pulumi.Input[str]] = None,
+                 delete_commit_message: Optional[pulumi.Input[str]] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
                  execute_filemode: Optional[pulumi.Input[bool]] = None,
                  file_name: Optional[pulumi.Input[str]] = None,
@@ -210,7 +261,8 @@ class _RepositoryFileState:
                  project: Optional[pulumi.Input[str]] = None,
                  ref: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
-                 start_branch: Optional[pulumi.Input[str]] = None):
+                 start_branch: Optional[pulumi.Input[str]] = None,
+                 update_commit_message: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RepositoryFile resources.
         :param pulumi.Input[str] author_email: Email of the commit author.
@@ -221,6 +273,8 @@ class _RepositoryFileState:
         :param pulumi.Input[str] commit_message: Commit message.
         :param pulumi.Input[str] content: File content.
         :param pulumi.Input[str] content_sha256: File content sha256 digest.
+        :param pulumi.Input[str] create_commit_message: Create commit message.
+        :param pulumi.Input[str] delete_commit_message: Delete Commit message.
         :param pulumi.Input[str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
         :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
         :param pulumi.Input[str] file_name: The filename.
@@ -231,6 +285,7 @@ class _RepositoryFileState:
         :param pulumi.Input[str] ref: The name of branch, tag or commit.
         :param pulumi.Input[int] size: The file size.
         :param pulumi.Input[str] start_branch: Name of the branch to start the new commit from.
+        :param pulumi.Input[str] update_commit_message: Update commit message.
         """
         if author_email is not None:
             pulumi.set(__self__, "author_email", author_email)
@@ -248,6 +303,10 @@ class _RepositoryFileState:
             pulumi.set(__self__, "content", content)
         if content_sha256 is not None:
             pulumi.set(__self__, "content_sha256", content_sha256)
+        if create_commit_message is not None:
+            pulumi.set(__self__, "create_commit_message", create_commit_message)
+        if delete_commit_message is not None:
+            pulumi.set(__self__, "delete_commit_message", delete_commit_message)
         if encoding is not None:
             pulumi.set(__self__, "encoding", encoding)
         if execute_filemode is not None:
@@ -268,6 +327,8 @@ class _RepositoryFileState:
             pulumi.set(__self__, "size", size)
         if start_branch is not None:
             pulumi.set(__self__, "start_branch", start_branch)
+        if update_commit_message is not None:
+            pulumi.set(__self__, "update_commit_message", update_commit_message)
 
     @property
     @pulumi.getter(name="authorEmail")
@@ -364,6 +425,30 @@ class _RepositoryFileState:
     @content_sha256.setter
     def content_sha256(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "content_sha256", value)
+
+    @property
+    @pulumi.getter(name="createCommitMessage")
+    def create_commit_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Create commit message.
+        """
+        return pulumi.get(self, "create_commit_message")
+
+    @create_commit_message.setter
+    def create_commit_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_commit_message", value)
+
+    @property
+    @pulumi.getter(name="deleteCommitMessage")
+    def delete_commit_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Delete Commit message.
+        """
+        return pulumi.get(self, "delete_commit_message")
+
+    @delete_commit_message.setter
+    def delete_commit_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete_commit_message", value)
 
     @property
     @pulumi.getter
@@ -485,6 +570,18 @@ class _RepositoryFileState:
     def start_branch(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start_branch", value)
 
+    @property
+    @pulumi.getter(name="updateCommitMessage")
+    def update_commit_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Update commit message.
+        """
+        return pulumi.get(self, "update_commit_message")
+
+    @update_commit_message.setter
+    def update_commit_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_commit_message", value)
+
 
 class RepositoryFile(pulumi.CustomResource):
     @overload
@@ -496,12 +593,15 @@ class RepositoryFile(pulumi.CustomResource):
                  branch: Optional[pulumi.Input[str]] = None,
                  commit_message: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
+                 create_commit_message: Optional[pulumi.Input[str]] = None,
+                 delete_commit_message: Optional[pulumi.Input[str]] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
                  execute_filemode: Optional[pulumi.Input[bool]] = None,
                  file_path: Optional[pulumi.Input[str]] = None,
                  overwrite_on_create: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  start_branch: Optional[pulumi.Input[str]] = None,
+                 update_commit_message: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Import
@@ -519,12 +619,15 @@ class RepositoryFile(pulumi.CustomResource):
         :param pulumi.Input[str] branch: Name of the branch to which to commit to.
         :param pulumi.Input[str] commit_message: Commit message.
         :param pulumi.Input[str] content: File content.
+        :param pulumi.Input[str] create_commit_message: Create commit message.
+        :param pulumi.Input[str] delete_commit_message: Delete Commit message.
         :param pulumi.Input[str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
         :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
         :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         :param pulumi.Input[bool] overwrite_on_create: Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
         :param pulumi.Input[str] project: The name or ID of the project.
         :param pulumi.Input[str] start_branch: Name of the branch to start the new commit from.
+        :param pulumi.Input[str] update_commit_message: Update commit message.
         """
         ...
     @overload
@@ -561,12 +664,15 @@ class RepositoryFile(pulumi.CustomResource):
                  branch: Optional[pulumi.Input[str]] = None,
                  commit_message: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
+                 create_commit_message: Optional[pulumi.Input[str]] = None,
+                 delete_commit_message: Optional[pulumi.Input[str]] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
                  execute_filemode: Optional[pulumi.Input[bool]] = None,
                  file_path: Optional[pulumi.Input[str]] = None,
                  overwrite_on_create: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  start_branch: Optional[pulumi.Input[str]] = None,
+                 update_commit_message: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -581,12 +687,12 @@ class RepositoryFile(pulumi.CustomResource):
             if branch is None and not opts.urn:
                 raise TypeError("Missing required property 'branch'")
             __props__.__dict__["branch"] = branch
-            if commit_message is None and not opts.urn:
-                raise TypeError("Missing required property 'commit_message'")
             __props__.__dict__["commit_message"] = commit_message
             if content is None and not opts.urn:
                 raise TypeError("Missing required property 'content'")
             __props__.__dict__["content"] = content
+            __props__.__dict__["create_commit_message"] = create_commit_message
+            __props__.__dict__["delete_commit_message"] = delete_commit_message
             __props__.__dict__["encoding"] = encoding
             __props__.__dict__["execute_filemode"] = execute_filemode
             if file_path is None and not opts.urn:
@@ -597,6 +703,7 @@ class RepositoryFile(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["start_branch"] = start_branch
+            __props__.__dict__["update_commit_message"] = update_commit_message
             __props__.__dict__["blob_id"] = None
             __props__.__dict__["commit_id"] = None
             __props__.__dict__["content_sha256"] = None
@@ -622,6 +729,8 @@ class RepositoryFile(pulumi.CustomResource):
             commit_message: Optional[pulumi.Input[str]] = None,
             content: Optional[pulumi.Input[str]] = None,
             content_sha256: Optional[pulumi.Input[str]] = None,
+            create_commit_message: Optional[pulumi.Input[str]] = None,
+            delete_commit_message: Optional[pulumi.Input[str]] = None,
             encoding: Optional[pulumi.Input[str]] = None,
             execute_filemode: Optional[pulumi.Input[bool]] = None,
             file_name: Optional[pulumi.Input[str]] = None,
@@ -631,7 +740,8 @@ class RepositoryFile(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             ref: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[int]] = None,
-            start_branch: Optional[pulumi.Input[str]] = None) -> 'RepositoryFile':
+            start_branch: Optional[pulumi.Input[str]] = None,
+            update_commit_message: Optional[pulumi.Input[str]] = None) -> 'RepositoryFile':
         """
         Get an existing RepositoryFile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -647,6 +757,8 @@ class RepositoryFile(pulumi.CustomResource):
         :param pulumi.Input[str] commit_message: Commit message.
         :param pulumi.Input[str] content: File content.
         :param pulumi.Input[str] content_sha256: File content sha256 digest.
+        :param pulumi.Input[str] create_commit_message: Create commit message.
+        :param pulumi.Input[str] delete_commit_message: Delete Commit message.
         :param pulumi.Input[str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
         :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
         :param pulumi.Input[str] file_name: The filename.
@@ -657,6 +769,7 @@ class RepositoryFile(pulumi.CustomResource):
         :param pulumi.Input[str] ref: The name of branch, tag or commit.
         :param pulumi.Input[int] size: The file size.
         :param pulumi.Input[str] start_branch: Name of the branch to start the new commit from.
+        :param pulumi.Input[str] update_commit_message: Update commit message.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -670,6 +783,8 @@ class RepositoryFile(pulumi.CustomResource):
         __props__.__dict__["commit_message"] = commit_message
         __props__.__dict__["content"] = content
         __props__.__dict__["content_sha256"] = content_sha256
+        __props__.__dict__["create_commit_message"] = create_commit_message
+        __props__.__dict__["delete_commit_message"] = delete_commit_message
         __props__.__dict__["encoding"] = encoding
         __props__.__dict__["execute_filemode"] = execute_filemode
         __props__.__dict__["file_name"] = file_name
@@ -680,6 +795,7 @@ class RepositoryFile(pulumi.CustomResource):
         __props__.__dict__["ref"] = ref
         __props__.__dict__["size"] = size
         __props__.__dict__["start_branch"] = start_branch
+        __props__.__dict__["update_commit_message"] = update_commit_message
         return RepositoryFile(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -724,7 +840,7 @@ class RepositoryFile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="commitMessage")
-    def commit_message(self) -> pulumi.Output[str]:
+    def commit_message(self) -> pulumi.Output[Optional[str]]:
         """
         Commit message.
         """
@@ -745,6 +861,22 @@ class RepositoryFile(pulumi.CustomResource):
         File content sha256 digest.
         """
         return pulumi.get(self, "content_sha256")
+
+    @property
+    @pulumi.getter(name="createCommitMessage")
+    def create_commit_message(self) -> pulumi.Output[Optional[str]]:
+        """
+        Create commit message.
+        """
+        return pulumi.get(self, "create_commit_message")
+
+    @property
+    @pulumi.getter(name="deleteCommitMessage")
+    def delete_commit_message(self) -> pulumi.Output[Optional[str]]:
+        """
+        Delete Commit message.
+        """
+        return pulumi.get(self, "delete_commit_message")
 
     @property
     @pulumi.getter
@@ -825,4 +957,12 @@ class RepositoryFile(pulumi.CustomResource):
         Name of the branch to start the new commit from.
         """
         return pulumi.get(self, "start_branch")
+
+    @property
+    @pulumi.getter(name="updateCommitMessage")
+    def update_commit_message(self) -> pulumi.Output[Optional[str]]:
+        """
+        Update commit message.
+        """
+        return pulumi.get(self, "update_commit_message")
 

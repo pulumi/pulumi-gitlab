@@ -221,7 +221,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Disable email notifications.
      */
-    public readonly emailsDisabled!: pulumi.Output<boolean | undefined>;
+    public readonly emailsDisabled!: pulumi.Output<boolean>;
     /**
      * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
      */

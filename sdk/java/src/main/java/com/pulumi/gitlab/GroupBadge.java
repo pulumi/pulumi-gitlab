@@ -125,6 +125,20 @@ public class GroupBadge extends com.pulumi.resources.CustomResource {
         return this.linkUrl;
     }
     /**
+     * The name of the badge.
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return The name of the badge.
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
+    }
+    /**
      * The image_url argument rendered (in case of use of placeholders).
      * 
      */

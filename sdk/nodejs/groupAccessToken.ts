@@ -134,6 +134,9 @@ export class GroupAccessToken extends pulumi.CustomResource {
             resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as GroupAccessTokenArgs | undefined;
+            if ((!args || args.expiresAt === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'expiresAt'");
+            }
             if ((!args || args.group === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
@@ -215,7 +218,7 @@ export interface GroupAccessTokenArgs {
     /**
      * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt: pulumi.Input<string>;
     /**
      * The ID or path of the group to add the group access token to.
      */

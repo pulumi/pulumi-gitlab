@@ -55,7 +55,7 @@ namespace Pulumi.GitLab
         /// Commit message.
         /// </summary>
         [Output("commitMessage")]
-        public Output<string> CommitMessage { get; private set; } = null!;
+        public Output<string?> CommitMessage { get; private set; } = null!;
 
         /// <summary>
         /// File content.
@@ -68,6 +68,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("contentSha256")]
         public Output<string> ContentSha256 { get; private set; } = null!;
+
+        /// <summary>
+        /// Create commit message.
+        /// </summary>
+        [Output("createCommitMessage")]
+        public Output<string?> CreateCommitMessage { get; private set; } = null!;
+
+        /// <summary>
+        /// Delete Commit message.
+        /// </summary>
+        [Output("deleteCommitMessage")]
+        public Output<string?> DeleteCommitMessage { get; private set; } = null!;
 
         /// <summary>
         /// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
@@ -128,6 +140,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("startBranch")]
         public Output<string?> StartBranch { get; private set; } = null!;
+
+        /// <summary>
+        /// Update commit message.
+        /// </summary>
+        [Output("updateCommitMessage")]
+        public Output<string?> UpdateCommitMessage { get; private set; } = null!;
 
 
         /// <summary>
@@ -196,14 +214,26 @@ namespace Pulumi.GitLab
         /// <summary>
         /// Commit message.
         /// </summary>
-        [Input("commitMessage", required: true)]
-        public Input<string> CommitMessage { get; set; } = null!;
+        [Input("commitMessage")]
+        public Input<string>? CommitMessage { get; set; }
 
         /// <summary>
         /// File content.
         /// </summary>
         [Input("content", required: true)]
         public Input<string> Content { get; set; } = null!;
+
+        /// <summary>
+        /// Create commit message.
+        /// </summary>
+        [Input("createCommitMessage")]
+        public Input<string>? CreateCommitMessage { get; set; }
+
+        /// <summary>
+        /// Delete Commit message.
+        /// </summary>
+        [Input("deleteCommitMessage")]
+        public Input<string>? DeleteCommitMessage { get; set; }
 
         /// <summary>
         /// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
@@ -240,6 +270,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("startBranch")]
         public Input<string>? StartBranch { get; set; }
+
+        /// <summary>
+        /// Update commit message.
+        /// </summary>
+        [Input("updateCommitMessage")]
+        public Input<string>? UpdateCommitMessage { get; set; }
 
         public RepositoryFileArgs()
         {
@@ -296,6 +332,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("contentSha256")]
         public Input<string>? ContentSha256 { get; set; }
+
+        /// <summary>
+        /// Create commit message.
+        /// </summary>
+        [Input("createCommitMessage")]
+        public Input<string>? CreateCommitMessage { get; set; }
+
+        /// <summary>
+        /// Delete Commit message.
+        /// </summary>
+        [Input("deleteCommitMessage")]
+        public Input<string>? DeleteCommitMessage { get; set; }
 
         /// <summary>
         /// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
@@ -356,6 +404,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("startBranch")]
         public Input<string>? StartBranch { get; set; }
+
+        /// <summary>
+        /// Update commit message.
+        /// </summary>
+        [Input("updateCommitMessage")]
+        public Input<string>? UpdateCommitMessage { get; set; }
 
         public RepositoryFileState()
         {

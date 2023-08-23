@@ -96,6 +96,8 @@ type LookupGroupResult struct {
 	VisibilityLevel string `pulumi:"visibilityLevel"`
 	// Web URL of the group.
 	WebUrl string `pulumi:"webUrl"`
+	// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+	WikiAccessLevel string `pulumi:"wikiAccessLevel"`
 }
 
 func LookupGroupOutput(ctx *pulumi.Context, args LookupGroupOutputArgs, opts ...pulumi.InvokeOption) LookupGroupResultOutput {
@@ -226,6 +228,11 @@ func (o LookupGroupResultOutput) VisibilityLevel() pulumi.StringOutput {
 // Web URL of the group.
 func (o LookupGroupResultOutput) WebUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+func (o LookupGroupResultOutput) WikiAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.WikiAccessLevel }).(pulumi.StringOutput)
 }
 
 func init() {

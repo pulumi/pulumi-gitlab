@@ -14,27 +14,38 @@ __all__ = ['GroupAccessTokenArgs', 'GroupAccessToken']
 @pulumi.input_type
 class GroupAccessTokenArgs:
     def __init__(__self__, *,
+                 expires_at: pulumi.Input[str],
                  group: pulumi.Input[str],
                  scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  access_level: Optional[pulumi.Input[str]] = None,
-                 expires_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GroupAccessToken resource.
+        :param pulumi.Input[str] expires_at: The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
         :param pulumi.Input[str] group: The ID or path of the group to add the group access token to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.
         :param pulumi.Input[str] access_level: The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-        :param pulumi.Input[str] expires_at: The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
         :param pulumi.Input[str] name: The name of the group access token.
         """
+        pulumi.set(__self__, "expires_at", expires_at)
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "scopes", scopes)
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
-        if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> pulumi.Input[str]:
+        """
+        The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expires_at", value)
 
     @property
     @pulumi.getter
@@ -71,18 +82,6 @@ class GroupAccessTokenArgs:
     @access_level.setter
     def access_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "access_level", value)
-
-    @property
-    @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[str]]:
-        """
-        The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
-        """
-        return pulumi.get(self, "expires_at")
-
-    @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "expires_at", value)
 
     @property
     @pulumi.getter
@@ -388,6 +387,8 @@ class GroupAccessToken(pulumi.CustomResource):
             __props__ = GroupAccessTokenArgs.__new__(GroupAccessTokenArgs)
 
             __props__.__dict__["access_level"] = access_level
+            if expires_at is None and not opts.urn:
+                raise TypeError("Missing required property 'expires_at'")
             __props__.__dict__["expires_at"] = expires_at
             if group is None and not opts.urn:
                 raise TypeError("Missing required property 'group'")
