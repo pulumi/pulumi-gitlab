@@ -180,6 +180,10 @@ export class Group extends pulumi.CustomResource {
      * Web URL of the group.
      */
     public /*out*/ readonly webUrl!: pulumi.Output<string>;
+    /**
+     * The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+     */
+    public readonly wikiAccessLevel!: pulumi.Output<string>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -222,6 +226,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["twoFactorGracePeriod"] = state ? state.twoFactorGracePeriod : undefined;
             resourceInputs["visibilityLevel"] = state ? state.visibilityLevel : undefined;
             resourceInputs["webUrl"] = state ? state.webUrl : undefined;
+            resourceInputs["wikiAccessLevel"] = state ? state.wikiAccessLevel : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
             if ((!args || args.path === undefined) && !opts.urn) {
@@ -250,6 +255,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["subgroupCreationLevel"] = args ? args.subgroupCreationLevel : undefined;
             resourceInputs["twoFactorGracePeriod"] = args ? args.twoFactorGracePeriod : undefined;
             resourceInputs["visibilityLevel"] = args ? args.visibilityLevel : undefined;
+            resourceInputs["wikiAccessLevel"] = args ? args.wikiAccessLevel : undefined;
             resourceInputs["avatarUrl"] = undefined /*out*/;
             resourceInputs["fullName"] = undefined /*out*/;
             resourceInputs["fullPath"] = undefined /*out*/;
@@ -379,6 +385,10 @@ export interface GroupState {
      * Web URL of the group.
      */
     webUrl?: pulumi.Input<string>;
+    /**
+     * The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+     */
+    wikiAccessLevel?: pulumi.Input<string>;
 }
 
 /**
@@ -477,4 +487,8 @@ export interface GroupArgs {
      * The group's visibility. Can be `private`, `internal`, or `public`.
      */
     visibilityLevel?: pulumi.Input<string>;
+    /**
+     * The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+     */
+    wikiAccessLevel?: pulumi.Input<string>;
 }

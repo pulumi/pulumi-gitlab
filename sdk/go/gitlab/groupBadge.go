@@ -90,6 +90,8 @@ type GroupBadge struct {
 	ImageUrl pulumi.StringOutput `pulumi:"imageUrl"`
 	// The url linked with the badge.
 	LinkUrl pulumi.StringOutput `pulumi:"linkUrl"`
+	// The name of the badge.
+	Name pulumi.StringOutput `pulumi:"name"`
 	// The imageUrl argument rendered (in case of use of placeholders).
 	RenderedImageUrl pulumi.StringOutput `pulumi:"renderedImageUrl"`
 	// The linkUrl argument rendered (in case of use of placeholders).
@@ -141,6 +143,8 @@ type groupBadgeState struct {
 	ImageUrl *string `pulumi:"imageUrl"`
 	// The url linked with the badge.
 	LinkUrl *string `pulumi:"linkUrl"`
+	// The name of the badge.
+	Name *string `pulumi:"name"`
 	// The imageUrl argument rendered (in case of use of placeholders).
 	RenderedImageUrl *string `pulumi:"renderedImageUrl"`
 	// The linkUrl argument rendered (in case of use of placeholders).
@@ -154,6 +158,8 @@ type GroupBadgeState struct {
 	ImageUrl pulumi.StringPtrInput
 	// The url linked with the badge.
 	LinkUrl pulumi.StringPtrInput
+	// The name of the badge.
+	Name pulumi.StringPtrInput
 	// The imageUrl argument rendered (in case of use of placeholders).
 	RenderedImageUrl pulumi.StringPtrInput
 	// The linkUrl argument rendered (in case of use of placeholders).
@@ -171,6 +177,8 @@ type groupBadgeArgs struct {
 	ImageUrl string `pulumi:"imageUrl"`
 	// The url linked with the badge.
 	LinkUrl string `pulumi:"linkUrl"`
+	// The name of the badge.
+	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a GroupBadge resource.
@@ -181,6 +189,8 @@ type GroupBadgeArgs struct {
 	ImageUrl pulumi.StringInput
 	// The url linked with the badge.
 	LinkUrl pulumi.StringInput
+	// The name of the badge.
+	Name pulumi.StringPtrInput
 }
 
 func (GroupBadgeArgs) ElementType() reflect.Type {
@@ -283,6 +293,11 @@ func (o GroupBadgeOutput) ImageUrl() pulumi.StringOutput {
 // The url linked with the badge.
 func (o GroupBadgeOutput) LinkUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupBadge) pulumi.StringOutput { return v.LinkUrl }).(pulumi.StringOutput)
+}
+
+// The name of the badge.
+func (o GroupBadgeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupBadge) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The imageUrl argument rendered (in case of use of placeholders).

@@ -138,6 +138,36 @@ public final class RepositoryFileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Create commit message.
+     * 
+     */
+    @Import(name="createCommitMessage")
+    private @Nullable Output<String> createCommitMessage;
+
+    /**
+     * @return Create commit message.
+     * 
+     */
+    public Optional<Output<String>> createCommitMessage() {
+        return Optional.ofNullable(this.createCommitMessage);
+    }
+
+    /**
+     * Delete Commit message.
+     * 
+     */
+    @Import(name="deleteCommitMessage")
+    private @Nullable Output<String> deleteCommitMessage;
+
+    /**
+     * @return Delete Commit message.
+     * 
+     */
+    public Optional<Output<String>> deleteCommitMessage() {
+        return Optional.ofNullable(this.deleteCommitMessage);
+    }
+
+    /**
      * The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
      * 
      */
@@ -287,6 +317,21 @@ public final class RepositoryFileState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.startBranch);
     }
 
+    /**
+     * Update commit message.
+     * 
+     */
+    @Import(name="updateCommitMessage")
+    private @Nullable Output<String> updateCommitMessage;
+
+    /**
+     * @return Update commit message.
+     * 
+     */
+    public Optional<Output<String>> updateCommitMessage() {
+        return Optional.ofNullable(this.updateCommitMessage);
+    }
+
     private RepositoryFileState() {}
 
     private RepositoryFileState(RepositoryFileState $) {
@@ -298,6 +343,8 @@ public final class RepositoryFileState extends com.pulumi.resources.ResourceArgs
         this.commitMessage = $.commitMessage;
         this.content = $.content;
         this.contentSha256 = $.contentSha256;
+        this.createCommitMessage = $.createCommitMessage;
+        this.deleteCommitMessage = $.deleteCommitMessage;
         this.encoding = $.encoding;
         this.executeFilemode = $.executeFilemode;
         this.fileName = $.fileName;
@@ -308,6 +355,7 @@ public final class RepositoryFileState extends com.pulumi.resources.ResourceArgs
         this.ref = $.ref;
         this.size = $.size;
         this.startBranch = $.startBranch;
+        this.updateCommitMessage = $.updateCommitMessage;
     }
 
     public static Builder builder() {
@@ -494,6 +542,48 @@ public final class RepositoryFileState extends com.pulumi.resources.ResourceArgs
          */
         public Builder contentSha256(String contentSha256) {
             return contentSha256(Output.of(contentSha256));
+        }
+
+        /**
+         * @param createCommitMessage Create commit message.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createCommitMessage(@Nullable Output<String> createCommitMessage) {
+            $.createCommitMessage = createCommitMessage;
+            return this;
+        }
+
+        /**
+         * @param createCommitMessage Create commit message.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createCommitMessage(String createCommitMessage) {
+            return createCommitMessage(Output.of(createCommitMessage));
+        }
+
+        /**
+         * @param deleteCommitMessage Delete Commit message.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteCommitMessage(@Nullable Output<String> deleteCommitMessage) {
+            $.deleteCommitMessage = deleteCommitMessage;
+            return this;
+        }
+
+        /**
+         * @param deleteCommitMessage Delete Commit message.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteCommitMessage(String deleteCommitMessage) {
+            return deleteCommitMessage(Output.of(deleteCommitMessage));
         }
 
         /**
@@ -704,6 +794,27 @@ public final class RepositoryFileState extends com.pulumi.resources.ResourceArgs
          */
         public Builder startBranch(String startBranch) {
             return startBranch(Output.of(startBranch));
+        }
+
+        /**
+         * @param updateCommitMessage Update commit message.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateCommitMessage(@Nullable Output<String> updateCommitMessage) {
+            $.updateCommitMessage = updateCommitMessage;
+            return this;
+        }
+
+        /**
+         * @param updateCommitMessage Update commit message.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateCommitMessage(String updateCommitMessage) {
+            return updateCommitMessage(Output.of(updateCommitMessage));
         }
 
         public RepositoryFileState build() {

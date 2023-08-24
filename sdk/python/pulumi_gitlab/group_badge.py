@@ -16,16 +16,20 @@ class GroupBadgeArgs:
     def __init__(__self__, *,
                  group: pulumi.Input[str],
                  image_url: pulumi.Input[str],
-                 link_url: pulumi.Input[str]):
+                 link_url: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GroupBadge resource.
         :param pulumi.Input[str] group: The id of the group to add the badge to.
         :param pulumi.Input[str] image_url: The image url which will be presented on group overview.
         :param pulumi.Input[str] link_url: The url linked with the badge.
+        :param pulumi.Input[str] name: The name of the badge.
         """
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "image_url", image_url)
         pulumi.set(__self__, "link_url", link_url)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -63,6 +67,18 @@ class GroupBadgeArgs:
     def link_url(self, value: pulumi.Input[str]):
         pulumi.set(self, "link_url", value)
 
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the badge.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
 
 @pulumi.input_type
 class _GroupBadgeState:
@@ -70,6 +86,7 @@ class _GroupBadgeState:
                  group: Optional[pulumi.Input[str]] = None,
                  image_url: Optional[pulumi.Input[str]] = None,
                  link_url: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  rendered_image_url: Optional[pulumi.Input[str]] = None,
                  rendered_link_url: Optional[pulumi.Input[str]] = None):
         """
@@ -77,6 +94,7 @@ class _GroupBadgeState:
         :param pulumi.Input[str] group: The id of the group to add the badge to.
         :param pulumi.Input[str] image_url: The image url which will be presented on group overview.
         :param pulumi.Input[str] link_url: The url linked with the badge.
+        :param pulumi.Input[str] name: The name of the badge.
         :param pulumi.Input[str] rendered_image_url: The image_url argument rendered (in case of use of placeholders).
         :param pulumi.Input[str] rendered_link_url: The link_url argument rendered (in case of use of placeholders).
         """
@@ -86,6 +104,8 @@ class _GroupBadgeState:
             pulumi.set(__self__, "image_url", image_url)
         if link_url is not None:
             pulumi.set(__self__, "link_url", link_url)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if rendered_image_url is not None:
             pulumi.set(__self__, "rendered_image_url", rendered_image_url)
         if rendered_link_url is not None:
@@ -128,6 +148,18 @@ class _GroupBadgeState:
         pulumi.set(self, "link_url", value)
 
     @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the badge.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
     @pulumi.getter(name="renderedImageUrl")
     def rendered_image_url(self) -> Optional[pulumi.Input[str]]:
         """
@@ -160,6 +192,7 @@ class GroupBadge(pulumi.CustomResource):
                  group: Optional[pulumi.Input[str]] = None,
                  image_url: Optional[pulumi.Input[str]] = None,
                  link_url: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         The `GroupBadge` resource allows to manage the lifecycle of group badges.
@@ -207,6 +240,7 @@ class GroupBadge(pulumi.CustomResource):
         :param pulumi.Input[str] group: The id of the group to add the badge to.
         :param pulumi.Input[str] image_url: The image url which will be presented on group overview.
         :param pulumi.Input[str] link_url: The url linked with the badge.
+        :param pulumi.Input[str] name: The name of the badge.
         """
         ...
     @overload
@@ -273,6 +307,7 @@ class GroupBadge(pulumi.CustomResource):
                  group: Optional[pulumi.Input[str]] = None,
                  image_url: Optional[pulumi.Input[str]] = None,
                  link_url: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -291,6 +326,7 @@ class GroupBadge(pulumi.CustomResource):
             if link_url is None and not opts.urn:
                 raise TypeError("Missing required property 'link_url'")
             __props__.__dict__["link_url"] = link_url
+            __props__.__dict__["name"] = name
             __props__.__dict__["rendered_image_url"] = None
             __props__.__dict__["rendered_link_url"] = None
         super(GroupBadge, __self__).__init__(
@@ -306,6 +342,7 @@ class GroupBadge(pulumi.CustomResource):
             group: Optional[pulumi.Input[str]] = None,
             image_url: Optional[pulumi.Input[str]] = None,
             link_url: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
             rendered_image_url: Optional[pulumi.Input[str]] = None,
             rendered_link_url: Optional[pulumi.Input[str]] = None) -> 'GroupBadge':
         """
@@ -318,6 +355,7 @@ class GroupBadge(pulumi.CustomResource):
         :param pulumi.Input[str] group: The id of the group to add the badge to.
         :param pulumi.Input[str] image_url: The image url which will be presented on group overview.
         :param pulumi.Input[str] link_url: The url linked with the badge.
+        :param pulumi.Input[str] name: The name of the badge.
         :param pulumi.Input[str] rendered_image_url: The image_url argument rendered (in case of use of placeholders).
         :param pulumi.Input[str] rendered_link_url: The link_url argument rendered (in case of use of placeholders).
         """
@@ -328,6 +366,7 @@ class GroupBadge(pulumi.CustomResource):
         __props__.__dict__["group"] = group
         __props__.__dict__["image_url"] = image_url
         __props__.__dict__["link_url"] = link_url
+        __props__.__dict__["name"] = name
         __props__.__dict__["rendered_image_url"] = rendered_image_url
         __props__.__dict__["rendered_link_url"] = rendered_link_url
         return GroupBadge(resource_name, opts=opts, __props__=__props__)
@@ -355,6 +394,14 @@ class GroupBadge(pulumi.CustomResource):
         The url linked with the badge.
         """
         return pulumi.get(self, "link_url")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the badge.
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="renderedImageUrl")

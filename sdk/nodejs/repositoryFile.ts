@@ -64,7 +64,7 @@ export class RepositoryFile extends pulumi.CustomResource {
     /**
      * Commit message.
      */
-    public readonly commitMessage!: pulumi.Output<string>;
+    public readonly commitMessage!: pulumi.Output<string | undefined>;
     /**
      * File content.
      */
@@ -73,6 +73,14 @@ export class RepositoryFile extends pulumi.CustomResource {
      * File content sha256 digest.
      */
     public /*out*/ readonly contentSha256!: pulumi.Output<string>;
+    /**
+     * Create commit message.
+     */
+    public readonly createCommitMessage!: pulumi.Output<string | undefined>;
+    /**
+     * Delete Commit message.
+     */
+    public readonly deleteCommitMessage!: pulumi.Output<string | undefined>;
     /**
      * The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
      */
@@ -113,6 +121,10 @@ export class RepositoryFile extends pulumi.CustomResource {
      * Name of the branch to start the new commit from.
      */
     public readonly startBranch!: pulumi.Output<string | undefined>;
+    /**
+     * Update commit message.
+     */
+    public readonly updateCommitMessage!: pulumi.Output<string | undefined>;
 
     /**
      * Create a RepositoryFile resource with the given unique name, arguments, and options.
@@ -135,6 +147,8 @@ export class RepositoryFile extends pulumi.CustomResource {
             resourceInputs["commitMessage"] = state ? state.commitMessage : undefined;
             resourceInputs["content"] = state ? state.content : undefined;
             resourceInputs["contentSha256"] = state ? state.contentSha256 : undefined;
+            resourceInputs["createCommitMessage"] = state ? state.createCommitMessage : undefined;
+            resourceInputs["deleteCommitMessage"] = state ? state.deleteCommitMessage : undefined;
             resourceInputs["encoding"] = state ? state.encoding : undefined;
             resourceInputs["executeFilemode"] = state ? state.executeFilemode : undefined;
             resourceInputs["fileName"] = state ? state.fileName : undefined;
@@ -145,13 +159,11 @@ export class RepositoryFile extends pulumi.CustomResource {
             resourceInputs["ref"] = state ? state.ref : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
             resourceInputs["startBranch"] = state ? state.startBranch : undefined;
+            resourceInputs["updateCommitMessage"] = state ? state.updateCommitMessage : undefined;
         } else {
             const args = argsOrState as RepositoryFileArgs | undefined;
             if ((!args || args.branch === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'branch'");
-            }
-            if ((!args || args.commitMessage === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'commitMessage'");
             }
             if ((!args || args.content === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'content'");
@@ -167,12 +179,15 @@ export class RepositoryFile extends pulumi.CustomResource {
             resourceInputs["branch"] = args ? args.branch : undefined;
             resourceInputs["commitMessage"] = args ? args.commitMessage : undefined;
             resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["createCommitMessage"] = args ? args.createCommitMessage : undefined;
+            resourceInputs["deleteCommitMessage"] = args ? args.deleteCommitMessage : undefined;
             resourceInputs["encoding"] = args ? args.encoding : undefined;
             resourceInputs["executeFilemode"] = args ? args.executeFilemode : undefined;
             resourceInputs["filePath"] = args ? args.filePath : undefined;
             resourceInputs["overwriteOnCreate"] = args ? args.overwriteOnCreate : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["startBranch"] = args ? args.startBranch : undefined;
+            resourceInputs["updateCommitMessage"] = args ? args.updateCommitMessage : undefined;
             resourceInputs["blobId"] = undefined /*out*/;
             resourceInputs["commitId"] = undefined /*out*/;
             resourceInputs["contentSha256"] = undefined /*out*/;
@@ -223,6 +238,14 @@ export interface RepositoryFileState {
      */
     contentSha256?: pulumi.Input<string>;
     /**
+     * Create commit message.
+     */
+    createCommitMessage?: pulumi.Input<string>;
+    /**
+     * Delete Commit message.
+     */
+    deleteCommitMessage?: pulumi.Input<string>;
+    /**
      * The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
      */
     encoding?: pulumi.Input<string>;
@@ -262,6 +285,10 @@ export interface RepositoryFileState {
      * Name of the branch to start the new commit from.
      */
     startBranch?: pulumi.Input<string>;
+    /**
+     * Update commit message.
+     */
+    updateCommitMessage?: pulumi.Input<string>;
 }
 
 /**
@@ -283,11 +310,19 @@ export interface RepositoryFileArgs {
     /**
      * Commit message.
      */
-    commitMessage: pulumi.Input<string>;
+    commitMessage?: pulumi.Input<string>;
     /**
      * File content.
      */
     content: pulumi.Input<string>;
+    /**
+     * Create commit message.
+     */
+    createCommitMessage?: pulumi.Input<string>;
+    /**
+     * Delete Commit message.
+     */
+    deleteCommitMessage?: pulumi.Input<string>;
     /**
      * The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
      */
@@ -312,4 +347,8 @@ export interface RepositoryFileArgs {
      * Name of the branch to start the new commit from.
      */
     startBranch?: pulumi.Input<string>;
+    /**
+     * Update commit message.
+     */
+    updateCommitMessage?: pulumi.Input<string>;
 }

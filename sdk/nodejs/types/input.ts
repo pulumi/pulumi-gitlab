@@ -79,6 +79,36 @@ export interface BranchProtectionAllowedToUnprotect {
     userId?: pulumi.Input<number>;
 }
 
+export interface GroupEpicBoardList {
+    /**
+     * The ID of the list.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The ID of the label the list should be scoped to.
+     */
+    labelId?: pulumi.Input<number>;
+    /**
+     * The position of the list within the board. The position for the list is sed on the its position in the `lists` array.
+     */
+    position?: pulumi.Input<number>;
+}
+
+export interface GroupIssueBoardList {
+    /**
+     * The ID of the list.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The ID of the label the list should be scoped to.
+     */
+    labelId?: pulumi.Input<number>;
+    /**
+     * The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+     */
+    position?: pulumi.Input<number>;
+}
+
 export interface ProjectContainerExpirationPolicy {
     /**
      * The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.

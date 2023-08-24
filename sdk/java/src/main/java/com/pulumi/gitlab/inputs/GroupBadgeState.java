@@ -61,6 +61,21 @@ public final class GroupBadgeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The name of the badge.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return The name of the badge.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
      * The image_url argument rendered (in case of use of placeholders).
      * 
      */
@@ -96,6 +111,7 @@ public final class GroupBadgeState extends com.pulumi.resources.ResourceArgs {
         this.group = $.group;
         this.imageUrl = $.imageUrl;
         this.linkUrl = $.linkUrl;
+        this.name = $.name;
         this.renderedImageUrl = $.renderedImageUrl;
         this.renderedLinkUrl = $.renderedLinkUrl;
     }
@@ -179,6 +195,27 @@ public final class GroupBadgeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder linkUrl(String linkUrl) {
             return linkUrl(Output.of(linkUrl));
+        }
+
+        /**
+         * @param name The name of the badge.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name The name of the badge.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**

@@ -103,14 +103,14 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="commitMessage", refs={String.class}, tree="[0]")
-    private Output<String> commitMessage;
+    private Output</* @Nullable */ String> commitMessage;
 
     /**
      * @return Commit message.
      * 
      */
-    public Output<String> commitMessage() {
-        return this.commitMessage;
+    public Output<Optional<String>> commitMessage() {
+        return Codegen.optional(this.commitMessage);
     }
     /**
      * File content.
@@ -139,6 +139,34 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      */
     public Output<String> contentSha256() {
         return this.contentSha256;
+    }
+    /**
+     * Create commit message.
+     * 
+     */
+    @Export(name="createCommitMessage", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> createCommitMessage;
+
+    /**
+     * @return Create commit message.
+     * 
+     */
+    public Output<Optional<String>> createCommitMessage() {
+        return Codegen.optional(this.createCommitMessage);
+    }
+    /**
+     * Delete Commit message.
+     * 
+     */
+    @Export(name="deleteCommitMessage", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deleteCommitMessage;
+
+    /**
+     * @return Delete Commit message.
+     * 
+     */
+    public Output<Optional<String>> deleteCommitMessage() {
+        return Codegen.optional(this.deleteCommitMessage);
     }
     /**
      * The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
@@ -279,6 +307,20 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> startBranch() {
         return Codegen.optional(this.startBranch);
+    }
+    /**
+     * Update commit message.
+     * 
+     */
+    @Export(name="updateCommitMessage", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> updateCommitMessage;
+
+    /**
+     * @return Update commit message.
+     * 
+     */
+    public Output<Optional<String>> updateCommitMessage() {
+        return Codegen.optional(this.updateCommitMessage);
     }
 
     /**

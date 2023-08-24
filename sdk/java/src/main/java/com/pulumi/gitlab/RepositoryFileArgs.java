@@ -65,15 +65,15 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
      * Commit message.
      * 
      */
-    @Import(name="commitMessage", required=true)
-    private Output<String> commitMessage;
+    @Import(name="commitMessage")
+    private @Nullable Output<String> commitMessage;
 
     /**
      * @return Commit message.
      * 
      */
-    public Output<String> commitMessage() {
-        return this.commitMessage;
+    public Optional<Output<String>> commitMessage() {
+        return Optional.ofNullable(this.commitMessage);
     }
 
     /**
@@ -89,6 +89,36 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Output<String> content() {
         return this.content;
+    }
+
+    /**
+     * Create commit message.
+     * 
+     */
+    @Import(name="createCommitMessage")
+    private @Nullable Output<String> createCommitMessage;
+
+    /**
+     * @return Create commit message.
+     * 
+     */
+    public Optional<Output<String>> createCommitMessage() {
+        return Optional.ofNullable(this.createCommitMessage);
+    }
+
+    /**
+     * Delete Commit message.
+     * 
+     */
+    @Import(name="deleteCommitMessage")
+    private @Nullable Output<String> deleteCommitMessage;
+
+    /**
+     * @return Delete Commit message.
+     * 
+     */
+    public Optional<Output<String>> deleteCommitMessage() {
+        return Optional.ofNullable(this.deleteCommitMessage);
     }
 
     /**
@@ -181,6 +211,21 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.startBranch);
     }
 
+    /**
+     * Update commit message.
+     * 
+     */
+    @Import(name="updateCommitMessage")
+    private @Nullable Output<String> updateCommitMessage;
+
+    /**
+     * @return Update commit message.
+     * 
+     */
+    public Optional<Output<String>> updateCommitMessage() {
+        return Optional.ofNullable(this.updateCommitMessage);
+    }
+
     private RepositoryFileArgs() {}
 
     private RepositoryFileArgs(RepositoryFileArgs $) {
@@ -189,12 +234,15 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
         this.branch = $.branch;
         this.commitMessage = $.commitMessage;
         this.content = $.content;
+        this.createCommitMessage = $.createCommitMessage;
+        this.deleteCommitMessage = $.deleteCommitMessage;
         this.encoding = $.encoding;
         this.executeFilemode = $.executeFilemode;
         this.filePath = $.filePath;
         this.overwriteOnCreate = $.overwriteOnCreate;
         this.project = $.project;
         this.startBranch = $.startBranch;
+        this.updateCommitMessage = $.updateCommitMessage;
     }
 
     public static Builder builder() {
@@ -284,7 +332,7 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder commitMessage(Output<String> commitMessage) {
+        public Builder commitMessage(@Nullable Output<String> commitMessage) {
             $.commitMessage = commitMessage;
             return this;
         }
@@ -318,6 +366,48 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder content(String content) {
             return content(Output.of(content));
+        }
+
+        /**
+         * @param createCommitMessage Create commit message.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createCommitMessage(@Nullable Output<String> createCommitMessage) {
+            $.createCommitMessage = createCommitMessage;
+            return this;
+        }
+
+        /**
+         * @param createCommitMessage Create commit message.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createCommitMessage(String createCommitMessage) {
+            return createCommitMessage(Output.of(createCommitMessage));
+        }
+
+        /**
+         * @param deleteCommitMessage Delete Commit message.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteCommitMessage(@Nullable Output<String> deleteCommitMessage) {
+            $.deleteCommitMessage = deleteCommitMessage;
+            return this;
+        }
+
+        /**
+         * @param deleteCommitMessage Delete Commit message.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteCommitMessage(String deleteCommitMessage) {
+            return deleteCommitMessage(Output.of(deleteCommitMessage));
         }
 
         /**
@@ -446,9 +536,29 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
             return startBranch(Output.of(startBranch));
         }
 
+        /**
+         * @param updateCommitMessage Update commit message.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateCommitMessage(@Nullable Output<String> updateCommitMessage) {
+            $.updateCommitMessage = updateCommitMessage;
+            return this;
+        }
+
+        /**
+         * @param updateCommitMessage Update commit message.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateCommitMessage(String updateCommitMessage) {
+            return updateCommitMessage(Output.of(updateCommitMessage));
+        }
+
         public RepositoryFileArgs build() {
             $.branch = Objects.requireNonNull($.branch, "expected parameter 'branch' to be non-null");
-            $.commitMessage = Objects.requireNonNull($.commitMessage, "expected parameter 'commitMessage' to be non-null");
             $.content = Objects.requireNonNull($.content, "expected parameter 'content' to be non-null");
             $.filePath = Objects.requireNonNull($.filePath, "expected parameter 'filePath' to be non-null");
             $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");

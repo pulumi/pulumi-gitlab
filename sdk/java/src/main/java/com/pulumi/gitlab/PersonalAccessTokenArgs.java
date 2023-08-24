@@ -21,15 +21,15 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
      * The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
      * 
      */
-    @Import(name="expiresAt")
-    private @Nullable Output<String> expiresAt;
+    @Import(name="expiresAt", required=true)
+    private Output<String> expiresAt;
 
     /**
      * @return The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
      * 
      */
-    public Optional<Output<String>> expiresAt() {
-        return Optional.ofNullable(this.expiresAt);
+    public Output<String> expiresAt() {
+        return this.expiresAt;
     }
 
     /**
@@ -110,7 +110,7 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder expiresAt(@Nullable Output<String> expiresAt) {
+        public Builder expiresAt(Output<String> expiresAt) {
             $.expiresAt = expiresAt;
             return this;
         }
@@ -199,6 +199,7 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
         }
 
         public PersonalAccessTokenArgs build() {
+            $.expiresAt = Objects.requireNonNull($.expiresAt, "expected parameter 'expiresAt' to be non-null");
             $.scopes = Objects.requireNonNull($.scopes, "expected parameter 'scopes' to be non-null");
             $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
             return $;

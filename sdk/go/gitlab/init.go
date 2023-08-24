@@ -51,8 +51,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupCluster{}
 	case "gitlab:index/groupCustomAttribute:GroupCustomAttribute":
 		r = &GroupCustomAttribute{}
+	case "gitlab:index/groupEpicBoard:GroupEpicBoard":
+		r = &GroupEpicBoard{}
 	case "gitlab:index/groupHook:GroupHook":
 		r = &GroupHook{}
+	case "gitlab:index/groupIssueBoard:GroupIssueBoard":
+		r = &GroupIssueBoard{}
 	case "gitlab:index/groupLabel:GroupLabel":
 		r = &GroupLabel{}
 	case "gitlab:index/groupLdapLink:GroupLdapLink":
@@ -123,6 +127,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectIssue{}
 	case "gitlab:index/projectIssueBoard:ProjectIssueBoard":
 		r = &ProjectIssueBoard{}
+	case "gitlab:index/projectJobTokenScope:ProjectJobTokenScope":
+		r = &ProjectJobTokenScope{}
 	case "gitlab:index/projectLabel:ProjectLabel":
 		r = &ProjectLabel{}
 	case "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals":
@@ -177,6 +183,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &UserCustomAttribute{}
 	case "gitlab:index/userGpgKey:UserGpgKey":
 		r = &UserGpgKey{}
+	case "gitlab:index/userRunner:UserRunner":
+		r = &UserRunner{}
 	case "gitlab:index/userSshKey:UserSshKey":
 		r = &UserSshKey{}
 	default:
@@ -287,7 +295,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/groupEpicBoard",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/groupHook",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/groupIssueBoard",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -467,6 +485,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectJobTokenScope",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectLabel",
 		&module{version},
 	)
@@ -598,6 +621,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/userGpgKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/userRunner",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

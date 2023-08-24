@@ -277,10 +277,20 @@ export type GroupCustomAttribute = import("./groupCustomAttribute").GroupCustomA
 export const GroupCustomAttribute: typeof import("./groupCustomAttribute").GroupCustomAttribute = null as any;
 utilities.lazyLoad(exports, ["GroupCustomAttribute"], () => require("./groupCustomAttribute"));
 
+export { GroupEpicBoardArgs, GroupEpicBoardState } from "./groupEpicBoard";
+export type GroupEpicBoard = import("./groupEpicBoard").GroupEpicBoard;
+export const GroupEpicBoard: typeof import("./groupEpicBoard").GroupEpicBoard = null as any;
+utilities.lazyLoad(exports, ["GroupEpicBoard"], () => require("./groupEpicBoard"));
+
 export { GroupHookArgs, GroupHookState } from "./groupHook";
 export type GroupHook = import("./groupHook").GroupHook;
 export const GroupHook: typeof import("./groupHook").GroupHook = null as any;
 utilities.lazyLoad(exports, ["GroupHook"], () => require("./groupHook"));
+
+export { GroupIssueBoardArgs, GroupIssueBoardState } from "./groupIssueBoard";
+export type GroupIssueBoard = import("./groupIssueBoard").GroupIssueBoard;
+export const GroupIssueBoard: typeof import("./groupIssueBoard").GroupIssueBoard = null as any;
+utilities.lazyLoad(exports, ["GroupIssueBoard"], () => require("./groupIssueBoard"));
 
 export { GroupLabelArgs, GroupLabelState } from "./groupLabel";
 export type GroupLabel = import("./groupLabel").GroupLabel;
@@ -457,6 +467,11 @@ export type ProjectIssueBoard = import("./projectIssueBoard").ProjectIssueBoard;
 export const ProjectIssueBoard: typeof import("./projectIssueBoard").ProjectIssueBoard = null as any;
 utilities.lazyLoad(exports, ["ProjectIssueBoard"], () => require("./projectIssueBoard"));
 
+export { ProjectJobTokenScopeArgs, ProjectJobTokenScopeState } from "./projectJobTokenScope";
+export type ProjectJobTokenScope = import("./projectJobTokenScope").ProjectJobTokenScope;
+export const ProjectJobTokenScope: typeof import("./projectJobTokenScope").ProjectJobTokenScope = null as any;
+utilities.lazyLoad(exports, ["ProjectJobTokenScope"], () => require("./projectJobTokenScope"));
+
 export { ProjectLabelArgs, ProjectLabelState } from "./projectLabel";
 export type ProjectLabel = import("./projectLabel").ProjectLabel;
 export const ProjectLabel: typeof import("./projectLabel").ProjectLabel = null as any;
@@ -597,6 +612,11 @@ export type UserGpgKey = import("./userGpgKey").UserGpgKey;
 export const UserGpgKey: typeof import("./userGpgKey").UserGpgKey = null as any;
 utilities.lazyLoad(exports, ["UserGpgKey"], () => require("./userGpgKey"));
 
+export { UserRunnerArgs, UserRunnerState } from "./userRunner";
+export type UserRunner = import("./userRunner").UserRunner;
+export const UserRunner: typeof import("./userRunner").UserRunner = null as any;
+utilities.lazyLoad(exports, ["UserRunner"], () => require("./userRunner"));
+
 export { UserSshKeyArgs, UserSshKeyState } from "./userSshKey";
 export type UserSshKey = import("./userSshKey").UserSshKey;
 export const UserSshKey: typeof import("./userSshKey").UserSshKey = null as any;
@@ -646,8 +666,12 @@ const _module = {
                 return new GroupCluster(name, <any>undefined, { urn })
             case "gitlab:index/groupCustomAttribute:GroupCustomAttribute":
                 return new GroupCustomAttribute(name, <any>undefined, { urn })
+            case "gitlab:index/groupEpicBoard:GroupEpicBoard":
+                return new GroupEpicBoard(name, <any>undefined, { urn })
             case "gitlab:index/groupHook:GroupHook":
                 return new GroupHook(name, <any>undefined, { urn })
+            case "gitlab:index/groupIssueBoard:GroupIssueBoard":
+                return new GroupIssueBoard(name, <any>undefined, { urn })
             case "gitlab:index/groupLabel:GroupLabel":
                 return new GroupLabel(name, <any>undefined, { urn })
             case "gitlab:index/groupLdapLink:GroupLdapLink":
@@ -718,6 +742,8 @@ const _module = {
                 return new ProjectIssue(name, <any>undefined, { urn })
             case "gitlab:index/projectIssueBoard:ProjectIssueBoard":
                 return new ProjectIssueBoard(name, <any>undefined, { urn })
+            case "gitlab:index/projectJobTokenScope:ProjectJobTokenScope":
+                return new ProjectJobTokenScope(name, <any>undefined, { urn })
             case "gitlab:index/projectLabel:ProjectLabel":
                 return new ProjectLabel(name, <any>undefined, { urn })
             case "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals":
@@ -772,6 +798,8 @@ const _module = {
                 return new UserCustomAttribute(name, <any>undefined, { urn })
             case "gitlab:index/userGpgKey:UserGpgKey":
                 return new UserGpgKey(name, <any>undefined, { urn })
+            case "gitlab:index/userRunner:UserRunner":
+                return new UserRunner(name, <any>undefined, { urn })
             case "gitlab:index/userSshKey:UserSshKey":
                 return new UserSshKey(name, <any>undefined, { urn })
             default:
@@ -794,7 +822,9 @@ pulumi.runtime.registerResourceModule("gitlab", "index/groupAccessToken", _modul
 pulumi.runtime.registerResourceModule("gitlab", "index/groupBadge", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupCustomAttribute", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupEpicBoard", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupHook", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupIssueBoard", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupLabel", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupLdapLink", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupMembership", _module)
@@ -830,6 +860,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectFreezePeriod", _mo
 pulumi.runtime.registerResourceModule("gitlab", "index/projectHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIssue", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIssueBoard", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectJobTokenScope", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectLabel", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectLevelMrApprovals", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMembership", _module)
@@ -857,6 +888,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/topic", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/user", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userCustomAttribute", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userGpgKey", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/userRunner", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userSshKey", _module)
 pulumi.runtime.registerResourcePackage("gitlab", {
     version: utilities.getVersion(),

@@ -45,6 +45,7 @@ public final class GetGroupSubgroupsSubgroup {
     private Integer twoFactorGracePeriod;
     private String visibility;
     private String webUrl;
+    private String wikiAccessLevel;
 
     private GetGroupSubgroupsSubgroup() {}
     public Boolean autoDevopsEnabled() {
@@ -130,6 +131,9 @@ public final class GetGroupSubgroupsSubgroup {
     public String webUrl() {
         return this.webUrl;
     }
+    public String wikiAccessLevel() {
+        return this.wikiAccessLevel;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -165,6 +169,7 @@ public final class GetGroupSubgroupsSubgroup {
         private Integer twoFactorGracePeriod;
         private String visibility;
         private String webUrl;
+        private String wikiAccessLevel;
         public Builder() {}
         public Builder(GetGroupSubgroupsSubgroup defaults) {
     	      Objects.requireNonNull(defaults);
@@ -193,6 +198,7 @@ public final class GetGroupSubgroupsSubgroup {
     	      this.twoFactorGracePeriod = defaults.twoFactorGracePeriod;
     	      this.visibility = defaults.visibility;
     	      this.webUrl = defaults.webUrl;
+    	      this.wikiAccessLevel = defaults.wikiAccessLevel;
         }
 
         @CustomType.Setter
@@ -320,6 +326,11 @@ public final class GetGroupSubgroupsSubgroup {
             this.webUrl = Objects.requireNonNull(webUrl);
             return this;
         }
+        @CustomType.Setter
+        public Builder wikiAccessLevel(String wikiAccessLevel) {
+            this.wikiAccessLevel = Objects.requireNonNull(wikiAccessLevel);
+            return this;
+        }
         public GetGroupSubgroupsSubgroup build() {
             final var o = new GetGroupSubgroupsSubgroup();
             o.autoDevopsEnabled = autoDevopsEnabled;
@@ -347,6 +358,7 @@ public final class GetGroupSubgroupsSubgroup {
             o.twoFactorGracePeriod = twoFactorGracePeriod;
             o.visibility = visibility;
             o.webUrl = webUrl;
+            o.wikiAccessLevel = wikiAccessLevel;
             return o;
         }
     }

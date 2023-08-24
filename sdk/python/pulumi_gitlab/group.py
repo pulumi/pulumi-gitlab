@@ -36,7 +36,8 @@ class GroupArgs:
                  shared_runners_minutes_limit: Optional[pulumi.Input[int]] = None,
                  subgroup_creation_level: Optional[pulumi.Input[str]] = None,
                  two_factor_grace_period: Optional[pulumi.Input[int]] = None,
-                 visibility_level: Optional[pulumi.Input[str]] = None):
+                 visibility_level: Optional[pulumi.Input[str]] = None,
+                 wiki_access_level: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[str] path: The path of the group.
@@ -62,6 +63,7 @@ class GroupArgs:
         :param pulumi.Input[str] subgroup_creation_level: Defaults to owner. Allowed to create subgroups.
         :param pulumi.Input[int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
+        :param pulumi.Input[str] wiki_access_level: The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
         """
         pulumi.set(__self__, "path", path)
         if auto_devops_enabled is not None:
@@ -108,6 +110,8 @@ class GroupArgs:
             pulumi.set(__self__, "two_factor_grace_period", two_factor_grace_period)
         if visibility_level is not None:
             pulumi.set(__self__, "visibility_level", visibility_level)
+        if wiki_access_level is not None:
+            pulumi.set(__self__, "wiki_access_level", wiki_access_level)
 
     @property
     @pulumi.getter
@@ -385,6 +389,18 @@ class GroupArgs:
     def visibility_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "visibility_level", value)
 
+    @property
+    @pulumi.getter(name="wikiAccessLevel")
+    def wiki_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "wiki_access_level")
+
+    @wiki_access_level.setter
+    def wiki_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "wiki_access_level", value)
+
 
 @pulumi.input_type
 class _GroupState:
@@ -416,7 +432,8 @@ class _GroupState:
                  subgroup_creation_level: Optional[pulumi.Input[str]] = None,
                  two_factor_grace_period: Optional[pulumi.Input[int]] = None,
                  visibility_level: Optional[pulumi.Input[str]] = None,
-                 web_url: Optional[pulumi.Input[str]] = None):
+                 web_url: Optional[pulumi.Input[str]] = None,
+                 wiki_access_level: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
         :param pulumi.Input[bool] auto_devops_enabled: Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
@@ -447,6 +464,7 @@ class _GroupState:
         :param pulumi.Input[int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
         :param pulumi.Input[str] web_url: Web URL of the group.
+        :param pulumi.Input[str] wiki_access_level: The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
         """
         if auto_devops_enabled is not None:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
@@ -504,6 +522,8 @@ class _GroupState:
             pulumi.set(__self__, "visibility_level", visibility_level)
         if web_url is not None:
             pulumi.set(__self__, "web_url", web_url)
+        if wiki_access_level is not None:
+            pulumi.set(__self__, "wiki_access_level", wiki_access_level)
 
     @property
     @pulumi.getter(name="autoDevopsEnabled")
@@ -841,6 +861,18 @@ class _GroupState:
     def web_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "web_url", value)
 
+    @property
+    @pulumi.getter(name="wikiAccessLevel")
+    def wiki_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "wiki_access_level")
+
+    @wiki_access_level.setter
+    def wiki_access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "wiki_access_level", value)
+
 
 class Group(pulumi.CustomResource):
     @overload
@@ -870,6 +902,7 @@ class Group(pulumi.CustomResource):
                  subgroup_creation_level: Optional[pulumi.Input[str]] = None,
                  two_factor_grace_period: Optional[pulumi.Input[int]] = None,
                  visibility_level: Optional[pulumi.Input[str]] = None,
+                 wiki_access_level: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         The `Group` resource allows to manage the lifecycle of a group.
@@ -930,6 +963,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] subgroup_creation_level: Defaults to owner. Allowed to create subgroups.
         :param pulumi.Input[int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
+        :param pulumi.Input[str] wiki_access_level: The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
         """
         ...
     @overload
@@ -1009,6 +1043,7 @@ class Group(pulumi.CustomResource):
                  subgroup_creation_level: Optional[pulumi.Input[str]] = None,
                  two_factor_grace_period: Optional[pulumi.Input[int]] = None,
                  visibility_level: Optional[pulumi.Input[str]] = None,
+                 wiki_access_level: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1043,6 +1078,7 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["subgroup_creation_level"] = subgroup_creation_level
             __props__.__dict__["two_factor_grace_period"] = two_factor_grace_period
             __props__.__dict__["visibility_level"] = visibility_level
+            __props__.__dict__["wiki_access_level"] = wiki_access_level
             __props__.__dict__["avatar_url"] = None
             __props__.__dict__["full_name"] = None
             __props__.__dict__["full_path"] = None
@@ -1087,7 +1123,8 @@ class Group(pulumi.CustomResource):
             subgroup_creation_level: Optional[pulumi.Input[str]] = None,
             two_factor_grace_period: Optional[pulumi.Input[int]] = None,
             visibility_level: Optional[pulumi.Input[str]] = None,
-            web_url: Optional[pulumi.Input[str]] = None) -> 'Group':
+            web_url: Optional[pulumi.Input[str]] = None,
+            wiki_access_level: Optional[pulumi.Input[str]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1123,6 +1160,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         :param pulumi.Input[str] visibility_level: The group's visibility. Can be `private`, `internal`, or `public`.
         :param pulumi.Input[str] web_url: Web URL of the group.
+        :param pulumi.Input[str] wiki_access_level: The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1156,6 +1194,7 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["two_factor_grace_period"] = two_factor_grace_period
         __props__.__dict__["visibility_level"] = visibility_level
         __props__.__dict__["web_url"] = web_url
+        __props__.__dict__["wiki_access_level"] = wiki_access_level
         return Group(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1381,4 +1420,12 @@ class Group(pulumi.CustomResource):
         Web URL of the group.
         """
         return pulumi.get(self, "web_url")
+
+    @property
+    @pulumi.getter(name="wikiAccessLevel")
+    def wiki_access_level(self) -> pulumi.Output[str]:
+        """
+        The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "wiki_access_level")
 

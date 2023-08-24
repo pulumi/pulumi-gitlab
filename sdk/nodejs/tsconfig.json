@@ -70,7 +70,9 @@
         "groupBadge.ts",
         "groupCluster.ts",
         "groupCustomAttribute.ts",
+        "groupEpicBoard.ts",
         "groupHook.ts",
+        "groupIssueBoard.ts",
         "groupLabel.ts",
         "groupLdapLink.ts",
         "groupMembership.ts",
@@ -107,6 +109,7 @@
         "projectHook.ts",
         "projectIssue.ts",
         "projectIssueBoard.ts",
+        "projectJobTokenScope.ts",
         "projectLabel.ts",
         "projectLevelMrApprovals.ts",
         "projectMembership.ts",
@@ -138,6 +141,7 @@
         "user.ts",
         "userCustomAttribute.ts",
         "userGpgKey.ts",
+        "userRunner.ts",
         "userSshKey.ts",
         "utilities.ts"
     ]

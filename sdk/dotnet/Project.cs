@@ -280,7 +280,7 @@ namespace Pulumi.GitLab
         /// Disable email notifications.
         /// </summary>
         [Output("emailsDisabled")]
-        public Output<bool?> EmailsDisabled { get; private set; } = null!;
+        public Output<bool> EmailsDisabled { get; private set; } = null!;
 
         /// <summary>
         /// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.

@@ -14,23 +14,34 @@ __all__ = ['PersonalAccessTokenArgs', 'PersonalAccessToken']
 @pulumi.input_type
 class PersonalAccessTokenArgs:
     def __init__(__self__, *,
+                 expires_at: pulumi.Input[str],
                  scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  user_id: pulumi.Input[int],
-                 expires_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PersonalAccessToken resource.
+        :param pulumi.Input[str] expires_at: The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`.
         :param pulumi.Input[int] user_id: The id of the user.
-        :param pulumi.Input[str] expires_at: The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
         :param pulumi.Input[str] name: The name of the personal access token.
         """
+        pulumi.set(__self__, "expires_at", expires_at)
         pulumi.set(__self__, "scopes", scopes)
         pulumi.set(__self__, "user_id", user_id)
-        if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> pulumi.Input[str]:
+        """
+        The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expires_at", value)
 
     @property
     @pulumi.getter
@@ -55,18 +66,6 @@ class PersonalAccessTokenArgs:
     @user_id.setter
     def user_id(self, value: pulumi.Input[int]):
         pulumi.set(self, "user_id", value)
-
-    @property
-    @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[str]]:
-        """
-        The token expires at midnight UTC on that date. The date must be in the format YYYY-MM-DD.
-        """
-        return pulumi.get(self, "expires_at")
-
-    @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "expires_at", value)
 
     @property
     @pulumi.getter
@@ -334,6 +333,8 @@ class PersonalAccessToken(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PersonalAccessTokenArgs.__new__(PersonalAccessTokenArgs)
 
+            if expires_at is None and not opts.urn:
+                raise TypeError("Missing required property 'expires_at'")
             __props__.__dict__["expires_at"] = expires_at
             __props__.__dict__["name"] = name
             if scopes is None and not opts.urn:

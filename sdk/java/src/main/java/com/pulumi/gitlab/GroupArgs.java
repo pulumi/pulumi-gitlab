@@ -363,6 +363,21 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.visibilityLevel);
     }
 
+    /**
+     * The group&#39;s wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    @Import(name="wikiAccessLevel")
+    private @Nullable Output<String> wikiAccessLevel;
+
+    /**
+     * @return The group&#39;s wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public Optional<Output<String>> wikiAccessLevel() {
+        return Optional.ofNullable(this.wikiAccessLevel);
+    }
+
     private GroupArgs() {}
 
     private GroupArgs(GroupArgs $) {
@@ -389,6 +404,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         this.subgroupCreationLevel = $.subgroupCreationLevel;
         this.twoFactorGracePeriod = $.twoFactorGracePeriod;
         this.visibilityLevel = $.visibilityLevel;
+        this.wikiAccessLevel = $.wikiAccessLevel;
     }
 
     public static Builder builder() {
@@ -900,6 +916,27 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder visibilityLevel(String visibilityLevel) {
             return visibilityLevel(Output.of(visibilityLevel));
+        }
+
+        /**
+         * @param wikiAccessLevel The group&#39;s wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wikiAccessLevel(@Nullable Output<String> wikiAccessLevel) {
+            $.wikiAccessLevel = wikiAccessLevel;
+            return this;
+        }
+
+        /**
+         * @param wikiAccessLevel The group&#39;s wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wikiAccessLevel(String wikiAccessLevel) {
+            return wikiAccessLevel(Output.of(wikiAccessLevel));
         }
 
         public GroupArgs build() {

@@ -68,29 +68,33 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
     }
 
     /**
-     * By default, users are able to edit the approval rules in merge requests. If set to true,
+     * Set to `true` to disable overriding approvers per merge request.
      */
-    public readonly disableOverridingApproversPerMergeRequest!: pulumi.Output<boolean | undefined>;
+    public readonly disableOverridingApproversPerMergeRequest!: pulumi.Output<boolean>;
     /**
-     * Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
+     * Set to `true` to allow merge requests authors to approve their own merge requests.
      */
-    public readonly mergeRequestsAuthorApproval!: pulumi.Output<boolean | undefined>;
+    public readonly mergeRequestsAuthorApproval!: pulumi.Output<boolean>;
     /**
-     * Set to `true` if you want to prevent approval of merge requests by merge request committers.
+     * Set to `true` to allow merge requests committers to approve their own merge requests.
      */
-    public readonly mergeRequestsDisableCommittersApproval!: pulumi.Output<boolean | undefined>;
+    public readonly mergeRequestsDisableCommittersApproval!: pulumi.Output<boolean>;
     /**
      * The ID or URL-encoded path of a project to change MR approval configuration.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Set to `true` if you want to require authentication when approving a merge request.
+     * Set to `true` to require authentication to approve merge requests.
      */
-    public readonly requirePasswordToApprove!: pulumi.Output<boolean | undefined>;
+    public readonly requirePasswordToApprove!: pulumi.Output<boolean>;
     /**
-     * Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+     * Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      */
-    public readonly resetApprovalsOnPush!: pulumi.Output<boolean | undefined>;
+    public readonly resetApprovalsOnPush!: pulumi.Output<boolean>;
+    /**
+     * Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
+     */
+    public readonly selectiveCodeOwnerRemovals!: pulumi.Output<boolean>;
 
     /**
      * Create a ProjectLevelMrApprovals resource with the given unique name, arguments, and options.
@@ -111,6 +115,7 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["requirePasswordToApprove"] = state ? state.requirePasswordToApprove : undefined;
             resourceInputs["resetApprovalsOnPush"] = state ? state.resetApprovalsOnPush : undefined;
+            resourceInputs["selectiveCodeOwnerRemovals"] = state ? state.selectiveCodeOwnerRemovals : undefined;
         } else {
             const args = argsOrState as ProjectLevelMrApprovalsArgs | undefined;
             if ((!args || args.project === undefined) && !opts.urn) {
@@ -122,6 +127,7 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requirePasswordToApprove"] = args ? args.requirePasswordToApprove : undefined;
             resourceInputs["resetApprovalsOnPush"] = args ? args.resetApprovalsOnPush : undefined;
+            resourceInputs["selectiveCodeOwnerRemovals"] = args ? args.selectiveCodeOwnerRemovals : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectLevelMrApprovals.__pulumiType, name, resourceInputs, opts);
@@ -133,15 +139,15 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
  */
 export interface ProjectLevelMrApprovalsState {
     /**
-     * By default, users are able to edit the approval rules in merge requests. If set to true,
+     * Set to `true` to disable overriding approvers per merge request.
      */
     disableOverridingApproversPerMergeRequest?: pulumi.Input<boolean>;
     /**
-     * Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
+     * Set to `true` to allow merge requests authors to approve their own merge requests.
      */
     mergeRequestsAuthorApproval?: pulumi.Input<boolean>;
     /**
-     * Set to `true` if you want to prevent approval of merge requests by merge request committers.
+     * Set to `true` to allow merge requests committers to approve their own merge requests.
      */
     mergeRequestsDisableCommittersApproval?: pulumi.Input<boolean>;
     /**
@@ -149,13 +155,17 @@ export interface ProjectLevelMrApprovalsState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Set to `true` if you want to require authentication when approving a merge request.
+     * Set to `true` to require authentication to approve merge requests.
      */
     requirePasswordToApprove?: pulumi.Input<boolean>;
     /**
-     * Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+     * Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      */
     resetApprovalsOnPush?: pulumi.Input<boolean>;
+    /**
+     * Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
+     */
+    selectiveCodeOwnerRemovals?: pulumi.Input<boolean>;
 }
 
 /**
@@ -163,15 +173,15 @@ export interface ProjectLevelMrApprovalsState {
  */
 export interface ProjectLevelMrApprovalsArgs {
     /**
-     * By default, users are able to edit the approval rules in merge requests. If set to true,
+     * Set to `true` to disable overriding approvers per merge request.
      */
     disableOverridingApproversPerMergeRequest?: pulumi.Input<boolean>;
     /**
-     * Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
+     * Set to `true` to allow merge requests authors to approve their own merge requests.
      */
     mergeRequestsAuthorApproval?: pulumi.Input<boolean>;
     /**
-     * Set to `true` if you want to prevent approval of merge requests by merge request committers.
+     * Set to `true` to allow merge requests committers to approve their own merge requests.
      */
     mergeRequestsDisableCommittersApproval?: pulumi.Input<boolean>;
     /**
@@ -179,11 +189,15 @@ export interface ProjectLevelMrApprovalsArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * Set to `true` if you want to require authentication when approving a merge request.
+     * Set to `true` to require authentication to approve merge requests.
      */
     requirePasswordToApprove?: pulumi.Input<boolean>;
     /**
-     * Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+     * Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      */
     resetApprovalsOnPush?: pulumi.Input<boolean>;
+    /**
+     * Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
+     */
+    selectiveCodeOwnerRemovals?: pulumi.Input<boolean>;
 }

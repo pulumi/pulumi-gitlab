@@ -225,6 +225,12 @@ namespace Pulumi.GitLab
         [Output("webUrl")]
         public Output<string> WebUrl { get; private set; } = null!;
 
+        /// <summary>
+        /// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Output("wikiAccessLevel")]
+        public Output<string> WikiAccessLevel { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Group resource with the given unique name, arguments, and options.
@@ -419,6 +425,12 @@ namespace Pulumi.GitLab
         [Input("visibilityLevel")]
         public Input<string>? VisibilityLevel { get; set; }
 
+        /// <summary>
+        /// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("wikiAccessLevel")]
+        public Input<string>? WikiAccessLevel { get; set; }
+
         public GroupArgs()
         {
         }
@@ -610,6 +622,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("webUrl")]
         public Input<string>? WebUrl { get; set; }
+
+        /// <summary>
+        /// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+        /// </summary>
+        [Input("wikiAccessLevel")]
+        public Input<string>? WikiAccessLevel { get; set; }
 
         public GroupState()
         {

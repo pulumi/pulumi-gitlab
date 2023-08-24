@@ -15,6 +15,9 @@ namespace Pulumi.GitLab
     /// A runner can either be registered at an instance level or group level.
     /// The runner will be registered at a group level if the token used is from a group, or at an instance level if the token used is for the instance.
     /// 
+    /// ~ &gt; Using this resource will register a runner using the deprecated `registration_token` flow. To use the new `authentication_token` flow instead,
+    /// use the `gitlab.UserRunner` resource!
+    /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#register-a-new-runner)
     /// 
     /// ## Example Usage

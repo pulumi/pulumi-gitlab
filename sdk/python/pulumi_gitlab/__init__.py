@@ -60,7 +60,9 @@ from .group_access_token import *
 from .group_badge import *
 from .group_cluster import *
 from .group_custom_attribute import *
+from .group_epic_board import *
 from .group_hook import *
+from .group_issue_board import *
 from .group_label import *
 from .group_ldap_link import *
 from .group_membership import *
@@ -96,6 +98,7 @@ from .project_freeze_period import *
 from .project_hook import *
 from .project_issue import *
 from .project_issue_board import *
+from .project_job_token_scope import *
 from .project_label import *
 from .project_level_mr_approvals import *
 from .project_membership import *
@@ -124,6 +127,7 @@ from .topic import *
 from .user import *
 from .user_custom_attribute import *
 from .user_gpg_key import *
+from .user_runner import *
 from .user_ssh_key import *
 from ._inputs import *
 from . import outputs
@@ -260,10 +264,26 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/groupEpicBoard",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupEpicBoard:GroupEpicBoard": "GroupEpicBoard"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/groupHook",
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/groupHook:GroupHook": "GroupHook"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/groupIssueBoard",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupIssueBoard:GroupIssueBoard": "GroupIssueBoard"
   }
  },
  {
@@ -548,6 +568,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectJobTokenScope",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectJobTokenScope:ProjectJobTokenScope": "ProjectJobTokenScope"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectLabel",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -760,6 +788,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/userGpgKey:UserGpgKey": "UserGpgKey"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/userRunner",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/userRunner:UserRunner": "UserRunner"
   }
  },
  {

@@ -25,6 +25,7 @@ public final class GetGroupsGroup {
     private String runnersToken;
     private String visibilityLevel;
     private String webUrl;
+    private String wikiAccessLevel;
 
     private GetGroupsGroup() {}
     public Integer defaultBranchProtection() {
@@ -69,6 +70,9 @@ public final class GetGroupsGroup {
     public String webUrl() {
         return this.webUrl;
     }
+    public String wikiAccessLevel() {
+        return this.wikiAccessLevel;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -93,6 +97,7 @@ public final class GetGroupsGroup {
         private String runnersToken;
         private String visibilityLevel;
         private String webUrl;
+        private String wikiAccessLevel;
         public Builder() {}
         public Builder(GetGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
@@ -110,6 +115,7 @@ public final class GetGroupsGroup {
     	      this.runnersToken = defaults.runnersToken;
     	      this.visibilityLevel = defaults.visibilityLevel;
     	      this.webUrl = defaults.webUrl;
+    	      this.wikiAccessLevel = defaults.wikiAccessLevel;
         }
 
         @CustomType.Setter
@@ -182,6 +188,11 @@ public final class GetGroupsGroup {
             this.webUrl = Objects.requireNonNull(webUrl);
             return this;
         }
+        @CustomType.Setter
+        public Builder wikiAccessLevel(String wikiAccessLevel) {
+            this.wikiAccessLevel = Objects.requireNonNull(wikiAccessLevel);
+            return this;
+        }
         public GetGroupsGroup build() {
             final var o = new GetGroupsGroup();
             o.defaultBranchProtection = defaultBranchProtection;
@@ -198,6 +209,7 @@ public final class GetGroupsGroup {
             o.runnersToken = runnersToken;
             o.visibilityLevel = visibilityLevel;
             o.webUrl = webUrl;
+            o.wikiAccessLevel = wikiAccessLevel;
             return o;
         }
     }

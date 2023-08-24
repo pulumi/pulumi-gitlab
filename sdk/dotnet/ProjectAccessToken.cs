@@ -177,8 +177,8 @@ namespace Pulumi.GitLab
         /// <summary>
         /// Time the token will expire it, YYYY-MM-DD format.
         /// </summary>
-        [Input("expiresAt")]
-        public Input<string>? ExpiresAt { get; set; }
+        [Input("expiresAt", required: true)]
+        public Input<string> ExpiresAt { get; set; } = null!;
 
         /// <summary>
         /// A name to describe the project access token.

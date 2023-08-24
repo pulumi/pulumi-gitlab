@@ -438,6 +438,21 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.webUrl);
     }
 
+    /**
+     * The group&#39;s wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    @Import(name="wikiAccessLevel")
+    private @Nullable Output<String> wikiAccessLevel;
+
+    /**
+     * @return The group&#39;s wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public Optional<Output<String>> wikiAccessLevel() {
+        return Optional.ofNullable(this.wikiAccessLevel);
+    }
+
     private GroupState() {}
 
     private GroupState(GroupState $) {
@@ -469,6 +484,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         this.twoFactorGracePeriod = $.twoFactorGracePeriod;
         this.visibilityLevel = $.visibilityLevel;
         this.webUrl = $.webUrl;
+        this.wikiAccessLevel = $.wikiAccessLevel;
     }
 
     public static Builder builder() {
@@ -1085,6 +1101,27 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder webUrl(String webUrl) {
             return webUrl(Output.of(webUrl));
+        }
+
+        /**
+         * @param wikiAccessLevel The group&#39;s wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wikiAccessLevel(@Nullable Output<String> wikiAccessLevel) {
+            $.wikiAccessLevel = wikiAccessLevel;
+            return this;
+        }
+
+        /**
+         * @param wikiAccessLevel The group&#39;s wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wikiAccessLevel(String wikiAccessLevel) {
+            return wikiAccessLevel(Output.of(wikiAccessLevel));
         }
 
         public GroupState build() {

@@ -496,14 +496,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="emailsDisabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> emailsDisabled;
+    private Output<Boolean> emailsDisabled;
 
     /**
      * @return Disable email notifications.
      * 
      */
-    public Output<Optional<Boolean>> emailsDisabled() {
-        return Codegen.optional(this.emailsDisabled);
+    public Output<Boolean> emailsDisabled() {
+        return this.emailsDisabled;
     }
     /**
      * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.

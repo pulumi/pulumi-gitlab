@@ -19,6 +19,48 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html#pipeline-schedule-variables)
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.PipelineSchedule;
+ * import com.pulumi.gitlab.PipelineScheduleArgs;
+ * import com.pulumi.gitlab.PipelineScheduleVariable;
+ * import com.pulumi.gitlab.PipelineScheduleVariableArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var examplePipelineSchedule = new PipelineSchedule(&#34;examplePipelineSchedule&#34;, PipelineScheduleArgs.builder()        
+ *             .project(&#34;12345&#34;)
+ *             .description(&#34;Used to schedule builds&#34;)
+ *             .ref(&#34;master&#34;)
+ *             .cron(&#34;0 1 * * *&#34;)
+ *             .build());
+ * 
+ *         var examplePipelineScheduleVariable = new PipelineScheduleVariable(&#34;examplePipelineScheduleVariable&#34;, PipelineScheduleVariableArgs.builder()        
+ *             .project(examplePipelineSchedule.project())
+ *             .pipelineScheduleId(examplePipelineSchedule.pipelineScheduleId())
+ *             .key(&#34;EXAMPLE_KEY&#34;)
+ *             .value(&#34;example&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Pipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.

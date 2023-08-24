@@ -59,22 +59,22 @@ namespace Pulumi.GitLab
     public partial class ProjectLevelMrApprovals : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// By default, users are able to edit the approval rules in merge requests. If set to true,
+        /// Set to `true` to disable overriding approvers per merge request.
         /// </summary>
         [Output("disableOverridingApproversPerMergeRequest")]
-        public Output<bool?> DisableOverridingApproversPerMergeRequest { get; private set; } = null!;
+        public Output<bool> DisableOverridingApproversPerMergeRequest { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
+        /// Set to `true` to allow merge requests authors to approve their own merge requests.
         /// </summary>
         [Output("mergeRequestsAuthorApproval")]
-        public Output<bool?> MergeRequestsAuthorApproval { get; private set; } = null!;
+        public Output<bool> MergeRequestsAuthorApproval { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` if you want to prevent approval of merge requests by merge request committers.
+        /// Set to `true` to allow merge requests committers to approve their own merge requests.
         /// </summary>
         [Output("mergeRequestsDisableCommittersApproval")]
-        public Output<bool?> MergeRequestsDisableCommittersApproval { get; private set; } = null!;
+        public Output<bool> MergeRequestsDisableCommittersApproval { get; private set; } = null!;
 
         /// <summary>
         /// The ID or URL-encoded path of a project to change MR approval configuration.
@@ -83,16 +83,22 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` if you want to require authentication when approving a merge request.
+        /// Set to `true` to require authentication to approve merge requests.
         /// </summary>
         [Output("requirePasswordToApprove")]
-        public Output<bool?> RequirePasswordToApprove { get; private set; } = null!;
+        public Output<bool> RequirePasswordToApprove { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+        /// Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
         /// </summary>
         [Output("resetApprovalsOnPush")]
-        public Output<bool?> ResetApprovalsOnPush { get; private set; } = null!;
+        public Output<bool> ResetApprovalsOnPush { get; private set; } = null!;
+
+        /// <summary>
+        /// Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
+        /// </summary>
+        [Output("selectiveCodeOwnerRemovals")]
+        public Output<bool> SelectiveCodeOwnerRemovals { get; private set; } = null!;
 
 
         /// <summary>
@@ -141,19 +147,19 @@ namespace Pulumi.GitLab
     public sealed class ProjectLevelMrApprovalsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// By default, users are able to edit the approval rules in merge requests. If set to true,
+        /// Set to `true` to disable overriding approvers per merge request.
         /// </summary>
         [Input("disableOverridingApproversPerMergeRequest")]
         public Input<bool>? DisableOverridingApproversPerMergeRequest { get; set; }
 
         /// <summary>
-        /// Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
+        /// Set to `true` to allow merge requests authors to approve their own merge requests.
         /// </summary>
         [Input("mergeRequestsAuthorApproval")]
         public Input<bool>? MergeRequestsAuthorApproval { get; set; }
 
         /// <summary>
-        /// Set to `true` if you want to prevent approval of merge requests by merge request committers.
+        /// Set to `true` to allow merge requests committers to approve their own merge requests.
         /// </summary>
         [Input("mergeRequestsDisableCommittersApproval")]
         public Input<bool>? MergeRequestsDisableCommittersApproval { get; set; }
@@ -165,16 +171,22 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Set to `true` if you want to require authentication when approving a merge request.
+        /// Set to `true` to require authentication to approve merge requests.
         /// </summary>
         [Input("requirePasswordToApprove")]
         public Input<bool>? RequirePasswordToApprove { get; set; }
 
         /// <summary>
-        /// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+        /// Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
         /// </summary>
         [Input("resetApprovalsOnPush")]
         public Input<bool>? ResetApprovalsOnPush { get; set; }
+
+        /// <summary>
+        /// Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
+        /// </summary>
+        [Input("selectiveCodeOwnerRemovals")]
+        public Input<bool>? SelectiveCodeOwnerRemovals { get; set; }
 
         public ProjectLevelMrApprovalsArgs()
         {
@@ -185,19 +197,19 @@ namespace Pulumi.GitLab
     public sealed class ProjectLevelMrApprovalsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// By default, users are able to edit the approval rules in merge requests. If set to true,
+        /// Set to `true` to disable overriding approvers per merge request.
         /// </summary>
         [Input("disableOverridingApproversPerMergeRequest")]
         public Input<bool>? DisableOverridingApproversPerMergeRequest { get; set; }
 
         /// <summary>
-        /// Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
+        /// Set to `true` to allow merge requests authors to approve their own merge requests.
         /// </summary>
         [Input("mergeRequestsAuthorApproval")]
         public Input<bool>? MergeRequestsAuthorApproval { get; set; }
 
         /// <summary>
-        /// Set to `true` if you want to prevent approval of merge requests by merge request committers.
+        /// Set to `true` to allow merge requests committers to approve their own merge requests.
         /// </summary>
         [Input("mergeRequestsDisableCommittersApproval")]
         public Input<bool>? MergeRequestsDisableCommittersApproval { get; set; }
@@ -209,16 +221,22 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Set to `true` if you want to require authentication when approving a merge request.
+        /// Set to `true` to require authentication to approve merge requests.
         /// </summary>
         [Input("requirePasswordToApprove")]
         public Input<bool>? RequirePasswordToApprove { get; set; }
 
         /// <summary>
-        /// Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+        /// Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
         /// </summary>
         [Input("resetApprovalsOnPush")]
         public Input<bool>? ResetApprovalsOnPush { get; set; }
+
+        /// <summary>
+        /// Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
+        /// </summary>
+        [Input("selectiveCodeOwnerRemovals")]
+        public Input<bool>? SelectiveCodeOwnerRemovals { get; set; }
 
         public ProjectLevelMrApprovalsState()
         {

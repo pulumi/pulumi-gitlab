@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GroupBadgeArgs extends com.pulumi.resources.ResourceArgs {
@@ -58,12 +60,28 @@ public final class GroupBadgeArgs extends com.pulumi.resources.ResourceArgs {
         return this.linkUrl;
     }
 
+    /**
+     * The name of the badge.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return The name of the badge.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
     private GroupBadgeArgs() {}
 
     private GroupBadgeArgs(GroupBadgeArgs $) {
         this.group = $.group;
         this.imageUrl = $.imageUrl;
         this.linkUrl = $.linkUrl;
+        this.name = $.name;
     }
 
     public static Builder builder() {
@@ -145,6 +163,27 @@ public final class GroupBadgeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder linkUrl(String linkUrl) {
             return linkUrl(Output.of(linkUrl));
+        }
+
+        /**
+         * @param name The name of the badge.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name The name of the badge.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         public GroupBadgeArgs build() {

@@ -14,6 +14,8 @@ __all__ = [
     'BranchProtectionAllowedToMergeArgs',
     'BranchProtectionAllowedToPushArgs',
     'BranchProtectionAllowedToUnprotectArgs',
+    'GroupEpicBoardListArgs',
+    'GroupIssueBoardListArgs',
     'ProjectContainerExpirationPolicyArgs',
     'ProjectIssueBoardListArgs',
     'ProjectIssueTaskCompletionStatusArgs',
@@ -378,6 +380,116 @@ class BranchProtectionAllowedToUnprotectArgs:
     @user_id.setter
     def user_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "user_id", value)
+
+
+@pulumi.input_type
+class GroupEpicBoardListArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[int]] = None,
+                 label_id: Optional[pulumi.Input[int]] = None,
+                 position: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] id: The ID of the list.
+        :param pulumi.Input[int] label_id: The ID of the label the list should be scoped to.
+        :param pulumi.Input[int] position: The position of the list within the board. The position for the list is sed on the its position in the `lists` array.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if label_id is not None:
+            pulumi.set(__self__, "label_id", label_id)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="labelId")
+    def label_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the label the list should be scoped to.
+        """
+        return pulumi.get(self, "label_id")
+
+    @label_id.setter
+    def label_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "label_id", value)
+
+    @property
+    @pulumi.getter
+    def position(self) -> Optional[pulumi.Input[int]]:
+        """
+        The position of the list within the board. The position for the list is sed on the its position in the `lists` array.
+        """
+        return pulumi.get(self, "position")
+
+    @position.setter
+    def position(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "position", value)
+
+
+@pulumi.input_type
+class GroupIssueBoardListArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[int]] = None,
+                 label_id: Optional[pulumi.Input[int]] = None,
+                 position: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] id: The ID of the list.
+        :param pulumi.Input[int] label_id: The ID of the label the list should be scoped to.
+        :param pulumi.Input[int] position: The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if label_id is not None:
+            pulumi.set(__self__, "label_id", label_id)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="labelId")
+    def label_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the label the list should be scoped to.
+        """
+        return pulumi.get(self, "label_id")
+
+    @label_id.setter
+    def label_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "label_id", value)
+
+    @property
+    @pulumi.getter
+    def position(self) -> Optional[pulumi.Input[int]]:
+        """
+        The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+        """
+        return pulumi.get(self, "position")
+
+    @position.setter
+    def position(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "position", value)
 
 
 @pulumi.input_type

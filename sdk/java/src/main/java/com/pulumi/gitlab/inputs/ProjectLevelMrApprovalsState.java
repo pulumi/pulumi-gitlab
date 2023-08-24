@@ -17,14 +17,14 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
     public static final ProjectLevelMrApprovalsState Empty = new ProjectLevelMrApprovalsState();
 
     /**
-     * By default, users are able to edit the approval rules in merge requests. If set to true,
+     * Set to `true` to disable overriding approvers per merge request.
      * 
      */
     @Import(name="disableOverridingApproversPerMergeRequest")
     private @Nullable Output<Boolean> disableOverridingApproversPerMergeRequest;
 
     /**
-     * @return By default, users are able to edit the approval rules in merge requests. If set to true,
+     * @return Set to `true` to disable overriding approvers per merge request.
      * 
      */
     public Optional<Output<Boolean>> disableOverridingApproversPerMergeRequest() {
@@ -32,14 +32,14 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
     }
 
     /**
-     * Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
+     * Set to `true` to allow merge requests authors to approve their own merge requests.
      * 
      */
     @Import(name="mergeRequestsAuthorApproval")
     private @Nullable Output<Boolean> mergeRequestsAuthorApproval;
 
     /**
-     * @return Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
+     * @return Set to `true` to allow merge requests authors to approve their own merge requests.
      * 
      */
     public Optional<Output<Boolean>> mergeRequestsAuthorApproval() {
@@ -47,14 +47,14 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
     }
 
     /**
-     * Set to `true` if you want to prevent approval of merge requests by merge request committers.
+     * Set to `true` to allow merge requests committers to approve their own merge requests.
      * 
      */
     @Import(name="mergeRequestsDisableCommittersApproval")
     private @Nullable Output<Boolean> mergeRequestsDisableCommittersApproval;
 
     /**
-     * @return Set to `true` if you want to prevent approval of merge requests by merge request committers.
+     * @return Set to `true` to allow merge requests committers to approve their own merge requests.
      * 
      */
     public Optional<Output<Boolean>> mergeRequestsDisableCommittersApproval() {
@@ -77,14 +77,14 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
     }
 
     /**
-     * Set to `true` if you want to require authentication when approving a merge request.
+     * Set to `true` to require authentication to approve merge requests.
      * 
      */
     @Import(name="requirePasswordToApprove")
     private @Nullable Output<Boolean> requirePasswordToApprove;
 
     /**
-     * @return Set to `true` if you want to require authentication when approving a merge request.
+     * @return Set to `true` to require authentication to approve merge requests.
      * 
      */
     public Optional<Output<Boolean>> requirePasswordToApprove() {
@@ -92,18 +92,33 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
     }
 
     /**
-     * Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+     * Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      * 
      */
     @Import(name="resetApprovalsOnPush")
     private @Nullable Output<Boolean> resetApprovalsOnPush;
 
     /**
-     * @return Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+     * @return Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      * 
      */
     public Optional<Output<Boolean>> resetApprovalsOnPush() {
         return Optional.ofNullable(this.resetApprovalsOnPush);
+    }
+
+    /**
+     * Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
+     * 
+     */
+    @Import(name="selectiveCodeOwnerRemovals")
+    private @Nullable Output<Boolean> selectiveCodeOwnerRemovals;
+
+    /**
+     * @return Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
+     * 
+     */
+    public Optional<Output<Boolean>> selectiveCodeOwnerRemovals() {
+        return Optional.ofNullable(this.selectiveCodeOwnerRemovals);
     }
 
     private ProjectLevelMrApprovalsState() {}
@@ -115,6 +130,7 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
         this.project = $.project;
         this.requirePasswordToApprove = $.requirePasswordToApprove;
         this.resetApprovalsOnPush = $.resetApprovalsOnPush;
+        this.selectiveCodeOwnerRemovals = $.selectiveCodeOwnerRemovals;
     }
 
     public static Builder builder() {
@@ -136,7 +152,7 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param disableOverridingApproversPerMergeRequest By default, users are able to edit the approval rules in merge requests. If set to true,
+         * @param disableOverridingApproversPerMergeRequest Set to `true` to disable overriding approvers per merge request.
          * 
          * @return builder
          * 
@@ -147,7 +163,7 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param disableOverridingApproversPerMergeRequest By default, users are able to edit the approval rules in merge requests. If set to true,
+         * @param disableOverridingApproversPerMergeRequest Set to `true` to disable overriding approvers per merge request.
          * 
          * @return builder
          * 
@@ -157,7 +173,7 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param mergeRequestsAuthorApproval Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
+         * @param mergeRequestsAuthorApproval Set to `true` to allow merge requests authors to approve their own merge requests.
          * 
          * @return builder
          * 
@@ -168,7 +184,7 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param mergeRequestsAuthorApproval Set to `true` if you want to allow merge request authors to self-approve merge requests. Authors
+         * @param mergeRequestsAuthorApproval Set to `true` to allow merge requests authors to approve their own merge requests.
          * 
          * @return builder
          * 
@@ -178,7 +194,7 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param mergeRequestsDisableCommittersApproval Set to `true` if you want to prevent approval of merge requests by merge request committers.
+         * @param mergeRequestsDisableCommittersApproval Set to `true` to allow merge requests committers to approve their own merge requests.
          * 
          * @return builder
          * 
@@ -189,7 +205,7 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param mergeRequestsDisableCommittersApproval Set to `true` if you want to prevent approval of merge requests by merge request committers.
+         * @param mergeRequestsDisableCommittersApproval Set to `true` to allow merge requests committers to approve their own merge requests.
          * 
          * @return builder
          * 
@@ -220,7 +236,7 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param requirePasswordToApprove Set to `true` if you want to require authentication when approving a merge request.
+         * @param requirePasswordToApprove Set to `true` to require authentication to approve merge requests.
          * 
          * @return builder
          * 
@@ -231,7 +247,7 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param requirePasswordToApprove Set to `true` if you want to require authentication when approving a merge request.
+         * @param requirePasswordToApprove Set to `true` to require authentication to approve merge requests.
          * 
          * @return builder
          * 
@@ -241,7 +257,7 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param resetApprovalsOnPush Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+         * @param resetApprovalsOnPush Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
          * 
          * @return builder
          * 
@@ -252,13 +268,34 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param resetApprovalsOnPush Set to `true` if you want to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+         * @param resetApprovalsOnPush Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
          * 
          * @return builder
          * 
          */
         public Builder resetApprovalsOnPush(Boolean resetApprovalsOnPush) {
             return resetApprovalsOnPush(Output.of(resetApprovalsOnPush));
+        }
+
+        /**
+         * @param selectiveCodeOwnerRemovals Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selectiveCodeOwnerRemovals(@Nullable Output<Boolean> selectiveCodeOwnerRemovals) {
+            $.selectiveCodeOwnerRemovals = selectiveCodeOwnerRemovals;
+            return this;
+        }
+
+        /**
+         * @param selectiveCodeOwnerRemovals Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selectiveCodeOwnerRemovals(Boolean selectiveCodeOwnerRemovals) {
+            return selectiveCodeOwnerRemovals(Output.of(selectiveCodeOwnerRemovals));
         }
 
         public ProjectLevelMrApprovalsState build() {

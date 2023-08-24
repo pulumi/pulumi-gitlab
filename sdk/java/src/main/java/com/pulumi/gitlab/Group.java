@@ -469,6 +469,20 @@ public class Group extends com.pulumi.resources.CustomResource {
     public Output<String> webUrl() {
         return this.webUrl;
     }
+    /**
+     * The group&#39;s wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    @Export(name="wikiAccessLevel", refs={String.class}, tree="[0]")
+    private Output<String> wikiAccessLevel;
+
+    /**
+     * @return The group&#39;s wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public Output<String> wikiAccessLevel() {
+        return this.wikiAccessLevel;
+    }
 
     /**
      *

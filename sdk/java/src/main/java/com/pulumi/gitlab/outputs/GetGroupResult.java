@@ -101,6 +101,11 @@ public final class GetGroupResult {
      * 
      */
     private String webUrl;
+    /**
+     * @return The group&#39;s wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    private String wikiAccessLevel;
 
     private GetGroupResult() {}
     /**
@@ -229,6 +234,13 @@ public final class GetGroupResult {
     public String webUrl() {
         return this.webUrl;
     }
+    /**
+     * @return The group&#39;s wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public String wikiAccessLevel() {
+        return this.wikiAccessLevel;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -257,6 +269,7 @@ public final class GetGroupResult {
         private Integer sharedRunnersMinutesLimit;
         private String visibilityLevel;
         private String webUrl;
+        private String wikiAccessLevel;
         public Builder() {}
         public Builder(GetGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -278,6 +291,7 @@ public final class GetGroupResult {
     	      this.sharedRunnersMinutesLimit = defaults.sharedRunnersMinutesLimit;
     	      this.visibilityLevel = defaults.visibilityLevel;
     	      this.webUrl = defaults.webUrl;
+    	      this.wikiAccessLevel = defaults.wikiAccessLevel;
         }
 
         @CustomType.Setter
@@ -370,6 +384,11 @@ public final class GetGroupResult {
             this.webUrl = Objects.requireNonNull(webUrl);
             return this;
         }
+        @CustomType.Setter
+        public Builder wikiAccessLevel(String wikiAccessLevel) {
+            this.wikiAccessLevel = Objects.requireNonNull(wikiAccessLevel);
+            return this;
+        }
         public GetGroupResult build() {
             final var o = new GetGroupResult();
             o.defaultBranchProtection = defaultBranchProtection;
@@ -390,6 +409,7 @@ public final class GetGroupResult {
             o.sharedRunnersMinutesLimit = sharedRunnersMinutesLimit;
             o.visibilityLevel = visibilityLevel;
             o.webUrl = webUrl;
+            o.wikiAccessLevel = wikiAccessLevel;
             return o;
         }
     }
