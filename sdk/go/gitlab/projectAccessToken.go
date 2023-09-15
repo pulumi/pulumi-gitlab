@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectAccessToken` resource allows to manage the lifecycle of a project access token.
@@ -233,6 +234,12 @@ func (i *ProjectAccessToken) ToProjectAccessTokenOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectAccessTokenOutput)
 }
 
+func (i *ProjectAccessToken) ToOutput(ctx context.Context) pulumix.Output[*ProjectAccessToken] {
+	return pulumix.Output[*ProjectAccessToken]{
+		OutputState: i.ToProjectAccessTokenOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectAccessTokenArrayInput is an input type that accepts ProjectAccessTokenArray and ProjectAccessTokenArrayOutput values.
 // You can construct a concrete instance of `ProjectAccessTokenArrayInput` via:
 //
@@ -256,6 +263,12 @@ func (i ProjectAccessTokenArray) ToProjectAccessTokenArrayOutput() ProjectAccess
 
 func (i ProjectAccessTokenArray) ToProjectAccessTokenArrayOutputWithContext(ctx context.Context) ProjectAccessTokenArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectAccessTokenArrayOutput)
+}
+
+func (i ProjectAccessTokenArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectAccessToken] {
+	return pulumix.Output[[]*ProjectAccessToken]{
+		OutputState: i.ToProjectAccessTokenArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectAccessTokenMapInput is an input type that accepts ProjectAccessTokenMap and ProjectAccessTokenMapOutput values.
@@ -283,6 +296,12 @@ func (i ProjectAccessTokenMap) ToProjectAccessTokenMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectAccessTokenMapOutput)
 }
 
+func (i ProjectAccessTokenMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectAccessToken] {
+	return pulumix.Output[map[string]*ProjectAccessToken]{
+		OutputState: i.ToProjectAccessTokenMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectAccessTokenOutput struct{ *pulumi.OutputState }
 
 func (ProjectAccessTokenOutput) ElementType() reflect.Type {
@@ -295,6 +314,12 @@ func (o ProjectAccessTokenOutput) ToProjectAccessTokenOutput() ProjectAccessToke
 
 func (o ProjectAccessTokenOutput) ToProjectAccessTokenOutputWithContext(ctx context.Context) ProjectAccessTokenOutput {
 	return o
+}
+
+func (o ProjectAccessTokenOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectAccessToken] {
+	return pulumix.Output[*ProjectAccessToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`. Default is `maintainer`.
@@ -361,6 +386,12 @@ func (o ProjectAccessTokenArrayOutput) ToProjectAccessTokenArrayOutputWithContex
 	return o
 }
 
+func (o ProjectAccessTokenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectAccessToken] {
+	return pulumix.Output[[]*ProjectAccessToken]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectAccessTokenArrayOutput) Index(i pulumi.IntInput) ProjectAccessTokenOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectAccessToken {
 		return vs[0].([]*ProjectAccessToken)[vs[1].(int)]
@@ -379,6 +410,12 @@ func (o ProjectAccessTokenMapOutput) ToProjectAccessTokenMapOutput() ProjectAcce
 
 func (o ProjectAccessTokenMapOutput) ToProjectAccessTokenMapOutputWithContext(ctx context.Context) ProjectAccessTokenMapOutput {
 	return o
+}
+
+func (o ProjectAccessTokenMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectAccessToken] {
+	return pulumix.Output[map[string]*ProjectAccessToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectAccessTokenMapOutput) MapIndex(k pulumi.StringInput) ProjectAccessTokenOutput {

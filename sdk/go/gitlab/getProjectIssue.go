@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectIssue` data source allows to retrieve details about an issue in a project.
@@ -188,6 +189,12 @@ func (o LookupProjectIssueResultOutput) ToLookupProjectIssueResultOutput() Looku
 
 func (o LookupProjectIssueResultOutput) ToLookupProjectIssueResultOutputWithContext(ctx context.Context) LookupProjectIssueResultOutput {
 	return o
+}
+
+func (o LookupProjectIssueResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProjectIssueResult] {
+	return pulumix.Output[LookupProjectIssueResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IDs of the users to assign the issue to.

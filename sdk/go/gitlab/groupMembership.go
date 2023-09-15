@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `GroupMembership` resource allows to manage the lifecycle of a users group membership.
@@ -199,6 +200,12 @@ func (i *GroupMembership) ToGroupMembershipOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMembershipOutput)
 }
 
+func (i *GroupMembership) ToOutput(ctx context.Context) pulumix.Output[*GroupMembership] {
+	return pulumix.Output[*GroupMembership]{
+		OutputState: i.ToGroupMembershipOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GroupMembershipArrayInput is an input type that accepts GroupMembershipArray and GroupMembershipArrayOutput values.
 // You can construct a concrete instance of `GroupMembershipArrayInput` via:
 //
@@ -222,6 +229,12 @@ func (i GroupMembershipArray) ToGroupMembershipArrayOutput() GroupMembershipArra
 
 func (i GroupMembershipArray) ToGroupMembershipArrayOutputWithContext(ctx context.Context) GroupMembershipArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMembershipArrayOutput)
+}
+
+func (i GroupMembershipArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupMembership] {
+	return pulumix.Output[[]*GroupMembership]{
+		OutputState: i.ToGroupMembershipArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GroupMembershipMapInput is an input type that accepts GroupMembershipMap and GroupMembershipMapOutput values.
@@ -249,6 +262,12 @@ func (i GroupMembershipMap) ToGroupMembershipMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMembershipMapOutput)
 }
 
+func (i GroupMembershipMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupMembership] {
+	return pulumix.Output[map[string]*GroupMembership]{
+		OutputState: i.ToGroupMembershipMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupMembershipOutput struct{ *pulumi.OutputState }
 
 func (GroupMembershipOutput) ElementType() reflect.Type {
@@ -261,6 +280,12 @@ func (o GroupMembershipOutput) ToGroupMembershipOutput() GroupMembershipOutput {
 
 func (o GroupMembershipOutput) ToGroupMembershipOutputWithContext(ctx context.Context) GroupMembershipOutput {
 	return o
+}
+
+func (o GroupMembershipOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupMembership] {
+	return pulumix.Output[*GroupMembership]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
@@ -307,6 +332,12 @@ func (o GroupMembershipArrayOutput) ToGroupMembershipArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o GroupMembershipArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupMembership] {
+	return pulumix.Output[[]*GroupMembership]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GroupMembershipArrayOutput) Index(i pulumi.IntInput) GroupMembershipOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupMembership {
 		return vs[0].([]*GroupMembership)[vs[1].(int)]
@@ -325,6 +356,12 @@ func (o GroupMembershipMapOutput) ToGroupMembershipMapOutput() GroupMembershipMa
 
 func (o GroupMembershipMapOutput) ToGroupMembershipMapOutputWithContext(ctx context.Context) GroupMembershipMapOutput {
 	return o
+}
+
+func (o GroupMembershipMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupMembership] {
+	return pulumix.Output[map[string]*GroupMembership]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GroupMembershipMapOutput) MapIndex(k pulumi.StringInput) GroupMembershipOutput {

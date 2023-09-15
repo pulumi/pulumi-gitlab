@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `PagesDomain` resource allows connecting custom domains and TLS certificates in GitLab Pages.
@@ -235,6 +236,12 @@ func (i *PagesDomain) ToPagesDomainOutputWithContext(ctx context.Context) PagesD
 	return pulumi.ToOutputWithContext(ctx, i).(PagesDomainOutput)
 }
 
+func (i *PagesDomain) ToOutput(ctx context.Context) pulumix.Output[*PagesDomain] {
+	return pulumix.Output[*PagesDomain]{
+		OutputState: i.ToPagesDomainOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PagesDomainArrayInput is an input type that accepts PagesDomainArray and PagesDomainArrayOutput values.
 // You can construct a concrete instance of `PagesDomainArrayInput` via:
 //
@@ -258,6 +265,12 @@ func (i PagesDomainArray) ToPagesDomainArrayOutput() PagesDomainArrayOutput {
 
 func (i PagesDomainArray) ToPagesDomainArrayOutputWithContext(ctx context.Context) PagesDomainArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PagesDomainArrayOutput)
+}
+
+func (i PagesDomainArray) ToOutput(ctx context.Context) pulumix.Output[[]*PagesDomain] {
+	return pulumix.Output[[]*PagesDomain]{
+		OutputState: i.ToPagesDomainArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PagesDomainMapInput is an input type that accepts PagesDomainMap and PagesDomainMapOutput values.
@@ -285,6 +298,12 @@ func (i PagesDomainMap) ToPagesDomainMapOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(PagesDomainMapOutput)
 }
 
+func (i PagesDomainMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PagesDomain] {
+	return pulumix.Output[map[string]*PagesDomain]{
+		OutputState: i.ToPagesDomainMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PagesDomainOutput struct{ *pulumi.OutputState }
 
 func (PagesDomainOutput) ElementType() reflect.Type {
@@ -297,6 +316,12 @@ func (o PagesDomainOutput) ToPagesDomainOutput() PagesDomainOutput {
 
 func (o PagesDomainOutput) ToPagesDomainOutputWithContext(ctx context.Context) PagesDomainOutput {
 	return o
+}
+
+func (o PagesDomainOutput) ToOutput(ctx context.Context) pulumix.Output[*PagesDomain] {
+	return pulumix.Output[*PagesDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
@@ -358,6 +383,12 @@ func (o PagesDomainArrayOutput) ToPagesDomainArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o PagesDomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PagesDomain] {
+	return pulumix.Output[[]*PagesDomain]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PagesDomainArrayOutput) Index(i pulumi.IntInput) PagesDomainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PagesDomain {
 		return vs[0].([]*PagesDomain)[vs[1].(int)]
@@ -376,6 +407,12 @@ func (o PagesDomainMapOutput) ToPagesDomainMapOutput() PagesDomainMapOutput {
 
 func (o PagesDomainMapOutput) ToPagesDomainMapOutputWithContext(ctx context.Context) PagesDomainMapOutput {
 	return o
+}
+
+func (o PagesDomainMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PagesDomain] {
+	return pulumix.Output[map[string]*PagesDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PagesDomainMapOutput) MapIndex(k pulumi.StringInput) PagesDomainOutput {

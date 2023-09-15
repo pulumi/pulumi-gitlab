@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ReleaseLink` data source allows get details of a release link.
@@ -126,6 +127,12 @@ func (o LookupReleaseLinkResultOutput) ToLookupReleaseLinkResultOutput() LookupR
 
 func (o LookupReleaseLinkResultOutput) ToLookupReleaseLinkResultOutputWithContext(ctx context.Context) LookupReleaseLinkResultOutput {
 	return o
+}
+
+func (o LookupReleaseLinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReleaseLinkResult] {
+	return pulumix.Output[LookupReleaseLinkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).

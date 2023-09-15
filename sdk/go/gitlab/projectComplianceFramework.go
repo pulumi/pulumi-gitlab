@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectComplianceFramework` resource allows to manage the lifecycle of a compliance framework on a project.
@@ -164,6 +165,12 @@ func (i *ProjectComplianceFramework) ToProjectComplianceFrameworkOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectComplianceFrameworkOutput)
 }
 
+func (i *ProjectComplianceFramework) ToOutput(ctx context.Context) pulumix.Output[*ProjectComplianceFramework] {
+	return pulumix.Output[*ProjectComplianceFramework]{
+		OutputState: i.ToProjectComplianceFrameworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectComplianceFrameworkArrayInput is an input type that accepts ProjectComplianceFrameworkArray and ProjectComplianceFrameworkArrayOutput values.
 // You can construct a concrete instance of `ProjectComplianceFrameworkArrayInput` via:
 //
@@ -187,6 +194,12 @@ func (i ProjectComplianceFrameworkArray) ToProjectComplianceFrameworkArrayOutput
 
 func (i ProjectComplianceFrameworkArray) ToProjectComplianceFrameworkArrayOutputWithContext(ctx context.Context) ProjectComplianceFrameworkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectComplianceFrameworkArrayOutput)
+}
+
+func (i ProjectComplianceFrameworkArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectComplianceFramework] {
+	return pulumix.Output[[]*ProjectComplianceFramework]{
+		OutputState: i.ToProjectComplianceFrameworkArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectComplianceFrameworkMapInput is an input type that accepts ProjectComplianceFrameworkMap and ProjectComplianceFrameworkMapOutput values.
@@ -214,6 +227,12 @@ func (i ProjectComplianceFrameworkMap) ToProjectComplianceFrameworkMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectComplianceFrameworkMapOutput)
 }
 
+func (i ProjectComplianceFrameworkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectComplianceFramework] {
+	return pulumix.Output[map[string]*ProjectComplianceFramework]{
+		OutputState: i.ToProjectComplianceFrameworkMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectComplianceFrameworkOutput struct{ *pulumi.OutputState }
 
 func (ProjectComplianceFrameworkOutput) ElementType() reflect.Type {
@@ -226,6 +245,12 @@ func (o ProjectComplianceFrameworkOutput) ToProjectComplianceFrameworkOutput() P
 
 func (o ProjectComplianceFrameworkOutput) ToProjectComplianceFrameworkOutputWithContext(ctx context.Context) ProjectComplianceFrameworkOutput {
 	return o
+}
+
+func (o ProjectComplianceFrameworkOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectComplianceFramework] {
+	return pulumix.Output[*ProjectComplianceFramework]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Globally unique ID of the compliance framework to assign to the project.
@@ -252,6 +277,12 @@ func (o ProjectComplianceFrameworkArrayOutput) ToProjectComplianceFrameworkArray
 	return o
 }
 
+func (o ProjectComplianceFrameworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectComplianceFramework] {
+	return pulumix.Output[[]*ProjectComplianceFramework]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectComplianceFrameworkArrayOutput) Index(i pulumi.IntInput) ProjectComplianceFrameworkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectComplianceFramework {
 		return vs[0].([]*ProjectComplianceFramework)[vs[1].(int)]
@@ -270,6 +301,12 @@ func (o ProjectComplianceFrameworkMapOutput) ToProjectComplianceFrameworkMapOutp
 
 func (o ProjectComplianceFrameworkMapOutput) ToProjectComplianceFrameworkMapOutputWithContext(ctx context.Context) ProjectComplianceFrameworkMapOutput {
 	return o
+}
+
+func (o ProjectComplianceFrameworkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectComplianceFramework] {
+	return pulumix.Output[map[string]*ProjectComplianceFramework]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectComplianceFrameworkMapOutput) MapIndex(k pulumi.StringInput) ProjectComplianceFrameworkOutput {

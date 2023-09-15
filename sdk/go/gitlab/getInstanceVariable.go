@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
@@ -110,6 +111,12 @@ func (o LookupInstanceVariableResultOutput) ToLookupInstanceVariableResultOutput
 
 func (o LookupInstanceVariableResultOutput) ToLookupInstanceVariableResultOutputWithContext(ctx context.Context) LookupInstanceVariableResultOutput {
 	return o
+}
+
+func (o LookupInstanceVariableResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInstanceVariableResult] {
+	return pulumix.Output[LookupInstanceVariableResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

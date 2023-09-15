@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectRunnerEnablement` resource allows to enable a runner in a project.
@@ -152,6 +153,12 @@ func (i *ProjectRunnerEnablement) ToProjectRunnerEnablementOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectRunnerEnablementOutput)
 }
 
+func (i *ProjectRunnerEnablement) ToOutput(ctx context.Context) pulumix.Output[*ProjectRunnerEnablement] {
+	return pulumix.Output[*ProjectRunnerEnablement]{
+		OutputState: i.ToProjectRunnerEnablementOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectRunnerEnablementArrayInput is an input type that accepts ProjectRunnerEnablementArray and ProjectRunnerEnablementArrayOutput values.
 // You can construct a concrete instance of `ProjectRunnerEnablementArrayInput` via:
 //
@@ -175,6 +182,12 @@ func (i ProjectRunnerEnablementArray) ToProjectRunnerEnablementArrayOutput() Pro
 
 func (i ProjectRunnerEnablementArray) ToProjectRunnerEnablementArrayOutputWithContext(ctx context.Context) ProjectRunnerEnablementArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectRunnerEnablementArrayOutput)
+}
+
+func (i ProjectRunnerEnablementArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectRunnerEnablement] {
+	return pulumix.Output[[]*ProjectRunnerEnablement]{
+		OutputState: i.ToProjectRunnerEnablementArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectRunnerEnablementMapInput is an input type that accepts ProjectRunnerEnablementMap and ProjectRunnerEnablementMapOutput values.
@@ -202,6 +215,12 @@ func (i ProjectRunnerEnablementMap) ToProjectRunnerEnablementMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectRunnerEnablementMapOutput)
 }
 
+func (i ProjectRunnerEnablementMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectRunnerEnablement] {
+	return pulumix.Output[map[string]*ProjectRunnerEnablement]{
+		OutputState: i.ToProjectRunnerEnablementMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectRunnerEnablementOutput struct{ *pulumi.OutputState }
 
 func (ProjectRunnerEnablementOutput) ElementType() reflect.Type {
@@ -214,6 +233,12 @@ func (o ProjectRunnerEnablementOutput) ToProjectRunnerEnablementOutput() Project
 
 func (o ProjectRunnerEnablementOutput) ToProjectRunnerEnablementOutputWithContext(ctx context.Context) ProjectRunnerEnablementOutput {
 	return o
+}
+
+func (o ProjectRunnerEnablementOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectRunnerEnablement] {
+	return pulumix.Output[*ProjectRunnerEnablement]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID or URL-encoded path of the project owned by the authenticated user.
@@ -240,6 +265,12 @@ func (o ProjectRunnerEnablementArrayOutput) ToProjectRunnerEnablementArrayOutput
 	return o
 }
 
+func (o ProjectRunnerEnablementArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectRunnerEnablement] {
+	return pulumix.Output[[]*ProjectRunnerEnablement]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectRunnerEnablementArrayOutput) Index(i pulumi.IntInput) ProjectRunnerEnablementOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectRunnerEnablement {
 		return vs[0].([]*ProjectRunnerEnablement)[vs[1].(int)]
@@ -258,6 +289,12 @@ func (o ProjectRunnerEnablementMapOutput) ToProjectRunnerEnablementMapOutput() P
 
 func (o ProjectRunnerEnablementMapOutput) ToProjectRunnerEnablementMapOutputWithContext(ctx context.Context) ProjectRunnerEnablementMapOutput {
 	return o
+}
+
+func (o ProjectRunnerEnablementMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectRunnerEnablement] {
+	return pulumix.Output[map[string]*ProjectRunnerEnablement]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectRunnerEnablementMapOutput) MapIndex(k pulumi.StringInput) ProjectRunnerEnablementOutput {

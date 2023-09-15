@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getGroupHooks` data source allows to retrieve details about hooks in a group.
@@ -76,6 +77,12 @@ func (o GetGroupHooksResultOutput) ToGetGroupHooksResultOutput() GetGroupHooksRe
 
 func (o GetGroupHooksResultOutput) ToGetGroupHooksResultOutputWithContext(ctx context.Context) GetGroupHooksResultOutput {
 	return o
+}
+
+func (o GetGroupHooksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupHooksResult] {
+	return pulumix.Output[GetGroupHooksResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID or full path of the group.

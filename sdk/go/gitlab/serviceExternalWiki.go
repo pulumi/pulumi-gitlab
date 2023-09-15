@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ServiceExternalWiki` resource allows to manage the lifecycle of a project integration with External Wiki Service.
@@ -191,6 +192,12 @@ func (i *ServiceExternalWiki) ToServiceExternalWikiOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceExternalWikiOutput)
 }
 
+func (i *ServiceExternalWiki) ToOutput(ctx context.Context) pulumix.Output[*ServiceExternalWiki] {
+	return pulumix.Output[*ServiceExternalWiki]{
+		OutputState: i.ToServiceExternalWikiOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceExternalWikiArrayInput is an input type that accepts ServiceExternalWikiArray and ServiceExternalWikiArrayOutput values.
 // You can construct a concrete instance of `ServiceExternalWikiArrayInput` via:
 //
@@ -214,6 +221,12 @@ func (i ServiceExternalWikiArray) ToServiceExternalWikiArrayOutput() ServiceExte
 
 func (i ServiceExternalWikiArray) ToServiceExternalWikiArrayOutputWithContext(ctx context.Context) ServiceExternalWikiArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceExternalWikiArrayOutput)
+}
+
+func (i ServiceExternalWikiArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceExternalWiki] {
+	return pulumix.Output[[]*ServiceExternalWiki]{
+		OutputState: i.ToServiceExternalWikiArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ServiceExternalWikiMapInput is an input type that accepts ServiceExternalWikiMap and ServiceExternalWikiMapOutput values.
@@ -241,6 +254,12 @@ func (i ServiceExternalWikiMap) ToServiceExternalWikiMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceExternalWikiMapOutput)
 }
 
+func (i ServiceExternalWikiMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceExternalWiki] {
+	return pulumix.Output[map[string]*ServiceExternalWiki]{
+		OutputState: i.ToServiceExternalWikiMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceExternalWikiOutput struct{ *pulumi.OutputState }
 
 func (ServiceExternalWikiOutput) ElementType() reflect.Type {
@@ -253,6 +272,12 @@ func (o ServiceExternalWikiOutput) ToServiceExternalWikiOutput() ServiceExternal
 
 func (o ServiceExternalWikiOutput) ToServiceExternalWikiOutputWithContext(ctx context.Context) ServiceExternalWikiOutput {
 	return o
+}
+
+func (o ServiceExternalWikiOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceExternalWiki] {
+	return pulumix.Output[*ServiceExternalWiki]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether the integration is active.
@@ -304,6 +329,12 @@ func (o ServiceExternalWikiArrayOutput) ToServiceExternalWikiArrayOutputWithCont
 	return o
 }
 
+func (o ServiceExternalWikiArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceExternalWiki] {
+	return pulumix.Output[[]*ServiceExternalWiki]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceExternalWikiArrayOutput) Index(i pulumi.IntInput) ServiceExternalWikiOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceExternalWiki {
 		return vs[0].([]*ServiceExternalWiki)[vs[1].(int)]
@@ -322,6 +353,12 @@ func (o ServiceExternalWikiMapOutput) ToServiceExternalWikiMapOutput() ServiceEx
 
 func (o ServiceExternalWikiMapOutput) ToServiceExternalWikiMapOutputWithContext(ctx context.Context) ServiceExternalWikiMapOutput {
 	return o
+}
+
+func (o ServiceExternalWikiMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceExternalWiki] {
+	return pulumix.Output[map[string]*ServiceExternalWiki]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceExternalWikiMapOutput) MapIndex(k pulumi.StringInput) ServiceExternalWikiOutput {

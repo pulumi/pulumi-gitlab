@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectJobTokenScope` resource allows to manage the CI/CD Job Token scope in a project.
@@ -125,6 +126,12 @@ func (i *ProjectJobTokenScope) ToProjectJobTokenScopeOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectJobTokenScopeOutput)
 }
 
+func (i *ProjectJobTokenScope) ToOutput(ctx context.Context) pulumix.Output[*ProjectJobTokenScope] {
+	return pulumix.Output[*ProjectJobTokenScope]{
+		OutputState: i.ToProjectJobTokenScopeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectJobTokenScopeArrayInput is an input type that accepts ProjectJobTokenScopeArray and ProjectJobTokenScopeArrayOutput values.
 // You can construct a concrete instance of `ProjectJobTokenScopeArrayInput` via:
 //
@@ -148,6 +155,12 @@ func (i ProjectJobTokenScopeArray) ToProjectJobTokenScopeArrayOutput() ProjectJo
 
 func (i ProjectJobTokenScopeArray) ToProjectJobTokenScopeArrayOutputWithContext(ctx context.Context) ProjectJobTokenScopeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectJobTokenScopeArrayOutput)
+}
+
+func (i ProjectJobTokenScopeArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectJobTokenScope] {
+	return pulumix.Output[[]*ProjectJobTokenScope]{
+		OutputState: i.ToProjectJobTokenScopeArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectJobTokenScopeMapInput is an input type that accepts ProjectJobTokenScopeMap and ProjectJobTokenScopeMapOutput values.
@@ -175,6 +188,12 @@ func (i ProjectJobTokenScopeMap) ToProjectJobTokenScopeMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectJobTokenScopeMapOutput)
 }
 
+func (i ProjectJobTokenScopeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectJobTokenScope] {
+	return pulumix.Output[map[string]*ProjectJobTokenScope]{
+		OutputState: i.ToProjectJobTokenScopeMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectJobTokenScopeOutput struct{ *pulumi.OutputState }
 
 func (ProjectJobTokenScopeOutput) ElementType() reflect.Type {
@@ -187,6 +206,12 @@ func (o ProjectJobTokenScopeOutput) ToProjectJobTokenScopeOutput() ProjectJobTok
 
 func (o ProjectJobTokenScopeOutput) ToProjectJobTokenScopeOutputWithContext(ctx context.Context) ProjectJobTokenScopeOutput {
 	return o
+}
+
+func (o ProjectJobTokenScopeOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectJobTokenScope] {
+	return pulumix.Output[*ProjectJobTokenScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID or full path of the project.
@@ -213,6 +238,12 @@ func (o ProjectJobTokenScopeArrayOutput) ToProjectJobTokenScopeArrayOutputWithCo
 	return o
 }
 
+func (o ProjectJobTokenScopeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectJobTokenScope] {
+	return pulumix.Output[[]*ProjectJobTokenScope]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectJobTokenScopeArrayOutput) Index(i pulumi.IntInput) ProjectJobTokenScopeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectJobTokenScope {
 		return vs[0].([]*ProjectJobTokenScope)[vs[1].(int)]
@@ -231,6 +262,12 @@ func (o ProjectJobTokenScopeMapOutput) ToProjectJobTokenScopeMapOutput() Project
 
 func (o ProjectJobTokenScopeMapOutput) ToProjectJobTokenScopeMapOutputWithContext(ctx context.Context) ProjectJobTokenScopeMapOutput {
 	return o
+}
+
+func (o ProjectJobTokenScopeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectJobTokenScope] {
+	return pulumix.Output[map[string]*ProjectJobTokenScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectJobTokenScopeMapOutput) MapIndex(k pulumi.StringInput) ProjectJobTokenScopeOutput {

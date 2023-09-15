@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `GroupShareGroup` resource allows to manage the lifecycle of group shared with another group.
@@ -177,6 +178,12 @@ func (i *GroupShareGroup) ToGroupShareGroupOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GroupShareGroupOutput)
 }
 
+func (i *GroupShareGroup) ToOutput(ctx context.Context) pulumix.Output[*GroupShareGroup] {
+	return pulumix.Output[*GroupShareGroup]{
+		OutputState: i.ToGroupShareGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GroupShareGroupArrayInput is an input type that accepts GroupShareGroupArray and GroupShareGroupArrayOutput values.
 // You can construct a concrete instance of `GroupShareGroupArrayInput` via:
 //
@@ -200,6 +207,12 @@ func (i GroupShareGroupArray) ToGroupShareGroupArrayOutput() GroupShareGroupArra
 
 func (i GroupShareGroupArray) ToGroupShareGroupArrayOutputWithContext(ctx context.Context) GroupShareGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupShareGroupArrayOutput)
+}
+
+func (i GroupShareGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupShareGroup] {
+	return pulumix.Output[[]*GroupShareGroup]{
+		OutputState: i.ToGroupShareGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GroupShareGroupMapInput is an input type that accepts GroupShareGroupMap and GroupShareGroupMapOutput values.
@@ -227,6 +240,12 @@ func (i GroupShareGroupMap) ToGroupShareGroupMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GroupShareGroupMapOutput)
 }
 
+func (i GroupShareGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupShareGroup] {
+	return pulumix.Output[map[string]*GroupShareGroup]{
+		OutputState: i.ToGroupShareGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupShareGroupOutput struct{ *pulumi.OutputState }
 
 func (GroupShareGroupOutput) ElementType() reflect.Type {
@@ -239,6 +258,12 @@ func (o GroupShareGroupOutput) ToGroupShareGroupOutput() GroupShareGroupOutput {
 
 func (o GroupShareGroupOutput) ToGroupShareGroupOutputWithContext(ctx context.Context) GroupShareGroupOutput {
 	return o
+}
+
+func (o GroupShareGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupShareGroup] {
+	return pulumix.Output[*GroupShareGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Share expiration date. Format: `YYYY-MM-DD`
@@ -275,6 +300,12 @@ func (o GroupShareGroupArrayOutput) ToGroupShareGroupArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o GroupShareGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupShareGroup] {
+	return pulumix.Output[[]*GroupShareGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GroupShareGroupArrayOutput) Index(i pulumi.IntInput) GroupShareGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupShareGroup {
 		return vs[0].([]*GroupShareGroup)[vs[1].(int)]
@@ -293,6 +324,12 @@ func (o GroupShareGroupMapOutput) ToGroupShareGroupMapOutput() GroupShareGroupMa
 
 func (o GroupShareGroupMapOutput) ToGroupShareGroupMapOutputWithContext(ctx context.Context) GroupShareGroupMapOutput {
 	return o
+}
+
+func (o GroupShareGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupShareGroup] {
+	return pulumix.Output[map[string]*GroupShareGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GroupShareGroupMapOutput) MapIndex(k pulumi.StringInput) GroupShareGroupOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getProjectTags` data source allows details of project tags to be retrieved by some search criteria.
@@ -120,6 +121,12 @@ func (o GetProjectTagsResultOutput) ToGetProjectTagsResultOutput() GetProjectTag
 
 func (o GetProjectTagsResultOutput) ToGetProjectTagsResultOutputWithContext(ctx context.Context) GetProjectTagsResultOutput {
 	return o
+}
+
+func (o GetProjectTagsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectTagsResult] {
+	return pulumix.Output[GetProjectTagsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

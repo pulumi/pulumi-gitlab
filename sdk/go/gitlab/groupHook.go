@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `GroupHook` resource allows to manage the lifecycle of a group hook.
@@ -357,6 +358,12 @@ func (i *GroupHook) ToGroupHookOutputWithContext(ctx context.Context) GroupHookO
 	return pulumi.ToOutputWithContext(ctx, i).(GroupHookOutput)
 }
 
+func (i *GroupHook) ToOutput(ctx context.Context) pulumix.Output[*GroupHook] {
+	return pulumix.Output[*GroupHook]{
+		OutputState: i.ToGroupHookOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GroupHookArrayInput is an input type that accepts GroupHookArray and GroupHookArrayOutput values.
 // You can construct a concrete instance of `GroupHookArrayInput` via:
 //
@@ -380,6 +387,12 @@ func (i GroupHookArray) ToGroupHookArrayOutput() GroupHookArrayOutput {
 
 func (i GroupHookArray) ToGroupHookArrayOutputWithContext(ctx context.Context) GroupHookArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupHookArrayOutput)
+}
+
+func (i GroupHookArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupHook] {
+	return pulumix.Output[[]*GroupHook]{
+		OutputState: i.ToGroupHookArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GroupHookMapInput is an input type that accepts GroupHookMap and GroupHookMapOutput values.
@@ -407,6 +420,12 @@ func (i GroupHookMap) ToGroupHookMapOutputWithContext(ctx context.Context) Group
 	return pulumi.ToOutputWithContext(ctx, i).(GroupHookMapOutput)
 }
 
+func (i GroupHookMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupHook] {
+	return pulumix.Output[map[string]*GroupHook]{
+		OutputState: i.ToGroupHookMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupHookOutput struct{ *pulumi.OutputState }
 
 func (GroupHookOutput) ElementType() reflect.Type {
@@ -419,6 +438,12 @@ func (o GroupHookOutput) ToGroupHookOutput() GroupHookOutput {
 
 func (o GroupHookOutput) ToGroupHookOutputWithContext(ctx context.Context) GroupHookOutput {
 	return o
+}
+
+func (o GroupHookOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupHook] {
+	return pulumix.Output[*GroupHook]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Invoke the hook for confidential issues events.
@@ -535,6 +560,12 @@ func (o GroupHookArrayOutput) ToGroupHookArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o GroupHookArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupHook] {
+	return pulumix.Output[[]*GroupHook]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GroupHookArrayOutput) Index(i pulumi.IntInput) GroupHookOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupHook {
 		return vs[0].([]*GroupHook)[vs[1].(int)]
@@ -553,6 +584,12 @@ func (o GroupHookMapOutput) ToGroupHookMapOutput() GroupHookMapOutput {
 
 func (o GroupHookMapOutput) ToGroupHookMapOutputWithContext(ctx context.Context) GroupHookMapOutput {
 	return o
+}
+
+func (o GroupHookMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupHook] {
+	return pulumix.Output[map[string]*GroupHook]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GroupHookMapOutput) MapIndex(k pulumi.StringInput) GroupHookOutput {

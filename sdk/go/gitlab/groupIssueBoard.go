@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `GroupIssueBoard` resource allows to manage the lifecycle of a issue board in a group.
@@ -134,6 +135,12 @@ func (i *GroupIssueBoard) ToGroupIssueBoardOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GroupIssueBoardOutput)
 }
 
+func (i *GroupIssueBoard) ToOutput(ctx context.Context) pulumix.Output[*GroupIssueBoard] {
+	return pulumix.Output[*GroupIssueBoard]{
+		OutputState: i.ToGroupIssueBoardOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GroupIssueBoardArrayInput is an input type that accepts GroupIssueBoardArray and GroupIssueBoardArrayOutput values.
 // You can construct a concrete instance of `GroupIssueBoardArrayInput` via:
 //
@@ -157,6 +164,12 @@ func (i GroupIssueBoardArray) ToGroupIssueBoardArrayOutput() GroupIssueBoardArra
 
 func (i GroupIssueBoardArray) ToGroupIssueBoardArrayOutputWithContext(ctx context.Context) GroupIssueBoardArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupIssueBoardArrayOutput)
+}
+
+func (i GroupIssueBoardArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupIssueBoard] {
+	return pulumix.Output[[]*GroupIssueBoard]{
+		OutputState: i.ToGroupIssueBoardArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GroupIssueBoardMapInput is an input type that accepts GroupIssueBoardMap and GroupIssueBoardMapOutput values.
@@ -184,6 +197,12 @@ func (i GroupIssueBoardMap) ToGroupIssueBoardMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GroupIssueBoardMapOutput)
 }
 
+func (i GroupIssueBoardMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupIssueBoard] {
+	return pulumix.Output[map[string]*GroupIssueBoard]{
+		OutputState: i.ToGroupIssueBoardMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupIssueBoardOutput struct{ *pulumi.OutputState }
 
 func (GroupIssueBoardOutput) ElementType() reflect.Type {
@@ -196,6 +215,12 @@ func (o GroupIssueBoardOutput) ToGroupIssueBoardOutput() GroupIssueBoardOutput {
 
 func (o GroupIssueBoardOutput) ToGroupIssueBoardOutputWithContext(ctx context.Context) GroupIssueBoardOutput {
 	return o
+}
+
+func (o GroupIssueBoardOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupIssueBoard] {
+	return pulumix.Output[*GroupIssueBoard]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID or URL-encoded path of the group owned by the authenticated user.
@@ -232,6 +257,12 @@ func (o GroupIssueBoardArrayOutput) ToGroupIssueBoardArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o GroupIssueBoardArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupIssueBoard] {
+	return pulumix.Output[[]*GroupIssueBoard]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GroupIssueBoardArrayOutput) Index(i pulumi.IntInput) GroupIssueBoardOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupIssueBoard {
 		return vs[0].([]*GroupIssueBoard)[vs[1].(int)]
@@ -250,6 +281,12 @@ func (o GroupIssueBoardMapOutput) ToGroupIssueBoardMapOutput() GroupIssueBoardMa
 
 func (o GroupIssueBoardMapOutput) ToGroupIssueBoardMapOutputWithContext(ctx context.Context) GroupIssueBoardMapOutput {
 	return o
+}
+
+func (o GroupIssueBoardMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupIssueBoard] {
+	return pulumix.Output[map[string]*GroupIssueBoard]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GroupIssueBoardMapOutput) MapIndex(k pulumi.StringInput) GroupIssueBoardOutput {

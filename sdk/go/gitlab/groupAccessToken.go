@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `gitlabGroupAccess`token resource allows to manage the lifecycle of a group access token.
@@ -235,6 +236,12 @@ func (i *GroupAccessToken) ToGroupAccessTokenOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(GroupAccessTokenOutput)
 }
 
+func (i *GroupAccessToken) ToOutput(ctx context.Context) pulumix.Output[*GroupAccessToken] {
+	return pulumix.Output[*GroupAccessToken]{
+		OutputState: i.ToGroupAccessTokenOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GroupAccessTokenArrayInput is an input type that accepts GroupAccessTokenArray and GroupAccessTokenArrayOutput values.
 // You can construct a concrete instance of `GroupAccessTokenArrayInput` via:
 //
@@ -258,6 +265,12 @@ func (i GroupAccessTokenArray) ToGroupAccessTokenArrayOutput() GroupAccessTokenA
 
 func (i GroupAccessTokenArray) ToGroupAccessTokenArrayOutputWithContext(ctx context.Context) GroupAccessTokenArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupAccessTokenArrayOutput)
+}
+
+func (i GroupAccessTokenArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupAccessToken] {
+	return pulumix.Output[[]*GroupAccessToken]{
+		OutputState: i.ToGroupAccessTokenArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GroupAccessTokenMapInput is an input type that accepts GroupAccessTokenMap and GroupAccessTokenMapOutput values.
@@ -285,6 +298,12 @@ func (i GroupAccessTokenMap) ToGroupAccessTokenMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GroupAccessTokenMapOutput)
 }
 
+func (i GroupAccessTokenMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupAccessToken] {
+	return pulumix.Output[map[string]*GroupAccessToken]{
+		OutputState: i.ToGroupAccessTokenMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupAccessTokenOutput struct{ *pulumi.OutputState }
 
 func (GroupAccessTokenOutput) ElementType() reflect.Type {
@@ -297,6 +316,12 @@ func (o GroupAccessTokenOutput) ToGroupAccessTokenOutput() GroupAccessTokenOutpu
 
 func (o GroupAccessTokenOutput) ToGroupAccessTokenOutputWithContext(ctx context.Context) GroupAccessTokenOutput {
 	return o
+}
+
+func (o GroupAccessTokenOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupAccessToken] {
+	return pulumix.Output[*GroupAccessToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access level for the group access token. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
@@ -363,6 +388,12 @@ func (o GroupAccessTokenArrayOutput) ToGroupAccessTokenArrayOutputWithContext(ct
 	return o
 }
 
+func (o GroupAccessTokenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupAccessToken] {
+	return pulumix.Output[[]*GroupAccessToken]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GroupAccessTokenArrayOutput) Index(i pulumi.IntInput) GroupAccessTokenOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupAccessToken {
 		return vs[0].([]*GroupAccessToken)[vs[1].(int)]
@@ -381,6 +412,12 @@ func (o GroupAccessTokenMapOutput) ToGroupAccessTokenMapOutput() GroupAccessToke
 
 func (o GroupAccessTokenMapOutput) ToGroupAccessTokenMapOutputWithContext(ctx context.Context) GroupAccessTokenMapOutput {
 	return o
+}
+
+func (o GroupAccessTokenMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupAccessToken] {
+	return pulumix.Output[map[string]*GroupAccessToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GroupAccessTokenMapOutput) MapIndex(k pulumi.StringInput) GroupAccessTokenOutput {

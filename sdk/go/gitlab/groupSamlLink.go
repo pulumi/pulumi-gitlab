@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `GroupSamlLink` resource allows to manage the lifecycle of an SAML integration with a group.
@@ -166,6 +167,12 @@ func (i *GroupSamlLink) ToGroupSamlLinkOutputWithContext(ctx context.Context) Gr
 	return pulumi.ToOutputWithContext(ctx, i).(GroupSamlLinkOutput)
 }
 
+func (i *GroupSamlLink) ToOutput(ctx context.Context) pulumix.Output[*GroupSamlLink] {
+	return pulumix.Output[*GroupSamlLink]{
+		OutputState: i.ToGroupSamlLinkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GroupSamlLinkArrayInput is an input type that accepts GroupSamlLinkArray and GroupSamlLinkArrayOutput values.
 // You can construct a concrete instance of `GroupSamlLinkArrayInput` via:
 //
@@ -189,6 +196,12 @@ func (i GroupSamlLinkArray) ToGroupSamlLinkArrayOutput() GroupSamlLinkArrayOutpu
 
 func (i GroupSamlLinkArray) ToGroupSamlLinkArrayOutputWithContext(ctx context.Context) GroupSamlLinkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupSamlLinkArrayOutput)
+}
+
+func (i GroupSamlLinkArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupSamlLink] {
+	return pulumix.Output[[]*GroupSamlLink]{
+		OutputState: i.ToGroupSamlLinkArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GroupSamlLinkMapInput is an input type that accepts GroupSamlLinkMap and GroupSamlLinkMapOutput values.
@@ -216,6 +229,12 @@ func (i GroupSamlLinkMap) ToGroupSamlLinkMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GroupSamlLinkMapOutput)
 }
 
+func (i GroupSamlLinkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupSamlLink] {
+	return pulumix.Output[map[string]*GroupSamlLink]{
+		OutputState: i.ToGroupSamlLinkMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupSamlLinkOutput struct{ *pulumi.OutputState }
 
 func (GroupSamlLinkOutput) ElementType() reflect.Type {
@@ -228,6 +247,12 @@ func (o GroupSamlLinkOutput) ToGroupSamlLinkOutput() GroupSamlLinkOutput {
 
 func (o GroupSamlLinkOutput) ToGroupSamlLinkOutputWithContext(ctx context.Context) GroupSamlLinkOutput {
 	return o
+}
+
+func (o GroupSamlLinkOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupSamlLink] {
+	return pulumix.Output[*GroupSamlLink]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access level for members of the SAML group. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
@@ -259,6 +284,12 @@ func (o GroupSamlLinkArrayOutput) ToGroupSamlLinkArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o GroupSamlLinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupSamlLink] {
+	return pulumix.Output[[]*GroupSamlLink]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GroupSamlLinkArrayOutput) Index(i pulumi.IntInput) GroupSamlLinkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupSamlLink {
 		return vs[0].([]*GroupSamlLink)[vs[1].(int)]
@@ -277,6 +308,12 @@ func (o GroupSamlLinkMapOutput) ToGroupSamlLinkMapOutput() GroupSamlLinkMapOutpu
 
 func (o GroupSamlLinkMapOutput) ToGroupSamlLinkMapOutputWithContext(ctx context.Context) GroupSamlLinkMapOutput {
 	return o
+}
+
+func (o GroupSamlLinkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupSamlLink] {
+	return pulumix.Output[map[string]*GroupSamlLink]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GroupSamlLinkMapOutput) MapIndex(k pulumi.StringInput) GroupSamlLinkOutput {

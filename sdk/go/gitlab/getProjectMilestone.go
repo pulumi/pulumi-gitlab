@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectMilestone` data source allows get details of a project milestone.
@@ -129,6 +130,12 @@ func (o LookupProjectMilestoneResultOutput) ToLookupProjectMilestoneResultOutput
 
 func (o LookupProjectMilestoneResultOutput) ToLookupProjectMilestoneResultOutputWithContext(ctx context.Context) LookupProjectMilestoneResultOutput {
 	return o
+}
+
+func (o LookupProjectMilestoneResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProjectMilestoneResult] {
+	return pulumix.Output[LookupProjectMilestoneResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.

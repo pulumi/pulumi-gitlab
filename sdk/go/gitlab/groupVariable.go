@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `GroupVariable` resource allows to manage the lifecycle of a CI/CD variable for a group.
@@ -219,6 +220,12 @@ func (i *GroupVariable) ToGroupVariableOutputWithContext(ctx context.Context) Gr
 	return pulumi.ToOutputWithContext(ctx, i).(GroupVariableOutput)
 }
 
+func (i *GroupVariable) ToOutput(ctx context.Context) pulumix.Output[*GroupVariable] {
+	return pulumix.Output[*GroupVariable]{
+		OutputState: i.ToGroupVariableOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GroupVariableArrayInput is an input type that accepts GroupVariableArray and GroupVariableArrayOutput values.
 // You can construct a concrete instance of `GroupVariableArrayInput` via:
 //
@@ -242,6 +249,12 @@ func (i GroupVariableArray) ToGroupVariableArrayOutput() GroupVariableArrayOutpu
 
 func (i GroupVariableArray) ToGroupVariableArrayOutputWithContext(ctx context.Context) GroupVariableArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupVariableArrayOutput)
+}
+
+func (i GroupVariableArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupVariable] {
+	return pulumix.Output[[]*GroupVariable]{
+		OutputState: i.ToGroupVariableArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GroupVariableMapInput is an input type that accepts GroupVariableMap and GroupVariableMapOutput values.
@@ -269,6 +282,12 @@ func (i GroupVariableMap) ToGroupVariableMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GroupVariableMapOutput)
 }
 
+func (i GroupVariableMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupVariable] {
+	return pulumix.Output[map[string]*GroupVariable]{
+		OutputState: i.ToGroupVariableMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupVariableOutput struct{ *pulumi.OutputState }
 
 func (GroupVariableOutput) ElementType() reflect.Type {
@@ -281,6 +300,12 @@ func (o GroupVariableOutput) ToGroupVariableOutput() GroupVariableOutput {
 
 func (o GroupVariableOutput) ToGroupVariableOutputWithContext(ctx context.Context) GroupVariableOutput {
 	return o
+}
+
+func (o GroupVariableOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupVariable] {
+	return pulumix.Output[*GroupVariable]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
@@ -337,6 +362,12 @@ func (o GroupVariableArrayOutput) ToGroupVariableArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o GroupVariableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupVariable] {
+	return pulumix.Output[[]*GroupVariable]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GroupVariableArrayOutput) Index(i pulumi.IntInput) GroupVariableOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupVariable {
 		return vs[0].([]*GroupVariable)[vs[1].(int)]
@@ -355,6 +386,12 @@ func (o GroupVariableMapOutput) ToGroupVariableMapOutput() GroupVariableMapOutpu
 
 func (o GroupVariableMapOutput) ToGroupVariableMapOutputWithContext(ctx context.Context) GroupVariableMapOutput {
 	return o
+}
+
+func (o GroupVariableMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupVariable] {
+	return pulumix.Output[map[string]*GroupVariable]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GroupVariableMapOutput) MapIndex(k pulumi.StringInput) GroupVariableOutput {

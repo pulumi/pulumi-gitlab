@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ServiceGithub` resource allows to manage the lifecycle of a project integration with GitHub.
@@ -222,6 +223,12 @@ func (i *ServiceGithub) ToServiceGithubOutputWithContext(ctx context.Context) Se
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceGithubOutput)
 }
 
+func (i *ServiceGithub) ToOutput(ctx context.Context) pulumix.Output[*ServiceGithub] {
+	return pulumix.Output[*ServiceGithub]{
+		OutputState: i.ToServiceGithubOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceGithubArrayInput is an input type that accepts ServiceGithubArray and ServiceGithubArrayOutput values.
 // You can construct a concrete instance of `ServiceGithubArrayInput` via:
 //
@@ -245,6 +252,12 @@ func (i ServiceGithubArray) ToServiceGithubArrayOutput() ServiceGithubArrayOutpu
 
 func (i ServiceGithubArray) ToServiceGithubArrayOutputWithContext(ctx context.Context) ServiceGithubArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceGithubArrayOutput)
+}
+
+func (i ServiceGithubArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceGithub] {
+	return pulumix.Output[[]*ServiceGithub]{
+		OutputState: i.ToServiceGithubArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ServiceGithubMapInput is an input type that accepts ServiceGithubMap and ServiceGithubMapOutput values.
@@ -272,6 +285,12 @@ func (i ServiceGithubMap) ToServiceGithubMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceGithubMapOutput)
 }
 
+func (i ServiceGithubMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceGithub] {
+	return pulumix.Output[map[string]*ServiceGithub]{
+		OutputState: i.ToServiceGithubMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceGithubOutput struct{ *pulumi.OutputState }
 
 func (ServiceGithubOutput) ElementType() reflect.Type {
@@ -284,6 +303,12 @@ func (o ServiceGithubOutput) ToServiceGithubOutput() ServiceGithubOutput {
 
 func (o ServiceGithubOutput) ToServiceGithubOutputWithContext(ctx context.Context) ServiceGithubOutput {
 	return o
+}
+
+func (o ServiceGithubOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceGithub] {
+	return pulumix.Output[*ServiceGithub]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether the integration is active.
@@ -340,6 +365,12 @@ func (o ServiceGithubArrayOutput) ToServiceGithubArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o ServiceGithubArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceGithub] {
+	return pulumix.Output[[]*ServiceGithub]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceGithubArrayOutput) Index(i pulumi.IntInput) ServiceGithubOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceGithub {
 		return vs[0].([]*ServiceGithub)[vs[1].(int)]
@@ -358,6 +389,12 @@ func (o ServiceGithubMapOutput) ToServiceGithubMapOutput() ServiceGithubMapOutpu
 
 func (o ServiceGithubMapOutput) ToServiceGithubMapOutputWithContext(ctx context.Context) ServiceGithubMapOutput {
 	return o
+}
+
+func (o ServiceGithubMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceGithub] {
+	return pulumix.Output[map[string]*ServiceGithub]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceGithubMapOutput) MapIndex(k pulumi.StringInput) ServiceGithubOutput {

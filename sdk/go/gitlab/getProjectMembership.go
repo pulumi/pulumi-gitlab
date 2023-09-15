@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectMembership` data source allows to list and filter all members of a project specified by either its id or full path.
@@ -123,6 +124,12 @@ func (o LookupProjectMembershipResultOutput) ToLookupProjectMembershipResultOutp
 
 func (o LookupProjectMembershipResultOutput) ToLookupProjectMembershipResultOutputWithContext(ctx context.Context) LookupProjectMembershipResultOutput {
 	return o
+}
+
+func (o LookupProjectMembershipResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProjectMembershipResult] {
+	return pulumix.Output[LookupProjectMembershipResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The full path of the project.

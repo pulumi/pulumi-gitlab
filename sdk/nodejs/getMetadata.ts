@@ -52,3 +52,20 @@ export interface GetMetadataResult {
      */
     readonly version: string;
 }
+/**
+ * The `gitlab.getMetadata` data source retrieves the metadata of the GitLab instance.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const this = gitlab.getMetadata({});
+ * ```
+ */
+export function getMetadataOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetMetadataResult> {
+    return pulumi.output(getMetadata(opts))
+}

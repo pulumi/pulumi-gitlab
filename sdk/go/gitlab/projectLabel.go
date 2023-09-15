@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectLabel` resource allows to manage the lifecycle of a project label.
@@ -187,6 +188,12 @@ func (i *ProjectLabel) ToProjectLabelOutputWithContext(ctx context.Context) Proj
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectLabelOutput)
 }
 
+func (i *ProjectLabel) ToOutput(ctx context.Context) pulumix.Output[*ProjectLabel] {
+	return pulumix.Output[*ProjectLabel]{
+		OutputState: i.ToProjectLabelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectLabelArrayInput is an input type that accepts ProjectLabelArray and ProjectLabelArrayOutput values.
 // You can construct a concrete instance of `ProjectLabelArrayInput` via:
 //
@@ -210,6 +217,12 @@ func (i ProjectLabelArray) ToProjectLabelArrayOutput() ProjectLabelArrayOutput {
 
 func (i ProjectLabelArray) ToProjectLabelArrayOutputWithContext(ctx context.Context) ProjectLabelArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectLabelArrayOutput)
+}
+
+func (i ProjectLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectLabel] {
+	return pulumix.Output[[]*ProjectLabel]{
+		OutputState: i.ToProjectLabelArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectLabelMapInput is an input type that accepts ProjectLabelMap and ProjectLabelMapOutput values.
@@ -237,6 +250,12 @@ func (i ProjectLabelMap) ToProjectLabelMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectLabelMapOutput)
 }
 
+func (i ProjectLabelMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectLabel] {
+	return pulumix.Output[map[string]*ProjectLabel]{
+		OutputState: i.ToProjectLabelMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectLabelOutput struct{ *pulumi.OutputState }
 
 func (ProjectLabelOutput) ElementType() reflect.Type {
@@ -249,6 +268,12 @@ func (o ProjectLabelOutput) ToProjectLabelOutput() ProjectLabelOutput {
 
 func (o ProjectLabelOutput) ToProjectLabelOutputWithContext(ctx context.Context) ProjectLabelOutput {
 	return o
+}
+
+func (o ProjectLabelOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectLabel] {
+	return pulumix.Output[*ProjectLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
@@ -290,6 +315,12 @@ func (o ProjectLabelArrayOutput) ToProjectLabelArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o ProjectLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectLabel] {
+	return pulumix.Output[[]*ProjectLabel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectLabelArrayOutput) Index(i pulumi.IntInput) ProjectLabelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectLabel {
 		return vs[0].([]*ProjectLabel)[vs[1].(int)]
@@ -308,6 +339,12 @@ func (o ProjectLabelMapOutput) ToProjectLabelMapOutput() ProjectLabelMapOutput {
 
 func (o ProjectLabelMapOutput) ToProjectLabelMapOutputWithContext(ctx context.Context) ProjectLabelMapOutput {
 	return o
+}
+
+func (o ProjectLabelMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectLabel] {
+	return pulumix.Output[map[string]*ProjectLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectLabelMapOutput) MapIndex(k pulumi.StringInput) ProjectLabelOutput {

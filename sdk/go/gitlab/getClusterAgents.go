@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getClusterAgents` data source allows details of GitLab Agents for Kubernetes in a project.
@@ -104,6 +105,12 @@ func (o GetClusterAgentsResultOutput) ToGetClusterAgentsResultOutput() GetCluste
 
 func (o GetClusterAgentsResultOutput) ToGetClusterAgentsResultOutputWithContext(ctx context.Context) GetClusterAgentsResultOutput {
 	return o
+}
+
+func (o GetClusterAgentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetClusterAgentsResult] {
+	return pulumix.Output[GetClusterAgentsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of the registered agents.

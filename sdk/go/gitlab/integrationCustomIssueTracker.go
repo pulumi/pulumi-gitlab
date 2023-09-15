@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `IntegrationCustomIssueTracker` resource allows to manage the lifecycle of a project integration with Custom Issue Tracker.
@@ -197,6 +198,12 @@ func (i *IntegrationCustomIssueTracker) ToIntegrationCustomIssueTrackerOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationCustomIssueTrackerOutput)
 }
 
+func (i *IntegrationCustomIssueTracker) ToOutput(ctx context.Context) pulumix.Output[*IntegrationCustomIssueTracker] {
+	return pulumix.Output[*IntegrationCustomIssueTracker]{
+		OutputState: i.ToIntegrationCustomIssueTrackerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IntegrationCustomIssueTrackerArrayInput is an input type that accepts IntegrationCustomIssueTrackerArray and IntegrationCustomIssueTrackerArrayOutput values.
 // You can construct a concrete instance of `IntegrationCustomIssueTrackerArrayInput` via:
 //
@@ -220,6 +227,12 @@ func (i IntegrationCustomIssueTrackerArray) ToIntegrationCustomIssueTrackerArray
 
 func (i IntegrationCustomIssueTrackerArray) ToIntegrationCustomIssueTrackerArrayOutputWithContext(ctx context.Context) IntegrationCustomIssueTrackerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationCustomIssueTrackerArrayOutput)
+}
+
+func (i IntegrationCustomIssueTrackerArray) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationCustomIssueTracker] {
+	return pulumix.Output[[]*IntegrationCustomIssueTracker]{
+		OutputState: i.ToIntegrationCustomIssueTrackerArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IntegrationCustomIssueTrackerMapInput is an input type that accepts IntegrationCustomIssueTrackerMap and IntegrationCustomIssueTrackerMapOutput values.
@@ -247,6 +260,12 @@ func (i IntegrationCustomIssueTrackerMap) ToIntegrationCustomIssueTrackerMapOutp
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationCustomIssueTrackerMapOutput)
 }
 
+func (i IntegrationCustomIssueTrackerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationCustomIssueTracker] {
+	return pulumix.Output[map[string]*IntegrationCustomIssueTracker]{
+		OutputState: i.ToIntegrationCustomIssueTrackerMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntegrationCustomIssueTrackerOutput struct{ *pulumi.OutputState }
 
 func (IntegrationCustomIssueTrackerOutput) ElementType() reflect.Type {
@@ -259,6 +278,12 @@ func (o IntegrationCustomIssueTrackerOutput) ToIntegrationCustomIssueTrackerOutp
 
 func (o IntegrationCustomIssueTrackerOutput) ToIntegrationCustomIssueTrackerOutputWithContext(ctx context.Context) IntegrationCustomIssueTrackerOutput {
 	return o
+}
+
+func (o IntegrationCustomIssueTrackerOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationCustomIssueTracker] {
+	return pulumix.Output[*IntegrationCustomIssueTracker]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether the integration is active.
@@ -310,6 +335,12 @@ func (o IntegrationCustomIssueTrackerArrayOutput) ToIntegrationCustomIssueTracke
 	return o
 }
 
+func (o IntegrationCustomIssueTrackerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationCustomIssueTracker] {
+	return pulumix.Output[[]*IntegrationCustomIssueTracker]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IntegrationCustomIssueTrackerArrayOutput) Index(i pulumi.IntInput) IntegrationCustomIssueTrackerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IntegrationCustomIssueTracker {
 		return vs[0].([]*IntegrationCustomIssueTracker)[vs[1].(int)]
@@ -328,6 +359,12 @@ func (o IntegrationCustomIssueTrackerMapOutput) ToIntegrationCustomIssueTrackerM
 
 func (o IntegrationCustomIssueTrackerMapOutput) ToIntegrationCustomIssueTrackerMapOutputWithContext(ctx context.Context) IntegrationCustomIssueTrackerMapOutput {
 	return o
+}
+
+func (o IntegrationCustomIssueTrackerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationCustomIssueTracker] {
+	return pulumix.Output[map[string]*IntegrationCustomIssueTracker]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntegrationCustomIssueTrackerMapOutput) MapIndex(k pulumi.StringInput) IntegrationCustomIssueTrackerOutput {

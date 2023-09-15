@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `PipelineTrigger` resource allows to manage the lifecycle of a pipeline trigger.
@@ -168,6 +169,12 @@ func (i *PipelineTrigger) ToPipelineTriggerOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineTriggerOutput)
 }
 
+func (i *PipelineTrigger) ToOutput(ctx context.Context) pulumix.Output[*PipelineTrigger] {
+	return pulumix.Output[*PipelineTrigger]{
+		OutputState: i.ToPipelineTriggerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PipelineTriggerArrayInput is an input type that accepts PipelineTriggerArray and PipelineTriggerArrayOutput values.
 // You can construct a concrete instance of `PipelineTriggerArrayInput` via:
 //
@@ -191,6 +198,12 @@ func (i PipelineTriggerArray) ToPipelineTriggerArrayOutput() PipelineTriggerArra
 
 func (i PipelineTriggerArray) ToPipelineTriggerArrayOutputWithContext(ctx context.Context) PipelineTriggerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineTriggerArrayOutput)
+}
+
+func (i PipelineTriggerArray) ToOutput(ctx context.Context) pulumix.Output[[]*PipelineTrigger] {
+	return pulumix.Output[[]*PipelineTrigger]{
+		OutputState: i.ToPipelineTriggerArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PipelineTriggerMapInput is an input type that accepts PipelineTriggerMap and PipelineTriggerMapOutput values.
@@ -218,6 +231,12 @@ func (i PipelineTriggerMap) ToPipelineTriggerMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineTriggerMapOutput)
 }
 
+func (i PipelineTriggerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PipelineTrigger] {
+	return pulumix.Output[map[string]*PipelineTrigger]{
+		OutputState: i.ToPipelineTriggerMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PipelineTriggerOutput struct{ *pulumi.OutputState }
 
 func (PipelineTriggerOutput) ElementType() reflect.Type {
@@ -230,6 +249,12 @@ func (o PipelineTriggerOutput) ToPipelineTriggerOutput() PipelineTriggerOutput {
 
 func (o PipelineTriggerOutput) ToPipelineTriggerOutputWithContext(ctx context.Context) PipelineTriggerOutput {
 	return o
+}
+
+func (o PipelineTriggerOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineTrigger] {
+	return pulumix.Output[*PipelineTrigger]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the pipeline trigger.
@@ -266,6 +291,12 @@ func (o PipelineTriggerArrayOutput) ToPipelineTriggerArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o PipelineTriggerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PipelineTrigger] {
+	return pulumix.Output[[]*PipelineTrigger]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PipelineTriggerArrayOutput) Index(i pulumi.IntInput) PipelineTriggerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PipelineTrigger {
 		return vs[0].([]*PipelineTrigger)[vs[1].(int)]
@@ -284,6 +315,12 @@ func (o PipelineTriggerMapOutput) ToPipelineTriggerMapOutput() PipelineTriggerMa
 
 func (o PipelineTriggerMapOutput) ToPipelineTriggerMapOutputWithContext(ctx context.Context) PipelineTriggerMapOutput {
 	return o
+}
+
+func (o PipelineTriggerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PipelineTrigger] {
+	return pulumix.Output[map[string]*PipelineTrigger]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PipelineTriggerMapOutput) MapIndex(k pulumi.StringInput) PipelineTriggerOutput {

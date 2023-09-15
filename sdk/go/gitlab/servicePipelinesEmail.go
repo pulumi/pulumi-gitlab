@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ServicePipelinesEmail` resource allows to manage the lifecycle of a project integration with Pipeline Emails Service.
@@ -185,6 +186,12 @@ func (i *ServicePipelinesEmail) ToServicePipelinesEmailOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePipelinesEmailOutput)
 }
 
+func (i *ServicePipelinesEmail) ToOutput(ctx context.Context) pulumix.Output[*ServicePipelinesEmail] {
+	return pulumix.Output[*ServicePipelinesEmail]{
+		OutputState: i.ToServicePipelinesEmailOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServicePipelinesEmailArrayInput is an input type that accepts ServicePipelinesEmailArray and ServicePipelinesEmailArrayOutput values.
 // You can construct a concrete instance of `ServicePipelinesEmailArrayInput` via:
 //
@@ -208,6 +215,12 @@ func (i ServicePipelinesEmailArray) ToServicePipelinesEmailArrayOutput() Service
 
 func (i ServicePipelinesEmailArray) ToServicePipelinesEmailArrayOutputWithContext(ctx context.Context) ServicePipelinesEmailArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePipelinesEmailArrayOutput)
+}
+
+func (i ServicePipelinesEmailArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePipelinesEmail] {
+	return pulumix.Output[[]*ServicePipelinesEmail]{
+		OutputState: i.ToServicePipelinesEmailArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ServicePipelinesEmailMapInput is an input type that accepts ServicePipelinesEmailMap and ServicePipelinesEmailMapOutput values.
@@ -235,6 +248,12 @@ func (i ServicePipelinesEmailMap) ToServicePipelinesEmailMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePipelinesEmailMapOutput)
 }
 
+func (i ServicePipelinesEmailMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePipelinesEmail] {
+	return pulumix.Output[map[string]*ServicePipelinesEmail]{
+		OutputState: i.ToServicePipelinesEmailMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServicePipelinesEmailOutput struct{ *pulumi.OutputState }
 
 func (ServicePipelinesEmailOutput) ElementType() reflect.Type {
@@ -247,6 +266,12 @@ func (o ServicePipelinesEmailOutput) ToServicePipelinesEmailOutput() ServicePipe
 
 func (o ServicePipelinesEmailOutput) ToServicePipelinesEmailOutputWithContext(ctx context.Context) ServicePipelinesEmailOutput {
 	return o
+}
+
+func (o ServicePipelinesEmailOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePipelinesEmail] {
+	return pulumix.Output[*ServicePipelinesEmail]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
@@ -283,6 +308,12 @@ func (o ServicePipelinesEmailArrayOutput) ToServicePipelinesEmailArrayOutputWith
 	return o
 }
 
+func (o ServicePipelinesEmailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePipelinesEmail] {
+	return pulumix.Output[[]*ServicePipelinesEmail]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServicePipelinesEmailArrayOutput) Index(i pulumi.IntInput) ServicePipelinesEmailOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServicePipelinesEmail {
 		return vs[0].([]*ServicePipelinesEmail)[vs[1].(int)]
@@ -301,6 +332,12 @@ func (o ServicePipelinesEmailMapOutput) ToServicePipelinesEmailMapOutput() Servi
 
 func (o ServicePipelinesEmailMapOutput) ToServicePipelinesEmailMapOutputWithContext(ctx context.Context) ServicePipelinesEmailMapOutput {
 	return o
+}
+
+func (o ServicePipelinesEmailMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePipelinesEmail] {
+	return pulumix.Output[map[string]*ServicePipelinesEmail]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServicePipelinesEmailMapOutput) MapIndex(k pulumi.StringInput) ServicePipelinesEmailOutput {

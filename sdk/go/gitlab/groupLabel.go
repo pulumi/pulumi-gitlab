@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `GroupLabel` resource allows to manage the lifecycle of labels within a group.
@@ -179,6 +180,12 @@ func (i *GroupLabel) ToGroupLabelOutputWithContext(ctx context.Context) GroupLab
 	return pulumi.ToOutputWithContext(ctx, i).(GroupLabelOutput)
 }
 
+func (i *GroupLabel) ToOutput(ctx context.Context) pulumix.Output[*GroupLabel] {
+	return pulumix.Output[*GroupLabel]{
+		OutputState: i.ToGroupLabelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GroupLabelArrayInput is an input type that accepts GroupLabelArray and GroupLabelArrayOutput values.
 // You can construct a concrete instance of `GroupLabelArrayInput` via:
 //
@@ -202,6 +209,12 @@ func (i GroupLabelArray) ToGroupLabelArrayOutput() GroupLabelArrayOutput {
 
 func (i GroupLabelArray) ToGroupLabelArrayOutputWithContext(ctx context.Context) GroupLabelArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupLabelArrayOutput)
+}
+
+func (i GroupLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupLabel] {
+	return pulumix.Output[[]*GroupLabel]{
+		OutputState: i.ToGroupLabelArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GroupLabelMapInput is an input type that accepts GroupLabelMap and GroupLabelMapOutput values.
@@ -229,6 +242,12 @@ func (i GroupLabelMap) ToGroupLabelMapOutputWithContext(ctx context.Context) Gro
 	return pulumi.ToOutputWithContext(ctx, i).(GroupLabelMapOutput)
 }
 
+func (i GroupLabelMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupLabel] {
+	return pulumix.Output[map[string]*GroupLabel]{
+		OutputState: i.ToGroupLabelMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupLabelOutput struct{ *pulumi.OutputState }
 
 func (GroupLabelOutput) ElementType() reflect.Type {
@@ -241,6 +260,12 @@ func (o GroupLabelOutput) ToGroupLabelOutput() GroupLabelOutput {
 
 func (o GroupLabelOutput) ToGroupLabelOutputWithContext(ctx context.Context) GroupLabelOutput {
 	return o
+}
+
+func (o GroupLabelOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupLabel] {
+	return pulumix.Output[*GroupLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
@@ -282,6 +307,12 @@ func (o GroupLabelArrayOutput) ToGroupLabelArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o GroupLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupLabel] {
+	return pulumix.Output[[]*GroupLabel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GroupLabelArrayOutput) Index(i pulumi.IntInput) GroupLabelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupLabel {
 		return vs[0].([]*GroupLabel)[vs[1].(int)]
@@ -300,6 +331,12 @@ func (o GroupLabelMapOutput) ToGroupLabelMapOutput() GroupLabelMapOutput {
 
 func (o GroupLabelMapOutput) ToGroupLabelMapOutputWithContext(ctx context.Context) GroupLabelMapOutput {
 	return o
+}
+
+func (o GroupLabelMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupLabel] {
+	return pulumix.Output[map[string]*GroupLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GroupLabelMapOutput) MapIndex(k pulumi.StringInput) GroupLabelOutput {

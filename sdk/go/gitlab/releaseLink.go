@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ReleaseLink` resource allows to manage the lifecycle of a release link.
@@ -220,6 +221,12 @@ func (i *ReleaseLink) ToReleaseLinkOutputWithContext(ctx context.Context) Releas
 	return pulumi.ToOutputWithContext(ctx, i).(ReleaseLinkOutput)
 }
 
+func (i *ReleaseLink) ToOutput(ctx context.Context) pulumix.Output[*ReleaseLink] {
+	return pulumix.Output[*ReleaseLink]{
+		OutputState: i.ToReleaseLinkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ReleaseLinkArrayInput is an input type that accepts ReleaseLinkArray and ReleaseLinkArrayOutput values.
 // You can construct a concrete instance of `ReleaseLinkArrayInput` via:
 //
@@ -243,6 +250,12 @@ func (i ReleaseLinkArray) ToReleaseLinkArrayOutput() ReleaseLinkArrayOutput {
 
 func (i ReleaseLinkArray) ToReleaseLinkArrayOutputWithContext(ctx context.Context) ReleaseLinkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReleaseLinkArrayOutput)
+}
+
+func (i ReleaseLinkArray) ToOutput(ctx context.Context) pulumix.Output[[]*ReleaseLink] {
+	return pulumix.Output[[]*ReleaseLink]{
+		OutputState: i.ToReleaseLinkArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ReleaseLinkMapInput is an input type that accepts ReleaseLinkMap and ReleaseLinkMapOutput values.
@@ -270,6 +283,12 @@ func (i ReleaseLinkMap) ToReleaseLinkMapOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, i).(ReleaseLinkMapOutput)
 }
 
+func (i ReleaseLinkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ReleaseLink] {
+	return pulumix.Output[map[string]*ReleaseLink]{
+		OutputState: i.ToReleaseLinkMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReleaseLinkOutput struct{ *pulumi.OutputState }
 
 func (ReleaseLinkOutput) ElementType() reflect.Type {
@@ -282,6 +301,12 @@ func (o ReleaseLinkOutput) ToReleaseLinkOutput() ReleaseLinkOutput {
 
 func (o ReleaseLinkOutput) ToReleaseLinkOutputWithContext(ctx context.Context) ReleaseLinkOutput {
 	return o
+}
+
+func (o ReleaseLinkOutput) ToOutput(ctx context.Context) pulumix.Output[*ReleaseLink] {
+	return pulumix.Output[*ReleaseLink]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
@@ -343,6 +368,12 @@ func (o ReleaseLinkArrayOutput) ToReleaseLinkArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o ReleaseLinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ReleaseLink] {
+	return pulumix.Output[[]*ReleaseLink]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ReleaseLinkArrayOutput) Index(i pulumi.IntInput) ReleaseLinkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ReleaseLink {
 		return vs[0].([]*ReleaseLink)[vs[1].(int)]
@@ -361,6 +392,12 @@ func (o ReleaseLinkMapOutput) ToReleaseLinkMapOutput() ReleaseLinkMapOutput {
 
 func (o ReleaseLinkMapOutput) ToReleaseLinkMapOutputWithContext(ctx context.Context) ReleaseLinkMapOutput {
 	return o
+}
+
+func (o ReleaseLinkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ReleaseLink] {
+	return pulumix.Output[map[string]*ReleaseLink]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReleaseLinkMapOutput) MapIndex(k pulumi.StringInput) ReleaseLinkOutput {

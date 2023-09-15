@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectTag` data source allows details of a project tag to be retrieved by its name.
@@ -117,6 +118,12 @@ func (o LookupProjectTagResultOutput) ToLookupProjectTagResultOutput() LookupPro
 
 func (o LookupProjectTagResultOutput) ToLookupProjectTagResultOutputWithContext(ctx context.Context) LookupProjectTagResultOutput {
 	return o
+}
+
+func (o LookupProjectTagResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProjectTagResult] {
+	return pulumix.Output[LookupProjectTagResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The commit associated with the tag.

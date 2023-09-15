@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `IntegrationSlack` resource allows to manage the lifecycle of a project integration with Slack.
@@ -388,6 +389,12 @@ func (i *IntegrationSlack) ToIntegrationSlackOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationSlackOutput)
 }
 
+func (i *IntegrationSlack) ToOutput(ctx context.Context) pulumix.Output[*IntegrationSlack] {
+	return pulumix.Output[*IntegrationSlack]{
+		OutputState: i.ToIntegrationSlackOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IntegrationSlackArrayInput is an input type that accepts IntegrationSlackArray and IntegrationSlackArrayOutput values.
 // You can construct a concrete instance of `IntegrationSlackArrayInput` via:
 //
@@ -411,6 +418,12 @@ func (i IntegrationSlackArray) ToIntegrationSlackArrayOutput() IntegrationSlackA
 
 func (i IntegrationSlackArray) ToIntegrationSlackArrayOutputWithContext(ctx context.Context) IntegrationSlackArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationSlackArrayOutput)
+}
+
+func (i IntegrationSlackArray) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationSlack] {
+	return pulumix.Output[[]*IntegrationSlack]{
+		OutputState: i.ToIntegrationSlackArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IntegrationSlackMapInput is an input type that accepts IntegrationSlackMap and IntegrationSlackMapOutput values.
@@ -438,6 +451,12 @@ func (i IntegrationSlackMap) ToIntegrationSlackMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationSlackMapOutput)
 }
 
+func (i IntegrationSlackMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationSlack] {
+	return pulumix.Output[map[string]*IntegrationSlack]{
+		OutputState: i.ToIntegrationSlackMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntegrationSlackOutput struct{ *pulumi.OutputState }
 
 func (IntegrationSlackOutput) ElementType() reflect.Type {
@@ -450,6 +469,12 @@ func (o IntegrationSlackOutput) ToIntegrationSlackOutput() IntegrationSlackOutpu
 
 func (o IntegrationSlackOutput) ToIntegrationSlackOutputWithContext(ctx context.Context) IntegrationSlackOutput {
 	return o
+}
+
+func (o IntegrationSlackOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationSlack] {
+	return pulumix.Output[*IntegrationSlack]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
@@ -588,6 +613,12 @@ func (o IntegrationSlackArrayOutput) ToIntegrationSlackArrayOutputWithContext(ct
 	return o
 }
 
+func (o IntegrationSlackArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationSlack] {
+	return pulumix.Output[[]*IntegrationSlack]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IntegrationSlackArrayOutput) Index(i pulumi.IntInput) IntegrationSlackOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IntegrationSlack {
 		return vs[0].([]*IntegrationSlack)[vs[1].(int)]
@@ -606,6 +637,12 @@ func (o IntegrationSlackMapOutput) ToIntegrationSlackMapOutput() IntegrationSlac
 
 func (o IntegrationSlackMapOutput) ToIntegrationSlackMapOutputWithContext(ctx context.Context) IntegrationSlackMapOutput {
 	return o
+}
+
+func (o IntegrationSlackMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationSlack] {
+	return pulumix.Output[map[string]*IntegrationSlack]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntegrationSlackMapOutput) MapIndex(k pulumi.StringInput) IntegrationSlackOutput {

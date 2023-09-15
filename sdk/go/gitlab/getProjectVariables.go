@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getProjectVariables` data source allows to retrieve all project-level CI/CD variables.
@@ -115,6 +116,12 @@ func (o GetProjectVariablesResultOutput) ToGetProjectVariablesResultOutput() Get
 
 func (o GetProjectVariablesResultOutput) ToGetProjectVariablesResultOutputWithContext(ctx context.Context) GetProjectVariablesResultOutput {
 	return o
+}
+
+func (o GetProjectVariablesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectVariablesResult] {
+	return pulumix.Output[GetProjectVariablesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The environment scope of the variable. Defaults to all environment (`*`).

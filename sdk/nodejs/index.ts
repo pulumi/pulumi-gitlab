@@ -77,7 +77,8 @@ utilities.lazyLoad(exports, ["getClusterAgents","getClusterAgentsOutput"], () =>
 
 export { GetCurrentUserResult } from "./getCurrentUser";
 export const getCurrentUser: typeof import("./getCurrentUser").getCurrentUser = null as any;
-utilities.lazyLoad(exports, ["getCurrentUser"], () => require("./getCurrentUser"));
+export const getCurrentUserOutput: typeof import("./getCurrentUser").getCurrentUserOutput = null as any;
+utilities.lazyLoad(exports, ["getCurrentUser","getCurrentUserOutput"], () => require("./getCurrentUser"));
 
 export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
 export const getGroup: typeof import("./getGroup").getGroup = null as any;
@@ -131,11 +132,13 @@ utilities.lazyLoad(exports, ["getInstanceVariable","getInstanceVariableOutput"],
 
 export { GetInstanceVariablesResult } from "./getInstanceVariables";
 export const getInstanceVariables: typeof import("./getInstanceVariables").getInstanceVariables = null as any;
-utilities.lazyLoad(exports, ["getInstanceVariables"], () => require("./getInstanceVariables"));
+export const getInstanceVariablesOutput: typeof import("./getInstanceVariables").getInstanceVariablesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceVariables","getInstanceVariablesOutput"], () => require("./getInstanceVariables"));
 
 export { GetMetadataResult } from "./getMetadata";
 export const getMetadata: typeof import("./getMetadata").getMetadata = null as any;
-utilities.lazyLoad(exports, ["getMetadata"], () => require("./getMetadata"));
+export const getMetadataOutput: typeof import("./getMetadata").getMetadataOutput = null as any;
+utilities.lazyLoad(exports, ["getMetadata","getMetadataOutput"], () => require("./getMetadata"));
 
 export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
 export const getProject: typeof import("./getProject").getProject = null as any;
