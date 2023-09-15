@@ -81,7 +81,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Defaults to false. Default to Auto DevOps pipeline for all projects within this group.
      * 
      */
-    @Export(name="autoDevopsEnabled", type=Boolean.class, parameters={})
+    @Export(name="autoDevopsEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoDevopsEnabled;
 
     /**
@@ -95,7 +95,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * A local path to the avatar image to upload. **Note**: not available for imported resources.
      * 
      */
-    @Export(name="avatar", type=String.class, parameters={})
+    @Export(name="avatar", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> avatar;
 
     /**
@@ -109,7 +109,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The hash of the avatar image. Use `filesha256(&#34;path/to/avatar.png&#34;)` whenever possible. **Note**: this is used to trigger an update of the avatar. If it&#39;s not given, but an avatar is given, the avatar will be updated each time.
      * 
      */
-    @Export(name="avatarHash", type=String.class, parameters={})
+    @Export(name="avatarHash", refs={String.class}, tree="[0]")
     private Output<String> avatarHash;
 
     /**
@@ -123,7 +123,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The URL of the avatar image.
      * 
      */
-    @Export(name="avatarUrl", type=String.class, parameters={})
+    @Export(name="avatarUrl", refs={String.class}, tree="[0]")
     private Output<String> avatarUrl;
 
     /**
@@ -137,7 +137,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Defaults to 2. See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection
      * 
      */
-    @Export(name="defaultBranchProtection", type=Integer.class, parameters={})
+    @Export(name="defaultBranchProtection", refs={Integer.class}, tree="[0]")
     private Output<Integer> defaultBranchProtection;
 
     /**
@@ -151,7 +151,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The description of the group.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -165,7 +165,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Defaults to false. Disable email notifications.
      * 
      */
-    @Export(name="emailsDisabled", type=Boolean.class, parameters={})
+    @Export(name="emailsDisabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> emailsDisabled;
 
     /**
@@ -179,7 +179,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Can be set by administrators only. Additional CI/CD minutes for this group.
      * 
      */
-    @Export(name="extraSharedRunnersMinutesLimit", type=Integer.class, parameters={})
+    @Export(name="extraSharedRunnersMinutesLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> extraSharedRunnersMinutesLimit;
 
     /**
@@ -193,7 +193,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The full name of the group.
      * 
      */
-    @Export(name="fullName", type=String.class, parameters={})
+    @Export(name="fullName", refs={String.class}, tree="[0]")
     private Output<String> fullName;
 
     /**
@@ -207,7 +207,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The full path of the group.
      * 
      */
-    @Export(name="fullPath", type=String.class, parameters={})
+    @Export(name="fullPath", refs={String.class}, tree="[0]")
     private Output<String> fullPath;
 
     /**
@@ -221,7 +221,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
      * 
      */
-    @Export(name="ipRestrictionRanges", type=List.class, parameters={String.class})
+    @Export(name="ipRestrictionRanges", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ipRestrictionRanges;
 
     /**
@@ -235,7 +235,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Defaults to true. Enable/disable Large File Storage (LFS) for the projects in this group.
      * 
      */
-    @Export(name="lfsEnabled", type=Boolean.class, parameters={})
+    @Export(name="lfsEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> lfsEnabled;
 
     /**
@@ -249,7 +249,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Users cannot be added to projects in this group.
      * 
      */
-    @Export(name="membershipLock", type=Boolean.class, parameters={})
+    @Export(name="membershipLock", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> membershipLock;
 
     /**
@@ -263,7 +263,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Defaults to false. Disable the capability of a group from getting mentioned.
      * 
      */
-    @Export(name="mentionsDisabled", type=Boolean.class, parameters={})
+    @Export(name="mentionsDisabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> mentionsDisabled;
 
     /**
@@ -277,7 +277,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The name of this group.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -291,7 +291,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Id of the parent group (creates a nested group).
      * 
      */
-    @Export(name="parentId", type=Integer.class, parameters={})
+    @Export(name="parentId", refs={Integer.class}, tree="[0]")
     private Output<Integer> parentId;
 
     /**
@@ -305,7 +305,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The path of the group.
      * 
      */
-    @Export(name="path", type=String.class, parameters={})
+    @Export(name="path", refs={String.class}, tree="[0]")
     private Output<String> path;
 
     /**
@@ -319,7 +319,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
      * 
      */
-    @Export(name="preventForkingOutsideGroup", type=Boolean.class, parameters={})
+    @Export(name="preventForkingOutsideGroup", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> preventForkingOutsideGroup;
 
     /**
@@ -333,7 +333,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Defaults to maintainer. Determine if developers can create projects in the group.
      * 
      */
-    @Export(name="projectCreationLevel", type=String.class, parameters={})
+    @Export(name="projectCreationLevel", refs={String.class}, tree="[0]")
     private Output<String> projectCreationLevel;
 
     /**
@@ -347,7 +347,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Defaults to false. Allow users to request member access.
      * 
      */
-    @Export(name="requestAccessEnabled", type=Boolean.class, parameters={})
+    @Export(name="requestAccessEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> requestAccessEnabled;
 
     /**
@@ -361,7 +361,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Defaults to false. Require all users in this group to setup Two-factor authentication.
      * 
      */
-    @Export(name="requireTwoFactorAuthentication", type=Boolean.class, parameters={})
+    @Export(name="requireTwoFactorAuthentication", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> requireTwoFactorAuthentication;
 
     /**
@@ -375,7 +375,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The group level registration token to use during runner setup.
      * 
      */
-    @Export(name="runnersToken", type=String.class, parameters={})
+    @Export(name="runnersToken", refs={String.class}, tree="[0]")
     private Output<String> runnersToken;
 
     /**
@@ -389,7 +389,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Defaults to false. Prevent sharing a project with another group within this group.
      * 
      */
-    @Export(name="shareWithGroupLock", type=Boolean.class, parameters={})
+    @Export(name="shareWithGroupLock", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> shareWithGroupLock;
 
     /**
@@ -403,7 +403,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
      * 
      */
-    @Export(name="sharedRunnersMinutesLimit", type=Integer.class, parameters={})
+    @Export(name="sharedRunnersMinutesLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> sharedRunnersMinutesLimit;
 
     /**
@@ -417,7 +417,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Defaults to owner. Allowed to create subgroups.
      * 
      */
-    @Export(name="subgroupCreationLevel", type=String.class, parameters={})
+    @Export(name="subgroupCreationLevel", refs={String.class}, tree="[0]")
     private Output<String> subgroupCreationLevel;
 
     /**
@@ -431,7 +431,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Defaults to 48. Time before Two-factor authentication is enforced (in hours).
      * 
      */
-    @Export(name="twoFactorGracePeriod", type=Integer.class, parameters={})
+    @Export(name="twoFactorGracePeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> twoFactorGracePeriod;
 
     /**
@@ -445,7 +445,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The group&#39;s visibility. Can be `private`, `internal`, or `public`.
      * 
      */
-    @Export(name="visibilityLevel", type=String.class, parameters={})
+    @Export(name="visibilityLevel", refs={String.class}, tree="[0]")
     private Output<String> visibilityLevel;
 
     /**
@@ -459,7 +459,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Web URL of the group.
      * 
      */
-    @Export(name="webUrl", type=String.class, parameters={})
+    @Export(name="webUrl", refs={String.class}, tree="[0]")
     private Output<String> webUrl;
 
     /**
@@ -473,7 +473,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The group&#39;s wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
-    @Export(name="wikiAccessLevel", type=String.class, parameters={})
+    @Export(name="wikiAccessLevel", refs={String.class}, tree="[0]")
     private Output<String> wikiAccessLevel;
 
     /**

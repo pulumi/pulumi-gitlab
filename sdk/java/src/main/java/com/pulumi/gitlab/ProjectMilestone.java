@@ -74,7 +74,7 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
      * The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -88,7 +88,7 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
      * The description of the milestone.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -102,7 +102,7 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
      * The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
      * 
      */
-    @Export(name="dueDate", type=String.class, parameters={})
+    @Export(name="dueDate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dueDate;
 
     /**
@@ -116,7 +116,7 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
      * Bool, true if milestone expired.
      * 
      */
-    @Export(name="expired", type=Boolean.class, parameters={})
+    @Export(name="expired", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> expired;
 
     /**
@@ -130,7 +130,7 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
      * The ID of the project&#39;s milestone.
      * 
      */
-    @Export(name="iid", type=Integer.class, parameters={})
+    @Export(name="iid", refs={Integer.class}, tree="[0]")
     private Output<Integer> iid;
 
     /**
@@ -144,7 +144,7 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
      * The instance-wide ID of the project’s milestone.
      * 
      */
-    @Export(name="milestoneId", type=Integer.class, parameters={})
+    @Export(name="milestoneId", refs={Integer.class}, tree="[0]")
     private Output<Integer> milestoneId;
 
     /**
@@ -158,7 +158,7 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
      * The ID or URL-encoded path of the project owned by the authenticated user.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -172,7 +172,7 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
      * The project ID of milestone.
      * 
      */
-    @Export(name="projectId", type=Integer.class, parameters={})
+    @Export(name="projectId", refs={Integer.class}, tree="[0]")
     private Output<Integer> projectId;
 
     /**
@@ -186,7 +186,7 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
      * The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
      * 
      */
-    @Export(name="startDate", type=String.class, parameters={})
+    @Export(name="startDate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> startDate;
 
     /**
@@ -200,7 +200,7 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
      * The state of the milestone. Valid values are: `active`, `closed`.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> state;
 
     /**
@@ -214,7 +214,7 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
      * The title of a milestone.
      * 
      */
-    @Export(name="title", type=String.class, parameters={})
+    @Export(name="title", refs={String.class}, tree="[0]")
     private Output<String> title;
 
     /**
@@ -228,7 +228,7 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
      * The last update time of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
      * 
      */
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
@@ -242,7 +242,7 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
      * The web URL of the milestone.
      * 
      */
-    @Export(name="webUrl", type=String.class, parameters={})
+    @Export(name="webUrl", refs={String.class}, tree="[0]")
     private Output<String> webUrl;
 
     /**

@@ -78,7 +78,7 @@ public class GroupProjectFileTemplate extends com.pulumi.resources.CustomResourc
      * 			child of the project defined by the group_id
      * 
      */
-    @Export(name="fileTemplateProjectId", type=Integer.class, parameters={})
+    @Export(name="fileTemplateProjectId", refs={Integer.class}, tree="[0]")
     private Output<Integer> fileTemplateProjectId;
 
     /**
@@ -94,7 +94,7 @@ public class GroupProjectFileTemplate extends com.pulumi.resources.CustomResourc
      *             parent of the project defined by project_id
      * 
      */
-    @Export(name="groupId", type=Integer.class, parameters={})
+    @Export(name="groupId", refs={Integer.class}, tree="[0]")
     private Output<Integer> groupId;
 
     /**

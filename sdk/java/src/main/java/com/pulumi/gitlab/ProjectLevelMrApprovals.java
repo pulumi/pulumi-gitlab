@@ -80,7 +80,7 @@ public class ProjectLevelMrApprovals extends com.pulumi.resources.CustomResource
      * Set to `true` to disable overriding approvers per merge request.
      * 
      */
-    @Export(name="disableOverridingApproversPerMergeRequest", type=Boolean.class, parameters={})
+    @Export(name="disableOverridingApproversPerMergeRequest", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableOverridingApproversPerMergeRequest;
 
     /**
@@ -94,7 +94,7 @@ public class ProjectLevelMrApprovals extends com.pulumi.resources.CustomResource
      * Set to `true` to allow merge requests authors to approve their own merge requests.
      * 
      */
-    @Export(name="mergeRequestsAuthorApproval", type=Boolean.class, parameters={})
+    @Export(name="mergeRequestsAuthorApproval", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> mergeRequestsAuthorApproval;
 
     /**
@@ -108,7 +108,7 @@ public class ProjectLevelMrApprovals extends com.pulumi.resources.CustomResource
      * Set to `true` to allow merge requests committers to approve their own merge requests.
      * 
      */
-    @Export(name="mergeRequestsDisableCommittersApproval", type=Boolean.class, parameters={})
+    @Export(name="mergeRequestsDisableCommittersApproval", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> mergeRequestsDisableCommittersApproval;
 
     /**
@@ -122,7 +122,7 @@ public class ProjectLevelMrApprovals extends com.pulumi.resources.CustomResource
      * The ID or URL-encoded path of a project to change MR approval configuration.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -136,7 +136,7 @@ public class ProjectLevelMrApprovals extends com.pulumi.resources.CustomResource
      * Set to `true` to require authentication to approve merge requests.
      * 
      */
-    @Export(name="requirePasswordToApprove", type=Boolean.class, parameters={})
+    @Export(name="requirePasswordToApprove", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> requirePasswordToApprove;
 
     /**
@@ -150,7 +150,7 @@ public class ProjectLevelMrApprovals extends com.pulumi.resources.CustomResource
      * Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      * 
      */
-    @Export(name="resetApprovalsOnPush", type=Boolean.class, parameters={})
+    @Export(name="resetApprovalsOnPush", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> resetApprovalsOnPush;
 
     /**
@@ -164,7 +164,7 @@ public class ProjectLevelMrApprovals extends com.pulumi.resources.CustomResource
      * Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
      * 
      */
-    @Export(name="selectiveCodeOwnerRemovals", type=Boolean.class, parameters={})
+    @Export(name="selectiveCodeOwnerRemovals", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> selectiveCodeOwnerRemovals;
 
     /**

@@ -86,7 +86,7 @@ public class GroupBadge extends com.pulumi.resources.CustomResource {
      * The id of the group to add the badge to.
      * 
      */
-    @Export(name="group", type=String.class, parameters={})
+    @Export(name="group", refs={String.class}, tree="[0]")
     private Output<String> group;
 
     /**
@@ -100,7 +100,7 @@ public class GroupBadge extends com.pulumi.resources.CustomResource {
      * The image url which will be presented on group overview.
      * 
      */
-    @Export(name="imageUrl", type=String.class, parameters={})
+    @Export(name="imageUrl", refs={String.class}, tree="[0]")
     private Output<String> imageUrl;
 
     /**
@@ -114,7 +114,7 @@ public class GroupBadge extends com.pulumi.resources.CustomResource {
      * The url linked with the badge.
      * 
      */
-    @Export(name="linkUrl", type=String.class, parameters={})
+    @Export(name="linkUrl", refs={String.class}, tree="[0]")
     private Output<String> linkUrl;
 
     /**
@@ -128,7 +128,7 @@ public class GroupBadge extends com.pulumi.resources.CustomResource {
      * The name of the badge.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -142,7 +142,7 @@ public class GroupBadge extends com.pulumi.resources.CustomResource {
      * The image_url argument rendered (in case of use of placeholders).
      * 
      */
-    @Export(name="renderedImageUrl", type=String.class, parameters={})
+    @Export(name="renderedImageUrl", refs={String.class}, tree="[0]")
     private Output<String> renderedImageUrl;
 
     /**
@@ -156,7 +156,7 @@ public class GroupBadge extends com.pulumi.resources.CustomResource {
      * The link_url argument rendered (in case of use of placeholders).
      * 
      */
-    @Export(name="renderedLinkUrl", type=String.class, parameters={})
+    @Export(name="renderedLinkUrl", refs={String.class}, tree="[0]")
     private Output<String> renderedLinkUrl;
 
     /**

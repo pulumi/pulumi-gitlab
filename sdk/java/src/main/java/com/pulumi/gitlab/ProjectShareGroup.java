@@ -71,7 +71,7 @@ public class ProjectShareGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `group_access` instead of the `access_level` attribute. */
-    @Export(name="accessLevel", type=String.class, parameters={})
+    @Export(name="accessLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessLevel;
 
     /**
@@ -85,7 +85,7 @@ public class ProjectShareGroup extends com.pulumi.resources.CustomResource {
      * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
      * 
      */
-    @Export(name="groupAccess", type=String.class, parameters={})
+    @Export(name="groupAccess", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupAccess;
 
     /**
@@ -99,7 +99,7 @@ public class ProjectShareGroup extends com.pulumi.resources.CustomResource {
      * The id of the group.
      * 
      */
-    @Export(name="groupId", type=Integer.class, parameters={})
+    @Export(name="groupId", refs={Integer.class}, tree="[0]")
     private Output<Integer> groupId;
 
     /**
@@ -113,7 +113,7 @@ public class ProjectShareGroup extends com.pulumi.resources.CustomResource {
      * The ID or URL-encoded path of the project.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

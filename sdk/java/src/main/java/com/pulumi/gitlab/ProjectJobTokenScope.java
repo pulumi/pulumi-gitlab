@@ -34,7 +34,7 @@ public class ProjectJobTokenScope extends com.pulumi.resources.CustomResource {
      * The ID or full path of the project.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -48,7 +48,7 @@ public class ProjectJobTokenScope extends com.pulumi.resources.CustomResource {
      * The ID of the project that is in the CI/CD job token inbound allowlist.
      * 
      */
-    @Export(name="targetProjectId", type=Integer.class, parameters={})
+    @Export(name="targetProjectId", refs={Integer.class}, tree="[0]")
     private Output<Integer> targetProjectId;
 
     /**

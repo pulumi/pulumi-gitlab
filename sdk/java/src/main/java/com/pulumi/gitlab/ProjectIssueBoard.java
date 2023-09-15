@@ -124,7 +124,7 @@ public class ProjectIssueBoard extends com.pulumi.resources.CustomResource {
      * The assignee the board should be scoped to. Requires a GitLab EE license.
      * 
      */
-    @Export(name="assigneeId", type=Integer.class, parameters={})
+    @Export(name="assigneeId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> assigneeId;
 
     /**
@@ -138,7 +138,7 @@ public class ProjectIssueBoard extends com.pulumi.resources.CustomResource {
      * The list of label names which the board should be scoped to. Requires a GitLab EE license.
      * 
      */
-    @Export(name="labels", type=List.class, parameters={String.class})
+    @Export(name="labels", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> labels;
 
     /**
@@ -152,7 +152,7 @@ public class ProjectIssueBoard extends com.pulumi.resources.CustomResource {
      * The list of issue board lists
      * 
      */
-    @Export(name="lists", type=List.class, parameters={ProjectIssueBoardList.class})
+    @Export(name="lists", refs={List.class,ProjectIssueBoardList.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ProjectIssueBoardList>> lists;
 
     /**
@@ -166,7 +166,7 @@ public class ProjectIssueBoard extends com.pulumi.resources.CustomResource {
      * The milestone the board should be scoped to. Requires a GitLab EE license.
      * 
      */
-    @Export(name="milestoneId", type=Integer.class, parameters={})
+    @Export(name="milestoneId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> milestoneId;
 
     /**
@@ -180,7 +180,7 @@ public class ProjectIssueBoard extends com.pulumi.resources.CustomResource {
      * The name of the board.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -194,7 +194,7 @@ public class ProjectIssueBoard extends com.pulumi.resources.CustomResource {
      * The ID or full path of the project maintained by the authenticated user.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -208,7 +208,7 @@ public class ProjectIssueBoard extends com.pulumi.resources.CustomResource {
      * The weight range from 0 to 9, to which the board should be scoped to. Requires a GitLab EE license.
      * 
      */
-    @Export(name="weight", type=Integer.class, parameters={})
+    @Export(name="weight", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> weight;
 
     /**

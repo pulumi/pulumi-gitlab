@@ -78,7 +78,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * Branches to send notifications for. Valid options are &#34;all&#34;, &#34;default&#34;, &#34;protected&#34;, and &#34;default*and*protected&#34;.
      * 
      */
-    @Export(name="branchesToBeNotified", type=String.class, parameters={})
+    @Export(name="branchesToBeNotified", refs={String.class}, tree="[0]")
     private Output<String> branchesToBeNotified;
 
     /**
@@ -92,7 +92,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * The name of the channel to receive confidential issue events notifications.
      * 
      */
-    @Export(name="confidentialIssueChannel", type=String.class, parameters={})
+    @Export(name="confidentialIssueChannel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> confidentialIssueChannel;
 
     /**
@@ -106,7 +106,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * Enable notifications for confidential issues events.
      * 
      */
-    @Export(name="confidentialIssuesEvents", type=Boolean.class, parameters={})
+    @Export(name="confidentialIssuesEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> confidentialIssuesEvents;
 
     /**
@@ -120,7 +120,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * Enable notifications for confidential note events.
      * 
      */
-    @Export(name="confidentialNoteEvents", type=Boolean.class, parameters={})
+    @Export(name="confidentialNoteEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> confidentialNoteEvents;
 
     /**
@@ -134,7 +134,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * The name of the channel to receive issue events notifications.
      * 
      */
-    @Export(name="issueChannel", type=String.class, parameters={})
+    @Export(name="issueChannel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> issueChannel;
 
     /**
@@ -148,7 +148,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * Enable notifications for issues events.
      * 
      */
-    @Export(name="issuesEvents", type=Boolean.class, parameters={})
+    @Export(name="issuesEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> issuesEvents;
 
     /**
@@ -162,7 +162,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
      * 
      */
-    @Export(name="jobEvents", type=Boolean.class, parameters={})
+    @Export(name="jobEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> jobEvents;
 
     /**
@@ -176,7 +176,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * The name of the channel to receive merge request events notifications.
      * 
      */
-    @Export(name="mergeRequestChannel", type=String.class, parameters={})
+    @Export(name="mergeRequestChannel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mergeRequestChannel;
 
     /**
@@ -190,7 +190,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * Enable notifications for merge requests events.
      * 
      */
-    @Export(name="mergeRequestsEvents", type=Boolean.class, parameters={})
+    @Export(name="mergeRequestsEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> mergeRequestsEvents;
 
     /**
@@ -204,7 +204,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * The name of the channel to receive note events notifications.
      * 
      */
-    @Export(name="noteChannel", type=String.class, parameters={})
+    @Export(name="noteChannel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> noteChannel;
 
     /**
@@ -218,7 +218,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * Enable notifications for note events.
      * 
      */
-    @Export(name="noteEvents", type=Boolean.class, parameters={})
+    @Export(name="noteEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> noteEvents;
 
     /**
@@ -232,7 +232,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * Send notifications for broken pipelines.
      * 
      */
-    @Export(name="notifyOnlyBrokenPipelines", type=Boolean.class, parameters={})
+    @Export(name="notifyOnlyBrokenPipelines", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> notifyOnlyBrokenPipelines;
 
     /**
@@ -250,7 +250,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* use 'branches_to_be_notified' argument instead */
-    @Export(name="notifyOnlyDefaultBranch", type=Boolean.class, parameters={})
+    @Export(name="notifyOnlyDefaultBranch", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> notifyOnlyDefaultBranch;
 
     /**
@@ -264,7 +264,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * The name of the channel to receive pipeline events notifications.
      * 
      */
-    @Export(name="pipelineChannel", type=String.class, parameters={})
+    @Export(name="pipelineChannel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pipelineChannel;
 
     /**
@@ -278,7 +278,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * Enable notifications for pipeline events.
      * 
      */
-    @Export(name="pipelineEvents", type=Boolean.class, parameters={})
+    @Export(name="pipelineEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> pipelineEvents;
 
     /**
@@ -292,7 +292,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * ID of the project you want to activate integration on.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -306,7 +306,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * The name of the channel to receive push events notifications.
      * 
      */
-    @Export(name="pushChannel", type=String.class, parameters={})
+    @Export(name="pushChannel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pushChannel;
 
     /**
@@ -320,7 +320,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * Enable notifications for push events.
      * 
      */
-    @Export(name="pushEvents", type=Boolean.class, parameters={})
+    @Export(name="pushEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> pushEvents;
 
     /**
@@ -334,7 +334,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * The name of the channel to receive tag push events notifications.
      * 
      */
-    @Export(name="tagPushChannel", type=String.class, parameters={})
+    @Export(name="tagPushChannel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tagPushChannel;
 
     /**
@@ -348,7 +348,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * Enable notifications for tag push events.
      * 
      */
-    @Export(name="tagPushEvents", type=Boolean.class, parameters={})
+    @Export(name="tagPushEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> tagPushEvents;
 
     /**
@@ -362,7 +362,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * Username to use.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
 
     /**
@@ -376,7 +376,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * Webhook URL (Example, https://hooks.slack.com/services/...). This value cannot be imported.
      * 
      */
-    @Export(name="webhook", type=String.class, parameters={})
+    @Export(name="webhook", refs={String.class}, tree="[0]")
     private Output<String> webhook;
 
     /**
@@ -390,7 +390,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * The name of the channel to receive wiki page events notifications.
      * 
      */
-    @Export(name="wikiPageChannel", type=String.class, parameters={})
+    @Export(name="wikiPageChannel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> wikiPageChannel;
 
     /**
@@ -404,7 +404,7 @@ public class ServiceSlack extends com.pulumi.resources.CustomResource {
      * Enable notifications for wiki page events.
      * 
      */
-    @Export(name="wikiPageEvents", type=Boolean.class, parameters={})
+    @Export(name="wikiPageEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> wikiPageEvents;
 
     /**

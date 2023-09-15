@@ -42,7 +42,7 @@ public class DeployToken extends com.pulumi.resources.CustomResource {
      * The id of the deploy token.
      * 
      */
-    @Export(name="deployTokenId", type=Integer.class, parameters={})
+    @Export(name="deployTokenId", refs={Integer.class}, tree="[0]")
     private Output<Integer> deployTokenId;
 
     /**
@@ -56,7 +56,7 @@ public class DeployToken extends com.pulumi.resources.CustomResource {
      * Time the token will expire it, RFC3339 format. Will not expire per default.
      * 
      */
-    @Export(name="expiresAt", type=String.class, parameters={})
+    @Export(name="expiresAt", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expiresAt;
 
     /**
@@ -70,7 +70,7 @@ public class DeployToken extends com.pulumi.resources.CustomResource {
      * The name or id of the group to add the deploy token to.
      * 
      */
-    @Export(name="group", type=String.class, parameters={})
+    @Export(name="group", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> group;
 
     /**
@@ -84,7 +84,7 @@ public class DeployToken extends com.pulumi.resources.CustomResource {
      * A name to describe the deploy token with.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -98,7 +98,7 @@ public class DeployToken extends com.pulumi.resources.CustomResource {
      * The name or id of the project to add the deploy token to.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> project;
 
     /**
@@ -112,7 +112,7 @@ public class DeployToken extends com.pulumi.resources.CustomResource {
      * Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
      * 
      */
-    @Export(name="scopes", type=List.class, parameters={String.class})
+    @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> scopes;
 
     /**
@@ -126,7 +126,7 @@ public class DeployToken extends com.pulumi.resources.CustomResource {
      * The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
      * 
      */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output<String> token;
 
     /**
@@ -140,7 +140,7 @@ public class DeployToken extends com.pulumi.resources.CustomResource {
      * A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**

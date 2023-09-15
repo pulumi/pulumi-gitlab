@@ -79,7 +79,7 @@ public class IntegrationGithub extends com.pulumi.resources.CustomResource {
      * Whether the integration is active.
      * 
      */
-    @Export(name="active", type=Boolean.class, parameters={})
+    @Export(name="active", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> active;
 
     /**
@@ -93,7 +93,7 @@ public class IntegrationGithub extends com.pulumi.resources.CustomResource {
      * Create time.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -107,7 +107,7 @@ public class IntegrationGithub extends com.pulumi.resources.CustomResource {
      * ID of the project you want to activate integration on.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -121,7 +121,7 @@ public class IntegrationGithub extends com.pulumi.resources.CustomResource {
      * The URL of the GitHub repo to integrate with, e,g, https://github.com/gitlabhq/terraform-provider-gitlab.
      * 
      */
-    @Export(name="repositoryUrl", type=String.class, parameters={})
+    @Export(name="repositoryUrl", refs={String.class}, tree="[0]")
     private Output<String> repositoryUrl;
 
     /**
@@ -135,7 +135,7 @@ public class IntegrationGithub extends com.pulumi.resources.CustomResource {
      * Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
      * 
      */
-    @Export(name="staticContext", type=Boolean.class, parameters={})
+    @Export(name="staticContext", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> staticContext;
 
     /**
@@ -149,7 +149,7 @@ public class IntegrationGithub extends com.pulumi.resources.CustomResource {
      * Title.
      * 
      */
-    @Export(name="title", type=String.class, parameters={})
+    @Export(name="title", refs={String.class}, tree="[0]")
     private Output<String> title;
 
     /**
@@ -163,7 +163,7 @@ public class IntegrationGithub extends com.pulumi.resources.CustomResource {
      * A GitHub personal access token with at least `repo:status` scope.
      * 
      */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output<String> token;
 
     /**
@@ -177,7 +177,7 @@ public class IntegrationGithub extends com.pulumi.resources.CustomResource {
      * Update time.
      * 
      */
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**

@@ -79,7 +79,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The IDs of the users to assign the issue to.
      * 
      */
-    @Export(name="assigneeIds", type=List.class, parameters={Integer.class})
+    @Export(name="assigneeIds", refs={List.class,Integer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<Integer>> assigneeIds;
 
     /**
@@ -93,7 +93,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The ID of the author of the issue. Use `gitlab.User` data source to get more information about the user.
      * 
      */
-    @Export(name="authorId", type=Integer.class, parameters={})
+    @Export(name="authorId", refs={Integer.class}, tree="[0]")
     private Output<Integer> authorId;
 
     /**
@@ -107,7 +107,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
      * 
      */
-    @Export(name="closedAt", type=String.class, parameters={})
+    @Export(name="closedAt", refs={String.class}, tree="[0]")
     private Output<String> closedAt;
 
     /**
@@ -121,7 +121,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The ID of the user that closed the issue. Use `gitlab.User` data source to get more information about the user.
      * 
      */
-    @Export(name="closedByUserId", type=Integer.class, parameters={})
+    @Export(name="closedByUserId", refs={Integer.class}, tree="[0]")
     private Output<Integer> closedByUserId;
 
     /**
@@ -135,7 +135,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * Set an issue to be confidential.
      * 
      */
-    @Export(name="confidential", type=Boolean.class, parameters={})
+    @Export(name="confidential", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> confidential;
 
     /**
@@ -149,7 +149,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -163,7 +163,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * Whether the issue is deleted instead of closed during destroy.
      * 
      */
-    @Export(name="deleteOnDestroy", type=Boolean.class, parameters={})
+    @Export(name="deleteOnDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteOnDestroy;
 
     /**
@@ -177,7 +177,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The description of an issue. Limited to 1,048,576 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -191,7 +191,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * Whether the issue is locked for discussions or not.
      * 
      */
-    @Export(name="discussionLocked", type=Boolean.class, parameters={})
+    @Export(name="discussionLocked", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> discussionLocked;
 
     /**
@@ -205,7 +205,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
      * 
      */
-    @Export(name="discussionToResolve", type=String.class, parameters={})
+    @Export(name="discussionToResolve", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> discussionToResolve;
 
     /**
@@ -219,7 +219,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The number of downvotes the issue has received.
      * 
      */
-    @Export(name="downvotes", type=Integer.class, parameters={})
+    @Export(name="downvotes", refs={Integer.class}, tree="[0]")
     private Output<Integer> downvotes;
 
     /**
@@ -233,7 +233,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
      * 
      */
-    @Export(name="dueDate", type=String.class, parameters={})
+    @Export(name="dueDate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dueDate;
 
     /**
@@ -247,7 +247,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * ID of the epic to add the issue to. Valid values are greater than or equal to 0.
      * 
      */
-    @Export(name="epicId", type=Integer.class, parameters={})
+    @Export(name="epicId", refs={Integer.class}, tree="[0]")
     private Output<Integer> epicId;
 
     /**
@@ -261,7 +261,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The ID of the epic issue.
      * 
      */
-    @Export(name="epicIssueId", type=Integer.class, parameters={})
+    @Export(name="epicIssueId", refs={Integer.class}, tree="[0]")
     private Output<Integer> epicIssueId;
 
     /**
@@ -275,7 +275,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The external ID of the issue.
      * 
      */
-    @Export(name="externalId", type=String.class, parameters={})
+    @Export(name="externalId", refs={String.class}, tree="[0]")
     private Output<String> externalId;
 
     /**
@@ -289,7 +289,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The human-readable time estimate of the issue.
      * 
      */
-    @Export(name="humanTimeEstimate", type=String.class, parameters={})
+    @Export(name="humanTimeEstimate", refs={String.class}, tree="[0]")
     private Output<String> humanTimeEstimate;
 
     /**
@@ -303,7 +303,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The human-readable total time spent of the issue.
      * 
      */
-    @Export(name="humanTotalTimeSpent", type=String.class, parameters={})
+    @Export(name="humanTotalTimeSpent", refs={String.class}, tree="[0]")
     private Output<String> humanTotalTimeSpent;
 
     /**
@@ -317,7 +317,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The internal ID of the project&#39;s issue.
      * 
      */
-    @Export(name="iid", type=Integer.class, parameters={})
+    @Export(name="iid", refs={Integer.class}, tree="[0]")
     private Output<Integer> iid;
 
     /**
@@ -331,7 +331,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The instance-wide ID of the issue.
      * 
      */
-    @Export(name="issueId", type=Integer.class, parameters={})
+    @Export(name="issueId", refs={Integer.class}, tree="[0]")
     private Output<Integer> issueId;
 
     /**
@@ -345,7 +345,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The ID of the issue link.
      * 
      */
-    @Export(name="issueLinkId", type=Integer.class, parameters={})
+    @Export(name="issueLinkId", refs={Integer.class}, tree="[0]")
     private Output<Integer> issueLinkId;
 
     /**
@@ -359,7 +359,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The type of issue. Valid values are: `issue`, `incident`, `test_case`.
      * 
      */
-    @Export(name="issueType", type=String.class, parameters={})
+    @Export(name="issueType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> issueType;
 
     /**
@@ -373,7 +373,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The labels of an issue.
      * 
      */
-    @Export(name="labels", type=List.class, parameters={String.class})
+    @Export(name="labels", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> labels;
 
     /**
@@ -387,7 +387,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The links of the issue.
      * 
      */
-    @Export(name="links", type=Map.class, parameters={String.class, String.class})
+    @Export(name="links", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> links;
 
     /**
@@ -401,7 +401,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
      * 
      */
-    @Export(name="mergeRequestToResolveDiscussionsOf", type=Integer.class, parameters={})
+    @Export(name="mergeRequestToResolveDiscussionsOf", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> mergeRequestToResolveDiscussionsOf;
 
     /**
@@ -415,7 +415,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The number of merge requests associated with the issue.
      * 
      */
-    @Export(name="mergeRequestsCount", type=Integer.class, parameters={})
+    @Export(name="mergeRequestsCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> mergeRequestsCount;
 
     /**
@@ -429,7 +429,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue&#39;s details.
      * 
      */
-    @Export(name="milestoneId", type=Integer.class, parameters={})
+    @Export(name="milestoneId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> milestoneId;
 
     /**
@@ -443,7 +443,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The ID of the issue that was moved to.
      * 
      */
-    @Export(name="movedToId", type=Integer.class, parameters={})
+    @Export(name="movedToId", refs={Integer.class}, tree="[0]")
     private Output<Integer> movedToId;
 
     /**
@@ -457,7 +457,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The name or ID of the project.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -471,7 +471,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The references of the issue.
      * 
      */
-    @Export(name="references", type=Map.class, parameters={String.class, String.class})
+    @Export(name="references", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> references;
 
     /**
@@ -485,7 +485,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The state of the issue. Valid values are: `opened`, `closed`.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> state;
 
     /**
@@ -499,7 +499,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * Whether the authenticated user is subscribed to the issue or not.
      * 
      */
-    @Export(name="subscribed", type=Boolean.class, parameters={})
+    @Export(name="subscribed", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> subscribed;
 
     /**
@@ -513,7 +513,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The task completion status. It&#39;s always a one element list.
      * 
      */
-    @Export(name="taskCompletionStatuses", type=List.class, parameters={ProjectIssueTaskCompletionStatus.class})
+    @Export(name="taskCompletionStatuses", refs={List.class,ProjectIssueTaskCompletionStatus.class}, tree="[0,1]")
     private Output<List<ProjectIssueTaskCompletionStatus>> taskCompletionStatuses;
 
     /**
@@ -527,7 +527,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The time estimate of the issue.
      * 
      */
-    @Export(name="timeEstimate", type=Integer.class, parameters={})
+    @Export(name="timeEstimate", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeEstimate;
 
     /**
@@ -541,7 +541,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The title of the issue.
      * 
      */
-    @Export(name="title", type=String.class, parameters={})
+    @Export(name="title", refs={String.class}, tree="[0]")
     private Output<String> title;
 
     /**
@@ -555,7 +555,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The total time spent of the issue.
      * 
      */
-    @Export(name="totalTimeSpent", type=Integer.class, parameters={})
+    @Export(name="totalTimeSpent", refs={Integer.class}, tree="[0]")
     private Output<Integer> totalTimeSpent;
 
     /**
@@ -569,7 +569,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
      * 
      */
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
@@ -583,7 +583,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The number of upvotes the issue has received.
      * 
      */
-    @Export(name="upvotes", type=Integer.class, parameters={})
+    @Export(name="upvotes", refs={Integer.class}, tree="[0]")
     private Output<Integer> upvotes;
 
     /**
@@ -597,7 +597,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The number of user notes on the issue.
      * 
      */
-    @Export(name="userNotesCount", type=Integer.class, parameters={})
+    @Export(name="userNotesCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> userNotesCount;
 
     /**
@@ -611,7 +611,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The web URL of the issue.
      * 
      */
-    @Export(name="webUrl", type=String.class, parameters={})
+    @Export(name="webUrl", refs={String.class}, tree="[0]")
     private Output<String> webUrl;
 
     /**
@@ -625,7 +625,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * The weight of the issue. Valid values are greater than or equal to 0.
      * 
      */
-    @Export(name="weight", type=Integer.class, parameters={})
+    @Export(name="weight", refs={Integer.class}, tree="[0]")
     private Output<Integer> weight;
 
     /**

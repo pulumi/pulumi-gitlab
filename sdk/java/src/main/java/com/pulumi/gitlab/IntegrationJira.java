@@ -76,7 +76,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * Whether the integration is active.
      * 
      */
-    @Export(name="active", type=Boolean.class, parameters={})
+    @Export(name="active", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> active;
 
     /**
@@ -90,7 +90,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
      * 
      */
-    @Export(name="apiUrl", type=String.class, parameters={})
+    @Export(name="apiUrl", refs={String.class}, tree="[0]")
     private Output<String> apiUrl;
 
     /**
@@ -104,7 +104,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * Enable comments inside Jira issues on each GitLab event (commit / merge request)
      * 
      */
-    @Export(name="commentOnEventEnabled", type=Boolean.class, parameters={})
+    @Export(name="commentOnEventEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> commentOnEventEnabled;
 
     /**
@@ -118,7 +118,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * Enable notifications for commit events
      * 
      */
-    @Export(name="commitEvents", type=Boolean.class, parameters={})
+    @Export(name="commitEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> commitEvents;
 
     /**
@@ -132,7 +132,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * Create time.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -146,7 +146,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * Enable notifications for issues events.
      * 
      */
-    @Export(name="issuesEvents", type=Boolean.class, parameters={})
+    @Export(name="issuesEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> issuesEvents;
 
     /**
@@ -160,7 +160,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
      * 
      */
-    @Export(name="jiraIssueTransitionId", type=String.class, parameters={})
+    @Export(name="jiraIssueTransitionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> jiraIssueTransitionId;
 
     /**
@@ -174,7 +174,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * Enable notifications for job events.
      * 
      */
-    @Export(name="jobEvents", type=Boolean.class, parameters={})
+    @Export(name="jobEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> jobEvents;
 
     /**
@@ -188,7 +188,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * Enable notifications for merge request events
      * 
      */
-    @Export(name="mergeRequestsEvents", type=Boolean.class, parameters={})
+    @Export(name="mergeRequestsEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> mergeRequestsEvents;
 
     /**
@@ -202,7 +202,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * Enable notifications for note events.
      * 
      */
-    @Export(name="noteEvents", type=Boolean.class, parameters={})
+    @Export(name="noteEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> noteEvents;
 
     /**
@@ -216,7 +216,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * The password of the user created to be used with GitLab/JIRA.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -230,7 +230,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * Enable notifications for pipeline events.
      * 
      */
-    @Export(name="pipelineEvents", type=Boolean.class, parameters={})
+    @Export(name="pipelineEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> pipelineEvents;
 
     /**
@@ -244,7 +244,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * ID of the project you want to activate integration on.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -258,7 +258,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * The short identifier for your JIRA project, all uppercase, e.g., PROJ.
      * 
      */
-    @Export(name="projectKey", type=String.class, parameters={})
+    @Export(name="projectKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectKey;
 
     /**
@@ -272,7 +272,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * Enable notifications for push events.
      * 
      */
-    @Export(name="pushEvents", type=Boolean.class, parameters={})
+    @Export(name="pushEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> pushEvents;
 
     /**
@@ -286,7 +286,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * Enable notifications for tag_push events.
      * 
      */
-    @Export(name="tagPushEvents", type=Boolean.class, parameters={})
+    @Export(name="tagPushEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> tagPushEvents;
 
     /**
@@ -300,7 +300,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * Title.
      * 
      */
-    @Export(name="title", type=String.class, parameters={})
+    @Export(name="title", refs={String.class}, tree="[0]")
     private Output<String> title;
 
     /**
@@ -314,7 +314,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * Update time.
      * 
      */
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
@@ -328,7 +328,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
@@ -342,7 +342,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * The username of the user created to be used with GitLab/JIRA.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**

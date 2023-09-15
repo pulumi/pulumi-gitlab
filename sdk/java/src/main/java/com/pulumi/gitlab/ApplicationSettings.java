@@ -57,7 +57,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * If set, abuse reports are sent to this address. Abuse reports are always available in the Admin Area.
      * 
      */
-    @Export(name="abuseNotificationEmail", type=String.class, parameters={})
+    @Export(name="abuseNotificationEmail", refs={String.class}, tree="[0]")
     private Output<String> abuseNotificationEmail;
 
     /**
@@ -71,7 +71,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Require administrators to enable Admin Mode by re-authenticating for administrative tasks.
      * 
      */
-    @Export(name="adminMode", type=Boolean.class, parameters={})
+    @Export(name="adminMode", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> adminMode;
 
     /**
@@ -85,7 +85,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Where to redirect users after logout.
      * 
      */
-    @Export(name="afterSignOutPath", type=String.class, parameters={})
+    @Export(name="afterSignOutPath", refs={String.class}, tree="[0]")
     private Output<String> afterSignOutPath;
 
     /**
@@ -99,7 +99,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Text shown to the user after signing up.
      * 
      */
-    @Export(name="afterSignUpText", type=String.class, parameters={})
+    @Export(name="afterSignUpText", refs={String.class}, tree="[0]")
     private Output<String> afterSignUpText;
 
     /**
@@ -113,7 +113,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * API key for Akismet spam protection.
      * 
      */
-    @Export(name="akismetApiKey", type=String.class, parameters={})
+    @Export(name="akismetApiKey", refs={String.class}, tree="[0]")
     private Output<String> akismetApiKey;
 
     /**
@@ -127,7 +127,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
      * 
      */
-    @Export(name="akismetEnabled", type=Boolean.class, parameters={})
+    @Export(name="akismetEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> akismetEnabled;
 
     /**
@@ -141,7 +141,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Set to true to allow group owners to manage LDAP.
      * 
      */
-    @Export(name="allowGroupOwnersToManageLdap", type=Boolean.class, parameters={})
+    @Export(name="allowGroupOwnersToManageLdap", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowGroupOwnersToManageLdap;
 
     /**
@@ -155,7 +155,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Allow requests to the local network from system hooks.
      * 
      */
-    @Export(name="allowLocalRequestsFromSystemHooks", type=Boolean.class, parameters={})
+    @Export(name="allowLocalRequestsFromSystemHooks", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowLocalRequestsFromSystemHooks;
 
     /**
@@ -169,7 +169,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Allow requests to the local network from web hooks and services.
      * 
      */
-    @Export(name="allowLocalRequestsFromWebHooksAndServices", type=Boolean.class, parameters={})
+    @Export(name="allowLocalRequestsFromWebHooksAndServices", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowLocalRequestsFromWebHooksAndServices;
 
     /**
@@ -183,7 +183,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
      * 
      */
-    @Export(name="archiveBuildsInHumanReadable", type=String.class, parameters={})
+    @Export(name="archiveBuildsInHumanReadable", refs={String.class}, tree="[0]")
     private Output<String> archiveBuildsInHumanReadable;
 
     /**
@@ -197,7 +197,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
      * 
      */
-    @Export(name="assetProxyAllowlists", type=List.class, parameters={String.class})
+    @Export(name="assetProxyAllowlists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> assetProxyAllowlists;
 
     /**
@@ -211,7 +211,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: asset*proxy*url) Enable proxying of assets. GitLab restart is required to apply changes.
      * 
      */
-    @Export(name="assetProxyEnabled", type=Boolean.class, parameters={})
+    @Export(name="assetProxyEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> assetProxyEnabled;
 
     /**
@@ -225,7 +225,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Shared secret with the asset proxy server. GitLab restart is required to apply changes.
      * 
      */
-    @Export(name="assetProxySecretKey", type=String.class, parameters={})
+    @Export(name="assetProxySecretKey", refs={String.class}, tree="[0]")
     private Output<String> assetProxySecretKey;
 
     /**
@@ -239,7 +239,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * URL of the asset proxy server. GitLab restart is required to apply changes.
      * 
      */
-    @Export(name="assetProxyUrl", type=String.class, parameters={})
+    @Export(name="assetProxyUrl", refs={String.class}, tree="[0]")
     private Output<String> assetProxyUrl;
 
     /**
@@ -253,7 +253,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * By default, we write to the authorized_keys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
      * 
      */
-    @Export(name="authorizedKeysEnabled", type=Boolean.class, parameters={})
+    @Export(name="authorizedKeysEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> authorizedKeysEnabled;
 
     /**
@@ -267,7 +267,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
      * 
      */
-    @Export(name="autoDevopsDomain", type=String.class, parameters={})
+    @Export(name="autoDevopsDomain", refs={String.class}, tree="[0]")
     private Output<String> autoDevopsDomain;
 
     /**
@@ -281,7 +281,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
      * 
      */
-    @Export(name="autoDevopsEnabled", type=Boolean.class, parameters={})
+    @Export(name="autoDevopsEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoDevopsEnabled;
 
     /**
@@ -295,7 +295,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enabling this permits automatic allocation of purchased storage in a namespace.
      * 
      */
-    @Export(name="automaticPurchasedStorageAllocation", type=Boolean.class, parameters={})
+    @Export(name="automaticPurchasedStorageAllocation", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> automaticPurchasedStorageAllocation;
 
     /**
@@ -309,7 +309,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
      * 
      */
-    @Export(name="canCreateGroup", type=Boolean.class, parameters={})
+    @Export(name="canCreateGroup", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> canCreateGroup;
 
     /**
@@ -323,7 +323,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
      * 
      */
-    @Export(name="checkNamespacePlan", type=Boolean.class, parameters={})
+    @Export(name="checkNamespacePlan", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> checkNamespacePlan;
 
     /**
@@ -337,7 +337,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Custom hostname (for private commit emails).
      * 
      */
-    @Export(name="commitEmailHostname", type=String.class, parameters={})
+    @Export(name="commitEmailHostname", refs={String.class}, tree="[0]")
     private Output<String> commitEmailHostname;
 
     /**
@@ -351,7 +351,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable cleanup policies for all projects.
      * 
      */
-    @Export(name="containerExpirationPoliciesEnableHistoricEntries", type=Boolean.class, parameters={})
+    @Export(name="containerExpirationPoliciesEnableHistoricEntries", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> containerExpirationPoliciesEnableHistoricEntries;
 
     /**
@@ -365,7 +365,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The maximum number of tags that can be deleted in a single execution of cleanup policies.
      * 
      */
-    @Export(name="containerRegistryCleanupTagsServiceMaxListSize", type=Integer.class, parameters={})
+    @Export(name="containerRegistryCleanupTagsServiceMaxListSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> containerRegistryCleanupTagsServiceMaxListSize;
 
     /**
@@ -379,7 +379,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The maximum time, in seconds, that the cleanup process can take to delete a batch of tags for cleanup policies.
      * 
      */
-    @Export(name="containerRegistryDeleteTagsServiceTimeout", type=Integer.class, parameters={})
+    @Export(name="containerRegistryDeleteTagsServiceTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> containerRegistryDeleteTagsServiceTimeout;
 
     /**
@@ -393,7 +393,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Caching during the execution of cleanup policies.
      * 
      */
-    @Export(name="containerRegistryExpirationPoliciesCaching", type=Boolean.class, parameters={})
+    @Export(name="containerRegistryExpirationPoliciesCaching", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> containerRegistryExpirationPoliciesCaching;
 
     /**
@@ -407,7 +407,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Number of workers for cleanup policies.
      * 
      */
-    @Export(name="containerRegistryExpirationPoliciesWorkerCapacity", type=Integer.class, parameters={})
+    @Export(name="containerRegistryExpirationPoliciesWorkerCapacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> containerRegistryExpirationPoliciesWorkerCapacity;
 
     /**
@@ -421,7 +421,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Container Registry token duration in minutes.
      * 
      */
-    @Export(name="containerRegistryTokenExpireDelay", type=Integer.class, parameters={})
+    @Export(name="containerRegistryTokenExpireDelay", refs={Integer.class}, tree="[0]")
     private Output<Integer> containerRegistryTokenExpireDelay;
 
     /**
@@ -435,7 +435,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable automatic deactivation of dormant users.
      * 
      */
-    @Export(name="deactivateDormantUsers", type=Boolean.class, parameters={})
+    @Export(name="deactivateDormantUsers", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deactivateDormantUsers;
 
     /**
@@ -449,7 +449,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Set the default expiration time for each job’s artifacts.
      * 
      */
-    @Export(name="defaultArtifactsExpireIn", type=String.class, parameters={})
+    @Export(name="defaultArtifactsExpireIn", refs={String.class}, tree="[0]")
     private Output<String> defaultArtifactsExpireIn;
 
     /**
@@ -463,7 +463,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Instance-level custom initial branch name (introduced in GitLab 13.2).
      * 
      */
-    @Export(name="defaultBranchName", type=String.class, parameters={})
+    @Export(name="defaultBranchName", refs={String.class}, tree="[0]")
     private Output<String> defaultBranchName;
 
     /**
@@ -477,7 +477,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
      * 
      */
-    @Export(name="defaultBranchProtection", type=Integer.class, parameters={})
+    @Export(name="defaultBranchProtection", refs={Integer.class}, tree="[0]")
     private Output<Integer> defaultBranchProtection;
 
     /**
@@ -491,7 +491,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
      * 
      */
-    @Export(name="defaultCiConfigPath", type=String.class, parameters={})
+    @Export(name="defaultCiConfigPath", refs={String.class}, tree="[0]")
     private Output<String> defaultCiConfigPath;
 
     /**
@@ -505,7 +505,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * What visibility level new groups receive. Can take private, internal and public as a parameter.
      * 
      */
-    @Export(name="defaultGroupVisibility", type=String.class, parameters={})
+    @Export(name="defaultGroupVisibility", refs={String.class}, tree="[0]")
     private Output<String> defaultGroupVisibility;
 
     /**
@@ -519,7 +519,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
      * 
      */
-    @Export(name="defaultProjectCreation", type=Integer.class, parameters={})
+    @Export(name="defaultProjectCreation", refs={Integer.class}, tree="[0]")
     private Output<Integer> defaultProjectCreation;
 
     /**
@@ -533,7 +533,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * What visibility level new projects receive. Can take private, internal and public as a parameter.
      * 
      */
-    @Export(name="defaultProjectVisibility", type=String.class, parameters={})
+    @Export(name="defaultProjectVisibility", refs={String.class}, tree="[0]")
     private Output<String> defaultProjectVisibility;
 
     /**
@@ -547,7 +547,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Project limit per user.
      * 
      */
-    @Export(name="defaultProjectsLimit", type=Integer.class, parameters={})
+    @Export(name="defaultProjectsLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> defaultProjectsLimit;
 
     /**
@@ -561,7 +561,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * What visibility level new snippets receive. Can take private, internal and public as a parameter.
      * 
      */
-    @Export(name="defaultSnippetVisibility", type=String.class, parameters={})
+    @Export(name="defaultSnippetVisibility", refs={String.class}, tree="[0]")
     private Output<String> defaultSnippetVisibility;
 
     /**
@@ -575,7 +575,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable delayed group deletion. Introduced in GitLab 15.0. From GitLab 15.1, disables and locks the group-level setting for delayed protect deletion when set to false.
      * 
      */
-    @Export(name="delayedGroupDeletion", type=Boolean.class, parameters={})
+    @Export(name="delayedGroupDeletion", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> delayedGroupDeletion;
 
     /**
@@ -589,7 +589,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable delayed project deletion by default in new groups. From GitLab 15.1, can only be enabled when delayed*group*deletion is true.
      * 
      */
-    @Export(name="delayedProjectDeletion", type=Boolean.class, parameters={})
+    @Export(name="delayedProjectDeletion", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> delayedProjectDeletion;
 
     /**
@@ -603,7 +603,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
      * 
      */
-    @Export(name="deleteInactiveProjects", type=Boolean.class, parameters={})
+    @Export(name="deleteInactiveProjects", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deleteInactiveProjects;
 
     /**
@@ -617,7 +617,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90. From GitLab 15.1, a hook on deletion*adjourned*period sets the period to 1 on every update, and sets both delayed*project*deletion and delayed*group*deletion to false if the period is 0.
      * 
      */
-    @Export(name="deletionAdjournedPeriod", type=Integer.class, parameters={})
+    @Export(name="deletionAdjournedPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> deletionAdjournedPeriod;
 
     /**
@@ -631,7 +631,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum files in a diff.
      * 
      */
-    @Export(name="diffMaxFiles", type=Integer.class, parameters={})
+    @Export(name="diffMaxFiles", refs={Integer.class}, tree="[0]")
     private Output<Integer> diffMaxFiles;
 
     /**
@@ -645,7 +645,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum lines in a diff.
      * 
      */
-    @Export(name="diffMaxLines", type=Integer.class, parameters={})
+    @Export(name="diffMaxLines", refs={Integer.class}, tree="[0]")
     private Output<Integer> diffMaxLines;
 
     /**
@@ -659,7 +659,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum diff patch size, in bytes.
      * 
      */
-    @Export(name="diffMaxPatchBytes", type=Integer.class, parameters={})
+    @Export(name="diffMaxPatchBytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> diffMaxPatchBytes;
 
     /**
@@ -673,7 +673,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
      * 
      */
-    @Export(name="disableFeedToken", type=Boolean.class, parameters={})
+    @Export(name="disableFeedToken", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableFeedToken;
 
     /**
@@ -687,7 +687,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Disabled OAuth sign-in sources.
      * 
      */
-    @Export(name="disabledOauthSignInSources", type=List.class, parameters={String.class})
+    @Export(name="disabledOauthSignInSources", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> disabledOauthSignInSources;
 
     /**
@@ -701,7 +701,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enforce DNS rebinding attack protection.
      * 
      */
-    @Export(name="dnsRebindingProtectionEnabled", type=Boolean.class, parameters={})
+    @Export(name="dnsRebindingProtectionEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> dnsRebindingProtectionEnabled;
 
     /**
@@ -715,7 +715,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Force people to use only corporate emails for sign-up. Null means there is no restriction.
      * 
      */
-    @Export(name="domainAllowlists", type=List.class, parameters={String.class})
+    @Export(name="domainAllowlists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> domainAllowlists;
 
     /**
@@ -729,7 +729,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: domain_denylist) Allows blocking sign-ups from emails from specific domains.
      * 
      */
-    @Export(name="domainDenylistEnabled", type=Boolean.class, parameters={})
+    @Export(name="domainDenylistEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> domainDenylistEnabled;
 
     /**
@@ -743,7 +743,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
      * 
      */
-    @Export(name="domainDenylists", type=List.class, parameters={String.class})
+    @Export(name="domainDenylists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> domainDenylists;
 
     /**
@@ -757,7 +757,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
      * 
      */
-    @Export(name="dsaKeyRestriction", type=Integer.class, parameters={})
+    @Export(name="dsaKeyRestriction", refs={Integer.class}, tree="[0]")
     private Output<Integer> dsaKeyRestriction;
 
     /**
@@ -771,7 +771,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
      * 
      */
-    @Export(name="ecdsaKeyRestriction", type=Integer.class, parameters={})
+    @Export(name="ecdsaKeyRestriction", refs={Integer.class}, tree="[0]")
     private Output<Integer> ecdsaKeyRestriction;
 
     /**
@@ -785,7 +785,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
      * 
      */
-    @Export(name="ecdsaSkKeyRestriction", type=Integer.class, parameters={})
+    @Export(name="ecdsaSkKeyRestriction", refs={Integer.class}, tree="[0]")
     private Output<Integer> ecdsaSkKeyRestriction;
 
     /**
@@ -799,7 +799,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
      * 
      */
-    @Export(name="ed25519KeyRestriction", type=Integer.class, parameters={})
+    @Export(name="ed25519KeyRestriction", refs={Integer.class}, tree="[0]")
     private Output<Integer> ed25519KeyRestriction;
 
     /**
@@ -813,7 +813,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
      * 
      */
-    @Export(name="ed25519SkKeyRestriction", type=Integer.class, parameters={})
+    @Export(name="ed25519SkKeyRestriction", refs={Integer.class}, tree="[0]")
     private Output<Integer> ed25519SkKeyRestriction;
 
     /**
@@ -827,7 +827,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * AWS IAM access key ID.
      * 
      */
-    @Export(name="eksAccessKeyId", type=String.class, parameters={})
+    @Export(name="eksAccessKeyId", refs={String.class}, tree="[0]")
     private Output<String> eksAccessKeyId;
 
     /**
@@ -841,7 +841,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Amazon account ID.
      * 
      */
-    @Export(name="eksAccountId", type=String.class, parameters={})
+    @Export(name="eksAccountId", refs={String.class}, tree="[0]")
     private Output<String> eksAccountId;
 
     /**
@@ -855,7 +855,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable integration with Amazon EKS.
      * 
      */
-    @Export(name="eksIntegrationEnabled", type=Boolean.class, parameters={})
+    @Export(name="eksIntegrationEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> eksIntegrationEnabled;
 
     /**
@@ -869,7 +869,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * AWS IAM secret access key.
      * 
      */
-    @Export(name="eksSecretAccessKey", type=String.class, parameters={})
+    @Export(name="eksSecretAccessKey", refs={String.class}, tree="[0]")
     private Output<String> eksSecretAccessKey;
 
     /**
@@ -883,7 +883,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable the use of AWS hosted Elasticsearch.
      * 
      */
-    @Export(name="elasticsearchAws", type=Boolean.class, parameters={})
+    @Export(name="elasticsearchAws", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> elasticsearchAws;
 
     /**
@@ -897,7 +897,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * AWS IAM access key.
      * 
      */
-    @Export(name="elasticsearchAwsAccessKey", type=String.class, parameters={})
+    @Export(name="elasticsearchAwsAccessKey", refs={String.class}, tree="[0]")
     private Output<String> elasticsearchAwsAccessKey;
 
     /**
@@ -911,7 +911,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The AWS region the Elasticsearch domain is configured.
      * 
      */
-    @Export(name="elasticsearchAwsRegion", type=String.class, parameters={})
+    @Export(name="elasticsearchAwsRegion", refs={String.class}, tree="[0]")
     private Output<String> elasticsearchAwsRegion;
 
     /**
@@ -925,7 +925,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * AWS IAM secret access key.
      * 
      */
-    @Export(name="elasticsearchAwsSecretAccessKey", type=String.class, parameters={})
+    @Export(name="elasticsearchAwsSecretAccessKey", refs={String.class}, tree="[0]")
     private Output<String> elasticsearchAwsSecretAccessKey;
 
     /**
@@ -939,7 +939,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum size of text fields to index by Elasticsearch. 0 value means no limit. This does not apply to repository and wiki indexing.
      * 
      */
-    @Export(name="elasticsearchIndexedFieldLengthLimit", type=Integer.class, parameters={})
+    @Export(name="elasticsearchIndexedFieldLengthLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> elasticsearchIndexedFieldLengthLimit;
 
     /**
@@ -953,7 +953,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum size of repository and wiki files that are indexed by Elasticsearch.
      * 
      */
-    @Export(name="elasticsearchIndexedFileSizeLimitKb", type=Integer.class, parameters={})
+    @Export(name="elasticsearchIndexedFileSizeLimitKb", refs={Integer.class}, tree="[0]")
     private Output<Integer> elasticsearchIndexedFileSizeLimitKb;
 
     /**
@@ -967,7 +967,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable Elasticsearch indexing.
      * 
      */
-    @Export(name="elasticsearchIndexing", type=Boolean.class, parameters={})
+    @Export(name="elasticsearchIndexing", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> elasticsearchIndexing;
 
     /**
@@ -981,7 +981,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Limit Elasticsearch to index certain namespaces and projects.
      * 
      */
-    @Export(name="elasticsearchLimitIndexing", type=Boolean.class, parameters={})
+    @Export(name="elasticsearchLimitIndexing", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> elasticsearchLimitIndexing;
 
     /**
@@ -995,7 +995,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum concurrency of Elasticsearch bulk requests per indexing operation. This only applies to repository indexing operations.
      * 
      */
-    @Export(name="elasticsearchMaxBulkConcurrency", type=Integer.class, parameters={})
+    @Export(name="elasticsearchMaxBulkConcurrency", refs={Integer.class}, tree="[0]")
     private Output<Integer> elasticsearchMaxBulkConcurrency;
 
     /**
@@ -1009,7 +1009,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
      * 
      */
-    @Export(name="elasticsearchMaxBulkSizeMb", type=Integer.class, parameters={})
+    @Export(name="elasticsearchMaxBulkSizeMb", refs={Integer.class}, tree="[0]")
     private Output<Integer> elasticsearchMaxBulkSizeMb;
 
     /**
@@ -1023,7 +1023,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      * 
      */
-    @Export(name="elasticsearchNamespaceIds", type=List.class, parameters={String.class})
+    @Export(name="elasticsearchNamespaceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> elasticsearchNamespaceIds;
 
     /**
@@ -1037,7 +1037,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The password of your Elasticsearch instance.
      * 
      */
-    @Export(name="elasticsearchPassword", type=String.class, parameters={})
+    @Export(name="elasticsearchPassword", refs={String.class}, tree="[0]")
     private Output<String> elasticsearchPassword;
 
     /**
@@ -1051,7 +1051,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      * 
      */
-    @Export(name="elasticsearchProjectIds", type=List.class, parameters={String.class})
+    @Export(name="elasticsearchProjectIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> elasticsearchProjectIds;
 
     /**
@@ -1065,7 +1065,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable Elasticsearch search.
      * 
      */
-    @Export(name="elasticsearchSearch", type=Boolean.class, parameters={})
+    @Export(name="elasticsearchSearch", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> elasticsearchSearch;
 
     /**
@@ -1079,7 +1079,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
      * 
      */
-    @Export(name="elasticsearchUrls", type=List.class, parameters={String.class})
+    @Export(name="elasticsearchUrls", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> elasticsearchUrls;
 
     /**
@@ -1093,7 +1093,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The username of your Elasticsearch instance.
      * 
      */
-    @Export(name="elasticsearchUsername", type=String.class, parameters={})
+    @Export(name="elasticsearchUsername", refs={String.class}, tree="[0]")
     private Output<String> elasticsearchUsername;
 
     /**
@@ -1107,7 +1107,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Additional text added to the bottom of every email for legal/auditing/compliance reasons.
      * 
      */
-    @Export(name="emailAdditionalText", type=String.class, parameters={})
+    @Export(name="emailAdditionalText", refs={String.class}, tree="[0]")
     private Output<String> emailAdditionalText;
 
     /**
@@ -1121,7 +1121,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Some email servers do not support overriding the email sender name. Enable this option to include the name of the author of the issue, merge request or comment in the email body instead.
      * 
      */
-    @Export(name="emailAuthorInBody", type=Boolean.class, parameters={})
+    @Export(name="emailAuthorInBody", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> emailAuthorInBody;
 
     /**
@@ -1135,7 +1135,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enabled protocols for Git access. Allowed values are: ssh, http, and nil to allow both protocols.
      * 
      */
-    @Export(name="enabledGitAccessProtocol", type=String.class, parameters={})
+    @Export(name="enabledGitAccessProtocol", refs={String.class}, tree="[0]")
     private Output<String> enabledGitAccessProtocol;
 
     /**
@@ -1149,7 +1149,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enabling this permits enforcement of namespace storage limits.
      * 
      */
-    @Export(name="enforceNamespaceStorageLimit", type=Boolean.class, parameters={})
+    @Export(name="enforceNamespaceStorageLimit", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enforceNamespaceStorageLimit;
 
     /**
@@ -1163,7 +1163,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: terms) Enforce application ToS to all users.
      * 
      */
-    @Export(name="enforceTerms", type=Boolean.class, parameters={})
+    @Export(name="enforceTerms", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enforceTerms;
 
     /**
@@ -1177,7 +1177,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: external*auth*client_key) The certificate to use to authenticate with the external authorization service.
      * 
      */
-    @Export(name="externalAuthClientCert", type=String.class, parameters={})
+    @Export(name="externalAuthClientCert", refs={String.class}, tree="[0]")
     private Output<String> externalAuthClientCert;
 
     /**
@@ -1191,7 +1191,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Private key for the certificate when authentication is required for the external authorization service, this is encrypted when stored.
      * 
      */
-    @Export(name="externalAuthClientKey", type=String.class, parameters={})
+    @Export(name="externalAuthClientKey", refs={String.class}, tree="[0]")
     private Output<String> externalAuthClientKey;
 
     /**
@@ -1205,7 +1205,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Passphrase to use for the private key when authenticating with the external service this is encrypted when stored.
      * 
      */
-    @Export(name="externalAuthClientKeyPass", type=String.class, parameters={})
+    @Export(name="externalAuthClientKeyPass", refs={String.class}, tree="[0]")
     private Output<String> externalAuthClientKeyPass;
 
     /**
@@ -1219,7 +1219,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The default classification label to use when requesting authorization and no classification label has been specified on the project.
      * 
      */
-    @Export(name="externalAuthorizationServiceDefaultLabel", type=String.class, parameters={})
+    @Export(name="externalAuthorizationServiceDefaultLabel", refs={String.class}, tree="[0]")
     private Output<String> externalAuthorizationServiceDefaultLabel;
 
     /**
@@ -1233,7 +1233,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: external*authorization*service*default*label, external*authorization*service*timeout and external*authorization*service*url) Enable using an external authorization service for accessing projects.
      * 
      */
-    @Export(name="externalAuthorizationServiceEnabled", type=Boolean.class, parameters={})
+    @Export(name="externalAuthorizationServiceEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> externalAuthorizationServiceEnabled;
 
     /**
@@ -1247,7 +1247,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The timeout after which an authorization request is aborted, in seconds. When a request times out, access is denied to the user. (min: 0.001, max: 10, step: 0.001).
      * 
      */
-    @Export(name="externalAuthorizationServiceTimeout", type=Double.class, parameters={})
+    @Export(name="externalAuthorizationServiceTimeout", refs={Double.class}, tree="[0]")
     private Output<Double> externalAuthorizationServiceTimeout;
 
     /**
@@ -1261,7 +1261,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * URL to which authorization requests are directed.
      * 
      */
-    @Export(name="externalAuthorizationServiceUrl", type=String.class, parameters={})
+    @Export(name="externalAuthorizationServiceUrl", refs={String.class}, tree="[0]")
     private Output<String> externalAuthorizationServiceUrl;
 
     /**
@@ -1275,7 +1275,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * How long to wait for a response from the pipeline validation service. Assumes OK if it times out.
      * 
      */
-    @Export(name="externalPipelineValidationServiceTimeout", type=Integer.class, parameters={})
+    @Export(name="externalPipelineValidationServiceTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> externalPipelineValidationServiceTimeout;
 
     /**
@@ -1289,7 +1289,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Optional. Token to include as the X-Gitlab-Token header in requests to the URL in external*pipeline*validation*service*url.
      * 
      */
-    @Export(name="externalPipelineValidationServiceToken", type=String.class, parameters={})
+    @Export(name="externalPipelineValidationServiceToken", refs={String.class}, tree="[0]")
     private Output<String> externalPipelineValidationServiceToken;
 
     /**
@@ -1303,7 +1303,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * URL to use for pipeline validation requests.
      * 
      */
-    @Export(name="externalPipelineValidationServiceUrl", type=String.class, parameters={})
+    @Export(name="externalPipelineValidationServiceUrl", refs={String.class}, tree="[0]")
     private Output<String> externalPipelineValidationServiceUrl;
 
     /**
@@ -1317,7 +1317,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The ID of a project to load custom file templates from.
      * 
      */
-    @Export(name="fileTemplateProjectId", type=Integer.class, parameters={})
+    @Export(name="fileTemplateProjectId", refs={Integer.class}, tree="[0]")
     private Output<Integer> fileTemplateProjectId;
 
     /**
@@ -1331,7 +1331,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
      * 
      */
-    @Export(name="firstDayOfWeek", type=Integer.class, parameters={})
+    @Export(name="firstDayOfWeek", refs={Integer.class}, tree="[0]")
     private Output<Integer> firstDayOfWeek;
 
     /**
@@ -1345,7 +1345,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, 1.1.1.1, 2.2.2.0/24.
      * 
      */
-    @Export(name="geoNodeAllowedIps", type=String.class, parameters={})
+    @Export(name="geoNodeAllowedIps", refs={String.class}, tree="[0]")
     private Output<String> geoNodeAllowedIps;
 
     /**
@@ -1359,7 +1359,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The amount of seconds after which a request to get a secondary node status times out.
      * 
      */
-    @Export(name="geoStatusTimeout", type=Integer.class, parameters={})
+    @Export(name="geoStatusTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> geoStatusTimeout;
 
     /**
@@ -1373,7 +1373,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2.
      * 
      */
-    @Export(name="gitRateLimitUsersAllowlists", type=List.class, parameters={String.class})
+    @Export(name="gitRateLimitUsersAllowlists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> gitRateLimitUsersAllowlists;
 
     /**
@@ -1387,7 +1387,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum duration (in minutes) of a session for Git operations when 2FA is enabled.
      * 
      */
-    @Export(name="gitTwoFactorSessionExpiry", type=Integer.class, parameters={})
+    @Export(name="gitTwoFactorSessionExpiry", refs={Integer.class}, tree="[0]")
     private Output<Integer> gitTwoFactorSessionExpiry;
 
     /**
@@ -1401,7 +1401,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Default Gitaly timeout, in seconds. This timeout is not enforced for Git fetch/push operations or Sidekiq jobs. Set to 0 to disable timeouts.
      * 
      */
-    @Export(name="gitalyTimeoutDefault", type=Integer.class, parameters={})
+    @Export(name="gitalyTimeoutDefault", refs={Integer.class}, tree="[0]")
     private Output<Integer> gitalyTimeoutDefault;
 
     /**
@@ -1415,7 +1415,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Gitaly fast operation timeout, in seconds. Some Gitaly operations are expected to be fast. If they exceed this threshold, there may be a problem with a storage shard and ‘failing fast’ can help maintain the stability of the GitLab instance. Set to 0 to disable timeouts.
      * 
      */
-    @Export(name="gitalyTimeoutFast", type=Integer.class, parameters={})
+    @Export(name="gitalyTimeoutFast", refs={Integer.class}, tree="[0]")
     private Output<Integer> gitalyTimeoutFast;
 
     /**
@@ -1429,7 +1429,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Medium Gitaly timeout, in seconds. This should be a value between the Fast and the Default timeout. Set to 0 to disable timeouts.
      * 
      */
-    @Export(name="gitalyTimeoutMedium", type=Integer.class, parameters={})
+    @Export(name="gitalyTimeoutMedium", refs={Integer.class}, tree="[0]")
     private Output<Integer> gitalyTimeoutMedium;
 
     /**
@@ -1443,7 +1443,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable Grafana.
      * 
      */
-    @Export(name="grafanaEnabled", type=Boolean.class, parameters={})
+    @Export(name="grafanaEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> grafanaEnabled;
 
     /**
@@ -1457,7 +1457,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Grafana URL.
      * 
      */
-    @Export(name="grafanaUrl", type=String.class, parameters={})
+    @Export(name="grafanaUrl", refs={String.class}, tree="[0]")
     private Output<String> grafanaUrl;
 
     /**
@@ -1471,7 +1471,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable Gravatar.
      * 
      */
-    @Export(name="gravatarEnabled", type=Boolean.class, parameters={})
+    @Export(name="gravatarEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> gravatarEnabled;
 
     /**
@@ -1485,7 +1485,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Prevent overrides of default branch protection.
      * 
      */
-    @Export(name="groupOwnersCanManageDefaultBranchProtection", type=Boolean.class, parameters={})
+    @Export(name="groupOwnersCanManageDefaultBranchProtection", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> groupOwnersCanManageDefaultBranchProtection;
 
     /**
@@ -1499,7 +1499,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
      * 
      */
-    @Export(name="hashedStorageEnabled", type=Boolean.class, parameters={})
+    @Export(name="hashedStorageEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> hashedStorageEnabled;
 
     /**
@@ -1513,7 +1513,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Hide marketing-related entries from help.
      * 
      */
-    @Export(name="helpPageHideCommercialContent", type=Boolean.class, parameters={})
+    @Export(name="helpPageHideCommercialContent", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> helpPageHideCommercialContent;
 
     /**
@@ -1527,7 +1527,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Alternate support URL for help page and help dropdown.
      * 
      */
-    @Export(name="helpPageSupportUrl", type=String.class, parameters={})
+    @Export(name="helpPageSupportUrl", refs={String.class}, tree="[0]")
     private Output<String> helpPageSupportUrl;
 
     /**
@@ -1541,7 +1541,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Custom text displayed on the help page.
      * 
      */
-    @Export(name="helpPageText", type=String.class, parameters={})
+    @Export(name="helpPageText", refs={String.class}, tree="[0]")
     private Output<String> helpPageText;
 
     /**
@@ -1555,7 +1555,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * GitLab server administrator information.
      * 
      */
-    @Export(name="helpText", type=String.class, parameters={})
+    @Export(name="helpText", refs={String.class}, tree="[0]")
     private Output<String> helpText;
 
     /**
@@ -1569,7 +1569,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Do not display offers from third parties in GitLab.
      * 
      */
-    @Export(name="hideThirdPartyOffers", type=Boolean.class, parameters={})
+    @Export(name="hideThirdPartyOffers", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> hideThirdPartyOffers;
 
     /**
@@ -1583,7 +1583,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Redirect to this URL when not logged in.
      * 
      */
-    @Export(name="homePageUrl", type=String.class, parameters={})
+    @Export(name="homePageUrl", refs={String.class}, tree="[0]")
     private Output<String> homePageUrl;
 
     /**
@@ -1597,7 +1597,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period) Enable or disable Git housekeeping.
      * 
      */
-    @Export(name="housekeepingEnabled", type=Boolean.class, parameters={})
+    @Export(name="housekeepingEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> housekeepingEnabled;
 
     /**
@@ -1611,7 +1611,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Number of Git pushes after which an incremental git repack is run.
      * 
      */
-    @Export(name="housekeepingFullRepackPeriod", type=Integer.class, parameters={})
+    @Export(name="housekeepingFullRepackPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> housekeepingFullRepackPeriod;
 
     /**
@@ -1625,7 +1625,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Number of Git pushes after which git gc is run.
      * 
      */
-    @Export(name="housekeepingGcPeriod", type=Integer.class, parameters={})
+    @Export(name="housekeepingGcPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> housekeepingGcPeriod;
 
     /**
@@ -1639,7 +1639,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Number of Git pushes after which an incremental git repack is run.
      * 
      */
-    @Export(name="housekeepingIncrementalRepackPeriod", type=Integer.class, parameters={})
+    @Export(name="housekeepingIncrementalRepackPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> housekeepingIncrementalRepackPeriod;
 
     /**
@@ -1653,7 +1653,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable HTML emails.
      * 
      */
-    @Export(name="htmlEmailsEnabled", type=Boolean.class, parameters={})
+    @Export(name="htmlEmailsEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> htmlEmailsEnabled;
 
     /**
@@ -1667,7 +1667,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
      * 
      */
-    @Export(name="importSources", type=List.class, parameters={String.class})
+    @Export(name="importSources", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> importSources;
 
     /**
@@ -1681,7 +1681,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable in-product marketing emails.
      * 
      */
-    @Export(name="inProductMarketingEmailsEnabled", type=Boolean.class, parameters={})
+    @Export(name="inProductMarketingEmailsEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> inProductMarketingEmailsEnabled;
 
     /**
@@ -1695,7 +1695,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      * 
      */
-    @Export(name="inactiveProjectsDeleteAfterMonths", type=Integer.class, parameters={})
+    @Export(name="inactiveProjectsDeleteAfterMonths", refs={Integer.class}, tree="[0]")
     private Output<Integer> inactiveProjectsDeleteAfterMonths;
 
     /**
@@ -1709,7 +1709,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      * 
      */
-    @Export(name="inactiveProjectsMinSizeMb", type=Integer.class, parameters={})
+    @Export(name="inactiveProjectsMinSizeMb", refs={Integer.class}, tree="[0]")
     private Output<Integer> inactiveProjectsMinSizeMb;
 
     /**
@@ -1723,7 +1723,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
      * 
      */
-    @Export(name="inactiveProjectsSendWarningEmailAfterMonths", type=Integer.class, parameters={})
+    @Export(name="inactiveProjectsSendWarningEmailAfterMonths", refs={Integer.class}, tree="[0]")
     private Output<Integer> inactiveProjectsSendWarningEmailAfterMonths;
 
     /**
@@ -1737,7 +1737,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable Invisible CAPTCHA spam detection during sign-up.
      * 
      */
-    @Export(name="invisibleCaptchaEnabled", type=Boolean.class, parameters={})
+    @Export(name="invisibleCaptchaEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> invisibleCaptchaEnabled;
 
     /**
@@ -1751,7 +1751,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Max number of issue creation requests per minute per user.
      * 
      */
-    @Export(name="issuesCreateLimit", type=Integer.class, parameters={})
+    @Export(name="issuesCreateLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> issuesCreateLimit;
 
     /**
@@ -1765,7 +1765,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
      * 
      */
-    @Export(name="keepLatestArtifact", type=Boolean.class, parameters={})
+    @Export(name="keepLatestArtifact", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> keepLatestArtifact;
 
     /**
@@ -1779,7 +1779,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Increase this value when any cached Markdown should be invalidated.
      * 
      */
-    @Export(name="localMarkdownVersion", type=Integer.class, parameters={})
+    @Export(name="localMarkdownVersion", refs={Integer.class}, tree="[0]")
     private Output<Integer> localMarkdownVersion;
 
     /**
@@ -1793,7 +1793,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable Mailgun event receiver.
      * 
      */
-    @Export(name="mailgunEventsEnabled", type=Boolean.class, parameters={})
+    @Export(name="mailgunEventsEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> mailgunEventsEnabled;
 
     /**
@@ -1807,7 +1807,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The Mailgun HTTP webhook signing key for receiving events from webhook.
      * 
      */
-    @Export(name="mailgunSigningKey", type=String.class, parameters={})
+    @Export(name="mailgunSigningKey", refs={String.class}, tree="[0]")
     private Output<String> mailgunSigningKey;
 
     /**
@@ -1821,7 +1821,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests.
      * 
      */
-    @Export(name="maintenanceMode", type=Boolean.class, parameters={})
+    @Export(name="maintenanceMode", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> maintenanceMode;
 
     /**
@@ -1835,7 +1835,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Message displayed when instance is in maintenance mode.
      * 
      */
-    @Export(name="maintenanceModeMessage", type=String.class, parameters={})
+    @Export(name="maintenanceModeMessage", refs={String.class}, tree="[0]")
     private Output<String> maintenanceModeMessage;
 
     /**
@@ -1849,7 +1849,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum artifacts size in MB.
      * 
      */
-    @Export(name="maxArtifactsSize", type=Integer.class, parameters={})
+    @Export(name="maxArtifactsSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxArtifactsSize;
 
     /**
@@ -1863,7 +1863,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Limit attachment size in MB.
      * 
      */
-    @Export(name="maxAttachmentSize", type=Integer.class, parameters={})
+    @Export(name="maxAttachmentSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxAttachmentSize;
 
     /**
@@ -1877,7 +1877,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum export size in MB. 0 for unlimited.
      * 
      */
-    @Export(name="maxExportSize", type=Integer.class, parameters={})
+    @Export(name="maxExportSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxExportSize;
 
     /**
@@ -1891,7 +1891,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum import size in MB. 0 for unlimited.
      * 
      */
-    @Export(name="maxImportSize", type=Integer.class, parameters={})
+    @Export(name="maxImportSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxImportSize;
 
     /**
@@ -1905,7 +1905,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
      * 
      */
-    @Export(name="maxNumberOfRepositoryDownloads", type=Integer.class, parameters={})
+    @Export(name="maxNumberOfRepositoryDownloads", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxNumberOfRepositoryDownloads;
 
     /**
@@ -1919,7 +1919,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
      * 
      */
-    @Export(name="maxNumberOfRepositoryDownloadsWithinTimePeriod", type=Integer.class, parameters={})
+    @Export(name="maxNumberOfRepositoryDownloadsWithinTimePeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxNumberOfRepositoryDownloadsWithinTimePeriod;
 
     /**
@@ -1933,7 +1933,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum size of pages repositories in MB.
      * 
      */
-    @Export(name="maxPagesSize", type=Integer.class, parameters={})
+    @Export(name="maxPagesSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxPagesSize;
 
     /**
@@ -1947,7 +1947,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum allowable lifetime for access tokens in days.
      * 
      */
-    @Export(name="maxPersonalAccessTokenLifetime", type=Integer.class, parameters={})
+    @Export(name="maxPersonalAccessTokenLifetime", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxPersonalAccessTokenLifetime;
 
     /**
@@ -1961,7 +1961,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
      * 
      */
-    @Export(name="maxSshKeyLifetime", type=Integer.class, parameters={})
+    @Export(name="maxSshKeyLifetime", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxSshKeyLifetime;
 
     /**
@@ -1975,7 +1975,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * A method call is only tracked when it takes longer than the given amount of milliseconds.
      * 
      */
-    @Export(name="metricsMethodCallThreshold", type=Integer.class, parameters={})
+    @Export(name="metricsMethodCallThreshold", refs={Integer.class}, tree="[0]")
     private Output<Integer> metricsMethodCallThreshold;
 
     /**
@@ -1989,7 +1989,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
      * 
      */
-    @Export(name="mirrorAvailable", type=Boolean.class, parameters={})
+    @Export(name="mirrorAvailable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> mirrorAvailable;
 
     /**
@@ -2003,7 +2003,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Minimum capacity to be available before scheduling more mirrors preemptively.
      * 
      */
-    @Export(name="mirrorCapacityThreshold", type=Integer.class, parameters={})
+    @Export(name="mirrorCapacityThreshold", refs={Integer.class}, tree="[0]")
     private Output<Integer> mirrorCapacityThreshold;
 
     /**
@@ -2017,7 +2017,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum number of mirrors that can be synchronizing at the same time.
      * 
      */
-    @Export(name="mirrorMaxCapacity", type=Integer.class, parameters={})
+    @Export(name="mirrorMaxCapacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> mirrorMaxCapacity;
 
     /**
@@ -2031,7 +2031,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
      * 
      */
-    @Export(name="mirrorMaxDelay", type=Integer.class, parameters={})
+    @Export(name="mirrorMaxDelay", refs={Integer.class}, tree="[0]")
     private Output<Integer> mirrorMaxDelay;
 
     /**
@@ -2045,7 +2045,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
      * 
      */
-    @Export(name="npmPackageRequestsForwarding", type=Boolean.class, parameters={})
+    @Export(name="npmPackageRequestsForwarding", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> npmPackageRequestsForwarding;
 
     /**
@@ -2059,7 +2059,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
      * 
      */
-    @Export(name="outboundLocalRequestsWhitelists", type=List.class, parameters={String.class})
+    @Export(name="outboundLocalRequestsWhitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> outboundLocalRequestsWhitelists;
 
     /**
@@ -2073,7 +2073,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Number of workers assigned to the packages cleanup policies.
      * 
      */
-    @Export(name="packageRegistryCleanupPoliciesWorkerCapacity", type=Integer.class, parameters={})
+    @Export(name="packageRegistryCleanupPoliciesWorkerCapacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> packageRegistryCleanupPoliciesWorkerCapacity;
 
     /**
@@ -2087,7 +2087,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Require users to prove ownership of custom domains. Domain verification is an essential security measure for public GitLab sites. Users are required to demonstrate they control a domain before it is enabled.
      * 
      */
-    @Export(name="pagesDomainVerificationEnabled", type=Boolean.class, parameters={})
+    @Export(name="pagesDomainVerificationEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> pagesDomainVerificationEnabled;
 
     /**
@@ -2101,7 +2101,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable authentication for Git over HTTP(S) via a GitLab account password.
      * 
      */
-    @Export(name="passwordAuthenticationEnabledForGit", type=Boolean.class, parameters={})
+    @Export(name="passwordAuthenticationEnabledForGit", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> passwordAuthenticationEnabledForGit;
 
     /**
@@ -2115,7 +2115,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable authentication for the web interface via a GitLab account password.
      * 
      */
-    @Export(name="passwordAuthenticationEnabledForWeb", type=Boolean.class, parameters={})
+    @Export(name="passwordAuthenticationEnabledForWeb", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> passwordAuthenticationEnabledForWeb;
 
     /**
@@ -2129,7 +2129,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Indicates whether passwords require at least one lowercase letter. Introduced in GitLab 15.1.
      * 
      */
-    @Export(name="passwordLowercaseRequired", type=Boolean.class, parameters={})
+    @Export(name="passwordLowercaseRequired", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> passwordLowercaseRequired;
 
     /**
@@ -2143,7 +2143,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Indicates whether passwords require at least one number. Introduced in GitLab 15.1.
      * 
      */
-    @Export(name="passwordNumberRequired", type=Boolean.class, parameters={})
+    @Export(name="passwordNumberRequired", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> passwordNumberRequired;
 
     /**
@@ -2157,7 +2157,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Indicates whether passwords require at least one symbol character. Introduced in GitLab 15.1.
      * 
      */
-    @Export(name="passwordSymbolRequired", type=Boolean.class, parameters={})
+    @Export(name="passwordSymbolRequired", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> passwordSymbolRequired;
 
     /**
@@ -2171,7 +2171,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Indicates whether passwords require at least one uppercase letter. Introduced in GitLab 15.1.
      * 
      */
-    @Export(name="passwordUppercaseRequired", type=Boolean.class, parameters={})
+    @Export(name="passwordUppercaseRequired", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> passwordUppercaseRequired;
 
     /**
@@ -2185,7 +2185,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Path of the group that is allowed to toggle the performance bar.
      * 
      */
-    @Export(name="performanceBarAllowedGroupPath", type=String.class, parameters={})
+    @Export(name="performanceBarAllowedGroupPath", refs={String.class}, tree="[0]")
     private Output<String> performanceBarAllowedGroupPath;
 
     /**
@@ -2199,7 +2199,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Prefix for all generated personal access tokens.
      * 
      */
-    @Export(name="personalAccessTokenPrefix", type=String.class, parameters={})
+    @Export(name="personalAccessTokenPrefix", refs={String.class}, tree="[0]")
     private Output<String> personalAccessTokenPrefix;
 
     /**
@@ -2213,7 +2213,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum number of pipeline creation requests per minute per user and commit.
      * 
      */
-    @Export(name="pipelineLimitPerProjectUserSha", type=Integer.class, parameters={})
+    @Export(name="pipelineLimitPerProjectUserSha", refs={Integer.class}, tree="[0]")
     private Output<Integer> pipelineLimitPerProjectUserSha;
 
     /**
@@ -2227,7 +2227,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: plantuml_url) Enable PlantUML integration.
      * 
      */
-    @Export(name="plantumlEnabled", type=Boolean.class, parameters={})
+    @Export(name="plantumlEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> plantumlEnabled;
 
     /**
@@ -2241,7 +2241,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The PlantUML instance URL for integration.
      * 
      */
-    @Export(name="plantumlUrl", type=String.class, parameters={})
+    @Export(name="plantumlUrl", refs={String.class}, tree="[0]")
     private Output<String> plantumlUrl;
 
     /**
@@ -2255,7 +2255,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
      * 
      */
-    @Export(name="pollingIntervalMultiplier", type=Double.class, parameters={})
+    @Export(name="pollingIntervalMultiplier", refs={Double.class}, tree="[0]")
     private Output<Double> pollingIntervalMultiplier;
 
     /**
@@ -2269,7 +2269,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable project export.
      * 
      */
-    @Export(name="projectExportEnabled", type=Boolean.class, parameters={})
+    @Export(name="projectExportEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> projectExportEnabled;
 
     /**
@@ -2283,7 +2283,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable Prometheus metrics.
      * 
      */
-    @Export(name="prometheusMetricsEnabled", type=Boolean.class, parameters={})
+    @Export(name="prometheusMetricsEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> prometheusMetricsEnabled;
 
     /**
@@ -2297,7 +2297,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * CI/CD variables are protected by default.
      * 
      */
-    @Export(name="protectedCiVariables", type=Boolean.class, parameters={})
+    @Export(name="protectedCiVariables", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> protectedCiVariables;
 
     /**
@@ -2311,7 +2311,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Number of changes (branches or tags) in a single push to determine whether individual push events or bulk push events are created. Bulk push events are created if it surpasses that value.
      * 
      */
-    @Export(name="pushEventActivitiesLimit", type=Integer.class, parameters={})
+    @Export(name="pushEventActivitiesLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> pushEventActivitiesLimit;
 
     /**
@@ -2325,7 +2325,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Number of changes (branches or tags) in a single push to determine whether webhooks and services fire or not. Webhooks and services aren’t submitted if it surpasses that value.
      * 
      */
-    @Export(name="pushEventHooksLimit", type=Integer.class, parameters={})
+    @Export(name="pushEventHooksLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> pushEventHooksLimit;
 
     /**
@@ -2339,7 +2339,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Use pypi.org as a default remote repository when the package is not found in the GitLab Package Registry for PyPI.
      * 
      */
-    @Export(name="pypiPackageRequestsForwarding", type=Boolean.class, parameters={})
+    @Export(name="pypiPackageRequestsForwarding", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> pypiPackageRequestsForwarding;
 
     /**
@@ -2353,7 +2353,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * When rate limiting is enabled via the throttle_* settings, send this plain text response when a rate limit is exceeded. ‘Retry later’ is sent if this is blank.
      * 
      */
-    @Export(name="rateLimitingResponseText", type=String.class, parameters={})
+    @Export(name="rateLimitingResponseText", refs={String.class}, tree="[0]")
     private Output<String> rateLimitingResponseText;
 
     /**
@@ -2367,7 +2367,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Max number of requests per minute for each raw path. To disable throttling set to 0.
      * 
      */
-    @Export(name="rawBlobRequestLimit", type=Integer.class, parameters={})
+    @Export(name="rawBlobRequestLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> rawBlobRequestLimit;
 
     /**
@@ -2381,7 +2381,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
      * 
      */
-    @Export(name="recaptchaEnabled", type=Boolean.class, parameters={})
+    @Export(name="recaptchaEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> recaptchaEnabled;
 
     /**
@@ -2395,7 +2395,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Private key for reCAPTCHA.
      * 
      */
-    @Export(name="recaptchaPrivateKey", type=String.class, parameters={})
+    @Export(name="recaptchaPrivateKey", refs={String.class}, tree="[0]")
     private Output<String> recaptchaPrivateKey;
 
     /**
@@ -2409,7 +2409,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Site key for reCAPTCHA.
      * 
      */
-    @Export(name="recaptchaSiteKey", type=String.class, parameters={})
+    @Export(name="recaptchaSiteKey", refs={String.class}, tree="[0]")
     private Output<String> recaptchaSiteKey;
 
     /**
@@ -2423,7 +2423,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum push size (MB).
      * 
      */
-    @Export(name="receiveMaxInputSize", type=Integer.class, parameters={})
+    @Export(name="receiveMaxInputSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> receiveMaxInputSize;
 
     /**
@@ -2437,7 +2437,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
      * 
      */
-    @Export(name="repositoryChecksEnabled", type=Boolean.class, parameters={})
+    @Export(name="repositoryChecksEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> repositoryChecksEnabled;
 
     /**
@@ -2451,7 +2451,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Size limit per repository (MB).
      * 
      */
-    @Export(name="repositorySizeLimit", type=Integer.class, parameters={})
+    @Export(name="repositorySizeLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> repositorySizeLimit;
 
     /**
@@ -2465,7 +2465,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
      * 
      */
-    @Export(name="repositoryStorages", type=List.class, parameters={String.class})
+    @Export(name="repositoryStorages", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> repositoryStorages;
 
     /**
@@ -2479,7 +2479,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
      * 
      */
-    @Export(name="repositoryStoragesWeighted", type=Map.class, parameters={String.class, Integer.class})
+    @Export(name="repositoryStoragesWeighted", refs={Map.class,String.class,Integer.class}, tree="[0,1,2]")
     private Output<Map<String,Integer>> repositoryStoragesWeighted;
 
     /**
@@ -2493,7 +2493,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
      * 
      */
-    @Export(name="requireAdminApprovalAfterUserSignup", type=Boolean.class, parameters={})
+    @Export(name="requireAdminApprovalAfterUserSignup", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> requireAdminApprovalAfterUserSignup;
 
     /**
@@ -2507,7 +2507,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
      * 
      */
-    @Export(name="requireTwoFactorAuthentication", type=Boolean.class, parameters={})
+    @Export(name="requireTwoFactorAuthentication", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> requireTwoFactorAuthentication;
 
     /**
@@ -2521,7 +2521,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
      * 
      */
-    @Export(name="restrictedVisibilityLevels", type=List.class, parameters={String.class})
+    @Export(name="restrictedVisibilityLevels", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> restrictedVisibilityLevels;
 
     /**
@@ -2535,7 +2535,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
      * 
      */
-    @Export(name="rsaKeyRestriction", type=Integer.class, parameters={})
+    @Export(name="rsaKeyRestriction", refs={Integer.class}, tree="[0]")
     private Output<Integer> rsaKeyRestriction;
 
     /**
@@ -2549,7 +2549,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
      * 
      */
-    @Export(name="searchRateLimit", type=Integer.class, parameters={})
+    @Export(name="searchRateLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> searchRateLimit;
 
     /**
@@ -2563,7 +2563,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
      * 
      */
-    @Export(name="searchRateLimitUnauthenticated", type=Integer.class, parameters={})
+    @Export(name="searchRateLimitUnauthenticated", refs={Integer.class}, tree="[0]")
     private Output<Integer> searchRateLimitUnauthenticated;
 
     /**
@@ -2577,7 +2577,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Send confirmation email on sign-up.
      * 
      */
-    @Export(name="sendUserConfirmationEmail", type=Boolean.class, parameters={})
+    @Export(name="sendUserConfirmationEmail", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> sendUserConfirmationEmail;
 
     /**
@@ -2591,7 +2591,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Session duration in minutes. GitLab restart is required to apply changes.
      * 
      */
-    @Export(name="sessionExpireDelay", type=Integer.class, parameters={})
+    @Export(name="sessionExpireDelay", refs={Integer.class}, tree="[0]")
     private Output<Integer> sessionExpireDelay;
 
     /**
@@ -2605,7 +2605,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
      * 
      */
-    @Export(name="sharedRunnersEnabled", type=Boolean.class, parameters={})
+    @Export(name="sharedRunnersEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> sharedRunnersEnabled;
 
     /**
@@ -2619,7 +2619,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Set the maximum number of CI/CD minutes that a group can use on shared runners per month.
      * 
      */
-    @Export(name="sharedRunnersMinutes", type=Integer.class, parameters={})
+    @Export(name="sharedRunnersMinutes", refs={Integer.class}, tree="[0]")
     private Output<Integer> sharedRunnersMinutes;
 
     /**
@@ -2633,7 +2633,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Shared runners text.
      * 
      */
-    @Export(name="sharedRunnersText", type=String.class, parameters={})
+    @Export(name="sharedRunnersText", refs={String.class}, tree="[0]")
     private Output<String> sharedRunnersText;
 
     /**
@@ -2647,7 +2647,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
      * 
      */
-    @Export(name="sidekiqJobLimiterCompressionThresholdBytes", type=Integer.class, parameters={})
+    @Export(name="sidekiqJobLimiterCompressionThresholdBytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> sidekiqJobLimiterCompressionThresholdBytes;
 
     /**
@@ -2661,7 +2661,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
      * 
      */
-    @Export(name="sidekiqJobLimiterLimitBytes", type=Integer.class, parameters={})
+    @Export(name="sidekiqJobLimiterLimitBytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> sidekiqJobLimiterLimitBytes;
 
     /**
@@ -2675,7 +2675,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * track or compress. Sets the behavior for Sidekiq job size limits.
      * 
      */
-    @Export(name="sidekiqJobLimiterMode", type=String.class, parameters={})
+    @Export(name="sidekiqJobLimiterMode", refs={String.class}, tree="[0]")
     private Output<String> sidekiqJobLimiterMode;
 
     /**
@@ -2689,7 +2689,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Text on the login page.
      * 
      */
-    @Export(name="signInText", type=String.class, parameters={})
+    @Export(name="signInText", refs={String.class}, tree="[0]")
     private Output<String> signInText;
 
     /**
@@ -2703,7 +2703,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable registration.
      * 
      */
-    @Export(name="signupEnabled", type=Boolean.class, parameters={})
+    @Export(name="signupEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> signupEnabled;
 
     /**
@@ -2717,7 +2717,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
      * 
      */
-    @Export(name="slackAppEnabled", type=Boolean.class, parameters={})
+    @Export(name="slackAppEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> slackAppEnabled;
 
     /**
@@ -2731,7 +2731,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The app ID of the Slack-app.
      * 
      */
-    @Export(name="slackAppId", type=String.class, parameters={})
+    @Export(name="slackAppId", refs={String.class}, tree="[0]")
     private Output<String> slackAppId;
 
     /**
@@ -2745,7 +2745,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The app secret of the Slack-app.
      * 
      */
-    @Export(name="slackAppSecret", type=String.class, parameters={})
+    @Export(name="slackAppSecret", refs={String.class}, tree="[0]")
     private Output<String> slackAppSecret;
 
     /**
@@ -2759,7 +2759,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The signing secret of the Slack-app.
      * 
      */
-    @Export(name="slackAppSigningSecret", type=String.class, parameters={})
+    @Export(name="slackAppSigningSecret", refs={String.class}, tree="[0]")
     private Output<String> slackAppSigningSecret;
 
     /**
@@ -2773,7 +2773,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The verification token of the Slack-app.
      * 
      */
-    @Export(name="slackAppVerificationToken", type=String.class, parameters={})
+    @Export(name="slackAppVerificationToken", refs={String.class}, tree="[0]")
     private Output<String> slackAppVerificationToken;
 
     /**
@@ -2787,7 +2787,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Max snippet content size in bytes.
      * 
      */
-    @Export(name="snippetSizeLimit", type=Integer.class, parameters={})
+    @Export(name="snippetSizeLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> snippetSizeLimit;
 
     /**
@@ -2801,7 +2801,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The Snowplow site name / application ID. (for example, gitlab)
      * 
      */
-    @Export(name="snowplowAppId", type=String.class, parameters={})
+    @Export(name="snowplowAppId", refs={String.class}, tree="[0]")
     private Output<String> snowplowAppId;
 
     /**
@@ -2815,7 +2815,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The Snowplow collector hostname. (for example, snowplow.trx.gitlab.net)
      * 
      */
-    @Export(name="snowplowCollectorHostname", type=String.class, parameters={})
+    @Export(name="snowplowCollectorHostname", refs={String.class}, tree="[0]")
     private Output<String> snowplowCollectorHostname;
 
     /**
@@ -2829,7 +2829,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The Snowplow cookie domain. (for example, .gitlab.com)
      * 
      */
-    @Export(name="snowplowCookieDomain", type=String.class, parameters={})
+    @Export(name="snowplowCookieDomain", refs={String.class}, tree="[0]")
     private Output<String> snowplowCookieDomain;
 
     /**
@@ -2843,7 +2843,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable snowplow tracking.
      * 
      */
-    @Export(name="snowplowEnabled", type=Boolean.class, parameters={})
+    @Export(name="snowplowEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> snowplowEnabled;
 
     /**
@@ -2857,7 +2857,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
      * 
      */
-    @Export(name="sourcegraphEnabled", type=Boolean.class, parameters={})
+    @Export(name="sourcegraphEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> sourcegraphEnabled;
 
     /**
@@ -2871,7 +2871,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Blocks Sourcegraph from being loaded on private and internal projects.
      * 
      */
-    @Export(name="sourcegraphPublicOnly", type=Boolean.class, parameters={})
+    @Export(name="sourcegraphPublicOnly", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> sourcegraphPublicOnly;
 
     /**
@@ -2885,7 +2885,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * The Sourcegraph instance URL for integration.
      * 
      */
-    @Export(name="sourcegraphUrl", type=String.class, parameters={})
+    @Export(name="sourcegraphUrl", refs={String.class}, tree="[0]")
     private Output<String> sourcegraphUrl;
 
     /**
@@ -2899,7 +2899,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * API key used by GitLab for accessing the Spam Check service endpoint.
      * 
      */
-    @Export(name="spamCheckApiKey", type=String.class, parameters={})
+    @Export(name="spamCheckApiKey", refs={String.class}, tree="[0]")
     private Output<String> spamCheckApiKey;
 
     /**
@@ -2913,7 +2913,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enables spam checking using external Spam Check API endpoint.
      * 
      */
-    @Export(name="spamCheckEndpointEnabled", type=Boolean.class, parameters={})
+    @Export(name="spamCheckEndpointEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> spamCheckEndpointEnabled;
 
     /**
@@ -2927,7 +2927,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.
      * 
      */
-    @Export(name="spamCheckEndpointUrl", type=String.class, parameters={})
+    @Export(name="spamCheckEndpointUrl", refs={String.class}, tree="[0]")
     private Output<String> spamCheckEndpointUrl;
 
     /**
@@ -2941,7 +2941,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Enable pipeline suggestion banner.
      * 
      */
-    @Export(name="suggestPipelineEnabled", type=Boolean.class, parameters={})
+    @Export(name="suggestPipelineEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> suggestPipelineEnabled;
 
     /**
@@ -2955,7 +2955,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
      * 
      */
-    @Export(name="terminalMaxSessionTime", type=Integer.class, parameters={})
+    @Export(name="terminalMaxSessionTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> terminalMaxSessionTime;
 
     /**
@@ -2969,7 +2969,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (Required by: enforce_terms) Markdown content for the ToS.
      * 
      */
-    @Export(name="terms", type=String.class, parameters={})
+    @Export(name="terms", refs={String.class}, tree="[0]")
     private Output<String> terms;
 
     /**
@@ -2983,7 +2983,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: throttle*authenticated*api*period*in*seconds and throttle*authenticated*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
      * 
      */
-    @Export(name="throttleAuthenticatedApiEnabled", type=Boolean.class, parameters={})
+    @Export(name="throttleAuthenticatedApiEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> throttleAuthenticatedApiEnabled;
 
     /**
@@ -2997,7 +2997,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Rate limit period (in seconds).
      * 
      */
-    @Export(name="throttleAuthenticatedApiPeriodInSeconds", type=Integer.class, parameters={})
+    @Export(name="throttleAuthenticatedApiPeriodInSeconds", refs={Integer.class}, tree="[0]")
     private Output<Integer> throttleAuthenticatedApiPeriodInSeconds;
 
     /**
@@ -3011,7 +3011,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum requests per period per user.
      * 
      */
-    @Export(name="throttleAuthenticatedApiRequestsPerPeriod", type=Integer.class, parameters={})
+    @Export(name="throttleAuthenticatedApiRequestsPerPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> throttleAuthenticatedApiRequestsPerPeriod;
 
     /**
@@ -3025,7 +3025,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
      * 
      */
-    @Export(name="throttleAuthenticatedPackagesApiEnabled", type=Boolean.class, parameters={})
+    @Export(name="throttleAuthenticatedPackagesApiEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> throttleAuthenticatedPackagesApiEnabled;
 
     /**
@@ -3039,7 +3039,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Rate limit period (in seconds). View Package Registry rate limits for more details.
      * 
      */
-    @Export(name="throttleAuthenticatedPackagesApiPeriodInSeconds", type=Integer.class, parameters={})
+    @Export(name="throttleAuthenticatedPackagesApiPeriodInSeconds", refs={Integer.class}, tree="[0]")
     private Output<Integer> throttleAuthenticatedPackagesApiPeriodInSeconds;
 
     /**
@@ -3053,7 +3053,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum requests per period per user. View Package Registry rate limits for more details.
      * 
      */
-    @Export(name="throttleAuthenticatedPackagesApiRequestsPerPeriod", type=Integer.class, parameters={})
+    @Export(name="throttleAuthenticatedPackagesApiRequestsPerPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> throttleAuthenticatedPackagesApiRequestsPerPeriod;
 
     /**
@@ -3067,7 +3067,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: throttle*authenticated*web*period*in*seconds and throttle*authenticated*web*requests*per*period) Enable authenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
      * 
      */
-    @Export(name="throttleAuthenticatedWebEnabled", type=Boolean.class, parameters={})
+    @Export(name="throttleAuthenticatedWebEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> throttleAuthenticatedWebEnabled;
 
     /**
@@ -3081,7 +3081,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Rate limit period (in seconds).
      * 
      */
-    @Export(name="throttleAuthenticatedWebPeriodInSeconds", type=Integer.class, parameters={})
+    @Export(name="throttleAuthenticatedWebPeriodInSeconds", refs={Integer.class}, tree="[0]")
     private Output<Integer> throttleAuthenticatedWebPeriodInSeconds;
 
     /**
@@ -3095,7 +3095,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum requests per period per user.
      * 
      */
-    @Export(name="throttleAuthenticatedWebRequestsPerPeriod", type=Integer.class, parameters={})
+    @Export(name="throttleAuthenticatedWebRequestsPerPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> throttleAuthenticatedWebRequestsPerPeriod;
 
     /**
@@ -3109,7 +3109,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: throttle*unauthenticated*api*period*in*seconds and throttle*unauthenticated*api*requests*per*period) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
      * 
      */
-    @Export(name="throttleUnauthenticatedApiEnabled", type=Boolean.class, parameters={})
+    @Export(name="throttleUnauthenticatedApiEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> throttleUnauthenticatedApiEnabled;
 
     /**
@@ -3123,7 +3123,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Rate limit period in seconds.
      * 
      */
-    @Export(name="throttleUnauthenticatedApiPeriodInSeconds", type=Integer.class, parameters={})
+    @Export(name="throttleUnauthenticatedApiPeriodInSeconds", refs={Integer.class}, tree="[0]")
     private Output<Integer> throttleUnauthenticatedApiPeriodInSeconds;
 
     /**
@@ -3137,7 +3137,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Max requests per period per IP.
      * 
      */
-    @Export(name="throttleUnauthenticatedApiRequestsPerPeriod", type=Integer.class, parameters={})
+    @Export(name="throttleUnauthenticatedApiRequestsPerPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> throttleUnauthenticatedApiRequestsPerPeriod;
 
     /**
@@ -3151,7 +3151,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: throttle*unauthenticated*packages*api*period*in*seconds and throttle*unauthenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
      * 
      */
-    @Export(name="throttleUnauthenticatedPackagesApiEnabled", type=Boolean.class, parameters={})
+    @Export(name="throttleUnauthenticatedPackagesApiEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> throttleUnauthenticatedPackagesApiEnabled;
 
     /**
@@ -3165,7 +3165,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Rate limit period (in seconds). View Package Registry rate limits for more details.
      * 
      */
-    @Export(name="throttleUnauthenticatedPackagesApiPeriodInSeconds", type=Integer.class, parameters={})
+    @Export(name="throttleUnauthenticatedPackagesApiPeriodInSeconds", refs={Integer.class}, tree="[0]")
     private Output<Integer> throttleUnauthenticatedPackagesApiPeriodInSeconds;
 
     /**
@@ -3179,7 +3179,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum requests per period per user. View Package Registry rate limits for more details.
      * 
      */
-    @Export(name="throttleUnauthenticatedPackagesApiRequestsPerPeriod", type=Integer.class, parameters={})
+    @Export(name="throttleUnauthenticatedPackagesApiRequestsPerPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> throttleUnauthenticatedPackagesApiRequestsPerPeriod;
 
     /**
@@ -3193,7 +3193,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
      * 
      */
-    @Export(name="throttleUnauthenticatedWebEnabled", type=Boolean.class, parameters={})
+    @Export(name="throttleUnauthenticatedWebEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> throttleUnauthenticatedWebEnabled;
 
     /**
@@ -3207,7 +3207,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Rate limit period in seconds.
      * 
      */
-    @Export(name="throttleUnauthenticatedWebPeriodInSeconds", type=Integer.class, parameters={})
+    @Export(name="throttleUnauthenticatedWebPeriodInSeconds", refs={Integer.class}, tree="[0]")
     private Output<Integer> throttleUnauthenticatedWebPeriodInSeconds;
 
     /**
@@ -3221,7 +3221,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Max requests per period per IP.
      * 
      */
-    @Export(name="throttleUnauthenticatedWebRequestsPerPeriod", type=Integer.class, parameters={})
+    @Export(name="throttleUnauthenticatedWebRequestsPerPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> throttleUnauthenticatedWebRequestsPerPeriod;
 
     /**
@@ -3235,7 +3235,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Limit display of time tracking units to hours.
      * 
      */
-    @Export(name="timeTrackingLimitToHours", type=Boolean.class, parameters={})
+    @Export(name="timeTrackingLimitToHours", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> timeTrackingLimitToHours;
 
     /**
@@ -3249,7 +3249,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication.
      * 
      */
-    @Export(name="twoFactorGracePeriod", type=Integer.class, parameters={})
+    @Export(name="twoFactorGracePeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> twoFactorGracePeriod;
 
     /**
@@ -3263,7 +3263,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
      * 
      */
-    @Export(name="uniqueIpsLimitEnabled", type=Boolean.class, parameters={})
+    @Export(name="uniqueIpsLimitEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> uniqueIpsLimitEnabled;
 
     /**
@@ -3277,7 +3277,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum number of IPs per user.
      * 
      */
-    @Export(name="uniqueIpsLimitPerUser", type=Integer.class, parameters={})
+    @Export(name="uniqueIpsLimitPerUser", refs={Integer.class}, tree="[0]")
     private Output<Integer> uniqueIpsLimitPerUser;
 
     /**
@@ -3291,7 +3291,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * How many seconds an IP is counted towards the limit.
      * 
      */
-    @Export(name="uniqueIpsLimitTimeWindow", type=Integer.class, parameters={})
+    @Export(name="uniqueIpsLimitTimeWindow", refs={Integer.class}, tree="[0]")
     private Output<Integer> uniqueIpsLimitTimeWindow;
 
     /**
@@ -3305,7 +3305,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Every week GitLab reports license usage back to GitLab, Inc.
      * 
      */
-    @Export(name="usagePingEnabled", type=Boolean.class, parameters={})
+    @Export(name="usagePingEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> usagePingEnabled;
 
     /**
@@ -3319,7 +3319,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Send an email to users upon account deactivation.
      * 
      */
-    @Export(name="userDeactivationEmailsEnabled", type=Boolean.class, parameters={})
+    @Export(name="userDeactivationEmailsEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> userDeactivationEmailsEnabled;
 
     /**
@@ -3333,7 +3333,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Newly registered users are external by default.
      * 
      */
-    @Export(name="userDefaultExternal", type=Boolean.class, parameters={})
+    @Export(name="userDefaultExternal", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> userDefaultExternal;
 
     /**
@@ -3347,7 +3347,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Specify an email address regex pattern to identify default internal users.
      * 
      */
-    @Export(name="userDefaultInternalRegex", type=String.class, parameters={})
+    @Export(name="userDefaultInternalRegex", refs={String.class}, tree="[0]")
     private Output<String> userDefaultInternalRegex;
 
     /**
@@ -3361,7 +3361,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Allow users to register any application to use GitLab as an OAuth provider.
      * 
      */
-    @Export(name="userOauthApplications", type=Boolean.class, parameters={})
+    @Export(name="userOauthApplications", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> userOauthApplications;
 
     /**
@@ -3375,7 +3375,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * When set to false disable the You won&#39;t be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
      * 
      */
-    @Export(name="userShowAddSshKeyMessage", type=Boolean.class, parameters={})
+    @Export(name="userShowAddSshKeyMessage", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> userShowAddSshKeyMessage;
 
     /**
@@ -3389,7 +3389,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Let GitLab inform you when an update is available.
      * 
      */
-    @Export(name="versionCheckEnabled", type=Boolean.class, parameters={})
+    @Export(name="versionCheckEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> versionCheckEnabled;
 
     /**
@@ -3403,7 +3403,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
      * 
      */
-    @Export(name="webIdeClientsidePreviewEnabled", type=Boolean.class, parameters={})
+    @Export(name="webIdeClientsidePreviewEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> webIdeClientsidePreviewEnabled;
 
     /**
@@ -3417,7 +3417,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * What’s new variant, possible values: all*tiers, current*tier, and disabled.
      * 
      */
-    @Export(name="whatsNewVariant", type=String.class, parameters={})
+    @Export(name="whatsNewVariant", refs={String.class}, tree="[0]")
     private Output<String> whatsNewVariant;
 
     /**
@@ -3431,7 +3431,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
      * 
      */
-    @Export(name="wikiPageMaxContentBytes", type=Integer.class, parameters={})
+    @Export(name="wikiPageMaxContentBytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> wikiPageMaxContentBytes;
 
     /**

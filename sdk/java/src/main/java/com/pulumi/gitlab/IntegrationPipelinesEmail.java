@@ -76,7 +76,7 @@ public class IntegrationPipelinesEmail extends com.pulumi.resources.CustomResour
      * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
      * 
      */
-    @Export(name="branchesToBeNotified", type=String.class, parameters={})
+    @Export(name="branchesToBeNotified", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> branchesToBeNotified;
 
     /**
@@ -90,7 +90,7 @@ public class IntegrationPipelinesEmail extends com.pulumi.resources.CustomResour
      * Notify only broken pipelines. Default is true.
      * 
      */
-    @Export(name="notifyOnlyBrokenPipelines", type=Boolean.class, parameters={})
+    @Export(name="notifyOnlyBrokenPipelines", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> notifyOnlyBrokenPipelines;
 
     /**
@@ -104,7 +104,7 @@ public class IntegrationPipelinesEmail extends com.pulumi.resources.CustomResour
      * ID of the project you want to activate integration on.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -118,7 +118,7 @@ public class IntegrationPipelinesEmail extends com.pulumi.resources.CustomResour
      * ) email addresses where notifications are sent.
      * 
      */
-    @Export(name="recipients", type=List.class, parameters={String.class})
+    @Export(name="recipients", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> recipients;
 
     /**

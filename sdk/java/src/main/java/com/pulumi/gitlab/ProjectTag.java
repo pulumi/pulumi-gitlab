@@ -78,7 +78,7 @@ public class ProjectTag extends com.pulumi.resources.CustomResource {
      * The commit associated with the tag.
      * 
      */
-    @Export(name="commits", type=List.class, parameters={ProjectTagCommit.class})
+    @Export(name="commits", refs={List.class,ProjectTagCommit.class}, tree="[0,1]")
     private Output<List<ProjectTagCommit>> commits;
 
     /**
@@ -92,7 +92,7 @@ public class ProjectTag extends com.pulumi.resources.CustomResource {
      * The message of the annotated tag.
      * 
      */
-    @Export(name="message", type=String.class, parameters={})
+    @Export(name="message", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> message;
 
     /**
@@ -106,7 +106,7 @@ public class ProjectTag extends com.pulumi.resources.CustomResource {
      * The name of a tag.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -120,7 +120,7 @@ public class ProjectTag extends com.pulumi.resources.CustomResource {
      * The ID or URL-encoded path of the project owned by the authenticated user.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -134,7 +134,7 @@ public class ProjectTag extends com.pulumi.resources.CustomResource {
      * Bool, true if tag has tag protection.
      * 
      */
-    @Export(name="protected", type=Boolean.class, parameters={})
+    @Export(name="protected", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> protected_;
 
     /**
@@ -148,7 +148,7 @@ public class ProjectTag extends com.pulumi.resources.CustomResource {
      * Create tag using commit SHA, another tag name, or branch name. This attribute is not available for imported resources.
      * 
      */
-    @Export(name="ref", type=String.class, parameters={})
+    @Export(name="ref", refs={String.class}, tree="[0]")
     private Output<String> ref;
 
     /**
@@ -162,7 +162,7 @@ public class ProjectTag extends com.pulumi.resources.CustomResource {
      * The release associated with the tag.
      * 
      */
-    @Export(name="releases", type=List.class, parameters={ProjectTagRelease.class})
+    @Export(name="releases", refs={List.class,ProjectTagRelease.class}, tree="[0,1]")
     private Output<List<ProjectTagRelease>> releases;
 
     /**
@@ -176,7 +176,7 @@ public class ProjectTag extends com.pulumi.resources.CustomResource {
      * The unique id assigned to the commit by Gitlab.
      * 
      */
-    @Export(name="target", type=String.class, parameters={})
+    @Export(name="target", refs={String.class}, tree="[0]")
     private Output<String> target;
 
     /**

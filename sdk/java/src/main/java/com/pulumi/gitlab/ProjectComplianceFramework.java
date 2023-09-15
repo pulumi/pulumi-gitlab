@@ -76,7 +76,7 @@ public class ProjectComplianceFramework extends com.pulumi.resources.CustomResou
      * Globally unique ID of the compliance framework to assign to the project.
      * 
      */
-    @Export(name="complianceFrameworkId", type=String.class, parameters={})
+    @Export(name="complianceFrameworkId", refs={String.class}, tree="[0]")
     private Output<String> complianceFrameworkId;
 
     /**
@@ -90,7 +90,7 @@ public class ProjectComplianceFramework extends com.pulumi.resources.CustomResou
      * The ID or full path of the project to change the compliance framework of.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

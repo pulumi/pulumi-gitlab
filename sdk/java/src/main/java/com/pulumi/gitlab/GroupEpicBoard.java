@@ -91,7 +91,7 @@ public class GroupEpicBoard extends com.pulumi.resources.CustomResource {
      * The ID or URL-encoded path of the group owned by the authenticated user.
      * 
      */
-    @Export(name="group", type=String.class, parameters={})
+    @Export(name="group", refs={String.class}, tree="[0]")
     private Output<String> group;
 
     /**
@@ -105,7 +105,7 @@ public class GroupEpicBoard extends com.pulumi.resources.CustomResource {
      * The list of epic board lists.
      * 
      */
-    @Export(name="lists", type=List.class, parameters={GroupEpicBoardList.class})
+    @Export(name="lists", refs={List.class,GroupEpicBoardList.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GroupEpicBoardList>> lists;
 
     /**
@@ -119,7 +119,7 @@ public class GroupEpicBoard extends com.pulumi.resources.CustomResource {
      * The name of the board.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

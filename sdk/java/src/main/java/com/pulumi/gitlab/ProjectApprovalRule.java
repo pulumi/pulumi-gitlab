@@ -33,7 +33,7 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
      * The number of approvals required for this rule.
      * 
      */
-    @Export(name="approvalsRequired", type=Integer.class, parameters={})
+    @Export(name="approvalsRequired", refs={Integer.class}, tree="[0]")
     private Output<Integer> approvalsRequired;
 
     /**
@@ -47,7 +47,7 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
      * When this flag is set, the default `any_approver` rule will not be imported if present.
      * 
      */
-    @Export(name="disableImportingDefaultAnyApproverRuleOnCreate", type=Boolean.class, parameters={})
+    @Export(name="disableImportingDefaultAnyApproverRuleOnCreate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableImportingDefaultAnyApproverRuleOnCreate;
 
     /**
@@ -61,7 +61,7 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
      * A list of group IDs whose members can approve of the merge request.
      * 
      */
-    @Export(name="groupIds", type=List.class, parameters={Integer.class})
+    @Export(name="groupIds", refs={List.class,Integer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<Integer>> groupIds;
 
     /**
@@ -75,7 +75,7 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
      * The name of the approval rule.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -89,7 +89,7 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
      * The name or id of the project to add the approval rules.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -103,7 +103,7 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
      * A list of protected branch IDs (not branch names) for which the rule applies.
      * 
      */
-    @Export(name="protectedBranchIds", type=List.class, parameters={Integer.class})
+    @Export(name="protectedBranchIds", refs={List.class,Integer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<Integer>> protectedBranchIds;
 
     /**
@@ -117,7 +117,7 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
      * String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`.
      * 
      */
-    @Export(name="ruleType", type=String.class, parameters={})
+    @Export(name="ruleType", refs={String.class}, tree="[0]")
     private Output<String> ruleType;
 
     /**
@@ -131,7 +131,7 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
      * A list of specific User IDs to add to the list of approvers.
      * 
      */
-    @Export(name="userIds", type=List.class, parameters={Integer.class})
+    @Export(name="userIds", refs={List.class,Integer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<Integer>> userIds;
 
     /**

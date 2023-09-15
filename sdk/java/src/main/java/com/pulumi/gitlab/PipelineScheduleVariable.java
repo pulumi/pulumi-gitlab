@@ -76,7 +76,7 @@ public class PipelineScheduleVariable extends com.pulumi.resources.CustomResourc
      * Name of the variable.
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -90,7 +90,7 @@ public class PipelineScheduleVariable extends com.pulumi.resources.CustomResourc
      * The id of the pipeline schedule.
      * 
      */
-    @Export(name="pipelineScheduleId", type=Integer.class, parameters={})
+    @Export(name="pipelineScheduleId", refs={Integer.class}, tree="[0]")
     private Output<Integer> pipelineScheduleId;
 
     /**
@@ -104,7 +104,7 @@ public class PipelineScheduleVariable extends com.pulumi.resources.CustomResourc
      * The id of the project to add the schedule to.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -118,7 +118,7 @@ public class PipelineScheduleVariable extends com.pulumi.resources.CustomResourc
      * Value of the variable.
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**

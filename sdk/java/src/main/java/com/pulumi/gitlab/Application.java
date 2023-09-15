@@ -72,7 +72,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Internal name of the application.
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -86,7 +86,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The application is used where the client secret can be kept confidential. Native mobile apps and Single Page Apps are considered non-confidential. Defaults to true if not supplied
      * 
      */
-    @Export(name="confidential", type=Boolean.class, parameters={})
+    @Export(name="confidential", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> confidential;
 
     /**
@@ -100,7 +100,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Name of the application.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -114,7 +114,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The URL gitlab should send the user to after authentication.
      * 
      */
-    @Export(name="redirectUrl", type=String.class, parameters={})
+    @Export(name="redirectUrl", refs={String.class}, tree="[0]")
     private Output<String> redirectUrl;
 
     /**
@@ -129,7 +129,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * This is only populated when creating a new application. This attribute is not available for imported resources
      * 
      */
-    @Export(name="scopes", type=List.class, parameters={String.class})
+    @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> scopes;
 
     /**
@@ -144,7 +144,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Application secret. Sensitive and must be kept secret. This is only populated when creating a new application. This attribute is not available for imported resources.
      * 
      */
-    @Export(name="secret", type=String.class, parameters={})
+    @Export(name="secret", refs={String.class}, tree="[0]")
     private Output<String> secret;
 
     /**

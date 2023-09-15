@@ -75,7 +75,7 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
      * Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to &#34;true&#34;, certificate can&#39;t be provided.
      * 
      */
-    @Export(name="autoSslEnabled", type=Boolean.class, parameters={})
+    @Export(name="autoSslEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoSslEnabled;
 
     /**
@@ -89,7 +89,7 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
      * The certificate in PEM format with intermediates following in most specific to least specific order.
      * 
      */
-    @Export(name="certificate", type=String.class, parameters={})
+    @Export(name="certificate", refs={String.class}, tree="[0]")
     private Output<String> certificate;
 
     /**
@@ -103,7 +103,7 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
      * The custom domain indicated by the user.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -117,7 +117,7 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
      * Whether the certificate is expired.
      * 
      */
-    @Export(name="expired", type=Boolean.class, parameters={})
+    @Export(name="expired", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> expired;
 
     /**
@@ -131,7 +131,7 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
      * The certificate key in PEM format.
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> key;
 
     /**
@@ -145,7 +145,7 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
      * The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -159,7 +159,7 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
      * The URL for the given domain.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
@@ -173,7 +173,7 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
      * The verification code for the domain.
      * 
      */
-    @Export(name="verificationCode", type=String.class, parameters={})
+    @Export(name="verificationCode", refs={String.class}, tree="[0]")
     private Output<String> verificationCode;
 
     /**
@@ -187,7 +187,7 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
      * The certificate data.
      * 
      */
-    @Export(name="verified", type=Boolean.class, parameters={})
+    @Export(name="verified", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> verified;
 
     /**
