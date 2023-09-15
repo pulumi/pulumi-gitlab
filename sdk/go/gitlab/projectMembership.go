@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectMembership` resource allows to manage the lifecycle of a users project membership.
@@ -187,6 +188,12 @@ func (i *ProjectMembership) ToProjectMembershipOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMembershipOutput)
 }
 
+func (i *ProjectMembership) ToOutput(ctx context.Context) pulumix.Output[*ProjectMembership] {
+	return pulumix.Output[*ProjectMembership]{
+		OutputState: i.ToProjectMembershipOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectMembershipArrayInput is an input type that accepts ProjectMembershipArray and ProjectMembershipArrayOutput values.
 // You can construct a concrete instance of `ProjectMembershipArrayInput` via:
 //
@@ -210,6 +217,12 @@ func (i ProjectMembershipArray) ToProjectMembershipArrayOutput() ProjectMembersh
 
 func (i ProjectMembershipArray) ToProjectMembershipArrayOutputWithContext(ctx context.Context) ProjectMembershipArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMembershipArrayOutput)
+}
+
+func (i ProjectMembershipArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectMembership] {
+	return pulumix.Output[[]*ProjectMembership]{
+		OutputState: i.ToProjectMembershipArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectMembershipMapInput is an input type that accepts ProjectMembershipMap and ProjectMembershipMapOutput values.
@@ -237,6 +250,12 @@ func (i ProjectMembershipMap) ToProjectMembershipMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMembershipMapOutput)
 }
 
+func (i ProjectMembershipMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectMembership] {
+	return pulumix.Output[map[string]*ProjectMembership]{
+		OutputState: i.ToProjectMembershipMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectMembershipOutput struct{ *pulumi.OutputState }
 
 func (ProjectMembershipOutput) ElementType() reflect.Type {
@@ -249,6 +268,12 @@ func (o ProjectMembershipOutput) ToProjectMembershipOutput() ProjectMembershipOu
 
 func (o ProjectMembershipOutput) ToProjectMembershipOutputWithContext(ctx context.Context) ProjectMembershipOutput {
 	return o
+}
+
+func (o ProjectMembershipOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectMembership] {
+	return pulumix.Output[*ProjectMembership]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
@@ -285,6 +310,12 @@ func (o ProjectMembershipArrayOutput) ToProjectMembershipArrayOutputWithContext(
 	return o
 }
 
+func (o ProjectMembershipArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectMembership] {
+	return pulumix.Output[[]*ProjectMembership]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectMembershipArrayOutput) Index(i pulumi.IntInput) ProjectMembershipOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectMembership {
 		return vs[0].([]*ProjectMembership)[vs[1].(int)]
@@ -303,6 +334,12 @@ func (o ProjectMembershipMapOutput) ToProjectMembershipMapOutput() ProjectMember
 
 func (o ProjectMembershipMapOutput) ToProjectMembershipMapOutputWithContext(ctx context.Context) ProjectMembershipMapOutput {
 	return o
+}
+
+func (o ProjectMembershipMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectMembership] {
+	return pulumix.Output[map[string]*ProjectMembership]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectMembershipMapOutput) MapIndex(k pulumi.StringInput) ProjectMembershipOutput {

@@ -71,7 +71,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`.
      * 
      */
-    @Export(name="accessLevel", refs={String.class}, tree="[0]")
+    @Export(name="accessLevel", type=String.class, parameters={})
     private Output<String> accessLevel;
 
     /**
@@ -85,7 +85,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * Expiration date for the group membership. Format: `YYYY-MM-DD`
      * 
      */
-    @Export(name="expiresAt", refs={String.class}, tree="[0]")
+    @Export(name="expiresAt", type=String.class, parameters={})
     private Output</* @Nullable */ String> expiresAt;
 
     /**
@@ -99,7 +99,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * The id of the group.
      * 
      */
-    @Export(name="groupId", refs={String.class}, tree="[0]")
+    @Export(name="groupId", type=String.class, parameters={})
     private Output<String> groupId;
 
     /**
@@ -113,7 +113,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
      * 
      */
-    @Export(name="skipSubresourcesOnDestroy", refs={Boolean.class}, tree="[0]")
+    @Export(name="skipSubresourcesOnDestroy", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> skipSubresourcesOnDestroy;
 
     /**
@@ -127,7 +127,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
      * 
      */
-    @Export(name="unassignIssuablesOnDestroy", refs={Boolean.class}, tree="[0]")
+    @Export(name="unassignIssuablesOnDestroy", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> unassignIssuablesOnDestroy;
 
     /**
@@ -141,7 +141,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * The id of the user.
      * 
      */
-    @Export(name="userId", refs={Integer.class}, tree="[0]")
+    @Export(name="userId", type=Integer.class, parameters={})
     private Output<Integer> userId;
 
     /**

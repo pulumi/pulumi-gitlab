@@ -92,7 +92,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for confidential issues events.
      * 
      */
-    @Export(name="confidentialIssuesEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="confidentialIssuesEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> confidentialIssuesEvents;
 
     /**
@@ -106,7 +106,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for confidential notes events.
      * 
      */
-    @Export(name="confidentialNoteEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="confidentialNoteEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> confidentialNoteEvents;
 
     /**
@@ -120,7 +120,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for deployment events.
      * 
      */
-    @Export(name="deploymentEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="deploymentEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deploymentEvents;
 
     /**
@@ -134,7 +134,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * Enable ssl verification when invoking the hook.
      * 
      */
-    @Export(name="enableSslVerification", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableSslVerification", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableSslVerification;
 
     /**
@@ -148,7 +148,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * The ID or full path of the group.
      * 
      */
-    @Export(name="group", refs={String.class}, tree="[0]")
+    @Export(name="group", type=String.class, parameters={})
     private Output<String> group;
 
     /**
@@ -162,7 +162,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * The id of the group for the hook.
      * 
      */
-    @Export(name="groupId", refs={Integer.class}, tree="[0]")
+    @Export(name="groupId", type=Integer.class, parameters={})
     private Output<Integer> groupId;
 
     /**
@@ -176,7 +176,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * The id of the group hook.
      * 
      */
-    @Export(name="hookId", refs={Integer.class}, tree="[0]")
+    @Export(name="hookId", type=Integer.class, parameters={})
     private Output<Integer> hookId;
 
     /**
@@ -190,7 +190,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for issues events.
      * 
      */
-    @Export(name="issuesEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="issuesEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> issuesEvents;
 
     /**
@@ -204,7 +204,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for job events.
      * 
      */
-    @Export(name="jobEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="jobEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> jobEvents;
 
     /**
@@ -218,7 +218,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for merge requests.
      * 
      */
-    @Export(name="mergeRequestsEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="mergeRequestsEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> mergeRequestsEvents;
 
     /**
@@ -232,7 +232,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for notes events.
      * 
      */
-    @Export(name="noteEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="noteEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> noteEvents;
 
     /**
@@ -246,7 +246,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for pipeline events.
      * 
      */
-    @Export(name="pipelineEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="pipelineEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> pipelineEvents;
 
     /**
@@ -260,7 +260,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for push events.
      * 
      */
-    @Export(name="pushEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="pushEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> pushEvents;
 
     /**
@@ -274,7 +274,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for push events on matching branches only.
      * 
      */
-    @Export(name="pushEventsBranchFilter", refs={String.class}, tree="[0]")
+    @Export(name="pushEventsBranchFilter", type=String.class, parameters={})
     private Output</* @Nullable */ String> pushEventsBranchFilter;
 
     /**
@@ -288,7 +288,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for releases events.
      * 
      */
-    @Export(name="releasesEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="releasesEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> releasesEvents;
 
     /**
@@ -302,7 +302,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for subgroup events.
      * 
      */
-    @Export(name="subgroupEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="subgroupEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> subgroupEvents;
 
     /**
@@ -316,7 +316,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for tag push events.
      * 
      */
-    @Export(name="tagPushEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="tagPushEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> tagPushEvents;
 
     /**
@@ -330,7 +330,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * A token to present when invoking the hook. The token is not available for imported resources.
      * 
      */
-    @Export(name="token", refs={String.class}, tree="[0]")
+    @Export(name="token", type=String.class, parameters={})
     private Output</* @Nullable */ String> token;
 
     /**
@@ -344,7 +344,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * The url of the hook to invoke.
      * 
      */
-    @Export(name="url", refs={String.class}, tree="[0]")
+    @Export(name="url", type=String.class, parameters={})
     private Output<String> url;
 
     /**
@@ -358,7 +358,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * Invoke the hook for wiki page events.
      * 
      */
-    @Export(name="wikiPageEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="wikiPageEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> wikiPageEvents;
 
     /**

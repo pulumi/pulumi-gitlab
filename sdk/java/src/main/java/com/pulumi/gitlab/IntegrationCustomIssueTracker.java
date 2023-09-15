@@ -73,7 +73,7 @@ public class IntegrationCustomIssueTracker extends com.pulumi.resources.CustomRe
      * Whether the integration is active.
      * 
      */
-    @Export(name="active", refs={Boolean.class}, tree="[0]")
+    @Export(name="active", type=Boolean.class, parameters={})
     private Output<Boolean> active;
 
     /**
@@ -87,7 +87,7 @@ public class IntegrationCustomIssueTracker extends com.pulumi.resources.CustomRe
      * The ISO8601 date/time that this integration was activated at in UTC.
      * 
      */
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    @Export(name="createdAt", type=String.class, parameters={})
     private Output<String> createdAt;
 
     /**
@@ -101,7 +101,7 @@ public class IntegrationCustomIssueTracker extends com.pulumi.resources.CustomRe
      * The URL to view an issue in the external issue tracker. Must contain :id.
      * 
      */
-    @Export(name="issuesUrl", refs={String.class}, tree="[0]")
+    @Export(name="issuesUrl", type=String.class, parameters={})
     private Output<String> issuesUrl;
 
     /**
@@ -115,7 +115,7 @@ public class IntegrationCustomIssueTracker extends com.pulumi.resources.CustomRe
      * The ID or full path of the project for the custom issue tracker.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -129,7 +129,7 @@ public class IntegrationCustomIssueTracker extends com.pulumi.resources.CustomRe
      * The URL to the project in the external issue tracker.
      * 
      */
-    @Export(name="projectUrl", refs={String.class}, tree="[0]")
+    @Export(name="projectUrl", type=String.class, parameters={})
     private Output<String> projectUrl;
 
     /**
@@ -143,7 +143,7 @@ public class IntegrationCustomIssueTracker extends com.pulumi.resources.CustomRe
      * The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
      * 
      */
-    @Export(name="slug", refs={String.class}, tree="[0]")
+    @Export(name="slug", type=String.class, parameters={})
     private Output<String> slug;
 
     /**
@@ -157,7 +157,7 @@ public class IntegrationCustomIssueTracker extends com.pulumi.resources.CustomRe
      * The ISO8601 date/time that this integration was last updated at in UTC.
      * 
      */
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    @Export(name="updatedAt", type=String.class, parameters={})
     private Output<String> updatedAt;
 
     /**

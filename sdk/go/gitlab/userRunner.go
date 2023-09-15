@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `UserRunner` resource allows creating a GitLab runner using the new [GitLab Runner Registration Flow](https://docs.gitlab.com/ee/ci/runners/new_creation_workflow.html).
@@ -198,6 +199,12 @@ func (i *UserRunner) ToUserRunnerOutputWithContext(ctx context.Context) UserRunn
 	return pulumi.ToOutputWithContext(ctx, i).(UserRunnerOutput)
 }
 
+func (i *UserRunner) ToOutput(ctx context.Context) pulumix.Output[*UserRunner] {
+	return pulumix.Output[*UserRunner]{
+		OutputState: i.ToUserRunnerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UserRunnerArrayInput is an input type that accepts UserRunnerArray and UserRunnerArrayOutput values.
 // You can construct a concrete instance of `UserRunnerArrayInput` via:
 //
@@ -221,6 +228,12 @@ func (i UserRunnerArray) ToUserRunnerArrayOutput() UserRunnerArrayOutput {
 
 func (i UserRunnerArray) ToUserRunnerArrayOutputWithContext(ctx context.Context) UserRunnerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserRunnerArrayOutput)
+}
+
+func (i UserRunnerArray) ToOutput(ctx context.Context) pulumix.Output[[]*UserRunner] {
+	return pulumix.Output[[]*UserRunner]{
+		OutputState: i.ToUserRunnerArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // UserRunnerMapInput is an input type that accepts UserRunnerMap and UserRunnerMapOutput values.
@@ -248,6 +261,12 @@ func (i UserRunnerMap) ToUserRunnerMapOutputWithContext(ctx context.Context) Use
 	return pulumi.ToOutputWithContext(ctx, i).(UserRunnerMapOutput)
 }
 
+func (i UserRunnerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserRunner] {
+	return pulumix.Output[map[string]*UserRunner]{
+		OutputState: i.ToUserRunnerMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UserRunnerOutput struct{ *pulumi.OutputState }
 
 func (UserRunnerOutput) ElementType() reflect.Type {
@@ -260,6 +279,12 @@ func (o UserRunnerOutput) ToUserRunnerOutput() UserRunnerOutput {
 
 func (o UserRunnerOutput) ToUserRunnerOutputWithContext(ctx context.Context) UserRunnerOutput {
 	return o
+}
+
+func (o UserRunnerOutput) ToOutput(ctx context.Context) pulumix.Output[*UserRunner] {
+	return pulumix.Output[*UserRunner]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access level of the runner. Valid values are: `notProtected`, `refProtected`.
@@ -331,6 +356,12 @@ func (o UserRunnerArrayOutput) ToUserRunnerArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o UserRunnerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UserRunner] {
+	return pulumix.Output[[]*UserRunner]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UserRunnerArrayOutput) Index(i pulumi.IntInput) UserRunnerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UserRunner {
 		return vs[0].([]*UserRunner)[vs[1].(int)]
@@ -349,6 +380,12 @@ func (o UserRunnerMapOutput) ToUserRunnerMapOutput() UserRunnerMapOutput {
 
 func (o UserRunnerMapOutput) ToUserRunnerMapOutputWithContext(ctx context.Context) UserRunnerMapOutput {
 	return o
+}
+
+func (o UserRunnerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserRunner] {
+	return pulumix.Output[map[string]*UserRunner]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserRunnerMapOutput) MapIndex(k pulumi.StringInput) UserRunnerOutput {

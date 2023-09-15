@@ -131,7 +131,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set to true if you want to treat skipped pipelines as if they finished with success.
      * 
      */
-    @Export(name="allowMergeOnSkippedPipeline", refs={Boolean.class}, tree="[0]")
+    @Export(name="allowMergeOnSkippedPipeline", type=Boolean.class, parameters={})
     private Output<Boolean> allowMergeOnSkippedPipeline;
 
     /**
@@ -145,7 +145,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
-    @Export(name="analyticsAccessLevel", refs={String.class}, tree="[0]")
+    @Export(name="analyticsAccessLevel", type=String.class, parameters={})
     private Output<String> analyticsAccessLevel;
 
     /**
@@ -162,7 +162,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * In the meantime we recommend against using this attribute and use `gitlab.ProjectApprovalRule` instead.
      * 
      */
-    @Export(name="approvalsBeforeMerge", refs={Integer.class}, tree="[0]")
+    @Export(name="approvalsBeforeMerge", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> approvalsBeforeMerge;
 
     /**
@@ -179,7 +179,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
      * 
      */
-    @Export(name="archiveOnDestroy", refs={Boolean.class}, tree="[0]")
+    @Export(name="archiveOnDestroy", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> archiveOnDestroy;
 
     /**
@@ -193,7 +193,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
      * 
      */
-    @Export(name="archived", refs={Boolean.class}, tree="[0]")
+    @Export(name="archived", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> archived;
 
     /**
@@ -207,7 +207,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
      * 
      */
-    @Export(name="autoCancelPendingPipelines", refs={String.class}, tree="[0]")
+    @Export(name="autoCancelPendingPipelines", type=String.class, parameters={})
     private Output<String> autoCancelPendingPipelines;
 
     /**
@@ -221,7 +221,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
      * 
      */
-    @Export(name="autoDevopsDeployStrategy", refs={String.class}, tree="[0]")
+    @Export(name="autoDevopsDeployStrategy", type=String.class, parameters={})
     private Output<String> autoDevopsDeployStrategy;
 
     /**
@@ -235,7 +235,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Enable Auto DevOps for this project.
      * 
      */
-    @Export(name="autoDevopsEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="autoDevopsEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> autoDevopsEnabled;
 
     /**
@@ -249,7 +249,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set whether auto-closing referenced issues on default branch.
      * 
      */
-    @Export(name="autocloseReferencedIssues", refs={Boolean.class}, tree="[0]")
+    @Export(name="autocloseReferencedIssues", type=Boolean.class, parameters={})
     private Output<Boolean> autocloseReferencedIssues;
 
     /**
@@ -263,7 +263,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * A local path to the avatar image to upload. **Note**: not available for imported resources.
      * 
      */
-    @Export(name="avatar", refs={String.class}, tree="[0]")
+    @Export(name="avatar", type=String.class, parameters={})
     private Output</* @Nullable */ String> avatar;
 
     /**
@@ -277,7 +277,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The hash of the avatar image. Use `filesha256(&#34;path/to/avatar.png&#34;)` whenever possible. **Note**: this is used to trigger an update of the avatar. If it&#39;s not given, but an avatar is given, the avatar will be updated each time.
      * 
      */
-    @Export(name="avatarHash", refs={String.class}, tree="[0]")
+    @Export(name="avatarHash", type=String.class, parameters={})
     private Output<String> avatarHash;
 
     /**
@@ -291,7 +291,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The URL of the avatar image.
      * 
      */
-    @Export(name="avatarUrl", refs={String.class}, tree="[0]")
+    @Export(name="avatarUrl", type=String.class, parameters={})
     private Output<String> avatarUrl;
 
     /**
@@ -309,7 +309,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* build_coverage_regex is removed in GitLab 15.0. */
-    @Export(name="buildCoverageRegex", refs={String.class}, tree="[0]")
+    @Export(name="buildCoverageRegex", type=String.class, parameters={})
     private Output</* @Nullable */ String> buildCoverageRegex;
 
     /**
@@ -323,7 +323,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The Git strategy. Defaults to fetch.
      * 
      */
-    @Export(name="buildGitStrategy", refs={String.class}, tree="[0]")
+    @Export(name="buildGitStrategy", type=String.class, parameters={})
     private Output<String> buildGitStrategy;
 
     /**
@@ -337,7 +337,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The maximum amount of time, in seconds, that a job can run.
      * 
      */
-    @Export(name="buildTimeout", refs={Integer.class}, tree="[0]")
+    @Export(name="buildTimeout", type=Integer.class, parameters={})
     private Output<Integer> buildTimeout;
 
     /**
@@ -351,7 +351,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
-    @Export(name="buildsAccessLevel", refs={String.class}, tree="[0]")
+    @Export(name="buildsAccessLevel", type=String.class, parameters={})
     private Output<String> buildsAccessLevel;
 
     /**
@@ -365,7 +365,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Custom Path to CI config file.
      * 
      */
-    @Export(name="ciConfigPath", refs={String.class}, tree="[0]")
+    @Export(name="ciConfigPath", type=String.class, parameters={})
     private Output</* @Nullable */ String> ciConfigPath;
 
     /**
@@ -379,7 +379,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Default number of revisions for shallow cloning.
      * 
      */
-    @Export(name="ciDefaultGitDepth", refs={Integer.class}, tree="[0]")
+    @Export(name="ciDefaultGitDepth", type=Integer.class, parameters={})
     private Output<Integer> ciDefaultGitDepth;
 
     /**
@@ -393,7 +393,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      * 
      */
-    @Export(name="ciForwardDeploymentEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="ciForwardDeploymentEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> ciForwardDeploymentEnabled;
 
     /**
@@ -407,7 +407,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Use separate caches for protected branches.
      * 
      */
-    @Export(name="ciSeparatedCaches", refs={Boolean.class}, tree="[0]")
+    @Export(name="ciSeparatedCaches", type=Boolean.class, parameters={})
     private Output<Boolean> ciSeparatedCaches;
 
     /**
@@ -421,7 +421,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
      * 
      */
-    @Export(name="containerExpirationPolicy", refs={ProjectContainerExpirationPolicy.class}, tree="[0]")
+    @Export(name="containerExpirationPolicy", type=ProjectContainerExpirationPolicy.class, parameters={})
     private Output<ProjectContainerExpirationPolicy> containerExpirationPolicy;
 
     /**
@@ -435,7 +435,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
-    @Export(name="containerRegistryAccessLevel", refs={String.class}, tree="[0]")
+    @Export(name="containerRegistryAccessLevel", type=String.class, parameters={})
     private Output<String> containerRegistryAccessLevel;
 
     /**
@@ -453,7 +453,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `container_registry_access_level` instead. */
-    @Export(name="containerRegistryEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="containerRegistryEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> containerRegistryEnabled;
 
     /**
@@ -467,7 +467,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The default branch for the project.
      * 
      */
-    @Export(name="defaultBranch", refs={String.class}, tree="[0]")
+    @Export(name="defaultBranch", type=String.class, parameters={})
     private Output<String> defaultBranch;
 
     /**
@@ -481,7 +481,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * A description of the project.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -495,7 +495,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Disable email notifications.
      * 
      */
-    @Export(name="emailsDisabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="emailsDisabled", type=Boolean.class, parameters={})
     private Output<Boolean> emailsDisabled;
 
     /**
@@ -509,7 +509,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
-    @Export(name="environmentsAccessLevel", refs={String.class}, tree="[0]")
+    @Export(name="environmentsAccessLevel", type=String.class, parameters={})
     private Output<String> environmentsAccessLevel;
 
     /**
@@ -523,7 +523,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The classification label for the project.
      * 
      */
-    @Export(name="externalAuthorizationClassificationLabel", refs={String.class}, tree="[0]")
+    @Export(name="externalAuthorizationClassificationLabel", type=String.class, parameters={})
     private Output</* @Nullable */ String> externalAuthorizationClassificationLabel;
 
     /**
@@ -537,7 +537,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
-    @Export(name="featureFlagsAccessLevel", refs={String.class}, tree="[0]")
+    @Export(name="featureFlagsAccessLevel", type=String.class, parameters={})
     private Output<String> featureFlagsAccessLevel;
 
     /**
@@ -551,7 +551,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
      * 
      */
-    @Export(name="forkedFromProjectId", refs={Integer.class}, tree="[0]")
+    @Export(name="forkedFromProjectId", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> forkedFromProjectId;
 
     /**
@@ -565,7 +565,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
-    @Export(name="forkingAccessLevel", refs={String.class}, tree="[0]")
+    @Export(name="forkingAccessLevel", type=String.class, parameters={})
     private Output<String> forkingAccessLevel;
 
     /**
@@ -579,7 +579,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
      * 
      */
-    @Export(name="groupWithProjectTemplatesId", refs={Integer.class}, tree="[0]")
+    @Export(name="groupWithProjectTemplatesId", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> groupWithProjectTemplatesId;
 
     /**
@@ -593,7 +593,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * URL that can be provided to `git clone` to clone the
      * 
      */
-    @Export(name="httpUrlToRepo", refs={String.class}, tree="[0]")
+    @Export(name="httpUrlToRepo", type=String.class, parameters={})
     private Output<String> httpUrlToRepo;
 
     /**
@@ -611,7 +611,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * `terraform import`. See the examples section for how to properly use it.
      * 
      */
-    @Export(name="importUrl", refs={String.class}, tree="[0]")
+    @Export(name="importUrl", type=String.class, parameters={})
     private Output</* @Nullable */ String> importUrl;
 
     /**
@@ -631,7 +631,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * use it.
      * 
      */
-    @Export(name="importUrlPassword", refs={String.class}, tree="[0]")
+    @Export(name="importUrlPassword", type=String.class, parameters={})
     private Output</* @Nullable */ String> importUrlPassword;
 
     /**
@@ -649,7 +649,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * use it.
      * 
      */
-    @Export(name="importUrlUsername", refs={String.class}, tree="[0]")
+    @Export(name="importUrlUsername", type=String.class, parameters={})
     private Output</* @Nullable */ String> importUrlUsername;
 
     /**
@@ -665,7 +665,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
-    @Export(name="infrastructureAccessLevel", refs={String.class}, tree="[0]")
+    @Export(name="infrastructureAccessLevel", type=String.class, parameters={})
     private Output<String> infrastructureAccessLevel;
 
     /**
@@ -679,7 +679,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Create main branch with first commit containing a README.md file.
      * 
      */
-    @Export(name="initializeWithReadme", refs={Boolean.class}, tree="[0]")
+    @Export(name="initializeWithReadme", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> initializeWithReadme;
 
     /**
@@ -693,7 +693,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
-    @Export(name="issuesAccessLevel", refs={String.class}, tree="[0]")
+    @Export(name="issuesAccessLevel", type=String.class, parameters={})
     private Output<String> issuesAccessLevel;
 
     /**
@@ -707,7 +707,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Enable issue tracking for the project.
      * 
      */
-    @Export(name="issuesEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="issuesEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> issuesEnabled;
 
     /**
@@ -721,7 +721,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Sets the template for new issues in the project.
      * 
      */
-    @Export(name="issuesTemplate", refs={String.class}, tree="[0]")
+    @Export(name="issuesTemplate", type=String.class, parameters={})
     private Output</* @Nullable */ String> issuesTemplate;
 
     /**
@@ -735,7 +735,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Disable or enable the ability to keep the latest artifact for this project.
      * 
      */
-    @Export(name="keepLatestArtifact", refs={Boolean.class}, tree="[0]")
+    @Export(name="keepLatestArtifact", type=Boolean.class, parameters={})
     private Output<Boolean> keepLatestArtifact;
 
     /**
@@ -749,7 +749,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Enable LFS for the project.
      * 
      */
-    @Export(name="lfsEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="lfsEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> lfsEnabled;
 
     /**
@@ -763,7 +763,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
      * 
      */
-    @Export(name="mergeCommitTemplate", refs={String.class}, tree="[0]")
+    @Export(name="mergeCommitTemplate", type=String.class, parameters={})
     private Output</* @Nullable */ String> mergeCommitTemplate;
 
     /**
@@ -777,7 +777,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
      * 
      */
-    @Export(name="mergeMethod", refs={String.class}, tree="[0]")
+    @Export(name="mergeMethod", type=String.class, parameters={})
     private Output<String> mergeMethod;
 
     /**
@@ -791,7 +791,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Enable or disable merge pipelines.
      * 
      */
-    @Export(name="mergePipelinesEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="mergePipelinesEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> mergePipelinesEnabled;
 
     /**
@@ -805,7 +805,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
-    @Export(name="mergeRequestsAccessLevel", refs={String.class}, tree="[0]")
+    @Export(name="mergeRequestsAccessLevel", type=String.class, parameters={})
     private Output<String> mergeRequestsAccessLevel;
 
     /**
@@ -819,7 +819,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Enable merge requests for the project.
      * 
      */
-    @Export(name="mergeRequestsEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="mergeRequestsEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> mergeRequestsEnabled;
 
     /**
@@ -833,7 +833,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Sets the template for new merge requests in the project.
      * 
      */
-    @Export(name="mergeRequestsTemplate", refs={String.class}, tree="[0]")
+    @Export(name="mergeRequestsTemplate", type=String.class, parameters={})
     private Output</* @Nullable */ String> mergeRequestsTemplate;
 
     /**
@@ -847,7 +847,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
      * 
      */
-    @Export(name="mergeTrainsEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="mergeTrainsEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> mergeTrainsEnabled;
 
     /**
@@ -861,7 +861,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Enable project pull mirror.
      * 
      */
-    @Export(name="mirror", refs={Boolean.class}, tree="[0]")
+    @Export(name="mirror", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> mirror;
 
     /**
@@ -875,7 +875,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Enable overwrite diverged branches for a mirrored project.
      * 
      */
-    @Export(name="mirrorOverwritesDivergedBranches", refs={Boolean.class}, tree="[0]")
+    @Export(name="mirrorOverwritesDivergedBranches", type=Boolean.class, parameters={})
     private Output<Boolean> mirrorOverwritesDivergedBranches;
 
     /**
@@ -889,7 +889,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Enable trigger builds on pushes for a mirrored project.
      * 
      */
-    @Export(name="mirrorTriggerBuilds", refs={Boolean.class}, tree="[0]")
+    @Export(name="mirrorTriggerBuilds", type=Boolean.class, parameters={})
     private Output<Boolean> mirrorTriggerBuilds;
 
     /**
@@ -903,7 +903,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
-    @Export(name="monitorAccessLevel", refs={String.class}, tree="[0]")
+    @Export(name="monitorAccessLevel", type=String.class, parameters={})
     private Output<String> monitorAccessLevel;
 
     /**
@@ -917,7 +917,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * For forked projects, target merge requests to this project. If false, the target will be the upstream project.
      * 
      */
-    @Export(name="mrDefaultTargetSelf", refs={Boolean.class}, tree="[0]")
+    @Export(name="mrDefaultTargetSelf", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> mrDefaultTargetSelf;
 
     /**
@@ -931,7 +931,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The name of the project.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -945,7 +945,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The namespace (group or user) of the project. Defaults to your user.
      * 
      */
-    @Export(name="namespaceId", refs={Integer.class}, tree="[0]")
+    @Export(name="namespaceId", type=Integer.class, parameters={})
     private Output<Integer> namespaceId;
 
     /**
@@ -959,7 +959,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set to true if you want allow merges only if all discussions are resolved.
      * 
      */
-    @Export(name="onlyAllowMergeIfAllDiscussionsAreResolved", refs={Boolean.class}, tree="[0]")
+    @Export(name="onlyAllowMergeIfAllDiscussionsAreResolved", type=Boolean.class, parameters={})
     private Output<Boolean> onlyAllowMergeIfAllDiscussionsAreResolved;
 
     /**
@@ -973,7 +973,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set to true if you want allow merges only if a pipeline succeeds.
      * 
      */
-    @Export(name="onlyAllowMergeIfPipelineSucceeds", refs={Boolean.class}, tree="[0]")
+    @Export(name="onlyAllowMergeIfPipelineSucceeds", type=Boolean.class, parameters={})
     private Output<Boolean> onlyAllowMergeIfPipelineSucceeds;
 
     /**
@@ -987,7 +987,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Enable only mirror protected branches for a mirrored project.
      * 
      */
-    @Export(name="onlyMirrorProtectedBranches", refs={Boolean.class}, tree="[0]")
+    @Export(name="onlyMirrorProtectedBranches", type=Boolean.class, parameters={})
     private Output<Boolean> onlyMirrorProtectedBranches;
 
     /**
@@ -1001,7 +1001,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Enable packages repository for the project.
      * 
      */
-    @Export(name="packagesEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="packagesEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> packagesEnabled;
 
     /**
@@ -1015,7 +1015,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Enable pages access control
      * 
      */
-    @Export(name="pagesAccessLevel", refs={String.class}, tree="[0]")
+    @Export(name="pagesAccessLevel", type=String.class, parameters={})
     private Output<String> pagesAccessLevel;
 
     /**
@@ -1029,7 +1029,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The path of the repository.
      * 
      */
-    @Export(name="path", refs={String.class}, tree="[0]")
+    @Export(name="path", type=String.class, parameters={})
     private Output</* @Nullable */ String> path;
 
     /**
@@ -1043,7 +1043,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The path of the repository with namespace.
      * 
      */
-    @Export(name="pathWithNamespace", refs={String.class}, tree="[0]")
+    @Export(name="pathWithNamespace", type=String.class, parameters={})
     private Output<String> pathWithNamespace;
 
     /**
@@ -1061,7 +1061,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Deprecated in favor of `builds_access_level` */
-    @Export(name="pipelinesEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="pipelinesEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> pipelinesEnabled;
 
     /**
@@ -1075,7 +1075,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Show link to create/view merge request when pushing from the command line
      * 
      */
-    @Export(name="printingMergeRequestLinkEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="printingMergeRequestLinkEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> printingMergeRequestLinkEnabled;
 
     /**
@@ -1089,7 +1089,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * If true, jobs can be viewed by non-project members.
      * 
      */
-    @Export(name="publicBuilds", refs={Boolean.class}, tree="[0]")
+    @Export(name="publicBuilds", type=Boolean.class, parameters={})
     private Output<Boolean> publicBuilds;
 
     /**
@@ -1103,7 +1103,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Push rules for the project.
      * 
      */
-    @Export(name="pushRules", refs={ProjectPushRules.class}, tree="[0]")
+    @Export(name="pushRules", type=ProjectPushRules.class, parameters={})
     private Output<ProjectPushRules> pushRules;
 
     /**
@@ -1117,7 +1117,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
-    @Export(name="releasesAccessLevel", refs={String.class}, tree="[0]")
+    @Export(name="releasesAccessLevel", type=String.class, parameters={})
     private Output<String> releasesAccessLevel;
 
     /**
@@ -1131,7 +1131,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Enable `Delete source branch` option by default for all new merge requests.
      * 
      */
-    @Export(name="removeSourceBranchAfterMerge", refs={Boolean.class}, tree="[0]")
+    @Export(name="removeSourceBranchAfterMerge", type=Boolean.class, parameters={})
     private Output<Boolean> removeSourceBranchAfterMerge;
 
     /**
@@ -1145,7 +1145,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
-    @Export(name="repositoryAccessLevel", refs={String.class}, tree="[0]")
+    @Export(name="repositoryAccessLevel", type=String.class, parameters={})
     private Output<String> repositoryAccessLevel;
 
     /**
@@ -1159,7 +1159,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Which storage shard the repository is on. (administrator only)
      * 
      */
-    @Export(name="repositoryStorage", refs={String.class}, tree="[0]")
+    @Export(name="repositoryStorage", type=String.class, parameters={})
     private Output<String> repositoryStorage;
 
     /**
@@ -1173,7 +1173,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Allow users to request member access.
      * 
      */
-    @Export(name="requestAccessEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="requestAccessEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> requestAccessEnabled;
 
     /**
@@ -1187,7 +1187,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
-    @Export(name="requirementsAccessLevel", refs={String.class}, tree="[0]")
+    @Export(name="requirementsAccessLevel", type=String.class, parameters={})
     private Output<String> requirementsAccessLevel;
 
     /**
@@ -1201,7 +1201,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Automatically resolve merge request diffs discussions on lines changed with a push.
      * 
      */
-    @Export(name="resolveOutdatedDiffDiscussions", refs={Boolean.class}, tree="[0]")
+    @Export(name="resolveOutdatedDiffDiscussions", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> resolveOutdatedDiffDiscussions;
 
     /**
@@ -1215,7 +1215,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
      * 
      */
-    @Export(name="restrictUserDefinedVariables", refs={Boolean.class}, tree="[0]")
+    @Export(name="restrictUserDefinedVariables", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> restrictUserDefinedVariables;
 
     /**
@@ -1229,7 +1229,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Registration token to use during runner setup.
      * 
      */
-    @Export(name="runnersToken", refs={String.class}, tree="[0]")
+    @Export(name="runnersToken", type=String.class, parameters={})
     private Output<String> runnersToken;
 
     /**
@@ -1243,7 +1243,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
-    @Export(name="securityAndComplianceAccessLevel", refs={String.class}, tree="[0]")
+    @Export(name="securityAndComplianceAccessLevel", type=String.class, parameters={})
     private Output<String> securityAndComplianceAccessLevel;
 
     /**
@@ -1257,7 +1257,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Enable shared runners for this project.
      * 
      */
-    @Export(name="sharedRunnersEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="sharedRunnersEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> sharedRunnersEnabled;
 
     /**
@@ -1274,7 +1274,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
      * 
      */
-    @Export(name="skipWaitForDefaultBranchProtection", refs={Boolean.class}, tree="[0]")
+    @Export(name="skipWaitForDefaultBranchProtection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> skipWaitForDefaultBranchProtection;
 
     /**
@@ -1291,7 +1291,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
-    @Export(name="snippetsAccessLevel", refs={String.class}, tree="[0]")
+    @Export(name="snippetsAccessLevel", type=String.class, parameters={})
     private Output<String> snippetsAccessLevel;
 
     /**
@@ -1305,7 +1305,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Enable snippets for the project.
      * 
      */
-    @Export(name="snippetsEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="snippetsEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> snippetsEnabled;
 
     /**
@@ -1319,7 +1319,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
      * 
      */
-    @Export(name="squashCommitTemplate", refs={String.class}, tree="[0]")
+    @Export(name="squashCommitTemplate", type=String.class, parameters={})
     private Output</* @Nullable */ String> squashCommitTemplate;
 
     /**
@@ -1333,7 +1333,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
      * 
      */
-    @Export(name="squashOption", refs={String.class}, tree="[0]")
+    @Export(name="squashOption", type=String.class, parameters={})
     private Output<String> squashOption;
 
     /**
@@ -1347,7 +1347,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * URL that can be provided to `git clone` to clone the
      * 
      */
-    @Export(name="sshUrlToRepo", refs={String.class}, tree="[0]")
+    @Export(name="sshUrlToRepo", type=String.class, parameters={})
     private Output<String> sshUrlToRepo;
 
     /**
@@ -1361,7 +1361,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The commit message used to apply merge request suggestions.
      * 
      */
-    @Export(name="suggestionCommitMessage", refs={String.class}, tree="[0]")
+    @Export(name="suggestionCommitMessage", type=String.class, parameters={})
     private Output</* @Nullable */ String> suggestionCommitMessage;
 
     /**
@@ -1375,7 +1375,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output<List<String>> tags;
 
     /**
@@ -1389,7 +1389,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
      * 
      */
-    @Export(name="templateName", refs={String.class}, tree="[0]")
+    @Export(name="templateName", type=String.class, parameters={})
     private Output</* @Nullable */ String> templateName;
 
     /**
@@ -1403,7 +1403,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `gitlab.GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
      * 
      */
-    @Export(name="templateProjectId", refs={Integer.class}, tree="[0]")
+    @Export(name="templateProjectId", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> templateProjectId;
 
     /**
@@ -1417,7 +1417,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The list of topics for the project.
      * 
      */
-    @Export(name="topics", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="topics", type=List.class, parameters={String.class})
     private Output<List<String>> topics;
 
     /**
@@ -1432,7 +1432,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
      * 
      */
-    @Export(name="useCustomTemplate", refs={Boolean.class}, tree="[0]")
+    @Export(name="useCustomTemplate", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> useCustomTemplate;
 
     /**
@@ -1447,7 +1447,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set to `public` to create a public project.
      * 
      */
-    @Export(name="visibilityLevel", refs={String.class}, tree="[0]")
+    @Export(name="visibilityLevel", type=String.class, parameters={})
     private Output<String> visibilityLevel;
 
     /**
@@ -1461,7 +1461,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * URL that can be used to find the project in a browser.
      * 
      */
-    @Export(name="webUrl", refs={String.class}, tree="[0]")
+    @Export(name="webUrl", type=String.class, parameters={})
     private Output<String> webUrl;
 
     /**
@@ -1475,7 +1475,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
-    @Export(name="wikiAccessLevel", refs={String.class}, tree="[0]")
+    @Export(name="wikiAccessLevel", type=String.class, parameters={})
     private Output<String> wikiAccessLevel;
 
     /**
@@ -1489,7 +1489,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Enable wiki for the project.
      * 
      */
-    @Export(name="wikiEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="wikiEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> wikiEnabled;
 
     /**

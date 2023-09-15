@@ -74,7 +74,7 @@ public class Branch extends com.pulumi.resources.CustomResource {
      * Bool, true if you can push to the branch.
      * 
      */
-    @Export(name="canPush", refs={Boolean.class}, tree="[0]")
+    @Export(name="canPush", type=Boolean.class, parameters={})
     private Output<Boolean> canPush;
 
     /**
@@ -88,7 +88,7 @@ public class Branch extends com.pulumi.resources.CustomResource {
      * The commit associated with the branch ref.
      * 
      */
-    @Export(name="commits", refs={List.class,BranchCommit.class}, tree="[0,1]")
+    @Export(name="commits", type=List.class, parameters={BranchCommit.class})
     private Output<List<BranchCommit>> commits;
 
     /**
@@ -102,7 +102,7 @@ public class Branch extends com.pulumi.resources.CustomResource {
      * Bool, true if branch is the default branch for the project.
      * 
      */
-    @Export(name="default", refs={Boolean.class}, tree="[0]")
+    @Export(name="default", type=Boolean.class, parameters={})
     private Output<Boolean> default_;
 
     /**
@@ -116,7 +116,7 @@ public class Branch extends com.pulumi.resources.CustomResource {
      * Bool, true if developer level access allows to merge branch.
      * 
      */
-    @Export(name="developerCanMerge", refs={Boolean.class}, tree="[0]")
+    @Export(name="developerCanMerge", type=Boolean.class, parameters={})
     private Output<Boolean> developerCanMerge;
 
     /**
@@ -130,7 +130,7 @@ public class Branch extends com.pulumi.resources.CustomResource {
      * Bool, true if developer level access allows git push.
      * 
      */
-    @Export(name="developerCanPush", refs={Boolean.class}, tree="[0]")
+    @Export(name="developerCanPush", type=Boolean.class, parameters={})
     private Output<Boolean> developerCanPush;
 
     /**
@@ -144,7 +144,7 @@ public class Branch extends com.pulumi.resources.CustomResource {
      * Bool, true if the branch has been merged into it&#39;s parent.
      * 
      */
-    @Export(name="merged", refs={Boolean.class}, tree="[0]")
+    @Export(name="merged", type=Boolean.class, parameters={})
     private Output<Boolean> merged;
 
     /**
@@ -158,7 +158,7 @@ public class Branch extends com.pulumi.resources.CustomResource {
      * The name for this branch.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -172,7 +172,7 @@ public class Branch extends com.pulumi.resources.CustomResource {
      * The ID or full path of the project which the branch is created against.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -186,7 +186,7 @@ public class Branch extends com.pulumi.resources.CustomResource {
      * Bool, true if branch has branch protection.
      * 
      */
-    @Export(name="protected", refs={Boolean.class}, tree="[0]")
+    @Export(name="protected", type=Boolean.class, parameters={})
     private Output<Boolean> protected_;
 
     /**
@@ -200,7 +200,7 @@ public class Branch extends com.pulumi.resources.CustomResource {
      * The ref which the branch is created from.
      * 
      */
-    @Export(name="ref", refs={String.class}, tree="[0]")
+    @Export(name="ref", type=String.class, parameters={})
     private Output<String> ref;
 
     /**
@@ -214,7 +214,7 @@ public class Branch extends com.pulumi.resources.CustomResource {
      * The url of the created branch (https).
      * 
      */
-    @Export(name="webUrl", refs={String.class}, tree="[0]")
+    @Export(name="webUrl", type=String.class, parameters={})
     private Output<String> webUrl;
 
     /**

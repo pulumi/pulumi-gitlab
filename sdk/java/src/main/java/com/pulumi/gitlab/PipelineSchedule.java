@@ -69,7 +69,7 @@ public class PipelineSchedule extends com.pulumi.resources.CustomResource {
      * The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
      * 
      */
-    @Export(name="active", refs={Boolean.class}, tree="[0]")
+    @Export(name="active", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> active;
 
     /**
@@ -83,7 +83,7 @@ public class PipelineSchedule extends com.pulumi.resources.CustomResource {
      * The cron (e.g. `0 1 * * *`).
      * 
      */
-    @Export(name="cron", refs={String.class}, tree="[0]")
+    @Export(name="cron", type=String.class, parameters={})
     private Output<String> cron;
 
     /**
@@ -97,7 +97,7 @@ public class PipelineSchedule extends com.pulumi.resources.CustomResource {
      * The timezone.
      * 
      */
-    @Export(name="cronTimezone", refs={String.class}, tree="[0]")
+    @Export(name="cronTimezone", type=String.class, parameters={})
     private Output</* @Nullable */ String> cronTimezone;
 
     /**
@@ -111,7 +111,7 @@ public class PipelineSchedule extends com.pulumi.resources.CustomResource {
      * The description of the pipeline schedule.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -125,7 +125,7 @@ public class PipelineSchedule extends com.pulumi.resources.CustomResource {
      * The pipeline schedule id.
      * 
      */
-    @Export(name="pipelineScheduleId", refs={Integer.class}, tree="[0]")
+    @Export(name="pipelineScheduleId", type=Integer.class, parameters={})
     private Output<Integer> pipelineScheduleId;
 
     /**
@@ -139,7 +139,7 @@ public class PipelineSchedule extends com.pulumi.resources.CustomResource {
      * The name or id of the project to add the schedule to.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -153,7 +153,7 @@ public class PipelineSchedule extends com.pulumi.resources.CustomResource {
      * The branch/tag name to be triggered.
      * 
      */
-    @Export(name="ref", refs={String.class}, tree="[0]")
+    @Export(name="ref", type=String.class, parameters={})
     private Output<String> ref;
 
     /**

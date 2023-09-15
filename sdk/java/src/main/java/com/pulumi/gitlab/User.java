@@ -82,7 +82,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Boolean, defaults to false. Whether to allow the user to create groups.
      * 
      */
-    @Export(name="canCreateGroup", refs={Boolean.class}, tree="[0]")
+    @Export(name="canCreateGroup", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> canCreateGroup;
 
     /**
@@ -96,7 +96,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The e-mail address of the user.
      * 
      */
-    @Export(name="email", refs={String.class}, tree="[0]")
+    @Export(name="email", type=String.class, parameters={})
     private Output<String> email;
 
     /**
@@ -110,7 +110,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Boolean, defaults to false.  Whether to enable administrative privileges
      * 
      */
-    @Export(name="isAdmin", refs={Boolean.class}, tree="[0]")
+    @Export(name="isAdmin", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> isAdmin;
 
     /**
@@ -124,7 +124,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
      * 
      */
-    @Export(name="isExternal", refs={Boolean.class}, tree="[0]")
+    @Export(name="isExternal", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> isExternal;
 
     /**
@@ -138,7 +138,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The name of the user.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -152,7 +152,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The ID of the user&#39;s namespace. Available since GitLab 14.10.
      * 
      */
-    @Export(name="namespaceId", refs={Integer.class}, tree="[0]")
+    @Export(name="namespaceId", type=Integer.class, parameters={})
     private Output<Integer> namespaceId;
 
     /**
@@ -166,7 +166,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The note associated to the user.
      * 
      */
-    @Export(name="note", refs={String.class}, tree="[0]")
+    @Export(name="note", type=String.class, parameters={})
     private Output</* @Nullable */ String> note;
 
     /**
@@ -180,7 +180,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The password of the user.
      * 
      */
-    @Export(name="password", refs={String.class}, tree="[0]")
+    @Export(name="password", type=String.class, parameters={})
     private Output</* @Nullable */ String> password;
 
     /**
@@ -194,7 +194,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Integer, defaults to 0.  Number of projects user can create.
      * 
      */
-    @Export(name="projectsLimit", refs={Integer.class}, tree="[0]")
+    @Export(name="projectsLimit", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> projectsLimit;
 
     /**
@@ -208,7 +208,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Boolean, defaults to false. Send user password reset link.
      * 
      */
-    @Export(name="resetPassword", refs={Boolean.class}, tree="[0]")
+    @Export(name="resetPassword", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> resetPassword;
 
     /**
@@ -222,7 +222,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Boolean, defaults to true. Whether to skip confirmation.
      * 
      */
-    @Export(name="skipConfirmation", refs={Boolean.class}, tree="[0]")
+    @Export(name="skipConfirmation", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> skipConfirmation;
 
     /**
@@ -236,7 +236,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * String, defaults to &#39;active&#39;. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output</* @Nullable */ String> state;
 
     /**
@@ -250,7 +250,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The username of the user.
      * 
      */
-    @Export(name="username", refs={String.class}, tree="[0]")
+    @Export(name="username", type=String.class, parameters={})
     private Output<String> username;
 
     /**

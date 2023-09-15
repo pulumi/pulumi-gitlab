@@ -76,7 +76,7 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
      * The ISO8601 date/time that this environment was created at in UTC.
      * 
      */
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    @Export(name="createdAt", type=String.class, parameters={})
     private Output<String> createdAt;
 
     /**
@@ -90,7 +90,7 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
      * Place to link to for this environment.
      * 
      */
-    @Export(name="externalUrl", refs={String.class}, tree="[0]")
+    @Export(name="externalUrl", type=String.class, parameters={})
     private Output</* @Nullable */ String> externalUrl;
 
     /**
@@ -104,7 +104,7 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
      * The name of the environment.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -118,7 +118,7 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
      * The ID or full path of the project to environment is created for.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -132,7 +132,7 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
      * The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
      * 
      */
-    @Export(name="slug", refs={String.class}, tree="[0]")
+    @Export(name="slug", type=String.class, parameters={})
     private Output<String> slug;
 
     /**
@@ -146,7 +146,7 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
      * State the environment is in. Valid values are `available`, `stopped`.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -160,7 +160,7 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
      * Determines whether the environment is attempted to be stopped before the environment is deleted.
      * 
      */
-    @Export(name="stopBeforeDestroy", refs={Boolean.class}, tree="[0]")
+    @Export(name="stopBeforeDestroy", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> stopBeforeDestroy;
 
     /**
@@ -174,7 +174,7 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
      * The ISO8601 date/time that this environment was last updated at in UTC.
      * 
      */
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    @Export(name="updatedAt", type=String.class, parameters={})
     private Output<String> updatedAt;
 
     /**

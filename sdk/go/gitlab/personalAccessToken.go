@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `PersonalAccessToken` resource allows to manage the lifecycle of a personal access token for a specified user.
@@ -218,6 +219,12 @@ func (i *PersonalAccessToken) ToPersonalAccessTokenOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(PersonalAccessTokenOutput)
 }
 
+func (i *PersonalAccessToken) ToOutput(ctx context.Context) pulumix.Output[*PersonalAccessToken] {
+	return pulumix.Output[*PersonalAccessToken]{
+		OutputState: i.ToPersonalAccessTokenOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PersonalAccessTokenArrayInput is an input type that accepts PersonalAccessTokenArray and PersonalAccessTokenArrayOutput values.
 // You can construct a concrete instance of `PersonalAccessTokenArrayInput` via:
 //
@@ -241,6 +248,12 @@ func (i PersonalAccessTokenArray) ToPersonalAccessTokenArrayOutput() PersonalAcc
 
 func (i PersonalAccessTokenArray) ToPersonalAccessTokenArrayOutputWithContext(ctx context.Context) PersonalAccessTokenArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PersonalAccessTokenArrayOutput)
+}
+
+func (i PersonalAccessTokenArray) ToOutput(ctx context.Context) pulumix.Output[[]*PersonalAccessToken] {
+	return pulumix.Output[[]*PersonalAccessToken]{
+		OutputState: i.ToPersonalAccessTokenArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PersonalAccessTokenMapInput is an input type that accepts PersonalAccessTokenMap and PersonalAccessTokenMapOutput values.
@@ -268,6 +281,12 @@ func (i PersonalAccessTokenMap) ToPersonalAccessTokenMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PersonalAccessTokenMapOutput)
 }
 
+func (i PersonalAccessTokenMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PersonalAccessToken] {
+	return pulumix.Output[map[string]*PersonalAccessToken]{
+		OutputState: i.ToPersonalAccessTokenMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PersonalAccessTokenOutput struct{ *pulumi.OutputState }
 
 func (PersonalAccessTokenOutput) ElementType() reflect.Type {
@@ -280,6 +299,12 @@ func (o PersonalAccessTokenOutput) ToPersonalAccessTokenOutput() PersonalAccessT
 
 func (o PersonalAccessTokenOutput) ToPersonalAccessTokenOutputWithContext(ctx context.Context) PersonalAccessTokenOutput {
 	return o
+}
+
+func (o PersonalAccessTokenOutput) ToOutput(ctx context.Context) pulumix.Output[*PersonalAccessToken] {
+	return pulumix.Output[*PersonalAccessToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 // True if the token is active.
@@ -336,6 +361,12 @@ func (o PersonalAccessTokenArrayOutput) ToPersonalAccessTokenArrayOutputWithCont
 	return o
 }
 
+func (o PersonalAccessTokenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PersonalAccessToken] {
+	return pulumix.Output[[]*PersonalAccessToken]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PersonalAccessTokenArrayOutput) Index(i pulumi.IntInput) PersonalAccessTokenOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PersonalAccessToken {
 		return vs[0].([]*PersonalAccessToken)[vs[1].(int)]
@@ -354,6 +385,12 @@ func (o PersonalAccessTokenMapOutput) ToPersonalAccessTokenMapOutput() PersonalA
 
 func (o PersonalAccessTokenMapOutput) ToPersonalAccessTokenMapOutputWithContext(ctx context.Context) PersonalAccessTokenMapOutput {
 	return o
+}
+
+func (o PersonalAccessTokenMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PersonalAccessToken] {
+	return pulumix.Output[map[string]*PersonalAccessToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PersonalAccessTokenMapOutput) MapIndex(k pulumi.StringInput) PersonalAccessTokenOutput {

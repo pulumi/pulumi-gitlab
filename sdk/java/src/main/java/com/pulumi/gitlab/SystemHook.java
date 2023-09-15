@@ -76,7 +76,7 @@ public class SystemHook extends com.pulumi.resources.CustomResource {
      * The date and time the hook was created in ISO8601 format.
      * 
      */
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    @Export(name="createdAt", type=String.class, parameters={})
     private Output<String> createdAt;
 
     /**
@@ -90,7 +90,7 @@ public class SystemHook extends com.pulumi.resources.CustomResource {
      * Do SSL verification when triggering the hook.
      * 
      */
-    @Export(name="enableSslVerification", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableSslVerification", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableSslVerification;
 
     /**
@@ -104,7 +104,7 @@ public class SystemHook extends com.pulumi.resources.CustomResource {
      * Trigger hook on merge requests events.
      * 
      */
-    @Export(name="mergeRequestsEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="mergeRequestsEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> mergeRequestsEvents;
 
     /**
@@ -118,7 +118,7 @@ public class SystemHook extends com.pulumi.resources.CustomResource {
      * When true, the hook fires on push events.
      * 
      */
-    @Export(name="pushEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="pushEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> pushEvents;
 
     /**
@@ -132,7 +132,7 @@ public class SystemHook extends com.pulumi.resources.CustomResource {
      * Trigger hook on repository update events.
      * 
      */
-    @Export(name="repositoryUpdateEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="repositoryUpdateEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> repositoryUpdateEvents;
 
     /**
@@ -146,7 +146,7 @@ public class SystemHook extends com.pulumi.resources.CustomResource {
      * When true, the hook fires on new tags being pushed.
      * 
      */
-    @Export(name="tagPushEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="tagPushEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> tagPushEvents;
 
     /**
@@ -160,7 +160,7 @@ public class SystemHook extends com.pulumi.resources.CustomResource {
      * Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
      * 
      */
-    @Export(name="token", refs={String.class}, tree="[0]")
+    @Export(name="token", type=String.class, parameters={})
     private Output</* @Nullable */ String> token;
 
     /**
@@ -174,7 +174,7 @@ public class SystemHook extends com.pulumi.resources.CustomResource {
      * The hook URL.
      * 
      */
-    @Export(name="url", refs={String.class}, tree="[0]")
+    @Export(name="url", type=String.class, parameters={})
     private Output<String> url;
 
     /**

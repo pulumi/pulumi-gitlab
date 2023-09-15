@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectTag` resource allows to manage the lifecycle of a tag in a project.
@@ -205,6 +206,12 @@ func (i *ProjectTag) ToProjectTagOutputWithContext(ctx context.Context) ProjectT
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectTagOutput)
 }
 
+func (i *ProjectTag) ToOutput(ctx context.Context) pulumix.Output[*ProjectTag] {
+	return pulumix.Output[*ProjectTag]{
+		OutputState: i.ToProjectTagOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectTagArrayInput is an input type that accepts ProjectTagArray and ProjectTagArrayOutput values.
 // You can construct a concrete instance of `ProjectTagArrayInput` via:
 //
@@ -228,6 +235,12 @@ func (i ProjectTagArray) ToProjectTagArrayOutput() ProjectTagArrayOutput {
 
 func (i ProjectTagArray) ToProjectTagArrayOutputWithContext(ctx context.Context) ProjectTagArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectTagArrayOutput)
+}
+
+func (i ProjectTagArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectTag] {
+	return pulumix.Output[[]*ProjectTag]{
+		OutputState: i.ToProjectTagArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectTagMapInput is an input type that accepts ProjectTagMap and ProjectTagMapOutput values.
@@ -255,6 +268,12 @@ func (i ProjectTagMap) ToProjectTagMapOutputWithContext(ctx context.Context) Pro
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectTagMapOutput)
 }
 
+func (i ProjectTagMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectTag] {
+	return pulumix.Output[map[string]*ProjectTag]{
+		OutputState: i.ToProjectTagMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectTagOutput struct{ *pulumi.OutputState }
 
 func (ProjectTagOutput) ElementType() reflect.Type {
@@ -267,6 +286,12 @@ func (o ProjectTagOutput) ToProjectTagOutput() ProjectTagOutput {
 
 func (o ProjectTagOutput) ToProjectTagOutputWithContext(ctx context.Context) ProjectTagOutput {
 	return o
+}
+
+func (o ProjectTagOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectTag] {
+	return pulumix.Output[*ProjectTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The commit associated with the tag.
@@ -323,6 +348,12 @@ func (o ProjectTagArrayOutput) ToProjectTagArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ProjectTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectTag] {
+	return pulumix.Output[[]*ProjectTag]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectTagArrayOutput) Index(i pulumi.IntInput) ProjectTagOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectTag {
 		return vs[0].([]*ProjectTag)[vs[1].(int)]
@@ -341,6 +372,12 @@ func (o ProjectTagMapOutput) ToProjectTagMapOutput() ProjectTagMapOutput {
 
 func (o ProjectTagMapOutput) ToProjectTagMapOutputWithContext(ctx context.Context) ProjectTagMapOutput {
 	return o
+}
+
+func (o ProjectTagMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectTag] {
+	return pulumix.Output[map[string]*ProjectTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectTagMapOutput) MapIndex(k pulumi.StringInput) ProjectTagOutput {

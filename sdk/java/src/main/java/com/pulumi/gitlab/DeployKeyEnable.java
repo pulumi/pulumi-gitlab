@@ -83,7 +83,7 @@ public class DeployKeyEnable extends com.pulumi.resources.CustomResource {
      * Can deploy key push to the project&#39;s repository.
      * 
      */
-    @Export(name="canPush", refs={Boolean.class}, tree="[0]")
+    @Export(name="canPush", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> canPush;
 
     /**
@@ -97,7 +97,7 @@ public class DeployKeyEnable extends com.pulumi.resources.CustomResource {
      * Deploy key.
      * 
      */
-    @Export(name="key", refs={String.class}, tree="[0]")
+    @Export(name="key", type=String.class, parameters={})
     private Output<String> key;
 
     /**
@@ -111,7 +111,7 @@ public class DeployKeyEnable extends com.pulumi.resources.CustomResource {
      * The Gitlab key id for the pre-existing deploy key
      * 
      */
-    @Export(name="keyId", refs={String.class}, tree="[0]")
+    @Export(name="keyId", type=String.class, parameters={})
     private Output<String> keyId;
 
     /**
@@ -125,7 +125,7 @@ public class DeployKeyEnable extends com.pulumi.resources.CustomResource {
      * The name or id of the project to add the deploy key to.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -139,7 +139,7 @@ public class DeployKeyEnable extends com.pulumi.resources.CustomResource {
      * Deploy key&#39;s title.
      * 
      */
-    @Export(name="title", refs={String.class}, tree="[0]")
+    @Export(name="title", type=String.class, parameters={})
     private Output<String> title;
 
     /**

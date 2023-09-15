@@ -67,7 +67,7 @@ public class GroupLabel extends com.pulumi.resources.CustomResource {
      * The color of the label given in 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
      * 
      */
-    @Export(name="color", refs={String.class}, tree="[0]")
+    @Export(name="color", type=String.class, parameters={})
     private Output<String> color;
 
     /**
@@ -81,7 +81,7 @@ public class GroupLabel extends com.pulumi.resources.CustomResource {
      * The description of the label.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -95,7 +95,7 @@ public class GroupLabel extends com.pulumi.resources.CustomResource {
      * The name or id of the group to add the label to.
      * 
      */
-    @Export(name="group", refs={String.class}, tree="[0]")
+    @Export(name="group", type=String.class, parameters={})
     private Output<String> group;
 
     /**
@@ -109,7 +109,7 @@ public class GroupLabel extends com.pulumi.resources.CustomResource {
      * The id of the group label.
      * 
      */
-    @Export(name="labelId", refs={Integer.class}, tree="[0]")
+    @Export(name="labelId", type=Integer.class, parameters={})
     private Output<Integer> labelId;
 
     /**
@@ -123,7 +123,7 @@ public class GroupLabel extends com.pulumi.resources.CustomResource {
      * The name of the label.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**

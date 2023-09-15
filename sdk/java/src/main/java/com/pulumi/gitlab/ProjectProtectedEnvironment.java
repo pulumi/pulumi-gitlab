@@ -118,7 +118,7 @@ public class ProjectProtectedEnvironment extends com.pulumi.resources.CustomReso
      * Array of access levels allowed to deploy, with each described by a hash.
      * 
      */
-    @Export(name="deployAccessLevels", refs={List.class,ProjectProtectedEnvironmentDeployAccessLevel.class}, tree="[0,1]")
+    @Export(name="deployAccessLevels", type=List.class, parameters={ProjectProtectedEnvironmentDeployAccessLevel.class})
     private Output</* @Nullable */ List<ProjectProtectedEnvironmentDeployAccessLevel>> deployAccessLevels;
 
     /**
@@ -132,7 +132,7 @@ public class ProjectProtectedEnvironment extends com.pulumi.resources.CustomReso
      * The name of the environment.
      * 
      */
-    @Export(name="environment", refs={String.class}, tree="[0]")
+    @Export(name="environment", type=String.class, parameters={})
     private Output<String> environment;
 
     /**
@@ -146,7 +146,7 @@ public class ProjectProtectedEnvironment extends com.pulumi.resources.CustomReso
      * The ID or full path of the project which the protected environment is created against.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -160,7 +160,7 @@ public class ProjectProtectedEnvironment extends com.pulumi.resources.CustomReso
      * The number of approvals required to deploy to this environment.
      * 
      */
-    @Export(name="requiredApprovalCount", refs={Integer.class}, tree="[0]")
+    @Export(name="requiredApprovalCount", type=Integer.class, parameters={})
     private Output<Integer> requiredApprovalCount;
 
     /**

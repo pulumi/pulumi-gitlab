@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectHook` resource allows to manage the lifecycle of a project hook.
@@ -324,6 +325,12 @@ func (i *ProjectHook) ToProjectHookOutputWithContext(ctx context.Context) Projec
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectHookOutput)
 }
 
+func (i *ProjectHook) ToOutput(ctx context.Context) pulumix.Output[*ProjectHook] {
+	return pulumix.Output[*ProjectHook]{
+		OutputState: i.ToProjectHookOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectHookArrayInput is an input type that accepts ProjectHookArray and ProjectHookArrayOutput values.
 // You can construct a concrete instance of `ProjectHookArrayInput` via:
 //
@@ -347,6 +354,12 @@ func (i ProjectHookArray) ToProjectHookArrayOutput() ProjectHookArrayOutput {
 
 func (i ProjectHookArray) ToProjectHookArrayOutputWithContext(ctx context.Context) ProjectHookArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectHookArrayOutput)
+}
+
+func (i ProjectHookArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectHook] {
+	return pulumix.Output[[]*ProjectHook]{
+		OutputState: i.ToProjectHookArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectHookMapInput is an input type that accepts ProjectHookMap and ProjectHookMapOutput values.
@@ -374,6 +387,12 @@ func (i ProjectHookMap) ToProjectHookMapOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectHookMapOutput)
 }
 
+func (i ProjectHookMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectHook] {
+	return pulumix.Output[map[string]*ProjectHook]{
+		OutputState: i.ToProjectHookMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectHookOutput struct{ *pulumi.OutputState }
 
 func (ProjectHookOutput) ElementType() reflect.Type {
@@ -386,6 +405,12 @@ func (o ProjectHookOutput) ToProjectHookOutput() ProjectHookOutput {
 
 func (o ProjectHookOutput) ToProjectHookOutputWithContext(ctx context.Context) ProjectHookOutput {
 	return o
+}
+
+func (o ProjectHookOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectHook] {
+	return pulumix.Output[*ProjectHook]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Invoke the hook for confidential issues events.
@@ -497,6 +522,12 @@ func (o ProjectHookArrayOutput) ToProjectHookArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o ProjectHookArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectHook] {
+	return pulumix.Output[[]*ProjectHook]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectHookArrayOutput) Index(i pulumi.IntInput) ProjectHookOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectHook {
 		return vs[0].([]*ProjectHook)[vs[1].(int)]
@@ -515,6 +546,12 @@ func (o ProjectHookMapOutput) ToProjectHookMapOutput() ProjectHookMapOutput {
 
 func (o ProjectHookMapOutput) ToProjectHookMapOutputWithContext(ctx context.Context) ProjectHookMapOutput {
 	return o
+}
+
+func (o ProjectHookMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectHook] {
+	return pulumix.Output[map[string]*ProjectHook]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectHookMapOutput) MapIndex(k pulumi.StringInput) ProjectHookOutput {

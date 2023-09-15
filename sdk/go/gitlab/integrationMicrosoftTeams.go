@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `IntegrationMicrosoftTeams` resource allows to manage the lifecycle of a project integration with Microsoft Teams.
@@ -288,6 +289,12 @@ func (i *IntegrationMicrosoftTeams) ToIntegrationMicrosoftTeamsOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationMicrosoftTeamsOutput)
 }
 
+func (i *IntegrationMicrosoftTeams) ToOutput(ctx context.Context) pulumix.Output[*IntegrationMicrosoftTeams] {
+	return pulumix.Output[*IntegrationMicrosoftTeams]{
+		OutputState: i.ToIntegrationMicrosoftTeamsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IntegrationMicrosoftTeamsArrayInput is an input type that accepts IntegrationMicrosoftTeamsArray and IntegrationMicrosoftTeamsArrayOutput values.
 // You can construct a concrete instance of `IntegrationMicrosoftTeamsArrayInput` via:
 //
@@ -311,6 +318,12 @@ func (i IntegrationMicrosoftTeamsArray) ToIntegrationMicrosoftTeamsArrayOutput()
 
 func (i IntegrationMicrosoftTeamsArray) ToIntegrationMicrosoftTeamsArrayOutputWithContext(ctx context.Context) IntegrationMicrosoftTeamsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationMicrosoftTeamsArrayOutput)
+}
+
+func (i IntegrationMicrosoftTeamsArray) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationMicrosoftTeams] {
+	return pulumix.Output[[]*IntegrationMicrosoftTeams]{
+		OutputState: i.ToIntegrationMicrosoftTeamsArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IntegrationMicrosoftTeamsMapInput is an input type that accepts IntegrationMicrosoftTeamsMap and IntegrationMicrosoftTeamsMapOutput values.
@@ -338,6 +351,12 @@ func (i IntegrationMicrosoftTeamsMap) ToIntegrationMicrosoftTeamsMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationMicrosoftTeamsMapOutput)
 }
 
+func (i IntegrationMicrosoftTeamsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationMicrosoftTeams] {
+	return pulumix.Output[map[string]*IntegrationMicrosoftTeams]{
+		OutputState: i.ToIntegrationMicrosoftTeamsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntegrationMicrosoftTeamsOutput struct{ *pulumi.OutputState }
 
 func (IntegrationMicrosoftTeamsOutput) ElementType() reflect.Type {
@@ -350,6 +369,12 @@ func (o IntegrationMicrosoftTeamsOutput) ToIntegrationMicrosoftTeamsOutput() Int
 
 func (o IntegrationMicrosoftTeamsOutput) ToIntegrationMicrosoftTeamsOutputWithContext(ctx context.Context) IntegrationMicrosoftTeamsOutput {
 	return o
+}
+
+func (o IntegrationMicrosoftTeamsOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationMicrosoftTeams] {
+	return pulumix.Output[*IntegrationMicrosoftTeams]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether the integration is active.
@@ -446,6 +471,12 @@ func (o IntegrationMicrosoftTeamsArrayOutput) ToIntegrationMicrosoftTeamsArrayOu
 	return o
 }
 
+func (o IntegrationMicrosoftTeamsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationMicrosoftTeams] {
+	return pulumix.Output[[]*IntegrationMicrosoftTeams]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IntegrationMicrosoftTeamsArrayOutput) Index(i pulumi.IntInput) IntegrationMicrosoftTeamsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IntegrationMicrosoftTeams {
 		return vs[0].([]*IntegrationMicrosoftTeams)[vs[1].(int)]
@@ -464,6 +495,12 @@ func (o IntegrationMicrosoftTeamsMapOutput) ToIntegrationMicrosoftTeamsMapOutput
 
 func (o IntegrationMicrosoftTeamsMapOutput) ToIntegrationMicrosoftTeamsMapOutputWithContext(ctx context.Context) IntegrationMicrosoftTeamsMapOutput {
 	return o
+}
+
+func (o IntegrationMicrosoftTeamsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationMicrosoftTeams] {
+	return pulumix.Output[map[string]*IntegrationMicrosoftTeams]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntegrationMicrosoftTeamsMapOutput) MapIndex(k pulumi.StringInput) IntegrationMicrosoftTeamsOutput {

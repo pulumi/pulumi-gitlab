@@ -75,7 +75,7 @@ public class ComplianceFramework extends com.pulumi.resources.CustomResource {
      * New color representation of the compliance framework in hex format. e.g. #FCA121.
      * 
      */
-    @Export(name="color", refs={String.class}, tree="[0]")
+    @Export(name="color", type=String.class, parameters={})
     private Output<String> color;
 
     /**
@@ -89,7 +89,7 @@ public class ComplianceFramework extends com.pulumi.resources.CustomResource {
      * Set this compliance framework as the default framework for the group. Default: `false`
      * 
      */
-    @Export(name="default", refs={Boolean.class}, tree="[0]")
+    @Export(name="default", type=Boolean.class, parameters={})
     private Output<Boolean> default_;
 
     /**
@@ -103,7 +103,7 @@ public class ComplianceFramework extends com.pulumi.resources.CustomResource {
      * Description for the compliance framework.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -117,7 +117,7 @@ public class ComplianceFramework extends com.pulumi.resources.CustomResource {
      * Globally unique ID of the compliance framework.
      * 
      */
-    @Export(name="frameworkId", refs={String.class}, tree="[0]")
+    @Export(name="frameworkId", type=String.class, parameters={})
     private Output<String> frameworkId;
 
     /**
@@ -131,7 +131,7 @@ public class ComplianceFramework extends com.pulumi.resources.CustomResource {
      * Name for the compliance framework.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -145,7 +145,7 @@ public class ComplianceFramework extends com.pulumi.resources.CustomResource {
      * Full path of the namespace to add the compliance framework to.
      * 
      */
-    @Export(name="namespacePath", refs={String.class}, tree="[0]")
+    @Export(name="namespacePath", type=String.class, parameters={})
     private Output<String> namespacePath;
 
     /**
@@ -159,7 +159,7 @@ public class ComplianceFramework extends com.pulumi.resources.CustomResource {
      * Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
      * 
      */
-    @Export(name="pipelineConfigurationFullPath", refs={String.class}, tree="[0]")
+    @Export(name="pipelineConfigurationFullPath", type=String.class, parameters={})
     private Output</* @Nullable */ String> pipelineConfigurationFullPath;
 
     /**

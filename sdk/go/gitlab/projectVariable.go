@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectVariable` resource allows to manage the lifecycle of a CI/CD variable for a project.
@@ -219,6 +220,12 @@ func (i *ProjectVariable) ToProjectVariableOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectVariableOutput)
 }
 
+func (i *ProjectVariable) ToOutput(ctx context.Context) pulumix.Output[*ProjectVariable] {
+	return pulumix.Output[*ProjectVariable]{
+		OutputState: i.ToProjectVariableOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectVariableArrayInput is an input type that accepts ProjectVariableArray and ProjectVariableArrayOutput values.
 // You can construct a concrete instance of `ProjectVariableArrayInput` via:
 //
@@ -242,6 +249,12 @@ func (i ProjectVariableArray) ToProjectVariableArrayOutput() ProjectVariableArra
 
 func (i ProjectVariableArray) ToProjectVariableArrayOutputWithContext(ctx context.Context) ProjectVariableArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectVariableArrayOutput)
+}
+
+func (i ProjectVariableArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectVariable] {
+	return pulumix.Output[[]*ProjectVariable]{
+		OutputState: i.ToProjectVariableArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectVariableMapInput is an input type that accepts ProjectVariableMap and ProjectVariableMapOutput values.
@@ -269,6 +282,12 @@ func (i ProjectVariableMap) ToProjectVariableMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectVariableMapOutput)
 }
 
+func (i ProjectVariableMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectVariable] {
+	return pulumix.Output[map[string]*ProjectVariable]{
+		OutputState: i.ToProjectVariableMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectVariableOutput struct{ *pulumi.OutputState }
 
 func (ProjectVariableOutput) ElementType() reflect.Type {
@@ -281,6 +300,12 @@ func (o ProjectVariableOutput) ToProjectVariableOutput() ProjectVariableOutput {
 
 func (o ProjectVariableOutput) ToProjectVariableOutputWithContext(ctx context.Context) ProjectVariableOutput {
 	return o
+}
+
+func (o ProjectVariableOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectVariable] {
+	return pulumix.Output[*ProjectVariable]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
@@ -337,6 +362,12 @@ func (o ProjectVariableArrayOutput) ToProjectVariableArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o ProjectVariableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectVariable] {
+	return pulumix.Output[[]*ProjectVariable]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectVariableArrayOutput) Index(i pulumi.IntInput) ProjectVariableOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectVariable {
 		return vs[0].([]*ProjectVariable)[vs[1].(int)]
@@ -355,6 +386,12 @@ func (o ProjectVariableMapOutput) ToProjectVariableMapOutput() ProjectVariableMa
 
 func (o ProjectVariableMapOutput) ToProjectVariableMapOutputWithContext(ctx context.Context) ProjectVariableMapOutput {
 	return o
+}
+
+func (o ProjectVariableMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectVariable] {
+	return pulumix.Output[map[string]*ProjectVariable]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectVariableMapOutput) MapIndex(k pulumi.StringInput) ProjectVariableOutput {

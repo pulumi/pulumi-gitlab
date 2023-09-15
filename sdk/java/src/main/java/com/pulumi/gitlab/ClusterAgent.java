@@ -88,7 +88,7 @@ public class ClusterAgent extends com.pulumi.resources.CustomResource {
      * The ID of the agent.
      * 
      */
-    @Export(name="agentId", refs={Integer.class}, tree="[0]")
+    @Export(name="agentId", type=Integer.class, parameters={})
     private Output<Integer> agentId;
 
     /**
@@ -102,7 +102,7 @@ public class ClusterAgent extends com.pulumi.resources.CustomResource {
      * The ISO8601 datetime when the agent was created.
      * 
      */
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    @Export(name="createdAt", type=String.class, parameters={})
     private Output<String> createdAt;
 
     /**
@@ -116,7 +116,7 @@ public class ClusterAgent extends com.pulumi.resources.CustomResource {
      * The ID of the user who created the agent.
      * 
      */
-    @Export(name="createdByUserId", refs={Integer.class}, tree="[0]")
+    @Export(name="createdByUserId", type=Integer.class, parameters={})
     private Output<Integer> createdByUserId;
 
     /**
@@ -130,7 +130,7 @@ public class ClusterAgent extends com.pulumi.resources.CustomResource {
      * The Name of the agent.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -144,7 +144,7 @@ public class ClusterAgent extends com.pulumi.resources.CustomResource {
      * ID or full path of the project maintained by the authenticated user.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

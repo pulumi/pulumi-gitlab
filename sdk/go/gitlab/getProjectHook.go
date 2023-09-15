@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectHook` data source allows to retrieve details about a hook in a project.
@@ -147,6 +148,12 @@ func (o LookupProjectHookResultOutput) ToLookupProjectHookResultOutput() LookupP
 
 func (o LookupProjectHookResultOutput) ToLookupProjectHookResultOutputWithContext(ctx context.Context) LookupProjectHookResultOutput {
 	return o
+}
+
+func (o LookupProjectHookResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProjectHookResult] {
+	return pulumix.Output[LookupProjectHookResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Invoke the hook for confidential issues events.

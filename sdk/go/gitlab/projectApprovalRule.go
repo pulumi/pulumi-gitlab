@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -181,6 +182,12 @@ func (i *ProjectApprovalRule) ToProjectApprovalRuleOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectApprovalRuleOutput)
 }
 
+func (i *ProjectApprovalRule) ToOutput(ctx context.Context) pulumix.Output[*ProjectApprovalRule] {
+	return pulumix.Output[*ProjectApprovalRule]{
+		OutputState: i.ToProjectApprovalRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectApprovalRuleArrayInput is an input type that accepts ProjectApprovalRuleArray and ProjectApprovalRuleArrayOutput values.
 // You can construct a concrete instance of `ProjectApprovalRuleArrayInput` via:
 //
@@ -204,6 +211,12 @@ func (i ProjectApprovalRuleArray) ToProjectApprovalRuleArrayOutput() ProjectAppr
 
 func (i ProjectApprovalRuleArray) ToProjectApprovalRuleArrayOutputWithContext(ctx context.Context) ProjectApprovalRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectApprovalRuleArrayOutput)
+}
+
+func (i ProjectApprovalRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectApprovalRule] {
+	return pulumix.Output[[]*ProjectApprovalRule]{
+		OutputState: i.ToProjectApprovalRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectApprovalRuleMapInput is an input type that accepts ProjectApprovalRuleMap and ProjectApprovalRuleMapOutput values.
@@ -231,6 +244,12 @@ func (i ProjectApprovalRuleMap) ToProjectApprovalRuleMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectApprovalRuleMapOutput)
 }
 
+func (i ProjectApprovalRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectApprovalRule] {
+	return pulumix.Output[map[string]*ProjectApprovalRule]{
+		OutputState: i.ToProjectApprovalRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectApprovalRuleOutput struct{ *pulumi.OutputState }
 
 func (ProjectApprovalRuleOutput) ElementType() reflect.Type {
@@ -243,6 +262,12 @@ func (o ProjectApprovalRuleOutput) ToProjectApprovalRuleOutput() ProjectApproval
 
 func (o ProjectApprovalRuleOutput) ToProjectApprovalRuleOutputWithContext(ctx context.Context) ProjectApprovalRuleOutput {
 	return o
+}
+
+func (o ProjectApprovalRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectApprovalRule] {
+	return pulumix.Output[*ProjectApprovalRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The number of approvals required for this rule.
@@ -301,6 +326,12 @@ func (o ProjectApprovalRuleArrayOutput) ToProjectApprovalRuleArrayOutputWithCont
 	return o
 }
 
+func (o ProjectApprovalRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectApprovalRule] {
+	return pulumix.Output[[]*ProjectApprovalRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectApprovalRuleArrayOutput) Index(i pulumi.IntInput) ProjectApprovalRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectApprovalRule {
 		return vs[0].([]*ProjectApprovalRule)[vs[1].(int)]
@@ -319,6 +350,12 @@ func (o ProjectApprovalRuleMapOutput) ToProjectApprovalRuleMapOutput() ProjectAp
 
 func (o ProjectApprovalRuleMapOutput) ToProjectApprovalRuleMapOutputWithContext(ctx context.Context) ProjectApprovalRuleMapOutput {
 	return o
+}
+
+func (o ProjectApprovalRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectApprovalRule] {
+	return pulumix.Output[map[string]*ProjectApprovalRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectApprovalRuleMapOutput) MapIndex(k pulumi.StringInput) ProjectApprovalRuleOutput {

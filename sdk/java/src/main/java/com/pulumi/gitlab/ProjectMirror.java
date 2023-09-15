@@ -75,7 +75,7 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      * Determines if the mirror is enabled.
      * 
      */
-    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="enabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -89,7 +89,7 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      * Determines if divergent refs are skipped.
      * 
      */
-    @Export(name="keepDivergentRefs", refs={Boolean.class}, tree="[0]")
+    @Export(name="keepDivergentRefs", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> keepDivergentRefs;
 
     /**
@@ -103,7 +103,7 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      * Mirror ID.
      * 
      */
-    @Export(name="mirrorId", refs={Integer.class}, tree="[0]")
+    @Export(name="mirrorId", type=Integer.class, parameters={})
     private Output<Integer> mirrorId;
 
     /**
@@ -117,7 +117,7 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      * Determines if only protected branches are mirrored.
      * 
      */
-    @Export(name="onlyProtectedBranches", refs={Boolean.class}, tree="[0]")
+    @Export(name="onlyProtectedBranches", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> onlyProtectedBranches;
 
     /**
@@ -131,7 +131,7 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      * The id of the project.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -145,7 +145,7 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      * The URL of the remote repository to be mirrored.
      * 
      */
-    @Export(name="url", refs={String.class}, tree="[0]")
+    @Export(name="url", type=String.class, parameters={})
     private Output<String> url;
 
     /**

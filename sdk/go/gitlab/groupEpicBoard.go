@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `GroupEpicBoard` resource allows to manage the lifecycle of a epic board in a group.
@@ -186,6 +187,12 @@ func (i *GroupEpicBoard) ToGroupEpicBoardOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(GroupEpicBoardOutput)
 }
 
+func (i *GroupEpicBoard) ToOutput(ctx context.Context) pulumix.Output[*GroupEpicBoard] {
+	return pulumix.Output[*GroupEpicBoard]{
+		OutputState: i.ToGroupEpicBoardOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GroupEpicBoardArrayInput is an input type that accepts GroupEpicBoardArray and GroupEpicBoardArrayOutput values.
 // You can construct a concrete instance of `GroupEpicBoardArrayInput` via:
 //
@@ -209,6 +216,12 @@ func (i GroupEpicBoardArray) ToGroupEpicBoardArrayOutput() GroupEpicBoardArrayOu
 
 func (i GroupEpicBoardArray) ToGroupEpicBoardArrayOutputWithContext(ctx context.Context) GroupEpicBoardArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupEpicBoardArrayOutput)
+}
+
+func (i GroupEpicBoardArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupEpicBoard] {
+	return pulumix.Output[[]*GroupEpicBoard]{
+		OutputState: i.ToGroupEpicBoardArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GroupEpicBoardMapInput is an input type that accepts GroupEpicBoardMap and GroupEpicBoardMapOutput values.
@@ -236,6 +249,12 @@ func (i GroupEpicBoardMap) ToGroupEpicBoardMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GroupEpicBoardMapOutput)
 }
 
+func (i GroupEpicBoardMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupEpicBoard] {
+	return pulumix.Output[map[string]*GroupEpicBoard]{
+		OutputState: i.ToGroupEpicBoardMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupEpicBoardOutput struct{ *pulumi.OutputState }
 
 func (GroupEpicBoardOutput) ElementType() reflect.Type {
@@ -248,6 +267,12 @@ func (o GroupEpicBoardOutput) ToGroupEpicBoardOutput() GroupEpicBoardOutput {
 
 func (o GroupEpicBoardOutput) ToGroupEpicBoardOutputWithContext(ctx context.Context) GroupEpicBoardOutput {
 	return o
+}
+
+func (o GroupEpicBoardOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupEpicBoard] {
+	return pulumix.Output[*GroupEpicBoard]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID or URL-encoded path of the group owned by the authenticated user.
@@ -279,6 +304,12 @@ func (o GroupEpicBoardArrayOutput) ToGroupEpicBoardArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o GroupEpicBoardArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupEpicBoard] {
+	return pulumix.Output[[]*GroupEpicBoard]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GroupEpicBoardArrayOutput) Index(i pulumi.IntInput) GroupEpicBoardOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupEpicBoard {
 		return vs[0].([]*GroupEpicBoard)[vs[1].(int)]
@@ -297,6 +328,12 @@ func (o GroupEpicBoardMapOutput) ToGroupEpicBoardMapOutput() GroupEpicBoardMapOu
 
 func (o GroupEpicBoardMapOutput) ToGroupEpicBoardMapOutputWithContext(ctx context.Context) GroupEpicBoardMapOutput {
 	return o
+}
+
+func (o GroupEpicBoardMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupEpicBoard] {
+	return pulumix.Output[map[string]*GroupEpicBoard]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GroupEpicBoardMapOutput) MapIndex(k pulumi.StringInput) GroupEpicBoardOutput {

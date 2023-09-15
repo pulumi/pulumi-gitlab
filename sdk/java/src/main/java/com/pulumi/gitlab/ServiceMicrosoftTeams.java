@@ -76,7 +76,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * Whether the integration is active.
      * 
      */
-    @Export(name="active", refs={Boolean.class}, tree="[0]")
+    @Export(name="active", type=Boolean.class, parameters={})
     private Output<Boolean> active;
 
     /**
@@ -90,7 +90,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
      * 
      */
-    @Export(name="branchesToBeNotified", refs={String.class}, tree="[0]")
+    @Export(name="branchesToBeNotified", type=String.class, parameters={})
     private Output</* @Nullable */ String> branchesToBeNotified;
 
     /**
@@ -104,7 +104,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * Enable notifications for confidential issue events
      * 
      */
-    @Export(name="confidentialIssuesEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="confidentialIssuesEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> confidentialIssuesEvents;
 
     /**
@@ -118,7 +118,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * Enable notifications for confidential note events
      * 
      */
-    @Export(name="confidentialNoteEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="confidentialNoteEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> confidentialNoteEvents;
 
     /**
@@ -132,7 +132,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * Create time.
      * 
      */
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    @Export(name="createdAt", type=String.class, parameters={})
     private Output<String> createdAt;
 
     /**
@@ -146,7 +146,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * Enable notifications for issue events
      * 
      */
-    @Export(name="issuesEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="issuesEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> issuesEvents;
 
     /**
@@ -160,7 +160,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * Enable notifications for merge request events
      * 
      */
-    @Export(name="mergeRequestsEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="mergeRequestsEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> mergeRequestsEvents;
 
     /**
@@ -174,7 +174,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * Enable notifications for note events
      * 
      */
-    @Export(name="noteEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="noteEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> noteEvents;
 
     /**
@@ -188,7 +188,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * Send notifications for broken pipelines
      * 
      */
-    @Export(name="notifyOnlyBrokenPipelines", refs={Boolean.class}, tree="[0]")
+    @Export(name="notifyOnlyBrokenPipelines", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> notifyOnlyBrokenPipelines;
 
     /**
@@ -202,7 +202,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * Enable notifications for pipeline events
      * 
      */
-    @Export(name="pipelineEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="pipelineEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> pipelineEvents;
 
     /**
@@ -216,7 +216,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * ID of the project you want to activate integration on.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -230,7 +230,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * Enable notifications for push events
      * 
      */
-    @Export(name="pushEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="pushEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> pushEvents;
 
     /**
@@ -244,7 +244,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * Enable notifications for tag push events
      * 
      */
-    @Export(name="tagPushEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="tagPushEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> tagPushEvents;
 
     /**
@@ -258,7 +258,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * Update time.
      * 
      */
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    @Export(name="updatedAt", type=String.class, parameters={})
     private Output<String> updatedAt;
 
     /**
@@ -272,7 +272,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
      * 
      */
-    @Export(name="webhook", refs={String.class}, tree="[0]")
+    @Export(name="webhook", type=String.class, parameters={})
     private Output<String> webhook;
 
     /**
@@ -286,7 +286,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * Enable notifications for wiki page events
      * 
      */
-    @Export(name="wikiPageEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="wikiPageEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> wikiPageEvents;
 
     /**

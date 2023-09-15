@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getProjectIssues` data source allows to retrieve details about issues in a project.
@@ -259,6 +260,12 @@ func (o GetProjectIssuesResultOutput) ToGetProjectIssuesResultOutput() GetProjec
 
 func (o GetProjectIssuesResultOutput) ToGetProjectIssuesResultOutputWithContext(ctx context.Context) GetProjectIssuesResultOutput {
 	return o
+}
+
+func (o GetProjectIssuesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectIssuesResult] {
+	return pulumix.Output[GetProjectIssuesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee.

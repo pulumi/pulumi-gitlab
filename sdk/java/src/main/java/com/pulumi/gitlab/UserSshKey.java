@@ -74,7 +74,7 @@ public class UserSshKey extends com.pulumi.resources.CustomResource {
      * The time when this key was created in GitLab.
      * 
      */
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    @Export(name="createdAt", type=String.class, parameters={})
     private Output<String> createdAt;
 
     /**
@@ -88,7 +88,7 @@ public class UserSshKey extends com.pulumi.resources.CustomResource {
      * The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
      * 
      */
-    @Export(name="expiresAt", refs={String.class}, tree="[0]")
+    @Export(name="expiresAt", type=String.class, parameters={})
     private Output</* @Nullable */ String> expiresAt;
 
     /**
@@ -102,7 +102,7 @@ public class UserSshKey extends com.pulumi.resources.CustomResource {
      * The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
      * 
      */
-    @Export(name="key", refs={String.class}, tree="[0]")
+    @Export(name="key", type=String.class, parameters={})
     private Output<String> key;
 
     /**
@@ -116,7 +116,7 @@ public class UserSshKey extends com.pulumi.resources.CustomResource {
      * The ID of the ssh key.
      * 
      */
-    @Export(name="keyId", refs={Integer.class}, tree="[0]")
+    @Export(name="keyId", type=Integer.class, parameters={})
     private Output<Integer> keyId;
 
     /**
@@ -130,7 +130,7 @@ public class UserSshKey extends com.pulumi.resources.CustomResource {
      * The title of the ssh key.
      * 
      */
-    @Export(name="title", refs={String.class}, tree="[0]")
+    @Export(name="title", type=String.class, parameters={})
     private Output<String> title;
 
     /**
@@ -144,7 +144,7 @@ public class UserSshKey extends com.pulumi.resources.CustomResource {
      * The ID or username of the user.
      * 
      */
-    @Export(name="userId", refs={Integer.class}, tree="[0]")
+    @Export(name="userId", type=Integer.class, parameters={})
     private Output<Integer> userId;
 
     /**

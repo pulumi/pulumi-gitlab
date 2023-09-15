@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectMirror` resource allows to manage the lifecycle of a project mirror.
@@ -203,6 +204,12 @@ func (i *ProjectMirror) ToProjectMirrorOutputWithContext(ctx context.Context) Pr
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMirrorOutput)
 }
 
+func (i *ProjectMirror) ToOutput(ctx context.Context) pulumix.Output[*ProjectMirror] {
+	return pulumix.Output[*ProjectMirror]{
+		OutputState: i.ToProjectMirrorOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectMirrorArrayInput is an input type that accepts ProjectMirrorArray and ProjectMirrorArrayOutput values.
 // You can construct a concrete instance of `ProjectMirrorArrayInput` via:
 //
@@ -226,6 +233,12 @@ func (i ProjectMirrorArray) ToProjectMirrorArrayOutput() ProjectMirrorArrayOutpu
 
 func (i ProjectMirrorArray) ToProjectMirrorArrayOutputWithContext(ctx context.Context) ProjectMirrorArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMirrorArrayOutput)
+}
+
+func (i ProjectMirrorArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectMirror] {
+	return pulumix.Output[[]*ProjectMirror]{
+		OutputState: i.ToProjectMirrorArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectMirrorMapInput is an input type that accepts ProjectMirrorMap and ProjectMirrorMapOutput values.
@@ -253,6 +266,12 @@ func (i ProjectMirrorMap) ToProjectMirrorMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMirrorMapOutput)
 }
 
+func (i ProjectMirrorMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectMirror] {
+	return pulumix.Output[map[string]*ProjectMirror]{
+		OutputState: i.ToProjectMirrorMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectMirrorOutput struct{ *pulumi.OutputState }
 
 func (ProjectMirrorOutput) ElementType() reflect.Type {
@@ -265,6 +284,12 @@ func (o ProjectMirrorOutput) ToProjectMirrorOutput() ProjectMirrorOutput {
 
 func (o ProjectMirrorOutput) ToProjectMirrorOutputWithContext(ctx context.Context) ProjectMirrorOutput {
 	return o
+}
+
+func (o ProjectMirrorOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectMirror] {
+	return pulumix.Output[*ProjectMirror]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Determines if the mirror is enabled.
@@ -311,6 +336,12 @@ func (o ProjectMirrorArrayOutput) ToProjectMirrorArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o ProjectMirrorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectMirror] {
+	return pulumix.Output[[]*ProjectMirror]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectMirrorArrayOutput) Index(i pulumi.IntInput) ProjectMirrorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectMirror {
 		return vs[0].([]*ProjectMirror)[vs[1].(int)]
@@ -329,6 +360,12 @@ func (o ProjectMirrorMapOutput) ToProjectMirrorMapOutput() ProjectMirrorMapOutpu
 
 func (o ProjectMirrorMapOutput) ToProjectMirrorMapOutputWithContext(ctx context.Context) ProjectMirrorMapOutput {
 	return o
+}
+
+func (o ProjectMirrorMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectMirror] {
+	return pulumix.Output[map[string]*ProjectMirror]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectMirrorMapOutput) MapIndex(k pulumi.StringInput) ProjectMirrorOutput {

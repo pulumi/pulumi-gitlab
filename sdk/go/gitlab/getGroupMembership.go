@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
@@ -120,6 +121,12 @@ func (o LookupGroupMembershipResultOutput) ToLookupGroupMembershipResultOutput()
 
 func (o LookupGroupMembershipResultOutput) ToLookupGroupMembershipResultOutputWithContext(ctx context.Context) LookupGroupMembershipResultOutput {
 	return o
+}
+
+func (o LookupGroupMembershipResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGroupMembershipResult] {
+	return pulumix.Output[LookupGroupMembershipResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.

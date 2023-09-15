@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -203,6 +204,12 @@ func (i *ProjectEnvironment) ToProjectEnvironmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentOutput)
 }
 
+func (i *ProjectEnvironment) ToOutput(ctx context.Context) pulumix.Output[*ProjectEnvironment] {
+	return pulumix.Output[*ProjectEnvironment]{
+		OutputState: i.ToProjectEnvironmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectEnvironmentArrayInput is an input type that accepts ProjectEnvironmentArray and ProjectEnvironmentArrayOutput values.
 // You can construct a concrete instance of `ProjectEnvironmentArrayInput` via:
 //
@@ -226,6 +233,12 @@ func (i ProjectEnvironmentArray) ToProjectEnvironmentArrayOutput() ProjectEnviro
 
 func (i ProjectEnvironmentArray) ToProjectEnvironmentArrayOutputWithContext(ctx context.Context) ProjectEnvironmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentArrayOutput)
+}
+
+func (i ProjectEnvironmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectEnvironment] {
+	return pulumix.Output[[]*ProjectEnvironment]{
+		OutputState: i.ToProjectEnvironmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectEnvironmentMapInput is an input type that accepts ProjectEnvironmentMap and ProjectEnvironmentMapOutput values.
@@ -253,6 +266,12 @@ func (i ProjectEnvironmentMap) ToProjectEnvironmentMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentMapOutput)
 }
 
+func (i ProjectEnvironmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectEnvironment] {
+	return pulumix.Output[map[string]*ProjectEnvironment]{
+		OutputState: i.ToProjectEnvironmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectEnvironmentOutput struct{ *pulumi.OutputState }
 
 func (ProjectEnvironmentOutput) ElementType() reflect.Type {
@@ -265,6 +284,12 @@ func (o ProjectEnvironmentOutput) ToProjectEnvironmentOutput() ProjectEnvironmen
 
 func (o ProjectEnvironmentOutput) ToProjectEnvironmentOutputWithContext(ctx context.Context) ProjectEnvironmentOutput {
 	return o
+}
+
+func (o ProjectEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectEnvironment] {
+	return pulumix.Output[*ProjectEnvironment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ISO8601 date/time that this environment was created at in UTC.
@@ -321,6 +346,12 @@ func (o ProjectEnvironmentArrayOutput) ToProjectEnvironmentArrayOutputWithContex
 	return o
 }
 
+func (o ProjectEnvironmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectEnvironment] {
+	return pulumix.Output[[]*ProjectEnvironment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectEnvironmentArrayOutput) Index(i pulumi.IntInput) ProjectEnvironmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectEnvironment {
 		return vs[0].([]*ProjectEnvironment)[vs[1].(int)]
@@ -339,6 +370,12 @@ func (o ProjectEnvironmentMapOutput) ToProjectEnvironmentMapOutput() ProjectEnvi
 
 func (o ProjectEnvironmentMapOutput) ToProjectEnvironmentMapOutputWithContext(ctx context.Context) ProjectEnvironmentMapOutput {
 	return o
+}
+
+func (o ProjectEnvironmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectEnvironment] {
+	return pulumix.Output[map[string]*ProjectEnvironment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectEnvironmentMapOutput) MapIndex(k pulumi.StringInput) ProjectEnvironmentOutput {

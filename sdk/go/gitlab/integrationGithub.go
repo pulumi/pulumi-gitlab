@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `IntegrationGithub` resource allows to manage the lifecycle of a project integration with GitHub.
@@ -220,6 +221,12 @@ func (i *IntegrationGithub) ToIntegrationGithubOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationGithubOutput)
 }
 
+func (i *IntegrationGithub) ToOutput(ctx context.Context) pulumix.Output[*IntegrationGithub] {
+	return pulumix.Output[*IntegrationGithub]{
+		OutputState: i.ToIntegrationGithubOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IntegrationGithubArrayInput is an input type that accepts IntegrationGithubArray and IntegrationGithubArrayOutput values.
 // You can construct a concrete instance of `IntegrationGithubArrayInput` via:
 //
@@ -243,6 +250,12 @@ func (i IntegrationGithubArray) ToIntegrationGithubArrayOutput() IntegrationGith
 
 func (i IntegrationGithubArray) ToIntegrationGithubArrayOutputWithContext(ctx context.Context) IntegrationGithubArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationGithubArrayOutput)
+}
+
+func (i IntegrationGithubArray) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationGithub] {
+	return pulumix.Output[[]*IntegrationGithub]{
+		OutputState: i.ToIntegrationGithubArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IntegrationGithubMapInput is an input type that accepts IntegrationGithubMap and IntegrationGithubMapOutput values.
@@ -270,6 +283,12 @@ func (i IntegrationGithubMap) ToIntegrationGithubMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationGithubMapOutput)
 }
 
+func (i IntegrationGithubMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationGithub] {
+	return pulumix.Output[map[string]*IntegrationGithub]{
+		OutputState: i.ToIntegrationGithubMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntegrationGithubOutput struct{ *pulumi.OutputState }
 
 func (IntegrationGithubOutput) ElementType() reflect.Type {
@@ -282,6 +301,12 @@ func (o IntegrationGithubOutput) ToIntegrationGithubOutput() IntegrationGithubOu
 
 func (o IntegrationGithubOutput) ToIntegrationGithubOutputWithContext(ctx context.Context) IntegrationGithubOutput {
 	return o
+}
+
+func (o IntegrationGithubOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationGithub] {
+	return pulumix.Output[*IntegrationGithub]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether the integration is active.
@@ -338,6 +363,12 @@ func (o IntegrationGithubArrayOutput) ToIntegrationGithubArrayOutputWithContext(
 	return o
 }
 
+func (o IntegrationGithubArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationGithub] {
+	return pulumix.Output[[]*IntegrationGithub]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IntegrationGithubArrayOutput) Index(i pulumi.IntInput) IntegrationGithubOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IntegrationGithub {
 		return vs[0].([]*IntegrationGithub)[vs[1].(int)]
@@ -356,6 +387,12 @@ func (o IntegrationGithubMapOutput) ToIntegrationGithubMapOutput() IntegrationGi
 
 func (o IntegrationGithubMapOutput) ToIntegrationGithubMapOutputWithContext(ctx context.Context) IntegrationGithubMapOutput {
 	return o
+}
+
+func (o IntegrationGithubMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationGithub] {
+	return pulumix.Output[map[string]*IntegrationGithub]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntegrationGithubMapOutput) MapIndex(k pulumi.StringInput) IntegrationGithubOutput {

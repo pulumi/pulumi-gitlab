@@ -66,7 +66,7 @@ public class PipelineTrigger extends com.pulumi.resources.CustomResource {
      * The description of the pipeline trigger.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -80,7 +80,7 @@ public class PipelineTrigger extends com.pulumi.resources.CustomResource {
      * The pipeline trigger id.
      * 
      */
-    @Export(name="pipelineTriggerId", refs={Integer.class}, tree="[0]")
+    @Export(name="pipelineTriggerId", type=Integer.class, parameters={})
     private Output<Integer> pipelineTriggerId;
 
     /**
@@ -94,7 +94,7 @@ public class PipelineTrigger extends com.pulumi.resources.CustomResource {
      * The name or id of the project to add the trigger to.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -108,7 +108,7 @@ public class PipelineTrigger extends com.pulumi.resources.CustomResource {
      * The pipeline trigger token.
      * 
      */
-    @Export(name="token", refs={String.class}, tree="[0]")
+    @Export(name="token", type=String.class, parameters={})
     private Output<String> token;
 
     /**

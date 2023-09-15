@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `IntegrationPipelinesEmail` resource allows to manage the lifecycle of a project integration with Pipeline Emails Service.
@@ -183,6 +184,12 @@ func (i *IntegrationPipelinesEmail) ToIntegrationPipelinesEmailOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationPipelinesEmailOutput)
 }
 
+func (i *IntegrationPipelinesEmail) ToOutput(ctx context.Context) pulumix.Output[*IntegrationPipelinesEmail] {
+	return pulumix.Output[*IntegrationPipelinesEmail]{
+		OutputState: i.ToIntegrationPipelinesEmailOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IntegrationPipelinesEmailArrayInput is an input type that accepts IntegrationPipelinesEmailArray and IntegrationPipelinesEmailArrayOutput values.
 // You can construct a concrete instance of `IntegrationPipelinesEmailArrayInput` via:
 //
@@ -206,6 +213,12 @@ func (i IntegrationPipelinesEmailArray) ToIntegrationPipelinesEmailArrayOutput()
 
 func (i IntegrationPipelinesEmailArray) ToIntegrationPipelinesEmailArrayOutputWithContext(ctx context.Context) IntegrationPipelinesEmailArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationPipelinesEmailArrayOutput)
+}
+
+func (i IntegrationPipelinesEmailArray) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationPipelinesEmail] {
+	return pulumix.Output[[]*IntegrationPipelinesEmail]{
+		OutputState: i.ToIntegrationPipelinesEmailArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IntegrationPipelinesEmailMapInput is an input type that accepts IntegrationPipelinesEmailMap and IntegrationPipelinesEmailMapOutput values.
@@ -233,6 +246,12 @@ func (i IntegrationPipelinesEmailMap) ToIntegrationPipelinesEmailMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationPipelinesEmailMapOutput)
 }
 
+func (i IntegrationPipelinesEmailMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationPipelinesEmail] {
+	return pulumix.Output[map[string]*IntegrationPipelinesEmail]{
+		OutputState: i.ToIntegrationPipelinesEmailMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntegrationPipelinesEmailOutput struct{ *pulumi.OutputState }
 
 func (IntegrationPipelinesEmailOutput) ElementType() reflect.Type {
@@ -245,6 +264,12 @@ func (o IntegrationPipelinesEmailOutput) ToIntegrationPipelinesEmailOutput() Int
 
 func (o IntegrationPipelinesEmailOutput) ToIntegrationPipelinesEmailOutputWithContext(ctx context.Context) IntegrationPipelinesEmailOutput {
 	return o
+}
+
+func (o IntegrationPipelinesEmailOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationPipelinesEmail] {
+	return pulumix.Output[*IntegrationPipelinesEmail]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
@@ -281,6 +306,12 @@ func (o IntegrationPipelinesEmailArrayOutput) ToIntegrationPipelinesEmailArrayOu
 	return o
 }
 
+func (o IntegrationPipelinesEmailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationPipelinesEmail] {
+	return pulumix.Output[[]*IntegrationPipelinesEmail]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IntegrationPipelinesEmailArrayOutput) Index(i pulumi.IntInput) IntegrationPipelinesEmailOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IntegrationPipelinesEmail {
 		return vs[0].([]*IntegrationPipelinesEmail)[vs[1].(int)]
@@ -299,6 +330,12 @@ func (o IntegrationPipelinesEmailMapOutput) ToIntegrationPipelinesEmailMapOutput
 
 func (o IntegrationPipelinesEmailMapOutput) ToIntegrationPipelinesEmailMapOutputWithContext(ctx context.Context) IntegrationPipelinesEmailMapOutput {
 	return o
+}
+
+func (o IntegrationPipelinesEmailMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationPipelinesEmail] {
+	return pulumix.Output[map[string]*IntegrationPipelinesEmail]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntegrationPipelinesEmailMapOutput) MapIndex(k pulumi.StringInput) IntegrationPipelinesEmailOutput {

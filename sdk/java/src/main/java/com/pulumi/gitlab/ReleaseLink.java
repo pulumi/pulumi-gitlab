@@ -74,7 +74,7 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
      * Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
      * 
      */
-    @Export(name="directAssetUrl", refs={String.class}, tree="[0]")
+    @Export(name="directAssetUrl", type=String.class, parameters={})
     private Output<String> directAssetUrl;
 
     /**
@@ -88,7 +88,7 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
      * External or internal link.
      * 
      */
-    @Export(name="external", refs={Boolean.class}, tree="[0]")
+    @Export(name="external", type=Boolean.class, parameters={})
     private Output<Boolean> external;
 
     /**
@@ -102,7 +102,7 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
      * Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
      * 
      */
-    @Export(name="filepath", refs={String.class}, tree="[0]")
+    @Export(name="filepath", type=String.class, parameters={})
     private Output</* @Nullable */ String> filepath;
 
     /**
@@ -116,7 +116,7 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
      * The ID of the link.
      * 
      */
-    @Export(name="linkId", refs={Integer.class}, tree="[0]")
+    @Export(name="linkId", type=Integer.class, parameters={})
     private Output<Integer> linkId;
 
     /**
@@ -130,7 +130,7 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
      * The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
      * 
      */
-    @Export(name="linkType", refs={String.class}, tree="[0]")
+    @Export(name="linkType", type=String.class, parameters={})
     private Output</* @Nullable */ String> linkType;
 
     /**
@@ -144,7 +144,7 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
      * The name of the link. Link names must be unique within the release.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -158,7 +158,7 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
      * The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -172,7 +172,7 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
      * The tag associated with the Release.
      * 
      */
-    @Export(name="tagName", refs={String.class}, tree="[0]")
+    @Export(name="tagName", type=String.class, parameters={})
     private Output<String> tagName;
 
     /**
@@ -186,7 +186,7 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
      * The URL of the link. Link URLs must be unique within the release.
      * 
      */
-    @Export(name="url", refs={String.class}, tree="[0]")
+    @Export(name="url", type=String.class, parameters={})
     private Output<String> url;
 
     /**

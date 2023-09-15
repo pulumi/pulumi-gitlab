@@ -73,7 +73,7 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * Whether the integration is active.
      * 
      */
-    @Export(name="active", refs={Boolean.class}, tree="[0]")
+    @Export(name="active", type=Boolean.class, parameters={})
     private Output<Boolean> active;
 
     /**
@@ -87,7 +87,7 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Notifications are always fired for tag pushes.
      * 
      */
-    @Export(name="branchesToBeNotified", refs={String.class}, tree="[0]")
+    @Export(name="branchesToBeNotified", type=String.class, parameters={})
     private Output</* @Nullable */ String> branchesToBeNotified;
 
     /**
@@ -101,7 +101,7 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * The ISO8601 date/time that this integration was activated at in UTC.
      * 
      */
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    @Export(name="createdAt", type=String.class, parameters={})
     private Output<String> createdAt;
 
     /**
@@ -115,7 +115,7 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * Disable code diffs.
      * 
      */
-    @Export(name="disableDiffs", refs={Boolean.class}, tree="[0]")
+    @Export(name="disableDiffs", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> disableDiffs;
 
     /**
@@ -129,7 +129,7 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * ID or full-path of the project you want to activate integration on.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -143,7 +143,7 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * Enable notifications for push events.
      * 
      */
-    @Export(name="pushEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="pushEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> pushEvents;
 
     /**
@@ -157,7 +157,7 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * Emails separated by whitespace.
      * 
      */
-    @Export(name="recipients", refs={String.class}, tree="[0]")
+    @Export(name="recipients", type=String.class, parameters={})
     private Output<String> recipients;
 
     /**
@@ -171,7 +171,7 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * Send from committer.
      * 
      */
-    @Export(name="sendFromCommitterEmail", refs={Boolean.class}, tree="[0]")
+    @Export(name="sendFromCommitterEmail", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> sendFromCommitterEmail;
 
     /**
@@ -185,7 +185,7 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
      * 
      */
-    @Export(name="slug", refs={String.class}, tree="[0]")
+    @Export(name="slug", type=String.class, parameters={})
     private Output<String> slug;
 
     /**
@@ -199,7 +199,7 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * Enable notifications for tag push events.
      * 
      */
-    @Export(name="tagPushEvents", refs={Boolean.class}, tree="[0]")
+    @Export(name="tagPushEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> tagPushEvents;
 
     /**
@@ -213,7 +213,7 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * Title of the integration.
      * 
      */
-    @Export(name="title", refs={String.class}, tree="[0]")
+    @Export(name="title", type=String.class, parameters={})
     private Output<String> title;
 
     /**
@@ -227,7 +227,7 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * The ISO8601 date/time that this integration was last updated at in UTC.
      * 
      */
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    @Export(name="updatedAt", type=String.class, parameters={})
     private Output<String> updatedAt;
 
     /**

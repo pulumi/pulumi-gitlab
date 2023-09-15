@@ -80,7 +80,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * Cluster type.
      * 
      */
-    @Export(name="clusterType", refs={String.class}, tree="[0]")
+    @Export(name="clusterType", type=String.class, parameters={})
     private Output<String> clusterType;
 
     /**
@@ -94,7 +94,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * Create time.
      * 
      */
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    @Export(name="createdAt", type=String.class, parameters={})
     private Output<String> createdAt;
 
     /**
@@ -108,7 +108,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * The base domain of the cluster.
      * 
      */
-    @Export(name="domain", refs={String.class}, tree="[0]")
+    @Export(name="domain", type=String.class, parameters={})
     private Output</* @Nullable */ String> domain;
 
     /**
@@ -122,7 +122,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
      * 
      */
-    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="enabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -136,7 +136,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * The associated environment to the cluster. Defaults to `*`.
      * 
      */
-    @Export(name="environmentScope", refs={String.class}, tree="[0]")
+    @Export(name="environmentScope", type=String.class, parameters={})
     private Output</* @Nullable */ String> environmentScope;
 
     /**
@@ -150,7 +150,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * The URL to access the Kubernetes API.
      * 
      */
-    @Export(name="kubernetesApiUrl", refs={String.class}, tree="[0]")
+    @Export(name="kubernetesApiUrl", type=String.class, parameters={})
     private Output<String> kubernetesApiUrl;
 
     /**
@@ -164,7 +164,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
      * 
      */
-    @Export(name="kubernetesAuthorizationType", refs={String.class}, tree="[0]")
+    @Export(name="kubernetesAuthorizationType", type=String.class, parameters={})
     private Output</* @Nullable */ String> kubernetesAuthorizationType;
 
     /**
@@ -178,7 +178,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * TLS certificate (needed if API is using a self-signed TLS certificate).
      * 
      */
-    @Export(name="kubernetesCaCert", refs={String.class}, tree="[0]")
+    @Export(name="kubernetesCaCert", type=String.class, parameters={})
     private Output</* @Nullable */ String> kubernetesCaCert;
 
     /**
@@ -192,7 +192,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * The unique namespace related to the project.
      * 
      */
-    @Export(name="kubernetesNamespace", refs={String.class}, tree="[0]")
+    @Export(name="kubernetesNamespace", type=String.class, parameters={})
     private Output</* @Nullable */ String> kubernetesNamespace;
 
     /**
@@ -206,7 +206,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * The token to authenticate against Kubernetes.
      * 
      */
-    @Export(name="kubernetesToken", refs={String.class}, tree="[0]")
+    @Export(name="kubernetesToken", type=String.class, parameters={})
     private Output<String> kubernetesToken;
 
     /**
@@ -220,7 +220,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
      * 
      */
-    @Export(name="managed", refs={Boolean.class}, tree="[0]")
+    @Export(name="managed", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> managed;
 
     /**
@@ -234,7 +234,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * The ID of the management project for the cluster.
      * 
      */
-    @Export(name="managementProjectId", refs={String.class}, tree="[0]")
+    @Export(name="managementProjectId", type=String.class, parameters={})
     private Output</* @Nullable */ String> managementProjectId;
 
     /**
@@ -248,7 +248,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * The name of cluster.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -262,7 +262,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * Platform type.
      * 
      */
-    @Export(name="platformType", refs={String.class}, tree="[0]")
+    @Export(name="platformType", type=String.class, parameters={})
     private Output<String> platformType;
 
     /**
@@ -276,7 +276,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * The id of the project to add the cluster to.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -290,7 +290,7 @@ public class ProjectCluster extends com.pulumi.resources.CustomResource {
      * Provider type.
      * 
      */
-    @Export(name="providerType", refs={String.class}, tree="[0]")
+    @Export(name="providerType", type=String.class, parameters={})
     private Output<String> providerType;
 
     /**

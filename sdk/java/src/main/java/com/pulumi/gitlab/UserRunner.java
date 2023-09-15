@@ -29,7 +29,7 @@ public class UserRunner extends com.pulumi.resources.CustomResource {
      * The access level of the runner. Valid values are: `not_protected`, `ref_protected`.
      * 
      */
-    @Export(name="accessLevel", refs={String.class}, tree="[0]")
+    @Export(name="accessLevel", type=String.class, parameters={})
     private Output<String> accessLevel;
 
     /**
@@ -43,7 +43,7 @@ public class UserRunner extends com.pulumi.resources.CustomResource {
      * Description of the runner.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -57,7 +57,7 @@ public class UserRunner extends com.pulumi.resources.CustomResource {
      * The ID of the group that the runner is created in. Required if runner*type is group*type.
      * 
      */
-    @Export(name="groupId", refs={Integer.class}, tree="[0]")
+    @Export(name="groupId", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> groupId;
 
     /**
@@ -71,7 +71,7 @@ public class UserRunner extends com.pulumi.resources.CustomResource {
      * Specifies if the runner should be locked for the current project.
      * 
      */
-    @Export(name="locked", refs={Boolean.class}, tree="[0]")
+    @Export(name="locked", type=Boolean.class, parameters={})
     private Output<Boolean> locked;
 
     /**
@@ -85,7 +85,7 @@ public class UserRunner extends com.pulumi.resources.CustomResource {
      * Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
      * 
      */
-    @Export(name="maximumTimeout", refs={Integer.class}, tree="[0]")
+    @Export(name="maximumTimeout", type=Integer.class, parameters={})
     private Output<Integer> maximumTimeout;
 
     /**
@@ -99,7 +99,7 @@ public class UserRunner extends com.pulumi.resources.CustomResource {
      * Specifies if the runner should ignore new jobs.
      * 
      */
-    @Export(name="paused", refs={Boolean.class}, tree="[0]")
+    @Export(name="paused", type=Boolean.class, parameters={})
     private Output<Boolean> paused;
 
     /**
@@ -113,7 +113,7 @@ public class UserRunner extends com.pulumi.resources.CustomResource {
      * The ID of the project that the runner is created in. Required if runner*type is project*type.
      * 
      */
-    @Export(name="projectId", refs={Integer.class}, tree="[0]")
+    @Export(name="projectId", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> projectId;
 
     /**
@@ -127,7 +127,7 @@ public class UserRunner extends com.pulumi.resources.CustomResource {
      * The scope of the runner. Valid values are: `instance_type`, `group_type`, `project_type`.
      * 
      */
-    @Export(name="runnerType", refs={String.class}, tree="[0]")
+    @Export(name="runnerType", type=String.class, parameters={})
     private Output<String> runnerType;
 
     /**
@@ -141,7 +141,7 @@ public class UserRunner extends com.pulumi.resources.CustomResource {
      * A list of runner tags.
      * 
      */
-    @Export(name="tagLists", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tagLists", type=List.class, parameters={String.class})
     private Output<List<String>> tagLists;
 
     /**
@@ -155,7 +155,7 @@ public class UserRunner extends com.pulumi.resources.CustomResource {
      * The authentication token to use when setting up a new runner with this configuration. This value cannot be imported.
      * 
      */
-    @Export(name="token", refs={String.class}, tree="[0]")
+    @Export(name="token", type=String.class, parameters={})
     private Output<String> token;
 
     /**
@@ -169,7 +169,7 @@ public class UserRunner extends com.pulumi.resources.CustomResource {
      * Specifies if the runner should handle untagged jobs.
      * 
      */
-    @Export(name="untagged", refs={Boolean.class}, tree="[0]")
+    @Export(name="untagged", type=Boolean.class, parameters={})
     private Output<Boolean> untagged;
 
     /**

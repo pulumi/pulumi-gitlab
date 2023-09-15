@@ -68,7 +68,7 @@ public class GroupShareGroup extends com.pulumi.resources.CustomResource {
      * Share expiration date. Format: `YYYY-MM-DD`
      * 
      */
-    @Export(name="expiresAt", refs={String.class}, tree="[0]")
+    @Export(name="expiresAt", type=String.class, parameters={})
     private Output</* @Nullable */ String> expiresAt;
 
     /**
@@ -82,7 +82,7 @@ public class GroupShareGroup extends com.pulumi.resources.CustomResource {
      * The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
      * 
      */
-    @Export(name="groupAccess", refs={String.class}, tree="[0]")
+    @Export(name="groupAccess", type=String.class, parameters={})
     private Output<String> groupAccess;
 
     /**
@@ -96,7 +96,7 @@ public class GroupShareGroup extends com.pulumi.resources.CustomResource {
      * The id of the main group to be shared.
      * 
      */
-    @Export(name="groupId", refs={String.class}, tree="[0]")
+    @Export(name="groupId", type=String.class, parameters={})
     private Output<String> groupId;
 
     /**
@@ -110,7 +110,7 @@ public class GroupShareGroup extends com.pulumi.resources.CustomResource {
      * The id of the additional group with which the main group will be shared.
      * 
      */
-    @Export(name="shareGroupId", refs={Integer.class}, tree="[0]")
+    @Export(name="shareGroupId", type=Integer.class, parameters={})
     private Output<Integer> shareGroupId;
 
     /**

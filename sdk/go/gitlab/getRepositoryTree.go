@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getRepositoryTree` data source allows details of directories and files in a repository to be retrieved.
@@ -123,6 +124,12 @@ func (o GetRepositoryTreeResultOutput) ToGetRepositoryTreeResultOutput() GetRepo
 
 func (o GetRepositoryTreeResultOutput) ToGetRepositoryTreeResultOutputWithContext(ctx context.Context) GetRepositoryTreeResultOutput {
 	return o
+}
+
+func (o GetRepositoryTreeResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRepositoryTreeResult] {
+	return pulumix.Output[GetRepositoryTreeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

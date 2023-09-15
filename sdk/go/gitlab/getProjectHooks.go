@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getProjectHooks` data source allows to retrieve details about hooks in a project.
@@ -108,6 +109,12 @@ func (o GetProjectHooksResultOutput) ToGetProjectHooksResultOutput() GetProjectH
 
 func (o GetProjectHooksResultOutput) ToGetProjectHooksResultOutputWithContext(ctx context.Context) GetProjectHooksResultOutput {
 	return o
+}
+
+func (o GetProjectHooksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectHooksResult] {
+	return pulumix.Output[GetProjectHooksResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of hooks.

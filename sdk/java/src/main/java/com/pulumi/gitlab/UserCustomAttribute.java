@@ -66,7 +66,7 @@ public class UserCustomAttribute extends com.pulumi.resources.CustomResource {
      * Key for the Custom Attribute.
      * 
      */
-    @Export(name="key", refs={String.class}, tree="[0]")
+    @Export(name="key", type=String.class, parameters={})
     private Output<String> key;
 
     /**
@@ -80,7 +80,7 @@ public class UserCustomAttribute extends com.pulumi.resources.CustomResource {
      * The id of the user.
      * 
      */
-    @Export(name="user", refs={Integer.class}, tree="[0]")
+    @Export(name="user", type=Integer.class, parameters={})
     private Output<Integer> user;
 
     /**
@@ -94,7 +94,7 @@ public class UserCustomAttribute extends com.pulumi.resources.CustomResource {
      * Value for the Custom Attribute.
      * 
      */
-    @Export(name="value", refs={String.class}, tree="[0]")
+    @Export(name="value", type=String.class, parameters={})
     private Output<String> value;
 
     /**

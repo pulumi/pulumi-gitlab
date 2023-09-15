@@ -31,7 +31,7 @@ public class GroupIssueBoard extends com.pulumi.resources.CustomResource {
      * The ID or URL-encoded path of the group owned by the authenticated user.
      * 
      */
-    @Export(name="group", refs={String.class}, tree="[0]")
+    @Export(name="group", type=String.class, parameters={})
     private Output<String> group;
 
     /**
@@ -45,7 +45,7 @@ public class GroupIssueBoard extends com.pulumi.resources.CustomResource {
      * The list of issue board lists.
      * 
      */
-    @Export(name="lists", refs={List.class,GroupIssueBoardList.class}, tree="[0,1]")
+    @Export(name="lists", type=List.class, parameters={GroupIssueBoardList.class})
     private Output</* @Nullable */ List<GroupIssueBoardList>> lists;
 
     /**
@@ -59,7 +59,7 @@ public class GroupIssueBoard extends com.pulumi.resources.CustomResource {
      * The milestone the board should be scoped to.
      * 
      */
-    @Export(name="milestoneId", refs={Integer.class}, tree="[0]")
+    @Export(name="milestoneId", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> milestoneId;
 
     /**
@@ -73,7 +73,7 @@ public class GroupIssueBoard extends com.pulumi.resources.CustomResource {
      * The name of the board.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**

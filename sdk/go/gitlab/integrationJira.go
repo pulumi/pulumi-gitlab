@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `IntegrationJira` resource allows to manage the lifecycle of a project integration with Jira.
@@ -338,6 +339,12 @@ func (i *IntegrationJira) ToIntegrationJiraOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationJiraOutput)
 }
 
+func (i *IntegrationJira) ToOutput(ctx context.Context) pulumix.Output[*IntegrationJira] {
+	return pulumix.Output[*IntegrationJira]{
+		OutputState: i.ToIntegrationJiraOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IntegrationJiraArrayInput is an input type that accepts IntegrationJiraArray and IntegrationJiraArrayOutput values.
 // You can construct a concrete instance of `IntegrationJiraArrayInput` via:
 //
@@ -361,6 +368,12 @@ func (i IntegrationJiraArray) ToIntegrationJiraArrayOutput() IntegrationJiraArra
 
 func (i IntegrationJiraArray) ToIntegrationJiraArrayOutputWithContext(ctx context.Context) IntegrationJiraArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationJiraArrayOutput)
+}
+
+func (i IntegrationJiraArray) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationJira] {
+	return pulumix.Output[[]*IntegrationJira]{
+		OutputState: i.ToIntegrationJiraArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IntegrationJiraMapInput is an input type that accepts IntegrationJiraMap and IntegrationJiraMapOutput values.
@@ -388,6 +401,12 @@ func (i IntegrationJiraMap) ToIntegrationJiraMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationJiraMapOutput)
 }
 
+func (i IntegrationJiraMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationJira] {
+	return pulumix.Output[map[string]*IntegrationJira]{
+		OutputState: i.ToIntegrationJiraMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntegrationJiraOutput struct{ *pulumi.OutputState }
 
 func (IntegrationJiraOutput) ElementType() reflect.Type {
@@ -400,6 +419,12 @@ func (o IntegrationJiraOutput) ToIntegrationJiraOutput() IntegrationJiraOutput {
 
 func (o IntegrationJiraOutput) ToIntegrationJiraOutputWithContext(ctx context.Context) IntegrationJiraOutput {
 	return o
+}
+
+func (o IntegrationJiraOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationJira] {
+	return pulumix.Output[*IntegrationJira]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether the integration is active.
@@ -516,6 +541,12 @@ func (o IntegrationJiraArrayOutput) ToIntegrationJiraArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o IntegrationJiraArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationJira] {
+	return pulumix.Output[[]*IntegrationJira]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IntegrationJiraArrayOutput) Index(i pulumi.IntInput) IntegrationJiraOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IntegrationJira {
 		return vs[0].([]*IntegrationJira)[vs[1].(int)]
@@ -534,6 +565,12 @@ func (o IntegrationJiraMapOutput) ToIntegrationJiraMapOutput() IntegrationJiraMa
 
 func (o IntegrationJiraMapOutput) ToIntegrationJiraMapOutputWithContext(ctx context.Context) IntegrationJiraMapOutput {
 	return o
+}
+
+func (o IntegrationJiraMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationJira] {
+	return pulumix.Output[map[string]*IntegrationJira]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntegrationJiraMapOutput) MapIndex(k pulumi.StringInput) IntegrationJiraOutput {

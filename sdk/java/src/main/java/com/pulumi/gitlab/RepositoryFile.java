@@ -32,7 +32,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * Email of the commit author.
      * 
      */
-    @Export(name="authorEmail", refs={String.class}, tree="[0]")
+    @Export(name="authorEmail", type=String.class, parameters={})
     private Output</* @Nullable */ String> authorEmail;
 
     /**
@@ -46,7 +46,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * Name of the commit author.
      * 
      */
-    @Export(name="authorName", refs={String.class}, tree="[0]")
+    @Export(name="authorName", type=String.class, parameters={})
     private Output</* @Nullable */ String> authorName;
 
     /**
@@ -60,7 +60,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * The blob id.
      * 
      */
-    @Export(name="blobId", refs={String.class}, tree="[0]")
+    @Export(name="blobId", type=String.class, parameters={})
     private Output<String> blobId;
 
     /**
@@ -74,7 +74,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * Name of the branch to which to commit to.
      * 
      */
-    @Export(name="branch", refs={String.class}, tree="[0]")
+    @Export(name="branch", type=String.class, parameters={})
     private Output<String> branch;
 
     /**
@@ -88,7 +88,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * The commit id.
      * 
      */
-    @Export(name="commitId", refs={String.class}, tree="[0]")
+    @Export(name="commitId", type=String.class, parameters={})
     private Output<String> commitId;
 
     /**
@@ -102,7 +102,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * Commit message.
      * 
      */
-    @Export(name="commitMessage", refs={String.class}, tree="[0]")
+    @Export(name="commitMessage", type=String.class, parameters={})
     private Output</* @Nullable */ String> commitMessage;
 
     /**
@@ -116,7 +116,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * File content.
      * 
      */
-    @Export(name="content", refs={String.class}, tree="[0]")
+    @Export(name="content", type=String.class, parameters={})
     private Output<String> content;
 
     /**
@@ -130,7 +130,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * File content sha256 digest.
      * 
      */
-    @Export(name="contentSha256", refs={String.class}, tree="[0]")
+    @Export(name="contentSha256", type=String.class, parameters={})
     private Output<String> contentSha256;
 
     /**
@@ -144,7 +144,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * Create commit message.
      * 
      */
-    @Export(name="createCommitMessage", refs={String.class}, tree="[0]")
+    @Export(name="createCommitMessage", type=String.class, parameters={})
     private Output</* @Nullable */ String> createCommitMessage;
 
     /**
@@ -158,7 +158,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * Delete Commit message.
      * 
      */
-    @Export(name="deleteCommitMessage", refs={String.class}, tree="[0]")
+    @Export(name="deleteCommitMessage", type=String.class, parameters={})
     private Output</* @Nullable */ String> deleteCommitMessage;
 
     /**
@@ -172,7 +172,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
      * 
      */
-    @Export(name="encoding", refs={String.class}, tree="[0]")
+    @Export(name="encoding", type=String.class, parameters={})
     private Output</* @Nullable */ String> encoding;
 
     /**
@@ -186,7 +186,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
      * 
      */
-    @Export(name="executeFilemode", refs={Boolean.class}, tree="[0]")
+    @Export(name="executeFilemode", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> executeFilemode;
 
     /**
@@ -200,7 +200,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * The filename.
      * 
      */
-    @Export(name="fileName", refs={String.class}, tree="[0]")
+    @Export(name="fileName", type=String.class, parameters={})
     private Output<String> fileName;
 
     /**
@@ -214,7 +214,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      * 
      */
-    @Export(name="filePath", refs={String.class}, tree="[0]")
+    @Export(name="filePath", type=String.class, parameters={})
     private Output<String> filePath;
 
     /**
@@ -228,7 +228,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * The last known commit id.
      * 
      */
-    @Export(name="lastCommitId", refs={String.class}, tree="[0]")
+    @Export(name="lastCommitId", type=String.class, parameters={})
     private Output<String> lastCommitId;
 
     /**
@@ -242,7 +242,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
      * 
      */
-    @Export(name="overwriteOnCreate", refs={Boolean.class}, tree="[0]")
+    @Export(name="overwriteOnCreate", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> overwriteOnCreate;
 
     /**
@@ -256,7 +256,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * The name or ID of the project.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -270,7 +270,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * The name of branch, tag or commit.
      * 
      */
-    @Export(name="ref", refs={String.class}, tree="[0]")
+    @Export(name="ref", type=String.class, parameters={})
     private Output<String> ref;
 
     /**
@@ -284,7 +284,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * The file size.
      * 
      */
-    @Export(name="size", refs={Integer.class}, tree="[0]")
+    @Export(name="size", type=Integer.class, parameters={})
     private Output<Integer> size;
 
     /**
@@ -298,7 +298,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * Name of the branch to start the new commit from.
      * 
      */
-    @Export(name="startBranch", refs={String.class}, tree="[0]")
+    @Export(name="startBranch", type=String.class, parameters={})
     private Output</* @Nullable */ String> startBranch;
 
     /**
@@ -312,7 +312,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * Update commit message.
      * 
      */
-    @Export(name="updateCommitMessage", refs={String.class}, tree="[0]")
+    @Export(name="updateCommitMessage", type=String.class, parameters={})
     private Output</* @Nullable */ String> updateCommitMessage;
 
     /**

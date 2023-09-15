@@ -67,7 +67,7 @@ public class ProjectFreezePeriod extends com.pulumi.resources.CustomResource {
      * The timezone.
      * 
      */
-    @Export(name="cronTimezone", refs={String.class}, tree="[0]")
+    @Export(name="cronTimezone", type=String.class, parameters={})
     private Output</* @Nullable */ String> cronTimezone;
 
     /**
@@ -81,7 +81,7 @@ public class ProjectFreezePeriod extends com.pulumi.resources.CustomResource {
      * End of the Freeze Period in cron format (e.g. `0 2 * * *`).
      * 
      */
-    @Export(name="freezeEnd", refs={String.class}, tree="[0]")
+    @Export(name="freezeEnd", type=String.class, parameters={})
     private Output<String> freezeEnd;
 
     /**
@@ -95,7 +95,7 @@ public class ProjectFreezePeriod extends com.pulumi.resources.CustomResource {
      * Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
      * 
      */
-    @Export(name="freezeStart", refs={String.class}, tree="[0]")
+    @Export(name="freezeStart", type=String.class, parameters={})
     private Output<String> freezeStart;
 
     /**
@@ -109,7 +109,7 @@ public class ProjectFreezePeriod extends com.pulumi.resources.CustomResource {
      * The ID or URL-encoded path of the project to add the schedule to.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

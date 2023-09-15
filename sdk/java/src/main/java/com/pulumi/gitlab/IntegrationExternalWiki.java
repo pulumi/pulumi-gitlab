@@ -72,7 +72,7 @@ public class IntegrationExternalWiki extends com.pulumi.resources.CustomResource
      * Whether the integration is active.
      * 
      */
-    @Export(name="active", refs={Boolean.class}, tree="[0]")
+    @Export(name="active", type=Boolean.class, parameters={})
     private Output<Boolean> active;
 
     /**
@@ -86,7 +86,7 @@ public class IntegrationExternalWiki extends com.pulumi.resources.CustomResource
      * The ISO8601 date/time that this integration was activated at in UTC.
      * 
      */
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    @Export(name="createdAt", type=String.class, parameters={})
     private Output<String> createdAt;
 
     /**
@@ -100,7 +100,7 @@ public class IntegrationExternalWiki extends com.pulumi.resources.CustomResource
      * The URL of the external wiki.
      * 
      */
-    @Export(name="externalWikiUrl", refs={String.class}, tree="[0]")
+    @Export(name="externalWikiUrl", type=String.class, parameters={})
     private Output<String> externalWikiUrl;
 
     /**
@@ -114,7 +114,7 @@ public class IntegrationExternalWiki extends com.pulumi.resources.CustomResource
      * ID of the project you want to activate integration on.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -128,7 +128,7 @@ public class IntegrationExternalWiki extends com.pulumi.resources.CustomResource
      * The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
      * 
      */
-    @Export(name="slug", refs={String.class}, tree="[0]")
+    @Export(name="slug", type=String.class, parameters={})
     private Output<String> slug;
 
     /**
@@ -142,7 +142,7 @@ public class IntegrationExternalWiki extends com.pulumi.resources.CustomResource
      * Title of the integration.
      * 
      */
-    @Export(name="title", refs={String.class}, tree="[0]")
+    @Export(name="title", type=String.class, parameters={})
     private Output<String> title;
 
     /**
@@ -156,7 +156,7 @@ public class IntegrationExternalWiki extends com.pulumi.resources.CustomResource
      * The ISO8601 date/time that this integration was last updated at in UTC.
      * 
      */
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    @Export(name="updatedAt", type=String.class, parameters={})
     private Output<String> updatedAt;
 
     /**

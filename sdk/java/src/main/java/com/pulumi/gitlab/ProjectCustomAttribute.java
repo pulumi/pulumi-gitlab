@@ -66,7 +66,7 @@ public class ProjectCustomAttribute extends com.pulumi.resources.CustomResource 
      * Key for the Custom Attribute.
      * 
      */
-    @Export(name="key", refs={String.class}, tree="[0]")
+    @Export(name="key", type=String.class, parameters={})
     private Output<String> key;
 
     /**
@@ -80,7 +80,7 @@ public class ProjectCustomAttribute extends com.pulumi.resources.CustomResource 
      * The id of the project.
      * 
      */
-    @Export(name="project", refs={Integer.class}, tree="[0]")
+    @Export(name="project", type=Integer.class, parameters={})
     private Output<Integer> project;
 
     /**
@@ -94,7 +94,7 @@ public class ProjectCustomAttribute extends com.pulumi.resources.CustomResource 
      * Value for the Custom Attribute.
      * 
      */
-    @Export(name="value", refs={String.class}, tree="[0]")
+    @Export(name="value", type=String.class, parameters={})
     private Output<String> value;
 
     /**

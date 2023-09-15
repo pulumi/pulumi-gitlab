@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `GroupLdapLink` resource allows to manage the lifecycle of an LDAP integration with a group.
@@ -193,6 +194,12 @@ func (i *GroupLdapLink) ToGroupLdapLinkOutputWithContext(ctx context.Context) Gr
 	return pulumi.ToOutputWithContext(ctx, i).(GroupLdapLinkOutput)
 }
 
+func (i *GroupLdapLink) ToOutput(ctx context.Context) pulumix.Output[*GroupLdapLink] {
+	return pulumix.Output[*GroupLdapLink]{
+		OutputState: i.ToGroupLdapLinkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GroupLdapLinkArrayInput is an input type that accepts GroupLdapLinkArray and GroupLdapLinkArrayOutput values.
 // You can construct a concrete instance of `GroupLdapLinkArrayInput` via:
 //
@@ -216,6 +223,12 @@ func (i GroupLdapLinkArray) ToGroupLdapLinkArrayOutput() GroupLdapLinkArrayOutpu
 
 func (i GroupLdapLinkArray) ToGroupLdapLinkArrayOutputWithContext(ctx context.Context) GroupLdapLinkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupLdapLinkArrayOutput)
+}
+
+func (i GroupLdapLinkArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupLdapLink] {
+	return pulumix.Output[[]*GroupLdapLink]{
+		OutputState: i.ToGroupLdapLinkArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GroupLdapLinkMapInput is an input type that accepts GroupLdapLinkMap and GroupLdapLinkMapOutput values.
@@ -243,6 +256,12 @@ func (i GroupLdapLinkMap) ToGroupLdapLinkMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GroupLdapLinkMapOutput)
 }
 
+func (i GroupLdapLinkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupLdapLink] {
+	return pulumix.Output[map[string]*GroupLdapLink]{
+		OutputState: i.ToGroupLdapLinkMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupLdapLinkOutput struct{ *pulumi.OutputState }
 
 func (GroupLdapLinkOutput) ElementType() reflect.Type {
@@ -255,6 +274,12 @@ func (o GroupLdapLinkOutput) ToGroupLdapLinkOutput() GroupLdapLinkOutput {
 
 func (o GroupLdapLinkOutput) ToGroupLdapLinkOutputWithContext(ctx context.Context) GroupLdapLinkOutput {
 	return o
+}
+
+func (o GroupLdapLinkOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupLdapLink] {
+	return pulumix.Output[*GroupLdapLink]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`, `master`
@@ -308,6 +333,12 @@ func (o GroupLdapLinkArrayOutput) ToGroupLdapLinkArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o GroupLdapLinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupLdapLink] {
+	return pulumix.Output[[]*GroupLdapLink]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GroupLdapLinkArrayOutput) Index(i pulumi.IntInput) GroupLdapLinkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupLdapLink {
 		return vs[0].([]*GroupLdapLink)[vs[1].(int)]
@@ -326,6 +357,12 @@ func (o GroupLdapLinkMapOutput) ToGroupLdapLinkMapOutput() GroupLdapLinkMapOutpu
 
 func (o GroupLdapLinkMapOutput) ToGroupLdapLinkMapOutputWithContext(ctx context.Context) GroupLdapLinkMapOutput {
 	return o
+}
+
+func (o GroupLdapLinkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupLdapLink] {
+	return pulumix.Output[map[string]*GroupLdapLink]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GroupLdapLinkMapOutput) MapIndex(k pulumi.StringInput) GroupLdapLinkOutput {

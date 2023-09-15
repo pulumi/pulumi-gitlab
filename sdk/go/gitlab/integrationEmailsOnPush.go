@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `IntegrationEmailsOnPush` resource allows to manage the lifecycle of a project integration with Emails on Push Service.
@@ -239,6 +240,12 @@ func (i *IntegrationEmailsOnPush) ToIntegrationEmailsOnPushOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationEmailsOnPushOutput)
 }
 
+func (i *IntegrationEmailsOnPush) ToOutput(ctx context.Context) pulumix.Output[*IntegrationEmailsOnPush] {
+	return pulumix.Output[*IntegrationEmailsOnPush]{
+		OutputState: i.ToIntegrationEmailsOnPushOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IntegrationEmailsOnPushArrayInput is an input type that accepts IntegrationEmailsOnPushArray and IntegrationEmailsOnPushArrayOutput values.
 // You can construct a concrete instance of `IntegrationEmailsOnPushArrayInput` via:
 //
@@ -262,6 +269,12 @@ func (i IntegrationEmailsOnPushArray) ToIntegrationEmailsOnPushArrayOutput() Int
 
 func (i IntegrationEmailsOnPushArray) ToIntegrationEmailsOnPushArrayOutputWithContext(ctx context.Context) IntegrationEmailsOnPushArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationEmailsOnPushArrayOutput)
+}
+
+func (i IntegrationEmailsOnPushArray) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationEmailsOnPush] {
+	return pulumix.Output[[]*IntegrationEmailsOnPush]{
+		OutputState: i.ToIntegrationEmailsOnPushArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IntegrationEmailsOnPushMapInput is an input type that accepts IntegrationEmailsOnPushMap and IntegrationEmailsOnPushMapOutput values.
@@ -289,6 +302,12 @@ func (i IntegrationEmailsOnPushMap) ToIntegrationEmailsOnPushMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationEmailsOnPushMapOutput)
 }
 
+func (i IntegrationEmailsOnPushMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationEmailsOnPush] {
+	return pulumix.Output[map[string]*IntegrationEmailsOnPush]{
+		OutputState: i.ToIntegrationEmailsOnPushMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntegrationEmailsOnPushOutput struct{ *pulumi.OutputState }
 
 func (IntegrationEmailsOnPushOutput) ElementType() reflect.Type {
@@ -301,6 +320,12 @@ func (o IntegrationEmailsOnPushOutput) ToIntegrationEmailsOnPushOutput() Integra
 
 func (o IntegrationEmailsOnPushOutput) ToIntegrationEmailsOnPushOutputWithContext(ctx context.Context) IntegrationEmailsOnPushOutput {
 	return o
+}
+
+func (o IntegrationEmailsOnPushOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationEmailsOnPush] {
+	return pulumix.Output[*IntegrationEmailsOnPush]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether the integration is active.
@@ -377,6 +402,12 @@ func (o IntegrationEmailsOnPushArrayOutput) ToIntegrationEmailsOnPushArrayOutput
 	return o
 }
 
+func (o IntegrationEmailsOnPushArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationEmailsOnPush] {
+	return pulumix.Output[[]*IntegrationEmailsOnPush]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IntegrationEmailsOnPushArrayOutput) Index(i pulumi.IntInput) IntegrationEmailsOnPushOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IntegrationEmailsOnPush {
 		return vs[0].([]*IntegrationEmailsOnPush)[vs[1].(int)]
@@ -395,6 +426,12 @@ func (o IntegrationEmailsOnPushMapOutput) ToIntegrationEmailsOnPushMapOutput() I
 
 func (o IntegrationEmailsOnPushMapOutput) ToIntegrationEmailsOnPushMapOutputWithContext(ctx context.Context) IntegrationEmailsOnPushMapOutput {
 	return o
+}
+
+func (o IntegrationEmailsOnPushMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationEmailsOnPush] {
+	return pulumix.Output[map[string]*IntegrationEmailsOnPush]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntegrationEmailsOnPushMapOutput) MapIndex(k pulumi.StringInput) IntegrationEmailsOnPushOutput {

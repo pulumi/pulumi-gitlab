@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ProjectFreezePeriod` resource allows to manage the lifecycle of a freeze period for a project.
@@ -177,6 +178,12 @@ func (i *ProjectFreezePeriod) ToProjectFreezePeriodOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFreezePeriodOutput)
 }
 
+func (i *ProjectFreezePeriod) ToOutput(ctx context.Context) pulumix.Output[*ProjectFreezePeriod] {
+	return pulumix.Output[*ProjectFreezePeriod]{
+		OutputState: i.ToProjectFreezePeriodOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectFreezePeriodArrayInput is an input type that accepts ProjectFreezePeriodArray and ProjectFreezePeriodArrayOutput values.
 // You can construct a concrete instance of `ProjectFreezePeriodArrayInput` via:
 //
@@ -200,6 +207,12 @@ func (i ProjectFreezePeriodArray) ToProjectFreezePeriodArrayOutput() ProjectFree
 
 func (i ProjectFreezePeriodArray) ToProjectFreezePeriodArrayOutputWithContext(ctx context.Context) ProjectFreezePeriodArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFreezePeriodArrayOutput)
+}
+
+func (i ProjectFreezePeriodArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectFreezePeriod] {
+	return pulumix.Output[[]*ProjectFreezePeriod]{
+		OutputState: i.ToProjectFreezePeriodArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectFreezePeriodMapInput is an input type that accepts ProjectFreezePeriodMap and ProjectFreezePeriodMapOutput values.
@@ -227,6 +240,12 @@ func (i ProjectFreezePeriodMap) ToProjectFreezePeriodMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFreezePeriodMapOutput)
 }
 
+func (i ProjectFreezePeriodMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectFreezePeriod] {
+	return pulumix.Output[map[string]*ProjectFreezePeriod]{
+		OutputState: i.ToProjectFreezePeriodMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectFreezePeriodOutput struct{ *pulumi.OutputState }
 
 func (ProjectFreezePeriodOutput) ElementType() reflect.Type {
@@ -239,6 +258,12 @@ func (o ProjectFreezePeriodOutput) ToProjectFreezePeriodOutput() ProjectFreezePe
 
 func (o ProjectFreezePeriodOutput) ToProjectFreezePeriodOutputWithContext(ctx context.Context) ProjectFreezePeriodOutput {
 	return o
+}
+
+func (o ProjectFreezePeriodOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectFreezePeriod] {
+	return pulumix.Output[*ProjectFreezePeriod]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timezone.
@@ -275,6 +300,12 @@ func (o ProjectFreezePeriodArrayOutput) ToProjectFreezePeriodArrayOutputWithCont
 	return o
 }
 
+func (o ProjectFreezePeriodArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectFreezePeriod] {
+	return pulumix.Output[[]*ProjectFreezePeriod]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectFreezePeriodArrayOutput) Index(i pulumi.IntInput) ProjectFreezePeriodOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectFreezePeriod {
 		return vs[0].([]*ProjectFreezePeriod)[vs[1].(int)]
@@ -293,6 +324,12 @@ func (o ProjectFreezePeriodMapOutput) ToProjectFreezePeriodMapOutput() ProjectFr
 
 func (o ProjectFreezePeriodMapOutput) ToProjectFreezePeriodMapOutputWithContext(ctx context.Context) ProjectFreezePeriodMapOutput {
 	return o
+}
+
+func (o ProjectFreezePeriodMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectFreezePeriod] {
+	return pulumix.Output[map[string]*ProjectFreezePeriod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectFreezePeriodMapOutput) MapIndex(k pulumi.StringInput) ProjectFreezePeriodOutput {
