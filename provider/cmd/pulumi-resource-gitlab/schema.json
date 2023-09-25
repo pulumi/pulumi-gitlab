@@ -389,6 +389,44 @@
                 }
             }
         },
+        "gitlab:index/ProjectProtectedEnvironmentApprovalRule:ProjectProtectedEnvironmentApprovalRule": {
+            "properties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "Levels of access allowed to approve a deployment to this protected environment. Valid values are `developer`, `maintainer`.\n"
+                },
+                "accessLevelDescription": {
+                    "type": "string",
+                    "description": "Readable description of level of access.\n"
+                },
+                "groupId": {
+                    "type": "integer",
+                    "description": "The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. This is mutually exclusive with user_id.\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The unique ID of the Approval Rules object.\n"
+                },
+                "requiredApprovals": {
+                    "type": "integer",
+                    "description": "The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.\n"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. This is mutually exclusive with group*id and required*approvals.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "accessLevelDescription",
+                        "id",
+                        "requiredApprovals"
+                    ]
+                }
+            }
+        },
         "gitlab:index/ProjectProtectedEnvironmentDeployAccessLevel:ProjectProtectedEnvironmentDeployAccessLevel": {
             "properties": {
                 "accessLevel": {
@@ -403,6 +441,10 @@
                     "type": "integer",
                     "description": "The ID of the group allowed to deploy to this protected environment. The project must be shared with the group.\n"
                 },
+                "id": {
+                    "type": "integer",
+                    "description": "The unique ID of the Deploy Access Level object.\n"
+                },
                 "userId": {
                     "type": "integer",
                     "description": "The ID of the user allowed to deploy to this protected environment. The user must be a member of the project.\n"
@@ -412,7 +454,8 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "accessLevelDescription"
+                        "accessLevelDescription",
+                        "id"
                     ]
                 }
             }
@@ -7987,7 +8030,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.\n"
+                    "description": "The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.\n"
                 },
                 "token": {
                     "type": "string",
@@ -8036,7 +8079,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.\n",
+                    "description": "The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -8085,7 +8128,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`.\n",
+                        "description": "The scope for the group access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.\n",
                         "willReplaceOnChanges": true
                     },
                     "token": {
@@ -10482,6 +10525,316 @@
                 "type": "object"
             }
         },
+        "gitlab:index/integrationMattermost:IntegrationMattermost": {
+            "description": "The `gitlab.IntegrationMattermost` resource allows to manage the lifecycle of a project integration with Mattermost.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#mattermost-notifications)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst awesomeProject = new gitlab.Project(\"awesomeProject\", {\n    description: \"My awesome project.\",\n    visibilityLevel: \"public\",\n});\nconst mattermost = new gitlab.IntegrationMattermost(\"mattermost\", {\n    project: awesomeProject.id,\n    webhook: \"https://webhook.com\",\n    username: \"myuser\",\n    pushEvents: true,\n    pushChannel: \"push_chan\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nawesome_project = gitlab.Project(\"awesomeProject\",\n    description=\"My awesome project.\",\n    visibility_level=\"public\")\nmattermost = gitlab.IntegrationMattermost(\"mattermost\",\n    project=awesome_project.id,\n    webhook=\"https://webhook.com\",\n    username=\"myuser\",\n    push_events=True,\n    push_channel=\"push_chan\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awesomeProject = new GitLab.Project(\"awesomeProject\", new()\n    {\n        Description = \"My awesome project.\",\n        VisibilityLevel = \"public\",\n    });\n\n    var mattermost = new GitLab.IntegrationMattermost(\"mattermost\", new()\n    {\n        Project = awesomeProject.Id,\n        Webhook = \"https://webhook.com\",\n        Username = \"myuser\",\n        PushEvents = true,\n        PushChannel = \"push_chan\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawesomeProject, err := gitlab.NewProject(ctx, \"awesomeProject\", \u0026gitlab.ProjectArgs{\n\t\t\tDescription:     pulumi.String(\"My awesome project.\"),\n\t\t\tVisibilityLevel: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewIntegrationMattermost(ctx, \"mattermost\", \u0026gitlab.IntegrationMattermostArgs{\n\t\t\tProject:     awesomeProject.ID(),\n\t\t\tWebhook:     pulumi.String(\"https://webhook.com\"),\n\t\t\tUsername:    pulumi.String(\"myuser\"),\n\t\t\tPushEvents:  pulumi.Bool(true),\n\t\t\tPushChannel: pulumi.String(\"push_chan\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.IntegrationMattermost;\nimport com.pulumi.gitlab.IntegrationMattermostArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awesomeProject = new Project(\"awesomeProject\", ProjectArgs.builder()        \n            .description(\"My awesome project.\")\n            .visibilityLevel(\"public\")\n            .build());\n\n        var mattermost = new IntegrationMattermost(\"mattermost\", IntegrationMattermostArgs.builder()        \n            .project(awesomeProject.id())\n            .webhook(\"https://webhook.com\")\n            .username(\"myuser\")\n            .pushEvents(true)\n            .pushChannel(\"push_chan\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awesomeProject:\n    type: gitlab:Project\n    properties:\n      description: My awesome project.\n      visibilityLevel: public\n  mattermost:\n    type: gitlab:IntegrationMattermost\n    properties:\n      project: ${awesomeProject.id}\n      webhook: https://webhook.com\n      username: myuser\n      pushEvents: true\n      pushChannel: push_chan\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nYou can import a gitlab_integration_mattermost.mattermost state using the project ID, e.g.\n\n```sh\n $ pulumi import gitlab:index/integrationMattermost:IntegrationMattermost mattermost 1\n```\n\n ",
+            "properties": {
+                "branchesToBeNotified": {
+                    "type": "string",
+                    "description": "Branches to send notifications for. Valid options are \"all\", \"default\", \"protected\", and \"default*and*protected\".\n"
+                },
+                "confidentialIssueChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive confidential issue events notifications.\n"
+                },
+                "confidentialIssuesEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for confidential issues events.\n"
+                },
+                "confidentialNoteChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive confidential note events notifications.\n"
+                },
+                "confidentialNoteEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for confidential note events.\n"
+                },
+                "issueChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive issue events notifications.\n"
+                },
+                "issuesEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for issues events.\n"
+                },
+                "mergeRequestChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive merge request events notifications.\n"
+                },
+                "mergeRequestsEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for merge requests events.\n"
+                },
+                "noteChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive note events notifications.\n"
+                },
+                "noteEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for note events.\n"
+                },
+                "notifyOnlyBrokenPipelines": {
+                    "type": "boolean",
+                    "description": "Send notifications for broken pipelines.\n"
+                },
+                "pipelineChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive pipeline events notifications.\n"
+                },
+                "pipelineEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for pipeline events.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "ID of the project you want to activate integration on.\n"
+                },
+                "pushChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive push events notifications.\n"
+                },
+                "pushEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for push events.\n"
+                },
+                "tagPushChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive tag push events notifications.\n"
+                },
+                "tagPushEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for tag push events.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username to use.\n"
+                },
+                "webhook": {
+                    "type": "string",
+                    "description": "Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.\n"
+                },
+                "wikiPageChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive wiki page events notifications.\n"
+                },
+                "wikiPageEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for wiki page events.\n"
+                }
+            },
+            "required": [
+                "branchesToBeNotified",
+                "confidentialIssuesEvents",
+                "confidentialNoteEvents",
+                "issuesEvents",
+                "mergeRequestsEvents",
+                "noteEvents",
+                "notifyOnlyBrokenPipelines",
+                "pipelineEvents",
+                "project",
+                "pushEvents",
+                "tagPushEvents",
+                "webhook",
+                "wikiPageEvents"
+            ],
+            "inputProperties": {
+                "branchesToBeNotified": {
+                    "type": "string",
+                    "description": "Branches to send notifications for. Valid options are \"all\", \"default\", \"protected\", and \"default*and*protected\".\n"
+                },
+                "confidentialIssueChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive confidential issue events notifications.\n"
+                },
+                "confidentialIssuesEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for confidential issues events.\n"
+                },
+                "confidentialNoteChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive confidential note events notifications.\n"
+                },
+                "confidentialNoteEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for confidential note events.\n"
+                },
+                "issueChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive issue events notifications.\n"
+                },
+                "issuesEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for issues events.\n"
+                },
+                "mergeRequestChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive merge request events notifications.\n"
+                },
+                "mergeRequestsEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for merge requests events.\n"
+                },
+                "noteChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive note events notifications.\n"
+                },
+                "noteEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for note events.\n"
+                },
+                "notifyOnlyBrokenPipelines": {
+                    "type": "boolean",
+                    "description": "Send notifications for broken pipelines.\n"
+                },
+                "pipelineChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive pipeline events notifications.\n"
+                },
+                "pipelineEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for pipeline events.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "ID of the project you want to activate integration on.\n",
+                    "willReplaceOnChanges": true
+                },
+                "pushChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive push events notifications.\n"
+                },
+                "pushEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for push events.\n"
+                },
+                "tagPushChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive tag push events notifications.\n"
+                },
+                "tagPushEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for tag push events.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username to use.\n"
+                },
+                "webhook": {
+                    "type": "string",
+                    "description": "Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.\n"
+                },
+                "wikiPageChannel": {
+                    "type": "string",
+                    "description": "The name of the channel to receive wiki page events notifications.\n"
+                },
+                "wikiPageEvents": {
+                    "type": "boolean",
+                    "description": "Enable notifications for wiki page events.\n"
+                }
+            },
+            "requiredInputs": [
+                "project",
+                "webhook"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IntegrationMattermost resources.\n",
+                "properties": {
+                    "branchesToBeNotified": {
+                        "type": "string",
+                        "description": "Branches to send notifications for. Valid options are \"all\", \"default\", \"protected\", and \"default*and*protected\".\n"
+                    },
+                    "confidentialIssueChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive confidential issue events notifications.\n"
+                    },
+                    "confidentialIssuesEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for confidential issues events.\n"
+                    },
+                    "confidentialNoteChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive confidential note events notifications.\n"
+                    },
+                    "confidentialNoteEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for confidential note events.\n"
+                    },
+                    "issueChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive issue events notifications.\n"
+                    },
+                    "issuesEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for issues events.\n"
+                    },
+                    "mergeRequestChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive merge request events notifications.\n"
+                    },
+                    "mergeRequestsEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for merge requests events.\n"
+                    },
+                    "noteChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive note events notifications.\n"
+                    },
+                    "noteEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for note events.\n"
+                    },
+                    "notifyOnlyBrokenPipelines": {
+                        "type": "boolean",
+                        "description": "Send notifications for broken pipelines.\n"
+                    },
+                    "pipelineChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive pipeline events notifications.\n"
+                    },
+                    "pipelineEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for pipeline events.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "ID of the project you want to activate integration on.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "pushChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive push events notifications.\n"
+                    },
+                    "pushEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for push events.\n"
+                    },
+                    "tagPushChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive tag push events notifications.\n"
+                    },
+                    "tagPushEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for tag push events.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "Username to use.\n"
+                    },
+                    "webhook": {
+                        "type": "string",
+                        "description": "Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.\n"
+                    },
+                    "wikiPageChannel": {
+                        "type": "string",
+                        "description": "The name of the channel to receive wiki page events notifications.\n"
+                    },
+                    "wikiPageEvents": {
+                        "type": "boolean",
+                        "description": "Enable notifications for wiki page events.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams": {
             "description": "The `gitlab.IntegrationMicrosoftTeams` resource allows to manage the lifecycle of a project integration with Microsoft Teams.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#microsoft-teams)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst awesomeProject = new gitlab.Project(\"awesomeProject\", {\n    description: \"My awesome project.\",\n    visibilityLevel: \"public\",\n});\nconst teams = new gitlab.IntegrationMicrosoftTeams(\"teams\", {\n    project: awesomeProject.id,\n    webhook: \"https://testurl.com/?token=XYZ\",\n    pushEvents: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nawesome_project = gitlab.Project(\"awesomeProject\",\n    description=\"My awesome project.\",\n    visibility_level=\"public\")\nteams = gitlab.IntegrationMicrosoftTeams(\"teams\",\n    project=awesome_project.id,\n    webhook=\"https://testurl.com/?token=XYZ\",\n    push_events=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awesomeProject = new GitLab.Project(\"awesomeProject\", new()\n    {\n        Description = \"My awesome project.\",\n        VisibilityLevel = \"public\",\n    });\n\n    var teams = new GitLab.IntegrationMicrosoftTeams(\"teams\", new()\n    {\n        Project = awesomeProject.Id,\n        Webhook = \"https://testurl.com/?token=XYZ\",\n        PushEvents = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawesomeProject, err := gitlab.NewProject(ctx, \"awesomeProject\", \u0026gitlab.ProjectArgs{\n\t\t\tDescription:     pulumi.String(\"My awesome project.\"),\n\t\t\tVisibilityLevel: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewIntegrationMicrosoftTeams(ctx, \"teams\", \u0026gitlab.IntegrationMicrosoftTeamsArgs{\n\t\t\tProject:    awesomeProject.ID(),\n\t\t\tWebhook:    pulumi.String(\"https://testurl.com/?token=XYZ\"),\n\t\t\tPushEvents: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.IntegrationMicrosoftTeams;\nimport com.pulumi.gitlab.IntegrationMicrosoftTeamsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awesomeProject = new Project(\"awesomeProject\", ProjectArgs.builder()        \n            .description(\"My awesome project.\")\n            .visibilityLevel(\"public\")\n            .build());\n\n        var teams = new IntegrationMicrosoftTeams(\"teams\", IntegrationMicrosoftTeamsArgs.builder()        \n            .project(awesomeProject.id())\n            .webhook(\"https://testurl.com/?token=XYZ\")\n            .pushEvents(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awesomeProject:\n    type: gitlab:Project\n    properties:\n      description: My awesome project.\n      visibilityLevel: public\n  teams:\n    type: gitlab:IntegrationMicrosoftTeams\n    properties:\n      project: ${awesomeProject.id}\n      webhook: https://testurl.com/?token=XYZ\n      pushEvents: true\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nYou can import a gitlab_integration_microsoft_teams state using the project ID, e.g.\n\n```sh\n $ pulumi import gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams teams 1\n```\n\n ",
             "properties": {
@@ -10769,7 +11122,7 @@
             }
         },
         "gitlab:index/integrationSlack:IntegrationSlack": {
-            "description": "The `gitlab.IntegrationSlack` resource allows to manage the lifecycle of a project integration with Slack.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#slack-notifications)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst awesomeProject = new gitlab.Project(\"awesomeProject\", {\n    description: \"My awesome project.\",\n    visibilityLevel: \"public\",\n});\nconst slack = new gitlab.IntegrationSlack(\"slack\", {\n    project: awesomeProject.id,\n    webhook: \"https://webhook.com\",\n    username: \"myuser\",\n    pushEvents: true,\n    pushChannel: \"push_chan\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nawesome_project = gitlab.Project(\"awesomeProject\",\n    description=\"My awesome project.\",\n    visibility_level=\"public\")\nslack = gitlab.IntegrationSlack(\"slack\",\n    project=awesome_project.id,\n    webhook=\"https://webhook.com\",\n    username=\"myuser\",\n    push_events=True,\n    push_channel=\"push_chan\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awesomeProject = new GitLab.Project(\"awesomeProject\", new()\n    {\n        Description = \"My awesome project.\",\n        VisibilityLevel = \"public\",\n    });\n\n    var slack = new GitLab.IntegrationSlack(\"slack\", new()\n    {\n        Project = awesomeProject.Id,\n        Webhook = \"https://webhook.com\",\n        Username = \"myuser\",\n        PushEvents = true,\n        PushChannel = \"push_chan\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawesomeProject, err := gitlab.NewProject(ctx, \"awesomeProject\", \u0026gitlab.ProjectArgs{\n\t\t\tDescription:     pulumi.String(\"My awesome project.\"),\n\t\t\tVisibilityLevel: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewIntegrationSlack(ctx, \"slack\", \u0026gitlab.IntegrationSlackArgs{\n\t\t\tProject:     awesomeProject.ID(),\n\t\t\tWebhook:     pulumi.String(\"https://webhook.com\"),\n\t\t\tUsername:    pulumi.String(\"myuser\"),\n\t\t\tPushEvents:  pulumi.Bool(true),\n\t\t\tPushChannel: pulumi.String(\"push_chan\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.IntegrationSlack;\nimport com.pulumi.gitlab.IntegrationSlackArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awesomeProject = new Project(\"awesomeProject\", ProjectArgs.builder()        \n            .description(\"My awesome project.\")\n            .visibilityLevel(\"public\")\n            .build());\n\n        var slack = new IntegrationSlack(\"slack\", IntegrationSlackArgs.builder()        \n            .project(awesomeProject.id())\n            .webhook(\"https://webhook.com\")\n            .username(\"myuser\")\n            .pushEvents(true)\n            .pushChannel(\"push_chan\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awesomeProject:\n    type: gitlab:Project\n    properties:\n      description: My awesome project.\n      visibilityLevel: public\n  slack:\n    type: gitlab:IntegrationSlack\n    properties:\n      project: ${awesomeProject.id}\n      webhook: https://webhook.com\n      username: myuser\n      pushEvents: true\n      pushChannel: push_chan\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nYou can import a gitlab_integration_slack.slack state using the project ID, e.g.\n\n```sh\n $ pulumi import gitlab:index/integrationSlack:IntegrationSlack email 1\n```\n\n ",
+            "description": "The `gitlab.IntegrationSlack` resource allows to manage the lifecycle of a project integration with Slack.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#slack-notifications)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst awesomeProject = new gitlab.Project(\"awesomeProject\", {\n    description: \"My awesome project.\",\n    visibilityLevel: \"public\",\n});\nconst slack = new gitlab.IntegrationSlack(\"slack\", {\n    project: awesomeProject.id,\n    webhook: \"https://webhook.com\",\n    username: \"myuser\",\n    pushEvents: true,\n    pushChannel: \"push_chan\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nawesome_project = gitlab.Project(\"awesomeProject\",\n    description=\"My awesome project.\",\n    visibility_level=\"public\")\nslack = gitlab.IntegrationSlack(\"slack\",\n    project=awesome_project.id,\n    webhook=\"https://webhook.com\",\n    username=\"myuser\",\n    push_events=True,\n    push_channel=\"push_chan\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awesomeProject = new GitLab.Project(\"awesomeProject\", new()\n    {\n        Description = \"My awesome project.\",\n        VisibilityLevel = \"public\",\n    });\n\n    var slack = new GitLab.IntegrationSlack(\"slack\", new()\n    {\n        Project = awesomeProject.Id,\n        Webhook = \"https://webhook.com\",\n        Username = \"myuser\",\n        PushEvents = true,\n        PushChannel = \"push_chan\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawesomeProject, err := gitlab.NewProject(ctx, \"awesomeProject\", \u0026gitlab.ProjectArgs{\n\t\t\tDescription:     pulumi.String(\"My awesome project.\"),\n\t\t\tVisibilityLevel: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewIntegrationSlack(ctx, \"slack\", \u0026gitlab.IntegrationSlackArgs{\n\t\t\tProject:     awesomeProject.ID(),\n\t\t\tWebhook:     pulumi.String(\"https://webhook.com\"),\n\t\t\tUsername:    pulumi.String(\"myuser\"),\n\t\t\tPushEvents:  pulumi.Bool(true),\n\t\t\tPushChannel: pulumi.String(\"push_chan\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.IntegrationSlack;\nimport com.pulumi.gitlab.IntegrationSlackArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awesomeProject = new Project(\"awesomeProject\", ProjectArgs.builder()        \n            .description(\"My awesome project.\")\n            .visibilityLevel(\"public\")\n            .build());\n\n        var slack = new IntegrationSlack(\"slack\", IntegrationSlackArgs.builder()        \n            .project(awesomeProject.id())\n            .webhook(\"https://webhook.com\")\n            .username(\"myuser\")\n            .pushEvents(true)\n            .pushChannel(\"push_chan\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awesomeProject:\n    type: gitlab:Project\n    properties:\n      description: My awesome project.\n      visibilityLevel: public\n  slack:\n    type: gitlab:IntegrationSlack\n    properties:\n      project: ${awesomeProject.id}\n      webhook: https://webhook.com\n      username: myuser\n      pushEvents: true\n      pushChannel: push_chan\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nYou can import a gitlab_integration_slack.slack state using the project ID, e.g.\n\n```sh\n $ pulumi import gitlab:index/integrationSlack:IntegrationSlack slack 1\n```\n\n ",
             "properties": {
                 "branchesToBeNotified": {
                     "type": "string",
@@ -11325,7 +11678,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`.\n"
+                    "description": "The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`.\n"
                 },
                 "token": {
                     "type": "string",
@@ -11363,7 +11716,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`.\n",
+                    "description": "The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`.\n",
                     "willReplaceOnChanges": true
                 },
                 "userId": {
@@ -11407,7 +11760,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`.\n",
+                        "description": "The scope for the personal access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`.\n",
                         "willReplaceOnChanges": true
                     },
                     "token": {
@@ -12946,7 +13299,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.\n"
+                    "description": "The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.\n"
                 },
                 "token": {
                     "type": "string",
@@ -12995,7 +13348,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.\n",
+                    "description": "The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -13044,7 +13397,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Valid values: `api`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`.\n",
+                        "description": "The scope for the project access token. It determines the actions which can be performed when authenticating with this token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`.\n",
                         "willReplaceOnChanges": true
                     },
                     "token": {
@@ -15124,7 +15477,7 @@
             }
         },
         "gitlab:index/projectMirror:ProjectMirror": {
-            "description": "The `gitlab.ProjectMirror` resource allows to manage the lifecycle of a project mirror.\n\nThis is for *pushing* changes to a remote repository. *Pull Mirroring* can be configured using a combination of the\nimport_url, mirror, and mirror_trigger_builds properties on the gitlab.Project resource.\n\n\u003e **Destroy Behavior** GitLab 14.10 introduced an API endpoint to delete a project mirror.\n   Therefore, for GitLab 14.10 and newer the project mirror will be destroyed when the resource is destroyed.\n   For older versions, the mirror will be disabled and the resource will be destroyed.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/remote_mirrors.html)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.ProjectMirror(\"foo\", {\n    project: \"1\",\n    url: \"https://username:password@github.com/org/repository.git\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.ProjectMirror(\"foo\",\n    project=\"1\",\n    url=\"https://username:password@github.com/org/repository.git\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new GitLab.ProjectMirror(\"foo\", new()\n    {\n        Project = \"1\",\n        Url = \"https://username:password@github.com/org/repository.git\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewProjectMirror(ctx, \"foo\", \u0026gitlab.ProjectMirrorArgs{\n\t\t\tProject: pulumi.String(\"1\"),\n\t\t\tUrl:     pulumi.String(\"https://username:password@github.com/org/repository.git\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.ProjectMirror;\nimport com.pulumi.gitlab.ProjectMirrorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new ProjectMirror(\"foo\", ProjectMirrorArgs.builder()        \n            .project(\"1\")\n            .url(\"https://username:password@github.com/org/repository.git\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: gitlab:ProjectMirror\n    properties:\n      project: '1'\n      url: https://username:password@github.com/org/repository.git\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.\n\n```sh\n $ pulumi import gitlab:index/projectMirror:ProjectMirror foo \"12345:1337\"\n```\n\n ",
+            "description": "The `gitlab.ProjectMirror` resource allows to manage the lifecycle of a project mirror.\n\nThis is for *pushing* changes to a remote repository. *Pull Mirroring* can be configured using a combination of the\nimport_url, mirror, and mirror_trigger_builds properties on the gitlab.Project resource.\n\n\u003e **Warning** By default, the provider sets the `keep_divergent_refs` argument to `True`.\n   If you manually set `keep_divergent_refs` to `False`, GitLab mirroring removes branches in the target that aren't in the source.\n   This action can result in unexpected branch deletions.\n\n\u003e **Destroy Behavior** GitLab 14.10 introduced an API endpoint to delete a project mirror.\n   Therefore, for GitLab 14.10 and newer the project mirror will be destroyed when the resource is destroyed.\n   For older versions, the mirror will be disabled and the resource will be destroyed.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/remote_mirrors.html)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.ProjectMirror(\"foo\", {\n    project: \"1\",\n    url: \"https://username:password@github.com/org/repository.git\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.ProjectMirror(\"foo\",\n    project=\"1\",\n    url=\"https://username:password@github.com/org/repository.git\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new GitLab.ProjectMirror(\"foo\", new()\n    {\n        Project = \"1\",\n        Url = \"https://username:password@github.com/org/repository.git\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewProjectMirror(ctx, \"foo\", \u0026gitlab.ProjectMirrorArgs{\n\t\t\tProject: pulumi.String(\"1\"),\n\t\t\tUrl:     pulumi.String(\"https://username:password@github.com/org/repository.git\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.ProjectMirror;\nimport com.pulumi.gitlab.ProjectMirrorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new ProjectMirror(\"foo\", ProjectMirrorArgs.builder()        \n            .project(\"1\")\n            .url(\"https://username:password@github.com/org/repository.git\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: gitlab:ProjectMirror\n    properties:\n      project: '1'\n      url: https://username:password@github.com/org/repository.git\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.\n\n```sh\n $ pulumi import gitlab:index/projectMirror:ProjectMirror foo \"12345:1337\"\n```\n\n ",
             "properties": {
                 "enabled": {
                     "type": "boolean",
@@ -15221,8 +15574,15 @@
             }
         },
         "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment": {
-            "description": "The `gitlab.ProjectProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a project.\n\n\u003e In order to use a user or group in the `deploy_access_levels` configuration,\n   you need to make sure that users have access to the project and groups must have this project shared.\n   You may use the `gitlab.ProjectMembership` and `gitlab_project_shared_group` resources to achieve this.\n   Unfortunately, the GitLab API does not complain about users and groups without access to the project and just ignores those.\n   In case this happens you will get perpetual state diffs.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_environments.html)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst _this = new gitlab.ProjectEnvironment(\"this\", {\n    project: \"123\",\n    externalUrl: \"www.example.com\",\n});\n// Example with access level\nconst exampleWithAccessLevel = new gitlab.ProjectProtectedEnvironment(\"exampleWithAccessLevel\", {\n    project: _this.project,\n    requiredApprovalCount: 1,\n    environment: _this.name,\n    deployAccessLevels: [{\n        accessLevel: \"developer\",\n    }],\n});\n// Example with group\nconst exampleWithGroup = new gitlab.ProjectProtectedEnvironment(\"exampleWithGroup\", {\n    project: _this.project,\n    environment: _this.name,\n    deployAccessLevels: [{\n        groupId: 456,\n    }],\n});\n// Example with user\nconst exampleWithUser = new gitlab.ProjectProtectedEnvironment(\"exampleWithUser\", {\n    project: _this.project,\n    environment: _this.name,\n    deployAccessLevels: [{\n        userId: 789,\n    }],\n});\n// Example with multiple access levels\nconst exampleWithMultiple = new gitlab.ProjectProtectedEnvironment(\"exampleWithMultiple\", {\n    project: _this.project,\n    requiredApprovalCount: 2,\n    environment: _this.name,\n    deployAccessLevels: [\n        {\n            accessLevel: \"developer\",\n        },\n        {\n            groupId: 456,\n        },\n        {\n            userId: 789,\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nthis = gitlab.ProjectEnvironment(\"this\",\n    project=\"123\",\n    external_url=\"www.example.com\")\n# Example with access level\nexample_with_access_level = gitlab.ProjectProtectedEnvironment(\"exampleWithAccessLevel\",\n    project=this.project,\n    required_approval_count=1,\n    environment=this.name,\n    deploy_access_levels=[gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs(\n        access_level=\"developer\",\n    )])\n# Example with group\nexample_with_group = gitlab.ProjectProtectedEnvironment(\"exampleWithGroup\",\n    project=this.project,\n    environment=this.name,\n    deploy_access_levels=[gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs(\n        group_id=456,\n    )])\n# Example with user\nexample_with_user = gitlab.ProjectProtectedEnvironment(\"exampleWithUser\",\n    project=this.project,\n    environment=this.name,\n    deploy_access_levels=[gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs(\n        user_id=789,\n    )])\n# Example with multiple access levels\nexample_with_multiple = gitlab.ProjectProtectedEnvironment(\"exampleWithMultiple\",\n    project=this.project,\n    required_approval_count=2,\n    environment=this.name,\n    deploy_access_levels=[\n        gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs(\n            access_level=\"developer\",\n        ),\n        gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs(\n            group_id=456,\n        ),\n        gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs(\n            user_id=789,\n        ),\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = new GitLab.ProjectEnvironment(\"this\", new()\n    {\n        Project = \"123\",\n        ExternalUrl = \"www.example.com\",\n    });\n\n    // Example with access level\n    var exampleWithAccessLevel = new GitLab.ProjectProtectedEnvironment(\"exampleWithAccessLevel\", new()\n    {\n        Project = @this.Project,\n        RequiredApprovalCount = 1,\n        Environment = @this.Name,\n        DeployAccessLevels = new[]\n        {\n            new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs\n            {\n                AccessLevel = \"developer\",\n            },\n        },\n    });\n\n    // Example with group\n    var exampleWithGroup = new GitLab.ProjectProtectedEnvironment(\"exampleWithGroup\", new()\n    {\n        Project = @this.Project,\n        Environment = @this.Name,\n        DeployAccessLevels = new[]\n        {\n            new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs\n            {\n                GroupId = 456,\n            },\n        },\n    });\n\n    // Example with user\n    var exampleWithUser = new GitLab.ProjectProtectedEnvironment(\"exampleWithUser\", new()\n    {\n        Project = @this.Project,\n        Environment = @this.Name,\n        DeployAccessLevels = new[]\n        {\n            new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs\n            {\n                UserId = 789,\n            },\n        },\n    });\n\n    // Example with multiple access levels\n    var exampleWithMultiple = new GitLab.ProjectProtectedEnvironment(\"exampleWithMultiple\", new()\n    {\n        Project = @this.Project,\n        RequiredApprovalCount = 2,\n        Environment = @this.Name,\n        DeployAccessLevels = new[]\n        {\n            new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs\n            {\n                AccessLevel = \"developer\",\n            },\n            new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs\n            {\n                GroupId = 456,\n            },\n            new GitLab.Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs\n            {\n                UserId = 789,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v6/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tthis, err := gitlab.NewProjectEnvironment(ctx, \"this\", \u0026gitlab.ProjectEnvironmentArgs{\n\t\t\tProject:     pulumi.String(\"123\"),\n\t\t\tExternalUrl: pulumi.String(\"www.example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectProtectedEnvironment(ctx, \"exampleWithAccessLevel\", \u0026gitlab.ProjectProtectedEnvironmentArgs{\n\t\t\tProject:               this.Project,\n\t\t\tRequiredApprovalCount: pulumi.Int(1),\n\t\t\tEnvironment:           this.Name,\n\t\t\tDeployAccessLevels: gitlab.ProjectProtectedEnvironmentDeployAccessLevelArray{\n\t\t\t\t\u0026gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs{\n\t\t\t\t\tAccessLevel: pulumi.String(\"developer\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectProtectedEnvironment(ctx, \"exampleWithGroup\", \u0026gitlab.ProjectProtectedEnvironmentArgs{\n\t\t\tProject:     this.Project,\n\t\t\tEnvironment: this.Name,\n\t\t\tDeployAccessLevels: gitlab.ProjectProtectedEnvironmentDeployAccessLevelArray{\n\t\t\t\t\u0026gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs{\n\t\t\t\t\tGroupId: pulumi.Int(456),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectProtectedEnvironment(ctx, \"exampleWithUser\", \u0026gitlab.ProjectProtectedEnvironmentArgs{\n\t\t\tProject:     this.Project,\n\t\t\tEnvironment: this.Name,\n\t\t\tDeployAccessLevels: gitlab.ProjectProtectedEnvironmentDeployAccessLevelArray{\n\t\t\t\t\u0026gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs{\n\t\t\t\t\tUserId: pulumi.Int(789),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectProtectedEnvironment(ctx, \"exampleWithMultiple\", \u0026gitlab.ProjectProtectedEnvironmentArgs{\n\t\t\tProject:               this.Project,\n\t\t\tRequiredApprovalCount: pulumi.Int(2),\n\t\t\tEnvironment:           this.Name,\n\t\t\tDeployAccessLevels: gitlab.ProjectProtectedEnvironmentDeployAccessLevelArray{\n\t\t\t\t\u0026gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs{\n\t\t\t\t\tAccessLevel: pulumi.String(\"developer\"),\n\t\t\t\t},\n\t\t\t\t\u0026gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs{\n\t\t\t\t\tGroupId: pulumi.Int(456),\n\t\t\t\t},\n\t\t\t\t\u0026gitlab.ProjectProtectedEnvironmentDeployAccessLevelArgs{\n\t\t\t\t\tUserId: pulumi.Int(789),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.ProjectEnvironment;\nimport com.pulumi.gitlab.ProjectEnvironmentArgs;\nimport com.pulumi.gitlab.ProjectProtectedEnvironment;\nimport com.pulumi.gitlab.ProjectProtectedEnvironmentArgs;\nimport com.pulumi.gitlab.inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var this_ = new ProjectEnvironment(\"this\", ProjectEnvironmentArgs.builder()        \n            .project(123)\n            .externalUrl(\"www.example.com\")\n            .build());\n\n        var exampleWithAccessLevel = new ProjectProtectedEnvironment(\"exampleWithAccessLevel\", ProjectProtectedEnvironmentArgs.builder()        \n            .project(this_.project())\n            .requiredApprovalCount(1)\n            .environment(this_.name())\n            .deployAccessLevels(ProjectProtectedEnvironmentDeployAccessLevelArgs.builder()\n                .accessLevel(\"developer\")\n                .build())\n            .build());\n\n        var exampleWithGroup = new ProjectProtectedEnvironment(\"exampleWithGroup\", ProjectProtectedEnvironmentArgs.builder()        \n            .project(this_.project())\n            .environment(this_.name())\n            .deployAccessLevels(ProjectProtectedEnvironmentDeployAccessLevelArgs.builder()\n                .groupId(456)\n                .build())\n            .build());\n\n        var exampleWithUser = new ProjectProtectedEnvironment(\"exampleWithUser\", ProjectProtectedEnvironmentArgs.builder()        \n            .project(this_.project())\n            .environment(this_.name())\n            .deployAccessLevels(ProjectProtectedEnvironmentDeployAccessLevelArgs.builder()\n                .userId(789)\n                .build())\n            .build());\n\n        var exampleWithMultiple = new ProjectProtectedEnvironment(\"exampleWithMultiple\", ProjectProtectedEnvironmentArgs.builder()        \n            .project(this_.project())\n            .requiredApprovalCount(2)\n            .environment(this_.name())\n            .deployAccessLevels(            \n                ProjectProtectedEnvironmentDeployAccessLevelArgs.builder()\n                    .accessLevel(\"developer\")\n                    .build(),\n                ProjectProtectedEnvironmentDeployAccessLevelArgs.builder()\n                    .groupId(456)\n                    .build(),\n                ProjectProtectedEnvironmentDeployAccessLevelArgs.builder()\n                    .userId(789)\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  this:\n    type: gitlab:ProjectEnvironment\n    properties:\n      project: 123\n      externalUrl: www.example.com\n  # Example with access level\n  exampleWithAccessLevel:\n    type: gitlab:ProjectProtectedEnvironment\n    properties:\n      project: ${this.project}\n      requiredApprovalCount: 1\n      environment: ${this.name}\n      deployAccessLevels:\n        - accessLevel: developer\n  # Example with group\n  exampleWithGroup:\n    type: gitlab:ProjectProtectedEnvironment\n    properties:\n      project: ${this.project}\n      environment: ${this.name}\n      deployAccessLevels:\n        - groupId: 456\n  # Example with user\n  exampleWithUser:\n    type: gitlab:ProjectProtectedEnvironment\n    properties:\n      project: ${this.project}\n      environment: ${this.name}\n      deployAccessLevels:\n        - userId: 789\n  # Example with multiple access levels\n  exampleWithMultiple:\n    type: gitlab:ProjectProtectedEnvironment\n    properties:\n      project: ${this.project}\n      requiredApprovalCount: 2\n      environment: ${this.name}\n      deployAccessLevels:\n        - accessLevel: developer\n        - groupId: 456\n        - userId: 789\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGitLab protected environments can be imported using an id made up of `projectId:environmentName`, e.g.\n\n```sh\n $ pulumi import gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment bar 123:production\n```\n\n ",
+            "description": "The `gitlab.ProjectProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a project.\n\n\u003e In order to use a user or group in the `deploy_access_levels` configuration,\n   you need to make sure that users have access to the project and groups must have this project shared.\n   You may use the `gitlab.ProjectMembership` and `gitlab_project_shared_group` resources to achieve this.\n   Unfortunately, the GitLab API does not complain about users and groups without access to the project and just ignores those.\n   In case this happens you will get perpetual state diffs.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_environments.html)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.ProjectEnvironment;\nimport com.pulumi.gitlab.ProjectEnvironmentArgs;\nimport com.pulumi.gitlab.ProjectProtectedEnvironment;\nimport com.pulumi.gitlab.ProjectProtectedEnvironmentArgs;\nimport com.pulumi.gitlab.inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs;\nimport com.pulumi.gitlab.inputs.ProjectProtectedEnvironmentApprovalRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var this_ = new ProjectEnvironment(\"this\", ProjectEnvironmentArgs.builder()        \n            .project(123)\n            .externalUrl(\"www.example.com\")\n            .build());\n\n        var exampleWithAccessLevel = new ProjectProtectedEnvironment(\"exampleWithAccessLevel\", ProjectProtectedEnvironmentArgs.builder()        \n            .project(this_.project())\n            .requiredApprovalCount(1)\n            .environment(this_.name())\n            .deployAccessLevels(ProjectProtectedEnvironmentDeployAccessLevelArgs.builder()\n                .accessLevel(\"developer\")\n                .build())\n            .build());\n\n        var exampleWithGroup = new ProjectProtectedEnvironment(\"exampleWithGroup\", ProjectProtectedEnvironmentArgs.builder()        \n            .project(this_.project())\n            .environment(this_.name())\n            .deployAccessLevels(ProjectProtectedEnvironmentDeployAccessLevelArgs.builder()\n                .groupId(456)\n                .build())\n            .build());\n\n        var exampleWithUser = new ProjectProtectedEnvironment(\"exampleWithUser\", ProjectProtectedEnvironmentArgs.builder()        \n            .project(this_.project())\n            .environment(this_.name())\n            .deployAccessLevels(ProjectProtectedEnvironmentDeployAccessLevelArgs.builder()\n                .userId(789)\n                .build())\n            .build());\n\n        var exampleWithMultipleProjectProtectedEnvironment = new ProjectProtectedEnvironment(\"exampleWithMultipleProjectProtectedEnvironment\", ProjectProtectedEnvironmentArgs.builder()        \n            .project(this_.project())\n            .requiredApprovalCount(2)\n            .environment(this_.name())\n            .deployAccessLevels(            \n                ProjectProtectedEnvironmentDeployAccessLevelArgs.builder()\n                    .accessLevel(\"developer\")\n                    .build(),\n                ProjectProtectedEnvironmentDeployAccessLevelArgs.builder()\n                    .groupId(456)\n                    .build(),\n                ProjectProtectedEnvironmentDeployAccessLevelArgs.builder()\n                    .userId(789)\n                    .build())\n            .build());\n\n        var exampleWithMultipleIndex_projectProtectedEnvironmentProjectProtectedEnvironment = new ProjectProtectedEnvironment(\"exampleWithMultipleIndex/projectProtectedEnvironmentProjectProtectedEnvironment\", ProjectProtectedEnvironmentArgs.builder()        \n            .project(this_.project())\n            .requiredApprovalCount(2)\n            .environment(this_.name())\n            .deployAccessLevels(ProjectProtectedEnvironmentDeployAccessLevelArgs.builder()\n                .accessLevel(\"developer\")\n                .build())\n            .approvalRules(ProjectProtectedEnvironmentApprovalRuleArgs.builder()\n                .access_level(\"developer\")\n                .build())\n            .build());\n\n        var exampleWithMultipleGitlabIndex_projectProtectedEnvironmentProjectProtectedEnvironment = new ProjectProtectedEnvironment(\"exampleWithMultipleGitlabIndex/projectProtectedEnvironmentProjectProtectedEnvironment\", ProjectProtectedEnvironmentArgs.builder()        \n            .project(this_.project())\n            .requiredApprovalCount(2)\n            .environment(this_.name())\n            .deployAccessLevels(ProjectProtectedEnvironmentDeployAccessLevelArgs.builder()\n                .accessLevel(\"developer\")\n                .build())\n            .approvalRules(            \n                ProjectProtectedEnvironmentApprovalRuleArgs.builder()\n                    .user_id(789)\n                    .build(),\n                ProjectProtectedEnvironmentApprovalRuleArgs.builder()\n                    .access_level(\"developer\")\n                    .build(),\n                ProjectProtectedEnvironmentApprovalRuleArgs.builder()\n                    .group_id(456)\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  this:\n    type: gitlab:ProjectEnvironment\n    properties:\n      project: 123\n      externalUrl: www.example.com\n  # Example with deployment access level\n  exampleWithAccessLevel:\n    type: gitlab:ProjectProtectedEnvironment\n    properties:\n      project: ${this.project}\n      requiredApprovalCount: 1\n      environment: ${this.name}\n      deployAccessLevels:\n        - accessLevel: developer\n  # Example with group-based deployment level\n  exampleWithGroup:\n    type: gitlab:ProjectProtectedEnvironment\n    properties:\n      project: ${this.project}\n      environment: ${this.name}\n      deployAccessLevels:\n        - groupId: 456\n  # Example with user-based deployment level\n  exampleWithUser:\n    type: gitlab:ProjectProtectedEnvironment\n    properties:\n      project: ${this.project}\n      environment: ${this.name}\n      deployAccessLevels:\n        - userId: 789\n  # Example with multiple deployment access levels\n  exampleWithMultipleProjectProtectedEnvironment:\n    type: gitlab:ProjectProtectedEnvironment\n    properties:\n      project: ${this.project}\n      requiredApprovalCount: 2\n      environment: ${this.name}\n      deployAccessLevels:\n        - accessLevel: developer\n        - groupId: 456\n        - userId: 789\n  # Example with access-level based approval rules\n  exampleWithMultipleIndex/projectProtectedEnvironmentProjectProtectedEnvironment:\n    type: gitlab:ProjectProtectedEnvironment\n    properties:\n      project: ${this.project}\n      requiredApprovalCount: 2\n      environment: ${this.name}\n      deployAccessLevels:\n        - accessLevel: developer\n      approvalRules:\n        - access_level: developer\n  # Example with multiple approval rules, using access level, user, and group\n  exampleWithMultipleGitlabIndex/projectProtectedEnvironmentProjectProtectedEnvironment:\n    type: gitlab:ProjectProtectedEnvironment\n    properties:\n      project: ${this.project}\n      requiredApprovalCount: 2\n      environment: ${this.name}\n      deployAccessLevels:\n        - accessLevel: developer\n      approvalRules:\n        - user_id: 789\n        - access_level: developer\n        - group_id: 456\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGitLab protected environments can be imported using an id made up of `projectId:environmentName`, e.g.\n\n```sh\n $ pulumi import gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment bar 123:production\n```\n\n ",
             "properties": {
+                "approvalRules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/gitlab:index/ProjectProtectedEnvironmentApprovalRule:ProjectProtectedEnvironmentApprovalRule"
+                    },
+                    "description": "Array of approval rules to deploy, with each described by a hash.\n"
+                },
                 "deployAccessLevels": {
                     "type": "array",
                     "items": {
@@ -15244,11 +15604,19 @@
                 }
             },
             "required": [
+                "approvalRules",
                 "environment",
                 "project",
                 "requiredApprovalCount"
             ],
             "inputProperties": {
+                "approvalRules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/gitlab:index/ProjectProtectedEnvironmentApprovalRule:ProjectProtectedEnvironmentApprovalRule"
+                    },
+                    "description": "Array of approval rules to deploy, with each described by a hash.\n"
+                },
                 "deployAccessLevels": {
                     "type": "array",
                     "items": {
@@ -15276,6 +15644,13 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ProjectProtectedEnvironment resources.\n",
                 "properties": {
+                    "approvalRules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/ProjectProtectedEnvironmentApprovalRule:ProjectProtectedEnvironmentApprovalRule"
+                        },
+                        "description": "Array of approval rules to deploy, with each described by a hash.\n"
+                    },
                     "deployAccessLevels": {
                         "type": "array",
                         "items": {
@@ -18221,7 +18596,8 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "The authentication token to use when setting up a new runner with this configuration. This value cannot be imported.\n"
+                    "description": "The authentication token to use when setting up a new runner with this configuration. This value cannot be imported.\n",
+                    "secret": true
                 },
                 "untagged": {
                     "type": "boolean",
@@ -18331,7 +18707,8 @@
                     },
                     "token": {
                         "type": "string",
-                        "description": "The authentication token to use when setting up a new runner with this configuration. This value cannot be imported.\n"
+                        "description": "The authentication token to use when setting up a new runner with this configuration. This value cannot be imported.\n",
+                        "secret": true
                     },
                     "untagged": {
                         "type": "boolean",

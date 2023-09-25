@@ -220,6 +220,10 @@
                 "current": "gitlab:index/integrationJira:IntegrationJira",
                 "majorVersion": 6
             },
+            "gitlab_integration_mattermost": {
+                "current": "gitlab:index/integrationMattermost:IntegrationMattermost",
+                "majorVersion": 6
+            },
             "gitlab_integration_microsoft_teams": {
                 "current": "gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams",
                 "majorVersion": 6
@@ -395,6 +399,9 @@
                 "current": "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment",
                 "majorVersion": 6,
                 "fields": {
+                    "approval_rules": {
+                        "maxItemsOne": false
+                    },
                     "deploy_access_levels": {
                         "maxItemsOne": false
                     }
@@ -1006,6 +1013,7 @@
             "gitlab:index/integrationExternalWiki:IntegrationExternalWiki": 0,
             "gitlab:index/integrationGithub:IntegrationGithub": 0,
             "gitlab:index/integrationJira:IntegrationJira": 0,
+            "gitlab:index/integrationMattermost:IntegrationMattermost": 0,
             "gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams": 0,
             "gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail": 0,
             "gitlab:index/integrationSlack:IntegrationSlack": 0,
@@ -1135,6 +1143,7 @@
             "gitlab:index/integrationExternalWiki:IntegrationExternalWiki": "gitlab_integration_external_wiki",
             "gitlab:index/integrationGithub:IntegrationGithub": "gitlab_integration_github",
             "gitlab:index/integrationJira:IntegrationJira": "gitlab_integration_jira",
+            "gitlab:index/integrationMattermost:IntegrationMattermost": "gitlab_integration_mattermost",
             "gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams": "gitlab_integration_microsoft_teams",
             "gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail": "gitlab_integration_pipelines_email",
             "gitlab:index/integrationSlack:IntegrationSlack": "gitlab_integration_slack",
@@ -1280,6 +1289,13 @@
             },
             "gitlab:index/ProjectIssueTaskCompletionStatus:ProjectIssueTaskCompletionStatus": {
                 "completedCount": "completed_count"
+            },
+            "gitlab:index/ProjectProtectedEnvironmentApprovalRule:ProjectProtectedEnvironmentApprovalRule": {
+                "accessLevel": "access_level",
+                "accessLevelDescription": "access_level_description",
+                "groupId": "group_id",
+                "requiredApprovals": "required_approvals",
+                "userId": "user_id"
             },
             "gitlab:index/ProjectProtectedEnvironmentDeployAccessLevel:ProjectProtectedEnvironmentDeployAccessLevel": {
                 "accessLevel": "access_level",
@@ -2506,6 +2522,28 @@
                 "tagPushEvents": "tag_push_events",
                 "updatedAt": "updated_at"
             },
+            "gitlab:index/integrationMattermost:IntegrationMattermost": {
+                "branchesToBeNotified": "branches_to_be_notified",
+                "confidentialIssueChannel": "confidential_issue_channel",
+                "confidentialIssuesEvents": "confidential_issues_events",
+                "confidentialNoteChannel": "confidential_note_channel",
+                "confidentialNoteEvents": "confidential_note_events",
+                "issueChannel": "issue_channel",
+                "issuesEvents": "issues_events",
+                "mergeRequestChannel": "merge_request_channel",
+                "mergeRequestsEvents": "merge_requests_events",
+                "noteChannel": "note_channel",
+                "noteEvents": "note_events",
+                "notifyOnlyBrokenPipelines": "notify_only_broken_pipelines",
+                "pipelineChannel": "pipeline_channel",
+                "pipelineEvents": "pipeline_events",
+                "pushChannel": "push_channel",
+                "pushEvents": "push_events",
+                "tagPushChannel": "tag_push_channel",
+                "tagPushEvents": "tag_push_events",
+                "wikiPageChannel": "wiki_page_channel",
+                "wikiPageEvents": "wiki_page_events"
+            },
             "gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams": {
                 "branchesToBeNotified": "branches_to_be_notified",
                 "confidentialIssuesEvents": "confidential_issues_events",
@@ -2791,6 +2829,7 @@
                 "onlyProtectedBranches": "only_protected_branches"
             },
             "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment": {
+                "approvalRules": "approval_rules",
                 "deployAccessLevels": "deploy_access_levels",
                 "requiredApprovalCount": "required_approval_count"
             },
